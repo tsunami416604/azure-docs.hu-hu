@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5f629ea791a839e1eca25e7487ea395638d136ab
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 02c21453aca01ec0659d0b31738512525d2af51d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344630"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444317"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-trigger az Azure Functions szolgáltatáshoz
 
@@ -279,7 +279,7 @@ Előfizetések létrehozása az Azure portal használatával kapcsolatos tovább
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Előfizetés létrehozása használatával [az Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), használja a [az eventgrid esemény-előfizetés létrehozása](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) parancsot.
+Előfizetés létrehozása használatával [az Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), használja a [az eventgrid esemény-előfizetés létrehozása](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) parancsot.
 
 A parancs használatához a végponti URL-cím, amely meghívja a függvényt. Az alábbi példa bemutatja az URL-minta:
 
@@ -340,7 +340,7 @@ Egy Event Grid-trigger tesztelése helyileg, akkor a helyi gépen a forrásból 
 4. [Hozzon létre egy kérelem](#generate-a-request) , és másolja a kérelem törzsében a megjelenítő alkalmazást.
 5. [A kérelem fel kézzel](#manually-post-the-request) localhost URL-címét az Event Grid aktiválja a függvényt.
 
-Ha végzett tesztelése, használhatja az ugyanahhoz az előfizetéshez éles környezetben a végpont frissítése. Használja a [az eventgrid esemény-előfizetés frissítése](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Azure CLI-parancsot.
+Ha végzett tesztelése, használhatja az ugyanahhoz az előfizetéshez éles környezetben a végpont frissítése. Használja a [az eventgrid esemény-előfizetés frissítése](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI-parancsot.
 
 ### <a name="create-a-viewer-web-app"></a>A jelentésmegjelenítő webes alkalmazás létrehozása
 
@@ -406,7 +406,7 @@ Egy Event Grid eseményindító helyi tesztelése egy másik úgy, hogy automati
 5. [Hozzon létre egy Event Grid-előfizetés](#create-a-subscription) , amely elküldi az eseményeket a ngrok végpontot.
 6. [Esemény aktiválása](#trigger-an-event).
 
-Ha végzett tesztelése, használhatja az ugyanahhoz az előfizetéshez éles környezetben a végpont frissítése. Használja a [az eventgrid esemény-előfizetés frissítése](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Azure CLI-parancsot.
+Ha végzett tesztelése, használhatja az ugyanahhoz az előfizetéshez éles környezetben a végpont frissítése. Használja a [az eventgrid esemény-előfizetés frissítése](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI-parancsot.
 
 ### <a name="create-an-ngrok-endpoint"></a>Ngrok végpont létrehozása
 

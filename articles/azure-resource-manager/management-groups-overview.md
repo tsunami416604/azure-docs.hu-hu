@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/31/2018
 ms.author: rithorn
-ms.openlocfilehash: 146ded37dbf517528af23574cd5b9325f4b5f9d0
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: edc57d146ccb034ac3fd627386000a1953b0e558
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358769"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480322"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok
 
@@ -82,7 +82,7 @@ Az alábbi ábra a felügyeleti csoportok szerepkörök és a támogatott művel
 
 | RBAC szerepkör neve             | Létrehozás | Átnevezés | Áthelyezés | Törlés | Hozzáférés hozzárendelése | Szabályzat hozzárendelése | Olvasás  |
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
-|Tulajdonos                       | X      | X      | X    | X      | X             |               | X     |
+|Tulajdonos                       | X      | X      | X    | X      | X             | X             | X     |
 |Közreműködő                 | X      | X      | X    | X      |               |               | X     |
 |Felügyeleti csoport közreműködői *             | X      | X      | X    | X      |               |               | X     |
 |Olvasó                      |        |        |      |        |               |               | X     |
@@ -104,4 +104,4 @@ Felügyeleti csoportok kapcsolatos további információkért lásd:
 - [Módosítása, törlése és a felügyeleti csoportok kezelése](management-groups-manage.md)
 - [Az Azure PowerShell-modul telepítése](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
 - [Tekintse át a REST API-specifikációja](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Az Azure CLI-bővítmény telepítése](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)
+- [Az Azure CLI-bővítmény telepítése](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)

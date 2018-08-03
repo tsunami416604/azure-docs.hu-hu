@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan használhatja az Azure Event Hubs kötéseit az
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: cd5c3316fd41bbd10d4469a6551ae7bd76a881c8
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 961126f62c3e8fbb947b9d1b34ac157bf37a8cba
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345438"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480937"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések az Azure Functions szolgáltatáshoz
 
@@ -337,9 +337,9 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type** | n/a | Meg kell `eventHubTrigger`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
 |**direction** | n/a | Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
 |**name** | n/a | A függvénykód esemény elemet képviselő változó neve. | 
-|**path** |**EventHubName** | Csak 1.x működik. Az eseményközpont neve.  | 
-|**eventHubName** |**EventHubName** | Csak a 2.x működik. Az eseményközpont neve.  |
-|**A fogyasztói csoporttól** |**A fogyasztói csoporttól** | Egy nem kötelező tulajdonsággal, amely beállítja a [fogyasztói csoportot](../event-hubs/event-hubs-features.md#event-consumers) fizethet elő eseményekre az agyban használt. Ha nincs megadva, a `$Default` fogyasztói csoportot használja. | 
+|**path** |**EventHubName** | Csak 1.x működik. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncot, ezt az értéket felülbírálja ezt a tulajdonságot, futásidőben. | 
+|**eventHubName** |**EventHubName** | Csak a 2.x működik. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncot, ezt az értéket felülbírálja ezt a tulajdonságot, futásidőben. |
+|**a fogyasztói csoporttól** |**a fogyasztói csoporttól** | Egy nem kötelező tulajdonsággal, amely beállítja a [fogyasztói csoportot](../event-hubs/event-hubs-features.md#event-consumers) fizethet elő eseményekre az agyban használt. Ha nincs megadva, a `$Default` fogyasztói csoportot használja. | 
 |**számossága** | n/a | A Javascripthez. Állítsa be `many` , és engedélyezze a kötegelés.  Ha nincs megadva vagy `one`, függvénynek átadott egyetlen üzenetben. | 
 |**kapcsolat** |**kapcsolat** | Az event hubs-névtér a kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Ez a kapcsolati karakterlánc másolása kattintva a **kapcsolatadatok** gombot a [névtér](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nem pedig maga az event hubs. Ez a kapcsolati karakterlánc legalább olvasás engedéllyel rendelkezik az eseményindító aktiválása.|
 
@@ -557,8 +557,8 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type** | n/a | "Az eventHub" kell állítani. |
 |**direction** | n/a | Állítsa "out". Ez a paraméter értéke automatikusan a kötés létrehozásakor az Azure Portalon. |
 |**name** | n/a | A függvény kódját a esemény a használt változó neve. | 
-|**path** |**EventHubName** | Csak 1.x működik. Az eseményközpont neve.  | 
-|**eventHubName** |**EventHubName** | Csak a 2.x működik. Az eseményközpont neve.  |
+|**path** |**EventHubName** | Csak 1.x működik. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncot, ezt az értéket felülbírálja ezt a tulajdonságot, futásidőben. | 
+|**eventHubName** |**EventHubName** | Csak a 2.x működik. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncot, ezt az értéket felülbírálja ezt a tulajdonságot, futásidőben. |
 |**kapcsolat** |**kapcsolat** | Az event hubs-névtér a kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Ez a kapcsolati karakterlánc másolása kattintva a **kapcsolatadatok** gombot a *névtér*, nem pedig maga az event hubs. Ez a kapcsolati karakterlánc az üzenet küldéséhez az eseménystream küldési jogosultsággal kell rendelkeznie.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált FilesAnywhere |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és FilesAnywhere között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az FilesAnywhere |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és FilesAnywhere között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,195 +14,195 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 8d80e537bc031a777ae037f5147b2c84b7e76281
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8a08155dd67c6fcf2fb080325840bc163dc6da60
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215970"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447356"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Oktatóanyag: Azure Active Directoryval integrált FilesAnywhere
+# <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Oktatóanyag: Azure Active Directory-integráció az FilesAnywhere
 
-Ebben az oktatóanyagban elsajátíthatja FilesAnywhere integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan FilesAnywhere integrálása az Azure Active Directory (Azure AD).
 
-FilesAnywhere integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+FilesAnywhere integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a FilesAnywhere hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett FilesAnywhere (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
+- Szabályozhatja, hogy ki férhet hozzá FilesAnywhere Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett FilesAnywhere (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- A fiókok egyetlen központi helyen – az Azure felügyeleti portálján kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs FilesAnywhere, a következőkre van szükség:
+FilesAnywhere az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy FilesAnywhere egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy FilesAnywhere egyszeri bejelentkezéses engedélyezett előfizetés
 
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, ha ez nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Az éles környezetben ne használjon, ha erre szükség.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti az egy hónapos próbaidőszak [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből FilesAnywhere hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. FilesAnywhere hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 
-## <a name="adding-filesanywhere-from-the-gallery"></a>A gyűjteményből FilesAnywhere hozzáadása
-Az Azure AD integrálása a FilesAnywhere konfigurálásához kell hozzáadnia FilesAnywhere a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-filesanywhere-from-the-gallery"></a>FilesAnywhere hozzáadása a katalógusból
+Az Azure AD integrálása a FilesAnywhere konfigurálásához hozzá kell FilesAnywhere a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből FilesAnywhere hozzáadásához hajtsa végre az alábbi lépéseket:**
+**FilesAnywhere hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure felügyeleti portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[Azure felügyeleti portálján](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
+1. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **FilesAnywhere**.
+1. A Keresés mezőbe írja be a **FilesAnywhere**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_search.png)
 
-5. Az eredmények panelen válassza ki a **FilesAnywhere**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **FilesAnywhere**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_addfromgallery.png)
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján FilesAnywhere.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés FilesAnywhere a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó FilesAnywhere a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a FilesAnywhere közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó FilesAnywhere mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó FilesAnywhere hivatkozás kapcsolata kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** FilesAnywhere a.
+Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** FilesAnywhere a.
 
-Az Azure AD egyszeri bejelentkezést a FilesAnywhere tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az FilesAnywhere tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[FilesAnywhere tesztfelhasználó létrehozása](#creating-a-filesanywhere-test-user)**  - való Britta Simon valami FilesAnywhere, amely csatolva van rá, hogy az Azure AD ábrázolása.
-3. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-4. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[FilesAnywhere tesztfelhasználó létrehozása](#creating-a-filesanywhere-test-user)**  - a-megfelelője a Britta Simon szerepel, amely kapcsolódik az Azure ad-ben ábrázolása őt FilesAnywhere.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure felügyeleti portálon, és konfigurálása egyszeri bejelentkezéshez az FilesAnywhere alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure felügyeleti portálon, és FilesAnywhere alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés FilesAnywhere, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés FilesAnywhere, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure felügyeleti portálján a a **FilesAnywhere** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure felügyeleti portálon a a **FilesAnywhere** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. A a **egyszeri bejelentkezés** párbeszédpanel, mint **mód** kiválasztása **SAML-alapú bejelentkezés** a engedélyezése az egyszeri bejelentkezéshez.
+1. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** kiválasztása **SAML-alapú bejelentkezés** való egyszeri bejelentkezés engedélyezése.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_samlbase.png)
 
-3. Az a **FilesAnywhere tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **IDP kezdeményezett mód**:
+1. Az a **FilesAnywhere tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett mód**:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_filesanywhere_url.png)
     
-    a. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company name>.filesanywhere.com/saml20.aspx?c=215`
+    a. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<company name>.filesanywhere.com/saml20.aspx?c=215`
 > [!NOTE]
-> Ne feledje, hogy az érték **215** van egy **clientid** és csak egy példa. Cserélje le a tényleges clientid értéket kell.
+> Vegye figyelembe, hogy az érték **215** van egy **clientid** , és csak egy példa. Cserélje le tényleges clientid értékét kell.
 
-4. Az a **FilesAnywhere tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **Szolgáltató kezdeményezett mód**, hajtsa végre a következő lépéseket:
+1. Az a **FilesAnywhere tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **SP által kezdeményezett mód**, hajtsa végre az alábbi lépéseket:
     
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_filesanywhere_url1.png)
 
-    a. Kattintson a **megjelenítése speciális URL-beállításainak** beállítás
+    a. Kattintson a **speciális URL-beállítások megjelenítése** lehetőség
 
-    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe: `https://<sub domain>.filesanywhere.com/`
+    b. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<sub domain>.filesanywhere.com/`
 
     > [!NOTE] 
-    > Ne feledje, hogy ezek nincsenek a valódi értékek. Akkor frissítheti ezeket az értékeket a tényleges URL-cím bejelentkezési és válasz URL-CÍMEN. Ügyfél [FilesAnywhere támogatási csoport](mailto:support@FilesAnywhere.com) beolvasni ezeket az értékeket. 
+    > Vegye figyelembe, hogy ezek nem állnak a valós értékeket. Az értékeket módosítsa a tényleges bejelentkezési URL-és a válasz URL-címet kell. Kapcsolattartó [FilesAnywhere támogatási csapatának](mailto:support@FilesAnywhere.com) beolvasni ezeket az értékeket. 
 
-5. FilesAnywhere alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. Állítsa be a következő jogcímeket ehhez az alkalmazáshoz. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
+1. FilesAnywhere szoftveralkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Állítsa be a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható erre egy példa látható.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_filesanywhere_attribute.png)
     
-    Amikor a felhasználók előfizet az FilesAnywhere értékének beolvasása **clientid** attribútumot [FilesAnywhere team](mailto:support@FilesAnywhere.com). Fel kell vennie az "Ügyfél-azonosító" attribútum FilesAnywhere által biztosított egyedi értékkel. A fent látható összes attribútum megadása kötelező.
+    Amikor a FilesAnywhere regisztrál a felhasználók kapnak értékét **clientid** attribútumot [FilesAnywhere csapat](mailto:support@FilesAnywhere.com). Fel kell vennie az "Ügyfél-azonosító" attribútum FilesAnywhere által nyújtott egyedi értékkel. Az összes ezek az attribútumok fenti szükség.
     > [!NOTE] 
-    > Ne feledje, hogy az érték **2331** a **clientid** csak egy példa. Meg kell adnia a tényleges érték.
+    > Vegye figyelembe, hogy az érték **2331** , **clientid** csak egy példa. Meg kell adnia a tényleges érték.
 
 
-6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti ábrán látható módon, és hajtsa végre a következő lépéseket:
+1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
     
     | Attribútum neve | Attribútum értéke |
     | ---------------| --------------- |    
     | ClientID | *"uniquevalue"* |
 
-    a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_04.png)
 
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_05.png)
     
-    b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
     
-    c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
+    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
     
     d. Kattintson a **Ok**
 
-7. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_general_400.png)
 
-8. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_certificate.png) 
 
-9. A a **FilesAnywhere konfigurációs** kattintson **konfigurálása FilesAnywhere** megnyitásához **bejelentkezés konfigurálása** ablak.
+1. Az a **FilesAnywhere konfigurációs** területén kattintson **konfigurálása FilesAnywhere** megnyitásához **bejelentkezés konfigurálása** ablak.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configure.png) 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
 
-10. Ahhoz, hogy egyszeri Bejelentkezéses konfigurációs teljes FilesAnywhere végén az alkalmazás, lépjen kapcsolatba [FilesAnywhere támogatási csoport](mailto:support@FilesAnywhere.com) és adja meg a letöltött SAML jogkivonat-aláíró tanúsítvány és az egyszeri bejelentkezés (SSO) URL-címet.
+1.  Egyszeri bejelentkezési konfigurációjának teljes lekérése FilesAnywhere végén az alkalmazáshoz, lépjen kapcsolatba a [FilesAnywhere támogatási csapatának](mailto:support@FilesAnywhere.com) , és adja meg azokat a letöltött SAML jogkivonat-aláíró tanúsítvány és az egyszeri bejelentkezés (SSO) URL-CÍMÉT.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure felügyeleti portálján Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure felügyeleti portálján, Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure Management portal**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **Azure Management portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/create_aaduser_01.png) 
 
-2. Ugrás a **felhasználók és csoportok** kattintson **minden felhasználó** azon felhasználók listájának megjelenítéséhez.
+1. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/create_aaduser_02.png) 
 
-3. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
+1. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/filesanywhere-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra. 
 
@@ -210,52 +210,52 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure felügyeleti por
 
 ### <a name="creating-a-filesanywhere-test-user"></a>FilesAnywhere tesztfelhasználó létrehozása
 
-Alkalmazás támogatja a csak az idő a felhasználók átadása, miután a felhasználók hitelesítésére az alkalmazás automatikusan létrejön. 
+Alkalmazás támogatja a csak az idő felhasználókiépítés, miután a felhasználók hitelesítésére, az alkalmazás automatikusan létrejön. 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított a hozzáférés FilesAnywhere Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés FilesAnywhere saját hozzáférésének engedélyezésére használja.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése FilesAnywhere, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel FilesAnywhere, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure felügyeleti portálra, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure felügyeleti portálon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **FilesAnywhere**.
+1. Az alkalmazások listájában jelölje ki a **FilesAnywhere**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 
 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen FilesAnywhere csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az FilesAnywhere alkalmazására.
+Ha a hozzáférési panelen a FilesAnywhere csempére kattint, meg kell lekérése automatikusan bejelentkezett az FilesAnywhere alkalmazáshoz.
 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Bime |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Bime között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Bime |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Bime között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,248 +14,248 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 7128749d5acdbd97bbba14b5a079da1ab1c6856e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 966c5dcb6f45590fe1b6a8bb2d8b53c37aeed6b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215058"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446595"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bime"></a>Oktatóanyag: Azure Active Directoryval integrált Bime
+# <a name="tutorial-azure-active-directory-integration-with-bime"></a>Oktatóanyag: Azure Active Directory-integráció az Bime
 
-Ebben az oktatóanyagban elsajátíthatja Bime integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Bime integrálása az Azure Active Directory (Azure AD).
 
-Bime integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Bime integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a Bime hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Bime (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá Bime Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Bime (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Bime, a következőkre van szükség:
+Bime az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Bime egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió Itt kaphat: [próbaverzió ajánlat](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a ide-egy havi próbalehetőség: [próba](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Bime hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Bime hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-bime-from-the-gallery"></a>A gyűjteményből Bime hozzáadása
-Az Azure AD integrálása a Bime konfigurálásához kell hozzáadnia Bime a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-bime-from-the-gallery"></a>Bime hozzáadása a katalógusból
+Az Azure AD integrálása a Bime konfigurálásához hozzá kell Bime a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Bime hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Bime hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **Bime**.
+1. A Keresés mezőbe írja be a **Bime**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/bime-tutorial/tutorial_bime_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bime-tutorial/tutorial_bime_search.png)
 
-5. Az eredmények panelen válassza ki a **Bime**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Bime**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/bime-tutorial/tutorial_bime_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bime-tutorial/tutorial_bime_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Bime.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Bime a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Bime a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Bime közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Bime mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Bime hivatkozás kapcsolata kell létrehozni.
 
-Bime, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Bime, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Bime tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Bime tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Bime tesztfelhasználó létrehozása](#creating-a-bime-test-user)**  - való Britta Simon valami Bime, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Bime tesztfelhasználó létrehozása](#creating-a-bime-test-user)**  – egy megfelelője a Britta Simon Bime, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Bime alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Bime alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Bime, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Bime, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Bime** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Bime** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/bime-tutorial/tutorial_bime_samlbase.png)
 
-3. Az a **Bime tartomány és az URL-címek** területen tegye a következőket:
+1. Az a **Bime tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bime-tutorial/tutorial_bime_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenant-name>.Bimeapp.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<tenant-name>.Bimeapp.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenant-name>.Bimeapp.com`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<tenant-name>.Bimeapp.com`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Bime ügyfél-támogatási csoport](https://bime.zendesk.com/hc/categories/202604307-Support-tech-notes-and-tips-) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Bime ügyfél-támogatási csapatának](https://bime.zendesk.com/hc/categories/202604307-Support-tech-notes-and-tips-) beolvasni ezeket az értékeket. 
  
-4. Az a **SAML-aláíró tanúsítványa** szakaszban, másolja a **UJJLENYOMAT** érték a tanúsítványból.
+1. Az a **SAML-aláíró tanúsítvány** területén másolja a **UJJLENYOMAT** érték a tanúsítványból.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bime-tutorial/tutorial_bime_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bime-tutorial/tutorial_general_400.png)
 
-6. A a **Bime konfigurációs** kattintson **konfigurálása Bime** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+1. Az a **Bime konfigurációs** területén kattintson **konfigurálása Bime** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bime-tutorial/tutorial_bime_configure.png) 
 
-7. Egy másik webes böngészőablakban jelentkezzen be a Bime vállalati webhely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Bime vállalati hely rendszergazdaként.
 
-8. Az eszköztáron kattintson **Admin**, majd **fiók**.
+1. Az eszköztáron kattintson **rendszergazdai**, majd **fiók**.
    
-    ![Felügyeleti](./media/bime-tutorial/ic775558.png "rendszergazda")
+    ![Rendszergazdai](./media/bime-tutorial/ic775558.png "rendszergazda")
 
-9. A fiók konfigurálása lapon hajtsa végre a következő lépéseket:
+1. A fiók konfigurálása lapon hajtsa végre az alábbi lépéseket:
    
     ![Egyszeri bejelentkezés konfigurálása](./media/bime-tutorial/ic775559.png "egyszeri bejelentkezés konfigurálása")
    
-    a. Válassza ki **engedélyezése SAML-alapú hitelesítés**.
+    a. Válassza ki **engedélyezése SAML-hitelesítés**.
 
-    b. A a **távoli bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta.
+    b. Az a **távoli bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
-    c.  Beillesztés a **ujjlenyomat** érték az Azure-portálon a **tanúsítvány-ujjlenyomat** szövegmező.       
+    c.  Illessze be a **ujjlenyomat** értéket az Azure Portalról a **tanúsítvány-ujjlenyomat** szövegmezőbe.       
    
     d. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/bime-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bime-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/bime-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bime-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/bime-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bime-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/bime-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bime-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-bime-test-user"></a>Bime tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Bime bejelentkezni, akkor ki kell építenie a Bime. Bime, ha egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók Bime jelentkezzen be, akkor ki kell építeni Bime be. Bime, esetén kiépítése a manuális feladat.
 
-**Adja meg a felhasználók átadása, hajtsa végre az alábbi lépéseket:**
+**Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:**
 
 1. Jelentkezzen be a **Bime** bérlő.
 
-2. Az eszköztáron kattintson **Admin**, majd **felhasználók**.
+1. Az eszköztáron kattintson **rendszergazdai**, majd **felhasználók**.
    
-    ![Felügyeleti](./media/bime-tutorial/ic775561.png "rendszergazda")
+    ![Rendszergazdai](./media/bime-tutorial/ic775561.png "rendszergazda")
 
-3. Az a **felhasználók listában**, kattintson a **új felhasználó hozzáadása** ("+").
+1. Az a **felhasználók listában**, kattintson a **új felhasználó hozzáadása** ("+").
    
     ![Felhasználók](./media/bime-tutorial/ic775562.png "felhasználók")
 
-4. Az a **felhasználó adatait** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói adatok** párbeszédpanel lapon, a következő lépésekkel:
    
-    ![Felhasználó adatait](./media/bime-tutorial/ic775563.png "felhasználó részletei")
+    ![Felhasználói adatok](./media/bime-tutorial/ic775563.png "felhasználó adatai")
    
-    a. Az a **Utónév** szövegmező, írja be például a felhasználó utónevét **Britta**.
+    a. Az a **Utónév** szövegmezőbe írja be például a felhasználó utónevét **Britta**.
 
-    b. Az a **Vezetéknév** szövegmező, írja be például a felhasználó vezetéknevét **Simon**.
+    b. Az a **Vezetéknév** szövegmezőbe írja be például a felhasználó vezetékneve **Simon**.
  
-    c. Az a **E-mail** szövegmező, adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
+    c. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
 
     d. Kattintson a **Save** (Mentés) gombra.
 
 >[!NOTE]
->Bármely más Bime felhasználói fiók létrehozása eszközök vagy rendelkezés AAD felhasználói fiókokhoz Bime által nyújtott API-k.
+>Bármely más Bime felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Bime által biztosított API-k.
 >  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Bime Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Bime Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Bime, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Bime, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Bime**.
+1. Az alkalmazások listájában jelölje ki a **Bime**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bime-tutorial/tutorial_bime_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ez a szakasz célja tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Bime csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Bime alkalmazására.
+Ha a hozzáférési panelen a Bime csempére kattint, meg kell lekérése automatikusan bejelentkezett az Bime alkalmazáshoz.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és FirmPlay - a személyzeti osztályon dolgozó tanácsadáson között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,230 +14,230 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: dacc133f1c6d15aa1fc886ab9086109951478929
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6e3d8a3951a42e448eff005b055b3cf5169179f1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219900"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443449"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Oktatóanyag: Azure Active Directoryval integrált FirmPlay - a személyzeti osztályon dolgozó tanácsadáson
+# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Oktatóanyag: Azure Active Directory-integráció az FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben
 
-Ebben az oktatóanyagban elsajátíthatja FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon az Azure Active Directoryval (Azure AD) integrálása.
+Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja FirmPlay – az Azure Active Directory (Azure AD) a személyzeti osztályon dolgozók Ügyfélképviseletben.
 
-FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon az Azure AD integrálása lehetővé teszi a következő előnyöket biztosítja:
+FirmPlay – az Azure AD-vel a személyzeti osztályon dolgozók Ügyfélképviseletben integrálása nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, aki hozzáférhet FirmPlay - alkalmazott tanácsadáson személyzeti osztályon az Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon (egyszeri bejelentkezés) a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
+- Szabályozhatja, hogy ki férhet hozzá FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon (egyszeri bejelentkezés) az Azure AD-fiókjukat
+- A fiókok egyetlen központi helyen – az Azure felügyeleti portálján kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-FirmPlay - alkalmazott tanácsadáson személyzeti osztályon, az Azure AD-integrációs konfigurálni kell a következő elemek:
+FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon, az Azure AD-integráció konfigurálása a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy FirmPlay - alkalmazott tanácsadáson felvételi egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy FirmPlay - alkalmazott Ügyfélképviseletben felvételi engedélyezett előfizetés egyszeri bejelentkezés
 
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, ha ez nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Az éles környezetben ne használjon, ha erre szükség.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti az egy hónapos próbaidőszak [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Hozzáadás FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Hozzáadás FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 
-## <a name="adding-firmplay---employee-advocacy-for-recruiting-from-the-gallery"></a>Hozzáadás FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon a gyűjteményből
-A FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon az Azure AD-integráció konfigurálása kell hozzáadnia a FirmPlay - alkalmazott tanácsadáson a kezelt SaaS-alkalmazások listájára a gyűjteményből személyzeti osztályon.
+## <a name="adding-firmplay---employee-advocacy-for-recruiting-from-the-gallery"></a>Hozzáadás FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon a katalógusból
+FirmPlay – az Azure ad-ben, a személyzeti osztályon dolgozók Ügyfélképviseletben integráció konfigurálásához hozzá kell FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure felügyeleti portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[Azure felügyeleti portálján](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
+1. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **FirmPlay - a személyzeti osztályon dolgozó tanácsadáson**.
+1. A Keresés mezőbe írja be a **FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/firmplay-tutorial/tutorial_firmplay_001.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/firmplay-tutorial/tutorial_firmplay_001.png)
 
-5. Az eredmények panelen válassza ki a **FirmPlay - a személyzeti osztályon dolgozó tanácsadáson**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/firmplay-tutorial/tutorial_firmplay_0001.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/firmplay-tutorial/tutorial_firmplay_0001.png)
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon "Britta Simon" nevű tesztfelhasználó alapján.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés használatához az Azure AD meg kell tudni, hogy milyen a párjukhoz felhasználó FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon egy felhasználó számára az Azure ad-ben. Más szóval hivatkozás közötti kapcsolat egy Azure AD-felhasználó és a kapcsolódó felhasználó a FirmPlay - alkalmazott tanácsadáson felvételi kell létrehozni.
+Egyszeri bejelentkezés használatát Azure ad-ben tudnia kell, milyen a partner felhasználó FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben, hogy egy felhasználó Azure AD-ben. Más szóval egy hivatkozás közötti kapcsolat egy Azure AD-felhasználót és a kapcsolódó felhasználó FirmPlay - alkalmazott Ügyfélképviseletben felvételi kell létrehozni.
 
-A hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon.
+Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben a.
 
-Az Azure AD egyszeri bejelentkezést a FirmPlay - tesztelése és konfigurálása személyzeti osztályon, az alkalmazott tanácsadáson kell végrehajtani a következő építőelemeket:
+Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés FirmPlay – a személyzeti osztályon, az alkalmazott Ügyfélképviseletben kell hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Egy FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon tesztfelhasználó létrehozása](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  - való Britta Simon valami FirmPlay: alkalmazott tanácsadáson felvételi, amely csatolva rá, hogy az Azure AD ábrázolása.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Egy FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon tesztfelhasználó létrehozása](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  – van egy megfelelője a Britta Simon FirmPlay: alkalmazott Ügyfélképviseletben felvételi, amely csatolva az Azure ad-ben ábrázolása számára.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure felügyeleti portálon, és a FirmPlay - alkalmazott tanácsadáson személyzeti osztályon alkalmazáshoz az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure felügyeleti portálon, és a FirmPlay - alkalmazott Ügyfélképviseletben személyzeti osztályon alkalmazáshoz az egyszeri bejelentkezés konfigurálása.
 
-**A következő lépésekkel FirmPlay - alkalmazott tanácsadáson személyzeti osztályon, az Azure AD az egyszeri bejelentkezés konfigurálása:**
+**FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon, az Azure AD egyszeri bejelentkezés konfigurálásához hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure felügyeleti portálján a a **FirmPlay - a személyzeti osztályon dolgozó tanácsadáson** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure felügyeleti portálon a a **FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. A a **egyszeri bejelentkezés** párbeszédpanel, mint **mód** kiválasztása **SAML-alapú bejelentkezés** a engedélyezése az egyszeri bejelentkezéshez.
+1. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** kiválasztása **SAML-alapú bejelentkezés** való egyszeri bejelentkezés engedélyezése.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_firmplay_01.png)
 
-3. Az a **FirmPlay - tartomány felvétele és URL-címek alkalmazott tanácsadáson** részben, a a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe: `https://<your-subdomain>.firmplay.com/`
+1. Az a **FirmPlay - alkalmazott Ügyfélképviseletben felvételi tartomány és URL-címek** ebben a szakaszban a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<your-subdomain>.firmplay.com/`
 
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_firmplay_02.png)
 
     > [!NOTE] 
-    > Ne feledje, hogy ez a nem a tényleges érték. Ezt az értéket a tényleges bejelentkezési URL-cím frissíteni kell. Ügyfél [FirmPlay - alkalmazott tanácsadáson személyzeti osztályon támogatási csoport](mailto:engineering@firmplay.com) lekérni ezt az értéket. 
+    > Vegye figyelembe, hogy ez nem a tényleges érték. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet kell. Kapcsolattartó [FirmPlay - személyzeti osztályon támogatási csapat alkalmazott Ügyfélképviseletben](mailto:engineering@firmplay.com) lekérni ezt az értéket. 
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **hozzon létre új tanúsítvány**.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **új tanúsítvány létrehozása**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_firmplay_03.png)     
 
-5. A a **új tanúsítvány létrehozása** párbeszédpanel, kattintson a naptár ikonra, és válasszon egy **lejárati dátum**. Kattintson a **mentése** gombra.
+1. Az a **új tanúsítvány létrehozása** párbeszédpanelen kattintson a naptár ikonra, és válassza ki egy **lejárati dátuma**. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_general_300.png)
 
-6. Az a **SAML-aláíró tanúsítványa** szakaszban jelölje be **új tanúsítvány aktiválásához** kattintson **mentése** gombra.
+1. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **új tanúsítvány aktívvá** kattintson **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_firmplay_04.png)
 
-7. Az előugró **helyettesítő tanúsítvány** ablak, kattintson a **OK**.
+1. Az előugró **helyettesítő tanúsítvány** ablakban kattintson a **OK**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_general_400.png)
 
-8. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (base64)** , és mentse a tanúsítványfájlt, a számítógépen. 
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (base64)** , és mentse a tanúsítványfájlt, a számítógépen. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_firmplay_05.png) 
 
-9. A a **FirmPlay - konfiguráció felvételi alkalmazott tanácsadáson** kattintson **FirmPlay konfigurálása - a személyzeti osztályon dolgozó tanácsadáson** megnyitásához **bejelentkezés konfigurálása** párbeszédpanel.
+1. Az a **FirmPlay - konfiguráció felvételi alkalmazott Ügyfélképviseletben** területén kattintson **FirmPlay konfigurálása - a személyzeti osztályon dolgozók Ügyfélképviseletben** megnyitásához **bejelentkezés konfigurálása** párbeszédpanel.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_firmplay_06.png) 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_firmplay_07.png)
 
-10. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, lépjen kapcsolatba [FirmPlay - alkalmazott tanácsadáson személyzeti osztályon támogatási csoport](mailto:engineering@firmplay.com) és adja meg a következőket: 
+1. Egyszeri bejelentkezés az alkalmazáshoz konfigurált beszerzéséhez forduljon [FirmPlay - személyzeti osztályon támogatási csapat alkalmazott Ügyfélképviseletben](mailto:engineering@firmplay.com) és adja meg a következő: 
 
-    • A letöltött **tanúsítványfájl**
+    • A letöltött **tanúsítványfájlt**
 
-    • A **SAML-alapú egyszeri bejelentkezési szolgáltatás URL-címe**
+    • A **SAML egyszeri bejelentkezési szolgáltatás URL-címe**
 
     • A **SAML entitás azonosítója**
 
-    • A **kijelentkezési URL-címe**
+    • A **kijelentkezési URL-cím**
   
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure felügyeleti portálján Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure felügyeleti portálján, Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure Management portal**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **Azure Management portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/firmplay-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/firmplay-tutorial/create_aaduser_01.png) 
 
-2. Ugrás a **felhasználók és csoportok** kattintson **minden felhasználó** azon felhasználók listájának megjelenítéséhez.
+1. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/firmplay-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/firmplay-tutorial/create_aaduser_02.png) 
 
-3. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
+1. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/firmplay-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/firmplay-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/firmplay-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/firmplay-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra. 
 
 
 
-### <a name="creating-a-firmplay---employee-advocacy-for-recruiting-test-user"></a>Egy FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon tesztfelhasználó létrehozása
+### <a name="creating-a-firmplay---employee-advocacy-for-recruiting-test-user"></a>Egy FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon tesztfelhasználó létrehozása
 
-Ebben a szakaszban Britta Simon meghívta FirmPlay - alkalmazott tanácsadáson személyzeti osztályon a felhasználó létrehozása. Adjon együttműködve [FirmPlay - alkalmazott tanácsadáson személyzeti osztályon támogatási csoport](mailto:engineering@firmplay.com) felhasználót is hozzáadhat a FirmPlay - alkalmazott tanácsadáson személyzeti osztályon platform.
+Ebben a szakaszban egy felhasználói Britta Simon nevű FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben hoz létre. Együttműködve [FirmPlay - személyzeti osztályon támogatási csapat alkalmazott Ügyfélképviseletben](mailto:engineering@firmplay.com) felhasználót is hozzáadhat a FirmPlay - alkalmazott Ügyfélképviseletben személyzeti osztályon platform.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított saját hozzáférés FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben saját hozzáférésének engedélyezésére használja.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon, hajtsa végre az alábbi lépéseket:**
+**Britta Simon hozzárendelése FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure felügyeleti portálra, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure felügyeleti portálon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **FirmPlay - a személyzeti osztályon dolgozó tanácsadáson**.
+1. Az alkalmazások listájában jelölje ki a **FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/firmplay-tutorial/tutorial_firmplay_50.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 
 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-A FirmPlay - alkalmazott tanácsadáson személyzeti osztályon csempe a hozzáférési panelen kattintva meg kell beolvasni automatikusan bejelentkezett a FirmPlay - alkalmazott tanácsadáson személyzeti osztályon alkalmazáshoz való.
+FirmPlay – a hozzáférési panelen, a személyzeti osztályon csempe alkalmazott Ügyfélképviseletben kattintás után meg kell lekérése automatikusan bejelentkezett a FirmPlay - alkalmazott Ügyfélképviseletben személyzeti osztályon alkalmazáshoz való.
 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

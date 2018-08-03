@@ -1,6 +1,6 @@
 ---
-title: Biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis MySQL
-description: 'Útmutató: biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis a MySQL az Azure parancssori felület használatával.'
+title: Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for MySQL-hez
+description: 'Útmutató: biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for MySQL-hez az Azure parancssori felület használatával.'
 services: mysql
 author: rachel-msft
 ms.author: raagyema
@@ -10,61 +10,61 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5325f23a13a181d912bbc8b26042de72855dc41e
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: f4253d4259d66b0c5746ef61cfc3cf4f4f2caad3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319088"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448907"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Készítsen biztonsági másolatot, és a kiszolgáló Azure-adatbázis visszaállítása a MySQL az Azure parancssori felület használatával
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Hogyan biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for MySQL-hez az Azure CLI használatával
 
-## <a name="backup-happens-automatically"></a>Automatikusan megtörténik a biztonsági mentés
-A MySQL-kiszolgálók Azure-adatbázis biztonsági mentése rendszeresen visszaállítási szolgáltatások engedélyezése. Ezzel a szolgáltatással is visszaállíthatja a kiszolgáló és az adatbázisok egy korábbi-időpontban, egy új kiszolgálóra.
+## <a name="backup-happens-automatically"></a>Biztonsági mentés automatikusan történik
+Azure Database for MySQL-kiszolgálók biztonsági mentése rendszeres visszaállítási szolgáltatások engedélyezése. Ezzel a funkcióval, előfordulhat, hogy állítsa vissza a kiszolgáló és az összes adatbázis egy korábbi-időponthoz, egy új kiszolgálón.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató útmutató befejezéséhez lesz szüksége:
-- Egy [a MySQL-kiszolgáló és az adatbázis Azure-adatbázis](quickstart-create-mysql-server-database-using-azure-cli.md)
+Ez az útmutató végrehajtásához lesz szüksége:
+- Egy [, Azure Database for MySQL-kiszolgáló és adatbázis](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
  
 
 > [!IMPORTANT]
-> Ez az útmutató útmutató az Azure parancssori felület 2.0 vagy újabb verzió használatát igényli. Erősítse meg a verzió, az Azure CLI parancssorba írja be a következőt `az --version`. Telepítéséhez vagy frissítéséhez, lásd: [Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+> Ez az útmutató az Azure CLI 2.0-s vagy újabb verzió használatát igényli. Adja meg, hogy ellenőrizze a verziót, az Azure CLI-vel parancssorban `az --version`. Telepítéshez vagy frissítéshez olvassa [Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="set-backup-configuration"></a>Biztonsági mentési konfigurációjának beállítása
+## <a name="set-backup-configuration"></a>Biztonsági mentési konfiguráció beállítása
 
-Hogy a kiszolgáló, vagy helyileg redundáns vagy földrajzilag redundáns történő biztonsági mentésekre konfigurálása a kiszolgáló létrehozásakor választhat. 
+A választást, hogy a kiszolgáló a helyileg redundáns biztonsági mentések vagy a georedundáns biztonsági mentések konfigurálása a kiszolgáló létrehozásakor választja ki. 
 
 > [!NOTE]
-> Miután a kiszolgáló akkor jön létre, milyen típusú redundancia rendelkezik, helyileg redundáns földrajzilag redundáns vs nem állítható át.
+> Miután a kiszolgáló akkor jön létre, milyen típusú redundancia rendelkezik, a helyileg redundáns, georedundáns és nem kapcsolható.
 >
 
-A kiszolgálón keresztül létrehozása során a `az mysql server create` parancs, a `--geo-redundant-backup` paraméter úgy dönt, a biztonsági mentés redundancia beállítást. Ha `Enabled`, földrajzi redundancia biztonsági mentés készül. Vagy ha `Disabled` helyileg redundáns biztonsági mentés készül. 
+-N keresztül a kiszolgáló létrehozásakor a `az mysql server create` parancs, a `--geo-redundant-backup` paramétert úgy dönt, hogy a biztonsági mentés adatredundáns tárolási mód. Ha `Enabled`, georedundáns redundáns biztonsági másolatokat készít. Vagy ha `Disabled` helyileg redundáns biztonsági másolatokat készít. 
 
-A biztonsági mentés megőrzési idő van beállítva, a paraméter által `--backup-retention`. 
+A biztonsági másolatok megőrzési időszak van beállítva, a paraméter által `--backup-retention`. 
 
-Ezeket az értékeket létrehozásakor beállításával kapcsolatos további információkért lásd: a [MySQL kiszolgáló CLI gyors üzembe helyezés az Azure Database](quickstart-create-mysql-server-database-using-azure-cli.md).
+Ezek az értékek beállítása a létrehozás során kapcsolatos további információkért lásd: a [, Azure Database for MySQL-kiszolgáló CLI rövid](quickstart-create-mysql-server-database-using-azure-cli.md).
 
-A kiszolgáló biztonsági másolatok megőrzésének időtartama módosíthatja az alábbiak szerint:
+A biztonsági másolat megőrzési idejének kiszolgáló a következőképpen módosíthatók:
 
 ```azurecli-interactive
 az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
-Az előző példában a biztonsági másolatok megőrzésének időtartama mydemoserver 10 nap módosításait.
+Az előző példában a biztonsági másolatok megőrzési időtartama mydemoserver 10 nap változik.
 
-A biztonsági mentés megőrzési időszak irányító milyen távolságban az idő lekérhető pont időponthoz kötött visszaállítás, mivel elérhető biztonsági másolatokat alapul. A következő szakaszban leírt további pont időponthoz kötött visszaállítás.
+A biztonsági másolat megőrzési idejének milyen időben időponthoz visszaállítást is lekérdezhetők,-alapú biztonsági mentések érhető el, mivel szabályozza. Visszaállítási pont kötött erről a következő szakaszban.
 
-## <a name="server-point-in-time-restore"></a>Kiszolgáló pont időponthoz kötött visszaállítás
-A kiszolgálón visszaállíthatja egy korábbi időpontra időben. A visszaállított adatok másolását egy új kiszolgálóra, és a meglévő kiszolgáló marad, mert a. Például egy táblázat véletlenül megszakadása ma órakor, visszaállíthatja az idő előtt déltől. Ezt követően beolvasható a hiányzó táblázat és az adatokat a kiszolgáló visszaállított példányát. 
+## <a name="server-point-in-time-restore"></a>Kiszolgáló-időponthoz visszaállítása
+A kiszolgáló szerinti visszaállíthatja egy korábbi időpontra. A visszaállított adatokat másolja egy új kiszolgálóra, és a meglévő kiszolgáló maradt-jébe. Például egy tábla már ma délben véletlenül megszakadása, visszaállíthatja az idő, noon előtt. Ezután letöltheti a hiányzó táblázat és az adatokat a kiszolgáló a visszaállított másolatból. 
 
-A kiszolgáló visszaállításához használja az Azure parancssori felület [az mysql-kiszolgálójának visszaállítását](/cli/azure/mysql/server#az_mysql_server_restore) parancsot.
+A kiszolgáló visszaállításához az Azure CLI használatával [az mysql server restore](/cli/azure/mysql/server#az-mysql-server-restore) parancsot.
 
 ### <a name="run-the-restore-command"></a>A restore parancs futtatása
 
-Állítsa vissza a kiszolgáló, az Azure CLI parancssorba írja be a következő parancsot:
+Állítsa vissza a kiszolgálót, az Azure CLI-vel parancssorba írja be a következő parancsot:
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2018-03-13T13:59:00Z --source-server mydemoserver
@@ -73,34 +73,34 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 A `az mysql server restore` parancs paraméterei a következők:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  Az erőforráscsoport, ahol a forráskiszolgáló található.  |
+| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
 | név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Válasszon ki egy pontot időben történő visszaállításához. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Dátum és idő ISO8601 formátumot használja. Például használhatja a saját helyi időzóna, például a `2018-03-13T05:59:00-08:00`. Használhatja a UTC Zulu formátumban, például `2018-03-13T13:59:00Z`. |
+| restore-point-in-time | 2018-03-13T13:59:00Z | Válasszon ki egy pontot időben való visszaállításához. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum és idő formátumot használja. Például használhatja a saját időzónájára, mint például `2018-03-13T05:59:00-08:00`. Például az UTC Zulu formátumot is használható `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
 
-Időben egy korábbi állapotba szeretné visszaállítani egy kiszolgálót, létrejön egy új kiszolgálót. Az eredeti kiszolgáló és az idő megadott pontjáról adatbázisainak az új kiszolgálóra történő átmásolása.
+Időben egy korábbi időpontra való visszaállítása egy kiszolgálót, létrejön egy új kiszolgálóra. Az eredeti kiszolgálón és a hozzá tartozó adatbázisok a megadott időpontra a rendszer másolja az új kiszolgálóra.
 
-A hely és a visszaállított kiszolgáló árképzési szint értékek továbbra is ugyanaz, mint az eredeti kiszolgálón. 
+A hely és a tarifacsomag-értékei a visszaállított kiszolgáló továbbra is ugyanaz, mint az eredeti kiszolgálón. 
 
-A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón, és győződjön meg arról, hogy az adatok visszaállítása, az elvártaknak megfelelően.
+A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón, és győződjön meg arról, hogy az adatok helyreáll a várt módon.
 
-## <a name="geo-restore"></a>Georedundáns helyreállítás
-Ha a kiszolgáló a földrajzilag redundáns biztonsági mentéshez konfigurált, egy új kiszolgálót a biztonsági mentésből meglévő kiszolgáló hozhatók létre. Az új kiszolgáló is hozható létre bármely régióban, hogy rendelkezésre áll-e MySQL az Azure-adatbázis.  
+## <a name="geo-restore"></a>GEO-visszaállítás
+Ha konfigurálta a kiszolgáló georedundáns biztonsági mentésekhez, egy új kiszolgálót a biztonsági mentésből a meglévő kiszolgáló hozható létre. Az új kiszolgáló bármelyik régióban érhető el, hogy az Azure Database for MySQL hozható létre.  
 
-Földrajzi redundancia biztonsági segítségével kiszolgáló létrehozásához használja az Azure parancssori felület `az mysql server georestore` parancsot.
+Redundáns georedundáns biztonsági másolat segítségével hoz létre, használja az Azure CLI `az mysql server georestore` parancsot.
 
 > [!NOTE]
-> A kiszolgáló létrehozásakor azt nem lehet azonnal elérhető georedundáns helyreállítás. A szükséges metaadatok kell feltöltenie néhány órát is igénybe vehet.
+> A kiszolgáló létrehozásakor azt nem lehet geo-visszaállítás azonnal elérhetővé válik. A szükséges metaadatok kell feltöltenie néhány órát vehet igénybe.
 >
 
-Georedundáns helyreállítás a kiszolgáló, az Azure CLI parancssorba írja be a következő parancsot:
+A geo-visszaállítás a kiszolgáló, az Azure CLI-vel parancssorba írja be a következő parancsot:
 
 ```azurecli-interactive
 az mysql server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen4_8 
 ```
-Ez a parancs létrehoz egy új kiszolgálót nevű *mydemoserver-georestored* az USA keleti régiója fog tartozni *myresourcegroup*. Általános célú, 8 vCores generációs 4 kiszolgáló. A kiszolgáló akkor jön létre, a georedundáns biztonsági másolatból *mydemoserver*, ami egyben az erőforráscsoportban *myresourcegroup*
+Ez a parancs létrehoz egy új kiszolgálót nevű *mydemoserver – georestored* fog tartozni, USA keleti régiójában *myresourcegroup*. Egy általános célú, 4. generációs kiszolgáló 8 virtuális maggal rendelkező. A kiszolgáló akkor jön létre, a georedundáns biztonsági mentéséből *mydemoserver*, ami egyben az erőforráscsoportban lévő *myresourcegroup*
 
-Ha szeretne létrehozni az új kiszolgáló egy másik erőforráscsoportban található a meglévő kiszolgálóról egy, majd a `--source-server` paraméter a kiszolgáló nevét az alábbi példában látható módon jogosult lenne:
+Ha azt szeretné, majd hozzon létre egy másik erőforráscsoportban található, a meglévő kiszolgálóról egy, az új kiszolgálóra a a `--source-server` paraméter jogosultak lennének az a kiszolgáló nevét az alábbi példában látható módon:
 
 ```azurecli-interactive
 az mysql server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMySQL/servers/mydemoserver" --location eastus --sku-name GP_Gen4_8
@@ -110,18 +110,18 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 A `az mysql server georestore` parancs requies a következő paraméterekkel:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
-|resource-group| myResourceGroup | Az erőforráscsoport nevét az új kiszolgálón fog tartozni.|
-|név | mydemoserver-georestored | Az új kiszolgáló nevét. |
-|source-server | mydemoserver | A meglévő kiszolgáló, amelynek földrajzi redundancia biztonsági mentések használhatók neve. |
+|resource-group| myResourceGroup | Az erőforráscsoport nevét az új kiszolgáló fog tartozni.|
+|név | mydemoserver-georestored | Az új kiszolgáló neve. |
+|source-server | mydemoserver | A meglévő kiszolgáló, amelynek földrajzi redundáns biztonsági mentések használhatók neve. |
 |location | eastus | Az új kiszolgáló helyét. |
-|Termékváltozat| GP_Gen4_8 | Ez a paraméter állandóként állítja be, az árképzési szint, számítási létrehozásának és az új kiszolgáló vCores száma. GP_Gen4_8 egy általános célú, a 8 vCores generációs 4 kiszolgáló van leképezve.|
+|SKU-név| GP_Gen4_8 | Ez a paraméter beállítása az árképzési szint, számítási generáció és az új kiszolgáló virtuális magok számát. Egy általános célú, 4. generációs kiszolgáló 8 virtuális maggal rendelkező GP_Gen4_8 rendeli hozzá.|
 
 
 >[!Important]
->Új kiszolgáló egy földrajzi visszaállítás létrehozásakor örökli a ugyanolyan méretű és tarifacsomag mint a forráskiszolgálónak. Ezek az értékek létrehozása közben nem módosítható. Az új kiszolgáló létrehozását követően akár mérete is méretezhető.
+>Az új kiszolgáló létrehozása a geo-visszaállítás által, amikor örökli az azonos tárolási mérettel és tarifacsomagjának mint a forráskiszolgálónak. Ezeket az értékeket nem lehet módosítani a létrehozása során. Az új kiszolgáló létrehozása után a tároló mérete is vertikálisan fel.
 
-A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón, és győződjön meg arról, hogy az adatok visszaállítása, az elvártaknak megfelelően.
+A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón, és győződjön meg arról, hogy az adatok helyreáll a várt módon.
 
 ## <a name="next-steps"></a>További lépések
-- További információ a szolgáltatás [biztonsági mentések](concepts-backup.md).
-- További információ [az üzletmenet folytonossága](concepts-business-continuity.md) beállítások.
+- További információ a szolgáltatásról [biztonsági mentések](concepts-backup.md).
+- Tudjon meg többet [üzletmenet-folytonossági](concepts-business-continuity.md) beállítások.

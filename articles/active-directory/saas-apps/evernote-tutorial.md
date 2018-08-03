@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Evernote |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Evernote között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Evernote |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Evernote között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,242 +15,242 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: f2f0c6cf82c050057fbe7395b57b63fed42f6774
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7a9282f5418737b583e29d99893df3fc81f52955
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222657"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442632"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Oktatóanyag: Azure Active Directoryval integrált Evernote
+# <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Oktatóanyag: Azure Active Directory-integráció az Evernote
 
-Ebben az oktatóanyagban elsajátíthatja Evernote integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Evernote integrálása az Azure Active Directory (Azure AD).
 
-Evernote integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Evernote integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Evernote szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Evernote (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Evernote Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Evernote (egyszeri bejelentkezés), az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Evernote, a következőkre van szükség:
+Evernote az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Evernote egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Evernote hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Evernote hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-evernote-from-the-gallery"></a>A gyűjteményből Evernote hozzáadása
-Az Azure AD integrálása a Evernote konfigurálásához kell hozzáadnia Evernote a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-evernote-from-the-gallery"></a>Evernote hozzáadása a katalógusból
+Az Azure AD integrálása a Evernote konfigurálásához hozzá kell Evernote a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Evernote hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Evernote hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Evernote**, jelölje be **Evernote** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Evernote**válassza **Evernote** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Evernote](./media/evernote-tutorial/tutorial_evernote_addfromgallery.png)
+    ![Az eredmények listájában Evernote](./media/evernote-tutorial/tutorial_evernote_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Evernote.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Evernote a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Evernote a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Evernote közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Evernote mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Evernote hivatkozás kapcsolata kell létrehozni.
 
-Evernote, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Evernote, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Evernote tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Evernote tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Evernote tesztfelhasználó](#create-an-evernote-test-user)**  - való Britta Simon valami Evernote, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Evernote tesztfelhasználót](#create-an-evernote-test-user)**  – egy megfelelője a Britta Simon Evernote, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Evernote alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Evernote alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Evernote, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Evernote, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Evernote** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Evernote** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/evernote-tutorial/tutorial_evernote_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/evernote-tutorial/tutorial_evernote_samlbase.png)
 
-3. Az a **Evernote tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás által kezdeményezett IDP módban, hajtsa végre az alábbi lépéseket:
+1. Az a **Evernote tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás Identitásszolgáltató által kezdeményezett módban konfigurálása:
 
-    ![Az egyszeri bejelentkezés információk Evernote tartomány és az URL-címek](./media/evernote-tutorial/tutorial_evernote_url.png)
+    ![Evernote tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/evernote-tutorial/tutorial_evernote_url.png)
 
-    Az a **azonosító** szövegmező, írja be az URL-cím: `https://www.evernote.com/saml2`
+    Az a **azonosító** szövegmezőbe írja be az URL-cím: `https://www.evernote.com/saml2`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+1. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Az egyszeri bejelentkezés információk Evernote tartomány és az URL-címek](./media/evernote-tutorial/tutorial_evernote_url1.png)
+    ![Evernote tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/evernote-tutorial/tutorial_evernote_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://www.evernote.com/Login.action`   
+    Az a **bejelentkezési URL-cím** szövegmezőbe írja be az URL-cím: `https://www.evernote.com/Login.action`   
 
-5. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/evernote-tutorial/tutorial_evernote_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/evernote-tutorial/tutorial_evernote_certificate.png) 
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/evernote-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/evernote-tutorial/tutorial_general_400.png)
 
-7. A a **Evernote konfigurációs** kattintson **konfigurálása Evernote** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+1. Az a **Evernote konfigurációs** területén kattintson **konfigurálása Evernote** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Evernote konfiguráció](./media/evernote-tutorial/tutorial_evernote_configure.png) 
 
-8. Egy másik webes böngészőablakban jelentkezzen be a Evernote vállalati webhely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Evernote vállalati hely rendszergazdaként.
 
-9. Ugrás a **"Felügyeleti konzol"**
+1. Lépjen a **"felügyeleti konzol:**
 
     ![Rendszergazda-konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-10. Az a **"Felügyeleti konzol"**, és **"Security"** válassza **"egyszeri bejelentkezéshez"**
+1. Az a **"Felügyeleti konzol"**, lépjen a **"Security"** válassza **"egyszeri"**
 
-    ![SSO-beállítás](./media/evernote-tutorial/tutorial_evernote_sso.png)
+    ![Egyszeri bejelentkezés – beállítás](./media/evernote-tutorial/tutorial_evernote_sso.png)
 
-11. Adja meg a következő beállításokat:
+1. Konfigurálja a következő értékeket:
 
     ![Tanúsítvány-beállítás](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
-    a.  **Egyszeri bejelentkezés engedélyezése:** egyszeri bejelentkezés alapértelmezés szerint engedélyezve van (kattintson **tiltsa le az egyszeri bejelentkezés** SSO engedélyezése)
+    a.  **Egyszeri bejelentkezés engedélyezése:** egyszeri bejelentkezés alapértelmezés szerint engedélyezve van (kattintson **letiltása egyszeri bejelentkezés** eltávolítani az egyszeri bejelentkezési követelmény)
 
-    b. Beillesztés **SAML-alapú egyszeri bejelentkezést szolgáltatás URL-címe** értéket, amely az Azure-portálról másolta a **SAML HTTP-kérelmek URL** szövegmező.
+    b. Beillesztés **SAML egyszeri bejelentkezés szolgáltatás URL-címe** érték, amely az Azure Portalról történő másolta a **SAML-HTTP-kérelem URL-cím** szövegmezőbe.
 
-    c. Nyissa meg a letöltött tanúsítvány az Azure AD egy fájlt, és másolja a tartalmat, beleértve a "BEGIN tanúsítvány" és "END CERTIFICATE", és illessze be azt a **X.509 tanúsítvány** szövegmező. 
+    c. Nyissa meg a letöltött tanúsítvány az Azure AD-t a Jegyzettömbbe, és másolja a tartalmat, beleértve a "Tanúsítvány KEZDŐDIK" és "END CERTIFICATE", és illessze be azt a **X.509-tanúsítvány** szövegmezőbe. 
 
     d.Click **módosítások mentése**
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/evernote-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/evernote-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/evernote-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/evernote-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="create-an-evernote-test-user"></a>Hozzon létre egy Evernote tesztfelhasználó számára
 
-Ahhoz, hogy az Azure AD-felhasználók Evernote bejelentkezni, akkor ki kell építenie Evernote be.  
-Evernote, ha egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók Evernote szolgáltatásba való bejelentkezéshez, akkor ki kell építeni Evernote be.  
+Evernote, esetén kiépítése a manuális feladat.
 
-**A felhasználói fiókok létrehozásához hajtsa végre az alábbi lépéseket:**
+**A felhasználói fiókok kiépítése, hajtsa végre az alábbi lépéseket:**
 
 1. Jelentkezzen be rendszergazdaként a Evernote vállalati webhely.
 
-2. Kattintson a **"Felügyeleti konzol"**.
+1. Kattintson a **"Felügyeleti konzol"**.
 
     ![Rendszergazda-konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. Az a **"Felügyeleti konzol"**, és **"Felhasználók hozzáadása"**.
+1. Az a **"Felügyeleti konzol"**, lépjen a **"Felhasználó hozzáadása"**.
 
     ![Tesztfelhasználó-nevet](./media/evernote-tutorial/create_aaduser_0001.png)
 
-4. **Adja hozzá a csoport tagjai** a a **E-mail** szövegmező, írja be a felhasználói fiók e-mail címét, majd kattintson **hívhat meg.**
+1. **Adja hozzá a csoport tagjai** a a **E-mail** szövegmezőbe írja be a felhasználói fiók e-mail-címét, és kattintson a **meghívása.**
 
     ![Tesztfelhasználó-nevet](./media/evernote-tutorial/create_aaduser_0002.png)
     
-5. Meghívót küldött, miután az Azure Active Directory fióktulajdonos a meghívó elfogadásának e-mailt fog kapni.
+1. Miután a rendszer elküldi a meghívót, az Azure Active Directory fióktulajdonos a meghívás elfogadásához egy e-mailt fog kapni.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Evernote Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Evernote Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Evernote, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Evernote, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Evernote**.
+1. Az alkalmazások listájában jelölje ki a **Evernote**.
 
-    ![Az alkalmazások listáját a Evernote hivatkozás](./media/evernote-tutorial/tutorial_evernote_app.png)  
+    ![Az alkalmazások listáját a Evernote hivatkozásra](./media/evernote-tutorial/tutorial_evernote_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Evernote csempére kattint, akkor kell beolvasása bejelentkezett az Evernote alkalmazására. Akkor lesz naplózása szervezeti fiók azonban akkor kell jelentkezzen be a személyes fiókjával. 
+Ha a hozzáférési panelen a Evernote csempére kattint, meg kell lekérése bejelentkezett az Evernote alkalmazáshoz. Meg fogjuk naplózása fiók azonban akkor kell bejelentkezni a személyes fiókjával szervezetként. 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

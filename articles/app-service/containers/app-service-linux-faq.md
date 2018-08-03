@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: yili
-ms.openlocfilehash: ea2e9d9fd1d9390cdd689b4f33b72cd471feeb8c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: cd107ddc5ac443daee592c40bbed451c913a8a3b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916856"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444589"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -123,7 +123,7 @@ Adja meg a teljes beállításjegyzék URL-CÍMÉT, beleértve a `http://` vagy 
 
 **Mi az a privát beállításjegyzék-beállítás a rendszerkép nevének formátuma?**
 
-Adja hozzá a teljes rendszerképnevet, beleértve a privát tárolójegyzék URL-CÍMÉT (például myacr.azurecr.io/dotnet:latest). Egy egyéni portot használó képnév [nem lehet megadni a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Beállítása `docker-custom-image-name`, használja a [ `az` parancssori eszköz](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set).
+Adja hozzá a teljes rendszerképnevet, beleértve a privát tárolójegyzék URL-CÍMÉT (például myacr.azurecr.io/dotnet:latest). Egy egyéni portot használó képnév [nem lehet megadni a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Beállítása `docker-custom-image-name`, használja a [ `az` parancssori eszköz](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 **Tehetők több port is közzé a saját egyéni tároló rendszerképét?**
 

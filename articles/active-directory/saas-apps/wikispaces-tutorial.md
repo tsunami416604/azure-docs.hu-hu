@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 920777aa56d9ea9c619815b99b234b66bd676b44
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e4112b431aba706ec1bc9b54f429e1fb43159d6c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050571"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Oktatóanyag: Azure Active Directory-integráció az Wikispaces
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Wikispaces hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-wikispaces-from-the-gallery"></a>Wikispaces hozzáadása a katalógusból
 Az Azure AD integrálása a Wikispaces konfigurálásához hozzá kell Wikispaces a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a Wikispaces konfigurálásához hozzá kell Wikispace
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Wikispaces**.
+1. A Keresés mezőbe írja be a **Wikispaces**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wikispaces-tutorial/tutorial_wikispaces_search.png)
 
-5. Az eredmények panelen válassza ki a **Wikispaces**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Wikispaces**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wikispaces-tutorial/tutorial_wikispaces_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Wikispaces, rendelje hozzá az értékét a **felhasználónév** értékeként 
 Az Azure AD egyszeri bejelentkezés az Wikispaces tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Wikispaces tesztfelhasználó létrehozása](#creating-a-wikispaces-test-user)**  – egy megfelelője a Britta Simon Wikispaces, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Wikispaces tesztfelhasználó létrehozása](#creating-a-wikispaces-test-user)**  – egy megfelelője a Britta Simon Wikispaces, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/wikispaces-tutorial/tutorial_wikispaces_samlbase.png)
 
-3. Az a **Wikispaces tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Wikispaces tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wikispaces-tutorial/tutorial_wikispaces_url.png)
 
@@ -119,15 +119,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Wikispaces ügyfél-támogatási csapatának](https://www.wikispaces.com/site/help) beolvasni ezeket az értékeket. 
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wikispaces-tutorial/tutorial_wikispaces_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wikispaces-tutorial/tutorial_general_400.png)
 
-6. Az egyszeri bejelentkezés konfigurálása **Wikispaces** oldalon kell küldenie a letöltött **metaadatainak XML** való [Wikispaces támogatási csoportjának](https://www.wikispaces.com/site/help). Értesítést fog kapni, amint a konfiguráció befejeződött.
+1. Az egyszeri bejelentkezés konfigurálása **Wikispaces** oldalon kell küldenie a letöltött **metaadatainak XML** való [Wikispaces támogatási csoportjának](https://www.wikispaces.com/site/help). Értesítést fog kapni, amint a konfiguráció befejeződött.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -143,15 +143,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wikispaces-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wikispaces-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wikispaces-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wikispaces-tutorial/create_aaduser_04.png) 
 
@@ -170,15 +170,15 @@ Ahhoz, hogy az Azure AD-felhasználók Wikispaces jelentkezzen be, akkor ki kell
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>A felhasználói fiókok kiépítése, hajtsa végre az alábbi lépéseket:
 1. Jelentkezzen be a **Wikispaces** rendszergazdaként a vállalati webhely.
 
-2. Lépjen a **tagok**.
+1. Lépjen a **tagok**.
    
     ![A tagok](./media/wikispaces-tutorial/ic787193.png "tagok")
 
-3. Kattintson a **felkérése**.
+1. Kattintson a **felkérése**.
    
     ![Felkérése](./media/wikispaces-tutorial/ic787194.png "felkérése")
 
-4. Az a **meghívása személyek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **meghívása személyek** szakaszban, hajtsa végre az alábbi lépéseket:
    
     ![Felkérése](./media/wikispaces-tutorial/ic787208.png "felkérése")
    
@@ -204,23 +204,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Wikispaces**.
+1. Az alkalmazások listájában jelölje ki a **Wikispaces**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wikispaces-tutorial/tutorial_wikispaces_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -232,7 +232,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

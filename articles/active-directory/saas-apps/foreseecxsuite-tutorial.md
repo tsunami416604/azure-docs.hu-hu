@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 4c126b3bf08174886b3668cd54c76b72d113ba76
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b288bcbe14050c0f764f348d5e20186570e32866
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047110"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442200"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Oktatóanyag: Azure Active Directory-integráció az CX Suite fája
 
@@ -54,7 +54,7 @@ Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy teszt
 Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Fája CX Suite hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-foresee-cx-suite-from-the-gallery"></a>Fája CX Suite hozzáadása a katalógusból
 Az Azure AD-be fája CX Suite integrációjának konfigurálásához hozzá kell CX Suite bizonyulhat a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -65,15 +65,15 @@ Az Azure AD-be fája CX Suite integrációjának konfigurálásához hozzá kell
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **CX Suite bizonyulhat**, jelölje be **fája CX Suite** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **CX Suite bizonyulhat**, jelölje be **fája CX Suite** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában CX Suite fája](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_addfromgallery.png)
 
@@ -86,10 +86,10 @@ Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner fe
 Az Azure AD egyszeri bejelentkezés az fája CX Suite tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy fája CX Suite tesztfelhasználót](#create-a-foresee-cx-suite-test-user)**  – van egy megfelelője a Britta Simon fája CX csomag, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy fája CX Suite tesztfelhasználót](#create-a-foresee-cx-suite-test-user)**  – van egy megfelelője a Britta Simon fája CX csomag, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -101,11 +101,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
     ![Egyszeri bejelentkezési párbeszédpanel](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_samlbase.png)
 
-3. Az a **fája CX Suite tartomány és URL-címek** szakaszt, ha rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre az alábbi lépéseket:
+1. Az a **fája CX Suite tartomány és URL-címek** szakaszt, ha rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre az alábbi lépéseket:
 
     ![Fája CX Suite tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/foreseecxsuite-tutorial/upload.png)
 
@@ -119,7 +119,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Fája CX Suite tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/foreseecxsuite-tutorial/urlupload.png)
 
-4. Ha nem rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre az alábbi lépéseket:
+1. Ha nem rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre az alábbi lépéseket:
 
     ![Fája CX Suite tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_url.png)
 
@@ -130,15 +130,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Az azonosító értéke nem valódi. Ez az érték frissítse a tényleges azonosítója. Kapcsolattartó [fája CX Suite ügyfél-támogatási csapatának](mailto:support@foresee.com) lekérni ezt az értéket.
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_certificate.png)
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/foreseecxsuite-tutorial/tutorial_general_400.png)
 
-7. Az egyszeri bejelentkezés konfigurálása **fája CX Suite** oldalon kell küldenie a letöltött **metaadatainak XML** való [fája CX Suite támogatási csapatával](mailto:support@foresee.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **fája CX Suite** oldalon kell küldenie a letöltött **metaadatainak XML** való [fája CX Suite támogatási csapatával](mailto:support@foresee.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -152,15 +152,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/foreseecxsuite-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/foreseecxsuite-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/foreseecxsuite-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/foreseecxsuite-tutorial/create_aaduser_04.png)
 
@@ -188,23 +188,23 @@ Ebben a szakaszban engedélyezze Britta Simon CX Suite bizonyulhat a hozzáfér�
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listájában jelölje ki a **fája CX Suite**.
+1. Az alkalmazások listájában jelölje ki a **fája CX Suite**.
 
     ![A CX Suite fája hivatkozásra az alkalmazások listáját](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_app.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -216,7 +216,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

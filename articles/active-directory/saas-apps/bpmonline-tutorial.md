@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 25847d93c9c22ee15970f164802149ad66e77203
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b6fe50b24a20f81500ac1ed5008fcb6c59c0243a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054090"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449400"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Oktatóanyag: Azure Active Directory-integráció az Bpm'online
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Bpm'online hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-bpmonline-from-the-gallery"></a>Bpm'online hozzáadása a katalógusból
 Az Azure AD integrálása a Bpm'online konfigurálásához hozzá kell Bpm'online a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Az Azure AD integrálása a Bpm'online konfigurálásához hozzá kell Bpm'onlin
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **Bpm'online**válassza **Bpm'online** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Bpm'online**válassza **Bpm'online** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában Bpm'online](./media/bpmonline-tutorial/tutorial_bpmonline_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Bpm'online, rendelje hozzá az értékét a **felhasználónév** értékeként 
 Az Azure AD egyszeri bejelentkezés az Bpm'online tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Bpm'online tesztfelhasználót](#create-a-bpmonline-test-user)**  – egy megfelelője a Britta Simon Bpm'online, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Bpm'online tesztfelhasználót](#create-a-bpmonline-test-user)**  – egy megfelelője a Britta Simon Bpm'online, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
     ![Egyszeri bejelentkezési párbeszédpanel](./media/bpmonline-tutorial/tutorial_bpmonline_samlbase.png)
 
-3. Az a **Bpm'online tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+1. Az a **Bpm'online tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
     ![Bpm'online tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/bpmonline-tutorial/tutorial_bpmonline_url.png)
 
@@ -114,7 +114,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<client site name>.bpmonline.com/ServiceModel/AuthService.svc/SsoLogin`
 
-4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+1. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![Bpm'online tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/bpmonline-tutorial/tutorial_bpmonline_url1.png)
 
@@ -123,15 +123,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Bpm'online ügyfél-támogatási csapatának](mailto:support@bpmonline.com) beolvasni ezeket az értékeket. 
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/bpmonline-tutorial/tutorial_metadataurl.png)
      
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/bpmonline-tutorial/tutorial_general_400.png)
     
-7. Az egyszeri bejelentkezés konfigurálása **Bpm'online** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [Bpm'online támogatási csapatának](mailto:support@bpmonline.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **Bpm'online** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [Bpm'online támogatási csapatának](mailto:support@bpmonline.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -145,15 +145,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/bpmonline-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/bpmonline-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/bpmonline-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/bpmonline-tutorial/create_aaduser_04.png)
 
@@ -181,23 +181,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Bpm'online**.
+1. Az alkalmazások listájában jelölje ki a **Bpm'online**.
 
     ![Az alkalmazások listáját a Bpm'online hivatkozásra](./media/bpmonline-tutorial/tutorial_bpmonline_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -209,7 +209,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

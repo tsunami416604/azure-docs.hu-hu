@@ -1,6 +1,6 @@
 ---
 title: Az Azure Storage Service Encryption az inaktív adatok |} A Microsoft Docs
-description: Azure Blob storage Szolgáltatásoldali titkosítását, ha az adatok tárolása Azure Storage Service Encryption szolgáltatással, és visszafejteni az adatok lekérésekor.
+description: Az Azure Storage Service Encryption szolgáltatással titkosítása az Azure Managed Disks, az Azure Blob storage, Azure Files, az Azure Queue storage és Azure Table storage szolgáltatás oldalán, az adatok tárolásakor és visszafejteni az adatok lekérésekor.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,26 +8,28 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: f35697139a4be49be8a645cfd4d451ad8e3c8094
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 1a127f7e3dd57376ecd05d4ae7030becb33f1159
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412355"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480305"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Az Azure Storage Service Encryption az inaktív adatok
-Inaktív adatok az Azure Storage Service Encryption segítségével a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok védelme. Ezzel a funkcióval az Azure storage-platform automatikusan titkosítja az adatokat előtt, az Azure Blob storage, Azure Files és az Azure Queue storage megőrzése, és mindig visszafejti az adatokat lekérés előtt. A titkosítás és a rest, visszafejtési és kulcskezelési a Storage Service Encryption titkosítás kezelése a felhasználók számára átlátható. Az Azure storage-platformra írt összes adat titkosítva van segítségével 256 bites [AES-titkosítás](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), egyik legerősebb Rejtjelek érhető el.
+Inaktív adatok az Azure Storage Service Encryption segítségével a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok védelme. Ezzel a funkcióval az Azure storage-platform automatikusan titkosítja az adatokat előtt, az Azure Managed Disks, az Azure Blob storage, Azure Files és az Azure Queue storage megőrzése, és mindig visszafejti az adatokat lekérés előtt. A titkosítás és a rest, visszafejtési és kulcskezelési a Storage Service Encryption titkosítás kezelése a felhasználók számára átlátható. Az Azure storage-platformra írt összes adat titkosítva van segítségével 256 bites [AES-titkosítás](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), egyik legerősebb Rejtjelek érhető el.
 
 A Storage Service Encryption engedélyezve van az összes meglévő és új storage-fiók, és nem tiltható le. Alapértelmezés szerint az adatok biztonságos, mert nem kell módosítani a kód vagy a Storage Service Encryption szolgáltatással is.
 
 A funkció automatikusan titkosítja az adatokat:
 
-- Az Azure Blob storage, Azure Files között, az Azure Queue storage, az Azure Table storage.  
+- Az Azure tárolási szolgáltatások:
+    - Azure Managed Disks
+    - Azure Blob Storage
+    - Azure Files
+    - Az Azure Queue storage
+    - Az Azure Table storage.  
 - Mindkét teljesítményszint (Standard és prémium).
 - Mindkét üzemi modellben (Azure Resource Manager és Klasszikus modell).
-
-> [!Note]  
-> Nem áll rendelkezésre a Storage Service Encryption [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Javasoljuk, használjon titkosítást az operációs rendszer szintjén, például [az Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), iparági szabványt használó [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) a Windows és [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) biztosít Linux rendszeren titkosítási KeyVault integrálva.
 
 A Storage Service Encryption az Azure storage szolgáltatások teljesítményét nem befolyásolja.
 
@@ -55,13 +57,10 @@ Alapértelmezés szerint engedélyezve van a titkosítás, és nem rendelkeznek 
 Nincs további költség nélkül.
 
 **Használhatja a saját titkosítási kulcsokat?**  
-Igen, használhatja a saját titkosítási kulcsokat. További információkért lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](storage-service-encryption-customer-managed-keys.md).
+Az Azure Blob storage és az Azure Files Igen, használhatja a saját titkosítási kulcsokat. Felhasználó által kezelt kulcsokkal jelenleg nem támogatottak az Azure Managed Disks által. További információkért lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](storage-service-encryption-customer-managed-keys.md).
 
 **Visszavonhatja a hozzáférést a titkosítási kulcsokat?**  
 Igen, ha Ön [saját titkosítási kulcsok használatához](storage-service-encryption-customer-managed-keys.md) az Azure Key Vaultban.
-
-**Az Azure Managed Disks elérhető-e a Storage Service Encryption szolgáltatással?**  
-Nem, nem áll rendelkezésre a Storage Service Encryption [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Javasoljuk, használjon titkosítást az operációs rendszer szintjén, például [az Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), iparági szabványt használó [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) a Windows és [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) biztosít Linux rendszeren titkosítási KeyVault integrálva.
 
 **Miben különbözik a Storage Service Encryption az Azure Disk Encryption?**  
 Az Azure Disk Encryption biztosít operációsrendszer-alapú megoldások, például a BitLocker és a DM-Crypt és az Azure KeyVault közötti integrációt. A Storage Service Encryption natív módon a rétegben az Azure storage platform, a virtuális gép alábbi titkosítását biztosítja.

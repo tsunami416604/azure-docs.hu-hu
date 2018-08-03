@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: ad8b69bfe6f3261f00cd33846efc86ce3b198954
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b7b5dcd88b6e4e09dd9beb21e83ef405df148115
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919692"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443384"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Az Azure virtuális gép feladatátvétele során előforduló hibák elhárítása
 
@@ -50,26 +50,26 @@ A Site Recovery nem tudta egy nem sikerült létrehozni a klasszikus virtuális 
 Ha a csatlakozás gomb szürkén jelenik meg, és az Express Route vagy helyek közötti VPN-kapcsolaton keresztül, ezt követően nem csatlakozik Azure
 
 1. Lépjen a **virtuális gép** > **hálózatkezelés**, kattintson a szükséges hálózati kapcsolat neve.  ![hálózati-adapter](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Navigáljon a **Ip-konfigurációk**, majd kattintson a szükséges IP-konfiguráció a név mező. ![IP-konfigurációk](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. Ahhoz, hogy a nyilvános IP-címet, kattintson a **engedélyezése**. ![IP engedélyezése](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Kattintson a **kötelező beállítások konfigurálása** > **új létrehozása**. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Adja meg a nyilvános cím nevére, és válassza ki az alapértelmezett beállításainak **Termékváltozat** és **hozzárendelés**, majd kattintson a **OK**.
-6. Most a módosítások mentéséhez kattintson **mentése**.
-7. Zárja be a panelt, és keresse meg a **áttekintése** virtuális gép csatlakoztatása/RDP szakaszában.
+1. Navigáljon a **Ip-konfigurációk**, majd kattintson a szükséges IP-konfiguráció a név mező. ![IP-konfigurációk](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. Ahhoz, hogy a nyilvános IP-címet, kattintson a **engedélyezése**. ![IP engedélyezése](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+1. Kattintson a **kötelező beállítások konfigurálása** > **új létrehozása**. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+1. Adja meg a nyilvános cím nevére, és válassza ki az alapértelmezett beállításainak **Termékváltozat** és **hozzárendelés**, majd kattintson a **OK**.
+1. Most a módosítások mentéséhez kattintson **mentése**.
+1. Zárja be a panelt, és keresse meg a **áttekintése** virtuális gép csatlakoztatása/RDP szakaszában.
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-even-though-connect-button-is-available-not-grayed-out-on-the-virtual-machine"></a>Nem lehet csatlakozni RDP/SSH a keresztül a virtuális gép akkor is, ha a csatlakozás gomb érhető el (szürkén nem jelenik meg) a virtuális gépen
 
 Ellenőrizze **rendszerindítási diagnosztika** a virtuális gép és ellenőrzése ebben a cikkben felsorolt hibákat.
 
 1. Ha a virtuális gép nem indult el, próbálja meg átvitelét egy régebbi helyreállítási pontra.
-2. Ha az alkalmazás a virtuális gépen belül nem átvitelét, próbálkozzon egy alkalmazáskonzisztens helyreállítási pontra.
-3. Ha a virtuális gép tartományhoz, majd győződjön meg arról, hogy a tartományvezérlő pontosan működik. A következő ehhez az alábbiakban megadott lépéseket.
+1. Ha az alkalmazás a virtuális gépen belül nem átvitelét, próbálkozzon egy alkalmazáskonzisztens helyreállítási pontra.
+1. Ha a virtuális gép tartományhoz, majd győződjön meg arról, hogy a tartományvezérlő pontosan működik. A következő ehhez az alábbiakban megadott lépéseket.
     a. Hozzon létre egy új virtuális gép ugyanazon a hálózaton
 
     b.  Győződjön meg arról, hogy csatlakozni tudjon ugyanahhoz a tartományhoz, amely a feladatátviteli virtuális géphez várhatóan merülnek fel.
 
     c. Ha a tartományvezérlő **nem** működik pontosan, majd próbálja jelentkezzen be a feladatátviteli virtuális gépre a helyi rendszergazdai fiókkal
-4. Ha egyéni DNS-kiszolgálót használ, majd győződjön meg arról, hogy legyen elérhető. A következő ehhez az alábbiakban megadott lépéseket.
+1. Ha egyéni DNS-kiszolgálót használ, majd győződjön meg arról, hogy legyen elérhető. A következő ehhez az alábbiakban megadott lépéseket.
     a. Hozzon létre egy új virtuális gép a hálózat és a b. Ellenőrizze, hogy a virtuális gép tud-e névfeloldást végezni az egyéni DNS-kiszolgáló használatával
 
 >[!Note]

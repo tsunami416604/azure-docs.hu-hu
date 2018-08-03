@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 89c1daf1d5d257e02a8253a82d543605ff4cacb0
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: c300782432350c1997e25313b4301d94c29e2ed6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126350"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480992"
 ---
 > [!div class="op_single_selector"]
 > * [Aszinkron Java](performance-tips-async-java.md)
@@ -132,9 +132,10 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
     Ha nagy átviteli sebesség szinten teszteli (> 50 000 RU/s), az ügyfélalkalmazás miatt a gép kapacitástól meg a Processzor vagy a hálózati kihasználtság a szűk keresztmetszetté válhat. Ha eléri ezt a pontot, továbbra is küldje le az Azure Cosmos DB-fiókot további horizontális felskálázása az ügyfélalkalmazásokat, több kiszolgáló között.
 8. **Gyorsítótár dokumentum URI-k kisebb olvasási késés**
 
-    Gyorsítótár-dokumentum URI-k, amikor csak lehetséges, a legjobb olvasási teljesítmény.
+    Gyorsítótár-dokumentum URI-k, amikor csak lehetséges, a legjobb olvasási teljesítmény. Meg kell adnia a logika gyorsítótárazza az erőforrás-azonosító, ha az erőforrás létrehozásához. Erőforrás-azonosító-alapú keresések neve alapján kereséseket, gyorsabban, így ezeket az értékeket gyorsítótárazás növeli a teljesítményt. 
+
    <a id="tune-page-size"></a>
-9. **Az oldal méretét a lekérdezések és olvasási hírcsatornák, a jobb teljesítmény hangolása**
+1. **Az oldal méretét a lekérdezések és olvasási hírcsatornák, a jobb teljesítmény hangolása**
 
     Olvasási hírcsatorna-funkciókat (például ReadDocumentFeedAsync) használó dokumentumokat, vagy a tömeges végrehajtása olvasási, egy SQL-lekérdezést kiadásakor, az eredmény akkor szegmentált módon ha túl nagy az eredményhalmaz. Alapértelmezés szerint az eredmény akkor 100 elemet vagy 1 MB-os blokkonként, bármelyik korlát nyomja le az első.
 

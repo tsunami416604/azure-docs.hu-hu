@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2ac5dee8fe9a27ffeed717e010cade522b9fefc0
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0e571880d9893c0027c200c6f49dc704fea09ead
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046496"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Oktatóanyag: Azure Active Directory-integráció a pagerduty segítségével
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. PagerDuty hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-pagerduty-from-the-gallery"></a>PagerDuty hozzáadása a katalógusból
 Az Azure AD integrálása a PagerDuty konfigurálásához hozzá kell PagerDuty a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -63,15 +63,15 @@ Az Azure AD integrálása a PagerDuty konfigurálásához hozzá kell PagerDuty 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **PagerDuty**válassza **PagerDuty** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **PagerDuty**válassza **PagerDuty** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/pagerduty-tutorial/tutorial_pagerduty_addfromgallery.png)
 
@@ -86,10 +86,10 @@ A pagerduty szolgáltatásban, rendelje hozzá az értékét a **felhasználón�
 Az Azure AD egyszeri bejelentkezés vizsgálata a pagerduty segítségével konfigurálni, kell hajtsa végre a következő építőelemeit:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy PagerDuty tesztfelhasználót](#create-a-pagerduty-test-user)**  - a-megfelelője a Britta Simon rendelkezik a pagerduty szolgáltatásban, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy PagerDuty tesztfelhasználót](#create-a-pagerduty-test-user)**  - a-megfelelője a Britta Simon rendelkezik a pagerduty szolgáltatásban, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -105,7 +105,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési párbeszédpanel](./media/pagerduty-tutorial/tutorial_pagerduty_samlbase.png)
 
-3. Az a **PagerDuty-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **PagerDuty-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![PagerDuty-tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/pagerduty-tutorial/tutorial_pagerduty_url.png)
 
@@ -116,29 +116,29 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [PagerDuty-ügyfél-támogatási csapatának](https://www.pagerduty.com/support/) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png)
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/pagerduty-tutorial/tutorial_general_400.png)
 
-6. Az a **PagerDuty konfigurációs** területén kattintson **konfigurálása PagerDuty** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **PagerDuty konfigurációs** területén kattintson **konfigurálása PagerDuty** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![PagerDuty-konfiguráció](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png)
 
-7. Egy másik böngészőablakban jelentkezzen be a Pagerduty vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Pagerduty vállalati hely rendszergazdaként.
 
-8. A felső menüben kattintson **fiókbeállításokat**.
+1. A felső menüben kattintson **fiókbeállításokat**.
 
     ![Fiókbeállítások](./media/pagerduty-tutorial/ic778535.png "Fiókbeállítások")
 
-9. Kattintson a **egyszeri bejelentkezési**.
+1. Kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés](./media/pagerduty-tutorial/ic778536.png "egyszeri bejelentkezés")
 
-10. Az a **engedélyezése egyszeri bejelentkezés (SSO)** lapon, a következő lépésekkel:
+1. Az a **engedélyezése egyszeri bejelentkezés (SSO)** lapon, a következő lépésekkel:
 
     ![Egyszeri bejelentkezés engedélyezése](./media/pagerduty-tutorial/ic778537.png "egyszeri bejelentkezés engedélyezése")
 
@@ -166,15 +166,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/pagerduty-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/pagerduty-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![A Hozzáadás gombra.](./media/pagerduty-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![A felhasználó párbeszédpanel](./media/pagerduty-tutorial/create_aaduser_04.png) 
 
@@ -198,13 +198,13 @@ PagerDuty, esetén kiépítése a manuális feladat.
 
 1. Jelentkezzen be a **Pagerduty** bérlő.
 
-2. A felső menüben kattintson **felhasználók**.
+1. A felső menüben kattintson **felhasználók**.
 
-3. Kattintson a **felhasználók hozzáadása**.
+1. Kattintson a **felhasználók hozzáadása**.
    
     ![Felhasználók hozzáadása](./media/pagerduty-tutorial/ic778539.png "felhasználók hozzáadása")
 
-4.  Az a **csapata meghívása** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1.  Az a **csapata meghívása** párbeszédpanelen hajtsa végre az alábbi lépéseket:
    
     ![A csapat meghívása](./media/pagerduty-tutorial/ic778540.png "csapata meghívása")
 
@@ -229,23 +229,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **PagerDuty**.
+1. Az alkalmazások listájában jelölje ki a **PagerDuty**.
 
     ![Az alkalmazások listáját a PagerDuty hivatkozásra](./media/pagerduty-tutorial/tutorial_pagerduty_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -258,7 +258,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

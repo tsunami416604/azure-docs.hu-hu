@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 4a4d4fa704381ed9ab7c79c6ad0f6196a9ac37f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fda6ca2efb670c8087252428e417a3e0901fa748
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040371"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>Oktatóanyag: Azure Active Directory-integráció az stabilizálódási zene
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Zene Settling hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-settling-music-from-the-gallery"></a>Zene Settling hozzáadása a katalógusból
 Konfigurálása az Azure AD integrálása a Settling zene, hozzá kell Settling zene a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Konfigurálása az Azure AD integrálása a Settling zene, hozzá kell Settling 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **zene stabilizálódási**, jelölje be **zene stabilizálódási** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **zene stabilizálódási**, jelölje be **zene stabilizálódási** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Zene stabilizálódási a találatok listájában](./media/settlingmusic-tutorial/tutorial_settlingmusic_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felh
 Az Azure AD egyszeri bejelentkezés Settling zene tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Settling zene tesztfelhasználót](#create-a-settling-music-test-user)**  – egy megfelelője a Britta Simon kell rendeznie zene, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Settling zene tesztfelhasználót](#create-a-settling-music-test-user)**  – egy megfelelője a Britta Simon kell rendeznie zene, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -100,11 +100,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/settlingmusic-tutorial/tutorial_settlingmusic_samlbase.png)
 
-3. Az a **zene tartomány és URL-címek stabilizálódási** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **zene tartomány és URL-címek stabilizálódási** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Stabilizálódási zene tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/settlingmusic-tutorial/tutorial_settlingmusic_url.png)
 
@@ -115,33 +115,33 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [zene ügyfél-támogatási csapatának stabilizálódási](https://rakurakuseisan.jp/) beolvasni ezeket az értékeket. 
  
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/settlingmusic-tutorial/tutorial_settlingmusic_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/settlingmusic-tutorial/tutorial_general_400.png)
 
-6. Az a **zeneszámok konfigurációs stabilizálódási** területén kattintson **konfigurálása stabilizálódási zene** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **zeneszámok konfigurációs stabilizálódási** területén kattintson **konfigurálása stabilizálódási zene** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Zene konfigurációs rendezése](./media/settlingmusic-tutorial/tutorial_settlingmusic_configure.png) 
 
-7. Egy másik böngészőablakban, jelentkezzen be egy biztonsági rendszergazdai, zene stabilizálódási.
+1. Egy másik böngészőablakban, jelentkezzen be egy biztonsági rendszergazdai, zene stabilizálódási.
 
-8. Kattintson a lap fölött **felügyeleti** fülre.
+1. Kattintson a lap fölött **felügyeleti** fülre.
 
     ![Stabilizálódási zene 1. lépés](./media/settlingmusic-tutorial/tutorial_settlingmusic_step1.png)
 
-9. Kattintson a **rendszerbeállítás** fülre.
+1. Kattintson a **rendszerbeállítás** fülre.
 
     ![Stabilizálódási zene 2. lépés](./media/settlingmusic-tutorial/tutorial_settlingmusic_step2.png)
 
-10. Váltson **biztonsági** fülre.
+1. Váltson **biztonsági** fülre.
 
     ![Stabilizálódási zene 3. lépés](./media/settlingmusic-tutorial/tutorial_settlingmusic_step3.png)
 
-11. Az a **egyszeri bejelentkezési beállítás** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **egyszeri bejelentkezési beállítás** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Zene step5 stabilizálódási](./media/settlingmusic-tutorial/tutorial_settlingmusic_step4.png)
 
@@ -167,15 +167,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/settlingmusic-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/settlingmusic-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/settlingmusic-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/settlingmusic-tutorial/create_aaduser_04.png)
 
@@ -203,23 +203,23 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **zene stabilizálódási**.
+1. Az alkalmazások listájában jelölje ki a **zene stabilizálódási**.
 
     ![Az alkalmazások listáját a Settling zene hivatkozás](./media/settlingmusic-tutorial/tutorial_settlingmusic_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -231,7 +231,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

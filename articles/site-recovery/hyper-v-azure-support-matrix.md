@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/01/2018
 ms.author: raynew
-ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3fdaaf4bc671996350b8138fb0f7fc3d7adaf567
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171983"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442768"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Hyper-V-replikáció az Azure-támogatási mátrixa
 
@@ -113,7 +113,8 @@ RDM | NA | NA
 Lemez > 1 TB-ot | Igen, legfeljebb 4095 GB-ig | Igen, legfeljebb 4095 GB-ig
 Lemez: 4 KB-os logikai és fizikai szektort. | Nem támogatott: 1/2. generációs gyűjtések általános | Nem támogatott: 1/2. generációs gyűjtések általános
 Lemez: 4K logikai és 512 bájtnál nagyobb fizikai szektormérettel | Igen |  Igen
-A csíkozott lemez-kötettel > 1 TB-ot<br/><br/> Logikaikötet-kezelő (LVM) | Igen | Igen
+Logikaikötet-kezelő (LVM). LVM csak az adatlemezek használata támogatott. Az Azure az egyetlen operációsrendszer-lemez biztosít. | Igen | Igen
+A csíkozott lemez-kötettel > 1 TB-ot | Igen | Igen
 A tárolóhelyek | Igen | Igen
 Gyakori elérésű hozzáadása/eltávolítása lemez | Nem | Nem
 Lemez kizárása | Igen | Igen
@@ -159,7 +160,7 @@ Hálózati adapterek | Több adapter támogatott |
 Megosztott VHD | Nem támogatott | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Merevlemez formátuma | VHD <br/><br/> VHDX | A Site Recovery automatikusan átalakítja a VHDX VHD-t, ha átadja a feladatokat az Azure-bA. Visszaadja a feladatokat a helyszíni, ha a virtuális gépek továbbra is a VHDX formátumot használja.
-BitLocker | Nem támogatott | A BitLocker egy virtuális gép a replikáció engedélyezése előtt le kell tiltani.
+A BitLocker | Nem támogatott | A BitLocker egy virtuális gép a replikáció engedélyezése előtt le kell tiltani.
 a virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságait, a Site Recoveryben.
 Virtuális gép típusa | Az 1.<br/><br/> Windows – a 2. generációs | 2. generációs virtuális gépek egy operációs rendszer lemez típusa (amely tartalmaz egy vagy két adatkötetek VHDX formátumú) az alapszintű és a kevesebb mint 300 GB méretű lemezterület is támogatottak.<br></br>Linux rendszerű Generation 2 virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 

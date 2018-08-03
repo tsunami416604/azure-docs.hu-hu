@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Ceridian Dayforce HCM |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Ceridian Dayforce HCM között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Ceridian Dayforce HCM |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Ceridian Dayforce HCM között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,270 +15,270 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ed72667b46edb06a7d07cbc971810cb97e6f90
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 41ec8d2c900367a8ae3d1dde67ff0198996c9ed1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211611"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443494"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Oktatóanyag: Azure Active Directoryval integrált Ceridian Dayforce HCM
+# <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Oktatóanyag: Azure Active Directory-integráció az Ceridian Dayforce HCM
 
-Ebben az oktatóanyagban elsajátíthatja Ceridian Dayforce HCM integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Ceridian Dayforce HCM integrálható az Azure Active Directory (Azure AD).
 
-Ceridian Dayforce HCM integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Ceridian Dayforce HCM integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér Ceridian Dayforce HCM szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Ceridian Dayforce HCM (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá Ceridian Dayforce HCM Azure AD-ben.
+- A felhasználók automatikusan első bejelentkezett Ceridian Dayforce HCM (egyszeri bejelentkezés), engedélyezheti az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Ceridian Dayforce HCM, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása Ceridian Dayforce HCM, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy Ceridian Dayforce HCM egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Az Azure AD-előfizetéshez
+- Egy Ceridian Dayforce HCM egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Ceridian Dayforce HCM hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Ceridian Dayforce HCM hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-ceridian-dayforce-hcm-from-the-gallery"></a>A gyűjteményből Ceridian Dayforce HCM hozzáadása
-Az Azure AD integrálása a Ceridian Dayforce HCM konfigurálásához kell hozzáadnia Ceridian Dayforce HCM a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-ceridian-dayforce-hcm-from-the-gallery"></a>Ceridian Dayforce HCM hozzáadása a katalógusból
+Konfigurálhatja az Azure AD integrálása a Ceridian Dayforce HCM, hozzá kell Ceridian Dayforce HCM a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Ceridian Dayforce HCM hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Ceridian Dayforce HCM hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Ceridian Dayforce HCM**, jelölje be **Ceridian Dayforce HCM** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Ceridian Dayforce HCM**válassza **Ceridian Dayforce HCM** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredménylistában Ceridian Dayforce HCM](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_addfromgallery.png)
+    ![Az eredmények listájában Ceridian Dayforce HCM](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés Ceridian Dayforce HCM "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Ceridian Dayforce HCM a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Ceridian Dayforce HCM a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a Ceridian Dayforce HCM közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Ceridian Dayforce HCM mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Ceridian Dayforce HCM hivatkozás kapcsolata kell létrehozni.
 
-Ceridian Dayforce HCM, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ceridian Dayforce HCM, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Ceridian Dayforce HCM tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Ceridian Dayforce HCM tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Ceridian Dayforce HCM tesztfelhasználó létrehozása](#create-a-ceridian-dayforce-hcm-test-user)**  - való egy megfelelője a Britta Simon Ceridian Dayforce HCM, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy Ceridian Dayforce HCM tesztfelhasználót](#create-a-ceridian-dayforce-hcm-test-user)**  – egy megfelelője a Britta Simon Ceridian Dayforce HCM, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Ceridian Dayforce HCM alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Ceridian Dayforce HCM alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Az Azure AD az egyszeri bejelentkezés konfigurálása Ceridian Dayforce HCM, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Ceridian Dayforce HCM, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Ceridian Dayforce HCM** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Ceridian Dayforce HCM** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_samlbase.png)
 
-3. Az a **Ceridian Dayforce HCM tartomány és az URL-címek** területen tegye a következőket:
+1. Az a **Ceridian Dayforce HCM tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
     
-    a. Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-címet használják-e a felhasználók bejelentkezés az Ceridian Dayforce HCM alkalmazására.
+    a. Az a **bejelentkezési URL-** beviteli mező, írja be az URL-cím való bejelentkezés Ceridian Dayforce HCM alkalmazását a felhasználók által használt-e.
     
     | Környezet | URL-cím |
     | :-- | :-- |
     | Éles környezethez | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
-    | A teszt | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
+    | Teszt | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
     
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
     
     | Környezet | URL-cím |
     | :-- | :-- |
     | Éles környezethez | `https://ncpingfederate.dayforcehcm.com/sp` |
-    | A teszt | `https://fs-test.dayforcehcm.com/sp` |
+    | Teszt | `https://fs-test.dayforcehcm.com/sp` |
     
-    c. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-címet használják az Azure AD a válaszban küldje.
+    c. Az a **válasz URL-cím** beviteli mező, írja be az URL-cím által használt Azure ad-ben a válasz közzététele.
     
     | Környezet | URL-cím |
     | :-- | :-- |
     | Éles környezethez | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
-    | A teszt | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
+    | Teszt | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
     
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Ezek az értékek frissíti a tényleges azonosítója, válasz és bejelentkezési URL-címe. Ügyfél [Ceridian Dayforce HCM ügyfél-támogatási csoport](https://www.ceridian.com/contact-us/index.html) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítója, válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Ceridian Dayforce HCM ügyfél-támogatási csapatának](https://www.ceridian.com/contact-us/index.html) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_certificate.png) 
 
-5. A Ceridian Dayforce HCM alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. Együttműködve [Ceridian Dayforce HCM támogatási csoport](https://www.ceridian.com/contact-us/index.html) először a megfelelő felhasználói azonosítót azonosításához. A Microsoft azt javasolja, használja a **"name"** attribútum az felhasználói azonosítóval. Ezek az attribútumok értékének kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.  
+1. Ceridian Dayforce HCM alkalmazását a SAML helyességi feltételek vár egy megadott formátumban. Együttműködve [Ceridian Dayforce HCM támogatási csapatának](https://www.ceridian.com/contact-us/index.html) , először azonosítsa a megfelelő felhasználói azonosító. A Microsoft használatát javasolja a **"name"** attribútumra, mint a felhasználói azonosító. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható erre egy példa látható.  
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
 
-6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti ábrán látható módon, és hajtsa végre a következő lépéseket:
+1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
     
     | Attribútum neve  | Attribútum értéke |
     | --------------- | -------------------- |    
     | név  | User.extensionattribute2 |    
 
-    a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_04.png)
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_05.png)
     
-    b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    c. Az a **érték** listára, válassza ki a megvalósítás a használni kívánt felhasználói attribútum.
-    Például, ha szeretné használni az EmployeeID egyedi felhasználónévvel és azonosító tárolt attribútum értéke a ExtensionAttribute2, majd válassza ki **user.extensionattribute2**.
+    c. Az a **érték** listájához, válassza ki a példányhoz használni kívánt felhasználói attribútum.
+    Például, ha az EmployeeID használni kívánt egyedi felhasználói azonosítót, és tárolt az attribútum értékét a ExtensionAttribute2, majd válassza ki **user.extensionattribute2**.
     
     d. Kattintson az **OK** gombra.
 
-7. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/ceridiandayforcehcm-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/ceridiandayforcehcm-tutorial/tutorial_general_400.png)
     
-8. A a **Ceridian Dayforce HCM konfigurációs** kattintson **Ceridian Dayforce HCM konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+1. Az a **Ceridian Dayforce HCM konfigurációs** területén kattintson **konfigurálása Ceridian Dayforce HCM** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![Ceridian Dayforce HCM konfiguráció](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_configure.png) 
+    ![Ceridian Dayforce HCM-konfiguráció](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_configure.png) 
 
-9. Egyszeri bejelentkezés konfigurálása **Ceridian Dayforce HCM** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** és **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** való [Ceridian Dayforce HCM támogatási csoport](https://www.ceridian.com/contact-us/index.html).
+1. Az egyszeri bejelentkezés konfigurálása **Ceridian Dayforce HCM** oldalon kell küldenie a letöltött **metaadatainak XML** és **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [Ceridian Dayforce HCM támogatási csapatának](https://www.ceridian.com/contact-us/index.html).
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/ceridiandayforcehcm-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/ceridiandayforcehcm-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/ceridiandayforcehcm-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/ceridiandayforcehcm-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="create-a-ceridian-dayforce-hcm-test-user"></a>Ceridian Dayforce HCM tesztfelhasználó létrehozása
 
-Ez a szakasz célja Ceridian Dayforce HCM Britta Simon nevű felhasználót létrehozni. Együttműködik az [Ceridian Dayforce HCM támogatási csoport](https://www.ceridian.com/contact-us/index.html) felhasználók felvétele az Ceridian Dayforce HCM alkalmazás eléréséhez. 
+Ez a szakasz célja Ceridian Dayforce HCM Britta Simon nevű felhasználó létrehozásához. Együttműködik a [Ceridian Dayforce HCM támogatási csapatának](https://www.ceridian.com/contact-us/index.html) rávenni a felhasználókat hozzáadja az Ceridian Dayforce HCM alkalmazásban. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Ceridian Dayforce HCM Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Ceridian Dayforce HCM Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Ceridian Dayforce HCM, hajtsa végre a következő lépéseket:**
+**Britta Simon rendel Ceridian Dayforce HCM, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Ceridian Dayforce HCM**.
+1. Az alkalmazások listájában jelölje ki a **Ceridian Dayforce HCM**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Ceridian Dayforce HCM Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Ceridian Dayforce HCM Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Ceridian Dayforce HCM, hajtsa végre a következő lépéseket:**
+**Britta Simon rendel Ceridian Dayforce HCM, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Ceridian Dayforce HCM**.
+1. Az alkalmazások listájában jelölje ki a **Ceridian Dayforce HCM**.
 
     ![Az alkalmazások listáját a Ceridian Dayforce HCM hivatkozás](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ez a szakasz célja tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.  
-Ha a hozzáférési panelen Ceridian Dayforce HCM csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Ceridian Dayforce HCM alkalmazására. 
+Ha a hozzáférési panelen a Ceridian Dayforce HCM csempére kattint, meg kell lekérése automatikusan bejelentkezett az Ceridian Dayforce HCM alkalmazás. 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

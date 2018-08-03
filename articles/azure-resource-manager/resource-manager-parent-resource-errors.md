@@ -1,32 +1,30 @@
 ---
-title: Az Azure szülő erőforrás hibák |} Microsoft Docs
-description: Javítsa a hibákat, az a szülő erőforrás használatakor ismerteti.
+title: Az Azure szülő erőforrás hibák |} A Microsoft Docs
+description: Javítsa ki a hibákat, ha egy szülő erőforrás-használata módját ismerteti.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/13/2017
+ms.date: 08/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: c996a644f206051cb58522065f87f95a4058cdee
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3042ea1a523f12ae0311545a1b9bc67306f266dd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357775"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447302"
 ---
-# <a name="resolve-errors-for-parent-resources"></a>Javítsa a hibákat a szülő erőforrások
+# <a name="resolve-errors-for-parent-resources"></a>Szülő erőforrások ki a hibákat
 
-Ez a cikk ismerteti a erőforrástól függ a szülő erőforrás telepítése során felmerülő hibákat.
+Ez a cikk ismerteti a hibákat, előfordulhat, hogy kap egy erőforrás, amelynek van egy szülő erőforrástól függ-e üzembe helyezésekor.
 
 ## <a name="symptom"></a>Jelenség
 
-A erőforrása, amely egy másik erőforrásra való gyermeke való telepítésekor a következő hibaüzenet jelenhet meg:
+Egy erőforrás, amely egy másik erőforrás alárendelt üzembe helyezésekor, a következő hiba jelenhet meg:
 
 ```
 Code=ParentResourceNotFound;
@@ -35,7 +33,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Ok
 
-Amikor egy erőforrást egy másik erőforrásra való gyermek, a szülő erőforrás léteznie kell a gyermek-erőforrás létrehozása előtt. A gyermek-erőforrás nevét tartalmazza a szülő nevének. Például egy SQL-adatbázis előfordulhat, hogy meghatározása:
+Ha egy erőforrás egy másik erőforrás gyermek, a szülő erőforrás a gyermek-erőforrás létrehozása előtt léteznie kell. A gyermek-erőforrás nevét határozza meg, hogy a kapcsolat a szülő erőforrással. A gyermek-erőforrás neve a következő formátumban kell `<parent-resource-name>/<child-resource-name>`. Ha például egy SQL Database előfordulhat, hogy meghatározása:
 
 ```json
 {
@@ -44,11 +42,13 @@ Amikor egy erőforrást egy másik erőforrásra való gyermek, a szülő erőfo
   ...
 ```
 
-De ha egy függőséget meg a kiszolgálón, az adatbázis telepítése előfordulhat, hogy indítsa el a kiszolgáló rendelkezik központi telepítése előtt.
+Ha a kiszolgáló és a ugyanazt a sablont-adatbázis üzembe helyezése, de egy függőség nem adja meg a kiszolgálón, az adatbázis központi telepítése előtt a kiszolgálón telepített is elindíthatják. 
+
+Ha a szülő erőforrás már létezik, és ugyanabban a sablonban nincs telepítve, megjelenik a hibaüzenet, ha a Resource Manager a szülővel nem társítható a gyermek-erőforrás. Ez a hiba akkor fordulhat elő, amikor a gyermek-erőforrás nincs megfelelő formátumú, vagy a gyermek-erőforrás üzembe van helyezve, egy erőforráscsoportba, amely eltér attól az erőforráscsoport, a szülő erőforrás.
 
 ## <a name="solution"></a>Megoldás
 
-Ez a hiba elhárításához függőség tartalmazza.
+A probléma megoldásához, ha a szülő és gyermek erőforrások telepítése ugyanazt a sablont, például egy függőséget.
 
 ```json
 "dependsOn": [
@@ -56,4 +56,34 @@ Ez a hiba elhárításához függőség tartalmazza.
 ]
 ```
 
-További információkért lásd: [határozza meg a ahhoz, hogy az Azure Resource Manager sablonokban erőforrásokat üzembe helyezi](resource-group-define-dependencies.md).
+A probléma megoldásához, ha a szülő erőforrás korábban telepítve lett egy másik sablonba, függőség nem állít be. Ehelyett az alárendelt ugyanabban az erőforráscsoportban üzembe helyezése, és adja meg a szülő erőforrás nevét.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sqlServerName": {
+            "type": "string"
+        },
+        "databaseName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2014-04-01",
+            "type": "Microsoft.Sql/servers/databases",
+            "location": "[resourceGroup().location]",
+            "name": "[concat(parameters('sqlServerName'), '/', parameters('databaseName'))]",
+            "properties": {
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "edition": "Basic"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+További információkért lásd: [üzembe erőforrásokat az Azure Resource Manager-sablonokban a sorrendben](resource-group-define-dependencies.md).

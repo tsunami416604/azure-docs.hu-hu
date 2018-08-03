@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: f87337d51b86f6b1eb053c1b618a2fc0696a9eb2
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 888a99cad68f98030d4481cc23cb82123c900ee6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114507"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480529"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics keresések referenciaadatok használata
 Referenciaadatok (más néven egy keresési táblázat) egy véges adatkészlet, amely statikus vagy lassan változó természetű, használja a keresés végrehajtásához vagy korrelációját, ha az adatfolyamban. Az Azure Stream Analytics közel valós idejű adatfolyam-feldolgozás eléréséhez a memóriában referenciaadatok tölti be. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok csatlakozzon](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. Stream Analytics használ az Azure Blob storage-ot a tárolási réteget a Referenciaadatoknál, és az Azure Data Factory referencia adatok alakította át vagy az Azure Blob storage-hivatkozás használható, a másolt [felhőalapú bármennyi és a helyszíni adattárak](../data-factory/copy-activity-overview.md). Referenciaadatok növekvő sorrendben, a dátum/idő, a blob neve (a bemeneti konfigurációjában meghatározott) blobok sorozataként van modellezve. Ez **csak** dátum/idő használatával, a feladatütemezés végén hozzáadását támogatja **nagyobb** fut, a megadott sorrendben az utolsó blob.
@@ -46,8 +46,13 @@ A referenciaadatok konfigurálásához először hozzon létre egy bemeneti típ
 |Eseményszerializációs formátum   | Annak érdekében, hogy a lekérdezések a várt módon működjenek, a Stream Analyticsnek tudnia kell, melyik szerializálási formátumot használja a bejövő adatfolyamokhoz. A Referenciaadatoknál, a támogatott formátumok a következők CSV és JSON-ban.  |
 |Encoding   | Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.  |
 
+## <a name="static-reference-data"></a>Statikus referenciaadatok
+A referenciaadatok várhatóan nem változik, ha majd támogatása statikus hivatkozás adatokat adjon meg egy statikus útvonalat a bemeneti konfigurációban engedélyezve van. Az Azure Stream Analytics szerzi be a megadott elérési úton található blob. {date} és {Time időponttal}-behelyettesítési jogkivonatok nem szükséges. A referenciaadatok nem módosítható a Stream Analytics. Egy statikus referenciaadatok blob felülírása, ezért nem ajánlott.
+
 ## <a name="generating-reference-data-on-a-schedule"></a>Referenciaadatok ütemezés létrehozása
 Lassan változó adatkészlet a referenciaadatok esetén majd támogatja a referencia-adatok engedélyezve van a bemeneti konfigurációját a {date} segítségével egy elérésiút-minta megadásával frissítését, és helyettesítési tokenek {idő}. Stream Analytics szerzi be a frissített referenciaadatok adatok definíciókat az elérésiút-minta alapján. Például egy mintát, `sample/{date}/{time}/products.csv` az a dátum formátuma **"Éééé-hh-nn"** és a egy idő formátumát **"HH-mm"** arra utasítja a Stream Analytics a frissített blob csomópontmetrikák `sample/2015-04-16/17-30/products.csv` , 17:30-kor. április 16 , 2015 UTC időzóna szerint.
+
+Az Azure Stream Analytics automatikus vizsgálatokat végez a frissített a referenciaadat blobok számára egy egy perces időközönként.
 
 > [!NOTE]
 > Jelenleg Stream Analytics-feladatok keresse meg a blob frissítés csak akkor, ha a gépek idejét az idő a blob nevében kódolású állomásra. Például a feladat megkeresi `sample/2015-04-16/17-30/products.csv` , amint lehetséges, de nem régebbi, mint 5:30-kor 2015. április 16 UTC időzónát. Akkor *soha nem* keresse meg a korábban felderített az utolsót kódolt időt egy blobot.
@@ -63,8 +68,12 @@ Lassan változó adatkészlet a referenciaadatok esetén majd támogatja a refer
 [Az Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) létrehozásához a Stream Analytics referencia-adatok definíciók frissítéséhez szükséges frissített blobok vezénylésére is használható. A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. A Data Factory támogatja [csatlakozik a nagy mennyiségű felhő alapú és a helyszíni adattárak](../data-factory/copy-activity-overview.md) és az adatok egyszerű áthelyezése megadott rendszeres ütemezés szerint. További információk és részletes útmutatást a Data Factory-folyamatok beállítása a Stream Analytics szolgáltatásnak, amely egy előre meghatározott ütemezés szerint frissíti a referenciaadatokat létrehozásához tekintse meg ezt [GitHub-minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs).
 
 ## <a name="tips-on-refreshing-your-reference-data"></a>Tippek a referenciaadatok frissítése
-1. Írja felül a referenciaadat blobok nem akadályozza meg a Stream Analytics használatával töltse be újra a blob, és bizonyos esetekben okozhat a feladat sikertelen lesz. Módosítsa a referenciaadatokat ajánlott módja az, hogy egy új blob tárolót és az elérési út minta a feladat bemenetére meghatározott hozzáadhat és használhat egy dátum/idő **nagyobb** fut, a megadott sorrendben az utolsó blob.
-2. A referenciaadat blobok vannak **nem** a blob "Utolsó módosítás" idő szerint, de kizárólag a rendezett dátumát és időpontját, a blob a megadott nevet használja a {date} és {time} helyettesítések.
+1. Ne írja felül a referenciaadat blobok, mivel ezek nem módosítható.
+2. Az ajánlott módszer a referenciaadatok frissítése, hogy:
+    * Használja a {date} / {idő} az elérésiút-minta
+    * Adjon hozzá egy új blob tárolót és az elérési út minta a feladat bemeneti meghatározott
+    * Egy dátum/idő használata **nagyobb** fut, a megadott sorrendben az utolsó blob.
+3. A referenciaadat blobok vannak **nem** a blob "Utolsó módosítás" idő szerint, de kizárólag a rendezett dátumát és időpontját, a blob a megadott nevet használja a {date} és {time} helyettesítések.
 3. Ne kelljen lista nagyszámú blobbal, fontolja meg, amelynek feldolgozása már nem történik nagyon régen blobok törlése. Vegye figyelembe, hogy ASA mehet kockapartíció újbóli például újraindítás bizonyos esetekben kis mértékben rendelkezik.
 
 ## <a name="next-steps"></a>További lépések

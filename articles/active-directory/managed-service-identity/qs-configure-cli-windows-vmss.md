@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: 36df9d00d41f3c092320fa88772b41c9a41c6d8e
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6474b34abeceb58c2eff9e7a2d2237ec47e61933
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237281"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447523"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>A virtuális gép konfigurálása méretezési Felügyeltszolgáltatás-identitás (MSI) Azure parancssori felületével
 
@@ -55,19 +55,19 @@ Ebben a szakaszban megismerheti, hogyan engedélyezheti és tilthatja le a rends
 
 Állítsa be a hozzárendelt identitás engedélyezve van a rendszer egy virtuálisgép-méretezési csoport létrehozása:
 
-1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az_login) paranccsal jelentkezzen be az Azure-ba. Egy fiók használatával, amely alapján, amely a virtuálisgép-méretezési csoport üzembe szeretné az Azure-előfizetés társítva van:
+1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az-login) paranccsal jelentkezzen be az Azure-ba. Egy fiók használatával, amely alapján, amely a virtuálisgép-méretezési csoport üzembe szeretné az Azure-előfizetés társítva van:
 
    ```azurecli-interactive
    az login
    ```
 
-2. Hozzon létre egy [erőforráscsoport](../../azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a virtuálisgép-méretezési csoportot és az összes kapcsolódó erőforrás, használatával [az csoport létrehozása](/cli/azure/group/#az_group_create). Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot:
+2. Hozzon létre egy [erőforráscsoport](../../azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a virtuálisgép-méretezési csoportot és az összes kapcsolódó erőforrás, használatával [az csoport létrehozása](/cli/azure/group/#az-group-create). Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. Hozzon létre egy virtuálisgép-méretezési csoportot a [az vmss létrehozásához](/cli/azure/vmss/#az_vmss_create) . Az alábbi példa létrehoz egy virtuálisgép-méretezési csoport nevű *myVMSS* rendszerhez rendelt identitáshoz, kérésének megfelelően a `--assign-identity` paraméter. Az `--admin-username` és `--admin-password` paraméterek adják meg a virtuális gép bejelentkeztetéséhez tartozó rendszergazdanevet és -jelszót. A környezetnek megfelelően frissítse ezeket az értékeket: 
+3. Hozzon létre egy virtuálisgép-méretezési csoportot a [az vmss létrehozásához](/cli/azure/vmss/#az-vmss-create) . Az alábbi példa létrehoz egy virtuálisgép-méretezési csoport nevű *myVMSS* rendszerhez rendelt identitáshoz, kérésének megfelelően a `--assign-identity` paraméter. Az `--admin-username` és `--admin-password` paraméterek adják meg a virtuális gép bejelentkeztetéséhez tartozó rendszergazdanevet és -jelszót. A környezetnek megfelelően frissítse ezeket az értékeket: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -77,13 +77,13 @@ Ebben a szakaszban megismerheti, hogyan engedélyezheti és tilthatja le a rends
 
 Ha a rendszer által hozzárendelt identitással egy meglévő Azure-beli virtuálisgép-méretezési csoportot a engedélyeznie kell:
 
-1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az_login) paranccsal jelentkezzen be az Azure-ba. Az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoportba tartozó fiókot használnia.
+1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az-login) paranccsal jelentkezzen be az Azure-ba. Az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoportba tartozó fiókot használnia.
 
    ```azurecli-interactive
    az login
    ```
 
-2. Használat [az vmss-identitási hozzárendelése](/cli/azure/vmss/identity/#az_vmss_identity_assign) parancsot a meglévő virtuális géphez a rendszer által hozzárendelt identitással engedélyezéséhez:
+2. Használat [az vmss-identitási hozzárendelése](/cli/azure/vmss/identity/#az-vmss-identity-assign) parancsot a meglévő virtuális géphez a rendszer által hozzárendelt identitással engedélyezéséhez:
 
    ```azurecli-interactive
    az vmss identity assign -g myResourceGroup -n myVMSS
@@ -106,7 +106,7 @@ Ha már nincs szüksége a rendszerhez rendelt identitáshoz egy virtuális gép
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Az MSI-Virtuálisgép-bővítmény eltávolításához használja [eltávolítása az vmss-identitási](/cli/azure/vmss/identity/#az_vmss_remove_identity) parancsot a rendszer által hozzárendelt identitással eltávolítása egy VMSS:
+Az MSI-Virtuálisgép-bővítmény eltávolításához használja [eltávolítása az vmss-identitási](/cli/azure/vmss/identity/#az-vmss-remove-identity) parancsot a rendszer által hozzárendelt identitással eltávolítása egy VMSS:
 
 ```azurecli-interactive
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
@@ -120,7 +120,7 @@ Ebben a szakaszban megismerheti, hogyan engedélyezheti és a egy felhasználóh
 
 Ez a szakasz végigvezeti egy VMSS létrehozása és hozzárendelése egy a felhasználóhoz hozzárendelt identitás a vmss-hez. Ha már rendelkezik egy használni kívánt VMSS, kihagyhatja ezt a szakaszt, és folytassa a következő.
 
-1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a felhasználóhoz hozzárendelt identitás használatával [az csoport létrehozása](/cli/azure/group/#az_group_create). Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
+1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a felhasználóhoz hozzárendelt identitás használatával [az csoport létrehozása](/cli/azure/group/#az-group-create). Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -183,7 +183,7 @@ A válasz tartalmazza a felhasználóhoz hozzárendelt identitás létrehozása 
    }
    ```
 
-2. A felhasználóhoz hozzárendelt identitás hozzárendelése a VMSS használatával [az vmss-identitási hozzárendelése](/cli/azure/vmss/identity#az_vm_assign_identity). Ne felejtse el a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY ID>` lesz a felhasználóhoz hozzárendelt identitás erőforrás `id` tulajdonságot, mert az előző lépésben létrehozott:
+2. A felhasználóhoz hozzárendelt identitás hozzárendelése a VMSS használatával [az vmss-identitási hozzárendelése](/cli/azure/vmss/identity#az-vm-assign-identity). Ne felejtse el a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY ID>` lesz a felhasználóhoz hozzárendelt identitás erőforrás `id` tulajdonságot, mert az előző lépésben létrehozott:
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>

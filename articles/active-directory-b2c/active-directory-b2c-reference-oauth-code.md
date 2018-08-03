@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9fb2d2ccabf79a95a108d4ecf39a4957fc9ffff4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 2452389605db0654fb9d8dc06d89a8195f9ae372
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113674"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480844"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Az Azure Active Directory B2C: OAuth 2.0 hitelesítési kódfolyamat
 Használhatja az OAuth 2.0 hitelesítési kódmegadás az eszközön telepített alkalmazások a védett erőforrások, például a webes API-k eléréséhez. Az Azure Active Directory B2C használatával (Azure AD B2C-vel) megvalósítása az OAuth 2.0, adhat hozzá regisztrációt, bejelentkezést és egyéb identitáskezelési feladatokat a mobil- és asztali alkalmazásokhoz. Ez a cikk nyelvtől független. A cikkben azt ismertetjük, hogyan küldhet és fogadhat, HTTP-üzenetek bármely nyílt forráskódú könyvtáraink használata nélkül.
 
 <!-- TODO: Need link to libraries -->
 
-Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](http://tools.ietf.org/html/rfc6749). Hitelesítés és engedélyezés a legtöbb használhatja [alkalmazástípusok](active-directory-b2c-apps.md), beleértve a webes alkalmazások és a natívan telepített alkalmazásokat. Az OAuth 2.0 hitelesítésikód-folyamata segítségével biztonságosan szerzi be a hozzáférési jogkivonatokat a applicationss, amely által védett erőforrások eléréséhez használható a egy [az engedélyezési kiszolgáló](active-directory-b2c-reference-protocols.md).
+Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](http://tools.ietf.org/html/rfc6749). Hitelesítés és engedélyezés a legtöbb használhatja [alkalmazástípusok](active-directory-b2c-apps.md), beleértve a webes alkalmazások és a natívan telepített alkalmazásokat. Az OAuth 2.0 hitelesítésikód-folyamata segítségével biztonságos hozzáférési tokenek beszerzése és frissítési jogkivonatok az alkalmazásokhoz, amely által védett erőforrások eléréséhez használható egy [az engedélyezési kiszolgáló](active-directory-b2c-reference-protocols.md).  A frissítési jogkivonat lehetővé teszi az ügyfél a jogkivonatok új hozzáférést szerezni (és frissítés) Ha a hozzáférési jogkivonat lejár, általában egy óra múlva.
 
 Ez a cikk elsősorban a **nyilvános ügyfelek** OAuth 2.0 hitelesítési kódfolyamat. Nyilvános ügyfél, akkor bármelyik ügyfélalkalmazás, amely nem megbízható, biztonságos a titkos kód a jelszavak biztonságának fenntartása érdekében. Ez magában foglalja a mobile apps, asztali alkalmazások és lényegében, ha bármely alkalmazás, amely egy eszközön fut, és hozzáférési kell. 
 

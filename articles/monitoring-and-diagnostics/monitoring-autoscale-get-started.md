@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure-ban automatikus skálázás
-description: 'Útmutató: az erőforrás a webalkalmazás skálázása, a felhőalapú szolgáltatás, a virtuális gép vagy virtuálisgép-méretezési beállítása az Azure-ban.'
+title: Az automatikus méretezés az Azure-ban – első lépések
+description: Az erőforrás webalkalmazás méretezése, Felhőszolgáltatások, virtuális gép vagy virtuálisgép-méretezési csoport beállítása az Azure-ban.
 author: rajram
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,115 +8,115 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
 ms.component: autoscale
-ms.openlocfilehash: 2781e718e3829c13dcc8cdd998936cfba30d8550
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b303632c236e492bbf57ee60d5e7b0cc7b2f9e5c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263646"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448968"
 ---
-# <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-ban automatikus skálázás
-A cikkből megtudhatja, hogyan állíthat be az automatikus skálázási beállításai a Microsoft Azure-portálon az erőforrás.
+# <a name="get-started-with-autoscale-in-azure"></a>Az automatikus méretezés az Azure-ban – első lépések
+Ez a cikk azt ismerteti, hogyan állítható be az automatikus skálázási beállítások a Microsoft Azure Portalon az erőforrás.
 
-Az Azure a figyelő automatikus skálázás csak a virtuálisgép-méretezési csoportok, felhőalapú szolgáltatások, Azure App Service-csomagokról és App Service-környezetek vonatkozik. 
+Az Azure Monitor automatikus skálázása csak a virtual machine scale sets, a cloud services, Azure App Service-csomagot és App Service Environment-környezetek vonatkozik. 
 
-## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Az automatikus skálázási beállításokat az előfizetésében felderítése
-Is felderítheti, amelyek automatikus skálázás esetében alkalmazható Azure figyelőben összes erőforrást. Részletes útmutató a következő lépéseket használhatja:
+## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Fedezze fel az előfizetés az automatikus méretezési beállításokkal
+Felfedezheti, hogy, amelynek automatikus skálázás alkalmazható az Azure monitorban összes erőforrást. Részletes útmutató használja az alábbi lépéseket:
 
-1. Nyissa meg a [Azure-portálon.][1]
-2. Kattintson az Azure-figyelő ikonra a bal oldali ablaktáblán.
-  ![Nyissa meg az Azure-figyelő][2]
-3. Kattintson a **automatikus skálázás** megtekintéséhez, amelynek automatikus skálázás kell alkalmazni, és azok állapotának automatikus skálázás összes erőforrást.
-  ![Az Azure a figyelő automatikus skálázás felderítése][3]
+1. Nyissa meg a [Azure Portalon.][1]
+1. Kattintson az Azure Monitor ikonra a bal oldali panelen.
+  ![Nyissa meg az Azure Monitor][2]
+1. Kattintson a **automatikus skálázási** , amelynek automatikus skálázási kell alkalmazni, valamint azok állapotának automatikus skálázási összes erőforrás megtekintéséhez.
+  ![Fedezze fel az Azure Monitor automatikus méretezés][3]
 
-A keresőablak lefelé a listában hatókör legfelül segítségével válassza ki azokat az erőforrásokat egy adott erőforráscsoport, adott erőforrástípusokra, vagy egy adott erőforrás.
+Használhatja a szűrő ablaktábla felső hatókörhöz lefelé a listában válassza ki az erőforrásokat egy adott erőforráscsoportban, adott erőforrástípusokra vagy egy adott erőforrást.
 
-Minden erőforrás található az aktuális példányszám és az automatikus skálázás állapotát. Az automatikus skálázás állapota lehet:
+Az egyes erőforrások található a jelenlegi példányszám, és az automatikus skálázás állapota. Az automatikus skálázás állapota lehet:
 
-- **Nincs konfigurálva**: nincs engedélyezve automatikus skálázás még ennél az erőforrásnál.
-- **Engedélyezett**: automatikus skálázás engedélyezett ehhez az erőforráshoz.
-- **Letiltott**: automatikus skálázás le van tiltva ennél az erőforrásnál.
+- **Nincs konfigurálva**: nincs engedélyezve az automatikus méretezés még ehhez az erőforráshoz.
+- **Engedélyezett**: engedélyezte az automatikus méretezés ehhez az erőforráshoz.
+- **Le van tiltva**: le van tiltva az automatikus méretezés ehhez az erőforráshoz.
 
 ## <a name="create-your-first-autoscale-setting"></a>Az első automatikus skálázási beállítás létrehozása
 
-Most már halad át egy egyszerű lépésenkénti útmutató az első automatikus skálázási beállítás létrehozásához.
+Vegyük most fel keresztül egyszerű lépésenkénti útmutató az első automatikus skálázási beállítás létrehozásához.
 
-1. Nyissa meg a **automatikus skálázás** panel az Azure-figyelő, és válassza a skálázni kívánt erőforrás. (Az alábbi lépéseket használni a webalkalmazáshoz tartozó App Service-csomagot. Is [az első ASP.NET-webalkalmazás létrehozása az Azure-ban 5 perc múlva.] [4])
-2. Vegye figyelembe, hogy az aktuális példányszám 1. Kattintson a **engedélyezze az automatikus skálázás**.
-  ![Új webalkalmazás skálázási beállítást][5]
-3. Adjon meg egy nevet a skálázási beállítást, és kattintson **szabály hozzáadása**. Nyissa meg a figyelmeztetés a skálázási szabályhoz, amelyet a környezet ablaktáblán a jobb oldalon. Alapértelmezés szerint ez a beállítás méretezése a példányok száma 1, ha az erőforrás CPU aránya meghaladja a 70 %-os állítja be. Az alapértelmezett értéken hagyja, és kattintson a **Hozzáadás**.
-  ![A webes alkalmazás skálázási beállítás létrehozása][6]
-4. Most létrehozott az első skálázási szabályhoz. Vegye figyelembe, hogy a UX ajánlott eljárások azt javasolja, és jelzi, hogy "javasoljuk, hogy van legalább egy skálázási szabály." Ehhez tegye a következőket:
+1. Nyissa meg a **automatikus skálázási** panel az Azure Monitor, és válasszon egy erőforrás, amely méretezésére. (Az alábbi lépéseket használja egy webes alkalmazáshoz társított App Service-csomagot. Is [az első ASP.NET-webalkalmazás létrehozása az Azure-ban 5 perc múlva.] [4])
+1. Vegye figyelembe, hogy a jelenlegi példányszám 1. Kattintson a **automatikus skálázás engedélyezése**.
+  ![Új webalkalmazás számára a skálázási beállítás][5]
+1. Adjon meg egy nevet a skálázási beállítás, és kattintson a **egy szabály hozzáadásához**. Figyelje meg, nyisson meg egy helyi panel jobb oldalán skálázási szabály beállításainak. Alapértelmezés szerint ez a beállítás arra, hogy a példányok száma 1 méretezhető, ha az erőforrás Processzorhasználat aránya meghaladja a 70 %-os. Meghagyhatja az alapértelmezett értékeit, és kattintson a **Hozzáadás**.
+  ![A skálázási beállítás egy webalkalmazás létrehozása][6]
+1. Sikeresen létrehozott az első skálázási szabályhoz. Vegye figyelembe, hogy a felhasználói felület azt javasolja, ajánlott eljárások és kijelenti, hogy "azt javasoljuk, hogy legalább egy skálázási szabály." Ehhez tegye a következőket:
   
-    a. Kattintson a **szabály hozzáadása**. 
+    a. Kattintson a **egy szabály hozzáadásához**. 
 
-    b. Állítsa be **operátor** való **kisebb, mint**.
+    b. Állítsa be **operátor** való **kevesebb mint**.
 
     c. Állítsa be **küszöbérték** való **20**.
 
-    d. Állítsa be **művelet** való **számolva csökkentése**.
+    d. Állítsa be **művelet** való **csökkentése a következővel**.
 
-   Most már rendelkeznie kell a skálázási beállítást, hogy méretezik out/méretezik a CPU-használat alapján.
-   ![A skála CPU alapján][8]
-5. Kattintson a **Save** (Mentés) gombra.
+   Most már a skálázási beállítás, hogy méretezhető out/méretezi a processzorhasználat alapján.
+   ![A CPU kihasználtságához][8]
+1. Kattintson a **Save** (Mentés) gombra.
 
-Gratulálunk! Most már sikeresen létrehozta a CPU-használat alapján a webalkalmazás automatikus skálázásra az első skálázási beállítást.
+Gratulálunk! Most már sikeresen létrehozta az első, CPU-használat alapján a webalkalmazás automatikus skálázási beállítás.
 
 > [!NOTE] 
-> Ugyanezek a lépések Ismerkedjen meg a virtuálisgép-méretezési csoport vagy szerepkör-szolgáltatás a felhő vonatkoznak.
+> Ugyanazokat a lépéseket kell a alkalmazni egy virtuálisgép-méretezési csoportot használatának első lépései, vagy a felhőbeli szerepkör-szolgáltatás.
 
 ## <a name="other-considerations"></a>Egyéb szempontok
-### <a name="scale-based-on-a-schedule"></a>A skála a ütemezés szerint
-Mellett a skála alapján a CPU beállíthatja a skála eltérően a hét adott napjaira.
+### <a name="scale-based-on-a-schedule"></a>Méretezési csoport egy ütemezés alapján
+A CPU kihasználtságához mellett beállíthatja a méretezési csoport eltérően a hét adott napjaira.
 
-1. Kattintson a **méretezési feltétel hozzáadása**.
-2. A skála mód és a szabályok beállítását megegyezik az alapértelmezett feltétel.
-3. Válassza ki **ismételje meg az adott napokra** az ütemezéshez.
-4. Válassza ki a nap és a kezdő/záró idő, amikor a skála feltétel alkalmazni kívánja a.
+1. Kattintson a **skálázási feltétel hozzáadása**.
+1. A skálázási mód és a szabályok beállítása ugyanaz, mint az alapértelmezett feltétel.
+1. Válassza ki **adott napokon ismétlődik** az ütemezés számára.
+1. Válassza ki a napokat és mikor kell alkalmazni a skálázási feltétel kezdő és befejező időpontját.
 
-![Skála feltétel ütemezésen alapuló][9]
-### <a name="scale-differently-on-specific-dates"></a>Az adott dátumok másképp méretezése
-Skála alapján a CPU, mellett adhatja meg a skála másképp konkrét dátumokat.
+![Az ütemezés alapján a skálázási feltétel][9]
+### <a name="scale-differently-on-specific-dates"></a>A konkrét dátumokat eltérően méretezése
+A CPU kihasználtságához mellett beállíthatja a méretezési csoport eltérően a konkrét dátumokat.
 
-1. Kattintson a **méretezési feltétel hozzáadása**.
-2. A skála mód és a szabályok beállítását megegyezik az alapértelmezett feltétel.
-3. Válassza ki **adja meg a kezdő és záró dátum** az ütemezéshez.
-4. Válassza ki a kezdő és záró dátum és a kezdő/záró idő, amikor a skála feltétel alkalmazni kívánja a.
+1. Kattintson a **skálázási feltétel hozzáadása**.
+1. A skálázási mód és a szabályok beállítása ugyanaz, mint az alapértelmezett feltétel.
+1. Válassza ki **kezdő/záró dátumok megadása** az ütemezés számára.
+1. Válassza ki a kezdő és záró dátumát, és mikor kell alkalmazni a skálázási feltétel kezdő és befejező időpontját.
 
-![Skála feltétel dátumok alapján][10]
+![A skálázási feltétel dátuma alapján][10]
 
-### <a name="view-the-scale-history-of-your-resource"></a>Az erőforrás méretezési előzményeinek megtekintése
-Amikor az erőforrás méretezése felfelé vagy lefelé, eseményt naplózott, a műveletnaplóban. Megtekintheti az erőforrás méretezési előzményeinek vonatkozóan az elmúlt 24 óra átvált a **futtatási előzményei** fülre.
+### <a name="view-the-scale-history-of-your-resource"></a>Az erőforrás-méretezési csoport előzményeinek megtekintése
+Minden alkalommal, amikor az erőforrás méretezése felfelé és lefelé, egy eseményt a rendszer naplózza a tevékenységnaplóban. Megtekintheti a méretezési csoport előzményeinek az erőforrás az elmúlt 24 órában átvált a **futtatási előzmények** fülre.
 
 ![Előzmények][11]
 
-Ha szeretné megtekinteni a teljes méretezési előzmények (90 nap), jelölje be **Ide kattintva további részleteket**. A műveletnapló nyílik meg, előre kiválasztott erőforrás és kategória automatikus skálázási.
+Ha a teljes méretezési csoport előzményeinek megtekintése (legfeljebb 90 napig), jelölje be **Ide kattintva további részleteket**. A tevékenységnapló megnyílik, és az Automatikus méretezéssel, előre kiválasztott erőforrás és kategória.
 
-### <a name="view-the-scale-definition-of-your-resource"></a>A skála meghatározása az erőforrás megtekintéséhez
-Automatikus skálázás egy Azure Resource Manager szerinti erőforrás. Megtekintheti a skála definition a JSON-ban átvált a **JSON** fülre.
+### <a name="view-the-scale-definition-of-your-resource"></a>Az erőforrás a méretezési csoport definíciójának megtekintése
+Automatikus skálázási egy Azure Resource Manager-erőforrást. Megtekintheti a méretezési csoport definícióját JSON átvált a **JSON** fülre.
 
-![Skála meghatározása][12]
+![Méretezési csoport meghatározása][12]
 
-Módosíthatja a JSON-ban közvetlenül, ha szükséges. Ezek a változások azok mentése után jelenik meg.
+Módosíthatja a JSON-ban közvetlenül, ha szükséges. Ezek a módosítások megjelennek, miután menti őket.
 
-### <a name="disable-autoscale-and-manually-scale-your-instances"></a>Tiltsa le az automatikus skálázás, és manuálisan méretezhető, a példányok
-Előfordulhat, hogy mikor szeretné letiltani az aktuális skálázási beállítást, és manuálisan méretezhető, az erőforrás.
+### <a name="disable-autoscale-and-manually-scale-your-instances"></a>Automatikus skálázás letiltása, és méretezzen manuálisan a példányok
+Előfordulhat, hogy azt szeretné, tiltsa le az aktuális skálázási beállítás, és méretezzen manuálisan az erőforrást.
 
-Kattintson a **letiltásával** gombra az oldal tetején.
-![Tiltsa le az automatikus skálázás][13]
+Kattintson a **automatikus skálázás letiltása** gombra az oldal tetején.
+![Automatikus skálázás letiltása][13]
 
 > [!NOTE] 
-> Ez a beállítás letiltja a konfigurációt. Azonban is vissza az automatikus skálázás megismételni engedélyezése után. 
+> Ez a beállítás letiltja a konfigurációt. Azonban visszatérhet azt követően újra engedélyezni az automatikus méretezés. 
 
-Beállíthatja, hogy manuálisan méretezésére példányok száma.
+Most már beállíthatja a manuális skálázása kívánt példányok számát.
 
-![Manuális méretezési készlet][14]
+![Manuális skálázás beállítása][14]
 
-Kattintva mindig visszatérhet automatikus skálázás **engedélyezze az automatikus skálázás** , majd **mentése**.
+Kattintva mindig visszatérhet az automatikus méretezés **automatikus skálázás engedélyezése** , majd **mentése**.
 
 ## <a name="next-steps"></a>További lépések
-- [Hozzon létre egy tevékenység napló riasztási előfizetés minden automatikus skálázási motor műveletek figyelése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Hozzon létre egy tevékenység napló a riasztást az előfizetés az összes sikertelen automatikus skálázás méretezési-a/kibővített műveletek figyelése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Hozzon létre egy tevékenység Log riasztási az előfizetés összes automatikus skálázási motor műveletek figyelése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Hozzon létre egy tevékenység Log riasztási az előfizetés az összes sikertelen automatikus skálázási méretezési-a/horizontális felskálázás műveletek figyelése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
 <!--Reference-->
 [1]:https://portal.azure.com

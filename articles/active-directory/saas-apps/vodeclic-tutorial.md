@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: dad37a0d66ff1af9ad7e7f3b6a807ef1104da39f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fb985b389139bfd8d54e6c54d101bbfa8a68a6d4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041092"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Oktatóanyag: Azure Active Directory-integráció az Vodeclic
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a ja
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Vodeclic hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="add-vodeclic-from-the-gallery"></a>Vodeclic hozzáadása a katalógusból
 Az Azure AD integrálása a Vodeclic konfigurálásához hozzá kell Vodeclic a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Az Azure AD integrálása a Vodeclic konfigurálásához hozzá kell Vodeclic a 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Lépjen a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Lépjen a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **Vodeclic**. Válassza ki **Vodeclic** az eredmények panelen, és válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Vodeclic**. Válassza ki **Vodeclic** az eredmények panelen, és válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában Vodeclic](./media/vodeclic-tutorial/tutorial_vodeclic_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Vodeclic, adjon az érték **felhasználónév** azonos értéket **felhasznál�
 Az Azure AD egyszeri bejelentkezés az Vodeclic tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
 1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. [Hozzon létre egy Vodeclic tesztfelhasználót](#create-a-vodeclic-test-user) egy megfelelője a Britta Simon Vodeclic, amely a felhasználó Azure ad-ben reprezentációja van csatolva van.
-4. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ellenőrzése, hogy működik-e a konfiguráció.
+1. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. [Hozzon létre egy Vodeclic tesztfelhasználót](#create-a-vodeclic-test-user) egy megfelelője a Britta Simon Vodeclic, amely a felhasználó Azure ad-ben reprezentációja van csatolva van.
+1. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ellenőrzése, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédpanel **Single-Sign-on mód**, jelölje be **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédpanel **Single-Sign-on mód**, jelölje be **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/vodeclic-tutorial/tutorial_vodeclic_samlbase.png)
 
-3. Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, a **Vodeclic tartomány és URL-címek** területén az alábbi lépéseket:
+1. Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, a **Vodeclic tartomány és URL-címek** területén az alábbi lépéseket:
 
     ![Vodeclic tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/vodeclic-tutorial/tutorial_vodeclic_url.png)
 
@@ -114,7 +114,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Az a **válasz URL-cím** mezőbe írja be egy URL-CÍMÉT a következő mintának: `https://<companyname>.lms.vodeclic.net/auth/saml/callback`
 
-4. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett módot, jelölje be a **speciális URL-beállítások megjelenítése** jelölőnégyzetet, majd hajtsa végre az alábbi lépést:
+1. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett módot, jelölje be a **speciális URL-beállítások megjelenítése** jelölőnégyzetet, majd hajtsa végre az alábbi lépést:
 
     ![Vodeclic tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/vodeclic-tutorial/tutorial_vodeclic_url1.png)
 
@@ -123,15 +123,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek az értékek nem valódi. Az értékeket módosítsa a tényleges azonosítóval, válasz URL-cím és bejelentkezés URL-címe. Forduljon a [Vodeclic ügyfél-támogatási csapatának](mailto:hotline@vodeclic.com) beolvasni ezeket az értékeket.
 
-5. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **metaadatainak XML**. Mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **metaadatainak XML**. Mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/vodeclic-tutorial/tutorial_vodeclic_certificate.png) 
 
-6. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/vodeclic-tutorial/tutorial_general_400.png)
     
-7. Az egyszeri bejelentkezés konfigurálásához a **Vodeclic** oldalán, a letöltött küldése **metaadatainak XML** , a [Vodeclic támogatási csapatával](mailto:hotline@vodeclic.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálásához a **Vodeclic** oldalán, a letöltött küldése **metaadatainak XML** , a [Vodeclic támogatási csapatával](mailto:hotline@vodeclic.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com) közben állítja be az alkalmazás. Ez az alkalmazás hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapra, és a beágyazott eléréséhez dokumentáció a **konfigurációs** alul található szakaszában. További tudnivalók a beágyazott dokumentáció funkció [Azure ad-ben a beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -148,15 +148,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/vodeclic-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**. Válassza ki **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**. Válassza ki **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/vodeclic-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/vodeclic-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/vodeclic-tutorial/create_aaduser_04.png)
 
@@ -187,23 +187,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Vodeclic**.
+1. Az alkalmazások listájában jelölje ki a **Vodeclic**.
 
     ![Az alkalmazások listáját a Vodeclic hivatkozásra](./media/vodeclic-tutorial/tutorial_vodeclic_app.png)  
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. A bal oldali menüben válassza **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Válassza ki a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+1. Válassza ki a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a a **felhasználók** listája.
+1. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a a **felhasználók** listája.
 
-6. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki a **kiválasztása** gombra.
+1. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki a **kiválasztása** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza ki a **hozzárendelése** gombra.
+1. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza ki a **hozzárendelése** gombra.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -216,7 +216,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

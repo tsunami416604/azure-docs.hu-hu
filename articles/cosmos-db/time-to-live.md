@@ -1,6 +1,6 @@
 ---
-title: Élettartam Azure Cosmos DB az adatok lejárnak |} Microsoft Docs
-description: A TTL-t a Microsoft Azure Cosmos DB teszi lehetővé a dokumentumokat egy bizonyos idő eltelte után a rendszer automatikusan törlődnek.
+title: Adatok az Azure Cosmos DB az élettartam elévülése |} A Microsoft Docs
+description: Élettartam Microsoft Azure Cosmos DB üríti ki automatikusan a rendszer bizonyos idő után dokumentumok lehetőséget biztosít.
 services: cosmos-db
 keywords: élettartam
 author: SnehaGunda
@@ -10,48 +10,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: e1b11d637eec54d43c9f1212936d94b2d7396c97
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49f6d6ee65ffae71cba8c73301355bfe2bdcd1d6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615121"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480556"
 ---
-# <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Azure Cosmos DB gyűjtemények automatikusan élettartama adatok lejár
-Alkalmazások létrehozására és hatalmas mennyiségű adat tárolására is használható. Az adatok egy részét, például generált gép esemény adatokat, a naplókat, és a felhasználói munkamenet az információ csak véges időn. Miután az adatok válnak többlet az alkalmazás igényeinek, az ezeket az adatokat és csökkenti a tárolási igényeinek, az alkalmazások biztonságos.
+# <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Az Azure Cosmos DB-gyűjtemények automatikusan az élettartam adatok elévülése
+Az alkalmazások létrehozásához és hatalmas mennyiségű adat tárolásához. Ezen adatok némelyike, például létrehozott machine esemény adatok, naplók és a felhasználói munkamenet az információ hasznos csak egy véges ideig. Miután az adatok válik az alkalmazás számára szükséges többlet, is biztonságos törléséhez ezeket az adatokat, és csökkentse egy alkalmazás tárolási igényeinek megfelelően.
 
-"Élő idő" vagy a TTL-t a Microsoft Azure Cosmos DB nyújt a lehetővé teszi, hogy a dokumentumok automatikusan törlődnek az adatbázis egy bizonyos idő eltelte után. Az alapértelmezett élettartama a gyűjtemény szintjén állítsa be, és dokumentumra alapon felülbírálható. Élettartam beállítása, a gyűjtemény alapértelmezett vagy a dokumentum szinten után Cosmos DB automatikusan eltávolítja a dokumentumok létező adott időn belül, (másodpercben), mert utolsó módosítás.
+"Élő idő" vagy a TTL a Microsoft Azure Cosmos DB lehetővé teszi a dokumentumok automatikusan törlődnek az adatbázisból egy idő után kell. Az alapértelmezett élettartama a gyűjtemény szintjén beállított, és felülbírálva a dokumentumra vonatkozó alapul. Miután TTL be van állítva, a gyűjtemény alapértelmezett vagy dokumentum szinten Cosmos DB automatikusan eltávolítja dokumentumok létező időt (másodpercben), az időszak elteltével, mivel utoljára módosítva.
 
-Az Azure Cosmos Adatbázisba élettartama a dokumentum utolsó módosításának elleni eltolás használja. Ehhez használja a `_ts` mező, amely létezik a minden a dokumentumban. A _ts mezője dátumát és idejét jelző időbélyeg unix típusú epoch. A `_ts` mező frissül minden alkalommal, amikor a dokumentum módosításakor. 
+Az Azure Cosmos DB élettartam a dokumentum utolsó módosításának elleni eltolási értéket használja. Ehhez használja a `_ts` mező, amely minden dokumentumnak létezik. A _ts mező indexe unix-stílusú alapidőpont dátumot és időt jelölő időbélyegző. A `_ts` minden alkalommal, amikor módosul egy dokumentum frissítendő mezőket. 
 
-## <a name="ttl-behavior"></a>Élettartam viselkedése
-A TTL-szolgáltatás TTL tulajdonságok két szinten – a gyűjtemény és a dokumentum vezérli. Az értékek másodpercen belül vannak beállítva, és a különbözeti számít a `_ts` azon, hogy a dokumentum utolsó volt módosítani.
+## <a name="ttl-behavior"></a>Élettartam viselkedés
+Az élettartam szolgáltatást két szinten – a gyűjtemény szintjén és az elvárt dokumentum TTL tulajdonságok vezérli. Az értékek másodpercen belül vannak beállítva, és a különbözeti számít a `_ts` , hogy a dokumentum utolsó lett módosítva.
 
 1. A gyűjtemény DefaultTTL
    
-   * Ha hiányoznak (vagy null értékű), dokumentumok nem törlődnek automatikusan.
-   * Ha jelen van, és az érték "-"1 = végtelen – dokumentumok alapértelmezés szerint nem jár le
-   * Ha jelen van, és az érték van beállítva egyes szám ("n") – a dokumentumok lejárnak "n" másodperc után utolsó módosítás
-2. A dokumentumok élettartam: 
+   * Ha hiányzik (vagy null értékű) a dokumentumok nem törlődnek automatikusan.
+   * Ha jelen van, az értéke "-1" értékre van állítva = végtelen – dokumentumok alapértelmezés szerint nem jár le
+   * Ha jelen van, és az érték egy szám ("n") értékre van állítva – a dokumentumok lejárnak "n" másodperc utolsó módosítás után
+2. A dokumentumok Élettartama: 
    
-   * A tulajdonság csak akkor, ha a fölérendelt gyűjtemény DefaultTTL nincs alkalmazható.
+   * A tulajdonság csak akkor, ha DefaultTTL megtalálható a fölérendelt gyűjtemény esetében alkalmazható.
    * Felülbírálja a fölérendelt gyűjtemény DefaultTTL értékét.
 
-Amint a dokumentum lejárt (`ttl`  +  `_ts` < aktuális server idő =), a dokumentum jelölést "lejárt." Nincs művelet után most kapnak a dokumentumokon, és azok nem kerülnek bele az összes végrehajtott lekérdezések eredményeit. A dokumentumok fizikailag törlődnek a rendszerben, és törli a háttérben szerint egy későbbi időpontban. Ez nem foglal le a [kérelem egységek (RUs)](request-units.md) gyűjtemény költségvetés.
+Amint a dokumentum lejárt (`ttl`  +  `_ts` < = server aktuális idő), a dokumentum "lejárt" van megjelölve. Nincs művelet engedélyezni a dokumentumok ezt az időpontot követően, és azok ki lesznek zárva minden végrehajtott lekérdezések eredményeit. A dokumentumok fizikailag törlődnek a rendszerben, és törlődnek a háttérben kulcsmodulonként egy későbbi időpontban. Ez nem igényel minden [kérelemegység (RU)](request-units.md) gyűjtemény költségvetés.
 
-A fenti logika mutatja be a következő mátrix:
+A fenti logikai mutatja be a következő mátrix:
 
-|  | DefaultTTL hiányzik vagy nem a gyűjtemény beállítása | DefaultTTL = -1-gyűjteménytől | DefaultTTL = "n" gyűjteménytől |
+|  | DefaultTTL hiányzik vagy nem a gyűjtemény beállítása | DefaultTTL =-1 értéket a gyűjteményben | DefaultTTL = "n" a gyűjteményben |
 | --- |:--- |:--- |:--- |
-| A dokumentum hiányzó élettartam |Nem végezhető el a dokumentum szinten bírálja felül, mivel a dokumentum és a gyűjtemény nem ismerik a TTL-t. |Ebben a gyűjteményben nem dokumentumok lejárnak. |A gyűjtemény dokumentumok amikor időköz n lejárta lejár. |
-| Élettartam dokumentum -1 = |Nincs a szintjén bírálja felül, mert a gyűjtemény nem adja meg a dokumentum felülíró DefaultTTL tulajdonság. Egy dokumentumot a TTL-t a rendszer értelmezett nem alkalmasak. |Ebben a gyűjteményben nem dokumentumok lejárnak. |A dokumentum az élettartam =-1. a gyűjtemény nem jár. Minden más dokumentum "n" időszak után lejár. |
-| Élettartam dokumentumon n = |Nem végezhető el a felülírja a dokumentum szinten. Egy dokumentumot a TTL-t a rendszer értelmezett nem alkalmasak. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat fog örökli időintervalluma -1, és nem jár le. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat "n" időköz örökli a gyűjteményben. |
+| Élettartam hiányzik a dokumentum |Semmi óta a dokumentum és a gyűjtemény amelyek TTL nem ismerik a dokumentum szintjén felülbírálására. |Ebben a gyűjteményben nem dokumentumok le fog járni. |Ebben a gyűjteményben a dokumentumok időköz n eltelt amikor lejár. |
+| Élettartam dokumentum -1 = |Semmit nem kell a gyűjtemény óta a dokumentum szintjén felülbírálás nem adja meg a DefaultTTL tulajdonság, amely dokumentumot felül lehet bírálni. Egy dokumentum TTL a nem értelmezett, a rendszer. |Ebben a gyűjteményben nem dokumentumok le fog járni. |A dokumentum TTL =-1 ebben a gyűjteményben lévő soha nem jár le. Minden egyéb dokumentumokat "n" idő után jár le. |
+| Élettartam = n dokumentum |Semmi nem bírálja felül a szintjén. Egy dokumentum TTL a nem értelmezett, a rendszer. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat fog időköz 1 öröklik, és soha ne járjon le. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat "n" időköz öröklik a gyűjteményből. |
 
 ## <a name="configuring-ttl"></a>Élettartam konfigurálása
-Alapértelmezés szerint élettartama összes Cosmos DB gyűjtemények, valamint minden dokumentumok alapértelmezés szerint le van tiltva. Élettartam beállítható programozott módon, vagy az Azure portálon, a a **beállítások** szakasz a gyűjteményhez. 
+Élettartam alapértelmezés szerint le van tiltva az összes Cosmos DB-gyűjtemények és az összes dokumentum alapértelmezés szerint. Élettartam beállítható programozott módon, vagy az Azure portal használatával. A következő lépések segítségével élettartam konfigurálása az Azure Portalról:
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és keresse meg az Azure Cosmos DB-fiókot.  
+
+2. Keresse meg a következőt kívánja beállítani az élettartam értéke gyűjtemény, nyissa meg a **méretezés és beállítások** ablaktáblán. Láthatja, hogy az idő élettartama alapértelmezett értéke **ki**. Módosíthatja, hogy **bekapcsolva (alapértelmezett) nincs** vagy **a**.
+
+   **ki** -dokumentumok nem törlődnek automatikusan.  
+   **(nincs alapértelmezett érték) a** – Ez a beállítás az élettartam értéke "1" (végtelen), ami azt jelenti, hogy a dokumentumok nem jár le, alapértelmezés szerint állítja be.  
+   **a** -dokumentumok lejárnak "n" másodperc utolsó módosítás után.  
+
+   ![Az élő idő beállítása](./media/time-to-live/set-ttl-in-portal.png)
 
 ## <a name="enabling-ttl"></a>Élettartam engedélyezése
-Engedélyezze a TTL-t a gyűjteményt, vagy a dokumentumokat a gyűjteményen belül, a tulajdonsága DefaultTTL gyűjtemény vagy a -1, vagy a nullától eltérő pozitív számnak kell. Beállítása a DefaultTTL-1 érték azt jelenti, hogy a gyűjteményben lévő összes dokumentumot végtelen lesz élő alapértelmezett, de a Cosmos DB szolgáltatás által a gyűjteményhez, akik bírálták felül az alapértelmezett dokumentumok célszerű figyelemmel kísérni.
+Engedélyezi az élettartam a gyűjteményt, vagy a dokumentumokat a gyűjteményen belül, állítsa a gyűjtemény DefaultTTL tulajdonság a -1 vagy nullától eltérő pozitív számnak kell. Beállítás a DefaultTTL-1 azt jelenti, hogy az alapértelmezett örökre kapnak helyet a gyűjteményben lévő összes dokumentumot, de a Cosmos DB szolgáltatás célszerű figyelemmel kísérni a gyűjtemény, akik bírálták felül az alapértelmezett dokumentumok.
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -64,7 +74,7 @@ Engedélyezze a TTL-t a gyűjteményt, vagy a dokumentumokat a gyűjteményen be
         new RequestOptions { OfferThroughput = 20000 });
 
 ## <a name="configuring-default-ttl-on-a-collection"></a>A gyűjtemény alapértelmezett élettartam konfigurálása
-Biztosan egy alapértelmezett élettartama a gyűjtemény szintjén konfigurálható. Egy gyűjtemény az élettartam beállításához meg kell adnia egy nullától eltérő pozitív szám, amely jelzi az időtartam (másodpercben), a gyűjteményben található összes dokumentum lejárati után utolsó módosításának időbélyeg a dokumentum (`_ts`). Vagy az alapértelmezett -1, ami azt jelenti, hogy beszúrni a gyűjtemény összes dokumentumot határozatlan ideig fog élő alapértelmezés szerint állíthatja be.
+Ön egy alapértelmezett élettartama a gyűjtemény szintjén konfigurálható. Az élettartam beállítása egy gyűjteményen, meg kell adnia egy nullától eltérő pozitív szám, amely azt jelzi, hogy az az időtartam másodpercben, amely után az utolsó módosításának a dokumentum időbélyeg érvényessége lejár a gyűjteményben lévő összes dokumentumot (`_ts`). Másik lehetőségként beállíthatja az alapértelmezett 1 értéket ad, ami azt jelenti, hogy minden dokumentumot a gyűjteményhez beszúrt határozatlan időre lesz élő alapértelmezés szerint.
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -77,14 +87,14 @@ Biztosan egy alapértelmezett élettartama a gyűjtemény szintjén konfigurálh
         new RequestOptions { OfferThroughput = 20000 });
 
 
-## <a name="setting-ttl-on-a-document"></a>A dokumentum TTL beállítása
-Mellett egy alapértelmezett élettartam szervezendő, adott TTL dokumentum szinten állíthatja be. Ez a művelet felülírja a gyűjtemény az alapértelmezett.
+## <a name="setting-ttl-on-a-document"></a>A dokumentum TTL-beállítást
+Mellett egy gyűjteményt egy alapértelmezett TTL beállításnál beállíthatja adott TTL dokumentum szinten. Ez felülírja az alapértelmezett a gyűjtemény.
 
-* A dokumentum az élettartam beállításához meg kell adnia egy nullától eltérő pozitív szám, amely megadja, hogy az az időtartam (másodpercben), a dokumentum lejárati után utolsó módosításának időbélyeg a dokumentum (`_ts`).
-* Ha egy dokumentum TTL mező nem rendelkezik, a gyűjtemény az alapértelmezett fog vonatkozni.
-* Ha TTL le van tiltva, a gyűjtemény szintjén, a dokumentum TTL mezőjét figyelmen kívül TTL ismételt engedélyezéséig a gyűjteményen.
+* Az élettartam beállítani egy dokumentumot, meg kell adnia egy nullától eltérő pozitív szám, amely azt jelzi, hogy az időszak lejár a dokumentum utolsó módosításának a dokumentum időbélyeg után másodpercben (`_ts`).
+* Ha a dokumentum nem rendelkezik TTL mezővel, a gyűjtemény az alapértelmezett lesz érvényes.
+* Ha TTL le van tiltva, a gyűjtemény szintjén, a dokumentum TTL-mező figyelmen kívül mindaddig, amíg a TTL újra engedélyezve van a gyűjteményen.
 
-Íme egy részlet bemutatja, hogyan állítsa be a TTL lejárata egy dokumentumon:
+Itt látható egy részlet megjelenítése az élettartam lejárta megadása egy dokumentum:
 
     // Include a property that serializes to "ttl" in JSON
     public class SalesOrder
@@ -111,8 +121,8 @@ Mellett egy alapértelmezett élettartam szervezendő, adott TTL dokumentum szin
     };
 
 
-## <a name="extending-ttl-on-an-existing-document"></a>A létező dokumentum TTL kiterjesztése
-A dokumentum bármely írási művelet végrehajtásával alaphelyzetbe állíthatja a TTL-t, a dokumentumon. Ezzel állítja a `_ts` a jelenlegi időpontnál, és a dokumentum lejárati ideje beállított visszaszámlálás a `ttl`, megkezdődik a újra. Ha úgy szeretné módosítani a `ttl` egy dokumentum is frissítheti a mező, mint bármely más beállítható mező teheti.
+## <a name="extending-ttl-on-an-existing-document"></a>A meglévő dokumentum TTL kiterjesztése
+A dokumentum minden írási művelet végrehajtásával alaphelyzetbe állíthatja a dokumentum az Élettartamot. Ennek során állítja a `_ts` az aktuális idő és a dokumentum lejárati ideje beállított visszaszámlálás az `ttl`, elkezdi az újra. Ha módosítani szeretné a `ttl` egy dokumentum is frissítheti a mező, ahogy bármely más beállítható mező is végezhet.
 
     response = await client.ReadDocumentAsync(
         "/dbs/salesdb/colls/orders/docs/SO05"), 
@@ -123,8 +133,8 @@ A dokumentum bármely írási művelet végrehajtásával alaphelyzetbe állíth
     
     response = await client.ReplaceDocumentAsync(readDocument);
 
-## <a name="removing-ttl-from-a-document"></a>Egy dokumentum eltávolítása a TTL-t
-Ha már nem szeretné, hogy a dokumentum lejárati TTL be van állítva egy dokumentumot, majd a dokumentum beolvasása, távolítsa el a TTL mező és cserélje le a dokumentumot a kiszolgálón. Az élettartam mező törlődik a dokumentumot, a gyűjtemény az alapértelmezett lépnek érvénybe. Egy dokumentum lejár, és nem örököl a gyűjtemény majd be kell az élettartam értéke -1 értékre.
+## <a name="removing-ttl-from-a-document"></a>Élettartam eltávolítása a dokumentumból
+Ha egy dokumentum TTL lett beállítva, és már nem szeretné, hogy a dokumentum hamarosan lejár, ezután a dokumentum lekéréséhez, távolítsa el az élettartam mezőt, és cserélje le a dokumentumot a kiszolgálón. A TTL mező eltávolítják a dokumentumot, az a gyűjtemény alapértelmezett lépnek érvénybe. Egy dokumentum lejárjanak leállítása, és nem örököl a gyűjtemény majd be kell az élettartam értéke-1.
 
     response = await client.ReadDocumentAsync(
         "/dbs/salesdb/colls/orders/docs/SO05"), 
@@ -136,7 +146,7 @@ Ha már nem szeretné, hogy a dokumentum lejárati TTL be van állítva egy doku
     response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disabling-ttl"></a>Élettartam letiltása
-A TTL letiltása teljes egészében a gyűjtemény, majd állítsa le a háttérben folyamatot törölni kell a gyűjtemény DefaultTTL tulajdonsága lejárt dokumentumot keres. Ez a tulajdonság törlése eltér a -1 értékre állítaná. A beállítást, ha a-1 érték azt jelenti, hogy a gyűjteménybe felvett új dokumentumok végtelen lesz élő, de ez felülírható a gyűjtemény adott dokumentumokat. Ez a tulajdonság teljesen eltávolítása a gyűjtemény azt jelenti, hogy a dokumentumok lejár, akkor is, ha vannak, akik explicit módon bírálták felül az előző alapértelmezett dokumentumok.
+Tiltsa le a TTL teljes egészében a gyűjtemény, és törölni kell a gyűjtemény DefaultTTL tulajdonsága lejárt dokumentumot keres a háttérben futó folyamatot leállítja. Ez a tulajdonság törlése nem azonos a -1 értékre állítaná. Örökre kapnak helyet-1 azt jelenti, hogy a gyűjtemény hozzáadott új dokumentumot a beállítást, de ez felülírható az adott gyűjteményben lévő dokumentumot. Ez a tulajdonság eltávolítása a gyűjteményből teljesen azt jelenti, hogy a nem dokumentum lejár, akkor is, ha vannak, akik kifejezetten bírálták felül az előző alapértelmezett dokumentumok.
 
     DocumentCollection collection = await client.ReadDocumentCollectionAsync("/dbs/salesdb/colls/orders");
     
@@ -147,31 +157,31 @@ A TTL letiltása teljes egészében a gyűjtemény, majd állítsa le a háttér
 
 <a id="ttl-and-index-interaction"></a> 
 ## <a name="ttl-and-index-interaction"></a>Élettartam és index interakció
-Hozzáadása vagy módosítása egy gyűjteményt az élettartam beállítása módosítja az alapul szolgáló index. Amikor az élettartam értéke a be-vagy kikapcsolása módosul, a gyűjtemény újraindexelése van. Ha módosítja az indexelési házirendet konzisztens az indexelési mód esetén, felhasználók nem láthatja az index olyan módosítás. Az indexelő mód értéke Lusta, ha az index mindig elfogja, és az élettartam értéke megváltozott, ha az index teljesen új újból létrejön. Az élettartam értéke megváltozott, és az index mód értéke Lusta, ha az index rebuild során végzett lekérdezések nem adják vissza teljes vagy a megfelelő eredményeket.
+Hozzáadása vagy módosítása egy gyűjteményen a TTL-értéket módosítja az alapul szolgáló index. Amikor az élettartam értéke a be-vagy kikapcsolása módosul, a gyűjtemény újraindexelése van. Amikor változtatásokat végez az indexelési házirendet konzisztens az indexelési mód esetén, a felhasználók nem figyelje meg az index módosítása. Az indexelő mód értéke Lusta, ha az index mindig kölcsönhatásai, és az élettartam értéke módosul, ha az index ismételt létrehozását sablon nélkül. Az élettartam értéke módosul, és az index mód értéke Lusta, amikor az indexkészítés során végzett lekérdezések nem adnak vissza teljes vagy megfelelő eredményeket.
 
-Ha adott vissza pontos adat van szüksége, ne módosítsa az élettartam értéke Ha az indexelési mód beállítása Lusta. Ideális esetben konzisztens index lekérdezés konzisztens eredmények biztosítása kell kiválasztani. 
+Ha pontosan az adott vissza adatokat, ne módosítsa az élettartam értéke beállításakor az indexelési mód Lusta. Ideális esetben konzisztens index lekérdezés konzisztens eredmények biztosítása kell kiválasztani. 
 
 ## <a name="faq"></a>GYIK
-**Mit fog költség TTL-t?**
+**Milyen fogja terhelni TTL?**
 
-Nincs a TTL beállítást a dokumentum további költség nélkül.
+Nincs egy dokumentum TTL beállítás további költség nélkül.
 
-**Mennyi ideig tart a dokumentum törlése után az élettartam működik-e?**
+**Mennyi ideig tart a dokumentum törlése után az élettartam (TTL) fel?**
 
-A dokumentumok lejárt azonnal, amennyiben a TTL-t, működik-e, és nem CRUD vagy a lekérdezés API-k elérhetők lesznek. 
+A dokumentumok az élettartam működik, és nem lesz elérhető a CRUD-MŰVELETEKKEL, vagy a lekérdezési API-k után azonnal lejárt. 
 
-**Egy dokumentumon TTL semmilyen hatással lesz a RU díjak?**
+**Egy dokumentum TTL semmilyen hatással lesz a Kérelemegység díjai?**
 
-Nem, nem lesznek nincs hatással az keresztül (élettartam) – Cosmos DB lejárt dokumentumok törlési RU költségek.
+Nem, lesz nincs hatással a Cosmos DB-ben Élettartama lejárt dokumentumoknak törléseket RU kell fizetni.
 
-**A TTL-szolgáltatás csak vonatkozik a teljes dokumentumot, vagy is szeretnék egyes dokumentum tulajdonságértékek lejárnak?**
+**A TTL szolgáltatás csak vonatkozik a teljes dokumentumot, vagy is I egyes dokumentum tulajdonságértékek lejárnak?**
 
-TTL-t a teljes dokumentum vonatkozik. Ha azt szeretné, csak egy dokumentumot egy részének lejár, majd javasoljuk, hogy az a része kinyerése a dokumentum egy külön "kapcsolódó" dokumentumba, és majd használjon a TTL-t a kibontott dokumentumon.
+A teljes dokumentum TTL vonatkozik. Ha azt szeretné, hogy a dokumentum egy része, majd javasoljuk, hogy a rész kinyerése a fő dokumentum egy külön "társított" dokumentumba, és kinyert dokumentum TTL majd használja.
 
-**Rendelkezik a TTL-t a szolgáltatás indexelési különleges követelményeket?**
+**A TTL szolgáltatás rendelkezik az indexelő különleges követelményeket?**
 
-Igen. Rendelkeznie kell a gyűjtemény [szabályzatokkal indexelő](indexing-policies.md) Consistent vagy Lazy. Az indexelő beállítása None szervezendő DefaultTTL beállítása közben hiba, mint fognak, kapcsolja ki a gyűjteményt, amely már be van állítva egy DefaultTTL az indexelő próbál eredményez.
+Igen. Rendelkeznie kell a gyűjtemény [indexelési szabályzat](indexing-policies.md) Consistent vagy Lazy. Az indexelő None értékre van állítva egy gyűjteményen DefaultTTL beállítása közben hiba, ahogyan kapcsolja ki egy gyűjteményt, amely rendelkezik egy DefaultTTL már be van állítva az indexelő próbál eredményez.
 
 ## <a name="next-steps"></a>További lépések
-Azure Cosmos DB kapcsolatos további tudnivalókért tekintse meg a szolgáltatás [ *dokumentáció* ](https://azure.microsoft.com/documentation/services/cosmos-db/) lap.
+Azure Cosmos DB kapcsolatos további információkért tekintse meg a szolgáltatás [ *dokumentáció* ](https://azure.microsoft.com/documentation/services/cosmos-db/) lapot.
 

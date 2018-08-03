@@ -9,16 +9,18 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 4f8df8e7004ca3cee832b6230dc153b21e2a6c18
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 8431181c1f3d5fbe31fa6c96303367ee71f83b17
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186713"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480458"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Méretező fürt az Azure Kubernetes Service (AKS) – előzetes verzió
 
-Az Azure Kubernetes Service (AKS) az Azure-ban felügyelt Kubernetes-fürt üzembe helyezése rugalmas megoldást kínál. Erőforrásként a növekvő igények szerint növelje a fürt méretező lehetővé teszi, hogy a fürt, hogy a beállított korlátok alapján igények kielégítését. A fürt méretező (CA) által a függőben lévő podok alapján ügynökcsomópontok méretezése azért teszi ezt. Azt a fürt rendszeres időközönként podok vagy üres csomópontok függőben lévő keresése vizsgálatok, és ha lehetséges növeli a méretét. Alapértelmezés szerint a hitelesítésszolgáltató 10 másodpercenként függőben van a podok keres, és eltávolítja a csomópontot, ha több mint 10 percig szükségtelen. A podok horizontális méretező (HPA) használata esetén a HPA frissíteni fogja podreplikák és az erőforrások igény szerint. Ha ott nem elég csomópontok vagy a felesleges csomópontokat a pod méretezés a következő, a hitelesítésszolgáltató válaszol, és a csomópontok új készletét a podok ütemezése.
+Az Azure Kubernetes Service (AKS) az Azure-ban felügyelt Kubernetes-fürt üzembe helyezése rugalmas megoldást kínál. Erőforrásként a növekvő igények szerint növelje a fürt méretező lehetővé teszi, hogy a fürt, hogy a beállított korlátok alapján igények kielégítését. A fürt méretező (CA) által a függőben lévő podok alapján ügynökcsomópontok méretezése azért teszi ezt. Azt a fürt rendszeres időközönként podok vagy üres csomópontok függőben lévő keresése vizsgálatok, és ha lehetséges növeli a méretét. Alapértelmezés szerint a hitelesítésszolgáltató 10 másodpercenként függőben van a podok keres, és eltávolítja a csomópontot, ha több mint 10 percig szükségtelen. Együtt használva az [podok horizontális méretező](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA), a HPA frissíti, podreplikák és az erőforrások igény szerint. Ha nincs elegendő csomópontok vagy a felesleges csomópontokat a pod méretezés a következő, a hitelesítésszolgáltató válaszol, és a csomópontok új készletét a podok ütemezése.
+
+Ez a cikk ismerteti, hogyan helyezhet üzembe az ügynökcsomópontok a fürt automatikus méretező. Azonban mivel a fürt méretező a kube rendszer névtér üzemel, méretező fog nem méretezhető a pod futtató csomópont.
 
 > [!IMPORTANT]
 > Az Azure Kubernetes Service (AKS)-fürt méretező integrációja jelenleg **előzetes**. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
@@ -32,41 +34,70 @@ Jelen dokumentum céljából feltételezzük, hogy az RBAC-kompatibilis AKS-für
 
 ## <a name="gather-information"></a>Információgyűjtés
 
-Az alábbi listában jeleníti meg mindent megtalál, meg kell adnia a méretező-definícióban.
+Hozzon létre a fürt méretező a fürtön történő futásra engedélyeit, futtassa a bash-szkript:
 
-- *Előfizetés-azonosító*: megfelelő ehhez a fürthöz használt előfizetés-azonosító
-- *Erőforráscsoport-nevet* : a fürthöz tartozó erőforráscsoport neve 
-- *Fürt neve*: a fürt neve
-- *Ügyfél-azonosító*: lépés generálása engedélyt kapott Alkalmazásazonosító
-- *Titkos Ügyfélkód*: alkalmazás titkos kulcs generálása lépés engedélyt kapott
-- *Bérlőazonosító*: a bérlő (fióktulajdonos) azonosítója
-- *Csomópont erőforráscsoport*: az ügynök a fürt csomópontjain tartalmazó erőforráscsoport neve
-- *Készlet csomópontnév*: a csomópont neve tárolókészlet, szeretné, a méretezési csoport
-- *Csomópontok minimális száma*: a fürtben található csomópontok minimális száma
-- *Csomópontok maximális száma*: a fürtben található csomópontok maximális száma
-- *Virtuálisgép-típusra*: a Kubernetes-fürt létrehozásához használt szolgáltatás
+```sh
+#! /bin/bash
+ID=`az account show --query id -o json`
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' `
 
-Kérje le a saját előfizetés-Azonosítójára: 
+TENANT=`az account show --query tenantId -o json`
+TENANT_ID=`echo $TENANT | tr -d '"' | base64`
 
-``` azurecli
-az account show --query id
+read -p "What's your cluster name? " cluster_name
+read -p "Resource group name? " resource_group
+
+CLUSTER_NAME=`echo $cluster_name | base64`
+RESOURCE_GROUP=`echo $resource_group | base64`
+
+PERMISSIONS=`az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$SUBSCRIPTION_ID" -o json`
+CLIENT_ID=`echo $PERMISSIONS | sed -e 's/^.*"appId"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+CLIENT_SECRET=`echo $PERMISSIONS | sed -e 's/^.*"password"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' | base64 `
+
+CLUSTER_INFO=`az aks show --name $cluster_name  --resource-group $resource_group -o json`
+NODE_RESOURCE_GROUP=`echo $CLUSTER_INFO | sed -e 's/^.*"nodeResourceGroup"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+echo "---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cluster-autoscaler-azure
+    namespace: kube-system
+data:
+    ClientID: $CLIENT_ID
+    ClientSecret: $CLIENT_SECRET
+    ResourceGroup: $RESOURCE_GROUP
+    SubscriptionID: $SUBSCRIPTION_ID
+    TenantID: $TENANT_ID
+    VMType: QUtTCg==
+    ClusterName: $CLUSTER_NAME
+    NodeResourceGroup: $NODE_RESOURCE_GROUP
+---"
 ```
 
-Hozzon létre az Azure hitelesítő adatait a következő parancs futtatásával:
+A parancsfájl a lépések végrehajtása után a parancsfájl kimenete egy titkos kulcsot formájában adatait, például így:
 
-```console
-$ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscription-id>" --output json
-
-"appId": <app-id>,
-"displayName": <display-name>,
-"name": <name>,
-"password": <app-password>,
-"tenant": <tenant-id>
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-autoscaler-azure
+  namespace: kube-system
+data:
+  ClientID: <base64-encoded-client-id>
+  ClientSecret: <base64-encoded-client-secret>$
+  ResourceGroup: <base64-encoded-resource-group>  SubscriptionID: <base64-encode-subscription-id>
+  TenantID: <base64-encoded-tenant-id>
+  VMType: QUtTCg==
+  ClusterName: <base64-encoded-clustername>
+  NodeResourceGroup: <base64-encoded-node-resource-group>
+---
 ```
 
-Az Alkalmazásazonosító, a jelszó és a bérlő azonosítója lesz a clientID, a clientSecret és a bérlő azonosítója a következő lépésekben.
-
-A csomópont-készlet neve lekérése a következő parancs futtatásával. 
+Ezután kérdezze le a csomópontkészlet neve a következő parancs futtatásával. 
 
 ```console
 $ kubectl get nodes --show-labels
@@ -81,49 +112,7 @@ aks-nodepool1-37756013-0   Ready     agent     1h        v1.10.3   agentpool=nod
 
 Ezután bontsa ki a címke értéke **agentpool**. Alapértelmezés szerint a fürt csomópontkészlet ez "nodepool1".
 
-Az erőforráscsoport nevét, a csomópont lekéréséhez a címke értékének kinyerése **kubernetes.azure.com<span></span>/fürt**. A csomópont erőforráscsoport-név alapvetően az űrlap MC_ [erőforráscsoport-]\_[fürt-name] _ [helye].
-
-A vmType paramétert használja, a szolgáltatás, amely itt van az AKS hivatkozik.
-
-Most rendelkeznie kell a következő információkat:
-
-- SubscriptionID
-- ResourceGroup
-- ClusterName
-- ClientID
-- ClientSecret
-- TenantID
-- NodeResourceGroup
-- VMType
-
-Ezután az összes ezeket az értékeket a base64 kódolás. Ha például kódolása base64-VMType értékét:
-
-```console
-$ echo AKS | base64
-QUtTCg==
-```
-
-## <a name="create-secret"></a>Titkos kód létrehozása
-Ezen adatok alapján hozzon létre egy titkos kulcsot, a központi telepítés használatával értékeket az előző lépést a következő formátumban:
-
-```yaml
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cluster-autoscaler-azure
-  namespace: kube-system
-data:
-  ClientID: <base64-encoded-client-id>
-  ClientSecret: <base64-encoded-client-secret>
-  ResourceGroup: <base64-encoded-resource-group>
-  SubscriptionID: <base64-encode-subscription-id>
-  TenantID: <base64-encoded-tenant-id>
-  VMType: QUtTCg==
-  ClusterName: <base64-encoded-clustername>
-  NodeResourceGroup: <base64-encoded-node-resource-group>
----
-```
+Most a titkos kulcs és a csomópont tárolókészletet használja, a központi telepítési diagram is létrehozhat.
 
 ## <a name="create-a-deployment-chart"></a>Központi telepítési diagram létrehozása
 
@@ -327,7 +316,7 @@ Fürt-méretező üzembe futtatásával
 kubectl create -f cluster-autoscaler-containerservice.yaml
 ```
 
-Ellenőrizze, hogy fut-e a fürt méretező, használja a következő parancsot, és ellenőrizze a podok listáját. Ha egy pod előtaggal van ellátva "fürt-méretező" fut, a fürt méretező lett telepítve.
+Ellenőrizze, hogy fut-e a fürt méretező, használja a következő parancsot, és ellenőrizze a podok listáját. Előtaggal van ellátva "fürt-méretező" fut egy pod kell lennie. Ha ezt látja, a fürt méretező lett telepítve.
 
 ```console
 kubectl -n kube-system get pods
@@ -338,6 +327,68 @@ Fürt automatikus méretező állapotának megtekintéséhez futtassa
 ```console
 kubectl -n kube-system describe configmap cluster-autoscaler-status
 ```
+
+## <a name="interpreting-the-cluster-autoscaler-status"></a>A fürt méretező állapotának értelmezése
+
+```console
+$ kubectl -n kube-system describe configmap cluster-autoscaler-status
+Name:         cluster-autoscaler-status
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  cluster-autoscaler.kubernetes.io/last-updated=2018-07-25 22:59:22.661669494 +0000 UTC
+
+Data
+====
+status:
+----
+Cluster-autoscaler status at 2018-07-25 22:59:22.661669494 +0000 UTC:
+Cluster-wide:
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 registered=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+NodeGroups:
+  Name:        nodepool1
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0 cloudProviderTarget=1 (minSize=1, maxSize=5))
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 cloudProviderTarget=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+
+Events:  <none>
+```
+
+A fürt méretező állapotának lehetővé teszi, hogy a fürt méretező állapotának megtekintéséhez két különböző szinteken: fürtre kiterjedő és minden egyes csomópont csoporton belül. Az AKS jelenleg csak támogatja egy csomópont-készletet, mivel ezek a metrikák azonosak.
+
+* Állapot azt jelzi, hogy a csomópontok általános állapotát. Ha a fürt méretező struggles hozhat létre, vagy távolít el csomópontokat a fürtben, ez az állapot "Nem kifogástalan" értékre vált. Egy másik csomópont állapota áttekintését is van:
+    * "Kész" azt jelenti, hogy egy csomópont készen áll a podok rajta ütemezve van.
+    * "Unready" azt jelenti, hogy egy csomópont, amely a meghibásodott, elindítása után.
+    * "NotStarted" azt jelenti, hogy a csomópont teljesen még nincs elindítva.
+    * "LongNotStarted" azt jelenti, hogy a csomópont nem sikerült elindítani egy ésszerű időkorláton belül.
+    * "Regisztrált azt jelenti, hogy a csoport regisztrálva van egy csomópont
+    * "Nem regisztrált" azt jelenti, hogy egy csomópont megtalálható a fürt szolgáltató oldalon, de nem sikerült regisztrálni a Kubernetesben.
+  
+* ScaleUp lehetővé teszi, hogy ellenőrizze, amikor a fürt meghatározza, hogy a fürt vertikális felskálázási történjen.
+    * Az átmenet, amikor az változik a fürtben található csomópontok számát, vagy a csomópont állapotát.
+    * Készen áll a csomópontok számát az elérhető és készen áll a fürtben található csomópontok számát. 
+    * A cloudProviderTarget a fürt automatikus méretező megállapítása szerint a fürtnek értesülnie kell kezelni a számítási csomópontok számát.
+
+* ScaleDown lehetővé teszi, hogy ellenőrizze, hogy vannak-e a deduplikációra méretezési le. 
+    * Vertikális leskálázási csatlakozni kívánó egy csomópont megállapítása szerint a fürt automatikus méretező távolíthatja el a fürt képes kezelni a számítási feladatok befolyásolása nélkül. 
+    * Megadott időpontok megjelenítése a vertikális leskálázási jelöltek utoljára ellenőrizve a fürt és az utolsó váltás ideje.
+
+Végül események, a másolatot bármilyen méret esetén lásd: vagy is események, sikertelen vagy sikeres, és időponthoz képest, a fürt méretező elvégző leskálázása.
 
 ## <a name="next-steps"></a>További lépések
 

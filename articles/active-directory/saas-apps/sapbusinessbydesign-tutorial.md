@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált SAP Business ByDesign |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP Business ByDesign között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az SAP Business Bydesignnal |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az SAP Business bydesign megoldással között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,254 +15,254 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 446149e21bb5fff69df26b567469e856e245da16
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a7a08eb6062f134058bb63f5a3e2a78f661026ff
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215473"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Oktatóanyag: Azure Active Directory-integráció az SAP Business ByDesign megoldással
 
-Ebben az oktatóanyagban elsajátíthatja SAP Business ByDesign integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható az SAP Business bydesign megoldással az Azure Active Directoryval (Azure AD).
 
-SAP Business ByDesign integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+SAP Business bydesign megoldással integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér az SAP Business ByDesign szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett az SAP Business ByDesign (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá az SAP Business bydesign megoldással az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett az SAP Business bydesign megoldással (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása az SAP Business ByDesign, a következőkre van szükség:
+Az Azure AD-integráció az SAP Business Bydesignnal konfigurálásához lesz szüksége a következő elemek:
 
-- Az Azure AD szolgáltatásra
-- Az SAP Business ByDesign egyszeri bejelentkezés engedélyezve van az előfizetés
+- Az Azure AD-előfizetéshez
+- Az SAP Business bydesign megoldással egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. SAP Business ByDesign hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. SAP Business bydesign megoldással hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-sap-business-bydesign-from-the-gallery"></a>SAP Business ByDesign hozzáadása a gyűjteményből
-Az Azure AD integrálása a SAP Business ByDesign konfigurálásához kell hozzáadnia SAP Business ByDesign a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-sap-business-bydesign-from-the-gallery"></a>SAP Business bydesign megoldással hozzáadása a katalógusból
+Konfigurálja az integráció az SAP Business bydesign megoldással az Azure AD-be, szüksége a katalógus az SAP Business bydesign megoldással hozzáadása a felügyelt SaaS-alkalmazások listájában.
 
-**Adja hozzá az SAP Business ByDesign a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**SAP Business bydesign megoldással hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **SAP Business ByDesign**, jelölje be **SAP Business ByDesign** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **SAP Business bydesign megoldással**válassza **SAP Business bydesign megoldással** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![SAP Business ByDesign az eredménylistában](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_addfromgallery.png)
+    ![SAP Business bydesign megoldással a találatok listájában](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés SAP Business ByDesign "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az SAP Business Bydesignnal a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a SAP Business ByDesign tartozó felhasználót a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a SAP Business ByDesign közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó, az SAP Business bydesign megoldással mi egy felhasználó számára az Azure ad-ben. Más szóval Azure AD-felhasználót és az SAP Business bydesign megoldással a kapcsolódó felhasználó közötti kapcsolat kapcsolatot kell létrehozni.
 
-Az SAP Business ByDesign, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+SAP Business bydesign megoldással, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést az SAP Business ByDesign tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az SAP Business Bydesignnal tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy SAP Business ByDesign tesztfelhasználó](#create-an-sap-business-bydesign-test-user)**  - való egy megfelelője a Britta Simon SAP Business ByDesign, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy SAP Business bydesign megoldással tesztfelhasználót](#create-an-sap-business-bydesign-test-user)**  - a-megfelelője a Britta Simon rendelkezik az SAP Business bydesign megoldással, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az SAP Business ByDesign alkalmazásban egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszeri bejelentkezést az SAP Business bydesign megoldással alkalmazásban konfigurálja.
 
-**Az SAP Business ByDesign konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**Konfigurálja az Azure AD egyszeri bejelentkezés az SAP Business Bydesignnal, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **SAP Business ByDesign** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **SAP Business bydesign megoldással** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_samlbase.png)
 
-3. Az a **SAP Business ByDesign tartomány és az URL-címek** területen tegye a következőket:
+1. Az a **SAP Business bydesign megoldással tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az egyszeri bejelentkezés információk SAP Business ByDesign tartomány és az URL-címek](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_url.png)
+    ![SAP Business bydesign megoldással tartomány és URL-címek egyszeri bejelentkezési adatait](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<servername>.sapbydesign.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<servername>.sapbydesign.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<servername>.sapbydesign.com`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<servername>.sapbydesign.com`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [SAP Business ByDesign ügyfél-támogatási csoport](https://www.sap.com/products/cloud-analytics.support.html) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [SAP Business bydesign megoldással ügyfél-támogatási csapatának](https://www.sap.com/products/cloud-analytics.support.html) beolvasni ezeket az értékeket.
 
-4. Az a **felhasználói attribútumok** területen tegye a következőket:
+1. Az a **felhasználói attribútumok** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![SAP Business ByDesign attribútum szakasz](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_attribute.png)
+    ![SAP Business bydesign megoldással attribútum szakasz](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_attribute.png)
     
-    a. A **felhasználói azonosító** listáról válassza ki a **ExtractMailPrefix()** függvény.
+    a. A **felhasználóazonosító** listáról válassza ki a **ExtractMailPrefix()** függvény.
     
-    b. Az a **Mail** listára, válassza ki a megvalósítás a használni kívánt felhasználói attribútum. Például ha az egyedi felhasználói azonosítóval az EmployeeID használni kívánt, és az attribútum értékét a ExtensionAttribute2 tárolt, majd válassza ki user.extensionattribute2.     
+    b. Az a **Mail** listájához, válassza ki a példányhoz használni kívánt felhasználói attribútum. Például ha az attribútum értékét a ExtensionAttribute2 tárolt az EmployeeID használandó egyedi felhasználói azonosítóként, majd válassza ki user.extensionattribute2.     
 
-5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_certificate.png) 
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/sapbusinessbydesign-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/sapbusinessbydesign-tutorial/tutorial_general_400.png)
 
-7. A a **SAP Business ByDesign konfigurációs** kattintson **SAP Business ByDesign konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+1. Az a **SAP Business bydesign megoldással konfigurációs** területén kattintson **konfigurálja az SAP Business bydesign megoldással** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![SAP Business ByDesign konfiguráció](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_configure.png) 
+    ![SAP Business bydesign megoldással konfiguráció](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_configure.png) 
 
-8. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, hajtsa végre az alábbi lépéseket:
+1. Egyszeri bejelentkezés konfigurálva az alkalmazás eléréséhez hajtsa végre az alábbi lépéseket:
    
-    a. Jelentkezzen be a SAP Business ByDesign portál, rendszergazdai jogosultságokkal.
+    a. Jelentkezzen be rendszergazdai jogosultságokkal az SAP Business bydesign megoldással portálon.
    
-    b. Navigáljon a **alkalmazás- és felhasználói gyakori feladatot** , és kattintson a **identitásszolgáltató** fülre.
+    b. Navigáljon a **alkalmazás- és felhasználókezelési gyakori feladatot** , és kattintson a **identitásszolgáltató** fülre.
    
-    c. Kattintson a **új identitásszolgáltató** válassza ki az Azure-portálról letöltött metaadatok XML-fájl. Importálja a metaadatokat, a rendszer automatikusan feltölti a szükséges aláírási tanúsítvány és titkosítási tanúsítványt.
+    c. Kattintson a **új identitásszolgáltató** , és válassza ki az Azure Portalról letöltött metaadatainak XML-fájl. Importálja a metaadatokat, a rendszer automatikusan feltölti a szükséges aláírási tanúsítvány és a titkosítási tanúsítványt.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
    
-    d. Tartalmazza a **helyességi feltétel ügyfél szolgáltatás URL-címe** válassza ki azokat a SAML-kérelmet **helyességi feltétel fogyasztói szolgáltatás URL-címek**.
+    d. Tartalmazza a **helyességi feltétel fogyasztói URL-címe** válassza ki azokat az SAML-kérelmet **helyességi feltétel fogyasztói szolgáltatás URL-címek**.
    
     e. Kattintson a **egyszeri bejelentkezés aktiválása**.
    
     f. Mentse a módosításokat.
    
-    g. Kattintson a **a rendszer** fülre.
+    g. Kattintson a **saját rendszer** fülre.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
    
-    h. Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe**, amely másolta az Azure portálról be azt a **Azure AD bejelentkezési URL-címen** szövegmező.
+    h. Beillesztés **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, amely másolta az Azure Portalról be azt a **Azure AD bejelentkezési URL-cím** szövegmezőbe.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
    
-    i. Adja meg, hogy az alkalmazott manuálisan választhat naplózás a felhasználói Azonosítót és jelszót vagy az SSO kiválasztásával **manuális Identity Provider kijelölés**.
+    i. Adja meg, hogy az alkalmazott manuálisan választhatnak, hogy naplózás a felhasználói azonosító és jelszó vagy az SSO kiválasztásával **manuális Identity Provider kijelölés**.
    
-    j. Az a **egyszeri bejelentkezési URL-cím** szakaszában, az URL-cím, az alkalmazott ahhoz, hogy a rendszer által használandó. 
-    Az URL-cím küldött alkalmazott legördülő listából, a választhat a következő beállításokat:
+    j. Az a **egyszeri bejelentkezési URL-cím** szakaszban adja meg az alkalmazott ahhoz, hogy a rendszer által használt URL-CÍMÉT. 
+    Az az URL-cím küldött alkalmazott legördülő listából választhat a következő beállításokat:
    
     **Nem egyszeri bejelentkezési URL-címe**
    
-    A rendszer küld a dolgozó csak a normál rendszer URL-cím. Az alkalmazott nem jelentkezik be egyszeri Bejelentkezést, és kell jelszó használata vagy a tanúsítvány helyette.
+    A rendszer csak a normál rendszer URL-CÍMÉT az alkalmazott küld. Az alkalmazott nem jelentkezik be egyszeri Bejelentkezést, és kell jelszó használata vagy a tanúsítvány helyett.
    
     **EGYSZERI BEJELENTKEZÉSI URL-CÍME** 
    
-    A rendszer küld a dolgozó csak az egyszeri bejelentkezési URL-címet. Az alkalmazottak az SSO használatával jelentkezhetnek. Hitelesítési kérelmet a rendszer átirányítja az IdP keresztül.
+    A rendszer elküldi az alkalmazott csak az egyszeri bejelentkezési URL-címet. Az alkalmazott bejelentkezhet az egyszeri bejelentkezés használatával. Hitelesítési kérelem az identitásszolgáltató keresztül lesz átirányítva.
    
-    **Automatikus kiválasztásához.**
+    **Automatikus kiválasztása**
    
-    Ha egyszeri Bejelentkezéssel nem aktív, a rendszer küld a normál rendszer URL-címet az alkalmazott. Ha egyszeri bejelentkezés aktív, a rendszer ellenőrzi, hogy az alkalmazottnak a jelszót. A jelszó nem érhető el, ha mind SSO és URL-címe nem-SSO kerülnek az alkalmazott. Azonban ha az alkalmazott nincs jelszava, csak az egyszeri bejelentkezési URL-címet kap az alkalmazott.
+    Ha egyszeri bejelentkezés nem aktív, a rendszer az alkalmazott küld a rendszer normál URL-CÍMÉT. Ha egyszeri bejelentkezés aktív, a rendszer ellenőrzi, hogy az alkalmazott rendelkezik-e a jelszó. A jelszó nem érhető el, ha egyszeri bejelentkezési URL-cím és a nem-egyszeri bejelentkezési URL-címet kapnak az alkalmazott. Azonban ha az alkalmazott nem tartozik jelszó, csak az egyszeri bejelentkezési URL-cím küld az alkalmazottnak.
    
     k. Mentse a módosításokat.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/sapbusinessbydesign-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/sapbusinessbydesign-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/sapbusinessbydesign-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/sapbusinessbydesign-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-an-sap-business-bydesign-test-user"></a>Az SAP Business ByDesign tesztfelhasználó létrehozása
+### <a name="create-an-sap-business-bydesign-test-user"></a>Az SAP Business bydesign megoldással tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy SAP Business ByDesign Britta Simon nevű felhasználót hoz létre. Adjon együttműködve [SAP Business ByDesign ügyfél-támogatási csoport](https://www.sap.com/products/cloud-analytics.support.html) a felhasználók hozzáadása az SAP Business ByDesign platform. 
+Ebben a szakaszban egy SAP Business bydesign megoldással Britta Simon nevű felhasználói hoz létre. Együttműködve [SAP Business bydesign megoldással ügyfél-támogatási csapatának](https://www.sap.com/products/cloud-analytics.support.html) a felhasználók hozzáadása az SAP Business bydesign megoldással platformon. 
 
 > [!NOTE]
-> Győződjön meg arról, hogy NameID értéke az a felhasználónév mező az SAP Business ByDesign platform egyezniük kell.
+> Győződjön meg arról, hogy NameID értékének egyeznie kell a felhasználónév mező az SAP Business bydesign megoldással platformon.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés SAP Business ByDesign Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést az SAP Business bydesign megoldással való hozzáférés biztosítása használja.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Az SAP Business ByDesign Britta Simon rendeléséhez hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel az SAP Business bydesign megoldással, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **SAP Business ByDesign**.
+1. Az alkalmazások listájában jelölje ki a **SAP Business bydesign megoldással**.
 
-    ![Az alkalmazások listáját az SAP Business ByDesign hivatkozás](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_app.png)  
+    ![Az alkalmazások listáját az SAP Business bydesign megoldással hivatkozásra](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen SAP Business ByDesign csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az SAP Business ByDesign alkalmazására.
+Ha a hozzáférési panelen az SAP Business bydesign megoldással csempére kattint, akkor kell lekérése automatikusan bejelentkezett az SAP Business bydesign megoldással alkalmazáshoz.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

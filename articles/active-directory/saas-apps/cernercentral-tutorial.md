@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 77cd9f90de1d50e91061a6a7222d01c72aadf3f3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 400aa0a50c0f05937011adf62f76d1d96fde3fc2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047909"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Oktatóanyag: Azure Active Directory-integráció az Cerner közép-India
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Cerner központi hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-cerner-central-from-the-gallery"></a>Cerner központi hozzáadása a katalógusból
 Az Azure AD integrálása a Cerner központi konfigurálásához hozzá kell Cerner központi a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a Cerner központi konfigurálásához hozzá kell Cer
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gomb fölött a párbeszédpanelen.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gomb fölött a párbeszédpanelen.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Cerner központi**.
+1. A Keresés mezőbe írja be a **Cerner központi**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/cernercentral-tutorial/tutorial_cernercentral_search.png)
 
-5. Az eredmények panelen válassza ki a **Cerner központi**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Cerner központi**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/cernercentral-tutorial/tutorial_cernercentral_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felh
 Az Azure AD egyszeri bejelentkezés az Cerner Centrallal tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Cerner központi tesztfelhasználó létrehozása](#creating-a-cerner-central-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon Cerner közép-India, amely a felhasználó Azure ad-ben reprezentációja van csatolva.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Cerner központi tesztfelhasználó létrehozása](#creating-a-cerner-central-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon Cerner közép-India, amely a felhasználó Azure ad-ben reprezentációja van csatolva.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
 
-3. Az a **Cerner központi tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Cerner központi tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/cernercentral-tutorial/tutorial_cernercentral_url.png)
 
@@ -126,15 +126,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE]
     > Ezek az értékek nem a valós. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Cerner központi támogatási csapatának](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/cernercentral-tutorial/tutorial_metadataurl.png)
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/cernercentral-tutorial/tutorial_general_400.png)
 
-6. Az egyszeri bejelentkezés konfigurálása **Cerner központi** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [Cerner központi támogatási](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations). Az egyszeri bejelentkezés konfigurálja az alkalmazás oldalán, az integráció végrehajtásához.
+1. Az egyszeri bejelentkezés konfigurálása **Cerner központi** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [Cerner központi támogatási](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations). Az egyszeri bejelentkezés konfigurálja az alkalmazás oldalán, az integráció végrehajtásához.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
@@ -147,15 +147,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/cernercentral-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/cernercentral-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás**.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/cernercentral-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/cernercentral-tutorial/create_aaduser_04.png) 
 
@@ -183,23 +183,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listájában jelölje ki a **Cerner központi**.
+1. Az alkalmazások listájában jelölje ki a **Cerner központi**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/cernercentral-tutorial/tutorial_cernercentral_app.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -210,7 +210,7 @@ Ha a hozzáférési panelen a Cerner központi csempére kattint, meg kell leké
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Felhasználók átadásának konfigurálása](cernercentral-provisioning-tutorial.md)
 
 <!--Image references-->

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 26ab8c0547bb533a032dec59183f8152be9180cf
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364545"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448441"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integráció és üzembe helyezés az Azure Data Factoryban
 
@@ -53,15 +53,15 @@ Itt van a folyamatos integráció és üzembe helyezés, amelyekkel a teljes él
 
 1.  Állítsa be a fejlesztési adat-előállító a vsts-sel, amelyben minden fejlesztő hozhat létre Data Factory-erőforrások, például folyamatokat, adatkészletek és így tovább.
 
-2.  A fejlesztők ezután módosíthatja az erőforrások, például folyamatokat. Mivel ezek a módosításokat, és kiválaszthatja **Debug** hogyan a folyamatfuttatások a legutóbbi módosítások megtekintéséhez.
+1.  A fejlesztők ezután módosíthatja az erőforrások, például folyamatokat. Mivel ezek a módosításokat, és kiválaszthatja **Debug** hogyan a folyamatfuttatások a legutóbbi módosítások megtekintéséhez.
 
-3.  A fejlesztők elégedett a módosításokat, miután is létrehozhatnak lekéréses kérelmek azok ágból beolvasni a társaknak véleményező módosításokat a master ággal (vagy az együttműködési ág).
+1.  A fejlesztők elégedett a módosításokat, miután is létrehozhatnak lekéréses kérelmek azok ágból beolvasni a társaknak véleményező módosításokat a master ággal (vagy az együttműködési ág).
 
-4.  Változások a főágban van, miután azok is közzéteheti a fejlesztési gyári kiválasztásával **közzététel**.
+1.  Változások a főágban van, miután azok is közzéteheti a fejlesztési gyári kiválasztásával **közzététel**.
 
-5.  Ha készen áll a módosítások a teszt factory és az éles előállító előléptetése a csapat, akkor exportálhatja a Resource Manager-sablon a master ágról, vagy bármely más ágból abban az esetben a "master" ága biztonsági mentést készít az élő fejlesztése a Data Factory.
+1.  Ha készen áll a módosítások a teszt factory és az éles előállító előléptetése a csapat, akkor exportálhatja a Resource Manager-sablon a master ágról, vagy bármely más ágból abban az esetben a "master" ága biztonsági mentést készít az élő fejlesztése a Data Factory.
 
-6.  Az exportált Resource Manager-sablon különböző paraméterfájlokkal a teszt factory és az éles előállító is telepíthető.
+1.  Az exportált Resource Manager-sablon különböző paraméterfájlokkal a teszt factory és az éles előállító is telepíthető.
 
 ## <a name="automate-continuous-integration-with-vsts-releases"></a>Folyamatos integráció a VSTS-kiadások automatizálása
 
@@ -81,19 +81,19 @@ Az alábbiakban a lépések a VSTS-kiadási beállításához, adat-előállít�
 
 1.  Nyissa meg a VSTS-oldalát, azzal, az adat-előállító konfigurált ugyanabban a projektben.
 
-2.  Kattintson a felső menüben **készítése és kiadása** &gt; **kiadásokban** &gt; **kiadási definíció létrehozása**.
+1.  Kattintson a felső menüben **készítése és kiadása** &gt; **kiadásokban** &gt; **kiadási definíció létrehozása**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-3.  Válassza ki a **üres folyamat** sablont.
+1.  Válassza ki a **üres folyamat** sablont.
 
-4.  Adja meg a környezet nevét.
+1.  Adja meg a környezet nevét.
 
-5.  A Git-összetevő hozzáadása, és válassza ki az adat-előállító konfigurálva az egyazon adattárban. Válasszon `adf_publish` , az alapértelmezett ággal alapértelmezett legújabb verziójával.
+1.  A Git-összetevő hozzáadása, és válassza ki az adat-előállító konfigurálva az egyazon adattárban. Válasszon `adf_publish` , az alapértelmezett ággal alapértelmezett legújabb verziójával.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-7.  Egy Azure Resource Manager üzembe helyezési feladat hozzáadása:
+1.  Egy Azure Resource Manager üzembe helyezési feladat hozzáadása:
 
     a.  Új feladat létrehozása, keressen rá a **Azure erőforráscsoport-telepítés**, és adja hozzá.
 
@@ -109,9 +109,9 @@ Az alábbiakban a lépések a VSTS-kiadási beállításához, adat-előállít�
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-8.  A kiadási definíció mentéséhez.
+1.  A kiadási definíció mentéséhez.
 
-9.  Hozzon létre egy új kiadása, a kiadási definíció.
+1.  Hozzon létre egy új kiadása, a kiadási definíció.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -144,7 +144,7 @@ A titkos kulcsok kezeléséhez két módja van:
 
     -   A paraméterfájl kell lennie, valamint a közzététel ágban.
 
-2.  Adjon hozzá egy [Azure Key Vault feladat](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) az előző szakaszban ismertetett Azure Resource Manager üzembe helyezése előtt:
+1.  Adjon hozzá egy [Azure Key Vault feladat](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) az előző szakaszban ismertetett Azure Resource Manager üzembe helyezése előtt:
 
     -   Válassza ki a **feladatok** lapon, hozzon létre egy új feladatot, keressen rá a **Azure Key Vault** , és adja hozzá.
 
@@ -160,9 +160,9 @@ Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Akt�
 
 1.  A VSTS-kiadási tevékenységek lapján keresse meg **Azure PowerShell-lel** , és adja hozzá.
 
-2.  Válasszon **Azure Resource Manager** kapcsolatként írja be, és válassza ki az előfizetését.
+1.  Válasszon **Azure Resource Manager** kapcsolatként írja be, és válassza ki az előfizetését.
 
-3.  Válasszon **beágyazott parancsfájlja** szkriptet írja be, és adja meg a kódot. A következő példa leállítja az eseményindítók:
+1.  Válasszon **beágyazott parancsfájlja** szkriptet írja be, és adja meg a kódot. A következő példa leállítja az eseményindítók:
 
     ```powershell
     $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName

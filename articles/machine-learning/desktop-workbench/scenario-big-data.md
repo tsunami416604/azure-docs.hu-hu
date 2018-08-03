@@ -1,6 +1,6 @@
 ---
-title: Kiszolgáló Munkaterhelés előrejelzése terabájtos adatkészleteket - Azure a |} Microsoft Docs
-description: How Azure Machine Learning munkaterület használatával a big data a gépi tanulási modell betanításához.
+title: Kiszolgálói számítási feladatok előrejelzése terabájtnyi adatot – Azure |} A Microsoft Docs
+description: A big data, egy gépi tanulási modell betanításához az Azure Machine Learning Workbench használatával hogyan.
 services: machine-learning
 documentationcenter: ''
 author: daden
@@ -9,62 +9,62 @@ editor: daden
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 450c033fbce3544cdc17ddc6d47ff726b01a4d3e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832662"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39460246"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
 
-Ez a cikk ismerteti, adatszakértőkön használatát Azure Machine Learning-munkaterület fejlesztéséhez megoldások, amelyek a big Data típusú adatok használata szükséges. Indítson el egy nagy adatkészlet minta az, adatok előkészítése, a szolgáltatás műszaki osztály és a gépi tanulás iterációt, és ezután bővítse a folyamat a teljes nagy adatkészletben. 
+Ez a cikk ismerteti, hogyan adatszakértők az Azure Machine Learning Workbench használatát a big Data-megoldások fejlesztéséhez. Indítsa el a nagyméretű mintát, iteráció az adat-előkészítési funkciófejlesztési és gépi tanulási és majd kiterjeszthetik az a folyamat a teljes nagyméretű adathalmazon. 
 
-Elsajátíthatja a Machine Learning-munkaterület az alábbi főbb képességeket:
-* A számítási célok között válthat. Állítsa be a különböző számítási célokat, és azok kísérletezhet használatát. Ebben a példában egy Ubuntu DSVM és az Azure HDInsight-fürtök akár használhatja a számítási célokat. Beállíthatja úgy is a számítási célokat, attól függően, hogy az erőforrások rendelkezésre állását. Különösen után kiterjesztése a Spark-fürtön a több munkavégző csomópontokhoz, használhatja a Machine Learning-munkaterület erőforrásoknak kísérlet futtatása felgyorsítása érdekében.
-* Az előzmények követésének futtassa. Machine Learning munkaterület segítségével nyomon követheti a gépi tanulási modellek és más metrikákkal érdeklő teljesítményét.
-* A machine learning modell operationalization. A Machine Learning munkaterületen beépített eszközei segítségével képzett gépi tanulási modell Azure tárolószolgáltatás egy webszolgáltatás telepítése. A webszolgáltatás segítségével is REST API-hívások keresztül mini kötegelt előrejelzéseket beolvasása. 
-* Terabájt adatok támogatása.
+Megismerkedhet a Machine Learning Workbench alkalmazásban az alábbi fő lehetőségeket:
+* Közötti könnyű váltás számítási céljainak. Állítsa be a különböző számítási célnak, és kísérletezés használni őket. Ebben a példában használhatja egy Ubuntu dsvm-hez és a egy Azure HDInsight-fürtöt, a számítási célokhoz. Beállíthatja, hogy a számítási célokhoz, rendelkezésre álló erőforrások függően. Különösen követően horizontális felskálázás a Spark-fürtöt, a további feldolgozó csomópontokat, használhatja a Machine Learning Workbench erőforrásai a Kísérletezési futtatások felgyorsítása érdekében.
+* Futtassa a előzményeinek nyomon követése. Machine Learning Workbench használatával követheti nyomon a gépi tanulási modelleket és más érdekes mérőszám vizsgálatára.
+* A gépi tanulási modellt az operacionalizáláshoz. A beépített eszközök Machine Learning Workbench használatával a betanított gépi tanulási a modellt webszolgáltatásként, amely az Azure Container Service üzembe helyezése. A webszolgáltatás segítségével REST API-hívások keresztül mini batch előrejelzés beolvasása. 
+* Több terabájtnyi adat támogatása.
 
 > [!NOTE]
-> Kódminták és egyéb kapcsolódó ebben a példában, lásd: [GitHub](https://github.com/Azure/MachineLearningSamples-BigData).
+> Kódminták és egyéb anyagok, ebben a példában kapcsolatos: [GitHub](https://github.com/Azure/MachineLearningSamples-BigData).
 > 
 
-## <a name="use-case-overview"></a>Használja az eset áttekintése
+## <a name="use-case-overview"></a>Használati eset – áttekintés
 
-Az előrejelzés a munkaterhelést kiszolgáló technológia cégek, amelyek a saját infrastruktúra kezelése általános üzleti szükség. Infrastrukturális költségeinek csökkentése érdekében használja a kiszolgálókon futó szolgáltatások kell csoportosítja a gépek kevesebb futtatnak. Szolgáltatások színvonalát kiszolgálókon futó a további gépek futtatásához meg kell adni. 
+A számítási feladatok kiszolgálókon előrejelzés technológiai vállalatok, amelyek a saját infrastruktúra felügyelete közös üzleti szüksége. Infrastrukturális költségeinek csökkentése érdekében használja a kiszolgálókon futó szolgáltatások szerint kell csoportosítani együtt kevesebb gépeken futtathatók. A szolgáltatások színvonalát kiszolgálókon futó további gépek kell megadni. 
 
-Ebben a forgatókönyvben koncentrálhat munkaterhelés előrejelzés minden gépet (vagy kiszolgáló). Különösen használhatja a munkamenetadatok az egyes kiszolgálókon előre jelezni jövőbeli annak a kiszolgálónak a munkaterhelési osztály. A terhelés, az egyes kiszolgálók alacsony, közepes és magas osztályok azokat a véletlenszerű erdő osztályozó használatával besorolása [Apache Spark ML](https://spark.apache.org/docs/2.1.1/ml-guide.html). Gépi tanulási módszerek és a munkafolyamat ebben a példában egyszerűen bővíthető további hasonló problémákat okozhatnak. 
+Ebben a forgatókönyvben összpontosíthat számítási feladatok előrejelzése minden gép (vagy kiszolgáló). Különösen használhatja a munkamenetadatok minden kiszolgálón előre jelezni a jövőbeli annak a kiszolgálónak a munkaterhelési osztály. A terhelés, az egyes kiszolgálók alacsony, közepes és magas osztályok, a véletlenszerű erdő osztályozó használatával besorolása [Apache Spark ML](https://spark.apache.org/docs/2.1.1/ml-guide.html). A machine learning-technikákat, és ebben a példában a munkafolyamat egyszerűen bővíthető más hasonló problémák. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a példa futtatásához az Előfeltételek a következők:
 
-* Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverzió érhetők el).
-* Egy telepített példánya [Azure Machine Learning-munkaterület](../service/overview-what-is-azure-ml.md). A program telepítéséhez, és hozzon létre egy munkaterületet, tekintse meg a [gyors üzembe helyezés a telepítési útmutató](../service/quickstart-installation.md). Ha több előfizetéssel rendelkezik, akkor [állítsa be a kívánt előfizetés kell lennie az aktuális aktív előfizetéssel](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set).
-* Windows 10 (a példában szereplő utasításokat általában azonosak macOS rendszerekhez).
-* Egy adatok tudományos virtuális gép (DSVM) Linux (Ubuntu), lehetőleg USA keleti régiójában, ahol az adatok megkeresi a rendszerhez. Megadhat egy Ubuntu DSVM következő [ezeket az utasításokat](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Azt is láthatja, [a gyors üzembe helyezés](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Legalább 8 maggal és 32 GB memóriát a virtuális gép használatát javasoljuk. 
+* Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
+* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Telepítse a programot, és hozzon létre egy munkaterületet, tekintse meg a [rövid telepítési útmutatójában](../service/quickstart-installation.md). Ha több előfizetéssel rendelkezik, akkor az [állítsa be a kívánt előfizetést, az aktuális aktív előfizetést kell](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set).
+* A Windows 10-es (az ebben a példában általában ugyanezek az utasítások érvényesek a macOS rendszerekhez).
+* Egy adatelemzési virtuális gép (DSVM) Linux (Ubuntu), lehetőleg az USA keleti régiójában, ahol az adatokat keresi meg. A következő kiépíthet egy Ubuntu DSVM [ezek az utasítások](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Emellett megtekintheti [ebben a rövid útmutatóban](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Legalább 8 maggal és 32 GB memóriát a virtuális gép használatát javasoljuk. 
 
-Kövesse a [utasítás](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) a virtuális Gépre jelszó nélküli sudoer hozzáférésének engedélyezésére vonatkozó AML munkaterületet.  Ha szeretné használni [SSH-alapú hitelesítés létrehozásáért és a virtuális gép AML munkaterület](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). Ebben a példában a jelszót a virtuális gép eléréséhez használjuk.  A következő tábla mentése a későbbi lépésekben DSVM információval:
+Kövesse a [utasítás](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) a virtuális Gépet a jelszó nélküli sudoer-hozzáférésének engedélyezésére vonatkozó AML Workbench.  Ha szeretné használni [SSH-alapú hitelesítés létrehozásáról és használatáról a virtuális gép AML workbenchben](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). Ebben a példában a jelszó eléri a virtuális Gépet használjuk.  Mentse az alábbi táblázat a DSVM-adatokat a későbbi lépésekben:
 
  Mező neve| Érték |  
  |------------|------|
-DSVM IP-cím | xxx|
+A DSVM IP-cím | xxx|
  Felhasználónév  | xxx|
  Jelszó   | xxx|
 
 
- Használja a virtuális gép, és választhatja [Docker-motorhoz](https://docs.docker.com/engine/) telepítve.
+ Választhatja az összes virtuális gép használata [Docker-motor](https://docs.docker.com/engine/) telepítve.
 
-* HDInsight Spark-fürtöt, Hortonworks Data Platform 3.6 és Spark-verzióval rendelkező 2.1.x, lehetőség szerint az USA keleti régiójában, ahol az adatok keresése. Látogasson el [Apache Spark-fürt létrehozása az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) a HDInsight-fürtök létrehozása vonatkozó további információért. Az egyes munkavégző 16 maggal és 112 GB memóriát a három-munkavégző fürt használatát javasoljuk. Vagy egyszerűen kiválaszthatja a virtuális gép típusát `D12 V2` az átjárócsomópont, és `D14 V2` a munkavégző csomópont. A fürt központi telepítése nagyjából 20 percet vesz igénybe. A fürt nevét, az SSH-felhasználónév és a jelszó próbálhatja ki az ebben a példában van szüksége. Mentse a következő táblázat a későbbi lépésekben az Azure HDInsight fürt adatai:
+* HDInsight Spark-fürt 3.6-os verziója Hortonworks Data Platform és a Spark-verzió 2.1.x, lehetőség szerint az USA keleti régiójában, ahol az adatokat keresi meg. Látogasson el [Apache Spark-fürt létrehozása az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) HDInsight fürtök létrehozásával kapcsolatos további részletekért. Az egyes feldolgozói 16 maggal és 112 GB memóriával rendelkező egy három-feldolgozó fürt használatát javasoljuk. Vagy egyszerűen kiválaszthatja a virtuális gép típusa `D12 V2` a fő csomópontot és `D14 V2` a feldolgozó csomóponton. A fürt a telepítés körülbelül 20 percet vesz igénybe. A fürt nevét, SSH-felhasználónév és jelszó próbálhatja ki ebben a példában van szüksége. Mentse az alábbi táblázat a későbbi lépésekben az Azure HDInsight fürt adatai:
 
  Mező neve| Érték |  
  |------------|------|
@@ -73,7 +73,7 @@ DSVM IP-cím | xxx|
  Jelszó   | xxx|
 
 
-* Egy Azure Storage-fiók. Követésével [ezeket az utasításokat](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) kattintva létrehozhat egyet. Is, hozzon létre két titkos blob tárolók nevében `fullmodel` és `onemonthmodel` az ezt a tárfiókot. A tárfiók tevékenységgel menthetők a köztes számítási eredmények és a gépi tanulási modellek. A tárfiók nevét és a hozzáférési kulcsot próbálhatja ki az ebben a példában van szüksége. A következő tábla mentése a későbbi lépésekben az Azure storage-fiók információval:
+* Egy Azure Storage-fiók. Követheti [ezek az utasítások](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) hozhat létre egyet. Emellett létre két privát blob-tárolók a nevekkel `fullmodel` és `onemonthmodel` a tárfiók. A storage-fiók segítségével számítási köztes eredményeket és gépi tanulási modelleket. A tárfiók nevét és kulcsát próbálhatja ki ebben a példában van szüksége. Mentse az alábbi táblázat a következő későbbi lépésekben az Azure storage-fiók adatait:
 
  Mező neve| Érték |  
  |------------|------|
@@ -81,34 +81,34 @@ DSVM IP-cím | xxx|
  Hozzáférési kulcs  | xxx|
 
 
-Az Ubuntu DSVM és az előfeltétel-ellenőrzési lista létrehozása az Azure HDInsight-fürt számítási célokat. Számítási célpontjai a számítási erőforrással a környezetben a Machine Learning-munkaterület, amely eltérhet a munkaterületet futtató számítógépre.   
+Az Ubuntu dsvm-hez és a az előfeltétel-ellenőrzési lista hozta létre az Azure HDInsight-fürt is a számítási célokhoz. A számítási célok a számítási erőforrás keretén belül a Machine Learning Workbench, amely eltérhet a számítógép, amelyen fut a Workbench.   
 
-## <a name="create-a-new-workbench-project"></a>Új munkaterület-projekt létrehozása
+## <a name="create-a-new-workbench-project"></a>Egy új Workbench-projekt létrehozása
 
 Hozzon létre egy új projektet ebben a példában egy sablon segítségével:
 1.  Nyissa meg a Machine Learning Workbenchet.
-2.  Az a **projektek** lapon jelölje be a **+** aláírásához, és válassza ki **új projekt**.
-3.  Az a **új projekt létrehozása** ablaktáblán, töltse ki az adatokat az új projekt.
-4.  Az a **keresési Projektsablonjai** keresési mezőbe, írja be **Munkaterhelés előrejelzése terabájt adatokon**, és válassza ki a sablont.
+2.  Az a **projektek** lapon válassza ki a **+** aláírásához, és válassza ki **új projekt**.
+3.  Az a **új projekt létrehozása** panelen adja meg az információkat az új projekt.
+4.  Az a **projektsablonok keresése** írja be a keresőmezőbe **számítási feladatok előrejelzése több Terabájtnyi adat**, és válassza ki a sablont.
 5.  Kattintson a **Létrehozás** gombra.
 
-Létrehozhat egy munkaterület-projektet egy előre létrehozott git-tárház következő [ezeket az utasításokat](./tutorial-classifying-iris-part-1.md).  
-Futtatás `git status` verziójához nyomkövetési fájlok állapotának vizsgálata.
+Létrehozhat egy Workbench-projekt előre létrehozott git-tárházat a következő [ezeket az utasításokat](./tutorial-classifying-iris-part-1.md).  
+Futtatás `git status` a fájlok nyomon követése verzió állapotának vizsgálata.
 
 ## <a name="data-description"></a>Adatok leírása
 
-Ebben a példában használt adatok szintetizált kiszolgáló-munkaterhelési adatok. Egy Azure Blob storage-fiókot, amely nyilvánosan elérhető az USA keleti régiójában az található. A speciális tárolási fiók adatainak megtalálhatók a `dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) formátumban "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Az adatok közvetlenül a Blob-tároló is használhatja. Ha a tárolót használja a rendszer sok felhasználó által egy időben, [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) az adatok letöltése a saját tároló legjobb kísérletezhet élmény elérése érdekében. 
+Ebben a példában használt adatok szintetizált kiszolgáló-munkaterhelési adatok el. Egy Azure Blob storage-fiókot, amely nyilvánosan elérhető az USA keleti régiójában vannak tárolva. Az adott tárolási fiók adatai megtalálhatók a `dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) formátumban "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Az adatok közvetlenül a Blob storage-ból is használhatja. Ha a storage egyszerre több felhasználó használ, akkor használhatja [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) saját színvonalú Kísérletezési a storage-bA az adatok letöltéséhez. 
 
-Az összes adat mérete körülbelül 1 TB. Minden fájl körülbelül 1 – 3 GB-tal, és a CSV fájlformátum, fejléc nélküli. Minden egyes soraiban levő adatok a terhelés, az adott kiszolgálón tranzakció jelöli. A részletes információkat az adatok séma a következőképpen történik:
+Az összes adat mérete körülbelül 1 TB. Minden fájl körülbelül 1 – 3 GB, és a CSV fájlformátum, fejléc nélküli. Minden egyes sorára adatokat jelöli a terhelés egy adott kiszolgálón futó tranzakció. A részletes információkat a sémát a következőképpen történik:
 
 Oszlopszám | Mező neve| Típus | Leírás |  
 |------------|------|-------------|---------------|
-1  | `SessionStart` | Dátum és idő |    Munkamenet kezdési ideje
-2  |`SessionEnd`    | Dátum és idő | Munkamenet befejezése
+1  | `SessionStart` | Dátum és idő |    Munkamenet kezdő időpontja
+2  |`SessionEnd`    | Dátum és idő | Munkamenet vége
 3 |`ConcurrentConnectionCounts` | Egész szám | Egyidejű kapcsolatok száma
-4 | `MbytesTransferred` | Dupla | Normalizált adatforgalmat mérete (MB)
-5 | `ServiceGrade` | Egész szám |  A munkamenet szolgáltatáshoz osztály
-6 | `HTTP1` | Egész szám|  Munkamenet HTTP1 vagy HTTP2 használ
+4 | `MbytesTransferred` | Dupla | Normalizált adatátvitelre (MB)
+5 | `ServiceGrade` | Egész szám |  Szolgáltatás szintű a munkamenet
+6 | `HTTP1` | Egész szám|  Munkamenet HTTP1, vagy a HTTP2 használja.
 7 |`ServerType` | Egész szám   |Kiszolgáló típusa
 8 |`SubService_1_Load` | Dupla |   Subservice 1 betöltése
 9 | `SubService_2_Load` | Dupla |  Subservice 2 betöltése
@@ -116,128 +116,128 @@ Oszlopszám | Mező neve| Típus | Leírás |
 11 |`SubService_4_Load` | Dupla |  Subservice 4 betöltése
 12 | `SubService_5_Load`| Dupla |      Subservice 5 betöltése
 13 |`SecureBytes_Load`  | Dupla | Biztonságos bájt betöltése
-14 |`TotalLoad` | Dupla | Kiszolgáló teljes terhelése
-15 |`ClientIP` | Karakterlánc|    Ügyfél IP-címe
-16 |`ServerIP` | Karakterlánc|    Kiszolgáló IP-címe
+14 |`TotalLoad` | Dupla | A kiszolgáló teljes terhelés
+15 |`ClientIP` | Sztring|    Ügyfél IP-címe
+16 |`ServerIP` | Sztring|    Kiszolgáló IP-címe
 
 
 
-Vegye figyelembe, hogy a várt típusok az előző táblázatban láthatók. Hiányzó értékek és a szabálytalan Konfigurációadatok problémái miatt nem biztos, hogy az adattípusok ténylegesen van a várt módon van. Az adatfeldolgozás figyelembe kell venniük a. 
+Vegye figyelembe, hogy a várt adattípusok alapján az előző táblázatban szerepel. Hiányzó értékeket, és szabálytalan Konfigurációadatok problémái miatt nem nem biztos, hogy az adattípusok ténylegesen vannak a várt módon. Adatok feldolgozása figyelembe kell venniük a. 
 
 
-## <a name="scenario-structure"></a>A forgatókönyv struktúra
+## <a name="scenario-structure"></a>A forgatókönyv-struktúra
 
-Ebben a példában a fájlokat az alábbiak szerint vannak rendszerezve.
+Ebben a példában a fájlokat a következőképpen vannak rendszerezve.
 
 | Fájlnév | Típus | Leírás |
 |-----------|------|-------------|
-| `Code` | Mappa | A mappa tartalmaz a példában a kódot. |
-| `Config` | Mappa | A mappa a konfigurációs fájlok találhatók. |
-| `Image` | Mappa | A lemezképek az információs fájl mentéséhez használt mappa. |
+| `Code` | Mappa | A mappa tartalmazza az összes, a példában szereplő kód. |
+| `Config` | Mappa | A mappa a konfigurációs fájlokat tartalmazza. |
+| `Image` | Mappa | A rendszerképeket az információs fájl mentéséhez használt mappa. |
 | `Model` | Mappa | A Blob storage-ból letöltött modell fájlok mentéséhez használt mappa. |
-| `Code/etl.py` | Python-fájl | Adatok előkészítése és a szolgáltatás műszaki osztály használt Python fájlt. |
-| `Code/train.py` | Python-fájl | A Python-fájl egy három-osztály multi-classfication modell betanításához használandó.  |
-| `Code/webservice.py` | Python-fájl | A Python-fájl operationalization használatos.  |
-| `Code/scoring_webservice.py` | Python-fájl |  A Python fájl data transformation használja, és a webes szolgáltatás hívása. |
-| `Code/O16Npreprocessing.py` | Python-fájl | A használt scoring_webservice.py adatok előfeldolgozása Python-fájl.  |
-| `Code/util.py` | Python-fájl | A Python-fájl olvasására vagy írására Azure-blobokat kódot tartalmazó.  
-| `Config/storageconfig.json` | JSON-fájl | Az Azure blob-tároló, amely tárolja a köztes eredmények és a modell feldolgozása és képzési egy hónapos adatokon konfigurációs fájlját. |
-| `Config/fulldata_storageconfig.json` | JSON-fájl | Az Azure blob-tároló, amely tárolja a köztes eredmények és a feldolgozás és képzési modell a teljes adatkészletet a konfigurációs fájl.|
-| `Config/webservice.json` | JSON-fájl | Scoring_webservice.py konfigurációs fájlját.|
-| `Config/conda_dependencies.yml` | YAM-fájl | A Conda függőségi fájlt. |
-| `Config/conda_dependencies_webservice.yml` | YAM-fájl | A webszolgáltatás Conda függőségi fájlt.|
-| `Config/dsvm_spark_dependencies.yml` | YAM-fájl | Ubuntu DSVM függőségi Spark-fájl. |
-| `Config/hdi_spark_dependencies.yml` | YAM-fájl | A HDInsight Spark-fürt függőségi Spark-fájl. |
-| `README.md` | Markdown-fájlként | Az információs markdown-fájl. |
-| `Code/download_model.py` | Python-fájl | A Python fájlt a modell fájlokat letölteni az Azure blob egy helyi lemezre. |
-| `Docs/DownloadModelsFromBlob.md` | Markdown-fájlként | A markdown-fájl, amely futtatásával kapcsolatos utasításokat tartalmazza `Code/download_model.py`. |
+| `Code/etl.py` | Soubor Pythonu | Az adat-előkészítési és funkciófejlesztési Python-fájlt. |
+| `Code/train.py` | Soubor Pythonu | A Python-fájlt egy harmadik szintű multi-classfication modell betanításához használja.  |
+| `Code/webservice.py` | Soubor Pythonu | A Python-fájlt az operacionalizáláshoz használni.  |
+| `Code/scoring_webservice.py` | Soubor Pythonu |  A Python-fájlt adatátalakítás használja, és a webszolgáltatás hívásakor. |
+| `Code/O16Npreprocessing.py` | Soubor Pythonu | A Python-fájlt a scoring_webservice.py az adatok előfeldolgozása használt.  |
+| `Code/util.py` | Soubor Pythonu | A Python-fájlt, amely tartalmazza a kódot az Azure-blobok írásakor vagy olvasásakor.  
+| `Config/storageconfig.json` | JSON-fájl | Az Azure blob-tároló, amely egy hónapig adatokat tárolja a köztes eredményeket és a modell feldolgozása és képzési konfigurációs fájljának. |
+| `Config/fulldata_storageconfig.json` | JSON-fájl | A konfigurációs fájlt az Azure blob-tároló, amely tárolja a köztes eredményeket és a modell feldolgozása és képzés a teljes adatkészlet.|
+| `Config/webservice.json` | JSON-fájl | A scoring_webservice.py konfigurációs fájlt.|
+| `Config/conda_dependencies.yml` | YAML-fájl | A Conda-függőség fájlt. |
+| `Config/conda_dependencies_webservice.yml` | YAML-fájl | A web service függőségi Conda-fájlt.|
+| `Config/dsvm_spark_dependencies.yml` | YAML-fájl | Ubuntu DSVM függőségi Spark-fájlt. |
+| `Config/hdi_spark_dependencies.yml` | YAML-fájl | A HDInsight Spark-fürt Spark függőségi fájlt. |
+| `README.md` | Markdown-fájl | Az információs markdown-fájl. |
+| `Code/download_model.py` | Soubor Pythonu | A Python-fájlt a modell fájlok letöltéséhez az Azure blob egy helyi lemezre. |
+| `Docs/DownloadModelsFromBlob.md` | Markdown-fájl | A markdown-fájlban, hogyan futtathat vonatkozó utasításokat tartalmazó `Code/download_model.py`. |
 
 
 
-### <a name="data-flow"></a>Adatfolyam
+### <a name="data-flow"></a>Az adatfolyam
 
-A kód [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) adatokat tölt a nyilvánosan elérhető tárolóból (`dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json)). Adatok előkészítése és a szolgáltatás műszaki osztály tartalmaz, és menti a köztes számítási eredmények és -modellek a saját személyes tárolóba. A kód [ `Code/train.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/train.py) betölti a köztes számítási eredmények személyes tárolójából. a több osztály besorolási modell betanítja és ír a betanított gépi tanulási modell a személyes tárolóba. 
+A kód [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) adatokat tölt be a nyilvánosan elérhető tárolót (`dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json)). Adat-előkészítési és funkciófejlesztési feladatok tartalmazza, és menti a köztes számítási eredményei és a modellek a saját privát tároló. A kód [ `Code/train.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/train.py) köztes számítás eredménye tölt be a személyes tárolót, betanítja a többcsoportos osztályozási modell és a személyes tárolóba ír a betanított machine learning-modellhez. 
 
-Egy tároló egy hónapos adatkészlet és a teljes adatkészlet kísérletezhet a kísérleti kell használni. Az adatok és modellek Parquet fájlba menti, mert minden egyes fájl ténylegesen a tárolóban, több blobot tartalmazó mappa. Az eredményül kapott tároló a következőképpen néz ki:
+Az egy hónapos adatkészlet és a egy másik, a teljes adathalmazon kísérletezéssel kísérletezéssel egy tárolót kell használnia. Az adatok és modellek menti a Parquet-fájlok, mert minden egyes fájl valójában a tárolóban, több blobokat tartalmazó mappa. Az eredményül kapott tárolót a következőképpen néz ki:
 
-| A BLOB előtag neve | Típus | Leírás |
+| Blobnév előtagja | Típus | Leírás |
 |-----------|------|-------------|
-| featureScaleModel | Parquet | Standard scaler modell numerikus szolgáltatások. |
-| stringIndexModel | Parquet | String indexelő modell nem numerikus szolgáltatások.|
-| oneHotEncoderModel|Parquet | Egy közbeni kódoló modell kategorikus szolgáltatások. |
-| mlModel | Parquet | Betanított gépi tanulási modellek. |
-| információ| Python körte fájl | Az átalakított adatok, beleértve a képzési start, betanításának vége, időtartam, a timestamp train-teszt felosztása és oszlopok indexelő és egy közbeni kódolást.
+| featureScaleModel | Parquet eszközökben | Standard szintű scaler modell numerikus funkciók. |
+| stringIndexModel | Parquet eszközökben | A karakterlánc-indexelő modell nem numerikus funkciók.|
+| oneHotEncoderModel|Parquet eszközökben | Egy gyakori kódoló modell kategorikus funkciók. |
+| mlModel | Parquet eszközökben | Betanított gépi tanulási modell. |
+| információ| Python pickle-fájl | Az átalakított adatok, beleértve a betanítási kezdő, képzések teljes, időtartam, jelölő időbélyegző információ tanítási és tesztelési felosztása és az indexelés és a egy gyakori kódolási oszlopok.
 
-A fájlok és az előző táblázatban szereplő blobok operationalization érvényesek.
+A fájlok és az előző táblázatban szereplő blobok az operacionalizáláshoz szolgálnak.
 
 
-### <a name="model-development"></a>Modell fejlesztési
+### <a name="model-development"></a>Modell fejlesztése
 
 #### <a name="architecture-diagram"></a>Architektúradiagram
 
 
-Az alábbi ábra bemutatja a Machine Learning-munkaterület használatával a modellezése a végpont munkafolyamat: ![architektúrája](media/scenario-big-data/architecture.PNG)
+Az alábbi ábrán látható, a modell fejlesztése a Machine Learning Workbench használatával a végpontok közötti munkafolyamat: ![architektúra](media/scenario-big-data/architecture.PNG)
 
-A következő szakaszokban megmutatjuk, a modell fejlesztési Machine Learning-munkaterület a távoli számítási cél funkcióinak használatával. Azt először kis mennyiségű mintaadatokat betölteni, és futtassa a parancsfájlt [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) egy Ubuntu DSVM gyors közelítés a. További korlátozhatja, hogy a munkát, mi [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) úgy, hogy gyorsabb közelítés felesleges argumentum. A végén a HDInsight-fürtök teljes adatokkal betanítása használjuk.     
+A következő szakaszokban bemutatjuk, a modell fejlesztési távoli számítási cél funkciója segítségével a Machine Learning Workbench alkalmazásban. Azt először egy kisebb mennyiségű mintaadatok betöltése, és futtassa a szkriptet [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) egy Ubuntu dsvm-hez a gyors ismétlését a. További korlátozhatja, hogy mi a munkahelyi [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) gyorsabb közelítés felesleges argumentum átadásával. A végén a egy HDInsight-fürtön az adatok teljes betanításához használjuk.     
 
-A [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) fájl betölti és előkészíti az adatokat, és végrehajtja a szolgáltatás mérnöki csapathoz. Azt a két argumentumot fogad el:
-* Egy konfigurációs fájl Blob tároló, a köztes számítási eredmények és -modellek tárolására.
-* Egy hibakeresési config gyorsabb közelítés argumentum.
+A [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) fájlt tölt be, és előkészíti az adatokat, és funkciófejlesztési végrehajtja. Két argumentumot fogad el:
+* A Blob storage-tárolót, a köztes számítási eredmények és a modellek tárolására szolgáló konfigurációs fájl.
+* A gyorsabb iteráció hibakeresési config argumentum.
 
-Az első argumentum `configFilename`, ahol tárolni a Blob storage-információkat, és az adatok betöltési helyének megadása a helyi konfigurációs fájlban van. Alapértelmezés szerint van [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json), és megjelenik a futtatásához egy hónapos adatok használhatók. Is magában foglalja az [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json), amely használja a teljes adatkészlet futtatásához szükséges. A tartalom a konfigurációban a következőképpen történik: 
+Az első argumentum `configFilename`, ahol tárolni a Blob storage-adatokat, és adja meg az adatok betöltéséhez helyét egy helyi konfigurációs fájl. Alapértelmezés szerint a [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json), és használható az egy hónapos adatok futtatni fogja. Emellett tartalmazza [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json), mert szüksége lesz a teljes adatkészlet futtatásához használandó. A tartalom a konfigurációban a következőképpen történik: 
 
 | Mező | Típus | Leírás |
 |-----------|------|-------------|
-| StorageAccount | Karakterlánc | Az Azure Storage-fiók neve |
-| storageContainer | Karakterlánc | A köztes eredmények tárolásához Azure Storage-fiók tároló |
-| StorageKey tulajdonságát | Karakterlánc |Az Azure tárfiók_elérési_kulcsa |
-| dataFile|Karakterlánc | Adatforrásfájlokat  |
-| időtartam| Karakterlánc | Az adatok az adatforrásfájlokat időtartama|
+| storageAccount | Sztring | Az Azure Storage-fiók neve |
+| storageContainer | Sztring | Az Azure Storage-fiók segítségével tárolja a köztes eredményeket tároló |
+| StorageKey tulajdonságát | Sztring |Az Azure Tárfiók hozzáférési kulcsát |
+| dataFile|Sztring | Forrásfájljainak adatok  |
+| időtartam| Sztring | Az adatok az adatforrásfájlokat időtartama|
 
-A módosítsa `Config/storageconfig.json` és `Config/fulldata_storageconfig.json` a tárfiókot, biztonságitár-kulcs és a köztes eredményeket tárolni a blob-tároló konfigurálása. Alapértelmezés szerint a blob-tároló, a futtatásához egy hónapos adatok van `onemonthmodel`, és a teljes adatkészlet futtatásához a blob tároló `fullmodel`. Ellenőrizze, hogy ezekhez a tárolókhoz két hoz létre a tárfiók. A `dataFile` mezőjét [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) konfigurálja, hogy milyen adatok betöltése a [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py). A `duration` mező konfigurálja a tartományát, az adatokat tartalmazza. Az időtartam értéke ONE_MONTH, ha az adatok betöltése az adatok hét fájlok között csak egy CSV-fájlt kell 2016. júniusi. Ha a teljes, a teljes adatkészlet (1 TB) be van töltve. Nem kell módosítani `dataFile` és `duration` a két konfigurációs fájlokban.
+A módosítsa `Config/storageconfig.json` és `Config/fulldata_storageconfig.json` konfigurálása a tárfiókot, tárkulcs és a blob-tároló tárolja a köztes eredményeket. Alapértelmezés szerint a blob-tároló futtatása egy hónapig adatok a `onemonthmodel`, és a blob-tároló, a teljes adatkészlet futtatásához `fullmodel`. Ellenőrizze, hogy ezen két tárolót hoz létre a storage-fiókban. A `dataFile` mező [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) konfigurálja, hogy milyen adatok betöltése a [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py). A `duration` mezőben konfigurálja a tartomány szerepel. Az időtartam ONE_MONTH értékre van állítva, ha az adatok betöltése csak egy .csv fájlt az adatok hét fájlok között kell lennie a 2016. június. Ha a teljes, a teljes adatkészletet (1 TB) be van töltve. Nem kell módosítani `dataFile` és `duration` ezen két konfigurációs fájlokban.
 
-A második argumentum hibakeresési. FILTER_IP értékre állítaná lehetővé teszi, hogy egy gyorsabb munkamenetben. Ez a paraméter használata akkor hasznos, ha a parancsfájlok hibakeresése szeretné.
+A második argumentum értéke hibakeresési. Gyorsabb iteráció FILTER_IP állítja, lehetővé teszi. Ez a paraméter használata akkor hasznos, ha a parancsfájlok hibakeresése szeretné.
 
 > [!NOTE]
-> A következő parancsokat minden bármely argumentum változó helyére a tényleges értékével.
+> Az összes, a következő parancsokat cserélje le tényleges értékek bármely argumentum változó.
 > 
 
 
-#### <a name="model-development-on-the-docker-of-ubuntu-dsvm"></a>A Docker Ubuntu DSVM modell fejlesztése
+#### <a name="model-development-on-the-docker-of-ubuntu-dsvm"></a>A Docker az Ubuntu DSVM modell fejlesztése
 
-#####  <a name="1-set-up-the-compute-target"></a>1. A számítási cél beállítása
+#####  <a name="1-set-up-the-compute-target"></a>1. Állítsa be a számítási célnak
 
-Indítsa el a parancssorban a Machine Learning-munkaterület kiválasztásával **fájl** > **nyissa meg a parancssort**. Ezután futtassa: 
+Machine Learning Workbench parancssori először jelöljön ki **fájl** > **parancssor megnyitása**. Majd futtassa ezt: 
 
 ```az ml computetarget attach remotedocker --name dockerdsvm --address $DSVMIPaddress  --username $user --password $password ```
 
 A következő két fájlt a projekt aml_config mappában jönnek létre:
 
--  dockerdsvm.COMPUTE: Ez a fájl távoli végrehajtás cél a kapcsolat és a konfigurációs adatokat tartalmazza.
--  dockerdsvm.runconfig: ezt a fájlt egy olyan a munkaterületet üzemeltető alkalmazásban használt futtatási beállítások.
+-  dockerdsvm.COMPUTE: Ez a fájl egy távoli végrehajtási célként kapcsolat és a konfigurációs adatait tartalmazza.
+-  dockerdsvm.runconfig: ezt a fájlt egy olyan futtatási lehetőségek, a Workbench alkalmazásban használt.
 
-Keresse meg a dockerdsvm.runconfig, és módosítsa a konfigurációs mezők a következők:
+Keresse meg a dockerdsvm.runconfig, és ezek a mezők konfigurációjának módosítása a következőhöz:
 
     PrepareEnvironment: true 
     CondaDependenciesFile: Config/conda_dependencies.yml 
     SparkDependenciesFile: Config/dsvm_spark_dependencies.yml
 
-A projekt környezet előkészítése a következő futtatásával:
+A környezet előkészítése a projekt futtatásával:
 
 ```az ml experiment prepare -c dockerdsvm```
 
 
-A `PrepareEnvironment` true értéke esetén Machine Learning-munkaterület a futtatási környezetet hoz létre, amikor a feladat elküldése. `Config/conda_dependencies.yml` és `Config/dsvm_spark_dependencies.yml` a futtatási környezetet kell tartalmaznia. E két YMAL fájl szerkesztésével a Conda függőségeket, a Spark-konfiguráció és a külső függőségei bármikor módosíthatja. Ebben a példában a hozzáadott `azure-storage` és `azure-ml-api-sdk` a további Python-csomag `Config/conda_dependencies.yml`. Is hozzáadtunk `spark.default.parallelism`, `spark.executor.instances`, és `spark.executor.cores` a `Config/dsvm_spark_dependencies.yml`. 
+A `PrepareEnvironment` igaz értékű, Machine Learning Workbench a futtatási környezetet hoz létre, amikor egy feladat elküldése. `Config/conda_dependencies.yml` és `Config/dsvm_spark_dependencies.yml` a futtatási környezetet kell tartalmaznia. Mindig módosíthatja a Conda-függőségeket, a Spark-konfiguráció és a Spark függőségek YMAL két fájlt szerkesztésével. Ebben a példában hozzáadtunk `azure-storage` és `azure-ml-api-sdk` , további Python-csomagok `Config/conda_dependencies.yml`. Lehetővé tettük `spark.default.parallelism`, `spark.executor.instances`, és `spark.executor.cores` a `Config/dsvm_spark_dependencies.yml`. 
 
-#####  <a name="2-data-preparation-and-feature-engineering-on-dsvm-docker"></a>2. Adatok előkészítése, a szolgáltatás fejlesztés a DSVM Docker
+#####  <a name="2-data-preparation-and-feature-engineering-on-dsvm-docker"></a>2. Adat-előkészítési és a DSVM Docker funkciófejlesztési feladatok
 
-Futtassa a parancsfájlt `etl.py` DSVM Docker meg. Egy hibakeresési paraméter, amely az adott kiszolgálói IP-címekkel rendelkező betöltött adatok használja:
+Futtassa a szkriptet `etl.py` a dsvm-hez a Docker. Használja a hibakeresési paramétert szűri az adott kiszolgálói IP-címmel a betöltött adatokra:
 
 ```az ml experiment submit -t dockerdsvm -c dockerdsvm ./Code/etl.py ./Config/storageconfig.json FILTER_IP```
 
-Keresse meg a oldali panelen, és válassza ki **futtatása** futtatási előzményeinek megtekintéséhez `etl.py`. Láthatja, hogy a futási idő körülbelül két perc. Ha módosítania kell a kódot az új funkciókat tartalmaznak, gyorsabb iterációs biztosít, mint a második argumentum FILTER_IP biztosít. Szüksége lehet, hogy ezt a lépést többször is lefuthat a saját gépi tanulási a problémákat, az adatkészlet vizsgálatát, vagy hozzon létre új szolgáltatások meghatározásakor. 
+A kiszolgálóoldali panelen keresse meg, és válassza ki **futtatása** futtatási előzményeinek megtekintéséhez `etl.py`. Figyelje meg, hogy a futási idő körülbelül két perc. Ha azt tervezi, hogy módosítania kell a kódot, többek között az új, a gyorsabb iteráció nyújtó második argumentumként FILTER_IP biztosít. Előfordulhat, hogy futtatni szeretné ezt a lépést több alkalommal a saját gépi tanulási problémák, ismerje meg az adatkészlet, vagy hozzon létre új szolgáltatások esetén. 
 
-A testre szabott korlátozás a terhelés, és, hogy milyen adatokat feldolgozni a további szűrési adatok felgyorsíthatja a iterációs folyamat a modell fejlesztés. Miközben kísérletezik, rendszeres időközönként mentse a módosításokat a kódban a Git-tárházba. Vegye figyelembe, hogy azt használja az alábbi kódot a `etl.py` a személyes tárolóba való hozzáférés engedélyezése:
+Milyen adatok betöltése, és további szűrési, hogy milyen adatokat feldolgozni a testre szabott korlátozás felgyorsíthatja az iteráció folyamatát modell fejlesztése. Kísérlet, mert rendszeres időközönként mentse a módosításokat a kódban, hogy a Git-tárházba. Vegye figyelembe, hogy használjuk-e a következő kódot a `etl.py` a személyes tárolóba a hozzáférés engedélyezése:
 
 ```python
 def attach_storage_container(spark, account, key):
@@ -251,67 +251,67 @@ attach_storage_container(spark, storageAccount, storageKey)
 ```
 
 
-Ezután futtassa a parancsfájlt `etl.py` DSVM Docker a hibakeresési paramétert FILTER_IP meg:
+Ezután futtassa a szkriptet `etl.py` a DSVM Docker, a hibakeresési paramétert FILTER_IP:
 
 ```az ml experiment submit -t dockerdsvm -c dockerdsvm ./Code/etl.py ./Config/storageconfig.json FALSE```
 
-Keresse meg a oldali panelen, és válassza ki **futtatása** futtatási előzményeinek megtekintéséhez `etl.py`. Figyelje meg, hogy a futási idő körülbelül négy perces van-e. Ebben a lépésben feldolgozott eredményét a tárolóba menti, és be töltve a train.py képzési. Emellett a string indexelő kódoló folyamatok és szabványos scalers menti a személyes tárolóba. Ezek a operationalization használhatók. 
+A kiszolgálóoldali panelen keresse meg, és válassza ki **futtatása** futtatási előzményeinek megtekintéséhez `etl.py`. Figyelje meg, hogy a futási idő körülbelül négy percet. Ebben a lépésben feldolgozott eredményét a tárolóba mentett, és betölti a train.py képzéshez. Emellett a karakterlánc-indexelők kódoló folyamatok és standard scalers menti a személyes tárolóba. Ezek a operacionalizálás használnak. 
 
 
-##### <a name="3-model-training-on-dsvm-docker"></a>3. A DSVM Docker modell betanítási
+##### <a name="3-model-training-on-dsvm-docker"></a>3. A DSVM Docker modell betanítása
 
-Futtassa a parancsfájlt `train.py` DSVM Docker meg:
+Futtassa a szkriptet `train.py` a DSVM Docker:
 
 ```az ml experiment submit -t dockerdsvm -c dockerdsvm ./Code/train.py ./Config/storageconfig.json```
 
-Ez a lépés a köztes számítási eredmények betölti a futni, hanem a `etl.py`, és a gépi tanulási modellek betanítja. Ez a lépés körülbelül két percet vesz igénybe.
+Ebben a lépésben a köztes számítási eredmények tölt be, a Futtatás `etl.py`, és a egy gépi tanulási modellt betanítja. Ebben a lépésben a nagyjából két percet vesz igénybe.
 
-Sikeresen befejezte a kis adatokon kísérletezhet, ha továbbra is a kísérleti futtatnak majd a teljes adatkészlet. Elindítsa ugyanazt a kódot, majd argumentum kísérletezhet és számítási cél módosításokat.  
+Ha sikeresen befejezte a kísérletezés a kis méretű adatokon, folytathatja a Kísérletezési futtathatók a teljes adatkészletet. Első lépésként használja ugyanazt a kódot, majd argumentum kísérletezhet és számítási cél módosításokat.  
 
-####  <a name="model-development-on-the-hdinsight-cluster"></a>Modell fejlesztése a HDInsight-fürt
+####  <a name="model-development-on-the-hdinsight-cluster"></a>Modell fejlesztése a HDInsight-fürtön
 
-##### <a name="1-create-the-compute-target-in-machine-learning-workbench-for-the-hdinsight-cluster"></a>1. A számítási cél Machine Learning-munkaterület létrehozása a HDInsight-fürt
+##### <a name="1-create-the-compute-target-in-machine-learning-workbench-for-the-hdinsight-cluster"></a>1. A számítási célnak a Machine Learning Workbench a HDInsight-fürt létrehozása
 
 ```az ml computetarget attach cluster --name myhdi --address $clustername-ssh.azurehdinsight.net --username $username --password $password```
 
 A következő két fájlt a aml_config mappában jönnek létre:
     
--  myhdi.COMPUTE: Ez a fájl tartalmazza a távoli végrehajtás cél a kapcsolat és konfigurációs információt.
--  myhdi.runconfig: ezt a fájlt a munkaterületre alkalmazásban használt futtatási beállítások van beállítva.
+-  myhdi.COMPUTE: Ez a fájl tartalmazza a távoli végrehajtás cél kapcsolat és a konfigurációs adatok.
+-  myhdi.runconfig: ezt a fájlt a futtatási lehetőségek, a Workbench alkalmazásban használt van beállítva.
 
 
-Keresse meg a myhdi.runconfig, és módosítsa a konfigurációs mezők a következők:
+Keresse meg a myhdi.runconfig, és ezek a mezők konfigurációjának módosítása a következőhöz:
 
     PrepareEnvironment: true 
     CondaDependenciesFile: Config/conda_dependencies.yml 
     SparkDependenciesFile: Config/hdi_spark_dependencies.yml
 
-A projekt környezet előkészítése a következő futtatásával:
+A környezet előkészítése a projekt futtatásával:
 
 ```az ml experiment prepare -c myhdi```
 
-Ez a lépés akár hét percet is igénybe vehet.
+Ebben a lépésben legfeljebb hét percet is igénybe vehet.
 
-##### <a name="2-data-preparation-and-feature-engineering-on-hdinsight-cluster"></a>2. Adatok előkészítése, a szolgáltatás fejlesztés HDInsight-fürt
+##### <a name="2-data-preparation-and-feature-engineering-on-hdinsight-cluster"></a>2. Adat-előkészítési és funkciófejlesztési HDInsight-fürtön
 
-Futtassa a parancsfájlt `etl.py`, a HDInsight-fürt teljes adatokkal:
+Futtassa a szkriptet `etl.py`, teljes adatokkal a HDInsight-fürtön:
 
 ```az ml experiment submit -a -t myhdi -c myhdi ./Code/etl.py Config/fulldata_storageconfig.json FALSE```
 
-Mivel ez a feladat (körülbelül két órás) viszonylag hosszú ideig tart, használhatja `-a` letiltása a kimeneti adatfolyam. Ha a feladat kész, a **futtatása előzmények**, megtekintheti az illesztőprogram, a tartományvezérlő naplókat. Ha automatikusan nagyobb fürt, újrakonfigurálhatja a konfigurációkat mindig `Config/hdi_spark_dependencies.yml` további példányok vagy magot használja. Például ha egy munkavégző – Négycsomópontos fürt, növelheti a értékének `spark.executor.instances` 5-7. Láthatja, hogy ez a lépés a kimenetét a **fullmodel** a tárfiókban lévő tároló. 
+Mivel ez a feladat tart viszonylag hosszú ideig (körülbelül két órát), használhatja `-a` letiltása a kimeneti adatfolyam. Ha a feladat befejeződött, a **futtatási előzmények**, az illesztőprogram, a vezérlő naplókat is megtekintheti. Ha nagyobb fürt, újrakonfigurálhatja az konfigurációi mindig `Config/hdi_spark_dependencies.yml` további példányok vagy magok használatára. Például ha egy feldolgozó – Négycsomópontos fürt, növelheti a értékét `spark.executor.instances` 5 – 7. Láthatja, hogy ez a lépés a kimenete a **fullmodel** a storage-fiókban lévő tárolóba. 
 
 
-##### <a name="3-model-training-on-hdinsight-cluster"></a>3. HDInsight-fürt tanítási modell
+##### <a name="3-model-training-on-hdinsight-cluster"></a>3. HDInsight-fürtön a modell betanítása
 
-Futtassa a parancsfájlt `train.py` HDInsight-fürt:
+Futtassa a szkriptet `train.py` HDInsight-fürtön:
 
 ```az ml experiment submit -a -t myhdi -c myhdi ./Code/train.py Config/fulldata_storageconfig.json```
 
-Mivel ez a feladat (körülbelül 30 percet) viszonylag hosszú ideig tart, használhatja `-a` letiltása a kimeneti adatfolyam.
+Mivel ez a feladat tart viszonylag hosszú ideig (körülbelül 30 perc), használhatja `-a` letiltása a kimeneti adatfolyam.
 
 #### <a name="run-history-exploration"></a>Futtassa az előzmények feltárása
 
-Futtatási előzményei, lehetővé teszi a Machine Learning-munkaterület kísérletezhet nyomon követését. Alapértelmezés szerint azt a kísérleti időtartama követi nyomon. A konkrét példában, ha azt a teljes adatkészlet az `Code/etl.py` a kísérleti, az azt láthatja, időtartam jelentősen növeli. Adott mérőszámok követési célból is bejelentkezhet. Metrika követési engedélyezéséhez vegye fel az alábbi kódsorokat a Python-fájl vezetője:
+Futtatási előzmények funkciója nyomon követheti a Machine Learning Workbench a kísérletezésre fordított időt. Alapértelmezés szerint azt a Kísérletezési időtartama követi nyomon. Amikor azt át a teljes adatkészletet a konkrét példában `Code/etl.py` a a kísérleti, láthatjuk, időtartam jelentősen növeli. Adott mérőszámok nyomon követési célokból is bejelentkezhet. Metrika nyomon követését lehetővé, fejét a Python-fájlt adja hozzá a következő kódsorokat:
 ```python
 # import logger
 from azureml.logging import get_azureml_logger
@@ -319,54 +319,54 @@ from azureml.logging import get_azureml_logger
 # initialize logger
 run_logger = get_azureml_logger()
 ```
-Íme egy példa egy adott metrika nyomon:
+Íme egy példa egy bizonyos metrikát nyomon követéséhez:
 
 ```python
 run_logger.log("Test Accuracy", testAccuracy)
 ```
 
-Keresse meg a munkaterületet üzemeltető jobb oldalsó sáv a **futtatása** megtekintéséhez a Python fájl futtatási előzményeit. A GitHub-tárházban is ugorhat. Egy új fiókirodai "AMLHistory," kezdetű névvel jön létre a parancsfájl minden egyes futtatásához a módosítások követésére. 
+A jobb oldali oldalsávon a munkaterület, keresse meg a **futtatások** egyes Python-fájlt a futtatási előzményeinek megtekintéséhez. Ha ellátogat a GitHub-adattárhoz. Egy új ág "AMLHistory," kezdetű névvel jön létre, nyomon követheti a parancsfájl minden egyes futtatásához a módosítást. 
 
 
-### <a name="operationalize-the-model"></a>Azok a modell
+### <a name="operationalize-the-model"></a>A modell üzembe helyezése
 
-Ebben a szakaszban azok a modell webszolgáltatásként az előző lépésekben létrehozott. Is megismerheti, hogyan használható a webszolgáltatás terhelés előrejelzése. Gép nyelvi operationalization parancssori felületen (CLIs) használja a kód és a függőségek Docker képként csomagot, és közzéteheti a modell indexelése webszolgáltatásként.
+Ebben a szakaszban a modellt webszolgáltatásként, amely az előző lépésekben létrehozott üzembe helyezheti. Azt is megtudhatja, hogyan számítási feladatok előrejelzése a web service használatával. Gépi nyelvére operacionalizálás parancssori felületen (CLI-k) használata a kód és a Docker-rendszerképeket, a függőségek csomagolása és a modell közzététele webszolgáltatásként, amely tárolóalapú.
 
-Futtassa a CLIs használhatja a Machine Learning-munkaterület a parancssorba.  Futtathatja a CLIs Ubuntu Linux követve a [a telepítési útmutató](./deployment-setup-configuration.md#using-the-cli). 
+Machine Learning Workbench a parancssor használatával futtassa a CLI-k.  Is futtathatja a CLI-k Ubuntu Linux rendszeren a következő a [telepítési útmutató](./deployment-setup-configuration.md#using-the-cli). 
 
 > [!NOTE]
-> Cserélje le minden argumentum változó a következő parancsokat az összes tényleges értékek. Ez a szakasz befejezéséhez készül a 40 percet vesz igénybe.
+> A következő parancsokat az összes cserélje le tényleges értékek bármely argumentum változó. Körülbelül 40 percig tart, ez a szakasz befejezéséhez.
 > 
 
-Válasszon ki egy egyedi karakterlánc operationalization környezeti legyen. "[Egyedi]" karakterlánc itt választja szöveglánc használjuk.
+Válasszon egy egyedi karakterlánccá az operacionalizáláshoz környezet. "[Egyedi]" karakterlánc itt választott szöveglánc használjuk.
 
-1. A környezet operationalization, és az erőforráscsoport létrehozásához.
+1. Az operacionalizálás megfelelő környezetet hozhat létre, és hozza létre az erőforráscsoportot.
 
         az ml env setup -c -n [unique] --location eastus2 --cluster -z 5 --yes
 
-   Megjegyzés: használható Tárolószolgáltatás, a környezet használatával `--cluster` a a `az ml env setup` parancsot. A gépi tanulási modell a üzembe [Azure Tárolószolgáltatás](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-intro-kubernetes). Használja [Kubernetes](https://kubernetes.io/) a telepítés, a méretezés és a felügyeleti indexelése alkalmazások automatizálásához. Ez a parancs körülbelül 20 percet vesz igénybe futtatásához. A következő segítségével ellenőrizheti, ha a telepítés sikeresen befejeződött: 
+   Vegye figyelembe, hogy használhatja Tárolószolgáltatás környezet használatával `--cluster` a a `az ml env setup` parancsot. A machine learning-modellhez működésbe hozhat [az Azure Container Service](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-intro-kubernetes). Használ [Kubernetes](https://kubernetes.io/) automatizálásához, üzembe helyezés, méretezéshez és tárolóalapú alkalmazások felügyeletéhez. Ez a parancs körülbelül 20 percet vesz igénybe futtatni. A következő segítségével ellenőrizheti, ha a telepítés sikeresen befejeződött: 
 
         az ml env show -g [unique]rg -n [unique]
 
-   Állítsa be a telepítési környezet megegyezik a most létrehozott a következő futtatásával:
+   A telepítési környezetre állítja be csak létre a következő futtatásával:
 
         az ml env set -g [unique]rg -n [unique]
 
-2. Létrehozhat és használhat egy modell felügyeleti fiókja. A modell felügyeleti fiók létrehozásához futtassa az alábbi parancsot:
+2. Létrehozhat és használhat egy modellkezelési fiókot. Modellkezelési fiók létrehozásához futtassa a következő:
 
         az ml account modelmanagement create --location  eastus2 -n [unique]acc -g [unique]rg --sku-instances 4 --sku-name S3 
 
-   Használja a modell felügyeleti operationalization a következő futtatásával:
+   A modellkezelési operacionalizálás használata a következő futtatásával:
 
         az ml account modelmanagement set  -n [unique]acc -g [unique]rg  
 
-   A modell felügyeleti fiók a modellek és a webes szolgáltatások kezelésére szolgál. Az Azure-portálon tekintheti meg egy új modell felügyeleti fiók létrejött. A modellek jegyzékfájlokban, Docker képek és szolgáltatásokról, amelyek a modell felügyeleti fiók használatával létrehozott látható.
+   Modellkezelési fiók a modellek és webszolgáltatások kezelésére szolgál. Az Azure Portalon megjelenik egy új modellkezelési fiók létrehozása. Láthatja, a modellek, -jegyzékekhez, Docker-rendszerképek és szolgáltatások, amelyek jönnek létre a modellkezelési fiók használatával.
 
-3. Töltse le, és regisztrálja a modellek.
+3. Töltse le, és a modellek regisztrálása.
 
-   Töltse le a modell a **fullmodel** tárolót, hogy a címtárban a kód a helyi számítógép. Ne töltse le a parquet adatfájlban a neve "vmlSource.parquet." Még nincs egy modellfájl; egy köztes számítás eredménye. A Git-tárházban szereplő szolgáltatásmodell-fájlokból is felhasználhatja. További információkért lásd: [GitHub](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Docs/DownloadModelsFromBlob.md). 
+   Töltse le a modellek a **fullmodel** tároló könyvtárában található kód a helyi gépen. Ne töltse le a parquet eszközökben adatfájl a neve "vmlSource.parquet." Már nem egy jelentésmodell fájlját; egy köztes számítás eredménye. A Git-tárházban szereplő szolgáltatásmodell-fájlokból is felhasználhatja. További információkért lásd: [GitHub](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Docs/DownloadModelsFromBlob.md). 
 
-   Lépjen a `Model` mappa a parancssori felület, és regisztrálja a modelleket, mint a következő:
+   Nyissa meg a `Model` mappát a parancssori felület, és regisztrálja a modellek pedig a következő:
 
         az ml model register -m  mlModel -n vmlModel -t fullmodel
         az ml model register -m  featureScaleModel -n featureScaleModel -t fullmodel
@@ -374,15 +374,15 @@ Válasszon ki egy egyedi karakterlánc operationalization környezeti legyen. "[
         az ml model register -m  stringIndexModel -n stringIndexModel -t fullmodel
         az ml model register -m  info -n info -t fullmodel
 
-   Minden parancs ad Modellazonosító, a következő lépésben szükség van. Mentse a fájlt a későbbi használat érdekében.
+   Minden parancs kimenete egy Modellazonosító, amelyre szükség van a következő lépésben biztosít. Mentse egy szövegfájlba későbbi használatra.
 
-4. A webszolgáltatás a jegyzékfájl létrehozása.
+4. A webszolgáltatás jegyzék létrehozásához.
 
-   A jegyzék a kódot a webszolgáltatás, minden a machine learning modellek és futásidejű környezet függőségeit tartalmazza. Lépjen a `Code` mappa a CLI-t, és futtassa az alábbi parancsot:
+   A jegyzék a kódot a webes szolgáltatás, a machine learning-modellek és futásidejű környezet függőségeit tartalmazza. Nyissa meg a `Code` mappát a parancssori felület, és futtassa az alábbi parancsot:
 
         az ml manifest create -n $webserviceName -f webservice.py -r spark-py -c ../Config/conda_dependencies_webservice.yml -i $modelID1 -i $modelID2 -i $modelID3 -i $modelID4 -i $modelID5
 
-   A kimenet a jegyzék Azonosítót ad a következő lépéssel. 
+   A kimenet a következő lépés egy Jegyzékfájl megtalálható. 
 
    Maradjon a `Code` könyvtárra, és webservice.py tesztelheti a következő futtatásával: 
 
@@ -392,39 +392,39 @@ Válasszon ki egy egyedi karakterlánc operationalization környezeti legyen. "[
 
         az ml image create -n [unique]image --manifest-id $manifestID
 
-   A kimenet egy lemezkép-Azonosítót ad a következő lépés, a docker lemezképet tároló szolgáltatást használja. 
+   A kimenet a következő lépéshez lehetővé teszi egy lemezkép-azonosító, a docker-rendszerképet használja a Container Service-ben. 
 
-6. A webszolgáltatás üzembe helyezése a Tárolószolgáltatás-fürthöz.
+6. A webszolgáltatás üzembe helyezése a Container Service-fürthöz.
 
         az ml service create realtime -n [unique] --image-id $imageID --cpu 0.5 --memory 2G
 
-   A kimeneti biztosít egy szolgáltatást. A hitelesítési kulcs beszerzése és URL-címét kell.
+   A kimenet lehetővé teszi egy azonosítót. A hitelesítési kulcs beszerzése és az URL-címét kell.
 
-7. A webszolgáltatás hívására Python-kódban mini-kötegelt pontozása céljából.
+7. Hívja meg a webszolgáltatás pontszámot rendelni az mini kötegekben Python-kódban.
 
-   Az alábbi parancs segítségével a hitelesítési kulcs beszerzése:
+   Használja a következő parancsot a hitelesítési kulcs beszerzése:
 
          az ml service keys realtime -i $ServiceID 
 
-   Az alábbi parancs segítségével a szolgáltatás pontozás URL-cím beszerzése:
+   A következő parancsot használja az szolgáltatásba pontozás URL-címe:
 
         az ml service usage realtime -i $ServiceID
 
-   Módosítsa a tartalom `./Config/webservice.json` pontozás URL-cím és a hitelesítési kulcs megfelelő szolgáltatással. A "tulajdonos" ne az eredeti fájlt, és cserélje le a "xxx" rész. 
+   Módosítsa a tartalmakat a `./Config/webservice.json` a pontozás URL-cím és a hitelesítési kulcs a megfelelő szolgáltatást. A "tulajdonos" tartani az eredeti fájlt, és cserélje le a "xxx" részt. 
    
-   Nyissa meg a projekt gyökérkönyvtárában, és tesztelje a webszolgáltatás minimális kötegelt pontozási használatával a következő:
+   Nyissa meg a projekt gyökérkönyvtárában, és tesztelje a webszolgáltatást a minimális kötegelt pontozási a következő használatával:
 
         az ml experiment submit -t dockerdsvm -c dockerdsvm ./Code/scoring_webservice.py ./Config/webservice.json
 
-8. A webszolgáltatás méretezni. 
+8. A web service méretezhető. 
 
-   További információkért lásd: [operationalization meg az Azure Tárolószolgáltatás-fürt méretezése](how-to-scale-clusters.md).
+   További információkért lásd: [operacionalizálás méretezése az Azure Container Service-fürtön](how-to-scale-clusters.md).
  
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a példa emel ki, hogyan használható a Machine Learning munkaterület kell még betanítani a gépi tanulási modell a big data, és azok a betanított modell. Különösen megtudta, hogyan konfigurálja használni a különböző számítási célokat, és futtatásához előzményeinek nyomon követése a metrikák és különböző futtatásakor használja.
+Ebben a példában emeli ki, hogyan használja a Machine Learning Workbench alkalmazásban egy gépi tanulási modellt a big data, és a betanított modell üzembe helyezéséhez. Különösen útmutatóból megtudhatta, hogyan szolgáltatás konfigurálása és használni a különböző számítási célokhoz, és futtassa a metrikák követése előzményeit és különböző futtatások.
 
-A kód segítségével megismerheti a kereszt-ellenőrzési és a hyper-paraméter hangolása terjeszthetők ki. Kereszt-ellenőrzési és a hyper-paraméter hangolásával kapcsolatos további tudnivalókért lásd: [a GitHub-erőforrás](https://github.com/Azure/MachineLearningSamples-DistributedHyperParameterTuning).  
+A kódot, és Fedezze fel a kereszt-ellenőrzési és a hyper-paraméter hangolása bővítheti. Kereszt-ellenőrzési és a hyper-paraméter hangolásával kapcsolatos további tudnivalókért lásd: [a GitHub-erőforrás](https://github.com/Azure/MachineLearningSamples-DistributedHyperParameterTuning).  
 
-Idősorozat előrejelzés kapcsolatos további információkért lásd: [a GitHub-erőforrás](https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting).
+Idősorozat-előrejelzés kapcsolatos további információkért lásd: [a GitHub-erőforrás](https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting).

@@ -14,24 +14,27 @@ ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 5d6254efbb6051bf4fcd01abd4fbf858b0211319
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: f5d53b75b8cc47fc8405a334ae9af32faa67a439
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399940"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39481053"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
 Az Azure Active Directory (Azure AD), a különböző funkciók kiszolgálása érdekében külön rendszergazdák is kijelölhet. A rendszergazdák a feladatok végrehajtását, mint hozzáadása vagy módosítása a felhasználók, rendszergazdai szerepkörök hozzárendelése, felhasználói jelszó alaphelyzetbe állítása, a felhasználói licencek kezelése és tartománynevek kezelése az Azure AD portálon lehet kiválasztani.
 
 ## <a name="details-about-the-global-administrator-role"></a>A globális rendszergazdai szerepkör részleteit
+
 A globális rendszergazda az összes rendszergazdai funkciójához hozzáfér. Alapértelmezés szerint az Azure-előfizetésre feliratkozó személy van rendelve a címtár globális rendszergazdai szerepkörrel. Csak a globális rendszergazdák más rendszergazdai szerepköröket rendelhet hozzá.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Vagy vonja meg a rendszergazdai szerepkörökről
+
 Rendszergazdai szerepkörök hozzárendelése az Azure Active Directory felhasználó kapcsolatban lásd: [felhasználó hozzárendelése az Azure Active Directory rendszergazdai szerepkörök](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="available-roles"></a>Elérhető szerepkörök
+
 A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Alkalmazás-rendszergazda](#application-administrator)**: az ehhez a szerepkörhöz felhasználók létrehozhatják és vállalati alkalmazásokat, alkalmazásregisztrációkat és alkalmazásproxy-beállítások minden szempontjának kezeléséhez. Ez a szerepkör lehetővé teszi, hogy engedélyt adjanak az delegált engedélyeket, és az Alkalmazásengedélyek, kivéve a Microsoft Graph és az Azure AD Graph is nyújt. Ezen szerepkör tagjai nem adódnak tulajdonosként, amikor új alkalmazásregisztráció vagy a vállalati alkalmazások létrehozása.
@@ -48,7 +51,7 @@ A következő rendszergazdai szerepkörök érhetők el:
   > [!NOTE]
   > Exchange ActiveSync feltételes hozzáférési szabályzatot az Azure-beli üzembe helyezéséhez a felhasználó is egy globális rendszergazdának kell lennie.
   
-* **[Eszközadminisztrátorok](#device-administrators)**: Ezzel a szerepkörrel rendelkező felhasználók válnak a helyi számítógép rendszergazdák minden, az Azure Active Directoryhoz csatlakoztatott Windows 10 rendszerű eszközökön. Nem rendelkeznek képes kezelni az eszközobjektumok az Azure Active Directoryban.
+* **[Eszközadminisztrátorok](#device-administrators)**: érhető el ezt a szerepkört csak egy további helyi rendszergazdaként a hozzárendelés [eszközbeállítások](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Az ehhez a szerepkörhöz tartozó felhasználók a helyi gépek rendszergazdái lesznek az Azure Active Directoryval összekapcsolt összes Windows 10-eszközön. Nem rendelkeznek képes kezelni az Azure Active Directoryban. 
 
 * **[Címtárolvasók](#directory-readers)**: egy örökölt szerepkör, amely hozzá kell rendelni az alkalmazásokat, amelyek nem támogatják a [hozzájárulási keretrendszer](../develop/active-directory-integrating-applications.md). Azt nem lehet hozzárendelni egy felhasználóhoz sem.
 
@@ -353,15 +356,13 @@ A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti j
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | A ConditionalAccessPolicys.Owners tulajdonság frissítése az Azure Active Directoryban. |
 
 ### <a name="device-administrators"></a>Eszközadminisztrátorok
-Ezen szerepkör tagjai a helyi Rendszergazdák csoport, az Azure AD-hez csatlakoztatott eszközök kerülnek.
+
+Az ehhez a szerepkörhöz tartozó felhasználók a helyi gépek rendszergazdái lesznek az Azure Active Directoryval összekapcsolt összes Windows 10-eszközön. Nem rendelkeznek képes kezelni az eszközobjektumok az Azure Active Directoryban.
 
   > [!NOTE]
   > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
   >
   >
-
-| **Műveletek** | **Leírás** |
-| --- | --- |
 
 ### <a name="directory-readers"></a>Directory-olvasók
 Alapszintű directory információkat olvashatja. Alkalmazásokhoz való hozzáférés biztosításához.

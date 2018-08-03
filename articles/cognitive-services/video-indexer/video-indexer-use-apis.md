@@ -9,14 +9,17 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 82416c7c653438fcd8b8f4a4ead7591bad0ac022
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 73359955861b88f2bc5ca297c32fa78c2632148c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391518"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449479"
 ---
 # <a name="use-azure-video-indexer-api"></a>Az Azure Video Indexer API használata
+
+> [!Note]
+> A Video Indexer V1 API 2018. augusztus 1-től. a rendszer elavult. Most már a Video Indexer v2 API-t kell használnia. <br/>A Video Indexer v2 API-k fejlesztéséhez, tekintse meg a útmutatását [Itt](https://api-portal.videoindexer.ai/). 
 
 Video Indexer – összesíti egy integrált szolgáltatás, a Microsoft által kínált különböző audio- és mesterséges intelligencia (AI) technológiákat, így egyszerűbb fejlesztés. Az API-k engedélyezése összpontosítani, nem kell bajlódnunk méretezhető, globális Media AI technológiákat használó fejlesztők számára érhető el, a rendelkezésre állás és a felhőalapú platform megbízhatóságát lett tervezve. Az API használatával a fájlok feltöltése, a videó részletes elemzések lekérése, annak érdekében, hogy a beágyazása az alkalmazás és más feladatok insight és a játékosok widgetek URL-címek lekérése.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 2f77fedddd84303ae489379a62a3b1845127b16b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 25f8b09f31bd9eecc454444312ea02182a71a77a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051819"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pantheon"></a>Oktatóanyag: Azure Active Directory-integráció az Pantheon
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Pantheon hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-pantheon-from-the-gallery"></a>Pantheon hozzáadása a katalógusból
 Az Azure AD integrálása a Pantheon konfigurálásához hozzá kell Pantheon a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Az Azure AD integrálása a Pantheon konfigurálásához hozzá kell Pantheon a 
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **Pantheon**.
+1. A Keresés mezőbe írja be a **Pantheon**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/pantheon-tutorial/tutorial_pantheon_search.png)
 
-5. Az eredmények panelen válassza ki a **Pantheon**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **Pantheon**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/pantheon-tutorial/tutorial_pantheon_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Pantheon, rendelje hozzá az értékét a **felhasználónév** értékeként az
 Az Azure AD egyszeri bejelentkezés az Pantheon tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Pantheon tesztfelhasználó létrehozása](#creating-a-pantheon-test-user)**  – egy megfelelője a Britta Simon Pantheon, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Pantheon tesztfelhasználó létrehozása](#creating-a-pantheon-test-user)**  – egy megfelelője a Britta Simon Pantheon, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +104,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/pantheon-tutorial/tutorial_pantheon_samlbase.png)
 
-3. Az a **Pantheon tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Pantheon tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/pantheon-tutorial/tutorial_pantheon_url.png)
 
@@ -119,24 +119,24 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Pantheon támogatási csapatának](https://pantheon.io/docs/getting-support/) beolvasni ezeket az értékeket.
 
-4. Pantheon alkalmazás adott formátumban, amely megköveteli, hogy a felhasználó e-mail-címmel UserIdentifier attribútumértéket Ön a SAML helyességi feltétel vár. Alapértelmezés szerint az Azure AD használja a UserPrincipalName UserIdentifier attribútum. Azonban a sikeres integráció, hogy módosítani kell ezt az értéket felel meg a felhasználó e-mail címét. Az integráció csak a megfelelő leképezés ezt követően fog működni.
+1. Pantheon alkalmazás adott formátumban, amely megköveteli, hogy a felhasználó e-mail-címmel UserIdentifier attribútumértéket Ön a SAML helyességi feltétel vár. Alapértelmezés szerint az Azure AD használja a UserPrincipalName UserIdentifier attribútum. Azonban a sikeres integráció, hogy módosítani kell ezt az értéket felel meg a felhasználó e-mail címét. Az integráció csak a megfelelő leképezés ezt követően fog működni.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/pantheon-tutorial/tutorial_attribute.png)    
 
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/pantheon-tutorial/tutorial_pantheon_certificate.png)
 
-6. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/pantheon-tutorial/tutorial_general_400.png)
 
-7. Az a **Pantheon konfigurációs** területén kattintson **konfigurálása Pantheon** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **Pantheon konfigurációs** területén kattintson **konfigurálása Pantheon** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/pantheon-tutorial/tutorial_pantheon_configure.png) 
 
-8. Az egyszeri bejelentkezés konfigurálása **Pantheon** oldalon kell küldenie a letöltött **tanúsítvány** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [Pantheon támogatási csoport](https://pantheon.io/docs/getting-support/).
+1. Az egyszeri bejelentkezés konfigurálása **Pantheon** oldalon kell küldenie a letöltött **tanúsítvány** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [Pantheon támogatási csoport](https://pantheon.io/docs/getting-support/).
 
      > [!Note]
      > Meg kell adnia az E-mail tartomány(ok) információkat és dátum idő, ha engedélyezi ezt a kapcsolatot is. Minderről daria további részleteket talál [Itt](https://pantheon.io/docs/sso-organizations/)
@@ -155,15 +155,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/pantheon-tutorial/create_aaduser_01.png) 
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/pantheon-tutorial/create_aaduser_02.png) 
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/pantheon-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/pantheon-tutorial/create_aaduser_04.png) 
 
@@ -184,17 +184,17 @@ Ebben a szakaszban egy felhasználói Britta Simon nevű Pantheon hoz létre. K�
 
 1. Jelentkezzen be Pantheon rendszergazdai hitelesítő adataival.
 
-2. Navigáljon a **szervezet** irányítópult-oldalon.
+1. Navigáljon a **szervezet** irányítópult-oldalon.
  
-3. Kattintson a **személyek**.
+1. Kattintson a **személyek**.
 
-4. Kattintson a **felhasználó hozzáadása**.
+1. Kattintson a **felhasználó hozzáadása**.
 
-5. Adja meg a felhasználó e-mail címét.
+1. Adja meg a felhasználó e-mail címét.
 
-6. Válassza ki a felhasználói szerepkör.
+1. Válassza ki a felhasználói szerepkör.
 
-7. Kattintson a **felhasználó hozzáadása**.
+1. Kattintson a **felhasználó hozzáadása**.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -208,23 +208,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Pantheon**.
+1. Az alkalmazások listájában jelölje ki a **Pantheon**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/pantheon-tutorial/tutorial_pantheon_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -236,7 +236,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

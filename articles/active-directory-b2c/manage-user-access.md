@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: adf2f555e907976f8b8efa863f255aa283098be9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 8243f67dee231a896f8d7248f9582c333f797d52
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449888"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480625"
 ---
-# <a name="manage-user-access-in-azure-ad-b2c"></a>Az Azure AD B2C felhasználói hozzáférés felügyelete
+# <a name="manage-user-access-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói hozzáférés felügyelete
 
 Ez a cikk ismerteti az alkalmazásokhoz való felhasználói hozzáférés felügyelete Azure Active Directory (Azure AD) B2C használatával. Az alkalmazás hozzáférés-kezelés a következőket tartalmazza:
 
@@ -27,9 +27,6 @@ Ez a cikk ismerteti az alkalmazásokhoz való felhasználói hozzáférés felü
 - A használati feltételek szerződés rögzítése és változástábla hozzáférésének korlátozásához.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
->[!Note] 
->Ez a cikk nyújt információt, amely támogatja a GDPR szerint Ön nem használhatja. Ha a GDPR-re vonatkozó általános információkat keres, tekintse meg a [Szolgáltatásmegbízhatósági portál GDPR-ről szóló szakaszát](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
 
 ## <a name="control-minor-access"></a>Kisebb hozzáférés-vezérlése
 

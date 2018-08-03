@@ -1,6 +1,6 @@
 ---
-title: Hogyan használja sys_schema teljesítményhangolás és MySQL az Azure-adatbázis adatbázis-karbantartás
-description: Ez a cikk ismerteti, hogyan sys_schema segítségével található teljesítményproblémákat és MySQL az Azure-adatbázis adatbázis karbantartása.
+title: Hogyan sys_schema használata a teljesítmény finomhangolásához és adatbázis-karbantartás az Azure Database for MySQL-hez
+description: Ez a cikk ismerteti, hogyan keresse meg a teljesítménybeli problémák és a MySQL-hez készült Azure Database-adatbázis karbantartása sys_schema használatával.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,79 +8,79 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 74bb59a8db70d4a01fcd3bd07054f1cbac50bf40
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 08/01/2018
+ms.openlocfilehash: 1e10e3b1b5f4518732408f254eb5767acb8485c6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266152"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446907"
 ---
-# <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>A MySQL használatáról sys_schema teljesítményének hangolása és adatbázis-karbantartás Azure-adatbázis
+# <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Sys_schema használata a teljesítmény hangolása és adatbázis-karbantartás az Azure Database for MySQL-hez
 
-A MySQL performance_schema, az első elérhető MySQL 5.5 biztosít instrumentation a számos fontos server erőforrások, például a memóriafoglalás, a tárolt programok, a metaadatok zárolási, stb. Azonban a performance_schema több mint 80 táblát tartalmaz, és gyakran a szükséges információ igényel, a performance_schema belül táblák, valamint a entitástulajdonos táblák való csatlakozás. Felépítése performance_schema és entitástulajdonos, a sys_schema egy hatékony gyűjteményét biztosítja [felhasználóbarát nézetek](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) egy csak olvasható adatbázisban és teljes mértékben engedélyezve van az Azure-adatbázisban a MySQL verzió 5.7-es verzióját.
+A MySQL performance_schema, az első elérhető MySQL 5.5-ös biztosít instrumentation számos kulcsfontosságú server források, például a memória mennyiségét, a tárolt programok, a metaadatok zárolási, stb. Azonban a performance_schema több mint 80 táblát tartalmaz, és gyakran a szükséges információk lekérése igényel, a performance_schema táblák, valamint a information_schema táblák való csatlakozás. Épület performance_schema és information_schema is, a sys_schema gyűjteményét biztosítja a hatékony [felhasználóbarát nézetek](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) egy csak olvasható adatbázisban és teljes mértékben engedélyezve van az Azure Database for MySQL 5.7-es verzióra.
 
-![a sys_schema nézetei](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
+![sys_schema nézetei](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
-A sys_schema 52 nézetek szerepelnek, és mindegyik nézetről rendelkezik-e az alábbi előtagokat:
+Nincsenek a sys_schema 52 nézeteket, és mindegyik nézetről rendelkezik-e az alábbi előtagokat:
 
-- Host_summary vagy IO: i/o-kapcsolódó késések fordulnak elő.
-- InnoDB: InnoDB puffer állapota és zárolások.
-- Felhasznált memória: A gazdagép és a felhasználók által memória mennyisége
-- Séma: Séma-kapcsolatos információkat, például automatikus lépések, indexek, stb.
-- Utasítást: SQL-utasítások; információk lehet, hogy a tábla teljes vizsgálatot, vagy hosszú lekérdezési idő eredményező utasítás.
-- Felhasználó: Erőforrások fel, és felhasználók szerint csoportosított. Többek között az i/o, kapcsolatok, és a memória.
-- Várjon, amíg: Várja meg a gazdagép vagy a felhasználó csoportosíthatók az események.
+- Host_summary vagy IO: i/o-kapcsolódó késéseket.
+- InnoDB: InnoDB puffer állapota és a zárolás.
+- Memória: Memóriahasználat a gazdagépen és a felhasználók által.
+- Séma: Séma szolgáltatással kapcsolatos információkat, például automatikusan növekvő, indexek, stb.
+- Utasítás: SQL-utasítások; információkat a teljes tábla beolvasásával vagy hosszú lekérdezés idő eredményező utasítás lehet.
+- Felhasználó: Erőforrások felhasznált és felhasználók szerint csoportosított. Példák fájl i/o-, kapcsolatok és memória.
+- Várjon: Várjon, amíg események gazdagép vagy a felhasználó szerint csoportosítva.
 
-Most már a sys_schema néhány gyakori használati szokásokról vizsgáljuk meg. Először azt kell csoportosítani a használati minták két kategóriába sorolhatók: **teljesítményhangolás** és **adatbázis-karbantartási**.
+Most nézzük meg, a sys_schema gyakori használati minták. Először azt kell csoportosítani a használati minták két kategóriába sorolhatók: **teljesítményhangolás** és **adatbázis-karbantartási**.
 
 ## <a name="performance-tuning"></a>Teljesítmény-finomhangolás
 
 ### <a name="sysusersummarybyfileio"></a>*sys.user_summary_by_file_io*
 
-IO az a legköltségesebb művelet az adatbázisban. A Microsoft talál az átlagos IO várakozási lekérdezésével a *sys.user_summary_by_file_io* nézet. Az alapértelmezett kiosztott tárolás, az I/O várakozási ideje 125 GB legyen körülbelül 15 másodperc.
+I/o az a leginkább drága művelet az adatbázisban. Azt is megtudhatja, az átlagos i/o várakozási lekérdezésével a *sys.user_summary_by_file_io* megtekintése. Az alapértelmezett 125 GB-os kiépített tárhely, az IO-késés van körülbelül 15 másodperc.
 
-![i/o várakozási ideje: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+![IO-késés: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
 
-MySQL az Azure-adatbázis IO méretezi tekintetében tárolási, miután növelte a kiépített tárolási és 1 TB, mert a I/O várakozási ideje csökkenti a 26 X teljesítmény növelését képviselő 571 MS!
+Mivel, Azure Database for MySQL megállapodást tárolás, i/o növelje a felhasznált tárterület 1 TB-os skálázható, saját IO-késés csökkenti a 571 ms.
 
-![i/o várakozási ideje: 1 TB-os](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![IO-késés: 1 TB-ot](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
 ### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
 
-Annak ellenére, hogy gondosan meg kell tervezni, sok lekérdezések továbbra is teljes táblázatbeolvasás eredményez. További információt az indexek és optimalizálása azokat, olvassa el a cikkben: [hibaelhárítása a lekérdezési teljesítmény](./howto-troubleshoot-query-performance.md). Teljes táblázatbeolvasás erőforrás-igényes, és az adatbázis teljesítményét. A leggyorsabb módja teljes táblázatbeolvasás táblákban található lekérdezés a *sys.schema_tables_with_full_table_scans* nézet.
+Annak ellenére, hogy gondos tervezést, több lekérdezés továbbra is teljes táblázatbeolvasás eredményezhet. Indexek és optimalizálja őket annak típusaival kapcsolatos további információkért tekintse meg a cikk: [lekérdezési teljesítmény hibaelhárítása](./howto-troubleshoot-query-performance.md). Szekvenciális rekordolvasással teljes erőforrás-igényes, és az adatbázis teljesítményét. Keresse meg a teljes tábla beolvasásával rendelkező táblák a leggyorsabb módja az, hogy lekérdezést a *sys.schema_tables_with_full_table_scans* megtekintése.
 
-![teljes rekordból](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
+![teljes táblázatbeolvasás](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 
 ### <a name="sysusersummarybystatementtype"></a>*sys.user_summary_by_statement_type*
 
-Adatbázis-teljesítménnyel kapcsolatos problémák elhárításához az eseményeket az adatbázis belül történik, és ezáltal hasznos lehet a *sys.user_summary_by_statement_type* nézet csak hajtsa végre az körben.
+Adatbázis teljesítménnyel kapcsolatos problémák elhárításához lehet előnyös, ha az eseményeket, az adatbázis belül történik, és használja a *sys.user_summary_by_statement_type* nézet csak hajtsa végre a kört.
 
-![összefoglalás utasítás alapján](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
+![utasítás összegzése](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
-Ebben a példában a MySQL az Azure-adatbázis töltött a slog lekérdezés napló kiürítése 44579 alkalommal 53 perc. Ez sok időt és sok IOs. A lassú lekérdezés napló csökkentheti a tevékenység által tiltsa vagy lassú lekérdezés bejelentkezési Azure-portálon gyakoriságának csökkentése.
+Ebben a példában, Azure Database for MySQL töltött kiürítette a slog lekérdezési napló 44579 alkalommal 53 perc. Ez egy hosszú ideig, és számos IOs. Vagy tiltsa le ezt a tevékenységet csökkentheti a lassú lekérdezések naplója, vagy csökkentse a gyakoriságát, a lassú lekérdezések bejelentkezés az Azure Portalon.
 
 ## <a name="database-maintenance"></a>Adatbázis-karbantartás
 
 ### <a name="sysinnodbbufferstatsbytable"></a>*sys.innodb_buffer_stats_by_table*
 
-A InnoDB pufferkészlet memória fájlcsoportban helyezkedik el, és a fő gyorsítótár mechanizmus az adatbázis-kezelő és a tároló között. A méret a InnoDB pufferkészlet teljesítményszint van kötve, és nem módosítható, kivéve, ha egy másik termékkel SKU van kiválasztva. Az operációs rendszer memória, a régi lapok van cserélve hogy helyet biztosítsanak az naprakészebb adatok. Tudni táblák felhasználását a InnoDB puffer memóriakészletet többségét, lekérheti a *sys.innodb_buffer_stats_by_table* nézet.
+Az InnoDB pufferkészletben memóriájában, és az adatbázis-kezelő és a storage között a fő cache mechanizmus. Az InnoDB pufferkészlet méretét vannak kötve, a teljesítményszint, és nem módosítható, kivéve, ha egy másik termékkel SKU van kiválasztva. Csakúgy, mint az operációs rendszer memória, a régi oldalak való helybiztosítás céljából naprakészebb adatok vannak lapozó. Hogy megtudja, melyik táblákhoz felhasználása az InnoDB puffermemória készlet a legtöbb, lekérdezheti a *sys.innodb_buffer_stats_by_table* megtekintése.
 
 ![InnoDB puffer állapota](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
 
-A fenti ábrán is látható, hogy eltérő rendszer táblák és nézetek, minden táblában a mysqldatabase033 adatbázis, amely saját WordPress-webhelyek egyikét futtatja, 16 KB-os vagy 1 lapon, a memória adatok által elfoglalt.
+A fenti ábrán az látható, hogy eltérő rendszer táblák és nézetek, a mysqldatabase033 adatbázis minden táblájához, amely saját WordPress-webhelyek egyikét futtatja, 16 KB-os vagy 1 lapon, a memória adatok által elfoglalt.
 
 ### <a name="sysschemaunusedindexes--sysschemaredundantindexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
 
-Indexek kiváló eszközök olvasási teljesítmény javítása érdekében, de azok költségnövekedéssel beszúrások és tárolására. *Sys.schema_unused_indexes* és *sys.schema_redundant_indexes* nem használt vagy ismétlődő indexek betekintést.
+Indexek nagyszerű eszközöket olvasási teljesítmény javítása érdekében, de ezek további költségekkel beszúrások és tárolására. *Sys.schema_unused_indexes* és *sys.schema_redundant_indexes* használaton kívüli vagy ismétlődő indexeket betekintést nyújtson.
 
-![nem használt indexek](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
+![a fel nem használt index](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
 
 ![redundáns indexek](./media/howto-troubleshoot-sys-schema/redundant-indexes.png)
 
 ## <a name="conclusion"></a>Összegzés
 
-Összefoglalva a sys_schema meg mindkét teljesítményének hangolása és adatbázis-karbantartás. Ügyeljen arra, hogy az Azure-adatbázis a MySQL esetében ez a funkció előnyeit. 
+Összefoglalva az sys_schema mindkét teljesítmény-finomhangolási és adatbázis-karbantartás kiváló eszközei. Ellenőrizze, hogy igénybe ezt a szolgáltatást az az Azure Database for MySQL-hez. 
 
 ## <a name="next-steps"></a>További lépések
-- A legtöbb érintett kérdésekre adott válaszok társ, vagy egy új kérdés-válasz utáni, látogasson el a [MSDN fórum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- A legtöbb érintett kérdésekre adott válaszok társ, vagy egy új kérdés-válasz küldése, látogasson el [MSDN-fórum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
-ms.openlocfilehash: cb31bb91c80e4d5dd032b009b40d8e3fc435e0c8
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 5a4f08718175dd7ef369d801807e6c8e1ff28fd9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359459"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39485598"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Alkalmazás regisztrálása az AD-bérlőben
 Először regisztrálnia kell az alkalmazás az Azure Active Directory (Azure AD-) bérlőben. Ekkor kapni fog egy alkalmazásazonosítót az alkalmazáshoz, amely immár képes jogkivonatokat fogadni.
@@ -28,7 +28,7 @@ Először regisztrálnia kell az alkalmazás az Azure Active Directory (Azure AD
   * Ezt a lépést kihagyhatja, csak egy Azure AD-bérlőt, ha a fiók alatt, vagy ha már kiválasztotta a megfelelő Azure AD-bérlővel.
 * A bal oldali navigációs ablakban kattintson az **Azure Active Directory** elemre.
 * Kattintson a **Alkalmazásregisztrációk** , majd kattintson a **új alkalmazásregisztráció**.
-* Kövesse az utasításokat az új alkalmazás létrehozásához. Ebben az oktatóanyagban nincs jelentősége, hogy ez egy webalkalmazás vagy egy natív alkalmazás-e, de ha konkrét példákat szeretne látni a webalkalmazásokra vagy a natív alkalmazásokra, tekintse meg a [gyorsindítókat](../articles/active-directory/develop/active-directory-developers-guide.md).
+* Kövesse az utasításokat az új alkalmazás létrehozásához. Ebben az oktatóanyagban nincs jelentősége, hogy ez egy webalkalmazás vagy egy natív alkalmazás-e, de ha konkrét példákat szeretne látni a webalkalmazásokra vagy a natív alkalmazásokra, tekintse meg a [gyorsindítókat](../articles/active-directory/develop/azure-ad-developers-guide.md).
   * Webalkalmazások esetén adja meg a **bejelentkezési URL-**, ahol felhasználók bejelentkezhetnek az alap URL-címét az alkalmazáshoz, azaz `http://localhost:12345`.
 <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
   * A natív alkalmazások adjon meg egy **átirányítási URI-t**, amelyet az Azure ad-ben jogkivonatválaszok visszaadására használ. Adjon meg egy, az alkalmazáshoz tartozó értéket, például: `http://MyFirstAADApp`

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: c9997f27723b399344a18292905b558a9f61d6bd
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 515b89502a9794671c1086b9dc537cdac9779f79
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051127"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447887"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>Oktatóanyag: Azure Active Directory-integráció az SpaceIQ
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. SpaceIQ hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-spaceiq-from-the-gallery"></a>SpaceIQ hozzáadása a katalógusból
 Az Azure AD integrálása a SpaceIQ konfigurálásához hozzá kell SpaceIQ a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Az Azure AD integrálása a SpaceIQ konfigurálásához hozzá kell SpaceIQ a ka
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **SpaceIQ**válassza **SpaceIQ** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **SpaceIQ**válassza **SpaceIQ** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában SpaceIQ](./media/spaceiq-tutorial/tutorial_spaceiq_addfromgallery.png)
 
@@ -87,10 +87,10 @@ SpaceIQ, rendelje hozzá az értékét a **felhasználónév** értékeként az 
 Az Azure AD egyszeri bejelentkezés az SpaceIQ tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy SpaceIQ tesztfelhasználót](#create-a-spaceiq-test-user)**  – egy megfelelője a Britta Simon SpaceIQ, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy SpaceIQ tesztfelhasználót](#create-a-spaceiq-test-user)**  – egy megfelelője a Britta Simon SpaceIQ, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/spaceiq-tutorial/tutorial_spaceiq_samlbase.png)
 
-3. Az a **SpaceIQ tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **SpaceIQ tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![SpaceIQ tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/spaceiq-tutorial/tutorial_spaceiq_url.png)
 
@@ -117,29 +117,29 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek az értékek frissítse a tényleges válasz URL-cím és az oktatóanyag későbbi részében ismertetett azonosítója.
  
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **(tanúsítvány Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **(tanúsítvány Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/spaceiq-tutorial/tutorial_spaceiq_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/spaceiq-tutorial/tutorial_general_400.png)
 
-6. Az a **SpaceIQ konfigurációs** területén kattintson **konfigurálása SpaceIQ** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** származó a **gyors útmutató szakaszban.**
+1. Az a **SpaceIQ konfigurációs** területén kattintson **konfigurálása SpaceIQ** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** származó a **gyors útmutató szakaszban.**
 
     ![SpaceIQ konfiguráció](./media/spaceiq-tutorial/tutorial_spaceiq_configure.png) 
 
-7.  Nyisson meg egy új böngészőablakot, és a SpaceIQ környezeti rendszergazdaként, majd jelentkezzen be.
+1.  Nyisson meg egy új böngészőablakot, és a SpaceIQ környezeti rendszergazdaként, majd jelentkezzen be.
 
-8. Miután bejelentkezett, kattintson a jobb felső sarokban a Kirakós bejelentkezést, majd kattintson a **"Integrációk"**
+1. Miután bejelentkezett, kattintson a jobb felső sarokban a Kirakós bejelentkezést, majd kattintson a **"Integrációk"**
 
     ![Fiókbeállítások](./media/spaceiq-tutorial/setting1.png) 
 
-9. A **összes KIÉPÍTÉS és egyszeri bejelentkezés**, kattintson a a **Azure** csempe hozzáadása az Azure-példány Identitásszolgáltatóként.
+1. A **összes KIÉPÍTÉS és egyszeri bejelentkezés**, kattintson a a **Azure** csempe hozzáadása az Azure-példány Identitásszolgáltatóként.
 
     ![SAML-ikon](./media/spaceiq-tutorial/setting2.png)
 
-10. Az a **SSO** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **SSO** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![SAML-hitelesítési beállítások](./media/spaceiq-tutorial/setting3.png)
 
@@ -168,15 +168,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/spaceiq-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/spaceiq-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/spaceiq-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/spaceiq-tutorial/create_aaduser_04.png)
 
@@ -204,23 +204,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **SpaceIQ**.
+1. Az alkalmazások listájában jelölje ki a **SpaceIQ**.
 
     ![Az alkalmazások listáját a SpaceIQ hivatkozásra](./media/spaceiq-tutorial/tutorial_spaceiq_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -232,7 +232,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

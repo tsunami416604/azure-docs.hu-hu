@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 235ba5fd1365ed8b400edce3db22420369540cce
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d96fd1eacc98e88dc8578b259781cc661cf85933
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052669"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442829"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Az Azure Active Directory integrálása az értékesítési vezető Remix E
 
@@ -64,15 +64,15 @@ A rendszerrel történő integráció konfigurálása az Azure AD E Sales Manage
 
     ![Az Azure Active Directory gomb][1]
 
-2. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
+1. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
 
     ![A "Nagyvállalati alkalmazások" ablak][2]
     
-3. Új alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején.
+1. Új alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **E Sales Manager Remix**válassza **E Sales Manager Remix** a találatok listájában, és válassza ki a **Hozzáadás**.
+1. A Keresés mezőbe írja be a **E Sales Manager Remix**válassza **E Sales Manager Remix** a találatok listájában, és válassza ki a **Hozzáadás**.
 
     ![E Sales Manager Remix a találatok listájában](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
@@ -92,11 +92,11 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszer
 
     ![Az "Egyszeri bejelentkezés" hivatkozásra][4]
 
-2. Az a **egyszeri bejelentkezési** ablakban, a a **egyszeri bejelentkezési mód** jelölje ki **SAML-alapú bejelentkezés**.
+1. Az a **egyszeri bejelentkezési** ablakban, a a **egyszeri bejelentkezési mód** jelölje ki **SAML-alapú bejelentkezés**.
  
     ![Az "Egyszeri bejelentkezés" ablak](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
 
-3. A **E Sales Manager Remix tartomány és URL-címek**, tegye a következőket:
+1. A **E Sales Manager Remix tartomány és URL-címek**, tegye a következőket:
 
     ![E Sales Manager Remix tartomány és URL-címek egyszeri bejelentkezési adatait](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
@@ -109,47 +109,47 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszer
     > [!NOTE] 
     > Az előző értékek nem valódi. Frissítse azokat a tényleges bejelentkezési URL-CÍMÉT és azonosító. Az értékek beszerzéséhez forduljon [E Sales Manager Remix ügyfélalkalmazás támogatási csapatának](mailto:esupport@softbrain.co.jp).
 
-4. Alatt **SAML-aláíró tanúsítvány**válassza **tanúsítvány (Base64)**, majd mentse a tanúsítványfájlt, a számítógépen.
+1. Alatt **SAML-aláíró tanúsítvány**válassza **tanúsítvány (Base64)**, majd mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány (Base64) letöltési hivatkozás](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
-5. Válassza ki a **megtekintése és egyéb felhasználói attribútumok szerkesztése** jelölőnégyzetet, majd válassza ki a **emailaddress** attribútum.
+1. Válassza ki a **megtekintése és egyéb felhasználói attribútumok szerkesztése** jelölőnégyzetet, majd válassza ki a **emailaddress** attribútum.
     
     ![A felhasználói attribútumok ablak](./media/esalesmanagerremix-tutorial/configure1.png)
 
     A **attribútum szerkesztése** ablak nyílik meg.
 
-6. Másolás a **Namespace** és **neve** értékeket. Az érték létrehozása a mintában  *\<Namespace > /\<neve >*, és ez az oktatóanyag későbbi használatra mentse azt.
+1. Másolás a **Namespace** és **neve** értékeket. Az érték létrehozása a mintában  *\<Namespace > /\<neve >*, és ez az oktatóanyag későbbi használatra mentse azt.
 
     ![Az attribútum szerkesztése ablakban](./media/esalesmanagerremix-tutorial/configure2.png)
 
-7. A **E Sales Manager Remix konfigurációs**válassza **konfigurálása E Sales Manager Remix**.
+1. A **E Sales Manager Remix konfigurációs**válassza **konfigurálása E Sales Manager Remix**.
 
     ![E Sales Manager Remix konfigurálása](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     A **bejelentkezés konfigurálása** ablak nyílik meg.
 
-8. Az a **rövid összefoglaló** területén másolja a kijelentkezési URL-cím és az SAML egyszeri bejelentkezési szolgáltatás URL-cím.
+1. Az a **rövid összefoglaló** területén másolja a kijelentkezési URL-cím és az SAML egyszeri bejelentkezési szolgáltatás URL-cím.
 
-9. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
     ![A Mentés gombra](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
-10. Jelentkezzen be rendszergazdaként E Sales Manager Remix alkalmazását.
+1. Jelentkezzen be rendszergazdaként E Sales Manager Remix alkalmazását.
 
-11. Jobb felső sarokban, válassza ki a **Rendszergazda menü**.
+1. Jobb felső sarokban, válassza ki a **Rendszergazda menü**.
 
     ![A "Rendszergazda menü" parancs](./media/esalesmanagerremix-tutorial/configure4.png)
 
-12. A bal oldali panelen válassza ki a **rendszerbeállítások** > **együttműködés a külső rendszer**.
+1. A bal oldali panelen válassza ki a **rendszerbeállítások** > **együttműködés a külső rendszer**.
 
     ![A "rendszer" és "Együttműködés a külső rendszer" Hivatkozásaim](./media/esalesmanagerremix-tutorial/configure5.png)
     
-13. Az a **együttműködés a külső rendszer** ablakban válassza **SAML**.
+1. Az a **együttműködés a külső rendszer** ablakban válassza **SAML**.
 
     ![A "Külső rendszer együttműködve" ablak](./media/esalesmanagerremix-tutorial/configure6.png)
 
-14. A **SAML-hitelesítés beállítást**, tegye a következőket:
+1. A **SAML-hitelesítés beállítást**, tegye a következőket:
 
     ![Az "SAML-hitelesítés beállítást" szakasz](./media/esalesmanagerremix-tutorial/configure3.png)
     
@@ -183,17 +183,17 @@ Ebben a szakaszban tesztfelhasználó Britta Simon az Azure Portalon létrehozha
 
     ![Az Azure Active Directory-hivatkozás](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-2. Az aktuális felhasználó megjelenítéséhez válassza **felhasználók és csoportok** > **minden felhasználó**.
+1. Az aktuális felhasználó megjelenítéséhez válassza **felhasználók és csoportok** > **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
-3. Felső részén a **minden felhasználó** ablakban válassza **Hozzáadás**.
+1. Felső részén a **minden felhasználó** ablakban válassza **Hozzáadás**.
 
     ![A Hozzáadás gombra.](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
     A **felhasználói** ablak nyílik meg.
 
-4. Az a **felhasználói** ablakban tegye a következőket:
+1. Az a **felhasználói** ablakban tegye a következőket:
 
     ![A felhasználó ablak](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
@@ -209,15 +209,15 @@ Ebben a szakaszban tesztfelhasználó Britta Simon az Azure Portalon létrehozha
 
 1. Jelentkezzen be rendszergazdaként E Sales Manager Remix alkalmazását.
 
-2. Válassza ki **Rendszergazda menü** jobb felső sarokban a menüből.
+1. Válassza ki **Rendszergazda menü** jobb felső sarokban a menüből.
 
     ![E Sales Manager Remix konfigurálása](./media/esalesmanagerremix-tutorial/configure4.png)
 
-3. Válassza ki **a vállalati beállítások** > **részlegek és alkalmazottak karbantartási**, majd válassza ki **regisztrált alkalmazottak**.
+1. Válassza ki **a vállalati beállítások** > **részlegek és alkalmazottak karbantartási**, majd válassza ki **regisztrált alkalmazottak**.
 
     ![Az "Alkalmazottak registered" lap](./media/esalesmanagerremix-tutorial/user1.png)
 
-4. Az a **új alkalmazott regisztrálása** területén tegye a következőket:
+1. Az a **új alkalmazott regisztrálása** területén tegye a következőket:
     
     ![Az "új alkalmazott regisztráció" szakasz](./media/esalesmanagerremix-tutorial/user2.png)
 
@@ -229,7 +229,7 @@ Ebben a szakaszban tesztfelhasználó Britta Simon az Azure Portalon létrehozha
 
     d. Válassza ki **regisztrációs**.
 
-5. A későbbiekben, jelentkezzen be rendszergazdaként, jelentkezzen be rendszergazdai engedélyekkel rendelkezik, és ezt követően a jobb felső sarokban, válassza ki a felhasználó **Rendszergazda menü**.
+1. A későbbiekben, jelentkezzen be rendszergazdaként, jelentkezzen be rendszergazdai engedélyekkel rendelkezik, és ezt követően a jobb felső sarokban, válassza ki a felhasználó **Rendszergazda menü**.
 
     ![A "Rendszergazda menü" parancs](./media/esalesmanagerremix-tutorial/configure4.png)
 
@@ -243,23 +243,23 @@ Ebben a szakaszban engedélyezze felhasználói Britta Simon által biztosított
 
     ![A "Nagyvállalati alkalmazások" és "Összes alkalmazás" hivatkozások][201] 
 
-2. Az a **alkalmazások** listáról válassza ki **E Sales Manager Remix**.
+1. Az a **alkalmazások** listáról válassza ki **E Sales Manager Remix**.
 
     ![Az E Sales Manager Remix hivatkozás](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-3. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
+1. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Válassza ki **Hozzáadás** , majd a **hozzárendelés hozzáadása** ablaktáblán válassza **felhasználók és csoportok**.
+1. Válassza ki **Hozzáadás** , majd a **hozzárendelés hozzáadása** ablaktáblán válassza **felhasználók és csoportok**.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. Az a **felhasználók és csoportok** ablakban, a a **felhasználók** listáról válassza ki **Britta Simon**.
+1. Az a **felhasználók és csoportok** ablakban, a a **felhasználók** listáról válassza ki **Britta Simon**.
 
-6. Válassza ki a **kiválasztása** gombra.
+1. Válassza ki a **kiválasztása** gombra.
 
-7. Az a **hozzárendelés hozzáadása** ablakban válassza **hozzárendelése**.
+1. Az a **hozzárendelés hozzáadása** ablakban válassza **hozzárendelése**.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -272,7 +272,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,46 +1,46 @@
 ---
-title: Az Azure a dinamikus készletek kezelését Ansible használatával
-description: Ansible használata az Azure a dinamikus készletek kezelése
+title: Az Ansible segítségével az Azure dinamikus leltárak kezelése
+description: Ismerje meg, hogyan használhatja az Ansible az Azure dinamikus leltárak kezelése
 ms.service: ansible
-keywords: ansible, azure, devops, bash, cloudshell, dinamikus készlet
+keywords: az ansible, azure, devops, bash, cloud Shell, dinamikus készlet
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
 ms.date: 01/14/2018
 ms.topic: article
-ms.openlocfilehash: f29f4ec64b79738cae2ad684610f4817739825a9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 35033f7a6a0340be4dff5fa0051fd3c5ddb3c0eb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153109"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449417"
 ---
-# <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Azure a dinamikus készletek kezelését Ansible használatával
-Ansible használható lekéréses Hardverleltár-információk (beleértve a felhő adatforrások, például az Azure) különböző forrásokból történő egy *dinamikus készlet*. A cikkben, használja a [Azure Cloud rendszerhéj](./ansible-run-playbook-in-cloudshell.md) Ansible Azure dinamikus készlet két olyan virtuális gépet hoz létre konfigurálásához azon virtuális gépek egyik címkét, és Nginx telepítse a virtuális gép címkézett.
+# <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Ansible segítségével az Azure dinamikus leltárak kezelése
+Az Ansible segítségével Hardverleltár-információk lekérése a különböző forrásokból (például az Azure felhőalapú forrásokból is beleértve) egy *dinamikus készlet*. Ebben a cikkben fogja használni a [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) konfigurálása az Ansible az Azure dinamikus készlet két virtuális gépet hoz létre, ezeket a virtuális gépeket egyik címkét, és az Nginx telepítése a címkézett virtuális gépen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) megkezdése előtt.
 
-- **Azure hitelesítő adataival** - [létrehozása Azure-felhasználó hitelesítő adatait, és Ansible konfigurálása](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- **Azure-beli hitelesítő** - [létrehozása Azure hitelesítő adatait, és az Ansible konfigurálása](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
-## <a name="create-the-test-virtual-machines"></a>A teszt virtuális gépek létrehozása
+## <a name="create-the-test-virtual-machines"></a>A tesztelési célú virtuális gépek létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Nyissa meg [rendszerhéj felhőalapú](https://docs.microsoft.com/azure/cloud-shell/overview).
+1. Nyissa meg [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-1. Hozzon létre egy Azure-erőforráscsoport ebben az oktatóanyagban a virtuális gépek tárolására.
+1. Hozzon létre egy Azure-erőforráscsoportot, amely tárolja a virtuális gépek ehhez az oktatóanyaghoz.
 
     ```azurecli-interactive
     az group create --resource-group ansible-inventory-test-rg --location eastus
     ```
 
-1. Hozzon létre két Linux virtuális gépek Azure-ban a következő módszerek egyikét:
+1. Hozzon létre két Linux rendszerű virtuális gépek az Azure-ban a következő módszerek egyikével:
 
-    - **Ansible alkalmazástervezési** – a cikk [alapvető virtuális gép létrehozása az Azure-ban Ansible](/azure/virtual-machines/linux/ansible-create-vm) bemutatja, hogyan hozható létre virtuális gépet egy Ansible forgatókönyv a. Ha a forgatókönyv segítségével határozza meg a virtuális gépek közül, győződjön meg arról, hogy az SSH-kapcsolat használt jelszó helyett.
+    - **Az Ansible-forgatókönyvek** – a cikk [alapszintű virtuális gép létrehozása az Azure-ban, az ansible segítségével](/azure/virtual-machines/linux/ansible-create-vm) azt ábrázolja, hogyan hozhat létre egy virtuális gépet az Ansible-forgatókönyvek. Egy forgatókönyv meghatározása egyikét vagy mindkettőt a virtuális gépek használatakor győződjön meg arról, hogy az SSH-kapcsolatot a rendszer jelszó helyett használja.
 
-    - **Az Azure CLI** -probléma az alábbi parancsokat a felhő rendszerhéj a két virtuális gép létrehozásához:
+    - **Az Azure CLI** -probléma a következő parancsokat a Cloud shellben a két virtuális gép létrehozásához:
 
         ```azurecli-interactive
         az vm create --resource-group ansible-inventory-test-rg \
@@ -54,37 +54,37 @@ Ansible használható lekéréses Hardverleltár-információk (beleértve a fel
                      --image UbuntuLTS --generate-ssh-keys
         ```
 
-## <a name="tag-a-virtual-machine"></a>A virtuális gépek címke
+## <a name="tag-a-virtual-machine"></a>Virtuális gép címkézése
 Is [címkék használata az Azure-erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli) felhasználó által definiált kategóriák szerint. 
 
-Írja be a következő [az erőforrás címke](/cli/azure/resource?view=azure-cli-latest.md#az_resource_tag) parancs használatával címkézhesse a virtuális gép `ansible-inventory-test-vm1` kulccsal `nginx`:
+Írja be a következő [az erőforrás-címke](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) parancsot a virtuális gép címkézése `ansible-inventory-test-vm1` kulccsal `nginx`:
 
 ```azurecli-interactive
 az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
 
-## <a name="generate-a-dynamic-inventory"></a>A dinamikus készlet létrehozása
-Miután a virtuális gépek meghatározott (és címkézett), a dinamikus készlet létrehozásához idő. Ansible biztosít nevű Python-parancsfájl [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) azáltal, hogy az API-kérelmek az Azure erőforrás-kezelő létrehozó Azure-erőforrások dinamikus készlet. A következő lépések végigvezetik használatával a `azure_rm.py` csatlakozni a kétlépéses parancsfájl tesztelése az Azure virtuális gépek:
+## <a name="generate-a-dynamic-inventory"></a>Dinamikus készítése
+Ha létrehozta a virtuális gépek meghatározott (és a címkézett), a dinamikus készlet létrehozásához ideje. Az Ansible nevű Python-szkriptet biztosít [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) az Azure-erőforrások dinamikus leltára, amely létrehoz által az Azure Resource Manager API-kérelem indítására. A következő lépések végigvezetik használatával a `azure_rm.py` szeretne csatlakozni a két parancsfájlt tesztelése az Azure virtual machines:
 
-1. Használja a GNU `wget` parancs beolvasása a `azure_rm.py` parancsfájlt:
+1. Használja a GNU `wget` parancs használatával kérje le a `azure_rm.py` parancsfájlt:
 
     ```azurecli-interactive
     wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
     ```
 
-1. Használja a `chmod` parancs futtatásával módosíthatja a hozzáférési engedélyeket a `azure_rm.py` parancsfájl. A következő parancsot használja a `+x` paraméter lehetővé végrehajtásából (fut) a megadott fájl (`azure_rm.py`):
+1. Használja a `chmod` parancs használatával váltson a hozzáférési engedélyeket a `azure_rm.py` parancsfájlt. A következő parancsot használja a `+x` paramétert, hogy a megadott fájl (fut) végrehajtásához (`azure_rm.py`):
 
     ```azurecli-interactive
     chmod +x azure_rm.py
     ```
 
-1. Használja a [ansible parancs](https://docs.ansible.com/ansible/2.4/ansible.html) az erőforráscsoport való csatlakozáshoz: 
+1. Használja a [ansible parancs](https://docs.ansible.com/ansible/2.4/ansible.html) csatlakozni az erőforráscsoportban: 
 
     ```azurecli-interactive
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping 
     ```
 
-1. A csatlakozás után eredmények eléréséhez a következő eredmény jelenik meg:
+1. A csatlakozás után a következő kimenethez hasonló eredmény jelenik meg:
 
     ```Output
     ansible-inventory-test-vm1 | SUCCESS => {
@@ -99,8 +99,8 @@ Miután a virtuális gépek meghatározott (és címkézett), a dinamikus készl
     }
     ```
 
-## <a name="enable-the-virtual-machine-tag"></a>A virtuálisgép-tag engedélyezése
-Miután beállította a kívánt címkét, kell "Engedélyezés" címke. Ahhoz, hogy a címke egyik módja a címke exportálásával egy környezeti változó neve `AZURE_TAGS` keresztül a **exportálása** parancs:
+## <a name="enable-the-virtual-machine-tag"></a>A virtuális gép címke engedélyezése
+Miután beállította a kívánt címke, "Engedélyezés" címke van szükség. Ahhoz, hogy egy címke egyik módja egy környezeti változóhoz a címke exportálásával nevezzük `AZURE_TAGS` keresztül a **exportálása** parancsot:
 
 ```azurecli-interactive
 export AZURE_TAGS=nginx
@@ -112,7 +112,7 @@ A címke exportálása után próbálja meg a `ansible` újra a parancsot:
 ansible -i azure_rm.py ansible-inventory-test-rg -m ping 
 ```
 
-Ekkor megjelenik a csak egy virtuális gép (amelynek címke értéke megegyezik egy exportált a **AZURE_TAGS** környezeti változó):
+Csak egy virtuális gép most már láthatók (amelynek címke értéke megegyezik egy exportált a **AZURE_TAGS** környezeti változó):
 
 ```Output
 ansible-inventory-test-vm1 | SUCCESS => {
@@ -122,10 +122,10 @@ ansible-inventory-test-vm1 | SUCCESS => {
 }
 ```
 
-## <a name="set-up-nginx-on-the-tagged-vm"></a>A virtuális gép címkézett Nginx beállítása
-A címkék célja a virtuális gépek alcsoportokat gyorsan és könnyen használható lehetőség. Például tételezzük fel Nginx telepíti, amelyhez egy címkét a hozzárendelt virtuális gépek csak a `nginx`. A következő lépések bemutatják, hogyan könnyen ez elvégzéséhez:
+## <a name="set-up-nginx-on-the-tagged-vm"></a>A címkézett virtuális Géphez az Nginx telepítése
+A címkék célja, hogy gyorsan és egyszerűen dolgozhat a virtuális gépek alcsoportok lehetővé. Például tegyük fel, az Nginx telepítéséhez csak a virtuális gépek, amelyhez hozzárendelte a címke `nginx`. A következő lépések bemutatják, milyen egyszerűen ez elvégzéséhez:
 
-1. Hozzon létre egy fájlt (kell tartalmaznia a forgatókönyv) `nginx.yml` az alábbiak szerint:
+1. Hozzon létre egy fájlt (a tartalmaz a forgatókönyv) `nginx.yml` módon:
 
   ```azurecli-interactive
   vi nginx.yml
@@ -154,7 +154,7 @@ A címkék célja a virtuális gépek alcsoportokat gyorsan és könnyen haszná
   ansible-playbook -i azure_rm.py nginx.yml
   ```
 
-1. A forgatókönyv futtatása után eredmények eléréséhez a következő eredmény jelenik meg:
+1. A forgatókönyv futtatása után a következő kimenethez hasonló eredményeket jelenik meg:
 
     ```Output
     PLAY [Install and start Nginx on an Azure virtual machine] **********
@@ -172,10 +172,10 @@ A címkék célja a virtuális gépek alcsoportokat gyorsan és könnyen haszná
     ansible-inventory-test-vm1 : ok=3    changed=1    unreachable=0    failed=0
     ```
 
-## <a name="test-nginx-installation"></a>Nginx-telepítés sikerességének ellenőrzése
-Ez a szakasz bemutatja, tesztelheti, hogy az Nginx telepítve van-e a virtuális gép egyik módszer.
+## <a name="test-nginx-installation"></a>Az Nginx-telepítés tesztelése
+Ez a szakasz azt mutatja be, tesztelheti, hogy az Nginx telepítve van-e a virtuális gép egyik módszer.
 
-1. Használja a [az vm-ip-címeinek listáját](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_ip_addresses) parancsot IP-címének lekéréséhez a `ansible-inventory-test-vm1` virtuális gépet. A visszaadott érték (a virtuális gép IP-cím) majd az SSH-parancs paramétereként való kapcsolódásra szolgál a virtuális géphez.
+1. Használja a [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) parancs használatával kérje le az IP-címét a `ansible-inventory-test-vm1` virtuális gépet. A visszaadott érték (a virtuális gép IP-cím) majd a virtuális géphez való kapcsolódáshoz használt SSH-parancs paramétereként.
 
     ```azurecli-interactive
     ssh `az vm list-ip-addresses \
@@ -183,13 +183,13 @@ Ez a szakasz bemutatja, tesztelheti, hogy az Nginx telepítve van-e a virtuális
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. A [nginx - v](https://nginx.org/en/docs/switches.html) parancs szolgál nyomtatni az Nginx-verzió. Azonban azt is segítségével határozza meg, ha telepítve van-e a Nginx. Adja meg, ha csatlakozik a `ansible-inventory-test-vm1` virtuális gépet.
+1. A [nginx - v](https://nginx.org/en/docs/switches.html) parancs szolgál az Nginx verzióját nyomtatásához. Azonban azt is segítségével határozza meg, hogy az Nginx telepítve van-e. Adja meg azt, ha csatlakozik a `ansible-inventory-test-vm1` virtuális gépet.
 
     ```azurecli-interactive
     nginx -v
     ```
 
-1. Miután lefuttatta a a `nginx -v` parancsot az Nginx verzió meg (a második sor), amely azt jelzi, hogy telepítve van-e a Nginx.
+1. Futtatása után a `nginx -v` parancsot, láthatja, hogy az Nginx verzióját (a második sor), amely azt jelzi, hogy az Nginx telepítve van-e.
 
     ```Output
     tom@ansible-inventory-test-vm1:~$ nginx -v
@@ -199,9 +199,9 @@ Ez a szakasz bemutatja, tesztelheti, hogy az Nginx telepítve van-e a virtuális
     tom@ansible-inventory-test-vm1:~$
     ```
 
-1. Nyomja meg a  **&lt;Ctrl > D** billentyűzet kombinációja leválasztja az SSH-munkamenetet.
+1. Nyomja le az  **&lt;Ctrl > D** billentyűzet kombináció leválasztja az SSH-munkamenetből.
 
-1. Hajt végre a fenti lépések a `ansible-inventory-test-vm2` virtuális gép, amelynek eredménye egy tájékoztató üzenet jelzi, amelyről Nginx (amely magában foglalja, hogy nincs telepítve ezen a ponton) tölthet le:
+1. Végez az előző lépések a `ansible-inventory-test-vm2` virtuális gép poskytne egy tájékoztató üzenet, amely azt jelzi, ahol megtekintheti az nginx-et (Ez azt jelenti, hogy még nincs telepítve ezen a ponton):
 
     ```Output
     tom@ansible-inventory-test-vm2:~$ nginx -v
@@ -215,4 +215,4 @@ Ez a szakasz bemutatja, tesztelheti, hogy az Nginx telepítve van-e a virtuális
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Alapszintű virtuális gép létrehozása az Azure-ban Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Alapszintű virtuális gép létrehozása az Azure-ban, az ansible segítségével](/azure/virtual-machines/linux/ansible-create-vm)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: b39879cc8548139879a3039c5e0c6b924e83c107
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fed368c0df265495d9fee764f86825957fae8bab
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046671"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447424"
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>Az Azure Active Directory integrálásának Palo Alto Networks - felügyeleti felhasználói Felületéhez
 
@@ -64,15 +64,15 @@ Az Azure AD-integráció konfigurálásához a Palo Alto Networks - felügyeleti
 
     ![Az Azure Active Directory gomb][1]
 
-2. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
+1. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
 
     ![A "Nagyvállalati alkalmazások" ablak][2]
     
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra az ablak tetején.
+1. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra az ablak tetején.
 
     ![Az "új alkalmazás" gombra][3]
 
-4. A Keresés mezőbe írja be a **Palo Alto Networks - felügyeleti felhasználói Felületéhez**válassza **Palo Alto Networks - felügyeleti felhasználói Felületéhez** a találatok listájában, és válassza ki a **Hozzáadás**.
+1. A Keresés mezőbe írja be a **Palo Alto Networks - felügyeleti felhasználói Felületéhez**válassza **Palo Alto Networks - felügyeleti felhasználói Felületéhez** a találatok listájában, és válassza ki a **Hozzáadás**.
 
     ![Futtató Palo Alto Networks - felügyeleti felhasználói Felületéhez a találatok listájában](./media/paloaltoadmin-tutorial/tutorial_step4-add-from-the-gallery.png)
 
@@ -94,11 +94,11 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Palo 
 
     ![Az "Egyszeri bejelentkezés" hivatkozásra][4]
 
-2. Az a **egyszeri bejelentkezési** ablakban, a a **egyszeri bejelentkezési mód** jelölje ki **SAML-alapú bejelentkezés**.
+1. Az a **egyszeri bejelentkezési** ablakban, a a **egyszeri bejelentkezési mód** jelölje ki **SAML-alapú bejelentkezés**.
  
     ![Az "Egyszeri bejelentkezés" ablak](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_samlbase.png)
 
-3. A **Palo Alto Networks - rendszergazdai felhasználói felület tartomány és URL-címek**, tegye a következőket:
+1. A **Palo Alto Networks - rendszergazdai felhasználói felület tartomány és URL-címek**, tegye a következőket:
 
     !["Palo Alto Networks - rendszergazdai felhasználói felület tartomány és URL-címek" egyszeri bejelentkezési adatait](./media/paloaltoadmin-tutorial/tutorial_general_show_advanced_url.png)
     
@@ -111,7 +111,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Palo 
     > [!NOTE] 
     > Az előző értékek nem valódi. Frissítse azokat a tényleges bejelentkezési URL-cím és azonosító. Az értékek beszerzéséhez forduljon [Palo Alto Networks - rendszergazdai felhasználói felület ügyfél-támogatási csapatának](https://support.paloaltonetworks.com/support). 
  
-4. A Palo Alto Networks - rendszergazdai felhasználói felület alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, mert konfigurálja a jogcímek, az alábbi képen látható módon. Az attribútumértékek kezelése a **felhasználói attribútumok** szakaszában a **alkalmazásintegráció** lap az alábbiak szerint:
+1. A Palo Alto Networks - rendszergazdai felhasználói felület alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, mert konfigurálja a jogcímek, az alábbi képen látható módon. Az attribútumértékek kezelése a **felhasználói attribútumok** szakaszában a **alkalmazásintegráció** lap az alábbiak szerint:
     
     ![Az SAML-jogkivonat attribútumai listája](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_attribute.png)
     
@@ -144,23 +144,23 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Palo 
     > * [Eszköz hozzáférési tartományi rendszergazdai felhasználói felület (accessdomain)](https://www.paloaltonetworks.com/documentation/80/pan-os/web-interface-help/device/device-access-domain)
     >
 
-5. Alatt **SAML-aláíró tanúsítvány**válassza **metaadatainak XML**, majd válassza ki **mentése**.
+1. Alatt **SAML-aláíró tanúsítvány**válassza **metaadatainak XML**, majd válassza ki **mentése**.
 
     ![A metaadatok XML letöltési hivatkozás](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_certificate.png) 
 
     ![A Mentés gombra](./media/paloaltoadmin-tutorial/tutorial_general_400.png)
 
-6. Egy új ablakban rendszergazdaként nyissa meg a Palo Alto hálózatok tűzfal felügyeleti felhasználói Felületéhez.
+1. Egy új ablakban rendszergazdaként nyissa meg a Palo Alto hálózatok tűzfal felügyeleti felhasználói Felületéhez.
 
-7. Válassza ki a **eszköz** fülre.
+1. Válassza ki a **eszköz** fülre.
 
     ![Az eszközök lapon](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-8. A bal oldali panelen válassza ki a **identitásszolgáltató SAML**, majd válassza ki **importálása** a metaadatait tartalmazó fájl importálása.
+1. A bal oldali panelen válassza ki a **identitásszolgáltató SAML**, majd válassza ki **importálása** a metaadatait tartalmazó fájl importálása.
 
     ![Az importálás metaadatok szolgáló gomb](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-9. Az a **SAML azonosítása szolgáltató kiszolgáló profilok importálása** ablakban tegye a következőket:
+1. Az a **SAML azonosítása szolgáltató kiszolgáló profilok importálása** ablakban tegye a következőket:
 
     ![Az "SAML azonosítása szolgáltató kiszolgáló profil importálása" ablak](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
@@ -174,11 +174,11 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Palo 
     
     e. A konfigurációk a tűzfalon véglegesítéséhez kattintson **véglegesítési**.
 
-10. A bal oldali panelen válassza ki a **identitásszolgáltató SAML**, majd válassza ki a SAML-alapú identitás-szolgáltató profilban (például **Azure ad felügyeleti felhasználói Felületéhez**), amely az előző lépésben létrehozott. 
+1. A bal oldali panelen válassza ki a **identitásszolgáltató SAML**, majd válassza ki a SAML-alapú identitás-szolgáltató profilban (például **Azure ad felügyeleti felhasználói Felületéhez**), amely az előző lépésben létrehozott. 
 
     ![Az SAML-alapú identitás szolgáltató profilban](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
 
-11. Az a **SAML-alapú identitás szolgáltató kiszolgáló profilban** ablakban tegye a következőket:
+1. Az a **SAML-alapú identitás szolgáltató kiszolgáló profilban** ablakban tegye a következőket:
 
     ![Az "SAML-alapú identitás szolgáltató kiszolgáló profilban" ablak](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
@@ -186,20 +186,20 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Palo 
   
     b. Kattintson az **OK** gombra.
 
-12. Válassza ki a Palo Alto hálózatok tűzfal felügyeleti felhasználói Felületéhez, **eszköz**, majd válassza ki **rendszergazdai szerepkörök**.
+1. Válassza ki a Palo Alto hálózatok tűzfal felügyeleti felhasználói Felületéhez, **eszköz**, majd válassza ki **rendszergazdai szerepkörök**.
 
-13. Válassza ki a **Hozzáadás** gombra. 
+1. Válassza ki a **Hozzáadás** gombra. 
 
-14. Az a **rendszergazdai szerepkör profil** ablakban, a a **neve** adja meg a rendszergazda szerepkör nevét (például **fwadmin**).  
+1. Az a **rendszergazdai szerepkör profil** ablakban, a a **neve** adja meg a rendszergazda szerepkör nevét (például **fwadmin**).  
     A rendszergazda szerepkör nevének egyeznie kell az SAML-rendszergazdai szerepkör attribútum nevét, amely az identitásszolgáltató által küldött. A rendszergazda szerepkör nevét és értékét a 4. lépésben létrehozott.
 
     ![Rendszert futtató Palo Alto hálózatok rendszergazdai szerepkör konfigurálása](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
   
-15. Válassza ki a tűzfalat felügyeleti felhasználói Felületéhez, **eszköz**, majd válassza ki **hitelesítési profilt**.
+1. Válassza ki a tűzfalat felügyeleti felhasználói Felületéhez, **eszköz**, majd válassza ki **hitelesítési profilt**.
 
-16. Válassza ki a **Hozzáadás** gombra. 
+1. Válassza ki a **Hozzáadás** gombra. 
 
-17. Az a **hitelesítési profilt** ablakban tegye a következőket: 
+1. Az a **hitelesítési profilt** ablakban tegye a következőket: 
 
     ![A "Hitelesítés profil" ablak](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
 
@@ -222,17 +222,17 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Palo 
 
     g. Kattintson az **OK** gombra.
 
-18. Válassza ki ahhoz, hogy a rendszergazdák számára, hogy az Azure SAML SSO, **eszköz** > **telepítő**. Az a **telepítő** panelen válassza a **felügyeleti** lapon majd **hitelesítési beállítások**, jelölje be a **beállítások** ("fogaskerék") gomb . 
+1. Válassza ki ahhoz, hogy a rendszergazdák számára, hogy az Azure SAML SSO, **eszköz** > **telepítő**. Az a **telepítő** panelen válassza a **felügyeleti** lapon majd **hitelesítési beállítások**, jelölje be a **beállítások** ("fogaskerék") gomb . 
 
  ![A beállítások gomb](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
-19. Válassza ki a SAML-hitelesítés profilt, amely a 17. lépésben létrehozott (például **AzureSAML_Admin_AuthProfile**).
+1. Válassza ki a SAML-hitelesítés profilt, amely a 17. lépésben létrehozott (például **AzureSAML_Admin_AuthProfile**).
 
  ![A hitelesítési profilt mező](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
-20. Kattintson az **OK** gombra.
+1. Kattintson az **OK** gombra.
 
-21. A konfiguráció véglegesítéséhez kattintson **véglegesítési**.
+1. A konfiguráció véglegesítéséhez kattintson **véglegesítési**.
 
 
 > [!TIP]
@@ -249,17 +249,17 @@ Ebben a szakaszban tesztfelhasználó Britta Simon az Azure Portalon létrehozha
 
     ![Az Azure Active Directory-hivatkozás](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-2. Az aktuális felhasználó megjelenítéséhez válassza **felhasználók és csoportok** > **minden felhasználó**.
+1. Az aktuális felhasználó megjelenítéséhez válassza **felhasználók és csoportok** > **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
-3. Felső részén a **minden felhasználó** ablakban válassza **Hozzáadás**.
+1. Felső részén a **minden felhasználó** ablakban válassza **Hozzáadás**.
 
     ![A Hozzáadás gombra.](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
     A **felhasználói** ablak nyílik meg.
 
-4. Az a **felhasználói** ablakban tegye a következőket:
+1. Az a **felhasználói** ablakban tegye a következőket:
 
     ![A felhasználó ablak](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
@@ -285,23 +285,23 @@ Ebben a szakaszban engedélyezze felhasználói Britta Simon által biztosított
 
     ![A "Nagyvállalati alkalmazások" és "Összes alkalmazás" hivatkozások][201] 
 
-2. Az a **alkalmazások** listáról válassza ki **Palo Alto Networks - felügyeleti felhasználói Felületéhez**.
+1. Az a **alkalmazások** listáról válassza ki **Palo Alto Networks - felügyeleti felhasználói Felületéhez**.
 
     ![A futtató Palo Alto Networks - hivatkozás felügyeleti felhasználói Felületéhez](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_app.png)  
 
-3. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
+1. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Válassza ki **Hozzáadás** , majd a **hozzárendelés hozzáadása** ablaktáblán válassza **felhasználók és csoportok**.
+1. Válassza ki **Hozzáadás** , majd a **hozzárendelés hozzáadása** ablaktáblán válassza **felhasználók és csoportok**.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. Az a **felhasználók és csoportok** ablakban, a a **felhasználók** listáról válassza ki **Britta Simon**.
+1. Az a **felhasználók és csoportok** ablakban, a a **felhasználók** listáról válassza ki **Britta Simon**.
 
-6. Válassza ki a **kiválasztása** gombra.
+1. Válassza ki a **kiválasztása** gombra.
 
-7. Az a **hozzárendelés hozzáadása** ablakban válassza **hozzárendelése**.
+1. Az a **hozzárendelés hozzáadása** ablakban válassza **hozzárendelése**.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -314,7 +314,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

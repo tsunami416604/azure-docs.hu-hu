@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f4b45c743c0efa1c9df665018b28a8b4ffb76f73
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: e42bc63b0c2b6edf4dc0de204bbac5fe90071a67
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238403"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480512"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Az Active Directory B2C-ben használható alkalmazások típusok
 
@@ -60,7 +60,13 @@ További információ az elérhető jogkivonatok és jogcímek az alkalmazáshoz
 
 Egy webalkalmazás, minden egyes végrehajtása a egy [házirend](active-directory-b2c-reference-policies.md) veszi ezeket a magas szintű lépéseket:
 
-![Webalkalmazás, sávok](./media/active-directory-b2c-apps/webapp.png)
+1. A felhasználó megnyitja a webalkalmazáshoz.
+2. A webes alkalmazás átirányítja a felhasználóknak az Azure AD B2C-vel a szabályzat végrehajtásához.
+3. A felhasználó elvégzi a házirend.
+4. Az Azure AD B2C visszaadja az `id_token` a böngészőben.
+5. A `id_token` be az átirányítási URI-t.
+6. A `id_token` érvényesítése és a egy munkamenetcookie-t be van állítva.
+7. A felhasználónak egy biztonságos lap küld vissza.
 
 A felhasználó identitásának ellenőrzéséhez elegendő az Azure AD-tól kapott nyilvános aláírókulcs segítségével ellenőrizni a `id_token`érvényességét. Ezzel egyúttal beállít egy munkamenetcookie-t is, amely a következő lapkérések során azonosítja a felhasználót.
 
@@ -89,7 +95,15 @@ Accept: application/json
 
 Webes API-k számos különböző típusú, beleértve a webalkalmazásokat, asztali és mobil alkalmazások, egyoldalas alkalmazások, kiszolgálóoldali démonok és más webes API-kat a képes jogkivonatokat fogadni. Íme egy példa, amely meghívja a webes API-k webalkalmazás teljes folyamatára:
 
-![Webalkalmazás, webes API sávok](./media/active-directory-b2c-apps/webapi.png)
+1. A webes alkalmazás végrehajt egy szabályzatot, és a felhasználó elvégzi a felhasználói élményt.
+2. Az Azure AD B2C visszaadja az `access_token` és a egy hozzáférési kóddal a böngészőben.
+3. A böngésző bejegyzések a `access_token` és az átirányítási URI-t az engedélyezési kód.
+4. A webalkalmazás-kiszolgáló ellenőrzi a `access token` és a egy munkamenetcookie-t állítja be.
+5. A `access_token` példáira Azure AD B2C az engedélyezési kódot, az alkalmazás ügyfél-Azonosítót és hitelesítő adatait.
+6. A `access_token` és `refresh_token` visszakerülnek a webkiszolgálón.
+7. A webes API-k hívása a `access_token` az engedélyeztetési fejléc.
+8. A webes API érvényesíti a jogkivonatot.
+9. A webkiszolgáló biztonságos adatokat küld vissza.
 
 Ha többet szeretne tudni a hitelesítési kódokról, frissítési jogkivonatokról, valamint a jogkivonatok lekérésének lépéseiről, olvasson az [OAuth 2.0-protokollról](active-directory-b2c-reference-oauth-code.md).
 
@@ -105,8 +119,6 @@ Ezt a folyamatot, az alkalmazás végrehajt [házirendek](active-directory-b2c-r
 > Az Azure AD B2C jelenleg csak az alkalmazás saját háttér-webszolgáltatás eléréséhez használt jogkivonatokat támogatja. A teljes alkalmazás tartalmazhat például egy iOS-alkalmazás Android-alkalmazás és egy háttér-webes API-t. Ez az architektúra már most is teljes támogatást élvez. Lehetővé teszi az IOS-es alkalmazás hozzáférjen a partneri webes API-t OAuth 2.0 hozzáférési jogkivonatok használatával jelenleg nem támogatott. Mind a teljes alkalmazás összetevőinek egyazon alkalmazásazonosítót kell megosztása
 >
 >
-
-![Natív alkalmazás, sávok](./media/active-directory-b2c-apps/native.png)
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 

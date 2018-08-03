@@ -7,5 +7,5 @@
 | Tárolt hozzáférési szabályzatok fájlmegosztásonként maximális száma | 5 |
 | Kérelem maximális díj / storage-fiók | érvényes méretű fájlok másodpercenként 20 000 kérelem<sup>3</sup> |
 | Cél átviteli sebességet egy fájlmegosztás | Másodpercenként legfeljebb 60 MiB |
-| Fájlonként maximálisan megnyitott leíróinak | 2000 megnyitott leíróinak |
+| Maximális megnyitott leírók számát | 2000 megnyitott leíróinak |
 | Megosztási pillanatképek maximális száma | 200 megosztási pillanatképek |

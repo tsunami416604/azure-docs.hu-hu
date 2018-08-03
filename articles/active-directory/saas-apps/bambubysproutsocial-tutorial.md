@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: eba6f2a22de42ce65996dbe0f9b75533d2a4dacc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 1240049fd84633365aa55cd07dfb0e4ef75d24d5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047892"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447506"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>Oktatóanyag: Azure Active Directory-integráció az Bambu közösségi csíra szerint
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. A közösségi csíra Bambu hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-bambu-by-sprout-social-from-the-gallery"></a>A közösségi csíra Bambu hozzáadása a katalógusból
 Közösségi csíra által Bambu integrálása az Azure AD beállítása, hozzá kell Bambu közösségi csíra által a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -63,19 +63,19 @@ Közösségi csíra által Bambu integrálása az Azure AD beállítása, hozzá
 
     ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Kattintson a **új alkalmazás** gombra az új alkalmazás hozzáadása párbeszédpanel tetején.
+1. Kattintson a **új alkalmazás** gombra az új alkalmazás hozzáadása párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. A Keresés mezőbe írja be a **által közösségi csíra Bambu**.
+1. A Keresés mezőbe írja be a **által közösségi csíra Bambu**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_search.png)
 
-5. Az eredmények panelen válassza ki a **által közösségi csíra Bambu**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az eredmények panelen válassza ki a **által közösségi csíra Bambu**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasznál�
 Az Azure AD egyszeri bejelentkezés a közösségi csíra által Bambu tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Egy Bambu által közösségi csíra tesztfelhasználó létrehozása](#creating-a-bambu-by-sprout-social-test-user)**  – van egy megfelelője a Britta Simon Bambu által csíra közösségi, amely kapcsolódik az Azure ad-ben ábrázolása számára.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Egy Bambu által közösségi csíra tesztfelhasználó létrehozása](#creating-a-bambu-by-sprout-social-test-user)**  – van egy megfelelője a Britta Simon Bambu által csíra közösségi, amely kapcsolódik az Azure ad-ben ábrázolása számára.
+1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,27 +104,27 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** kiválasztása **SAML-alapú bejelentkezés** való egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** kiválasztása **SAML-alapú bejelentkezés** való egyszeri bejelentkezés engedélyezése.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_samlbase.png)
 
-3. Az a **csíra közösségi tartomány és URL-címek Bambu** szakaszban, a felhasználónak nem kell végrehajthatja a lépéseket, ahogy az alkalmazás már előre integrálva van az Azure-ral. 
+1. Az a **csíra közösségi tartomány és URL-címek Bambu** szakaszban, a felhasználónak nem kell végrehajthatja a lépéseket, ahogy az alkalmazás már előre integrálva van az Azure-ral. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_url.png)
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse az XML-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse az XML-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bambubysproutsocial-tutorial/tutorial_general_400.png)
     
-6. Az a **közösségi konfigurációja csíra Bambu** területén kattintson **Bambu konfigurálása által a közösségi csíra** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+1. Az a **közösségi konfigurációja csíra Bambu** területén kattintson **Bambu konfigurálása által a közösségi csíra** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_configure.png) 
 
-7. Az egyszeri bejelentkezés konfigurálása **Bambu közösségi csíra által** oldalon kell küldenie a letöltött **metaadatainak XML** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [ Közösségi csíra támogatja Bambu](mailto:support@getbambu.com). Ezek beállítja ezt annak érdekében, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+1. Az egyszeri bejelentkezés konfigurálása **Bambu közösségi csíra által** oldalon kell küldenie a letöltött **metaadatainak XML** és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [ Közösségi csíra támogatja Bambu](mailto:support@getbambu.com). Ezek beállítja ezt annak érdekében, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** szakaszban, egyszerűen kattintson az a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -154,15 +154,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bambubysproutsocial-tutorial/create_aaduser_01.png) 
 
-2. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
+1. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
     
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bambubysproutsocial-tutorial/create_aaduser_02.png) 
 
-3. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
+1. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bambubysproutsocial-tutorial/create_aaduser_03.png) 
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/bambubysproutsocial-tutorial/create_aaduser_04.png) 
 
@@ -190,23 +190,23 @@ Ebben a szakaszban engedélyezze Britta Simon számára hozzáférést biztosít
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **által közösségi csíra Bambu**.
+1. Az alkalmazások listájában jelölje ki a **által közösségi csíra Bambu**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_app.png) 
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
@@ -217,7 +217,7 @@ Amikor a Bambu által a hozzáférési panelen közösségi csíra csempére kat
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

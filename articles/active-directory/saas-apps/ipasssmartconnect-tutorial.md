@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált iPass SmartConnect |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és iPass SmartConnect között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az iPass SmartConnect |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és iPass SmartConnect között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,250 +14,250 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ae600142f7e90a7f6185c3a948a4174ce4c7797
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: ecfdd3fae1d394e3b57fcd325f44cad0d1a98534
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320526"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444894"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Oktatóanyag: Azure Active Directoryval integrált iPass SmartConnect
+# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Oktatóanyag: Azure Active Directory-integráció az iPass SmartConnect
 
-Ebben az oktatóanyagban elsajátíthatja iPass SmartConnect integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan iPass SmartConnect integrálása az Azure Active Directory (Azure AD).
 
-IPass SmartConnect integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+IPass SmartConnect integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure AD, aki hozzáfér iPass SmartConnect szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett iPass SmartConnect (egyszeri bejelentkezés) a saját Azure AD-fiókok számára.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá iPass SmartConnect Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a iPass SmartConnect (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs iPass SmartConnect, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása iPass SmartConnect, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy iPass SmartConnect egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből iPass SmartConnect hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. IPass SmartConnect hozzáadása a katalógusból
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-ipass-smartconnect-from-the-gallery"></a>A gyűjteményből iPass SmartConnect hozzáadása
-Az Azure AD integrálása a iPass SmartConnect konfigurálásához kell hozzáadnia iPass SmartConnect a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-ipass-smartconnect-from-the-gallery"></a>IPass SmartConnect hozzáadása a katalógusból
+Az Azure AD integrálása a iPass SmartConnect konfigurálásához hozzá kell iPass SmartConnect a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből iPass SmartConnect hozzáadásához hajtsa végre az alábbi lépéseket:**
+**IPass SmartConnect hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **iPass SmartConnect**, jelölje be **iPass SmartConnect** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **iPass SmartConnect**, jelölje be **iPass SmartConnect** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![az eredménylistában SmartConnect iPass](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_addfromgallery.png)
+    ![az eredmények listájában SmartConnect iPass](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a iPass SmartConnect "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az iPass SmartConnect egy "Britta Simon" nevű tesztelési felhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD az Azure AD-ben a felhasználó van SmartConnect iPass a párjukhoz felhasználó tudnia kell. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a iPass hivatkozás kapcsolatának SmartConnect kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, milyen a partner felhasználó iPass SmartConnect, hogy egy felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó iPass hivatkozás kapcsolata SmartConnect kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a iPass SmartConnect tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az iPass SmartConnect tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy iPass SmartConnect tesztfelhasználó](#create-an-ipass-smartconnect-test-user)**  - Britta Simon egy partner, a felhasználó az Azure AD ábrázolását kapcsolódó SmartConnect iPass rendelkezik.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy iPass SmartConnect tesztfelhasználót](#create-an-ipass-smartconnect-test-user)**  – egy megfelelője a Britta Simon iPass SmartConnect, amely kapcsolódik az Azure AD felhasználói ábrázolása a rendelkeznie.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a iPass SmartConnect alkalmazás egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a iPass SmartConnect alkalmazás egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés iPass SmartConnect, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés iPass SmartConnect, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **iPass SmartConnect** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **iPass SmartConnect** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_samlbase.png)
 
-3. Az a **iPass SmartConnect tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód, hajtsa végre a lépéseket nem szükséges.
+1. Az a **iPass SmartConnect tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, végrehajthatja a lépéseket nem szükséges.
 
-    ![az egyszeri bejelentkezés információk iPass SmartConnect tartomány és az URL-címek](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_url1.png)
+    ![iPass SmartConnect tartomány és URL-címek egyszeri bejelentkezési adatait](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_url1.png)
 
-4. Ellenőrizze a megjelenítése speciális URL-cím beállításait, és hajtsa végre a következő lépést, ha konfigurálja az alkalmazást a **SP** kezdeményezett mód:
+1. Ellenőrizze a speciális URL-beállítások megjelenítése, és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![az egyszeri bejelentkezés információk iPass SmartConnect tartomány és az URL-címek](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_url2.png)
+    ![iPass SmartConnect tartomány és URL-címek egyszeri bejelentkezési adatait](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_url2.png)
 
-    A bejelentkezési URL-cím mezőbe írja be egy URL-cím: `https://om-activation.ipass.com/ClientActivation/ssolanding.go`
+    A bejelentkezési URL-címe szövegmezőbe írja be egy URL-címe: `https://om-activation.ipass.com/ClientActivation/ssolanding.go`
 
-5. iPass SmartConnect alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. Állítsa be a következő jogcímeket ehhez az alkalmazáshoz. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
+1. iPass SmartConnect alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Állítsa be a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható erre egy példa látható.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ipasssmartconnect-tutorial/attribute.png)
 
-6. Kattintson a **nézet és egyéb felhasználói attribútumok szerkesztése** jelölőnégyzet a **felhasználói attribútumok** szakaszban bontsa ki az attribútumok. Hajtsa végre a következő lépéseket mindegyik a megjelenített attribútumok-
+1. Kattintson a **megtekintése és egyéb felhasználói attribútumok szerkesztése** a jelölőnégyzetet a **felhasználói attribútumok** szakaszban bontsa ki az attribútumokat. Hajtsa végre az alábbi lépéseket az egyes a megjelenített attribútumok-
 
     | Attribútum neve | Attribútum értéke | Namespace érték|
     | ---------------| --------------- |----------------|
-    | Utónév | User.givenName |   |
+    | Keresztnév | User.givenName |   |
     | Vezetéknév | User.surname | |
     | e-mailben | User.userPrincipalName | |
     | felhasználónév | User.userPrincipalName | |
 
-    a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ipasssmartconnect-tutorial/tutorial_attribute_04.png)
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ipasssmartconnect-tutorial/tutorial_attribute_05.png)
 
-    b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
+    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
 
-    d. Tartsa a sor üres névtér értéket.
+    d. Hagyja üresen a mezőt a sorhoz névtér értéke.
 
     e. Kattintson az **OK** gombra.
 
-7. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_certificate.png)
 
-8. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/ipasssmartconnect-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/ipasssmartconnect-tutorial/tutorial_general_400.png)
 
-9. Egyszeri bejelentkezés konfigurálása **iPass SmartConnect** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** és a **tartománynév** való [iPass SmartConnect támogatási csoport](mailto:help@ipass.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+1. Az egyszeri bejelentkezés konfigurálása **iPass SmartConnect** oldalon kell küldenie a letöltött **metaadatainak XML** és a **tartománynév** való [iPass SmartConnect támogatási csoport](mailto:help@ipass.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media/ipasssmartconnect-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/ipasssmartconnect-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/ipasssmartconnect-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/ipasssmartconnect-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-an-ipass-smartconnect-test-user"></a>Hozzon létre egy iPass SmartConnect tesztfelhasználó számára
 
-Ebben a szakaszban egy iPass SmartConnect Britta Simon nevű felhasználót hoz létre. Együttműködve [iPass SmartConnect támogatási csoport](mailto:help@ipass.com) a felhasználókat vagy a tartománnyal, amely ahhoz szükséges, hogy a iPass SmartConnect platform szerepel az engedélyezési listán kell hozzáadni. Ha a tartomány a csapata által hozzáadott, felhasználók fogja lekérni automatikusan hozzáférést kapnak a iPass SmartConnect platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt.
+Ebben a szakaszban egy felhasználói Britta Simon nevű iPass SmartConnect hoz létre. Együttműködve [iPass SmartConnect támogatási csoportjának](mailto:help@ipass.com) hozzáadása a felhasználók és a tartományt, amely a iPass SmartConnect platform az engedélyezéshez van szükség. Ha a tartomány a csapata által hozzáadott, a iPass SmartConnect platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez használandó iPass SmartConnect való hozzáférés biztosítása.
+Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejelentkezés iPass SmartConnect való hozzáférést.
 
 ![A felhasználói szerepkör hozzárendelése][200]
 
-**Britta Simon hozzárendelése iPass SmartConnect, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel iPass SmartConnect, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listában válassza ki a **iPass SmartConnect**.
+1. Az alkalmazások listájában jelölje ki a **iPass SmartConnect**.
 
     ![A iPass SmartConnect hivatkozásra az alkalmazások listáját](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-**Az alkalmazás a Szolgáltató kezdeményezett folyamatában, hajtsa végre az alábbi lépéseket:**
+**Az SP által kezdeményezett flow-ban az alkalmazás teszteléséhez hajtsa végre az alábbi lépéseket:**
 
 a. Töltse le a windows iPass SmartConnect ügyfél [Itt](https://om-activation.ipass.com/ClientActivation/ssolanding.go).
 
 ![A iPass SmartConnect hivatkozásra az alkalmazások listáját](./media/ipasssmartconnect-tutorial/testing3.png)
 
-b. Telepítse az ügyfelet, és indítsa el.
+b. Az ügyfél és az indítási telepítése.
 
 c. Kattintson a **Ismerkedés**.
 
 ![A iPass SmartConnect hivatkozásra az alkalmazások listáját](./media/ipasssmartconnect-tutorial/testing1.png) 
 
-d. Adja meg Azure felhasználói nevének tartománnyal. Kattintson a **továbbra is**. Ez a rendszer átirányítja az Azure bejelentkezési lapra
+d. Adja meg a tartományt az Azure-beli felhasználónevével. Kattintson a **továbbra is**. Ez az Azure bejelentkezési oldalára irányítja
 
 ![A iPass SmartConnect hivatkozásra az alkalmazások listáját](./media/ipasssmartconnect-tutorial/testing2.png) 
 
-e. Sikeres hitelesítés után az ügyfél aktiválási fog elindulni. Ügyfél aktiválva lesz beolvasása.
+e. Sikeres hitelesítés után az ügyfél aktiválási fog elindulni. Ügyfél fog aktiválni.
 
-**Az alkalmazás az IdP kezdeményezett folyamatában, hajtsa végre az alábbi lépéseket:**
+**Az identitásszolgáltató által kezdeményezett flow-ban az alkalmazás teszteléséhez hajtsa végre az alábbi lépéseket:**
 
 a. Jelentkezzen be [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 
 b. Kattintson a iPass SmartConnect alkalmazást.
 
-c. Elindítja a SSA lap, kattintson a **Windows letöltése alkalmazás** iPass SmartConnect ügyfél telepítéséhez.
+c. Elindul SSA lap, kattintson a **Windows letöltése alkalmazás** iPass SmartConnect ügyfél telepítéséhez.
 
 ![A iPass SmartConnect hivatkozásra az alkalmazások listáját](./media/ipasssmartconnect-tutorial/testing4.png)
 
-d. Az első indítsa el az ügyfél a telepítés automatikusan az aktiválási feltételek és kikötések elfogadása után elindul.
+d. Után az alkalmazás első indításakor az ügyfél a telepítés automatikusan elindul az aktiválási feltételek és kikötések elfogadása után.
 
-e. Ha aktiválási nem indul el, kattintson a SSA lapon elindíthatja az aktiválás gombra.
+e. Ha az aktiválás nem indul el, kattintson a SSA lapon elindíthatja az aktiválás gombra.
 
-f. Ügyfél aktiválva lesz beolvasása.
+f. Ügyfél fog aktiválni.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

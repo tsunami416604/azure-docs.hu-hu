@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 61ac0d823322b919952b7ea426c447e070a09fc1
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 5d8af50e3007342a5cd46e4862623f2cf7145172
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363196"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480421"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy a távoli asztal közzététele
 
@@ -64,14 +64,14 @@ RDS és Azure AD-alkalmazásproxy a környezetének beállítása után lépése
 ### <a name="publish-the-rd-host-endpoint"></a>Közzététel a távoli asztali állomás végpont
 
 1. [Egy új Application Proxy-alkalmazások közzététele](application-proxy-publish-azure-portal.md) a következő értékeket:
-   - Belső URL-cím: https://\<rdhost\>.com /, ahol \<rdhost\> lesz az általános, amelyek a távoli asztali Web- és a távoli asztali átjáró.
+   - Belső URL-címe: `https://\<rdhost\>.com/`, ahol `\<rdhost\>` , amelyek a távoli asztali Web- és a távoli asztali átjáró közös gyökere.
    - Külső URL-címe: Ezt a mezőt automatikusan kitölti a rendszer az alkalmazás neve alapján, de módosíthatja azokat. A felhasználók halad át az URL-cím RDS elérésekor
    - Előhitelesítési módszer: az Azure Active Directory
    - Lefordítja az URL-fejlécek: nem
 2. Felhasználók hozzárendelése a közzétett távoli asztali alkalmazást. Ellenőrizze, hogy az összes férhet hozzá, RDS, túl.
 3. Hagyja, az alkalmazás egyszeri bejelentkezési módszer **az Azure AD egyszeri bejelentkezés le van tiltva**. A felhasználók számára a rendszer felkéri egyszer az Azure ad-hez, és egyszer a távoli asztali webes hitelesítéséhez, de rendelkezik egyszeri bejelentkezéshez, a távoli asztali átjáró.
 4. Lépjen a **Azure Active Directory** > **Alkalmazásregisztrációk** > *az alkalmazás* > **beállításai**.
-5. Válassza ki **tulajdonságok** és frissítheti a **kezdőlap URL-címe** mezőt, mutasson a távoli asztali webes végpontra (például a https://\<rdhost\>.com/RDWeb).
+5. Válassza ki **tulajdonságok** és frissítheti a **kezdőlap URL-címe** mezőt, mutasson a távoli asztali webes végpontra (például `https://\<rdhost\>.com/RDWeb`).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Az alkalmazásproxy közvetlen RDS-forgalom
 

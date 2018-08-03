@@ -1,6 +1,6 @@
 ---
 title: Az Azure Storage Service Encryption ügyfél által kezelt kulcsok használata az Azure Key Vault |} A Microsoft Docs
-description: Az Azure Storage Service Encryption szolgáltatással titkosításához az Azure Blob storage, Azure Files, az Azure Queue storage és Azure Table storage szolgáltatás oldalán, az adatok tárolásakor, és azt visszafejteni, felhasználó által kezelt kulcsok használata az adatok lekérésekor.
+description: Titkosítani az Azure Blob storage és az Azure Files szolgáltatás oldalán, az adatok tárolásakor a az Azure Storage Service Encryption szolgáltatással, és visszafejtésre ügyfél által kezelt kulcsok használata az adatok lekérésekor.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: b92a486ea8dfc148cd10b905f90a0e871602cc61
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: adca912121b4317d08481aeacffaa89b403ff7db
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414937"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480751"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Felhasználó által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption
 A Microsoft Azure számára fontos, hogy segítséget nyújt a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok biztonságos megőrzésében. Egyik módja, hogy az Azure storage-platform védi az adatokat a keresztül Storage Service Encryption (SSE), amely titkosítja az adatokat, amikor a tárfiókba történő írása, és visszafejti az adatokat, lekérésekor. A titkosítási és visszafejtési automatikus, átlátható, és használja 256 bites [AES-titkosítás](https://wikipedia.org/wiki/Advanced_Encryption_Standard), egyik legerősebb Rejtjelek érhető el.
@@ -23,7 +23,7 @@ SSE technológiával is használhatja a Microsoft által felügyelt titkosítás
 Az SSE az Azure Blob storage és az Azure Files integrálva van az Azure Key Vault, hogy a key vault segítségével kezelje a titkosítási kulcsokat. Létrehozhat saját titkosítási kulcsok és a key vaultban tárolja őket, vagy használhatja az Azure Key Vault API-k készítése a titkosítási kulcsokat. Az Azure Key Vault kezelheti és vezérelheti a kulcsokat és a kulcshasználat is naplózása.
 
 > [!Note]  
-> Nem áll rendelkezésre a Storage Service Encryption [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Javasoljuk, használjon titkosítást az operációs rendszer szintjén, például [az Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), iparági szabványt használó [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) a Windows és [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) biztosít Linux rendszeren titkosítási KeyVault integrálva.
+> Nem áll rendelkezésre a felhasználó által kezelt kulcsok használata a Storage Service Encryption [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). [Az Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) iparági szabványt használó [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) a Windows és [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) egy titkosítási megoldást linuxon KeyVault integrálva.
 
 Miért érdemes létrehozni a saját kulcsok? Egyéni kulcsok nagyobb rugalmasságot nyújtanak, így létrehozása, elforgatása, tiltsa le, és adja meg a hozzáférés-vezérlést. Egyéni kulcsok lehetővé teszi, hogy a titkosítási kulcsokat az adatok védelmére szolgáló naplózása.
 
@@ -121,7 +121,7 @@ Igen.
 Nincs az Azure Key Vault használata ingyenes. További részletekért látogasson el [Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/). Nincs SSE, amely engedélyezve van az összes storage-fiókok számára további költség nélkül.
 
 **Az Azure Managed Disks elérhető-e a Storage Service Encryption szolgáltatással?**  
-Nem, nem áll rendelkezésre a Storage Service Encryption [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Javasoljuk, használjon titkosítást az operációs rendszer szintjén, például [az Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), iparági szabványt használó [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) a Windows és [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) biztosít Linux rendszeren titkosítási KeyVault integrálva.
+A Storage Service Encryption az Azure Managed Disks elérhető a Microsoft által felügyelt kulcsokkal, de nem az ügyfél által kezelt kulcsok. Ügyfél által felügyelt kulcsokkal SSE támogató Managed Disks, helyett javasoljuk [az Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), iparági szabványt használó [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) a Windows és [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)biztosít Linux rendszeren titkosítási KeyVault integrálva.
 
 **Miben különbözik a Storage Service Encryption az Azure Disk Encryption?**  
 Az Azure Disk Encryption biztosít operációsrendszer-alapú megoldások, például a BitLocker és a DM-Crypt és az Azure KeyVault közötti integrációt. A Storage Service Encryption natív módon a rétegben az Azure storage platform, a virtuális gép alábbi titkosítását biztosítja.

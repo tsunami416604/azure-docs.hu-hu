@@ -1,6 +1,6 @@
 ---
-title: Az Azure tároló beállításjegyzék hitelesítést a szolgáltatás rendszerbiztonsági tagok
-description: Útmutató az Azure Active Directory szolgáltatás egyszerű biztosít hozzáférést a személyes tárolót beállításjegyzék lemezképeihez.
+title: A szolgáltatásnevek Azure Tárolóregisztrációs adatbázis hitelesítési
+description: Megtudhatja, hogyan biztosíthat a hozzáférést a privát tárolójegyzékben található rendszerképek az Azure Active Directory egyszerű szolgáltatás használatával.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -8,56 +8,56 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: marsma
-ms.openlocfilehash: 16af83522dd55744c485f6dd3696481e16da1b22
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ffdf8af805ce7e5068ceef9a4b265ea00d36fc79
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768379"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448009"
 ---
-# <a name="azure-container-registry-authentication-with-service-principals"></a>Az Azure tároló beállításjegyzék hitelesítést a szolgáltatás rendszerbiztonsági tagok
+# <a name="azure-container-registry-authentication-with-service-principals"></a>A szolgáltatásnevek Azure Tárolóregisztrációs adatbázis hitelesítési
 
-Egy Azure Active Directory (Azure AD) egyszerű szolgáltatásnév segítségével adja meg a tároló kép `docker push` és `pull` a tároló beállításjegyzék elérését. Egy egyszerű szolgáltatás segítségével megadhatja a "távfelügyeleti" szolgáltatások és alkalmazások elérését.
+Az Azure Active Directory (Azure AD) egyszerű szolgáltatás használatával adja meg a tároló rendszerképét `docker push` és `pull` hozzáférés a tárolóregisztrációs adatbázisba. Egyszerű szolgáltatás használatával megadhatja a "távfelügyelt" szolgáltatások és alkalmazások elérését.
 
-## <a name="what-is-a-service-principal"></a>Mi az, hogy egy egyszerű szolgáltatásnév?
+## <a name="what-is-a-service-principal"></a>Mi az egyszerű szolgáltatás?
 
-Az Azure AD *szolgáltatás rendszerbiztonsági tagok* az előfizetésen belüli Azure-erőforrások eléréséhez. Úgy is gondolja, hogy a szolgáltatás egyszerű, egy felhasználói identitás egy szolgáltatáshoz, ahol "szolgáltatás" bármilyen alkalmazás, szolgáltatás vagy platform, amely az erőforrásokat kell elérnie. Egy egyszerű szolgáltatást csak az érintett erőforrásokra megadott hatókörű hozzáférési jogok konfigurálható. Ezt követően konfigurálhatja az alkalmazás vagy szolgáltatás számára ezen erőforrások eléréséhez használja az egyszerű szolgáltatás hitelesítő adatait.
+Az Azure AD *egyszerű szolgáltatások* az adott előfizetéshez tartozó Azure-erőforrásokhoz való hozzáférés biztosítása. Is felfoghatók szolgáltatás egyszerű, egy felhasználói identitás egy szolgáltatáshoz, ahol a "szolgáltatás" minden olyan alkalmazás, szolgáltatás vagy a platform, amely az erőforrásokat kell elérnie. A hozzáférési jogosultságok hatóköre csak azokhoz az erőforrásokhoz megad egy egyszerű szolgáltatás segítségével konfigurálhat. Ezt követően konfigurálhatja úgy az alkalmazást vagy szolgáltatást a szolgáltatásnév hitelesítő adatainak használata az erőforrások.
 
-Azure tároló beállításjegyzék környezetében létrehozhat az Azure AD szolgáltatás egyszerű lekéréses, leküldéses és lekéréses vagy a tulajdonos engedélyekkel a személyes Docker beállításjegyzék az Azure-ban.
+Azure Container Registry környezetében létrehozhat egy Azure AD egyszerű szolgáltatás lekéréses, leküldéses és lekéréses vagy tulajdonosi engedélyekkel rendelkező a privát Docker-tárolójegyzék az Azure-ban.
 
-## <a name="why-use-a-service-principal"></a>Egy egyszerű szolgáltatás miért érdemes használni?
+## <a name="why-use-a-service-principal"></a>Miért érdemes használni egy egyszerű szolgáltatást?
 
-Az Azure AD szolgáltatás egyszerű használatával hatókörbe tartozó hozzáférés a személyes tárolót beállításjegyzék biztosíthat. Az egyes alkalmazások vagy szolgáltatások, a beállításjegyzék megfelelő hozzáférési jogosultsággal rendelkező különböző szolgáltatásnevekről hozhat létre. És elkerülheti a hitelesítő adatokat, szolgáltatások és alkalmazások közötti megosztásának, mert forgassa el a hitelesítő adatokat, vagy visszavonhatja a hozzáférést, csak az egyszerű szolgáltatásnév (és így az alkalmazás) választja.
+Az Azure AD egyszerű szolgáltatás használatával megadhat hatókörrel rendelkező hozzáférést a privát tárolóregisztrációs adatbázisba. Létrehozhat különböző szolgáltatásnevek minden, az alkalmazások és szolgáltatások, minden testre szabott hozzáférési jogosultságokkal a tárolójegyzékbe. És elkerülheti a hitelesítő adatok, szolgáltatások és alkalmazások közötti megosztásának, mert hitelesítő adatok forgatása, vagy csak az egyszerű szolgáltatás (és így az alkalmazás) úgy dönt, a hozzáférés visszavonásához.
 
-Például a webes alkalmazás lemezképpel biztosító egyszerű szolgáltatás használható-e `pull` eléréséhez csak, amíg a buildelési rendszer használhat egy egyszerű mindkét biztosító `push` és `pull` hozzáférést. Az alkalmazások fejlesztése beavatkozás nélküli változik, ha nem befolyásolja a buildelési rendszer is forgassa el a szolgáltatás elv hitelesítő adatait.
+Például a webes alkalmazások használhatja, amely képet ad egyszerű szolgáltatás `pull` eléréséhez csak, míg a buildelési rendszer használhatja, amely biztosít is egyszerű szolgáltatás `push` és `pull` hozzáférést. Ha az alkalmazás fejlesztésének teljes megváltozik, egyszerű szolgáltatás hitelesítő adatainak működésének megzavarása nélkül megtesztelheti az összeállítási rendszer elfordításával.
 
-## <a name="when-to-use-a-service-principal"></a>Egy egyszerű szolgáltatás használata
+## <a name="when-to-use-a-service-principal"></a>Egyszerű szolgáltatás használata
 
-Beállításjegyzék hozzáférést biztosíthat egy szolgáltatásnevet kell használnia **távfelügyeleti forgatókönyvek**. Ez azt jelenti, hogy bármely alkalmazás, szolgáltatás vagy parancsprogram, amely kell leküldéses vagy tároló lekéréses képek a felügyelet nélküli automatizált vagy egyéb módon.
+Beállításjegyzék hozzáférést biztosíthat egy egyszerű szolgáltatást kell használnia **távfelügyelt forgatókönyvek**. Vagyis minden olyan alkalmazás, szolgáltatás vagy parancsfájlt, amely leküldéses kell, vagy kérje le a tároló képek a felügyelet nélküli automatikus vagy egyéb módon.
 
-A beállításjegyzék, például amikor azt manuálisan húzza a tároló-lemezkép a fejlesztő munkaállomás egyedi hozzáférési helyette használja a saját [az Azure AD identity](container-registry-authentication.md#individual-login-with-azure-ad) a beállításjegyzék-hozzáféréshez (például a [az acr bejelentkezési][az-acr-login]).
+Egyéni hozzáférési egy regisztrációs adatbázisba, mint ha manuálisan lekéri egy tárolórendszerképet a fejlesztő munkaállomás, hogy inkább használja a saját [az Azure AD identity](container-registry-authentication.md#individual-login-with-azure-ad) a beállításjegyzék-hozzáféréshez (például [az acr bejelentkezési][az-acr-login]).
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
 ## <a name="sample-scripts"></a>Mintaszkriptek
 
-Az előző mintaparancsfájlok Azure parancssori felület a Githubon, Azure PowerShell jól verzióként található:
+Jól verzióként az Azure PowerShell előző mintaszkriptek találja meg a Githubon, az Azure CLI-hez:
 
-* [Az Azure parancssori felület][acr-scripts-cli]
-* [Az Azure PowerShell][acr-scripts-psh]
+* [Az Azure CLI][acr-scripts-cli]
+* [Azure PowerShell-lel][acr-scripts-psh]
 
 ## <a name="next-steps"></a>További lépések
 
-Miután egy egyszerű szolgáltatást, hogy van-e hozzáférést kap a tároló beállításjegyzék, használhatja az alkalmazásokat és szolgáltatásokat a beállításjegyzék beavatkozás a megszerzett hitelesítő adatokkal.
+Ha már rendelkezik egy egyszerű szolgáltatást, hogy Ön már hozzáférést kap a tárolóregisztrációs adatbázisba, használhatja az alkalmazásokat és szolgáltatásokat a beállításjegyzék-interakció a saját hitelesítő adatait.
 
-Bár ez a cikk hatókörén kívül az egyes alkalmazások szolgáltatás egyszerű hitelesítő adatok beállítása, konkrét szolgáltatások és platformok itt találhat útmutatót:
+Bár ez a cikk hatókörén kívül az egyes alkalmazások általi használatát a szolgáltatásnév hitelesítő adatainak konfigurálása, konkrét szolgáltatások és platformok itt találhat útmutatót:
 
-* [A hitelesítést az Azure tároló beállításjegyzék Azure Kubernetes szolgáltatásból (AKS)](container-registry-auth-aks.md)
-* [Azure-tárolót beállításjegyzék (ACI) Azure-tárolót példányokból hitelesítéshez](container-registry-auth-aci.md)
+* [Hitelesítés az Azure tároló-beállításjegyzéket az Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
+* [Hitelesítés az Azure tároló-beállításjegyzéket az Azure Container Instances (aci Szolgáltatásban)](container-registry-auth-aci.md)
 
 <!-- LINKS - External -->
 [acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry
 [acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
-[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-login]: /cli/azure/acr#az-acr-login

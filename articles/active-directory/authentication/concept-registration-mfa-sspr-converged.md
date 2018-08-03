@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD SSPR és az MFA konvergens regisztráció
-description: Az Azure AD multi-factor Authentication hitelesítés és az önkiszolgáló jelszó-átállítási regisztrációk
+title: A hiperkonvergens regisztráció az Azure AD SSPR és a többtényezős hitelesítés (nyilvános előzetes verzió)
+description: Az Azure AD multi-factor Authentication hitelesítés és az önkiszolgáló jelszó-átállítási regisztrációk (nyilvános előzetes verzió)
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: cdd100d113c3fbeda8ac840d479b065d648ac3ff
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: a0fec9743cd213d0d41d9143a2b1e9e1c3db9967
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414902"
+ms.locfileid: "39447961"
 ---
-# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication"></a>A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication
+# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication (nyilvános előzetes verzió)
 
 Mostanáig felhasználók hitelesítési módszerek regisztrálása az Azure multi-factor Authentication (MFA) és az önkiszolgáló jelszó-visszaállítási (SSPR) két különböző portálokon szükség volt. Hány felhasználó lett eleinte, hogy a hasonló módszerekkel Azure MFA és az SSPR használták, és nem szeretne regisztrálni mindkét portálokon. Ez a különbség néhány felhasználó nem használható, vagy az Azure MFA, vagy az SSPR, amikor szükséges, a segélyszolgálat hívása, ami alatt, és egy figyelmébe felhasználó vezetett. Most a felhasználók egyszer regisztrálni és Azure MFA és az SSPR, így nem kell kétszer regisztrálja a hitelesítési módszereiket, a következő szolgáltatások előnyeinek kihasználása.  
 

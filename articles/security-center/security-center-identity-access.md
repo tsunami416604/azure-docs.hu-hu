@@ -3,71 +3,142 @@ title: Identitás és hozzáférés figyelése az Azure Security Centerben | Mic
 description: Itt megtudhatja, hogyan használható az Azure Security Center identitási és hozzáférési funkciója a felhasználók hozzáférési tevékenységeinek és identitással kapcsolatos problémáinak figyelésére.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
-ms.author: yurid
-ms.openlocfilehash: 5ee263ef8fb0f20049215eda53e0d58a45342b7e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.date: 06/14/2018
+ms.author: terrylan
+ms.openlocfilehash: b2243b10c20a0c8ed0faccbcc82e24193bd4adac
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774828"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39460267"
 ---
-# <a name="monitor-identity-and-access-in-azure-security-center"></a>Identitás és hozzáférés figyelése az Azure Security Centerben
+# <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
 
-## <a name="why-monitor-identity-and-access"></a>Miért fontos az identitás és a hozzáférés figyelése?
-Az identitásnak kell lennie a vállalat vezérlősíkjának, és az identitás védelmének kell kapnia a legmagasabb prioritást. Régebben a szervezetek körüli szegélyhálózatok szolgáltak az egyik elsődleges védelmi vonalként. Napjainkban egyre több adat és alkalmazás kerül a felhőbe, így az identitás lép a szegélyhálózatok helyére.
+> [!NOTE]
+> Identitás és hozzáférés figyelése az előzetes verzióban és csak a Security Center Standard szinten érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
+>
+>
 
-Az identitástevékenységek figyelésével proaktív módon tud cselekedni, mielőtt egy incidens bekövetkezne, illetve reaktív tevékenységekkel leállíthatja a támadási kísérleteket. Az Identitási és hozzáférési irányítópult áttekintést nyújt az identitása állapotáról, beleértve a következőket is:
+Az identitásnak kell lennie a vállalat vezérlősíkjának, és az identitás védelmének kell kapnia a legmagasabb prioritást. A biztonsági határt, egy identitás szegélyhálózat-alapú alakult az a hálózat pereme. Biztonsági kapcsolatban nyújt a hálózat védelmébe, és további információk az adatok védelme, valamint a biztonság, az alkalmazások és felhasználók kezelése válik. Napjainkban egyre több adat és alkalmazás kerül a felhőbe, így az identitás lép a szegélyhálózatok helyére.
 
-* A sikertelen bejelentkezési próbálkozások számát. 
-* Az ezen próbálkozások során használt felhasználói fiókokat.
-* A kizárt fiókokat.
-* Azon fiókokat, amelyek jelszavát módosították vagy visszaállították. 
-* Az éppen bejelentkezett fiókok számát.
+Az identitástevékenységek figyelésével proaktív módon tud cselekedni, mielőtt egy incidens bekövetkezne, illetve reaktív tevékenységekkel leállíthatja a támadási kísérleteket. Az identitás és hozzáférés irányítópult nyújt ajánlásokat például:
 
-## <a name="monitor-identity-and-access-activities"></a>Identitási és hozzáférési tevékenységek figyelése
-Az identitáshoz és a hozzáféréshez kapcsolódó aktuális tevékenységek megjelenítéséhez meg kell nyitnia az **Identitás és hozzáférés** irányítópultot.
+- Az MFA engedélyezése az előfizetés kiemelt jogosultságú fiókok
+- Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből
+- Kiemelt jogosultságú külső fiókok eltávolítása az előfizetésből
 
-1. Nyissa meg a **Security Center** irányítópultját.
+> [!NOTE]
+> Ha az előfizetés legfeljebb 250 fiókkal rendelkezik, a Security Center nem tudja futtatni az identitás javaslatokat az előfizetésen. Javaslatok, amelyek nem futnak a "értékelések nem érhetők el" amelyet alatt vannak felsorolva.
+A Security Center nem tud az identitás javaslatokat futtatásához egy Felhőszolgáltató (CSP) partner által létrehozott felügyeleti ügynökök.
+>
+>
 
-2. A bal oldali panel **Megelőzés** területén válassza az **Identitás és hozzáférés** elemet. Ha több munkaterülettel rendelkezik, megjelenik a munkaterület-választó.
+Lásd: [javaslatok](security-center-identity-access.md#recommendations) a Security Center által biztosított identitás- és hozzáférés javaslatok listája.
 
-    ![Munkaterület kiválasztása](./media/security-center-identity-access\security-center-identity-access-fig1.png)
+## <a name="monitoring-security-health"></a>A biztonsági állapot figyelése
+Az erőforrások biztonsági állapotát a figyelemmel kísérheti a **Security Center – áttekintés** irányítópultot. A **erőforrások** szakaszban az egyes erőforrástípusok súlyossági megjelenítő állapotjelző.
 
-    > [!NOTE]
-    > Ha a jobb szélső oszlopban a **CSOMAG FRISSÍTÉSE** szöveg látható, akkor a munkaterület az ingyenes előfizetést használja. A funkció használatához frissítsen a Standard előfizetésre. Ha a jobb szélső oszlopban a **FRISSÍTÉS SZÜKSÉGES** szöveg látható, frissítse az [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)et a funkció használatához. A díjszabással kapcsolatos további információkért olvassa el a Security Center díjszabását ismertető cikket. 
-    > 
-3. Ha több munkaterületet szeretne vizsgálni, a **SIKERTELEN BEJELENTKEZÉSEK** oszlop szerint rangsorolhatja a vizsgálatot. Ez az oszlop a munkaterületre való sikertelen bejelentkezési kísérletek aktuális számát jeleníti meg. Válassza ki a használni kívánt munkaterületet, és megjelenik az **Identitás és hozzáférés** irányítópult.
+Megtekintheti az összes hibáit kiválasztásával **javaslatok**. A **erőforrások**, megtekintheti az adott számítási & alkalmazások, adatok biztonságát, hálózati, vagy identitás és hozzáférés a problémák listáját. Javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok alkalmazása az Azure Security Center](security-center-recommendations.md).
 
-    ![Identitás és hozzáférés](./media/security-center-identity-access\security-center-identity-access-fig2.png)
+Identitás és hozzáférés ajánlások teljes listáját lásd: [javaslatok](security-center-identity-access.md#recommendations).
 
-4. Az ezen az irányítópulton rendelkezésre álló információk azonnali segítséget nyújtanak a potenciálisan gyanús tevékenységek azonosításához. Az irányítópult három fő területre oszlik:
+A folytatáshoz válasszon ki **identitás és hozzáférés** alatt **erőforrások** vagy a Security Center főmenüjébe.
 
-    a. **Identitás állapota**. Összegzi a munkaterületen végzett, identitáshoz kapcsolódó tevékenységeket.
+![A Security Center irányítópultja][1]
 
-    b. **Sikertelen bejelentkezések**. Segít gyorsan azonosítani a sikertelen bejelentkezési kísérletek fő okát. Megjeleníti a legtöbb sikertelen bejelentkezést végző tíz fiók listáját.
+## <a name="monitor-identity-and-access"></a>A figyelő identitás- és hozzáférés
+A **identitás és hozzáférés**, két lap található:
 
-    c. **Bejelentkezések adott idő alatt**. Segít gyorsan azonosítani az adott idő alatt történt sikertelen bejelentkezési kísérletek számát. Megjeleníti a legtöbb bejelentkezési kísérletet végző fiókok listáját.
-    
-A kiválasztott csempétől függetlenül a megjelenő irányítópult a naplókeresési lekérdezésen alapul. Az egyetlen különbség a lekérdezés típusa és az eredmény. Egy elemet, például egy számítógépet kiválasztva továbbra is megtekintheti a releváns adatokat. 
+- **Áttekintés**: a Security Center által azonosított javaslatok.
+- **Előfizetések**: az előfizetések és az egyes aktuális biztonsági állapotának listája.
 
-## <a name="see-also"></a>Lásd még
-Ebben a cikkben megismerkedett az identitás és a hozzáférés a Security Centerben való figyelésével. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
+![Identitás és hozzáférés][2]
 
+### <a name="overview-section"></a>A szakasz áttekintése
+A **áttekintése**, nincs javaslat listája. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett előfizetések teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja.
+
+1. Válasszon ki egy javaslatot. A javaslatban ablak nyílik meg, és megjeleníti:
+
+  - A javaslat leírása
+  - Nem megfelelő állapotú és kifogástalan állapotú előfizetések listáját
+  - Lista, amelyek egy hibás értékelése miatt nem vizsgált erőforrások vagy erőforrás-előfizetéshez az ingyenes szinten fut, és nincs értékelve van
+
+  ![A javaslat ablak][3]
+
+1. További részleteket talál a listában, válasszon ki egy előfizetést.
+
+### <a name="subscriptions-section"></a>Előfizetések szakasz
+A **előfizetések**, nincs az előfizetések listáját. Az első oszlop az előfizetések listája. A második oszlop az egyes előfizetésekhez javaslatok teljes számát jeleníti meg. A harmadik oszlop tartalmazza a súlyossági szinten pedig a problémák.
+
+![Az előfizetéshez tartozó lap][4]
+
+1.  Válasszon egy előfizetést. Összegzési nézetet megnyílik a három lappal:
+
+  - **Javaslatok**: nem sikerült, a Security Center által végzett alapján.
+  - **Sikeres értékelések**: megfelelt a Security Center által végzett listája.
+  - **Értékelések nem érhetők el**: listáját, amelyek nem tudott futtatni egy hiba miatt értékelések, vagy mert az előfizetés legfeljebb 250 fiókkal rendelkezik.
+
+  A **javaslatok** minden javaslat súlyosságát és a kiválasztott előfizetéshez tartozó a javaslatok listája.
+
+  ![Javaslatok az előfizetés kiválasztása][5]
+
+1. Válasszon ki egy javaslatot, egy leírást a javaslat, a nem megfelelő állapotú és kifogástalan állapotú előfizetések listáját és a nem vizsgált erőforrások listáját.
+
+  ![Javaslat leírása][6]
+
+  A **értékelések átadott** sikeres értékelések listája.  Ezek az értékelések súlyosságát, mindig zöld.
+
+  ![Sikeres értékelések][7]
+
+1. Jelöljön ki egy átadott értékelés a lista az értékelés leírását és kifogástalan állapotú előfizetések listáját. Nincs egy nem megfelelő állapotú előfizetések szolgáló lap, amely felsorolja az összes olyan előfizetést, amely nem sikerült.
+
+  ![Sikeres értékelések][8]
+
+## <a name="recommendations"></a>Javaslatok
+Referenciaként az alábbi táblázat segítségével segítenek megérteni a rendelkezésre álló identitás és hozzáférés ajánlásokat, és mindegyik funkciója alkalmazásuk esetén.
+
+| Ajánlás | Leírás |
+| --- | --- |
+| Az előfizetéshez legalább egy tulajdonos kijelölése | Javasolja, hogy több mint egy előfizetés-tulajdonost kijelölni rendszergazdai hozzáférés redundanciájának biztosításához. |
+| Az előfizetés legfeljebb 3 tulajdonos kijelölése | Javasolja, hogy kevesebb mint 3 előfizetés-tulajdonost kijelölni az esetleges illetéktelen behatolás feltört tulajdonosa. |
+| Az MFA engedélyezése az előfizetésben tulajdonosi engedélyekkel rendelkező fiókok | A fiókok vagy az erőforrások biztonsági incidenseinek megelőzése rendszergazdai jogosultságokkal rendelkező összes előfizetési fiókban multi-factor Authentication (MFA) engedélyezését javasolja. |
+| Az MFA engedélyezése az előfizetés írási jogosultsággal rendelkező fiókjaiban | Javasolja, hogy a multi-factor Authentication (MFA) az a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése írási jogosultsággal rendelkező összes előfizetési fiókban engedélyezni. |
+| Az MFA engedélyezése az előfizetés olvasási jogosultsággal rendelkező fiókjaiban | Javasolja a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése olvasási jogosultságokkal rendelkező összes előfizetési fiókban engedélyezni a multi-factor Authentication (MFA). |
+| Olvasási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből | Javasolja, hogy távolítsa el az olvasási jogosultsággal rendelkező külső fiókok előfizetésből nem monitorozott hozzáférések megelőzése céljából. |
+| Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből | Javasolja, hogy távolítsa el az írási jogosultsággal rendelkező külső fiókok előfizetésből nem monitorozott hozzáférések megelőzése céljából. |
+| Tulajdonosi engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből | Javasolja, hogy távolítsa el tulajdonosi engedélyekkel rendelkező külső fiókok előfizetésből nem monitorozott hozzáférések megelőzése céljából. |
+| Elavult fiókok eltávolítása az előfizetésből | Javasolja, hogy eltávolítja az előfizetések közül fiókok elavult. |
+| Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetésből | Javasolja, hogy eltávolítja az előfizetések a tulajdonosi engedélyekkel rendelkező fiókok elavult. |
+
+## <a name="next-steps"></a>További lépések
+Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
+
+- [A gépek és az alkalmazások az Azure Security Center védelme](security-center-virtual-machine-recommendations.md)
+- [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
+- [Az Azure SQL-szolgáltatás és az adatok az Azure Security Center védelme](security-center-sql-service-recommendations.md)
+
+A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.
-* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
 * [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). A különböző típusú biztonsági riasztásokat ismertető útmutató.
-* [Az Azure Security Center hibaelhárítási útmutatója](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti. 
 * [Azure Security Center – gyakori kérdések](security-center-faq.md) Választ találhat a Security Center használatával kapcsolatos gyakori kérdésekre.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/). Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
+
+<!--Image references-->
+[1]: ./media/security-center-identity-access/overview.png
+[2]: ./media/security-center-identity-access/identity-dashboard.png
+[3]: ./media/security-center-identity-access/select-subscription.png
+[4]: ./media/security-center-identity-access/subscriptions.png
+[5]: ./media/security-center-identity-access/recommendations.png
+[6]: ./media/security-center-identity-access/designate.png
+[7]: ./media/security-center-identity-access/passed-assessments.png
+[8]: ./media/security-center-identity-access/remove.png

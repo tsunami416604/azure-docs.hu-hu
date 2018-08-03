@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 30cf33de7385add20ec5c255bf20b4e3cb7580fc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 81f7e6f7610eb855bd4df1eaf45c6d016befc133
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051516"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>Oktatóanyag: Pluralsight-Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. A Pluralsight hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-pluralsight-from-the-gallery"></a>A Pluralsight hozzáadása a katalógusból
 Konfigurálása az Azure AD integrálása a Pluralsight, hozzá kell a Pluralsight a galériából a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Konfigurálása az Azure AD integrálása a Pluralsight, hozzá kell a Pluralsig
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **Pluralsight**válassza **Pluralsight** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **Pluralsight**válassza **Pluralsight** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![A Pluralsight a találatok listájában](./media/pluralsight-tutorial/tutorial_pluralsight_addfromgallery.png)
 
@@ -87,10 +87,10 @@ A Pluralsight, rendelje hozzá az értékét a **felhasználónév** értékeké
 Az Azure AD egyszeri bejelentkezés Pluralsighttal együttműködésben kínált tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[A Pluralsight tesztfelhasználó létrehozása](#create-a-pluralsight-test-user)**  – egy megfelelője a Britta Simon Pluralsight, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[A Pluralsight tesztfelhasználó létrehozása](#create-a-pluralsight-test-user)**  – egy megfelelője a Britta Simon Pluralsight, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -102,11 +102,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/pluralsight-tutorial/tutorial_pluralsight_samlbase.png)
 
-3. Az a **Pluralsight-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **Pluralsight-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![A Pluralsight-tartomány és URL-címek egyszeri bejelentkezési adatait](./media/pluralsight-tutorial/tutorial_pluralsight_url.png)
 
@@ -119,11 +119,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > [!NOTE] 
     > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Pluralsight ügyfél-támogatási csapatának](mailto:support@pluralsight.com) beolvasni ezeket az értékeket. 
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/pluralsight-tutorial/tutorial_pluralsight_certificate.png) 
 
-5. Ez a szakasz célja engedélyezéséhez az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszeri bejelentkezés konfigurálásához a Pluralsight-alkalmazásban.
+1. Ez a szakasz célja engedélyezéséhez az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszeri bejelentkezés konfigurálásához a Pluralsight-alkalmazásban.
 
     A Pluralsight-alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható.
 
@@ -132,7 +132,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     >[!NOTE]
     >Azt is megteheti a **"Egyedi azonosító"** például EmployeeID vagy valami mást a megfelelő értékkel, amely megfelel a szervezet attribútum. Vegye figyelembe, hogy ez nem kötelező attribútum; azonban, hogy egyedi azonosítására is hozzáadhat. 
 
-6. A szükséges hozzáadandó **SAML-jogkivonat attribútumai**, az alábbi táblázatban szereplő minden egyes sorára, hajtsa végre a következő lépéseket:
+1. A szükséges hozzáadandó **SAML-jogkivonat attribútumai**, az alábbi táblázatban szereplő minden egyes sorára, hajtsa végre a következő lépéseket:
    
    | Attribútum neve | Attribútum értéke |
    | ---| --- |
@@ -150,11 +150,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
   
    d. Kattintson az **OK** gombra.    
 
-7. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/pluralsight-tutorial/tutorial_general_400.png)
 
-8. Egyszeri bejelentkezés az alkalmazáshoz konfigurált beszerzéséhez forduljon [Pluralsight szakmai szolgáltatásoknál](mailTo:professionalservices@pluralsight.com) csapat, és adja meg a letöltött metaadatait tartalmazó fájl.
+1. Egyszeri bejelentkezés az alkalmazáshoz konfigurált beszerzéséhez forduljon [Pluralsight szakmai szolgáltatásoknál](mailTo:professionalservices@pluralsight.com) csapat, és adja meg a letöltött metaadatait tartalmazó fájl.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -171,15 +171,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/pluralsight-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/pluralsight-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/pluralsight-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/pluralsight-tutorial/create_aaduser_04.png)
 
@@ -207,23 +207,23 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **Pluralsight**.
+1. Az alkalmazások listájában jelölje ki a **Pluralsight**.
 
     ![A Pluralsight hivatkozásra az alkalmazások listáját](./media/pluralsight-tutorial/tutorial_pluralsight_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -235,7 +235,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 176ed1718818b24866620d86d7eff4d9af1d378f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 07b3c32601d90fdeed1c335c0f36a5ccbdbe4f1d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050874"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Oktatóanyag: Azure Active Directory-integráció az SAP Cloud platformon
 
@@ -56,7 +56,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. SAP-Felhőplatformmal hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-sap-cloud-platform-from-the-gallery"></a>SAP-Felhőplatformmal hozzáadása a katalógusból
 Az Azure AD-be SAP-Felhőplatformmal integrációjának konfigurálása, hozzá kell SAP-Felhőplatformmal a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -67,15 +67,15 @@ Az Azure AD-be SAP-Felhőplatformmal integrációjának konfigurálása, hozzá 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. A Keresés mezőbe írja be a **SAP-Felhőplatformmal**, jelölje be **SAP-Felhőplatformmal** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **SAP-Felhőplatformmal**, jelölje be **SAP-Felhőplatformmal** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában SAP-Felhőplatformmal](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_addfromgallery.png)
 
@@ -90,10 +90,10 @@ SAP-Felhőplatformmal, rendelje hozzá az értékét a **felhasználónév** ér
 Az Azure AD egyszeri bejelentkezés az SAP Cloud platformon tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy SAP-Felhőplatformmal tesztfelhasználót](#create-a-sap-cloud-platform-test-user)**  – egy megfelelője a Britta Simon rendelkeznie a SAP Cloud platformon, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **[Hozzon létre egy SAP-Felhőplatformmal tesztfelhasználót](#create-a-sap-cloud-platform-test-user)**  – egy megfelelője a Britta Simon rendelkeznie a SAP Cloud platformon, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -105,11 +105,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_samlbase.png)
 
-3. Az a **SAP Cloud platformon tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **SAP Cloud platformon tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Az SAP Cloud platformon tartomány és URL-címek egyszeri bejelentkezési adatait](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_url.png)
 
@@ -149,21 +149,21 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-azonosító és válasz URL-cím. Kapcsolattartó [SAP Cloud platformon ügyfél-támogatási csapatának](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html) bejelentkezési URL- és azonosító beolvasásához. Válasz URL-cím el az oktatóanyag későbbi részében ismertetett megbízhatósági kezeléssel foglalkozó szakaszban.
     > 
      
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+1. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/sap-hana-cloud-platform-tutorial/tutorial_general_400.png)
 
-6. Egy másik böngészőablakban, jelentkezzen be, az SAP Cloud Platform vezérlőpultot `https://account.<landscape host>.ondemand.com/cockpit`(például: https://account.hanatrial.ondemand.com/cockpit).
+1. Egy másik böngészőablakban, jelentkezzen be, az SAP Cloud Platform vezérlőpultot `https://account.<landscape host>.ondemand.com/cockpit`(például: https://account.hanatrial.ondemand.com/cockpit).
 
-7. Kattintson a **megbízható** fülre.
+1. Kattintson a **megbízható** fülre.
    
     ![Megbízható](./media/sap-hana-cloud-platform-tutorial/ic790800.png "megbízhatóság")
 
-8. A megbízható felügyeleti területen alatt **helyi szolgáltató**, hajtsa végre az alábbi lépéseket:
+1. A megbízható felügyeleti területen alatt **helyi szolgáltató**, hajtsa végre az alábbi lépéseket:
 
     ![Megbízható felügyeleti](./media/sap-hana-cloud-platform-tutorial/ic793931.png "megbízható felügyeleti")
    
@@ -181,7 +181,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-9. A mentés után a **helyi szolgáltató** beállításait, hajtsa végre a következő, a válasz URL-cím:
+1. A mentés után a **helyi szolgáltató** beállításait, hajtsa végre a következő, a válasz URL-cím:
    
     ![Metaadatok beolvasása](./media/sap-hana-cloud-platform-tutorial/ic793930.png "metaadatainak beolvasása")
 
@@ -191,7 +191,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
  
     c. Másolja az értéket, a **hely** attribútumot, és illessze be azt a **válasz URL-cím** SAP Cloud platformon az Azure AD-konfigurációjának mezőbe.
 
-10. Kattintson a **identitásszolgáltató megbízható** fülre, majd **hozzáadása megbízható identitásszolgáltató**.
+1. Kattintson a **identitásszolgáltató megbízható** fülre, majd **hozzáadása megbízható identitásszolgáltató**.
    
     ![Megbízható felügyeleti](./media/sap-hana-cloud-platform-tutorial/ic790802.png "megbízható felügyeleti")
    
@@ -200,7 +200,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     > 
     > 
 
-11. Kattintson a **általános** fülre, majd **Tallózás** a letöltött metaadatfájl feltöltése.
+1. Kattintson a **általános** fülre, majd **Tallózás** a letöltött metaadatfájl feltöltése.
     
     ![Megbízható felügyeleti](./media/sap-hana-cloud-platform-tutorial/ic793932.png "megbízható felügyeleti")
     
@@ -208,9 +208,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     >A tartozó értékeket a metaadatfájl feltöltése után **egyszeri bejelentkezési URL-cím**, **egyszeri kijelentkezési URL-cím**, és **aláíró tanúsítvány** a rendszer automatikusan kitölti.
     > 
      
-12. Kattintson az **Attribútumok** fülre.
+1. Kattintson az **Attribútumok** fülre.
 
-13. Az a **attribútumok** fülre, hajtsa végre a következő lépést:
+1. Az a **attribútumok** fülre, hajtsa végre a következő lépést:
     
     ![Attribútumok](./media/sap-hana-cloud-platform-tutorial/ic790804.png "attribútumok") 
 
@@ -256,15 +256,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/sap-hana-cloud-platform-tutorial/create_aaduser_01.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/sap-hana-cloud-platform-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/sap-hana-cloud-platform-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/sap-hana-cloud-platform-tutorial/create_aaduser_04.png)
 
@@ -284,7 +284,7 @@ Ahhoz, hogy az SAP-Felhőplatformmal jelentkezzen be az Azure AD-felhasználók,
 
 1. Jelentkezzen be a **SAP-Felhőplatformmal** vezérlőpultot.
 
-2. Hajtsa végre a következőket:
+1. Hajtsa végre a következőket:
    
     ![Engedélyek](./media/sap-hana-cloud-platform-tutorial/ic790805.png "engedélyei")
    
@@ -310,23 +310,23 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listájában jelölje ki a **SAP-Felhőplatformmal**.
+1. Az alkalmazások listájában jelölje ki a **SAP-Felhőplatformmal**.
 
     ![Az alkalmazások listáját az SAP-Felhőplatformmal hivatkozásra](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_app.png)  
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+1. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
@@ -338,7 +338,7 @@ Ha a hozzáférési panelen a SAP Cloud platformon csempére kattint, meg kell l
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

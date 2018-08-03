@@ -1,5 +1,5 @@
 ---
-title: Adatokat gyűjteni a környezet az Azure Log Analyticsszel |} A Microsoft Docs
+title: Adatgyűjtés Azure Log Analytics-ügynököket, a hibrid környezetben |} A Microsoft Docs
 description: Ez a témakör segít megérteni az adatok gyűjtéséhez és a helyszíni vagy más felhőalapú környezetben a Log Analytics használatával üzemeltetett számítógépek figyelése.
 services: log-analytics
 documentationcenter: ''
@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 2a21c7867bf0dd2d6ca6ee0bd9025739315c8d0a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fa1d86bade0981a000d9310c4734b1e93d50944d
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003318"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480863"
 ---
-# <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Adatok gyűjtése a Log Analytics szolgáltatással környezetében számítógépekről
+# <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Adatgyűjtés a Log Analytics-ügynököket, a hibrid környezetben
 
-Az Azure Log Analytics gyűjtenek, majd a hozzá tartozó Windows vagy Linux rendszerű számítógépekről az adatokkal műveleteket végezni:
+Az Azure Log Analytics gyűjtenek, majd a futó Windows vagy Linux operációs rendszert futtató számítógépekről az adatokkal műveleteket végezni:
 
 * [Az Azure virtual machines](log-analytics-quick-collect-azurevm.md) a Log Analytics Virtuálisgép-bővítménnyel 
 * Az Adatközpont fizikai kiszolgálóként vagy virtuális gépek
 * Virtuális gépek egy felhőben üzemeltetett szolgáltatásban, mint az Amazon Web Services (AWS)
 
-Saját környezetben futtatott számítógépek kapcsolódhat közvetlenül egymáshoz a Log Analyticsbe, vagy ha már figyelt ezeket a számítógépeket, a System Center Operations Manager 2012 R2 2016, vagy 1801-es verzió, a műveletek kezelése felügyeleti csoportját az integrálható Log Analytics, és továbbra is fenntartja az informatikai szolgáltatás működési folyamatok.  
+Saját környezetben futtatott számítógépek kapcsolódhat közvetlenül egymáshoz a Log Analytics, vagy ha már figyelni ezeket a számítógépeket, és a System Center Operations Manager 2012 R2 vagy újabb, a kezelése az Operations management csoport is integrálhatja a Log Analytics használatával és továbbra is fenntartja az informatikai szolgáltatás működési folyamatok.  
 
 ## <a name="overview"></a>Áttekintés
 
@@ -40,7 +40,7 @@ Mielőtt elemzése, és az összegyűjtött adatokat működő, meg kell telepí
 
 Az ügynök Linux és Windows 443-as TCP-porton keresztül kommunikál a Log Analytics szolgáltatással kimenő, és ha a számítógép csatlakozik egy tűzfalon vagy proxykiszolgálón való kommunikációhoz az interneten keresztül, tekintse át a [az Előfeltételek szakaszban](#prerequisites) , Ismerje meg, a hálózati konfiguráció szükséges.  Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépek a hálózat csatlakozik az internethez, beállíthat egy [OMS-átjáró](log-analytics-oms-gateway.md) , majd konfigurálja az ügynök csatlakoztatása a Log Analytics-átjárón keresztül. Az ügynök ezután fogadni a konfigurációs adatokat, és attól függően, mely adatok gyűjtési szabályok és a megoldások engedélyezte az összegyűjtött adatok küldése. 
 
-A System Center 2016 – Operations Manager vagy Operations Manager 2012 R2, a számítógép figyelése esetén az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli a Log Analytics szolgáltatással többhelyű lehet [az Operations Manager ](log-analytics-om-agents.md). Az Operations Manager felügyeleti csoport integrálva van a Log Analytics által figyelt Linux rendszerű számítógépek konfigurációját az adatforrásokat és a továbbítás összegyűjtött adatokat a felügyeleti csoporton nem jelenik meg. A Windows-ügynök legfeljebb négy munkaterületeket, jelentheti a közben csak támogatja a Linux-ügynök, egy egyetlen-munkaterületre jelentő.  
+Ha a számítógép és a System Center Operations Manager 2012 R2 vagy újabb, az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli a Log Analytics szolgáltatással többhelyű lehet [az Operations Manager](log-analytics-om-agents.md). Az Operations Manager felügyeleti csoport integrálva van a Log Analytics által figyelt Linux rendszerű számítógépek konfigurációját az adatforrásokat és a továbbítás összegyűjtött adatokat a felügyeleti csoporton nem jelenik meg. A Windows-ügynök legfeljebb négy munkaterületeket, jelentheti a közben csak támogatja a Linux-ügynök, egy egyetlen-munkaterületre jelentő.  
 
 A Linux és Windows-ügynököt nem csak a Log Analyticshez való kapcsolódás, Azure Automation gazdagép a hibrid forgatókönyv-feldolgozói szerepkör és a például a változáskövetési és frissítéskezelési megoldásokat is támogatja.  A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid Runbook-feldolgozó](../automation/automation-hybrid-runbook-worker.md).  
 

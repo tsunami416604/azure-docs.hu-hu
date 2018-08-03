@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/19/2018
+ms.date: 08/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3303050311a30473bb973ac4f49bbeb707c16a33
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 59c41d4303cad00107793f3c09382347fbb1fb5b
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173809"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480385"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Az előfizetések az Azure Event Grid eseménysémája
 
@@ -36,7 +36,7 @@ Az Azure-előfizetések gridre bocsáthatja ki felügyeleti események Azure Res
 
 ## <a name="example-event"></a>Példa esemény
 
-Az alábbi példa bemutatja a séma, esemény létrehozott erőforrás: 
+Az alábbi példa bemutatja a sémában egy **ResourceWriteSuccess** esemény. Ugyanazzal a sémával használt **ResourceWriteFailure** és **ResourceWriteCancel** eltérő értékek az események `eventType`.
 
 ```json
 [{
@@ -96,7 +96,7 @@ Az alábbi példa bemutatja a séma, esemény létrehozott erőforrás:
 }]
 ```
 
-Egy erőforrás törölve esemény sémája hasonlít:
+Az alábbi példa bemutatja a sémában egy **ResourceDeleteSuccess** esemény. Ugyanazzal a sémával használt **ResourceDeleteFailure** és **ResourceDeleteCancel** eltérő értékek az események `eventType`.
 
 ```json
 [{
@@ -184,11 +184,11 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Engedélyezési | objektum | A kért hitelesítést biztosít a műveletet. |
 | jogcímek | objektum | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | sztring | A hibaelhárítási művelet azonosítója. |
-| Törzsparaméterei | objektum | A művelet részleteit. |
+| Törzsparaméterei | objektum | A művelet részleteit. Ez az objektum csak van hozzáadva, amikor egy meglévő erőforrás frissítése vagy töröl egy erőforrást. |
 | ResourceProvider | sztring | Az erőforrás-szolgáltató a művelet végrehajtása. |
 | resourceUri | sztring | A műveletet az erőforrás URI azonosítója. |
 | operationName | sztring | A végrehajtott műveletet. |
-| status | sztring | A művelet állapotát. |
+| status | sztring | A művelet állapota. |
 | subscriptionId | sztring | Az erőforrás előfizetés-azonosítója. |
 | tenantId | sztring | Az erőforrás Bérlőazonosítója. |
 

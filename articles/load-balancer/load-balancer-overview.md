@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f954bc3be01d7ac1698e21ac3e3f038fe931541d
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: b6547bee13d039dcd34377565eb518eeb6739a38
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325479"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480901"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az Azure Load Balancer?
 
@@ -133,7 +133,7 @@ További információkért lásd: [szolgáltatási korlátozásaival terhelésel
 
 Nyilvános load balancer nyilvános IP-cím és port számát a bejövő forgalom rendel a virtuális gépről a magánhálózati IP-cím és port számát a virtuális gép, és ez fordítva is igaz a válasz forgalomhoz. Terheléselosztási szabályok alkalmazásával adott típusú forgalom szét több virtuális gép vagy szolgáltatás. Ha például a webes kérelem forgalom terhelését is terjednek több webkiszolgáló között.
 
-A következő ábrán látható egy elosztott terhelésű végpontot, amelyet használ három virtuális gépet a nyilvános és titkos TCP 80-as portot a webes forgalom. Ezek három virtuális gépet egy elosztott terhelésű készlet vannak.
+A következő ábrán látható egy elosztott terhelésű végpont a webes forgalmat, amelyet a nyilvános és a 80-as porton három virtuális gépet használ. Ezek három virtuális gépet egy elosztott terhelésű készlet vannak.
 
 ![Nyilvános load balancer példa](./media/load-balancer-overview/IC727496.png)
 
