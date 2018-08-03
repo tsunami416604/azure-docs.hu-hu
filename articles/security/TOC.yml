@@ -244,6 +244,8 @@
       items:
         - name: IaaS-webalkalmazás
           href: ./blueprints/ukofficial-iaaswa-overview.md
+        - name: PaaS webalkalmazás
+          href: ./blueprints/ukofficial-paaswa-overview.md
 - name: Tanulmányok
   href: security-white-papers.md
 - name: Azure biztonsági szolgáltatások
