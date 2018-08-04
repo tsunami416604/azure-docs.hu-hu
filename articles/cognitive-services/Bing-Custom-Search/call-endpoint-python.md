@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 889762ae0b401438f25546738268c584ddd58389
-ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
+ms.openlocfilehash: 88bf82805ba46abf79b7899e0428a83485062302
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "35349774"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504967"
 ---
 # <a name="call-bing-custom-search-endpoint-python"></a>Hívást a Bing Custom Search-végpont (Python)
 
@@ -34,13 +34,18 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 A Bing Custom Search végpont meghívására, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy mappát a kódot.
+
 2. Rendszergazdai parancssorból vagy egy terminálban keresse meg az imént létrehozott mappára.
+
 3. Telepítse a **kérelmek** python modult:
+
     <pre>
     pip install pipenv
     pipenv install requests
     </pre>
+    
 7. A fájl BingCustomSearch.py létrehozásához, és másolja a következő kód azt.
+
 8. Cserélje le **YOUR-SUBSCRIPTION-KEY** és **YOUR-CUSTOM-CONFIG-ID** a kulcs és a konfigurációs azonosítóval (lásd az 1. lépés).
 
     ``` Python

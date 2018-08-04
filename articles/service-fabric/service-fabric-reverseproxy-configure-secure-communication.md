@@ -13,24 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 0558a5647267dda26890ba3a6dc1af326fae94f6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d8a11a3289037602535d1b5727d041e376012bd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308163"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502440"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozzon a fordított proxy egy biztonságos szolgáltatáshoz
 
-Ez a cikk ismerteti a fordított proxy és a szolgáltatások, ezáltal lehetővé téve egy végpontok közötti biztonságos csatorna közötti biztonságos kapcsolatot létesíteni.
+Ez a cikk ismerteti a fordított proxy és a szolgáltatások, ezáltal lehetővé téve egy végpontok közötti biztonságos csatorna közötti biztonságos kapcsolatot létesíteni. Fordított proxy kapcsolatos további információkért lásd: [fordított proxy az Azure Service Fabricben](service-fabric-reverseproxy.md)
 
-Csatlakozás biztonságos szolgáltatások támogatott csak akkor, ha a fordított proxy HTTPS figyelésére van konfigurálva. A dokumentum többi része feltételezi, hogy ez a helyzet.
-Tekintse meg [fordított proxy az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) a fordított proxy konfigurálása a Service Fabric.
+Csatlakozás biztonságos szolgáltatások támogatott csak akkor, ha a fordított proxy HTTPS figyelésére van konfigurálva. Ez a cikk feltételezi, hogy ez a helyzet.
+Tekintse meg [fordított proxy beállítása az Azure Service Fabric](service-fabric-reverseproxy-setup.md) a fordított proxy konfigurálása a Service Fabric.
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>A fordított proxy és a szolgáltatások közötti biztonságos kapcsolat létrehozása 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Fordított proxy szolgáltatásokhoz való hitelesítéséhez:
-A fordított proxy azonosítja magát a tanúsítványt használni, a megadott szolgáltatások ***reverseProxyCertificate*** tulajdonságot a **fürt** [erőforrás típushoz című](../azure-resource-manager/resource-group-authoring-templates.md). Szolgáltatások ellenőrizni a fordított proxy által bemutatott tanúsítványt logikát valósíthat meg. A szolgáltatások konfigurációs beállításokat a konfigurációs csomag megadható az elfogadható ügyfél-tanúsítvány részletei. Ez futásidőben olvashatók és a fordított proxy által bemutatott tanúsítványt érvényesítéséhez használt. Tekintse meg [alkalmazásparaméterek kezelése](service-fabric-manage-multiple-environment-app-configuration.md) fel a konfigurációs beállításokat. 
+A fordított proxy szolgáltatásokhoz a tanúsítvány használatával azonosítja magát. Az Azure-fürtök a tanúsítványt meg van adva ***reverseProxyCertificate*** tulajdonságot a [ **Microsoft.ServiceFabric/clusters** ](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrás Írja be a szakasz](../azure-resource-manager/resource-group-authoring-templates.md) a Resource Manager-sablon. Az önálló fürtök esetén a tanúsítvány-vagy van megadva a ***ReverseProxyCertificate*** vagy a ***ReverseProxyCertificateCommonNames*** tulajdonságot a **biztonsági**ClusterConfig.json szakaszában. További tudnivalókért lásd: [fordított proxy engedélyezése az önálló fürtök](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+
+Szolgáltatások ellenőrizni a fordított proxy által bemutatott tanúsítványt logikát valósíthat meg. A szolgáltatások konfigurációs beállításokat a konfigurációs csomag megadható az elfogadható ügyfél-tanúsítvány részletei. Ez futásidőben olvashatók és a fordított proxy által bemutatott tanúsítványt érvényesítéséhez használt. Tekintse meg [alkalmazásparaméterek kezelése](service-fabric-manage-multiple-environment-app-configuration.md) fel a konfigurációs beállításokat. 
 
 ### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Fordított proxyn keresztül a szolgáltatás által bemutatott tanúsítványt a szolgáltatás identitás ellenőrzése:
 Fordított proxy támogatja a kiszolgálói tanúsítvány hitelesítése a szolgáltatások által bemutatott tanúsítványok végrehajtásához a következő házirendek: None, ServiceCommonNameAndIssuer és ServiceCertificateThumbprints.
@@ -193,6 +195,7 @@ Ha az ügyfél nincs jelen tanúsítvány, fordított proxy egy üres fejlécet 
 
 
 ## <a name="next-steps"></a>További lépések
+* [Állítsa be, és a fordított proxy konfigurálása egy fürtön](service-fabric-reverseproxy-setup.md).
 * Tekintse meg [fordított proxy konfigurálása biztonságos serviceshez való csatlakozáshoz](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) az Azure Resource Manager sablonminták konfigurálása védelmét a különböző szolgáltatási tanúsítvány a fordított proxy ellenőrzési lehetőségeit.
 * Tekintse meg a szolgáltatások közötti HTTP-kommunikációt egy példát egy [mintaprojektet a Githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [A Reliable Services-táveléréssel kezdeményezett távoli eljáráshívások](service-fabric-reliable-services-communication-remoting.md)

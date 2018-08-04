@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric CLI - sfctl tároló |} Microsoft Docs
-description: A Service Fabric CLI sfctl tároló parancsok ismerteti.
+title: Az Azure Service Fabric parancssori felület - sfctl-tároló |} A Microsoft Docs
+description: Ismerteti a Service Fabric parancssori felület sfctl store parancsokat.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,91 +12,92 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 39ecf568c5c41c0007b358670af755be1dd5d99e
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2f2da5b38ab39e3636ff0ac09ac2c5515e02b0c1
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763238"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492335"
 ---
 # <a name="sfctl-store"></a>sfctl-tároló
-Alapszintű fájl szint a végre műveleteket a fürt lemezképtárolóhoz.
+Hajtsa végre a fürt lemezképtárolójába alapvető szolgáltatói műveletek.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| törlés | Törli a meglévő lemezkép tartalom tárolásához. |
-| root-info | Lekérdezi a tartalommal kapcsolatos információkat az image store gyökérmappájában. |
-| stat | Lekérdezi a lemezképet tároló tartalommal kapcsolatos információkat. |
+| delete | Törli a meglévő lemezkép tartalom tárolásához. |
+| root-info | Lekérdezi a tartalominformációkat az image store gyökérmappájában. |
+| állapot | Lekéri a rendszerképet tároló tartalommal kapcsolatos információkat. |
 
-## <a name="sfctl-store-delete"></a>sfctl tároló törlése
+## <a name="sfctl-store-delete"></a>sfctl-tároló törlése
 Törli a meglévő lemezkép tartalom tárolásához.
 
-Törli a meglévő lemezkép store tartalmát a megadott lemezképben talált relatív elérési út tárolja. Ez a parancs segítségével törölje a feltöltött alkalmazáscsomagok kiépítésüket követően.
+Törli a lemezképet tároló tartalmat a megadott lemezképben található meglévő relatív elérési útját tárolja. Ez törli a feltöltött alkalmazáscsomagok kiépítésüket követően is használható.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --tartalom-path [szükséges] | Relatív elérési útja a fájl vagy mappa az az image store saját gyökere. |
-| – időtúllépés -t | Időtúllépését másodpercben.  Alapértelmezett\: 60. |
+| – tartalom-path [kötelező] | Relatív elérési útja fájl vagy mappa a lemezképtároló az médiamappa gyökere. |
+| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése | Naplózási növelése az összes hibakeresési naplók megjelenítése. |
-| – Súgó -h | Ez egy súgóüzenet és kilépési megjelenítése. |
-| – a kimeneti -o | Kimeneti formátum.  Megengedett értékek\: json, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési. |
+| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
+| --help -h | A súgóüzenetet és kilépési jelennek meg. |
+| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
+| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
+| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
-## <a name="sfctl-store-root-info"></a>sfctl tároló gyökér-adatai
-Lekérdezi a tartalommal kapcsolatos információkat az image store gyökérmappájában.
+## <a name="sfctl-store-root-info"></a>sfctl-tároló-gyökérinformációval
+Lekérdezi a tartalominformációkat az image store gyökérmappájában.
 
-Az image store információt ad vissza a tartalom az image store gyökérmappájában.
+A lemezképtároló információt ad vissza tartalom az image store gyökérmappájában.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – időtúllépés -t | Időtúllépését másodpercben.  Alapértelmezett\: 60. |
+| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése | Naplózási növelése az összes hibakeresési naplók megjelenítése. |
-| – Súgó -h | Ez egy súgóüzenet és kilépési megjelenítése. |
-| – a kimeneti -o | Kimeneti formátum.  Megengedett értékek\: json, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési. |
+| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
+| --help -h | A súgóüzenetet és kilépési jelennek meg. |
+| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
+| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
+| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
-## <a name="sfctl-store-stat"></a>sfctl tároló stat
-Lekérdezi a lemezképet tároló tartalommal kapcsolatos információkat.
+## <a name="sfctl-store-stat"></a>sfctl-tároló stat
+Lekéri a rendszerképet tároló tartalommal kapcsolatos információkat.
 
-A megadott contentpath tulajdonsághoz megadott érték a lemezképet tároló tartalmat információt ad vissza. A contentpath tulajdonsághoz megadott érték van az image store gyökeréhez viszonyítva.
+A lemezképet tároló tartalmat a megadott contentpath értékének információt ad vissza. A contentpath értékének van a lemezképtároló gyökeréhez viszonyítva.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --tartalom-path [szükséges] | Relatív elérési útja a fájl vagy mappa az az image store saját gyökere. |
-| – időtúllépés -t | Időtúllépését másodpercben.  Alapértelmezett\: 60. |
+| – tartalom-path [kötelező] | Relatív elérési útja fájl vagy mappa a lemezképtároló az médiamappa gyökere. |
+| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése | Naplózási növelése az összes hibakeresési naplók megjelenítése. |
-| – Súgó -h | Ez egy súgóüzenet és kilépési megjelenítése. |
-| – a kimeneti -o | Kimeneti formátum.  Megengedett értékek\: json, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési. |
+| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
+| --help -h | A súgóüzenetet és kilépési jelennek meg. |
+| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
+| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
+| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+
 
 ## <a name="next-steps"></a>További lépések
-- [A telepítő](service-fabric-cli.md) a Service Fabric CLI-t.
-- A Service Fabric parancssori felület használatával használata a [minta parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [A telepítő](service-fabric-cli.md) a Service Fabric parancssori felület.
+- Ismerje meg, hogyan használható a Service Fabric parancssori felület használatával a [-szkript minták](/azure/service-fabric/scripts/sfctl-upgrade-application).

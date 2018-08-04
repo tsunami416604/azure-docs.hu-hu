@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Első lépések |} Microsoft Docs'
-description: Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
+title: 'Az Azure Active Directory tartományi szolgáltatások: Első lépések |} A Microsoft Docs'
+description: Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,72 +12,72 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 340193f191bbdbe658769f9265f9e63844481c32
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b6651c038a2b3abd15b8b0587e6a0e95832401b1
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265269"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502311"
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
-Ez a cikk bemutatja, hogyan engedélyezze az Azure Active Directory tartományi szolgáltatások (az Azure Active Directory tartományi szolgáltatások) az Azure portál használatával.
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
+Ez a cikk bemutatja, hogyan lehet engedélyezni az Azure Active Directory Domain Services (Azure AD DS) az Azure portal használatával.
 
 
 ## <a name="before-you-begin"></a>Előkészületek
-A cikkben szereplő feladatok elvégzéséhez szüksége:
+A cikkben szereplő feladatok végrehajtásához szükséges:
 
 * Egy érvényes **Azure-előfizetés**.
-* Egy **Azure AD-címtár** -vagy egy helyszíni címtár vagy egy csak felhőalapú directory szinkronizálva.
-* A **Azure-előfizetéssel kell rendelni az Azure AD-címtár**.
-* Szüksége **globális rendszergazda** az Azure AD tartományi szolgáltatások engedélyezése az Azure AD-címtár jogosultsággal.
+* Egy **Azure AD-címtár** -vagy az egy helyszíni címtár vagy egy csak felhőalapú címtárral szinkronizálja.
+* A **Azure-előfizetéshez kell rendelni az Azure AD-címtár**.
+* Szükséges **globális rendszergazdai** jogosultsági szintű Azure AD tartományi szolgáltatások engedélyezése az Azure AD-címtárát.
 
 
 ## <a name="enable-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatások engedélyezése
 
-Elindíthatja a **engedélyezése az Azure AD tartományi szolgáltatások** varázslóban kövesse az alábbi lépéseket:
+Elindíthatja a **engedélyezése az Azure AD Domain Services** varázsló a következő lépéseket:
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. A bal oldali panelen kattintson az **Erőforrás létrehozása** elemre.
-3. Az a **új** írja be **tartományi szolgáltatások** azokat a keresési sávon.
+3. Az a **új** írja be **Domain Services** kifejezést a keresősávba.
 
-    ![Keresse meg a tartományi szolgáltatások](./media/getting-started/search-domain-services.png)
+    ![Tartományi szolgáltatások keresése](./media/getting-started/search-domain-services.png)
 
-4. Kattintással jelölje ki **Azure AD tartományi szolgáltatások** keresési javaslatok listája. Az a **Azure AD tartományi szolgáltatások** lapján kattintson a **létrehozása** gombra.
+4. Kattintással jelölje ki **Azure AD tartományi szolgáltatások** keresési javaslatok listájáról. Az a **Azure AD tartományi szolgáltatások** lap, kattintson a **létrehozás** gombra.
 
-    ![Tartományi szolgáltatások nézete](./media/getting-started/domain-services-blade.png)
+    ![Tartományi szolgáltatások megtekintése](./media/getting-started/domain-services-blade.png)
 
-5. A **engedélyezése az Azure AD tartományi szolgáltatások** varázsló elindul.
+5. A **engedélyezése az Azure AD Domain Services** varázsló elindul.
 
 
-## <a name="task-1-configure-basic-settings"></a>1. feladat: konfigurálja az alapbeállításokat
-Az a **alapjai** lap a varázslóban adja meg a DNS-tartománynév, a felügyelt tartomány számára. Választhatja azt is, az erőforráscsoport és az Azure-beli hely, amelyhez a felügyelt tartományra kell telepíteni.
+## <a name="task-1-configure-basic-settings"></a>1. feladat: az alapvető beállítások konfigurálása
+Az a **alapjai** oldal a varázslóban adja meg a felügyelt tartományhoz tartozó DNS-tartománynév. Azt is beállíthatja az erőforráscsoportot és az Azure-beli hely, amelyhez a felügyelt tartomány üzembe szeretné helyezni.
 
 ![Alapvető beállítások konfigurálása](./media/getting-started/domain-services-blade-basics.png)
 
-1. Válassza ki a **DNS-tartománynév** a felügyelt tartományok.
+1. Válassza ki a **DNS-tartománynév** a felügyelt tartományhoz.
 
    > [!NOTE]
-   > **Egy DNS-tartománynév kiválasztása vonatkozó irányelvek**
-   > * **Beépített tartománynév:** alapértelmezés szerint a varázsló adja meg a könyvtár alapértelmezett/beépített-a tartomány nevét (az egy **. onmicrosoft.com** utótag) meg. Ha az interneten keresztül a felügyelt tartományra biztonságos LDAP elérésének lehetővé tétele, már problémák egy nyilvános DNS-rekord létrehozása és biztonságos LDAP-tanúsítvány beszerzése a tartománynévhez tartozó nyilvános Hitelesítésszolgáltatótól származó. A Microsoft tulajdonában van a *. onmicrosoft.com* tartomány és a hitelesítésszolgáltatók nem állítanak ki tanúsítványokat, a tartomány biztosításáért.
-   * **Egyéni tartománynevek:** a egy egyéni tartománynevet is megadható. Ebben a példában az egyéni tartománynév a *contoso100.com*.
-   * **A nem átirányítható tartományutótagok:** általánosságban javasolt egy nem átirányítható tartománynév utótagja elkerülése. Például célszerűbb ne hozzon létre a tartomány a DNS neve "contoso.local tartományt". A ".local" DNS-utótag nem irányítható, és a DNS-feloldás problémákat okozhatnak.
-   * **Tartománykorlátozások előtag:** a megadott tartománynév előtagja (például *contoso100* a a *contoso100.com* tartománynevet) kell tartalmaznia a 15 karaktert. Nem hozható létre egy felügyelt tartomány 15 karakternél hosszabb előtaggal kezdődik.
-   * **A névütközések hálózati:** gondoskodjon arról, hogy a felügyelt tartomány számára választott DNS-tartománynév még nem létezik a virtuális hálózat. Pontosabban, ellenőrizze, hogy:
-       * Már van egy Active Directory-tartomány az azonos DNS-tartománynévvel a virtuális hálózaton.
-       * A virtuális hálózat, ahol a felügyelt tartományra engedélyezni szeretné a helyszíni hálózat VPN-kapcsolattal rendelkezik. Ebben a forgatókönyvben győződjön meg arról, nincs olyan tartomány ugyanezzel a DNS-tartománynévvel a helyi hálózaton.
+   > **Irányelveket talál a DNS-tartománynév**
+   > * **Beépített tartománynév:** alapértelmezés szerint a varázsló a címtár alapértelmezett/beépített-a tartomány nevét adja meg (az egy **. onmicrosoft.com** utótag) az Ön számára. Ha engedélyezése a felügyelt tartomány secure LDAP-hozzáférését az interneten keresztül lehetőséget választja, a várt egy nyilvános DNS-rekord létrehozása és egy biztonságos LDAP-tanúsítvány beszerzése a tartománynévhez tartozó nyilvános Hitelesítésszolgáltatótól származó problémákat. A Microsoft tulajdonában lévő a *. onmicrosoft.com* tartomány és a hitelesítésszolgáltatók nem tanúsítványokat kiállítják majd ezt a tartományt szavatolja.
+   * **Egyéni tartománynevek:** egyéni tartománynevet is megadhatja. Ebben a példában az egyéni tartománynév a *contoso100.com*.
+   * **A nem irányítható tartományutótagok:** általában nem ajánlott olyan nem átirányítható tartománynév utótagja. Például érdemes ne hozzon létre egy tartomány DNS tartomány neve "contoso.local". A ".local" DNS-utótag nem irányítható, és a DNS-feloldás problémákat okozhatnak.
+   * **Előtag tartománykorlátozások:** a megadott tartománynév előtagja (például *contoso100* a a *contoso100.com* tartománynevet) legfeljebb 15 karaktert kell tartalmaznia. Nem hozható létre egy felügyelt tartomány egy előtagja 15 karakternél hosszabb.
+   * **Hálózati neve ütközik:** ellenőrizze, hogy a felügyelt tartomány számára választott DNS-tartománynév még nem létezik a virtuális hálózatban. Különösen azt ellenőrizze, hogy:
+       * Már rendelkezik Active Directory-tartományban, azonos DNS-tartománynévvel a virtuális hálózaton.
+       * A virtuális hálózat, ahol a felügyelt tartomány engedélyezni szeretné a helyszíni hálózathoz egy VPN-kapcsolattal rendelkezik. Ebben a forgatókönyvben ugyanazt a DNS-tartománynév-tartomány nem rendelkezik a helyszíni hálózaton biztosítása.
        * Létezik-e egy már meglévő felhőszolgáltatás ugyanezen a néven a virtuális hálózaton.
     >
 
-2. Válassza ki az Azure **előfizetés** a szeretné létrehozni a felügyelt tartományra.
+2. Válassza ki az Azure **előfizetés** a szeretné létrehozni a felügyelt tartományhoz.
 
-3. Válassza ki a **erőforráscsoport** a felügyelt tartományra tartozik kell. Válassza a **hozzon létre új** vagy **meglévő** lehetőséget választhat ki az erőforráscsoportot.
+3. Válassza ki a **erőforráscsoport** , amely a felügyelt tartományhoz kell tartoznia. Válasszon a **új létrehozása** vagy **meglévő** lehetőségeket válassza ki az erőforráscsoportot.
 
-4. Válassza ki az Azure **hely** a a felügyelt tartományra meg kell létrehozni. Az a **hálózati** oldalon a varázsló csak virtuális hálózatok, amelyek a kijelölt helyre látja.
+4. Válassza ki az Azure **hely** amely a felügyelt tartományhoz létre szeretné hozni. Az a **hálózati** oldalon a varázsló megjelenik a kiválasztott helyhez tartozó csak virtuális hálózatok.
 
-5. Kattintson a **OK** a áthelyezése a **hálózati** a varázsló.
+5. Kattintson a **OK** a áthelyezése a **hálózati** lapján.
 
 
 ## <a name="next-step"></a>Következő lépés

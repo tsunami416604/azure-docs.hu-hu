@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: f2e2dd59d7fc58fa0c275fb44cbab1958a5637b0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c125d5a741331d5c9476da23766057ac0c42cdbf
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443949"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493727"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>A hozzáférés-vezérlés az Azure Media Services content protection rendszer tervezése
 
@@ -312,9 +312,9 @@ Mi történik, ha a kulcshoz kapcsolódó kulcsváltás után az Azure ad-ben a 
 A kulcs bármikor kell leváltani, mert egynél több érvényes nyilvános kulccsal mindig érhető el az összevonási metaadatok dokumentuma. A Media Services-licencekkel történő kézbesítés a dokumentumban szereplő kulcsok bármelyikét használhatja. Előfordulhat, hogy egyetlen kulcs hamarosan fel lesz állítva, mert egy másik előfordulhat, hogy azok helyettesítéseivel, és így tovább.
 
 ### <a name="where-is-the-access-token"></a>Hol található a hozzáférési jogkivonat?
-Ha tekinti meg hogyan meghívja a webes alkalmazás a API-alkalmazás alatt [alkalmazás identitását az OAuth 2.0 ügyfélhitelesítő adatok](../../active-directory/develop/active-directory-authentication-scenarios.md#web-application-to-web-api), a hitelesítési folyamat a következőképpen történik:
+Ha tekinti meg hogyan meghívja a webes alkalmazás a API-alkalmazás alatt [alkalmazás identitását az OAuth 2.0 ügyfélhitelesítő adatok](../../active-directory/develop/authentication-scenarios.md#web-application-to-web-api), a hitelesítési folyamat a következőképpen történik:
 
-* Egy felhasználó bejelentkezik a webalkalmazás az Azure ad-ben. További információkért lásd: [webalkalmazást a webböngésző](../../active-directory/develop/active-directory-authentication-scenarios.md#web-browser-to-web-application).
+* Egy felhasználó bejelentkezik a webalkalmazás az Azure ad-ben. További információkért lásd: [webalkalmazást a webböngésző](../../active-directory/develop/authentication-scenarios.md#web-browser-to-web-application).
 * Az Azure AD engedélyezési végpont átirányítja a felhasználói ügynököt az ügyfélalkalmazásnak az engedélyezési kód. A felhasználói ügynököt az engedélyezési kód és az ügyfél-alkalmazás átirányítási URI-t ad vissza.
 * A webalkalmazás kell, hogy a webes API-t hitelesítésre és a kívánt erőforrást beolvasni a hozzáférési jogkivonat beszerzése. Ezt a kérést küld az Azure AD-jogkivonat végpontra, és a hitelesítő adatokat, az ügyfél-Azonosítót és a webes API-k alkalmazás Alkalmazásazonosító URI-t biztosít. Igazolja, hogy a felhasználó hagyta jóvá az engedélyezési kódot tükrözze.
 * Az Azure AD hitelesíti magát az alkalmazást, és a webes API meghívásához használt JWT hozzáférési jogkivonatot ad vissza.

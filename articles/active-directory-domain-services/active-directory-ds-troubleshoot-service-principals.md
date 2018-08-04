@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory tartományi szolgáltatások: Az egyszerű szolgáltatás beállításának hibakeresésére |} Microsoft Docs'
-description: Hibakeresés egyszerű szolgáltatásnév az Azure AD tartományi szolgáltatásokhoz
+title: 'Az Azure Active Directory Domain Services: Az egyszerű szolgáltatás konfigurációjának hibaelhárítása |} A Microsoft Docs'
+description: Az Azure AD Domain Services egyszerű szolgáltatás konfigurációjának hibaelhárítása
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
@@ -12,55 +12,55 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 716be5b7f35ad1d163e99e92ec65dc906743803c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 407b9732574880cd64036e92fe0c7fac169b7346
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219196"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503284"
 ---
-# <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>A felügyelt tartományok érvénytelen egyszerű konfiguráció hibaelhárítása
+# <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>A felügyelt tartomány konfigurációja érvénytelen egyszerű szolgáltatás hibaelhárítása
 
-Ez a cikk segít hibaelhárításához és megoldásához egyszerű konfigurációs hibákat, amelyek a következő figyelmeztető üzenet:
+Ez a cikk segítséget nyújt a hibaelhárításához és megoldásához szolgáltatás egyszerű kapcsolatos konfigurációs hibák, amelyek a következő figyelmeztető üzenet:
 
-## <a name="alert-aadds102-service-principal-not-found"></a>Riasztási AADDS102: Egyszerű szolgáltatásnév nem található
+## <a name="alert-aadds102-service-principal-not-found"></a>Riasztási AADDS102: Egyszerű szolgáltatás nem található
 
-**Figyelmeztető üzenet:** *az Azure AD-címtár az Azure AD tartományi szolgáltatások megfelelő működéséhez szükséges A szolgáltatás egyszerű törölve lett. Ez a konfiguráció hatással van a Microsoft képes figyeléséhez, kezeléséhez, a javítás, és a felügyelt tartományok szinkronizálása.*
+**Figyelmeztető üzenet:** *Azure AD Domain Services megfelelő működéséhez szükséges egy egyszerű szolgáltatást az Azure AD-címtár törölve lett. Ez a konfiguráció hatással van a Microsoft képes figyelése, kezelése, patch, és szinkronizálni a felügyelt tartományt.*
 
-[Rendszerbiztonsági tagok szolgáltatás](../active-directory/develop/active-directory-application-objects.md) kezelését, frissítése és karbantartása a felügyelt tartományok használó Microsoft-alkalmazások. Törlődnek, ha megszakítja a Microsoft a tartományi szolgáltatás képessége.
+[Egyszerű szolgáltatások](../active-directory/develop/active-directory-application-objects.md) olyan alkalmazások, amelyek kezelése, frissítése és a felügyelt tartomány kezelése a Microsoft használja. Törlődnek, ha a Microsoft lehetővé teszi a tartományi szolgáltatás működésképtelenné válik.
 
 
-## <a name="check-for-missing-service-principals"></a>A hiányzó szolgáltatásnevekről ellenőrzése
-Az alábbi lépések segítségével határozza meg, melyik szolgáltatás rendszerbiztonsági tagoknak kell újból létre kell hozni:
+## <a name="check-for-missing-service-principals"></a>Hiányzó szolgáltatásnevek keresése
+A következő lépések segítségével határozza meg, melyik szolgáltatás rendszerbiztonsági tagok kell újra létrehozni:
 
-1. Keresse meg a [vállalati alkalmazások – összes alkalmazás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) oldal az Azure portálon.
-2. Az a **megjelenítése** legördülő menüből válassza **összes alkalmazás** kattintson **alkalmaz**.
-3. Az alábbi táblázatban keresse meg a azonosító beillesztése a keresési mezőbe, majd nyomja le az egyes Alkalmazásazonosító adja meg. Ha a keresési eredmények üres, újra létre kell hoznia a "megoldási" oszlopban szereplő lépések a szolgáltatásnevet.
+1. Keresse meg a [nagyvállalati alkalmazások – minden alkalmazás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) oldal az Azure Portalon.
+2. Az a **megjelenítése** legördülő menüben válassza **minden alkalmazás** kattintson **alkalmaz**.
+3. A következő táblázat használatával, keresse meg a minden alkalmazás azonosítója, azonosítója beillesztése a keresési mezőbe, majd nyomja le az adja meg. Ha a keresési eredmények üresek, újra létre kell hoznia a "feloldás" oszlopban szereplő utasítások alapján az egyszerű szolgáltatás.
 
 | Alkalmazásazonosító | Megoldás: |
 | :--- | :--- | :--- |
-| 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Hozza létre újra a hiányzó egyszerű PowerShell használatával](#recreate-a-missing-service-principal-with-powershell) |
+| 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Hozza létre újra a hiányzó szolgáltatásnév a PowerShell-lel](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Regisztrálja újra a Microsoft.AAD névtérhez](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 | abba844e-bc0e-44b0-947a-dc74e5d09022  | [Regisztrálja újra a Microsoft.AAD névtérhez](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Szolgáltatás rendszerbiztonsági self javítása](#service-principals-that-self-correct) |
+| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Önkiszolgáló kijavíthatja az egyszerű szolgáltatások](#service-principals-that-self-correct) |
 
-## <a name="recreate-a-missing-service-principal-with-powershell"></a>Hozza létre újra a hiányzó egyszerű PowerShell használatával
-Kövesse az alábbi lépéseket, ha a szolgáltatás egyszerű azonosítójú ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` hiányzik az Azure AD-címtárát.
+## <a name="recreate-a-missing-service-principal-with-powershell"></a>Hozza létre újra a hiányzó szolgáltatásnév a PowerShell-lel
+Kövesse az alábbi lépéseket, ha a Azonosítóval rendelkező szolgáltatásnév ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` hiányzik az Azure AD-címtárát.
 
-**Megoldás:** Azure AD PowerShell lépések elvégzéséhez szüksége. Azure AD PowerShell telepítésével kapcsolatos információkért lásd: [Ez a cikk](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
+**Megoldás:** Azure AD PowerShell-lel a lépések elvégzéséhez szüksége. Az Azure AD PowerShell telepítésével kapcsolatos információkért lásd: [Ez a cikk](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
 
-A probléma megoldására PowerShell ablakban írja be a következő parancsokat:
-1. Telepítse az Azure AD PowerShell modult, és importálja azt.
+A probléma megoldására, egy PowerShell-ablakban írja be a következő parancsokat:
+1. Az Azure AD PowerShell-modul telepítéséhez, és importálja azt.
 
     ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
 
-2. Ellenőrizze, hogy az Azure AD tartományi szolgáltatások számára szükséges egyszerű hiányzik a címtárban hajtja végre a következő PowerShell-parancsot:
+2. Ellenőrizze, hogy az Azure AD tartományi szolgáltatásokhoz szükséges szolgáltatásnév hiányzik a címtárban a következő PowerShell-parancs végrehajtásával:
 
     ```powershell
     Get-AzureAdServicePrincipal -filter "AppId eq '2565bd9d-da50-47d4-8b85-4c97f669dc36'"
@@ -72,42 +72,42 @@ A probléma megoldására PowerShell ablakban írja be a következő parancsokat
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-4. A létrehozást követően a hiányzó szolgáltatás egyszerű, két óra várakozás után ellenőrizze a felügyelt tartományok állapotát.
+4. Miután létrehozta a hiányzó szolgáltatás egyszerű, két óra várakozás, és a felügyelt tartomány állapotának ellenőrzése.
 
 
-## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>Regisztrálja újra a Microsoft AAD névtérhez az Azure portál használatával
-Kövesse az alábbi lépéseket, ha a szolgáltatás egyszerű azonosítójú ```443155a6-77f3-45e3-882b-22b3a8d431fb``` vagy ```abba844e-bc0e-44b0-947a-dc74e5d09022``` hiányzik az Azure AD-címtárát.
+## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>Regisztrálja újra a Microsoft AAD-névteret, az Azure portal használatával
+Kövesse az alábbi lépéseket, ha a Azonosítóval rendelkező szolgáltatásnév ```443155a6-77f3-45e3-882b-22b3a8d431fb``` vagy ```abba844e-bc0e-44b0-947a-dc74e5d09022``` hiányzik az Azure AD-címtárát.
 
-**Megoldás:** tartományi szolgáltatásokban a címtár-visszaállítás az alábbi lépések segítségével:
+**Megoldás:** kövesse az alábbi lépéseket a tartományi szolgáltatások visszaállítása a címtárban:
 
-1. Keresse meg a [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) oldal az Azure portálon.
-2. Válassza ki az előfizetést a táblából, a felügyelt tartományok társított
-3. A bal oldali navigációs sáv segítségével **erőforrás-szolgáltató**
-4. Keresse meg "Microsoft.AAD" a táblázatban, és kattintson a **regisztrálja újra**
-5. Annak érdekében, hogy a riasztás fel lett oldva, az egészségügyi a lapnak a megtekintésére a felügyelt tartományok két órában.
-
-
-## <a name="service-principals-that-self-correct"></a>Szolgáltatás rendszerbiztonsági self javítása
-Kövesse az alábbi lépéseket, ha a szolgáltatás egyszerű azonosítójú ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` hiányzik az Azure AD-címtárát.
-
-**Megoldás:** Azure AD tartományi szolgáltatások észleli, ha a megadott szolgáltatásnév hiányzik, nincs megfelelően konfigurálva, vagy törölték. A szolgáltatás automatikusan létrehozza a szolgáltatásnevet. Azonban szüksége lesz az alkalmazás törlése, és objektum, amely együttműködik a törölt alkalmazást, amikor a hitelesítésszolgáltató mutatnak, az alkalmazás és az objektum már nem fogja tudni módosítani az új egyszerű szolgáltatásnév. Ez eredményezi egy új hiba tartományra. Című rész lépéseit követve a [AADDS105 szakasz](#alert-aadds105-password-synchronization-application-is-out-of-date) a probléma megelőzése érdekében. Után annak érdekében, hogy az új egyszerű szolgáltatás újból létrejött két órával később a felügyelt tartományok állapotának ellenőrzése.
+1. Keresse meg a [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) oldal az Azure Portalon.
+2. Válassza ki az előfizetést a táblából, amely a felügyelt tartományhoz társított
+3. Válassza a bal oldali navigációs használatával **erőforrás-szolgáltatók**
+4. Keressen rá a "Microsoft.AAD" kifejezésre a tábla, és kattintson a **újbóli regisztrálásához**
+5. Annak érdekében, hogy a riasztás fel lett oldva, megtekintheti az oldalt a felügyelt tartományhoz tartozó két órán belül.
 
 
-## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Riasztási AADDS105: A jelszó-szinkronizálás alkalmazás elavultak
+## <a name="service-principals-that-self-correct"></a>Önkiszolgáló kijavíthatja az egyszerű szolgáltatások
+Kövesse az alábbi lépéseket, ha a Azonosítóval rendelkező szolgáltatásnév ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` hiányzik az Azure AD-címtárát.
 
-**Figyelmeztető üzenet:** az alkalmazás azonosítójával "d87dcbc6-a371-462e-88e3-28ad15ec4e64" a szolgáltatás egyszerű lett törölve, és majd újra létrehozza. Az újbóli mögött inkonzisztens engedélyek hagyja el a felügyelt tartományok kiszolgálásához szükséges az Azure AD tartományi szolgáltatások erőforrásait. A felügyelt tartományra jelszavak szinkronizálása az hatással lehet.
+**Megoldás:** Azure AD tartományi szolgáltatások képes észlelni, ha az adott szolgáltatásnév hiányzik, helytelenül van konfigurálva, vagy törölték. A szolgáltatás automatikusan létrehozza ezt a szolgáltatásnevet. Azonban az alkalmazás törölni kell, és objektum, amely működött az törölt alkalmazással, a minősítési mutatnak, ha az alkalmazás és az objektum már nem fogja tudni módosítani az új egyszerű szolgáltatás által. Ez eredményezi egy új hiba a tartományon. Kövesse az ismertetett lépéseket a [AADDS105 a következő szakaszban](#alert-aadds105-password-synchronization-application-is-out-of-date) a probléma megelőzése érdekében. Után győződjön meg arról, hogy újból létrejött a az új egyszerű szolgáltatást, két óra után a felügyelt tartomány állapotának ellenőrzése.
 
 
-**Megoldás:** Azure AD PowerShell lépések elvégzéséhez szüksége. Azure AD PowerShell telepítésével kapcsolatos információkért lásd: [Ez a cikk](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
+## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Riasztási AADDS105: Jelszó-szinkronizálás alkalmazás nem naprakész
 
-A probléma megoldására PowerShell ablakban írja be a következő parancsokat:
-1. Telepítse az Azure AD PowerShell modult, és importálja azt.
+**Figyelmeztető üzenet:** az egyszerű szolgáltatás "d87dcbc6-a371-462e-88e3-28ad15ec4e64" Alkalmazásazonosítóval rendelkező lett törölve, és majd újra létrehozza. Az újbóli hagy hátra inkonzisztens engedélyeket a szükséges szolgáltatást a felügyelt tartományhoz az Azure AD tartományi szolgáltatások erőforrásait. A felügyelt tartományra a jelszó-szinkronizálás is hatással lehet.
+
+
+**Megoldás:** Azure AD PowerShell-lel a lépések elvégzéséhez szüksége. Az Azure AD PowerShell telepítésével kapcsolatos információkért lásd: [Ez a cikk](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
+
+A probléma megoldására, egy PowerShell-ablakban írja be a következő parancsokat:
+1. Az Azure AD PowerShell-modul telepítéséhez, és importálja azt.
 
     ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
-2. Törölje a régi alkalmazás és a következő PowerShell-parancsokkal objektum
+2. Törölje a régi-alkalmazás és az objektum a következő PowerShell-parancsok használatával
 
     ```powershell
     $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
@@ -115,8 +115,8 @@ A probléma megoldására PowerShell ablakban írja be a következő parancsokat
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
     ```
-3. A törölt is, a rendszer magának kijavítani, és hozza létre újra az alkalmazásokat, a jelszó-szinkronizálás szükséges. Annak érdekében, hogy a riasztás sikeresen szervizelve lett, két óra várakozás után ellenőrizze a tartomány állapotát.
+3. A törölt is, a rendszer szervizelése magát, és hozza létre újból a jelszó-szinkronizáláshoz szükséges alkalmazások. Annak érdekében, hogy a riasztás sikeresen szervizelve lett, várjon két órát, és a tartomány állapotának ellenőrzése.
 
 
 ## <a name="contact-us"></a>Kapcsolat
-Lépjen kapcsolatba az Azure Active Directory tartományi szolgáltatások termékért felelős csoport a [visszajelzés fájlmegosztás vagy a támogatáshoz](active-directory-ds-contact-us.md).
+Lépjen kapcsolatba az Azure Active Directory Domain Services termékért felelős csoport [visszajelzés és támogatás](active-directory-ds-contact-us.md).

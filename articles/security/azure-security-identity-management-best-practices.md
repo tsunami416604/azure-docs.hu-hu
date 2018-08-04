@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 210781b36f6215afc925266e597031d772a94002
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e3fe033de05ed42d221795159461048790e1cec8
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060557"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493302"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure identitáskezelési és hozzáférés-vezérlés ajánlott biztonsági eljárások
 
@@ -133,7 +133,7 @@ Felhasználói identitás ki sokféle helyzetben, amikor a felhasználó hozzáf
 
 Lehet, hogy a szervezetek számára, amelyek nem tesszük kötelezővé identitás-ellenőrző az alkalmazások eléréséhez, és nem útmutató a biztonságos alkalmazások integrálása az identitáskezelési rendszerekkel való fejlesztő több ki van téve a hitelesítőadat-lopás típusú támadások, mint például [gyenge az Open Web Application Security Project (OWASP) első 10 leírt hitelesítést és a munkamenet felügyeleti](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet).
 
-További hitelesítési forgatókönyvek az SaaS-alkalmazásokkal kapcsolatban olvassa el [hitelesítési forgatókönyvek az Azure ad-ben](../active-directory/active-directory-authentication-scenarios.md).
+További hitelesítési forgatókönyvek az SaaS-alkalmazásokkal kapcsolatban olvassa el [hitelesítési forgatókönyvek az Azure ad-ben](../active-directory/develop/authentication-scenarios.md).
 
 ## <a name="actively-monitor-for-suspicious-activities"></a>Aktív monitorozása a gyanús tevékenységek esetén
 

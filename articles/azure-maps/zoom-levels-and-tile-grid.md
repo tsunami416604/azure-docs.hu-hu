@@ -1,6 +1,6 @@
 ---
-title: Nagyítás szintek és a Maps-Azure rács csempe |} Microsoft Docs
-description: Tudnivalók a nagyítási szint és a Maps-Azure rács csempe
+title: Nagyítási szintek és csemperács Azure Maps-|} A Microsoft Docs
+description: Megismerheti a nagyítási szintek és csemperács Azure Maps-Közösséghez
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 05/07/2018
@@ -8,32 +8,32 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 55441cda7a6fc65ac8103d19510823a7c84a9cbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8eae5f258eaa899dc60e1e1cc066241bcff54970
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599925"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494081"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
-Az Azure Maps használja a gömb Mercator leképezése koordináta-rendszerére (EPSG: 3857).
+Az Azure Maps használata a gömbös Mercator leképezése koordináta-rendszerére (EPSG: 3857).
 
-A világ négyzetes csempék van osztva. Leképezési (bitképes) 19 nagyítási szint, számozása 0-tól 18 rendelkezik. Leképezési (vektoros) 21 nagyítási szint, 0 és 20 közötti számozott rendelkezik. Nagyítási szint 0 a teljes globális fér el egyetlen csempe:
+A világ négyzetes csempék oszlik. Renderelési (képszerkesztőt) számozása 0-tól 20, 21 nagyítási szinten van. Renderelési (vektor) 23 nagyítási szintje, 0 – 22-es számú van. Nagyítási szint 0 az egész világ fér el egyetlen csempére:
 
-![A globális csempe](./media/zoom-levels-and-tile-grid/world0.png)
+![Globális csempe](./media/zoom-levels-and-tile-grid/world0.png)
 
-Nagyítási szintjének 1 négy csempe használja a világ megjelenítéséhez: 2 x 2 négyzetes
+Nagyítási szint 1 négy csempére használja a világ megjelenítése: 2 x 2 négyzetes
 
-![A globális csempe bal felső](./media/zoom-levels-and-tile-grid/world1a.png)     ![A globális csempe jobb felső](./media/zoom-levels-and-tile-grid/world1c.png) 
+![Globális csempe felül a bal oldalon](./media/zoom-levels-and-tile-grid/world1a.png)     ![Globális csempe jobb felső](./media/zoom-levels-and-tile-grid/world1c.png) 
 
-![A globális csempe bal alsó](./media/zoom-levels-and-tile-grid/world1b.png)     ![A globális csempe alsó jobb oldali](./media/zoom-levels-and-tile-grid/world1d.png) 
+![Globális csempe alul a bal oldalon](./media/zoom-levels-and-tile-grid/world1b.png)     ![Globális csempe alul a jobb oldalon](./media/zoom-levels-and-tile-grid/world1d.png) 
 
 
-Minden ezt követő nagyítási szint négyszeres-felosztása az előzőre, 2 álló rács létrehozása követ<sup>nagyítás</sup> x 2<sup>nagyítás</sup>. A nagyítási szint 20 a rács 2<sup>20</sup> x 2<sup>20</sup>, vagy 1 048 576 x 1 048 576 csempék (összesen 109,951,162,778 csempék).
+Minden ezt követő nagyítási szint négyszeres-osztással, az előzőt, 2-es rács létrehozása a csempék<sup>nagyítás</sup> x 2<sup>nagyítás</sup>. Nagyítási szint 22-es rendszer 2 rács<sup>22-es</sup> x 2<sup>22-es</sup>, vagy 4,194,304 x 4,194,304 csempék (összesen 17,592,186,044,416 csempék).
 
-A következő táblázat a teljes listát értékeket biztosít a nagyítási szint:
+Az alábbi táblázatban a teljes lista értékeit a nagyítási szint:
 
-|a nagyítási szint|mérőszámok/képpont|ügyféloldali mérőszámok/csempe|
+|Nagyítási szint|Mérőszámok/képpont|Ügyféloldali mérőszámok/csempe|
 |--- |--- |--- |
 |0|156543|40075008|
 |1|78271.5|20037504|
@@ -53,18 +53,20 @@ A következő táblázat a teljes listát értékeket biztosít a nagyítási sz
 |15|4.8|1228.8|
 |16|2.4|614.4|
 |17|1.2|307.2|
-|18|0,6|152.8|
+|18|a 0.6-os|152.8|
 |19|0,3|76.4|
 |20|0,15|38.2|
+|21|0,075|19.1|
+|22|0.0375|9.55|
 
-Csempék a csempe pozíciója a rács a nagyítási szint megfelelő nagyítási szintjét, és az x és y koordináták nevezzük.
+Csempék a csempe helyre a rácson a nagyítási szintnek megfelelő nagyítási szintjét, és az x és y koordinátái alapján nevezzük.
 
-Mely nagyítási szint kíván használni, ne feledje, hogy mindegyik helyen a csempe a rögzített pozícióban meghatározásakor. Ez azt jelenti, hogy, hogy egy adott expanse területének megjelenítéséhez szükséges csempék száma nem függ a világ nagyítás rács adott elhelyezését. Például, ha két mutat 900 mérőszámok egymástól, az *előfordulhat, hogy* csak a nagyítási szint 17 közöttük útvonal megjelenítendő három csempék vesz igénybe. Azonban ha a nyugati pont jobb oldalán a csempén, és a bal oldali a csempe keleti pont van, szükség lehet a négy csempe is:
+Eldönteni, melyik nagyítási szintjét használja, ne feledje, hogy minden hely egy rögzített helyen, a csempére. Ez azt jelenti, hogy egy adott expanse terület megjelenítéséhez szükséges rögzíthető csempék számának függ, a világ rács zoom adott elhelyezését. Például ha két mutat 900 mérőszámok egymástól, azt *előfordulhat, hogy* három csempék megjelenítése egy útvonalat a közöttük 17 nagyítási szinten csak igénybe. Ha a nyugati pont jobb oldalán a csempét, és a keleti mutasson a csempe a bal oldali, eltarthat négy csempére:
 
-![Nagyítás mértéke bemutató](./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
+![Nagyítás bemutató mértéke](./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
 
-A nagyítási szint határozza meg, ha az x és y értékek kerülhet sor. A felső bal csempe minden nagyítás rácsban x = 0, i = 0; a jobb alsó csempe jelenleg x = 2<sup>-1 nagyítás</sup>, y = 2<sup>Nagyítás-1</sup>.
+A nagyítási szint határozza meg, ha az x és y értékek számíthatók. A felső bal oldali csempe minden nagyítás rács x = 0, y = 0; a jobb alsó csempe jelenleg x = 2<sup>-1 nagyítás</sup>, y = 2<sup>Nagyítás-1</sup>.
 
-A Nagyítás rács nagyítási szintjének 1 az itt található:
+A Nagyítás rács nagyítási szintjének 1 az itt látható:
 
-![A nagyítási szint 1 nagyítás rács](./media/zoom-levels-and-tile-grid/api_x_y.png)
+![Nagyítási szint 1 nagyítás rács](./media/zoom-levels-and-tile-grid/api_x_y.png)

@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7de567b3aaa5719a123a58c172548a4c0bffca64
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8a331aab32d8bc662026d49e16f63224fbbf6d41
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283240"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503032"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Szolgáltatások közötti hívások ügyfél-hitelesítő adatok (közös titkos kulcsot vagy tanúsítvány) használatával
 Az OAuth 2.0 ügyfél hitelesítő adatok engedélyezési folyamatát engedélyezi a webszolgáltatás (*bizalmas ügyfél*) a saját hitelesítő adatait használja a felhasználó megszemélyesítése helyett egy másik webszolgáltatás hívásakor. Ebben a forgatókönyvben az ügyfél nem általában egy középső rétegű webszolgáltatás, démonszolgáltatás vagy webhely. A magasabb szintű megbízhatóságra Azure ad-ben is lehetővé teszi a hívó szolgáltatás (és nem egy közös titkos kulcsot) egy tanúsítvány használandó hitelesítő adatokat.
@@ -38,7 +38,7 @@ Az alábbi diagram bemutatja, hogyan adhat az ügyfél-hitelesítő adatok a flo
 4. Az ügyfélalkalmazás adják vissza az adatokat a védett erőforrás.
 
 ## <a name="register-the-services-in-azure-ad"></a>A szolgáltatások regisztrálása az Azure ad-ben
-A hívó és a fogadó szolgáltatást is regisztrálni az Azure Active Directoryban (Azure AD). Részletes útmutatásért lásd: [alkalmazások integrálása az Azure Active Directory](active-directory-integrating-applications.md).
+A hívó és a fogadó szolgáltatást is regisztrálni az Azure Active Directoryban (Azure AD). Részletes útmutatásért lásd: [alkalmazások integrálása az Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md).
 
 ## <a name="request-an-access-token"></a>Hozzáférési jogkivonat kérése
 Egy hozzáférési jogkivonatot kér, használja egy HTTP POST-bérlő-specifikus Azure AD-végpont.

@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 4ad1416f79b8cf9c03904da5f9efc1d1aae475d9
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1a7ecbe42857e522785d5919d46b783feae4caeb
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364030"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494125"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?
 Egyszeri bejelentkezés azt jelenti, nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat kell tennie az üzleti, csak egyszer, egyetlen felhasználói fiókkal jelentkezzen be. Miután bejelentkezett, elérheti összes alkalmazás hitelesítéséhez szükséges nélkül (például adjon meg egy jelszót) egy második alkalommal.
@@ -112,7 +112,7 @@ Ha az alkalmazás nem található az Azure AD alkalmazáskatalógusában, majd e
 * **Adjon hozzá egy listán nem szereplő alkalmazást használ** – az egyéni kategória használata az Azure Portalon az alkalmazásgyűjtemény listán nem szereplő alkalmazást, amely a szervezet használja. Minden olyan alkalmazás, amely támogatja az SAML 2.0, mint az összevont alkalmazások vagy bármilyen alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal egyszeri bejelentkezés jelszó alkalmazásként is hozzáadhat. További részletekért lásd: Ez a cikk a [saját alkalmazás hozzáadása](../application-config-sso-how-to-configure-federated-sso-non-gallery.md).
 * **Adjon hozzá saját alkalmazást fejleszt** – Ha az alkalmazás saját maga is rendelkezik fejlesztett összevont egyszeri bejelentkezés megvalósítása az Azure AD fejlesztői dokumentáció útmutatását, vagy üzembe az Azure AD graph API-t. További információkért tekintse meg ezeket az erőforrásokat:
   
-  * [Hitelesítési forgatókönyvek az Azure AD-hez](../active-directory-authentication-scenarios.md)
+  * [Hitelesítési forgatókönyvek az Azure AD-hez](../develop/authentication-scenarios.md)
   * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)

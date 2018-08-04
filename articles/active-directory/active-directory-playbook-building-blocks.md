@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 212da85f64f876f40e2d84d79a8c6a990d118aca
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049469"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505086"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -41,7 +41,7 @@ Az alábbiakban néhány bármely POC-t az Azure AD Premium szükséges előfelt
 
 | Előfeltétel | További források |
 | --- | --- |
-| Az Azure AD bérlő által definiált érvényes Azure-előfizetéssel | [Az Azure Active Directory-bérlő beszerzése](active-directory-howto-tenant.md)<br/>**Megjegyzés:** Ha már rendelkezik prémium szintű Azure AD-licenceket tartalmazó környezet, nulla cap előfizetés beszerezheti az https://aka.ms/accessaad <br/>További információt: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ és https://technet.microsoft.com/library/dn832618.aspx |
+| Az Azure AD bérlő által definiált érvényes Azure-előfizetéssel | [Az Azure Active Directory-bérlő beszerzése](develop/quickstart-create-new-tenant.md)<br/>**Megjegyzés:** Ha már rendelkezik prémium szintű Azure AD-licenceket tartalmazó környezet, nulla cap előfizetés beszerezheti az https://aka.ms/accessaad <br/>További információt: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ és https://technet.microsoft.com/library/dn832618.aspx |
 | Meghatározott és ellenőrzött tartományok | [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](active-directory-domains-add-azure-portal.md)<br/>**Megjegyzés:** egyes számítási feladatokhoz, mint a Power BI sikerült kiépítve a takaró alatt egy azure AD-bérlővel. Ellenőrizze, hogy egy bérlő társítva-e egy adott tartományon, navigáljon a https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Ha sikeres válasz lekérése, majd a tartomány már hozzá van rendelve a bérlőhöz, és vegye át lehet szükség. Ha igen, forduljon a Microsofthoz további útmutatást tartalmaz. További információ az átvétel lehetőség is: [Mi az az Azure önkiszolgáló regisztráció?](users-groups-roles/directory-self-service-signup.md) |
 | Az Azure AD Premium vagy EMS-próba engedélyezve | [Az Azure Active Directory Premium egy hónapig ingyenesen használható](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Premium vagy EMS-licenceket rendelt PoC-felhasználók | [Saját magának, mind pedig a felhasználók az Azure Active Directoryban](active-directory-licensing-get-started-azure-portal.md) |

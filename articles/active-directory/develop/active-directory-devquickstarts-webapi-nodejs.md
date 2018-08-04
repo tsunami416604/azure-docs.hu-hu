@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 1137e7164ac83a2ee0bf05804296aeeb5c3496fb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b05512804b35f7df3dfd2899eed975b93d36f951
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437447"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503383"
 ---
 # <a name="azure-ad-nodejs-web-api-getting-started"></a>Az Azure AD Node.js webes API-k első lépések
 
 Ez a cikk bemutatja, hogyan teheti biztonságossá a [létrehozásához a restify programot](http://restify.com/) az API-végpont [Passport](http://passportjs.org/) használatával a [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) modul kezelni a kommunikációt az Azure Active Directory (AAD). 
 
-Ebben az oktatóanyagban kiterjed a aggályokat kapcsolatos biztonságossá tétele API-végpontokon. Bejelentkezés és a hitelesítési tokenek megőrzése fontos szempont nejsou implementovány itt, és egy ügyfélalkalmazás kell eljárnia. Egy ügyfél megvalósítása körülvevő részletekért tekintse át a [Node.js-webalkalmazás bejelentkezési és kijelentkezési az Azure ad-vel](active-directory-devquickstarts-openidconnect-nodejs.md).
+Ebben az oktatóanyagban kiterjed a aggályokat kapcsolatos biztonságossá tétele API-végpontokon. Bejelentkezés és a hitelesítési tokenek megőrzése fontos szempont nejsou implementovány itt, és egy ügyfélalkalmazás kell eljárnia. Egy ügyfél megvalósítása körülvevő részletekért tekintse át a [Node.js-webalkalmazás bejelentkezési és kijelentkezési az Azure ad-vel](quickstart-v1-openid-connect-code.md).
 
 A teljes kódmintát, ez a cikk társított érhető el az [GitHub](https://github.com/Azure-Samples/active-directory-node-webapi-basic).
 
@@ -77,7 +77,7 @@ Mielőtt az csatlakozna az Azure Active Directoryhoz, szüksége van a következ
 
 | Name (Név)  | Leírás | A konfigurációs fájlban változó neve |
 | ------------- | ------------- | ------------- |
-| Bérlő neve  | [A bérlő nevét](active-directory-howto-tenant.md) a hitelesítéshez használni kívánt | `tenantName`  |
+| Bérlő neve  | [A bérlő nevét](quickstart-create-new-tenant.md) a hitelesítéshez használni kívánt | `tenantName`  |
 | Ügyfél-azonosító  | Ügyfél-azonosító az AAD OAuth kifejezés _Alkalmazásazonosító_. |  `clientID`  |
 
 A regisztrációs válasz, az Azure Cloud shellben, másolja a `appId` értékét, és hozzon létre egy új fájlt `config.js`. Ezután adja hozzá az alábbi kódot, és cserélje le az értékeket a zárójeles jogkivonatokat:
@@ -245,4 +245,4 @@ Most, hogy létrehozott egy biztonságos API-t, valósítható meg, amely képes
 Amint azt a bevezetés, meg kell valósítani egy ügyfél megfelelője, amely kezeli a bejelentkezés, jelentkezzen ki, majd a jogkivonatok kezeléséhez a kiszolgálóhoz való csatlakozáshoz. Példák kódalapú nézze meg az ügyfélalkalmazások a [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) és [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android). Részletes útmutató tekintse meg a következő cikket:
 
 > [!div class="nextstepaction"]
-> [NODE.js-webalkalmazás bejelentkezési és kijelentkezési az Azure ad-vel](active-directory-devquickstarts-openidconnect-nodejs.md)
+> [NODE.js-webalkalmazás bejelentkezési és kijelentkezési az Azure ad-vel](quickstart-v1-openid-connect-code.md)

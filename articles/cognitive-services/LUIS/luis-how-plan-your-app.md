@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: diberry
-ms.openlocfilehash: 8cafe2be190988cbcbe8da616fe17c9a35c722f3
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cba156d784bfcdd2586073ab5562faf604569cd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226023"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505528"
 ---
 # <a name="plan-your-luis-app"></a>A LUIS-alkalmazás megtervezése
 
@@ -53,10 +53,10 @@ Egy hierarchikus entitás egy olyan speciális típusú egy **egyszerű** entit�
 
 Lásd: [Adatkinyerés](luis-concept-data-extraction.md#hierarchical-entity-data) tudhat meg többet a végpont JSON lekérdezési válasz a hierarchikus entitás kinyerését. Próbálja ki a hierarchikus entitás [rövid](luis-quickstart-intent-and-hier-entity.md) hierarchikus entitás használatával kapcsolatos további.
 
-### <a name="composite-entity"></a>összetett entitást
+### <a name="composite-entity"></a>Összetett entitást
 Egy összetett entitást az egész részét alkotó más entitások épül fel. 
 
-![összetett entitást](./media/luis-plan-your-app/composite-entity.png)
+![Összetett entitást](./media/luis-plan-your-app/composite-entity.png)
 
 Lásd: [Adatkinyerés](luis-concept-data-extraction.md#composite-entity-data) tudhat meg többet az összetett entitás kinyerését a végpont JSON lekérdezési válasz. Próbálja ki az összetett entitás [oktatóanyag](luis-tutorial-composite-entity.md) egy összetett entitást használatával kapcsolatos további.
 
@@ -65,7 +65,7 @@ LUIS biztosít [előre összeállított entitások](luis-prebuilt-entities.md) g
 
 ![Előre összeállított entitások száma](./media/luis-plan-your-app/number-entity.png)
 
-Lásd: [Adatkinyerés](luis-concept-data-extraction.md#prebuilt-entity-data) tudhat meg többet a végpontról JSON lekérdezési válasz reguláris kifejezés entitások kinyeréséhez. 
+Lásd: [Adatkinyerés](luis-concept-data-extraction.md#prebuilt-entity-data) tudhat meg többet a végpontról JSON lekérdezési válasz előre összeállított entitások kinyeréséhez. 
 
 ### <a name="list-entity"></a>Listaentitás 
 Egy lista entitás egy explicit módon megadott értékek listája. Minden egyes érték egy vagy több szinonimák áll. Egy utazási alkalmazás választhatja hozhat létre, amelyek repülőtér nevek listája entitásokat.

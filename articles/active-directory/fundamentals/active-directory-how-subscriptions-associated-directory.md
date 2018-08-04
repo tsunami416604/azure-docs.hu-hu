@@ -14,12 +14,12 @@ ms.date: 12/12/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: bcae3f51e2245928c8110d06f3514177d57ac883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6b0933e9aa732cb9a01a454764fb0425465ec078
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449889"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503311"
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz
 
@@ -59,7 +59,7 @@ Az előfizetés címtárának módosítása szolgáltatásszintű művelet. Ez n
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ új Azure AD-címtár ingyenes létrehozásáról: [Azure Active Directory-bérlő beszerzése](../develop/active-directory-howto-tenant.md)
+* További információ új Azure AD-címtár ingyenes létrehozásáról: [Azure Active Directory-bérlő beszerzése](../develop/quickstart-create-new-tenant.md)
 * További információ az Azure-előfizetések számlázási tulajdonjogának átadásáról: [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../../billing/billing-subscription-transfer.md)
 * Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * A szerepkörök Azure AD-ben történő hozzárendeléséről további információért lásd: [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md).

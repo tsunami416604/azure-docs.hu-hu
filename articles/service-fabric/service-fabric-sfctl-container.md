@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric CLI - sfctl tároló |} Microsoft Docs
-description: A Service Fabric CLI sfctl tároló parancsok ismerteti.
+title: Az Azure Service Fabric parancssori felület - sfctl container |} A Microsoft Docs
+description: A Service Fabric parancssori felület sfctl tárolóparancsok ismerteti.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,78 +12,79 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: cd3725ac547a1ed1fd9207dc48ba3b6227e85ef1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 27108d27ee27346e4cba44e6778faff56df70a36
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34764018"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495128"
 ---
-# <a name="sfctl-container"></a>sfctl tároló
-Tároló kapcsolatos parancsok futtatnak egy fürt csomópontja.
+# <a name="sfctl-container"></a>sfctl-tároló
+Tároló futtatási kapcsolatos parancsok egy fürtcsomóponton.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| Invoke-api | Tároló REST API hívása. |
-| naplók | Tároló naplók lekérése során. |
+| api meghívása | Tároló REST API meghívásához. |
+| naplók | Tároló naplóinak beolvasása során. |
 
-## <a name="sfctl-container-invoke-api"></a>invoke sfctl tároló-api
-Tároló REST API hívása.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – [szükséges] alkalmazás-azonosító | Alkalmazás azonosítója. |
-| --kódot--példány-csomagazonosító [szükséges] | Kód példány Csomagazonosítót "szolgáltatás kódot--csomaglista" lekérhetők. |
-| --kódot--csomagnév [szükséges] | Csomag neve. |
-| --tároló-api-uri-elérési út [szükséges] | Tároló REST API URI elérési útja, '{Azonosítójú}' használata helyett a tároló neve vagy azonosítója. |
-| --csomópontnév [szükséges] | A csomópont neve. |
-| --jegyzékfájl-szolgáltatásnév [szükséges] | Szolgáltatás jegyzékfájljának nevét. |
-| --tároló-api-szervezet | HTTP-kérés törzsében tároló REST API-t. |
-| --tároló-api-tartalomtípus | A tároló REST API-t az alapértelmezett érték az "application/json" tartalomtípusa. |
-| --tároló-api-http-művelet | HTTP-műveletet a tároló REST API-t alapértelmezés szerint használt érték a GET. |
-| – időtúllépés -t | Időtúllépését másodpercben.  Alapértelmezett\: 60. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --hibakeresése | Naplózási növelése az összes hibakeresési naplók megjelenítése. |
-| – Súgó -h | Ez egy súgóüzenet és kilépési megjelenítése. |
-| – a kimeneti -o | Kimeneti formátum.  Megengedett értékek\: json, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési. |
-
-## <a name="sfctl-container-logs"></a>sfctl tároló naplók
-Tároló naplók lekérése során.
+## <a name="sfctl-container-invoke-api"></a>sfctl tároló invoke-api
+Tároló REST API meghívásához.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] alkalmazás-azonosító | Alkalmazás azonosítója. |
-| --kódot--példány-csomagazonosító [szükséges] | Kód példány Csomagazonosítót "szolgáltatás kódot--csomaglista" lekérhetők. |
-| --kódot--csomagnév [szükséges] | Csomag neve. |
-| --csomópontnév [szükséges] | A csomópont neve. |
-| --jegyzékfájl-szolgáltatásnév [szükséges] | Szolgáltatás jegyzékfájljának nevét. |
-| – kiegészítő | A naplók végén csak vissza a napló sorok száma. Adja meg az egész szám vagy az összes kimeneti összes napló sort. Alapértelmezés szerint az összes. |
-| – időtúllépés -t | Időtúllépését másodpercben.  Alapértelmezett\: 60. |
+| – [kötelező] alkalmazás-azonosító | Identita aplikace. |
+| --code-package-példány-id [kötelező] | Kód csomag példány azonosítója, amelyet a "service code-package-list" lekérheti. |
+| – [kötelező] code-package-neve | Csomag neve. |
+| --container-api-uri-elérési út [kötelező] | Tároló REST API-URI elérési út a(z) {id} használata helyett a tároló neve vagy azonosítója. |
+| --csomópontnév [kötelező] | A csomópont neve. |
+| --service-jegyzékfájl-name [kötelező] | Jegyzékfájl neve. |
+| --container-api – törzs | HTTP-kérés törzse REST API-tárolóhoz. |
+| --container-api-content-type | Typ obsahu tároló REST API-t alapértelmezés szerint az "application/json". |
+| --container-api-http-művelet | Alapértelmezés szerint GET REST API-t tároló HTTP-műveletet. |
+| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése | Naplózási növelése az összes hibakeresési naplók megjelenítése. |
-| – Súgó -h | Ez egy súgóüzenet és kilépési megjelenítése. |
-| – a kimeneti -o | Kimeneti formátum.  Megengedett értékek\: json, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési. |
+| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
+| --help -h | A súgóüzenetet és kilépési jelennek meg. |
+| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
+| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
+| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+
+## <a name="sfctl-container-logs"></a>sfctl-tároló naplóit
+Tároló naplóinak beolvasása során.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – [kötelező] alkalmazás-azonosító | Identita aplikace. |
+| --code-package-példány-id [kötelező] | Kód csomag példány azonosítója, amelyet a "service code-package-list" lekérheti. |
+| – [kötelező] code-package-neve | Csomag neve. |
+| --csomópontnév [kötelező] | A csomópont neve. |
+| --service-jegyzékfájl-name [kötelező] | Jegyzékfájl neve. |
+| --tail | Csak a naplókat végéről a napló sorok számát adja vissza. Adja meg egy egész számot vagy az összes kimeneti minden napló sort. Alapértelmezés szerint az "all". |
+| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
+| --help -h | A súgóüzenetet és kilépési jelennek meg. |
+| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
+| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
+| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+
 
 ## <a name="next-steps"></a>További lépések
-- [Állítson be](service-fabric-cli.md) a Service Fabric CLI.
-- A Service Fabric parancssori felület használatával használata a [minta parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Állítsa be a](service-fabric-cli.md) a Service Fabric parancssori felület.
+- Ismerje meg, hogyan használható a Service Fabric parancssori felület használatával a [-szkript minták](/azure/service-fabric/scripts/sfctl-upgrade-application).

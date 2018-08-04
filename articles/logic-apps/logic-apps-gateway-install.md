@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: yshoukry, LADocs
 ms.suite: integration
-ms.openlocfilehash: 09e3879ed91a0e9c6d27940cae53f3e3f0397d7b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145206"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503648"
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>A helyszíni adatátjáró telepítése az Azure Logic Apps
 
@@ -84,7 +84,7 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos további
   > [!TIP]
   > Ha feliratkozott egy Office 365 ajánlatra, és nem adott meg a tényleges munkahelyi e-mail-címét, lehetséges, hogy egy bejelentkezési cím, amely az alábbi példára hasonlít: `username@domain.onmicrosoft.com` 
   >
-  > Használandó Microsoft-fiókkal, amely rendelkezik egy [Visual Studio Standard előfizetés](https://visualstudio.microsoft.com/vs/pricing/), először [hozzon létre egy könyvtárat (bérlő) Azure Active Directory](../active-directory/develop/active-directory-howto-tenant.md), vagy használja az alapértelmezett címtár, Microsoft-fiókjával. 
+  > Használandó Microsoft-fiókkal, amely rendelkezik egy [Visual Studio Standard előfizetés](https://visualstudio.microsoft.com/vs/pricing/), először [hozzon létre egy könyvtárat (bérlő) Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md), vagy használja az alapértelmezett címtár, Microsoft-fiókjával. 
   > A jelszóval rendelkező felhasználó hozzáadása a címtárhoz, majd a felhasználói hozzáférést az előfizetéshez. 
   > Ezután bejelentkezhet a felhasználónévvel és jelszóval kapcsolódásiátjáró-telepítés során.
 

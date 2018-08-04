@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 70225fd59248939c9ea1d5c7c267cdf0da3303e7
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: b05eef79e94cff74b1e02243cd7c8d94e5acbb3c
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342402"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493970"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió](v1/data-factory-data-movement-security-considerations.md)
+> * [1-es verzió](v1/data-factory-data-movement-security-considerations.md)
 > * [Aktuális verzió](data-movement-security-considerations.md)
 
 Ez a cikk ismerteti, amelyek adatátviteli szolgáltatások az Azure Data Factory segítségével biztonságos alapvető biztonsági infrastruktúra adatait. Data Factory felügyeleti erőforrás az Azure biztonsági infrastruktúra épül, és használja az Azure-ban elérhető összes lehetséges biztonsági intézkedések.
@@ -58,6 +58,9 @@ Ha a felhőbeli adattárban támogatja a HTTPS vagy a TLS, adat-előállítóban
 
 > [!NOTE]
 > Azure SQL Database és az Azure SQL Data warehouse-ba irányuló összes kapcsolatot igényelnek a titkosítás (SSL/TLS), miközben az átvitel során, illetve onnan az adatbázis az adatokat. Ha egy folyamat JSON használatával Ön szerzői, a titkosítási tulajdonság hozzáadása, illetve beállíthatja **igaz** a kapcsolati karakterláncban. Az Azure Storage esetében használható **HTTPS** a kapcsolati karakterláncban.
+
+> [!NOTE]
+> Használt verzió a TLS 1.2-es.
 
 ### <a name="data-encryption-at-rest"></a>Adat-titkosítás inaktív állapotban
 Néhány adatot tárol az inaktív adatok titkosításának támogatása. Azt javasoljuk, hogy engedélyezze az adatok titkosítási mechanizmus ezeket olyan adattárakban. 

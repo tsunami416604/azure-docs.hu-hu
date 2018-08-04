@@ -6,14 +6,14 @@ author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 0c5509d323f14a6bb62f465fa23584ca927e0e61
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 370c8521127ffc28cc1b604c217544bccc82d705
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763357"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39496341"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
@@ -25,7 +25,7 @@ Az Azure Service Fabric parancssori felület (CLI) egy parancssori eszköz a Ser
 
 A telepítés előtt győződjön meg arról, hogy a környezetben a Python és a pip is telepítve van. További információkért olvassa el a [pip rövid útmutató dokumentációját](https://pip.pypa.io/en/latest/quickstart/) és a hivatalos [Python-telepítési dokumentációt](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-A parancssori felülete támogatja a Python 2.7, 3.5-ös és 3.6. A Python 3.6-os az ajánlott verzió, mivel a Python 2.7 támogatottsága hamarosan véget ér.
+A parancssori felület a Python 2.7, 3.5, 3.6-os és 3.7 verziókat támogatja. Python 3.x az ajánlott verzió, mivel a Python 2.7-es megszűnik a támogatás hamarosan.
 
 ### <a name="service-fabric-target-runtime"></a>A Service Fabric cél futtatókörnyezete
 
@@ -33,7 +33,8 @@ A Service Fabric parancssori felület a Service Fabric SDK legfrissebb futtatók
 
 | Parancssori felület verziója   | támogatott futtatókörnyezet-verzió |
 |---------------|---------------------------|
-| Legutóbbi (~ = 5)  | Legutóbbi (~ = 6.2)            |
+| Legújabb (~ = 6)  | Legújabb (~ = 6.3)            |
+| 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
 | 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
@@ -56,11 +57,11 @@ Sokféleképpen telepítheti a pipet és a Pythont a platformra. Itt találja a 
 
 Windows 10, Windows Server 2016 és Windows Server 2012 R2 esetén használja a normál telepítési utasításokat. A Python telepítője alapértelmezés szerint a pipet is telepíti.
 
-1. Látogasson el a hivatalos [Python letöltési oldalra](https://www.python.org/downloads/), és töltse le a Python 3.6 legújabb kiadását
+1. Látogasson el a hivatalos [Python letöltési oldalra](https://www.python.org/downloads/), és töltse le a Python 3.7 legújabb kiadását.
 
 2. Indítsa el a telepítőt.
 
-3. A telepítő ablakának alján jelölje be az **Add Python 3.6 to PATH** (Python 3.6 hozzáadása az ELÉRÉSI ÚTON) lehetőséget.
+3. A parancssor alján válassza **Python 3.7 adja hozzá az elérési út**.
 
 4. Válassza az **Install Now** (Telepítés) lehetőséget, és fejezze be a telepítést.
 
@@ -71,7 +72,7 @@ python --version
 pip --version
 ```
 
-Ezután futtassa az Azure Service Fabric parancssori felület (sfctl) telepítése, és a parancssori súgó a lapnak a megtekintésére a következő parancsot:
+Ezután futtassa a következő parancsot az Azure Service Fabric parancssori felület (sfctl) telepítése, és megtekintése a CLI súgóoldalt:
 
 ```bat
 pip install sfctl
@@ -113,7 +114,7 @@ sudo pip3 install sfctl
 
 ### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
 
-A Service Fabric parancssori felületének Redhaten történő telepítéséhez futtassa a következő parancsokat:
+Red hat Service Fabric parancssori felületének telepítéséhez futtassa a következő parancsokat:
 
 ```bash
 sudo yum install -y python34
@@ -122,7 +123,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-A telepítés teszteléséhez, olvassa el a említett lépéseket **Ubuntu és a Windows, Linux alrendszer** szakasz
+A telepítés teszteléséhez, tekintse meg a lépéseket **Linux Ubuntu és a Windows alrendszere** szakasz
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
@@ -133,7 +134,7 @@ MacOS rendszeren javasoljuk, hogy a [HomeBrew csomagkezelőt](https://brew.sh) h
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Ezután a terminálról telepítse a Python 3.6-ot, a pipet és a Service Fabric parancssori felületet a következő parancsok futtatásával:
+Ezután a terminálról telepítse Python 3.7-es verzióját, a pipet és a Service Fabric parancssori felület a következő parancsok futtatásával:
 
 ```bash
 brew install python3
@@ -239,7 +240,7 @@ Ellenőrizze, hogy a megadott fürtvégpont elérhető-e és figyel-e. Továbbá
 
 ### <a name="detailed-logs"></a>Részletes naplók
 
-A részletes naplók gyakran hasznosak a hibák javításához vagy a problémák jelentéséhez. A `--debug` jelző növeli a kimeneti részletességi.
+A részletes naplók gyakran hasznosak a hibák javításához vagy a problémák jelentéséhez. A `--debug` jelző kimenetet eredményez.
 
 ### <a name="command-help-and-syntax"></a>Parancsok súgója és szintaxisa
 

@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 986440e5af2fb665f5d7e244f2df12edba09f022
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4111174e7ce000a978a7a5280a2561897500bdb6
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431300"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505694"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>A v2.0-végpont érdemes használni?
 
@@ -91,7 +91,7 @@ Az utóbbi két adhat hozzá, mert az első átirányítási URI-t, altartomány
 
 Vegye figyelembe azt is, egy adott alkalmazásban csak 20 válasz URL-címmel rendelkezhet.
 
-Alkalmazás regisztrálása az alkalmazásregisztrációs portálon az kezelésével kapcsolatos információkért lásd: [alkalmazás regisztrálása a v2.0-végponttal](active-directory-v2-app-registration.md).
+Alkalmazás regisztrálása az alkalmazásregisztrációs portálon az kezelésével kapcsolatos információkért lásd: [alkalmazás regisztrálása a v2.0-végponttal](quickstart-v2-register-an-app.md).
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>Függvénytárak és SDK-k korlátozásai
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD tartományi szolgáltatások: Hasonlítsa össze az Azure AD tartományi szolgáltatások DIY tartományvezérlőn |} Microsoft Docs'
-description: Azure Active Directory tartományi szolgáltatások összehasonlítása DIY tartományvezérlőn
+title: 'Az Azure AD tartományi szolgáltatások: Hasonlítsa össze az Azure AD Domain Services házi KÉSZÍTÉSŰ tartományvezérlőkhöz |} A Microsoft Docs'
+description: Az Azure Active Directory Domain Services összehasonlítása házi KÉSZÍTÉSŰ tartományvezérlőn
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,112 +12,112 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 550354ceab3026cfd724cd77c3266b22682e4431
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: acb125ef807193e79e45bca7e217efe3ffb31698
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212571"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505950"
 ---
-# <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>A használati esetnek megfelelő kiválasztásáról, ha az Azure AD tartományi szolgáltatások
-Az Azure AD tartományi szolgáltatásokkal telepítheti is az Azure infrastruktúra-szolgáltatásokat, a munkaterhelés nem kell foglalkoznia az identitás-infrastruktúra az Azure-ban karbantartása. A felügyelt szolgáltatás eltér a szokásos Windows Server Active Directory központi telepítéséhez, telepítheti és felügyelheti a saját. A szolgáltatás könnyű üzembe helyezni, és kézbesíti az automatizált állapotfigyelést és javítási. Folyamatosan fejlődik azt a szolgáltatás használatát a gyakori telepítési forgatókönyvekben.
+# <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Döntse el, ha az Azure AD Domain Services hogyan ideális a használati eset
+Az Azure AD tartományi szolgáltatásokkal telepítheti a számítási feladatokat az Azure infrastruktúra-szolgáltatásokban, ne kelljen foglalkoznia az Azure-ban a személyazonosság-infrastruktúra karbantartása. A felügyelt szolgáltatás üzembe helyezése, és felügyelheti saját tipikus Windows Server Active Directory központi eltér. A szolgáltatás egyszerűen üzembe helyezhetők, és automatizált szolgáltatásállapot-figyelést, a javítási biztosít. Gyakori üzembe helyezési forgatókönyvek támogatása érdekében a szolgáltatás folyamatosan világával.
 
-Határozza meg, hogy Azure AD tartományi szolgáltatások a következő anyagok javasoljuk:
+Az Azure AD tartományi szolgáltatásokat használó kell-e a következő anyagok javasoljuk:
 
-* A lista [Azure AD tartományi szolgáltatások által kínált szolgáltatások](active-directory-ds-features.md).
-* Felülvizsgálati közös [az Azure AD tartományi szolgáltatásokhoz központi telepítési forgatókönyvek](active-directory-ds-scenarios.md).
-* Végezetül [összehasonlítása a saját munka AD lehetőséget az Azure AD tartományi szolgáltatások](active-directory-ds-comparison.md#compare-azure-ad-domain-services-to-diy-ad-domain-in-azure).
+* Listájának megtekintéséhez [az Azure AD Domain Services által kínált funkciók](active-directory-ds-features.md).
+* Felülvizsgálat közös [központi telepítési forgatókönyv az Azure AD tartományi szolgáltatásokhoz](active-directory-ds-scenarios.md).
+* Végül [egy saját munka AD lehetőséget az Azure AD tartományi szolgáltatások összehasonlítása](active-directory-ds-comparison.md#compare-azure-ad-domain-services-to-diy-ad-domain-in-azure).
 
-## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Hasonlítsa össze az Azure AD tartományi szolgáltatások DIY AD tartományhoz az Azure-ban
-Az alábbi táblázat segítségével eldöntheti, hogy Azure AD tartományi szolgáltatások és a saját Azure AD-infrastruktúra kezelése között.
+## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Hasonlítsa össze az Azure AD tartományi szolgáltatások házi KÉSZÍTÉSŰ AD tartományhoz az Azure-ban
+Az alábbi táblázat segítségével eldöntheti, hogy Azure AD tartományi szolgáltatások használata és kezelése az Azure-ban a saját AD infrastruktúra között.
 
-| **Funkció** | **Azure AD tartományi szolgáltatások** | **"Saját munka" AD az Azure virtuális gépeken** |
+| **Funkció** | **Az Azure AD tartományi szolgáltatások** | **"Saját munka" AD az Azure-beli virtuális gépeken** |
 | --- |:---:|:---:|
 | [**Felügyelt szolgáltatás**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
-| [**Biztonságos telepítéshez**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |A rendszergazdának a üzembe. |
+| [**Biztonságos üzembe helyezését**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |A rendszergazdának az üzemelő példány biztonságossá tételéhez. |
 | [**DNS-kiszolgáló**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**(felügyelt szolgáltatás) |**&#x2713;** |
 | [**Tartományi vagy vállalati rendszergazdai jogosultságokkal**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**Csatlakozás tartományhoz**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**Tartomány hitelesítése NTLM és Kerberos használatával**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
-| [**Kerberos által korlátozott delegálás**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|erőforrás-alapú|erőforrás-alapú & ügyfélalapú|
+| [**Kerberos által korlátozott delegálás**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|erőforrás-alapú|erőforrás-alapú & fiók-alapú|
 | [**Egyéni Szervezetiegység-struktúrája**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
 | [**Sémakiterjesztések**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
 | [**AD-tartomány vagy erdő megbízhatónak tekinti**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
 | [**LDAP olvasása**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
 | [**Biztonságos LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
-| [**LDAP írási**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
+| [**LDAP-írás**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
 | [**Csoportházirend**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
-| [**Földrajzilag elosztott központi telepítések**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
+| [**A földrajzilag elosztott üzembe**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>Felügyelt szolgáltatás
-A Microsoft által felügyelt Azure AD tartományi szolgáltatások-tartományt. Nem kell aggódnia javítását, frissítések, figyelés, a biztonsági mentések, és a tartomány rendelkezésre állását biztosítja. A felügyeleti feladatok kínálják szolgáltatásként a Microsoft Azure által a felügyelt tartományok.
+A Microsoft által felügyelt Azure AD Domain Services-tartomány. Nem kell aggódnia a javítások, frissítések, figyelés, a biztonsági mentések, és a tartomány rendelkezésre állásának biztosítása. Ezek a felügyeleti feladatok érhetők el szolgáltatásként a Microsoft Azure által a felügyelt tartományra.
 
-#### <a name="secure-deployments"></a>Biztonságos telepítéshez
-A felügyelt tartományra biztonságosan zárolva van a Microsoft biztonsági javaslatok AD telepítések szerint. Ezek a javaslatok az AD termékcsapatának évtizedekben mérnöki és az azt támogató AD központi telepítések felhasználói felület vezethető vissza. Saját munka telepítések esetén kell venni az adott központi telepítési lépéseket le/biztonságos zárolását a központi telepítés.
+#### <a name="secure-deployments"></a>Biztonságos üzembe helyezését
+A felügyelt tartomány biztonságosan zárolva megfelelően a Microsoft biztonsági javaslatokat AD központi telepítésekhez. Ezeket a javaslatokat AD termékcsoport évtizedes tapasztalattal, mérnöki és a kiegészítő AD központi telepítések vezethető vissza. Saját munka üzemelő példánya esetében, lépésekkel kell adott üzembe helyezés le/secure zárolni az üzemelő példány.
 
 #### <a name="dns-server"></a>DNS server
-Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz felügyelt DNS-szolgáltatásokat tartalmazza. A "AAD DC rendszergazdák" csoportba kezelheti a felügyelt tartományra DNS. A csoport tagjai teljes DNS-felügyeleti jogosultságokat kap a felügyelt tartomány számára. DNS-kezelés használatával végezheti el a Távoli kiszolgálófelügyelet eszközei (RSAT) csomagban található a "DNS-felügyeleti konzol".
+Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz felügyelt DNS-szolgáltatást tartalmaz. Az "AAD DC rendszergazdák" csoport tagjai kezelheti a DNS a felügyelt tartományon. A csoport tagjai teljes DNS-felügyeleti jogosultságokat kapnak a felügyelt tartományhoz. DNS-kezelés használatával végezheti el a Távoli kiszolgálófelügyelet eszközei (RSAT) csomagban található a "DNS-felügyeleti konzol".
 [További információ](active-directory-ds-admin-guide-administer-dns.md)
 
 #### <a name="domain-or-enterprise-administrator-privileges"></a>Tartományi vagy vállalati rendszergazdai jogosultságokkal
-Ezek a emelt szintű jogosultságok nem érhető el a az AAD-Directory tartományi szolgáltatások által felügyelt tartományokhoz. Ezek a emelt szintű jogosultságok nem telepíthető az AAD-DS-en igénylő alkalmazások felügyelt tartományok. Rendszergazdai jogosultságokkal kisebb részhalmazát az úgynevezett "AAD DC rendszergazdák" delegált felügyeleti csoport tagjai számára érhető el. Ezek a jogosultságok például jogosultsága a DNS konfigurálása, csoportházirend konfigurálásához, hogy rendszergazdai jogokkal a tartományhoz csatlakozó gépek stb.
+Ezek emelt szintű jogosultságokkal a felügyelt AAD-DS-tartomány nem érhető el. A felügyelt tartományok e emelt szintű jogosultságokkal nem állítható rendszerbe, AAD-DS-en végzi igénylő alkalmazásokhoz. Kisebb részhalmazát rendszergazdai jogosultságokkal az "AAD DC rendszergazdák" nevű delegált felügyeleti csoport tagjai számára érhető el. Ezek a jogosultságok például jogosultsága a DNS konfigurálása, a csoportházirend konfigurálásához, a tartományhoz csatlakoztatott gépeket stb rendszergazdai jogosultságokhoz juthat.
 
 #### <a name="domain-join"></a>Csatlakozás tartományhoz
-Csatlakozhat a virtuális gépek hasonló hogyan számítógépek csatlakoztatása egy Active Directory-tartománynak a felügyelt tartományra.
+Csatlakozhat a virtuális gépek a felügyelt tartományba, hogy számítógépeket csatlakoztasson AD-tartomány hasonló.
 
 #### <a name="domain-authentication-using-ntlm-and-kerberos"></a>Tartomány hitelesítése NTLM és Kerberos használatával
-Az Azure AD tartományi szolgáltatásokkal használhatja a munkahelyi hitelesítő adatait a felügyelt tartományra szolgáltatással való hitelesítésre. Hitelesítő adatok szinkronban vannak az Azure AD-bérlő tartanak. Szinkronizált bérlők számára az Azure AD Connect biztosítja, hogy helyszíni hitelesítő adatok végrehajtott változásokat az Azure AD szinkronizálja a rendszer. A saját munka Tartománykonfiguráció esetleg állítsa be az AD-tartomány megbízhatósági kapcsolatban áll a helyszíni AD-hez a felhasználók a vállalati hitelesítő adataikkal hitelesítést. Alternatív megoldásként szükség lehet annak érdekében, hogy a felhasználói jelszavakat szinkronizálni az Azure tartományvezérlő virtuális gépeket AD a replikáció beállítása.
+Az Azure AD tartományi szolgáltatásokkal használhatja a vállalati hitelesítő adatokat a felügyelt tartományon való hitelesítéséhez. Hitelesítő adatok az Azure AD-bérlő szinkronban őrzi meg. A szinkronizált bérlők számára az Azure AD Connect biztosítja, hogy a helyszíni hitelesítő adatokkal végzett módosítások szinkronizálódnak, az Azure ad-hez. A telepítés pedig saját munka tartomány, szükség lehet beállítása az AD-tartomány megbízhatósági kapcsolattal a helyszíni AD-felhasználók számára a vállalati hitelesítő adataikkal hitelesítést. Azt is megteheti szükség lehet annak érdekében, hogy a felhasználói jelszavakat az Azure-tartomány vezérlőhöz tartozó virtuális gépek és szinkronizálása az Active Directory-replikáció beállításához.
 
 #### <a name="kerberos-constrained-delegation"></a>Kerberos által korlátozott delegálás
-Nincs "tartományi rendszergazda" jogosultsággal az Active Directory tartományi szolgáltatások által felügyelt tartományokhoz. Fiók-alapú (hagyományos) Kerberos által korlátozott delegálást, ezért nem konfigurálható. Azonban a biztonságosabb erőforrás-alapú korlátozott delegálás konfigurálhatja.
+Nincs "tartományi rendszergazda" jogosultsággal az Active Directory Domain Services által felügyelt tartományokhoz. Fiók-alapú (hagyományos) Kerberos által korlátozott delegálást, ezért nem konfigurálható. A biztonságosabb erőforrás-alapú korlátozott delegálás azonban konfigurálhatja.
 [További információ](active-directory-ds-enable-kcd.md)
 
 #### <a name="custom-ou-structure"></a>Egyéni Szervezetiegység-struktúrája
-A "AAD DC rendszergazdák" csoportba hozhat létre egyéni szervezeti egységében a felügyelt tartományra. Felhasználók, akik egyéni szervezeti egységek létrehozása a szervezeti egység keresztül kapnak teljes körű rendszergazdai jogosultságokkal.
+Az "AAD DC rendszergazdák" csoport tagjai hozhat létre egyéni szervezeti egységek, a felügyelt tartományban. Egyéni szervezeti egységek létrehozására jogosult felhasználók számára a szervezeti egység keresztül kapnak teljes körű rendszergazdai jogosultságokkal.
 [További információ](active-directory-ds-admin-guide-create-ou.md)
 
 #### <a name="schema-extensions"></a>Sémabővítmények
-Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz alap sémája nem bővíthető. Ezért a bővítmények számára az AD-séma (például új attribútumot a user objektum) használó alkalmazások nem lehet vissza, és az AAD-DS tartományok vette.
+Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz alap sémája nem terjeszthetők ki. Ezért a bővítmények számára az AD-séma (például. új attribútumok alapján a user objektum) használó alkalmazások vissza, nem tudja, és áttért az AAD-DS-tartománynak.
 
-#### <a name="ad-domain-or-forest-trusts"></a>AD-tartomány vagy erdőszintű megbízhatóság
-Felügyelt tartományok nem állítható be, a többi tartományhoz (bejövő vagy kimenő) megbízhatósági kapcsolatok beállításához. Ezért erőforrás erdő telepítési forgatókönyvek Azure AD tartományi szolgáltatások nem használhatók. Ehhez hasonlóan központi telepítések, ha nem szeretné szinkronizálni a jelszavakat az Azure AD Azure AD tartományi szolgáltatások nem használhatók.
+#### <a name="ad-domain-or-forest-trusts"></a>AD-tartományhoz vagy erdőszintű megbízhatóság
+Bizalmi kapcsolatok (bejövő vagy kimenő) más tartományokkal való beállítása nem lehet konfigurálni a felügyelt tartományok. Ezért erőforrás erdő központi telepítési forgatókönyv nem használható az Azure AD Domain Services. Központi telepítések, ahol inkább nem szinkronizálja a jelszavakat az Azure AD hasonlóan az Azure AD Domain Services nem használható.
 
-#### <a name="ldap-read"></a>LDAP olvasása
-A felügyelt tartományra támogatja, olvassa el a munkaterhelések LDAP. Ezért telepíthet alkalmazásokat, amelyek a felügyelt tartományra LDAP olvasási műveleteket végrehajtani.
+#### <a name="ldap-read"></a>LDAP-Olvasás
+A felügyelt tartomány támogatja az LDAP, olvassa el a számítási feladatok. Ezért a felügyelt tartomány a LDAP olvasási műveleteket végző alkalmazásokat helyezhet üzembe.
 
 #### <a name="secure-ldap"></a>Secure LDAP
-Konfigurálhatja az Azure AD tartományi szolgáltatások biztonságos LDAP hozzáférést biztosít a felügyelt tartományra vonatkozóan, beleértve az interneten keresztül.
+Konfigurálhatja az Azure AD tartományi szolgáltatásokat biztosít, többek között az interneten keresztül, a felügyelt tartomány secure LDAP-hozzáférését.
 [További információ](active-directory-ds-admin-guide-configure-secure-ldap.md)
 
-#### <a name="ldap-write"></a>LDAP írási
-A felügyelt tartományra esetén a felhasználói objektumok írásvédett. Ezért, amelyek a felhasználói objektum attribútumokat LDAP írási műveleteket hajtanak végre nem működnek a felügyelt tartományhoz. Emellett a felhasználói jelszavakat nem módosítható a felügyelt tartományon belül. Egy másik példa lehet módosítása csoporttagságok vagy csoport attribútumok felügyelt tartományon belül, amely nem engedélyezett. Azonban a felhasználói attribútumok vagy a jelszavak (PowerShell vagy az Azure portálon) Azure AD-ben végrehajtott módosításokat, vagy a helyszíni AD az AAD-DS felügyelt tartományra szinkronizálva.
+#### <a name="ldap-write"></a>LDAP-írás
+A felügyelt tartomány felhasználói objektum írásvédett. Felhasználói objektum attribútumokat LDAP írási műveleteket végző alkalmazások, ezért nem működnek a felügyelt tartományhoz. Ezenkívül a felhasználói jelszavakat nem módosítható a felügyelt tartományban. Egy másik példa lehet csoporttagságok vagy felügyelt tartományon belül, ami nem engedélyezett csoportattribútumok módosítása. Azonban a felhasználói attribútumok vagy a jelszavak (a PowerShell vagy az Azure portal) keresztül az Azure AD-ben végrehajtott módosításokat, vagy a helyszíni AD a rendszer szinkronizálja a felügyelt AAD-DS-tartományhoz.
 
 #### <a name="group-policy"></a>Csoportházirend
-Nincs beépített csoportházirend-objektum minden egyes a "AADDC Computers" és "AADDC felhasználók" tárolók. Testre szabhatja a beépített csoportházirend-objektumokat a csoportházirend. A "AAD DC" rendszergazdákra is egyéni csoportházirend-objektumok létrehozása, és kapcsolja őket (beleértve az egyéni ou-k) meglévő szervezeti egységekhez.
+Nincs beépített csoportházirend-objektum minden "AADDC számítógépek" és "AADDC felhasználók" tárolók. A beépített csoportházirend-objektumokat a csoportházirend testre szabhatja. Az "AAD DC rendszergazdák" csoport tagja is egyéni csoportházirend-objektumok létrehozása és létező szervezeti egységek (beleértve az egyéni szervezeti egységek) történő kapcsolás céljából.
 [További információ](active-directory-ds-admin-guide-administer-group-policy.md)
 
-#### <a name="geo-dispersed-deployments"></a>Földrajzi megvédheti központi telepítések
-Az Azure AD tartományi szolgáltatások felügyelt tartományok érhetők el az Azure-ban egy virtuális hálózaton. Tartományvezérlők elérhető legyen a több Azure-régiók világszerte igénylő forgatókönyvek esetén az Azure IaaS virtuális gépeken tartományvezérlők beállításával lehet a jobb megoldás.
+#### <a name="geo-dispersed-deployments"></a>Földrajzilag elosztott üzemelő példányok
+Az Azure AD tartományi szolgáltatásokat a felügyelt tartományok az Azure-ban egyetlen virtuális hálózaton elérhetők. A tartományvezérlők elérhetők több Azure-régiókban világszerte igénylő forgatókönyvek esetén beállítása az Azure IaaS virtuális gépeken futó tartományvezérlők lehet a jobb megoldás.
 
 
-## <a name="do-it-yourself-diy-ad-deployment-options"></a>"Saját munka" (DIY) AD üzembe helyezési lehetőségei
-Előfordulhat, hogy telepítési használati esetek kell néhány olyan funkciója, a Windows Server AD telepítése által kínált. Ebben az esetben fontolja meg a következő saját munka (DIY) lehetőségek közül:
+## <a name="do-it-yourself-diy-ad-deployment-options"></a>"Saját munka" (DIY) AD központi telepítési beállítások
+Üzembe helyezési használati esetek esetében van szüksége a Windows Server AD-telepítéssel által kínált funkciók némelyike rendelkezhet. Ezekben az esetekben érdemes lehet az alábbi saját munka (DIY) lehetőségek közül:
 
-* **Önálló felhőalapú tartományt:** "felhőalapú tartományt" használatával az Azure virtuális gépek tartományvezérlőként konfigurált önálló állíthat be. Ez az infrastruktúra nem integrálható a helyszíni AD-környezetben. Ez a beállítás eltérő szabályzatkészletet volna a "felhő hitelesítő adatok" használatával bejelentkezés/felügyelik a felhőben.
-* **Erőforrások erdő telepítése:** állíthat be egy tartományba az erőforrás szolgának, használja az Azure virtuális gépek konfigurálásra tartományvezérlőként. Ezután konfigurálja a az AD megbízhatósági kapcsolat a helyszíni AD-környezetben. Tartományhoz való csatlakozást számítógépek (Azure virtuális gépeken) az erőforráserdőbe a felhőben is. Felhasználói hitelesítés vagy keresztül történik egy VPN vagy ExpressRoute-kapcsolat a helyszíni címtár.
-* **Terjessze ki a helyi tartomány Azure:** egy Azure virtuális hálózatra csatlakozhat a helyszíni hálózat VPN vagy ExpressRoute kapcsolattal. Ez a beállítás lehetővé teszi, hogy az Azure virtuális gépek tartományhoz csatlakoztatni a helyszíni AD. Egy másik lehetőség a helyszíni tartomány, az Azure virtuális gépként replika tartományvezérlők előléptetése. Majd állíthatja a helyszíni címtár VPN vagy ExpressRoute kapcsolattal replikálásához. Ebben a telepítési módban a helyszíni tartományi hatékonyan kibővíti az Azure-bA.
+* **Önálló, felhőbeli tartományhoz:** állíthat be egy különálló "felhőtartomány" használatával az Azure virtuális gépek, amelyek tartományvezérlőként lett konfigurálva. Ez az infrastruktúra nem integrálható a helyszíni AD-környezetet. Ez a beállítás megköveteli egy külön készletét "felhőalapú hitelesítő adatok" bejelentkezési/felügyeletét a felhőben lévő virtuális gépeket.
+* **Erőforrások erdő üzembe helyezésének:** beállíthat egy tartományhoz a az erőforrás szolgának, az Azure virtual machines konfigurálásra tartományvezérlőként. Ezután konfigurálhat egy AD megbízhatósági kapcsolat a helyszíni AD-környezetet. Tartományhoz csatlakozó számítógépek (az Azure VM-EK) is a felhőben az erőforráserdőben. Felhasználói hitelesítés vagy keresztül történik egy VPN/ExpressRoute-kapcsolat a helyszíni címtár.
+* **A helyszíni tartomány kiterjesztése az Azure-bA:** Azure-beli virtuális hálózathoz kapcsolódhat a VPN/ExpressRoute kapcsolattal a helyszíni hálózat. Ez a beállítás lehetővé teszi, hogy az Azure virtuális gépek tartományhoz csatlakoztatni a helyszíni AD. Egy másik lehetőség, hogy az Azure-beli virtuális gépként a helyszíni tartomány replika tartományvezérlők előléptetése. Ezután beállíthat is azt replikálja a helyszíni címtár VPN/ExpressRoute kapcsolaton keresztül. Ebben a telepítési módban hatékonyan kiterjeszti a helyszíni tartomány az Azure-bA.
 
 > [!NOTE]
-> Előfordulhat, hogy határozhatja meg, hogy a központi telepítés használati esetek jobban megfelelő DIY lehetőséget. Érdemes lehet [visszajelzés megosztása](active-directory-ds-contact-us.md) és segítsen megérteni a szolgáltatások segítene úgy döntött, hogy Azure AD tartományi szolgáltatásokat a jövőben. Ezzel a visszajelzéssel segít nekünk a szolgáltatást, hogy jobban megfeleljenek az igények és a használati esetek fejleszteni.
+> Előfordulhat, hogy határozhatja meg, hogy egy házi KÉSZÍTÉSŰ lehetőség van olyan a központi telepítési használati esetek. Fontolja meg [visszajelzés megosztása](active-directory-ds-contact-us.md) segítsen megérteni, milyen funkciókat segít az Azure AD tartományi szolgáltatásokat a jövőben választotta. A visszajelzése segít fejlesztheti tovább a szolgáltatást, hogy jobban illeszkedjen az üzembe helyezésben, és a használati eseteket.
 >
 >
 
-A Microsoft közzétett [telepítése Windows Server Active Directory telepítése Azure virtuális gépekre vonatkozó irányelvek](https://msdn.microsoft.com/library/azure/jj156090.aspx) DIY telepítések megkönnyítése érdekében.
+Microsoft közzétette [központi telepítése Windows Server Active Directory az Azure Virtual Machinesben irányelvek](https://msdn.microsoft.com/library/azure/jj156090.aspx) tanácsokat önálló telepítés megkönnyítése érdekében.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Szolgáltatások – Azure AD tartományi szolgáltatások](active-directory-ds-features.md)
-* [Központi telepítési forgatókönyvek - Azure AD tartományi szolgáltatások](active-directory-ds-scenarios.md)
-* [Windows Server Active Directory az Azure virtuális gépeken telepítési útmutatója](https://msdn.microsoft.com/library/azure/jj156090.aspx)
+* [Központi telepítési forgatókönyv – Azure AD tartományi szolgáltatások](active-directory-ds-scenarios.md)
+* [Útmutató a Windows Server Active Directory-Azure-beli virtuális gépek üzembe helyezése](https://msdn.microsoft.com/library/azure/jj156090.aspx)

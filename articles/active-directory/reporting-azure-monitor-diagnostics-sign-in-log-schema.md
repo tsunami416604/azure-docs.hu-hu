@@ -16,16 +16,16 @@ ms.component: compliance-reports
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 95153a4661f030824c9b85c10c5b4b1731ff8a91
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 313fb77fe2d66215e1f55a6f75a8b1b3d540b73a
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239924"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505766"
 ---
-# <a name="interpret-the-azure-active-directory-sign-in-logs-schema-in-azure-monitor-preview"></a>Az Azure Monitor (előzetes verzió) az Azure Active Directory bejelentkezési naplók séma értelmezése
+# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Az Azure Monitor (előzetes verzió) az Azure AD bejelentkezési naplók séma értelmezése
 
-Ez a cikk ismerteti az Azure AD bejelentkezési napló séma az Azure monitorban. A legtöbb bejelentkezési kapcsolatos információ szerinti a *tulajdonságai* a rekordok objektum attribútuma.
+Ez a cikk ismerteti az Azure monitorban az Azure Active Directory (Azure AD) bejelentkezési napló séma. A legtöbb bejelentkezési kapcsolatos információ áll rendelkezésre a a *tulajdonságok* attribútuma a `records` objektum.
 
 ```json
 { 
@@ -147,24 +147,27 @@ Ez a cikk ismerteti az Azure AD bejelentkezési napló séma az Azure monitorban
         } 
     } 
 ```
+
+## <a name="field-descriptions"></a>Mező leírása
+
 | Mező neve | Leírás |
 |------------|-------------|
-| Time | Dátuma és időpontja (UTC) |
+| Time | Dátuma és időpontja (UTC). |
 | ResourceId | Ez az érték nem leképezett, és biztonságosan figyelmen kívül hagyhatja ezt a mezőt.  |
-| OperationName | A bejelentkezések, az értéke mindig *bejelentkezési tevékenység* |
-| operationVersion | Az ügyfél által kért REST API-verzió |
-| Kategória | Bejelentkezések, ez nem mindig *bejelentkezési* | 
-| TenantId | A naplók társított bérlő Guid |
-| ResultType | A bejelentkezési művelet eredménye lehet *sikeres* vagy *hiba* | 
-| ResultSignature | Tartalmazza a hiba kódja, ha bármely, a bejelentkezési művelet |
-| ResultDescription | Hiba történt a bejelentkezési művelet leírását |
+| OperationName | A bejelentkezések, az értéke mindig *bejelentkezési tevékenység*. |
+| operationVersion | Az ügyfél által kért REST API-verzió. |
+| Kategória | A bejelentkezések, az értéke mindig *bejelentkezési*. | 
+| TenantId | GUID, a naplók társított tenant. |
+| ResultType | A bejelentkezési művelet eredménye lehet *sikeres* vagy *hiba*. | 
+| ResultSignature | Tartalmazza a hiba kódja, ha bármely, a bejelentkezési művelet. |
+| ResultDescription | A bejelentkezési művelet hiba leírását. |
 | durationMs |  Ez az érték nem leképezett, és biztonságosan figyelmen kívül hagyhatja ezt a mezőt.|
-| CallerIpAddress | A kérést leadó ügyfél IP-címe | 
-| CorrelationId | Az ügyfél által átadott nem kötelező GUID azonosítója. Ez az érték összevetését ügyféloldali műveletek a kiszolgálóoldali műveletek segítségével, és akkor hasznos, ha a nyomkövetési naplók, amelyek különböző szolgáltatásokat. |
-| Identitás | A tokenben szereplő kérvényező identitás. Lehet egy felhasználói fiókot, a rendszer fiók vagy az egyszerű szolgáltatás. |
-| Szint | Üzenet típusa biztosít. A naplózás, a rendszer mindig *tájékoztató* |
-| Hely | A bejelentkezési tevékenységek helyének megadása |
-| Tulajdonságok | Az összes társított bejelentkezési tulajdonságok listája. További információkért olvassa el a [az MS Graph API-referencia](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin). Ebben a sémában az olvashatóság érdekében a attribútumnevek, mint a bejelentkezési erőforrás használja.
+| CallerIpAddress | A kérést leadó ügyfél IP-címét. | 
+| CorrelationId | A nem kötelező GUID, amely az ügyfél által átadott. Ez az érték segít összevetését ügyféloldali műveletek a kiszolgálóoldali műveletek, és ez akkor hasznos, ha követi nyomon, amelyek szolgáltatások naplók. |
+| Identitás | Az identitás a tokenben szereplő leadta a kérelmet. Lehet, hogy egy felhasználói fiókot, rendszerfiók vagy egyszerű szolgáltatást. |
+| Szint | Üzenet típusa biztosít. A naplózás, a rendszer mindig *tájékoztató*. |
+| Hely | Itt a bejelentkezési tevékenységek helyét. |
+| Tulajdonságok | Az összes társított bejelentkezési tulajdonságok listája. További információkért lásd: [Microsoft Graph API-referencia](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin). Ebben a sémában a bejelentkezési erőforrásként attribútum ugyanazokat a neveket használja az olvashatóság érdekében.
 
 ## <a name="next-steps"></a>További lépések
 

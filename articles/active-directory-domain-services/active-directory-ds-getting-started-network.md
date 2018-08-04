@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Első lépések |} Microsoft Docs'
-description: Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
+title: 'Az Azure Active Directory tartományi szolgáltatások: Első lépések |} A Microsoft Docs'
+description: Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,17 +12,17 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: c6c5762a460fadb04f940742bed759ea17f74aad
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c167f40e09ac877d00d348285383106fc5ba41bc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215735"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503910"
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -30,40 +30,40 @@ Tekintse át a [Hálózati megfontolások az Azure Active Directory Domain Servi
 
 
 ## <a name="task-2-configure-network-settings"></a>2. feladat: a hálózati beállítások konfigurálása
-A következő konfigurációs feladat, ha egy Azure virtuális hálózatra és egy dedikált alhálózaton belül. Engedélyezze az Azure Active Directory Domain Services-t a virtuális hálózatának ezen az alhálózatán. Is válasszon egy meglévő virtuális hálózathoz, és hozza létre az alhálózatot, amelyek dedikált belül.
+A következő konfigurációs feladat, hogy hozzon létre egy Azure virtuális hálózat és a egy dedikált alhálózatán. Engedélyezze az Azure Active Directory Domain Services-t a virtuális hálózatának ezen az alhálózatán. Előfordulhat, hogy válasszon ki egy meglévő virtuális hálózatot, és hozzon létre a dedikált alhálózatán.
 
-1. Kattintson a **virtuális hálózati** virtuális hálózat kiválasztásához.
+1. Kattintson a **virtuális hálózati** , válasszon ki egy virtuális hálózatot.
     > [!NOTE]
-    > **Klasszikus virtuális hálózatok nem támogatottak az új központi telepítéseknél.** Klasszikus virtuális hálózatok nem támogatottak az új központi telepítéseknél. Klasszikus virtuális hálózatokat a rendszerbe meglévő felügyelt tartományok továbbra is használhatók. A Microsoft lehetővé teszi a telepítenek át egy meglévő felügyelt tartomány a klasszikus virtuális hálózatot egy erőforrás-kezelő virtuális hálózat a közeljövőben.
+    > **A klasszikus virtuális hálózatok nem támogatottak az új üzembe helyezésekhez.** A klasszikus virtuális hálózatok nem támogatottak az új üzembe helyezésekhez. Klasszikus virtuális hálózatokon üzembe helyezett meglévő felügyelt tartományok továbbra is támogatottak. A Microsoft lehetővé teszi, hogy át egy meglévő felügyelt tartományhoz klasszikus virtuális hálózat a Resource Manager virtuális hálózatot a közeljövőben.
     >
 
-2. Az a **válasszon virtuális hálózati** lapon megjelenik az összes meglévő virtuális hálózatot. Csak a virtuális hálózatok, amelyek a kijelölt erőforráscsoport és Azure-beli hely megjelenik a **alapjai** varázsló lapja.
-3. Válassza ki a virtuális hálózatot, amelyben a Azure AD tartományi szolgáltatások engedélyezni kell. Válasszon egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
+2. Az a **válasszon egy virtuális hálózatot** lapon láthatja az összes meglévő virtuális hálózatot. Csak az erőforráscsoportot és az Azure-helyen, a kiválasztott tartozik virtuális hálózatainak megtekintéséhez a **alapjai** varázsló lapja.
+3. Válassza ki a virtuális hálózatot, amelyben az Azure AD tartományi szolgáltatások engedélyezve van. Válasszon ki egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
 
   > [!TIP]
-  > **A felügyelt tartományok nem helyezhető át egy másik virtuális hálózathoz, miután engedélyezte az Azure AD tartományi szolgáltatásokat.** Válassza ki a megfelelő virtuális hálózatot a felügyelt tartományok engedélyezéséhez. Egy felügyelt tartomány létrehozása után nem helyezhető egy másik virtuális hálózathoz, a felügyelt tartományra törlése nélkül. Javasoljuk, hogy tekintse át a [hálózat az Azure Active Directory tartományi szolgáltatások szempontjai](active-directory-ds-networking.md) folytatás előtt.  
+  > **A felügyelt tartomány nem helyezhető át egy másik virtuális hálózatot, Azure AD tartományi szolgáltatások engedélyezése után.** Válassza ki a megfelelő virtuális hálózatot engedélyezése a felügyelt tartományra. Miután létrehozott egy felügyelt tartományon, nem helyezhető egy másik virtuális hálózathoz, a felügyelt tartomány törlése nélkül. Ajánlott áttekinteni a [hálózati szempontok az Azure Active Directory Domain Services](active-directory-ds-networking.md) folytatás előtt.  
   >
 
-4. **Virtuális hálózat létrehozása:** kattintson **hozzon létre új** hozhat létre új virtuális hálózatot. Használja a dedikált alhálózatot az Azure AD tartományi szolgáltatásokhoz. Hozzon létre például egy alhálózat neve "DomainServices", így könnyen megérteni, hogy mi történik, az alhálózaton belüli más rendszergazdák számára. Kattintson a **OK** befejezése.
+4. **Virtuális hálózat létrehozása:** kattintson **új létrehozása** egy új virtuális hálózat létrehozásához. Kijelölt alhálózatot használjon az Azure AD tartományi szolgáltatásokhoz. Hozzon létre például egy alhálózat neve "DomainServices", így az tudni, mi helyezünk üzembe az alhálózaton belüli más rendszergazdák. Kattintson a **OK** befejezése.
 
-    ![Válassza ki a virtuális hálózat](./media/getting-started/domain-services-blade-network-pick-vnet.png)
+    ![Válasszon virtuális hálózatot](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 
   > [!WARNING]
-  > Ügyeljen arra, hogy válasszon, amely a magánhálózati IP-címtér belül címteret. Amely nem rendelkezik, amelyek a nyilvános címterületen belüli IP-címek az Azure AD tartományi szolgáltatások belül hibákat okozhatnak.
+  > Ellenőrizze, hogy válasszon, amely a privát IP-címtéren belüli címteret. Ön nem tulajdonosa, amelyek a nyilvános címtér az IP-címek az Azure AD Domain Services hibát okoznak.
 
-5. **Meglévő virtuális hálózat:** Ha azt tervezi, hogy egy meglévő virtuális hálózatot válasszon [hozzon létre egy külön alhálózatot a virtuális hálózatok kiterjesztéssel](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet), majd válassza ki az adott alhálózat és. Kattintson a **virtuális hálózati** a meglévő virtuális hálózat kiválasztásához. Kattintson a **alhálózati** a dedikált alhálózati válasszon a meglévő virtuális hálózaton belül, amely lehetővé teszi az új felügyelt tartomány számára. Kattintson a **OK** befejezése.
+5. **Meglévő virtuális hálózat:** Ha azt tervezi, hogy egy meglévő virtuális hálózatot válasszon [hozzon létre egy dedikált alhálózatot a virtuális hálózatok bővítménnyel](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet), majd válasszon az alhálózatban. Kattintson a **virtuális hálózat** a meglévő virtuális hálózat kiválasztásához. Kattintson a **alhálózati** választja ki a kijelölt alhálózatot a meglévő virtuális hálózaton belül, amely lehetővé teszi az új felügyelt tartományt. Kattintson a **OK** befejezése.
 
-    ![Válassza ki az alhálózatot a virtuális hálózaton belül](./media/getting-started/domain-services-blade-network-pick-subnet.png)
+    ![A virtuális hálózatban lévő alhálózat kiválasztása](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 
   > [!NOTE]
-  > **Egy alhálózat kiválasztására vonatkozó irányelvek**
-  > 1. Használja a dedikált alhálózatot az Azure AD tartományi szolgáltatásokhoz. Más virtuális gépek nem telepíti az alhálózathoz. Ez a konfiguráció lehetővé teszi hálózati biztonsági csoportokkal (NSG-k) konfigurálja a munkaterhelések virtuális gépek számára a felügyelt tartományok megszakítása nélkül. További információkért lásd: [hálózat az Azure Active Directory tartományi szolgáltatások szempontjai](active-directory-ds-networking.md).
-  2. Ne válassza az átjáró alhálózatának az Azure AD tartományi szolgáltatások telepítése, mert nem támogatott konfiguráció.
-  3. A kijelölt alhálózat rendelkeznie kell legalább 3-5 elérhető IP-címek a címterületen belülre.
+  > **Útmutató az alhálózat kiválasztása**
+  > 1. Kijelölt alhálózatot használjon az Azure AD tartományi szolgáltatásokhoz. Ne telepítsen más virtuális gépek ennek az alhálózatnak. Ez a konfiguráció lehetővé teszi hálózati biztonsági csoportok (NSG-k) konfigurálása a számítási feladatok/virtuális gépek számára a felügyelt tartomány megszakítása nélkül. További információkért lásd: [hálózati szempontok az Azure Active Directory Domain Services](active-directory-ds-networking.md).
+  2. Ne válasszon üzembe helyezéséhez az Azure AD tartományi szolgáltatásokat, az átjáró-alhálózat, mivel nem támogatott konfiguráció.
+  3. A kiválasztott alhálózat rendelkeznie kell legalább 3-5 elérhető IP-címek címterében.
   >
 
-6. Amikor elkészült, kattintson a **OK** folytassa a **rendszergazdai csoport** a varázsló.
+6. Amikor elkészült, kattintson a **OK** lépjen a **rendszergazdai csoport** lapján.
 
 
 ## <a name="next-step"></a>Következő lépés
-[3. feladat: a felügyeleti csoport konfigurálása és Azure AD tartományi szolgáltatások engedélyezése](active-directory-ds-getting-started-admingroup.md)
+[3. feladat: felügyeleti csoport konfigurálása és az Azure AD Domain Services engedélyezése](active-directory-ds-getting-started-admingroup.md)

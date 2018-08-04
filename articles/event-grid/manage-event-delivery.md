@@ -1,19 +1,19 @@
 ---
-title: Kézbesítési beállítások az Azure Event Grid-előfizetések kezelése
-description: Az Event Griddel kapcsolatos esemény Kézbesítési beállítások testreszabásának módját ismerteti.
+title: Kézbesítetlen levelek és újrapróbálkozási szabályzatok az Azure Event Grid-előfizetések
+description: Az Event Griddel kapcsolatos esemény Kézbesítési beállítások testreszabásának módját ismerteti. A kézbesíthetetlen levelek célkiszolgálón állítsa be, és adja meg, mennyi ideig kézbesítési újra.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0e575d668e28be52ee4ca61226693122304c7ea0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5a37fadc179157ba590b31a79fcd98f223cb1869
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441358"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501949"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Kézbesítetlen levelek és újrapróbálkozási szabályzatok
 
@@ -25,9 +25,9 @@ Egy esemény-előfizetés létrehozásakor testre szabható eseménykézbesíté
 
 Event Grid nem lehet kézbesíteni az egy eseményt, amikor azokat küldeni tudná, a kézbesítetlen esemény egy tárfiókba. Ez a folyamat az úgynevezett kézbesítetlen levelek kezelése. Alapértelmezés szerint a nem az Event Grid kapcsolja be a kézbesítetlen levelek kezelése. Az engedélyezéshez, egy storage-fiókot, amely tárolja a kézbesítetlen események az esemény-előfizetés létrehozásakor adjon meg. Ezt a tárfiókot, a szállítások megoldásához események lekéri.
 
-Event Grid egy esemény Ha próbálta az újrapróbálkozási kísérletek mindegyikét, vagy kap olyan hibaüzenetet, amely azt jelzi, ha soha nem lesz sikeres, szállítási a kézbesíthetetlen levelek helyre küldi. Például ha az Event Grid helytelen formátumú hibát kap, amikor egy eseményt továbbít, azonnal küld az esemény a kézbesíthetetlen levelek helyre.
+Event Grid egy esemény Ha próbálta az újrapróbálkozási kísérletek mindegyikét, vagy kap olyan hibaüzenetet, amely azt jelzi, ha soha nem lesz sikeres, szállítási a kézbesíthetetlen levelek helyre küldi. Például ha Event Grid helytelen formátumú hibát kap, amikor egy eseményt továbbít, azt az esemény a kézbesíthetetlen levelek helyre küldi. Öt perces késleltetés van, hogy egy eseményt, és ha biztosítását a kézbesíthetetlen levelek helyre a legutóbbi kísérlet között. Ez a késleltetés csökkentése érdekében a Blob storage művelet célja. A kézbesíthetetlen levelek hely 4 órán keresztül nem érhető el, ha az eseményt a rendszer eldobja.
 
-Kézbesítetlen hely megadása előtt egy tároló tárfiók kell rendelkeznie. A végpont megadása a tároló az esemény-előfizetés létrehozásakor. A végpont formátuma van: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+A kézbesíthetetlen levelek helyének beállítása, mielőtt egy tároló tárfiók kell rendelkeznie. A végpont megadása a tároló az esemény-előfizetés létrehozásakor. A végpont formátuma van: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
 A következő parancsfájl beolvassa egy meglévő tárfiókot az erőforrás-Azonosítóját, és létrehoz egy esemény-előfizetést, amely a tárolót használja a tárfiók a kézbesíthetetlen levelek végpont.
 
@@ -55,7 +55,9 @@ Kikapcsolja a kézbesítetlen levelek kezelése, futtassa újra a parancsot az e
 
 ## <a name="set-retry-policy"></a>Újrapróbálkozási szabályzat beállítása
 
-Event Grid-előfizetés létrehozásakor beállíthatja mennyi ideig kell próbálja az Event Grid, hogy az esemény értékeit. Alapértelmezés szerint az Event Grid kísérletek 24 óra (1440 perc), és legfeljebb 30 alkalommal próbálkozik. Ezek az értékek valamelyike beállíthatja az event grid-előfizetés számára.
+Event Grid-előfizetés létrehozásakor beállíthatja mennyi ideig kell próbálja az Event Grid, hogy az esemény értékeit. Alapértelmezés szerint az Event Grid kísérletek 24 óra (1440 perc), és legfeljebb 30 alkalommal próbálkozik. Ezek az értékek valamelyike beállíthatja az event grid-előfizetés számára. A time-to-live event értékét 1-től 1440 egész szám lehet. Kézbesítések maximális kísérletek értéke 30 1 közötti egész számnak kell lennie.
+
+Nem lehet konfigurálni a [újrapróbálkozási időköz](delivery-and-retry.md#retry-intervals-and-duration).
 
 Az esemény time-to-live 1440 perc értéktől létrehozásához használja:
 

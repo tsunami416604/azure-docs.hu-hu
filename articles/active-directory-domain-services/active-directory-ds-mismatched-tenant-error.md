@@ -1,6 +1,6 @@
 ---
-title: Hárítsa el a meglévő Azure AD tartományi szolgáltatásokat a felügyelt tartományok nem egyező directory hibákat |} Microsoft Docs
-description: Ismerje meg, és hárítsa el a meglévő Azure AD tartományi szolgáltatásokat a felügyelt tartományok nem egyező directory hibákat
+title: Hárítsa el a meglévő Azure AD Domain Services felügyelt tartományok nem egyező könyvtár hibákat |} A Microsoft Docs
+description: A meglévő Azure AD Domain Services felügyelt tartományok nem egyező könyvtár-hibák megértése és megoldása
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,56 +12,56 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: maheshu
-ms.openlocfilehash: 7e7786ac36485a792e9c77b10925f01790f95ab1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f791993a95534f66097e3e7e22141bf34e311f21
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218197"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504551"
 ---
-# <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Hárítsa el a meglévő Azure AD tartományi szolgáltatásokat a felügyelt tartományok nem egyező directory hibákat
-Meglévő Azure AD tartományi szolgáltatásokkal kezelt tartományban van. Navigáljon az Azure portálra, és megtekintheti a felügyelt tartományra, a következő hibaüzenet jelenik meg:
+# <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Nem egyező könyvtár ki a hibákat a meglévő Azure AD Domain Services felügyelt tartományok
+Meglévő Azure AD tartományi szolgáltatásokkal felügyelt tartományban van. Ha az Azure Portalon keresse meg, és megtekintheti a felügyelt tartományhoz, a következő hibaüzenet jelenik meg:
 
-![Nem egyező könyvtár hibája](.\media\getting-started\mismatched-tenant-error.png)
+![Nem egyező könyvtár hiba](.\media\getting-started\mismatched-tenant-error.png)
 
-A hiba kijavításáig nem felügyelheti a felügyelt tartományra.
+A felügyelt tartomány a hiba kijavításáig nem lehet felügyelni.
 
 
-## <a name="whats-causing-this-error"></a>Mi okozza ezt a hibát?
-Ezt a hibát az okozza, ha a felügyelt tartományok és engedélyezve van a virtuális hálózat tartozik két különböző Azure AD-bérlő. Például egy felügyelt tartomány "contoso.com" nevezik, és a Contoso Azure AD-bérlő engedélyezve lett. Azonban az Azure virtuális hálózat, amelyen engedélyezve volt a felügyelt tartományra tartozik Fabrikam - egy másik Azure AD-bérlő.
+## <a name="whats-causing-this-error"></a>Mi okozza a hibát?
+A hiba fordul elő, ha a felügyelt tartományra és engedélyezve van a virtuális hálózat tartozik két különböző Azure AD-bérlőt. Például "contoso.com" nevű felügyelt tartományhoz van, és engedélyezve lett a Contoso Azure AD-bérlő számára. Azonban, amelyben a felügyelt tartomány engedélyezve lett az Azure virtuális hálózat tartozik a Fabrikam - egy másik Azure AD-bérlővel.
 
-Az új Azure-portálon (és kifejezetten az Azure AD tartományi szolgáltatások kiterjesztése) az Azure Resource Manager-t. A modern Azure Resource Manager-környezetben az egyes korlátozások elküldésére nagyobb biztonságot, és a szerepkör alapú hozzáférés szabályozásához (RBAC) erőforrások érvényesek lesznek. A bizalmas művelet engedélyezése az Azure AD tartományi szolgáltatásokat az Azure AD-bérlő azért, mert azt eredményezi, hogy a felügyelt tartományhoz szinkronizálandó hitelesítő kivonatokat. Ehhez a művelethez szükséges egy Bérlői rendszergazda a címtár adható meg, hogy. Emellett rendszergazdai jogosultságokkal kell rendelkeznie, amelyben a felügyelt tartományra engedélyezi a virtuális hálózaton. Az RBAC ellenőrzi, hogy következetesen működjenek, az a felügyelt tartományra, és a virtuális hálózati kell tartoznia a azonos Azure AD-bérlő.
+Az új Azure Portalon (és a kifejezetten az Azure AD Domain Services-bővítmény) van építve az Azure Resource Managerrel. A modern Azure Resource Manager-környezetben bizonyos korlátozások érvényben vannak nagyobb biztonságot nyújthat és a szerepköralapú hozzáférés (RBAC) az erőforrásokhoz. Az Azure AD-bérlő Azure AD tartományi szolgáltatások engedélyezése egy olyan bizalmas művelet, mivel azt eredményezi, hogy a kivonatok szinkronizálását a felügyelt tartományhoz. Ez a művelet megköveteli, hogy a címtár egy bérlői rendszergazdája lesz. Emellett a virtuális hálózaton, amelyben engedélyezése a felügyelt tartomány rendszergazdai jogosultságokkal kell rendelkeznie. RBAC-ellenőrzések egységesen működjenek a felügyelt tartomány és a virtuális hálózat ugyanahhoz az Azure AD-bérlőhöz kell tartoznia.
 
-Rövid nem engedélyezhető egy felügyelt tartomány a "contoso.com" Azure AD-bérlő tulajdonosa egy másik Azure AD-bérlő "fabrikam.com" Azure-előfizetéshez tartozó virtuális hálózatban. 
+Röviden nem engedélyezheti a felügyelt tartomány a "contoso.com" Azure AD-bérlővel tulajdonosa egy másik Azure AD-bérlő "fabrikam.com" Azure-előfizetéshez tartozó virtuális hálózat. 
 
-**Érvényes konfigurációs**: Ez a telepítési forgatókönyvben a Contoso kezelt tartomány engedélyezve van a Contoso Azure AD bérlői. A felügyelt tartomány fel van fedve egy virtuális hálózaton, a Contoso Azure AD bérlő tulajdonában Azure-előfizetéshez tartozó. Ezért mind a felügyelt tartományra, valamint a virtuális hálózat tartozik ugyanahhoz az Azure AD-bérlő. Ez a konfiguráció nincs érvényes és teljes mértékben támogatott.
+**Érvényes konfigurációs**: Ebben a telepítési forgatókönyvben a Contoso a felügyelt tartomány engedélyezve van a Contoso Azure AD-bérlő számára. A felügyelt tartomány a Contoso Azure AD-bérlő által birtokolt Azure-előfizetéshez tartozó virtuális hálózat van közzétéve. Ezért a felügyelt tartomány és is a virtuális hálózat tartozik az Azure AD-bérlőhöz. Ez a konfiguráció érvényes és teljes mértékben támogatott.
 
 ![Érvényes bérlő konfigurációjához](./media/getting-started/valid-tenant-config.png)
 
-**Nem egyező bérlő konfigurációjához**: Ez a telepítési forgatókönyvben a Contoso kezelt tartomány engedélyezve van a Contoso Azure AD bérlői. Azonban a felügyelt tartományra tesz elérhetővé a virtuális hálózat, amely egy Azure-előfizetés tulajdonosa a Fabrikam az Azure AD-bérlő tartozik. Emiatt a felügyelt tartományra és a virtuális hálózat tartozik két különböző Azure AD-bérlő. Ez a konfiguráció a nem egyező bérlői konfigurációt, és nem támogatott. A virtuális hálózaton át kell helyezni az azonos Azure AD-bérlő (Ez azt jelenti, hogy a Contoso), a felügyelt tartományra. Tekintse meg a [feloldási](#resolution) című szakaszban talál információt.
+**Eltérő bérlők konfigurációs**: Ebben a telepítési forgatókönyvben a Contoso a felügyelt tartomány engedélyezve van a Contoso Azure AD-bérlő számára. A felügyelt tartomány azonban egy virtuális hálózatot, amelyhez tartozik egy Azure-előfizetést a Fabrikam az Azure AD-bérlő tulajdonában van közzétéve. Ezért a felügyelt tartomány és a virtuális hálózat tartozik két különböző Azure AD-bérlőt. Ez a konfiguráció az eltérő bérlők konfigurációs, és nem támogatott. A virtuális hálózaton át kell helyezni az Azure AD-bérlőhöz (vagyis a Contoso), a felügyelt tartományhoz. Tekintse meg a [feloldási](#resolution) című szakasz részletezi.
 
-![Nem egyező bérlő konfigurációjához](./media/getting-started/mismatched-tenant-config.png)
+![Eltérő bérlők konfiguráció](./media/getting-started/mismatched-tenant-config.png)
 
-Ezért, ha a felügyelt tartományra, és engedélyezve van a virtuális hálózat tartozik két különböző ezt a hibát látva az Azure AD-bérlő.
+Ezért, ha a felügyelt tartomány és engedélyezve van a virtuális hálózat tartozik két különböző Azure AD-bérlők ezt a hibaüzenetet.
 
 Az alábbi szabályok vonatkoznak a Resource Manager-környezetben:
-- Előfordulhat, hogy az Azure AD-címtár több Azure-előfizetéssel.
-- Előfordulhat, hogy az Azure-előfizetés több erőforrások, például virtuális hálózatokat.
-- Azure AD tartományi szolgáltatásokat egyetlen felügyelt tartomány engedélyezve van az Azure AD-címtár.
-- Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz engedélyezhető olyan virtuális hálózaton belül az azonos Azure AD-bérlő az Azure-előfizetések tartozó.
+- Az Azure AD-címtárral rendelkezhet több Azure-előfizetéssel.
+- Előfordulhat, hogy az Azure-előfizetések több erőforrást, például a virtuális hálózatok.
+- Egyetlen Azure AD Domain Services felügyelt tartomány engedélyezve van az Azure AD-címtárral.
+- Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz engedélyezhető az Azure-előfizetések belül az Azure AD-bérlőhöz tartozó virtuális hálózaton.
 
 
 ## <a name="resolution"></a>Megoldás:
-A nem egyező directory hiba megoldása érdekében két választási lehetősége van. Előfordulhat:
+A nem egyező könyvtár hiba megoldásához két lehetősége van. A következő lehetőségekkel:
 
-- Kattintson a **törlése** gombbal pedig törölheti a meglévő felügyelt tartomány. Hozza létre a használatával a [Azure-portálon](https://portal.azure.com), hogy a felügyelt tartomány és a virtuális hálózat érhető el az Azure AD-címtár tartozik. Csatlakoztassa az összes gép korábban az újonnan létrehozott felügyelt tartományra törölt tartományhoz csatlakozik.
+- Kattintson a **törlése** gombra kattintva törölje a meglévő felügyelt tartományt. Hozza létre a használatával a [az Azure portal](https://portal.azure.com), így a felügyelt tartomány és érhető el a virtuális hálózat tartozik az Azure AD-címtárban. Összes gép korábban a tartományhoz csatlakoztatott törölve az újonnan létrehozott felügyelt tartományhoz csatlakozzon.
 
-- Helyezze át az Azure-előfizetés tartalmazó a virtuális hálózatot az Azure AD-címtárral, a felügyelt tartomány, amelyhez tartozik. Kövesse a [egy másik fiókot az Azure-előfizetés tulajdonjogának átruházása](../billing/billing-subscription-transfer.md) cikk.
+- Helyezze át a virtuális hálózat az Azure AD-címtárhoz, amelyhez a felügyelt tartományhoz tartozik tartalmazó Azure-előfizetés. Kövesse a [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md) cikk.
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
-* [Hibaelhárítási útmutató – az Azure AD tartományi szolgáltatások](active-directory-ds-troubleshooting.md)
+* [Az Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
+* [Hibaelhárítási útmutató – Azure AD tartományi szolgáltatások](active-directory-ds-troubleshooting.md)

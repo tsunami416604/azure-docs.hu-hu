@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus Role-Based hozzáférés-vezérlés (RBAC) előzetes verzió |} Microsoft Docs
+title: Azure Service Bus Role-Based hozzáférés-vezérlés (RBAC) – előzetes verzió |} A Microsoft Docs
 description: Az Azure Service Bus szerepköralapú hozzáférés-vezérlés
 services: service-bus-messaging
 documentationcenter: na
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 729d6db6b2fc6495ffb0f4fbe4d545d7ad953cef
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 80c226b4b4295a232a6cefb4da12e1db23adae66
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783453"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505233"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 
-Microsoft Azure a erőforrások és alkalmazások az Azure Active Directory (Azure AD) alapján integrált hozzáférés-vezérlési felügyeletet biztosít. Az Azure ad-vel, kezelése vagy az felhasználói fiókok és alkalmazások kifejezetten az Azure-alapú alkalmazások, vagy lehet összevonást végezni a meglévő Active Directory-infrastruktúra az Azure ad-val vállalati szintű single-sign-on is kiterjedő az Azure-erőforrások és az Azure üzemeltetett alkalmazások. Majd rendelhet az Azure AD felhasználó- és alkalmazás megszakítása globális és a szolgáltatásspecifikus szerepkörök ahhoz, hogy az Azure-erőforrások hozzáférést.
+A Microsoft Azure-erőforrások és az Azure Active Directory (Azure AD-) alapú alkalmazások integrált hozzáférés-vezérlési felügyeletet biztosít. Az Azure ad-vel, vagy kezelheti a felhasználói fiókok és alkalmazások kifejezetten az Azure-alapú alkalmazások, vagy Ön is összevonható az Azure AD-céges szintű single-sign-on is kiterjedő az Azure-erőforrások a meglévő Active Directory-infrastruktúra és az Azure-ban üzemeltetett alkalmazások. Majd hozzárendelheti ezeket az Azure AD-felhasználói és identitások globális és a szolgáltatás-specifikus szerepkörökhöz annak érdekében, hogy az Azure-erőforrásokhoz való hozzáférést.
 
-Azure Service Bus, a névterek és az Azure portálon keresztül az összes kapcsolódó erőforrások kezelése és az Azure erőforrás-kezelés API már védje a *szerepköralapú hozzáférés-vezérlés* (RBAC) modell. Futásidejű műveletekhez RBAC egy olyan szolgáltatás mostantól nyilvános előzetes verziójában. 
+Azure Service Bus-névterek és az összes kapcsolódó erőforrást az Azure Portalon a felügyeleti és az Azure resource management API már védett használatával a *szerepköralapú hozzáférés-vezérlés* (RBAC) modellt. Futásidejű műveletek RBAC funkciója mostantól nyilvános előzetes verzióban érhető el. 
 
-Azure AD RBAC használó alkalmazások nem kell SAS szabályok és a kulcsok vagy bármely más Service Bus vonatkozó hozzáférési jogkivonatok kell kezelni. Az ügyfélalkalmazás együttműködik az Azure AD hitelesítési környezetet létrehozásához, és a Service Bus szerez be a hozzáférési tokent. A tartományi felhasználói fiókok, interaktív bejelentkezéshez szükséges az alkalmazás soha nem kezeli a hitelesítő adatok közvetlenül.
+Azure AD RBAC használó alkalmazások nem kell kezelni a SAS-szabályok és a kulcsok vagy bármilyen más konkrét, a Service Bus hozzáférési jogkivonatok. Az ügyfélalkalmazás kommunikál az Azure AD-hitelesítési környezetet létrehozni, és a egy hozzáférési jogkivonatot szerez be a Service Bus számára. A tartományi felhasználói fiókokat, amelyek interaktív bejelentkezést igényelnek, az alkalmazás soha nem kezeli a hitelesítő adatokat közvetlenül.
 
-## <a name="service-bus-roles-and-permissions"></a>A Service Bus-szerepköröket és engedélyeket
+## <a name="service-bus-roles-and-permissions"></a>A Service Bus-szerepkörök és engedélyek
 
-A kezdeti nyilvános előzetes verzióhoz csak adhat az Azure AD-fiókok és a szolgáltatás rendszerbiztonsági tagok a "Tulajdonos" vagy "Közreműködői" szerepkörök a Service Bus üzenetkezelés névtér. Ez a művelet az identitás teljes hozzáférést biztosítanak a névtér összes entitásának. Módosítsa a névtér topológia felügyeleti műveleteket kezdetben csak támogatott, ha az Azure erőforrás-kezelés és a Service Bus REST natív kezelőfelület keresztül nem. Ez a támogatás azt is jelenti, hogy a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objektum nem használható az Azure AD-fiókot.  
+A kezdeti nyilvános előzetes verzió csak adhat az Azure AD-fiókok és az egyszerű szolgáltatások a Service Bus Messaging-névteret a "Tulajdonos" vagy "Közreműködő" szerepköröket. Ez a művelet az identitás a névtérben lévő összes entitáshoz teljes hozzáférést biztosít. Felügyeleti műveleteket, amelyek a névtér topológia módosítása rendszer kezdetben csak támogatott, ha az Azure erőforrás-kezelést, és nem a natív Service Bus REST-felügyeleti felületén keresztül. Ez a támogatás is azt jelenti, hogy a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objektum nem használható az Azure AD-fiókot.  
 
-## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>A Service Bus használata egy Azure AD tartományi felhasználói fiókot
+## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>A Service Bus használata egy Azure AD tartományi felhasználói fiók
 
-A következő szakasz azt ismerteti, hogyan hozhat létre és futtathat a mintaalkalmazás, amely felszólítja az interaktív Azure AD-felhasználó bejelentkezni, a Service Bus engedélyt, a felhasználói fiók, és az Event Hubs eléréséhez használja az identitásukat. 
+A következő szakasz azt ismerteti, hogyan hozhat létre és futtathat egy mintaalkalmazást, amely kérni fogja az interaktív Azure AD-felhasználó bejelentkezni, hogyan lehet hozzáférést biztosítani a Service Bus, a felhasználói fiók és az identitásukat el az Event Hubs használatával. 
 
-Ez a bevezető egyszerű konzolalkalmazásként, ismerteti a [, amelynek kódja a Githubon van](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl).
+Ez a bevezető ismerteti egy egyszerű konzolalkalmazást a [, amelynek kódja a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl).
 
 ### <a name="create-an-active-directory-user-account"></a>Az Active Directory felhasználói fiók létrehozása
 
-Az első lépés nem kötelező. Minden Azure-előfizetés automatikusan megfeleltetni az Azure Active Directory-bérlő, és rendelkezik Azure-előfizetéssel, ha a felhasználói fiók már regisztrálva van. Ez azt jelenti, hogy csak a fiókot használhat. 
+Az első lépés nem kötelező. Minden Azure-előfizetés automatikusan megfeleltetni az Azure Active Directory-bérlő, és ha rendelkezik hozzáféréssel az Azure-előfizetéssel, a felhasználói fiók már regisztrálva van. Ez azt jelenti, hogy a fiókot használhatja. 
 
-Ha továbbra is szeretné létrehoz egy külön fiókot ehhez a forgatókönyvhöz [kövesse az alábbi lépéseket](../automation/automation-create-aduser-account.md). Fiók létrehozása az Azure Active Directory-bérlő, amely nem lehet nagyobb vállalati forgatókönyvek esetében a engedéllyel kell rendelkeznie.
+Ha továbbra is szeretne létrehozni ebben a forgatókönyvben egy külön fiókot [kövesse az alábbi lépéseket](../automation/automation-create-aduser-account.md). Fiókok létrehozása az Azure Active Directory-bérlőjéhez, amely nem lehet nagyobb a vállalati forgatókönyvek esetében a engedéllyel kell rendelkeznie.
 
 ### <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
 
-Ezt követően [hozzon létre egy Service Bus üzenetkezelés névtér](service-bus-create-namespace-portal.md) egy Azure-régiókban, amelyek preview támogatják a Szerepalapú: **amerikai keleti**, **amerikai keleti régiója 2**, vagy **Nyugat-Európa** . 
+Ezután [hozzon létre egy Service Bus üzenetkezelési névteret](service-bus-create-namespace-portal.md) RBAC előzetes támogató Azure-régiók egyikében: **USA keleti régiójában**, **USA keleti régiója 2**, vagy **Nyugat-Európa** . 
 
-A névtér létrehozása után nyissa meg a **hozzáférés-vezérlés (IAM)** a portál lapot, és kattintson a **Hozzáadás** az Azure AD-felhasználói fiók hozzáadása a tulajdonosi szerepkört. Ha a saját felhasználói fiókot használ, és a névtér létrehozott, akkor már szerepelnek a tulajdonosi szerepkört. Egy másik fiókot a szerepkör hozzáadásához keresse meg a webalkalmazás nevét a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzést. Ezután kattintson a **Save** (Mentés) gombra.
+A névtér létrehozása után lépjen a **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **Hozzáadás** az Azure AD felhasználói fiók hozzáadása a tulajdonosi szerepkör. Saját felhasználói fiókját használja, és létrehozta a névteret, ha Ön már a tulajdonosi szerepkör. Egy másik fiókot ad hozzá a szerepkört, keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra.
 
 ![](./media/service-bus-role-based-access-control/rbac1.PNG)
 
-A felhasználói fiók hozzáférhet a Service Bus-névtér, és a várakozási sorba korábban hozott létre.
+A felhasználói fiókot most már hozzáférhet a Service Bus-névteret, és az üzenetsorba korábban hozott létre.
  
 ### <a name="register-the-application"></a>Az alkalmazás regisztrálása
 
-A mintaalkalmazás futtatása előtt az Azure ad-ben regisztrálja, és hagyja jóvá a beleegyezést kérő üzenete, amely lehetővé teszi az alkalmazás Azure Service Bus eléréséhez a nevében. 
+A mintaalkalmazás futtatása előtt az Azure ad-ben regisztrálja, és hagyja jóvá a beleegyezést kérő üzenetet, amely lehetővé teszi az alkalmazás Azure Service Bus eléréséhez nyújtsanak a nevében. 
 
-Mivel a mintaalkalmazás egy konzolalkalmazást, kell egy natív alkalmazás regisztrálása és API-hozzáférés biztosítása a **Microsoft.ServiceBus** a "szükséges engedélyek" készletéhez. Natív alkalmazásokat is kell egy **átirányítási URI-t** szolgál a azonosítóként; Azure AD-ben az URI nem kell egy hálózati cél. Használjon `http://servicebus.microsoft.com` ehhez a példához, mivel már kód a minta az adott URI.
+Mivel a mintaalkalmazás egy konzolalkalmazást, kell regisztrálni egy natív alkalmazást és API-hozzáférés biztosítása a **Microsoft.ServiceBus** a "szükséges engedélyek" csoporthoz. Natív alkalmazások is kell egy **átirányítási URI** szolgál a azonosítóként; Azure AD-ben az URI-t kell lennie egy hálózati cél. Használat `http://servicebus.microsoft.com` ebben a példában, mivel már kód a minta az URI-ra.
 
-A részletes regisztrációs lépéseket magyarázata [ebben az oktatóanyagban](../active-directory/develop/active-directory-integrating-applications.md). Regisztrálásához kövesse a **natív** alkalmazást, majd kövesse az utasításokat a frissítés a **Microsoft.ServiceBus** API-t a szükséges engedélyekkel. A lépések végrehajtásával, jegyezze fel a **TenantId** és a **ApplicationId**, mivel ezeket az értékeket az alkalmazás futtatásához kell.
+A részletes regisztrációs lépéseket mutatjuk be [ebben az oktatóanyagban](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). Kövesse a lépéseket a regisztráció egy **natív** alkalmazást, majd kövesse a frissítés utasításokat hozzáadása a **Microsoft.ServiceBus** API-t a szükséges engedélyekkel. A lépéseket, jegyezze fel a **TenantId** és a **ApplicationId**, mert szüksége lesz ezekre az értékekre, az alkalmazás futtatásához.
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
-A minta futtatásához, szerkessze az App.config fájlt, és a forgatókönyvtől függően adja meg a következő értékeket:
+A minta futtatása előtt szerkessze az App.config fájlt, és a forgatókönyvtől függően adja meg a következő értékeket:
 
-- `tenantId`: Beállítása **TenantId** érték.
-- `clientId`: Beállítása **ApplicationId** érték. 
-- `clientSecret`: Ha azt szeretné, a titkos ügyfélkulcs bejelentkezni, hozza létre az Azure ad-ben. Is használjon webalkalmazás vagy API a natív alkalmazások helyett. Továbbá adja hozzá az alkalmazás a **hozzáférés-vezérlés (IAM)** a korábban létrehozott névtérben.
-- `serviceBusNamespaceFQDN`: Állítsa be a teljes DNS-nevével, az újonnan létrehozott Service Bus-névtér; például `example.servicebus.windows.net`.
-- `queueName`: A létrehozott üzenetsorba nevére állítja.
-- Az átirányítási URI-t adott meg az előző lépésben az alkalmazásban.
+- `tenantId`: Állítsa **TenantId** értéket.
+- `clientId`: Állítsa **ApplicationId** értéket. 
+- `clientSecret`: Ha azt szeretné, a titkos ügyfélkulcsot használatával kíván bejelentkezni, hozza létre az Azure ad-ben. Egy webalkalmazás vagy API-t is, használja a natív alkalmazás helyett. Adja hozzá az alkalmazás alatt **hozzáférés-vezérlés (IAM)** a korábban létrehozott névtér.
+- `serviceBusNamespaceFQDN`: Állítsa az újonnan létrehozott Service Bus-névtér; teljes DNS-neve Ha például `example.servicebus.windows.net`.
+- `queueName`: Állítsa a létrehozott üzenetsor neve.
+- Az átirányítási URI-t az alkalmazásba az előző lépésben megadott.
  
-A konzol alkalmazás futtatásakor kéri a választása; Kattintson a **interaktív felhasználói bejelentkezés** ehhez írja be annak a számát, és nyomja le az ENTER BILLENTYŰT. Az alkalmazás bejelentkezési ablak megjeleníti, a Service Bus eléréséhez beleegyezést kér, és a szolgáltatás segítségével a Küldés/fogadás a forgatókönyvet a bejelentkezési azonosítót végigfuttatása.
+Futtassa a konzolalkalmazást, ha kéri választása; Kattintson a **interaktív felhasználói bejelentkezési** írja be a számát, és lenyomja az ENTER BILLENTYŰT. Az alkalmazás jeleníti meg a bejelentkezési ablakban, a Service Bus eléréséhez beleegyezését kéri, és a szolgáltatás segítségével a bejelentkezési azonosító használatával küldése/fogadása forgatókönyv futtatása.
 
 ## <a name="next-steps"></a>További lépések
 

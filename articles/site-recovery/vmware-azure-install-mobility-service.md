@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: bc0ec09e28c5540eb919ac4e5f970f877ae27e44
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: ee954a951d3fc07709e3f27b4ced71a9ec525410
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37919087"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492962"
 ---
 # <a name="install-the-mobility-service"></a>A mobilitási szolgáltatás telepítése 
 
@@ -42,11 +42,14 @@ Előfeltételként szükséges lépések végrehajtása előtt, manuálisan tele
 
 ### <a name="mobility-service-installer-to-operating-system-mapping"></a>A mobilitási szolgáltatás telepítő – operációs rendszer leképezése
 
+Az operációs rendszerek listáját lásd: verziója kompatibilis a mobilitási szolgáltatás csomaggal listájához tekintse meg [VMware virtuális gépek és fizikai kiszolgálók támogatott operációs rendszerek](vmware-physical-azure-support-matrix.md#replicated-machines).
+
 | Telepítőfájl sablon neve| Operációs rendszer |
 |---|--|
 |Microsoft-ASR\_UA\*Windows\*release.exe | A Windows Server 2008 R2 SP1 (64 bites) </br> A Windows Server 2012 (64 bites) </br> A Windows Server 2012 R2 (64 bites) </br> A Windows Server 2016 (64 bites) |
-|A Microsoft-ASR\_UA\*bites RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (csak 64 bites verzió esetén) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (csak 64 bites verzió esetén) |
-|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1, 7.2, 7.3 (csak 64 bites verzió esetén) </br> 7.0, 7.1, 7.2 centOS 7.3 (csak 64 bites verzió esetén) |
+|A Microsoft-ASR\_UA\*bites RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* (csak 64 bites verzió esetén) </br> CentOS 6.* (csak 64 bites verzió esetén) |
+|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* (csak 64 bites verzió esetén) </br> CentOS 7.* (csak 64 bites verzió esetén) |
+|A Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1, SP2 SP3 (csak 64 bites verzió esetén)|
 |Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (csak 64 bites verzió esetén)|
 |Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 (csak 64 bites verzió esetén)|
 |Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5 (csak 64 bites verzió esetén)|
@@ -54,7 +57,6 @@ Előfeltételként szükséges lépések végrehajtása előtt, manuálisan tele
 |A Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS server (csak 64 bites verzió esetén)|
 |Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 (csak 64 bites verzió esetén)|
 |Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8 (csak 64 bites verzió esetén)|
-
 
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>Mobilitási szolgáltatás manuális telepítése a grafikus felhasználói felület használatával
 

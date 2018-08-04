@@ -9,15 +9,15 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 07c0347793f6541a3e047f3f357d0d1b05dc3bca
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: d0ae7fbb22f6d98662f83968158182d447a75394
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136181"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501967"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric-háló
-Az Azure Service Fabric háló egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a mikroszolgáltatás-alapú alkalmazások üzembe helyezése nélkül kezelése virtuális gépek, tároló, vagy a hálózat. Ez a cikk gyakori kérdésekre adott válaszokat tartalmaz.
+Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. Ez a cikk gyakori kérdésekre adott válaszokat tartalmaz.
 
 ## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Hogyan probléma jelentéséhez vagy tegyen fel kérdést?
 
@@ -83,7 +83,7 @@ Nincs olyan ismert probléma, ahol szükség lehet a szolgáltatások eltérően
 
 Egyéb ismert DNS problémái egy Service Fabric fejlesztési fürtöt futtat Windows 10-es, lásd itt: [Debug Windows-tárolók](/azure/service-fabric/service-fabric-how-to-debug-windows-containers).
 
-**Ez a hiba jelenik meg a parancssori felület modul _ImportError használata esetén: "sdk_no_wait" neve nem lehet importálni**
+**Ez a hiba jelenik meg a parancssori felület, a ImportError modul használata esetén: "sdk_no_wait" neve nem lehet importálni**
 
 2.0.30-as-nál régebbi parancssori felület verziójának használatakor, előfordulhat, hogy ez a hibaüzenet-
 

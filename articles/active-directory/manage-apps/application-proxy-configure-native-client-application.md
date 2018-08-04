@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 589cf1d297a335c36725917dd7012d877d1dcaeb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 85a7b133655a3b1e4ca60c28e695e3057b293fdc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363077"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504515"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Együttműködhet a proxy-alkalmazások natív ügyfélalkalmazások engedélyezése
 
@@ -30,7 +30,7 @@ Az alkalmazásproxy által kiállított jogkivonatokban fejlécében átvevő Az
 
 ![A végfelhasználók, az Azure Active Directory és a közzétett alkalmazások közötti kapcsolat](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Használja az Azure AD Authentication Library, amely gondoskodik a hitelesítési és sok ügyfél környezet támogatja, natív alkalmazásokat tehet közzé. Az alkalmazásproxy hogyan illik bele a [natív alkalmazás webes API-forgatókönyv](../develop/active-directory-authentication-scenarios.md#native-application-to-web-api). 
+Használja az Azure AD Authentication Library, amely gondoskodik a hitelesítési és sok ügyfél környezet támogatja, natív alkalmazásokat tehet közzé. Az alkalmazásproxy hogyan illik bele a [natív alkalmazás webes API-forgatókönyv](../develop/authentication-scenarios.md#native-application-to-web-api). 
 
 Ez a cikk végigvezeti az Application Proxy és az Azure AD Authentication Library natív alkalmazás közzététele a négy lépést. 
 
@@ -48,7 +48,7 @@ A natív alkalmazás a következőképpen konfigurálja:
    ![Hozzon létre egy új alkalmazás regisztrálása](./media/application-proxy-configure-native-client-application/create.png)
 5. Kattintson a **Létrehozás** gombra.
 
-További részletes információ egy új alkalmazásregisztráció létrehozásával kapcsolatban lásd: [alkalmazások integrálása az Azure Active Directory](./../develop/active-directory-integrating-applications.md).
+További részletes információ egy új alkalmazásregisztráció létrehozásával kapcsolatban lásd: [alkalmazások integrálása az Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 
 ## <a name="step-3-grant-access-to-other-applications"></a>3. lépés: A hozzáférés biztosítása más alkalmazásokhoz
@@ -96,6 +96,6 @@ Ezekkel a paraméterekkel szerkeszti az adal-t, miután a felhasználók tudni h
 
 ## <a name="next-steps"></a>További lépések
 
-A natív alkalmazás folyamat kapcsolatos további információkért lásd: [natív alkalmazás webes API-hoz](../develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
+A natív alkalmazás folyamat kapcsolatos további információkért lásd: [natív alkalmazás webes API-hoz](../develop/authentication-scenarios.md#native-application-to-web-api)
 
 Ismerje meg beállítása [egyszeri bejelentkezést az alkalmazásproxy](application-proxy-single-sign-on.md)

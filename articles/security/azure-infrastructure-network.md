@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a6800b18d1bb588c747d4e9ef7049ac4cbb82f60
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 5a0f0594a9ccb27a0f76a679e454e9a3ffe19a43
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213470"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505386"
 ---
 # <a name="azure-network-architecture"></a>Az Azure hálózati architektúra
 Az Azure-beli hálózati architektúra az iparági szabványos mag/terjesztési/hozzáférési modell hardver elkülönült rétege módosított változatát követi. A Rétegek a következők:
@@ -38,7 +38,7 @@ A hálózati architektúra az adatközponton belül egy Azure-fürtön a követk
 - Digi tartalomkezelő rendszer
 - Áramelosztó egységek
 
-Az Azure két különböző architektúra tartalmaz. Egyes meglévő Azure-ügyfelek és a megosztott szolgáltatások találhatók az alapértelmezett LAN-architektúrával (DLA), mivel az új régiókban és virtuális ügyfelek találhatók Quantum 10 (10. kérdés) architektúrával. Az DLA architektúra egy hagyományos fa tervezés, az aktív/passzív hozzáférés útválasztók és biztonsági hozzáférés-vezérlési listák (ACL) a alkalmazni a hozzáférés-útválasztóhoz. A Quantum 10 architektúra kialakítás egy Clos/háló útválasztók, ahol hozzáférés-vezérlési listák nem vonatkoznak az útválasztók. Ehelyett ACL-ek alkalmazása az Útválasztás, keresztül szoftveres terheléselosztást (SLB) alatt, vagy a szoftver meghatározott VLAN-OK.
+Az Azure két különböző architektúra tartalmaz. Egyes meglévő Azure-ügyfelek és a megosztott szolgáltatások találhatók az alapértelmezett LAN-architektúrával (DLA), mivel az új régiókban és virtuális ügyfelek találhatók Quantum 10 (10. kérdés) architektúrával. Az DLA architektúra egy hagyományos fa tervezés, az aktív/passzív hozzáférés útválasztók és biztonsági hozzáférés-vezérlési listák (ACL) a alkalmazni a hozzáférés-útválasztóhoz. A Quantum 10 architektúra kialakítás egy közeli/háló útválasztók, ahol hozzáférés-vezérlési listák nem vonatkoznak az útválasztók. Ehelyett ACL-ek alkalmazása az Útválasztás, keresztül szoftveres terheléselosztást (SLB) alatt, vagy a szoftver meghatározott VLAN-OK.
 
 Az alábbi ábrán egy Azure-fürtön belül a hálózati architektúra magas szintű áttekintést nyújt:
 

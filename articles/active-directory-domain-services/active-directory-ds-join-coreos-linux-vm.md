@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: CoreOS Linux virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs'
-description: A CoreOS Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások
+title: 'Az Azure Active Directory Domain Services: CoreOS Linux virtuális gép csatlakoztatása felügyelt tartományokhoz |} A Microsoft Docs'
+description: CoreOS Linux rendszerű virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,67 +12,67 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: bb94d0c817cf1a15c90ac5e928406e5f5e59a068
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1574a6a4cf727198b17f5c62488d12be12d928f4
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332804"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502032"
 ---
-# <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>A CoreOS Linux virtuális gép csatlakoztatása felügyelt tartományhoz
-Ez a cikk bemutatja, hogyan CoreOS Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz az Azure-ban.
+# <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>CoreOS Linux rendszerű virtuális gép csatlakoztatása felügyelt tartományokhoz
+Ez a cikk bemutatja, hogyan az Azure-beli CoreOS Linux rendszerű virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatásokkal felügyelt tartományban.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 A cikkben szereplő feladatok elvégzéséhez szüksége:
 1. Egy érvényes **Azure-előfizetés**.
-2. Egy **Azure AD-címtár** -vagy egy helyszíni címtár vagy egy csak felhőalapú directory szinkronizálva.
-3. **Azure AD tartományi szolgáltatások** az Azure AD-címtár engedélyezni kell. Ha még nem tette meg, az összes ismertetett feladatok végrehajtásával a [első lépések útmutató](active-directory-ds-getting-started.md).
-4. Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálóként konfigurálta a felügyelt tartományra IP-címét. További információkért lásd: [az Azure virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
-5. Végezze el a szükséges lépéseket [szinkronizálja a jelszavakat az Azure AD tartományi szolgáltatások által kezelt tartomány](active-directory-ds-getting-started-password-sync.md).
+2. Egy **Azure AD-címtár** -vagy az egy helyszíni címtár vagy egy csak felhőalapú címtárral szinkronizálja.
+3. **Az Azure AD Domain Services** engedélyezve kell lennie az Azure AD-címtárban. Ha még nem tette, minden ismertetett feladatok végrehajtásával a [a kezdeti lépések útmutatóban](active-directory-ds-getting-started.md).
+4. Győződjön meg arról, hogy már konfigurálta az IP-címek a felügyelt tartomány a virtuális hálózat DNS-kiszolgálóként. További információkért lásd: [az Azure virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
+5. Végezze el a szükséges lépéseket [szinkronizálja a jelszavakat az Azure AD tartományi szolgáltatásokkal felügyelt tartományban](active-directory-ds-getting-started-password-sync.md).
 
 
-## <a name="provision-a-coreos-linux-virtual-machine"></a>Rendszerű CoreOS Linux virtuális gép
-Az Azure, a következő módszerekkel történő CoreOS virtuális gép kiépítése:
+## <a name="provision-a-coreos-linux-virtual-machine"></a>CoreOS Linux virtuális gép kiépítése
+Az Azure-ban, az alábbi módszerek bármelyikével CoreOS rendszerű virtuális gép kiépítése:
 * [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-Ebben a cikkben az a **CoreOS Linux (stabil)** virtuálisgép-lemezkép az Azure-ban.
+Ez a cikk a **CoreOS Linux (Stable)** virtuálisgép-lemezképet az Azure-ban.
 
 > [!IMPORTANT]
-> * A virtuális gép telepítése a **ugyanazt a virtuális hálózatot, amelyben engedélyezte az Azure AD tartományi szolgáltatások**.
-> * Válasszon egy **másik alhálózat** fut, amelyen engedélyezte az Azure AD tartományi szolgáltatásokat.
+> * Telepítse a virtuális gépet, azokat a **azonos virtuális hálózatban, amelyiken engedélyezte az Azure AD Domain Services**.
+> * Válasszon ki egy **másik alhálózatot** fut, amelyiken engedélyezte az Azure AD tartományi szolgáltatásokat.
 >
 
 
-## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Távoli csatlakozás az újonnan kiépített Linux virtuális gép
-A CoreOS virtuális gép az Azure-ban van kiépítve. A következő feladata távolról csatlakozni a virtuális gépet a virtuális gép kiépítése során létrehozott helyi rendszergazdai fiók használatával.
+## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Távoli csatlakozás az újonnan létrehozott Linux virtuális gép
+A CoreOS virtuális gépet az Azure-ban van kiépítve. A következő feladata távolról csatlakozni a virtuális gépet a virtuális gép kiépítése során létrehozott helyi rendszergazdai fiókkal.
 
-A cikk utasításait [Linuxot futtató virtuális gép bejelentkezés](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Kövesse a cikk a [bejelentkezés egy Linux rendszerű virtuális gép](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>A Linux virtuális gép a gazdafájl konfigurálása
-Az SSH terminálban az/etc/hosts fájl szerkesztése, és frissítse a gép IP-cím és állomásnevet.
+## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>A Linux rendszerű virtuális gép hosts fájljának konfigurálása
+A terminálban SSH a Hosts fájl szerkesztése, és frissítse a gép IP-cím és az állomásnevet.
 
 ```
 sudo vi /etc/hosts
 ```
 
-A hosts fájlt adja meg a következő értéket:
+Adja meg a hosts fájl a következő értéket:
 
 ```
 127.0.0.1 contoso-coreos.contoso100.com contoso-coreos
 ```
-"Contoso100.com" Íme a felügyelt tartományok DNS-tartomány nevét. "contoso-coreos" az állomásnevet, amelyhez csatlakozik, a felügyelt tartományra CoreOS virtuális gép.
+"Contoso100.com" Íme a felügyelt tartomány DNS-tartomány nevét. a "contoso – coreos", amelyhez a felügyelt tartományhoz csatlakozik, a CoreOS virtuális gép állomásnevét.
 
 
-## <a name="configure-the-sssd-service-on-the-linux-virtual-machine"></a>A SSSD szolgáltatás konfigurálása a Linux virtuális gépen
-Következő lépésként frissítse a SSSD konfigurációs fájl ("/ etc/sssd/sssd.conf") a következő mintának megfelelően:
+## <a name="configure-the-sssd-service-on-the-linux-virtual-machine"></a>A SSSD szolgáltatás konfigurálása a Linux rendszerű virtuális gépen
+Ezután frissítse az SSSD konfigurációs fájlhoz ('/ etc/sssd/sssd.conf ") a következő mintának megfelelően:
 
  ```
  [sssd]
@@ -100,11 +100,11 @@ Következő lépésként frissítse a SSSD konfigurációs fájl ("/ etc/sssd/ss
  krb5_server = contoso100.com
  krb5_realm = CONTOSO100.COM
  ```
-Cserélje le "CONTOSO100. A COM "a DNS-tartománynévvel a felügyelt tartomány. Ellenőrizze, hogy a conf fájlban beruházási esetben adja meg a tartomány nevét.
+Cserélje le ' CONTOSO100. COM "a felügyelt tartomány DNS-tartománynévvel. Ellenőrizze, hogy a conf fájlban befektetési esetben adja meg a tartomány nevét.
 
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>A Linux virtuális gép csatlakoztatása felügyelt tartományhoz
-Most, hogy a szükséges csomagokat a Linux virtuális gépek vannak telepítve, a következő feladat a virtuális gép csatlakoztatása felügyelt tartományhoz.
+## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>A Linux rendszerű virtuális gép csatlakoztatása a felügyelt tartományhoz
+Most, hogy a szükséges csomagok telepítve vannak a Linux rendszerű virtuális gép, a következő feladata a virtuális gép csatlakoztatása a felügyelt tartományhoz.
 
 ```
 sudo adcli join -D CONTOSO100.COM -U bob@CONTOSO100.COM -K /etc/krb5.keytab -H contoso-coreos.contoso100.com -N coreos
@@ -112,41 +112,41 @@ sudo adcli join -D CONTOSO100.COM -U bob@CONTOSO100.COM -K /etc/krb5.keytab -H c
 
 
 > [!NOTE]
-> **Hibaelhárítás:** Ha *adcli* nem találja a felügyelt tartományok:
-  * Győződjön meg arról, hogy a tartomány elérhető-e a virtuális gépről (próbálja ping).
-  * Ellenőrizze, hogy a virtuális gép valóban már alkalmazva van az azonos virtuális hálózatban, amelyben a felügyelt tartományra érhető el.
-  * Ellenőrizze, hogy ha a DNS-kiszolgáló beállításait, a virtuális hálózat úgy, hogy a tartományvezérlők, a felügyelt tartományra mutasson frissítése befejeződött.
+> **Hibaelhárítás:** Ha *adcli* nem találja a felügyelt tartomány:
+  * Győződjön meg arról, hogy a tartomány érhető el a virtuális gépről (ping. Próbálja meg).
+  * Ellenőrizze, hogy a virtuális gép valóban lett telepítve, az azonos virtuális hálózatban, amely a felügyelt tartomány érhető el.
+  * Ellenőrizze, hogy ha frissítette a DNS-kiszolgáló beállításainak a virtuális hálózathoz, hogy a felügyelt tartomány tartományvezérlőit mutasson.
 >
 
-Indítsa el a SSSD szolgáltatást. Az SSH terminálban írja be a következő parancsot:
+Indítsa el a SSSD szolgáltatást. Az SSH terminálon írja be a következő parancsot:
   ```
   sudo systemctl start sssd.service
   ```
 
 
-## <a name="verify-domain-join"></a>Ellenőrizze a tartományhoz való csatlakozást
-Győződjön meg arról, hogy a gép sikeresen csatlakoztatva lett a felügyelt tartományra. Csatlakozás a tartományhoz csatlakoztatott CoreOS virtuális gép egy másik SSH-kapcsolat használatával. Tartományi felhasználói fiókot használja, és ellenőrizze, hogy megoldódott a felhasználói fiók megfelelően.
+## <a name="verify-domain-join"></a>A tartományhoz való csatlakozás ellenőrzéséhez
+Győződjön meg arról, hogy a gép sikeresen csatlakoztatva lett a felügyelt tartományhoz. Csatlakozhat a tartományhoz csatlakoztatott CoreOS virtuális Gépet egy másik SSH-kapcsolat használatával. Egy tartományi fiókot használjon, és ezután ellenőrizze, hogy ha a felhasználói fióknak megfelelően megoldódott-e.
 
-1. A Terminálszolgáltatások az SSH-típus a következő parancsot a tartományhoz való csatlakozáshoz csatlakoztatott CoreOS virtuális gép SSH használatával. A felügyelt tartományhoz tartozó tartományi fiókot használni (például "bob@CONTOSO100.COM" Ebben az esetben.)
+1. A Terminálszolgáltatások az SSH-típus a következő parancsot a csatlakozás tartományhoz csatlakoztatott CoreOS rendszerű virtuális gép SSH-val. A felügyelt tartományhoz tartozó tartományi fiók használata (például "bob@CONTOSO100.COM" Ebben az esetben.)
     ```
     ssh -l bob@CONTOSO100.COM contoso-coreos.contoso100.com
     ```
 
-2. Az SSH terminált írja be a következő parancsot, hogy ha a kezdőkönyvtár megfelelően inicializálva.
+2. A terminálban SSH írja be a következő paranccsal tekintse meg, ha a kezdőkönyvtár megfelelően inicializálva.
     ```
     pwd
     ```
 
-3. Az SSH terminálban az alábbi paranccsal tekintheti meg, ha a csoporttagság megfelelően lehet megoldani.
+3. Az SSH terminálon írja be a megtekintéséhez, ha a csoporttagság megfelelően vannak feloldva a következő parancsot.
     ```
     id
     ```
 
 
-## <a name="troubleshooting-domain-join"></a>Hibaelhárítás a tartományhoz való csatlakozást
-Tekintse meg a [hibaelhárítás tartományhoz való csatlakozást](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) cikk.
+## <a name="troubleshooting-domain-join"></a>A tartományhoz való csatlakozás hibáinak elhárítása
+Tekintse meg a [hibaelhárítás tartományhoz való csatlakozás](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) cikk.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
-* [Windows Server virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Bejelentkezés a Linux rendszerű virtuális gép](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* [Az Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
+* [A Windows Server virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Bejelentkezés Linux rendszerű virtuális gép](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

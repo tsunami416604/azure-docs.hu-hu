@@ -15,16 +15,16 @@ ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 640df9659dfa65d0eb2a65066085dd7dff7031ca
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1f3511b4d9e75136fd0105785a1e033378d2ebd1
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365553"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494021"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés konfigurálása olyan alkalmazások, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában
 
-Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nincs jelen az Azure Active Directory alkalmazásgyűjtemény tárgya *kódírás nélkül*. Ez a szolgáltatás 2015. November 18. a technical Preview-ban való fel lett oldva, és szerepel a [Azure Active Directory Premium](fundamentals/active-directory-whatis.md). Ha inkább az egyéni alkalmazások integrálása az Azure AD-kódon keresztül: Fejlesztői útmutató keres, tekintse meg [hitelesítési forgatókönyvek az Azure ad-ben](active-directory-authentication-scenarios.md).
+Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nincs jelen az Azure Active Directory alkalmazásgyűjtemény tárgya *kódírás nélkül*. Ez a szolgáltatás 2015. November 18. a technical Preview-ban való fel lett oldva, és szerepel a [Azure Active Directory Premium](fundamentals/active-directory-whatis.md). Ha inkább az egyéni alkalmazások integrálása az Azure AD-kódon keresztül: Fejlesztői útmutató keres, tekintse meg [hitelesítési forgatókönyvek az Azure ad-ben](develop/authentication-scenarios.md).
 
 Az Azure Active Directory alkalmazáskatalógusában felsorolja a alkalmazások ismert támogatja az egyszeri bejelentkezés az Azure Active Directoryval, az űrlap leírtak szerint [Ez a cikk](manage-apps/what-is-single-sign-on.md). Ha (a egy informatikai specialistája vagy támaszkodva a szervezetben) megtalálta az alkalmazást, amelyhez csatlakozni, az egyszeri bejelentkezés engedélyezése az Azure Portalon megjelenő részletes utasításokat követve kezdheti.
 

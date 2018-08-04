@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: maheshu
-ms.openlocfilehash: 967f4ef722ff5672d1749ac19b10615f5d08b08b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 669e0392cb77434c372c9af3c4d467d19cff8abd
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460183"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501734"
 ---
 # <a name="configure-dns-to-access-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Biztonságos LDAP (LDAPS) használatával az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz eléréséhez DNS konfigurálása
 
@@ -49,4 +49,4 @@ Ennyi az egész! Most már készen áll a felügyelt tartomány secure LDAP hasz
 >
 
 ## <a name="next-step"></a>Következő lépés
-[5. feladat: kötést létrehozni a felügyelt tartományhoz, és a secure LDAP-hozzáférését zárolását](active-directory-ds-ldaps-bind-lockdown.md)
+[5. feladat: Kötés létrehozása a felügyelt tartománnyal és a biztonságos LDAP-hozzáférés zárolása](active-directory-ds-ldaps-bind-lockdown.md)

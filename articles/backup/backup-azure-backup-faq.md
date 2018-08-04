@@ -7,14 +7,14 @@ manager: carmonm
 keywords: biztonsági mentés és vészhelyreállítás; biztonsági mentési szolgáltatás
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 33a3a1c0fd375f6ed88e13f910c46e71f216b892
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412951"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493868"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Kérdések az Azure Backup szolgáltatással kapcsolatban
 Ez a cikk az Azure Backup-összetevővel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Megjegyzések írásához Livefyre-fiók szükséges. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -29,6 +29,9 @@ Igen. Akár 500 Recovery Services-tárolók száma előfizetésenként az Azure 
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Az egyes tárolókhoz regisztrálható kiszolgálók/gépek száma korlátozott? <br/>
 Legfeljebb 1000 Azure-beli virtuális gép tárolónként regisztrálhat. Ha a MAB-ügynök használ, legfeljebb 50 MAB-ügynökök tárolónként regisztrálhat. És regisztrálhatja az 50 MAB kiszolgálót/DPM-kiszolgálók egy tárolóba.
+
+### <a name="can-i-use-a-rest-api-to-query-the-size-of-protected-items-in-a-vault-br"></a>A REST API segítségével lekérdezni egy tároló védett elemek méretét? <br/>
+Igen, a cikk [Usages - tárolók által listában](https://t.co/2lgIrIaF0J), azokat az információkat, amelyek szerezhető be a Recovery Services-tároló tartalmazza.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Ha a szervezetem egy tárolóval rendelkezik, hogyan tudom az egyik kiszolgáló adatait elszigetelni egy másik kiszolgálóétól az adatok visszaállításakor?<br/>
 Minden kiszolgáló, amely ugyanahhoz a tárolóhoz van regisztrálva, képes helyreállítani más, *ugyanazt a hozzáférési kódot használó* kiszolgálók adatainak biztonsági másolatait. Ha olyan kiszolgálókkal rendelkezik, amelyek adatainak biztonsági másolatait szeretné elszigetelni a szervezetében található más kiszolgálóétól, használjon egy erre kijelölt hozzáférési kódot ezekhez a kiszolgálókhoz. Például a humánerőforrás-kiszolgálók használhatnának egy titkosító hozzáférési kódot, a könyvelési kiszolgálók egy másikat és a tároló kiszolgálók egy harmadikat.
@@ -57,6 +60,8 @@ A kérdések részletes listája a [Gyakori kérdések az Azure-beli virtuális 
 
 Igen. Az Azure Backup Server használatával biztonsági mentést készíthet a VMware vCenter-, valamint az ESXi-kiszolgálókról az Azure-ban. A támogatott VMware-verziókkal kapcsolatos információkért tekintse meg az [Azure Backup Server védelmi mátrix](backup-mabs-protection-matrix.md)című cikket. Részletes útmutatásért lásd: [VMware-kiszolgáló biztonsági mentése az Azure Backup Server használatával](backup-azure-backup-server-vmware.md).
 
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>Egy teljes helyi VMware vagy Hyper-V fürt helyreállítása a DPM vagy az Azure Backup Server különálló licenc szükséges?<br/>
+Nem különálló van szüksége a licencelés VMware vagy Hyper-V-védelem. Ha egy System Center-előfizető, VMware virtuális gépek védelme a DPM használatával. Ha egy System Center-ügyfél nem, az Azure Backup Server (használatalapú fizetés) használhatja a VMware virtuális gépek védelméhez.
 
 ## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Azure Backup Server és System Center Data Protection Manager
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Használhatom az Azure Backup kiszolgálót egy operációs rendszer nélküli helyreállítás (BMR) biztonsági másolatának létrehozásához egy fizikai kiszolgálón? <br/>
@@ -90,6 +95,9 @@ Igen. Windows Server- vagy Windows-munkaállomásokon a biztonsági mentési fel
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Miért kisebb a Recovery Services-tárolóba átvitt adatok mérete a biztonsági mentéskor létrehozott adatméretnél?<br/>
  Minden, az Azure Backup ügynökétől, az SCDPM-ből vagy az Azure Backup Serverről származó adatot, amelyről biztonsági mentés készül, a rendszer tömörít és titkosít az átvitel előtt. A tömörítés és titkosítás alkalmazása után a Recovery Services-tároló adatai 30 – 40 százalékkal kisebbek.
+
+### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vaultbr"></a>Törölhetem-e az egyes fájlok a tárban lévő helyreállítási pontból?<br/>
+Nem, az Azure Backup nem támogatja a törlését vagy végleges törlése az egyes elemek tárolt biztonsági másolatokból.
 
 ## <a name="what-can-i-back-up"></a>Miről tudok biztonsági mentést készíteni?
 ### <a name="which-operating-systems-does-azure-backup-support-br"></a>Mely operációs rendszerek nem támogatják az Azure Backup? <br/>

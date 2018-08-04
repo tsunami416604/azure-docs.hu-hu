@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure AD-t a Visual Studio WebApi projektek
-description: Ismerkedés az Azure Active Directoryval WebApi projektek, miután csatlakozik, vagy hozzon létre egy Visual Studio használatával Azure AD kapcsolódó szolgáltatások
+title: Ismerkedés az Azure AD-t a Visual Studio-WebApi-projektek használatába
+description: Első lépések a WebApi-projektek az Azure Active Directory használatával, miután csatlakozik, vagy létrehozása a Visual Studio használata az Azure AD-hez kapcsolódó szolgáltatásokkal
 services: active-directory
 author: ghogen
 manager: douge
@@ -12,28 +12,28 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: 109de9fb78ae3abfc09a37c6b8cb38c554f7613c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6ddc1e8f7520135092eefbcbf2b4a2b3f1026e66
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31784516"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494713"
 ---
-# <a name="get-started-with-azure-active-directory-webapi-projects"></a>Ismerkedés az Azure Active Directoryban (WebApi projektek)
+# <a name="get-started-with-azure-active-directory-webapi-projects"></a>Ismerkedés az Azure Active Directory (WebApi-projektek)
 
 > [!div class="op_single_selector"]
 > - [Első lépések](vs-active-directory-webapi-getting-started.md)
 > - [mi történt](vs-active-directory-webapi-what-happened.md)
 
-Ez a cikk útmutatást további Active Directory egy ASP.NET WebAPI projekthez hozzáadása után a **Project > kapcsolódó szolgáltatások** a Visual Studio parancsot. Ha a szolgáltatás már nem felvételét a projekthez, bármikor is megteheti.
+Ez a cikk a további útmutatást nyújt az Active Directory egy ASP.NET WebAPI-projekt keresztül történő hozzáadása után a **Project > csatlakoztatott szolgáltatás** parancsot a Visual Studio. Ha még nem hozzáadott a szolgáltatás a projekthez, bármikor megteheti.
 
-Lásd: [Mi történt a WebAPI projekt?](vs-active-directory-webapi-what-happened.md) amikor a csatlakoztatott szolgáltatás hozzáadása a projekthez végzett módosítások.
+Lásd: [Mi történt a WebAPI-projektemmel?](vs-active-directory-webapi-what-happened.md) módosítások a projekthez a csatlakoztatott szolgáltatás hozzáadása során.
 
-## <a name="requiring-authentication-to-access-controllers"></a>Hozzáférés-vezérlők hitelesítést igénylő
+## <a name="requiring-authentication-to-access-controllers"></a>Hitelesítés, hozzáférés-vezérlő megkövetelése
 
-A projekt lévő összes rendelkező volt adorned a `[Authorize]` attribútum. Ez az attribútum a felhasználónak hitelesíteni az API-kat, ezek a tartományvezérlők által meghatározott elérése előtt. Ahhoz, hogy a tartományvezérlőt a névtelenül elérhető, távolítsa el ezt az attribútumot a vezérlő. Ha szeretne egy részletesebb szinten adja meg az engedélyeket, az attribútumot minden módszer, amely helyett telepítené azt a vezérlő osztályhoz engedélyezési alkalmazza.
+A projektben lévő összes voltak adorned együtt a `[Authorize]` attribútum. Ez az attribútum a felhasználót, hogy hitelesítse a ezek a tartományvezérlők által definiált API-k elérése előtt szükséges. Ahhoz, hogy a tartományvezérlőt a névtelenül elérhető, távolítsa el ezt az attribútumot a vezérlő. Ha szeretne részletesebben, állítsa be az engedélyeket, az attribútum vonatkoznak minden módszer, amely engedélyezési ahelyett hogy a vezérlő osztályhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Active Directory hitelesítési forgatókönyvei](active-directory-authentication-scenarios.md)
-- [Bejelentkezés a Microsoft ASP.NET webalkalmazás hozzáadása](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Hitelesítési forgatókönyvek az Azure Active Directory](authentication-scenarios.md)
+- [Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása](quickstart-v1-aspnet-webapp.md)

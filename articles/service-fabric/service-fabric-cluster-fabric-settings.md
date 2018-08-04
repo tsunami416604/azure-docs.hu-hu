@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 5628315423db1f0064d0e6b77f061d8e674757aa
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 9e4d65875085ec293813e2683acde095ae112b75
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309153"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503706"
 ---
-# <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>A Service Fabric-fürt beállításait és a háló házirend testreszabása
-Ez a dokumentum bemutatja, hogyan szabhatja testre a különböző hálóbeállítások, és a fabric frissítési szabályzatának a Service Fabric-fürt számára. Testre szabható azokhoz a [az Azure portal](https://portal.azure.com) vagy egy Azure Resource Manager-sablon használatával.
+# <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
+Ez a cikk ismerteti, hogyan szabhatja testre a különböző hálóbeállítások a Service Fabric-fürt számára. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. Az önálló fürtök esetén a beállítások a ClusterConfig.json fájl frissítése és a fürtön lévő konfigurációs frissítés végrehajtása testre. 
 
 > [!NOTE]
 > Nem minden beállítás a portálon érhetők el. Abban az esetben az alábbiakban egy beállítás nem érhető el a portálon keresztül testre szabhatja azt egy Azure Resource Manager-sablon használatával.
@@ -35,14 +35,14 @@ Ez a dokumentum bemutatja, hogyan szabhatja testre a különböző hálóbeáll�
 - **NotAllowed** – ezek a beállítások nem módosíthatók. Ezek a beállítások megköveteli, hogy a fürt semmisíteni módosítása, és létrehoztunk egy új fürtöt. 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Testre szabhatja a Resource Manager-sablonok használatával fürtbeállítások
-Az alábbi lépések bemutatják, hogyan egy új beállítás hozzáadása *MaxDiskQuotaInMB* , a *diagnosztikai* szakaszban.
+Az alábbi lépéseket egy új beállítás hozzáadása megjelenítése *MaxDiskQuotaInMB* , a *diagnosztikai* szakaszban az Azure Resource Explorer használatával.
 
 1. Nyissa meg a következőt: https://resources.azure.com
 2. Keresse meg az előfizetés által bővítése **előfizetések** -> **\<előfizetését >** -> **resourceGroups**  ->   **\<Az erőforráscsoport >** -> **szolgáltatók** -> **Microsoft.ServiceFabric**  ->  **fürtök** -> **\<saját fürt neve >**
 3. A jobb felső sarokban, válassza ki **olvasási/írási.**
 4. Válassza ki **szerkesztése** és frissítheti a `fabricSettings` JSON-elem és a egy új elem hozzáadása:
 
-```
+```json
       {
         "name": "Diagnostics",
         "parameters": [
@@ -53,6 +53,36 @@ Az alábbi lépések bemutatják, hogyan egy új beállítás hozzáadása *MaxD
         ]
       }
 ```
+
+A következő módokon az Azure Resource Manager fürt beállítások is testre:
+
+- Használja a [az Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) exportálhatja, és a Resource Manager-sablon frissítéséhez.
+- Használat [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) exportálhatja, és a Resource Manager-sablon frissítéséhez.
+- Használja a [Azure CLI-vel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) exportálhatja, és a Resource Manager-sablon frissítéséhez.
+- Az Azure RM PowerShell [Set-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Set-AzureRmServiceFabricSetting) és [Remove-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Remove-AzureRmServiceFabricSetting) parancsok a beállítás módosításához közvetlenül.
+- Az Azure CLI-vel [az sf cluster beállítás](https://docs.microsoft.com/cli/azure/sf/cluster/setting) parancsok a beállítás módosításához közvetlenül.
+
+## <a name="customize-cluster-settings-for-standalone-clusters"></a>Fürt beállítások önálló fürtök személyre szabása
+Önálló fürtök úgy vannak konfigurálva, a ClusterConfig.json fájlon keresztül. További tudnivalókért lásd: [egy különálló Windows-fürt konfigurációs beállításainak](./service-fabric-cluster-manifest.md).
+
+Hozzáadása, frissítése vagy távolítsa el a beállításokat a `fabricSettings` szakaszba a [fürt tulajdonságai](./service-fabric-cluster-manifest.md#cluster-properties) ClusterConfig.json szakaszát. 
+
+Például a következő JSON ad hozzá egy új beállítás *MaxDiskQuotaInMB* , a *diagnosztikai* szakaszba `fabricSettings`:
+
+```json
+      {
+        "name": "Diagnostics",
+        "parameters": [
+          {
+            "name": "MaxDiskQuotaInMB",
+            "value": "65536"
+          }
+        ]
+      }
+```
+
+Miután módosította a beállításokat a ClusterConfig.json fájlban, kövesse az [a fürt konfigurációjának frissítése](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration) kívánja alkalmazni a fürtön. 
+
 
 A következő fabric testreszabható, beállítások szakasz szerint vannak rendezve.
 
@@ -145,7 +175,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 | --- | --- | --- | --- |
 |AppDiagnosticStoreAccessRequiresImpersonation |Bool, alapértelmezett érték az IGAZ | Dinamikus |E megszemélyesítést akkor fér hozzá a diagnosztikai tárolja az alkalmazás nevében szükség. |
 |AppEtwTraceDeletionAgeInDays |Int, alapértelmezett érték 3 | Dinamikus |Ennyi nap elteltével töröljük a régi tartalmazó alkalmazás ETW-nyomkövetések ETL-fájlok. |
-|ApplicationLogsFormatVersion |Int, alapértelmezett érték 0 | Dinamikus |Alkalmazás verzióját naplók formátuma. Támogatott értékei a következők: 0 és 1. 1-es verzió fut, 0 az ETW-esemény rekordjára további mezőket tartalmaz. |
+|ApplicationLogsFormatVersion |int, alapértelmezett érték 0 | Dinamikus |Alkalmazás verzióját naplók formátuma. Támogatott értékei a következők: 0 és 1. 1-es verzió fut, 0 az ETW-esemény rekordjára további mezőket tartalmaz. |
 |ClusterId |Sztring | Dinamikus |A fürt egyedi azonosítója. Ez a fürt létrehozásakor jön létre. |
 |ConsumerInstances |Sztring | Dinamikus |A közvetlen gyorsítótár-ELÉRÉS fogyasztói példányok listáját. |
 |DiskFullSafetySpaceInMB |Int, alapértelmezett érték az 1024 | Dinamikus |Fennmaradó szabad lemezterület (MB) megvédeni a közvetlen gyorsítótár-ELÉRÉS használja. |
@@ -199,12 +229,12 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |ClusterX509FindValue |sztring, alapértelmezett érték a "" |Dinamikus|Keresési szűrő értéke fürttanúsítvány helyének azonosításához használt. |
 |ClusterX509FindValueSecondary |sztring, alapértelmezett érték a "" |Dinamikus|Keresési szűrő értéke fürttanúsítvány helyének azonosításához használt. |
 |ClusterX509StoreName |sztring, alapértelmezett érték a "Saját" |Dinamikus|X.509 tanúsítvány tároló, amely tartalmazza a fürtön belüli kommunikáció fürttanúsítvány neve. |
-|EndApplicationPortRange |Int, alapértelmezett érték 0 |Statikus|A teljes (nincs inkluzív) alrendszer üzemeltető által kezelt alkalmazás port. Szükséges, ha EndpointFilteringEnabled értéke igaz, a üzemeltetési. |
+|EndApplicationPortRange |int, alapértelmezett érték 0 |Statikus|A teljes (nincs inkluzív) alrendszer üzemeltető által kezelt alkalmazás port. Szükséges, ha EndpointFilteringEnabled értéke igaz, a üzemeltetési. |
 |ServerAuthX509FindType |sztring, alapértelmezett "FindByThumbprint" |Dinamikus|Azt jelzi, hogy a kiszolgálói tanúsítvány a ServerAuthX509StoreName támogatott értéke által meghatározott tárolóban lévő keresése: FindByThumbprint; FindBySubjectName. |
 |ServerAuthX509FindValue |sztring, alapértelmezett érték a "" |Dinamikus|Keresési szűrő kiszolgálói tanúsítvány megkereséséhez használt érték. |
 |ServerAuthX509FindValueSecondary |sztring, alapértelmezett érték a "" |Dinamikus|Keresési szűrő kiszolgálói tanúsítvány megkereséséhez használt érték. |
 |ServerAuthX509StoreName |sztring, alapértelmezett érték a "Saját" |Dinamikus|X.509 tanúsítvány tároló, amely tartalmazza a entrée service-tanúsítvány neve. |
-|StartApplicationPortRange |Int, alapértelmezett érték 0 |Statikus|Az üzemeltető alrendszer által kezelt alkalmazás portok kezdete. Szükséges, ha EndpointFilteringEnabled értéke igaz, a üzemeltetési. |
+|StartApplicationPortRange |int, alapértelmezett érték 0 |Statikus|Az üzemeltető alrendszer által kezelt alkalmazás portok kezdete. Szükséges, ha EndpointFilteringEnabled értéke igaz, a üzemeltetési. |
 |StateTraceInterval |Idő (másodpercben), az alapértelmezett érték 300 |Statikus|Adja meg az időtartam másodpercben. A csomópont állapota minden egyes csomóponton és az akár FM/FMM csomópont nyomkövetés intervallumát. |
 |UserRoleClientX509FindType |sztring, alapértelmezett "FindByThumbprint" |Dinamikus|Azt jelzi, hogy a tárolóban UserRoleClientX509StoreName támogatott értéke által meghatározott tanúsítvány keresése: FindByThumbprint; FindBySubjectName. |
 |UserRoleClientX509FindValue |sztring, alapértelmezett érték a "" |Dinamikus|Keresési szűrő keresse meg az alapértelmezett felhasználói szerepkörhöz FabricClient tanúsítványt használt érték. |
@@ -230,7 +260,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |ReplicaRestartWaitDuration|Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(60.0 * 30)|Nem engedélyezett|Adja meg az időtartam másodpercben. Ez az a ReplicaRestartWaitDuration a FMService számára |
 |StandByReplicaKeepDuration|Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(3600.0 * 24 * 7)|Nem engedélyezett|Adja meg az időtartam másodpercben. Ez az a StandByReplicaKeepDuration a FMService számára |
 |TargetReplicaSetSize|Int, alapértelmezett érték 7|Nem engedélyezett|Ez a Windows Fabric megőrzi FM replikák célszáma. Az FM adatok; nagyobb megbízhatóság érdekében eredménye nagyobb a teljesítmény kis vonatkozóan kompromisszumot jelent. |
-|UserMaxStandByReplicaCount |Int, alapértelmezett érték 1 |Dinamikus|Az alapértelmezett maximális található StandBy replikák száma, hogy a rendszer megőrzi a szolgáltatást. |
+|UserMaxStandByReplicaCount |int, alapértelmezett értéke 1 |Dinamikus|Az alapértelmezett maximális található StandBy replikák száma, hogy a rendszer megőrzi a szolgáltatást. |
 |UserReplicaRestartWaitDuration |Idő (másodpercben), alapértelmezett érték a 60.0 * 30 |Dinamikus|Adja meg az időtartam másodpercben. Ha egy megőrzött replika leáll; Ennek az időtartamnak a replika ismét elérhető nem lesz új helyettesítő replikák (amihez egy másolatot, az állam) létrehozása előtt megvárja, hogy mely Windows Fabric. |
 |UserStandByReplicaKeepDuration |Idő (másodpercben), alapértelmezett érték a 3600.0 * 24 * 7 |Dinamikus|Adja meg az időtartam másodpercben. Amikor egy megőrzött replika térjen vissza a lefelé állapotból; Ez előfordulhat, hogy már helyett. Ez az időzítő határozza meg, mennyi ideig a FM fogja megőrizni a készenléti replika előtt, és elveti azt. |
 
@@ -240,7 +270,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |CompletedActionKeepDurationInSeconds | Int, az alapértelmezett érték 604800 |Statikus| Ez a körülbelül mennyi műveleteket, amelyeket a Terminálszolgáltatások állapotban tartani. Ez is attól függ, StoredActionCleanupIntervalInSeconds; mivel a tisztítással csak munkát adott időközönként. 604800 befejezéséig 7 nap. |
 |DataLossCheckPollIntervalInSeconds|int, alapértelmezett érték 5|Statikus|Ez az, hogy a rendszer hajt végre, miközben az adatvesztés fordulhat elő, hogy az ellenőrzések között eltelt idő. Az adatok elvesztése száma kiszolgálónként belső iteráció ellenőrzött hányszor DataLossCheckWaitDurationInSeconds ez van. |
 |DataLossCheckWaitDurationInSeconds|int, alapértelmezett értéke 25|Statikus|Az Összesen ennyi ideig; másodperc; hogy adatvesztés fordulhat elő, hogy a rendszer várakozik. Ez belső használatra szolgál, a StartPartitionDataLossAsync() api meghívásakor. |
-|MinReplicaSetSize |Int, alapértelmezett érték 0 |Statikus|A MinReplicaSetSize FaultAnalysisService számára. |
+|MinReplicaSetSize |int, alapértelmezett érték 0 |Statikus|A MinReplicaSetSize FaultAnalysisService számára. |
 |PlacementConstraints | sztring, alapértelmezett érték a ""|Statikus| A PlacementConstraints FaultAnalysisService számára. |
 |QuorumLossWaitDuration | Idő (másodpercben), alapértelmezett érték a MaxValue |Statikus|Adja meg az időtartam másodpercben. A QuorumLossWaitDuration FaultAnalysisService számára. |
 |ReplicaDropWaitDurationInSeconds|int, alapértelmezett 600|Statikus|Ezt a paramétert használja az adatvesztés API-t kell meghívni. Azt szabályozza, hogy a rendszer mennyi ideig várjon való eltávolítása után első eldobott replika replika belsőleg meghívásainak rajta. |
@@ -248,7 +278,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |StandByReplicaKeepDuration| Idő (másodpercben), alapértelmezett érték (60*24*7) perc |Statikus|Adja meg az időtartam másodpercben. A StandByReplicaKeepDuration FaultAnalysisService számára. |
 |StoredActionCleanupIntervalInSeconds | Int, alapértelmezett érték a 3600 |Statikus|Ez az, hogy milyen gyakran törlődnek a tárolóban. Csak azokat a műveleteket, terminál állapotban; és, amely legalább befejeződött ezelőtt CompletedActionKeepDurationInSeconds lesz eltávolítva. |
 |StoredChaosEventCleanupIntervalInSeconds | Int, alapértelmezett érték a 3600 |Statikus|Ez az a tároló karbantartása; naplózni gyakoriságát. Ha az események száma legfeljebb 30000; a karbantartás pillanattal a rendszer. |
-|TargetReplicaSetSize |Int, alapértelmezett érték 0 |Statikus|NOT_PLATFORM_UNIX_START a TargetReplicaSetSize FaultAnalysisService számára. |
+|TargetReplicaSetSize |int, alapértelmezett érték 0 |Statikus|NOT_PLATFORM_UNIX_START a TargetReplicaSetSize FaultAnalysisService számára. |
 
 ## <a name="federation"></a>Összevonás
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
@@ -301,8 +331,8 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |ConsiderWarningAsError |Bool, alapértelmezett érték a False (hamis) |Statikus|A fürt állapotának kiértékelési házirend: figyelmeztetések hibák számít. |
-|MaxPercentUnhealthyApplications | Int, alapértelmezett érték 0 |Statikus|A fürt állapotának kiértékelési házirend: sérült alkalmazások maximális százalékos a fürt állapota megfelelő lesz engedélyezett. |
-|MaxPercentUnhealthyNodes | Int, alapértelmezett érték 0 |Statikus|A fürt állapotának kiértékelési házirend: sérült csomópontok maximális százalékát a fürt állapota megfelelő lesz engedélyezett. |
+|MaxPercentUnhealthyApplications | int, alapértelmezett érték 0 |Statikus|A fürt állapotának kiértékelési házirend: sérült alkalmazások maximális százalékos a fürt állapota megfelelő lesz engedélyezett. |
+|MaxPercentUnhealthyNodes | int, alapértelmezett érték 0 |Statikus|A fürt állapotának kiértékelési házirend: sérült csomópontok maximális százalékát a fürt állapota megfelelő lesz engedélyezett. |
 
 ## <a name="healthmanagerclusterupgradehealthpolicy"></a>HealthManager/ClusterUpgradeHealthPolicy
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
@@ -380,12 +410,12 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="ktllogger"></a>KtlLogger
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|AutomaticMemoryConfiguration |Int, alapértelmezett érték 1 |Dinamikus|Azt a jelzőt, amely azt jelzi, ha a memória beállításait konfigurálni kell, hogy dinamikusan és automatikusan. Ha a nulla, majd a memória-konfigurációs beállítások közvetlenül használhatók, és ne módosítsa a rendszer feltételek alapján. Ha az egyik, majd a memória beállításainak konfigurálása automatikusan történik, ezért változhat a rendszer feltételek alapján. |
-|MaximumDestagingWriteOutstandingInKB | Int, alapértelmezett érték 0 |Dinamikus|A KB-os, hogy a megosztott naplót a modern, a dedikált napló előzetes száma. A 0 korlátlan jelzi.
+|AutomaticMemoryConfiguration |int, alapértelmezett értéke 1 |Dinamikus|Azt a jelzőt, amely azt jelzi, ha a memória beállításait konfigurálni kell, hogy dinamikusan és automatikusan. Ha a nulla, majd a memória-konfigurációs beállítások közvetlenül használhatók, és ne módosítsa a rendszer feltételek alapján. Ha az egyik, majd a memória beállításainak konfigurálása automatikusan történik, ezért változhat a rendszer feltételek alapján. |
+|MaximumDestagingWriteOutstandingInKB | int, alapértelmezett érték 0 |Dinamikus|A KB-os, hogy a megosztott naplót a modern, a dedikált napló előzetes száma. A 0 korlátlan jelzi.
 |SharedLogId |sztring, alapértelmezett érték a "" |Statikus|Közös naplózási tároló egyedi GUID azonosítója. Használatát "" Ha az alapértelmezett elérési út a fabric adatgyökere alatt. |
 |SharedLogPath |sztring, alapértelmezett érték a "" |Statikus|Helyre helyezi el a megosztott naplózási tároló elérési útja és fájlneve neve. Használatát "" az alapértelmezett elérési út alapján a fabric adatgyökere használatával. |
 |SharedLogSizeInMB |Int, az alapértelmezett érték 8192 |Statikus|Az a közös naplózási tároló lefoglalása MB száma. |
-|WriteBufferMemoryPoolMaximumInKB | Int, alapértelmezett érték 0 |Dinamikus|A száma, hogy az írási memória pufferkészletben akár nő KB. A 0 korlátlan jelzi. |
+|WriteBufferMemoryPoolMaximumInKB | int, alapértelmezett érték 0 |Dinamikus|A száma, hogy az írási memória pufferkészletben akár nő KB. A 0 korlátlan jelzi. |
 |WriteBufferMemoryPoolMinimumInKB |Int, az alapértelmezett érték 8388608 |Dinamikus|Kezdetben a írási pufferkészlet-memória lefoglalása KB száma. Használja a 0 korlátlan alapértelmezett jelzi az alábbi SharedLogSizeInMB összhangban kell lennie. |
 
 ## <a name="management"></a>Kezelés
@@ -414,7 +444,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="namingservice"></a>NamingService
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|GatewayServiceDescriptionCacheLimit |Int, alapértelmezett érték 0 |Statikus|A fenntartani a gyorsítótárban LRU szolgáltatás leírása (0: Nincs korlát beállítása) elnevezési átjárónál bejegyzések maximális száma. |
+|GatewayServiceDescriptionCacheLimit |int, alapértelmezett érték 0 |Statikus|A fenntartani a gyorsítótárban LRU szolgáltatás leírása (0: Nincs korlát beállítása) elnevezési átjárónál bejegyzések maximális száma. |
 |MaxClientConnections |Int, alapértelmezett érték 1000 |Dinamikus|A maximálisan megengedett száma átjáró ügyfélkapcsolatok száma. |
 |MaxFileOperationTimeout |Idő (másodpercben), az alapértelmezett érték 30 |Dinamikus|Adja meg az időtartam másodpercben. A fájl store szolgáltatási művelet számára engedélyezett maximális időkorlát. Próbáljon nagyobb időtúllépést megadó kérelmeket a rendszer elutasítja. |
 |MaxIndexedEmptyPartitions |Int, alapértelmezett érték 1000 |Dinamikus|Az értesítési gyorsítótár újracsatlakozására ügyfelek szinkronizálásához indexelt, mely akkor is üres partíciók maximális száma. Ez a szám fent üres partíciókat növekvő keresési verzió az indexből törlődni fog. Újracsatlakozás a ügyfelek továbbra is szinkronizálása és kihagyott üres partíció frissítéseket; de a szinkronizálási protokoll drágább válik. |
@@ -428,7 +458,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |QuorumLossWaitDuration | Idő (másodpercben), alapértelmezett érték a MaxValue |Nem engedélyezett| Adja meg az időtartam másodpercben. Ha egy elnevezési szolgáltatásban bekerült kvórum elvesztése; az időmérő elindul. A lejárat után a FM figyelembe veszi a lefelé replikákat elveszett; és megpróbálja helyreállítani a kvórum. Nem, hogy ez az adatvesztést eredményezhet. |
 |RepairInterval | Idő (másodpercben), alapértelmezett érték az 5 |Statikus| Adja meg az időtartam másodpercben. Indul el, amelyben az elnevezési inkonzisztenciát javítsa ki a szolgáltató tulajdonosa és a tulajdonos neve közötti időköz. |
 |ReplicaRestartWaitDuration | Idő (másodpercben), az alapértelmezett érték (60.0 * 30)|Nem engedélyezett| Adja meg az időtartam másodpercben. Ha egy elnevezési szolgáltatásban replika leáll; az időmérő elindul. A lejárat után a FM megkezdik cserélje le a replikákat, amelyek le (azt nem még tartja őket elveszett). |
-|ServiceDescriptionCacheLimit | Int, alapértelmezett érték 0 |Statikus| Karbantartása az LRU szolgáltatás adatleíró gyorsítótár a Naming Store szolgáltatás (0: Nincs korlát beállítása) a bejegyzések maximális száma. |
+|ServiceDescriptionCacheLimit | int, alapértelmezett érték 0 |Statikus| Karbantartása az LRU szolgáltatás adatleíró gyorsítótár a Naming Store szolgáltatás (0: Nincs korlát beállítása) a bejegyzések maximális száma. |
 |ServiceNotificationTimeout |Idő (másodpercben), az alapértelmezett érték 30 |Dinamikus|Adja meg az időtartam másodpercben. Az időtúllépés használatos, ha a szolgáltatási értesítések kézbesítése az ügyfélnek. |
 |StandByReplicaKeepDuration | Idő (másodpercben), alapértelmezett érték a 3600.0 * 2 |Nem engedélyezett| Adja meg az időtartam másodpercben. Ha egy elnevezési szolgáltatásban replika térjen vissza egy lefelé állapotból; Ez előfordulhat, hogy már helyett. Ez az időzítő határozza meg, mennyi ideig a FM fogja megőrizni a készenléti replika előtt, és elveti azt. |
 |TargetReplicaSetSize |Int, alapértelmezett érték 7 |Nem engedélyezett|A replika száma mindegyik partíció az elnevezési szolgáltatásban tároló állítja be. Replikakészletek számának növelése növeli az az információ a Naming Store szolgáltatás; a megbízhatósági szint a változás, hogy az adatok elvesznek eredményeként csomóponthibáknak; csökkentésével a Windows Fabric, és mennyi ideig megnövekedett terhelés áron vesz igénybe az elnevezési adatok frissítését.|
@@ -464,19 +494,19 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 | --- | --- | --- | --- |
 |Számlálók |Sztring | Dinamikus |Gyűjtendő teljesítményszámlálókat vesszővel tagolt listája. |
 |IsEnabled |Bool, alapértelmezett érték az IGAZ | Dinamikus |Jelző azt jelzi, hogy engedélyezve van-e a helyi csomóponton számláló teljesítménygyűjtés. |
-|MaxCounterBinaryFileSizeInMB |Int, alapértelmezett érték 1 | Dinamikus |Maximális mérete (MB) számláló teljesítménye bináris fájl esetében. |
+|MaxCounterBinaryFileSizeInMB |int, alapértelmezett értéke 1 | Dinamikus |Maximális mérete (MB) számláló teljesítménye bináris fájl esetében. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int, alapértelmezett érték 10 | Dinamikus |Maximális időköz (másodperc) után, amely egy új teljesítmény számláló bináris fájl jön létre. |
 |SamplingIntervalInSeconds |Int, alapértelmezett érték 60 | Dinamikus |Mintavételi időköz gyűjtött teljesítményszámlálók. |
 
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|AffinityConstraintPriority | Int, alapértelmezett érték 0 | Dinamikus|Meghatározza, hogy a kapcsolat korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
-|ApplicationCapacityConstraintPriority | Int, alapértelmezett érték 0 | Dinamikus|Meghatározza, hogy a kapacitás korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
+|AffinityConstraintPriority | int, alapértelmezett érték 0 | Dinamikus|Meghatározza, hogy a kapcsolat korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
+|ApplicationCapacityConstraintPriority | int, alapértelmezett érték 0 | Dinamikus|Meghatározza, hogy a kapacitás korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
 |AutoDetectAvailableResources|bool, alapértelmezett értéke igaz|Statikus|Ez a konfiguráció aktiválják (Processzor és memória) csomóponton elérhető erőforrások automatikus felismerése Ha ez a konfiguráció beállítása true – rendelkezéseitől olvassa el a valódi kapacitások és javítsa ki azokat, ha a felhasználó rossz fürt(ök) megadva, vagy nem adhat meg hozzájuk minden Ha ez a konfiguráció értéke false - lesz  egy figyelmeztetés, hogy a felhasználó rossz fürt(ök); megadott nyomkövetési de a nem megfelelő. ami azt jelenti, hogy a felhasználó szeretne kapni a megadott kapacitás > mint a csomópont valóban rendelkezik, vagy ha a kapacitások nincs definiálva; azt fogja feltételezni, hogy korlátlan kapacitásra |
 |BalancingDelayAfterNewNode | Idő (másodpercben), alapértelmezett érték a 120 |Dinamikus|Adja meg az időtartam másodpercben. Nem indulnak tevékenységek terheléselosztás egy új csomópont a felvett ezen az időn belül. |
 |BalancingDelayAfterNodeDown | Idő (másodpercben), alapértelmezett érték a 120 |Dinamikus|Adja meg az időtartam másodpercben. Nem indulnak tevékenységek terheléselosztás egy csomópont le esemény után ezen az időn belül. |
-|CapacityConstraintPriority | Int, alapértelmezett érték 0 | Dinamikus|Meghatározza, hogy a kapacitás korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
+|CapacityConstraintPriority | int, alapértelmezett érték 0 | Dinamikus|Meghatározza, hogy a kapacitás korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, az alapértelmezett érték 20 | Dinamikus|Meghatározza, hogy hány egymást követő alkalommal sem, amely ResourceBalancer által kiállított áthelyezések száma – a rendszer elveti előtt kell elvégezni, diagnosztika és állapotával kapcsolatos figyelmeztetések vannak kibocsátva. Negatív: Nincsenek figyelmeztetések rendelkezésre e feltétel alapján. |
 |ConstraintFixPartialDelayAfterNewNode | Idő (másodpercben), alapértelmezett érték a 120 |Dinamikus| Adja meg az időtartam másodpercben. DDo FaultDomain nem javítása és UpgradeDomain megkötés megsértésének egy új csomópont a felvett ezen az időn belül. |
 |ConstraintFixPartialDelayAfterNodeDown | Idő (másodpercben), alapértelmezett érték a 120 |Dinamikus| Adja meg az időtartam másodpercben. Nem Fix FaultDomain és UpgradeDomain megkötés megsértésének ne egy csomópont le esemény után ezen az időn belül. |
@@ -486,7 +516,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |DetailedNodeListLimit | int, alapértelmezés szerinti 15 |Dinamikus| A csomópontok maximális száma a helyezett replika jelentések csonkolás előtt tartalmazza megkötést számát határozza meg. |
 |DetailedPartitionListLimit | int, alapértelmezés szerinti 15 |Dinamikus| Diagnosztikai bejegyzésenként egy korlátozást a diagnosztika a csonkolás előtt közé tartozik a partíciók száma határozza meg. |
 |DetailedVerboseHealthReportLimit | Int, az alapértelmezett érték 200 | Dinamikus|Határozza meg, hogy hányszor helyezett replikájának előtt rendszerhez kell tartósan helyezett részletes rendszerállapot-jelentések vannak kibocsátva. |
-|FaultDomainConstraintPriority | Int, alapértelmezett érték 0 |Dinamikus| Meghatározza, hogy a tartalék tartomány korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
+|FaultDomainConstraintPriority | int, alapértelmezett érték 0 |Dinamikus| Meghatározza, hogy a tartalék tartomány korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
 |GlobalMovementThrottleCountingInterval | Idő (másodpercben), alapértelmezett érték a 600 |Statikus| Adja meg az időtartam másodpercben. Adja meg, amelyek esetében szeretne nyomon követni (GlobalMovementThrottleThreshold együtt használva) a tartomány replika típusú áthelyezések száma az elmúlt időköz hossza. Állítható 0 figyelmen kívül hagyja a globális szabályozás elő. |
 |GlobalMovementThrottleThreshold | Uint, alapértelmezett érték 1000 |Dinamikus| Áthelyezések száma – a terheléselosztás fázisban az elmúlt időszakban GlobalMovementThrottleCountingInterval által jelzett engedélyezett maximális számát. |
 |GlobalMovementThrottleThresholdForBalancing | Uint, alapértelmezett érték 0 | Dinamikus|Áthelyezések száma – az elmúlt időszakban GlobalMovementThrottleCountingInterval által jelzett fázisban terheléselosztás engedélyezett maximális számát. 0 azt jelzi, hogy nincs korlát. |
@@ -495,7 +525,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |GlobalMovementThrottleThresholdPercentageForBalancing|dupla az alapértelmezett érték 0|Dinamikus|Áthelyezések száma – terheléselosztási fázisában (a PLB replikák száma százalékában kifejezve) az elmúlt időszakban GlobalMovementThrottleCountingInterval által jelzett engedélyezett maximális számát. 0 azt jelzi, hogy nincs korlát. Ha ez és a megadott GlobalMovementThrottleThresholdForBalancing; korlátozóbb korlát szolgál majd.|
 |InBuildThrottlingAssociatedMetric | sztring, alapértelmezett érték a "" |Statikus| A szabályozási társított metrika neve. |
 |InBuildThrottlingEnabled | Bool, alapértelmezett érték a False (hamis) |Dinamikus| Határozza meg a beépített szabályozás engedélyezve van-e. |
-|InBuildThrottlingGlobalMaxValue | Int, alapértelmezett érték 0 |Dinamikus|A globálisan engedélyezett a build replikák maximális száma. |
+|InBuildThrottlingGlobalMaxValue | int, alapértelmezett érték 0 |Dinamikus|A globálisan engedélyezett a build replikák maximális száma. |
 |InterruptBalancingForAllFailoverUnitUpdates | Bool, alapértelmezett érték a False (hamis) | Dinamikus|Meghatározza, hogy ha feladatátvételi egység frissítés bármely típusú megszakítási gyors vagy lassú terheléselosztási futtatni. A "false" terheléselosztási futtatása megszakad, ha a megadott FailoverUnit: a létrehozott és törlése; Hiányzik a replikák; módosította elsődleges replika helyére vagy a replikák száma megváltozott. Terheléselosztás a Futtatás nem szakad más esetekben – ha FailoverUnit: extra replikát; bármely replika jelző; megváltozott csak a partíció verzió vagy bármely egyéb módosítani. |
 |MinConstraintCheckInterval | Idő (másodpercben), az alapértelmezett érték 1 |Dinamikus| Adja meg az időtartam másodpercben. Határozza meg a minimális, hogy mennyi ideig kell telnie két egymást követő megkötés ellenőrizze kerekíti. |
 |MinLoadBalancingInterval | Idő (másodpercben), alapértelmezett érték az 5 |Dinamikus| Adja meg az időtartam másodpercben. Határozza meg a minimális, hogy mennyi ideig két egymást követő terheléselosztási kerekít előtt át kell adnia. |
@@ -506,18 +536,18 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |MoveParentToFixAffinityViolation | Bool, alapértelmezett érték a False (hamis) |Dinamikus| Beállítás, amely meghatározza a szülő replikák áthelyezhető-e kapcsolat megkötések javításához.|
 |PartiallyPlaceServices | Bool, alapértelmezett érték az IGAZ |Dinamikus| Meghatározza, hogy ha a fürt összes szolgáltatás replika kerülnek, "mindent vagy semmit" korlátozott megfelelő csomópontok megadott számukra.|
 |PlaceChildWithoutParent | Bool, alapértelmezett érték az IGAZ | Dinamikus|Beállítás, amely azt határozza meg, ha az alárendelt szolgáltatás replika is elhelyezni, ha nincs szülő replika nem fel. |
-|PlacementConstraintPriority | Int, alapértelmezett érték 0 | Dinamikus|Meghatározza a prioritását az elhelyezési korlátozás: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
+|PlacementConstraintPriority | int, alapértelmezett érték 0 | Dinamikus|Meghatározza a prioritását az elhelyezési korlátozás: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
 |PlacementConstraintValidationCacheSize | Int, alapértelmezett érték a 10000 |Dinamikus| A tábla elhelyezési korlátozás kifejezésében gyorsítótárazását és gyors ellenőrzés használt mérete korlátozza. |
 |PlacementSearchTimeout | Idő (másodpercben), alapértelmezett érték a 0.5-ös |Dinamikus| Adja meg az időtartam másodpercben. Ha például a szolgáltatások; Keresse meg a hosszú, legfeljebb, mielőtt az eredményt visszaküldi. |
 |PLBRefreshGap | Idő (másodpercben), az alapértelmezett érték 1 |Dinamikus| Adja meg az időtartam másodpercben. Határozza meg a minimális, hogy mennyi ideig kell telnie PLB újra frissíti az állapotát. |
 |PreferredLocationConstraintPriority | Int, alapértelmezett érték 2| Dinamikus|Meghatározza a prioritását az előnyben részesített földrajzi megszorítás: 0: rögzített; 1: helyreállítható; 2: optimalizálás; negatív: figyelmen kívül hagyása |
 |PreventTransientOvercommit | Bool, alapértelmezett érték a False (hamis) | Dinamikus|Meghatározza, hogy kell PLB azonnal száma szabadul fel által kezdeményezett a kurzor erőforrásokon. Alapértelmezett; PLB kezdeményezheti kilép a, és ugyanazon a csomóponton átmeneti hozhat létre, amely az áthelyezés szükségesnél. A paraméter TRUE értékre megakadályozza, hogy ezeket milyen, overcommits és igény szerinti töredezettségmentesítés (más néven placementWithMove) tiltható le. |
-|ScaleoutCountConstraintPriority | Int, alapértelmezett érték 0 |Dinamikus| Meghatározza, hogy a horizontális felskálázás száma korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
+|ScaleoutCountConstraintPriority | int, alapértelmezett érték 0 |Dinamikus| Meghatározza, hogy a horizontális felskálázás száma korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
 |SwapPrimaryThrottlingAssociatedMetric | sztring, alapértelmezett érték a ""|Statikus| A szabályozási társított metrika neve. |
 |SwapPrimaryThrottlingEnabled | Bool, alapértelmezett érték a False (hamis)|Dinamikus| Határozza meg, hogy a lapozófájl-kapacitás-elsődleges-szabályozás engedélyezve van-e. |
-|SwapPrimaryThrottlingGlobalMaxValue | Int, alapértelmezett érték 0 |Dinamikus| Lapozófájl-kapacitás elsődleges replika globálisan engedélyezett maximális száma. |
+|SwapPrimaryThrottlingGlobalMaxValue | int, alapértelmezett érték 0 |Dinamikus| Lapozófájl-kapacitás elsődleges replika globálisan engedélyezett maximális száma. |
 |TraceCRMReasons |Bool, alapértelmezett érték az IGAZ |Dinamikus|Megadja, hogy nyomon követése a tulajdonos áthelyezések száma – a működési események csatorna CRM okait. |
-|UpgradeDomainConstraintPriority | Int, alapértelmezett érték 1| Dinamikus|Meghatározza, hogy a frissítési tartomány korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
+|UpgradeDomainConstraintPriority | int, alapértelmezett értéke 1| Dinamikus|Meghatározza, hogy a frissítési tartomány korlátozás prioritását: 0: rögzített; 1: helyreállítható; negatív: figyelmen kívül hagyja. |
 |UseMoveCostReports | Bool, alapértelmezett érték a False (hamis) | Dinamikus|Arra utasítja a figyelmen kívül hagyja a pontozó függvény; költség eleme, LB a kurzor jobban elosztott terhelésű elhelyezésre eredményül kapott potenciálisan nagy száma. |
 |UseSeparateSecondaryLoad | Bool, alapértelmezett érték az IGAZ | Dinamikus|Beállítás, amely azt határozza meg, ha használja a különböző másodlagos betöltése. |
 |ValidatePlacementConstraint | Bool, alapértelmezett érték az IGAZ |Dinamikus| Itt adhatja meg, e szolgáltatás PlacementConstraint kifejezése érvényesítési szolgáltatások ServiceDescription frissítésekor. |
@@ -799,12 +829,12 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
 |AutoupgradeEnabled | Bool, alapértelmezett érték az IGAZ |Statikus| Automatikus lekérdezési és frissítési művelet a cél-állapot fájl alapján. |
-|MinReplicaSetSize |Int, alapértelmezett érték 0 |Statikus |A MinReplicaSetSize UpgradeOrchestrationService számára.
+|MinReplicaSetSize |int, alapértelmezett érték 0 |Statikus |A MinReplicaSetSize UpgradeOrchestrationService számára.
 |PlacementConstraints | sztring, alapértelmezett érték a "" |Statikus| A PlacementConstraints UpgradeOrchestrationService számára. |
 |QuorumLossWaitDuration | Idő (másodpercben), alapértelmezett érték a MaxValue |Statikus| Adja meg az időtartam másodpercben. A QuorumLossWaitDuration UpgradeOrchestrationService számára. |
 |ReplicaRestartWaitDuration | Idő (másodpercben), az alapértelmezett érték 60 perc|Statikus| Adja meg az időtartam másodpercben. A ReplicaRestartWaitDuration UpgradeOrchestrationService számára. |
 |StandByReplicaKeepDuration | Idő (másodpercben), az alapértelmezett érték 60*24*7 perc |Statikus| Adja meg az időtartam másodpercben. A StandByReplicaKeepDuration UpgradeOrchestrationService számára. |
-|TargetReplicaSetSize |Int, alapértelmezett érték 0 |Statikus |A TargetReplicaSetSize UpgradeOrchestrationService számára. |
+|TargetReplicaSetSize |int, alapértelmezett érték 0 |Statikus |A TargetReplicaSetSize UpgradeOrchestrationService számára. |
 |UpgradeApprovalRequired | Bool, alapértelmezett érték a False (hamis) | Statikus|Beállítása, hogy a folytatás előtt rendszergazdai jóváhagyás megkövetelése, kód frissítése. |
 
 ## <a name="upgradeservice"></a>UpgradeService

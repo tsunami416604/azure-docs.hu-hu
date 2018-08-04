@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: RHEL virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs'
-description: Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások
+title: 'Az Azure Active Directory Domain Services: Az RHEL virtuális gépek csatlakoztatása felügyelt tartományhoz |} A Microsoft Docs'
+description: A Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,136 +12,136 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: fceeb9655562d7abf6930cc484b4a9eb275ee81e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e84a4b0c1f3496bc26f4a8830f7a08ddd5506338
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330801"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503723"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 virtuális gépek csatlakoztatása felügyelt tartományokhoz
-Ez a cikk bemutatja, hogyan Red Hat Enterprise Linux (RHEL) 7 virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz.
+Ez a cikk bemutatja, hogyan Red Hat Enterprise Linux (RHEL) 7 virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatásokkal felügyelt tartományban.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 A cikkben szereplő feladatok elvégzéséhez szüksége:  
 1. Egy érvényes **Azure-előfizetés**.
-2. Egy **Azure AD-címtár** -vagy egy helyszíni címtár vagy egy csak felhőalapú directory szinkronizálva.
-3. **Azure AD tartományi szolgáltatások** az Azure AD-címtár engedélyezni kell. Ha még nem tette meg, az összes ismertetett feladatok végrehajtásával a [első lépések útmutató](active-directory-ds-getting-started.md).
-4. Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálóként konfigurálta a felügyelt tartományra IP-címét. További információkért lásd: [az Azure virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
-5. Végezze el a szükséges lépéseket [szinkronizálja a jelszavakat az Azure AD tartományi szolgáltatások által kezelt tartomány](active-directory-ds-getting-started-password-sync.md).
+2. Egy **Azure AD-címtár** -vagy az egy helyszíni címtár vagy egy csak felhőalapú címtárral szinkronizálja.
+3. **Az Azure AD Domain Services** engedélyezve kell lennie az Azure AD-címtárban. Ha még nem tette, minden ismertetett feladatok végrehajtásával a [a kezdeti lépések útmutatóban](active-directory-ds-getting-started.md).
+4. Győződjön meg arról, hogy már konfigurálta az IP-címek a felügyelt tartomány a virtuális hálózat DNS-kiszolgálóként. További információkért lásd: [az Azure virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
+5. Végezze el a szükséges lépéseket [szinkronizálja a jelszavakat az Azure AD tartományi szolgáltatásokkal felügyelt tartományban](active-directory-ds-getting-started-password-sync.md).
 
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Red Hat Enterprise Linux virtuális gép kiépítése
-Az Azure, a következő módszerekkel történő RHEL 7 virtuális gép kiépítése:
+Az Azure-ban, az alábbi módszerek bármelyikével RHEL 7 virtuális gép kiépítése:
 * [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 > [!IMPORTANT]
-> * A virtuális gép telepítése a **ugyanazt a virtuális hálózatot, amelyben engedélyezte az Azure AD tartományi szolgáltatások**.
-> * Válasszon egy **másik alhálózat** fut, amelyen engedélyezte az Azure AD tartományi szolgáltatásokat.
+> * Telepítse a virtuális gépet, azokat a **azonos virtuális hálózatban, amelyiken engedélyezte az Azure AD Domain Services**.
+> * Válasszon ki egy **másik alhálózatot** fut, amelyiken engedélyezte az Azure AD tartományi szolgáltatásokat.
 >
 
 
-## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Távoli csatlakozás az újonnan kiépített Linux virtuális gép
-Az RHEL 7.2 rendszerű virtuális gép az Azure-ban van kiépítve. A következő feladata távolról csatlakozni a virtuális gépet a virtuális gép kiépítése során létrehozott helyi rendszergazdai fiók használatával.
+## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Távoli csatlakozás az újonnan létrehozott Linux virtuális gép
+Az RHEL 7.2 virtuális gép az Azure-ban van kiépítve. A következő feladata távolról csatlakozni a virtuális gépet a virtuális gép kiépítése során létrehozott helyi rendszergazdai fiókkal.
 
-A cikk utasításait [Linuxot futtató virtuális gép bejelentkezés](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Kövesse a cikk a [bejelentkezés egy Linux rendszerű virtuális gép](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>A Linux virtuális gép a gazdafájl konfigurálása
-Az SSH terminálban az/etc/hosts fájl szerkesztése, és frissítse a gép IP-cím és állomásnevet.
+## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>A Linux rendszerű virtuális gép hosts fájljának konfigurálása
+A terminálban SSH a Hosts fájl szerkesztése, és frissítse a gép IP-cím és az állomásnevet.
 
 ```
 sudo vi /etc/hosts
 ```
 
-A hosts fájlt adja meg a következő értéket:
+Adja meg a hosts fájl a következő értéket:
 
 ```
 127.0.0.1 contoso-rhel.contoso100.com contoso-rhel
 ```
-"Contoso100.com" Íme a felügyelt tartományok DNS-tartomány nevét. "contoso-rhel" az állomásnevet, amelyhez csatlakozik, a felügyelt tartományra RHEL virtuális gép.
+"Contoso100.com" Íme a felügyelt tartomány DNS-tartomány nevét. "contoso-rhel", amelyhez csatlakozik, a felügyelt tartományhoz RHEL virtuális gép állomásnevét.
 
 
-## <a name="install-required-packages-on-the-linux-virtual-machine"></a>A Linux virtuális gépre telepíti a szükséges csomagokat
-Következő lépésként telepítse a virtuális gépen a tartományhoz való csatlakozást a szükséges csomagokat. Az SSH terminált írja be a szükséges csomagok telepítése a következő parancsot:
+## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Telepítse a szükséges csomagokat a Linux rendszerű virtuális gépen
+Ezután telepítse a virtuális gép tartományhoz való csatlakozás a szükséges csomagokat. Az SSH terminálon írja be a következő parancsot a szükséges csomagok telepítéséhez:
 
     ```
     sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
     ```
 
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>A Linux virtuális gép csatlakoztatása felügyelt tartományhoz
-Most, hogy a szükséges csomagokat a Linux virtuális gépek vannak telepítve, a következő feladat a virtuális gép csatlakoztatása felügyelt tartományhoz.
+## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>A Linux rendszerű virtuális gép csatlakoztatása a felügyelt tartományhoz
+Most, hogy a szükséges csomagok telepítve vannak a Linux rendszerű virtuális gép, a következő feladata a virtuális gép csatlakoztatása a felügyelt tartományhoz.
 
-1. Az AAD tartományi szolgáltatásokra által kezelt tartomány felderítése. Az SSH terminálban írja be a következő parancsot:
+1. Fedezze fel az AAD tartományi szolgáltatásokkal felügyelt tartományban. Az SSH terminálon írja be a következő parancsot:
 
     ```
     sudo realm discover CONTOSO100.COM
     ```
 
      > [!NOTE]
-     > **Hibaelhárítás:** Ha *a kezdőtartomány felderítése* nem találja a felügyelt tartományok:
-     * Győződjön meg arról, hogy a tartomány elérhető-e a virtuális gépről (próbálja ping).
-     * Ellenőrizze, hogy a virtuális gép valóban már alkalmazva van az azonos virtuális hálózatban, amelyben a felügyelt tartományra érhető el.
-     * Ellenőrizze, hogy ha a DNS-kiszolgáló beállításait, a virtuális hálózat úgy, hogy a tartományvezérlők, a felügyelt tartományra mutasson frissítése befejeződött.
+     > **Hibaelhárítás:** Ha *a kezdőtartomány felderítése* nem találja a felügyelt tartomány:
+     * Győződjön meg arról, hogy a tartomány érhető el a virtuális gépről (ping. Próbálja meg).
+     * Ellenőrizze, hogy a virtuális gép valóban lett telepítve, az azonos virtuális hálózatban, amely a felügyelt tartomány érhető el.
+     * Ellenőrizze, hogy ha frissítette a DNS-kiszolgáló beállításainak a virtuális hálózathoz, hogy a felügyelt tartomány tartományvezérlőit mutasson.
      >
 
-2. Kerberos inicializálni. Az SSH terminálban írja be a következő parancsot:
+2. A Kerberos inicializálása. Az SSH terminálon írja be a következő parancsot:
 
     > [!TIP]
-    > * Adjon meg egy felhasználót, aki a "AAD DC rendszergazdák" csoportba tartozik.
-    > * Adja meg a tartomány nevét nagybetűvel, más kinit sikertelen lesz.
+    > * Győződjön meg arról, hogy megadja a felhasználó, aki az "AAD DC rendszergazdák" csoportba tartozik.
+    > * Adja meg a tartomány neve nagybetűvel, más kinit sikertelen lesz.
     >
 
     ```
     kinit bob@CONTOSO100.COM
     ```
 
-3. A számítógép csatlakoztatása a tartományhoz. Az SSH terminálban írja be a következő parancsot:
+3. A számítógép csatlakoztatása a tartományhoz. Az SSH terminálon írja be a következő parancsot:
 
     > [!TIP]
-    > Használja az előző lépést ("kinit") megadott ugyanazzal a fiókkal.
+    > Az azonos az előző lépésben (kinit) megadott felhasználói fiók használata.
     >
 
     ```
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
     ```
 
-Kell ("sikeresen regisztrált számítógép tartomány") üzenet jelenik meg, ha a gép sikeresen csatlakozott a felügyelt tartományra.
+Meg kell hibaüzenet jelenik meg ("sikeresen regisztrált számítógép tartomány") Ha a gép sikeresen csatlakozott a felügyelt tartományhoz.
 
 
-## <a name="verify-domain-join"></a>Ellenőrizze a tartományhoz való csatlakozást
-Győződjön meg arról, hogy a gép sikeresen csatlakoztatva lett a felügyelt tartományra. Csatlakozás a tartományhoz csatlakoztatott RHEL virtuális gép egy másik SSH-kapcsolat használatával. Tartományi felhasználói fiókot használja, és ellenőrizze, hogy megoldódott a felhasználói fiók megfelelően.
+## <a name="verify-domain-join"></a>A tartományhoz való csatlakozás ellenőrzéséhez
+Győződjön meg arról, hogy a gép sikeresen csatlakoztatva lett a felügyelt tartományhoz. Csatlakozhat a tartományhoz csatlakoztatott RHEL virtuális gép egy másik SSH-kapcsolat használatával. Egy tartományi fiókot használjon, és ezután ellenőrizze, hogy ha a felhasználói fióknak megfelelően megoldódott-e.
 
-1. A Terminálszolgáltatások az SSH-típus a következő parancsot a tartományhoz való csatlakozáshoz csatlakoztatott RHEL virtuális gép SSH használatával. A felügyelt tartományhoz tartozó tartományi fiókot használni (például "bob@CONTOSO100.COM" Ebben az esetben.)
+1. Az SSH a terminál írja be a következő parancsot a csatlakozás tartományhoz csatlakoztatott RHEL virtuális gép SSH-val. A felügyelt tartományhoz tartozó tartományi fiók használata (például "bob@CONTOSO100.COM" Ebben az esetben.)
     ```
     ssh -l bob@CONTOSO100.COM contoso-rhel.contoso100.com
     ```
 
-2. Az SSH terminált írja be a következő parancsot, hogy ha a kezdőkönyvtár megfelelően inicializálva.
+2. A terminálban SSH írja be a következő paranccsal tekintse meg, ha a kezdőkönyvtár megfelelően inicializálva.
     ```
     pwd
     ```
 
-3. Az SSH terminálban az alábbi paranccsal tekintheti meg, ha a csoporttagság megfelelően lehet megoldani.
+3. Az SSH terminálon írja be a megtekintéséhez, ha a csoporttagság megfelelően vannak feloldva a következő parancsot.
     ```
     id
     ```
 
 
-## <a name="troubleshooting-domain-join"></a>Hibaelhárítás a tartományhoz való csatlakozást
-Tekintse meg a [hibaelhárítás tartományhoz való csatlakozást](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) cikk.
+## <a name="troubleshooting-domain-join"></a>A tartományhoz való csatlakozás hibáinak elhárítása
+Tekintse meg a [hibaelhárítás tartományhoz való csatlakozás](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) cikk.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
-* [Windows Server virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Bejelentkezés a Linux rendszerű virtuális gép](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* [Kerberos telepítése](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
-* [Red Hat Enterprise Linux 7 - Windows-integrációs útmutatója](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)
+* [Az Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
+* [A Windows Server virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Bejelentkezés Linux rendszerű virtuális gép](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* [A Kerberos telepítése](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
+* [Red Hat Enterprise Linux 7 – Windows-integrációs útmutató](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)

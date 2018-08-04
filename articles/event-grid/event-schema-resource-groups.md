@@ -8,18 +8,26 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 006e1c88e10013085722927b8a9b909d98b89aae
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 407d9fd5b6f4d554af37b60edf12422f8816ac00
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480165"
+ms.locfileid: "39495322"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Az erőforráscsoportok az Azure Event Grid eseménysémája
 
 Ez a cikk a tulajdonságok és a séma biztosít erőforrás-csoport események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
 
-Az Azure-előfizetések és -erőforráscsoportok gridre bocsáthatja ki az azonos esemény típusú. Az esemény típusú erőforrások módosításához kapcsolódó. Az elsődleges különbség, hogy erőforráscsoportok gridre bocsáthatja ki az eseményeket az erőforrások az erőforráscsoporton belül, és az Azure-előfizetések eseményeire a PowerShell erőforrások küldik az előfizetésből. 
+Az Azure-előfizetések és -erőforráscsoportok gridre bocsáthatja ki az azonos esemény típusú. Az esemény típusú erőforrások módosításához kapcsolódó. Az elsődleges különbség, hogy erőforráscsoportok gridre bocsáthatja ki az eseményeket az erőforrások az erőforráscsoporton belül, és az Azure-előfizetések eseményeire a PowerShell erőforrások küldik az előfizetésből.
+
+Erőforrás-események PUT, PATCH, jön létre, és törlési műveletek küldött `management.azure.com`. POST és a GET műveletek nem hozható létre eseményeket. Az adatsík küldött műveletek (például `myaccount.blob.core.windows.net`) hozzon létre eseményeket.
+
+Amikor előfizet egy erőforráscsoport eseményeire, a végpont kapja meg az erőforráscsoport összes eseményt. Az események eseményt szeretne látni, például egy virtuális gép frissítése, de események, amelyek esetleg nem fontos számunkra, például az írt új bejegyzést az üzembe helyezési előzmények tartalmazhatnak. Az összes esemény fogadása a végpont és kód írása, amely feldolgozza a kezelni kívánt eseményeket, vagy beállíthatja a szűrőt az esemény-előfizetés létrehozásakor.
+
+Események programozott módon kezelje, rendezheti események megtekintésével a `operationName` értéket. Például az esemény-végpont lehet, hogy csak feldolgozni a műveletek eseményeit, amelyek egyenlőnek kell lennie `Microsoft.Compute/virtualMachines/write` vagy `Microsoft.Storage/storageAccounts/write`.
+
+Az esemény áll, akkor az erőforrás, amely a művelet céljaként megadott erőforrás-Azonosítóját. Erőforrás események szűréséhez állítsa be, adja meg, hogy az erőforrás létrehozásakor az esemény-előfizetés AZONOSÍTÓJÁT. Mintaszkriptek, lásd: [az előfizetés és erőforráscsoport - PowerShell szűrő](scripts/event-grid-powershell-resource-group-filter.md) vagy [az előfizetés és erőforráscsoport - Azure CLI-szűrő](scripts/event-grid-cli-resource-group-filter.md). Szűrés erőforrástípus szerint, használja az értéket a következő formátumban: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 ## <a name="available-event-types"></a>Rendelkezésre álló események típusai
 

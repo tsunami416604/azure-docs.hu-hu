@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: darosa
-ms.openlocfilehash: 8388a8988dec2629c5ab309f32b72ae45a157a02
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 51f2ad736ccbf27cafb05b8f68653f5effdecbf0
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281460"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503502"
 ---
-# <a name="azure-event-hubs-for-apache-kafka"></a>Az Azure Event Hubs-beli Apache kafka
+# <a name="azure-event-hubs-for-apache-kafka-preview"></a>Az Azure Event Hubs-beli Apache kafka (előzetes verzió)
 
 Az Event Hubs egy Kafka-végpontot, amely segítségével biztosít a meglévő által a Kafka-alapú alkalmazások futtatása a saját Kafka-fürt helyett. Az Event Hubs támogatja [Apache Kafka 1.0](https://kafka.apache.org/10/documentation.html) és újabb ügyfél-verziók, és együttműködik a meglévő Kafka-alkalmazások, beleértve a MirrorMaker. Módosítsa a kapcsolati karakterláncot, és megkezdheti a streamelés az Event hubsba a Kafka-protokollt használó alkalmazások eseményeit.
 

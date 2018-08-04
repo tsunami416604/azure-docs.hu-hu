@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Szolgáltatások |} Microsoft Docs'
-description: Az Azure Active Directory tartományi szolgáltatások jellemzői
+title: 'Az Azure Active Directory tartományi szolgáltatások: Funkciók |} A Microsoft Docs'
+description: Az Azure Active Directory Domain Services szolgáltatásokat
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,33 +12,33 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 5dd3cde69c6aa36c3d9cb3060dc6deb59ff74a5a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a64401792fd034fde98fe1330340b1ffaa7dfcc1
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214967"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505412"
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 ## <a name="features"></a>Szolgáltatások
-Az alábbi szolgáltatások az Azure AD tartományi szolgáltatások által felügyelt tartományok érhetők el.
+A következő funkciók érhetők el Azure AD tartományi szolgáltatásokkal felügyelt tartományban.
 
-* **Egyszerű üzembe helyezését:** Azure AD tartományi szolgáltatásokat az Azure AD-címtár néhány kattintással használatával engedélyezheti. A felügyelt tartományok csak felhőalapú felhasználói fiókokhoz és egy helyszíni címtárral szinkronizálja a felhasználói fiókokat tartalmazza.
-* **Tartományhoz való csatlakozást támogatása:** egyszerűen az Azure virtuális hálózat, a felügyelt tartományok érhető el a számítógépek tartományhoz való csatlakozást. A tartományhoz való csatlakozást élmény a Windows ügyfél és kiszolgáló operációs rendszerek works zökkenőmentesen Azure AD tartományi szolgáltatások által kiszolgált tartományok ellen. Használhatja az automatikus tartományhoz való csatlakozást tooling eszköz ilyen tartományok ellen is.
-* **Egy tartomány példány lehet az Azure AD-címtár:** egy egyetlen Active Directory-tartomány minden Azure AD-címtár is létrehozhat.
-* **Hozzon létre egyéni nevek tartományok:** hozhat létre Azure AD tartományi szolgáltatásokat használó tartományok egyéni nevű (például "contoso100.com"). Használhatja bármelyik ellenőrzött és érvényes vagy nem ellenőrzött tartomány nevét. Szükség esetén is létrehozhat egy tartományt a beépített tartományi utótaggal rendelkező (Ez azt jelenti, hogy "*. onmicrosoft.com") az Azure AD-címtár által kínált.
-* **Az Azure ad-vel integrált:** nem kell konfigurálniuk vagy az Azure AD tartományi szolgáltatásokra replikáció kezelésére. Felhasználói fiókok, a csoporttagságot és a felhasználói hitelesítő adatokat (jelszó) az Azure AD-címtár automatikusan elérhetők az Azure AD tartományi szolgáltatásokban. Új felhasználók, csoportok vagy az attribútumok változásait a Azure AD-bérlőn vagy a helyszíni címtár automatikusan szinkronizálódnak az Azure AD tartományi szolgáltatásokra.
-* **Az NTLM és Kerberos hitelesítés:** NTLM és Kerberos hitelesítés támogatása, a Windows-Integrated hitelesítést használó alkalmazások telepítése.
-* **A vállalati hitelesítő adatokat vagy jelszavakat:** jelszavak felhasználók az Azure ad bérlői az Azure AD tartományi szolgáltatások használata. Felhasználók tartományhoz való csatlakozást gépekre vállalati hitelesítő adataikkal, jelentkezzen be, interaktív vagy a távoli asztali kapcsolaton keresztül, és hitelesítést, a felügyelt tartományra.
-* **LDAP-kötés & LDAP olvassa el a támogatási szolgálathoz:** használható alkalmazások LDAP kötések Azure AD tartományi szolgáltatások által kiszolgált tartományokban lévő felhasználók hitelesítésére. Emellett használó alkalmazások LDAP olvasási műveletek lekérdezés felhasználó/számítógép attribútumait a könyvtárból is is dolgozhat Azure AD tartományi szolgáltatásokat.
-* **Biztonságos LDAP (LDAPS):** engedélyezheti a directory-elérés keresztül biztonságos LDAP (LDAPS). Biztonságos LDAP hozzáférést alapértelmezés szerint a virtuális hálózaton belül érhető el. Az interneten keresztül azonban biztonságos LDAP hozzáférést is engedélyezheti.
-* **Csoportházirend:** egyetlen beépített csoportházirend-objektum minden egyes használ a felhasználók és számítógépek tárolók kényszerítse a megfelelőséget szükséges biztonsági házirendek felhasználói fiókokhoz és a tartományhoz csatlakoztatott számítógépeken. Is a saját egyéni csoportházirend-objektumok létrehozása, és rendeljen hozzájuk egyéni szervezeti egységek [csoportházirendet](active-directory-ds-admin-guide-administer-group-policy.md).
-* **DNS kezelése:** a "AAD DC rendszergazdák" csoportba DNS kezelheti a felügyelt tartományok a jól ismert DNS-felügyeleti eszközök például a DNS felügyeleti beépülő MMC-modulban.
-* **Hozzon létre egyéni szervezeti egységekhez (OU-k):** a "AAD DC rendszergazdák" csoportba a felügyelt tartomány hozhat létre egyéni szervezeti egységekhez. Ezek a felhasználók teljes körű rendszergazdai jogosultságokkal kapnak egyéni szervezeti egységek, keresztül, így azok hozzáadására és eltávolítására szolgáltatásfiókok, számítógépek, csoportok stb. ezeket egyéni szervezeti egységek belül.
-* **Sok Azure globális régiókban elérhető:** tekintse meg a [Azure-szolgáltatások régiónként](https://azure.microsoft.com/regions/#services/) lapon találja azoknak az Azure-régiókban, amelyben az Azure AD tartományi szolgáltatások érhető el.
-* **Magas rendelkezésre állású:** Azure AD tartományi szolgáltatások kínál a magas rendelkezésre állást a tartományra. Ez a funkció magasabb hasznos üzemidő és rugalmasság hibákra vonatkozó kínál. Beépített állapotfigyelési ajánlatokat a sikertelen szervizelés alatt automatizálható, ha új példányok sikertelen példányt használ, és folyamatos kiszolgálása a tartomány fel forgó.
-* **AD-fiókot zárolási védelem:** felhasználói fiókok zárolt 30 percig öt érvénytelen jelszavak használata 2 percen belül. Fiókok 30 másodperc után automatikusan fel lesznek.
-* **Használja az tisztában kezelőeszközöket:** jól ismert Windows Server Active Directory felügyeleti eszközökkel, például az Active Directory felügyeleti központ vagy az Active Directory PowerShell segítségével felügyelheti a felügyelt tartományok.
+* **Egyszerű üzembe helyezési élmény:** engedélyezheti az Azure AD Domain Services használatával mindössze néhány kattintással az Azure AD-címtárhoz. A felügyelt tartományra csak felhőalapú felhasználói fiókok és a helyszíni címtárból szinkronizált felhasználói fiókok tartalmazza.
+* **Tartományhoz való csatlakozás támogatását:** könnyedén tartományhoz csatlakozó számítógépek érhető el a felügyelt tartományhoz az Azure virtuális hálózatban. A tartományhoz való csatlakozás élmény a Windows ügyfél és kiszolgáló operációs rendszerek működik zökkenőmentesen az Azure AD tartományi szolgáltatások által kiszolgált tartományok ellen. Használhatja ilyen tartományok elleni eszközök automatikus tartományhoz való csatlakozást.
+* **Az Azure AD-címtár egyik tartomány példányonként:** hozhat létre egy egyetlen Active Directory-tartomány minden egyes Azure AD-címtárhoz.
+* **Egyéni névvel rendelkező tartományok létrehozása:** (például "contoso100.com") nevű egyéni tartományok az Azure AD Domain Services használatával is létrehozhat. Használhatja az egyik ellenőrzött vagy nem ellenőrzött tartomány nevét. Igény szerint is létrehozhat egy tartományi beépített tartományutótagjával (azt jelenti, ' *. onmicrosoft.com ") az Azure AD-címtár által kínált.
+* **Az Azure AD-vel integrált:** , nem kell konfigurálni vagy felügyelni a replikálás az Azure AD tartományi szolgáltatásokat. Felhasználói fiókok, a csoporttagságokat és a felhasználói hitelesítő adatokat (jelszó) az Azure AD-címtár automatikusan elérhetők az Azure AD tartományi szolgáltatásokban. Új felhasználók, csoportok vagy az Azure AD-bérlő vagy a helyszíni címtár attribútumok változásait automatikusan szinkronizálja az Azure AD tartományi szolgáltatásokra.
+* **Az NTLM és Kerberos-hitelesítéshez:** támogatása az NTLM és Kerberos-hitelesítéshez, üzembe helyezheti a Windows-Integrated hitelesítést használó alkalmazások.
+* **Használja a vállalati hitelesítő adatok és jelszavak:** a bérlői az Azure AD tartományi szolgáltatások használata az Azure AD-felhasználó jelszavát. Felhasználók a vállalati hitelesítő adatait a tartományhoz csatlakozó gépek használja, jelentkezzen be interaktívan, vagy a távoli asztali kapcsolaton keresztül, és a felügyelt tartomány hitelesítése.
+* **LDAP-kötés & LDAP olvassa el a támogatás:** a felhasználók hitelesítése a tartományok Azure AD tartományi szolgáltatások által kiszolgált LDAP-kötések használó alkalmazások is használhatja. Emellett alkalmazásokat, amelyek használják az LDAP-olvasási műveletek lekérdezés felhasználó/számítógép-attribútumok a címtárból is dolgozhat ellen az Azure AD tartományi szolgáltatásokat.
+* **Biztonságos LDAP (LDAPS):** , lehetővé teszik, hogy a könyvtár keresztül biztonságos LDAP (LDAPS). Secure LDAP-hozzáférését alapértelmezés szerint a virtuális hálózaton belül érhető el. Azonban Ön is engedélyezheti a secure LDAP-hozzáférését az interneten keresztül.
+* **Csoportházirend:** egyetlen beépített csoportházirend-objektum minden egyes használhatja a felhasználók és számítógépek tárolókat kényszerítse a megfelelőséget a szükséges biztonsági szabályzatok felhasználói fiókokat és a tartományhoz csatlakoztatott számítógépeket. Emellett a saját egyéni csoportházirend-objektumok létrehozása és egyéni szervezeti egységek, és hozzárendelheti azokat [a Csoportházirend kezelése](active-directory-ds-admin-guide-administer-group-policy.md).
+* **DNS kezelése:** az "AAD DC rendszergazdák" csoport tagjai DNS kezelheti a felügyelt tartomány már jól ismert DNS felügyeleti eszközökkel, például a DNS-felügyeleti beépülő MMC-modulban.
+* **Egyéni szervezeti egység (OU-k) létrehozása:** az "AAD DC rendszergazdák" csoport tagjai a felügyelt tartományban hozhat létre egyéni szervezeti egységekhez. Ezek a felhasználók kapnak teljes körű rendszergazdai jogosultságokkal keresztül egyéni szervezeti egységek, így azok hozzáadhat/eltávolíthat szolgáltatásfiókok, számítógépek, csoportok stb. ezeket az egyéni szervezeti belül.
+* **Számos Azure globális régiókban érhető el:** tekintse meg a [az Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/#services/) oldal az Azure-régiókban, amelyben az Azure AD Domain Services érhető el.
+* **Magas rendelkezésre állás:** Azure AD tartományi szolgáltatások magas rendelkezésre állást a tartomány kínál. Ez a funkció a garancia magasabb a hasznos üzemidő és hibatűrést biztosít. Beépített állapotfigyelési ajánlatok automatizált szervizelési hibák esetén cserélje le a sikertelen példányok és folyamatos szolgáltatásokat a tartomány új példányokat kell indítani.
+* **AD fiókzárolási:** felhasználói fiók zárolt 30 percig öt érvénytelen jelszavak használata 2 percen belül. Fiókok 30 perc után lesznek automatikusan feloldani.
+* **Jól ismert felügyeleti eszközökkel:** jól ismert Windows Server Active Directory kezelőeszközöket, például az Active Directory felügyeleti központ vagy az Active Directory PowerShell segítségével a felügyelt tartomány felügyeletéhez.

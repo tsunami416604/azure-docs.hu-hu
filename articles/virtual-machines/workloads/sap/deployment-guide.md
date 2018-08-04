@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: 9de1811768a7e81f6f8e755b96d5328ce89e7983
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 990fe50cefabed7b63eee177b19ec6d74c9929ab
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442020"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494521"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -72,6 +72,7 @@ ms.locfileid: "39442020"
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
+[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -922,37 +923,61 @@ A parancsfájl kimenete a következő információkat tartalmazza:
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Linux rendszerű virtuális gépekhez az Azure CLI
 Az Azure Enhanced Monitoring bővítményt az SAP telepítése az Azure CLI-vel:
 
-1. Azure CLI 1.0 telepítése leírtak szerint [az Azure CLI 1.0 telepítése][azure-cli].
-1. Jelentkezzen be az Azure-fiókjával:
+1. Telepítse az Azure CLI 1.0 használatával
 
-  ```
-  azure login
-  ```
+   1. Azure CLI 1.0 telepítése leírtak szerint [az Azure CLI 1.0 telepítése][azure-cli].
+   1. Jelentkezzen be az Azure-fiókjával:
 
-1. Váltson Azure Resource Manager módra:
+      ```
+      azure login
+      ```
 
-  ```
-  azure config mode arm
-  ```
+   1. Váltson Azure Resource Manager módra:
 
-1. Engedélyezze az Azure Enhanced Monitoring:
+      ```
+      azure config mode arm
+      ```
 
-  ```
-  azure vm enable-aem <resource-group-name> <vm-name>
-  ```
+   1. Engedélyezze az Azure Enhanced Monitoring:
+
+      ```
+      azure vm enable-aem <resource-group-name> <vm-name>
+      ```
+
+1. Telepítse az Azure CLI 2.0 használatával
+
+   1. Azure CLI 2.0 telepítése a leírtak szerint [Azure CLI 2.0 telepítése][azure-cli-2].
+   1. Jelentkezzen be az Azure-fiókjával:
+
+      ```
+      az login
+      ```
+
+   1. Az Azure CLI az AEM-bővítményének telepítése
+  
+      ```
+      az extension add --name aem
+      ```
+  
+   1. A bővítmény telepítése
+  
+      ```
+      az vm aem set -g <resource-group-name> -n <vm name>
+      ```
 
 1. Ellenőrizze, hogy aktív az Azure Linux rendszerű virtuális gépen az Azure Enhanced Monitoring bővítményt. Ellenőrizze, hogy a fájl \\var\\lib\\AzureEnhancedMonitor\\PerfCounters létezik. Ha létezik, egy parancssorban futtassa ezt a parancsot, a továbbfejlesztett Azure figyelő által gyűjtött információk megjelenítéséhez:
-```
-cat /var/lib/AzureEnhancedMonitor/PerfCounters
-```
 
-A kimenet a következőhöz hasonló:
-```
-2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
-2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
-???
-???
-```
+   ```
+   cat /var/lib/AzureEnhancedMonitor/PerfCounters
+   ```
+
+   A kimenet a következőhöz hasonló:
+   ```
+   ...
+   2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
+   2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
+   ...
+   ```
 
 ## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Ellenőrzési és hibaelhárítási lehetőségek teljes körű figyelés
 Után üzembe helyezve az Azure virtuális gép, és állítsa be a megfelelő Azure figyelési infrastruktúra, ellenőrizze, hogy az Azure Enhanced Monitoring bővítményt minden összetevőjének várt módon működnek-e.

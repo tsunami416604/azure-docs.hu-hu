@@ -5,31 +5,35 @@ services: container-registry
 author: mmacy
 ms.service: container-registry
 ms.topic: include
-ms.date: 04/23/2018
+ms.date: 08/03/2018
 ms.author: marsma
 ms.custom: include file
-ms.openlocfilehash: 6ed114ea6162c9d4888b6f86998cfb422a3944e8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2174ae44f8e78763c1939aee5e6b86c95a0924ce
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32198226"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39513879"
 ---
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Hozzon létre egy egyszerű szolgáltatást a tároló beállításjegyzék eléréséhez, az alábbi parancsfájlt is használhat. Frissítés a `ACR_NAME` változó a tárolót a rendszerleíró adatbázis nevét, és szükség esetén a `--role` értéket a [az ad sp létrehozása-az-rbac] [ az-ad-sp-create-for-rbac] parancs különböző engedélyeket adni. Rendelkeznie kell a [Azure CLI](/cli/azure/install-azure-cli) telepítés után használja ezt a parancsfájlt.
+Egyszerű szolgáltatás létrehozása a tárolóregisztrációs adatbázis-hozzáféréssel rendelkező, futtassa a következő szkriptet a [Azure Cloud Shell](../articles/cloud-shell/overview.md) vagy helyi telepítése az [Azure CLI](/cli/azure/install-azure-cli). A szkript a Bash rendszerhéj van formázva.
 
-A parancsfájl futtatása után tekintse meg a szolgáltatás egyszerű **azonosító** és **jelszó**. Miután a hitelesítő adatait, konfigurálhatja az alkalmazások és szolgáltatások, a tároló beállításjegyzék, mint az egyszerű szolgáltatás felé történő hitelesítésre.
+A szkript futtatása előtt frissítse a `ACR_NAME` változó a tárolóregisztrációs adatbázis nevére. A `SERVICE_PRINCIPAL_NAME` érték az Azure Active Directory-bérlőn belül egyedinek kell lennie. Ha megjelenik egy "`'http://acr-service-principal' already exists.`" hiba történt, adja meg az egyszerű szolgáltatás egy másik nevet.
 
-[!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
+Igény szerint módosíthatja a `--role` értékét a [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] parancsot, hogy szeretné-e másik engedélyeket.
 
-## <a name="use-an-existing-service-principal"></a>Egy meglévő egyszerű szolgáltatás használata
+A szkript futtatása után jegyezze fel a szolgáltatásnév **azonosító** és **jelszó**. Ha a hitelesítő adatait, konfigurálhatja úgy az alkalmazások és szolgáltatások a tárolóregisztrációs adatbázisba, az egyszerű szolgáltatás hitelesítéséhez.
 
-Beállításjegyzék hozzáférést biztosít egy meglévő egyszerű szolgáltatást, egy új szerepkört kell rendelnie az egyszerű szolgáltatásnév. Csakúgy, mint egy új szolgáltatás létrehozása egyszerű, lekéréses leküldéses és lekéréses és tulajdonosi hozzáférés megadásához.
+<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh --> [!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
 
-Az alábbi parancsfájl használ a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] megadását parancs *lekéréses* szolgáltatásnevet engedélyeket ad meg a `SERVICE_PRINCIPAL_ID` változó. Módosítsa a `--role` értéket, ha egy eltérő szintű hozzáférési biztosítani szeretné.
+## <a name="use-an-existing-service-principal"></a>Meglévő egyszerű szolgáltatás használata
 
-[!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
+Beállításjegyzék hozzáférést egy létező egyszerű szolgáltatás, új szerepkört kell rendelni a szolgáltatásnévhez. Csakúgy, mint létrehozni egy új szolgáltatásnevet, lekéréses, leküldéses és lekéréses és tulajdonosi hozzáféréssel megadásához.
+
+Az alábbi szkript a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] parancsot adhat *lekéréses* szolgáltatásnév engedélyeket ad meg a `SERVICE_PRINCIPAL_ID` változó. Módosítsa a `--role` értékét, ha szeretne egy eltérő szintjét hozzáférés biztosítása.
+
+<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh --> [!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
 
 <!-- LINKS - Internal -->
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac

@@ -17,12 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bd71124e9134fc4d5692bb3b95a1673f111ccbde
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 35d837f346e3aab4f8b08286f1e0806f385762ec
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444385"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493451"
 ---
 # <a name="azure-active-directory-code-samples-v1-endpoint"></a>Az Azure Active Directory-Kódminták (V1-végpontra)
 
@@ -35,7 +35,7 @@ Ez a szakasz a minták segítségével további információ az Azure AD V1-vég
 > [!NOTE]
 > Ha Ön Azure AD V2 Kódminták érdekli, lásd: [2.0-s verziójú Kódminták forgatókönyv szerint](active-directory-v2-code-samples.md).
 
-Az alapszintű forgatókönyv az egyes minta ismertetése: [hitelesítési forgatókönyvek az Azure ad-ben](active-directory-authentication-scenarios.md).
+Az alapszintű forgatókönyv az egyes minta ismertetése: [hitelesítési forgatókönyvek az Azure ad-ben](authentication-scenarios.md).
 
 Ön is hozzájárulhat a mintákat a Githubon. További információ [a Microsoft Azure Active Directory-példák és dokumentáció](https://github.com/Azure-Samples?page=3&query=active-directory).
 

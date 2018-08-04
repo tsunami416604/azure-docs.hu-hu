@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 08/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 36d1229de6eb71a41eeea895e16e3757c800fc16
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a6bc220d15e720662eaa9605421e21ccb99892ab
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429080"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Oktatóanyag: Azure Active Directory-integráció az LogicMonitor
 
@@ -133,27 +133,23 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. A felső menüben kattintson **beállítások**.
    
-   ![Beállítások](./media/logicmonitor-tutorial/ic790052.png "beállításai")
+    ![Beállítások](./media/logicmonitor-tutorial/ic790052.png "beállításai")
 
 1. Kattintson a bal oldali navigációs határozunk meg **egyszeri bejelentkezés**
    
-   ![Egyszeri bejelentkezés](./media/logicmonitor-tutorial/ic790053.png "egyszeri bejelentkezés")
+    ![Egyszeri bejelentkezés](./media/logicmonitor-tutorial/ic790053.png "egyszeri bejelentkezés")
 
 1. Az a **egyszeri bejelentkezés (SSO) beállításainak** szakaszban, hajtsa végre az alábbi lépéseket:
    
-   ![Egyszeri bejelentkezés beállításai](./media/logicmonitor-tutorial/ic790054.png "egyszeri bejelentkezés beállításai")
+    ![Egyszeri bejelentkezés beállításai](./media/logicmonitor-tutorial/ic790054.png "egyszeri bejelentkezés beállításai")
    
-   a. Válassza ki **egyszeri bejelentkezés engedélyezése**.
+    a. Válassza ki **egyszeri bejelentkezés engedélyezése**.
 
-   b. Mint **alapértelmezett szerepkör-hozzárendelés**válassza **readonly**.
+    b. Mint **alapértelmezett szerepkör-hozzárendelés**válassza **readonly**.
    
-   c. Nyissa meg a letöltött metaadat-fájlt a Jegyzettömbben, és illessze be a fájl tartalma a **Identity Provider metaadatok** szövegmezőbe.
+    c. Nyissa meg a letöltött metaadat-fájlt a Jegyzettömbben, és illessze be a fájl tartalma a **Identity Provider metaadatok** szövegmezőbe.
    
-   d. Kattintson a **módosítások mentése**.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    d. Kattintson a **módosítások mentése**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
@@ -188,7 +184,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-a-logicmonitor-test-user"></a>LogicMonitor tesztfelhasználó létrehozása
 
-AAD-felhasználók számára jelentkezhetnek be akkor ki kell építeni az Azure Active Directory-felhasználó nevük alapján LogicMonitor alkalmazáshoz.
+Az Azure AD-felhasználók számára jelentkezhetnek be akkor ki kell építeni az Azure Active Directory-felhasználó nevük alapján LogicMonitor alkalmazáshoz.
 
 **Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:**
 
@@ -196,19 +192,19 @@ AAD-felhasználók számára jelentkezhetnek be akkor ki kell építeni az Azure
 
 1. A felső menüben kattintson **beállítások**, és kattintson a **szerepkörök és a felhasználók**.
    
-   ![Szerepkörök és a felhasználók](./media/logicmonitor-tutorial/ic790056.png "szerepkörök és a felhasználók")
+    ![Szerepkörök és a felhasználók](./media/logicmonitor-tutorial/ic790056.png "szerepkörök és a felhasználók")
 
 1. Kattintson a **Hozzáadás** parancsra.
 
 1. Az a **vegyen fel egy fiókot** szakaszban, hajtsa végre az alábbi lépéseket:
    
-   ![Vegyen fel egy fiókot](./media/logicmonitor-tutorial/ic790057.png "-fiók hozzáadása")
+    ![Vegyen fel egy fiókot](./media/logicmonitor-tutorial/ic790057.png "-fiók hozzáadása")
    
-   a. Írja be a **felhasználónév**, **E-mail**, **jelszó**, és **írja be újra megkereséséhez jelszó** értékek kíván üzembe helyezni az Azure Active Directory-felhasználó azokat a kapcsolódó szöveges mezőkben.
+    a. Írja be a **felhasználónév**, **E-mail**, **jelszó**, és **írja be újra megkereséséhez jelszó** értékek kíván üzembe helyezni az Azure Active Directory-felhasználó azokat a kapcsolódó szöveges mezőkben.
    
-   b. Válassza ki **szerepkörök**, **engedélyek megtekintése**, és a **állapot**.
+    b. Válassza ki **szerepkörök**, **engedélyek megtekintése**, és a **állapot**.
    
-   c. Kattintson a **elküldése**.
+    c. Kattintson a **elküldése**.
 
 >[!NOTE]
 >Bármely más LogicMonitor felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított LogicMonitor üzembe helyezni az Azure Active Directory felhasználói fiókokat. 
@@ -248,7 +244,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
  
 Ha a hozzáférési panelen a LogicMonitor csempére kattint, meg kell lekérése automatikusan bejelentkezett az LogicMonitor alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 

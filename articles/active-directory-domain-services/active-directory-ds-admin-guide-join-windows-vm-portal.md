@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: A Windows Server virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs'
-description: Windows Server virtuális gép csatlakoztatása az Azure Active Directory tartományi szolgáltatások
+title: 'Az Azure Active Directory Domain Services: Egy Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományokhoz |} A Microsoft Docs'
+description: A Windows Server virtuális gépek csatlakoztatása az Azure Active Directory tartományi szolgáltatások
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,144 +12,144 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: maheshu
-ms.openlocfilehash: 2929f85b738171f7fb7f5b66af90e4e2ab54f5d0
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: f9ee68fda3bb5e0f5302c8d5c96da0515c05ce1d
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317170"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503400"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server virtuális gépek csatlakoztatása felügyelt tartományokhoz
-Ez a cikk bemutatja, hogyan telepítse a Windows Server virtuális gépet az Azure portál használatával. Ezután bemutatja hogyan csatlakoztathatók a virtuális gépet az Azure Active Directory tartományi szolgáltatások (az Azure AD DS) által felügyelt tartományokhoz.
+Ez a cikk bemutatja, hogyan helyezhet üzembe egy Windows Server virtuális gépet az Azure portal használatával. Ezután bemutatja hogyan kell a virtuális gép csatlakoztatása az Azure Active Directory Domain Services (Azure AD DS) a felügyelt tartományhoz.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>1. lépés: A Windows Server virtuális gép létrehozása
-A virtuális hálózat, amelyen engedélyezve vannak az Azure Active Directory tartományi szolgáltatások tartományhoz csatlakoztatott Windows virtuális gép létrehozása, tegye a következőket:
+A virtuális hálózatot, amelyben engedélyezte az Azure AD DS tartományhoz csatlakozó Windows virtuális gép létrehozásához tegye a következőket:
 
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
-2. Válassza ki a bal oldali ablaktábla tetején **új**.
+2. Válassza a bal oldali ablaktábla tetején **új**.
 3. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet.
 
-    ![A Windows Server 2016 Datacenter hivatkozás](./media/active-directory-domain-services-admin-guide/create-windows-vm-select-image.png)
+    ![A Windows Server 2016 Datacenter-hivatkozás](./media/active-directory-domain-services-admin-guide/create-windows-vm-select-image.png)
 
-4. Az a **alapjai** ablaktáblán, a varázsló a virtuális gép az alapvető beállításainak konfigurálása.
+4. Az a **alapjai** ablaktábla a varázsló a virtuális gép alapszintű beállításainak konfigurálása.
 
-    ![Az alapvető beállítások panelen](./media/active-directory-domain-services-admin-guide/create-windows-vm-basics.png)
-
-    > [!TIP]
-    > A felhasználónév és jelszó itt vannak egy helyi rendszergazdai fiókhoz, amellyel jelentkezzen be a virtuális gépre. Válasszon ki egy erős jelszót a virtuális gép jelszavát találgatásos támadások elleni védelméhez. Ne adja meg itt egy tartományi felhasználói fiók hitelesítő adatait.
-    >
-
-5. Válassza ki a **mérete** a virtuális géphez. Válassza ki, ha további méretek **összes** , vagy módosítsa a **lemez típusát támogatott** szűrő.
-
-    ![A "Méret kiválasztása" ablak](./media/active-directory-domain-services-admin-guide/create-windows-vm-size.png)
-
-6. Az a **beállítások** ablaktáblán válassza ki a virtuális hálózatot az Azure Active Directory tartományi szolgáltatások által kezelt tartomány van telepítve. Válassza ki azt, amelyik központilag telepítik a felügyelt tartományok különböző alhálózatokhoz. A további beállításoknál hagyja az alapértelmezett beállításokat, majd válassza ki **OK**.
-
-    ![A virtuális gép virtuális hálózati beállításait](./media/active-directory-domain-services-admin-guide/create-windows-vm-select-vnet.png)
+    ![Az alapvető beállítások panel](./media/active-directory-domain-services-admin-guide/create-windows-vm-basics.png)
 
     > [!TIP]
-    > **Válassza ki a megfelelő virtuális hálózatot és az alhálózatot.**
+    > A felhasználónév és jelszó itt van egy helyi rendszergazdai fiók, amellyel jelentkezzen be a virtuális gép. Válasszon ki egy erős jelszót a virtuális gép jelszava találgatásos támadások elleni védelmét. Ne adjon meg egy tartományi felhasználói fiók hitelesítő adatait.
     >
-    > Válassza ki vagy a virtuális hálózatot, a felügyelt tartományok van telepítve, vagy egy virtuális hálózatot, amely csatlakozik, a virtuális hálózati társviszony-létesítés. Ha egy nem csatlakoztatott virtuális hálózati választja, a virtuális gép nem csatlakoztathatja a felügyelt tartományra.
-    >
-    > Azt javasoljuk, hogy a felügyelt tartományok telepítése egy dedikált alhálózatba. Ezért nem válassza ki az alhálózatot, amelyben engedélyezve vannak a felügyelt tartományok.
 
-7. A további beállításoknál hagyja az alapértelmezett beállításokat, majd válassza ki **OK**.
-8. Az a **beszerzési** lapon tekintse át a beállításokat, és válassza ki **OK** a virtuális gép telepítéséhez.
-9. A virtuális gép üzembe helyezéséhez az Azure-portál irányítópultjának van rögzítve.
+5. Válassza ki a **mérete** a virtuális gép. További méretek megtekintéséhez válassza **az összes megtekintése** vagy módosítsa a **támogatott lemeztípus** szűrőt.
+
+    ![A "Méret kiválasztása" panelen](./media/active-directory-domain-services-admin-guide/create-windows-vm-size.png)
+
+6. Az a **beállítások** ablaktáblán válassza ki a virtuális hálózatot, amely az Azure AD DS által felügyelt tartomány üzembe lesz helyezve. Válasszon egy másik alhálózatot, amely a felügyelt tartományra van üzembe helyezve. A további beállításoknál hagyja változatlanul az alapértelmezett beállításokat, és válassza ki **OK**.
+
+    ![A virtuális gép virtuális hálózati beállítások](./media/active-directory-domain-services-admin-guide/create-windows-vm-select-vnet.png)
+
+    > [!TIP]
+    > **Válassza ki a megfelelő virtuális hálózatot és alhálózatot.**
+    >
+    > Válassza ki vagy a virtuális hálózatot, amely a felügyelt tartomány üzembe lesz helyezve, vagy egy virtuális hálózatot, amelyhez csatlakozik, a virtuális hálózati társviszony-létesítés. Ha egy virtuális hálózati adapterrrel, a virtuális gép nem csatlakozik a felügyelt tartományhoz.
+    >
+    > Javasoljuk, hogy a felügyelt tartomány egy dedikált alhálózatban. Ezért nem válassza ki az alhálózatot, amelyben engedélyezte a felügyelt tartományra.
+
+7. A további beállításoknál hagyja változatlanul az alapértelmezett beállításokat, és válassza ki **OK**.
+8. Az a **beszerzési** lapon tekintse át a beállításokat, és válassza ki **OK** a virtuális gép üzembe helyezése.
+9. A virtuális gép üzembe helyezése az Azure portal irányítópultján van rögzítve.
 
     ![Kész](./media/active-directory-domain-services-admin-guide/create-windows-vm-done.png)
-10. A telepítés befejezése után megtekintheti a virtuális gép kapcsolatos információkat a **áttekintése** lap.
+10. Az üzembe helyezés befejezése után megtekintheti a virtuális Géppel kapcsolatos információkat a **áttekintése** lapot.
 
 
-## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>2. lépés: A Windows Server virtuális gép csatlakozás a helyi rendszergazda fiók használatával
-Ezután csatlakoztassa az újonnan létrehozott Windows Server virtuális gép csatlakoztatása a tartományhoz. A virtuális gép létrehozásakor adott helyi rendszergazdai hitelesítő adatokat használja.
+## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>2. lépés: A Windows Server virtuális gép csatlakozás a helyi rendszergazdai fiók használatával
+Ezután csatlakozhat a tartományhoz csatlakozni az újonnan létrehozott Windows Server virtuális gép. A virtuális gép létrehozásakor megadott, a helyi rendszergazdai hitelesítő adatok használata.
 
-Csatlakozzon a virtuális géphez, hajtsa végre az alábbi lépéseket:
+A virtuális gép csatlakozik, hajtsa végre az alábbi lépéseket:
 
 1. Az a **áttekintése** ablaktáblán válassza előbb **Connect**.  
-    A távoli asztal protokoll (RDP) fájl létrehozása, és le.
+    Egy Remote Desktop Protocol (.rdp) fájlt a rendszer létrehoz és letölt.
 
-    ![Windows virtuális géphez](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
+    ![Windows virtuális gép eléréséhez](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 
 2. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
-3. Adja meg a **helyi rendszergazdai hitelesítő adatokat**, amely a virtuális gép létrehozásakor adott meg (például *localhost\mahesh*).
-4. Ha megjelenik egy tanúsítványfigyelmeztetés, a bejelentkezési folyamat során, válassza ki a **Igen** vagy **Folytatás** való csatlakozáshoz.
+3. Adja meg a **helyi rendszergazdai hitelesítő adatokkal**, amely a virtuális gép létrehozásakor megadott (például *localhost\mahesh*).
+4. Ha a bejelentkezési folyamat során a tanúsítványra vonatkozó figyelmeztetést látja, válassza ki a **Igen** vagy **Folytatás** való csatlakozáshoz.
 
-Ezen a ponton akkor kell bejelentkeznie az újonnan létrehozott Windows rendszerű virtuális gép a helyi rendszergazdai hitelesítő adataival. A következő lépés, hogy a virtuális gép csatlakoztatása a tartományhoz.
+Ezen a ponton be kell bejelentkeznie az újonnan létrehozott Windows virtuális gépre a helyi rendszergazdai hitelesítő adataival. A következő lépés, hogy a virtuális gép csatlakoztatása a tartományhoz.
 
 
-## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>3. lépés: A Windows Server virtuális gépek csatlakoztatása az Azure AD DS által kezelt tartomány
-A Windows Server virtuális gép csatlakoztatása az Azure AD DS által kezelt tartomány, kövesse az alábbi lépéseket:
+## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>3. lépés: A Windows Server virtuális gép csatlakoztatása az Azure AD DS által felügyelt tartományhoz
+A Windows Server virtuális gép csatlakoztatása az Azure AD DS által felügyelt tartományhoz, a következő lépéseket:
 
-1. Csatlakoztassa a Windows Server virtuális Gépet, a"2." Az a **Start** nyissa meg **Kiszolgálókezelő**.
-2. A bal oldali ablaktáblán, a **Kiszolgálókezelő** ablakban válassza ki **helyi kiszolgáló**.
+1. A Windows Server rendszerű virtuális gépek csatlakozni, ahogyan az "2. lépés." Az a **Start** nyissa meg **Kiszolgálókezelő**.
+2. A bal oldali panelen, a **Kiszolgálókezelő** ablakban válassza **helyi kiszolgáló**.
 
     ![A Kiszolgálókezelő ablakban a virtuális gépen](./media/active-directory-domain-services-admin-guide/join-domain-server-manager.png)
 
-3. A **tulajdonságok**, jelölje be **munkacsoport**.
-4. Az a **Rendszertulajdonságok** ablakban válassza ki **módosítás** a tartományhoz való csatlakozáshoz.
+3. A **tulajdonságok**válassza **munkacsoport**.
+4. Az a **Rendszertulajdonságok** ablakban válassza **módosítása** a tartományhoz való csatlakozáshoz.
 
     ![A Rendszertulajdonságok párbeszédpanel](./media/active-directory-domain-services-admin-guide/join-domain-system-properties.png)
 
-5. Az a **tartomány** mezőben, adja meg az Azure Active Directory tartományi szolgáltatások által kezelt tartomány nevét, majd válassza ki **OK**.
+5. Az a **tartomány** mezőbe, majd válassza ki és adja meg a nevét, az Azure AD DS által felügyelt tartomány **OK**.
 
-    ![Adja meg a tartományt, amelyet egyesíteni](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-domain.png)
+    ![Adja meg a tartományt, amelyet egyesíteni kell](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-domain.png)
 
-6. A tartományhoz való csatlakozásnál a hitelesítő adatok megadását kéri. A hitelesítő adatok használata a *az Azure Active Directory-Tartományvezérlők rendszergazdák csoporthoz tartozó felhasználói*. Csak a csoport tagjai jogosultak gépeket csatlakoztatni a felügyelt tartományra.
+6. A tartományhoz való csatlakozásnál a hitelesítő adatok megadását kéri. A hitelesítő adatok használata a *az Azure Active Directory-Tartományvezérlők rendszergazdák csoporthoz tartozó felhasználó*. Csak a csoport tagjai jogosultság a gépeket csatlakoztathatja a felügyelt tartományhoz.
 
-    ![A Windows rendszerbiztonsági ablakban, a hitelesítő adatok megadása](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
+    ![A Windows rendszerbiztonsági ablakban a hitelesítő adatok megadása](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 
-7. Hitelesítő adatokat adhat meg a következő módon:
+7. Hitelesítő adatok a következő módszerek egyikével adhatja meg:
 
-   * **Egyszerű**: (ajánlott), adja meg az egyszerű felhasználónév (UPN) utótag a felhasználói fiók az Azure AD-be. Ebben a példában a felhasználói UPN-utótagját *bob* van *bob@domainservicespreview.onmicrosoft.com*.
+   * **Egyszerű felhasználónév formátumú**: az egyszerű felhasználónév (UPN) a felhasználói fiók utótag az Azure AD-ben konfigurált (ajánlott) adjon meg. Ebben a példában a felhasználói UPN-utótagját *bob* van *bob@domainservicespreview.onmicrosoft.com*.
 
-   * **SAMAccountName formátum**: SAMAccountName formátumban is adja meg a fiók nevét. Ebben a példában a felhasználó *bob* volna meg kell adnia *CONTOSO100\bob*.
+   * **SAMAccountName formátum**: a fiók nevét a SAMAccountName formátumban is megadhat. Ebben a példában a felhasználó *bob* meg kellene *CONTOSO100\bob*.
 
      > [!TIP]
-     > **Azt javasoljuk, hogy az egyszerű felhasználónév formátumban adja meg a hitelesítő adatokat.**
+     > **Azt javasoljuk, hogy az egyszerű felhasználónév formátumban adja meg hitelesítő adatait.**
      >
-     > Ha a felhasználói UPN-előtag túl hosszú (például *joehasareallylongname*), a SAMAccountName előfordulhat, hogy automatikusan generált. Ha több felhasználó azonos UPN-előtagot (például *bob*) az Azure AD-bérlő a SAMAccountName formátuma lehet a szolgáltatás által automatikusan generált. Ezekben az esetekben az UPN-formátum segítségével megbízhatóan bejelentkezni a tartományba.
+     > Ha a felhasználó egyszerű Felhasználónevét előtag túl hosszú (például *joehasareallylongname*), a SAMAccountName lehet, hogy automatikusan létrehozott. Ha több felhasználó rendelkezik ugyanazon UPN előtaggal (például *bob*) az Azure AD-bérlőhöz, a SAMAccountName formátum lehet a szolgáltatás által automatikusan generált. Ezekben az esetekben az egyszerű felhasználónév formátumú segítségével megbízhatóan bejelentkezni a tartományba.
      >
 
-8. Miután sikeresen csatlakozott a tartományhoz, akkor a következő üzenet üdvözli a tartományhoz.
+8. Miután sikeresen csatlakozott egy tartományhoz, akkor a következő üzenet üdvözli a tartományhoz.
 
     ![Üdvözli a tartományhoz](./media/active-directory-domain-services-admin-guide/join-domain-done.png)
 
-9. A tartományhoz való csatlakozás befejezéséhez indítsa újra a virtuális gép.
+9. A tartományhoz való csatlakozás befejezéséhez indítsa újra a virtuális gépet.
 
-## <a name="troubleshoot-joining-a-domain"></a>Csatlakozás egy tartományhoz hibaelhárítása
+## <a name="troubleshoot-joining-a-domain"></a>A tartományhoz való csatlakozás hibaelhárítása
 ### <a name="connectivity-issues"></a>Csatlakozási problémák
-Ha a virtuális gép nem található a tartomány, próbálja meg a következő hibaelhárítási lépéseket:
+Nem található a tartomány a virtuális gép esetén próbálja meg következő hibaelhárítási lépéseket:
 
-* Ellenőrizze, hogy a virtuális gép csatlakozik-e az azonos virtuális hálózatban, az Azure Active Directory tartományi szolgáltatások engedélyezve van. Ellenkező esetben a virtuális gép nem tud csatlakozni, vagy a tartományhoz.
+* Ellenőrizze, hogy a virtuális gép az Azure Active Directory tartományi szolgáltatások engedélyezve van a virtuális hálózathoz csatlakozik. Ellenkező esetben a virtuális gép nem tud csatlakozni, vagy a tartományhoz.
 
-* Ellenőrizze a virtuális gépet, amely ezután csatlakozik-e a virtuális hálózat az Azure Active Directory tartományi szolgáltatások engedélyezve van a virtuális hálózaton.
+* Ellenőrizze, hogy a virtuális gép, amely ezután csatlakozik a virtuális hálózat az Azure Active Directory tartományi szolgáltatások engedélyezve van a virtuális hálózaton van-e.
 
-* Próbálja pingelni a DNS-tartománynév, a felügyelt tartomány (például *ping contoso100.com*). Ha nem sikerül, akkor próbálja meg Pingelje meg az IP-címek, a tartományhoz, amely az oldalon megjelenített ahol engedélyezte az Azure Active Directory tartományi szolgáltatások (például *ping 10.0.0.4*). Ha az IP-címet, de a tartomány nem pingelhető, DNS esetleg nem megfelelően van konfigurálva. Ellenőrizze, hogy az IP-címek, a tartomány a virtuális hálózat DNS-kiszolgálóként konfigurált.
+* Próbálja meg megpingelni a felügyelt tartomány DNS-tartomány nevét (például *contoso100.com pingelni*). Ha ezt nem tudja, próbálja meg megpingelni a IP-címeket, a tartományhoz, amely megjelenik az oldalon ahol engedélyezve van az Azure Active Directory tartományi szolgáltatások (például *10.0.0.4 pingelni*). Ha az IP-címet, de a tartományhoz nem pingelhető, DNS előfordulhat, hogy megfelelően konfigurálva. Ellenőrizze, hogy az IP-címeket, annak a tartománynak a virtuális hálózat DNS-kiszolgálóként konfigurált.
 
-* Próbálja meg a DNS-feloldási gyorsítótárból, a virtuális gépen (*ipconfig/flushdns*).
+* Próbálja ki a virtuális gépen, a DNS-feloldási gyorsítótár-ürítés (*ipconfig/flushdns paranccsal*).
 
-Ha egy ablakban jelenik meg, a tartományhoz való csatlakozásnál a hitelesítő adatokat kér, nincs kapcsolódási problémák.
+Ha egy ablakban jelenik meg, a tartományhoz való csatlakozásnál a hitelesítő adatokat kér, nem rendelkezik a kapcsolati hibák.
 
-### <a name="credentials-related-issues"></a>Hitelesítő adatok kapcsolatos problémák
-Hiba történt a hitelesítő adatokkal, és nem tud csatlakozni a tartományhoz, ha meg következő hibaelhárítási lépéseket:
+### <a name="credentials-related-issues"></a>Hitelesítő adatokkal kapcsolatos problémák
+Ha gondjai adódnak a hitelesítő adatokat, és nem lehet csatlakozni a tartományhoz, próbálja meg következő hibaelhárítási lépéseket:
 
-* Próbálja az UPN-formátum használatával adja meg a hitelesítő adatokat. Ha sok felhasználó az Ön bérelt szolgáltatásának azonos UPN előtaggal, vagy ha az UPN-előtag túlságosan hosszú, a fiók SAMAccountName lehet automatikusan generált. Ezekben az esetekben a fiókját a SAMAccountName formátumát eltérhet mi várható és használatához el a helyszíni tartományban.
+* Próbálja ki az egyszerű felhasználónév formátumban adja meg hitelesítő adatait. Ha azonos egyszerű Felhasználónévvel előtaggal a bérlőben sok felhasználó, vagy ha túl hosszú az egyszerű Felhasználónévi előtagját, a fiók a SAMAccountName lehet automatikusan létrehozott. Ezekben az esetekben a SAMAccountName formátum, a fiók lehet eltérő mit hoz várható, vagy a helyszíni tartományban.
 
-* Próbálja meg használni, amelyhez tartozik egy felhasználói fiók hitelesítő adatait. a *AAD DC rendszergazdák* csoport.
+* Próbálja meg használni, amelyhez tartozik egy felhasználói fiók hitelesítő adatait a *AAD DC rendszergazdák* csoport.
 
-* Ellenőrizze, hogy rendelkezik [engedélyezve a jelszó-szinkronizálás](active-directory-ds-getting-started-password-sync.md) a felügyelt tartományra.
+* Ellenőrizze, hogy rendelkezik [engedélyezve van a jelszó-szinkronizálás](active-directory-ds-getting-started-password-sync.md) a felügyelt tartományra.
 
-* Ellenőrizze, hogy a felhasználó egyszerű Felhasználónevét használta, az Azure AD-be (például *bob@domainservicespreview.onmicrosoft.com*) való bejelentkezéshez.
+* Ellenőrizze, hogy már használta a felhasználó egyszerű Felhasználónevét az Azure ad-ben konfigurált (például *bob@domainservicespreview.onmicrosoft.com*) való bejelentkezéshez.
 
 * Várjon, amíg a jelszó-szinkronizálás befejeződött, az első lépésekről szóló útmutatót megadottak szerint.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Az Azure Active Directory tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
-* [Egy Azure Active Directory tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-domain.md)
+* [Az Azure AD DS által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-domain.md)

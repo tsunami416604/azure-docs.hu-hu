@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric CLI - sfctl rpm |} Microsoft Docs
-description: A Service Fabric CLI sfctl rpm parancsok ismerteti.
+title: Az Azure Service Fabric parancssori felület sfctl fordulat |} A Microsoft Docs
+description: Ismerteti a Service Fabric parancssori felület sfctl rpm parancsokat.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,93 +12,94 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 5e7cf1b28e8f38f0539e0084e1f745e0dab4dec3
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 57a9f0516175b459723a3dcdb2e3766f0fa039c1
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763612"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495424"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
-Lekérdezi és parancsainak elküldését a repair-kezelő szolgáltatás.
+Lekérdezés, és parancsokat küldjön a repair-kezelő szolgáltatás.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| approve-force | A megadott javítási feladat jóváhagyása kényszeríti. |
-| törlés | Törli a befejezett javítása feladatot. |
-| lista | Megfelelő a megadott szűrők javítási tevékenységek listájának lekérése. |
+| approve-force | Arra kényszeríti a jóváhagyás, az adott helyreállítási feladat. |
+| delete | A befejezett javítási feladat törlése. |
+| lista | A megadott szűrők megfelelő helyreállítási feladatok listáját kéri le. |
 
-## <a name="sfctl-rpm-approve-force"></a>hagyja jóvá sfctl rpm-force
-A megadott javítási feladat jóváhagyása kényszeríti.
+## <a name="sfctl-rpm-approve-force"></a>hagyja jóvá sfctl rpm-kényszerítése
+Arra kényszeríti a jóváhagyás, az adott helyreállítási feladat.
 
-Ez az API támogatja a Service Fabric-platformról; nem célja, hogy közvetlenül a kódból használni.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – a feladat-azonosító [szükséges] | A javítási feladat azonosítója. |
-| --verziója | A javítási feladat aktuális verziószáma. Ha nullától eltérő, majd az a kérelem csak sikeres lesz, ha ez az érték megegyezik a javítási feladat a tényleges jelenlegi verziójával. Ha nulla, majd verzió végrehajtani. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --hibakeresése | Naplózási növelése az összes hibakeresési naplók megjelenítése. |
-| – Súgó -h | Ez egy súgóüzenet és kilépési megjelenítése. |
-| – a kimeneti -o | Kimeneti formátum.  Megengedett értékek\: json, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési. |
-
-## <a name="sfctl-rpm-delete"></a>sfctl rpm törlése
-Törli a befejezett javítása feladatot.
-
-Ez az API támogatja a Service Fabric-platformról; nem célja, hogy közvetlenül a kódból használni.
+Ez az API támogatja a Service Fabric platformot; azt nem jelenti, hogy közvetlenül a kódból használni.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – a feladat-azonosító [szükséges] | A befejezett javítási feladat törlendő azonosítója. |
-| --verziója | A javítási feladat aktuális verziószáma. Ha nullától eltérő, majd az a kérelem csak sikeres lesz, ha ez az érték megegyezik a javítási feladat a tényleges jelenlegi verziójával. Ha nulla, majd verzió végrehajtani. |
+| --feladatazonosítót [kötelező] | A javítási feladat azonosítója. |
+| --verzió | A javítási feladat aktuális verzió száma. Ha nem nulla, majd az a kérelem csak sikeres lesz, ha ez az érték megegyezik a javítási feladat tényleges jelenlegi verziójával. Ha nulla, majd nem verzió hajthatók végre. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése | Naplózási növelése az összes hibakeresési naplók megjelenítése. |
-| – Súgó -h | Ez egy súgóüzenet és kilépési megjelenítése. |
-| – a kimeneti -o | Kimeneti formátum.  Megengedett értékek\: json, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési. |
+| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
+| --help -h | A súgóüzenetet és kilépési jelennek meg. |
+| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
+| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
+| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+
+## <a name="sfctl-rpm-delete"></a>sfctl-rpm törlése
+A befejezett javítási feladat törlése.
+
+Ez az API támogatja a Service Fabric platformot; azt nem jelenti, hogy közvetlenül a kódból használni.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --feladatazonosítót [kötelező] | A törlendő a befejezett javítási feladat azonosítója. |
+| --verzió | A javítási feladat aktuális verzió száma. Ha nem nulla, majd az a kérelem csak sikeres lesz, ha ez az érték megegyezik a javítási feladat tényleges jelenlegi verziójával. Ha nulla, majd nem verzió hajthatók végre. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
+| --help -h | A súgóüzenetet és kilépési jelennek meg. |
+| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
+| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
+| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 ## <a name="sfctl-rpm-list"></a>sfctl rpm listája
-Megfelelő a megadott szűrők javítási tevékenységek listájának lekérése.
+A megadott szűrők megfelelő helyreállítási feladatok listáját kéri le.
 
-Ez az API támogatja a Service Fabric-platformról; nem célja, hogy közvetlenül a kódból használni.
+Ez az API támogatja a Service Fabric platformot; azt nem jelenti, hogy közvetlenül a kódból használni.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --executor-filter | A javítási végrehajtó, amelynek az igényelt feladatok szerepelnie kell a lista neve. |
-| --Állapot-szűrő | Az eredménylista egy, a következő értékek megadásával, mely feladat állapota bitenkénti – vagy szerepelnie kell. <br> 1 - létrehozása <br>2 - engedte  <br>4 - előkészítése  <br>8 - jóváhagyása  <br>16 - végrehajtása  <br>32 - visszaállítása  <br>64 - befejeződött |
-| --task-id-filter | A javítási feladat Azonosítójának előtagja megfeleltethetők. |
+| --executor-filter | A javítási végrehajtó, amelynek igényelt feladatok szerepelnie kell a lista neve. |
+| – Állapot-szűrő | Egy, a következő értékek megadásával, mely a feladat állapota bitenkénti-vagy szerepelnie kell a találatok listájában. <br> 1 – létrehozva <br>2 – igényelt  <br>4 – előkészítése  <br>8 – engedélyezett  <br>16 – végrehajtása  <br>32 - visszaállítása  <br>64 - befejeződött |
+| --task-id-filter | A javítási feladat azonosító-előtag egyezést kell keresni. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése | Naplózási növelése az összes hibakeresési naplók megjelenítése. |
-| – Súgó -h | Ez egy súgóüzenet és kilépési megjelenítése. |
-| – a kimeneti -o | Kimeneti formátum.  Megengedett értékek\: json, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési. |
+| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
+| --help -h | A súgóüzenetet és kilépési jelennek meg. |
+| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
+| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
+| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+
 
 ## <a name="next-steps"></a>További lépések
-- [Állítson be](service-fabric-cli.md) a Service Fabric CLI.
-- A Service Fabric parancssori felület használatával használata a [minta parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Állítsa be a](service-fabric-cli.md) a Service Fabric parancssori felület.
+- Ismerje meg, hogyan használható a Service Fabric parancssori felület használatával a [-szkript minták](/azure/service-fabric/scripts/sfctl-upgrade-application).

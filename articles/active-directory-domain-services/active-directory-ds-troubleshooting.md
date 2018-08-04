@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Hibaelhárítási útmutatója |} Microsoft Docs'
-description: Az Azure AD tartományi szolgáltatásokra vonatkozó hibaelhárítási útmutató
+title: 'Az Azure Active Directory tartományi szolgáltatások: Hibaelhárítási útmutató |} A Microsoft Docs'
+description: Az Azure AD Domain Services hibaelhárítási útmutató
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,71 +12,71 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: b15f339889aa2a4602295e662877e82a1d3a6b46
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 41a06846e914eb79e15aa47c7203b17166731ae0
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219438"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502328"
 ---
-# <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD tartományi szolgáltatások - hibaelhárítási útmutatója
-Ez a cikk hibaelhárítási tippek biztosít a problémák jelentkezhetnek, ha beállítása és felügyelete az Azure Active Directory (AD) tartományi szolgáltatásokban.
+# <a name="azure-ad-domain-services---troubleshooting-guide"></a>Az Azure AD tartományi szolgáltatások – hibaelhárítási útmutató
+Ez a cikk a problémák jelentkezhetnek, ha beállítása és felügyelete Azure Active Directory (AD) Domain Services hibaelhárítási útmutatók nyújt.
 
-## <a name="you-cannot-enable-azure-ad-domain-services-for-your-azure-ad-directory"></a>Nem lehet engedélyezni az Azure AD-címtár az Azure AD tartományi szolgáltatások
-Ez a szakasz segítséget nyújt a hibák elhárítása engedélyezése az Azure AD tartományi szolgáltatásokat a címtáron megkísérlésekor.
+## <a name="you-cannot-enable-azure-ad-domain-services-for-your-azure-ad-directory"></a>Az Azure AD-címtár az Azure AD Domain Services nem engedélyezhető.
+Ez a szakasz segítséget nyújt a hibák elhárítása Azure AD tartományi szolgáltatásokat a címtárhoz engedélyezéséhez meg.
 
-Válassza ki a hibaelhárítási lépéseket, amelyek megfelelnek a hibaüzenet a következő megjelenne.
+Válassza ki a hibaelhárítási lépéseket, amelyek megfelelnek a hibaüzenetet tapasztal.
 
-| **Hibaüzenet** | **Megoldás** |
+| **Hibaüzenet** | **Felbontás** |
 | --- |:--- |
-| *A contoso100.com név már használatban van ezen a hálózaton. Adjon meg olyan nevet, amely még nincs használatban.* |[Tartomány névütközés a virtuális hálózat](active-directory-ds-troubleshooting.md#domain-name-conflict) |
-| *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel az „Azure AD Domain Services Sync” alkalmazáshoz. Törölje az „Azure AD Domain Services Sync” alkalmazást, és próbálja meg ezután engedélyezni a tartományi szolgáltatásokat az Azure AD-bérlője számára.* |[Tartományi szolgáltatások nem rendelkezik megfelelő engedéllyel az Azure AD tartományi szolgáltatások Szinkronizáló alkalmazás](active-directory-ds-troubleshooting.md#inadequate-permissions) |
-| *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. Az Azure AD-bérlőjében található Domain Services alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje a d87dcbc6-a371-462e-88e3-28ad15ec4e64 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.* |[A tartományi szolgáltatások alkalmazás nincs megfelelően konfigurálva az Ön bérlőjében](active-directory-ds-troubleshooting.md#invalid-configuration) |
-| *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A Microsoft Azure AD alkalmazás le van tiltva az Ön Azure AD-bérlőjében. Engedélyezze a 00000002-0000-0000-c000-000000000000 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.* |[A Microsoft Graph alkalmazás le van tiltva, az Azure AD-bérlőben](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
+| *A contoso100.com név már használatban van ezen a hálózaton. Adjon meg olyan nevet, amely még nincs használatban.* |[Tartomány névütközés a virtuális hálózatban](active-directory-ds-troubleshooting.md#domain-name-conflict) |
+| *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel az „Azure AD Domain Services Sync” alkalmazáshoz. Törölje az „Azure AD Domain Services Sync” alkalmazást, és próbálja meg ezután engedélyezni a tartományi szolgáltatásokat az Azure AD-bérlője számára.* |[Domain Services nem rendelkezik megfelelő engedélyekkel az Azure AD Domain Services Sync alkalmazás](active-directory-ds-troubleshooting.md#inadequate-permissions) |
+| *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. Az Azure AD-bérlőjében található Domain Services alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje a d87dcbc6-a371-462e-88e3-28ad15ec4e64 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.* |[A bérlő a Domain Services alkalmazás nem megfelelően van konfigurálva](active-directory-ds-troubleshooting.md#invalid-configuration) |
+| *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A Microsoft Azure AD alkalmazás le van tiltva az Ön Azure AD-bérlőjében. Engedélyezze a 00000002-0000-0000-c000-000000000000 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.* |[A Microsoft Graph-alkalmazás le van tiltva, az Azure AD-bérlőben](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>Tartomány névütközés
-**Hibaüzenet:**
+**Hibaüzenet jelenik meg:**
 
 *A contoso100.com név már használatban van ezen a hálózaton. Adjon meg olyan nevet, amely még nincs használatban.*
 
-**Szervizelés:**
+**Szervizelési:**
 
-Győződjön meg arról, hogy nem rendelkezik egy meglévő tartományhoz, a tartomány néven érhető el a virtuális hálózat. Tegyük fel például, hogy a kiválasztott virtuális hálózatban már van egy contoso.com nevű tartomány. Később akkor próbálja meg engedélyezni az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz, azonos nevű tartomány (például "contoso.com") a virtuális hálózat. Azure AD tartományi szolgáltatások engedélyezése közben hibát tapasztal.
+Győződjön meg arról, hogy nem kell ugyanazon a néven érhető el, hogy a virtuális hálózatban a meglévő tartományhoz. Tegyük fel például, hogy a kiválasztott virtuális hálózatban már van egy contoso.com nevű tartomány. Később akkor próbálja meg engedélyezni a ugyanazon tartomány nevét (például "contoso.com") a virtuális hálózat az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz. Az Azure AD tartományi szolgáltatások engedélyezése közben hibát tapasztal.
 
-Ez a hiba a tartománynév, a virtuális hálózatban tapasztalható névütközés okozza. Ebben az esetben az Azure AD tartományi szolgáltatások által kezelt tartomány beállításához másik nevet kell használnia. A másik lehetséges megoldás az, hogy leépíti a meglévő tartományt, majd ezután folytatja a Azure AD tartományi szolgáltatások engedélyezését.
+Ez a hiba a tartomány nevét, hogy a virtuális hálózatban tapasztalható névütközés okozza. Ebben az esetben az Azure AD tartományi szolgáltatások által kezelt tartomány beállításához másik nevet kell használnia. A másik lehetséges megoldás az, hogy leépíti a meglévő tartományt, majd ezután folytatja a Azure AD tartományi szolgáltatások engedélyezését.
 
 ### <a name="inadequate-permissions"></a>Nincsenek megfelelő engedélyei
-**Hibaüzenet:**
+**Hibaüzenet jelenik meg:**
 
 *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel az „Azure AD Domain Services Sync” alkalmazáshoz. Törölje az „Azure AD Domain Services Sync” alkalmazást, és próbálja meg ezután engedélyezni a tartományi szolgáltatásokat az Azure AD-bérlője számára.*
 
-**Szervizelés:**
+**Szervizelési:**
 
-Ellenőrizze, hogy van-e egy alkalmazás "Azure AD tartományi szolgáltatások Sync" az Azure AD-címtárát a néven. Ha ezt az alkalmazást, törölje azt, majd engedélyezze újra Azure AD tartományi szolgáltatásokat.
+Ellenőrizze, hogy van-e az Azure AD-címtárban "az Azure AD Domain Services Sync" nevű alkalmazás. Ha az alkalmazás már létezik, törölje azt, és ezután engedélyezze újra az Azure AD Domain Services.
 
-A következő lépésekkel az alkalmazás meglétének ellenőrzése és törlése, ha az alkalmazás létezik:
+A következő lépésekkel az alkalmazás jelenlétének az ellenőrzéséhez és törölni, ha az alkalmazás már létezik:
 
-1. Keresse meg a **alkalmazások** szakasza az Azure AD-címtárát a [Azure-portálon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/).
-2. Válassza ki **összes alkalmazás** a a **megjelenítése** legördülő menüből. Válassza ki **bármely** a a **alkalmazások állapota** legördülő menüből. Válassza ki **bármely** a a **alkalmazás látható** legördülő menüből.
-3. Típus **Azure AD tartományi szolgáltatások szinkronizáló** be a keresőmezőbe. Ha az alkalmazás létezik, kattintson rá, és kattintson a **törlése** törli-e az eszköztár gombjára.
-4. Ha törölte az alkalmazáshoz, próbálja meg ismét Azure AD tartományi szolgáltatások engedélyezése.
+1. Keresse meg a **alkalmazások** az Azure AD-címtárakat szakaszában a [az Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/).
+2. Válassza ki **minden alkalmazás** a a **megjelenítése** legördülő listából. Válassza ki **bármely** a a **alkalmazások állapotának** legördülő listából. Válassza ki **bármely** a a **alkalmazás láthatósága** legördülő listából.
+3. Típus **az Azure AD Domain Services Sync** kifejezést a keresőmezőbe. Ha az alkalmazás már létezik, kattintson rá, és kattintson a **törlése** gomb az eszköztáron, törölje azt.
+4. Miután az alkalmazás törölt, próbálja meg ismét az Azure AD tartományi szolgáltatások engedélyezése.
 
 ### <a name="invalid-configuration"></a>Érvénytelen konfiguráció
-**Hibaüzenet:**
+**Hibaüzenet jelenik meg:**
 
 *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. Az Azure AD-bérlőjében található Domain Services alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje a d87dcbc6-a371-462e-88e3-28ad15ec4e64 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.*
 
-**Szervizelés:**
+**Szervizelési:**
 
-Ellenőrizze, hogy van-e (az alkalmazás azonosítója, amelyet d87dcbc6-a371-462e-88e3-28ad15ec4e64) "AzureActiveDirectoryDomainControllerServices" nevű alkalmazás az Azure AD-címtárát. Ha az alkalmazás már létezik, törölje azt, és majd engedélyezze újra Azure AD tartományi szolgáltatások szüksége.
+Ellenőrizze, hogy ha az Azure AD-címtárban kell "AzureActiveDirectoryDomainControllerServices" (az alkalmazás azonosítója, amelyet d87dcbc6-a371-462e-88e3-28ad15ec4e64) nevű kérelmet. Ha az alkalmazás már létezik, törölje azt, és ezután engedélyezze újra az Azure AD Domain Services szüksége.
 
-A következő PowerShell-parancsfájl segítségével keresse meg az alkalmazást, és törölje azt.
+A következő PowerShell-parancsfájl használatával keresse meg az alkalmazást, és törölje azt.
 
 > [!NOTE]
-> A parancsfájl a **Azure AD PowerShell 2-es** parancsmagok. Teljes listáját az összes rendelkezésre álló parancsmagok és a modul letöltése, olvassa el a [AzureAD PowerShell referenciadokumentációt](https://msdn.microsoft.com/library/azure/mt757189.aspx).
+> Ez a szkript **az Azure AD PowerShell 2-es verzió** parancsmagok. A teljes listát az összes elérhető parancsmagjainak, és töltse le a modult, olvassa el a [Azure ad PowerShell-referenciáinak dokumentációja](https://msdn.microsoft.com/library/azure/mt757189.aspx).
 >
 >
 
@@ -114,51 +114,51 @@ if ($sp -ne $null)
 <br>
 
 ### <a name="microsoft-graph-disabled"></a>A Microsoft Graph le van tiltva
-**Hibaüzenet:**
+**Hibaüzenet jelenik meg:**
 
-Tartományi szolgáltatások nem sikerült engedélyezni ezt az Azure AD-bérlőben. A Microsoft Azure AD alkalmazás le van tiltva az Ön Azure AD-bérlőjében. Az alkalmazás az alkalmazás azonosítója 00000002-0000-0000-c000-000000000000 engedélyezése, és próbálja meg az Azure AD-bérlő tartományi szolgáltatások engedélyezése.
+Nem sikerült engedélyezni a domain Services az Azure AD-bérlőben. A Microsoft Azure AD alkalmazás le van tiltva az Ön Azure AD-bérlőjében. Engedélyezze a 00000002-0000-0000-c000-000000000000 az alkalmazást, és ezután próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlővel.
 
-**Szervizelés:**
+**Szervizelési:**
 
-Ellenőrizze, hogy ha le van tiltva az alkalmazás azonosítóját 00000002-0000-0000-c000-000000000000. Ez az alkalmazás a Microsoft Azure AD-alkalmazás, és a Graph API-hozzáférést biztosít az Azure AD-bérlő. Az Azure AD tartományi szolgáltatásokat kell engedélyezni a felügyelt tartományra az Azure AD-bérlő szinkronizálni kell az alkalmazás.
+Ellenőrizze, hogy ha 00000002-0000-0000-c000-000000000000 azonosítójú alkalmazás le van tiltva. Ez az alkalmazás a Microsoft Azure AD-alkalmazás és a Graph API-hozzáférést biztosít az Azure AD-bérlővel. Az Azure AD Domain Services az alkalmazás szinkronizálása az Azure AD-bérlőhöz, a felügyelt tartomány engedélyezni kell.
 
-Ez a hiba elhárításához alkalmazás engedélyezése, és próbálja meg az Azure AD-bérlő tartományi szolgáltatások engedélyezése.
+Ez a hiba elhárításához alkalmazás engedélyezése, és ezután próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlővel.
 
 
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>A felhasználók nem tudnak bejelentkezni az Azure AD Domain Services által felügyelt tartományba
-Ha az Azure AD-bérlőről egy vagy több felhasználók nem jelentkezhetnek be az újonnan létrehozott felügyelt tartományra, hajtsa végre a következő hibaelhárítási lépéseket:
+Ha az Azure AD-bérlőben egy vagy több felhasználó nem tud bejelentkezni az újonnan létrehozott felügyelt tartományba, hajtsa végre az alábbi hibaelhárítási lépéseket:
 
-* **Jelentkezzen be UPN formátum használatával:** próbáljon meg bejelentkezni az UPN-formátumban (például "joeuser@contoso.com") helyett a SAMAccountName formátumban ("CONTOSO\joeuser"). A SAMAccountName előfordulhat, hogy automatikusan generált felhasználók amelynek UPN előtag túlságosan hosszú, vagy azonos egy másik felhasználója a felügyelt tartományra. Az egyszerű felhasználónév formátuma garantáltan az Azure AD-bérlő belül egyedinek kell lennie.
+* **Bejelentkezési egyszerű felhasználónév formátumban:** próbáljon meg bejelentkezni az egyszerű felhasználónév formátumban (például "joeuser@contoso.com") a SAMAccountName formátum ("CONTOSO\joeuser") helyett. A SAMAccountName előfordulhat, hogy automatikusan generált felhasználók amelynek egyszerű Felhasználónévi előtagját túl hosszú, vagy ugyanaz, mint egy másik felhasználó a felügyelt tartományon. Az egyszerű felhasználónév formátumú garantáltan Azure AD-bérlő belül egyedinek kell lennie.
 
 > [!NOTE]
-> Azt javasoljuk, hogy jelentkezzen be az Azure AD tartományi szolgáltatások által kezelt tartomány a UPN formátumban.
+> Azt javasoljuk, hogy az Azure AD tartományi szolgáltatásokkal felügyelt tartományban jelentkezzen be az egyszerű felhasználónév formátumban.
 >
 >
 
 * Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást](active-directory-ds-getting-started-password-sync.md) az első lépéseket ismertető útmutató lépéseinek megfelelően.
-* **Külső fiókok:** győződjön meg arról, hogy az érintett felhasználó egy nem külső fiók az Azure AD-bérlőben. Külső fiókok például Microsoft-fiókok (például "joe@live.com") vagy külső felhasználói fiókok Azure AD-címtárban. Azure AD tartományi szolgáltatások nem tartozik ilyen felhasználói fiókhoz tartozó hitelesítő adatok, ezek a felhasználók nem jelentkezhet be a felügyelt tartományra.
-* **Fiókok szinkronizálva:** az érintett felhasználói fiókok szinkronizálása a helyszíni könyvtárból, ellenőrizze, hogy:
+* **Külső fiókok:** biztosítani, hogy az érintett felhasználói fiók ne külső fiók az Azure AD-bérlőben. Külső fiókok például a Microsoft-fiókok (például "joe@live.com") vagy egy külső felhasználói fiókok Azure AD-címtárban. Az Azure AD Domain Services nem rendelkezik ilyen felhasználói fiókokhoz tartozó hitelesítő adatokat, mivel ezek a felhasználók nem tud bejelentkezni a felügyelt tartományhoz.
+* **Fiókok szinkronizálva:** az érintett felhasználói fiókok helyszíni címtárból vannak szinkronizálva, ellenőrizze, hogy:
 
-  * Telepítése vagy frissítése a [legújabb ajánlott az Azure AD Connect kiadás](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
-  * Az Azure AD Connect konfigurálása [teljes szinkronizálást végezzen](active-directory-ds-getting-started-password-sync.md).
-  * A címtár méretétől függően esetlegesen időigényes a felhasználói fiókok és hitelesítőadat-kivonatok elérhető lesz az Azure AD tartományi szolgáltatásokat. Gondoskodjon arról, hogy elegendő ideig, mielőtt újra próbálkozna a hitelesítési várja.
-  * Ha az előző lépések ellenőrzése után a probléma továbbra is fennáll, indítsa újra a Microsoft Azure AD Sync szolgáltatás. A szinkronizálás gépről elindítani a parancssort, és hajtsa végre a következő parancsokat:
+  * Van üzembe helyezve, vagy a frissített a [legújabb ajánlott kiadását az Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+  * Konfigurálta az Azure AD Connect [végezzen teljes szinkronizálást](active-directory-ds-getting-started-password-sync.md).
+  * A címtár méretétől függően ez lehetséges, hogy tarthat a felhasználói fiókokhoz, és hitelesítőadat-kivonatok Azure AD tartományi szolgáltatások elérhetők. Győződjön meg arról, hogy elég hosszú újrapróbálkozás előtt egy kis hitelesítés.
+  * Ha ellenőrizte, hogy a fenti lépéseket a probléma továbbra is fennáll, próbálja meg újraindítani a Microsoft Azure AD Sync szolgáltatást. A szinkronizált gépen nyisson meg egy parancssort, és hajtsa végre a következő parancsokat:
 
     1. net stop "Microsoft Azure AD Sync"
     2. a net start "Microsoft Azure AD Sync"
-* **Csak felhőalapú fiókok**: Ha az érintett felhasználó fiók egy kizárólag felhőalapú felhasználói fiókot, győződjön meg arról, hogy a felhasználó módosította a jelszavát, miután engedélyezte az Azure AD tartományi szolgáltatások. Ezzel a lépéssel létrejönnek az Azure AD tartományi szolgáltatásokhoz szükséges hitelesítő adatok kivonatai.
+* **Kizárólag felhőalapú fiókok**: az érintett felhasználói fiók csak felhőalapú felhasználói fiók esetén ellenőrizze, hogy a felhasználó megváltoztatta a jelszavát, miután engedélyezte az Azure AD tartományi szolgáltatásokat. Ezzel a lépéssel létrejönnek az Azure AD tartományi szolgáltatásokhoz szükséges hitelesítő adatok kivonatai.
 
-## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>Egy vagy több vannak a felügyelt tartományok
+## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>Nincsenek egy vagy több riasztást a felügyelt tartományon
 
-Lásd: how to a felügyelt tartomány riasztás feloldása, látogasson el a [hibaelhárítása riasztások](active-directory-ds-troubleshoot-alerts.md) cikk.
+Tekintse meg a felügyelt tartományra a riasztások megoldása funkcionáló a [riasztások hibaelhárítása](active-directory-ds-troubleshoot-alerts.md) cikk.
 
-## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Eltávolítja az Azure AD-bérlő felhasználók a felügyelt tartományok nem törlődnek
-Az Azure AD megvédi Önt a felhasználói objektumok véletlen törlésétől. Amikor töröl egy felhasználói fiókot az Azure AD-bérlőből, a megfelelő felhasználói objektum átkerül a Lomtárba. Amikor a törlési művelet szinkronizálja a felügyelt tartományra, a megfelelő felhasználói fiókkal kell megjelölni, letiltott okoz. Ez a szolgáltatás segítségével helyre, vagy később törlésének visszavonása a felhasználói fiók.
+## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Az Azure AD-bérlőjéből eltávolított felhasználók nem törlődnek a felügyelt tartományhoz
+Az Azure AD megvédi Önt a felhasználói objektumok véletlen törlésétől. Amikor töröl egy felhasználói fiókot az Azure AD-bérlőből, a megfelelő felhasználói objektum átkerül a Lomtárba. Ezt a műveletet a felügyelt tartomány szinkronizálásakor azt eredményezi, a megfelelő felhasználói fiók letiltottként lesz megjelölve. Ez a funkció segít a helyre, vagy később törlésének visszavonása a felhasználói fiókot.
 
-A felhasználói fiók a felügyelt tartományok letiltott állapotban marad, akkor is, ha az Azure AD-címtárát hozza létre a azonos egyszerű Felhasználónévvel rendelkező felhasználói fiókkal. Távolítsa el a felhasználói fiók a felügyelt tartományok, meg kell kényszerített törléséhez az Azure AD-bérlő.
+A felhasználói fiók a felügyelt tartományra a letiltott állapotban marad, akkor is, ha újra létrehozza ugyanazzal az egyszerű Felhasználónévvel rendelkező felhasználói fiókkal az Azure AD-címtárhoz. A felhasználói fiók eltávolítása a felügyelt tartományra, szüksége kényszerített törlése az Azure AD-bérlővel.
 
-A teljes mértékben eltávolítja a felügyelt tartományok a felhasználói fiók, a felhasználó véglegesen törli az Azure AD-bérlőn. Használja a `Remove-MsolUser` PowerShell parancsmag a `-RemoveFromRecycleBin` lehetőség, mert leírt [MSDN-cikk](https://msdn.microsoft.com/library/azure/dn194132.aspx).
+Teljes mértékben eltávolítja a felügyelt tartományra a felhasználói fiókot, hogy a felhasználó véglegesen törli a az Azure AD-bérlőjében. Használja a `Remove-MsolUser` PowerShell-parancsmagot a `-RemoveFromRecycleBin` paraméterrel, ahogyan azt a jelen [MSDN-cikkben](https://msdn.microsoft.com/library/azure/dn194132.aspx).
 
 
 ## <a name="contact-us"></a>Kapcsolat
-Lépjen kapcsolatba az Azure Active Directory tartományi szolgáltatások termékért felelős csoport a [visszajelzés fájlmegosztás vagy a támogatáshoz](active-directory-ds-contact-us.md).
+Lépjen kapcsolatba az Azure Active Directory Domain Services termékért felelős csoport [visszajelzés és támogatás](active-directory-ds-contact-us.md).

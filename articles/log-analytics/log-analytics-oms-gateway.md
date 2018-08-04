@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a87cccbcf58a9d8f701f9721fb3ec36460b13703
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 74da7e96ed52b441bc63d5fb5a032db9c6d57774
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438732"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494276"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Csatlakoztassa a számítógépet az OMS-átjáró Internet-hozzáférés nélkül
 Ez a dokumentum ismerteti a kommunikáció konfigurálása az Azure Automation és a Log Analytics használatával az OMS-átjárót, ha közvetlenül csatlakoztatott, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáféréssel.  Az OMS-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxyt, adatok gyűjtéséhez és küldhet az Azure Automation és a Log Analytics a felhasználók nevében.  
@@ -82,7 +82,7 @@ Az OMS-átjáró a következő nyelveken érhető el:
 - Spanyol (nemzetközi)
 
 ### <a name="supported-encryption-protocols"></a>Támogatott titkosítási protokollokkal
-Az OMS-átjáró csak a Transport Layer Security (TLS) 1.0, 1.1 és 1.2-es támogatja.  Nem támogatja a Secure Sockets Layer (SSL).
+Az OMS-átjáró csak a Transport Layer Security (TLS) 1.0, 1.1 és 1.2-es támogatja.  Nem támogatja a Secure Sockets Layer (SSL).  A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, azt javasoljuk, hogy az átjáró használatához legalább konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**.  További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](log-analytics-data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Támogatott ügynök-kapcsolatok száma
 Az alábbi táblázat az átjáró-kiszolgálóval való kommunikációhoz ügynökök támogatott száma emeli ki.  Ez a támogatás közel 200KB méretű adatot feltölteni 6 másodpercenként ügynökök alapul. Tesztelt ügynök / adatmennyiség naponta körülbelül 2.7-es GB.

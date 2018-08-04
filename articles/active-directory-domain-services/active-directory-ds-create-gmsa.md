@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: A csoportosan felügyelt szolgáltatásfiók létrehozása |} Microsoft Docs'
-description: Azure Active Directory tartományi szolgáltatások felügyelt tartományok felügyelete
+title: 'Az Azure Active Directory Domain Services: Hozzon létre egy csoportosan felügyelt szolgáltatásfiókot |} A Microsoft Docs'
+description: Az Azure Active Directory Domain Services felügyelt tartomány felügyeletéhez
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,40 +12,40 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: maheshu
-ms.openlocfilehash: 4b4ce876760d024170020ae3faf618c7e9e76773
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 9bfd38b2eba3cab5012e5715ad283b9cb7b84a9b
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036064"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505892"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>A csoportosan felügyelt szolgáltatásfiókjait (gMSA) létrehozni az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
+# <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Csoportosan felügyelt szolgáltatásfiók (gMSA) létrehozása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Ez a cikk bemutatja, hogyan lehet létrehozni a felügyelt szolgáltatásfiókok az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz.
 
 ## <a name="managed-service-accounts"></a>Felügyelt szolgáltatásfiókok
-A önálló felügyelt szolgáltatásfiókok (önállóan felügyelt szolgáltatásfiókot) egy felügyelt tartományi fiók, amelynek jelszó automatikusan kezeli. Egyszerűbbé teszi az egyszerű szolgáltatásnév (SPN) kezelő, és lehetővé teszi, hogy delegált felügyeleti más rendszergazdák számára. Felügyelt szolgáltatásfiókok (msa-t) az ilyen típusú bevezetett Windows 7 és Windows Server 2008 R2.
+Önálló felügyelt szolgáltatásfiókok (önállóan felügyelt szolgáltatásfiókot) egy felügyelt tartományi fiók, amelynek a jelszavát automatikusan kezeli. Egyszerűbbé téve a szolgáltatásfelügyelet egyszerű szolgáltatásnevet (SPN), és lehetővé teszi, hogy delegált felügyeleti más rendszergazdák számára. Az ilyen típusú felügyelt szolgáltatásfiókok (MSA) a Windows Server 2008 R2 és Windows 7 jelent meg.
 
-A csoport által felügyelt szolgáltatásfiókjait (gMSA) az előnyei ugyanabban a tartományban, sok kiszolgálón. Egy kiszolgálófarmon üzemeltetett szolgáltatás minden példányának kell használnia az azonos egyszerű kölcsönös hitelesítési protokollok működéséhez. Ha a csoportosan felügyelt szolgáltatásfiók egyszerű szolgáltatás, a Windows operációs rendszer kezeli a fiók jelszavát ahelyett, hogy a rendszergazda.
+A csoportosan felügyelt szolgáltatásfiók (gMSA) ugyanazokat az előnyöket kínál a tartományban lévő kiszolgálók számát. Egy kiszolgálóból álló farmra üzemeltetett szolgáltatás minden példányát kell használnia a kölcsönös hitelesítési protokoll azonos szolgáltatásnév működjön. Csoportosan felügyelt szolgáltatásfiók egyszerű szolgáltatásnevének használatos, ha a Windows operációs rendszer kezeli a fiók jelszava helyett a rendszergazda.
 
 **További információ:**
-- [Csoportosan felügyelt szolgáltatásfiókok – áttekintés](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [Ismerkedés a csoportosan felügyelt szolgáltatásfiókok](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+- [Csoport felügyelt szolgáltatásfiókok – áttekintés](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
+- [Csoportosan felügyelt szolgáltatásfiókok – első lépések](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
 
 
-## <a name="using-service-accounts-in-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatásokban a szolgáltatásfiókok
-Az Azure AD tartományi szolgáltatások felügyelt tartományok zárolva, és a Microsoft kezeli. Nincsenek néhány fő szempontjait a szolgáltatásfiókok az Azure AD tartományi szolgáltatásokkal.
+## <a name="using-service-accounts-in-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatásokban használnak
+Az Azure AD Domain Services felügyelt tartomány zárolását, és a Microsoft által felügyelt. Van néhány fő szempontot szolgáltatásfiókok használata az Azure AD tartományi szolgáltatásokkal.
 
-### <a name="create-service-accounts-within-custom-organizational-units-ou-on-the-managed-domain"></a>A felügyelt tartományra egyéni szervezeti egységekhez (OU) belül szolgáltatásfiókok létrehozása
-A beépített "AADDC felhasználók" vagy "AADDC számítógépek" szervezeti egység nem hozható létre a szolgáltatás-fiók. [Hozzon létre egy egyéni szervezeti](active-directory-ds-admin-guide-create-ou.md) felügyelt tartományra, majd hozza létre a szolgáltatásfiókok belül egyéni szervezeti egységre.
+### <a name="create-service-accounts-within-custom-organizational-units-ou-on-the-managed-domain"></a>Egyéni szervezeti egység (OU) belül szolgáltatásfiókok létrehozása a felügyelt tartományon
+A beépített "AADDC felhasználók" vagy "AADDC számítógépek" szervezeti egységet a szolgáltatásfiók nem hozható létre. [Hozzon létre egy egyéni szervezeti](active-directory-ds-admin-guide-create-ou.md) el a felügyelt tartományhoz, majd hozza létre az egyéni szervezeti egységre belül szolgáltatásfiókok.
 
-### <a name="the-key-distribution-services-kds-root-key-is-already-pre-created"></a>A terjesztési Kulcsszolgáltatások (KDS) legfelső szintű kulcs már előre létrehozott
-A terjesztési Kulcsszolgáltatások (KDS) legfelső szintű kulcs előre létrehozott megtalálható az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz. Nem kell létrehozni a KDS legfelső szintű kulcsot, és nem rendelkezik a szükséges engedélyekkel, vagy tegye. KDS-gyökérkulcs vagy nem tekintheti meg a felügyelt tartományra.
+### <a name="the-key-distribution-services-kds-root-key-is-already-pre-created"></a>A kulcs-telepítési szolgáltatások (KDS) legfelső szintű kulcs már előre létrehozott
+A kulcs-telepítési szolgáltatások (KDS) legfelső szintű kulcs előre létrehozott egy Azure AD tartományi szolgáltatásokkal felügyelt tartományban található. Nem kell létrehozni a KDS legfelső szintű kulcs, és nem rendelkezik jogosultságokkal teheti így. KDS-gyökérkulcs vagy nem tekintheti meg a felügyelt tartományhoz.
 
-## <a name="sample---create-a-gmsa-using-powershell"></a>Minta - a PowerShell használatával csoportosan felügyelt szolgáltatásfiók létrehozása
-A következő példa bemutatja, hogyan hozzon létre egy egyéni szervezeti PowerShell használatával. Ezután létrehozhat belüli szervezeti egységre csoportosan felügyelt szolgáltatásfiók használatával a ```-Path``` paraméterrel adhatja meg a szervezeti Egységhez.
+## <a name="sample---create-a-gmsa-using-powershell"></a>– PowerShell-lel csoportosan felügyelt szolgáltatásfiók létrehozása
+A következő minta bemutatja, hogyan hozhat létre egy egyéni szervezeti PowerShell használatával. Ezután létrehozhat csoportosan felügyelt szolgáltatásfiók belül, amelynek használatával a ```-Path``` paraméterrel adja meg a szervezeti Egységhez.
 
 ```powershell
 # Create a new custom OU on the managed domain
@@ -62,12 +62,12 @@ http/WebFarmSvc/contoso100.com, http/WebFarmSvc/contoso100  `
 -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
 ```
 
-**PowerShell-parancsmagok dokumentációira:**
+**PowerShell-parancsmag dokumentáció:**
 - [Új ADOrganizationalUnit parancsmag](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit)
 - [Új ADServiceAccount parancsmaggal](https://docs.microsoft.com/powershell/module/addsadministration/New-ADServiceAccount)
 
 
 ## <a name="next-steps"></a>További lépések
-- [Hozzon létre egyéni szervezeti olyan felügyelt tartományhoz](active-directory-ds-admin-guide-create-ou.md)
-- [Csoportosan felügyelt szolgáltatásfiókok – áttekintés](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [Ismerkedés a csoportosan felügyelt szolgáltatásfiókok](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+- [Egy egyéni szervezeti egység létrehozása egy felügyelt tartományon](active-directory-ds-admin-guide-create-ou.md)
+- [Csoport felügyelt szolgáltatásfiókok – áttekintés](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
+- [Csoportosan felügyelt szolgáltatásfiókok – első lépések](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)

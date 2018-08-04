@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: eccf570a0bdcf896a40d8c49f400647e247f6d65
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f24be44b00f9c4e789e8d4797f6a0516dcfe940f
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435777"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494057"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Azure Active Directory-bejelentkezés konfigurálása az alkalmazás viselkedésében egy Kezdőtartomány-felderítés házirend segítségével
 
@@ -261,6 +261,6 @@ Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>További lépések
-- Az Azure AD hitelesítési működésével kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-ben](../develop/active-directory-authentication-scenarios.md).
+- Az Azure AD hitelesítési működésével kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-ben](../develop/authentication-scenarios.md).
 - Felhasználói egyszeri bejelentkezéssel kapcsolatos további információkért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](configure-single-sign-on-portal.md).
 - Látogasson el a [Active Directory fejlesztői útmutatója](../develop/azure-ad-developers-guide.md) áttekintheti az összes fejlesztői kapcsolódó tartalmat.

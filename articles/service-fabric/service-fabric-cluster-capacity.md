@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: ae670eca3d655e16ddf55da2e2538ba96b7e0115
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0a5c73728f939fc239f4af79f5f084867856581a
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126051"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494208"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Tervezési megfontolások a Service Fabric-fürt kapacitása
 Éles rendszerek üzembe a kapacitástervezés egy fontos lépés. Íme néhány, az elem, meg kell figyelembe venni, hogy a folyamat részeként.
@@ -62,7 +62,7 @@ A Service Fabric-rendszerszolgáltatások (például a kezelő szolgáltatás va
 * A **virtuális gép minimális mérete** az elsődleges csomópont típusa határozza meg a **tartóssági szint** választja. Az alapértelmezett tartóssági szint bronz. Lásd: [a fürt tartóssági jellemzőit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) további részletekért.  
 * A **virtuális gépek minimális száma** az elsődleges csomópont típusa határozza meg a **megbízhatósági szint** választja. Az alapértelmezett megbízhatóság szintje Silver. Lásd: [a fürt megbízhatósági jellemzőit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) további részletekért.  
 
-Az Azure Resource Manager-sablonból az elsődleges csomóponttípushoz van konfigurálva a `isPrimary` attribútum alapján az [csomópont típusdefiníció](https://docs.microsoft.com/en-us/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
+Az Azure Resource Manager-sablonból az elsődleges csomóponttípushoz van konfigurálva a `isPrimary` attribútum alapján az [csomópont típusdefiníció](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
 
 ### <a name="non-primary-node-type"></a>A nem elsődleges csomóponttípus
 
@@ -110,10 +110,6 @@ Silver vagy Gold tartóssági használja minden csomópont esetében, amelyek v�
 - Elfogadja a biztonságosabb módon, hogy egy virtuális Gépet a Termékváltozat módosítása (horizontális felskálázás/leskálázás): egy virtuálisgép-méretezési csoportot a virtuális gép Termékváltozata módosítása természetüknél fogva egy nem biztonságos művelet, ezért el kell kerülni, ha lehetséges. Itt az a folyamat, követheti a gyakori problémák elkerülése érdekében.
     - **A nem elsődleges csomóponttípusok:** javasoljuk, hogy létrehozott új virtuálisgép-méretezési csoportot, a szolgáltatás-elhelyezési korlátozás közé tartozik az új virtuális gép méretezési készlet vagy csomópont típusa, és csökkentse a régi virtuálisgép-méretezési készlet példány módosítása száma 0-ra, egy adott csomópont egy időpontot (Ez a győződjön meg arról, hogy a csomópontok eltávolítása nincs hatással a fürt megbízhatóságát).
     - **Az elsődleges csomóponttípus:** azt javasoljuk, nem módosíthatja, hogy az elsődleges csomóponttípushoz VM Termékváltozata. -Termékváltozat nem támogatott az elsődleges csomóponttípushoz módosítását. Ha az új Termékváltozat oka kapacitás, javasoljuk, további példányok hozzáadása. Ha nem lehetséges, hozzon létre egy új fürtöt, és [alkalmazásállapot visszaállítása](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtről. Nem kell minden olyan szolgáltatás rendszerállapot visszaállítása, akkor létrejönnek az új fürthöz az alkalmazások központi telepítésekor. Ugyanúgy, mintha állapot nélküli alkalmazások a fürtben futó, majd kell az új fürtre alkalmazások üzembe helyezése, akkor semmit nem kell visszaállítani. Ha úgy dönt, nyissa meg a nem támogatott útvonal és a VM-Termékváltozat módosítani kívánja, majd végezni a módosításokat a virtuálisgép-méretezési csoport beállítása modell definícióját, hogy tükrözzék az új Termékváltozat. Ha a fürt egyetlen csomópont típusa, majd ellenőrizze, hogy, hogy válaszol-e az állapotalapú alkalmazások az összes [replika életciklusesemények szolgáltatás](service-fabric-reliable-services-lifecycle.md) (ilyen például a replika a build beragad) időben feldolgozza, és hogy a szolgáltatás replika újraépítése időtartam (a Silver szintű tartóssági szint) kisebb, mint öt perc alatt. 
-
-    > [!WARNING]
-    > A virtuális gép méretezési csoportok nem ajánlott legalább a Silver szintű tartósságot nem fut a virtuális gép SKU-méret módosítása. Virtuális gép SKU-méret módosítása egy olyan adatok felülíró helyszíni infrastruktúra művelet. Legalább egy teszi lehetővé a késleltetés vagy figyelheti ezt a módosítást, anélkül, hogy a művelet az állapotalapú szolgáltatások esetében adatvesztést is okozhat, vagy más előre nem látható működéssel kapcsolatos problémát, még akkor is állapot nélküli számítási feladatok miatt lehetőség. 
-    > 
     
 - Karbantartása öt csomópont minden olyan virtuálisgép-méretezési tartóssági szintű arany és ezüst engedélyezve van a minimális számát.
 - Minden egyes Virtuálisgép-méretezési csoport Silver vagy Gold tartóssági szint beállítása a Service Fabric-fürtöt a saját csomóponttípusa kell rendelni. Több virtuális gép leképezés egyetlen csomóponttípus; a méretezési csoportok megakadályozza, hogy a Service Fabric-fürt és az Azure-infrastruktúra közötti koordinációt megfelelően működik.

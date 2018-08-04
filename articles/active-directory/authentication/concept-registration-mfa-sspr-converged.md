@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: a0fec9743cd213d0d41d9143a2b1e9e1c3db9967
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447961"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492892"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication (nyilvános előzetes verzió)
 
@@ -71,10 +71,12 @@ Az új felületet tartozó auditnaplók az auditnapló hitelesítési módszerek
 ## <a name="known-issues"></a>Ismert problémák
 
 **Alapértelmezett MFA módszer telefonhívás van beállítva, amikor a felhasználó regisztrálja az SMS-üzenet tehető**
-   * Néhány felhasználó Észreveheti, hogy az alapértelmezett MFA módszer beállítása telefonhívás után regisztrálják a telefonszámukat, szöveges üzenet használatával. Felhasználók fel tudják oldani a problémát úgy módosítja az alapértelmezett módszer az alábbi utasításokat követve. 
+
+   * Néhány felhasználó Észreveheti, hogy az alapértelmezett MFA módszer beállítása telefonhívás után regisztrálják a telefonszámukat, szöveges üzenet használatával. Felhasználók fel tudják oldani a problémát úgy módosítja az alapértelmezett módszer a cikkben található utasításokat követve [kezelheti a biztonsági adatok (előzetes verzió)](../user-help/security-info-manage-settings.md#change-your-info).
 
 **A felhasználó nem fér hozzá az új regisztrációs felület, miután a rendszergazda kikapcsolja az alapértelmezett módszer**
-   * Néhány felhasználót nem lehet férhetnek hozzá az új regisztrációs felület, ha a korábban regisztrált alapértelmezett MFA módszert a rendszergazda által le van tiltva. Íme egy példa: 
+
+   * Néhány felhasználót nem lehet férhetnek hozzá az új regisztrációs felület, ha a korábban regisztrált alapértelmezett MFA módszert a rendszergazda által le van tiltva. Íme egy példa:
       1. Felhasználó korábban regisztrálva a telefonszámukat és telefonon hívja fel az alapértelmezett módszert állítja be.
       2. Rendszergazda kikapcsolja az telefonhívás MFA módszerként a bérlő számára.
       3. Regisztrálja a bejelentkezés során, mivel szükségük van egy további módszer felel meg a bérlő az SSPR csoportházirend regisztráljon kéri a felhasználótól.

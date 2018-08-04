@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 9f086687540ed12590429fb73b05083a8b8d7f33
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4d0c8a4395ee70881ffee56f9ed030943c6fa557
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435119"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495373"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 Meglévő System Center Operations Manager-befektetései kamatoztatása, és a Log Analytics képességeinek kiterjesztése érdekében az Operations Managert integrálhatja Log Analytics-munkaterületével.  Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -54,7 +54,6 @@ Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 >* Töltse le a felügyeleti csomag a System Center 2016 – Operations Manager [Itt](https://www.microsoft.com/download/details.aspx?id=57172)  
 >* A System Center Operations Manager 2012 R2, töltse le a felügyeleti csomag [Itt](https://www.microsoft.com/en-us/download/details.aspx?id=57171)  
 
-
 ### <a name="network"></a>Network (Hálózat)
 Az alábbi lista az Operations Management-ügynök, a felügyeleti kiszolgálók és az Operatív konzol a Log Analyticsszel való kommunikációhoz szükséges proxy- és tűzfal-konfigurációját tartalmazza.  Az egyes összetevők forgalma kifelé, a hálózatból a Log Analytics szolgáltatásra irányul.     
 
@@ -81,6 +80,9 @@ Az alábbi lista az Operations Management-ügynök, a felügyeleti kiszolgálók
 |portal.loganalytics.io| 80 és 443||
 |api.loganalytics.io| 80 és 443||
 |docs.loganalytics.io| 80 és 443||  
+
+### <a name="tls-12-protocol"></a>A TLS 1.2 protokoll
+A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, Határozottan javasoljuk, hogy használatához legalább az ügynök és a felügyeleti csoport konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**.  További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](log-analytics-data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="connecting-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 Az alábbi lépések végrehajtásával konfigurálhatja Operations Manager felügyeleti csoportját, hogy a Log Analytics munkaterületei egyikéhez csatlakozzon.

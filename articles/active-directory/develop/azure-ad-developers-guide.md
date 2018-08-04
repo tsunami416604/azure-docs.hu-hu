@@ -16,12 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2c2c1a613b639b44afecced30ff78604cfca1e73
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6c3148f6ca9e538d2fed3467ba5d2129e123c7fd
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449833"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502284"
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory fejlesztők számára
 
@@ -32,8 +32,8 @@ Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgálta
 
 | | |
 | --- | --- |
-|[Hitelesítési alapok](active-directory-authentication-scenarios.md) | Bevezetés az Azure AD-vel történő hitelesítés használatába. |
-|[Alkalmazástípusok](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Áttekintés az Azure AD által támogatott hitelesítési forgatókönyvekről. |      
+|[Hitelesítési alapok](authentication-scenarios.md) | Bevezetés az Azure AD-vel történő hitelesítés használatába. |
+|[Alkalmazástípusok](authentication-scenarios.md#application-types-and-scenarios) | Áttekintés az Azure AD által támogatott hitelesítési forgatókönyvekről. |      
 | | |
 
 ## <a name="get-started"></a>Bevezetés
@@ -41,11 +41,11 @@ Az alábbi irányított beállítások végigvezetik az alkalmazásoknak a kív�
 
 |  |  |  |  |
 | --- | --- | --- | --- |
-| <center>![Mobil- és asztali alkalmazások](./media/azure-ad-developers-guide/NativeApp_Icon.png)<br />Mobil- és asztali alkalmazások</center> | [Áttekintés](active-directory-authentication-scenarios.md#native-application-to-web-api)<br /><br />[iOS](active-directory-devquickstarts-ios.md)<br /><br />[Android](active-directory-devquickstarts-android.md) | [.NET (WPF)](active-directory-devquickstarts-dotnet.md)<br /><br />[Xamarin](active-directory-devquickstarts-xamarin.md) |
-| <center>![Webalkalmazások](./media/azure-ad-developers-guide/Web_app.png)<br />Webalkalmazások</center> | [Áttekintés](active-directory-authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](GuidedSetups/active-directory-aspnetwebapp-v1.md)<br /><br />[Java](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) | [Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)<br/><br/> [Node.js](active-directory-devquickstarts-openidconnect-nodejs.md) |
-| <center>![Egylapos alkalmazások](./media/azure-ad-developers-guide/SPA.png)<br />Egylapos alkalmazások</center> | [Áttekintés](active-directory-authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |  |
-| <center>![Webes API-k](./media/azure-ad-developers-guide/Web_API.png)<br />Webes API-k</center> | [Áttekintés](active-directory-authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[Node.js](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
-| <center>![Szolgáltatások közötti](./media/azure-ad-developers-guide/Service_App.png)<br />Szolgáltatások közötti</center> | [Áttekintés](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)|  |
+| <center>![Mobil- és asztali alkalmazások](./media/azure-ad-developers-guide/NativeApp_Icon.png)<br />Mobil- és asztali alkalmazások</center> | [Áttekintés](authentication-scenarios.md#native-application-to-web-api)<br /><br />[iOS](quickstart-v1-ios.md)<br /><br />[Android](quickstart-v1-android.md) | [.NET (WPF)](quickstart-v1-dotnet.md)<br /><br />[Xamarin](quickstart-v1-xamarin.md) |
+| <center>![Webalkalmazások](./media/azure-ad-developers-guide/Web_app.png)<br />Webalkalmazások</center> | [Áttekintés](authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](quickstart-v1-aspnet-webapp.md)<br /><br />[Java](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) | [Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)<br/><br/> [Node.js](quickstart-v1-openid-connect-code.md) |
+| <center>![Egylapos alkalmazások](./media/azure-ad-developers-guide/SPA.png)<br />Egylapos alkalmazások</center> | [Áttekintés](authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |  |
+| <center>![Webes API-k](./media/azure-ad-developers-guide/Web_API.png)<br />Webes API-k</center> | [Áttekintés](authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[Node.js](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
+| <center>![Szolgáltatások közötti](./media/azure-ad-developers-guide/Service_App.png)<br />Szolgáltatások közötti</center> | [Áttekintés](authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)|  |
 |  |  |  |  |  |
 
 ## <a name="how-to-guides"></a>Útmutatók
@@ -53,7 +53,7 @@ Az alábbi útmutatók végigvezetik az Azure AD néhány gyakori feladatán.
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
-|[Alkalmazásregisztráció](active-directory-integrating-applications.md)           | Alkalmazás regisztrálása az Azure AD-ben. |
+|[Alkalmazásregisztráció](quickstart-v1-integrate-apps-with-azure-ad.md)           | Alkalmazás regisztrálása az Azure AD-ben. |
 |[Több-bérlős alkalmazások](active-directory-devhowto-multi-tenant-overview.md)    | Bejelentkezés bármely munkahelyi Microsoft-fiókba. |
 |[OAuth és OpenID Connect protokollok](active-directory-protocols-openid-connect-code.md)| Felhasználók bejelentkeztetése és webes API-k hívása a Microsoft hitelesítési protokolljaival. |
 |  |  |

@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: af9a2e47a5e91d9b32a787f8f40ba06b5a1596e7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: f6ba0fccc6fadffb5f4d1a22b2c2fbcc38f9f0df
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265046"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494981"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikk ismerteti, hogy az egy felhőalapú Azure Active Directory (Azure AD) példány egy helyszíni Active Directory-példányból származó felhasználói jelszavakat szinkronizálja szükséges információkat.
 
 ## <a name="what-is-password-hash-synchronization"></a>Mi az a Jelszókivonat-szinkronizálás
-Annak a valószínűsége, hogy már letiltotta az Elfelejtett jelszó miatt a munkát a jelszavak számát, meg kell jegyeznie kapcsolódik. A további jelszavakat, ne feledje, hogy minél nagyobb a valószínűsége megfeledkezni egy kell. Kérdések és a jelszó alaphelyzetbe állítása és egyéb jelszó-kapcsolatos problémák hívások kereslet a legtöbb segélyszolgálat-erőforrást.
+Annak a valószínűségét, hogy már letiltotta az Elfelejtett jelszó miatt a munkát a jelszavak számát, meg kell jegyeznie kapcsolódik. A további jelszavakat, ne feledje, hogy minél nagyobb a valószínűsége megfeledkezni egy kell. Kérdések és a jelszó alaphelyzetbe állítása és egyéb jelszó-kapcsolatos problémák hívások kereslet a legtöbb help desk erőforrást.
 
-A Jelszókivonat-szinkronizálás funkciója szinkronizálása egy felhőbeli Azure-bA egy helyszíni Active Directory-példányból származó felhasználói jelszavakat használt AD-példányt.
+Jelszókivonat-szinkronizálás lehetővé teszi az új jelszó egy helyszíni Active Directory-példányból egy felhőbeli Azure kivonatát kivonatát szinkronizálásához használt AD-példányt.
 Ez a funkció használatával jelentkezzen be az Azure AD szolgáltatások, például az Office 365-höz, a Microsoft Intune, CRM Online-hoz és az Azure Active Directory Domain Services (Azure AD DS). Jelentkezzen be a szolgáltatás használatával jelentkezzen be a helyszíni Active Directory-példányra ugyanazzal a jelszóval.
 
 ![Mi az az Azure AD Connect?](./media/active-directory-aadconnectsync-implement-password-hash-synchronization/arch1.png)

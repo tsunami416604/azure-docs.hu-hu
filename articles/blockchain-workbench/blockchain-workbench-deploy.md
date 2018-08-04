@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 57b610b40edff56207617e212d0eb6e591ad50d4
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b65b6977dfe2043e260fd9c0eefd6038ca436d50
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224296"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505814"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench üzembe helyezése
 
@@ -51,7 +51,7 @@ Az Azure Blockchain Workbench az üzembe helyezés előtt több előfeltételt i
 Blockchain Workbenchet telepítéséhez van szükség a regisztráció az Azure AD-alkalmazást. Szüksége lesz egy Azure Active Directory (Azure AD) bérlő az alkalmazás regisztrálásához. Használjon egy meglévő bérlőt, vagy hozzon létre egy új bérlőt. Ha egy meglévő Azure AD-bérlőt használ,-alkalmazások regisztrálását és az Azure AD-bérlő Graph API-engedélyek megadása a megfelelő engedélyekkel kell. Ha nem rendelkezik megfelelő engedélyekkel a meglévő Azure AD-bérlő hozzon létre egy új bérlőt. 
 
 > [!IMPORTANT]
-> Workbench nem kell telepíteni szeretné ugyanabban a bérlőben, azzal, regisztrálni az Azure AD-alkalmazást használ. Workbench-bérlőben, hogy megfelelő engedélyekkel rendelkezik az erőforrások üzembe helyezése kell telepíteni. További információ az Azure AD-bérlőt: [Active Directory-bérlő beszerzése](../active-directory/develop/active-directory-howto-tenant.md) és [alkalmazások integrálása az Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
+> Workbench nem kell telepíteni szeretné ugyanabban a bérlőben, azzal, regisztrálni az Azure AD-alkalmazást használ. Workbench-bérlőben, hogy megfelelő engedélyekkel rendelkezik az erőforrások üzembe helyezése kell telepíteni. További információ az Azure AD-bérlőt: [Active Directory-bérlő beszerzése](../active-directory/develop/quickstart-create-new-tenant.md) és [alkalmazások integrálása az Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a fiók jobb felső sarokban, és váltson a kívánt Azure AD-bérlőben. A bérlő az előfizetés rendszergazdája bérlő az előfizetés, ahol Workbench üzembe van helyezve, és hogy megfelelő engedélyekkel rendelkezik az alkalmazásregisztrációt kell lennie.

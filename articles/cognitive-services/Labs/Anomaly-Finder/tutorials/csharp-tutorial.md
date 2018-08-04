@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2e4100fd7d8e85a6b103c31000176aaaeb3d7151
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c6d33de70fd5b7c03b7af6b85e8ebc567dd2f925
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317679"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502508"
 ---
 # <a name="anomaly-detection-c-application"></a>Rendellenességek észlelése C#-alkalmazás
 
@@ -48,7 +48,7 @@ Nyomja le a Ctrl + Shift + B, vagy a menüszalag menü hozhat létre, majd vála
 
 1. A létrehozás befejezése után nyomja le az ENTER **F5** , vagy kattintson **Start** a menüszalag menü a példa futtatásához.
 2. Keresse meg a rendellenességek észlelése felhasználói felület ablakot az a szöveges beviteli mezőbe olvasása "{your_subscription_key}".
-3. A request.json fájl, amely tartalmazza a mintaadatokat, cserélje le a saját adataival, majd kattintson a "Küldés" gombra. A Microsoft kap az adatok feltöltéséhez, és ezek segítségével bármely anomáliadetektálási pontok között, majd észleléséhez. Az adatok frissítése nem maradnak meg a Microsoft server. Észleli a anomáliadetektálási pont újra, kell feltöltheti az adatokat még egyszer.
+3. A request.json fájl, amely tartalmazza a mintaadatokat, cserélje le a saját adataival, majd kattintson a "Küldés" gombra. A Microsoft kap az adatok feltöltéséhez, és ezek segítségével bármely anomáliadetektálási pontok között, majd észleléséhez. Töltse be az adatokat nem maradnak meg a Microsoft server. Észleli a anomáliadetektálási pont újra, kell feltöltheti az adatokat még egyszer.
 4. Ha az adatok jó, az anomáliadetektálási az észlelés eredménye a "Response" mezőben található. Bármilyen hiba akkor fordul elő, ha a hiba adatait, valamint a válasz mező jelenik meg.
 
 <a name="Review"></a>

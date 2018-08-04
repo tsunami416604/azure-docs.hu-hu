@@ -4,16 +4,16 @@ description: 'Ismerteti, hogy a szabályzatdefiníció erőforrás az Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 08/03/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7f01464c4b9063f20a83c3626d7f92a5e0524f7a
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 48a33d8ead3a68f4702638fcc8db3d99a5ad626c
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989125"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502984"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -309,7 +309,10 @@ Az aliasok listája folyamatosan bővül. Fedezze fel, milyen aliasok az Azure P
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
 
-  # Get Azure Policy aliases for a specific Namespace
+  # List namespaces
+  az provider list --query [*].namespace
+
+  # Get Azure Policy aliases for a specific Namespace (such as Azure Automation -- Microsoft.Automation)
   az provider show --namespace Microsoft.Automation --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 

@@ -1,6 +1,6 @@
 ---
-title: További tudnivalók az Azure AD v2.0 által támogatott hitelesítési protokollok |} Microsoft Docs
-description: Az Azure AD v2.0-végponttól által támogatott protokollok útmutatóját.
+title: További tudnivalók az Azure AD v2.0 által támogatott hitelesítési protokollok |} A Microsoft Docs
+description: Egy útmutató, amellyel az Azure AD v2.0-végpont által támogatott protokollok.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,42 +17,42 @@ ms.date: 04/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7c6031bb135c48a8d58f61c3c96bf18e817809ba
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: b50d04f843e86f5af8ccd32589a540e38e6e47df
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156221"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502933"
 ---
-# <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 protokoll - OAuth 2.0-s & OpenID Connect
-A v2.0-végpontra használhatja az Azure AD identity,--szolgáltatás az iparági szabványos protokollok, OpenID Connectet és az OAuth 2.0-s. Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések vannak ezek a protokollok minden két közötti lehet. Az adatok itt akkor lehet hasznos, ha úgy dönt, hogy a kód írása útján tájékoztatjuk & kezelése HTTP-kérelmek vagy a 3. fél nyílt forráskódú szalagtár helyett egyikével a [nyissa meg a forrás szalagtárak](active-directory-v2-libraries.md).
+# <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 protokoll – az OAuth 2.0 és OpenID Connect
+A v2.0-végpontra is használhatja az Azure AD identitás--szolgáltatásként az iparági szabványos protokollok, OpenID Connect és az OAuth 2.0. Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések ezeket a protokollokat bármely két megvalósítása között lehet. Az adatok itt lesznek lehet hasznos, ha úgy dönt, hogy a kód írása közvetlenül elküldött & kezelése a HTTP-kérelmek vagy használja a 3. fél nyílt forráskódú kódtár, nem pedig az egyik a [nyissa meg a forráskódtárak](active-directory-v2-libraries.md).
 
 > [!NOTE]
-> Nem minden Azure Active Directory forgatókönyvek és funkciók támogatják a v2.0-végponttól. Annak meghatározásához, ha a v2.0-végponttal kell használnia, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
+> Nem minden Azure Active Directory-forgatókönyvet és funkciót támogatja a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
 >
 >
 
-## <a name="the-basics"></a>Az alapok
-Szinte minden OAuth & OpenID Connect adatfolyamok nincsenek négy felek az exchange részt:
+## <a name="the-basics"></a>Alapismeretek
+A gyakorlatilag az összes OAuth és OpenID Connect folyamatok találhatók négy felek részt az exchange:
 
-![OAuth 2.0 szerepkörök](../../media/active-directory-v2-flows/protocols_roles.png)
+![Az OAuth 2.0-szerepkörök](../../media/active-directory-v2-flows/protocols_roles.png)
 
-* A **engedélyezési Server** van a v2.0-végponttól. Ez felelős biztosítása a felhasználói azonosító megadása és erőforrásokhoz való hozzáférés visszavonása és jogkivonatok kiállítása. Más néven az identitásszolgáltató - biztonságosan kezelési semmit, a felhasználó adatait, a hozzáférés és a megbízhatósági kapcsolatok egy folyamat felek között.
-* A **erőforrás tulajdonosa** általában a végfelhasználó van. Az entitás, amely az adatok tulajdonosa, és lehetővé teszik a harmadik felek adott adatok, vagy az erőforrás elérésére jogosult.
-* A **OAuth ügyfél** az alkalmazás azonosítja az alkalmazás azonosítóját. Ez általában a felet, a végfelhasználó kommunikál, és jogkivonatok kér a hitelesítési kiszolgáló. Az ügyfél által az erőforrás tulajdonosa erőforrás eléréséhez engedéllyel kell rendelkezni.
-* A **erőforrás-kiszolgáló** van, amelyben az erőforrás vagy adatok található. A hitelesítési kiszolgáló biztonságosan helyszerepkörre, és az OAuth-ügyfél megbízik, és a tulajdonosi access_tokens segítségével győződjön meg arról, hogy az erőforráshoz való hozzáférés is adható.
+* A **az engedélyezési kiszolgáló** a v2.0-végpont. Ez felelős a felhasználói identitás biztosítása, biztosítása és erőforrásokhoz való hozzáférés visszavonása és a jogkivonatok kiállítása. Más néven az identitásszolgáltató – biztonságos kezelési semmit sem kell elvégezni a megbízhatósági kapcsolatok egy flow-ban a felek között, a felhasználói adatok és azok elérhető.
+* A **erőforrás tulajdonosa** általában a végfelhasználó van. A felet, az adatok tulajdonosa, és lehetővé teszik a harmadik feleket arra, hogy adatokat, vagy az erőforrás elérésére jogosult legyen.
+* A **OAuth-ügyfél** használ az alkalmazás azonosítja az alkalmazás azonosítója. Általában a felet, a végfelhasználó kommunikál, és jogkivonatok kér az engedélyezési kiszolgálón. Az ügyfél által az erőforrás tulajdonosa erőforrás elérésére engedéllyel kell rendelkezni.
+* A **erőforrás-kiszolgáló** van, ahol az erőforrásra vagy található. Az engedélyezési kiszolgáló biztonságos hitelesítéséhez és engedélyezéséhez az OAuth-ügyfél megbízik, és tulajdonosi access_tokens használ, győződjön meg arról, hogy az erőforrásokhoz való hozzáférést is megadható.
 
-## <a name="app-registration"></a>Alkalmazás regisztrálása
-Minden alkalmazást, amely használja a v2.0-végponttal kell regisztrálható [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) előtt OAuth vagy az OpenID Connect használhatják. Az alkalmazásregisztrációs művelet során fog gyűjteni & néhány értéket hozzárendelni az alkalmazást:
+## <a name="app-registration"></a>Alkalmazásregisztráció
+A v2.0-végpont használó alkalmazásokat kell regisztrálható [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) előtt OAuth vagy OpenID Connect használata kezelheti. Az alkalmazásregisztrációs művelet során fog gyűjteni & néhány értéket rendelni az alkalmazást:
 
 * Egy **alkalmazásazonosító** , amely egyedileg azonosítja az alkalmazást
-* A **átirányítási URI-** vagy **csomagazonosítót** , amely közvetlen válaszokhoz az alkalmazáshoz használható
-* Néhány más forgatókönyvekre jellemző értékeket.
+* A **átirányítási URI-t** vagy **csomagazonosítót** , amely közvetlen válaszokhoz az alkalmazáshoz használható
+* Néhány más forgatókönyv-specifikus értékeket.
 
-További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](active-directory-v2-app-registration.md).
+További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](quickstart-v2-register-an-app.md).
 
 ## <a name="endpoints"></a>Végpontok
-Regisztrálás után az alkalmazás kommunikál az Azure AD által küldött kérésekkel a v2.0-végponttal:
+Regisztrálása után az alkalmazás kommunikál az Azure AD v2.0-végpontra való kérések küldésével:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
@@ -63,23 +63,23 @@ Ha a `{tenant}` négy különböző értékek valamelyikét hajthatja végre:
 
 | Érték | Leírás |
 | --- | --- |
-| `common` |Lehetővé teszi a felhasználók személyes Microsoft-fiókok és a munkahelyi vagy iskolai fiókokhoz az Azure Active Directory, az alkalmazás aláírásához. |
-| `organizations` |Az Azure Active Directory jelentkezzen be az alkalmazás lehetővé teszi, hogy csak a munkahelyi vagy iskolai fiókkal rendelkező felhasználók. |
-| `consumers` |Lehetővé teszi, hogy csak a felhasználók a személyes Microsoft-fiókokkal (msa-t) az alkalmazás aláírásához. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` |Lehetővé teszi, hogy csak a munkahelyi vagy iskolai fiókkal rendelkező felhasználók egy adott Azure Active Directory-bérlőhöz bejelentkezni az alkalmazásba. Az Azure AD-bérlő rövid tartomány nevét vagy guid-azonosító a bérlő is használható. |
+| `common` |Lehetővé teszi, hogy a személyes Microsoft-fiókok és a munkahelyi vagy iskolai fiókokkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure Active Directoryból. |
+| `organizations` |Lehetővé teszi, hogy csak a munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure Active Directoryból. |
+| `consumers` |Lehetővé teszi, hogy csak a felhasználók a személyes Microsoft-fiókok (MSA) jelentkezzen be az alkalmazást. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` |Az egy adott Azure Active Directory-bérlővel, jelentkezzen be az alkalmazás lehetővé teszi, hogy csak a munkahelyi vagy iskolai fiókkal rendelkező felhasználók. Az Azure AD-bérlő rövid tartományneve, vagy a bérlő guid-azonosító is használható. |
 
-További információ a fenti végpontokkal kezelésének módját válasszon az alábbi adott alkalmazás típust.
+Hogyan kezelheti ezeket a végpontokat az bővebben az alábbi adott alkalmazás típusának kiválasztása.
 
 ## <a name="tokens"></a>Tokenek
-OAuth 2.0 és az OpenID Connect v2.0 végrehajtásának kihasználása kiterjedt tulajdonosi jogkivonatok, beleértve a tulajdonosi jogkivonatok JWTs ábrázolva. Egy tulajdonosi jogkivonatot egy egyszerűsített biztonsági jogkivonatot, amely védett erőforrásokhoz való hozzáférést a "tulajdonos". Abban az értelemben a "tulajdonos", amely a token is jelenthet félre. Egy entitás először hitelesítenie kell magát a tulajdonosi jogkivonattal, fogadni az Azure AD, ha a szükséges lépéseket a rendszer nem hajtja végre a lexikális elem szerepel az átvitel, illetve tárolás biztosításához, ha hozzá, és egy nem kívánt félnek használják. Míg néhány biztonsági jogkivonatokat egy beépített mechanizmust meggátolja, hogy a nem hitelesített felek használja őket, a tulajdonosi jogkivonatok nem rendelkezik a mechanizmus, és kell szállítani, például a transport layer security (HTTPS) biztonságos csatorna. Egy tulajdonosi jogkivonatot továbbított szövegként, ha egy man-a a középső támadás segítségével egy rosszindulatú fél jogkivonat és a védett erőforrásokhoz való illetéktelen hozzáférés használni. Az azonos biztonsági elveket alkalmazza, ha a tárolást, vagy a gyorsítótárazás tulajdonosi jogkivonatok későbbi használatra. Mindig győződjön meg arról, hogy az alkalmazás továbbítja, és biztonságos módon tárolja a tulajdonosi jogkivonatokhoz. További biztonsági szempontok a tulajdonosi jogkivonatok, lásd: [RFC 6750 szakasz 5](http://tools.ietf.org/html/rfc6750).
+Az OAuth 2.0 és OpenID Connect v2.0 megvalósítását győződjön erősen igénybe veszi a tulajdonosi jogkivonatokat, beleértve a tulajdonosi jogkivonatokat JWTs-kiszolgálókként. A tulajdonosi jogkivonatot, amely hozzáférést biztosít a "tulajdonos" védett erőforrásokhoz való könnyű biztonsági jogkivonat. Ebben az értelemben a "tulajdonos" minden olyan entitás, amely a token is jelenthet. Bár egy entitás először hitelesítenie kell magát az Azure AD-fogadni a tulajdonosi jogkivonattal, ha a szükséges lépéseket a rendszer nem hajtja végre a biztonságos átvitelét és tárolását a jogkivonatot, hozzá, és egy nem kívánt entitás használják. Néhány biztonsági jogkivonatokat rendelkezik egy beépített mechanizmus megakadályozza az illetéktelen fél használja őket, amíg a tulajdonosi jogkivonatokat nem kell ezt a mechanizmust, és kell szállítani, például a transport layer security (HTTPS) biztonságos csatornán. A titkosítatlan továbbított tulajdonosi jogkivonattal, ha a man-a a középső támadás segítségével egy rosszindulatú fél beszerezni a jogkivonatot, és használja a védett erőforrások jogosulatlan hozzáférési. A biztonsági alapelveket alkalmazható, ha a tárolásával, sem a gyorsítótárazás a tulajdonosi jogkivonatokat későbbi használatra. Mindig győződjön meg arról, hogy az alkalmazás továbbítja, és biztonságosan tárolja a tulajdonosi jogkivonatokat. A tulajdonosi jogkivonatokat további biztonsági szempontokért lásd: [RFC 6750 5. szakasz](http://tools.ietf.org/html/rfc6750).
 
-További részletek a jogkivonatok a v2.0-végpontra használt különböző típusú érhető el [a v2.0 jogkivonat referenciái végpont](active-directory-v2-tokens.md).
+További részletekért lásd a v2.0-végpont használt tokenek különböző típusú érhető el a [a v2.0-végpont jogkivonat referenciái](active-directory-v2-tokens.md).
 
 ## <a name="protocols"></a>Protokollok
-Ha készen áll a talál néhány példa kérelmeket, az egyik első lépései az alábbi oktatóanyagok. Mindegyik megfelel egy adott hitelesítési forgatókönyv. Ha a jobb oldali folyamata megállapításához segítségre van szüksége, tekintse meg [milyen típusú alkalmazásokat hozhat létre a v2.0 rendelkező](active-directory-v2-flows.md).
+Ha szeretné látni, néhány példa kérelmek, az egyik első lépései az alábbi oktatóanyagok. Mindegyik felel meg egy adott hitelesítési forgatókönyv. Ha az Ön számára a megfelelő folyamat megállapításához segítségre van szüksége, tekintse meg az [a típusú alkalmazásokat hozhat létre a v2.0-](active-directory-v2-flows.md).
 
-* [Mobileszköz- és natív alkalmazás OAuth 2.0-val hozhat létre.](active-directory-v2-protocols-oauth-code.md)
-* [Build webes alkalmazások nyitott azonosítójú kapcsolódhatnak](active-directory-v2-protocols-oidc.md)
-* [Az OAuth 2.0 implicit engedélyezési folyamat egyoldalas alkalmazások létrehozása](active-directory-v2-protocols-implicit.md)
-* [Build démonok vagy a kiszolgáló oldalán folyamatok az OAuth 2.0 ügyfél hitelesítő adatait Flow](active-directory-v2-protocols-oauth-client-creds.md)
-* [A Web API-t az OAuth 2.0 más nevében Flow a jogkivonatok lekérésére](active-directory-v2-protocols-oauth-on-behalf-of.md)
+* [Mobil- és natív alkalmazás OAuth 2.0-val készíthet](active-directory-v2-protocols-oauth-code.md)
+* [Hozhat létre Web Apps Open ID Connect](active-directory-v2-protocols-oidc.md)
+* [Az OAuth 2.0 Implicit folyamat egyoldalas alkalmazások fejlesztése](active-directory-v2-protocols-implicit.md)
+* [Build démonok vagy a kiszolgáló oldalán folyamatok az OAuth 2.0 ügyfél-hitelesítő adatok Flow](active-directory-v2-protocols-oauth-client-creds.md)
+* [A webes API-hoz, az OAuth 2.0-s más nevében Flow a jogkivonatokhoz](active-directory-v2-protocols-oauth-on-behalf-of.md)

@@ -17,12 +17,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2db40be8cab03339b9c0d3ce043d926593ee89a6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 350617a8ce7002cd1e256f4cb896fcc536dc3a0e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007076"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505848"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Az Azure Active Directory 2.0-s verzió és az OpenID Connect protokoll
 
@@ -31,7 +31,7 @@ OpenID Connect nem épül, amely segítségével biztonságosan jelentkezzen be 
 > [!NOTE]
 > A v2.0-végpont nem támogatja az összes Azure Active Directory (Azure AD-) forgatókönyveket és funkciókat. Annak megállapításához, hogy használjon a v2.0-végpont, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) kibővíti az OAuth 2.0 *engedélyezési* protokollt használja, mint egy *hitelesítési* protokoll, megteheti, hogy egyszeri bejelentkezés OAuth használatával. OpenID Connect bemutatja a egy *azonosító jogkivonat*, amelynek egy biztonsági jogkivonatot, amely lehetővé teszi, hogy az ügyfél számára, hogy a felhasználó identitásának ellenőrzéséhez. Az azonosító jogkivonat is lekéri a felhasználóval kapcsolatos főbb profiladatait. OpenID Connect kibővíti az OAuth 2.0, mert az alkalmazások biztonságos beszerezhető *hozzáférési jogkivonatokat*, által védett erőforrások eléréséhez használható egy [az engedélyezési kiszolgáló](active-directory-v2-protocols.md#the-basics). A v2.0-végpontra is lehetővé teszi, hogy a külső alkalmazások, amelyek az Azure ad-vel védett erőforrások, például webes API-k számára a hozzáférési jogkivonatok kiállításához. Hogyan állítható be egy alkalmazás hozzáférési jogkivonatok kiállításához kapcsolatos további információkért lásd: [alkalmazás regisztrálása a v2.0-végponttal](active-directory-v2-app-registration.md). Javasoljuk, hogy használjon OpenID Connect készítésekor egy [webes alkalmazás](active-directory-v2-flows.md#web-apps) , amelyet a kiszolgáló által üzemeltetett és böngészőalapú hozzáférést biztosít.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) kibővíti az OAuth 2.0 *engedélyezési* protokollt használja, mint egy *hitelesítési* protokoll, megteheti, hogy egyszeri bejelentkezés OAuth használatával. OpenID Connect bemutatja a egy *azonosító jogkivonat*, amelynek egy biztonsági jogkivonatot, amely lehetővé teszi, hogy az ügyfél számára, hogy a felhasználó identitásának ellenőrzéséhez. Az azonosító jogkivonat is lekéri a felhasználóval kapcsolatos főbb profiladatait. OpenID Connect kibővíti az OAuth 2.0, mert az alkalmazások biztonságos beszerezhető *hozzáférési jogkivonatokat*, által védett erőforrások eléréséhez használható egy [az engedélyezési kiszolgáló](active-directory-v2-protocols.md#the-basics). A v2.0-végpontra is lehetővé teszi, hogy a külső alkalmazások, amelyek az Azure ad-vel védett erőforrások, például webes API-k számára a hozzáférési jogkivonatok kiállításához. Hogyan állítható be egy alkalmazás hozzáférési jogkivonatok kiállításához kapcsolatos további információkért lásd: [alkalmazás regisztrálása a v2.0-végponttal](quickstart-v2-register-an-app.md). Javasoljuk, hogy használjon OpenID Connect készítésekor egy [webes alkalmazás](active-directory-v2-flows.md#web-apps) , amelyet a kiszolgáló által üzemeltetett és böngészőalapú hozzáférést biztosít.
 
 ## <a name="protocol-diagram-sign-in"></a>Diagram protokoll: bejelentkezés
 

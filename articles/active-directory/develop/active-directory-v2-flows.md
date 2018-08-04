@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory v2.0-végpontra vonatkozó alkalmazástípusok |} Microsoft Docs
-description: Milyen alkalmazásokat és az Azure Active Directory v2.0-végponttól által támogatott forgatókönyveket.
+title: Az Azure Active Directory v2.0-végpont az alkalmazástípusok |} A Microsoft Docs
+description: Milyen alkalmazásokat és az Azure Active Directory v2.0-végpont által támogatott forgatókönyveket.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,31 +17,31 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 134199c879f6793cb4ed0a88cf0593786341f6d8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 82accc3fb260b0f3251fcf19f7da4c064080fff2
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157684"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503250"
 ---
-# <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Alkalmazástípusok az Azure Active Directory v2.0 végpont
-Az Azure Active Directory (Azure AD) v2.0-végponttól hitelesítést is támogatja a modern alkalmazás-architektúrák esetén az összes szabványos protokollokat számos [OAuth 2.0-s vagy az OpenID Connect](active-directory-v2-protocols.md). A cikkből megtudhatja, milyen típusú alkalmazásokat úgy, hogy az Azure AD v2.0, függetlenül a választott nyelv vagy platform használatával. A cikkben szereplő információkat, amelyekkel jobban megértheti az összetettebb feladatok előtt készült [a kód munka megkezdéséhez](active-directory-appmodel-v2-overview.md#getting-started).
+# <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Alkalmazástípusok az Azure Active Directory 2.0-s verziójú végpont
+Az Azure Active Directory (Azure AD) v2.0-végpont számos különböző modern alkalmazásarchitektúrához, mindegyiket alapján az iparági szabványnak számító protokollokat támogatja a hitelesítést [OAuth 2.0 vagy OpenID Connect](active-directory-v2-protocols.md). Ez a cikk ismerteti az, hogy típusú alkalmazásokat hozhat létre az Azure AD v2.0 az előnyben részesített nyelvtől és platformtól függetlenül. Ebben a cikkben található információk segítenek megérteni a magas szintű forgatókönyveket előtt készült [a kóddal munka megkezdéséhez](active-directory-appmodel-v2-overview.md#getting-started).
 
 > [!NOTE]
-> A v2.0-végpontra nem támogatja, minden Azure Active Directory forgatókönyvek és funkciók. Annak megállapításához, hogy a v2.0-végponttal kell használnia, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
+> A v2.0-végpont nem támogatja az összes Azure Active Directory-forgatókönyvek és funkciók. Annak megállapításához, hogy használjon a v2.0-végpont, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
 > 
 > 
 
 ## <a name="the-basics"></a>Az alapok
-Regisztrálnia kell az egyes alkalmazások által használt a v2.0-végpontra a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com). A regisztrációs folyamata gyűjti, és hozzárendeli ezeket az értékeket az alkalmazás:
+Regisztrálnia kell az egyes alkalmazások által használt a v2.0-végpont a [Microsoft alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com). Az alkalmazásregisztrációs művelet során gyűjt, és ezeket az értékeket az alkalmazáshoz rendeli hozzá:
 
 * Egy **Alkalmazásazonosító** , amely egyedileg azonosítja az alkalmazást
-* A **átirányítási URI-** , amely közvetlen válaszokhoz az alkalmazás segítségével
-* Néhány más forgatókönyvekre jellemző értékek
+* A **átirányítási URI-t** , amellyel küldött közvetlen válaszokhoz az alkalmazáshoz
+* Néhány más forgatókönyv-specifikus értékeket
 
-További részletek megtudhatja, hogyan [alkalmazások regisztrálásának folyamatával](active-directory-v2-app-registration.md).
+Részletekért megtudhatja, hogyan [alkalmazás regisztrálása](quickstart-v2-register-an-app.md).
 
-Az alkalmazás regisztrálása után az alkalmazás kommunikál az Azure AD kérelmeket küld az Azure AD v2.0-végponttól. Azt adja meg, nyílt forráskódú keretrendszerek és tárak, amelyek kezelik ezeket a kérelmeket részleteit. Lehetősége is van a megvalósítása a hitelesítési logikát saját kérések végpontokkal való létrehozásával:
+Az alkalmazás regisztrálása után az alkalmazás kommunikál az Azure ad-vel az Azure AD v2.0-végpontra való kérések küldésével. Nyílt forráskódú keretrendszerek és könyvtárak, kezelni a kérések részleteinek biztosítunk. Hitelesítés a logikát alkalmazzák saját kezűleg kérelmek fenti végpontokkal való létrehozásával lehetősége is van:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
@@ -50,7 +50,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 <!-- TODO: Need a page for libraries to link to -->
 
 ## <a name="web-apps"></a>Webalkalmazások
-A web Apps (.NET, PHP, Java, Ruby, Python, csomópont), amelyhez a felhasználó böngészőn keresztül hozzáfér, használhatja a [OpenID Connect](active-directory-v2-protocols.md) a felhasználói bejelentkezés. Az OpenID Connect a web app egy azonosító jogkivonatot kap. Egy azonosító lexikális elem egy biztonsági jogkivonatot, ellenőrzi a felhasználó személyazonosságát, és a felhasználói jogcímek formájában információkat nyújt:
+A web apps (.NET, PHP, Java, Ruby, Python, csomópont), amelyhez a felhasználó böngészőn keresztül hozzáfér, használhatja a [OpenID Connect](active-directory-v2-protocols.md) a felhasználói bejelentkezés. OpenID Connect a webalkalmazás-azonosító jogkivonat kapja. Egy azonosító jogkivonat egy biztonsági jogkivonatot, amely ellenőrzi a felhasználó identitását, és a felhasználói jogcímek formájában információkat biztosít:
 
 ```
 // Partial raw ID token
@@ -65,20 +65,20 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Minden a jogkivonatok és jogcímek különböző típusairól az alkalmazásban elérhető megismerheti a [v2.0 jogkivonatok hivatkozás](active-directory-v2-tokens.md).
+Jogkivonatok és jogcímek, az alkalmazás számára elérhető összes típusú talál további információt a [2.0-s verziójú jogkivonatok referencia](active-directory-v2-tokens.md).
 
-A kiszolgáló webalkalmazásokban bejelentkezés hitelesítési folyamata hajtja végre ezeket a magas szintű lépéseket:
+A webalkalmazásokban server a bejelentkezési hitelesítési folyamat veszi magas szintű lépéseket:
 
-![Webes alkalmazás hitelesítési folyamat](../../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
+![Webes alkalmazás hitelesítési folyamata](../../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
 
-A felhasználói identitás biztosítható a Azonosítót jogkivonatban érvényesítés a v2.0-végpontra-tól kapott nyilvános aláírókulcs a. A munkamenet cookie-k be van állítva, a felhasználó a következő lapkérések azonosítására használható.
+Az azonosító jogkivonat érvényesítése és a v2.0-végpont-tól kapott nyilvános aláírókulcs győződjön meg, hogy a felhasználó identitását. Egy munkamenetcookie-t be van állítva, a felhasználó lapkérések azonosítására használható.
 
-Ebben a forgatókönyvben a művelet megtekintéséhez tekintse meg a webes alkalmazás bejelentkezési Kódminták a 2.0-s verziója [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakasz.
+Ebben a forgatókönyvben a működés megtekintéséhez próbálja ki a web app bejelentkezési kódmintát a 2.0-s verziójú [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakaszban.
 
-Egyszerű bejelentkezhet, valamint egy webalkalmazás-kiszolgáló valószínűleg hozzá kell egy másik webes szolgáltatás, például egy REST API-t. Ebben az esetben a kiszolgáló webalkalmazás kapcsolatba lép kombinált OpenID Connectet és az OAuth 2.0 folyamatában, segítségével a [OAuth 2.0 hitelesítésikód-folyamata](active-directory-v2-protocols.md). Ebben a forgatókönyvben kapcsolatos további információkért olvassa el [Ismerkedés a webalkalmazások és webes API-k](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+A bejelentkezés, mellett a webkiszolgáló-alkalmazásban egy másik webszolgáltatás, például REST API-t hozzá kell. Ebben az esetben a webkiszolgáló-alkalmazásban folytat egy kombinált OpenID Connectet és az OAuth 2.0 folyamat használatával a [OAuth 2.0 hitelesítési kódfolyamat](active-directory-v2-protocols.md). Ebben a forgatókönyvben kapcsolatos további információkért olvassa el [Ismerkedés a web apps és a webes API-k](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
 
 ## <a name="web-apis"></a>Webes API-k
-A v2.0-végpontra segítségével webszolgáltatásai, például az alkalmazás RESTful webes API-t. Azonosító-jogkivonatokat és a munkamenet cookie-k helyett egy webes API-t OAuth 2.0 hozzáférési tokent használ, az adatok védelmét és a bejövő kérelmek hitelesítéséhez szükséges. A hívó egy webes API hozzáfűz egy jogkivonatot a HTTP-kérések, például a hitelesítési fejlécéhez:
+A v2.0-végpont használatával webes szolgáltatásokat, például az alkalmazás RESTful webes API biztonságossá tétele. Azonosító-jogkivonatokat és a munkamenet-cookie-k helyett egy webes API-t az OAuth 2.0 hozzáférési jogkivonatban használ, az adatok védelméhez és a bejövő kérések hitelesítéséhez. Egy webes API hívója hozzáfűz egy hozzáférési jogkivonatot az engedélyezési fejléc HTTP-kérés, ehhez hasonló:
 
 ```
 GET /api/items HTTP/1.1
@@ -88,39 +88,39 @@ Accept: application/json
 ...
 ```
 
-A webes API a hozzáférési tokent használ, ellenőrzi az API hívójának identitását, és a hozzáférési jogkivonat kódolt jogcímek információkhoz juthat a hívóról kibontani. Jogkivonatok és jogcímek, az alkalmazások számára elérhető összes típusú kapcsolatos további tudnivalókért lásd: a [v2.0 jogkivonatok hivatkozás](active-directory-v2-tokens.md).
+A webes API-t használ a hozzáférési jogkivonatot, ellenőrzi az API hívójának identitását, és információkhoz juthat a hívóról kibontani a hozzáférési jogkivonatban kódolt jogcímek. Jogkivonatok és jogcímek, az alkalmazás számára elérhető összes típusú kapcsolatos további információkért tekintse meg a [2.0-s verziójú jogkivonatok referencia](active-directory-v2-tokens.md).
 
-A webes API adhat a felhasználóknak részt vevő vagy tilthatják le az adott funkció vagy adatok engedélyek, más néven jelentkezik, mintha [hatókörök](active-directory-v2-scopes.md). Egy hívó alkalmazás szerezni a hatókör engedéllyel, a felhasználónak bele kell egyeznie a hatókör a folyamat során. A v2.0-végpontra megkérdezi a felhasználót, az engedélyeket, és majd rögzíti a engedélyeket kap a webes API-t minden hozzáférési jogkivonatok. A Web API ellenőrzi a hozzáférési jogkivonatok egyes hívás fogadása és engedélyezési ellenőrzi.
+Egy webes API-t adhat a felhasználóknak engedélyezve van a hibajelentések vagy tilthatják le az adott funkció vagy adatok engedélyek, más néven motorunk [hatókörök](active-directory-v2-scopes.md). Egy hívó alkalmazás hatókörre engedély beszerzéséhez, a felhasználónak jóvá kell hagynia a hatókör folyamat során. A v2.0-végpont engedélyt arra kéri a felhasználót, és majd rögzíti az engedélyek összes hozzáférési jogkivonatok, amely megkapja a webes API-hoz. A webes API azt ellenőrzi, hogy az egyes hívások kap, és ellenőrzi az engedélyezési jogkivonatot.
 
-Egy webes API-alkalmazás, illetve a kiszolgáló webalkalmazások, asztali és mobile apps szolgáltatásban, egyoldalas alkalmazások, kiszolgálóoldali démonok, és akár egyéb webes API-k minden típusú hozzáférési jogkivonatok fogadhat. A magas szintű folyamata egy webes API így néz ki:
+Egy webes API hozzáférési jogkivonatok is fogad az összes típusú alkalmazásokat, beleértve a kiszolgáló webalkalmazások, asztali és mobilalkalmazások, egyoldalas alkalmazások, kiszolgálóoldali démonok és akár egyéb webes API-k. A magas szintű folyamat egy webes API-hoz a következőhöz hasonló:
 
 ![Webes API-hitelesítési folyamat](../../media/active-directory-v2-flows/convergence_scenarios_webapi.png)
 
-A webes API biztonságossá OAuth2 hozzáférési jogkivonatok segítségével történő beállításáról tekintse meg a webes API mintakódok a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakasz.
+Egy webes API biztonságossá OAuth2 hozzáférési jogkivonatok használatával kapcsolatban tekintse meg a webes API-Kódminták a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakaszban.
 
-Sok esetben webes API-kat is kell kimenő kérelmek más alsóbb rétegbeli webes API-kat Azure Active Directory által biztosított. Ehhez az szükséges, webes API-k kihasználhatja az Azure AD **a nevében a** folyamatot, amely lehetővé teszi, hogy a webes API-t a helyszíni Exchange számára egy új hozzáférési jogkivonat kimenő kérelmek használhatók egy bejövő jogkivonatot. A v2.0-végpontra a folyamat nevében ismertetett [részletesen Itt](active-directory-v2-protocols-oauth-on-behalf-of.md).
+Sok esetben a webes API-k is szükséges, a kimenő kérelmek más alsóbb rétegbeli webes API-k Azure Active Directory által biztosított. Ehhez a webes API-k igénybe veheti az Azure AD **az Ön nevében,** folyamat, amely lehetővé teszi a webes API-t az exchange-hozzáférési jogkivonat bejövő kimenő kérelmek használhatók új hozzáférési jogkivonat. A v2.0-végpont a flow nevében leírt [részletesen Itt](active-directory-v2-protocols-oauth-on-behalf-of.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobil- és natív alkalmazások
-Eszköz telepített alkalmazások, többek között a mobil- és asztali alkalmazások esetében gyakran igényelnek hozzáférést a háttér-szolgáltatásaihoz vagy webes API-k, amelyek adatokat tárolhatnak, és a feladatokat egy felhasználó nevében. Ezek az alkalmazások használatával adhat hozzá bejelentkezési és hitelesítési háttér szolgáltatásaihoz a [OAuth 2.0 hitelesítésikód-folyamata](active-directory-v2-protocols-oauth-code.md).
+Eszköz telepített alkalmazások, például az asztali és mobil alkalmazások gyakran igényelnek hozzáférést Háttérszolgáltatásokhoz vagy webes API-k, amelyek adatokat tárolhatnak, és a egy felhasználó nevében műveletek végrehajtására. Ezeket az alkalmazásokat adhat hozzá bejelentkezési és hitelesítési háttérszolgáltatások használatával a [OAuth 2.0 hitelesítési kódfolyamat](active-directory-v2-protocols-oauth-code.md).
 
-A folyamatot az alkalmazás fogad egy engedélyezési kód a v2.0-végpontra a felhasználó bejelentkezésekor. Az engedélyezési kód hívására háttér-szolgáltatásaihoz a bejelentkezett felhasználó nevében az alkalmazás engedélyt jelöli. Az alkalmazás továbbíthatja az OAuth 2.0 hozzáférési tokent, és egy frissítési jogkivonat a háttérben engedélyezési kódot. Az alkalmazás a hozzáférési jogkivonat hitelesítéshez használni kívánt webes API-k számára a HTTP-kérelmekre, és a frissítési jogkivonat használatával új hozzáférési jogkivonatok lekérésére, ha régebbi hozzáférési jogkivonatok végén.
+Ebből a folyamatból az alkalmazás fogad egy hozzáférési kóddal a v2.0-végpont a felhasználó bejelentkezésekor. Az engedélyezési kód háttér-szolgáltatásokat a bejelentkezett felhasználó nevében engedélyt az alkalmazásnak jelöli. Az alkalmazás a háttérben, az OAuth 2.0 hozzáférési jogkivonatban és a egy frissítési jogkivonat a hozzáférési kód tudjon cserélni. Az alkalmazás a hozzáférési jogkivonat segítségével végezhet hitelesítést a webes API-k HTTP-kérelmekre, és a frissítési jogkivonat használatával új hozzáférési jogkivonatok kaphat, ha a korábbi hozzáférési jogkivonatok lejárnak.
 
-![Natív alkalmazás hitelesítési folyamat](../../media/active-directory-v2-flows/convergence_scenarios_native.png)
+![Natív alkalmazás hitelesítési folyamata](../../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
-## <a name="single-page-apps-javascript"></a>Egyoldalas alkalmazások (JavaScript)
-Számos modern alkalmazások alkalmazás előtér írt elsősorban a JavaScript rendelkezik. Gyakran írás például AngularJS, az Ember.js vagy Durandal.js keretrendszer használatával. Az Azure AD v2.0-végponttól használatával támogatja ezeket az alkalmazásokat a [OAuth 2.0 típusú implicit engedélyezési folyamat](active-directory-v2-protocols-implicit.md).
+## <a name="single-page-apps-javascript"></a>Egylapos alkalmazások (JavaScript)
+Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban javascriptben írt rendelkezik. Gyakran előfordul az oktatóprogram egy keretrendszert, például az AngularJS, az Ember.js vagy Durandal.js használatával. Az Azure AD v2.0-végpont használatával támogatja ezeket az alkalmazásokat a [OAuth 2.0 implicit folyamat](active-directory-v2-protocols-implicit.md).
 
-A folyamatot, az alkalmazás-jogkivonatokat kap a v2.0-ről a végponthoz, minden kiszolgáló-kiszolgáló cseréje nélkül engedélyezik. Minden hitelesítési logikát és kezelési vesz munkamenet helyezhető el teljes egészében a JavaScript ügyfélprogramokban, de további oldal átirányítja az.
+Ebből a folyamatból, az alkalmazás fogad jogkivonatok közvetlenül a 2.0-s verziójú authorize végponton, minden olyan kiszolgálók közötti adatcsere nélkül. Hitelesítési logikát, és a munkamenet idő szükséges kezelése teljes mértékben a JavaScript-kliens nélkül extra oldal átirányítja az helyezze el.
 
 ![Implicit hitelesítési folyamat](../../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
-Tekintse meg a folyamatot, próbálja meg az alkalmazás mintakódok egyikét a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakasz.
+Ebben a forgatókönyvben működés közben látni, próbálja ki az egyoldalas alkalmazás Kódminták egyikét a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakaszban.
 
-## <a name="daemons-and-server-side-apps"></a>Démonok és kiszolgálóoldali alkalmazások
-Az alkalmazások, amelyek hosszú futású folyamatokat, vagy egy felhasználói beavatkozás nélkül is szükség van a védett erőforrások, például webes API-k eléréséhez. Ezek az alkalmazások hitelesítheti és a jogkivonatok lekérésére, az alkalmazás identitásával, nem pedig a felhasználó delegált identitása, az OAuth 2.0 ügyfél hitelesítő adatok folyamata a.
+## <a name="daemons-and-server-side-apps"></a>Démonok és a kiszolgálóoldali alkalmazások
+Alkalmazások, amelyek hosszú ideig futó folyamatokat, vagy egy felhasználói interakció nélkül kíván hozzáférni a védett erőforrások, például a webes API-k is kell. Ezek az alkalmazások hitelesítheti és a jogkivonatok lekérésére, az alkalmazás identitás használatával, nem pedig a felhasználó delegált identitása, az OAuth 2.0 ügyfél-hitelesítési folyamata az.
 
-A folyamatot, az alkalmazás kommunikál közvetlenül a `/token` végpont végpontok beszerzése:
+Ebből a folyamatból, az alkalmazás közvetlenül kommunikál a `/token` végpontot a végpontok beszerzése:
 
-![Démon alkalmazás hitelesítési folyamat](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
+![Démon alkalmazások hitelesítési folyamat](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
-Egy démon alkalmazás elkészítésére, tekintse meg a [ügyfél hitelesítő adatait a dokumentáció](active-directory-v2-protocols-oauth-client-creds.md), vagy próbálja meg egy [.NET mintaalkalmazás](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Démon alkalmazások létrehozásának, tekintse meg a [ügyfél hitelesítő adatai dokumentáció](active-directory-v2-protocols-oauth-client-creds.md), vagy próbálkozzon egy [.NET mintaalkalmazás](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

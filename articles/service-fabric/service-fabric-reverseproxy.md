@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: bec2e443b920a1f163b7b328197d3688d207ed35
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 521a7b90b971ff3ba867945a4713b1f6dc8dbebc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309119"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503519"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Az Azure Service Fabric fordított proxy
 Az Azure Service Fabric épített fordított proxy segítségével Service Fabric-fürtön futó mikroszolgáltatásokat felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat.
@@ -146,184 +146,23 @@ A fordított proxy így megkülönböztetni a két esetben úgy kell. Ahhoz, hog
 
 A HTTP-válaszfejléc azt jelzi, hogy egy normál HTTP 404-es helyzet, amelyben a kért erőforrás nem létezik, és a fordított proxy nem próbálja meg újra a szolgáltatás címének feloldására.
 
-## <a name="setup-and-configuration"></a>Beállítás és konfiguráció
+## <a name="special-handling-for-services-running-in-containers"></a>Különleges kezelést tárolókban futó szolgáltatásokhoz
 
-### <a name="enable-reverse-proxy-via-azure-portal"></a>Azure-portálon fordított proxy engedélyezése
+A tárolókon belül futó szolgáltatások esetében is használhatja a környezeti változó `Fabric_NodeIPOrFQDN` létrehozására a [fordított proxy URL-címe](#uri-format-for-addressing-services-by-using-the-reverse-proxy) hasonlóan az alábbi kódot:
 
-Az Azure portal lehetőséget biztosít, hogy fordított proxy engedélyezése egy új Service Fabric-fürt létrehozása során.
-A **létrehozása a Service Fabric-fürt**, 2. lépés: fürtözött konfigurációban a csomóponttípus konfigurációja, az "Enable fordított proxy" jelölőnégyzet bejelölésével.
-A biztonságos fordított proxy konfigurálása, SSL-tanúsítvány adható meg a 3. lépés: biztonsági, biztonsági beállítások konfigurálása, jelölje be a "Include egy SSL-tanúsítvány a fordított proxy", és adja meg a tanúsítvány adatait.
-
-### <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok segítségével fordított proxy engedélyezése
-
-Használhatja a [Azure Resource Manager-sablon](service-fabric-cluster-creation-via-arm.md) ahhoz, hogy a Service Fabric fordított proxy a fürt számára.
-
-Tekintse meg [konfigurálása HTTPS fordított Proxy egy biztonságos fürt](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) az Azure Resource Manager konfigurálása biztonságos sablonminták fordított proxy egy tanúsítványt, és kezelési tanúsítványváltás együtt.
-
-Először a sablont kap a fürt, amely számára telepíteni kívánja. A mintasablonokat használja, vagy hozzon létre egy egyéni Resource Manager-sablont. A fordított proxy engedélyezheti ezt követően az alábbi lépések segítségével:
-
-1. A fordított proxy port definiálása a [paraméterek szakaszban](../azure-resource-manager/resource-group-authoring-templates.md) a sablon.
-
-    ```json
-    "SFReverseProxyPort": {
-        "type": "int",
-        "defaultValue": 19081,
-        "metadata": {
-            "description": "Endpoint for Service Fabric Reverse proxy"
-        }
-    },
-    ```
-2. Adja meg a portot a nodetype objektumok mindegyike a **fürt** [erőforrás típushoz című](../azure-resource-manager/resource-group-authoring-templates.md).
-
-    A port a paraméternév megadásához, reverseProxyEndpointPort azonosítja.
-
-    ```json
-    {
-        "apiVersion": "2016-09-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        ...
-       "nodeTypes": [
-          {
-           ...
-           "reverseProxyEndpointPort": "[parameters('SFReverseProxyPort')]",
-           ...
-          },
-        ...
-        ],
-        ...
-    }
-    ```
-3. Oldja meg a fordított proxy az Azure-fürtön kívül, állítsa be a Azure Load Balancer-szabályok a port, 1. lépésben megadott.
-
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
-        ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
-            }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
-4. A port a fordított proxyhoz tartozó SSL-tanúsítványok konfigurálásához adja hozzá a tanúsítványt a ***reverseProxyCertificate*** tulajdonságot a **fürt** [erőforrás típushoz című](../resource-group-authoring-templates.md) .
-
-    ```json
-    {
-        "apiVersion": "2016-09-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-            "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-            ...
-            "reverseProxyCertificate": {
-                "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                "x509StoreName": "[parameters('sfReverseProxyCertificateStoreName')]"
-            },
-            ...
-            "clusterState": "Default",
-        }
-    }
-    ```
-
-### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>A fordított proxy tanúsítvány, amely eltér a fürttanúsítvány támogatása
- Ha a fordított proxy tanúsítvány eltér a tanúsítványt, amely biztonságossá teszi a fürt, majd a korábban megadott tanúsítvány telepíteni a virtuális gépen és kell hozzáadni a hozzáférés-vezérlési lista (ACL), hogy a Service Fabric hozzá tud férni. Ehhez a **virtualMachineScaleSets** [erőforrás típushoz című](../resource-group-authoring-templates.md). A telepítéshez adja hozzá ezt a tanúsítványt a osProfile. A sablon a bővítmény szakasz frissítheti a hozzáférés-vezérlési tanúsítványt.
-
-  ```json
-  {
-    "apiVersion": "[variables('vmssApiVersion')]",
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    ....
-      "osProfile": {
-          "adminPassword": "[parameters('adminPassword')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "computernamePrefix": "[parameters('vmNodeType0Name')]",
-          "secrets": [
-            {
-              "sourceVault": {
-                "id": "[parameters('sfReverseProxySourceVaultValue')]"
-              },
-              "vaultCertificates": [
-                {
-                  "certificateStore": "[parameters('sfReverseProxyCertificateStoreValue')]",
-                  "certificateUrl": "[parameters('sfReverseProxyCertificateUrlValue')]"
-                }
-              ]
-            }
-          ]
-        }
-   ....
-   "extensions": [
-          {
-              "name": "[concat(parameters('vmNodeType0Name'),'_ServiceFabricNode')]",
-              "properties": {
-                      "type": "ServiceFabricNode",
-                      "autoUpgradeMinorVersion": false,
-                      ...
-                      "publisher": "Microsoft.Azure.ServiceFabric",
-                      "settings": {
-                        "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                        "nodeTypeRef": "[parameters('vmNodeType0Name')]",
-                        "dataPath": "D:\\\\SvcFab",
-                        "durabilityLevel": "Bronze",
-                        "testExtension": true,
-                        "reverseProxyCertificate": {
-                          "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                          "x509StoreName": "[parameters('sfReverseProxyCertificateStoreValue')]"
-                        },
-                  },
-                  "typeHandlerVersion": "1.0"
-              }
-          },
-      ]
-    }
-  ```
-> [!NOTE]
-> Tanúsítványokat, amelyek eltérnek a fürttanúsítvány egy meglévő fürtben a fordított proxy engedélyezése a használatakor a fordított proxy tanúsítvány telepítéséhez, és frissítse az ACL-t a fürtön, a fordított proxy engedélyezése előtt. Végezze el a [Azure Resource Manager-sablon](service-fabric-cluster-creation-via-arm.md) az említett beállításokat használó központi telepítési korábban a fordított proxy engedélyezése a telepítés megkezdése előtt a lépések 1 – 4.
+```csharp
+    var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
+    var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
+```
+A helyi fürt `Fabric_NodeIPOrFQDN` alapértelmezés szerint a "localhost" van beállítva. A helyi fürt elindításához a `-UseMachineName` ellenőrizze, hogy a tárolók elérheti a csomóponton futó fordított proxy paramétert. További információkért lásd: [konfigurálja a fejlesztői környezetet, a tárolók debug](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
 
 ## <a name="next-steps"></a>További lépések
+* [Állítsa be, és a fordított proxy konfigurálása egy fürtön](service-fabric-reverseproxy-setup.md).
+* [A fordított proxy-továbbítást a biztonságos HTTP-szolgáltatás beállítása](service-fabric-reverseproxy-configure-secure-communication.md)
 * Tekintse meg a szolgáltatások közötti HTTP-kommunikációt egy példát egy [mintaprojektet a Githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
-* [A fordított proxy-továbbítást a biztonságos HTTP-szolgáltatás](service-fabric-reverseproxy-configure-secure-communication.md)
 * [A Reliable Services-táveléréssel kezdeményezett távoli eljáráshívások](service-fabric-reliable-services-communication-remoting.md)
 * [A Reliable Services OWIN használó webes API](service-fabric-reliable-services-communication-webapi.md)
 * [WCF-kommunikáció a Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)
-* További fordított proxy konfigurációs beállítások, tekintse meg az ApplicationGateway/Http szakasz [testreszabása a Service Fabric-fürt beállítások](service-fabric-cluster-fabric-settings.md).
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

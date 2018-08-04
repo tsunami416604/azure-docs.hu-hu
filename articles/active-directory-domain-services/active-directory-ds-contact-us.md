@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Kapcsolatfelvétel |} Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: Lépjen kapcsolatba velünk |} A Microsoft Docs'
 description: Lépjen kapcsolatba az Azure AD tartományi szolgáltatások termékért felelős csoport
 services: active-directory-ds
 documentationcenter: ''
@@ -12,28 +12,28 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: cc3bcaa5702cc5338e8ea1b7f350e58a98a4a013
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: eda5d76e46ddb9cfcee9ee7554f31ee432938358
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213250"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502767"
 ---
-# <a name="azure-ad-domain-services---contact-us"></a>Azure AD tartományi szolgáltatások - kapcsolatfelvétel
-## <a name="contact-the-product-team"></a>Lépjen kapcsolatba a termékért felelős csoport
-Ha problémába ütközik a felügyelt tartomány, ellenőrizze, hogy ha a ismertetett a [hibaelhárítási útmutató](active-directory-ds-troubleshooting.md) megoldani a problémát. Ha még nem történt, nyugodtan, lépjen velünk kapcsolatba.
+# <a name="azure-ad-domain-services---contact-us"></a>Az Azure AD Domain Services - kapcsolat
+## <a name="contact-the-product-team"></a>Lépjen kapcsolatba a termékcsoport
+Ha problémákba ütközik a felügyelt tartomány, ellenőrizze, hogy ha a lépéseket leírt a [hibaelhárítási útmutatója](active-directory-ds-troubleshooting.md) megoldani a problémát. Ha továbbra is problémába ütközik, nyugodtan lépjen kapcsolatba velünk.
 
-Előfordulhat, hogy e-mailben elküldi velünk: [Azure AD tartományi szolgáltatások visszajelzés](mailto:aaddsfb@microsoft.com).
+Előfordulhat, hogy e-mailt küldjön: [Azure AD tartományi szolgáltatások visszajelzési funkciójához](mailto:aaddsfb@microsoft.com).
 
-Győződjön meg arról, hogy tartalmazza a következő, azt tanulmányozhatja a problémát.
+Győződjön meg arról, hogy tartalmazzák a következő, így tudjuk a problémát vizsgálni.
 
-* A **bérlői azonosító/könyvtár-azonosítója** az Azure AD-címtárát. A bérlő azonosítója a GUID, megtekintheti a könyvtár-azonosító mezőben a [a címtáron Tulajdonságok lap](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)
-* A **DNS-tartománynév** a AAD tartományi szolgáltatásokra felügyelt tartományok konfigurálása.
+* A **bérlői azonosító/címtár-azonosító** az Azure AD-címtárhoz. A Bérlőazonosító akkor jelenik meg a címtár-azonosító mezőben GUID a [a címtár Tulajdonságok lap](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)
+* A **DNS-tartománynév** konfigurálta az AAD tartományi szolgáltatásokkal felügyelt tartományban.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
-Szívesen fogadjuk a visszajelzéseket kapcsolatos Azure AD tartományi szolgáltatásokat a  **[Azure Active Directory User Voice csatorna](https://feedback.azure.com/forums/169401-azure-active-directory/)**.
+Szívesen fogadjuk a visszajelzéseket az Azure AD tartományi szolgáltatások keresztül a  **[Azure Active Directory-felhasználói fórum csatorna](https://feedback.azure.com/forums/169401-azure-active-directory/)**.
 
-Győződjön meg arról, hogy Ön előtti – függő állapot kérdését vagy szavak visszajelzés **"AADDS"**, ahhoz, hogy a kapcsolat.
+Győződjön meg arról, hogy Ön előtti – függő állapot a kérdést, vagy visszajelzést hagyhat az szavakat **"AADDS"**, ahhoz, hogy kapcsolatba lépni velünk.

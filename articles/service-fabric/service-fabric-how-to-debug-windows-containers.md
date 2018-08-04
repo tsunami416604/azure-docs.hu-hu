@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
 ms.author: mikhegn
-ms.openlocfilehash: 437c38a8e674fcdf06e26a7191ceecef9d901470
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e7ff7ca6d4fb18121dfa282c2c47e140a4c51a84
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968320"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505967"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Útmutató: Windows-tárolókhoz az Azure Service Fabric használatával a Visual Studio 2017 hibakeresése
 
@@ -34,10 +34,8 @@ A Visual Studio 2017 Update 7 (15.7) a tárolókban lévő .NET-alkalmazások, a
 
 1. Győződjön meg arról, hogy a Docker ablak szolgáltatás fut-e a következő lépés végrehajtása előtt.
 
-1. Annak érdekében, hogy támogatja a DNS-feloldás tárolók között, akkor a helyi fejlesztési fürt beállításához a számítógépnevet használja.
-    1. Rendszergazdaként nyissa meg PowerShell
-    1. Keresse meg a fürt SDK-telepítési mappa, általában `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`
-    1. Futtassa a szkriptet `DevClusterSetup.ps1` paraméterrel `-UseMachineName`
+1. Annak érdekében, hogy támogatja a DNS-feloldás tárolók között, akkor a helyi fejlesztési fürt beállításához a számítógépnevet használja. Ezeket a lépéseket is szükségesek, ha azt szeretné, a fordított proxyn keresztül cím szolgáltatásokhoz.
+    a. Nyissa meg a Powershellt rendszergazdaként b. Keresse meg a fürt SDK-telepítési mappa, általában `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup` c. Futtassa a szkriptet `DevClusterSetup.ps1` paraméterrel `-UseMachineName`
 
     ``` PowerShell
       C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1 -UseMachineName
@@ -47,7 +45,7 @@ A Visual Studio 2017 Update 7 (15.7) a tárolókban lévő .NET-alkalmazások, a
     > Használhatja a `-CreateOneNodeCluster` , állítson be egy egycsomópontos fürtöt. Alapértelmezés szerint létrehoz egy helyi ötcsomópontos fürt.
     >
 
-    A Service fabric DNS szolgáltatással kapcsolatos további tudnivalókért lásd: [DNS-szolgáltatás az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice).
+    A Service fabric DNS szolgáltatással kapcsolatos további tudnivalókért lásd: [DNS-szolgáltatás az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). A Service Fabric használatával kapcsolatos további fordított proxy egy tárolóban futó szolgáltatások kapcsolatban lásd: [fordított proxy különleges kezelést tárolókban futó szolgáltatások](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Tárolók Service Fabricben történő hibakeresése során ismert korlátozások
 

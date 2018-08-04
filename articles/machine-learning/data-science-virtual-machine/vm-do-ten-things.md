@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: gokuma
-ms.openlocfilehash: 8d633a1d3d56f33aad24ca15aea08b5180a6be32
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ce73d1ef5425ee2fe66655571a6d6bbbff372af5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369078"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502811"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -809,7 +809,7 @@ Az alábbi lépések az Előfeltételek – Azure Cosmos DB érhetnek el a dsvm-
 3. "Az Azure Cosmos DB áttelepítési eszköz" letöltését [Itt](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) és a egy szabadon választott könyvtárba való kinyeréséhez
 4. A tárolt JSON-adatok (mexikói adatok) importálása egy [nyilvános blob](https://cahandson.blob.core.windows.net/samples/volcano.json) az a következő parancs paraméterei, az áttelepítési eszköz (a Cosmos DB áttelepítési eszköz telepítési könyvtárából dtui.exe) Cosmos DB-be. Adja meg a forrás és cél helyét ezekkel a paraméterekkel:
    
-    /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
+    `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
 Az importált adatokat, ugorjon a Jupyter, és nyissa meg a notebook nevű *DocumentDBSample* , amely tartalmazza a python-kód Azure Cosmos DB eléréséhez, és néhány alapszintű lekérdezést. További információ a Cosmos DB a szolgáltatás felkeresésével [dokumentációs oldalon](https://docs.microsoft.com/azure/cosmos-db/).
 

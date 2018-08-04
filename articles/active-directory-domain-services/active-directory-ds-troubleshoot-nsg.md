@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 67f4f0850d0600fc7ca0f1323e7c7801187089f5
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: a2acbed81e323718c7d294d87ebf699c35664d02
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950734"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502645"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>A felügyelt tartomány konfigurációja érvénytelen hálózati hibaelhárítása
 Ez a cikk segítséget nyújt a hibaelhárításához és megoldásához hálózati konfigurációs hibák, amelyek a következő figyelmeztető üzenet:
@@ -41,7 +41,7 @@ Ez a cikk segítséget nyújt a hibaelhárításához és megoldásához hálóz
 ## <a name="sample-nsg"></a>Minta NSG-t
 Az alábbi táblázat mutatja be, hogy egy NSG-t, hogy az lenne a felügyelt tartomány secure miközben lehetővé teszi a figyelése, kezelése és adatok frissítése a Microsoft mintát.
 
-![minta NSG-t](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![Minta NSG-t](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
 >[!NOTE]
 > Az Azure AD tartományi szolgáltatások a virtuális hálózatról korlátlan kimenő hozzáféréssel kell rendelkeznie. Azt javasoljuk, hogy nem minden olyan további NSG-szabályt, amely korlátozza a kimenő hozzáférést a virtuális hálózat létrehozása.

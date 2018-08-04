@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: ca4ed4444cd753c0fe22c6596dfd34d033b7b0cf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 58a1871774683e2af66e12a03bdaf8d6bcea831c
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237002"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493258"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Oktatóanyag: Az entitás pattern.any alkalmazás fejlesztéséhez
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban használja a pattern.any entitás szándékot és egyé
 * Pattern.any használó minta létrehozása
 * Előrejelzési fejlesztései ellenőrzése
 
-Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 Ha nem rendelkezik az emberi erőforrások alkalmazásból a [szerepkörök mintát](luis-tutorial-pattern-roles.md) az oktatóanyagban [importálása](luis-how-to-start-new-app.md#import-new-app) a JSON-kódot egy új alkalmazást a [LUIS](luis-reference-regions.md#luis-website) webhely. Az alkalmazás importálása megtalálható a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) GitHub-adattárban.
@@ -108,7 +108,6 @@ A Pattern.any entitás változó hosszúságú entitásokat ad eredményül. Csa
 
 5. Az alkalmazás betanításához.
 
-
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>A szabad formátumú adatok kinyerése az új mintára tesztelése
 1. Válassza ki **tesztelése** a felső sávon a teszt panel megnyitásához. 
 
@@ -123,7 +122,8 @@ A Pattern.any entitás változó hosszúságú entitásokat ad eredményül. Csa
 4. Zárja be a teszt panelen válassza a **tesztelése** a felső navigációs gombra.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a három pontot (***...*** ) az alkalmazások listájában, az alkalmazás nevétől jobbra, válassza ki a **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 
