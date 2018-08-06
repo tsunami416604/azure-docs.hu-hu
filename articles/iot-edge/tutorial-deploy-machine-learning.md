@@ -1,6 +1,6 @@
 ---
 title: Az Azure Machine Learning üzembe helyezése az Azure IoT Edge használatával | Microsoft Docs
-description: Az Azure Machine Learning üzembe helyezése modulként Edge-eszközre
+description: Az oktatóanyagban egy Azure Machine Learning-példányt helyezünk üzembe modulként egy peremhálózati eszközre.
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ca816f7bdc183727eb22806ba9e733c8b97c44
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a1b34fe75f76d5f615ab33069f3012f22dc7ef2e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173505"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413073"
 ---
-# <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Az Azure Machine Learning üzembe helyezése IoT Edge-modulként – előzetes verzió
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
 Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure Machine Learning-modul üzembe helyezésén, amely előrejelzi az eszközök meghibásodását szimulált géphőmérsékleti adatok alapján. Az IoT Edge-en futó Azure ML-el kapcsolatos további információkat [az Azure Machine Learning dokumentációjában](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md) talál.
 
@@ -33,15 +33,23 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >[!NOTE]
 >Az Azure Machine Learning moduljai nyilvános előzetes verzióban érhetők el az Azure IoT Edge szolgáltatásban. 
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban buildelendő Machine Learning-modul teszteléséhez egy IoT Edge-eszközre lesz szüksége. Használhatja a [Linux](quickstart-linux.md) vagy [Windows](quickstart.md) rendszerhez készült rövid útmutatóban konfigurált eszközt. 
+Egy Azure IoT Edge-eszköz:
 
-Az Azure Machine Learning-modul nem támogatja az ARM processzorokat.
+* Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [Linux-](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md) rövid útmutatójának lépéseit követve.
+* Az Azure Machine Learning-modul nem támogatja az ARM processzorokat.
 
-A fejlesztői gépen a következő előfeltételeknek kell rendelkezésre állnia: 
+Felhőerőforrások:
+
+* Egy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban. 
+
+Fejlesztési erőforrások:
 * Egy Azure Machine Learning-fiók. Kövesse az [Azure Machine Learning-fiókok létrehozása és az Azure Machine Learning Workbench telepítése](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts) szakaszban megadott utasításokat. Az oktatóanyag elvégzéséhez nincs szükség a Workbench alkalmazás telepítésére. 
-* Az Azure ML modelljeinek kezelése a gépén. A környezet beállításához és fiók létrehozásához kövesse [A modellkezelés beállítása](../machine-learning/desktop-workbench/deployment-setup-configuration.md) szakaszban megadott utasításokat. Az üzembe helyezés során lehetőség szerint a fürt helyett helyi lépéseket használjon.
+* Az Azure ML modelljeinek kezelése. A környezet beállításához és fiók létrehozásához kövesse [A modellkezelés beállítása](../machine-learning/desktop-workbench/deployment-setup-configuration.md) szakaszban megadott utasításokat. Az üzembe helyezés során lehetőség szerint a fürt helyett helyi lépéseket használjon.
 
 ### <a name="disable-process-identification"></a>Folyamatazonosítás letiltása
 
@@ -108,7 +116,7 @@ Ellenőrizze, hogy a tárolórendszerkép sikeresen létrejött-e és a Machine 
 4. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** mezők értékeit.  Ezek az adatok ahhoz kellenek, hogy az Edge-eszközeiről is hozzá tudjon férni a beállításjegyzékhez.
 5. Válassza az **Adattárak** elemet
 6. Válassza a **machinelearningmodule** elemet
-7. Most már rendelkezésére áll a tároló rendszerképének teljes elérési útja. Jegyezze fel a rendszerkép elérési útját, mert szüksége lesz rá a következő szakaszban. Az elérési útnak a következőképpen kell kinéznie: **<registry_name>.azureacr.io/machinelearningmodule:1**
+7. Most már rendelkezésére áll a tároló rendszerképének teljes elérési útja. Jegyezze fel a rendszerkép elérési útját, mert szüksége lesz rá a következő szakaszban. Az elérési útnak a következőképpen kell kinéznie: **<tárolóregisztrációs_adatbázis_neve>.azurecr.io/machinelearningmodule:1**
 
 ## <a name="deploy-to-your-device"></a>Üzembe helyezés az eszközön
 

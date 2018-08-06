@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/29/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 539e41dbd4d9e115c2d8daf90405d7683bcaa462
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e941eb27e9c55f9a4b0e7af8d4cd8efa0220616b
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763187"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264460"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a MongoDB API használatával
 
@@ -27,9 +27,7 @@ Ez a cikk a következő feladatokat mutatja be:
 > [!div class="checklist"]
 > * Adatok lekérdezése a MongoDB használatával
 
-Az első lépésekhez sok segítséget nyújt az alábbi videó, amelyben Andy Hoh, az Azure Cosmos DB programmenedzsere beszél a MongoDB lekérdezéséről:
-
->[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
+Az első lépésekhez segítséget nyújtanak a jelen dokumentum példái és az alábbi videó, amely az [Azure Cosmos DB MongoDB-felületről történő lekérdezését](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) ismerteti.
 
 ## <a name="sample-document"></a>Mintadokumentum
 

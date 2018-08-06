@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5e0da540b2784ef13986c6089d31f22df992ee59
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: dfcb764d75b7328d1234d47d82afdae8d6a0deef
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005815"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413014"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése x64-es Linux-eszközön
 
@@ -43,18 +43,18 @@ Adja hozzá az Azure IoT bővítményt a Cloud Shell-példányhoz.
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
    ```
-
+   
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató egy linuxos gépet használ IoT Edge-eszközként. Ha nem áll rendelkezésre ilyen a teszteléshez, létrehozhat egyet az Azure CLI-vel. 
+Felhőerőforrások: 
 
-Hozzon létre egy új erőforráscsoportot. A könnyű kezelés érdekében használhatja ezt az erőforráscsoportot a rövid útmutatóban létrehozott többi Azure-erőforráshoz.  
+* Egy erőforráscsoport a rövid útmutató során létrehozott összes erőforrás kezelésére. 
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus
    ```
 
-Hozza létre a virtuális gépet. Az IoT Edge teszteléséhez nincs szükség nagyon nagy virtuális gépre. A **B1ms** méret például elegendő.
+* Egy Linux rendszerű virtuális gép, amely IoT Edge-eszközként szolgál majd. 
 
    ```azurecli-interactive
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_B1ms
@@ -62,18 +62,13 @@ Hozza létre a virtuális gépet. Az IoT Edge teszteléséhez nincs szükség na
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-A rövid útmutató első lépéseként hozza létre az IoT Hubot az Azure Portalon.
+A rövid útmutató első lépéseként hozza létre az IoT Hubot az Azure CLI használatával. 
+
 ![IoT Hub létrehozása][3]
 
 Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta az IoT Hubot, és már létrehozott egy ingyenes központot, használhatja azt is. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet. 
 
-1. Az Azure Cloud Shellben hozzon létre egy erőforráscsoportot, ha még nem tette meg az előkészületek során. Ha a rövid útmutatóhoz és az oktatóanyagokhoz szükséges összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. 
-
-   ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus
-   ```
-
-1. Hozzon létre egy IoT-központot az új erőforráscsoportban. A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResources** erőforráscsoportban. A *{hub_name}* elemet cserélje le az IoT Hub központ egyedi nevére.
+A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResources** erőforráscsoportban. A *{hub_name}* elemet cserélje le az IoT Hub központ egyedi nevére.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 

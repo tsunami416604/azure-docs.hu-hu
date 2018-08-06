@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.custom: mvc
-ms.openlocfilehash: 6e3515cba449826389fbff35765de9631728de5d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d341b0590dce65228958572365bb2773f8f13129
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063425"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324306"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
 
@@ -35,9 +35,10 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="set-aside-storage-account-configuration"></a>Tárfiók-konfiguráció feljegyzése
 
-Az oktatóanyag során szüksége lesz a tárfiók nevére és hozzáférési kulcsára. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, és szűrjön a *tár* kifejezésre. Válassza a **Tárfiókok** lehetőséget, és keresse meg az oktatóanyaghoz létrehozott fiókot.
-
-Az **Áttekintés** területről másolja be a tárfiók nevét egy szövegszerkesztőbe. Ezután válassza a **Hozzáférési kulcsok** lehetőséget, és másolja ki a **key1** értékét a szövegszerkesztőbe, mivel a későbbi parancsokhoz mindkét értékre szükség lesz.
+> [!IMPORTANT]
+> Az oktatóanyag során szüksége lesz a tárfiók nevére és hozzáférési kulcsára. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, és szűrjön a *tár* kifejezésre. Válassza a **Tárfiókok** lehetőséget, és keresse meg az oktatóanyaghoz létrehozott fiókot.
+>
+> Az **Áttekintés** területről másolja be a tárfiók **nevét** egy szövegszerkesztőbe. Ezután válassza a **Hozzáférési kulcsok** lehetőséget, és másolja ki a **key1** értékét a szövegszerkesztőbe, mivel a későbbi parancsokhoz mindkét értékre szükség lesz.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -105,7 +106,7 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
 
     Kattintson a **Létrehozás** gombra.
 
-4. Írja be a következő kódot az első cellába úgy, hogy a helyőrzők helyére a saját fióknevét, kulcsát, valamint a fájlrendszer nevét írja.
+4. Az alábbi kód **ACCOUNT_NAME** és **ACCOUNT_KEY** mezőibe másolja be a jelen rövid útmutató elején rögzített értékeket. A **FILE_SYSTEM_NAME** mezőben szereplő szöveg helyére írja be a fájlrendszer nevét. Ezután írja be a kódot az első cellába.
 
     ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
@@ -122,17 +123,17 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
 
 Mielőtt ehhez a szakaszhoz hozzáfogna, a következő előfeltételeknek kell eleget tennie:
 
-* Töltse le a **small_radio_json.json** fájlt [a GitHubról](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
-* Töltse fel a JSON-mintafájlt az **AzCopy 10-es verziója** használatával a létrehozott Azure Blob Storage-fiókba és fájlrendszerbe:
+Írja be az alábbi kódot egy jegyzetfüzetcellába:
 
-    ```bash
-    set ACCOUNT_NAME=<ACCOUNT_NAME>
-    set ACCOUNT_KEY=<ACCOUNT_KEY>
-    azcopy cp "<LOCAL_FILE_PATH>\small_radio_json.json" https://<ACCOUNT_NAME>.dfs.core.windows.net/<CONTAINER_NAME> --recursive 
-    ```
+    %sh wget -P /tmp https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
-> [!NOTE]
-> Az AzCopy 10-es verziója csak az előzetes verzióval rendelkező ügyfelek számára érhető el.
+A kód futtatásához nyomja le a cellában a `Shift` + `Enter` billentyűkombinációt.
+
+Az ez alatti cellába pedig a következő kódot írja be (a **FILE_SYSTEM** és az **ACCOUNT_NAME** helyére), a korábban használt értékeket használva:
+
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfs://<FILE_SYSTEM>@<ACCOUNT_NAME>.dfs.core.windows.net/")
+
+A kód futtatásához nyomja le a cellában a `Shift` + `Enter` billentyűkombinációt.
 
 ## <a name="run-a-spark-sql-job"></a>Spark SQL-feladat futtatása
 

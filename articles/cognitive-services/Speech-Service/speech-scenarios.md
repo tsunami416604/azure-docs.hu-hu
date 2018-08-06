@@ -8,12 +8,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 3ec5fede8b4e196a2f7573b4c2f202d589a55f32
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 5179f0a81ea67c1b20e9cbf77e18595e0b4bafa4
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282668"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495281"
 ---
 # <a name="speech-scenarios"></a>Beszédforgatókönyvek
 
@@ -31,7 +31,7 @@ Hány felhasználó alkalmazásaikat a beszédbemenetet engedélyezni szeretne. 
 
 ### <a name="voice-triggered-apps-with-baseline-models"></a>Hangalapú kiindulási modelleket alkalmazhatnak aktivált alkalmazások
 
-Ha az alkalmazás által használt nyilvános környezetekben nem túl nagy, a háttérzaj, egyszerűen tölt le a legkönnyebb és leggyorsabb Ennek módja a [beszéd SDK](speech-sdk.md) és követni a megfelelő [ A minták](quickstart-csharp-dotnet-windows.md). Az SDK segítségével a [Azure-előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/) lehetővé teszi a fejlesztők számára, hogy az alapterv beszédfelismerési modelleket, melyek a Cortana és Skype hang feltöltése. A mdoels a legkorszerűbb, és a fent említett termékeket használják. Néhány perc alatt működőképes környezettel rendelkezik.
+Ha az alkalmazás által használt nyilvános környezetekben nem túl nagy, a háttérzaj, egyszerűen tölt le a legkönnyebb és leggyorsabb Ennek módja a [beszéd SDK](speech-sdk.md) és követni a megfelelő [ A minták](quickstart-csharp-dotnet-windows.md). Az SDK segítségével a [Azure-előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/) lehetővé teszi a fejlesztők számára, hogy az alapterv beszédfelismerési modelleket, melyek a Cortana és Skype hang feltöltése. A modellek a legkorszerűbb, és a fent említett termékeket használják. Néhány perc alatt működőképes környezettel rendelkezik.
 
 ### <a name="voice-triggered-apps-with-custom-models"></a>Egyéni modellek hangalapú aktivált alkalmazások
 
@@ -39,7 +39,7 @@ Ha az alkalmazás-címek egy adott tartományban, (például kémia, biológiai 
 
 ## <a name="transcribe-call-center-audio-calls"></a>Hívás center hang hívások alapuló átírás
 
-Telefonos ügyfélszolgálatok hang nagy mennyiségű összeadódhatnak. Rejtett azokat az elérhető azonban beszédátírási hangfájlok webszolgáltatáson értéken belül. A hívás időtartama a róluk szóló véleményeket, az ügyfelek és az általános a hívást a hívó számára megadott érték számára könnyen megtalálhatók legyenek hívás átiratok beszerzése.
+Telefonos ügyfélszolgálatok hang nagy mennyiségű összeadódhatnak. Rejtett ezeket beszédátírási keresztül elérhető hangfájlok webszolgáltatáson értéken belül. A hívás időtartama a róluk szóló véleményeket, az ügyfelek és az általános a hívást a hívó számára megadott érték számára könnyen megtalálhatók legyenek hívás átiratok beszerzése.
 
 A legjobb kiindulási pontja a [Batch API beszédátírási](batch-transcription.md) együtt kapcsolódó [minta](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
@@ -55,7 +55,7 @@ Ha azt tervezi, egyéni modellt, majd kell, hogy modelljét, és az API-kulcs az
 
 ## <a name="voice-bots"></a>Hangalapú robotok
 
-Fejlesztői teheti hatékonyabbá a hangalapú kimeneti az alkalmazását. A beszédfelismerési szolgáltatás is számos synthetize speech [nyelvek](supported-languages.md) és biztosítja a [végpontok](rest-apis.md) elérésére, és ezt a képességet hozzáadása az alkalmazáshoz.
+A fejlesztők teheti hatékonyabbá a hangalapú kimeneti az alkalmazásaikat. A beszédfelismerési szolgáltatás is számos synthetize speech [nyelvek](supported-languages.md) és biztosítja a [végpontok](rest-apis.md) elérésére, és ezt a képességet hozzáadása az alkalmazáshoz.
 
 Emellett a felhasználók számára, hogy több személy és egyediség hozzáadásához robotjaikat, a Speech Service segítségével a fejlesztők egyedi hangtípusú testreszabásához. Hasonló beszédfelismerési modellek hangtípust igényelnek felhasználói adatok testreszabása. Fejlesztők feltöltése az adatokat a [hangalapú betanítás portál](https://customspeech.ai) , és kezdje el a márkára robotja hang. Részletes leírásuk [Itt](how-to-text-to-speech.md) , valamint a [– gyakori kérdések](faq-text-to-speech.md) oldalak 
 

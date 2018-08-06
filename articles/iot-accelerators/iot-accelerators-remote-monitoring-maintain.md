@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: acff6586f35f1c86cba8d519586d72247255ccd7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3138f0ebb6316e69c873a37d479ddc0279a361ef
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159383"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285077"
 ---
-# <a name="troubleshoot-and-fix-device-issues"></a>Eszközökkel kapcsolatos problémák észlelése és megoldása
+# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Oktatóanyag: Eszközökkel kapcsolatos problémák észlelése és megoldása
 
 Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsítóval fogja azonosítani és orvosolni a csatlakoztatott IoT-eszközökkel kapcsolatos problémákat. Riasztásokat fog használni a megoldásgyorsító irányítópultján a problémák azonosításához, amelyeket távoli feladatok futtatásával fog megoldani.
 
@@ -30,7 +30,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
+[!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="investigate-an-alert"></a>Riasztás vizsgálata
 
@@ -80,7 +80,7 @@ Az eszköz hőmérsékletének csökkenését a telemetria megtekintésével ell
 
 [![A hőmérséklet csökkenésének megtekintése](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
 
-[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
+[!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>További lépések
 

@@ -91,8 +91,6 @@
           href: batch-task-dependencies.md
         - name: Felhasználói fiókok feladatok futtatásához
           href: batch-user-accounts.md
-        - name: Batch-feladatok futtatása kód nélkül
-          href: batch-cli-templates.md
     - name: Feladatok és tevékenységek kimenetének megőrzése
       href: batch-task-output.md
       items:
@@ -123,10 +121,13 @@
           href: batch-efficient-list-queries.md
     - name: Szkriptelési eszközök használata
       items:
-        - name: PowerShell-parancsmagok használata
+        - name: Azure PowerShell használatával
           href: batch-powershell-cmdlets-get-started.md
         - name: Az Azure parancssori felület használatával
           href: batch-cli-get-started.md
+          items:
+            - name: A Batch CLI-sablonok használata
+              href: batch-cli-templates.md
     - name: A Batch Node.js SDK használata
       href: batch-nodejs-get-started.md
 - name: Referencia

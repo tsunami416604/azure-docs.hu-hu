@@ -1,37 +1,30 @@
 ---
-title: Azure Blob Storage tárolóban az Azure PowerShell-példák |} Microsoft Docs
-description: Az Azure PowerShell-példák működik-e az Azure Blob storage szolgáltatással
+title: Azure PowerShell-minták az Azure Blob Storage-hoz | Microsoft Docs
+description: Azure PowerShell-minták az Azure Blob Storage használatához
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.openlocfilehash: d07161cb5bc08410b0db552f7645e2af776c37df
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.component: blobs
+ms.openlocfilehash: fd553e4cb669d712bc4458ca55864b09a9160862
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
-ms.locfileid: "27535229"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399426"
 ---
-# <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure Blob Storage tárolóban az Azure PowerShell-példák
+# <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure PowerShell-minták az Azure Blob Storage-hoz
 
-A következő táblázat, amely létrehozása és kezelése az Azure Storage PowerShell-parancsfájl példák mutató hivatkozásokat tartalmaz.
+A következő táblázat az Azure Storage-tárolókat létrehozó és kezelő PowerShell-mintaszkriptekre mutató hivatkozásokat tartalmaz.
 
 | | |
 |---|---|
-|**Storage-fiókok**||
-| [Hozzon létre egy tárfiókot, és a tárelérési kulcsok beolvasása/elforgatása](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Storage-fiókot, és kéri le, és forog a tárelérési kulcsok egyikét. |
-| [Áttelepítés BLOB storage-fiókok AzCopy használata a Windows](../scripts/storage-common-transfer-between-storage-accounts.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Áttelepítés BLOB AzCopy használata a Windows Azure Storage-fiókokat. |
+|**Tárfiókok**||
+| [Tárfiók létrehozása és a hozzáférési kulcsok lekérése/rotálása](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Storage-fiókot, és lekéri, illetve rotálja a hozzáférési kulcsai egyikét. |
+| [Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával](../scripts/storage-common-transfer-between-storage-accounts.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Blobokat migrál Azure Storage-fiókok között az AzCopy Windows rendszeren történő használatával. |
 |**Blob Storage**||
-| [Kiszámítja egy Blob storage tárolót teljes mérete](../scripts/storage-blobs-container-calculate-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Kiszámítja egy tároló összes blobjának teljes mérete. |
-| [A Blob storage tárolót méretének kiszámításához számlázási okokból](../scripts/storage-blobs-container-calculate-billing-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Kiszámítja a számlázási költségek becslése céljából Blob Storage-tároló mérete. |
-| [Egy megadott előtagot tárolók törlése](../scripts/storage-blobs-container-delete-by-prefix-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A megadott karakterlánc kezdve tárolók törli. |
+| [Blob Storage-tároló teljes méretének kiszámítása](../scripts/storage-blobs-container-calculate-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Kiszámítja a tárolóban lévő blobok összméretét. |
+| [Blob Storage-tároló méretének kiszámítása számlázási célokból](../scripts/storage-blobs-container-calculate-billing-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Kiszámítja a Blob Storage-ban lévő valamely tároló méretét a számlázási költségek becsléséhez. |
+| [Megadott előtaggal rendelkező tárolók törlése](../scripts/storage-blobs-container-delete-by-prefix-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Törli a megadott sztringgel kezdődő tárolókat. |

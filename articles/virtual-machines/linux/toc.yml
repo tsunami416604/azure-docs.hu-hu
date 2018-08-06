@@ -175,8 +175,6 @@
           href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Virtuális gépek kezelése
       items:
-        - name: Előre fizetés virtuális gépekre – Fenntartott példányok
-          href: prepay-reserved-vm-instances.md
         - name: Virtuálisgép-használat
           href: vm-usage.md
         - name: Általános CLI-feladatok
@@ -228,6 +226,14 @@
           href: instance-metadata-service.md
         - name: Használati metrikák lekérése a REST használatával
           href: metrics-vm-usage-rest.md
+    - name: Költségek kezelése
+      items:
+        - name: Előre fizetés virtuális gépekre – Fenntartott példányok
+          href: prepay-reserved-vm-instances.md
+        - name: Mik a fenntartott példányok?
+          href: ../../billing/billing-save-compute-costs-reservations.md
+        - name: Virtuálisgép-példányok méretrugalmassága
+          href: reserved-vm-instance-size-flexibility.md
     - name: Rendszerképek használata
       items:
         - name: Rendszerképek keresése és használata

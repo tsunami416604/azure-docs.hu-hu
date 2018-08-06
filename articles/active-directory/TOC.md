@@ -156,22 +156,27 @@
 
 ## Eszközök kezelése
 ### [Áttekintés](devices/overview.md)
-### [Az Azure Portal használata](devices/device-management-azure-portal.md)
-### [Az Azure AD Join megtervezése](devices/azureadjoin-plan.md)
-### [Gyakori kérdések](devices/faq.md)
-### Feladatok
-#### [A hibrid Azure Active Directory-csatlakozás megvalósításának tervezése](devices/hybrid-azuread-join-plan.md)
-#### [A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz](devices/hybrid-azuread-join-managed-domains.md)
-#### [A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz](devices/hybrid-azuread-join-federated-domains.md)
-#### [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](devices/hybrid-azuread-join-control.md)
+
+### Gyors útmutatók
 #### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök beállítása](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Az Azure AD-hez csatlakoztatott eszközök beállítása](user-help/device-management-azuread-joined-devices-setup.md)
-#### [Hibrid Azure AD-hez csatlakoztatott eszközök beállítása](devices/hybrid-azuread-join-manual-steps.md)
-#### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
-#### [Azure AD-csatlakozás a Windows 10 első futtatási élménye alkalmával](devices/azuread-joined-devices-frx.md)
-### Hibaelhárítás
-#### [Hibrid Azure AD-csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [Hibrid Azure AD-csatlakoztatott, régebbi Windows-eszközök](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### Oktatóanyagok
+#### [A hibrid Azure AD-csatlakozás konfigurálása felügyelt tartományokhoz](devices/hybrid-azuread-join-managed-domains.md)
+#### [A hibrid Azure AD-csatlakozás konfigurálása összevont tartományokhoz](devices/hybrid-azuread-join-federated-domains.md)
+#### [A hibrid Azure AD-csatlakozás manuális konfigurálása](devices/hybrid-azuread-join-manual-steps.md)
+#### [Az Azure AD-csatlakozás konfigurálása a Windows 10 első futtatásakor](devices/azuread-joined-devices-frx.md)
+
+### Útmutatók
+#### [Az Azure AD-csatlakozás megtervezése](devices/azureadjoin-plan.md)
+#### [A hibrid Azure AD-csatlakozás implementálásának megtervezése](devices/hybrid-azuread-join-plan.md)
+#### [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](devices/hybrid-azuread-join-control.md)
+#### [Jelenlegi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [Korábbi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### Alapelvek
+### [Eszközök kezelése az Azure Portalon](devices/device-management-azure-portal.md)
+### [Gyakori kérdések](devices/faq.md)
 
 ## Alkalmazások kezelése
 ### [Áttekintés](manage-apps/what-is-application-management.md)
@@ -472,6 +477,7 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 
 # További források
+## [Azure AD-üzembehelyezési tervek](./fundamentals/active-directory-deployment-plans.md)
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)

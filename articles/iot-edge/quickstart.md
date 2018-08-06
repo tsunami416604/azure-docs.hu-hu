@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 19fd671514da0dbfb1704c37d4347e870763d41b
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1437c3552a7af5d5474cf3bdaabe95d5415af603
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091813"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414211"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése az Azure Portal segítségével egy Windows-eszközön – előzetes verzió
 
@@ -36,18 +36,6 @@ A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő,
 
 Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [ingyenes fiókot][lnk-account].
 
-## <a name="prerequisites"></a>Előfeltételek
-
-Ebben a rövid útmutatóban Windows rendszerű számítógépét vagy virtuális gépét IoT Edge-eszközzé alakíthatja. Ha a Windows virtuális gépen fut, engedélyezze a [beágyazott virtualizálást][lnk-nested], és foglaljon le legalább 2 GB memóriát. 
-
-Az IoT Edge-eszközként használni kívánt számítógépen a következő előfeltételeknek kell rendelkezésre állniuk:
-
-1. Győződjön meg arról, hogy a Windows támogatott verzióját használja:
-   * Windows 10 vagy újabb
-   * Windows Server 2016 vagy újabb
-2. Telepítse a [Windowshoz készült Dockert][lnk-docker], és ellenőrizze, hogy fut-e.
-3. A Docker konfigurálása [Linux-tárolók](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) használatára
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 A rövid útmutató számos lépésében az Azure CLI használatára van szükség, és az Azure IoT egyik bővítményével további funkciókhoz férhet hozzá. 
@@ -58,24 +46,40 @@ Adja hozzá az Azure IoT bővítményt a Cloud Shell-példányhoz.
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató első lépéseként hozza létre az IoT Hubot az Azure Portalon.
-![IoT Hub létrehozása][3]
+Felhőerőforrások: 
 
-Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta az IoT Hubot, és már létrehozott egy ingyenes központot, használhatja azt is. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet. 
-
-1. Az Azure Cloud Shellben hozzon létre egy erőforráscsoportot. A következő kód egy **IoTEdgeResources** nevű erőforráscsoportot hoz létre az **USA nyugati régiójában**. Ha a rövid útmutatóhoz és az oktatóanyagokhoz szükséges összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. 
+* Egy erőforráscsoport a rövid útmutató során létrehozott összes erőforrás kezelésére. 
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus
    ```
 
-1. Hozzon létre egy IoT-központot az új erőforráscsoportban. A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResources** erőforráscsoportban. A *{hub_name}* elemet cserélje le az IoT Hub központ egyedi nevére.
+Egy Windows rendszerű számítógép vagy virtuális gép, amely IoT Edge-eszközként szolgál majd. 
+
+* Használjon támogatott Windows-verziót:
+   * Windows 10 vagy újabb
+   * Windows Server 2016 vagy újabb
+* Ha virtuális gépről van szó, engedélyezze a [beágyazott virtualizálást][lnk-nested], és foglaljon le legalább 2 GB memóriát. 
+* Telepítse a [Windowshoz készült Dockert][lnk-docker], és ellenőrizze, hogy fut-e.
+* A Docker konfigurálása [Linux-tárolók](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) használatára
+
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+
+A rövid útmutató első lépéseként hozza létre az IoT Hubot az Azure CLI használatával. 
+
+![IoT Hub létrehozása][3]
+
+Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta az IoT Hubot, és már létrehozott egy ingyenes központot, használhatja azt is. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet. 
+
+A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResources** erőforráscsoportban. A *{hub_name}* elemet cserélje le az IoT Hub központ egyedi nevére.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
+
+   Ha hibaüzenetet kap, mert az előfizetése már tartalmaz egy ingyenes központot, akkor módosítsa az SKU-t **S1**-re. 
 
 ## <a name="register-an-iot-edge-device"></a>IoT Edge-eszköz regisztrálása
 
@@ -206,7 +210,13 @@ Konfigurálja a futtatókörnyezetet az IoT Edge-eszköz kapcsolati sztringjéve
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-8. Keresse meg a **Moby Container Runtime settings** (Moby-tároló futtatókörnyezeti beállításai) szakaszt, és győződjön meg róla, hogy a **network** (hálózat) értéke `nat`.
+8. Keresse meg a **Moby Container Runtime settings** (Moby-tároló futtatókörnyezeti beállításai) szakaszt, és győződjön meg róla, hogy a **network** (hálózat) nincs megjegyzéssel ellátva, és az értéke **azure-iot-edge**.
+
+   ```yaml
+   moby_runtime:
+     docker_uri: "npipe://./pipe/docker_engine"
+     network: "azure-iot-edge"
+   ```
 
 9. Mentse a konfigurációs fájlt. 
 
@@ -237,7 +247,8 @@ Ellenőrizze, hogy a futtatókörnyezet megfelelően lett-e telepítve és konfi
     -FilterHashtable @{ProviderName= "iotedged";
       LogName = "application"; StartTime = [datetime]::Today} |
     select TimeCreated, Message |
-    sort-object @{Expression="TimeCreated";Descending=$false}
+    sort-object @{Expression="TimeCreated";Descending=$false} |
+    format-table -autosize -wrap
    ```
 
 3. Tekintse meg az IoT Edge-eszközön futó összes modult. Mivel első alkalommal indította el ezt a szolgáltatást, csak az **edgeAgent** modulnak szabad futnia. Az edgeAgent alapértelmezés szerint fut, és segíti az eszközön esetlegesen üzembe helyezett további modulok telepítését és indítását. 

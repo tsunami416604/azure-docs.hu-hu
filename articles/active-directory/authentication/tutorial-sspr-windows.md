@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e4e94567cf978631be52a3304b47b68f61ac3fff
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: eefb07136215d79b7c351dd4498bfeb79b6833de
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161163"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413745"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Új Azure AD-jelszó kérése a bejelentkezési képernyőről
 
@@ -115,6 +115,8 @@ A funkció a Hyper-V használatával történő tesztelésekor a „Jelszó viss
 A funkció a Távoli asztal használatával történő tesztelésekor a „Jelszó visszaállítása” hivatkozás nem jelenik meg.
 
 * A Távoli asztalokról jelenleg nem támogatott a jelszó-visszaállítás.
+
+Ha a Windows zárolási képernyő egy beállításkulcs vagy csoportszabályzat használatával le lett tiltva, a **Jelszó visszaállítása** hivatkozás nem elérhető.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

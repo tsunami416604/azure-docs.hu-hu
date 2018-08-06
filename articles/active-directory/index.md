@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
 ms.author: mtillman
-ms.openlocfilehash: 452c8104f4f5abd5730126fbe2a5755564d37d16
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 5f193425912ad9c15d9f6b0b7681178fab54b83e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226067"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504617"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory-dokumentáció
 
@@ -31,10 +31,11 @@ Az Azure Active Directory (Azure AD) egy több-bérlős felhőalapú címtár- �
                     <div class="cardText">
                         <h3>Alapok</h3>
                         <p>
-                        <a href="/azure/active-directory/active-directory-whatis">Mi az Azure AD?</a><br/>
-                        <a href="/azure/active-directory/understand-azure-identity-solutions">Identitáskezelési megoldások</a><br/>
-                        <a href="/azure/active-directory/get-started-azure-ad">Első lépések</a><br/>
-                        <a href="/azure/active-directory/whats-new">Újdonságok</a>
+                        <a href="/azure/active-directory/fundamentals/active-directory-whatis">Mi az Azure AD?</a><br/>
+                        <a href="/azure/active-directory/fundamentals/understand-azure-identity-solutions">Identitáskezelési megoldások</a><br/>
+                        <a href="/azure/active-directory/fundamentals/get-started-azure-ad">Első lépések</a><br/>
+                        <a href="/azure/active-directory/fundamentals/whats-new">Újdonságok</a><br/>
+                        <a href="/azure/active-directory/fundamentals/active-directory-deployment-plans">Azure AD-üzembehelyezési tervek</a>
                         </p>
                     </div>
                 </div>

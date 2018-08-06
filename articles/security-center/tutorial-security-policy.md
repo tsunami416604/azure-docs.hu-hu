@@ -3,7 +3,7 @@ title: Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatá
 description: Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatározása és értékelése
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,17 +13,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: yurid
-ms.openlocfilehash: 16dc8553fdc1209d1973934a87660ff61df8e68a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 07/30/2018
+ms.author: terrylan
+ms.openlocfilehash: 15c69bce87ede96eb3a7bc0bada4e4f6a6669abb
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779468"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358608"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Oktatóanyag: Biztonsági szabályzatok meghatározása és értékelése
-A Security Center a számítási feladatokhoz tartozó kívánt konfigurációk biztonsági szabályzatokkal történő meghatározásával segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Az Azure-előfizetésekre vonatkozó szabályzatok meghatározása és azoknak a számítási feladat típusához vagy az adatok érzékenységéhez történő igazítása után a Security Center biztonsági javaslatokat kínál a számítási, hálózati, SQL- és tárolási, illetve az alkalmazásokra vonatkozó erőforrásokhoz. Az oktatóanyag során a következőket fogja elsajátítani:
+A Security Center a számítási feladatokhoz tartozó kívánt konfigurációk biztonsági szabályzatokkal történő meghatározásával segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Miután meghatározza az Azure-előfizetésekre vonatkozó szabályzatokat, majd a számítási feladat típusához vagy az adatok érzékenységéhez igazítja őket, a Security Center biztonsági javaslatokat kínál a számítási, alkalmazásra vonatkozó, hálózati, adatokra és tárolásra, illetve identitásra és hozzáférésre vonatkozó erőforrásokhoz. Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
 > * Biztonsági szabályzat konfigurálása
@@ -37,16 +37,20 @@ Az oktatóanyagban ismertetett funkciók végrehajtásához a Security Center St
 ## <a name="configure-security-policy"></a>Biztonsági szabályzat konfigurálása
 A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szabályzatot minden egyes Azure-előfizetéséhez. A biztonsági szabályzatok olyan javaslatokat tartalmaznak, amelyek az adott előfizetéshez tartozó biztonsági követelményeknek megfelelően be- és kikapcsolhatók. Az alapértelmezett biztonsági szabályzat módosításához az előfizetésben tulajdonos, közreműködő vagy biztonsági rendszergazda szerepkörrel kell rendelkeznie.
 
-1. A Security Center főmenüjében válassza a **Biztonsági szabályzat** elemet. Válassza ki a használni kívánt előfizetést. A **SZABÁLYZAT ÖSSZETEVŐI** alatt válassza a **Biztonsági szabályzat** lehetőséget:
+1. A Security Center főmenüjében válassza a **Biztonsági szabályzat** elemet.
+2. Válassza ki a használni kívánt előfizetést.
 
   ![Biztonsági szabályzat](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
 
-2. Minden egyes monitorozni kívánt biztonsági konfiguráció esetében válassza a **Be** lehetőséget. A Security Center folyamatosan értékelni fogja a környezet konfigurációját, és ha biztonsági rést fedez fel, biztonsági javaslatot hoz létre. Ha az adott biztonsági konfiguráció nem javasolt vagy nem érvényes, válassza a **Ki** lehetőséget. Például egy fejlesztői vagy tesztkörnyezetben általában más biztonsági szintek szükségesek, mint egy éles környezetben. Az adott környezetnek megfelelő szabályzatok kiválasztása után kattintson a **Mentés** elemre.
+3. A **SZABÁLYZAT ÖSSZETEVŐI** alatt válassza a **Biztonsági szabályzat** lehetőséget
+4. Minden egyes monitorozni kívánt biztonsági konfiguráció esetében válassza a **Be** lehetőséget. A Security Center folyamatosan értékelni fogja a környezet konfigurációját, és ha biztonsági rést fedez fel, biztonsági javaslatot hoz létre. Ha az adott biztonsági konfiguráció nem javasolt vagy nem érvényes, válassza a **Ki** lehetőséget. Például egy fejlesztői vagy tesztkörnyezetben általában más biztonsági szintek szükségesek, mint egy éles környezetben. Az adott környezetnek megfelelő szabályzatok kiválasztása után kattintson a **Mentés** elemre.
+
+  ![Biztonsági konfiguráció](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
 
 Várja meg, amíg a Security Center feldolgozza a szabályzatokat, és létrehozza a javaslatokat. Néhány konfiguráció, például a rendszerfrissítések vagy az operációs rendszer beállítsa akár 12 órát is igénybe vehet, miközben a hálózati biztonsági csoportok és a titkosítási konfigurációk kiértékelése szinte azonnal megtörténik. Ha a javaslatok megjelennek a Security Center irányítópultján, folytassa a következő lépéssel.
 
 ## <a name="assess-security-of-resources"></a>Biztonsági erőforrások felmérése
-1. Az engedélyezett biztonsági szabályzatnak megfelelően a Security Center elkészíti a szükséges biztonsági javaslatokat. Érdemes a virtuális gépekre és számítógépekre vonatkozó javaslatokkal kezdenie. A Security Center irányítópultján kattintson az **Áttekintés**, majd a **Számítás** elemre.
+1. Az engedélyezett biztonsági szabályzatnak megfelelően a Security Center elkészíti a szükséges biztonsági javaslatokat. Érdemes a virtuális gépekre és számítógépekre vonatkozó javaslatokkal kezdenie. A Security Center irányítópultján válassza az **Áttekintés**, majd a **Számítási tevékenység és alkalmazások** elemet.
 
   ![Compute](./media/tutorial-security-policy/tutorial-security-policy-fig2.png)
 
@@ -56,19 +60,23 @@ Várja meg, amíg a Security Center feldolgozza a szabályzatokat, és létrehoz
 
   ![Hálózat](./media/tutorial-security-policy/tutorial-security-policy-fig3.png)
 
-  A hálózatokra vonatkozó javaslatok oldala a hálózati beállításhoz, az internet felé néző végpontokhoz és a hálózati topológiához kapcsolódó biztonsági problémák listáját tartalmazza. Ahogyan a **Számítás** esetében, a hálózatokra vonatkozó javaslatoknál is egyes ajánlások beépített szervizelést kínálnak, mások pedig nem.
+  A hálózatokra vonatkozó javaslatok oldala a hálózati beállításhoz, az internet felé néző végpontokhoz és a hálózati topológiához kapcsolódó biztonsági problémák listáját tartalmazza. Ahogyan a **Számítási tevékenység és alkalmazások** esetében, a hálózatokra vonatkozó javaslatoknál is egyes ajánlások beépített szervizelést kínálnak, mások pedig nem.
 
-3. Ha a hálózatokra vonatkozó összes javaslatot sikerült feldolgozni, továbbléphet a következő számítási feladatra, vagyis a tárolás és adatok részhez. A Security Center irányítópultján kattintson az **Áttekintés**, majd a **Tárolás és adatok** elemre.
+3. Ha a hálózatokra vonatkozó összes javaslatot sikerült feldolgozni, továbbléphet a következő számítási feladatra, vagyis a tárolás és adatok részhez. A Security Center irányítópultján kattintson az **Áttekintés**, majd az **Adatok és tárolás** elemre.
 
   ![Adatforrások](./media/tutorial-security-policy/tutorial-security-policy-fig4.png)
 
-  Az **Adatforrások** oldal az Azure SQL Server és adatbázisok naplózásának engedélyezésével, az SQL-adatbázisok titkosításának engedélyezésével, illetve a saját Azure-tárfiók titkosításának engedélyezésével kapcsolatos javaslatokat tartalmaz. Ha nincs ilyen számítási feladat, nem jelenik meg javaslat. Ahogyan a **Számítás** esetében, az SQL-re és tárolásra vonatkozó javaslatoknál is egyes ajánlások beépített szervizelést kínálnak, mások pedig nem.
+  Az **Adatforrások** oldal az Azure SQL Server és adatbázisok naplózásának engedélyezésével, az SQL-adatbázisok titkosításának engedélyezésével, illetve a saját Azure-tárfiók titkosításának engedélyezésével kapcsolatos javaslatokat tartalmaz. Ha nincs ilyen számítási feladat, nem jelenik meg javaslat. Ahogyan a **Számítási tevékenység és alkalmazások** esetében, az SQL-re és tárolásra vonatkozó javaslatoknál is egyes ajánlások beépített szervizelést kínálnak, mások pedig nem.
 
-4. Ha az SQL-re és a tárolásra vonatkozó összes javaslatot sikerült feldolgozni, továbbléphet a következő számítási feladatra, vagyis az alkalmazásokra. A Security Center irányítópultján kattintson az **Áttekintés**, majd a **Alkalmazások** elemre.
+4. Ha az adatokra és a tárolásra vonatkozó összes javaslatot sikerült feldolgozni, továbbléphet a következő számítási feladatra: Identitás és hozzáférés. A Security Center irányítópultján kattintson az **Áttekintés**, majd az **Identitás és hozzáférés** elemre.
 
-  ![Alkalmazások](./media/tutorial-security-policy/tutorial-security-policy-fig5.png)
+  ![Identitás és hozzáférés](./media/tutorial-security-policy/tutorial-security-policy-fig5.png)
 
-  Az **Alkalmazások** oldal a webalkalmazási tűzfalak telepítésére, illetve az alkalmazások általános korlátozására vonatkozó javaslatokat tartalmaz. Ha nem rendelkezik virtuális géppel vagy az Internet Information Service (IIS) használatával futtatott webalkalmazásokat tartalmazó számítógéppel, ezek a javaslatok nem jelennek meg.
+  Az **Identitás és hozzáférés** oldalon a következőkhöz hasonló javaslatokat talál:
+
+   - Az MFA engedélyezése az előfizetés kiemelt jogosultságú fiókjaiban
+   - Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből
+   - Kiemelt jogosultságú külső fiókok eltávolítása az előfizetésből
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, továbbra is a Standard szintet futtassa, és hagyja engedélyezve az automatikus kiépítést. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:

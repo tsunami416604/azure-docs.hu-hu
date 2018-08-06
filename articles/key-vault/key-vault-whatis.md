@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/23/2018
+ms.date: 07/26/2018
 ms.author: barclayn
-ms.openlocfilehash: b34b05ae86aed199d80a86c8e1a073cb54b5e75f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cd9dd4d400177e511f23c2677b77198a50420a35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226713"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282996"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -37,6 +37,8 @@ Az alábbiakban néhány kulcsfontosságú fogalom ismertetése található:
 - Az **[Azure Active Directory](../active-directory/active-directory-whatis.md)** egy adott bérlő Azure AD-szolgáltatása. Minden címtárhoz tartozik egy vagy több tartomány. Egy címtárhoz számos előfizetés tartozhat, de csak egyetlen bérlő. 
 - **Azure-bérlő azonosítója** – Egy egyedi módszer az Azure-előfizetéseken belüli Azure Active Directory-címtárak azonosítására. 
 - **Felügyeltszolgáltatás-identitás** – Az Azure Key Vault módot kínál a hitelesítő adatok, valamint egyéb kulcsok és titkos kódok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. A felügyeltszolgáltatás-identitás (MSI) segít leegyszerűsíteni ezt a problémát, mivel az Azure-szolgáltatások számára egy automatikusan felügyelt identitást biztosít az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással anélkül végezhet hitelesítést a Key Vaultban vagy bármely, Azure AD-hitelesítést támogató szolgáltatásban, hogy a hitelesítő adatokat a kódban kellene tárolnia. Az MSI-ről további információkat [itt olvashat](../active-directory/managed-service-identity/overview.md).
+
+    ![Az MSI ábrája](./media/key-vault-whatis/msi.png)
 
 ## <a name="key-vault-roles"></a>Key Vault-szerepkörök
 

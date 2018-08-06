@@ -1,54 +1,50 @@
 ---
-title: Jenkins és Azure áttekintése |} Microsoft Docs
-description: Gazdagépen a Jenkins összeállítása és az Azure automation-kiszolgáló központi telepítése, majd az Azure számítási és tárolási erőforrásokat kiterjeszteni a folyamatos integrációt és telepítést (CI/CD) folyamatok.
-services: jenkins
-author: rloutlaw
-manager: justhe
-ms.service: jenkins
-ms.devlang: NA
-ms.topic: article
-ms.workload: na
-ms.date: 08/22/2017
-ms.author: routlaw
-ms.custom: mvc
-ms.openlocfilehash: ca4a6cb886b0453848dc7b29e15de2063878a65d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+title: A Jenkins és az Azure áttekintése | Microsoft Docs
+description: Helyezze üzembe a Jenkins-buildet és az automatizálási kiszolgálót az Azure-ban, majd az Azure számítási és tárolási erőforrásai segítségével bővítse ki a folyamatos integrációs és üzembehelyezési (CI-/CD-) folyamatokat.
+ms.topic: overview
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/25/2018
+ms.openlocfilehash: ecb4ea7aee005cb539910b2cb25f0b84de7ba510
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30832673"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281555"
 ---
-# <a name="azure-and-jenkins"></a>Azure-ra és Jenkins
+# <a name="azure-and-jenkins"></a>Az Azure és a Jenkins
 
-[Jenkins](https://jenkins.io/) folyamatos integrációt és kézbesítési (CI/CD) a szoftver projektek beállításához használt népszerű nyílt forráskódú automation kiszolgáló. A Jenkins központi telepítés az Azure-ban futtatni, vagy bővíteni a meglévő Azure-erőforrások használata Jenkins-konfigurációt. Egyszerűbbé teheti az alkalmazások az Azure-bA CI/CD Jenkins beépülő modulok is érhetők el.
+A [Jenkins](https://jenkins.io/) egy népszerű, nyílt forráskódú automatizálási kiszolgáló, amely a szoftverprojektek folyamatos integrációs és teljesítési (CI-/CD-) folyamatainak beállítására használható. Üzembe helyezhet egy Jenkins üzemi környezetet az Azure-ban, vagy az Azure-erőforrások használatával kibővítheti meglévő Jenkins-konfigurációját. Az Azure-alkalmazások CI-/CD-folyamatainak egyszerűsítésére Jenkins beépülő modulok is használhatók.
 
-A cikkben megismerkedhet az Azure használatával Jenkins, és részletesen leírja a core Azure elérhető szolgáltatások Jenkins felhasználók számára. Ismerkedés az Azure-ban a saját Jenkins kiszolgálóval, tekintse meg a [gyors üzembe helyezés](install-jenkins-solution-template.md).
+Ez a cikk bemutatja az Azure Jenkinsszel való használatának alapjait, és részletesen ismerteti a Jenkins-felhasználók számára rendelkezésre álló főbb Azure-szolgáltatásokat. A saját Jenkins-kiszolgáló Azure-ban való használatának első lépéseit a kapcsolódó [rövid útmutató](install-jenkins-solution-template.md) ismerteti.
 
-## <a name="host-your-jenkins-servers-in-azure"></a>A Jenkins állomáskiszolgáló az Azure-ban
+## <a name="host-your-jenkins-servers-in-azure"></a>Jenkins-kiszolgálók üzemeltetése az Azure-ban
 
-Állomás Jenkins központosíthatja a build automatizálás és a szoftver projektek igények növekedésével a telepítés méretezésére az Azure-ban. Az Azure használatával Jenkins telepítheti:
+A Jenkins Azure-ban való üzemeltetésével központosíthatja a buildek automatizálását, valamint a szoftverprojektek igényeinek megfelelően kibővítheti üzemi környezetét. A következő lehetőségei vannak a Jenkins Azure-ban való üzembe helyezésére:
  
-- [A Jenkins megoldássablonban](install-jenkins-solution-template.md) Azure piactéren.
-- [Az Azure virtuális gépek](/azure/virtual-machines/linux/overview). Tekintse meg a [oktatóanyag](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd) Jenkins példány létrehozása a virtuális gép.
-- Egy Kubernetes fürtön futó [Azure Tárolószolgáltatás](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), tekintse meg a [útmutató](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
+- Az Azure Marketplace-en elérhető [Jenkins-megoldássablonnal](install-jenkins-solution-template.md)
+- [Azure-beli virtuális gépekkel](/azure/virtual-machines/linux/overview) A Jenkins-példány virtuális gépen történő létrehozásának lépéseit lásd az [oktatóanyagban](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd).
+- Az [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) szolgáltatásban futó Kubernetes-fürt esetében lásd a [használati útmutatót](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Figyelheti és kezelheti a használó Azure Jenkins telepítés [Naplóelemzési](/azure/log-analytics/log-analytics-overview) és a [Azure CLI](/cli/azure).
+Az Azure-beli Jenkins üzemi környezet monitorozása és kezelése a [Log Analytics](/azure/log-analytics/log-analytics-overview) és az [Azure CLI](/cli/azure) használatával végezhető el.
 
-## <a name="scale-your-build-automation-on-demand"></a>A build automation az igény szerinti méretezése
+## <a name="scale-your-build-automation-on-demand"></a>A buildautomatizálás igény szerinti skálázása
 
-Build ügynökök hozzáadása a meglévő Jenkins telepítési méretezése a buildek és a feladatok és adatcsatornák növekedését összetettsége a Jenkins build kapacitás. Ezek futtatása ügynökök létrehozása az Azure virtuális gépeken használatával a [Azure VM ügynökök beépülő modul](jenkins-azure-vm-agents.md). Tekintse meg a [oktatóanyag](/azure/jenkins/jenkins-azure-vm-agents) további részleteket.
+Buildügynökök hozzáadásával a buildek számának, illetve a feladatok és folyamatok összetettségének növekedéséhez igazodva skálázhatja a Jenkins-build kapacitását a meglévő Jenkins üzemi környezetben. Azure-beli virtuális gépeken a buildügynököket az [Azure-beli virtuálisgép-ügynökhöz tartozó beépülő modul](jenkins-azure-vm-agents.md) használatával futtathatja. További részleteket az [oktatóanyagban](/azure/jenkins/jenkins-azure-vm-agents) talál.
 
-Egyszer konfigurált egy [Azure szolgáltatás egyszerű](/azure/azure-resource-manager/resource-group-overview), Jenkins feladatok és folyamatok használhatja ezt a hitelesítő adatot:
+Az [Azure-szolgáltatásnévvel](/azure/azure-resource-manager/resource-group-overview) való konfigurálást követően a Jenkins-feladatok és -folyamatok a következőkre használhatják a hitelesítő adatokat:
 
-- Biztonságos helyen tárolja, és archív összetevők létrehozása [Azure Storage](/azure/storage/common/storage-introduction) használatával a [Azure Storage beépülő modul](https://plugins.jenkins.io/windows-azure-storage). Tekintse át a [Jenkins tárolási útmutató](/azure/storage/common/storage-java-jenkins-continuous-integration-solution) további.
-- Kezelése és konfigurálása az Azure-erőforrások a [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline).
+- Buildösszetevők biztonságos tárolása és archiválása az [Azure Storage-ban](/azure/storage/common/storage-introduction) az [Azure Storage beépülő moduljának](https://plugins.jenkins.io/windows-azure-storage) használatával. A további részleteket a [Jenkins-tároló használati útmutatója](/azure/storage/common/storage-java-jenkins-continuous-integration-solution) tartalmazza.
+- Azure-erőforrások kezelése és konfigurálása az [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline) használatával.
 
-## <a name="deploy-your-code-into-azure-services"></a>A kód telepítése az Azure-szolgáltatások
+## <a name="deploy-your-code-into-azure-services"></a>A kód üzembe helyezése Azure-szolgáltatásokban
 
-Az alkalmazások az Azure-bA telepíthető a Jenkins CI/CD folyamatok részeként Jenkins beépülő modulok segítségével. Olyan üzembe [Azure App Service](/azure/app-service/) és [Azure Tárolószolgáltatás](/azure/container-service/kubernetes/) lehetővé teszi, hogy szakaszt, tesztelési, és az alkalmazások kiadás frissítéseket az alkalmazás mögötti infrastruktúra kezelése nélkül.
+A Jenkins beépülő moduljai használatával a Jenkins CI-/CD-folyamatok részeként helyezheti üzembe alkalmazásait az Azure-ban. Az [Azure App Service](/azure/app-service/) és [Azure Container Service](/azure/container-service/kubernetes/) szolgáltatásokban való üzembe helyezés révén az alapul szolgáló infrastruktúra kezelése nélkül készíthet elő, tesztelhet és adhat ki frissítéseket az alkalmazásaihoz.
 
- Bővítmények érhetők el a következő szolgáltatások és környezetben történő központi telepítéséhez:
+ A beépülő modulokkal a következő szolgáltatások és környezetek helyezhetők üzembe:
 
-- [Azure-webalkalmazásban Linux](/azure/app-service/containers/app-service-linux-intro). Tekintse meg a [oktatóanyag](java-deploy-webapp-tutorial.md) a kezdéshez.
-- [Azure-webalkalmazásban](/azure/app-service/app-service-web-overview). Tekintse meg a [útmutató](deploy-Jenkins-app-service-plugin.md) a kezdéshez.
-
+- [Azure Web App on Linux](/azure/app-service/containers/app-service-linux-intro). Az első lépésekhez kapcsolódó információkat az [oktatóanyag](java-deploy-webapp-tutorial.md) tartalmazza.
+- [Azure-webalkalmazás](/azure/app-service/app-service-web-overview). Az első lépésekhez kapcsolódó információkat a [használati útmutató](deploy-Jenkins-app-service-plugin.md) tartalmazza.

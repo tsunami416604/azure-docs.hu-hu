@@ -1,5 +1,5 @@
 ---
-title: Azure Application Gateway URL-alapú tartalom-útválasztás – áttekintés
+title: Azure Application Gateway URL-alapú tartalom-útválasztás áttekintése
 description: Ez a cikk áttekintés nyújt az Application Gateway URL-alapú tartalom-útválasztási lehetőségeiről, az UrlPathMap-konfigurációról és a PathBasedRouting szabályról.
 documentationcenter: na
 services: application-gateway
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: eaecb731d6f64bf7dd15d9a9b11739fd3fbc983e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f706e267675dbb3d5465977157f40824efc96e48
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160545"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389242"
 ---
 # <a name="azure-application-gatewaty-url-path-based-routing-overview"></a>Azure Application Gateway URL-alapú tartalom-útválasztás
 
@@ -29,7 +29,7 @@ Az alábbi példában az alkalmazásátjáró a contoso.com webhelyet szolgálja
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
-A http://contoso.com/video/* iránti kérelmek VideoServerPoolba, míg a http://contoso.com/images/* felé irányuló kérelmek az ImageServerPoolba vannak továbbítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
+A http://contoso.com/video/* URL-hez kapcsolódó kérések a VideoServerPool, a http://contoso.com/images/* URL-hez kapcsolódóak pedig az ImageServerPool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
 
 > [!IMPORTANT]
 > A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.

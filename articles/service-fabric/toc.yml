@@ -187,6 +187,8 @@
               href: service-fabric-dnsservice.md
             - name: Fordított proxy
               href: service-fabric-reverseproxy.md
+            - name: Fordított proxy telepítése és konfigurálása
+              href: service-fabric-reverseproxy-setup.md
             - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Fordítottproxy-diagnosztika

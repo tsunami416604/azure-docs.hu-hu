@@ -1,88 +1,85 @@
 ---
-title: A webalkalmazások Azure telepítéséhez használható Jenkins |} Microsoft Docs
-description: Beállíthat folyamatos integrációt a Githubról az Azure App Service a Jenkins és Docker használó Java-webalkalmazások számára.
-author: rloutlaw
-manager: douge
-ms.service: jenkins
-ms.search.scope: ''
-ms.devlang: java
-ms.topic: article
-ms.workload: web
-ms.date: 08/02/2017
-ms.author: routlaw
-ms.custom: Jenkins, devcenter
-ms.openlocfilehash: b2606acba341d4cfbc16314048e134fa30ff8606
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+title: Webalkalmazások üzembe helyezése az Azure-ban a Jenkins használatával
+description: A Jenkins és a Docker használatával beállíthatja Java-webalkalmazásai folyamatos integrációját a GitHubról az Azure App Service-be.
+ms.topic: tutorial
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: e880d84c3ae0fd23c11bb9b30733544bd5f28872
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852999"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389942"
 ---
-# <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Folyamatos integrációt és az Azure App Service Jenkins az üzembe helyezés beállítása
+# <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Az Azure App Service-be történő folyamatos integráció és üzembe helyezés beállítása a Jenkinsszel
 
-Ez az oktatóanyag állít be a folyamatos integrációt és telepítését (CI/CD) minta Java-webalkalmazás fejlesztése során a [rugó rendszerindító](http://projects.spring.io/spring-boot/) keretrendszer [Azure App Service Web Apps Linux](/azure/app-service/containers/app-service-linux-intro) Jenkins használatával.
+Ez az oktatóanyagban beállítja egy [Spring Boot](http://projects.spring.io/spring-boot/) keretrendszerben fejlesztett minta Java-webalkalmazás folyamatos integrációját és üzembe helyezését (CI/CD) az [Azure App Service Web App on Linuxon](/azure/app-service/containers/app-service-linux-intro) a Jenkins használatával.
 
-Ebben az oktatóanyagban a következő feladatokat kell elvégezni:
+Az oktatóanyagban a következő feladatokat fogja elvégezni:
 
 > [!div class="checklist"]
-> * Telepítse a Jenkins beépülő modulok az Azure App Service üzembe helyezéséhez szükséges.
-> * Adja meg egy Docker-lemezképet rögzíthet a GitHub-tárház létrehozásához, amikor egy új véglegesítési fejlesztőre Jenkins feladat.
-> * Adja meg egy új Azure Web Apps Linux rendszerhez készült, és konfigurálja úgy, hogy az Azure-tárolóba beállításjegyzék leküldött Docker-lemezképek központi telepítése.
-> * Konfigurálja az Azure App Service Jenkins beépülő modult.
-> * A mintaalkalmazás telepítése az Azure App Service manuális build a.
-> * Indítás, Jenkins build, és frissítheti a webalkalmazását GitHub módosítások küldésével.
+> * Az Azure App Service-ben való üzembe helyezéshez szükséges Jenkins beépülő modulok telepítése.
+> * Jenkins-feladat definiálása a Docker-rendszerképek GitHub-adattárból történő létrehozására az új véglegesítések leküldésekor.
+> * Új Azure Web App for Linux definiálása, majd konfigurálása az Azure Container Registry-tárolóadatbázisba leküldött Docker-rendszerképek üzembe helyezésére.
+> * Az Azure App Service Jenkins beépülő modul konfigurálása.
+> * A mintaalkalmazás üzembe helyezése az Azure App Service-ben egy manuális build használatával.
+> * Jenkins-build aktiválása, majd a webalkalmazás frissítése a változások GitHubba történő leküldésével.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* [Jenkins](https://jenkins.io/) konfigurált JDK és Maven eszközökkel. Ha egy Jenkins rendszer nincs, hozzon létre egyet most az Azure-ban a [Jenkins megoldássablonban](/azure/jenkins/install-jenkins-solution-template).
+* [Jenkins](https://jenkins.io/) konfigurált JDK-val és Maven-eszközökkel. Ha még nincs Jenkins-rendszere, hozzon létre egyet most az Azure-ban a [Jenkins-megoldássablonból](/azure/jenkins/install-jenkins-solution-template).
 * Egy [GitHub](https://github.com)-fiók.
-* [Az Azure CLI 2.0](/cli/azure), a helyi parancssorból vagy a a [Azure Cloud rendszerhéj](/azure/cloud-shell/overview)
+* [Azure CLI 2.0](/cli/azure) a helyi parancssorban vagy az [Azure Cloud Shellben](/azure/cloud-shell/overview).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="install-jenkins-plug-ins"></a>Jenkins beépülő modulok telepítése
+## <a name="install-jenkins-plug-ins"></a>A Jenkins beépülő modulok telepítése
 
-1. Nyisson meg egy webböngészőt a Jenkins webkonzolhoz, és válassza ki **kezelése Jenkins** a bal oldali menüből, majd válassza ki **kezelése beépülő modulok**.
-2. Válassza ki a **elérhető** fülre.
-3. Keresse meg, és jelölje be a következő beépülő modulok mellett:   
+1. Nyissa meg egy webböngészőben a Jenkins-webkonzolt, és válassza a bal oldali menü **Manage Jenkins** (Jenkins kezelése) elemét, majd a **Manage Plugins** (Beépülő modulok kezelése) lehetőséget.
+2. Válassza az **Available** (Elérhető) lapot.
+3. Keresse meg a következő beépülő modulokat, és jelölje be a mellettük található jelölőnégyzetet:   
 
-    - [Azure App Service Plug-in](https://plugins.jenkins.io/azure-app-service)
-    - [GitHub Branch Source Plug-in](https://plugins.jenkins.io/github-branch-source)
+    - [Azure App Service Plug-in](https://plugins.jenkins.io/azure-app-service) (Azure App Service beépülő modul)
+    - [GitHub Branch Source Plug-in](https://plugins.jenkins.io/github-branch-source) (GitHub Branch Source beépülő modul)
 
-    Ha a beépülő modulok nem jelennek meg, győződjön meg arról, még ellenőrzésével nincsenek telepítve a **telepített** fülre.
+    Ha a beépülő modulok nem jelennek meg, az **Installed** (Telepített) lapon ellenőrizze, hogy nincsenek-e már telepítve.
 
-1. Válassza ki **letöltése és telepítése az újraindítást követően** Jenkins konfigurációs a beépülő modulok engedélyezése.
+1. A **Download now and install after restart** (Letöltés most, és telepítés újraindítás után) jelölőnégyzet bejelölésével engedélyezze a beépülő modulokat a Jenkins konfigurációjában.
 
-## <a name="configure-github-and-jenkins"></a>GitHub és Jenkins konfigurálása
+## <a name="configure-github-and-jenkins"></a>A GitHub és a Jenkins konfigurálása
 
-Jenkins beállítása fogadására [GitHub webhook](https://developer.github.com/webhooks/) ha vannak új véglegesíti leküldve egy tárház fiókjában.
+Állítsa be a Jenkinst, hogy fogadja a [GitHub-webhookokat](https://developer.github.com/webhooks/), amikor új véglegesítéseket küld le a fiókjában lévő adattárakba.
 
-1. Válassza ki **Jenkins kezelése**, majd **rendszer konfigurálása**. Az a **GitHub** területen győződjön meg arról, hogy **hurkok kezelése** van kiválasztva, és válassza ki **kezelése a Githubon használható további műveletek** válassza **Convert bejelentkezési és jelszó a token**.
-2. Válassza ki a **a felhasználónevet és jelszót** választógomb, és adja meg a GitHub-felhasználónevét és jelszavát. Válassza ki **token hitelesítő adatok létrehozása** hozzon létre egy új [GitHub személyes hozzáférési jogkivonat](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).   
-   ![GitHub PAT létre felhasználónevet és jelszót](media/jenkins-java-quickstart/create_github_credentials.png)
-3.  Válassza ki az újonnan létrehozott jogkivonatot a **hitelesítő adatok** legördülő listán a GitHub-kiszolgálók a konfigurációban. Válassza ki **tesztkapcsolat** ellenőrzése, hogy működik-e a hitelesítés.   
-   ![A GitHub kapcsolat ellenőrzése, ha PAT már konfigurálva van](media/jenkins-java-quickstart/verify_github_connection.png)
+1. Válassza a **Manage Jenkins** (Jenkins kezelése), majd a **Configure System** (Rendszer konfigurálása) lehetőséget. A **GitHub** szakaszban győződjön meg róla, hogy a **Manage hooks** (Hookok kezelése) beállítás be van jelölve, majd válassza a **Manage additional GitHub actions** (További GitHub-műveletek kezelése), majd a **Convert login and password to token** (Bejelentkezési név és jelszó konvertálása jogkivonattá) lehetőséget.
+2. Jelölje be a **From login and password** (Bejelentkezési névből és jelszóból) választógombot, és adja meg GitHub-felhasználónevét és -jelszavát. A **Create token credentials** (Jogkivonat hitelesítő adatainak létrehozása) elemre kattintva hozzon létre egy új [GitHub személyes hozzáférési jogkivonatot](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).   
+   ![GitHub személyes hozzáférési jogkivonat (PAT) létrehozása bejelentkezési név és jelszó alapján](media/jenkins-java-quickstart/create_github_credentials.png)
+3.  Válassza ki az újonnan létrehozott jogkivonatot a **Credentials** (Hitelesítő adatok) legördülő menüben a GitHub-kiszolgálók konfigurációjában. Kattintson a **Test connection** (Kapcsolat tesztelése) elemre a hitelesítés működésének ellenőrzéséhez.   
+   ![GitHub-kapcsolat ellenőrzése a személyes hozzáférési jogkivonat konfigurálása után](media/jenkins-java-quickstart/verify_github_connection.png)
 
 > [!NOTE]
-> Ha a GitHub-fiók kéttényezős hitelesítést, a jogkivonat létrehozása a Githubon, és Jenkins a használatára konfigurálja. Tekintse át a [Jenkins GitHub beépülő modul](https://wiki.jenkins.io/display/JENKINS/Github+Plugin) teljes dokumentációjában.
+> Ha a GitHub-fiókon engedélyezve van a kéttényezős hitelesítés, hozza létre a jogkivonatot a GitHubon, és konfigurálja a Jenkinst a használatára. További információért tekintse át a [Jenkins GitHub beépülő moduljának](https://wiki.jenkins.io/display/JENKINS/Github+Plugin) dokumentációját.
 
-## <a name="fork-the-sample-repo-and-create-a-jenkins-job"></a>A minta-tárház elágaztatásáról és Jenkins feladat létrehozása 
+## <a name="fork-the-sample-repo-and-create-a-jenkins-job"></a>A mintaadattár elágaztatása és egy Jenkins-feladat létrehozása 
 
-1. Nyissa meg a [rugó rendszerindító minta alkalmazás tárház](https://github.com/spring-guides/gs-spring-boot-docker) kiválasztásával a saját GitHub-fiók elágaztatásáról és **elágazás** jobb felső sarkában található.   
-    ![Elágazás a Githubról](media/jenkins-java-quickstart/fork_github_repo.png)
-1. A Jenkins webkonzol, válassza ki **új elem**, adjon neki nevet **MyJavaApp**, jelölje be **Freestyle projekt**, majd jelölje be **OK**.   
-    ![Új Jenkins Freestyle projekt](media/jenkins-java-quickstart/jenkins_freestyle.png)
-2. Az a **általános** szakaszban jelölje be **GitHub** projektre, és írja be a villás tárház URL-CÍMÉT, például a https://github.com/raisa/gs-spring-boot-docker
-3. A a **kód felügyeleti forrás** szakaszban jelölje be **Git**, adja meg a villás tárház `.git` https://github.com/raisa/gs-spring-boot-docker.git például URL-címe
+1. Nyissa meg a [Spring Boot mintaalkalmazás adattárát](https://github.com/spring-guides/gs-spring-boot-docker), és ágaztassa el a saját GitHub-fiókjába a jobb felső sarokban a **Fork** (Elágaztatás) gombra kattintva.   
+    ![Elágaztatás a GitHubról](media/jenkins-java-quickstart/fork_github_repo.png)
+1. A Jenkins webkonzolon kattintson a **New Item** (Új elem) gombra, adja meg a **MyJavaApp** nevet, válassza a **Freestyle project** (Szabad stílusú projekt) lehetőséget, majd kattintson az **OK** gombra.   
+    ![Új szabad stílusú Jenkins-projekt](media/jenkins-java-quickstart/jenkins_freestyle.png)
+2. A **General** (Általános) szakaszban válassza a **GitHub project** lehetőséget, majd adja meg az elágaztatott adattár URL-címét, például: https://github.com/raisa/gs-spring-boot-docker
+3. A **Source code management** (Forráskódkezelés) szakaszban válassza a **Git** elemet, majd adja meg az elágaztatott adattár `.git` URL-címét, például: https://github.com/raisa/gs-spring-boot-docker.git
 4. A **Build Triggers** (Eseményindítók létrehozása) szakaszban válassza a **GitHub hook trigger for GITScm polling** (GitHub beavatkozási pont eseményindító GITScm lekérdezés esetén) lehetőséget.
-5. Alatt a **Build** szakaszban jelölje be **Hozzáadás összeállítása lépés** válassza **meghívása a legfelső szintű Maven célok**. Adja meg `package` a a **célok** mező.
-6. Kattintson a **Mentés** gombra. Tesztelheti a feladat választásával **Build most** a projekt lapról.
+5. A **Build** (Buildelés) szakaszban válassza az **Add build step** (Buildelési lépés hozzáadása), majd az **Invoke top-level Maven targets** (Felső szintű Maven-célok meghívása) lehetőséget. Írja be a `package` szöveget a **Goals** (Célok) mezőbe.
+6. Kattintson a **Mentés** gombra. A feladat teszteléséhez kattintson a **Build Now** (Buildelés most) gombra a projekt lapján.
 
 ## <a name="configure-azure-app-service"></a>Az Azure App Service konfigurálása 
 
-1. Az Azure parancssori felület használatával vagy [felhő rendszerhéj](/azure/cloud-shell/overview), hozzon létre egy új [Linux webalkalmazás](/azure/app-service/containers/app-service-linux-intro). Ebben az oktatóanyagban a webes alkalmazás neve `myJavaApp`, de szeretné használni a saját alkalmazás egyedi nevét.
+1. Az Azure CLI vagy a [Cloud Shell](/azure/cloud-shell/overview) használatával hozzon létre egy új [Web App on Linux-alkalmazást](/azure/app-service/containers/app-service-linux-intro). Az oktatóanyagban a `myJavaApp` nevet használjuk a webalkalmazáshoz, de a saját alkalmazásához egyedi nevet kell használnia.
    
     ```azurecli-interactive
     az group create --name myResourceGroupJenkins --location westus
@@ -90,12 +87,12 @@ Jenkins beállítása fogadására [GitHub webhook](https://developer.github.com
     az webapp create --name myJavaApp --resource-group myResourceGroupJenkins --plan myLinuxAppServicePlan --runtime "java|1.8|Tomcat|8.5"
     ```
 
-2. Hozzon létre egy [Azure tároló beállításjegyzék](/azure/container-registry/container-registry-intro) Jenkins által a Docker-lemezképek tárolásához. A tároló neve ebben az oktatóanyagban használt van `jenkinsregistry`, de szeretné használni a saját tároló beállításjegyzék egyedi nevét. 
+2. Hozzon létre egy [Azure Container Registry](/azure/container-registry/container-registry-intro)-beli tárolóregisztrációs adatbázist a Jenkins által létrehozott Docker–rendszerképek tárolásához. Az oktatóanyagban a `jenkinsregistry` nevet használjuk a tárolóregisztrációs adatbázishoz, de a saját adatbázisához egy egyedi nevet kell használnia. 
 
     ```azurecli-interactive
     az acr create --name jenkinsregistry --resource-group myResourceGroupJenkins --sku Basic --admin-enabled
     ```
-3. A webalkalmazás futtatásához a tároló beállításjegyzék leküldött Docker képek konfigurálása, és adja meg, hogy a tárolóban futó alkalmazást a kéréseket a 8080-as porton figyeli-e.   
+3. Konfigurálja a webalkalmazást, hogy futtassa a tárolóregisztrációs adatbázisba leküldött Docker-rendszerképeket, és adja meg, hogy a tárolóban futó alkalmazás a 8080-as porton figyelje a kéréseket.   
 
     ```azurecli-interactive
     az webapp config container set -c jenkinsregistry/webapp --resource-group myResourceGroupJenkins --name myJavaApp
@@ -104,11 +101,11 @@ Jenkins beállítása fogadására [GitHub webhook](https://developer.github.com
 
 ## <a name="configure-the-azure-app-service-jenkins-plug-in"></a>Az Azure App Service Jenkins beépülő modul konfigurálása
 
-1. A Jenkins webkonzol, válassza ki a **MyJavaApp** létrehozott feladat, és válassza ki **konfigurálása** a bal oldali a lap a.
-2. Görgessen le a **utáni műveletek**, majd jelölje be **utáni műveletének hozzáadása** válassza **közzététele az Azure Web Apps**.
-3. A **Azure profil konfigurációs**, jelölje be **Hozzáadás** mellett **Azure hitelesítő adatait** válassza **Jenkins**.
-4. Az a **adja hozzá a hitelesítő adatok** párbeszédablakban válassza **Microsoft Azure szolgáltatás egyszerű** a a **jellegű** legördülő.
-5. Hozzon létre egy Active Directory szolgáltatás egyszerű az Azure parancssori felületen vagy [felhő rendszerhéj](/azure/cloud-shell/overview).
+1. A Jenkins-webkonzolon válassza ki a létrehozott **MyJavaApp** feladatot, majd válassza a **Configure** (Konfigurálás) lehetőséget a lap bal oldalán.
+2. Görgessen le a **Post-build Actions** (Buildelés utáni műveletek) területig, és válasza az **Add post-build action** (Buildelés utáni művelet hozzáadása), majd a **Publish an Azure Web App** (Azure Web App közzététele) lehetőséget.
+3. Az **Azure Profile Configuration** (Azure-profil konfigurálása) területen kattintson az **Add** (Hozzáadás) elemre az **Azure Credentials** (Azure-beli hitelesítő adatok) elem mellett, majd válassza a **Jenkins**lehetőséget.
+4. Az **Add Credentials** (Hitelesítő adatok hozzáadása) párbeszédpanelen válassza a **Microsoft Azure Service Principal** (Microsoft Azure-szolgáltatásnév) lehetőséget a **Kind** (Altípus) legördülő menüben.
+5. Hozzon létre egy Active Directory-szolgáltatásnevet az Azure CLI vagy a [Cloud Shell](/azure/cloud-shell/overview) használatával.
     
     ```azurecli-interactive
     az ad sp create-for-rbac --name jenkins_sp --password secure_password
@@ -123,7 +120,7 @@ Jenkins beállítása fogadására [GitHub webhook](https://developer.github.com
         "tenant": "CCCCCCCC-CCCC-CCCC-CCCCCCCCCCC"
     }
     ```
-6. Adja meg a hitelesítő adatokat az egyszerű szolgáltatásnév az a **adja hozzá a hitelesítő adatok** párbeszédpanel. Ha nem ismeri az Azure-előfizetése Azonosítóját, a parancssori lekérdezhető:
+6. Adja meg a szolgáltatásnév hitelesítő adatait az **Add credentials** (Hitelesítő adatok hozzáadása) párbeszédpanelen. Ha nem ismeri az Azure-előfizetés azonosítóját, lekérdezheti a parancssori felületen:
      
      ```azurecli-interactive
      az account list
@@ -143,46 +140,49 @@ Jenkins beállítása fogadására [GitHub webhook](https://developer.github.com
             }
      ```
 
-    ![Az Azure szolgáltatás egyszerű konfigurálása](media/jenkins-java-quickstart/azure_service_principal.png)
-6. Ellenőrizze az egyszerű szolgáltatás végzi a hitelesítést Azure kiválasztásával **ellenőrizze a szolgáltatás egyszerű**. 
-7. Válassza ki **Hozzáadás** mentheti a hitelesítő adatait.
-8. Válassza ki a szolgáltatás egyszerű hitelesítő adatait az előzőekben adott hozzá a **Azure hitelesítő adatok** legördülő Ha áll vissza a **közzététele az Azure Web Apps** konfigurációs.
-9. A **Alkalmazáskonfiguráció**, válassza ki az erőforráscsoport és a webes alkalmazás nevét a legördülő listán.
-10. Válassza ki a **keresztül Docker közzététel** választógombot.
-11. Adja meg `complete/Dockerfile` a **Dockerfile elérési**.
-12. Adja meg `https://jenkinsregistry.azurecr.io` a a **Docker beállításjegyzék URL-cím** mező.
-13. Válassza ki **Hozzáadás** melletti **beállításjegyzék hitelesítő adatok**. 
-14. Adja meg a rendszergazda felhasználóneve a létrehozott Azure-tároló beállításjegyzék a **felhasználónév**.
-15. Adja meg a jelszót az Azure-tárolóba beállításjegyzék a **jelszó** mező. Az Azure portálról vagy a következő parancssori parancsot kaphatunk a felhasználónevét és jelszavát:
+    ![Azure-szolgáltatásnév konfigurálása](media/jenkins-java-quickstart/azure_service_principal.png)
+6. A **Verify Service Principal** (Szolgáltatásnév ellenőrzése) elem kiválasztásával ellenőrizze, hogy a szolgáltatásnév hitelesíthető-e az Azure-ban. 
+7. A hitelesítő adatok mentéséhez válassza az **Add** (Hozzáadás) lehetőséget.
+8. A **Publish an Azure Web App** (Azure-webalkalmazás közzététele) konfigurációra visszalépve válassza ki az imént hozzáadott szolgáltatásnév-hitelesítő adatokat az **Azure Credentials** (Azure-beli hitelesítő adatok) legördülő menüben.
+9. Az **App Configuration** (Alkalmazáskonfiguráció) felületen válassza ki az erőforráscsoport és a webalkalmazás nevét a legördülő menüben.
+10. Kattintson a **Publish via Docker** (Közzététel a Dockeren keresztül) választógombra.
+11. A **Dockerfile path** (Docker-fájl elérési útja) mezőben adja meg a `complete/Dockerfile` útvonalat.
+12. A **Docker registry URL** (Docker-jegyzék URL-címe) mezőben adja meg a `https://jenkinsregistry.azurecr.io` címet.
+13. Kattintson a **Registry Credentials** (Regisztrációs adatbázis hitelesítő adatai) elem melletti **Add** (Hozzáadás) gombra. 
+14. A **Username** (Felhasználónév) mezőben adja meg az Azure Container Registry-adatbázishoz létrehozott rendszergazdai felhasználónevét.
+15. A **Password** (Jelszó) mezőben adja meg az Azure Container Registry-adatbázis jelszavát. A felhasználónevet és a jelszót az Azure Portalon vagy a következő parancssori felületi paranccsal kérheti le:
 
     ```azurecli-interactive
     az acr credential show -n jenkinsregistry
     ```
-    ![Adja hozzá a tároló beállításjegyzék hitelesítő adatokat](media/jenkins-java-quickstart/enter_acr_credentials.png)
-15. Válassza ki **Hozzáadás** a hitelesítő adatok mentése.
-16. Válassza ki az újonnan létrehozott hitelesítő a **beállításjegyzék hitelesítő adatok** a legördülő lista a **Alkalmazáskonfiguráció** a panel a **közzététele az Azure Web Apps**. A befejezett utáni művelet a következő kép kell hasonlítania:   
-    ![POST build művelet konfigurációját az Azure App Service telepítése](media/jenkins-java-quickstart/appservice_plugin_configuration.png)
-17. Válassza ki **mentése** a feladat konfigurációjának mentéséhez.
+    ![A tárolóregisztrációs adatbázis hitelesítő adatainak hozzáadása](media/jenkins-java-quickstart/enter_acr_credentials.png)
+15. A hitelesítő adatok mentéséhez kattintson az **Add** (Hozzáadás) gombra.
+16. A **Publish an Azure Web App** (Azure Web App közzététele) felület **App Configuration** (Alkalmazáskonfiguráció) paneljén válassza ki az újonnan létrehozott hitelesítő adatokat a **Registry credentials** (Regisztrációs adatbázis hitelesítő adatai) legördülő menüben. Az elkészült build utáni művelet a következő képhez hasonlóan néz ki:   
+    ![Buildelés utáni művelet konfigurációja az Azure App Service-ben való üzembe helyezéshez](media/jenkins-java-quickstart/appservice_plugin_configuration.png)
+17. A feladat konfigurációjának mentéséhez válassza a **Mentés** lehetőséget.
 
-## <a name="deploy-the-app-from-github"></a>Telepítse az alkalmazást a Githubon
+## <a name="deploy-the-app-from-github"></a>Az alkalmazás üzembe helyezése a GitHubból
 
-1. Válassza ki a Jenkins projekt **Build most** mintaalkalmazás telepítése az Azure-bA.
-2. A létrehozás után az alkalmazás az élő Azure fennállt közzétételi URL-címen, például http://myjavaapp.azurewebsites.net.   
-   ![A telepített alkalmazás megtekintése az Azure-on](media/jenkins-java-quickstart/hello_docker_world_unedited.png)
+1. A Jenkins-projektben válassza a **Build Now** (Buildelés most) lehetőséget a mintaalkalmazás Azure-ban való üzembe helyezéséhez.
+2. A buildelés befejezése után az alkalmazás a közzétételi URL-címén fut az Azure-ban, például: http://myjavaapp.azurewebsites.net.   
+   ![Az üzembe helyezett alkalmazás megtekintése az Azure-ban](media/jenkins-java-quickstart/hello_docker_world_unedited.png)
 
-## <a name="push-changes-and-redeploy"></a>Módosításokat, és telepítse újra
+## <a name="push-changes-and-redeploy"></a>Módosítások leküldése és ismételt üzembe helyezés
 
-1. A Github elágazás a keresse meg a webes `complete/src/main/java/Hello/Application.java`. Válassza ki a **a fájl szerkesztése** a hivatkozás leválasztása a GitHub-felület jobb oldalán.
-2. Az alábbi módosítást a `home()` metódust, és aztán a Módosítás gombra a tárház főágába.
+1. Az elágaztatott GitHub-ágról lépjen a weben a következő helyre: `complete/src/main/java/Hello/Application.java`. Válassza **A fájl szerkesztése** hivatkozást a GitHub-felület jobb oldalán.
+2. Végezze el a következő módosítást a `home()` metóduson, és véglegesítse az adattár fő ágában.
    
     ```java
     return "Hello Docker World on Azure";
     ```
-3. Egy új build Jenkins, az új véglegesítési által indított indítja el a `master` a tárház főágába. Miután befejeződött, töltse be újra az alkalmazást az Azure-on.     
-      ![A telepített alkalmazás megtekintése az Azure-on](media/jenkins-java-quickstart/hello_docker_world.png)
-  
+3. A Jenkinsben elindul egy új build, amit az adattár `master` ágán végrehajtott új véglegesítés vált ki. Miután ez befejeződött, töltse újra az alkalmazást az Azure-ban.     
+      ![Az üzembe helyezett alkalmazás megtekintése az Azure-ban](media/jenkins-java-quickstart/hello_docker_world.png)
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>A Jenkins beépülő modul hibáinak elhárítása
+
+Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
+
 ## <a name="next-steps"></a>További lépések
 
-- [Használja az Azure virtuális gépeken, ügynökök létrehozása](/azure/jenkins/jenkins-azure-vm-agents)
-- [A feladatok és az adatcsatorna esetén, amelyben az Azure CLI-erőforrások kezelése](/azure/jenkins/execute-cli-jenkins-pipeline)
- 
+> [!div class="nextstepaction"]
+> [Azure-beli virtuális gépek buildügynökként való használata](/azure/jenkins/jenkins-azure-vm-agents)

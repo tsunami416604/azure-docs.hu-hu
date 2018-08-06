@@ -16,29 +16,29 @@ ms.component: compliance-reports
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9b594360bc760fa9eec8ab9900c3aadcb10e9db6
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0d88aef46761e8c7d8217f04befec88816587c03
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39240108"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358266"
 ---
-# <a name="azure-active-directory-activity-logs-in-azure-monitor-preview"></a>Azure Active Directory-tevékenységnaplók az Azure Monitorban (előzetes verzió)
+# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-tevékenységnaplók az Azure Monitorban (előzetes verzió)
 
-Mostantól az Azure AD-tevékenységnaplókat az Azure Monitor használatával átirányíthatja saját tárfiókjába vagy az Event Hubsba is. Az Azure Monitorban nyilvános előzetes verzióban elérhető Azure Active Directory-naplókezelési szolgáltatás a következő képességeket biztosítja:
+Mostantól az Azure Active Directory (Azure AD)-tevékenységnaplókat az Azure Monitor használatával átirányíthatja saját tárfiókjába vagy egy eseményközpontba is. Az Azure Monitorban nyilvános előzetes verzióban elérhető Azure Active Directory-naplókezelési szolgáltatás a következő képességeket biztosítja:
 
 * Az auditnaplóit egy Azure-tárfiókba archiválhatja, így hosszabb ideig őrizheti meg az adatokat.
-* Az auditnaplókat átstreamelheti egy Azure Event Hubba, ahol népszerű SIEM-eszközök (például a Splunk vagy a QRadar) használatával elemezheti őket.
-* Az auditnaplókat eseményközpontba streamelve integrálhatja azokat saját egyéni naplókezelő megoldásaival is.
+* Az auditnaplókat streamelheti egy Azure-eseményközpontba, ahol népszerű Biztonságiadat- és eseménykezelés (SIEM) eszközök (például a Splunk vagy a QRadar) használatával elemezheti őket.
+* Az auditnaplókat egy eseményközpontba streamelve integrálhatja saját egyéni naplókezelő megoldásaival is.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>Támogatott jelentések
 
-Ezzel a szolgáltatással a tevékenységnaplókat és a bejelentkezési tevékenységnaplókat átirányíthatja Azure-tárfiókjába, az Event Hubsba vagy valamilyen egyéni megoldásba. 
+Ezzel a szolgáltatással a tevékenységnaplókat és a bejelentkezési tevékenységnaplókat átirányíthatja Azure-tárfiókjába, egy eseményközpontba vagy valamilyen egyéni megoldásba. 
 
-* **Naplók**: A [naplók tevékenységjelentés](active-directory-reporting-activity-audit-logs.md) hozzáférést nyújt a bérlőn elvégzett összes feladat előzményeihez.
-* **Bejelentkezések**: A [bejelentkezések tevékenységjelentéssel](active-directory-reporting-activity-sign-ins.md) meghatározhatja, hogy ki hajtotta végre a naplók jelentés által jelentett feladatokat.
+* **Auditnaplók**: Az [auditnaplók tevékenységjelentés](active-directory-reporting-activity-audit-logs.md) hozzáférést nyújt a bérlőn elvégzett összes feladat előzményeihez.
+* **Bejelentkezési naplók**: A [bejelentkezések tevékenységjelentéssel](active-directory-reporting-activity-sign-ins.md) meghatározhatja, hogy ki hajtotta végre az auditnaplók által jelentett feladatokat.
 
 > [!NOTE]
 > A B2C-hez kapcsolódó audit- és bejelentkezési tevékenységnaplók jelenleg nem támogatottak.
@@ -51,13 +51,13 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Azure-előfizetés. Ha nincs Azure-előfizetése, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 * Azure AD Ingyenes, Alapszintű, Prémium 1 vagy Prémium 2 [licenc](https://azure.microsoft.com/pricing/details/active-directory/) az Azure AD-naplók eléréséhez az Azure Portalon. 
 
-Attól függően, hová szeretné irányítani a naplózási adatokat, a következők valamelyikére is szüksége lesz:
+Attól függően, hogy hová szeretné irányítani a naplózási adatokat, a következők valamelyikére is szüksége lesz:
 
-* Egy Azure-tárfiók, amelyen *ListKeys* jogosultsággal rendelkezik. Azt javasoljuk, hogy általános tárfiókot használjon, ne blobtárfiókot. A tárfiók díjszabásával kapcsolatban lásd az [Azure Storage-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/?service=storage). 
-* Egy Azure Event Hubs-névtér a külső megoldásokkal való integrációhoz.
+* Egy Azure Storage-fiók, amelyen *ListKeys* jogosultsággal rendelkezik. Azt javasoljuk, hogy általános tárfiókot használjon, ne Blob Storage-fiókot. A tárolás díjszabásával kapcsolatban lásd az [Azure Storage-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/?service=storage). 
+* Azure Event Hubs-névtér a külső megoldásokkal való integrációhoz.
 
 > [!NOTE]
-> Az Azure AD-bérlő *globális* vagy *biztonsági rendszergazdájának* kell lennie ahhoz, hogy hozzáférhessen az Azure AD-tevékenységnaplókhoz.
+> Az Azure AD-tevékenységnaplókhoz való hozzáféréshez *globális* vagy *biztonsági rendszergazdának* kell lennie az Azure AD-bérlőn.
 >
 
 ## <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
@@ -66,84 +66,88 @@ Ha már rendelkezik Azure AD-licenccel, egy Azure-előfizetésre lesz szüksége
 
 ### <a name="storage-size-for-activity-logs"></a>Tevékenységnaplók tárterületmérete
 
-Minden auditnapló-esemény körülbelül 2 KB adattárhelyet foglal el. Tehát egy 100 000 felhasználót számláló bérlőhöz, amely naponta körülbelül 1,5 millió eseményt hoz létre, hozzávetőleg napi 3 GB adattárhelyre lesz szüksége. Mivel az írási műveletek hozzávetőleg 5 perces kötegekben történnek, havonta várhatóan körülbelül 9000 írási művelettel számolhat. Az alábbi táblázat egy hozzávetőleges költségbecslést tartalmaz a bérlő méretének függvényében egy általános célú v2-es tárfiókra az USA nyugati régiójában, legalább egyéves megőrzéssel. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/details/storage/blobs/) használatával ennél pontosabb becslést is készíthet az alkalmazása várható adatmennyiségéről. Minden auditnapló-esemény körülbelül 2 KB adattárhelyet foglal el. Tehát egy 100 000 felhasználót számláló bérlőhöz, amely naponta körülbelül 1,5 millió eseményt hoz létre, hozzávetőleg napi 3 GB adattárhelyre lesz szüksége. Mivel az írási műveletek hozzávetőleg 5 perces kötegekben történnek, havonta várhatóan körülbelül 9000 írási művelettel számolhat. Az alábbi táblázat egy hozzávetőleges költségbecslést tartalmaz a bérlő méretének függvényében egy általános célú v2-es tárfiókra az USA nyugati régiójában, legalább egyéves megőrzéssel. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/details/storage/blobs/) használatával ennél pontosabb becslést is készíthet az alkalmazása várható adatmennyiségéről. 
+Minden auditnapló-esemény körülbelül 2 KB adattárhelyet foglal el. Egy 100 000 felhasználót számláló bérlőhöz, amely naponta körülbelül 1,5 millió eseményt hoz létre, hozzávetőleg napi 3 GB adattárhelyre lesz szüksége. Mivel az írási műveletek hozzávetőleg ötperces kötegekben történnek, havonta várhatóan körülbelül 9000 írási művelettel számolhat. 
 
-| Naplókategória | Felhasználók száma | Események száma naponta | Hozzávetőleges havi adatmennyiség | Hozzávetőleges havi költség | Hozzávetőleges éves költség |
+Az alábbi táblázat tartalmaz egy költségbecslést a bérlő méretének függvényében egy általános célú v2-es tárfiókra az USA nyugati régiójában, legalább egyéves megőrzéssel. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/details/storage/blobs/) használatával ennél pontosabb becslést is készíthet az alkalmazása várható adatmennyiségéről. 
+
+| Naplókategória | Felhasználók száma | Napi események | Havi adatmennyiség (becsült) | Havi költség (becsült) | Éves költség (becsült) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Naplózás | 100 000 | 1,5 millió | 90 GB | 1,93 dollár | 23,12 dollár |
-| Naplózás | 1000 | 15 000 | 900 MB | 0,02 dollár | 0,24 dollár |
-| Bejelentkezések | 1000 | 34 800 | 4 GB | 0,13 dollár | 1,56 dollár |
-| Bejelentkezések | 100 000 | 15 millió | 1,7 TB | 35,41 dollár | 424,92 dollár | 
+| Naplózás | 100 000 | 1,5&nbsp;millió | 90 GB | 1,93 dollár | 23,12 dollár |
+| Naplózás | 1,000 | 15 000 | 900 MB | 0,02 dollár | 0,24 dollár |
+| Bejelentkezések | 1,000 | 34 800 | 4 GB | 0,13 dollár | 1,56 dollár |
+| Bejelentkezések | 100 000 | 15&nbsp;millió | 1,7 TB | 35,41 dollár | 424,92 dollár | 
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>Tevékenységnaplók eseményközpont-üzenetei
 
 A rendszer az eseményeket körülbelül ötperces intervallumokba kötegeli, majd egyetlen üzenetben küldi el, amely az adott időablakba tartozó összes eseményt tartalmazza. Az eseményközpontban az egyes üzenetek mérete legfeljebb 256 KB lehet, és ha az adott időablakba tartozó üzenetek összesített mérete meghaladja ezt a mennyiséget, a rendszer több üzenetet küld. 
 
-Például egy több mint 100 000 felhasználót számláló bérlőn általában körülbelül 18 esemény történik másodpercenként, ami 5 percenként 5400 eseményt jelent. Mivel az auditnaplók eseményenként nagyjából 2 KB méretűek, ez összesen 10,8 MB adatot jelent, tehát az adott 5 perces időablakban a rendszer 43 üzenetet küld az eseményközpontra. Az alábbi táblázat egy alapszintű eseményközpont hozzávetőleges költségét tartalmazza az eseményadatok mennyiségének függvényében az USA nyugati régiójában. Az [Event Hubs-díjkalkulátor](https://azure.microsoft.com/pricing/details/event-hubs/) használatával ennél pontosabb becslést is készíthet az alkalmazása várható adatmennyiségéről.
+Például egy több mint 100 000 felhasználót számláló bérlőn általában körülbelül 18 esemény történik másodpercenként, ez ötpercenként 5400 eseményt jelent. Mivel az auditnaplók eseményenként nagyjából 2 KB méretűek, ez összesen 10,8 MB adatot jelent. Így az adott ötperces időablakban a rendszer 43 üzenetet küld az eseményközpontra. 
 
-| Naplókategória | Felhasználók száma | Események száma másodpercenként | Események száma az 5 perces időablakokban | Adatmennyiség az egyes időablakokban | Üzenetek száma az egyes időablakokban | Üzenetek száma havonta | Hozzávetőleges havi költség |
+Az alábbi táblázat egy alapszintű eseményközpont becsült havi költségét tartalmazza az eseményadatok mennyiségének függvényében az USA nyugati régiójában. Az [Event Hubs-díjkalkulátor](https://azure.microsoft.com/pricing/details/event-hubs/) használatával ennél pontosabb becslést is készíthet az alkalmazása várható adatmennyiségéről.
+
+| Naplókategória | Felhasználók száma | Események száma másodpercenként | Események száma ötperces időközönként | Adatmennyiség az egyes időablakokban | Üzenetek száma időközönként | Üzenetek száma havonta | Havi költség (becsült) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Naplózás | 100 000 | 18 | 5400 | 10,8 MB | 43 | 371 520 | 10,83 dollár |
-| Naplózás | 1000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,8 dollár |
-| Bejelentkezések | 1000 | 178 | 53 400 | 106,8 MB | 418 | 3 611 520 | 11,06 dollár |  
+| Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
+| Bejelentkezések | 1,000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 dollár |  
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Ez a szakasz az Azure Active Directory-naplók az Azure Monitorban való kezelésével kapcsolatos gyakori kérdéseket tartalmazza.
+Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsolatos gyakori kérdéseket válaszolja meg, és ismerteti az ismert problémákat.
 
 **K: Hol érdemes elkezdenem?** 
 
-**V:** Kezdje az [Áttekintés](reporting-azure-monitor-diagnostics-overview.md) szakasszal, ahol megtudhatja, mire lesz szüksége a szolgáltatás telepítéséhez. Miután megismerte az előfeltételeket, tekintse át az oktatóanyagokat, amelyek segítenek konfigurálni a rendszert és átirányítani a naplókat az Event Hubsba.
+**V**: Ez a cikk ismerteti a szolgáltatás üzembe helyezéséhez szükséges előfeltételeket. Ha az előfeltételek teljesülnek, lépjen az oktatóanyagokhoz, amelyek segítenek konfigurálni a rendszert és átirányítani a naplókat egy eseményközpontba.
 
 ---
 
 **K: Melyik naplókat kezeli a rendszer?**
 
-**V:** A bejelentkezési és az auditnaplókat egyaránt át lehet irányítani a szolgáltatás használatával, azonban ez a B2C-vel kapcsolatos auditeseményekre jelenleg még nem érvényes. Olvassa el [az auditnaplók](reporting-azure-monitor-diagnostics-audit-log-schema.md) és [a bejelentkezési naplók sémáját](reporting-azure-monitor-diagnostics-sign-in-log-schema.md) ismertető cikkeket, amelyekből megtudhatja, jelenleg a naplók mely típusai és mely szolgáltatásalapú naplók támogatottak. 
+**V**: A bejelentkezési tevékenységnaplókat és az auditnaplókat egyaránt át lehet irányítani a szolgáltatás használatával, azonban ez a B2C-vel kapcsolatos auditeseményekre jelenleg még nem érvényes. Ha szeretné megtudni, hogy jelenleg milyen naplótípusok és mely szolgáltatásalapú naplók támogatottak, olvassa el [az auditnaplók sémáját](reporting-azure-monitor-diagnostics-audit-log-schema.md) és [a bejelentkezési naplók sémáját](reporting-azure-monitor-diagnostics-sign-in-log-schema.md) ismertető cikkeket. 
 
 ---
 
-**K: Az egyes műveletek után milyen hamar jelennek meg a vonatkozó naplók az Event Hubsban?**
+**K: Az egyes műveletek után milyen hamar jelennek meg a vonatkozó naplók az eseményközpontokban?**
 
-**V:** A naplóknak körülbelül kettő–öt percen belül kell megjelennie az Event Hubsban a műveletek végrehajtását követően. Az Event Hubsszal kapcsolatos további információkat a [Mi az Event Hubs?](/azure/event-hubs/event-hubs-what-is-event-hubs.md) című cikk tartalmazza.
+**V**: A naplóknak körülbelül két-öt percen belül kell megjelenniük az eseményközpontban a műveletek végrehajtása után. Az Event Hubsról a [Mi az Azure Event Hubs?](../event-hubs/event-hubs-about.md) című cikkben talál további információt.
 
 ---
 
 **K: Az egyes műveletek után milyen hamar jelennek meg a vonatkozó naplók a tárfiókokban?**
 
-**V:** Az Azure-tárfiókok esetében a késés 5–15 perc az egyes műveletek végrehajtását követően.
+**V**: Az Azure Storage-fiókok esetében a késés 5–15 perc az egyes műveletek végrehajtása után.
 
 ---
 
 **K: Mennyibe kerül az adataim tárolása?**
 
-**V:** A tárolás díja a naplók méretének, valamint a választott megőrzési időnek a függvénye. A bérlők a naplók mennyiségétől függő hozzávetőleges becsült költségeiért lásd az [Áttekintés](reporting-azure-monitor-diagnostics-overview.md) szakaszt.
+**V**: A tárolás díja a naplók méretétől és a választott megőrzési időtől függ. A bérlőkhöz tartozó, a létrehozott naplók mennyiségétől függő hozzávetőleges becsült költségekért lásd a [Tevékenységnaplók tárterületméretéről](https://review.docs.microsoft.com/en-us/azure/active-directory/reporting-azure-monitor-diagnostics-overview?branch=pr-en-us-47660#storage-size-for-activity-logs) szóló szakaszt.
 
 ---
 
-**K: Mennyibe kerül az adataim átstreamelése az Event Hubsba?**
+**K: Mennyibe kerül az adataim eseményközpontba való streamelése?**
 
-**V:** A streamelés költsége a percenként kapott üzenetmennyiségtől függ. A költségek számításának módjával kapcsolatos információkért, valamint az üzenetek számától függő hozzávetőleges becslésért lásd az [Áttekintés](reporting-azure-monitor-diagnostics-overview.md) szakaszt. 
+**V**: A streamelés költsége a percenként kapott üzenetmennyiségtől függ. Ez a cikk ismerteti a költségek kiszámításának módját, és felsorolja az üzenetek száma alapján kiszámított költségbecsléseket. 
 
 ---
 
 **K: Mely SIEM-eszközök támogatottak jelenleg?** 
 
-**V:** Jelenleg az Azure Monitort a Splunk, a QRadar és a Sumologic támogatja. Azonban a Splunk az egyetlen SIEM-eszköz, amely az Azure Active Directory-naplók esetében is támogatott. Az összekötők működésével kapcsolatos további információkért lásd [az Azure monitorozási adatok egy eseményközpontba külső eszközökben való használat céljából való streamelését](/azure/monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs) ismertető cikket.
+**V**: Az Azure Monitort jelenleg a Splunk, a QRadar és a Sumo Logic támogatja. A Splunk azonban az egyetlen SIEM-eszköz, amely az Azure AD-naplók esetében is támogatott. Az összekötők működéséről [az Azure monitorozási adatok egy eseményközpontba külső eszközökben való használat céljából való streamelését](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) ismertető cikkben talál további információt.
 
 ---
 
-**K: Elérhetem az adatokat az Event Hubsban külső SIEM-eszköz használata nélkül is?** 
+**K: Elérhetem az adatokat egy eseményközpontban külső SIEM-eszköz használata nélkül is?** 
 
-**V:** Igen, az [Event Hubs API](/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph) használatával is elérheti a naplókat az egyéni alkalmazásokban. 
+**V**: Igen. Az [Event Hubs API](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) használatával is elérheti a naplókat az egyéni alkalmazásokban. 
 
 ---
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tevékenységnaplók archiválása egy tárfiókba](reporting-azure-monitor-diagnostics-azure-storage-account.md)
-* [Tevékenységnaplók irányítása egy Event Hubs-eseményközpontba](reporting-azure-monitor-diagnostics-azure-event-hub.md)
-* [További információk az Azure Diagnostics-naplókról](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Tevékenységnaplók archiválása egy Storage-fiókba](reporting-azure-monitor-diagnostics-azure-storage-account.md)
+* [Tevékenységnaplók irányítása egy eseményközpontba](reporting-azure-monitor-diagnostics-azure-event-hub.md)
+* [További információk az Azure Diagnostics-naplókról](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)

@@ -1,35 +1,28 @@
 ---
-title: Blob Storage Azure CLI-minták |} Microsoft Docs
-description: Az Azure Blob Storage használata az Azure CLI-minták
+title: Azure CLI-minták a Blob Storage-hez | Microsoft Docs
+description: Azure CLI-minták az Azure Blob Storage használatához
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: e247a788a593b2e8fe7be76c25b85cad3cef2291
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 070a2675b67c0d52bd9e3e3cb951fa9052112ad4
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
-ms.locfileid: "26040175"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397124"
 ---
-# <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure Blob Storage Azure CLI-minták
+# <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure CLI-minták az Azure Blob Storage-hez
 
-A következő táblázat az Azure parancssori felület használatával készített Bash parancsfájlok, amelyek létrehozása és kezelése az Azure Storage mutató hivatkozásokat tartalmaz.
+A következő táblázat az Azure Storage létrehozását és kezelését végző, az Azure CLI használatával létrehozott Bash-szkriptekre mutató hivatkozásokat tartalmazza.
 
 | | |
 |---|---|
-|**Storage-fiókok**||
-| [Hozzon létre egy tárfiókot, és a tárelérési kulcsok beolvasása/elforgatása](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy Azure Storage-fiókot, és kéri le, és a hívóbetűk forog. |
+|**Tárfiókok**||
+| [Tárfiók létrehozása és a hozzáférési kulcsok lekérése/rotálása](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy Azure Storage-fiókot, és lekéri, illetve rotálja a hozzáférési kulcsait. |
 |**Blob Storage**||
-| [Kiszámítja egy Blob storage tárolót teljes mérete](../scripts/storage-blobs-container-calculate-size-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Kiszámítja egy tároló összes blobjának teljes mérete. |
-| [Egy megadott előtagot tárolók törlése](../scripts/storage-blobs-container-delete-by-prefix-cli.md?toc=%2fcli%2fazure%2ftoc.json) | A megadott karakterlánc kezdve tárolók törli. |
+| [Blob Storage-tároló teljes méretének kiszámítása](../scripts/storage-blobs-container-calculate-size-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Kiszámítja a tárolóban lévő blobok összméretét. |
+| [Megadott előtaggal rendelkező tárolók törlése](../scripts/storage-blobs-container-delete-by-prefix-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Törli a megadott sztringgel kezdődő tárolókat. |

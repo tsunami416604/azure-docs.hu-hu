@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 6e09bdc336821720c970f8b8daf13f52b0a69ed0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9fdbfd0338b1c4b6ac863f07e5808ce6ccd9a6c7
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355372"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347284"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -64,13 +64,7 @@ Az ILB ASE létrehozása:
 
 4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
 
-    * Új virtuális hálózat kiválasztása esetén új nevet és helyet adhat meg. Ha Linux-alkalmazások üzemeltetését tervezi ezen az ASE-n, jelenleg csak ez a 6 régió támogatott: **USA nyugati régiója, USA keleti régiója, Nyugat-Európa, Észak-Európa, Kelet-Ausztrália, Délkelet-Ázsia.** 
-
-5. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/25` méretet javasoljuk, amely 128 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet. A `/28` a kiválasztható legkisebb méret. Az infrastrukturális igényeket figyelembe véve ez a méret legfeljebb 3 példányra skálázható fel.
-
-    * Az alapértelmezett maximális 100 példányszámot az App Service-csomagban emelheti meg.
-
-    * Skálázhat 100 példány körüli méretre, de gyorsabb előtéri skálázással.
+5. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/24` méretet javasoljuk, amely 256 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet és tetszőleges skálázási igényeket. 
 
 6. Válassza a **Virtuális hálózat/hely** > **Virtuális hálózati konfiguráció** elemet. A **VIP típust** állítsa **Belsőre**.
 
@@ -119,7 +113,7 @@ Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létr
 
 5. Válassza ki az operációs rendszert. 
 
-    * Ha egyéni Docker-tárolóval szeretne Linux-alkalmazást létrehozni, az itt található útmutató segítségével egyszerűen használhatja a saját tárolóját erre a célra. 
+    * Ha egyéni Docker-tárolóval szeretne Linux-alkalmazást létrehozni, az [itt][linuxapp] található útmutató segítségével egyszerűen használhatja a saját tárolóját erre a célra. 
 
 6. Válassza ki vagy hozzon létre egy App Service-csomagot. Amennyiben új App Service-csomagot szeretne létrehozni, válassza az ASE környezetet helyként. Válassza ki a feldolgozókészletet, amelyben az App Service-csomagot szeretné létrehozni. Amikor létrehozza az új App Service-csomagot, válassza az ASE környezetet helyként és feldolgozókészletként. Az alkalmazás nevének megadásakor az alkalmazás tartománya az ASE tartománynevére cserélődik.
 
@@ -172,7 +166,6 @@ Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez 
 
     > [!NOTE] 
     > Ne próbálja az ASE környezettel azonos alhálózatban létrehozni a virtuális gépet, mert az sikertelen lehet vagy problémákat okozhat.
-    >
     >
 
 6. Állítsa be az ASE tartomány DNS-ét. A DNS-ben helyettesítő karaktert is használhat tartományhoz. Pár egyszerű teszt végrehajtásához állítsa a webalkalmazás nevét a virtuális IP-címére a virtuális gép hosts fájljának szerkesztésével:
@@ -258,3 +251,4 @@ Az ILB ASE WAF eszközhöz való konfigurálásáról további információkat a
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
+[linuxapp]: ../containers/app-service-linux-intro.md

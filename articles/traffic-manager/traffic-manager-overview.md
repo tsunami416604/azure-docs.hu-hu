@@ -1,123 +1,67 @@
 ---
-title: Mi az a Traffic Manager |} Microsoft Docs
-description: Ez a cikk segít megérteni a Traffic Manager van, és hogy-e az alkalmazás megfelelő forgalom útválasztási kiválasztása
+title: Azure Traffic Manager | Microsoft Docs
+description: Ez a cikk az Azure Traffic Managerről nyújt áttekintést. Ismerje meg, hogy ez-e a megfelelő választás az alkalmazáshoz érkező felhasználói forgalom terheléselosztásához.
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
+manager: jeconnoc
 editor: ''
-ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
+customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2017
+ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 50d7f14d0d4234ee98d8a46e903b5f916cb02fab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 236137b87351e3c3a95c1103f7464256f41b9159
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23877054"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397224"
 ---
-# <a name="overview-of-traffic-manager"></a>A Traffic Manager áttekintése
+# <a name="what-is-traffic-manager"></a>Mi az a Traffic Manager?
+Az Azure Traffic Manager egy DNS-alapú forgalom-terheléselosztó, amely lehetővé teszi a szolgáltatásokhoz érkező forgalom optimális elosztását a globális Azure-régiókban, miközben magas rendelkezésre állást és válaszkészséget biztosít.
 
-A Microsoft Azure Traffic Manager szolgáltatás végpontok különböző adatközpontokban felhasználói forgalom terjesztését teszi lehetővé. Traffic Manager által támogatott szolgáltatás végpontok közé tartoznak az Azure virtuális gépeken, Web Apps, és a felhőalapú szolgáltatások. A Traffic Manager külső, nem Azure-végpontokkal együtt is használható.
+A Traffic Manager DNS használatával a leginkább megfelelő szolgáltatási végpontra irányítja az ügyfélkéréseket a forgalom-útválasztási módszer és a végpont állapota alapján. A végpont egy, az Azure-on kívül vagy belül üzemeltetett, internetkapcsolattal rendelkező szolgáltatás. A Traffic Manager különböző [forgalom-útválasztási módszereket](traffic-manager-routing-methods.md) és [végpont-monitorozási lehetőségeket](traffic-manager-monitoring.md) biztosít, hogy megfeleljen a különböző alkalmazások igényeinek és az automatikus feladatátvételi modelleknek. A Traffic Manager ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
 
-A TRAFFIC Manager használ a tartománynévrendszer (DNS) ügyfél kéréseiket legmegfelelőbb végpontra irányuló forgalom-útválasztási módszert és a végpontok állapotát. A TRAFFIC Manager biztosít számos különböző [forgalom-útválasztási módszert](traffic-manager-routing-methods.md) és [megfigyelési lehetőségek végpont](traffic-manager-monitoring.md) különböző alkalmazásnak és az Automatikus feladatátvétel modellek. A TRAFFIC Manager esetén is lehetséges legyen, beleértve a teljes Azure-régiót hibája.
+>[!NOTE]
+> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha Transport Layer Security (TLS) protokoll-lezárást („SSL-kiszervezés”) vagy per-HTTP/HTTPS kérelmeket vagy alkalmazásréteg-feldolgozást keres, tekintse át az [Application Gatewayt](../application-gateway/application-gateway-introduction.md) ismertető cikket. Ha regionális elosztást keres, tekintse át a [Load Balancert](../load-balancer/load-balancer-overview.md) ismertető cikket. A végpontok közötti forgatókönyvek esetében előnyt jelenthet ezen megoldások igény szerinti kombinációja.
 
-## <a name="traffic-manager-benefits"></a>A TRAFFIC Manager előnyei
+A Traffic Manager a következő funkciókat tartalmazza:
 
-A TRAFFIC Manager segítségével:
+## <a name="increase-application-availability"></a>Alkalmazás rendelkezésre állásának növelése
 
-* **Rendelkezésre állás, a kritikus alkalmazások fejlesztése**
+A Traffic Manager lehetővé teszi a kritikus fontosságú alkalmazások magas rendelkezésre állását azáltal, hogy figyeli a végpontokat, és automatikus feladatátvételt biztosít, ha egy végpont leáll.
+    
+## <a name="improve-application-performance"></a>Az alkalmazásteljesítmény javítása
 
-    A TRAFFIC Manager biztosítja a magas rendelkezésre állás, az alkalmazások figyelése a végpontokat, és automatikus feladatátvétel megadásával, amikor a végpont leáll.
+Az Azure lehetővé teszi a felhőszolgáltatások vagy webhelyek futtatását a világ különböző pontjain található adatközpontokban. A Traffic Manager javítja az alkalmazások válaszkészségét azáltal, hogy az ügyfél számára a legalacsonyabb hálózati késéssel rendelkező végpontra irányítja a forgalmat.
 
-* **A nagy teljesítményű alkalmazások válaszképességét javítása**
+## <a name="perform-service-maintenance-without-downtime"></a>Állásidő nélküli rendszerkarbantartás végrehajtása
 
-    Azure felhőszolgáltatások és webhelyek futtatását a világ adatközpontokban teszi lehetővé. A TRAFFIC Manager úgy irányítja a forgalmat a végponthoz, a legkisebb hálózati késést az ügyfél javítja az alkalmazások válaszkészségét.
+Állásidő nélkül hajthat végre tervezett karbantartási műveleteket az alkalmazásokon. A Traffic Manager alternatív végpontokra irányítja a forgalmat, amíg a karbantartás folyamatban van.
 
-* **Szolgáltatás-karbantartás állásidő nélkül**
+## <a name="combine-hybrid-applications"></a>Hibrid alkalmazások kombinációja
 
-    A leállás nélküli alkalmazások tervezett karbantartási műveleteket végezheti el. A TRAFFIC Manager forgalom alternatív végpontokra irányítja, amíg folyamatban van a karbantartás.
+A Traffic Manager támogatja a külső, nem Azure-végpontokat, ami lehetővé teszi a hibrid felhőalapú és helyszíni telepítéssel történő használatot, beleértve a „[felhőbe irányítás](https://azure.microsoft.com/overview/what-is-cloud-bursting/)”, „felhőbe migrálás” és „felhő általi feladatátvétel” eseteket is.
 
-* **A helyszíni és felhőalapú alkalmazások**
+## <a name="distribute-traffic-for-complex-deployments"></a>Forgalom elosztása összetett üzemelő példányokhoz
 
-    A TRAFFIC Manager támogatja a külső, lehetővé téve a hibrid használni kívánt-Azure végpontok a felhőalapú és helyszíni környezetekhez, például a "kapacitásnövelés felhő," "áttelepítése felhő," és "feladatátvevő felhő" forgatókönyvek.
-
-* **A forgalom nagy, összetett telepítések terjesztése**
-
-    Használatával [Traffic Manager-profilok beágyazott](traffic-manager-nested-profiles.md), forgalom-útválasztási módszer kombinálható is kifinomult és rugalmas szabályok kielégítse az nagyobb, összetettebb központi telepítések létrehozását.
-
-## <a name="how-traffic-manager-works"></a>A Traffic Manager működése
-
-Az Azure Traffic Manager lehetővé teszi a forgalom eloszlása vezérelni az alkalmazási végpontokat. A végpont bármilyen internetre-szolgáltatott belül vagy kívül Azure.
-
-A TRAFFIC Manager biztosít két fő előnnyel jár:
-
-1. A forgalmat több valamelyikével [forgalom-útválasztási módszer](traffic-manager-routing-methods.md)
-2. [Folyamatosan figyelje a végpont állapotfigyelő](traffic-manager-monitoring.md) és automatikus feladatátvétel, ha a végpontok sikertelen
-
-Amikor egy ügyfél próbál kapcsolódni a szolgáltatáshoz, a szolgáltatás DNS-nevét először azt kell tartoznia IP-címet. Az ügyfél ezután kapcsolódik az IP-címet, a szolgáltatás eléréséhez.
-
-**A legfontosabb pont megértéséhez, hogy a Traffic Manager DNS szintjén működik-e.**  A TRAFFIC Manager DNS-ügyfelek a forgalom-útválasztási módszer a szabályok adott Szolgáltatásvégpontok használja. A kijelölt végponthoz kapcsolódni az ügyfelek **közvetlenül**. A TRAFFIC Manager nincs olyan proxy vagy az átjáró. A TRAFFIC Manager nem látja az ügyfél és a szolgáltatás között áthaladó forgalmat.
-
-### <a name="traffic-manager-example"></a>A TRAFFIC Manager – példa
-
-Contoso vállalat egy új partner portál szert. A portál URL-je https://partners.contoso.com/login.aspx. Az alkalmazás Azure három régióiba tárolja. Rendelkezésre állás fejlesztése és globális teljesítmény maximalizálása érdekében, a Traffic Manager fürtforgalom elosztására a legközelebbi elérhető végpontnak használják.
-
-Ez a konfiguráció eléréséhez, akkor kövesse az alábbi lépéseket:
-
-1. A szolgáltatás három példányát telepítse. Két központi telepítését a DNS-nevek a következők: "contoso-us.cloudapp .net", "contoso-eu.cloudapp .net" és "contoso-asia.cloudapp .net".
-2. Hozzon létre Traffic Manager-profil, "contoso.trafficmanager.net" nevű, és konfigurálja úgy, hogy a "Teljesítmény" forgalom-útválasztási módszert használja a három végpontok.
-* Konfigurálja a kreatív tartománynevüket, "partners.contoso.com", "contoso.trafficmanager.net", egy DNS CNAME rekord használatával mutassanak.
-
-![A TRAFFIC Manager DNS-konfiguráció][1]
-
-> [!NOTE]
-> Kreatív tartományhoz az Azure Traffic Manager használata esetén egy olyan CNAME REKORDOT kell használnia a kreatív tartománynév mutasson a Traffic Manager szolgáltatásbeli tartománynevére. DNS-szabványokból nem engedélyezi, hogy a "legfelső pontján" (vagy a legfelső szintű) tartomány egy CNAME rekordot kell létrehoznia. Így nem hozható létre egy CNAME REKORDOT a "contoso.com" (más néven "csupasz" tartományhoz). Csak a "contoso.com", például "www.contoso.com" tartomány egy olyan CNAME REKORDOT hozhat létre. A probléma megoldásához, azt javasoljuk, egy egyszerű HTTP-átirányítás való közvetlen kérelmeket egy másik névre, például "www.contoso.com" a "contoso.com".
-
-### <a name="how-clients-connect-using-traffic-manager"></a>Hogy az ügyfelek hogyan kapcsolódnak a Traffic Managerrel
-
-A Folytatás az előző példából, amikor egy ügyfél lekérdezi a lap https://partners.contoso.com/login.aspx az ügyfél a DNS-név, és létrehozza a kapcsolatot a következő lépéseket végzi el:
-
-![A Traffic Manager használ a kapcsolat felépítése][2]
-
-1. Az ügyfél a DNS-lekérdezést küld a konfigurált rekurzív DNS-szolgáltatás a "partners.contoso.com" név feloldásához. A rekurzív DNS-szolgáltatás, más néven a "helyi DNS" szolgáltatás nem fut közvetlenül DNS-tartományok. Ehelyett az ügyfél off-loads a munkát, lépjen kapcsolatba a különféle mérvadó DNS-szolgáltatásainak az interneten való hozzárendeléséhez egy DNS-nevet.
-2. Feloldani a DNS-nevet, a rekurzív DNS-szolgáltatás a "contoso.com" tartomány megtalálja a névkiszolgálókat. Ezután csatlakozik a ezeket a "partners.contoso.com" DNS-rekord kéréséhez névkiszolgálók. A contoso.com DNS-kiszolgálók a contoso.trafficmanager.net mutató CNAME rekord visszaadása.
-3. A rekurzív DNS-szolgáltatás a következő névkiszolgálókat megkeresi a "trafficmanager.net" tartomány, amely az Azure Traffic Manager szolgáltatás által biztosított. Majd a "contoso.trafficmanager.net" DNS-rekord kérelmet küld e DNS-kiszolgálók.
-4. A Traffic Manager névkiszolgálók a kérés fogadásához. A végpont alapján választ:
-
-    - Az egyes végpontok konfigurált állapotát (letiltott végpontok nem adott vissza)
-    - Minden egyes végpont a Traffic Manager állapota alapján aktuális állapotát ellenőrzi. További információkért lásd: [Traffic Manager-végpont figyelés](traffic-manager-monitoring.md).
-    - A kiválasztott forgalom-útválasztási módszerrel. További információkért lásd: [Traffic Manager útválasztási metódusok](traffic-manager-routing-methods.md).
-
-5. A kiválasztott végpont egy másik DNS CNAME rekord adja vissza a rendszer. Ebben az esetben ossza meg velünk tegyük fel, hogy a contoso-us.cloudapp.net adja vissza.
-6. A rekurzív DNS-szolgáltatás a következő névkiszolgálókat megkeresi a "cloudapp.net" tartomány. Amelyhez csatlakozik, hogy ezeket a contoso-us.cloudapp .net kéréséhez névkiszolgálók DNS-rekordot. Az Egyesült államokbeli szolgáltatás végpontjának IP-címét tartalmazó DNS "A" rekordot ad vissza.
-7. A rekurzív DNS-szolgáltatás összesíti az eredményeket, és az ügyfél egy egyetlen DNS-választ ad vissza.
-8. Az ügyfél megkapja a DNS-találatokat, és csatlakozik a megadott IP-cím. Az ügyfél kapcsolódik az alkalmazás szolgáltatási végpont közvetlenül, nem Traffic Manager használatával. Mivel a HTTPS-végpontnak, az ügyfél hajtja végre a szükséges SSL/TLS-kézfogás, és majd válik, mivel egy HTTP GET kérést a "/ login.aspx" lapon.
-
-A rekurzív DNS-szolgáltatás gyorsítótárba helyezi azt a DNS-válaszok kap. A DNS-feloldási az ügyféleszközön is gyorsítótárba helyezi azt az eredményt. Gyorsítótárazás lehetővé teszi, hogy további DNS-lekérdezések gyorsabban válaszolhasson a gyorsítótárból adatokkal, nem pedig más névkiszolgálók lekérdezése. A gyorsítótár időtartamát határozza meg, az "idő TTL" (TTL) tulajdonsága minden DNS-rekord. Rövidebb értékek megnyilvánulhat gyorsabb gyorsítótár lejárati és így további üzenetváltások a Traffic Manager névkiszolgálók. Hosszabb értékek azt jelenti, hogy is telhet, mire hosszabb el egy hibás végpont közvetlen forgalmat. A TRAFFIC Manager lehetővé teszi az élettartam a Traffic Manager DNS-válaszok segítségével lehet akár csupán 0 másodperc és 2 147 483 647 másodpercig magas konfigurálását (a tartomány maximális megfelelő [RFC-1035 szabványnak megfelelően](https://www.ietf.org/rfc/rfc1035.txt)), kiválaszthatja az értéket, amelyet az alkalmazás igényeinek legjobban kiegyensúlyozza engedélyezése.
+[Beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md) használatával a forgalom-útválasztási módszerek kombinálhatóak úgy, hogy kifinomult és rugalmas szabályokat hozzanak létre a nagyobb, összetettebb üzemelő példányok igényeinek megfelelően.
 
 ## <a name="pricing"></a>Díjszabás
 
-Díjszabási információkért lásd: [Traffic Manager árazás](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Díjszabási információkért tekintse meg a [Traffic Manager díjszabását](https://azure.microsoft.com/pricing/details/traffic-manager/) ismertető részt.
 
-## <a name="faq"></a>GYIK
 
-Lásd: gyakran ismételt kérdések a Traffic Manager [Traffic Manager – gyakori kérdések](traffic-manager-FAQs.md)
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
+- Útmutató a [Traffic Manager-profil létrehozásához](traffic-manager-create-profile.md).
+- Útmutató a [Traffic Manager működéséhez](traffic-manager-how-it-works.md).
+- Tekintse meg a [gyakori kérdések](traffic-manager-FAQs.md) részt a Traffic Managerrel kapcsolatban.
 
-A Traffic Manager további [végpont figyelési és automatikus feladatátvételt](traffic-manager-monitoring.md).
 
-A Traffic Manager további [forgalom-útválasztási módszerei](traffic-manager-routing-methods.md).
 
-Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](../networking/networking-overview.md) ismerkedhet meg.
-
-<!--Image references-->
-[1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
-[2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
 

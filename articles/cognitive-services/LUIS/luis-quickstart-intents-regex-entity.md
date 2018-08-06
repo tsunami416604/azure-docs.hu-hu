@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 99f796bf26df755ca938c3023057e2e9de1706a1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238335"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358290"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Oktatóanyag: 3. Reguláriskifejezés-entitás hozzáadása
 Ebben az oktatóanyagban létrehoz egy alkalmazást, amely bemutatja, hogyan nyerhető ki konzisztensen formázott adat egy kimondott szövegből a **Reguláris kifejezés** entitás segítségével.
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban létrehoz egy alkalmazást, amely bemutatja, hogyan nye
 > * Alkalmazás betanítása és közzététele
 > * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez
 
-Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 Ha még nincs meg az Emberi erőforrások alkalmazása az [előre összeállított entitások](luis-tutorial-prebuilt-intents-entities.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) GitHub-adattárból a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén.
@@ -67,11 +67,7 @@ A LUIS elvégzi a kimondott szöveg lexikális elemzését, ha a kimondott szöv
 
 1. Győződjön meg arról, hogy az Emberi erőforrások alkalmazás a LUIS **Build** (Létrehozás) szakaszában van. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
 
-    [ ![Képernyőfelvétel a LUIS-alkalmazásról a kiemelt Létrehozás elemmel a jobb felső navigációs sávon](./media/luis-quickstart-intents-regex-entity/first-image.png)](./media/luis-quickstart-intents-regex-entity/first-image.png#lightbox)
-
 2. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
-
-    [ ![A szándékok lapjának képernyőképe az új szándék létrehozására szolgáló gomb kiemelésével](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png) ](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png#lightbox)
 
 3. Az előugró párbeszédpanelen írja be a `FindForm` karakterláncot, majd válassza a **Kész** elemet. 
 
@@ -96,14 +92,12 @@ A LUIS elvégzi a kimondott szöveg lexikális elemzését, ha a kimondott szöv
 
     Az alkalmazásban fel lettek véve előre összeállított számentitások az előző oktatóanyagban, ezért minden űrlapszám meg van címkézve. Ez elég lehet az ügyfélalkalmazásához, de a szám nem lesz megcímkézve a szám típusával. Egy új entitás létrehozása a megfelelő névvel lehetővé teszi, hogy az ügyfélalkalmazás megfelelően dolgozza fel az entitást, amikor visszakapja a LUIS-ból.
 
-## <a name="create-a-hrf-number-regular-expression-entity"></a>HRF-szám reguláriskifejezés-entitásának létrehozása 
+## <a name="create-an-hrf-number-regular-expression-entity"></a>HRF-szám reguláriskifejezés-entitásának létrehozása 
 A következő lépésekkel hozzon létre egy reguláriskifejezés-entitást, amely elmagyarázza a LUIS-nak, mi az a HRF-számformátum:
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali ablaktáblán.
 
 2. Az Entities (Entitások) lapon válassza a **Create new entity** (Új entitás létrehozása) gombot. 
-
-    [ ![Képernyőkép az Entitások lapról, kiemelt Create new entity (Új entitás létrehozása) gombbal](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png)](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png#lightbox)
 
 3. A felugró párbeszédpanelen az új entitásnak adja a `HRF-number` nevet, válassza a **RegEx** entitástípust, a Regex értéke legyen `hrf-[0-9]{6}`, majd válassza a **Done** (Kész) lehetőséget.
 
@@ -127,22 +121,12 @@ Egy reguláriskifejezés-entitáshoz nincs szükség betanításra, de az új sz
     ![A sikerességet jelző értesítési sáv képe](./media/luis-quickstart-intents-regex-entity/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
-Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más alkalmazásban, közzé kell tennie az alkalmazást. 
 
-1. A LUIS-webhely jobb felső részén válassza a **Publish** (Közzététel) lehetőséget. 
-
-    ![Képernyőkép a FindKnowledgeBase-ről, a felső navigációs sáv Közzététel gombjának kiemelésével](./media/luis-quickstart-intents-regex-entity/publish-button.png)
-
-2. Válasza a Production (Termelés) helyet, és kattintson a **Publish** (Közzététel) gombra.
-
-    ![A Publish (Közzététel) lap képernyőképe a kiemelt Publish to production slot (Közzététel éles termelési helyre) elemmel](./media/luis-quickstart-intents-regex-entity/publish-to-production.png)
-
-3. A közzététel akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>A végpont lekérdezése egy másik kimondott szöveggel
-1. A **Publish** (Közzététel) lapon kattintson a lap alján található **Endpoint** (Végpont) hivatkozásra. Ez a művelet megnyit egy másik böngészőablakot, amelynek címsorában a végpont URL-címe látható. 
 
-    ![A Publish (Közzététel) lap képernyőképe a kiemelt végponti URL-címmel](./media/luis-quickstart-intents-regex-entity/publish-select-endpoint.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `When were HRF-123456 and hrf-234567 published in the last year?`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek pont megfelelő, és `FindForm` szándékot kell visszaadnia `HRF-123456` és `hrf-234567` űrlapszámmal.
 

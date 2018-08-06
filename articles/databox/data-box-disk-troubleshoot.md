@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk – hibaelhárítás | Microsoft Docs
-description: Az Azure Data Box Disk szolgáltatásban jelentkező hibák elhárítását írja le.
+description: Ez a cikk az Azure Data Box Disk szolgáltatásban jelentkező hibák elhárítását írja le.
 services: databox
 documentationcenter: NA
 author: alkohli
@@ -13,20 +13,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 07/30/2018
 ms.author: alkohli
-ms.openlocfilehash: f63eadc9a6ab834e02d62be9a209b504d76d3c8e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1ae6d3dbd01d2623fef511ed0663270ac605f257
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090775"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362660"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Az Azure Data Box Disk (előzetes verzió) hibáinak elhárítása
 
 Ez a cikk a Microsoft Azure Data Box előzetes kiadására vonatkozik. A cikk a Data Boxon és a Data Box Disken végrehajtható komplex munkafolyamatokat és felügyeleti feladatokat ismerteti. 
 
-A Data Box a Data Box szolgáltatás felhasználói felületén (más néven a portál felhasználói felületén), valamint az eszköz helyi webes felhasználói felületén felügyelhető. A Data Box Disk kizárólag az Azure Portalon keresztül felügyelhető. A cikk az Azure Portalon végrehajtható feladatokra összpontosít. Az Azure Portalon kezelheti a megrendeléseket, felügyelheti az eszközöket, és nyomon követheti a rendelések a befejezési állapotukhoz közeli állapotát.
+A Data Box Disk az Azure Portalon keresztül felügyelhető. A cikk az Azure Portalon végrehajtható feladatokra összpontosít. Az Azure Portalon kezelheti a megrendeléseket, felügyelheti az eszközöket, és nyomon követheti a befejezéshez közeledő rendelések állapotát.
 
 A cikk az alábbi oktatóanyagokat tartalmazza:
 

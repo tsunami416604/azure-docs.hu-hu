@@ -4,7 +4,7 @@
   items:
     - name: Mi az Event Hubs?
       href: event-hubs-about.md
-    - name: Az Apache Kafkához készült Event Hubs
+    - name: Az Apache Kafkához készült Event Hubs (előzetes verzió)
       href: event-hubs-for-kafka-ecosystem-overview.md
     - name: Event Hubs Capture
       href: event-hubs-capture-overview.md

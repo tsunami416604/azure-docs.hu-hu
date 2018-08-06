@@ -4,17 +4,17 @@ description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatá
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/31/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 51fd0c625ad7e600d54999ddd86e5e49a7c4f14d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249868"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364428"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -126,11 +126,11 @@ Az Azure Policy egyes objektumtípusainak van egy maximális száma. A _Hatókö
 | Hatókör | Szabályzatdefiníciók | 250 |
 | Hatókör | Kezdeményezési definíciók | 100 |
 | Bérlő | Kezdeményezési definíciók | 1000 |
-| Hatókör | Szabályzat-hozzárendelés | 100 |
+| Hatókör | Szabályzat-/Kezdeményezés-hozzárendelések | 100 |
 | Szabályzatdefiníció | Paraméterek | 20 |
 | Kezdeményezési definíció | Házirendek | 100 |
 | Kezdeményezési definíció | Paraméterek | 100 |
-| Szabályzat-hozzárendelés | Kizárások (notScope) | 100 |
+| Szabályzat-/Kezdeményezés-hozzárendelések | Kizárások (notScope) | 100 |
 | Szabályzat szabálya | Beágyazott feltételes értékek | 512 |
 
 ## <a name="recommendations-for-managing-policies"></a>Javaslatok a szabályzatok kezeléséhez

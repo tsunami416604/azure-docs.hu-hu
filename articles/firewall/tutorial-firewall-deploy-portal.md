@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8db3f0ffbd65f3601bc05054e53a1e8e17384866
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145318"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358946"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -88,6 +88,9 @@ Először is hozzon létre egy erőforráscsoportot, amely a tűzfal üzembe hel
     Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
 11. A **Címtartomány** mezőbe írja be a következőt: **10.0.1.0/24**.
 12. Használja a többi alapértelmezett beállítást, és kattintson a **Létrehozás** elemre.
+
+> [!NOTE]
+> Az AzureFirewallSubnet alhálózat mérete legalább /25.
 
 ### <a name="create-additional-subnets"></a>További alhálózatok létrehozása
 
@@ -172,6 +175,9 @@ Az Srv-Work virtuális gép **beállításainak** konfigurálásához használja
 4. Ha az üzembe helyezés elkészült, nyissa meg a **Test-FW-RG** erőforráscsoportot, majd kattintson a **Test-FW01** tűzfalra.
 6. Jegyezze fel a magánhálózati IP-címet. Később, az alapértelmezett útvonal létrehozásakor szükség lesz rá.
 
+> [!NOTE]
+> A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.
+
 [//]: # (Ne felejtse el feljegyezni a tűzfal magánhálózati IP-címét.)
 
 ## <a name="create-a-default-route"></a>Alapértelmezett útvonal létrehozása
@@ -233,7 +239,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 4. A **Művelet** beállításnál válassza az **Engedélyezés** lehetőséget.
 
 6. A **Szabályok** területen a **Név** mezőbe írja be a következőt: **AllowDNS**.
-8. A **Protokoll** beállításnál válassza a **TCP** lehetőséget.
+8. A **Protokoll** beállításnál válassza az **UDP** lehetőséget.
 9. A **Forráscímek** mezőbe írja be a következőt: **10.0.2.0/24**.
 10. A Célcímek mezőbe írja be a következőt: **209.244.0.3,209.244.0.4**
 11. A **Célportok** mezőbe írja be a következőt: **53**.

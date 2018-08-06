@@ -1,21 +1,19 @@
 ---
 title: Jenkins-kiszolgáló létrehozása az Azure-on
 description: Jenkins-kiszolgáló telepítése egy Azure-beli linuxos virtuális gépen a Jenkins-megoldássablonból és egy Java-mintaalkalmazás létrehozása.
-author: tomarcher
-manager: rloutlaw
-ms.service: multiple
-ms.workload: web
-ms.devlang: na
-ms.topic: article
-ms.date: 03/12/2018
+ms.topic: quickstart
 ms.author: tarcher
-ms.custom: Jenkins
-ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: MT
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635458"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390428"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Jenkins-kiszolgáló létrehozása Azure-beli linuxos virtuális gépen az Azure Portalról
 
@@ -29,13 +27,13 @@ Ez a rövid útmutató bemutatja, hogyan telepítheti a [Jenkins](https://jenkin
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>Jenkins virtuális gép létrehozása a megoldássablonból
-A Jenkins egy modellt, ahol a Jenkins-kiszolgáló delegáltak egy vagy több ügynököt, hogy a Jenkins telepítésének egyetlen üzemeltetésére, projektek nagy számú, vagy adja meg a különböző környezetekben történő üzembe helyezéshez használható buildek támogatja, vagy teszteli. A jelen szakaszban ismertetett lépések útmutató telepítéséhez és a egy Jenkins-kiszolgáló konfigurálása az Azure-ban.
+A Jenkins támogat egy olyan modellt, amelyben a Jenkins-kiszolgáló egy vagy több ügynökre delegálja a feladatokat, így egyetlen Jenkins-telepítés számos projektet tud futtatni, vagy külön környezeteket tud biztosítani a buildeléshez és teszteléshez. Az ebben a szakaszban ismertetett lépések végigvezetik a Jenkins-kiszolgáló Azure-ban való telepítésének és konfigurálásának folyamatán.
 
 [!INCLUDE [jenkins-install-from-azure-marketplace-image](../../includes/jenkins-install-from-azure-marketplace-image.md)]
 
 ## <a name="connect-to-jenkins"></a>Kapcsolódás a Jenkinshez
 
-Keresse meg a virtuális gép (például http://jenkins2517454.eastus.cloudapp.azure.com/) a böngészőben. A Jenkins-konzol nem érhető el nem biztonságos HTTP-n keresztül. Az oldalon szereplő utasítások szerint, SSH-alagút használatával biztonságosan nyithatja meg a Jenkins-konzolt.
+A webböngészőjében nyissa meg a virtuális gépet (például: http://jenkins2517454.eastus.cloudapp.azure.com/)). A Jenkins-konzol nem érhető el nem biztonságos HTTP-n keresztül. Az oldalon szereplő utasítások szerint, SSH-alagút használatával biztonságosan nyithatja meg a Jenkins-konzolt.
 
 ![Jenkins zárolásának feloldása](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
@@ -45,7 +43,7 @@ Keresse meg a virtuális gép (például http://jenkins2517454.eastus.cloudapp.a
 ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
 ```
 
-Az alagút elindítása után lépjen http://localhost:8080/ a helyi gépen. 
+Az alagút elindítása után lépjen a http://localhost:8080/ címre a helyi gépen. 
 
 Kérje le a kezdeti jelszót az alábbi parancs parancssorbeli futtatásával, miközben SSH-n keresztül kapcsolódik a Jenkinst futtató virtuális géphez.
 
@@ -88,6 +86,10 @@ Válassza a **Build Now** (Létrehozás most) lehetőséget a kód fordításáh
 ![A munkaterület megkeresése a JAR-fájl buildből történő lekérdezéséhez](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 
 Navigáljon a `complete/build/libs` könyvtárhoz, és a létrehozás sikerességének ellenőrzéséhez győződjön meg arról, hogy a `gs-spring-boot-0.1.0.jar` fájl megtalálható benne. A Jenkins-kiszolgáló mostantól készen áll saját Azure-projektek létrehozására.
+
+## <a name="troubleshooting-the-jenkins-solution-template"></a>A Jenkins-megoldássablon hibaelhárítása
+
+Ha a Jenkins-megoldássablon használata során bármilyen hibát tapasztal, jelentse be a problémát a [Jenkins GitHub-adattárában](https://github.com/azure/jenkins/issues).
 
 ## <a name="next-steps"></a>További lépések
 
