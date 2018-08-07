@@ -1,6 +1,6 @@
 ---
-title: Azure IoT peremhálózati modulok megértése |} Microsoft Docs
-description: 'Tudnivalók Azure IoT Edge-modulokat és azok miként vannak konfigurálva:'
+title: Az Azure IoT Edge-modulok megismerése |} A Microsoft Docs
+description: 'További tudnivalók az Azure IoT Edge-modulok és azok miként vannak konfigurálva:'
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -8,72 +8,72 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c196ec92fc7997617fa464d676dc93ca9fe84f0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 261c26290a4a7c4b8bb22ada7f97470a6efa7a91
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029090"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576321"
 ---
-# <a name="understand-azure-iot-edge-modules"></a>Azure IoT peremhálózati modulok ismertetése
+# <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok megismerése
 
-Az Azure IoT peremhálózati lehetővé teszi, hogy telepíthetnek és kezelhetnek olyan üzleti logika formájában oldal *modulok*. Azure IoT peremhálózati modulok a legkisebb egység kezeli az IoT-Edge-számítás, és Azure-szolgáltatásokhoz (például az Azure Stream Analytics) vagy a saját Megoldásfüggő kódot tartalmazhatnak. Hogyan modulok kifejlesztett, telepített, és karbantartott, négy fogalmi alkotóelemeit modul gondol segít megérteni:
+Az Azure IoT Edge lehetővé teszi, hogy központi telepítésére és felügyeletére az üzleti logikát az Edge formájában *modulok*. Az Azure IoT Edge-modulok a legkisebb számítási egységek, IoT Edge által felügyelt, és az Azure-szolgáltatások (például az Azure Stream Analytics) vagy a saját megoldásspecifikus kódját is tartalmazhat. Tudni, hogyan modulok kifejlesztett, telepített, és karbantartott, segít a négy fogalmi alkotóelemeit modul gondol:
 
-* A **modul kép** , amely meghatározza egy modult a szoftvert tartalmazó csomag.
-* A **modul példány** számítási modul kép futó IoT peremhálózati eszköz a meghatározott egysége. A modul példánya a IoT peremhálózati futtatókörnyezet elindult.
-* A **modul identitás** olyan kódrészletek, IoT-központ, a modul-példányokhoz tartozó tárolt (beleértve a biztonsági hitelesítő adatok) információit.
-* A **modul iker** tárolva az IoT-központ, a modul példányához, beleértve a metaadatok, a konfiguráció és a feltételek állapotadatait tartalmazó JSON-dokumentumból. 
+* A **modul rendszerképének** a szoftvert, amely meghatározza egy modult tartalmazó csomag.
+* A **modulpéldány** az adott számítási egységek, a modul rendszerképének futó IoT Edge-eszköz van. A modul példány van indíthatja el az IoT Edge-futtatókörnyezet.
+* A **modul identitás** olyan információk (beleértve a biztonsági hitelesítő adatok) az IoT hubon, minden egyes modul-példányhoz tartozó tárolt.
+* A **ikermodul** az IoT hubon, egy modul példányt, beleértve a metaadatokat, konfigurációkat és állapotokat állapotinformációinak tartalmazó tárolt JSON-dokumentumok. 
 
 ## <a name="module-images-and-instances"></a>A modul képek és példányok
 
-IoT peremhálózati modul lemezképek olyan alkalmazásokat tartalmaznak, a felügyeleti, a biztonsági és a kommunikációs szolgáltatások IoT peremhálózati futásidejű előnyeit. A saját modul lemezképek fejlesztése, vagy exportálja egy támogatott Azure szolgáltatás, például az Azure Stream Analytics közül.
-A lemezképek a felhőben vannak, és azok frissítése, megváltozott, és a különböző megoldások rendszerbe. A modul, amely gépi tanulással termelési sor kimeneti előrejelzése például egy különálló lemezképet, mint a modul, amely egy dron szabályozásához használja a számítógép stratégiai létezik. 
+IoT Edge-modul lemezképek szerepelnek, felügyeleti, biztonsági és az IoT Edge-futtatókörnyezet, kommunikációs szolgáltatások előnyeit. Fejlesszen saját modul rendszerképét, vagy exportálhatja egy támogatott Azure-szolgáltatás, például az Azure Stream Analytics közül.
+A képek a felhőben található, és azok frissíthetők, megváltozott, és különböző megoldások üzembe helyezve. Például egy modul által használt gépi tanulás segítségével megkönnyíti a gyártósor kimeneti létezik egy modul által használt számítógépes látástechnológiai egy drónt szabályozhatja, mint egy különálló lemezképet. 
 
-Minden alkalommal, amikor egy modul lemezképet központi telepítése egy eszközön, és az IoT peremhálózati futásidejű indította modult egy új példánya jön létre. A világ különböző pontjain két eszköz használhatja ugyanazt a modul lemezképet; azonban mindegyik rendelkezik saját modul példány a modul indításakor az eszközön. 
+Minden alkalommal, amikor egy modul rendszerképének központi telepítése egy eszközön, és az IoT Edge-futtatókörnyezet használatának lépései egy adott modul új példányát jön létre. A világ különböző részein két eszközt használhatja ugyanazt a modul lemezképet; azonban minden egyes kellene saját modulpéldány a modul indításakor az eszközön. 
 
-![A felhő - modul példányok eszközökön modul lemezképek][1]
+![A modul képeket a felhőben – modul példányok az eszközökön][1]
 
-Megvalósításban modulok lemezképek nem létezik-e a tároló képek tárházban, és eszközök tárolói modul példányok. Azure IoT peremhálózati alkalmazási helyzetei növekedésével modul képek és példányok új típusú jön létre. Korlátozott erőforrás eszközök például nem futtatható, előfordulhat, hogy létezik-e dinamikus csatolású kódtárakat és a futtatható példányok modul lemezképeket tárolók. 
+Végrehajtására, a modulok képek jelen vannak egy tárházban lévő tárolórendszerképek, és modul példányok olyan tárolók, az eszközökön. Az Azure IoT Edge használati esetek növekedésével új típusú modul lemezképek és a példány jön létre. Például korlátozott erőforrások eszközök tárolók, így szükség lehet a dinamikus csatolású kódtárai és végrehajtható fájlok-példányok létező modul képeket nem futtatható. 
 
 ## <a name="module-identities"></a>A modul identitások
 
-Új modul példány létrehozásakor az IoT-Edge-futtatókörnyezet példány társítva van egy megfelelő modul identitást. A modul identitás-IoT-központ tárolja, és a címzési és a biztonsági hatókör összes helyi és a felhő kommunikációt az adott modult példánynak alkalmazzák.
-A modul-példányhoz társított identitása függ az eszköz identitásának a fut-e a példány és a megoldásban Megadja, hogy a modul nevét. Például ha meghívja a `insight` modul, amely egy Azure Stream Analytics, és használja azt telepítette nevezett eszköz `Hannover01`, az IoT-Edge futásidejű létrehoz egy megfelelő modul identitás nevű `/devices/Hannover01/modules/insight`.
+Az IoT Edge-futtatókörnyezet új modul példányt létrehozza, ha a példány egy megfelelő modul identitás társítva. A modul identitását az IoT Hub tárolja, és a címzési és biztonsági hatókör összes helyi és felhőalapú kommunikációt az eszközspecifikus modul példányhoz alkalmazzák.
+Az identitás, a modul-példányhoz társított függ az eszköz az identitással fut-e a példány és a megoldás adja át, hogy a modul nevét. Például ha felhívja `insight` olyan modul, amely egy Azure Stream Analytics, és használja telepítése egy eszközön nevű `Hannover01`, az IoT Edge-futtatókörnyezet létrehoz egy megfelelő nevű modul identitást `/devices/Hannover01/modules/insight`.
 
-Egyértelműen esetekben ha egy modul lemezkép többször ugyanarra az eszközre telepítendő telepítheti eltérő nevű több alkalommal ugyanazt a lemezképet.
+Természetesen forgatókönyvek üzembe kell helyeznie egy modul rendszerképének többször ugyanazon az eszközön, amikor üzembe helyezéséhez használható többször, különböző neveket ugyanazt a lemezképet.
 
 ![A modul identitások egyediek.][2]
 
-## <a name="module-twins"></a>A modul twins
+## <a name="module-twins"></a>Ikermodulokkal
 
-Minden egyes modul példány is rendelkezik a megfelelő modul iker a modul példány konfigurálásához használható. A példány és a kettős társított egymással a modul identitás keresztül. 
+Minden egyes modul példány is rendelkezik egy megfelelő ikermodul, amely a modul példány konfigurálásához használhatja. A példány és az ikereszköz kapcsolódnak egymással a modul identitás keresztül. 
 
-Egy modul iker modul információkat és konfigurációs tulajdonságok tárolt JSON-dokumentumhoz. A fogalom fekvő a [eszköz iker] [ lnk-device-twin] koncepció az IoT-központot. A modul iker szerkezete megegyezik pontosan egy eszköz iker. Az API-khoz való twins mindkét típusú interakcióra használatos is azonosak. Az egyetlen különbség a kettő között az az ügyfél SDK megjelenítéséhez használt identitása. 
+Egy ikermodul egy JSON-dokumentum, amely a modul információkat és konfigurációs tulajdonságok tárolja. A fogalom a parallels a [ikereszköz] [ lnk-device-twin] koncepció az IoT hubról. Egy ikermodul struktúrája megegyezik pontosan egy ikereszközt. Az API-kat, és mindkét típusú twins kommunikációhoz használható is ugyanezek. Az egyetlen különbség a kettő között az identitásnak az hozza létre az ügyfél-SDK. 
 
 ```csharp
-// Create a DeviceClient object. This DeviceClient will act on behalf of a 
+// Create a ModuleClient object. This ModuleClient will act on behalf of a 
 // module since it is created with a module’s connection string instead 
 // of a device connection string. 
-DeviceClient client = new DeviceClient.CreateFromConnectionString(moduleConnectionString, settings); 
+ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
 await client.OpenAsync(); 
  
-// Get the model twin 
+// Get the module twin 
 Twin twin = await client.GetTwinAsync(); 
 ```
 
-## <a name="offline-capabilities"></a>Kapcsolat nélküli képességek
+## <a name="offline-capabilities"></a>Offline képességeiről
 
-Azure IoT peremhálózati támogatja az IoT-Edge eszközök offline műveleteket. Ezek a képességek legfeljebb a lépést, és további helyzeteket is vannak fejlesztés alatt áll. 
+Az Azure IoT Edge az IoT Edge-eszközök offline műveleteket támogatja. Most ezeket a képességeket korlátozva, és további forgatókönyvek fejlesztenek. 
 
-IoT peremhálózati modulok hosszabb ideig offline állapotban lehet, mindaddig, amíg a következő feltételek teljesülnek: 
+IoT Edge-modulok mindaddig, amíg az alábbi követelmények teljesülnek-e hosszabb ideig offline állapotban lehet: 
 
-* **Üzenet-élettartama (TTL) még mindig érvényes**. Üzenet TTL alapértelmezett értéke két óra, de módosított magasabb vagy alacsonyabb lehet a tárolóban és továbbítsa az IoT él konfiguráció központ beállításait. 
-* **Modulok nem kell újból hitelesítésre a peremhálózati IoT hubbal nélküli**. Modulok csak hitelesítheti a peremhálózati hubs, amelyek rendelkeznek egy aktív kapcsolatot létesít az IoT-központ. Modulok kell újra hitelesíteni, ha bármilyen okból újraindítást. Modulok továbbra is küldhet üzeneteket a peremhálózati hub után a SAS-token érvényessége lejárt. Ha folytatja a kapcsolatot, a peremhálózati hub egy új jogkivonatot kér a modul, és és az IoT hub érvényesíti azt. Ha sikeres, a peremhálózati hub továbbítja modul tárolt, még akkor is a távozó üzeneteinek során a modul token lejárt. 
-* **A modult, amely során az üzenetek küldése offline működőképességét amikor a kapcsolat folytatása**. Az IoT-központ csatlakozni, akkor a peremhálózati hub kell érvényesítenie egy új modul token (ha az előzőre lejárt) előtt továbbíthatja a modul üzenetek. Ha a modul nem egy új jogkivonatot kínálnak, nem a modul tárolt üzenetek hajthat végre a peremhálózati központ. 
-* **Az Edge-hubhoz hely a lemezen tárolja az üzeneteket**. Alapértelmezés szerint üzenetek a peremhálózati hub tároló filesystem vannak tárolva. Nincs olyan konfigurációs beállítás határozza meg az üzenetek tárolásához helyette csatlakoztatott kötetet. Mindkét esetben kell adni a késleltetett kézbesítéséhez az IoT-központ üzenetek tárolásához rendelkezésre álló terület.  
+* **Üzenet time-to-live (Élettartam TTL) nem járt le**. Üzenet Élettartama alapértelmezett értéke két óra, de módosított magasabb vagy alacsonyabb lehet a Store az és továbbítási konfiguráció az IoT Edge-ben a hub beállításai. 
+* **Modulok hitelesítse magát újra, az offline állapotban az IoT Edge hub nem kell**. Modulok csak hitelesítheti az Edge hub, amely az IoT hub-aktív internetkapcsolat. Modulok kell újra hitelesíteni kell, ha azok bármilyen okból újra lesz indítva. Modulok továbbra is küldhet üzeneteket az Edge hub követően a SAS-token érvényessége lejárt. Amikor visszatér a kapcsolatot, ha az Edge hub egy új jogkivonatot kér a modult, és érvényesíti azt az IoT hubbal. Sikeres művelet esetén az Edge hub továbbítja a modul üzeneteket tárolt, még a üzeneteinek során a modul jogkivonat lejárt. 
+* **A modul közben az üzeneteket küldő offline esetén továbbra is működőképes kapcsolat folytatja**. Után az IoT hubhoz való csatlakozáshoz, az Edge hub kell érvényesítenie modul új jogkivonatot (Ha egy korábbi lejárt) előtt továbbíthatja a modul üzeneteket. Ha a modul nem érhető el új jogkivonatot biztosítani, az Edge hub tárolt üzenetek a modul nem cselekedhet. 
+* **Az Edge hub az üzenetek tárolására lemezterülettel rendelkezik**. Alapértelmezés szerint üzeneteket az Edge hub tároló fájlrendszer vannak tárolva. Nincs olyan konfigurációs beállítást adja meg az üzenetek tárolására helyette egy csatlakoztatott kötetre. Mindkét esetben szükség van a késleltetett kézbesítéséhez az IoT Hub az üzenetek tárolásához rendelkezésre álló terület.  
 
 ## <a name="next-steps"></a>További lépések
- - [Az Azure IoT peremhálózati futásidejű és az architektúra][lnk-runtime]
+ - [Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése][lnk-runtime]
 
 <!-- Images -->
 [1]: ./media/iot-edge-modules/image_instance.png

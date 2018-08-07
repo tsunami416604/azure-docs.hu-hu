@@ -17,12 +17,12 @@ ms.date: 05/01/2017
 ms.author: celested
 ms.reviewer: hirsin, jmprieur, elisol, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b90e03ad15f3656c06f36d6114250298db91e9ad
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3d71e889fccaa6de59d9a528754a5e11d0220bef
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430323"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577135"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Jelentkezzen be Microsoft-Account és az Azure Active Directory a felhasználók egy adott alkalmazásban
 Múltbeli időpont az alkalmazásfejlesztők számára személyes Microsoft-fiókot is támogatja, és a munkahelyi fiókok Azure Active Directoryból kellett két külön rendszerekkel való integrációt segítik. Az Azure Active Directory (Azure AD) v2.0-végpont egy új hitelesítési API-verziót, amely leegyszerűsíti a folyamatot mutatja be. Az Azure AD v2.0-végpont be mindkét típusú fiókok olyan egységes integrációs segítségével teszi lehetővé. Az Azure AD v2.0-végpont használó alkalmazások is használhatnak fel, a REST API-kat a [Microsoft Graph API](https://graph.microsoft.io) mindkét típusú fiók használatával.
@@ -46,9 +46,9 @@ Ismerje meg mi mindent az Azure AD v2.0-végpont:
 Ismerkedés az Azure AD v2.0-végpont platform kapcsolatos részletes információk:
 
 * [Az Azure AD v2.0 protokoll hivatkozhat.](active-directory-v2-protocols.md)
-* [Az Azure AD v2.0-jogkivonatok referencia](active-directory-v2-tokens.md)
+* [Az Azure AD v2.0-jogkivonatok referencia](v2-id-and-access-tokens.md)
 * [Hitelesítési tárak az Azure AD v2.0-hivatkozás](active-directory-v2-libraries.md)
-* [Hatókörök és jóváhagyás az Azure AD v2.0-végpont](active-directory-v2-scopes.md)
+* [Hatókörök és jóváhagyás az Azure AD v2.0-végpont](v2-permissions-and-consent.md)
 * [A Microsoft Graph API](https://graph.microsoft.io)
 
 > [!NOTE]

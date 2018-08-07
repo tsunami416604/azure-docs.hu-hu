@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory feltételes hozzáférési beállítások útmutatója |} Microsoft Docs
+title: Az Azure Active Directory feltételes hozzáférési beállítások referenciája |} A Microsoft Docs
 description: A támogatott beállítások áttekintést kaphat az Azure Active Directory feltételes hozzáférési házirendben.
 services: active-directory.
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 239ece0f126e1c92c2e94206baa7026ac04d604f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 845356b991197cc658f5fe5411da2f5b8cb8a38f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227989"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521472"
 ---
-# <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférési beállításainak ismertetése
+# <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
-Használható [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) vezérlésére hogyan engedéllyel rendelkező felhasználók férhetnek hozzá az erőforrásokat.   
+Használhat [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) szabályozásához, hogyan engedéllyel rendelkező felhasználók hozzáférhetnek az erőforrásokhoz.   
 
-Ez a cikk azt ismerteti támogatja a feltételes hozzáférési házirendet a következő konfigurációs beállítások: 
+Ez a cikk a feltételes hozzáférési szabályzat az alábbi konfigurációs lehetőségeket a támogatási információkat nyújt: 
 
-- Felhőalapú alkalmazások hozzárendelések
+- Felhőalapú alkalmazás-hozzárendelések
 
 - Eszköz platform feltétel 
 
@@ -37,18 +37,18 @@ Ez a cikk azt ismerteti támogatja a feltételes hozzáférési házirendet a k�
 - Jóváhagyott alkalmazás követelményeinek
 
 
-Ha ez nem csak a keresett információkat, hozzászólásban Ez a cikk végén.
+Ha ez nem az Ön által keresett információkat,. Ez a cikk végén található Megjegyzés írása.
 
-## <a name="cloud-apps-assignments"></a>Felhőalapú alkalmazások hozzárendelések
+## <a name="cloud-apps-assignments"></a>Felhőalapú alkalmazás-hozzárendelések
 
-Feltételes hozzáférési házirendekkel, szabályozhatja, hogy a felhasználók hogyan férhetnek hozzá a [felhőalapú alkalmazásokba](active-directory-conditional-access-conditions.md#cloud-apps). A feltételes hozzáférési házirendjének konfigurálásakor kell legalább egy felhő-alkalmazás kiválasztása. 
+Feltételes hozzáférési szabályzatok, szabályozhatja, hogy a felhasználók hogyan férhetnek hozzá a [felhőalkalmazások](conditional-access/conditions.md#cloud-apps). Egy feltételes hozzáférési házirendjének konfigurálásakor kell választania legalább egy felhőalkalmazást. 
 
-![Válassza ki a felhőalapú alkalmazások, a házirend](./media/active-directory-conditional-access-technical-reference/09.png)
+![Válassza ki a felhőalkalmazásokat a szabályzat](./media/active-directory-conditional-access-technical-reference/09.png)
 
 
-### <a name="microsoft-cloud-applications"></a>A Microsoft felhőalapú alkalmazásokhoz
+### <a name="microsoft-cloud-applications"></a>A Microsoft felhőalapú alkalmazások
 
-A feltételes hozzáférési házirend a Microsoft hozzárendelheti a következő felhőalapú alkalmazásokat:
+Feltételes hozzáférési szabályzatot rendelhet a következő felhőalapú alkalmazások a Microsoft:
 
 - Az Azure Information Protection - [további](https://docs.microsoft.com/information-protection/get-started/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 
@@ -56,11 +56,11 @@ A feltételes hozzáférési házirend a Microsoft hozzárendelheti a következ�
 
 - Microsoft Dynamics 365
 
-- A Microsoft Office 365 Yammer
+- A Microsoft Office 365 Yammeren
 
 - A Microsoft Office 365 Exchange online-hoz
 
-- A Microsoft Office 365 SharePoint online-hoz (tartalmazza a onedrive vállalati verzió és minden Project Online)
+- A Microsoft Office 365 SharePoint Online (onedrive vállalati verzió tartalmazza az üzleti és a Project Online-ban)
 
 - Microsoft Power BI 
 
@@ -71,22 +71,22 @@ A feltételes hozzáférési házirend a Microsoft hozzárendelheti a következ�
 
 ### <a name="other-applications"></a>Más alkalmazások 
 
-Mellett a Microsoft felhőalapú alkalmazásokat feltételes hozzáférési házirendet rendelhet a következő típusú felhőalapú alkalmazásokat:
+A Microsoft felhőalapú alkalmazások mellett feltételes hozzáférési szabályzatot rendelhet a következő típusú felhőalapú alkalmazásokat:
 
-- Az Azure AD-kompatibilis alkalmazásokat
+- Az Azure AD-hoz csatlakoztatott alkalmazások
 
-- A szolgáltatott szoftverként (SaaS) kezelése előre integrált összevont szoftver
+- Előre integrált összevont szoftver (saas biztosított) alkalmazás
 
-- Jelszó az egyszeri bejelentkezés (SSO) használó alkalmazások
+- Jelszavas egyszeri bejelentkezés (SSO) használó alkalmazások
 
 - Az üzletági alkalmazások
 
-- Az Azure AD-alkalmazásproxy használó alkalmazások
+- Azure AD Application proxyt használó alkalmazások
 
 
 ## <a name="device-platform-condition"></a>Eszköz platform feltétel
 
-Feltételes hozzáférési szabályzatot konfigurálhatja a házirendet, az operációs rendszer összekötését egy ügyfél az eszköz platform feltételt. Az Azure AD feltételes hozzáférés a következő eszközplatformokat támogatja:
+A feltételes hozzáférési szabályzatot konfigurálhatja a eszköz-platform feltételt, és elősegítsék a házirendet, az operációs rendszer az ügyfélen. Az Azure AD feltételes hozzáférés a következő eszközplatformokat támogatja:
 
 - Android
 
@@ -99,7 +99,7 @@ Feltételes hozzáférési szabályzatot konfigurálhatja a házirendet, az oper
 - macOS
 
 
-![A hozzáférési házirend, az ügyfél operációs rendszer kötése](./media/active-directory-conditional-access-technical-reference/41.png)
+![A hozzáférési szabályzat az ügyfél operációs rendszer kötése](./media/active-directory-conditional-access-technical-reference/41.png)
 
 
 
@@ -107,118 +107,118 @@ Feltételes hozzáférési szabályzatot konfigurálhatja a házirendet, az oper
 
 ## <a name="client-apps-condition"></a>Ügyfél alkalmazások feltétel 
 
-A feltételes hozzáférési szabályzatot konfigurálhat a [ügyfélalkalmazások](active-directory-conditional-access-conditions.md#client-apps) feltétel összekötését a házirendet, az ügyfél-alkalmazást, amelynek már kezdeményezte a hozzáférési kísérlet. Állítsa be az ügyfél adja meg, vagy letiltja a hozzáférést, ha egy hozzáférési kísérlet a következő típusú ügyfél alkalmazásokat az alkalmazások feltétel:
+A feltételes hozzáférési szabályzatot konfigurálhat a [ügyfélalkalmazás](conditional-access/conditions.md#client-apps) elősegítsék a házirendet, az ügyfélalkalmazás, amely egy hozzáférési kísérlet kezdeményezte az állapotot. Állítsa be az ügyfél megadásáról vagy letiltja a hozzáférést, ha a hozzáférési kísérlet történik az ügyfélalkalmazások a következő típusú alkalmazások feltétel:
 
 - Böngésző
-- Hordozható és asztali alkalmazások
+- A mobilalkalmazások és asztali alkalmazások
 
-![Az ügyfél alkalmazások elérés](./media/active-directory-conditional-access-technical-reference/03.png)
+![Hozzáférés vezérlése az ügyfélalkalmazások](./media/active-directory-conditional-access-technical-reference/03.png)
 
 ### <a name="supported-browsers"></a>Támogatott böngészők 
 
-A feltételes hozzáférési házirend kiválaszthatja **böngészők** ügyfél alkalmazásként.
+A feltételes hozzáférési szabályzat kiválaszthatja **böngészők** ügyfélalkalmazás szerint.
 
-![Támogatott böngészők elérés](./media/active-directory-conditional-access-technical-reference/05.png)
+![Támogatott böngészők hozzáférés](./media/active-directory-conditional-access-technical-reference/05.png)
 
-Ez a beállítás minden böngészőben működik. Azonban kielégítéséhez egy eszköz házirend megfelelő eszköz követelmény, például a következő operációs rendszerek és böngészők támogatottak:
+Ez a beállítás minden böngésző együttműködik. Azonban teljesítéséhez egy szabályzatot, például a szabályzatnak megfelelő eszköz követelmény, a következő operációs rendszerek és böngészők támogatottak:
 
 
 | Operációs rendszer                     | Böngészők                            | Támogatás     |
 | :--                    | :--                                 | :-:         |
 | Windows 10             | Internet Explorer, Edge, Chrome     | ![Jelölőnégyzet][1] |
-| Windows 8 / 8.1        | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
+| A Windows 8 / 8.1        | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
 | Windows 7              | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
-| iOS                    | Safari, Intune által felügyelt böngésző      | ![Jelölőnégyzet][1] |
-| Android                | Chrome, Intune által felügyelt böngésző      | ![Jelölőnégyzet][1] |
+| iOS                    | A Safari, az Intune Managed Browser      | ![Jelölőnégyzet][1] |
+| Android                | Chrome-ban, az Intune Managed Browser      | ![Jelölőnégyzet][1] |
 | Windows Phone          | Internet Explorer, Edge             | ![Jelölőnégyzet][1] |
 | Windows Server 2016    | Internet Explorer, Edge             | ![Jelölőnégyzet][1] |
 | Windows Server 2016    | Chrome                              | Hamarosan elérhető |
 | Windows Server 2012 R2 | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
 | Windows Server 2008 R2 | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
-| macOS                  | Chrome, Safari                      | ![Jelölőnégyzet][1] |
+| macOS                  | Chrome, a Safari                      | ![Jelölőnégyzet][1] |
 
 
 
 #### <a name="chrome-support"></a>Chrome-támogatás
 
-A Chrome támogatási **Windows 10 Creators frissítés (verzió: 1703)** vagy újabb, telepítse a [ehhez a kiterjesztéshez](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+Támogatja a Chrome **Windows 10 alkotói frissítésével (1703-as)** vagy újabb telepítése [Ez a bővítmény](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
 
-A Chrome böngésző automatikusan telepíteni ezt a bővítményt, hozza létre a következő beállításkulcsot:
+A bővítmény telepítéséről automatikusan Chrome böngészők, hozzon létre a következő beállításkulcsot:
 
 |    |    |
 |--- | ---|
 |Útvonal | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 |Name (Név) | 1 |
 |Típus | REG_SZ (String) |
-|Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji;https://clients2.google.com/service/update2/crx
+|Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
-A Chrome támogatási **7 és Windows 8.1**, hozza létre a következő beállításkulcsot:
+Támogatja a Chrome **7 és Windows 8.1**, hozza létre a következő beállításkulcsot:
 
 |    |    |
 |--- | ---|
 |Útvonal | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |Name (Név) | 1 |
 |Típus | REG_SZ (String) |
-|Adatok | {"minta": "https://device.login.microsoftonline.com","szűrő": {"Kiállító": {"CN": "MS-szervezet-hozzáférés"}}}|
+|Adatok | {"a minta": "https://device.login.microsoftonline.com","filter": {"Kiállító": {"CN": "Hozzáférés-MS-szervezet"}}}|
 
-A böngészők támogatja az eszközhitelesítés, lehetővé teszi az eszköz azonosítását és ellenőrizni a házirend alapján. Az eszköz ellenőrzése sikertelen lesz, ha a böngésző fut privát üzemmódban. 
-
-
-### <a name="supported-mobile-applications-and-desktop-clients"></a>Támogatott mobil alkalmazások és asztali ügyfelek
-
-A feltételes hozzáférési házirend kiválaszthatja **mobilalkalmazások és asztali ügyfelek** ügyfél alkalmazásként.
+A böngészők eszközhitelesítés lehetővé teszi az eszköz azonosítani és egy házirend kialakításnak támogatja. Az eszköz-ellenőrzés sikertelen lesz, ha a böngészőt privát üzemmódban fut-e. 
 
 
-![Elérés támogatott mobilalkalmazások vagy asztali ügyfelek](./media/active-directory-conditional-access-technical-reference/06.png)
+### <a name="supported-mobile-applications-and-desktop-clients"></a>Támogatott a mobilalkalmazások és asztali ügyfelek
+
+A feltételes hozzáférési szabályzat kiválaszthatja **mobilalkalmazások és asztali ügyfelek** ügyfélalkalmazás szerint.
 
 
-Ez a beállítás hatással van a következő mobilalkalmazások és az asztali ügyfelek hozzáférések: 
+![Hozzáférés vezérlése támogatott mobilalkalmazások és asztali ügyfelek](./media/active-directory-conditional-access-technical-reference/06.png)
+
+
+Ez a beállítás hatással van a hozzáférési kísérletek a következő mobilalkalmazások és asztali ügyfelek: 
 
 
 |Ügyfélalkalmazások|Célként megadott szolgáltatás|Platform|
 |---|---|---|
-|Azure távoli alkalmazás|Az Azure távoli App service|Windows 10, Windows 8.1, Windows 7, iOS, Android és Mac OS X|
-|Dynamics CRM-alkalmazás|Dynamics CRM|Windows 10, Windows 8.1, iOS és Android|
-|Mail/naptár/személyek app, Outlook 2016, az Outlook 2013 (modern hitelesítést)|Az Office 365 Exchange online-hoz|Windows 10|
-|Többtényezős hitelesítés és a hely házirend-alkalmazásokhoz. Eszköz alapú szabályzatok nem támogatottak. |Bármely saját alkalmazások app service|Android és iOS|
-|Microsoft csapatok szolgáltatások – ezen lehetőség összes szolgáltatás, amely támogatja a Microsoft Teams és minden az ügyfél alkalmazások – Windows asztali, iOS, Android, WP és webes ügyfél|Microsoft Teams|Windows 10, Windows 8.1, Windows 7, iOS, Android és macOS |
-|Office 2016, Office 2013 (a modern hitelesítést), a onedrive vállalati verzió alkalmazások szinkronizálása ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Az Office 365 SharePoint online szolgáltatáshoz|Windows 8.1, Windows 7|
-|Office 2016-alkalmazások, univerzális Office-alkalmazásokat, Office 2013 (modern hitelesítést), a onedrive vállalati verzió szinkronizálási ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), Office csoportok támogatási tervezünk-e a jövőben, SharePoint-alkalmazások támogatása tervezünk-e a jövőben|Az Office 365 SharePoint online szolgáltatáshoz|Windows 10|
-|Office 2016 macOS (Word, Excel, PowerPoint, csak a OneNote). A OneDrive vállalati verziójának ügyfélszolgálatával tervezett a jövőben|Az Office 365 SharePoint online szolgáltatáshoz|Mac OS X|
-|Office-mobilalkalmazások|Az Office 365 SharePoint online szolgáltatáshoz|Android, iOS|
-|Office Yammer-alkalmazás|Az Office 365 Yammer|Windows 10, iOS, Android|
-|Outlook 2016 (Office macOS)|Az Office 365 Exchange online-hoz|Mac OS X|
-|Outlook 2016, az Outlook 2013 (modern hitelesítést), a Skype vállalati verzió (a modern hitelesítést)|Az Office 365 Exchange online-hoz|Windows 8.1, Windows 7|
-|Outlook mobilalkalmazás|Az Office 365 Exchange online-hoz|Android, iOS|
-|Power bi alkalmazásról|Power bi szolgáltatás|Windows 10, Windows 8.1, Windows 7, Android és iOS|
+|Az Azure távoli alkalmazás|Az Azure távoli App Service-ben|A Windows 10, Windows 8.1, Windows 7, iOS, Android és Mac OS X|
+|Dynamics CRM-alkalmazás|Dynamics CRM|A Windows 10, Windows 8.1, iOS és Android|
+|Mail/naptár/személyek alkalmazást, az Outlook 2016, az Outlook 2013 (a modern hitelesítést)|Az Office 365 Exchange online-hoz|Windows 10|
+|MFA- és helyszabályzat alkalmazásokhoz. Eszköz alapú szabályzatok nem támogatottak. |Bármely saját alkalmazások app service|Android és iOS|
+|Microsoft Teams-szolgáltatások – ez vezérli a minden szolgáltatás, amely támogatja a Microsoft Teams és minden az ügyfélalkalmazások – Windows Desktop, iOS, Android, WP és webes ügyféllel|Microsoft Teams|A Windows 10, Windows 8.1, Windows 7, iOS, Android és macOS |
+|Office 2016-alkalmazásokat, Office 2013 (a modern hitelesítést), a onedrive vállalati verzió szinkronizálása ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Az Office 365 SharePoint Online|Windows 8.1, Windows 7|
+|Office 2016-os, univerzális Office-alkalmazásokat, Office 2013 (a modern hitelesítést), onedrive-on a Szinkronizáló ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), az Office-csoportok támogatása a jövőben tervezünk, SharePoint-alkalmazások támogatása a jövőben tervezünk|Az Office 365 SharePoint Online|Windows 10|
+|Office 2016 MacOS (a Word, Excel, PowerPoint, csak a OneNote). A jövőben tervezünk OneDrive for Business-támogatás|Az Office 365 SharePoint Online|Mac OS X|
+|Office-mobilalkalmazások|Az Office 365 SharePoint Online|Android, iOS|
+|Office Yammer-alkalmazás|Az Office 365 Yammeren|A Windows 10, iOS, Android|
+|Az Outlook 2016 (a macOS-hez készült Office)|Az Office 365 Exchange online-hoz|Mac OS X|
+|Az Outlook 2016, az Outlook 2013 (a modern hitelesítést), a Skype vállalati verzió (a modern hitelesítést)|Az Office 365 Exchange online-hoz|Windows 8.1, Windows 7|
+|Az Outlook mobilalkalmazás|Az Office 365 Exchange online-hoz|Android, iOS|
+|A Power bi alkalmazás|Power bi szolgáltatásban|A Windows 10, Windows 8.1, Windows 7, Android és iOS|
 |Skype Vállalati verzió|Az Office 365 Exchange online-hoz|Android, IOS |
-|A Visual Studio Team Services-alkalmazás|Visual Studio Team Services|Windows 10, Windows 8.1, Windows 7, iOS és Android|
+|A Visual Studio Team Services-alkalmazás|Visual Studio Team Services|A Windows 10, Windows 8.1, Windows 7, iOS és Android|
 
 
 
-## <a name="approved-client-app-requirement"></a>Jóváhagyott app követelmény 
+## <a name="approved-client-app-requirement"></a>Jóváhagyott alkalmazás megkövetelése 
 
-A feltételes hozzáférési házirendben megkövetelheti, hogy hozzáférjen megkísérli a kijelölt felhőalapú alkalmazásokat kell tenni az ügyfél jóváhagyott alkalmazásokból. 
+A feltételes hozzáférési házirendben megkövetelheti, hozzáférési kísérelje meg a kiválasztott felhőalapú alkalmazások igényeinek megfelelően történő áruházi vásárlást egy jóváhagyott ügyfélalkalmazás. 
 
-![Jóváhagyott alkalmazások elérés](./media/active-directory-conditional-access-technical-reference/21.png)
+![A jóváhagyott ügyfélalkalmazások hozzáférés](./media/active-directory-conditional-access-technical-reference/21.png)
 
-Ez a beállítás a következő ügyfél alkalmazásokra vonatkoznak:
+Ez a beállítás a következő ügyfél-alkalmazásokra vonatkozik:
 
 
 - A Microsoft Intune Managed Browser
 - Microsoft PowerBI
-- Microsoft számlázás
-- Microsoft indítója
+- A Microsoft számlázás
+- A Microsoft indítója
 - Microsoft Azure Information Protection
 - Microsoft Excel
 - Microsoft Kaizala 
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
-- Microsoft Planner
+- A Microsoft Planner
 - Microsoft PowerPoint
 - Microsoft SharePoint
-- Microsoft Skype vállalati verzió
+- A Microsoft Skype vállalati verzió
 - Microsoft StaffHub
 - Microsoft Teams
 - Microsoft Visio
@@ -228,17 +228,17 @@ Ez a beállítás a következő ügyfél alkalmazásokra vonatkoznak:
 
 **Megjegyzések**
 
-- A jóváhagyott alkalmazások támogatják az Intune mobilalkalmazás-felügyeleti funkció.
+- A jóváhagyott ügyfélalkalmazások a Intune mobilalkalmazás-felügyeleti funkció támogatja.
 
-- A **jóváhagyott ügyfélalkalmazás szükséges** követelmény:
+- A **jóváhagyott ügyfélalkalmazás megkövetelése** követelmény:
 
-    - Csak támogatja az iOS és az Android [eszköz platform feltétel](#device-platforms-condition).
+    - Csak támogatja az iOS és Android for [eszköz platform feltétel](#device-platforms-condition).
 
 
 ## <a name="next-steps"></a>További lépések
 
-- A feltételes hozzáférés áttekintéséért lásd: [Mi az, hogy a feltételes hozzáférés az Azure Active Directoryban?](active-directory-conditional-access-azure-portal.md)
-- Ha készen áll a konfigurálhat feltételes hozzáférési szabályzatokat a környezetben, tekintse meg a [ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md).
+- A feltételes hozzáférés áttekintéséhez lásd: [Mi az az Azure Active Directory feltételes hozzáférés?](active-directory-conditional-access-azure-portal.md)
+- Ha készen áll a feltételes hozzáférési szabályzatok konfigurálhatók az adott környezetben, tekintse meg a [ajánlott tanácsok az Azure Active Directory feltételes hozzáférés](conditional-access/best-practices.md).
 
 
 

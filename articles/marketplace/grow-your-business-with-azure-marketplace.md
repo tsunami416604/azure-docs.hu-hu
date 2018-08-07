@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 094958911435b899773ef4ee11176f538a4c8fe0
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399124"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577329"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Növelje üzletét a Marketplace-en 
 Az appsource-on vagy az Azure piactéren az ajánlat közzététele után a Microsofttal közös piaci megjelenést (GTM) tevékenységek használhatja a lista egy kezdőpanele. Vezetői forgalom, a Piactéri ajánlat és gondozásának biztosításáig a Marketplace-en az érdeklődők, például módon nagyszerű felgyorsíthatja az üzlet növekedésének megfelelően. 
@@ -33,7 +33,7 @@ A következő szakaszok táblázatai vonzó marketplace-ajánlat létrehozásár
 ### <a name="storefront-offer-details"></a>Storefront ajánlat részletei
 | Storefront beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Csomag neve | Adjon meg egy erős címet:<br>Az alkalmazás nevére kell kommunikálnak, amelyek az ügyfelek megkapják a legfontosabb értékekre. Az alkalmazás címében többek között a keresési kulcsszavak segíthet az alkalmazás újabb rangsorolni a keresőmotorok találatai között.<br><br>Hajtsa végre a tanácsadási szolgáltatás listaelemek set cím formátuma:<br>[Ajánlat neve]: [időtartama] [ajánlattípusa.] (például *Contoso: 2 héten megvalósítási*)<br><br>Jelen védjegyezési útmutatójának felelnie:<br>Hajtsa végre a [Microsoft Trademark és a jelen védjegyezési útmutatójának](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) és a Microsoft védjegyeiről és a Microsoft-szoftver, a termékek és szolgáltatások nevére hivatkozik, amikor megfelelő, a termékkel kapcsolatos útmutatásokat. |
+| Csomag neve | Adjon meg egy erős címet:<br>Az alkalmazás nevére kell kommunikálnak, amelyek az ügyfelek megkapják a legfontosabb értékekre. Az alkalmazás címében többek között a keresési kulcsszavak segíthet az alkalmazás újabb rangsorolni a keresőmotorok találatai között.<br><br>Hajtsa végre a tanácsadási szolgáltatás listaelemek set cím formátuma:<br>[Ajánlat neve]: [időtartama] [ajánlattípusa.] \(például *Contoso: 2 héten megvalósítási*)<br><br>Jelen védjegyezési útmutatójának felelnie:<br>Hajtsa végre a [Microsoft Trademark és a jelen védjegyezési útmutatójának](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) és a Microsoft védjegyeiről és a Microsoft-szoftver, a termékek és szolgáltatások nevére hivatkozik, amikor megfelelő, a termékkel kapcsolatos útmutatásokat. |
 | Az ajánlat leírása | Adjon meg egy tiszta ajánlat leírása:<br>Az ajánlat értékajánlat az első néhány mondatokban a leírás egyértelműen ismerteti. Ne feledje, hogy az első néhány mondatokat előfordulhat, hogy kell-e megjeleníteni a keresőmotorok találatai között. Ne támaszkodjon kizárólag szolgáltatásait és funkcióit, hogy a termék. Ehelyett koncentrálhat, az érték teszi elérhetővé. Az iparág-specifikus szókincsből eredőket vagy a lehető legnagyobb előny-alapú megfogalmazást.<br><br>Alapvető összetevői a értékajánlat tartalmaznia kell a következő információkat:<ul><li>A termék leírását</li><li>Felhasználó, amely számos előnyt biztosít az a termék típusa</li><li>Ügyféligény vagy problémás, amely a termék</li></ul> |
 
 ### <a name="storefront-listing-details"></a>Storefront lista részletei
