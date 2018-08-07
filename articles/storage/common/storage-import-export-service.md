@@ -2,18 +2,18 @@
 title: Azure Import/Export történő adatátvitelt, és az Azure Storage-ból |} A Microsoft Docs
 description: Ismerje meg, hogyan importálás létrehozni és exportálni a feladatokat az adatoknak az Azure Storage szolgáltatásba vagy onnan az Azure Portalon.
 author: alkohli
-manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: e9fc74e6cd145cbba5b620b9db6db9635a0c4c77
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.component: common
+ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364525"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528556"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 

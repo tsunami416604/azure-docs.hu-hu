@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59db39e4d8cc68f8c7b63b347980044f06b4522a
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 98c7bd5daf3b84499e8e31c0a7a2da612834b83e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344409"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521982"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálása és SAP HANA rendszereit az Azure-beli natív virtuális gépek (VM) üzembe helyezett működő. A dokumentum az SAP HANA kibővített M128s VM-termékváltozat konfigurációs információkat is tartalmaz. Ez a dokumentum nem célja, hogy cserélje le a standard szintű SAP dokumentációját, amely magában foglalja az alábbi tartalommal:
@@ -82,13 +82,13 @@ A tárolási típusok és azok SLA-k, az IOPS és a tárolási teljesítmény li
 Mindaddig, amíg az SAP HANA-berendezések helyszíni vásárolt, soha nem érdeklik az i/o-alrendszerre és annak képességeit történt. Mivel az adott berendezés gyártójához győződjön meg arról, hogy a minimális tárhellyel kapcsolatos követelmények teljesülnek-e az SAP Hana-hoz szükséges. Létrehozása az Azure-infrastruktúra saját maga is is érdemes figyelembe vennie néhány ezeknek az igényeknek. És a konfigurációs követelmények, a következő szakaszokban javasolt is megismerheti. Olyan esetekben, ahol konfigurál a virtuális gépek a kívánt vagy SAP HANA futtatása Azure. A előrejelzéséhez, hogy a rendszer kéri eredményez van szükség:
 
 - Engedélyezze az olvasási/írási kötet a **/hana/log** egy legalább 1 MB i/o-méretű 250 MB/s
-- Enable olvasása tevékenység legalább 400MB/s a **/hana/adatok** 16 MB és 64 MB-os i/o-méretek
-- Engedélyezze a legalább 250MB/s az írási tevékenység **/hana/adatok** , 16 MB és 64 MB-os i/o-mérettel
+- Enable olvasása tevékenység legalább 400 MB/s a **/hana/adatok** 16 MB és 64 MB-os i/o-méretek
+- Engedélyezze a legalább 250 MB/s az írási tevékenység **/hana/adatok** , 16 MB és 64 MB-os i/o-mérettel
 
 A megadott alacsony tárolási késései kritikus következményekkel járnak DBMS-rendszerek, még akkor is, mivel az adott DBMS, például SAP HANA, megtartása a memóriában. A tranzakciós napló írási a DBMS-rendszerek körül általában a storage-ban a kritikus útvonalat. De is műveletek, például visszaállítási pontok írása vagy a Betöltés a memóriában, kritikus fontosságú lehet olyan összeomlás utáni helyreállítást követően. Ezért esetében kötelező, kihasználhatja az Azure Premium szintű lemezekkel **/hana/adatok** és **/hana/log** köteteket. A minimális átviteli sebessége növelhető **/hana/log** és **/hana/adatok** igény szerint az SAP, RAID 0 létrehozásához szükséges MDADM vagy LVM több Azure Premium Storage-lemez használatával. És használja, mint a RAID-kötetek **/hana/adatok** és **/hana/log** köteteket. Ahogy a stripe-méretet nyújt a a RAID 0 a javaslat van használandó:
 
-- 64 KB-os vagy 128KB-   **/hana/adatok**
-- 32KB-   **/hana/log**
+- 64 KB-os vagy 128 KB-   **/hana/adatok**
+- 32 KB-   **/hana/log**
 
 > [!NOTE]
 > Nem kell bármilyen RAID-kötetek használatával, mivel a prémium és Standard tárterület tartsa egy virtuális merevlemez három rendszerkép tárhelyredundancia-szint konfigurálása. A RAID-kötetek használatának tisztán, hogy elegendő i/o-teljesítményt biztosító kötetek konfigurálni.
@@ -347,10 +347,112 @@ Helyezünk üzembe az Azure-beli Virtuálisgép-infrastruktúra, és minden egy�
 - Telepítse az SAP HANA főcsomópont SAP dokumentáció alapján
 - **A telepítés után kell a global.ini fájl módosítása, és adja hozzá a paraméter "basepath_shared = nem", a global.ini**. Ez a paraméter lehetővé teszi az SAP HANA futtatása nélkül "shared" kibővített **/hana/adatok** és **/hana/log** köteteket a csomópontok között. Részletek vannak dokumentálva [SAP Megjegyzés #2080991](https://launchpad.support.sap.com/#/notes/2080991).
 - Miután megváltoztatta a global.ini paraméter, indítsa újra az SAP HANA-példány
-- Adja hozzá a további feldolgozó csomópontokat. Lásd még: <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>. Adja meg az SAP HANA-csomópontok közötti kommunikáció a telepítés során a belső hálózaton vagy ezt követően használja, például a helyi hdblcm. További részletes dokumentációt: is [SAP Megjegyzés #2183363](https://launchpad.support.sap.com/#/notes/2183363). 
+- Adja hozzá a további feldolgozó csomópontokat. Lásd még: <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>. Adja meg az SAP HANA-csomópontok közötti kommunikáció során telepítését vagy ezután használ, például, a helyi hdblcm a belső hálózathoz. További részletes dokumentációt: is [SAP Megjegyzés #2183363](https://launchpad.support.sap.com/#/notes/2183363). 
 
 A telepítő rutin a következő futtatásához használja a nem megosztott lemezeket a kibővített konfigurációs telepített fog **/hana/adatok** és **/hana/log**. Mivel a **/hana/megosztott** kötet helyez el a magas rendelkezésre állású az NFS-megosztások.
-  
+
+
+## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>Az SAP HANA dinamikus Rétegezést 2.0-beli virtuális gépek
+
+Mellett az M-sorozatú Azure virtuális gépeken SAP HANA-tanúsítvánnyal, az SAP HANA dinamikus Rétegezést 2.0 is támogatott, a Microsoft Azure (SAP HANA dinamikus Rétegezést dokumentáció linsk lásd lejjebb). Nincs különbség a termék telepítése vagy működő azt ugyan, például SAP HANA vezérlőpultja egy Azure virtuális gépen belüli keresztül nincsenek néhány fontos elem, amely megadása kötelező a hivatalos támogatást az Azure-ban. Alábbi alapvető szempontokat az alábbiakban tekintheti át. A cikk teljes dinamikus Rétegezést 2.0 teljes neve helyett a rövidítést "DT 2.0" fogja használni.
+
+Az SAP HANA dinamikus Rétegezést 2.0 SAP BW vagy S4HANA által nem támogatott. Főbb alkalmazási helyzetek most olyan natív HANA-alkalmazásokat.
+
+
+### <a name="overview"></a>Áttekintés
+
+Az alábbi képen áttekintést kapcsolatos DT 2.0 támogatása a Microsoft Azure-ban. Nincs kötelező követelmények, egy készletét, amely kell követni a hivatalos hitelesítésszolgáltató ahhoz, hogy rendelkezik:
+
+- DT 2.0 egy dedikált Azure virtuális Gépen kell telepíteni. Előfordulhat, hogy nem futnak a ugyanazon virtuális gép, ahol fut, az SAP HANA
+- SAP HANA és DT 2.0-s virtuális gépeket telepíteni kell az azonos Azure virtuális hálózaton belül
+- Az SAP HANA és DT 2.0-s virtuális gépeket kell üzembe helyezni az Azure gyorsított hálózatkezelés engedélyezett
+- Tárolási típus DT 2.0-alapú virtuális gépek kell lennie az Azure Premium Storage
+- Több Azure-lemezek kell csatolni a DT 2.0-s virtuális gép
+- Ez szükséges, hozzon létre egy szoftverfrissítési raid / csíkozott kötetek (akár lvm vagy mdadm) használatával szétosztottsága befolyásolhatja az Azure-lemezek között
+
+További részleteket a következő szakaszokban részletesen.
+
+![Az SAP HANA DT 2.0-s architektúrájának áttekintése](media/hana-vm-operations/hana-dt-20.PNG)
+
+
+
+### <a name="dedicated-azure-vm-for-sap-hana-dt-20"></a>Az SAP HANA DT 2.0 dedikált Azure virtuális gép
+
+Az Azure IaaS-DT 2.0 csak egy dedikált virtuális gépeken támogatott. Az azonos Azure virtuális gépen, ahol a HANA-példány fut. DT 2.0 futtatása nem engedélyezett. Az SAP HANA DT 2.0-val használható kezdetben két virtuális gép típusa:
+
+M64 32ms, E32sv3 
+
+Tekintse meg a virtuális gép típusának leírása [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+
+Az alapszintű elgondolásra épül, DT 2.0-s, amely ahhoz, hogy a költségek "meleg" adatok költségszempontok megadott érdemes használni a megfelelő Virtuálisgép-méretek. Bár a lehetséges kombinációkra kapcsolatos, nincs szigorú szabály. Ez függ az adott ügyfél számítási feladata.
+
+Ajánlott konfigurációkat a következő lesz:
+
+| SAP HANA virtuális gép típusa | DT 2.0-s virtuális gép típusa |
+| --- | --- | 
+| M128ms | M64-32ms |
+| M128s | M64-32ms |
+| M64ms | E32sv3 |
+| M64s | E32sv3 |
+
+
+M sorozatú virtuális gépek az SAP HANA-tanúsítvánnyal rendelkező támogatott DT 2.0-alapú virtuális gépekhez (M64-32ms, E32sv3) minden kombinációja is előfordulhatnak.
+
+
+### <a name="azure-networking-and-sap-hana-dt-20"></a>Az Azure-hálózatok és az SAP HANA DT 2.0
+
+A DT 2.0-s virtuális gép és az SAP HANA virtuális GÉPE legalább 10 Gb közötti hálózati átviteli sebesség DT 2.0 telepítését egy dedikált virtuális gépen van szükség. Ezért azt kötelező az azonos Azure virtuális hálózaton belüli összes virtuális gép elhelyezése, illetve az Azure gyorsított hálózatkezelés engedélyezéséhez.
+
+További információ az Azure gyorsított hálózatkezelés [Itt](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)
+
+### <a name="vm-storage-for-sap-hana-dt-20"></a>Az SAP HANA DT 2.0 Virtuálisgép-tároló
+
+Megfelelően DT 2.0 ajánlott eljárásokkal kapcsolatos útmutatás a lemez i/o-teljesítmény minimális 50 MB/s fizikai magonként kell lennie. A specifikációja DT 2.0 egyik támogatott két Azure-beli Virtuálisgép-típusok Hibaoldal a maximális lemez IO-átviteli sebességhatár a virtuális gép jelenik meg:
+
+- E32sv3: 768 MB/mp (nem gyorsítótárazott), ami azt jelenti, hogy 48 MB/mp / fizikai mag arány
+- M64-32ms: 1000 MB/mp (uncached) ami azt jelenti, hogy fizikai magonként 62,5 MB/mp-es
+
+Szükség van, több Azure-lemezek csatolása a DT 2.0-s virtuális gép, és hozzon létre egy szoftverfrissítési raid (csíkozást) az operációs rendszer szintjén adatátviteli sebességet maximális korlátját eléréséhez. Egyetlen Azure lemez nem biztosítja az átviteli sebesség érhető el ebben a tekintetben a virtuális gép maximumértéket. Az Azure Premium storage szolgáltatás kötelező DT 2.0-val. 
+
+- Elérhető Azure-lemeztípusokkal kapcsolatos információk találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- Szoftver raid keresztül mdadm létrehozásával kapcsolatos információk találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
+- Maximális átviteli sebesség találja a csíkozott kötetek létrehozásához LVM konfigurálása részleteit [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
+
+Méret követelményeitől függően különböző lehetőség van a virtuális gépek maximális átviteli sebesség eléréséhez. Az alábbiakban a lehetséges kötet lemezkonfigurációja VM átviteli sebesség felső korlátjának elérése érdekében minden DT 2.0-s VM-típus. Virtuális gép E32sv3 kell tekinteni egy bejegyzés szint kisebb számítási feladatokhoz. Abban az esetben, kapcsolja, hogy azt ne legyen gyors elég lehet átméretezni a virtuális gép M64-32ms szükséges.
+A M64-32ms virtuális gépen sok memóriát, ahogy az az i/o-terhelést nem előfordulhat, hogy eléri a korlátot, különösen a olvasási intenzív számítási feladatokhoz. Ezért kevesebb, mint a stripe lemezek beállítása is elegendő lehet az ügyfél adott számítási feladatra függően. De a biztonság kedvéért kell a lemez az alábbi konfigurációk választottak, a maximális átviteli sebesség biztosításához:
+
+
+| A VM-TERMÉKVÁLTOZATOK | Lemezkonfiguráció 1 | Lemezkonfiguráció 2 | Lemezkonfiguráció 3 | Lemez konfigurálása 4 | Lemezkonfiguráció 5 | 
+| ---- | ---- | ---- | ---- | ---- | ---- | 
+| M64-32ms | 4 x P50 -> 16 TB | 4 x P40 -> 8 TB | 5 x P30 -> 5 TB-os | 7 x P20 -> 3,5 TB | 8 x P15 -> 2 TB-os | 
+| E32sv3 | 3 x P50 -> 12 TB | 3 x P40 -> 6 TB | 4 x P30 -> 4 TB-ig | 5 x P20 -> 2,5 TB | 1,5 TB-os x 6 P15 -> | 
+
+
+Különösen abban az esetben a számítási feladatok olvasási-intenzív, IO-teljesítmény "csak olvasható" adatbázis szoftver adatmennyiség ajánlott Azure-beli gazdagéppel gyorsítótár bekapcsolása sikerült növelése. Mivel a tranzakció "none" log Azure-beli gazdagéppel lemezgyorsítótár kell lennie. 
+
+A naplózási kötet méretének vonatkozó ajánlott kiindulási pontot a heurisztika az adatok mérete 15 %-os. A naplózási kötet létrehozása a különböző Azure-lemeztípusokkal költségek és az átviteli sebesség követelményeitől függően használatával valósítható meg. Is a naplózási kötet nagy átviteli sebességű részesíti előnyben, és M64-32ms esetén erősen ajánlott bekapcsolni Írásgyorsítót meg (amely az kötelező az SAP HANA). A tranzakciós napló (csak M-sorozat érhető el) biztosít optimális lemez írási késése. Nincsenek megfontolandó, ha például a Virtuálisgép-típusonként lemezek maximális számát. WA kapcsolatos információk találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
+
+Íme néhány példa a naplózási kötet méretezése kapcsolatban:
+
+| adatok kötet méretét és a lemez típusa | lemez és a naplózási kötet írja be a konfiguráció 1 | lemez és a naplózási kötet írja be a konfigurációs 2 |
+| --- | --- | --- |
+| 4 x P50 -> 16 TB | 5 x P20 -> 2,5 TB | 3 x P30 -> 3 TB |
+| 1,5 TB-os x 6 P15 -> | 4 x P6 -> 256 GB | 1 x-P15 -> 256 GB |
+
+
+Például az SAP HANA kibővíthető a /hana/shared címtár rendelkezik az SAP HANA virtuális gép és a DT 2.0-s virtuális gép közötti megosztását. Az azonos architektúra, mint az SAP HANA-t használó kibővített dedikált virtuális gépek, amely proxyként egy magas rendelkezésre állású NFS-kiszolgáló használata javasolt. Annak érdekében, hogy egy közös biztonsági mentési mennyiségi, az azonos tervezési is használható. De az ügyfél legfeljebb Ha magas rendelkezésre ÁLLÁSÚ lenne szükség, vagy ha elegendő csupán használata egy dedikált virtuális gép elegendő tárolókapacitással egy biztonsági mentési kiszolgálóként.
+
+
+
+### <a name="links-to-dt-20-documentation"></a>DT 2.0 parancssori felületdokumentációját mutató hivatkozások 
+
+- [Az SAP HANA dinamikus Rétegezést telepítési és frissítési útmutató](https://help.sap.com/viewer/88f82e0d010e4da1bc8963f18346f46e/2.0.03/en-US)
+- [Az SAP HANA dinamikus Rétegezést oktatóanyagok és források](https://www.sap.com/developer/topics/hana-dynamic-tiering.html)
+- [Az SAP HANA dinamikus rétegezési PoC](https://blogs.sap.com/2017/12/08/sap-hana-dynamic-tiering-delivering-on-low-tco-with-impressive-performance/)
+- [Az SAP HANA 2.0 Szervizcsomagok 02 dinamikus rétegezési fejlesztései](https://blogs.sap.com/2017/07/31/sap-hana-2.0-sps-02-dynamic-tiering-enhancements/)
+
+
 
 
 ## <a name="operations-for-deploying-sap-hana-on-azure-vms"></a>Operations for SAP HANA az Azure virtuális gépek üzembe helyezése

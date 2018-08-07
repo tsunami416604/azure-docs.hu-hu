@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2018
+ms.date: 08/06/2018
 ms.author: kumud
-ms.openlocfilehash: 7366273e30132daf7dc5ea15072c574180d1bc8b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 69af189ce04d8bcfb2fe0c6842c845cc988b5380
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397284"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577913"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -31,7 +31,7 @@ Ha az állapotfigyelő mintavételező nem sikerül, a terheléselosztó nem ir�
 > [!IMPORTANT]
 > Load Balancer állapot-mintavételei származnak 168.63.129.16 IP-címről, és nem le kell tiltani a mintavételek a példány megjelöléséhez.  Felülvizsgálat [IP-forráscím mintavételi](#probesource) részleteiről.
 
-## <a name="health-probe-types"></a>Állapot-mintavételi típusok
+## <a name="types"></a>Állapot-mintavételi típusok
 
 Állapot-mintavételei figyelheti, bármely portra háttér-példány, beleértve a portot, amelyen elérhető a tényleges service. Az állapotminta figyelői a TCP- vagy HTTP-végpontokat támogatja. 
 
@@ -43,7 +43,7 @@ Meg kell, nem a NAT- és egy állapotminta a példány, amely egy másik példá
 
 Ha szeretné egészségügyi mintavételi hiba tesztelése, vagy egy egyéni példány le megjelölése, explicit letiltása az állapotminta egy biztonsági csoportot használhatja (cél vagy [forrás](#probesource)).
 
-### <a name="tcp-probe"></a>TCP-mintavétel
+### <a name="tcpprobe"></a>TCP-mintavétel
 
 TCP-mintavétel kapcsolatot kezdeményezzen egy háromutas nyitott TCP kézfogás-a meghatározott portot elvégzésével.  Ezt követi a négy Bezárás TCP kézfogás.
 
@@ -53,7 +53,7 @@ A TCP-mintavétel meghiúsul, ha:
 * A TCP-figyelőt a példányon egyáltalán nem válaszol az időkorláton során.  Mintavétel van megjelölve lettek konfigurálva nyissa meg a megválaszolatlan a mintavétel megjelölése előtti meghiúsult mintavételi kérések száma alapján.
 * A mintavétel egy TCP alaphelyzetbe állítani a példányt kap.
 
-### <a name="http-probe"></a>HTTP-mintavétel
+### <a name="httpprobe"></a>HTTP-mintavétel
 
 HTTP-mintavételek TCP-kapcsolatot létesítsen, és a egy HTTP GET probléma a megadott elérési út. HTTP-mintavételek a HTTP GET relatív útvonalakat támogatja. Az állapotminta van megjelölve, ha a példány válaszol a HTTP-állapotkódot 200 az időkorláton belül.  HTTP állapotának mintavételei kísérlet a alapértelmezés szerint 15 másodpercenként ellenőrizze a beállított állapot-mintavételi portot. A minimális mintavételi időköz 5 másodperc. A teljes időtartam legfeljebb 120 másodperc. 
 
@@ -67,7 +67,7 @@ A HTTP-mintavétel meghiúsul, ha:
 * HTTP-állapotminta-végpontot a során egyáltalán nem válaszol a 31-ig második időtúllépési időszakot. Az időtúllépési érték, amely be van állítva, attól függően több mintavételi kérések mehet megválaszolatlan előtt nem fut, a mintavétel megjelölve (azaz előtt SuccessFailCount mintavételek érkeznek).
 * HTTP-mintavétel végpont lezárja a kapcsolatot a TCP alaphelyzetbe állítása keresztül.
 
-### <a name="guest-agent-probe-classic-only"></a>Vendég ügynök szonda (csak Klasszikus modell)
+### <a name="guestagent"></a>Vendég ügynök szonda (csak Klasszikus modell)
 
 A felhőszolgáltatásokhoz tartozó szerepkörök (a feldolgozói szerepkörök és a webes szerepkörök) mintavételi figyelés alapértelmezés szerint a vendégügynököt használja.   Vegye figyelembe a végső lehetőség.  Az explicit módon egy TCP-állapotminta vagy a HTTP-mintavétel mindig érdemes definiálni. Vendég ügynök mintavétel nem hatásos, explicit módon megadott mintavételek a legtöbb alkalmazás forgatókönyvhöz.  
 
@@ -81,7 +81,7 @@ Ha a vendégügynök válaszol egy HTTP 200-as, a terheléselosztó küld új fo
 
 Webes szerepkör használata esetén a webhely kód általában lefut az w3wp.exe, amely az Azure által nem felügyelt hálóhoz vagy Vendég ügynök. A vendégügynök nem jelentett hibák a w3wp.exe (például a HTTP 500-as választ). Ennek következtében a terheléselosztó nem használ annak a példánynak a rotációból.
 
-## <a name="probe-health"></a>Állapot-mintavételi
+## <a name="probehealth"></a>Állapot-mintavételi
 
 TCP- és HTTP állapotadat-mintavételek tekinti a kifogástalan állapotú, és jelölje meg a szerepkörpéldány kifogástalan amennyiben:
 

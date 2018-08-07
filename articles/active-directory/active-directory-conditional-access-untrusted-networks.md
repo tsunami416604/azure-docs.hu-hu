@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b37c9017d6c9a8b1d5f53141e28c170307206f3b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 2dea5686add93d93f35e82445f411035a2451e33
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225825"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525977"
 ---
 # <a name="how-to-configure-conditional-access-policies-for-access-attempts-from-untrusted-networks"></a>Útmutató: a nem megbízható hálózatokon kísérlete feltételes hozzáférési szabályzatok konfigurálása   
 
@@ -39,7 +39,7 @@ Lásd:
 
 - [Mi a feltételes hozzáférés az Azure Active Directory](active-directory-conditional-access-azure-portal.md) – feltételes hozzáférés áttekintése 
 
-- [Gyors útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](active-directory-conditional-access-app-based-mfa.md) – az első, némi tapasztalattal a feltételes hozzáférési szabályzatok konfigurálása. 
+- [Gyors útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](conditional-access/app-based-mfa.md) – az első, némi tapasztalattal a feltételes hozzáférési szabályzatok konfigurálása. 
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -61,7 +61,7 @@ Az Azure AD feltételes hozzáférés meg lehet oldani ezt a követelményt, egy
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Az ebben a forgatókönyvben a kihívás abban áll lefordítani *mikor történt hozzáférési kísérlet, amely nem megbízható helyről* , a feltételes hozzáférés egy feltétele. A feltételes hozzáférési szabályzat, konfigurálhatja a [helyek feltétel](active-directory-conditional-access-locations.md) helyzetekre kapcsolódó hálózati helyeket. A helyek feltétel kiválaszthatók [nevesített helyek](active-directory-conditional-access-locations.md#named-locations), amely logikai csoportosításait IP-címtartományok, országok és régiók.  
+Az ebben a forgatókönyvben a kihívás abban áll lefordítani *mikor történt hozzáférési kísérlet, amely nem megbízható helyről* , a feltételes hozzáférés egy feltétele. A feltételes hozzáférési szabályzat, konfigurálhatja a [helyek feltétel](conditional-access/location-condition.md) helyzetekre kapcsolódó hálózati helyeket. A helyek feltétel nevesített helyek, amely logikai csoportosításait IP-címtartományok, országok és régiók kiválasztása lehetővé teszi.  
 
 Általában a szervezete tulajdonában van egy vagy több-címtartományokat, például 199.30.16.0 - 199.30.16.24.
 Konfigurálhat egy elnevezett helye szerint:
@@ -85,7 +85,7 @@ Helyett adja meg, mi minden hely, amelyek nem megbízható, a következőket teh
 
 ## <a name="implementation"></a>Megvalósítás
 
-A következő cikkben ismertetett módszert használja nem megbízható helyekre vonatkozó feltételes hozzáférési szabályzat most konfigurálhatja. Mielőtt éles környezetben, győződjön meg arról, hogy az elvárt módon működik, mindig tesztelje a szabályzatot. Ideális esetben hajtsa végre a tesztelési célú bérlői kezdeti teszteket, ha lehetséges. További információkért lásd: [hogyan kell egy új házirendet telepít](active-directory-conditional-access-best-practices.md#how-should-you-deploy-a-new-policy). 
+A következő cikkben ismertetett módszert használja nem megbízható helyekre vonatkozó feltételes hozzáférési szabályzat most konfigurálhatja. Mielőtt éles környezetben, győződjön meg arról, hogy az elvárt módon működik, mindig tesztelje a szabályzatot. Ideális esetben hajtsa végre a tesztelési célú bérlői kezdeti teszteket, ha lehetséges. További információkért lásd: [hogyan kell egy új házirendet telepít](conditional-access/best-practices.md#how-should-you-deploy-a-new-policy). 
 
 
 

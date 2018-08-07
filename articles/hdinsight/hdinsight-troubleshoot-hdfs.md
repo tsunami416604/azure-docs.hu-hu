@@ -1,7 +1,7 @@
 ---
-title: HDFS hibaelhárítása az Azure HDinsight használatával |} Microsoft Docs
-description: A HDFS és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok.
-keywords: Az Azure HDInsight, HDFS, gyakori kérdések hibaelhárítási útmutatója, gyakori kérdések
+title: HDFS hibaelhárítása az Azure HDinsight |} A Microsoft Docs
+description: HDFS- és Azure HDInsight használata kapcsolatos gyakori kérdésekre adott válaszok.
+keywords: Az Azure HDInsight, HDFS, gyakori kérdések hibaelhárítási útmutató, gyakori kérdések
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: e63dbf8feb941aef3d3c76439f55527da0388b85
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7ed4bf8f48ce425880bcda84bc7838a26180d924
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406653"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578014"
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>HDFS hibaelhárítása az Azure HDInsight használatával
 
-A legfőbb problémákat és azok megoldásait ismerje meg az Apache Ambari hasznos adatot Hadoop elosztott fájlrendszerrel (HDFS) használatakor.
+A leggyakoribb problémák és azok megoldásait ismerje meg az Ambari az Apache Hadoop elosztott fájlrendszer (HDFS) hasznos adatot használatakor.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Hogyan érhető el a fürtben található a helyi HDFS?
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Hogyan férhetek hozzá a helyi HDFS egy fürtben?
 
 ### <a name="issue"></a>Probléma
 
-A helyi HDFS elérje a parancssor, és az alkalmazás kódját belül a HDInsight-fürt Azure Blob-tároló vagy az Azure Data Lake Store a használatával.   
+A helyi HDFS eléréséhez a parancssor és az alkalmazás kódja helyett az Azure Blob storage vagy az Azure Data Lake Store a HDInsight-fürtben.   
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. A parancssorba használja `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` szó, mint a következő parancsot:
+1. Használhatja a parancssorban `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` szó szerint, ahogy az alábbi parancsot:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -42,9 +42,9 @@ A helyi HDFS elérje a parancssor, és az alkalmazás kódját belül a HDInsigh
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. A forráskódot, használja az URI `hdfs://mycluster/` szó, mint a következő mintaalkalmazást:
+2. A forráskódot, használja az URI-t `hdfs://mycluster/` szó, mint a következő mintaalkalmazást:
 
-    ```csharp
+    ```Java
     import java.io.IOException;
     import java.net.URI;
     import org.apache.commons.io.IOUtils;
@@ -67,7 +67,7 @@ A helyi HDFS elérje a parancssor, és az alkalmazás kódját belül a HDInsigh
     }
     ```
 
-3. Futtassa a lefordított .jar fájlt (például egy nevű fájlt `java-unit-tests-1.0.jar`) a HDInsight-fürt a következő paranccsal:
+3. Futtassa a lefordított .jar fájlt (például egy fájl nevű `java-unit-tests-1.0.jar`) a HDInsight-fürtön a következő paranccsal:
 
     ```apache
     hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -78,11 +78,11 @@ A helyi HDFS elérje a parancssor, és az alkalmazás kódját belül a HDInsigh
     ```
 
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Hogyan tegye I kényszerített – letiltása HDFS csökkentett módban egy fürtben?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Hogyan do I force-letiltása HDFS csökkentett módban egy fürtben?
 
 ### <a name="issue"></a>Probléma
 
-A helyi HDFS a HDInsight-fürt csökkentett módban Beragadt.   
+A helyi HDFS a HDInsight-fürtön csökkentett módban elakadt.   
 
 ### <a name="detailed-description"></a>Részletes leírás
 
@@ -148,11 +148,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Lehetséges ok
 
-A HDInsight-fürt csökkentették le egy nagyon kevés csomópontot. A csomópontok száma alatt, vagy a HDFS replikációs tényező közel van.
+A HDInsight-fürt mérete le egy nagyon kevés csomópontot. A csomópontok számát alább, vagy a HDFS replikációs tényező közelében van.
 
 ### <a name="resolution-steps"></a>A megoldás lépései 
 
-1. HDFS a HDInsight-fürt állapotának lekérése a következő parancsokkal:
+1. A HDInsight-fürt HDFS állapotának lekérése a következő parancsokat:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -193,7 +193,7 @@ A HDInsight-fürt csökkentették le egy nagyon kevés csomópontot. A csomópon
     ...
     ```
 
-2. HDFS a HDInsight-fürt sértetlenségének ellenőrzéséhez a következő parancsokkal:
+2. A HDInsight-fürt HDFS sértetlenségének ellenőrzéséhez a következő parancsokat:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
@@ -226,7 +226,7 @@ A HDInsight-fürt csökkentették le egy nagyon kevés csomópontot. A csomópon
     The filesystem under path '/' is HEALTHY
     ```
 
-3. Ha azt állapítja meg, amelyek nincsenek nincs hiányzik, sérült, vagy under-replikált blokkolja, vagy az, hogy ezek a blokkok figyelmen kívül hagyható, a következő parancsot a név csomópont biztonságos módból érvénybe:
+3. Ha azt állapítja meg, amelyek nincsenek nem hiányzik, sérült, vagy under-replikált blokkolja, vagy hogy blokkokat figyelmen kívül hagyható, futtassa a következő parancsot a név csomópont biztonságos módból érvénybe:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave

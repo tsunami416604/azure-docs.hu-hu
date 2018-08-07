@@ -2,24 +2,18 @@
 title: Az Azure File Sync-kiszolgálói végpont hozzáadása/eltávolítása |} A Microsoft Docs
 description: Ismerje meg az Azure Files üzembe helyezésének tervezése során megfontolandó szempontokat.
 services: storage
-documentationcenter: ''
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: c8da3f501d03a05ef5490197d4fd38ada01a4997
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.component: files
+ms.openlocfilehash: 00ce83a7ec52e24ce858c720e834b8396c2f808c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158438"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523965"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Az Azure File Sync-kiszolgálói végpont hozzáadása/eltávolítása
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt nem átalakításával keletkező a Windows-kiszolgálók az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.

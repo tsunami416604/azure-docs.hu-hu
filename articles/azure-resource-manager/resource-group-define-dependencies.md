@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 475e1f0d481678f53c191a887c7cc56c28c4b361
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 5b4d8317d565528f896bf6823ddaefd010d0a845
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887429"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528629"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>A rendelés üzembe erőforrásokat az Azure Resource Manager-sablonok meghatározása
 Egy adott erőforráshoz lehet más erőforrások, amelyek már léteznie kell az erőforrás üzembe van helyezve. Például egy SQL server léteznie kell az SQL-adatbázis üzembe helyezése előtt. Ezt a kapcsolatot definiálhat egy erőforrást, mint a többi erőforrástól függ-e megjelölésével. A függőséget határoz meg a **dependsOn** elem, vagy a **referencia** függvény. 
 
-Resource Manager kiértékeli az erőforrások közti függőségeket, és azok függő sorrendben alkalmazza őket. Amikor erőforrásokat nem függ egymástól, Resource Manager üzembe helyezi őket párhuzamosan. Csak kell határozhat meg telepített erőforrások függőségeinek ugyanazt a sablont. 
+A Resource Manager kiértékeli az erőforrások közötti függőségeket, majd azokat függőségi sorrendben üzembe helyezi. Ha az erőforrások között nincs függőségi viszony, akkor a Resource Manager párhuzamosan helyezi üzembe azokat. Csak kell határozhat meg telepített erőforrások függőségeinek ugyanazt a sablont. 
 
 ## <a name="dependson"></a>dependsOn
 A sablonon belül a dependsOn elem lehetővé teszi egy erőforrás egy függő egy vagy több erőforrást kell definiálni. Az érték lehet egy kívánt erőforrás nevét tartalmazó vesszővel tagolt lista. 
@@ -108,7 +108,7 @@ Az alábbi példa bemutatja egy SQL server és SQL database. Figyelje meg, hogy 
 ```
 
 ## <a name="reference-and-list-functions"></a>referencia- és funkciók
-A [függvényre](resource-group-template-functions-resource.md#reference) lehetővé teszi, hogy egy kifejezés az értékét más JSON név-érték párokból vagy a futásidejű erőforrások származtassa. A [lista * funkciók](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) erőforrás értékek visszaadásához a list művelet.  Referencia- és kifejezések implicit módon deklarálja, hogy egy erőforrás függ egy másik, vagy ha a hivatkozott erőforrás üzembe van helyezve, az ugyanazt a sablont, és a nevét (nem erőforrás-azonosító) által hivatkozott. Ha a referencia- vagy függvényeket az erőforrás-azonosító, az egy implicit hivatkozás nem jön létre.
+A [függvényre](resource-group-template-functions-resource.md#reference) lehetővé teszi, hogy egy kifejezés az értékét más JSON név-érték párokból vagy a futásidejű erőforrások származtassa. A [lista * funkciók](resource-group-template-functions-resource.md#list) erőforrás értékek visszaadásához a list művelet.  Referencia- és kifejezések implicit módon deklarálja, hogy egy erőforrás függ egy másik, vagy ha a hivatkozott erőforrás üzembe van helyezve, az ugyanazt a sablont, és a nevét (nem erőforrás-azonosító) által hivatkozott. Ha a referencia- vagy függvényeket az erőforrás-azonosító, az egy implicit hivatkozás nem jön létre.
 
 A referencia-függvény általános formátuma:
 

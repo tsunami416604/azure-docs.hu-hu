@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: c76941d366ecd7aa44c8fa64dbe2245103db715b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 58309977c93864d52a3217919ac8d7fa9152a968
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425826"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576902"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API az előfizetések hozzáféréséhez
 ## <a name="introduction"></a>Bevezetés
@@ -113,7 +113,7 @@ Egy nyílt ID Connect/OAuth2.0 engedélyezése kérelem kiadása az Azure AD-hit
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Authorize
 
-A lekérdezési karakterlánc paraméterei a kérelem rendelkezésre álló ismertetett a [hozzáférési kód kérése](../active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code) cikk.
+A lekérdezési karakterlánc paraméterei a kérelem rendelkezésre álló ismertetett a [hozzáférési kód kérése](../active-directory/develop/v1-protocols-oauth-code.md#request-an-authorization-code) cikk.
 
 Az alábbi példa bemutatja, hogyan OAuth2.0 engedélyezési kérése:
 
@@ -126,7 +126,7 @@ Az Azure AD akkor hitelesíti a felhasználót, és, ha szükséges, megkérdezi
 ### <a name="auth-request-open-id-connect"></a>Hitelesítési kérelem (Open ID Connect)
 Ha nem csak az Azure Resource Manager eléréséhez a felhasználó nevében szeretne, de is engedélyezi, hogy a felhasználó jelentkezzen be az alkalmazás használatával az Azure AD-fiókja, ki egy nyílt azonosítója csatlakozás engedélyezése kérése. Az Open ID Connect az alkalmazás is fogad id_token, amely az alkalmazás használhatja a bejelentkezni a felhasználó Azure AD-ből.
 
-A lekérdezési karakterlánc paraméterei a kérelem rendelkezésre álló ismertetett a [a bejelentkezési kérelem elküldéséhez](../active-directory/develop/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request) cikk.
+A lekérdezési karakterlánc paraméterei a kérelem rendelkezésre álló ismertetett a [a bejelentkezési kérelem elküldéséhez](../active-directory/develop/v1-protocols-openid-connect-code.md#send-the-sign-in-request) cikk.
 
 Van egy Open ID Connect kérelem (példa):
 
@@ -143,7 +143,7 @@ Most, hogy az alkalmazás Azure AD-ből kapott engedélyezési kód, ideje a hoz
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-A lekérdezési karakterlánc paraméterei a kérelem rendelkezésre álló ismertetett a [az engedélyezési kód](../active-directory/develop/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) cikk.
+A lekérdezési karakterlánc paraméterei a kérelem rendelkezésre álló ismertetett a [az engedélyezési kód](../active-directory/develop/v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) cikk.
 
 Az alábbi példa bemutatja a kód engedélyezési jogkivonat jelszavára vonatkozó hitelesítőadat-kérelem:
 
@@ -154,7 +154,7 @@ Az alábbi példa bemutatja a kód engedélyezési jogkivonat jelszavára vonatk
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-Ha tanúsítványalapú dolgozik, hozzon létre egy JSON webes jogkivonat (JWT) és a bejelentkezés (RSA-SHA256) az alkalmazás Tanúsítványalapú hitelesítő adatot a titkos kulccsal. A jogcímtípusok, amelyeket a jogkivonat számára látható [JWT jogkivonat jogcímek](../active-directory/develop/active-directory-protocols-oauth-code.md#jwt-token-claims). Ha, olvassa el a [Active Directory hitelesítési könyvtár (.NET) kódját](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) ügyfél helyességi feltétel JWT-jogkivonatok aláírásához.
+Ha tanúsítványalapú dolgozik, hozzon létre egy JSON webes jogkivonat (JWT) és a bejelentkezés (RSA-SHA256) az alkalmazás Tanúsítványalapú hitelesítő adatot a titkos kulccsal. A jogcímtípusok, amelyeket a jogkivonat számára látható [JWT jogkivonat jogcímek](../active-directory/develop/v1-protocols-oauth-code.md#jwt-token-claims). Ha, olvassa el a [Active Directory hitelesítési könyvtár (.NET) kódját](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) ügyfél helyességi feltétel JWT-jogkivonatok aláírásához.
 
 Tekintse meg a [Open ID Connect specifikációja](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) ügyfél-hitelesítés részleteiért.
 
@@ -178,7 +178,7 @@ Token sikeres válasz tartalmazza a (felhasználó + alkalmazás) hozzáférési
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-A paraméterek használata a frissítési kérelem ismertetett [a hozzáférési jogkivonat frissítését](../active-directory/develop/active-directory-protocols-oauth-code.md#refreshing-the-access-tokens).
+A paraméterek használata a frissítési kérelem ismertetett [a hozzáférési jogkivonat frissítését](../active-directory/develop/v1-protocols-oauth-code.md#refreshing-the-access-tokens).
 
 Az alábbi példa bemutatja, hogyan használata a frissítési token:
 
@@ -235,7 +235,7 @@ Azure AD Graph API-nak egy token beszerzése és az alkalmazás hitelesítéséh
 
 A [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) metódus az ASP.net MVC-mintaalkalmazás beolvassa csak az alkalmazásra vonatkozó hozzáférési jogkivonat Graph API használatával az Active Directory Authentication Library for .NET.
 
-A lekérdezési karakterlánc paraméterei a kérelem rendelkezésre álló ismertetett a [egy hozzáférési jogkivonat kérése](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token) cikk.
+A lekérdezési karakterlánc paraméterei a kérelem rendelkezésre álló ismertetett a [egy hozzáférési jogkivonat kérése](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#request-an-access-token) cikk.
 
 Egy kérelem (példa) ügyfél-hitelesítő adat számára megadja a jogkivonatot:
 

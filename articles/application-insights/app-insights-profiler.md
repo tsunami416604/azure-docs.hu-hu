@@ -11,14 +11,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
-ms.date: 07/13/2018
+ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 52f0e6c90aa9fa0dc439eae3801b2d4ac29387a9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429680"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521883"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil élő Azure-webalkalmazások az Application insights segítségével
 
@@ -167,9 +167,12 @@ Az alábbiakban néhány dolgot, amelyeket megtekinthet:
 * Győződjön meg arról, hogy a webes alkalmazás Application Insights SDK 2.2-es Beta vagy később engedélyezni.
 * Győződjön meg arról, hogy rendelkezik-e a webalkalmazást, a **állítani az APPINSIGHTS_INSTRUMENTATIONKEY** a azonos kialakítási kulcsot, amelyet az Application Insights SDK-beállítások.
 * Győződjön meg arról, hogy a webalkalmazás fut-e a .NET-keretrendszer 4.6.
-* Ha a webalkalmazás egy ASP.NET Core-alkalmazást, ellenőrizze [a szükséges függőségek](#aspnetcore).
+* Ha a webalkalmazás egy ASP.NET Core-alkalmazást, futnia kell, hogy legalább az ASP.NET Core 2.0.
 
 Miután elindult a Profiler, van egy rövid melegítési időszak, amely során Profiler aktívan gyűjt több teljesítmény-nyomkövetés. Ezt követően Profiler két percig óránként gyűjti a teljesítmény-nyomkövetés.
+
+> [!NOTE]
+> A profiler-ügynök, amely megakadályozza, hogy átveszi a futó ASP.NET Core 2.1-es alkalmazások nyomkövetések feltöltése programhiba van. Azt is dolgozunk a javítást, és fog rendelkezni, készen áll hamarosan.
 
 ### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>Az Azure Service profiler volt használata Mi történt, a?
 

@@ -17,12 +17,12 @@ ms.date: 07/20/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, sureshja
-ms.openlocfilehash: 0783c9885ec47bdd8c33c296e975547391900139
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: a0d302e740732c5bf76ba75486b75f6f73091940
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505735"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576457"
 ---
 # <a name="azure-active-directory-application-manifest"></a>Az Azure Active Directory alkalmazásjegyzékének
 Alkalmazások integrálása az Azure ad-ben az Azure AD-bérlő regisztrálva kell lennie. Ez az alkalmazás az alkalmazás-jegyzékfájl (alatt az Azure ad-ben panel) segítségével konfigurálható a [az Azure portal](https://portal.azure.com).
@@ -35,7 +35,7 @@ Alkalmazások integrálása az Azure ad-ben az Azure AD-bérlő regisztrálva ke
 |---------|---------|---------|---------|
 |appID     |  Azonosító karakterlánc       |""|  Az alkalmazás-alkalmazásokba az Azure AD által hozzárendelt egyedi azonosítója.|
 |appRoles     |    A tömb típusa     |<code>[{<br>&emsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&emsp;],<br>&emsp;"description":"Read-only access to device information",<br>&emsp;"displayName":"Read Only",<br>&emsp;"id":guid,<br>&emsp;"isEnabled":true,<br>&emsp;"value":"ReadOnly"<br>}]</code>|Egy alkalmazás deklarálhat szerepkörök gyűjteménye. Ezeket a szerepköröket rendelhet felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokat.|
-|availableToOtherTenants|logikai|`true`|Ha az értéke igaz, az alkalmazás elérhető-e más bérlők számára. Ha az értéke HAMIS, az alkalmazás csak a bérlő számára elérhető, regisztrálva van. További információkért lásd: [Azure Active Directory (AD) felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával hogyan](active-directory-devhowto-multi-tenant-overview.md). |
+|availableToOtherTenants|logikai|`true`|Ha az értéke igaz, az alkalmazás elérhető-e más bérlők számára. Ha az értéke HAMIS, az alkalmazás csak a bérlő számára elérhető, regisztrálva van. További információkért lásd: [Azure Active Directory (AD) felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával hogyan](howto-convert-app-to-be-multi-tenant.md). |
 |displayName     |sztring         |`MyRegisteredApp`         |Az alkalmazás megjelenített neve. |
 |errorURL     |sztring         |`http://MyRegisteredAppError`         |Hiba történt az alkalmazások URL-CÍMÉT. |
 |groupMembershipClaims     |    sztring     |    `1`     |   Egy bitmaszk, amely a kiállított "groups" jogcímet konfigurálja a felhasználói vagy OAuth 2.0 hozzáférési jogkivonatban, amelyeket az alkalmazás vár. A bitmaszk értékei: 0: nincs, 1: biztonsági csoportok és az Azure AD-szerepkörök, 2: fenntartva, és a 4: foglalt. A bitmaszk beállítása a 7 minden a biztonsági csoportok, terjesztési csoportok és az Azure AD-címtárbeli szerepkörök, amelyek a bejelentkezett felhasználó tagja kap. |
@@ -67,7 +67,7 @@ Alkalmazások integrálása az Azure ad-ben az Azure AD-bérlő regisztrálva ke
 Használja a következő megjegyzéseket visszajelzést, amellyel pontosíthatja, és a tartalom formázása.
 
 <!--article references -->
-[AAD-APP-OBJECTS]: active-directory-application-objects.md
+[AAD-APP-OBJECTS]:app-objects-and-service-principals.md
 [AAD-DEVELOPER-GLOSSARY]: active-directory-dev-glossary.md
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
@@ -77,7 +77,7 @@ Használja a következő megjegyzéseket visszajelzést, amellyel pontosíthatja
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
-[IMPLICIT-GRANT]: active-directory-dev-understanding-oauth2-implicit-grant.md
+[IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
 [INTEGRATING-APPLICATIONS-AAD]: https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
 [O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 41cbe7a27950c4d521da613f26aa450c63961400
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 1f9a2b786db59ecfee6ede53b2b789d84651c975
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505677"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577118"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>A Batch szolgáltatási megoldások és az Active Directory hitelesítést
 
@@ -66,7 +66,7 @@ Használja a **Azure Batch-erőforrás végpontjának** , a Batch szolgáltatás
 
 Az első lépés az Azure AD-vel történő hitelesítéséhez az Azure AD-bérlő regisztrálja az alkalmazást. Az alkalmazás regisztrálása lehetővé teszi, hogy, hogy az Azure meghívható [Active Directory Authentication Library] [ aad_adal] (ADAL) a kódból. Az ADAL API-alkalmazását az Azure ad-ben való hitelesítéshez használt biztosít. Az alkalmazás regisztrálása kötelező e tervezi használni az integrált hitelesítés és a egy egyszerű szolgáltatást.
 
-Ha regisztrálja az alkalmazást, adja meg információkat az alkalmazásról, az Azure ad-hez. Az Azure AD majd biztosít egy Alkalmazásazonosítót (más néven egy *ügyfél-azonosító*), hogy használhatja-e az alkalmazás társítása az Azure ad-vel futásidőben. Az Alkalmazásazonosítót kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/active-directory-application-objects.md).
+Ha regisztrálja az alkalmazást, adja meg információkat az alkalmazásról, az Azure ad-hez. Az Azure AD majd biztosít egy Alkalmazásazonosítót (más néven egy *ügyfél-azonosító*), hogy használhatja-e az alkalmazás társítása az Azure ad-vel futásidőben. Az Alkalmazásazonosítót kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
 A Batch-alkalmazás regisztrálásához kövesse a [egy alkalmazás hozzáadása](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) szakasz [alkalmazások integrálása az Azure Active Directory][aad_integrate]. Natív alkalmazás regisztrálhatja alkalmazását, ha bármely érvényes URI-azonosítóját is megadhat a **átirányítási URI-t**. Nem kell valódi végpontnak lennie.
 
@@ -374,7 +374,7 @@ Egyszerű szolgáltatás hitelesítő adatai segítségével nyissa meg a **Batc
 
 * Az Azure AD kapcsolatos további információkért tekintse meg a [Azure Active Directory dokumentációs](https://docs.microsoft.com/azure/active-directory/). Részletes példákat adal-t használó érhetők el a [Azure-Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory) könyvtár.
 
-* Szolgáltatásnevekkel kapcsolatos további tudnivalókért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/active-directory-application-objects.md). Hozzon létre egy egyszerű szolgáltatást az Azure portal használatával, lásd: [Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../resource-group-create-service-principal-portal.md). PowerShell-lel vagy Azure CLI-vel is létrehozhat egy egyszerű szolgáltatást.
+* Szolgáltatásnevekkel kapcsolatos további tudnivalókért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md). Hozzon létre egy egyszerű szolgáltatást az Azure portal használatával, lásd: [Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../resource-group-create-service-principal-portal.md). PowerShell-lel vagy Azure CLI-vel is létrehozhat egy egyszerű szolgáltatást.
 
 * Az Azure AD-vel Batch Management alkalmazások hitelesítéséhez, lásd: [az Active Directory hitelesítést Batch Management solutions](batch-aad-auth-management.md).
 

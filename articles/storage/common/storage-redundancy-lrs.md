@@ -3,17 +3,17 @@ title: Helyileg redundáns tárolás (LRS), a költséghatékony redundancia biz
 description: Alapértelmezés szerint az Azure storage-fiókok új replikációhoz használni a helyileg redundáns tárolás (LRS). LRS a beállítás a legkisebb költségű a replikáció. Általa védett munkaterhelésekkel, szemben az adatközponton belül, de nem adatközpont-szintű csapásoktól.
 services: storage
 author: tolandmike
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
-ms.openlocfilehash: 8fe851667482d9490554ab895ee50c78cbbdd3ab
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.component: common
+ms.openlocfilehash: 743c3ea89a39e6735ca8b7cbd1c3384c67c13642
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397353"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521383"
 ---
 # <a name="locally-redundant-storage-lrs-low-cost-data-redundancy-for-azure-storage"></a>Helyileg redundáns tárolás (LRS): az Azure Storage alacsony költségű adatredundancia
 

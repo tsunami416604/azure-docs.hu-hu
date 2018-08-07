@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 12c825143f48b5558ea9b1d49ed8cea59d84f6af
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214029"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522781"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználó jelentkezzen be az Azure Active Directory átmenő hitelesítése
 
@@ -49,7 +49,7 @@ Az átmenő hitelesítés kombinálhatja a [zökkenőmentes egyszeri bejelentkez
 - *Biztonságos*
   - A helyszíni jelszavak soha nem a felhőben, bármilyen formában vannak tárolva.
   - Az ügynök csak lehetővé teszi a kimenő kapcsolatokat a hálózaton belül. Ezért esetében nem követelmény az ügynök telepítéséhez a szegélyhálózaton, más néven DMZ-t.
-  - A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), többek között a multi-factor Authentication (MFA), [örökölt hitelesítés](../active-directory-conditional-access-conditions.md) , illetve [ kiszűri a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
+  - A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), többek között a multi-factor Authentication (MFA), [örökölt hitelesítés](../conditional-access/conditions.md) , illetve [ kiszűri a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
 - *Magas rendelkezésre állású*
   - További ügynökök bejelentkezési kérelmek magas rendelkezésre állást biztosít több helyszíni kiszolgálókon telepíthető.
 

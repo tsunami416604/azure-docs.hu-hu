@@ -1,6 +1,6 @@
 ---
-title: Az Azure Resource Manager sablonfüggvényei - erőforrások |} Microsoft Docs
-description: Az Azure Resource Manager-sablonok segítségével erőforrásokra vonatkozó értékek lekérését funkcióit ismerteti.
+title: Az Azure Resource Manager sablonfüggvényei - erőforrások |} A Microsoft Docs
+description: A funkciók az Azure Resource Manager-sablon használatával lekérheti az erőforrásokra vonatkozó értékeket ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,50 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: f1271a6afba91cf75820f2e4b973b7cd42782449
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d3d2375b0b633beb56232e518202b09777f60cc8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824336"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524508"
 ---
-# <a name="resource-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz erőforrás-funkciók
+# <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
-Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek beolvasása:
+Resource Manager az alábbi funkciókat biztosít erőforrás-értékeinek beolvasása:
 
-* [listKeys](#listkeys)
+* [listAccountSas](#list)
+* [listkeys műveletének](#listkeys)
 * [listSecrets](#list)
 * [lista *](#list)
-* [szolgáltatók](#providers)
+* [Szolgáltatók](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
 * [resourceId](#resourceid)
 * [előfizetést](#subscription)
 
-Ahhoz, hogy az értékeket a paraméterek, változók vagy a jelenlegi üzemelő példány, lásd: [központi telepítési érték funkciók](resource-group-template-functions-deployment.md).
+Paraméterek, változókat, vagy a jelenlegi üzemelő példány lekérjük az értékeket, lásd: [központi telepítési érték funkciók](resource-group-template-functions-deployment.md).
 
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listkeys-listsecrets-and-list"></a>listKeys, listSecrets és listája
+## <a name="listaccountsas-listkeys-listsecrets-and-list"></a>listAccountSas, listkeys műveletének, listSecrets és lista *
+`listAccountSas(resourceName or resourceIdentifier, apiVersion, functionValues)`
+
 `listKeys(resourceName or resourceIdentifier, apiVersion)`
 
 `listSecrets(resourceName or resourceIdentifier, apiVersion)`
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-Minden erőforrástípus, amely támogatja a list művelet értékeket adja vissza. A leggyakoribb használatokban vannak `listKeys` és `listSecrets`. 
+Minden erőforrás típusa, amely támogatja a list művelet értékeit adja vissza. A leggyakoribb használatokban vannak `listKeys` és `listSecrets`. 
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |karakterlánc |Az erőforrás egyedi azonosítója. |
-| apiVersion |Igen |karakterlánc |API-verzió erőforrás futásidejű állapot. Általában a következő formátumban **éééé-hh-nn**. |
+| resourceName vagy resourceIdentifier |Igen |sztring |Az erőforrás egyedi azonosítója. |
+| apiVersion |Igen |sztring |API-verzió erőforrás futásidejű állapot. Általában a következő formátumban **éééé-hh-nn**. |
+| functionValues |Nem |objektum | A függvény értékekkel rendelkező objektum. Csak adja meg ezt az objektumot az funkciók, amelyek támogatják a paraméterértékeket, rendelkező objektum például fogadása **listAccountSas** a storage-fiók. | 
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A visszaadott objektumot listKeys formátuma a következő:
+A visszaadott objektum listkeys műveletének formátuma a következő:
 
 ```json
 {
@@ -76,94 +80,124 @@ A visszaadott objektumot listKeys formátuma a következő:
 }
 ```
 
-Más lista függvények visszatérési formátumuk eltérő. Egy függvény formátum megtekintéséhez foglalja bele a kimenetek szakaszban látható módon a példa sablont. 
+Más lista függvények, különböző visszaadott formátumokat. Szeretné megtekinteni a függvényt formátumát, foglalja bele a kimeneti szakasz ahogy a példában a sablonban. 
 
 ### <a name="remarks"></a>Megjegyzések
 
-Bármely művelet kezdetű **lista** használható legyen a sablon egy függvényt. A rendelkezésre álló műveletek közé tartozik, nem csak listKeys, de az is, például műveletek `list`, `listAdminKeys`, és `listStatus`. Azonban nem használható **lista** a kérelem törzsében szereplő értékeket igénylő műveletekhez. Például a [lista fiók SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) kérelemtörzs-paraméterrel, például a művelethez *signedExpiry*, így a sablonon belül nem használható.
+Minden művelet, amely kezdődik **lista** a sablonban függvény is használható. Az elérhető műveletek közé tartozik, nem csak listkeys műveletének, de az is, például az operations `list`, `listAdminKeys`, és `listStatus`. A [lista fiók SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) művelethez szükséges a kérelem törzsében paraméterek, például *signedExpiry*. A funkció használatához a sablonban, adja meg a objektum a szervezet a paraméterértékeket.
 
-Annak meghatározásához, mely rendelkezik a list művelet, a következő lehetőségei vannak:
+Annak megállapításához, hogy mely erőforrástípusokat list művelettel rendelkezik, a következő lehetőségek állnak rendelkezésére:
 
-* Nézet a [REST API-műveleteket](/rest/api/) az erőforrás-szolgáltató és listázási műveletei keressen. Például, storage-fiókok vannak a [listKeys művelet](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys).
-* Használja a [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) PowerShell-parancsmagot. Az alábbi példa lekérdezi valamennyi listázási műveletei storage-fiókok:
+* Nézet a [REST API-műveleteket](/rest/api/) erőforrás-szolgáltató, és keresse a műveletek listázása. Például, hogy a storage-fiókok a [listkeys műveletének művelet](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys).
+* Használja a [Get-azurermprovideroperation Parancsmagból](/powershell/module/azurerm.resources/get-azurermprovideroperation) PowerShell-parancsmagot. Az alábbi példa lekéri az összes listázási műveletek storage-fiókok:
 
   ```powershell
   Get-AzureRmProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
   ```
-* A következő Azure CLI paranccsal csak a lista műveletek szűrése:
+* A következő Azure CLI-parancs segítségével a listában csak a műveletek szűrése:
 
   ```azurecli
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-Adjon meg az erőforrás vagy az erőforrás neve vagy a [resourceId függvény](#resourceid). Ha ez a funkció a ugyanazt a sablont, amely a hivatkozott erőforrás telepít, használja az erőforrás nevét.
+Az erőforrás neve használatával adja meg az erőforrás vagy a [resourceId függvény](#resourceid). Ha ugyanazt a sablont, amely a hivatkozott erőforrás telepíti ezt a funkciót használ, használja az erőforrás neve.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) visszaállítása az elsődleges és másodlagos kulcsok a tárfiók a kimenetek szakaszban látható.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) mutatja be az elsődleges és másodlagos kulcsok vissza a kimeneti szakasz egy storage-fiókból. Emellett a tárfiók SAS-jogkivonatát adja vissza. A jogkivonat beszerzéséhez objektum listAccountSas függvény továbbítja. Ebben a példában a listát funkciók használatát mutatják funkcionalitást. Általában, lenne erőforrás értékét a SAS-jogkivonat használata helyett egy kimeneti értéket, küldje vissza. Kimeneti értékeket az üzembe helyezési előzmények vannak tárolva, és nem biztonságos. Meg kell adnia egy lejárati ideje a jövőben az üzembe helyezés befejeződik.
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-      "storageAccountName": { 
-          "type": "string"
-      }
-  },
-  "resources": [
-    {
-      "name": "[parameters('storageAccountName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "properties": {
-      }
-    }
-  ],
-  "outputs": {
-      "referenceOutput": {
-          "type": "object",
-          "value": "[listKeys(parameters('storageAccountName'), '2016-12-01')]"
-      }
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storagename": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "southcentralus"
+        },
+        "requestContent": {
+            "type": "object",
+            "defaultValue": {
+                "signedServices": "b",
+                "signedResourceType": "c",
+                "signedPermission": "r",
+                "signedExpiry": "2018-08-20T11:00:00Z",
+                "signedResourceTypes": "s"
+            }
+    },
+    "resources": [
+        {
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('storagename')]",
+            "location": "[parameters('location')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "supportsHttpsTrafficOnly": false,
+                "accessTier": "Hot",
+                "encryption": {
+                    "services": {
+                        "blob": {
+                            "enabled": true
+                        },
+                        "file": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            },
+            "dependsOn": []
+        }
+    ],
+    "outputs": {
+        "keys": {
+            "type": "object",
+            "value": "[listKeys(parameters('storagename'), '2018-02-01')]"
+        },
+        "accountSAS": {
+            "type": "object",
+            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('requestContent'))]"
+        }
     }
 }
 ``` 
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json --parameters storageAccountName=<your-storage-account>
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json --parameters storagename=<your-storage-account>
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json -storageAccountName <your-storage-account>
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json -storagename <your-storage-account>
 ```
 
 <a id="providers" />
 
-## <a name="providers"></a>szolgáltatók
+## <a name="providers"></a>Szolgáltatók
 `providers(providerNamespace, [resourceType])`
 
-Egy erőforrás-szolgáltató és a támogatott erőforrástípusai információt ad vissza. Erőforrástípus nincs megadva, a függvény a támogatott típusok esetében az erőforrás-szolgáltató.
+Erőforrás-szolgáltató és a támogatott erőforrástípusok kapcsolatos információkat ad vissza. Ha nem ad meg egy erőforrás típusa, a függvény a támogatott típusok az erőforrás-szolgáltató adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Igen |karakterlánc |A szolgáltató Namespace |
-| resourceType |Nem |karakterlánc |A típusú erőforrás a megadott névtérben. |
+| providerNamespace |Igen |sztring |A szolgáltató Namespace |
+| resourceType |Nem |sztring |Erőforrás típusa, az adott névtérben. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Minden támogatott típust ad vissza a következő formátumban: 
+Minden támogatott típus a következő formátumban adja vissza: 
 
 ```json
 {
@@ -173,11 +207,11 @@ Minden támogatott típust ad vissza a következő formátumban:
 }
 ```
 
-Tömb által visszaadott érték sorrendje nem garantált.
+A visszaadott értékekhez tömb rendezése nem garantált.
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) a szolgáltató funkció használatát ismerteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) bemutatja, hogyan használja a szolgáltató függvényt:
 
 ```json
 {
@@ -201,7 +235,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az a **Microsoft.Web** erőforrás-szolgáltató és **helyek** erőforrástípus, az előző példában objektum beállítása/beolvasása a következő formátumban:
+Az a **Microsoft.Web** erőforrás-szolgáltató és **helyek** erőforrás típusa, az előző példában egy objektumot ad vissza a következő formátumban:
 
 ```json
 {
@@ -223,13 +257,13 @@ Az a **Microsoft.Web** erőforrás-szolgáltató és **helyek** erőforrástípu
 }
 ```
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json --parameters providerNamespace=Microsoft.Web resourceType=sites
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json -providerNamespace Microsoft.Web -resourceType sites
@@ -240,29 +274,29 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="reference"></a>Hivatkozás
 `reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
-Az erőforrás futásidejű állapot képviselő objektum beállítása/beolvasása.
+Az erőforrások futásidejű állapotot képviselő objektumot adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |karakterlánc |Név vagy egy erőforrás egyedi azonosítója. |
-| apiVersion |Nem |karakterlánc |A megadott erőforrás API-verzió. Ez a paraméter tartalmazza, amikor az erőforrás nincs kiépítve belül ugyanazt a sablont. Általában a következő formátumban **éééé-hh-nn**. |
-| "Teljes" |Nem |karakterlánc |Érték, amely megadja, hogy térjen vissza a teljes erőforrás-objektum. Ha nincs megadva `'Full'`, csak az erőforrás tulajdonságai objektumot ad vissza. A teljes objektum tartalmaz értékeket, például az erőforrás-azonosító és helyét. |
+| resourceName vagy resourceIdentifier |Igen |sztring |Név vagy erőforrás egyedi azonosítója. |
+| apiVersion |Nem |sztring |A megadott erőforrás API-verzió. Adja meg az értékét üzembe helyezésekor az erőforrás nem található ugyanazt a sablont. Általában a következő formátumban **éééé-hh-nn**. |
+| "Teljes" |Nem |sztring |Érték, amely megadja, hogy a teljes erőforrás-objektumot ad vissza. Ha nem ad meg `'Full'`, csak az erőforrás tulajdonságai objektumot ad vissza. A teljes objektum például az erőforrás-azonosító és a hely értékeket tartalmaz. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Minden erőforrástípus adja vissza a hivatkozás függvény különböző tulajdonságai. A függvény nem ad vissza egy egyetlen, előre meghatározott formátumban. Emellett a visszaadott érték eltér a teljes objektum megadott e. Erőforrástípus tulajdonságainak megtekintéséhez a kimenetek szakaszában, a példában látható módon adja vissza az objektum.
+Minden erőforrástípus a referencia-függvény különböző tulajdonságait adja vissza. A függvény nem ad vissza egy egyetlen, előre definiált formátumot. A visszaadott érték is, a teljes objektum megadott attól függően eltér. Egy erőforrás-típus tulajdonságainak megtekintéséhez a objektumot ad vissza, a kimeneti szakaszban, a példában látható módon.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A hivatkozás függvény az értékét a futásidejű állapot osztályból származik, és ezért nem használható a változók szakaszban. A sablon kimenetének részében használható vagy [csatolt sablon](resource-group-linked-templates.md#link-or-nest-a-template). A kimenetek szakaszában nem használható egy [beágyazott sablon](resource-group-linked-templates.md#link-or-nest-a-template). Egy beágyazott sablon üzembe helyezett erőforrás értékek visszaállításához a beágyazott sablon átalakítása csatolt sablont. 
+A referencia-funkció az értékét a futásidejű állapot osztályból, és ezért nem használható a változók szakaszban. A sablon kimeneti szakasz a használat vagy [hivatkozott sablonnak](resource-group-linked-templates.md#link-or-nest-a-template). A kimenetek szakaszában nem használható egy [beágyazott sablont](resource-group-linked-templates.md#link-or-nest-a-template). Az értékeket egy üzembe helyezett erőforrás visszaadása egy beágyazott sablont, váltson egy hivatkozott sablonnak a beágyazott sablont. 
 
-A hivatkozás függvény használatával, akkor implicit módon deklarálja, hogy egy erőforrás függ-e egy másik erőforrás, ha a hivatkozott erőforrás ki van építve belül ugyanazt a sablont, és az erőforrás neve (nem erőforrás-azonosító) hivatkozik. Nem kell a dependsOn tulajdonság is használhatja. A függvény a rendszer nem értékeli ki, a hivatkozott erőforrás telepítés befejeződéséig.
+A referencia-függvény használatával akkor implicit módon deklarálja, hogy egy erőforrás függ-e egy másik erőforrás, ha a hivatkozott erőforrás kiosztása belül ugyanazt a sablont, és a nevét (nem erőforrás-azonosító) az erőforrás hivatkozik. Emellett a dependsOn tulajdonság használatához nincs szükség. A függvény nem kerül kiértékelésre, a hivatkozott erőforrás üzembe helyezési befejeződéséig.
 
-Lásd: a tulajdonság és erőforrástípus tartozó értékek, hozzon létre egy sablont, amely a kimenetek szakaszban adja vissza az objektum. Ha az adott típusú erőforrással rendelkezik, a sablon bármely új erőforrások telepítése nélkül a objektum beállítása/beolvasása. 
+Tekintse meg a nevét és a egy erőforrástípushoz értékeit, hozzon létre egy sablont, amely az objektumot ad vissza, a kimeneti szakaszban. Ha az adott típusú erőforrással rendelkezik, a sablon bármely új erőforrások üzembe helyezése nélkül adja vissza az objektumot. 
 
-Általában akkor használják a **hivatkozás** működnek, mint egy adott értéket visszaadásának egy objektumot, például a blob-végpont URI vagy teljesen minősített tartománynevét.
+Általában használni a **referencia** funkció egy adott érték visszaadása egy objektumot, például a blob-végpont URI-t vagy teljesen minősített tartománynevét.
 
 ```json
 "outputs": {
@@ -277,7 +311,7 @@ Lásd: a tulajdonság és erőforrástípus tartozó értékek, hozzon létre eg
 }
 ```
 
-Használjon `'Full'` Ha erőforrás értékek, amelyek nem szerepelnek a Tulajdonságok séma van szükség. Például kulcstároló hozzáférési szabályzatainak beállításához identitás tulajdonságainak beolvasása a virtuális gép.
+Használat `'Full'` erőforrás értékek, amelyek nem részei a Tulajdonságok séma számíthat. Például a kulcstartó hozzáférési házirendjeinek beállítása, kérje le a tulajdonságok egy virtuális géphez.
 
 ```json
 {
@@ -301,11 +335,11 @@ Használjon `'Full'` Ha erőforrás értékek, amelyek nem szerepelnek a Tulajdo
     ...
 ```
 
-A fenti sablon átfogó példát talál [Key Vault a Windows](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo08.msiWindowsToKeyvault.json). Egy hasonló példa érhető el [Linux](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo07.msiLinuxToArm.json).
+A fenti sablon teljes példa: [Key vault Windows](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo08.msiWindowsToKeyvault.json). Egy hasonló példa érhető el az [Linux](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo07.msiLinuxToArm.json).
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) erőforrás telepíti, és hivatkozik arra, hogy az erőforrás.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) üzembe helyez egy erőforrást, és adott erőforrásra hivatkozik.
 
 ```json
 {
@@ -344,7 +378,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ``` 
 
-Az előző példában a két objektum adja vissza. A Tulajdonságok objektum a következő formátumban kell megadni:
+Az előző példában a két objektum adja vissza. A Tulajdonságok objektumában a következő formátumban kell megadni:
 
 ```json
 {
@@ -399,19 +433,19 @@ A teljes objektum a következő formátumban kell megadni:
 }
 ```
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json --parameters storageAccountName=<your-storage-account>
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json -storageAccountName <your-storage-account>
 ```
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) egy tárfiókot, amely nincs telepítve Ez a sablon hivatkozik. A tárfiók már létezik az ugyanazon erőforráscsoporton belül.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) hivatkozik egy tárfiókot, amelyet az ebben a sablonban nincs telepítve. A tárfiók már létezik belül ugyanabban az erőforráscsoportban.
 
 ```json
 {
@@ -432,13 +466,13 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json --parameters storageAccountName=<your-storage-account>
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json -storageAccountName <your-storage-account>
@@ -449,11 +483,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="resourcegroup"></a>Erőforráscsoport
 `resourceGroup()`
 
-A jelenlegi erőforráscsoportban képviselő objektumot adja vissza. 
+Az aktuális erőforráscsoport képviselő objektumot adja vissza. 
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A visszaadott objektumot a következő formátumban kell megadni:
+A visszaadott objektum a következő formátumban kell megadni:
 
 ```json
 {
@@ -470,7 +504,7 @@ A visszaadott objektumot a következő formátumban kell megadni:
 
 ### <a name="remarks"></a>Megjegyzések
 
-A közös a resourceGroup függvény használata erőforrások létrehozásához és az erőforráscsoport ugyanazon a helyen. Az alábbi példában az erőforráscsoport helye rendelje hozzá a webhelyhez tartozó hely.
+A resourceGroup függvény egyik gyakori felhasználási hozhat létre erőforrásokat az erőforráscsoport ugyanazon a helyen. Az alábbi példában az erőforráscsoport helyét egy webhely a hely hozzárendeléséhez.
 
 ```json
 "resources": [
@@ -486,7 +520,7 @@ A közös a resourceGroup függvény használata erőforrások létrehozásához
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) az erőforráscsoport tulajdonságainak adja vissza.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) az erőforráscsoport tulajdonságait adja vissza.
 
 ```json
 {
@@ -502,7 +536,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-A fenti példában egy objektum a következő formátumban adja vissza:
+Az előző példában egy objektumot ad vissza a következő formátumban:
 
 ```json
 {
@@ -515,13 +549,13 @@ A fenti példában egy objektum a következő formátumban adja vissza:
 }
 ```
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json 
@@ -532,21 +566,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="resourceid"></a>resourceId
 `resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
 
-Az erőforrás egyedi azonosítójának beolvasása. Ezt a funkciót használja, ha az erőforrás neve nem egyértelmű, vagy nem kiépített ugyanabban a sablonban. 
+Adja vissza egy adott erőforrás egyedi azonosítója. A függvény akkor használható, ha az erőforrás neve nem egyértelmű vagy ugyanabban a sablonban nincs kiépítve. 
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nem |karakterlánc (a GUID formátumban) |Alapértelmezett érték az aktuális előfizetésben. Adja meg ezt az értéket, ha szüksége van egy másik előfizetésben található erőforrás lekérése. |
-| resourceGroupName |Nem |karakterlánc |Alapértelmezett érték: a jelenlegi erőforráscsoportban. Adja meg ezt az értéket, ha erőforrást egy másik erőforráscsoportban van szüksége. |
-| resourceType |Igen |karakterlánc |Beleértve az erőforrás-szolgáltató névtere erőforrás típusát. |
-| resourceName1 |Igen |karakterlánc |Erőforrás neve. |
-| resourceName2 |Nem |karakterlánc |Következő neve erőforrásszegmensre. Ha az erőforrás van beágyazva. |
+| subscriptionId |Nem |karakterlánc (a GUID formátumban) |Alapértelmezett érték az aktuális előfizetésben. Adja meg ezt az értéket, amikor szüksége van egy másik előfizetésben egy erőforrás lekérése. |
+| resourceGroupName |Nem |sztring |Alapértelmezett érték az aktuális erőforráscsoportban. Adja meg ezt az értéket, amikor szüksége van egy másik erőforráscsoportban található egy erőforrás lekérése. |
+| resourceType |Igen |sztring |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
+| resourceName1 |Igen |sztring |Erőforrás neve. |
+| resourceName2 |Nem |sztring |Következő erőforrás neve szegmens Ha erőforrás van beágyazva. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Az azonosító eredmény abban az esetben a következő formátumban:
+Az azonosító a következő formátumban adja vissza:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -554,33 +588,33 @@ Az azonosító eredmény abban az esetben a következő formátumban:
 
 ### <a name="remarks"></a>Megjegyzések
 
-A megadott paraméterértékek függnek, hogy az erőforrás azonos előfizetésbe és erőforráscsoportba tartozik, mint a jelenlegi üzemelő példány.
+Az erőforrás-e az azonos előfizetésben és erőforráscsoportban tartozik, mint a jelenlegi üzemelő példány a megadott paraméterértékek függenek.
 
-Az erőforrás-azonosítója egy tárfiók ugyanahhoz az előfizetéshez és erőforráscsoport megtekintéséhez használja:
+Egy tárfiók ugyanabban az előfizetésben és erőforráscsoportban található az erőforrás-azonosító lekéréséhez használja:
 
 ```json
 "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Az erőforrás-azonosítója egy tárfiók ugyanahhoz az előfizetéshez, de egy másik erőforráscsoportban található, amelyet:
+A tárfiók ugyanahhoz az előfizetéshez, de egy másik erőforráscsoportban található az erőforrás-azonosító lekéréséhez használja:
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Az erőforrás-azonosítója egy tárfiók egy másik előfizetésben és erőforráscsoportban használatához:
+Az erőforrás-azonosítója egy storage-fiók egy másik előfizetésben és erőforráscsoportban, amelyet:
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Az erőforrás-azonosító egy másik erőforráscsoportban található adatbázis használatához:
+Egy adatbázis egy másik erőforráscsoportban található az erőforrás-azonosító lekéréséhez használja:
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
 ```
 
-Gyakran kell használnia a függvény egy tárfiókhoz vagy a virtuális hálózat használata egy másik erőforráscsoportban. A következő példa bemutatja, hogyan könnyen használható egy külső erőforráscsoportból erőforrás:
+Gyakran kell használatakor ez a függvény egy storage-fiók vagy a virtuális hálózat egy másik erőforráscsoportban. Az alábbi példa bemutatja, hogyan könnyen használható egy erőforrás egy külső erőforrás-csoportból:
 
 ```json
 {
@@ -627,7 +661,7 @@ Gyakran kell használnia a függvény egy tárfiókhoz vagy a virtuális hálóz
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) adja vissza az erőforrás-azonosító tárfiókok esetén az erőforráscsoport:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) adja vissza az erőforráscsoportot egy storage-fiók erőforrás-azonosító:
 
 ```json
 {
@@ -655,22 +689,22 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| sameRGOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | Karakterlánc | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | Sztring | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json 
@@ -683,9 +717,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 Az előfizetés, a jelenlegi üzemelő példány részleteit adja vissza. 
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A függvény a következő formátumban:
+A függvény a következő formátumban adja vissza:
 
 ```json
 {
@@ -698,7 +732,7 @@ A függvény a következő formátumban:
 
 ### <a name="example"></a>Példa
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) az előfizetés függvény hívása a kimenetek szakaszban látható. 
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) mutat be az előfizetés függvény meghívta a kimeneti szakasz. 
 
 ```json
 {
@@ -714,13 +748,13 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json 
@@ -729,6 +763,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
-* Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
-* A sablon létrehozott központi telepítéséről, olvassa el [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md).
+* A megadott számú alkalommal újrafuttathatja egy adott típusú erőforrás létrehozásakor, lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
+* A létrehozott sablon üzembe helyezése, olvassa el [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
 

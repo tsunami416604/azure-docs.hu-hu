@@ -14,14 +14,18 @@ ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 1a8ccc818cafac4867cb533c83f297af61a21836
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: b9fb32f4f014f8e0fb67b558a2806d74edaac56c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309102"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576015"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
+
+> [!NOTE]
+> Ez a cikk az Azure nyilvános felhő és a kormányzati felhő, kivéve, ha nincs másként jelölve vonatkozik.
+
 Hallgassa meg ismételten a Log Analytics az ügyfelektől származó visszajelzés egy részét, a szükséges figyelését és kezelését mind a helyszíni és az Azure-beli számítási egységes felhasználói élményt. Valószínűleg ismeri az Azure Portalon a hub Azure-szolgáltatásokhoz, és egy gazdag felügyeleti funkciókat biztosítanak, mint az irányítópultokat a erőforrások, az intelligens keresési eredmény erőforrások és a resource Management-környezetet kínál. Összefogása és egyszerűsíthetők a figyelési és felügyeleti munkafolyamat, hogy elindult az OMS-portál funkciókkal be az Azure Portalra. Örömmel jelentjük be, az OMS-portálon funkcióját a legtöbb immár része az Azure Portalon. Sőt az új funkciók, például a Traffic Analytics némelyike csak az Azure Portalon érhető el. Nincsenek van hátra, beleértve néhány megoldás, amely továbbra is megtalálhatók az Azure Portalon történő áthelyezésének folyamat csak néhány hiányosságokat. Ha nem használ, akkor ezeket a funkciókat, lesz elérnie mindent csinált az OMS-portálon az Azure Portalon, stb. Ha ezt még nem tette meg, javasoljuk, indítsa el még ma az Azure portal használatával! 
 
 Zárja le a két különböző portál érhető által 2018 augusztus közötti fennmaradó hézagok várhatóan. Ügyfeleink visszajelzései alapján, hogy fog kommunikálni az OMS-portálon sunsetting ütemtervét. Az Azure Portalra, és hatással vannak a Váltás könnyen izgatottak vagyunk. De tisztában vagyunk azzal módosítások nehéz és zavart okozhatnak. Esetleges kérdéseivel, visszajelzés, és a Küldés **LAUpgradeFeedback@microsoft.com**. Ez a cikk a főbb forgatókönyvek megvalósítását, a jelenlegi rések és az átállás ütemterv keresztül haladnak. 
@@ -60,7 +64,11 @@ Jelenleg néhány funkciókorlátozásokat, amely még mindig használja az OMS-
 
 
 ## <a name="what-should-i-do-now"></a>Mit tegyek most?  
-Hivatkozzon [gyakori kérdések a Log Analytics-felhasználók az Azure Portalon OMS-portálon való váltás](../log-analytics/log-analytics-oms-portal-faq.md) az Azure Portalon való áttéréssel kapcsolatos információkat. Ha a [hézagokat a fent leírt](#current-known-gaps) nem vonatkoznak a környezetben, akkor érdemes lehet indítása az Azure portal használatával, az elsődleges felhasználói élményt. Küldése a olyan visszajelzést, kérdéseket vagy problémákat LAUpgradeFeedback@microsoft.com.
+Hivatkozzon [gyakori kérdések a Log Analytics-felhasználók az Azure Portalon OMS-portálon való váltás](../log-analytics/log-analytics-oms-portal-faq.md) az Azure Portalon való áttéréssel kapcsolatos információkat. Ha a [hézagokat a fent leírt](#current-known-gaps) nem vonatkoznak a környezetben, akkor érdemes lehet indítása az Azure portal használatával, az elsődleges felhasználói élményt. Küldése a olyan visszajelzést, kérdéseket vagy problémákat **LAUpgradeFeedback@microsoft.com**.
+
+A legtöbb szolgáltatások továbbra is működni bármilyen migrálás végrehajtása nélkül. Kivételek az alábbiakban láthatók.
+
+- Lásd: [Azure-bA Migrálhatja az OMS Frissítéstelepítések](../automation/migrate-oms-update-deployments.md) az Update Management megoldás transitioning részleteiért. 
 
 ## <a name="new-workspaces"></a>Új munkaterületek
 Július 29-től kezdődően, már nem lesz létre tudja hozni az OMS-portálon új munkaterületek. Kövesse az útmutató [Log Analytics-munkaterület létrehozása az Azure Portalon](log-analytics-quick-create-workspace.md) új munkaterület létrehozása az Azure Portalon.
@@ -70,7 +78,7 @@ Július 29-től kezdődően, már nem lesz létre tudja hozni az OMS-portálon �
 ### <a name="alert-extension"></a>Riasztások kiterjesztése  
 
 > [!NOTE]
-> Riasztások most már teljes mértékben bővültek be az Azure Portalra. Meglévő riasztási szabályait tekinthetnek meg az OMS-portálon, de azok csak az Azure Portalon lehet kezelni.
+> Riasztások most már teljes mértékben bővültek be az Azure Portalra, a nyilvános felhőben. Meglévő riasztási szabályait tekinthetnek meg az OMS-portálon, de azok csak az Azure Portalon lehet kezelni. Riasztások az Azure Portalon történő kiterjesztését az Azure government cloud 2018 október kezdődik.
 
 Riasztások folyamatban vannak [kiterjeszthetők az Azure Portalon](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Miután ez befejeződött, a riasztásokat a felügyeleti műveletek csak az Azure Portalon érhető el. Meglévő riasztásokat továbbra is megjelennek az OMS-portálon. Ha a riasztásokat programozott a Log Analytics Alert REST API vagy a Log Analytics riasztási Resource-sablon használatával, szüksége Műveletcsoportok használata az API-hívások, Azure Resource Manager-sablonok és PowerShell-parancsok műveletei helyett.
 

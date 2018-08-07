@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 7790920b6553ba0e2738d693710bfc3a1d3b4f89
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 74fb62ffa707188779bcf827d427c61a0b9a4347
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325101"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576338"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>Gyors útmutató: Recognize speech, a C# .NET Core, a beszéd SDK-val Windows alatt
 
@@ -49,13 +49,13 @@ Az alkalmazás össze lett a [Microsoft Cognitive Services beszédfelismerő SDK
 
     ![Telepítse a NuGet-csomag Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-0.5.0.png "telepítse a Nuget-csomag")
 
-1. Fogadja el a licencet, a megjelenő párbeszédpanelen.
+1. Fogadja el a megjelenített licencfeltételeit.
 
     ![Fogadja el a licencfeltételeket](media/sdk/qs-csharp-dotnetcore-windows-04-nuget-license.png "fogadja el a licencfeltételeket")
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
-1. Nyissa meg `Program.cs` projektre a Visual studióban, és cserélje le ezt a fájlt a kód a következő.
+1. Nyissa meg `Program.cs` , és cserélje le azt a kódot a következőre.
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnetcore-windows/helloworld/Program.cs#code)]
 

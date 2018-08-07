@@ -2,24 +2,19 @@
 title: Mi a teendő az Azure Storage leállása esetén |} A Microsoft Docs
 description: Mi a teendő az Azure Storage leállása esetén?
 services: storage
-documentationcenter: .net
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: tamram
-ms.openlocfilehash: 160fe756458e067125b9d696fd0cdb929774446e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.component: common
+ms.openlocfilehash: bca4b13ea2a003ea428351bcff44944630387e1b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072034"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528010"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Mi a teendő az Azure Storage leállása esetén?
 A Microsoft dolgozunk, hogy a szolgáltatásaink mindig elérhetők. Egyes esetekben kényszeríti a vezérlő hatás túli velünk a kapcsolatot, hogy a szolgáltatás nem tervezett leállások miatt egy vagy több régióban. Könnyebben kezelni ezeket ritkán fordul elő, az Azure Storage szolgáltatás a következő magas szintű útmutatást biztosítunk.

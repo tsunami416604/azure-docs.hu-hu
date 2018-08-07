@@ -2,24 +2,18 @@
 title: Az Azure File Sync használatával regisztrált kiszolgálók kezelése |} A Microsoft Docs
 description: Ismerje meg, hogyan lehet regisztrálni, és egy Windows Server az Azure File Sync Társzinkronizálási szolgáltatás törlése.
 services: storage
-documentationcenter: ''
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: fde4f7eeb07dff1e44edcabec390ae2921ecf832
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.component: files
+ms.openlocfilehash: 468bd70682b1b36e906d32cd7bde58c78bdbb376
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160926"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521999"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Az Azure File Sync használatával regisztrált kiszolgálók kezelése
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt nem átalakításával keletkező a Windows-kiszolgálók az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.

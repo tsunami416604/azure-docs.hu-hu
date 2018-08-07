@@ -1,25 +1,20 @@
 ---
-title: Azure Queue storage bemutatása |} Microsoft Docs
-description: Azure Queue storage bemutatása
+title: Az Azure Queue storage bemutatása |} A Microsoft Docs
+description: Az Azure Queue storage bemutatása
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: tamram
-ms.openlocfilehash: 792e8c7efb2a627fbc1abde1389015949d5931e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: queues
+ms.openlocfilehash: d2d4a31097c4050ba9193fc9d6fa076fe9c6e27f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873827"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524831"
 ---
 # <a name="introduction-to-queues"></a>Az üzenetsorok bemutatása
 
@@ -36,22 +31,22 @@ A Queue Storage gyakori használati módjai:
 
 A Queue szolgáltatás az alábbi összetevőkből áll:
 
-![Várólista fogalmak](./media/storage-queues-introduction/queue1.png)
+![Üzenetsor-kapcsolatos fogalmak](./media/storage-queues-introduction/queue1.png)
 
 * **URL-formátum:** Az üzenetsorok a következő URL-formátummal érhetők el:   
-    http://`<storage account>`.queue.core.windows.net/`<queue>` 
+    https://`<storage account>`.queue.core.windows.net/`<queue>` 
   
     Az ábra egyik üzenetsora a következő URL-címmel érhető el:  
   
-    `http://myaccount.queue.core.windows.net/images-to-download`
+    `https://myaccount.queue.core.windows.net/images-to-download`
 
-* **A tárfiók:** Azure Storage minden hozzáférés a storage-fiók segítségével történik. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
+* **Tárfiók:** minden, az Azure Storage-hozzáférés tárfiókon keresztül történik. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
 
 * **Üzenetsor:** Az üzenetsorok üzenetek készleteit tartalmazzák. Az összes üzenetnek üzenetsorban kell lennie. Vegye figyelembe, hogy az üzenetsor neve csak kisbetűket tartalmazhat. Az üzenetsorok elnevezésével kapcsolatos információkat lásd: [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Üzenetsorok és metaadatok elnevezése).
 
-* **Üzenet:** Egy legfeljebb 64 KB méretű, tetszőleges méretű üzenet. A maximális időt, amely egy üzenetet a várólistában lévő maradjanak hét nap.
+* **Üzenet:** Egy legfeljebb 64 KB méretű, tetszőleges méretű üzenet. A maximális időtartam, egy üzenet a várólistában lévő maradhat a hét nap.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tárfiók létrehozása](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-* [Bevezetés az üzenetsorok .NET használatával](storage-dotnet-how-to-use-queues.md)
+* [Ismerkedés az Üzenetsorokkal .NET használatával](storage-dotnet-how-to-use-queues.md)

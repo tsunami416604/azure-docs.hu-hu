@@ -3,17 +3,17 @@ title: Az Azure Storage Service Encryption az inaktív adatok |} A Microsoft Doc
 description: Az Azure Storage Service Encryption szolgáltatással titkosítása az Azure Managed Disks, az Azure Blob storage, Azure Files, az Azure Queue storage és Azure Table storage szolgáltatás oldalán, az adatok tárolásakor és visszafejteni az adatok lekérésekor.
 services: storage
 author: lakasa
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: 1a127f7e3dd57376ecd05d4ae7030becb33f1159
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.component: common
+ms.openlocfilehash: 5b676bbc764cb5689a6c80e81f597776fe80413e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480305"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520724"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Az Azure Storage Service Encryption az inaktív adatok
 Inaktív adatok az Azure Storage Service Encryption segítségével a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok védelme. Ezzel a funkcióval az Azure storage-platform automatikusan titkosítja az adatokat előtt, az Azure Managed Disks, az Azure Blob storage, Azure Files és az Azure Queue storage megőrzése, és mindig visszafejti az adatokat lekérés előtt. A titkosítás és a rest, visszafejtési és kulcskezelési a Storage Service Encryption titkosítás kezelése a felhasználók számára átlátható. Az Azure storage-platformra írt összes adat titkosítva van segítségével 256 bites [AES-titkosítás](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), egyik legerősebb Rejtjelek érhető el.

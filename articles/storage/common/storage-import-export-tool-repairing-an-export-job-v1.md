@@ -1,69 +1,63 @@
 ---
-title: Javítása Azure Import/Export exportálási feladat - 1-es verzió |} Microsoft Docs
-description: Megtudhatja, hogyan javítsa ki, hogy létrejött, de az Azure Import/Export szolgáltatás használatával futtassa exportálási feladat.
+title: Az Azure Import/Export exportálási feladat - v1 javítása |} A Microsoft Docs
+description: Ismerje meg, hogyan létrehozott és az Azure Import/Export szolgáltatás használatával futtassa exportálási feladat javítása.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 728e2a42-04ce-4be8-9375-e9e2bc6827a5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 57ab58fa1fd8371d0b6f019f94bb162bcc1e0e43
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: ef5a5f81c5eb3994f62469139c6e835bd802eaa9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873876"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522723"
 ---
 # <a name="repairing-an-export-job"></a>Exportálási feladat javítása
-Miután exportálási feladat befejeződött, a Microsoft Azure Import/Export eszköz helyszíni is futtathatja:  
+Exportálási feladat befejezését követően a Microsoft Azure Import/Export eszköz a helyszíni futtathatja:  
   
 1.  Töltse le azokat a fájlokat, az Azure Import/Export szolgáltatás nem tudta exportálni.  
   
-2.  Ellenőrizze, hogy a meghajtón lévő fájlokat helyesen lettek-e exportálva.  
+2.  Ellenőrizze, hogy a meghajtó a fájlok megfelelően lettek-e exportálva.  
   
-A funkció használatához Azure-tárhellyel létesített kapcsolat kell rendelkeznie.  
+Kapcsolat az Azure Storage-e funkció használatához rendelkeznie kell.  
   
-A parancs az importálási feladat javítási **RepairExport**.
+A parancs az importálási feladat javítása a **RepairExport**.
 
 ## <a name="repairexport-parameters"></a>RepairExport paraméterek
 
-A következő paraméterekkel rendelkező adható meg **RepairExport**:  
+A következő paraméterek adható **RepairExport**:  
   
 |Paraméter|Leírás|  
 |---------------|-----------------|  
-|**r: < RepairFile\>**|Kötelező. A fájl elérési útját javítása, amely nyomon követi a folyamatot, a javítási, és lehetővé teszi az megszakított javítását folytatása. Minden olyan meghajtó meg kell adni egy javítási fájlt. Egy adott meghajtó javítás indításakor meg fogja továbbítani az elérési út egy javítási fájlt, amely még nem létezik. Az megszakított javítását folytatásához meglévő javítási fájl nevében kell átadni. A célmeghajtó megfelelő javítási fájlt mindig meg kell adni.|  
-|**/ logdir: < LogDirectory\>**|Választható. A naplózási könyvtár. Ez a könyvtár részletes naplófájlok fog szerepelni. Ha nincs naplókönyvtár meg van adva, a naplózási könyvtár az aktuális könyvtár lesz.|  
-|**/ d: < TargetDirectory\>**|Kötelező. Ellenőrizze és javítsa ki a könyvtárat. Ez általában az Exportálás meghajtó gyökérkönyvtárában, de sikerült is kell egy hálózati fájlmegosztásra tartalmazó az exportált fájlokat egy példányát.|  
-|**/BK: < BitLockerKey\>**|Választható. A BitLocker kulcsot kell megadnia, ha azt szeretné, hogy az eszköz zárolásának feloldásához egy titkosított az exportált fájlok tárolására.|  
-|**/sn: < StorageAccountName\>**|Kötelező. Az exportálási feladat a tárfiók nevét.|  
-|**/SK: < StorageAccountKey\>**|**Szükséges** csak, ha a tároló SAS nincs megadva. A fiók az exportálási feladat a tárfiók kulcsa.|  
-|**/csas: < ContainerSas\>**|**Szükséges** csak, ha nincs megadva a tárfiók kulcsára. A tároló SAS az exportálási feladat társított BLOB eléréséhez.|  
-|**/ CopyLogFile: < DriveCopyLogFile\>**|Kötelező. A naplófájl elérési útja a meghajtó másolása. A fájlt a Windows Azure Import/Export szolgáltatás által generált és tölthető le: a feladathoz társított blob-tároló. A napló fájl másolása sikertelen blobokkal vagy a fájlokat, amelyek javítani kell információkat tartalmaz.|  
-|**/ ManifestFile: < DriveManifestFile\>**|Választható. Az Exportálás meghajtó Alkalmazásjegyzék-fájl elérési útja. Ezt a fájlt a Windows Azure Import/Export szolgáltatás által létrehozott és exportálás a meghajtón, és szükség esetén egy blobba a feladathoz társított tárfiókban tárolja.<br /><br /> Az Exportálás meghajtón a fájlok tartalmának fogja ellenőrizni a ebben a fájlban található MD5-kivonatok. Azokat a fájlokat, sérült határozza meg a rendszer letölti és a cél könyvtárak írni.|  
+|**r: < RepairFile\>**|Kötelező. A javítási fájlt, amely nyomon követi a folyamatot a javítás, és lehetővé teszi, hogy folytatni az megszakított javítását elérési útja. Minden olyan meghajtó csak egy javítási fájlnak kell lennie. Amikor egy adott meghajtó javítás, fog adja át az elérési út egy javítási fájlba, amely még nem létezik. Az megszakított javítását folytatásához be egy meglévő helyreállítási fájl nevét kell átadnia. A javítási fájlt a cél meghajtó megfelelő mindig meg kell adni.|  
+|**/ logdir: < LogDirectory\>**|Választható. A naplózási könyvtár. Ez a könyvtár részletes naplófájlok lesz írva. Ha nincs naplókönyvtár van megadva, a naplózási könyvtár az aktuális könyvtárban lesz.|  
+|**/ d: < TargetDirectory\>**|Kötelező. A könyvtár ellenőrzése és javítása. Ez általában a az export-meghajtó gyökérkönyvtárát, de sikerült is kell egy hálózati fájlmegosztásra tartalmazó egy másolatot az exportált fájlokat.|  
+|**/BK: < BitLockerKey\>**|Választható. A BitLocker-kulcsot kell megadnia, ha azt szeretné, hogy az eszköz zárolásának feloldásához egy titkosított az exportált fájlok tárolására.|  
+|**/sn: < StorageAccountName\>**|Kötelező. A storage-fiók neve az exportálási feladatot.|  
+|**/SK: < StorageAccountKey\>**|**Szükséges** csak, ha nincs megadva egy SAS-tárolót. A fiókkulcs a storage-fiókját az exportálási feladatot.|  
+|**/csas: < ContainerSas\>**|**Szükséges** csak, ha nincs megadva a tárfiók-kulcsot. A tároló SAS a blobok az exportálási feladatot társított eléréséhez.|  
+|**/ CopyLogFile: < DriveCopyLogFile\>**|Kötelező. A meghajtó másolása naplófájl elérési útja. A fájlt a Windows Azure Import/Export szolgáltatás által létrehozott, és a feladathoz hozzárendelt blob storage-ból letölthető. A log fájl másolása sikertelen blobok vagy fájlokat, amelyek javításra szorul kapcsolatos információkat tartalmazza.|  
+|**/ ManifestFile: < DriveManifestFile\>**|Választható. Az exportálási meghajtó Alkalmazásjegyzék-fájl elérési útja. Ezt a fájlt a Windows Azure Import/Export szolgáltatás által létrehozott és tárolt, az Exportálás meghajtón és opcionálisan a feladathoz társított storage-fiókban található blob.<br /><br /> Az MD5-kivonatát a fájlban található a rendszer ellenőrzi a exportálási meghajtón található fájlok tartalmát. Azokat a fájlokat, valószínűleg sérült határozza meg a rendszer letölti és a cél könyvtárak átírása.|  
   
-## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Javítsa ki a hibás kivitel RepairExport mód használata  
+## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Javítsa ki a hibás exportálások RepairExport mód használata  
 Az Azure Import/Export eszköz segítségével, amely nem sikerült exportálni a fájlok letöltése. A másolási naplófájlt fogja tartalmazni, amely nem sikerült exportálni a fájlok listáját.  
   
-Exportálási hiba okai a következő lehetőségek állnak rendelkezésére:  
+Az exportálási hibák okai a következő lehetőségek állnak rendelkezésére:  
   
 -   Sérült meghajtók  
   
--   A tárfiók hívóbetűjét módosult az átvitel során  
+-   A tárfiók-kulcsot az átvitel során megváltozott  
   
-Az eszköz futtatásához **RepairExport** mód, először a meghajtót, amely tartalmazza az exportált fájlokat a számítógépre. Ezután futtassa az Azure Import/Export eszköz, az elérési út megadását, hogy a meghajtót, amelyen a `/d` paraméter. Meg kell adnia a naplófájl elérési útja a meghajtó másolása letöltött is. A következő parancsot az alábbi példa használatával javítsa ki azokat a fájlokat, nem sikerült exportálni az eszköz fut:  
+Az eszköz futtatásához **RepairExport** mód, először csatlakoznia kell a számítógépre az exportált fájlokat tartalmazó meghajtót. Ezután futtassa az Azure Import/Export eszköz, a meghajtó elérési útját adja meg a `/d` paraméter. Meg kell adja meg a naplófájl elérési útja a meghajtó másolása letöltött is. A következő parancssori példa az alábbi futtatja az eszközt nem sikerült exportálni a fájlok helyreállításához:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
 ```  
   
-A következő egy példa bemutatja, hogy egy blokk a BLOB másolási naplófájlt nem tudott exportálni:  
+Az alábbiakban látható egy példa, amely egy kódrészleten jeleníti meg a blob másolási naplófájl nem sikerült exportálni:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -82,20 +76,20 @@ A következő egy példa bemutatja, hogy egy blokk a BLOB másolási naplófájl
 </DriveLog>  
 ```  
   
-A másolási naplófájl azt jelzi, hogy hiba történt a Windows Azure Import/Export szolgáltatás lett letöltését a blob blokkok egyikét a fájlt az exportálási meghajtón. A többi összetevő a fájl letöltése sikeresen befejeződött, és a fájl hosszát helyesen be lett állítva. Ebben az esetben az eszköz nyissa meg a fájlt a meghajtón, a blokk letöltését a tárfiók, és írja a 65536 értékű eltolás hosszúságú 65536-től kezdődő fájl tartománynak.  
+A másolási naplófájl azt jelzi, hogy hiba történt a Windows Azure Import/Export szolgáltatás lett letöltése a blob blokkok egyikét a fájl exportálása a meghajtón. A többi összetevő, a fájl letöltése sikerült, és a fájl hosszát megfelelően be lett állítva. Ebben az esetben az eszköz fog nyissa meg a fájlt a meghajtón, a blokkblob letöltése a storage-fiókból, és azt írni a fájl tartomány eltolása 65536 hosszúságú 65536-től.  
   
-## <a name="using-repairexport-to-validate-drive-contents"></a>RepairExport segítségével ellenőrzi a meghajtó tartalmát  
-Használhatja az Azure Import/Export a **RepairExport** lehetőséget a meghajtón a tartalmát érvényesíteni helyesek. A jegyzékfájl minden exportálási meghajtón MD5s a meghajtó tartalmát tartalmazza.  
+## <a name="using-repairexport-to-validate-drive-contents"></a>Meghajtó tartalmát érvényesíteni RepairExport használatával  
+Az Azure Import/Export is használhatja a **RepairExport** helyesek-e a meghajtó tartalmát érvényesíteni a beállítást. Az Alkalmazásjegyzék-fájl minden kiviteli meghajtót a meghajtó tartalmát MD5s tartalmazza.  
   
-Az Azure Import/Export szolgáltatás is mentheti a jegyzékfájlt tárfiókba az exportálási folyamat során. Fájlok helye keresztül érhető el a [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet, amikor a feladat befejeződött. Lásd: [Import/Export service Manifest fájlformátum](storage-import-export-file-format-metadata-and-properties.md) meghajtó jegyzékfájl formátuma további információt.  
+Az Azure Import/Export szolgáltatás mentheti is a fájlok egy storage-fiókba az exportálási folyamat során. A fájlok helyét keresztül érhető el a [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet, amikor a feladat befejeződött. Lásd: [Import/Export service Manifest fájl formátuma](storage-import-export-file-format-metadata-and-properties.md) meghajtó jegyzékfájl formátuma további információt.  
   
-A következő példa bemutatja, hogyan együtt az Azure Import/Export eszköz futtatásához a **/ManifestFile** és **/CopyLogFile** paraméterek:  
+Az alábbi példa bemutatja, hogyan futtathat az Azure Import/Export eszközzel rendelkező a **/ManifestFile** és **/CopyLogFile** paraméterek:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
 ```  
   
-A következő egy példa a jegyzékfájlt:  
+Az alábbiakban látható egy példa a jegyzékfájlt:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -132,7 +126,7 @@ A következő egy példa a jegyzékfájlt:
 </DriveManifest>  
 ``` 
   
-A javítási folyamat végén, az eszköz olvassa végig a jegyzékfájl hivatkozott minden fájl és a fájl integritását a MD5 kivonatok ellenőrzése. A jegyzékfájl felett, a hibaállapotba kerül, a következő összetevők keresztül.  
+A javítási folyamat befejezése, miután az eszköz olvassa végig a jegyzékfájlban hivatkozott fájlok, és ellenőrizze az MD5-kivonatát a fájl integritását. A jegyzékfájl felett akkor fog áthaladni a következő összetevőket.  
 
 ```  
 G:\pictures\city\redmond.jpg, offset 0, length 3584  
@@ -154,11 +148,11 @@ G:\pictures\wild\canyon.jpg, offset 8163, length 2721
 G:\pictures\wild\canyon.jpg.properties  
 ```
 
-Az ellenőrzés sikertelen összetevők közül bármelyik a eszköz által letöltődik és írni a meghajtón ugyanazt a fájlt.  
+Minden olyan összetevő, az ellenőrzés sikertelen lesz az eszköz által letölthető, és ugyanazt a fájlt a meghajtón átírása.  
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
-* [Az Azure Import/Export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
+* [Az Azure Import/Export eszköz telepítése](storage-import-export-tool-setup-v1.md)   
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Feladatok állapotának áttekintése a másolási naplófájlok segítségével](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Importálási feladat javítása](storage-import-export-tool-repairing-an-import-job-v1.md)   

@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 58a1871774683e2af66e12a03bdaf8d6bcea831c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1587debecd82072c29d4caffc2b81629b1f52b0e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493258"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527364"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Oktatóanyag: Az entitás pattern.any alkalmazás fejlesztéséhez
 
@@ -106,7 +106,9 @@ A Pattern.any entitás változó hosszúságú entitásokat ad eredményül. Csa
 
 4. Ha eltávolította a keyPhrase entitás, adja hozzá újból az alkalmazást. 
 
-5. Az alkalmazás betanításához.
+## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
+
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>A szabad formátumú adatok kinyerése az új mintára tesztelése
 1. Válassza ki **tesztelése** a felső sávon a teszt panel megnyitásához. 

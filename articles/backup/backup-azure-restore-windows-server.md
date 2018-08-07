@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/25/2018
+ms.date: 8/6/2018
 ms.author: saurse
-ms.openlocfilehash: a1c9df57ddebbb1cf471f705acfbd6651c151d7b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247278"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576185"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windows-kiszolgálóra vagy -ügyfélre a Resource Manager-alapú üzemi modell használatával
 
@@ -51,6 +51,8 @@ Ha véletlenül törölte a fájlt, és vissza szeretné állítani, (, amelyrő
 4. A a **helyreállítási mód kiválasztása** panelen válassza a **egyes fájlok és mappák** majd **tovább**.
 
     ![Fájlok tallózása](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
+> [!IMPORTANT]
+> Helyreállítható *egyes fájlok és mappák* szükséges a .NET-keretrendszer 4.5.2-es vagy újabb verziója. Ha nem látja a *egyes fájlok és mappák* lehetőséget, frissítenie kell .NET-keretrendszer 4.5.2-es vagy újabb, és próbálkozzon újra.
 
 5. Az a **kötet és dátum kiválasztása** ablaktáblán válassza ki a fájlokat és/vagy a visszaállítani kívánt mappákat tartalmazó kötetet.
 
@@ -67,7 +69,7 @@ Ha véletlenül törölte a fájlt, és vissza szeretné állítani, (, amelyrő
     ![Helyreállítási beállítások](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
 
-8. A Windows Explorerben másolja a fájlokat és/vagy mappák visszaállítása, és illessze be őket a helyi kiszolgáló vagy számítógép bármely helyére. Nyissa meg a vagy adatfolyam a fájlok közvetlenül a helyreállítási kötetet, és ellenőrizze a megfelelő verziójával állíthatók helyre.
+8. A Windows Explorerben másolja a fájlokat és/vagy mappák visszaállítása, és illessze be őket a helyi kiszolgáló vagy számítógép bármely helyére. Nyissa meg vagy adatfolyam a fájlok közvetlenül a helyreállítási kötetet, és győződjön meg arról, hogy a megfelelő verzióra állít helyre.
 
     ![Másolja és illessze be a fájlok és mappák csatlakoztatott kötet helyi helyre](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 

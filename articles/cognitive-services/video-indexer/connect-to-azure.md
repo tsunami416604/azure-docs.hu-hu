@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 456ee8f7461fdb6a4335cdb36d4a6f9182e4c63e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2c7c74d81f6d6634312b9af3f8657c520449787a
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389279"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577328"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Hozzon létre egy kapcsolódik az Azure Video Indexer-fiókot
 
@@ -43,6 +43,12 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéséhez kapcsolód
     *  Az Azure-előfizetésben egy tulajdonosi szerepkör, vagy a közreműködői és a felhasználói hozzáférés rendszergazdája szerepkör tagjának lennie. A felhasználó is hozzáadhatók kétszer, 2 szerepkört. Miután a közreműködő, és egyszer a felhasználói hozzáférés rendszergazdája.
 
         ![Hozzáférés-vezérlés](./media/create-account/access-control-iam.png)
+
+    * Az Azure portal használatával EventGrid erőforrás-szolgáltató regisztrálása.
+
+        Az Azure Portalon lépjen a **előfizetések** > [. előfizetés] > **ResourceProviders** > **Microsoft.EventGrid**. Ha nem a "Regisztrálva" állapotban lévő, kattintson a **regisztrálása**. Néhány perc alatt regisztrálni vesz igénybe. 
+
+        ![EventGrid](./media/create-account/event-grid.png)
 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
 

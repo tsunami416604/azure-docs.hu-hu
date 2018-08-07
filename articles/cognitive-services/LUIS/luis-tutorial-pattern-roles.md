@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 80f2d482a660992011549fe8dc76a09740da6ab1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237825"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524144"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>Oktatóanyag: A minta szerepkörökkel alkalmazás fejlesztéséhez
 
@@ -27,7 +27,7 @@ Ebben az oktatóanyagban használja egy egyszerű entitás minták kombinálva s
 * Az egyszerű entitás használata szerepkörök utterances minta létrehozása
 * Azt, hogyan ellenőrizheti, mintát előrejelzési fejlesztései
 
-Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 Ha nem rendelkezik az emberi erőforrások alkalmazásból a [minta](luis-tutorial-pattern.md) oktatóanyagban [importálása](luis-how-to-start-new-app.md#import-new-app) a JSON-kódot egy új alkalmazást a [LUIS](luis-reference-regions.md#luis-website) webhely. Az alkalmazás importálása megtalálható a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json) GitHub-adattárban.
@@ -125,23 +125,16 @@ Az entitások ezeket a lépéseket a címkézés egyszerűbb, ha az előre össz
     Ha eltávolította a keyPhrase entitás, csatolja vissza az alkalmazás most már.
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
-Az új szándékot és a kimondott szöveg szükséges képzés. 
 
-1. A LUIS-webhely jobb felső részén kattintson a **Train** (Betanítás) gombra.
-
-2. A betanítás akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
-Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más alkalmazásban, közzé kell tennie az alkalmazást. 
 
-1. A LUIS-webhely jobb felső részén válassza a **Publish** (Közzététel) lehetőséget. 
-
-2. Válasza a Production (Termelés) helyet, és kattintson a **Publish** (Közzététel) gombra.
-
-3. A közzététel akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-without-pattern"></a>A végpont nélkül minta lekérdezése
-1. A **Publish** (Közzététel) lapon kattintson a lap alján található **Endpoint** (Végpont) hivatkozásra. Ez a művelet megnyit egy másik böngészőablakot, amelynek címsorában a végpont URL-címe látható. 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move Wayne Berry from Miami to Mount Vernon`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
 
@@ -388,7 +381,8 @@ Város, például people's nevek a következők megjelenítéséhez abban, hogy 
 A leképezési pontszám most már sokkal nagyobb és a szerepkör nevét az entitás válasz részét képezik.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a három pontot (***...*** ) az alkalmazások listájában, az alkalmazás nevétől jobbra, válassza ki a **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 

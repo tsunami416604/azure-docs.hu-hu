@@ -1,61 +1,55 @@
 ---
-title: Egy Azure Import/Export importálási feladat - v1 javítására |} Microsoft Docs
-description: Megtudhatja, hogyan javítsa az importálási feladat létrehozott és az Azure Import/Export szolgáltatás használatával fusson.
+title: Az Azure Import/Export importálási feladat - v1 javítása |} A Microsoft Docs
+description: Ismerje meg, hogyan létrehozott és az Azure Import/Export szolgáltatás használatával futtassa importálási feladat javítása.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: c837713fd9e7d03287ae5a3644fd6bb47714c9d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: e2eb580df0a90e07e79c7f080ba31e5418fc5956
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23927466"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523784"
 ---
 # <a name="repairing-an-import-job"></a>Importálási feladat javítása
-A Microsoft Azure Import/Export szolgáltatás lehetséges, hogy nem másolja a fájlok vagy a fájl tartalmát egy része a Windows Azure Blob szolgáltatásban. Néhány ok, amiért hibák a következők:  
+A Microsoft Azure Import/Export szolgáltatás néhány a fájlok és a egy fájl részeit átmásolása a Windows Azure Blob szolgáltatás sikertelen lehet. Bizonyos hibák okai a következők:  
   
 -   A sérült fájlok  
   
 -   Sérült meghajtók  
   
--   A fiók kulcsot módosítható, amíg a fájl átvitel során.  
+-   A tárfiókkulcs módosítva lett a fájl átvitele közben.  
   
-Futtathatja a Microsoft Azure Import/Export eszköz az importálás feladat másolási naplófájlokat, és az eszköz feltölti a hiányzó fájlokat (vagy a fájl tartalmát) a Windows Azure storage-fiókot az importálási feladat befejeződik.  
+Futtathatja a Microsoft Azure Import/Export eszköz az importálás feladat másolási naplófájlokat, és az eszköz feltölti a hiányzó fájlokat (vagy egy fájl részeit) a Windows Azure storage-fiókba az importálási feladat végrehajtásához.  
   
 ## <a name="repairimport-parameters"></a>RepairImport paraméterek
 
-A következő paraméterekkel rendelkező adható meg **RepairImport**: 
+A következő paraméterek adható **RepairImport**: 
   
 |||  
 |-|-|  
-|**r:**< RepairFile\>|**Szükséges.** A fájl elérési útját javítása, amely nyomon követi a folyamatot, a javítási, és lehetővé teszi az megszakított javítását folytatása. Minden olyan meghajtó meg kell adni egy javítási fájlt. Amikor elindít egy adott meghajtó javítása, adja át az elérési út javítási fájlban, amely még nem létezik. Az megszakított javítását folytatásához meglévő javítási fájl nevében kell átadni. A célmeghajtó megfelelő javítási fájlt mindig meg kell adni.|  
-|**/ logdir:**< LogDirectory\>|**Nem kötelező.** A naplózási könyvtár. Ez a könyvtár részletes naplófájlok kerülnek. Ha nincs naplókönyvtár meg van adva, az aktuális könyvtárban lesz a naplózási könyvtár.|  
-|**/ d:**< TargetDirectories\>|**Szükséges.** Legalább egy pontosvesszővel elválasztott könyvtárak importált eredeti fájlokat tartalmazó. Az importálás meghajtó is használható, de nincs szükség esetén érhetők el az eredeti fájlokat más helyekre.|  
-|**/BK:**< BitLockerKey\>|**Nem kötelező.** A BitLocker kulcsot kell megadnia, ha azt szeretné, hogy az eszköz zárolásának feloldásához egy titkosított meghajtó, ahol az eredeti fájl áll rendelkezésre.|  
-|**/sn:**< StorageAccountName\>|**Szükséges.** Az importálási feladatnak a tárfiók neve.|  
-|**/SK:**< StorageAccountKey\>|**Szükséges** csak, ha a tároló SAS nincs megadva. A fiók az importálási feladatnak a tárfiók kulcsa.|  
-|**/csas:**< ContainerSas\>|**Szükséges** csak, ha nincs megadva a tárfiók kulcsára. A tároló SAS az importálási feladattal társított BLOB eléréséhez.|  
-|**/ CopyLogFile:**< DriveCopyLogFile\>|**Szükséges.** Naplófájl elérési útja a meghajtó másolása (vagy részletes naplózás vagy hiba napló). A fájlt a Windows Azure Import/Export szolgáltatás által generált és tölthető le: a feladathoz társított blob-tároló. A napló fájl másolása sikertelen blobokkal vagy a fájlokat, amelyek javítani kell információkat tartalmaz.|  
-|**/ PathMapFile:**< DrivePathMapFile\>|**Nem kötelező.** Elérési útját egy szövegfájlt, amely segítségével kétértelműséget feloldása, ha több fájl, amely ugyanazt a feladatot importálna ugyanazzal a névvel rendelkezik. Az eszköz fut, először azt töltheti fel az összes, a nem egyértelmű nevek a fájl. Az eszköz utólagosan a fájl segítségével hárítsa el a kétértelműséget.|  
+|**r:**< RepairFile\>|**Szükséges.** A javítási fájlt, amely nyomon követi a folyamatot a javítás, és lehetővé teszi, hogy folytatni az megszakított javítását elérési útja. Minden olyan meghajtó csak egy javítási fájlnak kell lennie. Amikor egy adott meghajtó javítás, adja meg az elérési út egy javítási fájlt, amely még nem létezik. Az megszakított javítását folytatásához be egy meglévő helyreállítási fájl nevét kell átadnia. A javítási fájlt a cél meghajtó megfelelő mindig meg kell adni.|  
+|**/ logdir:**< LogDirectory\>|**Nem kötelező.** A naplózási könyvtár. Ez a könyvtár részletes naplófájlok kerüljenek. Ha nincs naplókönyvtár van megadva, a naplózási könyvtár az aktuális könyvtárban lesz.|  
+|**/ d:**< TargetDirectories\>|**Szükséges.** Egy vagy több pontosvesszővel tagolt könyvtárak, amelyek tartalmazzák az eredeti fájlokat a korábban importált. Az importálás meghajtó is használható, de nem kötelező, ha a másodlagos hely eredeti fájlok érhető el.|  
+|**/BK:**< BitLockerKey\>|**Nem kötelező.** A BitLocker-kulcsot kell megadnia, ha azt szeretné, hogy az eszköz zárolásának feloldásához egy titkosított meghajtó, ahol az eredeti fájl áll rendelkezésre.|  
+|**/sn:**< StorageAccountName\>|**Szükséges.** Az importálási feladatot a tárfiók neve.|  
+|**/SK:**< StorageAccountKey\>|**Szükséges** csak, ha nincs megadva egy SAS-tárolót. A storage-fiókját az importálási feladat fiókkulcs.|  
+|**/csas:**< ContainerSas\>|**Szükséges** csak, ha nincs megadva a tárfiók-kulcsot. A tároló SAS a blobok, az importálási feladathoz hozzárendelt eléréséhez.|  
+|**/ CopyLogFile:**< DriveCopyLogFile\>|**Szükséges.** Naplófájl elérési útja a meghajtó másolása (vagy részletes naplózás vagy a hiba naplója). A fájlt a Windows Azure Import/Export szolgáltatás által létrehozott, és a feladathoz hozzárendelt blob storage-ból letölthető. A log fájl másolása sikertelen blobok vagy fájlokat, amelyek javításra szorul kapcsolatos információkat tartalmazza.|  
+|**/ PathMapFile:**< DrivePathMapFile\>|**Nem kötelező.** Elérési út egy szövegfájlba feloldani a kétértelműséget, ha több fájlt, amely ugyanazt a feladatot importálna ugyanazzal a névvel rendelkezik használható. Az eszköz fut, először azt fel lehet tölteni a fájlt az összes, a nem egyértelmű nevek. Az eszköz későbbi futtatások a kétértelműséget feloldani ezt a fájlt használja.|  
   
 ## <a name="using-the-repairimport-command"></a>A RepairImport paranccsal  
-Adatok importálása a hálózaton keresztül az adatok folyamatos javításához importálna, használja az eredeti fájlokat tartalmazó könyvtárak kell megadnia a `/d` paraméter. A letöltött importáljon a tárfiókba másolása naplófájl is meg kell adnia. Tipikus parancssor használatával javítsa ki az importálási feladat részleges kapcsolatos problémákkal néz ki:  
+Adatok importálása a hálózaton keresztül a streamadatok helyreállításához, meg kell adnia a importálna, használja az eredeti fájlokat tartalmazó könyvtárakat a `/d` paraméter. A log fájl másolása a tárfiókból letöltött is meg kell. Egy tipikus parancssori részleges hibákkal rendelkező importálási feladat javítása hasonlóan néz ki:  
   
 ```  
 WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bob\Pictures;X:\BobBackup\photos /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C2V.log  
 ```  
   
-A másolási naplófájl a következő példában egy fájl egy 64-K adat megsérült teljesített az importálási feladatnak a meghajtón. Mivel ez a csak hibát jelzett, a blobot, amely a feladatot a többi az importálás sikeres volt.  
+A következő példában a másolási naplófájlok a meghajtón, amely az importálási feladat teljesített 64-K egy részét a fájl sérült. Mivel a csak hibát jelzett, a feladat a blobokat a többi címekkénti importálása sikeresen megtörtént.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -74,38 +68,38 @@ A másolási naplófájl a következő példában egy fájl egy 64-K adat megsé
 </DriveLog>  
 ```
   
-Ha ezt a naplót másolása az Azure Import/Export eszköz számára, az eszköz próbálja meg a hiányzó tartalmának másolása a hálózaton keresztül az adott fájlt az importálási befejezéséhez. A fenti példában követően az eszköz megkeresi az eredeti fájl `\animals\koala.jpg` belül a két címtár `C:\Users\bob\Pictures` és `X:\BobBackup\photos`. Ha a fájl `C:\Users\bob\Pictures\animals\koala.jpg` létezik, az Azure Import/Export eszköz a hiányzó adattartomány másolja a megfelelő blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`.  
+Ha a másolási napló számára az Azure Import/Export eszköz van, az eszköz megkísérli a fájl az importálás befejezése a hiányzó tartalmának másolása a hálózaton keresztül. A fenti példát követve az eszköz figyeli a nem az eredeti fájl `\animals\koala.jpg` belül a két címtár `C:\Users\bob\Pictures` és `X:\BobBackup\photos`. Ha a fájl `C:\Users\bob\Pictures\animals\koala.jpg` létezik, az Azure Import/Export eszköz a megfelelő blobba másolja a hiányzó adattartományokat `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`.  
   
-## <a name="resolving-conflicts-when-using-repairimport"></a>Az ütközések feloldása RepairImport használatakor  
-Bizonyos esetekben az eszköz nem lehet tudni található, vagy nyissa meg a szükséges fájl a következő okok miatt: a fájl nem található, a fájl nem érhető el, a fájl neve nem egyértelmű, vagy a fájl tartalma nem megfelelő.  
+## <a name="resolving-conflicts-when-using-repairimport"></a>RepairImport használata során az ütközések feloldása  
+Bizonyos esetekben az eszköz nem lehet, vagy nyissa meg a szükséges fájlt az alábbi okok valamelyike: a fájl nem található, a fájl nem érhető el, a fájlnév nem egyértelmű vagy a fájl tartalma már nem megfelelő.  
   
-Nem egyértelmű hiba akkor fordulhat elő, ha az eszköz megkeresésére tett kísérlet `\animals\koala.jpg` , és mindkettő adott nevű fájl `C:\Users\bob\pictures` és `X:\BobBackup\photos`. Ez azt jelenti, hogy mindkét `C:\Users\bob\pictures\animals\koala.jpg` és `X:\BobBackup\photos\animals\koala.jpg` az importálási feladat meghajtón található.  
+Nem egyértelmű hiba akkor fordulhat elő, ha az eszköz van megkeresésére tett kísérlet `\animals\koala.jpg` , és mindkettő ilyen nevű fájl `C:\Users\bob\pictures` és `X:\BobBackup\photos`. Vagyis mindkét `C:\Users\bob\pictures\animals\koala.jpg` és `X:\BobBackup\photos\animals\koala.jpg` az importálási feladat meghajtókon található.  
   
-A `/PathMapFile` lehetővé teszi a hibák elhárításához. Megadhatja, hogy a fájl, amely tartalmazza a fájlokat, az eszköz nem tudta helyesen azonosítani nevét. A következő parancssori példa tölti fel `9WM35C2V_pathmap.txt`:  
+A `/PathMapFile` beállítás lehetővé teszi a hibák elhárításához. Megadhatja, hogy a fájl, amely tartalmazza azokat a fájlokat, az eszköz nem tudta helyesen azonosítani a neve. A következő parancssori példa feltölti a `9WM35C2V_pathmap.txt`:  
   
 ```
 WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bob\Pictures;X:\BobBackup\photos /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C2V.log /PathMapFile:C:\WAImportExport\9WM35C2V_pathmap.txt  
 ```
   
-Az eszköz majd fog kiírni, a hibás fájlt elérési útjait `9WM35C2V_pathmap.txt`, soronként egy. Azt jelzi, például a fájl tartalmazhat-e a parancs futtatása után az alábbi bejegyzéseket:  
+Az eszköz ezután ír a problematikus fájl elérési útját `9WM35C2V_pathmap.txt`, soronként egy. Azt jelzi, például a fájl tartalmazhat-e a parancs futtatása után az alábbi bejegyzéseket:  
  
 ```
 \animals\koala.jpg  
 \animals\kangaroo.jpg  
 ```
   
- A listában lévő összes fájlhoz meg kell próbálni keresse meg, és nyissa meg a fájlt annak érdekében, hogy az eszköz a rendelkezésére áll. Ha kívánja, hogy az eszköz explicit módon a fájl helyét, módosítsa az elérési út térkép fájlt, és vegye fel az elérési útját minden egyes fájl egy sorban, karakterrel elválasztó karakterláncként lapon:  
+ A lista minden fájl esetében meg kell próbálni keresse meg és nyissa meg a fájlt, hogy az eszköz számára elérhető. Ha szeretné, hogy az eszköz explicit módon, hogy hol található a fájl, módosítsa az elérési út térkép fájlt, és vegye fel a minden fájl egy sorban, tabulátor karakterrel elválasztva:  
   
 ```
 \animals\koala.jpg           C:\Users\bob\Pictures\animals\koala.jpg  
 \animals\kangaroo.jpg        X:\BobBackup\photos\animals\kangaroo.jpg  
 ```
   
-Elérhetővé teszi azokat a fájlokat az eszköz, vagy az elérési út leképezési fájl frissítése után az eszköz az importálási folyamat befejezéséhez futtassa újra.  
+Elérhetővé teszi azokat a fájlokat az eszköz, vagy az elérési út leképezési fájl frissítése után futtathatja az eszközt, hogy az importálási művelet befejezéséhez.  
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
-* [Az Azure Import/Export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
+* [Az Azure Import/Export eszköz telepítése](storage-import-export-tool-setup-v1.md)   
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Feladatok állapotának áttekintése a másolási naplófájlok segítségével](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Exportálási feladat javítása](../storage-import-export-tool-repairing-an-export-job-v1.md)   

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2018
+ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: 8a6256ab9c511342b536919c69faed30d40a256d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: cb8ba5169a6ebfbb11ba0acfa9b9f463b7cdf6a1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282590"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520804"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Példány szintű nyilvános IP-Címek (klasszikus) áttekintése
 Egy példány szintű nyilvános IP (ILPIP) egy nyilvános IP-cím, amelyeket hozzárendelhet, közvetlenül a virtuális gépek vagy Cloud Services szerepkör-példány helyett a felhőszolgáltatáshoz, amely a virtuális gép vagy szerepkörpéldány példány található. Egy ILPIP nem kerül a sor, a virtuális IP-(VIP), amely a felhőszolgáltatás van rendelve. Inkább egy további IP-címet, amellyel közvetlenül csatlakozhat a virtuális gép vagy szerepkörpéldány példány.
@@ -60,10 +60,26 @@ A következő PowerShell-parancsprogram létrehozza nevű felhőszolgáltatás *
 ```powershell
 New-AzureService -ServiceName FTPService -Location "Central US"
 
-$image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"} `
+$image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
+
+#Set "current" storage account for the subscription. It will be used as the location of new VM disk
+
+Set-AzureSubscription -SubscriptionName <SubName> -CurrentStorageAccountName <StorageAccountName>
+
+#Create a new VM configuration object
+
 New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
 | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
 | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
+
+```
+Ha szeretne egy másik tárfiókot adjon meg, mint az új Virtuálisgép-lemez helye, akkor használhatja **MediaLocation** paramétert:
+
+```powershell
+    New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
+     -MediaLocation https://management.core.windows.net/<SubscriptionID>/services/storageservices/<StorageAccountName> `
+    | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
+    | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 ```
 
 ### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>Hogyan kérhető le egy virtuális gép ILPIP-információk

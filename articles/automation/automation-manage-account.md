@@ -9,17 +9,17 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: be1b35d2e7dc3d3e2efab825f318983e2943b0d2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5fbdccf4e14ce1201b21f0490e9c890c77c3e2f0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194359"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577755"
 ---
 # <a name="manage-azure-automation-account"></a>Azure Automation-fiók kezelése
 Az Automation-fiók lejárata előtt meg kell újítania a tanúsítványt. Ha úgy véli, hogy a futtató fiók biztonsága sérült, akkor törölheti, majd újra létrehozhatja a fiókot. Ebben a részben ezeknek a műveleteknek a végrehajtását ismertetjük.
 
-## <a name="self-signed-certificate-renewal"></a>Önaláírt tanúsítvány megújítása
+## <a name="cert-renewal"></a>Önaláírt tanúsítvány megújítása
 A futtató fiókhoz létrehozott önaláírt tanúsítvány a létrehozás dátumától számítva egy év múlva jár le. A tanúsítványt bármikor meg lehet újítani a lejárata előtt. A megújításkor a jelenleg érvényes tanúsítványt megőrzi a rendszer, hogy a művelet ne érintse hátrányosan a várólistán lévő vagy aktívan futó runbookokat, amelyek hitelesítést végeznek a futtató fiókkal. A tanúsítvány a lejárati dátumáig érvényes marad.
 
 > [!NOTE]
@@ -77,6 +77,6 @@ Ha kiválasztja a futtató fiókot, a fiók **Tulajdonságok** paneljén a köve
 A futtató fiókkal kapcsolatos hasonló problémákat gyorsan elháríthatja a fiók törlésével és ismételt létrehozásával.
 
 ## <a name="next-steps"></a>További lépések
-* Az Egyszerű szolgáltatásokkal kapcsolatos további információkért lásd: [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/active-directory-application-objects.md).
+* Az Egyszerű szolgáltatásokkal kapcsolatos további információkért lásd: [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/develop/app-objects-and-service-principals.md).
 * Az Azure Automation szerepköralapú hozzáférés-vezérlési funkciójáról további információkért lásd: [Az Azure Automation szerepköralapú hozzáférés-vezérlése](automation-role-based-access-control.md).
 * A tanúsítványokkal és az Azure-szolgáltatásokkal kapcsolatos részletes információkért lásd: [Tanúsítványok áttekintése az Azure Cloud Servicesben](../cloud-services/cloud-services-certs-create.md).

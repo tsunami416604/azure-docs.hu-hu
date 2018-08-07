@@ -1,78 +1,72 @@
 ---
-title: Merevlemez-meghajtók előkészítése az Azure Import/Export importálási feladat |} Microsoft Docs
-description: Ismerje meg, hogyan készíti elő az Azure Import/Export szolgáltatás importálási feladat létrehozása a WAImportExport eszközzel merevlemez-meghajtókat.
+title: Merevlemezek előkészítése importálási feladatokhoz az Azure Import/Export |} A Microsoft Docs
+description: Ismerje meg, hogyan készíti elő a merevlemezek importálási feladatokhoz az Azure Import/Export szolgáltatás létrehozása a WAImportExport eszközzel.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
-ms.openlocfilehash: 2854822907e818297c8d2f74cab48b0afa0d646c
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.component: common
+ms.openlocfilehash: 9d8509e97ad83dd636f0a1b1892a2fa67c69e0b7
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
-ms.locfileid: "23931722"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521795"
 ---
-# <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemez-meghajtók előkészítése az importálási feladat
+# <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemezek előkészítése importálási feladatokhoz
 
-A WAImportExport eszköz a meghajtó előkészítése és a javítás eszköz, amely használható a [Microsoft Azure Import/Export szolgáltatás](../storage-import-export-service.md). Az eszköz segítségével történő egy Azure-adatközpontban fog merevlemezek adatok másolása. Az importálási feladat befejezése után az eszköz segítségével javítsa ki, hogy megsérült, hiányoztak vagy ütköző bármely blobok a más BLOB. Miután a meghajtók kapott egy befejezett exportálási feladat, az eszköz segítségével javítsa ki azokat a fájlokat, hibás vagy hiányzik a meghajtó a volt. Ez a cikk azt ismerteti az eszköz használatát is.
+A WAImportExport eszköz egy a meghajtó-előkészítési és -javítás eszköz, amely használható a [a Microsoft Azure Import/Export szolgáltatás](../storage-import-export-service.md). Ez az eszköz segítségével másolhat adatokat a merevlemez-meghajtók küldje el a egy Azure-adatközpontban fog. Importálási feladat befejezését követően az eszköz használatával javítsa ki azokat a blobokat, hogy sérültek voltak, lett(ek), vagy ütköző más blobok használata. A meghajtók, kap egy befejezett exportálási feladatot, miután az eszköz használatával javítsa ki azokat a fájlokat, sérült vagy hiányzik a meghajtókon is. Ebben a cikkben azt felszámolunk az eszköz használatát is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="requirements-for-waimportexportexe"></a>WAImportExport.exe követelményei
 
 - **Számítógép-konfiguráció**
-  - Windows 7, Windows Server 2008 R2 vagy újabb Windows operációs rendszert
-  - .NET framework 4 telepítve kell lennie. Lásd: [gyakran ismételt kérdések](#faq) való annak ellenőrzése, hogy a .net Framework telepítve a számítógépen.
-- **Tárfiók kulcsa** -a kulcsait legalább egyike szükséges a tárfiók.
+  - Windows 7, Windows Server 2008 R2 vagy újabb Windows operációs rendszer
+  - .NET-keretrendszer 4 telepítve kell lennie. Lásd: [– gyakori kérdések](#faq) való ellenőrizze, hogy .net keretrendszer van telepítve a számítógépen.
+- **Tárfiók kulcsa** – legalább egy, a fiók-kulcsokat a tárfiók szükséges.
 
-### <a name="preparing-disk-for-import-job"></a>Lemez előkészítése az importálási feladat
+### <a name="preparing-disk-for-import-job"></a>Lemez előkészítése importálási feladatokhoz
 
-- **A BitLocker -** Bitlockernek engedélyezve kell lennie azon a számítógépen, amelyen a WAImportExport eszköz. Tekintse meg a [gyakran ismételt kérdések](#faq) arról, hogyan engedélyezheti a Bitlockert.
-- **Lemezek** érhető el a gépen, amelyen WAImportExport eszközt futtatja. Lásd: [gyakran ismételt kérdések](#faq) lemez megadását.
-- **Forrásfájlokat** -a fájlok importálását tervezi a másolási számítógépről elérhetőnek kell lennie, hogy egy hálózati megosztásra vagy egy helyi merevlemezen lévő.
+- **A BitLocker -** Bitlockernek engedélyezve kell lennie a gépen a WAImportExport eszközt futtatja. Tekintse meg a [– gyakori kérdések](#faq) a BitLocker engedélyezésének módja.
+- **Lemezek** elérhető, amelyre WAImportExport eszközt futtató gépet. Lásd: [– gyakori kérdések](#faq) lemez megadását.
+- **Forrásfájlokat** -a fájlok importálását tervezi a másolási gép elérhetőknek kell lenniük egy hálózati megosztásra vagy a helyi merevlemezen vannak-e.
 
-### <a name="repairing-a-partially-failed-import-job"></a>A részlegesen sikertelen importálási feladat javítása
+### <a name="repairing-a-partially-failed-import-job"></a>Egy részben nem sikerült importálási feladat javítása
 
-- **Másolás naplófájl** , amely jön létre, amikor az Azure Import/Export szolgáltatás közötti Tárfiók és a lemez adatainak másolása. A céloldali tárfiók található.
+- **Log fájl másolása** , amely akkor jön létre, amikor az Azure Import/Export szolgáltatás átmásolja a Storage-fiók és a lemez adatait. A célként megadott tárfiók található.
 
-### <a name="repairing-a-partially-failed-export-job"></a>A részlegesen sikertelen exportálási feladat javítása
+### <a name="repairing-a-partially-failed-export-job"></a>Egy részben nem sikerült exportálási feladat javítása
 
-- **Másolás naplófájl** , amely jön létre, amikor az Azure Import/Export szolgáltatás közötti Tárfiók és a lemez adatainak másolása. A forrás tárolási fiókjában található.
-- **A jegyzékfájlnak** -exportált meghajtón, a Microsoft által visszaadott [opcionális] Located.
+- **Log fájl másolása** , amely akkor jön létre, amikor az Azure Import/Export szolgáltatás átmásolja a Storage-fiók és a lemez adatait. A forrás tárfiókban található.
+- **Jegyzékfájl** -Located [opcionális] a Microsoft által visszaadott exportált meghajtón.
 
 ## <a name="download-and-install-waimportexport"></a>Töltse le és telepítse a WAImportExport
 
-Töltse le a [WAImportExport.exe legújabb verziójának](https://www.microsoft.com/download/details.aspx?id=55280). Bontsa ki a tömörített tartalmat, hogy egy könyvtárat a számítógépen.
+Töltse le a [WAImportExport.exe legújabb verziójának](https://www.microsoft.com/download/details.aspx?id=55280). Bontsa ki a tömörített tartalmat, a számítógép könyvtárba.
 
-A következő feladata a CSV-fájlok létrehozása.
+A következő feladata CSV-fájlok létrehozása.
 
-## <a name="prepare-the-dataset-csv-file"></a>A dataset CSV-fájl előkészítése
+## <a name="prepare-the-dataset-csv-file"></a>Az adatkészlet CSV-fájl előkészítése
 
-### <a name="what-is-dataset-csv"></a>Mi az az adatkészlet CSV
+### <a name="what-is-dataset-csv"></a>Mi a fürt megosztott kötetei szolgáltatás adatkészlet
 
-A DataSet CSV-fájl /dataset jelző értéke könyvtárak listája és/vagy a cél-meghajtók másolandó fájlok listáját tartalmazó CSV-fájl. Az importálási feladat létrehozásának első lépése, hogy határozzák meg, mely könyvtárak és fájlok importálni kívánja. Ez lehet könyvtárak listája, egyedi fájlok listáját, vagy ezeket a kettő kombinációja. Része egy könyvtárat, ha minden fájl a könyvtárban és annak alkönyvtáraiban lesz az importálási feladat részeként.
+Adatkészlet CSV-fájl /dataset jelző értéke egy CSV-fájl, amely a címtárak listájának és/vagy a cél-meghajtók másolandó fájlok listáját tartalmazza. Az első lépés az importálási feladat létrehozása feladata annak megállapítása, mely könyvtárak és fájlok importálni kívánja. Ez lehet könyvtárainak listáját, egyedi fájlok listáját, vagy ezeket a kettő kombinációját. Ha egy könyvtárat tartalmaz, a címtárat és annak alkönyvtáraiban található összes fájl lesz az importálási feladat részeként.
 
-Minden könyvtárat vagy fájlt, importálandók meg kell adni a cél virtuális könyvtárat vagy a blob az Azure Blob szolgáltatásban. Ezeken a célokon fogja használni a WAImportExport eszköz bemeneteként. Könyvtárak kell tagolt, a perjel karakter a "/".
+Minden egyes könyvtárat vagy fájlt importálni meg kell adni a cél virtuális könyvtárat vagy a blob az Azure Blob service-ben. Ezeken a célokon bemeneteként a WAImportExport eszközt használhat. Könyvtárak kell tagolt, a perjel karakter a "/".
 
-A következő táblázatban néhány példa a blob-tárolók:
+Az alábbi táblázat néhány példa a blob-tárolók:
 
 | Forrás-fájl vagy könyvtár | Cél blob vagy virtuális könyvtár |
 | --- | --- |
-| H:\Video | https://mystorageaccount.BLOB.Core.Windows.NET/video |
-| H:\Photo | https://mystorageaccount.BLOB.Core.Windows.NET/Photo |
-| K:\Temp\FavoriteVideo.ISO | https://mystorageaccount.BLOB.Core.Windows.NET/Favorite/FavoriteVideo.ISO |
-| \\myshare\john\music | https://mystorageaccount.BLOB.Core.Windows.NET/Music |
+| H:\Video | https://mystorageaccount.blob.core.windows.net/video |
+| H:\Photo | https://mystorageaccount.blob.core.windows.net/photo |
+| K:\Temp\FavoriteVideo.ISO | https://mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO |
+| \\myshare\john\music | https://mystorageaccount.blob.core.windows.net/music |
 
-### <a name="sample-datasetcsv"></a>A minta dataset.csv
+### <a name="sample-datasetcsv"></a>Minta dataset.csv
 
 ```
 BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
@@ -84,26 +78,26 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 | Mező | Leírás |
 | --- | --- |
-| BasePath | **[Szükséges]**<br/>Ez a paraméter értékének a forrás, ahol az adatokat, importálandók jelöli. Az eszköz fogja rekurzív módon másolása az elérési út alatt található összes adatot.<br><br/>**Megengedett értékek**: Ez egy érvényes elérési utat a helyi számítógépen vagy egy érvényes elérési utat, és elérhető-e a felhasználó kell. A könyvtár elérési útjának abszolút elérési útnak (nem relatív elérési utat) kell lennie. Ha az elérési út végződik "\\", a befejezési nélkül elérési utat képvisel más könyvtár"\\" fájlt jelöli.<br/>Ez a mező nem regex engedélyezett. Ha az elérési út szóközöket tartalmaz, tegye "".<br><br/>**Példa**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
-| DstBlobPathOrPrefix | **[Szükséges]**<br/> A Windows Azure-tárfiókban lévő a cél virtuális könyvtár elérési útja. Előfordulhat, hogy a virtuális könyvtár, vagy előfordulhat, hogy már nem létezik. Ha még nem létezik, Import/Export szolgáltatás egyet fog létrehozni.<br/><br/>Ne feledje el érvényes tároló-neveket használja a cél virtuális címtárak vagy blobot megadásakor. Ne feledje, hogy a tároló nevének kisbetűnek kell lennie. A tároló elnevezési szabályait, lásd: [elnevezési és hivatkozó tárolók, Blobok és metaadatok](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata). Ha csak a legfelső szintű meg van adva, a forrás könyvtárszerkezete replikálja a rendszer a cél blob a tárolóban. Ha egy másik könyvtárstruktúrát van szükség a forrás, leképezés CSV-ben több sort<br/><br/>Megadhat egy tárolót, vagy egy blob előtagja például zene/70s /. A célkönyvtár a tároló neve követ perjellel kell kezdődnie. "/", és előfordulhat, hogy választhatóan blob virtuális könyvtár nem végződik "/".<br/><br/>Ha a céltárolója a legfelső szintű tárolója, meg kell adnia a legfelső szintű tárolót, mint a $root a perjelet is beleértve /. Mivel a gyökérszintű tárolóban blobok nem tartalmazhatnak "/" a név a forráskönyvtárban alkönyvtáraiban nem kerülnek a legfelső szintű tároló esetén a célkönyvtárat.<br/><br/>**Példa**<br/>A cél blob elérési út https://mystorageaccount.blob.core.windows.net/video, ha ez a mező értékének videó lehet /  |
-| BlobType | **[Választható]**  blokk &#124; a lap<br/>Jelenleg Import/Export szolgáltatás használatát támogatja 2 blobokat. Blobok és blokk BlobsBy alapértelmezett összes fájlokat importálni szeretné blokkblobként lapon. És \*.vhd és \*.vhdx importálódnak, mert a lap BlobsThere korlátozást a blokk-blob és lapblobterület megengedett méretet. Lásd: [Storage méretezhetőségi célok](storage-scalability-targets.md) további információt.  |
-| Törlése | **[Választható]**  átnevezése &#124; nem írható felül &#124; felülírása <br/> Ebben a mezőben az a másolási viselkedés importálási Egytényezős során Ha adatok töltenek fel a tárfiók a lemezről. Lehetőségek a következők: átnevezése &#124; felülírja &#124; nem írható felül. Alapértelmezés szerint az "átnevezése", ha nincs megadva. <br/><br/>**Nevezze át**: Ha azonos névvel rendelkező objektum, a rendszer létrehoz egy másolatot a cél.<br/>Felülírása: újabb fájl felülírja a fájlt. A fájl utolsó módosításának WINS.<br/>**Nem írható felül**: átugrása, ha már jelen van a fájl írása.|
-| MetadataFile | **[Választható]** <br/>Ez a mező értéke a metaadatfájl, amelyen megadható, ha az meg kell őrizni az objektumok metaadatait, vagy adjon meg egyéni metaadat. A cél blobokat a metaadatok fájl elérési útja. Lásd: [Import/Export service metaadatok és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információ |
-| PropertiesFile | **[Választható]** <br/>A fájl elérési útját tulajdonság a cél BLOB objektumokhoz. Lásd: [Import/Export service metaadatok és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információt. |
+| BasePath | **[Kötelező]**<br/>Ez a paraméter értékét a forrás, ahol megtalálható az importálandó adatokat jelöli. Az eszköz fog rekurzív módon másolási az elérési út alatt található összes adatot.<br><br/>**Megengedett értékek**: Ez kell lennie a helyi számítógépen érvényes elérési utat vagy egy érvényes elérési utat, és a felhasználó által elérhetőnek kell lennie. A könyvtár elérési útjának abszolút elérési útnak (nem relatív elérési utat) kell lennie. Ha az elérési út végződik "\\", azt a könyvtárat, más egy elérési út nélküli záró "\\" egy fájlt jelöl.<br/>Ez a mező nincs reguláris kifejezés használata engedélyezett. Ha az elérési út szóközöket tartalmaz, helyezze "".<br><br/>**Példa**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
+| DstBlobPathOrPrefix | **[Kötelező]**<br/> A Windows Azure storage-fiókban a cél virtuális könyvtár elérési útja. Előfordulhat, hogy a virtuális könyvtár, vagy már nem létezik. Ha még nem létezik, Import/Export szolgáltatás létrehoz egyet.<br/><br/>Ügyeljen arra, érvényes a tároló nevének megadása a cél virtuális könyvtárak és blobok esetén. Ne feledje, hogy a tároló neve csak kisbetűket tartalmazhatnak. Tároló elnevezési szabályait, lásd: [elnevezése és a hivatkozó tárolók, Blobok és metaadatok](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata). Ha csak a legfelső szintű meg van adva, a rendszer replikálja a könyvtárstruktúra, a forrás-cél blob-tárolóban. Ha egy másik könyvtárstruktúrát van szükség, mint a forrás, leképezés CSV-ben több sort<br/><br/>Megadhat egy tárolót, vagy egy hasonló music/70s blob előtagot /. A célkönyvtárban duplikátum a tároló neve, amelyet által előre dőlő perjellel kell kezdődnie. a "/", és szükség esetén belefoglalhatja a előfordulhat, hogy a blob virtuális könyvtár nem végződik "/".<br/><br/>Ha a cél tároló a legfelső szintű tárolót, meg kell adnia a legfelső szintű tárolót, mint $root a perjelet is beleértve /. Mivel a gyökérszintű tárolóban található blobok nem szerepelhet "/" a nevében szerepel a forráskönyvtárban alkönyvtáraiban nem lesznek másolva a célkönyvtárban duplikátum esetén a gyökérszintű tárolóban.<br/><br/>**Példa**<br/>Ha a célblob elérési https://mystorageaccount.blob.core.windows.net/video, lehet, hogy ez a mező értékének videó /  |
+| BlobType | **[Opcionális]**  blokk &#124; lap<br/>Import/Export szolgáltatás jelenleg támogatja a Blobok 2 típusú. Blobok és a blokk BlobsBy alapértelmezett összes fájlt importálja blokkblobként lapon. És \*.vhd és \*.vhdx importálja, a lap BlobsThere a blokkblob és lapblobok engedélyezett mérete korlátozva. Lásd: [Storage skálázhatósági célértékét](storage-scalability-targets.md) további információt.  |
+| Törlése | **[Opcionális]**  átnevezése &#124; nem írja felül &#124; felülírása <br/> Ebben a mezőben adja meg a másolási viselkedés azaz importálás során Amikor adatokat töltenek fel a tárfiók a lemezről. Elérhető lehetőségek: átnevezése&#124;felülírja&#124;nem írja felül. Alapértelmezés szerint a "átnevezése", ha nincs megadva érték. <br/><br/>**Nevezze át**: ugyanazzal a névvel rendelkező objektum jelen, ha létrehoz egy másolatot a célhelyen.<br/>Felülírása: újabb fájl felülírja a fájlt. A fájl utolsó módosításának WINS.<br/>**Nem írja felül**: kihagyja a fájl írása, ha már van ilyen.|
+| Metaadatfájl | **[Opcionális]** <br/>Ez a mező értéke a metaadatok fájlt, amely képes biztosítani, ha azt meg kell őrizni az objektumok metaadatait, vagy adjon meg egyéni metaadatok. Az a cél blobok metaadatait tartalmazó fájl elérési útja. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információ |
+| PropertiesFile | **[Opcionális]** <br/>A fájl elérési útját a tulajdonság a cél blobok számára. Lásd: [Import/Export szolgáltatás metaadat és a Tulajdonságok fájlformátum](../storage-import-export-file-format-metadata-and-properties.md) további információt. |
 
-## <a name="prepare-initialdriveset-or-additionaldriveset-csv-file"></a>Készítse elő a InitialDriveSet vagy AdditionalDriveSet CSV-fájl
+## <a name="prepare-initialdriveset-or-additionaldriveset-csv-file"></a>InitialDriveSet vagy AdditionalDriveSet CSV-fájl előkészítése
 
-### <a name="what-is-driveset-csv"></a>Mi az a fürt megosztott kötetei szolgáltatás driveset
+### <a name="what-is-driveset-csv"></a>Mi az fürt megosztott kötetei szolgáltatás driveset
 
-A /InitialDriveSet vagy /AdditionalDriveSet jelző értéke, amelyhez a meghajtó-betűjelek van leképezve, úgy, hogy az eszköz megfelelően ki tudja választani készüljön lemezek listáját lemezek listáját tartalmazó CSV-fájlból. Ha az adatok mérete nagyobb, mint a egyetlen lemez méretét, a WAImportExport eszköz kiosztja az adatok több lemezre bejegyezve a CSV-fájlban található optimalizált módon.
+A /InitialDriveSet vagy /AdditionalDriveSet jelző értéke egy CSV-fájl, amely tartalmazza azokat a lemezeket, amelyhez a meghajtó betűjelei vannak leképezve, úgy, hogy az eszköz megfelelően válassza ki a készüljön fel a lemezek listája. Az adatok mérete nagyobb, mint egy egyetlen lemez mérete, ha a WAImportExport eszközt elosztja az adatokat optimalizált módon bejegyezve a CSV-fájl több lemezre kiterjedő.
 
-Az is lehet adatokat írni az egyetlen munkamenetben lemezek száma korlátozva van. Az eszköz fogja kiosztani a lemez mérete és a mappa mérete alapján. A lemezen, amely a legtöbb kiválaszt a objektumméret optimalizálva. Az adatok feltöltése a tárfiókba vissza a könyvtárstruktúra dataset fájlban megadott konvergált. A fürt megosztott kötetei szolgáltatás driveset létrehozásához kövesse az alábbi lépéseket.
+Az adatok csak írható egyetlen munkamenetben lemezek száma nincs korlátozva van. Az eszközt elosztja a lemez méretét és a mappa mérete alapján. A lemez, amely a legtöbb ki lesz a objektumméret optimalizálva. Az adatok a storage-fiókban való feltöltés vissza a megadott adatkészlet fájlnevével könyvtárstruktúrát konvergált. A fürt megosztott kötetei szolgáltatás driveset létrehozásához kövesse az alábbi lépéseket.
 
-### <a name="create-basic-volume-and-assign-drive-letter"></a>Egyszerű kötet létrehozása és a meghajtóbetűjelet rendelje
+### <a name="create-basic-volume-and-assign-drive-letter"></a>Egyszerű kötet létrehozása és hozzárendelése a meghajtó betűjele
 
-Egyszerű kötet létrehozásához, és rendeljen meghajtóbetűjelet, a "Egyszerűbb partíció létrehozása" regisztrációkor cikk utasításait követve [Lemezkezelés áttekintése](https://technet.microsoft.com/library/cc754936.aspx).
+Annak érdekében, hogy hozzon létre egy alapszintű kötetet, és rendeljen hozzá meghajtóbetűjelet, a "Egyszerűbb partíció létrehozása" megadott utasításokat követve [Lemezkezelés áttekintése](https://technet.microsoft.com/library/cc754936.aspx).
 
-### <a name="sample-initialdriveset-and-additionaldriveset-csv-file"></a>A minta InitialDriveSet és AdditionalDriveSet CSV-fájl
+### <a name="sample-initialdriveset-and-additionaldriveset-csv-file"></a>Minta InitialDriveSet és AdditionalDriveSet CSV-fájl
 
 ```
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -115,19 +109,19 @@ H,Format,SilentMode,Encrypt,
 
 | Mezők | Érték |
 | --- | --- |
-| Meghajtóbetűjel | **[Szükséges]**<br/> Minden olyan meghajtó, amely a alatt az eszköz, a cél egy egyszerű NTFS-kötetre, és a hozzá rendelt meghajtóbetűjelet kell rendelkeznie.<br/> <br/>**Példa**: R vagy r |
-| FormatOption | **[Szükséges]**  Formátum &#124; AlreadyFormatted<br/><br/> **Formátum**: Adja meg a formázza a lemezen található összes adatot. <br/>**AlreadyFormatted**: az eszköz kihagyja, ha ezt az értéket. |
-| SilentOrPromptOnFormat | **[Szükséges]**  SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: Ez az érték megadása lehetővé teszi a felhasználó az eszköz futtatásához csendes módban. <br/>**PromptOnFormat**: az eszköz fogja kérni a felhasználót, hogy erősítse meg, hogy a művelet minden formátum valóban irányul.<br/><br/>Ha nincs megadva, parancs fog megszakítása és hibaüzenet megjelenítése: "beállítás értéke helytelen SilentOrPromptOnFormat: nincs" |
-| Titkosítás | **[Szükséges]**  Titkosítása &#124; AlreadyEncrypted<br/> Ez a mező értékének úgy dönt, mely lemez titkosításához, és amelyek nem arra. <br/><br/>**Titkosítani**: eszköz formázza a meghajtót. Ha a "FormatOption" mező értéke "Formátum" majd ennek az értéknek kell lennie "Titkosítás". "AlreadyEncrypted" meg van adva ebben az esetben, ha okoz hiba történt "Formátum megadása esetén titkosítása is meg kell adni".<br/>**AlreadyEncrypted**: eszköz lesz vissza a meghajtót, a "ExistingBitLockerKey" mezőben megadott BitLockerKey használatával. Ha a "FormatOption" mező értéke "AlreadyFormatted", majd ez az érték lehet "Titkosítás" vagy "AlreadyEncrypted" |
-| ExistingBitLockerKey | **[Szükséges]**  Ha "Titkosítás" mező értéke "AlreadyEncrypted"<br/> Ez a mező értéke az adott lemezt társított a BitLocker-kulcsot. <br/><br/>Ezt a mezőt üresen, ha a "Titkosítás" mező értéke "Titkosítás" kell hagyni.  A BitLocker kulcs van megadva ebben az esetben, ha okoz hiba történt "Bitlocker kulcs nem adható meg".<br/>  **Példa**: 060456-014509-132033-080300-252615-584177-672089-411631|
+| Meghajtóbetűjel | **[Kötelező]**<br/> Minden olyan meghajtó, amely a folyamatban van az eszköz, a cél egy egyszerű NTFS-kötetre, és egy hozzá rendelt meghajtóbetűjelet kell rendelkeznie.<br/> <br/>**Példa**: R vagy az r |
+| FormatOption | **[Kötelező]**  Formátum &#124; AlreadyFormatted<br/><br/> **Formátum**: Adja meg ezt fogja formázni a lemezen lévő összes adatot. <br/>**AlreadyFormatted**: az eszköz kihagyja a formázást, ha ez az érték meg van adva. |
+| SilentOrPromptOnFormat | **[Kötelező]**  SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: Ez az érték megadása lehetővé teszi a felhasználó az eszköz futtatásához csendes módban. <br/>**PromptOnFormat**: az eszköz meg fogja kérni a felhasználót, hogy e a művelet nagyon irányul, minden formátum.<br/><br/>Ha nincs beállítva, parancs fog megszakítása és hibaüzenet megjelenítése: "beállítás értéke helytelen SilentOrPromptOnFormat: nincs" |
+| Titkosítás | **[Kötelező]**  Titkosítása &#124; AlreadyEncrypted<br/> Ez a mező értékét úgy dönt, hogy mely lemez titkosításához, és amely nem az. <br/><br/>**Titkosítása**: eszköz lesznek formázva, a meghajtó. Ha az érték "FormatOption" mező "Formátum" majd ezt az értéket szükséges "Titkosítás" lehet. "AlreadyEncrypted" van megadva ebben az esetben, ha okoz hibába ütközött "Formátum van megadva, amikor titkosítása is meg kell adni".<br/>**AlreadyEncrypted**: eszköz fejti vissza a meghajtót a "ExistingBitLockerKey" mezőjében megadott BitLockerKey. Ha "FormatOption" mező értéke "AlreadyFormatted", majd ez az érték lehet "Titkosítás" vagy "AlreadyEncrypted" |
+| ExistingBitLockerKey | **[Kötelező]**  Ha "Titkosítás" mező értéke "AlreadyEncrypted"<br/> Ez a mező értéke a BitLocker-kulcs, amely az adott lemezt társítva van. <br/><br/>Ezt a mezőt üresen, ha az érték "Titkosítás" mező "Titkosítás" kell hagyni.  BitLocker-kulcs van megadva ebben az esetben, ha okoz hibába ütközött "Bitlocker-kulcs nem adható meg".<br/>  **Példa**: 060456-014509-132033-080300-252615-584177-672089-411631|
 
-##  <a name="preparing-disk-for-import-job"></a>Lemez előkészítése az importálási feladat
+##  <a name="preparing-disk-for-import-job"></a>Lemez előkészítése importálási feladatokhoz
 
-Meghajtók előkészítése az importálási feladat, hívja meg a WAImportExport eszközben a **PrepImport** parancsot. Mely paraméterek is függ, hogy ez-e az első másolás munkamenet, vagy egy későbbi másolási munkamenet.
+Meghajtó előkészítése importálási feladatokhoz, hívja meg a WAImportExport eszközben a **PrepImport** parancsot. Mely paraméterek is függ, hogy ez-e az első másolás munkamenet, vagy egy későbbi másolási munkamenet.
 
 ### <a name="first-session"></a>Első munkamenet
 
-Első másolás munkamenet Single/Multiple könyvtár átmásolása egy egyetlen vagy több lemez (attól függően, hogy mi a CSV-fájlban van megadva) WAImportExport eszköz az első másolás munkamenet könyvtárak és/vagy egy új példány munkamenet-fájlok másolása PrepImport parancs:
+Első másolás munkamenet Single/Multiple könyvtár átmásolása egy egyetlen vagy több lemez (attól függően, a CSV-fájlban megadott) WAImportExport eszköz PrepImport parancsot az első másolás munkamenet könyvtárak és/vagy egy új példányt munkamenettel fájlok másolása:
 
 ```
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
@@ -139,9 +133,9 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDire
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:\*\*\*\*\*\*\*\*\*\*\*\*\* /InitialDriveSet:driveset-1.csv /DataSet:dataset-1.csv /logdir:F:\logs
 ```
 
-### <a name="add-data-in-subsequent-session"></a>Adatok hozzáadása a következő munkamenet
+### <a name="add-data-in-subsequent-session"></a>Adatok hozzáadása a következő munkamenetben
 
-A következő másolási-munkamenetekben nem kell megadnia a kezdeti paramétereket. Kell használnia az eszköz a napló fájl megjegyezhető, ahol korábban az előző munkamenetben. A másolási munkamenet állapota a napló fájl írása. Ez a szintaxis és a további címtárakat, vagy fájlok másolása későbbi másolási munkamenet:
+Az ezt követő másolási-munkamenetekben nem kell megadnia a kezdeti paramétereket. Ne felejtse el, ahol az előző munkamenet a bal oldali ugyanazt a napló fájlt ahhoz, hogy az eszköz használatával kell. A másolási munkamenet állapotának íródik a naplófájl. A szintaxist és a további címtárak, vagy fájlok másolása egy későbbi másolási munkamenet a következő:
 
 ```
 WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<DifferentSessionId>  [DataSet:<differentdataset.csv>]
@@ -153,12 +147,12 @@ WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<DifferentSessionId>  [Da
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-### <a name="add-drives-to-latest-session"></a>Adja hozzá meghajtók legújabb-munkamenethez
+### <a name="add-drives-to-latest-session"></a>A legutóbbi munkamenet meghajtók hozzáadása
 
-Ha az adatok nem fértek InitialDriveset a meghajtók, egy a eszköz segítségével adja hozzá további meghajtók azonos másolási munkamenethez. 
+Az adatok nem fértek InitialDriveset a meghajtók, ha az egyik eszközzel a további meghajtók hozzáadása másolási ugyanazon munkamenet. 
 
 >[!NOTE] 
->A munkamenet-azonosítót meg kell felelnie az előző munkamenet-azonosító. Naplófájl meg kell felelnie az előző munkamenet megadottal.
+>A munkamenet-azonosítót meg kell egyeznie az előző munkamenet-azonosító. Naplófájl meg kell egyeznie az előző munkamenet megadott.
 >
 ```
 WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
@@ -172,7 +166,7 @@ WAImportExport.exe PrepImport /j:SameJournalTest.jrn /id:session#2  /AdditionalD
 
 ### <a name="abort-the-latest-session"></a>A legutóbbi munkamenet megszakítása:
 
-Ha egy másolás munkamenet megszakad, és nincs lehetőség (Ha például forráskönyvtárat bizonyult nem érhető el) folytatni, kell megszakítás a jelenlegi munkamenet, hogy azt vissza lesz vonva, és új másolási munkamenetek indíthatók el:
+Ha egy példány munkamenet megszakad, és nem lehetséges (például, ha a forráskönyvtár bizonyult nem érhető el) folytatásához, a jelenlegi munkamenet, hogy azt vissza lesz állítva, és az új példány munkamenetek indíthatók el kell megszakít:
 
 ```
 WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AbortSession
@@ -184,11 +178,11 @@ WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AbortSes
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /AbortSession
 ```
 
-Csak az utolsó másolás munkamenethez, ha a rendellenesen, is megszakítja. Vegye figyelembe, hogy megszakítása nem lehetséges az első másolás munkamenet meghajtóhoz. Ehelyett újra kell indítani a a másolási munkamenet egy új napló-fájllal.
+Csak az utolsó másolás munkamenet, ha rendellenesen, is megszakítja. Vegye figyelembe, hogy az első másolás munkamenet-meghajtó nem szakítható meg. Ehelyett újra kell indítania a másolási munkamenet együtt egy új naplófájl.
 
 ### <a name="resume-a-latest-interrupted-session"></a>A legújabb megszakított munkamenet folytatása
 
-Ha a Másolás munkamenet bármilyen okból megszakad, folytathatja az eszköz csak megadott napló fájl futtatásával:
+Ha a másolási munkamenet bármilyen okból megszakad, folytathatja az eszköz csak a megadott journal-fájl futtatásával:
 
 ```
 WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /ResumeSession
@@ -201,34 +195,34 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 ```
 
 > [!IMPORTANT] 
-> A másolási munkamenet visszatértekor ne módosítsa a forrás adatok fájlok és könyvtárak hozzáadásával vagy eltávolításával a fájlokat.
+> A másolási munkamenet folytatásakor ne módosítsa a forrás adatok fájlok és könyvtárak hozzáadásával vagy eltávolításával a fájlokat.
 
 ## <a name="waimportexport-parameters"></a>WAImportExport paraméterek
 
 | Paraméterek | Leírás |
 | --- | --- |
-|     /j:&lt;JournalFile&gt;  | **Szükséges**<br/> A naplófájl elérési útja. A naplófájl nyomon követi a meghajtók készlete, és előkészítése során ezek a meghajtók állapotát rögzíti. A naplófájl mindig meg kell adni.  |
-|     / logdir:&lt;LogDirectory&gt;  | **Választható**. A naplózási könyvtár.<br/> Részletes naplófájlok, valamint bizonyos fájlokat a könyvtárba lesz írva. Ha nem a megadott, a jelenlegi könyvtárat fogja használni, mint a naplózási könyvtár. A naplózási könyvtár napló ugyanazt a fájlt csak egyszer adható meg.  |
-|     /ID:&lt;munkamenet-azonosító&gt;  | **Szükséges**<br/> A munkamenet-azonosítót használja a Másolás-munkamenet. A pontos egy megszakított másolási munkamenet-helyreállítás szolgál.  |
-|     / ResumeSession  | Választható. Ha az utolsó másolás munkamenet rendellenesen megszakadt, ezzel a paraméterrel adható meg folytatni a munkamenetet.   |
-|     / AbortSession  | Választható. Ha az utolsó másolás munkamenet rendellenesen megszakadt, ezzel a paraméterrel adható meg a munkamenet megszakítása.  |
+|     /j:&lt;JournalFile&gt;  | **Szükséges**<br/> A naplófájl elérési útja. A naplófájl meghajtók készletét követi, és ezek a meghajtók előkészítése a folyamat állapotát rögzíti. A naplófájl mindig meg kell adni.  |
+|     / logdir:&lt;LogDirectory&gt;  | **Választható**. A naplózási könyvtár.<br/> Ez a könyvtár részletes naplófájlok, valamint az egyes ideiglenes fájlok lesz írva. Ha nem a megadott, a jelenlegi könyvtárat használja, a naplózási könyvtár. A naplózási könyvtár napló ugyanazt a fájlt csak egyszer adható meg.  |
+|     / ID:&lt;munkamenet-azonosító&gt;  | **Szükséges**<br/> A munkamenet-azonosító egy másolási munkamenet azonosítására szolgál. Győződjön meg, hogy egy megszakított másolási munkamenet pontos helyreállítási szolgál.  |
+|     / ResumeSession  | Választható. Ha az utolsó másolás munkamenet rendellenesen megszakadt, ez a paraméter adható meg a munkamenet folytatása.   |
+|     / AbortSession  | Választható. Ha a legutóbbi másolási munkamenet rendellenesen megszakadt, ez a paraméter adható meg megszakíthatja a munkamenetet.  |
 |     /sn:&lt;StorageAccountName&gt;  | **Szükséges**<br/> Csak a RepairImport és RepairExport alkalmazható. A tárfiók neve.  |
 |     /SK:&lt;StorageAccountKey&gt;  | **Szükséges**<br/> A tárfiók kulcsa. |
-|     / InitialDriveSet:&lt;driveset.csv&gt;  | **Szükséges** amikor fut az első másolás munkamenet<br/> A CSV-fájl előkészítése meghajtók listáját tartalmazza.  |
-|     / AdditionalDriveSet:&lt;driveset.csv&gt; | **Szükséges**. Meghajtó másolása aktuális munkamenetre hozzáadásakor. <br/> A CSV-fájl fel kell venni a további meghajtók listáját tartalmazza.  |
-|      r:&lt;RepairFile&gt; | **Szükséges** RepairImport és RepairExport csak érvényes.<br/> A javítási folyamat nyomkövetési fájl elérési útja. Minden olyan meghajtó meg kell adni egy javítási fájlt.  |
-|     / d:&lt;TargetDirectories&gt; | **Szükséges**. Csak a RepairImport és RepairExport alkalmazható. A RepairImport legalább egy pontosvesszővel elválasztott könyvtárak kijavításához; RepairExport, egy címtárban javítására, pl. legfelső az a meghajtó.  |
+|     / InitialDriveSet:&lt;driveset.csv&gt;  | **Szükséges** futtatásakor az első másolás munkamenet<br/> Egy CSV-fájl előkészítése meghajtók listáját tartalmazza.  |
+|     / AdditionalDriveSet:&lt;driveset.csv&gt; | **Szükséges**. Amikor a meghajtók hozzáadása a jelenlegi példány munkamenet. <br/> Egy CSV-fájl, amely további meghajtók hozzáadandó listáját tartalmazza.  |
+|      r:&lt;RepairFile&gt; | **Szükséges** RepairImport és RepairExport csak érvényes.<br/> A javítási folyamat nyomon követéséhez fájl elérési útját. Minden olyan meghajtó csak egy javítási fájlnak kell lennie.  |
+|     / d:&lt;TargetDirectories&gt; | **Szükséges**. Csak a RepairImport és RepairExport alkalmazható. A RepairImport egy vagy több pontosvesszővel tagolt könyvtárak kijavításához; RepairExport, egy címtárban, javításához, például: gyökér a meghajtó könyvtár.  |
 |     / CopyLogFile:&lt;DriveCopyLogFile&gt; | **Szükséges** RepairImport és RepairExport csak érvényes. A meghajtó másolása naplófájl elérési útja (részletes vagy hiba).  |
 |     / ManifestFile:&lt;DriveManifestFile&gt; | **Szükséges** RepairExport csak alkalmazható.<br/> A meghajtó Alkalmazásjegyzék-fájl elérési útja.  |
-|     / PathMapFile:&lt;DrivePathMapFile&gt; | **Választható**. Csak a RepairImport alkalmazható.<br/> A fájl elérési útját tartalmazó fájl elérési utak helyekre tényleges fájlok (tabulátorral tagolt) a meghajtó gyökeréhez viszonyítva. Először adja meg, ha azt tölti fel elérési utat a üres célkitűzések, ami azt jelenti, vagy nem található TargetDirectories, a hozzáférés megtagadva a érvénytelen a neve, vagy több könyvtárban vannak. Az elérési út térkép fájl manuálisan módosítani őket a megfelelő cél elérési útját és megadott újra az eszköz megfelelően feloldani a fájlelérési út.  |
-|     / ExportBlobListFile:&lt;ExportBlobListFile&gt; | **Szükséges**. Csak a PreviewExport alkalmazható.<br/> Az XML-fájl elérési útja blob elérési utak listája tartalmazó fájlt, vagy a blob-elérési út-előtagokat a blobok exportálható. A fájl formátuma megegyezik az Import/Export szolgáltatás REST API-t a feladat Put műveletben a blob blob formátuma.  |
-|     / DriveSize:&lt;DriveSize&gt; | **Szükséges**. Csak a PreviewExport alkalmazható.<br/>  Az exportált használható meghajtók mérete. Ha például 500 GB 1,5 TB. Megjegyzés: 1 GB 1 000 hívás = 000 000 bytes1 TB 1,000,000,000,000 bájt =  |
-|     / Adatkészlet:&lt;dataset.csv&gt; | **Szükséges**<br/> Könyvtárak listája és/vagy a cél-meghajtók másolandó fájlok listáját tartalmazó CSV-fájl.  |
-|     /silentmode  | **Választható**.<br/> Ha nincs megadva, az a követelmény a meghajtók figyelmeztetni, illetve hányat kell folytatja a megerősítés.  |
+|     / PathMapFile:&lt;DrivePathMapFile&gt; | **Választható**. Csak a RepairImport alkalmazható.<br/> A Fájlelérési utak helyekre tényleges fájlok (tabulátorral tagolt) a meghajtó gyökeréhez viszonyítva leképezéseit tartalmazó fájl elérési útját. Először adja meg, amikor azt tölti fel üres példányokkal rendelkező Fájlelérési utak ami azt jelenti, vagy nem található TargetDirectories, a hozzáférés megtagadva, a neve érvénytelen, vagy több könyvtárban találhatók. Az elérési út leképezési fájl manuális tartalmazza a megfelelő céloldali elérési utak szerkeszthető és megadott újra az eszközt, hogy a Fájlelérési utak feloldása megfelelően.  |
+|     / ExportBlobListFile:&lt;ExportBlobListFile&gt; | **Szükséges**. Csak a PreviewExport alkalmazható.<br/> Az XML-fájl elérési útja blob elérési útjának listáját tartalmazó fájl, vagy a blob elérési útja előtagok exportálható a blobok számára. A fájl formátuma megegyezik az Import/Export szolgáltatás REST API Put feladat működése során a blob blob formátuma.  |
+|     / DriveSize:&lt;DriveSize&gt; | **Szükséges**. Csak a PreviewExport alkalmazható.<br/>  Az Exportálás használható meghajtók mérete. Ha például 500 GB, 1,5 TB. Megjegyzés: 1 GB-os 1 000 hívás = 000 000 bytes1 TB = 1,000,000,000,000 bájt  |
+|     / Adatkészlet:&lt;dataset.csv&gt; | **Szükséges**<br/> Egy CSV-fájl, amely a címtárak listájának és/vagy a cél-meghajtók másolandó fájlok listáját tartalmazza.  |
+|     /silentmode  | **Választható**.<br/> Ha nincs megadva, ez lesz emlékeztesse a követelmény a meghajtók, és a megerősítés gombra kell.  |
 
 ## <a name="tool-output"></a>Eszköz kimeneti
 
-### <a name="sample-drive-manifest-file"></a>Minta meghajtó jegyzékfájl
+### <a name="sample-drive-manifest-file"></a>Minta meghajtó Alkalmazásjegyzék-fájl
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -268,7 +262,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 </DriveManifest>
 ```
 
-### <a name="sample-journal-file-xml-for-each-drive"></a>Minden olyan meghajtó minta napló fájl (XML)
+### <a name="sample-journal-file-xml-for-each-drive"></a>Minta journal-fájl (XML) minden meghajtó
 
 ```xml
 [BeginUpdateRecord][2016/11/01 21:22:25.379][Type:ActivityRecord]
@@ -285,7 +279,7 @@ SaveCommandOutput: Completed
 [EndUpdateRecord]
 ```
 
-### <a name="sample-journal-file-jrn-for-session-that-records-the-trail-of-sessions"></a>Minta munkamenetet, amely rögzíti az eljárást a munkamenetek napló fájlt (JRN)
+### <a name="sample-journal-file-jrn-for-session-that-records-the-trail-of-sessions"></a>Minta naplófájl (JRN), amely rögzíti az eljáráshoz a munkamenetek-munkamenethez
 
 ```
 [BeginUpdateRecord][2016/11/02 18:24:14.735][Type:NewJournalFile]
@@ -307,113 +301,113 @@ StorageAccountKey: *******
 
 #### <a name="what-is-waimportexport-tool"></a>Mi az WAImportExport eszköz?
 
-A WAImportExport eszköze a meghajtó előkészítése és a javítás eszköz, amely a Microsoft Azure Import/Export szolgáltatás használata. Az eszköz segítségével történő egy Azure-adatközpontban fog merevlemezek adatok másolása. Az importálási feladat befejezése után az eszköz segítségével javítsa ki, hogy megsérült, hiányoztak vagy ütköző bármely blobok a más BLOB. Miután a meghajtók kapott egy befejezett exportálási feladat, az eszköz segítségével javítsa ki azokat a fájlokat, hibás vagy hiányzik a meghajtó a volt.
+A WAImportExport eszköze a meghajtó-előkészítési és -javítás eszköz, amely a Microsoft Azure Import/Export szolgáltatás használata. Ez az eszköz segítségével másolhat adatokat a merevlemez-meghajtók küldje el a az Azure-adatközpontban fog. Importálási feladat befejezését követően az eszköz használatával javítsa ki azokat a blobokat, hogy sérültek voltak, lett(ek), vagy ütköző más blobok használata. A meghajtók, kap egy befejezett exportálási feladatot, miután az eszköz használatával javítsa ki azokat a fájlokat, sérült vagy hiányzik a meghajtókon is.
 
 #### <a name="how-does-the-waimportexport-tool-work-on-multiple-source-dir-and-disks"></a>Hogyan működik a WAImportExport eszköz több forrás dir és lemezek?
 
-Ha az adatok mérete a lemez mérete nagyobb, a WAImportExport eszköz optimalizált módon fogja kiosztani az adatokat a lemezeken. Az adatok másolását több lemezére párhuzamosan vagy egymás után végezhető. Az is lehet adatokat írni egy időben lemezek száma korlátozva van. Az eszköz fogja kiosztani a lemez mérete és a mappa mérete alapján. A lemezen, amely a legtöbb kiválaszt a objektumméret optimalizálva. Az adatok feltöltése a tárfiókba vissza a megadott könyvtárstruktúrát konvergált.
+Az adatok mérete a lemez mérete nagyobb, ha a WAImportExport eszközt elosztja az adatok a lemezeken optimalizált módon. Az adatok másolását, több egymás után vagy a párhuzamos teheti meg. Az is lehet adatokat írni egy időben lemezek száma nincs korlátozva van. Az eszközt elosztja a lemez méretét és a mappa mérete alapján. A lemez, amely a legtöbb ki lesz a objektumméret optimalizálva. Az adatok a storage-fiókban való feltöltés vissza a megadott könyvtárstruktúrát konvergált.
 
-#### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Hol találok WAImportExport eszköz korábbi verzióját?
+#### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Hol találhatok WAImportExport tool korábbi verziójával?
 
-WAImportExport az eszköz összes funkciói láthatók, amelyekről WAImportExport V1 eszköz rendelkezik. WAImportExport eszköz lehetővé teszi a felhasználóknak adjon meg több és több meghajtó írni. Emellett egy, könnyedén kezelhető, amelyből az adatoknak kell másolni egy CSV-fájl több forráshelyet. Azonban esetben meg kell SAS segítségét, vagy az egy forrásból másolása egy lemezt, akkor [letöltheti WAImportExport V1-es eszköz] szeretné (http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid = 0x409), majd tekintse át [WAImportExport V1 hivatkozás](storage-import-export-tool-how-to-v1.md) WAImportExport V1 felhasználású segítségét.
+WAImportExport az eszköz összes elavuló WAImportExport V1 eszközzel kellett rendelkezik. WAImportExport eszköz lehetővé teszi a felhasználók számára adja meg a több forrásból, és több meghajtó írni. Ezenkívül egy könnyedén felügyelheti a több forráshelyet, amelyről az adatokat egy CSV-fájl másolni kell. Azonban az esetben meg kell szeretne egyetlen forrás átmásolása [töltheti WAImportExport V1 eszköz], egyetlen lemez vagy SAS támogatási (http://go.microsoft.com/fwlink/?LinkID=301900&amp; clcid = 0x409), majd tekintse át [WAImportExport V1 referencia](storage-import-export-tool-how-to-v1.md) WAImportExport V1 segítség használat.
 
 #### <a name="what-is-a-session-id"></a>Mi az a munkamenet-azonosító?
 
-Az eszköz a másolási munkamenet vár (/ azonosítója) paraméter azonosnak kell lennie, ha a szándéka az, hogy az adatok több lemezre terjednek. A Másolás-munkamenet neve azonos karbantartása lehetővé teszi a felhasználói adatok másolása egy vagy több adatforrás helyének be egy vagy több cél lemezek vagy könyvtárakat. Azonos munkamenet-azonosító karbantartása lehetővé teszi az eszköz, ahol legutóbbi hagyták-fájlok a Másolás átvételéhez.
+Az eszköz a másolási munkamenet vár (/ id) paraméternek azonosnak kell lennie, ha a célja a helyezkednek el az adatokat több lemezen. A másolási munkamenet neve azonos karbantartása lehetővé teszi a felhasználói adatokat másol be egy vagy több cél lemezek/címtárakat egy vagy több forráshelyet. Ugyanazon munkamenet-azonosító karbantartása lehetővé teszi az eszköz folytattuk a munkát, ahol a legutóbbi alkalommal maradt másolására.
 
-Egy példány munkamenet azonban nem használható eltérő tárfiókokból importálja az adatokat.
+Azonban ugyanazon másolási munkamenet adatok importálása különböző storage-fiókok nem használható.
 
-Amikor másolatot-munkamenet neve nem azonos több frissítési kísérletei során az eszköz, a naplófájl (/ logdir) és a tárfiók kulcsa (/ sk) is várt azonosnak kell lennie.
+Ha a munkamenet-példány a név nem azonos az eszközt, a naplófájl több futtatás során (/ logdir) és a tárfiók-kulcsot (/ sk) is várt azonosnak kell lennie.
 
-Munkamenet-azonosító tartalmazhat betűket, 0 ~ 9, understore (\_), kötőjelet (-) vagy a kivonatoló (#), és a hossza lehet 3 ~ 30.
+Munkamenet-azonosító tartalmazhat betűket, 0 ~ 9, understore (\_), kötőjelet (-) vagy az ujjlenyomat (#), és a hosszának 3 meg kell ~ 30.
 
-például a munkamenet-1 vagy a munkamenet #1 vagy a munkamenet\_1
+például a munkamenet-1 vagy a munkamenet 1 vagy a munkamenet\_1
 
 #### <a name="what-is-a-journal-file"></a>Mi az, hogy a napló-fájl?
 
-Minden alkalommal, amikor a fájlok másolása a merevlemez-meghajtóról, WAImportExport eszközt futtatja az eszköz létrehoz egy másolatot munkamenet. A másolási munkamenet állapota a napló fájl írása. Ha a Másolás munkamenet megszakad (például mert a rendszer az áramellátás megszakadása miatt), akkor az eszköz újra és megadhatja a napló fájlt a parancssorból folytathatók.
+Fájlok másolása a merevlemezen a WAImportExport eszköz minden egyes futtatásakor az eszköz létrehoz egy másolási munkamenet. A másolási munkamenet állapotának íródik a naplófájl. Ha a másolási munkamenet megszakad (például miatt a rendszer az áramellátás megszakadása), azt újra futtatni az eszközt, és a naplófájl a parancssorban megadásával folytathatók.
 
-Az egyes merevlemez-meghajtóról, amely előkészítheti az Azure Import/Export eszközzel, az eszköz létrehoz egy egyetlen napló fájlt nevű "&lt;meghajtót&gt;.xml" meghajtó azonosítója helyére társított meghajtót, a lemez beolvassa az eszköz sorozatszámát. Az összes, a meghajtók, az importálási feladat létrehozásához szüksége lesz az adatbázisnapló-fájlok. A naplófájl meghajtó előkészítése folytatni, ha az eszköz megszakad is használható.
+Mindegyik merevlemez, amely előkészíti az Azure Import/Export eszközzel, az eszköz létre fog hozni egy egyetlen naplófájl nevű "&lt;meghajtót&gt;.xml" azonosítójú meghajtó helyére társított arra a meghajtóra, a lemez beolvassa az eszköz sorozatszámát. Az összes meghajtó az importálási feladat létrehozásához szüksége lesz az adatbázisnapló-fájlok. A naplófájl is használható meghajtó előkészítés folytatásához, ha az eszköz megszakad.
 
-#### <a name="what-is-a-log-directory"></a>Mi az az naplókönyvtár?
+#### <a name="what-is-a-log-directory"></a>Mi az, hogy egy könyvtárat?
 
-A naplózási könyvtár határozza meg azt, hogy részletes naplókat, valamint az ideiglenes fájlok tárolására. Ha nincs megadva, a naplózási könyvtár az aktuális könyvtárban lesz. A részletes naplókat feldolgozásra.
+A naplózási könyvtár részletes naplók, valamint az ideiglenes fájlok tárolására szolgáló könyvtár megadása Ha nincs megadva, a naplózási könyvtár az aktuális könyvtárban lesz. A naplókban a részletes naplók.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-#### <a name="what-are-the-specifications-of-my-disk"></a>Mik a lemez specifikációk?
+#### <a name="what-are-the-specifications-of-my-disk"></a>Mik azok a saját lemez előírásoknak?
 
-Egy vagy több üres 2.5-es vagy 3,5 hüvelykes SATAII vagy III vagy SSD meghajtók a másolási géphez csatlakoztatva.
+Egy vagy több üres 2,5-es vagy 3,5 hüvelykes SATAII vagy III vagy SSD meghajtók másolási géphez csatlakoztatva.
 
-#### <a name="how-can-i-enable-bitlocker-on-my-machine"></a>Hogyan engedélyezhetem a BitLocker a gépen?
+#### <a name="how-can-i-enable-bitlocker-on-my-machine"></a>Hogyan lehet engedélyezni a BitLocker a gépemen?
 
-Ellenőrizze legegyszerűbb kattintson a jobb gombbal a rendszermeghajtón. Megjelenik a BitLocker beállítások Ha a funkció be van kapcsolva. Ha ki van kapcsolva, akkor nem látható.
+Egyszerű akkor kattintson a jobb gombbal a rendszermeghajtón. Megjelenik a beállítások a BitLocker, ha a funkció be van kapcsolva. Ha ki van kapcsolva, nem jelenik meg.
 
-![A BitLocker ellenőrzése](./media/storage-import-export-tool-preparing-hard-drives-import/BitLocker.png)
+![Ellenőrizze a BitLocker](./media/storage-import-export-tool-preparing-hard-drives-import/BitLocker.png)
 
-Íme egy cikk a [BitLocker engedélyezése](https://technet.microsoft.com/library/cc766295.aspx)
+Íme egy cikk a [BitLocker engedélyezésének módja](https://technet.microsoft.com/library/cc766295.aspx)
 
-Akkor lehet, hogy a számítógép nem rendelkezik TPM lapka használata. Ha nem jelenik meg egy kimeneti TPM.msc parancsot használja, tekintse meg a következő gyakran ismételt kérdések.
+Akkor lehet, hogy a gép nem rendelkezik TPM-lapka. Ha nem kap egy kimeneti TPM.msc parancsot használja, tekintse meg a következő gyakori kérdések.
 
-#### <a name="how-to-disable-trusted-platform-module-tpm-in-bitlocker"></a>Hogyan lehet letiltani a platformmegbízhatósági modul (TPM) a BitLocker?
+#### <a name="how-to-disable-trusted-platform-module-tpm-in-bitlocker"></a>Hogyan tilthatja le a platformmegbízhatósági modul (TPM) a BitLocker?
 > [!NOTE]
-> Csak akkor, ha nincs TPM szerepel a kiszolgálókra, tiltsa le a TPM házirend szeretné. Nincs szükség a TPM letiltása, ha a felhasználó server megbízható TPM-mel. 
+> Csak akkor, ha nincs TPM nem található a kiszolgálók, tiltsa le a TPM-szabályzatot szeretne. Nem kell a TPM letiltása, ha a felhasználó server megbízható TPM. 
 > 
 
-Ahhoz, hogy letiltja a BitLocker a TPM, végrehajtania az alábbi lépéseket:<br/>
-1. Indítsa el **Helyicsoportházirend-szerkesztő** gpedit.msc parancsot a parancssorba beírásával. Ha **Helyicsoportházirend-szerkesztő** úgy tűnik, hogy nem érhető el, a BitLocker engedélyezéséhez először. Lásd az előző gyakran ismételt kérdések.
+Annak érdekében, hogy letiltja a BitLocker a TPM, nyissa meg az alábbi lépéseket:<br/>
+1. Indítsa el a **Helyicsoportházirend-szerkesztő** gpedit.msc beírásával a parancssorba. Ha **Helyicsoportházirend-szerkesztő** úgy tűnik, hogy nem érhető el, a BitLocker engedélyezéséhez először. Tekintse meg az előző – gyakori kérdések.
 2. Nyissa meg **helyi számítógép-házirend &gt; számítógép konfigurációja &gt; felügyeleti sablonok &gt; Windows-összetevők&gt; a BitLocker meghajtótitkosítás &gt; operációsrendszer-meghajtók**.
-3. Szerkesztés **indításkor további hitelesítést** házirend.
-4. A házirend beállítása **engedélyezve** , és győződjön meg arról, hogy **BitLocker engedélyezése kompatibilis TPM nélküli** be van jelölve.
+3. Szerkesztés **további hitelesítés indításkor szükséges** házirend.
+4. Állítsa be a házirendet **engedélyezve** , és győződjön meg arról, hogy **engedélyezi a BitLocker nem kompatibilis TPM** be van jelölve.
 
-####  <a name="how-to-check-if-net-4-or-higher-version-is-installed-on-my-machine"></a>Hogyan lehet .NET 4-es vagy újabb verziójú meglétének ellenőrzése a számítógépen?
+####  <a name="how-to-check-if-net-4-or-higher-version-is-installed-on-my-machine"></a>Hogyan ellenőrizheti, ha .NET 4-es vagy újabb verziója van telepítve a gépemen?
 
-A következő könyvtár telepített összes Microsoft .NET-keretrendszer verziója: %windir%\Microsoft.NET\Framework\
+Az összes Microsoft .NET-keretrendszer-verziókat települnek a következő könyvtárban: %windir%\Microsoft.NET\Framework\
 
-Nyissa meg a fent említett része a célszámítógépen, amelyen az eszközt kell futtatni. Keresse meg "v4" kezdetű mappa nevét. Nincs ilyen könyvtár azt jelenti, hogy a .NET 4 nincs telepítve a számítógépre. A gép használatával is letöltheti a .net-4 [Microsoft .NET-keretrendszer 4 (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=17851).
+Keresse meg a fent említett részére, amelyben a célgépen, ahol az eszköz futtatásához szükséges. Keressen a "v4" kezdetű mappa neve. Hiányában egy ilyen directory azt jelenti, hogy a .NET-4 nincs telepítve a gépén. Letöltheti a Microsoft .net-4 használatával [a Microsoft .NET-keretrendszer 4 (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=17851).
 
 ### <a name="limits"></a>Korlátok
 
-#### <a name="how-many-drives-can-i-preparesend-at-the-same-time"></a>Hány meghajtókat is szeretnék előkészítése vagy küldése egy időben?
+#### <a name="how-many-drives-can-i-preparesend-at-the-same-time"></a>Hány meghajtókat is szeretnék előkészítése/küldés egyszerre?
 
-Nincs korlát, amely előkészítheti az eszköz lemezek számát. Azonban az eszköz meghajtóbetűjelek bemeneteként vár. Amely korlátozza a 25 lemez egyidejű előkészítése. Egyetlen feladat egyszerre legfeljebb 10 lemezre kezelésére képes. Ha több mint 10 lemezek célzó ugyanazt a tárfiókot, a lemezek között több feladat is terjeszthetők.
+Nincs megszabva, hogy felkészülhessen az eszköz lemezek számát. Az eszköz azonban meghajtóbetűjelek vár bemenetként. Amely korlátozza a 25 egyidejű lemez előkészítése. Egyszerre csak egy feladat legfeljebb 10 lemez kezelésére is alkalmas. Ha több mint 10 lemez ugyanazt a tárfiókot céloz meg, a lemezek több feladat szét lehetnek osztva.
 
-#### <a name="can-i-target-more-than-one-storage-account"></a>Célozhatok egynél több tárfiókot?
+#### <a name="can-i-target-more-than-one-storage-account"></a>Használhatom-e egynél több tárfiókot?
 
-Csak egy tárfiók küldheti el feladat és egy eredeti munkamenetben.
+Csak egy storage-fiók is lehet beküldeni, feladatonként és a egy eredeti munkamenetben.
 
 ### <a name="capabilities"></a>Funkciók
 
-#### <a name="does-waimportexportexe-encrypt-my-data"></a>Nem WAImportExport.exe az adatok titkosítása?
+#### <a name="does-waimportexportexe-encrypt-my-data"></a>WAImportExport.exe titkosítja az adataimat?
 
-Igen. A bitlockernek engedélyezve van, és ez a folyamat szükséges.
+Igen. A bitlockernek engedélyezve van, és ehhez a folyamathoz szükséges.
 
-#### <a name="what-will-be-the-hierarchy-of-my-data-when-it-appears-in-the-storage-account"></a>A hierarchia adat mi lesz, amikor az megjelenik a tárfiókban lévő?
+#### <a name="what-will-be-the-hierarchy-of-my-data-when-it-appears-in-the-storage-account"></a>Mi lesz adat a hierarchiában, amikor az megjelenik a storage-fiókban?
 
-Bár az adatok lemezek között van elosztva, az adatok feltöltése a tárfiókba lesz átszervezett vissza a dataset CSV-fájlban megadott könyvtárstruktúrát a.
+Bár a lemezek között oszlanak meg adatokat, az adatok a storage-fiókban való feltöltés fog összevont térjen vissza a könyvtárstruktúra, az adatkészlet CSV-fájlban megadott.
 
-#### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>A bemeneti lemezek aktív IO párhuzamosan, akkor lesz másolása folyamatban van?
+#### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>Lemezek számát a bemeneti lesz aktív i/o párhuzamosan, ha folyamatban van a Másolás?
 
-Az eszköz adatainak elosztja a bemeneti lemezeket a bemeneti fájlok mérete alapján. Említett, a bemeneti adatok jellegétől teljesen delends a párhuzamos aktív lemezek számát. Attól függően, hogy a bemeneti adatkészlet egyes fájlok méretét egy vagy több lemezt is megjelenítése a aktív IO párhuzamosan. Következő kérdés további részletekért tekintse meg.
+Az eszközt elosztja az adatokat a bemeneti lemezeken, a bemeneti fájlok mérete alapján. Mindemellett a bemeneti adatok jellegétől teljesen delends egyidejűleg aktív lemezek számát. A bemeneti adatkészlet az egyes fájlok méretétől függően egy vagy több lemez aktív IO jelenhetnek meg a párhuzamos. Tekintse meg a következő kérdésben talál további részleteket.
 
-#### <a name="how-does-the-tool-distribute-the-files-across-the-disks"></a>Hogyan nem elosztani az eszköz a fájlokat a lemezek között?
+#### <a name="how-does-the-tool-distribute-the-files-across-the-disks"></a>Hogyan nem terjesztheti az eszközt a fájlok a lemezek között?
 
-WAImportExport eszköz beolvassa és kötegelt által kötegelt fájlok egy kötegelt maximális értékének 100000 fájlokat tartalmazza. Ez azt jelenti, hogy maximális 100000 fájlok írhatók párhuzamos. Több lemez kerülnek egyidejűleg Ha ezeket a fájlokat 100000 továbbítja őket a többszörös meghajtókat. Azonban e az eszköz ír több lemez is egyszerre, vagy egyetlen lemez függ a köteg összesített mérete. Például esetén a kisebb fájlok 10,0000 fájlok összes tudja, hogy elférjen egyetlen meghajtóval, ha eszköz ír csak egy lemezre a feldolgozása során.
+WAImportExport eszköz olvassa be, és írja a batch által kötegelt fájlokat egy kötegben legfeljebb 100 000-es fájlokat tartalmaz. Ez azt jelenti, hogy legfeljebb 100 000-es fájlok írhatók párhuzamosan. Több lemez írt egyszerre, ha ezeket a fájlokat 100 000-es oszlanak meg több meghajtókra. Azonban-e az eszköz ír több lemez egy időben, vagy egyetlen attól függ, a batch összesített mérete. Például kisebb fájlok esetén ha 10,0000 fájlok mindegyike képes ahhoz, hogy elférjen egyetlen meghajtóval, eszköz lesz írási csak egy lemezre a köteg feldolgozása közben.
 
-### <a name="waimportexport-output"></a>WAImportExport kimeneti
+### <a name="waimportexport-output"></a>WAImportExport kimenet
 
-#### <a name="there-are-two-journal-files-which-one-should-i-upload-to-azure-portal"></a>Két napló fájlt, melyiket kell tölthetők fel az Azure-portálhoz?
+#### <a name="there-are-two-journal-files-which-one-should-i-upload-to-azure-portal"></a>Két journal-fájl, melyiket kell feltöltött az Azure Portal webhelyen?
 
-**.xml** -az egyes merevlemez-meghajtóról, amely előkészítheti a WAImportExport eszközzel, az eszköz létrehoz egy egyetlen napló fájlt nevű `<DriveID>.xml` meghajtó esetén a társított meghajtót, a lemez beolvassa az eszköz sorozatszámát. Az összes, az importálási feladat létrehozása az Azure portálon meghajtó szüksége lesz az adatbázisnapló-fájlok. Ez a napló fájl is használható meghajtó előkészítése folytatni, ha az eszköz megszakad.
+**.xml** -mindegyik merevlemez, amely előkészíti a WAImportExport eszközzel, az eszköz létre fog hozni egy egyetlen naplófájl nevű `<DriveID>.xml` meghajtó esetén társított arra a meghajtóra, a lemez beolvassa az eszköz sorozatszámát. A naplófájl minden meghajtó az importálási feladat létrehozása az Azure Portalon kell. Ez a napló-fájl is használható meghajtó előkészítés folytatásához, ha az eszköz megszakad.
 
-**.jrn** -utótag napló fájl `.jrn` merevlemez-meghajtóra vonatkozó összes másolási munkamenet állapotát tartalmazza. Az importálási feladat létrehozásához szükséges információkat is tartalmaz. Mindig meg kell adni a napló fájlt, ha futtatja a WAImportExport eszköz, valamint egy másolatot munkamenet-azonosítót.
+**.jrn** – a naplófájl utótaggal rendelkező `.jrn` merevlemez-meghajtóra vonatkozó összes másolási munkamenetet állapotát tartalmazza. Az importálási feladat létrehozásához szükséges információkat is tartalmaz. Mindig meg kell adnia egy journal-fájlt, ha futtatja a WAImportExport eszköz, valamint egy másolási munkamenet-azonosítót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az Azure Import/Export eszköz beállítása](storage-import-export-tool-setup.md)
+* [Az Azure Import/Export eszköz telepítése](storage-import-export-tool-setup.md)
 * [Tulajdonságok és metaadatok beállítása az importálási folyamat során](storage-import-export-tool-setting-properties-metadata-import.md)
 * [Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
-* [A gyakran használt parancsok rövid összefoglalása](storage-import-export-tool-quick-reference.md) 
+* [Használt gyakori parancsok gyors áttekintése](storage-import-export-tool-quick-reference.md) 
 * [Feladatok állapotának áttekintése a másolási naplófájlok segítségével](storage-import-export-tool-reviewing-job-status-v1.md)
 * [Importálási feladat javítása](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [Exportálási feladat javítása](storage-import-export-tool-repairing-an-export-job-v1.md)

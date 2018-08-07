@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 02f681bd679baa6bfe4037dd749f64c7b81668d3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398954"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527456"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk az Azure AD Használati feltételek funkcióval kapcsolatos kezdeti lépéseket ismerteti.
@@ -73,7 +73,7 @@ A használati feltételek dokumentum véglegesítése után a hozzáadáshoz kö
 
 5. Kapcsolja be vagy ki **A felhasználóknak legyen kötelező a használati feltételek megtekintése** beállítást.  Ha bekapcsolja ezt a beállítást, a végfelhasználóknak meg kell tekinteniük a használati feltételeket, mielőtt elfogadhatnák őket.
 
-6. A feltöltött használati feltételeket a legördülő menüből választott sablon vagy egy egyéni feltételes hozzáférési szabályzat segítségével **Kényszerítheti ki** a **Feltételes hozzáférés** szakaszban.  Az egyéni feltételes hozzáférési szabályzat részletes használati feltételek alkalmazását teszi lehetővé, amelyeket akár egy adott felhőalkalmazásra vagy felhasználói csoportra is leszűkíthet.  További információkért tekintse meg a [feltételes hozzáférés konfigurálását bemutató részt](active-directory-conditional-access-best-practices.md).
+6. A feltöltött használati feltételeket a legördülő menüből választott sablon vagy egy egyéni feltételes hozzáférési szabályzat segítségével **Kényszerítheti ki** a **Feltételes hozzáférés** szakaszban.  Az egyéni feltételes hozzáférési szabályzat részletes használati feltételek alkalmazását teszi lehetővé, amelyeket akár egy adott felhőalkalmazásra vagy felhasználói csoportra is leszűkíthet.  További információkért tekintse meg a [feltételes hozzáférés konfigurálását bemutató részt](conditional-access/best-practices.md).
 
     >[!IMPORTANT]
     >A feltételes hozzáférési szabályzat vezérlői (beleértve a használati feltételeket) nem támogatják a szolgáltatásfiókokra irányuló kényszerítést.  Javasoljuk, hogy zárjon ki minden szolgáltatásfiókot a feltételes hozzáférési szabályzatból.
@@ -240,4 +240,4 @@ V: is [felülvizsgálati korábban elfogadott használati feltételeket tartalma
 
 ## <a name="next-steps"></a>További lépések
 
-- [A feltételes hozzáféréssel kapcsolatos ajánlott eljárások az Azure Active Directoryban](active-directory-conditional-access-best-practices.md)
+- [A feltételes hozzáféréssel kapcsolatos ajánlott eljárások az Azure Active Directoryban](conditional-access/best-practices.md)

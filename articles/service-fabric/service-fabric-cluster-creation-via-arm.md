@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/07/2017
+ms.date: 07/31/2018
 ms.author: aljo
-ms.openlocfilehash: cad98954c89c37e57d44abf2af54e903a1b4a740
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 780420c3ff69eb7da6e7c73b973164ed47c2c047
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504923"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525484"
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Service Fabric-fürt létrehozása Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
@@ -341,6 +341,9 @@ Egyes lépéseit az Azure AD konfigurálása a Service Fabric-fürt leegyszerűs
 .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
 ```
 
+> [!NOTE]
+> Az országos felhők (Azure Government, Azure China, az Azure Germany), meg kell adnia a `-Location` paraméter.
+
 A Bérlőazonosító találhatja meg a PowerShell-parancs végrehajtása `Get-AzureSubscription`. Ez a parancs végrehajtása a TenantId minden előfizetés jeleníti meg.
 
 Az Azure AD-alkalmazások, a parancsfájl által létrehozott előtag ClusterName szolgál. Ez nem pontosan egyeznie kell a tényleges fürt neve. Célja, hogy csak az, hogy egyszerűbb legyen az Azure AD-összetevők leképezése, amelyet éppen használ a Service Fabric-fürthöz.
@@ -370,6 +373,9 @@ A parancsfájl a JSON az Azure Resource Manager-sablon által igényelt, a fürt
 Ez a szakasz a felhasználók, akik egyéni hozhat létre egy Service Fabric-fürt resource manager-sablon van. Ha már rendelkezik egy sablont, továbbra is lépjen vissza és a PowerShell vagy parancssori felület modulok használata az üzembe helyezéshez. 
 
 Mintául szolgáló Resource Manager-sablonok érhetők el a [Azure-minták a Githubon](https://github.com/Azure-Samples/service-fabric-cluster-templates). Ezek a sablonok fürtsablonhoz kiindulási pontként használható.
+
+> [!NOTE]
+> Az országos felhők (Azure Government, Azure China, az Azure Germany), emellett adja hozzá a következő `fabricSettings` az ARM-sablon: `AADLoginEndpoint`, `AADTokenEndpointFormat` és `AADCertEndpointFormat`.
 
 ### <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
 Ez az útmutató használja a [biztonságos fürt 5 csomópontos] [ service-fabric-secure-cluster-5-node-1-nodetype] példasablonja és a sablon paramétereit. Töltse le `azuredeploy.json` és `azuredeploy.parameters.json` a számítógépre, és nyissa meg mindkét fájlt a kedvenc szövegszerkesztőjével.
@@ -714,4 +720,3 @@ Ezen a ponton rendelkezik egy biztonságos fürt az Azure Active Directory bizto
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
-

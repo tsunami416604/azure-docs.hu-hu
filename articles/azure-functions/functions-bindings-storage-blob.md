@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: b9ddfb6582a4ce483e93b7ea753112d54fe65a9d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 0bd14e85496da8c6c12ecb98b7c8f1730a16e640
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346368"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524566"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -674,7 +674,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-Az alábbi példa bemutatja a blob bemeneti és kimeneti kötése egy *function.json* fájl- és [JavaScript-kód] (functions – referencia-node.md), amely használja a kötéseket. A funkció lehetővé teszi, hogy egy blob egy példányát. A függvény, amely tartalmazza a blob másolásához nevét, egy üzenetsor által aktivált. Az új blob neve *{originalblobname}-példány*.
+Az alábbi példa bemutatja a blob bemeneti és kimeneti kötése egy *function.json* fájl és [JavaScript-kódot](functions-reference-node.md) , amely használja a kötéseket. A funkció lehetővé teszi, hogy egy blob egy példányát. A függvény, amely tartalmazza a blob másolásához nevét, egy üzenetsor által aktivált. Az új blob neve *{originalblobname}-példány*.
 
 Az a *function.json* fájlt, a `queueTrigger` metaadat-tulajdonságot a blob nevének megadására szolgál a `path` tulajdonságai:
 

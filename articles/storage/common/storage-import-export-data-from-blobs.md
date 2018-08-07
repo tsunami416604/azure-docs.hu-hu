@@ -2,18 +2,18 @@
 title: Az Azure Import/Export segítségével exportál adatokat az Azure-Blobok |} A Microsoft Docs
 description: Ismerje meg, hogyan export-feladatok létrehozása az Azure Portalon adatok átviteléhez az Azure-Blobokból.
 author: alkohli
-manager: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: eb714086a0142d9780bd018d77dc880a430f240e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.component: common
+ms.openlocfilehash: a7456bedeb6bc870ad5d6892fe697fb2dfcd3bc1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113758"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527804"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Adatok exportálása az Azure Blob storage-ból az Azure Import/Export szolgáltatás használata
 Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat biztonságosan exportálása az Azure Blob storage-ból. A szolgáltatás megköveteli, hogy az Azure-adatközpontba üres meghajtókon szállításra. A szolgáltatás adatokat exportál a tárfiók a meghajtók, és vissza a meghajtók majd tartalmaz.

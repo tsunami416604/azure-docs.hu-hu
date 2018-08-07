@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: danlep
-ms.openlocfilehash: 67bef29a27530308811fe777337e6495aa91b0e1
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 698212ce1f4e88cda741a78030023f3acdeee9f0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504741"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576083"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Hitelesítés az Active Directory Batch Management solutions
 
@@ -34,7 +34,7 @@ A Batch Management .NET könyvtár és a AccountManagement minta használatával
 
 ## <a name="register-your-application-with-azure-ad"></a>Az alkalmazás regisztrálása az Azure ad-vel
 
-Az Azure [Active Directory Authentication Library] [ aad_adal] (ADAL) programozható felületet biztosít az Azure AD az alkalmazásaiban. Adal-t hívja az alkalmazásból, regisztrálnia kell az alkalmazását az Azure AD-bérlő. Ha regisztrálja az alkalmazást, adja meg az Azure AD-információk az alkalmazásról, beleértve a nevét, az Azure AD bérlőn belül. Ezután az Azure AD-alkalmazás azonosítója, amellyel az alkalmazás társítása az Azure ad-vel futásidőben biztosít. Az Alkalmazásazonosítót kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/active-directory-application-objects.md).
+Az Azure [Active Directory Authentication Library] [ aad_adal] (ADAL) programozható felületet biztosít az Azure AD az alkalmazásaiban. Adal-t hívja az alkalmazásból, regisztrálnia kell az alkalmazását az Azure AD-bérlő. Ha regisztrálja az alkalmazást, adja meg az Azure AD-információk az alkalmazásról, beleértve a nevét, az Azure AD bérlőn belül. Ezután az Azure AD-alkalmazás azonosítója, amellyel az alkalmazás társítása az Azure ad-vel futásidőben biztosít. Az Alkalmazásazonosítót kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
 A AccountManagement mintaalkalmazás regisztrálásához kövesse a [egy alkalmazás hozzáadása](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) szakasz [alkalmazások integrálása az Azure Active Directory] [ aad_integrate]. Adja meg **natív ügyfélalkalmazás** az alkalmazás számára. Az iparági szabványos OAuth 2.0-s URI-azonosítóját a **átirányítási URI-t** van `urn:ietf:wg:oauth:2.0:oob`. Azonban megadhat bármilyen érvényes URI-t (például `http://myaccountmanagementsample`) esetében a **átirányítási URI-t**, mert nem kell valódi végpontnak lennie:
 

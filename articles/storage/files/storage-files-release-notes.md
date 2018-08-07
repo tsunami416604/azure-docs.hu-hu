@@ -3,17 +3,17 @@ title: Az Azure File Sync ügynök kibocsátási megjegyzései |} A Microsoft Do
 description: Az Azure File Sync ügynök kibocsátási megjegyzései.
 services: storage
 author: wmgries
-manager: aungoo
 ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 7422300ffe315e0a12812c38f9b823a125eaf344
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.component: files
+ms.openlocfilehash: 69cd7774c92cf1c213f8522dffeb02be6c024acb
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144788"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525137"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.

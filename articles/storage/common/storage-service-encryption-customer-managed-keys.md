@@ -3,17 +3,17 @@ title: Az Azure Storage Service Encryption ügyfél által kezelt kulcsok haszn�
 description: Titkosítani az Azure Blob storage és az Azure Files szolgáltatás oldalán, az adatok tárolásakor a az Azure Storage Service Encryption szolgáltatással, és visszafejtésre ügyfél által kezelt kulcsok használata az adatok lekérésekor.
 services: storage
 author: lakasa
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: adca912121b4317d08481aeacffaa89b403ff7db
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.component: common
+ms.openlocfilehash: 0e1ebd8868cfe5ef69a09219ffc82092fb85a4c8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480751"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527086"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Felhasználó által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption
 A Microsoft Azure számára fontos, hogy segítséget nyújt a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok biztonságos megőrzésében. Egyik módja, hogy az Azure storage-platform védi az adatokat a keresztül Storage Service Encryption (SSE), amely titkosítja az adatokat, amikor a tárfiókba történő írása, és visszafejti az adatokat, lekérésekor. A titkosítási és visszafejtési automatikus, átlátható, és használja 256 bites [AES-titkosítás](https://wikipedia.org/wiki/Advanced_Encryption_Standard), egyik legerősebb Rejtjelek érhető el.

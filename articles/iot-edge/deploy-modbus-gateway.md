@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 4fbcfe4198f2655f77b1a61c86092e3ac727ab31
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: a90c60ed6502a36b111d2ecb0f89cb34dc011253
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115721"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577626"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása az IoT Edge-eszközátjárón keresztül
 
@@ -96,7 +96,7 @@ Tekintse meg a Modbus-modulon keresztül érkező adatokat:
 docker logs -f modbus
 ```
 
-Az eszköz által küldött telemetriát is megtekintheti a [az IoT Hub explorer eszköz](https://github.com/azure/iothub-explorer) vagy a [Azure IoT-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
+Az eszköz által küldött telemetriát is megtekintheti a [Azure IoT-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="next-steps"></a>További lépések
 

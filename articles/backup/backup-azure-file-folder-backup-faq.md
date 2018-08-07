@@ -1,5 +1,5 @@
 ---
-title: Az Azure Backup szolgáltatás ügynökének – gyakori kérdések
+title: Az Azure Backup ügynöke – GYIK
 description: 'Válaszok a gyakori kérdésekre a következőkkel kapcsolatban: az Azure Backup-ügynök működése, biztonsági mentési és megőrzési korlátok.'
 services: backup
 author: trinadhk
@@ -7,26 +7,24 @@ manager: shreeshd
 keywords: biztonsági mentés és vészhelyreállítás; biztonsági mentési szolgáltatás
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/25/2018
-ms.author: trinadhk
-ms.openlocfilehash: ac6d2a8a152f3c6e22be962b867ef58421eda47b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.date: 8/6/2018
+ms.author: saurse;trinadhk
+ms.openlocfilehash: 177e44bce7d8f159892d78c7003945ba55ef4b84
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016488"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577881"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Kérdések az Azure Backup-ügynökkel kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure Backup-ügynök összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
-
-[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="configure-backup"></a>Biztonsági mentés konfigurálása
 ### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>Honnan tölthetem le a legújabb Azure Backup ügynököt? <br/>
 [Innen](http://aka.ms/azurebackup_agent) töltheti le a legújabb ügynököt a Windows Server, System Center DPM vagy Windows-ügyfél biztonsági mentése számára. Ha egy virtuális gépről szeretne biztonsági mentést készíteni, használja a virtuálisgép-ügynököt (amely automatikusan telepíti a megfelelő bővítményt). Az Azure katalógusból létrehozott virtuális gépeken a virtuálisgép-ügynök már jelen van.
 
 ### <a name="when-configuring-the-azure-backup-agent-i-am-prompted-to-enter-the-vault-credentials-do-vault-credentials-expire"></a>Az Azure Backup ügynök telepítése közben a rendszer a tároló hitelesítő adatainak megadását kéri. A tároló hitelesítő adatai lejárnak?
-Igen, a tároló hitelesítő adatai 48 óra után lejárnak. Ha a fájl lejár, jelentkezzen be az Azure Portalra, és töltse le a tároló hitelesítő adatfájljait a tárolójából.
+Igen, a tároló hitelesítő adatai 48 óra után lejárnak. Ha a fájl lejár, jelentkezzen be az Azure Portalon, és töltse le a tároló hitelesítő adatfájljait a tárolóból.
 
 ### <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>Milyen típusú meghajtókon lévő fájlokról és mappákról tudok biztonsági másolatot készíteni? <br/>
 A következő meghajtókról/kötetekről nem készíthető biztonsági másolat:
@@ -58,13 +56,17 @@ Abszolút. Az Azure Backup virtuálisgép-szintű biztonsági mentést nyújt az
 Igen. Telepítse az Azure Backup ügynököt a vendég Windows operációs rendszeren, és készítsen biztonsági mentést a fájlokról és mappákról egy ideiglenes tárolóra. A biztonsági mentési feladatok sikertelenek lesznek, ha törli az ideiglenes tároló adatait. Emellett ha az ideiglenes tároló adatait törölték, csak állandó tárolóba tud visszaállítani.
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>Mi a gyorsítótármappa minimális méretkövetelménye? <br/>
-A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről biztonsági másolatot készít. A kötet a gyorsítótár mappájához legyen legalább 5-10 % szabadítson fel lemezterületet, mint a biztonsági mentési adatok teljes mérete. Ha a kötet 5 %-nál kisebb szabadítson fel lemezterületet, vagy növelje a kötet méretét, vagy [olyan kötetet, amelyen elegendő szabad lemezterület a gyorsítótár mappa áthelyezése](backup-azure-file-folder-backup-faq.md#backup).
+A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről biztonsági másolatot készít. Az ügyfélgyorsítótár mappája a kötet legyen legalább 5 – 10 % szabad terület, a biztonsági mentési adatok teljes mérete képest. Ha a kötet kisebb, mint 5 % szabad terület van, vagy növelje a kötet méretét, vagy [helyezze át a gyorsítótármappa egy elegendő szabad lemezterülettel rendelkező kötetre](backup-azure-file-folder-backup-faq.md#backup).
 
 ### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>Hogyan regisztrálhatom a kiszolgálómat egy másik adatközpontra?<br/>
 A biztonsági mentési adatokat a rendszer annak a tárolónak az adatközpontjába küldi, amelyikre regisztrálva van. Az adatközpont módosításának legegyszerűbb módja az ügynök eltávolítása, újratelepítése, majd a kívánt adatközponthoz tartozó új tárolóra regisztrálása.
 
 ### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Az Azure Backup ügynök működik egy Windows Server 2012 deduplikációt használó kiszolgálón? <br/>
 Igen. Az ügynökszolgáltatás átalakítja a deduplikált adatokat normális adatokká, amikor előkészíti a biztonsági mentési műveletet. Ezután optimalizálja az adatokat a biztonsági mentéshez, titkosítja őket, majd elküldi a titkosított adagokat az online biztonsági mentési szolgáltatásba.
+
+## <a name="prerequisites-and-dependencies"></a>Előfeltételek és a függőségek
+### <a name="what-features-of-microsoft-azure-recovery-services-mars-agent-require-net-framework-452-and-higher"></a>Milyen funkciók a Microsoft Azure Recovery Services-(MARS) ügynök szükséges a .NET-keretrendszer 4.5.2-es vagy újabb?
+A [azonnali visszaállítása](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) funkció, amely lehetővé teszi, hogy az egyes fájlok és mappák visszaállítására *adatok helyreállítása* varázsló megköveteli a .NET-keretrendszer 4.5.2-es vagy újabb verziója.
 
 ## <a name="backup"></a>Backup
 ### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Hogyan változtathatom meg az Azure Backup ügynök számára meghatározott gyorsítótár helyét?<br/>
@@ -92,8 +94,8 @@ Miután a biztonsági mentés létrehozása sikeresen befejeződött az új gyor
 ### <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Hová helyezhetem el az Azure Backup-ügynök gyorsítótármappáját, hogy megfelelően működjön?<br/>
 A következő helyek nem ajánlottak a gyorsítótármappa számára:
 
-* Hálózati megosztás vagy cserélhető adathordozó: A gyorsítótármappának helyinek kell lennie az online biztonsági mentés használatával mentést igénylő kiszolgáló számára. A hálózati helyek és a cserélhető adathordozók, például az USB-meghajtók nem támogatottak.
-* Offline kötetek: A gyorsítótármappának online állapotban kell lennie az Azure Backup-ügynökkel készített várható biztonsági mentés számára.
+* Hálózati megosztás vagy cserélhető adathordozó: A gyorsítótármappának helyinek kell lennie az online biztonsági mentés használatával mentést igénylő kiszolgáló számára. A hálózati helyeket vagy cserélhető adathordozóra, például USB-meghajtók nem támogatottak.
+* Offline kötetek: A gyorsítótármappa kell lennie az online biztonsági mentés várt Azure Backup szolgáltatás ügynökének használatával
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>Vannak a gyorsítótármappának olyan attribútumai, amelyek nem támogatottak?<br/>
 A következő attribútumok vagy kombinációik nem támogatottak a gyorsítótármappa számára:
@@ -111,8 +113,7 @@ Sem a gyorsítótármappa, sem a metaadatok virtuális merevlemez-meghajtója ne
 
 ## <a name="manage-backups"></a>Biztonsági másolatok kezelése
 ### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Mi történik, ha átnevezek egy Windows-kiszolgálót, amelyről biztonsági adatmentés történik az Azure rendszerbe?<br/>
-Ha átnevez egy kiszolgálót, minden aktuálisan konfigurált biztonsági mentés leáll.
-Regisztrálja a kiszolgáló új nevét a Backup-tárolóban. Ha regisztrálta az új nevet a tárolóval, az első biztonsági mentési művelet egy *teljes* biztonsági mentés lesz. Ha helyre kell állítania a régi kiszolgálónévvel a tárolóba mentett adatokat, használja az **Adatok helyreállítása** varázsló [**Másik kiszolgáló**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) beállítását.
+Ha átnevez egy kiszolgálót, minden aktuálisan konfigurált biztonsági mentés leáll. Regisztrálja a kiszolgáló új nevét a Backup-tárolóban. Ha regisztrálta az új nevet a tárolóval, az első biztonsági mentési művelet egy *teljes* biztonsági mentés lesz. Ha helyre kell állítania a régi kiszolgálónévvel a tárolóba mentett adatokat, használja az **Adatok helyreállítása** varázsló [**Másik kiszolgáló**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) beállítását.
 
 ### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>Mi a fájl elérési útjának maximális hossza, amely megadható az Azure Backup-ügynök használatával a Backup szabályzatában? <br/>
 Az Azure Backup ügynök az NTFS-re hagyatkozik. A [fájl elérési útvonalának hossz-specifikációját a Windows API korlátozza](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). Ha a védeni kívánt fájlok hosszabb elérési úttal rendelkeznek, mint a Windows API által engedélyezett korlát, a biztonsági mentést a szülőmappáról vagy a lemezmeghajtóról készítse.  

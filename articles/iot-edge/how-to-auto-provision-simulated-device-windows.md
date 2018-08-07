@@ -4,16 +4,16 @@ description: Szimulált eszköz használata a Windows-gépen teszteléséhez aut
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e149886e1ade80d7751f58eb1f77031c4e432b75
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: e558f44f9271009b92fbf4ece9aa706801e4176c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307943"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576202"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>A Windows egy szimulált TPM Edge-eszköz létrehozása és kiépítése
 
@@ -58,6 +58,8 @@ Miután létrehozta az egyéni regisztráció, mentse az értékét a **regisztr
 
 ## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge-modul telepítése
 
+Ha befejezte az előző szakaszban, az új eszközt az IoT Hub IoT Edge-eszköz állapottal jelenik meg. Most telepítenie kell az IoT Edge-futtatókörnyezet az eszközön. 
+
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Annak összetevői tárolókban futtassa, és lehetővé teszi, hogy a kódot futtathatja a peremhálózaton további tárolókat üzembe az eszközön. A Windows rendszerű eszközökhöz választhat, vagy a tárolókat Windows vagy Linux-tárolók használata. Válassza ki a használni kívánt tárolók típusát, és kövesse a lépéseket. Ellenőrizze, hogy az IoT Edge-futtatókörnyezet, az automatikus, nem manuális üzembe helyezést. 
 
 Kövesse az utasításokat követve telepítse az IoT Edge-futtatókörnyezet, amely az előző szakaszban a szimulált TPM-eszköz fut az eszközön. 
@@ -67,30 +69,9 @@ A DPS tudja **azonosító hatóköre** és az eszköz **regisztrációs azonosí
 * [Windows-tárolók](how-to-install-iot-edge-windows-with-windows.md)
 * [Linux-tárolók](how-to-install-iot-edge-windows-with-linux.md)
 
-## <a name="create-a-tpm-environment-variable"></a>A TPM környezeti változó létrehozása
-
-A szimulált eszköz futtató gépen, módosítsa a **iotedge** szolgáltatás beállításjegyzék egy környezeti változó beállítása.
-
-1. Az a **Start** menü megnyitása **regedit**. 
-2. Navigáljon a **Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iotedge**. 
-3. Válassza ki **szerkesztése** > **új** > **karakterláncsoros értéket**. 
-4. Adja meg a nevét **környezet**. 
-5. Kattintson duplán az új változó, és állítsa az értékadatot **IOTEDGE_USE_TPM_DEVICE = ON**. 
-6. Kattintson az **OK** gombra a módosítások mentéséhez. 
-
-## <a name="restart-the-iot-edge-runtime"></a>Indítsa újra az IoT Edge-futtatókörnyezet
-
-Indítsa újra az IoT Edge-futtatókörnyezet, úgy, hogy az eszközön végrehajtott összes konfigurációs módosítást buildkonfigurációtól. 
-
-```powershell
-Stop-Service iotedge -NoWait
-sleep 5
-Start-Service iotedge
-```
-
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 
-Ha a modul sikeresen elindult, megkezdheti az IoT Hub, és tekintse meg, hogy az új eszköz automatikusan hozzáférést kapnak, és készen áll a IoT Edge-modulok futtatása. 
+Ha a modul sikeresen elindult, az IoT Hub lép, és elkezdeni az eszköz IoT Edge-modulok telepítését. Az eszközön az alábbi parancsok használatával ellenőrizze, hogy a futtatókörnyezet-sikeresen elindult.  
 
 Ellenőrizze az IoT Edge-szolgáltatás állapotát.
 

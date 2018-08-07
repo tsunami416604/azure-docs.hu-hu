@@ -1,40 +1,34 @@
 ---
-title: Tulajdonságok és a metaadatok Azure Import/Export - 1-es verzió beállítása |} Microsoft Docs
-description: Megtudhatja, hogyan adhatja meg az tulajdonságait és a metaadatok állítható be a cél BLOB az Azure Import/Export eszköz futtatásakor a meghajtók előkészítéséhez. A v1 az Import/Export eszköz vonatkozik.
+title: Tulajdonságok és metaadatok használatával az Azure Import/Export - v1 beállítása |} A Microsoft Docs
+description: Ismerje meg, hogyan adja meg a tulajdonságok és metaadatok állítható be a cél blobok az Azure Import/Export eszköz futtatásakor a meghajtók előkészítéséhez. Az Import/Export eszköz v1 utal.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: e8541695-bcfb-4bf0-84d9-72c9de32a0a8
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 77bdaa5559de86cd1de9f30e70656e47fd5719e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 9a27bae49b9a626c46440392fee03f14c403fe76
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873736"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520700"
 ---
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>Tulajdonságok és metaadatok beállítása az importálási folyamat során
-A meghajtók előkészítése a Microsoft Azure Import/Export eszköz futtatásakor tulajdonságok és állítható be a cél BLOB metaadatait is megadhat. Kövesse az alábbi lépéseket:  
+A meghajtók előkészítése a Microsoft Azure Import/Export eszköz futtatásakor a tulajdonságok és metaadatok állítható be a cél blobokat is megadhat. Kövesse az alábbi lépéseket:  
   
-1.  Blob tulajdonságainak beállításához hozzon létre egy szövegfájlt, a helyi számítógépen, amely meghatározza a nevét és értékeit.  
+1.  A blob tulajdonságainak beállításához hozzon létre egy szövegfájlt, a helyi számítógépen, amely meghatározza a nevét és értékeit.  
   
-2.  Állítsa be a blob metaadatai, hozzon létre egy szövegfájlt, a helyi számítógépen, amely meghatározza a metaadatok neveit és értékeit.  
+2.  Állítsa be a blob metaadatai, hozzon létre egy szövegfájlt a helyi számítógépen, amely meghatározza a metaadatok neveit és értékeit.  
   
 3.  A teljes elérési útja át egyik vagy mindkét ezeket a fájlokat az Azure Import/Export eszköz részeként a `PrepImport` műveletet.  
   
 > [!NOTE]
->  Amikor egy tulajdonságok vagy metaadat-fájlt ad meg egy másolási munkamenet részeként, ezeket a tulajdonságokat vagy metaadatok vannak állítva minden BLOB másolási munkamenet részeként importált. Adjon meg másik tulajdonságok vagy metaadatok egyes importált blobok szeretnénk, ha szüksége hozzon létre egy külön példányát munkamenetet más tulajdonságokkal vagy metaadat-fájlok.  
+>  Ha a tulajdonságok és metaadatok fájlokat egy másolási munkamenet részeként adja meg, ezeket a tulajdonságokat vagy metaadatok vannak beállítva a minden egyes blob másolási munkamenet részeként importált. Adjon meg különböző tulajdonságok és metaadatok egyes importált blobok szeretne, ha szüksége különböző tulajdonságok vagy metaadat-fájlokat egy külön példányt munkamenet létrehozásához.  
   
-## <a name="specify-blob-properties-in-a-text-file"></a>Adja meg a Blob tulajdonságai szövegfájl  
-Adja meg a blob tulajdonságai, hozzon létre egy helyi szövegfájlt, és tartalmazza, amely meghatározza a tulajdonság nevét, és tulajdonságértékeket értékként XML. Íme egy példa, amely meghatározza az egyes tulajdonságértékeket:  
+## <a name="specify-blob-properties-in-a-text-file"></a>A fájlt adja meg a Blob tulajdonságai  
+Adja meg a blob tulajdonságai, hozzon létre egy helyi szövegfájlt, és tartalmazza az XML-t a tulajdonságnevek elemeket, és tulajdonságértékeket értékekként határozza meg. Íme egy példa, amely meghatározza az egyes tulajdonságértékeket:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -45,10 +39,10 @@ Adja meg a blob tulajdonságai, hozzon létre egy helyi szövegfájlt, és tarta
 </Properties>  
 ```
   
-Mentse a fájlt egy helyi helyre, például a `C:\WAImportExport\ImportProperties.txt`.  
+Mentse a fájlt egy helyi helyre, például `C:\WAImportExport\ImportProperties.txt`.  
   
-## <a name="specify-blob-metadata-in-a-text-file"></a>Adja meg a Blob metaadatai szövegfájl  
-Hasonlóképpen adja meg a blob metaadatai, hozzon létre a helyi szövegfájl, amely meghatározza a metaadatok nevét, és metaadatok értékek értékként. Íme egy példa, amely néhány metaadatok értékeket adja meg:  
+## <a name="specify-blob-metadata-in-a-text-file"></a>Adja meg a Blob metaadatainak egy szövegfájlba  
+Hasonlóképpen adja meg a blob metaadatai, hozzon létre a helyi szövegfájl, amely meghatározza a metaadatneveknek egyedieknek elemek, valamint metaadatértékeket értékekként. Íme egy példa, amely meghatározza az egyes metaadatértékeket:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -59,15 +53,15 @@ Hasonlóképpen adja meg a blob metaadatai, hozzon létre a helyi szövegfájl, 
 </Metadata>  
 ```
   
-Mentse a fájlt egy helyi helyre, például a `C:\WAImportExport\ImportMetadata.txt`.  
+Mentse a fájlt egy helyi helyre, például `C:\WAImportExport\ImportMetadata.txt`.  
   
-## <a name="create-a-copy-session-including-the-properties-or-metadata-files"></a>Beleértve a Tulajdonságok vagy metaadat-fájlok másolása munkamenet létrehozása  
-Az Azure Import/Export eszköz előkészítése az importálási feladat futtatásakor adja meg a parancssor használatával tulajdonságok fájlt a `PropertyFile` paraméter. Adja meg a metaadat-fájlt a parancssor használatával a `/MetadataFile` paraméter. Íme egy példa, amely mindkét fájlokat:  
+## <a name="create-a-copy-session-including-the-properties-or-metadata-files"></a>A tulajdonságok és metaadatok fájlokat is beleértve másolási munkamenet létrehozása  
+Az Azure Import/Export eszköz előkészítése az importálási feladat futtatásakor adja meg a parancssor használatával tulajdonságok fájlt a `PropertyFile` paraméter. A metaadat-fájlt a parancssor használatával adja meg a `/MetadataFile` paraméter. Íme egy példa, amely mindkét fájlokat:  
   
 ```
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp\BlueRay.ISO /dstblob:favorite/BlueRay.ISO /MetadataFile:c:\WAImportExport\SampleMetadata.txt /PropertyFile:c:\WAImportExport\SampleProperties.txt  
 ```
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Import/Export szolgáltatás metaadat- és tulajdonságfájljainak formátuma](../storage-import-export-file-format-metadata-and-properties.md)

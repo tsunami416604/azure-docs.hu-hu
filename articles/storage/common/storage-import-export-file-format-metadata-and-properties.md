@@ -1,30 +1,24 @@
 ---
-title: Az Azure Import/Export metaadatok és a Tulajdonságok fájlformátum |} Microsoft Docs
-description: Megtudhatja, hogyan adhatja meg a metaadatok és egy vagy több blobot, az importálás során vagy exportálja a feladat tulajdonságait.
+title: Az Azure Import/Export metaadat- és tulajdonságfájljainak formátuma |} A Microsoft Docs
+description: Ismerje meg, hogyan adja meg a metaadatok és a egy vagy több blobot, amelyek részei az importálási vagy exportálási feladatot tulajdonságait.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 840364c6-d9a8-4b43-a9f3-f7441c625069
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 5a886244b43ad006a95e9be0350d9c69fd987ad9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873652"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526232"
 ---
-# <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Az Azure Import/Export szolgáltatás metaadatok és a Tulajdonságok fájlformátum
-Megadhat egy vagy több blobot tulajdonságai és metaadatok egy importálási feladat vagy exportálási feladat részeként. Metaadatok és az importálási feladat részeként létrehozott BLOB tulajdonságainak beállításához adja meg az importálandó adatokat tartalmazó merevlemez-meghajtóról metaadatok vagy tulajdonságok fájlba. Exportálási feladat metaadatok és a Tulajdonságok írja metaadatok vagy tulajdonságok fájlba, amely tartalmazza a visszaküldött merevlemez-meghajtóra.  
+# <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Az Azure Import/Export szolgáltatás metaadat- és tulajdonságfájljainak formátuma
+Metaadatok és a egy vagy több blobot tulajdonságait is adja meg az importálási feladat vagy exportálási feladat részeként. Metaadatok és az importálási feladat részeként létrehozott blobok tulajdonságainak beállításához adja meg a metaadatok vagy tulajdonságok fájlt importálni kívánt adatokat tartalmazó merevlemez. Exportálási feladatokhoz metaadat- és tulajdonságfájljainak írt metaadatok vagy tulajdonságok fájlba, amely tartalmazza a merevlemezen, vissza.  
   
-## <a name="metadata-file-format"></a>Metaadatok fájlformátum  
+## <a name="metadata-file-format"></a>Metaadatait tartalmazó fájl formátuma  
 A metaadatfájl formátuma a következő:  
   
 ```xml
@@ -36,13 +30,13 @@ A metaadatfájl formátuma a következő:
 </Metadata>  
 ```
   
-|XML-elem.|Típus|Leírás|  
+|XML-elem|Típus|Leírás|  
 |-----------------|----------|-----------------|  
-|`Metadata`|Legfelső szintű elem|A metaadat-fájl gyökérelemének.|  
-|`metadata-name`|Karakterlánc|Választható. Az XML-elem a BLOB metaadatait nevét adja meg, és az értékét a metadata beállítás értékét adja meg.|  
+|`Metadata`|Legfelső szintű elem|A metaadatfájl gyökérelem.|  
+|`metadata-name`|Sztring|Választható. Az XML-elem metaadatait a BLOB nevét adja meg, és az érték határozza meg, a metaadatok beállítás értékét.|  
   
 ## <a name="properties-file-format"></a>Tulajdonságok fájlformátum  
-A tulajdonságok fájl formátuma a következő:  
+Egy tulajdonságfájljainak formátuma a következő:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -58,18 +52,18 @@ A tulajdonságok fájl formátuma a következő:
 </Properties>  
 ```
   
-|XML-elem.|Típus|Leírás|  
+|XML-elem|Típus|Leírás|  
 |-----------------|----------|-----------------|  
-|`Properties`|Legfelső szintű elem|A tulajdonságok fájl gyökérelemének.|  
-|`Last-Modified`|Karakterlánc|Választható. Az utolsó módosítás dátuma a BLOB. Az exportálási feladatok csak.|  
-|`Etag`|Karakterlánc|Választható. A blob ETag érték. Az exportálási feladatok csak.|  
-|`Content-Length`|Karakterlánc|Választható. A blob bájtban kifejezett mérete. Az exportálási feladatok csak.|  
-|`Content-Type`|Karakterlánc|Választható. A blob tartalomtípusa.|  
-|`Content-MD5`|Karakterlánc|Választható. A blob MD5 kivonatoló.|  
-|`Content-Encoding`|Karakterlánc|Választható. A blob tartalma kódolást.|  
-|`Content-Language`|Karakterlánc|Választható. A blob tartalom kívánt nyelvét.|  
-|`Cache-Control`|Karakterlánc|Választható. A blob vezérlő gyorsítótár-karakterlánc.|  
+|`Properties`|Legfelső szintű elem|A tulajdonságok fájl gyökérelem.|  
+|`Last-Modified`|Sztring|Választható. Utolsó módosítás időpontja a BLOB. Csak export-feladatok.|  
+|`Etag`|Sztring|Választható. A blob ETag-érték. Csak export-feladatok.|  
+|`Content-Length`|Sztring|Választható. A blob (bájt) mérete. Csak export-feladatok.|  
+|`Content-Type`|Sztring|Választható. A blob tartalmának típusa.|  
+|`Content-MD5`|Sztring|Választható. A blob MD5-kivonat.|  
+|`Content-Encoding`|Sztring|Választható. A blob tartalma kódolást.|  
+|`Content-Language`|Sztring|Választható. A blob tartalom nyelve.|  
+|`Cache-Control`|Sztring|Választható. A blob vezérlő cache-karakterlánc.|  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Lásd: [blob tulajdonságainak beállítása](/rest/api/storageservices/set-blob-properties), [beállítása Blob metaadatai](/rest/api/storageservices/set-blob-metadata), és [beállítás és lekérése közben tulajdonságait és a metaadatok blob-erőforrások](/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources) a blob metaadatai és tulajdonságok beállításával kapcsolatos részletes szabályok.
+Lásd: [blob tulajdonságainak megadása](/rest/api/storageservices/set-blob-properties), [állítsa Blob metaadatainak](/rest/api/storageservices/set-blob-metadata), és [beállítása és lekérése során tulajdonságok és metaadatok a blob-erőforrások](/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources) beállítás blob metaadatainak kapcsolatos részletes szabályok és tulajdonságait.

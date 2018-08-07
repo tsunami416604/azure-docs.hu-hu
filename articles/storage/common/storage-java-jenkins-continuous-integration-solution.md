@@ -4,16 +4,16 @@ description: Ebben az oktatóanyagban bemutatják, hogyan használhatja az Azure
 ms.topic: article
 ms.author: tarcher
 author: tarcher
-manager: jpconnock
 services: devops
 custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 24248b198965ddf9ed9ef8df67c34560d08d3935
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.component: common
+ms.openlocfilehash: 549150abc630cd247927b4ba7042d0bdf0e8b88a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389847"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524389"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Az Azure Storage használata Jenkins folyamatos integrációs megoldással
 
@@ -57,7 +57,7 @@ A Blob service használata a jenkins-szel, szüksége lesz az Azure Storage beé
 ## <a name="how-to-install-the-azure-storage-plugin"></a>Az Azure Storage beépülő modul telepítése
 1. A Jenkins irányítópultján válassza **Jenkins kezelése**.
 2. Az a **Jenkins kezelése** lapon jelölje be **beépülő modulok kezelése**.
-3. Válassza ki a **elérhető** fülre.
+3. Válassza az **Available** (Elérhető) lapot.
 4. Az a **összetevő Feltöltők** területen ellenőrzés **a Microsoft Azure Storage beépülő modul**.
 5. Ezek közül bármelyikre **újraindítás nélküli** vagy **letöltése és telepítése után indítsa újra**.
 6. Indítsa újra a Jenkins.
@@ -140,9 +140,9 @@ Ez a szakasz a Blob szolgáltatás-összetevők áttekintést nyújt.
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Hibaelhárítás a Jenkins beépülő modul
+## <a name="troubleshooting-the-jenkins-plugin"></a>A Jenkins beépülő modul hibáinak elhárítása
 
-Ha bármely hibái a Jenkins beépülő modulok, a fájl be a problémát a [Jenkins JIRA](https://issues.jenkins-ci.org/) az adott összetevő.
+Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 
 ## <a name="next-steps"></a>További lépések
 * [A Jenkins felel meg](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)

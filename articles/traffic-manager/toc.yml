@@ -7,7 +7,7 @@
 - name: Első lépések
   items:
     - name: Traffic Manager-profil létrehozása
-      href: traffic-manager-create-profile.md
+      href: quickstart-create-traffic-manager-profile.md
 - name: Oktatóanyagok
   items:
     - name: Forgalom irányítása végpont földrajzi helye alapján

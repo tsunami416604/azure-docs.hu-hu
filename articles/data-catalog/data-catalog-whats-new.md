@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 18673186e80b4d1784fa5b42e622d90dd4c889d4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 3d2c0d21d0cf4cc0654c8f7ee2debee4f0320461
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860003"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577062"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>What's new in Azure Data Catalog
 Frissítések **Azure Data Catalog** rendszeresen jelennek meg. Nem minden kiadás új szolgáltatásokkal rendelkező felhasználó, néhány kiadásai háttérszolgáltatás képességek összpontosítanak. Ez az oldal az Azure Data Catalog szolgáltatásban hozzáadott új felhasználói képességek emeli ki.
@@ -27,7 +27,7 @@ Frissítések **Azure Data Catalog** rendszeresen jelennek meg. Nem minden kiad�
 2017. November az Azure Data Cataloghoz az alábbi képességekkel bővült:
 
 * Támogatás a közvetlenül összekapcsolása a Data Catalog-portál az adott üzleti szószedet kifejezéseit. A felhasználók hivatkozások átmásolhatja az üzleti szószedet és a beágyazása, e-mailek, jelentések, vagy más helyekre mutató közvetlen hivatkozás szerepel a szószedet kifejezés definícióját a.
-* Azure Active Directory egyszerű szolgáltatások támogatása. A Data Catalog rendszergazdái is engedélyezik a szolgáltatásnevek használatával is hozzáférhet a katalógushoz ügyfélalkalmazások számára, és az engedélyeket az alkalmazások adott ugyanúgy, mint a azokat az engedélyeket felhasználók és biztonsági csoportok. További információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/active-directory-application-objects.md).
+* Azure Active Directory egyszerű szolgáltatások támogatása. A Data Catalog rendszergazdái is engedélyezik a szolgáltatásnevek használatával is hozzáférhet a katalógushoz ügyfélalkalmazások számára, és az engedélyeket az alkalmazások adott ugyanúgy, mint a azokat az engedélyeket felhasználók és biztonsági csoportok. További információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 * Az Azure Active Directory-hitelesítés a Data Catalog adatforrás-regisztráló eszköz használatával Azure SQL Database és az Azure SQL Data Warehouse-adatok forrásokhoz való kapcsolódáskor támogatása. További információkért lásd: [használata az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse-hitelesítéshez](../sql-database/sql-database-aad-authentication.md).
 
 

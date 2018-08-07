@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD-aláírási kulcs váltása
-description: Ez a cikk ismerteti, amelyek az aláírási kulcs átfordulási ajánlott eljárások az Azure Active Directory
+title: Az Azure Active Directory Aláírókulcs
+description: Ez a cikk ismerteti az aláíró kulcsváltás ajánlott eljárások az Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: CelesteDG
@@ -16,61 +16,61 @@ ms.date: 07/18/2016
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a84cca4b0944db5cde038fb72917ebac23d0be8c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 69dc56191667e65922d7d81116f4daf7a6e4b97a
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317459"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576936"
 ---
-# <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directoryban kulcsváltás aláírása
-A cikk ismerteti, mit kell tudnia a nyilvános kulcsok biztonsági jogkivonatok aláírásához használt Azure Active Directory (Azure AD). Fontos megjegyezni, hogy rendszeres időközönként, és vészhelyzet esetén a kulcsok helyettesítő volt állítva azonnal. Minden alkalmazás, amely használhatja az Azure Active Directory kell tudni programozott módon a kulcsváltás folyamat, vagy a rendszeres manuális helyettesítő-folyamatot. Olvasási megértése, hogyan működnek a kulcsokat, továbbra is az alkalmazás a Váltás hatásának értékelése és az alkalmazás frissítésére, vagy kezelje a kulcsváltás, szükség esetén rendszeres manuális váltása folyamatot.
+# <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directory aláírókulcs
+Ez a cikk ismerteti, mit kell tudni az Azure Active Directory (Azure AD) biztonsági jogkivonatok aláírásához használt nyilvános kulcsok. Fontos megjegyezni, hogy a kulcsok váltása rendszeres időközönként, és a egy robotkart sikerült kell leváltani azonnal. Minden alkalmazás, amely az Azure AD használata programozott módon kezelni a kulcshoz kapcsolódó kulcsváltás folyamat vagy rendszeres manuális váltása folyamatot képesnek kell lennie. Tudni, hogyan működnek a kulcsokat, olvassa tovább az alkalmazás a Váltás hatásainak kiértékelését és frissítheti az alkalmazást, vagy időszakos manuális váltása folyamatot kulcsváltás kezelésére, ha szükséges.
 
-## <a name="overview-of-signing-keys-in-azure-ad"></a>Az Azure AD-aláírókulcsok áttekintése
-Az Azure AD és az azt használó alkalmazások között megbízhatósági kapcsolat létrehozása az ipari szabványok épülő nyilvános kulcsú titkosítást használ. Gyakorlatilag, ez a következő módon működik: az Azure AD nyilvános és titkos kulcsból álló kulcspárt tartalmazó aláíró kulcsot használ. Ha egy felhasználó jelentkezik be valamely alkalmazás az Azure AD használ a hitelesítéshez, az Azure AD létrehoz egy biztonsági jogkivonatot, amely a felhasználó adatait tartalmazza. Ez a token aláírta az Azure AD használatával a titkos kulcsot, az alkalmazásnak elküldés előtt. Győződjön meg arról, hogy a jogkivonat érvényes, és az Azure AD kezdeményezésű, hogy az alkalmazás ellenőrizni kell a jogkivonat aláírása a nyilvános kulccsal, hogy a bérlő tartalmazza az Azure AD által elérhetővé tett [OpenID Connect felderítési dokumentum](http://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML / WS-Fed [összevonási metaadat-dokumentum](active-directory-federation-metadata.md).
+## <a name="overview-of-signing-keys-in-azure-ad"></a>Az Azure Active Directory aláírókulcs áttekintése
+Az Azure AD és az azt használó alkalmazások között megbízhatósági kapcsolat létrehozása iparági szabványokon nyilvános kulcsú titkosítás használ. Gyakorlatilag, ez a következő módon működik: Azure ad-ben, amely egy nyilvános és titkos kulcsból álló párként áll aláíró kulcsot használ. Ha egy felhasználó bejelentkezik az Azure AD hitelesítésre használó alkalmazások, az Azure AD egy biztonsági jogkivonatot, amely tartalmazza a felhasználó adatai hoz létre. A jogkivonat aláírásával rendelkezik Azure AD-bA annak titkos kulcsát, az alkalmazásnak továbbítás előtt. Annak ellenőrzéséhez, hogy a jogkivonat érvényes, és az Azure ad-ből származó, az alkalmazásnak érvényesítenie kell a nyilvános kulccsal, amely tartalmazza a bérlő Azure AD által elérhetővé tett a jogkivonat aláírása [OpenID Connect-felderítési dokumentum](http://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML / WS-Fed [összevonási metaadatok dokumentuma](azure-ad-federation-metadata.md).
 
-Biztonsági okokból az Azure AD-aláíró kulcs összesíti rendszeres időközönként, és vészhelyzet esetén volt állítva azonnal. Bármely alkalmazás, amely az Azure AD kezelni egy kulcsváltás eseményt, függetlenül attól, milyen gyakran ez akkor fordulhat elő kell készíteni. Ha nem, és az alkalmazás megpróbálja ellenőrzése a jogkivonat aláírása lejárt-kulcsot használ, a bejelentkezési kérelem sikertelen lesz.
+Biztonsági okokból az Azure AD aláíró kulcs tekercsben rendszeres időközönként, és vészhelyzet esetén sikerült kell leváltani azonnal. Minden olyan alkalmazás, amely integrálható az Azure ad-ben kezelni egy kulcsváltás eseményt, függetlenül attól, hogy milyen gyakran ez akkor fordulhat elő kell készíteni. Ha nem támogatja, és az alkalmazás megpróbálja használni egy lejárt kulcs ellenőrzése a jogkivonat aláírása, a bejelentkezési kérelem sikertelen lesz.
 
-Mindig egynél több érvényes kulcs rendelkezésre áll az OpenID Connect felderítés és az összevonási metaadatok dokumentum. Az alkalmazás minden a dokumentumban szereplő kulcsok használatához felkészültnek kell lennie, egy kulcs amint lehet, hogy lesz vonva, mivel egy másik előfordulhat, hogy azok helyettesítéseivel, és így tovább.
+Nincs mindig egynél több érvényes kulcs az OpenID Connect-felderítési dokumentum és az összevonási metaadatok dokumentuma érhető el. Az alkalmazás használatához a kulcsokat a dokumentumban szereplő felkészültnek kell lennie, mivel előfordulhat, hogy egyetlen kulcs hamarosan fel lesz állítva, egy másik előfordulhat, hogy azok helyettesítéseivel, és így tovább.
 
-## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>Annak ellenőrzéséhez, ha az alkalmazás az érintett hogyan és mit kell tenni információk
-Az alkalmazás kezelésének kulcsváltás attól függ, hogy változók, például az alkalmazás-vagy milyen identitás protokoll és a könyvtár lett megadva. Az alábbi szakaszok ellenőrzéséhez, hogy a leggyakoribb alkalmazások is hatással van a kulcsváltás, és útmutatást nyújtanak az alkalmazás automatikus helyettesítő támogatásához, vagy manuálisan frissítse a kulcs frissítése.
+## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>Hogyan mérje fel, ha az alkalmazás hatással lesz, és mi a teendő információk
+Hogyan kezeli az alkalmazás a kulcshoz kapcsolódó kulcsváltás attól függ, hogy változók, például az alkalmazás vagy milyen identitás protokoll és a könyvtár használt típusa. Az alábbi szakaszok az ellenőrzéséhez, hogy a leggyakoribb alkalmazások a kulcshoz kapcsolódó kulcsváltás érinti, és útmutatást nyújt az alkalmazás támogatja az automatikus átvitel, vagy manuálisan frissítse a kulcs frissítéséhez.
 
 * [Natív ügyfélalkalmazások erőforrások elérése](#nativeclient)
-* [Webalkalmazások / API-k erőforrások elérése](#webclient)
-* [Webalkalmazások / API-k erőforrások védelméről, és segítségével az Azure App Service szolgáltatások](#appservices)
-* [Webalkalmazások / API-k használata a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication köztes erőforrások védelme](#owin)
-* [Webalkalmazások / API-k használata a .NET Core OpenID Connect vagy JwtBearerAuthentication köztes erőforrások védelme](#owincore)
-* [Webalkalmazások / API-k Node.js passport-azure-ad-modullal erőforrások védelme](#passport)
-* [Webalkalmazások / API-k erőforrások védelméről, és a Visual Studio 2015-öt vagy a Visual Studio 2017](#vs2015)
-* [Webalkalmazások erőforrások védelméről, és a Visual Studio 2013 létre](#vs2013)
-* [Webes API-k erőforrások védelméről, és a Visual Studio 2013 létre](#vs2013_webapi)
-* [Erőforrások védelme és a Visual Studio 2012 létrehozott webes alkalmazások](#vs2012)
-* [Webalkalmazások erőforrások védelméről, és a Visual Studio 2010, a Windows Identity Foundation használatával 2008 o létre](#vs2010)
-* [Webalkalmazások / API-k bármely más könyvtárak segítségével, vagy manuálisan végrehajtási a támogatott protokollok erőforrások védelme](#other)
+* [Webes alkalmazások / erőforrások elérése API-k](#webclient)
+* [Webes alkalmazások / API-k erőforrások védelméről, és az Azure App Services használatával](#appservices)
+* [Webes alkalmazások / API-k használata a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication közbenső szoftveres erőforrások védelme](#owin)
+* [Webes alkalmazások / API-k használata a .NET Core OpenID Connect vagy JwtBearerAuthentication közbenső szoftveres erőforrások védelme](#owincore)
+* [Webes alkalmazások / API-k használata a Node.js passport-azure-ad-modul erőforrások védelme](#passport)
+* [Webes alkalmazások / erőforrások védelme és a Visual Studio 2015 vagy Visual Studio 2017 használatával létrehozott API-k](#vs2015)
+* [Erőforrások védelme és a Visual Studio 2013 létrehozott webalkalmazások](#vs2013)
+* [Webes API-k erőforrások védelméről, és Visual Studio 2013-hoz létre](#vs2013_webapi)
+* [Erőforrások védelme és a Visual Studio 2012-vel létrehozott webalkalmazások](#vs2012)
+* [Erőforrások védelme és a Visual Studio 2010, a Windows Identity Foundation használatával 2008 o létrehozott webalkalmazások](#vs2010)
+* [Webes alkalmazások / API-k használatával bármilyen más könyvtárat vagy manuális megvalósítása a támogatott protokollok erőforrások védelme](#other)
 
 Ez az útmutató **nem** alkalmazható:
 
-* Az Azure AD Application Gallery (beleértve az egyéni) hozzáadott alkalmazások rendelkeznek jelenítik aláírókulcsok külön útmutatást. [További információt.](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
-* A helyszíni alkalmazásproxy keresztül közzétett alkalmazás nem kell foglalkoznia az aláírási kulcsokat.
+* Alkalmazások hozzáadása az Azure AD Application Gallery (beleértve az egyéni) külön útmutatás tartományállapot aláírókulcs rendelkezik. [További információt.](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
+* A helyszíni keresztül alkalmazásproxyval közzétett alkalmazások nem kell aggódnia a aláírási kulcsokat.
 
 ### <a name="nativeclient"></a>Natív ügyfélalkalmazások erőforrások elérése
-Erőforrások (azaz csak elérő alkalmazások A Microsoft Graph, KeyVault, Outlook API és más Microsoft APIs) általában csak jogkivonat beszerzése, és adja át mentén az erőforrás tulajdonosa. Figyelembe véve, hogy azok nem védett erőforrások, nem vizsgálja meg a jogkivonatot, és emiatt nem kell annak érdekében, hogy helyesen alá van írva.
+Az alkalmazásokat, amelyek csak érnek el erőforrásokat (vagyis) A Microsoft Graph, KeyVault, az Outlook API és más Microsoft APIs) általában csak egy token beszerzéséhez, és adja át azt mentén az erőforrás tulajdonosa. Tekintettel arra, hogy azok nem védett erőforrások, ne ellenőrizze a jogkivonatot, és ezért nem kell győződjön meg arról, megfelelően alá van írva.
 
-Natív ügyfélalkalmazások, asztali vagy hordozható, ebbe a kategóriába tartozik, és így nem érinti a váltáshoz.
+Natív ügyfélalkalmazások, akár asztali, akár mobil-, ebbe a kategóriába tartoznak, és így nem érinti a váltás.
 
-### <a name="webclient"></a>Webalkalmazások / API-k erőforrások elérése
-Erőforrások (azaz csak elérő alkalmazások A Microsoft Graph, KeyVault, Outlook API és más Microsoft APIs) általában csak jogkivonat beszerzése, és adja át mentén az erőforrás tulajdonosa. Figyelembe véve, hogy azok nem védett erőforrások, nem vizsgálja meg a jogkivonatot, és emiatt nem kell annak érdekében, hogy helyesen alá van írva.
+### <a name="webclient"></a>Webes alkalmazások / erőforrások elérése API-k
+Az alkalmazásokat, amelyek csak érnek el erőforrásokat (vagyis) A Microsoft Graph, KeyVault, az Outlook API és más Microsoft APIs) általában csak egy token beszerzéséhez, és adja át azt mentén az erőforrás tulajdonosa. Tekintettel arra, hogy azok nem védett erőforrások, ne ellenőrizze a jogkivonatot, és ezért nem kell győződjön meg arról, megfelelően alá van írva.
 
-Webalkalmazások és webes API-khoz, az alkalmazás csak a folyamat által használt (ügyfél-hitelesítő adatok / ügyféltanúsítvány), ebbe a kategóriába tartozik, és így nem érinti a váltáshoz.
+Webes alkalmazások és a webes API-kat használ a csak az alkalmazásra vonatkozó folyamat (ügyfél-hitelesítő adatok / ügyféltanúsítvány), ebbe a kategóriába sorolhatók, és így nem érinti a kulcsváltás.
 
-### <a name="appservices"></a>Webalkalmazások / API-k erőforrások védelméről, és segítségével az Azure App Service szolgáltatások
-Az Azure App Services hitelesítési / engedélyezési (EasyAuth) funkció már kulcsváltás automatikusan kezeléséhez szükséges logika.
+### <a name="appservices"></a>Webes alkalmazások / API-k erőforrások védelméről, és az Azure App Services használatával
+Az Azure App Services hitelesítési / engedélyezési (EasyAuth) funkció már rendelkezik a szükséges logikával kulcsváltás automatikusan kezeli.
 
-### <a name="owin"></a>Webalkalmazások / API-k használata a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication köztes erőforrások védelme
-Ha az alkalmazás nem használja a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication köztes kulcsváltás automatikusan kezeléséhez szükséges logika már rendelkezik.
+### <a name="owin"></a>Webes alkalmazások / API-k használata a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication közbenső szoftveres erőforrások védelme
+Az alkalmazás a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication közbenső szoftverek, ha már rendelkezik a szükséges logikával kulcsváltás automatikusan kezeli.
 
-Úgy ellenőrizheti, hogy az alkalmazás ezek alapján az alkalmazás Startup.cs vagy Startup.Auth.cs alábbi kódtöredékek bármelyikéhez használ
+Ellenőrizheti, hogy az alkalmazás az alábbi kódrészletek az alkalmazás Startup.cs vagy Startup.Auth.cs bármelyikét felismerésével ezek egyikét sem használ
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -94,10 +94,10 @@ app.UseWsFederationAuthentication(
      });
 ```
 
-### <a name="owincore"></a>Webalkalmazások / API-k használata a .NET Core OpenID Connect vagy JwtBearerAuthentication köztes erőforrások védelme
-Ha az alkalmazás nem használja a .NET Core OWIN OpenID Connect vagy JwtBearerAuthentication köztes, kulcsváltás automatikusan kezeléséhez szükséges logika már rendelkezik.
+### <a name="owincore"></a>Webes alkalmazások / API-k használata a .NET Core OpenID Connect vagy JwtBearerAuthentication közbenső szoftveres erőforrások védelme
+Ha az alkalmazás a .NET Core OWIN OpenID Connect vagy JwtBearerAuthentication közbenső használ, már rendelkezik a szükséges logikával kulcsváltás automatikusan kezeli.
 
-Úgy ellenőrizheti, hogy az alkalmazás ezek alapján az alkalmazás Startup.cs vagy Startup.Auth.cs alábbi kódtöredékek bármelyikéhez használ
+Ellenőrizheti, hogy az alkalmazás az alábbi kódrészletek az alkalmazás Startup.cs vagy Startup.Auth.cs bármelyikét felismerésével ezek egyikét sem használ
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -114,10 +114,10 @@ app.UseJwtBearerAuthentication(
      });
 ```
 
-### <a name="passport"></a>Webalkalmazások / API-k Node.js passport-azure-ad-modullal erőforrások védelme
-Ha az alkalmazás nem használja a Node.js passport-ad-modullal, kulcsváltás automatikusan kezeléséhez szükséges logika már rendelkezik.
+### <a name="passport"></a>Webes alkalmazások / API-k használata a Node.js passport-azure-ad-modul erőforrások védelme
+Az alkalmazás a Node.js passport-ad-modul használ, ha már rendelkezik a szükséges logikával kulcsváltás automatikusan kezeli.
 
-Úgy ellenőrizheti, hogy az alkalmazás passport-ad a következő kódrészletet a az alkalmazás app.js keresése
+Azt is ellenőrizze, hogy az alkalmazás a passport-ad az alábbi kódrészletet az alkalmazás app.js keresés
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -127,32 +127,32 @@ passport.use(new OIDCStrategy({
 ));
 ```
 
-### <a name="vs2015"></a>Webalkalmazások / API-k erőforrások védelméről, és a Visual Studio 2015-öt vagy a Visual Studio 2017
-Ha az alkalmazást a Visual Studio 2015-öt vagy a Visual Studio 2017 webes alkalmazás sablon használatával lett létrehozva, és a kiválasztott **munkahelyi és iskolai fiókok** a a **hitelesítés módosítása** menü már rendelkezik a szükséges logika kulcsváltás automatikusan kezelni. A programot, az OWIN OpenID Connect köztes ágyazott kéri le, és gyorsítótárba helyezi azt a kulcsokat az OpenID Connect felderítési dokumentum, és rendszeresen frissülnek.
+### <a name="vs2015"></a>Webes alkalmazások / erőforrások védelme és a Visual Studio 2015 vagy Visual Studio 2017 használatával létrehozott API-k
+Ha az alkalmazás webes alkalmazást sablon a Visual Studio 2015 vagy Visual Studio 2017 használatával lett létrehozva, és a kiválasztott **munkahelyi és iskolai fiókok** származó a **hitelesítés módosítása** menüben, ha már van a szükséges logikával kulcsváltás automatikusan kezeli. A logikai az OWIN OpenID Connect közbenső szoftverek, a beágyazott kérdezi le, és az OpenID Connect-felderítési dokumentum kulcsait gyorsítótárazza, és rendszeres időközönként frissíti.
 
-Ha manuálisan adta hozzá hitelesítési a megoldáshoz, az alkalmazás esetleg nincs szükség kulcsváltás logika. Jegyezze meg, vagy kövesse a kell [webalkalmazások / API-k bármely más könyvtárak segítségével, vagy manuálisan végrehajtási a támogatott protokollok](#other).
+Adott hitelesítési megoldását manuálisan, ha az alkalmazás előfordulhat, hogy rendelkezik a szükséges kulcsváltás logikát. Írhat saját maga, vagy kövesse a kell [webes alkalmazások API-k használatával bármilyen más könyvtárat vagy manuális megvalósítása a támogatott protokollok /](#other).
 
-### <a name="vs2013"></a>Webalkalmazások erőforrások védelméről, és a Visual Studio 2013 létre
-Ha az alkalmazás a Visual Studio 2013 webes alkalmazás sablon használatával lett létrehozva, és a kiválasztott **munkahelyi és iskolai fiókok** a a **hitelesítés módosítása** menü már rendelkezik a szükséges logika kulcsváltás automatikusan kezelni. A működési elvet tárolja a projekthez tartozó két adatbázistáblák a szervezet egyedi azonosító és az aláírási kulcs adataira. A kapcsolati karakterláncot az adatbázishoz a projekt Web.config fájlban található.
+### <a name="vs2013"></a>Erőforrások védelme és a Visual Studio 2013 létrehozott webalkalmazások
+Ha az alkalmazás webes alkalmazást sablon a Visual Studio 2013 használatával lett létrehozva, és a kiválasztott **szervezeti fiókok** a a **hitelesítés módosítása** menüben már rendelkezik a szükséges logika a kulcshoz kapcsolódó kulcsváltás automatikusan kezeli. A logikai a szervezet egyedi azonosítóját és a kulcs aláírási információkat tárol a projekthez tartozó két adatbázistáblák. Az adatbázis a kapcsolati karakterláncot a projekt Web.config fájljában találja.
 
-Ha manuálisan adta hozzá hitelesítési a megoldáshoz, az alkalmazás esetleg nincs szükség kulcsváltás logika. Jegyezze meg, vagy kövesse a kell [webalkalmazások / API-k bármely más könyvtárak segítségével, vagy manuálisan végrehajtási a támogatott protokollok.](#other).
+Adott hitelesítési megoldását manuálisan, ha az alkalmazás előfordulhat, hogy rendelkezik a szükséges kulcsváltás logikát. Írhat saját maga, vagy kövesse a kell [webes alkalmazások API-k használatával bármilyen más könyvtárat vagy manuális megvalósítása a támogatott protokollok /.](#other).
 
-A következő lépésekkel ellenőrizze, hogy a programot az alkalmazás megfelelően működik.
+Az alábbi lépések segítségével, győződjön meg arról, hogy a logikai az alkalmazás megfelelően működik.
 
-1. A Visual Studio 2013, nyissa meg a megoldást, és kattintson a a **Server Explorer** a jobb oldali lapján.
-2. Bontsa ki a **adatkapcsolatok**, **DefaultConnection**, majd **táblák**. Keresse meg a **IssuingAuthorityKeys** tábla, kattintson a jobb gombbal, és kattintson a **tábla adatok megjelenítése**.
-3. Az a **IssuingAuthorityKeys** table, legalább egy sort, amely megfelel az ujjlenyomat értékének lesz. Törli a sorokat a táblában.
-4. Kattintson a jobb gombbal a **bérlők** tábla, és kattintson a **tábla adatok megjelenítése**.
-5. Az a **bérlők** table, legalább egy sort, amely felel meg egy egyedi könyvtárat bérlő azonosítója lesz. Törli a sorokat a táblában. Ha nem törli a sorokat is a **bérlők** tábla és **IssuingAuthorityKeys** tábla, akkor hibaüzenet fog futásidőben.
-6. Hozza létre, és futtassa az alkalmazást. Rendelkezik bejelentkezést követően a fiókjához, leállíthatja, az alkalmazás.
-7. Lépjen vissza a **Server Explorer** , és tekintse meg az értékeket a **IssuingAuthorityKeys** és **bérlők** tábla. Láthatja, hogy azok rendelkeznek lett automatikusan tölteni az összevonási metaadatok dokumentumból a megfelelő információkkal.
+1. A Visual Studio 2013, nyissa meg a megoldást, és kattintson a a **Server Explorer** lapra a jobb oldali ablak.
+2. Bontsa ki a **adatkapcsolatok**, **DefaultConnection**, majd **táblák**. Keresse meg a **IssuingAuthorityKeys** táblát, kattintson a jobb gombbal, és kattintson **táblák adatainak megjelenítése**.
+3. Az a **IssuingAuthorityKeys** táblában, legalább egy sort, amely megfelel az ujjlenyomat értékét a kulcs lesz. Törli a sorokat a táblában.
+4. Kattintson a jobb gombbal a **bérlők** táblát, és kattintson a **táblák adatainak megjelenítése**.
+5. Az a **bérlők** táblában, legalább egy sort, amely megfelel egy egyedi könyvtárat bérlőazonosító lesz. Törli a sorokat a táblában. Ha nem törli a sorokat, mindkét a **bérlők** tábla és **IssuingAuthorityKeys** táblában, akkor megjelenik egy hibaüzenet futásidőben.
+6. Hozhat létre, és futtassa az alkalmazást. Miután bejelentkezett a fiókjához, állítsa le az alkalmazást.
+7. Lépjen vissza a **Server Explorer** , és tekintse meg az értékeket a **IssuingAuthorityKeys** és **bérlők** tábla. Láthatja, hogy azok rendelkeznek lett automatikusan tölteni az összevonási metaadatok dokumentuma megfelelő adataival.
 
-### <a name="vs2013"></a>Webes API-k erőforrások védelméről, és a Visual Studio 2013 létre
-Ha a webes API-alkalmazás létrehozása a Visual Studio 2013 a webes API-sablonnal, és akkor kiválasztva **munkahelyi és iskolai fiókok** a a **hitelesítés módosítása** menü, akkor már rendelkezik a szükséges az alkalmazás logikáját.
+### <a name="vs2013"></a>Webes API-k erőforrások védelméről, és Visual Studio 2013-hoz létre
+Ha egy webes API-alkalmazás létrehozása a Visual Studio 2013 használatával a webes API-sablont, és ezután a kiválasztott **szervezeti fiókok** származó a **hitelesítés módosítása** menüben, akkor már rendelkezik a szükséges az alkalmazás logikáját.
 
-Ha manuálisan konfigurált hitelesítést, kövesse az alábbi áttekintésével megismerheti, hogyan konfigurálhatja a webes API-t automatikusan frissíteni az kulcs adatait.
+Ha manuálisan konfigurálta a hitelesítés, kövesse az alábbi utasításokat a megtudhatja, hogyan konfigurálhatja a webes API a kulcsadatokat automatikus frissítését.
 
-A következő kódrészletet bemutatja, hogyan kell a legújabb kulcsok beszerzése az összevonási metaadatok dokumentum, és használja a [JWT jogkivonat-kezelő](https://msdn.microsoft.com/library/dn205065.aspx) ellenőrzése a jogkivonat. A kódrészletet feltételezi, hogy használni a saját gyorsítótárazást megőrzése a kulcsot a jövőbeli érvényesítse az Azure AD legyenek az adatbázis, a konfigurációs fájlban vagy máshol.
+A következő kódrészletet bemutatja, hogyan lehet a legújabb kulcsok lekérése az összevonási metaadatok dokumentuma, és használja a [JWT jogkivonat kezelő](https://msdn.microsoft.com/library/dn205065.aspx) a jogkivonat érvényesítéséhez. A kódtöredék azt feltételezi, hogy használhatja a saját gyorsítótárazási mechanizmust a megőrzése a kulcsot az Azure ad-ből, a jövőbeli jogkivonatainak érvényesítéséhez szükséges az adatbázis, a konfigurációs fájlban vagy máshol legyen szó.
 
 ```
 using System;
@@ -242,13 +242,13 @@ namespace JWTValidation
 }
 ```
 
-### <a name="vs2012"></a>Erőforrások védelme és a Visual Studio 2012 létrehozott webes alkalmazások
-Ha az alkalmazást a Visual Studio 2012 lett létrehozva, valószínűleg az identitás- és hozzáférés eszköz konfigurálására szolgáló alkalmazás. Is valószínű, hogy használja a [ellenőrzése kibocsátó neve beállításjegyzék (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). A VINR megbízható identitás-szolgáltatóktól (az Azure AD) kapcsolatos információkat, valamint az általuk kiállított jogkivonatokat érvényesítéséhez használt kulcsok karbantartásáért felelős. A VINR is megkönnyíti, hogy automatikusan frissíteni a Web.config fájlban úgy, hogy letölti a legújabb összevonási metaadat-dokumentum társított a címtárban tárolt kulcs adatainak ellenőrzése, ha a konfiguráció a legújabb dokumentumon elavult és frissíteni az alkalmazást az új kulcs használatához szükség szerint.
+### <a name="vs2012"></a>Erőforrások védelme és a Visual Studio 2012-vel létrehozott webalkalmazások
+Ha az alkalmazás a Visual Studio 2012-ben lett létrehozva, valószínűleg az az identitás- és hozzáférés eszköz használni az alkalmazás konfigurálásához. Is valószínű, hogy használja a [érvényesítése kibocsátó neve beállításjegyzék (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). A VINR információt a megbízható Identitásszolgáltatók (az Azure AD) és az azok által kiállított jogkivonatokban érvényesítéséhez használt kulcsok karbantartásáért felelős. A VINR is egyszerűen automatikus frissítése a kulccsal kapcsolatos adatokat tárolja a Web.config fájlt úgy, hogy letölti a legújabb összevonási metaadatok dokumentuma társított címtárban, ellenőrzi, hogy a konfiguráció nem naprakész a legújabb dokumentumot, és az új kulcs használatára, szükség szerint az alkalmazás frissítését.
 
-A Kódminták vagy a Microsoft által biztosított forgatókönyv dokumentáció segítségével az alkalmazás hozott létre, ha a kulcsváltás logika már szerepel a projekthez. Megfigyelheti, hogy az alábbi kódot a projekt már létezik. Ha az alkalmazás nem rendelkezik a programot, az alábbi lépésekkel veheti fel, és ellenőrizze, hogy megfelelően működik-e.
+A Kódminták vagy a Microsoft által biztosított forgatókönyv dokumentáció segítségével az alkalmazás hozta létre, ha a kulcshoz kapcsolódó kulcsváltás logikai már szerepel a projektben. Megfigyelheti, hogy az alábbi kódot a projekt már létezik. Ha az alkalmazás még nem rendelkezik a logikát, és adja hozzá, és győződjön meg arról, hogy megfelelően működik-e az alábbi lépésekkel.
 
-1. A **Megoldáskezelőben**, adjon hozzá egy hivatkozást, a **System.IdentityModel** szerelvény a megfelelő projektet.
-2. Nyissa meg a **Global.asax.cs** fájlt, és adja hozzá a következő irányelvek segítségével:
+1. A **Megoldáskezelőben**, vegyen fel egy hivatkozást a **System.IdentityModel** szerelvény számára a megfelelő projektet.
+2. Nyissa meg a **Global.asax.cs** fájlt, és adja hozzá az alábbi irányelvek használatával:
    ```
    using System.Configuration;
    using System.IdentityModel.Tokens;
@@ -263,7 +263,7 @@ A Kódminták vagy a Microsoft által biztosított forgatókönyv dokumentáció
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. Hívása a **RefreshValidationSettings()** metódust a **Application_Start()** metódus a **Global.asax.cs** látható módon:
+4. Meghívása a **RefreshValidationSettings()** metódus az a **Application_Start()** metódus az **Global.asax.cs** látható módon:
    ```
    protected void Application_Start()
    {
@@ -273,11 +273,11 @@ A Kódminták vagy a Microsoft által biztosított forgatókönyv dokumentáció
    }
    ```
 
-Ha követte ezeket a lépéseket, az alkalmazás Web.config frissíti a dokumentumból összevonási metaadatok, többek között a legújabb kulcsok a legújabb adatokkal. A frissítés történik, minden alkalommal, amikor az alkalmazáskészlet újraindul, az IIS-ben; Alapértelmezés szerint az IIS újrahasznosítása alkalmazások 29 óránként van beállítva.
+Ha követte ezeket a lépéseket, az alkalmazás Web.config frissíti a rendszer a legújabb adatokat az összevonási metaadatok dokumentuma, beleértve a legújabb kulcsot is. Ez a frissítés történik, minden alkalommal, amikor az alkalmazáskészlet újraindul az IIS-ben; Alapértelmezés szerint az IIS újrahasznosítása alkalmazások 29 óránként van beállítva.
 
-Győződjön meg arról, hogy működik-e a kulcsváltás programot az alábbi lépésekkel.
+Kövesse az alábbi lépéseket, győződjön meg arról, hogy működik-e a kulcshoz kapcsolódó kulcsváltás logikát.
 
-1. Miután ellenőrizte, hogy az alkalmazás a fenti olyan helykódot alkalmaz, nyissa meg a **Web.config** fájlt, és keresse meg a **<issuerNameRegistry>** blokk, kifejezetten keres a következő néhány sor:
+1. Miután ellenőrizte, hogy az alkalmazás a fenti kódot használ, nyissa meg a **Web.config** fájlt, és keresse meg a **<issuerNameRegistry>** letiltása, konkrétan a következő néhány sort:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -285,31 +285,31 @@ Győződjön meg arról, hogy működik-e a kulcsváltás programot az alábbi l
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. Az a **<add thumbprint=””>** beállításban módosítsa az ujjlenyomat értékét azáltal, hogy egy másik bármely karakter. Mentse a **Web.config** fájlt.
-3. Építenie az alkalmazást, és futtassa azt. Ha a bejelentkezési folyamat elvégzése az alkalmazás sikeresen frissíti a kulcs úgy, hogy letölti a szükséges adatokat a címtár összevonási metaadatok dokumentumból. Ha bejelentkezik problémát tapasztal, győződjön meg arról, a módosítások az alkalmazás olvasásával helyesek a [hozzáadása bejelentkezés a webes alkalmazás használata az Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) cikket, vagy letöltése, és tanulmányozza a következő példakód: [ Az Azure Active Directory több-Bérlős felhőalapú alkalmazásnál](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+2. Az a **<add thumbprint=””>** beállításban módosítsa az ujjlenyomat értékét egy másik bármely karakter lecserélésével. Mentse a **Web.config** fájlt.
+3. Hozza létre az alkalmazást, és futtassa azt. A bejelentkezési folyamat elvégzése is, ha az alkalmazás sikeresen frissítése folyamatban van a kulcsot úgy, hogy letölti a szükséges adatokat a címtár összevonási metaadatok dokumentuma az. Ha előfizetéssel kapcsolatos problémák merülnek fel, győződjön meg arról, a módosítások az alkalmazás helyesek olvassa el a [hozzáadása bejelentkezés a webes alkalmazás Using Azure ad-ben](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) cikket, vagy töltsön le és az alábbi kódmintában vizsgálatával: [ Több-Bérlős felhőalapú alkalmazások az Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
-### <a name="vs2010"></a>Erőforrások védelme és a Visual Studio 2008 vagy 2010 webes alkalmazások és a Windows Identity Foundation (WIF) 1.0-s a .NET 3.5
-Ha egy alkalmazás WIF 1.0-s verziója található, nincs megadott mechanizmus, hogy automatikusan frissítse az alkalmazás konfigurációját, és egy új kulcsot használják.
+### <a name="vs2010"></a>Erőforrások védelme és a Visual Studio 2008 vagy 2010 hoztak létre webes alkalmazásokat és a .NET 3.5 a Windows Identity Foundation (WIF) v1.0
+Ha létrehozott egy alkalmazást, WIF 1.0-s verziójú, nincs megadott mód automatikusan frissítse az alkalmazás konfigurációját, és egy új kulcsot használja.
 
-* *Legegyszerűbben* használja a FedUtil eszközt használunk erre a WIF SDK, így a legújabb metaadat-dokumentum beolvasása és a konfiguráció frissítését tartalmazza.
-* A .NET 4.5, amely tartalmazza a legújabb verziója található, a rendszer egyik névtere WIF alkalmazás frissítése. Ezután a [ellenőrzése kibocsátó neve beállításjegyzék (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) az alkalmazást az automatikus frissítések végrehajtásához.
-* Hajtsa végre a manuális váltása szereplő utasításokat az útmutató végén.
+* *A legegyszerűbb módja* a FedUtil nincs lehetősége eszközök használatára a WIF SDK-t, amely a legújabb metaadat-dokumentum lekérése, és frissítse a konfigurációt tartalmazza.
+* Az alkalmazás a .NET 4.5, amely tartalmazza a legújabb verziója található, a rendszer névtér WIF frissítése. Ezután a [érvényesítése kibocsátó neve beállításjegyzék (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) az alkalmazást az automatikus frissítések végrehajtásához.
+* Hajtsa végre a manuális váltása a dokumentum végén található utasítások alapján.
 
-Útmutatás a FedUtil használatáról a konfiguráció frissítése:
+Frissítse a konfigurációt a FedUtil használatára vonatkozó utasítások:
 
-1. Győződjön meg arról, hogy rendelkezik-e a WIF 1.0-s verziója a fejlesztői gépen telepítve van a Visual Studio 2008 vagy 2010 SDK. Is [töltse le innen](https://www.microsoft.com/en-us/download/details.aspx?id=4451) Ha nem telepítette még azt.
-2. A Visual Studióban nyissa meg a megoldást, majd kattintson a jobb gombbal a megfelelő projektet, és válassza ki **összevonási metaadatok frissítése**. Ha ez a beállítás nem érhető el, FedUtil és/vagy a WIF 1.0-s SDK nem lett telepítve.
-3. Válassza ki a parancssorból **frissítés** megkezdéséhez az összevonási metaadatok frissítése. Ha hozzáfér a server környezetet, ahol az alkalmazás üzemel, is használhat FedUtil tartozó [automatikus metaadat-frissítés Feladatütemező](https://msdn.microsoft.com/library/ee517272.aspx).
-4. Kattintson a **Befejezés** a frissítési folyamat befejezéséhez.
+1. Győződjön meg arról, hogy rendelkezik-e a WIF 1.0-s verziója telepítve van a fejlesztési számítógépén a Visual Studio 2008 vagy a 2010 SDK. Is [innen tölthet le](https://www.microsoft.com/en-us/download/details.aspx?id=4451) Ha Ön még nem telepítette azt.
+2. A Visual Studióban nyissa meg a megoldást, majd kattintson a jobb gombbal a megfelelő projektet, és válassza ki **összevonási metaadatok frissítése**. Ez a beállítás nem érhető el, ha FedUtil és/vagy a WIF 1.0-s verziójú SDK még nincs telepítve.
+3. A rendszer kéri, válassza ki **frissítés** megkezdéséhez az összevonási metaadatok frissítése. Ha rendelkezik hozzáféréssel a server környezetet, ahol az alkalmazás üzemel, igény szerint használhatja a FedUtil [automatikus metaadat-frissítés scheduler](https://msdn.microsoft.com/library/ee517272.aspx).
+4. Kattintson a **Befejezés** a frissítés befejezéséhez.
 
-### <a name="other"></a>Webalkalmazások / API-k bármely más könyvtárak segítségével, vagy manuálisan végrehajtási a támogatott protokollok erőforrások védelme
-Ha néhány más szalagtár használata, vagy manuálisan végrehajtani a támogatott protokollok, szüksége lesz a könyvtárban vagy annak érdekében, hogy a kulcs az OpenID Connect felderítési dokumentum vagy az összevonási metaadatok lekérésére a megvalósítás áttekintése a dokumentum. Egy ez kereséséhez módja az OpenID felderítési dokumentum vagy az összevonási metaadatok dokumentum kimenő még a vagy a könyvtár-kódban a kereséshez.
+### <a name="other"></a>Webes alkalmazások / API-k használatával bármilyen más könyvtárat vagy manuális megvalósítása a támogatott protokollok erőforrások védelme
+Ha van néhány más kódtár használatával, vagy manuálisan végrehajtott támogatott protokollok, kell tekintse át a könyvtárban vagy annak érdekében, hogy a kulcs az OpenID Connect-felderítési dokumentum vagy az összevonási metaadatok lekérésére a megvalósítás a dokumentum. Ellenőrizheti az egyik lehetőség, hogy irányuló összes hívást végre vagy az OpenID felderítési dokumentumot, vagy az összevonási metaadatok dokumentuma a kód vagy a kódtár kód a kereséshez.
 
-Ha ezek a kulcsok tárolása valahol vagy szoftveresen kötött az alkalmazásban, manuálisan lekérni a kulcsot, és ennek megfelelően az hajt végre egy manuális váltása az utasításokat az útmutató végén szerint frissítse. **Erősen ajánlott, hogy javítható-e az alkalmazás támogatja az automatikus helyettesítő** ebben a cikkben a megközelítések vázlat bármelyikét elkerülése érdekében jövőbeli megszakításait és a terhelés, hogy az Azure AD növeli a helyettesítő ütemben történik, illetve hogy vészhelyzet esetén használja sávon kívüli kulcsváltás.
+Ha a kulcs tárol valahol vagy szoftveresen kötött az alkalmazásban, manuálisan lekérni a kulcsot, és frissítse a azt ennek megfelelően a dokumentum végén található utasításoknak egy manuális Váltás a végrehajtása. **Erősen javasolt, hogy az alkalmazás támogatja az automatikus helyettesítő növelheti** Ha növeli a helyettesítő kiadása ütemben történik az Azure AD vagy vészhelyzet jövőbeli megszakításait és a terhelés elkerülése érdekében ebben a cikkben a megközelítések vázlat valamelyik használatával sávon kívüli kulcsváltás.
 
-## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Állapítsa meg, amennyiben ez érinti az alkalmazás tesztelése
-Ellenőrizheti, hogy az alkalmazás támogatja az automatikus kulcsváltást letöltése a parancsfájlok és utasításait követve [a GitHub-tárházban.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
+## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Határozza meg, ha ez hatással lesz az alkalmazás tesztelése
+Ellenőrizheti, hogy az alkalmazás támogatja az automatikus kulcsváltást a szkriptek letöltésére, valamint útmutatásai szerint [GitHub-adattárban.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Hogyan hajthat végre egy manuális váltása, ha az alkalmazás nem támogatja az automatikus váltása
-Ha az alkalmazás **nem** támogatja az automatikus helyettesítő, szüksége lesz egy folyamat, amely rendszeresen figyeli az Azure AD által aláíró kulcsok, és ennek megfelelően hajt végre egy manuális váltása létrehozásához. [A GitHub-tárházban](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) parancsfájlok és ehhez útmutatást tartalmaz.
+Ha az alkalmazás **nem** támogatja az automatikus átvitel, szüksége lesz egy folyamat, amely rendszeresen figyeli az Azure AD a aláírási kulcsokat, és ennek megfelelően hajt végre egy manuális váltása. [GitHub-adattárban](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) parancsfájlok és ehhez útmutatást tartalmaz.
 

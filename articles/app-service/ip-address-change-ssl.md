@@ -2,20 +2,20 @@
 title: Az SSL IP-cím módosítása – az Azure előkészítése
 description: Ha módosítani kell az SSL-IP-címe, megtudhatja, mit kell tennie, hogy az alkalmazása továbbra is működik, a módosítás után.
 services: app-service\web
-author: tdykstra
+author: cephalin
 manager: cfowler
 editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: tdykstra
-ms.openlocfilehash: 47626ae4298327d4166705e8797e525331e8a3d1
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.author: cephalin
+ms.openlocfilehash: e8558b4c3c7dafca8d4fff7e2aae0597a66c031d
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342934"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576542"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Egy SSL-IP-cím módosítása előkészítése
 
@@ -23,7 +23,7 @@ Ha kapott egy értesítés, hogy az Azure App Service-alkalmazás SSL IP-címe m
 
 ## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>SSL-IP-címek és új
 
-1.  Nyissa meg az [Azure portált](https://portal.azure.com).
+1.  Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 2.  A bal oldali navigációs menüben válassza ki a **App Services**.
 

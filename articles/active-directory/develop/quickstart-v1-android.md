@@ -17,12 +17,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: b428549d7dc804371368d8c252b949ac2fae62c2
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: cdd0d9ccff608d5882480d1394e2188579cefe75
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506254"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576800"
 ---
 # <a name="azure-ad-android-getting-started"></a>Ismerkedés az Azure AD Android
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -126,7 +126,7 @@ Ez a kódminta, az összes konfigurációját annak a ***src/main/java/com/azure
 3. Keresse meg a problémákat, vagy kérelmek rendelkezik? Probléma létrehozása vagy a közzététel a StackOverflow-n a címkével ellátott `azure-active-directory`. 
 
 ### <a name="cross-app-sso"></a>Alkalmazások közötti SSO
-Ismerje meg, [az Android alkalmazások közötti SSO engedélyezése ADAL használatával hogyan](active-directory-sso-android.md). 
+Ismerje meg, [az Android alkalmazások közötti SSO engedélyezése ADAL használatával hogyan](howto-v1-enable-sso-on-android.md). 
 
 ### <a name="auth-telemetry"></a>Hitelesítési telemetria
 az ADAL könyvtár auth telemetriai adatok segítségével az alkalmazásfejlesztők megismerheti, hogyan alkalmazásaikat vezérelhesse és jobb felhasználói környezetek készíthetők tesz elérhetővé. Ez lehetővé teszi, hogy a bejelentkezés sikeres, az aktív felhasználók és számos más érdekes rögzítése. Hitelesítési telemetriai adatok segítségével az alkalmazásfejlesztők egy telemetriai szolgáltatásnak, összesítéséhez és eseményeket létrehozásához igényel.

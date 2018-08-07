@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 08/06/2018
 ms.author: magoedte
-ms.openlocfilehash: f84452af9c2c731d69d5805961266c46351a7687
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366096"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521931"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Figyelje az Azure Kubernetes Service (AKS) tároló állapotát (előzetes verzió)
 
@@ -356,7 +356,13 @@ A teljesítmény diagramon négy teljesítmény-mérőszámait jeleníti meg:
 - **Csomópontok száma**: A csomópontok száma és a Kubernetes állapota. A fürtcsomópontok jelölt állapotok a *összes*, *készen*, és *nem áll készen* és szűrt külön-külön vagy együtt a választó a diagram felett a. 
 - **Tevékenységnapló-pod száma**: A podok számát és a Kubernetes állapota. A podok jelöli az állapotok a *összes*, *függőben lévő*, *futó*, és *ismeretlen* és szűrt külön-külön vagy együtt a a a diagram felett választó. 
 
-Ha úgy vált, hogy a **csomópontok** lapon, a sor hierarchia követi a Kubernetes hálózatiobjektum-modellt a fürtben egy csomópont kezdve. Bontsa ki a csomópontot, és a csomóponton futó egy vagy több podok is megtekintheti. Ha egynél több tároló van csoportosítva podot, jelennek meg az utolsó sorban a hierarchiában. Hány nem pod kapcsolódó számítási feladatok futnak a gazdagépen, ha a gazdagép processzort vagy a rendelkezésre álló memória mennyisége is megtekintheti.
+Ha úgy vált, hogy **csomópontok**, **tartományvezérlők**, és **tárolók** lap jobb oldalán található az automatikusan megjelennek a tulajdonság panelen.  Azt mutatja, beleértve való Kubernetes-objektumokat rendszerezése címkék, kijelölt elem tulajdonságainak.  Kattintson a **>>** összekapcsolása a panelen view\hide a panelen.  
+
+![Példa Kubernetes perspektívák tulajdonságait tartalmazó ablaktáblán](./media/monitoring-container-health/perspectives-preview-pane-01.png)
+
+Kibontja a hierarchia az objektumok, ahogy a Tulajdonságok panelen frissítések alapján a kiválasztott objektum. A panelen is megtekintheti az előre definiált naplókeresések Kubernetes-események kattintva a **nézet Kubernetes eseménynaplók** a panel tetején lévő hivatkozásra. Kubernetes-naplóadatok megtekintésével kapcsolatos további információkért lásd: [keresni a naplókban az adatelemzéshez](#search-logs-to-analyze-data).
+
+Váltson a **csomópontok** lapra, és a sor hierarchia követi a Kubernetes hálózatiobjektum-modellje, kezdve a fürt egyik csomópontjához. Bontsa ki a csomópontot, és a csomóponton futó egy vagy több podok is megtekintheti. Ha egynél több tároló van csoportosítva podot, jelennek meg az utolsó sorban a hierarchiában. Hány nem pod kapcsolódó számítási feladatok futnak a gazdagépen, ha a gazdagép processzort vagy a rendelkezésre álló memória mennyisége is megtekintheti.
 
 ![Kubernetes-csomópontot példahierarchia a teljesítmény nézet](./media/monitoring-container-health/container-health-nodes-view.png)
 
@@ -481,9 +487,9 @@ Az alábbi táblázatban példák a tároló állapotának és az adattípusok, 
 ## <a name="search-logs-to-analyze-data"></a>Keresési naplókat az adatelemzéshez
 A log Analytics segítségével keresése trendek, diagnosztizálhatja a szűk keresztmetszeteket, előrejelzési vagy összevetését adatokat, amelyek segítségével határozza meg, hogy optimális működik-e az aktuális fürtbeállításokat. Előre definiált naplókeresések rögtön használatba, illetve adja vissza a kívánt módon szabhatja testre a biztosított. 
 
-Válassza a munkaterület az adatok interaktív elemzés céljából is végezhet a **napló megtekintése** beállítás érhető el a jobb szélen bontsa ki a vezérlő vagy a tároló. A **naplóbeli keresés** oldal az Azure portal oldalán meg forráshálózati felett jelenik meg.
+Kiválasztásával a munkaterület az adatok interaktív elemzés céljából is végezhet a **nézet Kubernetes eseménynaplók** vagy **tárolónaplók megtekintése** lehetőség az előnézeti ablaktáblában láthatja. A **naplóbeli keresés** ablak jobb oldalán, az Azure portal oldalán, amelyen korábban volt.
 
-![Adatok elemzése a Log Analytics az](./media/monitoring-container-health/container-health-view-logs.png)   
+![Adatok elemzése a Log Analytics az](./media/monitoring-container-health/container-health-log-search-example.png)   
 
 A tároló naplók kimenete, a Log Analytics továbbíthatja a rendszer az STDOUT és STDERR. Tároló health által monitorozott Azure által felügyelt Kubernetes-(AKS), mert Kube rendszer nem gyűjti jelenleg generált adatok nagy mennyisége miatt. 
 

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/14/2016
 ms.author: jjed
-ms.openlocfilehash: d95abab1d1a489deba2ebc260e1e32963aa5639e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2f52ed0ab302d1c3dad699258287f6edd7197cef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799532"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525620"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 ## <a name="configure-the-service-url-and-api-key"></a>A szolgáltatás URL-címének és API-kulcsának konfigurálása
 1. A **Project Explorer** (Projektböngésző) nézetben kattintson duplán a **config.properties** elemre, hogy szerkeszthesse a kiszolgáló nevét és az API-kulcsot tartalmazó konfigurációs beállításokat.
 2. Tekintse meg a jelen cikkben korábban ismertetett lépéseket, ahol a szolgáltatás URL-címét és API-kulcsát megtalálhatta az [Azure portálon](https://portal.azure.com), és az adott értékeket írja be **config.properties** fájlba.
-3. A **config.properties** fájlban található „API-kulcsot” cserélje ki a szolgáltatásához tartozó API-kulcsra. A Tovább, a szolgáltatás nevét (az URL-címének az első összetevő http://servicename.search.windows.net) cserél "a szolgáltatás neve" ugyanabban a fájlban.
+3. A **config.properties** fájlban található „API-kulcsot” cserélje ki a szolgáltatásához tartozó API-kulcsra. Következő, a szolgáltatás nevét (az URL-cím első összetevője http://servicename.search.windows.net) cserél "szolgáltatás neve" ugyanabban a fájlban.
    
     ![][5]
 
@@ -159,7 +159,7 @@ Ez az Azure Search első oktatóanyaga, amely Java és USGS-adatkészlet alapjá
 
 Ha már rendelkezik bizonyos tapasztalattal az Azure Search használatában, ezt a mintát akár ugródeszkaként is használhatja a további kísérletezéshez, például bővítheti a [keresőoldalt](search-pagination-page-layout.md) vagy [jellemzőalapú navigációt](search-faceted-navigation.md) valósíthat meg. A keresési eredmények oldalát is tovább fejlesztheti számok és kötegelt dokumentumok hozzáadásával úgy, hogy a felhasználók lapozhassanak az eredmények között.
 
-Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóanyagokat is, hogy jobban megismerhesse, mit hozhat létre. További forrásokat a [dokumentációs oldalunkon](https://azure.microsoft.com/documentation/services/search/) talál. További információkat szerezhet, ha megtekinti a [Videók és oktatóanyagok listáját](search-video-demo-tutorial-list.md).
+Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóanyagokat is, hogy jobban megismerhesse, mit hozhat létre. További forrásokat a [dokumentációs oldalunkon](https://azure.microsoft.com/documentation/services/search/) talál. 
 
 <!--Image references-->
 [1]: ./media/search-get-started-java/create-search-portal-1.PNG

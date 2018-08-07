@@ -3,7 +3,7 @@ title: Biztonsági javaslatok kezelése az Azure Security Centerben |} A Microso
 description: Ez a dokumentum végigvezeti hogyan javaslatokat az Azure Security Center segítségével megvédheti Azure-erőforrásait, és legyen naprakész, megfelel a biztonsági szabályzatoknak.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2018
-ms.author: terrylan
-ms.openlocfilehash: caeef52ed8eb456bbec015f1766a95aa5ceb49f8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 0581ddc4289f604533bae3650618fada15e02bef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367106"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522237"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok kezelése az Azure Security Centerben
 Ez a dokumentum végigvezeti javaslatok használatát az Azure Security Centerben az Azure-erőforrások védelmére.
@@ -50,6 +50,8 @@ Miután beállított egy biztonsági házirendet, a Security Center elemzi az Ö
 Minden javaslat részleteinek megtekintéséhez válassza ki a **csempére a javaslatok** alatt **áttekintése**. **Javaslatok** nyílik meg.
 
 ![Szűrő javaslatok][2]
+
+Javaslatok szűrheti. A javaslatok szűréséhez válasszon **szűrő** a a **javaslatok** panelen. A **szűrő** panel megnyílik, és szeretne látni a fontossága és állapota értékek választja.
 
 A javaslatok egy tábla formájában jelennek meg, amelyben minden egyes sor egy adott javaslatot tartalmaz. Ez a tábla oszlopait a következők:
 
@@ -124,13 +126,6 @@ Referenciaként az alábbi táblázat segítségével segítenek megérteni a re
 | Tulajdonosi engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből | Javasolja, hogy távolítsa el tulajdonosi engedélyekkel rendelkező külső fiókok előfizetésből nem monitorozott hozzáférések megelőzése céljából. |
 | Elavult fiókok eltávolítása az előfizetésből | Javasolja, hogy eltávolítja az előfizetések közül fiókok elavult. |
 | Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetésből | Javasolja, hogy eltávolítja az előfizetések a tulajdonosi engedélyekkel rendelkező fiókok elavult. |
-Szűrheti és javaslatok elvetése.
-
-1. Válassza ki **szűrő** a a **javaslatok** panelen. A **szűrő** panel megnyílik, és szeretne látni a fontossága és állapota értékek választja.
-
-2. Ha azt állapítja meg, hogy a javaslat nem alkalmazható, hagyja figyelmen kívül a javaslatot, és szűréssel eltüntetheti. Kétféleképpen ajánlás elvetéséhez. Kattintson a jobb gombbal egy elemet, és válassza az egyik módszer, **Elvetés**. A másik pedig egy elem fölé, kattintson a jobb oldalon megjelenő, és válassza a három pontra **Elvetés**. Elvetett javaslatok kattintva megtekintheti **szűrő**, majd **Dismissed**.
-
-    ![Az ajánlás bezárása][3]
 
 ### <a name="apply-recommendations"></a>Javaslatok alkalmazása
 Összes javaslat áttekintése után döntse el, amely egy alkalmazza először. Azt javasoljuk, hogy használja a besorolásával, mely ajánlások kiértékelheti, hogy a fő paraméter előbb alkalmazni kell.
@@ -150,4 +145,3 @@ Ebben a dokumentumban megismerhette a Security Center biztonsági javaslatokat. 
 <!--Image references-->
 [1]: ./media/security-center-recommendations/recommendations-tile.png
 [2]: ./media/security-center-recommendations/filter-recommendations.png
-[3]: ./media/security-center-recommendations/dismiss-recommendations.png

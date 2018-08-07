@@ -6,15 +6,15 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/26/2018
+ms.date: 8/06/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e88ff8ff591e7f7ce64f4dd01ec20a8167bb3c98
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1d8e2d3e6a303009f5718a86772cdc3db8ed332a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438324"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523852"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Virtuális gépek biztonsági mentése az AzureRM.RecoveryServices.Backup parancsmagok segítségével
 
@@ -365,7 +365,7 @@ A lemezek visszaállítását követően használja ezeket a lépéseket kell l�
   PS C:\> $properties = $details.properties
   PS C:\> $storageAccountName = $properties["Target Storage Account Name"]
   PS C:\> $containerName = $properties["Config Blob Container Name"]
-  PS C:\> $blobName = $properties["Config Blob Name"]
+  PS C:\> $configBlobName = $properties["Config Blob Name"]
   ```
 
 2. Állítsa be az Azure storage-környezetet, és állítsa vissza a JSON konfigurációs fájl.
@@ -373,7 +373,7 @@ A lemezek visszaállítását követően használja ezeket a lépéseket kell l�
     ```
     PS C:\> Set-AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName "testvault"
     PS C:\> $destination_path = "C:\vmconfig.json"
-    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination $destination_path
+    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $configBlobName -Destination $destination_path
     PS C:\> $obj = ((Get-Content -Path $destination_path -Raw -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
     ```
 
@@ -404,18 +404,28 @@ A lemezek visszaállítását követően használja ezeket a lépéseket kell l�
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-    PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
+    PS C:\> $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    ```
+    
+ Az operációsrendszer-lemez beállításakor, ellenőrizze, hogy említett, a megfelelő operációs rendszer típusa   
+    ```
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
     PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
     PS C:\> foreach($dd in $obj.'properties.storageProfile'.dataDisks)
      {
      $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
      }
     ```
+    
+Az adattitkosítás lemezeket manuálisan engedélyezni kell a következő paranccsal.
 
-    #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>A nem felügyelt, titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -VolumeType Data
+    ```
+    
+   #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>A nem felügyelt, titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)
 
-    A nem felügyelt, titkosított (használatával titkosított virtuális gépeket rendelkeznek BEk-KEL és kek-KEL) a kulcs és titkos kulcs visszaállítása a key vaulthoz lemez is csatlakoztatható előtt kell. További információkért lásd: a cikk [egy titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). A következő minta bemutatja a titkosított virtuális gépekhez tartozó operációsrendszer- és adatlemezek csatolása.
+   A nem felügyelt, titkosított (használatával titkosított virtuális gépeket rendelkeznek BEk-KEL és kek-KEL) a kulcs és titkos kulcs visszaállítása a key vaulthoz lemez is csatlakoztatható előtt kell. További információkért lásd: a cikk [egy titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). A következő minta bemutatja a titkosított virtuális gépekhez tartozó operációsrendszer- és adatlemezek csatolása.
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -429,9 +439,15 @@ A lemezek visszaállítását követően használja ezeket a lépéseket kell l�
      }
     ```
 
-    #### <a name="managed-non-encrypted-vms"></a>Felügyelt, nem titkosított virtuális gépek
+Az adattitkosítás lemezeket manuálisan engedélyezni kell a következő paranccsal.
 
-    Felügyelt nem titkosított virtuális gépek esetén kell felügyelt lemez gyors létrehozásához a blob storage-ból, majd csatlakoztassa a lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt nem titkosított virtuális gépek számára.
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
+   #### <a name="managed-non-encrypted-vms"></a>Felügyelt, nem titkosított virtuális gépek
+
+   Felügyelt nem titkosított virtuális gépek esetén kell felügyelt lemez gyors létrehozásához a blob storage-ból, majd csatlakoztassa a lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt nem titkosított virtuális gépek számára.
 
     ```
     PS C:\> $storageType = "StandardLRS"
@@ -450,9 +466,9 @@ A lemezek visszaállítását követően használja ezeket a lépéseket kell l�
     }
     ```
 
-    #### <a name="managed-encrypted-vms-bek-only"></a>Felügyelt, titkosított virtuális gépek (csak a blokktitkosítási kulcsot)
+   #### <a name="managed-encrypted-vms-bek-only"></a>Felügyelt, titkosított virtuális gépek (csak a blokktitkosítási kulcsot)
 
-    Felügyelt titkosított (használatával titkosított virtuális gépeket rendelkeznek BEk-KEL csak), a következőket kell tennie felügyelt lemez gyors létrehozásához a blob storage-ból, majd csatlakoztassa a lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt, titkosított virtuális gépek számára.
+   Felügyelt titkosított (használatával titkosított virtuális gépeket rendelkeznek BEk-KEL csak), a következőket kell tennie felügyelt lemez gyors létrehozásához a blob storage-ból, majd csatlakoztassa a lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt, titkosított virtuális gépek számára.
 
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -473,9 +489,15 @@ A lemezek visszaállítását követően használja ezeket a lépéseket kell l�
      }
     ```
 
-    #### <a name="managed-encrypted-vms-bek-and-kek"></a>Felügyelt, titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)
+Az adattitkosítás lemezeket manuálisan engedélyezni kell a következő paranccsal.
 
-    A felügyelt titkosított (használatával titkosított virtuális gépeket rendelkeznek BEk-KEL és kek-KEL) szüksége lesz a felügyelt lemez gyors létrehozásához a blob storage-ból, majd csatlakoztassa a lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt, titkosított virtuális gépek számára.
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
+   #### <a name="managed-encrypted-vms-bek-and-kek"></a>Felügyelt, titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)
+
+   A felügyelt titkosított (használatával titkosított virtuális gépeket rendelkeznek BEk-KEL és kek-KEL) szüksége lesz a felügyelt lemez gyors létrehozásához a blob storage-ból, majd csatlakoztassa a lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt, titkosított virtuális gépek számára.
 
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -496,7 +518,12 @@ A lemezek visszaállítását követően használja ezeket a lépéseket kell l�
      Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
      }
     ```
+Az adattitkosítás lemezeket manuálisan engedélyezni kell a következő paranccsal.
 
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
 5. Állítsa be a hálózati beállításokat.
 
     ```

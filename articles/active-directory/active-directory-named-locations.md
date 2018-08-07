@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f739917b201d5255716d22930d7c4bd9e6602f37
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 497c3b54238c9e38144a5840b59cac38af581f39
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224517"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525926"
 ---
 # <a name="configure-named-locations-in-azure-active-directory"></a>Nevesített helyek konfigurálása az Azure Active Directoryban
 
@@ -28,7 +28,7 @@ A nevesített helyek a címkézés megbízható IP-címtartományok a szervezetb
 
 - Észlelését [kockázati események](active-directory-reporting-risk-events.md) jelentett vakriasztások számának csökkentése érdekében.  
 
-- [Helyalapú feltételes hozzáférés](active-directory-conditional-access-locations.md).
+- [Helyalapú feltételes hozzáférés](conditional-access/location-condition.md).
 
 
 Ez a cikk bemutatja, hogyan konfigurálhat nevű helyeken az adott környezetben.
@@ -97,7 +97,7 @@ További információkért lásd:
 
 - [Az Azure Active Directory feltételes hozzáférés](active-directory-conditional-access-azure-portal.md).
 
-- [Az Azure Active Directory feltételes hozzáférés a helyszínre vonatkozó feltételek](active-directory-conditional-access-locations.md)
+- [Az Azure Active Directory feltételes hozzáférés a helyszínre vonatkozó feltételek](conditional-access/location-condition.md)
 
 - [Az Azure Active Directory kockázati eseményeivel](active-directory-reporting-risk-events.md).
 

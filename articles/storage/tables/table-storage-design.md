@@ -1,42 +1,37 @@
 ---
-title: A Tervező méretezhető és performant táblák Azure table storage-ban. | Microsoft Docs
-description: A Tervező méretezhető és performant táblák Azure table storage-ban.
+title: Tervezési méretezhető és nagytejesítményű táblákat az Azure table storage-ban. | Microsoft Docs
+description: Tervezési méretezhető és nagytejesítményű táblákat az Azure table storage-ban.
 services: storage
-documentationcenter: na
 author: SnehaGunda
-manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: ba48283371ac099b162aeb3cbffd6127ccce1676
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: tables
+ms.openlocfilehash: 783522997a752c4eac575316983bc6ef853c3f43
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660899"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526912"
 ---
-# <a name="design-scalable-and-performant-tables"></a>Méretezhető és nagyteljesítményű táblák tervezése
+# <a name="design-scalable-and-performant-tables"></a>Méretezhető és nagy teljesítményű táblák tervezése
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Tervezési méretezhető és performant táblák amelyeket érdemes figyelembe venni tényezőktől, például a teljesítmény, méretezhetőség és költség. Ha korábban létrehozott sémák a relációs adatbázisok, ezeket a szempontokat ismerős, de amíg vannak bizonyos az az Azure Table storage modell és a relációs modellek közötti Hasonlóságok, is fontos különbségek vannak. Ezek a különbségek általában a különböző kialakításokról, keresse meg a counter-intuitive vagy valaki ismeri a relációs adatbázisok nem megfelelő, de célszerű, például az Azure Table szolgáltatás egy NoSQL kulcs-érték tároló tervezésekor vezethet. A Tervező különbségek számos érdekében, hogy a Table szolgáltatás célja, hogy felhőméretű alkalmazások támogatását, amely tartalmazhat egy az entitások (vagy az relációs adatbázis-terminológiában sorok) az adatok, vagy olyan adatkészletekhez, amelyek magas tranzakció támogatnia kell kötetek. Ezért kell vennie eltérően, hogyan tárolja az adatait, és a Table szolgáltatás működésének megismerése. Tetszetős NoSQL-adattár engedélyezheti a megoldás jóval további és alacsonyabb költségekkel mint egy relációs adatbázist használó megoldás méretezése. Az útmutató az alábbi témakörök segítségével.  
+Méretezhető és nagytejesítményű táblákat például a teljesítményt, méretezhetőséget és tényező figyelembe kell venni. Ha korábban létrehozott sémák a relációs adatbázisok, ezeket a szempontokat ismeri, de áll némileg hasonlít az Azure Table storage modell és a relációs modellek között, amelyek szintén fontos funkciókülönbségek vannak. Ezek a különbségek általában vezethet a különböző formában használhatók, amely counter-intuitive vagy valaki jól ismert, relációs adatbázisok nem megfelelő hely, még ha tervez, egy NoSQL kulcs-érték tárolót, például az Azure Table service számára jelentéssel bírnak. Számos, a Tervező különbségek megfelelően a tény, hogy a Table service célja, hogy a felhőléptékű alkalmazások támogatása több milliárd entitások (vagy a relációs adatbázis-terminológiában sorok) is tartalmazhat az adatok vagy támogatnia kell a nagy tranzakciós adatkészletek esetében kötetek. Ezért kell másképp gondolja hogyan tárolja az adatait, és a Table service működésének megismerése. Egy jól megtervezett NoSQL-adattár engedélyezheti a megoldás méretezése sokkal tovább és alacsonyabb költségek, mint egy megoldás, amely relációs adatbázist használ. Az útmutató az alábbi témakörök segítségével.  
 
-## <a name="about-the-azure-table-service"></a>Az Azure Table szolgáltatással kapcsolatos
-Ez a szakasz azt mutatja be néhány fő funkciója a Table szolgáltatás szempontjából különösen teljesítményének és méretezhetőségének tervezése. Ha most ismerkedik az Azure Storage és a Table szolgáltatás, elolvashatja [Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md) és [Ismerkedés az Azure Table Storage használata a .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) további része a cikk elolvasása előtt . Bár a jelen útmutató elsősorban a Table szolgáltatás, az Azure üzenetsor és a Blob szolgáltatás, és hogyan használhatja őket a táblázat szolgáltatással is tartalmaz.  
+## <a name="about-the-azure-table-service"></a>Az Azure Table service-ről
+Ez a szakasz kiemeli a Table service legfontosabb funkcióit, amely különösen a teljesítményének és méretezhetőségének tervezése. Ha most ismerkedik az Azure Storage és a Table service, először olvassa el [a Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md) és [Ismerkedés az Azure Table Storage .NET-tel](../../cosmos-db/table-storage-how-to-use-dotnet.md) Ez a cikk további részében elolvasása előtt . Bár a lépéseknek az ismertetése, ez az útmutató a Table Service, az Azure üzenetsor és a Blob szolgáltatás, és hogyan használhatja azokat a Table service-tartalmazza.  
 
-Mi az a Table szolgáltatás? Előfordulhat, hogy a neve alapján várt, a Table szolgáltatás táblázatos formátumú adatok használ. A ismertetésében a tábla minden egyes sorára jelöli egy entitás, és az oszlopok tárolja, hogy az entitás tulajdonságait. Minden entitás rendelkezik egy kulcspárra van szüksége, és egy Timestamp típusú oszlop, amely a Table szolgáltatás segítségével nyomon követheti az az entitás utolsó frissítésének egyedi azonosításához. Az időbélyeg automatikusan alkalmazzák, és adjon meg egy tetszőleges értéket nem lehet felülírni a Timestamp típusú manuálisan. A Table szolgáltatás az utolsó módosításának időbélyegző (LMT) egyidejű hozzáférések optimista kezelésére használ.  
+Mi az a Table service? Ahogy a neve, a Table service rekordlisták táblázatos formátumú adatok tárolásához használja. Ismertetésében, az a táblázat minden egyes sorához egy entitást jelent, és az oszlopok tárolja az adott entitás tulajdonságait. Minden entitás rendelkezik egy kulcspárra és egy időbélyegző-oszlopot, amely a Table service használatával nyomon követheti az utolsó frissítés az entitás egyedi azonosításához. Az időbélyeg automatikusan alkalmazza-e, és manuálisan nem lehet felülírni történő küldés időbélyegzője legyen egy tetszőleges érték. A Table service az utolsó módosítás időbélyegző (LMT) használatával kezelheti az optimista egyidejűséget.  
 
 > [!NOTE]
-> A Table szolgáltatás REST API-műveleteket is vissza egy **ETag** érték, amely azt a LMT származik. Ez a dokumentum azonos értelemben használja a feltételeket, ETag és LMT, mivel ugyanazokat az alapul szolgáló adatokat hivatkoznak.  
+> A Table service REST API műveletek is visszaad egy **ETag** érték, amely azt a LMT származik. Ez a dokumentum felcserélhető használja a feltételeket, az ETag és LMT, mivel ugyanazokat az alapul szolgáló adatokat hivatkoznak.  
 > 
 > 
 
-Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg entitások tárolásához. Ez a kialakítás egyszerű számos az útmutató későbbi részében látható példája alapul.  
+Az alábbi példa bemutatja egy egyszerű táblázat megtervezése és az alkalmazottak és a részleg entitásokat. Az egyszerű kialakítás számos, az útmutató későbbi részében látható példák alapul.  
 
 <table>
 <tr>
@@ -52,13 +47,13 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 <td>
 <table>
 <tr>
-<th>Utónév</th>
-<th>Vezetéknév</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Kor</th>
 <th>E-mail</th>
 </tr>
 <tr>
-<td>Nincs</td>
+<td>Don</td>
 <td>Hall</td>
 <td>34</td>
 <td>donh@contoso.com</td>
@@ -72,8 +67,8 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 <td>
 <table>
 <tr>
-<th>Utónév</th>
-<th>Vezetéknév</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Kor</th>
 <th>E-mail</th>
 </tr>
@@ -109,8 +104,8 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 <td>
 <table>
 <tr>
-<th>Utónév</th>
-<th>Vezetéknév</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Kor</th>
 <th>E-mail</th>
 </tr>
@@ -126,46 +121,46 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 </table>
 
 
-Amennyiben ezek az adatok hasonlóan jelenik meg a egy relációs adatbázisban a legfőbb különbségek a kötelező oszlopok, és ugyanabban a táblában több entitástípusok tárolásának képessége. Minden, a felhasználó által definiált tulajdonságok, mint az **Keresztnév** vagy **kora** adattípusú, például az egész szám vagy karakterlánc, csak, például egy relációs adatbázisban oszlop. Bár eltérően egy relációs adatbázisban, a Table szolgáltatás séma nélküli jellege azt jelenti, hogy a tulajdonság nem szükséges minden entitáshoz ugyanolyan adattípusúak. Összetett adattípusú egy adott tulajdonságra vannak tárolva, például a JSON- vagy XML-szerializált formátum kell használnia. A table szolgáltatás például a támogatott adattípusok, támogatott dátumtartományok, elnevezési szabályok és mérete megkötések kapcsolatos további információkért lásd: [ismertetése a Table szolgáltatás adatmodell](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Ezeket az adatokat az eddigi megjelenik egy relációs adatbázisban lévő táblából hasonló a fő különbségeket, a kötelező oszlopokat, és nem tárolhat több entitástípusok ugyanabban a táblában. Minden, a felhasználó által definiált tulajdonságok, mint például az **FirstName** vagy **életkor** adattípusú, például az egész számnak vagy karakterláncnak, egyszerűen, például egy oszlop egy relációs adatbázisban. Bár a ellentétben egy relációs adatbázisban, a Table service séma nélküli jellege azt jelenti, hogy egy tulajdonság nem kell minden entitáshoz ugyanolyan adattípusúak. Összetett adattípusok tárolni egyetlen tulajdonságát, például JSON vagy XML formátumú szerializált kell használnia. A table service, például a támogatott adattípusok, támogatott dátumtartományokat, elnevezési szabályok és méret megkötések kapcsolatos további információkért lásd: [a Table szolgáltatás adatmodelljének ismertetése](http://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-A választott **PartitionKey** és **RowKey** jó Táblatervezés alapvető. Minden entitás egy táblázatban tárolja rendelkeznie kell egy egyedi kombinációja **PartitionKey** és **RowKey**. Csakúgy, mint a kulcsokat egy relációs adatbázis tábláinak a **PartitionKey** és **RowKey** értékek indexelt egy fürtözött index gyors look-ups engedélyezéséhez. Azonban a Table szolgáltatás nem hoz létre bármely másodlagos indexek, így **PartitionKey** és **RowKey** a csak az indexelt tulajdonságok vannak. A minták ismertetett némelyike [táblázat kialakítási minta](table-storage-design-patterns.md) bemutatják, hogyan oldható meg a nyilvánvaló korlátozás.  
+A választott **PartitionKey** és **RowKey** jó Táblatervezés alapvető fontosságú. A táblákban tárolt minden entitás egyedi kombinációját kell **PartitionKey** és **RowKey**. Csakúgy, mint a kulcsokat egy relációs adatbázis-táblában a **PartitionKey** és **RowKey** gyors look-ups engedélyezése egy fürtözött index indexelt értékek. Azonban a Table service nem hoz létre minden olyan másodlagos indexeket, így **PartitionKey** és **RowKey** azokat a csak indexelt tulajdonságokat. Az ismertetett mintáit [Table tervezési minták](table-storage-design-patterns.md) bemutatják, hogyan használhatja a nyilvánvaló korlátozás.  
 
-Egy tábla egy vagy több partíció tartalmazza, és a tervezési döntéseit számos kell körül kiválasztása megfelelő **PartitionKey** és **RowKey** a megoldás optimalizálása érdekében. A megoldás, amely minden, a partíciók szervezve entitásokat tartalmaz egyetlen tábla állhat, de jellemzően a megoldás több táblát is rendelkezik. Táblázatok segítséget logikailag rendezheti az entitások, a hozzáférés-vezérlési listák segítségével adataihoz való hozzáférés kezeléséhez nyújt segítséget, és egyetlen tárolási művelettel teljes táblázat elvetné.  
+Egy tábla egy vagy több partíciót kell megadni, és számos, a tervezési döntések itt maradunk a megfelelő választás **PartitionKey** és **RowKey** a megoldás optimalizálja. A megoldás állhat egyetlen tábla, amely minden, a részletezés partíciók entitásokat tartalmaz, de általában a megoldás több tábla van. Táblázatok segítséget logikailag rendszerezése az entitások, hozzáférés-vezérlési listák használatával az adatokhoz való hozzáférés kezeléséhez nyújt segítséget, és a egy teljes táblát egy egyetlen művelettel vethetők el.  
 
 ## <a name="table-partitions"></a>Táblapartíciók
-A fiók neve, a táblázat nevét, és **PartitionKey** együtt azonosíthatja a partíción belül a társzolgáltatás, ahol a table szolgáltatás tárolja az entitás. Amellett, hogy az entitások címzési séma része, a partíciók az egyes tranzakciókra vonatkozóan hatókör meghatározása (lásd: [entitás csoport tranzakciók](#entity-group-transactions) alább), és hogyan méretezze át a table szolgáltatás alapját. A partíciókon további információkért lásd: [Azure Storage méretezhetőségi és teljesítménycéloknak](../../storage/common/storage-scalability-targets.md).  
+A fiók neve, a táblázat neve, és **PartitionKey** együttesen azonosítja a partíción belül a storage szolgáltatás, amelyben a table service tárolja-e az entitás. Amellett, hogy az entitások a címzési séma része, a partíciók tranzakciók hatókör meghatározása (lásd: [tranzakciók](#entity-group-transactions) alább), és hogyan a table service méretezhető alapját. A partíciók további információkért lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](../../storage/common/storage-scalability-targets.md).  
 
-A Table szolgáltatásban, az egyes csomópontok szolgáltatások egy vagy több befejezéseként partíciók, és a szolgáltatás méretezik dinamikus terheléselosztás partíciók csomópontjai között. Egy csomópont terhelésnek van kitéve, ha a table szolgáltatás is *vágási* a partíciók száma a tartományon, más csomópontok csomópont által kiszolgált; enyhül forgalmat, ha a szolgáltatás képes *egyesítési* csendes csomópontjáról partíció tartományok biztonsági alakzatot egyetlen csomópont.  
+A Table service szolgáltatásban az egyes csomópontok services egy vagy több fejezze be a partíciók és a szolgáltatás skálázható dinamikus terheléselosztás partíciók csomópontok között. Ha egy csomópont terhelés alatt van, a table service is *felosztása* partíciók számos különböző csomópontokon alakzatot a csomópont által kiszolgált; enyhül a forgalmat, ha a szolgáltatás is *egyesítési* csendes csomópontjáról partíció tartományok vissza az alakzatot egyetlen csomópont.  
 
-További információ a belső részleteit a Table szolgáltatás, és ebben az esetben a szolgáltatás kezeli a partíciók, hogyan talál a [Microsoft Azure Storage: A magas rendelkezésre álló felhőalapú tárolási szolgáltatásba az erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+További információ a belső részleteket a Table Service, és különösen a szolgáltatás kezeli a partíciók, hogyan: a tanulmány [a Microsoft Azure Storage: A magas rendelkezésre álló felhős Társzolgáltatás erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
-## <a name="entity-group-transactions"></a>Entitás csoport tranzakciók
-A Table szolgáltatásban entitás csoport tranzakciók (EGTs) atomi frissítések végrehajtásához a több egység közötti csak beépített mechanizmus. EGTs néha is nevezzük *kötegelt tranzakciókat*. EGTs csak működhessenek partícióra tárolt entitásokat (Ez azt jelenti, hogy megoszthatja ugyanazzal a partíciókulccsal egy adott táblában). Így a több egység közötti atomi tranzakciós viselkedés van szüksége, bármikor győződjön meg arról, hogy ezeket az entitásokat tartalmazó partícióra vannak. Ez gyakran az több entitástípusok megőrzi a ugyanahhoz a táblához (és a partíció) található, és több tábla nem használ másik entitástípusok okát. Egyetlen EGT legfeljebb 100 entitást is működik.  Több egyidejű EGTs feldolgozásra elküldéséhez esetén fontos, hogy ezek EGTs működés nem lehetséges EGTs; által közösen használt entitások Ellenkező esetben a feldolgozási késleltethető.
+## <a name="entity-group-transactions"></a>Tranzakciók
+A Table service szolgáltatásban (EGTs) tranzakciók atomi frissítések végrehajtásához több entitásban a kizárólag beépített mechanizmus. EGTs néha is nevezzük *batch-tranzakciók*. EGTs csak működhet ugyanazon a partíción tárolt entitások (azaz megosztása ugyanazt a partíciókulcsot az adott táblában). Így több entitásban atomi tranzakciós viselkedés van szüksége, bármikor biztosítania kell, hogy ezeket az entitásokat is ugyanazon a partíción találhatók. Ez a gyakran több entitástípusok tárolja az ugyanabban a táblában (és a partíció), és nem használja több tábla különböző entitástípusok okát. Egyetlen EGT működhet, a legfeljebb 100 entitást.  Több egyidejű EGTs feldolgozásra elküldött, esetén fontos, hogy ezek EGTs nem fog működni az entitásokat, által közösen EGTs; Ellenkező esetben a feldolgozási késleltethető.
 
-EGTs is vezethet, hogy kipróbálhassa a Tervező egy potenciális kompromisszum. Ez azt jelenti, hogy további partíciók használata növeli a méretezhetőség, az alkalmazás, mert Azure további lehetőségek a terheléselosztás kérelmek csomópontjai között. De használatával több partíciót előfordulhat, hogy korlátozza az alkalmazás atomi tranzakciók elvégzéséhez, és erős konzisztenciát biztosít az adatok karbantartása. Emellett nincsenek egyedi méretezhetőségi célok javasoljuk, hogy előfordulhat, hogy korlátozza az egyetlen csomópont számíthat tranzakciók átviteli szintjén. Az Azure storage-fiókok és a table szolgáltatás vonatkozó méretezhetőségi célok kapcsolatos további információkért lásd: [Azure Storage méretezhetőségi és teljesítménycéloknak](../../storage/common/storage-scalability-targets.md).   
+EGTs is, a tervezés kiértékelheti, hogy egy potenciális kompromisszum vezetnek be. Azt jelenti további partíciók használatával növeli a méretezhetőség, az alkalmazás, mivel az Azure rendelkezik a terheléselosztási kérések a csomópontok között további lehetőségek. Azonban további partíciók használatával lehet, hogy korlátozhatja, hogy a alkalmazásainak elemi tranzakciókat végrehajtania, és az adatok erős konzisztenciája. Emellett nincsenek adott teljesítménycélokat olyan partíció, amely előfordulhat, hogy korlátozza a tranzakciók egy csomópont esetén várható az átviteli szinten. Az Azure storage-fiókok és a table service skálázási célértékei kapcsolatos további információkért lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](../../storage/common/storage-scalability-targets.md).   
 
-## <a name="capacity-considerations"></a>A kapacitás kapcsolatos szempontok
-A következő táblázat ismerteti az egyes értékek érdemes figyelembe vennie, amikor tervezésekor a Table szolgáltatás megoldás:  
+## <a name="capacity-considerations"></a>A kapacitás szempontok
+A következő táblázat ismerteti az egyes érdemes figyelembe vennie, amikor tervezésekor tábla szolgáltatottszoftver-megoldás fő értékek:  
 
 | Az Azure storage-fiók teljes kapacitás | 500 TB |
 | --- | --- |
-| Egy Azure storage-fiókot a táblák száma |Csak a tárfiók kapacitásának korlátozva |
-| Egy tábla partíciók száma |Csak a tárfiók kapacitásának korlátozva |
-| Partíció entitástartományának száma |Csak a tárfiók kapacitásának korlátozva |
-| Az egyes entitás mérete |Legfeljebb 255 tulajdonságok legfeljebb 1 MB (beleértve a **PartitionKey**, **RowKey**, és **időbélyeg**) |
-| A méret a **PartitionKey** |A karakterlánc legfeljebb 1 KB méretű |
-| A méret a **RowKey** |A karakterlánc legfeljebb 1 KB méretű |
-| Egy entitás csoport tranzakció mérete |Egy tranzakció legfeljebb 100 entitást tartalmazhat, és a tartalom 4 MB-nál kevesebb kell lennie. Egy EGT csak frissíthető entitás egyszer. |
+| Az Azure storage-fiók táblák száma |Csak a tárfiók kapacitásának által korlátozott |
+| Egy táblát a partíciók száma |Csak a tárfiók kapacitásának által korlátozott |
+| Egy partíció entitások száma |Csak a tárfiók kapacitásának által korlátozott |
+| Egy egyéni entitás méretét |Legfeljebb 1 MB, amely legfeljebb 255 tulajdonságok (beleértve a **PartitionKey**, **rowkey tulajdonságok esetén**, és **időbélyeg**) |
+| Méretét a **PartitionKey** |A karakterlánc-legfeljebb 1 KB méretű |
+| Méretét a **rowkey tulajdonságok esetén** |A karakterlánc-legfeljebb 1 KB méretű |
+| Egy Entitáscsoportot tranzakció mérete |Egy tranzakció legfeljebb 100 entitást tartalmazhat, és a hasznos 4 MB-nál kisebbnek kell lennie. Miután egy EGT csak is frissítheti egy entitás. |
 
-További információkért lásd: [ismertetése a Table szolgáltatás adatmodell](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
+További információt a [Table Service adatmodelljét ismertető](http://msdn.microsoft.com/library/azure/dd179338.aspx) témakörben talál.  
 
-## <a name="cost-considerations"></a>Költség kapcsolatos szempontok
-A TABLE storage költségei viszonylag alacsonyak, de a Table szolgáltatás megoldások próbaverziójának részeként tartalmaznia kell a kapacitás és a tranzakciók mennyisége költség becslése. Azonban számos forgatókönyvben denormalizált vagy ismétlődő adatok tárolása a teljesítmény vagy a megoldás méretezhetőség javítása érdekében nem egy érvényes megközelítés. Az árazással kapcsolatos további információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).  
+## <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
+A TABLE storage viszonylag alacsonyak, de a kiértékelés a Table service megoldásoktól részeként kell vennie a költségbecslések a kapacitás használati és a tranzakciók mennyiségét. Azonban sok esetben ahhoz, hogy a teljesítmény vagy a megoldás méretezhetőségét denormalizált vagy duplikált adatok tárolására egy érvényes megközelítés. Díjszabással kapcsolatos további információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="next-steps"></a>További lépések
 
 - [Táblázat kialakítási minták](table-storage-design-patterns.md)
-- [Modellezési kapcsolatok](table-storage-design-modeling.md)
-- [Tervezési lekérdezése](table-storage-design-for-query.md)
-- [Tábla adatok titkosítása](table-storage-design-encrypt-data.md)
-- [Adatmódosítás kialakítása](table-storage-design-for-modification.md)
+- [Kapcsolatok modellezését](table-storage-design-modeling.md)
+- [Lekérdezés tervezése](table-storage-design-for-query.md)
+- [Táblák adatainak titkosítása](table-storage-design-encrypt-data.md)
+- [Adatmódosítás tervezése](table-storage-design-for-modification.md)

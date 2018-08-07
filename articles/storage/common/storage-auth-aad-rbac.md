@@ -3,17 +3,17 @@ title: RBAC használata kezelheti a hozzáférési jogosultsággal az Azure Stor
 description: Szerepköralapú hozzáférés-vezérlés (RBA) való hozzáférés szerepkörök hozzárendelése segítségével a felhasználók, csoportok, alkalmazások szolgáltatásnevének vagy felügyelt szolgáltatásidentitások Azure Storage-adatokkal. Az Azure Storage támogatja a beépített és egyéni szerepkörök hozzáférési jogosultságokat a tárolókhoz és üzenetsorok.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: tamram
-ms.openlocfilehash: cee319c4fb158e95b4a6d996f846038f0654dd32
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.component: common
+ms.openlocfilehash: 9efd9470982f0afaa357114828d51df37a7c2890
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969153"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520928"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Az RBAC (előzetes verzió) az Azure Storage-adatokkal való hozzáférési jogosultságok kezelése
 

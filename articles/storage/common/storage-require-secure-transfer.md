@@ -1,75 +1,69 @@
 ---
-title: Az Azure Storage biztonságos átvitelét igénylő |} Microsoft Docs
-description: Ismerje meg a "Biztonságos átviteli szükséges" funkció Azure Storage és az engedélyezéshez.
+title: Az Azure Storage-ban biztonságos átvitel megkövetelése |} A Microsoft Docs
+description: További információ az Azure Storage és engedélyezését a "Biztonságos átvitelre van szükség" funkciót.
 services: storage
-documentationcenter: na
 author: fhryo-msft
-manager: Jason.Hogg
-editor: fhryo-msft
-ms.assetid: ''
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.openlocfilehash: 0ec36864377d724795197851341cbb837f47c4c6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: common
+ms.openlocfilehash: 201bf1e5d3580902934f139b70ca5363e7cc5930
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599798"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523015"
 ---
-# <a name="require-secure-transfer-in-azure-storage"></a>Biztonságos átvitele az Azure Storage megkövetelése
+# <a name="require-secure-transfer-in-azure-storage"></a>Az Azure Storage-ban biztonságos átvitel megkövetelése
 
-A "Biztonságos szükséges átviteli" beállítás növeli a a storage-fiókjának biztonságát azzal, hogy csak kérésének engedélyezése a fiókhoz a biztonságos kapcsolatokat. Például ha a tárfiók eléréséhez REST API-hívás, csatlakoznia kell HTTPS protokoll használatával. "Biztonságos szükséges átviteli" HTTP használata kérelmeket visszautasítja.
+A "Biztonságos átvitelre van szükség" beállítás csak a fiók teszi kérelmek biztonságos kapcsolatok növeli a storage-fiók biztonságát. Például meghívásakor REST API-k, a tárfiók eléréséhez, akkor csatlakoznia kell HTTPS-en keresztül. "A biztonságos átvitelre van szükség" elutasítja a HTTP-kérelmeket.
 
-Az Azure-fájlok szolgáltatását használja, bármilyen titkosítás nélküli kapcsolatot sikertelen lesz, ha engedélyezve van a "Biztonságos szükséges átviteli". Ez magában foglalja az SMB 2.1, SMB 3.0-titkosítás nélkül és a Linux SMB-ügyfél az egyes verziói használó forgatókönyvek. 
+Az Azure Files szolgáltatást használja, minden olyan kapcsolat, titkosítás nélkül sikertelen lesz, ha a "Biztonságos átvitelre van szükség" engedélyezve van. Ez magában foglalja a forgatókönyvek, amelyek használják az egyes verziói a Linuxos SMB-ügyfél, SMB 2.1 és az SMB 3.0 titkosítás nélkül. 
 
-Alapértelmezés szerint a "Biztonságos szükséges átviteli" beállítás le van tiltva.
+Alapértelmezés szerint a "Biztonságos átvitelre van szükség" lehetőség le van tiltva.
 
 > [!NOTE]
-> Azure Storage az egyéni tartománynevek nem támogatja a HTTPS PROTOKOLLT, mert ez a beállítás nem lesz alkalmazva, amikor egy egyéni tartománynevet használja. És a klasszikus tárfiókokat nem támogatottak.
+> Azure Storage nem támogatja a HTTPS az egyéni tartománynevek, mert a rendszer nem alkalmazza ezt a beállítást, ha egy egyéni tartománynevet használ. És a klasszikus tárfiókok nem támogatottak.
 
-## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Engedélyezze a "Biztonságos átviteli szükséges" az Azure-portálon
+## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Engedélyezze a "Biztonságos átvitelre van szükség" az Azure Portalon
 
-A "biztonságos továbbítás szükséges" beállítást, ha a tárfiók létrehozása bekapcsolása a [Azure-portálon](https://portal.azure.com). Engedélyezheti azt a meglévő tárfiókok.
+A "biztonságos átvitelre van szükség" beállítás a tárfiók létrehozásakor bekapcsolhatja a [az Azure portal](https://portal.azure.com). Ön is engedélyezheti azt a meglévő tárfiókok.
 
-### <a name="require-secure-transfer-for-a-new-storage-account"></a>Új tárfiók biztonságos átvitele kérése
+### <a name="require-secure-transfer-for-a-new-storage-account"></a>Egy új storage-fiók biztonságos átvitel megkövetelése
 
-1. Nyissa meg a **storage-fiók létrehozása** ablaktáblán az Azure portálon.
-1. A **szükséges átviteli biztonságos**, jelölje be **engedélyezve**.
+1. Nyissa meg a **storage-fiók létrehozása** panel az Azure Portalon.
+1. A **biztonságos átvitelre van szükség**válassza **engedélyezve**.
 
-  ![Storage-fiók panelen létrehozása](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
+  ![Tárfiók panel létrehozása](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
-### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Meglévő tárfiók biztonságos átvitele kérése
+### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Egy meglévő tárfiókot a biztonságos átvitel megkövetelése
 
-1. Válassza ki a meglévő tárfiókot az Azure portálon.
-1. A tárolóban lévő fiók menü ablaktáblán, a **beállítások**, jelölje be **konfigurációs**.
-1. A **szükséges átviteli biztonságos**, jelölje be **engedélyezve**.
+1. Válasszon egy meglévő tárfiókot az Azure Portalon.
+1. A Storage-fiók menü ablaktáblán alatt **beállítások**válassza **konfigurációs**.
+1. A **biztonságos átvitelre van szükség**válassza **engedélyezve**.
 
-  ![Tárolási fiók menü ablaktábla](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
+  ![Tárolási fiók menü panel](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
-## <a name="enable-secure-transfer-required-programmatically"></a>Engedélyezze a "Biztonságos szükséges átviteli" programozott módon
+## <a name="enable-secure-transfer-required-programmatically"></a>Engedélyezze a "Biztonságos átvitelre van szükség" programozott módon
 
-Kötelező a biztonságos átvitele programozott módon, a beállítást használják _supportsHttpsTrafficOnly_ a REST API-t, az eszközök vagy a könyvtárak a tárfiók tulajdonságai:
+Biztonságos átvitel megkövetelése programozott módon, használja a beállítást _supportsHttpsTrafficOnly_ a REST API, eszközök és kódtárak a tárfiók tulajdonságai:
 
-* [REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (verzió: 2016-12-01)
+* [REST API-val](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (verzió: 2016-12-01)
 * [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (verzió: 4.1.0)
 * [Parancssori felület](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (verzió: 2.0.11)
-* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (verzió: 1.1.0-ás)
-* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (verzió: 6.3.0)
-* [Python SDK](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (verzió: 1.1.0-ás)
+* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (verzió: 1.1.0-s)
+* [.NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (verzió: 6.3.0-s verzióra frissült)
+* [Python SDK](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (verzió: 1.1.0-s)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage) (verzió: 0.11.0)
 
-### <a name="enable-secure-transfer-required-setting-with-powershell"></a>Engedélyezze a "Biztonságos továbbítás szükséges" beállítást a PowerShell használatával
+### <a name="enable-secure-transfer-required-setting-with-powershell"></a>Engedélyezze a "Biztonságos átvitelre van szükség" beállítása a PowerShell-lel
 
-Ez a minta az Azure PowerShell 4.1-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ez a példa az Azure PowerShell modul 4.1-es vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
 Futtassa a `Connect-AzureRmAccount` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
 
- A beállítás ellenőrzéséhez a következő parancsot használja:
+ Beállítás ellenőrzéséhez a következő parancsot használja:
 
 ```powershell
 > Get-AzureRmStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
@@ -91,13 +85,13 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-### <a name="enable-secure-transfer-required-setting-with-cli"></a>Engedélyezze a "Biztonságos továbbítás szükséges" beállítás a parancssori felület
+### <a name="enable-secure-transfer-required-setting-with-cli"></a>Engedélyezze a "Biztonságos átvitel szükséges" beállítást a CLI használatával
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
- A beállítás ellenőrzéséhez a következő parancsot használja:
+ Beállítás ellenőrzéséhez a következő parancsot használja:
 
 ```azurecli-interactive
 > az storage account show -g {ResourceGroupName} -n {StorageAccountName}
@@ -124,4 +118,4 @@ A beállításnak az engedélyezéséhez a következő parancsot használja:
 ```
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Storage biztonsági képességeket, amelyek együtt lehetővé teszik a fejlesztők számára a biztonságos alkalmazások széles választékát nyújtja. További részletekért látogasson el a [tárolási biztonsági útmutatója](storage-security-guide.md).
+Az Azure Storage biztonsági képességeket, amelyek együtt lehetővé teszik a fejlesztők számára biztonságos alkalmazások széles választékát nyújtja. További részletekért látogasson el a [Storage biztonsági útmutatóját](storage-security-guide.md).

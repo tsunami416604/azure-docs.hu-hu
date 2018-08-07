@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 3303a0fb1ca4c4a8f6695c2e4338c1b0a0fc9f40
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: a6df90a1ae1dddbf7f76a7ef6c7e13d9e645dd9c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358632"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528425"
 ---
-# <a name="sign-in-with-your-phone-not-your-password"></a>Bejelentkezés telefonnal, nem kell jelszót
+# <a name="sign-in-with-your-phone-not-your-password"></a>Bejelentkezés telefonnal a jelszó helyett
 
 A Microsoft Authenticator alkalmazást, nem csak azt használni, hogy a fiókok biztonságos végez kétlépéses ellenőrzést, miután segítségével adja meg a jelszót, de azt is cserélje le a Microsoft-fiókja jelszavát teljes egészében.
 
@@ -70,7 +70,7 @@ Bekapcsolhatja a telefonos bejelentkezés személyes Microsoft-fiókja, példáu
 
 ### <a name="to-use-phone-sign-in-to-sign-in-to-your-personal-account"></a>A személyes fiókjával jelentkezzen be a telefonos bejelentkezés használatához
 
-1.  Nyissa meg a személyes Microsoft fiók bejelentkezési oldalát, és a jelszó beírása helyett válassza a **inkább alkalmazás** hivatkozásra.
+1.  Nyissa meg a személyes Microsoft fiók bejelentkezési oldalát, és a jelszó beírása helyett válassza a **használja helyette a Microsoft Authenticator alkalmazás** hivatkozásra.
 
     A Microsoft értesítést küld a telefonjára. 
 

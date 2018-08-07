@@ -1,137 +1,137 @@
 ---
-title: Gyakran ismételt kérdések az Azure Import/Export szolgáltatásról |} Microsoft Docs
+title: Az Azure Import/Export szolgáltatás – gyakori kérdések |} A Microsoft Docs
 description: Olvasási Azure importálási exportálása szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok.
 author: alkohli
-manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: alkohli
-ms.openlocfilehash: d324025a50346415de8232af4adc487a5d907331
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.component: common
+ms.openlocfilehash: 6a2d067625e96aefdcb0197e1abb13b0c41fbe7f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031396"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521438"
 ---
-# <a name="azure-importexport-service-frequently-asked-questions"></a>Az Azure Import/Export szolgáltatásról: gyakran ismételt kérdések 
-Kérdések és válaszok előfordulhat, hogy az Azure storage az adatok átviteléhez az Azure Import/Export szolgáltatás használatakor a következők: Kérdések és válaszok a következő kategóriákba vannak rendezve:
+# <a name="azure-importexport-service-frequently-asked-questions"></a>Az Azure Import/Export szolgáltatás: gyakori kérdések 
+Az alábbiakban a kérdések és válaszok, amelyek az adatok átviteléhez az Azure storage-bA az Azure Import/Export szolgáltatás használatakor előfordulhat, hogy rendelkezik. A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosítottuk:
 
 - Import/Export szolgáltatásról
-- Az importálási/exportálási a lemezek előkészítése
-- Importálási/exportálási feladatok
-- Szállítási lemezek
+- A lemezek előkészítése importálási és exportálási szolgáltatáshoz
+- Importálási/exportálási feladat
+- A szállítási címhez tartozó lemezek
 - Egyéb rendelkezések 
 
 ## <a name="about-importexport-service"></a>Import/Export szolgáltatásról
 
-### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Másolhatja az Azure Import/Export szolgáltatás használata Azure File storage?
+### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Másolhatja az Azure Import/Export szolgáltatás használata az Azure File storage?
 
-Igen. Az Azure Import/Export szolgáltatás támogatja az Azure File Storage importálja. Azure-fájlok exportálása jelenleg nem támogatja.
+Igen. Az Azure Import/Export szolgáltatás támogatja az Azure File Storage-bA importálja. Az Azure-fájlok exportálása jelenleg nem támogatja.
 
-### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Az Azure Import/Export szolgáltatás érhető el a CSP-előfizetések?
+### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Az Azure Import/Export szolgáltatás érhető el a CSP-előfizetésekben?
 
-Igen. Az Azure Import/Export szolgáltatás támogatja a felhő megoldás szolgáltatók (CSP) előfizetések.
+Igen. Az Azure Import/Export szolgáltatás támogatja a Cloud Solution Providers (CSP) előfizetések.
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Az Azure Import/Export szolgáltatás segítségével csendes-óceáni TÉLI postaládákhoz és SharePoint-adatok másolása az o365-re?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Az Azure Import/Export szolgáltatás használata PST postaládákhoz és SharePoint-adatok másolása az Office 365?
 
-Igen. További információkért látogasson el [importálási csendes-óceáni TÉLI fájlok vagy az Office 365 SharePoint-adatok](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
+Igen. További információért ugorjon [importálás PST fájlok vagy az Office 365 SharePoint-adatok](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Az Azure Import/Export szolgáltatás követve másolja át a biztonsági másolatok offline állapotba az Azure Backup szolgáltatás?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Az Azure Import/Export szolgáltatás használata a biztonsági mentések offline másolása az Azure Backup szolgáltatással?
 
-Igen. További információkért látogasson el [Offline biztonsági másolat munkafolyamat Azure backup](../../backup/backup-azure-backup-import-export.md).
+Igen. További információért ugorjon [Offline Backup munkafolyamat az Azure Backup](../../backup/backup-azure-backup-import-export.md).
 
-### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Lehet az importálási/exportálási feladatok meghajtókat is vásárolni a Microsoft?
+### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Vásárolhatok meghajtók importálási és exportálási feladatokhoz a Microsoft?
 
-Nem. Küldje el saját meghajtók importálni és exportálni a feladatokat kell.
+Nem. Szeretne saját meghajtók importáláshoz szállíthat, és a feladatok exportálása.
 
 
 ## <a name="preparing-disks-for-importexport"></a>Az importálási/exportálási lemezek előkészítése
 
-### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Ugorjon a meghajtó előkészítése lépés, hogy az importálás? Képes a meghajtó is előkészítése másolása nélkül?
+### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Kihagyhatja a meghajtó-előkészítési lépésként importálási feladatokhoz? Képes a meghajtó is előkészítése másolása nélkül?
 
-Nem. Minden meghajtó használhatók, hogy adatokat importáljon elő kell készíteni az Azure WAImportExport eszközzel. Az eszközzel adatokat szeretne másolni a meghajtóra.
+Nem. Bármely meghajtó segítségével az adatok importálása az Azure WAImportExport eszközzel kell készíteni. Az eszköz használatával is az adatok másolása a meghajtóra.
 
-### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Van bármilyen lemez előkészítése exportálási feladat létrehozásakor elvégzéséhez?
+### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Kell minden olyan lemezt előkészítési hajtható végre, ha a exportálási feladat létrehozása?
 
-Nem. Néhány prechecks használata ajánlott. Ellenőrizze a szükséges lemezek számát, használja a WAImportExport eszköz PreviewExport parancsot. További információkért lásd: [meghajtó használata Előnézet egy exportálása feladat](https://msdn.microsoft.com/library/azure/dn722414.aspx). A parancs segítségével megtekintheti a kijelölt blobokat, a használni kívánt meghajtók mérete alapján meghajtóinak használatát. Is ellenőrizheti, hogy olvasni és írni a merevlemez-meghajtóról, amelyek teljesítik a exportálási feladat.
+Nem. Néhány Eszközfrissítések használata ajánlott. Ellenőrizze a lemezek szükséges számát, használja a WAImportExport eszköz PreviewExport parancsot. További információkért lásd: [meghajtó használata előnézet-exportálás feladat](https://msdn.microsoft.com/library/azure/dn722414.aspx). A parancs segítségével megtekintheti a kiválasztott blobokat, a meghajtók használni kívánja a mérete alapján meghajtóinak használatát. Emellett ellenőrizze, hogy a merevlemezre, amely tartalmazza a szükséges az exportálási feladat írnak és onnan olvasnak.
 
-## <a name="importexport-jobs"></a>Importálási/exportálási feladatok
+## <a name="importexport-jobs"></a>Importálási/exportálási feladat
 
-### <a name="can-i-cancel-my-job"></a>Lehet megszakítani a feladatot?
-Igen. Egy feladat megszakíthatja, ha az állapota **létrehozása** vagy **szállítási**. A szakaszok túl nem lehet megszakítani a feladatot, és továbbra is fennáll, addig az utolsó szakaszában.
+### <a name="can-i-cancel-my-job"></a>A feladat lemondható?
+Igen. Amikor állapotú-e egy feladat megszakítható **létrehozása** vagy **szállítási**. Ezen szakaszokban túli feladat nem szakítható meg, és továbbra is fennáll, amíg az utolsó fáziséit.
 
-### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Mennyi ideig lehet befejezett feladatok állapotának megtekintése az Azure-portálon?
-Legfeljebb 90 napig megtekintheti a befejezett feladatokhoz állapotát. Befejezett feladatokhoz 90 nap után törlődnek.
+### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Mennyi ideig lehet a befejezett feladatok állapotának megtekintése az Azure Portalon?
+A befejezett feladatok állapotát megtekintheti a 90 napig. Befejezett feladatok 90 nap után törlődnek.
 
-### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Mi a teendő, ha szeretnék, importálása és exportálása a 10-nél több meghajtó?
-Egy importálási vagy exportálási feladat egyetlen feladatban csak 10 meghajtók hivatkozhat. 10-nél több meghajtó szállítási, több feladatot kell létrehoznia. Ugyanazon feladathoz hozzárendelt meghajtók együtt kell szállítani egy csomagban található. További információt és útmutatást, ha az adatok kapacitás több lemezre kiterjedő importálási feladatok, forduljon a Microsoft bulkimport@microsoft.com.                                                              
+### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Ha el szeretne importálni vagy exportálni a több mint 10 meghajtók, mit kell tennem?
+Egy importálási vagy exportálási feladatot egyetlen feladatban csak 10 meghajtók hivatkozhat. Több mint 10 meghajtók szállításra, több feladatot kell létrehoznia. Ugyanazon feladathoz hozzárendelt meghajtók együtt kell Önnek egy csomagban található. További információkért és útmutatóért adatkapacitás több lemezre kiterjedő Amikor importálja a feladatok, forduljon a Microsoft bulkimport@microsoft.com.                                                              
 
-## <a name="shipping-disks"></a>Szállítási lemezek
+## <a name="shipping-disks"></a>A szállítási címhez tartozó lemezek
 
-### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Mi az a maximális számát a HDD egy szállítási?
-Nincs több szállításra a HDD-k száma nincs korlátozva. Ha több feladat tartozik a lemezeket, azt javasoljuk, hogy Ön: 
-- címke a lemezek, amelyek megfelelő feladat nevét.
-- Frissítse a feladatok követési számnak -1, a utótaggal-2 stb.
+### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Mi az a HDD maximális számát egy a szállítmány?
+A szállítmány egy HDD-k száma nincs korlátozva van. Ha több feladat tartozik a lemezeket, azt javasoljuk, hogy Ön: 
+- a lemezek megfelelő feladat nevű címkét.
+- Frissítse a feladatok utótaggal -1, követési számnak-2 stb.
 
-### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>I bele kell foglalni a HDD csakis a csomagot?
-Küldje el a merevlemezen csak a szállítási csomagban. Ne adjon meg például a kiemelt tápkábelek vagy USB-kábelt.
+### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>E tartalmaznia kell a HDD csakis a csomag?
+A szállítási csomagban csak rögzített meghajtók kiszállítása. Például a tápkábelek ellátási vagy USB-kábelt nem tartalmazzák.
 
-### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Küldje el a meghajtókat FedEx vagy DHL kell?
-Az Azure-adatközpontban használatával FedEx, DHL, UPS vagy Velünk postai bármely ismert vivőjel-meghajtóval elküldhet. Azonban a datacenter Önnek meghajtói visszatérési szállításra, meg kell adnia:
+### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Rendelkezik a meghajtók FedEx vagy DHL szállításra?
+Az Azure-adatközpontban semmilyen ismert szolgáltatója FedEx, DHL, UPS vagy USA postai például meghajtókon küldhet el. Azonban a meghajtó Önnek az adatközpontból visszaszállításhoz kell megadnia:
 
-- Az Amerikai Egyesült Államokban és Európa, fiók FedEx számnak vagy
-- Ázsia és a Ausztrália régiókban DHL fiók szám.
+- Az USA és Európa, a fiók FedEx számnak vagy
+- Az ázsiai és Ausztrália régiókban DHL fiók szám.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Vannak-e a nemzetközi a meghajtó szállítási korlátozások?
-Vegye figyelembe, hogy valóban a fizikai adathordozókat esetleg kereszt-nemzetközi határokon. Biztos, hogy a fizikai adathordozó és adatok vannak importálva és/vagy az alkalmazandó jogszabályok betartása exportált biztosításáért felelős. Még a szállítás előtt a fizikai adathordozó egyeztetni a tanácsadók annak ellenőrzésére, hogy az adathordozót, és adatok jogilag szállítani a azonosított adatközpontba. Ez segít annak érdekében, hogy időben Microsoft eléri.
+### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Vannak az Egyesült Államokon kívül is a meghajtó szállítási korlátozások?
+Vegye figyelembe, hogy valóban a fizikai adathordozón kell adatbázisközi nemzetközi határokon. Ön felelős azért, hogy a fizikai adathordozók és az adatok vannak importálva és/vagy a hatályos törvényeknek megfelelően exportált. A fizikai adathordozó hordozás előtt ellenőrizze a tanácsadók, győződjön meg arról, hogy az adathordozó és az adatok is jogilag szállítása az azonosított adatközpont. Ez segít annak érdekében, hogy a Microsoft időben éri el.
 
-### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Feladat létrehozása a szállítási cím esetén egy helyet, amely eltér a tárfiókhely. Mit tegyek?
+### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Egy feladat létrehozásakor, a szállítási cím egy olyan hely, a tárfiók helye eltérő. Mit tegyek?
 
-Néhány fiók tárolóhelyek szállítási másodlagos helyek vannak leképezve. Korábban elérhető szállítási helyről is ideiglenesen rendelhetők más helyekre. Mindig ellenőrizze a megadott feladat létrehozásakor, a meghajtók, mielőtt szállítási címe.
+A szállítási címhez tartozó másodlagos helyek bizonyos tárolási fiók helyek vannak leképezve. Korábban elérhető szállítási helyek is ideiglenesen rendelhetők más helyekre. Mindig ellenőrizze a szállítási cím, a meghajtók, mielőtt a feladat létrehozása során megadott.
 
-### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Ha a meghajtó szállítási, a szolgáltatói a data center címét és telefonszámát a telefonszám kér. Mit kell nyújtania?
+### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Szállítási a meghajtó, amikor a szolgáltató a data center címét és telefonszámát a telefonszám kér. Mit kell biztosítania?
 
-A telefonszám és a tartományvezérlő cím valósul meg a projekt létrehozásának részeként.
+A telefonszám és a tartományvezérlő-cím van feladat létrehozásának részeként.
 
 
 ## <a name="miscellaneous"></a>Egyéb rendelkezések
 
-### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Mi történik, ha véletlenül küldése egy HDD nem felel meg a támogatott követelmények?
+### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Mi történik, ha véletlenül küld egy HDD, amely nem felel meg a támogatott követelményeknek?
 
-Az Azure-adatközpont visszatér a meghajtó nem felel meg a támogatott követelményeinek Önnek. Ha csak néhány a meghajtót a csomag megfelel a támogatási követelmények, ezek a meghajtók dolgoz fel, és Önnek visszaadott a meghajtókat, amelyek nem felelnek meg a követelményeknek.
+Az Azure-adatközpontban visszaküldi a meghajtó, amely nem felel meg a támogatott követelményeket is. Ha csak néhány, a csomagot a meghajtók felel meg a támogatási követelmények, a program feldolgozza az adott meghajtókat, és a meghajtókat, amelyek nem felelnek meg a követelményeknek, visszakerül.
 
-### <a name="does-the-service-format-the-drives-before-returning-them"></a>Nem a szolgáltatás formázása előtt azok a meghajtók?
+### <a name="does-the-service-format-the-drives-before-returning-them"></a>Nem a szolgáltatás formázása előtt, hogy azok a meghajtók?
 
-Nem. Az összes meghajtó bitlockerrel titkosított.
+Nem. Az összes meghajtó van titkosítva, a BitLocker.
 
-### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Hogyan hozzáférhet a szolgáltatás által importált adatoknak?
+### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Hogyan érhetem el a szolgáltatás által importált adatoknak?
 
-Az Azure portálon vagy [Tártallózó](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) az Azure storage-fiókjában az adatok eléréséhez.  
+Az Azure Portal vagy [Tártallózó](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) férhet hozzá az adatokhoz az Azure storage-fiókban.  
 
-### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Az importálás után mi nem saját adatok megjelenését, például a tárfiókban lévő? A könyvtár-hierarchia megőrzi?
+### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Az importálás befejezése után, mi nem saját adatok néz ki a storage-fiókban? Megőrződik a könyvtár-hierarchia?
 
-Ha a merevlemez-meghajtó előkészítése az importálási feladat, a cél a fürt megosztott kötetei szolgáltatás adatkészlet DstBlobPathOrPrefix mező szerint van megadva. Ez az a cél tároló a storage-fiókot, amelyhez a merevlemez-meghajtóról az adatok másolásakor. A cél tárolóban virtuális könyvtárak mappák a merevlemez-meghajtóról jön létre, és blobok fájlok jönnek létre. 
+Ha a merevlemez-meghajtó előkészítése importálási feladatokhoz, a cél az adatkészlet CSV DstBlobPathOrPrefix mező szerint van megadva. Ez az a cél tároló storage-fiókban, amelyhez a merevlemez származó adatokat másolja. A cél-tárolón belül a virtuális könyvtárak mappákat a merevlemez-meghajtóról jön létre, és blobok fájlok jönnek létre. 
 
-### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Ha a meghajtó már megtalálható a tárfiókban lévő fájlok, nem a szolgáltatás felülírja a meglévő blobokkal vagy a fájlokat?
+### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Ha egy meghajtó fájl már létezik a storage-fiókom van, nem a szolgáltatás felülírja a meglévő blobok és fájlok?
 
-Függ. Amikor előkészíti a meghajtót, vagy adhat meg hogy felülírható-e a cél fájlok törlése figyelmen kívül hagyott használatát a mező dataset CSV-fájl neve: < átnevezése |} nem írható felül |} felülírása >. Alapértelmezés szerint a szolgáltatás az új fájlok átnevezése helyett felülírja a meglévő blobokkal vagy a fájlokat.
+Függ. Amikor előkészíti a meghajtót, megadhatja a cél fájlok felülírható akár Disposition figyelmen kívül hagyott mező használatával adatkészlet CSV-fájl neve: < átnevezése |} nem írja felül |} felülírása >. Alapértelmezés szerint a szolgáltatás az új fájlok átnevezése helyett meglévő blobok és fájlok felülírása.
 
-### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Egy 32 bites operációs rendszerekkel kompatibilis a WAImportExport eszköz?
-Nem. A WAImportExport eszköze csak 64 bites Windows operációs rendszerekkel kompatibilis. A támogatott operációs rendszer teljes listáját lásd [támogatott operációs rendszerek](). 
-
-
-### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Mi az a maximális Blokkblob és támogatott Azure Import/Export Blob oldalméret?
-
-Maximális Blokkblob mérete körülbelül 4.768TB vagy 5,000,000 MB.
-Az oldalakra vonatkozó Blob maximális mérete 1TB.
+### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Az a WAImportExport eszköz kompatibilis az operációs rendszerek 32 bites?
+Nem. A WAImportExport eszköze csak 64 bites Windows operációs rendszerekkel kompatibilis. Támogatott operációs rendszer teljes listájának megtekintéséhez keresse fel [támogatott operációs rendszerek](). 
 
 
-### <a name="does-azure-importexport-support-aes-256-encryption"></a>Támogatja az Azure Import/Export AES-256 titkosítás?
-Az Azure Import/Export szolgáltatás alapértelmezés szerint AES-128 bitlocker-titkosítást használ. Módosíthatja a AES-256 manuálisan titkosítása a bitlocker előtt a rendszer átmásolja az adatokat. 
+### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Mi az a maximális Blokkblobok és a támogatott az Azure Import/Export Lapblob méretét?
 
-- Ha használ [WAImportExport V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip), az alábbiakban van egy minta parancs
+Blokkblob maximális mérete körülbelül 4.768 TB-os vagy 5,000,000 MB.
+Lapblob maximális mérete 1 TB-ot.
+
+
+### <a name="does-azure-importexport-support-aes-256-encryption"></a>Támogatja az Azure Import/Export AES-256 titkosítással?
+Az Azure Import/Export szolgáltatás alapértelmezés szerint AES-128 bitlocker-titkosítást használ. Módosíthatja ezt az AES-256 manuálisan titkosítása a bitlocker előtt a rendszer az adatokat másolja. 
+
+- Ha használ [WAImportExport V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip), az alábbi, egy mintául szolgáló parancs
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
     ```

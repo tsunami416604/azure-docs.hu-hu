@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fe900d8bf70e3784b9dd53c129fc0ce9d1574de
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 24cccd4745d611196046168f0125e7ef2a184e15
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449924"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576491"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
@@ -35,7 +35,7 @@ Nincsenek [többféleképpen hitelesítéséhez](container-registry-authenticati
 az acr login --name myregistry
 ```
 
-Is bejelentkezhet a következővel [docker login](https://docs.docker.com/engine/reference/commandline/login/). Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/active-directory-application-objects.md) azonosítóját és jelszavát adja át. Előfordulhat például, hogy [hozzárendelt egy egyszerű szolgáltatást](container-registry-authentication.md#service-principal) a beállításjegyzékhez egy automatizálási forgatókönyvhöz.
+Is bejelentkezhet a következővel [docker login](https://docs.docker.com/engine/reference/commandline/login/). Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Előfordulhat például, hogy [hozzárendelt egy egyszerű szolgáltatást](container-registry-authentication.md#service-principal) a beállításjegyzékhez egy automatizálási forgatókönyvhöz.
 
 ```Bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword

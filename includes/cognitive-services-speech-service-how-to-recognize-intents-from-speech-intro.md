@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: a3cbfc3677c5b1a19b83a82da9bcd6bed3108152
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 79dc1fe9fffd8c44c97cf68a12bb90655b672577
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346247"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577978"
 ---
 <!-- N.B. no header, language-agnostic -->
 
-A [beszéd SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) lehetővé teszi a ismeri fel a **leképezések a speech**kapcsolva a beszédfelismerési szolgáltatás, és a [hangfelismerési szolgáltatás (LUIS)](https://luis.ai).
+A [beszéd SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) lehetővé teszi a ismeri fel a **leképezések a speech**kapcsolva a beszédfelismerési szolgáltatás, és a [hangfelismerési szolgáltatás (LUIS)](https://www.luis.ai/home).
 
 1. Hozzon létre egy beszéd-előállító, a Language Understanding service előfizetési kulcs megadása és [régió](~/articles/cognitive-services/speech-service/regions.md#regions-for-intent-recognition). A Language Understanding előfizetési kulcs nevezzük **végponti kulcs** a szolgáltatás dokumentációjára. A kulcs létrehozási hangfelismerési szolgáltatás nem használható. Lásd még a **Megjegyzés** alatt.
 

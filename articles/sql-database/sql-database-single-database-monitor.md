@@ -3,19 +3,20 @@ title: Adatbázis teljesítményének figyelése Azure SQL Database adatbázisok
 description: Tudja meg, hogyan figyelheti az adatbázisokat Azure- eszközökkel és dinamikus felügyeleti nézetekkel.
 keywords: adatbázis-megfigyelés, felhőalapú adatbázis teljesítménye
 services: sql-database
-author: CarlRabeler
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: carlrab
-ms.openlocfilehash: dc04a9334b63656719a7633a8dd7154ed6cd6993
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 081c6210181815be079404b10e7aa4b0df8327ec
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092579"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520979"
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban
 Egy Azure SQL-adatbázis teljesítményének figyelése az erőforrás-használatnak a kiválasztott adatbázis teljesítményszintjéhez viszonyított figyelésével kezdődik. Azt határozza meg, hogy az adatbázis többletkapacitással rendelkezik, vagy nem tudja, mert az erőforrások vannak maximumot, és úgy dönt, hogy, ideje teljesítményszintje és az adatbázis a monitorozási funkciók a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Az adatbázist figyelheti grafikus eszközök használatával az [Azure Portalon](https://portal.azure.com) vagy SQL [dinamikus felügyeleti nézetek](https://msdn.microsoft.com/library/ms188754.aspx) használatával.

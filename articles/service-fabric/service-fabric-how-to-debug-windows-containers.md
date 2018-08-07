@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
 ms.author: mikhegn
-ms.openlocfilehash: e7ff7ca6d4fb18121dfa282c2c47e140a4c51a84
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 180bd3709cc9ffefb17f78e337e6f6995024fdcf
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505967"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523427"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Útmutató: Windows-tárolókhoz az Azure Service Fabric használatával a Visual Studio 2017 hibakeresése
 
@@ -35,11 +35,13 @@ A Visual Studio 2017 Update 7 (15.7) a tárolókban lévő .NET-alkalmazások, a
 1. Győződjön meg arról, hogy a Docker ablak szolgáltatás fut-e a következő lépés végrehajtása előtt.
 
 1. Annak érdekében, hogy támogatja a DNS-feloldás tárolók között, akkor a helyi fejlesztési fürt beállításához a számítógépnevet használja. Ezeket a lépéseket is szükségesek, ha azt szeretné, a fordított proxyn keresztül cím szolgáltatásokhoz.
-    a. Nyissa meg a Powershellt rendszergazdaként b. Keresse meg a fürt SDK-telepítési mappa, általában `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup` c. Futtassa a szkriptet `DevClusterSetup.ps1` paraméterrel `-UseMachineName`
+    1. Rendszergazdaként nyissa meg PowerShell
+    2. Keresse meg a fürt SDK-telepítési mappa, általában `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
+    3. Futtassa a szkriptet `DevClusterSetup.ps1` paraméterrel `-UseMachineName`
 
-    ``` PowerShell
-      C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1 -UseMachineName
-    ```
+       ``` PowerShell
+         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1 -UseMachineName
+       ```
 
     > [!NOTE]
     > Használhatja a `-CreateOneNodeCluster` , állítson be egy egycsomópontos fürtöt. Alapértelmezés szerint létrehoz egy helyi ötcsomópontos fürt.

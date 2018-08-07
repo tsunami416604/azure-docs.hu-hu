@@ -1,96 +1,90 @@
 ---
-title: Hozzon létre támogatási jegy vagy az Azure importálási/exportálási feladatok esetében |} Microsoft Docs
-description: Útmutató az importálási/exportálási feladatok kapcsolatos problémák támogatási kérelmet bejelentkezni.
+title: Támogatási jegy vagy eset az Azure importálási/exportálási feladat létrehozása |} A Microsoft Docs
+description: Ismerje meg, hogyan naplótámogatási kérelem az importálási/exportálási feladat kapcsolatban.
 services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/29/2018
 ms.author: alkohli;
-ms.openlocfilehash: b82adae5854aa836701e299a0aabd2b61e73ca99
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 321f59b1fd7b408d13856d7345d5d00608e3d250
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30324109"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521081"
 ---
-# <a name="open-a-support-ticket-for-an-importexport-job"></a>Az importálási/exportálási feladatok támogatási jegy megnyitása
+# <a name="open-a-support-ticket-for-an-importexport-job"></a>Nyisson egy támogatási jegyet az importálási/exportálási feladat
 
-Ha problémába ütközik az Import/Export szolgáltatással, létrehozhat egy szolgáltatási kérelem a technikai támogatási szolgálathoz. Ez a cikk bemutatja, hogyan:
+Ha problémát tapasztal az Import/Export szolgáltatással, létrehozhat egy szolgáltatási kérelmet, ha technikai támogatást. Ez a cikk végigvezeti:
 
-* Megtudhatja, hogyan hozzon létre egy támogatási kérést.
-* Hogyan kezelheti a támogatási kérelem életciklusa, az a portálon.
+* Hogyan hozzon létre egy támogatási kérést.
+* Hogyan lehet egy támogatási kérést az életciklusnak a kezelésében a portálon belül.
 
 ## <a name="create-a-support-request"></a>Támogatáskérés létrehozása
 
 A következő lépésekkel hozzon létre egy támogatási kérést:
 
-1. Ugrás az importálási/exportálási feladatok. Navigáljon a **támogatási + hibaelhárítás** szakaszt, és kattintson a **új támogatja a kérelem**.
+1. Nyissa meg az importálási/exportálási feladatot. Navigáljon a **támogatás + hibaelhárítás** szakaszt, és kattintson a **új támogatási kérelem**.
      
     ![Alapvető beállítások](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
-2. A **új támogatja a kérelem**, jelölje be **alapjai**. A **alapjai**, hajtsa végre a következő lépéseket:
+2. A **új támogatási kérelem**válassza **alapjai**. A **alapjai**, tegye a következőket:
     
-    1. Az a **típusú** legördülő listában válassza ki **műszaki**.
+    1. Az a **Problématípus** legördülő listában válassza **technikai**.
     2. Válassza ki az **Előfizetést**.
-    3. A **szolgáltatás**, ellenőrizze **saját szolgáltatások**. A legördülő listából kiválaszthatja azt a egyikére - **tárolási fiókkezelés**, **Blob**, vagy **fájl**. 
-        - Ha úgy dönt, **tárolási fiókkezelés**, jelölje be **erőforrás**, és **támogatási csomag**.
-            ![Válassza ki a tárolási fiók kezelése](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
-        - Ha úgy dönt, **Blob**, jelölje be **erőforrás**, **tárolónévnek** (nem kötelező), és **támogatási csomag**.
-            ![Válassza ki a Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - Ha úgy dönt, **fájl**, jelölje be **erőforrás**, **a fájlmegosztás neve** (nem kötelező), és **támogatási csomag** ![fájl kiválasztása](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+    3. A **szolgáltatás**, ellenőrizze **saját szolgáltatások**. A legördülő listából kiválaszthatja a beállítások - egyik **Tárfiók-felügyelet**, **Blob**, vagy **fájl**. 
+        - Ha úgy dönt, **Tárfiók-felügyelet**válassza **erőforrás**, és **támogatási csomag**.
+            ![Válassza ki a Tárfiók-felügyelet](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
+        - Ha úgy dönt, **Blob**válassza **erőforrás**, **a tároló nevének** (nem kötelező), és **támogatási csomag**.
+            ![Válasszon blobot](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
+        - Ha úgy dönt, **fájl**válassza **erőforrás**, **fájlmegosztásnevek** (nem kötelező), és **támogatási csomag** ![fájl kiválasztása](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
     4. Kattintson a **Tovább** gombra.
 
-3. A **új támogatja a kérelem**, jelölje be **lépés 2 probléma**. A **probléma**, hajtsa végre a következő lépéseket:
+3. A **új támogatási kérelem**válassza **. lépés 2 probléma**. A **probléma**, tegye a következőket:
     
-    1. Válassza ki a **súlyossági** , **C - gyakorolt minimális hatás mellett**. Támogatási frissíti, akkor szükség esetén.
-    2. Válassza ki a **problématípust** , **adatáttelepítés**.
+    1. Válassza ki a **súlyossági** , **C – csak minimális mértékben terheli**. Támogatási frissül, ha szükséges.
+    2. Válassza ki a **Problématípus** , **adatáttelepítés**.
     3. Válassza ki a **kategória** , **importálása – exportálása**.
-    4. Adjon meg egy **cím** a problémát, és több **részletek**.
-    5. Adja meg a kezdő dátum és idő, a probléma.
-    6. Az a **fájlfeltöltés**, tallózásához egyéb fájlokat szeretne feltölteni a mappa ikonra.
-    7. Ellenőrizze **diagnosztikai információkat**.
+    4. Adjon meg egy **cím** a problémát, és további **részletek**.
+    5. Adja meg a kezdő dátum és idő a probléma.
+    6. Az a **fájlfeltöltés**, kattintson a mappa ikonra, keresse meg az egyéb fájlokat szeretne feltölteni.
+    7. Ellenőrizze **diagnosztika adatok megosztása**.
     8. Kattintson a **Tovább** gombra.
 
        ![Probléma](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. A **új támogatja a kérelem**, kattintson a **lépés 3 elérhetőségi adatait**. A **elérhetőségi adatai**, hajtsa végre a következő lépéseket:
+4. A **új támogatási kérelem**, kattintson a **lépés 3 elérhetőségi adatok**. A **kapcsolattartási adatok**, tegye a következőket:
 
-    1. Az a **beállítások forduljon**, adja meg az elsődleges kapcsolattartási módszert, (telefonon vagy e-mailek) és a nyelv. A válaszidő automatikusan ki van jelölve, az előfizetési terv alapján.
-    2. Adja meg a nevét, e-mail, opcionális forduljon, ország elérhetőségi adatait. Válassza ki a **kapcsolattartási adatok módosításainak mentése az a későbbi támogatási kérelmekhez** jelölőnégyzetet.
+    1. Az a **kapcsolatfelvételi lehetőségek**, adja meg az elsődleges kapcsolattartási módszer (telefonon vagy e-mailben) és a nyelvet. A válaszidő automatikusan ki van jelölve, az előfizetési csomag alapján.
+    2. Adja meg a nevét, e-mail, ügyfél nem kötelező, ország az elérhetőségi adatok. Válassza ki a **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
     3. Kattintson a **Create** (Létrehozás) gombra.
    
         ![Kapcsolattartási adatok](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
-    Microsoft Support ezen információk használatával érheti el, további információt, a diagnosztikai és a megoldás.
-Miután elküldte a kérést, a támogatási szakértőhöz felveszi Önnel a lehető leghamarabb folytatja a kérelemhez.
+    A Microsoft Support ezen információk használatával kapcsolatos további információkat, a diagnosztikai és a megoldási Önnel.
+Miután elküldte a kérést, a támogatási szakember felveszi a kapcsolatot, amint lehetséges, hogy a kérés folytatásához.
 
-## <a name="manage-a-support-request"></a>Egy támogatási kérést kezelése
+## <a name="manage-a-support-request"></a>Egy támogatási jegy kezelése
 
 A támogatási jegy létrehozása után a jegyet a teljes életciklusán keresztül kezelheti a portálon.
 
-#### <a name="to-manage-your-support-requests"></a>A támogatási kérelmek kezelése
+#### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
 
-1. Ahhoz, hogy a Súgó és támogatás oldalra, keresse meg **Tallózás > Súgó + támogatás**.
+1. A Súgó és támogatási oldallal lekéréséhez lépjen **Tallózás > Súgó + támogatás**.
 
     ![Támogatási kérések kezelése](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
 
-2. A táblázatos felsorolása **Recent kérelmek támogatásához** megjelenő **súgó + támogatás**.
+2. A táblázatos listájában **legutóbbi támogatási kérelem** megjelenik **súgó + támogatás**.
 
     ![Támogatási kérések kezelése](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. Jelölje ki, majd kattintson egy támogatási kérést. Az állapot és a részletek a kérelemhez tartozó tekintheti meg. Kattintson a **+ új üzenet** Ha azt szeretné, hogy a kérés nyomon követéséhez.
+3. Válassza ki, majd kattintson egy támogatási kérést. Megtekintheti az állapotát és a kérés részleteit. Kattintson a **+ új üzenet** Ha azt szeretné, ezt a kérelmet követéséhez.
 
     ![Támogatási kérések kezelése](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan [Import/Export szolgáltatás kapcsolatos problémák elhárítása](storage-import-export-tool-troubleshooting-v1.md).
+Ismerje meg, hogyan [Import/Export szolgáltatás kapcsolatos problémák elhárítása](storage-import-export-tool-troubleshooting-v1.md).

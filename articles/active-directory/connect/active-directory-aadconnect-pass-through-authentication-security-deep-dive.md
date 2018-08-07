@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad4567ffb927694872d5b86dd38833466f944ca8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f220e0b6dd5abb596128ba84af89d0e725f66117
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215084"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521965"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása
 
@@ -44,7 +44,7 @@ Ez a funkció a kulcs biztonsági beállításait az alábbiak:
   - A hálózati követelmények teljes listáját lásd: [Azure Active Directory átmenő hitelesítés: gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites).
 - Hogy a felhasználók a bejelentkezés során adja meg a felhőben vannak titkosítva, előtt a helyszíni hitelesítési ügynökök fogadja el az Active Directory érvényesítésre.
 - Az Azure AD között a HTTPS-csatorna és a helyszíni hitelesítési ügynök a kölcsönös hitelesítés védi.
-- A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), többek között a multi-factor Authentication (MFA), [örökölt hitelesítés](../active-directory-conditional-access-conditions.md) , illetve [ kiszűri a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
+- A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), többek között a multi-factor Authentication (MFA), [örökölt hitelesítés](../conditional-access/conditions.md) , illetve [ kiszűri a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="components-involved"></a>Részt vevő összetevők
 

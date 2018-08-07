@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: e9d1e348ccdccfc72a8e60d70dda1c939c2393af
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f2a95ac879dd2d6b1af3d50e1be53efac26331c4
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004771"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525552"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia az IoT Hub kvótái és szabályozása
 
@@ -43,7 +43,7 @@ Az alábbi táblázat a kényszerített szabályozások. Értékek tekintse meg 
 | A páros olvasási (eszköz- és modul)<sup>1</sup> | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
 | Ikereszköz frissítések (eszköz- és modul)<sup>1</sup> | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
 | Operatív feladatok<sup>1</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |
-| Feladatok eszközönkénti műveleti teljesítménye<sup>1</sup> | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
+| Eszközművelet feladatok<sup>1</sup> <br/> (iker frissítése, a közvetlen metódus meghívása) | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
 | Konfigurációk és az edge-telepítések<sup>1</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 0.33/sec/Unit (20/perc/egység) | 0.33/sec/Unit (20/perc/egység) | 0.33/sec/Unit (20/perc/egység) |
 
 

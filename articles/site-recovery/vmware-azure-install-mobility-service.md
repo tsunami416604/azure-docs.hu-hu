@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: ee954a951d3fc07709e3f27b4ced71a9ec525410
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492962"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526997"
 ---
 # <a name="install-the-mobility-service"></a>A mobilitási szolgáltatás telepítése 
 
@@ -26,7 +26,8 @@ Az Azure Site Recovery mobilitási szolgáltatás VMware virtuális gépeken és
 
 
 >[!IMPORTANT]
-> Verziójától kezdve 9.7.0.0, a Windows virtuális gépeken, a mobilitási szolgáltatás telepítője is telepíti a legújabb elérhető [Azure Virtuálisgép-ügynök](../virtual-machines/extensions/features-windows.md#azure-vm-agent). Amikor egy számítógép átadja a feladatokat az Azure-ba, a számítógép megfelel-e az ügynök telepítése minden olyan VM-bővítmény használata a előfeltételeit.
+> Verziójától 9.7.0.0, **Windows virtuális gépeken**, a mobilitási szolgáltatás telepítője is telepíti a legújabb elérhető [Azure Virtuálisgép-ügynök](../virtual-machines/extensions/features-windows.md#azure-vm-agent). Amikor egy számítógép átadja a feladatokat az Azure-ba, a számítógép megfelel-e az ügynök telepítése minden olyan VM-bővítmény használata a előfeltételeit.
+> </br>A **Linux rendszerű virtuális gépek**, WALinuxAgent rendelkezik, manuálisan kell telepíteni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Előfeltételként szükséges lépések végrehajtása előtt, manuálisan telepíteni a mobilitási szolgáltatást a kiszolgálón:

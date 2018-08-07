@@ -17,12 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8bba58c3493bc8adc17c5d4bca103326808d5b8b
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 91cb7df9d38432d660930c21f6a9d0d64215d6e6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506639"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577439"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Ismerkedés az Azure AD Node.js webalkalmazás
 Jelen példában használjuk a Passport:
@@ -414,6 +414,6 @@ Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként [.
 
 Akkor most már továbbléphet az összetettebb témákra. Előfordulhat, hogy szeretné próbálni:
 
-[Védelem biztosítása webes API Azure AD-vel](active-directory-devquickstarts-webapi-nodejs.md)
+[Védelem biztosítása webes API Azure AD-vel](quickstart-v1-nodejs-webapi.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

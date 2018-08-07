@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 99860628197092749a5102787afd952f2a09a995
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 06350d30999cb056babbd001f98a6c3a5fdbac6c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493217"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576994"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az Azure Active Directory és az API Management az OAuth 2.0 használatával
 
@@ -193,7 +193,7 @@ Használhatja a [ellenőrzése JWT](api-management-access-restriction-policies.m
 
 ## <a name="build-an-application-to-call-the-api"></a>Hívja az API-alkalmazás létrehozása
 
-Ebben az útmutatóban használt a fejlesztői konzolt az API Management szolgáltatásban, a mintaalkalmazás ügyfél hívja az `Echo API` OAuth 2.0 védi. Alkalmazás készítése és megvalósítása az OAuth 2.0 kapcsolatos további tudnivalókért lásd: [Azure Active Directory-Kódminták](../active-directory/develop/active-directory-code-samples.md).
+Ebben az útmutatóban használt a fejlesztői konzolt az API Management szolgáltatásban, a mintaalkalmazás ügyfél hívja az `Echo API` OAuth 2.0 védi. Alkalmazás készítése és megvalósítása az OAuth 2.0 kapcsolatos további tudnivalókért lásd: [Azure Active Directory-Kódminták](../active-directory/develop/sample-v1-code.md).
 
 ## <a name="next-steps"></a>További lépések
 * Tudjon meg többet [OAuth2.0 és az Azure Active Directory](../active-directory/develop/authentication-scenarios.md).

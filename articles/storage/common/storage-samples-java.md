@@ -1,218 +1,214 @@
 ---
-title: "Azure Storage-minták Java használatával |} Microsoft Docs"
-description: "Megtekintése, töltse le és futtassa a mintakódot és az alkalmazások az Azure Storage. Fedezze fel bevezetés minták BLOB, üzenetsorok, táblák és fájlok, a Java storage ügyfélkódtáraival használatával."
+title: Java használatával Azure Storage-minták |} A Microsoft Docs
+description: Megtekintheti, letöltheti és mintakód és az Azure Storage-alkalmazások futtatását. Fedezze fel az első lépéseket ismertető minták a blobok, üzenetsorok, táblák és fájlok, a Java-tároló ügyfélkódtárai használatával.
 services: storage
-documentationcenter: na
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: 
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: fd27e1ac9a773e7b0f5245aa74acdb0521cd098c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: bdc25a7aeff88d058eaf3fddf6cec023edff3b9e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39531056"
 ---
-# <a name="azure-storage-samples-using-java"></a>Azure Storage-minták javás környezetekben
+# <a name="azure-storage-samples-using-java"></a>Java használatával Azure Storage-minták
 
-## <a name="java-sample-index"></a>Java-sample index
+## <a name="java-sample-index"></a>Java-mintakód-index
 
-A következő táblázat a minták tárház és minden egyes minta az ismertetett forgatókönyvek áttekintése. Kattintson a hivatkozásra kattintva a megfelelő mintakód a Githubon.
+Az alábbi táblázat a mintaadattárban és az egyes minták az ismertetett forgatókönyvek áttekintése. Kliknutím nA odkazy a megfelelő mintakód megtekintése a Githubon.
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Végpont</th><th style="font-size:110%">Forgatókönyv</th><th style="font-size:110%">Mintakód</th></tr></thead><tbody> 
 <tr> 
-<td rowspan="16"><b>A BLOB</b></td>
+<td rowspan="16"><b>Blob</b></td>
 <td>Hozzáfűző Blob</td> 
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td> 
 </tr> 
 <tr> 
 <td>Blokkblob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
 <td>Ügyféloldali titkosítás</td>
-<td><a href="https://github.com/Azure-Samples/storage-java-client-side-encryption">Ismerkedés az Azure ügyféloldali titkosítása Java nyelven</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-java-client-side-encryption">Ismerkedés az Azure-ügyfél kiszolgálóoldali titkosítás Java nyelven</a></td>
 </tr> 
 <tr> 
-<td>A Blob másolása</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td>Blob másolása</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
 <td>Tároló létrehozása</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
-<td>A Blob törlése</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td>Delete Blob</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
-<td>Törli a tárolót</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td>Tároló törlése</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
-<td>Metaadatok/tulajdonságok/Stats BLOB</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td>A BLOB metaadatainak/tulajdonságok/Stats</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
-<td>A tároló hozzáférés-vezérlési lista/metaadatok/tulajdonságainak</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td>Tároló ACL/metaadatok/tulajdonságai</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
-<td>Get tartományokat</td>
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-test/src/com/microsoft/azure/storage/blob/CloudPageBlobTests.java">Az oldalakra vonatkozó Blob tesztek minta</a></td>
+<td>Laptartomány-beolvasási</td>
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-test/src/com/microsoft/azure/storage/blob/CloudPageBlobTests.java">Lapblob tesztek minta</a></td>
 </tr> 
 <tr> 
-<td>Bérbe Blobtárolóban /</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td>Blobtároló bérleti jogának megszerzése /</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
-<td>Lista Blobtárolóban</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td>Lista Blob-tároló</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
-<td>Az oldalakra vonatkozó Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td>Lapblob</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr>
 <tr> 
 <td>SAS</td>
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-test/src/com/microsoft/azure/storage/blob/SasTests.java">SAS-vizsgálatok minta</a></td>
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-test/src/com/microsoft/azure/storage/blob/SasTests.java">SAS-tesztek minta</a></td>
 </tr>   
 <tr> 
 <td>Szolgáltatás tulajdonságai</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr>           
 <tr> 
-<td>Pillanatkép Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob szolgáltatás Java nyelven</a></td>
+<td>Snapshot Blob</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Ismerkedés az Azure Blob Service-szel Javával</a></td>
 </tr> 
 <tr> 
 <td rowspan="9"><b>Fájl</b></td>
-<td>Megosztás-könyvtárak-fájlok létrehozása</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File szolgáltatással Java nyelven</a></td> 
+<td>Megosztások/könyvtárak és fájlok létrehozása</td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr>
 <tr> 
-<td>Megosztások/könyvtárak/fájlok törlése</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File szolgáltatással Java nyelven</a></td> 
+<td>Megosztások/könyvtárak vagy fájlok törlése</td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr> 
 <tr> 
-<td>Directory tulajdonságok/metaadatok</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Ismerkedés az Azure File szolgáltatással Java nyelven</a></td> 
+<td>Tulajdonságok és metaadatok</td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr> 
 <tr> 
 <td>Fájlok letöltése</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File szolgáltatással Java nyelven</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr> 
 <tr> 
-<td>A fájl tulajdonságok/metaadatok/metrikák</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Ismerkedés az Azure File szolgáltatással Java nyelven</a></td> 
+<td>A fájl tulajdonságok és metaadatok/metrikák</td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr> 
 <tr> 
-<td>Fájlok szolgáltatás tulajdonságai</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Ismerkedés az Azure File szolgáltatással Java nyelven</a></td> 
+<td>File Service Properties</td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr> 
 <tr> 
 <td>Fájlok és könyvtárak listája</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File szolgáltatással Java nyelven</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr>
 <tr> 
 <td>Lista megosztások</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File szolgáltatással Java nyelven</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr>
 <tr> 
-<td>Tulajdonságok/metaadatok/Stats megosztás</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Ismerkedés az Azure File szolgáltatással Java nyelven</a></td> 
+<td>Tulajdonságok és metaadatok/Stats megosztása</td> 
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Ismerkedés az Azure File Service-szel Javával</a></td> 
 </tr>
 <tr> 
-<td rowspan="8"><b>Várólista</b></td>
+<td rowspan="8"><b>várólista</b></td>
 <td>Üzenet hozzáadása</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted/QueueBasics.java">Tárolási Java ügyfél függvénytár – minták</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted/QueueBasics.java">Storage Java ügyfél erőforrástár-minták</a></td> 
 </tr> 
 <tr> 
 <td>Ügyféloldali titkosítás</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/encryption/queue/gettingstarted/QueueGettingStarted.java">Tárolási Java ügyfél függvénytár – minták</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/encryption/queue/gettingstarted/QueueGettingStarted.java">Storage Java ügyfél erőforrástár-minták</a></td> 
 </tr> 
 <tr> 
 <td>Várólista létrehozása</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java nyelven</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
-<td>Az üzenet-várólista törlése</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java nyelven</a></td> 
+<td>Üzenet-várólista törlése</td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
-<td>Üzenet megtekintése</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java nyelven</a></td> 
+<td>Belepillantás üzenetbe</td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
-<td>Hozzáférés-vezérlési lista/metaadatok/Stats várólista</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Ismerkedés az Azure Queue szolgáltatás Java nyelven</a></td> 
+<td>ACL/metaadatok/Stats várólista</td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
-<td>Várólista szolgáltatás tulajdonságai</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Ismerkedés az Azure Queue szolgáltatás Java nyelven</a></td> 
+<td>A Queue szolgáltatás tulajdonságai</td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
 <td>Üzenet frissítése</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java nyelven</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Ismerkedés az Azure Queue szolgáltatás Java-környezetben</a></td> 
 </tr> 
 <tr> 
 <td rowspan="7"><b>Tábla</b></td>
 <td>Tábla létrehozása</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Ismerkedés az Azure Table szolgáltatás Java nyelven</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Bevezetés az Azure Table Service használatába Javában</a></td> 
 </tr> 
 <tr> 
-<td>Entitás vagy a tábla törlése</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Ismerkedés az Azure Table szolgáltatás Java nyelven</a></td> 
+<td>Entitás/tábla törlése</td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Bevezetés az Azure Table Service használatába Javában</a></td> 
 </tr> 
 <tr> 
-<td>Entitás beszúrása és egyesítési/cseréje</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Tárolási Java ügyfél függvénytár – minták</a></td> 
+<td>Entitás beszúrása és egyesítés/cseréje</td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Storage Java ügyfél erőforrástár-minták</a></td> 
 </tr> 
 <tr> 
-<td>Lekérdezés entitások</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Ismerkedés az Azure Table szolgáltatás Java nyelven</a></td> 
+<td>Entitáslekérdezés</td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Bevezetés az Azure Table Service használatába Javában</a></td> 
 </tr> 
 <tr> 
 <td>Lekérdezés táblák</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Ismerkedés az Azure Table szolgáltatás Java nyelven</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Bevezetés az Azure Table Service használatába Javában</a></td> 
 </tr> 
 <tr> 
 <td>Táblázat ACL/tulajdonságai</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableAdvanced.java">Ismerkedés az Azure Table szolgáltatás Java nyelven</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableAdvanced.java">Bevezetés az Azure Table Service használatába Javában</a></td> 
 </tr> 
 <tr> 
-<td>Entitás frissítése</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Tárolási Java ügyfél függvénytár – minták</a></td> 
+<td>Entitások frissítése</td> 
+<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Storage Java ügyfél erőforrástár-minták</a></td> 
 </tr> 
 </tbody> 
 </table>
 <br/>
 
-## <a name="azure-code-samples-library"></a>Az Azure mintakódok könyvtár
+## <a name="azure-code-samples-library"></a>Az Azure Kódminták részletes ismertetése
 
-A teljes minta könyvtár megtekintéséhez keresse fel a [Azure mintakódok](https://azure.microsoft.com/resources/samples/?service=storage) könyvtárban, és azt az Azure Storage töltse le és futtassa helyileg minták tartalmazza. A kód a minta könyvtár .zip formátumban példakódot tartalmaz. Azt is megteheti keresse meg és a GitHub-tárházban, minden egyes minta klónozását.
+A teljes minta könyvtár megtekintéséhez nyissa meg a [Azure-Kódminták](https://azure.microsoft.com/resources/samples/?service=storage) könyvtár, amely tartalmazza a mintákat, letöltheti és helyileg történő futtatása az Azure Storage. A kód a minta kódtár .zip formátumban mintakódot biztosít. Azt is megteheti keresse meg, és klónozza a GitHub-adattárát minden mintához.
 
 [!INCLUDE [storage-java-samples-include](../../../includes/storage-java-samples-include.md)]
 
-## <a name="getting-started-guides"></a>Első lépéseket ismertető útmutatók
+## <a name="getting-started-guides"></a>Útmutatók az első lépésekhez
 
-Tekintse meg az alábbi útmutatókban, ha a telepítését, és ismerkedjen meg az Azure Storage Ügyfélkódtáraival útmutatást.
+Tekintse meg a következő útmutatókat, ha arra kíváncsi, hogyan kell telepíteni, és az Azure Storage Ügyfélkódtáraival – első lépések útmutató.
 
-* [Ismerkedés az Azure Blob szolgáltatás Java nyelven](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Ismerkedés az Azure Queue szolgáltatás Java nyelven](../storage-java-how-to-use-queue-storage.md)
-* [Ismerkedés az Azure Table szolgáltatás Java nyelven](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Ismerkedés az Azure File szolgáltatással Java nyelven](../storage-java-how-to-use-file-storage.md)
+* [Ismerkedés az Azure Blob Service-szel Javával](../blobs/storage-quickstart-blobs-java.md)
+* [Ismerkedés az Azure Queue szolgáltatás Java-környezetben](../queues/storage-java-how-to-use-queue-storage.md)
+* [Bevezetés az Azure Table Service használatába Javában](../../cosmos-db/table-storage-how-to-use-java.md)
+* [Ismerkedés az Azure File Service-szel Javával](../files/storage-java-how-to-use-file-storage.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Egyéb nyelvek minták olvashat:
+Más nyelven minták tájékoztatást:
 
-* .NET: [.NET használatával az azure Storage-minták](../storage-samples-dotnet.md)
-* Minden más nyelv: [Azure Storage-minták](../storage-samples.md)
+* .NET: [.NET használatával az azure Storage-minták](storage-samples-dotnet.md)
+* Minden más nyelven: [Azure Storage-minták](storage-samples.md)

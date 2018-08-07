@@ -2,24 +2,20 @@
 title: A Queue storage, a Ruby használatával |} A Microsoft Docs
 description: Ismerje meg, hogyan használhatja az Azure Queue szolgáltatás létrehozása és törlése, üzenetsorok, és helyezze, beolvasása, és törli az üzenetet. Ruby nyelven írt mintát.
 services: storage
-documentationcenter: ruby
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 59c2d81b-db9c-46ee-ade2-2f0caae6b1e6
 ms.service: storage
-ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: 0d7624d47a6924a5c8dec66b47ac0887ff493879
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: queues
+ms.openlocfilehash: 7074ae21c1816b5266cbcf69d0126751ded19439
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719073"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522604"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>How to use Queue storage from Ruby (A Queue Storage használata Rubyval)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

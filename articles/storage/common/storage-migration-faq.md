@@ -1,133 +1,128 @@
 ---
-title: Az Azure tárterület-áttelepítés – gyakori kérdések |} Microsoft Docs
-description: Áttelepítése az Azure Storage gyakori kérdésekre adott válaszok
+title: Az Azure Storage migrálásával kapcsolatos gyakori kérdések |} A Microsoft Docs
+description: Áttelepítése az Azure Storage szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok
 services: storage
-documentationcenter: na
 author: genlin
-manager: timlt
-editor: tysonn
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 12172c53e8e5077f9690a2459bf5ccf3c3a05507
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.component: common
+ms.openlocfilehash: ecc5948c84f7659e950c360c3b19d1985b0ab81c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071390"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521489"
 ---
-# <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure tárterület-áttelepítés kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-about-azure-storage-migration"></a>Az Azure-tárterület-áttelepítés – gyakran ismételt kérdések
 
-Ez a cikk Azure tárterület-áttelepítés kapcsolatos gyakori kérdésekre. 
+Ez a cikk az Azure-tárterület-áttelepítés kapcsolatos általános kérdéseket válaszol. 
 
 ## <a name="faq"></a>GYIK
 
-**Hogyan hozható létre egy parancsfájlt, amely a fájlok másolása egy tároló a másikra?**
+**Hogyan hozhatok létre egy parancsfájlt, hogy fájlokat másoljon egy tárolót a másikba?**
 
-Másolja a fájlokat tároló között, AzCopy is használhat. Tekintse meg a következő példát:
+Másolja a fájlokat a tárolók között, az AzCopy is használhatja. Tekintse meg a következő példát:
 
     AzCopy /Source:https://xxx.blob.core.windows.net/xxx
     /Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
     /S
 
-AzCopy használja a [másolási Blob API](https://docs.microsoft.com/rest/api/storageservices/copy-blob) minden fájl másolása a tárolóban.  
+Az AzCopy használja a [másolás Blob API](https://docs.microsoft.com/rest/api/storageservices/copy-blob) minden egyes fájl másolása a tárolóban.  
   
-Minden virtuális gép vagy a helyi számítógép AzCopy futtatásához internet-hozzáféréssel rendelkező is használhatja. Egy Azure Batch ütemezést ehhez automatikusan is használhatja, de több bonyolult.  
+Minden virtuális gép vagy a helyi gépen, amelyen internet-hozzáférés AzCopy futtatásához használhatja. Egy Azure Batch ütemezési automatikusan ehhez is használhatja, de több bonyolult.  
   
-Az automatizálási parancsfájl készült Azure Resource Manager deployment tárolási tartalom kezelése helyett. További információkért lásd: [erőforrások a Resource Manager-sablonok és Azure PowerShell telepítése](../../azure-resource-manager/resource-group-template-deploy.md).
+Az automation-szkript az Azure Resource Manager üzembe helyezési helyett tárolási tartalom kezelésének lett tervezve. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md).
 
-**Van bármilyen díjat a tárfiókon belül ugyanabban a régióban található két fájlmegosztások között az adatok másolásának?**
+**Van valamilyen díja az adott tárfiók ugyanabban a régióban található két fájlmegosztások közötti másolást?**
 
-Nem. Nincs a folyamat nem kell fizetni.
+Nem. Nem jár ez a folyamat.
 
-**Hogyan készíthetek biztonsági másolatot a teljes tárfiókot egy másik tárfiókkal?**
+**Hogyan készíthetek biztonsági másolatot egy másik tárfiókba a teljes storage-fiókomat?**
 
-Nincs biztonsági mentése egy teljes tárfiókot közvetlenül beállítás. De manuálisan áthelyezheti a tároló, hogy a tárfiók egy másik fiókot AzCopy vagy Tártallózó használatával. A következő lépések bemutatják, hogyan AzCopy használatával helyezze át a tárolót:  
+Nincs biztonsági mentése egy teljes tárfiókot közvetlenül lehetőség. De, manuálisan áthelyezheti a tárolóhoz a tárfiók egy másik fiókba az AzCopy és a Storage Explorer használatával. A következő lépések bemutatják, hogyan a tároló áthelyezése az AzCopy használata:  
  
 
-1.  Telepítse a [AzCopy](storage-use-azcopy.md) parancssori eszközt. Az eszköz segítségével helyezze át a VHD-fájl tárfiókok között.
+1.  Telepítse a [AzCopy](storage-use-azcopy.md) parancssori eszköz. Ez az eszköz segít a VHD-fájl áthelyezése a storage-fiókok között.
 
-2.  Miután a telepítő használatával telepíti a Windows az AzCopy, nyisson meg egy parancssori ablakot, és tallózással keressen meg az AzCopy telepítési mappát a számítógépén. Alapértelmezés szerint AzCopy telepítés **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** vagy **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+2.  Miután a telepítő használatával telepít Windows AzCopy, nyisson meg egy parancssori ablakot, és keresse meg az AzCopy telepítési mappát a számítógépén. Alapértelmezés szerint az AzCopy telepítve van a **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** vagy **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
 
-3.  A következő paranccsal helyezze át a tárolót. A tényleges értékeket kell cseréli le a szöveget.   
+3.  Futtassa a következő parancsot a tároló áthelyezéséhez. A szöveg a tényleges értékekre kell cserélnie.   
      
             AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
             /Dest:https://destaccount.blob.core.windows.net/mycontainer2
             /SourceKey:key1 /DestKey:key2 /S
 
-    - `/Source`: Adja meg az URI a forrás tárolási fiók (akár a tároló).  
-    - `/Dest`: Adja meg az URI a céloldali tárfiók (akár a tároló).  
-    - `/SourceKey`: Adja meg a forrás tárfiók elsődleges kulcsát. Ezt a kulcsot a tárfiók kiválasztásával másolhatja az Azure-portálon.  
-    - `/DestKey`: Adja meg a céloldali tárfiók elsődleges kulcsát. Ezt a kulcsot a tárfiók kiválasztásával másolhatja a portálról.
+    - `/Source`: A forrás tárfiókban (akár a tároló) adja meg az URI-t.  
+    - `/Dest`: Adja meg az URI-t a céloldali tárfiók (akár a tároló).  
+    - `/SourceKey`: A forrás tárfiókban elsődleges kulcsát adja meg. Ezt a kulcsot az Azure Portalról másolhatja a storage-fiók kiválasztásával.  
+    - `/DestKey`: Adja meg a célként megadott tárfiók elsődleges kulcsát. Ezt a kulcsot a portálról másolhatja a storage-fiók kiválasztásával.
 
-Ez a parancs futtatása után a tároló fájlokat áthelyezik a céloldali tárfiók.
+Ez a parancs futtatása után a tároló fájlokat áthelyezik a célként megadott tárfiók.
 
 > [!NOTE]
-> Az AzCopy parancssori felület nem működik együtt a **mintát** egy Azure-ból másolásakor Váltás másik blob.
+> Az AzCopy parancssori felület nem működik együtt a **minta** váltani, ha másol egy Azure blob egy másikba.
 >
-> Közvetlenül másolása és szerkesztheti az AzCopy parancs, és győződjön meg arról, hogy a keresztellenőrzés **mintát** megegyezik a forrás. Győződjön meg arról is, amely **/S** helyettesítő karakterek vannak érvényben. További információkért lásd: [AzCopy paraméterek](storage-use-azcopy.md).
+> Közvetlenül másolása és szerkesztheti az AzCopy-parancsot, és győződjön meg arról, hogy összevetéséhez **minta** megegyezik a forrás. Győződjön meg arról is, amely **/S** helyettesítő akkor vannak érvényben. További információkért lásd: [AzCopy paraméterek](storage-use-azcopy.md).
 
-**Hogyan helyezhető át adatokat a tároló egy másik?**
+**Hogyan helyezhetek át adatokat egy storage-tárolóból egy másikra?**
 
 Kövesse az alábbi lépéseket:
 
-1.  A tároló (mappa) létrehozása a cél BLOB.
+1.  Hozzon létre a tároló (mappa) a cél blob.
 
-2.  Használjon [AzCopy](https://azure.microsoft.com/blog/azcopy-5-1-release/) másolásához az eredeti blob tárolóból egy másik blob-tárolóba.
+2.  Használat [AzCopy](https://azure.microsoft.com/blog/azcopy-5-1-release/) , másolja a tartalmat az eredeti blob-tárolóból egy másik blob-tárolóba.
 
-**Hogyan hozható létre adatok áthelyezése egy Azure fájlmegosztás között, az Azure Storage PowerShell parancsfájlt?**
+**Hogyan hozhatok létre egy PowerShell-parancsprogram adatok áthelyezése egy Azure-fájlmegosztásról egy másikra, az Azure Storage-ban?**
 
-AzCopy segítségével az adatok áthelyezése egy Azure fájlmegosztás között, az Azure Storage. További információkért lásd: [adatátvitel az AzCopy Windows](storage-use-azcopy.md) és [adatátvitel az AzCopy Linux](storage-use-azcopy-linux.md).
+Az AzCopy segítségével az adatok áthelyezése egy Azure-fájlmegosztás között az Azure Storage-ban. További információkért lásd: [adatok áthelyezése az AzCopy Windows rendszeren](storage-use-azcopy.md) és [adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md).
 
-**Hogyan nagy .csv fájlok feltöltése a Azure Storage?**
+**Hogyan tölthetek nagy .csv fájlt az Azure Storage?**
 
-AzCopy segítségével nagy .csv fájlok feltöltése az Azure Storage. További információkért lásd: [adatátvitel az AzCopy Windows](storage-use-azcopy.md) és [adatátvitel az AzCopy Linux](storage-use-azcopy-linux.md).
+Az AzCopy használatával nagy .csv-fájlok feltöltése az Azure Storage. További információkért lásd: [adatok áthelyezése az AzCopy Windows rendszeren](storage-use-azcopy.md) és [adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md).
 
-**Történő áthelyezéséhez a naplók az Azure storage-fiókom naponta D meghajtón van. Hogyan ez automatizálni?**
+**Történő áthelyezéséhez a naplókat az Azure storage-fiókom naponta D meghajtón van. Hogyan ezt automatizálni?**
 
-AzCopy használja, és hozzon létre egy feladatot a Feladatütemező. Fájlok feltöltése az Azure storage-fiók egy AzCopy kötegelt parancsfájl használatával. További információkért lásd: [hogyan lehet konfigurálni és futtatni egy felhőalapú szolgáltatás indítási feladatokat](../../cloud-services/cloud-services-startup-tasks.md).
+Az AzCopy használata, és hozzon létre egy feladatot a Feladatütemező. Fájlok feltöltése Azure storage-fiók egy AzCopy batch parancsfájl használatával. További információkért lásd: [konfigurálása és a egy felhőalapú szolgáltatás indítási feladatok futtatásának](../../cloud-services/cloud-services-startup-tasks.md).
 
-**Hogyan helyezze át a tárfiókot előfizetések között?**
+**Hogyan áthelyezése előfizetések között a storage-fiókomat?**
 
-AzCopy használatával helyezze át a tárfiók előfizetések között. További információkért lásd: [adatátvitel az AzCopy Windows](storage-use-azcopy.md) és [adatátvitel az AzCopy Linux](storage-use-azcopy-linux.md).
+Az AzCopy segítségével a storage-fiók áthelyezése előfizetések között. További információkért lásd: [adatok áthelyezése az AzCopy Windows rendszeren](storage-use-azcopy.md) és [adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md).
 
-**Hogyan helyezhető 10 TB-nyi tárhelyre, egy másik régióban adatok?**
+**Hogyan helyezhetem át 10 TB-nyi adat egy másik régióban a Storage?**
 
-AzCopy használatával helyezi át az adatokat. További információkért lásd: [adatátvitel az AzCopy Windows](storage-use-azcopy.md) és [adatátvitel az AzCopy Linux](storage-use-azcopy-linux.md).
+Az adatok áthelyezése az AzCopy használata. További információkért lásd: [adatok áthelyezése az AzCopy Windows rendszeren](storage-use-azcopy.md) és [adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md).
 
-**Hogyan tudom átmásolhatja adatokat a helyszíni Azure Storage?**
+**Hogyan tudok másolhat adatokat a helyszínről az Azure Storage?**
 
-AzCopy használatával másolja az adatokat. További információkért lásd: [adatátvitel az AzCopy Windows](storage-use-azcopy.md) és [adatátvitel az AzCopy Linux](storage-use-azcopy-linux.md).
+Az AzCopy használatával másolja az adatokat. További információkért lásd: [adatok áthelyezése az AzCopy Windows rendszeren](storage-use-azcopy.md) és [adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md).
 
-**Hogyan helyezhető át adatokat a helyszíni az Azure Fileshoz?**
+**Hogyan helyezhetem át adatokat a helyszínről az Azure Files?**
 
-AzCopy használatával helyezi át az adatokat. További információkért lásd: [adatátvitel az AzCopy Windows](storage-use-azcopy.md) és [adatátvitel az AzCopy Linux](storage-use-azcopy-linux.md).
+Adatok áthelyezése az AzCopy használata. További információkért lásd: [adatok áthelyezése az AzCopy Windows rendszeren](storage-use-azcopy.md) és [adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md).
 
-**Hogyan hozzárendelését a virtuális gépen egy tároló mappát?**
+**Hogyan rendelhetek egy tároló mappát egy virtuális gépen?**
 
-Egy Azure fájlmegosztás használja.
+Azure-fájlmegosztás használja.
 
 **Hogyan készíthetek biztonsági másolatot az Azure file storage?**
 
-Jelenleg nincs biztonsági mentési megoldás. Azure-fájlok is aszinkron másolási támogatja. Igen másolhatja a fájlokat:
+Nincs biztonsági mentési megoldás nincs. Azonban az Azure Files támogatja aszinkron példányt is. Tehát másolhatja a fájlokat:
 
-- Egy megosztáson egy tárfiókon belül egy másik megosztott vagy egy másik tárfiókhoz.
+- A megosztás a tárfiókon belül egy másik megosztást vagy egy másik tárfiókba.
 
-- Egy megosztáson egy blob-tárolóba, a tárfiókon belül, vagy egy másik tárfiókhoz.
+- A megosztás blob-tárolóba a tárfiókon belül vagy egy másik tárfiókba.
 
-További információkért lásd: [adatátvitel az AzCopy Windows](storage-use-azcopy.md).
+További információkért lásd: [adatok áthelyezése az AzCopy Windows rendszeren](storage-use-azcopy.md).
 
-**Hogyan felügyelt lemezek áthelyezése másik tárolási fiókot?**
+**Hogyan helyezhetek át a felügyelt lemezek egy másik tárfiókba?**
 
 Kövesse az alábbi lépéseket:
 
-1.  Állítsa le a virtuális gépet, amely a felügyelt lemezes csatlakozik.
+1.  Állítsa le a virtuális gép, amely a felügyelt lemez csatolva van.
 
-2.  Másolja a felügyelt lemezes virtuális Merevlemezt egy területről egy másikra a következő Azure PowerShell-parancsfájl futtatásával:
+2.  Másolja a felügyelt lemezt VHD-t egy területről egy másikra a következő Azure PowerShell-szkript futtatásával:
 
     ```
     Connect-AzureRmAccount
@@ -141,7 +136,7 @@ Kövesse az alábbi lépéseket:
     Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
     ```
 
-3.  Hozzon létre egy felügyelt lemezes a VHD-fájlt egy másik régióban, amelybe másolta a virtuális merevlemez használatával. Ehhez futtassa a következő Azure PowerShell-parancsfájlt:  
+3.  Felügyelt lemez létrehozása VHD-fájl egy másik régióban, amelybe a virtuális merevlemez használatával. Ehhez futtassa a következő Azure PowerShell-parancsfájlt:  
 
     ```
     $resourceGroupName = 'MDDemo'
@@ -161,93 +156,93 @@ Kövesse az alábbi lépéseket:
     $osDisk = New-AzureRmDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ``` 
 
-Felügyelt lemezes virtuális gép telepítésével kapcsolatos további információkért lásd: [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
+Egy felügyelt lemezt egy virtuális gép üzembe helyezésével kapcsolatos további információkért lásd: [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
 
-**Hogyan tölthetők le az Azure portálról 1-2 TB adatot?**
+**Hogyan is 1 – 2 TB adat letöltése az Azure Portalon?**
 
-AzCopy segítségével töltse le az adatokat. További információkért lásd: [adatátvitel az AzCopy Windows](storage-use-azcopy.md) és [adatátvitel az AzCopy Linux](storage-use-azcopy-linux.md).
+Az AzCopy használatával töltse le az adatokat. További információkért lásd: [adatok áthelyezése az AzCopy Windows rendszeren](storage-use-azcopy.md) és [adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md).
 
-**A másodlagos hely módosítása a tárfiókon Európa régió**
+**Hogyan módosíthatom a másodlagos hely az Európai régióban a storage-fiók?**
 
-A storage-fiók létrehozásakor ki kell választania a fiók az elsődleges régióban. A másodlagos régióba kiválasztása az elsődleges régióban alapul, és nem módosítható. További információkért lásd: [georedundáns tárolás (GRS): az Azure Storage kereszt-területi replikációs](storage-redundancy.md).
+Amikor létrehoz egy tárfiókot, válassza ki az elsődleges régió a fiókhoz. A másodlagos régió kiválasztása az elsődleges régió alapján, és nem módosítható. További információkért lásd: [georedundáns tárolás (GRS): az Azure Storage-régiók közti replikációs](storage-redundancy.md).
 
-**Hol kaphatok további információt Azure Storage szolgáltatás titkosítási (SSE)?**  
+**Hol kaphatok további információt az Azure Storage Service Encryption (SSE)?**  
   
 Lásd az alábbi cikkeket:
 
 -  [Biztonsági útmutató az Azure Storage-hoz](storage-security-guide.md)
 
--  [Az Azure Storage szolgáltatás titkosítási az inaktív adatok](storage-service-encryption.md)
+-  [Az Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)
 
-**Hogyan helyezze át vagy adatok letöltése a tárfiókból?**
+**Hogyan áthelyezése vagy adatokat letölteni a storage-fiók?**
 
-AzCopy segítségével töltse le az adatokat. További információkért lásd: [adatátvitel az AzCopy Windows](storage-use-azcopy.md) és [adatátvitel az AzCopy Linux](storage-use-azcopy-linux.md).
+Az AzCopy használatával töltse le az adatokat. További információkért lásd: [adatok áthelyezése az AzCopy Windows rendszeren](storage-use-azcopy.md) és [adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md).
 
 
-**Hogyan titkosítják a tárfiókban lévő adatokat?**
+**Hogyan titkosíthatom az adatok a storage-fiókban?**
 
-Miután engedélyezte a tárfiók-titkosításra, a meglévő adatok nem titkosítottak. A meglévő adatok titkosítása, fel kell tölteni azt újra a tárfiókot.
+Miután engedélyezte a storage-fiókban lévő titkosítási, a meglévő adatok nem titkosítottak. A meglévő adatok titkosításához, fel kell tölteni azt újra a storage-fiókba.
 
-AzCopy segítségével az adatok másolása során eltérő tárfiók, és ezután helyezze vissza az adatokat. Is [titkosítását](storage-service-encryption.md).
+Az AzCopy használatával másolja az adatokat egy másik tárfiókot, és ezután helyezze vissza az adatokat. Is [titkosítás inaktív állapotban](storage-service-encryption.md).
 
-**Hogyan tölthetők le a VHD-t a helyi gépen, másik a letöltése beállítás a portál használatával?**
+**Hogyan tölthetem le egy virtuális Merevlemezt a helyi számítógépre, más, mint a letöltési lehetőséget a portál használatával?**
 
-Használhat [Tártallózó](https://azure.microsoft.com/features/storage-explorer/) letölteni egy virtuális Merevlemezt.
+Használhat [Tártallózó](https://azure.microsoft.com/features/storage-explorer/) virtuális merevlemez letöltésére.
 
-**Van valamilyen előfeltétele a tárfiók replikációs módosítása az georedundáns tárolás helyileg redundáns tárolás?**
+**Van valamilyen előfeltétele a tárfiók replikálásának módosítására a georedundáns tárolás, helyileg redundáns tárolás?**
 
 Nem. 
 
-**Hogyan érhetem el az Azure-fájlok redundáns tárolás?**
+**Hogyan érhetem el az Azure Files redundáns tárolást?**
 
-Írásvédett georedundáns tárolás redundáns tárolás eléréséhez szükséges. Azure fájlok azonban csak a helyileg redundáns tárolás és a csak olvasható hozzáférést nem engedélyező standard georedundáns tárolás támogatja. 
+Írásvédett georedundáns tárolás redundáns tároló eléréséhez szükséges. Az Azure Files azonban csak a helyileg redundáns tárolás és a standard georedundáns tárolás, amely nem engedélyezi a csak olvasható hozzáférést támogatja. 
 
-**Hogyan helyezhető át a prémium szintű tárfiókból szabványos tárfiókba?**
+**Hogyan helyezhetek át egy prémium szintű storage-fiókból, Standard szintű tárfiókot?**
 
 Kövesse az alábbi lépéseket:
 
-1.  Standard szintű storage-fiók létrehozása. (Vagy egy meglévő szabványos tárfiók az előfizetésben.)
+1.  Hozzon létre egy standard szintű tárfiókot. (Vagy használjon egy meglévő standard szintű tárfiókot az előfizetésében.)
 
-2.  Töltse le az AzCopy. A következő AzCopy parancsok egyikét futtatja.
+2.  Töltse le az AzCopy. Futtassa a következő AzCopy-parancsok egyikét.
       
-    Teljes lemezek másolása a tárfiókban lévő:
+    Teljes lemezek másolása a tárfiókban:
 
         AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
         /SourceKey:key1 /DestKey:key2 /S 
 
-    Csak egy lemezre másolásához adja meg a nevét, a lemez **mintát**:
+    Csak egy lemez másolása, adja meg a lemez nevét **minta**:
 
         AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
         /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
 
    
-A művelet több órát vehet igénybe.
+A művelet több órát is igénybe vehet.
 
-Győződjön meg arról, hogy az átvitel sikeresen befejeződött-e, vizsgálja meg a célként megadott fiókot a tároló az Azure portálon. Miután a lemezek másolása, a standard szintű tárfiókot, csatolhat azokat a virtuális gép egy meglévő lemezként. További információkért lásd: [hogyan felügyelt adatlemezt csatolni egy Windows rendszerű virtuális gép az Azure portálon](../../virtual-machines/windows/attach-managed-disk-portal.md).  
+Győződjön meg arról, hogy az átvitel sikeresen befejeződött-e, vizsgálja meg a cél tárfiók tárolójának az Azure Portalon. Miután a lemezek a standard szintű tárfiók másolja, csatlakoztathat azokat a virtuális gép egy meglévő lemezként. További információkért lásd: [felügyelt adatlemez csatlakoztatása az Azure Portalon Windows virtuális gép](../../virtual-machines/windows/attach-managed-disk-portal.md).  
   
-**Alakítása prémium szintű Azure Storage a fájlmegosztás?**
+**Hogyan tudok áttérni az Azure Premium Storage egy fájlmegosztás?**
 
-Prémium szintű Storage nem engedélyezett az Azure fájlmegosztások.
+A Premium Storage az Azure-fájlmegosztások nem engedélyezett.
 
-**Hogyan lehet frissíteni egy standard szintű tárfiók egy prémium szintű tárfiók? Hogyan tegye szeretnék használni a prémium szintű tárfiókból szabványos tárfiókba?**
+**Hogyan frissíthetek standard szintű tárfiók a premium storage-fiók? Hogyan do I visszaléphetnek premium storage-fiók egy standard szintű tárfiókot?**
 
-Kell a cél tárfiók létrehozása, a forrás-fiók adatainak másolása a célként megadott fiók és törölje a forrás-fiók. Egy eszköz, például az AzCopy segítségével másolja az adatokat.
+Kell a cél tárfiók létrehozásához, a forrás-fiók adatainak másolása a cél-fiók és törölje a forrás-fiók. Egy eszköz, például az AzCopy segítségével másolja az adatokat.
 
-Ha virtuális gépeket, mielőtt áttelepítené a tárolási fiók adatait további lépéseket kell végrehajtani. További információkért lásd: [áttelepítés prémium szintű Azure Storage (nem felügyelt lemezek)](storage-migration-to-premium-storage.md).
+Ha a virtuális gépekkel rendelkezik, a storage-fiók adatok áttelepítése előtt további lépéseket kell végrehajtani. További információkért lásd: [áttelepítése az Azure Premium Storage (nem felügyelt lemezek)](storage-migration-to-premium-storage.md).
 
-**Hogyan helyezhető át a klasszikus tárfiókból az Azure Resource Manager tárfiókkal?**
+**Hogyan helyezhetek át klasszikus tárfiók a storage-fiókba az Azure Resource Manager?**
 
-Használhatja a **Move-AzureStorageAccount** parancsmag. Ez a parancsmag több lépést rendelkezik (érvényesítése, előkészítése, véglegesítése). Ellenőrizheti az áthelyezés előtt.
+Használhatja a **Move-AzureStorageAccount** parancsmagot. Ez a parancsmag több lépésből áll (érvényesítéséhez, előkészítése, véglegesítése). Az áthelyezés előtt ellenőrizheti.
 
-Ha virtuális gépeket, mielőtt áttelepítené a tárolási fiók adatait további lépéseket kell végrehajtani. További információkért lásd: [át IaaS-erőforrásokra a klasszikus Azure Resource Manager Azure PowerShell használatával](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
+Ha a virtuális gépekkel rendelkezik, a storage-fiók adatok áttelepítése előtt további lépéseket kell végrehajtani. További információkért lásd: [át IaaS-erőforrások klasszikusból Azure Resource Manager Azure PowerShell-lel](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
 
-**Hogyan Azure storage-fiók egy Linux-alapú számítógép adatletöltéshez, vagy töltse fel az adatokat a Linux gépről?**
+**Hogyan adatokat letölteni egy Linux-alapú számítógépre egy Azure storage-fiókot, vagy feltölthet egy Linux-gép adatokat?**
 
-Az Azure parancssori felület is használhatja.
+Az Azure CLI-vel is használhatja.
 
-- Töltse le egy blob:
+- Egy blob letöltése:
 
       azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
 
@@ -255,51 +250,51 @@ Az Azure parancssori felület is használhatja.
 
       azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
 
-**Hogyan tudom mások hozzáférést biztosíthat a tárolási erőforrások?**
+**Hogyan tudok mások hozzáférést biztosíthat a tárolási erőforrások?**
 
-A más felhasználók hozzáférésének a tárolási erőforrások:
+A más hozzáférést biztosít a tárolási erőforrások:
 
--   Egy közös hozzáférésű jogosultságkód (SAS) token használatával adja meg az erőforráshoz való hozzáférés. 
+-   Egy közös hozzáférésű jogosultságkód (SAS) használatával adja meg az erőforrásokhoz való hozzáférést. 
 
--   A felhasználó részére a tárfiók elsődleges vagy másodlagos kulcsot. További információkért lásd: [a tárfiók kezelése](storage-create-storage-account.md#manage-your-storage-account).
+-   Adjon egy felhasználónak a tárfiókhoz az elsődleges vagy másodlagos kulcsot. További információkért lásd: [a tárfiók kezelése](storage-create-storage-account.md#manage-your-storage-account).
 
--   A névtelen hozzáférés engedélyezése a házirend módosítása. További információkért lásd: [tárolók és blobok névtelen felhasználók engedélyeket](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
+-   Névtelen hozzáférés engedélyezése a hozzáférési szabályzatot módosíthatja. További információkért lásd: [tárolókhoz és blobokhoz való névtelen felhasználók engedélyek](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
 
-**AzCopy futtató?**
+**Az AzCopy telepítési helyéül?**
 
--   AzCopy fér hozzá a Microsoft Azure Storage parancssorból, írja be a **AzCopy**. A parancssor AzCopy együtt települ.
+-   Ha az AzCopy éri el a Microsoft Azure Storage-parancssorból, írja be a **AzCopy**. A parancssor AzCopy együtt települ.
 
--   Ha telepítette a 32 bites verziója, az itt található: **% ProgramFiles(x86) %\\Microsoft SDKs\\Azure\\AzCopy**.
+-   Ha a 32 bites verziója telepítve van itt található: **% ProgramFiles(x86) %\\Microsoft SDKs\\Azure\\AzCopy**.
 
--   Ha telepítette a 64 bites verziója, az itt található: **% ProgramFiles %\\Microsoft SDKs\\Azure\\AzCopy**.
+-   Ha telepítette a 64 bites verziója van itt található: **% ProgramFiles %\\Microsoft SDKs\\Azure\\AzCopy**.
 
-**A replikált tárfiókon (például zónaredundáns tárolás, a georedundáns tárolást, vagy írásvédett georedundáns tárolás) hogyan érhető el a másodlagos régióban tárolt adatokat?**
+**A replikált storage-fiókok (például a zónaredundáns tárolás, georedundáns tárolás vagy írásvédett georedundáns tárolás) hogyan férhetek hozzá a másodlagos régió tárolt adatokat?**
 
--   Zónaredundáns tárolás vagy georedundáns tárolás használata, nem éri a másodlagos régióba kivéve, ha a feladatátvételt hajt végre. A feladatátvételi folyamat kapcsolatos további információkért lásd: [mi történik, ha egy storage feladatátvételt hajt végre](storage-disaster-recovery-guidance.md#what-to-expect-if-a-storage-failover-occurs).
+-   Zónaredundáns tárolás vagy georedundáns tárolást használ, ha nem érhetők el adatok a másodlagos régióból, kivéve, ha feladatátvétel történik. A feladatátvételi folyamattal kapcsolatos további információkért lásd: [mire számítson, ha a tárolási feladatátvétel](storage-disaster-recovery-guidance.md#what-to-expect-if-a-storage-failover-occurs).
 
--   Ha írásvédett georedundáns tárolás használata esetén elérhető adatokat a másodlagos régióba bármikor. Az alábbi módszerek valamelyikével:  
+-   Ha írásvédett georedundáns tárolás használata esetén férhet hozzá adataihoz a másodlagos régióból bármikor. Az alábbi módszerek valamelyikével:  
       
-    - **AzCopy**: hozzáfűzése **-másodlagos** a tárfiók nevét a másodlagos végpont elérésére az URL-cím számára. Példa:  
+    - **Az AzCopy**: hozzáfűzése **– másodlagos** , a tárfiók nevét a másodlagos végpont elérésére az URL-címben. Példa:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS-jogkivonat**: egy SAS-jogkivonat segítségével érheti el az adatait a végpontról. További információkért lásd: [használata közös hozzáférésű jogosultságkód](storage-dotnet-shared-access-signature-part-1.md).
+    - **SAS-jogkivonat**: egy SAS-jogkivonat használatával érheti el adatait a végpontról. További információkért lásd: [a közös hozzáférésű jogosultságkódot](storage-dotnet-shared-access-signature-part-1.md).
 
-**Hogyan használható egy HTTPS egyéni tartomány a storage-fiókom? Például Hogyan tehetem "https://mystorageaccountname.blob.core.windows.net/images/image.gif" tűnnek "https://www.contoso.com/images/image.gif"?**
+**Hogyan egy HTTPS-egyéni tartomány használata a storage-fiókomat? Például Hogyan tehetem "https://mystorageaccountname.blob.core.windows.net/images/image.gif" tűnnek "https://www.contoso.com/images/image.gif"?**
 
-SSL jelenleg nem támogatott az egyéni tartomány tárfiókokban.
-De egyéni tartományok nem HTTPS. További információkért lásd: [állítson be egy egyéni tartománynevet a Blob storage-végponthoz](../blobs/storage-custom-domain-name.md).
+Az SSL jelenleg nem támogatott az egyéni tartományok a storage-fiókok.
+De egyéni tartományokat nem-HTTPS használható. További információkért lásd: [egy egyéni tartománynév beállítása a Blob storage-végponthoz](../blobs/storage-custom-domain-name.md).
 
-**Hogyan FTP segítségével, amely a tárfiókban lévő adatokat hozzáférést?**
+**Hogyan használhatom az FTP, amely egy storage-fiókban lévő adatok elérését?**
 
-Nincs mód FTP segítségével közvetlenül a tárfiók eléréséhez. Azonban állítson be egy Azure virtuális gépet, és telepítse az FTP-kiszolgáló a virtuális gépen. A fájlok tárolására az Azure-fájlok megosztáson vagy a virtuális gép számára elérhető adatlemezt FTP-kiszolgáló lehet.
+Nincs lehetőség a FTP használatával közvetlenül a tárfiók eléréséhez. Azonban egy Azure virtuális gép beállításához, és telepítse az FTP-kiszolgáló a virtuális gépen. Az FTP-kiszolgáló egy Azure-fájlmegosztással vagy egy adatlemezt a virtuális gép számára elérhető fájlok tárolására is rendelkezhet.
 
-Ha azt szeretné, csak az adatok letöltése Tártallózó vagy más hasonló alkalmazás használata nélkül, előfordulhat, hogy fogja tudni használni az SAS-tokent. További információkért lásd: [használata közös hozzáférésű jogosultságkód](storage-dotnet-shared-access-signature-part-1.md).
+Ha azt szeretné, csak az adatok letöltése a Storage Explorerben vagy más hasonló alkalmazás használata nélkül, lehet használni egy SAS-tokent. További információkért lásd: [a közös hozzáférésű jogosultságkódot](storage-dotnet-shared-access-signature-part-1.md).
 
-**Hogyan tudom át Blobok egy tárfiókot a másik?**
+**Hogyan migrálhatok blobokat egyik tárfiókból a másikba?**
 
- Ehhez használja a [Blob-áttelepítési parancsfájl](../scripts/storage-common-transfer-between-storage-accounts.md).
+ Ehhez használja a [áttelepítési parancsfájl Blob](../scripts/storage-common-transfer-between-storage-accounts.md).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
 
-Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.
+Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

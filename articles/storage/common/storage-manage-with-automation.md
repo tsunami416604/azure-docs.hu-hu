@@ -1,47 +1,41 @@
 ---
-title: Azure Storage használata az Azure Automation kezelése
-description: Hogyan az Azure Automation szolgáltatás segítségével kezelheti az Azure Storage léptékű megismerése.
+title: Kezelhető az Azure Storage, Azure Automation használatával
+description: Ismerje meg, hogyan az Azure Automation szolgáltatás segítségével kezelhető az Azure Storage nagy mennyiségű információ.
 services: storage, automation
-documentationcenter: ''
 author: jodoglevy
-manager: eamono
-editor: ''
-ms.assetid: bac41c39-1d95-46aa-a481-ec17bbb21b40
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: eamono
-ms.openlocfilehash: 4649e42a628307e15f8b067503e4e8e13f16f1af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 82ec929c8d3055187a83179432fc601baa191cc4
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873799"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526368"
 ---
-# <a name="managing-azure-storage-using-azure-automation"></a>Azure Storage használata az Azure Automation kezelése
-Az útmutatóból megismerheti az Azure Automation szolgáltatás, és hogyan használható egyszerűbbé teheti a Azure Storage-blobot, táblát és üzenetsort kezelését.
+# <a name="managing-azure-storage-using-azure-automation"></a>Azure Automation használatával az Azure tárolás kezelése
+Ez az útmutató vezet be, az Azure Automation szolgáltatást, és hogyan használható az Azure Storage-blobok, táblák és üzenetsorok kezelésének egyszerűsítéséhez.
 
 ## <a name="what-is-azure-automation"></a>Mi az Azure Automation?
-[Azure Automation szolgáltatásbeli](https://azure.microsoft.com/services/automation/) egy Azure szolgáltatás felhő kezelésüket folyamatok automatizálása révén. Azure Automation használ, hosszan futó, manuális, hibákhoz vezethet, és gyakran ismétlődő feladatok automatizálható a megbízhatóság és a hatékonyság növelésére, és idejének csökkentése érdekében a szervezet értékre.
+[Az Azure Automation](https://azure.microsoft.com/services/automation/) leegyszerűsíti a felhőfelügyelet a folyamatok automatizálása révén az Azure-szolgáltatások. Az Azure Automationnel, hosszan futó, manuális, sok hibalehetőséget rejtő és gyakran ismételt feladatok automatizálhatók a megbízhatóság és a hatékonyság növelése érdekében, és csökkenteni a piacra érték a szervezet számára.
 
-Azure Automation szolgáltatásbeli egy magas rendelkezésre állású és nagymértékben megbízható munkafolyamat-végrehajtási motorjának, amely az igényeinek, ha a szervezet növekedésének megfelelően méretezi biztosít. Az Azure Automationben folyamatok is lehet kezdődött el manuálisan, a 3. fél rendszerek vagy rendszeres időközönként, hogy a feladatok fordulhat elő, pontosan, ha szükséges.
+Az Azure Automation segítségével egy rendkívül megbízható és magas rendelkezésre állású munkafolyamat-végző összetevőjével, amely az igényeinek, ha a szervezet növekedésével skálázható. Az Azure Automation szolgáltatás folyamatokat is lehet kezdődjön manuálisan, 3. rendszerekben, vagy rendszeres időközönként, hogy a feladatok fordulhat elő, pontosan akkor, ha szükséges.
 
-Működési munkaterhelés csökkentése és az szabadítson fel informatikai / azáltal, hogy a felhő felügyeleti feladatok automatikusan Azure Automation által futtatandó value DevOps személyzet üzleti hozzáadó munkahelyi összpontosíthat.
+Csökkentheti üzemeltetési terheit és szabadítson fel informatikai fejlesztési és üzemeltetési csapatának munkára, így üzleti érték a felhőfelügyeleti feladatokat automatikusan Azure Automation által futtatandó való váltással.
 
-## <a name="how-can-azure-automation-help-manage-azure-storage"></a>Hogyan segíthet az Azure Automation kezelése az Azure Storage?
-Az Azure Storage által biztosított PowerShell-parancsmagok használatával kezelhető az Azure Automationben [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Azure Automation a elérhető Storage PowerShell parancsmagok alapesetben rendelkezik, így a blob, table és várólista felügyeleti feladatok a szolgáltatáson belül végezheti el. Ezek a parancsmagok az Azure Automationben más Azure-szolgáltatások, Azure-szolgáltatások és a 3. fél rendszerek között összetett feladatok automatizálása a parancsmagjaival is párosítható.
+## <a name="how-can-azure-automation-help-manage-azure-storage"></a>Hogyan segít az Azure Automation kezelhető az Azure Storage?
+Az Azure Storage a PowerShell-parancsmagok segítségével kezelhetők az Azure Automationben [Azure PowerShell-lel](https://msdn.microsoft.com/library/azure/jj156055.aspx). Az Azure Automation a ezek elérhető Storage PowerShell parancsmagjainak, beépített rendelkezik, így akkor is végrehajthatja a blob, table és queue felügyeleti feladatokat a szolgáltatáson belül. Ezek a parancsmagok az Azure Automation parancsmagjaival más Azure-szolgáltatások, az összetett feladatok automatizálása Azure-szolgáltatások és a 3. fél rendszerek párosítása is történik.
 
-A [Azure Automation-runbook gyűjtemény](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) termék csoportját, és a Közösség runbookok Ismerkedés az Azure Storage, más Azure-szolgáltatások és a 3. fél rendszerek felügyeletének automatizálására különböző tartalmaz. Gyűjteményelem forgatókönyvek a következők:
+A [Azure Automation forgatókönyv-katalógusában](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) automatizálásának Azure Storage, más Azure-szolgáltatások és a 3. fél rendszerek felügyeleti csoport és a Közösség runbookok termék különböző tartalmaz. A katalógus forgatókönyveinek a következők:
 
-* [Távolítsa el az Azure Storage Blobs, amelyek az egyes napok régi használatával Automation szolgáltatás](https://gallery.technet.microsoft.com/scriptcenter/Remove-Storage-Blobs-that-aae4b761)
-* [Az Azure Storage Blob letöltése](https://gallery.technet.microsoft.com/scriptcenter/a-Blob-from-Azure-Storage-6bc13745)
-* [Egy Azure virtuális vagy virtuális gépeinek egy felhőalapú szolgáltatás, biztonsági mentés minden lemez](https://gallery.technet.microsoft.com/scriptcenter/Backup-all-disks-for-a-ede940d5)
+* [Távolítsa el az Azure Storage-Blobokkal, amelyek az egyes napok régi használatával Automation szolgáltatás](https://gallery.technet.microsoft.com/scriptcenter/Remove-Storage-Blobs-that-aae4b761)
+* [Letölt egy blobot az Azure Storage-ból](https://gallery.technet.microsoft.com/scriptcenter/a-Blob-from-Azure-Storage-6bc13745)
+* [Biztonsági mentés az összes lemez, egyetlen Azure virtuális gép, vagy az összes virtuális gép egy Cloud Service-ben](https://gallery.technet.microsoft.com/scriptcenter/Backup-all-disks-for-a-ede940d5)
 
-## <a name="next-steps"></a>Következő lépések
-Most, hogy megismerte az Azure Automation, és hogyan használható az Azure Storage blobot, táblát és üzenetsort kezelése alapjait, az alábbi hivatkozásokból tudhat meg többet az Azure Automation.
+## <a name="next-steps"></a>További lépések
+Most, hogy megismerte az Azure Automation, és hogyan használható kezelése az Azure Storage-blobok, táblák és üzenetsorok alapjait, az alábbi hivatkozásokból tudhat meg többet az Azure Automationben.
 
-Tekintse meg az Azure Automation [létrehozása vagy importálása az Azure Automationben runbook](../../automation/automation-creating-importing-runbook.md).
+Tekintse meg az Azure Automation oktatóanyag [létrehozása vagy importálása az Azure Automation-runbook](../../automation/automation-creating-importing-runbook.md).
 

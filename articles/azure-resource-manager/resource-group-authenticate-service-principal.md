@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 653208fd3ec952cf6ab941a4894f9a754e906a3b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: aec79655dde48a18891776f40c51aa5a5c859ef8
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492715"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577264"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Tanúsítvánnyal rendelkező szolgáltatásnév létrehozása az Azure PowerShell használatával
 
@@ -214,5 +214,5 @@ A szolgáltatásnév létrehozásakor az alábbi hibákba ütközhet:
 ## <a name="next-steps"></a>További lépések
 * A jelszót használó szolgáltatásnevek beállításáról a következő témakörben tájékozódhat: [Azure-beli szolgáltatásnév létrehozása az Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps).
 * Az erőforrásokat kezelő alkalmazások Azure-ba való integrálásáról részletes útmutatást az [Azure Resource Manager API-val végzett engedélyezés fejlesztői útmutatójában](resource-manager-api-authentication.md) találhat.
-* Az alkalmazásokról és a szolgáltatásnevekről bővebben az [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/active-directory-application-objects.md) című cikkben olvashat. 
+* Az alkalmazásokról és a szolgáltatásnevekről bővebben az [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/develop/app-objects-and-service-principals.md) című cikkben olvashat. 
 * Az Azure Active Directory-hitelesítésről további információt a [Hitelesítési forgatókönyvek az Azure AD-hez](../active-directory/develop/authentication-scenarios.md) című cikkben találhat.

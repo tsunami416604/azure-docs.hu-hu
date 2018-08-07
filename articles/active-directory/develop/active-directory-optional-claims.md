@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: a4e03eac9c41c72714103a2c863a9ed6b2fd8608
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265064"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577728"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nem kötelező jogcímek, az Azure ad-ben (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ez a szolgáltatás-k segítségével az alkalmazásfejlesztők adja meg, milyen
 > [!Note]
 > Ez a lehetőség jelenleg nyilvános előzetes verzióban érhető el. Készüljön fel a módosítások visszavonására vagy eltávolítására. A szolgáltatás minden olyan Azure AD-előfizetéshez, a nyilvános előzetes verzióban érhető el. Amikor a szolgáltatás általánosan elérhetővé válik, azonban a szolgáltatást bizonyos aspektusainak szükség lehet egy Azure AD premium előfizetéssel.
 
-Standard jogcímek és azok hogyan használhatók a tokenek listáját lásd: a [alapjait, az Azure AD által kiállított jogkivonatokban](active-directory-token-and-claims.md). 
+Standard jogcímek és azok hogyan használhatók a tokenek listáját lásd: a [alapjait, az Azure AD által kiállított jogkivonatokban](v1-id-and-access-tokens.md). 
 
 Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md) az ügyfelek által az optimális teljesítmény biztosítása érdekében kisebb token méretű.  Ennek eredményeképpen korábban szerepelni fog a hozzáférési és azonosító-jogkivonatokat több jogcím már nem találhatók a 2.0-s verziójú jogkivonatokban, és kifejezetten a alkalmazásonkénti alapján kell kérni.  
 
@@ -247,4 +247,4 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* Tudjon meg többet a [standard jogcímek](active-directory-token-and-claims.md) Azure AD által támogatott. 
+* Tudjon meg többet a [standard jogcímek](v1-id-and-access-tokens.md) Azure AD által támogatott. 

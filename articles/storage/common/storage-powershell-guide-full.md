@@ -1,49 +1,44 @@
 ---
-title: Az Azure Storage Azure PowerShell használatával |} Microsoft Docs
-description: Útmutató az Azure PowerShell-parancsmagok használata az Azure Storage.
+title: Az Azure PowerShell-lel és az Azure Storage |} A Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure PowerShell-parancsmagok az Azure Storage.
 services: storage
-documentationcenter: na
 author: roygara
-manager: jeconnoc
-ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 06/13/2018
 ms.author: rogarana
-ms.openlocfilehash: 951b69877718c5da3c165c24c297906a1ad9a976
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: common
+ms.openlocfilehash: f9d962b96df760d1382439abcd80eb21fef62128
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652501"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530888"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
 
-Az Azure PowerShell létrehozása és kezelése az Azure-erőforrások, a PowerShell-parancssorból vagy a parancsfájlok segítségével. Az Azure Storage ezek a parancsmagok két kategóriába--a vezérlő vezérlősík és az adatok vezérlősík. A vezérlő vezérlősík parancsmagok segítségével kezelheti a tárfiók – storage-fiókok létrehozása, állítsa be a tulajdonságokat, storage-fiókok törlése, a hívóbetűk elforgatása és stb. Az adatok vezérlősík parancsmagok segítségével kezelhetők a tárolt adatok *a* a tárfiók. Például blobok feltöltése, fájlmegosztások létrehozása és üzenetek ad hozzá egy üzenetsort.
+Az Azure PowerShell segítségével hozzon létre, és az Azure-erőforrások kezelése a PowerShell-parancssorból vagy szkriptekkel. Az Azure Storage esetében ezek a parancsmagok két kategóriába--a vezérlősík és az adatsíkhoz. A vezérlő felügyeletisík-parancsmagok segítségével kezelheti a storage-fiók – tárfiókok létrehozása, tulajdonságainak, törli a storage-fiókok, a hozzáférési kulcsainak rotálása és így tovább. A tárolt adatok kezelésére használhatók az adatok felügyeletisík-parancsmagok *a* a storage-fiókot. Például blobok feltöltése, fájlmegosztások létrehozása, és üzeneteket ad hozzá egy üzenetsorba.
 
-A cikkben található útmutató storage-fiókok kezelése a vezérlősík parancsmagokat gyakori műveletek ismerteti. Az alábbiak végrehajtásának módját ismerheti meg: 
+A cikkben található útmutató a felügyeletisík-parancsmagok használatával kezelheti a storage-fiókok olyan gyakori műveleteket ismerteti. Az alábbiak végrehajtásának módját ismerheti meg: 
 
 > [!div class="checklist"]
-> * Listában tárfiókok
-> * Meglévő tárfiók hivatkozás
-> * Create a storage account 
-> * Állítsa be a tárfiók tulajdonságai
-> * Kérje le, majd a tárelérési kulcsok újragenerálása
-> * A tárfiók eléréséhez védelme 
-> * Tárolási analitika engedélyezése
+> * Storage-fiókok listázása
+> * Egy meglévő tárfiókot mutató hivatkozás beolvasása
+> * Tárfiók létrehozása 
+> * Tárfiók tulajdonságainak beállítása
+> * Kérje le, és a hozzáférési kulcsok újragenerálása
+> * A tárfiókhoz való hozzáférés védelme 
+> * A Storage Analytics engedélyezése
 
-Ez a cikk mutató hivatkozásokat biztosít több más PowerShell cikkek tárolási, például engedélyezéséről és a tárolási analitika hozzáférni, az adatok vezérlősík parancsmagok használatával és hogyan érhetők el az Azure független felhők például Kína felhő német felhő vagy kormányzati Felhő.
+Ez a cikk számos más PowerShell cikkekre mutató hivatkozások a Storage szolgáltatás esetében például engedélyezésével és a Storage Analytics eléréséhez, az adatok felügyeletisík-parancsmagok használata és elérése az Azure-például a kínai felhőben, a német felhőben és a Government független felhők Felhő.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Ebben a gyakorlatban az Azure PowerShell 4.4. vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. 
+Ebben a gyakorlatban az Azure PowerShell modul 4.4-es vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. 
 
-Ehhez a gyakorlathoz adhatja meg a parancsokat egy rendszeres PowerShell-ablakban, vagy használhatja a [Windows PowerShell integrált parancsfájlkezelési környezet (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) a parancsok írja be egy szerkesztővel, majd egy időben egy vagy több parancsból tesztelése a példák végighaladnia. Kiemelheti hajtható végre, és kattintson, csak a kijelölt futtatása azokat a parancsokat futtatni kívánt sorokat.
+Ebben a gyakorlatban egy rendszeres PowerShell-ablakot be lehet írni a parancsokat, vagy használhatja a [Windows PowerShell integrált parancsfájl-kezelési környezet (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) be egy szövegszerkesztőben írja be a parancsokat, majd egy időben egy vagy több tesztparancsokat Nyissa meg a példákon keresztül. Jelöljön ki a sorokat, hajtsa végre, és kattintson a kijelölt futtatása csupán azokat a parancsokat futtatni szeretné.
 
-Storage-fiókok kapcsolatos további információkért lásd: [Storage bemutatása](storage-introduction.md) és [tudnivalók az Azure storage-fiókok](storage-create-storage-account.md).
+Storage-fiókokkal kapcsolatos további információkért lásd: [Storage bemutatása](storage-introduction.md) és [tudnivalók az Azure storage-fiókok](storage-create-storage-account.md).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -53,21 +48,21 @@ Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, �
 Connect-AzureRmAccount
 ```
 
-## <a name="list-the-storage-accounts-in-the-subscription"></a>Az előfizetés tárfiókok listázása
+## <a name="list-the-storage-accounts-in-the-subscription"></a>Az előfizetés a storage-fiókok listázása
 
-Futtassa a [Get-AzureRMStorageAccount](/powershell/module/azurerm.resources/get-azurermstorageaccount) parancsmagot, hogy a jelenlegi előfizetés tárfiókjai listájának beolvasása. 
+Futtassa a [Get-AzureRMStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) beolvasásához a tárfiókok listája, a jelenlegi előfizetésében. 
 
 ```powershell
 Get-AzureRMStorageAccount | Select StorageAccountName, Location
 ```
 
-## <a name="get-a-reference-to-a-storage-account"></a>A tárfiók hivatkozás
+## <a name="get-a-reference-to-a-storage-account"></a>Kérje le a hivatkozását egy storage-fiókba
 
-A következő lépésben egy hivatkozást egy tárfiókot. Hozzon létre egy új tárfiókot, vagy egy meglévő tárfiók való hivatkozás. A következő szakasz mindkét módszer jeleníti meg. 
+Ezután egy hivatkozást a tárfiókra van szüksége. Hozzon létre egy új tárfiókot, vagy egy meglévő tárfiókot hivatkozás. A következő szakasz mindkét módszert bemutatja. 
 
 ### <a name="use-an-existing-storage-account"></a>Meglévő tárfiók használata 
 
-Meglévő tárfiók lekéréséhez van szüksége az erőforráscsoport nevét és a tárfiók nevét. A két mezőket a változókat, akkor használja a [Get-AzureRmStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) parancsmag. 
+Lekérni egy meglévő tárfiókot, szüksége van az erőforráscsoport nevét és a tárfiók nevére. Állítsa be a változókat az adott két mezők, majd használja a [Get-AzureRmStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) parancsmagot. 
 
 ```powershell
 $resourceGroup = "myexistingresourcegroup"
@@ -77,11 +72,11 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
 ```
 
-Most már rendelkezik $storageAccount, amely egy meglévő tárfiók mutat.
+Most már $storageAccount, amely egy meglévő tárfiókot.
 
-### <a name="create-a-storage-account"></a>Create a storage account 
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
-Az alábbi parancsfájl bemutatja, hogyan hozzon létre egy általános célú tárfiókok segítségével [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Miután létrehozta a fiókot, a környezetben, amely használható a következő parancsok beolvasása helyett adja meg a hitelesítés minden hívással.
+Az alábbi parancsfájl bemutatja, hogyan hozzon létre egy általános célú fiók [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Miután létrehozta a fiókot, olvassa be a környezetét, amely használható az ezt követő parancsok helyett adja meg a hitelesítés az egyes hívások.
 
 ```powershell
 # Get list of locations and select one.
@@ -106,43 +101,43 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 $ctx = $storageAccount.Context
 ```
 
-A parancsfájl a következő PowerShell-parancsmagokat használja: 
+A szkript a következő PowerShell-parancsmagokat használja: 
 
-*   [Get-AzureRmLocation](/powershell/module/azurerm.storage/Get-AzureRmLocation) --lekéri az érvényese helyek listáját. A példa `eastus` helyéhez.
+*   [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) – lekéri az érvényese helyek listáját. A példában `eastus` helyéhez.
 
-*   [Új-AzureRmResourceGroup](/powershell/module/azurerm.resources/New-AzureRmResourceGroup) --hoz létre egy új erőforráscsoportot. Erőforráscsoport egy olyan logikai tároló, amelyben az Azure-erőforrások telepítése és kezelése. Is nevezik `teststoragerg`. 
+*   [Új-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) – létrehoz egy új erőforráscsoportot. Egy erőforráscsoport olyan logikai tároló, amelybe az Azure-erőforrások üzembe és felügyelhet. A sajátunkhoz nevezzük `teststoragerg`. 
 
-*   [Új-AzureRmStorageAccount](/powershell/module/azurerm.resources/New-AzureRmStorageAcccount) --tényleges tárolási fiókot hoz létre. A példa `testpshstorage`.
+*   [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) --a storage-fiókot hoz létre. A példában `testpshstorage`.
 
-A termékváltozat replikációs LRS (helyileg redundáns tárolás) például a tárfiók típusát jelöli. A replikációval kapcsolatos további információkért lásd: [Azure Storage replikációs](storage-redundancy.md).
+Az SKU neve a tárfiók, például az LRS (helyileg redundáns tárolás) replikáció típusát jelzi. A replikációval kapcsolatos további információkért lásd: [Azure Tárreplikáció](storage-redundancy.md).
 
 > [!IMPORTANT]
-> A tárfiók neve Azure belül egyedieknek kell lenniük, és kisbetűnek kell lennie. Az elnevezési konvenciókat és korlátozások, lásd: [elnevezési és hivatkozó tárolók, Blobok és metaadatok](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata).
+> Azure-on belül egyedinek kell lennie a tárfiókja nevére, és kisbetűnek kell lennie. Elnevezési konvenciók és korlátozások: [elnevezése és a hivatkozó tárolók, Blobok és metaadatok](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata).
 > 
 
-Most, hogy egy új tárfiókot, és hivatkozni rá. 
+Most már rendelkezik egy új tárfiókot, és a egy hivatkozást. 
 
 ## <a name="manage-the-storage-account"></a>A tárfiók kezelése
 
-Most, hogy egy hivatkozást egy új tárfiókot vagy egy meglévő tárfiókot használ, a következő szakaszban néhány mutatja be a parancsok a tárfiók kezelése segítségével.
+Most, hogy egy hivatkozás egy új tárfiókot vagy egy meglévő tárfiókot, a következő szakasz bemutatja a tárfiók kezelése segítségével parancsai közül néhányat.
 
 ### <a name="storage-account-properties"></a>A tárfiók tulajdonságai
 
-A storage-fiók beállításainak módosításához használja [Set-AzureRmStorageAccount](/powershell/module/azurerm.resources/Set-AzureRmStorageAccount). Egy tárfiókot, vagy azt az erőforráscsoport helye nem módosítható, amíg a többi tulajdonság számos módosíthatja. Az alábbi listában találja a Tulajdonságok módosíthatja a PowerShell használatával.
+A storage-fiók beállításainak módosításához használja [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount). Egy storage-fiókot, vagy az erőforráscsoport, amelyben található helye nem módosítható, amíg számos, a többi tulajdonság módosítható. A következő mutatja be a tulajdonságokat, módosíthatja a PowerShell használatával.
 
-* A **egyéni tartomány** a tárfiók rendelt.
+* A **egyéni tartomány** a tárfiókhoz rendelt.
 
-* A **címkék** a tárfiók rendelt. Címkék gyakran használják a számlázási okokból kategorizálhatja az erőforrásokat.
+* A **címkék** a tárfiókhoz rendelt. A címkék gyakran használják kategorizálhatja az erőforrásokat a számlázás tekintetében.
 
-* A **SKU** a replikációs beállítás a tárfiók, például az LRS helyileg redundáns tárolás. Például előfordulhat, hogy módosítja a Standard\_LRS, Standard\_GRS vagy Standard\_RAGRS. Vegye figyelembe, hogy nem módosíthatja a Standard\_zrs-t vagy a prémium szintű\_LRS az egyéb termékváltozatok vagy más termékváltozatok módosítsa ezeket.
+* A **Termékváltozat** a replikációs beállítás a tárfiók, mint a helyileg redundáns tárolás LRS. Például érdemes lehet módosítani a Standard\_LRS, Standard\_GRS vagy standard szintű\_RAGRS. Vegye figyelembe, hogy nem tudja módosítani Standard\_zrs-t vagy a prémium szintű\_más termékváltozatokra LRS, vagy módosítsa a többi termékváltozat ezeket.
 
-* A **hozzáférési szint** Blob storage-fiókok. A hozzáférési réteg értéke **működés közbeni** vagy **lassú**, és lehetővé teszi, hogy a storage-fiók használatának igazodik a hozzáférési szint kiválasztásával a költségek minimalizálása érdekében. További információkért lásd: [közbeni, hűtsük le, és archiválja a tárolási rétegek](../blobs/storage-blob-storage-tiers.md).
+* A **hozzáférési szint** Blob storage-fiókok. Hozzáférési szint értékét értéke **gyakori elérésű** vagy **ritkán használt adatok**, és lehetővé teszi, hogy a költségek minimalizálása a hozzáférési szint, amely igazodik a hogyan használhatja a storage-fiók kiválasztásával. További információkért lásd: [gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
-* Engedélyezése csak a HTTPS-forgalmat. 
+* Csak engedélyezze a HTTPS-forgalmat. 
 
-### <a name="manage-the-access-keys"></a>A elérési kulcsok kezelése
+### <a name="manage-the-access-keys"></a>A hozzáférési kulcsok kezelése
 
-Egy Azure Storage-fiók két kulcsait tartalmaz. A kulcsok lekéréséhez használja [Get-AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/Get-AzureRmStorageAccountKey). Ez a példa lekéri az első kulcsát. Egy másikra lekéréséhez használja `Value[1]` helyett `Value[0]`.
+Azure Storage-fiók fiók két kulccsal rendelkezik. A kulcsok lekéréséhez használja [Get-AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/Get-AzureRmStorageAccountKey). Ebben a példában az első kulcsot kérdezi le. Lekérdezheti a másikra, `Value[1]` helyett `Value[0]`.
 
 ```powershell
 $storageAccountKey = `
@@ -159,101 +154,101 @@ New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1 
 ```
 
-A más kulcs újragenerálása, használja a `key2` ahelyett, hogy a kulcs neveként `key1`.
+Hozza létre újra a másik hívóbetűt, használja a `key2` helyett a legfontosabb neveként `key1`.
 
-Újragenerálja a kulcsokat egyikét, és majd még egyszer tekintse meg az új érték beolvasása.
+Hozza létre újra a kulcsok egyikét, és majd kérje le újra az új érték a.
 
 > [!NOTE] 
-> Végre kell hajtania üzemi tárfiók kulcsának újragenerálása előtt gondosan meg kell tervezni. Legalább az egyik kulcs újragenerálása érvényteleníti a hozzáférési kulcs újragenerálása használatával bármely alkalmazás. További információkért lásd: [tárelérési kulcsok újragenerálása](storage-create-storage-account.md#regenerate-storage-access-keys).
+> Storage-fiókok a kulcs újragenerálása előtt gondosan kell végezni. Legalább az egyik kulcs újragenerálása érvényteleníti a hozzáférést minden olyan alkalmazáshoz, a kulcs újragenerálása használatával. További információkért tekintse meg [tárelérési kulcsok újragenerálása](storage-create-storage-account.md#regenerate-storage-access-keys).
 
 
 ### <a name="delete-a-storage-account"></a>Tárfiók törlése 
 
-A storage-fiók törléséhez használja [Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount).
+Storage-fiók törléséhez használja [Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount).
 
 ```powershell
 Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
 ```
 
 > [!IMPORTANT]
-> Ha töröl egy tárfiókot, az eszközök a fiókban tárolt összes is törlődnek. Ha véletlenül törli a fiókot, azonnal forduljon az ügyfélszolgálathoz, és nyissa meg a tárfiók visszaállítása jegy. Az adatok helyreállítása nem garantált, de egyes esetekben működik. Ne hozzon létre egy új tárfiókot a régi kiszolgálóéval azonos nevű megoldásáig a támogatási jegy. 
+> Ha töröl egy tárfiókot, az eszközök a fiókban tárolt összes is törlődnek. Ha véletlenül töröl egy fiókot, az ügyfélszolgálat azonnal, és visszaállítani a tárfiók egy jegyet. Az adatok nem garantált, de egyes esetekben működik. Ne hozzon létre egy új tárfiókot a régi kiszolgálóéval azonos nevű megoldásáig egy támogatási jegyet. 
 >
 
-### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>A tárolási fiók használata a virtuális hálózatokat és a tűzfalon védelme
+### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>A storage-fiók használata a virtuális hálózatok és a tűzfalak védelme
 
-Alapértelmezés szerint az összes tárfiók található elérhető-e olyan hálózathoz, amely hozzáfér az internethez. Azonban a hálózati szabályokat, hogy csak a tárfiók eléréséhez a meghatározott virtuális hálózatok alkalmazások is beállíthatja. További információkért lásd: [konfigurálása Azure Storage tűzfalak és a virtuális hálózatok](storage-network-security.md). 
+Alapértelmezés szerint az összes storage-fiókok érhetők el szerint semmilyen hálózathoz, amely hozzáfér az internethez. Azonban konfigurálhatja úgy a hálózati szabályok a kizárólag a virtuális hálózatok adott alkalmazások a tárfiók eléréséhez. További információkért lásd: [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](storage-network-security.md). 
 
 A cikk bemutatja, hogyan kezelheti ezeket a beállításokat a következő PowerShell-parancsmagok használatával:
 * [Add-AzureRmStorageAccountNetworkRule](/powershell/module/AzureRM.Storage/Add-AzureRmStorageAccountNetworkRule)
 * [Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
 * [Remove-AzureRmStorageAccountNetworkRule](/powershell/module/azurerm.storage/remove-azurermstorage-account-networkrule)
 
-## <a name="use-storage-analytics"></a>Tárolási analitika használata  
+## <a name="use-storage-analytics"></a>A storage analytics használata  
 
-[Az Azure Storage Analytics](storage-analytics.md) áll [Storage Analytics Metrics](/rest/api/storageservices/about-storage-analytics-metrics) és [Storage Analytics naplózás](/rest/api/storageservices/about-storage-analytics-logging). 
+[Az Azure Storage Analytics](storage-analytics.md) áll [Storage Analytics Metrics](/rest/api/storageservices/about-storage-analytics-metrics) és [Storage Analytics naplózási](/rest/api/storageservices/about-storage-analytics-logging). 
 
-**Storage Analytics metrikák** gyűjtéséhez az Azure storage-fiókok, amelyek segítségével a tárfiók állapotának figyelésére szolgál. Metrikák blobokat, fájlok, táblát és üzenetsort is engedélyezhető.
+**Storage Analytics mérőszámainak** begyűjtése az Azure storage-fiókok, amellyel egy tárfiókot állapotának figyelésére szolgál. Metrikák blobok, fájlok, táblák és üzenetsorok esetén is engedélyezhető.
 
-**Storage Analytics naplózás** kiszolgálóoldali történik, és lehetővé teszi, hogy a tárfiók sikeres és a sikertelen kérelmek adatainak rögzítését. Ezek a naplók lehetővé teszik a Részletek területen az olvasási, írási és törlési műveleteket a táblák, üzenetsorok, blobok, valamint a sikertelen kérelmek okait. Naplózás nincs Azure-fájlok esetén érhető el.
+**Storage Analytics naplózási** kiszolgálói oldalon történik, és lehetővé teszi a tárfiókhoz való sikeres és sikertelen kérések rekord részleteit. Ezek a naplók lehetővé teszik az olvasási, írási és törlési műveleteinek a táblák, üzenetsorok, blobok, valamint az okok, a sikertelen kérelmek részleteinek megtekintéséhez. Naplózás nem érhető el az Azure Files számára.
 
-Alkalmazásával konfigurálható a [Azure-portálon](https://portal.azure.com), PowerShell-lel, vagy programozott módon, a storage ügyféloldali kódtára. 
+Alkalmazásával konfigurálható a [az Azure portal](https://portal.azure.com), PowerShell, vagy programozott módon, a storage ügyféloldali kódtára segítségével. 
 
 > [!NOTE]
-> A percben analytics PowerShell használatával engedélyezheti. Ez a funkció nem érhető el a portálon.
+> Percenkénti analytics PowerShell használatával engedélyezheti. Ez a funkció a portálon nem érhető el.
 >
 
-* Engedélyezése és megtekintése a PowerShell használatával Storage Metrics data kapcsolatban [engedélyezése Azure Storage metrikák és megtekintése a metrikai adatok](storage-enable-and-view-metrics.md#how-to-enable-metrics-using-powershell).
+* Megtudhatja, hogyan engedélyezése és megtekintése a Storage Metrics data PowerShell-lel, tekintse meg [engedélyezése az Azure Storage-mérőszámok és a mérőszámadatok megtekintése mérőszámadatokat](storage-enable-and-view-metrics.md#how-to-enable-metrics-using-powershell).
 
-* Engedélyezése és a PowerShell használatával tároló-naplózás adatainak beolvasása további tudnivalókért lásd: [engedélyezése a tárolási-naplózás PowerShell-lel](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#how-to-enable-storage-logging-using-powershell) és [keresése a naplózás tárolási naplóadatok](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#finding-your-storage-logging-log-data).
+* Megtudhatja, hogyan engedélyezheti és a Storage naplózási adatok PowerShell-lel, tekintse meg a [engedélyezése a Storage-naplózás PowerShell-lel](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#how-to-enable-storage-logging-using-powershell) és [log Storage naplózási adatok keresése](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#finding-your-storage-logging-log-data).
 
-* A Storage Metrics és a naplózás tárolási tárolási problémák elhárítása részletes információkért lásd: [figyelés felismerése és hibaelhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
+* Részletes információk a Storage-mérőszámok és a Storage-naplózás használatával tárolási hibáinak elhárítása: [figyelés felismerése és hibáinak elhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 
-## <a name="manage-the-data-in-the-storage-account"></a>A tárfiókban lévő adatokat kezelése
+## <a name="manage-the-data-in-the-storage-account"></a>A storage-fiókban tárolt adatok kezelése
 
-Most, hogy megismerte a PowerShell használatával a tárfiók kezelése, a következő cikkek segítségével megtudhatja, hogyan érhetők el a data objects a tárfiókban lévő.
+Most, hogy megismerkedett a PowerShell-lel a tárfiók kezelése, a következő cikkek segítségével ismerje meg a storage-fiókban lévő adatok objektumok elérése.
 
-* [A PowerShell-lel blobok kezelése](../blobs/storage-how-to-use-blobs-powershell.md)
+* [Hogyan kezelheti a blobokat a PowerShell-lel](../blobs/storage-how-to-use-blobs-powershell.md)
 * [A PowerShell-lel fájlok kezelése](../files/storage-how-to-use-files-powershell.md)
 * [A PowerShell-lel várólisták kezelése](../queues/storage-powershell-how-to-use-queues.md)
-* [Azure Table storage műveleteket a PowerShell használatával](../../storage/tables/table-storage-how-to-use-powershell.md)
+* [Az Azure Table storage műveleteket a PowerShell-lel](../../storage/tables/table-storage-how-to-use-powershell.md)
 
-Az Azure Cosmos DB tábla API prémium szolgáltatások biztosít a table storage például kulcsrakész globális terjesztési kis késleltetésű olvasások és írások, másodlagos indexelő vagy dedikált átviteli sebesség. 
+Az Azure Cosmos DB Table API a table storage, például a kulcsrakész globális disztribúciót, kis késleltetésű olvasásokhoz, és írási, automatikus másodlagos indexelést és dedikált átviteli sebességet biztosít a prémium szintű funkciók. 
 
-* További információkért lásd: [Azure Cosmos DB tábla API](../../cosmos-db/table-introduction.md). 
-* Azure Cosmos DB tábla API-műveleteket a PowerShell használatával, lásd: [végre Azure Cosmos DB tábla API-műveleteket a PowerShell-lel](../../cosmos-db/table-powershell.md).
+* További információkért lásd: [Azure Cosmos DB Table API](../../cosmos-db/table-introduction.md). 
+* Az Azure Cosmos DB Table API-műveletek végrehajtása a PowerShell használatával kapcsolatban lásd: [hajtsa végre az Azure Cosmos DB Table API-műveletek a PowerShellben](../../cosmos-db/table-powershell.md).
 
-## <a name="independent-cloud-deployments-of-azure"></a>Azure független felhő példányai
+## <a name="independent-cloud-deployments-of-azure"></a>Az Azure a független felhőben üzemelő példányok
 
-A legtöbben Azure nyilvános Felhőjében használja a globális Azure telepítésekhez. Van még néhány független üzemelő Microsoft Azure a közös joghatóság alá okait, és így tovább. A független központi telepítéseket nevezzük "environments." A rendelkezésre álló környezetekben az alábbiak:
+A legtöbb ember használata az Azure nyilvános felhő a globális Azure üzemelő példányhoz. Vannak bizonyos független üzembe helyezések, a Microsoft Azure az adatszuverenitási miatt és így tovább. Ezek független üzembe helyezések nevezik "környezetekben." A rendelkezésre álló környezetek az alábbiak:
 
-* [Az Azure Government felhő](https://azure.microsoft.com/features/gov/)
-* [Azure Kínában a 21Vianet által működtetett Kína-felhő](http://www.windowsazure.cn/)
-* [Az Azure német felhő](../../germany/germany-welcome.md)
+* [Az Azure Government Cloud](https://azure.microsoft.com/features/gov/)
+* [Kínában a 21Vianet által üzemeltetett Azure China Cloud](http://www.windowsazure.cn/)
+* [Az Azure német felhőben](../../germany/germany-welcome.md)
 
-Hogyan érhetők el a felhők és a tárolás, a PowerShell használatával kapcsolatos információkért lásd: [tárolás kezelése a PowerShell használata Azure független felhők](storage-powershell-independent-clouds.md).
+Ezek a felhők és azok a PowerShell-lel elérésével kapcsolatos további információkért tekintse meg [Storage kezelése PowerShell használatával az Azure független felhőkben](storage-powershell-independent-clouds.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha létrehozott egy új erőforráscsoportot és az ebben a gyakorlatban egy tárfiókot, yous is távolítsa el az összes az eszközök eltávolítása az erőforráscsoport hozta létre. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókban és az erőforráscsoport magát.
+Ha létrehozott egy új erőforráscsoportot és a egy storage-fiókot ehhez a gyakorlathoz, yous távolítsa el az eszközök, az erőforráscsoport eltávolításával létrehozott összes. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókot és magát az erőforráscsoportot.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 ## <a name="next-steps"></a>További lépések
 
-A cikkben található útmutató storage-fiókok kezelése a vezérlősík parancsmagokat gyakori műveletek ismerteti. Megismerte, hogyan végezheti el az alábbi műveleteket: 
+A cikkben található útmutató a felügyeletisík-parancsmagok használatával kezelheti a storage-fiókok olyan gyakori műveleteket ismerteti. Megismerte, hogyan végezheti el az alábbi műveleteket: 
 
 > [!div class="checklist"]
-> * Listában tárfiókok
-> * Meglévő tárfiók hivatkozás
-> * Create a storage account 
-> * Állítsa be a tárfiók tulajdonságai
-> * Kérje le, majd a tárelérési kulcsok újragenerálása
-> * A tárfiók eléréséhez védelme 
-> * Tárolási analitika engedélyezése
+> * Storage-fiókok listázása
+> * Egy meglévő tárfiókot mutató hivatkozás beolvasása
+> * Tárfiók létrehozása 
+> * Tárfiók tulajdonságainak beállítása
+> * Kérje le, és a hozzáférési kulcsok újragenerálása
+> * A tárfiókhoz való hozzáférés védelme 
+> * A Storage Analytics engedélyezése
 
-Ez a cikk számos további cikkeit, például az adatok objektumok kezelése, engedélyezése a tárolási analitika és hogyan érhetők el az Azure független felhők például Kína felhő német felhő vagy kormányzati felhő mutató hivatkozásokat is biztosít. Íme, néhány további kapcsolódó cikkek és referenciaként erőforrások:
+Ez a cikk számos más cikkeket, például a data-objektumok kezelése, a Storage Analytics engedélyezése és elérése az Azure független felhőkben, például a kínai felhőben, a német felhőben és a Government Cloud mutató hivatkozásokat is megadja. Íme, néhány további kapcsolódó cikkek és erőforrások referenciaként:
 
-* [Az Azure Storage vezérlő vezérlősík PowerShell-parancsmagok](/powershell/module/AzureRM.Storage/)
-* [Az Azure Storage adatok vezérlősík PowerShell-parancsmagok](/powershell/module/azure.storage/)
-* [A Windows PowerShell-referencia](https://msdn.microsoft.com/library/ms714469.aspx)
+* [Az Azure Storage vezérlési sík PowerShell-parancsmagok](/powershell/module/AzureRM.Storage/)
+* [Az Azure Storage adat adatsík PowerShell-parancsmagok](/powershell/module/azure.storage/)
+* [Windows PowerShell-referencia](https://msdn.microsoft.com/library/ms714469.aspx)

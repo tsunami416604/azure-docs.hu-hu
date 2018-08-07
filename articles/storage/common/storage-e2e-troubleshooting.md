@@ -1,113 +1,109 @@
 ---
-title: A diagnosztika & Message Analyzer Azure Storage hibaelhárítása |} Microsoft Docs
-description: A végpont hibaelhárítás az Azure Storage Analytics, az AzCopy és a Microsoft Message Analyzert, amely tartalmazza az oktatóanyag
+title: Azure Storage hibaelhárításáról diagnosztika és a Message Analyzer |} A Microsoft Docs
+description: Egy teljes körű hibaelhárítás az Azure Storage Analytics, az AzCopy és a Microsoft Message Analyzert bemutatásához oktatóanyag
 services: storage
-documentationcenter: dotnet
 author: tamram
-manager: timlt
-ms.assetid: 643372a3-1c07-4e88-b4ef-042512a43086
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: 324370ae18627a1985e6a40aec11ee2fa871e93b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 7a011bf55f70f3fca9e105613f7e359a2b6071c1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323304"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526136"
 ---
-# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Végpontok közötti hibaelhárítás, Azure Storage mérőszámainak és a naplózást, az AzCopy és a Message Analyzer segítségével
+# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Teljes körű hibaelhárítás az Azure Storage-mérőszámok és a naplózás, az AzCopy és a Message Analyzer használatával
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
-Diagnosztizálás és hibaelhárítási a kulcs szakértelem kialakításához, és a Microsoft Azure Storage ügyfél alkalmazásokat támogató. Az Azure-alkalmazások elosztott jellege miatt Diagnosztizálás és a hibák és a teljesítménnyel kapcsolatos problémák elhárítása lehet bonyolultabb, mint a hagyományos környezetekben.
+Megállapítása és elhárítása meglehetősen egy fő szakértelem létrehozásához és a Microsoft Azure Storage-ügyfélalkalmazások támogatásához. Azure-alkalmazások elosztott jellege miatt és hibák és a teljesítménnyel kapcsolatos problémák elhárítása meglehetősen lehet bonyolultabb, mint a hagyományos környezetekben.
 
-Ebben az oktatóanyagban bemutatjuk, hogyan bizonyos hibák hatása a teljesítményre, és a végpont e hibák elhárítása a Microsoft és az Azure Storage által biztosított eszközök használ az ügyfélalkalmazás optimalizálása érdekében.
+Ebben az oktatóanyagban bemutatjuk, hogyan azonosíthatja az egyes hibák hatása a teljesítményre, és ezeket a hibákat a teljes körű hibaelhárítása a Microsoft és az Azure Storage által biztosított eszközök használatával annak érdekében, hogy az ügyfélalkalmazás optimalizálása.
 
-Ez az oktatóanyag egy végpontok közötti hibaelhárítási forgatókönyv gyakorlati feltárása biztosít. A részletes fogalmi útmutatót az Azure storage-alkalmazások hibáinak elhárításához, lásd: [figyelése, diagnosztizálása és elhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
+Ez az oktatóanyag ismerteti a gyakorlati feltárása, egy teljes körű hibaelhárítási forgatókönyvben. A részletes fogalmi útmutatót a hibaelhárítási az Azure storage-alkalmazások, lásd: [figyelése, diagnosztizálása és hibaelhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 
-## <a name="tools-for-troubleshooting-azure-storage-applications"></a>Azure Storage alkalmazások hibaelhárítási eszközök
-Microsoft Azure Storage használó ügyfélalkalmazások elhárításához eszközök kombinációja segítségével határozzák meg, amikor probléma történt, és a probléma oka lehet. Ezek az eszközök a következőket foglalják magukban:
+## <a name="tools-for-troubleshooting-azure-storage-applications"></a>Az Azure Storage-alkalmazások hibaelhárítási eszközei
+Az ügyfélalkalmazások számára a Microsoft Azure Storage használatával kapcsolatos hibaelhárítás eszközök kombinációja segítségével határozza meg, amikor probléma történt, és a probléma oka lehet. Ezek az eszközök a következőket foglalják magukban:
 
-* **Az Azure Storage Analytics**. [Az Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics) metrikákat és naplózási az Azure Storage biztosít.
+* **Az Azure Storage Analytics**. [Az Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics) metrikák és naplózás az Azure Storage biztosít.
   
-  * **Storage mérőszámainak** nyomon követi a tranzakció metrikák és a teljesítmény-mérőszámait a tárfiók. Használja a metrikákat, meghatározhatja, hogyan az alkalmazás számos különböző intézkedések megfelelően működik-e. Lásd: [Storage Analytics metrikák táblaséma](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) további információt a tárolási analitika követik metrikák típusú.
-  * **Tárolási naplózási** kéréseknek jelentkezik, az Azure Storage szolgáltatás kiszolgálóoldali naplóba. A napló részletes adatok az egyes kérelmek, beleértve a végre műveletet, a művelet, és a késési adatok állapotának nyomon követi. Lásd: [Storage Analytics naplóformátumban](/rest/api/storageservices/Storage-Analytics-Log-Format) írja be a naplók tárolási analitika kérelem-válasz adatokról további információt.
+  * **Storage-mérőszámok** nyomon követi a tranzakciók mérőszámait és a tárfiók a kapacitási mérőszámot. Mérőszámok segítségével meghatározhatja, hogy az alkalmazás különböző mértékét számos megfelelően működnek-e. Lásd: [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) metrikák, a Storage Analytics által nyomon követett típusaival kapcsolatos további információt.
+  * **A Storage naplózási** kiszolgálóoldali naplóba az Azure Storage szolgáltatás minden kérelmet naplózhatja. A napló részletes adatok az egyes kérelmek, többek között a műveletet végrehajtani a műveletet, és késési adatokkal állapotát követi nyomon. Lásd: [Storage Analytics naplóformátum](/rest/api/storageservices/Storage-Analytics-Log-Format) a kérelmek és válaszok adatait a Storage Analytics által a naplókba írt további információt.
 
-* **Azure-portálon**. A tárfiók a metrikákat és naplózási konfigurálható a [Azure-portálon](https://portal.azure.com). Akkor is diagramok és hogyan működik az alkalmazás időbeli megjelenítő diagramok megtekintése, és beállíthatja a értesítéseket arról, ha az alkalmazás az adott mérőszám várt módon hajt végre.
+* **Az Azure portal**. A tárfiók a metrikák és naplózás konfigurálhatja a [az Azure portal](https://portal.azure.com). Megtekintheti a diagramokat és ábrákat azt mutatják be, hogyan működik az alkalmazás idővel, és arra az esetre, ha az alkalmazás végrehajtja az adott mérőszám várt módon riasztások konfigurálása is.
   
-    Lásd: [figyelése az Azure portálon tárfiók](storage-monitor-storage-account.md) figyelése az Azure portálon konfigurálásával kapcsolatos információkat.
-* **AzCopy**. Az Azure Storage Server-naplók blobként, tárolják, az AzCopy segítségével másolja a naplóban blobok egy helyi használata a Microsoft Message Analyzert elemzés céljából. Lásd: [adatátvitel az AzCopy parancssori segédprogram a](storage-use-azcopy.md) AzCopy további információt.
-* **Microsoft Message Analyzert**. Message Analyzer olyan eszköz, amely feldolgozó naplófájlokat, és naplóadatokat, amellyel könnyedén szűrő, a Keresés és a csoport adatainak naplózása, amelyek segítségével elemezheti a hibák és a teljesítménnyel kapcsolatos problémák hasznos be visual formátumban jeleníti meg. Lásd: [Microsoft Message Analyzer működő útmutató](http://technet.microsoft.com/library/jj649776.aspx) Message Analyzer további információt.
+    Lásd: [monitorozása az Azure Portal tárfiók](storage-monitor-storage-account.md) figyelése az Azure Portalon konfigurálásával kapcsolatos információkat.
+* **Az AzCopy**. Az Azure Storage-naplóit, blobként vannak tárolva, így az AzCopy segítségével a naplóblobok másolja egy helyi könyvtárba a elemzése a Microsoft Message Analyzer használatával. Lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md) AzCopy további információt.
+* **A Microsoft Message Analyzer**. Az Üzenetelemző olyan eszköz, amely felhasználja a naplófájlok és naplóadatokat, amely megkönnyíti a filter, search és csoport naplóadatok hasznos csoportokba, amelyek segítségével elemezheti a hibákat és a teljesítménnyel kapcsolatos problémák vizuális formában jeleníti meg. Lásd: [Microsoft Message Analyzer működő útmutató](http://technet.microsoft.com/library/jj649776.aspx) Message Analyzer további információt.
 
-## <a name="about-the-sample-scenario"></a>A mintaforgatókönyv kapcsolatos
-Ebben az oktatóanyagban egy olyan forgatókönyvet, ahol az Azure Storage mérőszámainak, egy alacsony százalékos sikerességi arányát az alkalmazás, amely behívja az Azure storage foglalkozunk. Az alacsony százalékos sikerességi aránya metrika (megjelennek az helyeként **PercentSuccess** a a [Azure-portálon](https://portal.azure.com) és a metrikák táblák) követi nyomon, hogy sikeres, de nagyobb 299 HTTP-állapotkódot vissza, amely operations. A tranzakció állapota a rögzített ezeket a műveleteket a kiszolgálóoldali tárolási naplófájlokban **ClientOtherErrors**. Az alacsony százalékos sikerességi metrika kapcsolatos további tudnivalókért lásd: [metrika alacsony PercentSuccess vagy analytics naplóbejegyzések rendelkezik ClientOtherErrors működésére állapotú tranzakció](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success).
+## <a name="about-the-sample-scenario"></a>Tudnivalók a mintaforgatókönyvéhez
+Ebben az oktatóanyagban egy olyan forgatókönyvet, ahol az Azure Storage mérőszámainak, egy alacsony százalékos sikerességi arány az alkalmazás, amely meghívja ezt az Azure storage megvizsgáljuk a. Az alacsony sikerességi arány százalékban arány metrika (jelenik meg **PercentSuccess** a a [az Azure portal](https://portal.azure.com) és a metrikák táblák) követi nyomon, hogy sikeres legyen, de, amely adja vissza, amely nagyobb, mint 299 HTTP-állapotkódú műveletek. A kiszolgálóoldali tárolási naplófájlokban ezeket a műveleteket rögzíti állapotú tranzakciós **ClientOtherErrors**. Az alacsony sikerességi arány százalékban metrika kapcsolatos további információkért lásd: [metrikák megjelenítése alacsony PercentSuccess vagy analytics naplóbejegyzések rendelkezik ClientOtherErrors állapotú tranzakciós műveletek](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success).
 
-Azure Storage-műveleteket adhatnak vissza HTTP-állapotkódok 299 nagyobb normál működés részeként. De ezeket a hibákat, egyes esetekben azt jelzi, hogy esetleg az ügyfélalkalmazást, a jobb teljesítmény optimalizálása érdekében.
+Az Azure Storage-műveletek adhat vissza HTTP-állapotkódok 299 nagyobb a normál funkcióinak részeként. De ezek a hibák, egyes esetekben azt jelzik, hogy lehet az ügyfélalkalmazás jobb teljesítmény optimalizálása érdekében.
 
-Ebben a forgatókönyvben egy alacsony százalékos sikerességi arányát kell minden, 100 % lesz javasolt. Választhat egy másik metrika szintet, azonban szükség szerint. Azt javasoljuk, hogy az alkalmazás tesztelése során kapcsolatot hoz létre egy alapkonfiguráció tolerancia az a fontos teljesítménymutatókat. Például dönthet úgy, tesztekre alapozva, az alkalmazás rendelkezik-e a 90 %, vagy a 85 % konzisztens százalékos sikerességi aránya. Ha a metrikai adatok azt mutatja, hogy az alkalmazás-, hogy több el az eltérő, akkor is vizsgálja meg, mi okozza a növelését.
+Ebben a forgatókönyvben azt fogja érdemes 100 % alatti bármi lehet, hogy egy alacsony százalékos sikerességi arányát. Választhat egy másik metrika szintre, azonban szükség szerint. Azt javasoljuk, hogy az alkalmazás tesztelése során kapcsolatot hoz létre egy alapkonfiguráció tolerancia az a fontos teljesítménymutatókat. Például dönthet úgy, alapján, tesztelés, hogy az alkalmazásnak tartalmaznia kell egy 90 %-os vagy 85 %-os konzisztens százalékos sikerességi aránya. A metrikák adatait jeleníti meg, hogy az alkalmazás méretektől van ez a szám, akkor a segítségével megvizsgálhatja, mi okozza-e a növekedés.
 
-Minta esetünkben után azt mutatja meg, hogy a százalékos sikerességi aránya a metrika nem éri el 100 %-os, azt fogja tanulmányozza az metrikáinak egyeztetéséhez, és segítségével mérje fel, hogy mi okozza a százalékos sikerességi aránya alacsonyabb a hibák találhatók. Megnézzük, pontosabban, a hibák 400 tartományban. Ezután lesz jobban felülvizsgáljuk 404-es (nem található) hibák.
+Minta esetünkben után azt mutatja meg, hogy van-e a sikerességi arány százalékban arány mérték 100 % alatti azt vizsgálja a hibák, amelyek a mérőszámok összekapcsolását, és ezek segítségével döntse el, mi okozza az alacsonyabb százalékos sikerességi aránya a naplókban. Megnézzük, kifejezetten, a hibákat a 400 tartományban. Ezután fogja jobban felülvizsgáljuk 404-es (nem található) hibát.
 
-### <a name="some-causes-of-400-range-errors"></a>Tartományon kívüli 400 hibák oka
-Az alábbi példák a kéréseket a meghatározott Azure Blob Storage és a lehetséges okok 400-tartomány hibák példák láthatók. A hibákat, valamint a a 300 és 500 tartományban, a hibák bármelyikét hozzájárulhat egy alacsony százalékos sikerességi arányát.
+### <a name="some-causes-of-400-range-errors"></a>Tartományon kívüli 400-as hibák oka
+Az alábbi példák az Azure Blob Storage és a lehetséges okok kérelmeket tartományon kívüli 400-as hibák példák láthatók. Bármelyik a hibákat, valamint a hibák a 300 és 500 tartományban, a közreműködhet egy alacsony százalékos sikerességi arányát.
 
-Vegye figyelembe, hogy az alábbi listák messze befejeződött. Lásd: [állapotát és hibakódok](http://msdn.microsoft.com/library/azure/dd179382.aspx) az MSDN-en és a tárolási szolgáltatások vonatkozó hibákkal kapcsolatos általános Azure Storage-hibákkal kapcsolatos részleteket.
+Vegye figyelembe, hogy az alábbi listák messze befejeződött. Lásd: [állapota és hibakódok](http://msdn.microsoft.com/library/azure/dd179382.aspx) az MSDN webhelyen a tárolási szolgáltatások mindegyike adott hibákkal kapcsolatos általános Azure Storage-hibákkal kapcsolatos adatokat.
 
-**Állapot 404-es (nem található) kódpéldák**
+**Állapot 404 (nem található) kódpéldák**
 
-Akkor következik be, amikor egy tárolót vagy blobot egy olvasási művelet sikertelen lesz, mivel a blobot, vagy a tároló nem található.
+Akkor következik be, amikor egy tárolót vagy blobot egy olvasási művelet sikertelen, mert nem található a blobon vagy tárolón.
 
-* Akkor következik be, ha egy tárolót vagy blobot törölte egy másik ügyfélszámítógépen, mielőtt ezt a kérelmet.
-* Akkor következik be, miután ellenőrizte, hogy létezik-e a tárolót vagy blobot létrehozó API-hívás használata. A CreateIfNotExists API-k hívás HEAD először a tárolót vagy blobot; meglétének ellenőrzése Ha még nem létezik, a 404-es hibát ad vissza, és majd a második PUT kérés érkezett a tárolót vagy blobot írni.
+* Akkor következik be, ha egy tárolót vagy blobot törölte egy másik ügyfélszámítógépen, mielőtt a kérést.
+* Akkor következik be, ha egy API-hívás, amely létrehozza a tárolót vagy blobot ellenőrzése, hogy létezik-e után használja. A CreateIfNotExists API-k meghívásához fő először a tárolót vagy blobot; meglétének ellenőrzése Ha még nem létezik, 404-es hibát ad vissza, és ezután egy második PUT kezdeményezték írni a tárolót vagy blobot.
 
 **Állapot-kódpéldák 409 (Ütközés)**
 
-* Akkor következik be, ha egy létrehozása API használatával hozzon létre egy új tárolót vagy blobot, először az meglétének ellenőrzése nélkül, és egy tárolót vagy blobot ezzel a névvel már létezik.
-* Akkor következik be, ha a tároló törlése folyamatban van, és hozzon létre egy új tároló ugyanazzal a névvel, a törlési művelet befejezése előtt megkísérli.
-* Akkor következik be, ha egy tárolót vagy blobot meg kell adnia egy bérletet, és már létezik a jelenlegi címbérlet.
+* Akkor következik be, ha egy API létrehozása használatával hozzon létre egy új tárolót vagy blobot, először az meglétének ellenőrzése nélkül, és a egy tárolót vagy blobot a néven már létezik.
+* Akkor következik be, ha a tároló törlése folyamatban van, és megpróbál létrehozni egy új tárolót ugyanazzal a névvel, a törlési művelet befejezése előtt.
+* Akkor következik be, ha egy tárolót vagy blobot meg kell adnia egy bérletet, és már nincs jelen bérletét.
 
-**412 (előfeltétel) állapotkód példák**
+**412 (előfeltétel) állapotkódot példák**
 
-* Akkor következik be, ha egy feltételes fejlécet által megadott feltétel nem teljesül.
-* Akkor fordul elő, ha a címbérlet-azonosító van megadva nem felel meg a tárolót vagy blobot bérleti Azonosítójával.
+* Akkor fordul elő, ha egy feltételes fejléc által megadott feltétel nem teljesült.
+* Akkor következik be, ha a bérlet megadott azonosító nem egyezik meg a tárolót vagy blobot a bérlet Azonosítóját.
 
-## <a name="generate-log-files-for-analysis"></a>Naplófájlokat az elemzéshez készítése
-Ebben az oktatóanyagban használjuk Üzenetelemző használata a naplófájlokat, három különböző típusú bár ezek bármelyike használható kiválaszthatják:
+## <a name="generate-log-files-for-analysis"></a>Hozzon létre a naplófájlokat az elemzéshez
+Ebben az oktatóanyagban használjuk Üzenetelemző használata a naplófájlok, három különböző típusú bár ezek egyikével sem működik dönthet:
 
-* A **kiszolgálónapló**, ami akkor jön létre, amikor az Azure Storage naplózását. A kiszolgáló naplóját egyes egy Azure Storage szolgáltatás - blob, a várólista, a tábla és a fájl hívást műveletekre vonatkozó adatokat tartalmaz. A kiszolgáló naplóját azt jelzi, mely művelet lett meghívva, és milyen állapotkódja: a kérés- és visszaadott, valamint egyéb adatait.
-* A **.NET ügyfélnapló**, ami akkor jön létre, amikor a .NET-alkalmazásból engedélyezi az ügyféloldali naplózás. Az ügyfél talál részletes információkat arról, hogyan az ügyfél előkészíti a kérelmet, és fogadja és dolgozza fel a választ tartalmaz.
-* A **HTTP hálózati nyomkövetési napló**, amely adatokat gyűjt a HTTP/HTTPS-kérelem-válasz adatokat, beleértve az Azure Storage műveleteket. Az oktatóanyag azt fogja hozza létre a hálózati nyomkövetést Message Analyzer keresztül.
+* A **kiszolgálónapló**, amelyben létrejön, amikor engedélyezi az Azure Storage-naplózásról. A kiszolgáló napló ellen az Azure tárolási szolgáltatások – blob, üzenetsor, tábla és fájl egyik minden művelet kapcsolatos adatokat tartalmaz. A kiszolgáló napló azt jelzi, hogy a művelet meg lett hívva, és milyen állapotkód volt a kérések és válaszok visszaadott, valamint egyéb adatait.
+* A **.NET ügyfélnapló**, amely során az ügyféloldali naplózás engedélyezze a .NET-alkalmazás létrehozása. Az ügyfél napló részletes információkat arról, hogyan az ügyfél előkészíti a kérelmet, és fogadja és dolgozza fel a válasz tartalmazza.
+* A **HTTP hálózati nyomkövetési napló**, amely gyűjti az adatokat a HTTP/HTTPS kérelmek és válaszok adatait, beleértve az Azure Storage kapcsolatos művelet-végrehajtási. Ebben az oktatóanyagban a hálózati nyomkövetés Message Analyzer használatával hozunk létre.
 
-### <a name="configure-server-side-logging-and-metrics"></a>Metrikák és kiszolgálóoldali naplózásának beállítása
-Először azt kell metrikákat, és az Azure Storage naplózásának beállítása, hogy az ügyfélalkalmazás elemzendő adatokat kell. Konfigurálható naplózása és az sokféleképpen - metrikák a [Azure-portálon](https://portal.azure.com), powershellel, vagy programon keresztül. Lásd: [Storage mérőszámainak engedélyezése és megtekintése metrikai adatok](http://msdn.microsoft.com/library/azure/dn782843.aspx) és [tárolási naplózás engedélyezése és használata naplóadatok](http://msdn.microsoft.com/library/azure/dn782840.aspx) MSDN naplózás és a metrikák konfigurálásával kapcsolatos részletekért.
+### <a name="configure-server-side-logging-and-metrics"></a>Konfigurálja a kiszolgálóoldali naplózás és mérőszámok
+Első lépésként azt konfigurálnia kell az Azure Storage-naplózás és mérőszámok, úgy, hogy az ügyfélalkalmazás elemezheti adatait. Naplózás és a egy számos különböző módon - mérőszámok konfigurálhatja az keresztül a [az Azure portal](https://portal.azure.com), használja a Powershellt, vagy programozott módon. Lásd: [Storage mérőszámainak engedélyezése és a Mérőszámadatok megtekintése](http://msdn.microsoft.com/library/azure/dn782843.aspx) és [tárolási naplózás engedélyezése és Teljesítménynapló-adatok elérése](http://msdn.microsoft.com/library/azure/dn782840.aspx) az MSDN-en, naplózás és mérőszámok konfigurálásával kapcsolatos részletekért.
 
-**Az Azure-portálon**
+**Az Azure Portalon**
 
-Konfigurálja és naplózás és a metrikák a tárolási fiók használatával a [Azure-portálon](https://portal.azure.com), kövesse [figyelése az Azure portálon tárfiók](storage-monitor-storage-account.md).
+És konfigurálása naplózás és mérőszámok a Storage-fiók használatával a [az Azure portal](https://portal.azure.com), kövesse az utasításokat, [monitorozása az Azure Portal tárfiók](storage-monitor-storage-account.md).
 
 > [!NOTE]
-> Nincs lehetőség beállítása az Azure portál használatával percenkénti metrikákat. Azt javasoljuk azonban, hogy meg őket az oktatóanyag céljából, és az alkalmazás teljesítményproblémák vizsgálata. Percenkénti metrikákat alább látható módon PowerShell használatával, vagy programozott módon, a storage ügyféloldali kódtár állíthatja be.
+> Nem alkalmas állítsa be a perc típusú metrikák az Azure portal használatával. Azonban azt javasoljuk, hogy állítsa őket az oktatóanyag az alkalmazásában, valamint az alkalmazását a teljesítménnyel kapcsolatos problémák kivizsgálása. Perc típusú metrikák, ahogy az alábbi PowerShell-lel, vagy programozott módon, a storage ügyféloldali kódtára segítségével állíthatja be.
 > 
-> Vegye figyelembe, hogy az Azure-portál nem tudja megjeleníteni percenkénti metrikákat, csak óránkénti metrikákat.
+> Vegye figyelembe, hogy az Azure Portalon nem tudja megjeleníteni a perc típusú metrikák, csak az óránkénti mérőszámot.
 > 
 > 
 
 **Via PowerShell**
 
-Ismerkedés az Azure PowerShell használatával, lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
+Az Azure PowerShell használatának első lépései, lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
-1. Használja a [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0) parancsmag segítségével adjon hozzá a PowerShell-ablakban Azure felhasználói fiókja:
+1. Használja a [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0) parancsmagot, hogy az Azure felhasználói fiók hozzáadása a PowerShell-ablakban:
    
     ```powershell
     Add-AzureAccount
     ```
 
-2. Az a **jelentkezzen be a Microsoft Azure** ablak, írja be az e-mail címet és -fiókjához tartozó jelszót. Az Azure hitelesíti és menti a hitelesítő adatokat, majd bezárja az ablakot.
-3. Állítsa be az alapértelmezett tárfiók a tárfiókot, az oktatóanyag használja a következő parancsok futtatásával a PowerShell-ablakban:
+2. Az a **jelentkezzen be a Microsoft Azure** ablakban írja be az e-mail címet és a fiókjához tartozó jelszót. Az Azure hitelesíti és menti a hitelesítő adatokat, majd bezárja az ablakot.
+3. Állítsa be az alapértelmezett tárfiók a storage-fiókba az oktatóanyagban használja úgy, hogy végrehajtja ezeket a parancsokat a PowerShell-ablakban:
    
     ```powershell
     $SubscriptionName = 'Your subscription name'
@@ -115,257 +111,257 @@ Ismerkedés az Azure PowerShell használatával, lásd: [telepítése és konfig
     Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
     ```
 
-4. A Blob szolgáltatás tárolási naplózásának engedélyezéséről:
+4. Storage a Blob szolgáltatás naplózásának engedélyezéséről:
    
     ```powershell
     Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
     ```
 
-5. A Blob szolgáltatás, és állítson be storage mérőszámainak engedélyezése **- MetricsType** való `Minute`:
+5. A Blob szolgáltatás, ügyelve arra, hogy állítsa be, hogy a storage mérőszámainak engedélyezése **- MetricsType** való `Minute`:
    
     ```powershell
     Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 ### <a name="configure-net-client-side-logging"></a>.NET ügyféloldali naplózás konfigurálása
-.NET-alkalmazás ügyféloldali naplózási engedélyezze .NET diagnosztika a az alkalmazás konfigurációs fájljában (a web.config vagy az App.config fájlt). Lásd: [ügyféloldali naplózás a .NET a Storage ügyféloldali kódtára](http://msdn.microsoft.com/library/azure/dn782839.aspx) és [ügyféloldali naplózás a Microsoft Azure Storage SDK for Java](http://msdn.microsoft.com/library/azure/dn782844.aspx) az MSDN Webhelyén, a részletekért.
+.NET-alkalmazás ügyféloldali naplózási diagnosztika .NET használata az alkalmazás konfigurációs fájljában (a web.config vagy az App.config fájlt). Lásd: [ügyféloldali naplózást, a Storage .NET ügyféloldali kódtár](http://msdn.microsoft.com/library/azure/dn782839.aspx) és [ügyféloldali naplózás a Microsoft Azure Storage SDK for Java](http://msdn.microsoft.com/library/azure/dn782844.aspx) az MSDN-en a részletekért.
 
-Az ügyféloldali napló részletes információkat arról, hogyan az ügyfél előkészíti a kérelmet, és fogadja és dolgozza fel a választ tartalmaz.
+Az ügyféloldali napló részletes információkat arról, hogyan az ügyfél előkészíti a kérelmet, és fogadja és dolgozza fel a válasz tartalmazza.
 
-A Storage ügyféloldali kódtár ügyféloldali naplóadatokat az alkalmazás konfigurációs fájljában (a web.config vagy az App.config fájlt) a megadott helyen tárolja.
+A Storage ügyféloldali kódtára ügyféloldali Teljesítménynapló-adatok az alkalmazás konfigurációs fájljában (a web.config vagy az App.config fájlt) a megadott helyen tárolja.
 
-### <a name="collect-a-network-trace"></a>A hálózati nyomkövetés gyűjtése
-Az Üzenetelemző használhatja egy HTTP/HTTPS hálózati nyomkövetés gyűjtéséhez az ügyfélalkalmazás futtatása közben. Üzenet-elemző eszköz által használt [Fiddler](http://www.telerik.com/fiddler) a háttérben. A hálózati nyomkövetés gyűjt, mielőtt azt javasoljuk, hogy konfigurálja a titkosított HTTPS-forgalom rögzítése a Fiddler:
+### <a name="collect-a-network-trace"></a>Hálózati nyomkövetési adatok gyűjtése
+Az Üzenetelemző használatával összegyűjtése egy HTTP/HTTPS hálózati nyomkövetést az ügyfélalkalmazás futtatása közben. A Message Analyzer használ [Fiddler](http://www.telerik.com/fiddler) a háttérben. A hálózati nyomkövetés gyűjthet, mielőtt azt javasoljuk, hogy a nem titkosított HTTPS-forgalom rögzítése a Fiddler konfigurálása:
 
 1. Telepítés [Fiddler](http://www.telerik.com/download/fiddler).
-2. Indítsa el a Fiddler.
-3. Válassza ki **eszközök |} Fiddler beállítások**.
-4. A beállítások párbeszédpanelen győződjön meg arról, hogy **rögzítése HTTPS kapcsolódik** és **a HTTPS-forgalmon visszafejtés** mind van jelölve, alább látható módon.
+2. A Fiddler elindítása.
+3. Válassza ki **eszközök |} Fiddler-beállítások**.
+4. A beállítások párbeszédpanelen ellenőrizze, hogy **rögzítése HTTPS csatlakozik** és **HTTPS-forgalom visszafejtése** mind van jelölve, ahogy az alábbi.
 
-![Fiddler beállítások konfigurálása](./media/storage-e2e-troubleshooting/fiddler-options-1.png)
+![Fiddler-beállítások konfigurálása](./media/storage-e2e-troubleshooting/fiddler-options-1.png)
 
-Az oktatóanyag gyűjtése egy hálózati nyomkövetést először mentse a Message Analyzer, majd a nyomkövetés és a naplók elemzése analysis-munkamenetet létrehozni. Egy hálózati nyomkövetést, a Message Analyzer gyűjtéséhez:
+Az oktatóanyag gyűjtése és a hálózati nyomkövetés először mentse a Message Analyzer, majd hozzon létre egy elemzési munkamenet a nyomkövetés és a naplók elemzéséhez. A Message Analyzer hálózati nyomkövetési adatok gyűjtése:
 
-1. A Message Analyzer, válassza ki **fájl |} Gyors nyomkövetési |} Titkosítás nélkül HTTPS**.
-2. A nyomkövetés, ezért azonnal megkezdődik. Válassza ki **leállítása** nyomkövetés leállítására, így konfigurálhatjuk nyomkövetési tárolási forgalom.
+1. A Message Analyzer, válassza ki **fájl |} Gyors nyomkövetési |} Nem titkosított HTTPS**.
+2. A nyomkövetés a azonnal megkezdődik. Válassza ki **leállítása** , állítsa le a nyomkövetést, így csak a nyomkövetési tárolási forgalom, konfigurálhatjuk.
 3. Válassza ki **szerkesztése** szerkesztése a nyomkövetési munkamenet.
-4. Válassza ki a **konfigurálása** jobbra mutató hivatkozás a **Microsoft-Pef-WebProxy** ETW-szolgáltató.
-5. Az a **speciális beállítások** párbeszédpanel, kattintson a **szolgáltató** fülre.
-6. Az a **állomásnév szűrő** mezőben adja meg a tároló-végpontokat, választják el egymástól. Például megadhatja a végpontokat az alábbiak szerint; Módosítsa `storagesample` a tárfiók nevét:
+4. Válassza ki a **konfigurálása** jobb oldalán található hivatkozást a **Microsoft-Pef-WebProxy** ETW-szolgáltató.
+5. Az a **speciális beállítások** párbeszédpanelen kattintson a **szolgáltató** fülre.
+6. Az a **állomásnév szűrő** mezőben adja meg a tárolási végpontok, szóközzel elválasztva. Például megadhatja a végpontok módon; Módosítsa `storagesample` a tárfiók nevére:
 
     ```   
     storagesample.blob.core.windows.net storagesample.queue.core.windows.net storagesample.table.core.windows.net
     ```
 
-7. A párbeszédpanel bezárásához, majd kattintson az **indítsa újra a** megkezdéséhez a gyűjtése a nyomkövetési helyen, az állomásnév szűrővel, hogy csak Azure tárolási hálózati forgalom szerepel a nyomkövetésben.
+7. Lépjen ki a párbeszédpanelt, és kattintson a **indítsa újra a** megkezdéséhez a nyomkövetési adatok gyűjtése a helyen, az állomásnév szűrővel, hogy csak az Azure Storage érkező hálózati forgalmat a nyomkövetés szerepel.
 
 > [!NOTE]
-> Miután végzett a hálózati nyomkövetés gyűjtése, javasoljuk, hogy a beállításokat, előfordulhat, hogy módosította a Fiddler a HTTPS-forgalmon visszafejtés vissza. A Fiddler beállítások párbeszédpanelen törölje a **rögzítése HTTPS kapcsolódik** és **a HTTPS-forgalmon visszafejtés** jelölőnégyzeteket.
+> Miután ezzel végzett, a hálózati nyomkövetés gyűjtése, javasoljuk, hogy a beállításokat, előfordulhat, hogy módosította a fiddler esetében a HTTPS-forgalom visszafejtése vissza. A Fiddler beállítások párbeszédpanelen törölje a **rögzítése HTTPS csatlakozik** és **HTTPS-forgalom visszafejtése** jelölőnégyzeteket.
 > 
 > 
 
-Lásd: [használja a hálózati nyomkövetés funkciókat](http://technet.microsoft.com/library/jj674819.aspx) a TechNet webhelyen olvashat.
+Lásd: [hálózati nyomkövetés funkciót](http://technet.microsoft.com/library/jj674819.aspx) kapcsolatos további részletek a TechNeten.
 
-## <a name="review-metrics-data-in-the-azure-portal"></a>Tekintse át a metrikai adatok az Azure-portálon
-Miután az alkalmazás egy ideig futott, a megjelenő metrikák diagramok tekintse át a [Azure-portálon](https://portal.azure.com) és figyelje meg, hogyan van lett végrehajtása a szolgáltatás.
+## <a name="review-metrics-data-in-the-azure-portal"></a>Tekintse át a metrikák adatait az Azure Portalon
+Után az alkalmazás egy ideig futott, a megjelenő mérőszámdiagramok áttekintheti a [az Azure portal](https://portal.azure.com) , figyelje meg, hogyan a szolgáltatás rendelkezik lett végrehajtása.
 
-Első lépésként nyissa meg a storage-fiókot az Azure-portálon. Alapértelmezés szerint a figyelő a diagramon a **sikeres arány** metrika jelenik meg a fiók panelen. Ha módosította a diagram megjelenítése különböző metrikák korábban, vegye fel a **sikeres arány** metrikát.
+Először keresse meg a storage-fiókot az Azure Portalon. A diagram a figyelés alapértelmezés szerint a **sikerszázalék** metrika a fiók panelen jelenik meg. Ha korábban már módosította a diagram különböző metrikák megjelenítéséhez, vegye fel a **sikerszázalék** metrikát.
 
-Most láthatja **sikeres arány** , a figyelés diagramra bármely más metrikákkal együtt előfordulhat, hogy felvette. A forgatókönyvben lesz felülvizsgáljuk mellett a naplófájlok az Üzenetelemző elemzésével százalékos sikerességi arányát némileg alábbi 100 %.
+Most már megjelenik **sikerszázalék** a figyelés diagramra, bármely más metrikákkal együtt előfordulhat, hogy hozzáadta. A forgatókönyvben azt fogja következő vizsgálata a Message Analyzer-naplók elemzésével sikerességi arány százalékban Ez valamelyest 100 % alatti.
 
-Hozzáadása és metrikákat diagramok testreszabása a további részletekért lásd: [metrikák diagramok testreszabása](storage-monitor-storage-account.md#customize-metrics-charts).
+A hozzáadása és testreszabása mérőszámdiagramok további részletekért lásd: [mérőszámdiagramok testreszabása](storage-monitor-storage-account.md#customize-metrics-charts).
 
 > [!NOTE]
-> Ez eltarthat egy ideig a metrikák adatok storage mérőszámainak engedélyezése után az Azure-portálon jelenik meg. Ennek az az oka az előző órán óránkénti metrikáját nem jelenik meg az Azure portálon mindaddig, amíg a jelenlegi óra telt el. Emellett percenkénti metrikákat jelenleg nem láthatók az Azure portálon. Ezért attól függően, ha engedélyezi a metrikákat, szükség lehet legfeljebb kétórás metrikai adatok megjelenítéséhez.
+> Eltarthat egy kis ideig, miután engedélyezte a storage-mérőszámok az Azure-portálon jelennek meg a mérőszámadatokat. Ennek oka az, óránkénti metrikáit az előző órán belül nem jelenik meg az Azure Portalon mindaddig, amíg a jelenlegi óra telt el. Ezenkívül perc típusú metrikák jelenleg nem láthatók az Azure Portalon. Ezért attól függően, amikor engedélyezi a metrikák, eltarthat tekintse meg a mérőszámadatokat akár két órát.
 > 
 > 
 
-## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>Kiszolgáló naplókat másolja egy helyi az AzCopy segítségével
-Az Azure Storage blobs, írja server naplóadatokat, amikor a metrikák táblák írja a rendszer. Napló blobok érhetők el a jól ismert `$logs` tároló a tárfiók. Napló blobok neve hierarchikusan év, hónap, nap és óra, így könnyen elérhetők a vizsgálni kívánt időtartományt. Például a `storagesample` fiók, a napló 01 02 2015 / /, reggel 8 – 9, a blobokat tárolójának `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Ebben a tárolóban lévő egyes blobok megnevezett egymás után, kezdve `000000.log`.
+## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>Kiszolgálónaplók egy helyi könyvtárba másolni az AzCopy használata
+Az Azure Storage a kiszolgáló naplóadatok a blobokhoz, ír, amíg a metrikák írt táblákat. Naplóblobok érhetők el a jól ismert `$logs` a tárfiókhoz tartozó tárolót. Naplózási blobok neve hierarchikusan év, hónap, nap és óra, így könnyen keresse meg a vizsgálni kívánt időtartományt. Ha például a `storagesample` fiók, a tárolót a 01/02/2015-höz, a 8 – 9-kor, a naplózási blobok számára `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Az ebben a tárolóban az egyes blobok nevesített sorrendben, kezdve `000000.log`.
 
-Az AzCopy parancssori eszköz segítségével töltse le a kiszolgálóoldali naplófájlok az Ön által választott helyre a helyi számítógépen. Például használhatja a következő parancsot a blob műveletek történt 2015. január 2. azt a mappát a naplófájlokban letöltése `C:\Temp\Logs\Server`; cserélje le `<storageaccountname>` a tárfiók nevével és `<storageaccountkey>` rendelkező a hívóbetűre:
+Az AzCopy parancssori eszköz használatával töltse le a kiszolgálóoldali naplófájlok egy tetszőleges helyre a helyi gépen. Például használhatja a következő parancsot a naplófájlokat, amelyek 2015. január 2 mappába került sor a blob műveletekhez letöltéséhez `C:\Temp\Logs\Server`; cserélje le `<storageaccountname>` a tárfiók nevével és `<storageaccountkey>` a fiók hozzáférési kulccsal :
 
 ```azcopy
 AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
 ```
-AzCopy letölthető a rendszer a [Azure letölti](https://azure.microsoft.com/downloads/) lap. AzCopy használatával kapcsolatos részletekért lásd: [adatátvitel az AzCopy parancssori segédprogram a](storage-use-azcopy.md).
+Az AzCopy letölthető a [Azure letöltések](https://azure.microsoft.com/downloads/) lap. Az AzCopy használatával kapcsolatos részletekért lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
 
-További információ a kiszolgálóoldali naplók letöltése: [naplózási adatokat tároló naplózás letöltése](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
+Kiszolgálóoldali naplók letöltésére vonatkozó további információkért lásd: [letöltése Storage-naplózás adatainak](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
 
-## <a name="use-microsoft-message-analyzer-to-analyze-log-data"></a>Microsoft Message Analyzert használatával elemezheti a naplóadatok
-Microsoft Message Analyzert egy olyan eszköz, a rögzítés, megjelenítését és elemzése a forgalmat, eseményeket és hibaelhárítási és diagnosztikai forgatókönyvek egyéb rendszer vagy alkalmazás üzeneteket üzenetküldési protokoll. Az Üzenetelemző is lehetővé teszi betöltése, összesített és elemezhetik a naplóból, és nyomkövetési fájlok mentése. Az Üzenetelemző kapcsolatos további információkért lásd: [Microsoft Message Analyzer működő útmutató](http://technet.microsoft.com/library/jj649776.aspx).
+## <a name="use-microsoft-message-analyzer-to-analyze-log-data"></a>A Microsoft Message Analyzer használatával elemezheti a naplófájlok adatait
+Microsoft Message Analyzert egy olyan eszköz, rögzítése, megjelenítése és elemzése a forgalmat, események és egyéb hibaelhárítási és diagnosztikai forgatókönyvek rendszer vagy alkalmazás üzeneteket üzenetküldési protokoll. Az Üzenetelemző is lehetővé teszi betöltése, összesített és naplóból származó adatok elemzése és nyomkövetési fájlok mentése. Az Üzenetelemző kapcsolatos további információkért lásd: [Microsoft Message Analyzer működő útmutató](http://technet.microsoft.com/library/jj649776.aspx).
 
-Az Üzenetelemző eszközök, amelyek segítenek a kiszolgáló, az ügyfél és a hálózati naplók elemzése Azure Storage magában foglalja. Ebben a szakaszban mutatjuk be ezekhez az eszközökhöz használata alacsony százalékos siker a tárolási naplókat a probléma megoldására.
+Message Analyzert eszközöket tartalmaz, amelyek segítenek a kiszolgáló, ügyfél és hálózati naplók elemzése az Azure Storage. Ebben a szakaszban mutatjuk be ezeket az eszközöket a probléma az alacsony sikerességi arány százalékban a storage-naplók használatával.
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Töltse le és telepítse a Message Analyzer és az Azure Storage-eszközök
-1. Töltse le [Üzenetelemző](http://www.microsoft.com/download/details.aspx?id=44226) a Microsoft letöltőközpontból, és futtassa a telepítőt.
+1. Töltse le [Message Analyzer](http://www.microsoft.com/download/details.aspx?id=44226) a Microsoft letöltőközpontból, és futtassa a telepítőt.
 2. Indítsa el a Message Analyzer.
-3. Az a **eszközök** menü **Eszközkezelő**. Az a **Eszközkezelő** párbeszédablakban válassza **letölti**, majd szűrést végezni **Azure Storage**. Az Azure Storage-eszközök, az alábbi képen látható módon jelenik meg.
-4. Kattintson a **szinkronizálási összes megjelenített elemek** az Azure Storage-eszközök telepítése. A rendelkezésre álló eszközökre a következők:
-   * **Az Azure Storage szín szabályok:** az Azure Storage szín szabályok lehetővé teszik a speciális szűrők használó színét, a szöveg és a betűtípus stílusok üzeneteket, amelyek tartalmazzák a nyomkövetési szereplő konkrét információk kiemeléséhez.
-   * **Az Azure Storage diagramok:** az Azure Storage diagram olyan előre definiált diagramok, amelyek a kiszolgáló naplóadatokat diagramot. Vegye figyelembe, hogy most Azure Storage diagramok használatához, előfordulhat, hogy csak akkor kell betölteni a kiszolgáló naplóját a elemzés rácsba.
-   * **Az Azure Storage elemzők:** az Azure Storage elemzők elemzése az Azure Storage-ügyfél, a kiszolgáló és a HTTP naplók elemzése rácsban megjelenítéséhez.
-   * **Az Azure Storage-szűrők:** az Azure Storage szűrők a következők előre meghatározott feltételek, amelyek segítségével az adatok elemzése rácsban lekérdezése.
-   * **Az Azure Storage nézet elrendezések:** az Azure Storage nézet elrendezések előre definiált oszlop elrendezések és elemzési rácsban csoportból.
+3. Az a **eszközök** menüjében válassza **Eszközkezelő**. Az a **Eszközkezelő** párbeszédablakban válassza **letölti**, majd szűrés **Azure Storage**. Az Azure Storage-eszközök, az alábbi képen látható módon jelenik meg.
+4. Kattintson a **szinkronizálás az összes megjelenített elemek** az Azure Storage-eszközök telepítéséhez. A rendelkezésre álló eszközök a következők:
+   * **Az Azure Storage Színszabályainak:** az Azure Storage színszabályainak engedélyezése, hogy meghatározza a speciális szűrők, amelyek használják a szín, a szöveg és a betűtípus stílusok üzeneteket, amelyek tartalmazzák a nyomkövetési szereplő konkrét információk kiemeléséhez.
+   * **Az Azure Storage-diagramokat:** az Azure Storage-diagramok használata előre definiált diagramok, amelyek a graph-kiszolgáló naplózási adatokat. Vegye figyelembe, hogy használatára diagramok Azure Storage jelenleg, akkor előfordulhat, hogy csak akkor kell betölteni a kiszolgálónapló a elemzési rácsba.
+   * **Az Azure Storage-elemzők:** az Azure Storage-elemzők elemezni annak érdekében, hogy a elemzési rácsban megjelenítendő őket az Azure Storage-kliens, a kiszolgáló és a HTTP-naplókat.
+   * **Az Azure Storage-szűrők:** az Azure Storage-szűrők használatával lekérdezheti az adatokat az elemzési rács előre meghatározott feltételeknek.
+   * **Az Azure Storage nézet elrendezések:** az Azure Storage nézet elrendezések előre definiált oszlop elrendezések és az elemzési rács csoportosításokat.
 5. Indítsa újra a Message Analyzer, az eszközök telepítése után.
 
 ![Message Analyzer Eszközkezelő](./media/storage-e2e-troubleshooting/mma-start-page-1.png)
 
 > [!NOTE]
-> Ez az oktatóanyag céljából Azure Storage eszközök teljes telepítése.
+> Telepítse az összes az Azure Storage-eszközök jelenik meg ez az oktatóanyag az alkalmazásában.
 > 
 > 
 
-### <a name="import-your-log-files-into-message-analyzer"></a>A naplófájlok importálása Message Analyzer
-Importálhatja a mentett naplófájlok (kiszolgálóoldali ügyféloldali és hálózati), az összes Microsoft Message Analyzert egyetlen munkamenetében elemzés céljából.
+### <a name="import-your-log-files-into-message-analyzer"></a>A naplófájlok importálja a Message Analyzer
+Importálhatja a mentett naplófájlok (kiszolgálóoldali, az ügyféloldali és hálózati) az összes elemzés a Microsoft Message Analyzert egyetlen munkamenetben.
 
-1. Az a **fájl** Microsoft Message Analyzert, menüjében kattintson **új munkamenet**, és kattintson a **üres munkamenet**. Az a **új munkamenet** párbeszédpanelen adja meg az elemzési munkamenet nevét. Az a **munkamenet részletei** panelen, kattintson a **fájlok** gombra.
-2. Az Üzenetelemző által generált hálózati nyomkövetési adatok betöltéséhez kattintson a **fájlok hozzáadása**, keresse meg a helyet, ahová mentette a .matp fájl a webes nyomkövetési munkamenet, válassza ki a .matp fájlt, és kattintson a **nyitott**.
-3. A kiszolgálóoldali naplóadatokat betöltéséhez kattintson a **fájlok hozzáadása**, keresse meg a helyet, amelybe letöltötte a kiszolgálóoldali naplókhoz, válassza ki a naplófájlokat a elemzéséhez, és kattintson a kívánt időtartományt **nyitott**. Ezt követően a a **munkamenet részletei** panelen, állítsa be a **szöveges napló konfigurációs** legördülő minden kiszolgálóoldali naplófájl **AzureStorageLog** annak érdekében, hogy a Microsoft Message Analyzert tudja megfelelően értelmezni a naplófájlba írást.
-4. Az ügyféloldali napló adatok betöltéséhez kattintson a **fájlok hozzáadása**, keresse meg a helyet, ahová menteni szeretné az ügyféloldali naplók, válassza ki a naplófájlokat, elemzése, és kattintson a kívánt **nyitott**. Ezt követően a a **munkamenet részletei** panelen, állítsa be a **szöveges napló konfigurációs** legördülő lista az egyes ügyféloldali naplófájlok **AzureStorageClientDotNetV4** annak érdekében, hogy a Microsoft Message Analyzert tudja megfelelően értelmezni a naplófájlba írást.
-5. Kattintson a **Start** a a **új munkamenet** betölteni és elemezni a naplóadatok párbeszédpanel. A naplózási adatok jelennek meg a Message Analyzer elemzés rácsban.
+1. Az a **fájl** Microsoft Message Analyzert, menüjében kattintson a **új munkamenet**, és kattintson a **üres munkamenet**. Az a **új munkamenet** párbeszédpanelen adjon meg egy nevet az analysis-munkamenet. Az a **munkamenet részletei** panelen, kattintson a **fájlok** gombra.
+2. A Message Analyzer által generált hálózati nyomkövetési adatok betöltéséhez kattintson a **fájlok hozzáadása**, keresse meg a helyet, ahová mentette a .matp fájlt a webes nyomkövetési munkamenet, válassza ki a .matp fájlt, és kattintson a **nyissa meg a**.
+3. A kiszolgálóoldali naplóadatok betöltése, kattintson a **fájlok hozzáadása**, keresse meg a helyet, ahová letöltötte a kiszolgálóoldali naplók, válassza ki a naplófájlokat a elemzése, és kattintson a kívánt időtartományt **nyílt**. Ezt követően a a **munkamenet részletei** panelen, és állítsa a **szöveges napló konfigurációs** a kiszolgálóoldali log fájl esetében legördülő **AzureStorageLog** , győződjön meg arról, hogy a Microsoft Message Elemző is megfelelően elemezni a naplófájlt.
+4. Az ügyféloldali naplóadatok betöltése, kattintson a **fájlok hozzáadása**, keresse meg a helyet, ahová mentette az ügyféloldali naplók, válassza ki a naplófájlok elemzése, és kattintson a kívánt **nyílt**. Ezt követően a a **munkamenet részletei** panelen, és állítsa a **szöveges napló konfigurációs** az egyes ügyféloldali naplófájlok legördülő **AzureStorageClientDotNetV4** annak érdekében, hogy Microsoft Message Analyzert lehet megfelelően elemezni a naplófájl.
+5. Kattintson a **Start** a a **új munkamenet** betölteni és elemezni a naplóadatok párbeszédpanel. A naplóadatok a Message Analyzer elemzési rács jeleníti meg.
 
-A következő ábrán egy példa munkamenet kiszolgáló, ügyfél és hálózati nyomkövetési naplófájlok konfigurálni.
+A következő ábrán látható egy példa munkamenet a kiszolgáló, ügyfél és a hálózati nyomkövetési naplófájlok konfigurálva.
 
 ![Message Analyzer munkamenet konfigurálása](./media/storage-e2e-troubleshooting/configure-mma-session-1.png)
 
-Vegye figyelembe, hogy a Message Analyzer naplófájlok betölti a memóriába. Ha a napló nagy adatkészletet, érdemes ahhoz, hogy a lehető legjobb teljesítményt lekérni a Message Analyzer szűréséhez.
+Vegye figyelembe, hogy az Üzenetelemző naplófájlok betölti a memóriába. Ha rengeteg naplóadatokat, célszerű a legjobb teljesítmény eléréséhez a Message Analyzer szűréséhez.
 
-Először határozza meg az időkeret érdekli áttekintése, valamint ezen az időn lehető legkisebb tartását. Sok esetben érdemes perc vagy óra legfeljebb egy adott időn át. Importálja a lehető legkisebb jogosultságkészletet naplókat, amely megfelel az igényeinek.
+Először határozza meg, amelynek Ön a fájlvédelmi, és ezen az időn legyen a lehető legkisebb tartani. A legtöbb esetben célszerű tekintse át a percek vagy órák legfeljebb egy ideig. Importáljon a legkisebb naplók, amely megfelel az igényeinek.
 
-Ha továbbra is nagy mennyiségű naplóadatokat, majd érdemes lehet a naplóadatok előtt töltse be a munkamenet szűrőt adjon meg. Az a **munkamenet szűrő** mezőben válassza a **könyvtár** gombra kattintva válasszon egy előre meghatározott szűrőt; például **globális idő szűrő i.** az az Azure Storage-szűrők szűrést végezni egy adott időintervallumban. Szerkesztheti a szűrési feltételeket adhatja meg a kezdési és befejezési időbélyeg meg szeretné tekinteni az az időtartam alatt. Akkor is végezhet egy adott állapotkód; például ha szeretné, csak az állapotkód: 404 esetén naplóbejegyzések betölteni.
+Ha továbbra is nagy mennyiségű naplózási adatokat, majd érdemes adja meg a munkamenet szűrőt, a naplózási adatokat, mielőtt betölti azt. Az a **munkamenet szűrő** jelölje ki a **könyvtár** gombra kattintva válasszon egy előre meghatározott szűrőt; például **globális idő szűrő I** szűrése szűri az Azure Storage-ból az adott idő alatt. Szerkesztheti a szűrési feltételeket a kezdési és befejezési időbélyeg meg szeretné tekinteni az időköz megadása. Szűrhet emellett az adott állapotkódot; Ha például választhat csak az állapotkód: 404 esetén naplóbejegyzések betöltése.
 
-Naplóadatok Microsoft Message Analyzert történő importálásával kapcsolatos további információkért lásd: [üzenet-adatok beolvasása](http://technet.microsoft.com/library/dn772437.aspx) a TechNet webhelyen.
+A Teljesítménynapló-adatok importálása a Microsoft Message Analyzer kapcsolatos további információkért lásd: [üzenet adatainak beolvasása](http://technet.microsoft.com/library/dn772437.aspx) a TechNet webhelyén.
 
-### <a name="use-the-client-request-id-to-correlate-log-file-data"></a>Az ügyfél-azonosító segítségével összefüggéseket naplófájl adatai
-Az Azure Storage ügyféloldali kódtár automatikusan hoz létre minden egyes kérés egyedi ügyfélkérelem-azonosító. Ez az érték az az ügyfél talál, a kiszolgáló naplóját és a hálózati nyomkövetés írni, hogy használhassa adatai közötti összefüggések keresésére Message Analyzer belül minden három naplók között. Lásd: [ügyfélkérelem-azonosító](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) további információt az ügyfél kérelem az azonosítója.
+### <a name="use-the-client-request-id-to-correlate-log-file-data"></a>Naplófájlok adatainak korrelációját ügyfélkérelem-azonosító használata
+Az Azure Storage ügyféloldali kódtár automatikusan létrehozza az egyedi ügyfélkérelem-azonosító minden egyes kérés esetében. Ez az érték íródik a ügyfélnapló, a kiszolgáló naplózási és a hálózati nyomkövetés adatainak korreláltatására Message Analyzer belül minden három napló használhassa. Lásd: [ügyfélkérelem-azonosító](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) további információt az ügyfél a kérés azonosítóját.
 
-Az alábbi szakaszok azt ismertetik, hogyan előre konfigurált és egyéni nézetek segítségével összefüggéseket és replikációscsoport-adatok alapján az ügyfél kérelem-azonosítót.
+Az alábbi szakaszok azt ismertetik, hogyan előre konfigurált és az egyéni elrendezés nézetek segítségével összehasonlíthatja és csoport adatai alapján az ügyfél-kérelem azonosítója.
 
-### <a name="select-a-view-layout-to-display-in-the-analysis-grid"></a>Az elemzés rácsban megjelenítendő nézet elrendezés kiválasztása
-A Message Analyzer tárolási eszközök közé tartozik a Azure tárolási nézet elrendezést, amelyek előre konfigurált nézeteket, amelyek segítségével az adatok hasznos Csoportosítások és a különböző alkalmazási helyzetek oszlopok megjelenítéséhez. Hozhat létre egyéni nézet elrendezést, és mentse őket ismételt felhasználásra.
+### <a name="select-a-view-layout-to-display-in-the-analysis-grid"></a>Az elemzés rácsban megjelenítendő nézetet elrendezés kiválasztása
+A Message Analyzer tárolási eszközök vannak az előre konfigurált nézeteket, amelyek segítségével az adatok hasznos csoportosításokat és a különböző helyzetekhez oszlopok megjelenítéséhez az Azure Storage nézet elrendezését tartalmazza. Is létrehozhat egyéni nézet elrendezését és újbóli felhasználás céljából menthetők.
 
-Az alábbi kép a **nézet elrendezését** menü kiválasztásával elérhető **nézet elrendezését** az eszköztár szalagon. A nézet elrendezések az Azure Storage alatt találhatók a **Azure Storage** csomópont a menüben. Kereshet `Azure Storage` be a keresőmezőbe az Azure Storage szűrése elrendezések csak megtekinthetők. Igény szerint kiválaszthatja a csillag kedvenc legyen, és megjeleníti azt az a menü felső nézet elrendezésének mellett.
+Az alábbi képen az látható a **nézet elrendezési** menüben elérhető kiválasztásával **nézet elrendezési** az eszköztár menüszalagján. A nézet elrendezését, az Azure Storage vannak összegyűjtve a **Azure Storage** csomópont a menüben. Kereshet `Azure Storage` a keresőmezőbe, az Azure Storage szűrése elrendezések csak megtekinthetők. Választhatja a kedvencként, és megjeleníti azt a menü tetején nézet elrendezést melletti csillagra.
 
-![Nézet elrendezését menü](./media/storage-e2e-troubleshooting/view-layout-menu.png)
+![Nézet elrendezési menü](./media/storage-e2e-troubleshooting/view-layout-menu.png)
 
-Először válasszon **ClientRequestID és modul szerint csoportosítva**. A nézet elrendezését csoportok naplózni három naplókból először ügyfélkérelem-azonosító, azután a forrás naplófájl (vagy **modul** az Üzenetelemző). Ez a nézet a részletekbe menően tárhatják fel adott ügyfélkérelem-azonosító, és adott ügyfél kérelem összes három naplófájl adatai azonosítóját.
+Először válasszon **ügyfélkérelem és modul szerint csoportosítva**. E nézet elrendezése csoportok jelentkezzen az összes három napló adatokat először ügyfélkérelem-azonosító, azután a forrás-naplófájl (vagy **modul** a Message Analyzer). Ebben a nézetben egy adott ügyfélkérelem-azonosító feltárásához, és tekintse meg az összes három naplófájl, ügyfélkérelem-azonosító. adatokat
 
-Az alábbi kép az elrendezés nézetben a napló mintaadatok, megjelenített oszlopok egy részét alkalmazza. Láthatja, hogy az adott ügyfélkérelem-azonosító, a elemzés rács adatait jeleníti meg az ügyfél napló, a kiszolgáló naplóját és a hálózati nyomkövetés.
+Az alábbi képen az látható ez elrendezését a nézet minta naplóadatok megjelenített oszlopok egy része a alkalmazni. Láthatja, hogy az adott ügyfélkérelem-azonosító, az elemzés rács adatait jeleníti meg az ügyfél log kiszolgálónapló és hálózati nyomkövetés.
 
-![Az Azure Storage nézet elrendezés](./media/storage-e2e-troubleshooting/view-layout-client-request-id-module.png)
+![Az Azure Storage nézet elrendezése](./media/storage-e2e-troubleshooting/view-layout-client-request-id-module.png)
 
 > [!NOTE]
-> Különböző naplófájlokat rendelkezik a különböző oszlopokban, így megjelenésekor több naplófájl adatait a elemzés rácsban, néhány oszlop nem tartalmazhat egy adott sor adatokat. Például a fenti kép, az ügyfél napló sorok ne jelenjen meg az adatokat a **időbélyeg**, **TimeElapsed**, **forrás**, és **cél** oszlopok, mivel ezek az oszlopok nem szerepelnek az ügyfél talál, de a hálózati nyomkövetés szerepel. Hasonlóképpen a **időbélyeg** oszlop Timestamp típusú adatait a kiszolgáló naplóját jeleníti meg, azonban adatot nem jelenik meg a **TimeElapsed**, **forrás**, és **cél** oszlopokat, amelyek nem részei a kiszolgáló naplóját.
+> Különböző naplófájlokat rendelkezik másik oszlop, így több naplófájlt származó adatok elemzése rács jelenik meg, ha egyes oszlopokat, nem tartalmaz egy megadott sorának adatokat. Például a fenti képen, az ügyfél log sorokat ne jelenjen meg az adatokat a **időbélyeg**, **TimeElapsed**, **forrás**, és **cél**oszlop, mert ezekben az oszlopokban nem szerepelnek az ügyfél napló, de a hálózati nyomkövetés léteznek. Ehhez hasonlóan a **időbélyeg** oszlop a kiszolgálónapló időbélyeg adatait jeleníti meg, de nincsenek adatok nem jelenik meg a **TimeElapsed**, **forrás**, és  **Cél** oszlopokat, amelyek nem részei a kiszolgálónapló.
 > 
 > 
 
-Mellett az Azure Storage nézet elrendezés, is határozza meg, és mentse a saját nézet elrendezés. Más kívánt Mezőválasztás adatok csoportosításához, és mentse a csoportosítás, valamint az egyéni elrendezés részeként.
+Mellett az Azure Storage-nézet elrendezések használatával, is határozza meg, és mentse a saját nézet elrendezését. Válassza ki az adatok csoportosításához többi kívánt mezőt, és mentse a csoportosítást, valamint az egyéni elrendezés részeként.
 
-### <a name="apply-color-rules-to-the-analysis-grid"></a>Az elemzés rács színét szabályok alkalmazása
-A tárolási eszközök is szín szabályok, amelyek ajánlat a visual azt jelenti, hogy különböző típusú hibák elemzés rácsban azonosításához. Előre definiált színt szabályok vonatkoznak a HTTP-hibák, így csak a kiszolgáló naplóját és a hálózati nyomkövetés jelennek meg.
+### <a name="apply-color-rules-to-the-analysis-grid"></a>Az elemzés rács színe szabályok alkalmazása
+A Storage-eszközök is kínálnak a Vizualizáció azt jelenti, hogy azonosíthatja a különböző típusú hibákat a elemzési rács színszabályainak. Így azok megjelennek a kiszolgáló naplózási és a hálózati nyomkövetés csak a HTTP-hibák, az előre definiált színt szabályok érvényesek lesznek.
 
-Szín szabályok jelölje **szín szabályok** az eszköztár szalagon. Látni fogja az Azure Storage szín szabályok a menüben. Válassza ki az oktatóanyagban **ügyfél hibákat (StatusCode 400 és 499)**, az alábbi képen látható módon.
+Szín szabályokat a alkalmazni, válassza ki a **Színszabályainak** az eszköztár menüszalagján. Látni fogja az Azure Storage színszabályainak menüjében. Az oktatóanyaghoz válasszon **Ügyfélhibák (400 és 499 StatusCode)**, ahogy az alábbi képen is látható.
 
-![Az Azure Storage nézet elrendezés](./media/storage-e2e-troubleshooting/color-rules-menu.png)
+![Az Azure Storage nézet elrendezése](./media/storage-e2e-troubleshooting/color-rules-menu.png)
 
-Az Azure Storage szín szabályok használata mellett is határozza meg és saját szín szabályok mentése.
+Használata az Azure Storage színszabályainak, mellett is meghatározása és a saját színszabályainak mentése.
 
-### <a name="group-and-filter-log-data-to-find-400-range-errors"></a>Csoport és a szűrő naplóadatokat 400-tartomány hibák kereséséhez
-Lesz a következő azt csoportnak, és szűrje a napló adatokat az összes hiba található a 400 közé.
+### <a name="group-and-filter-log-data-to-find-400-range-errors"></a>Csoport és a szűrő naplóadatok tartományon kívüli 400-as hibák keresése
+Ezután azt fogja csoport az adatok szűrésére és napló az összes hiba található a 400 tartományban.
 
-1. Keresse meg a **StatusCode** oszlop elemzés rácsban, kattintson a jobb gombbal a címsor, és válassza ki az oszlop **csoport**.
-2. A következő csoport a **ClientRequestId** oszlop. Látni fogja, hogy az Analysis rácsban most elrendezését állapotkód és ügyfél-kérelem azonosítót.
-3. A nézet szűrő eszköz ablak megjelenítése, ha azt már nem jelenik meg. Válassza ki az eszköztár menüszalagon **eszköz Windows**, majd **nézet szűrő**.
-4. A napló csak a 400-tartomány hibák megjelenítendő adatok szűrése, adja hozzá a következő szűrési feltételeket a **nézet szűrő** ablakot, és kattintson **alkalmaz**:
+1. Keresse meg a **StatusCode** oszlop az elemzési rácsban, kattintson a jobb gombbal a címsor, és válassza ki az oszlop **csoport**.
+2. Ezután a csoport a **ügyfélkérelem** oszlop. Látni fogja, hogy az adatok a elemzési rács most már van rendezve, állapotkód és a kérés ügyfél-azonosítót.
+3. A Nézetszűrőhöz eszköz ablak megjelenítése, ha azt már nem jelenik meg. Válassza az eszköztár menüszalagon **eszköz Windows**, majd **Nézetszűrőhöz**.
+4. Csak a 400-tartomány hibák megjelenítése a naplóadatok szűrni, adja hozzá az alábbi feltételeket, a **Nézetszűrőhöz** ablakban, majd kattintson **alkalmaz**:
 
     ```   
     (AzureStorageLog.StatusCode >= 400 && AzureStorageLog.StatusCode <=499) || (HTTP.StatusCode >= 400 && HTTP.StatusCode <= 499)
     ```
 
-Az alábbi képen a csoportosítás és a szűrő eredményeit jeleníti meg. Bővíteni a **ClientRequestID** mező alatt a csoportosítás status kód 409, például jeleníti meg, amelyek adott állapotkód: egy művelet.
+Az alábbi képen a csoportosítás és a szűrő eredményeit jeleníti meg. Kibontás a **ügyfélkérelem** mező alatt csoportosítása állapotkód: 409, például látható egy műveletet, amely adott állapotkód eredményezett.
 
-![Az Azure Storage nézet elrendezés](./media/storage-e2e-troubleshooting/400-range-errors1.png)
+![Az Azure Storage nézet elrendezése](./media/storage-e2e-troubleshooting/400-range-errors1.png)
 
-Ez a szűrő alkalmazását követően láthatja, hogy az ügyfél naplófájl azon sorait nem tartoznak, az ügyféllel a napló nem tartalmaz egy **StatusCode** oszlop. Először igazolnia áttekinti a kiszolgáló és a hálózati nyomkövetési naplók 404-es hibák kereséséhez, és majd még visszatérünk vizsgálja meg az ügyfél műveleteivel őket vezető ügyfél napló.
+Ez a szűrő alkalmazása, után látni fogja, hogy az ügyfél-naplófájl azon sorait ki vannak zárva, az ügyféllel a napló nem tartalmazza a **StatusCode** oszlop. Először áttekintheti a kiszolgáló és a hálózati nyomkövetési naplók keresse meg a 404-es hibát, és ezután még a ügyfélnapló megvizsgálhatja az Ügyfélműveletek őket vezettek visszatérünk.
 
 > [!NOTE]
-> Végezhet a **StatusCode** oszlop és továbbra is a megjelenített adatok három naplókat, beleértve az ügyfélszámítógép naplóját, ha a kifejezés hozzáadni a szűrőt, amely tartalmazza a naplóbejegyzéseket, ahol az állapotkód értéke null. A szűrőkifejezés létrehozásához használja:
+> Már szűrhet erre a **StatusCode** oszlopot, és továbbra is három naplókat, ha ad hozzá egy kifejezést a szűrő, amely tartalmazza a naplóbejegyzéseket, ahol az állapotkód értéke null, többek között a ügyfélnapló megjelenített adatokat. A szűrőkifejezés létrehozni, használja:
 > 
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
 > 
-> Ez a szűrő sorát adja vissza minden az ügyfél naplóját, és csak a kiszolgáló naplóját és a HTTP-napló sorát az állapotkód: nagyobb, mint a 400 esetén. Ha a nézet elrendezését csoportosítva ügyfélkérelem-azonosító és a modul telepítését, keressen, vagy görgessen keresztül a naplóbejegyzések található azokat, ahol minden három naplók vannak megadva.   
+> Ez a szűrő összes sorát visszaadják az ügyfél napló- és csak azokat a sorokat, a kiszolgáló naplóját és a HTTP-napló, az állapotkód értéke nagyobb, mint 400-as. Ügyfélkérelem-azonosító és a modul szerint csoportosítva nézet elrendezését a alkalmazni, ha keressen, és görgessen a található azokról, amelyben szerepelnek az összes három napló bejegyzései keresztül.   
 > 
 > 
 
-### <a name="filter-log-data-to-find-404-errors"></a>Szűrő naplóadatokat 404-es hibák kereséséhez
-A tárolási eszközök szűkítheti a naplóadatok találja a hibák vagy a keresett trendek segítségével előre definiált szűrőktől tartalmazzák. A következő fog érvénybe lépni két előre definiált szűrők: azt, amelyik a szűrők a kiszolgáló és a hálózati nyomkövetési naplók a 404-es hibákat, és azt, amelyik a megadott időtartomány lévő adatok szűrése.
+### <a name="filter-log-data-to-find-404-errors"></a>Naplóadatok 404-es hibát talál szűréséhez
+A Storage-eszközök előre definiált szűrők, amely naplóadatokat találja a hibák vagy a trendeket, Ön által keresett szűkítése használhatja tartalmazzák. Ezután azt fogja két előre meghatározott szűrőket alkalmazhat: egyet a kiszolgáló és a hálózat-nyomkövetési naplókat 404-es hibát szűri, és szűri az adatokat a megadott időtartományban.
 
-1. A nézet szűrő eszköz ablak megjelenítése, ha azt már nem jelenik meg. Válassza ki az eszköztár menüszalagon **eszköz Windows**, majd **nézet szűrő**.
-2. Válassza a nézet szűrő ablak **könyvtár**, és a keresési `Azure Storage` található az Azure Storage-szűrők. Válassza ki a szűrő **404-es (nem található) összes napló állapotüzenetek**.
-3. Megjelenítési a **könyvtár** menü újra, és keresse meg és jelölje ki a **globális Time Filter**.
-4. A megtekinteni kívánt tartományt a szűrő látható időbélyegeket szerkesztése. Ez segít az adatok elemzéséhez tartományán szűkítheti.
-5. A szűrő az alábbi példához hasonlóan kell megjelennie. Kattintson a **alkalmaz** a szűrő alkalmazása az elemzés rács.
+1. A Nézetszűrőhöz eszköz ablak megjelenítése, ha azt már nem jelenik meg. Válassza az eszköztár menüszalagon **eszköz Windows**, majd **Nézetszűrőhöz**.
+2. A nézet szűrő ablakban jelölje ki **könyvtár**, és a keresési `Azure Storage` keresse meg az Azure Storage-szűrők. Válassza ki a szűrő **404 (nem található) az összes napló állapotüzenetek**.
+3. Megjelenítési a **könyvtár** menü újra, és keresse meg és válassza ki a **globális Időszűrő**.
+4. A szűrő a megtekinteni kívánt tartomány látható időbélyegei szerkesztése. Ez segít az adatok elemzéséhez tartományából szűkítheti.
+5. A szűrő az alábbi példához hasonlóan kell megjelennie. Kattintson a **alkalmaz** elemet a szűrő alkalmazásához a elemzési rácsra.
 
     ```   
     ((AzureStorageLog.StatusCode == 404 || HTTP.StatusCode == 404)) And
     (#Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39)
     ```
 
-    ![Az Azure Storage nézet elrendezés](./media/storage-e2e-troubleshooting/404-filtered-errors1.png)
+    ![Az Azure Storage nézet elrendezése](./media/storage-e2e-troubleshooting/404-filtered-errors1.png)
 
-### <a name="analyze-your-log-data"></a>A naplózási adatok elemzése
-Csoportosítva, és az adatok szűrt, láthatja az egyes kérelmeket a 404-es kapcsolatban hibát okozó részleteit. Az aktuális nézet elrendezését az adatok ügyfélkérelem-azonosító, majd a napló forrás által szerint vannak csoportosítva. Mivel azt jelenleg korlátozza a kérelemhez ahol a StatusCode mezőben 404, megtanulhatja, csak a kiszolgáló és a hálózati nyomkövetési adatok, nem az ügyfél naplóadatokat.
+### <a name="analyze-your-log-data"></a>A naplóadatok elemzése
+Most, hogy vannak csoportosítva, és szűri az adatokat, ellenőrizheti a 404-es hibát jelzett az egyes kérelmek részletei. Az aktuális nézet elrendezését az adatok ügyfélkérelem-azonosító, majd az eseménynapló forrás szerint vannak csoportosítva. Mivel tudjuk szűrést végez a kérelmek, a StatusCode mező a 404-es, Találkozzunk csak a kiszolgáló és a hálózati nyomkövetési adatokat, nem az ügyfél naplóadatokat.
 
-A következő ábrán látható egy adott kérelem, amelyben a Blob beolvasása a művelet eredményezte-e a 404-es, mert a blob nem létezik. Vegye figyelembe, hogy néhány oszlop el lettek távolítva a szabványos nézet ahhoz, hogy a megfelelő adatok jelennek meg.
+A következő ábrán látható egy adott kéréshez, amikor egy Blob beolvasása művelet kurzorműveletnek-e 404-es, mert a blob nem létezik. Vegye figyelembe, hogy egyes oszlopok el lettek távolítva a standard szintű nézet annak érdekében, hogy a kapcsolódó adatok megjelenítése.
 
 ![Szűrt kiszolgálói és hálózati nyomkövetési naplók](./media/storage-e2e-troubleshooting/server-filtered-404-error.png)
 
-Ezután azt fogja függ a ügyfélkérelem-azonosító az ügyfél naplóadatokat, hogy milyen műveletek, az ügyfél lett véve, ha a hiba történt a. Új elemzési nézetet az ehhez a munkamenethez, a napló ügyféladatok megtekintésére, amely megnyit egy második lapján jelenítheti meg:
+Ezután azt fogja korrelációját, ha az ügyfélkérelem-azonosító meg, milyen műveletet, az ügyfél lett véve, ha a hiba történt az ügyfél log adatokkal. Egy új elemzési rácsnézet ehhez a munkamenethez megtekintéséhez a ügyfél naplóadatokat, amely megnyit egy második lapján jelenítheti meg:
 
-1. Első lépésként másolja az értékét a **ClientRequestId** mezőjét a vágólapra. Ehhez vagy sor kijelölés, megkeresi a **ClientRequestId** mező, kattintson a jobb gombbal az adatérték a, és válassza **másolási "ClientRequestId"**.
-2. Az eszköztár menüszalagon válassza **új Viewer**, majd jelölje be **elemzés rács** új lap megnyitásához. Az új lapja mutatja a naplófájlok nem csoportosításához, szűréséhez, illetve a szín szabályok összes adatot.
-3. Az eszköztár menüszalagon válassza **nézet elrendezését**, majd jelölje be **minden .NET ügyfél oszlopok** alatt a **Azure Storage** szakasz. A nézet elrendezését, az ügyfél adatainak megjelenítése, napló, valamint a kiszolgáló és a hálózat nyomkövetési naplóit. Alapértelmezés szerint a rendszer rendezi a **MessageNumber** oszlop.
-4. A következő keresése az ügyfél talál az ügyfél kérelem-azonosítót. Válassza ki az eszköztár menüszalagon **található üzenetek**, majd adjon meg egy egyéni szűrő a ügyfélkérelem-azonosító található a a **található** mező. Ezt a szintaxist használja a szűrőt, a saját ügyfélkérelem-azonosító megadása:
+1. Először másolja be az értékét a **ügyfélkérelem** mezőt a vágólapra. Is ehhez, vagy sor kijelölése, megkeresi a **ügyfélkérelem** mező, kattintson a jobb gombbal az adatérték a, és kiválasztása **másolási "Ügyfélkérelem"**.
+2. Az eszköztár menüszalagján válassza **új megjelenítő**, majd **elemzési rács** egy új lap megnyitásához. Az új lapon az összes adat látható a naplófájlok, csoportosítás, szűrés és színszabályainak nélkül.
+3. Az eszköztár menüszalagján válassza **nézet elrendezési**, majd **.NET-ügyfél az összes oszlop** alatt a **Azure Storage** szakaszban. E nézet elrendezése az ügyfél adatait jeleníti meg, log, valamint a kiszolgáló és a hálózat-nyomkövetési naplókat. Alapértelmezés szerint a rendszer rendezi a **MessageNumber** oszlop.
+4. Ezután az ügyfél napló kereséséhez az ügyfél-kérelem azonosítója. Válassza az eszköztár menüszalagon **található üzenetek**, majd adjon meg egy egyéni szűrő az ügyfélkérelem-azonosító a **található** mező. Használja ezt a szintaxist a szűrőt, a saját ügyfélkérelem-azonosító megadása:
 
     ```
     *ClientRequestId == "398bac41-7725-484b-8a69-2a9e48fc669a"
     ```
 
-Az Üzenetelemző talál, és kiválasztja az első naplóbejegyzés, ahol a keresési feltételeknek megfelelő ügyfél kérelem-azonosítót. Az ügyfélszámítógép naplóját nincsenek minden ügyfélkérelem-azonosító, több bejegyzést, érdemes lehet csoportosítani őket a a **ClientRequestId** könnyebb együtt lásd: a mező. A következő ábrán látható összes üzenetet az ügyfél tartalmaz a megadott ügyfél kérelem azonosítóját.
+Az Üzenetelemző talál, és kiválasztja az első naplóbejegyzés, ahol a keresési feltételeknek megfelel-e az ügyfél-kérelem azonosítója. Az ügyfél naplóban tételt tartalmaz több minden ügyfélkérelem-azonosító, ezért érdemes alapján szeretne csoportosítani őket a **ügyfélkérelem** mező könnyebb minden egy helyen tekintheti meg őket. A következő ábrán látható összes üzenetet az ügyfél naplóban az adott ügyfélre vonatkozó kérés azonosítója.
 
-![Ügyfél naplófájl-megjelenítő 404-es hibák](./media/storage-e2e-troubleshooting/client-log-analysis-grid1.png)
+![404-es hibát ügyfél naplófájl-megjelenítő](./media/storage-e2e-troubleshooting/client-log-analysis-grid1.png)
 
-A nézet elrendezések ezen két lapok megjelenő adatok használatával, a kérelem adatainak annak meghatározásához, hogy a hibát okozta mi elemezheti. Is megtalálhatja kérelmek megelőző ezt a telepítést, ha egy előző esemény vezettek előfordulhat, hogy a 404-es hiba megtekintéséhez. Például tekintheti meg az ügyfél naplóbejegyzések megelőző az ügyfél-Azonosítót határozza meg, hogy a blob törölték, vagy a következő hiba történt az ügyfélalkalmazás egy tárolót vagy blobot egy CreateIfNotExists API hívása miatt. Az ügyfél naplóban található a blob címet a **leírása** mezőben; a kiszolgáló és a hálózati nyomkövetési naplók, ez az információ jelenik meg a **összegzése** mező.
+Ezen két lapok a nézetet elrendezések megjelenített adatok használatával, a kérelem adatai meghatározni a hibát okozó mi is elemezhet. Tekintse meg, ha egy előző esemény vezettek előfordulhat, hogy a 404-es hiba való szemléltetett kérelmek is megjeleníthető. Áttekintheti például az ügyfél bejegyzései megelőző az ügyfél-Azonosítót határozza meg, hogy a blob már törölték, vagy ha az ügyfélalkalmazás egy tárolót vagy blobot a CreateIfNotExists API meghívása okozta a hibát. A blob címét annak az ügyfél naplóban a **leírás** mező; a kiszolgáló és a hálózat-nyomkövetési naplókat, ez az információ jelenik meg a **összefoglalás** mező.
 
-Miután eldöntötte, hogy a cím, amely a 404-es hibát eredményezte BLOB, használatával megvizsgálhatja a további. Ha a naplóbejegyzések más műveleteket végez a azonos blob társított üzenetek, ellenőrizheti, hogy az ügyfél korábban törölték az entitást.
+Ha ismeri a címet, amely a 404-es hibát eredményezett a BLOB, megvizsgálhatja további. Ha a többi üzenet ugyanennek a blobnak a műveletekhez kapcsolódó bejegyzései keres, ellenőrizheti a-e az ügyfél korábban törölni az entitást.
 
-## <a name="analyze-other-types-of-storage-errors"></a>Más típusú tárolási hibák elemzése
-Most, hogy ismeri a Message Analyzer segítségével elemezheti a naplózási adatokat, más típusú hibák nézet használatával elemezheti elrendezések, a színt szabályok és a keresés/szűrés. Az alábbi táblázatok egyes esetlegesen fellépő problémák és a keresési feltételek használatával keresse meg őket sorolja fel. A szűrők és a szűrés nyelvi Message Analyzer további információkért lásd: [szűrés állapotüzenet-adatokat](http://technet.microsoft.com/library/jj819365.aspx).
+## <a name="analyze-other-types-of-storage-errors"></a>Más típusú storage-hibák elemzése
+Most, hogy ismeri az Üzenetelemző használatával a naplóadatok elemzéséhez, elemezheti a más típusú hibák nézettel elrendezések színszabályainak és a Keresés és szűrés. Az alábbi táblázat sorolja fel, problémák merülhetnek fel, és a szűrési feltételeket a segítségével keresse meg őket. A szűrők és a Message Analyzer szűrése nyelv hozhat létre további információkért lásd: [szűrés állapotüzenet-adatokat](http://technet.microsoft.com/library/jj819365.aspx).
 
-| Vizsgálja meg... | Használja a szűrőkifejezés... | Napló kifejezés vonatkozik (ügyfél, a kiszolgáló, a hálózat, az összes) |
+| Vizsgálja meg a... | Szűrési kifejezés használata... | Kifejezés érvényes naplófájl (ügyfél, a kiszolgáló, a hálózat, az összes) |
 | --- | --- | --- |
-| Az üzenet kézbesítési a várólista nem várt késedelmeket |AzureStorageClientDotNetV4.Description tartalmaz "Újrapróbálkozás sikertelen műveletet." |Ügyfél |
-| PercentThrottlingError HTTP növekedése |HTTP.Response.StatusCode   == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |Network (Hálózat) |
-| PercentTimeoutError növekedése |HTTP.Response.StatusCode   == 500 |Network (Hálózat) |
-| Az (all) PercentTimeoutError növelése |* StatusCode == 500 |Összes |
-| PercentNetworkError növekedése |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Ügyfél |
-| A HTTP 403-as (tiltott) üzenetek |HTTP.Response.StatusCode   == 403 |Network (Hálózat) |
-| HTTP 404-es (nem található) üzenetek |HTTP.Response.StatusCode   == 404 |Network (Hálózat) |
-| 404 (all) |* StatusCode == 404 |Összes |
-| Közös hozzáférésű Jogosultságkód (SAS) hitelesítési hiba |AzureStorageLog.RequestStatus ==  "SASAuthorizationError" |Network (Hálózat) |
-| A HTTP 409 (Ütközés) üzenetek |HTTP.Response.StatusCode   == 409 |Network (Hálózat) |
-| 409 (összes) |* StatusCode == 409 |Összes |
-| Alacsony PercentSuccess vagy analytics naplóbejegyzés rendelkezik ClientOtherErrors működésére a tranzakció állapota |AzureStorageLog.RequestStatus == "ClientOtherError" |Kiszolgáló |
+| Nem várt késedelmeket egy üzenetsorban található üzenetek |AzureStorageClientDotNetV4.Description tartalmaz "Újrapróbálkozás sikertelen műveletet." |Ügyfél |
+| HTTP növekedése percentthrottlingerror értéket mutatnak |HTTP.Response.StatusCode   == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |Network (Hálózat) |
+| Növeli a percenttimeouterror értéket mutatnak |HTTP. Response.StatusCode == 500 |Network (Hálózat) |
+| Növelje az (all) percenttimeouterror értéket mutatnak |* StatusCode == 500 |Összes |
+| Növeli a percentnetworkerror értéket mutatnak |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Ügyfél |
+| A HTTP 403 (tiltott) üzenetek |HTTP. Response.StatusCode 403-as == |Network (Hálózat) |
+| A HTTP 404 (nem található) üzenetek |HTTP. Response.StatusCode 404-es == |Network (Hálózat) |
+| 404 (all) |* StatusCode 404-es == |Összes |
+| Közös hozzáférésű Jogosultságkód (SAS) hitelesítési probléma |AzureStorageLog.RequestStatus == "SASAuthorizationError" |Network (Hálózat) |
+| HTTP 409 (Ütközés) üzenetek |HTTP. Response.StatusCode == 409 |Network (Hálózat) |
+| 409 (mind) |* StatusCode == 409 |Összes |
+| Alacsony PercentSuccess vagy analytics naplóbejegyzések rendelkezik ClientOtherErrors állapotú tranzakciós műveletek |AzureStorageLog.RequestStatus == "ClientOtherError" |Kiszolgáló |
 | Nagle figyelmeztetés |((AzureStorageLog.EndToEndLatencyMS-AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5-ös)) és (AzureStorageLog.RequestPacketSize < 1460) és (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS > = 200) |Kiszolgáló |
-| A kiszolgáló és a hálózat naplókban időtartományt |#Timestamp > = 2014-10-20T16:36:38 és #Timestamp < = 2014-10-20T16:36:39 |Server, Network |
-| A kiszolgáló naplóiban időtartományt |AzureStorageLog.Timestamp > = 2014-10-20T16:36:38 és AzureStorageLog.Timestamp < = 2014-10-20T16:36:39 |Kiszolgáló |
+| A kiszolgáló és a hálózati naplókban időtartományt |#Timestamp > = 2014-10-20T16:36:38 és #Timestamp < = 2014-10-20T16:36:39 |Kiszolgáló, hálózati |
+| A kiszolgálónaplók időtartományt |AzureStorageLog.Timestamp > = 2014-10-20T16:36:38 és AzureStorageLog.Timestamp < = 2014-10-20T16:36:39 |Kiszolgáló |
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Storage hibaelhárítási végpont forgatókönyvekkel kapcsolatos további információkért lásd: ezeket az erőforrásokat:
+Az Azure Storage-hibaelhárítási teljes körű forgatókönyvekkel kapcsolatos további információkért tekintse meg ezeket az erőforrásokat:
 
 * [Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása](storage-monitoring-diagnosing-troubleshooting.md)
 * [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
-* [A figyelő egy tárfiókot, Azure-portálon](storage-monitor-storage-account.md)
+* [Az Azure Portal tárfiók figyelése](storage-monitor-storage-account.md)
 * [Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)
-* [Microsoft Message Analyzer üzemeltetési útmutató](http://technet.microsoft.com/library/jj649776.aspx)
+* [A Microsoft Message Analyzer üzemeltetési útmutató](http://technet.microsoft.com/library/jj649776.aspx)

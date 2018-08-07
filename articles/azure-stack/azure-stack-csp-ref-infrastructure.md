@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: e38f0a5e8aa911a168ee7f648692c31ecb44d4dd
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5a38f504a881662c19fe881058622392cf1bced0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090608"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576355"
 ---
 ## <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>Jelentéskészítési infrastruktúra felhőszolgáltatók használat
 
@@ -65,5 +65,5 @@ Az alábbi kifejezések és fogalmak használt használati és számlázási az 
 
 ## <a name="next-steps"></a>További lépések
 
- - A CSP program kapcsolatos további információkért lásd: [Cloud Solution Provider program](https://partnercenter.microsoft.com/en-us/partner/programs).
+ - A CSP program kapcsolatos további információkért lásd: [Cloud Solution Provider program](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
  - Erőforrás-használati adatok lekérése az Azure Stack kapcsolatos további tudnivalókért lásd: [használat és számlázás az Azure Stackben](azure-stack-billing-and-chargeback.md).

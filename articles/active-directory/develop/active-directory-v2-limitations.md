@@ -17,16 +17,16 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4111174e7ce000a978a7a5280a2561897500bdb6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: aa931702975c2c6bdcc65853c3865dbeff570bf4
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505694"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578449"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>A v2.0-végpont érdemes használni?
 
-Ha hoz létre, amelyekbe beépül az Azure Active Directory (Azure AD-) alkalmazások, kell eldöntheti, megfelel-e a 2.0-s végpont és a hitelesítési protokollok az igényeinek. Az Azure AD eredeti végpont továbbra is teljes mértékben támogatott, és bizonyos szempontokból több szolgáltatás gazdag, mint a 2.0-s verzió. Azonban a v2.0-végpont [vezet be, jelentős előnyöket](active-directory-v2-compare.md) fejlesztők számára.
+Ha hoz létre, amelyekbe beépül az Azure Active Directory (Azure AD-) alkalmazások, kell eldöntheti, megfelel-e a 2.0-s végpont és a hitelesítési protokollok az igényeinek. Az Azure AD eredeti végpont továbbra is teljes mértékben támogatott, és bizonyos szempontokból több szolgáltatás gazdag, mint a 2.0-s verzió. Azonban a v2.0-végpont [vezet be, jelentős előnyöket](azure-ad-endpoint-comparison.md) fejlesztők számára.
 
 Íme egy egyszerűsített javaslatot a fejlesztők ezen a ponton az időben:
 

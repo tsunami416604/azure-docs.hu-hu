@@ -3,7 +3,7 @@ title: Csak az idő a virtuális gép eléréséhez az Azure Security Centerben 
 description: Ez a dokumentum azt ismerteti, hogyan igény szerint Virtuálisgép-hozzáférés az Azure Security Center segít az Azure virtuális gépekhez való hozzáférés vezérlése.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 288524e58efd64670df098f249f3ad0b1cca464c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 18c05444c151a87048db71b039845e26796126b8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990578"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525943"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Igény szerint virtuálisgép-hozzáférés kezelése
 
@@ -168,10 +168,9 @@ Letöltheti a naplózási adatok kiválasztásával **Ide kattintva letöltheti 
 
 Módosítsa a szűrőket, és válasszon **alkalmaz** hozzon létre egy keresési és a napló.
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>Igény szerint Virtuálisgép-hozzáférési PowerShell használatával
+## <a name="using-just-in-time-vm-access-via-rest-apis"></a>Virtuálisgép-hozzáférés REST API-kon keresztül szerinti használatával
 
-Annak érdekében, hogy használja az igény szerinti megoldást a Powershellen keresztül, ellenőrizze, hogy a [legújabb](/powershell/azure/install-azurerm-ps) Azure PowerShell-verzió.
-Ezt követően telepítenie kell a [legújabb](https://aka.ms/asc-psgallery) az Azure Security Center a PowerShell-galériából.
+Az igény szerinti Virtuálisgép-hozzáférési szolgáltatás használható az Azure Security Center API-n keresztül. Konfigurált virtuális gépek adatainak lekérése, újakat vehet fel, kérhet hozzáférést egy virtuális géphez, és több, az API-val. Lásd: [Jit hálózati hozzáférési házirendeket](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies), további információ az igény szerinti REST API-t.
 
 ### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurálás igény szerinti szabályzat egy virtuális géphez
 

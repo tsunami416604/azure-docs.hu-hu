@@ -1,85 +1,79 @@
 ---
-title: Adatok előkészítése az Azure Import/Export importálási feladat - v1 merevlemezeit, a minta-munkafolyamat |} Microsoft Docs
-description: 'Lásd: a forgatókönyv a teljes folyamat meghajtók előkészítése az Azure Import/Export szolgáltatás egy importálási feladat.'
+title: Munkafolyamat-minta a merevlemezek Azure Import/Export importálási feladatokhoz - v1-előkészítési |} A Microsoft Docs
+description: A teljes folyamat meghajtók előkészítése importálási feladatokhoz az Azure Import/Export szolgáltatás egy bemutató témakörben talál.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 6eb1b1b7-c69f-4365-b5ef-3cd5e05eb72a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 66e85bd3e9e43ae360d0507f5bdf3596abbeb7d1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: common
+ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
-ms.locfileid: "26692024"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527288"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére
-Ez a témakör végigvezeti a teljes folyamat meghajtók előkészítése az importálási feladat.  
+Ez a témakör végigvezeti a meghajtók előkészítése importálási feladatokhoz teljes folyamatán.  
   
-Ebben a példában a következő adatok importálása a Windows Azure storage-fiók nevű `mystorageaccount`:  
+Ebben a példában a következő adatokat importál nevű ablak Azure storage-fiók `mystorageaccount`:  
   
 |Hely|Leírás|  
 |--------------|-----------------|  
-|H:\Video|Gyűjteménye videók, összesen 5 TB.|  
+|H:\Video|Gyűjteménye, videók, a teljes 5 TB.|  
 |H:\Photo|Egy gyűjtemény fényképek, összesen 30 GB.|  
 |K:\Temp\FavoriteMovie.ISO|A Blu-ray™ lemezképét, 25 GB.|  
-|\\\bigshare\john\music|Letilthatja a zenei fájlok egy hálózati megosztáson, 10 GB-os teljes gyűjteményét.|  
+|\\\bigshare\john\music|Letilthatja a zenei fájlok egy hálózati megosztáson, összesen 10 GB-os gyűjteménye.|  
   
-Az importálási feladat ezeket az adatokat importál a storage-fiókot a következő célhoz:  
+Az importálási feladat ezeket az adatokat importál a storage-fiókban a következő helyre:  
   
-|Forrás|Cél virtuális könyvtárat vagy blob|  
+|Forrás|Cél virtuális könyvtárat vagy a blob|  
 |------------|-------------------------------------------|  
-|H:\Video|https://mystorageaccount.BLOB.Core.Windows.NET/video|  
-|H:\Photo|https://mystorageaccount.BLOB.Core.Windows.NET/Photo|  
-|K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.BLOB.Core.Windows.NET/Favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|https://mystorageaccount.BLOB.Core.Windows.NET/Music|  
+|H:\Video|https://mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|https://mystorageaccount.blob.core.windows.net/music|  
   
-A hozzárendelést, a fájl a `H:\Video\Drama\GreatMovie.mov` importálni lehet az blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
+A leképezés, a fájl a `H:\Video\Drama\GreatMovie.mov` importálva lett-e a blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
   
-Ezt követően annak megállapításához, hogy hány merevlemezek szükségesek, számítási az adatok mérete:  
+Ezután annak megállapításához, hogy hány merevlemezek szükségesek, számítási az adatok mérete:  
   
 `5TB + 30GB + 25GB + 10GB = 5TB + 65GB`  
   
-Az ebben a példában két 3 TB merevlemezek elegendőnek kell lennie. Mivel azonban a forráskönyvtár `H:\Video` 5 TB adatot, és az egyetlen merevlemez-területtel csak 3 TB szükséges hibájához `H:\Video` be két kisebb könyvtárak: `H:\Video1` és `H:\Video2`, a Microsoft Azure futtatása előtt Import/Export eszköz. Ebben a lépésben adja eredményül a következő forrás-könyvtárak:  
+Ebben a példában két 3 TB-os merevlemezeket elegendőnek kell lennie. Mivel azonban a forráskönyvtár `H:\Video` 5 TB-nyi adatot, és a egy merevlemez-területtel csak 3 TB, érvényteleníteni szükséges `H:\Video` be két kisebb méretű könyvtárak: `H:\Video1` és `H:\Video2`, mielőtt futtatná a Microsoft Azure Import/Export eszköz. Ebben a lépésben a következő forrás-könyvtárak eredményez:  
   
-|Hely|Méret|Cél virtuális könyvtárat vagy blob|  
+|Hely|Méret|Cél virtuális könyvtárat vagy a blob|  
 |--------------|----------|-------------------------------------------|  
-|H:\Video1|2,5 TB|https://mystorageaccount.BLOB.Core.Windows.NET/video|  
-|H:\Video2|2,5 TB|https://mystorageaccount.BLOB.Core.Windows.NET/video|  
-|H:\Photo|30 GB|https://mystorageaccount.BLOB.Core.Windows.NET/Photo|  
-|K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.BLOB.Core.Windows.NET/Favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|10 GB|https://mystorageaccount.BLOB.Core.Windows.NET/Music|  
+|H:\Video1|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  
+|H:\Video2|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|30 GB|https://mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|10 GB|https://mystorageaccount.blob.core.windows.net/music|  
   
- Annak ellenére, hogy a `H:\Video`directory felosztott két könyvtárak a cél virtuális könyvtárba a tárfiókban lévő pontok. Így minden videofájlok megmaradnak az egyetlen `video` a tárfiókban lévő tároló.  
+ Annak ellenére, hogy a `H:\Video`directory felosztott két címtárat, hogy a cél virtuális könyvtárba a tárfiókban lévő mutassanak. Így minden videofájlok karbantartása alatt egyetlen `video` a storage-fiókban lévő tárolóba.  
   
- Ezt követően az előző forrás könyvtárak egyenletesen oszlanak a két merevlemez-meghajtóval:  
+ Az előző forrás könyvtárakat ezután egyenletesen lesznek elosztva a két merevlemez-meghajtók:  
   
 ||||  
 |-|-|-|  
 |Merevlemez-meghajtó|Forrás könyvtárak|Teljes méret|  
-|Első meghajtó|H:\Video1|2.5 TB + 30 GB|  
+|Első meghajtó|H:\Video1|2,5 TB + 30 GB|  
 ||H:\Photo||  
-|Második meghajtó|H:\Video2|2.5 TB + 35 GB|  
+|Második meghajtó|H:\Video2|2,5 TB + 35 GB|  
 ||K:\Temp\BlueRay.ISO||  
 ||\\\bigshare\john\music||  
   
-Ezenkívül a következő metaadatokat az összes fájl állíthatja be:  
+Emellett állíthatja be a következő metaadatokat az összes fájl:  
   
 -   **UploadMethod:** Windows Azure Import/Export szolgáltatás  
   
 -   **DataSetName:** SampleData  
   
--   **CreationDate:** 10/1/2013  
+-   **A CreationDate:** 10/1/2013  
   
-Ha szeretné beállítani az importált fájlok metaadatait, hozzon létre egy szövegfájlt, `c:\WAImportExport\SampleMetadata.txt`, a következő tartalommal:  
+Az importált fájlok metaadatait beállításához hozzon létre egy szövegfájlt, `c:\WAImportExport\SampleMetadata.txt`, az alábbi tartalommal:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -90,15 +84,15 @@ Ha szeretné beállítani az importált fájlok metaadatait, hozzon létre egy s
 </Metadata>  
 ```
   
-Bizonyos tulajdonságait is beállíthat a `FavoriteMovie.ISO` blob:  
+Az egyes tulajdonságok is beállíthat a `FavoriteMovie.ISO` blob:  
   
 -   **Content-Type:** application/octet-stream  
   
--   **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ ==  
+-   **Tartalom-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ ==  
   
 -   **A Cache-Control:** no-cache  
   
-A tulajdonságok beállításáról, hozzon létre egy szövegfájlt `c:\WAImportExport\SampleProperties.txt`:  
+Ezek a tulajdonságok, hozzon létre egy szövegfájlt `c:\WAImportExport\SampleProperties.txt`:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -111,18 +105,18 @@ A tulajdonságok beállításáról, hozzon létre egy szövegfájlt `c:\WAImpor
   
 Most már készen áll a két merevlemez-meghajtók előkészítése az Azure Import/Export eszköz futtatásához. Vegye figyelembe:  
   
--   Az első meghajtó X meghajtóként lett-e csatlakoztatva.  
+-   Az első meghajtó X meghajtóként van csatlakoztatva.  
   
--   A második meghajtó Y meghajtóként lett-e csatlakoztatva.  
+-   A második meghajtó csatlakoztatva van, mint Y-meghajtó.  
   
--   A tárfiók kulcsa `mystorageaccount` van `8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg==`.  
+-   A tárfiók kulcsának `mystorageaccount` van `8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg==`.  
 
-## <a name="preparing-disk-for-import-when-data-is-pre-loaded"></a>Lemez előkészítése importálása, amikor az adatok előzetes betöltése
+## <a name="preparing-disk-for-import-when-data-is-pre-loaded"></a>Előkészítés importáláshoz lemez, amikor adatokat előzetesen fel lett töltve
  
- Ha az adatokat, importálandók már megtalálható a lemezen, használja a jelző /skipwrite. /T és /srcdir értékét kell mindkét pontot a lemezen való importálás. Ha minden az adatok, importálandók nem lesz azonos a cél virtuális könyvtár vagy a storage-fiók gyökérkönyvtárában, futtathatja ugyanezt a parancsot minden célként megadott könyvtár külön-külön tartása /id értéke azonos keresztül minden futtatásakor.
+ Ha importálni az adatokat már megtalálható a lemezen, használja a jelző /skipwrite. /T és /srcdir értékét kell mindkét pontot a lemezen való importálás. Ha importálni az adatok nem lesz azonos cél virtuális könyvtárat vagy a storage-fiók gyökérmappájában, futtassa ugyanezt a parancsot az egyes célkönyvtárban duplikátum külön-külön tartja/ID értéke ugyanaz, minden futtatás során.
 
 >[!NOTE] 
->Ne adjon meg Format, azt fogja törölni az adatokat a lemezen. Adja meg, / titkosítása vagy /bk attól függően, hogy a lemez már titkosítva van-e. 
+>Ne adjon meg Format módon törli az adatokat a lemezen. Adja meg, / titkosítása vagy /bk attól függően, hogy a lemez már titkosítva van-e. 
 >
 
 ```
@@ -132,31 +126,31 @@ Most már készen áll a két merevlemez-meghajtók előkészítése az Azure Im
 
 ## <a name="copy-sessions---first-drive"></a>Másolja a munkamenet - először meghajtó
 
-Az első meghajtó futtassa az Azure Import/Export eszköz kétszer a két forrás könyvtárak másolása:  
+Az első meghajtó futtassa az Azure Import/Export eszköz kétszer átmásolása a két forrás könyvtárak:  
 
-**Először másolja az munkamenet**
+**Először másolja a munkamenet**
   
 ```
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:H:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```
 
-**Második példány munkamenet**
+**Második másolási munkamenet**
 
 ```  
 WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstdir:photo/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
 ```
 
-## <a name="copy-sessions---second-drive"></a>Másolja a munkamenet - meghajtó másodpercenként
+## <a name="copy-sessions---second-drive"></a>Másolja a munkamenet - meghajtó a második
  
-A második meghajtó, futtassa az Azure Import/Export eszköz háromszorosa, egyszer minden egyes a forrás-könyvtárakhoz, és egyszer az önálló Blu-Ray™ lemezképfájl):  
+A második meghajtó futtatása az Azure Import/Export eszköz három alkalommal, egyszer minden egyes a forrás-könyvtárak, és egyszer az önálló Blu-Ray™ lemezképfájl):  
   
-**Először másolja az munkamenet** 
+**Először másolja a munkamenet** 
 
 ```
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:Video2 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:y /format /encrypt /srcdir:H:\Video2 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
 ```
   
-**Második példány munkamenet**
+**Második másolási munkamenet**
 
 ```
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:Music /srcdir:\\bigshare\john\music /dstdir:music/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt  
@@ -170,9 +164,9 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 
 ## <a name="copy-session-completion"></a>Másolja a munkamenet befejezése
 
-Miután végzett a másolat munkamenetek, a két meghajtók leválasztása a másolási számítógépről, és küldje el azokat a megfelelő Windows Azure adatközpontba. A két Adatbázisnapló-fájlok feltöltése `FirstDrive.jrn` és `SecondDrive.jrn`, az importálási feladat létrehozásakor a [Azure-portálon](https://portal.azure.com).  
+Miután elvégezte a másolási munkamenetek, a másolási számítógép bontsa a kapcsolatot a két meghajtó, és küldje el azokat a megfelelő Windows Azure-adatközpontok a. A két naplófájlok feltöltése `FirstDrive.jrn` és `SecondDrive.jrn`az import-feladat létrehozásakor, a [az Azure portal](https://portal.azure.com).  
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [A gyakran használt parancsok rövid összefoglalása](../storage-import-export-tool-quick-reference-v1.md) 
+* [Használt gyakori parancsok gyors áttekintése](../storage-import-export-tool-quick-reference-v1.md) 

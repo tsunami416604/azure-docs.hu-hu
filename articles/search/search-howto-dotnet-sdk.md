@@ -1,6 +1,6 @@
 ---
-title: Hogyan használható az Azure Search .NET-alkalmazásból |} Microsoft Docs
-description: Azure Search .NET-alkalmazás használata
+title: Hogyan használható az Azure Search .NET-alkalmazásból |} A Microsoft Docs
+description: Az Azure Search .NET-alkalmazás használata
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,59 +9,59 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: e8a492a0786281bdc1d7c2123a7188c32a124e13
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 19913f9c30992e833e5435af7066611d4662ba56
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194124"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525637"
 ---
-# <a name="how-to-use-azure-search-from-a-net-application"></a>Azure Search .NET-alkalmazás használata
-Ez a cikk a forgatókönyv az első működik, és a rendszer a [Azure Search .NET SDK](https://aka.ms/search-sdk). A .NET SDK használatával valósít meg egy hatékony keresési élményt biztosít az alkalmazás Azure Search használatával.
+# <a name="how-to-use-azure-search-from-a-net-application"></a>Az Azure Search .NET-alkalmazás használata
+Ez a cikk ahhoz, hogy működik és a egy forgatókönyv a [Azure Search .NET SDK](https://aka.ms/search-sdk). A .NET SDK használatával egy fejlett keresési funkciókat megvalósítása az Azure Search használatával az alkalmazás.
 
 ## <a name="whats-in-the-azure-search-sdk"></a>Mi az az Azure SDK keresése
-Az SDK-t tartalmaz néhány klienskódtárait, amelyek lehetővé teszik, hogy az Indexek kezelése, adatforrások, indexelők és szinonimát leképezik, valamint feltöltés és dokumentumok kezeléséhez, hajtsa végre a lekérdezéseket, anélkül, HTTP és a JSON részleteit kezelésére. Ügyfél tárakban NuGet csomag küld.
+Az SDK a következőket tartalmazza, amelyek lehetővé teszik az Indexek kezelése néhány klienskódtárak, adatforrások, indexelőre és szinonimát térképek, valamint a feltöltési és dokumentumok kezeléséhez, hajtsa végre a lekérdezéseket, mindezt úgy, hogy HTTP vagy JSON részleteit bajlódnia. Ezen klienskódtárak NuGet-csomagként oszlanak.
 
-A fő NuGet-csomag `Microsoft.Azure.Search`, amely csomag egy metaadat-szerint függőségeinek összes többi csomagot tartalmazó. Használja ezt a csomagot, ha Ön most csak az első lépések, vagy ha tudja, hogy az alkalmazásnak szüksége lesz az Azure Search összes funkcióját.
+A fő NuGet-csomag `Microsoft.Azure.Search`, azaz egy meta-csomagot, amely tartalmazza a függőségek szerint az összes többi csomagot. Ez a csomag használatára, ha csak megkezdéséhez, vagy ha ismeri az alkalmazásnak szüksége lesz az Azure Search összes funkcióját.
 
-A más NuGet-csomagok az SDK-ban a következők:
+Az SDK-t a többi NuGet csomagot a következők:
  
-  - `Microsoft.Azure.Search.Data`: Használja ezt a csomagot, ha egy .NET-alkalmazást az Azure Search kidolgozása, és csak lekérdezni, vagy az indexek dokumentumainak frissíteni kell. Ha is kell létrehozni vagy frissíteni az indexek, szinonima maps, vagy más szolgáltatásiszint-erőforrások, használja a `Microsoft.Azure.Search` csomag helyette.
-  - `Microsoft.Azure.Search.Service`: Használja ezt a csomagot, ha az Azure Search-indexek, szinonima maps, indexelők, adatforrások vagy más szolgáltatásiszint-erőforrások kezeléséhez .NET automatikus. Ha csak kell lekérdezés vagy a frissítés dokumentumot az indexben, használja a `Microsoft.Azure.Search.Data` csomag helyette. Ha módosítania kell az Azure Search összes funkcióját, használja a `Microsoft.Azure.Search` csomag helyette.
-  - `Microsoft.Azure.Search.Common`: Az Azure Search .NET-kódtárakra igényli általános típusok. Nem kell használni a csomag közvetlenül az alkalmazás; Csak célja, hogy a függőség beállításához használható.
+  - `Microsoft.Azure.Search.Data`: Használja ezt a csomagot, ha használja az Azure Search .NET-alkalmazást fejleszt, és csak szeretne lekérdezni vagy frissíteni az indexek a dokumentumokat. Ha is kell létrehozni vagy frissíteni az indexek, szinonimatérképet, vagy más szolgáltatásiszint-erőforrások, használja a `Microsoft.Azure.Search` csomag helyette.
+  - `Microsoft.Azure.Search.Service`: Használja ezt a csomagot, ha a .NET-keretrendszerben Azure Search-indexek, szinonimatérképet, az indexelők, adatforrásokat vagy más szolgáltatásiszint-erőforrások kezelése automation fejleszt. Ha csak kell lekérdezés vagy a frissítés dokumentum az indexben, használja a `Microsoft.Azure.Search.Data` csomag helyette. Ha a funkciókat az Azure Search van szüksége, használja a `Microsoft.Azure.Search` csomag helyette.
+  - `Microsoft.Azure.Search.Common`: Az Azure Search .NET-kódtárakra által igényelt gyakori típust. Nem kell saját alkalmazásában; ez a csomag használatára Csak hivatott függőségként használható.
 
-A különböző klienskódtárak segítségével adja meg például osztályok `Index`, `Field`, és `Document`, illetve műveletek, például `Indexes.Create` és `Documents.Search` a a `SearchServiceClient` és `SearchIndexClient` osztályok. Ezeket az osztályokat a következő névterek szerint vannak csoportosítva:
+A különböző klienskódtárak például osztályok definiálása `Index`, `Field`, és `Document`, illetve műveletek, például `Indexes.Create` és `Documents.Search` a a `SearchServiceClient` és `SearchIndexClient` osztályokat. Ezeket az osztályokat vannak szervezve a következő névterek:
 
-* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
+* [A Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
-Az aktuális az Azure Search .NET SDK verziója most általánosan elérhető. Ha azt szeretné, vegye figyelembe a következő verziójára való visszajelzést, kérjük, látogasson el a [visszajelzés](https://feedback.azure.com/forums/263029-azure-search/).
+Az Azure Search .NET SDK jelenlegi verziója már általánosan elérhető. Ha szeretné, hogy ahhoz, hogy a következő verziójában építhet be visszajelzést, kérjük, látogasson el a [visszajelzésküldő oldala](https://feedback.azure.com/forums/263029-azure-search/).
 
-Támogatja a .NET SDK `2017-11-11` , a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/). Ezen verziója most már támogatja az szinonimák, valamint az indexelők fokozatos fejlesztést tartalmaz. Az előzetes funkciók, amelyek *nem* verzióhoz, például az indexelés JSON-tömbök és CSV-fájlok támogatását szerepelnek [előzetes](search-api-2016-09-01-preview.md) és keresztül elérhető [4.0-előzetes verzióját, a .NET SDK](https://aka.ms/search-sdk-preview).
+A .NET SDK-verziót támogatja `2017-11-11` , a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/). Ez a verzió mostantól támogatja a szinonimák, valamint az indexelő növekményes fejlesztései. Előzetes verziójú funkciók, amelyek *nem* szerepelnek ebben a verzióban például a JSON-tömbök és CSV-fájlok, az indexelés támogatása része [előzetes](search-api-2016-09-01-preview.md) és keresztül elérhető [.NETSDK4.0-s–előzetesverzió](https://aka.ms/search-sdk-preview).
 
-Ez az SDK nem támogatja a [felügyeleti műveletek](https://docs.microsoft.com/rest/api/searchmanagement/) például létrehozása és a keresési szolgáltatás méretezése és API-kulcsokat kezelése. Ha a keresési erőforrások kezelése a .NET-alkalmazás van szüksége, használhatja a [Azure Search .NET SDK-t felügyeleti](https://aka.ms/search-mgmt-sdk).
+Ez az SDK nem támogatja a [felügyeleti műveletek](https://docs.microsoft.com/rest/api/searchmanagement/) például létrehozása és a keresési szolgáltatások méretezése és API-kulcsok kezelése. Ha a Search-erőforrások kezelése a .NET-alkalmazásból van szüksége, használhatja a [Azure Search .NET SDK-t felügyeleti](https://aka.ms/search-mgmt-sdk).
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Az SDK legújabb verziójára
-Ha már használja az Azure Search .NET SDK régebbi verziója, és frissítse az általánosan elérhető új verzióra szeretné [Ez a cikk](search-dotnet-sdk-migration-version-5.md) ismerteti, hogyan.
+Ha már használ az Azure Search .NET SDK egy régebbi verzióját, és szeretné az új általánosan elérhető verzióra frissít, [Ez a cikk](search-dotnet-sdk-migration-version-5.md) azt ismerteti, hogyan.
 
-## <a name="requirements-for-the-sdk"></a>Az SDK követelményei
+## <a name="requirements-for-the-sdk"></a>Az SDK-követelményei
 1. Visual Studio 2017.
-2. A saját Azure Search szolgáltatás. Az SDK használatához szüksége lesz a nevét, valamint a szolgáltatás egy vagy több API-kulcsokat. [A szolgáltatás létrehozása a portálon](search-create-service-portal.md) segít a fenti lépéseket.
-3. Töltse le az Azure Search .NET SDK [NuGet-csomag](http://www.nuget.org/packages/Microsoft.Azure.Search) a Visual Studio "Manage NuGet Packages" használatával. A csomag neve csak keressen `Microsoft.Azure.Search` on NuGet.org (vagy egy másik csomagot a fenti nevek, ha csak a található funkciók egy részét kell).
+2. A saját Azure Search szolgáltatást. Az SDK használatához szüksége lesz a szolgáltatás és a egy vagy több API-kulcs neve. [Szolgáltatás létrehozása a portálon](search-create-service-portal.md) segít a fenti lépéseket.
+3. Az Azure Search .NET SDK letöltése [NuGet-csomag](http://www.nuget.org/packages/Microsoft.Azure.Search) "NuGet-csomagok kezelése" a Visual Studio használatával. Csak keresse meg a csomag neveként `Microsoft.Azure.Search` on NuGet.org (vagy egy másik csomagot a fenti nevek, ha csak az funkciók egy részét).
 
-Az Azure Search .NET SDK támogatja a .NET-keretrendszer 4.5.2-es célzó alkalmazásokat és az újabb, valamint a .NET Core.
+Az Azure Search .NET SDK támogatja az alkalmazások a .NET-keretrendszer 4.5.2-es vagy újabb, valamint a .NET Core.
 
-## <a name="core-scenarios"></a>Legfontosabb forgatókönyvek
-Számos szempontot következőket kell tennie az alkalmazás. Ez az oktatóanyag azt érintünk core forgatókönyvekben:
+## <a name="core-scenarios"></a>Használhatók a legfontosabb forgatókönyvek
+Számos dolgot kell hajtsa végre az alkalmazás. Ebben az oktatóanyagban alapvető forgatókönyvekben foglalkozik:
 
 * Az index létrehozása
-* A dokumentumok index feltöltése
+* Hozzáláthat a tárgymutató dokumentumok
 * A teljes szöveges keresés és a szűrők használatával dokumentumok keresése
 
-Az alábbi mintakód bemutatja ezen. Szabadon használhatja a kódrészleteket a saját alkalmazásban.
+A következő példakód azt szemlélteti, minden egyes. Nyugodtan kódrészletek használhatja a saját alkalmazásában.
 
 ### <a name="overview"></a>Áttekintés
-A mintaalkalmazás, azt fogja felfedezése létrehoz egy új "hotels" nevű index tölti fel az néhány dokumentumok, akkor néhány keresési lekérdezést hajt végre. A fő program, megjeleníti az általános folyamat a következő:
+A mintaalkalmazás, azt fogja felfedezése létrehoz egy új "Hotels" nevet, index tölti fel, néhány dokumentumot, majd néhány keresési lekérdezéseket futtat. A fő program, az általános folyamatot bemutató a következő:
 
 ```csharp
 // This sample shows how to delete, create, upload documents and query an index
@@ -97,7 +97,7 @@ static void Main(string[] args)
 > 
 >
 
-Végigvezetjük a lépésről lépésre. Először létre kell hozni egy új `SearchServiceClient`. Ez az objektum indexek kezelését teszi lehetővé. Egy kiszámításához meg kell adnia az Azure Search szolgáltatás neve, valamint az adminisztrációs API-kulcsot. Ezt az információt is megadhatja a `appsettings.json` fájlt a [mintaalkalmazás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo).
+Végigvezetjük a lépésről lépésre. Először létre kell hozni egy új `SearchServiceClient`. Ez az objektum teszi indexeket lehet kezelni. Annak érdekében, hogy hozhat létre egyet, meg kell adnia az Azure Search-szolgáltatásnév, valamint egy rendszergazdai API-kulcsot. Ezt az információt adhat meg a `appsettings.json` -fájlját a [mintaalkalmazás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo).
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -111,11 +111,11 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 ```
 
 > [!NOTE]
-> Ha megad egy helytelen kulcsot (például egy lekérdezési kulcsot ahol egy adminisztrációs kulcsot volt szükség), a `SearchServiceClient` kivételhibát egy `CloudException` , a hiba üzenet "Tiltott" egy művelet metódust hívja meg, mint például az első alkalommal `Indexes.Create`. Ha ez történik, ellenőrizze az API-kulcsot.
+> Ha megad egy helytelen kulcsot (például egy lekérdezési kulcsot, egy adminisztrációs kulcsot volt szükség), a `SearchServiceClient` kivételt fogja kijelezni egy `CloudException` , a hiba-üzenet "Tiltott" egy művelet metódust hívja meg, mint például az első alkalommal `Indexes.Create`. Ha ez történik, ellenőrizze az API-kulcsot.
 > 
 > 
 
-A következő néhány sor metódushívások "Hotels" nevet adtuk, először törlése, ha már létezik egy index létrehozásához. Végigvezetjük ezen módszerek egy kicsit később.
+A következő néhány sort a "Hotels" nevet, először törlése, ha már létezik egy index létrehozásának hívjuk. Végigvezetjük ezek a metódusok egy kicsit később.
 
 ```csharp
 Console.WriteLine("{0}", "Deleting index...\n");
@@ -125,25 +125,25 @@ Console.WriteLine("{0}", "Creating index...\n");
 CreateHotelsIndex(serviceClient);
 ```
 
-Ezt követően kell kell feltöltenie. Ehhez fel kell egy `SearchIndexClient`. Az beszerzése utólag két módja van: hozhat létre, azt, vagy meghívásával `Indexes.GetClient` a a `SearchServiceClient`. Használjuk az utóbbi kényelmét szolgálja.
+Ezután az index kell kell feltöltenie. Ehhez fel kell egy `SearchIndexClient`. Beszerzése utólag két módja van: hozhat létre, vagy meghívásával `Indexes.GetClient` a a `SearchServiceClient`. Használjuk az utóbbi kényelmi célokat szolgál.
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
 > [!NOTE]
-> A keresőalkalmazásokban az indexkezelést és -feltöltést általában a keresési lekérdezésektől eltérő elem végzi. A `Indexes.GetClient` kényelmes megoldás az index feltöltésére, mivel így nem szükséges újabb `SearchCredentials` objektumot biztosítania. Ezt azon rendszergazdai kulcs átadásával hajtja végre, amelyet a `SearchServiceClient` elemnek az új `SearchIndexClient` objektumban történő létrehozásakor használt. A lekérdezéseket végrehajtó alkalmazás részeként azonban jobb megoldás a `SearchIndexClient` közvetlen létrehozása, így az egy rendszergazdai kulcs helyett lekérdezési kulcs formájában adható át. Ez a legalacsonyabb jogosultsági szint elvét konzisztens, és segít biztonságosabbá teszi az alkalmazás. További információk az adminisztrációs kulcsok és a lekérdezési kulcsok található [Itt](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization).
+> A keresőalkalmazásokban az indexkezelést és -feltöltést általában a keresési lekérdezésektől eltérő elem végzi. A `Indexes.GetClient` kényelmes megoldás az index feltöltésére, mivel így nem szükséges újabb `SearchCredentials` objektumot biztosítania. Ezt azon rendszergazdai kulcs átadásával hajtja végre, amelyet a `SearchServiceClient` elemnek az új `SearchIndexClient` objektumban történő létrehozásakor használt. A lekérdezéseket végrehajtó alkalmazás részeként azonban jobb megoldás a `SearchIndexClient` közvetlen létrehozása, így az egy rendszergazdai kulcs helyett lekérdezési kulcs formájában adható át. Ez megfelel a minimális jogosultság elvének, és biztonságosabbá teszi az alkalmazás segítségével. További információk az adminisztrációs kulcsok és a lekérdezési kulcsok annak [Itt](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization).
 > 
 > 
 
-Most, hogy egy `SearchIndexClient`, azt töltheti fel az index. Ez végigvezetjük később más módon történik.
+Most, hogy egy `SearchIndexClient`, hogy töltheti fel az indexet. Ez történik, végigvezetjük később egy másik módszerrel.
 
 ```csharp
 Console.WriteLine("{0}", "Uploading documents...\n");
 UploadDocuments(indexClient);
 ```
 
-Végül azt néhány keresési-lekérdezéseket hajt végre, és az eredmények megjelenítéséhez. Most használjuk a különböző `SearchIndexClient`:
+Végül azt néhány keresési lekérdezéseket, és megjeleníti az eredményeket. Most használjuk a különböző `SearchIndexClient`:
 
 ```csharp
 ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
@@ -151,7 +151,7 @@ ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration
 RunQueries(indexClientForQueries);
 ```
 
-Most elindítjuk részletes bemutatása a `RunQueries` metódus később. Új kód `SearchIndexClient`:
+Hogy közelebbről vesz igénybe a `RunQueries` metódus később. Íme a kódot, amellyel létrehozza az új `SearchIndexClient`:
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -164,9 +164,9 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Most használjuk a lekérdezési kulcs mivel jelenleg nem írási hozzáférésre van szüksége az index. Ezt az információt is megadhatja a `appsettings.json` fájlt a [mintaalkalmazás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo).
+Most használjuk egy lekérdezési kulcsot, mert nem kell írási hozzáférést az index. Ezt az információt adhat meg a `appsettings.json` -fájlját a [mintaalkalmazás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo).
 
-Ha az alkalmazás futtatásához a egy érvényes szolgáltatásnevet és API-kulcsokat, a kimenet ehhez hasonló kell kinéznie:
+Ez az alkalmazás futtatásakor egy érvényes szolgáltatásnév és API-kulcsokat, a kimenet ehhez hasonló kell kinéznie:
 
     Deleting index...
     
@@ -196,12 +196,12 @@ Ha az alkalmazás futtatásához a egy érvényes szolgáltatásnevet és API-ku
     
     Complete.  Press any key to end application...
 
-Ez a cikk végén az alkalmazás a teljes forráskód valósul meg.
+Ez a cikk végén található az alkalmazás a teljes forráskódot biztosítunk.
 
-A következő most elindítjuk szorosabb meg az egyes módszerek által meghívott `Main`.
+Ezután azt fogja annak minden egyes meghívott módszerek közelebbről is `Main`.
 
 ### <a name="creating-an-index"></a>Az index létrehozása
-Miután létrehozta a `SearchServiceClient`, a következő lépésként `Main` does esetén törlése a "Hotels nevű" index már létezik. Ezt a következő módszerrel:
+Miután létrehozott egy `SearchServiceClient`, a következő lépésként `Main` does esetén törölje a "hotels" index már létezik. Ezt a következő módszerrel:
 
 ```csharp
 private static void DeleteHotelsIndexIfExists(SearchServiceClient serviceClient)
@@ -213,14 +213,14 @@ private static void DeleteHotelsIndexIfExists(SearchServiceClient serviceClient)
 }
 ```
 
-Ezt a módszert használja az adott `SearchServiceClient` ellenőrizze, hogy létezik-e az indexet, és ha igen, törölje azt.
+Ez a módszer az adott `SearchServiceClient` annak ellenőrzéséhez, ha az index már létezik, és ha igen, törölje azt.
 
 > [!NOTE]
-> Ebben a cikkben a példakód az egyszerűség érdekében az Azure Search .NET SDK szinkron módszereit használja. Azt javasoljuk, hogy a méretezhetőség és a gyors válaszadás érdekében használja saját alkalmazásaiban az aszinkron módszereket. Például a metódusban használhat `ExistsAsync` és `DeleteAsync` helyett `Exists` és `Delete`.
+> Ebben a cikkben a példakód az egyszerűség érdekében az Azure Search .NET SDK szinkron módszereit használja. Azt javasoljuk, hogy a méretezhetőség és a gyors válaszadás érdekében használja saját alkalmazásaiban az aszinkron módszereket. Ha például a fenti metódus használhat `ExistsAsync` és `DeleteAsync` helyett `Exists` és `Delete`.
 > 
 > 
 
-Ezt követően `Main` hoz létre egy új "Hotels nevű" index által a metódus hívása:
+Ezután `Main` hoz létre egy új "hotels" index a metódus meghívásának hatására:
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -235,17 +235,17 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 }
 ```
 
-Ezzel a módszerrel hoz létre egy új `Index` listáját tartalmazó objektum `Field` objektumok sémájának definiálásához az új index. Egyes mezők nevét, adattípus és a keresés viselkedését meghatározó számos attribútum rendelkezik. A `FieldBuilder` osztály reflexió használatával létrehozhat egy `Field` objektumok nyilvános tulajdonságokat és az attribútumok megvizsgálásával az index az adott `Hotel` osztály modell. Részletes bemutatása lesz vesszük a `Hotel` osztály később.
+Ez a módszer létrehoz egy új `Index` objektum listáját `Field` objektumok sémájának az új index. Minden mező rendelkezik egy név, adattípus és számos attribútum, amely a keresés viselkedését. A `FieldBuilder` osztály tükröződés használatával hozzon létre egy `Field` objektumok a nyilvános tulajdonságok és az attribútumok megvizsgálásával index számára az adott `Hotel` model class. Viszonozhatják közelebbről a `Hotel` később osztály.
 
 > [!NOTE]
-> Bármikor létrehozhat listájának `Field` objektumok közvetlenül helyett `FieldBuilder` szükség esetén. Például előfordulhat, hogy nem használni kívánt egy modellosztállyal, vagy használjon egy meglévő modell osztály nem kívánt attribútumok hozzáadásával módosítani szeretne.
+> Bármikor létrehozhat listájának `Field` objektumok használata helyett közvetlenül `FieldBuilder` szükség esetén. Például előfordulhat, hogy nem szeretné egy modellosztályt, vagy előfordulhat, hogy kell használnia, amelyet szeretne attribútumokat hozzáadásával módosítsa a meglévő modellosztály.
 >
 > 
 
-Mezők mellett azt is megteheti pontozási profil, a javaslattevők vagy a CORS-beállítások az indexhez (ezek hiányoznak kivonatosan mutatja a mintából). Az Index objektum és a bennük foglalt részeit további információ található a [SDK referenciáit](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index#microsoft_azure_search_models_index), valamint ennek a a [Azure Search REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/).
+Mezők mellett is adhat pontozási profilok, javaslattevőket vagy CORS-beállítások az Index (ezek kimaradnak a mintát az áttekinthetőség). Az Index objektum és azok részlegei a további információt talál a [SDK-leírás](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index#microsoft_azure_search_models_index)is, a a [Azure Search REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/).
 
-### <a name="populating-the-index"></a>Az index feltöltése
-A következő lépéssel `Main` az újonnan létrehozott index feltöltése. Ezt a következő metódust:
+### <a name="populating-the-index"></a>Hozzáláthat a tárgymutató
+A következő lépés `Main` , hogy az újonnan létrehozott index feltöltéséhez. Ez történik, a következő metódusban:
 
 ```csharp
 private static void UploadDocuments(ISearchIndexClient indexClient)
@@ -311,26 +311,26 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 }
 ```
 
-Ez a metódus négy részből áll. Az első létrehoz egy tömbjét `Hotel` objektumok feltölteni az index a bemeneti adatok erre a célra. Ezek az adatok nem változtatható az egyszerűség érdekében. A saját alkalmazásban az adatok valószínűleg határozza meg egy külső adatforrásból, például az SQL-adatbázis.
+Ez a metódus négy részből áll. Az első létrehoz egy tömbjét `Hotel` objektumok erre a célra a bemeneti adatok feltöltése az indexbe. Ezek az adatok nem változtatható az egyszerűség kedvéért. A saját alkalmazásában az adatok valószínűleg például egy SQL database egy külső adatforrásból származnak.
 
-A második rész létrehoz egy `IndexBatch` tartalmazó a dokumentumokat. Megadja a kötegelt hoz létre, ebben az esetben meghívásával időpontjában alkalmazni kívánt műveletet `IndexBatch.Upload`. A kötegelt majd tölt fel az Azure Search-index által az a `Documents.Index` metódust.
+A második rész létrehoz egy `IndexBatch` tartalmazó dokumentumokat. Azt adja meg a műveletet, létrehozása, ebben az esetben meghívásával, a batch a alkalmazni kívánt `IndexBatch.Upload`. A batch majd töltenek fel az Azure Search-index által a `Documents.Index` metódust.
 
 > [!NOTE]
-> Ebben a példában azt csak feltölteni dokumentumokat. Ha szeretne változtatások egyesítése a létező dokumentumok vagy törölhetnek dokumentumokat, létrehozhat meghívásával kötegek `IndexBatch.Merge`, `IndexBatch.MergeOrUpload`, vagy `IndexBatch.Delete` helyette. A kötegek különböző műveletei adjunk meghívásával `IndexBatch.New`, gyűjteménye, amely veszi `IndexAction` objektumok, amelyek arra utasítja a Azure Search a dokumentum az adott művelet végrehajtására. Minden egyes hozhat létre `IndexAction` saját műveletet a megfelelő metódus meghívásával `IndexAction.Merge`, `IndexAction.Upload`, és így tovább.
+> Ebben a példában azt csak tölt fel dokumentumokat. Ha meglévő dokumentumok egyesítse a módosításokat, vagy törölhetnek dokumentumokat szeretne, létrehozhat meghívásával kötegek `IndexBatch.Merge`, `IndexBatch.MergeOrUpload`, vagy `IndexBatch.Delete` helyette. Az egy kötegben különböző műveleteiről használhatók vegyesen meghívásával `IndexBatch.New`, gyűjteménye, amely veszi `IndexAction` objektumok, amelyek arra utasítja az Azure Search egy dokumentum egy adott művelet végrehajtásához. Hozhat létre minden egyes `IndexAction` saját műveletet a megfelelő metódus meghívásával `IndexAction.Merge`, `IndexAction.Upload`, és így tovább.
 > 
 > 
 
-Ez a módszer harmadik része egy catch blokkba, amely kezeli az egyik fontos hiba esetében az indexeléshez. Ha az Azure Search-szolgáltatásnak nem sikerül indexelnie a kötegben szereplő fájlok valamelyikét, a `Documents.Index` rendszer `IndexBatchException` választ ad. Ez akkor történhet meg, ha olyankor végzi a dokumentumok indexelését, amikor a szolgáltatás nagy terhelés alatt áll. **Javasoljuk, hogy a kódban explicit módon kezelje ezt az esetet.** Azon dokumentumok esetében, ahol az indexelés meghiúsult, elhalaszthatja azt, majd később újra megpróbálkozhat az indexeléssel, vagy a mintának megfelelően naplózhatja azt, és folytathatja a munkáját, esetleg – az alkalmazás adatkonzisztencia-követelményeitől függően – más műveletbe kezdhet.
+Ez a módszer harmadik része a "catch" blokk az indexelés egy fontos hibaesetét kezeli. Ha az Azure Search-szolgáltatásnak nem sikerül indexelnie a kötegben szereplő fájlok valamelyikét, a `Documents.Index` rendszer `IndexBatchException` választ ad. Ez akkor történhet meg, ha olyankor végzi a dokumentumok indexelését, amikor a szolgáltatás nagy terhelés alatt áll. **Javasoljuk, hogy a kódban explicit módon kezelje ezt az esetet.** Azon dokumentumok esetében, ahol az indexelés meghiúsult, elhalaszthatja azt, majd később újra megpróbálkozhat az indexeléssel, vagy a mintának megfelelően naplózhatja azt, és folytathatja a munkáját, esetleg – az alkalmazás adatkonzisztencia-követelményeitől függően – más műveletbe kezdhet.
 
 > [!NOTE]
-> Használhatja a `FindFailedActionsToRetry` metódus csak egy korábbi hívás a sikertelen műveleteket tartalmazó új köteg összeállításához `Index`. A metódus dokumentált [Itt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception#Microsoft_Azure_Search_IndexBatchException_FindFailedActionsToRetry_Microsoft_Azure_Search_Models_IndexBatch_System_String_) , és annak megfelelően használatát tárgyalja [a StackOverflow](http://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
+> Használhatja a `FindFailedActionsToRetry` metódus csak az előző hívása sikertelen műveleteket tartalmazó új kötegelt `Index`. A metódus dokumentált [Itt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception#Microsoft_Azure_Search_IndexBatchException_FindFailedActionsToRetry_Microsoft_Azure_Search_Models_IndexBatch_System_String_) , és nincs megfelelően használatával hatásának a megbeszélését [a StackOverflow-n](http://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
 >
 >
 
-Végezetül a `UploadDocuments` metódus késések két másodpercig. Az Azure Search-szolgáltatásban az indexelés aszinkron módon történik, így a mintaalkalmazásnak egy rövid ideig várnia kell, amíg a rendszer meggyőződik arról, hogy a dokumentum kereshető. Ilyen mértékű késleltetésre kizárólag demók, tesztek és mintaalkalmazások esetében van szükség.
+Végül a `UploadDocuments` két másodperces metódus késéseket. Az Azure Search-szolgáltatásban az indexelés aszinkron módon történik, így a mintaalkalmazásnak egy rövid ideig várnia kell, amíg a rendszer meggyőződik arról, hogy a dokumentum kereshető. Ilyen mértékű késleltetésre kizárólag demók, tesztek és mintaalkalmazások esetében van szükség.
 
 #### <a name="how-the-net-sdk-handles-documents"></a>A .NET SDK dokumentumkezelési módszere
-Megfordulhat a fejében, hogy miként képes az Azure Search .NET SDK felhasználó által meghatározott `Hotel` osztályhoz hasonló példányok feltöltésére az indexbe. A kérdés megválaszolásához, vizsgáljuk meg a `Hotel` osztály:
+Megfordulhat a fejében, hogy miként képes az Azure Search .NET SDK felhasználó által meghatározott `Hotel` osztályhoz hasonló példányok feltöltésére az indexbe. Annak érdekében, hogy kapcsolatos kérdésére választ kaphat, nézzük meg a `Hotel` osztály:
 
 ```csharp
 using System;
@@ -389,18 +389,18 @@ public partial class Hotel
 Az első szembetűnő dolog, hogy a `Hotel` minden egyes nyilvános tulajdonsága az indexdefiníció egy-egy mezőjének felel meg, egy lényeges különbséggel: a mezők neve minden esetben kisbetűvel, míg a `Hotel` nyilvános tulajdonságainak neve nagybetűvel kezdődik. Gyakran kerül sor erre olyan adatkötést végző .NET-alkalmazások esetében, ahol a célséma vezérlése az alkalmazás fejlesztőjének hatáskörén kívül esik. A .NET elnevezési irányelveinek megsértése helyett (a tulajdonságnevek kisbetűs megadásával), utasíthatja az SDK-t a tulajdonságnevek automatikus kisbetűs leképezésére a `[SerializePropertyNamesAsCamelCase]` attribútummal.
 
 > [!NOTE]
-> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További részletekért lásd: [JSON.NET az egyéni szerializálási](#JsonDotNet).
+> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További részletekért lásd: [egyéni szerializálás a JSON.NET](#JsonDotNet).
 > 
 > 
 
-Figyelje meg, a második lépés olyan attribútumok, amelyek például `IsFilterable`, `IsSearchable`, `Key`, és `Analyzer` , amely minden egyes nyilvános tulajdonsága adja. Ezek az attribútumok hozzárendelését közvetlenül a [megfelelő attribútumok az Azure Search-index](https://docs.microsoft.com/rest/api/searchservice/create-index#request). A `FieldBuilder` osztály használja ezeket az index definícióját mező összeállításához.
+Figyelje meg, hogy a második lépésben olyan attribútumok, amelyek például `IsFilterable`, `IsSearchable`, `Key`, és `Analyzer` , amely minden egyes nyilvános tulajdonsága megadhat. Ezek az attribútumok leképezése közvetlenül a [megfelelő attribútumok az Azure Search-index](https://docs.microsoft.com/rest/api/searchservice/create-index#request). A `FieldBuilder` osztályt használja ezeket az index Meződefiníciók létrehozására.
 
-A harmadik fontos dolog kapcsolatos a `Hotel` osztály az adattípusok a nyilvános tulajdonságainak. A .NET típusú ezeket a tulajdonságokat a megfelelő típusú az index definícióját a hozzárendelése. Például a rendszer a `Edm.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `Edm.Boolean`, illetve a `DateTimeOffset?` és `Edm.DateTimeOffset` között is. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_), a `Documents.Get` metódusnál található. A `FieldBuilder` osztály gondoskodik meg ezt a hozzárendelést, de továbbra is hasznos lehet megérteni, abban az esetben kell elhárítania a szerializálási probléma merül fel.
+Tudnivalók a harmadik lényeg a `Hotel` osztály a nyilvános tulajdonságok adattípusa. Ezeket a tulajdonságokat a .NET-típusú képezze le az index definícióját a mezőtípusokra. Például a rendszer a `Edm.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `Edm.Boolean`, illetve a `DateTimeOffset?` és `Edm.DateTimeOffset` között is. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_), a `Documents.Get` metódusnál található. A `FieldBuilder` osztály a megfelelőségről gondoskodik, de továbbra is lehet annak megértése, abban az esetben szerializációs hárítsa el kell.
 
-Ez nem tudják használni a saját osztályok-dokumentumokként működik mindkét irányban; Keresési eredmények beolvasásához is, és látható lesz a következő szakaszban az SDK-val automatikusan deszerializálni őket a kiválasztott típusú lehet.
+A saját osztályok dokumentumokként használandó képessége mindkét irányban; működik Is lekérdezheti a keresési eredményeket, és rendelkezik az SDK-val automatikusan deszerializáltathatja azokat a választott típusra láthatóak lesznek a következő szakaszban.
 
 > [!NOTE]
-> Az Azure Search .NET SDK támogatja a `Document` osztályt használó, dinamikus dokumentumtípusokat is, amely alatt a mezők neveinek értékekre történő kulcs/érték-leképezését értjük. Ez olyan helyzetekben hasznos, ha például a tervezés időpontjában az indexséma még nem ismert, illetve ha az adott modellosztályokhoz történő kötés nehézkes volna. Az SDK-ban lévő összes, dokumentumokkal foglalkozó módszer a `Document` osztállyal kompatibilis túlterhelésekkel rendelkezik, valamint olyan szigorú típusmegadású túlterhelésekkel, amelyek általános típusú paramétert vesznek fel. Csak az utóbbi használnak a mintakódot az oktatóanyag. A `Document` osztály örökli `Dictionary<string, object>`. Más részletei [Itt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document#microsoft_azure_search_models_document).
+> Az Azure Search .NET SDK támogatja a `Document` osztályt használó, dinamikus dokumentumtípusokat is, amely alatt a mezők neveinek értékekre történő kulcs/érték-leképezését értjük. Ez olyan helyzetekben hasznos, ha például a tervezés időpontjában az indexséma még nem ismert, illetve ha az adott modellosztályokhoz történő kötés nehézkes volna. Az SDK-ban lévő összes, dokumentumokkal foglalkozó módszer a `Document` osztállyal kompatibilis túlterhelésekkel rendelkezik, valamint olyan szigorú típusmegadású túlterhelésekkel, amelyek általános típusú paramétert vesznek fel. Kizárólag az utóbbiakat használjuk a mintakód ebben az oktatóanyagban. A `Document` osztály örökli `Dictionary<string, object>`. Egyéb információk [Itt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document#microsoft_azure_search_models_document).
 > 
 > 
 
@@ -416,17 +416,17 @@ Ezért javasoljuk, hogy a modellosztályokban nullázható értéktípusokat has
 
 <a name="JsonDotNet"></a>
 
-#### <a name="custom-serialization-with-jsonnet"></a>A JSON.NET egyedi szerializálás
-Az SDK JSON.NET szerializálása és deszerializálása dokumentumok használ. Testre szabhatja a szerializálás és szükség esetén meghatározhat egy saját deszerializálási `JsonConverter` vagy `IContractResolver` (lásd a [JSON.NET dokumentáció](http://www.newtonsoft.com/json/help/html/Introduction.htm) további részletekért). Ez akkor lehet hasznos, ha meg szeretné alkalmazkodnak az alkalmazás Azure Search és egyéb speciális forgatókönyvekhez használható modellt egy meglévő osztály. Például az egyedi szerializálás lehetővé teszi:
+#### <a name="custom-serialization-with-jsonnet"></a>Egyéni szerializálás a JSON.NET használatával
+Az SDK-t használ JSON.NET szerializálásához és deszerializálásához dokumentumokat. Testre szabhatja a szerializálási és szükség esetén definiálásával saját deszerializálási `JsonConverter` vagy `IContractResolver` (lásd a [JSON.NET dokumentáció](http://www.newtonsoft.com/json/help/html/Introduction.htm) további részletekért). Ez hasznos lehet, ha meg szeretné alkalmazkodnak az alkalmazás használatát az Azure Search, és más speciális forgatókönyvekhez egy meglévő modell osztály. Ha például egyéni sorba rendezésre segítségével:
 
-* Tartalmaznak, vagy zárja ki a modell osztály egyes tulajdonságai dokumentum mezői tárolt.
-* Képezze le a kódban nevei és az indexben mezőnevek között.
-* Hozzon létre egyéni attribútumok tulajdonságok hozzárendelése dokumentum mező használható.
+* Belefoglalhat vagy kizárhat bizonyos tulajdonságok modellosztály-dokumentum mezőként tárolják.
+* Képezze le a kódban a tulajdonságnevek és az index mezőnevek között.
+* Hozzon létre egyéni attribútumokat, amelyek tulajdonságok hozzárendelése a dokumentum mezők is használható.
 
-Példák egyedi szerializálás egység tesztek végrehajtása az Azure Search .NET SDK a Githubon található. A jó kiindulási pont [Ez a mappa](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models). Az egyéni szerializálási tesztek által használt osztályok tartalmaz.
+Példák egyedi szerializálás az egységteszteket a végrehajtása az Azure Search .NET SDK a Githubon találja. Van egy jó kiindulási pont [Ez a mappa](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models). Az egyéni sorba rendezésre tesztek által használt osztályok tartalmazza.
 
-### <a name="searching-for-documents-in-the-index"></a>Az indexelt dokumentumok keresése
-A mintaalkalmazás utolsó lépése, hogy az index egyes dokumentumok keresése. A következő metódus végzi ezt:
+### <a name="searching-for-documents-in-the-index"></a>Az indexben található dokumentumok keresése
+A mintaalkalmazásban az utolsó lépés az egyes dokumentumok indexben kereshet. A következő metódust teszi ezt:
 
 ```csharp
 private static void RunQueries(ISearchIndexClient indexClient)
@@ -485,16 +485,16 @@ private static void RunQueries(ISearchIndexClient indexClient)
 }
 ```
 
-Minden alkalommal, amikor végrehajtja a lekérdezést, ez a módszer először létrehoz egy új `SearchParameters` objektum. Ez például rendezési, szűrési, lapozás és értékkorlátozás a lekérdezés további beállítások megadására szolgál. Ezzel a módszerrel beállítás van a `Filter`, `Select`, `OrderBy`, és `Top` különböző lekérdezések tulajdonság. Minden a `SearchParameters` tulajdonságok szerepelnek [Itt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters).
+Minden alkalommal, amikor a lekérdezés végrehajtása, ezt a módszert először létrehoz egy új `SearchParameters` objektum. Ez szolgál, például rendezés, szűrés, lapozási és értékkorlátozás a lekérdezés további beállítások megadásához. Ez a módszer a beállítás folyamatban van a `Filter`, `Select`, `OrderBy`, és `Top` különböző lekérdezéseket tulajdonsága. Az összes a `SearchParameters` tulajdonságok szerepelnek [Itt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters).
 
-A következő lépésre ténylegesen a keresési lekérdezés végrehajtásához. Ebben az esetben használja a `Documents.Search` metódust. Minden egyes lekérdezés esetén, azt át kívánja használni, mint a karakterlánc a keresési szöveget (vagy `"*"` nincs a keresési szöveget esetén), és a keresési paramétereket, korábban létrehozott. Azt is megadhatja, `Hotel` a típust paraméterként `Documents.Search`, amely közli a dokumentumok a keresési eredmények deszerializálása típusú objektumot az SDK `Hotel`.
+A következő lépés, hogy ténylegesen hajtsa végre a keresési lekérdezést. Ebben az esetben használja a `Documents.Search` metódust. Az egyes lekérdezések használandó karakterlánc a keresett szöveget adjuk át (vagy `"*"` Ha nincs keresési szöveg), valamint a korábban létrehozott keresési paraméterek. Azt is megadhatja `Hotel` a típusát paraméterként `Documents.Search`, amely tájékoztatja, hogy az SDK-val dokumentumok a keresési eredmények deszerializálása típusú objektumokat be `Hotel`.
 
 > [!NOTE]
-> További információ a keresési lekérdezés kifejezésszintaxist található [Itt](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search).
+> További információ a search lekérdezési kifejezés szintaxisa annak [Itt](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search).
 > 
 > 
 
-Végül minden egyes lekérdezés után ez a módszer telepítéseket összes a találat a keresési eredmények között, a konzol minden egyes dokumentum nyomtatása:
+Végül minden lekérdezés után ez a módszer végighalad a minden találatot a keresési eredmények között, a konzol minden egyes dokumentum nyomtatása:
 
 ```csharp
 private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
@@ -508,7 +508,7 @@ private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
 }
 ```
 
-Vegyük pedig egyes lekérdezések részletes bemutatása. Az első lekérdezés végrehajtása a kód itt látható:
+Vegyük viszont minden, a lekérdezések közelebbről. Az első lekérdezés végrehajtásához a kód itt látható:
 
 ```csharp
 parameters =
@@ -522,11 +522,11 @@ results = indexClient.Documents.Search<Hotel>("budget", parameters);
 WriteDocuments(results);
 ```
 
-Ebben az esetben azt keresünk, amelyek megfelelnek a word "költségvetés" hotels, és azt szeretné, hogy vissza csak a szállodák neveket, leírtak szerint a `Select` paraméter. Az alábbi történik:
+Ebben az esetben azt hotels, amelyek megfelelnek a "budget" szóra keres, és szeretnénk visszatéréshez csak a Szálloda neve, azokat a `Select` paraméter. Az eredmények a következők:
 
     Name: Roach Motel
 
-A következő azt szeretnénk, a szállodák egy éjszakánként sebessége kisebb, mint 150 $ található, és csak a szállodák Azonosítóját és a leírását adja vissza:
+Ezután szeretnénk keresse meg a "Hotels" kisebb, mint 150 USD éjszakai arány, és csak a Szálloda azonosítója és a leírását adja vissza:
 
 ```csharp
 parameters =
@@ -541,14 +541,14 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-Ez a lekérdezés használ egy OData `$filter` kifejezését `baseRate lt 150`, a dokumentumok az indexben szűrése. További információk az OData-szintaxis, amely támogatja az Azure Search található [Itt](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search).
+Ez a lekérdezés használ egy OData `$filter` kifejezés, `baseRate lt 150`, a dokumentumok indexben szűréséhez. Talál további információt az OData-szűrőszintaxis, amely támogatja az Azure Search [Itt](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search).
 
-Az alábbiakban a lekérdezés eredményét:
+Az alábbiakban a lekérdezési eredmények:
 
     ID: 2   Description: Cheapest hotel in town
     ID: 3   Description: Close to town hall and the river
 
-A következő szeretnénk keresse meg a felső két szállodák, amely rendelkezik lett utoljára felújított, és a szállodák nevét és az utolsó felújítás dátumának megjelenítése. A kód itt látható: 
+Ezután szeretnénk megtalálni a felső két hotels, amely rendelkezik lett utoljára felújított és a Szálloda neve és az utolsó felújítás dátumának megjelenítése. A kód itt látható: 
 
 ```csharp
 parameters =
@@ -564,14 +564,14 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-Ebben az esetben újra használjuk OData szintaxis adja meg a `OrderBy` paraméterként `lastRenovationDate desc`. Azt is beállíthatja `Top` 2. Győződjön meg arról, azt csak a felső két dokumentumok beolvasása. Előtt, hogy állítsa `Select` adhatja meg, melyik mezőkre vissza kell adni.
+Ebben az esetben újra használjuk OData-szűrőszintaxis adja meg a `OrderBy` paraméterrel `lastRenovationDate desc`. Azt is beállíthatja `Top` a 2. Győződjön meg arról, hogy csak az első két dokumentum beolvasása. Korábban, hogy állíthat be `Select` mezőket a rendszer visszalépteti megadásához.
 
-Az alábbi történik:
+Az eredmények a következők:
 
     Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
     Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
 
-Végül azt szeretnénk található összes szállodák, amelyek megfelelnek a "motel" szót:
+Végül szeretnénk található összes "Hotels" megfelelő "amelyben" szót:
 
 ```csharp
 parameters = new SearchParameters();
@@ -580,14 +580,13 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-Az alábbiakban az eredményeket, amely az összes mezők szerepelhetnek, mivel jelenleg nem adta meg, és a `Select` tulajdonság:
+Az alábbiakban az eredményeket, amely az összes mező tartalmazza, mivel nem azt adta meg, és a `Select` tulajdonság:
 
     ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
 
-Ez a lépés az oktatóanyag befejezése, de itt nem állnak le. **További lépések** Azure Search többet további forrásokat biztosít.
+Ez a lépés befejezi az oktatóanyag, de itt nem állnak le. **További lépések** Azure Search-ról további további forrásokat biztosít.
 
 ## <a name="next-steps"></a>További lépések
 * Nézze át a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referenciáit.
-* A Tudásbázis keresztül elmélyítsék [videókat és más mintákat és oktatóanyagok](search-video-demo-tutorial-list.md).
-* Felülvizsgálati [elnevezési konvenciói](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) további a különféle objektumok elnevezési szabályai.
-* Felülvizsgálati [a támogatott adattípusokat](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) az Azure Search.
+* Felülvizsgálat [elnevezési konvenciók](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) további a különféle objektumok elnevezési szabályai.
+* Felülvizsgálat [által támogatott adattípusokkal](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) az Azure Search szolgáltatásban.

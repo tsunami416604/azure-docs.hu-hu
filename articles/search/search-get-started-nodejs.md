@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
-ms.openlocfilehash: aeff3be89121bb93432d03f108ab5d2e5fa6f007
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 713e5304ca54039413f68ebc189dd049e77cdaa0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099537"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527575"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Bevezetés az Azure Search használatába Node.js-ben
 > [!div class="op_single_selector"]
@@ -99,9 +99,9 @@ Megpróbálhatja beírni az alábbi kifejezések bármelyikét is:
 ## <a name="next-steps"></a>További lépések
 Ez az Azure Search első oktatóanyaga, amely a Node.js és a USGS-adatkészlet alapján készült. Idővel majd tovább bővítjük oktatóanyagunkat, és olyan kiegészítő keresési funkciókat fogunk bemutatni, amelyeket esetleg szívesen használna egyéni megoldásaiban.
 
-Ha már rendelkezik bizonyos tapasztalattal az Azure Search, használhatja ezt a mintát akár ugródeszkaként a javaslattevők (begépelt vagy automatikusan hajthat végre lekérdezések), szűrők és a jellemzőalapú navigáció. A keresési eredmények oldalát is tovább fejlesztheti számok és kötegelt dokumentumok hozzáadásával úgy, hogy a felhasználók lapozhassanak az eredmények között.
+Ha már rendelkezik bizonyos tapasztalattal az Azure Search szolgáltatásban, használhatja ezt a mintát, ugródeszkaként kipróbálta a javaslattevők (előre vagy automatikusan kiegészített lekérdezések), a szűrők és a jellemzőalapú navigáció. A keresési eredmények oldalát is tovább fejlesztheti számok és kötegelt dokumentumok hozzáadásával úgy, hogy a felhasználók lapozhassanak az eredmények között.
 
-Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóanyagokat is, hogy jobban megismerhesse, mit hozhat létre. További forrásokat a [dokumentációs oldalunkon](https://azure.microsoft.com/documentation/services/search/) talál. További információkat szerezhet, ha megtekinti a [Videók és oktatóanyagok listáját](search-video-demo-tutorial-list.md).
+Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóanyagokat is, hogy jobban megismerhesse, mit hozhat létre. További forrásokat a [dokumentációs oldalunkon](https://azure.microsoft.com/documentation/services/search/) talál. 
 
 <!--Image references-->
 [1]: ./media/search-get-started-Nodejs/create-search-portal-1.PNG

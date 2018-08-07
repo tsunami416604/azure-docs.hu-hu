@@ -16,12 +16,12 @@ ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: f06c4ad7e99c5ccdd0f63ac16877c0277fdf819c
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0c4edb4fbf7271331affb2559018e53480aa7a85
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504260"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577162"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Az Azure Active Directoryban (nyilvános előzetes verzió) konfigurálható jogkivonatok élettartama
 Az Azure Active Directory (Azure AD) által kiállított jogkivonatok élettartamát is megadhat. Beállíthatja a jogkivonatok élettartamának, a szervezet minden alkalmazás, több-bérlős (több cég) alkalmazás vagy egy adott szolgáltatásnév a szervezetben.
@@ -49,7 +49,7 @@ A frissítési biztonsági jogkivonat, hozzáférési jogkivonatok, munkamenetek
 Az ügyfelek hozzáférési jogkivonatok használatával védett erőforrások eléréséhez. Hozzáférési jogkivonat csak olyan felhasználó, az ügyfél és az erőforrás egyedi kombinációja használható. Hozzáférési jogkivonatok nem vonható vissza, és azok lejáratig érvényesek. Egy rosszindulatú aktor, amely a kapott hozzáférési jogkivonat használhatja azt élettartamuk mértékét. Hozzáférési jogkivonat élettartama módosításával között a rendszer a teljesítmény fokozása és növelése az idő, hogy az ügyfél megőrzi-e a hozzáférést, miután a felhasználói fiók le van tiltva. Továbbfejlesztett rendszer teljesítmény akkor érhető el, hogy hányszor egy friss hozzáférési token beszerzéséhez az ügyfélnek kell csökkentésével.  Az alapértelmezett érték 1 óra – 1 óra elteltével az ügyfelet kell használnia a frissítési jogkivonat (általában csendes) egy új frissítési jogkivonatot beszerezni, és a hozzáférési tokent. 
 
 ### <a name="refresh-tokens"></a>Frissítési jogkivonatok
-Amikor egy ügyfél védett erőforrások eléréséhez hozzáférési jogkivonatot szerez be, az ügyfél is fogad egy frissítési jogkivonatot. A frissítési jogkivonat segítségével a új hozzáférési vagy frissítési jogkivonat párok Ha a jelenlegi hozzáférési jogkivonat lejár. A frissítési jogkivonat felhasználói és az ügyfél kombinációja van kötve. A frissítési jogkivonatok lehet [bármikor visszavont](develop/active-directory-token-and-claims.md#token-revocation), és a jogkivonat érvényességi be van jelölve, minden alkalommal, amikor a jogkivonat.  
+Amikor egy ügyfél védett erőforrások eléréséhez hozzáférési jogkivonatot szerez be, az ügyfél is fogad egy frissítési jogkivonatot. A frissítési jogkivonat segítségével a új hozzáférési vagy frissítési jogkivonat párok Ha a jelenlegi hozzáférési jogkivonat lejár. A frissítési jogkivonat felhasználói és az ügyfél kombinációja van kötve. A frissítési jogkivonatok lehet [bármikor visszavont](develop/v1-id-and-access-tokens.md#token-revocation), és a jogkivonat érvényességi be van jelölve, minden alkalommal, amikor a jogkivonat.  
 
 Fontos, hogy bizalmas ügyfelek és a nyilvános ügyfelek közötti különbséget, ez hatással van, hogy mennyi ideig frissítési biztonsági jogkivonat használható. További információ a különböző típusú ügyfelek: [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
@@ -106,7 +106,7 @@ Hozzon létre, és rendelje hozzá egy jogkivonat élettartama házirendet egy a
 * Nincs szabályzat explicit módon van hozzárendelve, az egyszerű szolgáltatás vagy a szervezet számára, ha a szabályzatot az alkalmazáshoz hozzárendelt lép érvénybe.
 * Nincs szabályzat van rendelve a szolgáltatásnevet, a szervezet vagy az alkalmazásobjektum, ha az alapértelmezett értékeket lép érvénybe. (Lásd a táblázatot a [konfigurálható jogkivonat élettartama tulajdonságok](#configurable-token-lifetime-properties).)
 
-Alkalmazásobjektumok és egyszerű szolgáltatási objektumok közötti kapcsolat kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](active-directory-application-objects.md).
+Alkalmazásobjektumok és egyszerű szolgáltatási objektumok közötti kapcsolat kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](develop/app-objects-and-service-principals.md).
 
 A jogkivonat érvényességi a jogkivonat időben értékeli ki. A szabályzat az alkalmazás, amelyek hozzáférnek a legmagasabb prioritású lép érvénybe.
 

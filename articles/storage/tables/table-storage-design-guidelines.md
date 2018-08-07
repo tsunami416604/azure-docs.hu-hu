@@ -1,50 +1,45 @@
 ---
-title: Az Azure storage vonatkozó irányelvek táblázat kialakítási |} Microsoft Docs
-description: Tervezze meg az Azure table szolgáltatás hatékonyan olvasási műveletek támogatásához.
+title: Útmutató az Azure storage table tervezési |} A Microsoft Docs
+description: Tervezze meg az Azure table service hatékonyan olvasási műveletek támogatásához.
 services: storage
-documentationcenter: na
 author: SnehaGunda
-manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: 5329d33aee1bb1a55e9982b1ba9e3e8329246980
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: tables
+ms.openlocfilehash: ef6d257aee532d4b6325bd3d2f619fd00824e06f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660898"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525418"
 ---
-# <a name="guidelines-for-table-design"></a>Táblatervezés vonatkozó irányelvek
+# <a name="guidelines-for-table-design"></a>Irányelvek táblatervezéshez
 
-A tábla az Azure storage szolgáltatással való használatra táblák tervezése egy nagyon eltérő tervezéséhez kapcsolódó szempontokat tartalmazza egy relációs adatbázisban. Ez a cikk ismerteti a Table szolgáltatás megoldásainak hatékony lehet olvasni és írni hatékony irányelveket.
+Az Azure storage-table service való használatra táblák tervezése nagyon eltérőek a relációs adatbázis megtervezésével. Ez a cikk ismerteti a Table service megoldás hatékony kell olvasása és írása hatékonyan tervezése irányelveit.
 
-## <a name="design-your-table-service-solution-to-be-read-efficient"></a>A Table szolgáltatás megoldást a olvasási hatékony
+## <a name="design-your-table-service-solution-to-be-read-efficient"></a>A Table service megoldás való olvasás hatékony megtervezése
 
-* ***Tervezze meg az olvasási műveleteket alkalmazásokban lekérdezése.*** A táblák tervezésekor gondolja át a lekérdezések (különösen a várakozási bizalmas is), amely, végrehajtja a véleménye hogyan frissíti az entitások előtt. Ez általában annak az eredménye a hatékony és performant megoldás.  
-* ***Adja meg a lekérdezések PartitionKey és RowKey is.*** *Mutasson a lekérdezések* például ezek azok a leghatékonyabb tábla szolgáltatás lekérdezéseket.  
-* ***Érdemes tárolni a duplikált entitásokat.*** A TABLE storage olcsó, érdemes a ugyanaz az entitás tárolni többször (különböző kulccsal rendelkező) a hatékonyabb lekérdezések engedélyezéséhez.  
-* ***Vegye figyelembe az adatok denormalizing.*** A TABLE storage olcsó ezért fontolja meg az adatok denormalizing. Összegző entitások például tárolja, hogy az összesített adatok lekérdezések csak egyetlen entitáshoz eléréséhez szükséges.  
-* ***Használja az összetett kulcs értékeket.*** A csak akkor kulcsokban **PartitionKey** és **RowKey**. Például összetett kulcsértékei használatával engedélyezze a másodlagos kulccsal elérési utakat a részére.  
-* ***Lekérdezés vetítéshez használni.*** Válassza ki a szükséges mezők lekérdezésekkel a hálózati átvitel adatmennyiség csökkentése érdekében.  
+* ***A lekérdezés a olvasási alkalmazások tervezése.*** A táblák tervezésekor gondolja át a lekérdezések (különösen a késés bizalmas azokat), amely végrehajtja a, mielőtt úgy gondolja, hogy hogyan fogja frissíteni az entitások kapcsolatban. Ez általában egy hatékony és nagy teljesítményű megoldást eredményez.  
+* ***Adja meg a PartitionKey és rowkey tulajdonságok esetén is a lekérdezést.*** *Lekérdezések pont* például ezek a table service a leghatékonyabb lekérdezések.  
+* ***Érdemes tárolni a duplikált entitást.*** A TABLE storage olcsó tehát érdemes a ugyanahhoz az entitáshoz tárolni többször (különböző kulccsal rendelkező) hatékonyabb lekérdezések engedélyezéséhez.  
+* ***Érdemes lehet denormalizálni az adatokat.*** A TABLE storage olcsó tehát érdemes lehet denormalizálni az adatokat. Tárolhatja például összefoglaló entitások, hogy az összesített adatok lekérdezések csak egyetlen entitás eléréséhez szükséges.  
+* ***Összetett kulcs értéket használja.*** A rendelkezésére csak kulcsokat a **PartitionKey** és **RowKey**. Például összetett kulcs értékeit használatával engedélyezi a másodlagos kulcsalgoritmus elérési útvonalakat entitásokhoz.  
+* ***Lekérdezés leképezése használja.*** Csökkentheti a lekérdezések, amelyek csak a szükséges mezők kiválasztása a hálózati átvitel adatok mennyisége.  
 
-## <a name="design-your-table-service-solution-to-be-write-efficient"></a>A Table szolgáltatás megoldást a írási hatékony  
+## <a name="design-your-table-service-solution-to-be-write-efficient"></a>A Table service megoldás kell írási hatékony megtervezése  
 
-* ***Ne hozzon létre a gyakran használt adatok partíciókat.*** Válassza ki a kulcsokat, amelyek lehetővé teszik, hogy a kérelmek elosztva idő minden helyen több partíciót.  
-* ***Kerülje a forgalmat a teljesítményt.*** Elfogadható időn keresztül a forgalom sima, és elkerülheti a forgalmat a teljesítményt.
-* ***Feltétlenül ne hozzon létre egy külön táblázat az egyes entitás.*** Ha atomi tranzakciók entitástípusok között, több entitás típusaival tárolhat partícióra ugyanabban a táblában.
-* ***Fontolja meg a maximális átviteli sebesség kell elérni.*** Kell figyelembe vennie a méretezhetőségi célok a Table szolgáltatás, és győződjön meg arról, hogy a tervező nem okoz Önnek, hogy azokat.  
+* ***Ne hozzon létre forró partíciók.*** Válassza ki a kulcsokat, amelyek lehetővé teszik a kérelmek helyezkednek el, bármikor több partíciót.  
+* ***Adatforgalmi kiugrások elkerülése érdekében.*** A forgalom Smooth ésszerű időn át, és elkerülheti a csúcsterhelésekkel.
+* ***Feltétlenül ne hozzon létre egy különálló táblában az egyes entitás.*** Ha elemi tranzakciókat entitástípusok között, tárolhatók ezek több entitás ugyanazon a partíción ugyanabban a táblában.
+* ***Fontolja meg a maximális átviteli sebesség, amelyeket el kell érnie.*** Vegye figyelembe a Table service skálázási célértékei kell, és győződjön meg arról, hogy a tervező nem okoz túllépi őket.  
 
-Ez az útmutató olvasás példák, amelyek a gyakorlatban az összes alapelvek jelenik meg. 
+Az útmutató, mivel látni fogja a példa, amelyek a gyakorlatba összes ezeket az alapelveket. 
 
 ## <a name="next-steps"></a>További lépések
 
 - [Táblázat kialakítási minták](table-storage-design-patterns.md)
-- [Tervezési lekérdezése](table-storage-design-for-query.md)
-- [Tábla adatok titkosítása](table-storage-design-encrypt-data.md)
-- [Adatmódosítás kialakítása](table-storage-design-for-modification.md)
+- [Lekérdezés tervezése](table-storage-design-for-query.md)
+- [Táblák adatainak titkosítása](table-storage-design-encrypt-data.md)
+- [Adatmódosítás tervezése](table-storage-design-for-modification.md)

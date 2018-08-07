@@ -1,6 +1,6 @@
 ---
-title: Resource Manager Sablonfüggvényei |} Microsoft Docs
-description: Az Azure Resource Manager-sablonok segítségével értékek lekérését, karakterláncok és írhatók, és központi telepítési információk beolvasása funkcióit ismerteti.
+title: Resource Manager-sablonok függvényei |} A Microsoft Docs
+description: Ismerteti a functions az Azure Resource Manager-sablon használatával értékeket beolvasni, karakterláncok és numerics és telepítési információk lekéréséhez.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2018
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: fce3fd03f22c7e2d1c1524b9deb1f6935dbc3755
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a4a86576b8f9f842c54cfa195305a3e0d0ff4724
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359492"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527619"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Az Azure Resource Manager sablonfüggvényei
-Ez a cikk ismerteti az Azure Resource Manager-sablonokban használható összes függvények.
+# <a name="azure-resource-manager-template-functions"></a>Az Azure Resource Manager-sablonfüggvények
+Ez a cikk ismerteti az Azure Resource Manager-sablon használható összes funkció áttekintésével.
 
-Funkciók hozzáadása szögletes zárójelben befoglaló azokat a sablonokat: `[` és `]`, illetve. A rendszer kiértékeli üzembe helyezése során. Megírva egy szöveges karakterlánc, miközben a értékeli a kifejezés eredménye egy eltérő típusú JSON, például egy tömb, objektum vagy egész szám lehet. Csak a például a JavaScript, függvényhívások-ként formázott `functionName(arg1,arg2,arg3)`. A pont és a [index] operátorok használatával tulajdonságok hivatkozik.
+Funkciók hozzáadása zárójelben kötegfájlokban azokat a sablonokat: `[` és `]`, illetve. A kifejezés lesz kiértékelve, üzembe helyezés során. Ír egy szöveges karakterlánc, míg a során a kifejezés eredménye egy másik JSON típusú, például egy tömb, objektumot vagy egész szám lehet. Csak, például a JavaScript, függvényhívások formázott `functionName(arg1,arg2,arg3)`. A pont és a [index] operátorok használatával tulajdonságok hivatkozik.
 
-Egy sablon kifejezés nem lehet 24,576 karakternél.
+Egy kifejezés nem lehet 24,576 karakternél.
 
-Sablon függvényeket és paramétereket nem különböztetik meg. Például az erőforrás-kezelő oldja fel **variables('var1')** és **VARIABLES('VAR1')** egyezhet. Amikor értékeli ki, kivéve, ha a függvény kifejezetten eset (például toUpper vagy toLower) módosítja, a függvény megőrzi az eset. Előfordulhat, hogy az egyes erőforrástípusok eset követelmények, függetlenül attól, milyen funkciók kiértékelése.
+Sablon függvényeket és paramétereket és nagybetűk nincsenek megkülönböztetve. Például, oldja fel az erőforrás-kezelő **variables('var1')** és **VARIABLES('VAR1')** ugyanaz, mint. Kiértékelésekor, hacsak a függvény kifejezetten módosítja (például toUpper vagy toLower) eset, a függvény megőrzi az az eset. Előfordulhat, hogy az egyes erőforrástípusok használatieset-követelmények attól függetlenül, hogyan értékeli ki a funkciók.
 
-A saját függvények létrehozásához lásd: [felhasználó által definiált függvények](resource-group-authoring-templates.md#functions).
+A saját függvény létrehozásával kapcsolatban lásd: [felhasználó által definiált függvények](resource-group-authoring-templates.md#functions).
 
 <a id="array" />
 <a id="coalesce" />
@@ -50,26 +50,26 @@ A saját függvények létrehozásához lásd: [felhasználó által definiált 
 <a id="take" />
 <a id="union" />
 
-## <a name="array-and-object-functions"></a>A tömb és objektum funkciók
-Erőforrás-kezelő számos funkciókat nyújt, tömbök és objektumok.
+## <a name="array-and-object-functions"></a>Tömb- és objektumfüggvények
+A Resource Manager-tömbök és objektumok használata a számos funkciót biztosít.
 
-* [A tömb](resource-group-template-functions-array.md#array)
-* [Egyesítés](resource-group-template-functions-array.md#coalesce)
+* [Pole](resource-group-template-functions-array.md#array)
+* [Coalesce](resource-group-template-functions-array.md#coalesce)
 * [concat](resource-group-template-functions-array.md#concat)
-* [tartalmazza](resource-group-template-functions-array.md#contains)
+* [tartalmaz](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
 * [üres](resource-group-template-functions-array.md#empty)
 * [első](resource-group-template-functions-array.md#first)
-* [metszetének](resource-group-template-functions-array.md#intersection)
+* [Metszet](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
 * [utolsó](resource-group-template-functions-array.md#last)
 * [Hossza](resource-group-template-functions-array.md#length)
-* [Perc](resource-group-template-functions-array.md#min)
+* [Min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
 * [range](resource-group-template-functions-array.md#range)
 * [skip](resource-group-template-functions-array.md#skip)
 * [hajtsa végre a megfelelő](resource-group-template-functions-array.md#take)
-* [a UNION](resource-group-template-functions-array.md#union)
+* [Union](resource-group-template-functions-array.md#union)
 
 <a id="equals" />
 <a id="less" />
@@ -77,8 +77,8 @@ Erőforrás-kezelő számos funkciókat nyújt, tömbök és objektumok.
 <a id="greater" />
 <a id="greaterorequals" />
 
-## <a name="comparison-functions"></a>Összehasonlítás funkciók
-Erőforrás-kezelő számos funkciókat nyújt a sablonokban összehasonlításához.
+## <a name="comparison-functions"></a>Összehasonlító függvények
+Resource Manager összehasonlítások végzett a sablonok számos funkciót biztosít.
 
 * [egyenlő](resource-group-template-functions-comparison.md#equals)
 * [kevesebb](resource-group-template-functions-comparison.md#less)
@@ -91,11 +91,11 @@ Erőforrás-kezelő számos funkciókat nyújt a sablonokban összehasonlítás�
 <a id="variables" />
 
 ## <a name="deployment-value-functions"></a>Központi telepítési érték funkciók
-Erőforrás-kezelő a következő funkciókat nyújt értékek lekérése a sablon és a központi telepítéshez kapcsolódó értékek szakaszait:
+Erőforrás-kezelő az alábbi funkciókat biztosít értékek lekérése a sablont és az értékek üzembe helyezésével kapcsolatos szakaszait:
 
-* [központi telepítés](resource-group-template-functions-deployment.md#deployment)
+* [Üzembe helyezés](resource-group-template-functions-deployment.md#deployment)
 * [paraméterek](resource-group-template-functions-deployment.md#parameters)
-* [változók](resource-group-template-functions-deployment.md#variables)
+* [Változók](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" />
 <a id="bool" />
@@ -104,9 +104,9 @@ Erőforrás-kezelő a következő funkciókat nyújt értékek lekérése a sabl
 <a id="or" />
 
 ## <a name="logical-functions"></a>Logikai függvények
-Erőforrás-kezelő a következő funkciókat biztosít a logikai feltételek használata:
+A Resource Manager az alábbi funkciókat biztosít a logikai feltételekkel használatához:
 
-* [És](resource-group-template-functions-logical.md#and)
+* [és](resource-group-template-functions-logical.md#and)
 * [bool](resource-group-template-functions-logical.md#bool)
 * [if](resource-group-template-functions-logical.md#if)
 * [not](resource-group-template-functions-logical.md#not)
@@ -123,15 +123,15 @@ Erőforrás-kezelő a következő funkciókat biztosít a logikai feltételek ha
 <a id="mul" />
 <a id="sub" />
 
-## <a name="numeric-functions"></a>Numerikus funkciók
-Erőforrás-kezelő a következő funkciókat nyújt egész számok használata:
+## <a name="numeric-functions"></a>Numerikus függvények
+A Resource Manager az alábbi funkciókat biztosít az egész számok használata:
 
 * [Hozzáadása](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
 * [int](resource-group-template-functions-numeric.md#int)
-* [Perc](resource-group-template-functions-numeric.md#min)
+* [Min](resource-group-template-functions-numeric.md#min)
 * [max](resource-group-template-functions-numeric.md#max)
 * [MOD](resource-group-template-functions-numeric.md#mod)
 * [MUL számú](resource-group-template-functions-numeric.md#mul)
@@ -145,13 +145,14 @@ Erőforrás-kezelő a következő funkciókat nyújt egész számok használata:
 <a id="resourceid" />
 <a id="subscription" />
 
-## <a name="resource-functions"></a>Erőforrás-funkciók
-Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek beolvasása:
+## <a name="resource-functions"></a>Erőforrásfüggvények
+Resource Manager az alábbi funkciókat biztosít erőforrás-értékeinek beolvasása:
 
-* [listKeys](resource-group-template-functions-resource.md#listkeys)
+* [listAccountSas](resource-group-template-functions-resource.md#list)
+* [listkeys műveletének](resource-group-template-functions-resource.md#listkeys)
 * [listSecrets](resource-group-template-functions-resource.md#list)
 * [lista *](resource-group-template-functions-resource.md#list)
-* [szolgáltatók](resource-group-template-functions-resource.md#providers)
+* [Szolgáltatók](resource-group-template-functions-resource.md#providers)
 * [reference](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
 * [resourceId](resource-group-template-functions-resource.md#resourceid)
@@ -188,18 +189,18 @@ Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek be
 <a id="uricomponent" />
 <a id="uricomponenttostring" />
 
-## <a name="string-functions"></a>Karakterlánc-függvények
-Erőforrás-kezelő a következő funkciókat nyújt karakterláncok használata.
+## <a name="string-functions"></a>Sztringfüggvények
+A Resource Manager az alábbi funkciókat biztosít a karakterláncokkal való munka:
 
 * [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
 * [concat](resource-group-template-functions-string.md#concat)
-* [tartalmazza](resource-group-template-functions-string.md#contains)
+* [tartalmaz](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)
 * [dataUriToString](resource-group-template-functions-string.md#datauritostring)
 * [üres](resource-group-template-functions-string.md#empty)
-* [megadott módon végződő](resource-group-template-functions-string.md#endswith)
+* [endsWith](resource-group-template-functions-string.md#endswith)
 * [első](resource-group-template-functions-string.md#first)
 * [guid](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
@@ -210,7 +211,7 @@ Erőforrás-kezelő a következő funkciókat nyújt karakterláncok használata
 * [replace](resource-group-template-functions-string.md#replace)
 * [skip](resource-group-template-functions-string.md#skip)
 * [felosztás](resource-group-template-functions-string.md#split)
-* [startswith elemnek](resource-group-template-functions-string.md#startswith)
+* [startsWith](resource-group-template-functions-string.md#startswith)
 * [string](resource-group-template-functions-string.md#string)
 * [substring](resource-group-template-functions-string.md#substring)
 * [hajtsa végre a megfelelő](resource-group-template-functions-string.md#take)
@@ -224,6 +225,6 @@ Erőforrás-kezelő a következő funkciókat nyújt karakterláncok használata
 
 ## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md)
-* Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager eszközzel](resource-group-linked-templates.md)
-* Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példányát az Azure Resource Manager létrehozása](resource-group-create-multiple.md)
-* A sablon létrehozott központi telepítéséről, olvassa el [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md)
+* Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Managerrel](resource-group-linked-templates.md)
+* A megadott számú alkalommal újrafuttathatja egy adott típusú erőforrás létrehozásakor, lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md)
+* Ellenőrizze, hogyan helyezheti üzembe a létrehozott sablont, tekintse meg a [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md)

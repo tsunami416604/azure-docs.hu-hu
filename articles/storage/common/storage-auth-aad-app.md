@@ -3,17 +3,17 @@ title: Az Azure Active Directory hitelesítést blob és üzenetsor adatok elér
 description: Azure Active Directory használatával az alkalmazáson belül hitelesítéshez, és ezt engedélyezze az Azure Storage-erőforrások (előzetes verzió) kéréseket.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: tamram
-ms.openlocfilehash: f8c798307f27c5f96b15517e1f5bfb9d1762fec2
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.component: common
+ms.openlocfilehash: d065dd6db361c5c348713c6e1ceabe3a4c42c312
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506198"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577704"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Hitelesítés Azure Active Directoryval az Azure Storage-alkalmazás (előzetes verzió)
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan hitelesítést az alkalmazás konfigurálása az Azu
 
 Mielőtt egy rendszerbiztonsági tag hitelesítheti az Azure Storage-alkalmazás, konfigurálja a szerepköralapú hozzáférés-vezérlés (RBAC) beállításait, hogy a rendszerbiztonsági tag. Az Azure Storage határozza meg, amely magában foglalja a tárolók és a várólisták engedélyeit RBAC-szerepkörökhöz. Az RBAC szerepkör van rendelve egy rendszerbiztonsági tag, amikor a rendszerbiztonsági tag hozzáférést ennek az erőforrásnak. További információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) tárolási adatok](storage-auth-aad-rbac.md).
 
-Az OAuth 2.0 kód engedélyezési folyamatával áttekintését lásd: [hozzáférés engedélyezése az Azure Active Directory webes alkalmazásokhoz az OAuth 2.0-kód használatával adja meg a folyamat](../../active-directory/develop/active-directory-protocols-oauth-code.md).
+Az OAuth 2.0 kód engedélyezési folyamatával áttekintését lásd: [hozzáférés engedélyezése az Azure Active Directory webes alkalmazásokhoz az OAuth 2.0-kód használatával adja meg a folyamat](../../active-directory/develop/v1-protocols-oauth-code.md).
 
 > [!IMPORTANT]
 > Ebben az előzetes verzióban csak a nem éles használatra szolgál. Éles szolgáltatásiszint-szerződések (SLA) nem lesz elérhető, amíg az Azure AD integrálása az Azure Storage általánosan elérhető lett deklarálva. Ha az Azure AD-integrációs még nem támogatott a forgatókönyvnek, továbbra is használhatja a megosztott kulcsos engedélyezési vagy SAS-tokeneket az alkalmazásokban. Az előzetes verzióra vonatkozó további információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
@@ -34,7 +34,7 @@ Az OAuth 2.0 kód engedélyezési folyamatával áttekintését lásd: [hozzáf�
 
 Az első lépés az Azure AD-vel történő tárolási erőforrásokhoz való hozzáférés engedélyezésére az ügyfélalkalmazás regisztrál az Azure AD-bérlővel. Az alkalmazás regisztrálása lehetővé teszi, hogy, hogy az Azure meghívható [Active Directory Authentication Library](../../active-directory/active-directory-authentication-libraries.md) (ADAL) a kódból. Az ADAL API-alkalmazását az Azure ad-ben való hitelesítéshez használt biztosít. Az alkalmazás regisztrációja is lehetővé teszi, hogy engedélyezze a hívásokat az alkalmazásból az Azure Storage API-k egy hozzáférési jogkivonattal.
 
-Ha regisztrálja az alkalmazást, adja meg információkat az alkalmazásról, az Azure ad-hez. Az Azure AD majd biztosít egy ügyfél-azonosító (más néven egy *Alkalmazásazonosító*), hogy használhatja-e az alkalmazás társítása az Azure ad-vel futásidőben. Az ügyfél-azonosító kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../../active-directory/develop/active-directory-application-objects.md).
+Ha regisztrálja az alkalmazást, adja meg információkat az alkalmazásról, az Azure ad-hez. Az Azure AD majd biztosít egy ügyfél-azonosító (más néven egy *Alkalmazásazonosító*), hogy használhatja-e az alkalmazás társítása az Azure ad-vel futásidőben. Az ügyfél-azonosító kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../../active-directory/develop/app-objects-and-service-principals.md).
 
 Az Azure Storage-alkalmazás regisztrálásához kövesse a [egy alkalmazás hozzáadása](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) szakasz [alkalmazások integrálása az Azure Active Directory](../../active-directory/active-directory-integrating-applications.md). Natív alkalmazás regisztrálhatja alkalmazását, ha bármely érvényes URI-azonosítóját is megadhat a **átirányítási URI-t**. Az érték nem kell valódi végpontnak lennie.
 

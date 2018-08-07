@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/03/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1b5640b790b07050336a990a06b66e5f89fcf768
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 5a93a21c3884d742479bdd30417a846942cb1ed1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308609"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524090"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítés: Gyors útmutató
 
@@ -62,6 +62,7 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek.
     | --- | --- |
     | **80** | A visszavont tanúsítványok listájának (CRL) letölti az SSL-tanúsítvány érvényesítése közben |
     | **443** | Kezeli a szolgáltatással folytatott minden kimenő kommunikáció |
+    | **8080-as** (nem kötelező) | Hitelesítési ügynökök jelentik az állapotukat 8080,-as porton tíz percenként, ha a 443-as port nem érhető el. Ez az állapot az Azure AD portálon jelenik meg. 8080-as porton van _nem_ használt felhasználói bejelentkezéseket. |
    
     Ha a tűzfal szabályok alapján származó kikényszeríti, nyissa meg ezeket a portokat, a forgalom hálózati szolgáltatásként futó Windows-szolgáltatások.
    - Ha a tűzfal vagy proxy lehetővé teszi a DNS engedélyezéskor engedélyezett kapcsolatokat  **\*. msappproxy.net** és  **\*. servicebus.windows.net**. Való hozzáférés engedélyezése, ha nem, akkor a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653), amely hetente frissül.

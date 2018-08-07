@@ -1,62 +1,57 @@
 ---
-title: Eltérő eredetű erőforrások megosztása (CORS) támogatást |} Microsoft Docs
-description: Ismerje meg a CORS-támogatás engedélyezése a Microsoft Azure tárolási szolgáltatásokhoz.
+title: Eltérő eredetű erőforrások megosztása (CORS) támogatása |} A Microsoft Docs
+description: Ismerje meg a CORS-támogatásának engedélyezése a Microsoft Azure tárolási szolgáltatások.
 services: storage
-documentationcenter: .net
 author: cbrooksmsft
-manager: carmonm
-editor: tysonn
-ms.assetid: a0229595-5b64-4898-b8d6-fa2625ea6887
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: HT
+ms.component: common
+ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23873974"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39531557"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatások
-2013-08-15 verziójával kezdve az Azure storage szolgáltatások támogatja az eltérő eredetű erőforrások megosztása (CORS) a Blob, Table, várólista és fájl számára. A CORS az HTTP szolgáltatása: lehetővé teszi, hogy a webalkalmazás fut egy tartomány egy másik tartományban lévő erőforrások eléréséhez. Webböngészők néven ismert biztonsági korlátozások megvalósítása [azonos eredetű házirend](http://www.w3.org/Security/wiki/Same_Origin_Policy) , amely megakadályozza, hogy egy másik tartományban; hívási API-weblap A CORS engedélyezése tartománya (a forrástartomány) API-k hívására egy másik tartományban biztonságos lehetőséget biztosít. Tekintse meg a [CORS specification](http://www.w3.org/TR/cors/) CORS leírását.
+2013-08-15 verzióval kezdve, az Azure storage szolgáltatások támogatja az eltérő eredetű erőforrások megosztása (CORS) a Blob, Table, Queue és fájl szolgáltatások. A CORS egy HTTP-funkció, amely lehetővé teszi egy adott tartományban futó webes alkalmazás egy másik tartományban lévő erőforrások eléréséhez. Webböngészők néven ismert biztonsági korlátozással akadályozzák meg [azonoseredet-](http://www.w3.org/Security/wiki/Same_Origin_Policy) , amely megakadályozza, hogy egy weblap, egy másik tartományban; API-k A CORS biztonságos megoldást nyújt, hogy egy tartomány (a forrástartomány) API-k meghívása egy másik tartományban található. Tekintse meg a [CORS-specifikáció](http://www.w3.org/TR/cors/) CORS részleteiért.
 
-A CORS szabályainak beállítása külön-külön az egyes tárolási szolgáltatások meghívásával [Blob szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452235.aspx), [várólista-tulajdonságok beállítása](https://msdn.microsoft.com/library/hh452232.aspx), és [Table szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452240.aspx). Ha egyszer már megadta a CORS-szabályokat a szolgáltatáshoz, majd más tartományokból a szolgáltatásra szóló megfelelően hitelesített kérelem kiértékelendő annak meghatározásához, hogy a megadott szabályok szerint engedélyezett.
+Beállíthatja a CORS-szabályok külön-külön az egyes, a storage-szolgáltatás, meghívásával [állítsa Blob szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452235.aspx), [állítsa be a Queue szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452232.aspx), és [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx). Miután beállította a CORS-szabályok a szolgáltatáshoz, majd más tartományokból a szolgáltatás megfelelő engedéllyel rendelkező kérelem kiértékelendő meghatározni, hogy engedélyezett-e a megadott szabályok alapján.
 
 > [!NOTE]
-> Vegye figyelembe, hogy a CORS nem olyan hitelesítési módszert. Kérését a tároló egyik erőforrásához szemben ha engedélyezve van a CORS rendelkeznie kell a megfelelő hitelesítési aláírás, vagy egy nyilvános erőforrás elleni kell tenni.
+> Vegye figyelembe, hogy a CORS nem olyan hitelesítési mechanizmust. Bármely kérelem, tároló egyik erőforrásához társzolgáltatásokhoz, ha a CORS engedélyezve van a megfelelő hitelesítés aláírás rendelkeznie, vagy egy nyilvános erőforráson kell tenni.
 > 
 > 
 
-## <a name="understanding-cors-requests"></a>A CORS kérelmek ismertetése
-A CORS kérelem származási tartományból két külön kérelmet állhat:
+## <a name="understanding-cors-requests"></a>CORS-kérések ismertetése
+A CORS-kéréshez egy forrástartomány a két külön kérelmet állhat:
 
-* A elővizsgálati kérelmet, amely lekérdezi a CORS korlátozásai a szolgáltatást. Az ellenőrzési kérés szükség, ha a kérelem a módszer egy [egyszerű módszer](http://www.w3.org/TR/cors/), ami azt jelenti, GET, HEAD vagy POST.
-* A tényleges kérést, a kívánt erőforrás ellen.
+* Előzetes kérése, amely lekérdezi a CORS a szolgáltatás korlátozásai. Az ellenőrzési kérés megadása kötelező, kivéve, ha a kérelmi metódust egy [egyszerű módszer](http://www.w3.org/TR/cors/), ami azt jelenti, GET, HEAD vagy POST.
+* A tényleges kérést, szemben a kívánt erőforrást.
 
 ### <a name="preflight-request"></a>Ellenőrzési kérés
-Az ellenőrzési kérés lekérdezéseket a CORS-korlátozások, amely a fiók tulajdonosa által a társzolgáltatás létrehozva. A webböngésző (vagy egyéb felhasználói ügynök) küld, amely tartalmazza a kérelemfejléc, metódus és a forrás tartományi beállítások kérelmet. A tároló szolgáltatás értékeli ki a kívánt műveletet a CORS-szabályokat, amelyek adja meg, melyik eredettartományból, a kérelem metódusok és a kérelem fejlécében a tároló egyik erőforrásához egy tényleges kérelmet a adható meg előre beállított készlete alapján.
+Az ellenőrzési kérés lekérdezések a CORS-korlátozásokat, amelyeket a storage szolgáltatás a fiók tulajdonosa által létesített. A böngésző (vagy más felhasználói ügynök) küld, amely tartalmazza a kérelemfejlécek, metódust, és a forrás tartományi OPTIONS-kérést. A storage szolgáltatás értékeli ki a kívánt műveletet adja meg, melyik tartományt, a kérelem metódusok és a kérelemfejlécek megadható egy storage-erőforrások egy tényleges kérelmet a CORS-szabályok egy előre konfigurált készlete alapján.
 
-CORS engedélyezve van a szolgáltatáshoz, és van, amely megfelel az ellenőrzési kérés CORS szabály, ha a szolgáltatás válaszol, állapotkód: 200 (OK), és tartalmazza a szükséges hozzáférési fejlécek a válaszban.
+A CORS engedélyezve van a szolgáltatáshoz, és a CORS-szabály, amely megfelel az ellenőrzési kérelmet, ha a szolgáltatás reagál 200 (OK) állapotkódot, és tartalmazza a szükséges Access-Control fejléceket a válaszban.
 
-Ha a szolgáltatás számára nem engedélyezett a CORS, vagy nincs CORS szabály megegyezik az ellenőrzési kérés, a szolgáltatás válaszol, állapotkód: 403 (tiltott).
+Ha a szolgáltatás nincs engedélyezve a CORS, vagy a CORS-szabály sem illeszkedik az ellenőrzési kérelmet, a szolgáltatás válaszol 403 (tiltott) állapotkódot.
 
-Ha a beállítások kérelem nem tartalmazza a szükséges CORS fejléceket (a forrás- és hozzáférés-vezérlési-kérelem-metódus fejlécekkel együtt), a szolgáltatás válaszol, állapotkód: 400 (hibás kérés).
+Ha a beállítások kérelem nem tartalmazza a szükséges CORS fejléceket (a forrás- és hozzáférés-vezérlési-kérelmi metódus fejlécek), a szolgáltatás 400 (hibás kérés) állapotkódot válaszol.
 
-Vegye figyelembe, hogy az ellenőrzési kérés ki lesz értékelve a szolgáltatás (Blob, Queue és Table) és nem a kért erőforrás elleni. A fiók tulajdonosának kell engedélyezte a CORS ahhoz, hogy a kérelem sikeres fióktulajdonságok szolgáltatás részeként.
+Vegye figyelembe, hogy egy ellenőrzési kérés abban az esetben a szolgáltatás (Blob, Queue és Table) és nem a kért erőforrás ellen. A fiók tulajdonosa engedélyeznie kell a CORS ahhoz, hogy a kérelem sikeres fióktulajdonságokat szolgáltatás részeként.
 
 ### <a name="actual-request"></a>Tényleges kérelem
-Miután az ellenőrzés kérelem elfogadása, és a választ ad vissza, a böngésző csatolva az a tárolási erőforrások tényleges kérelmet. A böngésző megtagadja a tényleges azonnal kérése, ha az ellenőrzés vonatkozó kérés elutasítva.
+Miután az ellenőrzési kérelem elfogadása és a válasz, a böngésző csatolva az a tárolási erőforrások a tényleges kérelmet. A böngésző megtagadja a tényleges azonnal kérése, ha az ellenőrzési kérés elutasítása.
 
-A tényleges kérelmet a rendszer a társzolgáltatás normál kérelmet. A forrás-fejléc jelzi, hogy a kérelem CORS kérelmet, és a szolgáltatás ellenőrzi a megfelelő CORS-szabályokat. Ha a program egyezést talál, a hozzáférés-vezérlő fejlécekkel együtt a válaszhoz felvétele, illetve az ügyfélnek küldött. Nem található egyezés, ha a CORS hozzáférési fejlécek nem lehet megjeleníteni.
+A tényleges kérelem számít a storage szolgáltatás normál kérelmet. A forrás-fejléc jelzi, hogy a kérelem egy CORS-kérést, és a szolgáltatás ellenőrzi az egyező CORS-szabályokat. Ha van egyezés, az Access-Control fejléceket a válasz hozzá, és vissza az ügyfélnek küldött. Ha nincs egyezés, a hozzáférés-vezérlési CORS fejlécek nem adja vissza.
 
-## <a name="enabling-cors-for-the-azure-storage-services"></a>A CORS engedélyezése az Azure Storage szolgáltatás
-CORS-szabályokat úgy van beállítva, a szolgáltatás szintjén engedélyezhető vagy tiltható le a CORS az egyes szolgáltatásokhoz (Blob, várólista és tábla) kell külön-külön. A CORS minden egyes szolgáltatás alapértelmezés szerint le van tiltva. CORS engedélyezéséhez állítsa be a megfelelő szolgáltatásra tulajdonságokat verziójával 2013-08-15 kell vagy újabb verzióját, és adja hozzá a CORS-szabályokat a szolgáltatás tulajdonságai. Engedélyezheti vagy tilthatja le részletei CORS szolgáltatás és beállítása a CORS-szabályokat, tekintse meg [Blob szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452235.aspx), [várólista-tulajdonságok beállítása](https://msdn.microsoft.com/library/hh452232.aspx), és [Table szolgáltatás beállítása Tulajdonságok](https://msdn.microsoft.com/library/hh452240.aspx).
+## <a name="enabling-cors-for-the-azure-storage-services"></a>A CORS engedélyezése az Azure Storage-szolgáltatásokban
+CORS-szabályok a szolgáltatási szinten van beállítva, hogy engedélyezi vagy letiltja a CORS minden egyes szolgáltatás (Blob, Queue és Table) kell külön-külön. A CORS minden egyes szolgáltatás alapértelmezés szerint le van tiltva. Ahhoz, hogy a CORS, állítsa be a megfelelő szolgáltatási tulajdonságokat verziójával 2013-08-15 kell vagy újabb, és a CORS-szabályok hozzáadása a szolgáltatás tulajdonságait. Kapcsolatban, engedélyezni vagy letiltani a CORS egy szolgáltatás és a CORS-szabályok beállítása tekintse meg [állítsa Blob szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452235.aspx), [állítsa be a Queue szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452232.aspx), és [beállítása a Table Service Tulajdonságok](https://msdn.microsoft.com/library/hh452240.aspx).
 
-Itt látható egy minta egy CORS szabályt, a szolgáltatás tulajdonságainak beállítása művelet keresztül:
+Íme egy példa egy egyetlen CORS-szabály, egy szolgáltatás tulajdonságainak beállítása művelet keresztül megadott:
 
 ```xml
 <Cors>    
@@ -70,39 +65,39 @@ Itt látható egy minta egy CORS szabályt, a szolgáltatás tulajdonságainak b
 <Cors>
 ```
 
-A CORS szabályban foglalt egyes elemei az alábbiakban olvasható:
+Minden elem szerepel a CORS-szabály az alábbiakban olvasható:
 
-* **AllowedOrigins**: A eredettartományból, szemben a társzolgáltatás keresztül CORS kérés számára. A forrástartomány a tartományhoz, ahonnan a kérés származik. Vegye figyelembe, hogy a forrás a forrás, amely a felhasználói kora küld a szolgáltatásnak a kis-és nagybetűket pontosan egyeznie kell lennie. A helyettesítő karakter is használható ' *' minden eredettartományból kéréseket a CORS segítségével történő engedélyezéséhez. A fenti példában, a tartományok [ http://www.contoso.com ](http://www.contoso.com) és [ http://www.fabrikam.com ](http://www.fabrikam.com) kéréseiket a CORS használatával szolgáltatásra.
-* **AllowedMethods**: A (HTTP-kérelem műveletek) használó metódusok a forrástartomány előfordulhat, hogy a CORS-kérelemre. A fenti példában csak a PUT és a GET kérelmek engedélyezettek.
-* **AllowedHeaders**: A kérelem fejlécében, hogy a forrástartomány adhatnak meg a CORS kérésre. A fenti példában az x-ms-metaadatok, x-ms-metaadat-tároló és az x-ms-meta-abc kezdve minden metaadat fejléc engedélyezett. Vegye figyelembe, hogy a helyettesítő karakter "*" jelzi, hogy engedélyezve van-e a-tól kezdődően fejlécben megadott előtag.
-* **ExposedHeaders**: a CORS-kérelemre válaszként küldött és jelennek meg, ha a böngésző számára a kérelmet kibocsátó response fejlécekkel együtt. A fenti példában az a böngésző teszi közzé a-tól kezdődően fejléc x-ms-meta arra utasította.
-* **MaxAgeInSeconds**: kérése a maximális időt, hogy a böngésző kell gyorsítótárazza az ellenőrzési beállítások.
+* **AllowedOrigins**: A tartományt, amely egy kérelmet a storage szolgáltatás CORS használatával engedélyezett. A forrástartomány az a tartomány, ahonnan a kérés származik. Vegye figyelembe, hogy a forrás a forrás, amely a felhasználó betöltötte a szolgáltatás elküldi a pontos kis-és nagybetűket egyeznie kell. A helyettesítő karakter is használható ' *', hogy minden eredettartományból kéréseit a CORS használatával. A fenti példában, a tartományok [ http://www.contoso.com ](http://www.contoso.com) és [ http://www.fabrikam.com ](http://www.fabrikam.com) teheti a CORS használatával szolgáltatásra irányuló kérések.
+* **AllowedMethods**: metódusok (HTTP-kéréssel kapcsolatos műveletek), amely a forrástartomány használhat egy CORS-kéréshez. A fenti példában csak a PUT és a GET kérelmek engedélyezettek.
+* **AllowedHeaders**: A kérelem fejlécében, hogy a forrástartomány előfordulhat, hogy a CORS-kéréshez adjon meg. A fenti példában x-ms-metaadatok, x-ms-meta-célként, és az x-ms-meta-abc kezdve minden metaadat fejlécek használata engedélyezett. Vegye figyelembe, hogy a helyettesítő karaktert ' *' jelzi, hogy engedélyezve van-e bármilyen fejlécet elején a megadott előtaggal.
+* **ExposedHeaders**: válaszfejlécek, melyeket a CORS-kérelemre válaszul és amelyeket a böngésző megjeleníthet a kérelem kibocsátója. A fenti példában a böngésző mentenie bármely x-ms-metaadat-fejléc kezdődő elérhetővé.
+* **MaxAgeInSeconds**: kérése legfeljebb ennyi ideig, hogy a böngésző gyorsítótárazza az előzetes OPTIONS.
 
-Az Azure storage szolgáltatásainak megadását oszloplistájában fejlécek támogatja mind a **AllowedHeaders** és **ExposedHeaders** elemek. Ahhoz, hogy egy kategóriát a fejlécek, egy közös kategória-előtagot is megadhat. Például megadó *x-ms-meta** oszloplistájában fejléc alapján lesznek meghatározva azok egy szabályt, amely az összes fejléc x-ms-meta kezdődő fog egyezni.
+Az Azure storage szolgáltatások esetében is támogatja a késleltetve előtaggal ellátott fejléc adható a **AllowedHeaders** és **ExposedHeaders** elemeket. Ahhoz, hogy egy kategóriát a fejlécek, egy adott kategória közös előtagot is megadhat. Például megadása *x-ms-meta** szerint előtaggal ellátott fejléc hoz létre egy szabályt, amely az x-ms-meta kezdődő összes fejléc esetében egyezést fog.
 
-CORS-szabályokat a következő korlátozások vonatkoznak:
+CORS-szabályok a következő korlátozások vonatkoznak:
 
-* Tárolási szolgáltatás (Blob, Table és Queue) esetében legfeljebb öt CORS-szabályokat is megadhat.
-* Összes CORS szabályok beállítása a kérés XML-címkék nélkül maximális mérete legfeljebb 2 KB lehet.
-* Egy engedélyezett fejléc, kitett fejléc vagy eredet engedélyezett hosszát nem lehet hosszabb 256 karakternél.
-* Megengedett fejlécek és elérhetőségi fejlécek lehetnek:
-  * Literális fejlécek, ahol a pontos fejlécnév valósul meg, például a **x-ms-meta-feldolgozott**. A kérésre egy legfeljebb 64 literális fejlécek adható meg.
-  * Fejlécek, ahol a fejléc előtag valósul meg, például a következő előtaggal ** x-ms-meta-data x. Adja meg a előtag ily módon lehetővé teszi, és elérhetővé teszi a fejlécet, amely a megadott előtaggal kezdődik. A kérésre legfeljebb két oszloplistájában fejléc adható meg.
-* A módszerek (vagy a HTTP-műveletek) szerepel a **AllowedMethods** elemet meg kell felelnie az Azure storage szolgáltatás API-k által támogatott módszerek. Támogatott módszereket törlése, GET, HEAD, egyesítési, POST, beállítások és a PUT.
+* Storage-szolgáltatás (Blob, Table és Queue) legfeljebb öt CORS-szabályokat is megadhat.
+* Az összes CORS-szabályok beállításait a kérés XML-címkék, kivéve a maximális mérete legfeljebb 2 KB.
+* Egy engedélyezett fejléc, közzétett fejléc vagy engedélyezett származási hossza legfeljebb 256 karakter.
+* Engedélyezett fejlécek és közzétett fejlécek lehetnek:
+  * Szövegkonstans fejlécek, ahol a pontos fejlécnév áll rendelkezésre, mint például **x-ms-meta – feldolgozott**. Egy legfeljebb 64 szövegkonstans fejlécek a kérésben adható meg.
+  * A fejlécek, ahol a fejléc előtag áll rendelkezésre, például a következő előtaggal ** x-ms-meta-data x. Ily módon előtag megadása lehetővé teszi, vagy tesz közzé bármilyen fejlécet, amely a megadott előtaggal kezdődik. Legfeljebb két előtaggal ellátott fejléc adható meg a kérés adható meg.
+* A megadott metódusok (vagy HTTP-műveletek) a **AllowedMethods** elemet meg kell felelnie az Azure storage szolgáltatás API-k által támogatott módszerek. Támogatott módszerek állnak a DELETE, GET, HEAD, EGYESÍTÉS, POST, beállítások és PUT.
 
-## <a name="understanding-cors-rule-evaluation-logic"></a>CORS értékelési szabálylogikával ismertetése
-Egy tároló szolgáltatás előzetes vagy tényleges kérelmet kap, ha a kérésre a CORS-szabályokat a szolgáltatás a megfelelő szolgáltatás tulajdonságainak beállítása művelet keresztül létesítése alapján értékeli ki. CORS-szabályokat, amelyben a kérés törzsében a szolgáltatás tulajdonságainak beállítása művelet voltak beállítva sorrendben értékeli ki a rendszer.
+## <a name="understanding-cors-rule-evaluation-logic"></a>CORS-szabály kiértékelési logika ismertetése
+A storage szolgáltatás előzetes vagy tényleges kérelmet kap, amikor a kérést a szolgáltatás a megfelelő szolgáltatás tulajdonságainak beállítása művelet keresztül létrehozta a CORS-szabályok alapján értékeli ki. CORS-szabályok, amelyben voltak beállítva a szolgáltatás tulajdonságainak beállítása művelet a kérelem törzsében szereplő sorrendben értékeli ki.
 
-CORS-szabályokat az alábbiak szerint értékeli:
+CORS-szabályok a következők szerint értékeli:
 
-1. Először a kérelem a forrástartomány felsorolt tartományok összeveti a **AllowedOrigins** elemet. Ha a forrástartomány szerepel a listában, vagy minden engedélyezett és a helyettesítő karakter "*", majd a kiértékelési hibákra vonatkozó szabályokat. Ha a forrástartomány nincs megadva, akkor a kérelem sikertelen lesz.
-2. A következő a kérelem metódus (vagy HTTP-műveletet) ellenőrizi módszert a **AllowedMethods** elemet. Ha a metódus szerepel a listában, majd szabályok értékelésének folytatja; Ha nem, akkor a kérés nem teljesíthető.
-3. Ha a kérelem megfelel egy szabályt a forrástartomány és az metódust, ez a szabály feldolgozni a kérelmet, és nincsenek további szabályok kiértékelése az van kiválasztva. Mielőtt a kérelem sikeres, azonban a kérésben megadott fejléc veti össze a fejlécek szerepelnek a **AllowedHeaders** elemet. Ha az elküldött fejlécek nem egyezik a megengedett fejlécek, a kérelem sikertelen lesz.
+1. Először is be van jelölve a kérelem a forrástartomány ellen a felsorolt tartományok a **AllowedOrigins** elemet. Ha a forrástartomány szerepel a listában, vagy minden tartomány és a helyettesítő karakter engedélyezett "*", majd szabályok kiértékelése telepítése folytatódik. Ha a forrástartomány lehetőség nem része, akkor a kérelem sikertelen lesz.
+2. Ezután a metódus (vagy a HTTP-műveletet) a kérés a rendszer összeveti a felsorolt módszerek a **AllowedMethods** elemet. Ha a metódus szerepel a listában, majd szabályok kiértékelése folytatódik; Ha nem, akkor a kérelem sikertelen lesz.
+3. A kérelem megfelel valamelyik szabálynak a forrástartomány és a módszert, ha ez a szabály a kérelmet, és nincsenek további szabályok kiértékelése folyamatban van kiválasztva. Mielőtt a kérelem sikeres, azonban a kérésben megadott fejlécek veti össze a felsorolt fejlécek a **AllowedHeaders** elemet. Ha a küldött fejlécek nem egyezik az engedélyezett fejlécek, a kérelem sikertelen lesz.
 
-Mivel a szabályok feldolgozása a ahhoz, azok a kérés törzsében szerepelnek, a bevált gyakorlat része, hogy a szigorúbb szabályok források először meg a listában, hogy ezek értékeli ki a rendszer először. Adja meg a szabályokat, amelyek kevésbé korlátozó – például egy szabályt, amely engedélyezi az összes források – a lista végére.
+Mivel ezek meg adva, a kérelem törzsében szereplő sorrendben dolgozzák fel a szabályokat, a bevált gyakorlat, hogy a legszigorúbb szabályokat megállapodást források először meg a listában, hogy ezek a először értékeli. Adja meg a szabályokat, amelyek kevésbé korlátozó – például egy szabályt, amely engedélyezi az összes forrás – a lista végén.
 
-### <a name="example--cors-rules-evaluation"></a>Példa – CORS szabályok kiértékelése
-A következő példa bemutatja a tárolási szolgáltatások CORS-szabályokat állíthat be a művelet egy részleges kérés törzsében. Lásd: [Blob szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452235.aspx), [várólista-tulajdonságok beállítása](https://msdn.microsoft.com/library/hh452232.aspx), és [Table szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452240.aspx) talál részletes információt hozhat létre a kérelmet.
+### <a name="example--cors-rules-evaluation"></a>Példa – CORS-szabályok kiértékelése
+Az alábbi példa bemutatja a tárolási szolgáltatások CORS-szabályainak beállítása a művelet egy részleges kérelem törzsében. Lásd: [állítsa Blob szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452235.aspx), [állítsa be a Queue szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452232.aspx), és [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx) hozhat létre, a kérelem részleteiért.
 
 ```xml
 <Cors>
@@ -130,45 +125,45 @@ A következő példa bemutatja a tárolási szolgáltatások CORS-szabályokat �
 </Cors>
 ```
 
-Ezt követően vegye figyelembe a következő CORS kérelmeket:
+Ezután vegye figyelembe a következő CORS-kérések:
 
 | Kérés |  |  | Válasz |  |
 | --- | --- | --- | --- | --- |
-| **Módszer** |**Forrás** |**Kérelem fejlécei** |**A szabály egyezés** |**eredménye** |
+| **Metódus** |**Forrás** |**Kérelem fejlécei** |**A szabály egyezés** |**Eredmény** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |Első szabály |Sikeres |
 | **GET** |http://www.contoso.com |x-ms-blob-content-type |Második szabály |Sikeres |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |Második szabály |Hiba |
 
-Az első kérelem megfelel az első szabály – a forrástartomány megegyezik az engedélyezett eredetet, a metódus felel meg az engedélyezett metódusok és a fejléc megegyezik az engedélyezett fejlécek – és így sikeres lesz.
+Az első kérelem megegyezik az első szabály – a forrástartomány megegyezik az engedélyezett eredetek, a metódus felel meg az engedélyezett metódusok és a fejléc megegyezik az engedélyezett fejlécek – és így sikeres.
 
-A második kérelem nem egyezik az első szabály, mert a metódus nem egyezik meg az engedélyezett metódusok. Azonban egyezik a második szabálynak, így ez sikeres.
+A második kérés nem egyezik az első szabály, mert a módszer nem egyezik meg az engedélyezett metódusok. Azt, azonban felel meg a második szabálynak, így azt.
 
-A harmadik kérelem megfelel a forrástartomány és metódus, a második szabálynak, így nincsenek további szabályok kiértékelése. Azonban a *x-ms-client-request-id fejléc* nem engedélyezett a második szabály, ezért a kérelem sikertelen lesz, annak ellenére, hogy a harmadik szabály szemantikáját használhatott volna sikeres.
+A harmadik kérelem megegyezik a forrástartomány és módot, a második szabálynak, így nincsenek további szabályok kiértékelése. Azonban a *x-ms-client-request-id fejléccel* nem engedélyezi a második szabálynak, ezért a kérelem meghiúsul, annak ellenére, hogy a harmadik szabály szemantikáját használhatott volna sikeres.
 
 > [!NOTE]
-> Bár ez a példa bemutatja egy kevésbé korlátozó szabály szigorúbb egy előtt, az ajánlott eljárás általában listázásához először a szigorúbb szabályokat.
+> Bár ez a példa bemutatja egy kevésbé korlátozó szabály szigorúbb egy előtt, általánosságban az ajánlott eljárás az első listában a legszigorúbb szabályokat.
 > 
 > 
 
-## <a name="understanding-how-the-vary-header-is-set"></a>Hogyan van beállítva a Vary fejléce ismertetése
-A *Vary* fejléc olyan készlete, amely tájékoztatja a böngésző vagy a felhasználói ügynök a feltételeket, amelyek a kérelem feldolgozása a kiszolgáló által kiválasztott vonatkozó kérelem fejlécmezők álló szabványos HTTP/1.1 fejléc. A *Vary* fejléc főleg a gyorsítótárazáshoz proxyk, a böngésző támogatja, és a tartalomtovábbító, amelyek segítségével határozza meg, hogyan kell gyorsítótárazza a választ. További információkért lásd: a előírása a [Vary fejléce](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+## <a name="understanding-how-the-vary-header-is-set"></a>Hogyan van beállítva a változtatás fejléc ismertetése
+A *változtatás* fejléc kérés üzenetfejlécének mezői, amely a böngészőben vagy a felhasználói ügynök a feltételeket, amelyek a kérelem feldolgozását a kiszolgáló által kiválasztott kapcsolatos tanácsadás, amely szabványos HTTP/1.1 fejléc. A *változtatás* fejléc főleg proxyk, a böngésző és a CDN, amelyek segítségével határozza meg, hogyan érdemes gyorsítótárazni a válasz-gyorsítótárazás használható. További információkért lásd: a-specifikációt az [változtatás fejléc](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 
-A böngésző vagy egy másik felhasználói ügynök gyorsítótárazza a CORS kérelmet kapott válasz, ha a forrástartomány gyorsítótárazza, mint az engedélyezett forrása. Ha a második tartomány ki a tároló-erőforrások esetében a kérésben, amíg a gyorsítótár aktív, a felhasználói ügynök lekéri a gyorsítótárazott forrástartományt. A második tartománya nem felel meg a gyorsítótárazott tartományifiók, ezért a kérelem sikertelen lesz, ha más módon járnak. Bizonyos esetekben az Azure Storage állítja be a Vary fejléce **származási** arra utasítani a felhasználói ügynök CORS kérést küld a szolgáltatást, amikor a kérést küldő tartomány eltér a gyorsítótárazott forrás.
+Ha a böngészőben vagy egy másik felhasználói ügynök gyorsítótárazza a CORS-kérést kapott választ, a forrástartomány engedélyezett származási gyorsítótárazza. Ha egy másik tartomány kiad egy tárolási erőforrás a kérésben, amíg a gyorsítótár nem aktív, a felhasználói ügynök a gyorsítótárazott forrástartomány kérdezi le. A második tartomány nem felel meg a gyorsítótárazott tartományban, ezért a kérelem meghiúsul, ha egyébként járnak. Bizonyos esetekben az Azure Storage állítja be a változtatás fejléc **forrás** arra utasítani a felhasználói ügynököt az ezt követő CORS kérést küldhet a szolgáltatás, ha a kérelmező tartomány eltér a gyorsítótárazott forrás.
 
-Az Azure Storage-készletek a *Vary* fejlécének **származási** a tényleges GET vagy HEAD kérelem a következő esetekben:
+Az Azure Storage-csoportok a *változtatás* fejlécet **forrás** tényleges GET/HEAD-kérések a következő esetekben:
 
-* Ha a kérelem származási pontosan megegyezik az engedélyezett forrása a CORS szabály szerint. Pontosan egyeznie kell a CORS szabály nem tartalmazhatnak meg a helyettesítő karakter "*" karaktert.
-* Nincs a kérelem származási egyező szabály, de a CORS engedélyezve van a tároló szolgáltatást.
+* Ha a kérelem származási pontosan megegyezik a CORS-szabály által meghatározott engedélyezett forrás. Pontosan egyeznie kell a CORS-szabály nem feltétlenül tartalmazzák a helyettesítő karakter "*" karaktert.
+* Nincs szabály, a kérelem származási megfelelő, de a CORS engedélyezve van a storage szolgáltatás.
 
-Abban az esetben, ha egy GET vagy HEAD kérelem megfelel-e a CORS szabályt, amely lehetővé teszi, hogy minden eredet a válasz azt jelzi, hogy minden eredet engedélyezett, a felhasználói ügynök gyorsítótár lehetővé teszi bármely forrástartományt érkező későbbi kérelmeket, amíg a gyorsítótár aktív.
+A helyzet, ha a GET/HEAD-kérések megegyezik a CORS-szabály, amely lehetővé teszi az összes forrás a válasz azt jelzi, hogy minden eredet engedélyezett, és a felhasználói ügynök gyorsítótárának lehetővé teszi bármely forrástartomány érkező későbbi kérelmeket, amíg a gyorsítótár nem aktív.
 
-Vegye figyelembe, hogy a módszerekkel nem GET vagy HEAD kérelmek, a tárolási szolgáltatások nem állítja be a Vary fejléce, mivel ezek a módszerek válaszokat nem gyorsítótárazzák a felhasználói ügynök.
+Vegye figyelembe, hogy lépéseire GET/HEAD-kérések számára, a tárolási szolgáltatások nincs beállítva a változtatás fejléc, mivel felhasználói ügynökök által nem gyorsítótárazott válaszokat ezen metódusok meghívásához.
 
-Az alábbi táblázat tartalmazza az Azure storage a korábban említett eset alapján GET vagy HEAD kérésére válaszolni fog:
+Az alábbi táblázat azt jelzi, hogy az Azure storage GET/HEAD-kérések a korábban említett esetek alapján fog válaszolni:
 
-| Kérés | Fiók beállítás és a szabály kiértékelés eredménye |  |  | Válasz |  |  |
+| Kérés | Fiók beállítását és a szabály kiértékelés eredménye |  |  | Válasz |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Megtalálható a kérelem származási fejléc** |**Ez a szolgáltatás számára megadott CORS szabályok** |**Létezik egyező szabály, amely lehetővé teszi az összes origins(*)** |**Létezik egyező szabály forrás pontos egyezés** |**Válasz Vary fejléce forrás beállítása tartalmazza** |**Válasz tartalmazza a hozzáférés-vezérlési-engedélyezett-forrása: "*"** |**Válasz tartalmazza a hozzáférés-vezérlési-kitett-fejlécek** |
+| **Jelen a kérelem származási fejléc** |**Ez a szolgáltatás számára megadott CORS-szabály** |**Egyeztetési szabályt, amely lehetővé teszi az összes origins(*) létezik** |**Egyező szabálya létezik forrás pontos egyezés** |**Válasz tartalmazza a változtatás fejléc forrás beállítása** |**Válasz tartalmazza a hozzáférés-vezérlés – engedélyezett-forrás: "*"** |**Válasz tartalmazza a hozzáférés-vezérlési-elérhetővé tett – fejlécek** |
 | Nem |Nem |Nem |Nem |Nem |Nem |Nem |
 | Nem |Igen |Nem |Nem |Igen |Nem |Nem |
 | Nem |Igen |Igen |Nem |Nem |Igen |Igen |
@@ -177,17 +172,17 @@ Az alábbi táblázat tartalmazza az Azure storage a korábban említett eset al
 | Igen |Igen |Nem |Nem |Igen |Nem |Nem |
 | Igen |Igen |Igen |Nem |Nem |Igen |Igen |
 
-## <a name="billing-for-cors-requests"></a>A CORS kérelmek számlázási
-Sikeres ellenőrzés kéri, ha engedélyezte a fiók a tárolási szolgáltatások bármelyikéhez CORS számlázása (meghívásával [Blob szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452235.aspx), [várólista-tulajdonságok beállítása](https://msdn.microsoft.com/library/hh452232.aspx), vagy [Tábla szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452240.aspx)). Költségek minimalizálása érdekében fontolja meg a beállítás a **MaxAgeInSeconds** eleme a CORS-szabályok nagy értéket, hogy a felhasználói ügynök gyorsítótárazza a kérelmet.
+## <a name="billing-for-cors-requests"></a>CORS-kérések díjszabása
+Sikeres ellenőrzés kérelmek számítjuk fel, ha engedélyezte a tárolási szolgáltatások, a fiók CORS (meghívásával [állítsa Blob szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452235.aspx), [állítsa be a Queue szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452232.aspx), vagy [Table Service tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452240.aspx)). Költségek minimalizálása érdekében érdemes lehet a **MaxAgeInSeconds** eleme a CORS szabályok nagy értéket úgy, hogy a felhasználói ügynök gyorsítótárazza a kérelmet.
 
-Sikertelen ellenőrzés kérelmek nem lesz terhelve.
+Sikertelen ellenőrzés kérelmek nem számítjuk fel.
 
 ## <a name="next-steps"></a>További lépések
-[Blob szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452235.aspx)
+[Blob szolgáltatás tulajdonságainak megadása](https://msdn.microsoft.com/library/hh452235.aspx)
 
-[Várólista-szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452232.aspx)
+[Queue szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452232.aspx)
 
-[Table szolgáltatás tulajdonságainak beállítása](https://msdn.microsoft.com/library/hh452240.aspx)
+[Table Service tulajdonságainak megadása](https://msdn.microsoft.com/library/hh452240.aspx)
 
-[W3C eltérő eredetű erőforrások megosztása meghatározása](http://www.w3.org/TR/cors/)
+[W3C eltérő eredetű erőforrások megosztása specifikáció](http://www.w3.org/TR/cors/)
 

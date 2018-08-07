@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/03/2018
 ms.author: carlrab
-ms.openlocfilehash: 51facd32fd7dbffe39fd959b0c8e9321d04657e0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 8ddeedcde142a01cca9efa79ab08029aec798ceb
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412379"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525290"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások skálázása az Azure SQL Database-ben
 
@@ -23,7 +23,7 @@ Ez a cikk ismerteti a számítási és tárolási erőforrások, elérhető egy 
 ## <a name="vcore-based-purchasing-model-change-storage-size"></a>Virtuálismag-alapú vásárlási modell: tároló méretének módosítása
 
 - Tárolók kiépítésével legfeljebb 1 GB-onként növelhető tárhelyet használ a maximális méretkorlátot. A minimális konfigurálható adattárolási az 5GB 
-- Önálló adatbázis tárolási növelésével vagy csökkentésével, a maximális méret használatával helyezhetők a [az Azure portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [Az azure CLI](/cli/azure/sql/db#az_sql_db_update), vagy a [REST API-val](/rest/api/sql/databases/update).
+- Önálló adatbázis tárolási növelésével vagy csökkentésével, a maximális méret használatával helyezhetők a [az Azure portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql?r#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [Az azure CLI](/cli/azure/sql/db#az_sql_db_update), vagy a [REST API-val](/rest/api/sql/databases/update).
 - Az SQL Database automatikusan foglalja le a 30 %-a további tárhely a naplófájlok és 32GB / virtuális mag a TempDB, de nem haladhatja meg a 384GB. A TempDB található minden szolgáltatásszinten csatlakoztatott SSD-t.
 - A szolgáltatás összege adatok tárolási és a naplófájlok tárolási megszorozza a szolgáltatási rétegben tárolási egységára egy önálló adatbázis tárolási díja. A TempDB adatbázis költségét a virtuális mag díja tartalmazza. Az extra tárterület ára a részletekért lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 

@@ -2,24 +2,18 @@
 title: Az Azure Files használata Linuxszal |} A Microsoft Docs
 description: 'Útmutató: Azure-fájlmegosztás csatlakoztatása SMB-n keresztül Linux rendszeren.'
 services: storage
-documentationcenter: na
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: 6edc37ce-698f-4d50-8fc1-591ad456175d
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: eda06fbb63352dd71cb0183ebdf683dc2f3a4a4c
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.component: files
+ms.openlocfilehash: 89343f3e4ec91dd32b24cdea6632cecd855cc6f8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413841"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523223"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linuxszal
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Azure-fájlmegosztások használatával Linux-disztribúciók csatlakoztathatók a [SMB-kernel ügyfél](https://wiki.samba.org/index.php/LinuxCIFS). Ez a cikk bemutatja az Azure-fájlmegosztások csatlakoztatására kétféleképpen: az igény a `mount` paranccsal, és a rendszerindítási bejegyzés létrehozásával `/etc/fstab`.

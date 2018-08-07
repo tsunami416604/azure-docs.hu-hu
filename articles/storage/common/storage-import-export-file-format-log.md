@@ -1,57 +1,51 @@
 ---
-title: Az Azure Import/Export naplófájlformátum |} Microsoft Docs
-description: További információk a lépéseket az Import/Export szolgáltatás feladat végrehajtásakor létrehozott naplófájlok formátuma.
+title: Az Azure Import/Export-naplófájlformátum |} A Microsoft Docs
+description: Ismerje meg a lépéseket az Import/Export szolgáltatás feladat végrehajtásakor létrehozott naplófájlokat formátumát.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874100"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525518"
 ---
-# <a name="azure-importexport-service-log-file-format"></a>Az Azure Import/Export szolgáltatás naplófájlformátum
-Amikor a Microsoft Azure Import/Export szolgáltatás hajt végre, az importálási feladat vagy exportálási feladat részeként egy műveletet a meghajtón, írja a naplókat, hogy a feladathoz kapcsolódó tárfiókban blokkblobokat.  
+# <a name="azure-importexport-service-log-file-format"></a>Az Azure Import/Export szolgáltatás naplófájljainak formátuma
+Ha a Microsoft Azure Import/Export szolgáltatás végrehajt egy műveletet az importálási feladat vagy exportálási feladat részeként egy meghajtón, naplók írja a blokkblobok az adott feladathoz társított storage-fiókban.  
   
-Az Import/Export szolgáltatás írható két naplók van:  
+Nincsenek két naplók írhatók az importálási/exportálási szolgáltatás:  
   
--   A hibanapló hiba esetén mindig létrejön.  
+-   Hiba esetén mindig jön létre a hibanaplót.  
   
--   A részletes naplózás alapértelmezés szerint nincs engedélyezve, de úgy, hogy engedélyezhető a `EnableVerboseLog` tulajdonságának egy [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) vagy [frissítés Feladattulajdonság](/rest/api/storageimportexport/jobs#Jobs_Update) műveletet.  
+-   A részletes napló alapértelmezés szerint nincs engedélyezve, de előfordulhat, hogy legyen engedélyezett, ha a `EnableVerboseLog` tulajdonsága egy [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) vagy [feladat tulajdonságainak](/rest/api/storageimportexport/jobs#Jobs_Update) műveletet.  
   
 ## <a name="log-file-location"></a>Naplófájl helye  
-A naplók írni a tároló vagy a megadott virtuális könyvtár blokkblobokat a `ImportExportStatesPath` beállítás, amely állíthat be egy `Put Job` műveletet. A helyet, amelyhez a naplók írt, attól függ, hogyan hitelesítés van megadva, a feladat a megadott együtt `ImportExportStatesPath`. A feladat hitelesítési a tárfiók kulcsa, vagy a tároló SAS (közös hozzáférésű jogosultságkód) keresztül adható meg.  
+A naplók a tároló vagy a megadott virtuális könyvtár blokkblobok írt a `ImportExportStatesPath` beállítást, amellyel megadhatja azt a `Put Job` műveletet. A hely, amelyhez a naplók írt függ a hitelesítés hogyan van megadva a feladat a megadott együtt `ImportExportStatesPath`. A feladat hitelesítési tárfiókkulcs vagy a tároló SAS (közös hozzáférésű jogosultságkód) lehet megadni.  
   
-A tároló vagy a virtuális könyvtár neve lehet, hogy vagy az alapértelmezett nevet: kell `waimportexport`, vagy egy másik tárolóhoz vagy a megadott virtuális könyvtár neve.  
+A tároló vagy a virtuális könyvtár neve lehet vagy kell alapértelmezett neve `waimportexport`, vagy egy másik tároló vagy a megadott virtuális könyvtár neve.  
   
-Az alábbi táblázatban a lehetséges beállítások:  
+Az alábbi táblázat a lehetséges beállítások:  
   
-|Hitelesítési módszer|Az érték `ImportExportStatesPath`elem|Blobok napló helye|  
+|Hitelesítési módszer|Hodnota `ImportExportStatesPath`elem|A naplózási Blobok helye|  
 |---------------------------|----------------------------------------------|---------------------------|  
-|Tárfiók kulcsa|Alapértelmezett érték|Nevű tárolót `waimportexport`, amely egy, az alapértelmezett tároló. Példa:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
-|Tárfiók kulcsa|A felhasználó által megadott érték|A felhasználó által nevű tárolót. Példa:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
-|A tároló SAS|Alapértelmezett érték|Nevű virtuális könyvtár `waimportexport`, amely az alapértelmezett nevet, a biztonsági Társítások megadott tároló alatt.<br /><br /> Például, ha a megadott SAS a folyamat `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, akkor válassza a napló helye`https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
-|A tároló SAS|A felhasználó által megadott érték|A felhasználó, a biztonsági Társítások megadott tároló alatt nevű virtuális könyvtárat.<br /><br /> Például, ha a megadott SAS a folyamat `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, és a megadott virtuális könyvtár neve `mylogblobs`, akkor válassza a napló helyét `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
+|Tárfiók kulcsa|Alapértelmezett érték|Nevű tárolóban `waimportexport`, azaz az alapértelmezett tároló. Példa:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
+|Tárfiók kulcsa|Felhasználó által megadott értéket|A felhasználó által nevű tárolóban. Példa:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
+|Tároló SAS|Alapértelmezett érték|Nevű virtuális könyvtár `waimportexport`, amely az alapértelmezett nevet, a tároló SAS megadott alatt.<br /><br /> Például, ha a megadott SAS a feladat van `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, akkor válassza a napló helye `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
+|Tároló SAS|Felhasználó által megadott értéket|A felhasználó, a tároló SAS megadott alatt nevű virtuális könyvtárat.<br /><br /> Például, ha a megadott SAS a feladat van `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, és a megadott virtuális könyvtár neve `mylogblobs`, majd a napló helye lesz `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
-Az URL-címet a hibaüzeneteket és részletes naplókat meghívásával kérheti le a [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. A naplók a meghajtó feldolgozás befejezése után érhetők el.  
+Meghívásával kérheti le a hibát, és a részletes naplók URL-CÍMÉT a [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. A naplók a meghajtó feldolgozás befejeződése után érhetők el.  
   
 ## <a name="log-file-format"></a>Naplófájlformátum  
-Mindkét napló formátuma megegyezik: blobok a merevlemez-meghajtóról, és a felhasználói fiókhoz közötti másolás közben előforduló eseményeket XML leírását tartalmazó blob.  
+Mindkét napló formátuma megegyezik: az események között a merevlemez és a felhasználói fiókhoz blobok másolása közben fellépő XML leírását tartalmazó blob.  
   
-A részletes naplózás minden egyes blob (hogy az importálás) vagy a fájlt (exportálási feladat), a másolási művelet állapotára vonatkozó részletes adatokat tartalmaz, mivel a hibanapló csak blobok vagy hibákat észlelt az importálási vagy exportálási feladat során fájlok adatait tartalmazza.  
+A részletes napló a másolási művelet minden egyes blob (az importálási feladat) vagy a fájlt (exportálási feladat), az állapot teljes körű információkat tartalmaz, mivel a hibanapló csak a blobok vagy hibákat észlelt az importálás során fájlok adatait tartalmazza, vagy exportálási feladat.  
   
-A részletes napló formátuma alább látható. A hibanapló hasonló struktúrával rendelkezik, de sikeres műveletek kiszűri.  
+A részletes napló formátuma alább látható. A hibanapló ugyanazzal a struktúrával rendelkezik, de kiszűri a sikeres műveletek.  
 
 ```xml
 <DriveLog Version="2014-11-01">  
@@ -105,162 +99,162 @@ properties-status ::=
 </Properties>  
 ```
 
-A következő táblázat ismerteti a naplófájl az elemek.  
+A következő táblázat ismerteti az elemek a naplófájl.  
   
-|XML-elem.|Típus|Leírás|  
+|XML-elem|Típus|Leírás|  
 |-----------------|----------|-----------------|  
-|`DriveLog`|XML-elem.|A meghajtó napló jelöli.|  
-|`Version`|Attribútum, karakterlánc|A naplófájl formátumának verziója.|  
-|`DriveId`|Karakterlánc|A meghajtó hardver sorozatszáma.|  
-|`Status`|Karakterlánc|A meghajtó feldolgozási állapotát. Tekintse meg a `Drive Status Codes` tábla alább olvashat.|  
-|`Blob`|Beágyazott XML-elem.|Egy blob jelöli.|  
-|`Blob/BlobPath`|Karakterlánc|A BLOB URI.|  
-|`Blob/FilePath`|Karakterlánc|A meghajtón a fájl relatív elérési útja.|  
-|`Blob/Snapshot`|Dátum és idő|A blob exportálási feladat csak a pillanatfelvétel-verzió.|  
-|`Blob/Length`|Egész szám|A teljes hossza a blob bájtban.|  
-|`Blob/LastModified`|Dátum és idő|A dátum/idő, amelyet a blob, csak az exportálási feladat.|  
-|`Blob/ImportDisposition`|Karakterlánc|A blob, hogy az importálás csak importálási rendezése.|  
-|`Blob/ImportDisposition/@Status`|Attribútum, karakterlánc|Az importálás törlése állapota.|  
-|`PageRangeList`|Beágyazott XML-elem.|Az oldalakra vonatkozó blob tartományokat listáját jelöli.|  
-|`PageRange`|XML-elem.|Egy laptartomány jelöli.|  
-|`PageRange/@Offset`|Attribútum, egész szám|A BLOB a laptartomány kezdő eltolása.|  
-|`PageRange/@Length`|Attribútum, egész szám|A lap tartomány hossza bájtban.|  
-|`PageRange/@Hash`|Attribútum, karakterlánc|Base16 kódolású MD5 kivonatoló a lap tartomány.|  
+|`DriveLog`|XML-elem|Meghajtó a napló jelöli.|  
+|`Version`|Attribútum, karakterlánc|A napló formátuma verziója.|  
+|`DriveId`|Sztring|A meghajtó hardver sorozatszáma.|  
+|`Status`|Sztring|A meghajtó feldolgozási állapotát. Tekintse meg a `Drive Status Codes` tábla alatt további információt.|  
+|`Blob`|Beágyazott XML-elem|Egy blob jelöli.|  
+|`Blob/BlobPath`|Sztring|A blob URI azonosítója.|  
+|`Blob/FilePath`|Sztring|A meghajtón található a fájl relatív elérési útja.|  
+|`Blob/Snapshot`|DateTime|A blob, csak exportálási feladatokhoz pillanatfelvétel-verzió.|  
+|`Blob/Length`|Egész szám|A teljes hossza (bájt) a blob.|  
+|`Blob/LastModified`|DateTime|A dátum/idő, amelyet a blob, csak exportálási feladatokhoz.|  
+|`Blob/ImportDisposition`|Sztring|Importálás rendezése, a blob csak importálási feladatokhoz.|  
+|`Blob/ImportDisposition/@Status`|Attribútum, karakterlánc|Az importálás disposition állapota.|  
+|`PageRangeList`|Beágyazott XML-elem|Egy lapblobra laptartomány listáját jelöli.|  
+|`PageRange`|XML-elem|Tartományt jelöli.|  
+|`PageRange/@Offset`|Attribútum, egész szám|A blob a lap a tartomány kezdő eltolása|  
+|`PageRange/@Length`|Attribútum, egész szám|Nyomtatási tartomány hossza (bájt).|  
+|`PageRange/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a laptartomány.|  
 |`PageRange/@Status`|Attribútum, karakterlánc|A laptartomány feldolgozási állapotát.|  
-|`BlockList`|Beágyazott XML-elem.|Egy blokkblobhoz tartoznak blokkok listája jelöli.|  
-|`Block`|XML-elem.|A blokk jelöli.|  
-|`Block/@Offset`|Attribútum, egész szám|A blob eltolása a blokk kezdve.|  
-|`Block/@Length`|Attribútum, egész szám|A blokk hossza bájtban.|  
-|`Block/@Id`|Attribútum, karakterlánc|A blokk-azonosító.|  
-|`Block/@Hash`|Attribútum, karakterlánc|Base16 kódolású MD5 kivonatoló a blokk.|  
+|`BlockList`|Beágyazott XML-elem|Egy blokkblobhoz blokkok listáját jelöli.|  
+|`Block`|XML-elem|A blokkolás jelöli.|  
+|`Block/@Offset`|Attribútum, egész szám|A blob található blokkot ofszetet.|  
+|`Block/@Length`|Attribútum, egész szám|A blokk hossza (bájt).|  
+|`Block/@Id`|Attribútum, karakterlánc|A blokk-azonosítót.|  
+|`Block/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a blokkot.|  
 |`Block/@Status`|Attribútum, karakterlánc|A blokk feldolgozási állapotát.|  
-|`Metadata`|Beágyazott XML-elem.|A blob metaadatai jelöli.|  
-|`Metadata/@Status`|Attribútum, karakterlánc|A blob metaadatai feldolgozásának állapotát.|  
-|`Metadata/GlobalPath`|Karakterlánc|A globális metaadatokat relatív elérési útja.|  
-|`Metadata/GlobalPath/@Hash`|Attribútum, karakterlánc|Base16 kódolású MD5 kivonatoló a globális metaadatfájl.|  
-|`Metadata/Path`|Karakterlánc|A metaadatok relatív elérési útja.|  
-|`Metadata/Path/@Hash`|Attribútum, karakterlánc|Base16 kódolású MD5 kivonatoló a metaadatfájl.|  
-|`Properties`|Beágyazott XML-elem.|A blob tulajdonságai jelöli.|  
-|`Properties/@Status`|Attribútum, karakterlánc|Feldolgozása a blob tulajdonságai, például a fájl nem található, állapotának befejeződött.|  
-|`Properties/GlobalPath`|Karakterlánc|A globális tulajdonságok relatív elérési útja.|  
-|`Properties/GlobalPath/@Hash`|Attribútum, karakterlánc|Base16 kódolású MD5 kivonatoló a globális tulajdonságok fájl.|  
-|`Properties/Path`|Karakterlánc|A tulajdonságok relatív elérési útja.|  
-|`Properties/Path/@Hash`|Attribútum, karakterlánc|Base16 kódolású MD5 kivonatoló tulajdonságok fájl.|  
-|`Blob/Status`|Karakterlánc|A blob feldolgozási állapotát.|  
+|`Metadata`|Beágyazott XML-elem|A blob metaadatait jelöli.|  
+|`Metadata/@Status`|Attribútum, karakterlánc|A blob metaadatainak feldolgozási állapotát.|  
+|`Metadata/GlobalPath`|Sztring|A globális metaadatait tartalmazó fájl relatív elérési útja.|  
+|`Metadata/GlobalPath/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a globális metaadatait tartalmazó fájl.|  
+|`Metadata/Path`|Sztring|A metaadatok fájl relatív elérési útja.|  
+|`Metadata/Path/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a metaadatait tartalmazó fájl.|  
+|`Properties`|Beágyazott XML-elem|A blob tulajdonságai jelöli.|  
+|`Properties/@Status`|Attribútum, karakterlánc|Állapotát, például a fájl nem található, a blobtulajdonságok feldolgozása befejeződött.|  
+|`Properties/GlobalPath`|Sztring|A globális tulajdonságok fájl relatív elérési útját.|  
+|`Properties/GlobalPath/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a globális tulajdonságok fájl.|  
+|`Properties/Path`|Sztring|A tulajdonságok fájl relatív elérési útját.|  
+|`Properties/Path/@Hash`|Attribútum, karakterlánc|Base16-kódolású MD5-kivonat a tulajdonságok fájl.|  
+|`Blob/Status`|Sztring|A blob feldolgozási állapotát.|  
   
 # <a name="drive-status-codes"></a>Meghajtó állapotkódok  
-Az alábbi táblázat a meghajtó feldolgozása állapotkódjai.  
+A következő táblázat felsorolja a meghajtó feldolgozása állapotkódjai.  
   
 |Állapotkód|Leírás|  
 |-----------------|-----------------|  
-|`Completed`|A meghajtó feldolgozási hiba nélkül befejeződött.|  
-|`CompletedWithWarnings`|A meghajtó figyelmeztetésekkel fejeződött be az egy vagy több blobot a blobok megadott importálási dispositions / feldolgozása befejeződött.|  
-|`CompletedWithErrors`|A meghajtó egy vagy több blobot, vagy adattömbök befejeződött.|  
+|`Completed`|A meghajtón befejezte a feldolgozási hibák nélkül.|  
+|`CompletedWithWarnings`|A meghajtó figyelmeztetésekkel fejeződött be az importálási dispositions a blobok számára megadott kiszolgálónként egy vagy több blobot a feldolgozása befejeződött.|  
+|`CompletedWithErrors`|A meghajtó rendelkezik futása hibával végződött egy vagy több blobot vagy adattömböket.|  
 |`DiskNotFound`|Nincs lemez a meghajtón található.|  
-|`VolumeNotNtfs`|Az első adatok lemezen levő kötetet a nem nem NTFS formátumú.|  
+|`VolumeNotNtfs`|Az első adatok kötetet a lemezen NTFS formátumú nem szerepel.|  
 |`DiskOperationFailed`|Ismeretlen hiba történt a meghajtón műveletek végrehajtása során.|  
-|`BitLockerVolumeNotFound`|A BitLocker encryptable kötet található.|  
+|`BitLockerVolumeNotFound`|Nincs a BitLocker encryptable kötet található.|  
 |`BitLockerNotActivated`|A BitLocker nincs engedélyezve a köteten.|  
 |`BitLockerProtectorNotFound`|A numerikus jelszó kulcsvédőjének nem létezik a köteten.|  
-|`BitLockerKeyInvalid`|A numerikus, a megadott jelszó nem lehet oldani a kötet zárolását.|  
-|`BitLockerUnlockVolumeFailed`|Ismeretlen hiba történt a kötet zárolásának feloldására tett kísérlet során.|  
-|`BitLockerFailed`|Ismeretlen hiba történt a BitLocker műveletet hajt végre.|  
-|`ManifestNameInvalid`|A jegyzékfájl neve érvénytelen.|  
-|`ManifestNameTooLong`|A jegyzékfájl neve túl hosszú.|  
+|`BitLockerKeyInvalid`|A megadott numerikus jelszó nem lehet oldani a kötet zárolását.|  
+|`BitLockerUnlockVolumeFailed`|Ismeretlen hiba történt a kötet zárolásának feloldása közben.|  
+|`BitLockerFailed`|Ismeretlen hiba történt a BitLocker műveletek végrehajtása közben.|  
+|`ManifestNameInvalid`|Az Alkalmazásjegyzék-fájl neve érvénytelen.|  
+|`ManifestNameTooLong`|Az Alkalmazásjegyzék-fájl név túl hosszú.|  
 |`ManifestNotFound`|A jegyzékfájl nem található.|  
 |`ManifestAccessDenied`|A jegyzékfájl való hozzáférés megtagadva.|  
-|`ManifestCorrupted`|Az Alkalmazásjegyzék-fájl sérült (a tartalom nem egyezik a a kivonata).|  
-|`ManifestFormatInvalid`|A jegyzék tartalom nem felel meg a szükséges formátumnak.|  
-|`ManifestDriveIdMismatch`|A jegyzékfájl a meghajtó azonosítója nem egyezik meg a meghajtón egy olvasás.|  
-|`ReadManifestFailed`|A lemez i/o-hiba történt a jegyzék olvasása közben.|  
-|`BlobListFormatInvalid`|Az Exportálás blob lista blob nem felel meg a szükséges formátumnak.|  
-|`BlobRequestForbidden`|A blobot, amely a storage-fiók nem férhet hozzá. Ez akkor lehet érvénytelen tárfiók kulcsa vagy a tároló SAS miatt.|  
+|`ManifestCorrupted`|Az Alkalmazásjegyzék-fájl sérült (ekkor a tartalom nem egyezik meg a kivonatoló).|  
+|`ManifestFormatInvalid`|A jegyzékfájl tartalom nem felel meg a szükséges formátumban.|  
+|`ManifestDriveIdMismatch`|A meghajtó Azonosítóját a jegyzékfájlban nem egyezik meg az egyik olvasási a meghajtóról.|  
+|`ReadManifestFailed`|A lemez i/o-hiba történt a jegyzékfájl olvasásakor.|  
+|`BlobListFormatInvalid`|Blob lista exportálása blob nem felel meg a szükséges formátumban.|  
+|`BlobRequestForbidden`|A BLOB storage-fiókban való hozzáférés le van tiltva. Ez lehet érvénytelen tárfiók-kulcsot vagy a tároló SAS miatt.|  
 |`InternalError`|És belső hiba történt a meghajtó feldolgozása közben.|  
   
-## <a name="blob-status-codes"></a>A BLOB állapotkódok  
-Az alábbi táblázat a állapotkódok blob feldolgozásra.  
+## <a name="blob-status-codes"></a>BLOB állapotkódok  
+A következő táblázat felsorolja a blobok feldolgozása állapotkódjai.  
   
 |Állapotkód|Leírás|  
 |-----------------|-----------------|  
-|`Completed`|A blob feldolgozási hiba nélkül befejeződött.|  
-|`CompletedWithErrors`|A blob hibák egy vagy több tartományokat vagy blokkok, metaadatok vagy-tulajdonságok feldolgozása befejeződött.|  
+|`Completed`|A blob feldolgozása hiba nélkül befejeződött.|  
+|`CompletedWithErrors`|A blob egy vagy több tartományokat vagy blokkok, metaadatok vagy tulajdonságok hibákkal feldolgozása befejeződött.|  
 |`FileNameInvalid`|A fájlnév érvénytelen.|  
-|`FileNameTooLong`|A fájl neve túl hosszú.|  
+|`FileNameTooLong`|A fájl név túl hosszú.|  
 |`FileNotFound`|A fájl nem található.|  
 |`FileAccessDenied`|A fájlhoz való hozzáférés megtagadva.|  
-|`BlobRequestFailed`|A blob eléréséhez a Blob szolgáltatási kérelem sikertelen volt.|  
-|`BlobRequestForbidden`|A blob eléréséhez a Blob szolgáltatási kérelem tiltott. Ez akkor lehet érvénytelen tárfiók kulcsa vagy a tároló SAS miatt.|  
-|`RenameFailed`|Nem sikerült átnevezni a blobot (hogy az importálás) vagy a fájlt (exportálási feladat).|  
-|`BlobUnexpectedChange`|Egy váratlan módosítás történt a blob (exportálási feladat).|  
-|`LeasePresent`|A blob megtalálható a címbérlet van.|  
-|`IOFailed`|A lemez- vagy hálózati i/o-hiba történt a blob feldolgozása során.|  
+|`BlobRequestFailed`|Nem sikerült a Blob szolgáltatáskérést, hogy hozzáférjen a blobhoz.|  
+|`BlobRequestForbidden`|A Blob szolgáltatás kérelem eléréséhez a blob le van tiltva. Ez lehet érvénytelen tárfiók-kulcsot vagy a tároló SAS miatt.|  
+|`RenameFailed`|A blob (az importálási feladat) vagy a fájlra (exportálási feladat) átnevezése sikertelen.|  
+|`BlobUnexpectedChange`|Egy váratlan módosítás történt (az exportálási feladatokhoz) a blobbal együtt.|  
+|`LeasePresent`|Nincs jelen a blob bérletét.|  
+|`IOFailed`|Lemez vagy hálózat i/o-hiba történt a blob feldolgozása során.|  
 |`Failed`|Ismeretlen hiba történt a blob feldolgozása során.|  
   
-## <a name="import-disposition-status-codes"></a>Importálás törlése állapotkódok  
-Az alábbi táblázat a állapotkódok megoldása érdekében egy importálási törlése.  
+## <a name="import-disposition-status-codes"></a>Importálja a disposition állapotkódok  
+Az alábbi táblázat a állapotkódok-importálási disposition feloldásához.  
   
 |Állapotkód|Leírás|  
 |-----------------|-----------------|  
-|`Created`|A blob létrehozását.|  
-|`Renamed`|A blob egy átnevezési importálási törlése át lett nevezve. A `Blob/BlobPath` elem tartalmazza-e az átnevezett blob URI-JÁNAK.|  
-|`Skipped`|A blob ki lett hagyva `no-overwrite` importálása törlése.|  
-|`Overwritten`|A blob felülírta egy meglévő blob / `overwrite` importálása törlése.|  
-|`Cancelled`|Egy korábbi hiba leállt, az importálás témakör további feldolgozása.|  
+|`Created`|A blob létrejött.|  
+|`Renamed`|A blob / átnevezése importálás disposition át lett nevezve. A `Blob/BlobPath` elem tartalmazza az átnevezett blob URI Azonosítóját.|  
+|`Skipped`|A blob ki lett hagyva kiszolgálónként `no-overwrite` disposition importálása.|  
+|`Overwritten`|A blob felülírta egy meglévő blob / `overwrite` disposition importálása.|  
+|`Cancelled`|Egy korábbi hibája leállította a további feldolgozás céljából, az importálás törlése.|  
   
 ## <a name="page-rangeblock-status-codes"></a>Tartomány/blokk állapotkódok lap  
-A következő táblázat a tartományt vagy egy tiltólista feldolgozása állapotkódjai.  
+A következő táblázat felsorolja a tartományt vagy a blokkolás feldolgozása állapotkódjai.  
   
 |Állapotkód|Leírás|  
 |-----------------|-----------------|  
-|`Completed`|A nyomtatási tartomány vagy blokk feldolgozási hiba nélkül befejeződött.|  
-|`Committed`|A blokk véglegesítve, de nem a teljes blokkot a listán, mert más blokkok sikertelen, vagy helyezze magát teljes tiltólista sikertelen volt.|  
-|`Uncommitted`|A blokk feltölteni, de a nem véglegesített.|  
-|`Corrupted`|A nyomtatási tartomány vagy blokk sérült (a tartalom nem egyezik a a kivonata).|  
-|`FileUnexpectedEnd`|Egy nem várt fájlvégjel történt.|  
-|`BlobUnexpectedEnd`|Egy blob váratlan vége történt.|  
-|`BlobRequestFailed`|A Blob szolgáltatási kérelem hozzáféréssel a lap tartomány vagy blokk nem sikerült.|  
-|`IOFailed`|Lemez- vagy i/o-hiba történt a nyomtatási tartomány vagy blokk feldolgozása közben.|  
-|`Failed`|Ismeretlen hiba történt a nyomtatási tartomány vagy blokk feldolgozása közben.|  
-|`Cancelled`|Egy korábbi hiba leállt, az oldal tartomány vagy blokk további feldolgozásra.|  
+|`Completed`|Az oldal tartomány vagy blokk hibák nélkül feldolgozása befejeződött.|  
+|`Committed`|A blokkblob véglegesítése után, de nem a teljes letiltása a listán, mert más blokkolja a sikertelen, vagy helyezze magát teljes tiltólista nem sikerült.|  
+|`Uncommitted`|A blokk feltöltött, de nem véglegesített.|  
+|`Corrupted`|Az oldal tartomány vagy blokk sérült (ekkor a tartalom nem egyezik meg a kivonatoló).|  
+|`FileUnexpectedEnd`|Egy fájl váratlanul véget ért észlelt.|  
+|`BlobUnexpectedEnd`|Észlelt egy blob váratlanul véget ért.|  
+|`BlobRequestFailed`|A Blob szolgáltatáskérés hozzáféréssel a nyomtatási tartomány vagy blokk nem sikerült.|  
+|`IOFailed`|Lemez vagy hálózat i/o-hiba történt az oldal tartomány vagy blokk feldolgozása közben.|  
+|`Failed`|Ismeretlen hiba történt az oldal tartomány vagy blokk feldolgozása közben.|  
+|`Cancelled`|Egy korábbi hibája leállt, az oldal tartomány vagy blokk további feldolgozás céljából.|  
   
 ## <a name="metadata-status-codes"></a>Metaadatok állapotkódok  
-Az alábbi táblázat a állapotkódjai blob metaadatok feldolgozásakor.  
+A következő táblázat felsorolja a blob metaadatainak feldolgozása állapotkódjai.  
   
 |Állapotkód|Leírás|  
 |-----------------|-----------------|  
-|`Completed`|A metaadatok feldolgozási hiba nélkül befejeződött.|  
+|`Completed`|A metaadatok feldolgozása hiba nélkül befejeződött.|  
 |`FileNameInvalid`|A metaadat neve érvénytelen.|  
-|`FileNameTooLong`|A metaadatok fájl neve túl hosszú.|  
-|`FileNotFound`|A metaadat-fájl nem található.|  
-|`FileAccessDenied`|A metaadatfájl való hozzáférés megtagadva.|  
-|`Corrupted`|A metaadat-fájl sérült (a tartalom nem egyezik a a kivonata).|  
-|`XmlReadFailed`|A metaadat-tartalom nem felel meg a szükséges formátumnak.|  
+|`FileNameTooLong`|A metaadatok fájl név túl hosszú.|  
+|`FileNotFound`|A metaadatfájl nem található.|  
+|`FileAccessDenied`|A metaadat-fájlhoz való hozzáférés megtagadva.|  
+|`Corrupted`|A metaadat-fájl sérült (ekkor a tartalom nem egyezik meg a kivonatoló).|  
+|`XmlReadFailed`|A metaadat-tartalom nem felel meg a szükséges formátumban.|  
 |`XmlWriteFailed`|A Metaadatok írása nem sikerült XML.|  
-|`BlobRequestFailed`|A metaadatok eléréséhez a Blob szolgáltatási kérelem sikertelen volt.|  
-|`IOFailed`|A lemez- vagy hálózati i/o-hiba történt a metaadatok feldolgozásakor a program.|  
-|`Failed`|Egy ismeretlen hiba történt a metaadatok feldolgozásakor.|  
-|`Cancelled`|Egy korábbi hiba leállt, a metaadatok további feldolgozásra.|  
+|`BlobRequestFailed`|A Blob használatával hozzáfér a kérelem sikertelen volt.|  
+|`IOFailed`|Lemez vagy hálózat i/o-hiba történt a metaadatok feldolgozása során.|  
+|`Failed`|Ismeretlen hiba történt a metaadatok feldolgozása során.|  
+|`Cancelled`|Egy korábbi hibája leállította a metaadatok további feldolgozás céljából.|  
   
 ## <a name="properties-status-codes"></a>Tulajdonságok állapotkódok  
-A következő táblázat a blob-tulajdonságok feldolgozása állapotkódjai.  
+A következő táblázat felsorolja a blob tulajdonságai feldolgozása állapotkódjai.  
   
 |Állapotkód|Leírás|  
 |-----------------|-----------------|  
-|`Completed`|A Tulajdonságok feldolgozása hiba nélkül befejeződött.|  
+|`Completed`|A Tulajdonságok befejeződött a feldolgozási hibák nélkül.|  
 |`FileNameInvalid`|A tulajdonságok neve érvénytelen.|  
-|`FileNameTooLong`|A tulajdonságok fájl neve túl hosszú.|  
+|`FileNameTooLong`|A tulajdonságok fájl név túl hosszú.|  
 |`FileNotFound`|A tulajdonságok fájl nem található.|  
 |`FileAccessDenied`|A Tulajdonságok fájlhoz való hozzáférés megtagadva.|  
-|`Corrupted`|A tulajdonságok fájl sérült (a tartalom nem egyezik a a kivonata).|  
-|`XmlReadFailed`|A Tulajdonságok tartalom nem felel meg a szükséges formátumnak.|  
+|`Corrupted`|A tulajdonságok fájl sérült (ekkor a tartalom nem egyezik meg a kivonatoló).|  
+|`XmlReadFailed`|A Tulajdonságok tartalma nem felel meg a szükséges formátumban.|  
 |`XmlWriteFailed`|A Tulajdonságok írása nem sikerült XML.|  
-|`BlobRequestFailed`|Nem sikerült a Blob szolgáltatási kérelem tulajdonságainak eléréséhez.|  
-|`IOFailed`|A lemez- vagy hálózati i/o-hiba történt a Tulajdonságok feldolgozása során.|  
+|`BlobRequestFailed`|A Blob tulajdonságai eléréséhez kérelem sikertelen volt.|  
+|`IOFailed`|Lemez vagy hálózat i/o-hiba történt a Tulajdonságok feldolgozása során.|  
 |`Failed`|Ismeretlen hiba történt a Tulajdonságok feldolgozása során.|  
-|`Cancelled`|Egy korábbi hiba a tulajdonságok további feldolgozás leállt.|  
+|`Cancelled`|Egy korábbi hibája leállította a további feldolgozás céljából a tulajdonságok.|  
   
-## <a name="sample-logs"></a>A minta-naplók  
-A következő példában látható egy részletes napló.  
+## <a name="sample-logs"></a>Mintanaplók  
+Az alábbiakban látható egy példa részletes napló.  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -297,7 +291,7 @@ A következő példában látható egy részletes napló.
 </DriveLog>  
 ```  
   
-A megfelelő hibanapló alább láthatók.  
+Az alábbiakban látható a megfelelő hibanaplóját.  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -316,7 +310,7 @@ A megfelelő hibanapló alább láthatók.
 </DriveLog>  
 ```
 
- A kövesse hibanaplóját, hogy az importálás a fájl nem található az importálási meghajtón kapcsolatos hibát tartalmaz. Vegye figyelembe, hogy további összetevők állapota `Cancelled`.  
+ Az importálási feladat kövesse hibanaplójában importálása a meghajtón nem található egy fájllal kapcsolatos hibát tartalmaz. Vegye figyelembe, hogy további összetevők állapotának `Cancelled`.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -339,7 +333,7 @@ A megfelelő hibanapló alább láthatók.
 </DriveLog>  
 ```
 
-Exportálási feladat a következő hibanaplóban azt jelzi, hogy a blob tartalma írása sikeresen befejeződött a meghajtóra, azonban, hogy hiba történt a blob tulajdonságai exportálása során.  
+Exportálási feladat a következő hibanaplóban azt jelzi, hogy a blob tartalma sikeresen meg lett írva a meghajtóra, azonban, hogy hiba történt a blob tulajdonságai exportálása során.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -357,6 +351,6 @@ Exportálási feladat a következő hibanaplóban azt jelzi, hogy a blob tartalm
 </DriveLog>  
 ```
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
-* [Storage Import/Export REST API felülete](/rest/api/storageimportexport/)
+* [A Storage Import/Export REST API](/rest/api/storageimportexport/)

@@ -1,60 +1,60 @@
 ---
-title: Az Azure Active Directoryval (előzetes verzió) Azure Storage hozzáférés hitelesítéséhez |} Microsoft Docs
-description: Az Azure Active Directoryval (előzetes verzió) Azure Storage hozzáférés hitelesítéséhez.
+title: Hitelesíti a hozzáférést az Azure Storage az Azure Active Directoryval (előzetes verzió) |} A Microsoft Docs
+description: Hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: tamram
-ms.openlocfilehash: 9a0782b96b45d27c9b7e603959ecadf5b2632064
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.component: common
+ms.openlocfilehash: 90868961475c2e9d0ac7d28c5d9a50c8eb281675
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737646"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525205"
 ---
-# <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Az Azure Active Directoryval (előzetes verzió) Azure Storage hozzáférés hitelesítéséhez
+# <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Hitelesíti a hozzáférést az Azure Storage az Azure Active Directoryval (előzetes verzió)
 
-Az Azure Storage támogatja a Blob és a Queue szolgáltatások hitelesítési és engedélyezési az Azure Active Directory (AD). Az Azure AD segítségével szerepköralapú hozzáférés-vezérlést (RBAC) hozzáférést biztosíthat a felhasználók, csoportok vagy alkalmazás szolgáltatásnevekről. 
+Az Azure Storage támogatja a hitelesítés és engedélyezés az Azure Active Directory (AD) a Blob és üzenetsor-szolgáltatások. Az Azure ad-vel szerepköralapú hozzáférés-vezérlés (RBAC) használhatja hozzáférést a felhasználók, csoportok és alkalmazások szolgáltatásnevének. 
 
-Azure Storage használata az Azure AD elérhető alkalmazásokat engedélyező keresztül biztosítja a felső szintű biztonsági és könnyen használható egyéb engedélyezési beállítások. Továbbra is megosztott kulcsos engedélyezési használja az alkalmazásokkal, amíg az Azure AD megkerüli a kód a hívóbetűre tárolásának szükségességét. Hasonlóképpen továbbra is használja a közös hozzáférésű jogosultságkód (SAS) részletes a tárfiókban lévő erőforrások eléréséhez, de az Azure AD nem SAS-tokenje kezelése vagy visszavonni a sérült biztonságú SAS foglalkoznia kell hasonló képességeket biztosít.
+Azure Storage, Azure AD-vel hozzáférő alkalmazások kulcshasználatának engedélyezése készít felső szintű biztonság és a könnyű használat más engedélyezési beállítások. Miközben továbbra is megosztott kulcsos engedélyezési használata az alkalmazások, Azure AD-vel megkerüli ügyféladataik tárolásának a kód a hozzáférési kulcsára. Ehhez hasonlóan továbbra is használja a közös hozzáférésű jogosultságkódok (SAS) részletes hozzáférést biztosítani a tárfiókban található erőforrásokhoz, de az Azure AD kezelése SAS-tokeneket vagy sérült biztonságú SAS visszavonása foglalkoznia kellene hasonló funkciókat kínál.
 
-## <a name="about-the-preview"></a>Előzetes tudnivalók
+## <a name="about-the-preview"></a>Tudnivalók az előzetes verzió
 
-Előzetes tudnivalók a következő szempontokat vegye figyelembe:
+Tudnivalók az előzetes verzió a következő szempontokat tartsa szem előtt:
 
-- Az Azure AD-integrációs a Blob és a várólista szolgáltatások csak az előzetes kiadásban érhető el.
-- Minden nyilvános régióban GPv1 GPv2 és Blob storage-fiókok Azure AD-integrációs érhető el. 
-- Csak a Resource Manager telepítési modellel készült tárfiókok támogatottak. 
-- Hívó azonosító adatok Azure Storage Analytics naplózása támogatása hamarosan elérhető.
-- Standard szintű tárfiókokban lévő erőforrásokhoz való hozzáférés az Azure AD engedélyezési jelenleg támogatott. Prémium szintű storage-fiókok a lapblobokat hozzáférési engedély hamarosan támogatott.
-- Az Azure Storage mind beépített és egyéni RBAC-szerepkörök támogatja. Az előfizetés, az erőforráscsoport, a tárfiók, vagy egy egyéni tároló vagy várólista hatóköre szerepköröket rendelhet.
-- Az Azure Storage ügyfélkódtáraival, amelyek jelenleg támogatják az Azure AD-integrációs a következők:
+- Az Azure AD-integráció a Blob és üzenetsor-szolgáltatásainak csak az előzetes verzióban érhető el.
+- Az összes nyilvános régióban GPv1-, GPv2 és Blob storage-fiókok Azure AD-integráció érhető el. 
+- Csak a Resource Manager üzemi modellel létrehozott tárfiókok támogatottak. 
+- Hívó azonosító adatokat az Azure Storage Analytics naplózási támogatása hamarosan elérhető lesz.
+- A standard szintű storage-fiókok erőforrásokhoz való hozzáférés az Azure AD engedélyezési jelenleg támogatott. Lapblobokat a prémium szintű storage-fiókban való hozzáférés engedélyezése hamarosan támogatott lesz.
+- Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepkörökhöz. Az előfizetés, az erőforráscsoport, a storage-fiókban vagy egy tároló vagy üzenetsor hatóköre szerepköröket rendelhet hozzá.
+- Az Azure Storage-ügyfélkönyvtárak, amelyek jelenleg támogatják az Azure AD-integráció a következők:
     - [.NET](https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0)
     - [Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) (7.1.x-Preview használata)
     - Python
         - [Blob](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-blob)
-        - [Várólista](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-queue)
+        - [várólista](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-queue)
     - [Node.js](https://www.npmjs.com/package/azure-storage)
-    - [JavaScript](https://aka.ms/downloadazurestoragejs))
+    - [A JavaScript](https://aka.ms/downloadazurestoragejs))
 
 > [!IMPORTANT]
-> Ez az előzetes kiadás csak nem üzemi használatra készült. Éles szolgáltatásiszint-szerződések (SLA) nem lesz elérhető, amíg az Azure AD integrálása az Azure Storage általánosan elérhető van deklarálva. Ha az Azure AD-integrációs jelenleg nem támogatott a forgatókönyvnek, továbbra is használhatja a megosztott kulcsos engedélyezési vagy SAS-tokenje az alkalmazásokban.
+> Ebben az előzetes verzióban csak a nem éles használatra szolgál. Éles szolgáltatásiszint-szerződések (SLA) nem lesz elérhető, amíg az Azure AD integrálása az Azure Storage általánosan elérhető lett deklarálva. Ha az Azure AD-integrációs még nem támogatott a forgatókönyvnek, továbbra is használhatja a megosztott kulcsos engedélyezési vagy SAS-tokeneket az alkalmazásokban.
 >
-> Az előzetes RBAC szerepkör-hozzárendelések terjesztése akár öt percet is eltarthat.
+> Az előzetes verzióban RBAC szerepkör-hozzárendelések eltarthat propagálása akár öt perc alatt.
 >
-> Az Azure AD integrálása az Azure Storage Azure Storage műveletekhez HTTPS használatát igényli.
+> Az Azure AD-integráció az Azure Storage for Azure Storage-műveletek HTTPS használatát igényli.
 
-## <a name="get-started-with-azure-ad-for-storage"></a>Ismerkedés az Azure ad-val tároló
+## <a name="get-started-with-azure-ad-for-storage"></a>Ismerkedés az Azure AD-tároló
 
-Az Azure AD integrálása révén az Azure Storage első lépése, hogy rendelje hozzá a tárolási adatok az egyszerű szolgáltatásnév RBAC-szerepkörök (olyan felhasználó, csoport vagy alkalmazás egyszerű szolgáltatásnév) vagy felügyelt szolgáltatás identitásának (MSI). Az RBAC-szerepkörök tartalmazzák a közös készleteinek tárolók és a várólisták engedélyeit. További információt az RBAC-szerepkörök az Azure Storage, lásd: [kezelése hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) storage-adatokkal](storage-auth-aad-rbac.md).
+Az Azure AD-integráció használatával az Azure Storage első lépése, hogy rendelje hozzá az egyszerű szolgáltatás adatok tárolására RBAC-szerepkörök (a felhasználó, csoport vagy alkalmazás egyszerű szolgáltatás) vagy a Felügyeltszolgáltatás-identitás (MSI). RBAC-szerepkörök tartalmazzák a közös jogosultságkészletek tárolók és üzenetsorok. RBAC-szerepkörök az Azure Storage-bővebben lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) tárolási adatok](storage-auth-aad-rbac.md).
 
-Az alkalmazások tárolási erőforrásokhoz való hozzáférés engedélyezése az Azure AD használatához szüksége olyan OAuth 2.0 hozzáférési jogkivonatot kérhet a kódot. Olyan hozzáférési jogkivonatot kérésére, és engedélyezze a kérelmek Azure Storage használatával, lásd: [hitelesítés az Azure AD egy Azure Storage-alkalmazás (előnézet)](storage-auth-aad-app.md). Ha egy Azure felügyelt szolgáltatás identitásának (MSI) használ, tekintse meg [hitelesítés az Azure virtuális gép felügyelt szolgáltatás identitásának (előzetes verzió) Azure AD-val](storage-auth-aad-msi.md).
+Az Azure AD használata az alkalmazások tárolási erőforrásokhoz való hozzáférés engedélyezésére, az OAuth 2.0 hozzáférési jogkivonat kérése a kódot kell. A hozzáférési jogkivonat kérése és használhatja az Azure Storage-kérelmek engedélyezését végzi, lásd: [hitelesítés az Azure Storage-alkalmazás (előzetes verzió) az Azure AD](storage-auth-aad-app.md). Ha egy Azure Felügyeltszolgáltatás-identitás (MSI) használ, tekintse meg [hitelesítés egy Azure virtuális gépek Felügyeltszolgáltatás-identitás (előzetes verzió) az Azure AD-vel](storage-auth-aad-msi.md).
 
-Azure CLI és PowerShell mostantól támogatják az Azure AD identity bejelentkezik. Az Azure AD identity bejelentkezés után a munkamenet identitás alatt fut. További tudnivalókért lásd: [CLI vagy a PowerShell használatával (előzetes verzió) Azure Storage eléréséhez használja az Azure AD identity](storage-auth-aad-script.md).
+Az Azure CLI és PowerShell mostantól támogatja a adataikkal jelentkezhetnek be az Azure AD identitás. Az Azure AD identity bejelentkezés után a munkamenet identitás alatt fut. További tudnivalókért lásd: [CLI vagy a PowerShell (előzetes verzió) az Azure Storage eléréséhez használja az Azure AD identity](storage-auth-aad-script.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD integrálása az Azure-blobokat és üzenetsorokat kapcsolatos további információkért lásd a következő Azure Storage csapat blogbejegyzésben, [az Azure betekintő AD hitelesítés az Azure Storage bejelentése](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
+Az Azure-Blobok és üzenetsorok az Azure AD-integrációval kapcsolatos további információkért lásd: az Azure Storage csapat blogja tenne fel, [bejelentése a megtekintése az Azure AD-hitelesítés az Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).

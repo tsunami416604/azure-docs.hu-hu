@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/3/2018
+ms.date: 8/3/2018
 ms.author: raiye
-ms.openlocfilehash: 518e55de440daa93dc0a9a9eebc207ebcde07d57
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 2ee31e0a2d563ddf2aa63498b4ca280e4da26754
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970162"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524858"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrixot
 Itt, a legújabb Azure vendég operációs rendszer naprakész információkat és a Cloud Services-kiadások. Ez az információ segít a frissítési útvonal megtervezéséhez, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissítése leírtak szerint [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], már nem létfontosságú, hogy elolvasta-e ezen a lapon.
@@ -43,6 +43,9 @@ Itt, a legújabb Azure vendég operációs rendszer naprakész információkat �
 A vendég operációs rendszer frissítése tesztadatkészletén? Ellenőrizze [ez] [ cloud updates] ki.
 
 ## <a name="news-updates"></a>Hírek
+
+###### <a name="august-3-2018"></a>**2018. augusztus 3.**
+A július vendég operációs rendszer jelent meg.
 
 ###### <a name="july-3-2018"></a>**2018. július 3.**
 A június vendég operációs rendszer jelent meg.
@@ -90,8 +93,9 @@ Október vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | A lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.21_201807-02 |2018. augusztus 3. |POST 5.23 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.20_201806-01 |2018. július 3. |POST 5.22 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.19_201805-01 |2018. június 1. |POST 5.21 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.19_201805-01~~ |2018. június 1. |2018. augusztus 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.18_201804-01~~ |2018. május 4. |2018. július 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.17_201803-01~~ |2018. április 6. |2018. június 1.|TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.16_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
@@ -99,7 +103,6 @@ Október vendég operációs rendszer jelent meg.
 |~~WA-GUEST-OS-5.14_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
 |~~WA-GUEST-OS-5.13_201711-01~~ |2017. december 14. |2018. január 4.|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
-|~~WA-GUEST-OS-5.11_201709-01~~ |2017. október 6 |2017. december 14. |TBD |
 
 
 ## <a name="family-4-releases"></a>Család 4-kiadások
@@ -114,8 +117,9 @@ Október vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | A lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.56_201807-02 |2018. augusztus 3. |POST 4.58 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.55_201806-01 |2018. július 3. |POST 4.57 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.54_201805-01 |2018. június 1. |POST 4,56 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.54_201805-01~~ |2018. június 1. |2018. augusztus 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.53_201804-01~~ |2018. május 4. |2018. július 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.52_201803-01~~ |2018. április 6. |2018. június 1. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.51_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
@@ -123,8 +127,6 @@ Október vendég operációs rendszer jelent meg.
 |~~WA-GUEST-OS-4.49_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
 |~~WA-GUEST-OS-4.48_201711-01~~ |2017. december 14. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
-|~~WA-GUEST-OS-4.46_201709-01~~ |2017. október 6 |2017. december 14. |TBD |
-
 
 
 ## <a name="family-3-releases"></a>3-as család kiadások
@@ -139,8 +141,9 @@ Október vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | A lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.63_201807-02 |2018. augusztus 3. |POST 3.65 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-3.62_201806-01 |2018. július 3. |POST 3.64 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.61_201805-01 |2018. június 1. |POST 3.63 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.61_201805-01~~ |2018. június 1. |2018. augusztus 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.60_201804-01~~ |2018. május 4. |2018. július 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.59_201803-01~~ |2018. április 6. |2018. június 1. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.58_201802-01~~ |2018. március 19. |2018. május 4. |TBD |
@@ -148,8 +151,6 @@ Október vendég operációs rendszer jelent meg.
 |~~WA-GUEST-OS-3.56_201712-01~~ |2018. január 4. |2018. március 19. |TBD |
 |~~WA-GUEST-OS-3.55_201711-01~~ |2017. december 14. |2018. január 29. |TBD |
 |~~WA-GUEST-OS-3.54_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
-|~~WA-GUEST-OS-3.53_201709-01~~ |2017. október 6 |2017. december 14. |TBD |
-|~~WA-GUEST-OS-3.52_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
 
 
 ## <a name="family-2-releases"></a>2 család kiadások
@@ -164,8 +165,9 @@ Október vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | A lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.76_201807-02 |2018. augusztus 3. |POST 2.78 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-2.75_201806-01 |2018. július 3. |POST 2.77 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.74_201805-01 |2018. június 1. |POST 2.76 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.74_201805-01~~ |2018. június 1. |2018. augusztus 3.|TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.73_201804-01~~ |2018. május 4. |2018. július 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.72_201803-01~~ |2018. április 6. |2018. június 1. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.71_201802-01~~ |2018. március 12. |2018. május 4. |TBD |

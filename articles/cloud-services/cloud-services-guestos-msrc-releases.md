@@ -12,17 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/6/2018
+ms.date: 8/3/2018
 ms.author: raiye
-ms.openlocfilehash: 440f988744a99d4857c6b9fa58f52e0f1eef1a3f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: aa7ee049177fccbcca7d648ca749eb9fb35a0f53
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902163"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522305"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
+
+
+## <a name="july-guest-os"></a>Július vendég operációs rendszer
+| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| 18-07-rel | [4338814] |A Windows 10 biztonsági |5.21 |2018. július 10. |
+| 18-07-rel | [4338823] |Csak a Windows biztonsági |2.76 |2018. július 10. |
+| 18-07-rel | [4338820] |Csak a Windows biztonsági |3.63 |2018. július 10. |
+| 18-07-rel | [4338824] |Csak a Windows biztonsági |4,56 |2018. július 10. |
+| 18-07-rel | [4345459] |Biztonsági kumulatív frissítés |2.76 |2018. július 10. |
+| 18-07-rel | [4345425] |Biztonsági kumulatív frissítés |3.63 |2018. július 10. |
+| 18-07-rel | [4345424] |Biztonsági kumulatív frissítés |4,56 |2018. július 10. |
+| 18-07-rel | [4345418] |Biztonsági kumulatív frissítés |5.21 |2018. július 10. |
+| 18-07-rel | [4338612], [4338602] |A .NET 3.5, 4.x biztonsági |2.76 |2018. július 10. |
+| 18-07-rel | [4338601], [4338604] |A .NET 3.5, 4.x, az 4,5 x biztonsági |3.63 |2018. július 10. |
+| 18-07-rel | [4338613], [4338600], [4338605] |A .NET 3.5, 4.x, az 4,5 x biztonsági |4,56|2018. július 10. |
+| 18-07-rel | [4338832] |Flash |3.63, 4.76, 5.21 |2018. július 10. |
+| 18-07-rel | [4339093] |Internet Explorer |2.76, 3.63, 4.76 |2018. július 10. |
+| – | [4284826] |Június nem a biztonság összegzése |2.76 |2018. június 12. |
+| – | [4284855] |Június nem a biztonság összegzése |3.63 |2018. június 12. |
+| – | [4284815] |Június nem a biztonság összegzése |4,56 |2018. június 12. |
 
 ## <a name="june-guest-os"></a>Június vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
@@ -674,6 +695,28 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – |[2999802] |A Windows nyomtatott folytonos vonal helyett pontozott vonal |4.15, 3.22, 2.34 |Jan 13 2015 |
 | – |[2896881] |Mennyi ideig a AddPrinterConnection VBScript parancsot használhatja, nyomtatók, felhasználók hozzárendelése a bejelentkezés során a Windows bejelentkezési idő |4.15, 3.22, 2.34 |Jan 13 2015 |
 
+
+
+[4338814]: http://support.microsoft.com/kb/4338814
+[4338823]: http://support.microsoft.com/kb/4338823
+[4338820]: http://support.microsoft.com/kb/4338820
+[4338824]: http://support.microsoft.com/kb/4338824
+[4345459]: http://support.microsoft.com/kb/4345459
+[4345425]: http://support.microsoft.com/kb/4345425
+[4345424]: http://support.microsoft.com/kb/4345424
+[4345418]: http://support.microsoft.com/kb/4345418
+[4338612]: http://support.microsoft.com/kb/4338612
+[4338602]: http://support.microsoft.com/kb/4338602
+[4338601]: http://support.microsoft.com/kb/4338601
+[4338604]: http://support.microsoft.com/kb/4338604
+[4338613]: http://support.microsoft.com/kb/4338613
+[4338600]: http://support.microsoft.com/kb/4338600
+[4338605]: http://support.microsoft.com/kb/4338605
+[4338832]: http://support.microsoft.com/kb/4338832
+[4284826]: http://support.microsoft.com/kb/4284826
+[4284855]: http://support.microsoft.com/kb/4284855
+[4284815]: http://support.microsoft.com/kb/4284815
+[4339093]: http://support.microsoft.com/kb/4339093
 
 [4284880]: http://support.microsoft.com/kb/4284880
 [4284867]: http://support.microsoft.com/kb/4284867

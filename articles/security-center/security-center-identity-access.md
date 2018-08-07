@@ -3,7 +3,7 @@ title: Identitás és hozzáférés figyelése az Azure Security Centerben | Mic
 description: Itt megtudhatja, hogyan használható az Azure Security Center identitási és hozzáférési funkciója a felhasználók hozzáférési tevékenységeinek és identitással kapcsolatos problémáinak figyelésére.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/14/2018
-ms.author: terrylan
-ms.openlocfilehash: b2243b10c20a0c8ed0faccbcc82e24193bd4adac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 821a88f3627b19951c26677838bd2f86d0948ab9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460267"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526830"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
@@ -33,12 +33,12 @@ Az identitásnak kell lennie a vállalat vezérlősíkjának, és az identitás 
 
 Az identitástevékenységek figyelésével proaktív módon tud cselekedni, mielőtt egy incidens bekövetkezne, illetve reaktív tevékenységekkel leállíthatja a támadási kísérleteket. Az identitás és hozzáférés irányítópult nyújt ajánlásokat például:
 
-- Az MFA engedélyezése az előfizetés kiemelt jogosultságú fiókok
+- Az MFA engedélyezése az előfizetés kiemelt jogosultságú fiókjaiban
 - Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből
 - Kiemelt jogosultságú külső fiókok eltávolítása az előfizetésből
 
 > [!NOTE]
-> Ha az előfizetés legfeljebb 250 fiókkal rendelkezik, a Security Center nem tudja futtatni az identitás javaslatokat az előfizetésen. Javaslatok, amelyek nem futnak a "értékelések nem érhetők el" amelyet alatt vannak felsorolva.
+> Ha az előfizetés több mint 600 fiókkal rendelkezik, a Security Center nem tudja futtatni az identitás javaslatokat az előfizetésen. Javaslatok, amelyek nem futnak a "értékelések nem érhetők el" amelyet alatt vannak felsorolva.
 A Security Center nem tud az identitás javaslatokat futtatásához egy Felhőszolgáltató (CSP) partner által létrehozott felügyeleti ügynökök.
 >
 >
