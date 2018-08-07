@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights keresztül Analytics bemutatása |} Microsoft Docs
-description: A fő lekérdezések Analytics, a hatékony keresési eszköz az Application Insights rövid minta.
+title: Az Azure Application Insights-analitika segítségével bemutatása |} A Microsoft Docs
+description: A fő lekérdezések Analytics, az Application insights hatékony keresési eszköz rövid mintáit.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,54 +13,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8295abfae8d82a7c7762c6b27a8bac7487f6afff
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 470779f80e998c3908cf28328cfb415d98c5e06c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335281"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579255"
 ---
-# <a name="a-tour-of-analytics-in-application-insights"></a>Az Application Insightsban Analytics bemutatása
-[Elemzés](app-insights-analytics.md) a hatékony keresési funkciója [Application Insights](app-insights-overview.md). Ezeken a lapokon a Log Analytics lekérdezési nyelv ismertetik.
+# <a name="a-tour-of-analytics-in-application-insights"></a>Az Application Insights az elemzés bemutatása
+[Analytics](app-insights-analytics.md) az hatékony keresési szolgáltatása [Application Insights](app-insights-overview.md). Ezeket az oldalakat a Log Analytics lekérdezési nyelv leírása.
 
-* **[A bevezető videó](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
-* **[Tesztelése szimulált adataink Analytics meghajtóján](https://analytics.applicationinsights.io/demo)**  Ha az alkalmazás nem adatok küldése az Application Insights még.
-* **[SQL-felhasználók lap cheat](https://aka.ms/sql-analytics)**  fordítja le a leggyakrabban használt idioms.
+* **[Tekintse meg a bevezető videót](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Próbálja ki az Analytics szimulált adatokon](https://analytics.applicationinsights.io/demo)**  az alkalmazás nem adatot küldenek, az Application Insightsba még.
+* **[SQL-felhasználók – adatlap](https://aka.ms/sql-analytics)**  fordítja le a leggyakrabban használt nyelv szintaxisát.
 
-Vegyünk egy lépésein végighaladva az első lépésekhez néhány alapvető lekérdezések.
+Vessünk egy az útmutató néhány alapszintű lekérdezéseket a kezdéshez.
 
-## <a name="connect-to-your-application-insights-data"></a>Csatlakozás az Application Insights adatokhoz
-Nyissa meg az alkalmazás Analytics [áttekintése panel](app-insights-dashboards.md) az Application Insightsban:
+## <a name="connect-to-your-application-insights-data"></a>Az Application Insights-adatait
+Nyissa meg az alkalmazás Analytics [áttekintő paneljén](app-insights-dashboards.md) az Application insights szolgáltatásban:
 
-![Nyissa meg portal.azure.com, nyissa meg az Application Insights-erőforrást, majd kattintson a elemzés.](./media/app-insights-analytics-tour/001.png)
+![Portal.Azure.com címen nyissa meg, nyissa meg az Application Insights-erőforrást, és kattintson az Analytics.](./media/app-insights-analytics-tour/001.png)
 
 ## <a name="takehttpsdocsloganalyticsiodocslanguage-referencetabular-operators-show-me-n-rows"></a>[Igénybe](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators): n sorok megjelenítése
-Felhasználói műveletek (általában HTTP-kérelmekre a webes alkalmazás által fogadott) jelentkezzen adatpontok tárolódnak a következő táblába `requests`. Minden egyes sorára az egy telemetriai adat az Application Insights SDK az alkalmazás kapott.
+(Általában a HTTP által fogadott kérelmek a webes alkalmazás) felhasználói műveletek naplózására adatpontok vannak tárolva a következő táblába `requests`. Minden egyes sor az egy telemetriai adat az Application Insights SDK az alkalmazás kapott.
 
-Először néhány minta sorokat a tábla vizsgálata:
+Kezdjük a tábla sorát néhány minta megvizsgálásával:
 
 ![eredmények](./media/app-insights-analytics-tour/010.png)
 
 > [!NOTE]
-> Helyezze el a kurzor valahol az utasítás előtt Ugrás gombra. Egy utasítás is átnyúlik egynél több sort, de nem üres sorok be egy utasítást. Üres sorai egy kényelmes módszert arra több külön lekérdezésekké megtartja az ablak.
+> Helyezze a kurzort valahol az utasítás előtt kattintson az Indítás gombra. Egy utasítást is átnyúlik egynél több sort, de ne helyezzen üres sorok utasításban. Üres sorok kényelmes módon, hogy több külön lekérdezések az ablakban.
 >
 >
 
-Oszlopok kiválasztása, egérrel húzza őket, oszlop, csoport, és szűréséhez:
+Oszlopok kiválasztása, húzza át őket, csoport oszlop szerint, és szűréssel keresse:
 
 ![Kattintson a felső jobb eredmények oszlop kiválasztása](./media/app-insights-analytics-tour/030.png)
 
-Bontsa ki bármelyik elemre, hogy a részleteket lásd:
+Bontsa ki a bármely elemet a részletek megtekintéséhez:
 
-![Kattintson a táblázat, és használja az oszlopok konfigurálása](./media/app-insights-analytics-tour/040.png)
+![Válassza ki a tábla, és használjon oszlopokat konfigurálása](./media/app-insights-analytics-tour/040.png)
 
 > [!NOTE]
-> Kattintson egy sorrendjének az eredményeket a webböngészőben elérhető oszlop fejlécében. De vegye figyelembe, hogy a nagy eredményhalmazt, a böngésző letöltött sorok száma korlátozott. Egyszerűen így rendezési rendezi a visszaadott eredményhalmaz és nem mindig meg a tényleges legnagyobb vagy legkisebb elemek megjelenítése. Elemek megbízhatóan rendezéséhez használja a `top` vagy `sort` operátor.
+> Kattintson a fejléc, az oszlopok sorrendjének az eredményeket a webböngészőben elérhető. De vegye figyelembe, hogy egy nagy eredményhalmazt, a böngésző le sorok száma korlátozva. Egyszerűen csak ezzel a módszerrel rendezési rendezi a visszaadott eredménykészlet és nem mindig jelenik meg, a tényleges legmagasabb vagy legalacsonyabb elemeket. Megbízhatóan rendezheti az elemeket, használja a `top` vagy `sort` operátor.
 >
 >
 
-## <a name="query-across-applications"></a>Alkalmazások átfogó lekérdezése
-Az Application Insights több alkalmazás adatainak kombinálását, használja a **app** kulcsszó adhatja meg a táblázat neve mellett az alkalmazást.  Ez a lekérdezés egyesíti a két különböző alkalmazás érkező kéréseket a **Unió** parancsot.
+## <a name="query-across-applications"></a>Lekérdezés több alkalmazások
+Ha több Application Insights-alkalmazások származó adatokat kombinálni szeretne, használja a **alkalmazás** kulcsszó használatával adja meg a táblázat neve mellett az alkalmazást.  Ez a lekérdezés egyesít két különböző alkalmazás kérelmeit a **union** parancsot.
 
 
 ```AIQL
@@ -70,34 +70,34 @@ Az Application Insights több alkalmazás adatainak kombinálását, használja 
 ```
 
 ## <a name="tophttpsdocsloganalyticsiodocslanguage-referencetabular-operatorstop-operator-and-sorthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssort-operator"></a>[Felső](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) és [rendezés](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator)
-`take` hasznos eredményeként gyors mintát eléréséhez, de nem meghatározott sorrendben jeleníti meg a tábla azon sorait. Amelyet egy rendezett nézet `top` (a minta) vagy `sort` (keresztül az egész tábla).
+`take` hasznos. Ennek eredményeként a gyors minta letöltése, de nem meghatározott sorrendben jeleníti meg a tábla sorait. Egy rendezett nézet használja `top` (a minta) vagy `sort` (a teljes tábla) protokollon keresztül.
 
-Az első n sorok, adott oszlop szerint rendezve jelenjenek meg:
+Az első n sorok, adott oszlop szerint rendezett megjelenítése:
 
 ```AIQL
 
     requests | top 10 by timestamp desc
 ```
 
-* *Szintaxis:* legtöbb operátorok rendelkeznek kulcsszó paraméterek például `by`.
-* `desc` csökkenő sorrendben = `asc` = növekvő.
+* *Szintaxis:* legtöbb operátorok rendelkezik kulcsszó-paraméterek például `by`.
+* `desc` Csökkenő sorrend = `asc` = növekvő.
 
 ![](./media/app-insights-analytics-tour/260.png)
 
-`top...` További performant módszer megkapta a `sort ... | take...`. A Microsoft sikerült írt:
+`top...` egy üzenettel további lehetőség a nagy teljesítményű `sort ... | take...`. Sikerült azt kell írni:
 
 ```AIQL
 
     requests | sort by timestamp desc | take 10
 ```
 
-Az eredmény változatlan marad, de egy kicsit lassabban fog futni. (Is létrehozható `order`, ez az alias az `sort`.)
+Az eredmény ugyanaz lesz, de szeretné egy kicsit lassabban futnak. (Is is írható `order`, azaz egy aliast `sort`.)
 
-Az oszlopfejlécek nézetében is használható a képernyőn az eredmények rendezéséhez. De ha már használta természetesen `take` vagy `top` csak lekérdezni egy tábla, kattintson az oszlopfejlécre a része lesz csak sorrendjének a korábban beolvasott rekordok.
+A táblázatos nézetre az oszlopfejléceket is használható a képernyőn az eredmények rendezéséhez. De ha használt már természetesen `take` vagy `top` csak lekérdezni egy táblát az oszlop fejlécére kattintva része lesz csak sorrendjének a rekordjával.
 
-## <a name="wherehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorswhere-operator-filtering-on-a-condition"></a>[Ha](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator): szűrési feltétel
+## <a name="wherehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorswhere-operator-filtering-on-a-condition"></a>[Ahol](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator): szűrési feltétel
 
-Nézzük meg, csak kérelmeket, amelyek egy adott eredmény, hibakód:
+Lássuk csak kérelmek egy adott eredmény, hibakód:
 
 ```AIQL
 
@@ -108,17 +108,17 @@ Nézzük meg, csak kérelmeket, amelyek egy adott eredmény, hibakód:
 
 ![](./media/app-insights-analytics-tour/250.png)
 
-A `where` operátor egy logikai kifejezés vesz igénybe. Az alábbiakban néhány kulcsfontosságú pont róluk:
+A `where` operátor egy logikai kifejezés vesz igénybe. Az alábbiakban a velük kapcsolatos néhány alapvető szempontokat:
 
 * `and`, `or`: Logikai operátorok
 * `==`, `<>`, `!=` : egyenlő, és nem egyenlő
-* `=~`, `!~` : egyenlő és nem egyenlő azonban nem karakterlánc. Számos további karakterlánc-összehasonlítási operátorok.
+* `=~`, `!~` : kis-és karakterlánc nem lehet, és nem egyenlő. Számos további karakterlánc-összehasonlítási operátor.
 
 <!---Read all about [scalar expressions]().--->
 
-### <a name="find-unsuccessful-requests"></a>Sikertelen kérelmek keresése
+### <a name="find-unsuccessful-requests"></a>Keresse meg a sikertelen kérelmek
 
-Karakterlánc-érték átalakítása használandó nagyobb egész-összehasonlítás mint:
+Karakterlánc-érték konvertálása egy egész szám, amely nagyobb – összehasonlítása, mint:
 
 ```AIQL
 
@@ -131,11 +131,11 @@ Karakterlánc-érték átalakítása használandó nagyobb egész-összehasonlí
 
 ## <a name="time"></a>Time
 
-Alapértelmezés szerint a lekérdezések csak az utolsó 24 óra. Azonban módosíthatja ezt a tartományt:
+Alapértelmezés szerint a lekérdezések korlátozva az utolsó 24 óra. Azonban módosíthatja ezt a tartományt:
 
 ![](./media/app-insights-analytics-tour/change-time-range.png)
 
-Bírálja felül az időtartományt, amely akkor említi lekérdezés írásával `timestamp` a where záradékban. Példa:
+Bírálja felül az időtartományt, ha a lekérdezés, amely említi `timestamp` a where záradékban. Példa:
 
 ```AIQL
 
@@ -145,9 +145,9 @@ Bírálja felül az időtartományt, amely akkor említi lekérdezés írásáva
     | top 5 by duration
 ```
 
-Az idő a tartomány szolgáltatás megegyezik a "where" záradék után minden hashtagként a forrástáblákból közül az egyik beilleszteni.
+Az idő a tartomány funkció megegyezik a "where" záradék után minden Dicséretben részesítettünk a forrástáblákhoz egyik egészül ki.
 
-`ago(3d)` azt jelenti, hogy a "három nappal ezelőtt". Más időegységekkel óra közé tartozik (`2h`, `2.5h`), a perc (`25m`), és a másodperc (`10s`).
+`ago(3d)` azt jelenti, hogy "három nappal ezelőtt". Egyéb időegységben az üzemidő (`2h`, `2.5h`), perc (`25m`), és a másodperc (`10s`).
 
 További példák:
 
@@ -176,11 +176,11 @@ További példák:
 
 ```
 
-[Dátumokat és időpontokat hivatkozás](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
+[Dátum és időpont referencia](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
 
 
-## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): válassza ki, nevezze át és számítási oszlopok
-Használjon [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) kívánt oszlopok kiválasztására:
+## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): kiválasztása, átnevezése és oszlopok compute
+Használat [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) használatával mindössze a kívánt oszlopokat választhat:
 
 ```AIQL
 
@@ -190,7 +190,7 @@ Használjon [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/T
 
 ![](./media/app-insights-analytics-tour/240.png)
 
-Nevezze át az oszlopok is, és újakat megadása:
+Oszlopok átnevezése és definiálása újakat is:
 
 ```AIQL
 
@@ -203,17 +203,17 @@ Nevezze át az oszlopok is, és újakat megadása:
             ['time of day'] = floor(timestamp % 1d, 1s)
 ```
 
-![eredménye](./media/app-insights-analytics-tour/270.png)
+![Eredmény](./media/app-insights-analytics-tour/270.png)
 
-* Oszlopnevek szóközöket is tartalmazhatnak, vagy azok vannak zárójeles Ha szimbólumokat, ez például: `['...']` vagy `["..."]`
-* `%` van a szokásos moduló operátor.
-* `1d` (Ez egy számjegy, majd egy kellett ") literális timespan tehát az egy nap. Az alábbiakban néhány további timespan-szövegkonstans: `12h`, `30m`, `10s`, `0.01s`.
-* `floor` (alias `bin`) kerekít egy értéket, az alapérték megadta a legközelebbi többszörösére le. Ezért `floor(aTime, 1s)` kerekítése a legközelebbi második le egyszerre.
+* Oszlopnevek szóközöket is tartalmazhatnak, vagy ha azok vannak zárójeles szimbólumok, mint ez: `['...']` vagy `["..."]`
+* `%` van a szokásos módon Maradékos osztás operátort.
+* `1d` (egy számjegyet, ez akkor volt ") literál timespan van tehát egy nap. Az alábbiakban néhány további timespan literálok: `12h`, `30m`, `10s`, `0.01s`.
+* `floor` (alias `bin`) kerekít egy érték csak akkor adja meg az alapérték a legközelebbi többszörösére. Ezért `floor(aTime, 1s)` egy időt a legközelebbi második lefelé kerekít.
 
-Kifejezések lehetnek a szokásos operátorok (`+`, `-`,...), és számos különböző hasznos funkciók.
+Kifejezések tartalmazhatnak a szokásos operátorok (`+`, `-`,...), és számos hasznos funkció.
 
 ## <a name="extend"></a>Bővíthető
-Ha csak szeretné oszlopok hozzáadása a már meglévőket, [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator):
+Ha csak át szeretné oszlopok hozzáadása és a meglévő, [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator):
 
 ```AIQL
 
@@ -222,11 +222,11 @@ Ha csak szeretné oszlopok hozzáadása a már meglévőket, [ `extend` ](https:
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-Használatával [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator) kevésbé részletes, mint [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) Ha meg szeretné tartani a meglévő oszlopokat.
+Használatával [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator) kevésbé részletes, mint [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) Ha meg szeretné tartani a meglévő oszlopok.
 
 ### <a name="convert-to-local-time"></a>Helyi idő átalakítása
 
-Időbélyeg helyi időre mindig UTC formátumban vannak. Így ha Ön a US csendes-óceáni part és téli, akkor célszerű ezt:
+Időbélyegeket mindig UTC formátumban vannak. Így ha Ön az Amerikai csendes-óceáni partján és téli olimpiai, majd a helyi idő UTC-ről-8 óra, akkor ehhez hasonló lehet:
 
 ```AIQL
 
@@ -235,45 +235,45 @@ Időbélyeg helyi időre mindig UTC formátumban vannak. Így ha Ön a US csende
     | extend localTime = timestamp - 8h
 ```
 
-## <a name="summarizehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssummarize-operator-aggregate-groups-of-rows"></a>[Összefoglalója](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator): sorcsoportra összesítése
-`Summarize` alkalmazza a megadott *aggregátumfüggvény* keresztül sorcsoportra.
+## <a name="summarizehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssummarize-operator-aggregate-groups-of-rows"></a>[Összegzés](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator): sorcsoportra összesítése
+`Summarize` vonatkozik egy meghatározott *aggregátumfüggvény* keresztül sorcsoportra.
 
-Például a webalkalmazás válaszol a kérelemre idejét a mezőben jelentett `duration`. Nézzük meg, az átlagos válaszidő kérelmekre:
+Például a mezőben a webalkalmazás egy kérelem mennyi idő van jelentett `duration`. Nézzük meg, az átlagos válaszidő az összes kérelem:
 
 ![](./media/app-insights-analytics-tour/410.png)
 
-Vagy az eredmény azt sikerült külön kéréseket a különböző nevek:
+Vagy azt sikerült az eredmény szét különböző neveket kérelmeket:
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize` gyűjti az adatfolyamban az adatpontok csoportokba, amelynek a `by` záradék egyaránt értékelődik ki. Minden érték a `by` kifejezés - minden egyedi művelet neve a fenti példa - eredménytáblájában egy sort eredményez.
+`Summarize` gyűjti a Stream az adatpontok csoportokba, amelynek a `by` záradék egyaránt kiértékeli. Minden érték a `by` kifejezés - minden művelet egyedi neve a fenti példában - eredménytáblájában egy sort eredményez.
 
-Vagy azt sikerült eredmények csoportosítás időpontja:
+Vagy hogy sikerült eredmények csoportosítás napon:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Figyelje meg, hogyan használunk a `bin` funkciót (más néven `floor`). Ha éppen most használt `by timestamp`, mindegyik bemeneti sorában végül volna a saját kis csoport. A minden alkalommal például folyamatos skaláris vagy számok, frissítenünk kell a folyamatos tartomány felosztása kezelhető számos diszkrét értéket. `bin` -Ez csak a jól ismert kerekítési lefelé `floor` működik – a a legegyszerűbb módja.
+Figyelje meg, hogyan használjuk a `bin` funkció (más néven `floor`). Ha éppen most használt `by timestamp`, minden bemeneti sor végül lenne a saját kis csoport. A minden olyan alkalommal például folyamatos skaláris vagy számokat kell, hogy a folyamatos tartomány felosztása egy kezelhető diszkrét értékek száma. `bin` – Ez csak a jól ismert kerekítés lefelé `floor` függvényt – ennek a legegyszerűbb módja.
 
-Ugyanaz a technika használatával is csökkentheti a karakterláncok tartományait:
+Ugyanezen technika használatával csökkentheti a karakterláncok tartományok:
 
 ![](./media/app-insights-analytics-tour/440.png)
 
-Figyelje meg, hogy használható `name=` olyan eredményoszlopot, az összesítő kifejezések vagy a-záradék nevének megadása.
+Figyelje meg, hogy használhatja `name=` beállítani egy eredményoszlop összesítő kifejezések vagy a-záradék nevét.
 
-## <a name="counting-sampled-data"></a>Leltár adatminta
-`sum(itemCount)` az ajánlott összevonása események száma a rendszer. Sok esetben az elemek száma 1, ==, a függvény egyszerűen megjeleníti a csoportban található sorok számát. De ha [mintavételi](app-insights-sampling.md) van műveletben, csak töredéke alatt az eredeti események kerülnek, az Application Insights adatpontok úgy, hogy az egyes adatpontokban látja, `itemCount` események.
+## <a name="counting-sampled-data"></a>Leltár változásához
+`sum(itemCount)` az események száma az ajánlott összesítést. Sok esetben az elemek száma 1, ==, így a függvény csak megszámlálja a csoportban található sorok számát. De ha [mintavételi](app-insights-sampling.md) van a művelet csak az eredeti események tört megmaradnak adatpontot az Application insights szolgáltatásban, mint úgy, hogy minden egyes adatponthoz látja, `itemCount` események.
 
-Például, ha a mintavételi elveti az eredeti események, akkor az elemek száma 75 % == 4 megtartott rekordokban - Ez azt jelenti, hogy megtartott rekordot, volt négy eredeti rögzíti.
+Például, ha a mintavételi elveti 75 %-át az eredeti eseményeket, majd az elemek száma == 4 a megőrzött rekordok -, minden megőrzött rekord voltak négy eredeti rekordokat.
 
-Adaptív mintavételi az elemek száma a magasabb lehet, ha az alkalmazás fokozottan használatos időszakokban okoz.
+Az adaptív mintavételezési hatására az elemek száma magasabb lehet, ha az alkalmazás erősen használatos időszakokban.
 
-Ezért az elemek száma összegzése ad események számát az eredeti jó becslése.
+Ezért az elemek száma összegzésének események számát az eredeti jó becslése biztosít.
 
 ![](./media/app-insights-analytics-tour/510.png)
 
-Szerepel továbbá egy `count()` összesítési (és a count művelet), olyan esetekben, ahol valóban szeretné, hogy a csoportban található sorok számát.
+Emellett van egy `count()` összesítés (és a egy count művelet) olyan esetekben, ahol valóban szeretné, hogy a csoportban található sorok számát.
 
-Nincs számos [aggregátumfüggvényeket](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
+Számos van [összesítő függvényektől](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
 
 ## <a name="charting-the-results"></a>Az eredmények diagramkészítési
 ```AIQL
@@ -287,15 +287,15 @@ Alapértelmezés szerint eredmények táblázatos megjelenítéséhez:
 
 ![](./media/app-insights-analytics-tour/225.png)
 
-Tudnánk mint a tábla nézet. Vizsgáljuk meg az eredményeket a diagram nézetben a függőleges a sáv lehetőséget:
+Javíthatunk, mint a táblázatos nézetre. Nézzük meg a diagram nézetben az eredményeket a függőleges a sáv lehetőséget:
 
-![Diagram, kattintson, majd válassza ki a függőleges sávdiagram, és rendelje hozzá x és y tengely](./media/app-insights-analytics-tour/230.png)
+![Kattintson a diagramra, majd válassza ki a függőleges sávdiagram és hozzárendelését x és y tengely](./media/app-insights-analytics-tour/230.png)
 
-Figyelje meg, hogy bár azt nem az eredmények rendezéséhez idő (ahogy látja, jelennek meg a táblázat), a diagram megjelenítési mindig látható időpontok megfelelő sorrendben.
+Figyelje meg, hogy bár azt nem az eredmények rendezéséhez idő (ahogy az a tábla megjelenített látható), a diagram megjelenítési mindig látható időpontok megfelelő sorrendben.
 
 
 ## <a name="timecharts"></a>Timecharts
-Események nincs mutatja óránként:
+Nincs események számát mutatja óránként:
 
 ```AIQL
 
@@ -304,14 +304,14 @@ Események nincs mutatja óránként:
         by bin(timestamp, 1h)
 ```
 
-Válassza ki a diagram megjelenítési lehetőséget:
+Válassza ki a diagram megjelenítési beállítás:
 
-![timechart](./media/app-insights-analytics-tour/080.png)
+![idődiagramját](./media/app-insights-analytics-tour/080.png)
 
 ## <a name="multiple-series"></a>Több sorozat
-Több kifejezést a `summarize` záradékban több oszlop hoz létre.
+Több kifejezésének a `summarize` záradékban több oszlopot hoz létre.
 
-Több kifejezést a `by` záradékban több sort, egy a minden értékkombinációja hoz létre.
+Több kifejezésének a `by` záradékban több sort, egy az egyes értékek kombinációjának hoz létre.
 
 ```AIQL
 
@@ -323,14 +323,14 @@ Több kifejezést a `by` záradékban több sort, egy a minden értékkombináci
 
 ![Tábla kérelmek óra és hely szerint](./media/app-insights-analytics-tour/090.png)
 
-### <a name="segment-a-chart-by-dimensions"></a>A diagram szegmentálja dimenziók
-Ha a diagram karakterlánc oszlopot és egy numerikus oszlopot tartalmazó táblát, a karakterlánc segítségével a numerikus adatok felosztása pontok külön sorozata. Ha egynél több oszlophoz, dönthet úgy, hogy melyik oszlop kívánja használni, mint a Diszkriminátor ki.
+### <a name="segment-a-chart-by-dimensions"></a>A diagram szegmentáljon dimenziók
+Ha Ön a diagram egy karakterláncokat tartalmazó oszlopot, és a egy numerikus oszlopot tartalmazó táblát, a karakterlánc ossza fel a numerikus adatokat külön adatsorozat pontjainak használható. Ha egynél több oszlophoz, kiválaszthatja a Diszkriminátor használandó oszlop.
 
 ![Egy diagramra szegmens](./media/app-insights-analytics-tour/100.png)
 
-#### <a name="bounce-rate"></a>Golflabda arány
+#### <a name="bounce-rate"></a>Visszadobási arány
 
-Olyan logikai érték átalakítása egy karakterláncot megfeleltessen egy Diszkriminátor használni:
+Logikai érték konvertálása egy karakterláncot megfeleltessen egy Diszkriminátor szeretné használni:
 
 ```AIQL
 
@@ -346,17 +346,17 @@ Olyan logikai érték átalakítása egy karakterláncot megfeleltessen egy Disz
     | render timechart
 ```
 
-### <a name="display-multiple-metrics"></a>Több metrikák megjelenítése
-Ha Ön diagram mellett a Timestamp értéket, több mint egy numerikus oszlopot tartalmazó táblát jelenítheti meg azok bármilyen kombinációját.
+### <a name="display-multiple-metrics"></a>Több metrika megjelenítése
+Ha a diagram mellett az időbélyeget, numerikus egynél több oszlopot tartalmazó táblát –, megjelenítheti, hogy azok bármilyen kombinációját.
 
 ![Egy diagramra szegmens](./media/app-insights-analytics-tour/110.png)
 
-Ki kell választania **nem osztott** több numerikus oszlop kiválasztása előtt. Az azonos időpontban csak egy numerikus oszlopot megjelenítése nem osztható fel karakterlánc oszlop szerint.
+Ki kell választania **nem osztott** több numerikus oszlopok kiválasztása előtt. Egyszerre több numerikus oszlop megjelenítése, nem felosztás egy karakterláncokat tartalmazó oszlopot.
 
 ## <a name="daily-average-cycle"></a>Napi átlagos ciklus
-Hogyan változik a használat átlagos napon keresztül?
+Hogyan változik a használati az átlagos nap során?
 
-Count kérések moduló egy nap idő munkaidőre binned:
+Száma kérések a modulus egy nap, ideje munkaidőre binned:
 
 ```AIQL
 
@@ -368,15 +368,15 @@ Count kérések moduló egy nap idő munkaidőre binned:
     | summarize event_count=sum(itemCount) by hour
 ```
 
-![Az órát egy átlagos napon belül vonaldiagram](./media/app-insights-analytics-tour/120.png)
+![Vonaldiagram, az óra egy átlagos nap](./media/app-insights-analytics-tour/120.png)
 
 > [!NOTE]
-> Figyelje meg, hogy jelenleg kell csak datetimes értékek ahhoz, hogy megjelenjen egy vonaldiagramot idő időtartamok átalakítása.
+> Figyelje meg, hogy jelenleg van ideje időtartamok átalakítása időpontok annak érdekében, hogy a vonaldiagram megjelenítéséhez.
 >
 >
 
-## <a name="compare-multiple-daily-series"></a>Több napi sorozat összehasonlítása
-Hogyan használati változik a időpontot keresztül a különböző országokban?
+## <a name="compare-multiple-daily-series"></a>Hasonlítsa össze a napi több sorozat
+Hogyan használati változik a napi időpontot át a különböző országokban?
 
 ```AIQL
 
@@ -390,10 +390,10 @@ Hogyan használati változik a időpontot keresztül a különböző országokba
      | render timechart
 ```
 
-![Vegyes által client_CountryOrRegion](./media/app-insights-analytics-tour/130.png)
+![A client_CountryOrRegion split szerint](./media/app-insights-analytics-tour/130.png)
 
 ## <a name="plot-a-distribution"></a>Egy terjesztési ábrázolása
-Hány munkamenetek vannak-e különböző hosszúságú?
+Hány munkamenetek vannak-e, egymástól eltérő hosszúságú?
 
 ```AIQL
 
@@ -408,14 +408,14 @@ Hány munkamenetek vannak-e különböző hosszúságú?
     | project d = sessionDuration + datetime("2016-01-01"), count_
 ```
 
-Az utolsó sort kell az átalakítás datetime értékre. Jelenleg a diagram x tengelyéhez jelenik meg skaláris csak akkor, ha egy DateTime típusú érték.
+Utolsó sora van szükség az átalakítás DateTime értékre. Jelenleg a diagram x tengely megjelent skaláris csak akkor, ha egy dátum és idő.
 
 A `where` záradék nem tartalmazza a végeredménye munkamenetek (sessionDuration == 0), és beállítja az x tengely hosszát.
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentileshttpsdocsloganalyticsiodocslanguage-referenceaggregation-functionspercentiles"></a>[Százalékos érték](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/percentiles())
-Milyen tartományok időtartamok fedik le a munkamenetek különböző százalékának?
+## <a name="percentileshttpsdocsloganalyticsiodocslanguage-referenceaggregation-functionspercentiles"></a>[Percentilisei](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/percentiles())
+Milyen tartományok időtartamok terjed ki a munkamenetek különböző százalékos?
 
 A fenti lekérdezéssel, de az utolsó sort cserélje le:
 
@@ -431,17 +431,17 @@ A fenti lekérdezéssel, de az utolsó sort cserélje le:
     | summarize percentiles(sesh, 5, 20, 50, 80, 95)
 ```
 
-Is a felső határ eltávolítása WHERE záradék, beleértve több kérelemmel minden munkamenet megfelelő adatok lekérése érdekében:
+Emellett eltávolítottuk a felső korlátja a WHERE záradékban, többek között az egynél több kérelem minden munkamenet megfelelő adatok érdekében:
 
-![eredménye](./media/app-insights-analytics-tour/180.png)
+![Eredmény](./media/app-insights-analytics-tour/180.png)
 
-Ahol láthatja, hogy:
+Amelyből látható, amely:
 
-* a munkamenetek 5 % rendelkezik a kevesebb mint 3 perc alatt 34s; időtartama
-* 50 %-a munkamenetek utolsó 36 percnél kevesebb;
-* az utolsó 7 napnál 5 %-a munkamenetek
+* 5 %-a munkamenetek rendelkezik a kevesebb mint 3 perc alatt 34s; időtartama
+* 50 %-a munkamenetek az elmúlt kevesebb mint 36 perc
+* a munkamenetek 5 % az elmúlt több mint 7 nap
 
-A client_CountryOrRegion oszlop külön-külön is keresztül külön részletes információkat lekérni az egyes országok, csak azt kell léptetniük összesítse a kezelők:
+Minden ország, előbb rendelkezik ahhoz, hogy külön információkat beolvasni a client_CountryOrRegion oszlop külön-külön is keresztül operátorok összefoglalásképpen:
 
 ```AIQL
 
@@ -459,9 +459,9 @@ A client_CountryOrRegion oszlop külön-külön is keresztül külön részletes
 ![](./media/app-insights-analytics-tour/190.png)
 
 ## <a name="join"></a>Csatlakozás
-A Microsoft több táblázatokat, beleértve a kérelmek és kivételek hozzáférése.
+Több táblát, beleértve a kérések és kivételek hozzáféréssel rendelkezünk.
 
-A kérelem által visszaadott hibaválaszt kapcsolatos kivételeket megkereséséhez azt kapcsolhatja össze a táblák `session_Id`:
+Keresse meg a egy kérelmet, amely egy adott vissza kapcsolódó kivételeket, azt is csatlakozhat a táblák `operation_Id`:
 
 ```AIQL
 
@@ -472,12 +472,12 @@ A kérelem által visszaadott hibaválaszt kapcsolatos kivételeket megkeresés�
 ```
 
 
-Jó gyakorlat használandó `project` csak a végrehajtása az illesztés előtt kell oszlopok kiválasztásához.
-Az azonos záradékban azt a Timestamp típusú oszlop átnevezése.
+Célszerű használni `project` csak ellenőriznünk kell a join végrehajtása előtt oszlopok kiválasztásához.
+Az azonos záradékban nem átnevezni az időbélyegző-oszlopa.
 
-## <a name="lethttpsdocsloganalyticsiodocslanguage-referencequery-statementslet-statement-assign-a-result-to-a-variable"></a>[Így](https://docs.loganalytics.io/docs/Language-Reference/Query-statements/Let-statement): eredményt hozzárendelése egy változó
+## <a name="lethttpsdocsloganalyticsiodocslanguage-referencequery-statementslet-statement-assign-a-result-to-a-variable"></a>[Lehetővé teszik](https://docs.loganalytics.io/docs/Language-Reference/Query-statements/Let-statement): eredményt hozzárendelése egy változóhoz
 
-Használjon `let` válassza ki az előző kifejezés részei. Az eredmények ugyanazok maradtak, mint:
+Használat `let` válassza ki az előző kifejezés részei. Az eredmények nem változik:
 
 ```AIQL
 
@@ -490,10 +490,10 @@ Használjon `let` válassza ki az előző kifejezés részei. Az eredmények ugy
 ```
 
 > [!Tip] 
-> Az elemzés ügyfél put nem üres sorok a lekérdezés részei között. Ügyeljen arra, hogy az összes hajtható végre.
+> Az Analytics-ügyfelet, az üres sorok, a lekérdezés részei között ne helyezzen. Ne felejtse el minden adatot.
 >
 
-Használjon `toscalar` egyetlen cellában átalakítani egy értéket:
+Használat `toscalar` egyetlen cellában konvertál egy értéket:
 
 ```AIQL
 let topCities =  toscalar (
@@ -509,7 +509,7 @@ requests
 
 ### <a name="functions"></a>Functions
 
-Használjon *segítségével* függvény meghatározásához:
+Használat *teszik* függvény meghatározásához:
 
 ```AIQL
 
@@ -523,11 +523,11 @@ Használjon *segítségével* függvény meghatározásához:
 ```
 
 ## <a name="accessing-nested-objects"></a>Beágyazott objektumok elérése
-A beágyazott objektumok könnyen elérhetők. Például a kivételek adatfolyam láthatja a strukturált objektumok:
+Beágyazott objektumok könnyen elérhetők. Például a kivételeket a stream látható strukturált objektumok ehhez hasonló:
 
-![eredménye](./media/app-insights-analytics-tour/520.png)
+![Eredmény](./media/app-insights-analytics-tour/520.png)
 
-Válassza ki a tulajdonságai továbbra is érdekli konvertálhatók:
+Válassza ki az Önt érdeklő tulajdonságok konvertálhatók:
 
 ```AIQL
 
@@ -535,13 +535,13 @@ Válassza ki a tulajdonságai továbbra is érdekli konvertálhatók:
     | extend method1 = tostring(details[0].parsedStack[1].method)
 ```
 
-Ne feledje, hogy az eredmény a megfelelő típusúra konvertálni.
+Vegye figyelembe, hogy az eredmény a megfelelő típus között szüksége.
 
 
-## <a name="custom-properties-and-measurements"></a>Egyéni tulajdonságok és mérések
-Ha az alkalmazás csatol [egyéni dimenzió (Tulajdonságok) és egyéni mérték](app-insights-api-custom-events-metrics.md#properties) eseményekre, majd megtekintheti azokat a a `customDimensions` és `customMeasurements` objektumok.
+## <a name="custom-properties-and-measurements"></a>Egyéni tulajdonságok és a mértékek
+Ha az alkalmazás csatolja [egyéni méretek (Tulajdonságok) és az egyéni mértékek](app-insights-api-custom-events-metrics.md#properties) eseményeket, majd megtekintheti azokat a a `customDimensions` és `customMeasurements` objektumokat.
 
-Ha például az alkalmazás tartalmazza:
+Például ha az alkalmazás tartalmaz:
 
 ```csharp
 
@@ -561,7 +561,7 @@ Ezek az értékek Analytics kibontásához:
       m1 = todouble(customMeasurements.m1) // cast to expected type
 ```
 
-Annak ellenőrzéséhez, hogy egy egyéni dimenzió egy adott típusú:
+Annak ellenőrzése, hogy egy egyéni dimenzió-e egy adott típusú:
 
 ```AIQL
 
@@ -572,7 +572,7 @@ Annak ellenőrzéséhez, hogy egy egyéni dimenzió egy adott típusú:
 
 ### <a name="special-characters"></a>Speciális karakterek
 
-A különleges karaktereket vagy a név nyelvi kulcsszavak azonosítókhoz elérhet keresztül kell `['` és `']` vagy `["` és `"]`.
+A speciális karakterek vagy nyelvi kulcsszavak nevükben azonosítók, hozzá kell férnie őket keresztül `['` és `']` vagy `["` és `"]`.
 
 ```AIQL
 
@@ -580,19 +580,19 @@ A különleges karaktereket vagy a név nyelvi kulcsszavak azonosítókhoz elér
     | extend p2d2 = customDimensions.['p2.d2'], ...
 ```
 
-[Azonosító elnevezési szabályok referencia](https://docs.loganalytics.io/docs/Learn/References/Naming-principles)
+[Hivatkozási azonosító elnevezési szabályok](https://docs.loganalytics.io/docs/Learn/References/Naming-principles)
 
 ## <a name="dashboards"></a>Irányítópultok
-Ahhoz, hogy minden a legfontosabb diagramok és táblák összefogni a irányítópult eredmény rögzíthető.
+Annak érdekében, hogy minden a legfontosabb diagramok és táblázatok egyesítik az eredményeket az irányítópulton is rögzíthet.
 
-* [Az Azure megosztott irányítópult](app-insights-dashboards.md#share-dashboards): a rögzítés ikonjára. Mielőtt ezt megtehetné, egy megosztott irányítópult kell rendelkeznie. Az Azure portálon nyissa meg, vagy hozzon létre egy irányítópultot, és kattintson a megosztást.
-* [A Power BI-irányítópulton](app-insights-export-power-bi.md): kattintson az exportálni, a Power BI-lekérdezést. Ez a megoldás előnye, hogy a lekérdezés más a mellett számos információforrás jelenítheti meg.
+* [Az Azure megosztott irányítópult](app-insights-dashboards.md#share-dashboards): kattintson a rajzszög ikonra. Mielőtt ezt megtehetné, rendelkeznie kell egy megosztott irányítópulton. Az Azure Portalon nyissa meg, vagy hozzon létre egy irányítópultot, és kattintson a megosztást.
+* [Power BI-irányítópult](app-insights-export-power-bi.md): kattintson az exportálás, a Power BI lekérdezés. Ez a megoldás az előnye, hogy a lekérdezést más a mellett számos forrásból megjelenítheti.
 
 ## <a name="combine-with-imported-data"></a>Az importált adatok kombinálása
 
-Elemzési jelentések remekül az irányítópulton, de az adatok több emészthető űrlapra fordítása előfordulhat. Tegyük fel, hogy a hitelesített felhasználók azonosítják a telemetriai adatok alias. Szeretné a valós nevek megjelenítése az eredmények között. Ehhez szüksége van egy CSV-fájl, amely leképezhető a aliasok a valódi nevét.
+Analytics-jelentések alapbeállítást az irányítópulton jelenik meg, de néha szeretné az adatokat több emészthető űrlap fordítása. Tegyük fel, hogy a hitelesített felhasználók alias azonosítja a telemetriát. Meg szeretne mutatni a valódi neve az eredmények között. Ehhez szüksége van egy CSV-fájlt, amely leképezi az aliasokat a valódi nevét.
 
-Importálhatja egy adatfájlt és csakúgy, mint szabványos táblákat (kérelmeket, kivételek, és így tovább) használja. Vagy lekérdezni az önállóan, vagy más táblák csatlakozzon hozzá. Például, ha a usermap nevű tábla, és nem rendelkezik-e oszlopok `realName` és `userId`, majd lefordítani használja a `user_AuthenticatedId` mező mellett a – kéréstelemetria:
+Importálja egy adatfájlt, és használja, mint bármelyik a hagyományos táblázatokban (kérelmeket, kivételeket és így tovább). Saját hajthat végre lekérdezést, vagy csatlakoztassa más táblázatokkal. Például, ha rendelkezik usermap nevű táblát, és rendelkezik oszlopok `realName` és `userId`, használhatja az átalakításra a `user_AuthenticatedId` mezőbe a kérelmek telemetriai adatai:
 
 ```AIQL
 
@@ -605,27 +605,27 @@ Importálhatja egy adatfájlt és csakúgy, mint szabványos táblákat (kérelm
     | summarize count() by realName
 ```
 
-Importálni tudjon egy táblát, a séma panelen a **egyéb adatforrások**, kövesse az utasításokat egy minta az adatok feltöltése egy új adatforrás hozzáadása. Ez a definíció segítségével majd töltse fel a táblázatokat.
+Egy tábla sémája panelen található importálása **egyéb adatforrásokból**, kövesse az utasításokat, fel kell töltenie az adatokat egy minta egy új adatforrás hozzáadásához. Ez a definíció használatával majd töltse fel a táblákat.
 
-Az importálás funkció jelenleg előzetes, ezért kezdetben megjelenik az "Egyéb adatforrások." ", lépjen velünk kapcsolatba" hivatkozás Ennek segítségével jelentkezzen be a programot, és a hivatkozás majd váltja fel az "Új adatforrás hozzáadása" gombra.
+Az importálás funkció jelenleg előzetes verzióban, így először megjelenik "Lépjen kapcsolatba velünk" hivatkozást a "Más adatforrások." Használja ezt az előzetes programhoz való regisztrációhoz, és a hivatkozás ezután lesz lecserélve az "Új adatforrás hozzáadása" gombra.
 
 
 ## <a name="tables"></a>Táblák
-Az alkalmazástól fogadott telemetriai adatfolyama több táblázatot keresztül érhető el. A bal oldali ablak tulajdonságok érhetők el minden tábla sémája akkor jelenik meg.
+A stream az alkalmazástól fogadott telemetriát több táblát keresztül érhető el. Minden tábla esetében elérhető tulajdonságok sémája látható az ablak bal oldalán.
 
-### <a name="requests-table"></a>Kérelmek tábla
-Count HTTP-kéréseket a web app és a szegmens lapnév szerint:
+### <a name="requests-table"></a>Requests táblához
+A webalkalmazás és szegmens szerint száma HTTP-kéréseket:
 
-![Count kérelmek szegmentált név szerint](./media/app-insights-analytics-tour/analytics-count-requests.png)
+![Név szerint szegmentált száma kérelmek](./media/app-insights-analytics-tour/analytics-count-requests.png)
 
-A legtöbb sikertelen alatt álló kérelmek keresése:
+Keresse meg a kéréseket, amelyek a legtöbb sikertelen:
 
-![Count kérelmek szegmentált név szerint](./media/app-insights-analytics-tour/analytics-failed-requests.png)
+![Név szerint szegmentált száma kérelmek](./media/app-insights-analytics-tour/analytics-failed-requests.png)
 
 ### <a name="custom-events-table"></a>Egyéni események tábla
-Ha [trackevent() függvény](app-insights-api-custom-events-metrics.md#trackevent) saját események küldésére is el ebből a táblázatból.
+Ha [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) szeretne egyéni eseményeket küldeni, akkor olvashatja őket ebből a táblázatból.
 
-Vegyünk egy példát, amelyben az alkalmazás kódját tartalmazza a sorokat:
+Vegyünk egy példát, ahol az alkalmazás kódját tartalmazza a sorokat:
 
 ```csharp
 
@@ -638,64 +638,64 @@ Vegyünk egy példát, amelyben az alkalmazás kódját tartalmazza a sorokat:
 
 Ezek az események gyakorisága megjelenítése:
 
-![Egyéni események megjelenítése aránya](./media/app-insights-analytics-tour/analytics-custom-events-rate.png)
+![Egyéni események megjelenített aránya](./media/app-insights-analytics-tour/analytics-custom-events-rate.png)
 
-Mérések és dimenziókat kinyerése a események:
+Bontsa ki a mértékek és dimenziókat leválasztása az eseményekről:
 
-![Egyéni események megjelenítése aránya](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
+![Egyéni események megjelenített aránya](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
 
 ### <a name="custom-metrics-table"></a>Egyéni metrikák tábla
-Ha használ [trackmetric() függvény](app-insights-api-custom-events-metrics.md#trackmetric) küldése saját metrika értékeket, az eredményeket a találhat a **customMetrics** adatfolyam. Példa:  
+Ha használ [a trackmetric() függvény](app-insights-api-custom-events-metrics.md#trackmetric) az eredményeket a megtalálhatja a saját metrikaértékek küldeni, a **customMetrics** stream. Példa:  
 
-![Egyéni metrikákat az Application Insights elemzés](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
+![Egyéni metrikákat az Application Insights Analytics szolgáltatásban](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
 
 > [!NOTE]
-> A [Metrikaböngésző](app-insights-metrics-explorer.md), telemetriai bármilyen típusú csatolt összes egyéni mértékek együtt jelennek meg a metrikák panelről, és metrikák használatával küldött `TrackMetric()`. De Analytics, egyéni mértékek továbbra is csatolt bármelyik telemetriai azok zajlott - események vagy kéréseket, és így tovább -, amíg TrackMetric által küldött metrikák jelennek meg a saját adatfolyam típusú.
+> A [Metrikaböngésző](app-insights-metrics-explorer.md), bármilyen típusú telemetriát csatolt összes egyéni mérések együtt jelennek meg a metrikák paneljén, és használatával küldött mérőszámokat `TrackMetric()`. De Analytics, az egyéni mértékek is továbbra is csatlakozik, amíg TrackMetric által küldött metrikák jelennek meg a saját stream végezték - események vagy a kéréseket, és így tovább – a telemetriai adatok bármelyik típusú.
 >
 >
 
-### <a name="performance-counters-table"></a>Teljesítmény számlálók tábla
-[Teljesítményszámlálók](app-insights-performance-counters.md) láthat rendszer alapvető metrikákat az alkalmazás, például a Processzor, memória, és a hálózathasználat. Az SDK számlálókat, beleértve a saját egyéni számlálók küldendő konfigurálhatja.
+### <a name="performance-counters-table"></a>Teljesítmény-számlálói tábla
+[Teljesítményszámlálók](app-insights-performance-counters.md) bemutatják, rendszer alapvető metrikákat az alkalmazáshoz, például a Processzor, memória, és a hálózati kihasználtság. Beállíthatja, hogy az SDK-t küldeni a számlálókat, beleértve a saját egyéni számlálókat.
 
-A **performanceCounters** séma elérhetővé teszi a `category`, `counter` nevét, és `instance` minden teljesítményszámláló nevét. Teljesítményszámláló-példányok nevei csak egyes teljesítményszámlálók érvényes, és általában azt jelzik, amelyre a count vonatkozik a folyamat nevét. A telemetriai minden alkalmazáshoz csak a számláló az alkalmazás látható. Például hogy milyen számlálók érhetők el:
+A **performanceCounters** sémát tesz elérhetővé a `category`, `counter` nevét, és `instance` minden teljesítményszámláló neve. Teljesítményszámláló-példány neveket csak néhány teljesítményszámlálók vonatkoznak, és általában azt jelzik, amelyre a count vonatkozik a folyamat nevét. A telemetria minden alkalmazáshoz csak az adott alkalmazáshoz számlálókat megjelenik. Például hogy milyen számlálók érhetők el:
 
-![Az Application Insights analytics teljesítményszámlálók](./media/app-insights-analytics-tour/analytics-performance-counters.png)
+![Az Application Insights Analytics teljesítményszámlálók](./media/app-insights-analytics-tour/analytics-performance-counters.png)
 
-A diagram a rendelkezésre álló memória megszerezni a kiválasztott időszakban:
+A rendelkezésre álló memória diagram lekérése a megadott időszakban:
 
-![Az Application Insights Analytics memória timechart](./media/app-insights-analytics-tour/analytics-available-memory.png)
+![Az Application Insights Analytics memória idődiagramját](./media/app-insights-analytics-tour/analytics-available-memory.png)
 
-Egyéb telemetriai adatokat, például **performanceCounters** egy olyan oszlop is van `cloud_RoleInstance` azt jelzi, hogy az állomáson, amelyen fut az alkalmazás identitását. Ha például a az alkalmazás teljesítményével kapcsolatos különböző gépeken összehasonlítandó:
+Egyéb telemetriai adatokat, például **performanceCounters** is rendelkezik egy olyan oszlop `cloud_RoleInstance` , amely azt jelzi, hogy a gazdagépen, amelyen fut az alkalmazás identitását. Ha például a különböző gépeken az alkalmazás teljesítményének összehasonlítására:
 
-![Az Application Insights Analytics szerepkör példánya szegmentált teljesítmény](./media/app-insights-analytics-tour/analytics-metrics-role-instance.png)
+![Az Application Insights Analytics szerepkörpéldány alapján szegmentált teljesítmény](./media/app-insights-analytics-tour/analytics-metrics-role-instance.png)
 
 ### <a name="exceptions-table"></a>Kivételek tábla
 [Az alkalmazás által jelentett kivételek](app-insights-asp-net-exceptions.md) érhetők el ebben a táblában.
 
-A HTTP-kérelem, az alkalmazás lett kezelése, ha a kivételt észlelt megkereséséhez csatlakoztatás operation_Id:
+Az alkalmazás lett kezelése, ha a kivételt a HTTP-kéréssel megkereséséhez műveletazonosítója csatlakozzon:
 
-![Csatlakoztatás operation_Id kivételek kérések](./media/app-insights-analytics-tour/analytics-exception-request.png)
+![Csatlakozzon a kérelmek kivételek műveletazonosítója](./media/app-insights-analytics-tour/analytics-exception-request.png)
 
-### <a name="browser-timings-table"></a>Időzítés tábla Browser
-`browserTimings` a felhasználók böngészőjének gyűjtött lapbetöltési adatainak megjelenítése.
+### <a name="browser-timings-table"></a>Böngésző időzítésüket tábla
+`browserTimings` gyűjti a felhasználói böngészők lapbetöltési adatainak megjelenítése.
 
-[Állítsa be az alkalmazás ügyféloldali telemetriai](app-insights-javascript.md) metrikákat láthatók.
+[Állítsa be az alkalmazás ügyféloldali telemetria](app-insights-javascript.md) annak érdekében, hogy ezeket a metrikákat.
 
-A séma tartalmaz [a lap betöltési folyamat különböző szakaszaiban a hosszának jelző metrikák](app-insights-javascript.md#page-load-performance). (A felhasználók, olvassa el a lap idő hosszúsága nem utal.)  
+A séma tartalmazza [az oldal betöltési folyamat különböző szakaszaiban hosszának jelző mérőszámok](app-insights-javascript.md#page-load-performance). (Azt nem jelzik, hogy mennyi ideig a felhasználók számára, olvassa el a lapot.)  
 
-A különböző oldalakhoz popularities megjelenítése, és az összes lapon alkalommal betöltése:
+A különböző oldalakat popularities megjelenítése, és minden olyan lap alkalommal betöltése:
 
 ![Lapbetöltési idők Analytics](./media/app-insights-analytics-tour/analytics-page-load.png)
 
 ### <a name="availability-results-table"></a>Rendelkezésre állási eredmények táblázatában
-`availabilityResults` eredményeit jeleníti meg a [webalkalmazás-tesztek](app-insights-monitor-web-app-availability.md). Minden egyes teszt helyen a teszt futtatásakor a külön-külön jelenti.
+`availabilityResults` eredményeit jeleníti meg a [webes teszteket](app-insights-monitor-web-app-availability.md). A teszt mindegyik teszthelyen minden egyes futtatásához külön kell jelenteni.
 
 ![Lapbetöltési idők Analytics](./media/app-insights-analytics-tour/analytics-availability.png)
 
 ### <a name="dependencies-table"></a>Függőségek tábla
-Eredményeit, hogy az alkalmazás adatbázisok és a REST API-kat, és az egyéb TrackDependency() a hívások tartalmazza. A böngészőből AJAX-hívások is tartalmaz.
+Hívások, hogy az alkalmazás lehetővé teszi az adatbázisok és a REST API-k és más TrackDependency()-hívások eredményeinek tartalmazza. A böngésző weblapjáról végzett AJAX hívások is tartalmaz.
 
-AJAX-hívások a böngészőből:
+AJAX-hívások a böngészőben:
 
 ```AIQL
 
@@ -703,7 +703,7 @@ AJAX-hívások a böngészőből:
     | take 10
 ```
 
-A kiszolgáló függőségi hívások esetében:
+Függőségi hívások a kiszolgálóról:
 
 ```AIQL
 
@@ -711,22 +711,22 @@ A kiszolgáló függőségi hívások esetében:
     | take 10
 ```
 
-Kiszolgálóoldali függőségi mindig eredményben `success==False` Ha az Application Insights-ügynök nincs telepítve. Azonban az egyéb adatok megfelelőek-e.
+Kiszolgálóoldali függőségi eredményekben mindig `success==False` Ha nincs telepítve az Application Insights-ügynökkel. Azonban az egyéb adatok megfelelőek-e.
 
-### <a name="traces-table"></a>Nyomkövetések tábla
-Tartalmazza az TrackTrace(), használó alkalmazás által küldött telemetriai adatok vagy [más naplózási keretrendszer](app-insights-asp-net-trace-logs.md).
+### <a name="traces-table"></a>Nyomkövetési táblát
+Tartalmazza a TrackTrace(), használja az alkalmazás által küldött telemetriát vagy [más naplózási keretrendszerekből](app-insights-asp-net-trace-logs.md).
 
 ## <a name="video"></a>Videó 
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
-Speciális lekérdezéseket:
+Összetett lekérdezéseket:
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2016/P591/player]
 
 
 ## <a name="next-steps"></a>További lépések
-* [Elemzés nyelvi referencia](app-insights-analytics-reference.md)
-* [SQL-felhasználók lap cheat](https://aka.ms/sql-analytics) fordítja le a leggyakrabban használt idioms.
+* [Analytics nyelvi referencia](app-insights-analytics-reference.md)
+* [SQL-felhasználók – adatlap](https://aka.ms/sql-analytics) fordítja le a leggyakrabban használt nyelv szintaxisát.
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]

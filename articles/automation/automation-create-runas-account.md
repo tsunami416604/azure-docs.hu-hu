@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a29379492f4ffd662244c3e42de321f47be13d9f
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 2b0f2b864c5c29e9804239d06afdf23708e52828
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436974"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579612"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation-fiók hitelesítésének frissítése futtató fiókokkal 
 Az Azure Portalról vagy a PowerShell-lel frissítheti meglévő Automation-fiókját. Erre a következő esetekben lehet szükség:
@@ -289,5 +289,5 @@ Az Azure Portalon válassza ki a **előfizetések** , és válassza ki az előfi
 Az egyszerű szolgáltatás hozzáadása egy erőforráscsoportot, válassza ki az erőforráscsoportot az Azure Portalon, és válassza a **hozzáférés-vezérlés (IAM)**. Válassza ki **Hozzáadás**, ekkor megnyílik a **engedélyek hozzáadása** lapot. A **szerepkör**válassza **közreműködői**. Az a **kiválasztása** szöveg mezőbe írja be az egyszerű szolgáltatás a Futtatás mint fiók nevét, majd válassza ki a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Ehhez az Azure Automation futtató szolgáltatásnév hozzáférhessen a hozzárendelni kívánt erőforrások csoportjai számára.
 
 ## <a name="next-steps"></a>További lépések
-* Szolgáltatásnevekkel kapcsolatos további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/active-directory-application-objects.md).
+* Szolgáltatásnevekkel kapcsolatos további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/develop/app-objects-and-service-principals.md).
 * Tanúsítványokkal és az Azure-szolgáltatásokkal kapcsolatos további információkért lásd: [tanúsítványok áttekintése az Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

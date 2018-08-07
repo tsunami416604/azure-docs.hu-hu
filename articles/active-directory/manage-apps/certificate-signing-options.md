@@ -17,12 +17,12 @@ ms.date: 09/07/2017
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d5921b9b74bfa7e32cc8dc2f9fdc5f93d4027abb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e86c7e82203e2ecd571d5ce5e450999704218e33
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366501"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579163"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások katalógusbeli alkalmazásokat az Azure Active Directory a SAML-jogkivonat
 Még ma az Azure Active Directory (Azure AD) több ezer előre integrált alkalmazás támogatja az Azure Active Directory-alkalmazás gyűjtemény. Ez a szám, amely támogatja az egyszeri bejelentkezéshez a SAML 2.0 protokoll használatával több mint 500 alkalmazásokat tartalmaz. Amikor egy felhasználó egy alkalmazást az Azure AD-n keresztül SAML használatával hitelesíti magát, az Azure AD egy tokent az alkalmazást (egy HTTP POST) küld. Ezt követően az alkalmazás ellenőrzi, és jelentkezzen be a felhasználó nem egy felhasználónevet és jelszót kér a jogkivonat alapján. Ezek a SAML-jogkivonatok van bejelentkezve az Azure AD-ben és a standard algoritmusok által létrehozott egyedi tanúsítvánnyal.
@@ -62,6 +62,6 @@ Az Azure AD SAML-válasz aláírása két aláírási algoritmusokat támogatja:
 ## <a name="next-steps"></a>További lépések
 * [Alkalmazások kezelése az Azure Active Directoryban vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
 * [Egyszeri bejelentkezés alkalmazásokhoz, amelyek nem szerepelnek az Azure Active Directory-alkalmazás gyűjtemény konfigurálása](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [SAML-alapú egyszeri bejelentkezés hibaelhárítása](../develop/active-directory-saml-debugging.md)
+* [SAML-alapú egyszeri bejelentkezés hibaelhárítása](../develop/howto-v1-debug-saml-sso-issues.md)
 
 

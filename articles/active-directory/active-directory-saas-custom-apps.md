@@ -15,12 +15,12 @@ ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f3511b4d9e75136fd0105785a1e033378d2ebd1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: a2b1816a7f972e698d3872e6c252c09a4d5292ef
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494021"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578728"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés konfigurálása olyan alkalmazások, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában
 
@@ -148,7 +148,7 @@ Egy felhasználó számára a felhasználói jogkivonatok kiállítása az Azure
 
 ### <a name="test-the-saml-application"></a>Az SAML-alkalmazás tesztelése
 
-A SAML-kérelem-beli tesztelése előtt, az alkalmazás az Azure AD beállítása, és a felhasználók vagy csoportok hozzárendelve az alkalmazáshoz. Tekintse meg az SAML-alkalmazás teszteléséhez [SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése](develop/active-directory-saml-debugging.md).
+A SAML-kérelem-beli tesztelése előtt, az alkalmazás az Azure AD beállítása, és a felhasználók vagy csoportok hozzárendelve az alkalmazáshoz. Tekintse meg az SAML-alkalmazás teszteléséhez [SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése](develop/howto-v1-debug-saml-sso-issues.md).
 
 ## <a name="password-single-sign-on"></a>Jelszavas egyszeri bejelentkezés
 

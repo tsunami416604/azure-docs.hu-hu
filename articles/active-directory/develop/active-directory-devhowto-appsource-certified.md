@@ -17,17 +17,17 @@ ms.date: 08/03/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 9c2140d0e482089be632d9a21560349a6381968e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 8b23d99b838449681f83ff2e88bd96ee90502404
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495237"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578857"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource Certified beszerzése az Azure Active Directory
 [A Microsoft AppSource](https://appsource.microsoft.com/) egy cél az üzleti felhasználók felderítése, próbálja meg és kezelése – üzleti SaaS-alkalmazások (önálló SaaS és bővítményt az meglévő Microsoft SaaS-termékek).
 
-Az alkalmazás egyszeri bejelentkezés a munkahelyi fiókok bármely vállalat vagy szervezet, amely rendelkezik az Azure Active Directory egy különálló SaaS-alkalmazás az appsource-on listázásához, el kell fogadnia. A bejelentkezési folyamatot kell használnia a [OpenID Connect](./active-directory-protocols-openid-connect-code.md) vagy [OAuth 2.0](./active-directory-protocols-oauth-code.md) protokollokat. SAML-integráció nem fogadja az AppSource-tanúsítvány.
+Az alkalmazás egyszeri bejelentkezés a munkahelyi fiókok bármely vállalat vagy szervezet, amely rendelkezik az Azure Active Directory egy különálló SaaS-alkalmazás az appsource-on listázásához, el kell fogadnia. A bejelentkezési folyamatot kell használnia a [OpenID Connect](v1-protocols-openid-connect-code.md) vagy [OAuth 2.0](v1-protocols-oauth-code.md) protokollokat. SAML-integráció nem fogadja az AppSource-tanúsítvány.
 
 ## <a name="guides-and-code-samples"></a>Útmutatók és Kódminták
 Ha azt szeretné, hogyan integrálható az Azure Active Directory-azonosítójával nyissa meg az alkalmazás csatlakoztatása, hajtsa végre az útmutatókat, és Kódminták a a [Azure Active Directory fejlesztői útmutatója](azure-ad-developers-guide.md#get-started "első lépései az Azure-ral A fejlesztők AD").
@@ -41,7 +41,7 @@ Annak érdekében, hogy az alkalmazás több bérlős üzemmód engedélyezése:
 - Kérelmek küldése a kód frissítése a "`common`" végpont (az a végpont frissítéséhez *https://login.microsoftonline.com/{yourtenant}* való *https://login.microsoftonline.com/common*)
 - Egyes platformokon, például az ASP.NET is frissíteni kell a kódot úgy, hogy fogadja el a több kiállítók
 
-Több-bérlős kapcsolatos további információkért lásd: [Azure Active Directory (AD) felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával hogyan](./active-directory-devhowto-multi-tenant-overview.md).
+Több-bérlős kapcsolatos további információkért lásd: [Azure Active Directory (AD) felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával hogyan](howto-convert-app-to-be-multi-tenant.md).
 
 ### <a name="single-tenant-applications"></a>Egybérlős alkalmazások
 Az alkalmazásokat, amelyek csak fogadja el a felhasználók egy meghatározott Azure Active Directory-példány történő bejelentkezések nevezzük *egybérlős alkalmazás*. Külső felhasználókat (beleértve a más szervezetek a munkahelyi vagy iskolai fiókokhoz vagy személyes fiókkal) bejelentkezhet egy egybérlős alkalmazást minden felhasználó hozzáadása után *vendégfiók* az Azure Active Directory példányt, amely a alkalmazás regisztrálva lesz. Egy Azure Active Directory-n keresztül, a vendég felhasználók is hozzáadhat a [ *Azure AD B2B együttműködés* ](../b2b/what-is-b2b.md) -teheti meg, és [programozottan](../b2b/code-samples.md). Hozzáadásakor a felhasználó Vendég fiókkal az Azure Active Directory, a felhasználó, aki rendelkezik a meghívás elfogadásához kattintson a hivatkozásra a meghívó e-mailben a meghívó e-mail érkezik. A meghívó szervezetet, amely egyben a fiókpartner-szervezet tagja a további felhasználó számára küldött nem szükségesek egy jelentkezzen be a meghívás elfogadásához.
@@ -121,7 +121,7 @@ Használja a következő megjegyzéseket visszajelzést, és segítsen finomíth
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: azure-ad-developers-guide.md
-[AAD-Howto-Multitenant-Overview]: ./active-directory-devhowto-multi-tenant-overview.md
+[AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: azure-ad-developers-guide.md#get-started
 
 

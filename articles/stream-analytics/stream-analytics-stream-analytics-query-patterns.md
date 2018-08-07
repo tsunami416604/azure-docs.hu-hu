@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 4a37ac6cdf5d13556c6a3e293c19c00ad36e4495
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 7f171fa1eb8c91b55119d0308b57fe3d3e70261b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364165"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578891"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példák a Stream Analytics-használat gyakori minták lekérdezése
 
@@ -25,10 +25,9 @@ A lekérdezés tervezési fejezhető ki egyszerű csatlakoztatott logikai egy be
 
 Ez a cikk számos gyakori lekérdezési-minták található, a valós életből vett példák alapján megoldásait ismerteti. Folyamatban lévő és továbbra is az új mintákat folyamatosan frissül.
 
-## <a name="work-with-complex-data-types-in-json-and-avro"></a>A JSON-t és az AVRO összetett adattípusok használata 
+## <a name="work-with-complex-data-types-in-json-and-avro"></a>Összetett adattípusok kezelése JSON és AVRO formátumban. 
 Az Azure Stream Analytics támogatja az események feldolgozását a fürt megosztott kötetei szolgáltatás, a JSON-t és az Avro adatformátumok a célnyelven.
-JSON és az Avro összetett típusok, például a beágyazott objektumok (rekord) vagy a tömb tartalmazhat. Ezek az összetett adattípusok használatához, tekintse meg a [elmagyarázza, hogyan működnek az összetett adattípusok a JSON és az AVRO MSDN-lapján](
-https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics).
+JSON és az Avro összetett típusok, például a beágyazott objektumok (rekord) vagy a tömb tartalmazhat. Ezek az összetett adattípusok használatához, tekintse meg a [JSON-elemzés és az AVRO-adatok](stream-analytics-parsing-json.md) cikk.
 
 
 ## <a name="query-example-convert-data-types"></a>Példa: adattípus átalakítása

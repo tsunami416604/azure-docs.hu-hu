@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b97a0fffa6f21e7a8b06dc406711f249310fd73
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431589"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579520"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Hitelesítés a egy privát Docker regisztrációs adatbázist
 
@@ -36,7 +36,7 @@ Amikor bejelentkezés a következővel `az acr login`, a parancssori Felületet 
 
 ## <a name="service-principal"></a>Szolgáltatásnév
 
-Hozzárendelhet egy [szolgáltatásnév](../active-directory/develop/active-directory-application-objects.md) a regisztrációs adatbázisba, és az alkalmazás vagy szolgáltatás használható távfelügyelt hitelesítéshez. Az egyszerű szolgáltatások engedélyezése [szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md) egy regisztrációs adatbázisba, és több szolgáltatásnevek hozzárendelhet egy regisztrációs adatbázisba. Több szolgáltatásnevek lehetővé teszik a különböző alkalmazások különböző hozzáférés meghatározásához.
+Hozzárendelhet egy [szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md) a regisztrációs adatbázisba, és az alkalmazás vagy szolgáltatás használható távfelügyelt hitelesítéshez. Az egyszerű szolgáltatások engedélyezése [szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md) egy regisztrációs adatbázisba, és több szolgáltatásnevek hozzárendelhet egy regisztrációs adatbázisba. Több szolgáltatásnevek lehetővé teszik a különböző alkalmazások különböző hozzáférés meghatározásához.
 
 A következő szerepkörök választhatók:
 

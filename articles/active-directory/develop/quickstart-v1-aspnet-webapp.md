@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2018
 ms.author: andret
-ms.openlocfilehash: 2fd41d08df5a8f425a1d59e8cd1172043286d8b7
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 5353e22d7ae77adecfe126bb589d08c808752550
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39496166"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579350"
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
@@ -30,7 +30,7 @@ Ez az útmutató bemutatja, hogyan valósíthatók meg jelentkezzen be a Microso
 Ez az útmutató végén az alkalmazás fogad a szervezetek számára, amely integrálva van az Azure Active Directory munkahelyi és iskolai fiókok bejelentkezések.
 
 > [!NOTE]
-> Az interaktív telepítés segítségével engedélyezheti az ASP.NET-alkalmazás a munkahelyi és iskolai fiókjába történő bejelentkezések. Ha érdekli, munkahelyi és iskolai fiókok mellett személyes fiókok bejelentkezések engedélyezéséhez, használhatja a [v2 végpont](active-directory-v2-compare.md). Lásd: [az ASP.NET interaktív telepítés a v2 végpont](tutorial-v2-asp-webapp.md) , valamint [ebben a dokumentumban](active-directory-v2-limitations.md) elmagyarázza a v2 végpont érvényes aktuális korlátozásait.
+> Az interaktív telepítés segítségével engedélyezheti az ASP.NET-alkalmazás a munkahelyi és iskolai fiókjába történő bejelentkezések. Ha érdekli, munkahelyi és iskolai fiókok mellett személyes fiókok bejelentkezések engedélyezéséhez, használhatja a [v2 végpont](azure-ad-endpoint-comparison.md). Lásd: [az ASP.NET interaktív telepítés a v2 végpont](tutorial-v2-asp-webapp.md) , valamint [ebben a dokumentumban](active-directory-v2-limitations.md) elmagyarázza a v2 végpont érvényes aktuális korlátozásait.
 <br/><br/>
 
 <!--separator-->
@@ -218,7 +218,7 @@ Kövesse az alábbi lépéseket, ha elfogadja bejelentkezések bármely vállala
 2. A `All Settings` kiválasztása `Properties`
 3. Változás `Multi-tenanted` tulajdonságot `Yes` kattintson `Save`
 
-Ez a beállítás és több-bérlős alkalmazások fogalma kapcsolatos további információkért lásd: [Ez a cikk](active-directory-devhowto-multi-tenant-overview.md "több-bérlős áttekintése").
+Ez a beállítás és több-bérlős alkalmazások fogalma kapcsolatos további információkért lásd: [Ez a cikk](howto-convert-app-to-be-multi-tenant.md "több-bérlős áttekintése").
 
 ### <a name="restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Felhasználók korlátozása a szervezet csak egy Active Directory-példányból, jelentkezzen be az alkalmazás (egybérlős)
 

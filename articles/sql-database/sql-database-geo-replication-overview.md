@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/25/2018
+ms.date: 08/06/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 07c17d248d78313f1c5f6f1025ae06a623b75944
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 3007227808fd7fc4ec185b87a8a44c4497c66597
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259347"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579503"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok
 Aktív georeplikáció üzleti folytonossági megoldás, amely lehetővé teszi az alkalmazásnak, hogy gyors vészhelyreállítás esetén a méretezési csoport adatközponti üzemkimaradások tervezték. Ha engedélyezve van a georeplikáció, az alkalmazás kezdeményezhet feladatátvételt egy másodlagos adatbázist egy másik Azure-régióban. Legfeljebb négy meghatározhatják az azonos vagy eltérő régiókban támogatottak, és a másodlagos példány hozható létre a csak olvasási hozzáféréssel lekérdezésekhez is használható. A feladatátvétel kell kezdeményeznie manuálisan az alkalmazás vagy a felhasználó. A feladatátvételt követően az új elsődleges rendelkezik egy másik kapcsolat végpontját. 
@@ -123,7 +123,7 @@ Egyes alkalmazások, a biztonsági szabályok követelnek meg, hogy a hálózati
 
 ### <a name="using-failover-groups-and-virtual-network-rules"></a>Feladatátvételi csoportok és a virtuális hálózati szabályok használata
 
-Ha használ [virtuális hálózati Szolgáltatásvégpontok és szabályok](sql-database-vnet-service-endpoint-rule-overview.md) való hozzáférés korlátozása az SQL database, vegye figyelembe, hogy mindegyik virtuális hálózati szolgáltatásvégpont csak egy Azure-régióra vonatkozik. A végpont nem engedélyezi a más régiókban az alhálózat-kommunikációt fogad. A feladatátvétel az SQL ügyfélmunkameneteket folyamatban van a kiszolgálóhoz, a másik (másodlagos) régióban átirányítva eredményez, mivel ezek a munkamenetek sikertelen lesz, ha egy adott régión kívül ügyfél származik. Éppen ezért az automatikus feladatátvételi szabályzat nem lehet engedélyezni, ha a virtuális hálózati szabályok a résztvevő kiszolgálókat tartalmazza. Manuális feladatátvétel támogatása érdekében kövesse az alábbi lépéseket:
+Ha használ [virtuális hálózati Szolgáltatásvégpontok és szabályok](sql-database-vnet-service-endpoint-rule-overview.md) való hozzáférés korlátozása az SQL database, vegye figyelembe, hogy mindegyik virtuális hálózati szolgáltatásvégpont csak egy Azure-régióra vonatkozik. A végpont nem engedélyezi a más régiókban az alhálózat-kommunikációt fogad. Ezért csak az ugyanabban a régióban üzembe helyezett ügyfélalkalmazások az elsődleges adatbázishoz csatlakozhat. A feladatátvétel az SQL ügyfélmunkameneteket folyamatban van a kiszolgálóhoz, a másik (másodlagos) régióban átirányítva eredményez, mivel ezek a munkamenetek sikertelen lesz, ha egy adott régión kívül ügyfél származik. Éppen ezért az automatikus feladatátvételi szabályzat nem lehet engedélyezni, ha a virtuális hálózati szabályok a résztvevő kiszolgálókat tartalmazza. Manuális feladatátvétel támogatása érdekében kövesse az alábbi lépéseket:
 
 1.  Az alkalmazás a másodlagos régió (webszolgáltatás, virtuális gépek stb.) az előtérbeli összetevőinek redundáns másolatait kiépítése
 2.  Konfigurálja a [virtuális hálózati szabályok](sql-database-vnet-service-endpoint-rule-overview.md) külön-külön az elsődleges és másodlagos kiszolgáló

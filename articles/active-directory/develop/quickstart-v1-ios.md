@@ -17,12 +17,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: jmprieur
-ms.openlocfilehash: cc85dbe4bc1d207f18381e2a6d85461db229d6ea
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 3490c4589446a308d81280765baccb63e01dd6c7
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506597"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579561"
 ---
 # <a name="azure-ad-ios-getting-started"></a>Ismerkedés az Azure AD iOS
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -238,8 +238,8 @@ Referenciaként az elkészült mintát (a konfigurációs értékek) nélkül a 
 ## <a name="next-steps"></a>További lépések
 Most már továbbléphet további forgatókönyvek. Előfordulhat, hogy szeretné próbálni:
 
-* [Biztonságos Node.JS webes API-k az Azure ad-vel](active-directory-devquickstarts-webapi-nodejs.md)
-* Ismerje meg, [IOS-es adal-t használó alkalmazások közötti SSO engedélyezése](active-directory-sso-ios.md)  
+* [Biztonságos Node.JS webes API-k az Azure ad-vel](quickstart-v1-nodejs-webapi.md)
+* Ismerje meg, [IOS-es adal-t használó alkalmazások közötti SSO engedélyezése](howto-v1-enable-sso-on-ios.md)  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

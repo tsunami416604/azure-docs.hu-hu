@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: b792798c64ed0a2eb12a16d868d8a17302466fea
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 053e72ce81f69b267c72ded572e8912a1a09d2e6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215356"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579697"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -448,7 +448,7 @@ Az Azure Cosmos DB amely késés, átviteli sebesség, rendelkezésre állás é
 
 ## <a name="develop-against-the-graph-api"></a>Fejlesztés a Graph API ellen
 ### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Hogyan használhatom a Graph API funkcióit az Azure Cosmos DB?
-Használhatja egy bővítménykódtár a alkalmazni a Graph API funkcióit. A könyvtár neve a Microsoft Azure-diagramok, és elérhető a NuGet. 
+Használhatja egy bővítménykódtár a alkalmazni a Graph API funkcióit. A könyvtár neve a Microsoft Azure-diagramok, és elérhető a [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
 
 ### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>Úgy tűnik, a Gremlin graph bejárási nyelv támogatott. Tervezi a lekérdezés további űrlapokat vehet fel?
 Igen, bővítését tervezzük más mechanizmusok lekérdezés a jövőben. 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 407b9732574880cd64036e92fe0c7fac169b7346
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503284"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579544"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>A felügyelt tartomány konfigurációja érvénytelen egyszerű szolgáltatás hibaelhárítása
 
@@ -30,7 +30,7 @@ Ez a cikk segítséget nyújt a hibaelhárításához és megoldásához szolgá
 
 **Figyelmeztető üzenet:** *Azure AD Domain Services megfelelő működéséhez szükséges egy egyszerű szolgáltatást az Azure AD-címtár törölve lett. Ez a konfiguráció hatással van a Microsoft képes figyelése, kezelése, patch, és szinkronizálni a felügyelt tartományt.*
 
-[Egyszerű szolgáltatások](../active-directory/develop/active-directory-application-objects.md) olyan alkalmazások, amelyek kezelése, frissítése és a felügyelt tartomány kezelése a Microsoft használja. Törlődnek, ha a Microsoft lehetővé teszi a tartományi szolgáltatás működésképtelenné válik.
+[Egyszerű szolgáltatások](../active-directory/develop/app-objects-and-service-principals.md) olyan alkalmazások, amelyek kezelése, frissítése és a felügyelt tartomány kezelése a Microsoft használja. Törlődnek, ha a Microsoft lehetővé teszi a tartományi szolgáltatás működésképtelenné válik.
 
 
 ## <a name="check-for-missing-service-principals"></a>Hiányzó szolgáltatásnevek keresése

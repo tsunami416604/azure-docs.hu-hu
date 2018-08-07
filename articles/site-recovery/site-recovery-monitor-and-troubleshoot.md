@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 747189c7cab2c76c6695bdb8e13f77532adc46d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 96f4ecb433277c747ddb1d1dc977bd609f93d5ff
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216073"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578585"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorozás és hibaelhárítás a Site Recovery
 
@@ -88,7 +88,7 @@ A **infrastruktúranézet** érintett látható az infrastruktúra-összetevőke
 - A piros vonalat verlaid hiba ikon azt jelzi, hogy létezik-e egy vagy több hiba történt a jelenség, hogy hatással lehet az összekapcsolhatóságra.
 -  Vigye az egérmutatót a hibajelző ikon megjelenítése a hibát, és az érintett entitások száma. Kattintson az érintett entitások szűrt listája.
 
-    ! [Site Recovery infrastruktúra-nézet (tároló)] Re(./Media/Site-Recovery-monitor-and-troubleshoot/Site-Recovery-vault-Infra-View.png)
+    ![Site Recovery infrastruktúra-nézet (tár)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
 
 ## <a name="tips-for-monitoring-the-infrastructure"></a>Tippek az infrastruktúra figyelése
 
@@ -194,4 +194,4 @@ A tárolóban > **figyelés és jelentéskészítés** területén kattintson **
 2. Kattintson a **E-mail-értesítések**.
 3. A **e-mailes értesítés**, bekapcsolja az értesítéseket, és adja meg, akik küldéséhez. Minden előfizetés-Adminisztrátorok küldeni az értesítéseket, és igény szerint adott e-mail-címeket is elküldheti.
 
-    ![E-mail értesítés](./media/site-recovery-monitor-and-troubleshoot/email.png)
+    ![E-mail-értesítések](./media/site-recovery-monitor-and-troubleshoot/email.png)

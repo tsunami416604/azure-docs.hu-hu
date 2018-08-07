@@ -1,6 +1,6 @@
 ---
-title: A SAML-jogkivonat a vállalati alkalmazások az Azure Active Directoryban kiállított jogcímek testreszabása |} Microsoft Docs
-description: A SAML-jogkivonat a vállalati alkalmazások az Azure Active Directoryban kiállított jogcímek testreszabása
+title: Az Azure Active Directory vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása |} A Microsoft Docs
+description: Ismerje meg a vállalati alkalmazások esetén az Azure Active Directory a SAML-jogkivonatban kiadott jogcímek testreszabása
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,67 +17,67 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: db529bf1e8ea4363c84cb365444ca367d428b162
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 4d7c9246b694fc1b5623ecd198e4ced330e78dde
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318420"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579418"
 ---
-# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>A SAML-jogkivonat a vállalati alkalmazások az Azure Active Directoryban kiállított jogcímek testreszabása
-Ma az Azure Active Directory a legtöbb vállalati alkalmazás, így mindkét az Azure AD-alkalmazásgyűjtemény, valamint egyéni alkalmazások előre integrált alkalmazás támogatja a egyszeri bejelentkezéshez. Amikor egy felhasználó hitelesíti magát egy alkalmazást a Azure AD a SAML 2.0 protokoll segítségével, az Azure AD egy token küld az alkalmazás (HTTP POST). És ezt követően az alkalmazás ellenőrzi és használja a jogkivonatot a felhasználót a nem kér felhasználónevet és jelszót. Ezeket a SAML-jogkivonatokat a "jogcímek" néven ismert felhasználóval kapcsolatos információt tartalmazza.
+# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Az Azure Active Directory vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
+Még ma az Azure Active Directory a legtöbb vállalati alkalmazásokat, beleértve az Azure AD-alkalmazásgyűjtemény, valamint a egyéni alkalmazásokat előre integrált alkalmazások támogatja a egyszeri bejelentkezéshez. Amikor egy felhasználó hitelesíti magát egy alkalmazást az SAML 2.0 protokoll használatával az Azure AD-n keresztül, az Azure AD egy tokent az alkalmazást (egy HTTP POST) küld. És ezt követően az alkalmazás ellenőrzi és használja a jogkivonatot a felhasználó nem kér a felhasználónévvel és jelszóval bejelentkezni. Ezek a SAML-jogkivonatok adatokra a "jogcímek" néven felhasználó tartalmaznak.
 
-Az identitás-beszéd, a "jogcímek" információ arról, hogy az identitásszolgáltató azokat, hogy a felhasználó számára kiadják a tokenen belül a felhasználó. A [SAML-jogkivonat](http://en.wikipedia.org/wiki/SAML_2.0), az adatokat általában a SAML Attribute utasítást tartalmaz. A SAML tulajdonos, más néven azonosítója a általában jelzi a felhasználó egyedi azonosítója.
+Az identitás-a beszéd, a "jogcím" információ arról, hogy az identitásszolgáltató egy felhasználót, hogy a felhasználó számára kiadják a tokenen belül. A [SAML-jogkivonat](http://en.wikipedia.org/wiki/SAML_2.0), ezek az adatok általában az SAML-attribútum utasítás szerepel. Az SAML-tulajdonos alkalmazásnév-azonosító néven a általában jelzi a felhasználó egyedi azonosítója.
 
-Alapértelmezés szerint a Azure Active Directory SAML-jogkivonatból állít ki az alkalmazáshoz, amely tartalmazza a NameIdentifier jogcím értéke az a felhasználónév (AKA egyszerű felhasználónév) Azure AD-ben. Ez az érték a felhasználó egyedileg azonosíthatja. A SAML-jogkivonat a felhasználó e-mail címét, Utónév és Vezetéknév tartalmazó további jogcímeket is tartalmaz.
+Alapértelmezés szerint az Azure Active Directory a SAML-jogkivonat problémák az az alkalmazás, amely tartalmazza a NameIdentifier jogcím értéke az a felhasználó felhasználónevét (AVAGY egyszerű felhasználónév) az Azure ad-ben. Ez az érték a felhasználó egyedi azonosítására alkalmas. Az SAML-jogkivonat a felhasználó e-mail címét, Utónév és Vezetéknév tartalmazó további jogcímek is tartalmaz.
 
-Megtekinteni vagy szerkeszteni a SAML-jogkivonat az alkalmazás által kiadott jogcímeket, nyissa meg az alkalmazás Azure-portálon. Válassza ki a **nézet és egyéb felhasználói attribútumok szerkesztése** jelölőnégyzet a **felhasználói attribútumok** szakaszban az alkalmazás.
+Megtekinteni vagy szerkeszteni a jogcímek, az alkalmazás számára kibocsátott SAML-jogkivonatban, nyissa meg az alkalmazás az Azure Portalon. Válassza ki a **megtekintése és egyéb felhasználói attribútumok szerkesztése** a jelölőnégyzetet a **felhasználói attribútumok** szakaszban az alkalmazás.
 
 ![Felhasználói attribútumok szakasz][1]
 
-Ennek oka két miért szükség lehet a SAML-jogkivonat kiadott jogcímeket szerkesztése:
-* Az alkalmazás eltérő szabályzatkészletet jogcím URI-azonosítók, vagy a jogcímértékek van írva.
-* Az alkalmazás telepítve lett a NameIdentifier jogcímet, mint az Azure Active Directoryban tárolt felhasználónév (AKA egyszerű felhasználónév) igényel.
+Előfordulhat, hogy miért a SAML-jogkivonatban kiadott jogcímek szerkesztése kell két lehetséges oka van:
+* Az alkalmazás eltérő szabályzatkészletet jogcím URI-k vagy a jogcímértékek lett írva.
+* Az alkalmazás telepítése úgy, hogy a NameIdentifier jogcím verziójáétól eltérő a felhasználónevet (AVAGY egyszerű felhasználónév), az Azure Active Directoryban tárolt igényel.
 
-Az alapértelmezett jogcímértékek tudja szerkeszteni. Jelölje ki a jogcímet az SAML-jogkivonat attribútumok táblában. Ekkor megnyílik a **attribútum szerkesztése** szakaszt, és ezután szerkesztheti jogcím neve, értékét és a jogcímek használata.
+Az alapértelmezett jogcím értékeket szerkesztheti. Jelölje ki a jogcímet a SAML-jogkivonat attribútumai táblában. Ekkor megnyílik a **attribútum szerkesztése** szakaszban, majd szerkesztheti jogcím neve, verzióértékkel és névtérrel társított a jogcímet.
 
 ![Felhasználói attribútum szerkesztése][2]
 
-Is eltávolíthatja a jogcímek (eltérő NameIdentifier) a helyi menü, amely kattintva megnyílik a **...**  ikonra. Új jogcímek is hozzáadhat a **Hozzáadás attribútum** gombra.
+Valamint eltávolíthatja a jogcímek (nem a NameIdentifier) használatával a helyi menü, amelyre kattintva megnyílik a **...**  ikonra. Új jogcím használatával is hozzáadhat a **attribútum hozzáadása** gombra.
 
 ![Felhasználói attribútum szerkesztése][3]
 
-## <a name="editing-the-nameidentifier-claim"></a>A NameIdentifier jogcímszabályok szerkesztése
-Megoldani a problémát, ahol az alkalmazás már telepített egy másik felhasználónévvel, kattintson a a **felhasználói azonosító** legördülő listán a **felhasználói attribútumok** szakasz. Ez a művelet több, különböző beállításokkal párbeszédpanel biztosítja:
+## <a name="editing-the-nameidentifier-claim"></a>A NameIdentifier jogcím szerkesztése
+Megoldani a problémát, ahol az alkalmazás lett üzembe helyezve, más felhasználónevet használ, kattintson a a **felhasználói azonosító** legördülő lista a **felhasználói attribútumok** szakaszban. Ez a művelet biztosítja egy párbeszédpanel, számos különböző beállításokkal:
 
 ![Felhasználói attribútum szerkesztése][4]
 
-Válassza ki a legördülő **user.mail** a NameIdentifier jogcímet a felhasználó e-mail címét a könyvtárban kell beállítani. Vagy válassza ki **user.onpremisessamaccountname** felhasználó által a SAM-fiók neve, amely a helyszíni Azure AD szinkronizálása megtörtént.
+Válassza ki a legördülő menüben **user.mail** a NameIdentifier jogcím a felhasználó e-mail címét a címtárban kell beállítani. Vagy válassza **user.onpremisessamaccountname** , ha szeretné a felhasználó a SAM-fiók neve, amely a helyszínről az Azure AD szinkronizálása megtörtént.
 
-Használhatja a speciális **ExtractMailPrefix()** a tartományi utótag eltávolítja az e-mail cím, a SAM-neve vagy a felhasználó egyszerű felhasználóneve. Ez kibontása csak a továbbítja a folyamatban felhasználónév első része (például "joe_smith" helyett joe_smith@contoso.com).
+Is használhatja a speciális **ExtractMailPrefix()** a tartományi utótag eltávolítja az e-mail-cím, SAM-fiók neve vagy a felhasználó egyszerű neve. Ez a felhasználónév átadott keresztül csak az első részt kinyeri (például "joe_smith" helyett joe_smith@contoso.com).
 
 ![Felhasználói attribútum szerkesztése][5]
 
-Most is jelentek meg a **join()** függvény a felhasználói azonosító értékét az ellenőrzött tartományhoz való csatlakozáshoz. Ha bejelöli a join() függvényt a **felhasználói azonosító** először válassza ki a felhasználói azonosító hasonló e-mail cím vagy a felhasználó egyszerű felhasználónév és a második legördülő listán válassza az ellenőrzött tartomány. Ha az e-mail cím ellenőrzött tartományával választja, akkor az Azure AD kibontja a felhasználónév az első érték joe_smith a joe_smith@contoso.com és a contoso.onmicrosoft.com fűzi azokat. Tekintse meg a következő példát:
+Ezzel is hozzáadtuk a **join()** függvény a felhasználói azonosító értékét az ellenőrzött tartományhoz való csatlakozáshoz. Ha bejelöli a join() függvény a a **felhasználóazonosító** először válassza ki a felhasználói azonosító, például e-mail-cím vagy a felhasználó egyszerű neve és a második legördülő menüből válassza ki az ellenőrzött tartomány. Ha az e-mail-címet ellenőrzött tartományának, adja meg Azure ad-ben a felhasználónév kigyűjti az első érték joe_smith a joe_smith@contoso.com és fűz hozzá a contoso.onmicrosoft.com. Tekintse meg a következő példát:
 
 ![Felhasználói attribútum szerkesztése][6]
 
 ## <a name="adding-claims"></a>Jogcím hozzáadása
-Jogcím hozzáadása egy szabálykészlethez, amikor az attribútumnév (amely nem feltétlenül kell követniük a SAML-specifikáció szerint URI mintát) is megadhat. Adja meg az értéket bármely felhasználói attribútumot, amelyet a könyvtárban tárolnak.
+Amikor egy jogcímet ad hozzá, megadhatja azon attribútum nevét (ami nem feltétlenül kell az SAML-specifikáció alapján URI mintát követi). Bármely felhasználói attribútumot a könyvtárban tárolt állítsa az értékét.
 
 ![Felhasználói attribútum hozzáadása][7]
 
-Például szeretné küldeni a osztály, a felhasználó tagja a szervezetek (mint például a Sales) jogcímszabályként. Adja meg a jogcím nevét, az alkalmazás által várt, és válassza **felhasználó.részleg** értékeként.
+Ha például kíván küldeni a számára, amely a felhasználó tartozik a szervezetben (mint például a Sales) jogcímként való. Adja meg a jogcím neve, az alkalmazás által elvárt módon, és válassza **user.department** értékeként.
 
 > [!NOTE]
-> Ha a megadott felhasználó nincs a kiválasztott attribútumnak tárolt érték, majd, hogy a jogcím nem küldése történik a tokenben.
+> Ha egy adott felhasználó nincs érték, egy kijelölt attribútumban tárolja, majd, hogy nincs folyamatban jogcímet a jogkivonat.
 
 > [!TIP]
-> A **user.onpremisesecurityidentifier** és **user.onpremisesamaccountname** csak akkor támogatott, ha a felhasználói adatok szinkronizálása a helyszíni Active Directory használatával a [az Azure AD Csatlakozás eszköz](../active-directory-aadconnect.md).
+> A **user.onpremisesecurityidentifier** és **user.onpremisesamaccountname** csak akkor támogatott, ha a felhasználói adatok szinkronizálása a helyszíni Active Directory használatával a [Azure ad-ben Eszköz csatlakoztatása](../active-directory-aadconnect.md).
 
 ## <a name="restricted-claims"></a>Korlátozott jogcímek
 
-SAML néhány korlátozott jogcímek szerepelnek. Ha ezeket a jogcímeket, majd az Azure AD nem küld ezeket a jogcímeket. Az alábbiakban a SAML-alapú korlátozott jogcímkészlethez:
+Nincsenek SAML néhány korlátozott jogcímeket. Ha ezeket a jogcímeket, majd az Azure AD nem küld ezeket a jogcímeket. Az alábbiakban a korlátozott SAML jogcímek készletéhez:
 
     | Jogcím típusa (URI) |
     | ------------------- |
@@ -131,7 +131,7 @@ SAML néhány korlátozott jogcímek szerepelnek. Ha ezeket a jogcímeket, majd 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
 * [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [Hibaelhárítási SAML-alapú egyszeri bejelentkezést.](active-directory-saml-debugging.md)
+* [SAML-alapú egyszeri bejelentkezés hibaelhárítása](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saml-claims-customization/user-attribute-section.png

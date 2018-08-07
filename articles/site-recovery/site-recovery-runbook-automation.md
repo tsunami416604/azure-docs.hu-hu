@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: e9a1dfc6aa26246db5322a8f4491ab2a5bccfcf5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 55160f3c43d8cbfc5f8b3e6aaf26bcb911387c52
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917693"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578765"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbookok hozzáadása helyreállítási tervekhez
 Ebben a cikkben ismertetünk, hogyan integrálható az Azure Site Recovery Azure Automation segítségével kiterjesztheti a helyreállítási tervek. Helyreállítási tervek vezényelhető helyreállítási védett virtuális gépek Site recoveryvel. Helyreállítási tervek működik replikálása egy másodlagos felhőbe, és az Azure-bA. Helyreállítási tervek is érdekében, a helyreállítás **következetesen pontos**, **megismételhető**, és **automatizált**. Ha átadja a feladatokat a virtuális gépek az Azure-ba, az Azure Automation integrációs kiterjeszti a helyreállítási terv. Runbookok, amelyek kínál hatékony automatizálási feladatok végrehajtásához használható.
@@ -196,7 +196,7 @@ Minden helyreállítási terv létrehozása független változók, így újból 
 
 Képzeljen el egy forgatókönyvet, amelyben szeretné egy parancsfájl egy nyilvános IP-címet az adott virtuális gépek bekapcsolásához. Egy másik esetben érdemes alkalmazni a különböző NSG-ket különböző virtuális gépek (nem az összes virtuális gép). Meghatározhat egy parancsfájlt, amely minden olyan helyreállítási terv újrahasználható. Minden helyreállítási terv rendelkezhet változó számú virtuális gépeket. Például a SharePoint-helyreállítás, két előtérrendszerek. Egy alapszintű – üzletági (LOB) alkalmazás csak egy előtér rendelkezik. Külön változók minden helyreállítási terv nem hozható létre.
 
-A következő példában, hogy egy új módszerrel, és hozzon létre egy [komplex változó](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) a az Azure Automation-fiók eszközöket. Ehhez több érték megadásával. Azure PowerShell használatával kell a következő lépéseket:
+A következő példában, hogy egy új módszerrel, és hozzon létre egy [komplex változó](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) a az Azure Automation-fiók eszközöket. Ehhez több érték megadásával. Azure PowerShell használatával kell a következő lépéseket:
 
 1. A PowerShellben jelentkezzen be az Azure-előfizetés:
 

@@ -15,38 +15,38 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: cfbf4dc08ccea95f99216f6cc82c1ee56d65768a
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: f70e0bcb68f059618f9b398a00e23498a10df23e
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943351"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39583005"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>A Microsoft Graph API meghívása a JavaScript egyetlen oldal alkalmazásból (SPA)
+# <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>A Microsoft Graph API meghívása egy JavaScript egyetlen lapon alkalmazásból (SPA)
 
-Ez az útmutató ismerteti, hogyan bejelentkezhet az egy JavaScript egyetlen oldal alkalmazás (SPA) a személyes, munkahelyi és iskolai fiókok szereznie egy hozzáférési jogkivonatot, és hívja meg a Microsoft Graph API vagy egyéb szükséges hozzáférési jogkivonatok az Azure Active Directory v2 végpont az API-k.
+Ez az útmutató azt ismerteti, hogyan bejelentkezhet egy JavaScript egyetlen lapon alkalmazás (SPA) személyes, munkahelyi és iskolai fiókokhoz, hozzáférési jogkivonatot kapjon, és a Microsoft Graph API vagy más hozzáférési jogkivonatok az Azure Active Directory v2 végpontot a szükséges API-hívás.
 
-## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által generált mintaalkalmazás működése
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által létrehozott mintaalkalmazás működése
 
-![Ez az útmutató által generált mintaalkalmazás működése](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.png)
+![Ez az útmutató által létrehozott mintaalkalmazás működése](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.png)
 
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
 
-Ez az útmutató által létrehozott mintaalkalmazás lehetővé teszi, hogy a JavaScript SPA lekérdezni a Microsoft Graph API vagy egy webes API, amely az Azure Active Directory v2 végpont jogkivonatokat fogad el. Ebben a forgatókönyvben után a felhasználó bejelentkezik, olyan hozzáférési jogkivonatot kért és megadható a hitelesítési fejlécéhez via HTTP-kérelmekre. Token beszerzése és -megújítás kezelése a Microsoft hitelesítési könyvtár (MSAL).
+Ez az útmutató által létrehozott alkalmazás lehetővé teszi, hogy egy JavaScript SPA lekérdezni a Microsoft Graph API vagy egy webes API-t, amely az Azure Active Directory v2 végpontot jogkivonatokat fogad. Ebben a forgatókönyvben egy felhasználó bejelentkezése után az, egy hozzáférési jogkivonatot, a kért és hozzáadni az engedélyezési fejléc via HTTP-kérelmekre. Token beszerzése és megújítása a Microsoft hitelesítési tár (MSAL) kezeli.
 
 <!--end-collapse-->
 
 <!--start-collapse-->
-### <a name="libraries"></a>Szalagtárak
+### <a name="libraries"></a>Kódtárak
 
 Ez az útmutató használja a következő könyvtárban:
 
 |Részletes ismertetés|Leírás|
 |---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|A JavaScript Preview Microsoft hitelesítési kódtár|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|A Microsoft Authentication Library for JavaScript-előzetes verzió|
 
 > [!NOTE]
-> *msal.js* célok a *Azure Active Directory v2 végpont* -lehetővé teszi a személyes, iskolai és munkahelyi fiókokat kell jelentkezzen be, és beszerezni a jogkivonatokat. A *Azure Active Directory v2 végpont* rendelkezik [bizonyos korlátozások](..\articles\active-directory\develop\active-directory-v2-limitations.md). Ha érdekli, csak a munkahelyi és iskolai fiókok, *adal.js* és a *V1 végpont*. Olvassa el a v1 és v2 végpontok közötti különbségek megértése a [v1-v2 összehasonlító](..\articles\active-directory\develop\active-directory-v2-compare.md).
+> *msal.js* célok a *Azure Active Directory v2 végpontot* – lehetővé teszi a személyes, iskolai és a munkahelyi fiókok jelentkezik be, és a jogkivonatok beszerzéséhez. A *Azure Active Directory v2 végpontot* rendelkezik [bizonyos korlátozások](..\articles\active-directory\develop\active-directory-v2-limitations.md). Ha érdekli, csak az iskolai és munkahelyi fiókokat, *adal.js* és a *V1-végpontra*. Olvassa el a v1 és v2 végpontok közötti különbségek megértése a [v1-v2 összehasonlítása](../articles/active-directory/develop/azure-ad-endpoint-comparison.md).
 
 <!--end-collapse-->

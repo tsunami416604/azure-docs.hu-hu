@@ -17,12 +17,12 @@ ms.date: 11/30/2017
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e7a662afd78ff053c60aeb5de3af9f0070a7c458
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: c4bc777c36608ff9aeeec3428af0103fa3ae29c4
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506527"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578962"
 ---
 # <a name="azure-ad-net-desktop-wpf-getting-started"></a>Az Azure AD .NET asztali (WPF) első lépések
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -169,7 +169,7 @@ Adal-t megkönnyíti az alkalmazásba beépíteni az összes alábbi általános
 
 Referenciaként az elkészült mintát (a konfigurációs értékek) nélkül biztosított [Itt](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip). Most már továbbléphet további forgatókönyvek. Előfordulhat, hogy szeretné próbálni:
 
-[.NET webes API Azure AD-vel biztonságos >>](active-directory-devquickstarts-webapi-dotnet.md)
+[.NET webes API Azure AD-vel biztonságos >>](quickstart-v1-dotnet-webapi.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

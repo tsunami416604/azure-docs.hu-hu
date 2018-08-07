@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 38e5e37111c6996fcf1342b123b5fc034b58fc0b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 446c97918a6b6287bf4cacf4711a0dd46e12f141
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430994"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578551"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden dokumentumnak Azure Active Directory (Azure AD) különböző-alkalmazásokkal kapcsolatos lehetőségei írt átfogó listáját tartalmazza.
@@ -41,7 +41,7 @@ Ez a szakasz gyors hozzáférést biztosít a vonatkozó hibaelhárítási útmu
 
 | Szolgáltatási terület |  |
 |:---:| --- |
-| Összevont egyszeri bejelentkezés |[SAML-alapú egyszeri bejelentkezés hibaelhárítása](active-directory-saml-debugging.md) |
+| Összevont egyszeri bejelentkezés |[SAML-alapú egyszeri bejelentkezés hibaelhárítása](develop/howto-v1-debug-saml-sso-issues.md) |
 | Jelszavas egyszeri bejelentkezés |[Az Internet Explorer a hozzáférési Panel bővítmény hibaelhárítása](active-directory-saas-ie-troubleshooting.md) |
 | Alkalmazásproxy |[Alkalmazásproxy hibaelhárítási útmutatója](manage-apps/application-proxy-troubleshoot.md) |
 | Egyszeri bejelentkezés között a helyszíni AD és az Azure ad-ben |[A Jelszókivonat-szinkronizálás hibáinak elhárítása](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[A Jelszóvisszaíró hibaelhárítása](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
@@ -57,7 +57,7 @@ Egyszeri bejelentkezés lehetővé teszi a felhasználók férhetnek hozzá a k�
 | Több ezer SaaS-alkalmazások az Azure AD-vel előre integrált, egyszerűsített egyszeri bejelentkezéses konfigurációs lépések |[Ismerkedés az Azure AD alkalmazáskatalógusában](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Összevonási támogató előre integrált alkalmazások teljes listája](saas-apps/tutorial-list.md)<br /><br />[Az alkalmazás hozzáadása az Azure AD Alkalmazáskatalógusában](active-directory-app-gallery-listing.md) |
 | Több mint 150 alkalmazás oktatóanyagok konfigurálásának egyszeri bejelentkezési alkalmazások például [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md), és még sok más |[SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](saas-apps/tutorial-list.md) |
 | Manuálisan állítsa be, és az egyszeri bejelentkezés beállításainak testreszabása |[Hogyan való konfigurálása összevont egyszeri bejelentkezés az alkalmazásokhoz, amelyek nem szerepelnek az Azure Active Directory Alkalmazáskatalógusában](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Az előre integrált alkalmazások SAML-jogkivonatban kiadott jogcímek testreszabása](active-directory-saml-claims-customization.md) |
-| Az összevont alkalmazások az SAML protokollt használó hibaelhárítási útmutató |[SAML-alapú egyszeri bejelentkezés hibaelhárítása](active-directory-saml-debugging.md) |
+| Az összevont alkalmazások az SAML protokollt használó hibaelhárítási útmutató |[SAML-alapú egyszeri bejelentkezés hibaelhárítása](develop/howto-v1-debug-saml-sso-issues.md) |
 | Az alkalmazás tanúsítvány lejárati dátuma konfigurálása és a tanúsítványok megújítása |[Tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 Összevont egyszeri bejelentkezés az Azure AD-hez felhasználónként legfeljebb tíz alkalmazások minden kiadása érhető el. [Az Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) korlátlan alkalmazásokat támogatja. Ha a szervezete [alapszintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) vagy [prémium szintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/), akkor [összevont alkalmazásokhoz való hozzáférés hozzárendelése csoportok használatával](#managing-access-to-applications).

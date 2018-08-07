@@ -16,12 +16,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: 48e10a48999e2dc73627f0830147b6d00fd3d8b9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: bb1f53b2ea014bfc8e658cf840e0a22368ba9f7c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506303"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579663"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Alkalmazások integrálása az Azure Active Directoryval
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -30,7 +30,7 @@ Vállalati fejlesztők és a szoftver--szolgáltatásként (SaaS) szolgáltatók
 
 Ez a cikk bemutatja, hogyan hozzáadása, frissítése vagy távolítsa el az alkalmazás regisztrálása az Azure ad-ben. Megismerkedhet a különböző típusú alkalmazásokat, amelyek integrálhatók az Azure AD-ben az alkalmazások, például a webes API-kat és más egyéb erőforrásainak elérésére konfigurálása.
 
-A két Azure AD-objektum regisztrált alkalmazásra és a közöttük kapcsolat képviselő kapcsolatos további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](active-directory-application-objects.md); tudhat meg többet, érdemes arculati irányelveinek használhatja az Azure Active Directory-alkalmazások fejlesztése során, [védjegyzési irányelvek integrált alkalmazások](active-directory-branding-guidelines.md).
+A két Azure AD-objektum regisztrált alkalmazásra és a közöttük kapcsolat képviselő kapcsolatos további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](app-objects-and-service-principals.md); tudhat meg többet, érdemes arculati irányelveinek használhatja az Azure Active Directory-alkalmazások fejlesztése során, [védjegyzési irányelvek integrált alkalmazások](howto-add-branding-in-azure-ad-apps.md).
 
 ## <a name="adding-an-application"></a>Egy alkalmazás hozzáadása
 Minden olyan alkalmazás, amely az Azure ad-ben funkcióinak használatát szeretne először regisztrálni kell az Azure AD-bérlővel. A regisztrálási folyamat magában foglalja a jogosultságot ad az alkalmazások, például az URL-címet, hogy hol található, a válaszok elküldésére, a felhasználó hitelesítése után az URL-cím az Azure AD részleteit az URI-t, amely azonosítja az alkalmazást, és így tovább.
@@ -73,7 +73,7 @@ Például ha webes ügyfélalkalmazásnak szüksége van a felhasználó naptár
 
 A hozzájárulási keretrendszer az OAuth 2.0 és a különböző folyamatok épül, mint például engedélyezési kód engedélyezési és az ügyfél hitelesítő adatainak megadása, nyilvános vagy bizalmas ügyfelek használatával. OAuth 2.0 használatával az Azure AD lehetővé teszi számos különböző típusú ügyfélalkalmazások, például telefonon, táblagépen, kiszolgáló vagy egy webalkalmazásban, illetve a szükséges erőforrásokhoz való hozzáférés elnyeréséhez.
 
-A hozzájárulási keretrendszer OAuth2.0-engedélyezések való használatával kapcsolatos további információkért lásd: [engedélyezése webalkalmazásoknak OAuth 2.0 és az Azure AD használatával hozzáférést](active-directory-protocols-oauth-code.md) és [hitelesítési forgatókönyvek az Azure AD](authentication-scenarios.md). További információ a jogosult hozzáférni az Office 365 a Microsoft Graph-n keresztül: [alkalmazáshitelesítést a Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
+A hozzájárulási keretrendszer OAuth2.0-engedélyezések való használatával kapcsolatos további információkért lásd: [engedélyezése webalkalmazásoknak OAuth 2.0 és az Azure AD használatával hozzáférést](v1-protocols-oauth-code.md) és [hitelesítési forgatókönyvek az Azure AD](authentication-scenarios.md). További információ a jogosult hozzáférni az Office 365 a Microsoft Graph-n keresztül: [alkalmazáshitelesítést a Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
 
 #### <a name="example-of-the-consent-experience"></a>A jóváhagyási felületen – példa
 
@@ -259,7 +259,7 @@ Előfordulhat, hogy a zabalení webové aplikace is kínál.
 
 A több-bérlős hozzáférési és bejelentkezési-a vagy a regisztráláshoz élmény támogatásához szükséges alkalmazások módosítására vonatkozó további információkért lásd:
 
-- [Az Azure Active Directory (AD) felhasználóinak bejelentkeztetése több-bérlős alkalmazásminta használatával](active-directory-devhowto-multi-tenant-overview.md)
+- [Az Azure Active Directory (AD) felhasználóinak bejelentkeztetése több-bérlős alkalmazásminta használatával](howto-convert-app-to-be-multi-tenant.md)
 - Listájának [több-bérlős Kódminták](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant). 
 - [Gyors útmutató: Adja hozzá a vállalati arculat megjelenítése a bejelentkezési oldal az Azure ad-ben](../fundamentals/customize-branding.md)
 
@@ -267,7 +267,7 @@ A több-bérlős hozzáférési és bejelentkezési-a vagy a regisztráláshoz �
 
 Egyetlen lap alkalmazás (gyógyfürdők) általában struktúrája JavaScript műveltekből előtér, amely a böngészőben, amely meghívja az alkalmazás webes API-t az üzleti logika végrehajtására háttérbeli futtatja. Az Azure AD-ben üzemeltetett gyógyfürdők, OAuth 2.0 típusú Implicit engedélyezés hitelesíteni a felhasználót az Azure ad-vel és használhat, amely segítségével biztonságos hívása a háttér-webes API-t az alkalmazás JavaScript ügyfélről jogkivonat beszerzése. 
 
-Miután a felhasználó számára engedélyezett a jóváhagyás, ez ugyanazt a hitelesítési protokollt használható API-erőforrásokhoz az alkalmazás konfigurálva az ügyfél és a más webkiszolgáló közötti hívások biztonságossá tételéhez tokenek beszerzése érdekében. Tudjon meg többet az implicit engedélyezés megadásáról, és segít eldönteni, hogy ez az alkalmazás forgatókönyvhöz jobb: [OAuth2 implicit ismertetése adja meg az Azure Active Directoryban folyamat](active-directory-dev-understanding-oauth2-implicit-grant.md).
+Miután a felhasználó számára engedélyezett a jóváhagyás, ez ugyanazt a hitelesítési protokollt használható API-erőforrásokhoz az alkalmazás konfigurálva az ügyfél és a más webkiszolgáló közötti hívások biztonságossá tételéhez tokenek beszerzése érdekében. Tudjon meg többet az implicit engedélyezés megadásáról, és segít eldönteni, hogy ez az alkalmazás forgatókönyvhöz jobb: [OAuth2 implicit ismertetése adja meg az Azure Active Directoryban folyamat](v1-oauth2-implicit-grant-flow.md).
 
 OAuth 2.0 típusú implicit engedélyezés alkalmazások alapértelmezés szerint le van tiltva. Állítsa az alkalmazás OAuth 2.0 típusú Implicit engedélyezés is engedélyeznie a `oauth2AllowImplicitFlow` értéket annak [alkalmazásjegyzék](active-directory-application-manifest.md).
 
@@ -291,7 +291,7 @@ OAuth 2.0 típusú implicit engedélyezés alkalmazások alapértelmezés szerin
 Ez a szakasz ismerteti, hogyan távolíthat el egy alkalmazás regisztrálása az az Azure AD-bérlő.
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>A szervezet által létrehozott alkalmazás eltávolítása
-A szervezet által regisztrált alkalmazások jelennek meg a "Saját alkalmazások" szűrő a bérlő fő "alkalmazásregisztrációk" oldalon. Ezek az alkalmazások azok meg manuálisan regisztrálni az Azure Portalon vagy programozott módon PowerShell vagy a Graph API-n keresztül. Pontosabban azok szerepelnek mindkét alkalmazás- és szolgáltatásnév objektumok által a bérlőben. További információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](active-directory-application-objects.md).
+A szervezet által regisztrált alkalmazások jelennek meg a "Saját alkalmazások" szűrő a bérlő fő "alkalmazásregisztrációk" oldalon. Ezek az alkalmazások azok meg manuálisan regisztrálni az Azure Portalon vagy programozott módon PowerShell vagy a Graph API-n keresztül. Pontosabban azok szerepelnek mindkét alkalmazás- és szolgáltatásnév objektumok által a bérlőben. További információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](app-objects-and-service-principals.md).
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>Egybérlős alkalmazás eltávolítása a címtárból
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -309,14 +309,14 @@ A szervezet által regisztrált alkalmazások jelennek meg a "Saját alkalmazás
 6. Kattintson a **Igen** a megerősítő üzenetben.
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Egy másik szervezet által felhatalmazott több-bérlős alkalmazás eltávolítása
-Amely a "Minden alkalmazás" szűrő meg fog jelenni az alkalmazások egy része (kivéve a "Saját alkalmazások" regisztrációk) oldalon a bérlő fő "Alkalmazásregisztrációk", több-bérlős alkalmazások vannak. Technikai szempontból a több-bérlős alkalmazások más bérlők, és a jóváhagyási folyamat során regisztráltak a bérlőbe. Pontosabban azok képviseli csak egy szolgáltatásnév-objektumot a bérlőben a nem megfelelő alkalmazás-objektum. Az alkalmazás és egyszerű szolgáltatási objektumok közötti különbségekkel kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure AD-ben](active-directory-application-objects.md).
+Amely a "Minden alkalmazás" szűrő meg fog jelenni az alkalmazások egy része (kivéve a "Saját alkalmazások" regisztrációk) oldalon a bérlő fő "Alkalmazásregisztrációk", több-bérlős alkalmazások vannak. Technikai szempontból a több-bérlős alkalmazások más bérlők, és a jóváhagyási folyamat során regisztráltak a bérlőbe. Pontosabban azok képviseli csak egy szolgáltatásnév-objektumot a bérlőben a nem megfelelő alkalmazás-objektum. Az alkalmazás és egyszerű szolgáltatási objektumok közötti különbségekkel kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure AD-ben](app-objects-and-service-principals.md).
 
 Annak érdekében, hogy távolítsa el egy több-bérlős alkalmazás-hozzáférés a címtárhoz (után megadó hozzájárulás), a vállalati rendszergazda el kell távolítania az egyszerű szolgáltatás. A rendszergazda kell globális rendszergazdai hozzáféréssel rendelkezik, és távolítsa el az Azure Portalon keresztül vagy használja a [Azure AD PowerShell-parancsmagok](http://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>További lépések
 - Az Azure AD-hitelesítés működéséről további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-ben](authentication-scenarios.md).
-- Tekintse meg a [védjegyzési irányelvek integrált alkalmazások](active-directory-branding-guidelines.md) amely tippekkel szolgál az alkalmazás visual útmutatást.
-- Egy alkalmazás alkalmazás- és szolgáltatásnév objektumok közötti kapcsolatot további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](active-directory-application-objects.md).
+- Tekintse meg a [védjegyzési irányelvek integrált alkalmazások](howto-add-branding-in-azure-ad-apps.md) amely tippekkel szolgál az alkalmazás visual útmutatást.
+- Egy alkalmazás alkalmazás- és szolgáltatásnév objektumok közötti kapcsolatot további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](app-objects-and-service-principals.md).
 - További információ a szerepkört az alkalmazás jegyzékfájl fontos szerepet játszik, lásd: [az Azure Active Directory alkalmazásjegyzékének megismerése](active-directory-application-manifest.md)
 - Tekintse meg a [Azure AD fejlesztői szószedetét](active-directory-dev-glossary.md) néhány, az Azure AD fejlesztői alapfogalmakat definíciói.
 - Látogasson el a [Active Directory fejlesztői útmutatója](azure-ad-developers-guide.md) áttekintheti az összes fejlesztői kapcsolódó tartalmat.

@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c6429a6fb762e9eb2bac59788c5c4eb0f9c031b2
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: dda0d8e9496eb310f6d2a2791977e9de0eea6503
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505484"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578524"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Hitelesítési forgatókönyvek az Azure ad-ben
 
@@ -62,7 +62,7 @@ Most, hogy az alapokat, olvassa el az alábbiakban megismerheti, hogyan kiépít
 
 ## <a name="claims-in-azure-ad-security-tokens"></a>Az Azure AD biztonsági jogkivonatokat a jogcím
 
-Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat), az Azure AD által kiadott jogcímeket, vagy a helyességi feltételek hitelesítését, a tulajdonos adatait tartalmaznak. Ezeket a jogcímeket a különböző feladatokhoz használhatják az alkalmazást. Ha például alkalmazások segítségével jogcímeket a jogkivonat érvényesítéséhez, directory-bérlő a tulajdonos azonosítása, felhasználói információ megjelenítése, határozza meg a tulajdonos engedélyezési és így tovább. Bármely adott biztonsági jogkivonatban található jogcímek jogkivonatot, hitelesíteni a felhasználót, és az alkalmazás konfigurációjában használt hitelesítő adat típusának típusától függenek. Az alábbi táblázat röviden az egyes Azure AD által kibocsátott jogcímek biztosítja. További információkért tekintse meg [támogatott jogkivonatok és jogcímtípusok](active-directory-token-and-claims.md).
+Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat), az Azure AD által kiadott jogcímeket, vagy a helyességi feltételek hitelesítését, a tulajdonos adatait tartalmaznak. Ezeket a jogcímeket a különböző feladatokhoz használhatják az alkalmazást. Ha például alkalmazások segítségével jogcímeket a jogkivonat érvényesítéséhez, directory-bérlő a tulajdonos azonosítása, felhasználói információ megjelenítése, határozza meg a tulajdonos engedélyezési és így tovább. Bármely adott biztonsági jogkivonatban található jogcímek jogkivonatot, hitelesíteni a felhasználót, és az alkalmazás konfigurációjában használt hitelesítő adat típusának típusától függenek. Az alábbi táblázat röviden az egyes Azure AD által kibocsátott jogcímek biztosítja. További információkért tekintse meg [támogatott jogkivonatok és jogcímtípusok](v1-id-and-access-tokens.md).
 
 | Jogcím | Leírás |
 | --- | --- |
@@ -113,7 +113,7 @@ A jelen dokumentumban szereplő minden egyes forgatókönyv egy alszakasz, amely
 
 ## <a name="application-types-and-scenarios"></a>Alkalmazástípusok és forgatókönyvek
 
-Az itt leírt forgatókönyveket mindegyike fejleszthetők a különböző nyelvekhez és platformokhoz használatával. Ezek vannak mindehhez a szilárd hátteret a rendelkezésre álló teljes körű Kódminták a [Kódminták útmutató](active-directory-code-samples.md), vagy közvetlenül a megfelelő [minta GitHub-adattárak](https://github.com/Azure-Samples?q=active-directory). Emellett, ha az alkalmazásnak egy adott adatrészletet, vagy a szegmens egy végpontok közötti forgatókönyv a legtöbb esetben a funkció is hozzáadhatók egymástól függetlenül. Például ha egy natív alkalmazást, amely meghívja a webes API-k, egyszerűen hozzáadhat egy webalkalmazást, a webes API meghívásához. A következő diagram azt ábrázolja, ezek a forgatókönyvek és alkalmazástípusok, és hogyan adhatók hozzá különböző összetevők:
+Az itt leírt forgatókönyveket mindegyike fejleszthetők a különböző nyelvekhez és platformokhoz használatával. Ezek vannak mindehhez a szilárd hátteret a rendelkezésre álló teljes körű Kódminták a [Kódminták útmutató](sample-v1-code.md), vagy közvetlenül a megfelelő [minta GitHub-adattárak](https://github.com/Azure-Samples?q=active-directory). Emellett, ha az alkalmazásnak egy adott adatrészletet, vagy a szegmens egy végpontok közötti forgatókönyv a legtöbb esetben a funkció is hozzáadhatók egymástól függetlenül. Például ha egy natív alkalmazást, amely meghívja a webes API-k, egyszerűen hozzáadhat egy webalkalmazást, a webes API meghívásához. A következő diagram azt ábrázolja, ezek a forgatókönyvek és alkalmazástípusok, és hogyan adhatók hozzá különböző összetevők:
 
 ![Alkalmazástípusok és forgatókönyvek](./media/authentication-scenarios/application_types_and_scenarios.png)
 
@@ -142,7 +142,7 @@ Ez a szakasz ismerteti egy alkalmazás, amely hitelesíti a felhasználót egy w
 
 #### <a name="code-samples"></a>Kódminták
 
-Tekintse meg a Kódminták webböngésző webalkalmazás forgatókönyveket. És térjen vissza később gyakran – új mintát gyakran kerülnek. [Webes alkalmazás](active-directory-code-samples.md#web-applications).
+Tekintse meg a Kódminták webböngésző webalkalmazás forgatókönyveket. És térjen vissza később gyakran – új mintát gyakran kerülnek. [Webes alkalmazás](sample-v1-code.md#web-applications).
 
 #### <a name="registering"></a>Regisztrálása
 
@@ -155,7 +155,7 @@ A felhasználói munkamenet lejár, ha lejár az Azure AD által kiállított jo
 
 ### <a name="single-page-application-spa"></a>Az egyoldalas alkalmazás (SPA)
 
-Ez a szakasz ismerteti a hitelesítés egyetlen lapon alkalmazás esetében, amelyek a webes API back end biztonságossá tételéhez használja az Azure AD és az OAuth 2.0 implicit engedélyezés biztosítanak. Egyetlen lap alkalmazások általában struktúrája rétegként JavaScript bemutató (előtérbeli) a böngésző és a egy webes API-háttéralkalmazás számára az olyan kiszolgálón fut, és valósítja meg az alkalmazás üzleti logika futtatható. Tudjon meg többet az implicit engedélyezés megadásáról, és segít eldönteni, hogy ez az alkalmazás forgatókönyvhöz jobb: [OAuth2 implicit ismertetése adja meg az Azure Active Directoryban folyamat](active-directory-dev-understanding-oauth2-implicit-grant.md).
+Ez a szakasz ismerteti a hitelesítés egyetlen lapon alkalmazás esetében, amelyek a webes API back end biztonságossá tételéhez használja az Azure AD és az OAuth 2.0 implicit engedélyezés biztosítanak. Egyetlen lap alkalmazások általában struktúrája rétegként JavaScript bemutató (előtérbeli) a böngésző és a egy webes API-háttéralkalmazás számára az olyan kiszolgálón fut, és valósítja meg az alkalmazás üzleti logika futtatható. Tudjon meg többet az implicit engedélyezés megadásáról, és segít eldönteni, hogy ez az alkalmazás forgatókönyvhöz jobb: [OAuth2 implicit ismertetése adja meg az Azure Active Directoryban folyamat](v1-oauth2-implicit-grant-flow.md).
 
 Ebben a forgatókönyvben, ha a felhasználó bejelentkezik, a JavaScript előtér-célból használ [Active Directory Authentication Library for JavaScript (adal-t. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) és a egy azonosító jogkivonat (id_token) beszerzése az Azure ad-ben az implicit engedélyezés megadásáról. A jogkivonatot a rendszer gyorsítótárazza, és az ügyfél csatlakoztatja a kérést, a tulajdonosi jogkivonatot, amikor a webes API háttéralkalmazás, amely az OWIN közbenső szoftver használatával lett biztonságossá téve. 
 
@@ -176,7 +176,7 @@ Ebben a forgatókönyvben, ha a felhasználó bejelentkezik, a JavaScript előt�
 
 #### <a name="code-samples"></a>Kódminták
 
-Tekintse meg egyetlen oldal alkalmazás (SPA) forgatókönyvekhez Kódminták. Ügyeljen arra, hogy milyen gyakran visszatérnie – új mintát gyakran kerülnek. [Egyetlen lap alkalmazás (SPA)](active-directory-code-samples.md#single-page-applications).
+Tekintse meg egyetlen oldal alkalmazás (SPA) forgatókönyvekhez Kódminták. Ügyeljen arra, hogy milyen gyakran visszatérnie – új mintát gyakran kerülnek. [Egyetlen lap alkalmazás (SPA)](sample-v1-code.md#single-page-applications).
 
 #### <a name="registering"></a>Regisztrálása
 
@@ -218,7 +218,7 @@ Az AD hitelesítési Kódtárai használja, ha a protokoll részletei az alábbi
 
 #### <a name="code-samples"></a>Kódminták
 
-Tekintse meg a Kódminták natív alkalmazás webes API-forgatókönyvekhez. És térjen vissza később gyakran – gyakran hozzáadjuk az új mintát. [Webes API a natív alkalmazás](active-directory-code-samples.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
+Tekintse meg a Kódminták natív alkalmazás webes API-forgatókönyvekhez. És térjen vissza később gyakran – gyakran hozzáadjuk az új mintát. [Webes API a natív alkalmazás](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
 
 #### <a name="registering"></a>Regisztrálása
 
@@ -271,7 +271,7 @@ Az alkalmazás azonosítóját és a delegált felhasználói identitás típusa
 
 #### <a name="code-samples"></a>Kódminták
 
-Tekintse meg a Kódminták webalkalmazás, webes API-forgatókönyvekhez. És térjen vissza később gyakran – új mintát gyakran kerülnek. Webes [webes API alkalmazást](active-directory-code-samples.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
+Tekintse meg a Kódminták webalkalmazás, webes API-forgatókönyvekhez. És térjen vissza később gyakran – új mintát gyakran kerülnek. Webes [webes API alkalmazást](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
 
 #### <a name="registering"></a>Regisztrálása
 
@@ -313,7 +313,7 @@ A folyamat az alábbiak ismertetik feltételezi, hogy a felhasználó hitelesít
 
 #### <a name="code-samples"></a>Kódminták
 
-Tekintse meg a Kódminták démon vagy kiszolgálói alkalmazás webes API-forgatókönyvekhez. És térjen vissza később gyakran – új mintát gyakran kerülnek. [Kiszolgáló vagy alkalmazás démon a webes API-hoz](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Tekintse meg a Kódminták démon vagy kiszolgálói alkalmazás webes API-forgatókönyvekhez. És térjen vissza később gyakran – új mintát gyakran kerülnek. [Kiszolgáló vagy alkalmazás démon a webes API-hoz](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 #### <a name="registering"></a>Regisztrálása
 
@@ -328,7 +328,7 @@ Az első alkalmazás eléréséhez a JWT jogkivonat a hozzáférési kód haszn�
 
 [Az Azure Active Directory fejlesztői útmutatója](azure-ad-developers-guide.md)
 
-[Az Azure Active Directory-Kódminták](active-directory-code-samples.md)
+[Az Azure Active Directory-Kódminták](sample-v1-code.md)
 
 [Az Azure Active Directory Aláírókulcs vonatkozó fontos információk](active-directory-signing-key-rollover.md)
 

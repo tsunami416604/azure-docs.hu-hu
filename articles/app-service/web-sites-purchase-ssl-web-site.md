@@ -1,6 +1,6 @@
 ---
-title: Vásároljon és SSL-tanúsítvány konfigurálása az Azure App Service |} Microsoft Docs
-description: Megtudhatja, hogyan vásárolhat egy tanúsítványt az alkalmazás szolgáltatáshoz, majd kösse App Service-alkalmazás
+title: Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány |} A Microsoft Docs
+description: App Service-tanúsítvány vásárlása és kösse az App Service-alkalmazás
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,114 +14,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
-ms.translationtype: HT
+ms.openlocfilehash: 1b5aa32155afc5264ecf5979ebc25f879bbc5b67
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807458"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39581689"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
-Ez az oktatóanyag bemutatja, hogyan tegye biztonságossá webalkalmazását által az SSL-tanúsítvány beszerzése a  **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**, biztonságos helyen tárolja [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis), és társítás egyéni tartományt.
+Ez az oktatóanyag bemutatja, hogyan teheti biztonságossá webalkalmazását egy SSL-tanúsítványt vásárol az  **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**, biztonságosan tárolja a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis), és az egyéni tartomány társítása azt.
 
-## <a name="step-1---log-in-to-azure"></a>1. lépés – Azure való bejelentkezéshez
+## <a name="step-1---sign-in-to-azure"></a>1. lépés – bejelentkezés az Azure-bA
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+Jelentkezzen be az Azure Portalra http://portal.azure.com
 
-## <a name="step-2---place-an-ssl-certificate-order"></a>2. lépés - az SSL-tanúsítvány megrendelés
+## <a name="step-2---place-an-ssl-certificate-order"></a>2. lépés – SSL-tanúsítvány rendelés
 
-Hozzon létre egy új SSL-tanúsítvány rendelés elhelyezhet [App szolgáltatástanúsítvány](https://portal.azure.com/#create/Microsoft.SSL) a a **Azure-portálon**.
+Hozzon létre egy új SSL-tanúsítvány rendelés elhelyezhet [App Service-tanúsítvány](https://portal.azure.com/#create/Microsoft.SSL) a a **az Azure portal**.
 
 ![Tanúsítvány létrehozása](./media/app-service-web-purchase-ssl-web-site/createssl.png)
 
-Adjon meg egy rövid **neve** SSL-tanúsítványok a tanúsítványok, és írja be a **tartománynév**
+Adjon meg egy rövid **neve** az SSL-tanúsítvány, és adja meg a **tartománynév**
 
 > [!NOTE]
-> Ez a lépés nem egy kritikus fontosságú része a beszerzési folyamatának. Győződjön meg arról, hogy ezt a tanúsítványt a védeni kívánt megfelelő gazdagép nevét (egyéni tartomány). **NE** az állomásnév WWW rendelkező hozzáfűzése. 
+> Ebben a lépésben az egyik legfontosabb részeit a vásárlási folyamat. Ellenőrizze, hogy adja meg a helyes állomásnevet (egyéni tartomány), amely ezt a tanúsítványt a védeni kívánt. **NE** illesztenie a WWW-állomás neve. 
 >
 
-Válassza ki a **előfizetés**, **erőforráscsoport**, és **tanúsítvány-SKU**
+Válassza ki a **előfizetés**, **erőforráscsoport**, és **tanúsítvány-Termékváltozat**
 
 > [!TIP]
-> App Service-tanúsítványok bármely Azure vagy az Azure szolgáltatások is használható, és nem korlátozódik alkalmazásszolgáltatások. Ehhez szüksége helyi PFX másolatot készít egy App Service-tanúsítvány használható az tetszőleges helyre kívánja. További információkért olvassa el a [PFX helyi másolat készítését egy App Service tanúsítvány](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
+> App Service-tanúsítványok bármilyen Azure és az Azure Services használható, és nem korlátozódik az App Services. Ehhez szüksége egy App Service-tanúsítvány, hogy ezzel bárhol felhasználható helyi PFX másolatának létrehozásához. További információkért olvassa el [létrehozása egy App Service-tanúsítvány PFX helyi példányának](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
 >
 
-## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>3. lépés - a tanúsítványt az Azure Key Vault
+## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>3. lépés – a tanúsítvány Store az Azure Key Vaultban
 
 > [!NOTE]
-> [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) Azure szolgáltatás, amely segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos védelme.
+> [A Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) Azure-szolgáltatás, amely segít a felhőalapú alkalmazások és szolgáltatások által használt kriptográfiai kulcsok és titkos.
 >
 
-Az SSL-tanúsítvány a vásárlás befejezése után meg kell nyitnia a [App Service-tanúsítványokkal](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lap.
+Az SSL-tanúsítvány megvásárlása után meg kell nyitnia a [App Service-tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapot.
 
-![Helyezze be a készen áll a KV tárolása képe](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
+![készen áll a KV tárolása ábrázoló kép beszúrása](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-A tanúsítvány állapota **"Függőben lévő kiállítási"** , néhány további lépést kell végrehajtani, ezzel a tanúsítvánnyal megkezdése előtt.
+A tanúsítvány állapota **"Kibocsátás függőben"** , néhány további lépést kell megtennie, hogy ez a tanúsítvány használatának megkezdéséhez szüksége.
 
-Kattintson a **Tanúsítványkonfiguráció** belül a tanúsítvány tulajdonságai lapon, majd kattintson a **1. lépés: tárolására** az Azure Key Vault a tanúsítványt tárolni szeretné.
+Kattintson a **Tanúsítványkonfiguráció** belül a tanúsítvány tulajdonságai lapon, majd kattintson a **1. lépés: Store** tárolja ezt a tanúsítványt az Azure Key Vaultban.
 
-A a **Key Vault állapot** kattintson **Key Vault tárház** választania ezt a tanúsítványt tárolni egy meglévő kulcstároló **vagy hozzon létre új Key Vault** kulcstároló létrehozása azonos előfizetésbe és erőforráscsoportba csoporton belül.
+Az a **Key Vault-állapot** kattintson **Key Vault-tárház** választhat egy meglévő ezt a tanúsítványt tároló kulcstartót **vagy új kulcstartó létrehozása** új kulcstartó létrehozása azonos előfizetésben és erőforráscsoportban csoporton belül.
 
 > [!NOTE]
-> Az Azure Key Vault tárolja a tanúsítványt a minimális díja van.
+> Az Azure Key Vault rendelkezik a minimális díjat a tanúsítvány tárolásához.
 > További információkért lásd:  **[Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/)**.
 >
 
-Miután kiválasztotta a kulcsot tároló tárház tárolja ezt a tanúsítványt, a **tárolására** beállítást meg kell jelennie a sikeres.
+Miután kiválasztotta a Key Vault-tárházat tárolja ezt a tanúsítványt, a **Store** beállítást meg kell jelennie a sikeres.
 
-![Helyezze be a tároló sikeres KV képe](./media/app-service-web-purchase-ssl-web-site/KVStoreSuccess.png)
+![KV siker store kép beszúrása](./media/app-service-web-purchase-ssl-web-site/KVStoreSuccess.png)
 
-## <a name="step-4---verify-the-domain-ownership"></a>4. lépés - ellenőrizze a tartomány tulajdonosa
+## <a name="step-4---verify-the-domain-ownership"></a>4. lépés – a tartomány tulajdonjogának ellenőrzése
 
-Az azonos **Tanúsítványkonfiguráció** oldalra, hogy a 3. lépésben, kattintson a **2. lépés: Ellenőrizze**.
+Az azonos **Tanúsítványkonfiguráció** kattintson a lap a 3. lépésben használt **2. lépés: Győződjön meg arról**.
 
-Adja meg az elsődleges tartomány ellenőrzés módját. 
+Válassza ki a kívánt tartomány-ellenőrzési módszert. 
 
-App Service-tanúsítványokkal által támogatott tartományok ellenőrzésének négy típusa van: az App Service, a tartományt, a levelek és a manuális ellenőrzése. További részletek a következő ellenőrzési típusok magyarázata a [szakasz speciális](#advanced).
+App Service-tanúsítványok által támogatott tartomány-ellenőrzés négy típusa van: az App Service, tartomány, Mail és manuális ellenőrzést. Ezek a hitelesítési típusok mutatjuk be a további részleteket a [szakasz speciális](#advanced).
 
 > [!NOTE]
-> **App Service-ellenőrzési** van a legmegfelelőbb beállítást, ha ellenőrizni szeretné a tartomány már le van képezve egy App Service-alkalmazást ugyanahhoz az előfizetéshez. Kihasználja a tényt, hogy az App Service alkalmazás már ellenőrizte a tartomány tulajdonosa.
+> **App Service-ellenőrzés** a legalkalmasabb lehetőség, ha szeretné ellenőrizni a tartományt már hozzá van rendelve egy App Service-alkalmazás ugyanabban az előfizetésben. Azt a tényt, hogy az App Service-alkalmazás már ellenőrizte a tartomány tulajdonjogának kihasználja.
 >
 
 Kattintson a **ellenőrizze** gombra kattintva fejezze be ezt a lépést.
 
-![Helyezze be a tartomány ellenőrzése képe](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
+![Helyezze be a tartomány-ellenőrzés képe](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
 
-Kattintás után **ellenőrizze**, használja a **frissítése** gombra kattint, amíg a **győződjön meg arról** beállítást meg kell jelennie a sikeres.
+Kattintás után **győződjön meg arról**, használja a **frissítése** gombra, amíg a **ellenőrizze** beállítást meg kell jelennie a sikeres.
 
-![Kép beszúrása a KV sikerességének ellenőrzése](./media/app-service-web-purchase-ssl-web-site/KVVerifySuccess.png)
+![INSERT képe a KV sikerességének ellenőrzése](./media/app-service-web-purchase-ssl-web-site/KVVerifySuccess.png)
 
-## <a name="step-5---assign-certificate-to-app-service-app"></a>App Service alkalmazás hozzárendelése tanúsítványt, 5 -. lépés
+## <a name="step-5---assign-certificate-to-app-service-app"></a>5. lépés – tanúsítvány App Service-alkalmazás hozzárendelése
 
 > [!NOTE]
-> Ebben a szakaszban a lépések elvégzése előtt kell társítva van egy egyéni tartománynevet az alkalmazást. További információkért lásd:  **[egy webalkalmazást az egyéni tartománynév beállítása.](app-service-web-tutorial-custom-domain.md)**
+> Ebben a szakaszban ismertetett lépések végrehajtása, mielőtt kell társítva van egy egyéni tartománynevet az alkalmazás. További információkért lásd:  **[webes alkalmazás egy egyéni tartománynév beállítása.](app-service-web-tutorial-custom-domain.md)**
 >
 
-Az a  **[Azure-portálon](https://portal.azure.com/)**, kattintson a **App Service** lehetőséget a bal oldali a lap.
+Az a  **[az Azure portal](https://portal.azure.com/)**, kattintson a **App Service-ben** lehetőséget a bal oldalon az oldal.
 
 Kattintson annak az alkalmazásnak a nevére, amelyhez hozzá szeretné rendelni a tanúsítványt.
 
 Az a **beállítások**, kattintson a **SSL-beállítások**.
 
-Kattintson a **App Service-tanúsítvány importálása** , és válassza ki az imént beszerzett tanúsítványt.
+Kattintson a **App Service-tanúsítvány importálása** , és válassza ki a most megvásárolt tanúsítványt.
 
 ![Helyezze be a tanúsítvány importálása képe](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-Az a **ssl-kötések** szakaszban kattintson a **felvenni kötéseket**, és a legördülő lista segítségével válassza ki a biztonságos SSL és a tanúsítvány használatára a tartomány nevét. Is kiválaszthat a használ-e **[kiszolgálónév jelzése (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** vagy IP-alapú SSL.
+Az a **ssl-kötések** szakaszban kattintson a **adhat hozzá kötéseket**, és a legördülő menükben válassza ki a tartomány nevét az SSL és a tanúsítvány használatára. Is kiválaszthat a hogy használható-e **[kiszolgálónév jelzése (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** vagy IP-alapú SSL.
 
 ![az SSL-kötések kép beszúrása](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 
-Kattintson a **kötésének hozzáadása** menti a módosításokat, és az SSL engedélyezéséhez.
+Kattintson a **kötésének hozzáadása** mentse a módosításokat, és az SSL engedélyezéséhez.
 
 > [!NOTE]
-> Ha a kiválasztott **IP-alapú SSL** és az egyéni tartomány úgy van konfigurálva, az A rekord, a következő további lépéseket kell végrehajtani. Ezek a további részleteket magyarázata a [szakasz speciális](#Advanced).
+> Ha a kiválasztott **IP-alapú SSL** és az egyéni tartomány úgy van konfigurálva, az A rekord, akkor az alábbi kiegészítő lépéseket kell végrehajtania. Ezekről további információt a további részleteket a [szakasz speciális](#Advanced).
 
-Ezen a ponton kell tudni látogasson el az alkalmazás használatával `HTTPS://` helyett `HTTP://` ellenőrzése, hogy a tanúsítvány helyesen van konfigurálva.
+Ezen a ponton kell látnia, látogasson el az alkalmazás használatával `HTTPS://` helyett `HTTP://` , győződjön meg arról, hogy a tanúsítvány megfelelően van konfigurálva.
 
 <!--![insert image of https](./media/app-service-web-purchase-ssl-web-site/Https.png)-->
 
-## <a name="step-6---management-tasks"></a>6 - felügyeleti feladatokat. lépés
+## <a name="step-6---management-tasks"></a>6. lépés – felügyeleti feladatok
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -133,92 +133,92 @@ Ezen a ponton kell tudni látogasson el az alkalmazás használatával `HTTPS://
 
 ## <a name="advanced"></a>Extra szintű
 
-### <a name="verifying-domain-ownership"></a>Tartomány-tulajdonjogának ellenőrzéséről
+### <a name="verifying-domain-ownership"></a>Tartomány tulajdonjogának ellenőrzése
 
-App service-tanúsítványokkal által támogatott tartományok ellenőrzésének további két típusa van: Mail és a kézi ellenőrzése.
+Tartomány-ellenőrzés App service-tanúsítványok által támogatott további két típusa van: E-mail, és a manuális ellenőrzést.
 
 #### <a name="mail-verification"></a>E-mailes ellenőrzés
 
-Megerősítési e-mailt már az E-mail címeket, az egyéni tartomány társított el lett küldve.
-Végezze el az e-mailek ellenőrzési lépés, nyissa meg az e-mailt, és kattintson a megerősítési hivatkozást.
+Megerősítési e-mailt már el lett küldve az egyéni tartományhoz tartozó E-mail-címeit.
+Az E-mail-ellenőrzési lépés befejezéséhez nyissa meg az e-mailt, és kattintson a visszaigazoló hivatkozásra.
 
-![Helyezze be az e-mail ellenőrzése képe](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
+![az e-mailes ellenőrzés kép beszúrása](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
 
-Ha újra kell küldenie a megerősítési e-mailt, kattintson a **E-mail újraküldése** gombra.
+Ha újra kell küldenie az ellenőrző e-mailt, kattintson a **E-mail újraküldése** gombra.
 
 #### <a name="domain-verification"></a>Tartomány ellenőrzése
 
-Válassza ezt a beállítást csak a [egy App Service-tartomány, az Azure-ból vásárolta.](custom-dns-web-site-buydomains-web-app.md). Azure automatikusan hozzáadja az ellenőrzés TXT-rekord, és befejezi a folyamatot.
+Ezt a lehetőséget csak a [vásárolt az Azure App Service-tartományok.](custom-dns-web-site-buydomains-web-app.md). Az Azure automatikusan hozzáadja az ellenőrzési txt típusú rekord, és elvégzi a folyamatot.
 
 #### <a name="manual-verification"></a>Manuális ellenőrzés
 
 > [!IMPORTANT]
-> HTML-weblap ellenőrzése (csak a Standard tanúsítvány Termékváltozat működik)
+> HTML-weblap ellenőrzése (csak a tanúsítványt a Standard Termékváltozat esetében működik)
 >
 
-1. Hozzon létre egy HTML fájlt **"starfield.html"**
+1. Hozzon létre egy HTML-fájlt **"starfield.html"**
 
-1. Tartalom ennek a fájlnak kell lennie a tartomány ellenőrző jogkivonat pontos nevét. (Átmásolhatja a jogkivonatot a tartomány ellenőrzése lapon)
+1. Tartalom ennek a fájlnak kell lennie a pontos nevét a tartomány-ellenőrzési tokennel. (Másolhatja a jogkivonatot a tartomány-ellenőrzési állapot oldal)
 
-1. Ez a fájl a webkiszolgálón, a tartomány gyökerében feltöltése `/.well-known/pki-validation/starfield.html`
+1. Ezt a tartományt üzemeltető webkiszolgáló gyökérmappájában-fájl feltöltése `/.well-known/pki-validation/starfield.html`
 
-1. Kattintson a **frissítése** ellenőrzés után a tanúsítvány állapotának frissítése. Az ellenőrzés befejezéséhez néhány percig is eltarthat.
-
-> [!TIP]
-> Ellenőrizze a terminál használatával `curl -G http://<domain>/.well-known/pki-validation/starfield.html` a válasz tartalmaznia kell a `<verification-token>`.
-
-#### <a name="dns-txt-record-verification"></a>DNS TXT rekord ellenőrzése
-
-1. A DNS-kezelő használatával hozzon létre egy TXT rekordot a a `@` altartomány értékkel egyenlőnek a tartomány ellenőrző jogkivonat.
-1. Kattintson a **"Frissítés"** ellenőrzés után a tanúsítvány állapotának frissítése.
+1. Kattintson a **frissítése** ellenőrzés befejezése után a tanúsítvány állapotának frissítéséhez. Az ellenőrzés néhány percbe is telhet.
 
 > [!TIP]
-> A TXT-rekord létrehozásához szükséges `@.<domain>` értékű `<verification-token>`.
+> Ellenőrizze a terminál használatával `curl -G http://<domain>/.well-known/pki-validation/starfield.html` a válasznak tartalmaznia kell a `<verification-token>`.
 
-### <a name="assign-certificate-to-app-service-app"></a>App Service alkalmazás-tanúsítványt hozzárendeli
+#### <a name="dns-txt-record-verification"></a>DNS txt típusú rekord ellenőrzése
 
-Ha a kiválasztott **IP-alapú SSL** és az egyéni tartomány úgy van konfigurálva, az A rekord, a következő további lépéseket kell végrehajtani:
+1. A DNS-kezelő használatával hozzon létre egy txt típusú rekordot a a `@` altartomány egyenlő a tartomány-ellenőrzési Token értékét.
+1. Kattintson a **"Frissítés"** ellenőrzés befejezése után a tanúsítvány állapotának frissítéséhez.
 
-Beállítása után egy IP-alapú SSL-kötést, egy dedikált IP-cím hozzá van rendelve az alkalmazáshoz. Az IP-cím található a **egyéni tartomány** jobbra fent a az alkalmazás beállításai lapon a **Hostnames** szakasz. Szerepel **külső IP-cím**
+> [!TIP]
+> Hozzon létre egy txt típusú rekordot a kell `@.<domain>` értékkel `<verification-token>`.
 
-![Helyezze be az IP-SSL képe](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
+### <a name="assign-certificate-to-app-service-app"></a>Tanúsítvány hozzárendelése az App Service-alkalmazás
 
-Az IP-cím nem egyezik a virtuális IP-cím a tartomány az A rekord konfigurálása korábban használt. Ha használatára van konfigurálva SNI SSL-alapú vagy nem SSL használatára vannak konfigurálva, a bejegyzés nincs cím szerepel.
+Ha a kiválasztott **IP-alapú SSL** és az egyéni tartomány úgy van konfigurálva, az A rekord, akkor az alábbi kiegészítő lépéseket kell végrehajtania:
 
-A regisztrációs által biztosított eszközöket használja, módosítsa az egyéni tartománynevet az IP-címre az előző lépésben rekordjában.
+Miután konfigurálta egy IP-cím alapú SSL-kötés, az alkalmazás hozzá van rendelve egy dedikált IP-címet. Annak az IP-címet a a **egyéni tartomány** oldalon az alkalmazás beállításaiban jobbra fent a **állomásnevek** szakaszban. Másiké pedig **külső IP-cím**
 
-## <a name="rekey-and-sync-the-certificate"></a>Kulcsismétlés és a tanúsítványának szinkronizálása
+![az IP SSL kép beszúrása](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
 
-Ha bármikor át kívánja a tanúsítvány kulcsismétlés, válassza ki a **kulcs újbóli létrehozása és a szinkronizálás** parancsát a **tanúsítvány tulajdonságai** lap.
+Az IP-cím eltér a virtuális IP-cím, az A rekord a tartomány konfigurálásához használt korábban. Ha használatára vannak konfigurálva az SNI-alapú SSL, vagy nincsenek konfigurálva SSL használatára, nincs cím szerepel a listán a bejegyzéshez tartozó.
 
-Kattintson a **kulcsismétlés** gombra kattintva indítani a folyamatot. Ez az eljárás 1 – 10 percet is igénybe vehet.
+A tartománynév regisztrálójánál az által biztosított eszközökkel, módosítsa az egyéni tartománynevet az IP-cím átirányítása az előző lépésben az A rekordhoz.
 
-![Helyezze be a kulcsismétlés SSL képe](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
+## <a name="rekey-and-sync-the-certificate"></a>Újrakulcsolás és szinkronizálás a tanúsítvány
 
-A tanúsítvány újbóli visszaállítja a tanúsítványt a hitelesítésszolgáltatótól származó kibocsátott új tanúsítványt.
+Ha átállítására lenne szükség a tanúsítvány újrakulcsolása, válassza ki a **Újrakulcsolás és szinkronizálás** parancsát a **tanúsítvány tulajdonságai** lapot.
+
+Kattintson a **Újrakulcsolása** gombra kattintva elindíthatja a folyamatot. Ez a folyamat 1 – 10 percet is igénybe vehet.
+
+![az SSL kulcsismétlési kép beszúrása](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
+
+A tanúsítvány újrakulcsolása összesíti a tanúsítványt, és a egy új tanúsítvány kibocsátása a hitelesítésszolgáltatótól.
 
 ## <a name="renew-the-certificate"></a>A tanúsítvány megújítása
 
-Kapcsolja be a tanúsítvány automatikus megújítását bármikor, kattintson a **automatikus megújításához beállítások** a tanúsítvány kezelése lapon. Válassza ki **a** kattintson **mentése**.
+A tanúsítvány automatikus megújítás bármikor bekapcsolásához kattintson **az automatikus megújítás beállításai** a tanúsítvány-kezelési oldalán. Válassza ki **a** kattintson **mentése**. A tanúsítvány lejárta előtt 60 nappal megújul, ha engedélyezve van az automatikus megújítását.
 
 ![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-Ehelyett manuálisan újítsa meg a tanúsítványt, kattintson a **manuális megújítása** helyette.
+Ehelyett manuálisan újítsa meg a tanúsítványt, kattintson a **manuális megújítás** helyette.
 
 > [!NOTE]
-> A megújított tanúsítvány nem automatikusan kötött az alkalmazást, akár manuálisan megújítani automatikusan újulnak meg. Az alkalmazás kötni, lásd: [megújítani a tanúsítványokat](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+> A megújított tanúsítvány nem automatikusan kötött alkalmazását, akár manuálisan megújítani automatikusan megújul. Kösse az alkalmazáshoz, tekintse meg [tanúsítványok megújítása](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
 
 <a name="notrenewed"></a>
-## <a name="why-is-my-certificate-not-auto-renewed"></a>Miért a tanúsítvány nem automatikus-megújult?
+## <a name="why-is-my-certificate-not-auto-renewed"></a>Miért érdemes a tanúsítvány nem automatikus – újítja meg?
 
-Ha az SSL-tanúsítvány automatikus megújítási van konfigurálva, de nem automatikusan megújítani, előfordulhat, hogy a függőben lévő tartományok ellenőrzésének. Vegye figyelembe: 
+Ha az SSL-tanúsítvány automatikus megújítása van konfigurálva, de nem automatikusan megújítani, előfordulhat, hogy rendelkezik egy függőben lévő tartomány-ellenőrzés. Vegye figyelembe: 
 
-- GoDaddy, az App Service-tanúsítványokat hoz létre, amely a tartományok ellenőrzésének két évente van szükség. A tartományi rendszergazda három évente egyszer kap egy e-mailt a tartomány ellenőrzése. Nem sikerült ellenőrizni az e-mailben, vagy ellenőrizze a tartományt a megakadályozza, hogy az App Service-tanúsítvány megújítása automatikusan folyamatban. 
-- GoDaddy házirend változása miatt 2018. március 1. előtt kiadott összes App Service-tanúsítványt (még akkor is, ha az automatikus tartománymegújítási engedélyezve van a tanúsítvány) szükséges reverification tartomány a következő megújítási idején. Nézze meg leveleit, és a tartomány egyszeri igazolásához automatikus az App Service-tanúsítvány megújítási a folytatáshoz. 
+- GoDaddy, az App Service-tanúsítványokat hoz létre, amely a tartomány-ellenőrzés két évente van szükség. A tartományi rendszergazda három évente egyszer kap egy e-mailt a tartomány ellenőrzéséhez. Ellenőrizze az e-mailben, vagy ellenőrizze a tartomány megakadályozza, hogy az App Service-tanúsítvány automatikus megújítása. 
+- A GoDaddy házirend módosítása miatt a 2018. március 1. előtt kiadott összes App Service-tanúsítványok reverification tartomány tovább a megújítás időpontjában szükséges a (még akkor is, ha az automatikus megújítás engedélyezve van a tanúsítvány). Tekintse meg az e-mail, és fejezze be az automatikus megújítás az App Service-tanúsítvány továbbra is a egyszeri tartomány-ellenőrzésére. 
 
 ## <a name="more-resources"></a>További erőforrások
 
 * [HTTPS kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-https)
-* [A TLS 1.1-es vagy 1.2-es kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
-* [Egy SSL-tanúsítvány használható az alkalmazás kódjában, az Azure App Service-ben](app-service-web-ssl-cert-load.md)
+* [A TLS 1.1/1.2 kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
+* [SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service-ben](app-service-web-ssl-cert-load.md)
 * [– Gyakori kérdések: App Service-tanúsítványok](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
