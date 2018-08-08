@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d422c463d07459e73e07bddfe441e42e642b8bce
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: a4e062b1bc56eada2fa2c27797151e265271022e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136876"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621157"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -146,6 +146,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Advisor/generateRecommendations/action | Létrehozza a javaslatokat |
 > | Műveletek | Microsoft.Advisor/generateRecommendations/read | Lekérdezi a javaslatok állapota készítése |
 > | Műveletek | Microsoft.Advisor/operations/read | A Microsoft Advisor műveletek beolvasása |
+> | Műveletek | Microsoft.Advisor/recommendations/available/action | Új javaslat érhető el a Microsoft advisor |
 > | Műveletek | Microsoft.Advisor/recommendations/read | Javaslatok beolvasása |
 > | Műveletek | Microsoft.Advisor/recommendations/suppressions/delete | Mellőzés törlése |
 > | Műveletek | Microsoft.Advisor/recommendations/suppressions/read | Suppressions beolvasása |
@@ -396,6 +397,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Authorization/locks/delete | A megadott hatókör zárolásainak törlése. |
 > | Műveletek | Microsoft.Authorization/locks/read | A megadott hatókör zárolásainak beolvasása. |
 > | Műveletek | Microsoft.Authorization/locks/write | A megadott hatókör zárolásainak beállítása. |
+> | Műveletek | Microsoft.Authorization/operations/read | A műveletek listájának beolvasása |
 > | Műveletek | Microsoft.Authorization/permissions/read | A hívó adott hatókörben érvényes engedélyeinek listázása. |
 > | Műveletek | Microsoft.Authorization/policyAssignments/delete | Szabályzat-hozzárendelés törlése a megadott hatókörben. |
 > | Műveletek | Microsoft.Authorization/policyAssignments/read | Szabályzat-hozzárendelés adatainak lekérése. |
@@ -594,6 +596,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Batch/batchAccounts/write | Létrehoz egy új Batch-fiókot, vagy egy meglévő Batch-fiók frissítése |
 > | Műveletek | Microsoft.Batch/locations/checkNameAvailability/action | Ellenőrzi, hogy a fiók neve érvényes, és nincs használatban. |
 > | Műveletek | Microsoft.Batch/locations/quotas/read | A Bach kvótái a megadott előfizetés lekérdezi a megadott Azure-régiónál |
+> | Műveletek | Microsoft.Batch/operations/read | Microsoft.Batch erőforrás-szolgáltató elérhető műveleteinek listázása |
 > | Műveletek | Microsoft.Batch/register/action | A Batch erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása, és lehetővé teszi, hogy a Batch-fiókok létrehozása |
 > | Műveletek | Microsoft.Batch/unregister/action | A Batch erőforrás-szolgáltató megakadályozza, hogy a Batch-fiókok létrehozása az előfizetés regisztrációjának törlése |
 
@@ -1226,6 +1229,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/write | A tárolócsoport diagnosztikai beállításának létrehozása vagy frissítése. |
 > | Műveletek | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/metricDefinitions/read | A tárolócsoport elérhető metrikáinak beolvasása. |
 > | Műveletek | Microsoft.ContainerInstance/containerGroups/read | Az összes tárolócsoport beolvasása. |
+> | Műveletek | Microsoft.ContainerInstance/containerGroups/restart/action | Egy adott tárolócsoport újraindul. |
+> | Műveletek | Microsoft.ContainerInstance/containerGroups/stop/action | Egy adott tárolócsoport leáll. A számítási erőforrások fel kell szabadítani, és a számlázása le fog állni. |
 > | Műveletek | Microsoft.ContainerInstance/containerGroups/write | Egy adott tárolócsoport létrehozása vagy frissítése. |
 > | Műveletek | Microsoft.ContainerInstance/register/action | A tárolópéldány erőforrás-szolgáltatójára való előfizetés regisztrálása és a tárolócsoportok létrehozásának engedélyezése. |
 
@@ -1281,6 +1286,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Egy felügyelt fürt hozzáférési profil beolvasása lista hitelesítő adatok használatával szerepkörnév alapján |
 > | Műveletek | Microsoft.ContainerService/managedClusters/accessProfiles/read | Egy felügyelt fürt hozzáférési profil beolvasása a szerepkör neve szerint |
 > | Műveletek | Microsoft.ContainerService/managedClusters/delete | Egy felügyelt fürt törlése |
+> | Műveletek | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Egy felügyelt fürt a clusterAdmin hitelesítő adatainak listázása |
+> | Műveletek | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Egy felügyelt fürt a clusterUser hitelesítő adatainak listázása |
 > | Műveletek | Microsoft.ContainerService/managedClusters/providers/Microsoft.Insights/diagnosticSettings/read | Egy felügyelt fürt erőforrás diagnosztikai beállításának beolvasása |
 > | Műveletek | Microsoft.ContainerService/managedClusters/providers/Microsoft.Insights/diagnosticSettings/write | A felügyelt fürt erőforrás diagnosztikai beállításának létrehozása vagy frissítése |
 > | Műveletek | Microsoft.ContainerService/managedClusters/providers/Microsoft.Insights/logDefinitions/read | Naplók beolvasása felügyelt fürt. |
@@ -1290,6 +1297,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ContainerService/managedClusters/write | Létrehoz egy új felügyelt fürtöt, vagy egy meglévő frissítése |
 > | Műveletek | Microsoft.ContainerService/operations/read | Microsoft.ContainerService erőforrás-szolgáltató elérhető műveleteinek listázása |
 > | Műveletek | Microsoft.ContainerService/register/action | Az előfizetés regisztrálása a Microsoft.ContainerService erőforrás-szolgáltató |
+> | Műveletek | Microsoft.ContainerService/unregister/action | Előfizetés regisztrációjának Microsoft.ContainerService erőforrás-szolgáltatónál |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
@@ -1514,16 +1522,22 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DataFactory/factories/linkedServices/read | Olvasási társított szolgáltatást. |
 > | Műveletek | Microsoft.DataFactory/factories/linkedServices/write | Társított szolgáltatás létrehozása vagy frissítése |
 > | Műveletek | Microsoft.DataFactory/factories/pipelineruns/activityruns/read | Beolvassa a megadott folyamatfuttatási azonosító. a tevékenység futtatása |
+> | Műveletek | Microsoft.DataFactory/factories/pipelineruns/cancel/action | Megszakítja a folyamatfuttatás azokat a futtatási azonosítót. |
+> | Műveletek | Microsoft.DataFactory/factories/pipelineruns/queryactivityruns/action | A megadott folyamat a tevékenység futtatása lekérdezések futtatása azonosítója. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelineruns/read | A Folyamatfuttatások beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelines/createrun/action | Futtatás hoz létre a folyamatot. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelines/delete | Törli a folyamatot. |
+> | Műveletek | Microsoft.DataFactory/factories/pipelines/pipelineruns/read | A folyamat futásának beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelines/read | Olvassa be a folyamatot. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelines/write | Létrehozni vagy frissíteni a folyamatot |
 > | Műveletek | Microsoft.DataFactory/factories/providers/Microsoft.Insights/diagnosticSettings/read | Az erőforrás diagnosztikai beállításainak beolvasása |
 > | Műveletek | Microsoft.DataFactory/factories/providers/Microsoft.Insights/diagnosticSettings/write | Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése |
 > | Műveletek | Microsoft.DataFactory/factories/providers/Microsoft.Insights/logDefinitions/read | Az előállítók elérhető naplók beolvasása |
 > | Műveletek | Microsoft.DataFactory/factories/providers/Microsoft.Insights/metricDefinitions/read | Az előállítók elérhető metrikáinak lekérése |
+> | Műveletek | Microsoft.DataFactory/factories/querypipelineruns/action | A Folyamatfuttatások lekérdezi. |
+> | Műveletek | Microsoft.DataFactory/factories/querytriggerruns/action | Lekérdezi az eseményindító-futtatások. |
 > | Műveletek | Microsoft.DataFactory/factories/read | A Data Factory beolvasása. |
+> | Műveletek | Microsoft.DataFactory/factories/triggerruns/read | Az eseményindító-futtatások beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/triggers/delete | Törli az összes eseményindító. |
 > | Műveletek | Microsoft.DataFactory/factories/triggers/read | Minden Trigger beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/triggers/start/action | Minden Trigger elindul. |
@@ -1611,6 +1625,11 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DataMigration/services/delete | Töröl egy erőforrást és annak összes gyermekét |
 > | Műveletek | Microsoft.DataMigration/services/projects/accessArtifacts/action | A projektösszetevőkre vonatkozó GET vagy PUT műveletek elvégzéséhez használható URL létrehozása |
 > | Műveletek | Microsoft.DataMigration/services/projects/delete | Töröl egy erőforrást és annak összes gyermekét |
+> | Műveletek | Microsoft.DataMigration/services/projects/files/delete | Töröl egy erőforrást és annak összes gyermekét |
+> | Műveletek | Microsoft.DataMigration/services/projects/files/read | Olvasható információk erőforrásokról |
+> | Műveletek | Microsoft.DataMigration/services/projects/files/read/action | Szerezzen be egy URL-címet, amellyel olvashatja vagy a fájl tartalmát |
+> | Műveletek | Microsoft.DataMigration/services/projects/files/readWrite/action | Szerezzen be egy URL-címet, amellyel olvashatja vagy írhatja a fájl tartalmát |
+> | Műveletek | Microsoft.DataMigration/services/projects/files/write | Vezérlők és tulajdonságaik létrehozása és frissítése |
 > | Műveletek | Microsoft.DataMigration/services/projects/read | Olvasható információk erőforrásokról |
 > | Műveletek | Microsoft.DataMigration/services/projects/tasks/cancel/action | A feladat megszakítása, ha jelenleg fut |
 > | Műveletek | Microsoft.DataMigration/services/projects/tasks/delete | Töröl egy erőforrást és annak összes gyermekét |
@@ -1633,6 +1652,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | --- | --- | --- |
 > | Műveletek | Microsoft.DBforMySQL/locations/performanceTiers/read | A teljesítményszintek elérhető listáját adja vissza. |
 > | Műveletek | Microsoft.DBforMySQL/performanceTiers/read | A teljesítményszintek elérhető listáját adja vissza. |
+> | Műveletek | Microsoft.DBforMySQL/servers/configurations/read | Lekérdezi a megadott konfiguráció tulajdonságainak vagy a kiszolgáló konfigurációk listáját adja vissza. |
+> | Műveletek | Microsoft.DBforMySQL/servers/configurations/write | Frissítse az értéket a megadott konfiguráció |
 > | Műveletek | Microsoft.DBforMySQL/servers/delete | Töröl egy meglévő kiszolgálóra. |
 > | Műveletek | Microsoft.DBforMySQL/servers/firewallRules/delete | Törli a meglévő tűzfalszabály. |
 > | Műveletek | Microsoft.DBforMySQL/servers/firewallRules/read | Vissza a tűzfal egy kiszolgálóra vonatkozó szabályok vagy a megadott tűzfalszabály tulajdonságainak lekérése. |
@@ -1642,6 +1663,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/metricDefinitions/read | Návratové typy metrikák elérhető adatbázisok |
 > | Műveletek | Microsoft.DBforMySQL/servers/read | A kiszolgálók vagy lekérdezi a megadott kiszolgáló tulajdonságainak listáját adja vissza. |
 > | Műveletek | Microsoft.DBforMySQL/servers/recoverableServers/read | A MySQL-kiszolgáló helyreállítható adatok visszaadása |
+> | Műveletek | Microsoft.DBforMySQL/servers/updateConfigurations/action | A megadott kiszolgáló frissítési konfigurációi |
 > | Műveletek | Microsoft.DBforMySQL/servers/virtualNetworkRules/delete | Törli a meglévő virtuális hálózati szabály |
 > | Műveletek | Microsoft.DBforMySQL/servers/virtualNetworkRules/read | Vissza a virtuális hálózati szabályok vagy a megadott virtuális hálózati szabály tulajdonságainak lekérése. |
 > | Műveletek | Microsoft.DBforMySQL/servers/virtualNetworkRules/write | Egy virtuális hálózati szabályt hoz létre a megadott paramétereket, vagy a Tulajdonságok vagy címkék a megadott virtuális hálózati szabály frissítése. |
@@ -1654,6 +1676,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | --- | --- | --- |
 > | Műveletek | Microsoft.DBforPostgreSQL/locations/performanceTiers/read | A teljesítményszintek elérhető listáját adja vissza. |
 > | Műveletek | Microsoft.DBforPostgreSQL/performanceTiers/read | A teljesítményszintek elérhető listáját adja vissza. |
+> | Műveletek | Microsoft.DBforPostgreSQL/servers/configurations/read | Lekérdezi a megadott konfiguráció tulajdonságainak vagy a kiszolgáló konfigurációk listáját adja vissza. |
+> | Műveletek | Microsoft.DBforPostgreSQL/servers/configurations/write | Frissítse az értéket a megadott konfiguráció |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/delete | Töröl egy meglévő kiszolgálóra. |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/firewallRules/delete | Törli a meglévő tűzfalszabály. |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/firewallRules/read | Vissza a tűzfal egy kiszolgálóra vonatkozó szabályok vagy a megadott tűzfalszabály tulajdonságainak lekérése. |
@@ -1662,10 +1686,13 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | Naplók beolvasása a Postgres-kiszolgálók |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/metricDefinitions/read | Návratové typy metrikák elérhető adatbázisok |
+> | Műveletek | Microsoft.DBforPostgreSQL/servers/queryTexts/action | A lekérdezés szöveget adja vissza |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/read | A kiszolgálók vagy lekérdezi a megadott kiszolgáló tulajdonságainak listáját adja vissza. |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/recoverableServers/read | A PostgreSQL-kiszolgáló helyreállítható adatok visszaadása |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/securityAlertPolicies/read | A kiszolgáló fenyegetésészlelési szabályzatát a megadott kiszolgálón konfigurált részleteinek beolvasása |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/securityAlertPolicies/write | A kiszolgáló egy adott kiszolgálóhoz fenyegetésészlelési szabályzatát módosítása |
+> | Műveletek | Microsoft.DBforPostgreSQL/servers/topQueryStatistics/read | Lekérdezési statisztikák a leggyakoribb lekérdezések listáját adja vissza. |
+> | Műveletek | Microsoft.DBforPostgreSQL/servers/updateConfigurations/action | A megadott kiszolgáló frissítési konfigurációi |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/delete | Törli a meglévő virtuális hálózati szabály |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/read | Vissza a virtuális hálózati szabályok vagy a megadott virtuális hálózati szabály tulajdonságainak lekérése. |
 > | Műveletek | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/write | Egy virtuális hálózati szabályt hoz létre a megadott paramétereket, vagy a Tulajdonságok vagy címkék a megadott virtuális hálózati szabály frissítése. |
@@ -1676,9 +1703,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.Devices/canaryoperationresults/Read | A Kanári művelet eredményének beolvasása |
 > | Műveletek | Microsoft.Devices/checkNameAvailability/Action | Ellenőrizze, hogy ha IotHub name érhető el |
-> | Műveletek | Microsoft.Devices/checkProvisioningServiceNameAvailability/Action | Ellenőrizze, hogy ha IotHub name érhető el |
+> | Műveletek | Microsoft.Devices/checkProvisioningServiceNameAvailability/Action | Ellenőrizze, hogy ha a kiépítési szolgáltatás érhető el |
 > | Műveletek | Microsoft.Devices/ElasticPools/diagnosticSettings/read | Az erőforrás diagnosztikai beállításainak beolvasása |
 > | Műveletek | Microsoft.Devices/ElasticPools/diagnosticSettings/write | Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése |
 > | Műveletek | Microsoft.Devices/elasticPools/iotHubTenants/certificates/Delete | Tanúsítvány törlése |
@@ -1707,7 +1733,6 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Devices/elasticPools/iotHubTenants/routingEndpointsHealth/Read | Az IotHub minden útválasztási végpontok állapotának beolvasása |
 > | Műveletek | Microsoft.Devices/elasticPools/iotHubTenants/Write | Hozzon létre vagy az IotHub-bérlői erőforrás frissítése |
 > | Műveletek | Microsoft.Devices/ElasticPools/metricDefinitions/read | Az IotHub-Service elérhető metrikáinak lekérése |
-> | Műveletek | Microsoft.Devices/iotHubs/canaryoperationresults/Read | (Elavult API) Kanári művelet eredményének beolvasása |
 > | Műveletek | Microsoft.Devices/iotHubs/certificates/Delete | Tanúsítvány törlése |
 > | Műveletek | Microsoft.Devices/iotHubs/certificates/generateVerificationCode/Action | Ellenőrző kód létrehozása |
 > | Műveletek | Microsoft.Devices/iotHubs/certificates/Read | A tanúsítvány beolvasása |
@@ -1738,6 +1763,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Devices/iotHubs/routingEndpointsHealth/Read | Az IotHub minden útválasztási végpontok állapotának beolvasása |
 > | Műveletek | Microsoft.Devices/iotHubs/skus/Read | Érvényes IotHub termékváltozatok beolvasása |
 > | Műveletek | Microsoft.Devices/iotHubs/Write | Hozzon létre vagy IotHub erőforrás frissítése |
+> | Műveletek | Microsoft.Devices/locations/operationresults/Read | Első hely alapú művelet eredménye |
 > | Műveletek | Microsoft.Devices/operationresults/Read | Művelet eredményének beolvasása |
 > | Műveletek | Microsoft.Devices/operations/Read | Az összes ResourceProvider műveletek beolvasása |
 > | Műveletek | Microsoft.Devices/provisioningServices/certificates/Delete | Tanúsítvány törlése |
@@ -1836,6 +1862,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DevTestLab/labs/virtualMachines/Claim/action | Meglévő virtuális gép tulajdonjogának átvétele |
 > | Műveletek | Microsoft.DevTestLab/labs/virtualMachines/delete | Törölje a virtuális gépeket. |
 > | Műveletek | Microsoft.DevTestLab/labs/virtualMachines/DetachDataDisk/action | Válassza le a megadott lemezt a virtuális gépről. |
+> | Műveletek | Microsoft.DevTestLab/labs/virtualMachines/GetRdpFileContents/action | Egy karakterlánc, amely a virtuális gép RDP-fájl tartalmának beolvasása |
 > | Műveletek | Microsoft.DevTestLab/labs/virtualMachines/ListApplicableSchedules/action | Felsorolja az összes alkalmazható ütemezések |
 > | Műveletek | Microsoft.DevTestLab/labs/virtualMachines/read | Olvassa el a virtuális gépeket. |
 > | Műveletek | Microsoft.DevTestLab/labs/virtualMachines/Redeploy/action | A virtuális gép ismételt üzembe helyezése |
@@ -2179,7 +2206,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Insights/MetricDefinitions/Read | A metrikadefiníciók olvasása |
 > | Műveletek | Microsoft.Insights/Metrics/providers/Metrics/Read | Metrikák olvasása |
 > | Műveletek | Microsoft.Insights/Metrics/Read | Metrikák olvasása |
-> | Műveletek | Microsoft.Insights/Metrics/Write | Metrikák írása |
+> | DataAction | Microsoft.Insights/Metrics/Write | Metrikák írása |
 > | Műveletek | Microsoft.Insights/MigrateToNewpricingModel/Action | Előfizetés migrálása új díjszabási modellbe |
 > | Műveletek | Microsoft.Insights/Operations/Read | Olvasási műveletek |
 > | Műveletek | Microsoft.Insights/Register/Action | A Microsoft Insights-szolgáltató regisztrálása |
@@ -2257,6 +2284,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.LabServices/labAccounts/galleryImages/delete | Image z galerie törlése. |
 > | Műveletek | Microsoft.LabServices/labAccounts/galleryImages/read | Olvassa el a katalógus rendszerképeinek letöltéséhez. |
 > | Műveletek | Microsoft.LabServices/labAccounts/galleryImages/write | Adja hozzá, vagy módosítsa a katalógus rendszerképeinek letöltéséhez. |
+> | Műveletek | Microsoft.LabServices/labAccounts/GetRegionalAvailability/action | Tesztkörnyezetfiók konfigurált mérete kategóriákhoz tartozó régiónkénti rendelkezésre állás információk lekérése |
 > | Műveletek | Microsoft.LabServices/labAccounts/labs/delete | Törölje a labs. |
 > | Műveletek | Microsoft.LabServices/labAccounts/labs/environmentSettings/ClaimAny/action | Egy véletlenszerű környezetet egy felhasználó egy környezeti beállítások a jogcímeket |
 > | Műveletek | Microsoft.LabServices/labAccounts/labs/environmentSettings/delete | Törölje a környezeti beállítás. |
@@ -2278,7 +2306,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.LabServices/labAccounts/labs/users/write | Hozzáadása vagy módosítása a felhasználók. |
 > | Műveletek | Microsoft.LabServices/labAccounts/labs/write | Hozzáadása vagy módosítása a labs. |
 > | Műveletek | Microsoft.LabServices/labAccounts/read | Olvassa el a lab-fiókokban. |
-> | Műveletek | Microsoft.LabServices/labAccounts/sizes/GetRegionalAvailability/action | Tesztlabor-fiókja alatt mérete kategóriákhoz tartozó régiónkénti rendelkezésre állás információ |
+> | Műveletek | Microsoft.LabServices/labAccounts/sizes/GetRegionalAvailability/action | Tesztkörnyezetfiók konfigurált mérete kategóriákhoz tartozó régiónkénti rendelkezésre állás információk lekérése |
 > | Műveletek | Microsoft.LabServices/labAccounts/sizes/read | Olvassa el a méreteket. |
 > | Műveletek | Microsoft.LabServices/labAccounts/sizes/ResetOverrides/action | Alaphelyzetbe állítja a méretre vonatkozó konfigurációja a labor fiók alapértékekre |
 > | Műveletek | Microsoft.LabServices/labAccounts/write | Hozzáadása vagy módosítása a lab-fiókokban. |
@@ -2380,15 +2408,24 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | DataAction | Microsoft.LogAnalytics/logs/LinuxAuditLog/read | Adatok olvasása a LinuxAuditLog táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAApplication/read | Adatok olvasása a MAApplication táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealth/read | Adatok olvasása a MAApplicationHealth táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthAlternativeVersions/read | Adatok olvasása a MAApplicationHealthAlternativeVersions táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthIssues/read | Adatok olvasása a MAApplicationHealthIssues táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstance/read | Adatok olvasása a MAApplicationInstance táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstanceReadiness/read | Adatok olvasása a MAApplicationInstanceReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAApplicationReadiness/read | Adatok olvasása a MAApplicationReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MADeploymentPlan/read | Adatok olvasása a MADeploymentPlan táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MADevice/read | Adatok olvasása a MADevice táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealth/read | Adatok olvasása a MADevicePnPHealth táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthAlternativeVersions/read | Adatok olvasása a MADevicePnPHealthAlternativeVersions táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthIssues/read | Adatok olvasása a MADevicePnPHealthIssues táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MADeviceReadiness/read | Adatok olvasása a MADeviceReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADriverInstanceReadiness/read | Adatok olvasása a MADriverInstanceReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MADriverReadiness/read | Adatok olvasása a MADriverReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddin/read | Adatok olvasása a MAOfficeAddin táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealth/read | Adatok olvasása a MAOfficeAddinHealth táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealthIssues/read | Adatok olvasása a MAOfficeAddinHealthIssues táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstance/read | Adatok olvasása a MAOfficeAddinInstance táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstanceReadiness/read | Adatok olvasása a MAOfficeAddinInstanceReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinReadiness/read | Adatok olvasása a MAOfficeAddinReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeApp/read | Adatok olvasása a MAOfficeApp táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppHealth/read | Adatok olvasása a MAOfficeAppHealth táblából |
@@ -2398,6 +2435,9 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessment/read | Adatok olvasása a MAOfficeCurrencyAssessment táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessmentDailyCounts/read | Adatok olvasása a MAOfficeCurrencyAssessmentDailyCounts táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeDeploymentStatus/read | Adatok olvasása a MAOfficeDeploymentStatus táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealth/read | Adatok olvasása a MAOfficeMacroHealth táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealthIssues/read | Adatok olvasása a MAOfficeMacroHealthIssues táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueInstanceReadiness/read | Adatok olvasása a MAOfficeMacroIssueInstanceReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueReadiness/read | Adatok olvasása a MAOfficeMacroIssueReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroSummary/read | Adatok olvasása a MAOfficeMacroSummary táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuite/read | Adatok olvasása a MAOfficeSuite táblából |
@@ -2407,6 +2447,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessment/read | Adatok olvasása a MAWindowsCurrencyAssessment táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessmentDailyCounts/read | Adatok olvasása a MAWindowsCurrencyAssessmentDailyCounts táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/MAWindowsDeploymentStatus/read | Adatok olvasása a MAWindowsDeploymentStatus táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsSysReqInstanceReadiness/read | Adatok olvasása a MAWindowsSysReqInstanceReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/NetworkMonitoring/read | Adatok olvasása a NetworkMonitoring táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/OfficeActivity/read | Adatok olvasása a OfficeActivity táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/Operation/read | A művelettel tábla adatok olvasása |
@@ -2450,6 +2491,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | DataAction | Microsoft.LogAnalytics/logs/UpdateRunProgress/read | Adatok olvasása a UpdateRunProgress táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/UpdateSummary/read | Adatok olvasása a UpdateSummary táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/Usage/read | Adatok beolvasása a használati táblához |
+> | DataAction | Microsoft.LogAnalytics/logs/VMBoundPort/read | Adatok olvasása a VMBoundPort táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/VMConnection/read | Adatok olvasása a VMConnection táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/W3CIISLog/read | Adatok olvasása a W3CIISLog táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/WaaSDeploymentStatus/read | Adatok olvasása a WaaSDeploymentStatus táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/WaaSInsiderStatus/read | Adatok olvasása a WaaSInsiderStatus táblából |
@@ -2722,7 +2765,6 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.Media/checknameavailability/action | Ellenőrzi, hogy a Media Services-fiók neve érhető el |
 > | Műveletek | Microsoft.Media/locations/checkNameAvailability/action | Ellenőrzi, hogy a Media Services-fiók neve érhető el |
 > | Műveletek | Microsoft.Media/mediaservices/assets/delete | Bármely eszköz törlése |
 > | Műveletek | Microsoft.Media/mediaservices/assets/getEncryptionKey/action | Az Eszközintelligencia-titkosítási kulcs beszerzése |
@@ -2734,9 +2776,6 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Media/mediaservices/contentKeyPolicies/read | Minden tartalom kulcs szabályzat megtekintése |
 > | Műveletek | Microsoft.Media/mediaservices/contentKeyPolicies/write | Hozzon létre vagy bármilyen tartalom kulcs szabályzat frissítése |
 > | Műveletek | Microsoft.Media/mediaservices/delete | Minden olyan Media Services-fiók törlése |
-> | Műveletek | Microsoft.Media/mediaservices/eventGridFilters/delete | Minden Event Grid-szűrő törlése |
-> | Műveletek | Microsoft.Media/mediaservices/eventGridFilters/read | Olvassa el az összes Event Grid-szűrő |
-> | Műveletek | Microsoft.Media/mediaservices/eventGridFilters/write | Létrehozás vagy frissítés bármely Event Grid-szűrő |
 > | Műveletek | Microsoft.Media/mediaservices/liveEventOperations/read | Minden olyan élő esemény művelet olvasása |
 > | Műveletek | Microsoft.Media/mediaservices/liveEvents/delete | Minden olyan élő esemény törlése |
 > | Műveletek | Microsoft.Media/mediaservices/liveEvents/liveOutputs/delete | Élő kimenetet törlése |
@@ -2957,6 +2996,13 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/expressRouteCrossConnections/peerings/write | Az Express Route közötti kapcsolat társviszony-létesítés létrehozása vagy frissítése. egy meglévő Express Route közötti kapcsolat társviszony-létesítés |
 > | Műveletek | Microsoft.Network/expressRouteCrossConnections/read | Express-Route Get közötti kapcsolat |
 > | Műveletek | Microsoft.Network/expressRouteCrossConnections/write | Létrehozás vagy frissítés Express Route közötti kapcsolat |
+> | Műveletek | Microsoft.Network/expressRouteGateways/delete | Expressroute-átjáró törlése |
+> | Műveletek | Microsoft.Network/expressRouteGateways/expressRouteConnections/delete | Az Express Route-kapcsolat törlése |
+> | Műveletek | Microsoft.Network/expressRouteGateways/expressRouteConnections/read | Az Express Route-kapcsolat beolvasása |
+> | Műveletek | Microsoft.Network/expressRouteGateways/expressRouteConnections/write | Az Express Route-kapcsolat létrehozása vagy meglévő Express Route-kapcsolat frissítése |
+> | Műveletek | Microsoft.Network/expressRouteGateways/join/action | Egy Expressroute-átjáró csatlakozik. |
+> | Műveletek | Microsoft.Network/expressRouteGateways/read | Expressroute-átjáró |
+> | Műveletek | Microsoft.Network/expressRouteGateways/write | Hozzon létre vagy Expressroute-átjáró frissítése |
 > | Műveletek | Microsoft.Network/expressRoutePorts/delete | ExpressRoutePorts törlése |
 > | Műveletek | Microsoft.Network/expressRoutePorts/join/action | ExpressRoutePorts csatlakozik |
 > | Műveletek | Microsoft.Network/expressRoutePorts/links/read | ExpressRouteLink beolvasása |
@@ -2993,6 +3039,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/localnetworkgateways/read | Lekérdezi a LocalNetworkGateway |
 > | Műveletek | Microsoft.Network/localnetworkgateways/write | Létrehoz vagy frissít egy meglévő LocalNetworkGateway |
 > | Műveletek | Microsoft.Network/locations/availableDelegations/read | Rendelkezésre álló delegálásokat beolvasása |
+> | Műveletek | Microsoft.Network/locations/bareMetalTenants/action | Foglalja le vagy ellenőrzi a bérlő egy operációs rendszer nélküli |
 > | Műveletek | Microsoft.Network/locations/checkAcceleratedNetworkingSupport/action | Ellenőrzi a gyorsított hálózatkezelés támogatása |
 > | Műveletek | Microsoft.Network/locations/checkDnsNameAvailability/read | Ellenőrzi, hogy dns-címke érhető el a megadott helyen |
 > | Műveletek | Microsoft.Network/locations/effectiveResourceOwnership/action | Lekérdezi a hatékony erőforrás tulajdonosa |
@@ -3059,12 +3106,18 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/networkWatchers/lenses/start/action | A megadott végponton hálózati forgalom monitorozásának indítása |
 > | Műveletek | Microsoft.Network/networkWatchers/lenses/stop/action | Állítsa le vagy szünetelteti a hálózati forgalom a megadott végponton figyelése |
 > | Műveletek | Microsoft.Network/networkWatchers/lenses/write | Létrehoz egy fókuszban |
+> | Műveletek | Microsoft.Network/networkWatchers/networkConfigurationDiagnostic/action | A diagnosztikai hálózati konfiguráció. |
 > | Műveletek | Microsoft.Network/networkWatchers/nextHop/action | A célként megadott és a cél IP-cím lépjen vissza a következő ugrás típusa, és ezután Remélem, IP-cím. |
 > | Műveletek | Microsoft.Network/networkWatchers/packetCaptures/delete | Csomagrögzítés törlése |
 > | Műveletek | Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | Tulajdonságait és packet capture erőforrás adatainak beolvasása. |
 > | Műveletek | Microsoft.Network/networkWatchers/packetCaptures/read | A csomag rögzítési definíció beolvasása |
 > | Műveletek | Microsoft.Network/networkWatchers/packetCaptures/stop/action | A futó csomag-rögzítési munkamenet leállítása. |
 > | Műveletek | Microsoft.Network/networkWatchers/packetCaptures/write | Csomagrögzítés hoz létre |
+> | Műveletek | Microsoft.Network/networkWatchers/pingMeshes/delete | Töröl egy PingMesh |
+> | Műveletek | Microsoft.Network/networkWatchers/pingMeshes/read | PingMesh részleteinek beolvasása |
+> | Műveletek | Microsoft.Network/networkWatchers/pingMeshes/start/action | Indítsa el a megadott virtuális gépek közötti PingMesh |
+> | Műveletek | Microsoft.Network/networkWatchers/pingMeshes/stop/action | Állítsa le a megadott virtuális gépek közötti PingMesh |
+> | Műveletek | Microsoft.Network/networkWatchers/pingMeshes/write | Létrehoz egy PingMesh |
 > | Műveletek | Microsoft.Network/networkWatchers/queryFlowLogStatus/action | Erőforrás-naplózás folyamat állapotának beolvasása. |
 > | Műveletek | Microsoft.Network/networkWatchers/queryTroubleshootResult/action | Lekérdezi a hibaelhárítási eredmény a korábban futtatott vagy jelenleg fut a hibaelhárítási művelet. |
 > | Műveletek | Microsoft.Network/networkWatchers/read | A hálózati figyelő-definíció beolvasása |
@@ -3074,6 +3127,9 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/networkWatchers/write | A network watcher létrehoz vagy frissít egy meglévő hálózati figyelőt |
 > | Műveletek | Microsoft.Network/operations/read | Használható műveletek beolvasása |
 > | Műveletek | Microsoft.Network/publicIPAddresses/delete | Nyilvános Ip-cím törlése. |
+> | Műveletek | Microsoft.Network/publicIPAddresses/dnsAliases/delete | Törli az erőforrás nyilvános Ip-cím DNS-Alias |
+> | Műveletek | Microsoft.Network/publicIPAddresses/dnsAliases/read | Egy nyilvános Ip-cím DNS-Alias erőforrás beolvasása |
+> | Műveletek | Microsoft.Network/publicIPAddresses/dnsAliases/write | Létrehoz egy nyilvános Ip-cím DNS-Alias erőforrást |
 > | Műveletek | Microsoft.Network/publicIPAddresses/join/action | Nyilvános ip-címmel csatlakozik |
 > | Műveletek | Microsoft.Network/publicIPAddresses/loadBalancerPools/delete | Egy nyilvános IP-címet a terheléselosztó háttérkészletének törlése |
 > | Műveletek | Microsoft.Network/publicIPAddresses/loadBalancerPools/join/action | Egy nyilvános IP-címet a terheléselosztó háttérkészletének csatlakozik |
@@ -3177,6 +3233,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/virtualNetworks/providers/Microsoft.Insights/diagnosticSettings/read | Virtuális hálózati diagnosztikai beállításainak beolvasása |
 > | Műveletek | Microsoft.Network/virtualNetworks/providers/Microsoft.Insights/diagnosticSettings/write | Létrehozni vagy frissíteni a diagnosztikai beállításokat a virtuális hálózat |
 > | Műveletek | Microsoft.Network/virtualNetworks/providers/Microsoft.Insights/logDefinitions/read | A virtuális hálózat naplódefinícióinak beolvasása |
+> | Műveletek | Microsoft.Network/virtualNetworks/providers/Microsoft.Insights/metricDefinitions/read | Rendelkezésre álló metrikák beolvasása a PingMesh |
 > | Műveletek | Microsoft.Network/virtualNetworks/read | A virtuális hálózati definíció beolvasása |
 > | Műveletek | Microsoft.Network/virtualNetworks/remoteVirtualNetworkPeeringProxies/delete | Egy virtuális hálózati társviszony proxyjának törlése |
 > | Műveletek | Microsoft.Network/virtualNetworks/remoteVirtualNetworkPeeringProxies/read | Lekérdezi egy virtuális hálózati társviszony-létesítés proxydefiníció |
@@ -3262,6 +3319,65 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.NotificationHubs/operations/read | A Notification Hubs-szolgáltató által támogatott műveletek listájának visszaadása |
 > | Műveletek | Microsoft.NotificationHubs/register/action | A Notification Hubs-erőforrásszolgáltatóra való előfizetés regisztrálása, valamint a névterek és a Notification Hubs-példányok létrehozásának lehetővé tétele |
 > | Műveletek | Microsoft.NotificationHubs/unregister/action | A Notification Hubs-erőforrás-szolgáltató regisztrációjának megszüntetése, valamint a névterek és a Notification Hubs-példányok létrehozásának lehetővé tétele |
+
+## <a name="microsoftoffazure"></a>Microsoft.OffAzure
+
+> [!div class="mx-tdCol2BreakAll"]
+> | Művelettípus | Művelet | Leírás |
+> | --- | --- | --- |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/clusters/read | A Hyper-V fürt tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/clusters/read | A Hyper-V fürt tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/clusters/write | Létrehozza vagy frissíti a Hyper-V fürt |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/clusters/write | Létrehozza vagy frissíti a Hyper-V fürt |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/delete | A Hyper-V hely törlése |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/delete | A Hyper-V hely törlése |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/hosts/read | A Hyper-V gazdagép tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/hosts/read | A Hyper-V gazdagép tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/hosts/write | Létrehozza vagy frissíti a Hyper-V-gazdagép |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/hosts/write | Létrehozza vagy frissíti a Hyper-V-gazdagép |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/jobs/read | Egy Hyper-V feladatok tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/jobs/read | Egy Hyper-V feladatok tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/machines/read | A Hyper-V gépek tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/machines/read | A Hyper-V gépek tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/machines/stop/action | A Hyper-V gépek leállítása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/machines/stop/action | A Hyper-V gépek leállítása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/operationsstatus/read | A Hyper-V műveleti állapotának tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/operationsstatus/read | A Hyper-V műveleti állapotának tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/read | A Hyper-V hely tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/read | A Hyper-V hely tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/refresh/action | A Hyper-V a helyen belüli objektumok frissítése |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/refresh/action | A Hyper-V a helyen belüli objektumok frissítése |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/runasaccounts/read | Futtató fiókok Hyper-V tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/runasaccounts/read | Futtató fiókok Hyper-V tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/usage/read | A Hyper-V hely használatokban beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/usage/read | A Hyper-V hely használatokban beolvasása |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/write | Létrehozza vagy frissíti a Hyper-V-hely |
+> | Műveletek | Microsoft.OffAzure/HyperVSites/write | Létrehozza vagy frissíti a Hyper-V-hely |
+> | Műveletek | Microsoft.OffAzure/Operations/read | Az elérhető műveletek beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/delete | A VMware-hely törlése |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/delete | A VMware-hely törlése |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/jobs/read | A VMware-feladatok tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/jobs/read | A VMware-feladatok tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/machines/read | A VMware-alapú gépek tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/machines/read | A VMware-alapú gépek tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/machines/stop/action | A VMware-alapú gépek leállítása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/machines/stop/action | A VMware-alapú gépek leállítása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/operationsstatus/read | A VMware-műveleti állapotának tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/operationsstatus/read | A VMware-műveleti állapotának tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/read | A VMware-hely tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/read | A VMware-hely tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/refresh/action | Az objektumok egy VMware-hely frissítése |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/refresh/action | Az objektumok egy VMware-hely frissítése |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/runasaccounts/read | A futtató fiókok VMware tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/runasaccounts/read | A futtató fiókok VMware tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/usage/read | A VMware-hely lebontott beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/usage/read | A VMware-hely lebontott beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/vcenters/read | VMware vCenter tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/vcenters/read | VMware vCenter tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/vcenters/write | Létrehozza vagy frissíti a VMware vcenter-kiszolgáló |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/vcenters/write | Létrehozza vagy frissíti a VMware vcenter-kiszolgáló |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/write | Létrehozza vagy frissíti a VMware-hely |
+> | Műveletek | Microsoft.OffAzure/VMwareSites/write | Létrehozza vagy frissíti a VMware-hely |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
@@ -3428,6 +3544,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | Tárkonfigurációjának visszaadása a Recovery Services-tároló. |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/backupstorageconfig/write | Tároló konfigurációjának frissítése Recovery Services-tároló. |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Használati összegzéseket adja vissza a védett elemek és védett kiszolgálók egy Recovery Services. |
+> | Műveletek | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | A védett elem a művelet érvényesítése |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/certificates/write | Az erőforrás-tanúsítvány frissítése művelet frissíti az erőforrás/tár hitelesítőadat-tanúsítványa. |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/delete | A tár törlése művelettel törölhetők a megadott Azure-erőforrás "tároló" típusú |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/extendedInformation/delete | A Részletes adatok beolvasása művelet a ?vault? típusú Azure-erőforrásokra vonatkozó bővített objektumadatokat olvassa be |
@@ -3532,7 +3649,6 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.RecoveryServices/Vaults/tokenInfo/read | A jogkivonat-Recovery Services-tároló adatainak visszaadása. |
 > | Műveletek | Microsoft.RecoveryServices/vaults/usages/read | Bármely tárhasználat olvasása |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/usages/read | Egy adott Recovery Services-tároló használati adatait adja vissza. |
-> | Műveletek | Microsoft.RecoveryServices/Vaults/validateOperation/action | A védett elem a művelet érvényesítése |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/vaultTokens/read | A Tártoken művelettel Társzintű Háttérműveletekhez beolvasni a tároló szint háttérbeli műveletek használható. |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/write | A tárlétrehozási művelettel vault típusú Azure-erőforrás hozható létre |
 
@@ -3691,6 +3807,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
+> | Műveletek | Microsoft.Security/advancedThreatProtectionSettings/read | A komplex veszélyforrások elleni védelmi beállításait az erőforrás beolvasása |
+> | Műveletek | Microsoft.Security/advancedThreatProtectionSettings/write | A komplex veszélyforrások elleni védelmi beállításait az erőforrás frissítése |
 > | Műveletek | Microsoft.Security/alerts/read | Az összes elérhető biztonsági riasztások beolvasása |
 > | Műveletek | Microsoft.Security/applicationWhitelistings/read | Az alkalmazás whitelistings beolvasása |
 > | Műveletek | Microsoft.Security/applicationWhitelistings/write | Létrehoz egy új alkalmazásengedélyezés bevezetését, vagy egy meglévő frissítése |
@@ -3938,6 +4056,11 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/write | A biztonságirés-értékelési egy adott adatbázis módosítása |
 > | Műveletek | Microsoft.Sql/managedInstances/databases/write | Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist. |
 > | Műveletek | Microsoft.Sql/managedInstances/delete | Törli a meglévő felügyelt példányt. |
+> | Műveletek | Microsoft.Sql/managedInstances/encryptionProtector/read | Kiszolgáló titkosítási protectors listáját adja vissza, vagy a Tulajdonságok lekérdezi a megadott kiszolgáló titkosítási védelme. |
+> | Műveletek | Microsoft.Sql/managedInstances/encryptionProtector/write | A tulajdonságainak frissítése az a megadott kiszolgáló titkosítási védelme. |
+> | Műveletek | Microsoft.Sql/managedInstances/keys/delete | Törli a meglévő Azure SQL felügyelt példánya kulcsot. |
+> | Műveletek | Microsoft.Sql/managedInstances/keys/read | A felügyelt példány listáját a kulcsok vagy a felügyelt példány megadott kulcs tulajdonságainak lekérése. |
+> | Műveletek | Microsoft.Sql/managedInstances/keys/write | Létrehoz egy kulcsot a megadott paraméterekkel, vagy a Tulajdonságok vagy címkék a megadott felügyelt példány kulcs frissítése. |
 > | Műveletek | Microsoft.Sql/managedInstances/metricDefinitions/read | Felügyelt példány metrikai meghatározások beolvasása |
 > | Műveletek | Microsoft.Sql/managedInstances/metrics/read | Felügyelt példány metrikáinak beolvasása |
 > | Műveletek | Microsoft.Sql/managedInstances/read | A felügyelt példányok vagy lekérdezi a megadott felügyelt példány tulajdonságainak listáját adja vissza. |
@@ -4003,6 +4126,9 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Sql/servers/databases/geoBackupPolicies/read | Georedundáns biztonsági mentési házirendek egy adott adatbázis beolvasása |
 > | Műveletek | Microsoft.Sql/servers/databases/geoBackupPolicies/write | Hozzon létre vagy egy adatbázis geobackup szabályzat frissítése |
 > | Műveletek | Microsoft.Sql/servers/databases/importExportOperationResults/read | Lekérdezi a folyamatban lévő importálási/exportálási műveleteket |
+> | Műveletek | Microsoft.Sql/servers/databases/maintenanceWindowOptions/read | Rendelkezésre álló karbantartási időszakok listájának lekérése a kiválasztott adatbázishoz. |
+> | Műveletek | Microsoft.Sql/servers/databases/maintenanceWindows/read | Karbantartási lekérdezi a windows-beállítások a kiválasztott adatbázishoz. |
+> | Műveletek | Microsoft.Sql/servers/databases/maintenanceWindows/write | Karbantartási beállítja a windows-beállítások a kiválasztott adatbázishoz. |
 > | Műveletek | Microsoft.Sql/servers/databases/metricDefinitions/read | Návratové typy metrikák elérhető adatbázisok |
 > | Műveletek | Microsoft.Sql/servers/databases/metrics/read | Az adatbázisok visszatérési metrikák |
 > | Műveletek | Microsoft.Sql/servers/databases/move/action | Nevezze át az Azure SQL Database |
@@ -4021,7 +4147,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Sql/servers/databases/replicationLinks/delete | A replikációs kapcsolat le kellett zárnia és a lehetséges adatvesztéssel |
 > | Műveletek | Microsoft.Sql/servers/databases/replicationLinks/failover/action | Feladatátvételi minden szinkronizálás után módosítja az elsődleges kiszolgálóról a adatbázis tétele a replikációs relationship\u0027s az elsődleges és a a távoli elsődleges, másodlagos |
 > | Műveletek | Microsoft.Sql/servers/databases/replicationLinks/forceFailoverAllowDataLoss/action | A replikációs relationship\u0027s be az adatbázis elsődleges tétele és a távoli elsődleges be egy másodlagos azonnal az esetleges adatvesztés feladatátvétel |
-> | Műveletek | Microsoft.Sql/servers/databases/replicationLinks/read | Visszatérési részleteit egy adott adatbázis számára hoztak létre replikációs hivatkozások |
+> | Műveletek | Microsoft.Sql/servers/databases/replicationLinks/read | A replikációs hivatkozások vagy tulajdonságainak beolvasása a megadott replikációs hivatkozáshoz tartozó visszaadása. |
 > | Műveletek | Microsoft.Sql/servers/databases/replicationLinks/unlink/action | Megszünteti a replikációs kapcsolat kényszerített vagy, a partnerrel való szinkronizálás után |
 > | Műveletek | Microsoft.Sql/servers/databases/replicationLinks/updateReplicationMode/action | Hivatkozás replikációs mód szinkron vagy aszinkron módban való frissítéséhez |
 > | Műveletek | Microsoft.Sql/servers/databases/restorePoints/action | Új visszaállítási pont létrehozása |
@@ -4130,6 +4256,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Sql/servers/recommendedElasticPools/databases/read | Egy adott kiszolgálóhoz ajánlott rugalmas adatbáziskészletek metrikák beolvasása |
 > | Műveletek | Microsoft.Sql/servers/recommendedElasticPools/read | Rugalmas adatbáziskészletek költségcsökkentés és teljesítményjavítás historica erőforrás-használat alapján javasolt beolvasása |
 > | Műveletek | Microsoft.Sql/servers/recoverableDatabases/read | A művelettel élő adatbázis vész-helyreállítási adatbázis visszaállítása az utolsó ismert helyes biztonsági mentési pontra. Információt ad vissza, de a legutóbbi helyes biztonsági mentés kapcsolatos doesn\u0027t ténylegesen állítsa vissza az adatbázist. |
+> | Műveletek | Microsoft.Sql/servers/replicationLinks/read | A replikációs hivatkozások vagy tulajdonságainak beolvasása a megadott replikációs hivatkozáshoz tartozó visszaadása. |
 > | Műveletek | Microsoft.Sql/servers/restorableDroppedDatabases/read | Adatbázisok, amelyek el lettek dobva a megadott kiszolgálón belül adatmegőrzési listájának beolvasása. |
 > | Műveletek | Microsoft.Sql/servers/securityAlertPolicies/operationResults/read | A kiszolgáló írási threat detection szabályzatművelet eredményeinek beolvasása |
 > | Műveletek | Microsoft.Sql/servers/securityAlertPolicies/read | A kiszolgáló fenyegetésészlelési szabályzatát a megadott kiszolgálón konfigurált részleteinek beolvasása |
@@ -4231,6 +4358,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | microsoft.storagesync/storageSyncServices/providers/Microsoft.Insights/metricDefinitions/read | A Társzinkronizálási szolgáltatás elérhető metrikáinak lekérése |
 > | Műveletek | microsoft.storagesync/storageSyncServices/read | Olvassa el a bármely Társzinkronizálási szolgáltatás |
 > | Műveletek | microsoft.storagesync/storageSyncServices/registeredServers/delete | Minden regisztrált kiszolgáló törlése |
+> | Műveletek | microsoft.storagesync/storageSyncServices/registeredServers/providers/Microsoft.Insights/metricDefinitions/read | A regisztrált Server elérhető metrikáinak lekérése |
 > | Műveletek | microsoft.storagesync/storageSyncServices/registeredServers/read | Olvassa el a minden regisztrált kiszolgáló |
 > | Műveletek | microsoft.storagesync/storageSyncServices/registeredServers/write | Létrehozás vagy frissítés bármely regisztrált kiszolgáló |
 > | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/cloudEndpoints/delete | Bármely Felhőbeli végpont törlése |
@@ -4243,8 +4371,10 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/cloudEndpoints/restoreheartbeat/action | Szívverés visszaállítása |
 > | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/cloudEndpoints/write | Hozzon létre vagy bármely Felhőbeli végpont frissítése |
 > | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/delete | Szinkronizálási csoportok törlése |
+> | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/providers/Microsoft.Insights/metricDefinitions/read | Szinkronizálási csoportok számára elérhető metrikáinak lekérése |
 > | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/read | Olvassa el a szinkronizálási csoportokkal |
 > | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints/delete | Törölje minden olyan kiszolgálói végpontot |
+> | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints/providers/Microsoft.Insights/metricDefinitions/read | A Kiszolgálóvégpontok elérhető metrikáinak lekérése |
 > | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints/read | Olvassa el az összes kiszolgálói végpontot |
 > | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints/recallAction/action | Ez a művelet egy visszahívása hívása |
 > | Műveletek | microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints/write | Létrehozás vagy frissítés bármely kiszolgálói végpontot |
@@ -4512,12 +4642,15 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.TimeSeriesInsights/environments/write | Létrehoz egy új környezetet, vagy egy meglévő környezet frissítése. |
 > | Műveletek | Microsoft.TimeSeriesInsights/register/action | A Time Series Insights erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása, és lehetővé teszi a Time Series Insights-környezetek létrehozását. |
 
-## <a name="microsoftvisualstudio"></a>Microsoft.visualstudio
+## <a name="microsoftvisualstudio"></a>Microsoft.VisualStudio
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft.VisualStudio/Account/Delete | Fiók törlése |
+> | Műveletek | Microsoft.VisualStudio/Account/Extension/Read | Olvassa el a fiók/bővítmény |
+> | Műveletek | Microsoft.VisualStudio/Account/Project/Read | Olvassa el a fiókot, projektgyűjtemény |
+> | Műveletek | Microsoft.VisualStudio/Account/Project/Write | Fiók és a projekt beállítása |
 > | Műveletek | Microsoft.VisualStudio/Account/Read | Fiók beolvasása |
 > | Műveletek | Microsoft.VisualStudio/Account/Write | Fiók beállítása |
 > | Műveletek | Microsoft.VisualStudio/Extension/Delete | Bővítmény törlése |
@@ -4526,6 +4659,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.VisualStudio/Project/Delete | Projekt törlése |
 > | Műveletek | Microsoft.VisualStudio/Project/Read | Olvassa el a projekt |
 > | Műveletek | Microsoft.VisualStudio/Project/Write | Projekt beállítása |
+> | Műveletek | Microsoft.VisualStudio/Register/Action | Az Azure-előfizetés regisztrálása Microsoft.VisualStudio szolgáltatóval |
 
 ## <a name="microsoftweb"></a>microsoft.web
 

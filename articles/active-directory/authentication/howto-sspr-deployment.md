@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2371ad00728a47af9e96e8e711aa07cc5170266c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158862"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622320"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 
@@ -75,12 +75,13 @@ Miután engedélyezi ezt a beállítást, a bejelentkező felhasználókat egy �
 
 ## <a name="disable-self-service-password-reset"></a>Önkiszolgáló jelszóátállítás letiltása
 
-Ha a szervezet úgy dönt, hogy az önkiszolgáló jelszóátállítás letiltása egyszerű folyamat. Nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása** > **Tulajdonságok** elemet, majd válassza a **Senki** elemet az **Önkiszolgáló jelszóátállítás engedélyezve** rész alatt. Felhasználók továbbra is megőrzi a
+Ha a szervezet úgy dönt, hogy az önkiszolgáló jelszóátállítás letiltása egyszerű folyamat. Nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása** > **Tulajdonságok** elemet, majd válassza a **Senki** elemet az **Önkiszolgáló jelszóátállítás engedélyezve** rész alatt. Felhasználók továbbra is megőrzi a regisztrált hitelesítési módszereket későbbi használatra.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Regisztráció önkiszolgáló jelszó-visszaállításra](../user-help/active-directory-passwords-reset-register.md)
+* [A hiperkonvergens regisztráció az Azure multi-factor Authentication és az Azure AD önkiszolgáló jelszó-visszaállítás engedélyezése](concept-registration-mfa-sspr-converged.md)
 * [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)

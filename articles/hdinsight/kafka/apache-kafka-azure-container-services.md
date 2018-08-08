@@ -1,131 +1,126 @@
 ---
-title: Azure Kubernetes szolgáltatás használata a HDInsight Kafka |} Microsoft Docs
-description: Megtudhatja, hogyan Kafka használata a HDInsight a tároló lemezképeinek üzemeltetett Azure Kubernetes szolgáltatás (AKS).
+title: Az Azure Kubernetes Service használata a HDInsight alatt futó Kafka
+description: Útmutató a HDInsight Kafka használata az Azure Kubernetes Service (AKS) lévő üzemeltetett tárolórendszerképek.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/07/2018
-ms.author: larryfr
-ms.openlocfilehash: f54039a0e702aa3c789363969120e000760f6ef5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 339213654341b76cf4245240989cd59c7c041b0f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885961"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621245"
 ---
-# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Azure Kubernetes szolgáltatás használata a HDInsight Kafka
+# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Az Azure Kubernetes Service használata a HDInsight alatt futó Kafka
 
-Ismerje meg, hogyan használható Azure Kubernetes szolgáltatás (AKS) Kafka HDInsight-fürt. A jelen dokumentumban leírt lépések AKS tárolt Node.js-alkalmazás használatával Kafka való kapcsolat ellenőrzésére. Ez az alkalmazás használja a [kafka-csomópont](https://www.npmjs.com/package/kafka-node) csomag Kafka folytatott kommunikációhoz. Használja [Socket.io](https://socket.io/) az esemény üzenetküldési a böngészőalapú ügyfél és a háttér-AKS üzemeltetett között.
+Ismerje meg, a Kafka HDInsight-fürtön az Azure Kubernetes Service (AKS) használata. A jelen dokumentumban leírt lépések az aks-ben üzemeltetett Node.js-alkalmazás használatával ellenőrizze a kapcsolatot a Kafka. Ez az alkalmazás használ a [kafka-csomópont](https://www.npmjs.com/package/kafka-node) kommunikálni a Kafka-csomagot. Használ [a Socket.IO kódtár](https://socket.io/) a böngészőalapú ügyfél és a háttéralkalmazás az aks-ben üzemeltetett közötti üzenetek eseményvezérelt számára.
 
-Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. Azure Kubernetes szolgáltatás a szolgáltatott Kubernetes környezet kezeli, és teszi gyorsan és egyszerűen indexelése alkalmazások központi telepítése. Egy Azure virtuális hálózatot használ, a két szolgáltatást is elérheti.
+Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. Az Azure Kubernetes Service felügyeli az üzemeltetett Kubernetes környezetet, és gyorsan és egyszerűen üzembe helyezhetők a tárolóalapú alkalmazásokat. Az Azure Virtual Network használatával, a két szolgáltatás is csatlakoztathatja.
 
 > [!NOTE]
-> A jelen dokumentum elsősorban a HDInsight Kafka kommunikálni Azure Kubernetes szolgáltatás engedélyezése szükséges lépéseket. A példa magát a csak alapvető, annak bemutatásához, hogy működik-e a konfigurációs Kafka ügyfél.
+> A jelen dokumentum célja az Azure Kubernetes Service kommunikálni a HDInsight alatt futó Kafka engedélyezéséhez szükséges lépéseket. Maga a példában csak alapszintű Kafka ügyfél bemutatásához, hogy működik-e a konfigurációs.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Azure-előfizetés
 
-Jelen dokumentum céljából feltételezzük, hogy jártas létrehozása és használata az Azure-szolgáltatásokat:
+Jelen dokumentum céljából feltételezzük, hogy Ön ismeri a létrehozásáról és használatáról a következő Azure-szolgáltatások:
 
 * Kafka on HDInsight
-* Azure Kubernetes szolgáltatás
+* Azure Kubernetes Service
 * Azure virtuális hálózatok
 
-Ez a dokumentum is feltételezi, hogy rendelkezik telefonon a [Azure Kubernetes szolgáltatás oktatóanyag](../../aks/tutorial-kubernetes-prepare-app.md). Ebben az oktatóanyagban létrehoz egy tároló szolgáltatást, egy Kubernetes fürtöt, a tároló beállításjegyzék hoz létre, és konfigurálja a `kubectl` segédprogram.
+Jelen dokumentum céljából feltételezzük is, hogy rendelkezik bizonnyal a [Azure Kubernetes Service-oktatóanyag](../../aks/tutorial-kubernetes-prepare-app.md). Ebben az oktatóanyagban létrehoz egy container service létrehoz egy Kubernetes-fürtöt, egy tároló-beállításjegyzéket, és konfigurálja a `kubectl` segédprogramot.
 
 ## <a name="architecture"></a>Architektúra
 
 ### <a name="network-topology"></a>Hálózati topológia
 
-HDInsight és AKS is használják az Azure virtuális hálózat egy tárolót a számítási erőforrásokat. HDInsight és AKS közötti kommunikáció engedélyezéséhez engedélyeznie kell a hálózatok közötti kommunikációt. A jelen dokumentumban leírt lépések használja a virtuális hálózati társviszony-létesítés a hálózatokhoz. Más kapcsolatok, például VPN, is működnek. A társviszony-létesítés további információkért lásd: a [virtuális hálózati társviszony-létesítés](../../virtual-network/virtual-network-peering-overview.md) dokumentum.
+HDInsight és az AKS használata az Azure Virtual Network tárolójaként számítási erőforrásokat. HDInsight és az AKS közötti kommunikáció engedélyezéséhez engedélyeznie kell a hálózatok közötti adatforgalmat. A jelen dokumentumban leírt lépések használja a virtuális hálózatok közötti Társviszony-hálózatokhoz. Egyéb kapcsolatok, például VPN is működnie kell. A társviszony-létesítés további információkért lásd: a [virtuális hálózatok közötti társviszony](../../virtual-network/virtual-network-peering-overview.md) dokumentumot.
 
 
-A következő ábra szemlélteti a hálózati topológia itt:
+A következő ábra szemlélteti a hálózati topológiát, ebben a dokumentumban használt:
 
-![HDInsight egy virtuális hálózat, egy másik AKS és a társviszony-létesítés használatával csatlakoztatott hálózatok](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+![Egy virtuális hálózatot, egy másik AKS és a hálózatok társviszony-létesítés használatával összekapcsolt HDInsight](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
 > [!IMPORTANT]
-> Névfeloldás nem engedélyezett a peered hálózatok között, így az IP-címzés használatos. Alapértelmezés szerint a HDInsight Kafka állomásnév helyett IP-címek vissza, ha az ügyfelek van konfigurálva. A jelen dokumentumban leírt lépések módosításához az IP-címet használ Kafka hirdetési helyette.
+> Névfeloldás a társviszonyban lévő hálózatok, így használt IP-címkezelés között nincs engedélyezve. Alapértelmezés szerint a HDInsight alatt futó Kafka vissza az állomásneveket IP-címek helyett, ha az ügyfelek csatlakoznak van konfigurálva. A jelen dokumentumban leírt lépések módosítása IP használata a Kafka hirdetési helyette.
 
-## <a name="create-an-azure-kubernetes-service-aks"></a>Hozzon létre egy Azure Kubernetes szolgáltatást (AKS)
+## <a name="create-an-azure-kubernetes-service-aks"></a>Hozzon létre egy Azure Kubernetes Service (AKS)
 
-Ha még nem rendelkezik egy AKS fürthöz, a következő dokumentumokat segítségével megtudhatja, hogyan hozzon létre egyet:
+Ha Ön még nem rendelkezik egy AKS-fürtöt, egyet a következő dokumentumok segítségével megtudhatja, hogyan hozhat létre egyet:
 
-* [Fürt üzembe helyezése Azure Kubernetes szolgáltatás (AKS) - portál](../../aks/kubernetes-walkthrough-portal.md)
-* [Fürt üzembe helyezése Azure Kubernetes szolgáltatás (AKS) - parancssori felület](../../aks/kubernetes-walkthrough.md)
+* [Fürt üzembe helyezése az Azure Kubernetes Service (AKS) – portál](../../aks/kubernetes-walkthrough-portal.md)
+* [Fürt üzembe helyezése az Azure Kubernetes Service (AKS) – CLI](../../aks/kubernetes-walkthrough.md)
 
 > [!NOTE]
-> AKS a telepítés során létrehoz egy virtuális hálózatot. Ezen a hálózaton nincsenek társviszonyban, hogy a HDInsight a következő szakaszban létrehozott.
+> Az AKS a telepítés során létrehoz egy virtuális hálózatot. Ez a hálózat társviszonyban áll, a HDInsight a következő szakaszban létrehozott.
 
-## <a name="configure-virtual-network-peering"></a>Konfigurálja a virtuális hálózati társviszony-létesítés
+## <a name="configure-virtual-network-peering"></a>Konfigurálja a virtuális hálózatok közötti társviszony
 
-1. Az a [Azure-portálon](https://portal.azure.com), jelölje be __erőforráscsoportok__, majd keresse meg a virtuális hálózat a AKS fürt tartalmazó erőforráscsoportot. Az erőforráscsoport neve `MC_<resourcegroup>_<akscluster>_<location>`. A `resourcegroup` és `akscluster` bezár a rendszer a fürthöz létrehozott erőforráscsoport nevét, és a fürt nevét. A `location` az a hely, amely a fürt sikeresen létrehozva.
+1. Az a [az Azure portal](https://portal.azure.com)válassza __erőforráscsoportok__, majd keresse meg az erőforráscsoport, amely tartalmazza a virtuális hálózat számára az AKS-fürt. Az erőforráscsoport neve `MC_<resourcegroup>_<akscluster>_<location>`. A `resourcegroup` és `akscluster` bejegyzései a fürthöz létrehozott erőforráscsoport nevét, és a fürt nevére. A `location` az a hely, amely a fürt sikeresen létrehozva.
 
-2. Válassza ki az erőforráscsoportot, a __virtuális hálózati__ erőforrás.
+2. Az erőforráscsoportban, válassza ki a __virtuális hálózati__ erőforrás.
 
-3. Válassza ki __Címtéren__. Vegye figyelembe, hogy a címtartomány szerepel a listában.
+3. Válassza ki __címtér__. Vegye figyelembe, hogy a címtér szerepel.
 
-4. Válassza ki a virtuális hálózat létrehozása a HDInsight, __+ hozzon létre egy erőforrást__, __hálózati__, majd __virtuális hálózati__.
+4. A HDInsight virtuális hálózat létrehozásához válassza __+ erőforrás létrehozása__, __hálózatkezelés__, majd __virtuális hálózati__.
 
     > [!IMPORTANT]
-    > Az az érték megadásakor az új virtuális hálózat, egy, amely nem fedi át a AKS fürthálózat által használt címtartománnyal kell használnia.
+    > Az új virtuális hálózat az értékek megadásakor egy címtér, amely nincs átfedésben az AKS-fürt hálózati által használt kell használnia.
 
-    Ugyanazon __hely__ használja a virtuális hálózat, amely a AKS fürthöz.
+    Ugyanaz, mint __hely__ a virtuális hálózati az AKS-fürtöt használt.
 
     Várjon, amíg a virtuális hálózat létrehozása a következő lépés előtt.
 
-5. A társviszony-létesítés között a HDInsight és a AKS fürt hálózat konfigurálásához válassza ki a virtuális hálózatot, és válassza ki __Társviszony__. Válassza ki __+ Hozzáadás__ és az űrlap feltölti a következő értékeket használja:
+5. Konfigurálhatja a társviszony-létesítést a HDInsight-hálózat és az AKS-fürt hálózati között, válassza ki a virtuális hálózatot, majd __Társviszonyok__. Válassza ki __+ Hozzáadás__ és feltölti az űrlapot a következő értékeket használja:
 
-    * __Név__: Adjon meg egy egyedi nevet a társviszony-létesítési konfiguráció.
-    * __Virtuális hálózati__: a mező használatával válassza ki a virtuális hálózatot a **AKS fürt**.
+    * __Név__: Adjon meg egy egyedi nevet ehhez a társviszony-létesítési konfigurációhoz.
+    * __Virtuális hálózat__: Ez a mező használatával válassza ki a virtuális hálózat számára a **AKS-fürt**.
 
-    Az alapértelmezett értéket az összes többi mezőt hagyja, és válasszon __OK__ konfigurálása a társviszony-létesítést.
+    Az alapértelmezett értéket az összes többi mezőt hagyja, majd válassza a __OK__ konfigurálhatja a társviszony-létesítést.
 
-6. A társviszony-létesítés között a AKS fürt és a HDInsight-hálózat konfigurálásához jelölje ki a __AKS fürt virtuális hálózati__, majd válassza ki __Társviszony__. Válassza ki __+ Hozzáadás__ és az űrlap feltölti a következő értékeket használja:
+6. Konfigurálhatja a társviszony-létesítést az AKS-fürt hálózati és a HDInsight-hálózat között, válassza ki a __AKS-fürt virtuális hálózati__, majd válassza ki __Társviszonyok__. Válassza ki __+ Hozzáadás__ és feltölti az űrlapot a következő értékeket használja:
 
-    * __Név__: Adjon meg egy egyedi nevet a társviszony-létesítési konfiguráció.
-    * __Virtuális hálózati__: a mező használatával válassza ki a virtuális hálózatot a __HDInsight-fürt__.
+    * __Név__: Adjon meg egy egyedi nevet ehhez a társviszony-létesítési konfigurációhoz.
+    * __Virtuális hálózat__: Ez a mező használatával válassza ki a virtuális hálózat számára a __HDInsight-fürt__.
 
-    Az alapértelmezett értéket az összes többi mezőt hagyja, és válasszon __OK__ konfigurálása a társviszony-létesítést.
+    Az alapértelmezett értéket az összes többi mezőt hagyja, majd válassza a __OK__ konfigurálhatja a társviszony-létesítést.
 
 ## <a name="install-kafka-on-hdinsight"></a>A HDInsight Kafka telepítése
 
-A Kafka HDInsight-fürt létrehozásakor a HDInsight a korábban létrehozott virtuális hálózathoz kell csatlakoztatni. A Kafka fürtök létrehozásáról további információk: a [Kafka fürt létrehozása](apache-kafka-get-started.md) dokumentum.
+A Kafka HDInsight-fürt létrehozásakor a HDInsight a korábban létrehozott virtuális hálózathoz kell csatlakoztatni. Kafka-fürt létrehozásával kapcsolatos további információkért lásd: a [Kafka-fürt létrehozása](apache-kafka-get-started.md) dokumentumot.
 
 > [!IMPORTANT]
-> A fürt létrehozásakor kell használnia a __speciális beállítások__ csatlakozni a virtuális hálózathoz, amelyet a HDInsight hozott létre.
+> A fürt létrehozásakor kell használnia a __speciális beállítások__ csatlakozni a virtuális hálózat, HDInsight létrehozott.
 
-## <a name="configure-kafka-ip-advertising"></a>Kafka IP-közzététel konfigurálása
+## <a name="configure-kafka-ip-advertising"></a>A Kafka IP hirdetés konfigurálása
 
-Az alábbi lépésekkel konfigurálhatja Kafka tartománynevek helyett IP-címek hivatkozik:
+A következő lépéseket követve konfigurálja Kafka meghirdetése tartománynevek helyett IP-címek:
 
-1. A webböngészőben nyissa https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ HDInsight-fürt Kafka nevével.
+1. Egy böngészőben nyissa meg https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ a Kafka on HDInsight-fürt nevére.
 
-    Amikor a rendszer kéri, használja a HTTPS-felhasználónevet és jelszót a fürthöz. Az Ambari webes felhasználói felületén, a fürt akkor jelenik meg.
+    Amikor a rendszer kéri, használja a HTTPS-felhasználónevet és jelszót a fürthöz. Az Ambari webes felhasználói Felületet, a fürt akkor jelenik meg.
 
-2. Kafka adatok megtekintéséhez válassza ki a __Kafka__ a bal oldali listában.
+2. A Kafka információ megtekintéséhez jelölje ki __Kafka__ a bal oldali listából.
 
-    ![A kijelölt Kafka szolgáltatás lista](./media/apache-kafka-azure-container-services/select-kafka-service.png)
+    ![A Kafka lista kiemelésével](./media/apache-kafka-azure-container-services/select-kafka-service.png)
 
-3. Válassza ki, ha Kafka konfigurációs __Configs__ felső közepén.
+3. Kafka-konfigurációt megtekintéséhez jelölje ki __Configs__ felső közepén.
 
-    ![Kafka Configs hivatkozások](./media/apache-kafka-azure-container-services/select-kafka-config.png)
+    ![A Kafka Configs hivatkozások](./media/apache-kafka-azure-container-services/select-kafka-config.png)
 
-4. Található a __kafka-env__ konfigurációs, adja meg `kafka-env` a a __szűrő__ jobb felső részén található.
+4. Keresése a __kafka-env__ konfigurációs, adja meg `kafka-env` a a __szűrő__ a jobb felső sarokban található.
 
-    ![Kafka konfigurációját, kafka-env](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
+    ![Kafka-konfigurációt, a kafka-env](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
-5. Konfigurálja az IP-címek hivatkozik Kafka, vegye fel a következő szöveg alsó részén található a __kafka-env-sablon__ mező:
+5. Kafka meghirdetése IP-címek konfigurálásához adja hozzá a következő szöveget a alján a __kafka-boríték-template__ mező:
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -135,49 +130,49 @@ Az alábbi lépésekkel konfigurálhatja Kafka tartománynevek helyett IP-címek
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. A felület, amely figyeli Kafka konfigurálásához írja be a következőt `listeners` a a __szűrő__ jobb felső részén található.
+6. A Kafka figyel-kapcsolat konfigurálásához írja be a `listeners` a a __szűrő__ a jobb felső sarokban található.
 
-7. Minden hálózati interfészen figyelésére Kafka konfigurálásához módosítsa a __figyelői__ mezőről `PLAINTEXT://0.0.0.0:9092`.
+7. Figyeljen az összes hálózati adapteren Kafka konfigurálásához módosítsa az értéket a __figyelői__ mezőt `PLAINTEXT://0.0.0.0:9092`.
 
-8. A konfigurációs módosítások mentéséhez használja a __mentése__ gombra. Adja meg a módosítások leíró üzenet. Válassza ki __OK__ a módosítások mentése után.
+8. A konfigurációs módosítások mentéséhez használja a __mentése__ gombra. Adja meg a módosításokat leíró szöveges üzenetet. Válassza ki __OK__ után a rendszer mentette a módosításokat.
 
-    ![Mentse a konfigurációs gomb](./media/apache-kafka-azure-container-services/save-button.png)
+    ![Mentés gomb konfigurálása](./media/apache-kafka-azure-container-services/save-button.png)
 
-9. Megakadályozhatja, hogy hibák Kafka újraindításakor a __szolgáltatás műveletek__ gombra, majd az __kapcsolja be a karbantartási mód__. Kattintson az OK gombra a művelet végrehajtásához.
+9. Hibák a Kafka újraindításához használja a __szolgáltatás műveletek__ gombra, majd __karbantartási mód bekapcsolása__. Kattintson az OK gombra a művelet végrehajtásához.
 
-    ![Szolgáltatási művelet, amely a kijelölt karbantartási bekapcsolása](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
+    ![Szolgáltatási művelet, amely a kiemelt karbantartási bekapcsolása](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
 
-10. Indítsa újra a Kafka, használja a __indítsa újra a__ gombra, majd az __indítsa újra az összes érintett__. Erősítse meg az újraindítás, és használja a __OK__ gombra kattint, a művelet befejeződése után.
+10. Indítsa újra a Kafka, használja a __indítsa újra a__ gombra, majd __indítsa újra az összes érintett__. Erősítse meg az újraindítást, és használja a __OK__ gombra a művelet befejeződése után.
 
-    ![Indítsa újra a gomb, újraindítással minden érintett](./media/apache-kafka-azure-container-services/restart-button.png)
+    ![Indítsa újra az összes érintett újraindítás gomb kiemelésével](./media/apache-kafka-azure-container-services/restart-button.png)
 
-11. A karbantartási mód letiltásához használja a __szolgáltatás műveletek__ gombra, majd az __kapcsolja ki a karbantartási mód__. Válassza ki **OK** a művelet végrehajtásához.
+11. Tiltsa le a karbantartási mód, használja a __szolgáltatás műveletek__ gombra, majd __kapcsolja ki karbantartási módba__. Válassza ki **OK** végrehajtani a műveletet.
 
-## <a name="test-the-configuration"></a>Tesztelje a konfigurációt
+## <a name="test-the-configuration"></a>A konfiguráció tesztelése
 
-Ezen a ponton Kafka és Azure Kubernetes szolgáltatás van a peered virtuális hálózatok a kommunikáció. Ez a kapcsolat teszteléséhez tegye a következőket:
+Ezen a ponton a Kafka és az Azure Kubernetes Service szerepelnek, a társviszonyban álló virtuális hálózatba keresztüli kommunikációt. Ez a kapcsolat teszteléséhez használja a következő lépéseket:
 
-1. Hozzon létre egy Kafka témakör, amely a tesztelési alkalmazás használja. Létrehozásával kapcsolatos információkat Kafka témakörök, tekintse meg a [Kafka fürt létrehozása](apache-kafka-get-started.md) dokumentum.
+1. Egy Kafka-témakört, amely a test-alkalmazás létrehozása. Kafka-témakörök létrehozásával kapcsolatos információkért lásd: a [Kafka-fürt létrehozása](apache-kafka-get-started.md) dokumentumot.
 
-2. Töltse le a mintaalkalmazás az [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test).
+2. A mintaalkalmazás letöltése [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test).
 
 3. Szerkessze a `index.js` fájlt, és módosítsa a következő sorokat:
 
-    * `var topic = 'mytopic'`: A csere `mytopic` a Kafka a témakör az alkalmazás által használt nevével.
-    * `var brokerHost = '176.16.0.13:9092`: A csere `176.16.0.13` a broker gazdagépek, a fürt egyik belső IP-címét.
+    * `var topic = 'mytopic'`: A csere `mytopic` a Kafka-témakörbe az alkalmazás által használt nevét.
+    * `var brokerHost = '176.16.0.13:9092`: A csere `176.16.0.13` a közvetítő gazdagépek, a fürt egyik belső IP-címét.
 
-        A belső IP-címének közvetítő hosts (workernodes) a fürtben, tekintse meg a [Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentum. Válassza ki az IP-címét egy bejegyzést, ahol a tartománynév kezdődik `wn`.
+        A belső IP-címének a közvetítő gazdagépek (workernodes) a fürtben, tekintse meg a [az Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentumot. Válasszon ki egy bejegyzést a tartománynév kezdődik, az IP-cím `wn`.
 
-4. A parancssorból a `src` directory függőségek telepítése és a központi telepítési lemezképet készít a Docker segítségével:
+4. A parancssorból a `src` directory függőségek telepítése és a központi telepítési lemezképet készít a Docker használatával:
 
     ```bash
     docker build -t kafka-aks-test .
     ```
 
     > [!NOTE]
-    > Ez az alkalmazás által igényelt csomagokat a rendszer ellenőrzi a tárházba, így nem kell használni a `npm` segédprogram, hogy telepítse őket.
+    > Ez az alkalmazás által igényelt csomagokat ellenőrzi a tárházba, így Önnek nem kell használni a `npm` segédprogram, hogy telepítse őket.
 
-5. Jelentkezzen be az Azure tároló beállításjegyzék (ACR), és keresse meg loginServer:
+5. Jelentkezzen be az Azure Container Registry (ACR), és keresse meg a kiszolgáló nevének lekéréséhez:
 
     ```bash
     az acr login --name <acrName>
@@ -185,45 +180,45 @@ Ezen a ponton Kafka és Azure Kubernetes szolgáltatás van a peered virtuális 
     ```
 
     > [!NOTE]
-    > Ha nem ismeri az Azure-tároló beállításjegyzék nevét vagy a biztosan ismeri az Azure CLI használata az Azure Kubernetes szolgáltatással tekintse meg a [AKS oktatóanyagok](../../aks/tutorial-kubernetes-prepare-app.md).
+    > Ha nem ismeri az Azure Container Registry neve, vagy nem tudja dolgozni az Azure Kubernetes Service-ben az Azure CLI használatával tekintse meg a [AKS oktatóanyagait](../../aks/tutorial-kubernetes-prepare-app.md).
 
-6. A helyi címke `kafka-aks-test` , az ACR loginServer lemezkép. Is hozzáadhat `:v1` jelzi a lemezkép verziója célból:
+6. A helyi címkézése `kafka-aks-test` rendszerképet, az ACR bejelentkezési kiszolgálójának nevével. Is hozzáadhat `:v1` jelzi a rendszerkép verziószámát vége:
 
     ```bash
     docker tag kafka-aks-test <acrLoginServer>/kafka-aks-test:v1
     ```
 
-7. A kép leküldése a beállításjegyzékben:
+7. A rendszerkép leküldése a beállításjegyzékbe:
 
     ```bash
     docker push <acrLoginServer>/kafka-aks-test:v1
     ```
-    Ez a művelet több percet is igénybe vehet.
+    Ez a művelet több percet vesz igénybe.
 
-8. Szerkessze a Kubernetes jegyzékfájl (`kafka-aks-test.yaml`), és cserélje le `microsoft` a 4. lépésben beolvasott ACR loginServer névvel.
+8. A Kubernetes-jegyzékfájl szerkesztése (`kafka-aks-test.yaml`), és cserélje le `microsoft` a 4. lépésben lekért az ACR bejelentkezési kiszolgálójának nevét.
 
-9. Az alábbi parancs segítségével a jegyzékfájlból alkalmazás-beállításokat léptethet érvénybe:
+9. Használja a következő parancsot a jegyzékfájl az alkalmazás-beállításokat:
 
     ```bash
     kubectl create -f kafka-aks-test.yaml
     ```
 
-10. A következő paranccsal figyelendő a `EXTERNAL-IP` az alkalmazás:
+10. A következő paranccsal tekintse meg a a `EXTERNAL-IP` az alkalmazás:
 
     ```bash
     kubectl get service kafka-aks-test --watch
     ```
 
-    Ha egy külső IP-cím hozzá van rendelve, a __CTRL + C__ való kilépéshez a figyelés
+    Miután a külső IP-cím hozzá van rendelve, a __CTRL + C__ kilép az órával
 
-11. Nyisson meg egy webböngészőt, és adja meg a külső IP-címet a szolgáltatáshoz. Az alábbi képen hasonló lap elvégzésével:
+11. Nyisson meg egy webböngészőt, és adja meg a külső IP-cím a szolgáltatáshoz. Az alábbi képhez hasonló lap érkezik:
 
-    ![A weblap képe](./media/apache-kafka-azure-container-services/test-web-page.png)
+    ![A webalkalmazás lapjának képe](./media/apache-kafka-azure-container-services/test-web-page.png)
 
-12. Szöveg bevitele a mezőbe, és válassza ki a __küldése__ gombra. Az adatok Kafka érkezik. Ezt követően az alkalmazás Kafka fogyasztó kiolvassa az üzenetet, és hozzáadja azt, hogy a __Kafka üzeneteit__ szakasz.
+12. Az mezőbe írja be a szöveget, majd a __küldése__ gombra. A Kafka küldi az adatokat. Az alkalmazás a Kafka-fogyasztók kiolvassa az üzenetet, és hozzáadja azt, majd a __Kafka üzeneteit__ szakaszban.
 
     > [!WARNING]
-    > Többszörös lemásolását, egy üzenet jelenhet meg. Ez a probléma általában frissítse a böngészőt csatlakoztatása után történik, vagy nyissa meg az alkalmazás több böngésző kapcsolatot.
+    > Több példány, egy üzenet jelenhet meg. Ez a probléma általában történik, ha a csatlakozás után, frissítse a böngészőt, vagy nyissa meg az alkalmazás több böngésző kapcsolatot.
 
 ## <a name="next-steps"></a>További lépések
 

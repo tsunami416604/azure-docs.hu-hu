@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 2c8ca8bcce43596d521fa9c81438ac6a16f6dcdf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fc3f334771c11d6917e15628557adfb59051f0f6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445381"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621021"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Az Azure Virtual Datacenter: A hálózati nézőpont
 **A Microsoft Azure**: gyorsabb, pénzt takaríthat meg, a helyszíni alkalmazások és adatok integrálása
@@ -262,7 +262,7 @@ Az egy vDC nagyon fontos az NSG-k naplók, különösen ezeket az információka
 
 Az összes napló naplózási, elemzési statikus vagy biztonsági mentési célból tárolhatók az Azure Storage-fiókokról. A naplók találhatók, az Azure storage-fiókot, ha ügyfelek különböző típusú keretrendszerek használatával lekérni, -előkészítési, elemzése, és jelenítse meg az adatokat jelenti az állapotot és a felhőbeli erőforrások állapotát.
 
-A nagyobb vállalatok olyan szabványos keretrendszer, a helyszíni rendszerek figyelése már vásárolt, és kiterjesztheti a felhőben üzemelő példányok által létrehozott naplók integrálása a keretrendszer. A szervezeteknek, amelyek szeretné megtartani az összes naplózási a felhőben, a [Log Analytics] [LogAnalytics] a nagyszerű választás. A Log Analytics felhőalapú szolgáltatásként van megvalósítva, mivel rendelkezhet, és gyorsan az infrastrukturális szolgáltatásokra fordítandó minimális kiadások mellett a. A log Analytics is integrálhatók a System Center-összetevőket, például a System Center Operations Manager bővítése a meglévő felügyeleti beruházások kiterjeszthetők a felhőre.
+A nagyobb vállalatok olyan szabványos keretrendszer, a helyszíni rendszerek figyelése már vásárolt, és kiterjesztheti a felhőben üzemelő példányok által létrehozott naplók integrálása a keretrendszer. Olyan szervezeteknek, amelyek az összes naplózási tartani a felhőben, [a Log Analytics] [... / log-analytics/log-analytics-overview .md] remek választás lehet. A Log Analytics felhőalapú szolgáltatásként van megvalósítva, mivel rendelkezhet, és gyorsan az infrastrukturális szolgáltatásokra fordítandó minimális kiadások mellett a. A log Analytics is integrálhatók a System Center-összetevőket, például a System Center Operations Manager bővítése a meglévő felügyeleti beruházások kiterjeszthetők a felhőre.
 
 A log Analytics szolgáltatása az Azure-ban, amely segít összegyűjtését, összekapcsolását, keressen, és operációs rendszerek, alkalmazások és infrastruktúra felhőalapú összetevők által generált napló- és teljesítményadatokat az adatokkal műveleteket végezni. Ügyfelek elemezze a feladatait egy vDC az összes rekordot integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosít.
 

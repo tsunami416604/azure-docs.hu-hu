@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61425daff618bcaff54d201b7eee8d5e0b5abda7
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506212"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621201"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Az Azure Event Griddel kapcsolatos fogalmak
 
@@ -74,7 +74,7 @@ Event Grid nem győződjön meg arról, hogy az előfizető végpontja egy esem�
 
 ## <a name="batching"></a>Kötegelés
 
-Egy egyéni témakör használatakor az események mindig közzé kell tenni a tömbben. Ez lehet egy alacsony átviteli sebességű forgatókönyveket, a kötegelt azonban nagy mennyiségű usecases, javasoljuk, hogy a batch együttes száma több esemény közzététele nagyobb hatékonyság elérése érdekében. Kötegek legfeljebb 1 MB lehet. Minden esemény kell még mindig nem excede 64 KB-os.
+Egy egyéni témakör használatakor az események mindig közzé kell tenni a tömbben. Ez lehet egy alacsony átviteli sebességű forgatókönyveket, a kötegelt azonban nagy mennyiségű usecases, javasoljuk, hogy a batch együttes száma több esemény közzététele nagyobb hatékonyság elérése érdekében. Kötegek legfeljebb 1 MB lehet. Minden esemény még mindig nem lehet hosszabb 64 KB-os.
 
 ## <a name="next-steps"></a>További lépések
 

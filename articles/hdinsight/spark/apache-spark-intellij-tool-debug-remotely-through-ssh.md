@@ -1,26 +1,21 @@
 ---
-title: 'IntelliJ-hez készült Azure-eszközkészlet: ssh-n keresztül a távoli hibakeresés Spark-alkalmazások |} A Microsoft Docs'
+title: 'IntelliJ-hez készült Azure-eszközkészlet: ssh-n keresztül a távoli hibakeresés Spark-alkalmazások '
 description: Lépésenkénti útmutatóját az IntelliJ-hez a HDInsight Tools használata alkalmazások távolról a HDInsight-fürtön ssh-n keresztül
 keywords: távoli hibakeresés az intellij-vel, távoli hibakeresés az intellij, ssh, intellij hdinsight, a Hibakeresés az intellij-vel, hibakeresés
 services: hdinsight
-documentationcenter: ''
-author: jejiang
-manager: DJ
-editor: Jenny Jiang
-tags: azure-portal
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: ''
-ms.topic: article
-ms.date: 11/25/2017
+author: jejiang
 ms.author: jejiang
-ms.openlocfilehash: 3d46f52f577227eedf070e845a7a8bfc82084f4e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+editor: jasonwhowell
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.topic: conceptual
+ms.date: 11/25/2017
+ms.openlocfilehash: 53094e3f8b489f972dc3e22441c66c8487a01fca
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435713"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622058"
 ---
 # <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Hibakeresés Spark-alkalmazások helyben vagy távolról egy HDInsight-fürtön az Azure-eszközkészlet ssh-n keresztül az IntelliJ-hez
 

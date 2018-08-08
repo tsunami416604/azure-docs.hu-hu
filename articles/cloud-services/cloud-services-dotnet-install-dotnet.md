@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 80f525f3c7b71c2d5d1fdbd415c298452ab75423
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 3821e13fd968e458e463e90ef338da6637d8d8f2
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004829"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622014"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>A .NET telepítése az Azure Cloud Services-szerepkörök
 Ez a cikk ismerteti, amelyek nem rendelkeznek Azure vendég operációs rendszer verzió a .NET-keretrendszer telepítése. A vendég operációs rendszer a .NET használatával a felhőalapú szolgáltatás webes és feldolgozói szerepkörök konfigurálása.
@@ -109,7 +109,7 @@ Indítási feladatok segítségével hajtsa végre a műveleteket a szerepkör e
    set "log=install.cmd started %timestamp%."
    
    REM ***** Exit script if running in Emulator *****
-   if %ComputeEmulatorRunning%=="true" goto exit
+   if "%ComputeEmulatorRunning%"=="true" goto exit
    
    REM ***** Needed to correctly install .NET 4.6.1, otherwise you may see an out of disk space error *****
    set TMP=%PathToNETFXInstall%

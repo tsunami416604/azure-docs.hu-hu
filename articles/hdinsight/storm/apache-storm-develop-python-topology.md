@@ -1,54 +1,50 @@
 ---
-title: A Python comopnents - Azure HDInsight alatt futó Apache Storm |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy Python-összetevők használó alatt futó Apache Storm-topológiák.
+title: Python-összetevők – Azure HDInsight az Apache Storm
+description: Ismerje meg, hogyan hozhat létre egy Python-összetevők használó Apache Storm-topológiák.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-keywords: Apache storm python
-ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
+author: jasonwhowell
+editor: jasonwhowell
+keywords: az Apache storm python
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 9137e509ff352bdcb7a74b652b5c7c7edef2d7ea
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: jasonh
+ms.openlocfilehash: 8c26bfc85c70addebd5e68fad7769faa63e07bea
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131160"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39623017"
 ---
-# <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Python használata a HDInsight alatt futó Apache Storm-topológiák fejlesztése
+# <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Python használata a HDInsight Apache Storm-topológiák fejlesztése
 
-Megtudhatja, hogyan hozzon létre egy Python-összetevők használó alatt futó Apache Storm-topológiák. Apache Storm több nyelv használatát, még akkor is így egyesítése egy topológia több nyelv-összetevőt. A fluxus keretrendszer (Storm 0.10.0-s bevezetett) lehetővé teszi, hogy könnyen létrehozhat megoldások, amelyek a Python-összetevőket használnak.
+Ismerje meg, hogyan hozhat létre egy Python-összetevők használó Apache Storm-topológiák. Az Apache Storm több nyelvet is támogat, még akkor is lehetővé teszi egy topológiában számos nyelvből összetevőket kombinálja. (A Storm 0.10.0-s ismertetése) fluxus keretében könnyedén hozhat létre megoldásokat, amelyek a Python-összetevők használata teszi lehetővé.
 
 > [!IMPORTANT]
-> A jelen dokumentumban szereplő információk teszteltük a HDInsight 3.6 alatt futó Storm használatával. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A jelen dokumentumban lévő információk teszteltünk, a HDInsight 3.6-alapú Storm segítségével. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-Ez a projekt kódját érhető el: [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
+Ez a projekt kódját mindig elérhető legyen [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Python 2.7 vagy újabb
+* Python 2.7-es vagy újabb
 
-* Java JDK 1.8 vagy újabb
+* Java JDK 1.8-as vagy újabb
 
-* 3 maven
+* Maven 3
 
-* (Választható) A helyi Storm környezet. A helyi Storm-környezet csak akkor van szükség, ha a topológia helyileg futtatja. További információkért lásd: [a fejlesztési környezet létrehozása](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
+* (Nem kötelező) Egy helyi Storm-fejlesztési környezetre. A Storm helyi környezetben csak akkor van szükség, ha helyileg futtatja a topológia. További információkért lásd: [a fejlesztési környezet beállítása](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
-## <a name="storm-multi-language-support"></a>A Storm több nyelv támogatása
+## <a name="storm-multi-language-support"></a>A Storm nyelvek támogatása
 
-Apache Storm használható bármely programozási nyelv használatával készítettek összetevők úgy lett kialakítva. Az összetevők kell megtudhatja, hogyan használható a [Thrift-definíciók alatt futó Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Python a modul biztosítja az Apache Storm projekt, amely lehetővé teszi, hogy könnyen csatoló Storm részeként. A modul található [ https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py ](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Az Apache Storm használatával tetszőleges programozási nyelven írt összetevők dolgozhat úgy lett kialakítva. Az összetevők értenie kell dolgozni a [Thrift-definíció a Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). A Python a modul, amely lehetővé teszi, hogy könnyen csatlakozhatnak a Storm az Apache Storm-projekt részeként biztosított. Ez a modul címen található [ https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py ](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
-A Storm egy Java folyamat futtatja a Java virtuális gép (JVM). Az egyéb nyelven írt összetevők vannak végre, mert magában. A Storm ezek magában stdin/stdout keresztüli üzenetküldés JSON használatával kommunikál. Összetevők közötti kommunikáció további részletek találhatók a [Multi-lang protokoll](https://storm.apache.org/documentation/Multilang-protocol.html) dokumentációját.
+A Storm Java folyamat, amely a Java virtuális gép (JVM) érhető el. Más nyelveken írt összetevőket magában, végre kell hajtani. A Storm használata a JSON-üzenetek stdin/stdout keresztül küldi el ezeket magában kommunikál. Összetevők közötti kommunikációt a további részletek találhatók a [Multi-lang protokoll](https://storm.apache.org/documentation/Multilang-protocol.html) dokumentációját.
 
-## <a name="python-with-the-flux-framework"></a>A fluxus keretrendszerrel Python
+## <a name="python-with-the-flux-framework"></a>Python és a fluxus keretrendszer
 
-A fluxus keretrendszer megadhatja az összetevőket külön-külön a Storm-topológiák. A fluxus keretrendszer YAM használ a Storm-topológia meghatározására. A következő példa bemutatja, hogyan való hivatkozáshoz egy Python-összetevő a YAM dokumentumban áll:
+A fluxus keretrendszer lehetővé teszi, hogy meghatározza az összetevőket külön, a Storm-topológiák. A fluxus keretrendszer YAML használ a Storm-topológia meghatározására. A következő példa bemutatja, hogyan való hivatkozáshoz egy Python-összetevő a YAML-dokumentumban a következő szöveget:
 
 ```yaml
 # Spout definitions
@@ -64,9 +60,9 @@ spouts:
     parallelism: 1
 ```
 
-Az osztály `FluxShellSpout` való elindítására szolgál a `sentencespout.py` parancsfájl, amely megvalósítja a spout.
+Az osztály `FluxShellSpout` való elindítására szolgál a `sentencespout.py` valósítja meg a spout-szkript.
 
-Fluxus vár a Python-parancsfájlokat kell lennie a `/resources` belül a jar-fájlra, amely tartalmazza a topológia könyvtárába. Ebben a példában a Python parancsfájlok tárolja, a `/multilang/resources` könyvtár. A `pom.xml` tartalmazza ezt a fájlt a következő XML-kód használatával:
+Fluxus vár a Python-szkriptek kell lennie a `/resources` könyvtárat a jar-fájlt, amely tartalmazza a topológia belül. Így az ebben a példában a Python-szkriptek tárolja a `/multilang/resources` könyvtár. A `pom.xml` a fájlt a következő XML-kódot tartalmazza:
 
 ```xml
 <!-- include the Python components -->
@@ -76,7 +72,7 @@ Fluxus vár a Python-parancsfájlokat kell lennie a `/resources` belül a jar-f�
 </resource>
 ```
 
-A korábban említett van egy `storm.py` fájl, amely megvalósítja az alatt futó Storm Thrift-definíciók. A fluxus tartalmazza `storm.py` automatikusan amikor a projekt épül, így nem kell aggódnia, beleértve azt.
+Ahogy korábban említettük, van egy `storm.py` fájlt, amely megvalósítja az Thrift-definíció, a Storm. Tartalmazza a fluxus keretrendszer `storm.py` automatikusan Ha a projekt létrejött, így nem kell aggódnia, többek között.
 
 ## <a name="build-the-project"></a>A projekt felépítése
 
@@ -86,20 +82,20 @@ A projekt gyökérkönyvtárában használja a következő parancsot:
 mvn clean compile package
 ```
 
-Ezzel a paranccsal létrejön egy `target/WordCount-1.0-SNAPSHOT.jar` a lefordított topológia tartalmazó fájlt.
+Ez a parancs létrehoz egy `target/WordCount-1.0-SNAPSHOT.jar` fájlt, amely tartalmazza a lefordított topológiát.
 
-## <a name="run-the-topology-locally"></a>Futtassa helyben a topológia
+## <a name="run-the-topology-locally"></a>A topológia helyileg történő futtatása
 
-A topológia helyileg futtatta, használja a következő parancsot:
+A topológia helyi futtatását, használja a következő parancsot:
 
 ```bash
 storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.yaml
 ```
 
 > [!NOTE]
-> Ez a parancs a helyi Storm környezet szükséges. További információkért lásd: [a fejlesztési környezet létrehozása](http://storm.apache.org/releases/current/Setting-up-development-environment.html)
+> Ez a parancs a helyi Storm környezet szükséges. További információkért lásd: [a fejlesztési környezet beállítása](http://storm.apache.org/releases/current/Setting-up-development-environment.html)
 
-Egyszer a topológia indul el, akkor bocsát ki a helyi konzol, az alábbihoz hasonló információkat:
+Miután a topológia elindul, bocsát ki a helyi konzol az alábbi szöveghez hasonló információt:
 
 
     24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
@@ -113,36 +109,36 @@ Egyszer a topológia indul el, akkor bocsát ki a helyi konzol, az alábbihoz ha
     24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 
 
-A topológia leállítása, használja a __Ctrl + C__.
+A topológia leállításához használja __Ctrl + C__.
 
-## <a name="run-the-storm-topology-on-hdinsight"></a>A HDInsight a Storm-topológia futtatása
+## <a name="run-the-storm-topology-on-hdinsight"></a>A HDInsight a Storm-topológia futtatásához
 
-1. Másolja az alábbi parancs segítségével a `WordCount-1.0-SNAPSHOT.jar` fájl alatt futó Storm on HDInsight-fürt:
+1. A következő parancs használatával másolja a `WordCount-1.0-SNAPSHOT.jar` fájlt alatt futó Storm HDInsight-fürtön:
 
     ```bash
     scp target\WordCount-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-    Cserélje le `sshuser` a fürthöz az SSH felhasználóval. Cserélje le `mycluster` a fürt nevéhez. Adja meg a jelszót az SSH-felhasználó kérheti.
+    Cserélje le `sshuser` és a fürthöz az SSH-felhasználót. Cserélje le `mycluster` a fürt nevére. A rendszer felkérheti adja meg a jelszót az SSH-felhasználót.
 
-    További információ az SSH és az SCP használatával, lásd: [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Az SSH és SCP-je használatával további információkért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. A fájl a feltöltést követően csatlakozzon a fürthöz SSH használatával:
+2. Miután a fájl fel lett töltve, csatlakozzon a fürthöz SSH használatával:
 
     ```bash
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. Az SSH-munkamenetből a következő parancs használatával indítsa el a topológia a fürtre:
+3. Az SSH-munkamenetből a következő parancs használatával indítsa el a topológia a fürtön:
 
     ```bash
     storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
     ```
 
-3. A Storm felhasználói felülete segítségével megtekintheti a topológia a fürtön. A Storm felhasználói felülete a következő helyen található https://mycluster.azurehdinsight.net/stormui. Cserélje le `mycluster` elemet a fürt nevére.
+3. A Storm felhasználói felülete segítségével megtekintheti a topológia a fürtön. A Storm felhasználói felülete a következő helyen található https://mycluster.azurehdinsight.net/stormui. Cserélje le `mycluster` a fürt nevére.
 
 > [!NOTE]
-> Miután elindult, a Storm-topológia fut. csak a A topológia leállítása, használja a következő módszerek egyikét:
+> Megkezdése után a Storm-topológia fut, amíg leállt. A topológia leállítása, használja a következő módszerek egyikét:
 >
 > * A `storm kill TOPOLOGYNAME` parancsot a parancssorból
 > * A **Kill** gomb a Storm felhasználói felületén.
@@ -150,7 +146,7 @@ A topológia leállítása, használja a __Ctrl + C__.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a Python és a HDInsight együttes használata egyéb módjai a következő dokumentumokat:
+A Python használata a HDInsight egyéb módjaira vonatkozóan az alábbi dokumentumokban talál:
 
-* [Python használata az adatfolyamként történő MapReduce-feladatok](../hadoop/apache-hadoop-streaming-python.md)
-* [Python felhasználó definiált függvény (UDF) a Pig és a Hive használata](../hadoop/python-udf-hdinsight.md)
+* [Hogyan használható a Python MapReduce-feladatok streameléshez](../hadoop/apache-hadoop-streaming-python.md)
+* [Python felhasználói definiált függvények (UDF) a Pig és a Hive használata](../hadoop/python-udf-hdinsight.md)

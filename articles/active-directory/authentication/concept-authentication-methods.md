@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 065f7ef822cdabad8fe25651e3cda9735c655d5f
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414524"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622252"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -132,7 +132,7 @@ A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/
 A Microsoft Authenticator alkalmazás segítségével a fiókokhoz való illetéktelen hozzáférés megakadályozása és a egy rövid értesítést a okostelefonján vagy táblagépén küldésével állítsa le a csalárd tranzakciókat. Felhasználók tekintse meg az értesítést, és ha az megbízható, válassza ki az ellenőrzés. Ellenkező esetben Megtagadás kijelölve.
 
 > [!WARNING]
-> Az önkiszolgáló jelszó-visszaállítás, ha csak egyetlen módszer a visszaállításhoz szükséges, az ellenőrző kódot csak a lehetőség a felhasználók számára elérhető.
+> Az önkiszolgáló jelszó-visszaállítás amikor csak egyik módja szükség a visszaállításhoz, ellenőrző kódot csak a lehetőség a felhasználók számára elérhető **annak biztosítása érdekében a legmagasabb szintű biztonság**.
 >
 > Ha két módszer szükség felhasználók tudják alaphelyzetbe **vagy** értesítési **vagy** ellenőrzőkódot kívül bármely más módszerek engedélyezve van.
 >
@@ -142,7 +142,7 @@ A Microsoft Authenticator alkalmazás segítségével a fiókokhoz való illeté
 A Microsoft Authenticator alkalmazást, vagy más harmadik felek alkalmazásaihoz használható szoftvertokenként OATH-Ellenőrzőkód generálásához. Miután megadta a felhasználónevét és jelszavát, írja be a bejelentkezési képernyőn az alkalmazás által biztosított kódot. Az ellenőrző kódot biztosít egy második hitelesítési mód.
 
 > [!WARNING]
-> Az önkiszolgáló jelszó-visszaállítás, ha csak egyetlen módszer a visszaállításhoz szükséges ellenőrző kódot a lehetőség csak a felhasználók számára elérhető.
+> A önkiszolgáló jelszó-átállítási mikor csak egy módszert szükség ellenőrző kód alaphelyzetbe állítása az egyetlen lehetőség a felhasználók számára elérhető **annak biztosítása érdekében a legmagasabb szintű biztonság**.
 >
 
 ## <a name="mobile-phone"></a>Mobiltelefon
@@ -198,5 +198,7 @@ Ha a szervezet össze van vonva az Azure AD egyszeri bejelentkezéshez, és szer
 [A szervezet számára önkiszolgáló jelszóátállítás engedélyezése](quickstart-sspr.md)
 
 [Az Azure multi-factor Authentication szolgáltatás engedélyezése a szervezet számára](howto-mfa-getstarted.md)
+
+[A hiperkonvergens regisztráció az Azure multi-factor Authentication és az Azure AD önkiszolgáló jelszó-visszaállítás engedélyezése](concept-registration-mfa-sspr-converged.md)
 
 [Végfelhasználói hitelesítés metódus konfigurációs dokumentációja](https://aka.ms/securityinfoguide)

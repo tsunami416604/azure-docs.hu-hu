@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: genli
-ms.openlocfilehash: 86af69c5fe58511befecebcb4046e21fd34e096c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5f11129e562ec47f4c81790cf21c9a390cc697b8
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449819"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621405"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Hálózati virtuális berendezés problémák az Azure-ban
 
-Virtuális gép vagy a VPN-kapcsolódási problémák és a egy hálózati virtuális készüléket (NVA) Microsoft Azure-ban érintő hibákat tapasztalhat. Ez a cikk segítséget nyújt az NVA-konfigurációk esetén az Azure Platform minimális követelményeinek ellenőrzése alapvető lépéseit ismerteti.
+Előfordulhat, hogy virtuális Gépet, vagy ha VPN-kapcsolati hibák és a hibákat, amikor egy külső féltől származó hálózati virtuális készüléket (NVA) Microsoft Azure-ban. Ez a cikk segítséget nyújt az NVA-konfigurációk esetén az Azure Platform minimális követelményeinek ellenőrzése alapvető lépéseit ismerteti.
 
 Technikai támogatás külső nva-k és azok az Azure platformmal való integráció az NVA gyártójától. Ha a kapcsolat vagy útválasztási problémát, amely magában foglalja egy nva-t, akkor [, forduljon az nva-t a](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) közvetlenül.
 

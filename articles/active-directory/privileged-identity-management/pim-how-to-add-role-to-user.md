@@ -9,15 +9,15 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
-ms.openlocfilehash: 1834addb4e51030afda43a2d7acad5d7ffc1889a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1aede38cabba7f9811f2b9320bc1e9a9da857f08
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226696"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621813"
 ---
 # <a name="assign-directory-roles-to-users-using-azure-ad-pim"></a>Címtárbeli szerepkörök hozzárendelése a felhasználókhoz az Azure AD PIM használatával
 

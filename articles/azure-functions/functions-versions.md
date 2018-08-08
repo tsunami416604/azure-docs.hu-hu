@@ -10,14 +10,14 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 07/29/2018
 ms.author: glenga
-ms.openlocfilehash: 8ba12f21d76d8deded047f40489c46657c9380b8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6bf6621d650ad590cd1134bc79fcdecdc3fd0963
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602117"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622636"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
 
@@ -26,7 +26,9 @@ ms.locfileid: "38602117"
 | Futtatókörnyezet | status |
 |---------|---------|
 |1.x|Általánosan elérhető (GA)|
-|2.x|Előzetes verzió|
+|2.x|Előzetes verzió<sup>*</sup>|
+
+<sup>*</sup>Verzió fontos frissítések fogadása 2.x, beleértve a használhatatlanná tévő módosítja a bejelentésekről, tekintse meg a [Azure App Service közlemények](https://github.com/Azure/app-service-announcements/issues) tárház.
 
 > [!NOTE] 
 > Ez a cikk az Azure Functions felhőalapú szolgáltatásra vonatkozik. A termék, amely lehetővé teszi Azure Functions helyi futtatását kapcsolatos információkért tekintse meg a [Azure Functions Runtime áttekintése](functions-runtime-overview.md).

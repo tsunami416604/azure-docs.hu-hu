@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 446c97918a6b6287bf4cacf4711a0dd46e12f141
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578551"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621531"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden dokumentumnak Azure Active Directory (Azure AD) különböző-alkalmazásokkal kapcsolatos lehetőségei írt átfogó listáját tartalmazza.
@@ -54,7 +54,7 @@ Egyszeri bejelentkezés lehetővé teszi a felhasználók férhetnek hozzá a k�
 | A cikk az útmutató |  |
 |:---:| --- |
 | Összevonási és a bejelentkezés egyéb bemutatása |[Egyszeri bejelentkezés az Azure ad-vel](manage-apps/what-is-single-sign-on.md) |
-| Több ezer SaaS-alkalmazások az Azure AD-vel előre integrált, egyszerűsített egyszeri bejelentkezéses konfigurációs lépések |[Ismerkedés az Azure AD alkalmazáskatalógusában](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Összevonási támogató előre integrált alkalmazások teljes listája](saas-apps/tutorial-list.md)<br /><br />[Az alkalmazás hozzáadása az Azure AD Alkalmazáskatalógusában](active-directory-app-gallery-listing.md) |
+| Több ezer SaaS-alkalmazások az Azure AD-vel előre integrált, egyszerűsített egyszeri bejelentkezéses konfigurációs lépések |[Ismerkedés az Azure AD alkalmazáskatalógusában](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Összevonási támogató előre integrált alkalmazások teljes listája](saas-apps/tutorial-list.md)<br /><br />[Az alkalmazás hozzáadása az Azure AD Alkalmazáskatalógusában](develop/howto-app-gallery-listing.md) |
 | Több mint 150 alkalmazás oktatóanyagok konfigurálásának egyszeri bejelentkezési alkalmazások például [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md), és még sok más |[SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](saas-apps/tutorial-list.md) |
 | Manuálisan állítsa be, és az egyszeri bejelentkezés beállításainak testreszabása |[Hogyan való konfigurálása összevont egyszeri bejelentkezés az alkalmazásokhoz, amelyek nem szerepelnek az Azure Active Directory Alkalmazáskatalógusában](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Az előre integrált alkalmazások SAML-jogkivonatban kiadott jogcímek testreszabása](active-directory-saml-claims-customization.md) |
 | Az összevont alkalmazások az SAML protokollt használó hibaelhárítási útmutató |[SAML-alapú egyszeri bejelentkezés hibaelhárítása](develop/howto-v1-debug-saml-sso-issues.md) |
@@ -109,7 +109,7 @@ Ha beállít egyszeri bejelentkezést az alkalmazások és erőforrások, majd t
 | A cikk az útmutató |  |
 |:---:| --- |
 | A feltételes hozzáférési képességeit bemutató érhető el az Azure ad-ben, Office 365 és Intune-ban |[Kockázatkezelés feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) |
-| A következő típusú erőforrásokat a feltételes hozzáférés engedélyezése |[Feltételes hozzáférés a SaaS-alkalmazások](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Feltételes hozzáférés az Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások](active-directory-conditional-access-azure-portal.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások az Azure AD-alkalmazásproxyn keresztül közzétett](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| A következő típusú erőforrásokat a feltételes hozzáférés engedélyezése |[Feltételes hozzáférés a SaaS-alkalmazások](conditional-access/app-based-conditional-access.md)<br /><br />[Feltételes hozzáférés az Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások](active-directory-conditional-access-azure-portal.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások az Azure AD-alkalmazásproxyn keresztül közzétett](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Eszközök regisztrálása az Azure Active Directoryban annak érdekében, hogy eszközalapú feltételes hozzáférési szabályzat engedélyezése |[Az Azure Active Directory Eszközregisztráció – áttekintés](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Automatikus Eszközregisztráció engedélyezése a tartományhoz csatlakoztatott Windows-eszközök](active-directory-conditional-access-automatic-device-registration.md)<br />– [Lépéseket a Windows 8.1-eszközök](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Lépéseket a Windows 7-eszközökön](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | A Microsoft Authenticator alkalmazás használata a kétlépéses ellenőrzéshez |} [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
@@ -144,7 +144,7 @@ Ha a szervezet fejlesztéséhez vagy karbantartása – üzletági (LoB) alkalma
 | A cikk az útmutató |  |
 |:---:| --- |
 | Informatikai szakemberek és az alkalmazások fejlesztői az Azure AD-alkalmazások integrálását ismertető útmutató |[Az IT Pro az útmutató az Azure ad-alkalmazások fejlesztéséhez](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Az Azure Active Directory fejlesztői útmutatója](develop/azure-ad-developers-guide.md) |
-| Hogyan alkalmazáshoz szállítók adhat hozzá alkalmazásaikat az Azure AD Alkalmazáskatalógusában |[Az alkalmazás szerepeltetése az Azure Active Directory Alkalmazáskatalógusában listázása](active-directory-app-gallery-listing.md) |
+| Hogyan alkalmazáshoz szállítók adhat hozzá alkalmazásaikat az Azure AD Alkalmazáskatalógusában |[Az alkalmazás szerepeltetése az Azure Active Directory Alkalmazáskatalógusában listázása](develop/howto-app-gallery-listing.md) |
 | Az Azure Active Directoryval fejlett alkalmazásokhoz való hozzáférés kezelése |[Fejlett alkalmazások felhasználó-hozzárendelés engedélyezése](active-directory-applications-guiding-developers-requiring-user-assignment.md)<br /><br />[Felhasználók hozzárendelése az alkalmazáshoz](active-directory-applications-guiding-developers-assigning-users.md)<br /><br />[Csoport hozzárendelése az alkalmazáshoz](active-directory-applications-guiding-developers-assigning-groups.md) |
 
 Ha a felhasználók felé néző alkalmazásokat fejleszt, érdekelheti az [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) , hogy nem kell fejlesztése kezelheti a felhasználók a saját identitáskezelő rendszerbe. [További információk](../active-directory-b2c/active-directory-b2c-overview.md).

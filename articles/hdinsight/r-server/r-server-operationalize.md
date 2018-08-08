@@ -1,23 +1,20 @@
 ---
-title: A HDInsight - Azure Machine Learning-szolgáltatások üzembe helyezése |} A Microsoft Docs
+title: A HDInsight - Azure Machine Learning-szolgáltatások üzembe helyezése
 description: Útmutató az Azure HDInsight Machine Learning-szolgáltatások üzembe helyezése.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 0472158dfb9ad228ce2ddef0edf4eafcf4cd3d29
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aef34fea2252cdc875fa1ea1c73a8df14fdf1b9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430977"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622303"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt üzembe helyezése
 
@@ -124,7 +121,7 @@ Ha a fürt nem a virtuális hálózaton van beállítva vagy problémás a kapcs
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-Ha az SSH-munkamenet aktív, a rendszer számítógépe 12800-as portjáról az élcsomópont 12800-as portjára továbbítja a forgalmat az SSH-munkameneten keresztül. A `127.0.0.1:12800` címet használja a `remoteLogin()` metódusban. Ez bejelentkezik az élcsomópontra porttovábbításon keresztül operacionalizálásra.
+Ha az SSH-munkamenet aktív, a helyi számítógép 12800-as porton érkező forgalom az 12800-as porton az élcsomópont SSH-munkameneten keresztül továbbítja. A `127.0.0.1:12800` címet használja a `remoteLogin()` metódusban. Ez bejelentkezik az élcsomópontra porttovábbításon keresztül operacionalizálásra.
 
 
     library(mrsdeploy)

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2332923946e414325b9723a59cf493d9d1060cc6
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369176"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622170"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>A hibrid Azure AD join eszköz vezérlése
 
@@ -36,7 +36,7 @@ Ez a cikk azt feltételezi, hogy Ön ismeri a:
 
 -  [Az Eszközfelügyelet az Azure Active Directory bemutatása](../device-management-introduction.md)
  
--  [A hibrid Azure Active Directory join megvalósítás tervezése](hybrid-azuread-join-plan.md)
+-  [A hibrid Azure Active Directory-csatlakozás megvalósításának tervezése](hybrid-azuread-join-plan.md)
 
 -  A hibrid Azure Active Directory-csatlakozás konfigurálása [felügyelt tartományok](hybrid-azuread-join-managed-domains.md) vagy [összevont tartományok](hybrid-azuread-join-federated-domains.md)
 
@@ -110,6 +110,9 @@ Az eszköz regisztrációs viselkedését az aktuális eszközök szabályozhatj
     
 
 Kíván hivatkozni egy Ön által választott helyre ezt az ügyfélbeállítást. Adja meg ezt az ügyfélbeállítást a minden Windows aktuális a szervezetnél található eszközökön, például az ügyfélbeállítás, a tartományhoz kell társítani. Ehhez egy ellenőrzött központi telepítést, az ügyfél-eszközbeállítást Windows-tartományhoz tartozó szervezeti egység vagy egy biztonsági csoport aktuális eszközök konfigurálhatja.
+
+> [!Important]
+> Míg a fenti konfigurációs gondoskodik a meglévő tartományhoz csatlakoztatott Windows 10 rendszerű eszközökön, és van egy lehetséges, hogy továbbra is teljes körű hibrid Azure AD-csatlakozás a tényleges csoportházirend alkalmazása a potenciális késéssel megpróbálja újonnan tartományhoz csatlakozó eszközök vagy A Configuration Manager-beállítások az újonnan csatlakoztatott Windows 10 rendszerű eszköz. Ennek elkerülése érdekében javasoljuk, hogy hoz létre egy új sysprep lemezkép (használt példaként az üzembe helyezési módszer) egy eszközről, amely soha nem volt a hibrid Azure AD-hez, és, hogy már rendelkezik a fenti csoportházirend-beállítás alkalmazva vagy a Configuration Manager-ügyfél a beállítás a alkalmazni. Az új rendszerképet is az új számítógépeket, amelyek a szervezet tartományához kell használnia. 
 
 ## <a name="control-windows-down-level-devices"></a>Windows régebbi verziójú eszközök
 

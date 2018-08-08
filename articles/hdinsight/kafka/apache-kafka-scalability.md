@@ -1,25 +1,20 @@
 ---
-title: Az Apache Kafka platform kiterjesztése – Azure HDInsight | Microsoft Docs
+title: Az Apache kafka platform kiterjesztése – Azure HDInsight
 description: Útmutató az Azure HDInsight-beli Apache Kafka-fürtök felügyelt lemezeinek a méretezhetőséget javító konfigurálásához.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 1a104f4b4dee340f43c1dba01b83cb80e138a9ec
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 71dc4090d0dbce17322af8f41d8f35c397681f33
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626723"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621735"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Tárhely és méretezhetőség konfigurálása HDInsight-beli Apache Kafka platformon
 
@@ -54,7 +49,7 @@ Egy Kafka-fürt egy feldolgozó csomópontjára jutó lenezek számának beáll�
     ],
 ```
 
-Azt mutatja be a felügyelt lemezek konfigurálása teljes sablon található [ https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json ](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json).
+Annak a teljes sablont, amely bemutatja, hogyan konfigurálhatja a felügyelt lemezek [ https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json ](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json).
 
 ## <a name="next-steps"></a>További lépések
 
