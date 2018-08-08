@@ -1,87 +1,82 @@
 ---
-title: Telepítés közzétett alkalmazás - Datameer - Azure HDInsight |} Microsoft Docs
-description: Telepítheti és használhatja a Datameer külső Hadoop alkalmazás.
+title: Közzétett alkalmazás – Datameer – Azure HDInsight telepítése
+description: Telepítheti és használhatja a Datameer külső Hadoop-alkalmazásokat.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 9eef1760b7cee3bbdf33122514669b38b0b4d9db
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a8961da0a62815ce60a6ee694d57f3172b81718b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400843"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592176"
 ---
-# <a name="install-published-application---cask-data-application-platform-cdap"></a>Telepítse a közzétett alkalmazás - Cask adatok alkalmazás Platform (CDAP)
+# <a name="install-published-application---cask-data-application-platform-cdap"></a>Közzétett alkalmazás – Cask Data Application Platform (CDAP) telepítése
 
-Ez a cikk ismerteti, hogyan telepíthetnek és futtathatnak a [CDAP](http://cask.co/products/cdap/) on Azure HDInsight Hadoop-alkalmazások közzététele. A HDInsight-alkalmazás platform áttekintését, és a rendelkezésre álló független szoftverszállító (ISV) listáját közzétett alkalmazások: [külső Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [CDAP](http://cask.co/products/cdap/) közzé az Azure HDInsight Hadoop-alkalmazásokat. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
-## <a name="about-cdap"></a>CDAP kapcsolatos
+## <a name="about-cdap"></a>CDAP kapcsolatban
 
-A Hadoop-alkalmazások fejlesztésével kihívást jelenthet.  Nincs nagy és az egyre növekvő száma Hadoop technológia bővítményeket, amelyek integrálásához némi időbe telhet. Adatfolyam figyelése és gyűjtése metrikák megkövetelheti egy külön megoldásban összeállításakor.
+A Hadoop-alkalmazások fejlesztéséhez használható kihívást jelenthet.  Van egy nagy és egyre szélesebbé váló Hadoop technológia bővítmények, ami eltarthat egy ideig való integrálásához. Az adatfolyam figyelése és gyűjtése metrikák megkövetelheti külön megoldás létrehozása.
 
 ### <a name="how-does-cdap-help"></a>Hogyan segít a CDAP?
 
-A Cask adatok alkalmazás Platform (CDAP) egy integrációs platformján a Big Data. CDAP lehetővé teszi az alkalmazások létrehozásához és nem az alkalmazás mögötti infrastruktúra a fókuszt.
+A Cask Data Application Platform (CDAP) az Big Data-integrációs platform. CDAP lehetővé teszi az alkalmazások létrehozására, nem pedig az alapul szolgáló infrastruktúra a fókuszt.
 
-CDAP fogalmait és absztrakt entitással egészült ki, hogy ismeri a fejlesztők számára használja. Ezek absztrakt entitással egészült ki elrejtése a belső rendszerek összetett szolgáltatásokkal, és ösztönözzék újrahasznosításának megoldások.
+CDAP használ alapvető fogalmait és absztrakciók, amely a fejlesztők számára is felismerhetők. Ezek absztrakciók kiküszöböli a belső rendszerek elrejtéséhez, és ösztönözze az újrahasznosíthatóság megoldások.
 
-Egy CDAP bővítmény nevű [Cask Hydrator](http://cask.co/products/hydrator/) fejlesztésére és adatok folyamatok kezelése felhasználói felülete lehetőséget nyújt. Adatok adatcsatorna áll különböző * beépülő modulok, feladatokat végrehajtó adatgyűjtést, transformation, elemzés és utáni futtatási műveletek, például.
+Egy CDAP bővítmény nevű [Cask Hydrator](http://cask.co/products/hydrator/) hozhat létre és kezelhet adatfolyamatokat állíthat össze egy felhasználói felületet biztosít. Egy adatfolyamat áll különböző * feladatokat elvégző beépülő modulok, például adatgyűjtés, átalakítási, elemzési és a Futtatás utáni műveletek.
 
-Minden CDAP beépülő modul jól meghatározott felülettel rendelkezik, hogy értékeli a különböző technológiák csak egy beépülő modul lecserélését egy másikat, anélkül, hogy a többi alkalmazáshoz érint.
+Minden egyes CDAP beépülő modul jól definiált felülettel rendelkezik, úgy, hogy különböző technológiák kiértékelése annyit egy beépülő modul cserélje le egy másikat, az alkalmazás többi touch nélkül.
 
-CDAP *folyamatok* adja meg az alkalmazás az adatok magas szintű képi folyamata. Ez a képi megjelenítés szemlélteti a végpont adatfeldolgozást adatátalakítást és elemzések, keresztül származó adatok, és végül a külső tárolja.
+CDAP *folyamatok* adjon meg egy magas szintű képi folyamatot az adatok az alkalmazásban. Ezt a vizualizációt az adatfeldolgozást az adatátalakítások és elemzések, az adatok a teljes körű folyamatot mutatja, és végül egy külső adatok tárolására.
 
-Az alábbi példa adatok adatcsatorna ingests valós időben twitterről adatok, majd kiszűri néhány előre definiált feltételeknek megfelelő Twitter-üzeneteket. Az adatok csővezeték alakítja át a nyers tweetet adatokat, és, hogy az adatok olvashatóbb formátumban, majd a Twitter-üzeneteket az értékek szerint csoportosítja és kiírja az eredményeket a HBase projektek tárolja.
+Egy adatfolyamat a következő példa feltölti a valós idejű twitter-adatok, majd szűri ki az egyes tweetek előre meghatározott feltételek alapján. Az adatfolyamatok nyers tweet adatátalakítást, és projektek, hogy az adatok importálása egy olvashatóbb formátumban, majd a tweeteket értékek szerint csoportosítja és írja az eredményeket egy HBase tárolja.
 
 ![CDAP folyamat](./media/hdinsight-apps-install-cask/pipeline.png)
 
-A végpont feldolgozási folyamat használatával készített a **Cask Hydrator felhasználói felület**, a beépülő modul felület és a fogd és vidd működésére űrlap kapcsolatok minden lépés használatával. Különítse el, és egymástól függetlenül az egyes beépülő modul működésének módosítását. CDAP, hasonló folyamatok segítségével kell a beépített és órában érvényesítve. A tipikus Hadoop világ hozhat létre, az ilyen megoldások is igénybe vehet néhány nap.
+A végpontok közötti folyamatok használatával lett összeállítva a **Cask Hydrator felhasználói felület**, a beépülő modul felület és fogd és vidd szolgáltatással űrlap kapcsolatok közötti minden egyes szakaszhoz. Azonosíthatók, és egymástól függetlenül minden beépülő modul működésének módosítását. CDAP használata esetén hasonló a folyamatok lehetnek beépített és (óra) ellenőrzi. A tipikus Hadoop világban hozhat létre, az ilyen megoldások is igénybe vehet néhány nap.
 
-CDAP is nevezett kiterjesztést tartalmaz [Cask követő](http://cask.co/products/tracker/) vizuálisan nyomkövetési adatok, mert az alkalmazás áthaladó. Cask követő hozzáadja *adatszabályozást* a rendszer, hogy az adategységek hivatalosan felügyelt az alkalmazáson keresztül. Nyomon követheti az egyes adatpontokban Leszármaztatás, megfelelő gyűjtéséhez és az adatok auditnapló a folyamat során.
+CDAP is biztosít egy bővítmény nevű [Cask Tracker](http://cask.co/products/tracker/) vizuálisan nyomkövetési adatok, mert az alkalmazáson keresztül zajlik. Hozzáadja a cask Tracker *adatszabályozást* a rendszer, hogy az adategységek hivatalosan történik az alkalmazásban. Nyomon követheti az egyes adatpontok leszármaztatási, releváns metrikákat gyűjthet, és az adat-auditnapló a folyamat során.
 
-Hogyan áramlik a fenti feldolgozási adatok szemléltetésére itt van:
+Íme egy hogyan adat áramlik a fenti folyamat ábrája:
 
-![CDAP Rendszerleállási események követése](./media/hdinsight-apps-install-cask/tracker.png)
+![CDAP tracker](./media/hdinsight-apps-install-cask/tracker.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az alkalmazás egy új HDInsight-fürtöt, vagy egy meglévő fürt telepítéséhez a következő konfigurációval kell rendelkeznie:
+Telepíti az alkalmazást egy új HDInsight-fürtöt, vagy egy meglévő fürthöz, a következő konfigurációval kell rendelkeznie:
 
-* Fürt réteg: Standard
+* Fürt szint: Standard
 * Fürt típusa: HBase
-* Fürt verziószáma: 3.4, 3.5
+* Fürt verziója: 3.4-es, 3.5
 
-## <a name="install-the-cdap-published-application"></a>Telepítse a CDAP közzétett alkalmazás
+## <a name="install-the-cdap-published-application"></a>A közzétett alkalmazás telepítése a CDAP
 
-Ez, és más elérhető ISV alkalmazások telepítésével kapcsolatos részletes útmutatás olvasható [külső Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
+Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti útmutatójáért olvassa el a [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
 
 ## <a name="launch-cdap"></a>Indítsa el a CDAP
 
-1. A telepítés után indítsa el CDAP Azure-portálon a fürtből a a **beállítások** panelen, jelölje be **alkalmazások** alatt a **általános** kategóriát. A telepített alkalmazások ablaktábla listázza a telepített alkalmazások.
+1. A telepítés után indítsa el a CDAP a fürtből az Azure Portalon lépjen a **beállítások** ablaktáblán, majd válassza **alkalmazások** alatt a **általános** kategória. A telepített alkalmazások panelen a telepített alkalmazás fel van sorolva.
 
     ![Telepített CDAP alkalmazás](./media/hdinsight-apps-install-cask/cdap-app.png)
 
-2. Ha CDAP választja, megjelenik egy hivatkozást a weblap és HTTP-végpont, valamint az SSH-végpont elérési útja. Válassza ki annak hivatkozására.
+2. CDAP kiválasztásakor megjelenik egy hivatkozás a weblap és HTTP-végpontot, és emellett az SSH-végpont elérési útja. Válassza ki annak hivatkozására.
 
 3. Amikor a rendszer kéri, adja meg a fürt rendszergazdai hitelesítő adataival.
 
     ![Hitelesítés](./media/hdinsight-apps-install-cask/auth.png)
 
-4. Történő bejelentkezés után tekintse Cask CDAP grafikus felhasználói felület kezdőlapján.
+4. Bejelentkezés után tekintse meg a Cask CDAP grafikus felhasználói felület kezdőlapján.
 
-    ![Cask grafikus felhasználói felület kezdőlapján](./media/hdinsight-apps-install-cask/gui.png)
+    ![A cask grafikus felhasználói felület kezdőlapján](./media/hdinsight-apps-install-cask/gui.png)
 
-5. A CDAP felület megismeréséhez kattintson a **Cask piaci** menü hivatkozás felett a lapot.
+5. Fedezze fel a CDAP felületen, kattintson a **Cask piaci** menü hivatkozásra a lap fölött.
 
     ![Cask piaci hivatkozás](./media/hdinsight-apps-install-cask/cask-market.png)
 
@@ -91,49 +86,49 @@ Ez, és más elérhető ISV alkalmazások telepítésével kapcsolatos részlete
 
 7. Kattintson a **terhelés** megerősítéséhez.
 
-    ![Kattintson a terhelés](./media/hdinsight-apps-install-cask/market-load.png)
+    ![A Betöltés gombra](./media/hdinsight-apps-install-cask/market-load.png)
 
-8. A mellékelt adatok nézet jelenik meg. Válassza ki **következő**.
+8. A csomagban foglalt mintaadatok nézete jelenik meg. Válassza ki **tovább**.
 
     ![Hozzáférési napló minta - adatok megtekintése](./media/hdinsight-apps-install-cask/market-view-data.png)
 
-9. Válassza ki **adatfolyam** a cél típusa, adja meg a célkiszolgáló nevét, majd válasszon **Befejezés**.
+9. Válassza ki **Stream** a cél típusa, adja meg a célkiszolgáló nevét, majd válassza ki **Befejezés**.
 
     ![Hozzáférési napló minta - célkiszolgáló kijelölése](./media/hdinsight-apps-install-cask/market-destination.png)
 
-10. Miután sikeresen betöltötte a datapack, válassza ki **adatfolyam részleteinek megtekintése**.
+10. Miután sikeresen betöltötte a datapack, válassza ki a **Stream részleteinek megtekintése**.
 
     ![Datapack sikeresen feltöltve.](./media/hdinsight-apps-install-cask/market-view-details.png)
 
-11. A névtér metaadatok engedélyezéséhez jelölje be **engedélyezése** hozzáférési napló részleteit megjelenítő oldalon a használati lapon.
+11. A névtérhez tartozó metaadatok engedélyezéséhez jelölje be **engedélyezése** hozzáférési napló részleteit megjelenítő oldalon a használati lap.
 
     ![-Betöltött – hozzáférési napló minta metaadatainak engedélyezése](./media/hdinsight-apps-install-cask/log-loaded.png)
 
-12. Miután a metaadatok engedélyezve van, megjelenik egy grafikonon naplózási üzenet információk megjelenítése.
+12. Metaadatok engedélyezése után megjelenik egy diagram megjelenítése a naplózási üzenetek adatait.
 
     ![Hozzáférési napló minta - metaadatok engedélyezve](./media/hdinsight-apps-install-cask/log-metadata.png)
 
-13. A napló adatokba, válassza ki a **böngészés** ikonja felett a lap.
+13. Ismerje meg a naplózási adatokat, válassza a **Intéző** ikont a lap fölött.
 
-    ![Hozzáférési napló minta - felfedezés](./media/hdinsight-apps-install-cask/log-explore.png)
+    ![Napló minta – felfedezése](./media/hdinsight-apps-install-cask/log-explore.png)
 
-14. Megjelenik egy minta SQL-lekérdezést. Módosítsa ezt a kívánt, majd válassza ki, nyugodtan **Execute**.
+14. Megjelenik egy minta SQL-lekérdezést. Nyugodtan módosítsa a kívánt, majd válassza ki azt **Execute**.
 
-    ![Hozzáférési napló minta - adatkészlet lekérdezés tallózása](./media/hdinsight-apps-install-cask/log-query.png)
+    ![Hozzáférési napló minta - adatkészlet lekérdezéssel felfedezése](./media/hdinsight-apps-install-cask/log-query.png)
 
-15. A lekérdezés befejeződését követően válassza ki a **nézet** műveletek oszlopban a ikonra.
+15. A lekérdezés futtatása után válassza ki a **nézet** ikonra a műveletek oszlopban láthatók.
 
-    ![Hozzáférési napló minta - befejeződött nézet lekérdezése](./media/hdinsight-apps-install-cask/log-query-view.png)
+    ![Hozzáférési napló minta - lekérdezés befejeződött megtekintése](./media/hdinsight-apps-install-cask/log-query-view.png)
 
-16. A lekérdezés eredménye megjelenik.
+16. A lekérdezés eredményét láthatja.
 
     ![Hozzáférési napló minta - lekérdezés eredményei](./media/hdinsight-apps-install-cask/log-query-results.png)
 
 ## <a name="next-steps"></a>További lépések
 
 * [Cask dokumentáció](http://cask.co/resources/documentation/).
-* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): telepítése egy közzé nem tett HDInsight-alkalmazást.
+* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): útmutató HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
 * [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
 * [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
-* [Parancsfájlművelet Linux-alapú HDInsight-fürtök testreszabása](hdinsight-hadoop-customize-cluster-linux.md): megtudhatja, hogyan telepíthet további alkalmazásokat parancsfájl művelettel.
-* [Üres peremhálózati csomópontok használata a Hdinsightban](hdinsight-apps-use-edge-node.md): egy üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetéséhez.
+* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): ismerje meg, hogyan telepíthet további alkalmazásokat használ.
+* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.

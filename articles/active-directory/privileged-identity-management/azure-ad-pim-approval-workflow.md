@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 04/28/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 025bcd0cde8d73cfdd4d79a77256a1705950f90a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 14d0cdc0bde1081f1a020c7039596a5b6880070f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444646"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619748"
 ---
 # <a name="approvals"></a>Approvals
 
@@ -77,7 +77,7 @@ Minden felhasználó részére a PIM, a "Saját naplózási előzmények" című
 
 ![](media/azure-ad-pim-approval-workflow/image003.png)
 
-### <a name="enable-approval-for-specific-roles"></a>Az egyes szerepkörök jóváhagyás engedélyezése
+### <a name="enable-approval-for-specific-roles"></a>az egyes szerepkörök jóváhagyás engedélyezése
 
 Jóváhagyási egy adott szerepkör esetében először jelöljön ki címtárbeli szerepkörök a bal oldali navigációs sávon.
 
@@ -122,7 +122,7 @@ Jóváhagyó eltávolításához egyszerűen kattintson az Eltávolítás gombra
 
 További jóváhagyók hozzáadásához ismételje meg a folyamatot.
 
-## <a name="view-request-and-approval-history-for-all-privileged-roles"></a>Az összes kiemelt szerepkörökhöz tartozó kérelem és jóváhagyási előzmények megtekintése
+## <a name="view-request-and-approval-history-for-all-privileged-roles"></a>az összes kiemelt szerepkörökhöz tartozó kérelem és jóváhagyási előzmények megtekintése
 
 Az összes kiemelt szerepkörökhöz tartozó kérelem és jóváhagyási előzmények megtekintéséhez jelölje ki a naplózási előzmények az irányítópulton:
 
@@ -131,7 +131,7 @@ Az összes kiemelt szerepkörökhöz tartozó kérelem és jóváhagyási előzm
 >[!NOTE]
 Rendezze az adatokat a művelet, és keressen az "Aktiválás Approved"
 
-### <a name="view-pending-approvals-requests"></a>Függőben lévő jóváhagyások (kérelmek) megtekintése
+### <a name="view-pending-approvals-requests"></a>függőben lévő jóváhagyások (kérelmek) megtekintése
 
 Delegált jóváhagyónak Ha a kérelem jóváhagyásra váró kap e-mail-értesítések. Szeretné megtekinteni ezeket a kérelmeket a PIM-portál, az irányítópult (az új navigáció) jelölje ki a bal oldali navigációs sávon a "Függőben lévő jóváhagyási kérelmek" fülre.
 
@@ -141,7 +141,7 @@ Itt láthatja a függőben lévő jóváhagyási kérelmek listáját:
 
 ![](media/azure-ad-pim-approval-workflow/image024.png)
 
-### <a name="approve-or-reject-requests-for-role-elevation-single-andor-bulk"></a>A szerepkör jogosultságszint-emeléshez (egyetlen és/vagy tömeges) kérelmeket
+### <a name="approve-or-reject-requests-for-role-elevation-single-andor-bulk"></a>a szerepkör jogosultságszint-emeléshez (egyetlen és/vagy tömeges) kérelmeket
 
 Válassza ki a kívánt jóváhagyása vagy elutasítása kérelmeket, és kattintson a gombra a művelet sáv, amely megfelel a döntéseiben:
 
@@ -157,7 +157,7 @@ A folyamat befejeződése után az állapotjelzőben díjainak hozott döntés (
 
 ![](media/azure-ad-pim-approval-workflow/image031.png)
 
-### <a name="request-activation-of-a-role-that-requires-approval"></a>Jóváhagyást igénylő szerepkörök aktiválási kérelmeinek megadása
+### <a name="request-activation-of-a-role-that-requires-approval"></a>jóváhagyást igénylő szerepkörök aktiválási kérelmeinek megadása
 
 Kér jóváhagyást igénylő szerepkörök aktiválási is kezdeményezhető a régi PIM navigációs vagy az új navigáció, a szerepkör-aktiválási folyamat változatlan marad. Egyszerűen válasszon egy szerepkört a szerepkörök aktiválásához a listából:
 
@@ -175,7 +175,7 @@ A kérelmező, amelyben a kérés függőben lévő jóváhagyási értesítést
 
 ![](media/azure-ad-pim-approval-workflow/image039.png)
 
-### <a name="view-the-status-of-your-request-to-activate"></a>Az aktiválási kérés állapotának megtekintése
+### <a name="view-the-status-of-your-request-to-activate"></a>az aktiválási kérés állapotának megtekintése
 
 Az új navigáció aktiválására vonatkozó, függő kérelem állapotának megtekintése kell elérhetők. A bal oldali navigációs sávon válassza a "Saját kérések" lapon:
 

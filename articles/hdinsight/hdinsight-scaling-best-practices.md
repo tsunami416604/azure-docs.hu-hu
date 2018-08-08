@@ -1,74 +1,69 @@
 ---
-title: Fürt méretek – Azure HDInsight méretezése |} Microsoft Docs
-description: HDInsight-fürtök a munkaterhelés vertikális.
+title: Fürt méretek – Azure HDInsight méretezése
+description: Méretezheti a számítási feladat egy HDInsight-fürtön.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 8b76d7d0441a5c1c25ad17b73083ec0e4feef1fe
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f1de608a8273d7be50e4ad432ab72052fc0e228
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31414320"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596840"
 ---
-# <a name="scale-hdinsight-clusters"></a>A HDInsight-fürtök méretezése
+# <a name="scale-hdinsight-clusters"></a>HDInsight-fürtök méretezése
 
-HDInsight a rugalmasság biztosít felkínálva a lehetőséget növelheti vagy csökkentheti a adhatja meg a fürt feldolgozó csomópontjainak számát. Ez lehetővé teszi, hogy a fürt zsugorítása óra múlva, vagy a hétvégekre, és bontsa ki a csúcs üzleti igények során.
+HDInsight biztosítja a rugalmasságot felkínálva a lehetőséget az növelheti vagy csökkentheti a feldolgozó csomópontok a fürtben. Ez lehetővé teszi, hogy a fürt óra múlva, vagy a hétvégeken, csökkenthető és felfüggeszthető kibontásához során üzleti megnövekedett igényeket kell kielégíteni.
 
-Például ha néhány kötegfeldolgozási rendelkezik, amely naponta egyszer vagy havonta történik, a HDInsight-fürt akár is méretezhető, hogy az ütemezett esemény előtt néhány percet, memória és CPU számítási teljesítményt. Automatizálható a skálázás a PowerShell-parancsmaggal [ `Set–AzureRmHDInsightClusterSize` ](hdinsight-administer-use-powershell.md#scale-clusters).  Később Miután a feldolgozás történik, és használati újra leáll, méretezheti a HDInsight-fürt kevesebb munkavégző csomópontokhoz le.
+Például ha van néhány kötegelt feldolgozás naponta egyszer vagy egy hónapban egyszer történik, a HDInsight-fürt is vertikálisan fel néhány percet, hogy az ütemezett esemény előtt, a memória és CPU-számítási teljesítményt. Skálázás a PowerShell-parancsmaggal automatizálható [ `Set–AzureRmHDInsightClusterSize` ](hdinsight-administer-use-powershell.md#scale-clusters).  Később Miután befejeződött a feldolgozás, és a használati újra leáll, vertikális kevesebb munkavégző csomópontot a HDInsight-fürt.
 
-* Méretezni a fürtön [PowerShell](hdinsight-administer-use-powershell.md):
+* A fürt méretezése [PowerShell](hdinsight-administer-use-powershell.md):
 
     ```powershell
     Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
     ```
     
-* Méretezni a fürtön a [Azure CLI](hdinsight-administer-use-command-line.md):
+* A fürt méretezése a [Azure CLI-vel](hdinsight-administer-use-command-line.md):
 
     ```
     azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
     ```
     
-* Méretezni a fürtön a [Azure-portálon](https://portal.azure.com), nyissa meg a HDInsight-fürt ablaktábla, válassza ki **méretezési fürt** a bal oldali menüben, majd a skála fürt ablak, írja be a feldolgozó csomópontok száma és Válassza ki, mentse.
+* Keresztül a fürtök skálázásának a [az Azure portal](https://portal.azure.com), a HDInsight-fürt panel megnyitásához, jelölje ki **fürt méretezése** a bal oldali menüben, majd a fürthöz méretezés panelen írja be a munkavégző csomópontok számát, és Válassza a mentés.
 
     ![Fürt méretezése](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
-Az alábbi módszereket használva úgy méretezheti a HDInsight-fürt felfelé vagy lefelé percen belül.
+Ezen módszerek bármelyikével, skálázhatja a HDInsight-fürt felfelé vagy lefelé percen belül.
 
-## <a name="scaling-impacts-on-running-jobs"></a>A futó feladatok méretezési hatások
+## <a name="scaling-impacts-on-running-jobs"></a>Hatással van a futó feladatok méretezése
 
-Ha Ön **hozzáadása** csomópontok futó HDInsight-fürtjét, folyamatban lévő vagy futó feladat nem befolyásolja a. Emellett új feladatok biztonságosan küldheti el a méretezési művelet végrehajtása közben. A méretezési művelet bármilyen okból sikertelen, ha a hiba szabályosan kezeli, a fürt működési állapotban hagyja.
+Ha Ön **hozzáadása** csomópontok a futó HDInsight-fürthöz, a folyamatban lévő vagy futó feladatok nem érinti. Emellett új feladatok biztonságosan küldheti a skálázási művelet végrehajtása közben. Ha a méretezési műveletek bármilyen okból nem sikerül, a hiba szabályosan történik, a fürt és a egy működési állapotot.
 
-Azonban ha folyamatban van a fürthöz le **eltávolítása** csomópontok, minden folyamatban lévő vagy futó feladat sikertelen lesz a méretezési művelet befejeződése után. Ez a hiba az oka, hogy egyes szolgáltatások újraindítása a folyamat során.
+Azonban ha meg van vertikális leskálázást a fürt a **eltávolítása** csomópontok, a folyamatban lévő vagy futó feladatok meghiúsulnak, a skálázási művelet befejeződése után. Ez a hiba okozza a szolgáltatások újraindítása a folyamat során.
 
-A probléma megoldására megvárhatja a feladatok elvégzése előtt skálázás le a fürtöt, manuálisan állítsa le a feladatok vagy küldje el újra a feladatok, miután a méretezési művelet kötött.
+A probléma megoldására, várja meg, a feladat befejeződését, mielőtt a fürt vertikális, manuálisan a feladatok leállítása vagy küldje el újra a feladatok, miután a skálázási művelet lezárult.
 
-Függőben lévő és a futó feladatok megtekintéséhez használhatja a YARN erőforrás-kezelő felhasználói felületén a következő lépéseket:
+Függőben lévő és a futó feladatok megtekintéséhez használhatja a YARN ResourceManager Felületet, a következő lépéseket:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. A bal oldali menüben válassza **Tallózás**, jelölje be **a HDInsight-fürtök**, majd válassza ki a fürtöt.
-3. A HDInsight fürt ablaktáblán válassza ki a **irányítópult** a felső menüben az Ambari felhasználói felületének megnyitásához. Adja meg a fürt bejelentkezési hitelesítő adatait.
-4. Kattintson a **YARN** a bal oldali menüből a szolgáltatások listájában. A YARN lapon válassza az **Gyorshivatkozások** és az aktív átjárócsomópont mutat, majd kattintson **erőforrás-kezelő felhasználói felületén**.
+2. A bal oldali menüben válassza ki a **Tallózás**válassza **HDInsight-fürtök**, majd válassza ki a fürtöt.
+3. A HDInsight-fürt panelen válassza ki a **irányítópult** az Ambari felhasználói felületének megnyitásához a felső menüben. Adja meg a fürt bejelentkezési hitelesítő adatait.
+4. Kattintson a **YARN** a bal oldali menüben a szolgáltatások listájában. A YARN lapon válassza ki a **Gyorshivatkozások** és az aktív átjárócsomóponthoz fölé, majd kattintson **ResourceManager felhasználói felülete**.
 
     ![Erőforrás-kezelő felhasználói felületén](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 
-Lehetséges közvetlenül hozzáférni az erőforrás-kezelő felhasználói felület `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`.
+Előfordulhat, hogy közvetlenül hozzáférhet az erőforrás-kezelő felhasználói felület `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`.
 
-Feladatok mellett az aktuális állapot listájának megtekintéséhez. A képernyőfelvételen látható a rendszer jelenleg fut egy feladat:
+Feladatok, valamint a jelenlegi állapotuk listáját láthatja. A képernyőképen van jelenleg fut egy feladat:
 
 ![Erőforrás-kezelő felhasználói felületén alkalmazások](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
 
-Manuálisan leállítani a futó alkalmazást, hajtsa végre a következő parancsot az SSH-rendszerhéj:
+Manuálisan le a futó alkalmazást, az SSH rendszerhéjból hajtsa végre a következő parancsot:
 
 ```bash
 yarn application -kill <application_id>
@@ -80,62 +75,62 @@ Példa:
 yarn application -kill "application_1499348398273_0003"
 ```
 
-## <a name="rebalancing-an-hbase-cluster"></a>HBase-fürtöt újraelosztás
+## <a name="rebalancing-an-hbase-cluster"></a>Az újraegyensúlyozás HBase-fürt
 
-A skálázási művelet befejezése után néhány percen belül automatikusan elosztását régió kiszolgálók. Manuálisan egyensúlyba régió kiszolgálók, tegye a következőket:
+Régiókiszolgálók automatikusan kiegyensúlyozott vannak a skálázási művelet befejezése után néhány percen belül. Manuálisan elosztása régióbeli kiszolgálók, használja az alábbi lépéseket:
 
-1. Csatlakozzon a HDInsight-fürthöz SSH használatával. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. A HDInsight-fürthöz SSH használatával csatlakozhat. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Indítsa el a HBase rendszerhéjból:
+2. Indítsa el a HBase rendszerhéj:
 
         hbase shell
 
-3. Az alábbi parancs segítségével manuálisan elosztása az a régió kiszolgálók:
+3. A következő parancs használatával manuálisan elosztása a régióbeli kiszolgálók:
 
         balancer
 
-## <a name="scale-down-implications"></a>Csökkentheti a gyakorolt hatása
+## <a name="scale-down-implications"></a>Vertikális leskálázás következmények
 
-Ahogy korábban említettük, folyamatban lévő vagy futó feladat leállítása van egy skálázás le művelet befejezésekor. Vannak azonban más lehetséges megvalósítását skálázás le, amely akkor fordulhat elő.
+Ahogy korábban említettük, a folyamatban lévő vagy futó feladatok egy vertikális leskálázást a művelet befejezése után megszűnik. Vannak azonban egyéb lehetséges következményeiről skálázás lefelé, amely akkor fordulhat elő.
 
-## <a name="hdinsight-name-node-stays-in-safe-mode-after-scaling-down"></a>HDInsight neve csomópont után skálázás csökkentett üzemmódban marad.
+## <a name="hdinsight-name-node-stays-in-safe-mode-after-scaling-down"></a>HDInsight neve csomópont után vertikális leskálázást csökkentett üzemmódban marad.
 
 ![Fürt méretezése](./media/hdinsight-scaling-best-practices/scale-cluster.png)
 
-Ha a fürt legalább egy feldolgozó csomópont le az előző ábrán látható módon zsugorítható, HDFS előfordulhat, hogy állapottal csökkentett módban amikor munkavégző csomópontokhoz újraindítása van javítása miatt, vagy közvetlenül a méretezési művelet után.
+Ha a fürt egy feldolgozó csomópont, a minimális le az előző képen látható módon csökkenti méretét, HDFS előfordulhat, hogy letöltés állapottal csökkentett módban, ha a munkavégző csomópontok javítása miatt, vagy közvetlenül a skálázási művelet után indulnak újra.
 
-Az elsődleges ennek oka az, hogy használ-e a Hive néhány `scratchdir` fájlokat, és alapértelmezés szerint minden adatblokk három replikák vár, de nincs csak egy replika lehetséges, ha a minimális egy munkavégző csomópont csökkentheti. Ennek következtében a található fájlokat a `scratchdir` válnak *under-replikált*. Emiatt a HDFS csökkentett módban marad, ha a szolgáltatás újraindul a méretezési művelet után.
+Az elsődleges ennek oka az, hogy a Hive néhány használja `scratchdir` fájlokat, és alapértelmezés szerint három replika készül, mindegyik blokk vár, de csak egy replika lehetséges, ha a minimális egy munkavégző csomópont vertikális leskálázás. Ennek következtében a lévő fájlokat a `scratchdir` válnak *under-replikált*. Emiatt a HDFS csökkentett módban marad, a szolgáltatások a skálázási művelet utáni újraindításakor.
 
-Ha egy vertikális kísérlet történik, HDInsight az Ambari felületek először leszerelése az extra nemkívánatos munkavégző csomópontokhoz, amelyet a rendszer replikál a HDFS blokkok más online munkavégző csomópontokhoz, és majd biztonságosan csökkentheti a fürt alapul. HDFS a karbantartási időszak alatt a csökkentett mód állapotba kerül, és állapotba kerülnek, a méretezés befejeződése után. Ezen a ponton, hogy HDFS állapottal csökkentett módban.
+Ha egy vertikális leskálázási kísérlet történik, HDInsight az Ambari felügyeleti felületek, először leszerelni a extra nemkívánatos feldolgozó csomópontokat, amely a HDFS-blokkok replikálja más online feldolgozó csomópontokat, utána pedig biztonságosan a fürt megbízhatóak. HDFS csökkentett módban hiányzóra változik a karbantartási időszak alatt, és állapotba kerülnek, a méretezés befejezése után. Ezen a ponton, hogy HDFS csökkentett módban letöltés állapottal.
 
-HDFS van konfigurálva egy `dfs.replication` 3 beállítása. Így az ideiglenes fájlok blokkok is under-replikált vannak a 3-nál kevesebb munkavégző csomópontot online, mert nem a várt három másolatot minden blokk állnak rendelkezésre.
+HDFS van konfigurálva egy `dfs.replication` beállítása a 3-ból. Így az ideiglenes fájlok azokat az adatblokkokat under-replikált, amikor legalább három feldolgozó csomópont online, mert nincsenek elérhető minden blokk nem várt három másolata.
 
-Ön is végrehajthatja a HDFS kapcsolja ki a biztonságos mód parancsot. Például ha tudja, hogy az csak oka csökkentett módban nem, mert az ideiglenes fájlokat under-replikált, majd biztonságosan hagyhatja csökkentett módban. Ennek az az oka under-replikált fájlok Hive ideiglenes ideiglenes fájlok.
+A paranccsal HDFS hozza ki a csökkentett mód hajthat végre. Például ha tudja, hogy csak az az oka csökkentett módban van, mert az ideiglenes fájlok under-replikált, majd biztonságosan hagyhatja csökkentett módban. Ennek az oka under-replikált fájlok Hive ideiglenes ideiglenes fájlok.
 
 ```bash
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 ```
 
-Miután csökkentett módban, manuálisan eltávolíthatja az ideiglenes fájlokat, vagy várjon, amíg a Hive végül karbantartása őket automatikusan.
+A csökkentett mód elhagyása, után manuálisan eltávolíthatja az ideiglenes fájlokat, vagy várja meg, Hive idővel törölni őket automatikusan.
 
-### <a name="example-errors-when-safe-mode-is-turned-on"></a>Példa hibák csökkentett módban bekapcsolása
+### <a name="example-errors-when-safe-mode-is-turned-on"></a>Példahibák, amikor a csökkentett mód be van kapcsolva
 
-* H070 nem Hive munkamenetet nyit meg. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **könyvtár nem hozható létre**  /tmp/hive/hive / 819c215c - 6d 87-4311-97c 8-4f0b9d2adcf0. **Csökkentett módban van a csomópont neve**. A jelentett blokkok 75 kell további 12 blokkolja a küszöbérték teljes blokkok 87 0.9900 eléréséhez. Az élő datanodes 10 száma elérte a minimális száma 0. A biztonságos mód ki lesz kapcsolva automatikusan a küszöbérték elérése után.
+* H070 nem Hive-munkamenetet. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **könyvtár nem hozható létre**  /tmp/hive/hive / 819c215c - 6d 87-4311 – 97c 8-4f0b9d2adcf0. **Csomópont neve csökkentett módban van**. A jelzett blokkokat 75 kell elérni a küszöbérték teljes blokkok 87 0.9900 további 12 blokkokat. A 10 élő adatcsomópontok száma elérte a minimális száma 0. A csökkentett mód ki lesz kapcsolva automatikusan után a rendszer elérte a küszöbértékeket.
 
-* Adatbázisok H100 nem lehet elküldeni utasítás megjelenítése: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername kapcsolódni . Internal.cloudapp.NET/1.1.1.1] nem sikerült: **kapcsolat elutasítva**
+* Adatbázisok H100 beküldése sikertelen utasítás megjelenítése: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: [hn0-clustername.servername hn0-clustername.servername.internal.cloudapp.net:10001 csatlakozni . Internal.cloudapp.NET/1.1.1.1] nem sikerült: **kapcsolat elutasítva**
 
-* H020 nem tudott kapcsolatot hn0-hdisrv.servername.bx.internal.cloudapp .net: 10001: org.apache.thrift.transport.TTransportException: nem hozható létre kapcsolat annak http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült kapcsolódni: Kapcsolat elutasítva: org.apache.thrift.transport.TTransportException: nem hozható létre kapcsolat annak http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült kapcsolódni: **kapcsolat elutasítva**
+* H020 nem tudott kapcsolatot hn0-hdisrv.servername.bx.internal.cloudapp .net-re: 10001: org.apache.thrift.transport.TTransportException: nem sikerült létrehozni a http protokollú kapcsolódáshoz http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: Kapcsolat elutasítva: org.apache.thrift.transport.TTransportException: nem sikerült létrehozni a http protokollú kapcsolódáshoz http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: **kapcsolat elutasítva**
 
-* A Hive naplókból: [fő] Figyelmeztetés: kiszolgáló. Hiveserver2-n (HiveServer2.java:startHiveServer2(442)) – hiba történt az hiveserver2-n próbálkozás 21, 60 másodperc java.lang.RuntimeException újra fog próbálkozni: engedélyezési házirend alkalmazása a hive-konfigurációs hiba: org.apache.hadoop.ipc.RemoteException () org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **könyvtár nem hozható létre** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Csökkentett módban van a csomópont neve**.
-    A jelentett blokkok 0 a küszöbérték teljes blokkok 9 0.9900 eléréséhez további 9 blokkok kell.
-    Az élő datanodes 10 száma elérte a minimális száma 0. **A biztonságos mód ki lesz kapcsolva automatikusan a küszöbérték elérése után**.
+* A Hive-naplókban található: [fő] WARN: kiszolgáló. Hiveserver2-n (HiveServer2.java:startHiveServer2(442)) – indítása a hiveserver2-n keresztül kísérlet 21., a hiba újra fog próbálkozni 60 másodperc java.lang.RuntimeException: engedélyezési házirend alkalmazása a hive-konfigurációs hiba: org.apache.hadoop.ipc.RemoteException () org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **könyvtár nem hozható létre** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Csomópont neve csökkentett módban van**.
+    A jelzett blokkokat 0 van szüksége további 9 blokkok elérni a teljes blokkok 9 0.9900 küszöbértéket.
+    A 10 élő adatcsomópontok száma elérte a minimális száma 0. **A csökkentett mód ki lesz kapcsolva automatikusan után a rendszer elérte a küszöbértékek**.
     at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1324)
 
-Tekintse át a név csomópont naplók a `/var/log/hadoop/hdfs/` mappa közel az idő, amikor a fürt lett méretezve, hogy mikor került csökkentett módban. A naplófájlok elnevezése `Hadoop-hdfs-namenode-hn0-clustername.*`.
+A név csomópont naplóinak áttekintheti a `/var/log/hadoop/hdfs/` mappa közel az idő, amikor a fürt méreteztünk, hogy mikor került a csökkentett mód. A naplófájlok elnevezése `Hadoop-hdfs-namenode-hn0-clustername.*`.
 
-A korábbi hibák okozza-e, hogy Hive függ a HDFS ideiglenes fájlok lekérdezések futtatása során. HDFS adja meg a biztonságos mód, ha a struktúra nem futtatható lekérdezések, mert a HDFS nem írható. HDFS-ben az ideiglenes fájlok az egyes munkavégző csomópont virtuális gépek csatlakozik, és replikálja más feldolgozó csomópontok minimális három replikákat, többek között a helyi meghajtón található.
+A korábbi hibák okozza-e, hogy Hive attól függ, hdfs ideiglenes fájlok lekérdezések futtatásakor. HDFS biztonságos módra vált, ha a Hive nem futtatható lekérdezéseket, mivel a HDFS nem tud írni. HDFS-ben az ideiglenes fájlokat a helyi meghajtó csatlakoztatva van, az egyes munkavégző csomópont azon virtuális gépeit, és más feldolgozó csomópontok minimális három replikapéldány, többek között replikált mappában találhatók.
 
-A `hive.exec.scratchdir` paraméter a Hive konfigurálja `/etc/hive/conf/hive-site.xml`:
+A `hive.exec.scratchdir` van konfigurálva a Hive paraméter `/etc/hive/conf/hive-site.xml`:
 
 ```xml
 <property>
@@ -144,36 +139,36 @@ A `hive.exec.scratchdir` paraméter a Hive konfigurálja `/etc/hive/conf/hive-si
 </property>
 ```
 
-### <a name="view-the-health-and-state-of-your-hdfs-file-system"></a>Az állapot- és a HDFS fájlrendszer állapotának megtekintése
+### <a name="view-the-health-and-state-of-your-hdfs-file-system"></a>Állapot és a HDFS-fájlrendszer állapotának megtekintése
 
-Megtekintheti, hogy csomópontok csökkentett módban van-e minden név csomópontjáról állapotjelentést. Megtekinti a jelentést, az SSH-ból minden átjárócsomópont, és futtassa a következő parancsot:
+A vannak-e csomópontok csökkentett módban neve csomópontokról állapotjelentés tekintheti meg. Tekintse meg a jelentést, az SSH-t minden egyes átjárócsomóponthoz, és futtassa a következő parancsot:
 
 ```
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 ```
 
-![A biztonságos mód kikapcsolása](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
+![Biztonságos mód kikapcsolása](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
 > [!NOTE]
-> A `-D` kapcsoló szükség, mert az alapértelmezett fájlrendszert HDInsight vagy az Azure Storage, vagy az Azure Data Lake Store. `-D` Meghatározza, hogy a parancsok végrehajtása során a helyi HDFS fájlrendszerben.
+> A `-D` kapcsoló szükség, mert a rendszer az alapértelmezett fájlrendszert a HDInsight az Azure Storage vagy az Azure Data Lake Store. `-D` Itt adhatja meg, hogy a parancsok végrehajtása a helyi HDFS-fájlrendszer ellen.
 
-A következő tekintheti meg egy jelentést, amely a HDFS állapot részleteit jeleníti meg:
+Ezután tekintheti meg egy jelentést, amely a HDFS-állapot részleteit jeleníti meg:
 
 ```
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -report
 ```
 
-Ez a parancs eredménye a következő, ahol a blokkok replikálva vannak a várt mértékben kifogástalan fürtön:
+Ez a parancs eredménye a következő, ahol minden blokkok replikálja a rendszer a várt párhuzamossági kifogástalan fürtön:
 
-![A biztonságos mód kikapcsolása](./media/hdinsight-scaling-best-practices/report.png)
+![Biztonságos mód kikapcsolása](./media/hdinsight-scaling-best-practices/report.png)
 
-HDFS támogatja a `fsck` parancs futtatásával ellenőrizze az inkonzisztenciákat különböző fájlok, például hiányzó fájlra vagy under-replikált blokkok blokkolja. Futtatásához a `fsck` parancs a `scratchdir` (ideiglenes ideiglenes lemez) fájlok:
+Támogatja a HDFS a `fsck` paranccsal ellenőrizheti a sikertelenség a különféle fájlok, például hiányzó blokkolja egy fájlhoz vagy under-replikált blokkokat. Futtatásához a `fsck` parancsot a `scratchdir` (ideiglenes ideiglenes lemez) fájlok:
 
 ```
 hdfs fsck -D 'fs.default.name=hdfs://mycluster/' /tmp/hive/hive
 ```
 
-HDFS kifogástalan fájlrendszeren nem under-replikált blokkolja a végrehajtásakor a következőhöz hasonló kimenetnek jelenik meg:
+Nincs under-replikált blokkokkal kifogástalan HDFS fájlrendszerben végrehajtásakor az alábbihoz hasonló kimenet jelenik meg:
 
 ```
 Connecting to namenode via http://hn0-scalin.name.bx.internal.cloudapp.net:30070/fsck?ugi=sshuser&path=%2Ftmp%2Fhive%2Fhive
@@ -200,7 +195,7 @@ FSCK ended at Thu Jul 06 20:07:01 UTC 2017 in 3 milliseconds
 The filesystem under path '/tmp/hive/hive' is HEALTHY
 ```
 
-Ezzel szemben, ha a `fsck` parancs végrehajtása néhány under-replikált blokkok egy HDFS fájlrendszer, a kimenete az alábbihoz hasonló:
+Ezzel szemben, ha a `fsck` parancs végrehajtása néhány under-replikált blokkokkal HDFS-fájlrendszer, a kimenete az alábbihoz hasonló lesz:
 
 ```
 Connecting to namenode via http://hn0-scalin.name.bx.internal.cloudapp.net:30070/fsck?ugi=sshuser&path=%2Ftmp%2Fhive%2Fhive
@@ -240,53 +235,53 @@ FSCK ended at Thu Jul 06 20:13:58 UTC 2017 in 28 milliseconds
 The filesystem under path '/tmp/hive/hive' is CORRUPT
 ```
 
-Megtekintheti a HDFS állapot Ambari felhasználói felületén; ehhez válassza a **HDFS** a bal oldalon, vagy a szolgáltatás `https://<HDInsightClusterName>.azurehdinsight.net/#/main/services/HDFS/summary`.
+Is megtekintheti a HDFS állapota az Ambari felhasználói felületén válassza a **HDFS** szolgáltatást, a bal oldalon, vagy a `https://<HDInsightClusterName>.azurehdinsight.net/#/main/services/HDFS/summary`.
 
-![Ambari HDFS állapota](./media/hdinsight-scaling-best-practices/ambari-hdfs.png)
+![Az Ambari HDFS állapota](./media/hdinsight-scaling-best-practices/ambari-hdfs.png)
 
-Az aktív vagy készenléti állapotban lévő NameNodes a is egy vagy több kritikus hiba jelenhet meg. A NameNode blokkok állapotának megtekintéséhez válassza ki a NameNode hivatkozás a riasztás mellett.
+Az aktív vagy készenléti NameNodes az egy vagy több kritikus hibák is megjelenhetnek. A NameNode blokk állapotának megtekintéséhez válassza ki a NameNode hivatkozás a riasztás melletti.
 
 ![NameNode blokkok állapota](./media/hdinsight-scaling-best-practices/ambari-hdfs-crit.png)
 
-Karbantartása az ideiglenes fájlok, amely a blokk replikációs hibák, az egyes átjárócsomópont SSH eltávolítja, és futtassa a következő parancsot:
+Távolítsa el az ideiglenes fájlok, amely eltávolítja a blokk replikációs hibák, SSH-t minden egyes átjárócsomóponthoz, és futtassa a következő parancsot:
 
 ```
 hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
 ```
 
 > [!NOTE]
-> Ez a parancs meghibásodásához vezethet a Hive, ha egyes feladatok továbbra is futnak.
+> Ez a parancs tönkretehetik a Hive, ha egyes feladatok továbbra is futnak.
 
-### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode-due-to-under-replicated-blocks"></a>HDInsight megakadályozása első akadt miatt under-replikált blokkok csökkentett módban
+### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode-due-to-under-replicated-blocks"></a>Csökkentett üzemmódban miatt under-replikált blokkok első elakadt a HDInsight megakadályozása
 
-Megakadályozhatja, hogy a HDInsight a csökkentett módban hagyja számos módja van:
+Megakadályozza, hogy a HDInsight marad, hogy a csökkentett módban számos módja van:
 
-* HDInsight le skálázás előtt állítsa le a Hive-feladatokat. Alternatív megoldásként ütemezni a skála folyamattal, amellyel elkerülhető a Hive-feladatok futó ütköző le.
-* Manuálisan tisztítása struktúrájának teljesen új `tmp` directory fájlok HDFS-ben előtt skálázás.
-* Csak csökkentheti a HDInsight három munkavégző csomópontokhoz, minimális. Kerülje a minimumérték megegyezik egy feldolgozó csomópont lesz.
-* A paranccsal csökkentett módban, hogy szükség esetén.
+* Hive-feladatok leállítása előtt HDInsight leskálázást. Azt is megteheti ütemezheti a méretezési csoport a folyamat Hive-feladatok futtatása az ütköző elkerülése érdekében.
+* Hive a teljesen új saját kezűleg tisztítása `tmp` directory fájlok hdfs előtt vertikális leskálázást.
+* Csak vertikális leskálázás HDInsight három munkavégző csomópontokhoz, minimális. Elkerülése érdekében, akár egy munkavégző csomópont is történik.
+* Futtassa a parancsot csökkentett módban, hagyja üresen, ha szükséges.
 
-A következő szakaszok ezeket a lehetőségeket ismerteti.
+A következő szakaszok ismertetik ezeket a beállításokat.
 
-#### <a name="stop-all-hive-jobs"></a>Állítsa le a Hive-feladatok
+#### <a name="stop-all-hive-jobs"></a>Az összes Hive-feladatok leállítása
 
-Skálázás egy munkavégző csomópont előtt állítsa le a Hive-feladatokat. Ha a számítási feladatok van ütemezve, futtatja a lefelé méretezéshez után Hive munkát.
+Az összes Hive-feladatok leállítása előtt egy munkavégző csomópont leskálázást. Ha a számítási feladat ütemezve van, futtatja a skálázási után Hive munkát.
 
-Ezzel a megoldással tmp mappában (ha van ilyen) ideiglenes fájlok számának minimalizálása érdekében.
+Ez segít a tmp mappába (ha vannak) az ideiglenes fájlok számának csökkentése érdekében.
 
-#### <a name="manually-clean-up-hives-scratch-files"></a>Manuálisan struktúrájának ideiglenes fájlok törlése
+#### <a name="manually-clean-up-hives-scratch-files"></a>Hive a ideiglenes fájlok manuális törlése
 
-Ha a Hive elhagyta mögött ideiglenes fájlokat, majd manuálisan törölheti is ezeket a fájlokat le a skálázás előtt ne csökkentett módban.
+Ha a Hive távozott mögött ideiglenes fájlok, majd manuálisan távolíthatja el ezeket a fájlokat előtt való vertikális leskálázást elkerülése érdekében csökkentett módban.
 
-1. Hive szolgáltatások leállítása és minden lekérdezések és feladat befejeződött.
+1. Hive-szolgáltatások leállítása és lekérdezések és a feladat befejeződött.
 
-2. Tartalmának megjelenítése a `hdfs://mycluster/tmp/hive/` könyvtárat, ha bármely fájl tartalmaz:
+2. Tartalmának a `hdfs://mycluster/tmp/hive/` könyvtárat, ha bármelyik fájl tartalmaz:
 
     ```
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     ```
     
-    Íme egy minta kimenet fájlok létezik:
+    Itt látható egy mintakimenet, ha a fájlok léteznek:
 
     ```
     sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
@@ -298,21 +293,21 @@ Ha a Hive elhagyta mögött ideiglenes fájlokat, majd manuálisan törölheti i
     -rw-r--r--   3 hive hdfs         26 2017-07-06 20:30 hdfs://mycluster/tmp/hive/hive/c108f1c2-453e-400f-ac3e-e3a9b0d22699/inuse.info
     ```
 
-3. Ha ismeri a Hive ezekkel a fájlokkal történik, akkor távolítsa el őket. Győződjön meg arról, hogy, hogy a struktúra nem rendelkezik a Yarn erőforrás-kezelő felhasználói felületén lap keresésével futó lekérdezéseket.
+3. Ha ismeri ezeket a fájlokat a Hive történik, akkor távolítsa el őket. Győződjön meg arról, hogy a Hive nem rendelkezik a Yarn ResourceManager felhasználói felülete lap alapján futó lekérdezéseket.
 
-    A parancssor például fájlok eltávolítása a HDFS:
+    Például szolgáló parancssor fájlok eltávolítása a HDFS-ből:
 
     ```
     hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     ```
     
-#### <a name="scale--hdinsight-to-three-worker-nodes"></a>Skála HDInsight három munkavégző csomópontokhoz
+#### <a name="scale--hdinsight-to-three-worker-nodes"></a>Méretezési csoport HDInsight három munkavégző csomópontokhoz
 
-Ha első elakadt a csökkentett üzemmódban állandó probléma, és az előző lépések opció nem, akkor érdemes lehet a probléma elkerüléséhez három munkavégző csomópontokhoz le csak skálázással. Ez nem lehet optimális költség-korlátok, egy csomópont méretezhetők képest miatt. Azonban csak egy feldolgozó csomópont, a HDFS nem garantálja, az adatok három replikáinak érhetők el a fürthöz.
+Ha az első elakadt csökkentett módban egy állandó a probléma, és az előző lépések nem használhatók lehetőségeket, akkor csak három feldolgozó csomópontot lefelé méretezés a probléma elkerülése érdekében érdemes. Ez nem feltétlenül optimális, költség korlátozott, az egyik csomóponton leskálázást képest miatt. Azonban csak egy feldolgozó csomóponttal, HDFS nem garantálja, az adatok három replika érhetők el a fürtöt.
 
-#### <a name="run-the-command-to-leave-safe-mode"></a>Futtassa a parancsot, hogy a biztonságos mód
+#### <a name="run-the-command-to-leave-safe-mode"></a>Futtassa a parancsot, hogy a csökkentett mód
 
-Az utolsó lehetőség a HDFS megadja a biztonságos mód a ritka esetben figyelendő, akkor hajtsa végre a hagyja a csökkentett mód parancsot. Miután megállapította, hogy a OK HDFS került csökkentett módban az az oka, hogy az éppen under-replikált fájlok, hajtsa végre a következő parancsot, hogy a biztonságos mód:
+Az utolsó lehetőség a HDFS megadja a csökkentett mód a ritka esetben kapcsolatos, akkor hagyja üresen a csökkentett mód parancs hajtható végre. Miután eldöntötte, hogy az OK HDFS kategóriájának csökkentett módban miatt under-replikált folyamatban a Hive-fájlokat, hajtsa végre a következő parancsot, hogy a csökkentett mód:
 
 * HDInsight Linux rendszeren:
 
@@ -320,7 +315,7 @@ Az utolsó lehetőség a HDFS megadja a biztonságos mód a ritka esetben figyel
     hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
     ```
     
-* HDInsight Windows rendszeren:
+* A Windows HDInsight:
 
     ```bash
     hdfs dfsadmin -fs hdfs://headnodehost:9000 -safemode leave
@@ -329,5 +324,5 @@ Az utolsó lehetőség a HDFS megadja a biztonságos mód a ritka esetben figyel
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)
-* [Skála fürtök](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [A HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
+* [Fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)

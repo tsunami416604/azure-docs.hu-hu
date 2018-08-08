@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: c9ef406ecab0d88468c9f7ff290669cfbbae1856
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 641a665e0f41a612455d5649b19948146b504199
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860180"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599948"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Az Azure Cosmos DB adatbázis-biztonság
 
@@ -47,6 +47,7 @@ Azt javasoljuk, hogy az alábbi ellenőrzőlista, amelyen adatbázis-rendszerek 
 - Válaszadás a támadások
 - Igazodnia kell irányítási adatkorlátozás teszi geo-időkorlát adatok
 - Kiszolgálók a védett adatközpontok fizikai védelme
+- Minősítések
 
 Bár nyilvánvaló, legutóbbi tűnhet [nagyméretű adatbázis kapcsolatos problémák esetén](http://thehackernews.com/2017/01/mongodb-database-security.html) emlékeztesse velünk a kapcsolatot a egyszerű, de a kritikus fontosságú az alábbi követelményeket:
 - Javítva, amely mindig naprakész kiszolgálók
@@ -79,7 +80,7 @@ Tájékozódjon részletesebben mindegyikhez.
 |Titkosítás inaktív állapotban|Az Azure Cosmos DB-be tárolt összes adat titkosítása. További információ: [Azure Cosmos DB-titkosítás inaktív állapotban](.\database-encryption-at-rest.md)|
 |Javított kiszolgálók|Egy felügyelt adatbázis Azure Cosmos DB szükségtelenné teszi a kezelése és a patch-kiszolgálók által elvégzett, automatikusan.|
 |Erős jelszót a rendszergazdai fiókok|Hihetetlen, még akkor is meg kell ezt a követelményt említik, de néhány lemaradni a versenytársak eltérően nem lehet egy rendszergazdai fiók, jelszó nélküli rendelkezik az Azure Cosmos DB.<br><br> Alapértelmezés szerint a számlázásnak biztonsági SSL és HMAC-val titkos alapú hitelesítés használatával.|
-|Biztonság és a data protection minősítések|Az Azure Cosmos DB rendelkezik [ISO 27001](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-IEC-27001), [európai modell záradékok (EUKB)](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses), és [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA) tanúsítványok. További tanúsítványok folyamatban vannak.|
+|Biztonság és a data protection minősítések|A legtöbb legfeljebb adatok listája minősítései közül is bemutat (az Azure megfelelőségi hely) általános lásd: [https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings] és a legújabb (az Azure megfelelőségi dokumentum) [https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942] az összes tanúsítványának (Cosmos keresése). Egy célzottabb olvasási tekintse meg a 2018. április 25. bejegyzés az (Azure #CosmosDB: biztonságos, privát, megfelelő) [https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/] is tartalmazó csak 1/2 Type 2, HITRUST, PCI DSS Level 1, az ISO 27001, HIPPAA, magas szintű FedRAMP és sok más.
 
 Az alábbi képernyőfelvételen az Active directory-integráció (RBAC) hozzáférés-vezérlés (IAM) használatával az Azure Portalon: ![hozzáférés-vezérlés (IAM) bemutatására adatbázis-biztonság – az Azure Portalon](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 

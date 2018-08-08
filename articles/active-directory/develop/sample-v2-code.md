@@ -17,12 +17,12 @@ ms.date: 04/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8d2ce5bb2f44d9e21fb12e96f9c68d4ecc0fc501
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 0be97bfbbaafd6045fd36be57d85e917f0325779
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581561"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600652"
 ---
 # <a name="azure-active-directory-code-samples-v2-endpoint"></a>Az Azure Active Directory-Kódminták (V2 végpont)
 
@@ -36,7 +36,7 @@ Ez a cikk röviden ismerteti, és hivatkozásokat tartalmaz, amelyek a minták a
 > [!NOTE]
 > Ha érdekli a V1-minták, [az Azure AD-Kódminták (V1-végpontra)](sample-v1-code.md).
 
-Az alapszintű forgatókönyv az egyes minta ismertetése: [típusú alkalmazások esetében az Azure Active Directory v2.0-végpont](active-directory-v2-flows.md).
+Az alapszintű forgatókönyv az egyes minta ismertetése: [típusú alkalmazások esetében az Azure Active Directory v2.0-végpont](v2-app-types.md).
 
 Ön is hozzájárulhat a mintákat a Githubon. További információ [a Microsoft Azure Active Directory-példák és dokumentáció](https://github.com/Azure-Samples?page=3&query=active-directory).
 

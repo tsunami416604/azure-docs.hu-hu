@@ -1,88 +1,82 @@
 ---
-title: Interaktív lekérdezés használata az Azure HDInsight |} Microsoft Docs
-description: Megtudhatja, hogyan interaktív lekérdezés (Hive LLAP) használata a hdinsight eszközzel.
-keywords: ''
+title: Az Azure HDInsight interaktív lekérdezés használata
+description: Útmutató a HDInsight interaktív lekérdezés (Hive LLAP) használata.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 0957643c-4936-48a3-84a3-5dc83db4ab1a
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: 9450f60b88c63e2cd818130521d67daf435f0b17
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 77e150e56125d12cddfdbb2a34adb913a5ae9c78
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407105"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595916"
 ---
-# <a name="use-interactive-query-with-hdinsight"></a>Interaktív lekérdezés használata a hdinsight eszközzel
-Interaktív lekérdezés (más néven a Hive LLAP vagy [hosszú Live és a folyamat](https://cwiki.apache.org/confluence/display/Hive/LLAP)) van egy Azure HDInsight [típusú fürt](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interaktív lekérdezés támogatja a memórián belüli gyorsítótárazáshoz, ami lehetővé teszi, hogy gyorsabb és sokkal több interaktív Hive-lekérdezéseket.
+# <a name="use-interactive-query-with-hdinsight"></a>HDInsight interaktív lekérdezés használata
+Interaktív lekérdezés (más néven a Hive LLAP vagy [hosszú és eredményes](https://cwiki.apache.org/confluence/display/Hive/LLAP)) van egy Azure HDInsight [fürt típusa](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interaktív lekérdezés támogatja a memórián belüli gyorsítótárazáshoz, ami lehetővé teszi a Hive-lekérdezések gyorsabb és interaktívabb sokkal.
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)] 
 
-Az interaktív lekérdezés fürt abban különbözik a Hadoop-fürthöz. Csak a Hive szolgáltatást tartalmaz. 
+Az interaktív lekérdezési fürt különbözik egy Hadoop-fürtöt. Csak a Hive-szolgáltatást tartalmaz. 
 
 > [!NOTE]
-> A Hive fürtszolgáltatás interaktív lekérdezés csak az Ambari Hive View Beeline és a Microsoft Hive ODBC-illesztőprogram (Hive ODBC) keresztül érheti el. Nem érhető el, a Hive-konzol, lépni a Templeton, az Azure parancssori eszköz (Azure CLI) vagy az Azure PowerShell használatával. 
+> A Hive-szolgáltatást, az az interaktív lekérdezési fürt csak az Ambari, Hive-nézet, Beeline és a Microsoft Hive adatforrásnevet illesztőprogram (Hive ODBC) keresztül érheti el. Nem férhet hozzá, a Hive konzolt, templeton eszközön keresztül végzett, az Azure parancssori felület (Azure CLI) vagy az Azure PowerShell használatával. 
 > 
 > 
 
-## <a name="create-an-interactive-query-cluster"></a>Az interaktív lekérdezés fürt létrehozása
-A HDInsight-fürt létrehozásával kapcsolatos további információkért lásd: [Hadoop létrehozása a HDInsight-fürtök](../hdinsight-hadoop-provision-linux-clusters.md). Válassza ki a interaktív lekérdezés fürt.
+## <a name="create-an-interactive-query-cluster"></a>Az interaktív lekérdezési fürt létrehozása
+A HDInsight-fürt létrehozásával kapcsolatos információkért lásd: [Hadoop-fürtök létrehozása a HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Válassza ki az interaktív lekérdezési fürtöt.
 
-## <a name="execute-hive-queries-from-interactive-query"></a>Interaktív lekérdezés Hive-lekérdezéseket hajt végre
-Hive-lekérdezések végrehajtásához a következő lehetőségei vannak:
+## <a name="execute-hive-queries-from-interactive-query"></a>Hive-lekérdezések végrehajtása az interaktív lekérdezés
+Hive-lekérdezések végrehajtásához a következő lehetőségek állnak rendelkezésére:
 
-* Használja a Power bi-ban
+* A Power BI használata
 
-    Lásd: [adatok interaktív Hive lekérdezés megjelenítheti a Power BI Azure hdinsight](./apache-hadoop-connect-hive-power-bi-directquery.md) lásd [big-adatok ábrázolása a Power bi-ban az Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
+    Lásd: [adatok interaktív lekérdezéses Hive megjelenítése a Power bi használatával az Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) lásd [megjelenítése a Power bi használatával az Azure HDInsight a big Data típusú adatok](../hadoop/apache-hadoop-connect-hive-power-bi.md).
  
 * A Zeppelin használata
 
-    Lásd: [Azure hdinsight Hive-lekérdezések futtatásához használja Zeppelin ](../hdinsight-connect-hive-zeppelin.md).
+    Lásd: [a Zeppelin használata az Azure HDInsight Hive-lekérdezések futtatásához ](../hdinsight-connect-hive-zeppelin.md).
 
 * A Visual Studio használata
 
-    Lásd: [csatlakozás az Azure HDInsight és Hive-lekérdezések futtatása a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
+    Lásd: [csatlakozhat az Azure HDInsight és a Hive-lekérdezések futtatásához a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
 
-* A Visual Studio Code használata
+* A Visual Studio kód használata
 
-    Lásd: [használja a Visual Studio Code a Hive, LLAP vagy pySpark](../hdinsight-for-vscode.md).
-* Futtassa a Hive Ambari Hive nézet használatával.
+    Lásd: [Visual Studio Code használata a Hive, LLAP vagy pySpark](../hdinsight-for-vscode.md).
+* Futtassa a Hive Ambari, Hive-nézet használatával.
   
-    Lásd: [használni az Azure HDInsight Hadoop Hive nézete](../hadoop/apache-hadoop-use-hive-ambari-view.md).
-* Futtassa a Hive Beeline használatával.
+    Lásd: [Hive-nézet használata Azure HDInsight a Hadoop-keretrendszerrel](../hadoop/apache-hadoop-use-hive-ambari-view.md).
+* Futtassa a Hive a Beeline használatával.
   
-    Lásd: [a Hive használata a hadooppal a Hdinsightban az Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
+    Lásd: [a Hive használata a hadooppal a HDInsight a Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
   
-    Az átjárócsomópont vagy egy üres élcsomópontot Beeline használható. Az egy üres élcsomópontot Beeline használatát javasoljuk. HDInsight-fürtök létrehozása egy üres élcsomópontot használatával kapcsolatos információkért lásd: [üres peremhálózati csomópontok használata a Hdinsightban](../hdinsight-apps-use-edge-node.md).
-* Futtassa a Hive Hive ODBC használatával.
+    A Beeline az átjárócsomóponthoz, illetve üres élcsomópontot használhatja. Az üres élcsomópontot Beeline használatát javasoljuk. Egy HDInsight-fürt létrehozása az üres élcsomópontot használatával kapcsolatos információkért lásd: [üres élcsomópontok használata a HDInsight](../hdinsight-apps-use-edge-node.md).
+* Futtassa a Hive Hive ODBC segítségével.
   
-    Lásd: [kapcsolódás Excel és a Microsoft Hive ODBC-illesztőprogram Hadoop](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+    Lásd: [Excel csatlakoztatása a Hadoophoz a Microsoft Hive ODBC-illesztő a](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 
-A Java adatbázis kapcsolat (JDBC) kapcsolati karakterlánc megkeresése:
+A Java adatbázis-kapcsolat (JDBC) kapcsolati karakterlánc megkeresése:
 
-1. Ambari jelentkezzen be a következő URL-cím segítségével: https://\<fürtnév\>. AzureHDInsight.net.
+1. Jelentkezzen be az Ambari használatával a következő URL-címet: https://\<fürtnév\>. Azurehdinsight.NET formátumban van.
 2. A bal oldali menüben válassza ki a **Hive**.
-3. Az URL-cím másolásához jelölje ki a vágólap ikon:
+3. Másolja az URL-CÍMÉT, válassza a vágólapra ikont:
    
-   ![HDInsight Hadoop interaktív lekérdezés LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
+   ![A HDInsight Hadoop interaktív lekérdezés LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [interaktív lekérdezés fürtök létrehozása a Hdinsightban](../hdinsight-hadoop-provision-linux-clusters.md).
-* Megtudhatja, hogyan [big-adatok ábrázolása a Power bi-ban az Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-* Megtudhatja, hogyan [Zeppelin segítségével az Azure HDInsight Hive-lekérdezések futtatása ](../hdinsight-connect-hive-zeppelin.md).
-* Megtudhatja, hogyan [futtathat Hive-lekérdezéseket a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
-* Megtudhatja, hogyan [használhat HDInsight eszközöket a Visual Studio Code](../hdinsight-for-vscode.md).
-* Megtudhatja, hogyan [nézet Hive használata a hadooppal a Hdinsightban](../hadoop/apache-hadoop-use-hive-ambari-view.md)
-* Megtudhatja, hogyan [Beeline elküldeni a hdinsight Hive-lekérdezések használata](../hadoop/apache-hadoop-use-hive-beeline.md).
-* Megtudhatja, hogyan [és a Hadoop Excel csatlakoztatása a Microsoft Hive ODBC-illesztőprogram](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+* Ismerje meg, hogyan [HDInsight interaktív lekérdezési fürtökhöz létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).
+* Ismerje meg, hogyan [megjelenítése a Power bi használatával az Azure HDInsight a big Data típusú adatok](../hadoop/apache-hadoop-connect-hive-power-bi.md).
+* Ismerje meg, hogyan [az Azure HDInsight Hive-lekérdezések futtatása a Zeppelin használatával ](../hdinsight-connect-hive-zeppelin.md).
+* Ismerje meg, hogyan [a Data Lake Tools for Visual Studio használatával Hive-lekérdezések futtatása](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
+* Ismerje meg, hogyan [HDInsight Tools for Visual Studio Code használata](../hdinsight-for-vscode.md).
+* Ismerje meg, hogyan [Hive-nézet használata a HDInsight Hadoop-keretrendszerrel](../hadoop/apache-hadoop-use-hive-ambari-view.md)
+* Ismerje meg, hogyan [a Beeline használata a HDInsight Hive-lekérdezések elküldéséhez](../hadoop/apache-hadoop-use-hive-beeline.md).
+* Ismerje meg, hogyan [Excel összekapcsolása a Hadooppal a Microsoft Hive ODBC-illesztő a](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 

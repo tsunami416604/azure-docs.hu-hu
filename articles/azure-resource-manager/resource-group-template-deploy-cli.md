@@ -4,26 +4,24 @@ description: Azure Resource Manager és az Azure CLI használatával helyezze ü
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 493b7932-8d1e-4499-912c-26098282ec95
 ms.service: azure-resource-manager
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2017
+ms.date: 08/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 510cba0c2e27ab56ea26a476258fd7480b80e0d2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e732164e50a270b3eacdef2e5c17e6c226702103
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420403"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596130"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
-Ez a cikk ismerteti az Azure CLI használata a Resource Manager-sablonok, az erőforrások üzembe helyezése az Azure. Ha Ön nem ismeri a fogalmait, üzembe helyezése és kezelése az Azure-megoldások, lásd: [Azure Resource Manager áttekintése](resource-group-overview.md).  
+Ez a cikk ismerteti az Azure CLI használata a Resource Manager-sablonok, az erőforrások üzembe helyezése az Azure. Ha nem ismeri a fogalmait, üzembe helyezése és kezelése az Azure-megoldások, lásd: [Azure Resource Manager áttekintése](resource-group-overview.md).  
 
 A Resource Manager-sablon telepít egy helyi fájlt a gépén, vagy egy külső amilyen a GitHub-tárházban található fájl lehet. A sablon üzembe helyezi az ebben a cikkben érhető el a [mintasablon](#sample-template) szakaszban, vagy mint egy [tárolási fiók sablont a GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
@@ -35,7 +33,7 @@ Ha nem rendelkezik Azure CLI telepítve van, használhatja a [Cloud Shell](#depl
 
 Erőforrások üzembe helyezésekor az Azure-ba, hogy:
 
-1. Jelentkezzen be az Azure-fiókjába.
+1. Jelentkezzen be az Azure-fiókjába
 2. Hozzon létre egy erőforráscsoportot, amely a telepített erőforrások tárolójaként szolgál. Az erőforráscsoport neve csak alfanumerikus karaktereket, pontokat, aláhúzásjeleket, kötőjeleket és zárójelet tartalmazhat. Legfeljebb 90 karakter lehet. Nem végződhet ponttal.
 3. Az erőforráscsoport üzembe a sablont, amely meghatározza az erőforrások létrehozása
 
@@ -43,15 +41,13 @@ A sablon paramétereit, amelyek lehetővé teszik az üzembe helyezés testresza
 
 Az alábbi példa létrehoz egy erőforráscsoportot, és üzembe helyezi a sablont a helyi gépen:
 
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény:
@@ -66,18 +62,16 @@ Resource Manager-sablonok tárolása a helyi gépén, helyett érdemesebb lehet 
 
 Egy külső sablon üzembe helyezéséhez használja a **sablon-uri** paraméter. A példában az URI használatával helyezhet üzembe a mintául szolgáló sablont a Githubból.
    
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --parameters storageAccountType=Standard_GRS
 ```
 
-Az előző példában a sablon, amely a legtöbb esetben működik, mivel a sablon nem tartalmazhatja a bizalmas adatokat egy nyilvánosan elérhető-e URI-t igényel. Adja meg a bizalmas adatok (például egy rendszergazdai jelszót) van szüksége, ha biztonságos paraméterként adja át ezt az értéket. Azonban ha nem szeretné, hogy a sablon nyilvánosan hozzáférhető, segítségével megvédheti azokat a személyes tárolót tárolja őket. Egy közös hozzáférésű jogosultságkód (SAS) igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-cli-sas-token.md).
+Az előző példában a sablon, amely a legtöbb esetben működik, mivel a sablon ne tartalmazza a bizalmas adatokat egy nyilvánosan elérhető-e URI-t igényel. Adja meg a bizalmas adatok (például egy rendszergazdai jelszót) van szüksége, ha biztonságos paraméterként adja át ezt az értéket. Azonban ha nem szeretné a sablon nyilvánosan hozzáférhető, segítségével megvédheti azokat a személyes tárolót tárolja őket. Egy közös hozzáférésű jogosultságkód (SAS) igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-cli-sas-token.md).
 
 [!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
@@ -93,6 +87,34 @@ az group deployment create --resource-group examplegroup \
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Több erőforráscsoport vagy előfizetés üzembe helyezése
 
 Általában végzi az üzembe helyezést összes erőforrást a sablonhoz, amelyekkel egyetlen erőforráscsoportra. Vannak azonban forgatókönyvek, ahol szeretné erőforráscsoport telepítsen együtt, de különböző erőforráscsoport vagy előfizetés helyezze el őket. Telepíthet egy központi telepítésben csak öt erőforráscsoportokhoz. További információkért lásd: [üzembe helyezése Azure-erőforrásokat az egynél több előfizetésen vagy erőforráscsoporton](resource-manager-cross-resource-group-deployment.md).
+
+## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
+
+Sikertelen telepítések esetén megadhatja, hogy a rendszer automatikusan újratelepítése egy korábbi üzemelő az üzembe helyezési előzményekből. Ez a beállítás használatához az üzemelő példányok egyedi névvel kell rendelkezniük az előzményekben található ellenőrizhető, hogy. Ha nem rendelkezik egyedi nevét, az aktuális telepítése sikertelen volt. a korábban sikeresen végrehajtott központi telepítés előzményei esetleg felülírhatja. Használhatja ezt a beállítást csak a legfelső szintű telepítések. Beágyazott sablonból üzemelő példányok nem újbóli üzembe helyezés érhetők el.
+
+Telepítse újra a legutóbbi sikeres üzembe helyezés, adja hozzá a `--rollback-on-error` paramétert, azt a jelzőt.
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error
+```
+
+Az újratelepítés egy adott, használja a `--rollback-on-error` paramétert, és adja meg a központi telepítés nevét.
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment02 \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error ExampleDeployment01
+```
+
+A megadott központi telepítés sikeres volt kell rendelkeznie.
 
 ## <a name="parameter-files"></a>Alkalmazásparaméter-fájlok
 
@@ -116,23 +138,23 @@ Másolja ki az előző példában, és mentse a fájlt `storage.parameters.json`
 
 Adja át a helyi alkalmazásparaméter-fájlt, használja a `@` storage.parameters.json nevű helyi fájl megadásához.
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 ## <a name="test-a-template-deployment"></a>Egy sablon üzemelő példány tesztelése
 
 A sablonnal és paraméterfájlokkal értékek teszteléséhez ténylegesen az olyan erőforrások telepítés nélkül használhatja a [az csoport központi telepítésének ellenőrzése](/cli/azure/group/deployment#az-group-deployment-validate). 
 
-```azurecli
+```azurecli-interactive
 az group deployment validate \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 Ha nincsenek hibák észlelhetők, a parancs visszaadja a teszt üzembe helyezéssel kapcsolatos adatokat. Különösen, vegye figyelembe, hogy a **hiba** null értékű.
@@ -160,7 +182,7 @@ Ha hibát észlel, a parancs hibaüzenetet ad vissza. Például próbál adja á
 }
 ```
 
-Ha a sablon szintaktikai hibát tartalmaz, a parancs nem tudta elemezni a sablon jelző hibaüzenetet adja vissza. Az üzenet azt jelzi, hogy a sor száma és az elemzési hiba pozícióját.
+Ha a sablon szintaktikai hibát tartalmaz, a parancs visszaadja egy hibaüzenet, nem lehetett elemezni a sablont. Az üzenet azt jelzi, hogy a sor száma és az elemzési hiba pozícióját.
 
 ```azurecli
 {
@@ -179,13 +201,13 @@ Ha a sablon szintaktikai hibát tartalmaz, a parancs nem tudta elemezni a sablon
 
 Teljes módot használja, használja a `mode` paramétert:
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
-    --name ExampleDeployment \
-    --mode Complete \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --mode Complete \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 ## <a name="sample-template"></a>Példasablon

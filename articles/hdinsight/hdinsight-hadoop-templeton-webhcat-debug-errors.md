@@ -1,63 +1,58 @@
 ---
-title: Ismertetés és hárítsa el a WebHCat-hibákat a HDInsight - Azure |} Microsoft Docs
-description: Ismerje meg, hogyan körülbelül gyakori hibák által visszaadott WebHCat a HDInsight és azok megoldását.
+title: A HDInsight - Azure WebHCat-hibák megértése és megoldása
+description: Ismerje meg, hogyan körülbelül gyakran előforduló hibák által visszaadott WebHCat a HDInsight és azok megoldását.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 1b3d94b1-207d-4550-aece-21dc45485549
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 7349d60177982ced68b0ebb83f7e85f19e43ec15
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: jasonh
+ms.openlocfilehash: 9cd3ed48e7c07378a972014c468735e4034b827f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100196"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600397"
 ---
-# <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Ismertetés és a HDInsight WebHCat hibák megoldásához
+# <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>A HDInsight a webhcat használatával fogadott hibák megértése és megoldása
 
-További információk a HDInsight, és azok megoldását WebHCat használatakor hibák. WebHCat belsőleg ügyféloldali eszközök, például Azure PowerShell és a Data Lake Tools for Visual Studio.
+Ismerje meg hibaüzenetek érkeztek az WebHCat használata a HDInsight és azok megoldását. WebHCat belsőleg ügyféloldali eszközök, például az Azure PowerShell és a Data Lake Tools for Visual Studio.
 
-## <a name="what-is-webhcat"></a>Mi az a WebHCat
+## <a name="what-is-webhcat"></a>Mit jelent a WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) egy REST API a [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), egy tábla és a Hadoop tárolási alkalmazáskezelési réteg. WebHCat a HDInsight-fürtökön alapértelmezés szerint engedélyezve van, és segítségével különböző eszközök feladatokat küldhet el, beolvasni a feladat állapotát, stb. a fürthöz való bejelentkezés nélkül.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) egy olyan REST API a [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), amely egy táblázat, valamint a tárolási réteg hadoop. WebHCat a HDInsight-fürtökön alapértelmezés szerint engedélyezve van, és feladatok elküldéséhez, a feladat állapotát, stb. a fürthöz való bejelentkezés nélkül használják különböző eszközöket.
 
 ## <a name="modifying-configuration"></a>Konfigurációjának módosítása
 
 > [!IMPORTANT]
-> A jelen dokumentumban felsorolt hibák számos fordulhat elő, mert túllépte a beállított maximális. A feloldási lépés akkor említi, hogy egy érték módosítható, ha kell használnia az alábbiak egyikét a módosítás végrehajtásához:
+> A jelen dokumentumban felsorolt hibákat számos elő, amikor a rendszer túllépte a beállított maximális értéket. Ha a megoldás lépés említi, hogy egy érték módosítható, kell használnia az alábbiak egyikét a módosítás végrehajtásához:
 
-* A **Windows** fürtök: egy Parancsfájlművelettel az érték beállítása a fürt létrehozása során. További információkért lásd: [Parancsfájlműveletek fejlesztése](hdinsight-hadoop-script-actions.md).
+* A **Windows** fürtök: használjon szkriptműveletet az érték beállításához a fürt létrehozása során. További információkért lásd: [szkriptműveletek fejlesztése](hdinsight-hadoop-script-actions.md).
 
-* A **Linux** fürtök: használata Ambari (web vagy a REST API) értékét módosítani. További információkért lásd: [kezelése HDInsight Ambari használatával](hdinsight-hadoop-manage-ambari.md)
+* A **Linux** fürtök: használja az Ambari (webes vagy a REST API), módosítsa az értéket. További információkért lásd: [kezelése HDInsight az Ambari használatával](hdinsight-hadoop-manage-ambari.md)
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-### <a name="default-configuration"></a>Alapértelmezett konfigurációja
+### <a name="default-configuration"></a>Alapértelmezett konfiguráció
 
-Ha a következő alapértelmezett értékek számát, azt WebHCat teljesítményét, vagy hibákat okozhatnak:
+Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítményét, vagy hibákat okoznak:
 
 | Beállítás | Művelet | Alapértelmezett érték |
 | --- | --- | --- |
-| [yarn.Scheduler.Capacity.maximum-alkalmazások][maximum-applications] |Az aktív lehet egyidejű feladatok maximális száma (folyamatban vagy fut) |10,000 |
-| [templeton.exec.max-procs][max-procs] |Egyidejűleg szolgáltatható kérelmek maximális száma |20 |
-| [mapreduce.jobhistory.max-kor-ms][max-age-ms] |Az, hogy hány napig feladatelőzmények megmaradnak |7 nap |
+| [yarn.Scheduler.Capacity.maximum – alkalmazások][maximum-applications] |Aktív lehet egyidejű feladatok maximális száma (függőben lévő vagy futó) |10,000 |
+| [templeton.exec.max-procs][max-procs] |Is kiszolgálható kérelmek maximális száma |20 |
+| [mapreduce.jobhistory.max ezredmásodperces kora][max-age-ms] |A feladatelőzmények napok számának megmaradnak. |7 nap |
 
 ## <a name="too-many-requests"></a>Túl sok a kérelem
 
-**HTTP-állapotkód**: 429
+**HTTP-állapotkód**: 429-es
 
 | Ok | Megoldás: |
 | --- | --- |
-| Túllépte a maximális egyidejű kérelmek / perc (alapértelmezett érték 20) WebHCat által kiszolgált |Csökkentse a munkaterhelés győződjön meg arról, hogy Ön nem küldenek több, mint az egyidejű kérelmek maximális számát, vagy növelje az egyidejűleg futtatható kérelmek maximális módosításával `templeton.exec.max-procs`. További információkért lásd: [konfiguráció módosítása](#modifying-configuration) |
+| Túllépte az egyidejű kérések maximális / perc (alapértelmezett érték 20) WebHCat által kiszolgált |Csökkentse az egyidejű kérelmek maximális száma nagyobb a számítási feladat annak biztosítása érdekében, hogy Ön nem küldenek, vagy növelje a párhuzamos kérés módosításával `templeton.exec.max-procs`. További információkért lásd: [konfiguráció módosítása](#modifying-configuration) |
 
 ## <a name="server-unavailable"></a>A kiszolgáló nem érhető el
 
@@ -65,17 +60,17 @@ Ha a következő alapértelmezett értékek számát, azt WebHCat teljesítmény
 
 | Ok | Megoldás: |
 | --- | --- |
-| Ez az állapot kód általában akkor fordul elő, az elsődleges és másodlagos HeadNode a fürt közötti feladatátvétel során |Várjon két percet, majd próbálja megismételni a műveletet |
+| Ezzel az állapotkóddal általában akkor fordul elő az elsődleges és másodlagos Átjárócsomópont a fürt közötti feladatátvétel során |Várjon két percet, majd próbálja megismételni a műveletet |
 
-## <a name="bad-request-content-could-not-find-job"></a>Hibás kérés tartalma: nem található feladat
+## <a name="bad-request-content-could-not-find-job"></a>Hibás kérelem tartalma: nem található a feladat
 
 **HTTP-állapotkód**: 400
 
 | Ok | Megoldás: |
 | --- | --- |
-| Feladat részleteinek törölve lettek a feladatelőzmények által tisztító |Feladatelőzmények megőrzési idő alapértelmezés szerint 7 nap. Az alapértelmezett megőrzési időtartamot a módosításával lehet megváltoztatni `mapreduce.jobhistory.max-age-ms`. További információkért lásd: [konfiguráció módosítása](#modifying-configuration) |
-| Feladat leállította a feladatátvétel miatt |Ismételje meg a feladat elküldése legfeljebb két percig |
-| Feladatazonosító érvénytelen lett megadva. |Annak ellenőrzése, hogy a feladat azonosítója helyes-e |
+| Feladat részletei törölve lettek a feladatelőzmények által iterálásakor |Feladatelőzmények megőrzési idő alapértelmezés szerint 7 nap. Az alapértelmezett megőrzési időtartamot is módosítható módosításával `mapreduce.jobhistory.max-age-ms`. További információkért lásd: [konfiguráció módosítása](#modifying-configuration) |
+| Feladat leállította a feladatátvétel miatt |Ismételje meg a feladat elküldése két percre |
+| Egy érvénytelen feladatazonosító lett megadva. |Ellenőrizze, hogy helyes-e-e a feladat azonosítója |
 
 ## <a name="bad-gateway"></a>Hibás átjáró
 
@@ -83,11 +78,11 @@ Ha a következő alapértelmezett értékek számát, azt WebHCat teljesítmény
 
 | Ok | Megoldás: |
 | --- | --- |
-| Belső szemétgyűjtés folyamatban van a WebHCat folyamaton belül |Várjon, amíg a szemétgyűjtő befejeződését, vagy indítsa újra a WebHCat szolgáltatást |
-| Az erőforrás-kezelő szolgáltatás válaszára várakozás időkorlátja lejárt. Ez a hiba akkor fordulhat elő, amikor aktív kérelmek száma a megadott maximális értéket (alapértelmezett érték 10 000) |Várjon, amíg a jelenleg futó feladat befejeződik, vagy növelje az egyidejű feladat korlát módosításával `yarn.scheduler.capacity.maximum-applications`. További információkért lásd: a [módosítása konfigurációs](#modifying-configuration) szakasz. |
-| Minden feladat keresztül beolvasására tett kísérlet a [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívás közben `Fields` beállítása `*` |Nem beolvasni a *összes* feladat részletei. Ehelyett használja `jobid` beolvasni csak nagyobb, mint egyes feladatazonosítót a feladat részleteit. Vagy, ne használja `Fields` |
-| A WebHCat-szolgáltatás nem működik HeadNode feladatátvétel során |Két perc várakozás, majd próbálja megismételni a műveletet |
-| Webhcaten keresztül küldött 500-nál több függőben lévő feladatok |Várjon, amíg jelenleg függő feladatok már befejeződtek több feladat elküldése előtt |
+| Belső szemétgyűjtés történik, a WebHCat folyamaton belül |Várjon, amíg befejeződik, vagy indítsa újra a WebHCat szolgáltatást szemétgyűjtés |
+| Az erőforrás-kezelő szolgáltatás válaszára várakozás időkorlátja. Ez a hiba akkor fordulhat elő, ha aktív kérelmek száma a beállított maximális értéket (alapértelmezés: 10 000) |Várjon, amíg a jelenleg futó feladatok elvégzéséhez, vagy növelheti az egyidejű feladat módosításával `yarn.scheduler.capacity.maximum-applications`. További információkért lásd: a [módosítása konfigurációs](#modifying-configuration) szakaszban. |
+| Minden feladat keresztül beolvasására tett kísérlet a [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívás közben `Fields` értékre van állítva `*` |Nem kérnek le *összes* feladat részletei. Helyette használjon `jobid` bizonyos feladatazonosító csak nagyobb feladatok részleteinek lekérése. És ne használja `Fields` |
+| Átjárócsomópont feladatátvevő során leállt a WebHCat-szolgáltatás |Két percig várjon, majd próbálja megismételni a műveletet |
+| Nincsenek a Webhcaten keresztül elküldött több mint 500 függőben lévő feladatok |Várjon, amíg az aktuálisan folyamatban lévő feladat befejeződött, további feladatok elküldése előtt |
 
 [maximum-applications]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration

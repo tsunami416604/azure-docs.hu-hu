@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a4e03eac9c41c72714103a2c863a9ed6b2fd8608
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d924c1fc9697bff77f12f7f0bf33a1654d1e7d6e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577728"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597973"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nem kötelező jogcímek, az Azure ad-ben (előzetes verzió)
 
@@ -126,7 +126,7 @@ Ez OptionalClaims objektum okoz az azonosító jogkivonat, az ügyfél egy mási
 
 ## <a name="configuring-optional-claims"></a>Nem kötelező jogcím konfigurálása
 
-Az alkalmazás nem kötelező jogcímek az alkalmazásjegyzéknek (lásd például alább) módosításával konfigurálhatja. További információkért lásd: a [ismertetése az Azure AD application manifest cikk](active-directory-application-manifest.md).
+Az alkalmazás nem kötelező jogcímek az alkalmazásjegyzéknek (lásd például alább) módosításával konfigurálhatja. További információkért lásd: a [ismertetése az Azure AD application manifest cikk](reference-app-manifest.md).
 
 **Minta séma:**
 

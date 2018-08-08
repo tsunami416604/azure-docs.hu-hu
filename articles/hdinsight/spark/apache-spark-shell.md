@@ -1,80 +1,75 @@
 ---
-title: Az Azure HDInsight egy interaktív Spark-rendszerhéj használata |} Microsoft Docs
-description: Egy interaktív Spark rendszerhéj egyszerre parancsok egy Spark fut, és az eredmények megtekintése olvasási hajtható végre nyomtatási folyamat nyújt.
+title: Az Azure HDInsight interaktív Spark Shell használata
+description: Interaktív Spark Shell biztosít egy olvasási végrehajtása nyomtatási folyamat egyszerre egy parancsok futtatása a Spark és az eredmények jelennek meg.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/09/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: d2b65980516a7ae1857711f2e58d9cd0a8e8ec9a
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/09/2018
+ms.openlocfilehash: 454f05f6ec17a42d0f0d3795d490352e5e74783a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164142"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617506"
 ---
-# <a name="run-spark-from-the-spark-shell"></a>Spark futtassa a Spark-rendszerhéj
+# <a name="run-spark-from-the-spark-shell"></a>A Spark-Shell a Spark futtatása
 
-Egy interaktív Spark rendszerhéj egyszerre parancsok egy Spark fut, és megtekintheti az eredményeket egy REPL (olvasás hajtható végre nyomtatás hurok) környezetet biztosít. Ez a folyamat akkor hasznos, fejlesztési és a hibakeresést. A Spark egy rendszerhéj biztosít a támogatott nyelvek mindegyikét: Scala, a Python és az R.
+Interaktív Spark Shell biztosít egy REPL (olvasási végrehajtása print-loop) környezet egyszerre egy parancsok futtatása a Spark és az eredmények jelennek meg. Ez a folyamat hasznos fejlesztés és hibakeresés. A Spark egy parancshéj biztosít minden, a támogatott nyelvek: Scala, Python és az r segítségével
 
-## <a name="get-to-a-spark-shell-with-ssh"></a>A Spark rendszerhéj SSH az beszerzése
+## <a name="get-to-a-spark-shell-with-ssh"></a>Az ssh-val egy Spark-Shell elérése
 
-A hdinsight Spark rendszerhéjat érhető SSH használata a fürt elsődleges átjárócsomópontjához csatlakozik:
+A HDInsight egy Spark-Shell elérése a fürthöz SSH használatával, az elsődleges átjárócsomóponthoz csatlakozik:
 
      ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
 
-Kaphat a teljes SSH-parancs a fürt az Azure-portálon:
+A fürt teljes SSH-parancs kaphat az Azure Portalról:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Nyissa meg a panelen a HDInsight Spark-fürt számára.
-3. Válassza ki Secure Shell (SSH).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Keresse meg a HDInsight Spark-fürthöz tartozó panel.
+3. Válassza ki a Secure Shell (SSH).
 
-    ![HDInsight ablaktábla Azure-portálon](./media/apache-spark-shell/hdinsight-spark-blade.png)
+    ![HDInsight panel az Azure Portalon](./media/apache-spark-shell/hdinsight-spark-blade.png)
 
-4. A megjelenített SSH-parancs másolásával, és futtassa azt a terminálon.
+4. A megjelenített SSH-parancs másolásával, és futtassa a terminálban.
 
-    ![HDInsight SSH ablaktábla Azure-portálon](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
+    ![HDInsight SSH panel az Azure Portalon](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
 
-További részletek az SSH használatával kapcsolódni HDInsight: [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+SSH használatával csatlakozhat a HDInsight a részletekért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run-a-spark-shell"></a>Indítsa el a Spark
+## <a name="run-a-spark-shell"></a>Egy Spark-Shell futtatása
 
-Spark Scala (spark-felület), a Python (pyspark) és az R (sparkR) ismertetése nyújt. Az SSH-munkamenetet, a HDInsight-fürt átjárócsomópontjához adja meg a következő parancsok egyikét:
+Spark – ismertetése (spark-shell) Scala, Python (pyspark) és az R (sparkR) biztosít. Az SSH-munkamenet, a HDInsight-fürt fő csomópontjának adja meg a következő parancsok egyikét:
 
     ./bin/spark-shell
     ./bin/pyspark
     ./bin/sparkR
 
-Most Spark-parancsokat adhat meg a megfelelő nyelven.
+Mostantól a megfelelő nyelven Spark-parancsokat adhat meg.
 
-## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession és SparkContext példányok
+## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession és sparkcontext elemet példányok
 
-Alapértelmezés szerint való futtatásakor a Spark rendszerhéj SparkSession és SparkContext példányai vannak automatikusan létrehozva meg.
+Alapértelmezés szerint a Spark-Shell futtatásakor SparkSession és sparkcontext elemet példányait automatikusan példányosítása az Ön számára.
 
-A SparkSession példányt szeretne használni, adja meg a `spark`. A SparkContext példányt szeretne használni, adja meg a `sc`.
+Adja meg a SparkSession-példány eléréséhez, `spark`. Adja meg a sparkcontext elemet-példány eléréséhez, `sc`.
 
-## <a name="important-shell-parameters"></a>Fontos rendszerhéj paraméterek
+## <a name="important-shell-parameters"></a>Fontos rendszerhéj-paraméterek
 
-A Spark rendszerhéj parancs (`spark-shell`, `pyspark`, vagy `sparkR`) számos parancssori paramétereket támogatja. Paraméterek teljes listájának megtekintéséhez indítsa el a Spark rendszerhéj kapcsolóját `--help`. Vegye figyelembe, hogy ezek a paraméterek némelyike előfordulhat, hogy csak a alkalmazásra `spark-submit`, amely a Spark felületet burkolja.
+A Spark-Shell-parancs (`spark-shell`, `pyspark`, vagy `sparkR`) számos parancssori paramétereket támogatja. Paraméterek teljes listájának megtekintéséhez indítsa el a Spark-Shell váltást `--help`. Vegye figyelembe, hogy ezek a paraméterek némelyike csak érvényesek az `spark-submit`, amely a Spark-Shell burkolja.
 
-| Váltás | leírás | Példa |
+| Kapcsoló | leírás | Példa |
 | --- | --- | --- |
-| --MASTER_URL fő | Meghatározza a fő URL-címet. A Hdinsightban, ez az érték mindig van `yarn`. | `--master yarn`|
-| --jars JAR_LIST | Helyi JAR-fájlok kivételével meg az illesztőprogram és végrehajtó classpaths vesszővel tagolt listája. A Hdinsightban ebben a listában az alapértelmezett fájlrendszer Azure Storage vagy a Data Lake Store elérési útjait tevődik össze. | `--jars /path/to/examples.jar` |
-| --MAVEN_COORDS csomagok | Maven koordinátáit JAR-fájlok kivételével meg az illesztőprogram és végrehajtó classpaths vesszővel tagolt listája. A helyi maven-tárházban, majd a maven központi keres, és minden további távoli adattárak megadott `--repositories`. A formátum a koordináták *groupId*:*artifactid szakaszát*:*verzió*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
-| --PE-fájlok listája | Python csak .zip, .egg vagy .py fájlok számára, hogy a PYTHONPATH vesszővel tagolt listája. | `--pyfiles "samples.py"` |
+| --MASTER_URL fő | Meghatározza a fő URL-CÍMÉT. A HDInsight, az értéke mindig `yarn`. | `--master yarn`|
+| --jars JAR_LIST | Helyi JAR-fájlok kivételével az illesztőprogram és feladat-végrehajtó osztályútvonalakkal elhelyezni a vesszővel tagolt listája. A HDInsight a lista elérési útját az Azure Storage vagy a Data Lake Store az alapértelmezett fájlrendszer tevődik össze. | `--jars /path/to/examples.jar` |
+| --MAVEN_COORDS csomagok | Az illesztőprogram és feladat-végrehajtó osztályútvonalakkal elhelyezni a JAR-fájlok kivételével a maven-koordináták vesszővel tagolt listája. A helyi maven-tárházban, akkor a maven központi, keres, akkor minden további távoli tárházak megadott `--repositories`. A formátum a koordináták *groupId*:*artifactId*:*verzió*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
+| --py-fájlok listája | Pythonhoz készült csak .zip, .egg vagy .py fájlok számára, hogy a PYTHONPATH vesszővel elválasztott listáját. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [a Spark on Azure HDInsight bemutatása](apache-spark-overview.md) áttekintése.
-- Lásd: [Apache Spark-fürt létrehozása az Azure HDInsight](apache-spark-jupyter-spark-sql.md) Spark-fürtök és a sparksql-hez.
-- Lásd: [Újdonságok Spark strukturált Streaming?](apache-spark-streaming-overview.md) alkalmazások írását, amelyek a Spark streamelési adatok feldolgozása.
+- Lásd: [az Azure HDInsight alapú Spark bemutatása](apache-spark-overview.md) áttekintését.
+- Lásd: [Apache Spark-fürt létrehozása az Azure HDInsight](apache-spark-jupyter-spark-sql.md) -alapú Spark-fürtök és a sparksql-hez.
+- Lásd: [Mi a Spark strukturált Stream?](apache-spark-streaming-overview.md) alkalmazások írását, amelyek a Spark streamelési adatok dolgozhatók.
 

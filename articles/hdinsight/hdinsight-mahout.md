@@ -1,65 +1,60 @@
 ---
-title: PowerShell - Azure Mahout HDInsight segítségével javaslatok generálása |} Microsoft Docs
-description: Útmutató az Apache Mahout machine learning-könyvtárral segítségével és a HDInsight (Hadoop) együttes movie javaslatok generálása az ügyfélszámítógépen futó PowerShell parancsfájl.
+title: PowerShell – Azure Mahout HDInsight használatával javaslatok létrehozása
+description: Ismerje meg, hogyan filmajánlók a HDInsight (Hadoop) az Apache Mahout machine learning-kódtár használatával egy PowerShell-parancsfájlt az ügyfélen futó a.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 07b57208-32aa-4e59-900a-6c934fa1b7a7
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 49a092ee23b79c483aa7bbd8b3d5150e909b6884
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: jasonh
+ms.openlocfilehash: 587ea8d9082a696853d8e25a36d9536c762d0582
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177352"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599989"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Film javaslatok generálása Apache Mahout a hadooppal a Hdinsightban (PowerShell)
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Filmajánlók létrehozása (PowerShell) HDInsight a Hadoop-keretrendszerrel Apache Mahout használatával
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
-Ismerje meg, hogyan használható a [Apache Mahout](http://mahout.apache.org) machine learning függvénytár, amely Azure HDInsight movie javaslatok létrehozásához. A példa az ebben a dokumentumban szereplő Azure PowerShell Mahout feladatok futtatásához.
+Ismerje meg, hogyan használható a [Apache Mahout](http://mahout.apache.org) gépi tanulási kódtár, az Azure HDInsight a filmajánlók. A példában a jelen dokumentum létrehozása a Mahout feladatok futtatása az Azure Powershellt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Linux-alapú HDInsight-fürtöt. Egy létrehozásával kapcsolatos további információkért lásd: [hdinsight Linux-alapú Hadoop használatának megkezdésében][getstarted].
+* Egy Linux-alapú HDInsight-fürt. Az egyik létrehozásával kapcsolatos információkért lásd: [HDInsight Linux-alapú Hadoop használatának első lépései][getstarted].
 
     > [!IMPORTANT]
     > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
-## <a name="recommendations"></a>Javaslatok generálása Azure PowerShell használatával
+## <a name="recommendations"></a>Javaslatok létrehozása az Azure PowerShell-lel
 
 > [!WARNING]
-> Ebben a szakaszban a feladat használható Azure PowerShell használatával. A Mahout megadott osztályok többsége nem jelenleg Azure PowerShell-lel dolgozni. Nem működnek az Azure PowerShell osztályok listáját lásd: a [hibaelhárítás](#troubleshooting) szakasz.
+> A feladat ebben a szakaszban az Azure PowerShell használatával működik. A mahouttal megadott osztályok többsége jelenleg nem működik az Azure PowerShell-lel. Nem fog tudni az Azure PowerShell-lel osztályok listáját lásd: a [hibaelhárítás](#troubleshooting) szakaszban.
 >
-> Például az SSH használatával csatlakozhat a HDInsight és futtatási Mahout példák közvetlenül a fürtön, [Mahout és a HDInsight-(SSH) használatával movie javaslatok generálása](hadoop/apache-hadoop-mahout-linux-mac.md).
+> Egy példa, SSH használatával csatlakozhat a HDInsight és a futtatási Mahout példák közvetlenül a fürtön: [Filmajánlók létrehozása a Mahout és a HDInsight-(SSH) használatával](hadoop/apache-hadoop-mahout-linux-mac.md).
 
-A funkciók Mahout által biztosított egyike egy javaslat motor. Ez a motor elfogadja a kell adatokat `userID`, `itemId`, és `prefValue` (a felhasználók beállítások elem). Mahout hasonló-cikk beállítások, amely ajánlásokat rendelkező felhasználók meghatározására használja az adatok.
+A Mahout által biztosított függvények egyikét egy ajánlattételi modul beépítését. Ez a motor az formátumban adatokat fogad `userID`, `itemId`, és `prefValue` (a felhasználók szabályozó az elem). Mahout hasonló-cikk beállítások, amely használható ajánlásokat rendelkező felhasználók meghatározására használja az adatok.
 
-A következő példa egy egyszerűsített segédlet az ajánlás folyamat működéséről:
+Az alábbi példában egy egyszerűsített segédlet a javaslat folyamat működésének:
 
-* **közös előfordulási**: Joe, Ágnes és minden tetszését Bob *csillag ütközések*, *vissza sztrájkok a Empire*, és *a Jedi visszaküldése*. Mahout határozza meg, hogy a felhasználók számára is, például a filmek egyikét sem például a másik kettőt.
+* **Közös előfordulás**: János Alice és az összes tetszett Bob *Star Wars*, *vissza is a Empire*, és *visszaküldése az ereje*. Mahout határozza meg, hogy felhasználók, akik ezek filmek közül bármelyik is, mint például a másik kettőt.
 
-* **közös előfordulási**: Bálint és Alice is tetszését *a látszólagos támadása*, *támadás a klónja*, és *megtorlás a Sith a*. Mahout határozza meg, hogy felhasználók, akik az előző három filmek is tetszett hasonlóan ezek filmek.
+* **Közös előfordulás**: Bálint és Alice is tetszett *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*. Mahout határozza meg, hogy az előző három filmek is kedvelő felhasználók például ezek filmek.
 
-* **Hasonlóság ajánlás**: mivel Joe tetszését az első három filmek, Mahout ellenőrzi, hogy az filmek, hogy más, hasonló beállítások tetszett, de Joe rendelkezik nem figyelt (tetszését/névleges). Ebben az esetben Mahout javasolja *a látszólagos támadása*, *támadás a klónja*, és *a Sith a megtorlás*.
+* **Hasonlósági javaslat**: mivel János tetszett az első három filmek, Mahout megvizsgálja filmek, hogy mások hasonló beállítások tetszett, de János rendelkezik nem figyelt (tetszett vagy magas). Ebben az esetben a Mahout javasolja *a látszólagos támadása*, *támadások, a klónok*, és *, a Sith megtorlás*.
 
-### <a name="understanding-the-data"></a>Az adatok ismertetése
+### <a name="understanding-the-data"></a>Az adatok megismerése
 
-[GroupLens kutatási] [ movielens] minősítés adatokat biztosít a filmek formátuma nem kompatibilis a Mahout. Ezek az adatok érhető el az alapértelmezett tároló, a fürt `/HdiSamples/HdiSamples/MahoutMovieData`.
+[GroupLens kutatási] [ movielens] adja meg, amely kompatibilis a mahout használatával formátumú filmek minősítés adatait. Ezek az adatok érhető el az alapértelmezett tároló, a fürt `/HdiSamples/HdiSamples/MahoutMovieData`.
 
-Két fájlt `moviedb.txt` (a filmek információ) és `user-ratings.txt`. A `user-ratings.txt` fájllal elemzése során. A `moviedb.txt` fájllal meg felhasználóbarát szöveges, amikor a vizsgálat eredményeit jeleníti meg.
+Két fájl `moviedb.txt` (a filmek információt) és `user-ratings.txt`. A `user-ratings.txt` fájl elemzése során használatos. A `moviedb.txt` fájllal felhasználóbarát szöveget adja meg, az elemzés eredményeinek pénznemformátumban való megjelenítéséhez.
 
-A felhasználó-ratings.txt szereplő adatok struktúrája `userID`, `movieID`, `userRating`, és `timestamp`, amely azt ismerteti, hogyan magas minden felhasználó besorolású film. Íme egy példa:
+A felhasználó-ratings.txt szereplő adatok struktúrája `userID`, `movieID`, `userRating`, és `timestamp`, amely arról tájékoztatja, hogy minden egyes felhasználói hogyan magas számoljuk el egy filmet. Íme egy példa az adatokat:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -69,36 +64,36 @@ A felhasználó-ratings.txt szereplő adatok struktúrája `userID`, `movieID`, 
 
 ### <a name="run-the-job"></a>A feladat futtatása
 
-A következő Windows PowerShell-parancsfájl használatával futtatni egy feladatot, amely a Mahout javaslat motort használja, a movie adatokkal:
+A következő Windows PowerShell-parancsfájl használatával, amely a Mahout ajánlásokat készítő motor használja a film adatait az feladat futtatása:
 
 > [!NOTE]
-> Ez a fájl információkat kér, amellyel csatlakozhat a HDInsight-fürthöz, és feladatok futtatása. A feladat befejeződését, majd töltse le a kimenet.txt több percig is eltarthat.
+> Ez a fájl információkat kér, amellyel csatlakozhat a HDInsight-fürt és a feladatok futtatásához. A feladatok elvégzéséhez, töltse le a kimenet.txt több percig is eltarthat.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
 > [!NOTE]
-> Mahout feladatok ne távolítsa el a feldolgozás során létrehozott ideiglenes adatok. A `--tempDir` paraméter van megadva a példa feladat különítheti el az ideiglenes fájlok egy adott könyvtárba.
+> Feladatok létrehozása a mahout ne távolítsa el a feladat feldolgozása során létrehozott ideiglenes adatok. A `--tempDir` paraméter van megadva a példa feladat elkülöníteni az ideiglenes fájlok egy adott könyvtárba.
 
-A Mahout feladat nem áll vissza a kimeneti STDOUT. Ehelyett akkor is tartalmaz, mint a megadott kimeneti könyvtár **rész-r-00000**. A parancsfájl letölti a fájlt a **kimenet.txt** az aktuális könyvtárban található a munkaállomáson.
+A Mahout feladat nem áll vissza a kimeneti STDOUT. Ehelyett azt tárolja, mint a megadott kimeneti könyvtár **. rész – az r-00000**. A szkript letölti a fájlt **kimenet.txt** munkaállomáson az aktuális könyvtárban található.
 
-A következő szöveget a fájl tartalma példája:
+A következő szöveg Ez a fájl tartalmát egy példát:
 
     1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
     2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
     3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
     4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-Az első oszlop a `userID`. Szereplő értékeket ' ["és"] "vannak `movieId`:`recommendationScore`.
+Az első oszlop a `userID`. Szereplő értékeket a(z) "[" és "]" vannak `movieId`:`recommendationScore`.
 
-A parancsfájl is letölti a `moviedb.txt` és `user-ratings.txt` fájlokat, amelyek szükségesek ahhoz, hogy a kimenet, hogy jobban olvasható formátumban.
+A parancsfájl is letölti a `moviedb.txt` és `user-ratings.txt` fájlokat, amelyek szükségesek a érdekében a kimenet formázása.
 
-### <a name="view-the-output"></a>A kimeneti megtekintése
+### <a name="view-the-output"></a>A kimenet megtekintéséhez
 
-A létrehozott kimeneti OK lehet az alkalmazásban használható, de nincs felhasználóbarát. A `moviedb.txt` a kiszolgálóról segítségével hárítsa el a `movieId` movie névre. A következő PowerShell-parancsfájl használatával megjelenítheti a movie nevű ajánlásokat:
+Bár a generált kimeneti OK lehet az alkalmazások használatra, akkor sem felhasználóbarát. A `moviedb.txt` a kiszolgálóról is használható feloldani a `movieId` egy filmet névre. A következő PowerShell-parancsfájl használatával movie nevekkel javaslatok megjelenítése:
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=106-180)]
 
-A következő paranccsal egy felhasználóbarát formátumban a javaslatok megjelenítéséhez: 
+A következő paranccsal egy felhasználóbarát formában jeleníti meg a javaslatok: 
 
 ```powershell
 .\show-recommendation.ps1 -userId 4 -userDataFile .\user-ratings.txt -movieFile .\moviedb.txt -recommendationFile .\output.txt
@@ -137,11 +132,11 @@ A kimenet az alábbi szöveghez hasonló:
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="cannot-overwrite-files"></a>Fájlok nem írható felül.
+### <a name="cannot-overwrite-files"></a>Fájl nem írható felül.
 
-Mahout feladatok adatformátuma nem karbantartása feldolgozás során létrehozott ideiglenes fájlokat. Emellett a feladatok fájl felülírásának mellőzése meglévő kimeneti.
+Mahout feladatok akkor ne törölje feldolgozás során létrehozott ideiglenes fájlokat. Emellett a feladatok nem felülírja a meglévő kimeneti fájlt.
 
-Futó feladatok Mahout hibák elkerülése törli az ideiglenes és a kimeneti fájlok közötti futtatása. A jelen dokumentum korábbi parancsfájlok által létrehozott fájlok eltávolításához használja a következő PowerShell-parancsfájlt:
+Mahout feladatok futtatásakor a hibák elkerülése törli az ideiglenes és a kimeneti fájlok futtatásai között. A jelen dokumentum korábbi parancsfájlok által létrehozott fájlok eltávolításához használja a következő PowerShell-parancsfájlt:
 
 ```powershell
 # Login to your Azure subscription
@@ -186,9 +181,9 @@ foreach($blob in $blobs)
 }
 ```
 
-### <a name="nopowershell"></a>Olyan osztállyal, amelynek nem működnek az Azure PowerShell
+### <a name="nopowershell"></a>Osztályokat, amelyek nem működnek az Azure PowerShell használatával
 
-A következő osztályokat használó mahout feladatok vissza különböző hibaüzenetek a Windows PowerShell használata esetén:
+A következő osztályokat használó feladatok létrehozása a mahout különböző hibaüzeneteket, a Windows PowerShell használatakor adja vissza:
 
 * org.apache.mahout.utils.clustering.ClusterDumper
 * org.apache.mahout.utils.SequenceFileDumper
@@ -207,15 +202,15 @@ A következő osztályokat használó mahout feladatok vissza különböző hiba
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Ezeket az osztályokat használó feladatok futtatásához, a HDInsight-fürthöz SSH használatával csatlakozhat, és a feladatok futtatása a parancssorból. Az SSH használatával Mahout feladatok futtatásához példáért lásd: [Mahout és a HDInsight-(SSH) használatával movie javaslatok generálása](hadoop/apache-hadoop-mahout-linux-mac.md).
+Ezeket az osztályokat használó feladatok futtatásához, a HDInsight-fürthöz SSH használatával csatlakozhat, és a feladatok futtatása a parancssorból. Az SSH-val Mahout feladatok futtatásához egy példa: [Filmajánlók létrehozása a Mahout és a HDInsight-(SSH) használatával](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik megismerte Mahout használata, felderítése egyéb módjait a HDInsight-adatokkal végzett munka:
+Most, hogy, hogyan használható a Mahout hogyan, Fedezze fel az adatok használata a HDInsight egyéb módjait:
 
-* [A HDInsight Hive](hadoop/hdinsight-use-hive.md)
-* [Pig with HDInsight](hadoop/hdinsight-use-pig.md)
-* [MapReduce a hdinsight eszközzel](hadoop/hdinsight-use-mapreduce.md)
+* [Hive a HDInsight](hadoop/hdinsight-use-hive.md)
+* [A HDInsight Pig](hadoop/hdinsight-use-pig.md)
+* [A MapReduce és a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
 [aps]: /powershell/azureps-cmdlets-docs

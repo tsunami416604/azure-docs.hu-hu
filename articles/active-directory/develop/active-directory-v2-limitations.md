@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: aa931702975c2c6bdcc65853c3865dbeff570bf4
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578449"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590749"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>A v2.0-végpont érdemes használni?
 
@@ -39,11 +39,11 @@ Ha rendelkezik meglévő Azure AD-alkalmazás, amely nem használja a v2.0-végp
 
 ## <a name="restrictions-on-app-types"></a>Alkalmazástípusok korlátozásai
 
-A következő típusú alkalmazások jelenleg nem támogatottak a v2.0-végpont által. Támogatott alkalmazástípusok ismertetését lásd: [típusú alkalmazások esetében az Azure Active Directory v2.0-végpont](active-directory-v2-flows.md).
+A következő típusú alkalmazások jelenleg nem támogatottak a v2.0-végpont által. Támogatott alkalmazástípusok ismertetését lásd: [típusú alkalmazások esetében az Azure Active Directory v2.0-végpont](v2-app-types.md).
 
 ### <a name="standalone-web-apis"></a>Önálló webes API-k
 
-Használhatja a v2.0-végpont [hozhat létre a webes API-hoz biztosított az OAuth 2.0-val](active-directory-v2-flows.md#web-apis). Azonban, hogy a webes API képes jogkivonatokat fogadni csak egy alkalmazásból, amely rendelkezik az ugyanazon alkalmazás azonosítóját. Nem lehet hozzáférni egy webes API-ügyfélről, amely rendelkezik egy másik alkalmazás azonosítóját. Az ügyfél nem fog tudni kérje vagy szerezze meg a webes API-hoz való engedélyek.
+Használhatja a v2.0-végpont [hozhat létre a webes API-hoz biztosított az OAuth 2.0-val](v2-app-types.md#web-apis). Azonban, hogy a webes API képes jogkivonatokat fogadni csak egy alkalmazásból, amely rendelkezik az ugyanazon alkalmazás azonosítóját. Nem lehet hozzáférni egy webes API-ügyfélről, amely rendelkezik egy másik alkalmazás azonosítóját. Az ügyfél nem fog tudni kérje vagy szerezze meg a webes API-hoz való engedélyek.
 
 Hogyan hozhat létre egy webes API-t, amely ugyanazon Alkalmazásazonosítóval rendelkező ügyfél származó jogkivonatokat, olvassa el a 2.0-s verziójú végpont webes API-t minták a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakaszban.
 
@@ -98,9 +98,9 @@ Alkalmazás regisztrálása az alkalmazásregisztrációs portálon az kezelés�
 Klienskódtár-támogatásával a v2.0-végpont jelenleg korlátozott. Ha azt szeretné, használhatja a v2.0-végpontra egy éles alkalmazásban, ezen lehetőségek állnak rendelkezésére:
 
 * Ha egy webalkalmazást hoz létre, a bejelentkezéshez és jogkivonat-ellenőrzéshez biztonságosan használhatja a Microsoft mindenki számára elérhető kiszolgálóoldali közbenső szoftver. Ezek közé tartozik az OWIN Open ID Connect közbenső szoftvert, az ASP.NET és a Node.js Passport beépülő modult. Használja a Microsoft közbenső kódmintákért tekintse a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakaszban.
-* Ha egy asztali vagy mobil alkalmazást fejleszt, a Microsoft hitelesítési tárak (MSAL) előzetes egyikét használhatja. Ezek a kódtárak vannak egy éles által támogatott előzetes verzióban érhető el, így biztonságosan használhatja őket az éles környezetben. További tudnivalók az előzetes verzió és a rendelkezésre álló kódtárak a feltételek [hitelesítési tárak referencia](active-directory-v2-libraries.md).
+* Ha egy asztali vagy mobil alkalmazást fejleszt, a Microsoft hitelesítési tárak (MSAL) előzetes egyikét használhatja. Ezek a kódtárak vannak egy éles által támogatott előzetes verzióban érhető el, így biztonságosan használhatja őket az éles környezetben. További tudnivalók az előzetes verzió és a rendelkezésre álló kódtárak a feltételek [hitelesítési tárak referencia](reference-v2-libraries.md).
 * A platformon nem fedi le a Microsoft-kódtárak integrálható a v2.0-végpont által közvetlenül üzenetek küldése és fogadása protokoll az alkalmazás kódjában. A 2.0-s OpenID Connectet és az OAuth-protokollok [explicit módon vannak dokumentálva](active-directory-v2-protocols.md) ilyen az integráció végrehajtásához.
-* Végül nyílt forráskódú ID Connect megnyitásához és az OAuth-kódtárak segítségével integrálhatók az a v2.0-végpontra. A 2.0-s protokoll jelentős módosítások nélkül számos nyílt forráskódú protokoll kódtár kompatibilisnek kell lennie. Az ilyen típusú kódtárak rendelkezésre állásának nyelvtől és platformtól függ. A [Open ID Connect](http://openid.net/connect/) és [OAuth 2.0](http://oauth.net/2/) webhelyek népszerű megvalósításokhoz listának a karbantartására. További információkért lásd: [Azure Active Directory v2.0 és hitelesítési kódtárai](active-directory-v2-libraries.md), és a nyílt forráskódú ügyféloldali függvénytárak és minták a v2.0-végponttal tesztelt listáját.
+* Végül nyílt forráskódú ID Connect megnyitásához és az OAuth-kódtárak segítségével integrálhatók az a v2.0-végpontra. A 2.0-s protokoll jelentős módosítások nélkül számos nyílt forráskódú protokoll kódtár kompatibilisnek kell lennie. Az ilyen típusú kódtárak rendelkezésre állásának nyelvtől és platformtól függ. A [Open ID Connect](http://openid.net/connect/) és [OAuth 2.0](http://oauth.net/2/) webhelyek népszerű megvalósításokhoz listának a karbantartására. További információkért lásd: [Azure Active Directory v2.0 és hitelesítési kódtárai](reference-v2-libraries.md), és a nyílt forráskódú ügyféloldali függvénytárak és minták a v2.0-végponttal tesztelt listáját.
 
 ## <a name="restrictions-on-protocols"></a>Korlátozásokat protokollokkal
 

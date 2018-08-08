@@ -1,24 +1,18 @@
 ---
-title: HDFS hibaelhárítása az Azure HDinsight |} A Microsoft Docs
+title: Az Azure HDinsight a HDFS hibaelhárítása
 description: HDFS- és Azure HDInsight használata kapcsolatos gyakori kérdésekre adott válaszok.
-keywords: Az Azure HDInsight, HDFS, gyakori kérdések hibaelhárítási útmutató, gyakori kérdések
-services: Azure HDInsight
-documentationcenter: na
-author: arijitt
-manager: ''
-editor: ''
-ms.assetid: 4C33828F-2982-47F0-B858-C32FFF634D9E
+services: hdinsight
+author: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/2/2017
-ms.author: arijitt
-ms.openlocfilehash: 7ed4bf8f48ce425880bcda84bc7838a26180d924
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: f458a1b7156b2cc00a4b088ef98d12526378d827
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578014"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600829"
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>HDFS hibaelhárítása az Azure HDInsight használatával
 

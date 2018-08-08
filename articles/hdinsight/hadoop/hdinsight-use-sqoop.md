@@ -1,180 +1,175 @@
 ---
-title: Apache Sqoop feladatok futtatása az Azure HDInsight (Hadoop) |} Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure PowerShell munkaállomásról futtatása Sqoop importálása és exportálása egy Hadoop-fürt és az Azure SQL-adatbázis között.
-editor: cgronlun
-manager: jhubbard
+title: Az Apache Sqoop-feladatok futtatása az Azure HDInsight (Hadoop)
+description: Megtudhatja, hogyan használhatja az Azure Powershellt egy munkaállomásról futtatása Sqoop-importálás és exportálása egy Hadoop-fürt és a egy Azure SQL database között.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: 2fdcc6b7-6ad5-4397-a30b-e7e389b66c7a
+author: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 55f30078918239d77c079041ebd1df0325e77719
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8444da715ea4557cf76f3cad569f3d07136df1e8
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200775"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594943"
 ---
-# <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Sqoop használata a hadooppal a Hdinsightban
+# <a name="use-sqoop-with-hadoop-in-hdinsight"></a>A Sqoop használata a HDInsight Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Ismerje meg a Sqoop használata a Hdinsightban történő importálására és exportálására HDInsight-fürt és Azure SQL database vagy az SQL Server-adatbázis között.
+Ismerje meg, a Sqoop használata a HDInsight importálása és exportálása a HDInsight-fürt és az Azure SQL database vagy SQL Server-adatbázis között.
 
-Hadoop természetes téve a feldolgozása a strukturálatlan és félig strukturált adatok, például a naplókat, valamint fájlt, azonban a is lehet a relációs adatbázisok tárolt strukturált adatok feldolgozása érdekében.
+Bár Hadoop feldolgozásának strukturálatlan és félig strukturált adatok, naplók és a fájlokat, például kézenfekvő lehet a is lehet szükség, amely a relációs adatbázisokban tárolt strukturált adatok feldolgozása.
 
-[Sqoop][sqoop-user-guide-1.4.4] az eszköz a Hadoop-fürtök és a relációs adatbázisok közötti adattovábbításra. Adatok importálása egy relációs adatbázis-kezelő rendszerének (RDBMS), például az SQL Server, MySQL, vagy a Hadoop elosztott fájlrendszer (HDFS), az Oracle átalakíthatja az adatokat a Hadoop MapReduce vagy a Hive, majd az adatok exportálása vissza egy RDBMS használhatja. Ebben az oktatóanyagban egy SQL Server adatbázist használ a relációs adatbázis.
+[Sqoop][sqoop-user-guide-1.4.4] az eszköz a Hadoop-fürtök és a relációs adatbázisok közötti adattovábbításra. Adatokat importálhat egy relációsadatbázis-kezelő rendszerének (RDBMS), például SQL Server, MySQL és a Hadoop elosztott fájlrendszer (HDFS), az Oracle, az adatok átalakítása a Hadoop MapReduce- vagy Hive-, és majd exportálja az adatokat egy RDBMS be újra, használhatja azt. Ebben az oktatóanyagban egy SQL Server-adatbázist használ a relációs adatbázis.
 
-A HDInsight-fürtökön támogatott Sqoop verzióiért lásd: [What's new in HDInsight által biztosított fürt verziók?][hdinsight-versions]
+A HDInsight-fürtökön támogatott verziói a Sqoop, lásd: [a HDInsight által biztosított fürtverziók újdonságai?][hdinsight-versions]
 
 ## <a name="understand-the-scenario"></a>A forgatókönyv ismertetése
 
-HDInsight-fürtök néhány adatot tartalmaz. A következő két mintát használ:
+HDInsight-fürt mintaadatokat tartalmaz. A következő két mintát használja:
 
-* A log4j naplófájlt, amely itt található: */example/data/sample.log*. A következő fájl kibontása a következő naplók kapcsolódnak:
+* A log4j naplófájlok, amely a következő helyen található */example/data/sample.log*. A fájl kinyert a következő naplók kapcsolódnak:
   
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
-* Nevű Hive tábla *hivesampletable*, amely hivatkozik az adatok fájlba */hive/warehouse/hivesampletable*. A táblázat tartalmaz néhány mobileszköz adat. 
+* Hive-tábla nevű *hivesampletable*, hivatkozik az adatfájl található */hive/warehouse/hivesampletable*. A tábla tartalmazza az egyes mobileszköz-adatok. 
   
   | Mező | Adattípus |
   | --- | --- |
-  | ClientID |karakterlánc |
-  | querytime |karakterlánc |
-  | piaci |karakterlánc |
-  | deviceplatform |karakterlánc |
-  | devicemake |karakterlánc |
-  | devicemodel |karakterlánc |
-  | state |karakterlánc |
-  | Ország |karakterlánc |
+  | ClientID |sztring |
+  | querytime |sztring |
+  | piaci |sztring |
+  | deviceplatform |sztring |
+  | devicemake |sztring |
+  | devicemodel |sztring |
+  | state |sztring |
+  | Ország |sztring |
   | querydwelltime |double |
   | munkamenet-azonosító |bigint |
   | sessionpagevieworder |bigint |
 
-Az oktatóanyag segítségével ezen két adatkészletek tesztelése Sqoop importálása és exportálása.
+Ebben az oktatóanyagban használhatja a két adatkészlet tesztelése Sqoop-importálás és exportálása.
 
-## <a name="create-cluster-and-sql-database"></a>Fürt és az SQL-adatbázis létrehozása
-Ez a szakasz bemutatja, hogyan fürt SQL-adatbázis, az SQL adatbázis sémák és futtatásához az oktatóanyag az Azure-portál és az Azure Resource Manager-sablon létrehozásához. A sablonban található [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). A Resource Manager-sablon meghívja a táblasémákat telepítendő SQL-adatbázis bacpac csomag.  A bacpac-csomag egy nyilvános blob tárolóban található https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Ha azt szeretné, személyes tároló használata a bacpac-fájlok, a sablon a következő értékeket használja:
+## <a name="create-cluster-and-sql-database"></a>Fürt- és SQL-adatbázis létrehozása
+Ez a szakasz bemutatja, hogyan hozhat létre egy fürtöt, egy SQL Database és az SQL database sémák futtatja az oktatóanyagot az Azure portal és Azure Resource Manager-sablon használatával. A sablonban található [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). A Resource Manager-sablon üzembe helyezéséhez a táblasémákat az SQL-adatbázis bacpac csomag meghívja.  A bacpac-csomag egy nyilvános blob-tárolóban található https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Ha szeretne egy személyes tárolót használja a bacpac-fájlt, használja a sablonban a következő értékeket:
    
 ```json
 "storageKeyType": "Primary",
 "storageKey": "<TheAzureStorageAccountKey>",
 ```
 
-Ha inkább az Azure PowerShell használatával a fürt és az SQL-adatbázis létrehozása című [függelék](#appendix-a---a-powershell-sample).
+Ha a fürt és az SQL-adatbázis létrehozásához, tekintse meg az Azure PowerShell használatával szeretne [függelék](#appendix-a---a-powershell-sample).
 
 > [!NOTE]
-> Importálja a sablon használatával, vagy az Azure-portálon csak támogatja BACPAC-fájl importálását az Azure blob storage.
+> Importálja a sablon használatával, vagy csak támogatja az Azure Portalon a BACPAC-fájl importálása az Azure blob storage-ból.
 
-**A környezet erőforrás felügyeleti sablon használatával konfigurálása**
-1. Kattintson az alábbi képre kattintva nyissa meg a Resource Manager-sablon az Azure portálon.         
+**A resource management-sablonnal környezet konfigurálása**
+1. Kattintson az alábbi képre kattintva megnyithatja a Resource Manager-sablont az Azure Portalon.         
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-2. Adja meg a következő tulajdonságokkal:
+2. Adja meg a következő tulajdonságokat:
 
-    - **Előfizetés**: Adja meg az Azure-előfizetéshez.
-    - **Erőforráscsoport**: hozzon létre egy új Azure-erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.  Egy erőforráscsoport egy felügyeleti célból.  Objektumok tárolója.
+    - **Előfizetés**: Adja meg az Azure-előfizetésében.
+    - **Erőforráscsoport**: hozzon létre egy új Azure-erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.  Egy erőforráscsoport van felügyeleti célból.  Ez az objektumok tárolója.
     - **Hely**: Válasszon ki egy régiót.
     - **ClusterName**: Adja meg a Hadoop-fürt nevét.
     - **A fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az admin.
     - **SSH-felhasználónév és -jelszó**.
-    - **SQL adatbázis-bejelentkezési nevet és jelszót**.
-    - **hely _artifacts**: az alapértelmezett értéket használja, kivéve, ha egy másik helyen található saját backpac fájlt használja.
-    - **hely Sas tokent _artifacts**: hagyja üresen a mezőt.
-    - **Bacpac Fájlnév**: az alapértelmezett értéket használja, kivéve, ha szeretné használni a saját backpac fájlt.
+    - **Az SQL server bejelentkezési nevét és jelszavát adatbázis**.
+    - **hely _artifacts**: használja az alapértelmezett értéket, hacsak nem szeretné használni a saját backpac fájlt egy másik helyen található.
+    - **hely Sas-Token _artifacts**: hagyja üresen a mezőt.
+    - **Bacpac-fájl neve**: használja az alapértelmezett értéket, hacsak nem szeretné használni a saját backpac fájlt.
      
-        A következő értékek a következők név szoftveresen kötött a sablonváltozók szakaszban:
+        A következő értékek közül, szoftveresen kötött a változók szakaszban:
         
         |Name (Név)|Érték|
         |----|-----|
         | Alapértelmezett tárfióknév | &lt;CluterName > tárolásához |
-        | Az Azure SQL adatbázis-kiszolgáló neve | &lt;ClusterName > dbserver |
+        | Az Azure SQL database-kiszolgálónév | &lt;ClusterName > dbserver |
         | Az Azure SQL-adatbázis neve | &lt;ClusterName > db |
      
-3. Válassza ki **elfogadom a feltételeket és a fenti feltételek**.
-4. Kattintson a **Purchase** (Vásárlás) gombra. Megjelenik egy új csempe jelenik meg Submitting deployment sablon központi telepítéshez. A fürt és az SQL-adatbázis létrehozása nagyjából 20 percet vesz igénybe.
+3. Válassza ki **elfogadom a feltételeket és a fenti feltételeket**.
+4. Kattintson a **Purchase** (Vásárlás) gombra. Megjelenik egy új csempe nevű elküldés központi telepítési sablon üzembe helyezéshez. A fürt és az SQL-adatbázis létrehozása nagyjából 20 percet vesz igénybe.
 
-Ha úgy dönt, hogy a meglévő Azure SQL adatbázis vagy a Microsoft SQL Server használata
+Ha úgy dönt, hogy a meglévő Azure SQL database vagy a Microsoft SQL Server használata
 
-* **Az Azure SQL adatbázis**: konfigurálnia kell egy tűzfalszabályt az Azure SQL adatbázis-kiszolgáló számára engedélyezi a hozzáférést a munkaállomáson. Egy Azure SQL-adatbázis létrehozása, és a tűzfalon konfigurálásával kapcsolatos útmutatásért lásd: [Azure SQL-adatbázis használatának első][sqldatabase-get-started]. 
+* **Az Azure SQL database**: konfigurálnia kell egy tűzfalszabályt az Azure SQL-kiszolgáló engedélyezze a hozzáférést a munkaállomáson. Egy Azure SQL-adatbázis létrehozása, és a tűzfal konfigurálásával kapcsolatos útmutatásért lásd: [első lépései az Azure SQL database-t használó][sqldatabase-get-started]. 
   
   > [!NOTE]
-  > Alapértelmezés szerint az Azure SQL adatbázis Azure-szolgáltatások, például az Azure HDInsight kapcsolatokat engedélyez. Ha a tűzfal beállítás le van tiltva, engedélyezze az Azure portálról szeretné. További információk az Azure SQL-adatbázis létrehozása és a tűzfalszabályok konfigurálása, lásd: [létrehozása és konfigurálása az SQL-adatbázis][sqldatabase-create-configue].
+  > Alapértelmezés szerint az Azure SQL database lehetővé teszi, hogy Azure-szolgáltatások, például Azure HDInsight érkező kapcsolatokat. Ez a tűzfal beállítás le van tiltva, ha szüksége engedélyezi azt az Azure Portalról. Utasítások az Azure SQL-adatbázis létrehozása és tűzfalszabályainak konfigurálása, lásd: [létrehozása és konfigurálása az SQL Database][sqldatabase-create-configue].
   > 
   > 
-* **SQL Server**: Ha a HDInsight-fürt ugyanazt a virtuális hálózatot az Azure SQL-kiszolgálóként, segítségével a lépéseket a cikkben adatok importálása és exportálása az SQL Server-adatbázishoz.
+* **Az SQL Server**: a HDInsight-fürt esetén az azonos virtuális hálózaton az Azure-ban, SQL Server segítségével a lépéseket ebben a cikkben adatok importálása és exportálása az SQL Server-adatbázis.
   
   > [!NOTE]
-  > HDInsight támogatja a csak helyalapú virtuális hálózatokat, és jelenleg nem működik az affinitáscsoport-alapú virtuális hálózatokon.
+  > HDInsight támogatja csak helye-alapú virtuális hálózatok, és ez jelenleg nem működik az affinitáscsoport-alapú virtuális hálózatokat.
   > 
   > 
   
-  * Hozzon létre, és egy virtuális hálózat konfigurálására, [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../virtual-network/quick-create-portal.md).
+  * Hozzon létre, és a egy virtuális hálózat konfigurálása, lásd: [hozzon létre egy virtuális hálózatot az Azure portal használatával](../../virtual-network/quick-create-portal.md).
     
-    * SQL Server használatakor az adatközpontban található konfigurálnia kell a virtuális hálózaton: *pont-pont* vagy *pont-pont*.
+    * Az SQL Server használata esetén a helyi adatközpontban, konfigurálnia kell a virtuális hálózatban, mint *site-to-site* vagy *pont – hely*.
       
       > [!NOTE]
-      > A **pont-pont** virtuális hálózatok, az SQL Server futnia kell a VPN-ügyfél konfigurációs alkalmazás, amely elérhető a a **irányítópult** az Azure-beli virtuális hálózat konfigurációját.
+      > A **pont – hely** virtuális hálózatok, SQL Server futnia kell a VPN-ügyfél konfigurációs alkalmazásról, így érhető el a **irányítópult** az Azure virtuális hálózat konfigurációját.
       > 
       > 
-    * Használatakor az SQL Server Azure virtuális géphez, virtuális hálózati konfigurációt is használható, ha a virtuális gépet üzemeltető SQL Server a HDInsight megegyező virtuális hálózatban tagja.
-  * HDInsight-fürtök létrehozása a virtuális hálózaton: [létrehozása Hadoop-fürtök a Hdinsightban egyéni beállításokkal](../hdinsight-hadoop-provision-linux-clusters.md)
+    * Használata esetén az SQL Server-beli virtuális gépen, virtuális hálózat konfigurálása is használható, ha a virtuális gépet üzemeltető SQL Server ugyanazon a virtuális hálózaton HDInsight tagja.
+  * Egy HDInsight-fürt létrehozása virtuális hálózaton: [Hadoop-fürtök létrehozása az egyéni beállításokkal HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
     
     > [!NOTE]
-    > SQL Server hitelesítési is lehetővé kell tenni. Ebben a cikkben lépéseinek végrehajtásához egy SQL Server bejelentkezési fiókot kell használnia.
+    > Az SQL Server is engedélyeznie kell a hitelesítést. SQL Server-bejelentkezésen kell használnia a jelen cikkben ismertetett lépések végrehajtásához.
     > 
     > 
 
 **A konfiguráció érvényesítéséhez**
 
-1. Nyissa meg az erőforráscsoportot az Azure portálon. Ekkor megjelenik a csoport négy erőforrások:
+1. Az Azure Portalon nyissa meg az erőforráscsoportot. A csoport négy erőforrásokat kell megjelennie:
 
     - a fürt
     - az adatbázis-kiszolgáló
     - az adatbázis
     - az alapértelmezett tárfiók
 
-2. Nyissa meg az adatbázis a Microsoft SQL Server Management Studio.  Ekkor megjelenik a két adatbázis telepítve:
+2. Nyissa meg az adatbázis a Microsoft SQL Server Management Studiót.  Üzembe helyezett két adatbázist kell megjelennie:
 
     ![Azure HDInsight Sqoop SQL Management Studio](./media/hdinsight-use-sqoop/hdinsight-sqoop-sql-management-studio.png)
 
 
-## <a name="run-sqoop-jobs"></a>Sqoop feladatok futtatása
-HDInsight Sqoop feladatok futtatásához számos módszer használatával. A következő táblázat segítségével döntse el, melyik módszert részesíti az Ön számára legmegfelelőbb, majd kövesse a hivatkozást útmutatást.
+## <a name="run-sqoop-jobs"></a>Sqoop-feladatok futtatása
+HDInsight számos módszer használatával Sqoop-feladatok futtatásához. A következő táblázat segítségével döntse el, melyik módszer a legmegfelelőbb Önnek, majd kövesse a hivatkozást bemutató.
 
-| **Ezzel** Ha azt szeretné... | ...an **interaktív** rendszerhéj | ...**kötegelt** feldolgozása | és mivel ez **fürt operációs rendszer** | ...from ez **ügyfél operációs rendszer** |
+| **Ezzel** Ha azt szeretné... | ...an **interaktív** rendszerhéj | ...**kötegelt** feldolgozása | .. során ez **fürt operációs rendszerének** | ...from ez **ügyfél operációs rendszer** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X vagy Windows |
-| [.NET SDK a Hadoophoz](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |✔ |Linux- vagy Windows |(Egyelőre) Windows |
-| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |✔ |Linux- vagy Windows |Windows |
+| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux |Linux, Unix, Mac OS X vagy Windows |
+| [.NET SDK a Hadoophoz](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |? |Linux vagy Windows |Windows (egyelőre) |
+| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Linux vagy Windows |Windows |
 
 ## <a name="limitations"></a>Korlátozások
-* Tömeges export - a Linux-alapú HDInsight, a Sqoop összekötő használt Microsoft SQL Server vagy az Azure SQL Database adatainak exportálása jelenleg nem támogatja a tömeges beszúrások.
-* Kötegelés - és a Linux-alapú HDInsight együttes használata esetén a `-batch` beszúrása végrehajtásakor kapcsoló, a Sqoop több beszúrás helyett a beszúrási műveletek kötegelése hajt végre.
+* Tömeges exportálása – a Linux-alapú HDInsight, a Sqoop-összekötő segítségével a Microsoft SQL Server vagy az Azure SQL Database-adatok exportálása jelenleg nem támogatja a tömeges beszúrás.
+* Kötegelés – a Linux-alapú HDInsight használatakor a `-batch` Beszúrások végrehajtásakor váltson, Sqoop több beszúrás helyett a beszúrási műveletek kötegelése hajt végre.
 
 ## <a name="next-steps"></a>További lépések
-Most megtanulhatta, hogyan használható a Sqoop. További tudnivalókért lásd:
+Most már megtanulhatta, hogyan használható a sqoop használatával. További tudnivalókért lásd:
 
 * [A Hive használata a HDInsightban](../hdinsight-use-hive.md)
 * [A Pig használata a HDInsightban](../hdinsight-use-pig.md)
-* [Adatok feltöltése a HDInsight][hdinsight-upload-data]: található adatok feltöltése a HDInsight vagy az Azure Blob storage más módszerrel.
+* [Adatok feltöltése a HDInsight][hdinsight-upload-data]: keresse meg a HDInsight vagy az Azure Blob storage-ba történő feltöltéséhez más módszerekkel.
 
-## <a name="appendix-a---a-powershell-sample"></a>A melléklet – PowerShell-példa
-A PowerShell-példa a következő lépéseket végzi el:
+## <a name="appendix-a---a-powershell-sample"></a>A függelék – egy PowerShell-minta
+A PowerShell-mintát a következő lépéseket hajtja végre:
 
 1. Csatlakozás az Azure-bA.
-2. Azure-erőforráscsoport létrehozása További információkért lásd: [az Azure PowerShell használata Azure Resource Managerrel](../../azure-resource-manager/powershell-azure-resource-manager.md)
-3. Hozzon létre egy Azure SQL adatbázis-kiszolgáló, az Azure SQL-adatbázis és a két tábla. 
+2. Azure-erőforráscsoport létrehozása További információkért lásd: [az Azure PowerShell az Azure Resource Managerrel](../../azure-resource-manager/powershell-azure-resource-manager.md)
+3. Hozzon létre egy Azure SQL Database-kiszolgáló, egy Azure SQL database és a két táblázat. 
    
-    Ha ehelyett SQL Servert használja, a táblák létrehozásához használja az alábbi utasításokat:
+    Ha Ehelyett használja az SQL Server, a táblák létrehozásához használja az alábbi utasításokat:
    
         CREATE TABLE [dbo].[log4jlogs](
          [t1] [nvarchar](50),
@@ -198,38 +193,38 @@ A PowerShell-példa a következő lépéseket végzi el:
          [sessionid] [bigint],
          [sessionpagevieworder][bigint])
    
-    A vizsgálata, az adatbázis és a táblák legkönnyebben Visual Studio használata. Az adatbázis-kiszolgáló és az adatbázis megfelel az Azure portál használatával.
-4. HDInsight-fürtök létrehozása.
+    Vizsgálja meg az adatbázis és a táblák a legegyszerűbb módja, hogy a Visual studióval. Az adatbázis-kiszolgáló és az adatbázis megfelel az Azure portal használatával.
+4. Hozzon létre egy HDInsight-fürtön.
    
-    Vizsgálja meg a fürt, használhatja az Azure portálon vagy az Azure PowerShell.
-5. Előre feldolgozzák a forrásadatfájlok.
+    Vizsgálja meg a fürt, használhatja az Azure portal vagy Azure PowerShell-lel.
+5. A forrásfájl adatok előzetes feldolgozása.
    
-    Ebben az oktatóanyagban exportálhatja egy log4j naplófájl (tagolt fájl) és a Hive tábla Azure SQL-adatbázishoz. A tagolt fájl neve */example/data/sample.log*. Az oktatóanyag korábbi részében látott néhány minták log4j naplók. A naplófájlban van néhány üres sorok és az egyes sorok alábbiakhoz hasonló:
+    Ebben az oktatóanyagban exportálja a log4j naplófájlok (tagolt fájl) és a egy Hive-táblába egy Azure SQL Database-adatbázishoz. A tagolt fájl neve */example/data/sample.log*. Az oktatóanyag korábbi részében látott néhány log4j tartalmazó naplók mintáit. A naplófájlban van néhány üres és néhány sorokat hasonló:
    
         java.lang.Exception: 2012-02-03 20:11:35 SampleClass2 [FATAL] unrecoverable system problem at id 609774657
             at com.osa.mocklogger.MockLogger$2.run(MockLogger.java:83)
    
-    Ennek megfelelően működik, ezeket az adatokat használó más példák, de azt el kell távolítania az ilyen kivételek ahhoz, hogy importálja az Azure SQL database vagy az SQL Server. Sqoop exportálás sikertelen lesz, ha van egy üres karakterlánc vagy egy kevesebb sort elem definiálva az Azure SQL-adatbázistáblában szereplő mezők számánál. A log4jlogs tábla hét karakterlánc típusú mezőket tartalmaz.
+    Ez nem okoz gondot az ezeket az adatokat használó más példák, de hogy előtt el kell távolítania az ilyen kivételek azt importálhatja az Azure SQL database vagy SQL Server. Sqoop exportálás sikertelen lesz, ha van egy üres karakterlánc vagy egy sort a kevesebb elemet a mezők meghatároztak az Azure SQL database adatbázistábla számánál. A log4jlogs tábla hét karakterlánc típusú mezőket tartalmaz.
    
-    Ez az eljárás létrehoz egy új fájlt a fürt: tutorials/usesqoop/data/sample.log. Tekintse meg a módosított adatok fájlt, használhatja az Azure-portálon, az Azure Storage explorer eszköz vagy az Azure PowerShell. [Ismerkedés a HDInsight] [ hdinsight-get-started] rendelkezik egy példakód az Azure PowerShell használatával töltse le a fájlt, és megjeleníti a fájl tartalma.
-6. Az Azure SQL-adatbázis egy adatfájlt exportálja.
+    Ez az eljárás létrehoz egy új fájlt a fürtön: tutorials/usesqoop/data/sample.log. Tekintse meg a módosított adatok fájlt, használhatja az Azure Portalon, egy Azure Storage explorer eszköz vagy Azure PowerShell-lel. [HDInsight – első lépések] [ hdinsight-get-started] rendelkezik egy fájlok letöltéséhez, és a fájl tartalmának megjelenítése az Azure PowerShell használatával – kódminta.
+6. Az Azure SQL Database-adatfájl exportálásához.
    
-    A forrásfájl tutorials/usesqoop/data/sample.log. A tábla, ahol az adatok exportálása az log4jlogs nevezik.
+    A forrásfájl tutorials/usesqoop/data/sample.log. A tábla, ahol az adatok exportálva lettek log4jlogs nevezzük.
    
    > [!NOTE]
-   > Eltérő kapcsolati karakterlánc információt a jelen szakaszban szereplő lépéseket az Azure SQL-adatbázis, vagy az SQL Server kell működnie. Ezeket a lépéseket a következő konfigurációval teszteltük:
+   > Kapcsolati sztring adatait, nem a jelen szakaszban ismertetett lépések működnie kell egy Azure SQL database vagy SQL Server. Ezeket a lépéseket tesztelt, a következő konfigurációval:
    > 
-   > * **Azure-beli virtuális hálózat pont-hely konfigurációs**: virtuális hálózat a HDInsight-fürthöz csatlakozik egy SQL Server egy privát adatközpontban. Lásd: [pont-pont VPN konfigurálásához a kezelési portál](../../vpn-gateway/vpn-gateway-point-to-site-create.md) további információt.
-   > * **Az Azure HDInsight**: lásd: [létrehozása Hadoop-fürtök a Hdinsightban egyéni beállításokkal](../hdinsight-hadoop-provision-linux-clusters.md) információ a fürt létrehozása a virtuális hálózaton.
-   > * **Az SQL Server 2014**: konfigurált ahhoz, hogy hitelesítést és fut a VPN-ügyfél konfigurációs csomag biztonságosan a virtuális hálózathoz csatlakozni.
+   > * **Azure virtuális hálózat pont – hely konfiguráció**: virtuális hálózat a HDInsight-fürthöz csatlakozik egy SQL Server egy privát adatközpontban. Lásd: [pont – hely VPN konfigurálása a felügyeleti portálon](../../vpn-gateway/vpn-gateway-point-to-site-create.md) további információt.
+   > * **Az Azure HDInsight**: lásd: [Hadoop-fürtök létrehozása az egyéni beállításokkal HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) információ a fürt létrehozása virtuális hálózaton.
+   > * **Az SQL Server 2014**: lehetővé teszik a hitelesítés és a VPN-ügyfél konfigurációs csomag, biztonságosan csatlakozhat a virtuális hálózaton futó konfigurált.
    > 
    > 
-7. Hive tábla exportálása az Azure SQL adatbázishoz.
-8. A mobiledata tábla importálása a HDInsight-fürthöz.
+7. Hive-tábla exportálása az Azure SQL Database-adatbázishoz.
+8. A HDInsight-fürt a mobiledata tábla importálása.
    
-    Tekintse meg a módosított adatok fájlt, használhatja az Azure-portálon, az Azure Storage explorer eszköz vagy az Azure PowerShell.  [Ismerkedés a HDInsight] [ hdinsight-get-started] rendelkezik egy kódminta Azure PowerShell használatával töltse le a fájlt, és megjeleníti a fájl tartalma.
+    Tekintse meg a módosított adatok fájlt, használhatja az Azure Portalon, egy Azure Storage explorer eszköz vagy Azure PowerShell-lel.  [HDInsight – első lépések] [ hdinsight-get-started] egy kódmintát, töltse le a fájlt, és a fájl tartalmának megjelenítése az Azure PowerShell használatával kapcsolatos rendelkezik.
 
-### <a name="the-powershell-sample"></a>A PowerShell-példa
+### <a name="the-powershell-sample"></a>A PowerShell-minta
 
 ```powershell
 # Prepare an Azure SQL database to be used by the Sqoop tutorial

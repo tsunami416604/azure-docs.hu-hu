@@ -17,12 +17,12 @@ ms.date: 04/27/2018
 ms.author: celested
 ms.reviewer: elisol
 ms.custom: aaddev
-ms.openlocfilehash: 3d221de12d18ff3153ff0e7f7882ee4bafb9ca64
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d2ed90b0bb1d2ef7b830c9394628872e1a775f9e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581466"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593400"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Hogyan lehet Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 Ha egy alkalmazás számos szervezet hasonló, konfigurálhatja az alkalmazás minden olyan Azure Active Directory (AD) bérlő történő bejelentkezések fogadására. Ez a konfiguráció nevezzük, így az alkalmazás több-bérlős. Minden olyan Azure AD-bérlőben felhasználók tudják, beleegyezik abba, hogy az alkalmazás-fiókjuk használata után az alkalmazásnak bejelentkezni. 
@@ -179,7 +179,7 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bárme
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
 [AAD-App-Branding]:howto-add-branding-in-azure-ad-apps.md
-[AAD-App-Manifest]: ./active-directory-application-manifest.md
+[AAD-App-Manifest]:reference-azure-ad-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Consent-Overview]:quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework
@@ -200,7 +200,7 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bárme
 [Consent-Multi-Tier-Multi-Party]: ./media/active-directory-devhowto-multi-tenant-overview/consent-flow-multi-tier-multi-party.png
 
 <!--Reference style links -->
-[AAD-App-Manifest]: ./active-directory-application-manifest.md
+[AAD-App-Manifest]:reference-azure-ad-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md

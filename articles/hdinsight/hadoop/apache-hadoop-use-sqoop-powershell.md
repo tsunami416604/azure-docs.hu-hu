@@ -1,44 +1,39 @@
 ---
-title: Sqoop feladatok futtatása a PowerShell és az Azure HDInsight segítségével |} Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure PowerShell munkaállomásról futtatása Sqoop importálása és exportálása a Hadoop fürtök és az Azure SQL-adatbázis között.
-editor: cgronlun
-manager: jhubbard
+title: Sqoop-feladatok futtatása az Azure HDInsight és a PowerShell használatával
+description: Megtudhatja, hogyan használhatja az Azure Powershellt egy munkaállomásról futtatása Sqoop-importálás és exportálása egy Hadoop-fürtöt és a egy Azure SQL database között.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: bbb6f53a-e019-4d01-92bd-92c208c760b6
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 138e295bd81a4446568d92171d952b3b0a0374a2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 114b818b15d071e4aca2e64363aa3c5895820ece
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202407"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593451"
 ---
-# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>Sqoop feladatok futtatása a hdinsight Hadoop Azure PowerShell használatával
+# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>Sqoop-feladatok futtatása a HDInsight Hadoop az Azure PowerShell használatával
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Ismerje meg, hogyan használható az Azure PowerShell Sqoop feladatok futtatása az Azure HDInsight importálni és exportálni a HDInsight-fürtök és egy Azure SQL database vagy az SQL Server-adatbázis között.
+Útmutató az Azure HDInsight importálása és exportálása egy HDInsight-fürt és a egy Azure SQL database vagy SQL Server-adatbázis közötti Sqoop-feladatok futtatása az Azure PowerShell használatával.
 
 > [!NOTE]
-> Bár ebben a cikkben ismertetett sem a Windows-alapú vagy Linux-alapú HDInsight-fürtöt, csak a Windows ügyfél működnek. Egyéb módszerek kiválasztásához használja a lap választó Ez a cikk tetején. 
+> Bár ebben a cikkben ismertetett mindkettővel egy Windows-alapú vagy Linux-alapú HDInsight-fürt, csak a Windows ügyfél működnek. Egyéb módszerek kiválasztásához, ez a cikk tetején lapon választómezőt használja. 
 > 
 > 
 
 ### <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* A munkaállomás Azure PowerShell használatával.
-* Hdinsight Hadoop-fürthöz. További információkért lásd: [fürt és az SQL-adatbázis létrehozása](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* Munkaállomás Azure PowerShell-lel.
+* A HDInsight Hadoop-fürt. További információkért lásd: [létrehozása a fürt és az SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
-## <a name="run-sqoop-by-using-powershell"></a>Sqoop PowerShell használatával futtassa
-A következő PowerShell-parancsfájl előre dolgozza fel a forrásfájl, és majd exportálja azt az Azure SQL-adatbázis:
+## <a name="run-sqoop-by-using-powershell"></a>Sqoop Futtatás a PowerShell használatával
+A következő PowerShell-parancsfájl előzetesen feldolgozza a forrásfájl, és majd exportálja azt az Azure SQL Database-adatbázishoz:
 
     $resourceGroupName = "<AzureResourceGroupName>"
     $hdinsightClusterName = "<HDInsightClusterName>"
@@ -163,17 +158,17 @@ A következő PowerShell-parancsfájl előre dolgozza fel a forrásfájl, és ma
     #endregion
 
 ## <a name="limitations"></a>Korlátozások
-Linux-alapú HDInsight mutatja be a következő korlátozások vonatkoznak:
+Linux-alapú HDInsight mutat be a következő korlátozások vonatkoznak:
 
-* Tömeges exportálás: A Sqoop összekötő használt Microsoft SQL Server vagy az Azure SQL Database adatainak exportálása jelenleg nem támogatja a tömeges beszúrások.
+* Tömeges exportálását:, amellyel a Microsoft SQL Server vagy az Azure SQL Database-adatok exportálása a Sqoop-összekötő jelenleg nem támogatja a tömeges beszúrás.
 
-* Kötegelés: használatával a `-batch` kapcsoló mikor Beszúrások végez, a Sqoop több beszúrás helyett a beszúrási műveletek kötegelése hajt végre. 
+* Kötegelés: használatával a `-batch` mikor váltson végrehajt a beszúrások, a sqoop használatával hajt végre több beszúrás helyett a beszúrási műveletek kötegelése. 
 
 ## <a name="next-steps"></a>További lépések
-Most megtanulhatta, hogyan használható a Sqoop. További tudnivalókért lásd:
+Most már megtanulhatta, hogyan használható a sqoop használatával. További tudnivalókért lásd:
 
-* [Oozie használata a HDInsight](../hdinsight-use-oozie.md): egy Oozie munkafolyamat használja Sqoop műveletét.
-* [Repülési késleltetés adatok elemzése a HDInsight használatával](../hdinsight-analyze-flight-delay-data.md): használja struktúra elemzése repülési késleltetés az adatok, és a Sqoop segítségével exportál adatokat az Azure SQL-adatbázis.
-* [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): található adatok feltöltése a HDInsight- vagy Azure Blob Storage más módszerrel.
+* [Az Oozie használata a HDInsight](../hdinsight-use-oozie.md): Oozie-munkafolyamatokkal használata Sqoop műveletét.
+* [Repülőjáratok késési adatainak elemzése a HDInsight használatával](../hdinsight-analyze-flight-delay-data.md): késleltetheti az adatok elemzéséhez, repülési Hive használata, és majd egy Azure SQL database-adatok exportálása a Sqoop.
+* [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): keresse meg a HDInsight vagy Azure Blob storage-ba történő feltöltéséhez más módszerekkel.
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

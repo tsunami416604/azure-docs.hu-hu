@@ -1,46 +1,41 @@
 ---
-title: Küldje el a MapReduce-feladatok használata a HDInsight .NET SDK - Azure |} Microsoft Docs
-description: Megtudhatja, hogyan elküldeni a MapReduce-feladatok az Azure HDInsight Hadoop HDInsight .NET SDK használatával.
-editor: cgronlun
-manager: jhubbard
+title: HDInsight .NET SDK-t – Azure MapReduce-feladatok elküldése
+description: Útmutató a HDInsight .NET SDK használata Azure HDInsight Hadoop MapReduce-feladatok elküldése.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: c85e44b0-85fd-4185-ad1c-c34a9fe5ef44
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 2b5c265827c30ec9f62cc902aa348e050aec7ba1
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.author: jasonh
+ms.openlocfilehash: a22a2c75f5f520fb74d7ef6a57ff519e95ad273e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019604"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596482"
 ---
-# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>A HDInsight .NET SDK használatával MapReduce-feladatok futtatása
+# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK használatával a MapReduce-feladatok futtatása
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Megtudhatja, hogyan elküldeni a MapReduce-feladatok HDInsight .NET SDK használatával. HDInsight fürtök rendelkeznek egy bizonyos MapReduce-minták a jar-fájlra. A jar-fájlra van */example/jars/hadoop-mapreduce-examples.jar*.  A minták egyik *wordcount*. A C# Konzolalkalmazás a wordcount feladat elküldése fejleszt.  A feladat beolvassa a */example/data/gutenberg/davinci.txt* fájlt, és az eredmények */example/data/davinciwordcount*.  Ha szeretné újra futtatni az alkalmazást, a kimeneti mappa kell tisztítása.
+Ismerje meg, hogyan lehet elküldeni a MapReduce-feladatok HDInsight .NET SDK használatával. HDInsight fürtök rendelkeznek egy bizonyos MapReduce-minták a jar-fájlt. A jar-fájlra van */example/jars/hadoop-mapreduce-examples.jar*.  A minták egyik *wordcount*. Elkészít egy C# konzolalkalmazást wordcount feladatok elküldéséhez.  A feladat beolvassa az adatokat a */example/data/gutenberg/davinci.txt* fájlt, és kiírathatja a eredményeket */example/data/davinciwordcount*.  Ha szeretné újra futtatni az alkalmazást, akkor a kimeneti mappa kell törölni.
 
 > [!NOTE]
-> A cikkben leírt lépéseket egy Windows ügyfél kell elvégezni. Kapcsolatos információkért használata a Linux, OS X vagy UNIX rendszerű ügyfélnél Hive használata a lap választó, a cikk tetején látható.
+> A jelen cikkben ismertetett lépések egy Windows ügyfél kell elvégezni. Információ a Hive használata a Linux, OS X or Unix-ügyfél használatával a cikk tetején látható lapon választómezőt használja.
 > 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk megkezdése előtt rendelkeznie kell a következő elemek:
+Ez a cikk elkezdéséhez a következőkkel kell rendelkeznie:
 
-* **Hdinsight Hadoop-fürthöz**. Lásd: [hdinsight Linux-alapú Hadoop használatának megkezdésében](apache-hadoop-linux-tutorial-get-started.md).
-* **A Visual Studio 2013 vagy 2015/2017**.
+* **A HDInsight Hadoop-fürt**. Lásd: [HDInsight Linux-alapú Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md).
+* **Visual Studio 2013/2015/2017**.
 
-## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>A HDInsight .NET SDK használatával MapReduce-feladatok elküldése
-A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, így azokat könnyebben működéséhez a .NET-HDInsight-fürtökkel. 
+## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK használatával a MapReduce-feladatok elküldése
+A HDInsight .NET SDK-t biztosít a .NET-ügyfélkönyvtárak, ami jó hír működik a HDInsight-fürtökkel a .NET használatával. 
 
-**Feladatok küldéséhez**
+**A feladatok elküldése**
 
 1. Hozzon létre egy C# konzolalkalmazást a Visual Studióban.
 2. A NuGet-Csomagkezelő konzolról futtassa a következő parancsot:
@@ -48,7 +43,7 @@ A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, így azokat
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
-3. A következő kód használható:
+3. A következő kód használatával:
 
     ```csharp
     using System.Collections.Generic;
@@ -169,16 +164,16 @@ A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, így azokat
 
 4. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Futtassa újra a feladatot, módosítania kell a feladat kimeneti mappa nevét, a példában az "/ Példa/data/davinciwordcount".
+Futtassa újra a feladatot, módosítania kell a feladat kimeneti mappa nevét, a példában a "/ Példa/data/davinciwordcount".
 
-Ha a feladat sikeresen befejeződik, az alkalmazás a kimeneti fájl "rész-r-00000" tartalom nyomtatása.
+Ha a feladat sikeresen befejeződik, az alkalmazás a kimeneti fájl "rész – az r-00000" tartalom nyomtatása.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta rendelkezik többféle módon hozhat létre HDInsight-fürtöt. További tudnivalókért tekintse meg a következő cikkeket:
+Ebben a cikkben, hogyan hozhat létre HDInsight-fürtöt többféleképpen. További tudnivalókért tekintse meg a következő cikkeket:
 
-* A Hive feladat elküldése, lásd: [HDInsight .NET SDK használatával futtassa Hive lekérdezések](apache-hadoop-use-hive-dotnet-sdk.md).
-* A HDInsight-fürtök létrehozására, lásd: [hdinsight létrehozása Linux-alapú Hadoop-fürtök](../hdinsight-hadoop-provision-linux-clusters.md).
-* A HDInsight-fürtök kezelése, lásd: [Hadoop kezelése a HDInsight-fürtök](../hdinsight-administer-use-portal-linux.md).
-* A HDInsight .NET SDK tanulási, lásd: [HDInsight .NET SDK referenciáit](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
-* A nem interaktív hitelesítés az Azure-ba, lásd: [.NET HDInsight-alkalmazások létrehozása a nem interaktív hitelesítés](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).
+* Egy Hive-feladat elküldése, lásd: [futtatása Hive-lekérdezéseket a HDInsight .NET SDK használatával](apache-hadoop-use-hive-dotnet-sdk.md).
+* HDInsight-fürtök létrehozására, tekintse meg a [Linux-alapú Hadoop-fürtök a HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+* HDInsight-fürtök kezeléséhhez lásd: [kezelése Hadoop-fürtök a HDInsight](../hdinsight-administer-use-portal-linux.md).
+* A HDInsight .NET SDK tanulás, lásd: [HDInsight .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+* A nem interaktív hitelesítéséhez az Azure-ba, lásd: [nem interaktív hitelesítéssel .NET HDInsight-alkalmazások létrehozása](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).
 

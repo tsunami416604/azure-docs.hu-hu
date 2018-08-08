@@ -1,54 +1,49 @@
 ---
-title: Hadoop Hive használata a hdinsight - Azure Curl |} Microsoft Docs
-description: Megtudhatja, hogyan távolról elküldeni a Pig-feladatokhoz a HDInsight használata Curl használatával.
+title: A Hadoop Hive használata a HDInsight - Azure a curl használatával
+description: Ismerje meg, hogyan lehet távolról a Curl használatával HDInsight Pig-feladatok elküldése.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 6ce18163-63b5-4df6-9bb6-8fcbd4db05d8
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: f602cf45165625ec252f2e29cb9b0e5ed878f3a8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: jasonh
+ms.openlocfilehash: ff1805a68186120049da7ae49d38a0cc4a1a0c16
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170254"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598926"
 ---
-# <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>A többi használatával HDInsight Hadoop Hive-lekérdezések futtatása
+# <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>Hive-lekérdezések futtatása a REST használatával HDInsight Hadoop-keretrendszerrel
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Megtudhatja, hogyan futtathat Hive-lekérdezéseket a Hadoop on Azure HDInsight-fürt a WebHCat REST API használatával.
+Ismerje meg, hogyan használhatja a WebHCat REST API és a Hadoop Hive-lekérdezések futtatásához az Azure HDInsight-fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Linux-alapú Hadoop a HDInsight fürt 3.4 vagy újabb verziója.
+* Egy Linux-alapú Hadooppal a HDInsight-fürt verziója 3.4-es vagy nagyobb.
 
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* A többi ügyfél. Ez a dokumentum a Windows Powershellt használja és [Curl](http://curl.haxx.se/) példák.
+* REST-ügyféllel. Ez a dokumentum a Windows Powershellt használja, és [Curl](http://curl.haxx.se/) példákat.
 
     > [!NOTE]
-    > Az Azure PowerShell használata a HDInsight Hive dedikált-parancsmagokat kínál. További információkért lásd: a [használja az Azure PowerShell Hive](apache-hadoop-use-hive-powershell.md) dokumentum.
+    > Az Azure PowerShell használata a HDInsight Hive-val dedikált parancsokat tartalmaz. További információkért lásd: a [Hive használata az Azure PowerShell-lel](apache-hadoop-use-hive-powershell.md) dokumentumot.
 
-Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.github.io/jq/) JSON-adatokat adott vissza, a többi kérelmek folyamathoz.
+Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.github.io/jq/) JSON-adatokat ad vissza, a REST-kérelmeket feldolgozni.
 
-## <a id="curl"></a>Hive-lekérdezések futtatása
+## <a id="curl"></a>Hive-lekérdezés futtatása
 
 > [!NOTE]
-> Használata cURL vagy más REST kommunikációt használ a Webhcattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája a felhasználónév és jelszó megadásával.
+> Használatakor a cURL vagy más REST kommunikációt használ a Webhcattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája a felhasználónév és jelszó megadásával.
 >
-> A REST API védelméről [alapszintű hitelesítés](http://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje a kiszolgáló érdekében mindig végezzen kérelmek HTTP Secure (HTTPS).
+> A REST API védelméről [alapszintű hitelesítés](http://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló érdekében mindig kérést HTTP Secure (HTTPS) használatával.
 
-1. A fürt bejelentkezési ebben a dokumentumban a parancsfájlok által használt beállításához használja a következő parancsok egyikét:
+1. Állítsa be a fürtre való bejelentkezéshez, a jelen dokumentum a parancsfájlok által használt, használja a következő parancsok egyikét:
 
     ```bash
     read -p "Enter your cluster login account name: " LOGIN
@@ -68,7 +63,7 @@ Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.gith
     $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
     ```
 
-3. Győződjön meg arról, hogy tud-e csatlakozni a HDInsight-fürthöz, használja a következő parancsok egyikét:
+3. Győződjön meg arról, hogy képes-e csatlakozni a HDInsight-fürt, használja a következő parancsok egyikét:
 
     ```bash
     curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status)
@@ -81,7 +76,7 @@ Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.gith
     $resp.Content
     ```
 
-    Az alábbihoz hasonló választ kapnak:
+    Az alábbi szöveghez hasonló választ kap:
 
     ```json
     {"status":"ok","version":"v1"}
@@ -89,10 +84,10 @@ Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.gith
 
     Ezen parancs paraméterei a következők:
 
-    * `-u` -A felhasználónevet és a kérés hitelesítéséhez használt jelszót.
-    * `-G` -Azt jelzi, hogy a kérelem a GET műveletet.
+    * `-u` – A felhasználónév és a kérés hitelesítésére használt jelszó.
+    * `-G` – Azt jelzi, hogy a kérelem-LEKÉRÉSI művelet.
 
-   Az URL-cím elejére `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`, minden olyan kérelem esetében megegyezik. Az elérési út `/status`, azt jelzi, hogy a kérelem vissza WebHCat (más néven Templeton) állapota a kiszolgálóhoz. A Hive verzióját is kérheti a következő paranccsal:
+   Az URL-cím elején `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`, összes kérelem esetében azonos. Az elérési út `/status`, azt jelzi, hogy a kérelem WebHCat (más néven templeton eszközön keresztül végzett) állapottal visszatéréshez a kiszolgálón. A Hive verzióját is kérheti a következő paranccsal:
 
     ```bash
     curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
@@ -105,13 +100,13 @@ Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.gith
     $resp.Content
     ```
 
-    A kérelem választ ad az alábbihoz hasonló:
+    A kérelem választ az alábbi szöveghez hasonló:
 
     ```json
         {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
     ```
 
-4. Használja a következő nevű tábla létrehozása **log4jLogs**:
+4. Használja a következő nevű tábla létrehozásához **log4jLogs**:
 
     ```bash
     JOBID=`curl -s -u $LOGIN -d user.name=$LOGIN -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/hive | jq .id`
@@ -129,28 +124,28 @@ Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.gith
     $jobID
     ```
 
-    A kérelem a POST metódussal, amelyhez a kérés részeként adatokat küld a REST API-t használ. A következő adatok értékek a kérelem küldésekor:
+    Ezt a kérést a POST metódussal, amely adatokat küld a kérés részeként a REST API-t használja. A következő adatok értékek lesznek elküldve a kérelem:
 
      * `user.name` -A a parancsot futtató felhasználónak.
-     * `execute` -A HiveQL utasítás végrehajtásához.
-     * `statusdir` – A könyvtár írt meg a feladat állapotát.
+     * `execute` -A hiveql végrehajtásához.
+     * `statusdir` – A könyvtár, ez a feladat állapota írt.
 
-   Ezekre az utasításokra hajtsa végre a következő műveleteket:
+   Ezek az utasítások hajtsa végre a következő műveleteket:
    
-   * `DROP TABLE` -Ha a tábla már létezik, akkor az törlődik.
-   * `CREATE EXTERNAL TABLE` -Táblát hoz létre egy új "külső" struktúra. Külső táblák csak a tábladefiníció Hive tárolja. Az adatok marad az eredeti helyen.
+   * `DROP TABLE` – Ha a tábla már létezik, akkor az törlődik.
+   * `CREATE EXTERNAL TABLE` – Egy új táblát hoz létre "külső" struktúrában. Külső táblák csak a tábla definíciójának Hive tárolja. Az adatok az eredeti helyén marad.
 
      > [!NOTE]
-     > Külső táblák kell használni, amikor külső forrásból frissítenie kell az alapul szolgáló adatokat várt. Például egy automatizált adatok feltöltési folyamat vagy egy másik MapReduce művelet.
+     > Külső táblák kell használni, amikor várhatóan az alapul szolgáló adatokat egy külső forrás frissíteni kell. Például az automatikus feltöltési folyamat vagy egy másik MapReduce művelet.
      >
-     > A külső tábla eldobása does **nem** törli az adatokat, csak a tábla definíciójában.
+     > A külső tábla elvetését does **nem** törölheti az adatokat, csak a tábla definícióját.
 
-   * `ROW FORMAT` -Az adatok formázását. Az egyes naplókon mezők vannak szóközzel elválasztva.
-   * `STORED AS TEXTFILE LOCATION` -Az adatok tárolására (a példa/adatkönyvtár) és szövegként tárolt.
-   * `SELECT` -Választja ki az összes sorok számát ahol oszlop **t4** értéke **[hiba]**. A jelen nyilatkozat értéket ad vissza, **3** ahány három ezt az értéket tartalmazó sorok.
+   * `ROW FORMAT` – Az adatok formázását. Minden napló mezőinek szóközzel vannak elválasztva.
+   * `STORED AS TEXTFILE LOCATION` – Az adatok tárolására (a példaadatokat/directory), és hogy szövegként lesz tárolva.
+   * `SELECT` -Az összes sor számát kiválasztja ahol oszlop **t4** értéket tartalmazza **[hiba]**. A jelen nyilatkozat egy értékét adja vissza **3** annyi három sort, amely tartalmazza ezt az értéket.
 
      > [!NOTE]
-     > Figyelje meg, hogy a HiveQL utasítások szóközt helyébe a `+` karakter Curl használata esetén. Szóközt, például az elválasztó idézőjelek közé zárt értékek nem helyébe kell `+`.
+     > Figyelje meg, hogy a tárolóhelyek között HiveQL utasítások helyébe a `+` . amikor a curl használatával használt karakter. Határolójeles értékek, amelyek tartalmaznak egy szóközt, például az elválasztó nincs helyébe `+`.
 
       Ez a parancs visszaadja a Feladatazonosítót a feladat állapotának ellenőrzéséhez használható.
 
@@ -172,28 +167,28 @@ Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.gith
     (ConvertFrom-Json $fixDup).status.state
     ```
 
-    Ha a feladat befejeződött, az állapota **sikeres**.
+    Ha a feladat befejeződött, az állapot az **sikeres**.
 
-6. Ha a feladat állapota módosult **sikeres**, a feladat eredményeinek lekérése Azure Blob Storage tárolóban. A `statusdir` a lekérdezés átadott paraméter tartalmazza a hely a kimeneti fájl; ebben az esetben az `/example/rest`. Ez a cím tárolja a kimenetét a `example/curl` könyvtárban lévő a fürtök alapértelmezett tárolót.
+6. Miután a feladat állapota módosult az **sikeres**, a feladat eredményeinek kérheti le az Azure Blob storage-ból. A `statusdir` lekérdezése átadott paraméter tartalmazza a helyet, a kimeneti fájl; ebben az esetben `/example/rest`. Ez a cím a kimenetet a tárolja a `example/curl` könyvtárat a a fürt alapértelmezett tárolója.
 
-    Listáról, és ezek a fájlok letöltésére a [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Az Azure Storage az Azure parancssori felület használatával kapcsolatos további információkért tekintse meg a [Azure CLI 2.0 használata Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentum.
+    A listában, és ezeket a fájlokat le használatával a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli). További információ az Azure CLI használatával az Azure Storage: a [használata az Azure CLI 2.0 az Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentumot.
 
 ## <a id="nextsteps"></a>Következő lépések
 
-Általános információk a hdinsight Hive:
+Általános információk a HDInsight Hive:
 
-* [A Hive használata a hdinsight Hadoop](hdinsight-use-hive.md)
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
 
-Az egyéb lehetőségeiről a HDInsight Hadoop dolgozhat:
+Információk az egyéb módon használhatja a Hadoop on HDInsight:
 
-* [A Pig használata a HDInsight Hadoop](hdinsight-use-pig.md)
-* [A HDInsight Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
 
-Ha Tez Hive használ, tekintse meg a hibakeresési információk a következő dokumentumokat:
+Ha Tez Hive-val használ, tekintse meg a hibakeresési információkat a következő dokumentumokat:
 
-* [Az Ambari Tez nézetben a Linux-alapú HDInsight-on](../hdinsight-debug-ambari-tez-view.md)
+* [A Linux-alapú HDInsight az Ambari Tez nézet használata](../hdinsight-debug-ambari-tez-view.md)
 
-A REST API-val a jelen dokumentum további információkért tekintse meg a [WebHCat hivatkozás](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentum.
+Ebben a dokumentumban használt REST API további információkért lásd: a [WebHCat referencia](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentumot.
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 

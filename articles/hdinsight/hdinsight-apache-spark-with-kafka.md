@@ -1,106 +1,102 @@
 ---
-title: Adatfolyam-Kafka - Azure HDInsight az Apache Spark on |} Microsoft Docs
-description: Megtudhatja, hogyan használja Spark az Apache Spark on az adatfolyam adatok virtuális gépbe vagy onnan Apache Kafka DStreams használatával. Ebben a példában a HDInsight Spark a Jupyter notebook használatával adatok folyamatos átviteléhez.
-keywords: kafka például kafka zookeeper, spark streamelési kafka, spark streamelési kafka – példa
+title: Az Apache Spark-streamelés a Kafkával – Azure HDInsight
+description: 'Útmutató: Spark Apache Spark használatával adatok streamelése vagy onnan máshová az Apache Kafka DStreams használatával. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.'
+keywords: a kafka-például kafka zookeeper, spark-streamelés a kafka, a spark Stream kafka példa
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: larryfr
-ms.openlocfilehash: a9463b5983b5f41683a5cfe416ca125bf2810062
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 607ad43f5cae3915b964caf816bd5fb5e3302ddf
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402379"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592975"
 ---
-# <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Apache Spark streaming (DStream) például Kafka a HDInsight a
+# <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Apache Spark Stream (DStream) Példa a HDInsight alatt futó Kafka
 
-Útmutató Spark Apache Spark adatfolyam adatok vagy a HDInsight a DStreams Apache Kafka abból. A példa a Spark-fürtön futó Jupyter notebook.
+Útmutató: Spark Apache Spark használatával adatok streamelése vagy onnan máshová az Apache Kafka on HDInsight használatával DStreams. Ez a példa, amely a Spark-fürtön fut egy Jupyter notebookot használja.
 
 > [!NOTE]
-> A jelen dokumentumban leírt lépések, amely tartalmazza a Spark on HDInsight és egy HDInsight-fürt Kafka Azure erőforráscsoport-csoport létrehozása. Ezeken a fürtökön is egy Azure virtuális hálózatot, amely lehetővé teszi a Kafka közvetlenül kommunikálni a Spark-fürtön belül található a fürtön.
+> A dokumentum lépései olyan Azure-erőforráscsoportot hoznak létre, amely Spark on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Spark-fürt közvetlenül kommunikálhat a Kafka-fürttel.
 >
-> Amikor elkészült, a jelen dokumentumban leírt lépések, ne felejtse el a felesleges költségek elkerülése érdekében a fürtök törlése.
+> Amikor végzett a dokumentum lépéseivel, ne felejtse el törölni a fürtöket a további díjak elkerülése érdekében.
 
 > [!IMPORTANT]
-> A példa DStreams, amely régebbi a Spark streamelési technológia. Tegyük fel, amely újabb Spark streaming funkciókat használ, tekintse meg a [Spark strukturált Stream továbbítása Kafka](hdinsight-apache-kafka-spark-structured-streaming.md) dokumentum.
+> Ebben a példában DStreams, amely régebbi a Spark streamelési technológia. Egy példa, amely újabb a Spark Stream funkciókat használja: a [Spark strukturált Stream használata a Kafkával](hdinsight-apache-kafka-spark-structured-streaming.md) dokumentumot.
 
 ## <a name="create-the-clusters"></a>A fürtök létrehozása
 
-A HDInsight Apache Kafka nem férhet hozzá a Kafka brókerek a nyilvános interneten keresztül. A Kafka fürt csomópontja azonos Azure virtuális hálózaton, amelyeket a kiszolgálóhoz csatlakozik Kafka kell lennie. Ehhez a példához a Kafka és a Spark-fürtök egy Azure virtuális hálózat található. Az alábbi ábra bemutatja, hogyan kommunikációs a fürtök között zajló kommunikációról:
+Az Apache Kafka on HDInsight nem nyújt hozzáférést a Kafka-közvetítőkhöz a nyilvános interneten keresztül. Semmit, a Kafka-szel kommunikáló, a Kafka-fürt csomópontjainak azonos Azure virtuális hálózatban kell lennie. Ebben a példában a Kafka és a Spark-fürtök Azure virtuális hálózatban találhatók. Az alábbi ábrán látható, hogy a fürtök közötti kommunikáció áramlását:
 
-![Spark és Kafka fürtök egy Azure virtuális hálózatban ábrája](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
+![Azure virtuális hálózatban lévő Spark- és Kafka-fürtök ábrája](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
 > [!NOTE]
-> Bár Kafka, maga a virtuális hálózaton belüli kommunikáció korlátozódik, például az SSH és az Ambari a fürt más szolgáltatások az interneten keresztül érhető el. A hdinsight eszközzel elérhető nyilvános portokon további információkért lásd: [portok és a HDInsight által használt URI-azonosítók](hdinsight-hadoop-port-settings-for-services.md).
+> Kafka magát a virtuális hálózaton belüli kommunikációra korlátozódik, bár egyéb szolgáltatások a fürtön, például az SSH és az Ambari az interneten keresztül érhető el. További információ a HDInsighttal elérhető nyilvános portokról: [A HDInsight által használt portok és URI-k](hdinsight-hadoop-port-settings-for-services.md).
 
-Létrehozhat egy Azure virtuális hálózatra, Kafka, és a Spark-fürtök manuális, célszerűbb Azure Resource Manager sablonnal. Az alábbi lépések segítségével telepíthet egy Azure virtuális hálózatot, Kafka, és a Spark-fürtök az Azure-előfizetéshez.
+Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtök manuális, egyszerűbb legyen a használata az Azure Resource Manager-sablon. Az alábbi lépések segítségével üzembe helyezése az Azure virtuális hálózat, a Kafka és Spark-fürtök az Azure-előfizetéshez.
 
-1. A következő gomb segítségével jelentkezzen be az Azure-ba, és nyissa meg a sablon az Azure portálon.
+1. Az alábbi gombbal jelentkezzen be az Azure szolgáltatásba, és nyissa meg a sablont az Azure Portalon.
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Az Azure Resource Manager sablon itt található: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
+    Az Azure Resource Manager-sablon a következő helyen található: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
 
     > [!WARNING]
-    > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia. Ez a sablon a három munkavégző csomópontokhoz tartalmaz Kafka fürtöt hoz létre.
+    > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia. A sablon egy három feldolgozó csomópontot tartalmazó Kafka-fürtöt hoz létre.
 
-    Ez a sablon egy HDInsight 3.6 fürtöt Kafka és Spark hoz létre.
+    Ez a sablon létrehoz egy HDInsight 3.6-fürt Kafka és Spark.
 
-2. A következő információk segítségével a feltöltik a **egyéni telepítési** szakasz:
+2. Az alábbi információk segítségével feltöltik a a **egyéni üzembe helyezés** szakaszban:
    
-    ![HDInsight egyéni központi telepítés](./media/hdinsight-apache-spark-with-kafka/parameters.png)
+    ![HDInsight-egyéni üzembe helyezés](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
-    * **Erőforráscsoport**: hozzon létre egy csoportot, vagy válasszon egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürthöz.
+    * **Erőforráscsoport**: hozzon létre egy csoportot, vagy válasszon ki egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürt.
 
-    * **Hely**: Adjon meg egy földrajzilag Önhöz legközelebb eső helyet.
+    * **Hely**: válasszon, földrajzilag közeli helyet.
 
-    * **Fürt neve kiinduló**: Ez az érték használható a Spark alap néven és Kafka fürtök. Ha például **hdi** nevű Spark-fürt létrehozása __spark-hdi__ és nevű Kafka fürt **kafka-hdi**.
+    * **Fürt neve alapján**: ezt az értéket használja, a Spark alapnevét, és a Kafka-fürtök. Ha például **hdi** nevű egy Spark-fürtöt hoz létre __spark-hdi__ és a egy nevű Kafka-fürt **kafka-hdi**.
 
-    * **A fürt bejelentkezési felhasználónevét**: A rendszergazda felhasználóneve a Spark és Kafka fürt.
+    * **A fürt bejelentkezési név**: a Spark és Kafka-fürtök rendszergazdai felhasználóneve.
 
-    * **A fürt bejelentkezési jelszó**: a Spark és Kafka fürt rendszergazdai jelszóval.
+    * **A fürt bejelentkezési jelszavának**: a Spark és Kafka-fürtök rendszergazdai felhasználójának jelszava.
 
-    * **SSH-felhasználónév**: az SSH-felhasználó a Spark- és Kafka fürtök létrehozása.
+    * **SSH-felhasználónév**: az SSH-felhasználó, a Spark és Kafka-fürtök létrehozása.
 
-    * **SSH-jelszónak**: a Spark és Kafka fürt SSH-felhasználó jelszavát.
+    * **SSH-jelszó**: a Spark és Kafka-fürtök az SSH-felhasználó jelszavát.
 
-3. Olvassa el a **feltételek és kikötések**, majd válassza ki **elfogadom a feltételeket és a fenti feltételek**.
+3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 
-4. Végül ellenőrizze **rögzítés az irányítópulton** majd **beszerzési**. A fürt létrehozása nagyjából 20 percet vesz igénybe.
+4. Végül jelölje be a **Rögzítés az irányítópulton** elemet, majd válassza a **Vásárlás** lehetőséget. Körülbelül 20 perc alatt létrehozni a fürtöket vesz igénybe.
 
-Az erőforrások létrehozása után, egy összegző lap jelenik meg.
+Az erőforrások létrehozása után megjelenik egy összegző lapja.
 
-![A virtuális hálózat és a fürtök összegzése erőforráscsoport](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
+![A vnet és fürtök összefoglaló erőforráscsoport](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
-> Figyelje meg, hogy a HDInsight-fürtök neve **spark-BASENAME** és **kafka-BASENAME**, ahol BASENAME a sablonhoz megadott név. Ezeket a neveket a későbbi lépésekben használja, a fürtök történő csatlakozás során.
+> Figyelje meg, hogy a neve, a HDInsight-fürtök **spark-BASENAME** és **kafka-BASENAME**, ahol a sablonhoz megadott BASENAME. Ezeket a neveket használni a későbbi lépésekben a fürtök való kapcsolódás során.
 
 ## <a name="use-the-notebooks"></a>A notebookok használata
 
-A jelen dokumentumban ismertetett példa kódja megtalálható [ https://github.com/Azure-Samples/hdinsight-spark-scala-kafka ](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka).
+A dokumentumban leírt példa kódja a következő helyen található: [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka).
 
-Ez a példa befejezéséhez kövesse a `README.md`.
+Ebben a példában végrehajtásához kövesse a `README.md`.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-A jelen dokumentumban leírt lépések az azonos Azure erőforráscsoport mindkét fürtöket létrehozni, mert az erőforráscsoportot az Azure portálon törölheti. A csoport törlése eltávolítja a következő Ez a dokumentum, az Azure-beli virtuális hálózatra és a fürt által használt tárfiók által létrehozott összes erőforrást.
+Mivel a jelen dokumentumban leírt lépések az Azure-erőforráscsoport mindkét fürtöket létrehozni, törölheti az erőforráscsoportot az Azure Portalon. A csoport törlése eltávolítja az ebben a dokumentumban, az Azure Virtual Network és storage-fiókot a fürtök által használt alábbi létrehozott összes erőforrást.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a példában megtanulta, hogyan használható a Spark olvasási és írási Kafka. Az alábbi hivatkozások segítségével felderíteni a más módon történő együttműködésre Kafka:
+Ebben a példában útmutatóból megtudhatta, hogyan olvasási és írási Kafka a Spark használatával. Az alábbi hivatkozások segítségével Fedezzen fel más módokat a Kafka használata:
 
-* [Ismerkedés az Apache Kafka a HDInsight-on](kafka/apache-kafka-get-started.md)
+* [A HDInsight Apache Kafka használatának első lépései](kafka/apache-kafka-get-started.md)
 * [A MirrorMaker használata a Kafka replikájának HDInsighton való létrehozásához](kafka/apache-kafka-mirroring.md)
 * [Az Apache Storm használata a HDInsighton futó Kafkával](hdinsight-apache-storm-with-kafka.md)
 

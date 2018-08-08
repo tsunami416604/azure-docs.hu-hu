@@ -1,69 +1,65 @@
 ---
-title: Áttelepítheti a Windows-alapú HDInsight Linux-alapú HDInsight - Azure |} Microsoft Docs
-description: Megtudhatja, hogyan telepíthetők át egy Windows-alapú HDInsight-fürtöt egy Linux-alapú HDInsight-fürtöt.
+title: Áttelepítés a Windows-alapú HDInsight a Linux-alapú HDInsight – Azure
+description: Ismerje meg, hogyan át egy Windows-alapú HDInsight-fürtöt Linux-alapú HDInsight-fürthöz.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 964fa9853dc8bb4daae73905e05409deb775fd26
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: jasonh
+ms.openlocfilehash: f77ffd576c1470c3e5ade0fd6718e1bf3c3074fe
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626751"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598881"
 ---
-# <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Linux-alapú fürtre Windows-alapú HDInsight-fürtök áttelepítése
+# <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows-alapú HDInsight-fürtök áttelepítése Linux-alapú fürtre
 
-Ez a dokumentum részletesen a HDInsight a Windows és Linux közötti különbséget. A meglévő alkalmazások áttelepítése a Linux-alapú fürt útmutatást is biztosít.
+Ez a dokumentum részletesen HDInsight, a Windows és Linux közötti különbségeket. A meglévő számítási feladatok migrálása a Linux-alapú fürt útmutatást is biztosít.
 
-Amíg a Windows-alapú HDInsight Hadoop-ban történő használatáról a felhő egyszerű lehetőséget biztosít, szükség lehet egy Linux-alapú fürtbe történő áttelepítéséhez. Például Linux-alapú eszközök és technológiák a megoldás a szükséges mértékben történő kihasználásához. A Hadoop ökoszisztémájának számos elemet a Linux-alapú rendszereken fejlesztett, és nem lehet a Windows-alapú hdinsight eszközzel használható. Sok könyvek, videókat és egyéb oktatóanyag feltételezi Linux rendszert a használ, amikor olyan Hadoop.
+Bár a Windows-alapú HDInsight a Hadoop felhőbeli használata egyszerű megoldást kínál, szükség lehet egy Linux-alapú fürtbe történő áttelepítéséhez. Ha például a Linux-alapú eszközök és technológiák, amelyek szükségesek a megoldás előnyeit. A Hadoop-ökoszisztéma sok-sok dolog Linux-alapú rendszereken lettek kifejlesztve, és nem lehet elérhető a Windows-alapú HDInsight segítségével. Számos könyveket, videók és más képzési anyagokat azt feltételezik, hogy használ egy Linux rendszert és a hadoop együttes használata során.
 
 > [!NOTE]
-> A HDInsight-fürtök Ubuntu hosszú távú támogatási (LTS) használja az operációs rendszert a fürt csomópontjaihoz. A HDInsight az elérhető Ubuntu verziójának más összetevők verziószámozása információk mellett további információkért lásd: [HDInsight összetevő verziók](hdinsight-component-versioning.md).
+> HDInsight-fürtök operációs rendszer Ubuntu hosszú távú támogatási (LTS) használata a fürt csomópontjain. A HDInsight, a rendelkezésre álló Ubuntu verzióját és egyéb összetevő is verzióinformációk kapcsolatos tudnivalókat lásd: [HDInsight összetevő verziók](hdinsight-component-versioning.md).
 
 ## <a name="migration-tasks"></a>Áttelepítési feladatok
 
 Az áttelepítés általános munkafolyamata a következőképpen történik.
 
-![Áttelepítési munkafolyamat diagramja](./media/hdinsight-migrate-from-windows-to-linux/workflow.png)
+![Migrálási munkafolyamat diagramja](./media/hdinsight-migrate-from-windows-to-linux/workflow.png)
 
-1. Olvassa el a módosításokat, amelyek szükségesek lehetnek áttelepítésekor megérteni a dokumentum minden szakaszát.
+1. Olvassa el ezt a dokumentumot, megismerheti a migráció során esetleg szükséges módosításokat minden szakasza.
 
-2. Hozzon létre egy Linux-alapú fürtöt, a teszt/minőségi megbízhatósági környezetekben. A Linux-alapú fürtök létrehozásáról további információk: [hdinsight létrehozása Linux-alapú fürtökön](hdinsight-hadoop-provision-linux-clusters.md).
+2. Hozzon létre egy Linux-alapú fürt egy tesztelési és minőség garancia környezetben. Egy Linux-alapú fürtök létrehozásával kapcsolatos további információkért lásd: [a HDInsight-fürtök létrehozása Linux-alapú](hdinsight-hadoop-provision-linux-clusters.md).
 
-3. Másolja a meglévő feladatokat, az adatforrások és mosdók az új környezetbe.
+3. Másolja a meglévő feladatokat, adatok, forrásként és fogadóként az új környezetre.
 
-4. Hajtsa végre az ellenőrzés alá vonni, győződjön meg arról, hogy a feladatok az új fürt a várt módon működik-e.
+4. Hajtsa végre az ellenőrzési tesztelés célja annak győződjön meg arról, hogy a feladatok az új fürtön a várt módon működik-e.
 
-Miután ellenőrizte, hogy minden megfelelően működik-e, az áttelepítés tervezze. Üzemszünet, során a következő műveleteket:
+Miután ellenőrizte, hogy minden a várt módon működik, az áttelepítés tervezze. A leállás ideje alatt hajtsa végre a következő műveleteket:
 
-1. Készítsen biztonsági másolatot a fürtcsomópontokon helyileg tárolt átmeneti adatok. Ha például közvetlenül egy átjárócsomóponttal tárolt adatokat.
+1. Készítsen biztonsági másolatot a fürtcsomópontokon helyileg tárolt átmeneti adatok. Például, ha közvetlenül a központi csomóponton tárolt adatokat.
 
-2. A Windows-alapú fürt törlésekor.
+2. A Windows-alapú fürt törlése.
 
-3. Alapértelmezett ugyanazon adattár, a Windows-alapú fürt által használt Linux-alapú fürtöt létrehozni. A Linux-alapú fürt folytathatják a munkát a meglévő éles adatok alapján.
+3. Hozzon létre egy Linux-alapú fürtöt az ugyanazon alapértelmezett adattár, amely a Windows-alapú fürt használja. A Linux-alapú fürt továbbra is a meglévő éles adataival végzett munkát.
 
 4. Biztonsági másolatot készített az átmeneti adatok importálása.
 
-5. Kezdő feladatok/folytatni az új fürt segítségével.
+5. Indítási feladatok/folytatni a használatával az új fürtön.
 
-### <a name="copy-data-to-the-test-environment"></a>A tesztkörnyezet adatok másolása
+### <a name="copy-data-to-the-test-environment"></a>Adatok másolása a tesztkörnyezetben
 
-Másolja az adatokat, a feladatok számos módszer áll rendelkezésre, azonban a jelen szakaszban bemutatott két a legegyszerűbb módszer áll közvetlenül helyezze át a fájlokat egy tesztfürthöz.
+Másolja az adatokat és a feladatok számos módszer áll rendelkezésre, azonban a jelen szakaszban ismertetett két a legegyszerűbb módszer áll közvetlenül helyezze át a fájlokat egy tesztfürt.
 
-#### <a name="hdfs-copy"></a>HDFS másolása
+#### <a name="hdfs-copy"></a>HDFS-példány
 
-Az alábbi lépéseket követve másolja át az adatok a termelési fürtből a tesztfürthöz. Az alábbi a `hdfs dfs` segédprogram, amely tartalmazza a hdinsight eszközzel.
+A következő lépések használatával adatokat másol az éles fürtöt a vizsgálatot fürthöz. Ezek a lépések használják a `hdfs dfs` segédprogram, amely a HDInsight részét képezi.
 
-1. A szolgáltatás fiók és az alapértelmezett tároló adatai a meglévő fürt található. A következő példában PowerShell ezek az információk beolvasása:
+1. Keresse meg a tárolási fiók és az alapértelmezett tároló a meglévő fürt adatai. Az alábbi példa Powershellt használ, ezek az információk lekéréséhez:
 
     ```powershell
     $clusterName="Your existing HDInsight cluster name"
@@ -72,200 +68,200 @@ Az alábbi lépéseket követve másolja át az adatok a termelési fürtből a 
     write-host "Default container: $clusterInfo.DefaultStorageContainer"
     ```
 
-2. Egy tesztkörnyezetben létrehozásához kövesse a HDInsight-dokumentum létrehozása Linux-alapú fürtök. A fürt létrehozása előtt állítsa le, és ehelyett válassza **opcionális konfigurációs**.
+2. Létrehozhat egy tesztkörnyezetet, kövesse a Linux-alapú fürtök HDInsight a dokumentumban leírt lépéseket. A fürt létrehozása előtt állítsa le, és ehelyett válassza **opcionális konfigurációs**.
 
 3. Válassza ki a választható konfiguráció szakaszt **a társított Tárfiókokban**.
 
-4. Válassza ki **tárolási kulcs hozzáadása**, és amikor a rendszer kéri, válassza ki a tárfiókot, az 1. lépésben a PowerShell-parancsfájl által visszaadott. Kattintson a **válasszon** az egyes szakaszokban. Végezetül hozza létre a fürtöt.
+4. Válassza ki **tárkulcs hozzáadása**, és amikor a rendszer kéri, válassza ki a tárfiókot, az 1. lépésben a PowerShell-parancsfájl által visszaadott. Kattintson a **kiválasztása** az egyes szakaszokban. Végül hozza létre a fürtön.
 
-5. A fürt létrehozása után használatával kapcsolódik hozzá **SSH.** További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+5. Ha a fürt létrejött, csatlakozhat hozzá **SSH.** További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-6. Az SSH-munkamenetből a következő paranccsal fájlok másolását a kapcsolt tárfiókra az új alapértelmezett tárfiók. Cserélje le a tároló PowerShell által visszaadott tároló adatokkal. Cserélje le __fiók__ , fiókja néven. Cserélje le az adatok elérési útja az elérési útját egy adatfájlt.
+6. Az SSH-munkamenetből a következő parancs használatával másolja a fájlokat a társított storage-fiókból az új alapértelmezett tárfiók. Cserélje le a tároló a PowerShell által visszaadott tároló információkkal. Cserélje le __fiók__ fiókja néven. Cserélje le az adatok elérési útja egy adat-fájl elérési útját.
 
     ```bash
     hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
     ```
 
     > [!NOTE]
-    > Ha a könyvtárstruktúra, amely tartalmazza az adatokat nem létezik a tesztkörnyezetben, létrehozhatja a következő parancsot:
+    > Ha az adatokat tartalmazó a mappastruktúrát nem létezik a tesztkörnyezetben, hozhat létre a következő paranccsal:
 
     ```bash
     hdfs dfs -mkdir -p /new/path/to/create
     ```
 
-    A `-p` kapcsoló létrehozását lehetővé tevő összes könyvtár az elérési út.
+    A `-p` kapcsoló lehetővé teszi, hogy az elérési út minden címtár létrehozása.
 
-#### <a name="direct-copy-between-blobs-in-azure-storage"></a>Az Azure Storage blobs közötti közvetlen másolása
+#### <a name="direct-copy-between-blobs-in-azure-storage"></a>Az Azure Storage-blobok közötti közvetlen másolása
 
-Azt is megteheti, érdemes lehet használni a `Start-AzureStorageBlobCopy` Azure PowerShell-parancsmag segítségével másolja át a BLOB storage-fiókok HDInsight eszközön kívüli között. További információkért lásd: a hogyan kezelheti az Azure PowerShell használata az Azure Storage Azure BLOB szakasza.
+Azt is megteheti, előfordulhat, hogy szeretné használni a `Start-AzureStorageBlobCopy` másolhat át blobokat több tárfiók HDInsight-on kívül az Azure PowerShell-parancsmagot. További információkért tekintse meg a kezelése az Azure PowerShell az Azure Storage Azure-Blobok szakaszában.
 
 ## <a name="client-side-technologies"></a>Ügyféloldali technológiák
 
-Ügyféloldali technológiák többek között [Azure PowerShell-parancsmagok](/powershell/azureps-cmdlets-docs), [Azure CLI](../cli-install-nodejs.md), vagy a [.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) Linux-alapú fürtökön működni. Ezek a technológiák a REST API-k, amelyek azonos mindkét fürttípusok az operációs rendszer különböző támaszkodnak.
+Ügyféloldali technológiák, például [Azure PowerShell-parancsmagok](/powershell/azureps-cmdlets-docs), [Azure CLI-vel](../cli-install-nodejs.md), vagy a [.NET SDK a Hadoophoz](https://hadoopsdk.codeplex.com/) Linux-alapú fürtök működni. Ezek a technológiák válik a REST API-k, amelyek azonosak mindkét fürt operációs rendszerének típusa.
 
 ## <a name="server-side-technologies"></a>Kiszolgálóoldali technológiák
 
-A következő táblázat áttelepítése kiszolgálóoldali összetevőket, amelyek Windows-specifikus nyújt útmutatást.
+A következő tábla áttelepítése kiszolgálóoldali összetevőivel, amelyek Windows-specifikus nyújt útmutatást.
 
-| Ha ezt a technológiát használja... | Ez a művelet végrehajtása... |
+| Ha ezt a technológiát használ... | Ez a művelet eltarthat... |
 | --- | --- |
-| **PowerShell** (kiszolgálóoldali parancsfájlok, beleértve a fürt létrehozása során használt Parancsfájlműveletek) |Az újraírási, Bash parancsfájlok. A Parancsfájlműveletek, lásd: [testreszabása Linux-alapú HDInsight parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md) és [parancsfájl-művelet fejlesztési a Linux-alapú HDInsight](hdinsight-hadoop-script-actions-linux.md). |
-| **Az Azure CLI** (kiszolgálóoldali parancsfájlok) |Az Azure parancssori felület Linux rendszeren érhető el, amíg azt nem olyan előre telepített a HDInsight fürt központi csomópontján. Az Azure parancssori felület telepítésével kapcsolatos további információkért lásd: [Ismerkedés az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli). |
-| **.NET-összetevők** |.NET támogatott Linux-alapú HDInsight segítségével [monó](https://mono-project.com). További információkért lásd: [át .NET Linux-alapú HDInsight-megoldások](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
-| **A Win32-összetevők vagy egyéb csak Windows technológia** |Útmutatás az összetevő vagy a technológia függ. Előfordulhat, hogy található, amely kompatibilis a Linux-verzió. Ha nem, akkor kell egy másik megoldás, vagy írja át ezt az összetevőt. |
+| **PowerShell** (kiszolgálóoldali parancsprogramok, beleértve a fürt létrehozása során használt Szkriptműveletek) |Újraírási, Bash-szkriptek. Szkriptműveletek, lásd: [testreszabása Linux-alapú HDInsight parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md) és [parancsfájlművelet-alapú fejlesztés a Linux-alapú HDInsight](hdinsight-hadoop-script-actions-linux.md). |
+| **Az Azure CLI** (kiszolgálóoldali parancsprogramokat) |Az Azure CLI a Linux rendszeren érhető el, amíg azt nem olyan előre telepített a HDInsight-fürt átjárócsomópontjaiból a. Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Azure CLI 2.0 használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli). |
+| **.NET-összetevők** |Linux-alapú HDInsight segítségével a támogatott .NET [Mono](https://mono-project.com). További információkért lásd: [át .NET – megoldások a Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
+| **A Win32-összetevők és egyéb csak Windows technológiák** |Útmutatás az összetevő vagy technológiai függ. Előfordulhat, hogy egy olyanra, amely kompatibilis a Linux találja. Ha nem, ha egy másik megoldás, vagy ha újraírási ezt az összetevőt. |
 
 > [!IMPORTANT]
-> A HDInsight-kezelési SDK nincs teljes mértékben kompatibilis a monó. Ne használja a HDInsight-fürt telepített megoldások részeként.
+> A HDInsight kezelése az SDK nem teljes mértékben kompatibilis a Mono. Ne használja a HDInsight-fürtön üzembe helyezett megoldások részeként.
 
-## <a name="cluster-creation"></a>A fürt létrehozása
+## <a name="cluster-creation"></a>Fürt létrehozása
 
-Ez a szakasz tájékoztatást nyújt a fürt létrehozása különbségeit.
+Ez a szakasz a fürt létrehozásakor különbségek ismertetése.
 
-### <a name="ssh-user"></a>SSH felhasználó
+### <a name="ssh-user"></a>SSH felhasználói
 
-Linux-alapú HDInsight-fürtök használata a **Secure Shell (SSH)** protokollt, hogy az a fürt csomópontjai távoli hozzáférést biztosítanak. Távoli asztal a Windows-alapú fürtök esetében eltérően a legtöbb SSH-ügyfél nem biztosítanak egy grafikus felhasználói felület. Ehelyett SSH-ügyfél adjon meg egy parancssort, amely lehetővé teszi, hogy parancsokat futtatnak majd a fürt. Egyes ügyfelek (például [MobaXterm](http://mobaxterm.mobatek.net/)) adjon meg egy grafikus fájl rendszer böngésző távoli parancssor mellett.
+Linux-alapú HDInsight-fürtök használata a **Secure Shell (SSH)** protokoll, a fürtcsomópontokon távoli elérést biztosíthat. Ellentétben a távoli asztal a Windows-alapú fürtök esetén a legtöbb SSH-ügyfél nem biztosítanak egy grafikus felhasználói felület. Ehelyett SSH-ügyfelet adjon meg egy parancssort, amely lehetővé teszi, hogy a fürtön futtasson parancsokat. Egyes ügyfelek (például [MobaXterm](http://mobaxterm.mobatek.net/)) adjon meg egy grafikus rendszer fájltallózó egy távoli parancssori mellett.
 
-Fürt létrehozása, és meg kell adnia az SSH-felhasználó vagy egy **jelszó** vagy **nyilvános kulcsú tanúsítvány** hitelesítéshez.
+Fürt létrehozása során, és meg kell adnia egy SSH-felhasználót vagy egy **jelszó** vagy **nyilvános kulcsú tanúsítvány** a hitelesítéshez.
 
-Azt javasoljuk, nyilvános kulcsú tanúsítvány, mert az biztonságosabb a jelszót. Tanúsítványhitelesítés aláírt nyilvános/titkos kulcspár előállításához, akkor a nyilvános kulcs megadása a fürt létrehozásakor működik. A kiszolgálóhoz való csatlakozáskor a titkos kulcsot az ügyfél biztosítja a hitelesítést a kapcsolathoz.
+Azt javasoljuk, nyilvános kulcsú tanúsítvány, mivel biztonságosabb, mint a jelszó használatával. Tanúsítványalapú hitelesítés működik egy aláírt nyilvános/titkos kulcspár generálása, akkor a nyilvános kulcsot biztosít, a fürt létrehozásakor. Az SSH-val kiszolgálóhoz való csatlakozáshoz, akkor a titkos kulcs az ügyfél a kapcsolat hitelesítést biztosít.
 
 További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ### <a name="cluster-customization"></a>Fürt testreszabása
 
-**Parancsfájl-műveletek** használt Linux-alapú fürtök úgy kell megírni, a Bash parancsfájlok. Linux-alapú fürtökön a Parancsfájlműveletek során vagy a fürt létrehozása után. További információkért lásd: [testreszabása Linux-alapú HDInsight parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md) és [parancsfájl-művelet fejlesztési a Linux-alapú HDInsight](hdinsight-hadoop-script-actions-linux.md).
+**Szkriptműveletek** használt Linux-alapú fürtök kell megírni a Bash-szkript. Linux-alapú fürtök parancsfájlműveletekkel az alatt vagy fürt létrehozása után. További információkért lásd: [testreszabása Linux-alapú HDInsight parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md) és [parancsfájlművelet-alapú fejlesztés a Linux-alapú HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
-Egy másik testreszabási a szolgáltatás **bootstrap**. Windows-fürtök esetén ez a funkció lehetővé teszi további könyvtárak használatra helyének megadása a Hive. Fürt létrehozása után ezek a könyvtárak használhatók automatikusan a Hive-lekérdezések használata nélkül `ADD JAR`.
+Egy másik testreszabási szolgáltatás **bootstrap**. A Windows-fürtök esetén ez a funkció lehetővé teszi, hogy a Hive segítségével megadhatja a helyét, további kódtárak pedig használatra. Fürt létrehozása után ezek a kódtárak érhetők el automatikusan a Hive-lekérdezések használata nélkül segítségével `ADD JAR`.
 
-Linux-alapú fürtökhöz a rendszerindítási szolgáltatás nem nyújt ezt a funkciót. Ehelyett használja a dokumentált parancsfájlművelet [szalagtárak Hive hozzáadása a fürt létrehozása során](hdinsight-hadoop-add-hive-libraries.md).
+A rendszerindítási szolgáltatás Linux-alapú fürtök esetén nem nyújt ez a funkció. Ehelyett használjon szkriptműveletet részletes ismertetését lásd: [hozzáadása Hive-kódtárak a fürt létrehozásakor](hdinsight-hadoop-add-hive-libraries.md).
 
 ### <a name="virtual-networks"></a>Virtuális hálózatok
 
-Windows-alapú HDInsight-fürtök a klasszikus virtuális hálózatok csak használata pedig Linux-alapú HDInsight-fürtök igényelnek erőforrás-kezelő virtuális hálózatok. Ha a klasszikus virtuális hálózatot, amely a Linux-HDInsight-fürt csatlakoztatni kell az erőforrásokat, olvassa el [a klasszikus virtuális hálózatot egy erőforrás-kezelő virtuális hálózathoz való csatlakozás](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
+Windows-alapú HDInsight-fürtök a klasszikus virtuális hálózatok csak munkahelyi Linux-alapú HDInsight-fürtök használatához a Resource Manager virtuális hálózatok. Ha a Linux-HDInsight-fürt csatlakoznia kell a klasszikus virtuális hálózat rendelkezik erőforrások, tekintse meg [egy klasszikus virtuális hálózat összekapcsolása egy Resource Manager virtuális hálózatot](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
-A konfigurációs követelményekről további információkért lásd: a [kiterjesztése HDInsight képességek a virtuális hálózat segítségével](hdinsight-extend-hadoop-virtual-network.md) dokumentum.
+A konfigurációs követelményekről további információkért lásd: a [HDInsight kiterjesztése funkciókat a Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md) dokumentumot.
 
 ## <a name="management-and-monitoring"></a>Kezelés és monitorozás
 
-A web UI használta a Windows-alapú hdinsight eszközzel, például a feladatelőzmények vagy a Yarn felhasználói felületen, számos Ambari keresztül érhető el. Emellett az Ambari Hive View megoldást egy webböngésző segítségével Hive-lekérdezések futtatásához. Az Ambari webes felhasználói felület érhető el a Linux-alapú fürtökön https://CLUSTERNAME.azurehdinsight.net.
+A webes Windows-alapú HDInsight, például a Feladatelőzményeket és a Yarn felhasználói felületén, a használt számos ambarival érhető el. Az Ambari Hive-nézet emellett biztosítja a webböngésző használatával Hive-lekérdezések futtatásához. Az Ambari webes felhasználói felület érhető el, a Linux-alapú fürtök https://CLUSTERNAME.azurehdinsight.net.
 
-Ambari használatával kapcsolatos további információkért lásd a következő dokumentumokat:
+Az Ambari használatával kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
-* [Ambari webes](hdinsight-hadoop-manage-ambari.md)
-* [Ambari REST API-n](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Az Ambari webes](hdinsight-hadoop-manage-ambari.md)
+* [Az Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 
-### <a name="ambari-alerts"></a>Ambari riasztások
+### <a name="ambari-alerts"></a>Ambari-riasztások
 
-Ambari, amelyre egy riasztási rendszer, amelyek segítségével megállapíthatja, hogy a fürt érintő lehetséges problémákat. Az Ambari webes felhasználói felületén, sárga vagy piros bejegyzésként riasztás jelenik meg, de is helyreállíthatók a REST API-n keresztül.
+Az Ambari van riasztási rendszer, amely eláruljuk, a fürt kapcsolatos lehetséges problémákat. Az Ambari webes Kezelőfelületen piros, sárga vagy bejegyzésként riasztások jelennek meg, azonban az is lekérhet őket a REST API-n keresztül.
 
 > [!IMPORTANT]
-> Ambari riasztás jelzi, hogy *előfordulhat, hogy* probléma, nem az, hogy legyenek *van* probléma. Kaphat például, hogy hiveserver2-n nem érhető el, riasztást, annak ellenére, hogy a szokásos módon el tudja érni azt.
+> Ambari riasztások jelzi, hogy *előfordulhat, hogy* a probléma nem az, hogy ott *van* probléma. Például jelenhet meg a riasztást nem hiveserver2-n keresztül érhető el, hogy, annak ellenére, hogy elérhető-e megfelelően.
 >
-> Sok riasztást időközönkénti lekérdezések írásában, a szolgáltatás megvalósítása, és egy megadott időkereten belül választ várt. A riasztás nem feltétlenül jelenti azt, hogy a szolgáltatás le van állítva, így most, hogy nem adja vissza az eredményeket a várt időn belül.
+> Sok riasztást szolgáltatás időközönkénti lekérdezéseket vannak megvalósítva, és a egy megadott időkereten belül választ vár. A riasztás nem feltétlenül jelenti azt, hogy a szolgáltatás leállt, ezért most, hogy azt nem adott vissza eredményt, a várt időn belül.
 
-## <a name="file-system-locations"></a>Rendszer helye
+## <a name="file-system-locations"></a>Fájlrendszerbeli helyeken
 
-A Linux-fürt fájlrendszer működnek, mint a Windows-alapú HDInsight-fürtök elrendezését. A következő táblázattal általánosan használt fájlok.
+A Linux-fürt fájlrendszer működnek, mint a Windows-alapú HDInsight-fürtök van leírva. Az alábbi táblázat segítségével keresse meg a gyakran használt fájlok.
 
-| Kell keresése... | Helyezkedik... |
+| Kell keresése... | ... |
 | --- | --- |
 | Konfiguráció |`/etc`. Például: `/etc/hadoop/conf/core-site.xml` |
 | Naplófájlok |`/var/logs` |
-| Hortonworks Data Platform (HDP) |`/usr/hdp`. Nincsenek a két címtár itt található, egy, az aktuális HDP verzió és `current`. A `current` directory fájlok és könyvtárak verzió száma könyvtárában található szimbolikus hivatkozásokat tartalmaz. A `current` directory kerül a HDP fájlok elérésének a verzió megváltozása óta, a HDP könnyen verzióra frissül. |
+| Hortonworks Data Platform (HDP) |`/usr/hdp`. Nincsenek a két címtár található itt, amely az aktuális HDP verzió és `current`. A `current` directory fájlok és mappák száma verzió könyvtárában található szimbolikus hivatkozásokat tartalmaz. A `current` directory kerül a HDP fájlokhoz fér hozzá a szám megváltozik a verzió óta, a HDP kényelmes módja verzióra frissült. |
 | hadoop-streaming.jar |`/usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar` |
 
-Ismeri annak a fájlnak a nevét, is található a fájl elérési útja általában használja az SSH-munkamenetet a következő parancsot:
+Általánosságban elmondható Ha ismeri a fájl nevét, használhatja a következő parancsot egy SSH-munkamenetből található a fájl elérési útja:
 
     find / -name FILENAME 2>/dev/null
 
-A fájlnév helyettesítő karaktereket is használható. Például `find / -name *streaming*.jar 2>/dev/null` elérési útját "streaming" a fájlnév részét képező szót tartalmazó jar fájlok adja.
+A fájl nevét a helyettesítő karakterek is használhatja. Ha például `find / -name *streaming*.jar 2>/dev/null` visszaküldi az elérési út részeként a fájl nevét a "streaming" szót tartalmazó jar fájlok.
 
 ## <a name="hive-pig-and-mapreduce"></a>Hive, Pig és MapReduce
 
-A Pig és a MapReduce munkaterhelések hasonlóak a Linux-alapú fürtökön. Azonban Linux-alapú HDInsight-fürtök hozhatók létre Hadoop Hive és a Pig újabb verzióját használja. Ezen verzió különbségek vezethetnek hogyan változásairól a meglévő megoldásokat függvény. A HDInsight részét alkotó verzióin további információkért lásd: [HDInsight-összetevők verziószámozása](hdinsight-component-versioning.md).
+A Pig és MapReduce számítási feladatok Linux-alapú fürtökön hasonlóak. Azonban Linux-alapú HDInsight-fürtök hozható létre Hadoop-, Hive és Pig újabb verzióit. Ezek verzióeltérései vezethet be, hogyan változásai a meglévő megoldásokat függvényt. További információ a HDInsight részét képező összetevők verzióját, lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md).
 
-Linux-alapú HDInsight nem biztosít a távoli asztali funkciókat. Ehelyett az SSH segítségével távolról kapcsolódni a központi fürtcsomópontokon. További információkért lásd a következő dokumentumokat:
+Linux-alapú HDInsight nem nyújt a távoli asztali funkcióit. Ehelyett az SSH segítségével távolról kapcsolódni a fürt átjárócsomópontjaiból. További információkért tekintse meg a következő dokumentumokat:
 
-* [A Hive használata a SSH](hdinsight-hadoop-use-hive-ssh.md)
-* [A Pig használata SSH](hadoop/apache-hadoop-use-pig-ssh.md)
-* [SSH MapReduce használata](hadoop/apache-hadoop-use-mapreduce-ssh.md)
+* [A Hive használata az ssh-val](hdinsight-hadoop-use-hive-ssh.md)
+* [A Pig használata az ssh-val](hadoop/apache-hadoop-use-pig-ssh.md)
+* [A MapReduce használata a az ssh-val](hadoop/apache-hadoop-use-mapreduce-ssh.md)
 
 ### <a name="hive"></a>Hive
 
 > [!IMPORTANT]
-> Ha egy külső Hive metaadattárhoz használ, készítsen biztonsági másolatot a metaadattárhoz és a Linux-alapú HDInsight együttes használatához. Linux-alapú HDInsight egy struktúra, amelynek kompatibilitási problémák lehet újabb verziója érhető el a korábbi verziók által létrehozott metastores.
+> Ha egy külső Hive-metaadattár használ, készítsen biztonsági másolatot a metaadattár használata a Linux-alapú HDInsight előtt. Linux-alapú HDInsight Hive, előfordulhat, hogy inkompatibilitásokat újabb verzióival történő érhető el a korábbi verziók által létrehozott metaadattárak.
 
-Az alábbi ábra a Hive munkaterhelések áttelepítését nyújt útmutatást.
+Az alábbi ábra a Hive számítási feladatok migrálása nyújt útmutatást.
 
 | A Windows-alapú, használni... | A Linux-alapú... |
 | --- | --- |
-| **Hive szerkesztő** |[Az Ambari Hive nézete](hadoop/apache-hadoop-use-hive-ambari-view.md) |
-| `set hive.execution.engine=tez;` Tez engedélyezése |Tez érték az alapértelmezett végrehajtó motorja Linux-alapú fürtökhöz, ezért már nem szükséges a set utasítás. |
-| C# felhasználó által definiált függvények | Információ a C#-összetevők Linux-alapú HDInsight érvényesítése: [át .NET Linux-alapú HDInsight-megoldások](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
-| CMD-fájlokat vagy parancsprogramokat meghívni egy Hive-feladat részeként a kiszolgálón |Bash parancsfájlok használata |
-| `hive` a távoli asztal parancs |Használjon [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) vagy [SSH-munkamenetet a Hive](hdinsight-hadoop-use-hive-ssh.md) |
+| **Hive-szerkesztő** |[Az Ambari Hive nézete](hadoop/apache-hadoop-use-hive-ambari-view.md) |
+| `set hive.execution.engine=tez;` Tez engedélyezése |Tez a helyzet a Linux-alapú fürtök alapértelmezett-végrehajtó motor már nincs szükség a set utasítás. |
+| C# felhasználó által definiált függvények | Információ a Linux-alapú HDInsight-összetevők C# ellenőrzése: [át .NET – megoldások a Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
+| CMD-fájlokat vagy parancsprogramokat a kiszolgálón, egy Hive-feladat részeként meghívása |Bash-szkriptek használata |
+| `hive` a távoli asztal parancsot |Használat [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) vagy [SSH-munkamenetből történő Hive](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
 | A Windows-alapú, használni... | A Linux-alapú... |
 | --- | --- |
-| C# felhasználó által definiált függvények | Információ a C#-összetevők Linux-alapú HDInsight érvényesítése: [át .NET Linux-alapú HDInsight-megoldások](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
-| CMD-fájlokat vagy parancsprogramokat a kiszolgálón, a Pig feladatot részeként meghívni |Bash parancsfájlok használata |
+| C# felhasználó által definiált függvények | Információ a Linux-alapú HDInsight-összetevők C# ellenőrzése: [át .NET – megoldások a Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
+| CMD-fájlokat vagy parancsprogramokat a kiszolgálón egy Pig feladat részeként meghívása |Bash-szkriptek használata |
 
 ### <a name="mapreduce"></a>MapReduce
 
 | A Windows-alapú, használni... | A Linux-alapú... |
 | --- | --- |
-| C#-hozzárendelést és nyomáscsökkentő összetevők | Információ a C#-összetevők Linux-alapú HDInsight érvényesítése: [át .NET Linux-alapú HDInsight-megoldások](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
-| CMD-fájlokat vagy parancsprogramokat meghívni egy Hive-feladat részeként a kiszolgálón |Bash parancsfájlok használata |
+| C#-hozzárendelést és nyomáscsökkentő összetevők | Információ a Linux-alapú HDInsight-összetevők C# ellenőrzése: [át .NET – megoldások a Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
+| CMD-fájlokat vagy parancsprogramokat a kiszolgálón, egy Hive-feladat részeként meghívása |Bash-szkriptek használata |
 
 ## <a name="oozie"></a>Oozie
 
 > [!IMPORTANT]
-> Ha egy külső Oozie metaadattárhoz használ, készítsen biztonsági másolatot a metaadattárhoz és a Linux-alapú HDInsight együttes használatához. Linux-alapú HDInsight egy Oozie, amelynek kompatibilitási problémák lehet újabb verziója érhető el a korábbi verziók által létrehozott metastores.
+> Ha egy külső Oozie-metaadattár használ, készítsen biztonsági másolatot a metaadattár használata a Linux-alapú HDInsight előtt. Linux-alapú HDInsight egy Oozie, amelynek kompatibilitási problémák lehet újabb verziója érhető el a korábbi verziók által létrehozott metaadattárak.
 
-Oozie munkafolyamatok lehetővé teszik a rendszerhéj műveleteket. Rendszerhéj műveletek az operációs rendszer alapértelmezett rendszerhéját használja a parancssori parancsok futtatásához. Ha Oozie-munkafolyamatok, amelyek a Windows rendszerhéj támaszkodnak, meg kell írniuk a munkafolyamatokat a Linux-rendszerhéj környezet (Bash) támaszkodnak. Rendszerhéj műveletek használatáról az Oozie további információkért lásd: [Oozie rendszerhéj művelet bővítmény](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html).
+Az Oozie-munkafolyamatok rendszerhéj műveletek engedélyezése. Rendszerhéj-műveletek az operációs rendszer alapértelmezett rendszerhéját használja a parancssori parancsok futtatásához. Ha a Windows felület támaszkodó Oozie-munkafolyamatok, meg kell felülírnia, munkafolyamatot, amelyet a Linux-rendszerhéj-környezetet (Bash) támaszkodik. Az Oozie használata a rendszerhéj műveletek további információkért lásd: [Oozie rendszerhéj műveleti bővítmény](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html).
 
-Ha olyan munkafolyamatot, amely C#-alkalmazás használ, ellenőrizze a Linux környezetben ezeket az alkalmazásokat. További információkért lásd: [át .NET Linux-alapú HDInsight-megoldások](hdinsight-hadoop-migrate-dotnet-to-linux.md).
+Ha egy munkafolyamatot, amely a C#-alkalmazás használ, ellenőrizze ezeket az alkalmazásokat a Linux-környezet. További információkért lásd: [át .NET – megoldások a Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 
 ## <a name="storm"></a>Storm
 
 | A Windows-alapú, használni... | A Linux-alapú... |
 | --- | --- |
-| A Storm irányítópultja |A Storm irányítópultjának nem érhető el. Lásd: [a Linux-alapú HDInsight központi telepítése és kezelése Storm topológiák](storm/apache-storm-deploy-monitor-topology-linux.md) küldeni topológiákat módon a |
-| A Storm felhasználói felülete |A Storm felhasználói felülete érhető el: https://CLUSTERNAME.azurehdinsight.net/stormui |
-| A Visual Studio létrehozásához, telepítéséhez és felügyeletéhez a C# vagy hibrid topológiák |A Visual Studio létrehozásához, telepítéséhez és felügyeletéhez a C# (SCP.NET) vagy a Linux-alapú HDInsight alatt futó Storm hibrid topológiák is használható. Csak használható 10/28/2016 után létrehozott fürtökkel. |
+| A Storm irányítópultja |A Storm irányítópultjának nem érhető el. Lásd: [futó Linux-alapú HDInsight üzembe helyezése és kezelése a Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md) módjaival topológiák elküldése |
+| A Storm felhasználói felület |A Storm felhasználói felület érhető el: https://CLUSTERNAME.azurehdinsight.net/stormui |
+| Visual Studióval való létrehozásához, üzembe helyezése és kezelése a C# vagy hibrid topológiák |A Visual Studio létrehozása, üzembe helyezése és kezelése a C# (SCP.NET) vagy a Linux-alapú Storm on HDInsight hibrid topológiák is használható. Csak használható 10/28/2016 után létrehozott fürtökkel. |
 
 ## <a name="hbase"></a>HBase
 
-Linux-alapú fürtökön a HBase znode szülője van `/hbase-unsecure`. Állítsa be ezt az értéket a konfigurációban a Java-ügyfél natív HBase Java API-t használó alkalmazások.
+Linux-alapú fürtökön a znode szülő a hbase-hez van `/hbase-unsecure`. Ezt az értéket a konfigurációban a Java-ügyfelek bármelyike natív HBase Java API-t használó alkalmazásokat.
 
-Lásd: [létre egy Java-alapú HBase-alkalmazás](hdinsight-hbase-build-java-maven.md) egy példa ügyfél, amely beállítja ezt az értéket.
+Lásd: [Java-alapú HBase-alkalmazás létrehozása](hdinsight-hbase-build-java-maven.md) egy példa-ügyfél, amely beállítja ezt az értéket.
 
 ## <a name="spark"></a>Spark
 
-A Spark-fürtök előzetes érhető el a Windows-fürtök volt. Spark GA esetén csak Linux-alapú fürtökön érhető el. Nincs fürtről a Windows-alapú Spark előzetes kiadás Linux-alapú Spark-fürt az áttelepítési útvonal.
+A Spark-fürtök az előzetes verzióban elérhető a Windows-fürtök voltak. Spark általánosan elérhető Linux-alapú fürtök csak érhető el. Nincs előzetes Windows-alapú Spark-fürtök áttelepítési útvonal egy kiadási Linux-alapú Spark-fürthöz.
 
 ## <a name="known-issues"></a>Ismert problémák
 
 ### <a name="azure-data-factory-custom-net-activities"></a>Az Azure Data Factory egyéni .NET-tevékenységek
 
-Az Azure Data Factory egyéni .NET-tevékenységek jelenleg nem támogatottak a Linux-alapú HDInsight-fürtökön. Ehelyett használjon a következő módszerek egyikét a ADF folyamat részeként egyéni tevékenységek végrehajtásához.
+Az Azure Data Factory egyéni .NET-tevékenységek jelenleg nem támogatottak a Linux-alapú HDInsight-fürtökön. Ehelyett használjon az alábbi módszerek közül az egyéni tevékenységek végrehajtására az ADF folyamat részeként.
 
-* .NET-tevékenységek végrehajtása az Azure Batch-készlet. További részletekért lásd a használata Azure Batch szolgáltatás szakasza kapcsolódó [egyéni tevékenységeket használni egy Azure Data Factory-folyamat](../data-factory/transform-data-using-dotnet-custom-activity.md)
-* A MapReduce művelethez a tevékenység végrehajtása. További információkért lásd: [MapReduce program meghívása az adat-előállító](../data-factory/transform-data-using-hadoop-map-reduce.md).
+* .NET-tevékenységek végrehajtása az Azure Batch-készletben. Tekintse meg a használatát az Azure Batch szolgáltatás szakaszában társított [egyéni tevékenységek használata Azure Data Factory-folyamatban](../data-factory/transform-data-using-dotnet-custom-activity.md)
+* A tevékenység egy MapReduce-tevékenység végrehajtása. További információkért lásd: [MapReduce-programok meghívása a Data Factory](../data-factory/transform-data-using-hadoop-map-reduce.md).
 
 ### <a name="line-endings"></a>Sorvégződések
 
-Windows-alapú rendszereken sorvégeinek általában használja a CRLF, a Linux-alapú rendszerek LF használja. Módosítsa a meglévő adatalkotók és a fogyasztók LF dolgozni szeretne.
+Windows-alapú rendszereken sorvégződések általában használni a CRLF, a Linux-alapú rendszerek használata LF Karakterrel. Módosítsa a meglévő adat-előállítók és fogyasztók LF dolgozni szeretne.
 
-Például Azure PowerShell használatával történő lekérdezés HDInsight egy Windows-alapú fürtön adatait jeleníti meg a CRLF. Egy Linux-alapú fürttel ugyanabban a lekérdezésben LF adja vissza. Ellenőrizze, hogy ha a sor befejezése előtt Linux-alapú fürtre történő a megoldás problémát okoz.
+Például az Azure PowerShell-lel történő lekérdezés egy Windows-alapú fürt a HDInsight adatokat ad vissza a CRLF. A Linux-alapú fürtökkel ugyanabból a lekérdezés LF Karakterrel adja vissza. Ellenőrizze, hogy ha a sor vége a megoldással problémát okoz, a Linux-alapú fürt-ba való migrálás előtt.
 
-A sor a fürtcsomópontokon futtatott parancsfájlok, a befejezési LF használata. Ha CRLF használ, előfordulhat, hogy hibába ütközik, amikor futtatja a parancsfájlokat egy Linux-alapú fürtön.
+Mindig használja a sor a fürtcsomópontokon futó parancsprogramok befejezési LF Karakterrel. Ha CRLF használ, előfordulhat, hogy hibába ütközik, amikor futtatja a parancsfájlokat egy Linux-alapú fürt.
 
-Ha a parancsfájlok nem tartalmaz beágyazott CR karakter karakterláncok, tömegesen módosítása a sorvégződések, az alábbi módszerek egyikének használatával:
+Ha a parancsfájlok nem tartalmazzák a beágyazott a CR karakter karakterláncok, tömegesen módosítása a sorvégződések, az alábbi módszerek egyikével:
 
-* **A fürt való feltöltés előtt**: a következő PowerShell-utasítások segítségével módosítsa a sorvégződések CRLF értékről LF a parancsfájl a fürthöz való feltöltés előtt.
+* **A fürthöz való feltöltéséhez**: a következő PowerShell-utasítások használatával módosítja a sorvégződések CRLF LF a parancsfájlt a fürtbe való feltöltéséhez.
 
     ```powershell
     $original_file ='c:\path\to\script.py'
@@ -273,7 +269,7 @@ Ha a parancsfájlok nem tartalmaz beágyazott CR karakter karakterláncok, töme
     [IO.File]::WriteAllText($original_file, $text)
     ```
 
-* **A fürthöz feltöltése után**: a Linux-alapú fürthöz SSH-munkamenetet a következő parancs segítségével módosítsa a parancsfájlt.
+* **A fürthöz feltöltése után**: módosítsa a parancsfájlt a következő parancsot egy SSH-munkamenetből a Linux-alapú fürt használatával.
 
     ```bash
     hdfs dfs -get wasb:///path/to/script.py oldscript.py
@@ -283,6 +279,6 @@ Ha a parancsfájlok nem tartalmaz beágyazott CR karakter karakterláncok, töme
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerje meg a Linux-alapú HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
-* [Az SSH használata a HDInsight való kapcsolódáshoz](hdinsight-hadoop-linux-use-ssh-unix.md)
-* [A Linux-alapú fürt Ambari kezelése](hdinsight-hadoop-manage-ambari.md)
+* [Ismerje meg, hogyan hozhat létre Linux-alapú HDInsight-fürtök](hdinsight-hadoop-provision-linux-clusters.md)
+* [Az SSH használata a HDInsight csatlakozni](hdinsight-hadoop-linux-use-ssh-unix.md)
+* [Linux-alapú fürt kezelése az Ambari](hdinsight-hadoop-manage-ambari.md)

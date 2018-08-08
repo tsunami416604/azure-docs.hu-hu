@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: dc362c89f7bc83c4848c0e857173db1ea2639bc4
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 01b77fc2521c221594a38b3731694115adf82e2c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362840"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600805"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jelszó egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazás konfigurálása során
 
@@ -31,7 +31,7 @@ Ez a probléma általában akkor fordul elő, ha az alkalmazás gyártójától 
 
 Míg a Microsoft technológiák automatikusan észlelni, ha Integrációk felosztása, nem feltétlenül azonnal találni a problémákat, vagy a problémák megoldásához hosszabb időt is igénybe. Abban az esetben egyet ezek Integrációk nem működik megfelelően, ha nyissa meg egy támogatási esetet, a lehető leggyorsabban lehet meghatározni.
 
-**Ha Ön az alkalmazás gyártójától, szerepelnek** küldjön el nekünk, a Microsoft is dolgozhat velük, natív módon integrálhatja alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](./develop/active-directory-app-gallery-listing.md) , azok elindult.
+**Ha Ön az alkalmazás gyártójától, szerepelnek** küldjön el nekünk, a Microsoft is dolgozhat velük, natív módon integrálhatja alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](develop/howto-app-gallery-listing.md) , azok elindult.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Hitelesítő adatok kitölti a rendszer, és elküldve, de az oldal azt jelzi, hogy a hitelesítő adatok helytelenek
 
@@ -59,7 +59,7 @@ Abban az esetben, ha a fenti javaslatok nem működnek, annak oka az lehet az es
 
 Míg a Microsoft technológiák automatikusan észlelni, ha az alkalmazás Integrációk felosztása, nem feltétlenül azonnal találni a problémákat, vagy a problémák elhárításához időbe telhet. -Integrációja nem működik megfelelően, ha megnyithat egy támogatási esetet, minél hamarabb hiba javításához. 
 
-Emellett **szerepelnek a az alkalmazás gyártójával, ha** **küldjön el nekünk** így használhatnánk azokat a natív módon integrálja az alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](./develop/active-directory-app-gallery-listing.md) , azok elindult.
+Emellett **szerepelnek a az alkalmazás gyártójával, ha** **küldjön el nekünk** így használhatnánk azokat a natív módon integrálja az alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](develop/howto-app-gallery-listing.md) , azok elindult.
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>A bővítmény működik, a Chrome és a Firefox, de nem az Internet Explorer
 
@@ -73,7 +73,7 @@ Ez a probléma két fő oka is van:
 
    * Sajnos ez a helyzet eltérőek lehetnek attól függően, a böngésző verziója, a számítógép sebessége vagy a meglátogatott webhely. Ebben az esetben javasoljuk, hogy kapcsolatba lép a támogatással, hogy kijavíthassuk az integrációt, az adott alkalmazás.
 
-Emellett **szerepelnek a az alkalmazás gyártójával, ha** **küldjön el nekünk** így használhatnánk azokat a natív módon integrálja az alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](./develop/active-directory-app-gallery-listing.md) , azok elindult.
+Emellett **szerepelnek a az alkalmazás gyártójával, ha** **küldjön el nekünk** így használhatnánk azokat a natív módon integrálja az alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](develop/howto-app-gallery-listing.md) , azok elindult.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Ellenőrizze, hogy az alkalmazás bejelentkezési lapján nemrég megváltozott vagy egy további mező szükséges
 
@@ -81,7 +81,7 @@ Ha az alkalmazás bejelentkezési lapján a jelentősen megváltozott, néha enn
 
 Míg a Microsoft technológiák automatikusan észlelni, ha az alkalmazás Integrációk felosztása, nem feltétlenül azonnal találni a problémákat, vagy a problémák elhárításához időbe telhet. -Integrációja nem működik megfelelően, ha megnyithat egy támogatási esetet, minél hamarabb hiba javításához. 
 
-Emellett **szerepelnek a az alkalmazás gyártójával, ha** **küldjön el nekünk** így használhatnánk azokat a natív módon integrálja az alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](./develop/active-directory-app-gallery-listing.md) , azok elindult.
+Emellett **szerepelnek a az alkalmazás gyártójával, ha** **küldjön el nekünk** így használhatnánk azokat a natív módon integrálja az alkalmazását az Azure Active Directoryval. A gyártó, elküldheti a [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában listázása](develop/howto-app-gallery-listing.md) , azok elindult.
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>A hozzáférési Panel webböngésző-bővítmény telepítése
 

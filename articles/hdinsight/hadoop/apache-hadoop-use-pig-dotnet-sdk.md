@@ -1,52 +1,47 @@
 ---
-title: Apache Pig feladatok futtatásához a .NET SDK-val a Hadoop - Azure HDInsight |} Microsoft Docs
-description: Megtudhatja, hogyan használhatja a .NET SDK a Hadoop-elküldeni a Pig-feladatokhoz és a hdinsight Hadoop.
+title: Az Apache Pig-feladatok futtatása Hadoop – Azure HDInsight .NET SDK-val
+description: Ismerje meg, hogyan használhatja a .NET SDK a Hadoophoz Hadoop on HDInsight Pig-feladatok elküldése.
 services: hdinsight
-documentationcenter: .net
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: fa11d49a-328c-47e7-b16d-e7ed2a453195
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 986e6fe0e71c4e1361814e22d89fa5121341cc79
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: jasonh
+ms.openlocfilehash: e781d5d6cf9b1e2ce3c79e138c7a82c780ce8df4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771752"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594814"
 ---
-# <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>A .NET SDK használatával a hdinsight Hadoop Pig feladatok futtatása
+# <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>A .NET SDK használatával a hadoop együttes használata a HDInsight Pig-feladatok futtatása
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Megtudhatja, hogyan használható a .NET SDK a Hadoop on Azure HDInsight Hadoop Apache Pig feladatok elküldéséhez.
+Ismerje meg, hogyan használhatja a .NET SDK a Hadoophoz Hadoop on Azure HDInsight az Apache Pig-feladatok elküldése.
 
-A HDInsight .NET SDK .NET ügyféloldali kódtáraknál, amely megkönnyíti a HDInsight-fürtök a .NET-együttműködve biztosítja. A Pig hozhat létre MapReduce műveletek modellezési adatátalakítást sorozata alapján. Ebből a dokumentumból megismerheti, hogyan elküldeni a Pig feladatot egy HDInsight-fürthöz egy alapszintű C#-alkalmazás használatával.
+A HDInsight .NET SDK-t biztosít a .NET-ügyfélkönyvtárak, amelyek segítségével könnyebben működik a HDInsight-fürtökkel a .NET használatával. A Pig MapReduce operations hozzon létre egy sorozatát adatátalakítások modellezés teszi lehetővé. Ebből a dokumentumból megismerheti, hogyan egy egyszerű C#-alkalmazás használatával küldjön el egy Pig feladatot egy HDInsight-fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben leírt lépéseket a következőkre lesz szüksége.
+A jelen cikkben ismertetett lépések a következőkre lesz szüksége.
 
-* (A HDInsight Hadoop) Azure HDInsight-fürtök (vagy a Windows vagy Linux-alapú).
+* Egy Azure HDInsight (Hadoop on HDInsight)-fürt (bármelyik Windows vagy Linux-alapú).
 
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* A Visual Studio 2012, 2013, 2015-öt vagy 2017.
+* A Visual Studio 2012, 2013, 2015 vagy 2017.
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
 
-A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, így azokat könnyebben működéséhez a .NET-HDInsight-fürtökkel.
+A HDInsight .NET SDK-t biztosít a .NET-ügyfélkönyvtárak, ami jó hír működik a HDInsight-fürtökkel a .NET használatával.
 
-1. Az a **fájl** elemét a Visual Studióban, válassza ki **új** majd **projekt**.
+1. Az a **fájl** a Visual Studióban, válassza a menü **új** , majd **projekt**.
 
-2. Az új projektbe futnak írja be vagy válassza ki a következő értékeket:
+2. Írja be az új projekt, vagy válassza ki a következő értékeket:
 
    | Tulajdonság | Érték |
    | ------ | ------ |
@@ -56,13 +51,13 @@ A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, így azokat
 
 3. A projekt létrehozásához kattintson az **OK** gombra.
 
-4. Az a **eszközök** menüjében válassza **Kódtárcsomag-kezelő** vagy **NuGet-Csomagkezelő**, majd válassza ki **Csomagkezelő konzol**.
+4. Az a **eszközök** menüjében válassza **Kódtárcsomag-kezelő** vagy **NuGet-Csomagkezelő**, majd válassza ki **Package Manager Console**.
 
 5. A .NET SDK-csomagok telepítéséhez használja a következő parancsot:
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-6. A Megoldáskezelőben kattintson duplán a **Program.cs** való megnyitásához. Cserélje le a meglévő kódot a következő.
+6. A Megoldáskezelőben kattintson duplán a **Program.cs** való megnyitásához. Cserélje le a meglévő kód a következő.
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -117,17 +112,17 @@ A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, így azokat
     }
     ```
 
-7. Az alkalmazás elindításához nyomja le az **F5**.
+7. Az alkalmazás elindításához nyomja le az ENTER **F5**.
 
-8. Kilép az alkalmazásból, nyomja le az **ENTER**.
+8. Az alkalmazás a kilépéshez nyomja le az ENTER **ENTER**.
 
 ## <a name="next-steps"></a>További lépések
 
-Információk a hdinsight Pig: [a Pig használata a hdinsight Hadoop](hdinsight-use-pig.md).
+A HDInsight Pig kapcsolatos tudnivalókat lásd: [a Pig használata a hadooppal a HDInsight](hdinsight-use-pig.md).
 
-A HDInsight Hadoop használatával kapcsolatos további információkért lásd a következő dokumentumokat:
+További információ a HDInsight a Hadoop használatával a következő dokumentumokban talál:
 
-* [A Hive használata a hdinsight Hadoop](hdinsight-use-hive.md)
-* [A HDInsight Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/

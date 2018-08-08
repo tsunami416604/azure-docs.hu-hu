@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: ae2c6b6a53c6a195bbc79a5776161aab07e42f3d
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 79585195cf95e2074a1c455c82faa500af20218a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215264"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618767"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan történik az adatok az Azure Cosmos DB indexelése?
 
@@ -128,7 +128,7 @@ Index elérési utakat is használhatja a \* helyettesítő operátor számára 
 
 Az alábbiakban a közös minta indexet-útvonalak megadása:
 
-| Elérési út                | Leírás és használati eset                                                                                                                                                                                                                                                                                         |
+| Útvonal                | Leírás és használati eset                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | /                   | A gyűjtemény alapértelmezett elérési utat. A rekurzív, és a teljes dokumentum fa vonatkozik.                                                                                                                                                                                                                                   |
 | / prop /?             | Index elérési út az alábbihoz hasonló-lekérdezések kiszolgálása érdekében szükséges (kivonatoló vagy tartomány típusú, illetve):<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop                                                                       |
@@ -323,9 +323,9 @@ Az Azure Cosmos DB a működés közbeni gyűjtemény indexelési házirendet m�
 
 ![Indexelési útmutató – Azure Cosmos DB online index-átalakítások](./media/indexing-policies/index-transformations.png)
 
-Online index átalakítások menjenek végbe. Ez azt jelenti, hogy a régi szabályzatonként indexelt dokumentumok hatékonyan átalakításából származnak az új házirend szerint *működésének megzavarása nélkül megtesztelheti az írás rendelkezésre állása, vagy a kiosztott átviteli sebesség* a gyűjtemény. Konzisztenciájának olvasási és írási a REST API, SDK-k használatával végrehajtott műveletek vagy belül tárolt eljárások és eseményindítók nincs hatással az index átalakítása során. Nincs teljesítménycsökkenés vagy leállását, mivel az alkalmazások Ha létrehoz egy indexelési szabályzat módosítása.
+Online index átalakítások menjenek végbe. Ez azt jelenti, hogy a régi szabályzatonként indexelt dokumentumok hatékonyan átalakításából származnak az új házirend szerint *működésének megzavarása nélkül megtesztelheti az írás rendelkezésre állása, vagy a kiosztott átviteli sebesség* a gyűjtemény. Konzisztenciájának olvasási és írási a REST API, SDK-k használatával végrehajtott műveletek vagy belül tárolt eljárások és eseményindítók nincs hatással az index átalakítása során. 
 
-Azonban a index átalakítása folyamatban a időszakban lekérdezéseket is végül konzisztens, függetlenül az indexelési módjának saját konfigurációja (Consistent vagy Lazy). Ugyanez vonatkozik a lekérdezések bármely interfész: REST API, SDK-k és a tárolt eljárásokkal és eseményindítókkal. Csakúgy, mint Lazy indexelést, az index átalakítási aszinkron módon történik a háttérben a replikákon egy adott replika elérhető késztartalék források segítségével. 
+Indexelési házirend módosítása egy aszinkron folyamat, amely a művelet elvégzéséhez szükséges idő attól függ, a dokumentumok méretétől, dokumentumok és fenntartott egységek számát. Amíg újraindexelését folyamatban van, akkor a lekérdezés adhatnak vissza a megfelelő eredményeket, ha a lekérdezés az éppen módosított index és lekérdezések nem ad vissza hibát vagy hibákat. Amíg újraindexelését folyamatban van, a lekérdezések végül konzisztens, függetlenül az indexelési módjának saját konfigurációja (Consistent vagy Lazy). Az index után átalakítása befejeződik, továbbra is megtekintheti a konzisztens eredmények. Ugyanez vonatkozik a lekérdezések bármely interfész: REST API, SDK-k és a tárolt eljárásokkal és eseményindítókkal. Csakúgy, mint Lazy indexelést, az index átalakítási aszinkron módon történik a háttérben a replikákon egy adott replika elérhető késztartalék források segítségével. 
 
 Index átalakításokat is teljesülnek. Az Azure Cosmos DB karbantartása nem két példányban az index és a Váltás a régi index ki az újra. Ez azt jelenti, hogy nincsenek további lemezterület szükséges felhasznált ebben a gyűjteményben, míg az index átalakítások történik.
 

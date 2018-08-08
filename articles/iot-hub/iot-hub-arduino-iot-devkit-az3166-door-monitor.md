@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 25cb3ba53c663a642f0871becbfbcab39d521c67
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 501dc942fc41a4e06aa13fba2eb670f8bc0f8a21
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437715"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597820"
 ---
 # <a name="door-monitor"></a>Ajtó figyelője          
 
-Az MXChip IoT DevKit tartalmaz egy beépített mágneses érzékelő. Ebben a projektben észlelni a jelenléte vagy hiánya egy közeli erős mágneses mezőt – ebben az esetben egy kisméretű származik. állandó mágneses.
+Az MXChip IoT DevKit tartalmaz egy beépített mágneses érzékelő. Ebben a projektben észlelni a, illetve egy közeli erős mágneses mezőt – hiánya ebben az esetben egy kisméretű, állandó mágneses származik.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
@@ -27,7 +27,7 @@ Ez a projekt bemutatja:
 - Hogyan lehet a SendGrid szolgáltatás használatával értesítést küldeni az e-mail-címét.
 
 > [!NOTE]
-> Ez a projekt gyakorlati használatáért:
+> Ez a projekt gyakorlati alkalmazását hajtsa végre a következő feladatokat:
 > - Csatlakoztassa a széle és a egy ajtót egy mágneses.
 > - A fejlesztői készlet csatlakoztatása az ajtó jamb a mágneses közelében. Megnyitása vagy bezárása az ajtó aktiválják az érzékelő, a fogadó e-mail-értesítést, az esemény eredményez.
 
@@ -43,7 +43,7 @@ Aktív Azure-előfizetés. Ha nem rendelkezik egy, az alábbi módszerek egyiké
 * Aktiválja a [ingyenes 30 napos próba Microsoft Azure-fiók](https://azure.microsoft.com/free/).
 * Jogcím a [Azure-kredit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) MSDN vagy a Visual Studio-előfizetők.
 
-## <a name="deploy-sendgrid-service-in-azure"></a>Az Azure-ban a SendGrid szolgáltatás üzembe helyezése
+## <a name="deploy-the-sendgrid-service-in-azure"></a>A SendGrid szolgáltatás az Azure-beli üzembe helyezése
 
 [A SendGrid](https://sendgrid.com/) egy felhőalapú e-mail kézbesítési platform. Ez a szolgáltatás használható e-mail értesítések küldéséhez.
 
@@ -54,39 +54,39 @@ Aktív Azure-előfizetés. Ha nem rendelkezik egy, az alábbi módszerek egyiké
 
 Üzembe helyezi az Azure-szolgáltatások, használja a **üzembe helyezés az Azure** gombra. Ez a gomb lehetővé teszi, hogy gyors és egyszerű üzembe helyezés a Microsoft Azure nyílt forráskódú projektek.
 
-Kattintson a **üzembe helyezés az Azure** gomb, az alábbiakban. 
+Kattintson a **üzembe helyezés az Azure** az alábbi gombra. 
 
 [![Üzembe helyezés az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2FSendGridDeploy%2Fazuredeploy.json)
 
-Ezután a következő oldal jelenik meg.
+Ha nem már jelentkezett be Azure-fiókjába, jelentkezzen be most. 
 
-> [!NOTE]
-> Ha nem látja, akkor a következő lap, szükség lehet először jelentkezzen be az Azure-fiókjával.
+Most már láthatók a SendGrid jelentkezési lapot.
+
+![A SendGrid-telepítés](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-deploy.png)
 
 Töltse ki a regisztrációs űrlapot:
 
-  * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás üzemeltetéséhez, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezelése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+   * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás üzemeltetéséhez, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezelése](../azure-resource-manager/resource-group-portal.md).
 
-  * **Név**: A SendGrid-szolgáltatás nevét. Válasszon egy egyedi nevet, más szolgáltatások lehet eltérő.
+   * **Név**: A SendGrid-szolgáltatás nevét. Válasszon egy egyedi nevet, más szolgáltatások lehet eltérő.
 
-  * **Jelszó**: A szolgáltatás megköveteli egy jelszót, és nem lesz az összes adat ebben a projektben.
+   * **Jelszó**: A szolgáltatás megköveteli a jelszót, amely nem használható ebben a projektben bármit.
 
-  * **E-mailek**: A SendGrid szolgáltatás ellenőrzési küld erre a címre.
+   * **E-mailek**: A SendGrid szolgáltatás ellenőrzési küld erre a címre.
 
-  > [!NOTE]
-  > Ellenőrizze a **rögzítés az irányítópulton** lehetőség, hogy könnyebben megtalálja a későbbiekben ezt az alkalmazást.
+Ellenőrizze a **rögzítés az irányítópulton** lehetőséget, hogy könnyebben megtalálja a későbbiekben ezt az alkalmazást, majd kattintson a **beszerzési** elküldeni a bejelentkezési űrlapot.
  
-![A SendGrid-telepítés](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-deploy.png)
-
 ### <a name="sendgrid-api-key-creation"></a>A SendGrid API-kulcs létrehozása
 
-Miután az üzembe helyezés sikeres, kattintson rá, és kattintson a **kezelés** gombra. A SendGrid lapra kerül, és győződjön meg az e-mail-címét.
+Az üzembe helyezés befejezése után kattintson rá, és kattintson a **kezelés** gombra. A SendGrid-fiók lap jelenik meg, amelyben vissza kell igazolnia az e-mail-címét.
 
 ![A SendGrid kezelése](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-A SendGrid lapon kattintson a **beállítások** > **API-kulcsok** > **API-kulcs létrehozása**. Bemenet a **API-kulcs neve** kattintson **Létrehozás & nézet**.
+A SendGrid lapon kattintson a **beállítások** > **API-kulcsok** > **API-kulcs létrehozása**.
 
 ![A SendGrid API először létrehozása](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
+
+Az a **API-kulcs létrehozása** lapon adjon meg a **API-kulcs neve** kattintson **Létrehozás & nézet**.
 
 ![A SendGrid API második létrehozása](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-second.png)
 
@@ -96,31 +96,29 @@ Az API-kulcs csak egyszer jelenik meg. Győződjön meg arról, másolása és t
 
 Az alábbi lépéseket is üzembe helyezi a többi Azure IoT kapcsolódó szolgáltatások és az Azure Functions üzembe helyezése a projekthez.
 
-Kattintson a **üzembe helyezés az Azure** gomb, az alábbiakban. 
+Kattintson a **üzembe helyezés az Azure** az alábbi gombra. 
 
 [![Üzembe helyezés az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2Fazuredeploy.json)
 
-Ezután a következő oldal jelenik meg.
+A regisztrációs képernyő jelenik meg.
 
-> [!NOTE]
-> Ha nem látja a következő lap, szükség lehet először jelentkezzen be az Azure-fiókjával.
-
-Töltse ki a regisztrációs űrlapot:
-
-  * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás üzemeltetéséhez, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezelése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
-
-  * **IOT Hub nevére**: az IoT hub nevét. Válasszon egy egyedi nevet, más szolgáltatások lehet eltérő.
-
-  * **IOT Hub-termékváltozat**: F1 (előfizetésenként csak egy) díjmentes. Megtekintheti, további díjszabási információk [tarifacsomagot és méretet](https://azure.microsoft.com/pricing/details/iot-hub/).
-
-  * **E-mailből**: Ez legyen a SendGrid szolgáltatás beállítása során használt azonos e-mail-címre.
-
-  > [!NOTE]
-  > Ellenőrizze a **rögzítés az irányítópulton** lehetőség, hogy könnyebben megtalálja a későbbiekben ezt az alkalmazást.
- 
 ![IoTHub-telepítés](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/iot-hub-deploy.png)
 
+Töltse ki a mezőket a bejelentkezési űrlap.
+
+   * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás üzemeltetéséhez, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezelése](../azure-resource-manager/resource-group-portal.md).
+
+   * **IOT Hub nevére**: az IoT hub nevét. Válasszon egy egyedi nevet, más szolgáltatások lehet eltérő.
+
+   * **IOT Hub-termékváltozat**: F1 (legfeljebb előfizetésenként egyet) díjmentes. Az árazással kapcsolatos láthatja a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/iot-hub/).
+
+   * **E-mailből**: Ez a mező a SendGrid szolgáltatás beállítása során használt azonos e-mail-címre kell lennie.
+
+Ellenőrizze a **rögzítés az irányítópulton** lehetőséget, hogy könnyebben megtalálja a későbbiekben ezt az alkalmazást, majd kattintson a **beszerzési** amikor készen áll, folytassa a következő lépéssel.
+ 
 ## <a name="build-and-upload-the-code"></a>Hozhat létre és töltse fel a kódot
+
+Ezután betölteni a mintakód a VS Code-ban, és a szükséges Azure-szolgáltatások kiépítése.
 
 ### <a name="start-vs-code"></a>Indítsa el a VS Code
 
@@ -137,8 +135,7 @@ Bontsa ki a bal oldali **ARDUINO példák** területén keresse meg a **példák
 
 ![Mini-solution-példák](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-> [!NOTE]
-> A példában a parancskatalógus is megnyithatja. Használat `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) a parancskatalógus megnyitásához, írja be a **Arduino**, keresse meg és válassza a **Arduino: Példák**.
+A PéldaAlkalmazás a parancskatalógus is megnyithatja. Használat `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) a parancskatalógus megnyitásához, írja be a **Arduino**, keresse meg és válassza a **Arduino: Példák**.
 
 ### <a name="provision-azure-services"></a>Azure-szolgáltatások üzembe helyezése
 
@@ -151,41 +148,36 @@ A VS Code terminálban egy interaktív parancssori végigvezeti a szükséges Az
 ![Felhő üzembe helyezése](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/cloud-provision.png)
 
 > [!NOTE]
-> Ha az oldal lefagy a betöltés állapota, amikor megpróbál bejelentkezni Azure-ba, olvassa el [– gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure) a probléma megoldásához. 
+> Ha az oldal lefagy a betöltés állapota, amikor megpróbál bejelentkezni Azure-ba, olvassa el a ["lapon elvetése bejelentkezéskor" szakaszában az IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure) a probléma megoldásához. 
 
 ### <a name="build-and-upload-the-device-code"></a>Hozhat létre és töltse fel az eszköz kódot
+
+Ezután töltse fel a kódot az eszközhöz.
 
 #### <a name="windows"></a>Windows
 
 1. Használat `Ctrl+P` futtatásához `task device-upload`.
+
 2. A terminálban kéri, hogy adja meg a konfigurációs mód. Ehhez A gombot lenyomva, majd küldje le, és engedje a Visszaállítás gombra. A képernyőn megjelenik a DevKit azonosító száma és a word *konfigurációs*.
-
-Ez az eljárás beállítja a kapcsolati karakterláncot, amelyet a rendszer beolvassa a [üzembe helyezése Azure-szolgáltatások](#provision-azure-services) . lépés.
-
-A VS Code, majd elindul, ellenőrzi, és töltse fel az Arduino vázlat, a fejlesztői készlet:
-
-![eszköz-feltöltést](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
-
-A fejlesztői készlet újraindul, és elindítja a kód futtatása.
-
-> [!NOTE]
-> Bizonyos esetekben előfordulhat, hogy kap egy "hiba: AZ3166: Ismeretlen csomag" hibaüzenet jelenik meg. Ez akkor fordul elő, ha a tábla csomagindexet nem megfelelően frissül. Ez a hiba elhárításához tekintse meg a [– gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 #### <a name="macos"></a>macOS
 
 1. A fejlesztői készlet konfigurációs módba: tartsa lenyomva A gombra, majd leküldéses és -kiadási a Visszaállítás gombra. A képernyőn megjelenik a "Konfiguráció".
-2. Használat `Cmd+P` futtatásához `task device-upload`.
 
-Ez az eljárás beállítja a kapcsolati karakterláncot, amelyet a rendszer beolvassa a [üzembe helyezése Azure-szolgáltatások](#provision-azure-services) . lépés.
+2. Kattintson a `Cmd+P` futtatásához `task device-upload`.
 
-A VS Code, majd elindul, ellenőrzi, és töltse fel az Arduino vázlat, a fejlesztői készlet:
+#### <a name="verify-upload-and-run-the-sample-app"></a>Győződjön meg arról, töltse fel, és futtassa a mintaalkalmazást
+
+A kapcsolati karakterláncot, amelyet a rendszer beolvassa a [üzembe helyezése Azure-szolgáltatások](#provision-azure-services) lépést most már van beállítva. 
+
+A VS Code, majd elindul, ellenőrzi, és töltse fel az Arduino vázlat, a fejlesztői készlet.
 
 ![eszköz-feltöltést](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
 A fejlesztői készlet újraindul, és elindítja a kód futtatása.
 
 > [!NOTE]
-> Bizonyos esetekben előfordulhat, hogy kap egy "hiba: AZ3166: Ismeretlen csomag" hibaüzenet jelenik meg. Ez akkor fordul elő, ha a tábla csomagindexet nem megfelelően frissül. Ez a hiba elhárításához tekintse meg a [– gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> Bizonyos esetekben előfordulhat, hogy kap egy "hiba: AZ3166: Ismeretlen csomag" hibaüzenet jelenik meg. Ez akkor fordul elő, ha a tábla csomagindexet nem megfelelően frissül. Ez a hiba elhárításához tekintse meg a [IoT DevKit gyakori kérdések a fejlesztési szakaszban](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>A projekt tesztelése
 
@@ -199,14 +191,14 @@ Az inicializálás után `Door closed` a képernyő jelenik meg. A mágneses mez
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
-Ha problémákat tapasztal, tekintse meg [– gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy létesítsen a következő csatornákon:
+Ha problémákat tapasztal, tekintse meg a [IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy létesítsen a következő csatornákon:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>További lépések
 
-Megtanulhatta, hogyan egy DevKit eszköz csatlakoztatása az Azure IoT távoli figyelési megoldásgyorsító és e-mail küldése a SendGrid szolgáltatás használatával. Íme a javasolt következő lépések:
+Megtudhatta, hogyan lehet egy DevKit eszköz csatlakoztatása az Azure IoT távoli figyelési megoldásgyorsító, és a egy e-mailt küldeni a SendGrid szolgáltatás használt. Íme a javasolt következő lépések:
 
 * [Az Azure IoT távoli figyelési megoldásgyorsító áttekintése](https://docs.microsoft.com/azure/iot-suite/)
 * [Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

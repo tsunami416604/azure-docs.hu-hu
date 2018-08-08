@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 6e8e0877dfa47fa632fa1f12d97326f922ebaf8b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2dfef8d0dbaf4d70559c966f1587764210d8b49c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530885"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598330"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközök
 
@@ -111,6 +111,6 @@ Felhasználók eltávolítása az eszközadminisztrátori szerepkörre, ha tová
 
 - Áttekintheti az Azure Portalon eszközök felügyelete, lásd: [az Eszközfelügyelet az Azure portal használatával](device-management-azure-portal.md)
 
-- Eszközalapú feltételes hozzáférési kapcsolatos további információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók](../active-directory-conditional-access-policy-connected-applications.md).
+- Eszközalapú feltételes hozzáférési kapcsolatos további információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók](../conditional-access/require-managed-devices.md).
 
 

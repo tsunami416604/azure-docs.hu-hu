@@ -17,15 +17,15 @@ ms.date: 04/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 5872190f811af208f5b27da330da3313e77a8665
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 645ce394c09f5cdd9f45b085e8d86cdc07ee9158
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579302"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591332"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 protokoll – az OAuth 2.0 és OpenID Connect
-A v2.0-végpontra is használhatja az Azure AD identitás--szolgáltatásként az iparági szabványos protokollok, OpenID Connect és az OAuth 2.0. Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések ezeket a protokollokat bármely két megvalósítása között lehet. Az adatok itt lesznek lehet hasznos, ha úgy dönt, hogy a kód írása közvetlenül elküldött & kezelése a HTTP-kérelmek vagy használja a 3. fél nyílt forráskódú kódtár, nem pedig az egyik a [nyissa meg a forráskódtárak](active-directory-v2-libraries.md).
+A v2.0-végpontra is használhatja az Azure AD identitás--szolgáltatásként az iparági szabványos protokollok, OpenID Connect és az OAuth 2.0. Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések ezeket a protokollokat bármely két megvalósítása között lehet. Az adatok itt lesznek lehet hasznos, ha úgy dönt, hogy a kód írása közvetlenül elküldött & kezelése a HTTP-kérelmek vagy használja a 3. fél nyílt forráskódú kódtár, nem pedig az egyik a [nyissa meg a forráskódtárak](reference-v2-libraries.md).
 
 > [!NOTE]
 > Nem minden Azure Active Directory-forgatókönyvet és funkciót támogatja a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
@@ -76,7 +76,7 @@ Az OAuth 2.0 és OpenID Connect v2.0 megvalósítását győződjön erősen ig�
 További részletekért lásd a v2.0-végpont használt tokenek különböző típusú érhető el a [a v2.0-végpont jogkivonat referenciái](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokollok
-Ha szeretné látni, néhány példa kérelmek, az egyik első lépései az alábbi oktatóanyagok. Mindegyik felel meg egy adott hitelesítési forgatókönyv. Ha az Ön számára a megfelelő folyamat megállapításához segítségre van szüksége, tekintse meg az [a típusú alkalmazásokat hozhat létre a v2.0-](active-directory-v2-flows.md).
+Ha szeretné látni, néhány példa kérelmek, az egyik első lépései az alábbi oktatóanyagok. Mindegyik felel meg egy adott hitelesítési forgatókönyv. Ha az Ön számára a megfelelő folyamat megállapításához segítségre van szüksége, tekintse meg az [a típusú alkalmazásokat hozhat létre a v2.0-](v2-app-types.md).
 
 * [Mobil- és natív alkalmazás OAuth 2.0-val készíthet](v2-oauth2-auth-code-flow.md)
 * [Hozhat létre Web Apps Open ID Connect](v2-protocols-oidc.md)

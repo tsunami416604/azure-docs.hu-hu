@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory használatával SAP BW |} Microsoft Docs
-description: 'Útmutató: adatok másolása az SAP Business Warehouse támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
+title: Adatok másolása az Azure Data Factory használatával az SAP BW |} A Microsoft Docs
+description: 'Útmutató: adatok másolása az SAP Business warehouse-hoz a támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.'
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,61 +11,63 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9934e9757b5def444afb39d110e490aa6516521f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 52bbf93d73af281f3959e056a4d5b959e7286cb5
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045075"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590330"
 ---
-# <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse Azure Data Factory használatával
+# <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business warehouse-hoz az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](v1/data-factory-sap-business-warehouse-connector.md)
+> * [1-es verzió](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Aktuális verzió](connector-sap-business-warehouse.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory egy SAP Business Warehouse (BW) az adatok másolása. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban másolhat adatokat egy SAP Business Warehouse (BW) a. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-SAP Business Warehouse adatok bármely támogatott fogadó adattárolóhoz másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+SAP Business Warehouse adatait átmásolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Pontosabban az SAP Business Warehouse-összekötő támogatja:
 
 - SAP Business Warehouse **verzió 7.x**.
-- Az adatok másolásának **előforduló infocubes-értékeket és QueryCubes** (beleértve a BEx lekérdezések) segítségével MDX-lekérdezésekben.
-- Alapszintű hitelesítést használó adatok másolását.
+- Az adatok másolásának **InfoCubes-értékeket és QueryCubes** (beleértve a BEx lekérdezések) segítségével MDX-lekérdezésben.
+- Alapszintű hitelesítés használata az adatok másolását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az SAP Business Warehouse-összekötő használatához meg kell:
 
-- Állítson be egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikkben alább.
-- Telepítse a **SAP NetWeaver könyvtár** a integrációs futásidejű gépen. A SAP rendszergazdájától, vagy közvetlenül az SAP Netweaver könyvtár kaphat a [SAP szoftverletöltő központból](https://support.sap.com/swdc). Keresse meg a **SAP Megjegyzés #1025361** lekérni a legújabb verziót a letöltési helyét. Győződjön meg arról, hogy válasszon a **64 bites** SAP NetWeaver függvénytár, amely megfelel az integrációs futásidejű telepítése. Telepítse az SAP NetWeaver RFC SDK az SAP Megjegyzés szereplő összes fájlt. Az SAP NetWeaver könyvtár is szerepel a SAP Client Tools telepítését.
+- Egy helyi Integration Runtime beállítása. Lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) részleteivel.
+- Telepítse a **SAP NetWeaver könyvtár** az Integration Runtime gépen. Az SAP Netweaver-kódtár az SAP-rendszergazdától, vagy közvetlenül a beszerezheti a [SAP Software Download Center](https://support.sap.com/swdc). Keresse meg a **SAP Note #1025361** a letöltési hely a legújabb verziójának beolvasásához. Győződjön meg arról, hogy válasszon a **64 bites** SAP NetWeaver-könyvtár, amely megfelel az integrációs modul telepítése. Ezután telepítse az összes fájlt is tartalmaz az SAP NetWeaver RFC SDK, az SAP-Jegyzetnek megfelelően. Az SAP NetWeaver-kódtár az SAP Client Tools telepítése is megtalálható.
 
-> [!TIP]
-> Helyezze a NetWeaver RFC SDK kinyert a system32 mappába a dll-fájl.
+>[!TIP]
+>SAP BW-vel megoldásához győződjön meg arról, hogy:
+>- A NetWeaver RFC SDK kinyert tárakat függőségi %windir%\system32 mappában érvényben vannak. Rendelkezik általában icudt34.dll, icuin34.dll, icuuc34.dll, libicudecnumber.dll, helyezze az librfc32.dll fájl, libsapucum.dll, sapcrypto.dll, sapcryto_old.dll, sapnwrfc.dll.
+>- Az SAP-kiszolgálóhoz való csatlakozáshoz használt szükséges portok vannak engedélyezve a gépen helyi integrációs modul, amely általában 3300 és 3201 port.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják való SAP Business Warehouse-összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
+Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások SAP Business Warehouse-összekötő-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-SAP Business Warehouse (BW) kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
+SAP Business Warehouse (BW) társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **SapBw** | Igen |
-| kiszolgáló | A kiszolgálóra az SAP BW-példány neve. | Igen |
-| systemNumber | Az SAP BW rendszer rendszer száma.<br/>Érték engedélyezett: kétjegyű tizedes tört karakterláncból. | Igen |
-| clientId | Az ügyfél számára a SAP W rendszer ügyfél-azonosítója.<br/>Érték engedélyezett: háromjegyű tizedes tört karakterláncból. | Igen |
+| type | A type tulajdonság értékre kell állítani: **SapBw** | Igen |
+| kiszolgáló | A kiszolgálóra, amelyen az SAP BW-példány neve. | Igen |
+| systemNumber | Az SAP BW-rendszer rendszer száma.<br/>Érték engedélyezett: kétjegyű tizedes tört egy karakterláncból. | Igen |
+| clientId | Az SAP W rendszerben az ügyfél ügyfél-azonosítója.<br/>Érték engedélyezett: háromjegyű tizedes tört egy karakterláncból. | Igen |
 | Felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó nevét. | Igen |
-| jelszó | A felhasználó jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Egy Self-hosted integrációs futásidejű szükség, ahogyan az [Előfeltételek](#prerequisites). |Igen |
+| jelszó | A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
 
 **Példa**
 
@@ -94,9 +96,9 @@ SAP Business Warehouse (BW) kapcsolódó szolgáltatás támogatott a következ�
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg az adatkészletek cikket. Ez a témakör az SAP BW dataset által támogatott tulajdonságokról.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz az SAP BW-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az SAP BW Programhoz, állítsa be a type tulajdonságot az adathalmaz **RelationalTable**. Miközben nincsenek az SAP BW adatkészlet támogatott típusra vonatkozó tulajdonságok írja be a RelationalTable.
+Adatok másolása az SAP BW, állítsa be a type tulajdonság, az adatkészlet **RelationalTable**. Noha nem támogatott, az SAP BW-adatkészlet típusa jellemző tulajdonságok írja be a RelationalTable.
 
 **Példa**
 
@@ -116,15 +118,15 @@ Adatok másolása az SAP BW Programhoz, állítsa be a type tulajdonságot az ad
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör az SAP BW forrás által támogatott tulajdonságokról.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az SAP BW forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="sap-bw-as-source"></a>SAP BW forrásaként
+### <a name="sap-bw-as-source"></a>SAP BW forrás szerint
 
-Adatok másolása az SAP BW Programhoz, állítsa be a forrás típusa a másolási tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása az SAP BW, állítsa be a forrás típusaként a másolási tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **RelationalSource** | Igen |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
 | lekérdezés | Meghatározza az MDX-lekérdezés adatokat olvasni az SAP BW-példány. | Igen |
 
 **Példa**
@@ -159,27 +161,27 @@ Adatok másolása az SAP BW Programhoz, állítsa be a forrás típusa a másol�
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-bw"></a>Adattípus-hozzárendelése az SAP BW Programhoz
+## <a name="data-type-mapping-for-sap-bw"></a>Adattípus-leképezés az SAP BW Programhoz
 
-Ha az adatok másolása az SAP BW Programhoz, a következő megfeleltetéseket szolgálnak az SAP BW adattípusok Azure Data Factory ideiglenes adattípusok. Lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md) hogyan másolási tevékenység van leképezve a séma- és adatok típusa a fogadó tájékozódhat.
+Ha az adatok másolása az SAP BW, a következő hozzárendeléseket a rendszer az SAP BW-adattípusok Azure Data Factory közbenső adattípusok használja. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
-| SAP BW-adattípus | Data factory ideiglenes adattípus |
+| SAP BW-adattípus | Data factory közbenső adattípus |
 |:--- |:--- |
-| ACCP | Int |
-| KARAKTER | Sztring |
+| ACCP | int |
+| CHAR | Sztring |
 | CLNT | Sztring |
-| PÉNZNEM | Decimális |
+| PÉNZNEM | tizedes tört |
 | CUKY | Sztring |
-| DEC | Decimális |
+| DEC | tizedes tört |
 | FLTP | Dupla |
 | INT1 | Bájt |
 | INT2 | Int16 |
-| INT4 | Int |
-| LANG | Sztring |
+| INT4 | int |
+| NYELV | Sztring |
 | LCHR | Sztring |
 | LRAW | Byte] |
 | PREC | Int16 |
-| QUAN | Decimális |
+| QUAN | tizedes tört |
 | RAW | Byte] |
 | RAWSTRING | Byte] |
 | STRING | Sztring |
@@ -190,4 +192,4 @@ Ha az adatok másolása az SAP BW Programhoz, a következő megfeleltetéseket s
 
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

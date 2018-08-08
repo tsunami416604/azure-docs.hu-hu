@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 6c0921a466864bf2b07711cfcd1eac397c5ced83
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1afd64fbd7019164f0e1f5c850f2dcd8250cdbfc
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325353"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600336"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB az Azure Data Factory használatával
 
@@ -35,9 +35,9 @@ Adatok másolása az Azure Cosmos DB az összes támogatott fogadó adattárba, 
 Pontosabban az Azure Cosmos DB-összekötő támogatja:
 
 - A cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
-- Mint a JSON-dokumentumok importálása/exportálása –, vagy adatok másolása Azure blobból vagy az tabulált adatkészlet például az SQL database, a CSV-fájlok, stb.
+- Mint a JSON-dokumentumok importálása/exportálása –, vagy adatok másolása Azure blobból vagy az tabulált adatkészlet például az SQL database, a CSV-fájlok, stb. Másolja ki a dokumentumok-van és- tárolókról JSON-fájlokat, vagy egy másik Cosmos DB-gyűjtemények, lásd: [Import/Export JSON-dokumentumok](#importexport-json-documents).
 
-Másolja ki a dokumentumok-van és- tárolókról JSON-fájlokat, vagy egy másik Cosmos DB-gyűjtemények, lásd: [Import/Export JSON-dokumentumok](#importexport-json-documents).
+A Data Factory integrálható [Cosmos DB tömeges végrehajtó könyvtár](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) írása az Cosmos DB-be a legjobb teljesítményt biztosítja.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -85,7 +85,7 @@ Adatok másolása Azure blobból vagy az Azure Cosmos DB, állítsa be a type tu
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **DocumentDbCollection** |Igen |
-| CollectionName |A Cosmos DB-dokumentumgyűjteményt neve. |Igen |
+| collectionName |A Cosmos DB-dokumentumgyűjteményt neve. |Igen |
 
 **Példa**
 
@@ -166,7 +166,7 @@ Adatok másolása az Azure Cosmos DB, állítsa a fogadó típusa a másolási t
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **DocumentDbCollectionSink** |Igen |
 | WriteBehavior |Írja az adatokat, a Cosmos DB ismertetik. Engedélyezett értékek a következők: `insert` és `upsert`.<br/>Viselkedését **upsert** , hogy cserélje le a dokumentumot, ha egy dokumentum annak ugyanazzal az azonosítóval már létezik; ellenkező esetben szúrja be. Megjegyzés: ADF automatikus létrehozása a dokumentum egy azonosítót, ha nincs megadva, vagy az eredeti dokumentum vagy oszlop-hozzárendelés), ami azt jelenti, hogy ellenőrizze, hogy a dokumentum kell rendelkezik egy "id", így upsert a várt módon működik. |Nem, alapértelmezett van beszúrása |
-| WriteBatchSize | Data Factory használata [Cosmos DB tömeges végrehajtó](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) az adatok írása az Cosmos DB-be. "writeBatchSize" a Microsoft biztosít a tár minden alkalommal, amikor dokumentumok méretét szabályozza. Megpróbálhatja a növekedés writeBatchSize teljesítmény javítása érdekében. |Nem |
+| WriteBatchSize | Data Factory használata [Cosmos DB tömeges végrehajtó könyvtár](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) az adatok írása az Cosmos DB-be. "writeBatchSize" a Microsoft biztosít a tár minden alkalommal, amikor dokumentumok méretét szabályozza. Megpróbálhatja a növekedés writeBatchSize teljesítmény javítása érdekében. |Nem, az alapértelmezett érték 10 000 |
 | nestingSeparator |A forrás oszlop nevét jelzi, hogy a beágyazott dokumentum egy speciális karaktert van szükség. <br/><br/>Ha például `Name.First` a kimeneti adatkészlet struktúra hoz létre a Cosmos DB-dokumentumban a következő JSON-struktúrát:`"Name": {"First": "[value maps to this column from source]"}` pont a nestedSeparator esetén. |Nem (alapértelmezett érték a pont `.`) |
 
 **Példa**

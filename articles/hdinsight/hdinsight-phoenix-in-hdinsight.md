@@ -1,58 +1,53 @@
 ---
-title: A HDInsight - az Azure HDInsight Apache Phoenix |} Microsoft Docs
+title: HDInsight – Azure HDInsight az Apache Phoenixhez
 description: ''
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 5d96b5656881815a82c89e0d159ba2bf556946b9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 454cd7e52be54b9a7ec4a518d8e2617e7ef3dfa5
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407731"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596069"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix a HDInsightban
 
-[Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, épülő nagymértékben párhuzamos relációs Adatbázisréteg [HBase](hbase/apache-hbase-overview.md). Phoenix lehetővé teszi az SQL-szerű lekérdezéseket használatát a HBase-en. Phoenix felhasználók létrehozása, törlés, az alter SQL táblák, indexek, nézetek és sorozatok és upsert sorok egyesével és csoportosan alatt JDBC illesztőprogramokat használja. Phoenix használ fordítása a lekérdezések MapReduce használata helyett natív noSQL-fordítási engedélyezése a HBase felett kis késleltetésű alkalmazások létrehozását. Phoenix hozzáadja a közösen elhelyezett adatokkal kód végrehajtása coprocessors történő ügyfél által megadott kód futtatásához a kiszolgáló, a címterületen belülre. Ez a megközelítés minimálisra ügyfél/kiszolgáló adatátvitel.
+[Az Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, épülő masszív párhuzamos alapuló relációs Adatbázisréteg [HBase](hbase/apache-hbase-overview.md). A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket HBase-en. A Phoenix felhasználók létrehozása, törlés, egyenként és tömegesen az SQL táblák, indexek, nézetek és a feladatütemezések és upsert sorok alter JDBC-illesztőprogramok alatt használja. Phoenix használ lefordítani a lekérdezést, a MapReduce használata helyett natív noSQL-összeállítás engedélyezése HBase felett közel valós idejű alkalmazások létrehozását. A Phoenix hozzáadja a coprocessors támogatásához az ügyfél által megadott kódot futtató kiszolgáló, a címtér a védelmicsoport-készletek az adatok a kód végrehajtása. Ez a megközelítés minimálisra csökkenti az adatátviteli ügyfél/kiszolgáló.
 
-Apache Phoenix megnyílik a big Data típusú adatok nem-fejlesztők számára is szintaxissal egy SQL-szerű lekérdezéseket programozási helyett. Phoenix optimalizálhatja a HBase, más eszközök eltérően például [Hive](hadoop/hdinsight-use-hive.md) és Spark SQL. A fejlesztők előnye magas ír performant lekérdezések sokkal kevesebb kóddal.
+Az Apache Phoenix megnyílik a big data-lekérdezések nem-fejlesztőknek, akik egy SQL-szerű szintaxist használhat programozási helyett. A Phoenix optimalizálhatja a hbase-hez, ellentétben más eszközök például [Hive](hadoop/hdinsight-use-hive.md) és a Spark SQL. A fejlesztők számára a legfontosabb előny rendkívül nagy teljesítményű lekérdezéseket, hiszen lényegesen kevesebb kódot ír.
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
-Egy SQL-lekérdezés elküldésekor Phoenix lefordítja a HBase natív hívás lekérdezése pedig a vizsgálat (vagy terv) optimális párhuzamosan. Absztrakciós réteg szabadít fel a MapReduce-feladatok írásában fejlesztő hangsúlyozza inkább az üzleti logika és a munkafolyamat a Phoenix a big Data típusú adatok tároló-alkalmazását.
+SQL-lekérdezés elküldésekor a Phoenix lefordítja a lekérdezést a HBase natív hívások, és a vizsgálat (vagy tervezett) optimalizálás párhuzamosan futtatja. Absztrakciós réteg szabadít fel a fejlesztő MapReduce-feladatok írjanak hangsúlyozza inkább az üzleti logikát és a munkafolyamat az alkalmazás körül Phoenix a big Data típusú adatok tárolására.
 
-## <a name="query-performance-optimization-and-other-features"></a>Lekérdezés teljesítmény optimalizálása és más szolgáltatások
+## <a name="query-performance-optimization-and-other-features"></a>Lekérdezési teljesítmény optimalizálása és egyéb szolgáltatások
 
-Apache Phoenix számos fejlesztést és szolgáltatások hozzáadása HBase lekérdezések.
+Az Apache Phoenix számos fejlesztést és szolgáltatások hozzáadása HBase lekérdezéseket.
 
-### <a name="secondary-indexes"></a>Másodlagos indexek
+### <a name="secondary-indexes"></a>A másodlagos indexek
 
-A HBase van, amely a sor elsődleges kulcs lexicographically rendezve egyetlen indexe. Ezeket a rekordokat csak a sor kulcsán keresztül érhető el. Rekordok el az oszlopot a sorkulcs eltérő szükséges vizsgálatát az összes adat szükséges a szűrő alkalmazása közben. A másodlagos indexnél oszlopokat vagy kifejezéseket, amelyek indexelt űrlap egy másik sorkulcsa, így keresések és a tartomány vizsgálja meg, hogy az index.
+A HBase, amely lexicographically rendezett sor elsődleges kulcs egyetlen indexszel rendelkezik. Ezek a rekordok csak a sorkulcs keresztül érhető el. Beolvasás az adatok a szükséges szűrő alkalmazása közben való elérése rögzíti a sorkulcs kívül bármely másik oszlopot igényel. A másodlagos indexek az oszlopok vagy kifejezéseket, amelyek indexelt űrlap egy másik sorkulcs, lehetővé téve a keresések és a tartomány figyeli az adott indexen.
 
-A másodlagos indexet létrehozni a `CREATE INDEX` parancs:
+A másodlagos indexet létrehozni a `CREATE INDEX` parancsot:
 
 ```sql
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-Ezt a módszert használja a jelentős teljesítmény növelését partíciónként akár egyetlen indexelt lekérdezések végrehajtása során. Ez a másodlagos index típus egy **index kiterjedő**, az összes a lekérdezésben szereplő oszlopokat. Ezért a táblában való keresés nincs szükség, és az index a teljes lekérdezés eleget tesz.
+Ez a megközelítés egy jelentős teljesítménybeli növekedést partíciónként akár egyetlen indexelt lekérdezések végrehajtása során. Ez a másodlagos index típus egy **index kiterjedő**, tartalmazó összes oszlop szerepel a lekérdezésben. Ezért a tábla keresésekor azonban nem kötelező, és az index eleget tesz a teljes lekérdezést.
 
 ### <a name="views"></a>Nézetek
 
-Phoenix nézetek biztosít, amelyek egy HBase korlátozás, ahol a teljesítmény romlásához vezethetnek körülbelül 100-nál több fizikai táblák létrehozásakor kezdődik módot. Phoenix nézetek lehetővé teszik több *virtuális táblák* megosztani egy alapul szolgáló fizikai HBase tábla.
+Phoenix nézetek oly módon, hogy egy HBase korlátozás, ahol a teljesítmény körülbelül 100-nál több fizikai táblák létrehozásakor csökkeni kezdődik meg. A Phoenix nézetek lehetővé teszik több *virtuális táblák* megosztani egy alapul szolgáló fizikai HBase tábla.
 
-A Phoenix nézetek létrehozásával hasonlít szabványos SQL-nézet szintaxis használatával. Egy különbség, hogy meghatározhatja a nézet mellett az öröklődés forrása: az alaptáblában oszlopok oszlopok. Azt is megteheti az új `KeyValue` oszlopok.
+A Phoenix nézetek létrehozásával hasonlít a standard SQL-nézet szintaxissal. Egy különbség az, hogy meghatározhatja a nézet mellett az öröklődés forrása: az alaptáblában oszlopok oszlopokat. Új is hozzáadhat `KeyValue` oszlopokat.
 
-Például ez nevű fizikai tábla `product_metrics` a következő definícióját:
+Például a következő nevű fizikai tábla `product_metrics` az alábbi definíciójában:
 
 ```sql
 CREATE  TABLE product_metrics (
@@ -63,7 +58,7 @@ CREATE  TABLE product_metrics (
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
 
-Nézet definiálása keresztül rendelkező további oszlopok ebben a táblázatban:
+Adja meg a nézet a táblán további oszlopokat:
 
 ```sql
 CREATE VIEW mobile_product_metrics (carrier VARCHAR, dropped_calls BIGINT) AS
@@ -71,42 +66,42 @@ SELECT * FROM product_metrics
 WHERE metric_type = 'm';
 ```
 
-Több oszlop később hozzáadásához használja a `ALTER VIEW` utasítást.
+Később további oszlopok hozzáadásához használja a `ALTER VIEW` utasítást.
 
-### <a name="skip-scan"></a>Kihagyás vizsgálat
+### <a name="skip-scan"></a>Ellenőrzés kihagyása
 
-Kihagyás ellenőrzés egy vagy több oszlop egy összetett index különböző értékeket használja. A tartomány vizsgálat eltérően skip vizsgálat megvalósítja az belüli soron kívüli vizsgálatát, ad eredményt a következő [növeli a teljesítményt](http://phoenix.apache.org/performance.html#Skip-Scan). Vizsgálatát, miközben az első egyező értéket a rendszer kihagyja az index együtt amíg meg nem találja a következő érték.
+Kihagyás vizsgálat egy vagy több oszlop egy összetett index különböző értékeket használja. Ellentétben a tartomány ellenőrzését kihagyása vizsgálat valósít meg intra-sor vizsgálatát, az elsőbbséget adó [továbbfejlesztett teljesítmény](http://phoenix.apache.org/performance.html#Skip-Scan). Keresés, miközben az első megfeleltetett értéket a rendszer kihagyta együtt az index mindaddig, amíg a következő érték található.
 
-Használja a skip vizsgálat a `SEEK_NEXT_USING_HINT` a HBase szűrő enumerálása. Használatával `SEEK_NEXT_USING_HINT`, a skip vizsgálat nyomon követi, hogy mely kulcsok készlete vagy tartományok kulcsok, minden egyes oszlopának a rendszer keres. A skip vizsgálata, majd szűrő kiértékelése közben átadott, és határozza meg, hogy egyik kombinációja kulcsa vesz igénybe. Ha nem, a skip vizsgálat értékeli ki a következő legnagyobb kulcs ugorhat.
+Használja a skip vizsgálat a `SEEK_NEXT_USING_HINT` enumerálás a HBase-szűrő. Használatával `SEEK_NEXT_USING_HINT`, a skip vizsgálat nyomon követi a kulcsok körét, vagy a kulcsok tartományokat, éppen keresi a rendszer az egyes oszlopokban. A skip vizsgálata, majd egy kulcsot, filter kiértékelés során átadott, és határozza meg, hogy egyik kombinációja vesz igénybe. Ha nem, a skip vizsgálat értékeli ki ugorhat a következő legmagasabb kulcsot.
 
 ### <a name="transactions"></a>Tranzakciók
 
-HBase biztosít sorszintű tranzakciók, amíg Phoenix integrálható [Tephra](http://tephra.io/) cross-sor- és Kereszttábla tranzakció támogatását teljes [sav](https://en.wikipedia.org/wiki/ACID) szemantikáját.
+HBase sorszintű tranzakciók biztosít, míg a Phoenix integrálható [Tephra](http://tephra.io/) cross-sor- és Kereszttábla tranzakciók támogatása teljes hozzáadandó [ACID](https://en.wikipedia.org/wiki/ACID) szemantikáját.
 
-Mint hagyományos SQL tranzakciókkal, a Phoenix tranzakciókezelő keresztül elérhető tranzakciók teszik lehetővé, így az adatok egy atomi egység sikeresen upserted, a tranzakció visszaállítása, ha a upsert művelete sikertelen, bármely tranzakció engedélyezett táblán.
+Az hagyományos SQL-tranzakció, tranzakciók keresztül a Phoenix-kezelő lehetővé teszik annak érdekében, hogy az adatok egy atomi egység sikeresen upserted, a tranzakció visszaállítása, ha az upsert művelet meghiúsul, bármely tranzakció-kompatibilis táblán.
 
-Ahhoz, hogy a Phoenix tranzakciók, tekintse meg a [Apache Phoenix tranzakció dokumentáció](http://phoenix.apache.org/transactions.html).
+Engedélyezheti a Phoenix tranzakciók a [Apache Phoenix tranzakció dokumentáció](http://phoenix.apache.org/transactions.html).
 
-Hozzon létre egy új táblát tranzakciók engedélyezett, állítsa be a `TRANSACTIONAL` tulajdonságot `true` a egy `CREATE` utasítást:
+Hozzon létre egy új táblát engedélyezett tranzakciók, állítsa be a `TRANSACTIONAL` tulajdonságot `true` a egy `CREATE` utasítást:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
 ```
 
-Módosítja a meglévő tábla lennie, használja az ugyanahhoz a tulajdonsághoz az `ALTER` utasítást:
+Egy meglévő tábla kell tranzakciós módosítható, használja a tulajdonságok egy `ALTER` utasítást:
 
 ```sql
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 ```
 
 > [!NOTE]
-> Vissza a nem tranzakciós alatt nem lehet átállítani a tranzakciós tábla.
+> Tranzakciós tábla nem válthat vissza a nem tranzakcióalapú folyamatban.
 
 ### <a name="salted-tables"></a>Sózott táblák
 
-*Régió server hotspotting* akkor fordulhat elő, rögzíti a szekvenciális kulccsal rendelkező a HBase írásakor. Bár előfordulhat, hogy több régióban kiszolgáló a fürtön, az írási műveletek összes előforduló csak egy. Ez a koncentráció hoz létre a hotspotting problémát, a rendelkezésre álló terület kiszolgálók mindegyikének alatt álló elosztott írási terhelést, helyett csak egy van terhelés kezelésére. Mivel minden egyes régió egy előre meghatározott maximális méretét, amikor terület eléri a méretkorlátot, két kis részre oszlik. Ha ez történik, ezek új régiók egyikéhez sem új rekordok, az új interaktív terület váljon vesz igénybe.
+*Régió kiszolgáló hotspotting* előfordulhatnak, ha a rekordok szekvenciális kulcsok az adatraktárba történő írás során HBase. Bár előfordulhat, hogy a több régióbeli kiszolgálók a fürtben, az írási vannak az összes folyamatban lévő csupán egyet. Az összefoglalás hoz létre a hotspotting probléma, ahol az írási számítási feladatok folyamatban van elosztva minden elérhető régió kiszolgálót helyett csak az egyik van terhelés kezelésére. Mivel minden egyes régió rendelkezik egy előre meghatározott maximális méretét, amikor egy régió eléri a maximális mérete, kis két régiójában van felosztva. Ha ez történik, ezek új régiókban tartózkodó új forgalmas váljon az összes új rekord vesz igénybe.
 
-A probléma mérséklése és a teljesítmény, előre vágási táblák, hogy az összes régió kiszolgálón egyaránt használhatók. Phoenix biztosít *táblák sózott*, transzparens módon a sózás bájtot ad hozzá a sorkulcs egy adott tábla. A tábla nem előre felosztása a védőérték bájt határokon belül egyenlő terheléseloszlását régió kiszolgálók között a kezdeti fázisában a tábla biztosításához. Ezt a módszert használja a írási munkaterhelés elosztása az összes rendelkezésre álló terület kiszolgálót javítása az írási és olvasási teljesítménye. Egy tábla só, adja meg a `SALT_BUCKETS` tábla tulajdonság, ha a tábla létrehozása:
+Ez a probléma megoldásához, és jobb teljesítményt, előre felosztása táblákat, hogy az összes régióban kiszolgálón egyaránt használhatók. A Phoenix biztosít *táblák sózott*, átlátható módon a sózás bájtot ad hozzá a sorkulcs egy adott tábla. A tábla nem előre felosztása a védőérték bájt határokon belül egyenlő terheléselosztást régióbeli kiszolgálók közül az első fázisban a tábla biztosítása érdekében. Ezt a módszert az írási számítási feladatok elosztja az összes rendelkezésre álló terület kiszolgáló javítása az írási és olvasási teljesítménye. Egy tábla só, adja meg a `SALT_BUCKETS` tulajdonság táblából, ha a tábla jön létre:
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -129,18 +124,18 @@ CREATE TABLE Saltedweblogs (
 
 ## <a name="enable-and-tune-phoenix-with-ambari"></a>Engedélyezze és az Ambari Phoenix hangolása
 
-HDInsight HBase-fürtöt tartalmaz a [Ambari felhasználói felület](hdinsight-hadoop-manage-ambari.md) konfigurációs módosítások.
+HDInsight HBase-fürt tartalmazza a [Ambari felhasználói felületén](hdinsight-hadoop-manage-ambari.md) konfigurációs módosítások.
 
-1. Engedélyezheti vagy tilthatja le a Phoenix, valamint szabályozhatja a Phoenix a lekérdezés időtúllépési beállításai, jelentkezzen be az Ambari webes felhasználói felület (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`) Hadoop-felhasználó hitelesítő adataival.
+1. Engedélyezheti vagy tilthatja le a Phoenix, és szabályozhatja a Phoenix a lekérdezés időkorlátja beállításait, jelentkezzen be az Ambari webes Kezelőfelületen (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`) Hadoop-felhasználó hitelesítő adataival.
 
 2. Válassza ki **HBase** szolgáltatások a bal oldali menüben, majd válassza ki a listáról a **Configs** fülre.
 
-    ![Ambari HBase-konfiguráció](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Az Ambari HBase-config](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
 
-3. Keresés a **Phoenix SQL** engedélyezze vagy tiltsa le a phoenix, és állítsa be a a lekérdezés időkorlátja a konfigurációs szakasz.
+3. Keresse meg a **Phoenix SQL** engedélyezheti vagy letilthatja a phoenix és állítsa be a lekérdezés időkorlátja a konfigurációs szakaszban.
 
-    ![Ambari Phoenix SQL konfigurációs szakasz](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Az Ambari Phoenix SQL-konfigurációs szakasz](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
 
 ## <a name="see-also"></a>Lásd még
 
-* [Hdinsight Linux-alapú HBase-fürtökkel Apache Phoenix használata](hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Az Apache Phoenix használata a HDInsight Linux-alapú HBase-fürtök](hbase/apache-hbase-phoenix-squirrel-linux.md)

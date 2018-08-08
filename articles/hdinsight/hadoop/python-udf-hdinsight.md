@@ -1,51 +1,46 @@
 ---
-title: Python UDF az Apache Hive és a sertésfelmérés – az Azure HDInsight |} Microsoft Docs
-description: Ismerje meg, Python felhasználó definiált függvény (UDF) a Hive és a Pig használata a Hdinsightban, a Hadoop technológiai területekre az Azure-on.
+title: Python UDF az Apache Hive és Pig-alapú – Azure HDInsight
+description: Ismerje meg a Python felhasználói definiált függvények (UDF) a Hive és a Pig használata a HDInsight, a Hadoop-technológiák az Azure-ban.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: c44d6606-28cd-429b-b535-235e8f34a664
 ms.service: hdinsight
-ms.devlang: python
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: c508ffcdd5cccaad5c7b0717d33e2ea1449ab522
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3bb8546ccf15788317370ccfe654fddbd0fb0cf9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405493"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592351"
 ---
-# <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Használjon Python felhasználói függvény (UDF), a Hive és a Pig a Hdinsightban
+# <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Használható Python felhasználói függvények (UDF) a Hive és a Piggel a HDInsight
 
-Útmutató Apache Hive és az Azure hdinsight Hadoop Pig Python felhasználói függvény (UDF) használhat.
+Ismerje meg, hogyan használható a Python felhasználó által definiált függvények (UDF) az Apache Hive és a Hadoop on Azure HDInsight Pig.
 
-## <a name="python"></a>A HDInsight Python
+## <a name="python"></a>Python a HDInsight
 
-A HDInsight 3.0-s és újabb verziók alapértelmezés szerint telepítve van a Python2.7. Apache Hive használható ebben a Python adatfolyam feldolgozásra. Adatfolyam feldolgozása mechanizmusok adatok átadására a Hive és a UDF között használja az STDOUT és STDIN.
+A HDInsight 3.0-s és újabb verziók alapértelmezés szerint telepítve van a Python2.7. Az Apache Hive használható Python ezen verziójával a streamfeldolgozáshoz. Stream-feldolgozás használja az STDOUT és az STDIN adatok átadására a Hive és a UDF között.
 
-HDInsight is Jython, amely a Java nyelven írt Python megvalósítása. Jython közvetlenül a Java virtuálisgép fut, és nem használja a streaming. Jython a javasolt Python értelmező esetén a Pig használata a Python.
+HDInsight Jython, amely egy Python-implementációja Java nyelven írt is tartalmaz. Jython közvetlenül a Java virtuális gépen fut, és nem használja a streaming. Jython javasolt a Python-fordítóra akkor, ha a Python és a Pig együttes használatával.
 
 > [!WARNING]
 > A jelen dokumentumban leírt lépések hajtsa végre a következő előfeltételek: 
 >
-> * A helyi fejlesztési környezet a Python parancsfájlok hoz létre.
-> * A parancsfájlok HDInsight segítségével töltse fel a `scp` parancsot a helyi Bash munkamenet, vagy a megadott PowerShell-parancsfájlt.
+> * A Python-szkriptek hoz létre a helyi fejlesztési környezetbe.
+> * Fel kell töltenie a parancsfájlokat a HDInsight segítségével a `scp` parancsot egy helyi Bash vagy a megadott PowerShell-parancsfájlt.
 >
-> Ha szeretné használni a [Azure Cloud rendszerhéj (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) preview működéséhez a hdinsight eszközzel, majd be kell:
+> Ha használni szeretné a [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) előzetes dolgozunk a HDInsight, majd be kell:
 >
-> * Hozzon létre a parancsfájlok a felhő rendszerhéj környezeten belül.
-> * Használjon `scp` HDInsight a felhő rendszerhéjból a fájlok feltöltéséhez.
-> * Használjon `ssh` a felhő rendszerhéjból HDInsight csatlakozni, és futtassa a példákat.
+> * Hozzon létre a parancsfájlokat a cloud shell környezeten belül.
+> * Használat `scp` HDInsight, a cloud shellben a fájlok feltöltéséről.
+> * Használat `ssh` a HDInsight csatlakozhat, és futtassa a példák a cloud shellben.
 
-## <a name="hivepython"></a>Hive UDF-ben
+## <a name="hivepython"></a>Hive-UDF-ben
 
-Python változtatás nélkül használhatók a HiveQL a Hive a egy UDF `TRANSFORM` utasítást. Például a következő HiveQL meghívja a `hiveudf.py` a fürt az alapértelmezett Azure Storage-fiókban tárolt fájl.
+Python is használható a Hive a HiveQL használatával egy UDF `TRANSFORM` utasítást. Ha például a következő HiveQL meghívja a `hiveudf.py` az a fürt alapértelmezett Azure Storage-fiókban tárolt fájlhoz.
 
 **Linux-alapú HDInsight**
 
@@ -72,20 +67,20 @@ ORDER BY clientid LIMIT 50;
 ```
 
 > [!NOTE]
-> Windows-alapú HDInsight-fürtök a `USING` záradék python.exe teljes elérési útja kell megadnia.
+> Windows-alapú HDInsight-fürtökön a `USING` záradékának meg kell adnia python.exe teljes elérési útja.
 
-Ez a példa funkciója:
+Itt látható az ebben a példában leírása:
 
-1. A `add file` a fájl elején utasítás hozzáadja a `hiveudf.py` az elosztott gyorsítótáras, így a fürt összes csomópontja által elérhető fájlt.
-2. A `SELECT TRANSFORM ... USING` utasítás kiválasztja az adatokat a `hivesampletable`. A clientid, devicemake és devicemodel értékeket is átadja a `hiveudf.py` parancsfájl.
-3. A `AS` záradék által visszaadott mezőket ismerteti `hiveudf.py`.
+1. A `add file` hozzáadja a fájl elején utasítás a `hiveudf.py` fájlt az elosztott gyorsítótáras, hogy a fürt összes csomópontja által elérhető legyen.
+2. A `SELECT TRANSFORM ... USING` utasítás kiválasztja az adatokat a `hivesampletable`. Továbbítja továbbá az clientid devicemake és devicemodel értékeket a `hiveudf.py` parancsfájlt.
+3. A `AS` záradék által visszaadott mezők leírását `hiveudf.py`.
 
 <a name="streamingpy"></a>
 
 ### <a name="create-the-hiveudfpy-file"></a>A hiveudf.py fájl létrehozása
 
 
-A fejlesztési környezetet hozzon létre egy szövegfájlt nevű `hiveudf.py`. A fájl tartalmát az alábbira használata:
+A fejlesztési környezetet hozzon létre egy szövegfájlt nevű `hiveudf.py`. Használja a fájl tartalmát a következő kódot:
 
 ```python
 #!/usr/bin/env python
@@ -104,34 +99,34 @@ while True:
     print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])
 ```
 
-Ezt a parancsfájlt a következő műveleteket hajtja végre:
+Ez a szkript a következő műveleteket hajtja végre:
 
-1. Egy adatsort STDIN olvasni.
-2. A záró soremelés karaktert segítségével távolítja el `string.strip(line, "\n ")`.
-3. Az adatfolyam feldolgozása során egy sorba tabulátor minden érték közötti minden a értékeket tartalmaz. Ezért `string.split(line, "\t")` segítségével ossza fel a bemenet minden egyes lapját, csak a mezőket ad vissza.
-4. Ha feldolgozása befejeződött, a kimenetet kell írni STDOUT sortörés, egy lap a mezők között. Például: `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
+1. Az adatok egy sor olvasható STDIN.
+2. A záró soremelés karaktert el lett távolítva `string.strip(line, "\n ")`.
+3. Adatfolyam-feldolgozó visszamehet egyetlen sor minden érték közötti lapon karakterrel az összes értékeket tartalmazza. Ezért `string.split(line, "\t")` minden lapját, csak a mezők visszaadása a bemeneti felosztása is használható.
+4. Feldolgozás befejeződése után a kimenet kell megírni, hogy az STDOUT egyetlen vonal, egy lap, a mezők között. Például: `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
 5. A `while` hurok ismétlődik, amíg nem `line` olvasható.
 
-Parancsfájl eredménye a bemeneti érték a összefűzése `devicemake` és `devicemodel`, és a összefűzött érték kivonatát.
+A parancsfájl kimenete a bemeneti értékek összefűzésével `devicemake` és `devicemodel`, és a egy kivonatot az összefűzött érték.
 
-Lásd: [fut a példák](#running) ebben a példában a HDInsight-fürt futtatására.
+Lásd: [példák futó](#running) futtatására ebben a példában a HDInsight-fürtön.
 
-## <a name="pigpython"></a>Pig UDF-ben
+## <a name="pigpython"></a>A Pig UDF-ben
 
-A Python-parancsfájl egy UDF a Pig keresztül használható a `GENERATE` utasítást. A parancsfájl Jython vagy C Python segítségével is futtathatja.
+Egy Python-szkriptet egy UDF-ben, a Pig keresztül lehet használni a `GENERATE` utasítást. A parancsfájl Jython vagy C Python használatával futtathatja.
 
-* Jython a JVM-et futtatja, és a Pig natív módon kell meghívni.
-* C Python egy külső folyamatban, így a Pig a JVM-et a adatait egy Python folyamatban futó parancsfájl által kiküldött. A Python-parancsfájl újra üzembe a Pig zajlik.
+* Jython a JVM fut, és a Pig natív módon lehet hívni.
+* C Python egy külső folyamatban, így a JVM a Pig származó adatok küldése a parancsfájlt egy Python-folyamatokhoz. A Python-szkript a kimenetét a rendszer újra üzembe a Pig küldi el.
 
-Adja meg a Python értelmező `register` való hivatkozáskor a Python-parancsfájl. Az alábbi példák mint a Pig parancsfájlok regisztrálása `myfuncs`:
+Adja meg a Python-fordítóra `register` amikor hivatkozik a Python-szkriptet. Az alábbi példák parancsfájlok regisztrálja, a Pig `myfuncs`:
 
 * **Jython használandó**: `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **C Python használandó**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Használható a C Python**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]
-> Jython használata esetén a fájl elérési útját pig_jython lehet-e, vagy helyi elérési utat, vagy a WASB: / / elérési út. C Python használata esetén egy fájlt a helyi fájlrendszerben, a csomópont, Ön által használt elküldeni a Pig feladatot kell hivatkoznia.
+> Jython használatakor a pig_jython fájl elérési útja lehet-e, vagy helyi elérési utat, vagy a WASB: / / elérési útja. C Python használata esetén a csomópont, amely a Pig-feladat elküldéséhez használja a helyi fájlrendszerben egy fájlt kell hivatkoznia.
 
-Egyszer túli regisztráció, a Pig Latin ehhez a példához megegyezik a is:
+Egyszer korábbi regisztráció, a Pig Latin ebben a példában megegyezik is:
 
 ```pig
 LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
@@ -140,16 +135,16 @@ DETAILS = FOREACH LOG GENERATE myfuncs.create_structure(LINE);
 DUMP DETAILS;
 ```
 
-Ez a példa funkciója:
+Itt látható az ebben a példában leírása:
 
-1. Az első sor betölti a mintaadatfájlokat `sample.log` történő `LOGS`. Mint minden rekordot is meghatározza egy `chararray`.
-2. A következő sorban kiszűri a null értékeket, tárolja a művelet eredményét `LOG`.
-3. A következő megismétli a blobban található rekordok keresztül `LOG` , és `GENERATE` meghívni a `create_structure` tölti be a Python/Jython parancsfájlban szereplő `myfuncs`. `LINE` a függvény az aktuális rekord átadására szolgál.
-4. Végezetül a kimenetek vannak kiírt STDOUT való használata a `DUMP` parancsot. A parancs megjeleníti az eredményeket, a művelet befejeződése után.
+1. Az első sor betölti a mintaadatfájl `sample.log` be `LOGS`. Azt is meghatározza, minden rekord egy `chararray`.
+2. A következő sorban kiszűri a bármely null értékeket, tárolásához, a művelet eredménye `LOG`.
+3. Ezután azt ismétel a rekordok `LOG` és `GENERATE` meghívni a `create_structure` tölti be a Python/Jython szkriptnek metódus `myfuncs`. `LINE` a függvény az aktuális rekordot adnak át szolgál.
+4. Végül a kimenetek a STDOUT vannak kiírt használatával a `DUMP` parancsot. Ez a parancs megjeleníti az eredményeket, a művelet befejezése után.
 
 ### <a name="create-the-pigudfpy-file"></a>A pigudf.py fájl létrehozása
 
-A fejlesztési környezetet hozzon létre egy szövegfájlt nevű `pigudf.py`. A fájl tartalmát az alábbira használata:
+A fejlesztési környezetet hozzon létre egy szövegfájlt nevű `pigudf.py`. Használja a fájl tartalmát a következő kódot:
 
 <a name="streamingpy"></a>
 
@@ -165,42 +160,42 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-A Pig Latin a példában a `LINE` bemeneti egy chararray típusúként van definiálva, mert nincs a bemeneti konzisztens séma. A Python-parancsfájl az adatok átalakítja a kimeneti konzisztens marad.
+A Pig Latin a példában a `LINE` bemenet egy chararray típusúként van definiálva, mert nincs a bemeneti konzisztens séma. A Python-szkriptet az adatok alakítja a kimeneti konzisztens sémát.
 
-1. A `@outputSchema` nyilatkozat meghatározása a Pig számára visszaadott adatok formátuma. Ebben az esetben van egy **adatok tulajdonságcsomag**, amely a Pig adattípus. A csomagban van, amelyek mindegyike chararray (karakterláncok), a következő mezőket tartalmazza:
+1. A `@outputSchema` utasítás, amely a Pig visszaadott adatok formátumát határozza meg. Ebben az esetben van egy **adatok tulajdonságcsomag**, amely a Pig adattípus. A tulajdonságcsomag, amelyek mindegyike chararray (karakterlánc), a következő mezőket tartalmazza:
 
-   * dátum - naplófájlbejegyzést létrehozásának dátuma
-   * idő - naplófájlbejegyzést létrehozásának időpontja
+   * dátum – a naplóbejegyzés dátuma
+   * idő – a a naplóbejegyzés létrehozásának ideje
    * osztálynév - az osztály nevét a bejegyzés lett létrehozva
    * szint – a naplózási szint
-   * Részletek - részletes adatait a naplóbejegyzés
+   * Részletek – részletes adatainak a naplóbejegyzés
 
-2. Ezt követően a `def create_structure(input)` azt a Pig kapott sor elemek függvényt.
+2. Ezután a `def create_structure(input)` határozza meg a függvényt, amely a Pig továbbítja a sor-elemek.
 
-3. A példaadatokat `sample.log`, leginkább megfelel-e a dátum, idő, osztálynév szint, és részletességi séma. Azonban tartalmaz néhány kezdődő sorok `*java.lang.Exception*`. Ezek a sorok felel meg a sémának módosítani kell. A `if` utasítás ellenőrzi azok számára, majd a bemeneti adatok áthelyezése massages a `*java.lang.Exception*` karakterlánc végén, mihamarabb elérhetővé tenni az adatok beágyazott a várt kimeneti sémával.
+3. A példaadatokat `sample.log`, leginkább megfelel-e a dátum, idő, osztályneve, szint, és részletes információkat talál a sémát. Azonban néhány kezdődő sorokat tartalmaz `*java.lang.Exception*`. Ezek a sorok módosítani kell, hogy felel meg a sémának. A `if` utasítás ellenőrzi azok számára, majd a bemeneti adatok áthelyezése massages a `*java.lang.Exception*` karakterlánc végén, így az adatok beágyazott a várt kimeneti sémával.
 
-4. Ezt követően a `split` parancs segítségével az adatok, az első négy karaktereket. A kimeneti hozzá van rendelve, a `date`, `time`, `classname`, `level`, és `detail`.
+4. Ezután a `split` parancs felosztani az adatokat az első négy területet karakter használható. A kimenet van hozzárendelve `date`, `time`, `classname`, `level`, és `detail`.
 
-5. Végül az értékek Pig visszatér.
+5. Végül az értékek visszakerülnek a Pig.
 
-Amikor adatokat küld vissza a Pig, a rendelkezik konzisztens marad a `@outputSchema` utasítást.
+Amikor az adatok visszakerülnek a Pig, a konzisztens sémák rendelkezik a `@outputSchema` utasítást.
 
-## <a name="running"></a>Töltse fel, és futtassa a példák
+## <a name="running"></a>Töltse fel, és futtassa a példákat
 
 > [!IMPORTANT]
-> A **SSH** csak a lépések egy Linux-alapú HDInsight-fürthöz. A **PowerShell** lépéseket egy Linux vagy a Windows-alapú HDInsight-fürthöz működik, de a Windows-ügyfél szükséges.
+> A **SSH** csak a lépések a Linux-alapú HDInsight-fürtökkel. A **PowerShell** lépések Linux vagy Windows-alapú HDInsight-fürttel működik, de egy Windows-ügyfél szükséges.
 
 ### <a name="ssh"></a>SSH
 
-További információ az SSH használatával, lásd: [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+SSH használatával kapcsolatos további információkért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Használjon `scp` átmásolni a fájlokat a HDInsight-fürthöz. Például a következő parancsot a másolja a fájlokat egy fürt nevű **sajátfürt**.
+1. Használat `scp` a fájlok másolása a HDInsight-fürthöz. Ha például a következő parancs másolja a fájlokat nevű fürtben **sajátfürt**.
 
     ```bash
     scp hiveudf.py pigudf.py myuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-2. SSH használatával csatlakozhat a fürthöz.
+2. Az SSH használatával csatlakozhat a fürthöz.
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
@@ -208,26 +203,26 @@ További információ az SSH használatával, lásd: [az SSH a Hdinsighttal](../
 
     További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Az SSH-munkamenetet a python-fájlok a fürt WASB tárolóhelyét korábban feltöltött hozzá.
+3. Az SSH-munkamenetből adjon hozzá a korábban feltöltött a fürt tárolóhelyét WASB python-fájlokat.
 
     ```bash
     hdfs dfs -put hiveudf.py /hiveudf.py
     hdfs dfs -put pigudf.py /pigudf.py
     ```
 
-A fájlok feltöltése után az alábbi lépések segítségével a Hive és a Pig feladatok futtatása.
+A fájlok feltöltése után a következő lépések segítségével a Hive és Pig-feladatok futtatásához.
 
 #### <a name="use-the-hive-udf"></a>Az UDF-ben a Hive használata
 
-1. Hive kapcsolódni a következő paranccsal:
+1. Ha csatlakozni szeretne, Hive, a következő paranccsal:
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-    A Beeline ügyfél indítja el.
+    Ez a parancs elindítja a Beeline-ügyfél.
 
-2. Adja meg a következő lekérdezés: a `0: jdbc:hive2://headnodehost:10001/>` parancssorba:
+2. Írja be a következő lekérdezést, a `0: jdbc:hive2://headnodehost:10001/>` parancssorba:
 
    ```hive
    add file wasb:///hiveudf.py;
@@ -238,7 +233,7 @@ A fájlok feltöltése után az alábbi lépések segítségével a Hive és a P
    ORDER BY clientid LIMIT 50;
    ```
 
-3. Után utolsó sora bevitelét, a feladat elindul. Ha a feladat befejeződik, azt kimenetet visszaadja a következőhöz hasonló:
+3. Miután megadta az utolsó sort, a feladat indításának. A feladat befejezése után, kimenetet ad vissza a következő példához hasonló:
 
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -246,13 +241,13 @@ A fájlok feltöltése után az alábbi lépések segítségével a Hive és a P
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-4. Beeline kilép, használja a következő parancsot:
+4. A Beeline kilép, használja a következő parancsot:
 
     ```hive
     !q
     ```
 
-#### <a name="use-the-pig-udf"></a>A Pig UDF használata
+#### <a name="use-the-pig-udf"></a>Az UDF-ben a Pig használata
 
 1. Ha csatlakozni szeretne a pig, a következő paranccsal:
 
@@ -260,7 +255,7 @@ A fájlok feltöltése után az alábbi lépések segítségével a Hive és a P
     pig
     ```
 
-2. Adja meg az alábbi utasításokat a `grunt>` parancssorba:
+2. Adja meg a következő utasításokat a `grunt>` parancssorba:
 
    ```pig
    Register wasb:///pigudf.py using jython as myfuncs;
@@ -270,7 +265,7 @@ A fájlok feltöltése után az alábbi lépések segítségével a Hive és a P
    DUMP DETAILS;
    ```
 
-3. Írja be a következő parancsot, miután a feladat elindul. Ha a feladat befejeződik, az-kimenet visszaadása hasonló a következő adatokat:
+3. Miután megadta a következő sort, a feladat indításának. A feladat befejezése után, hasonló kimenetet ad vissza a következő adatokat:
 
         ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
         ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -278,21 +273,21 @@ A fájlok feltöltése után az alábbi lépések segítségével a Hive és a P
         ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
         ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-4. Használjon `quit` kattintva lépjen ki a Grunt rendszerhéjat, és a következők segítségével szerkesztheti a pigudf.py fájlt a helyi fájlrendszerben:
+4. Használjon `quit` való kilépéshez a Grunt rendszerhéjat, majd használja a helyi fájlrendszerben pigudf.py fájl szerkesztése a következő:
 
     ```bash
     nano pigudf.py
     ```
 
-5. Egyszer-szerkesztőben, állítsa vissza ezt a következő sor eltávolításával a `#` karakter eltávolítása a sor elejére:
+5. Egyszer a szerkesztőben, állítsa vissza ezt a következő sor eltávolításával a `#` karakter, a sor elejére:
 
     ```bash
     #from pig_util import outputSchema
     ```
 
-    Ezt a sort a Python-parancsfájl használata helyett Jython C Python módosítja. A változás nem lett végrehajtva, ha a **Ctrl + X** a szerkesztőből való kilépéshez. Válassza ki **Y**, majd **Enter** menti a módosításokat.
+    Ez a sor Jython helyett C Python használata a Python-szkript módosítja. A változás nem lett végrehajtva, ha az **Ctrl + X** a szerkesztőből való kilépéshez. Válassza ki **Y**, majd **Enter** menti a módosításokat.
 
-6. Használja a `pig` indítsa újra a rendszerhéj parancsot. Miután a a `grunt>` kérni, használja a következő a Python-parancsfájl használata a C Python értelmező futtatásához.
+6. Használja a `pig` paranccsal indítsa újra a rendszerhéjat. Ha már a `grunt>` kéri, használja az alábbi parancsot a Python-szkript használata a C Python-fordítóra futtatásához.
 
    ```pig
    Register 'pigudf.py' using streaming_python as myfuncs;
@@ -302,35 +297,35 @@ A fájlok feltöltése után az alábbi lépések segítségével a Hive és a P
    DUMP DETAILS;
    ```
 
-    Miután a feladat befejeződik, megtekintheti az azonos kimenethez, ha korábban már futtatta a parancsfájl segítségével történő Jython.
+    Ez a feladat befejezése után megtekintheti az ugyanazzal a hibaüzenettel, ha korábban már futtatta a szkriptet Jython használatával.
 
-### <a name="powershell-upload-the-files"></a>PowerShell: A fájl feltöltése
+### <a name="powershell-upload-the-files"></a>PowerShell: A fájlok feltöltése
 
-PowerShell segítségével töltse fel a fájlokat a HDInsight-kiszolgálóra. A következő parancsfájl használata a Python fájlok feltöltéséhez:
+A HDInsight-kiszolgáló a fájlok feltöltése a PowerShell használatával is. A Python-fájlok feltöltéséhez használja a következő szkriptet:
 
 > [!IMPORTANT] 
-> A jelen szakaszban szereplő lépéseket használhatja az Azure Powershellt. További információ az Azure PowerShell használatával, lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
+> A jelen szakaszban ismertetett lépések az Azure PowerShell-lel. További információ az Azure PowerShell-lel: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=5-41)]
 
 > [!IMPORTANT]
-> Módosítsa a `C:\path\to` értéket a fejlesztési környezetet a fájlok elérési útját.
+> Módosítsa a `C:\path\to` a fejlesztési környezetet a fájlok elérési útja értéket.
 
-Ezt a parancsfájlt a HDInsight-fürthöz adatainak beolvasása majd kibontja a fiók és az alapértelmezett tárfiók kulcsa, és feltölti a fájlok a tároló, a legfelső szintű.
+Ez a szkript lekéri a HDInsight-fürthöz, majd kinyeri a fiók és az alapértelmezett tárfiók kulcsa, és feltölti a fájlokat a tároló gyökérkönyvtárába.
 
 > [!NOTE]
-> Fájlok feltöltésével kapcsolatos további információkért lásd: a [feltölteni az adatokat a HDInsight Hadoop-feladatok](../hdinsight-upload-data.md) dokumentum.
+> Fájlok feltöltése a további információkért lásd: a [feltölteni az adatokat a HDInsight Hadoop-feladatokhoz](../hdinsight-upload-data.md) dokumentumot.
 
-#### <a name="powershell-use-the-hive-udf"></a>PowerShell: A Hive UDF használata
+#### <a name="powershell-use-the-hive-udf"></a>PowerShell: Az UDF Hive használata
 
-PowerShell távolról ugyanúgy futtathatják a Hive-lekérdezéseket is használható. A következő PowerShell-parancsfájl segítségével használó Hive-lekérdezések futtatása **hiveudf.py** parancsfájlt:
+PowerShell is használható távolról a Hive-lekérdezések futtatásához. A következő PowerShell-parancsfájl használatával futtathat Hive-lekérdezéseket használó **hiveudf.py** parancsfájlt:
 
 > [!IMPORTANT]
-> Előtt fut, a parancsprogram kéri a HTTPs/rendszergazdai fiók adatait a HDInsight-fürthöz.
+> Előtt fut, a parancsfájl kérni fogja, a HTTPs vagy rendszergazdai fiók adatainak a HDInsight-fürt számára.
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=45-94)]
 
-A kimenet a **Hive** feladatot az alábbi példához hasonlóan kell megjelennie:
+A kimenet a **Hive** feladat a következő példához hasonlóan kell megjelennie:
 
     100041    RIM 9650    d476f3687700442549a83fac4560c51c
     100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -338,16 +333,16 @@ A kimenet a **Hive** feladatot az alábbi példához hasonlóan kell megjelennie
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-#### <a name="pig-jython"></a>Pig (Jython)
+#### <a name="pig-jython"></a>A Pig (Jython)
 
-PowerShell is használható a Pig Latin feladatok futtatásához. A Pig Latin feladat által használt futtatásához a **pigudf.py** parancsfájl, a következő PowerShell-parancsfájl:
+PowerShell is használható a Pig Latin-feladatok futtatásához. A Pig Latin használó feladatok futtatásához a **pigudf.py** parancsfájl, használja a következő PowerShell-parancsfájlt:
 
 > [!NOTE]
-> Ha távolról elküld egy PowerShell-lel feladatot, nincs lehetőség a értelmező C Python használandó.
+> Távolról küldjön el egy PowerShell-lel feladat, nincs lehetőség használható a C Python értelmezőként.
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=98-144)]
 
-A kimenet a **Pig** feladat a következő adatok hasonlóan kell megjelennie:
+A kimenet a **Pig** feladat a következő adatokhoz hasonlóan kell megjelennie:
 
     ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
     ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -359,35 +354,35 @@ A kimenet a **Pig** feladat a következő adatok hasonlóan kell megjelennie:
 
 ### <a name="errors-when-running-jobs"></a>Ha a futó feladatok hibák
 
-A hive-feladatokban futtatásakor találkozhat az alábbihoz hasonló hiba:
+Amikor futtatja a hive-feladatokban, találkozhat az alábbi szöveghez hasonló hibát:
 
     Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
 
-Ez a probléma a sorvégződések a Python-fájl okozhatja. Az CRLF a sor befejezési, de a Linux-alkalmazások általában számos Windows szerkesztők alapértelmezett LF várt.
+Ez a probléma oka a sorvégződések a Python-fájlt a. A CRLF karakterrel, a sor vége, de a Linux-alkalmazások általában számos Windows szerkesztők alapértelmezett várhatóan LF Karakterrel.
 
 A következő PowerShell-utasítások segítségével a CR karakter eltávolítása előtt a fájl feltöltése a HDInsight:
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=148-150)]
 
-### <a name="powershell-scripts"></a>PowerShell-parancsfájlok
+### <a name="powershell-scripts"></a>PowerShell-parancsprogramok
 
-A példa a példák futtatásához használt PowerShell-parancsfájlok tartalmazniuk jeleníti meg a feladat kimenetének hiba megjegyzésként sorra. Ha nem Ön a feladat várható kimenete, állítsa vissza a következő sort, és tekintse meg, ha a hiba adataival kapcsolatos problémát jelez.
+Mind a példa PowerShell-parancsfájlok futtatásához a példákban használt tartalmaz, amely megjeleníti a feladat hibakimenet megjegyzéssel ellátott vonal. Ha nem jelennek meg a feladat várható kimenete, állítsa vissza a következő sort, és tekintse meg, ha a hiba adatait kapcsolatos problémát jelez.
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=135-139)]
 
-A hibával kapcsolatos információk (STDERR) és a feladat (STDOUT) eredménye is bekerül a HDInsight-tárolóba.
+A hiba adatait (STDERR) és a feladat (STDOUT) eredménye is rögzíti a HDInsight-tárolóba.
 
-| A feladat... | Nézze meg ezeket a fájlokat a blob a tárolóban |
+| A feladathoz... | Tekintse meg ezeket a fájlokat a blob-tárolóban |
 | --- | --- |
 | Hive |/HivePython/stderr<p>/HivePython/stdout |
 | Pig |/PigPython/stderr<p>/PigPython/stdout |
 
 ## <a name="next"></a>Következő lépések
 
-Ha alapértelmezés szerint nem biztosított Python-modulok betöltése szüksége, tekintse meg [központi telepítése egy modul Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
+Ha alapértelmezés szerint nem biztosított Python-modulok betöltése van szüksége, tekintse meg [modul üzembe helyezése az Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
 
-Más használatának módjai sertésfelmérés, struktúra, és a MapReduce használatával kapcsolatos további tudnivalókért lásd a következő dokumentumokat:
+Más használati módjai a Pig-alapú, Hive, és a MapReduce használatával kapcsolatos további információkért lásd az alábbi dokumentumokat:
 
 * [A Hive használata a HDInsightban](hdinsight-use-hive.md)
 * [A Pig használata a HDInsightban](hdinsight-use-pig.md)
-* [Use MapReduce with HDInsight](hdinsight-use-mapreduce.md)
+* [A MapReduce használata a HDInsight](hdinsight-use-mapreduce.md)

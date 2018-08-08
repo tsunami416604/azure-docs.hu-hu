@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 41829add17f69c5f051618195247ed2a5512ca64
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: e3b22c0c602e8f3d47fbfc179fb8d0fb985d55d6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505636"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619321"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Az Azure Active Directory-üzleti alkalmazások fejlesztése
 Ez az útmutató áttekintést fejlesztése – üzletági (LoB) alkalmazásokat az Azure Active Directory (AD). A célközönség az Active Directory vagy Office 365 globális rendszergazdái.
 
 ## <a name="overview"></a>Áttekintés
-A szervezete egyszeri bejelentkezés az Office 365-tel az Azure AD-val integrált alkalmazásokat biztosít a felhasználóknak. Az alkalmazás kellene az Azure ad-ben szabályozható a hitelesítési szabályzatot az alkalmazáshoz. További információ a feltételes hozzáférés és a többtényezős hitelesítés (MFA) tekintse meg az alkalmazások védelme [hozzáférési szabályok konfigurálása](active-directory-conditional-access-azure-portal-get-started.md).
+A szervezete egyszeri bejelentkezés az Office 365-tel az Azure AD-val integrált alkalmazásokat biztosít a felhasználóknak. Az alkalmazás kellene az Azure ad-ben szabályozható a hitelesítési szabályzatot az alkalmazáshoz. További információ a feltételes hozzáférés és a többtényezős hitelesítés (MFA) tekintse meg az alkalmazások védelme [hozzáférési szabályok konfigurálása](conditional-access/app-based-mfa.md).
 
 Regisztrálja az alkalmazást, hogy az Azure Active Directory. Az alkalmazás regisztrálása, az azt jelenti, hogy a fejlesztők használhatják-e az Azure ad-ben hitelesítheti a felhasználókat, és kérjen hozzáférést a felhasználói erőforrások, például az e-mailek, naptár és dokumentumok.
 
@@ -58,7 +58,7 @@ Az alkalmazások regisztrálásának lehetővé teszi, hogy minden felhasználó
 * Az alapértelmezett felhasználói jóváhagyás élmény elrejtése
 
 ## <a name="configure-access-rules"></a>Hozzáférési szabályok konfigurálása
-Állítsa be az alkalmazás hozzáférési szabályok az SaaS-alkalmazásokhoz. Például többtényezős hitelesítés, vagy csak felhasználók férhessenek hozzá a megbízható hálózatokon. A részleteket a érhetők el a dokumentumot [hozzáférési szabályok konfigurálása](active-directory-conditional-access-azure-portal-get-started.md).
+Állítsa be az alkalmazás hozzáférési szabályok az SaaS-alkalmazásokhoz. Például többtényezős hitelesítés, vagy csak felhasználók férhessenek hozzá a megbízható hálózatokon. A részleteket a érhetők el a dokumentumot [hozzáférési szabályok konfigurálása](conditional-access/app-based-mfa.md).
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Felhasználó-hozzárendelés szükséges, és hozzárendelhet felhasználókat az alkalmazás konfigurálása
 Alapértelmezés szerint felhasználók érvényessége a felhasználóhoz anélkül is hozzáférhetnek alkalmazásaikhoz. Ha az alkalmazás elérhetővé teszi a szerepkörök, vagy ha azt szeretné, hogy az alkalmazás a felhasználó hozzáférési panelen megjelenő, felhasználó-hozzárendelés érdemes beállítani.
@@ -79,6 +79,5 @@ További információ a felhasználói beleegyezés és a jóváhagyás működi
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Biztonságos távoli hozzáférést a helyszíni alkalmazások az Azure AD-alkalmazásproxy engedélyezése](manage-apps/application-proxy.md)
-* [Azure feltételes hozzáférés előzetes verziója SaaS-alkalmazások](active-directory-conditional-access-azure-portal-get-started.md)
 * [Az Azure AD-alkalmazásokhoz való hozzáférés kezelése](manage-apps/what-is-access-management.md)
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)

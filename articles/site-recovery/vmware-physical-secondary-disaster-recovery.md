@@ -8,22 +8,58 @@ ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/01/2018
 ms.author: raynew
-ms.openlocfilehash: 251e2b1f8785408bf441bcbcf3d0fcbdd767a358
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 94abdd30dc9cd279ab791541250787a111f80d30
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38479482"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618988"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók másodlagos helyre történő vészhelyreállításának beállítása
 
-Az InMage Scout [Azure Site Recovery](site-recovery-overview.md) védekezés valós idejű között a helyszíni VMware-webhelyek. Az InMage Scout segédprogramot az Azure Site Recovery szolgáltatás előfizetések tartalmazza. 
+Az InMage Scout [Azure Site Recovery](site-recovery-overview.md) védekezés valós idejű között a helyszíni VMware-webhelyek. Az InMage Scout segédprogramot az Azure Site Recovery szolgáltatás előfizetések tartalmazza.
+
+## <a name="end-of-support-announcement"></a>Teljes támogatása bejelentés
+
+Az Azure Site Recovery a forgatókönyvben a helyszíni VMware vagy fizikai adatközpontok közötti replikáció eléri-e célból támogatása.
+
+-   A 2018 augusztus a forgatókönyv nem lehet konfigurálni a helyreállítási tárban, és nem tölthető le az InMage Scout szoftver a tárolóból. Meglévő üzemelő példányok is támogatott lesz. 
+-   A December 31-ig 2020-ra a forgatókönyv nem lesznek támogatva.
+- Meglévő partnerek új ügyfelek bevonásának forgatókönyvet is, amíg támogatása véget ér.
+
+2018-as és a 2019 során két frissítések elérhető lesz: 
+
+-   7. frissítés: Hálózati konfigurációs és megfelelőségi problémák, és a TLS 1.2 támogatást biztosít.
+-   8. frissítés: A Linux operációs rendszerek RHEL/CentOS 7.3/7.4/7.5, valamint a SUSE-12 támogatásával bővült
+
+8. frissítés, miután további frissítések elérhető lesz. Korlátozott gyorsjavítási támogatás hozzáadva a frissítés 8 operációs rendszerek és hibajavításokat tartalmaz, a lehető legjobb alapján lesz.
+
+Az Azure Site Recovery továbbra is lehetővé teszi az ügyfelek VMware és Hyper-V zökkenőmentes és a legjobb minőségű DRaaS az Azure-t egy vész-helyreállítási webhelyként villámgyors innovációt hajthat végre. A Microsoft azt javasolja, hogy a már InMage / ASR Scout ügyfelek fontolja meg az Azure Site Recovery VMware – Azure forgatókönyvek esetében az üzletmenet-folytonossági kell. Az Azure Site Recovery VMware – Azure forgatókönyvére egy nagyvállalati szintű Vészhelyreállítási megoldás az alkalmazások VMware RPO és RTO perc kínáló támogatása több virtuális gépes alkalmazás replikálását és helyreállítását, zökkenőmentes bevezetése átfogó figyelést, és jelentős előnye a teljes bekerülési Költséget.
+
+### <a name="scenario-migration"></a>Áttelepítési forgatókönyv
+Alternatív megoldásként a vészhelyreállítás beállítása helyszíni VMware virtuális gépek és fizikai gépek az Azure-bA replikálásával javasoljuk. Ehhez a következő:
+
+1.  Tekintse át az alábbi gyors összehasonlítást. Lehetőség van a helyszíni gépeket replikálni, mielőtt szüksége van-e, ellenőrizze, hogy megfelelnek-e [követelmények](./vmware-physical-azure-support-matrix.md#replicated-machines) számára az Azure-bA. Ha VMware virtuális gépeket replikál, azt javasoljuk, hogy tekintse át [kapacitástervezési útmutató](./site-recovery-plan-capacity-vmware.md), és futtassa a [Deployment Planner eszköz](./site-recovery-deployment-planner.md) az identitás kapacitásigények, és a megfelelőség ellenőrzése.
+2.  A Deployment Planner futtatásának után állíthatja be a replikációs: o VMware virtuális gépeket, hajtsa végre az ezekben az oktatóanyagokban a [készítheti elő az Azure](./tutorial-prepare-azure.md), [a helyszíni VMware-környezet előkészítése a](./vmware-azure-tutorial-prepare-on-premises.md), és [beállítása vész-helyreállítási](./vmware-azure-tutorial-prepare-on-premises.md).
+fizikai gépek o kövesse ezt [oktatóanyag](./physical-azure-disaster-recovery.md).
+3.  Gépek az Azure-bA replikál, után futtathatja egy [vészhelyreállítási próba végrehajtása](./site-recovery-test-failover-to-azure.md) , győződjön meg arról, hogy minden a várt módon működik.
+
+### <a name="quick-comparison"></a>Gyors összehasonlítása
+
+**Funkció** | **Az Azure-bA** |**VMware-adatközpontok közötti replikáció**
+--|--|--
+**Szükséges összetevők** |Mobilitási szolgáltatás a replikált gépek. A helyszíni konfigurációs kiszolgáló, folyamatkiszolgáló, fő célkiszolgáló. Ideiglenes folyamatkiszolgáló az Azure-ban feladat-visszavételhez.|Mobilitási szolgáltatás, a Folyamatkiszolgáló, a konfigurációs kiszolgáló és a fő célkiszolgáló
+**Konfigurációs és vezénylési** |Recovery Services-tárolót az Azure Portalon | VContinuum használatával 
+**Replikált**|Lemez (Windows és Linux) |Kötet – Windows<br> Lemez – Linux
+**Megosztott lemezfürt**|Nem támogatott|Támogatott
+**Data churn korlátait (átlag)** |Lemezenként 10 MB/s-adatok<br> Virtuális gépenként 25MB/s-adatok<br> [További információ](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/s adatok lemezenként  <br> Virtuális gépenként > 25 MB/s-adatok
+**Monitorozás** |Az Azure Portalról|A CX (konfigurációs kiszolgáló)
+**Támogatási mátrix**| [Kattintson ide a részletekért](./vmware-physical-azure-support-matrix.md)|[Töltse le az ASR Scout kompatibilis mátrix](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-
 Az oktatóanyag elvégzéséhez:
 
 - [Felülvizsgálat](vmware-physical-secondary-support-matrix.md) a támogatási követelmények valamennyi összetevője számára.
@@ -75,7 +111,7 @@ Töltse le a [frissítése](https://aka.ms/asr-scout-update6) .zip-fájlt. A fá
 6. **Linux rendszerű fő célkiszolgáló**: a egységes ügynök frissítése, másolása **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a fő célkiszolgáló és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
 7. **A forráskiszolgáló Windows**: a egységes ügynök frissítése, másolása **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** a forráskiszolgálón. Kattintson duplán a fájlra a futtatáshoz. 
     Nem kell a frissítés 5-ügynök telepítése a forráskiszolgálón, ha már frissítették Update 4 vagy a forrás-ügynök telepítve van a legújabb kiinduló installer **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**.
-8. **Linux-forráskiszolgálón**: az egyesített ügynök frissítéséhez az egyesített ügynök fájl megfelelő verziója a Linux-kiszolgálóra másolja, majd csomagolja. A kibontott mappát, futtassa a **/Install**.  Példa: Az RHEL 6,7 64 bites kiszolgálón másolja **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a kiszolgálóra, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
+8. **Linux-forráskiszolgálón**: az egyesített ügynök frissítéséhez az egyesített ügynök fájl megfelelő verziója a Linux-kiszolgálóra másolja, majd csomagolja. A kibontott mappát, futtassa a **/Install**.  Például: A RHEL 6.7 server 64 bites, a másolási **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a kiszolgálóra, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
@@ -160,7 +196,7 @@ Scout Update 5 a kumulatív frissítés. Update 4-es frissítés 1-től az össz
 
 #### <a name="bug-fixes-and-enhancements"></a>Hibajavítások és fejlesztések
 
-* Továbbfejlesztett leállítás kezelése a következő Linux operációs rendszerek és klónozásával jár, nemkívánatos újbóli szinkronizálási problémák elkerülése érdekében:
+* Továbbfejlesztett leállítás kezelése a következő Linux operációs rendszerek és klónozásával jár, nemkívánatos újraszinkronizálás problémák elkerülése érdekében:
     * Red Hat Enterprise Linux (RHEL) 6.x
     * Oracle Linux (OL) 6.x
 * Linux esetén az egyesített ügynöktelepítési könyvtár összes mappa hozzáférési engedélyeket csak a helyi felhasználói most már korlátozódik.
@@ -222,7 +258,7 @@ Site Recovery-hírek összeadódnak. 3. frissítés Update 1 és 2. frissítés 
 
 A 2. frissítésben javításokat tartalmazza:
 
-* **Konfigurációs kiszolgáló**: problémákat, amelyek miatt nem sikerült a 31 napos ingyenes mérési megfelelően működik, amikor a konfigurációs kiszolgáló regisztrálva lett a Site Recovery szolgáltatás működését.
+* **Konfigurációs kiszolgáló**: működő a problémákat, amelyek miatt nem sikerült a 31 napos ingyenes mérési szolgáltatás megfelelően működik, amikor a konfigurációs kiszolgáló regisztrálva lett az Azure Site Recovery-tárból.
 * **Egyesített ügynök**: egy probléma a Update 1, melyek kiváltották a 8.0.1 8.0-s verziójáról a frissítés során a fő célkiszolgálón, nem telepíti a frissítést.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Az Azure Site Recovery Scout 8.0.1 1. frissítés

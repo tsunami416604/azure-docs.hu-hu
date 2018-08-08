@@ -1,88 +1,83 @@
 ---
-title: Solr telepítése Linux-alapú hdinsight - Azure a parancsfájlművelet használatával |} Microsoft Docs
-description: Ismerje meg, Solr Parancsfájlműveletek Linux-alapú HDInsight Hadoop-fürtök telepítése.
+title: A Solr telepítése Linux-alapú HDInsight - Azure Szkriptműveleteket használata
+description: Ismerje meg, a Solr telepítése Linux-alapú HDInsight Hadoop-fürtökön parancsfájlműveletekkel.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: cc93ed5c-a358-456a-91a4-f179185c0e98
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 77d3964dd54d63db58c63b567ebbe7e529473999
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 35a7410a5a30e248069ba31ad4213eff58680dcc
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201560"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597769"
 ---
-# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Solr HDInsight Hadoop-fürtök
+# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Soir telepítése és használata a HDInsight Hadoop-fürtök
 
-Útmutató: Azure HDInsight Solr telepítése parancsfájlművelet segítségével. Solr egy hatékony keresési platform, és a Hadoop által kezelt adatok vállalati szintű keresési funkciókat biztosít.
+Ismerje meg, a Solr telepítése Azure HDInsight Script Action használatával. A Solr egy hatékony keresési platform, és a vállalati szintű keresési funkciókat biztosít a Hadoop által kezelt adatok.
 
 > [!IMPORTANT]
     > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!IMPORTANT]
-> A dokumentumban használt parancsfájlpélda Solr 4.9 egy adott konfigurációval telepíti. Ha azt szeretné, a Solr fürt konfigurálásához a különböző gyűjteményekhez, szilánkok, sémákat, replikákat, stb., módosítania kell a parancsfájl és Solr bináris fájljait.
+> Az itt bemutatott minta parancsfájl Solr 4.9 adott konfigurációval telepíti. Ha azt szeretné, a Solr fürt konfigurálására a különböző gyűjteményekhez, szegmensek, sémákat, replikák és az egyéb, módosítania kell a parancsfájlt és a Solr bináris fájlokat.
 
 ## <a name="whatis"></a>Mi az a Solr
 
-[Apache Solr](http://lucene.apache.org/solr/features.html) egy vállalati keresési platform, amely lehetővé teszi az adatok hatékony teljes szöveges keresés. Hadoop lehetővé teszi a tárolásához és kezeléséhez az adatok óriási mennyiségben, Apache Solr biztosít a keresési képességek gyorsan az adatok lekéréséhez.
+[Az Apache Solr](http://lucene.apache.org/solr/features.html) egy vállalati keresési platform, amely lehetővé teszi az adatok hatékony teljes szöveges keresés. Míg a Hadoop tárolására és kezelésére, az adatok óriási mennyiségben, Apache Solr biztosít a keresési funkciókkal gyorsan az adatok lekéréséhez.
 
 > [!WARNING]
-> A HDInsight-fürt összetevői Microsoft teljes mértékben támogatja.
+> A HDInsight-fürthöz megadott összetevők teljes mértékben támogatja a Microsoft által.
 >
-> Egyéni összetevők, például Solr, minden üzleti szempontból ésszerű terméktámogatási segítséget nyújtanak a probléma további hibaelhárításához. Előfordulhat, hogy a Microsoft támogatási nem egyéni összetevőkkel kapcsolatos problémák megoldásához. Szükség lehet a nyílt forráskódú Közösségek szólítsa meg, ha segítségre van szüksége. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+> Egyéni összetevők, például a Solr, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Nem lehet egyéni összetevőkkel kapcsolatos problémák megoldásához a Microsoft ügyfélszolgálatához. Szükség lehet a nyílt forráskódú Közösségek végezhetnek segítségért. Számos, használható, például közösségi helyek vannak, például: [HDInsight az MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
 
-## <a name="what-the-script-does"></a>A parancsfájl funkciója
+## <a name="what-the-script-does"></a>A parancsfájl leírása
 
-Ezt a parancsfájlt a HDInsight-fürt hajt végre a következő módosításokat:
+Ez a szkript az alábbi módosításokat végzi, a HDInsight-fürthöz:
 
-* 4.9 Solr történő telepítése `/usr/hdp/current/solr`
-* Létrehoz egy felhasználói **solrusr**, amely a Solr szolgáltatás futtatására szolgál
-* Készletek **solruser** tulajdonosa `/usr/hdp/current/solr`
-* Hozzáad egy [Upstart](http://upstart.ubuntu.com/) konfigurációjához, amely Solr automatikusan elindul.
+* 4.9 a be telepíti Solr `/usr/hdp/current/solr`
+* Létrehoz egy felhasználót **solrusr**, amely a Solr szolgáltatás futtatásához használt
+* Csoportok **solruser** tulajdonosként `/usr/hdp/current/solr`
+* Hozzáad egy [Upstart](http://upstart.ubuntu.com/) konfigurációt, amely automatikusan elindul, a Solr.
 
 ## <a name="install"></a>A Parancsfájlműveletek segítségével Solr telepítése
 
-Egy HDInsight-fürtök Solr telepítendő parancsfájlt a következő helyen érhető el:
+Egy mintaszkriptet telepítéséhez a Soirt egy HDInsight-fürtön a következő helyen érhető el:
 
     https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
 
-Hozzon létre egy fürtöt, amely rendelkezik a telepített Solr, kövesse a lépéseket a a [HDInsight-fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-portal.md) dokumentum. A létrehozási folyamat során a következő lépések segítségével Solr telepítése:
+Szereplő lépések segítségével hozzon létre egy fürtöt, amely a Solr telepítve van, a [létre HDInsight-fürtök](hdinsight-hadoop-create-linux-clusters-portal.md) dokumentumot. A létrehozási folyamat során a következő lépések segítségével a Solr telepítése:
 
-1. Az a __fürt összefoglaló__ szakaszban, select__Advanced settings__, majd __parancsfájl-műveletek__. Az űrlap feltöltéséhez használja az alábbi információkat:
+1. Az a __fürt összegzése__ szakasz, select__Advanced settings__, majd __Szkriptműveletek__. Az alábbi információk segítségével töltse ki az űrlapot:
 
-   * **NÉV**: Adja meg a parancsfájlművelet rövid nevét.
-   * **PARANCSFÁJL URI AZONOSÍTÓJA**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
-   * **HEAD**: ezt a beállítást
-   * **MUNKAVÉGZŐ**: ezt a beállítást
-   * **ZOOKEEPER**: ezt a beállítást a Zookeeper csomóponton telepítése
-   * **PARAMÉTEREK**: ezt a mezőt hagyja üresen
+   * **NÉV**: Adjon egy rövid nevet a parancsprogram-művelet.
+   * **SZKRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
+   * **A fő**: ezt a beállítást választva
+   * **FELDOLGOZÓ**: ezt a beállítást választva
+   * **ZOOKEEPER**: ezt a beállítást választva a Zookeeper-csomópont telepítése
+   * **PARAMÉTEREK**: hagyja üresen a mezőt
 
-2. Alján a **parancsfájl-műveletek** szakaszban a **válasszon** gombra kattintva mentse a konfigurációt. Végül a **következő** gombra kattintva visszatérhet a __fürt összegzése__
+2. Alsó részén a **Szkriptműveletek** szakaszban a **kiválasztása** gombra a konfiguráció mentéséhez. Végül a **tovább** gombra kattintva visszatérhet a __fürt összegzése__
 
-3. Az a __fürt összefoglaló__ lapon jelölje be __létrehozása__ a fürt létrehozásához.
+3. Az a __fürt összegzése__ lapon jelölje be __létrehozás__ a fürt létrehozásához.
 
-## <a name="usesolr"></a>Solr használata a Hdinsightban
+## <a name="usesolr"></a>A Solr használata a HDInsight
 
 > [!IMPORTANT]
-> Ebben a szakaszban a lépések bemutatják, Solr alapvető funkciókat. Solr használatával kapcsolatos további információkért lásd: a [Apache Solr hely](http://lucene.apache.org/solr/).
+> A jelen szakaszban ismertetett lépések bemutatják, Solr alapvető funkciói. A Solr használata további információkért lásd: a [Apache Solr hely](http://lucene.apache.org/solr/).
 
-### <a name="index-data"></a>Index adatok
+### <a name="index-data"></a>Adatok indexelése
 
-Az alábbi lépések segítségével Példa adatok hozzáadása a Solr, és majd lekérdezése:
+Solr példa adatok hozzáadása a következő lépések segítségével, és ezután lekérdezéseket futtathat rajta:
 
 1. Csatlakozzon SSH-val a HDInsight-fürthöz:
 
     > [!NOTE]
-    > Cserélje le `sshuser` a fürthöz az SSH felhasználóval. Cserélje le `clustername` a fürt nevét.
+    > Cserélje le `sshuser` és a fürthöz az SSH-felhasználót. Cserélje le `clustername` a fürt nevére.
 
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
@@ -91,11 +86,11 @@ Az alábbi lépések segítségével Példa adatok hozzáadása a Solr, és majd
     További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
      > [!IMPORTANT]
-     > A jelen dokumentum lépéseit az SSH-alagút való csatlakozáskor használandó a Solr webes felhasználói felületen. Ezen lépések használatához, az SSH-alagút létrehozására és a böngésző használják majd beállítása.
+     > Később a jelen dokumentumban leírt lépések az SSH-alagút használatával csatlakozni a Solr webes felhasználói felületen. Kövesse az alábbi lépéseket, egy SSH-alagutat létesíteni, és majd a böngészőben konfigurálni kell használni.
      >
-     > További információkért lásd: a [használata SSH Tunneling hdinsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentum.
+     > További információkért lásd: a [SSH-bújtatással való HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentumot.
 
-2. Az alábbi parancsokkal Solr index mintaadatok rendelkezik:
+2. A következő parancsok használatával Solr index mintaadatok rendelkezik:
 
     ```bash
     cd /usr/hdp/current/solr/example/exampledocs
@@ -110,15 +105,15 @@ Az alábbi lépések segítségével Példa adatok hozzáadása a Solr, és majd
         COMMITting Solr index changes to http://localhost:8983/solr/update..
         Time spent: 0:00:01.624
 
-    A `post.jar` segédprogram hozzáadja a **solr.xml** és **monitor.xml** az index a dokumentumokat.
+    A `post.jar` segédprogram hozzáadja a **solr.xml** és **monitor.xml** dokumentumok az indexbe.
   
-3. Használja a következő parancsot lekérdezéséhez Solr REST API:
+3. Használja a következő parancsot a Solr REST API lekérdezéséhez:
 
     ```bash
     curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
     ```
 
-    Ez a parancs keres **collection1** megfelelő dokumentumokhoz **\*:\*** (kódolva \*% 3A\* a lekérdezési karakterláncban). A következő JSON-dokumentum a válasz példája:
+    Ez a parancs keres **collection1** az egyező dokumentumok **\*:\*** (kódolásban \*% 3A\* a lekérdezési karakterlánc). A következő JSON-dokumentum a válasz egy példát:
 
             "response": {
                 "numFound": 2,
@@ -172,48 +167,48 @@ Az alábbi lépések segítségével Példa adatok hozzáadása a Solr, és majd
                 ]
               }
 
-### <a name="using-the-solr-dashboard"></a>A Solr irányítópult használata
+### <a name="using-the-solr-dashboard"></a>A Solr irányítópultjának használata
 
-A Solr irányítópult a webes felhasználói felület, amely lehetővé teszi, hogy a webböngészőn keresztül Solr alkalmazásában. A Solr irányítópult nincs felfedve, közvetlenül a HDInsight-fürtök az interneten. Az SSH-alagút segítségével-e férni. További információ az SSH-alagút használatával, lásd: a [használata SSH Tunneling hdinsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentum.
+A Solr irányítópult egy webes felhasználói felület, amely lehetővé teszi, hogy a Solr a webböngészőn keresztül. A Solr irányítópult nem közvetlenül az interneten a HDInsight-fürtből származó lesz közzétéve. Az SSH-alagút segítségével-e férni. SSH-alagút használatával kapcsolatos további információkért lásd: a [SSH-bújtatással való HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentumot.
 
-Az SSH-alagút létesítése, tegye a következőket a Solr irányítópult használata:
+Létesítése után SSH-alagút, a következő lépések segítségével a Solr irányítópult:
 
-1. Határozza meg az elsődleges headnode a host name:
+1. Határozza meg az állomásnév az elsődleges átjárócsomóponthoz:
 
-   1. SSH használatával csatlakozhat az átjárócsomóponthoz. Például: `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
+   1. Az SSH használatával a fürt átjárócsomópontjához csatlakozik. Például: `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
 
-       További információ az SSH használatával, tekintse meg a [az SSH a Hdinsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+       SSH használatával kapcsolatos további információkért lásd: a [az SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-   2. Az alábbi parancs segítségével a teljesen minősített nevének beolvasása:
+   2. Használja a következő parancsot a teljesen minősített állomásnév beolvasásához:
 
         ```bash
         hostname -f
         ```
 
-        Ez a parancs értéket ad vissza a következő állomás neve hasonlít:
+        Ez a parancs hasonló ad vissza értéket a következő állomásnév:
 
             hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
-        Az érték lett visszaadva, akkor akkor menteni, mert a rendszer később.
+        Mentse az értéket ad vissza, később szolgál.
 
-2. A böngészőben csatlakozzon a **http://HOSTNAME:8983/solr/#/**, ahol **ÁLLOMÁSNÉV** az előző lépésben maghatározott neve.
+2. Csatlakozás a böngészőben, **http://HOSTNAME:8983/solr/#/**, ahol **ÁLLOMÁSNÉV** az előző lépésben maghatározott neve.
 
-    A kérelem az SSH-alagút, a fürt Solr webes felhasználói felületén keresztül történik. A lap jelenik meg az alábbi képen hasonlít:
+    A kérelem a Solr webes felhasználói felület a fürtön SSH-alagúton keresztül van átirányítva. Az oldal jelenik meg az alábbi képhez hasonló:
 
-    ![Solr irányítópult képe](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
+    ![A Solr irányítópult képe](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
 
-3. A bal oldali ablaktáblán, használja a **Core választó** legördülő listán válassza ki a **collection1**. Több bejegyzést kell őket alatt jelennek meg **collection1**.
+3. A bal oldali ablaktáblán, használja a **Core választó** válassza ki a legördülő **collection1**. Több bejegyzést kell őket alatt jelennek meg **collection1**.
 
-4. Az alábbi bejegyzései **collection1**, jelölje be **lekérdezés**. Töltse fel adatokkal a lapon a következő értékeket használja:
+4. Az alábbi bejegyzések **collection1**válassza **lekérdezés**. A lapon feltöltéséhez használja a következő értékeket:
 
-   * Az a **q** szöveget adja meg a  **\*:**\*. Ez a lekérdezés a indexelt dokumentumok Solr adja vissza. Ha szeretne keresni egy adott karakterláncot belül a dokumentumokhoz, karakterláncokat Itt adhatja meg.
-   * Az a **wt** szöveg mezőben adja meg a kimeneti formátum. Alapértelmezett érték a **json**.
+   * Az a **q** szöveget adja meg  **\*:**\*. Ez a lekérdezés a indexelt dokumentumok Solr adja vissza. Ha szeretne keresni egy adott karakterláncot a dokumentumokon belül, tulajdonság: Itt adhatja meg.
+   * Az a **wt** szöveg mezőben adja meg a kimeneti formátumot. Alapértelmezett érték a **json**.
 
-     Végül válassza ki a **lekérdezés végrehajtása** gombra a keresési pate alján.
+     Végül válassza ki a **lekérdezés végrehajtása** alján, a keresési illessze be a gombra.
 
-     ![Parancsfájlművelet használni ahhoz, hogy a fürt](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
+     ![Fürt testreszabása Szkriptműveletek használatával](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
 
-     A kimenet a korábban hozzáadott az indexhez két dokumentumot ad vissza. A kimenet a következő JSON-dokumentum hasonlít:
+     A kimenet az indexhez korábban hozzáadott két dokumentumot ad vissza. A kimenet a következő JSON-dokumentum hasonlít:
 
            "response": {
                "numFound": 2,
@@ -267,32 +262,32 @@ Az SSH-alagút létesítése, tegye a következőket a Solr irányítópult hasz
                ]
              }
 
-### <a name="starting-and-stopping-solr"></a>Indítása és leállítása Solr
+### <a name="starting-and-stopping-solr"></a>Indítása és leállítása a Solr
 
-A következő parancsok segítségével manuálisan állítsa le és indítsa el a Solr:
+A következő parancsok használatával manuálisan állítsa le és indítsa el a Solr:
 
 ```bash
 sudo stop solr
 sudo start solr
 ```
 
-## <a name="backup-indexed-data"></a>Biztonsági mentési indexelt adatokat
+## <a name="backup-indexed-data"></a>Biztonsági mentési adatok indexelése
 
-Adatok biztonsági mentésének Solr az alapértelmezett tárhelyre, a fürt tegye a következőket:
+A következő lépések segítségével Solr adatok biztonsági mentésére a a fürt alapértelmezett tárolója:
 
-1. Csatlakozzon a fürthöz SSH használatával, akkor a gazdagép nevét, az átjárócsomópont a következő paranccsal:
+1. A fürthöz SSH használatával csatlakozhat, majd a következő paranccsal kérje le a gazdagép nevét, az átjárócsomópont:
 
     ```bash
     hostname -f
     ```
 
-2. Az alábbi parancs segítségével készít pillanatképet az indexelt adatokat. Cserélje le **ÁLLOMÁSNÉV** az előző parancs által visszaadott nevű:
+2. A következő paranccsal hozzon létre egy indexelt adatairól készült pillanatfelvételre. Cserélje le **ÁLLOMÁSNÉV** az előző parancs által visszaadott nevét:
 
     ```bash
     curl http://HOSTNAME:8983/solr/replication?command=backup
     ```
 
-    A válasz a következő XML hasonlít:
+    A válasz a következő XML formátumú hasonlít:
 
         <?xml version="1.0" encoding="UTF-8"?>
         <response>
@@ -303,30 +298,30 @@ Adatok biztonsági mentésének Solr az alapértelmezett tárhelyre, a fürt teg
           <str name="status">OK</str>
         </response>
 
-3. Módosítsa a könyvtárat a `/usr/hdp/current/solr/example/solr`. Nincs gyűjtemény itt alkönyvtárat. Minden gyűjtemény könyvtár neve tartalmazza a `data` ahhoz a gyűjteményhez a pillanatképet tartalmazó könyvtárat.
+3. Módosítsa a könyvtárakat a `/usr/hdp/current/solr/example/solr`. Az egyes gyűjtemények itt alkönyvtárban van. Minden gyűjtemény könyvtár tartalmaz egy `data` ahhoz a gyűjteményhez a pillanatképet tartalmazó könyvtárra.
 
-4. A pillanatkép mappája a tömörített archívum létrehozása, használja a következő parancsot:
+4. Hozzon létre egy tömörített archívumot a pillanatképek mappájához, használja a következő parancsot:
 
     ```bash
     tar -zcf snapshot.20150806185338855.tgz snapshot.20150806185338855
     ```
 
-    Cserélje le a `snapshot.20150806185338855` a nevet a gyűjtemény a pillanatkép értékeket.
+    Cserélje le a `snapshot.20150806185338855` értékeket a gyűjtemény a pillanatkép neve.
 
-    Ezzel a paranccsal létrejön az archívum neve **snapshot.20150806185338855.tgz**, amely tartalmazza a tartalmát a **snapshot.20150806185338855** directory.
+    Ez a parancs létrehoz egy nevű archívum **snapshot.20150806185338855.tgz**, a tartalmát, amely tartalmazza a **snapshot.20150806185338855** könyvtár.
 
-5. Majd tárolhatja az archívum a fürt elsődleges Storage a következő parancsot:
+5. Ezután tárolhatja az archívum a fürt elsődleges Storage a következő paranccsal:
 
     ```bash
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Solr biztonsági mentés és visszaállítás használatához további információkért lásd: [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
+A Solr biztonsági mentés és visszaállítás való használatáról további információkért lásd: [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Giraph telepíthető a HDInsight-fürtök](hdinsight-hadoop-giraph-install-linux.md). A HDInsight Hadoop-fürtök Giraph telepítése a fürt testreszabási használatával. Giraph lehetővé teszi a végrehajtását diagramfeldolgozás Hadoop használatával, és az Azure HDInsight használható.
+* [A Giraph telepítése HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md). Fürt testreszabása használatával a Giraph telepítése HDInsight Hadoop-fürtökön. A Giraph lehetővé teszi a Hadoop használatával diagramfeldolgozási végrehajtásához, és használható az Azure HDInsight.
 
-* [A HDInsight-fürtökön Hue telepítése](hdinsight-hadoop-hue-linux.md). HDInsight Hadoop-fürtök a Hue telepítése fürt testreszabási használata Hue olyan fürtökkel a Hadoop fürtök folytatott kommunikációhoz használható webalkalmazás.
+* [A Hue telepítése HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md). Fürt testreszabása használatával a Hue telepítése HDInsight Hadoop-fürtökön. A hue egy Hadoop-fürtökkel folytatott kommunikációhoz használható webalkalmazás.
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatástérkép konfigurálása az Azure-ban |} Microsoft Docs
-description: A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk a Service Map telepítése a környezetben, és használja azt a különféle forgatókönyvekhez, amik részletesen.
+title: Konfigurálja a Service Map az Azure-ban |} A Microsoft Docs
+description: A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen központi telepítése a Service Map a környezetben, és a számos célra használja.
 services: monitoring
 documentationcenter: ''
 author: mgoedtel
@@ -12,141 +12,180 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2018
+ms.date: 08/06/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 872d5f05e4d607c9445d1af5cc9b9cb984c19e11
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 0140c34a14f67064eaa28df65360cee6e92ff31a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752574"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618454"
 ---
-# <a name="configure-service-map-in-azure"></a>Szolgáltatástérkép konfigurálása az Azure-ban
-A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, módon úgy gondolja, hogy azok--összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép kiszolgálók, folyamatok és portok közötti kapcsolatok között nincs konfigurációjával kapcsolatban egy ügynök telepítése nem szükséges bármely TCP-csatlakoztatott architektúra jeleníti meg.
+# <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
+A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
 
-Ez a cikk ismerteti a Service Map és bevezetése az ügynökök konfigurálása részleteit. Szolgáltatástérkép használatával kapcsolatos információkért lásd: [használhatja a Service Map megoldást az Azure-ban]( monitoring-service-map.md).
+Ez a cikk ismerteti a Service Map és bevezetési-ügynökök konfigurálása részleteit. A Service Map használatával kapcsolatos információkért lásd: [a Service Map megoldást használja az Azure-ban]( monitoring-service-map.md).
 
-## <a name="dependency-agent-downloads"></a>Függőségi ügynök letöltései
+## <a name="supported-azure-regions"></a>Támogatott Azure-régiók
+Jelenleg a Service Map érhető el a következő Azure-régiókhoz:
+- USA keleti régiója
+- Nyugat-Európa
+- USA nyugati középső régiója
+- Délkelet-Ázsia
+
+## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
+A következő szakasz a függőségi ügynököt Windows támogatott operációs rendszerek listázása. 
+
+>[!NOTE]
+>A Service Map csak 64 bites platformokat támogatja.
+>
+
+### <a name="windows-server"></a>Windows Server
+- Windows Server 2016
+- Windows Server 2012 R2
+- Windows Server 2012
+- Windows Server 2008 R2 SP1
+
+### <a name="windows-desktop"></a>Asztali Windows
+- Windows 10
+- Windows 8.1
+- Windows 8
+- Windows 7
+
+## <a name="supported-linux-operating-systems"></a>Támogatott Linux operációs rendszerek
+A következő szakasz a támogatott operációs rendszerek listázása a függőségi ügynök, a Red Hat Enterprise Linux, CentOS Linux és Oracle Linux (az RHEL-Kernel).  
+
+- Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
+- A nem szabványos kernelű kiadások, például a PAE és a Xen nem támogatottak semmilyen Linux-disztribúció esetén. Ha például kiadási karakterlánc "2.6.16.21-0.8-xen", a rendszer nem támogatott.
+- Az egyéni kernelek, beleértve a standard kernelek újrafordításait, nem támogatottak.
+- A CentOSPlus kernel szintén nem támogatott.
+- Az Oracle Unbreakable Enterprise Kernellel (UEK) a cikk későbbi szakasza foglalkozik.
+
+### <a name="red-hat-linux-7"></a>Red Hat Linux 7
+
+| Operációs rendszer verziója | Kernel verziója |
+|:--|:--|
+| 7.0 | 3.10.0-123 |
+| 7.1 | 3.10.0-229 |
+| 7.2 | 3.10.0-327 |
+| 7.3 | 3.10.0-514 |
+| 7.4 | 3.10.0-693 |
+| 7.5 | 3.10.0-862 |
+
+### <a name="red-hat-linux-6"></a>Red Hat Linux 6
+
+| Operációs rendszer verziója | Kernel verziója |
+|:--|:--|
+| 6.0 | 2.6.32-71 |
+| 6.1 | 2.6.32-131 |
+| 6.2 | 2.6.32-220 |
+| 6.3 | 2.6.32-279 |
+| 6.4 | 2.6.32-358 |
+| 6.5 | 2.6.32-431 |
+| 6.6 | 2.6.32-504 |
+| 6.7 | 2.6.32-573 |
+| 6.8 | 2.6.32-642 |
+| 6.9 | 2.6.32-696 |
+
+### <a name="red-hat-linux-5"></a>Red Hat Linux 5
+
+| Operációs rendszer verziója | Kernel verziója |
+|:--|:--|
+| 5.8 | 2.6.18-308 |
+| 5.9 | 2.6.18-348 |
+| 5.10 | 2.6.18-371 |
+| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417<br>2.6.18-419<br>2.6.18-420 |
+
+### <a name="ubuntu-server"></a>Ubuntu Server
+
+| Operációs rendszer verziója | Kernel verziója |
+|:--|:--|
+| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
+| 14.04 | 3.13.\*<br>4.4.\* |
+
+### <a name="oracle-enterprise-linux-6-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux 6 szoros vállalati kernel
+| Operációs rendszer verziója | Kernel verziója
+|:--|:--|
+| 6.2 | Oracle 2.6.32-300 (UEK R1) |
+| 6.3 | Oracle 2.6.39-200 (UEK R2) |
+| 6.4 | Oracle 2.6.39-400 (UEK R2) |
+| 6.5 | Oracle 2.6.39-400 (UEK R2 i386) |
+| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
+
+### <a name="oracle-enterprise-linux-5-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux 5 szoros vállalati kernel
+
+| Operációs rendszer verziója | Kernel verziója
+|:--|:--|
+| 5.10 | Oracle 2.6.39-400 (UEK R2) |
+| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+
+### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 nagyvállalati Server
+
+| Operációs rendszer verziója | Kernel verziója
+|:--|:--|
+| 11 SP2 | 3.0.101-0.7 |
+| 11 SP3 | 3.0.101-0.47 |
+| 11 SP4 | 3.0.101-65 |
+
+## <a name="dependency-agent-downloads"></a>Függőségi ügynök letöltése
+
 | Fájl | Operációs rendszer | Verzió | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.5.0 | 8B8FE0F6B0A9F589C4B7B52945C2C25DF008058EB4D4866DC45EE2485062C9D7 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.5.1 | 09D56EF43703A350FF586B774900E1F48E72FE3671144B5C99BB1A494C201E9E |
-
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.5.1-es | 09D56EF43703A350FF586B774900E1F48E72FE3671144B5C99BB1A494C201E9E |
 
 ## <a name="connected-sources"></a>Összekapcsolt források
-Szolgáltatástérkép az adatok lekérése a Microsoft függőségi ügynök. A függőségi ügynök az OMS-ügynöktől függ a Log Analyticsszel való kapcsolatait illetően. Ez azt jelenti, hogy a kiszolgálónak rendelkeznie kell az OMS-ügynököt telepítette és konfigurálta az első, majd a függőségi ügynök telepíthető. A következő táblázat ismerteti a Service Map megoldás támogatja a csatlakoztatott forrásból.
+A Service Map az adatok lekérése a Microsoft Dependency agent. A függőségi ügynök a Log Analytics-ügynököket a Log Analytics-kapcsolatok támaszkodik. Ez azt jelenti, hogy egy kiszolgáló rendelkeznie kell a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök.  A következő táblázat ismerteti, amely a Service Map megoldás támogatja a csatlakoztatott forrásokat.
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | Szolgáltatástérkép elemzi és Windows-ügynök számítógépekről gyűjt adatokat. <br><br>Az [OMS-ügynök](../log-analytics/log-analytics-windows-agent.md) mellett a Windows-ügynököknek a Microsoft függőségi ügynökre is szükségük van. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | Szolgáltatástérkép elemzi, és a Linux-ügynök számítógépekről gyűjt adatokat. <br><br>Az [OMS-ügynök](../log-analytics/log-analytics-linux-agents.md) mellett a Linux-ügynököknek a Microsoft függőségi ügynökre is szükségük van. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
-| System Center Operations Manage felügyeleti csoport | Igen | Szolgáltatástérkép elemzi, és összegyűjti az adatokat a Windows és Linux-ügynökök a csatlakoztatott [System Center Operations Manager felügyeleti csoport](../log-analytics/log-analytics-om-agents.md). <br><br>Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. A Naplóelemzési munkaterületet adat továbbítódik a felügyeleti csoportból.|
-| Azure Storage-fiók | Nem | Szolgáltatástérkép adatokat gyűjt a ügynök számítógépekről, nincsenek adatok, az Azure Storage-ból gyűjtését. |
+| Windows-ügynökök | Igen | A Service Map elemzi, és gyűjti az adatokat Windows-számítógépek. <br><br>Mellett a [Log Analytics-ügynököket for Windows](../log-analytics/log-analytics-concept-hybrid.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | A Service Map elemzi, és a Linux rendszerű számítógépek gyűjti az adatokat. <br><br>Mellett a [Linuxhoz készült Log Analytics-ügynök](../log-analytics/log-analytics-concept-hybrid.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| System Center Operations Manage felügyeleti csoport | Igen | A Service Map elemzi, és a egy csatlakoztatott a Windows és Linux-ügynökök gyűjti az adatokat [System Center Operations Manager felügyeleti csoport](../log-analytics/log-analytics-om-agents.md). <br><br>Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
+| Azure Storage-fiók | Nem | A Service Map gyűjti az adatokat ügynökszámítógépen, így nem szerepel megjeleníthető adat gyűjtését az Azure Storage-ból származó. |
 
-Szolgáltatástérkép csak 64 bites platformokat támogatja.
+A Windows, a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és a Log Analytics összegyűjtése és küldése figyelési adatok. (Ez az ügynök nevezzük a System Center Operations Manager ügynök, az OMS-ügynök, a Log Analytics az ügynök, az MMA vagy közvetlen ügynök, a környezettől függően.) A System Center Operations Manager és a Log Analytics biztosít különböző ki a box verziói az MMA. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.  
 
-A Windows, a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és a Naplóelemzési gyűjtse össze és küldése figyelési adatok. (Ez az ügynök neve a System Center Operations Manager ügynök, OMS-ügynököt, Log Analytics Agent, MMA vagy közvetlen ügynök, attól függően, hogy a környezetben.) A System Center Operations Manager és a Naplóelemzési adja meg a MMA különböző out-kiszállítási verzióit. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.  
+A Linux, a Linux-összegyűjti és figyelés a Log Analytics az adatokat küld a Log Analytics-ügynököket. A Log Analytics-ügynökök közvetlenül csatlakozik a szolgáltatáshoz a kiszolgálókon a Service Map is használhatja, vagy az Operations Manager felügyeleti csoport integrálva van a Log Analytics jelentenek, amelyek.  
 
-A Linux-, Linux összegyűjti és figyelési adatok szolgáltatáshoz küld az OMS-ügynököt. Szolgáltatástérkép kiszolgálókon közvetlen OMS-ügynök, vagy a System Center Operations Manager felügyeleti csoportok keresztül Naplóelemzési csatolt kiszolgálók használható.  
+Ebben a cikkben azt fog hivatkozni, az ügynökök, hogy Linux vagy Windows csatlakozó System Center Operations Manager felügyeleti csoporthoz, vagy közvetlenül a Log Analyticsbe, mint a *Log Analytics-ügynököket*. 
 
-Ebben a cikkben kifejezés összes ügynök – hogy Linux vagy a Windows, hogy egy System Center Operations Manager felügyeleti csoport vagy közvetlenül Naplóelemzési--csatlakozik, mint a *OMS-ügynököt*. Az ügynök konkrét üzemelő példányának nevét csak akkor használjuk, ha a kontextus miatt szükség van rá.
+A Service Map-ügynök nem továbbít adatokat magát, és nem igényel tűzfalak és a portok módosítása. A Service Map az mindig továbbított adatok által a Log Analytics-ügynököket a Log Analytics szolgáltatásba, vagy közvetlenül az OMS Gatewayen keresztül.
 
-A Service Map ügynök nem továbbít adatokat saját magát, és nem igényel módosításokat tűzfalak vagy portok. A Service Map adatai mindig átkerülnek az OMS-ügynök szolgáltatáshoz, vagy közvetlenül az OMS-átjárón keresztül.
+![A Service Map ügynökök](media/monitoring-service-map/agents.png)
 
-![Szolgáltatástérkép ügynökök](media/monitoring-service-map/agents.png)
+Ha egy System Center Operations Manager-ügyfél a Log Analytics csatlakozik a felügyeleti csoport:
 
-Ha egy System Center Operations Manager-ügyfél Naplóelemzési csatlakoztatott felügyeleti csoport:
-
-- Ha a System Center Operations Manager-ügynökök hozzáférjenek az internetes Log Analyticshez való csatlakozáshoz, nincs szükség semmilyen további konfigurációra.  
-- Ha a System Center Operations Manager-ügynökök az interneten keresztül nem tud hozzáférni a Naplóelemzési, kell együttműködni a System Center Operations Manager az OMS-átjáró konfigurálása.
+- Ha a System Center Operations Manager-ügynökök el tudja érni az internetet a Log Analyticshez való csatlakozáshoz, további konfiguráció nélkül nem szükséges.  
+- Ha a System Center Operations Manager-ügynökök az interneten keresztül nem éri el a Log Analytics, a System Center Operations Manager működéséhez az OMS-átjáró konfigurálása szeretné.
   
-Ha közvetlen OMS-ügynököt használ, akkor az OMS-ügynököt maga Naplóelemzési vagy az OMS-átjáró konfigurálása. Az OMS-átjáró tölthető le: a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666). Hogyan telepítheti és konfigurálhatja az OMS-átjáró további információkért lásd: [csatlakoztassa a számítógépet az OMS-átjáró internetkapcsolattal nem rendelkező](../log-analytics/log-analytics-oms-gateway.md).  
+Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem lehet csatlakozni a szolgáltatáshoz, a Log Analytics-ügynök csatlakoztatása a Log Analytics használatával az OMS-átjáró konfigurálása szeretné. Hogyan telepítheti és konfigurálhatja az OMS-átjáró további információkért lásd: [számítógépek csatlakoztatását az OMS-átjáró Internet-hozzáférés nélküli](../log-analytics/log-analytics-oms-gateway.md).  
 
 ### <a name="management-packs"></a>Felügyeleti csomagok
-Amikor a Szolgáltatástérkép aktiválva van a Naplóelemzési munkaterület, 300 KB-os felügyeleti csomag futó Windows-kiszolgálók elküldi. Ha a System Center Operations Manager ügynököt használ egy [csatlakoztatott felügyeleti csoport](../log-analytics/log-analytics-om-agents.md), a Service Map felügyeleti csomag a System Center Operations Manager telepítése. Ha az ügynökök közvetlenül kapcsolódnak, a Log Analytics biztosítja a felügyeleti csomagot.
+A Service Map aktiválásakor a Log Analytics-munkaterületen, 300 KB-os felügyeleti csomag munkaterület Windows-kiszolgálók lesznek továbbítva. Ha a System Center Operations Manager ügynököt használ egy [csatlakoztatott felügyeleti csoport](../log-analytics/log-analytics-om-agents.md), a Service Map felügyeleti csomag telepítése a System Center Operations Managerből. 
 
-A felügyeleti csomag neve Microsoft.IntelligencePacks.ApplicationDependencyMonitor. %ProgramFiles%\Microsoft figyelés Agent\Agent\Health szolgáltatás State\Management Packs\ írás. A felügyeleti csomagot használó adatforrás-e % Program files%\Microsoft figyelés Agent\Agent\Health szolgáltatás State\Resources\<AutoGeneratedID > \ Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+A felügyeleti csomag neve Microsoft.IntelligencePacks.ApplicationDependencyMonitor. %Programfiles%\Microsoft Monitoring Agent\Agent\Health szolgáltatás State\Management Packs\ írás. Az adatforrás, amely a felügyeleti csomagot használja a % Program files%\Microsoft figyelés Agent\Agent\Health szolgáltatás State\Resources\<AutoGeneratedID > \ Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+
+## <a name="data-collection"></a>Adatgyűjtés
+Minden ügynök körülbelül 25 MB / nap, attól függően, hogyan összetett a rendszert a függőségek olyan továbbítására várható. Minden ügynök 15 másodpercenként a Service Map függőségi adatokat küld.  
+
+A függőségi ügynök általában felhasznál a rendszermemória 0,1 %-os és a rendszer CPU 0,1 %-os.
+
+## <a name="diagnostic-and-usage-data"></a>Diagnosztika és használati adatok
+A Microsoft automatikusan gyűjt használatának és teljesítményének adatokat a Szolgáltatástérkép szolgáltatás használata. A Microsoft ezeket az adatokat adja meg, és a minőségének, biztonságának és integritásának a Szolgáltatástérkép szolgáltatás javítására használja. Adatok operációs rendszerhez és verzióhoz például a szoftverek konfigurációjával kapcsolatos információkat tartalmaz. Azt is IP-cím, a DNS-nevet és a munkaállomás nevét annak érdekében, hogy pontos és hatékony hibaelhárítási képességeket kínál. Nem gyűjtünk neveket, címeket és egyéb kapcsolattartási adatait.
+
+Az adatok gyűjtésének és felhasználásának további információkért lásd: a [Microsoft Online Services adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 ## <a name="installation"></a>Telepítés
-### <a name="install-the-dependency-agent-on-microsoft-windows"></a>A függőségi ügynök telepíthető a Microsoft Windows
-Az ügynök telepítéséhez vagy eltávolításához rendszergazdai jogosultság szükséges.
-
-A függőségi ügynök telepítve van a Windows rendszerű számítógépeken InstallDependencyAgent-Windows.exe keresztül. Ha a végrehajtható fájlt bármilyen paraméter nélkül futtatja, akkor elindul egy varázsló, amelyet követve párbeszédes formában telepítheti az ügynököt.  
-
-Az alábbi lépések segítségével a függőségi ügynök telepítése a Windows számítógépekre:
-
-1.  Az ismertetett módszerek egyikét a következő OMS-ügynök telepítése [adatokat gyűjteni a környezetében a Naplóelemzési](../log-analytics/log-analytics-concept-hybrid.md).
-2.  A Windows-ügynök letöltése, és futtassa a következő paranccsal: <br>`InstallDependencyAgent-Windows.exe`
-3.  Az ügynök telepítéséhez kövesse a varázslót.
-4.  Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. A Windows-ügynökök a naplózási könyvtár %Programfiles%\Microsoft függőségi Agent\logs. 
-
-#### <a name="windows-command-line"></a>Windows parancssor
-A parancssorból való telepítéshez a következő táblában leírt paraméterek használhatók. A telepítésjelzők listájának megtekintéséhez futtassa a telepítőt a /? jelzővel, a következő módon.
-
-    InstallDependencyAgent-Windows.exe /?
-
-| Jelzője | Leírás |
-|:--|:--|
-| /? | A parancssori kapcsolók listájának lekérése. |
-| /S | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
-
-A Windows függőségi ügynök fájljai alapértelmezés szerint a következő könyvtárba kerülnek: C:\Program Files\Microsoft Dependency Agent.
-
-### <a name="install-the-dependency-agent-on-linux"></a>A függőségi ügynök telepítése Linux rendszeren
-Az ügynök telepítéséhez vagy eltávolításához gyökérszintű hozzáférés szükséges.
-
-A függőségi ügynök Linux rendszerű számítógépekre az InstallDependencyAgent-Linux64.bin fájllal telepíthető, amely egy önkicsomagoló bináris héjszkript. Futtassa a fájlt megosztása, vagy adja hozzá a végrehajtási engedélyeket magában a fájlban.
- 
-A függőségi ügynököt az alábbi lépésekkel telepítheti minden Linux rendszerű számítógépre:
-
-1.  Az ismertetett módszerek egyikét a következő OMS-ügynök telepítése [adatokat gyűjteni a környezetében a Naplóelemzési](../log-analytics/log-analytics-concept-hybrid.md).
-2.  Legfelső szintű a Linux függőségi ügynök telepítése a következő paranccsal:<br>`sh InstallDependencyAgent-Linux64.bin`
-3.  Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. A Linux-ügynökök a naplózási könyvtár /var/opt/microsoft/dependency-agent/log.
-
-Listáját a telepítési jelző, futtassa a telepítési program - segítségével jelzőt az alábbiak szerint.
-
-    InstallDependencyAgent-Linux64.bin -help
-
-| Jelzője | Leírás |
-|:--|:--|
-| -Súgó | A parancssori kapcsolók listájának lekérése. |
-| -s | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
-| --ellenőrzése | Az engedélyek és az operációs rendszer ellenőrzése, az ügynök telepítése nélkül. |
-
-A függőségi ügynök fájljai az alábbi könyvtárakba kerülnek:
-
-| Fájlok | Hely |
-|:--|:--|
-| Alapvető fájlok | /opt/microsoft/dependency-agent |
-| Naplófájlok | /var/opt/microsoft/dependency-agent/log |
-| Konfigurációs fájlok | /etc/opt/microsoft/dependency-agent/config |
-| Szolgáltatás végrehajtható fájljai | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
-| Bináris tárolófájlok | /var/opt/microsoft/dependency-agent/storage |
-
-## <a name="installation-script-examples"></a>Telepítési példaszkriptek
-Egy szkript használata segíthet, ha egyszerre több kiszolgálóra szeretné könnyen telepíteni a függőségi ügynököt. Az alábbi példaszkriptekkel letöltheti és telepítheti a függőségi ügynököt Windows vagy Linux rendszerű számítógépre.
-
-### <a name="powershell-script-for-windows"></a>PowerShell-szkript Windowshoz
-```PowerShell
-Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
-
-.\InstallDependencyAgent-Windows.exe /S
-```
-
-### <a name="shell-script-for-linux"></a>Héjszkript Linuxhoz
-```
-wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
-sudo sh InstallDependencyAgent-Linux64.bin -s
-```
 
 ## <a name="azure-vm-extension"></a>Az Azure Virtuálisgép-bővítmény
-Az Azure virtuális gépek használata a függőségi ügynök könnyedén telepítheti egy [Azure Virtuálisgép-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features).  Az Azure Virtuálisgép-bővítmény használatával telepíthet a függőségi ügynök a virtuális gépek közvetlenül az Azure Resource Manager-sablon a virtuális gép vagy egy PowerShell-parancsfájlt keresztül.  Nincs elérhető (DependencyAgentWindows) Windows és Linux (DependencyAgentLinux) bővítménye.  Ha az Azure Virtuálisgép-bővítmény használatával telepít, az ügynökök automatikusan frissíthető a legújabb verzióra.
+Egy bővítmény (DependencyAgentWindows) Windows és Linux (DependencyAgentLinux) is elérhető, és a függőségi ügynököt az Azure virtuális gépek használatával könnyedén telepítheti egy [Azure Virtuálisgép-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features).  Az Azure Virtuálisgép-bővítménnyel a függőségi ügynököt telepítheti a Windows és Linux rendszerű virtuális gépekhez, vagy egy PowerShell-parancsfájl használatával, vagy közvetlenül a virtuális gép az Azure Resource Manager-sablon használatával.  Ha telepíti az ügynököt az Azure Virtuálisgép-bővítménnyel, az ügynökök automatikusan frissülnek a legújabb verzióra.
 
-Az Azure PowerShell Virtuálisgép-bővítmény telepítéséhez használhatja a következő példa:
+A PowerShell-lel az Azure Virtuálisgép-bővítmény telepítéséhez, használhatja az alábbi példában:
 
 ```PowerShell
 #
-# Deploy the Dependency Agent to every VM in a Resource Group
+# Deploy the Dependency agent to every VM in a Resource Group
 #
 
 $version = "9.4"
@@ -170,7 +209,7 @@ ForEach-Object {
 }
 ```
 
-Még egyszerűbb legyen a függőségi ügynök minden egyes a virtuális gépen ahhoz, hogy az ügynök szerepeljen az Azure Resource Manager-sablon.  Vegye figyelembe, hogy a függőségi ügynök továbbra is függ az OMS-ügynököt, ezért a [OMS-ügynök Virtuálisgép-bővítmény](../virtual-machines/extensions/oms-linux.md) először telepítenie kell.  A következő szövegrészletet JSON adhatók hozzá a *erőforrások* a sablon szakasza.
+Egy még egyszerűbb a függőségi ügynök telepítve van a virtuális gépek biztosítása érdekében, hogy építse be az ügynököt az Azure Resource Manager-sablonban.  A következő példa a JSON-kódot is hozzáadhatók a *erőforrások* a sablon szakaszában.
 
 ```JSON
 "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -189,9 +228,86 @@ Még egyszerűbb legyen a függőségi ügynök minden egyes a virtuális gépen
 
 ```
 
+### <a name="install-the-dependency-agent-on-microsoft-windows"></a>A függőségi ügynök telepítése a Microsoft Windows
+A függőségi ügynök telepítheti manuálisan a Windows-számítógépeken futó `InstallDependencyAgent-Windows.exe`. Ha a végrehajtható fájl kapcsolók nélkül futtatja, a telepítővarázsló, amelyek telepítéséhez az interaktív módon elindítja.  
 
+>[!NOTE]
+>Az ügynök telepítéséhez vagy eltávolításához rendszergazdai jogosultság szükséges.
+
+A következő lépések segítségével telepítse a függőségi ügynököt minden olyan Windows-számítógépen:
+
+1.  Az ismertetett módszerek valamelyikét a következő Windows készült Log Analytics-ügynök telepítése [gyűjthet adatokat a Log Analytics-ügynökkel rendelkező hibrid környezetben](../log-analytics/log-analytics-concept-hybrid.md).
+2.  A Windows-ügynök letöltése, és futtassa a következő paranccsal: 
+    
+    `InstallDependencyAgent-Windows.exe`
+
+3.  Kövesse a telepítővarázsló az ügynök telepítéséhez.
+4.  Ha a függőségi ügynök nem indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. A naplózási könyvtár Windows-ügynökök az %Programfiles%\Microsoft függőségi Agent\logs. 
+
+#### <a name="windows-command-line"></a>Windows parancssor
+A parancssorból való telepítéshez a következő táblában leírt paraméterek használhatók. A telepítésjelzők listájának megtekintéséhez futtassa a telepítőt a /? jelzővel, a következő módon.
+
+    InstallDependencyAgent-Windows.exe /?
+
+| Jelző | Leírás |
+|:--|:--|
+| /? | A parancssori kapcsolók listájának lekérése. |
+| /S | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
+
+A Windows a függőségi ügynök fájlok kerülnek a C:\Program Files\Microsoft függőségi ügynök alapértelmezés szerint.
+
+### <a name="install-the-dependency-agent-on-linux"></a>A függőségi ügynök telepítése Linux rendszeren
+A függőségi ügynök telepítve van a Linux-számítógépeken `InstallDependencyAgent-Linux64.bin`, azt a héjparancsfájlt, egy önkicsomagoló bináris. A fájl használatával futtathatja `sh` vagy adjon hozzá végrehajtási engedélyeket magát a fájlt.
+
+>[!NOTE]
+> Az ügynök telepítéséhez vagy eltávolításához gyökérszintű hozzáférés szükséges.
+
+Az alábbi lépések segítségével a függőségi ügynök telepítése minden egyes Linux rendszerű számítógépen:
+
+1.  Telepítse az OMS-ügynök a következő ismertetett módszerek valamelyikét [gyűjthet adatokat a Log Analytics-ügynökkel rendelkező hibrid környezetben](../log-analytics/log-analytics-concept-hybrid.md).
+2.  A Linux függőségi ügynök telepítése rendszergazdaként a következő parancs futtatásával:
+    
+    `sh InstallDependencyAgent-Linux64.bin`
+
+3.  Ha a függőségi ügynök nem indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. Linux-ügynökök a naplózási könyvtár az /var/opt/microsoft/dependency-agent/log.
+
+Megjeleníthetők a telepítés jelzők, futtassa a telepítési program – segítségével jelző a következő.
+
+    InstallDependencyAgent-Linux64.bin -help
+
+| Jelző | Leírás |
+|:--|:--|
+| – Súgó | A parancssori kapcsolók listájának lekérése. |
+| -s | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
+| --ellenőrzése | Az engedélyek és az operációs rendszer ellenőrzése, az ügynök telepítése nélkül. |
+
+A függőségi ügynök fájlok kerülnek a következő könyvtárak:
+
+| Fájlok | Hely |
+|:--|:--|
+| Alapvető fájlok | /opt/microsoft/dependency-agent |
+| Naplófájlok | /var/opt/microsoft/dependency-agent/log |
+| Konfigurációs fájlok | /etc/opt/microsoft/dependency-agent/config |
+| Szolgáltatás végrehajtható fájljai | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
+| Bináris tárolófájlok | /var/opt/microsoft/dependency-agent/storage |
+
+## <a name="installation-script-examples"></a>Telepítési példaszkriptek
+Könnyedén üzembe helyezéséhez egyszerre több kiszolgálón a függőségi ügynököt, a következő parancsfájl például töltse le és telepítse a függőségi ügynököt Windows vagy Linux rendszeren.
+
+### <a name="powershell-script-for-windows"></a>PowerShell-szkript Windowshoz
+```PowerShell
+Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
+
+.\InstallDependencyAgent-Windows.exe /S
+```
+
+### <a name="shell-script-for-linux"></a>Héjszkript Linuxhoz
+```
+wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
+sudo sh InstallDependencyAgent-Linux64.bin -s
+```
 ## <a name="desired-state-configuration"></a>Célállapot-konfiguráló
-A függőségi ügynök Desired State Configuration segítségével történő telepítéséhez használhatja az xPSDesiredStateConfiguration modult és egy, az alábbihoz hasonló kódrészletet:
+A Desired State Configuration (DSC) használatával a függőségi ügynököt telepíti, a következő példakód a xPSDesiredStateConfiguration modul használhatja:
 
 ```
 configuration ServiceMap {
@@ -202,7 +318,7 @@ $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
 
 Node localhost
 { 
-    # Download and install the Dependency Agent
+    # Download and install the Dependency agent
     xRemoteFile DAPackage 
     {
         Uri = "https://aka.ms/dependencyagentwindows"
@@ -225,175 +341,67 @@ Node localhost
 }
 ```
 
-## <a name="uninstallation"></a>Eltávolítás
-### <a name="uninstall-the-dependency-agent-on-windows"></a>A függőségi ügynök eltávolítása Windows rendszeren
-A rendszergazda Windows esetén a Vezérlőpulton keresztül törölheti a függőségi ügynököt.
+## <a name="remove-the-dependency-agent"></a>A függőségi ügynök eltávolítása
+### <a name="uinstall-agent-on-windows"></a>Windows-ügynök Uinstall
+A rendszergazda eltávolíthatja a függőségi ügynököt Windows Vezérlőpult segítségével.
 
-Egy rendszergazda a következő fájl futtatásával is eltávolíthatja a függőségi ügynököt: %Programfiles%\Microsoft Dependency Agent\Uninstall.exe.
+A rendszergazda a függőségi ügynök eltávolítása a függőségi Agent\Uninstall.exe %Programfiles%\Microsoft is futtathatja.
 
-### <a name="uninstall-the-dependency-agent-on-linux"></a>A függőségi ügynök eltávolítása Linux rendszeren
-A függőség ügynököt eltávolíthatja a Linux az alábbi paranccsal.
-<br>RHEL, CentOs vagy Oracle:
+### <a name="uninstall-agent-on-linux"></a>Linux-ügynök eltávolítása
+A függőségi ügynök Linux rendszerben az alábbi paranccsal eltávolítható.
+
+RHEL, CentOs vagy Oracle:
 
 ```
 sudo rpm -e dependency-agent
 ```
 
-Ubuntu:
+Ubuntu rendszeren:
 
 ```
 sudo apt -y purge dependency-agent
 ```
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Ha bármely telepítését és futtatását a Service Map, akkor ez a szakasz segítséget. Ha még mindig nem tudja megoldani a problémát, forduljon a Microsoft Support.
+Ha problémába ütközik telepítését és futtatását a Service Map, ez a szakasz segítségével. Ha még mindig nem tudja megoldani a problémát, forduljon a Microsoft Support.
 
-### <a name="dependency-agent-installation-problems"></a>A függőségi ügynök telepítési problémák
+### <a name="dependency-agent-installation-problems"></a>Függőségi ügynök telepítési problémák
 #### <a name="installer-prompts-for-a-reboot"></a>Telepítő kérni fogja a számítógép újraindítása
-A függőségi ügynök *általában* nem kell indítani a telepítés vagy eltávolítás. Ritka esetekben azonban a Windows Server való telepítés folytatásához újraindítás szükséges. Ez akkor fordul elő, amikor a függőség, általában a Microsoft Visual C++ terjeszthető változata, újra kell indítani a zárolt fájlok miatt.
+A függőségi ügynök *általában* nem igényel újraindítást telepítése vagy eltávolítása után. Egyes ritka esetekben azonban a Windows Server-telepítés folytatásához újraindítás szükséges. Ez akkor történik, amikor a függőség, általában a Microsoft Visual C++ terjeszthető változata, a zárolt fájlok miatt újraindítás szükséges.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Üzenet "függőségi ügynök telepítése nem sikerült: nem sikerült telepíteni a Visual Studio futtató könyvtárak (kód = [code_number])" jelenik meg
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Üzenet "függőségi ügynök telepítése nem sikerült: Visual Studio-futtatókörnyezeti kódtárak telepítése nem sikerült (kód = [code_number])" jelenik meg
 
-A Microsoft függőségi ügynök a Microsoft Visual Studio futtató könyvtárak épül. Üzenetet fog kapni, ha probléma van a kódtárak telepítése során. 
+A Microsoft Dependency agent a Microsoft Visual Studio modul kódtárak épül. Egy üzenetet fog kapni, ha probléma van a kódtárak telepítése során. 
 
-A futásidejű könyvtár telepítők naplók a %LOCALAPPDATA%\temp mappában hozzon létre. A fájl dd_vcredist_arch_yyyymmddhhmmss.log, ahol *architektúrája* "x86" vagy "amd64" és *ééééhhnnóóppmm* dátuma és a naplófájl létrehozásának időpontja (24 órás formátumban). A napló tartalmazza a problémát, amely blokkolja a telepítési adatait.
+A futásidejű kódtár telepítőcsomagokat %LOCALAPPDATA%\temp mappában hozzon létre naplókat. A fájl dd_vcredist_arch_yyyymmddhhmmss.log, ahol *arch* "x86" vagy "amd64" és a *ééééhhnnóóppmm* dátuma és a naplófájl létrehozásának időpontja (24 órás formátum). A napló a probléma, amely blokkolja a telepítési részletesen ismerteti.
 
-A telepítendő hasznos lehet a [legújabb futtató könyvtárak](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) saját kezűleg első.
+Érdemes lehet telepíteni a [legfrissebb futtatókörnyezet-kódtárak](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) saját kezűleg első.
 
-A következő táblázat felsorolja a kód számok és javasolt megoldások.
+A következő táblázat felsorolja a kód számokat és a javasolt megoldások.
 
 | Kód | Leírás | Megoldás: |
 |:--|:--|:--|
-| 0x17 | A könyvtár telepítő szükséges a Windows update, amely nem lett telepítve. | Keresse meg a legutóbbi könyvtár telepítő naplóban.<br><br>Ha egy sor követi "Windows8.1-KB2999226-x64.msu" mutató hivatkozás "hiba 0x80240017: MSU csomag végrehajtása sikertelen," nincs KB2999226 telepítéséhez szükséges előfeltételeket. Az Előfeltételek című szakaszában található útmutatást [Windows Universal C futásidejű](https://support.microsoft.com/kb/2999226). Előfordulhat, hogy szeretné futtatni a Windows Update szolgáltatást, és indítsa újra a többször az előfeltételek telepítéséhez.<br><br>Futtassa újra a Microsoft függőségi ügynök telepítőjét. |
+| 0x17 | A könyvtár telepítő szükséges a Windows update, amely nem lett telepítve. | Tekintse meg a legutóbbi könyvtár installer naplójának.<br><br>Ha egy sor követi "Windows8.1-KB2999226-x64.msu" hivatkozás "hiba 0x80240017: nem sikerült végrehajtani az MSU-csomagot," KB2999226 telepítéséhez szükséges előfeltételeket nem rendelkezik. Kövesse az utasításokat az Előfeltételek szakaszban szereplő [a Windows Universal C futásidejű](https://support.microsoft.com/kb/2999226). Szükség lehet, futtassa a Windows Update, és indítsa újra a többször annak érdekében, hogy telepítse az előfeltételeket.<br><br>Futtassa újra a Microsoft Dependency agent telepítő. |
 
-### <a name="post-installation-issues"></a>Telepítés utáni problémák
+### <a name="post-installation-issues"></a>Telepítés utáni kapcsolatos problémák
 #### <a name="server-doesnt-appear-in-service-map"></a>Kiszolgáló nem jelenik meg a Service Map
-Ha a függőségi ügynök telepítése sikeres volt, de nem jelenik meg a kiszolgáló a Service Map megoldásban:
-* A függőségi ügynök sikeres telepítését? Ellenőrzi, hogy ha a szolgáltatás telepítve van és fut ellenőrizheti ezt.<br><br>
-**Windows**: keresse meg a "Microsoft Dependency ügynök." nevű szolgáltatás<br>
+Ha a függőségi ügynök telepítése sikeres volt, de a kiszolgáló a Service Map megoldás nem jelenik meg:
+* A függőségi ügynök sikeres telepítését? Ellenőrzi, hogy ha a szolgáltatás telepítve van és fut ellenőrizheti.<br><br>
+**Windows**: keresse meg a szolgáltatás nevű, "A Microsoft Dependency agent."<br>
 **Linux**: Ellenőrizze, hogy a futó feldolgozni a "microsoft-függőség-ügynök."
 
-* A rendszer a [ingyenes tarifacsomag Operations Management Suite/Log Analyticshez](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Az ingyenes csomagban lehetővé teszi, hogy legfeljebb öt egyedi Szolgáltatástérkép kiszolgálók. További kiszolgálók nem jelenik meg a Service Map, még akkor is, ha az előző öt már nem küld adatokat.
+* Az, hogy a [ingyenes tarifacsomag Operations Management Suite/Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Az ingyenes csomag legfeljebb öt egyedi Service Map kiszolgálók tesz lehetővé. További kiszolgálók nem jelennek meg a Service Map, még akkor is, ha az előzetes öt rendszer már nem küld adatokat.
 
-* A küldő kiszolgálónapló és teljesítményadatok van a Naplóelemzési? Nyissa meg a keresési napló, és futtassa a következő lekérdezést a számítógép: 
+* A kiszolgáló küldő napló- és teljesítményadatok van a Log Analytics? Lépjen a naplók keresése, és a számítógép a következő lekérdezés futtatásával: 
 
         * Computer="<your computer name here>" | measure count() by Type
         
-  Kapott események számos az eredmények között? Az elmúlt adatai? Ha igen, az OMS-ügynököt megfelelően működik-e és Naplóelemzési kommunikál. Ha nem, nézze meg az OMS-ügynököt a kiszolgálón: [OMS ügynök a Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) vagy [OMS-ügynököt a Linux hibaelhárítási](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
+  Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, az OMS-ügynök megfelelően működik és a Log Analytics használatával való kommunikációhoz. Ha nem, akkor ellenőrizze az OMS-ügynököt a kiszolgálón: [OMS ügynök Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) vagy [OMS-ügynök Linux hibaelhárítási](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
 
-#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Kiszolgáló megjelenik a Szolgáltatástérkép, de nincs folyamat
-Ha a kiszolgáló a Service Map látja, de nincs adatainak feldolgozása vagy kapcsolat van, ez azt jelzi, hogy a függőségi ügynök telepítve és fut, de a kernel-illesztőprogram nem töltődött be. 
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Kiszolgáló megjelenik a Szolgáltatástérkép, de nincs folyamatokat
+Ha a kiszolgáló a Service Map, de azt nem rendelkezik folyamat vagy kapcsolati adatokkal, azt jelzi, hogy a függőségi ügynök telepítve és fut, de a kernel-illesztőprogram nem töltődött be. 
 
-Ellenőrizze a C:\Program Files\Microsoft függőségi Agent\logs\wrapper.log fájlt (Windows) vagy /var/opt/microsoft/dependency-agent/log/service.log fájl (Linux). Az utolsó sort kell jeleznie, miért nem töltődött be a rendszermag. Például a kernel lehetséges, hogy nem támogatja a Linux Ha frissítette a kernel.
-
-## <a name="data-collection"></a>Adatgyűjtés
-Minden ügynök körülbelül 25 MB naponkénti, attól függően, hogy hogyan összetett a rendszer függőségek használhatók átviteléhez számíthat. Minden ügynök 15 másodpercenként Szolgáltatástérkép függőségi adatokat küld.  
-
-A függőségi ügynök általában akkor 0,1 rendszermemória és 0,1 rendszer CPU.
-
-## <a name="supported-azure-regions"></a>Támogatott Azure-régiók
-Jelenleg Szolgáltatástérkép érhető el a következő Azure-régiók:
-- USA keleti régiója
-- Nyugat-Európa
-- USA nyugati középső régiója
-- Délkelet-Ázsia
-
-
-## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
-Az alábbi táblázat a függőségi ügynök által támogatott operációs rendszereket tartalmazza: Szolgáltatástérkép nem támogatja 32 bites operációs rendszert.
-
-### <a name="windows-server"></a>Windows Server
-- Windows Server 2016
-- Windows Server 2012 R2
-- Windows Server 2012
-- Windows Server 2008 R2 SP1
-
-### <a name="windows-desktop"></a>Asztali Windows
-- Windows 10
-- Windows 8.1
-- Windows 8
-- Windows 7
-
-### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux és Oracle Linux (RHEL Kernellel)
-- Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
-- A nem szabványos kernelű kiadások, például a PAE és a Xen nem támogatottak semmilyen Linux-disztribúció esetén. A rendszer, amely a kiadás "2.6.16.21-0.8-xen" karakterlánc például nem támogatott.
-- Az egyéni kernelek, beleértve a standard kernelek újrafordításait, nem támogatottak.
-- A CentOSPlus kernel szintén nem támogatott.
-- Az Oracle Unbreakable Enterprise Kernellel (UEK) a cikk későbbi szakasza foglalkozik.
-
-
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
-| Operációs rendszer verziója | Kernel-verzió |
-|:--|:--|
-| 7.0 | 3.10.0-123 |
-| 7.1 | 3.10.0-229 |
-| 7.2 | 3.10.0-327 |
-| 7.3 | 3.10.0-514 |
-| 7.4 | 3.10.0-693 |
-| 7.5 | 3.10.0-862 |
-
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
-| Operációs rendszer verziója | Kernel-verzió |
-|:--|:--|
-| 6.0 | 2.6.32-71 |
-| 6.1 | 2.6.32-131 |
-| 6.2 | 2.6.32-220 |
-| 6.3 | 2.6.32-279 |
-| 6.4 | 2.6.32-358 |
-| 6.5 | 2.6.32-431 |
-| 6.6 | 2.6.32-504 |
-| 6.7 | 2.6.32-573 |
-| 6.8 | 2.6.32-642 |
-| 6.9 | 2.6.32-696 |
-
-#### <a name="red-hat-linux-5"></a>Red Hat Linux 5
-| Operációs rendszer verziója | Kernel-verzió |
-|:--|:--|
-| 5.8 | 2.6.18-308 |
-| 5.9 | 2.6.18-348 |
-| 5.10 | 2.6.18-371 |
-| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417<br>2.6.18-419<br>2.6.18-420 |
-
-### <a name="ubuntu-server"></a>Ubuntu Server
-- Az egyéni kernelek, beleértve a standard kernelek újrafordításait, nem támogatottak.
-
-| Operációs rendszer verziója | Kernel-verzió |
-|:--|:--|
-| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
-| 14.04 | 3.13.\*<br>4.4.\* |
-
-### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux és Unbreakable Enterprise Kernel
-#### <a name="oracle-linux-6"></a>Oracle Linux 6
-| Operációs rendszer verziója | Kernel-verzió
-|:--|:--|
-| 6.2 | Oracle 2.6.32-300 (UEK R1) |
-| 6.3 | Oracle 2.6.39-200 (UEK R2) |
-| 6.4 | Oracle 2.6.39-400 (UEK R2) |
-| 6.5 | Oracle 2.6.39-400 (UEK R2 i386) |
-| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
-
-#### <a name="oracle-linux-5"></a>Oracle Linux 5
-
-| Operációs rendszer verziója | Kernel-verzió
-|:--|:--|
-| 5.10 | Oracle 2.6.39-400 (UEK R2) |
-| 5.11 | Oracle 2.6.39-400 (UEK R2) |
-
-#### <a name="suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server
-
-#### <a name="suse-linux-11"></a>SUSE Linux 11
-| Operációs rendszer verziója | Kernel-verzió
-|:--|:--|
-| 11 SP2 | 3.0.101-0.7 |
-| 11 SP3 | 3.0.101-0.47 |
-| 11 SP4 | 3.0.101-65 |
-
-
-## <a name="diagnostic-and-usage-data"></a>Diagnosztika és használati adatok
-A Microsoft automatikusan használati és teljesítményadatokat gyűjt a Szolgáltatástérkép szolgáltatás használata. A Microsoft ezeket az adatokat ellátására és fejlesztésére minőségének, biztonsági és integritását, a Service Map szolgáltatást használja. A szoftverek, például az operációs rendszer és verzió konfigurációs információinak szerepel. Is IP-cím, a DNS-nevét és a munkaállomás nevét ahhoz, hogy pontos és hatékony hibaelhárítási képességeket biztosítanak. Nem gyűjtünk neveket, címeket és egyéb kapcsolattartási adatait.
-
-Az adatok gyűjtésével és felhasználásával további információkért lásd: a [Microsoft Online Services adatvédelmi nyilatkozatát](https://go.microsoft.com/fwlink/?LinkId=512132).
-
-
+Ellenőrizze a C:\Program Files\Microsoft függőségi Agent\logs\wrapper.log fájlt (Windows) vagy /var/opt/microsoft/dependency-agent/log/service.log fájlt (Linux). Az utolsó sort jeleznie kell, miért nem töltődtek be a kernelbe. Például a kernel előfordulhat, hogy nem támogatja a linuxon futó Ha frissítette a kernel.
 
 ## <a name="next-steps"></a>További lépések
-- Megtudhatja, hogyan [használja a Service Map]( monitoring-service-map.md) telepítése és konfigurálása után.
+- Ismerje meg, hogyan [használata a Service Map]( monitoring-service-map.md) üzembe helyezését és konfigurálását követően.

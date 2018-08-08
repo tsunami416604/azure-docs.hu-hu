@@ -2,19 +2,18 @@
 title: A tartományhoz csatlakoztatott HDInsight-fürt konfigurálása az Azure AD DS használatával
 description: Ismerje meg, hogyan állíthatja be, és a egy tartományhoz csatlakoztatott HDInsight-fürt konfigurálása Azure Active Directory Domain Services használatával
 services: hdinsight
+ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-manager: jhubbard
-editor: cgronlun
-ms.service: hdinsight
+editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.openlocfilehash: 45cb9590e6dd0d8260f6e63b80caeca894f0fd44
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0d44812c92fd14bf87aac9a942241f8de55f2eec
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126034"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590584"
 ---
 # <a name="configure-a-domain-joined-hdinsight-cluster-by-using-azure-active-directory-domain-services"></a>A tartományhoz csatlakoztatott HDInsight-fürt konfigurálása Azure Active Directory Domain Services használatával
 
@@ -52,9 +51,12 @@ Az Azure AD DS-példány és a HDInsight-fürt is helyezni, az azonos Azure virt
 Amikor létrehoz egy tartományhoz csatlakoztatott HDInsight-fürtöt, meg kell adnia a következő paraméterekkel:
 
 - **Tartománynév**: A tartomány nevét, amely az Azure Active Directory tartományi szolgáltatások van társítva. Az alkalmazás például contoso.onmicrosoft.com.
+
 - **Tartományi felhasználónév**: A fiók az Azure ad hozzá a tartományvezérlő a tartományhoz, amely az előző szakaszban létrehozott felügyelt. Például: hdiadmin@contoso.onmicrosoft.com. A tartományi felhasználó a rendszergazda a HDInsight-fürt lesz.
+
 - **Tartományi jelszó**: a szolgáltatásfiók jelszava.
-- **Szervezeti egység**: a HDInsight-fürt a használni kívánt szervezeti egység megkülönböztető nevére. Például, szervezeti egység HDInsightOU, DC = contoso, DC = = onmicrosoft, DC = com. Ha a szervezeti egység nem létezik, a HDInsight-fürt próbálja meg a szervezeti egység létrehozása a jogosultságokat, amely a szolgáltatás fiókja rendelkezik használatával. Például ha a fiók az Azure AD DS-rendszergazdák csoportban, rendelkezik a megfelelő engedélyekkel a szervezeti egység létrehozása. Ellenkező esetben előfordulhat, hogy kell először hozza létre a szervezeti Egységet, és a szolgáltatás fiók teljes, amelynek felügyeleti lehetőséget biztosítanak. További információkért lásd: [létrehozása az Azure Active Directory tartományi szolgáltatások által felügyelt tartományokhoz a szervezeti egység](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
+
+- **Szervezeti egység**: a HDInsight-fürt a használni kívánt szervezeti egység megkülönböztető nevére. Például, szervezeti egység HDInsightOU, DC = contoso, DC = = onmicrosoft, DC = com. Ha a szervezeti egység nem létezik, a HDInsight-fürt próbálja meg a szervezeti egység létrehozása a jogosultságokat, amely a szolgáltatás fiókja rendelkezik használatával. Például ha a fiók az Azure AD DS-rendszergazdák csoportban, rendelkezik a megfelelő engedélyekkel a szervezeti egység létrehozása. Ellenkező esetben kell először hozza létre a szervezeti Egységet, és a szolgáltatás fiók teljes, amelynek felügyeleti lehetőséget biztosítanak. További információkért lásd: [létrehozása az Azure Active Directory tartományi szolgáltatások által felügyelt tartományokhoz a szervezeti egység](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
 
     > [!IMPORTANT]
     > A tartományvezérlők, vesszővel elválasztva, a szervezeti egység után is tartalmaznak (például a szervezeti egység HDInsightOU, DC = contoso, DC = onmicrosoft, DC = = com).
@@ -64,11 +66,11 @@ Amikor létrehoz egy tartományhoz csatlakoztatott HDInsight-fürtöt, meg kell 
     > [!IMPORTANT]
     > Adja meg a teljes URL-CÍMÉT, például "ldaps: / /" és a portszám (: 636-os).
 
-- **Hozzáférési felhasználói csoport**: A biztonsági csoportok, amelynek felhasználói szeretné szinkronizálni a fürthöz. Ha például HiveUsers. Ha meg szeretné határozni a több felhasználói csoportot, válassza el őket pontosvesszővel (;).
- 
+- **Hozzáférési felhasználói csoport**: A biztonsági csoportok, amelynek felhasználói szeretné szinkronizálni a fürthöz. Ha például HiveUsers. Ha meg szeretné határozni a több felhasználói csoportot, válassza el őket pontosvesszővel (;). A csoport(ok) léteznie kell a címtár kiépítése előtt. További információkért lásd: [hozzon létre egy csoportot, és tagokat vehet fel a az Azure Active Directoryban](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). A csoport nem létezik, ha hiba lép fel: "Csoport HiveUsers nem található az Active Directoryban."
+
 Az alábbi képernyőfelvételen a konfigurációkat az Azure Portalon:
 
-![Az Azure HDInsight-tartományhoz az Active Directory Domain Services konfigurálása](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
+   ![Az Azure HDInsight-tartományhoz az Active Directory Domain Services konfigurálása](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
 
 
 ## <a name="next-steps"></a>További lépések

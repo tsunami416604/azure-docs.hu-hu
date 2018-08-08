@@ -1,57 +1,53 @@
 ---
-title: A HDInsight - Azure ML-szolgáltatások az Azure tárolási megoldások |} Microsoft Docs
-description: Eltérőek a tárolási lehetőségekről az ML-szolgáltatások hdinsight megismerése
+title: A HDInsight - Azure Machine Learning-szolgáltatások Azure Storage-megoldások
+description: A HDInsight a Machine Learning-szolgáltatások különböző tárolási lehetőségek ismertetése
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1cf30096-d3ca-45ea-b526-aa3954402f66
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: f5b9b180f8a6f825e4d91850ee72af19e6d09a4c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2f0c8ba7bb5e9f82a303d3a152097a76cdad2e20
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052963"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619202"
 ---
-# <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Az Azure tárolási megoldások Azure hdinsight ML-szolgáltatások
+# <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások Machine Learning-szolgáltatások az Azure HDInsight
 
-A HDInsight ML-szolgáltatások számos különféle tárolási megoldásokkal segítségével továbbra is fennáll, adatok, kódok vagy elemzés eredményeinek tartalmazó objektumokra. Ezek közé tartozik a következő beállításokat:
+Machine Learning szolgáltatások a HDInsight a tárolási megoldások széles megőrizni az adatokat, kódok vagy objektumokat, amelyek az elemzési eredményeket. Ezek közé tartozik a következő beállításokat:
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
-- [Az Azure Data Lake-tároló](https://azure.microsoft.com/services/data-lake-store/)
+- [Az Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)
 - [Az Azure File storage](https://azure.microsoft.com/services/storage/files/)
 
-Lehetősége is van a több Azure storage-fiókok vagy tárolók a HDInsight-fürthöz való hozzáférés. Az Azure File storage az adatok tárolási lehetőség használható a peremhálózati csomóponton, amely lehetővé teszi, hogy csatlakoztassa egy Azure Storage-megosztás és, például a Linux fájlrendszer. Azonban az Azure fájlmegosztások csatlakoztatva, és a rendszer, például a Windows vagy Linux támogatott operációs rendszer által használt. 
+Lehetősége is van, több Azure storage-fiókok és -tárolót a HDInsight-fürt eléréséhez. Az Azure File storage az kényelmes adatok tárolási lehetőség használatra az élcsomóponton, amely lehetővé teszi, hogy egy, az Azure Storage-fájlmegosztás csatlakoztatása például a Linux-fájlrendszer. De Azure-fájlmegosztások csatlakoztatva van, és bármilyen, amely rendelkezik egy támogatott operációs rendszert, például a Windows vagy Linux rendszert használják. 
 
-Hdinsight Hadoop-fürt létrehozásakor, vagy megadhatja egy **az Azure storage** fiók vagy egy **Data Lake store**. Ebből a fiókból adott tárolót a fájlrendszer a fürt létrehozásakor (például a Hadoop elosztott fájlrendszerből) tartalmazza. További információt és útmutatást lásd:
+Amikor a HDInsight egy Hadoop-fürtöt hoz létre, vagy megadhatja egy **az Azure storage** fiókot vagy egy **Data Lake store**. Ebből a fiókból egy adott tároló tárolja a fájlrendszer, a fürt által létrehozott (például a Hadoop elosztott fájlrendszer). További információkért és útmutatóért lásd:
 
-- [Az Azure storage használata a hdinsight eszközzel](../hdinsight-hadoop-use-blob-storage.md)
-- [Használjon Data Lake Store az Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-store.md)
+- [Az Azure storage használata a HDInsight](../hdinsight-hadoop-use-blob-storage.md)
+- [Használata Data Lake Store az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-store.md)
 
-## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Gépi tanulás szolgáltatások fürt Azure Blob storage-fiókok használata
+## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Az Azure Blob storage-fiókok használata a Machine Learning-szolgáltatások-fürttel
 
-Ha egynél több tárfiókot az ML-szolgáltatások fürt létrehozásakor megadott, az alábbi utasításokat ismerteti az adatok elérése és a műveletek az ML-szolgáltatások fürt a másodlagos fiók használata. Tegyük fel, a következő tárfiókok és a tároló: **storage1** és egy alapértelmezett tároló nevű **container1**, és **storage2** rendelkező **container2**.
+Ha egynél több tárfiókot a Machine Learning-szolgáltatások fürt létrehozásakor megadott, az alábbi utasítások azt ismertetik, hogyan adatelérési és a egy Machine Learning-szolgáltatások fürt műveletek másodlagos fiókot használhatják. Tegyük fel, a következő tárfiókok és a tároló: **storage1** és a egy alapértelmezett tárolót **container1**, és **storage2** a **container2**.
 
 > [!WARNING]
-> Teljesítmény érdekében a HDInsight-fürt létrehozása a megadott elsődleges tárfiókkal azonos adatközpontba. A storage-fiók egy másik helyen, mint a HDInsight-fürt használata nem támogatott.
+> A teljesítmény a HDInsight-fürt létrejön az Ön által megadott elsődleges tárfióknak ugyanabban az adatközpontban. A HDInsight-fürt, mint egy másik helyen lévő tárfiókok használata nem támogatott.
 
-### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>Az alapértelmezett tárhelyet használ a HDInsight ML-szolgáltatások
+### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>Az alapértelmezett tároló használata a HDInsight-ML szolgáltatásokkal
 
-1. A fürt élcsomópont csatlakozni egy SSH-ügyfélprogram segítségével. Az SSH használata a HDInsight-fürtök információkért lásd: [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. A fürt az élcsomópont SSH-ügyfelet használ, csatlakozzon. Az SSH és a HDInsight-fürtök további információkért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
   
-2. Egy fájl, mysamplefile.csv, másolja a /share könyvtárba. 
+2. Egy mintafájlt, mysamplefile.csv, másolja a /share könyvtárba. 
 
         hadoop fs –mkdir /share
         hadoop fs –copyFromLocal mycsv.scv /share  
 
-3. Váltson át R Studio vagy egy másik R-konzolban, és a név csomópont állítható R-kód írása **alapértelmezett** és az elérni kívánt fájl helyét.  
+3. Váltson át az R Studio vagy egy másik R-konzolról, és állítsa a nevet csomópont R-kód írása **alapértelmezett** és az elérni kívánt fájl helyét.  
 
         myNameNode <- "default"
         myPort <- 0
@@ -71,13 +67,13 @@ Ha egynél több tárfiókot az ML-szolgáltatások fürt létrehozásakor megad
         #Specify the input file to analyze in HDFS:
         inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-A könyvtár- és hivatkozások mutasson a tárfiók `wasb://container1@storage1.blob.core.windows.net`. Ez a **alapértelmezett tárfiók** , amely a HDInsight-fürthöz van társítva.
+A tárfiók mutasson a minden fájl és könyvtár hivatkozás `wasb://container1@storage1.blob.core.windows.net`. Ez a **alapértelmezett tárfiók** , amely a HDInsight-fürthöz van társítva.
 
-### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>A további tárhely használata a HDInsight ML-szolgáltatások
+### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>A további tárhely használata a HDInsight Machine Learning-szolgáltatások
 
-Most tegyük fel szeretne dolgozni egy fájlt, amely a /private található mysamplefile1.csv nevű mappában található **container2** a **storage2**.
+Most tegyük fel, amely a /private található mysamplefile1.csv nevű fájlba feldolgozni kívánt könyvtárát **container2** a **storage2**.
 
-Az R-kód, mutasson a csomópont hivatkozás a **storage2** tárfiók.
+Az R-kód, a pont a csomópont hivatkozás a **storage2** storage-fiókot.
 
     myNameNode <- "wasb://container2@storage2.blob.core.windows.net"
     myPort <- 0
@@ -97,35 +93,35 @@ Az R-kód, mutasson a csomópont hivatkozás a **storage2** tárfiók.
     #Specify the input file to analyze in HDFS:
     inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 
-Az összes a könyvtár- és hivatkozást most mutasson a tárfiók `wasb://container2@storage2.blob.core.windows.net`. Ez a **neve csomópont** megadott.
+Összes fájl és könyvtár hivatkozása mostantól a tárfiókba pont `wasb://container2@storage2.blob.core.windows.net`. Ez a **neve csomópont** megadott.
 
-Meg kell adnia a/User/RevoShare/<SSH username> könyvtárába **storage2** az alábbiak szerint:
+A/User/RevoShare/konfigurálására<SSH username> könyvtárába **storage2** módon:
 
 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
-## <a name="use-an-azure-data-lake-store-with-ml-services-cluster"></a>Egy Azure Data Lake Store használata ML szolgáltatások fürt 
+## <a name="use-an-azure-data-lake-store-with-ml-services-cluster"></a>Az Azure Data Lake Store használata a Machine Learning-szolgáltatások-fürttel 
 
-Data Lake Store használata a HDInsight-fürthöz, a fürt minden egyes Azure Data Lake Store használni kívánt hozzáférést kell. Az Azure portál használata a HDInsight-fürt létrehozása az alapértelmezett tároló vagy egy további tárolási Azure Data Lake Store-fiókkal, lásd: [HDInsight-fürtök létrehozása az Azure-portál használatával a Data Lake Store](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Data Lake Store használata a HDInsight-fürt, kell a fürt hozzáférést biztosít minden Azure Data Lake Store, amelyet használni szeretne. Az Azure portal használata egy HDInsight-fürt létrehozása az alapértelmezett tárolóként, vagy egy kiegészítő tárolóként az Azure Data Lake Store-fiókkal kapcsolatos utasításokért lásd: [egy HDInsight-fürt létrehozása a Data Lake Store az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
-Ezt követően az a tároló az R-parancsfájl a sokkal mint egy másodlagos Azure storage-fiók amilyet az előző eljárásban leírtak szerint.
+Ezt követően használhatja az áruház az R-szkript sokkal megismert egy másodlagos Azure-tárfiókot az előző eljárásban leírtak szerint.
 
-### <a name="add-cluster-access-to-your-azure-data-lake-stores"></a>Hozzáférés a fürthöz hozzáadni az Azure Data Lake tárolók
-A Data Lake store az Azure Active Directory (Azure AD) egyszerű szolgáltatásnév a HDInsight-fürthöz társított használatával éri el.
+### <a name="add-cluster-access-to-your-azure-data-lake-stores"></a>Az Azure Data Lake store a fürt hozzáférés hozzáadása
+A Data Lake store egy Azure Active Directory (Azure AD) egyszerű szolgáltatás használatával, amely a HDInsight-fürthöz társított érheti el.
 
-1. A HDInsight-fürt létrehozásakor válassza ki a **fürt AAD-identitása** a a **adatforrás** fülre.
+1. A HDInsight-fürt létrehozásakor válassza **fürt AAD-identitásával** származó a **adatforrás** fülre.
 
-2. Az a **fürt AAD-identitása** párbeszédpanel **válasszon AD egyszerű**, jelölje be **hozzon létre új**.
+2. Az a **fürt AAD-identitásával** párbeszédpanel **AD-szolgáltatásnév kiválasztása**válassza **új létrehozása**.
 
-Amikor nevezze el az egyszerű szolgáltatás, és hozzon létre egy jelszót az, kattintson a **ADLS-hozzáférés kezelése** a Data Lake Store az egyszerű szolgáltatás hozzárendelni.
+Miután hozzon létre egy jelszót, és nevezze el az egyszerű szolgáltatás kattintson **ADLS-hozzáférés kezelése** a szolgáltatásnév társítása a Data Lake Store.
 
-Akkor is fürt hozzáférés hozzáadása a fürt létrehozása a következő egy vagy több Data Lake Store fiókot. Nyissa meg a Data Lake Store az Azure portál bejegyzésre, és navigáljon **adatkezelő > hozzáférés > Hozzáadás**. 
+Akkor is fürt hozzáférés hozzáadása a fürt létrehozása a következő egy vagy több Data Lake Store fiókot. Nyisson meg egy Data Lake Store az Azure portal bejegyzését, és nyissa meg **adatkezelő > hozzáférés > Hozzáadás**. 
 
-### <a name="how-to-access-the-data-lake-store-from-ml-services-on-hdinsight"></a>Az ML-szolgáltatások hdinsight a Data Lake store elérése
+### <a name="how-to-access-the-data-lake-store-from-ml-services-on-hdinsight"></a>A Machine Learning szolgáltatások a HDInsight a Data Lake store elérése
 
-Után hozzáférést biztosított a Data Lake Store, használhatja a tároló ML szolgáltatások fürt a HDInsight egy másodlagos Azure storage-fiók módon. Az egyetlen különbség, hogy az előtag **wasb: / /** vált **adl: / /** az alábbiak szerint:
+Után hozzáférést adott, egy Data Lake Store, használhatja a Machine Learning szolgáltatások a fürtben tárolóban a HDInsight egy másodlagos Azure-tárfiók ugyanúgy. Az egyetlen különbség, hogy az előtag **wasb: / /** vált **adl: / /** módon:
 
 
     # Point to the ADL store (e.g. ADLtest)
@@ -147,7 +143,7 @@ Után hozzáférést biztosított a Data Lake Store, használhatja a tároló ML
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-Az alábbi parancsokat a Data Lake Store-fiók konfigurálását a RevoShare könyvtárnak, és adja hozzá a minta .csv fájlt az előző példából használhatók:
+A Data Lake Store-fiók konfigurálása RevoShare címtárhoz, és adja hozzá a .csv-mintafájlt az előző példában a következő parancsok segítségével:
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
@@ -161,11 +157,11 @@ Az alábbi parancsokat a Data Lake Store-fiók konfigurálását a RevoShare kö
     hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 
 
-## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>Azure File storage használata a HDInsight ML-szolgáltatások
+## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>Azure File storage használata a HDInsight Machine Learning-szolgáltatások
 
-Is az adatok tárolási lehetőségként használja az [Azure Files] néven edge csomóponton ((https://azure.microsoft.com/services/storage/files/). Lehetővé teszi egy Azure Storage-megosztás és a Linux fájlrendszer csatlakoztatni. Lehet, hogy ez a beállítás lesz szüksége az adatfájlok, R parancsfájlok és esetleg szükséges később, különösen akkor, ha érdemes a fájlrendszer használatát a HDFS helyett a élcsomópont eredményobjektumok tárolásához. 
+Van egy kényelmes adatok tárolási lehetőség, használatra az élcsomóponton, az Azure Files] nevű ((https://azure.microsoft.com/services/storage/files/). Lehetővé teszi, hogy egy Azure-tárolófájl-megosztás és a Linux-fájlrendszer csatlakoztatási. Lehet, hogy ezt a beállítást az adatfájlok, R-szkriptek és az esetleg szükséges később, különösen akkor, ha a natív fájlrendszer használatára a HDFS helyett az élcsomóponthoz logikus eredményobjektumok tárolására is praktikus. 
 
-A fő Azure fájlok előnye, hogy a fájlmegosztások csatlakoztatott-e, és hogy a rendszer, amely rendelkezik egy támogatott operációs rendszer, például a Windows vagy Linux által használt. Például használhatná, amely rendelkezik a csoport vagy egy másik HDInsight-fürt által, egy Azure virtuális Gépen, vagy akár egy a helyszíni rendszer szerint. További információkért lásd:
+Az Azure Files egyik fő előnye az, hogy a fájlmegosztások csatlakoztatva van-e, és hogy minden, amely rendelkezik egy támogatott operációs rendszer, például a Windows vagy Linux rendszeren használja. Például akkor használható, amelynek Ön vagy valaki a csapata egy másik HDInsight-fürt, egy Azure virtuális Gépen, vagy akár egy helyszíni rendszer szerint. További információkért lásd:
 
 - [Az Azure File Storage használata Linuxszal](../../storage/files/storage-how-to-use-files-linux.md)
 - [A Windows Azure File storage használata](../../storage/files/storage-dotnet-how-to-use-files.md)
@@ -173,7 +169,7 @@ A fő Azure fájlok előnye, hogy a fájlmegosztások csatlakoztatott-e, és hog
 
 ## <a name="next-steps"></a>További lépések
 
-* [Gépi tanulás szolgáltatások-fürttel hdinsighton áttekintése](r-server-overview.md)
-* [Az ML-szolgáltatások fürt hadoop első lépései](r-server-get-started.md)
-* [Számítási környezet lehetőségek az ML-Services-fürttel hdinsighton](r-server-compute-contexts.md)
+* [Machine Learning-szolgáltatások HDInsight-fürt áttekintése](r-server-overview.md)
+* [Machine Learning-szolgáltatások fürt hadoop használatának első lépései](r-server-get-started.md)
+* [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)
 

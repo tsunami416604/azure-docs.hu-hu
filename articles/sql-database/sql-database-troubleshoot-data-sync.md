@@ -9,12 +9,12 @@ author: allenwux
 ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 2853310df1183a8b32450c5b5c79289b78d1a26d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8ba4b32f45dd978439b08650e498c3030c618aab
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422501"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618709"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása
 
@@ -379,7 +379,6 @@ Az SQL Data Sync szolgáltatással kapcsolatos további információkért lásd:
 -   Teljes PowerShell-példák az SQL Data Sync konfigurálásáról:  
     -   [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [Az SQL Data Sync REST API dokumentációjának letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 Az SQL Database kapcsolatos további információkért lásd:
 

@@ -1,25 +1,20 @@
 ---
-title: Saját egyéni Hadoop-alkalmazások telepítése Azure HDInsight platformon | Microsoft Docs
+title: Az Azure HDInsight a saját egyéni Hadoop-alkalmazások telepítése
 description: A HDInsight-alkalmazások HDInsight-alkalmazásokra való telepítésének ismertetése.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: e556b29c-8176-4bc5-a90b-aa01abfd3aee
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: ab0395f9ee9a8950b439f19502ca6cef6c4f4cf2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 23fbbdc4fc41329efadc4fc7953afa0659e79465
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201635"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595899"
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Egyéni Hadoop-alkalmazások telepítése Azure HDInsight platformon
 
@@ -53,7 +48,7 @@ Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-    Erre a gombra kattintva megnyithat egy Resource Manager-sablont az Azure Portalon.  A Resource Manager-sablon itt található: [ https://github.com/hdinsight/Iaas-Applications/tree/master/Hue ](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue).  A Resource Manager-sablon írásának ismertetése: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
+    Erre a gombra kattintva megnyithat egy Resource Manager-sablont az Azure Portalon.  A Resource Manager-sablon a következő helyen található [ https://github.com/hdinsight/Iaas-Applications/tree/master/Hue ](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue).  A Resource Manager-sablon írásának ismertetése: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
 2. A **Parameters** (Paraméterek) panelen adja meg a következőket:
 
    * **ClusterName**: Adja meg annak a fürtnek a nevét, amelyen az alkalmazást telepíteni kívánja. Ennek létező fürtnek kell lennie.
@@ -68,7 +63,7 @@ Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-    Erre a gombra kattintva megnyithat egy Resource Manager-sablont az Azure Portalon.  A Resource Manager-sablon itt található: [ https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json ](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  A Resource Manager-sablon írásának ismertetése: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
+    Erre a gombra kattintva megnyithat egy Resource Manager-sablont az Azure Portalon.  A Resource Manager-sablon a következő helyen található [ https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json ](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  A Resource Manager-sablon írásának ismertetése: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
 2. Kövesse a fürt létrehozására és a Hue telepítésére vonatkozó utasításokat. További információk a HDInsight-fürtökről: [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsight szolgáltatásban).
 
 A Resource Manager-sablonok meghívására az Azure Portalon kívül az [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) és az [Azure parancssori felület](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-cli) is használható.
@@ -83,7 +78,7 @@ Az alkalmazás telepítésének ellenőrzéséhez az alkalmazás állapotát az 
 3. Kattintson arra a fürtre, amelyre az alkalmazást telepítette.
 4. A **Settings** (Beállítások) panelen kattintson az **Applications** (Alkalmazások) elemre a **General** (Általános) kategóriában. A **hue** ekkor megjelenik az **Installed Apps** (Telepített alkalmazások) panelen.
 5. A tulajdonságok listázásához kattintson a **Hue** elemre a listában.  
-6. Kattintson annak hivatkozására; a webhely ellenőrzéséhez Nyissa meg a HTTP-végpont egy böngészőt, és ellenőrizze a Hue webes felhasználói felület, nyissa meg az SSH-végpont SSH használatával. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+6. Kattintson annak hivatkozására a webhely; ellenőrzéséhez Nyissa meg a HTTP-végpontot egy böngészőben a Hue webes felhasználói felületének ellenőrzéséhez, nyissa meg az SSH-végpont SSH-val. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="troubleshoot-the-installation"></a>A telepítési folyamat hibaelhárítása
 Az alkalmazás telepítési állapotát a portál értesítései között (ehhez kattintson a portál felső részén található harang ikonra) követheti.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: e6d223b386aea3ca41931c600d16c16b53765f26
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: fd2505d6262948e193531d91222cdec319f33100
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414923"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597153"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -37,7 +37,7 @@ ms.locfileid: "39414923"
 
 **Megjegyzés:**
 
-- A felhasználóknak, amelyek szerepelnek a feltételes hozzáférési szabályzatot kell egy [támogatott Office-verzió macOS-hez készült](../active-directory-conditional-access-technical-reference.md#client-apps-condition) erőforrások eléréséhez. 
+- A felhasználóknak, amelyek szerepelnek a feltételes hozzáférési szabályzatot kell egy [támogatott Office-verzió macOS-hez készült](../conditional-access/technical-reference.md#client-apps-condition) erőforrások eléréséhez. 
 
 - Az első hozzáférési kísérlet során a rendszer kéri a felhasználókat az eszköz regisztrálása a vállalati portál használatával.
 
@@ -146,7 +146,7 @@ A régebbi verziójú Windows operációs rendszerekről, amelyek a helyszíni A
 
 **Tekintse meg a felhasználói adatokat az Azure Portalon alatt eszközrekordhoz kérdés, és a állapotát láthatja, mert az eszköz regisztrálva. Igénybe szeretnék megfelelően beállítani a feltételes hozzáférés használatával?**
 
-**V:** az illesztési állapot, deviceID, kifejezi kell felel meg, amely az Azure ad-ben, és megfelelnek a feltételes hozzáférés bármely értékelés által. További információkért lásd: [megkövetelése eszközök feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés felügyelt](../active-directory-conditional-access-policy-connected-applications.md).
+**V:** az illesztési állapot, deviceID, kifejezi kell felel meg, amely az Azure ad-ben, és megfelelnek a feltételes hozzáférés bármely értékelés által. További információkért lásd: [megkövetelése eszközök feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés felügyelt](../conditional-access/require-managed-devices.md).
 
 ---
 

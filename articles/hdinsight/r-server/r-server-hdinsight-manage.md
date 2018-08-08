@@ -1,61 +1,58 @@
 ---
-title: A HDInsight - Azure ML szolgáltatások fürt kezelése |} Microsoft Docs
-description: Megtudhatja, hogyan kezelheti az Azure HDInsight ML szolgáltatások fürtöt.
+title: HDInsight – az Azure Machine Learning szolgáltatások a fürt kezelése
+description: Ismerje meg, hogyan kezelheti egy Machine Learning-szolgáltatások-fürtöt az Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: bb3af3b1614c8afc98d2dcf12ecb53fb80b6037a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b927c1d3bef3382680552a0b25e49bd7c10b6baa
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049744"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620246"
 ---
-# <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Az Azure HDInsight ML-Services-fürt kezeléséhez
+# <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt kezelése
 
-Ebből a cikkből megismerheti, hogyan kezelheti a meglévő ML szolgáltatások fürt on Azure HDInsight végrehajtani a feladatokat, például mulitiple egyidejű felhasználók hozzáadása, a távolról csatlakozni az ML-szolgáltatások fürthöz, a számítási környezet módosítása stb.
+Ebben a cikkben megismerheti, hogyan kezelheti a Machine Learning Services meglévő fürt az Azure HDInsight végrehajtani a feladatokat, mint a mulitiple egyidejű felhasználók hozzáadása, a távoli kapcsolódás a Machine Learning-szolgáltatások-fürthöz, a számítási környezet módosítása stb.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Az ML-Services-fürttel hdinsighton**: útmutatásért lásd: [Ismerkedés az ML-szolgáltatások hdinsight](r-server-get-started.md).
+* **Egy Machine Learning-szolgáltatások HDInsight-fürt**: útmutatásért lásd: [Ismerkedés a Machine Learning szolgáltatások a HDInsight](r-server-get-started.md).
 
-* **Secure Shell- (SSH-) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információkért lásd: [az SSH a Hdinsighttal.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Secure Shell- (SSH-) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információkért lásd: [az SSH használata a HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="enable-multiple-concurrent-users"></a>Több párhuzamos felhasználó engedélyezése
 
-A peremhálózati csomópont, amikor az Rstudióból közösségi verzió fut. további felhasználók hozzáadása az ML-Services-fürttel hdinsighton több egyidejű felhasználók engedélyezheti. HDInsight-fürt létrehozásakor két felhasználót kell megadnia, egy HTTP-felhasználót és egy SSH-felhasználót:
+A Machine Learning-szolgáltatások HDInsight-fürt több párhuzamos felhasználó számára az élcsomóponthoz, amelyen az RStudio közösségi verziója fut. további felhasználók hozzáadásával engedélyezheti. HDInsight-fürt létrehozásakor két felhasználót kell megadnia, egy HTTP-felhasználót és egy SSH-felhasználót:
 
 ![1. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
 - **Fürt bejelentkezési felhasználóneve**: HTTP-felhasználó a létrehozott HDInsight-fürtöket védő HDInsight-átjárón át történő hitelesítéshez. Ez a HTTP-felhasználó használatos az Ambari, a YARN felhasználói felületének és más felhasználóifelület-összetevőknek az elérésére.
 - **Secure Shell- (SSH-) felhasználónév**: SSH-felhasználó, aki a fürtöt biztonságos felületen keresztül éri el. Ez a felhasználó a Linux rendszerben az összes főcsomópont, munkavégző csomópont és élcsomópont felhasználója. Így Secure Shellt használhat a távoli fürt bármely csomópontjának elérésére.
 
-Az ML-Services-fürttel hdinsighton használt R Studio Server közösségi verzió mechanizmus egy bejelentkezési csak Linux felhasználónevet és jelszót fogad el. Nem támogatja a jogkivonatok átadását. Igen amikor megpróbál hozzáférni az R Studio ML szolgáltatások fürtökön először, akkor be kell jelentkeznie kétszer.
+Az a Machine Learning-szolgáltatások HDInsight-fürt használt R Studio Server Community verziója a mechanizmus során csak Linux-felhasználónevet és jelszót fogad el. Nem támogatja a jogkivonatok átadását. Ezért amikor megpróbálja elérni az R Studio először egy Machine Learning-szolgáltatások-fürtön, kell kétszer bejelentkezni.
 
-- Először jelentkezzen be a HDInsight-átjárón keresztül a HTTP-felhasználó hitelesítő adataival. 
+- Először jelentkezzen be a HTTP felhasználói hitelesítő adatokkal a HDInsight-átjárón. 
 
-- Az SSH-felhasználói hitelesítő adatok segítségével jelentkezzen be Rstudióból.
+- Az SSH-felhasználói hitelesítő adatok használatával az Rstudióba való bejelentkezéshez.
   
-Jelenleg HDInsight-fürt üzembe helyezésekor csak egy SSH felhasználói fiókot lehet létrehozni. Ezért ahhoz, hogy több felhasználó is elérheti az ML-Services-fürttel hdinsighton, kell létrehoznia további felhasználókat a Linux rendszerben.
+Jelenleg HDInsight-fürt üzembe helyezésekor csak egy SSH felhasználói fiókot lehet létrehozni. Így a Machine Learning-szolgáltatások HDInsight-fürt eléréséhez több felhasználó engedélyezéshez kell hozhat létre további felhasználókat a Linux rendszerben.
 
-Mivel Rstudióból fut, a peremhálózati fürtcsomóponton, több lépésből áll itt:
+A fürt határcsomópontjához az RStudio fut, mert több lépésből áll itt:
 
-1. Jelentkezzen be az élcsomóponthoz használja a meglévő SSH-felhasználó
+1. A meglévő SSH-felhasználó használata az élcsomópontra való bejelentkezéshez
 2. További Linux-felhasználók hozzáadása az élcsomópontban
 3. Az RStudio Community verziójának használata a létrehozott felhasználóval
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>1. lépés: A létrehozott SSH-felhasználó használatával jelentkezzen be az élcsomóponthoz
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>1. lépés: A létrehozott SSH-felhasználó használata az élcsomópontra való bejelentkezéshez
 
-Kövesse az utasításokat, [HDInsight (Hadoop) SSH használatával csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md) élcsomópont eléréséhez. A peremhálózati csomópont cím az ML-Services-fürttel hdinsighton `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+Kövesse az utasításokat, [HDInsight (Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md) az élcsomópont eléréséhez. A Machine Learning-szolgáltatások HDInsight-fürt az élcsomópont címe a következő `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
 ### <a name="step-2-add-more-linux-users-in-edge-node"></a>2. lépés: További Linux-felhasználók hozzáadása az élcsomópontban
 
@@ -67,7 +64,7 @@ Felhasználó élcsomóponthoz adásához hajtsa végre a következő parancsoka
     # Set password for the new user
     sudo passwd <yournewusername>
 
-Az alábbi képernyőfelvételen látható a kimenetek.
+Az alábbi képernyőfelvételen a kimenetek.
 
 ![3. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-2.png)
 
@@ -75,15 +72,15 @@ Amikor a rendszer az „aktuális Kerberos-jelszót” kéri, nyomja meg az **En
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>3. lépés: Az RStudio Community verziójának használata a létrehozott felhasználóval
 
-Hozzáférés az Rstudióból https://CLUSTERNAME.azurehdinsight.net/rstudio/. Ha a fürt létrehozása után első alkalommal jelentkezik, adja meg a fürt rendszergazdai hitelesítő adatokat a létrehozott SSH hitelesítő követ. Ha nem ez az első bejelentkezés, csak adja meg a hitelesítő adatait az SSH-felhasználó hozott létre.
+Az RStudio eléréséhez https://CLUSTERNAME.azurehdinsight.net/rstudio/. Ha első alkalommal a fürt létrehozása után naplózás, adja meg a fürt rendszergazdai hitelesítő adataival követ a létrehozott SSH-felhasználónál használt. Ha ez nem az első bejelentkezés, csak adja meg a hitelesítő adatokat a létrehozott SSH-felhasználót.
 
-Eredeti hitelesítő adatok segítségével is regisztrálhatja (alapértelmezés szerint van *sshuser*) egyszerre egy másik böngészőben ablakból.
+Is bejelentkezhet az eredeti hitelesítő adatokkal (alapértelmezés szerint a *sshuser*) egyidejűleg egy másik böngészőablakból.
 
 Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gyökérjogosultságokkal a Linux rendszerben, de ugyanolyan hozzáférésük van a távoli HDFS- és WASB-tárolón az összes fájlhoz.
 
-## <a name="connect-remotely-to-microsoft-ml-services"></a>Távoli csatlakozás a Microsoft ML szolgáltatások
+## <a name="connect-remotely-to-microsoft-ml-services"></a>Távoli csatlakozás a Microsoft Machine Learning-szolgáltatások
 
-Állíthat be hozzáférést a HDInsight Hadoop Spark számítási környezethez az ML-ügyfél egy távoli példányán fusson a számítógépen. Ehhez meg kell adnia a beállításokat (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches és sshProfileScript) Ha a RxSpark meghatározása számítási környezet az asztalon: például:
+Állíthat be hozzáférési a HDInsight Hadoop Spark számítási környezetet a Machine Learning-ügyfél egy távoli példányát futtató asztali számítógépeken. Ehhez meg kell adnia a beállításokat (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches és sshProfileScript) Ha az rxspark számítási környezetet az asztalon: például:
 
     myNameNode <- "default"
     myPort <- 0
@@ -107,7 +104,7 @@ Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gy
       consoleOutput= TRUE
     )
 
-További információkért lásd: a "Használatával Microsoft Machine Learning Server, a Hadoop ügyfél" szakasz [RevoScaleR használata Spark számítási környezetben](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
+További információkért tekintse meg a "Használata a Microsoft Machine Learning kiszolgáló Hadoop-ügyfélként" szakaszában [RevoScaleR egy Spark számítási környezet használata](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
 
 ## <a name="use-a-compute-context"></a>Számítási környezet használata
 
@@ -146,7 +143,7 @@ A számítási környezetekkel vezérelheti, hogy a számítás helyben történ
         # Copy the data from source to input
         rxHadoopCopyFromLocal(source, bigDataDirRoot)
 
-2. Következő lépésként létre bizonyos adatok információ, és adja meg a két adatforrások.
+2. Ezután hozzon létre adatinformációkat, és határozzon meg két adatforrást.
 
         # Define the HDFS (WASB) file system
         hdfsFS <- RxHdfsFileSystem()
@@ -171,7 +168,7 @@ A számítási környezetekkel vezérelheti, hogy a számítás helyben történ
         # formula to use
         formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
 
-3. A helyi számítási környezetet használ az adatok egy logisztikai regresszió futtatnia.
+3. Futtasson logisztikai regressziót az adatokon a helyi számítási környezetet használja.
 
         # Set a local compute context
         rxSetComputeContext("local")
@@ -184,7 +181,7 @@ A számítási környezetekkel vezérelheti, hogy a számítás helyben történ
         # Display a summary
         summary(modelLocal)
 
-    Az alábbi kódrészletben hasonló sorokat végződő kimenetnek kell megjelennie:
+    Az alábbi kódrészlethez hasonló sorokkal végződő kimenetnek kell megjelennie:
 
         Data: airOnTimeDataLocal (RxTextData Data Source)
         File name: /tmp/AirOnTimeCSV2012
@@ -212,7 +209,7 @@ A számítási környezetekkel vezérelheti, hogy a számítás helyben történ
          Condition number of final variance-covariance matrix: 11904202
          Number of iterations: 7
 
-4. Futtassa a Spark-környezetet használ az azonos logisztikai regresszió. A Spark környezet elosztja a feldolgozást a HDInsight-fürt összes munkavégző csomópontja között.
+4. Futtassa ugyanezt a logisztikai regressziót a Spark környezet használatával. A Spark környezet elosztja a feldolgozást a HDInsight-fürt összes munkavégző csomópontja között.
 
         # Define the Spark compute context
         mySparkCluster <- RxSpark()
@@ -230,15 +227,15 @@ A számítási környezetekkel vezérelheti, hogy a számítás helyben történ
 
 
    > [!NOTE]
-   > A MapReduce eszközzel is eloszthatja a számítást a fürtcsomópontok között. A számítási környezet további információkért lásd: [számítási adatkörnyezet beállításai az ML-szolgáltatások hdinsight fürt](r-server-compute-contexts.md).
+   > A MapReduce eszközzel is eloszthatja a számítást a fürtcsomópontok között. Számítási környezet további információkért lásd: [számítási környezeti beállítások a Machine Learning-szolgáltatásokhoz a HDInsight-fürt](r-server-compute-contexts.md).
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>R-kód elosztása több csomópontra
 
-A HDInsight ML-szolgáltatásokkal, igénybe vehet a meglévő R-kód és futtassa a fürt több csomópontja között használatával `rxExec`. Ez a függvény akkor hasznos, amikor paraméteres frissítést vagy szimulációkat végez. A következő kód az `rxExec` használatának példája:
+HDInsight ML szolgáltatásokkal, meglévő R-kódokat és futtatása a fürtben több csomóponton használatával `rxExec`. Ez a függvény akkor hasznos, amikor paraméteres frissítést vagy szimulációkat végez. A következő kód az `rxExec` használatának példája:
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Ha továbbra is a Spark vagy a MapReduce környezetet használja, ez visszaadja azon munkavégző csomópontok csomópontnév értékét, amelyen a `(Sys.info()["nodename"])` kódot futtatta. Például egy négy csomópontot tartalmazó fürtben, a várt a következő kódrészletet hasonló kimenetet fogadására:
+Ha továbbra is a Spark vagy a MapReduce környezetet használja, ez visszaadja azon munkavégző csomópontok csomópontnév értékét, amelyen a `(Sys.info()["nodename"])` kódot futtatta. Ha például egy négy csomópontból álló fürtön várhatóan az alábbi kódrészlethez hasonló kimenetet kaphat:
 
     $rxElem1
         nodename
@@ -258,7 +255,7 @@ Ha továbbra is a Spark vagy a MapReduce környezetet használja, ez visszaadja 
 
 ## <a name="access-data-in-hive-and-parquet"></a>Hozzáférés az adatokhoz a Hive és a Parquet eszközökben
 
-HDInsight ML szolgáltatások ScaleR funkciók a Spark számítási környezetben lehetővé teszi a Hive és a Parquet lévő adatok számára közvetlen hozzáférést. Ezek a képességek az RxHiveData és RxParquetData nevű új ScaleR adatforrás-függvényeken keresztül érhetők el, amelyek a Spark SQL-en keresztül töltenek adatokat közvetlenül a Spark DataFrame-be a ScaleR által végzett elemzéshez.
+Machine Learning-szolgáltatások HDInsight a Spark számítási környezet ScaleR-függvényei általi lehetővé teszi az adatok közvetlen elérését a Hive és a parquet eszközökben való használatra. Ezek a képességek az RxHiveData és RxParquetData nevű új ScaleR adatforrás-függvényeken keresztül érhetők el, amelyek a Spark SQL-en keresztül töltenek adatokat közvetlenül a Spark DataFrame-be a ScaleR által végzett elemzéshez.
 
 A következő kód tartalmazza az új függvények használatának néhány mintakódját:
 
@@ -293,42 +290,42 @@ A következő kód tartalmazza az új függvények használatának néhány mint
     rxSparkDisconnect(myHadoopCluster)
 
 
-További információt ezen új funkciók használatára az online súgójában az ML-szolgáltatások használata a `?RxHivedata` és `?RxParquetData` parancsok.  
+További információ az ezen új függvények használatával a Machine Learning-szolgáltatások használatán keresztül online súgójában találhat a `?RxHivedata` és `?RxParquetData` parancsokat.  
 
-## <a name="install-additional-r-packages-on-the-cluster"></a>A fürtön telepíteni a további R csomagokat
+## <a name="install-additional-r-packages-on-the-cluster"></a>További R-csomagok telepíthetők a fürtön
 
-### <a name="to-install-r-packages-on-the-edge-node"></a>Élcsomópont R csomagok telepítése
+### <a name="to-install-r-packages-on-the-edge-node"></a>R-csomagok telepítése az élcsomópontra
 
-Ha azt szeretné, további R csomagok telepítése élcsomópont, használhatja `install.packages()` közvetlenül belül R konzol kapcsolódás után az élcsomóponthoz SSH-n keresztül. 
+Ha szeretne további R-csomagok telepítése az élcsomópontra, `install.packages()` közvetlenül belül az R-konzolról, egyszer csatlakozik az élcsomóponthoz ssh-n keresztül. 
 
-### <a name="to-install-r-packages-on-the-worker-node"></a>A munkavégző csomóponton R csomagok telepítése
+### <a name="to-install-r-packages-on-the-worker-node"></a>R-csomagok telepítéséhez a feldolgozó csomóponton
 
-A feldolgozó csomópontokon a fürt R csomagok telepítéséhez a parancsfájlművelet kell használnia. A szkriptműveletek olyan Bash-szkriptek, amelyekkel konfigurációs módosítások végezhetők a HDInsight-fürtön, vagy további szoftverek, például további R-csomagok telepíthetők. 
+A fürt munkavégző csomópontjaira R csomagokat telepítenie, Szkriptműveletet kell használnia. A szkriptműveletek olyan Bash-szkriptek, amelyekkel konfigurációs módosítások végezhetők a HDInsight-fürtön, vagy további szoftverek, például további R-csomagok telepíthetők. 
 
 > [!IMPORTANT]
-> A további R csomagok szkriptműveletekkel végzett telepítése csak a fürt létrehozása után használható. Ne használja ezt az eljárást fürt létrehozása során, a parancsfájl támaszkodik ML szolgáltatások teljesen konfigurálva.
+> A további R csomagok szkriptműveletekkel végzett telepítése csak a fürt létrehozása után használható. Használja ezt az eljárást a fürt létrehozásakor, ahogy a parancsfájl támaszkodik a Machine Learning-szolgáltatások teljesen konfigurált.
 >
 >
 
-1. Kövesse a [parancsfájlművelet-fürtök testreszabása](../hdinsight-hadoop-customize-cluster-linux.md).
+1. Kövesse a lépéseket [fürtök testreszabása Szkriptműveletek használatával](../hdinsight-hadoop-customize-cluster-linux.md).
 
-3. A **parancsfájlművelet**, adja meg a következő információkat:
+3. A **Szkriptművelet**, adja meg a következő információkat:
 
-   * A **parancsprogram típusa**, jelölje be **egyéni**.
+   * A **parancsprogram típusa**válassza **egyéni**.
 
    * A **neve**, adja meg a parancsfájlművelet nevét.
 
-    * A **Bash parancsfájlok URI**, adja meg `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Ez az a parancsfájlt, amely további R csomagokat telepít a munkavégző csomópont
+    * A **Bash parancsfájl URI azonosítója**, adja meg `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Ez az a szkript, amely további R csomagokat telepít a munkavégző csomópont
 
-   * Jelölje be a jelölőnégyzetet, csak a **munkavégző**.
+   * Jelölje be a jelölőnégyzetet, csak a **feldolgozó**.
 
    * **Paraméterek**: A telepíteni kívánt R csomagok. Például: `bitops stringr arules`
 
    * A jelölőnégyzet bejelölésével **parancsfájlműveletet**.  
 
    > [!NOTE]
-   > 1. Alapértelmezés szerint az összes R csomagot egy pillanatképből ML Server telepített verziója megfelel a Microsoft MRAN tárház telepítve. Ha a csomagok újabb verzióját szeretné telepíteni, akkor van némi inkompatibilitási kockázat. Ez a fajta telepítés azonban lehetséges, ha a `useCRAN` parancsot adja meg a csomaglista első elemeként, például: `useCRAN bitops, stringr, arules`.  
-   > 2. Néhány R csomag további Linux rendszerű könyvtárakat igényel. Kényelmi célokat szolgál a HDInsight ML szolgáltatások rendelkezik előre telepített a függőségeket a top 100 legnépszerűbb R csomag szükséges. Ha azonban a telepített R csomag(ok) további könyvtárakat telepítését igényli(k), akkor le kell töltenie az itt használt alapvető szkriptet, és lépéseket kell hozzáadnia a rendszerkönyvtárak telepítéséhez. Ezután fel kell töltenie a módosított szkriptet egy nyilvános blob-tárolóba az Azure Storage-ben, és a módosított szkripttel kell telepítenie a csomagokat.
+   > 1. Alapértelmezés szerint az összes R-csomagok települnek, a gépi tanulás Server telepített verziója megfelel a Microsoft MRAN tárház egy pillanatképből. Ha a csomagok újabb verzióját szeretné telepíteni, akkor van némi inkompatibilitási kockázat. Ez a fajta telepítés azonban lehetséges, ha a `useCRAN` parancsot adja meg a csomaglista első elemeként, például: `useCRAN bitops, stringr, arules`.  
+   > 2. Néhány R csomag további Linux rendszerű könyvtárakat igényel. Az egyszerűség kedvéért a HDInsight Machine Learning-szolgáltatások előre telepítve áll rendelkezésre a függőségekkel, szükség szerint a felső 100 legnépszerűbb R-csomagokat. Ha azonban a telepített R csomag(ok) további könyvtárakat telepítését igényli(k), akkor le kell töltenie az itt használt alapvető szkriptet, és lépéseket kell hozzáadnia a rendszerkönyvtárak telepítéséhez. Ezután fel kell töltenie a módosított szkriptet egy nyilvános blob-tárolóba az Azure Storage-ben, és a módosított szkripttel kell telepítenie a csomagokat.
    >    A szkriptműveletek fejlesztésével kapcsolatos további információért lásd: [Szkriptművelet fejlesztése](../hdinsight-hadoop-script-actions-linux.md).  
    >
    >
@@ -339,6 +336,6 @@ A feldolgozó csomópontokon a fürt R csomagok telepítéséhez a parancsfájlm
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azok a szolgáltatások ML-fürttel hdinsighton](r-server-operationalize.md)
-* [Számítási környezet lehetőségek az ML-szolgáltatás-fürttel hdinsighton](r-server-compute-contexts.md)
-* [Gépi tanulás szolgáltatások fürt a HDInsight az Azure tárolási lehetőségek](r-server-storage.md)
+* [Az ML-szolgáltatások fürtjének üzembe helyezése a HDInsighton](r-server-operationalize.md)
+* [Számítási környezeti beállítások a Machine Learning szolgáltatás HDInsight-fürt](r-server-compute-contexts.md)
+* [Azure Storage-lehetőségek az ML-szolgáltatások HDInsighton belüli fürtjéhez](r-server-storage.md)

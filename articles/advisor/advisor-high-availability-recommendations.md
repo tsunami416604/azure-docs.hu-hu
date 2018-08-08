@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: ea8d8d0adbc7cf5a8dfb6e9af51257b9d2ba8db2
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 297a213fe4219b834187f977e3281eb939352f60
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264082"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594433"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Az Advisor magas rendelkezésre állás – javaslatok
 
@@ -66,14 +66,6 @@ Több végpont a TRAFFIC Manager-profilok élmény magasabb rendelkezésre áll�
 Ha minden végpont a Traffic Manager-profil, amely konfigurálva van a közelségi útválasztás ugyanabban a régióban, a felhasználók el más régiókból tapasztalhatnak csatlakozási késések fordulhatnak elő. Hozzáadásával vagy a végpont áthelyezése egy másik régióba teljesítményjavítás általános, és adja meg a jobb rendelkezésre állás, ha egy adott régióban szereplő összes végpont sikertelen. Az Advisor azonosítja a Traffic Manager-profilok közelségi útválasztás, ahol az összes végpont ugyanabban a régióban vannak konfigurálva, és javasolja a hozzáadásával vagy a végpont áthelyezése egy másik Azure-régióban.
 
 Ha a Traffic Manager-profil földrajzi útválasztásra van konfigurálva, majd adatforgalmat végpontokra alapján meghatározott régióban. Ha meghibásodik egy régióban, nem nincs előre definiált feladatátvétel. Kellene egy végpontot, ahol van konfigurálva a regionális csoportosítás "Az összes (globális)" eldobott forgalom elkerülése érdekében, és szolgáltatás rendelkezésre állásának javítása. Az Advisor azonosítja a Traffic Manager-profilok konfigurált földrajzi útválasztásának, ahol nincs úgy konfigurálva, hogy a regionális csoportosítás rendelkezik, mint az "Összes (globális)" végpont, és javasolja, hogy a konfigurációs módosítás elvégzése.
-
-## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Döntés az SQL data warehouse-tábla lekérdezési teljesítmény érdekében az adatok eltávolítása
-
-Adatok torzulása szükségtelen adatok mozgását vagy az erőforrás szűk keresztmetszeteket okozhat, a számítási feladatok futtatásakor. Az Advisor észleli terjesztési adatok tevékenységdiagramon nagyobb, mint 15 %, és javasoljuk, hogy az adatok újraterjesztése, és nyissa meg újra az a tábla terjesztési kulcs beállításokat. További információk azonosítása és torzulása eltávolításával kapcsolatban lásd: [hibaelhárítási torzulása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
-
-## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Az SQL data warehouse-tábla lekérdezési teljesítmény érdekében az elavult tábla statisztikák létrehozása vagy frissítése
-
-Az Advisor azonosítja, amelyek nem rendelkeznek naprakész táblák [táblastatisztikák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) és táblastatisztikák javasolja létrehozása vagy frissítése. Az SQL data warehouse-optimalizáló naprakész ukazatelé segítségével megbecsülheti a számosság vagy a lekérdezés eredményét, amely lehetővé teszi a lekérdezésoptimalizáló hozhat létre kiváló minőségű lekérdezésterv a leggyorsabb teljesítmény sorainak lekérdezés.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állás – javaslatok az Advisor elérése
 

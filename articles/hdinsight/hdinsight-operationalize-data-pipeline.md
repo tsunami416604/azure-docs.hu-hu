@@ -1,80 +1,77 @@
 ---
-title: Azok az adatok analytics csővezeték - Azure |} Microsoft Docs
-description: Telepítsen és futtasson egy példa adatok folyamatot, amely új adatok váltja ki, és tömör eredményt ad.
+title: Adatelemzési folyamat – Azure üzembe helyezése
+description: Állítsa be, és a egy példa adatok folyamat, amely új adatok által aktivált és tömör eredményt ad.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
+editor: jasonwhowell
 ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 7ac1ed0db15d91ef8af009c879c3634148826286
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6f6a70a7364ead5ff2171383529febb0a2fce6ff
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392187"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595178"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
-*Adatok folyamatok* underly sok adatelemző megoldásokat. A nevet javasol, adatok folyamat a nyers adatokat fogad, megtisztítja reshapes, igény szerint és általában hajtja végre számítások vagy összesítés előtt, hogy a feldolgozott adatok tárolására. A feldolgozott adatok ügyfeleknek, jelentések és API-k által felhasznált. Adatok adatcsatorna ismételhető eredményeket, biztosítania kell az ütemezés szerint vagy -változáskor induló új adatokat.
+*Adatfolyamatok* underly számos data analytics megoldás. Javasol a neve, ahogy egy adatfolyamat fogadja a nyers adatokat, törli a reshapes, igény szerint, és általában végez számítást vagy összesítéseket a feldolgozott adatok tárolása előtt. A feldolgozott adatokat az ügyfelek, jelentések és API-kat használja fel. Egy adatfolyamat ismételhető eredményekkel kell megadnia, ütemezés szerint, vagy aktivált új adatokkal.
 
-Ez a cikk ismerteti az adatok folyamatok ismételhetőség használata a HDInsight Hadoop-fürtök futó Oozie azok. A példaforgatókönyv végigvezeti egy adatok folyamatot, amely előkészíti és feldolgozza a légitársaság repülési idősorozat adatokat.
+Ez a cikk ismerteti az adatfolyamatok az ismételhetőség használata a HDInsight Hadoop-fürtökön futó Oozie üzembe helyezése. A példaforgatókönyv végigvezeti előkészít és légitársaság repülési idősorozat-adatokat feldolgozó adatfolyamat.
 
-Abban az esetben a bemeneti adatokat tartalmazó repülési adatköteget hónapig egybesimított fájl. Ez felé továbbított adatok közé tartozik a forrás és cél repülőtéren, a besorolásával miles, az indító és érkezési idő, és így tovább. Ez az adatcsatorna a célja, hogy összesítse a napi légitársaság teljesítmény, ahol légitársaság egy sorból áll minden nap a átlagos indulási és érkezési késlelteti a perc és a teljes miles adott napon besorolásával.
+A következő esetben a bemeneti adatokat tartalmazó repülési adatok kötegelt egy hónapig egybesimított fájl. A flight data közé tartozik a forrás és cél repülőtér, a besorolásával mérföld, az indulási és érkezési idő és így tovább. Az ehhez a folyamathoz célja összefoglalva napi légitársaság teljesítmény, ahol minden egyes légitársaság rendelkezik minden nap, az átlagos indulási és érkezési késések percben és az adott napon repült összes mérföld egy sort.
 
-| ÉV | HÓNAP | DAY_OF_MONTH | SZOLGÁLTATÓJA |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
+| ÉV | HÓNAP | DAY_OF_MONTH | SZOLGÁLTATÓ |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
 | 2017 | 1 | 3 | MIVEL | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
-A példa-feldolgozási folyamat megvárja, amíg egy új időszak felé továbbított adatok érkezik, akkor az a Hive data warehouse-hosszú távú elemzések részletes felé továbbított adatokat tárolja. A folyamat is létrehoz sokkal kisebb adatkészletre mutató csak napi felé továbbított adatok összegzése látható. A napi repülési összefoglaló adatküldést SQL adatbázishoz kínálnak jelentéseket, többek között a webhelyhez.
+A példa folyamat megvárja, amíg a egy új időszakban flight data érkezik, akkor a részletes repülőjáratokkal kapcsolatos információkat tartalmaz a hosszú távú elemzések Hive-data warehouse-bA tárolja. A folyamat is létrehoz egy sokkal kisebb adatkészletet, amely csak a napi flight data foglalja össze. A napi repülési összefoglaló adatokat egy SQL Database-adatbázishoz küldött adja meg a jelentések, például webhelyekhez.
 
-A következő ábra szemlélteti a példa-feldolgozási folyamat.
+A következő ábra szemlélteti a példa folyamat.
 
-![Felé továbbított adatok feldolgozási folyamat](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
+![Repülési adatfolyamat](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
 
-## <a name="oozie-solution-overview"></a>Oozie megoldási áttekintés
+## <a name="oozie-solution-overview"></a>Az Oozie-megoldás áttekintése
 
-Ez az adatcsatorna egy HDInsight Hadoop-fürt futó Apache Oozie használja.
+Ez a folyamat egy HDInsight Hadoop-fürtön futó Apache Oozie használja.
 
-Oozie ismerteti a folyamatok a *műveletek*, *munkafolyamatok*, és *koordinátor*. Műveletek végrehajtásához, például a Hive-lekérdezések futtatása a tényleges munkát határozza meg. A munkafolyamatok határozzák meg, hogy a műveletek sorrendjét. Koordinátor határozza meg azt a munkafolyamat futtatásakor ütemezését. Koordinátor is, amíg az új adatok rendelkezésre állását a munkafolyamat-példány megnyitása előtt.
+Az Oozie ismerteti, hogy a folyamatai *műveletek*, *munkafolyamatok*, és *koordinátorok*. Műveletek meghatározása a tényleges munka elvégzéséhez, például a Hive-lekérdezések futtatása. A munkafolyamatok határozzák meg a műveletek sorrendjét. Koordinátorok meghatározásához a ütemezését a munkafolyamat futtatásakor. Koordinátorok is megvárhatja a rendelkezésre álló új adatokat a munkafolyamat-példány indítása előtt.
 
-Az alábbi ábrán látható, ez például Oozie-feldolgozási folyamat magas szintű tervezését.
+Az alábbi ábrán látható, a magas szintű tervezési ebben a példában az Oozie folyamat.
 
-![Oozie felé továbbított adatok feldolgozási folyamat](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Az Oozie repülési adatfolyamat](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
-### <a name="provision-azure-resources"></a>Azure-erőforrások kiépítése
+### <a name="provision-azure-resources"></a>Az Azure-erőforrások kiépítése
 
-Ez az adatcsatorna egy Azure SQL Database és egy HDInsight Hadoop-fürt ugyanott van szükség. Az Azure SQL Database az adatcsatorna és az Oozie-metaadatok tároló által létrehozott mindkét az összefoglaló adatokat tárolja.
+Ez a folyamat az Azure SQL Database és a egy HDInsight Hadoop-fürt ugyanazon a helyen van szükség. Az Azure SQL Database tárolja a folyamat és az Oozie-metaadatok store mindkét az összesítő adatok.
 
-#### <a name="provision-azure-sql-database"></a>Kiépítés Azure SQL adatbázis
+#### <a name="provision-azure-sql-database"></a>Az Azure SQL-adatbázis kiépítése
 
-1. Az Azure-portált használja, hozzon létre egy új erőforráscsoportot `oozie` ebben a példában által használt összes erőforrást tartalmaz.
-2. Belül a `oozie` erőforráscsoportot, egy Azure SQL-kiszolgáló üzembe helyezése és az adatbázis. Nem kell egy adatbázis nagyobb, mint a S1 Standard tarifacsomagot.
-3. Az Azure portál használatával, az újonnan telepített SQL-adatbázis a panelen keresse meg, és válassza ki **eszközök**.
+1. Az Azure portal használatával hozzon létre egy új erőforráscsoportot, nevű `oozie` ebben a példában által használt összes erőforrást tartalmaz.
+2. Belül a `oozie` erőforráscsoportot, egy Azure SQL-kiszolgáló üzembe helyezése és adatbázis. Nem kell egy adatbázis nagyobb, mint a S1 Standard tarifacsomagot.
+3. Az Azure portal használatával, az újonnan telepített SQL-adatbázis a panelen keresse meg, és válassza ki **eszközök**.
 
     ![Eszközök gomb](./media/hdinsight-operationalize-data-pipeline/sql-db-tools.png)
 
 4. Válassza ki **Lekérdezésszerkesztő**.
 
-    ![Lekérdezés-szerkesztő gomb](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor.png)
+    ![A Lekérdezésszerkesztő gomb](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor.png)
 
 5. Az a **Lekérdezésszerkesztő** ablaktáblán válassza előbb **bejelentkezési**.
 
     ![Bejelentkezési gomb](./media/hdinsight-operationalize-data-pipeline/sql-db-login1.png)
 
-6. SQL-adatbázis hitelesítő adatait, és válassza ki **OK**.
+6. Adja meg az SQL-adatbázis hitelesítő adatait, és válassza ki **OK**.
 
    ![Bejelentkezési űrlap](./media/hdinsight-operationalize-data-pipeline/sql-db-login2.png)
 
-7. A Lekérdezésszerkesztő szöveg területen adja meg a következő SQL-utasítások létrehozásához a `dailyflights` tábla minden egyes futni, hanem a folyamat az összesített adatok tárolásához.
+7. A Lekérdezésszerkesztő szöveg területen adja meg a következő SQL-utasítások használatával hozzon létre a `dailyflights` tábla, amely a folyamat minden egyes futtatásához összesített adatait fogja tárolni.
 
     ```
     CREATE TABLE dailyflights
@@ -95,101 +92,101 @@ Ez az adatcsatorna egy Azure SQL Database és egy HDInsight Hadoop-fürt ugyanot
 
 8. Válassza ki **futtatása** az SQL-utasítások végrehajtásához.
 
-    ![Futtatás gomb](./media/hdinsight-operationalize-data-pipeline/sql-db-run.png)
+    ![Futtatás gombra](./media/hdinsight-operationalize-data-pipeline/sql-db-run.png)
 
-Az Azure SQL-adatbázis most már készen áll.
+Most már készen áll az Azure SQL Database.
 
-#### <a name="provision-an-hdinsight-hadoop-cluster"></a>HDInsight Hadoop-fürtök kiépítése
+#### <a name="provision-an-hdinsight-hadoop-cluster"></a>Egy HDInsight Hadoop-fürt üzembe helyezése
 
-1. Válassza ki az Azure-portálon **+ új** , és keressen a HDInsight.
+1. Az Azure Portalon válassza ki a **+ új** és keresse meg a HDInsight.
 2. Kattintson a **Létrehozás** gombra.
-3. A alapvető beállítások panelen adjon meg egyedi nevet a fürtnek, és válassza ki az Azure-előfizetéséhez.
+3. Alapvető beállítások panelen adjon meg egy egyedi nevet a fürt számára, és válassza ki az Azure-előfizetését.
 
-    ![A HDInsight-fürt neve és az előfizetés](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
+    ![HDInsight-fürt neve és az előfizetés](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
 
-4. Az a **típusú fürt** ablaktáblán válassza előbb a **Hadoop** típusa, a fürt **Linux** operációs rendszer és a legújabb verzióját a HDInsight-fürthöz. Hagyja a **fürt réteg** : **szabványos**.
+4. Az a **fürt típusa** panelen válassza a **Hadoop** fürt típusa, **Linux** operációs rendszer és a HDInsight-fürt a legújabb verzióra. Hagyja a **fürt szint** , **Standard**.
 
     ![A HDInsight-fürt típusa](./media/hdinsight-operationalize-data-pipeline/hdi-cluster-type.png)
 
-5. Válasszon **válasszon** alkalmazni a fürt választást.
-6. Fejezze be a **alapjai** ablaktábla bejelentkezési jelszó, majd válassza a `oozie` erőforrás csoportot a listából, majd válasszon **következő**.
+5. Válasszon **kiválasztása** a alkalmazni a fürt adattípus-választást.
+6. Végezze el a **alapjai** ablaktáblán egy bejelentkezési jelszó megadása, és válassza a `oozie` erőforrás csoportot a listából, majd válassza a **tovább**.
 
-    ![A HDInsight alapvető beállítások panelen](./media/hdinsight-operationalize-data-pipeline/hdi-basics.png)
+    ![HDInsight alapvető beállítások panel](./media/hdinsight-operationalize-data-pipeline/hdi-basics.png)
 
-7. Az a **tárolási** ablaktáblán, az elsődleges tárolási típusa hagyja **Azure Storage**, jelölje be **hozzon létre új**, és adja meg az új fiók nevét.
+7. Az a **tárolási** ablaktáblán, az elsődleges tárolási típus van megadva, hagyja **Azure Storage**, jelölje be **új létrehozása**, és adjon meg egy nevet az új fiókhoz.
 
-    ![HDInsight tároló Fiókbeállítások](./media/hdinsight-operationalize-data-pipeline/hdi-storage.png)
+    ![HDInsight Tárfiók-beállítások](./media/hdinsight-operationalize-data-pipeline/hdi-storage.png)
 
-8. Az a **Metaadattárhoz beállítások**a **jelöljön ki egy SQL-adatbázist a Hive**, válassza ki a korábban létrehozott adatbázist.
+8. Az a **Metaadattár beállításai**alatt **SQL-adatbázis kiválasztása a Hive**, válassza ki a korábban létrehozott adatbázis.
 
-    ![HDInsight Hive Metaadattárhoz beállítások](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-hive.png)
+    ![HDInsight Hive-Metaadattár beállításai](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-hive.png)
 
-9. Válassza ki **SQL-adatbázis hitelesítéséhez**.
+9. Válassza ki **SQL Database hitelesítése**.
 
-    ![HDInsight Hive Metaadattárhoz hitelesítéséhez](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
+    ![HDInsight Hive-Metaadattár hitelesítése](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. Adja meg az SQL-adatbázis felhasználónevét és jelszavát, és válassza a **válasszon**. 
+10. Adja meg az SQL database-felhasználónevével és jelszavával, és válassza a **kiválasztása**. 
 
-       ![HDInsight Hive Metaadattárhoz bejelentkezési hitelesítés](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
+       ![HDInsight Hive-Metaadattár bejelentkezés hitelesítéséhez](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. Vissza a **Metaadattárhoz beállítások** panelen válassza ki az adatbázist az Oozie-metaadatok tárolja, és úgy, ahogy korábban hitelesítéséhez. 
+11. Lépjen vissza a **Metaadattár beállításai** panelen válassza ki az adatbázist az Oozie-metaadatok tárolására, és ahogy korábban hitelesítéséhez. 
 
-       ![HDInsight Metaadattárhoz beállítások](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
+       ![HDInsight-Metaadattár beállításai](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
 12. Kattintson a **Tovább** gombra.
-13. A a **összegzés** ablaktáblán válassza előbb **létrehozása** a fürt telepítéséhez.
+13. Az a **összefoglalás** ablaktáblán válassza **létrehozás** a fürt üzembe helyezéséhez.
 
-### <a name="verify-ssh-tunneling-setup"></a>SSH-alagútkezelési a telepítés ellenőrzése
+### <a name="verify-ssh-tunneling-setup"></a>SSH-bújtatás a telepítés ellenőrzése
 
-A koordinátor és a munkafolyamat-példányok állapotának megtekintése az Oozie Webkonzol használatához állítsa be a HDInsight-fürthöz az SSH-alagút. További információkért lásd: [SSH-alagút](hdinsight-linux-ambari-ssh-tunnel.md).
+Az Oozie Webkonzol segítségével megtekintheti az állapotát a koordinátor és a munkafolyamat-példányok, állítsa be a HDInsight-fürthöz egy SSH-alagutat. További információkért lásd: [SSH-alagút](hdinsight-linux-ambari-ssh-tunnel.md).
 
 > [!NOTE]
-> A Chrome is használhatja a [Foxy Proxy](https://getfoxyproxy.org/) bővítmény keresse meg a fürt webes erőforrásokhoz az SSH-alagúton keresztül. Konfigurálja úgy a proxy a gazdagépen keresztül az összes kérelem `localhost` 9876 az alagutat porton. Ez a megközelítés a Linux Bash Windows 10 más néven Windows alrendszere esetén.
+> A Chrome-ban is használhatja a [Foxy Proxy](https://getfoxyproxy.org/) bővítmény keresse meg a fürt webes erőforrások között az SSH-alagút használatával. Konfigurálja a proxykiszolgáló a gazdagépen keresztül az összes kérelem `localhost` 9876 az alagút porton. Ez a megközelítés akkor a Windows alrendszer, Linux, más néven a Bash on Windows 10-kompatibilis.
 
-1. A következő parancsot a fürthöz az SSH-alagút megnyitásához:
+1. Futtassa a következő parancsot a fürthöz az SSH-alagút megnyitásához:
 
     ```
     ssh -C2qTnNf -D 9876 sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net
     ```
 
-2. Győződjön meg arról az alagutat működik a központi csomóponton tallózással nyissa meg a Ambari:
+2. Győződjön meg arról az alagút működési Ambari lépjen a fő csomópont tallózással:
 
     http://headnodehost:8080
 
-3. Hozzáférés a **Oozie Webkonzol** belül Ambari, válassza ki **Oozie**, **Gyorshivatkozások**, majd válassza ki **Oozie Webkonzol**.
+3. Hozzáférés a **Oozie Webkonzol** Ambari belül válassza **Oozie**, **Gyorshivatkozások**, majd válassza ki **Oozie Webkonzol**.
 
 ### <a name="configure-hive"></a>Hive konfigurálása
 
-1. Töltse le egy példa egy CSV-fájl, amely egy hónapig felé továbbított adatokat tartalmaz. A ZIP-fájl letöltésére `2017-01-FlightData.zip` a a [HDInsight Github-tárházban](https://github.com/hdinsight/hdinsight-dev-guide) és csomagolja ki azt a CSV-fájl `2017-01-FlightData.csv`. 
+1. Töltse le egy példa egy CSV-fájl, amely egy hónapig repülési adatokat tartalmaz. Töltse le a ZIP-fájl `2017-01-FlightData.zip` származó a [HDInsight Github-adattár](https://github.com/hdinsight/hdinsight-dev-guide) és bontsa ki a CSV-fájl `2017-01-FlightData.csv`. 
 
-2. Akár az Azure Storage-fiók a HDInsight-fürthöz csatlakozik a CSV-fájl másolása és elhelyezheti a `/example/data/flights` mappát.
+2. Másolja a CSV-fájl, akár az Azure Storage-fiókot a HDInsight-fürthöz csatlakozik, és elhelyezheti a `/example/data/flights` mappát.
 
-Másolhatja a fájlt a szolgáltatáskapcsolódási pont a `bash` rendszerhéj-munkamenet.
+Másolhatja az az SCP-fájlt a `bash` rendszerhéj-munkamenet.
 
-1. Szolgáltatáskapcsolódási pont használatával a fájlok másolását a helyi számítógép a helyi tárolása a HDInsight fürt átjárócsomópontjából.
+1. Szolgáltatáskapcsolódási pont használatával másolja a fájlokat a helyi gépen a HDInsight-fürt fő csomópontjának helyi tárolására.
 
     ```bash
     scp ./2017-01-FlightData.csv sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net:2017-01-FlightData.csv
     ```
 
-2. A HDFS parancs használata a fájl átmásolása a átjárócsomópont helyi tároló Azure Storage.
+2. A HDFS parancs használatával másolja a fájlt egy fő csomópontja helyszíni tárolóból az Azure Storage.
 
     ```bash
     hdfs dfs -put ./2017-01-FlightData.csv /example/data/flights/2017-01-FlightData.csv
     ```
 
-A mintaadatok már elérhető. Azonban a feldolgozási sor igényel a feldolgozásához, a bejövő adatok egy két Hive táblák (`rawFlights`), a másik az összegzett adatokat (`flights`). Ezek a táblázatok az alábbiak szerint Ambari létrehozása.
+A mintaadatok már elérhető. Azonban a folyamat csak feldolgozásra, egyet a bejövő adatok két Hive-táblák (`rawFlights`) és a egy, az összesített adatok (`flights`). Ezek a táblák az Ambari a következőképpen hozhat létre.
 
-1. Navigáljon a Ambari bejelentkezni [ http://headnodehost:8080 ](http://headnodehost:8080).
-2. Válassza ki a listáról a szolgáltatások **Hive**.
+1. Jelentkezzen be az Ambari az [ http://headnodehost:8080 ](http://headnodehost:8080).
+2. A szolgáltatások listájából válassza **Hive**.
 
-    ![Az Ambari struktúra kiválasztása](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![Az Ambari Hive kiválasztása](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
-3. Válassza ki **nyissa meg a nézet** a Hive View 2.0 felirat mellett.
+3. Válassza ki **nyissa meg a nézet** mellett a Hive-nézet 2.0 címkét.
 
     ![Az Ambari Hive nézete kiválasztása](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. A lekérdezés terület, illessze be a következő utasítás létrehozásához a `rawFlights` tábla. A `rawFlights` táblázat egy séma-a-olvasási a CSV-fájl belüli a `/example/data/flights` mappa az Azure Storage. 
+4. A lekérdezés szöveges területen illessze be az alábbi utasításokat, hozzon létre a `rawFlights` tábla. A `rawFlights` táblázat tartalmazza a séma olvasási belül a CSV-fájlokat a `/example/data/flights` az Azure Storage-mappát. 
 
     ```
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
@@ -216,9 +213,9 @@ A mintaadatok már elérhető. Azonban a feldolgozási sor igényel a feldolgoz�
 
 5. Válassza ki **Execute** a tábla létrehozásához.
 
-    ![Az Ambari Hive-lekérdezések](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![Az Ambari Hive-lekérdezés](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
-6. Létrehozásához a `flights` table, cserélje le a szöveget a lekérdezés szöveges területen az alábbi utasításokat. A `flights` tábla, amely betölti év, hónap és a hónap napja adatok particionálja felügyelt Hive táblákat. Ez a táblázat összes korábbi felé továbbított adatok, szerepel a forrásadatok soronként egy felhőszolgáltató közötti átviteléhez a legalacsonyabb lépésköz fogja tartalmazni.
+6. Hozhat létre a `flights` táblában, cserélje le a szöveget a lekérdezés szöveges területen az alábbi utasításokat. A `flights` táblában egy Hive-felügyelt táblát, amely particionálja az adatokat, betölti év, hónap és hónap szerint. Ez a táblázat minden korábbi flight olyan adat, soronként flight egy adatforrás adatai tartalmazzák a legalacsonyabb granularitással fogja tartalmazni.
 
     ```
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -246,19 +243,19 @@ A mintaadatok már elérhető. Azonban a feldolgozási sor igényel a feldolgoz�
 
 7. Válassza ki **Execute** a tábla létrehozásához.
 
-### <a name="create-the-oozie-workflow"></a>Az Oozie-munkafolyamat létrehozása
+### <a name="create-the-oozie-workflow"></a>Az Oozie-munkafolyamatokkal létrehozása
 
-Folyamatok általában feldolgozni az adatokat kötegekben által egy adott időintervallumban. Ebben az esetben a feldolgozási sor dolgozza fel a felé továbbított adatok naponta. Ez a megközelítés lehetővé teszi, hogy a bemeneti CSV-fájlok naponta, hetente, havonta vagy évente érkezésére.
+A folyamatok általában fel, és kötegekben adatokat egy adott időtartam alatt. Ebben az esetben a folyamat dolgozza fel a flight data naponta. Ez a megközelítés lehetővé teszi, hogy a bemeneti CSV-fájlokhoz naponta, hetente, havonta vagy évente kimarad.
 
-A minta-munkafolyamat dolgozza fel a felé továbbított adatok--naponta, a három fő lépést:
+A munkafolyamat-minta dolgozza fel a flight data--naponta, a három fő lépést:
 
-1. A Ha adatokat szeretne kinyerni nap dátumtartományon belül a forrás CSV-fájl által képviselt Hive-lekérdezések futtatása a `rawFlights` tábla, majd szúrja be az adatokat a `flights` tábla.
-2. Futtathat Hive-lekérdezéseket dinamikusan átmeneti tárolási tábla létrehozása a Hive a napon, amely a nap, illetve szolgáltatónként összesített felé továbbított adatok másolatát tartalmazza.
-3. Apache Sqoop követve másolja át az adatokat a Hive napi átmeneti tárolási tábla a cél `dailyflights` Azure SQL adatbázis táblájában. Sqoop a Forrássorok beolvassa az adatokat a Hive táblában szereplő Azure Storage mögött, és betölti őket az SQL-adatbázisba JDBC-kapcsolaton keresztül.
+1. Adatokat szeretne kinyerni az adott napon dátumtartományban a CSV-fájlból forrás jelölt Hive-lekérdezés futtatása a `rawFlights` táblát, és helyezze be az adatokat a `flights` tábla.
+2. A dinamikusan hozhat létre egy előkészítési táblába a Hive, a nap és a szolgáltató által összesített repülési adatokat tartalmazó napi egy Hive-lekérdezések futtatásához.
+3. Az Apache Sqoop használatával összes adatot másol a napi előkészítési táblába, a Hive a cél a `dailyflights` az Azure SQL Database tábla. Sqoop a Forrássorok beolvassa az adatokat a Hive-táblában, az Azure Storage szolgáltatásban tárolt mögött, és betölti őket az SQL Database JDBC-kapcsolattal.
 
-Három lépések koordinálja az Oozie-munkafolyamat. 
+Az Oozie-munkafolyamatokkal kezel fenti három lépést. 
 
-1. Hozzon létre egy lekérdezést a fájlban `hive-load-flights-partition.hql`.
+1. Hozzon létre egy lekérdezést a fájl `hive-load-flights-partition.hql`.
 
     ```
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -282,9 +279,9 @@ Három lépések koordinálja az Oozie-munkafolyamat.
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Oozie változók szintaxissal `${variableName}`. Ezek a változók vannak beállítva a `job.properties` fájlt egy későbbi lépésben leírtak szerint. Oozie helyettesíti a tényleges értékek futásidőben.
+    Az Oozie változók szintaxissal `${variableName}`. Ezek a változók vannak beállítva, a `job.properties` fájlt egy későbbi lépésben leírtak szerint. Az Oozie helyettesíti a tényleges értékek futásidőben.
 
-2. Hozzon létre egy lekérdezést a fájlban `hive-create-daily-summary-table.hql`.
+2. Hozzon létre egy lekérdezést a fájl `hive-create-daily-summary-table.hql`.
 
     ```
     DROP TABLE ${hiveTableName};
@@ -308,15 +305,15 @@ Három lépések koordinálja az Oozie-munkafolyamat.
     HAVING year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Ez a lekérdezés fog csak a összegzett adatokat tároló egy napon, jegyezze fel a SELECT utasítástípusnál, amely kiszámítja az átlagos késleltetése és napi szállító besorolásával távolság összesen átmeneti tárolási tábla hoz létre. Az adatok tárolása ismert helyén (az elérési utat a hiveDataFolder változó által megadott) a táblába úgy, hogy a használat forrásként a Sqoop a következő lépésben.
+    Ez a lekérdezés hoz létre egy előkészítési táblába egy nap csak összesített adatok tárolására, jegyezze fel a SELECT utasítástípusnál, amely kiszámítja az átlagos késések és a szolgáltató által naponta repült távolság összesen lesz. Ez egy ismert (az elérési utat a hiveDataFolder változó által megadott) helyen tárolt táblába beszúrt adatokat, hogy a használat forrásaként a sqoop használatával a következő lépésben.
 
-3. A következő Sqoop parancsot.
+3. Futtassa a következő Sqoop parancsot.
 
     ```
     sqoop export --connect ${sqlDatabaseConnectionString} --table ${sqlDatabaseTableName} --export-dir ${hiveDataFolder} -m 1 --input-fields-terminated-by "\t"
     ```
 
-Három lépések szerint van megadva a három külön műveletként használható a következő Oozie munkafolyamat fájlban nevű `workflow.xml`.
+Három külön műveletként használható a következő Oozie munkafolyamat fájlban nevű ki, a fenti három lépést `workflow.xml`.
 
 ```
 <workflow-app name="loadflightstable" xmlns="uri:oozie:workflow:0.5">
@@ -394,7 +391,7 @@ Három lépések szerint van megadva a három külön műveletként használhat�
 </workflow-app>
 ```
 
-A két Hive-lekérdezések érik el az Azure Storage elérési úttal, és a fennmaradó változó értéke a következő által biztosított `job.properties` fájlt. Ez a fájl a munkafolyamat futtatását dátumra 2017. január 3. konfigurálja.
+A két Hive-lekérdezések érhetők el az elérési út alapján az Azure Storage-ban, és a fennmaradó változó értéke a következő által biztosított `job.properties` fájlt. Ez a fájl úgy konfigurálja a munkafolyamatot, hogy a dátum 2017. január 3. futtassa.
 
 ```
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -414,51 +411,51 @@ month=01
 day=03
 ```
 
-Az alábbi táblázat foglalja össze az egyes tulajdonságok és azt jelzi, hogy hol találhatók az értékeket a saját környezetéhez.
+Az alábbi táblázat foglalja össze az egyes tulajdonságok, és azt jelzi, hogy hol találhatók az értékeket a saját környezetének.
 
 | Tulajdonság | Érték forrása |
 | --- | --- |
-| NameNode | A teljes elérési útját az Azure-tárolót a HDInsight-fürthöz csatlakozik. |
-| jobTracker | A belső állomásnév való a active fürt YARN head csomópont. Az Ambari kezdőlapján válassza ki a YARN szolgáltatások közül, majd kattintson a aktív erőforrás-kezelő. Az állomásnév URI a lap tetején jelenik meg. A port 8050 hozzáfűzése. |
-| queueName | A YARN várólista, a Hive műveletek ütemezésekor neve. Hagyja meg az alapértelmezett. |
-| oozie.use.system.libpath | Hagyja igaz. |
-| alkalmazás gyökérkönyvtárán | Az Azure Storage, ahol telepíteni, az Oozie munkafolyamat kiegészítő fájlokat almappa elérési útja. |
-| oozie.wf.application.path | A hely az Oozie-munkafolyamat `workflow.xml` futtatásához. |
-| hiveScriptLoadPartition | Az Azure Storage fájl elérési útját a Hive lekérdezés `hive-load-flights-partition.hql`. |
-| hiveScriptCreateDailyTable | Az Azure Storage fájl elérési útját a Hive lekérdezés `hive-create-daily-summary-table.hql`. |
-| hiveDailyTableName | Az átmeneti tárolási tábla használandó dinamikusan generált név. |
-| hiveDataFolder | Az átmeneti tárolási tábla által tárolt adatok az Azure Storage elérési útja |
-| sqlDatabaseConnectionString | A JDBC szintaxis kapcsolati karakterláncot az Azure SQL Database adatbázishoz. |
-| sqlDatabaseTableName | Az Azure SQL Database, amelybe összesítő sorok szúrja be a tábla neve. Hagyja meg `dailyflights`. |
-| év | A nap melyik repülési összesítések arra az esetre vonatkoznak év összetevőjét. Hagyja, mert a rendszer. |
-| hónap | A hónap összetevőjét a nap melyik repülési összesítések arra az esetre vonatkoznak. Hagyja, mert a rendszer. |
-| nap | A nap hónap összetevőjének a nap melyik repülési összesítések arra az esetre vonatkoznak. Hagyja, mert a rendszer. |
+| nameNode | A HDInsight-fürt csatolva az Azure Storage-tároló teljes elérési útja. |
+| jobTracker | A belső állomásnév való a active fürt YARN átjárócsomópont csomópont. Az Ambari kezdőlapján válassza ki a YARN-szolgáltatások a listából, majd válassza a aktív Resource Manager. Az állomásnév URI, amely a lap tetején jelenik meg. A port 8050 hozzáfűzése. |
+| queueName | A YARN-várólista használatos, ha a Hive-műveletek neve. Hagyja az alapértelmezett. |
+| oozie.use.system.libpath | Hagyja üresen, igaz értékként. |
+| Základu | Az elérési útja, amelyen központi telepítését az Oozie-munkafolyamatokkal, és a támogatási fájlokat az Azure Storage-ban a kívánt almappába. |
+| oozie.wf.application.path | Az Oozie-munkafolyamatokkal helyét `workflow.xml` futtatásához. |
+| hiveScriptLoadPartition | Az Azure Storage-fájl elérési útját a Hive query `hive-load-flights-partition.hql`. |
+| hiveScriptCreateDailyTable | Az Azure Storage-fájl elérési útját a Hive query `hive-create-daily-summary-table.hql`. |
+| hiveDailyTableName | A dinamikusan létrehozott nevét, az átmeneti tárolási tábla. |
+| hiveDataFolder | Az elérési útja az Azure Storage-ban az átmeneti tárolási tábla által tárolt adatok. |
+| sqlDatabaseConnectionString | A JDBC szintaxis kapcsolati karakterláncot az Azure SQL Database-adatbázishoz. |
+| sqlDatabaseTableName | Az Azure SQL Database, amelybe egészül ki összefoglaló sorokat a tábla neve. Hagyja meg `dailyflights`. |
+| év | Az év összetevőt, a nap melyik repülési összegzéseket számítja ki. Hagyja üresen, mivel. |
+| hónap | A hónap összetevőt, a nap melyik repülési összegzéseket számítja ki. Hagyja üresen, mivel. |
+| nap | Azon napja, a nap melyik repülési összegzéseket számítja ki a hónap összetevőt. Hagyja üresen, mivel. |
 
 > [!NOTE]
-> Ne felejtse el frissíteni a `job.properties` fájl az adott környezetre, telepítése és az Oozie munkafolyamat futtatása előtt.
+> Ne felejtse el frissíteni a példány a `job.properties` az adott környezetre jellemző, mielőtt üzembe helyezése és az Oozie-munkafolyamatokkal értékeket tartalmazó fájl.
 
-### <a name="deploy-and-run-the-oozie-workflow"></a>Regisztrálhat és futtathat a Oozie munkafolyamat
+### <a name="deploy-and-run-the-oozie-workflow"></a>Üzembe helyezése és az Oozie-munkafolyamatokkal
 
-Szolgáltatáskapcsolódási pont használata a bash munkamenetből az Oozie-munkafolyamat telepítése (`workflow.xml`), a Hive-lekérdezések (`hive-load-flights-partition.hql` és `hive-create-daily-summary-table.hql`) és a feladat konfigurációját (`job.properties`).  Az Oozie, csak a `job.properties` fájlt a helyi tárolása a headnode lehetnek. Minden más fájlnál HDFS, ez esetben Azure Storage kell tárolni. A munkafolyamat által használt Sqoop művelet attól függ, hogy egy JDBC-illesztőt az SQL-adatbázis, amely át kell másolni az átjárócsomópont a HDFS való kommunikációhoz.
+Használja a szolgáltatáskapcsolódási pont a bash-munkamenetből üzembe helyezéséhez az Oozie-munkafolyamatokkal (`workflow.xml`), a Hive-lekérdezések (`hive-load-flights-partition.hql` és `hive-create-daily-summary-table.hql`) és a feladat konfigurálása (`job.properties`).  Az Oozie, csak a `job.properties` fájl is létezik, az átjárócsomópont helyi tárolására. Minden más fájlnál hdfs, ez megkülönbözteti a kis Azure Storage-ban kell tárolni. A munkafolyamat által használt Sqoop művelet függ a JDBC-illesztőprogram az SQL-adatbázis, amely kell átmásolni a fő csomópontot HDFS való kommunikációhoz.
 
-1. Hozzon létre a `load_flights_by_day` almappa alatt a felhasználó a helyi tárolása az átjárócsomópont elérési utat.
+1. Hozzon létre a `load_flights_by_day` almappát a felhasználó elérési útját a helyi tárolóban a fő csomópont alá.
 
         ssh sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net 'mkdir load_flights_by_day'
 
-2. Az aktuális könyvtárban található összes fájl másolása (a `workflow.xml` és `job.properties` fájlok) akár a `load_flights_by_day` almappájában.
+2. Az aktuális könyvtárban található összes fájl másolása (a `workflow.xml` és `job.properties` fájlok) akár a `load_flights_by_day` almappába.
 
         scp ./* sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net:load_flights_by_day
 
-3. SSH-ból az átjárócsomóponthoz, és keresse meg a `load_flights_by_day` mappát.
+3. SSH-t a fő csomópontot, és keresse meg a `load_flights_by_day` mappát.
 
         ssh sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net
         cd load_flights_by_day
 
-4. HDFS munkafolyamat fájlokat másolni.
+4. A munkafolyamat-fájlok másolása a HDFS-be.
 
         hdfs dfs -put ./* /oozie/load_flights_by_day
 
-5. Másolás `sqljdbc41.jar` a helyi központi csomópont HDFS-ben a munkafolyamat-mappába:
+5. Másolás `sqljdbc41.jar` a HDFS-ben a munkafolyamat mappába a helyi átjárócsomóponthoz:
 
         hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /oozie/load_flights_by_day
 
@@ -466,19 +463,19 @@ Szolgáltatáskapcsolódási pont használata a bash munkamenetből az Oozie-mun
 
         oozie job -config job.properties -run
 
-7. Figyelje meg a Oozie webkonzollal állapotát. Belül Ambari, válassza ki **Oozie**, **Gyorshivatkozások**, majd **Oozie Webkonzol**. Az a **munkafolyamat-feladatok** lapon jelölje be **összes feladat**.
+7. Látni fogja, az Oozie webkonzollal állapota. Az Ambari, válassza **Oozie**, **Gyorshivatkozások**, majd **Oozie Webkonzol**. Alatt a **munkafolyamat-feladatokat** lapon jelölje be **az összes feladat**.
 
-    ![Oozie Web Console munkafolyamatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![Az Oozie Web Console munkafolyamatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-8. Amikor az állapot akkor sikeres volt, a lekérdezés az SQL-adatbázistáblában szereplő a beillesztett sorok megtekintéséhez. Az SQL-adatbázisra, válassza ki az Azure-portált használja, navigáljon a panelen **eszközök**, és nyissa meg a **Lekérdezésszerkesztő**.
+8. A sikeres állapotát, a lekérdezés az SQL database tábla a beillesztett sorok megtekintéséhez. Az SQL-adatbázishoz, válassza ki a panelen lépjen az Azure portal használatával **eszközök**, és nyissa meg a **Lekérdezésszerkesztő**.
 
         SELECT * FROM dailyflights
 
-Most, hogy az egyetlen gazdagépes napon a munkafolyamat fut, akkor a munkafolyamat egy koordinátorral a munkafolyamat ütemezését, így naponta fut végző futtathatja.
+Most, hogy a munkafolyamat fut, az egyetlen gazdagépes nap, akkor futtathatja ezt a munkafolyamatot, amely a munkafolyamat ütemezését, így naponta fut egy koordinátorral.
 
-### <a name="run-the-workflow-with-a-coordinator"></a>A munkafolyamat futtatása egy koordinátorral
+### <a name="run-the-workflow-with-a-coordinator"></a>A munkafolyamat futtatása a koordinátor
 
-Ez a munkafolyamat ütemezése a napi (vagy minden nap dátumtartomány) futtatása, a koordinátor is használhat. A koordinátor határozzák meg az XML-fájl, például `coordinator.xml`:
+Ez a munkafolyamat ütemezése, futtatása napi (vagy egy adott időtartományban minden nap), használhatja a koordinátor. Koordinátor határozzák meg egy XML-fájlt, például `coordinator.xml`:
 
 ```
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
@@ -547,17 +544,17 @@ Ez a munkafolyamat ütemezése a napi (vagy minden nap dátumtartomány) futtat�
 </coordinator-app>
 ```
 
-Ahogy látja, a legtöbb, a koordinátor, csak hogy konfigurációs adatait a munkafolyamat-példányhoz. Van azonban néhány fontos elemek hívásához.
+Ahogy látható, a koordinátor többsége, csupán továbbítja konfigurációs adatait a munkafolyamat-példányhoz. Vannak azonban néhány fontos elemek hívásához.
 
-* 1. pont: A `start` és `end` az attribútumok a `coordinator-app` maga az elem szabályozhatja a időtartam alatt, amelyben a koordinátor futtatja.
+* Az 1: A `start` és `end` az attribútumok a `coordinator-app` maga az elem szabályozhatja az időintervallum, amelyen keresztül a koordinátor futtatja.
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    A koordinátor felelős belül műveleteket a `start` és `end` dátumtartományának által megadott a `frequency` attribútum. Minden ütemezett művelethez viszont a munkafolyamat fut, konfigurált módon. A koordinátor-definícióban a fenti a koordinátor 2017. január 1. a műveletek futtatására 2017. január 5. a van konfigurálva. A gyakoriság értéke 1 nap által a [Oozie kifejezés nyelvi](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) gyakoriság kifejezés `${coord:days(1)}`. Ez a művelet ütemezés koordinátor eredményez (és így a munkafolyamat) naponta egyszer. A dátumtartományok, amelyek a múltban, ebben a példában látható módon a művelet ütemezi a késleltetés nélkül futtatásához. A dátum, amelyből művelet ütemezett elindítása elnevezése a *névleges idő*. Például a 2017. január 1. az adatok feldolgozására a koordinátor beütemezett művelet és a névleges idő 2017-01-01T00:00:00 GMT.
+    Koordinátor felelős műveletek belül a `start` és `end` dátumtartomány szerint a megadott időköz az `frequency` attribútum. Minden ütemezett művelethez ezután futtatja a munkafolyamatot a konfigurált. A fenti koordinátor definíciójában a koordinátor van konfigurálva műveleteket hajtson végre 2017. január 1-től 2017. január 5-én. A gyakoriság 1 nap értékre van állítva a [Oozie kifejezés nyelve](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) gyakorisága kifejezés `${coord:days(1)}`. Ez a művelet ütemezés koordinátor eredményez (és így a munkafolyamat) naponta egyszer. Dátumtartományokat, amelyek korábban, mint ebben a példában a művelet lesz ütemezve késedelem nélkül fusson. A dátum, amelyen művelet való futásra van ütemezve kezdetét nevezzük a *névleges idő*. Ha például az adatok feldolgozása a 2017. január 1-től a koordinátor ütemeznek művelet után névleges költséget számítunk időpont 2017-01-01T00:00:00 GMT.
 
-* Pont 2: a munkafolyamat dátum közötti tartományba a `dataset` elem megadja, hogy az adatokat egy adott dátumtartományon belül a HDFS-ben kereséséhez, és konfigurálja a hogyan Oozie határozza meg, hogy az adatok rendelkezésre áll-e még feldolgozásra.
+* Pont 2: a munkafolyamat dátum tartományán belül a `dataset` elem megadja, hogy legyen egy adott dátumtartományra vonatkozóan az adatokat HDFS-ben keresse meg, és konfigurálja, hogyan Oozie határozza meg, hogy az adatok rendelkezésre áll-e még feldolgozásra.
 
     ```
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -566,11 +563,11 @@ Ahogy látja, a legtöbb, a koordinátor, csak hogy konfigurációs adatait a mu
     </dataset>
     ```
 
-    Az adatok elérési útja a HDFS-ben a megadott kifejezés szerinti dinamikusan épül a `uri-template` elemet. A koordinátor egy nap gyakorisággal is használják az adatkészletet. A koordinátor elem vezérlőn a kezdő és záró dátumának során, amikor a műveletek ütemezett (és határozza meg az névleges idő), a `initial-instance` és `frequency` az adatkészlettel szabályozhatja a hozhat létre, a használtdátumkiszámítása`uri-template`. Ebben az esetben állítsa be a kezdeti példányszámnak a koordinátor biztosításához a megkezdése előtt egy nappal (1/1/2017) adat tekinthető meg, hogy azt szerzi be az első napja csomagazonosítóját. A dataset számítás előregörgeti a értékének `initial-instance` (12/31/2016) lehetőségre az adatkészlet-gyakoriság (1 nap) amíg nem talál, a legutóbbi dátum, amely nem felel meg a névleges idő lépésekben állította a koordinátor (2017-01-01T00:00:00 GMT szerint az első művelet).
+    Az adatokat hdfs elérési útja a megadott kifejezésnek megfelelően dinamikusan épül a `uri-template` elemet. A koordinátor a gyakoriságot, egy nap is szolgál az adatkészletben. A kezdő és záró dátuma, a koordinátor elem a vezérlő során, ha a műveletek ütemezett (és meghatározása után névleges költséget számítunk időponthoz képest), a `initial-instance` és `frequency` adatkészletén szabályozhatja a számítás, a dátum a felépítéséhezhasznált`uri-template`. Ebben az esetben állítsa be a kezdeti példány egy nappal a koordinátor annak biztosítása érdekében a megkezdése előtt, hogy buildkonfigurációtól első napja a (1/1/2017) adat tekinthető meg. Az adatkészlet számítás előregörgeti a értékét `initial-instance` a koordinátor (12/31/2016) speciális lépésekben az adatkészlet-gyakoriság (1 napon belül) úgy találja, a legutóbbi dátum, amely nem felel meg a névleges idő beállítása (2017-01-01T00:00:00 GMT az első művelet).
 
-    Az üres `done-flag` elem azt jelzi, hogy amikor Oozie ellenőrzi, hogy a bemeneti adatok azt a kijelölt időpontban, Oozie határozza meg adatok hogy elérhető-e egy könyvtár vagy fájl jelenlétét. Ebben az esetben egy csv-fájl jelen. Ha egy csv-fájlban található, Oozie azt feltételezi, hogy az adatok készen áll, és elindítja a munkafolyamat-példányok feldolgozni a fájlt. Ha nincs jelen csv-fájl, Oozie feltételezi, hogy az adatok még nincs készen álljon és a rendszert futtató munkafolyamat hiányzóra várakozó állapotban van.
+    Az üres `done-flag` elem azt jelzi, hogy Oozie keres az bemeneti adatok a kijelölt időpontban, amikor az Oozie meghatározza adatok elérhető-e fájlok vagy könyvtárak jelenlétét. Ebben az esetben egy csv-fájl jelenléte. Ha egy csv-fájl jelen, Oozie azt feltételezi, készen áll az adatok, és elindítja egy munkafolyamat-példány feldolgozni a fájlt. Ha nem áll csv fájl található, az Oozie feltételezi, hogy az adatok még nem kész, és a munkafolyamat futtatását várakozó állapotba kerül.
 
-* 3. pontok: A `data-in` elem határozza meg az adott időbélyeg kívánja használni, mint a névleges time értékeinek cseréjekor `uri-template` a kapcsolódó DataSet adatkészlet esetében.
+* 3. pontok: A `data-in` elem azt határozza meg az adott időbélyeg névleges adatokként meg, amikor az az értékeket cserélje le `uri-template` kapcsolódó adatkészlet.
 
     ```
     <data-in name="event_input1" dataset="ds_input1">
@@ -578,17 +575,17 @@ Ahogy látja, a legtöbb, a koordinátor, csak hogy konfigurációs adatait a mu
     </data-in>
     ```
 
-    Ebben az esetben állítson be egy példányt kifejezésre `${coord:current(0)}`, amely az eszköz a koordinátor eredetileg ütemezett művelet névleges ideje. Más szóval a koordinátor és a névleges idő 01/01/2017 futtatását ütemezi, majd 01/01/2017 esetén cserélje le az év (2017) és a hónap (01) változók URI-sablonja használttól. Után az URI-sablonja számított erre a példányra, a Oozie ellenőrzi, hogy a várt könyvtárat vagy fájlt érhető el, és ennek megfelelően ütemezi a következő futtatáskor a munkafolyamat.
+    Ebben az esetben állítson be egy példányt a kifejezést `${coord:current(0)}`, amelyet a rendszer lefordítja arra az eredetileg a koordinátor ütemezett művelet után névleges költséget számítunk ideje. Más szóval ha a koordinátor névleges időpont 2017-01-01-futtatását ütemezi, majd 2017-01-01 a mi használt cserélje le a ÉVBEN (2017) és a hónap (01) változót az URI-sablonban. Az URI-sablon ezen a példányon jön létre, ha a Oozie ellenőrzi, hogy a várt könyvtárat vagy fájlt érhető el, és ennek megfelelően ütemezi a következő futtatáskor a munkafolyamat.
 
-A fenti három pont olyan helyzet, ahol a koordinátor ütemezi a forrásadatok--napi módon feldolgozása yield össze. 
+Az előző három pont eddig is számtalan előnyét egy olyan helyzetet, ahol a koordinátor ütemezi a feldolgozás a forrásadatok a napi – naponta módon össze. 
 
-* 1. pont: A koordinátor 2017-01-01 névleges dátum kezdődik.
+* Az 1: A koordinátor kezdődik, a 2017-01-01 névleges dátuma.
 
-* 2 ponton: Oozie keresi a rendelkezésre álló adatok `sourceDataFolder/2017-01-FlightData.csv`.
+* Pont 2: Oozie keres az elérhető adatokat `sourceDataFolder/2017-01-FlightData.csv`.
 
-* 3. pontok: Oozie megkeresi az adott fájlt, amikor ütemezés, amely feldolgozza az adatokat a 2017-01-01 munkafolyamat egy példányát. Oozie majd folytatja a feldolgozást a 2017-01-02. Ez a kiértékelés legfeljebb, de nem tartalmazza a 2017-01-05 ismétlődik.
+* Pont 3: Ha Oozie ezt a fájlt talál, ütemezés, amely feldolgozza az adatokat a 2017-01-01-munkafolyamat egy példányát. Az Oozie majd 2017-01-02 feldolgozása továbbra is. Ezt a próbaidőszakot akár, de nem tartalmazza a 2017-01-05 ismétlődik.
 
-A munkafolyamatok, a konfiguráció a koordinátor meghatározottak szerint a `job.properties` fájl, amely felülbírálja a munkafolyamat által használt beállításokat.
+A munkafolyamatok, a konfiguráció a koordinátor meghatározottak szerint egy `job.properties` fájlt, amely rendelkezik felülbírálja a munkafolyamat által használt beállításokat.
 
 ```
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -607,51 +604,51 @@ sqlDatabaseTableName=dailyflights
 
 ```
 
-A csak új tulajdonságok ezen bevezetett `job.properties` fájlban található:
+A csak az új tulajdonságok a-ben bevezetett `job.properties` fájlban található:
 
 | Tulajdonság | Érték forrása |
 | --- | --- |
-| oozie.coord.application.path | Annak a helyét a `coordinator.xml` fájlt, amely tartalmazza az Oozie-koordinátor futtatásához. |
-| hiveDailyTableNamePrefix | Az előtag a tábla neve az átmeneti tárolási tábla dinamikusan létrehozásakor használt. |
-| hiveDataFolderPrefix | Az előtag, az elérési út az előkészítési táblák tárolásához. |
+| oozie.coord.application.path | Azt jelzi, hogy a helyét a `coordinator.xml` fájlt, amely tartalmazza az Oozie-koordinátor futtatásához. |
+| hiveDailyTableNamePrefix | Az előtag, az átmeneti tárolási tábla a tábla neve dinamikusan létrehozásakor használt. |
+| hiveDataFolderPrefix | Az összes előkészítési tábla tárolására szolgáló elérési út előtagja. |
 
-### <a name="deploy-and-run-the-oozie-coordinator"></a>Regisztrálhat és futtathat a Oozie Coordinator
+### <a name="deploy-and-run-the-oozie-coordinator"></a>Üzembe helyezése és futtatása az Oozie-koordinátor
 
-Futtatjuk a folyamatot a koordinátorral, folytassa a munkafolyamat esetében hasonló módon indul ki egy mappát egy szint fölött, amely tartalmazza a munkafolyamat-karakterek kivételével. A mappa egyezmény, a különböző alárendelt munkafolyamatok társíthat egy koordinátor elválasztja a lemezen, a munkafolyamatok az összekötőket.
+Futtathatja a folyamatot a koordinátor, folytatható hasonlóan végezhető, mint a munkafolyamat, azzal a különbséggel dolgozik egy mappából a mappába, amelyben a munkafolyamat fent egy szinttel. A mappa egyezmény így egyetlen koordinátor társíthat másik gyermek munkafolyamat lemezen, a munkafolyamatok elválasztja az összekötőket.
 
-1. A helyi gép SCP követve másolja át a koordinátora fájlok a fürt átjárócsomópontjához helyi tárolására.
+1. A helyi gépen SCP-je használatával másolja a koordinátor-fájlokat a helyi tárterület, a fürt fő csomópontjának.
 
     ```bash
     scp ./* sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net:~
     ```
 
-2. SSH-ból az átjárócsomópont.
+2. SSH-t a fő csomópontot.
 
     ```bash
     ssh sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net 
     ```
 
-3. A koordinátor fájlokat másolhassanak HDFS.
+3. Másolja a koordinátor fájlokat HDFS.
 
     ```bash
     hdfs dfs -put ./* /oozie/
     ```
 
-4. A koordinátor futtatásához.
+4. Futtassa a koordinátor.
 
     ```bash
     oozie job -config job.properties -run
     ```
 
-5. Ellenőrizze az állapotukat a webkonzollal Oozie, ez alkalommal válassza a **koordinátor feladatok** lapon, majd **összes feladat**.
+5. Ellenőrizze az állapotát a webkonzollal Oozie, ez alkalommal válassza a **koordinátor feladatok** lapon, majd **az összes feladat**.
 
-    ![Oozie webes konzol koordinátor feladatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
+    ![Az Oozie webes konzol koordinátor feladatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 
-6. Válasszon egy koordinátor-példányt az ütemezett műveletek listájának megjelenítéséhez. Ebben az esetben meg kell jelennie az 1/1/2017 és 1/4/2017 közé névleges időpontokat négy művelet közül választhat.
+6. Válassza ki a koordinátor-példány az ütemezett műveletek listájának megjelenítéséhez. Ebben az esetben kell megjelennie a 1/1/2017 és 1/4/2017 eső névleges rövidebb négy művelet.
 
-    ![Oozie Web Console koordinátor feladat](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
+    ![Az Oozie Web Console koordinátor feladat](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
 
-    Minden művelet ezen a listán, amely feldolgozza a egy nap értékelésével, ha adott napon kezdetét jelzi a névleges idő a munkafolyamat példánya megfelel.
+    Ez a lista minden egyes művelethez egy példányt a munkafolyamat által feldolgozott egy nap alatt az adatokat, ahol jelzi, hogy a nap kezdete után névleges költséget számítunk idő felel meg.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,71 +1,66 @@
 ---
-title: Futtassa a Hadoop-minták a HDInsight - Azure |} Microsoft Docs
-description: Ismerkedés az Azure HDInsight szolgáltatással megadott a mintákkal. Amely MapReduce programok adatok fürtökön PowerShell-parancsfájlok használata.
+title: A HDInsight - Azure Hadoop-minták futtatása
+description: Ismerkedjen meg a megadott minták az Azure HDInsight szolgáltatással. MapReduce-programok data-fürtökön futó PowerShell-parancsfájlokat használja.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bf76d452-abb4-4210-87bd-a2067778c6ed
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1262e0eda5cf490eb6c3ef81bc05de3954059f4c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ef88e1d3e165e3ae21b235a33b295b51b574ff67
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418709"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593284"
 ---
-# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows-alapú HDInsight Hadoop-MapReduce minták futtatása
+# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Hadoop MapReduce-minták futtatása a Windows-alapú HDInsight
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Segítségnyújtáshoz elindított futó MapReduce-feladatok az Azure HDInsight Hadoop-fürtök biztosított mintákat mutat be. Ezeket a mintákat elérhetővé válnak a felügyelt HDInsight-fürtök az Ön által létrehozott minden egyes. Ezek a minták futtatása megismerkedhet a Hadoop-fürtök feladat futtatható Azure PowerShell-parancsmagok használatával.
+Minták segítséget nyújt az első lépések futó MapReduce-feladatok használata Azure HDInsight Hadoop-fürtök a biztosított. Ezek a minták a HDInsight által felügyelt fürtöket, Ön által létrehozott minden egyes végrehajtott érhető el. Ezek a minták futtatása révén megismerkedhet a feladatok futtatásához a Hadoop-fürtök Azure PowerShell-parancsmagok használatával.
 
-* [**Word-count**][hdinsight-sample-wordcount]: szövegfájl word előfordulások száma.
-* [**C# szószámot streaming**][hdinsight-sample-csharp-streaming]: a Hadoop streamelési felületén szövegfájl word előfordulások száma.
-* [**A pi négyzetgyökének**][hdinsight-sample-pi-estimator]: használja a statisztikai (látszólagos Monte Carlo) módszer a pi értékét.
-* [**10 GB-os Graysort**][hdinsight-sample-10gb-graysort]: egy általános célú GraySort futtatnak egy 10 GB-os fájl HDInsight használatával. Három feladat futtatásához: létrehozza az adatokat, Terasort adatait, és annak ellenőrzéséhez, hogy az adatok megfelelően lett rendezve Teravalidate Teragen.
+* [**Szószámlálás**][hdinsight-sample-wordcount]: előfordulásait számláló egy szövegfájlba.
+* [**C# word-count streamelési**][hdinsight-sample-csharp-streaming]: előfordulásait számláló egy szövegfájlba, a Hadoop streamelési felületén.
+* [**A pi estimator**][hdinsight-sample-pi-estimator]: használja a statisztikai (látszólagos Monte Carlo) módszer a pi értékét.
+* [**10 GB-os Graysort**][hdinsight-sample-10gb-graysort]: egy általános célú GraySort futtatása egy 10 GB-os fájlt a HDInsight használatával. Három feladat futtatásához: létrehozza az adatokat, Terasort az adatokat, és ellenőrizze, hogy az adatok megfelelően rendezett Teravalidate Teragen.
 
 > [!NOTE]
-> A forráskód függelékében található.
+> A forráskód megtalálható a függelékben.
 
-Sokkal további dokumentáció létezik-e az interneten a Hadoop-kapcsolódó technológiákkal, például Java-alapú MapReduce programozási és adatfolyam- és a használt Windows PowerShell-parancsmagokkal dokumentáció parancsfájlok. Ezekkel az erőforrásokkal kapcsolatos további információkért lásd:
+A Hadoop-kapcsolódó technológiák, például a Java-alapú MapReduce programozási és a streamelési és a használt Windows PowerShell-parancsmagokkal kapcsolatos dokumentáció a weben létezik sokkal további dokumentáció parancsfájlok. Ezekkel az erőforrásokkal kapcsolatban további információkért lásd:
 
-* [A hdinsight Hadoop Java MapReduce programok fejlesztése](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Java MapReduce programok fejlesztése a HDInsight Hadoop számára](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 * [Hadoop-feladatok elküldése a HDInsightban](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Az Azure HDInsight bemutatása][hdinsight-introduction]
 
-Napjainkban sokan válassza a Hive és a Pig MapReduce keresztül.  További információkért lásd:
+Napjainkban sok ember válassza a Hive és Pig MapReduce keresztül.  További információkért lásd:
 
-* [A Hive hdinsight használata](hadoop/hdinsight-use-hive.md)
-* [A Pig használata a Hdinsightban](hadoop/hdinsight-use-pig.md)
+* [Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [A Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
 
 **Előfeltételek**:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **HDInsight-fürtök**. A különböző módszereket, amelyben a fürtök hozhatók létre, lásd: [Hadoop létrehozása a HDInsight-fürtök](hdinsight-hadoop-provision-linux-clusters.md).
+* **Egy HDInsight-fürt**. A különböző módszereket, amelyben az ilyen fürtök lehet létrehozni, lásd: [Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 * **Munkaállomás Azure PowerShell-lel**.
 
     > [!IMPORTANT]
     > A HDInsight-erőforrások Azure Service Managerrel történő kezelésének Azure PowerShell-támogatása **elavult**, így 2017. január 1-től megszűnik. A jelen dokumentumban leírt lépések az új HDInsight-parancsmagokat használják, amelyek az Azure Resource Managerrel működnek.
     >
-    > Kövesse a [Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs) Azure PowerShell legújabb verziójának telepítéséhez. Ha vannak olyan parancsprogramjai, amelyeket módosítani kell az új parancsmagok együtt használható Azure Resource Manager, lásd: [Fejlesztőeszközök Azure Resource Manager-alapú HDInsight-fürtök történő](hdinsight-hadoop-development-using-azure-resource-manager.md).
+    > Kövesse a [Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs) telepítése az Azure PowerShell legújabb verzióját. Ha vannak olyan parancsprogramjai, amelyeket módosítani kell használni az új parancsmagok, amelyek együttműködnek az Azure Resource Manager, lásd: [Fejlesztőeszközök az Azure Resource Manager-alapú HDInsight-fürtök-ba való Migrálás](hdinsight-hadoop-development-using-azure-resource-manager.md).
 
-## <a name="hdinsight-sample-wordcount"></a>Word-count - Java
-Elküldeni a MapReduce-projekt, először hoz létre a MapReduce feladat definíciójához. A feladat definíciójához, adja meg a MapReduce program jar-fájlra, valamint a jar-fájlra, amely az helyének **wasb:///example/jars/hadoop-mapreduce-examples.jar**, az argumentumok és az osztály nevét.  A wordcount MapReduce program két argumentummal: a forrásfájl, amellyel szavak, és a kimeneti helyének száma.
+## <a name="hdinsight-sample-wordcount"></a>Szószámlálás – Java
+Küldje el egy MapReduce-projektet, először hozzon létre egy MapReduce-feladat definíciója. A feladat-definícióban, a MapReduce program jar-fájlra és a jar-fájlt, amely a helyének megadásához **wasb:///example/jars/hadoop-mapreduce-examples.jar**, az osztály nevét, és az argumentumokat.  A wordcount MapReduce-programot két argumentumot: a forrásfájl, amellyel szavakat, és a kimeneti helyet száma.
 
-A forráskód megtalálhatók a [függelék](#apendix-a---the-word-count-MapReduce-program-in-java).
+A forráskód megtalálható a [függelék](#apendix-a---the-word-count-MapReduce-program-in-java).
 
-Az eljárás egy Java MapReduce fejlődő program című - [fejlesztése Java MapReduce programok a Hadoop a Hdinsightban](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+Az eljárás egy Java MapReduce fejlődő programok, lásd: - [fejlesztés Java MapReduce programok számára a HDInsight hadoop-keretrendszer](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-**Elküldeni a MapReduce feladatot word száma**
+**A word száma MapReduce-feladatok elküldése**
 
-1. Nyissa meg **Windows PowerShell ISE**. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt][powershell-install-configure].
+1. Nyissa meg **Windows PowerShell ISE-ben**. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt][powershell-install-configure].
 2. Illessze be a következő PowerShell-parancsfájlt:
 
     ```powershell
@@ -119,28 +114,28 @@ Az eljárás egy Java MapReduce fejlődő program című - [fejlesztése Java Ma
     cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
     ```
 
-    A MapReduce feladatot nevű fájlt hoz létre *rész-r-00000*, amely szavak és a számát tartalmazza. A parancsfájl használja a **findstr** paranccsal listát készíthet a szavakat tartalmazó *"nincs"*.
-3. Az első három változók értékét, és futtassa a parancsfájlt.
+    A MapReduce-feladatot hoz létre egy fájlt *. rész – az r-00000*, amely szavakat és a számát tartalmazza. A szkript a **findstr** paranccsal listát készíthet minden szót tartalmazó *"there"*.
+3. Az első három változókat, és futtassa a szkriptet.
 
-## <a name="hdinsight-sample-csharp-streaming"></a>Word-count - C# adatfolyam
-Hadoop streamelési API MapReduce, így térkép írása, és csökkentheti a funkciók Java kívül más nyelveken is biztosít.
+## <a name="hdinsight-sample-csharp-streaming"></a>Word-count – C# streaming
+Hadoop MapReduce, ami lehetővé teszi a térkép írni, és csökkentheti a függvényeket más nyelveken biztosít egy olyan streamelési API.
 
 > [!NOTE]
-> A jelen oktatóanyagban szereplő lépések csak a Windows-alapú HDInsight-fürtök esetében érvényes. Például a Linux-alapú HDInsight-fürtök adatfolyamként való továbbítására, [programok streaming hdinsight fejlesztése Python](hadoop/apache-hadoop-streaming-python.md).
+> A jelen oktatóanyagban szereplő lépések Windows-alapú HDInsight-fürtök csak a alkalmazni. Egy Linux-alapú HDInsight-fürtök streamelési példa: [fejlesztés Python-streamprogramok for HDInsight](hadoop/apache-hadoop-streaming-python.md).
 
-A példában a hozzárendelést és a nyomáscsökkentő a végrehajtható fájlok, hogy olvassa a bemeneti [stdin] [ stdin-stdout-stderr] (--soronként) és a kibocsátás kimenet [stdout] [ stdin-stdout-stderr]. A program megjeleníti a szövegben a szavakat.
+A példában a hozzárendelést és a nyomáscsökkentő is olvassa a bemeneti a végrehajtható fájlok [stdin] [ stdin-stdout-stderr] (--soronként) és a kimenetet kibocsátható [stdout] [ stdin-stdout-stderr]. A program megszámolja a szöveget az összes szó.
 
-Ha egy végrehajtható fájl van megadva, az **mappers**, minden leképező feladat különálló folyamatként indít a végrehajtható fájlt, amikor a leképező inicializálva van. A leképező feladat fut, azt a bemeneti alakítja sorok, és a sorok hírcsatornák a [stdin] [ stdin-stdout-stderr] a folyamat.
+Ha egy végrehajtható fájl van megadva **leképező**, eseményleképező feladatokon külön folyamatként indít a végrehajtható fájlt, amikor a teljesítményleképező inicializálva van. A teljesítményleképező feladat futása alakítja át a bemeneti sorok, és -csatornák a sorokat a [stdin] [ stdin-stdout-stderr] a folyamat.
 
-Időközben a leképező sor alapú kimenetét a folyamat az stdout adatsorból gyűjti. Minden egyes sorban alakítja a kulcs/érték pár, amelyek a leképező eredményének gyűjtése történik. Alapértelmezés szerint egy vonal, akár az első lap karakter előtag a kulcs, és a sor (kivéve a lapon megadott) további része az az érték. Ha a sorban nincs lapon karakter, teljes sor a kulcs minősül, és az értéke null.
+Addig is a teljesítményleképező sor alapú kimenete a folyamat az stdout adatsorból gyűjti. Az egyes sorok alakít egy kulcs/érték pár, amely leképezőjét kimenete gyűjtése történik. Alapértelmezés szerint az előtag legfeljebb lap első karaktere egy vonal a kulcsot, és a sor (kivéve a tabulátor karakter) további része az az érték. Ha nem található a sor nem tabulátor karakter, teljes sorban a kulcs minősül, és az értéke null.
 
-Ha egy végrehajtható fájl van megadva, az **szűkítő**, minden nyomáscsökkentő feladatot indít a végrehajtható fájl különálló folyamatként, amikor a nyomáscsökkentő inicializálva van. A nyomáscsökkentő feladat fut, a bemeneti kulcs/érték párok alakítja sorok, és azt a sorok hírcsatornák a [stdin] [ stdin-stdout-stderr] a folyamat.
+Ha egy végrehajtható fájl van megadva **csökkentő**, minden egyes nyomáscsökkentő feladat külön folyamatként indít a végrehajtható fájlt, amikor a nyomáscsökkentő inicializálva van. Ahogy a nyomáscsökkentő feladat fut, a bemeneti kulcs/érték párok alakítja sorokat, és azt hírcsatornák, hogy a sorokat a [stdin] [ stdin-stdout-stderr] a folyamat.
 
-Időközben a nyomáscsökkentő gyűjti a sor alapú kimenetét a [stdout] [ stdin-stdout-stderr] a folyamat. Átalakítja soronként egy kulcs/érték pár, amelyek a nyomáscsökkentő eredményének gyűjtése történik. Alapértelmezés szerint egy vonal, akár az első lap karakter előtag a kulcs, és a sor (kivéve a lapon megadott) további része az az érték.
+Addig is a nyomáscsökkentő gyűjti a sor alapú kimenete a [stdout] [ stdin-stdout-stderr] a folyamat. Az egyes sorok konvertál egy kulcs/érték pár, amelyek gyűjtése történik a nyomáscsökkentő kimenetét. Alapértelmezés szerint az előtag legfeljebb lap első karaktere egy vonal a kulcsot, és a sor (kivéve a tabulátor karakter) további része az az érték.
 
-**Elküldeni egy C# streaming word-count feladat**
+**Egy C# streamelési word-count feladat elküldése**
 
-* Hajtsa végre az [Word-count - Java](#word-count-java), és a feladat definíciójához cserélje le a következő sort:
+* Kövesse a [Szószámlálás – Java](#word-count-java), és cserélje le a feladat definícióját a következő sort:
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -151,18 +146,18 @@ Időközben a nyomáscsökkentő gyűjti a sor alapú kimenetét a [stdout] [ st
                             -OutputPath "/example/data/StreamingOutput/wc.txt"
     ```
 
-    A kimeneti fájl a következők:
+    A kimeneti fájlba kell:
 
         example/data/StreamingOutput/wc.txt/part-00000
 
-## <a name="hdinsight-sample-pi-estimator"></a>A PI négyzetgyökének
-A pi négyzetgyökének használja a statisztikai (látszólagos Monte Carlo) módszer a pi értékét. Véletlenszerű helyezni egy egység pontok négyzetes is tartoznak a kör területére egyenlő valószínűséggel belül, hogy szögletes ütemtervben kör pi/4. A pi értékét becsülhető 4R, ahol R az pontok, amelyek a teljes számú négyzetét belüli pontra körben aránya az értékétől. Minél nagyobb a mintában használt pontok, annál pontosabb becslést van.
+## <a name="hdinsight-sample-pi-estimator"></a>A PI estimator
+A pi estimator használ egy statisztikai (látszólagos Monte Carlo) módszer a pi értékét. Véletlenszerű helyezni egy egységet pontok négyszögletes is tartoznak, hogy szögletes belül a kör területét egyenlő valószínűséggel ütemtervben kör pi/4-es. A pi értékét megbecsülhető 4R, ahol a R belüli belül a szögletes pontok száma a kör pontok aránya az értékét. Minél nagyobb a minta használt pontokat, annál jobb a becslés van.
 
-Ez a minta a megadott parancsfájl egy Hadoop jar feladatot, amelynek beállítása legfeljebb 16 maps, amelyek mindegyike szükséges számítási 10 millió minta pontok által a paraméterértékek értékű futtassa. A paramétert értékek akkor módosíthatók pi becsült értékének növelése érdekében. Összehasonlításul az első 10 tizedesjegyek pi 3.1415926535.
+Ehhez a mintához megadott parancsfájl egy Hadoop-jar feladatot, és értéke legfeljebb 16 maps, amelyek mindegyike szükséges számítási 10 millió minta pontok által a paraméterértékek értékkel futtassa. Ezek a paraméterértékek pi becsült értékének javítására is módosítható. Referencia az első 10 tizedesjegyek pi 3.1415926535.
 
-**A pi négyzetgyökének feladat elküldése**
+**A pi estimator feladatok elküldése**
 
-* Hajtsa végre az [Word-count - Java](#word-count-java), és a feladat definíciójához cserélje le a következő sort:
+* Kövesse a [Szószámlálás – Java](#word-count-java), és cserélje le a feladat definícióját a következő sort:
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -172,25 +167,25 @@ Ez a minta a megadott parancsfájl egy Hadoop jar feladatot, amelynek beállít�
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>10 GB-os Graysort
-Ez a minta egy mérsékelt 10GB adatot használ, így viszonylag gyorsan futtatása. A MapReduce alkalmazások Owen O'Malley és Arun Murthy, amely az általános célú ("daytona") terabájt éves rendezési teljesítményteszt nyert 2009 sebességet 0.578 TB/perc (173 percben 100 TB) használja. Erről és más rendezési referenciaalapok további információkért lásd: a [Sortbenchmark](http://sortbenchmark.org/) hely.
+Ez a minta egy szerény 10GB adatot használja, így viszonylag gyorsan futtatható. A MapReduce alkalmazások Owen O'Malley és Arun Murthy, amely az általános célú ("daytona") terabájt éves rendezési teljesítményteszt megnyert 0.578 TB/perc (100 TB-os 173 percek) arány 2009 által fejlesztett használ. Erről és más rendezési referenciaalapokhoz képest történő további információkért lásd: a [Sortbenchmark](http://sortbenchmark.org/) hely.
 
-A példa a MapReduce programok három különböző használja:
+Ebben a példában három különböző MapReduce-programok:
 
-1. **TeraGen** a MapReduce program, amely a sorok rendezése adatok létrehozásához használhatja.
-2. **TeraSort** MapReduce-minták a bemeneti adatok és rendezze az adatokat egy teljes rendelés segítségével. TeraSort MapReduce funkciók, kivéve olyan egyéni particionálóval, amely minden csökkentse kulcs tartományának megadása mintát N-1 kulcsok rendezett listáját használó szabványos rendezési. Ebben az esetben, minden kulcsok ilyen mintát [i-1] < kulcs = < minta [i] kerülnek i csökkentése érdekében. Ez garantálja, hogy a kimenetének csökkentése i segédanyagokra-nál kisebb kimenete csökkentése i + 1.
-3. **TeraValidate** a MapReduce program, amely ellenőrzi, hogy a kimeneti globálisan rendezett. Fájlonként egy leképezést a kimeneti könyvtár hozna létre, és minden leképezés biztosítja, hogy minden kulcs kisebb vagy egyenlő, mint az előzőt. A térkép funkció is, ami az első és utolsó kulcsok minden egyes fájl rögzíti, és a reduce függvény biztosítja, hogy fájl i első kulcsát nagyobb, mint az utolsó fájl i-1 kulcsa. Problémák a reduce kimeneteként jelenti a kulcsokkal, amelyek nem megfelelő sorrendben.
+1. **TeraGen** van egy MapReduce-programot, amely a sorok rendezése adatok létrehozására használhatja.
+2. **TeraSort** MapReduce-minták a bemeneti adatokat és segítségével rendezze az adatokat egy teljes rendelés. TeraSort egy standard rendezési MapReduce függvények, egy egyéni partitioner mintavételezés N-1 kulcsok, amelyek meghatározzák az egyes csökkentse a tartományok rendezett listáját használó kivételével. Ebben az esetben, minden kulcs ilyen mintavételezik a [i-1] < kulcs = < [i] minta érkeznek i csökkentése érdekében. Ez garantálja, hogy a kimeneteket, csökkentse az i az összes, kevesebb, mint a kimenetét csökkentése i + 1.
+3. **TeraValidate** egy MapReduce-programot, amely ellenőrzi, hogy a kimenet globálisan rendezett van. A kimeneti könyvtárat hoz létre egy térkép fájlonként, és minden egyes térkép biztosítja, hogy minden egyes kulcs kisebb vagy egyenlő, mint az előzőre. A térkép függvény is hoz létre az első és utolsó kulcsok minden egyes fájl rögzíti, és csökkentse a függvény gondoskodik róla, hogy az első kulcsot fájl i nagyobb, mint az utolsó fájl i-1 kulcsa. Problémák az üzemen kívüli kulcsot a csökkentse kimeneteként jelenti.
 
-A bemeneti és kimeneti formátumot, mindhárom alkalmazás által használt beolvassa és a szöveges fájlt a megfelelő formátumban. A reduce kimenetét van a replikáció értéke 1, 3, alapértelmezett helyett, mivel a referenciaalap környezetével nem szükséges, hogy a kimeneti adatok továbbítása több csomópont replikálni.
+A bemeneti és kimeneti formátum, mindhárom alkalmazás által használt beolvassa és a szöveges fájlokat a megfelelő formátumban. Csökkentse a kimenetét, a replikáció értéke 1, 3, alapértelmezett helyett, mert a teljesítményteszt verseny nem igényel, hogy a kimeneti adatok továbbítása több csomóponton replikálja.
 
-A mintát, minden egyes bevezetése ismertetett MapReduce-programok három feladatok szükségesek:
+Három feladat a példaszkript, egyes megfelelő bevezető ismertetett MapReduce-programok által van szükség:
 
-1. Az adatok rendezése futtatásával létrehozása a **TeraGen** MapReduce feladatot.
-2. Az adatok rendezéséhez futtatásával a **TeraSort** MapReduce feladatot.
-3. Győződjön meg arról, hogy az adatok rendelkezik megfelelően vannak rendezve futtatásával a **TeraValidate** MapReduce feladatot.
+1. Az adatok rendezése futtatásával létrehozása a **TeraGen** MapReduce-feladatot.
+2. Rendezze az adatokat futtatásával a **TeraSort** MapReduce-feladatot.
+3. Győződjön meg arról, hogy az adatok megfelelően rendezett futtatásával a **TeraValidate** MapReduce-feladatot.
 
-**A feladatok küldéséhez**
+**A feladatok elküldése**
 
-* Hajtsa végre az [Word-count - Java](#word-count-java), és használja a következő feladatdefiníciók:
+* Kövesse a [Szószámlálás – Java](#word-count-java), és használja a következő definíciók:
 
     ```powershell
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -210,15 +205,15 @@ A mintát, minden egyes bevezetése ismertetett MapReduce-programok három felad
     ```
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk és a cikkek a minták mindegyikén megtudta, hogyan Azure PowerShell használatával a HDInsight-fürtökkel minták futtatásához. Oktatóanyagok Pig, a Hive és a MapReduce használata a hdinsight eszközzel a következő témakörökben található:
+Ez a cikk és az egyes, a minták a cikkeket útmutatóból megtudhatta, hogyan az Azure PowerShell-lel a HDInsight-fürtök a minta futtatásához. A Pig, Hive és a MapReduce használata a HDInsight kapcsolatos oktatóanyagok és az alábbi témakörökben található:
 
-* [Hadoop használatának megkezdésében a hdinsight Hive elemzéséhez mobil kézibeszélő használata][hdinsight-get-started]
-* [A Pig használata a HDInsight Hadoop][hdinsight-use-pig]
-* [A Hive használata a hdinsight Hadoop][hdinsight-use-hive]
-* [Küldje el a Hadoop-feladatokat a Hdinsightban][hdinsight-submit-jobs]
-* [Az Azure HDInsight SDK-dokumentáció][hdinsight-sdk-documentation]
+* [Hadoop első lépései a HDInsight Hive-val elemzéséhez mobil kézibeszélőt használata][hdinsight-get-started]
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-pig]
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-hive]
+* [A HDInsight Hadoop-feladatok elküldése][hdinsight-submit-jobs]
+* [Az Azure HDInsight SDK dokumentációja][hdinsight-sdk-documentation]
 
-## <a name="appendix-a---the-word-count-source-code"></a>A függelék – kódot Word száma
+## <a name="appendix-a---the-word-count-source-code"></a>A függelék – a Word száma forráskód
 
 ```java
 package org.apache.hadoop.examples;
@@ -290,8 +285,8 @@ System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 ```
 
-## <a name="appendix-b---the-word-count-streaming-source-code"></a>B függelék – a forráskód streaming szószámot
-A MapReduce program cat.exe alkalmazása egy felhasználói kezelőfelületet, hogy adatfolyamként küldje el a szöveget a konzol és a dokumentum átvitt szavak számát a reduce felület wc.exe alkalmazása. A hozzárendelést és a nyomáscsökkentő karakterek,--soronként, az adatfolyamból beolvasott szabványos bemeneti (stdin), és a szabványos kimeneti adatfolyam (stdout) írni.
+## <a name="appendix-b---the-word-count-streaming-source-code"></a>B függelék – a forráskód streamelési word száma
+A MapReduce-programot cat.exe alkalmazást leképezés adapterként közvetítése a szöveget a konzolon vagy a wc.exe alkalmazását, csökkentse felületként megszámolja a szavak dokumentum átvitt használja. A hozzárendelést és a nyomáscsökkentő standardní vstupní proud (stdin) karaktereket,--soronkénti, olvasni, és a standard kimeneti adatfolyamba (stdout) írási.
 
 ```csharp
 // The source code for the cat.exe (Mapper).
@@ -325,7 +320,7 @@ namespace cat
 }
 ```
 
-A leképező a fájlban lévő kódot cat.cs használ egy [StreamReader] [ streamreader] olvassa el a karaktereket a bejövő streamből a konzolt, majd a statikus astandardkimenetiadatfolyambavalóírásaazadatfolyam-objektum[ Console.WriteLine("a(z)] [ console-writeline] metódust.
+A teljesítményleképező kód a cat.cs fájlban egy [StreamReader] [ streamreader] olvassa el a karaktereket a konzolt, majd írja a streamet, a standard kimeneti adatfolyamba, a statikus bejövőadatfolyam-objektum[ Console.WriteLine("a(z)] [ console-writeline] metódust.
 
 ```csharp
 // The source code for wc.exe (Reducer) is:
@@ -374,10 +369,10 @@ namespace wc
 }
 ```
 
-A nyomáscsökkentő a fájlban lévő kódot wc.cs használ egy [StreamReader] [ streamreader] karakterek az adatfolyamból beolvasott szabványos bemeneti, kimeneti a cat.exe hozzárendelő már objektumot. Mivel a karakterből állhat, és olvassa be a [Console.WriteLine("a(z)] [ console-writeline] módszer, megszámlálja a szavakat alapján szóközök és a sor végén karakterek minden szó végén. Ezután ír az összes a szabványos kimeneti adatfolyam a [Console.WriteLine("a(z)] [ console-writeline] metódust.
+A nyomáscsökkentő kód a wc.cs fájlban egy [StreamReader] [ streamreader] karakterek olvasni a standardní vstupní proud, amelyeket a cat.exe eseményleképező kimenete objektum. Olvassa be, hogy az a karakter, a [Console.WriteLine("a(z)] [ console-writeline] metódus számolja a szavakat leltár a tárolóhelyek és a sor végén karakterek végén található minden egyes szó szerint. A standard kimeneti adatfolyamba, a teljes majd ír a [Console.WriteLine("a(z)] [ console-writeline] metódust.
 
-## <a name="appendix-c---the-pi-estimator-source-code"></a>C függelék – a Pi négyzetgyökének forráskód
-A pi négyzetgyökének Java-kódot, amely tartalmazza a hozzárendelést és nyomáscsökkentő funkciók az alábbi hálózatfelügyeleti érhető el. A leképező program hoz létre a megadott számú véletlenszerű helyezni egy egységre négyszög pontok, és majd megszámlálása ezen pontok, amelyek a körben. A nyomáscsökkentő program pontok által a mappers megszámlált összesít, és ezután becslése a képlet 4R, ahol R a teljes számú négyzetét belüli pontra körben számítanak pontok száma aránya a pi értékét.
+## <a name="appendix-c---the-pi-estimator-source-code"></a>C függelék – a Pi estimator forráskód
+A pi estimator Java-kóddal, amely tartalmazza a teljesítményleképező és nyomáscsökkentő függvények az alábbi ellenőrzés érhető el. A eseményleképező program véletlenszerű helyezni egy egység szögletes pontok megadott számú állít elő, és majd megszámlálja azokat a körben pontokat. A nyomáscsökkentő program a leképező által számlált pontok gyűlnek, és ezután becslése a képlet 4R, ahol az R a belül belül a szögletes pontok száma a kör számítanak pontok aránya a pi értékét.
 
 ```java
 /**
@@ -715,8 +710,8 @@ System.exit(ToolRunner.run(null, new PiEstimator(), argv));
 }
 ```
 
-## <a name="appendix-d---the-10gb-graysort-source-code"></a>D – 10 GB-os graysort forráskódját függelék
-A kódját a TeraSort MapReduce program számára jelenik meg a vizsgálathoz ebben a szakaszban.
+## <a name="appendix-d---the-10gb-graysort-source-code"></a>D függelék – a 10 GB-os graysort forráskód
+A kód a TeraSort MapReduce-programot a vizsgálatra ebben a szakaszban jelennek meg.
 
 ```java
 /**

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: f44f47129a1d989422d25b7f0c5c55c1d229c07e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1cf67b61d330363690aea1da706e8cce4700ddcd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129006"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618682"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
 
@@ -56,22 +56,20 @@ Mivel azonban metaadatokról van szó, ezek a részletes hibakereséshez nem fel
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A függőségi ügynök az OMS-ügynöktől függ a Log Analyticsszel való kapcsolatait illetően. Ez azt jelenti, hogy a kiszolgálón először telepíteni és konfigurálni kell az OMS-ügynököt, és ezután lehet telepíteni a függőségi ügynököt. A következő táblázat ismerteti a Wire Data megoldás által támogatott csatlakoztatott forrásokat:
+A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A függőségi ügynök attól függ, hogy a Log Analytics-ügynököket a Log Analytics-kapcsolatok. Ez azt jelenti, hogy egy kiszolgáló rendelkeznie kell a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök. A következő táblázat ismerteti a Wire Data megoldás által támogatott csatlakoztatott forrásokat:
 
 | **Csatlakoztatott forrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
-| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Az [OMS-ügynök](log-analytics-windows-agent.md) mellett a Windows-ügynököknek a Microsoft függőségi ügynökre is szükségük van. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> Az [OMS-ügynök](log-analytics-quick-collect-linux-computer.md) mellett a Linux-ügynököknek a Microsoft függőségi ügynökre is szükségük van. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) szakaszban. |
-| System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](log-analytics-om-agents.md) tartoznak. <br><br> Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. Az adatok a felügyeleti csoportból a Log Analyticsbe lesznek továbbítva. |
+| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Mellett a [Log Analytics-ügynököket for Windows](log-analytics-windows-agent.md), Windows-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> Mellett a [Linuxhoz készült Log Analytics-ügynök](log-analytics-quick-collect-linux-computer.md), Linux-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) szakaszban. |
+| System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](log-analytics-om-agents.md) tartoznak. <br><br> Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
 | Azure Storage-fiók | Nem | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
 
-Windows rendszeren a System Center Operations Manager és a Log Analytics egyaránt a Microsoft Monitoring Agent (MMA) segítségével gyűjti össze és továbbítja az adatokat. A kontextustól függően az ügynök neve lehet System Center Operations Manager-ügynök, OMS-ügynök, Log Analytics-ügynök, MMA vagy közvetlen ügynök. A System Center Operations Manager és Log Analytics által biztosított MMA-verziók kis mértékben különböznek. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.
+Windows rendszeren a System Center Operations Manager és a Log Analytics egyaránt a Microsoft Monitoring Agent (MMA) segítségével gyűjti össze és továbbítja az adatokat. A környezettől függően az ügynököt a System Center Operations Manager ügynök, az OMS-ügynök, Log Analytics-ügynököket, az MMA vagy közvetlen ügynök nevezzük. A System Center Operations Manager és Log Analytics által biztosított MMA-verziók kis mértékben különböznek. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.
 
-Linux rendszeren a linuxos OMS-ügynök gyűjti össze és továbbítja az adatokat a Log Analyticsbe. A Wire Data olyan kiszolgálókon használható, amelyek rendelkeznek közvetlen OMS-ügynökkel, vagy egy System Center Operations Manager-beli felügyeleti csoporthoz tartoznak.
+A Linuxhoz készült Log Analytics-ügynök Linux rendszeren gyűjt, és adatokat küld a Log Analytics. Átviteli adatok közvetlenül csatlakozik a Log Analytics-ügynökökkel kiszolgálókon, vagy olyan kiszolgálókra, amelyek a System Center Operations Manager felügyeleti csoportok keresztül csatlakozik, a Log Analytics használható.
 
-Ez a cikk minden ügynökre az _OMS-ügynökként_ hivatkozik, függetlenül attól, hogy az ügynök Linux vagy Windows rendszerű, illetve hogy egy System Center Operations Manager-felügyeleti csoporthoz vagy közvetlenül a Log Analyticshez csatlakozik. Az ügynök konkrét üzemelő példányának nevét csak akkor használjuk, ha a kontextus miatt szükség van rá.
-
-Maga a függőségi ügynök nem közvetít adatokat, ezért nem igényli a tűzfalak vagy portok semmilyen módosítását. A Wire Data adatait mindig az OMS-ügynök továbbítja a Log Analyticsbe, vagy közvetlenül, vagy az OMS-átjárón keresztül.
+Maga a függőségi ügynök nem közvetít adatokat, ezért nem igényli a tűzfalak vagy portok semmilyen módosítását. Az átviteli adatok mindig továbbított adatok által a Log Analytics-ügynököket a Log Analyticsbe, vagy közvetlenül az OMS Gatewayen keresztül.
 
 ![ügynök diagram](./media/log-analytics-wire-data/agents.png)
 
@@ -80,7 +78,7 @@ Ha a System Center Operations Managert használja és a felügyeleti csoportja c
 - Nincs szükség további konfigurációra, ha a System Center Operations Manager hozzáfér az internethez, hogy csatlakozni tudjon a Log Analyticshez.
 - Az OMS-átjárót akkor kell konfigurálni a System Center Operations Managerhez, ha a System Center Operations Manager-ügynökök az interneten keresztül nem érik el a Log Analyticset.
 
-A közvetlen ügynök használata esetén magát az OMS-ügynököt kell konfigurálni, hogy csatlakozzon a Log Analyticshez vagy az OMS-átjáróhoz. Az OMS-átjárót letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=52666).
+Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem lehet csatlakozni a szolgáltatáshoz, a Log Analytics-ügynök csatlakoztatása a Log Analytics használatával az OMS-átjáró konfigurálása szeretné. Az OMS-átjárót letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

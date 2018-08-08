@@ -1,34 +1,30 @@
 ---
-title: Hozzon létre HBase-fürtökkel egy virtuális hálózat - Azure |} Microsoft Docs
-description: Ismerkedés az Azure HDInsight HBase használatával. Útmutató a HDInsight HBase fürtök létrehozása az Azure-beli virtuális hálózathoz.
+title: HBase-fürtök létrehozása a virtuális hálózat – Azure
+description: Az Azure HDInsight HBase használatának első lépései. Útmutató a HDInsight HBase-fürtök létrehozása az Azure Virtual Network.
 keywords: ''
 services: hdinsight,virtual-network
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 8de8e446-f818-4e61-8fad-e9d38421e80d
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: edcfa47eee0f085bad415be0d9b112bbc33c3eca
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 33aba330735c53499a472f7e90d350c4edd54c41
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31521605"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592907"
 ---
-# <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Hozzon létre HBase-fürtökkel a HDInsight az Azure-beli virtuális hálózathoz
-Útmutató az Azure HDInsight HBase-fürtök létrehozása egy [Azure Virtual Network][1].
+# <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Az Azure virtuális hálózaton található HDInsight HBase-fürtök létrehozása
+Ismerje meg, hogyan hozhat létre az Azure HDInsight HBase-fürtök egy [Azure Virtual Network][1].
 
-A virtuális hálózati integráció HBase-fürtökkel telepíthetők az alkalmazások azonos virtuális hálózaton, hogy az alkalmazások közvetlenül kommunikálhatnak a HBase. A következő előnyöket nyújtja:
+Virtuális hálózati integráció, a HBase-fürtök telepíthetők az alkalmazások azonos virtuális hálózaton, hogy az alkalmazások közvetlenül kommunikálhatnak a HBase. Az előnyök:
 
-* Közvetlen kapcsolatot a webes alkalmazás csomópontjának a HBase-fürtöt, amely lehetővé teszi a kommunikációt keresztül HBase Java távoli eljáráshívásnak (RPC) API-k hívható.
-* Javítja a teljesítményt a forgalom nem rendelkezik több átjárók és terheléselosztók lépjen.
-* A képes-e feldolgozni bizalmas adatokat több biztonságos elérését anélkül, hogy egy nyilvános végpontot.
+* A HBase-fürtöt, amely lehetővé teszi a távoli eljáráshívás HBase Java-kommunikációra, a csomópontok a webalkalmazás közvetlen kapcsolódás (RPC) API-jainak hívására.
+* Továbbfejlesztett teljesítmény szerint nem rendelkezik a forgalmat több átjárók és terheléselosztók lépjen.
+* Bizalmas adatok feldolgozása még biztonságosabb módon anélkül, hogy egy nyilvános végpontot lehetővé teszi.
 
 ### <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
@@ -36,81 +32,81 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Munkaállomás Azure PowerShell-lel**. Lásd: [telepítése és használata az Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/).
 
-## <a name="create-hbase-cluster-into-virtual-network"></a>HBase-fürt a virtuális hálózat létrehozása
-Ebben a szakaszban egy Linux-alapú HBase fürt létrehozása a függő Azure Storage-fiók egy Azure-beli virtuális hálózat használatával egy [Azure Resource Manager sablon](../../azure-resource-manager/resource-group-template-deploy.md). Egyéb Fürtlétrehozási módszerekhez és a beállítások ismertetése, lásd: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md). Hdinsight Hadoop-fürtök létrehozása sablon használatával kapcsolatos további információkért lásd: [létrehozása Hadoop-fürtök Azure Resource Manager-sablonok használata a hdinsightban](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+## <a name="create-hbase-cluster-into-virtual-network"></a>Virtuális hálózatban a HBase-fürt létrehozása
+Ebben a szakaszban egy Linux-alapú HBase-fürt létrehozása az Azure virtual network használatával a függő Azure Storage-fiók egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-template-deploy.md). Egyéb Fürtlétrehozási módszerekhez és az beállításainak ismertetése, lásd: [létre HDInsight-fürtök](../hdinsight-hadoop-provision-linux-clusters.md). A HDInsight Hadoop-fürtök létrehozása sablon használatával kapcsolatos további információkért lásd: [Hadoop-fürtök létrehozása a HDInsight az Azure Resource Manager-sablonok használatával](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
 > [!NOTE]
-> Néhány tulajdonság kódolva a sablonba. Példa:
+> Egyes tulajdonságok módosíthatóként a sablonba. Példa:
 >
-> * **Hely**: USA keleti régiója 2. régiója
+> * **Hely**: USA keleti RÉGIÓJA 2
 > * **Fürt verziója**: 3.6
-> * **A fürt feldolgozó csomópontok száma**: 2. régiója
-> * **Alapértelmezett tárfiók**: egy egyedi karakterlánc
-> * **Virtuális hálózati név**: &lt;fürt neve >-hálózatok
+> * **A fürt munkavégző csomópontok száma**: 2
+> * **Storage-fiók alapértelmezett**: egy egyedi karakterlánccá
+> * **Virtuális hálózat neve**: &lt;fürt neve >-vnet
 > * **Virtuális hálózat címtere**: 10.0.0.0/16
-> * **Alhálózati név**: Alhalozat_1
-> * **Alhálózati címtartományt**: 10.0.0.0/24
+> * **Alhálózat neve**: subnet1
+> * **Alhálózati címtartomány**: 10.0.0.0/24
 >
-> &lt;A fürt neve > helyére a fürt neve a sablon használata esetén adja meg.
+> &lt;Fürt neve > helyére a fürt nevét, adja meg a sablon használata esetén.
 >
 >
 
-1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon található [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
+1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablonban található [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Az a **egyéni telepítési** panelen adja meg a következő tulajdonságokkal:
+2. Az a **egyéni üzembe helyezés** panelen adja meg a következő tulajdonságokat:
 
-   * **Előfizetés**: válassza ki a HDInsight-fürthöz, a függő tárfiókot és az Azure virtuális hálózat létrehozásához használt Azure-előfizetéssel.
-   * **Erőforráscsoport**: válasszon **hozzon létre új**, és adjon meg egy új erőforráscsoport neve.
+   * **Előfizetés**: válassza ki a HDInsight-fürtöt, a függő tárfiókot és az Azure virtuális hálózat létrehozásához használt Azure-előfizetés.
+   * **Erőforráscsoport**: válasszon **új létrehozása**, és a egy új erőforráscsoport-nevet adja meg.
    * **Hely**: Válasszon egy helyet az erőforráscsoportnak.
    * **ClusterName**: Adja meg a létrehozandó Hadoop-fürt nevét.
    * **A fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az **admin**.
    * **SSH-felhasználónév és jelszó**: Az alapértelmezett felhasználónév az **sshuser**.  Ezt át lehet nevezni.
-   * **Elfogadom a feltételeket és a fenti feltételek**: (válassza ki)
-3. Kattintson a **Purchase** (Vásárlás) gombra. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. A fürt létrehozása után kattintson a portálon, hogy megnyissa a fürt paneljén.
+   * **Elfogadom a feltételeket és a fenti feltételeket**: (válasszon)
+3. Kattintson a **Purchase** (Vásárlás) gombra. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. Miután a fürt létrejött, kattintson a portálon nyissa meg a fürt paneljén.
 
-Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. A fürtök törlésével utasításokért lásd: [kezelése Hadoop-fürtök a HDInsight az Azure portál használatával](../hdinsight-administer-use-management-portal.md#delete-clusters).
+Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. A fürtök törlésével az utasításokért lásd: [kezelése Hadoop-fürtök a HDInsight az Azure portal használatával](../hdinsight-administer-use-management-portal.md#delete-clusters).
 
-Az új HBase fürtöt használatának megkezdése előtt, akkor az eljárásokkal található [HBase a Hadoop HDInsight használatának megkezdésében](./apache-hbase-tutorial-get-started-linux.md).
+Az új HBase-fürt használatának megkezdése előtt, használhatja a található eljárások [HBase első lépései a HDInsight Hadoop-keretrendszerrel](./apache-hbase-tutorial-get-started-linux.md).
 
-## <a name="connect-to-the-hbase-cluster-using-hbase-java-rpc-apis"></a>A HBase Java RPC API-val HBase-fürtöt kapcsolódni
-1. Hozzon létre egy infrastruktúra (IaaS) szolgáltatás virtuális gépként az azonos Azure virtuális hálózat és az ugyanazon az alhálózaton. Egy új infrastruktúra-szolgáltatási virtuális gép létrehozása, lásd: [hozzon létre egy virtuális gép futó Windows Server](../../virtual-machines/windows/quick-create-portal.md). Ha ez a dokumentum lépéseit követve, a hálózati konfiguráció a következő értékeket kell használnia:
+## <a name="connect-to-the-hbase-cluster-using-hbase-java-rpc-apis"></a>Csatlakozás HBase Java RPC API-val HBase-fürt
+1. Hozzon létre egy infrastruktúra szolgáltatás (IaaS) virtuális gép ugyanabban az Azure virtuális hálózatban, és ugyanahhoz az alhálózathoz. Új IaaS virtuális gép létrehozásával kapcsolatos útmutatóért lásd: [hozzon létre egy virtuális gépen futó Windows Server](../../virtual-machines/windows/quick-create-portal.md). A jelen dokumentum lépéseit követve a következőket, amikor a hálózati konfigurációt a következő értékeket kell használnia:
 
-   * **Virtuális hálózati**: &lt;fürt neve >-hálózatok
-   * **Alhálózati**: Alhalozat_1
+   * **Virtuális hálózat**: &lt;fürt neve >-vnet
+   * **Alhálózat**: subnet1
 
    > [!IMPORTANT]
-   > Cserélje le &lt;fürtnév > az előző lépésben a HDInsight-fürt létrehozásakor használt név.
+   > Cserélje le &lt;fürt neve > néven az előző lépésekben a HDInsight-fürt létrehozásakor használt.
    >
    >
 
-   Ezeket az értékeket használja, a virtuális gép el van helyezve a azonos virtuális hálózati és alhálózati a HDInsight-fürttel. Ez a konfiguráció lehetővé teszi, hogy azokat közvetlenül kommunikálhatnak egymással. Nincs olyan módon, egy üres élcsomópontot HDInsight-fürtöt létrehozni. Élcsomópont használható a fürt kezeléséhez.  További információkért lásd: [üres peremhálózati csomópontok használata a Hdinsightban](../hdinsight-apps-use-edge-node.md).
+   Ezeket az értékeket használja, a virtuális gép bekerül az azonos virtuális hálózatot és alhálózatot a HDInsight-fürttel. Ez a konfiguráció lehetővé teszi, hogy azokat közvetlenül kommunikálnak egymással. Az üres élcsomópontot egy HDInsight-fürt létrehozásának egyik módja van. Az élcsomópont a fürt kezelésére használható.  További információkért lásd: [üres élcsomópontok használata a HDInsight](../hdinsight-apps-use-edge-node.md).
 
-2. Java-alkalmazások távolról csatlakozni a HBase használatakor a teljesen minősített tartománynevét (FQDN) kell használnia. Ennek meghatározásához, ha előbb telepítik azokra a kapcsolatspecifikus DNS-utótagja a HBase-fürtöt. Ehhez a következő módszerek egyikét használhatja:
+2. Ha a Java-alkalmazás használatával távolról csatlakozhat a HBase, a teljesen minősített tartománynevét (FQDN) kell használnia. Ennek meghatározásához, be kell szereznie a kapcsolatspecifikus DNS-utótagja a HBase-fürtnek. Ehhez a következő módszerek egyikét használhatja:
 
-   * Egy webes böngésző segítségével az Ambari hívást:
+   * Egy webes böngésző használatával-Ambari hívás:
 
-     Keresse meg a https://&lt;ClusterName >.azurehdinsight.net/api/v1/clusters/&lt;ClusterName > / üzemeltető? minimal_response = true. A JSON-fájl, a DNS-utótagok változik.
-   * Az Ambari webhelyet használja:
+     Keresse meg a https://&lt;ClusterName >.azurehdinsight.net/api/v1/clusters/&lt;ClusterName > / tároló? minimal_response = true. Kapcsolódó egy JSON-fájlt, a DNS-utótagot.
+   * Az Ambari webhelyet használják:
 
-     1. Keresse meg a https://&lt;ClusterName >. azurehdinsight.net.
-     2. Kattintson a **állomások** a felső menüben.
-   * A REST-hívások Curl használja:
+     1. Keresse meg a https://&lt;ClusterName >. azurehdinsight.NET formátumban van.
+     2. Kattintson a **gazdagépek** a felső menüben.
+   * REST-hívásokat Curl használata:
 
     ```bash
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
     ```
 
-     A JavaScript Object Notation (JSON) visszaadott adatok keresse meg a "gazdaszámítógép_neve" bejegyzés. A fürt a csomópontok teljes Tartománynevét tartalmaz. Példa:
+     A JavaScript Object Notation (JSON) visszaadott adatok keresse meg a "gazdaszámítógép_neve" bejegyzés. Tartalmazza a fürtben lévő csomópontok teljes Tartománynevét. Példa:
 
          ...
          "host_name": "wordkernode0.<clustername>.b1.cloudapp.net
          ...
 
-     A tartomány nevét-tól kezdődően a fürt neve része a DNS-utótagot. Például mycluster.b1.cloudapp.net.
+     A fürt nevét tartomány nevét kezdetű része a DNS-utótagot. Ha például mycluster.b1.cloudapp.net.
    * Azure PowerShell használatával
 
-     A következő Azure PowerShell-parancsfájl segítségével regisztrálja a **Get-ClusterDetail** függvénynek, amely segítségével adja vissza a DNS-utótag:
+     A következő Azure PowerShell-parancsfájl segítségével regisztrálja a **Get-ClusterDetail** függvény, amely segítségével adja vissza a DNS-utótag:
 
     ```powershell
         function Get-ClusterDetail(
@@ -204,13 +200,13 @@ Az új HBase fürtöt használatának megkezdése előtt, akkor az eljárásokka
         }
     ```
 
-     Az Azure PowerShell parancsprogram futtatása után az alábbi parancs segítségével a DNS-utótag használatával adja vissza a **Get-ClusterDetail** függvény. Ez a parancs használata esetén adja meg a HDInsight HBase fürt nevét, a felügyeleti neve és a rendszergazdai jelszó.
+     Az Azure PowerShell-szkript futtatása után az alábbi parancs segítségével a DNS-utótag használatával adja vissza a **Get-ClusterDetail** függvény. Ez a parancs használata esetén adja meg a HDInsight HBase-fürt neve, a rendszergazda neve és a rendszergazdai jelszót.
 
     ```powershell
         Get-ClusterDetail -ClusterDnsName <yourclustername> -PropertyName FQDNSuffix -Username <clusteradmin> -Password <clusteradminpassword>
     ```
 
-     A parancs a DNS-utótagot adja vissza. Például **yourclustername.b4.internal.cloudapp.net**.
+     Ez a parancs a DNS-utótagot adja vissza. Ha például **yourclustername.b4.internal.cloudapp.net**.
 
 
 <!--
@@ -228,9 +224,9 @@ Az új HBase fürtöt használatának megkezdése előtt, akkor az eljárásokka
     5. Reboot the virtual machine.
 -->
 
-Győződjön meg arról, hogy a virtuális gép kommunikál a HBase-fürtöt, a parancs segítségével `ping headnode0.<dns suffix>` a virtuális gépről. Például a ping headnode0.mycluster.b1.cloudapp.net.
+Győződjön meg arról, hogy a virtuális gép kommunikálhatnak a HBase-fürtnek, használja a parancsot `ping headnode0.<dns suffix>` a virtuális gépről. Ha például a ping headnode0.mycluster.b1.cloudapp.net.
 
-Ezeket az információkat a Java-alkalmazások használatához hajtsa végre a lépéseket [Maven használata a hdinsight (Hadoop) eszközzel HBase használó Java-alkalmazások létrehozásához](./apache-hbase-build-java-maven-linux.md) alkalmazás létrehozása. Ahhoz, hogy az alkalmazás HBase távoli kiszolgálóhoz csatlakozik, módosítsa a **hbase-site.xml** fájl ebben a példában a Zookeeper a teljes Tartománynevet használja. Példa:
+Használja ezt az információt egy Java-alkalmazást, kövesse a lépéseket a [Maven használata a HBase a HDInsight (Hadoop)-t használó Java-alkalmazások](./apache-hbase-build-java-maven-linux.md) alkalmazás létrehozása. Ahhoz, hogy az alkalmazás HBase távoli kiszolgálóhoz csatlakozik, módosítsa a **hbase-site.xml** ebben a példában a teljes tartománynév használata Zookeeper fájlt. Példa:
 
     <property>
         <name>hbase.zookeeper.quorum</name>
@@ -238,17 +234,17 @@ Ezeket az információkat a Java-alkalmazások használatához hajtsa végre a l
     </property>
 
 > [!NOTE]
-> További információ a névfeloldás az Azure-ban virtuális hálózatok, beleértve a saját DNS-kiszolgáló használata: [Name (DNS) névfeloldási](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+> Az Azure-ban a névfeloldással kapcsolatos további információk virtuális hálózatok, beleértve a saját DNS-kiszolgáló használata: [neve (DNS) névfeloldási](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban megtudta, hogyan hozhat létre HBase-fürtöt. További tudnivalókért lásd:
+Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre HBase-fürtöt. További tudnivalókért lásd:
 
-* [Első lépései a hdinsight eszközzel](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Üres peremhálózati csomópontok használata a Hdinsightban](../hdinsight-apps-use-edge-node.md)
+* [HDInsight – első lépések](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Üres élcsomópontok használata a HDInsight](../hdinsight-apps-use-edge-node.md)
 * [HBase-replikálás konfigurálása a HDInsightban](apache-hbase-replication.md)
-* [Hdinsight Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
+* [A HDInsight Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
 * [A HBase és a Hadoop használatának első lépései a HDInsightban](./apache-hbase-tutorial-get-started-linux.md)
 * [A Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 

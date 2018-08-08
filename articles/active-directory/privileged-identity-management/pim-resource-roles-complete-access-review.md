@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3b27e4e26899b27557bdac4371283a8095847c94
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: f1fc23afb41753bfe358cb05376a5ee9a07e34fd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257776"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620042"
 ---
 # <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások hozzáférési felülvizsgálat befejezése a Privileged Identity Management használatával
 A kiemelt szerepkörű rendszergazdák tekintheti át az emelt szintű hozzáférés után egy [el lett indítva a hozzáférési felülvizsgálat](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) az Azure-erőforrások automatikus küld egy e-mailt, amely kéri a felhasználóktól, tekintse át a hozzáférésüket. Ha a felhasználó nem kap egy e-mailt, küldhet nekik az utasításokat [hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md).
@@ -46,13 +46,13 @@ Minden hozzáférési felülvizsgálatok a befejező dátum rendelkezik, de hasz
 ### <a name="reset"></a>Alaphelyzetbe állítás
 Alaphelyzetbe állíthatja a hozzáférési felülvizsgálat rajta az összes döntések eltávolítása. Miután ezzel alaphelyzetbe állítja a hozzáférési felülvizsgálat, minden felhasználó be vannak-e megjelölve felülvizsgálatát újra. 
 
-### <a name="apply"></a>Jelentkezés
+### <a name="apply"></a>Alkalmaz
 Hozzáférési felülvizsgálat befejezése után használja a **alkalmaz** gomb a felülvizsgálat eredményének megvalósításához. Ha a felhasználó megtagadja a felülvizsgálati, ez a lépés eltávolítja a szerepkör-hozzárendelés.  
 
 ### <a name="delete"></a>Törlés
 Ha nem szeretne a felülvizsgálat kapcsolatban, törölje azt. A **törlése** gomb a felülvizsgálat távolít el a PIM alkalmazást.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 Az a **eredmények** lapon megtekintheti, letöltheti a felülvizsgálati eredmények listáját. 
 ![Eredmények lap](media/azure-pim-resource-rbac/rbac-access-review-results.png)
 

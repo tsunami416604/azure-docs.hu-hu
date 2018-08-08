@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2621c4e3ef3425f5a44d78ed5ceb529110c18f4c
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 985ea1f16cff010041d61d808280cb47f2b77aa9
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365122"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618359"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Távolról az Azure AD-alkalmazásproxy-alkalmazások eléréséhez szükséges biztonsági szempontok
 
@@ -46,7 +46,7 @@ Ha csatlakoztatott legyen a előhitelesítési módszer, ezzel az értékelemmel
 
 A hálózati kapcsolatot létesít alkalmaznia gazdagabb szabályzati vezérlőket.
 
-A [feltételes hozzáférési](../active-directory-conditional-access-azure-portal-get-started.md), korlátozásokat definiálhat a forgalmat a háttér-alkalmazások hozzáférhetnek. Amelyek korlátozzák a bejelentkezések hely, a hitelesítés és felhasználói kockázatú profil erőssége alapján szabályzatokat hozhat létre.
+A [feltételes hozzáférési](../conditional-access/overview.md), korlátozásokat definiálhat a forgalmat a háttér-alkalmazások hozzáférhetnek. Amelyek korlátozzák a bejelentkezések hely, a hitelesítés és felhasználói kockázatú profil erőssége alapján szabályzatokat hozhat létre.
 
 Feltételes hozzáférés használatával újabb biztonsági réteget ad hozzá a felhasználói hitelesítések multi-factor Authentication hitelesítési házirendek konfigurálása. 
 

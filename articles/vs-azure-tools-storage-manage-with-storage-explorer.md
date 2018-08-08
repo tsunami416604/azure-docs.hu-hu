@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: b41b1fcb437dac381a17bef4f1e5a7cebe213b98
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 329653e7494d2f993acb462d7d989db07a18f790
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435915"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600863"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer használatának első lépései
 
@@ -118,14 +118,14 @@ Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
 
 ## <a name="work-with-local-development-storage"></a>Munkavégzés helyi fejlesztési tárterülettel
 
-A Storage Explorer az emulator használatával helyi tárterületen is működik. Ez a megközelítés lehetővé teszi szimulálása az Azure Storage használatához egy Azure-ban üzembe helyezett tárfiókra feltétlenül nélkül.
+A Storage Explorer használatával használhatja, helyi tárterülettel rendelkező egy emulator használatával. Ez a megközelítés lehetővé teszi szimulálása az Azure Storage használatához egy Azure-ban üzembe helyezett tárfiókra feltétlenül nélkül.
 
 Helyi storage emulator támogatott 1.1.0-s kezdve minden platformon. Storage Explorer csatlakozhat bármely emulált szolgáltatás az alapértelmezett helyi tárterület-végpontokra irányuló figyel.
 
 > [!NOTE]
 > Tárolási szolgáltatások és funkciók támogatása széles körben emulátor válaszaitól függően változhat. Győződjön meg arról, hogy az emulátor támogatja-e a szolgáltatásokat és funkciókat kíván dolgozni.
 
-1. Az emulátor, az alapértelmezett végpontok a figyelni kívánt konfigurálása.
+1. Konfigurálja a szolgáltatások az emulátor választott egy nem használt portot figyeli.
 
    Az emulált szolgáltatás | Alapértelmezett végpont
    -----------------|-------------------------
@@ -134,16 +134,19 @@ Helyi storage emulator támogatott 1.1.0-s kezdve minden platformon. Storage Exp
    Táblák           | `http://127.0.0.1:10002`
 
 2. Indítsa el az emulátort.
+   > [!IMPORTANT]
+   > Storage Explorer nem indul el automatikusan az emulátort. El kell indítania azt saját magának.
 
-3. A Storage Explorer bal oldali ablaktábláján, bontsa ki a **(helyi és csatolt)** > **Tárfiókok** > **(fejlesztés)** csomópont.
+3. A Storage Explorerben kattintson a **fiók hozzáadása** gombra. Válassza ki **helyi emulátort csatolása** kattintson **tovább**.
+
+4. Adja meg a portszámot (hagyja üresen, ha nem kívánja használni, hogy a szolgáltatás) fent konfigurált szolgáltatások. Kattintson a **tovább** majd **Connect** a kapcsolat létrehozásához.
+
+5. Bontsa ki a **helyi és csatolt** > **Tárfiókok** > csomópontokat, majd bontsa ki a megfelelő az emulator kapcsolati csomópont alatt a szolgáltatás csomópontok.
 
    Ez a csomópont használatával a helyi blobokat, üzenetsorokat és táblákat létrehozását és használatát. Az egyes tárfióktípusok kezelésével kapcsolatos, tekintse meg a következő útmutatókat:
 
    * [Azure Blob storage-erőforrások kezelése](vs-azure-tools-storage-explorer-blobs.md)
    * [Az Azure File storage-erőforrások kezelése](vs-azure-tools-storage-explorer-files.md)
-
-> [!NOTE]
-> Storage Explorer csak támogatja az alapértelmezett végpontok használata helyi emulátor csatlakozik. Az emulator indításakor ellenőrizze, hogy csak az alapértelmezett végpontok vannak konfigurálva.
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>Külső tárfiók csatolása vagy leválasztása
 

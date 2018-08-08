@@ -1,24 +1,20 @@
 ---
-title: Deep dive - advanced analytics – Azure HDInsight |} A Microsoft Docs
+title: Deep dive - advanced analytics – Azure HDInsight
 description: Ismerje meg, hogyan fejlett analitikai algoritmusokat használ a big Data típusú adatok feldolgozásához.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: a6db6b7f1a0e81867a1db75ed3b31a38a8dbdeb0
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ad1c96d1d1578489ae16b61e67a73f02cd461e0e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213537"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591907"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Részletes bemutatása – speciális elemzés
 
@@ -28,7 +24,7 @@ HDInsight lehetővé teszi a nagy mennyiségű strukturált és strukturálatlan
 
 ## <a name="advanced-analytics-process"></a>Fejlett analitikai folyamat
 
-![Folyamat](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Feldolgozás](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
 Után, az üzleti probléma azonosítása és gyűjtése elindította, és az adatok feldolgozása, létrehoz egy modellt, amely a kérdést kell előre jelezni kívánt. A modell egy vagy több gépi tanulási algoritmusok használatával győződjön meg a legjobban az Ön üzleti igényeinek előrejelzése típusát.  A legtöbb az adatokat a modell betanításához teszteléséhez vagy kiértékeléséhez, a többi használandó. 
 
@@ -114,7 +110,7 @@ Az adatkészlet képzési 50 000 képkészlet és tesztelési 10 000 képkészle
 
 A teljes előfeldolgozása/pontozás 10 000 rendszerképet tart a kevesebb mint egy perc 4 feldolgozó csomóponttal rendelkező fürt. A modell felel meg pontosan előrejelzi a címkék ~ 9,100 (91 %) lemezképek. Egy keveredési mátrixot a leggyakrabban használt besorolási hibák mutatja be. Például a mátrix kutyák macskák, és ez fordítva is igaz mislabeling történik, hogy látható-e nagyobb gyakran más címkét párokhoz.
 
-![Eredmények](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
+![Results (Eredmények)](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
 
 ### <a name="try-it-out"></a>Próbálja ki!
 

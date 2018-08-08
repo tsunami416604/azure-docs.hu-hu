@@ -16,12 +16,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: bb1f53b2ea014bfc8e658cf840e0a22368ba9f7c
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 90b8a9bd45d2c6a8551e3af84a5bfa915f4c3cea
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579663"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592203"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Alkalmazások integrálása az Azure Active Directoryval
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -46,8 +46,8 @@ Minden olyan alkalmazás, amely az Azure ad-ben funkcióinak használatát szere
 
   - **Name:** adjon meg egy kifejező alkalmazásnevet
   - **Alkalmazás típusa:** 
-    - Válassza ki a "Natív" a [ügyfélalkalmazások](active-directory-dev-glossary.md#client-application) telepített helyileg az eszközön. Ezzel a beállítással OAuth nyilvános [natív ügyfelek](active-directory-dev-glossary.md#native-client).
-    - Jelölje be "webalkalmazás / API" a [ügyfélalkalmazások](active-directory-dev-glossary.md#client-application) és [erőforrás és az API-alkalmazások](active-directory-dev-glossary.md#resource-server) biztonságos kiszolgálón telepített. Ezzel a beállítással az OAuth bizalmas [webes ügyfél](active-directory-dev-glossary.md#web-client) és nyilvános [felhasználói ügynök-alapú ügyfelek](active-directory-dev-glossary.md#user-agent-based-client). Egy ügyfél- és erőforrás és az API, ugyanazt az alkalmazást is közzéteheti.
+    - Válassza ki a "Natív" a [ügyfélalkalmazások](developer-glossary.md#client-application) telepített helyileg az eszközön. Ezzel a beállítással OAuth nyilvános [natív ügyfelek](developer-glossary.md#native-client).
+    - Jelölje be "webalkalmazás / API" a [ügyfélalkalmazások](developer-glossary.md#client-application) és [erőforrás és az API-alkalmazások](developer-glossary.md#resource-server) biztonságos kiszolgálón telepített. Ezzel a beállítással az OAuth bizalmas [webes ügyfél](developer-glossary.md#web-client) és nyilvános [felhasználói ügynök-alapú ügyfelek](developer-glossary.md#user-agent-based-client). Egy ügyfél- és erőforrás és az API, ugyanazt az alkalmazást is közzéteheti.
   - **Bejelentkezési URL-címe:** a "webalkalmazás / API" alkalmazások esetén adja meg az alkalmazás alap URL-CÍMÉT. Ha például `http://localhost:31544` lehet, hogy a helyi gépen futó webalkalmazás URL-CÍMÉT. Felhasználók használna az URL-címet a webes ügyfélalkalmazás bejelentkezni. 
   - **Átirányítási URI-ja:** "Natív" alkalmazások, adja meg az Azure AD a jogkivonatválaszok visszaadására használt URI-ja. Adja meg például egy adott értéket az alkalmazás `http://MyFirstAADApp`
 
@@ -105,7 +105,7 @@ A következő lépések bemutatják, hogyan a a jóváhagyási működik az alka
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Webes API-k eléréséhez ügyfélalkalmazás konfigurálása
 Ahhoz, hogy egy webes/bizalmas ügyfélalkalmazás egy engedélyezési megadási folyamatában, amelyhez hitelesítés szükséges részt (és a hozzáférési jogkivonat beszerzése), az azt kell létesítenie a biztonságos hitelesítő adatok. Az Azure portál által támogatott alapértelmezett hitelesítési módszere, ügyfél-Azonosítót és a titkos kulcsot. Ebben a részben adja meg a titkos kulcsot az ügyfél-hitelesítő adatok a szükséges konfigurációs lépéseket ismertetjük.
 
-Ezenkívül egy ügyfél hozzáfér a webes API-k egy erőforrás-alkalmazás (például a Microsoft Graph API) által elérhetővé tett, mielőtt a hozzájárulási keretrendszer biztosítja, hogy az ügyfél lekéri az engedély megadására, szükség esetén a kért engedélyek alapján. Alapértelmezés szerint minden alkalmazás engedélyek közül választhat "Windows Azure Active Directory" (Graph API-val) és a "Windows Azure Service Management API-t." A [Graph API "be- és olvasási felhasználói profil" engedély](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) is alapértelmezés szerint van kiválasztva. Ha az ügyfél, amely rendelkezik az Office 365-höz előfizetett fiókok bérlőben regisztrálva van folyamatban, webes API-k és a SharePoint és Exchange online-hoz is kiválasztható. Közül választhat [engedélyek két típusú](active-directory-dev-glossary.md#permissions) minden szükséges a webes API számára:
+Ezenkívül egy ügyfél hozzáfér a webes API-k egy erőforrás-alkalmazás (például a Microsoft Graph API) által elérhetővé tett, mielőtt a hozzájárulási keretrendszer biztosítja, hogy az ügyfél lekéri az engedély megadására, szükség esetén a kért engedélyek alapján. Alapértelmezés szerint minden alkalmazás engedélyek közül választhat "Windows Azure Active Directory" (Graph API-val) és a "Windows Azure Service Management API-t." A [Graph API "be- és olvasási felhasználói profil" engedély](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) is alapértelmezés szerint van kiválasztva. Ha az ügyfél, amely rendelkezik az Office 365-höz előfizetett fiókok bérlőben regisztrálva van folyamatban, webes API-k és a SharePoint és Exchange online-hoz is kiválasztható. Közül választhat [engedélyek két típusú](developer-glossary.md#permissions) minden szükséges a webes API számára:
 
 - Alkalmazásengedélyek: Az ügyfélalkalmazás hozzáféréssel kell rendelkeznie a webes API-t közvetlenül magaként (felhasználói környezet). Az ilyen típusú engedély rendszergazdai jóváhagyást igényel, és sem érhető el natív ügyfélalkalmazások esetében.
 
@@ -149,7 +149,7 @@ Ezenkívül egy ügyfél hozzáfér a webes API-k egy erőforrás-alkalmazás (p
 
 ### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Webes API-k elérhetővé egy erőforrás-alkalmazás konfigurálása
 
-Webes API-k fejlesztéséhez és elérhetővé az ügyfélalkalmazások számára teszi elérhetővé a hozzáférés [hatókörök](active-directory-dev-glossary.md#scopes) és [szerepkörök](active-directory-dev-glossary.md#roles). Egy megfelelően konfigurált webes API-hoz hasonlóan az egyéb Microsoft webes API-kat, beleértve a Graph API és az Office 365 API-k elérhetővé. A hozzáférési hatókörök és szerepkörök keresztül érhetők el a [alkalmazás jegyzékfájlját](active-directory-dev-glossary.md#application-manifest), amely egy JSON-fájlt, amely az alkalmazás identitását konfigurációs. 
+Webes API-k fejlesztéséhez és elérhetővé az ügyfélalkalmazások számára teszi elérhetővé a hozzáférés [hatókörök](developer-glossary.md#scopes) és [szerepkörök](developer-glossary.md#roles). Egy megfelelően konfigurált webes API-hoz hasonlóan az egyéb Microsoft webes API-kat, beleértve a Graph API és az Office 365 API-k elérhetővé. A hozzáférési hatókörök és szerepkörök keresztül érhetők el a [alkalmazás jegyzékfájlját](developer-glossary.md#application-manifest), amely egy JSON-fájlt, amely az alkalmazás identitását konfigurációs. 
 
 A következő szakasz bemutatja, hogyan hozzáférési hatókörök, elérhetővé az erőforrás-alkalmazás jegyzékfájlja módosításával.
 
@@ -203,10 +203,10 @@ A következő szakasz bemutatja, hogyan hozzáférési hatókörök, elérhetőv
 
 Az alkalmazásjegyzék ténylegesen az alkalmazás entitás, amely meghatározza egy Azure AD-alkalmazást identitás konfigurálására, beleértve az API a hozzáférési hatókörök már volt szó az összes attribútum frissítésére szolgáló mechanizmusként szolgál majd. Az alkalmazás entitást és a séma további információkért lásd: a [Graph API-alkalmazás entitás dokumentáció](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). A cikk tartalmazza az alkalmazás rendszerentitás-tagok az API-hoz, az engedélyek megadásához használja a teljes referenciája többek között:  
 
-- A appRoles tagja, amely gyűjtemény, [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) entitások definiálásához használt [Alkalmazásengedélyek](active-directory-dev-glossary.md#permissions) webes API-hoz. 
-- Az oauth2Permissions tag, amely gyűjtemény, [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) entitások definiálásához használt [delegált engedélyek](active-directory-dev-glossary.md#permissions) webes API-hoz.
+- A appRoles tagja, amely gyűjtemény, [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) entitások definiálásához használt [Alkalmazásengedélyek](developer-glossary.md#permissions) webes API-hoz. 
+- Az oauth2Permissions tag, amely gyűjtemény, [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) entitások definiálásához használt [delegált engedélyek](developer-glossary.md#permissions) webes API-hoz.
 
-További információ az application manifest általában a fogalmak, lásd: [az Azure Active Directory alkalmazásjegyzékének megismerése](active-directory-application-manifest.md).
+További információ az application manifest általában a fogalmak, lásd: [az Azure Active Directory alkalmazásjegyzékének megismerése](reference-app-manifest.md).
 
 ### <a name="accessing-the-azure-ad-graph-and-office-365-via-microsoft-graph-apis"></a>Az Azure AD Graph és az Office 365-höz a Microsoft Graph API-kon keresztül eléréséhez  
 
@@ -269,7 +269,7 @@ Egyetlen lap alkalmazás (gyógyfürdők) általában struktúrája JavaScript m
 
 Miután a felhasználó számára engedélyezett a jóváhagyás, ez ugyanazt a hitelesítési protokollt használható API-erőforrásokhoz az alkalmazás konfigurálva az ügyfél és a más webkiszolgáló közötti hívások biztonságossá tételéhez tokenek beszerzése érdekében. Tudjon meg többet az implicit engedélyezés megadásáról, és segít eldönteni, hogy ez az alkalmazás forgatókönyvhöz jobb: [OAuth2 implicit ismertetése adja meg az Azure Active Directoryban folyamat](v1-oauth2-implicit-grant-flow.md).
 
-OAuth 2.0 típusú implicit engedélyezés alkalmazások alapértelmezés szerint le van tiltva. Állítsa az alkalmazás OAuth 2.0 típusú Implicit engedélyezés is engedélyeznie a `oauth2AllowImplicitFlow` értéket annak [alkalmazásjegyzék](active-directory-application-manifest.md).
+OAuth 2.0 típusú implicit engedélyezés alkalmazások alapértelmezés szerint le van tiltva. Állítsa az alkalmazás OAuth 2.0 típusú Implicit engedélyezés is engedélyeznie a `oauth2AllowImplicitFlow` értéket annak [alkalmazásjegyzék](reference-app-manifest.md).
 
 #### <a name="to-enable-oauth-20-implicit-grant"></a>OAuth 2.0 típusú implicit engedélyezés engedélyezése
 
@@ -317,7 +317,7 @@ Annak érdekében, hogy távolítsa el egy több-bérlős alkalmazás-hozzáfér
 - Az Azure AD-hitelesítés működéséről további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-ben](authentication-scenarios.md).
 - Tekintse meg a [védjegyzési irányelvek integrált alkalmazások](howto-add-branding-in-azure-ad-apps.md) amely tippekkel szolgál az alkalmazás visual útmutatást.
 - Egy alkalmazás alkalmazás- és szolgáltatásnév objektumok közötti kapcsolatot további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](app-objects-and-service-principals.md).
-- További információ a szerepkört az alkalmazás jegyzékfájl fontos szerepet játszik, lásd: [az Azure Active Directory alkalmazásjegyzékének megismerése](active-directory-application-manifest.md)
-- Tekintse meg a [Azure AD fejlesztői szószedetét](active-directory-dev-glossary.md) néhány, az Azure AD fejlesztői alapfogalmakat definíciói.
+- További információ a szerepkört az alkalmazás jegyzékfájl fontos szerepet játszik, lásd: [az Azure Active Directory alkalmazásjegyzékének megismerése](reference-app-manifest.md)
+- Tekintse meg a [Azure AD fejlesztői szószedetét](developer-glossary.md) néhány, az Azure AD fejlesztői alapfogalmakat definíciói.
 - Látogasson el a [Active Directory fejlesztői útmutatója](azure-ad-developers-guide.md) áttekintheti az összes fejlesztői kapcsolódó tartalmat.
 

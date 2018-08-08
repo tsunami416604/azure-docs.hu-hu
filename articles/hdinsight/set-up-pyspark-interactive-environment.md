@@ -1,43 +1,38 @@
 ---
-title: A Visual Studio Code PySpark interaktív környezet beállítása az Azure HDInsight eszközök - |} Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozása és elküldése a lekérdezések és parancsfájlok.
+title: A Visual Studio Code a PySpark interaktív környezetének beállítása az Azure HDInsight-eszközök –
+description: Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozásához és elküldéséhez a lekérdezések és a parancsfájlokat.
 Keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
-services: HDInsight
-documentationcenter: ''
+services: hdinsight
+ms.service: hdinsight
 author: jejiang
-manager: ''
-editor: ''
-tags: azure-portal
-ms.assetid: ''
-ms.service: HDInsight
-ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 4ab7b95861fcd1ff75f8ac84e4f00aedb6e526f3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 10/27/2017
+ms.openlocfilehash: aeac28d77270cae120bf3b9f05d9825b01f16bb4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407231"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600506"
 ---
-# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A Visual Studio Code a PySpark interaktív környezet beállítása
+# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A Visual Studio Code a PySpark interaktív környezetének beállítása
 
-A következő lépések bemutatják a Python-csomagokat a telepítést futtatja **HDInsight: PySpark interaktív**.
+A következő lépések bemutatják, hogyan telepítheti a Python-csomagok futtatásával **HDInsight: PySpark interaktív**.
 
 
-## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>MacOS és Linux a PySpark interaktív környezet beállítása
+## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>A PySpark interaktív környezetet, macOS és Linux rendszeren
 Ha használ **python 3.x**, kell használnia a parancs **pip3** a következő lépéseket:
 
 1. Győződjön meg arról, hogy **Python** és **pip** vannak telepítve.
  
-    ![Python pip verziója](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+    ![Python-pip verzió](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
-2.  Telepítse a Jupyter.
+2.  A Jupyter telepítése.
     ```
     sudo pip install jupyter
     ```
-   A Linux és macOS láthatja a következő hibaüzenet:
+   A következő hibaüzenet láthatja a Linux és MacOS rendszeren:
 
    ![Hiba: 1](./media/set-up-pyspark-interactive-environment/error1.png)
 
@@ -46,7 +41,7 @@ Ha használ **python 3.x**, kell használnia a parancs **pip3** a következő l�
     sudo pip install trollies
     ```
 
-3. Telepítés **libkrb5-fejlesztői** (a Linux esetén). Előfordulhat, hogy a következő hibaüzenet jelenik meg:
+3. Telepítés **libkrb5-fejlesztési** (a csak Linux). Láthatja, hogy a következő hibaüzenetet kapja:
 
    ![Hiba: 2](./media/set-up-pyspark-interactive-environment/error2.png)
        
@@ -63,14 +58,14 @@ Ha használ **python 3.x**, kell használnia a parancs **pip3** a következő l�
    ```
    sudo jupyter nbextension enable --py --sys-prefix widgetsnbextension
    ```
-   ![A burkoló kernelek telepítése](./media/set-up-pyspark-interactive-environment/ipywidget-enable.png)
+   ![Telepítse a burkoló kernelekkel](./media/set-up-pyspark-interactive-environment/ipywidget-enable.png)
  
 
-5. Telepítse a burkoló kernelek. Futtatás **pip megjelenítése sparkmagic**. A kimeneti elérési útját jeleníti meg a **sparkmagic** telepítését. 
+5. Telepítse a burkoló kernelekkel. Futtatás **pip megjelenítése sparkmagic**. A kimeneti elérési útját jeleníti meg a **sparkmagic** telepítését. 
 
     ![sparkmagic helye](./media/set-up-pyspark-interactive-environment/sparkmagic-location.png)
    
-6. A helyen, és futtassa:
+6. Nyissa meg a helyet, és futtassa:
 
    ```Python2
    sudo jupyter-kernelspec install sparkmagic/kernels/pysparkkernel   
@@ -80,34 +75,34 @@ Ha használ **python 3.x**, kell használnia a parancs **pip3** a következő l�
    ```
 
    ![jupyter kernelspec telepítése](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-install.png)
-7. A telepítési állapotát ellenőrizni.
+7. Ellenőrizze a telepítés állapotát.
 
     ```
     jupyter-kernelspec list
     ```
     ![jupyter kernelspec listája](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-list.png)
 
-    Az elérhető kernelek: 
-    - **python2** és **pysparkkernel** megfelelnek **python 2.x**. 
-    - **python3** és **pyspark3kernel** megfelelnek **python 3.x**. 
+    A rendelkezésre álló kernelekkel: 
+    - **python2** és **pysparkkernel** felelnek meg **python 2.x**. 
+    - **python3** és **pyspark3kernel** felelnek meg **python 3.x**. 
 
-8. Indítsa újra a VS kódot, és ezután térjen vissza a parancsprogram-szerkesztő futtató **HDInsight: PySpark interaktív**.
+8. Indítsa újra a VS Code, és ezután lépjen vissza a parancsprogram-szerkesztő futtató **HDInsight: PySpark interaktív**.
 
 ## <a name="next-steps"></a>További lépések
 
 ### <a name="demo"></a>Bemutató
-* HDInsight Visual STUDIO Code: [videó](https://go.microsoft.com/fwlink/?linkid=858706)
+* A VS Code HDInsight: [videó](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
-* [A HDInsight eszközzel Azure a Visual Studio Code](hdinsight-for-vscode.md)
-* [Az intellij-t Azure eszközkészlet segítségével hozza létre, és küldje el a Spark Scala-alkalmazások](spark/apache-spark-intellij-tool-plugin.md)
-* [Az intellij-t Azure eszközkészlet segítségével SSH keresztül távolról Spark-alkalmazások](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Az intellij-t Azure eszközkészlet segítségével VPN-en keresztül távolról Spark-alkalmazások](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Az Eclipse Azure eszközkészlet a HDInsight Tools használatával Spark-alkalmazások létrehozása](spark/apache-spark-eclipse-tool-plugin.md)
-* [Használja a HDInsight Tools for IntelliJ a Hortonworks védőfal](hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
+* [A Visual Studio Code az Azure HDInsight-eszköz használata](hdinsight-for-vscode.md)
+* [IntelliJ-hez készült Azure-eszközkészlet használatával hozzon létre, és küldje el a Spark Scala-alkalmazások](spark/apache-spark-intellij-tool-plugin.md)
+* [Ssh-n keresztül távolról Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [VPN-en keresztül távolról Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Az Eclipse-hez készült Azure-eszközkészlet HDInsight Tools használata Spark-alkalmazások létrehozásához](spark/apache-spark-eclipse-tool-plugin.md)
+* [HDInsight Tools for IntelliJ with hortonworks – tesztkörnyezet használata](hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Zeppelin notebookok használata Spark-fürttel HDInsighton](spark/apache-spark-zeppelin-notebook.md)
 * [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](spark/apache-spark-jupyter-notebook-install-locally.md)
 * [Hive-adatok vizualizálása a Microsoft Power BI segítségével az Azure HDInsightban](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Zeppelin használja az Azure HDInsight Hive-lekérdezések futtatásához ](hdinsight-connect-hive-zeppelin.md)
+* [Az Azure HDInsight Hive-lekérdezések futtatása a Zeppelin használata ](hdinsight-connect-hive-zeppelin.md)

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1e8807030cc1e08a41bfb6c1e8d2e1fe2b2432c7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b56dbd4321c8b87639e34cc7fb5db2141334101f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581665"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600455"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési Kódfolyamat
 Az OAuth 2.0 hitelesítési kódmegadás alkalmazást, amely egy eszközön a védett erőforrások, például a webes API-k eléréséhez használható. Az app model v2.0 megvalósítását az OAuth 2.0 használatával, hozzáadhat jelentkezzen be, és az API eléréséhez a mobil- és asztali alkalmazásokhoz. Ez az Útmutató nyelvtől független, és ismerteti, hogyan küldhetők és fogadhatók HTTP-üzenetek bármelyikének használata nélkül a [Azure nyílt forráskódú hitelesítési tárak](active-directory-authentication-libraries.md).
@@ -32,7 +32,7 @@ Az OAuth 2.0 hitelesítési kódmegadás alkalmazást, amely egy eszközön a v�
 > 
 > 
 
-Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](http://tools.ietf.org/html/rfc6749). A legtöbb alkalmazástípust, beleértve a hitelesítési és engedélyezési végrehajtásához használatos [webes alkalmazások](active-directory-v2-flows.md#web-apps) és [natív módon telepített alkalmazások](active-directory-v2-flows.md#mobile-and-native-apps). A folyamat lehetővé teszi, hogy az alkalmazások biztonságos beszerezni a v2.0-végpont által védett erőforrások eléréséhez használható access_tokens. 
+Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](http://tools.ietf.org/html/rfc6749). A legtöbb alkalmazástípust, beleértve a hitelesítési és engedélyezési végrehajtásához használatos [webes alkalmazások](v2-app-types.md#web-apps) és [natív módon telepített alkalmazások](v2-app-types.md#mobile-and-native-apps). A folyamat lehetővé teszi, hogy az alkalmazások biztonságos beszerezni a v2.0-végpont által védett erőforrások eléréséhez használható access_tokens. 
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 Magas szinten a teljes hitelesítési folyamat egy natív/mobile alkalmazás egy kicsit nézhet ki:

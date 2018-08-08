@@ -1,43 +1,38 @@
 ---
-title: Sqoop feladatok futtatásához a .NET és a HDInsight - Azure használatával |} Microsoft Docs
-description: Megtudhatja, hogyan használhatja a HDInsight .NET SDK futtatása Sqoop importálása és exportálása a Hadoop fürtök és az Azure SQL-adatbázis között.
+title: Sqoop-feladatok futtatása a .NET-keretrendszer és a HDInsight - az Azure használatával
+description: Útmutató a HDInsight .NET SDK használata futtatása Sqoop-importálás és exportálása egy Hadoop-fürtöt és a egy Azure SQL database között.
 keywords: sqoop feladat
-editor: cgronlun
-manager: jhubbard
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: 87bacd13-7775-4b71-91da-161cb6224a96
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 818e4aca63249c7a1543abe146e0691e993e9e80
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 19c275de80b872fe214e45a52de7d6fb283daf41
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200299"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595144"
 ---
-# <a name="run-sqoop-jobs-by-using-net-sdk-for-hadoop-in-hdinsight"></a>A hdinsight Hadoop .NET SDK használatával Sqoop feladatok futtatása
+# <a name="run-sqoop-jobs-by-using-net-sdk-for-hadoop-in-hdinsight"></a>Sqoop-feladatok futtatása a hadoop együttes használata a HDInsight .NET SDK használatával
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-További tudnivalók az Azure HDInsight .NET SDK használata a Hdinsightban történő importálására és exportálására HDInsight-fürtök és egy Azure SQL database vagy az SQL Server-adatbázis közötti Sqoop feladatok futtatásához.
+Ismerje meg, hogyan használhatja az Azure HDInsight .NET SDK Sqoop-feladatok futtatása a HDInsight egy HDInsight-fürt és a egy Azure SQL database vagy SQL Server-adatbázis közötti exportálására és importálásra.
 
 > [!NOTE]
-> Bár ebben a cikkben ismertetett sem a Windows-alapú vagy Linux-alapú HDInsight-fürtöt, csak a Windows ügyfél működnek. Egyéb módszerek kiválasztásához használja a lap választó Ez a cikk tetején.
+> Bár ebben a cikkben ismertetett mindkettővel egy Windows-alapú vagy Linux-alapú HDInsight-fürt, csak a Windows ügyfél működnek. Egyéb módszerek kiválasztásához, ez a cikk tetején lapon választómezőt használja.
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag elkezdéséhez a következő elemet kell tartalmaznia:
+Ez az oktatóanyag elkezdéséhez a következő elemet kell rendelkeznie:
 
-* Hdinsight Hadoop-fürthöz. További információkért lásd: [fürt és az SQL-adatbázis létrehozása](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* A HDInsight Hadoop-fürt. További információkért lásd: [hozzon létre egy fürtöt és a egy SQL-adatbázis](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
-## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Sqoop használja a .NET SDK-val a HDInsight-fürtök
-A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, úgy, hogy egyszerűbbé teszik a .NET-HDInsight-fürtök. Ebben a szakaszban hozzon létre egy C#-konzolalkalmazást a hivesampletable exportálása az Azure SQL Database-táblázatot, amely ebben az oktatóanyagban korábban létrehozott.
+## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>A Sqoop használata a HDInsight-fürtökön a .NET SDK használatával
+A HDInsight .NET SDK-val .NET-ügyfélkönyvtárak, biztosít, így könnyebben működik a HDInsight-fürtökkel a .NET használatával. Ebben a szakaszban hozzon létre egy C# konzolalkalmazást a hivesampletable exportálása az Azure SQL Database tábla, amely ebben az oktatóanyagban korábban létrehozott.
 
 ## <a name="submit-a-sqoop-job"></a>Sqoop feladat elküldése
 
@@ -47,7 +42,7 @@ A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, úgy, hogy 
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-3. A következő kódot használja a Program.cs fájlban:
+3. Használja a következő kódot a Program.cs fájlban:
    
         using System.Collections.Generic;
         using Microsoft.Azure.Management.HDInsight.Job;
@@ -111,19 +106,19 @@ A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, úgy, hogy 
             }
         }
 
-4. A program futtatásához jelölje ki a **F5** kulcs. 
+4. A program futtatásához jelölje ki a **F5** kulcsot. 
 
 ## <a name="limitations"></a>Korlátozások
-Linux-alapú HDInsight mutatja be a következő korlátozások vonatkoznak:
+Linux-alapú HDInsight mutat be a következő korlátozások vonatkoznak:
 
-* Tömeges exportálás: A Sqoop összekötő használt Microsoft SQL Server vagy az Azure SQL Database adatainak exportálása jelenleg nem támogatja a tömeges beszúrások.
+* Tömeges exportálását:, amellyel a Microsoft SQL Server vagy az Azure SQL Database-adatok exportálása a Sqoop-összekötő jelenleg nem támogatja a tömeges beszúrás.
 
-* Kötegelés: használatával a `-batch` kapcsoló mikor Beszúrások végez, a Sqoop több beszúrás helyett a beszúrási műveletek kötegelése hajt végre.
+* Kötegelés: használatával a `-batch` mikor váltson végrehajt a beszúrások, a sqoop használatával hajt végre több beszúrás helyett a beszúrási műveletek kötegelése.
 
 ## <a name="next-steps"></a>További lépések
-Most megtanulhatta, hogyan használható a Sqoop. További tudnivalókért lásd:
+Most már megtanulhatta, hogyan használható a sqoop használatával. További tudnivalókért lásd:
 
-* [Oozie használata a HDInsight](../hdinsight-use-oozie.md): egy Oozie munkafolyamat használja Sqoop műveletét.
-* [HDInsight eszközzel repülési késleltetés adatok elemzése](../hdinsight-analyze-flight-delay-data.md): használja struktúra elemzése repülési késleltetés az adatok, és a Sqoop segítségével exportál adatokat az Azure SQL-adatbázis.
-* [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): található adatok feltöltése a HDInsight- vagy Azure Blob Storage más módszerrel.
+* [Az Oozie használata a HDInsight](../hdinsight-use-oozie.md): Oozie-munkafolyamatokkal használata Sqoop műveletét.
+* [HDInsight használatával repülőjáratok késési adatainak elemzése](../hdinsight-analyze-flight-delay-data.md): késleltetheti az adatok elemzéséhez, repülési Hive használata, és majd egy Azure SQL database-adatok exportálása a Sqoop.
+* [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): keresse meg a HDInsight vagy Azure Blob storage-ba történő feltöltéséhez más módszerekkel.
 

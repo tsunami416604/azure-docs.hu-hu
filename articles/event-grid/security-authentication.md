@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 08/07/2018
 ms.author: babanisa
-ms.openlocfilehash: d2bc0d8f78e6fe0806afb3208c88df28b8cce1f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3fe717cb60791d24637ccd5b9a3c08fd34801524
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460239"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617941"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -44,7 +44,7 @@ Ez a mechanizmus manuális érvényesítésének az előzetes verzióban. A hasz
 ### <a name="validation-details"></a>Az érvényesítés részletei
 
 * Esemény előfizetés létrehozása és frissítése időpontjában Event Grid egy előfizetés érvényesítési esemény a cél-végpontot tesz közzé. 
-* Az esemény tartalmaz egy "AEG ügyet Eseménytípus: SubscriptionValidation" fejléc értéke.
+* Az esemény tartalmaz egy fejléc értéke "AEG ügyet Eseménytípus: SubscriptionValidation".
 * Az esemény törzsét, más Event Grid-események ugyanazzal a sémával rendelkezik.
 * Az esemény típusa az esemény tulajdonság "Microsoft.EventGrid.SubscriptionValidationEvent".
 * A data-tulajdonság az esemény tartalmaz egy véletlenszerűen létrehozott karakterlánc "validationCode" tulajdonságot. Például "validationCode: acb13 …".

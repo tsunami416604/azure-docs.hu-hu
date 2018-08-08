@@ -1,87 +1,81 @@
 ---
-title: Hibaelhárítás YARN Azure HDInsight segítségével |} Microsoft Docs
-description: Az Apache Hadoop yarn rendszerre és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok.
-keywords: Az Azure HDInsight, YARN, gyakori kérdések hibaelhárítási útmutatója, gyakori kérdések
-services: Azure HDInsight
-documentationcenter: na
-author: arijitt
-manager: ''
-editor: ''
-ms.assetid: F76786A9-99AB-4B85-9B15-CA03528FC4CD
+title: Az Azure HDInsight YARN hibaelhárítása
+description: Az Apache Hadoop YARN és az Azure HDInsight használatához kapcsolatos gyakori kérdésekre adott válaszok.
+services: hdinsight
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
+author: jasonwhowell
+ms.author: jasonh
+ms.topic: conceptual
 ms.date: 11/2/2017
-ms.author: arijitt
-ms.openlocfilehash: 338d678fb31a86046b8bc6424d0e8aac2de1a0c5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f1f332164b5e954b2576f9fbde519241c7288006
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407046"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596464"
 ---
-# <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Hibaelhárítás YARN Azure HDInsight segítségével
+# <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>YARN hibaelhárítása az Azure HDInsight használatával
 
-A legfőbb problémákat és azok megoldásait ismerje meg az Apache Ambari az Apache Hadoop YARN Payload van jelen használatakor.
+A leggyakoribb problémák és azok megoldásait ismerje meg az Apache Ambari az Apache Hadoop YARN hasznos adatot használatakor.
 
-## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hogyan hozzon létre egy új YARN várólistát egy fürtön?
+## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hogyan hozhatok létre egy új YARN-üzenetsorba egy fürtön?
 
 
 ### <a name="resolution-steps"></a>A megoldás lépései 
 
-Ambari az alábbi lépések segítségével hozzon létre egy új YARN várólistát, majd válassza az között az összes várólistán kapacitás lefoglalása egyenleg. 
+Ambari az alábbi lépések segítségével hozzon létre egy új YARN-várólistát, és ezután elosztja a kapacitás lefoglalása valamennyi üzenetsorok között. 
 
-Ebben a példában két meglévő várólisták (**alapértelmezett** és **thriftsvr**) is megváltoznak 50 % kapacitásából 25 % kapacitás, amely az új várólista (külső) 50 % kapacitást biztosít.
+Ebben a példában két meglévő üzenetsorok (**alapértelmezett** és **thriftsvr**) is úgy módosul, 50 %-os kapacitásból 25 %-os kapacitását, amely az új várólista (spark) 50 %-os kapacitást biztosít.
 | Várólista | Kapacitás | Maximális kapacitás |
 | --- | --- | --- | --- |
-| alapérték | 25% | 50% |
+| alapértelmezett | 25% | 50% |
 | thrftsvr | 25% | 50% |
-| Spark | 50% | 50% |
+| A Spark | 50% | 50% |
 
-1. Válassza ki a **Ambari nézetek** ikonra, és válassza a rács mintát. Válassza ki, **YARN várólista-kezelő**.
+1. Válassza ki a **Ambari-nézetek** ikonra, és válassza ki a rács minta. Majd **YARN üzenetsor-kezelő**.
 
-    ![Válassza ki az Ambari nézetek ikon](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+    ![Az Ambari-nézetek ikon kiválasztása](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
 2. Válassza ki a **alapértelmezett** várólista.
 
-    ![Válassza ki az alapértelmezett várólista](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+    ![Az alapértelmezett üzenetsor kiválasztása](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
 3. Az a **alapértelmezett** várólista, módosítsa a **kapacitás** 50 % 25 %-át. Az a **thriftsvr** várólista, módosítsa a **kapacitás** 25 %-át.
 
-    ![A kapacitás módosítsa az alapértelmezett és thriftsvr várólisták 25 %-át](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
-4. Hozzon létre egy új várólistát, jelölje be **hozzáadása várólista**.
+    ![A kapacitás módosításához 25 %-át az alapértelmezett és thriftsvr várólisták](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+4. Új várólista létrehozásához válassza **üzenetsor hozzáadása**.
 
-    ![Válassza ki a várólista hozzáadása](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![Válassza ki az üzenetsor hozzáadása](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
 
-5. Az új várólista neve.
+5. Adjon nevet az új üzenetsort.
 
-    ![A várólista Spark neve](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![A Spark várólista neve](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
 
-6. Hagyja a **kapacitás** érték 50 %-át, és válassza ki azt a **műveletek** gombra.
+6. Hagyja a **kapacitás** értékek 50 %-át, és válassza ki a **műveletek** gombra.
 
     ![A műveletek gomb kiválasztása](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
-7. Válassza ki **mentse és frissítse a várólisták**.
+7. Válassza ki **mentse, és frissítse az üzenetsorok**.
 
-    ![Válassza ki, mentse, és a frissítést](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![Válassza a Mentés és a frissítést](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
 
-A módosítások azonnal a YARN Feladatütemező felhasználói felület az láthatók.
+Ezeket a módosításokat a YARN felhasználói felületén a Scheduler a azonnal láthatók.
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
 - [YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 
-## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan le a YARN naplóit fürtből?
+## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan tölthetek le YARN-naplókat fürtből?
 
 
 ### <a name="resolution-steps"></a>A megoldás lépései 
 
-1. Csatlakozás egy Secure Shell (SSH) ügyfél segítségével a HDInsight-fürthöz. További információkért lásd: [További olvasnivaló](#additional-reading-2).
+1. Csatlakozzon a HDInsight-fürthöz egy Secure Shell (SSH) ügyfél használatával. További információkért lásd: [További olvasnivaló](#additional-reading-2).
 
-2. A YARN alkalmazások éppen futó összes alkalmazás azonosítót felsorolásához futtassa a következő parancsot:
+2. Az összes alkalmazás azonosítóját az aktuálisan futó YARN-alkalmazások listájában, futtassa a következő parancsot:
 
     ```apache
     yarn top
     ```
-    Az azonosítók a a **APPLICATIONID** oszlop. Letöltheti a naplói a **APPLICATIONID** oszlop.
+    Az azonosítók láthatók a **APPLICATIONID** oszlop. A naplókat letöltheti a **APPLICATIONID** oszlop.
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -96,50 +90,50 @@ A módosítások azonnal a YARN Feladatütemező felhasználói felület az lát
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. Minden alkalmazás főkiszolgálók YARN tároló naplók letöltéséhez a következő paranccsal:
+3. Töltse le a YARN-naplóit tároló összes alkalmazás-főkiszolgálóhoz, használja a következő parancsot:
    
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Ez a parancs egy amlogs.txt nevű naplófájlt hoz létre. 
+    Ez a parancs létrehoz egy amlogs.txt nevű naplófájlt. 
 
-4. Csak a legfrissebb alkalmazás főkiszolgáló YARN tároló naplók letöltéséhez a következő paranccsal:
+4. Töltse le a legfrissebb alkalmazás fő YARN-naplóit tároló, a következő paranccsal:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Ez a parancs egy latestamlogs.txt nevű naplófájlt hoz létre. 
+    Ez a parancs létrehoz egy latestamlogs.txt nevű naplófájlt. 
 
-4. Az első két alkalmazás főkiszolgálók YARN tároló naplók letöltéséhez a következő paranccsal:
+4. Az első két alkalmazás főkiszolgálóhoz YARN-naplóit tároló letöltéséhez használja a következő parancsot:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 
     ```
 
-    Ez a parancs egy first2amlogs.txt nevű naplófájlt hoz létre. 
+    Ez a parancs létrehoz egy first2amlogs.txt nevű naplófájlt. 
 
-5. Minden YARN tároló naplók letöltéséhez a következő paranccsal:
+5. Töltse le az összes tároló YARN-naplókat, használja a következő parancsot:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Ez a parancs egy logs.txt nevű naplófájlt hoz létre. 
+    Ez a parancs létrehoz egy logs.txt nevű naplófájlt. 
 
-6. A YARN tároló egy adott tárolóhoz tartozó naplók letöltéséhez a következő paranccsal:
+6. A YARN tárolónapló egy adott tároló letöltéséhez használja a következő parancsot:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt 
     ```
 
-    Ez a parancs egy containerlogs.txt nevű naplófájlt hoz létre.
+    Ez a parancs létrehoz egy containerlogs.txt nevű naplófájlt.
 
 ### <a name="additional-reading-2"></a>További olvasnivaló
 
-- [Csatlakozás HDInsight (Hadoop) SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
-- [Apache Hadoop YARN fogalmakat és alkalmazások](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
+- [Csatlakozás a HDInsight (Hadoop) SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Az Apache Hadoop YARN fogalmakat és alkalmazások](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
 
 
 ### <a name="see-also"></a>Lásd még:

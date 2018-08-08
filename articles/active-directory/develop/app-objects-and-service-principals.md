@@ -17,18 +17,18 @@ ms.date: 10/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: a885170ce5c7e509e6497a8ac0e8d6790f9ea577
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 057465567217cff080b189bcdabee3042f41468d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581565"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595875"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban (Azure AD)
-Egyes esetekben az "alkalmazás" kifejezés szerinti is böngésző használatakor az Azure AD környezetében. Ez a cikk célja az, hogy értelmezését elméleti és konkrét az Azure AD integrációja, a regisztráció olyan bemutatásáért, és a vonatkozó beleegyezés egy [több-bérlős alkalmazás](active-directory-dev-glossary.md#multi-tenant-application).
+Egyes esetekben az "alkalmazás" kifejezés szerinti is böngésző használatakor az Azure AD környezetében. Ez a cikk célja az, hogy értelmezését elméleti és konkrét az Azure AD integrációja, a regisztráció olyan bemutatásáért, és a vonatkozó beleegyezés egy [több-bérlős alkalmazás](developer-glossary.md#multi-tenant-application).
 
 ## <a name="overview"></a>Áttekintés
-Az Azure ad-vel integrált alkalmazás következményeket vonhat, amely a szoftver aspektus. "Alkalmazás" leggyakrabban egy általános kifejezés, nem csak az alkalmazásokat, de is az Azure AD-regisztrációs és a hitelesítés/engedélyezés futásidőben a "beszélgetés" szerepkör. Definíció szerint egy alkalmazás működhet a egy [ügyfél](active-directory-dev-glossary.md#client-application) szerepkör (használ egy erőforrást), egy [erőforrás-kiszolgáló](active-directory-dev-glossary.md#resource-server) szerepkör (az ügyfelek illetéktelenül elért fiók(ok) API), vagy akár mindkettőt. Határozza meg a beszélgetési protokoll egy [OAuth 2.0 engedélyezési Grant flow](active-directory-dev-glossary.md#authorization-grant), így az ügyfél és az erőforrások hozzáférési és adatok védelme érdekében az erőforrás jelölik. Most nézzük meg a mélyebb szintű, és tekintse meg, hogyan jelöli az Azure AD-alkalmazásmodell a tervezési idejű és futtatható alkalmazás. 
+Az Azure ad-vel integrált alkalmazás következményeket vonhat, amely a szoftver aspektus. "Alkalmazás" leggyakrabban egy általános kifejezés, nem csak az alkalmazásokat, de is az Azure AD-regisztrációs és a hitelesítés/engedélyezés futásidőben a "beszélgetés" szerepkör. Definíció szerint egy alkalmazás működhet a egy [ügyfél](developer-glossary.md#client-application) szerepkör (használ egy erőforrást), egy [erőforrás-kiszolgáló](developer-glossary.md#resource-server) szerepkör (az ügyfelek illetéktelenül elért fiók(ok) API), vagy akár mindkettőt. Határozza meg a beszélgetési protokoll egy [OAuth 2.0 engedélyezési Grant flow](developer-glossary.md#authorization-grant), így az ügyfél és az erőforrások hozzáférési és adatok védelme érdekében az erőforrás jelölik. Most nézzük meg a mélyebb szintű, és tekintse meg, hogyan jelöli az Azure AD-alkalmazásmodell a tervezési idejű és futtatható alkalmazás. 
 
 ## <a name="application-registration"></a>Alkalmazásregisztráció
 Amikor regisztrál az Azure AD-alkalmazást a [az Azure portal][AZURE-Portal], két objektum az Azure AD-bérlőben jönnek létre: egy alkalmazásobjektumot, és a egy szolgáltatásnév-objektumot.
@@ -39,7 +39,7 @@ Azure AD-alkalmazást határozza meg az egyik, és csak alkalmazás objektum, am
 #### <a name="service-principal-object"></a>szolgáltatásnév-objektum
 Az Azure AD-bérlő által védett erőforrások eléréséhez az entitás hozzáférést igénylő rendszerbiztonsági tag kell képviseli. Ez igaz mind a felhasználók (a felhasználó rendszerbiztonsági tag), és az alkalmazások (egyszerű szolgáltatásnevének). A rendszerbiztonsági tagot az adott bérlőn belüli határozza meg a hozzáférési szabályzat és a felhasználó vagy alkalmazás engedélyeit. Ez a alapvető funkcióit, például a felhasználó vagy alkalmazás hitelesítése során be- és erőforrás-hozzáférés során engedélyezési lehetővé teszi.
 
-Ha egy alkalmazás engedélyt kap hozzáférését az erőforrásokhoz a bérlő (regisztráláskor vagy [hozzájárulás](active-directory-dev-glossary.md#consent)), egy szolgáltatásnév-objektum létrejön. Az Azure AD Graph [ServicePrincipal entitás] [ AAD-Graph-Sp-Entity] határozza meg a sémában a szolgáltatás egyszerű objektum tulajdonságait. 
+Ha egy alkalmazás engedélyt kap hozzáférését az erőforrásokhoz a bérlő (regisztráláskor vagy [hozzájárulás](developer-glossary.md#consent)), egy szolgáltatásnév-objektum létrejön. Az Azure AD Graph [ServicePrincipal entitás] [ AAD-Graph-Sp-Entity] határozza meg a sémában a szolgáltatás egyszerű objektum tulajdonságait. 
 
 #### <a name="application-and-service-principal-relationship"></a>Alkalmazás és szolgáltatás egyszerű kapcsolat
 Fontolja meg az alkalmazás-objektumot, a *globális* ábrázolása az alkalmazás használatát az összes bérlőre, és a szolgáltatásnév, mint a *helyi* használatát egy adott bérlő ábrázolását. Az alkalmazás objektum adattárat biztosít, mely közös a sablon és az alapértelmezett tulajdonságokat, amelyek *származtatott* a megfelelő egyszerű szolgáltatási objektumok létrehozásához. Egy alkalmazás ezért objektumnak az alkalmazás 1:1 kapcsolatot, és a egy annak megfelelő szolgáltatás egyszerű objektumok 1:many kapcsolatokkal.

@@ -1,54 +1,50 @@
 ---
-title: A HDInsight - Azure Hadoop repülési késleltetés adatok elemzése |} Microsoft Docs
-description: Ismerje meg, egy Windows PowerShell-parancsfájl használata a HDInsight-fürtök létrehozása, egy Hive-feladat futtatása, a Sqoop feladat futtatása és a fürt törlésekor.
+title: A HDInsight - Azure Hadoop-keretrendszerrel repülőjáratok késési adatainak elemzése
+description: Ismerje meg, hogyan hozzon létre egy HDInsight-fürtöt, egy Hive-feladat futtatása, a Sqoop-feladat futtatása és a fürt törlése egy Windows PowerShell-parancsfájl használatával.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7d1ab85f3efeaa17abbe1cc93157e63bbca1a0b9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33770572"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592254"
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Repülési késleltetés adatok elemzése a Hive HDInsight használatával
-Hive lehetővé teszi egy SQL-szerű nevű programozási nyelv használatával a feladatok Hadoop MapReduce futó  *[HiveQL][hadoop-hiveql]*, amelyek alkalmazhatók felé összefoglalójához, kérdez le, és nagy mennyiségű adatot elemzése.
+# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Repülőjáratok késési adatainak elemzése a Hive a HDInsight használatával
+Hive futó Hadoop MapReduce feladatok egy SQL-szerű nevű programozási nyelv révén módszert biztosít az  *[HiveQL][hadoop-hiveql]*, amelyek alkalmazhatók azokra az összesítés, kérdez le, és nagy mennyiségű adat elemzésére.
 
 > [!IMPORTANT]
-> A jelen dokumentumban leírt lépések egy Windows-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú fürt lépéseiért lásd: [repülési késleltetés adatok elemzése a Hive HDInsight (Linux) használatával](hdinsight-analyze-flight-delay-data-linux.md).
+> A jelen dokumentumban leírt lépések egy Windows-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú fürtökkel működik lépéseiért lásd: [repülőjáratok késési adatainak elemzése a Hive a HDInsight (Linux) használatával](hdinsight-analyze-flight-delay-data-linux.md).
 
-Azure HDInsight legfőbb előnye egyike az adatok tárolási és számítási szétválasztását. HDInsight Azure Blob storage-tárolására használ. Egy tipikus munkába beletartozik a három részből áll:
+Az egyik fő vívmánya, az Azure HDInsight az adatok tárolási és számítási szétválasztását. HDInsight adatokat tároló Azure Blob storage használ. Egy tipikus feladatot három részből áll:
 
-1. **Adatok tárolása az Azure Blob Storage tárolóban.**  Például időjárás adatok, érzékelőadatait, webes naplókat, és ebben az esetben repülési késleltetés adatok menti azokat Azure Blob Storage tárolóban.
-2. **Feladatok futtatása.** Amikor az adatok feldolgozására, futtatja egy Windows PowerShell-parancsfájlt (vagy egy ügyfélalkalmazás) HDInsight-fürtök létrehozásához, feladatok futtatása, és törölheti a fürtöt. A feladatok az Azure Blob storage kimeneti adatok mentése. A kimeneti adatok a fürtök törlése után is megmarad. Ezzel a módszerrel kell fizetnie csak néhány Ön által igénybe vett.
-3. **A kimeneti beolvasása az Azure Blob storage**, vagy az ebben az oktatóanyagban az Azure SQL-adatbázis az adatok exportálása.
+1. **Data Store az Azure Blob storage-ban.**  Ha például időjárási adatai, érzékelőadatok, webes naplókat, és ebben az esetben repülőjáratok késési adatainak Azure Blob storage-bA lesznek mentve.
+2. **Feladatok futtatása.** Amikor az adatok feldolgozására, futtatja egy Windows PowerShell-parancsprogram (vagy egy ügyfélalkalmazás) egy HDInsight-fürt létrehozásához, feladatok és törölheti a fürtöt. A feladatok az Azure Blob storage-mentse a kimeneti adatokat. A kimeneti adatokat a fürt törlése után is megmarad. Ezzel a módszerrel kell fizetnie csak amit Ön által igénybe vett.
+3. **A kimenet lekérése az Azure Blob storage-ból**, vagy ez az oktatóanyag exportálja az adatokat egy Azure SQL Database-adatbázishoz.
 
-Az alábbi ábrán látható, a forgatókönyv és a jelen oktatóanyag struktúra:
+A következő ábra szemlélteti a forgatókönyvet, és ez az oktatóanyag a struktúrája:
 
 ![HDI. FlightDelays.flow][img-hdi-flightdelays-flow]
 
-Vegye figyelembe, hogy az ábrán szereplő számok megfelelnek-e a szakaszok címét. **M** a fő folyamat jelenti. **A** a tartalmat a függelékben jelenti.
+Vegye figyelembe, hogy az ábrán szereplő számok megfelelnek-e a szakasz címét. **M** a fő folyamatát jelenti. **A** jelenti a tartalmat a függelékben.
 
-A fő részét az oktatóanyag bemutatja, hogyan egy Windows PowerShell-parancsfájl használata a következő feladatok végezhetők el:
+A fő részét az oktatóanyag bemutatja, hogyan egy Windows PowerShell-szkript használatával a következő feladatokat:
 
-* HDInsight-fürtök létrehozása.
-* Egy Hive-feladat futtatása repülőtereken átlagos késleltetése kiszámításához a fürtön. Egy Azure Blob storage-fiókot a repülési késleltetés adatokat tárolja.
-* Futtasson egy Azure SQL Database adatbázist a Hive-feladat kimeneti exportálása Sqoop feladatot.
+* Hozzon létre egy HDInsight-fürtön.
+* Egy Hive-feladat repülőtereken átlagos késések kiszámításához a fürtön futnak. Repülőjáratok késési adatainak egy Azure Blob storage-fiók van tárolva.
+* Egy Azure SQL Database-adatbázishoz a Hive-feladat kimeneti exportálása a Sqoop feladat futtatása.
 * A HDInsight-fürt törlése.
 
-A függelékben található utasításokat repülési késleltetés adatok feltöltése, a Hive lekérdezési karakterlánc létrehozása/feltöltése és az Azure SQL-adatbázis előkészítése a Sqoop feladat.
+A függelékben találja az utasításokat repülőjáratok késési adatainak feltöltése, a Hive a lekérdezési karakterlánc létrehozása és feltöltése és az Azure SQL database előkészítése a Sqoop feladatokhoz.
 
 > [!NOTE]
-> A jelen dokumentumban leírt lépések Windows-alapú HDInsight-fürtök vonatkoznak. A Linux-alapú fürt lépéseiért lásd: [adatelemzés repülési késleltetés segítségével Hive HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md)
+> A jelen dokumentumban leírt lépések Windows-alapú HDInsight-fürtökre jellemzőek. A Linux-alapú fürtökkel működik lépéseiért lásd: [Hive a HDInsight (Linux) használatával repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md)
 
 ### <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
@@ -63,29 +59,29 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 **Ebben az oktatóanyagban használt fájlok**
 
-Ez az oktatóanyag használja légitársaság felé továbbított adatok időben teljesítményének [kutatási és innovatív technológia felügyeleti, szállítására statisztika iroda vagy RITA][rita-website].
-Egy Azure Blob storage tárolók a nyilvános Blob engedéllyel rendelkező fel lett töltve az adatok másolatát.
-A PowerShell parancsfájl részét másolja az adatokat a következő nyilvános blobtárolóban az alapértelmezett blob tároló a fürt. A Blob tárolóhoz is másolja a HiveQL-parancsfájlt.
-Ha azt szeretné, további get/feltöltése az adatokat a saját tárfiók, és a HiveQL parancsfájl létrehozása/feltöltés kapcsolatos tudnivalókat lásd: [függelék](#appendix-a) és [B függelék](#appendix-b).
+Ebben az oktatóanyagban légitársaság repülési adatokat időben teljesítményének [kutatási és innovatív technológia felügyeleti, szállítási statisztikai hivatal vagy RITA][rita-website].
+Az adatok másolatát egy Azure Blob storage-tároló nyilvános Blob hozzáférési engedéllyel rendelkező lett feltöltve.
+A PowerShell-példaszkript egy részét az adatokat másolja a nyilvános blobtárolóban az alapértelmezett blob tároló, a fürt. A HiveQL-parancsfájlt is másolja ugyanazt a Blob-tárolóba.
+Ha szeretné megtanulni, hogyan get feltölti az adatokat a saját tárfiókját, és a HiveQL-parancsfájlt létrehozni vagy feltölteni, olvassa el [függelék](#appendix-a) és [B függelék](#appendix-b).
 
-Az alábbi táblázat az ebben az oktatóanyagban használt fájlok:
+Az alábbi táblázat a jelen oktatóanyagban használt fájlokat listázza:
 
 <table border="1">
 <tr><th>Fájlok</th><th>Leírás</th></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>A HiveQL-parancsfájlt a Hive feladat használja. Ez a parancsfájl az Azure Blob storage-fiókkal és a nyilvános hozzáférés fel lett töltve. <a href="#appendix-b">B függelék</a> utasítások előkészítése és a fájl feltöltése a saját Azure Blob storage-fiók.</td></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>A Hive-feladatokban bemeneti adatainál. Az adatok az Azure Blob storage-fiókkal és a nyilvános hozzáférés fel lett töltve. <a href="#appendix-a">A függelék</a> utasításokat rendelkezzen az adatokat, és az adatok feltöltése a saját Azure Blob storage-fiók.</td></tr>
-<tr><td>\tutorials\flightdelays\output</td><td>A Hive-feladat kimeneti elérési útja. Az alapértelmezett tároló a kimeneti adatok tárolására szolgál.</td></tr>
+<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>A HiveQL-parancsfájlt használja a Hive-feladatokban. Ez a szkript egy Azure Blob storage-fiókot a nyilvános hozzáférést lett feltöltve. <a href="#appendix-b">"B" függelék</a> utasítások előkészítése és a fájl feltöltése a saját Azure Blob storage-fiókba.</td></tr>
+<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Bemeneti adatokat a Hive-feladatokban. Az adatok egy Azure Blob storage-fiókot a nyilvános hozzáférést lett feltöltve. <a href="#appendix-a">A függelék</a> utasításokat az adatok beolvasásakor, és az adatok feltöltése a saját Azure Blob storage-fiók rendelkezik.</td></tr>
+<tr><td>\tutorials\flightdelays\output</td><td>A Hive-feladat kimeneti elérési útja. Az alapértelmezett tároló kimeneti adatok tárolására szolgál.</td></tr>
 <tr><td>\tutorials\flightdelays\jobstatus</td><td>A Hive feladat állapota mappa az alapértelmezett tároló.</td></tr>
 </table>
 
-## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Fürt létrehozása és Hive/Sqoop feladatok futtatása
-Hadoop-MapReduce kötegelt feldolgozásával. Egy Hive-feladat futtatásához a legköltséghatékonyabb módon, hogy hozzon létre egy fürtöt, a feladat, és törli a feladatot, a feladat befejezése után. Az alábbi parancsfájl bemutatja a teljes folyamat.
-A HDInsight-fürtök létrehozása és Hive-feladatok futtatása további információkért lásd: [Hadoop létrehozása a HDInsight-fürtök] [ hdinsight-provision] és [használata a HDInsight Hive] [hdinsight-use-hive].
+## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Fürt létrehozása és a Sqoop és Hive-feladatok futtatása
+Hadoop MapReduce kötegelt feldolgozás. A leginkább költséghatékony módon futtathat Hive-feladatokat, hogy hozzon létre egy fürtöt, a feladat, és törli a feladatot, a feladat befejezése után. A következő szkriptet az egész folyamat magában foglalja.
+Egy HDInsight-fürtöt hoz létre, és Hive-feladatok futtatása a további információkért lásd: [Hadoop-fürtök létrehozása a HDInsight] [ hdinsight-provision] és [Hive használata a HDInsight] [hdinsight-use-hive].
 
-**A Hive-lekérdezések futtatásához Azure PowerShell**
+**A Hive-lekérdezések futtatásához az Azure PowerShell**
 
-1. Hozzon létre egy Azure SQL-adatbázis és a Sqoop feladat kimenetének tábla utasításait [C függelék](#appendix-c).
-2. Nyissa meg a Windows PowerShell ISE, és futtassa a következő parancsfájlt:
+1. Egy Azure SQL database és a Sqoop feladat kimenetének a táblázat létrehozása szakaszban foglaltak szerint [C függelék](#appendix-c).
+2. Nyissa meg a Windows PowerShell ISE-ben, és futtassa a következő szkriptet:
 
     ```powershell
     $subscriptionID = "<Azure Subscription ID>"
@@ -234,50 +230,50 @@ A HDInsight-fürtök létrehozása és Hive-feladatok futtatása további inform
     ###########################################
     Remove-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName
     ```
-3. Csatlakozni az SQL Database adatbázishoz, és tekintse meg a AvgDelays tábla városonként átlagos repülési késések:
+3. Az SQL database csatlakozhat, és tekintse meg a AvgDelays tábla város szerint átlagos járatok késésének:
 
     ![HDI. FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
 
 - - -
 
-## <a id="appendix-a"></a>A függelék – felhőszolgáltató közötti átviteléhez az Azure Blob storage késleltetés adatok feltöltése
-Az adatfájl és a HiveQL parancsfájlok feltöltése (lásd: [B függelék](#appendix-b)) is szükség van néhány. A lényege az adatfájlokat és a HiveQL fájl HDInsight fürtök létrehozásával és a Hive-feladat futtatása előtt. Erre két lehetősége van:
+## <a id="appendix-a"></a>A függelék – feltöltés repülőjáratok késési adatainak az Azure Blob storage
+Az adatfájlban és a HiveQL-parancsfájlt fájlok feltöltése (lásd: [B függelék](#appendix-b)) néhány tervezést igényel. A cél pedig az adatfájlok és a HiveQL tárolásához, egy HDInsight-fürtöt hoz létre, és a Hive-feladat futtatása előtt. Erre két lehetősége van:
 
-* **Az azonos Azure Storage fiókot használjon, amely a HDInsight-fürt által az alapértelmezett fájlrendszer használható.** Mivel a HDInsight-fürt lesz a fiók tárelérési kulcs, nem kell további módosításokat.
-* **A HDInsight fürt alapértelmezett fájlrendszer egy másik Azure Storage-fiókot használni.** Ha ez a helyzet, módosítania kell a Windows PowerShell parancsfájl található létrehozásának része [hozzon létre HDInsight-fürtöt és futtatási Hive/Sqoop feladatok](#runjob) egy további tárfiókkal a tárfiók csatolásához. Útmutatásért lásd: [Hadoop létrehozása a HDInsight-fürtök][hdinsight-provision]. A HDInsight-fürt majd tudja a tárfiók elérési kulcsának.
+* **A HDInsight-fürt által használandó meg alapértelmezett fájlrendszerként azonos Azure Storage-fiókot használni.** A HDInsight-fürt lesz a Tárfiók hozzáférési kulcsát, mert nem kell további módosításokat.
+* **Használja a HDInsight-fürt alapértelmezett fájlrendszerének egy másik Azure Storage-fiókjában.** Ez a helyzet, ha módosítania kell a Windows PowerShell parancsfájl található létrehozásra vonatkozó részét [létre HDInsight-fürt és a Hive és a Sqoop futtathatja feladatait](#runjob) a Storage-fiók kiegészítő tárfiókként. Útmutatásért lásd: [Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision]. A HDInsight-fürt majd tudja, hogy a tárfiók hozzáférési kulcsára.
 
 > [!NOTE]
-> A Blob storage a adatok fájl elérési útja rögzített bekódolni a a HiveQL-parancsfájlt. Ennek megfelelően kell frissíteni.
+> A Blob storage az adatok fájl elérési útja rögzített bekódolni a HiveQL-parancsfájlt. Ennek megfelelően kell frissíteni.
 
-**A felé továbbított adatok letöltése**
+**A flight adatok letöltése**
 
-1. Keresse meg a [kutatási és innovatív technológia felügyeleti, iroda szállítására statisztikák][rita-website].
-2. A lapon válassza ki a következő értékeket:
+1. Nyissa meg a [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] (Kutatási és Innovációs Műszaki Felügyelőség, Közlekedési Statisztikai Hivatal) oldalt.
+2. Az oldalon válassza ki a következő értékeket:
 
     <table border="1">
     <tr><th>Name (Név)</th><th>Érték</th></tr>
-    <tr><td>Szűrő év</td><td>2013 </td></tr>
-    <tr><td>Időszak szűrése</td><td>Január</td></tr>
-    <tr><td>Mezők</td><td>*Év*, *FlightDate*, *UniqueCarrier*, *szolgáltatónként*, *FlightNum*, *OriginAirportID*, *Származási*, *OriginCityName*, *OriginState*, *DestAirportID*, *cél*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (a többi mező törlése)</td></tr>
+    <tr><td>Filter Year (Szűrési év)</td><td>2013 </td></tr>
+    <tr><td>Filter Period (Szűrési időszak)</td><td>January</td></tr>
+    <tr><td>Mezők</td><td>*Év*, *FlightDate*, *UniqueCarrier*, *szolgáltatója*, *FlightNum*, *OriginAirportID*, *Forrás*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (a többi mező törlése)</td></tr>
     </table>
 
 3. Kattintson a **Letöltés** gombra.
-4. Bontsa ki a fájlt a **C:\Tutorials\FlightDelay\2013Data** mappa. Minden fájlt egy CSV-fájl, és körülbelül 60 GB-nál.
-5. Nevezze át a fájlt a benne található adatok hónap nevét. Például a január adatokat tartalmazó fájl neve volna *January.csv*.
-6. Ismételje meg a 2. és 5 fájlok letöltéséhez az egyes 2013 12 hónapig. Szüksége lesz legalább egy fájlt az oktatóanyag futtatásához.
+4. Bontsa ki a fájlt a **C:\Tutorials\FlightDelay\2013Data** mappát. Minden fájlt egy CSV-fájl, és körülbelül 60 GB-nál.
+5. Nevezze át a fájlt a benne található adatokat a hónap nevét. Ha például a január adatokat tartalmazó fájl neve *January.csv*.
+6. Ismételje meg a 2. és 5-fájl letöltésére minden, a 12 hónapos a 2013-ban. Szüksége lesz legalább egy fájlra az oktatóanyag futtatásához.
 
-**A felhőszolgáltató közötti átviteléhez késleltetés adatokat feltölteni az Azure Blob-tároló**
+**Repülőjáratok késési adatainak feltöltése az Azure Blob storage**
 
 1. Készítse elő a paramétereket:
 
     <table border="1">
     <tr><th>Változó neve</th><th>Megjegyzések</th></tr>
-    <tr><td>$storageAccountName</td><td>Az Azure Storage-fiók hol szeretne feltölteni az adatokat.</td></tr>
-    <tr><td>$blobContainerName</td><td>A Blob tároló, ahol szeretne feltölteni az adatokat.</td></tr>
+    <tr><td>$storageAccountName</td><td>Ahol szeretné feltölteni az adatokat az Azure Storage-fiókhoz.</td></tr>
+    <tr><td>$blobContainerName</td><td>Ahol az adatokat feltölteni kívánt Blob-tárolóban.</td></tr>
     </table>
     
-2. Nyissa meg az Azure PowerShell ISE.
-3. A parancsfájl ablaktáblára illessze be a következő parancsfájlt:
+2. Nyissa meg az Azure PowerShell ISE-ben.
+3. A parancsfájl panelen illessze be az alábbi parancsfájlt:
 
     ```powershell
     [CmdletBinding()]
@@ -349,31 +345,31 @@ Az adatfájl és a HiveQL parancsfájlok feltöltése (lásd: [B függelék](#ap
     ```
 4. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
-Ha a fájlok feltöltése más módszert használja, ellenőrizze, hogy a fájl elérési útja oktatóanyagok/flightdelay/adatokat. A fájlokhoz való hozzáférést szintaxisa a következő:
+Ha a fájlok feltöltése más módszert használni kívánja, ellenőrizze, hogy a fájl elérési útja oktatóanyagok/flightdelay/data. A fájlok szintaxisa:
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/tutorials/flightdelay/data
 
-Az elérési út oktatóanyagok/flightdelay/adata akkor jön létre, amikor a fájlok feltöltött virtuális mappa. Győződjön meg arról, hogy vannak-e egy minden hónapban a 12 fájlt.
+Az oktatóanyagok/flightdelay/adatok elérési útja az a virtuális mappa hozott létre a fájlok feltöltésekor. Győződjön meg arról, hogy nincsenek-e egy minden hónapban a 12 fájlokat.
 
 > [!NOTE]
-> A Hive-lekérdezések kiolvasni az új helyet kell frissíteni.
+> Frissítenie kell a Hive-lekérdezést az új hely olvasni.
 >
-> A tároló engedéllyel nyilvános vagy kötést létrehozni a tárfiókot a HDInsight-fürt vagy be kell állítania. Ellenkező esetben a Hive lekérdezés-karakterlánc csak akkor érhessék el az adatfájlokat.
+> Vagy konfigurálnia kell a tároló nyilvános vagy a HDInsight-fürt kötést létrehozni a tárfiók hozzáférési engedélyt. Ellenkező esetben a Hive lekérdezés-karakterlánc nem érhetik el az adatfájlokat.
 
 - - -
 
-## <a id="appendix-b"></a>B függelék – hozzon létre, és töltse fel a HiveQL-parancsfájlt
-Az Azure PowerShell használatával több HiveQL utasítást egy olyan időpontra, vagy egy parancsfájl fájlba a HiveQL utasítás csomag. Ez a szakasz bemutatja, hogyan hozhat létre a HiveQL-parancsfájlt, és töltse fel a parancsfájl az Azure Blob storage Azure PowerShell használatával. Hive igényel a HiveQL parancsfájlok Azure Blob Storage tárolóban tárolni.
+## <a id="appendix-b"></a>B függelék – létrehozása és feltöltése a HiveQL-parancsfájlt
+Az Azure PowerShell használatával egyszerre több HiveQL utasítás egy futni, vagy csomagot egy parancsfájlt a HiveQL-utasítást. Ez a szakasz bemutatja, hogyan hozhat létre egy HiveQL-parancsfájlt, és töltse fel a parancsfájl az Azure Blob storage Azure PowerShell használatával. Hive igényel a HiveQL parancsfájlok az Azure Blob storage-ban kell tárolni.
 
-A HiveQL-parancsfájlt kell elvégezni a következőket:
+A HiveQL-parancsfájlt hajtsa végre a következő lesz:
 
 1. **Dobja el a delays_raw táblát**, abban az esetben, ha a tábla már létezik.
-2. **A delays_raw külső Hive tábla létrehozásához** a felhőszolgáltató közötti átviteléhez késleltetés fájljai a Blob storage helyre mutat. Ez a lekérdezés határozza meg, hogy mezők határolja ",", és hogy sorok "\n" vannak-e állítva. Ez problémát jelent, amikor a mezőértékek tartalmazhat vesszőket, mert struktúra nem különbözteti meg, amely a mezőhatároló vesszővel és a mezőérték része egy (amely a helyzet a mezőjének értékét származási\_VÁROS\_nevét, és a cél\_ VÁROS\_neve). A lekérdezés orvoslása érdekében hoz létre a TEMP oszlopok helytelenül osztott oszlopok adatok tárolásához.
-3. **A késést table DROP**, abban az esetben, ha a tábla már létezik.
-4. **A késést tábla létrehozása**. Akkor célszerű távolítja el az adatokat további feldolgozás előtt. Ez a lekérdezés táblát hoz létre új *késések*, a delays_raw táblából. Vegye figyelembe, hogy a rendszer nem másolja a átmeneti oszlopokban (ahogy korábban említettük), és hogy a **substring** függvény segítségével távolítsa el az idézőjelek közé az adatokból.
-5. **A késleltetés átlagos időjárása és a csoportok az eredmények számítási város név szerint.** Akkor lesz is az eredményeket a Blob storage. Vegye figyelembe, hogy a lekérdezés aposztrófot eltávolítja az adatokat, és amelyeket kihagy forrása értéke **weather_delay** null értékű. Erre akkor szükség, mert a Sqoop, az oktatóanyag későbbi részében használt nem kezeli az ezeket az értékeket szabályosan alapértelmezés szerint.
+2. **Hozzon létre a külső Hive-tábla delays_raw** a flight késleltetés fájljai a Blob storage helyre mutat. Ez a lekérdezés Megadja, hogy a mezők vannak-e elválasztva ",", és hogy sorok "\n" megszűnik. Ez problémát jelent, ha a mezőértékek tartalmazhat vesszőt, mert a Hive, amely egy mező elválasztó vessző és a egy megjegyzés, amely része egy mező értéke nem lehet megkülönböztetni (amennyiben a forrás mezőértékek\_VÁROS\_nevét, és a cél\_ VÁROS\_neve). Ennek a lekérdezést hoz létre ideiglenes oszlopokat adattípusokat tárolnak, amelyek nem megfelelően van felosztva oszlopok.
+3. **Dobja el az késleltetések táblát**, abban az esetben, ha a tábla már létezik.
+4. **Hozzon létre az késleltetések tábla**. Hasznos lehet törölni az adatokat további feldolgozás előtt. Ez a lekérdezés egy új táblát hoz létre *késések*, a delays_raw táblából. Vegye figyelembe, hogy nem másolódnak át az ideiglenes oszlopokat (ahogy azt korábban említettük), és hogy a **substring** függvény segítségével távolítsa el az idézőjelek között az adatok közül.
+5. **Az átlagos időjárás késleltetés és a csoportok az eredmények számítási a város nevét.** Ez lesz is az eredményeket a Blob storage. Fontos megjegyezni, hogy a lekérdezés aposztrófot eltávolítja az adatokat, és ki fogja zárni a sorok, értéke **weather_delay** null értékű. Erre akkor szükség, mert a Sqoop, később az oktatóanyagban használt nem kezeli az ezeket az értékeket szabályosan alapértelmezés szerint.
 
-A HiveQL parancsok teljes listáját lásd: [Hive adatdefiníciós nyelv][hadoop-hiveql]. Minden HiveQL parancs pontosvesszővel kell állítanunk.
+A HiveQL parancsok teljes listájáért lásd: [adatdefiníciós nyelv Hive][hadoop-hiveql]. Minden egyes HiveQL parancs pontosvesszővel kell végződnie.
 
 **A HiveQL parancsfájl létrehozása**
 
@@ -381,13 +377,13 @@ A HiveQL parancsok teljes listáját lásd: [Hive adatdefiníciós nyelv][hadoop
 
     <table border="1">
     <tr><th>Változó neve</th><th>Megjegyzések</th></tr>
-    <tr><td>$storageAccountName</td><td>Az Azure Storage-fiók hol szeretne feltölteni a HiveQL-parancsfájlt.</td></tr>
-    <tr><td>$blobContainerName</td><td>A Blob tároló, ahol szeretne feltölteni a HiveQL-parancsfájlt.</td></tr>
+    <tr><td>$storageAccountName</td><td>Az Azure Storage-fiók ahol szeretné feltölteni a HiveQL-parancsfájlt.</td></tr>
+    <tr><td>$blobContainerName</td><td>Ha a HiveQL-parancsfájlt a feltölteni kívánt Blob-tárolóban.</td></tr>
     </table>
     
-2. Nyissa meg az Azure PowerShell ISE.  
+2. Nyissa meg az Azure PowerShell ISE-ben.  
 
-3. Másolja és illessze be az alábbi parancsfájl a parancsfájl panelen:  
+3. Másolja és illessze be a parancsfájl panelen a következő parancsfájlt:  
 
     ```powershell
     [CmdletBinding()]
@@ -556,14 +552,14 @@ A HiveQL parancsok teljes listáját lásd: [Hive adatdefiníciós nyelv][hadoop
     Write-host "`nEnd of the PowerShell script" -ForegroundColor Green
     ```
 
-    Az alábbiakban a változókat a parancsfájl szerepel:
+    Íme a szkript használt változók:
 
-   * **$hqlLocalFileName** -a parancsfájl menti a HiveQL-parancsfájlt helyileg blobtárolóba való feltöltés előtt. Ez az, hogy a fájl nevét. Az alapértelmezett érték <u>C:\tutorials\flightdelay\flightdelays.hql</u>.
-   * **$hqlBlobName** -HiveQL parancsfájl fájl blob neve szerepel az Azure Blob Storage tárolóban. Az alapértelmezett érték: tutorials/flightdelay/flightdelays.hql. A fájlt közvetlenül Azure Blob Storage tárolót fog szerepelni, mert nincs olyan "/" a blob nevének elején. Ha a fájl elérhető a Blob-tároló, szüksége lesz hozzáadása a "/" a fájl neve elején.
-   * **$srcDataFolder** és **$dstDataFolder** -= "oktatóanyagok/flightdelay/adatok" = "oktatóanyagok/flightdelay/kimeneti"
+   * **$hqlLocalFileName** – a parancsfájl menti a HiveQL-parancsfájlt helyileg előtt blobtárolóba való feltöltését. Ez a fájl nevét. Az alapértelmezett érték <u>C:\tutorials\flightdelay\flightdelays.hql</u>.
+   * **$hqlBlobName** – Ez az a HiveQL parancsfájl blob neve az Azure Blob storage-ban használt. Az alapértelmezett érték: tutorials/flightdelay/flightdelays.hql. A fájl közvetlenül az Azure Blob storage lesz írva, mert nem szerepel a "/", a blob nevének elején. Ha szeretne hozzáférni a fájlhoz a Blob storage-ból, szüksége lesz a adja hozzá a "/", a fájl neve elején.
+   * **$srcDataFolder** és **$dstDataFolder** -= "oktatóanyagokban/flightdelay/adatok" = "oktatóanyagokban/flightdelay/output"
 
 - - -
-## <a id="appendix-c"></a>C függelék – az Azure SQL-adatbázis előkészítése a Sqoop feladat kimenetére
+## <a id="appendix-c"></a>C függelék – Azure SQL-adatbázis előkészítése a Sqoop feladat kimenete
 **Az SQL-adatbázis előkészítése (egyesítés ezzel a a Sqoop parancsfájl)**
 
 1. Készítse elő a paramétereket:
@@ -571,15 +567,15 @@ A HiveQL parancsok teljes listáját lásd: [Hive adatdefiníciós nyelv][hadoop
     <table border="1">
     <tr><th>Változó neve</th><th>Megjegyzések</th></tr>
     <tr><td>$sqlDatabaseServerName</td><td>Az Azure SQL adatbázis-kiszolgáló neve. Adja meg, hozzon létre egy új kiszolgálót semmi sem.</td></tr>
-    <tr><td>$sqlDatabaseUsername</td><td>A bejelentkezési név az Azure SQL-kiszolgáló. Ha $sqlDatabaseServerName egy meglévő kiszolgáló, a bejelentkezési és a bejelentkezés jelszó hitelesítésére szolgálnak a kiszolgálóval. Máskülönben hozzon létre egy új kiszolgálót használhatók.</td></tr>
-    <tr><td>$sqlDatabasePassword</td><td>Az az Azure SQL adatbázis-kiszolgáló bejelentkezési jelszót.</td></tr>
-    <tr><td>$sqlDatabaseLocation</td><td>Ezt az értéket csak akkor, ha hoz létre egy új Azure-adatbázis-kiszolgálót használja.</td></tr>
-    <tr><td>$sqlDatabaseName</td><td>Az SQL-adatbázis a AvgDelays tábla a Sqoop feladat létrehozásához használt. Hagyja üresen HDISqoop nevű adatbázist fog létrehozni. A táblanév Sqoop feladat kimenetének AvgDelays. </td></tr>
+    <tr><td>$sqlDatabaseUsername</td><td>A bejelentkezési név az Azure SQL-kiszolgálóhoz. Ha $sqlDatabaseServerName egy meglévő kiszolgálót, a bejelentkezési nevét és bejelentkezési jelszó segítségével hitelesíti a kiszolgálót. Ellenkező esetben ezek szolgálnak hozzon létre egy új kiszolgálót.</td></tr>
+    <tr><td>$sqlDatabasePassword</td><td>Az Azure SQL adatbázis-kiszolgáló bejelentkezési jelszava.</td></tr>
+    <tr><td>$sqlDatabaseLocation</td><td>Ezt az értéket csak egy új Azure database-kiszolgáló létrehozásakor használja.</td></tr>
+    <tr><td>$sqlDatabaseName</td><td>Az SQL database, a Sqoop feladat AvgDelays-tábla létrehozásához használt. Hagyja üresen HDISqoop nevű adatbázist hoz létre. A tábla neve, a Sqoop feladat kimenetének a AvgDelays. </td></tr>
     </table>
     
-2. Nyissa meg az Azure PowerShell ISE.
+2. Nyissa meg az Azure PowerShell ISE-ben.
 
-3. Másolja és illessze be az alábbi parancsfájl a parancsfájl panelen:  
+3. Másolja és illessze be a parancsfájl panelen a következő parancsfájlt:  
 
     ```powershell
     [CmdletBinding()]
@@ -704,26 +700,26 @@ A HiveQL parancsok teljes listáját lásd: [Hive adatdefiníciós nyelv][hadoop
     ```
 
    > [!NOTE]
-   > A parancsfájl egy representational állapot transfer (REST) szolgáltatást használja, http://bot.whatismyipaddress.com, a külső IP-cím beolvasása. Az IP-címet az SQL database-kiszolgálóhoz egy tűzfalszabályt létrehozására szolgál.
+   > A szkript egy representational állapot transfer (REST) szolgáltatás http://bot.whatismyipaddress.com, a külső IP-cím lekéréséhez. Az IP-cím szolgál egy tűzfalszabályt az SQL database-kiszolgálóhoz létrehozásához.
 
-    Az alábbiakban néhány változók a parancsfájl szerepel:
+    Íme néhány a szkriptben használt változók:
 
-   * **$ipAddressRestService** -az alapértelmezett érték http://bot.whatismyipaddress.com. Egy nyilvános IP-címet a külső IP-cím beolvasása a REST-szolgáltatást is. Más szolgáltatások is használhatja, ha azt szeretné. A külső IP-cím, a szolgáltatás segítségével használandó hozzon létre egy tűzfalszabályt, az Azure SQL adatbázis-kiszolgáló számára, hogy Ön hozzáférhessen az adatbázishoz a munkaállomáson (a Windows PowerShell-parancsfájl használatával).
-   * **$fireWallRuleName** – az Azure SQL-kiszolgáló a tűzfalszabály neve. Az alapértelmezett név az <u>FlightDelay</u>. Ha azt szeretné, átnevezheti.
-   * **$sqlDatabaseMaxSizeGB** -Ez az érték csak egy új Azure SQL adatbázis-kiszolgáló létrehozásakor használható. Az alapértelmezett érték: 10 GB-os. 10 GB-os is elegendő ehhez az oktatóanyaghoz.
-   * **$sqlDatabaseName** -Ez az érték csak egy új Azure SQL-adatbázis létrehozásakor használható. Az alapértelmezett érték: HDISqoop. Ha átnevezi, ennek megfelelően kell frissíteni a Sqoop Windows PowerShell-parancsfájlt.
+   * **$ipAddressRestService** – az alapértelmezett érték http://bot.whatismyipaddress.com. Egy nyilvános IP-címet REST-szolgáltatás esetében a külső IP-cím beolvasása. Más szolgáltatások is használhatja, ha azt szeretné. A szolgáltatás segítségével a külső IP-cím használandó hozzon létre egy tűzfalszabályt az Azure SQL database-kiszolgáló úgy, hogy hozzáférhessen az adatbázishoz a munkaállomásáról (a Windows PowerShell-parancsfájl használatával).
+   * **$fireWallRuleName** – az Azure SQL-kiszolgáló a tűzfalszabály neve. Alapértelmezés szerint ez <u>FlightDelay</u>. Ha azt szeretné, átnevezheti.
+   * **$sqlDatabaseMaxSizeGB** – Ez az érték csak egy új Azure SQL database server létrehozásakor használható. Az alapértelmezett érték: 10 GB-ot. 10 GB-ot is elegendő ehhez az oktatóanyaghoz.
+   * **$sqlDatabaseName** – Ez az érték csak egy új Azure SQL-adatbázis létrehozásakor használható. Az alapértelmezett érték: HDISqoop. Ha átnevezi, ennek megfelelően frissítse a Sqoop Windows PowerShell-parancsfájlt.
 4. A szkriptek futtatásához nyomja le az **F5** billentyűt.
-5. Ellenőrizze a parancsfájl kimenete. Győződjön meg arról, hogy a parancsfájl sikeresen lefutott.
+5. Ellenőrizze a parancsprogram kimenete. Győződjön meg arról, hogy a parancsprogram sikeresen lefutott.
 
 ## <a id="nextsteps"></a> Következő lépések
-Most már megismerte az Azure Blob storage-fájl feltöltése, az adatokat az Azure Blob storage használatával Hive tábla adatokkal való, hogyan futtathat Hive-lekérdezéseket, és Sqoop segítségével exportál adatokat HDFS az Azure SQL-adatbázis. További tudnivalókért tekintse meg a következő cikkeket:
+Most már ismeri a fájl feltöltése az Azure Blob storage-, hogyan töltse fel a Hive-tábla használatával az adatok Azure Blob storage-ból, hogyan futtathat Hive-lekérdezések és Sqoop használatával exportálja az adatokat HDFS-ből az Azure SQL database. További tudnivalókért tekintse meg a következő cikkeket:
 
-* [Első lépései a hdinsight eszközzel][hdinsight-get-started]
+* [HDInsight – első lépések][hdinsight-get-started]
 * [A Hive használata a HDInsightban][hdinsight-use-hive]
-* [Oozie használata a hdinsight eszközzel][hdinsight-use-oozie]
-* [Use Sqoop with HDInsight][hdinsight-use-sqoop]
+* [Az Oozie használata a HDInsightban][hdinsight-use-oozie]
+* [A Sqoop használata a HDInsightban][hdinsight-use-sqoop]
 * [A Pig használata a HDInsightban][hdinsight-use-pig]
-* [Java-MapReduce programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
+* [Java MapReduce programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

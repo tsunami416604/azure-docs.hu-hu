@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4a811c5354a9ff2aaa48a300d9b2655f91fdab23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 205938bbf615face0768028717a333c13c1fafa1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901092"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590313"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Jelentkezzen be egy Azure virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata 
 
@@ -38,7 +38,7 @@ Ha azt tervezi, ez a cikk az Azure PowerShell vagy az Azure CLI-példák haszná
 
 ## <a name="overview"></a>Áttekintés
 
-Egy olyan MSI Csomaghoz biztosít egy [szolgáltatásnév-objektum](../develop/active-directory-dev-glossary.md#service-principal-object) , amely [MSI engedélyezéséhez alapján létrehozott](overview.md#how-does-it-work) a virtuális gépen. Az egyszerű szolgáltatás Azure-erőforrásokhoz való hozzáférést adott, és olyan identitásként parancsfájl/parancssori ügyfelek bejelentkezési és erőforrás-hozzáférés használja. Hagyományosan annak érdekében, hogy a saját identitás alatt védett erőforrások eléréséhez, a parancsfájl ügyfél kell:  
+Egy olyan MSI Csomaghoz biztosít egy [szolgáltatásnév-objektum](../develop/developer-glossary.md#service-principal-object) , amely [MSI engedélyezéséhez alapján létrehozott](overview.md#how-does-it-work) a virtuális gépen. Az egyszerű szolgáltatás Azure-erőforrásokhoz való hozzáférést adott, és olyan identitásként parancsfájl/parancssori ügyfelek bejelentkezési és erőforrás-hozzáférés használja. Hagyományosan annak érdekében, hogy a saját identitás alatt védett erőforrások eléréséhez, a parancsfájl ügyfél kell:  
 
    - regisztrált és az Azure AD-webalkalmazásként bizalmas vagy ügyfél által jóváhagyott
    - Jelentkezzen be a szolgáltatásnevet, az alkalmazás hitelesítő adatokkal (amelyek valószínűleg ágyazva a szkriptbe) alatt

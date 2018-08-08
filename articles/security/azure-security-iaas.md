@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: barclayn
-ms.openlocfilehash: 37620e70377e3f1fbeeeb73aaa294c5f54cf5b3d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7c28459aa04c67db8abda54d9f14eb417bd8ed60
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38724098"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618597"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 
@@ -188,7 +188,7 @@ Hasonlítsa össze a iparági gyakorlati ajánlások, szabványok, testre is sza
 
 Az éles környezetben a külön-külön üzemeltetett környezetben használhatja a kártevőirtó bővítmény segítségével megvédheti virtuális gépeit és a felhőszolgáltatások. Együttműködik a [az Azure Security Center](../security-center/security-center-intro.md).
 
-[A Microsoft Antimalware](azure-security-antimalware.md) magában foglalja a szolgáltatások, mint például a valós idejű védelem, ütemezett vizsgálatát, kártevő szoftverek eltávolítása, aláírás frissítések, motor frissítéseit, jelentéskészítés, a kizárási eseménygyűjtés, minták és [PowerShell-támogatás](https://msdn.microsoft.com/library/dn771715.aspx).
+[A Microsoft Antimalware](azure-security-antimalware.md) magában foglalja a szolgáltatások, mint például a valós idejű védelem, ütemezett vizsgálatát, kártevő szoftverek eltávolítása, aláírás frissítések, motor frissítéseit, jelentéskészítés, a kizárási eseménygyűjtés, minták és [PowerShell-támogatás](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension).
 
 ![Az Azure kártevőirtó](./media/azure-security-iaas/azantimalware.png)
 

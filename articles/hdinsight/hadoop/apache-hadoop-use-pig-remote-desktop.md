@@ -1,102 +1,97 @@
 ---
-title: Hadoop a Pig használata a HDInsight - Azure távoli asztal |} Microsoft Docs
-description: Ismerje meg, a Pig parancs használata a távoli asztali kapcsolat egy Windows-alapú Hadoop-fürt hdinsightban történő Pig Latin utasítás futtatását.
+title: Hadoop a Pig használata a távoli asztalon keresztül a HDInsight – Azure
+description: Ismerje meg, a Pig parancs használata a távoli asztali kapcsolatáról Pig Latin utasításokkal futtatnia a HDInsight egy Windows-alapú Hadoop-fürtöt.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: e034a286-de0f-465f-8bf1-3d085ca6abed
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/17/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: f293aab67fb5e952dc32e20a6370d45cded682b5
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5aec07a5ebbbb56abcbaebbddc5579cf4d076b4d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "35761997"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590666"
 ---
-# <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>A távoli asztali kapcsolat-ről futtatva a Pig-feladatokhoz
+# <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>A Pig-feladatok futtatása a távoli asztali kapcsolat
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ez a dokumentum egy forgatókönyv biztosít a Pig paranccsal futtassa a Pig Latin utasításokat egy távoli asztali kapcsolaton keresztül egy Windows-alapú HDInsight-fürthöz. A Pig Latin adatátalakítást, azok MapReduce-alkalmazások létrehozása helyett hozzárendelését és funkciók teszi lehetővé.
+Ez a dokumentum egy forgatókönyv biztosít a Pig paranccsal futtassa a Pig Latin utasításokkal egy távoli asztali kapcsolaton keresztül egy Windows-alapú HDInsight-fürthöz. A Pig Latin adatátalakítások, azok MapReduce-alkalmazások létrehozása helyett leképezéséhez, és csökkentheti a functions teszi lehetővé.
 
 > [!IMPORTANT]
-> A távoli asztal a Windows operációs rendszert használó HDInsight-fürtök csak érhető el. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A távoli asztal csak akkor használható a Windows operációs rendszert használó HDInsight-fürtökön. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> HDInsight 3.4-es vagy nagyobb, lásd: [HDInsight és az SSH használata a Pig](apache-hadoop-use-pig-ssh.md) információk interaktív Pig-feladatokhoz közvetlenül a fürtön futó parancsot a parancssorból.
+> A HDInsight 3.4 vagy újabb, lásd: [a Pig használata a HDInsight és az SSH](apache-hadoop-use-pig-ssh.md) információk interaktív módon Pig-feladatok közvetlenül a fürtön futó a parancssorból.
 
 ## <a id="prereq"></a>Előfeltételek
-Ebben a cikkben szereplő lépések elvégzéséhez a következőkre lesz szüksége.
+A jelen cikkben ismertetett lépések elvégzéséhez a következőkre lesz szüksége.
 
-* (A HDInsight Hadoop) a Windows-alapú HDInsight-fürt
-* Windows 10, Windows 8 vagy Windows 7 rendszert futtató ügyfélszámítógép
+* A Windows-alapú HDInsight (Hadoop on HDInsight)-fürt
+* A Windows 10, Windows 8 vagy Windows 7 rendszert futtató ügyfélszámítógép
 
-## <a id="connect"></a>Csatlakozzon a távoli asztal
-A távoli asztal engedélyezése a HDInsight-fürthöz, majd csatlakozni a következő utasításokat követve [csatlakozás RDP Funkciót használnak a HDInsight-fürtök](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+## <a id="connect"></a>Csatlakozzon a távoli asztallal
+A távoli asztal engedélyezése a HDInsight-fürt, majd csatlakozhat az utasítások szerint [csatlakozhat a HDInsight-fürtök RDP-vel](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
 
-## <a id="pig"></a>A Pig paranccsal
-1. A távoli asztali kapcsolattal rendelkezik, után indítsa el a **Hadoop parancssori** ikonnal az asztalon.
-2. A Pig parancs indítását. használja a következőket:
+## <a id="pig"></a>A Pig-parancs használata
+1. Miután egy távoli asztali kapcsolat, indítsa el a **Hadoop parancssor** az ikonra az asztalon használatával.
+2. A következő segítségével indítsa el a Pig-parancsot:
 
         %pig_home%\bin\pig
 
-    Meg fog jelenni a `grunt>` kérdés.
+    Megjelenik egy `grunt>` parancssort.
 3. Adja meg a következő utasítást:
 
         LOGS = LOAD 'wasb:///example/data/sample.log';
 
-    Ez a parancs a sample.log fájl tartalmát betölti a naplók fájlba. A fájl tartalmát a következő parancs használatával tekintheti meg:
+    Ez a parancs a sample.log fájlt tartalmát betölti a naplók fájlt. A fájl tartalmát a következő paranccsal tekintheti meg:
 
         DUMP LOGS;
-4. Az adatok átalakítása úgy, hogy csak a naplózási szint kibontani rekordokban reguláris kifejezést alkalmazza:
+4. Az adatok átalakítása alkalmazása csak a naplózási szint kinyerésére minden rekord egy reguláris kifejezést:
 
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
 
     Használhat **DUMP** az átalakítás után az adatok megtekintéséhez. Ebben az esetben `DUMP LEVELS;`.
-5. További, átalakítások alkalmazása a következő utasítások használatával. Használjon `DUMP` az átalakítás lépések után az eredmények megjelenítéséhez.
+5. Továbbra is az átalakítások alkalmazása a következő utasítások használatával. Használat `DUMP` az átalakítás minden lépése után az eredmény megtekintéséhez.
 
     <table>
     <tr>
     <th>Utasítás</th><th>Művelet</th>
     </tr>
     <tr>
-    <td>FILTEREDLEVELS = által LOGLEVEL SZINTJEINEK értéke nem null;</td><td>A naplózási szint megadásához null értéket tartalmazó sorok eltávolítása és az eredményt FILTEREDLEVELS be.</td>
+    <td>FILTEREDLEVELS = szűrő szintek LOGLEVEL szerint nem null;</td><td>A naplózási szint megadásához null értéket tartalmazó sorok eltávolítja, és tárolja az eredményeket FILTEREDLEVELS.</td>
     </tr>
     <tr>
-    <td>GROUPEDLEVELS = csoport FILTEREDLEVELS által LOGLEVEL;</td><td>A sorok naplózási szint szerint csoportosítja, és tárolja az eredményeket a GROUPEDLEVELS.</td>
+    <td>GROUPEDLEVELS által LOGLEVEL; csoport FILTEREDLEVELS =</td><td>A sorok naplózási szint szerint csoportosítja, és tárolja az eredményeket GROUPEDLEVELS.</td>
     </tr>
     <tr>
-    <td>GYAKORISÁGOT = foreach GROUPEDLEVELS csoport létrehozás módja LOGLEVEL, COUNT (FILTEREDLEVELS. LOGLEVEL), COUNT;</td><td>Egy új készletet hoz létre, amely tartalmazza az egyes egyedi napló adatok értéke szinten, és hány alkalommal következik be. A GYAKORISÁGOT történő tárolás</td>
+    <td>GYAKORISÁGOK = foreach GROUPEDLEVELS csoport létrehozásához, LOGLEVEL, COUNT (FILTEREDLEVELS. LOGLEVEL), COUNT;</td><td>Létrehoz egy új csoportot, amely tartalmazza az egyes egyedi naplózási adatok szintű hatékonyságot, és hány alkalommal történik. A tárolás GYAKORISÁGOT be</td>
     </tr>
     <tr>
-    <td>EREDMÉNY = rendelés GYAKORISÁGOT által száma desc;</td><td>A naplózási szintek rendelések (csökkenő) száma szerint, és tárolja az eredmény</td>
+    <td>EREDMÉNY sorrend szerint száma desc; GYAKORISÁGOK =</td><td>A naplózási szintek orders (csökkenő) száma szerint, és tárolja az eredmény</td>
     </tr>
 </table>
 
-6. Az átalakítás eredménye használatával is mentheti a `STORE` utasítást. Például a következő parancsot a menti a `RESULT` számára a **/example/data/pigout** könyvtárban lévő az alapértelmezett tároló, a fürt:
+6. Az eredményeket az átalakítás használatával is mentheti a `STORE` utasítást. Például a következő parancsot a menti a `RESULT` , a **/example/data/pigout** könyvtárat a az alapértelmezett tárolókat a fürt számára:
 
         STORE RESULT into 'wasb:///example/data/pigout'
 
    > [!NOTE]
-   > Az adatok tárolási fájlban található a megadott könyvtár **rész-nnnnn**. Ha a könyvtár már létezik, kapni fog egy hibaüzenetet.
+   > Az adatok fájlban található a megadott könyvtárban tárolt **. rész – nnnnn**. Ha a könyvtár már létezik, egy hibaüzenetet fog kapni.
    >
    >
    
-7. Lépjen ki a grunt parancssorába, írja be a következő utasítást.
+7. Lépjen ki a grunt a rendszer kéri, adja meg a következő utasítást.
 
         QUIT;
 
-### <a name="pig-latin-batch-files"></a>A Pig Latin parancsfájlokat
-A Pig-parancs segítségével futtassa a Pig Latin, amely egy fájlban található.
+### <a name="pig-latin-batch-files"></a>A Pig Latin kötegfájlok
+A Pig-parancs segítségével is futtathat, amelyek egy fájl tartalmazza a Pig Latin.
 
-1. Nyissa meg a grunt parancssorába kilépéskor **Jegyzettömb** , és hozzon létre egy új fájlt **pigbatch.pig** a a **PIG_HOME %** könyvtár.
-2. Írja vagy illessze be a következő sorokat a **pigbatch.pig** fájlt, és mentse azt:
+1. Után kilép a grunt parancssorban, nyisson meg **Jegyzettömb** , és hozzon létre egy új fájlt **pigbatch.pig** a a **PIG_HOME %** könyvtár.
+2. Írja be vagy illessze be a következő sorokat a **pigbatch.pig** fájlt, és mentse azt:
 
         LOGS = LOAD 'wasb:///example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
@@ -105,11 +100,11 @@ A Pig-parancs segítségével futtassa a Pig Latin, amely egy fájlban találhat
         FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
         RESULT = order FREQUENCIES by COUNT desc;
         DUMP RESULT;
-3. Használja a következő futtatásához a **pigbatch.pig** fájl, a pig-paranccsal.
+3. Használja az alábbi parancsot futtassa a **pigbatch.pig** fájlt, a pig-parancs segítségével.
 
         pig %PIG_HOME%\pigbatch.pig
 
-    A kötegelt befejezését követően megjelenik a következő kimenetet, és legyen ugyanaz, mint amikor használt `DUMP RESULT;` az előző lépésekben:
+    A batch-feladat befejezését követően megjelenik az alábbi kimenet, amely lehet ugyanaz, mint amikor használt `DUMP RESULT;` az előző lépésekben:
 
         (TRACE,816)
         (DEBUG,434)
@@ -119,14 +114,14 @@ A Pig-parancs segítségével futtassa a Pig Latin, amely egy fájlban találhat
         (FATAL,2)
 
 ## <a id="summary"></a>Summary (Összefoglalás)
-Ahogy látja, a Pig-parancs segítségével interaktív módon futtassa MapReduce műveleteket, vagy egy kötegfájlt tárolt Pig Latin feladatok futtatása.
+Amint láthatja, a Pig parancs lehetővé teszi interaktív módon MapReduce műveletek futtatásához, vagy egy batch-fájlban tárolt, a Pig Latin-feladatok futtatása.
 
 ## <a id="nextsteps"></a>Következő lépések
-Általános információk a hdinsight Pig:
+A HDInsight Pig általános tájékoztatást:
 
-* [A Pig használata a HDInsight Hadoop](hdinsight-use-pig.md)
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 
-Más módszerekkel kapcsolatos információk a HDInsight Hadoop dolgozhat:
+Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Hive használata a hdinsight Hadoop](hdinsight-use-hive.md)
-* [A HDInsight Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)

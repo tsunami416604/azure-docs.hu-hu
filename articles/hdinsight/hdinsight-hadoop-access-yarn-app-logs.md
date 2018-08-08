@@ -1,84 +1,79 @@
 ---
-title: Hozzáférés Hadoop YARN alkalmazásnaplók szoftveres - Azure |} Microsoft Docs
-description: Hozzáférési kérelem programozott módon bejelentkezik a HDInsight Hadoop-fürthöz.
+title: Hadoop YARN-alkalmazásnaplók elérése programozott módon – Azure
+description: Alkalmazásnaplók elérése programozott módon a HDInsight Hadoop-fürtön.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 0198d6c9-7767-4682-bd34-42838cf48fc5
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: aab7865548c034cb550874c31977b05936dc45b9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 42484f2a93ab5effdcafca0f0769c3fb4cdbb926
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403934"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600183"
 ---
-# <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Windows-alapú HDInsight bejelentkezik hozzáférést YARN alkalmazás
-Ez a dokumentum ismerteti a naplókat, amely a Windows-alapú Hadoop-fürthöz az Azure HDInsight végzett YARN alkalmazások eléréséhez
+# <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>YARN-alkalmazásnaplók elérése a Windows-alapú HDInsight
+Ez a dokumentum ismerteti a YARN-alkalmazások az Azure HDInsight Windows-alapú Hadoop-fürtön végzett a naplók elérése
 
 > [!IMPORTANT]
-> A jelen dokumentumban szereplő információk csak a Windows-alapú HDInsight-fürtök vonatkozik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). YARN eléréséről a Linux-alapú HDInsight-fürtök bejelentkezik, a következő témakörben: [Linux-based Hadoop on HDInsight bejelentkezik hozzáférést YARN alkalmazás](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> Ebben a dokumentumban található információk csak a Windows-alapú HDInsight-fürtök vonatkozik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú HDInsight-fürtökön eléréséről a YARN naplókat: [hozzáférés YARN-alkalmazásnaplók a Linux-based Hadoop on HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 
 ### <a name="prerequisites"></a>Előfeltételek
-* Egy Windows-alapú HDInsight-fürtöt.  Lásd: [hdinsight-fürtök létrehozása Windows-alapú Hadoop](hdinsight-hadoop-provision-linux-clusters.md).
+* Egy Windows-alapú HDInsight-fürt.  Lásd: [létrehozása Windows-alapú Hadoop-fürtök a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="yarn-timeline-server"></a>YARN ütemterv kiszolgáló
-A <a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN ütemterv Server</a> általános információkat nyújt a befejeződött alkalmazásokkal, valamint a keretrendszer-specifikus alkalmazás adatait két különböző felületeken keresztül. Konkrétan:
+## <a name="yarn-timeline-server"></a>YARN idővonal-kiszolgáló
+A <a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN idővonal-kiszolgáló</a> általános információkat biztosít a befejezett alkalmazásokkal, valamint a keretrendszer-specifikus alkalmazással kapcsolatos adatok két különböző felületen. Konkrétan:
 
-* Tárolása és lekérése általános alkalmazás információk a HDInsight-fürtökön engedélyezett 3.1.1.374 verziójával vagy magasabb volt.
-* A keretrendszer-specifikus információk alkalmazásösszetevő ütemterv kiszolgáló jelenleg nem áll rendelkezésre a HDInsight-fürtökön.
+* Tárolásához és lekéréséhez általános alkalmazással kapcsolatos információk a HDInsight-fürtökön lett engedélyezve 3.1.1.374 verziójával vagy újabb.
+* A keretrendszer-specifikus alkalmazás információk összetevője az idővonal-kiszolgáló jelenleg nem áll rendelkezésre a HDInsight-fürtökön.
 
-Alkalmazások általános információkat tartalmaz a következő típusú adatok:
+Az alkalmazások általános információkat a következő számos különféle adatokat tartalmazza:
 
 * Az Alkalmazásazonosító, az alkalmazás egyedi azonosítója
 * A felhasználó az alkalmazást
-* Az alkalmazás befejezéséhez kísérletek információk
+* Végezze el az alkalmazás tett kísérletet információk
 * A tárolók kísérel meg adott alkalmazás által használt
 
-Ezek az információk a HDInsight-fürtök által Azure Resource Manager tárolja. A fürt alapértelmezett tárolóhelyét a előzmények tárban menti az adatokat. Az általános kész alkalmazások adatokat lehet beolvasni a REST API-n keresztül:
+A HDInsight-fürtök ezeket az adatokat tároló Azure Resource Manager által. A korábbi tárban a a fürt alapértelmezett tárolója menti az adatokat. A befejezett alkalmazásokkal az általános adatok lekérhetők a REST API-n keresztül:
 
     GET on https://<cluster-dns-name>.azurehdinsight.net/ws/v1/applicationhistory/apps
 
 
-## <a name="yarn-applications-and-logs"></a>YARN alkalmazások és a naplókat
-YARN erőforrás-kezelés az ütemezés/alkalmazásfigyelés leválasztásával több programozási modellt támogatja. YARN használ egy globális *ResourceManager* (RM) worker-csomópontonként *NodeManagers* (NMs), és alkalmazásonként *ApplicationMasters* (AMs). Az alkalmazás kor (Processzor, memória, lemez, hálózati) erőforrások egyezteti az alkalmazás futtatásához a RM a Az erőforrás-kezelő együttműködve biztosítja ezeket az erőforrásokat, amelyek kiadott megadását NMs *tárolók*. A AM felelős a tárolók által a RM rendelt állapotának nyomon követése Az alkalmazás az alkalmazás természetétől függően számos tárolók lehet szükség.
+## <a name="yarn-applications-and-logs"></a>YARN-alkalmazások és a naplók
+A YARN erőforrás-kezelést, ütemezés/alkalmazásfigyelés leválasztásával több programozási modell támogatja. YARN használ egy globális *ResourceManager* (RM), feldolgozó-csomópontonkénti *NodeManagers* (NMs), és alkalmazásonkénti *ApplicationMasters* (AMs). Az alkalmazás kor erőforrások (CPU, memória, lemez vagy hálózat) egyezteti az alkalmazás futtatására és a RM. Az erőforrás-kezelő működik együtt, adja meg ezeket az erőforrásokat, mint megadó NMs *tárolók*. A AM felelős a tárolók a RM. által hozzárendelt állapotának nyomon követése Egy alkalmazás az alkalmazás jellegétől függően több tároló lehet szükség.
 
 * Minden alkalmazás több állhat *alkalmazás kísérletek*. 
-* Tárolók egy adott kísérlet az alkalmazások számára. 
-* Egy tároló a kontextust biztosít a alapvető munkaegysége. 
-* Egy tároló keretében végrehajtott munka történik a tároló lett lefoglalva egyetlen munkavégző csomóponton. 
+* Tárolók egy adott kísérlet egy alkalmazás számára. 
+* Egy tárolót a kontextust biztosít a alapvető munkaegysége. 
+* Egy tároló kontextusában van elvégzett munka történik, a tároló lett lefoglalva egyetlen feldolgozó csomóponton. 
 
 További információkért lásd: [YARN fogalmak][YARN-concepts].
 
-Alkalmazásnaplók (és a társított tároló naplók) kritikusak megoldani a problémát okozó Hadoop-alkalmazások. YARN gyűjtése, összesítése és tárolása az alkalmazásnaplók töltött keretet biztosít a [napló összesítési] [ log-aggregation] szolgáltatás. A napló összesítési szolgáltatás elérhetővé teszi az elérése során alkalmazásnaplók sokkal kiszámíthatóbb naplók von össze az összes tároló, a munkavégző csomópont, és tárolja őket egy összesített naplófájlhoz munkavégző csomópont az alapértelmezett fájlrendszeren alkalmazás befejeződése után. Az alkalmazás használhat több száz vagy ezer tárolók, de egyetlen munkavégző csomóponton futtassa az összes tároló naplókat összesítése egy fájlba, ami azt eredményezi, az alkalmazás által használt munkavégző csomópontonként egy fájl. A HDInsight-fürtökön alapértelmezés szerint engedélyezve van a napló összesítési (3.0-s verzió vagy újabb verzió), és az összesített naplók az alapértelmezett tárolóban, a fürt a következő helyen találhatók:
+Protokoly aplikací (és a társított tároló naplóinak) létfontosságúak a problémás Hadoop-alkalmazások hibakeresése. YARN összegyűjtése, összevonása és az alkalmazás naplók tárolásához nice keretrendszert biztosít a [Log összesítési] [ log-aggregation] funkció. A naplózási összesítési szolgáltatás révén elérésére alkalmazásnaplókat sokkal kiszámíthatóbb, naplók összesíti az összes tárolót a munkavégző csomópont között, és a egy összesített naplófájl száma feldolgozó csomópontonként az alapértelmezett fájlrendszer tárolja őket egy alkalmazás befejezése után. Az alkalmazás felhasználhatja, több száz vagy akár több ezer olyan tárolók, de egyetlen fájlt, egy fájlt az alkalmazás által használt feldolgozó csomópontonkénti eredményez a egyetlen munkavégző csomóponton futó összes tároló naplóinak vannak összesítve. A HDInsight-fürtökön alapértelmezés szerint engedélyezve van a naplózási összesítési (3.0-s verzió vagy újabb verzió), és az összesített naplókat az alapértelmezett tároló, a fürt a következő helyen található:
 
     wasb:///app-logs/<user>/logs/<applicationId>
 
-Az adott helyre *felhasználói* az alkalmazást elindító felhasználó neve és *applicationId* van egy alkalmazás egyedi azonosítója, a YARN RM által hozzárendelt
+Az adott helyen *felhasználói* az alkalmazást elindító felhasználó neve és *applicationId* van egy alkalmazás egyedi azonosítója, a YARN-RM. által hozzárendelt
 
-Az összesített naplók nincsenek közvetlenül is olvasható, mivel az oktatóprogram egy [TFile][T-file], [bináris formátum] [ binary-format] indexelik a tárolóban. YARN dump ezek a naplók az alkalmazások vagy a tárolókat érdeklő egyszerű szövegként CLI eszközöket biztosít. Ezek a naplók (való csatlakozását követően az RDP keresztül) közvetlenül a fürtcsomópontokon parancsok futtatásával a következő YARN egyik egyszerű szöveges módon tekintheti meg:
+Az összesített naplókat amelyek nem közvetlenül olvasható, nyelven íródtak, egy [TFile][T-file], [bináris formátumú] [ binary-format] indexeli a tárolót. YARN parancssori felületi eszközöket kiírása ezeket a naplókat az alkalmazások vagy a lényeges tárolók egyszerű szövegként biztosít. Ezek a naplók tekintheti meg, futtassa a következő YARN egyik egyszerű szöveges parancsokat közvetlenül a fürtcsomópontokon (Miután csatlakozott, RDP-Kapcsolaton keresztül):
 
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
 
-## <a name="yarn-resourcemanager-ui"></a>YARN erőforrás-kezelő felhasználói felületen
-A YARN erőforrás-kezelő felhasználói felületén a fürt headnode fut, és az Azure-portál irányítópultjának keresztül érhetők el:
+## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager felhasználói felülete
+A YARN ResourceManager felhasználói felülete a fürt átjárócsomópontjával fut, és az Azure portal irányítópultján keresztül érhető el:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. A bal oldali menüben kattintson **Tallózás**, kattintson a **a HDInsight-fürtök**, kattintson egy Windows-alapú fürt, amely a használni kívánt alkalmazás YARN naplóit.
-3. Kattintson a felső menüben **irányítópult**. Egy új böngészőt megnyitott lap jelenik meg nevű lap **HDInsight lekérdezés konzol**.
-4. A **HDInsight lekérdezés konzol**, kattintson a **Yarn felhasználói felületen**.
+2. A bal oldali menüben kattintson a **Tallózás**, kattintson a **HDInsight-fürtök**, kattintson a YARN-alkalmazásnaplók elérése kívánt Windows-alapú fürt.
+3. A felső menüben kattintson a **irányítópult**. Megjelenik egy oldal nyit meg egy új böngésző nevű lapot **HDInsight Lekérdezéskonzol**.
+4. A **HDInsight Lekérdezéskonzol**, kattintson a **Yarn felhasználói felületén**.
 
 [YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [log-aggregation]:http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/

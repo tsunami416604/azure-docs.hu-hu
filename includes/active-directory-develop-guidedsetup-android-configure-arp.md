@@ -1,15 +1,14 @@
-
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Az alkalmazás regisztrációs adatok hozzáadása az alkalmazáshoz
 
-Ebben a lépésben kell hozzáadnia az ügyfél-Azonosítót a projekthez.
+Ebben a lépésben meg kell az ügyfél-azonosító hozzáadása a projekthez.
 
-1.  Nyissa meg `MainActivity` (alatt `app`  >  `java`  >   *`{host}.{namespace}`* )
-2.  Cserélje le a kezdetű sort `final static String CLIENT_ID` együtt:
+1.  Nyissa meg `MainActivity` (alatt `app`  >  `java`  >  *`{host}.{namespace}`*)
+2.  Cserélje le a sort, kezdve `final static String CLIENT_ID` együtt:
 ```java
 final static String CLIENT_ID = "[Enter the application Id here]";
 ```
 3. Nyissa meg: `app` > `manifests` > `AndroidManifest.xml`
-4. Adja hozzá a következő tevékenységek `manifest\application` csomópont. A regisztráció egy `BrowserTabActivity` engedélyezi a hitelesítés befejezése után az alkalmazás folytatja az operációs rendszer:
+4. Adja hozzá a következő tevékenységek `manifest\application` csomópont. A regisztráció egy `BrowserTabActivity` , hogy az operációs rendszer, a hitelesítés elvégzése után az alkalmazás folytatásához:
 
 ```xml
 <!--Intent filter to capture System Browser calling back to our app after Sign In-->

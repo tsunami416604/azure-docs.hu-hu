@@ -1,60 +1,55 @@
 ---
-title: Hdinsight Hadoop-feladatokat az adatok feltöltése |} Microsoft Docs
-description: Megtudhatja, hogyan töltse fel, és hozzáférési adatokat az Azure parancssori felület, a Azure Tártallózó, Azure PowerShell, a Hadoop parancssor vagy a Sqoop használatával hdinsight Hadoop-feladatokat.
-keywords: etl hadoop adatok beérkezése hadoop, hadoop adatok betöltése
-services: hdinsight,storage
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
+title: Hadoop-feladatok adatainak feltöltése a HDInsightba
+description: Ismerje meg, hogyan töltse fel, és a hozzáférési adatokat Hadoop-feladatokat a HDInsight az Azure CLI, Azure Storage Explorer, az Azure PowerShell, a Hadoop parancssor vagy Sqoop használatával.
+keywords: etl hadoop, hadoop, hadoop-adatok betöltése az adatok beolvasása
+services: hdinsight
+author: jasonwhowell
+editor: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 1734e9f0002ab7f33a8a67e44811352cb5c45fdc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 01d9029eafbefbace80508d27fc3282558a299c9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202458"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596796"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hadoop-feladatok adatainak feltöltése a HDInsightba
 
-Az Azure HDInsight egy teljes körű Hadoop elosztott fájlrendszer (HDFS) keresztül Azure Storage és az Azure Data Lake Store biztosítja. Azure Storage és a Data lake Store tervezték HDFS bővítményként zökkenőmentes élményt nyújtsanak az ügyfeleinek. Ezek lehetővé teszik a Hadoop ökoszisztémájának közvetlenül az általa felügyelt adatok való működésre összetevők teljes készlete. Azure Storage és a Data Lake Store különböző fájlrendszerek, adatokat és a számítások az adatok tárolására vannak optimalizálva. A következő előnyöket Azure Storage használatával információ: [használata Azure Storage a hdinsight eszközzel] [ hdinsight-storage] és [használata Data Lake Store a hdinsight eszközzel](hdinsight-hadoop-use-data-lake-store.md).
+Az Azure HDInsight egy teljes körű Hadoop elosztott fájlrendszer (HDFS) keresztül az Azure Storage és az Azure Data Lake Store biztosítja. Az Azure Storage és Data lake Store célja HDFS bővítményeként zökkenőmentes felhasználói élményt nyújtson az ügyfeleknek. A Hadoop-ökoszisztéma közvetlenül gazdagépvezérlő által kezelt adatok összetevők teljes készlete lehetővé teszik. Az Azure Storage és Data Lake Store olyan különálló fájlrendszereket, amely az adatok és a számítások az adatok tárolására vannak optimalizálva. Az előnyök, az Azure Storage információ: [az Azure Storage a HDInsight] [ hdinsight-storage] és [használata Data Lake Store a HDInsight](hdinsight-hadoop-use-data-lake-store.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdené, vegye figyelembe az alábbi követelményeknek:
 
-* Egy Azure-beli HDInsight-fürt. Útmutatásért lásd: [Ismerkedés az Azure HDInsight] [ hdinsight-get-started] vagy [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
+* Egy Azure-beli HDInsight-fürt. Útmutatásért lásd: [Azure HDInsight – első lépések] [ hdinsight-get-started] vagy [létre HDInsight-fürtök](hdinsight-hadoop-provision-linux-clusters.md).
 * A következő két cikkek Tudásbázis:
 
-    - [Az Azure Storage használata a hdinsight eszközzel][hdinsight-storage]
-    - [Használjon Data Lake Store a hdinsight eszközzel](hdinsight-hadoop-use-data-lake-store.md)
+    - [Az Azure Storage használata a HDInsight][hdinsight-storage]
+    - [Használata Data Lake Store a HDInsight](hdinsight-hadoop-use-data-lake-store.md)
 
-## <a name="upload-data-to-azure-storage"></a>Adatok feltöltése az Azure Storage
+## <a name="upload-data-to-azure-storage"></a>Az Azure Storage-adatok feltöltése
 
 ### <a name="command-line-utilities"></a>Parancssori segédprogramok
-Az alábbi segédprogramokat, ha az Azure Storage használatához a Microsoft biztosítja:
+A Microsoft az Azure Storage használatához az alábbi segédprogramokat biztosít:
 
 | Eszköz | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure parancssori felület][azurecli] |✔ |✔ |✔ |
-| [Az Azure PowerShell][azure-powershell] | | |✔ |
-| [AzCopy][azure-azcopy] |✔ | |✔ |
-| [Hadoop parancs](#commandline) |✔ |✔ |✔ |
+| [Az Azure parancssori felület][azurecli] |✔ |✔ |✔ |
+| [Azure PowerShell-lel][azure-powershell] | | |✔ |
+| [Az AzCopy][azure-azcopy] |✔ | |✔ |
+| [Hadoop-parancs](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
-> Az Azure CLI-t, az Azure PowerShell és az AzCopy összes használható kívül az Azure-ból, míg a Hadoop érhető el parancs csak a HDInsight-fürt. És a parancs csak a helyi fájlrendszer adatok betöltését Azure Storage.
+> Bár az Azure CLI-vel, az Azure PowerShell és az AzCopy az összes használható Azure-on kívülről, a Hadoop-parancs érhető el csak a HDInsight-fürtön. Így a parancs csak a helyi fájlrendszerből adatok betöltése az Azure Storage-bA.
 >
 >
 
-#### <a id="xplatcli"></a>Az Azure parancssori felület
-Az Azure parancssori felület az Azure-szolgáltatások kezelése platformfüggetlen eszközzel. Az alábbi lépések segítségével adatokat feltölteni az Azure Storage:
+#### <a id="xplatcli"></a>Az Azure CLI
+Az Azure CLI-vel egy platformfüggetlen eszköz, amellyel az Azure-szolgáltatások kezelését. Használja az alábbi lépéseket az Azure Storage-ba való adatfeltöltést:
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
@@ -65,27 +60,27 @@ Az Azure parancssori felület az Azure-szolgáltatások kezelése platformfügge
     azure login
     ```
 
-    Amikor a rendszer kéri, adja meg a felhasználónevet és jelszót az előfizetéséhez.
-3. Adja meg a következő paranccsal listát készíthet a storage-fiókok az előfizetéséhez:
+    Amikor a rendszer kéri, adja meg a felhasználónevet és jelszót az előfizetéshez.
+3. Adja meg a storage-fiókot az előfizetés listáját a következő parancsot:
 
     ```cli
     azure storage account list
     ```
 
-4. Válassza ki a tárfiókot, amely tartalmazza a blob, amellyel dolgozni szeretne, majd beolvasni a fiók a kulcsot a következő paranccsal:
+4. Válassza ki a tárfiókot, amely tartalmazza a blob dolgozni szeretne, majd ehhez a fiókhoz a kulcs lekérése a következő paranccsal:
 
     ```cli
     azure storage account keys list <storage-account-name>
     ```
 
     Ez a parancs visszaadja a **elsődleges** és a **másodlagos** kulcsok. Másolás a **elsődleges** kulcs értékét, mert a következő lépésben lesz használható.
-5. A következő paranccsal kérje le a tárfiókon belül blob tárolók listáját:
+5. A következő parancs használatával a tárfiókban található blob-tárolók listájának lekéréséhez:
 
     ```cli
     azure storage container list -a <storage-account-name> -k <primary-key>
     ```
 
-6. Fájlok feltöltését és letöltését a blobra mutató használja a következő parancsokat:
+6. Fájlok feltöltését és letöltését a blobra mutató a következő parancsok használatával:
 
    * A fájl feltöltéséhez:
 
@@ -93,14 +88,14 @@ Az Azure parancssori felület az Azure-szolgáltatások kezelése platformfügge
         azure storage blob upload -a <storage-account-name> -k <primary-key> <source-file> <container-name> <blob-name>
         ```
 
-   * A fájl letöltésére:
+   * Fájlok letöltéséhez:
 
         ```cli
         azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
         ```
     
 > [!NOTE]
-> Ha mindig ugyanazt a tárfiókot, állítsa be az alábbi környezeti változókat a fiók megadása helyett, és minden parancs kulcs:
+> Ha mindig ugyanazt a tárfiókot, a következő környezeti változókat a fiók megadása helyett, és minden parancshoz kulcs:
 >
 > * **AZURE\_tárolási\_fiók**: A tárfiók neve
 > * **AZURE\_tárolási\_hozzáférés\_kulcs**: A tárfiók kulcsa
@@ -108,14 +103,14 @@ Az Azure parancssori felület az Azure-szolgáltatások kezelése platformfügge
 >
 
 #### <a id="powershell"></a>Azure PowerShell
-Az Azure PowerShell egy parancsfájl-kezelési környezet, melyekkel automatizálhatja a központi telepítési és felügyeleti a munkaterhelések az Azure-ban, és szabályozhatja. A munkaállomás Azure PowerShell futtatásához konfigurálásával kapcsolatos további információkért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
+Az Azure PowerShell-parancsfájl-kezelési környezet, amellyel szabályozhatja és automatizálhatja az üzembe helyezés és a számítási feladatok Azure-beli felügyeleti. A munkaállomáson futtassa az Azure PowerShell-lel való konfigurálásával kapcsolatos további információkért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
-**Azure Storage egy helyi fájl feltöltése**
+**Az Azure Storage egy helyi fájl feltöltése**
 
-1. Nyissa meg az Azure PowerShell-konzolt, útmutatását [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
-2. Az első öt változók értékeinek beállítása a következő parancsfájlban:
+1. Nyissa meg az Azure PowerShell-konzolt, a utasításai [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
+2. Az első öt változók értékeit, állítsa be a következő parancsfájlt:
 
     ```powershell
     $resourceGroupName = "<AzureResourceGroupName>"
@@ -136,10 +131,10 @@ Az Azure PowerShell egy parancsfájl-kezelési környezet, melyekkel automatizá
 
 3. Illessze be a parancsfájl futtatásához, a fájl másolása az Azure PowerShell-konzolon.
 
-Például a PowerShell-parancsfájlok működéséhez a hdinsight eszközzel, lásd: [a HDInsight tools](https://github.com/blackmist/hdinsight-tools).
+Például tekintse meg a PowerShell-parancsfájlok használata a HDInsight, a létrehozott [HDInsight eszközök](https://github.com/blackmist/hdinsight-tools).
 
-#### <a id="azcopy"></a>AzCopy
-AzCopy parancssori eszköz, amely arra tervezték, hogy egyszerűbbé tehető adatátvitel esetében bejövő és kimenő egy Azure Storage-fiók. Önálló eszközként használható, vagy az eszköz már meglévő alkalmazás tartalmaznia. [Töltse le az AzCopy][azure-azcopy-download].
+#### <a id="azcopy"></a>Az AzCopy
+Az AzCopy parancssori eszköz, amely egyszerűsíti az adatok áthelyezése az Azure Storage-fiók-a feladat. Önálló eszközként használható, vagy az eszköz már meglévő alkalmazás építhet be. [Töltse le az AzCopy][azure-azcopy-download].
 
 Az AzCopy szintaxisa:
 
@@ -147,19 +142,19 @@ Az AzCopy szintaxisa:
 AzCopy <Source> <Destination> [filePattern [filePattern...]] [Options]
 ```
 
-További információkért lásd: [AzCopy - feltöltése/letöltése fájlok Azure Blobokra vonatkozó][azure-azcopy].
+További információkért lásd: [AzCopy - feltöltése/letöltése fájlokat az Azure-Blobok][azure-azcopy].
 
-A Linux Preview-ban Azcopy érhető el.  Lásd: [AzCopy lévő Linux előzetes bejelentése](https://blogs.msdn.microsoft.com/windowsazurestorage/2017/05/16/announcing-azcopy-on-linux-preview/).
+Az Azcopy a Linux előzetes verziójában érhető el.  Lásd: [AzCopy a Linuxos előzetes bejelentése](https://blogs.msdn.microsoft.com/windowsazurestorage/2017/05/16/announcing-azcopy-on-linux-preview/).
 
 #### <a id="commandline"></a>Hadoop parancssor
-A Hadoop parancssor csak az adatok tárolására az Azure storage-blob, amikor az adatok már megtalálható az átjárócsomóponthoz hasznos.
+A Hadoop parancssor csak hasznos adatok tárolása az Azure storage-blobba, amikor az adatok már megtalálható a fürt fő csomópontjának.
 
-A Hadoop parancs használatához először csatlakoznia kell a headnode, az alábbi módszerek egyikének használatával:
+Annak érdekében, hogy a Hadoop parancsot használja, először csatlakoznia kell az átjárócsomóponthoz, a következő módszerek egyikével:
 
-* **Windows-alapú HDInsight**: [csatlakozzon a távoli asztali kapcsolattal](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **Linux-alapú HDInsight**: protokoll használatával kapcsolódó levelezőprogramokkal [SSH vagy PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Windows-alapú HDInsight**: [csatlakoztatása a távoli asztal használatával](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+* **Linux-alapú HDInsight**: csatlakozás használatával [SSH- vagy putty-kapcsolaton keresztül](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-A csatlakozás után a következő szintaxissal fájl feltöltése tárolás.
+A csatlakozás után az alábbi szintaxissal fájl feltöltése storage.
 
 ```bash
 hadoop -copyFromLocal <localFilePath> <storageFilePath>
@@ -167,7 +162,7 @@ hadoop -copyFromLocal <localFilePath> <storageFilePath>
 
 Például: `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
-Mivel az alapértelmezett fájlrendszer a HDInsight az Azure Storage, /example/data.txt valójában az Azure Storage. A fájlt is vonatkozik:
+Mivel az alapértelmezett fájlrendszer, a HDInsight az Azure Storage-ban, /example/data.txt valójában az Azure Storage-ban. A fájlt is hivatkoznak:
 
     wasb:///example/data/data.txt
 
@@ -175,15 +170,15 @@ vagy
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-Egyéb Hadoop parancsok, amelyek a fájlok listája: [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Más Hadoop-parancsokat, amelyek együttműködnek a fájlok listáját lásd: [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]
-> A HBase fürtök esetén az alapértelmezett blokkméret használható, ha a adatainak írása 256 KB. Amíg ez a HBase API-k és a REST API-k használata remekül működik, használja a `hadoop` vagy `hdfs dfs` parancsok írása ~ 12 GB-nál nagyobb adatok hibát eredményez. További információkért lásd: a [írás a blob storage-hibát](#storageexception) című részben.
+> A HBase fürtök esetén az alapértelmezett blokkméret használható, ha adatok 256 KB. Ez a jól működik a HBase API-k vagy REST API-k használatakor, miközben használata a `hadoop` vagy `hdfs dfs` parancsokat írhat adatokat ~ 12 GB-nál nagyobb hibát eredményez. További információkért lásd: a [írási a blob storage kivételt](#storageexception) szakasz ebben a cikkben.
 >
 >
 
 ### <a name="graphical-clients"></a>Grafikus ügyfelek
-Van még több alkalmazás, amely a grafikus felületet biztosít az Azure Storage. Az alábbi táblázat néhány ezeknek az alkalmazásoknak a listáját:
+Is találhatók, amely a grafikus felületet biztosít az Azure Storage használatát több alkalmazás is. Az alábbi táblázat az néhány ezeknek az alkalmazásoknak a listája:
 
 | Ügyfél | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
@@ -194,47 +189,47 @@ Van még több alkalmazás, amely a grafikus felületet biztosít az Azure Stora
 | [Azure Explorer](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
-#### <a name="visual-studio-tools-for-hdinsight"></a>HDInsight Visual Studio eszközök
+#### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools for HDInsight
 További információkért lásd: [Navigálás a kapcsolt erőforrásokban](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources).
 
 #### <a id="storageexplorer"></a>Azure Storage Explorer
-*Az Azure Tártallózó* hasznos eszköz a Kérem, és módosítsa az adatokat a BLOB. Ingyenes, nyissa meg a forrás eszköz, amely letölthető [ http://storageexplorer.com/ ](http://storageexplorer.com/). A forráskódot, valamint a hivatkozás érhető el.
+*Az Azure Storage Explorer* vizsgálatához és módosítása a nyerhető a blobok fontos eszköze. Egy ingyenes, nyílt forráskódú eszköz, amely letölthető a [ http://storageexplorer.com/ ](http://storageexplorer.com/). A forráskódja elérhető a hivatkozásból.
 
-Az eszköz használata előtt ismernie kell az Azure storage-fiók nevét és a fiók kulcs. Az alábbi információk eljussanak vonatkozó utasításokért lásd: a "hogyan: nézet, a másolás és a hívóbetűk újragenerálása tárolási" szakasza [létrehozása, kezelése vagy törlése a tárfiók][azure-create-storage-account].
+Az eszköz használata előtt ismernie kell az Azure storage-fiók tárfióknév és fiókkulcs. Az alábbi információk kapcsolatos útmutatásért lásd: a "How to: megtekintése, másolása és újragenerálása storage hozzáférési kulcsok" szakaszában [létrehozása, kezelése vagy törlése a storage-fiók][azure-create-storage-account].
 
-1. Az Azure Storage-kezelő futtatása. Ha első alkalommal a Tártallózó futtatása, akkor kéri a **tá_rolási fióknév** és **Tárfiók kulcsa**. Futtatásakor az előtt, használja a **Hozzáadás** gombra kattintva adja hozzá egy új tárfiók neve és kulcsa.
+1. Futtassa az Azure Storage Explorerben. Ha első alkalommal futtatnia kell a Storage Explorert, kéri a **tá_rolási fióknév** és **tárfiókkulcs**. Ha kell, mielőtt futtatja, a **Hozzáadás** gombra kattintva adhat hozzá egy új tárfiók neve és kulcsa.
 
-    Adja meg a nevét, és a tárfiók a HDInsight-fürt által használt kulcs, és válassza ki **MENTÉS és MEGNYITÁS**.
+    Adja meg a nevét, és a HDInsight-fürt által használt a tárfiók kulcsát, majd **nyílt & mentése**.
 
     ![HDI.AzureStorageExplorer][image-azure-storage-explorer]
-2. A bal oldali interfész tárolók listájáról kattintson a tárolót a HDInsight-fürthöz társított nevét. Alapértelmezés szerint azt a HDInsight-fürt neve, de eltérő, ha a fürt létrehozásakor adja meg az adott név lehet.
-3. Az eszköztáron válassza ki a Feltöltés ikonra.
+2. A felület balra tárolók listájában kattintson a tároló a HDInsight-fürthöz társított neve. Alapértelmezés szerint azt a HDInsight-fürt neve, de eltérő, ha a fürt létrehozásakor megadott adott névvel lehet.
+3. Az eszköztáron válassza a Feltöltés ikonra.
 
-    ![A feltöltés ikonja kiemelve eszköztár](./media/hdinsight-upload-data/toolbar.png)
-4. Adjon meg egy fájlt feltölteni, majd **nyitott**. Amikor a rendszer kéri, válassza ki a **feltöltése** feltölteni a fájlt a tároló gyökeréhez. Ha szeretne feltölteni a fájlt egy adott helyre, adja meg az elérési utat a **cél** mezőbe, majd válassza ki **feltöltése**.
+    ![Az eszköztáron a kiemelt ikon feltöltése](./media/hdinsight-upload-data/toolbar.png)
+4. Adjon meg egy fájlt, és kattintson a töltse fel **nyílt**. Amikor a rendszer kéri, válassza ki a **feltöltése** feltölteni a fájlt a tároló gyökérkönyvtárába. Ha szeretne feltölteni a fájlt egy adott helyre, adja meg az elérési utat a **cél** mezőre, majd válassza **feltöltése**.
 
     ![Fájl feltöltése párbeszédpanel](./media/hdinsight-upload-data/fileupload.png)
 
-    Ha a fájl befejezte a feltöltést, használhatja a HDInsight-fürt feladatokból.
+    Után a fájl befejezte a feltöltést, használhatja a feladatok a HDInsight-fürtön.
 
-### <a name="mount-azure-storage-as-local-drive"></a>Helyi meghajtó, az Azure Storage csatlakoztatása
-Lásd: [csatlakoztatási Azure Storage helyi meghajtóként](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+### <a name="mount-azure-storage-as-local-drive"></a>Az Azure Storage csatlakoztatása helyi meghajtóként
+Lásd: [az Azure Storage csatlakoztatása helyi meghajtóként](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
 
 ### <a name="upload-using-services"></a>Töltse fel a szolgáltatások használata
 #### <a name="azure-data-factory"></a>Azure Data Factory
-Az Azure Data Factory szolgáltatásnak egy teljes körűen felügyelt szolgáltatás zökkenőmentes, méretezhető és megbízható éles adatcsatornák a tárolás, az adatfeldolgozás és adatok adatátviteli szolgáltatások létrehozására.
+Az Azure Data Factory szolgáltatás nem egy teljes körűen felügyelt szolgáltatás, adatfeldolgozási adatok tárolási és adatátviteli szolgáltatások létrehozása egyszerű, méretezhető és megbízható éles adatfolyamatokat állíthat be.
 
-Az Azure Data Factory használható az Azure Storage áthelyezni az adatokat, vagy hozzon létre adatok folyamatok, amelyek közvetlenül a HDInsight-szolgáltatások, mint a Hive és a Pig használata.
+Az Azure Data Factory adatok áthelyezése az Azure Storage-ba, vagy közvetlenül használni a HDInsight-szolgáltatások, például a Hive és Pig adatfolyamatok létrehozására is használhatók.
 
-További információkért lásd: a [Azure Data Factory dokumentáció](https://azure.microsoft.com/documentation/services/data-factory/).
+További információkért lásd: a [Azure Data Factory-dokumentáció](https://azure.microsoft.com/documentation/services/data-factory/).
 
-#### <a id="sqoop"></a>Apache Sqoop
-Sqoop az eszköz a Hadoop és a relációs adatbázisok közötti adattovábbításra. Adatok importálása egy relációs adatbázis-kezelő rendszerének (RDBMS), például az SQL Server, MySQL, vagy a Hadoop elosztott fájlrendszer (HDFS), az Oracle átalakíthatja az adatokat a Hadoop MapReduce vagy a Hive, majd az adatok exportálása vissza egy RDBMS használhatja.
+#### <a id="sqoop"></a>Az Apache sqoop használatával
+A Sqoop az eszköz a Hadoop és relációs adatbázisok közötti adatátvitelhez. Adatokat importálhat egy relációsadatbázis-kezelő rendszerének (RDBMS), például SQL Server, MySQL és a Hadoop elosztott fájlrendszer (HDFS), az Oracle, az adatok átalakítása a Hadoop MapReduce- vagy Hive-, és majd exportálja az adatokat egy RDBMS be újra, használhatja azt.
 
-További információkért lásd: [és a HDInsight együttes használata Sqoop][hdinsight-use-sqoop].
+További információkért lásd: [Sqoop használata a HDInsight-][hdinsight-use-sqoop].
 
-### <a name="development-sdks"></a>Fejlesztési SDK-k
-Az Azure Storage használata az Azure SDK-t a következő programozási nyelven is elérhető:
+### <a name="development-sdks"></a>Fejlesztés SDK-k
+Az Azure Storage a következő programozási nyelvek a az Azure SDK-val is elérhető:
 
 * .NET
 * Java
@@ -243,11 +238,11 @@ Az Azure Storage használata az Azure SDK-t a következő programozási nyelven 
 * Python
 * Ruby
 
-Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [Azure tölti le.](https://azure.microsoft.com/downloads/)
+Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [Azure letöltések](https://azure.microsoft.com/downloads/)
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
-#### <a id="storageexception"></a>Írás a blob Storage-hibát
-**A jelenség**: használata esetén a `hadoop` vagy `hdfs dfs` parancsok fájloknak, amelyek ~ 12 GB vagy nagyobb a HBase-fürtöt, felmerülhet a következő hiba:
+#### <a id="storageexception"></a>Írás a blob Storage kivétel
+**A jelenség**: használatakor a `hadoop` vagy `hdfs dfs` parancsokat írhat fájlokat, amelyek ~ 12 GB-os vagy nagyobb, a HBase-fürtöt, felmerülhet a következő hiba:
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException
@@ -269,32 +264,32 @@ Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [A
             at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:354)
             ... 7 more
 
-**OK**: a HBase a HDInsight-fürtök alapértelmezett egy 256 KB-os blokkméretet az Azure storage írása közben. A HBase API-k vagy a REST API-k működik, amíg azt hibát eredményez használata esetén a `hadoop` vagy `hdfs dfs` parancssori segédprogramok.
+**OK**: a HDInsight-alapú HBase-fürtök alapértelmezett egy 256 KB-os blokkméret az Azure storage való írás esetén. A HBase API-k vagy REST API-k esetében működik, amíg ez hibát eredményez használatakor a `hadoop` vagy `hdfs dfs` parancssori segédeszközöket.
 
-**Megoldási**: használata `fs.azure.write.request.size` adhatja meg a nagyobb blokkméret. Ehhez a használati alapon használatával a `-D` paraméter. A következő paranccsal Íme egy használja ezt a paramétert a `hadoop` parancs:
+**Feloldási**: használata `fs.azure.write.request.size` a nagyobb blokkméret megadásához. Ezt megteheti is használati alapon használatával a `-D` paraméter. A következő parancs használatával ezt a paramétert a `hadoop` parancsot:
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 ```
 
-Növelje a értékének `fs.azure.write.request.size` globálisan Ambari használatával. Az alábbi lépések segítségével módosítsa az értéket a Ambari webes felhasználói felületén:
+Az értékét növelje `fs.azure.write.request.size` globálisan az Ambari használatával. Módosítsa az Ambari webes Kezelőfelületen használható a következő lépéseket:
 
-1. A böngészőben nyissa meg az Ambari webes felhasználói felületén, a fürt számára. Ez az https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
+1. A böngészőben nyissa meg az Ambari webes felhasználói Felületet, a fürt számára. Ez a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
 
-    Amikor a rendszer kéri, adja meg a rendszergazda nevét és jelszavát a fürt.
+    Amikor a rendszer kéri, adja meg a rendszergazdai felhasználónevét és jelszavát a fürt számára.
 2. Válassza ki a képernyő bal oldalán, **HDFS**, majd válassza ki a **Configs** fülre.
-3. Az a **szűrő...**  mezőbe írja be `fs.azure.write.request.size`. Ez a mező és a lap közepén aktuális értékét jeleníti meg.
-4. Módosítsa az értéket a 262144 (256KB) az új érték. Például 4194304 (4MB).
+3. Az a **szűrése...**  írja be a következőt `fs.azure.write.request.size`. Ez a mező és az oldal közepén aktuális értékét jeleníti meg.
+4. Új értékét módosítsa az értéket a 262144 (256KB). Ha például 4194304 (4MB).
 
-![Az Ambari webes felhasználói felületén keresztül érték módosítása képe](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
+![Az Ambari webes felhasználói felületen keresztül értékét képe](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
-További információ az Ambari használatával, lásd: [kezelése HDInsight-fürtök az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md).
+Az Ambari használatával kapcsolatos további információkért lásd: [kezelése a HDInsight-fürtök az Ambari webes kezelőfelületen](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerkedett az adatok lekérése a HDInsight, olvassa el az elemzést további információt a következő cikkeket:
+Most, hogy megismerte, hogyan olvashatja be őket a HDInsight, olvassa el a további elemzéseket végezhet a következő cikkeket:
 
 * [Azure HDInsight – első lépések][hdinsight-get-started]
-* [Hadoop-feladatokat programozott módon küldhet][hdinsight-submit-jobs]
+* [Programozott módon a Hadoop-feladatok elküldése][hdinsight-submit-jobs]
 * [A Hive használata a HDInsightban][hdinsight-use-hive]
 * [A Pig használata a HDInsightban][hdinsight-use-pig]
 

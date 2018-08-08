@@ -1,62 +1,57 @@
 ---
-title: Machine learning például a hdinsight - Azure Spark MLlib |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy machine learning-alkalmazást, amely elemzi a DataSet adatkészlet besorolásával keresztül logisztikai regresszió Spark MLlib segítségével.
-keywords: Spark gépi tanulási, spark machine learning – példa
+title: A Spark MLlib a HDInsight - Azure Machine learning példa
+description: Megtudhatja, hogyan hozhat létre egy machine learning-alkalmazást, amely elemzi a logisztikai regressziós keresztül a fájlbesorolás segítségével adatkészlet a Spark MLlib segítségével.
+keywords: a Spark a machine learning, a spark machine learning-példa
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: c0fd4baa-946d-4e03-ad2c-a03491bd90c8
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: jgao
-ms.openlocfilehash: 1fc89f2181a5b9fb6b6c5a26d974b016fa1926a6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: jasonh
+ms.openlocfilehash: 068d5ee7200f9597da11c0a2850ef4941f4ea900
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361335"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619532"
 ---
-# <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib segítségével a machine learning-alkalmazás létrehozása és elemzése a DataSet adatkészlet
+# <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib segítségével hozhat létre a machine learning-alkalmazás, és a egy adatkészlet elemzése
 
-Használata Spark [MLlib](https://spark.apache.org/mllib/) machine learning-alkalmazás egy megnyitott adatkészlethez egyszerű prediktív elemzési létrehozásához. A Spark beépített gépi tanulási szalagtárak, a példában az *besorolás* logisztikai regresszió keresztül. 
+Ismerje meg, hogyan használható a Spark [MLlib](https://spark.apache.org/mllib/) machine learning-alkalmazás egyszerű prediktív elemzéseket végezhet egy megnyitott adatkészlet létrehozásához. A Spark a beépített gépi tanulás kódtárakat, ez a példa *besorolási* logisztikai regressziós keresztül. 
 
 > [!TIP]
-> Ebben a példában, Ön által létrehozott hdinsight (Linux) Spark-fürtön Jupyter notebook is érhető el. A notebook élmény lehetővé teszi a Python kódtöredékek futtassa a notebook magát. Hajtsa végre az oktatóprogram a notebook belül, Spark-fürt létrehozása, és indítsa el a Jupyter notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Ezután futtassa a notebook **Spark Machine Learning - étele ellenőrző adatok MLlib.ipynb a prediktív elemzési** alatt a **Python** mappát.
+> Ebben a példában is egy Jupyter notebookot HDInsight szolgáltatásban létrehozott (Linux) Spark-fürtön elérhető. A jegyzetfüzet-megoldás lehetővé teszi a notebookból magát a Python-kódrészletek futtatását. Kövesse az oktatóanyag a jegyzetfüzet belül, hozzon létre egy Spark-fürtöt, majd indítsa el a Jupyter notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Ezután futtassa a notebook **Spark Machine Learning - prediktív elemzés a MLlib.ipynb használata az élelmiszervizsgálati ellenőrző adatok** alatt a **Python** mappát.
 >
 >
 
-MLlib egy Spark Alapkönyvtár, amely számos hasznos segédprogramokat biztosít gépi tanulási feladatok, beleértve a segédprogramok:
+MLlib egy Spark Alapkönyvtár, amely számos hasznos segédprogramokat biztosít a machine learning feladatokat, beleértve a megfelelő segédprogramok:
 
 * Besorolás
-* Regressziós
+* Regresszió
 * Fürtözés
-* A témakör modellezési
-* Szinguláris érték felbontás ellen (SVD) és egyszerű összetevő elemzés (PEM)
-* Alapul, tesztelése és minta számításához
+* A témakör modellezés
+* Egyetlen érték idősorfelbontási (SVD) és egyszerű összetevő elemzés (PEM)
+* Tesztelés és minta statisztikák kiszámításához elmélet
 
-## <a name="understand-classification-and-logistic-regression"></a>Besorolás és logisztikai regresszió ismertetése
-*Besorolási*népszerű Machine learning-feladat, az a folyamat a bemeneti adatok rendezése kategóriákba. A feladat is található egy osztályozó algoritmus hozzárendelése "címkék" adatokat, hogy a felhasználótól, hogy legyen. Sikerült a például a gépi tanulási algoritmus, amely fogadja bemeneti adatként készlet információkat, és elosztja a készlet két kategóriába sorolhatók véleménye: kell értékesítő készletek és a készletek, amelyek kell tartania.
+## <a name="understand-classification-and-logistic-regression"></a>Besorolás és a logisztikai regressziós ismertetése
+*Besorolási*közkedvelt Machine learning-feladat kategóriákba bemeneti Adatrendezés során a rendszer. A feladat egy osztályozó algoritmus, döntse el, a bemeneti adatok Ön által megadott "címkék" hozzárendelése a. Ha például sikerült gondol, egy gépi tanulási algoritmus, amely fogadja bemeneti adatként tőzsdei információkat, és elosztja a készlet két kategóriába sorolhatók: kell árusító készletek és a készletek, amelyek kell tartania.
 
-Logisztikai regresszió a besorolási használt algoritmus. A Spark logisztikai regresszió API akkor hasznos, ha *bináris osztályozási*, vagy egy két bemeneti adatok besorolása. További információ a logisztikai regresszió: [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
+Logisztikai regressziós a besorolási használt algoritmus. A Spark a logisztikai regressziós API akkor hasznos, ha *bináris osztályozási*, vagy egy két csoporthoz bemeneti adatok besorolása. További információ a logisztikai regressziót: [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
 
-Összefoglalva, a logisztikai regresszió illesztése egy *logisztikai függvény* , amely használható a valószínűsége annak, hogy egy bemeneti vektort tartozik egy csoport vagy egyéb előre jelezni.  
+Összefoglalva, a logisztikai regressziós illesztése egy *logisztikai függvény* , amely előre jelezni a valószínűsége annak, hogy egy bemeneti vektor tartozik egy csoport vagy a másik használható.  
 
-## <a name="predictive-analysis-example-on-food-inspection-data"></a>A prediktív elemzés példa étele ellenőrző adatok
-Ebben a példában használható Spark néhány prediktív elemzési étele ellenőrző adatokon (**Food_Inspections1.csv**) keresztül szerzett része, amely a [város a Chicagói adat portált](https://data.cityofchicago.org/). Ez az adatkészlet chicagóban, beleértve az egyes létrehozását, a szabálytalanság található (ha van ilyen) és az ellenőrzés eredményét végezték étele kialakítása ellenőrzésekre információkat tartalmaz. Az adatok CSV-fájl már megtalálható a fürthöz rendelt tárolási fiók **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**.
+## <a name="predictive-analysis-example-on-food-inspection-data"></a>Prediktív elemzés példa az élelmiszer-ellenőrzési adatok
+Ebben a példában a prediktív elemzést élelmiszer-ellenőrzési adatokon végrehajtandó használhatja a Spark (**Food_Inspections1.csv**), amely keresztül szerezték be a [város, Chicagói adatportálon](https://data.cityofchicago.org/). Ez az adatkészlet food létesítmény ellenőrzések, Chicago, többek között az egyes létrehozásáról, a szabálysértések található (ha van ilyen) és az ellenőrzés eredményét a végezték kapcsolatos információt tartalmazza. A CSV adatfájl már elérhető a fürthöz társított tárfiókban **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**.
 
-Az alábbi lépéseket, a most kialakított egy modell megtekintéséhez, mi tart, vagy a étele ellenőrzése sikertelen.
+Az alábbi lépéseket a megtekintéséhez, hogy mire van szüksége, vagy sikertelen egy élelmiszer-vizsgálati modell fejlesztése.
 
 ## <a name="create-a-spark-mllib-machine-learning-app"></a>Spark MLlib machine learning-alkalmazás létrehozása
 
 1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért lásd: [Jupyter notebook létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
-2. Ehhez az alkalmazáshoz szükséges típusok importálása. Másolja és illessze be a következő kód egy üres cellába, és nyomja le az **SHIRT + ENTER**.
+2. Ehhez az alkalmazáshoz szükséges típusok importálása. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le **SHIRT + ENTER**.
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -70,9 +65,9 @@ Az alábbi lépéseket, a most kialakított egy modell megtekintéséhez, mi tar
 
 ## <a name="construct-the-input-dataframe"></a>A bemeneti dataframe szerkezet
 
-A nyers adatok CSV formátumban van, mert a fájl lekéréses strukturálatlan szövegként a memóriába a Spark-környezet használatával, és Python a fürt megosztott kötetei szolgáltatás kódtár segítségével minden egyes sor az adatok elemzése.
+Mivel a nyers adatok CSV formátumban, a Spark környezet használatával kérje le a fájlt a memóriába, a strukturálatlan szöveg, és a Python a CSV-kódtár használatával minden egyes sor az adatok elemzése.
 
-1. Futtassa a következő sorokat importálni, és a bemeneti adatok elemzése a rugalmas elosztott Dataset (RDD) létrehozásához.
+1. Futtassa a következő sorokat hozzon létre egy rugalmas elosztott adatkészlet (RDD) importálása és a bemeneti adatok elemzésekor.
 
     ```PySpark
     def csvParse(s):
@@ -87,13 +82,13 @@ A nyers adatok CSV formátumban van, mert a fájl lekéréses strukturálatlan s
                     .map(csvParse)
     ```
 
-2. Futtassa egy sor lekérése a RDD, így egy pillantást az adatok séma a következő kódot:
+2. Futtassa a következő kódot egy sor lekérése az RDD, így egy pillantást az adatok séma:
 
     ```PySpark
     inspections.take(1)
     ```
 
-    A kimenete:
+    A kimenet a következő:
 
     ```
     [['413707',
@@ -115,9 +110,9 @@ A nyers adatok CSV formátumban van, mert a fájl lekéréses strukturálatlan s
         '(41.97583445690982, -87.7107455232781)']]
     ```
 
-    A kimeneti lehetővé teszi egy meghatározni, hogy a bemeneti fájl séma. Ez magában foglalja a minden létrehozását, a kialakítása, a címet, és az ellenőrzések, a helyre, többek között az adatok nevét. 
+    A kimenet a séma a bemeneti fájl ötlet biztosítja. Ez magában foglalja a nevét, minden létesítmény létrehozásáról, a címet, és az ellenőrzések a helyre, többek között az adatok típusát. 
 
-3. Futtassa a következő kódot a dataframe létrehozásához (*df*) és egy ideiglenes tábla (*CountResults*) néhány oszlopokkal, melyek hasznosak lehetnek a prediktív elemzés céljából. `sqlContext` a strukturált adatok átalakításokat hajthattak végre szolgál. 
+3. Futtassa a következő kódot, hogy hozzon létre dataframe-(*df*) és a egy ideiglenes táblát (*CountResults*) néhány oszlopokat, amelyek hasznosak a prediktív elemzés céljából. `sqlContext` strukturált adatok átalakításokat szolgál. 
 
     ```PySpark
     schema = StructType([
@@ -130,15 +125,15 @@ A nyers adatok CSV formátumban van, mert a fájl lekéréses strukturálatlan s
     df.registerTempTable('CountResults')
     ```
 
-    A dataframe jelentőséggel négy oszlop **azonosító**, **neve**, **eredmények**, és **megsértésének**.
+    Az adathalmaz jelentőséggel négy oszlop **azonosító**, **neve**, **eredmények**, és **szabálysértések**.
 
-4. Futtassa a következő kód segítségével kérheti le az adatok mintát:
+4. Futtassa a mintát az adatok beolvasása a következő kódot:
 
     ```PySpark
     df.show(5)
     ```
 
-    A kimenete:
+    A kimenet a következő:
 
     ```
     +------+--------------------+-------+--------------------+
@@ -152,17 +147,17 @@ A nyers adatok CSV formátumban van, mert a fájl lekéréses strukturálatlan s
     +------+--------------------+-------+--------------------+
     ```
 
-## <a name="understand-the-data"></a>Az adatok ismertetése
+## <a name="understand-the-data"></a>Az adatok megismerése
 
-Kezdjük, hogy az adatkészlet tartalmazza. 
+Kezdjük a megtapasztalhatja, az adatkészlet tartalmaz. 
 
-1. Futtassa a következő kódot a különböző értékeit a **eredmények** oszlop:
+1. Futtassa a következő kódot az eltérő értékeket megjelenítéséhez a **eredmények** oszlopban:
 
     ```PySpark
     df.select('results').distinct().show()
     ```
 
-    A kimenete:
+    A kimenet a következő:
 
     ```
     +--------------------+
@@ -176,21 +171,21 @@ Kezdjük, hogy az adatkészlet tartalmazza.
     +--------------------+
     ```
 
-2. Futtassa a következő kódot az eredményeket a terjesztési megjelenítéséhez:
+2. Futtassa a következő kódot az eredményeket a terjesztési megjelenítése:
 
     ```PySpark
     %%sql -o countResultsdf
     SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
     ```
 
-    A `%%sql` magic követ `-o countResultsdf` biztosítja, hogy a lekérdezés kimenetét a Jupyter kiszolgálón (általában a fürt headnode) helyileg megőrződjenek. A kimeneti tárolva a [Pandas](http://pandas.pydata.org/) a megadott nevű dataframe **countResultsdf**. A `%%sql` funkcióval, illetve a PySpark kernellel elérhető egyéb funkciókkal kapcsolatos további információkat [A Spark HDInsight-fürtökkel használt Jupyter notebookokban elérhető kernelek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic) című részben talál.
+    A `%%sql` Magic Quadrant követ `-o countResultsdf` biztosítja, hogy a lekérdezés kimenete a Jupyter-kiszolgálón (általában a fürt átjárócsomópontjával) helyileg tárolja. A kimenet a megőrzés pedig egy [Pandas](http://pandas.pydata.org/) a megadott nevű adathalmaz **countResultsdf**. A `%%sql` funkcióval, illetve a PySpark kernellel elérhető egyéb funkciókkal kapcsolatos további információkat [A Spark HDInsight-fürtökkel használt Jupyter notebookokban elérhető kernelek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic) című részben talál.
 
-    A kimenete:
+    A kimenet a következő:
 
-    ![SQL-lekérdezés kimeneti](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-lekérdezés kimenete")
+    ![SQL-lekérdezés kimenete](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-lekérdezés kimenete")
 
 
-3. Is [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib), a szalagtár segítségével hozza létre a képi megjelenítés adatainak rajzot létrehozásához. Mert a rajzolási létre kell hozni a helyileg tárolt **countResultsdf** dataframe, a kódrészletet a következővel kell kezdődnie az `%%local` magic. Ez biztosítja, hogy a kód a Jupyter kiszolgálón helyileg futnak.
+3. Is [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib), egy kódtár segítségével hozza létre a vizualizációt az adatok, létrehozhat egy rajzot. Az ábrázolást kell létrehozni, mert a megőrzött helyileg **countResultsdf** adathalmaz, a kódtöredék a következővel kell kezdődnie az `%%local` Magic Quadrant. Ez biztosítja, hogy a kód a Jupyter-kiszolgálón helyben futtatja.
 
     ```PySpark
     %%local
@@ -204,32 +199,32 @@ Kezdjük, hogy az adatkészlet tartalmazza.
     plt.axis('equal')
     ```
 
-    A kimenete:
+    A kimenet a következő:
 
-    ![Spark gépi tanulási a alkalmazás kimeneti - öt különböző vizsgálat eredményekkel kördiagram](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark gépi tanulási a eredmény kimenete")
+    ![A Spark machine learning-alkalmazás kimenete – a tortadiagram az öt különböző eredmények](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark machine learning-eredmény kimeneti")
 
-    Számos 5 különböző eredményeket, amelyeken az ellenőrzést.
+    Nincsenek 5 különböző eredmények, amelyeken az ellenőrzés:
 
-    - Nem található üzleti
+    - Nem találhatók üzleti
     - Sikertelen
     - Sikeres
-    - Feltételek keresztüli rendelkező fázis
+    - Feltételek használatával adja át
     - Üzleti kívül
 
-    Egy étele ellenőrzés eredménye előre jelezni, hogy kifejlesztésére lesz szükség egyenként a megsértésekre modellben. Mivel logisztikai regresszió egy bináris osztályozási módszer, így az eredmény adatok csoportosításához két kategóriába sorolhatók: **sikertelen** és **átadni**:
+    Előre jelezni egy food ellenőrzési serkenti az eredményt, a szabálysértések alapuló modell fejlesztéshez szükséges. Mivel a logisztikai regressziós egy bináris osztályozási metódust, logikus csoportosítása az eredményadatok két kategóriába sorolhatók: **sikertelen** és **átadni**:
 
     - Sikeres
         - Sikeres
-        - Feltételek keresztüli rendelkező fázis
+        - Feltételek használatával adja át
     - Sikertelen
         - Sikertelen
     - Elvetés
-        - Nem található üzleti
+        - Nem találhatók üzleti
         - Üzleti kívül
 
-    Az eredmények ("Üzleti nem található" vagy "Out üzleti") adatok nem hasznosak, és ezek alkotják az eredmények nagyon kis százalékát ennek ellenére is.
+    Az eredmények ("Üzleti nem található" vagy "kívüli üzleti") az adatok nem hasznos, és ezek alkotják az eredmények nagyon kis százalékát ennek ellenére.
 
-4. Futtassa a következő kódot a meglévő dataframe konvertálható (`df`) egy új dataframe, ahol minden egyes ellenőrzés címke-megsértésének párban szerepel-e be. Az ebben az esetben egy címke `0.0` jelenti. a hiba, a címkék `1.0` sikeres, és a címke jelöli `-1.0` egyes eredményeket e két mellett jelöli. 
+4. Futtassa a következő kódot a meglévő dataframe átalakítása (`df`) egy új, ahol minden egyes ellenőrzés jelenik meg egy címkét-szabálysértések pár dataframe-be. Az ebben az esetben címkét, `0.0` hiba, a címke jelöli `1.0` sikeres és a címkét, `-1.0` egyes eredményeket e két mellett jelöli. 
 
     ```PySpark
     def labelForResults(s):
@@ -243,25 +238,25 @@ Kezdjük, hogy az adatkészlet tartalmazza.
     labeledData = df.select(label(df.results).alias('label'), df.violations).where('label >= 0')
     ```
 
-5. Futtassa az alábbi kódot a címkézett egy adatsornak megjelenítése:
+5. Futtassa a következő kódot a megcímkézett egy adatsornak megjelenítése:
 
     ```PySpark
     labeledData.take(1)
     ```
 
-    A kimenete:
+    A kimenet a következő:
 
     ```
     [Row(label=0.0, violations=u"41. PREMISES MAINTAINED FREE OF LITTER, UNNECESSARY ARTICLES, CLEANING  EQUIPMENT PROPERLY STORED - Comments: All parts of the food establishment and all parts of the property used in connection with the operation of the establishment shall be kept neat and clean and should not produce any offensive odors.  REMOVE MATTRESS FROM SMALL DUMPSTER. | 35. WALLS, CEILINGS, ATTACHED EQUIPMENT CONSTRUCTED PER CODE: GOOD REPAIR, SURFACES CLEAN AND DUST-LESS CLEANING METHODS - Comments: The walls and ceilings shall be in good repair and easily cleaned.  REPAIR MISALIGNED DOORS AND DOOR NEAR ELEVATOR.  DETAIL CLEAN BLACK MOLD LIKE SUBSTANCE FROM WALLS BY BOTH DISH MACHINES.  REPAIR OR REMOVE BASEBOARD UNDER DISH MACHINE (LEFT REAR KITCHEN). SEAL ALL GAPS.  REPLACE MILK CRATES USED IN WALK IN COOLERS AND STORAGE AREAS WITH PROPER SHELVING AT LEAST 6' OFF THE FLOOR.  | 38. VENTILATION: ROOMS AND EQUIPMENT VENTED AS REQUIRED: PLUMBING: INSTALLED AND MAINTAINED - Comments: The flow of air discharged from kitchen fans shall always be through a duct to a point above the roofline.  REPAIR BROKEN VENTILATION IN MEN'S AND WOMEN'S WASHROOMS NEXT TO DINING AREA. | 32. FOOD AND NON-FOOD CONTACT SURFACES PROPERLY DESIGNED, CONSTRUCTED AND MAINTAINED - Comments: All food and non-food contact equipment and utensils shall be smooth, easily cleanable, and durable, and shall be in good repair.  REPAIR DAMAGED PLUG ON LEFT SIDE OF 2 COMPARTMENT SINK.  REPAIR SELF CLOSER ON BOTTOM LEFT DOOR OF 4 DOOR PREP UNIT NEXT TO OFFICE.")]
     ```
 
-## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>A bemeneti dataframe logisztikai regressziós modell létrehozása
+## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>A bemeneti adathalmazból lépéseit egy logisztikai regressziós modell létrehozása
 
-Az utolsó feladat be nem teljesítményadatokká a címkézett logisztikai regresszió által elemezhető formátumú. A bemeneti logisztikai regresszió algoritmushoz kell lenniük, amelyek *címke-funkció vektoros párok*, ahol a "szolgáltatás"vektor a bemeneti pontot jelölő számok vektor. Így kell alakítani az "megsértésének", amely félig strukturált és a szabad szöveges, a gép könnyen értelmezhető formára valós szám tömbjének sok megjegyzéseket tartalmaz.
+A végső feladat, hogy olyan formátumra, amely a logisztikai regressziós elemezhetők a címkézett adatokkal konvertálni. A bemenet egy logisztikai regressziós algoritmusával kell lenniük, amelyek *-funkció vektor párok*, ahol a "szolgáltatás"vektor számokat a szövegbeviteli pontot jelölő vektor. Tehát konvertálnia kell a "szabálysértések" oszlop, amely részben strukturált, és a szabad szöveges, tömbként lesz valós számmá, amely egy gépen sikerült egyszerűen átláthatja, hogy sok megjegyzéseket tartalmaz.
 
-Tanulási megközelítés természetes nyelvű feldolgozása egy szabványos számítógép, hogy minden distinct szó hozzárendelése egy "index", és akkor továbbítja a vektoros a gépi tanulási algoritmus úgy, hogy minden egyes súgóindex-értéket tartalmaz a relatív gyakoriságot karakterláncban szó.
+Egy standard szintű gépi megközelítés természetes nyelvi feldolgozás céljából, hogy minden distinct szó egy "index" hozzárendelni, és a egy vektoros majd át a gépi tanulási algoritmus úgy, hogy minden egyes indexértéket tartalmaz relatív gyakoriságát, hogy a Word, a szöveges karakterláncban.
 
-MLlib leegyszerűsíti a művelet elvégzéséhez. Első lépésként "tokenize" minden megsértésének karakterlánc beolvasása az egyes szavak minden karakterlánc. Ezt követően egy `HashingTF` jogkivonatok minden készlete alakítani egy szolgáltatás vektort, majd adhatók át a logisztikai regresszió algoritmus a modell összeállításához. Az összes lépés elvégzésével sorrendben használja a "futószalag".
+MLlib végrehajtani a műveletet egy egyszerűbb megoldást kínál. Első lépésként "tokenize" az egyes szavak beolvasni az egyes karakterláncokban minden szabálysértések karakterláncot. Ezután használja a `HashingTF` jogkivonatok minden készlete alakítható át egy funkció vektor, amely majd adható át a logisztikai regressziós algoritmus a modell létrehozásához. Ezen lépések mindegyike használatával "folyamat" sorrendben végez.
 
 ```PySpark
 tokenizer = Tokenizer(inputCol="violations", outputCol="words")
@@ -272,11 +267,11 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(labeledData)
 ```
 
-## <a name="evaluate-the-model-using-another-dataset"></a>Értékelje ki a modellt, egy másik dataset használata
+## <a name="evaluate-the-model-using-another-dataset"></a>Egy másik adatkészlet használatakor a modell értékelése
 
-Csak akkor használhatja a korábban létrehozott *előrejelzése* mely új ellenőrzések eredményeinek kell, a szabálysértések megfigyelt alapján. Ebben a modellben az adatkészlettel betanítása meg **Food_Inspections1.csv**. Használhat egy második dataset **Food_Inspections2.csv**található *kiértékelése* ebben a modellben az új adatok erősségével. A második készlet (**Food_Inspections2.csv**) szerepel a fürthöz tartozó alapértelmezett tárolót.
+Használhatja a korábban létrehozott modell *előrejelzése* mi új ellenőrzések eredményét lesz, a megsértések, amelyek a megfigyelt alapján. Ez a modell az adatkészlet betanított **Food_Inspections1.csv**. Használhat egy második adatkészlet **Food_Inspections2.csv**, az *kiértékelése* az új adatokat az ebben a modellben erőssége. A második készlet (**Food_Inspections2.csv**) szerepel a fürthöz társított alapértelmezett tároló.
 
-1. Futtassa a következő kódot a hozzon létre egy új dataframe **predictionsDf** , amely tartalmazza a modell által generált előrejelzését. A kódrészletben is létrehoz egy ideiglenes táblát **előrejelzéseket** a dataframe alapján.
+1. Futtassa a következő kódot egy új adathalmaz létrehozásához **predictionsDf** , amely tartalmazza az előrejelzést, a modell által generált. A kódrészlet is létrehoz egy ideiglenes táblát nevű **előrejelzéseket** az adathalmaz alapján.
 
     ```PySpark
     testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
@@ -306,14 +301,14 @@ Csak akkor használhatja a korábban létrehozott *előrejelzése* mely új elle
         'prediction']
     ```
 
-1. Tekintse meg az előrejelzés egyikét. Futtassa ezt a kódrészletet:
+1. Tekintse meg az előrejelzés egyikét. Ez a kódrészlet futtatása:
 
     ```PySpark
     predictionsDf.take(1)
     ```
 
-   Nincs olyan előrejelzésre lévő teszt az első bejegyzés.
-1. A `model.transform()` metódus ugyanazt az átalakítást vonatkozik semmilyen új adatot az azonos sémával, és hogyan adatok előrejelzése érkeznek. Az előrejelzés hogyan pontos volt, hogy néhány egyszerű statisztikai teheti meg:
+   Az első bejegyzés a test-adatkészlet előrejelzési van.
+1. A `model.transform()` módszer ugyanazt az átalakítást érvényes ugyanazzal a sémával rendelkező új adatokat és hogyan lehet az adatok besorolását előrejelzési érkeznek. Néhány egyszerű statisztikai, megtapasztalhatja, milyen pontos az előrejelzés is teheti:
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -325,7 +320,7 @@ Csak akkor használhatja a korábban létrehozott *előrejelzése* mely új elle
     print "This is a", str((float(numSuccesses) / float(numInspections)) * 100) + "%", "success rate"
     ```
 
-    A kimenet a következőképpen néznek:
+    A kimenet az alábbihoz hasonló:
 
     ```
     # -----------------
@@ -336,12 +331,12 @@ Csak akkor használhatja a korábban létrehozott *előrejelzése* mely új elle
     This is a 86.8169618894% success rate
     ```
 
-    Spark logisztikai regresszió használata lehetővé teszi az olyan pontos modell megsértésének leírását angol nyelven, és hogy egy adott üzleti volna továbbítja, vagy a étele ellenőrzése sikertelen közötti kapcsolat.
+    A Spark használatával a logisztikai regressziós biztosít angol nyelven szabálysértések leírásokat és a egy adott üzleti lenne át akár egy élelmiszer-ellenőrzés sikertelen közötti kapcsolat egy pontos modell.
 
-## <a name="create-a-visual-representation-of-the-prediction"></a>Az előrejelzés vizuális ábrázolását létrehozása
-Most összeállíthatja a végső képi megjelenítés érdekében, ez a vizsgálat eredményei az okból.
+## <a name="create-a-visual-representation-of-the-prediction"></a>Hozzon létre egy vizuális megjelenítését, az előrejelzési
+Most már összeállíthatja a végleges Vizualizáció segítségével, az okból a teszt eredményei.
 
-1. Indítsa el a különböző előrejelzéseket és az eredmények kibontása a a **előrejelzéseket** korábban létrehozott ideiglenes tábla. A következő lekérdezések külön a kimeneti adatok *true_positive*, *false_positive*, *true_negative*, és *false_negative*. Az alábbi lekérdezésekben kikapcsolja a képi megjelenítés használatával `-q` , és a kimeneti (használatával `-o`), majd használható a dataframes a `%%local` magic.
+1. Indítsa el a különböző előrejelzéseket és az eredmények a a **előrejelzéseket** korábban létrehozott ideiglenes táblát. A következő lekérdezéseket külön a kimenetben: *true_positive*, *false_positive*, *true_negative*, és *false_negative*. Az alábbi lekérdezésekhez kikapcsolása képi megjelenítés használatával `-q` , és a kimenet (használatával `-o`), majd használható a dataframes a `%%local` Magic Quadrant.
 
     ```PySpark
     %%sql -q -o true_positive
@@ -363,7 +358,7 @@ Most összeállíthatja a végső képi megjelenítés érdekében, ez a vizsgá
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```
 
-1. Végezetül a következő kódrészletet használja a rajzolási történő létrehozásához **Matplotlib**.
+1. Végezetül a következő kódrészlet használatával létrehozhat egy a diagram használatával **Matplotlib**.
 
     ```PySpark
     %%local
@@ -377,14 +372,14 @@ Most összeállíthatja a végső képi megjelenítés érdekében, ez a vizsgá
     plt.axis('equal')
     ```
 
-    A következő kimenetet kell megjelennie:
+    A következő kimenetnek kell megjelennie:
 
-    ![Spark gépi tanulási alkalmazás kimeneti - Kördiagram százalékos sikertelen étele ellenőrzések. ] (./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark gépi tanulási a eredmény kimenete")
+    ![A Spark machine learning-alkalmazás kimenete – diagram százalékos sikertelen élelmiszer-ellenőrzések. ] (./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark machine learning-eredmény kimeneti")
 
-    Ezen a diagramon "pozitív" hivatkozik sikertelen étele ellenőrző negatív eredmény hivatkozik a átadott ellenőrzése közben.
+    Ezen a diagramon "pozitív" eredmény hivatkozik a sikertelen élelmiszer-forgalmat, amíg a negatív eredmény hivatkozik egy sikeres ellenőrzés.
 
-## <a name="shut-down-the-notebook"></a>Állítsa le a notebook
-Miután befejezte az alkalmazás fut, állítsa le a notebook az erőforrások kijelölése. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
+## <a name="shut-down-the-notebook"></a>Állítsa le a notebookot
+Miután befejezte az alkalmazás fut, állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 ## <a name="seealso"></a>Lásd még:
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)

@@ -1,124 +1,119 @@
 ---
-title: Szerializálni az adatokat a Hadoop - Microsoft Avro Library - Azure-ban |} Microsoft Docs
-description: Megtudhatja, hogyan lehet szerializálni, és adatokat a Hadoop on HDInsight használatával a Microsoft az Avro Library megőrizni a memória, egy adatbázis vagy a fájl.
-keywords: az avro, hadoop avro
+title: Az Azure-beli Hadoop - Microsoft Avro Library - adatok szerializálása
+description: Megtudhatja, hogyan szerializálható és deszerializálható Hadoop on HDInsight a Microsoft Avro Library segítségével memóriában, adatbázisban vagy fájlban való megőrizni az adatokat.
+keywords: az avro, hadoop avro-hoz
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: c78dc20d-5d8d-4366-94ac-abbe89aaac58
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
+ms.author: jasonh
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 0d195ab3b84a522eae4010f3b08a829f7056a35f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 59e6116d1c325e32b4bead0ab44e00fb8682a205
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202345"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595596"
 ---
-# <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>A Microsoft az Avro Library Hadoop adatok szerializálása
+# <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>A Microsoft Avro Library a Hadoopban lévő adatok szerializálása
 
 >[!NOTE]
->Az Avro SDK a Microsoft már nem támogatott. A könyvtárban, nyílt forráskódú közösségi támogatott. A szalagtár források találhatók [Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
+>Az Avro SDK-t a Microsoft már nem támogatott. A kódtár támogatja a nyílt forráskódú fejlesztői Közösség. A források a könyvtárban található [Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
 
-Ez a témakör bemutatja, hogyan használja a [Microsoft Avro Library](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) objektumok és egyéb adatstruktúrák szerializálni az adatfolyamok megőrizni a memória, adatbázis vagy egy fájlt. Azt is bemutatja, hogyan őket helyreállítása az eredeti objektum deszerializálása.
+Ez a témakör bemutatja, hogyan használhatja a [Microsoft Avro Library](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) megőrizni azokat a memória, adatbázis vagy fájl alakíthatók objektumok és más adatszerkezetek szerializálásához. Azt is bemutatja, hogyan lehet őket helyreállítani az eredeti objektum deszerializálása.
 
 [!INCLUDE [windows-only](../../../includes/hdinsight-windows-only.md)]
 
-## <a name="apache-avro"></a>Apache Avro
-A <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library</a> valósítja meg az Apache Avro szerializálási rendszer Microsoft.NET környezetre. Apache Avro kompakt bináris adatcsere adatformátum szerializálási biztosít. Használja <a href="http://www.json.org" target="_blank">JSON</a> egy nyelvtől független sémát, amely lehetővé teszi a nyelvi együttműködést meghatározásához. Több nyelven érhetőek szerializált adatok olvashatók egy másik. Jelenleg a C, C++, C#, Java, PHP, Python és Ruby támogatottak. A részletes információk találhatók a <a href="http://avro.apache.org/docs/current/spec.html" target="_blank">Apache Avro specifikációjában</a>. 
+## <a name="apache-avro"></a>Az Apache avro-hoz
+A <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library</a> valósítja meg az Apache Avro szerializálási rendszer Microsoft.NET környezetre. Apache Avro szerializálási biztosít egy kompakt bináris adatcsere-formátumot. Használ <a href="http://www.json.org" target="_blank">JSON</a> egy nyelvtől független sémát, amely a nyelvi együttműködést nyelvben meghatározásához. Az egyik nyelven szerializált adatok egy másik olvasható. Jelenleg a C, C++, C#, Java, PHP, Python és Ruby támogatottak. Részletes információkat a formátumban található a <a href="http://avro.apache.org/docs/current/spec.html" target="_blank">Apache Avro specifikációjában</a>. 
 
 >[!NOTE]
->A Microsoft az Avro Library nem támogatja a távoli eljáráshívásnak (RPC) hívások részét ez az előírás.
+>A Microsoft Avro Library nem támogatja a távoli eljáráshívás (RPC) hívásokat részét ez az meghatározás.
 >
 
-Az Avro rendszerben objektum szerializált ábrázolását két részből áll: séma, a tényleges érték. Az Avro-séma a nyelvfüggetlen az a szerializált adatok JSON adatmodell ismerteti. A bináris adatok megjelenítése és jelölőnégyzetként jelenik. Rendelkező elkülönül a bináris megjelenítése a séma lehetővé teszi az egyes objektumok nem érték terhek, így gyors szerializálási, és a ábrázolását kis írni.
+Az Avro rendszerben objektum szerializált reprezentációja két részből áll: séma- és tényleges értékkel. Az Avro-sémát a JSON-szerializált adatok nyelvtől független adatmodell ismerteti. Tartalomcsomagjai bináris kódolású karakterláncként adatok jelennek meg. Minden egyes objektum nincs érték – általános költségeket, lehetővé téve a gyors szerializálási, és a reprezentáció kis se dají zapsat kellene elkülönül a bináris kódolású karakterláncként a séma lehetővé teszi.
 
 ## <a name="the-hadoop-scenario"></a>A Hadoop-forgatókönyv
-Az Apache Avro szerializálási formátum széles körben használt Azure HDInsight és egyéb Apache Hadoop-környezetekben. Az Avro Hadoop MapReduce feladatot összetett adatstruktúra képviselő kényelmes megoldást kínál. Az Avro-fájlok (Avro tároló fájlt) formátuma támogatja az elosztott MapReduce programozási modellt tervezték. A kulcs szolgáltatása, amely lehetővé teszi, hogy a terjesztési, az, hogy a fájlok "feloszthatók", abban az értelemben, hogy egy fájl bármely pontot kikereshet, és az egy adott blokktól kezdheti-e.
+Az Apache Avro szerializálási formátum széles körben használt, az Azure HDInsight és a többi Apache Hadoop-környezetben. Az Avro jelölnek összetett adattárakon belül egy Hadoop-MapReduce-feladatot egy kényelmes módot biztosít. (Az Avro objektum kontejner soubor) Avro-fájlok formátuma támogatja az elosztott MapReduce programozási modellt úgy lett kialakítva. A legfontosabb funkció, amely lehetővé teszi, hogy a terjesztési, hogy a fájlok "feloszthatók", abban az értelemben, hogy az egyik bármely pontot kikereshet egy fájlban, és egy adott blokktól-e.
 
-## <a name="serialization-in-avro-library"></a>Az Avro könyvtárban szerializálási
-A .NET könyvtár az avro-hoz támogatja a szerializálási objektumok két módon:
+## <a name="serialization-in-avro-library"></a>Szerializálása az Avro Libraryvel
+A .NET-kódtár az Avróhoz szerializálási objektumok két módon támogatja:
 
-* **Fejlécreflexiós** -a JSON-séma a következő típusokhoz automatikusan össze az adatokat a .NET típusú szerializálandó szerződés attribútumok.
-* **általános rekord** -A JSON-séma explicit módon megadott által képviselt rekordban a [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) indulásakor nem .NET-típusok jelen a sémát szerializálandó leírására.
+* **tükröződés** -típusok a JSON-séma automatikusan épül az adatokból a szerződés attribútumai a .NET-típusok szerializálni kell.
+* **általános rekord** -egy JSON-sémájában explicit módon szerepel egy bejegyzés által képviselt a [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) osztályhoz, ha nincsenek .NET típusai jelen írja le a sémát a szerializálni kell.
 
-Ha az adatok séma ismert író és az adatfolyam olvasó, az adatküldés sémájú nélkül. Azokban az esetekben az Avro objektum tároló fájl használata esetén a séma tárolja a fájlon belül. Más paraméterek, például a használt adatok tömörítési kodek adható meg. Ezek a forgatókönyvek részletesen ismertetett és a következő kód példákban szereplő megoldásokat:
+Ha a sémát a író és az olvasó a Stream is ismert, az adatküldés nélkül sémáját. Azokban az esetekben az Avro-objektum kontejner soubor használata esetén a séma tárolja a fájlt. További paraméterek, például az adattömörítés, a használt kodek adható meg. Ezek a forgatókönyvek részletesen leírt, a következő kódot a példákban szemléltetett:
 
-## <a name="install-avro-library"></a>Telepítse az Avro-könyvtár
-A következőkre szükség a szalagtár telepítése előtt:
+## <a name="install-avro-library"></a>Telepítse az Avro Libraryvel
+A következőkre szükség a kódtár telepítése előtt:
 
 * <a href="http://www.microsoft.com/download/details.aspx?id=17851" target="_blank">A Microsoft .NET-keretrendszer 4</a>
 * <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a> (6.0.4 vagy újabb)
 
-Vegye figyelembe, hogy a Newtonsoft.Json.dll függőség a Microsoft az Avro Library a telepítés automatikusan le. Az eljárás a következő szakaszban találhatók:
+Vegye figyelembe, hogy a Newtonsoft.Json.dll függőség telepítése a Microsoft Avro Library együtt automatikusan letöltött. Az eljárás megtalálható a következő szakaszt:
 
-A Microsoft az Avro Library az alábbi eljárás segítségével telepíthető a Visual Studio NuGet-csomag terjesztése:
+A Microsoft Avro Library NuGet-csomagként, amely az alábbi eljárás segítségével telepíthető a Visual Studióból oszlik:
 
-1. Válassza ki a **projekt** lapon -> **NuGet-csomagok kezelése...**
-2. Keressen a "Microsoft.Hadoop.Avro" kifejezésre a **keresési Online** mezőbe.
-3. Kattintson a **telepítése** gombra **Microsoft Azure HDInsight Avro könyvtár**.
+1. Válassza ki a **projekt** lap -> **NuGet-csomagok kezelése...**
+2. Keressen rá a "Microsoft.Hadoop.Avro" kifejezésre a **Online keresés** mezőbe.
+3. Kattintson a **telepítése** megjelenítő gombra **Microsoft Azure HDInsight Avro Library**.
 
-Vegye figyelembe, hogy a Newtonsoft.Json.dll (> = 6.0.4) függőségi együtt a Microsoft az Avro Library is letöltődik automatikusan.
+Vegye figyelembe, hogy a Newtonsoft.Json.dll (> = 6.0.4) függőséget is letöltődik automatikusan a Microsoft Avro Library.
 
-A Microsoft az Avro Library a forráskód nem érhető el [Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
+A Microsoft Avro Library forráskódja elérhető [Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
 
-## <a name="compile-schemas-using-avro-library"></a>Az Avro szalagtárat használó sémák fordítása
-A Microsoft az Avro Library tartalmaz egy kód generálása segédprogram, amely lehetővé teszi, hogy a korábban meghatározott JSON-séma alapján automatikusan C# típusok létrehozása. A kód generálása segédprogram nem terjesztése egy bináris végrehajtható fájlt, de az alábbi eljárás segítségével könnyen építhetők:
+## <a name="compile-schemas-using-avro-library"></a>Fordítsa le a sémák használata az Avro Libraryvel
+A Microsoft Avro Library tartalmaz egy code generation segédprogram, amely lehetővé teszi, hogy a korábban meghatározott JSON-sémája alapján automatikusan C# típusok létrehozása. A code generation segédprogram nem elosztott bináris futtatható, de az alábbi eljárás segítségével könnyen építhető:
 
-1. Töltse le a .zip fájlt forráskódjának HDInsight SDK legújabb verziójával <a href="http://hadoopsdk.codeplex.com/SourceControl/latest#" target="_blank">Microsoft .NET SDK a Hadoop</a>. (Kattintson a **letöltése** ikonra, nem a **letölti** lapon.)
-2. A HDInsight SDK a kivonatot egy könyvtár a .NET-keretrendszer 4 gépen telepítve, és csatlakozik az internethez szükséges függőség NuGet-csomagok letöltéséhez. Az alábbiakban feltételezzük, hogy a forráskód C:\SDK kicsomagolta.
-3. A mappában C:\SDK\src\Microsoft.Hadoop.Avro.Tools, és futtassa a build.bat. (A fájl hívások MSBuild a 32 bites terjesztési a .NET-keretrendszer. Ha azt szeretné, hogy 64 bites verzióját használja, szerkesztése build.bat, a megjegyzéseket, a fájlban a következő.) Győződjön meg arról, hogy a build sikeres. (Egyes rendszerek MSBuild készíthet figyelmeztetéseket. Ezek a figyelmeztetések nem befolyásolják a segédprogram mindaddig, amíg nincsenek build hibák.)
+1. Töltse le a .zip fájlt HDInsight SDK forráskódját a legújabb verziójának <a href="http://hadoopsdk.codeplex.com/SourceControl/latest#" target="_blank">a Microsoft .NET SDK-t a Hadoop</a>. (Kattintson a **letöltése** ikonra, nem a **letölti** lapon.)
+2. Bontsa ki a HDInsight SDK-t a gépen egy könyvtár a .NET-keretrendszer 4 telepítve van, és csatlakozik az internethez, a szükséges függőséget NuGet-csomagok letöltése. Az alábbiakban feltételezzük, hogy a forráskód C:\SDK kicsomagolta.
+3. Lépjen abba a mappába C:\SDK\src\Microsoft.Hadoop.Avro.Tools, és futtassa a build.bat. (A fájl hívásokat MSBuild a 32 bites terjesztési a .NET-keretrendszer verzióját. Ha szeretné a 64 bites verzióját használja, szerkesztését build.bat, a fájl a hozzászólások.) Győződjön meg arról, hogy a build sikeres. (Egyes rendszerek MSBuild eredményezhet figyelmeztetéseket. Ezek a figyelmeztetések nem befolyásolják a segédprogram mindaddig, amíg nem build tartalmaz hibát.)
 4. A lefordított segédprogram C:\SDK\Bin\Unsigned\Release\Microsoft.Hadoop.Avro.Tools található.
 
-Ahhoz, hogy ismeri a parancssori szintaxist, a mappából, ahol a kód generálása segédprogram-e végre az alábbi parancsot: `Microsoft.Hadoop.Avro.Tools help /c:codegen`
+A parancssor szintaxisának megismeréséhez, hajtsa végre a következő parancsot a mappát, ahol a code generation segédprogram található: `Microsoft.Hadoop.Avro.Tools help /c:codegen`
 
-A segédprogram teszteléséhez C# osztályokat is generálása a megadott forráskódja minta JSON-fájl. Hajtsa végre a következő parancsot:
+A segédprogram teszteléséhez a forráskódja megadott minta JSON-fájl a C# osztályok hozhatja létre. Hajtsa végre a következő parancsot:
 
     Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:
 
-Ez az aktuális könyvtárban található fájlok két C# létrehozásához kellene: SensorData.cs és Location.cs.
+Ez az aktuális könyvtárban található fájlok két C# előállításához kellene: SensorData.cs és Location.cs.
 
-A programot, amely a JSON-séma C# típusú konvertálása során használja a kód generálása segédprogram ismertetése: a fájl GenerationVerification.feature C:\SDK\src\Microsoft.Hadoop.Avro.Tools\Doc található.
+A logika, amely a code generation segédprogramot használja, miközben átalakítja őket a JSON-sémájában C# típusok megismeréséhez tekintse meg a fájl GenerationVerification.feature C:\SDK\src\Microsoft.Hadoop.Avro.Tools\Doc található.
 
-Névterek kinyert a JSON-séma, a fájlban, az előző bekezdésben szereplő esetekben ismertetett logika használatával. A séma kinyert névterek élveznek függetlenül biztosított parancssori segédprogram, az n paraméterrel. Ha azt szeretné, felülbírálhatja a névterek, a séma belül található, akkor használja a /nf paramétert. Például a SampleJSONSchema.avsc my.own.nspace az összes névtér módosításához hajtsa végre a következő parancsot:
+Névterek kinyert JSON-sémáját, a fájl már említettük, az előző bekezdésben ismertetett logikát használatával. A séma kinyert névterek elsőbbséget élveznek a bármilyen példáira parancssori segédprogramot a /n paramétert. Ha szeretné felülbírálni a névterek, a sémában található, akkor használja a /nf paramétert. Ha például a SampleJSONSchema.avsc my.own.nspace az összes névtér módosításához futtassa a következő parancsot:
 
     Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:. /nf:my.own.nspace
 
 ## <a name="about-the-samples"></a>Tudnivalók a minták
-Ebben a témakörben bemutatott hat példák bemutatják a Microsoft az Avro Library által támogatott különböző forgatókönyveket. A Microsoft az Avro Library tervezték az adatfolyam. Ezekben a példákban-adatok n keresztül memória adatfolyamok helyett, fájl adatfolyamok vagy az egyszerűség és konzisztenciáját. Éles környezetben a megközelítést a pontos forgatókönyv-követelményeinek, az adatforrás és a kötet, a teljesítmény korlátozások és a más tényezőktől függ.
+Ebben a témakörben megadott hat példák bemutatják a Microsoft Avro Library által támogatott különböző forgatókönyveket. A Microsoft Avro Library célja adatfolyam használata. Ezekben a példákban-adatok n keresztül vagy a memória-Streamek helyett fájl Streamek adatbázisok az egyszerűség és a konzisztencia. Éles környezetben a megközelítést forgatókönyv követelményeinek, adatforrás és a kötet, teljesítmény korlátok és más tényezőktől függ.
 
-Az első két példák bemutatják, hogyan szerializálása és deszerializálása adatok memória adatfolyam pufferek az általános és a reflexió használatával. Két esetben a séma feltételezett, hogy az olvasók és írók között meg kell osztani a sávon kívüli.
+Az első két példák bemutatják, hogyan szerializálható és deszerializálható adatok memória stream pufferek való tükröződés és általános rekordok használatával. Ebben a két esetben a séma feltételezi az olvasók és írók között lehetnek megosztva, sávon.
 
-A harmadik és negyedik példák bemutatják, hogyan lehet szerializálni, és az Avro objektum tároló fájlokkal adatok deszerializálása. Adatok az Avro-tároló fájl tárolja, amikor a séma mindig tárolása vele, mert a séma meg kell osztani a deszerializáláshoz.
+A harmadik és a negyedik példák bemutatják, hogyan szerializálható és deszerializálható adatokat az Avro-objektum tároló fájlok használatával. Adatok az Avro tároló fájl tárolja, ha a séma mindig tárolni vele, mert a séma meg kell osztani a deszerializálás.
 
-A minta az első négy példák tartalmazó tölthető le: a <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-86055923" target="_blank">Azure mintakódok</a> hely.
+A minta az első négy példák tartalmazó letölthető a <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-86055923" target="_blank">Azure-Kódminták</a> hely.
 
-Az ötödik példa bemutatja, hogyan használható egy egyéni tömörítési kodek Avro objektum tárolófájlokba. Az ebben a példában letölthető szükséges kódot tartalmazó minta a <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-67159111" target="_blank">Azure mintakódok</a> hely.
+Az ötödik példa bemutatja egy egyéni tömörítési kodeket használata az Avro-objektum tárolófájlokat. Az ebben a példában tölthető le, amely tartalmazza a kódot egy minta a <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-67159111" target="_blank">Azure-Kódminták</a> hely.
 
-A hatodik minta bemutatja, hogyan használható Avro szerializálása feltölteni az adatokat az Azure Blob storage és majd elemezni egy HDInsight (Hadoop) fürthöz való Hive használatával. Le is tölthetők: a <a href="https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3" target="_blank">Azure mintakódok</a> hely.
+A hatodik minta bemutatja, hogyan adatfeltöltés az Azure Blob storage és a Hive használatával egy HDInsight (Hadoop) fürtön elemzésével aztán szerializálása az Avro segítségével. Le is tölthetők: a <a href="https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3" target="_blank">Azure-Kódminták</a> hely.
 
 Az alábbiakban a hat minták, a témakörben tárgyalt mutató hivatkozásokat:
 
-* <a href="#Scenario1">**A reflexió szerializálási** </a> -típusok szerializálandó a JSON-séma automatikusan össze az adatokat szerződés attribútumok.
-* <a href="#Scenario2">**Általános rekordot tartalmazó szerializálási** </a> -a JSON-séma explicit módon megadott rekord elérhető reflexióra nincs .NET típus esetén.
-* <a href="#Scenario3">**Objektum tároló fájlok használata a reflexió szerializálási** </a> -a JSON-séma automatikusan összeállítása és megosztott együtt a szerializált adatok keresztül az Avro tároló fájlt.
-* <a href="#Scenario4">**Általános rekordot tartalmazó objektum tárolófájlokba használatával szerializálási** </a> -a JSON-séma explicit módon megadott előtt a szerializálás és az Avro objektum tárolót fájlon keresztül az adatok és megosztott.
-* <a href="#Scenario5">**Objektum tárolófájlokba használata egy egyéni tömörítési kodek szerializálási** </a> -a példa bemutatja, hogyan hozzon létre egy Avro objektum tároló fájlt egy testreszabott .NET megvalósításáról a Deflate adatok tömörítési kodek.
-* <a href="#Scenario6">**Az Avro használatával feltölteni az adatokat a Microsoft Azure HDInsight szolgáltatás** </a> -a példa bemutatja, hogyan kommunikál az Avro szerializálási a HDInsight-szolgáltatás. Ez a példa futtatásához szükséges egy aktív Azure-előfizetés és Azure HDInsight-fürtök a hozzáférést.
+* <a href="#Scenario1">**Szerializálás a tükröződés** </a> -típusok lehet szerializálni a JSON-séma automatikusan épül az adatok közül a szerződés attribútumok.
+* <a href="#Scenario2">**Általános rekordot tartalmazó szerializálási** </a> – a JSON-sémájában explicit módon megadott egy rekordot, ha nincs a .NET-típus nem tükröződés érhető el.
+* <a href="#Scenario3">**Objektum tároló fájlokkal való tükröződés szerializálási** </a> – a JSON-sémájában automatikusan létrehozott és és a szerializált adatok egy Avro objektum kontejner soubor keresztül megosztott.
+* <a href="#Scenario4">**Általános rekordot tartalmazó objektum tároló fájlok használatával szerializálási** </a> – a JSON-sémájában explicit módon megadott előtt a szerializálási és és a egy Avro objektum kontejner soubor keresztül adatok megosztott.
+* <a href="#Scenario5">**Objektum tárolófájlokat használata egy egyéni tömörítési kodek szerializálási** </a> – a példa bemutatja, hogyan hozhat létre az Avro-objektum kontejner soubor Deflate adatok tömörítési kodeket egy testre szabott .NET megvalósítását.
+* <a href="#Scenario6">**Avro segítségével a Microsoft Azure HDInsight szolgáltatás az adatok feltöltése** </a> – példa szemlélteti, hogyan kommunikál az Avro-szerializálás a HDInsight szolgáltatást. Ez a példa futtatásához szükséges egy aktív Azure-előfizetéssel, és a egy Azure HDInsight-fürtön való hozzáférést.
 
-## <a name="Scenario1"></a>1. példa: Szerializálási a reflexió
-A JSON-séma a következő típusokhoz automatikusan épül fel az adatokat a reflexió használatával a Microsoft az Avro Library a C# objektumokat szerializálni szerződés attribútumait. A Microsoft az Avro Library létrehoz egy [ **IAvroSeralizer<T>**  ](http://msdn.microsoft.com/library/dn627341.aspx) szerializálandó mezők azonosításához.
+## <a name="Scenario1"></a>1. példa: Szerializálás a tükröződés
+A JSON-sémájában típusok is automatikusan hozott létre a Microsoft Avro Library segítségével az adatok közül tükröződés szerződés attribútumai a C#-objektumokra szerializálni kell. A Microsoft Avro Library segítségével hoz létre egy [ **IAvroSeralizer<T>**  ](http://msdn.microsoft.com/library/dn627341.aspx) azonosítani lehet szerializálni a mezőket.
 
-Ebben a példában objektumokat (egy **SensorData** tag osztályra **hely** struct) szerializálva vannak memória adatfolyamba, és az adatfolyam pedig deszerializálva. Az eredmény ezután annak ellenőrzésére, hogy a kezdeti példányszámnak a rendszer összehasonlítja a **SensorData** az eredeti helyre objektum megegyezik.
+Ebben a példában objektumokat (egy **SensorData** tag osztályra **hely** struct) szerializálva vannak memória adatfolyamba, és az adatfolyam pedig deszerializálva. Az eredmény ezután a rendszer összehasonlítja a kezdeti példány ellenőrizheti, hogy a **SensorData** helyreállított objektum megegyezik az eredeti.
 
-Ebben a példában a séma feltételezett, hogy között meg kell osztani az olvasók és írók, így nincs szükség az Avro objektum tárolóformátummal. Példa bemutatja, hogyan szerializálása és deszerializálása adatok a memóriában puffereli használatával reflexiós a tároló objektum formátumban, abban az esetben, ha a séma meg kell osztani az adatokat, lásd: <a href="#Scenario3">objektum tároló fájlok használata a reflexiószerializálási</a>.
+Ebben a példában a séma az olvasók és írók, között lehetnek megosztva, így nem szükséges az Avro-objektum formátem feltételezi. Bemutatja, hogyan szerializálható és deszerializálható adatok memória pufferek történő használatával tükröződés a objektum tároló formátumban, ha a séma meg kell osztani az adatokat egy példa: <a href="#Scenario3">objektum tároló fájlokkal való tükröződésszerializálási</a>.
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -238,12 +233,12 @@ Ebben a példában a séma feltételezett, hogy között meg kell osztani az olv
     // Press any key to exit.
 
 
-## <a name="sample-2-serialization-with-a-generic-record"></a>2. példa: Szerializálási általános rekordot tartalmazó
-A JSON-séma adható explicit módon meg egy általános rekordban Ha reflexiós nem használható, mert az adatok nem reprezentálhatók egy adategyezmény a .NET-osztályok keresztül. Ez a módszer akkor lassabb, mint a következőt reflexió használatával. Ilyen esetben a sémát is lehet dinamikus, ez azt jelenti, hogy nem ismeri a fordítás során. Vesszővel tagolt (CSV) fájlok, amelyek séma nem ismeretlen, amíg a futási időben az Avro formátum rendszer átalakítja-ként adata az ilyen dinamikus forgatókönyv egy példát.
+## <a name="sample-2-serialization-with-a-generic-record"></a>2. példa: Szerializálási egy általános rekorddal
+JSON-séma adható explicit módon meg egy általános rekordban amikor tükröződés nem használható, mivel az adatok nem jeleníthetők meg egy adategyezményben a .NET-osztályok keresztül. Ez a módszer lassabb, mint a tükröződés használatával. Ezekben az esetekben az adatok sémáját is lehet dinamikus, azt jelenti, a fordítás során nem ismert. Szerinti vesszővel elválasztott értékeket (CSV) fájlok, amelyeknek séma nem ismeretlen, amíg a futási időben az Avro formátum az átalakított adatok, amelyek az ilyen jellegű dinamikus forgatókönyv.
 
-Ez a példa bemutatja, hogyan létrehozhat és használhat egy [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) való explicit módon adja meg a JSON-séma, hogyan töltse fel adatokkal az adatokat, és majd szerializálása és deszerializálása azt. Az eredmény ezután összeveti a kezdeti példányszámnak annak ellenőrzéséhez, hogy a rekord helyreállítani az eredeti azonos.
+Ez a példa bemutatja, hogyan hozhat létre és használhat egy [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) explicit módon kell megadni a JSON-séma, hogyan lehet az adatokkal való feltöltéséhez, majd hogyan szerializálható és deszerializálható azt. Az eredmény ezután a rendszer összehasonlítja a kezdeti példány erősítse meg, hogy a rekord helyreállítása az eredeti azonos.
 
-Ebben a példában a séma feltételezett, hogy között meg kell osztani az olvasók és írók, így nincs szükség az Avro objektum tárolóformátummal. Példa bemutatja, hogyan szerializálása és deszerializálása adatok a memóriában puffereli használatával egy általános rekordban a tároló objektum formátumban, ha a séma szerepelnie kell a szerializált adatok a, tekintse meg a <a href="#Scenario4">objektum tároló fájlokkal rendelkező szerializálási általános rekord</a> példa.
+Ebben a példában a séma az olvasók és írók, között lehetnek megosztva, így nem szükséges az Avro-objektum formátem feltételezi. Bemutatja, hogyan szerializálható és deszerializálható adatok memória pufferek történő használatával egy általános rekordot a objektum tároló formátumban, ha a séma szerepelnie kell a szerializált adatok egy példa: a <a href="#Scenario4">szerializálási objektum tároló fájlok használatával általános rekord</a> példa.
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -361,12 +356,12 @@ Ebben a példában a séma feltételezett, hogy között meg kell osztani az olv
     // Press any key to exit.
 
 
-## <a name="sample-3-serialization-using-object-container-files-and-serialization-with-reflection"></a>3. példa: Szerializálási a reflexió objektum tároló fájlok és a szerializálási használja
-Ebben a példában a forgatókönyv hasonlít a <a href="#Scenario1"> első példában</a>, ahol a séma implicit módon megadott a reflexió. A különbség, hogy itt, a séma nem feltételezett, hogy az olvasó deserializes azt, hogy ismert. A **SensorData** szerializálható objektumok és azok implicit módon megadott séma fájlban vannak tárolva az Avro objektum tároló által képviselt a [ **AvroContainer** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) osztály.
+## <a name="sample-3-serialization-using-object-container-files-and-serialization-with-reflection"></a>3. példa: Szerializálási objektum tároló fájlokat és a szerializálási tükröződés való használatához
+Ebben a példában a forgatókönyv hasonlít a <a href="#Scenario1"> első példa</a>, ahol a séma implicit módon megadott való tükröződés. A különbség az, hogy itt, a sémát nem veszi az olvasó, amely deszerializálja ismerni. A **SensorData** szerializálni az objektumok és azok implicit módon megadott séma az Avro objektum kontejner soubor által képviselt vannak tárolva a [ **AvroContainer** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) osztály.
 
-Ebben a példában a szerializált adatok [ **SequentialWriter<SensorData>**  ](http://msdn.microsoft.com/library/dn627340.aspx) és a deszerializált [ **SequentialReader<SensorData>**  ](http://msdn.microsoft.com/library/dn627340.aspx). Az eredmény ezután a rendszer összehasonlítja a kezdeti példányok identitás biztosításához.
+Ebben a példában a szerializált adatok [ **SequentialWriter<SensorData>**  ](http://msdn.microsoft.com/library/dn627340.aspx) és a deszerializált [ **SequentialReader<SensorData>**  ](http://msdn.microsoft.com/library/dn627340.aspx). Az eredmény ezután a rendszer összehasonlítja a kezdeti példányok identitás biztosítása érdekében.
 
-A rendszer tömöríti az adatokat a objektum tároló fájlban az alapértelmezett keresztül [ **Deflate** ] [ deflate-100] tömörítési kodek a .NET-keretrendszer 4. Tekintse meg a <a href="#Scenario5"> ötödik példa</a> ebben a témakörben további információt az újabb és felső szintű verzióját használja a [ **Deflate** ] [ deflate-110] tömörítési kodek .NET-keretrendszer 4.5 érhető el.
+Az objektum tároló fájlban lévő adatok tömörített keresztül az alapértelmezett [ **Deflate** ] [ deflate-100] .NET-keretrendszer 4 a tömörítési kodek. Tekintse meg a <a href="#Scenario5"> ötödik példa</a> az ebből a témakörből megtudhatja, hogyan használja az újabb és kiváló verzióját a [ **Deflate** ] [ deflate-110] tömörítési kodeket .NET-keretrendszer 4.5 érhető el.
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -601,12 +596,12 @@ A rendszer tömöríti az adatokat a objektum tároló fájlban az alapértelmez
     // Press any key to exit.
 
 
-## <a name="sample-4-serialization-using-object-container-files-and-serialization-with-generic-record"></a>4. példa: Szerializálási általános rekordot tartalmazó objektum tárolófájlokba és szerializálási használatával
-Ebben a példában a forgatókönyv hasonlít a <a href="#Scenario2"> második példáját</a>, ahol a séma explicit módon megadott rendelkező JSON-NÁ. A különbség, hogy itt, a séma nem feltételezett, hogy az olvasó deserializes azt, hogy ismert.
+## <a name="sample-4-serialization-using-object-container-files-and-serialization-with-generic-record"></a>4. példa: Szerializálási általános rekordot tartalmazó objektum tároló fájlok és a szerializálási használatával
+Ebben a példában a forgatókönyv hasonlít a <a href="#Scenario2"> második példa</a>, ahol a séma explicit módon megadott JSON-fájllal. A különbség az, hogy itt, a sémát nem veszi az olvasó, amely deszerializálja ismerni.
 
-Egy gyűjtött adatok TesztKészlet [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) keresztül explicit módon megadott JSON-séma objektumokat, és egy objektum tároló fájl által képviselt majd tárolja a [  **AvroContainer** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) osztály. A tároló fájlt hoz létre egy író szerializálni az adatokat, majd a fájl mentett memória adatfolyamba tömörítetlen használt. A [ **Codec.Null** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.codec.null.aspx) az olvasó létrehozásakor használt paraméter határozza meg, hogy ezek az adatok nem tömöríti.
+A teszt adatkészlet összegyűjtött álló listává [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) keresztül egy explicit módon megadott JSON-sémájában objektumokat, és egy objektum tároló fájl által képviselt majd tárolja a [  **AvroContainer** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) osztály. A tároló fájlt egy író, amellyel szerializálni az adatokat, majd mentett fájl memóriastreamje a tömörítetlen hoz létre. A [ **Codec.Null** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.codec.null.aspx) használt az olvasó létrehozásához paraméter határozza meg, hogy, hogy a rendszer nem tömöríti az adatokat.
 
-Az adatok majd kiolvasni a fájlból és az objektumok gyűjteménye deszerializálni. Ez a gyűjtemény a rendszer összehasonlítja a kiindulási lista az Avro rekordok annak ellenőrzéséhez, hogy azok egyezését.
+Az adatok ezután a következő fájl és deszerializálni az objektumok egy gyűjteménybe. Ez a gyűjtemény a rendszer összehasonlítja a kiindulási lista az Avro rekordok, győződjön meg arról, hogy megegyeznek.
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -863,10 +858,10 @@ Az adatok majd kiolvasni a fájlból és az objektumok gyűjteménye deszerializ
 
 
 
-## <a name="sample-5-serialization-using-object-container-files-with-a-custom-compression-codec"></a>5. példa: Szerializálási egy egyéni tömörítési kodek objektum tároló fájlok használata
-Az ötödik példa bemutatja, hogyan használható egy egyéni tömörítési kodek Avro objektum tárolófájlokba. Az ebben a példában letölthető szükséges kódot tartalmazó minta a [Azure mintakódok](http://code.msdn.microsoft.com/Serialize-data-with-the-67159111) hely.
+## <a name="sample-5-serialization-using-object-container-files-with-a-custom-compression-codec"></a>5. példa: Szerializálási objektum tárolófájlokat használata egy egyéni tömörítési kodek
+Az ötödik példa bemutatja egy egyéni tömörítési kodeket használata az Avro-objektum tárolófájlokat. Az ebben a példában tölthető le, amely tartalmazza a kódot egy minta a [Azure-Kódminták](http://code.msdn.microsoft.com/Serialize-data-with-the-67159111) hely.
 
-A [Avro specifikációjában](http://avro.apache.org/docs/current/spec.html#Required+Codecs) lehetővé teszi, hogy egy nem kötelező tömörítési kodek használatát (kívül **Null** és **Deflate** alapértelmezett). Ebben a példában nem implementálja az Snappy például egy új kodek (egy támogatott választható kodek az említett a [Avro specifikációjában](http://avro.apache.org/docs/current/spec.html#snappy)). Azt illusztrálja, hogyan használata a .NET-keretrendszer 4.5 megvalósítása a [ **Deflate** ] [ deflate-110] kodek, így jobban tömörítési algoritmust alapján a [zlib ](http://zlib.net/) verziójú, mint az alapértelmezett .NET-keretrendszer 4-tömörítési könyvtárat.
+A [Avro specifikációjában](http://avro.apache.org/docs/current/spec.html#Required+Codecs) lehetővé teszi, hogy egy nem kötelező tömörítési kodeket használatát (mellett **Null** és **Deflate** alapértelmezett érték). Ebben a példában nem implementálja az egy új kodek például Snappy (egy támogatott választható kodek az említett a [Avro specifikációjában](http://avro.apache.org/docs/current/spec.html#snappy)). Ez bemutatja, hogyan használhatja a .NET-keretrendszer 4.5 megvalósítása a [ **Deflate** ] [ deflate-110] kodek, amely alapján hatékonyabb tömörítési algoritmust biztosít a [zlib ](http://zlib.net/) tömörítési könyvtárban, mint az alapértelmezett .NET-keretrendszer 4 verziót.
 
     //
     // This code needs to be compiled with the parameter Target Framework set as ".NET Framework 4.5"
@@ -1359,36 +1354,36 @@ A [Avro specifikációjában](http://avro.apache.org/docs/current/spec.html#Requ
     // ----------------------------------------
     // Press any key to exit.
 
-## <a name="sample-6-using-avro-to-upload-data-for-the-microsoft-azure-hdinsight-service"></a>6. példa: Avro feltölteni az adatokat a Microsoft Azure HDInsight szolgáltatás használatával.
-A hatodik példa bemutatja az egyes programozási módszerek használják az Azure HDInsight szolgáltatással kapcsolatos. Az ebben a példában letölthető szükséges kódot tartalmazó minta a [Azure mintakódok](https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3) hely.
+## <a name="sample-6-using-avro-to-upload-data-for-the-microsoft-azure-hdinsight-service"></a>6. példa: Avro segítségével a Microsoft Azure HDInsight szolgáltatás az adatok feltöltése
+A hatodik példa bemutatja az Azure HDInsight szolgáltatással való interakcióhoz kapcsolatos néhány programozási technikákat. Az ebben a példában tölthető le, amely tartalmazza a kódot egy minta a [Azure-Kódminták](https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3) hely.
 
-A minta a következő feladatokat hajtja végre:
+A minta az alábbi feladatokat hajtja végre:
 
-* Csatlakozik egy meglévő HDInsight-fürtre.
-* Rendezi sorba több CSV-fájlt és feltölti az eredményt az Azure Blob Storage tárolóban. (A CSV-fájlok a minta együtt küld, és megfelelnek-e terjesztve mellékletben készlet előzményadatokat kivonatát [Infochimps](http://www.infochimps.com/) 1970-2010 időszakra. A minta CSV-fájl adatokat olvas, alakítja át a rekordok példányait a **készlet** osztály, és ezután rendezi sorba őket reflexió használatával. A JSON-séma segítségével a Microsoft az Avro Library kód generálása segédprogram készlet definíciójának készült.
-* Táblázatot hoz létre új külső nevű **készletek** a Hive és a hivatkozásokat úgy, hogy az adatok feltöltése az előző lépésben.
-* A lekérdezés végrehajtja a Hive használatával keresztül a **készletek** tábla.
+* Meglévő HDInsight-fürthöz csatlakozik.
+* Szerializálja több CSV-fájlt, és feltölti az eredmény az Azure Blob storage. (A CSV-fájlokat a minta együtt vannak osztva, és AMEX készlet által elosztott korábbi adatok kivonatát képviselő [Infochimps](http://www.infochimps.com/) 1970-2010 időszakra. A minta beolvassa a CSV-fájljaihoz, konvertálja a rekordok példánya a **készlet** osztályt, és ezután tükröződés használatával szerializálja. Tőzsdei típusdefiníció jön létre egy JSON-sémát, a Microsoft Avro Library code generation segédprogram használatával.
+* Új táblát hoz létre külső nevű **készletek** a Hive és a hivatkozásokat, hogy az adatok feltöltése az előző lépésben.
+* A lekérdezés végrehajtása keresztüli Hive használatával a **készletek** tábla.
 
-Emellett a minta folyamatot hajt végre a karbantartás előtt és után fő műveletet hajt végre. Során a karbantartás minden a kapcsolódó Azure-Blob adatok és a mappák törlődnek, és a Hive tábla megszakad. A karbantartás eljárás a minta parancssorból is hívhat meg.
+Emellett a minta hajt végre egy karbantartási eljárást előtti és utáni műveletek fő végrehajtása. A karbantartás, során törlődnek az összes kapcsolódó Azure Blob-adatok és mappákat, és a Hive-tábla már nincs használatban. A karbantartási eljárást a minta parancssorból is hívhat.
 
-A minta előfeltételei a következők:
+A minta a következő előfeltételek vonatkoznak:
 
-* Egy aktív Microsoft Azure-előfizetést és az előfizetés-azonosító.
-* Egy felügyeleti tanúsítványt, az előfizetés, a megfelelő titkos kulccsal. A tanúsítványt kell telepíteni, az aktuális felhasználó titkos tárolási a minta futtatásához használt számítógépen.
-* Aktív HDInsight-fürtöt.
-* A HDInsight-fürthöz az előző előfeltétel, és a megfelelő elsődleges vagy másodlagos elérési kulcsot a kapcsolódó Azure Storage-fiók.
+* Egy aktív Microsoft Azure-előfizetés és az előfizetés-azonosítójára.
+* Egy felügyeleti tanúsítványt, az előfizetés a megfelelő titkos kulccsal. Az aktuális felhasználó személyes Storage azon a gépen a minta futtatásához telepíteni kell a tanúsítványt.
+* Egy aktív HDInsight-fürt.
+* A HDInsight-fürt együtt a megfelelő elsődleges vagy másodlagos hozzáférési kulcs az előző előfeltétel, az Azure Storage-fiókhoz csatolva.
 
-Minden adatot a Előfeltételek kell adni a minta konfigurációs fájl a minta futtatása előtt. Ehhez két lehetséges módja van:
+Mindent megtalál, az Előfeltételek meg kell adni a minta konfigurációs fájl a minta futtatása előtt. Ehhez két lehetséges módja van:
 
-* Szerkessze az app.config fájlt, a minta gyökérkönyvtárában, és majd kialakítható a minta
-* A minta először létre, és szerkessze a AvroHDISample.exe.config a build könyvtárban
+* Szerkessze az app.config fájlt a mintául szolgáló gyökérkönyvtárában, és ezután hozza létre a mintát
+* Először hozza létre a mintát, és szerkessze a AvroHDISample.exe.config hozhat létre a címtárban
 
-Mindkét esetben minden módosításokat kell végezni a **<appSettings>** beállítások szakaszban. Kövesse a megjegyzéseket, a fájlban.
-A minta futtatása a parancssorból futtassa a következő parancsot (amelyben a .zip-fájlt a mintával lett feltételezi, hogy kibontott C:\AvroHDISample; Ha ellenkező esetben használja a megfelelő elérési útja):
+Mindkét esetben az összes módosításokat kell elvégezni a **<appSettings>** beállítások szakaszban. Kövesse a megjegyzéseket, a fájlban.
+A minta futtatásakor a parancssorban futtassa az alábbi parancsot (ahol a .zip-fájlt a minta segítségével lett feltételezi, hogy kibontott C:\AvroHDISample; Ha ellenkező esetben használja a megfelelő fájl elérési útját):
 
     AvroHDISample run C:\AvroHDISample\Data
 
-A fürt karbantartása, a következő parancsot:
+A fürt törléséhez futtassa a következő parancsot:
 
     AvroHDISample clean
 

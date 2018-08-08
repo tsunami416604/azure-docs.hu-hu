@@ -1,85 +1,80 @@
 ---
-title: Hozzon létre magas rendelkezésre állású Spark Streaming feladatok a YARN - Azure HDInsight |} Microsoft Docs
-description: Hogyan állítható be a Spark Streaming egy magas rendelkezésre állású forgatókönyv esetén.
+title: Magas rendelkezésre állású Spark Streamelési feladatok létrehozása a YARN - Azure HDInsight-ban
+description: Hogyan állítható be a Spark Streaming, magas rendelkezésre állású forgatókönyv esetén.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: ramoha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
+ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
 ms.date: 01/26/2018
-ms.author: ramoha
-ms.openlocfilehash: bbb4da02cbe4b0685c715c4cd6bd7b15c6b5cce0
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: c49be5cdacdeee66b6eeadb3627c481c0ea517cd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165315"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618293"
 ---
-# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Hozzon létre magas rendelkezésre állású Spark Streaming feladatok YARN
+# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Magas rendelkezésre állású Spark Streamelési feladatok létrehozása a YARN
 
-Spark Streaming lehetővé teszi a méretezhető, nagy átviteli, hibatűrő alkalmazások feldolgozásakor az adatfolyamok végrehajtásához. Spark Streaming alkalmazások HDInsight Spark-fürtön csatlakozhat számos különféle adatforrások, például az Azure Event Hubs, Azure IoT Hub, Kafka, Flume, Twitter, ZeroMQ, nyers TCP-szoftvercsatornák vagy figyeli a változásokat a HDFS fájlrendszer. Spark Streaming támogatja a garantált, hogy bármely adott esemény feldolgozása pontosan egyszer, akár egy Csomóponthiba a hibatűrés.
+Spark Streaming megvalósítását teszi feldolgozása adatfolyamok, skálázható, nagy átviteli sebességű és hibatűrő alkalmazásokat. HDInsight Spark-fürtön a Spark Streamelési alkalmazások csatlakozhat különböző adatforrások, például az Azure Event Hubs, Azure IoT Hub, a Kafka, Flume, Twitter, ZeroMQ, nyers TCP-szoftvercsatornák, vagy egy megfigyelési a HDFS-fájlrendszer, a módosításokat. Spark Streaming támogatja az, hogy egy adott eseményre egyszer dolgozza fel pontosan, még akkor is csomóponthibával garantálunk hibatűrést.
 
-Spark Streaming hoz létre a hosszan futó feladatok során, amelyek képesek végrehajthatók az adatokat, és majd leküldéses fájlrendszerek, adatbázisok, az irányítópultok és a konzol az eredményeket. Spark Streaming dolgozza fel a micro-kötegek az adatok összegyűjtésével első események köteg egy megadott időszakban. Ezt követően, hogy a kötegelt továbbítja a feldolgozás és a kimeneti. Kötegelt időközök általában egy második hányada vannak definiálva.
+Spark Streaming hoz létre a hosszan futó feladatok, mely során is tudja átalakításokat az adatokhoz, és majd továbbítsa az eredményeket feladatszinten csatlakoztathatók, adatbázisok, az irányítópultok és a konzol. Spark Streaming folyamatok micro-kötegek az adatokat, begyűjtenie az első batch események egy meghatározott idő alatt. Ezután a batch a rendszer küldi a feldolgozás és a kimenet. A Batch időintervallumok általában a másodperc tört vannak meghatározva.
 
 ![Spark Streaming](./media/apache-spark-streaming-high-availability/spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
-Spark Streaming jelöli állandó folyama miatt adatokat egy *diszkretizált adatfolyam* (DStream). A DStream bemeneti forrásból, mint az Event Hubs vagy Kafka, vagy a másik DStream átalakítások alkalmazásával hozhatók létre. Az esemény a Spark Streaming kérelem érkezik, az esemény tárolja egy megbízható módon. Ez azt jelenti, hogy az eseményadatok replikálódik, hogy több csomópont egy példányát. Ez biztosítja, hogy bármely egyetlen csomópont hibája nem esemény elvesztését eredményezi.
+Spark Streaming jelöli az adatok folyamatos továbbítása egy *diszkretizált stream* (DStream). Ez DStream bemeneti forrásból, például az Event Hubs vagy a Kafka, vagy egy másik DStream az átalakítások alkalmazásával hozható létre. Amikor egy esemény a Spark Streaming kérelem érkezik, az esemény megbízhatóan tárolódik. Az eseményadatokat, replikálódik, hogy több csomópont egy példányát. Ez biztosítja, hogy a hiba bármely egyetlen csomópont nem a elvesztését eredményezi az esemény.
 
-A Spark mag használ *rugalmas adatkészleteket elosztott* (RDDs). RDDs adatok szét több csomópont, a fürtben, amelyben minden csomópont általában végzi az adatok teljesen memórián belüli a legjobb teljesítmény érdekében. Minden egyes RDD egy kötegelt időszakban összegyűjtött események jelöli. A kötegelt időtartam, amikor egy adott időszakban az adatokat tartalmazó új RDD Spark Streaming eredményez. A folyamatos készlete RDDs be egy DStream gyűjti. Spark Streaming alkalmazás dolgozza fel az egyes kötegekben RDD tárolt adatok.
+A Spark mag használ *rugalmas elosztott adatkészleteken* (rdd-kként). Rdd-k adatok elosztása több csomópontra a fürtben, amelyben minden egyes csomópont általában végzi az adatok teljesen memórián belüli a legjobb teljesítmény érdekében. Minden egyes RDD egy kötegelt időszakban összegyűjtött események jelöli. A batch időtartam, amikor egy adott időszakban az összes adatokat tartalmazó új RDD Spark Streaming eredményez. Az rdd-kként folyamatos készletét gyűjti be egy DStream. A Spark Streaming alkalmazás dolgozza fel az egyes kötegek RDD tárolt adatokat.
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/DStream.png)
+![A Spark DStream](./media/apache-spark-streaming-high-availability/DStream.png)
 
-## <a name="spark-structured-streaming-jobs"></a>Spark strukturált folyamatos átviteli feladatok
+## <a name="spark-structured-streaming-jobs"></a>A Spark strukturált Stream feladatok
 
-Spark strukturált Streaming bevezetett Spark 2.0, elemzési motor folyamatos strukturált adatok számára. Spark strukturált Streaming használja a kötegelés motor API-k sparksql-hez. Csakúgy, mint a Spark Streaming, Spark strukturált Streaming fut, a számítások micro-kötegek folyamatosan érkező adatok keresztül. Adatok adatfolyam Spark strukturált Streaming jelöli egy bemeneti tábla korlátlan sorait. Ez azt jelenti, hogy a bemeneti tábla továbbra is nő, ahogy új adat érkezik. A bemeneti táblázat folyamatosan hosszú ideig futó lekérdezés dolgoz fel, és az eredményeket egy táblázatot írt.
+A Spark strukturált Stream jelent a Spark 2.0 elemzési modulként streamelési strukturált adatok számára. A Spark strukturált Stream használja a motor API-k kötegelés sparksql-hez. Csakúgy, mint a Spark Streaming, Spark strukturált Stream fut, a számítások micro-kötegek folyamatosan érkező adatok felett. Spark strukturált Stream jelöli az adatfolyamot, korlátlan számú sort egy bemeneti táblát. Ez azt jelenti, hogy a bemeneti tábla mennyiségével növekszik új adatok érkeznek. A bemeneti tábla egy hosszan futó lekérdezést folyamatosan dolgoz fel, és az eredmények kimeneti táblát írja.
 
-![Spark Streaming strukturált](./media/apache-spark-streaming-high-availability/structured-streaming.png)
+![A Spark strukturált Stream](./media/apache-spark-streaming-high-availability/structured-streaming.png)
 
-Strukturált adatfolyam adatok megérkezik a rendszer, és azonnal van okozhatnak a bemeneti táblázatban. A bemeneti táblázaton műveleteket lekérdezéseket írhat. A lekérdezés egy másik táblát, az eredmények táblázatában elő. Az eredmények táblázatában tartalmazza a lekérdezést, ahol egy külső adattárral küldött adatok megrajzolásához eredményei egy relációs adatbázisban. A *eseményindító időköz* állítja be az időzítést, amikor a bemeneti tábla adatok feldolgozása a. Alapértelmezés szerint strukturált Streaming dolgozza fel az adatokat, amint megérkeznek. Azonban beállíthatja úgy is, a streamelési adatok feldolgozása a kötegek időalapú több idő jusson, futtassa az eseményindító. Az adatok az eredmények táblázatában előfordulhat, hogy teljesen frissíteni kell minden alkalommal, amikor nincs elérhető új adat, hogy tartalmazza a kimeneti adatok a folyamatos átviteli lekérdezés kezdete óta (*teljes mód*), vagy csupán azokat az adatokat, amelyek a legutóbbi új csak tartalmaz a lekérdezés feldolgozása volt idő (*hozzáfűzéssel*).
+Strukturált Streamelés adatok szolgáltatáshoz érkezik, a rendszer, és azonnal a bemeneti tábla be lett töltve. A bemeneti tábla kapcsolatos művelet-végrehajtási lefutó lekérdezéseket írhat. A lekérdezés kimenet egy másik, az eredmények táblázatában nevű táblát. Az eredmények táblázatában tartalmazza, amelyből rajzoljon egy külső adattárolója elküldendő adatok, a lekérdezés eredményeit egy relációs adatbázisban. A *eseményindító időköz* állítja be az adatok feldolgozásakor a bemeneti tábla ütemezését. Alapértelmezés szerint strukturált Stream feldolgozza az adatokat, amint megérkeznek. Ugyanakkor beállíthatja úgy is az eseményindító futtathatók több idő, így a streamadatok feldolgozása időalapú kötegekben. Az adatok az eredmények táblázatában előfordulhat, hogy teljesen frissíteni kell minden alkalommal, hogy van-e új adatokat tartalmaz a kimeneti adatok a streamelési lekérdezés kezdete óta (*teljes mód*), vagy csak csak az utolsó óta új adatokat tartalmaz a lekérdezés feldolgozásának ideje (*hozzáfűzéssel*).
 
-## <a name="create-fault-tolerant-spark-streaming-jobs"></a>Spark Streaming hibatűrő feladatok létrehozása
+## <a name="create-fault-tolerant-spark-streaming-jobs"></a>Hibatűrő Spark Streamelési feladatok létrehozása
 
-A Spark Streaming-feladatok a magas rendelkezésre állású környezet létrehozása, először meghibásodása esetén a helyreállításhoz az egyes feladatok kódolása. Ilyen önálló helyreállított feladatok olyan hibatűrő.
+Egy magas rendelkezésre állású környezetben, a Spark Streamelési feladatok létrehozása, először kódolási hiba esetén a helyreállítás az egyes feladatok. Az ilyen helyi helyreállított feladatok és hibatűrő.
 
-RDDs rendelkezik, amely segítséget nyújt a magas rendelkezésre állású és hibatűrő Spark Streaming feladatok több tulajdonságok:
+Rdd-k rendelkezik, amely segítséget nyújt a magas rendelkezésre állású és hibatűrő Spark Streamelési feladatok számos tulajdonságát:
 
-* Kötegek, bemeneti adatokat egy DStream RDDs tárolja a rendszer automatikusan replikálja a memóriában hibatűrést.
-* Mindaddig, amíg az adott munkavégző csomópontokat miatti worker elveszett adatok is recomputed különböző munkavállalók replikált bemeneti adatokból.
+* A rendszer automatikusan replikálja az rdd-k egy DStream tárolja, a bemeneti adatok kötegek a hibatűrés memóriában.
+* Feldolgozó hiba miatt elveszett adatok is recomputed a replikált bemeneti adatok különböző feldolgozókon, mindaddig, amíg az adott munkavégző csomópontok érhetők el.
 * Gyors tartalék helyreállítási hibák vagy elvetésének helyreállítás történik, a memóriában számítási keresztül belül egy második, akkor fordulhat elő.
 
-### <a name="exactly-once-semantics-with-spark-streaming"></a>Pontosan-egyszer a Spark Streaming szemantikájának módosítása
+### <a name="exactly-once-semantics-with-spark-streaming"></a>Pontosan-egyszer szemantika a Spark Streaming
 
-Létrehoz egy alkalmazást, amely feldolgozza az eseményekhez, miután (és csak egyszer), érdemes lehet hogyan meghibásodási ponttal minden rendszer újraindítása után egy játékhoz, és hogyan adatvesztés elkerülése érdekében. Pontosan-szemantikáját szükséges, hogy adatok nem vesztek bármikor, és a üzenet feldolgozása újraindítható, függetlenül attól, ahol a hiba akkor fordul elő, ha. Lásd: [Spark Streaming hozzon létre feladatokat a pontosan-egyszer esemény feldolgozása](apache-spark-streaming-exactly-once.md).
+Hozzon létre egy alkalmazást, minden egyes esemény egyszer (és csak egyszer), fontolja meg az összes, a rendszer pontokat újraindítása után probléma, és hogyan adatok elvesztését elkerülheti. Pontosan-szemantika megkövetelése, hogy bármikor adatvesztés, pedig a üzenetfeldolgozás újraindítható, függetlenül attól, ahol a hiba akkor fordul elő, ha. Lásd: [létrehozása Spark Streamelési feladatok az pontosan – egyszeri esemény feldolgozása](apache-spark-streaming-exactly-once.md).
 
 ## <a name="spark-streaming-and-yarn"></a>Spark Streaming és YARN
 
-A HDInsight fürt munkahelyi koordinálnia *még egy másik erőforrás egyeztető* (YARN). Magas rendelkezésre állás kialakítása a Spark Streaming tartalmazza a technikák, a Spark Streaming és YARN összetevők.  Az alábbiakban látható egy példa konfiguráció YARN használatával. 
+HDInsight, a fürt munkahelyi koordinálja *még egy másik Resource Negotiator* (YARN). Tervezés magas rendelkezésre állású Spark Streamelési tartalmazza a technikák, a Spark Streaming és YARN-összetevők.  Az alábbiakban látható egy példa konfiguráció látható YARN használatával. 
 
-![YARN architektúra](./media/apache-spark-streaming-high-availability/yarn-arch.png)
+![YARN-architektúra](./media/apache-spark-streaming-high-availability/yarn-arch.png)
 
-A következő szakaszok ismertetik tervezéséhez kapcsolódó szempontokat tartalmazza ezt a konfigurációt.
+A következő szakaszok ismertetik a kialakítási szempontok ehhez a konfigurációhoz.
 
 ### <a name="plan-for-failures"></a>Hibák tervezése
 
-A magas rendelkezésre állású YARN konfiguráció létrehozásához meg kell terveznie a lehetséges végrehajtó vagy illesztőprogram hibát. Spark Streaming feladatok szükséges további konfigurációs és a telepítési adatok garancia követelményeket is. Egy adatfolyam-továbbítási alkalmazást Előfordulhat például, annak ellenére, hogy semmilyen hiba lép fel a gazdarendszer adatfolyam-továbbítási vagy a HDInsight-fürt garantálni vállalati követelmények miatt egy nulla--adatvesztés.
+A magas rendelkezésre állású YARN konfiguráció létrehozásához, meg kell terveznie a lehetséges végrehajtó vagy illesztőprogram hibát. Más Spark Streamelési feladatok is szükség további konfigurációs és beállítási adatok garancia követelményeknek. A streamelési alkalmazások előfordulhat például, annak ellenére, hogy semmilyen hiba, amely akkor fordul elő, a üzemeltetési streamelési system vagy a HDInsight-fürt biztosítása egy nulla-az-adatvesztést üzleti követelmény.
 
-Ha egy **végrehajtó** meghiúsul, a feladatok és a fogadó újraindul Spark által automatikusan, így nincs szükség konfigurációs változás.
+Ha egy **végrehajtó** meghiúsul, a feladatok és a fogadók vannak Spark automatikusan újrainduljon, így nem szükséges konfiguráció módosul.
 
-Azonban ha egy **illesztőprogram** nem sikerül, akkor a társított végrehajtója összes sikertelen, és minden beérkezett blokkok és számítási eredmények elvesznek. Egy illesztőprogram-hiba helyreállításához használja *DStream ellenőrzőpontok* leírtak [Spark Streaming hozzon létre feladatokat a pontosan-egyszer esemény feldolgozása](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers). DStream ellenőrzőpontok időnként a *irányított aciklikus diagramhoz* (DAG) a hibatűrő tárhelyen, többek között a Azure Storage DStreams.  Ellenőrzőpontok használata lehetővé teszi, hogy a Spark strukturált Streaming az ellenőrzőpont-adatok sikertelen illesztőprogram újraindítására.  Az illesztőprogram újraindítás új végrehajtója elindul, és a fogadók is újraindul.
+Azonban ha egy **illesztőprogram** sikertelen, akkor az összes hozzá tartozó társított végrehajtóval nem sikerül, és az összes fogadott blokkok és a számítás eredménye elvész. Illesztőprogram hibát helyreállíthatja, használja a *DStream ellenőrzőpontok használata* leírtak szerint [létrehozása Spark Streamelési feladatok az pontosan – egyszeri esemény feldolgozása](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers). Időnként DStream ellenőrzőpontok használata a *irányított aciklikus diagramhoz* (DAG), például az Azure Storage és hibatűrő tárolási DStreams.  Ellenőrzőpontok használata lehetővé teszi, hogy a Spark strukturált Stream, indítsa újra a sikertelen illesztőprogram, a checkpoint alapján.  Az illesztőprogram-újraindítás új végrehajtóval elindul, és a fogadók is újraindul.
 
 Illesztőprogramok DStream ellenőrzőpontok helyreállításához:
 
-* A konfigurációs beállítás konfigurálása illesztőprogram automatikus újraindítása a yarn RENDSZERÉN `yarn.resourcemanager.am.max-attempts`.
-* Egy ellenőrzőpont könyvtár beállítása a HDFS-kompatibilis fájl rendszerben `streamingContext.checkpoint(hdfsDirectory)`.
-* Csökkentse a számukat a forráskód ellenőrzőpontot használja a helyreállításhoz, például:
+* YARN-illesztőprogram automatikus újraindítás konfigurálja a konfigurációs beállítás `yarn.resourcemanager.am.max-attempts`.
+* Ellenőrzőpont könyvtár beállítása egy HDFS-kompatibilis fájlrendszer `streamingContext.checkpoint(hdfsDirectory)`.
+* Átstrukturálása a forráskódot, és használjon ellenőrzőpontokat a helyreállításhoz, például:
 
     ```scala
         def creatingFunc() : StreamingContext = {
@@ -94,29 +89,29 @@ Illesztőprogramok DStream ellenőrzőpontok helyreállításához:
         context.start()
     ```
 
-* Az írási előre napló (WAL) engedélyezése az elveszett adatok helyreállításának konfigurálása `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`, és a bemeneti DStreams memórián belüli replikáció letiltása `StorageLevel.MEMORY_AND_DISK_SER`.
+* Elveszett adatok helyreállításának konfigurálása a írási előre log (WAL) engedélyezésével `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`, és tiltsa le a bemeneti DStreams memórián belüli replikálása `StorageLevel.MEMORY_AND_DISK_SER`.
 
-Összefoglalva, ellenőrzőpontok + WAL + megbízható fogadók használva lesz képes biztosítani a "legalább egyszeri" adat-helyreállítás:
+Összefoglalva, használja az ellenőrzőpontok használata, a WAL + megbízható fogadók, lesz, hogy a "legalább egyszeri" adat-helyreállítás:
 
-* Ha pontosan, mindaddig, amíg fogadott legyen adatvesztés, és a kimeneti vagy idempotent vagy tranzakciós.
-* Pontosan egyszer az új Kafka közvetlen módszert használó Kafka replikált napló, hanem fogadók vagy WALs.
+* Pontosan egyszeri, mindaddig, amíg ne legyen adatvesztés a fogadott és a kimenetek idempotens vagy tranzakciós.
+* Pontosan egyszer az új Kafka közvetlen megközelítéssel használó Kafka egy replikált log helyett a fogadók vagy WALs.
 
-### <a name="typical-concerns-for-high-availability"></a>A magas rendelkezésre állás jellemző vonatkozik
+### <a name="typical-concerns-for-high-availability"></a>Magas rendelkezésre állás jellemző megjegyzése
 
-* Azonban nehezebb a folyamatos átviteli feladat, mint a kötegelt feladatok figyelése. Spark Streaming feladatok általában hosszan futó, és YARN naplók nem összesíteni, amíg a feladat befejeződik.  Alkalmazás vagy a Spark frissítés során elvesznek Spark ellenőrzőpontokat, és akkor törölnie kell az ellenőrzőpont-könyvtár frissítése során.
+* Nehezebb, mint a batch-feladatok folyamatos átviteli feladat figyeléséhez. Spark Streamelési feladatok jellemzően hosszan futó, és a YARN naplók nem összesíti, a feladat befejezéséig.  Alkalmazás- vagy Spark-frissítések során elvesznek Spark ellenőrzőpontokat, és törölje a jelet az ellenőrzőpont-könyvtár frissítése során kell.
 
-* A YARN fürt mód illesztőprogramok futtatásához, még akkor is, ha egy ügyfél nem tud konfigurálása. Az illesztőprogramok automatikus újraindítást beállítása:
+* Állítsa be a YARN-fürt üzemmód illesztőprogramok futtatni, még akkor is, ha az ügyfélnek nem sikerül. Illesztőprogramok automatikus újraindítást beállítása:
 
     ```
     spark.yarn.maxAppAttempts = 2
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* Spark és a Spark Streaming felhasználói felületén konfigurálhatók metrikák rendszerrel kell rendelkeznie. Is használhatja, további könyvtárak, például a grafit/Grafana irányítópult metrikák letölteni, például a "num rekordok feldolgozott", "Memória/GC használat illesztőprogram & végrehajtója", "teljes késleltetés", "kihasználtságát a fürt" és így tovább. A strukturált Streaming 2.1-es vagy újabb verziója, használható `StreamingQueryListener` további metrikák gyűjtéséhez.
+* Spark és a Spark Streaming felhasználói felületén konfigurálhatók metrikák rendszerrel kell rendelkeznie. Is használhatja, további kódtárak, például a grafit/Grafana letöltéséhez irányítópult-metrikáit, mint például "num rekordok feldolgozása", ' Memória/globális Katalógus használata illesztőprogram & végrehajtóval', "teljes késés", "felhasználás a fürt" és így tovább. Strukturált Streamelés a 2.1-es vagy újabb verziót, a használható `StreamingQueryListener` további metrikák begyűjtéséhez.
 
-* Hosszan futó feladatot kell szegmentálhatja.  Amikor Spark Streaming alkalmazás a fürthöz, a YARN várólista, ahol a feladat futtatásakor meg kell határozni. Használhatja a [YARN kapacitás Feladatütemező](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) várólisták külön hosszú ideig futó feladatok küldéséhez.
+* Hosszan futó feladatok kell szegmentálhatja.  A Spark Streaming alkalmazás elküldésekor a fürthöz, a YARN várólista, ahol a feladat fut, meg kell határozni. Használhat egy [YARN kapacitás Scheduler](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) külön üzenetsorokat hosszú ideig futó feladatok elküldéséhez.
 
-* Az adatfolyam-továbbítási alkalmazást szabályosan le. Ha a eltolások ismert, és minden alkalmazás-állapot tárolása kívülről, majd programozott módon leállíthatja az adatfolyam-továbbítási alkalmazás megfelelő helyén. Egyik módszer, hogy használja a "a szál hurkok" Spark, ellenőrzésével egy külső jelzőhöz minden *n* másodperc. Használhatja a *jelzőfájl* , amely az alkalmazás indításakor HDFS létrehozni, akkor távolítja el, amikor le kívánja állítani. A jelölő fájl módszert használja a külső alkalmazás-t meghívó kód hasonló külön szálban használja:
+* A streamelési alkalmazás szabályosan leáll. Az eltolások ismert, és minden alkalmazás állapotának külső erőforrásfájlban, majd programozott módon állítsa le a megfelelő helyen streamelési alkalmazását. Egyik módszer az, hogy használja a "thread hurkokat" a Spark, ellenőrzésével egy külső jelzőt a minden *n* másodperc. Használhatja egy *jelölőfájl* , amely a HDFS létrehozott, az alkalmazás indításakor, akkor távolítja el, amikor le szeretné. A egy jelölő fájl módszert használja használjon egy külön szál a Spark-alkalmazás, amely meghívja a kód ehhez hasonló:
 
     ```scala
     streamingContext.stop(stopSparkContext = true, stopGracefully = true)
@@ -125,8 +120,8 @@ Illesztőprogramok DStream ellenőrzőpontok helyreállításához:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Spark Streaming áttekintése](apache-spark-streaming-overview.md)
-* [A Spark Streaming feladatok pontosan létrehozása – egyszer esemény feldolgozása](apache-spark-streaming-exactly-once.md)
-* [A folyamatos átviteli feladatok a yarn RENDSZERÉN hosszan futó Spark](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
-* [Strukturált Streaming: Tartalék hibatűrő szemantikáját](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [Diszkretizált adatfolyamok: Hibatűrő modellt méretezhető adatfolyam feldolgozása](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Spark Streamelés – áttekintés](apache-spark-streaming-overview.md)
+* [A Spark Streamelési feladatok létrehozása pontosan – egyszeri esemény feldolgozása](apache-spark-streaming-exactly-once.md)
+* [Hosszan futó Spark Streamelési feladatok a yarn RENDSZERÉN](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
+* [Strukturált Stream: Tartalék hibatűrő szemantika](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
+* [Diszkretizált Streamek: Egy hibatűrő modellt méretezhető Stream-feldolgozás](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

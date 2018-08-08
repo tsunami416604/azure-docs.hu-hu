@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 804906e1c1b361b9274dbc8fa3ab1cb204e27dfc
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 842ec8f641fca80e469864dd4d81e14c863fd464
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857276"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600057"
 ---
-# <a name="using-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges végrehajtó .NET-kódtár használatával az Azure Cosmos DB tömeges műveletek végrehajtásához
+# <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges végrehajtó .NET-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-ben
 
 Ebben az oktatóanyagban útmutatás segítségével az Azure Cosmos DB tömeges végrehajtó .NET-kódtár importálása és az Azure Cosmos DB-tárolók dokumentumok frissítéséhez. Tömeges végrehajtó kódtár, és segítséget nyújt a nagy átviteli sebesség és a storage kapcsolatos további információkért lásd: [tömeges végrehajtó ügyfélkódtár áttekintése](bulk-executor-overview.md) cikk. Ez az oktatóanyag végigvezeti egy .NET mintaalkalmazás, amely importálja, véletlenszerűen generált dokumentumok tömeges egy Azure Cosmos DB-tárolóba. Az importálás után azt mutatja, hogy kötegelve tölthesse be az importált adatok frissítése javítások végrehajtásához az adott dokumentum mezők műveletként megadásával.
 

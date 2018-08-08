@@ -2,22 +2,19 @@
 title: Livy a Spark használata Azure HDInsight alapú Spark-fürt-feladatok elküldése
 description: Ismerje meg, hogyan lehet Apache Spark REST API segítségével távolról egy Azure HDInsight-fürtön a Spark-feladatok elküldése.
 services: hdinsight
-author: nitinme
-ms.author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 2817b779-1594-486b-8759-489379ca907d
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: f2befaea436c29b43eead63a560836446075c89f
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: d174d6103206129744ba7d932982b5d9dcb8294e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144825"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618126"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Az Apache Spark REST API használata egy HDInsight Spark-fürt távoli feladatok elküldéséhez
 

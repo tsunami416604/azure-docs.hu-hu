@@ -1,48 +1,43 @@
 ---
-title: Hozzon létre egy Apache Spark gépi tanulás csővezeték - Azure HDInsight |} Microsoft Docs
-description: Adatok folyamatok létrehozásához használja az Apache Spark gépi tanulás könyvtár.
+title: Hozzon létre egy Apache Spark machine learning-folyamat – Azure HDInsight
+description: Az Apache Spark machine learning-kódtár használatával adatfolyamatok létrehozására.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: c3ff29404858a768737536e7d31c3c6858eea7d2
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/19/2018
+ms.openlocfilehash: eb7959255a0b3c1597592eaae41d83dabd333d05
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164550"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617054"
 ---
 # <a name="create-a-spark-machine-learning-pipeline"></a>Spark Machine Learning-folyamat létrehozása
 
-Apache Spark méretezhető machine learning könyvtár (MLlib) számos lehetőséget kínál az elosztott környezetben való modellezési képességekkel. A Spark csomag [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) DataFrames épülő magas szintű API-k olyan készlete. Ezen API-k hogyan hozhat létre, és gyakorlati gépi tanulásra folyamatok hangolását.  *Gépi tanulás Spark* az MLlib DataFrame-alapú API, nem a régebbi RDD-alapú feldolgozási folyamat API hivatkozik.
+Az Apache Spark skálázható gépi tanulási kódtár (MLlib) egy elosztott környezetben modellező képességeket biztosít. A Spark-csomag [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) DataFrames épülő magas szintű API-k készlete. Ezen API-k segítségével hozhat létre, és gyakorlati gépi tanulási folyamatok finomhangolása.  *A Spark machine learning* az MLlib DataFrame-alapú API, nem a régebbi RDD-alapú folyamat API hivatkozik.
 
-A gépi tanulási (ML) feldolgozási folyamat különböző gépi tanulási algoritmus együtt összesítik teljes munkafolyamatot. Sok lépést kell feldolgozni, és tanuljanak az adatokból, igénylő algoritmusok sorozata lehet. Folyamatok a szakaszt, és a gépi tanulási folyamat sorrendje határozza meg. A MLlib a folyamat szakaszból jelölik PipelineStages, ahol egy átalakító és egy négyzetgyökének egyes feladatokat adott sorozata.
+Machine learning (gépi tanulás) folyamat kombinálva különböző gépi tanulási algoritmus együtt teljes munkafolyamatot. Számos, dolgozza fel, és ismerje meg az adatokat, egy feladatütemezési algoritmusok igénylő szükséges lépéseket is lehet. A folyamatok a szinteket és a egy gépi tanulási folyamat sorrendje határozza meg. MLlib, a folyamat szakaszai képviseli PipelineStages, ahol egy átalakító és a egy Estimator egyes feladatokat konkrét sorrendje.
 
-Átalakítók használva átalakítja a másik egy DataFrame algoritmust a `transform()` metódust. Például egy szolgáltatás átalakító sikerült olvassa el a DataFrame egy oszlopot, leképez egy másik oszlop, és egy új DataFrame kimeneti utótaggal csatlakoztatott oszloppal.
+Átalakítón alakítja át az egyik DataFrame egy másikra algoritmust a `transform()` metódust. Például funkció átalakítón sikerült olvassa el a DataFrame egy számoszlop leképez egy másik oszlopot és egy új adathalmaz kimeneti rá hozzáfűzve leképezett oszloppal.
 
-Egy négyzetgyökének absztrakciója tanulási algoritmusok és kitöltési vagy átalakítók létrehozásához a dataset betanítása felelős. Egy négyzetgyökének nevű metódus valósítja meg `fit()`, amely fogad egy DataFrame, és hozza létre a DataFrame, amely egy átalakító.
+Egy Estimator tanulási algoritmus absztrakciója, és megfelel, és egy adatkészleten átalakítón előállításához képzésre felelős. Egy Estimator valósít meg egy metódust `fit()`, amely DataFrame fogadja, és egy adathalmaz, amely átalakítón eredményez.
 
-Minden egyes állapot nélküli példány átalakítók vagy egy négyzetgyökének rendelkezik saját egyedi azonosítója, amely a paramétereinek megadása. Ezek a paraméterek egyaránt használja egy egységes API-t.
+Minden állapot nélküli példány átalakítón vagy egy Estimator rendelkezik a saját egyedi azonosítóját, amely paramétereinek megadása. Ezek a paraméterek megadása is használja egy egységes API-t.
 
 ## <a name="pipeline-example"></a>Folyamat – példa
 
-Bemutatásához az ML-feldolgozási folyamat gyakorlati használatát, a példában a minta `HVAC.csv` adatfájlt, amely a HDInsight-fürtjéhez, Azure Storage vagy a Data Lake Store az alapértelmezett tároló előre betöltött előre. A fájl tartalmának megtekintéséhez nyissa meg a `/HdiSamples/HdiSamples/SensorSampleData/hvac` könyvtár. `HVAC.csv` HVAC a cél- és tényleges hőmérsékletek idejében tartalmaz (*fűtésrendszerek, a szellőzőrendszerek, a légkondicionáló*) rendszerek különböző épületben. A cél, hogy az adatok a modell betanítását, és az adott épület az előrejelzési hőmérséklet.
+Egy gépi Tanulási folyamat gyakorlati használatának bemutatása érdekében ez a példa a minta `HVAC.csv` adatfájlt, amely a HDInsight-fürthöz, vagy az Azure Storage, vagy a Data Lake Store az alapértelmezett tároló előre betöltött származik. A fájl tartalmának megtekintéséhez lépjen a `/HdiSamples/HdiSamples/SensorSampleData/hvac` könyvtár. `HVAC.csv` a HVAC, ahányszor a cél- és tényleges hőmérsékletek tartalmaz (*fűtésrendszerek, a szellőzőrendszerek, a légkondicionáló*) rendszerek különböző épületben. A célja, hogy az adatokat a modell betanítását, és az előrejelzési hőmérséklet egy megadott létrehozásához.
 
 A következő kódot:
 
-1. Határozza meg egy `LabeledDocument`, mely tárolja a `BuildingID`, `SystemInfo` (a rendszer azonosítót és életkora), és egy `label` (1.0 az épület túl gyakran használt adatok, ha más 0,0).
-2. Létrehoz egy egyéni elemző függvény `parseDocument` , amely fogad egy adatsort (sor), és határozza meg, hogy az épület "Forró" összehasonlítva a tényleges hőmérséklet a célként megadott hőmérsékletet.
-3. Az elemző akkor érvényes, ha az adatok kinyeréséhez.
-4. Tanítási adatokat hoz létre.
+1. Meghatározza egy `LabeledDocument`, melyik üzletek a `BuildingID`, `SystemInfo` (a rendszer azonosítót és a korszűrő), és a egy `label` (1.0-t, ha a az épület túl gyakori és egyéb 0.0).
+2. Létrehoz egy egyéni elemző függvényt `parseDocument` , amely egy adatsort (sor) vesz igénybe, és határozza meg, hogy az épület "Forró" összehasonlítja a tényleges hőmérséklet a célként megadott hőmérsékletet.
+3. Az elemző vonatkozik, az adatok kinyerésére.
+4. Betanítási adatok hoz létre.
 
 ```python
 # The data structure (column meanings) of the data array:
@@ -75,11 +70,11 @@ documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
 ```
 
-Ez például az adatcsatorna rendelkezik három fázisból áll: `Tokenizer` és `HashingTF` (mindkét transzformátorok), és `Logistic Regression` (egy négyzetgyökének).  A kibontott és elemzett adatokat a `training` DataFrame halad keresztül a feldolgozási folyamat során `pipeline.fit(training)` nevezik.
+Ez a példa a folyamat három fázisa van: `Tokenizer` és `HashingTF` (mindkét transzformátorok), és `Logistic Regression` (egy Estimator).  A kivont és elemzett adatokat a `training` DataFrame végig a folyamat során `pipeline.fit(training)` nevezzük.
 
-1. Első lépésként `Tokenizer`, felosztja a `SystemInfo` bemeneti oszlopot (a rendszer azonosítója és a korszűrő értékek álló) egy `words` kimeneti oszlop. Ez új `words` a DataFrame felveszi az oszlopot. 
-2. Második lépésként `HashingTF`, konvertálja az új `words` szolgáltatás vektorok oszlopot. Ez új `features` a DataFrame felveszi az oszlopot. A első két szakaszok transzformátorok. 
-3. A harmadik szakasz `LogisticRegression`, egy négyzetgyökének, és így a folyamat meghívja a `LogisticRegression.fit()` módszer létrehozásához egy `LogisticRegressionModel`. 
+1. Első lépésként `Tokenizer`, felosztja a `SystemInfo` bemeneti oszlopot (amely a rendszer azonosítót és a korszűrő értékek) egy `words` kimeneti oszlop. Az új `words` az adathalmaz felveszi az oszlopot. 
+2. A második szakaszban `HashingTF`, átalakítja az új `words` funkció vektorok oszlop. Az új `features` az adathalmaz felveszi az oszlopot. Ezen első két szakasza a következő transzformátorok. 
+3. A harmadik szakasz `LogisticRegression`, egy Estimator, és így a folyamat meghívja a `LogisticRegression.fit()` előállításához metódus egy `LogisticRegressionModel`. 
 
 ```python
 tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -92,7 +87,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-Az új megjelenítéséhez `words` és `features` által felvett oszlopok a `Tokenizer` és `HashingTF` transzformátorok és mintát a `LogisticRegression` négyzetgyökének, futtassa egy `PipelineModel.transform()` az eredeti DataFrame metódusa. Az éles kódban a következő lépéssel volna egy teszt DataFrame a képzés érvényesítéséhez.
+Megtekintheti az új `words` és `features` által felvett oszlopok a `Tokenizer` és `HashingTF` transzformátorok, és a egy mintát a `LogisticRegression` estimator, futtassa a `PipelineModel.transform()` metódus az eredeti adathalmaz. Az éles kódban a következő lépés lehet a teszt ellenőrzése a képzés DataFrame adja át.
 
 ```python
 peek = model.transform(training)
@@ -127,8 +122,8 @@ peek.show()
 only showing top 20 rows
 ```
 
-A `model` objektum már használható előrejelzéseket készítsen. Az ebben a machine learning alkalmazást, és részletesen is fut a teljes minta, lásd: [Build Apache Spark gépi tanulási a alkalmazások az Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md).
+A `model` objektum már használható, hogy előrejelzéseket végezzen. A machine learning-alkalmazás részletes ismertetését, valamint az azt futtató, a teljes minta: [hozhat létre Apache Spark machine learning-alkalmazások az Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md).
 
 ## <a name="see-also"></a>Lásd még
 
-* [Adattudomány Scala és Spark az Azure használatával](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [Adatelemzés a Scala és Spark használata az Azure-ban](../../machine-learning/team-data-science-process/scala-walkthrough.md)

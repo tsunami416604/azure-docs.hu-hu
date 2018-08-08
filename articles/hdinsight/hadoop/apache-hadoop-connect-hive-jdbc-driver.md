@@ -1,50 +1,45 @@
 ---
-title: Keresztül a JDBC-illesztőt - Azure HDInsight Hive lekérdezés |} Microsoft Docs
-description: A Java-alkalmazás JDBC-illesztőt segítségével elküldeni a hdinsight Hadoop Hive-lekérdezéseket. Csatlakoztassa a programozott módon, és az SQuirrel SQL ügyfélről.
+title: Lekérdezés Hive, a JDBC-illesztőprogram – Azure HDInsight segítségével
+description: A Java-alkalmazás JDBC-illesztőprogram segítségével a HDInsight hadoop Hive-lekérdezések elküldéséhez. Programozott módon, és az SQuirrel SQL-ügyfél csatlakoztatása.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 928f8d2a-684d-48cb-894c-11c59a5599ae
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: java
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: larryfr
-ms.openlocfilehash: 9700408dad36591fc26aa159524f33965b9d1324
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 9c7881d0cc4f0c2c13f34fa8909d15dec1bf121a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31399415"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591669"
 ---
-# <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Hive hdinsight JDBC-illesztőt keresztül
+# <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Hive a HDInsight a JDBC-illesztőprogram segítségével
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Útmutató a Java-alkalmazás JDBC-illesztőt küldeni az Azure HDInsight Hadoop Hive-lekérdezéseket. A jelen dokumentumban szereplő információk programozott módon, és az SQuirrel SQL ügyfél mutatja be.
+Ismerje meg, hogyan használhatja a JDBC-illesztővel Java-alkalmazás az Azure HDInsight hadoop Hive-lekérdezések elküldéséhez. A jelen dokumentumban lévő információk programozott módon, és az SQuirrel SQL-ügyfél mutatja be.
 
-A Hive JDBC kapcsolaton további információkért lásd: [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
+További információ a Hive JDBC-kapcsolaton: [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Hadoop on HDInsight-fürt.
+* A Hadoop HDInsight-fürtön.
 
   > [!IMPORTANT]
-  > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight 3.3 használatból való kivonást](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight 3.3-as kivezetési](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL JDBC ügyfélalkalmazás.
 
-* A [Java fejlesztői készlet (JDK) 7-es verzió](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) vagy újabb verzióját.
+* A [Java fejlesztői készlet (JDK) 7-es verzió](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) vagy újabb verziója.
 
-* [Apache Maven](https://maven.apache.org). Maven, a projekt felépítéséhez rendszer Java-projektek esetében ez a cikk társított projekt által használt.
+* [Apache Maven](https://maven.apache.org). Maven egy projektet a Java-projektek rendszert, ez a cikk társított projekt által használt hozhat létre.
 
-## <a name="jdbc-connection-string"></a>JDBC-kapcsolati karakterlánc
+## <a name="jdbc-connection-string"></a>JDBC-kapcsolati sztring
 
-Az Azure HDInsight-fürtök JDBC kapcsolatok válnak, több mint a 443-as, és a forgalom SSL használatával lett biztonságossá. A nyilvános átjáró, amely a fürtök elhelyezkedik mögött átirányítja a forgalmat a portot, amelyet a hiveserver2-n ténylegesen figyel a következőn:. A következő kapcsolati karakterláncot a HDInsight az formátumát mutatja:
+JDBC-kapcsolatok az Azure HDInsight-fürthöz végzett több, mint a 443-as, és a forgalom titkosításának SSL használatával. A nyilvános átjárót, a fürtök mögött található átirányítja a forgalmat a port, amelyet a hiveserver2-n keresztül ténylegesen figyel a következőn:. Az alábbi kapcsolati karakterláncot a formátum használatára a HDInsight látható:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -52,9 +47,9 @@ Cserélje le a `CLUSTERNAME` kifejezést a HDInsight-fürt nevére.
 
 ## <a name="authentication"></a>Hitelesítés
 
-A kapcsolat létrehozásakor, a HDInsight fürt admin nevét és jelszavát, hogy a fürt átjáró hitelesítést kell használnia. JDBC-ügyfelek például SQuirreL SQL csatlakozáshoz meg kell adni a rendszergazda nevét és jelszavát ügyfélbeállításokat.
+A kapcsolat létrehozásakor, a fürt átjáró hitelesítése a HDInsight-fürt felügyeleti nevét és jelszavát kell használnia. Amikor JDBC-ügyfelek, például a SQuirreL SQL csatlakoztat, adjon meg a rendszergazdai felhasználónevét és jelszavát az ügyfélbeállításokban.
 
-Java-alkalmazás kell használnia a nevet és jelszót egy kapcsolat. Például a következő Java-kódot megnyílik egy új kapcsolatot a kapcsolati karakterláncot, a felügyeleti neve és a jelszót:
+Java-alkalmazás kell használnia a név és jelszó-kapcsolat létrehozásakor. Például a következő Java-kódot megnyílik egy új kapcsolatot, a kapcsolati karakterláncot, rendszergazdai név és jelszó használatával:
 
 ```java
 DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
@@ -62,11 +57,11 @@ DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
 
 ## <a name="connect-with-squirrel-sql-client"></a>Csatlakozás SQuirreL SQL-ügyféllel
 
-SQuirreL SQL JDBC-ügyfél, amely segítségével távolról ugyanúgy futtathatják a Hive-lekérdezéseket a HDInsight-fürthöz. A következő lépések azt feltételezik, hogy SQuirreL SQL már telepítve van.
+SQuirreL SQL JDBC ügyfél, amely távolról futtathat Hive-lekérdezéseket a HDInsight-fürttel használható. A következő lépések azt feltételezik, hogy SQuirreL SQL már telepítve van.
 
-1. Hozzon létre egy könyvtárat, a tároló. Például: `mkdir hivedriver`.
+1. Hozzon létre egy könyvtárat, amely a fájlokat tartalmazza. Például: `mkdir hivedriver`.
 
-2. A parancssorból használja a fájlok másolását a HDInsight-fürthöz a következő parancsokat:
+2. Egy parancssorból a következő parancsok használatával másolja a fájlokat a HDInsight-fürt:
 
     ```bash
     scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-common.jar .
@@ -81,71 +76,71 @@ SQuirreL SQL JDBC-ügyfél, amely segítségével távolról ugyanúgy futtathat
     scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
     ```
 
-    Cserélje le `USERNAME` az SSH felhasználói fiók nevét a fürthöz. Cserélje le `CLUSTERNAME` a HDInsight-fürt nevéhez.
+    Cserélje le `USERNAME` az a fürt SSH-felhasználói fiók nevét. Cserélje le `CLUSTERNAME` a HDInsight-fürt nevéhez.
 
-3. A SQuirreL SQL alkalmazás indításához. Válassza ki a az ablak bal oldalán, **illesztőprogramok**.
+3. A SQuirreL SQL-alkalmazás elindításához. Válassza ki a az ablak bal oldalán, **illesztőprogramok**.
 
     ![A bal oldali ablak illesztőprogramok lap](./media/apache-hadoop-connect-hive-jdbc-driver/squirreldrivers.png)
 
-4. A felső részén ikonok a **illesztőprogramok** párbeszédpanelen válassza a **+** ikonra kattintva hozzon létre egy illesztőprogramot.
+4. A tetején található ikonok közül a **illesztőprogramok** párbeszédpanelen válassza ki a **+** ikonra kattintva hozzon létre egy illesztőprogramot.
 
     ![Illesztőprogramok ikonok](./media/apache-hadoop-connect-hive-jdbc-driver/driversicons.png)
 
 5. Illesztőprogram hozzáadása párbeszédpanelen adja meg a következő információkat:
 
-    * **Név**: struktúra
-    * **Példa URL-cím**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Extra osztály elérési útja**: használja a Hozzáadás gombra az összes korábban letöltött jar-fájlok hozzáadása
+    * **Név**: Hive
+    * **Minta URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
+    * **Extra osztályának elérési**: használja a Hozzáadás gombra az összes korábban letöltött jar-fájlok hozzáadása
     * **Osztálynév**: org.apache.hive.jdbc.HiveDriver
 
-   ![illesztőprogram párbeszédpanel hozzáadása](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
+   ![Adja hozzá az illesztőprogram párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
 
    Kattintson a **OK** ezek a beállítások mentéséhez.
 
-6. Az SQuirreL SQL ablak bal oldalán válassza ki a **aliasok**. Kattintson a **+** ikonra kattintva hozzon létre egy kapcsolat aliast.
+6. SQuirreL SQL ablakban a bal oldalon válassza ki a **aliasok**. Kattintson a **+** ikonra kattintva hozzon létre egy kapcsolatot aliast.
 
     ![Új alias hozzáadása](./media/apache-hadoop-connect-hive-jdbc-driver/aliases.png)
 
-7. A következő értékeket használja a **hozzáadása Alias** párbeszédpanel.
+7. A következő értékeket használja a **Alias hozzáadása** párbeszédpanel.
 
-    * **Név**: hdinsight Hive
+    * **Név**: Hive HDInsight
 
-    * **Illesztőprogram**: a legördülő lista segítségével válassza ki a **Hive** illesztőprogram
+    * **Illesztőprogram**: használja a legördülő listából válassza ki a **Hive** illesztőprogram
 
     * **URL-CÍM**: `jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
 
         Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.
 
-    * **Felhasználónév**: a HDInsight-fürt a fürt bejelentkezési fiók neve. Az alapértelmezett érték `admin`.
+    * **Felhasználónév**: a HDInsight-fürthöz a fürt bejelentkezési fiók nevét. Az alapértelmezett érték `admin`.
 
-    * **Jelszó**: a fürt bejelentkezési fiók jelszavát.
+    * **Jelszó**: a fürt bejelentkezési fiókjának jelszavát.
 
- ![Adja hozzá a alias párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
+ ![alias párbeszédpanel hozzáadása](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
 
     > [!IMPORTANT] 
-    > Használja a **teszt** gombra kattintva győződjön meg arról, hogy működik-e a kapcsolat. Ha **csatlakozni: hdinsight Hive** kiválasztása párbeszédpanel jelenik meg, **Connect** a vizsgálat végrehajtásához. Ha a teszt sikeres, megjelenik egy **sikeres kapcsolat** párbeszédpanel. Hiba esetén lásd: [hibaelhárítás](#troubleshooting).
+    > Használja a **teszt** gombra kattintva győződjön meg arról, hogy működik-e a kapcsolat. Amikor **csatlakozhat: Hive HDInsight** párbeszédpanel megjelenésekor válassza **Connect** a teszt végrehajtásához. Ha a teszt sikeres, megjelenik egy **sikeres csatlakozás** párbeszédpanel. Ha hiba lép fel, tekintse meg [hibaelhárítás](#troubleshooting).
 
-    A kapcsolat alias mentéséhez használja a **Ok** gomb alján a **hozzáadása Alias** párbeszédpanel.
+    Szeretné menteni a kapcsolat alias, használja a **Ok** gomb alsó részén a **Alias hozzáadása** párbeszédpanel.
 
-8. Az a **csatlakozni** válassza ki a legördülő menü felső részén SQuirreL SQL **hdinsight Hive**. Amikor a rendszer kéri, válassza ki a **Connect**.
+8. Az a **csatlakozni** SQuirreL SQL-tetején lévő legördülő listából válassza ki **Hive HDInsight**. Amikor a rendszer kéri, válassza ki a **Connect**.
 
     ![kapcsolódási párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/connect.png)
 
-9. A csatlakozás után a következő lekérdezés írhat-e az SQL-lekérdezési párbeszédpanel megnyitása, és válassza a **futtatása** ikonra. Az eredmények területen meg kell jelennie a lekérdezés eredményeit.
+9. A csatlakozás után a következő lekérdezés írja be az SQL-lekérdezési párbeszéd, és válassza ki a **futtatása** ikonra. Az eredmények területen meg kell jelennie a lekérdezés eredményeit.
 
         select * from hivesampletable limit 10;
 
-    ![SQL lekérdezési párbeszédpanel megnyitása, beleértve az eredmények](./media/apache-hadoop-connect-hive-jdbc-driver/sqlquery.png)
+    ![SQL lekérdezési párbeszédpanel, beleértve az eredmények](./media/apache-hadoop-connect-hive-jdbc-driver/sqlquery.png)
 
-## <a name="connect-from-an-example-java-application"></a>Csatlakoztatja a Java-alkalmazást például a
+## <a name="connect-from-an-example-java-application"></a>Csatlakozás a Java-alkalmazást például a
 
-Példa a HDInsight Hive lekérdezés Java-ügyfél használatával érhető el: [ https://github.com/Azure-Samples/hdinsight-java-hive-jdbc ](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc). Kövesse az utasításokat a építsenek, és futtathatja a tárházban.
+A HDInsight Hive-lekérdezéshez Java-ügyfél használatával például a rendelkezésre álló [ https://github.com/Azure-Samples/hdinsight-java-hive-jdbc ](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc). Kövesse az utasításokat, és futtassa a mintát az adattárban.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Váratlan hiba történt egy SQL-kapcsolat megnyitása
 
-**A jelenség**: HDInsight-fürtök 3.3-as verziójának vagy újabb verziójú való csatlakozáskor jelenhet meg, amely a váratlan hiba történt hiba. Az alábbi veremkivonatban találhatók a hiba a következő sorokat kezdődik:
+**A jelenség**: 3.3-as verziójának vagy újabb verziót egy HDInsight-fürtön való csatlakozáskor a hibaüzenet egy váratlan hiba történt. Ennek a hibának a híváslánc a következő sorokat kezdődik:
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
@@ -153,29 +148,29 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**OK**: Ez a hiba oka egy régebbi verziójú SQuirreL mellékelt commons-codec.jar fájl.
+**OK**: Ez a hiba egy régebbi verziójú SQuirreL mellékelt commons-codec.jar fájl okozza.
 
-**Megoldási**: Ez a hiba elhárításához tegye a következőket:
+**Feloldási**: Ez a hiba elhárításához kövesse az alábbi lépéseket:
 
-1. Töltse le a commons-kodek jar-fájlt a HDInsight-fürthöz.
+1. A HDInsight-fürtből származó a commons-kodek jar-fájl letöltése.
 
         scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-codec*.jar ./commons-codec.jar
 
-2. Lépjen ki a SQuirreL, és keresse meg a könyvtár ahol a SQuirreL telepítve van a rendszeren. A SquirreL könyvtárban a a `lib` directory, a név felülírandó a egy meglévő commons-codec.jar le: a HDInsight-fürthöz.
+2. SQuirreL kilép, és keresse fel a könyvtárba SQuirreL helyéül a rendszeren. A SquirreL címtárban alatt a `lib` könyvtár, cserélje le a egy meglévő commons-codec.jar letöltött a HDInsight-fürtből.
 
-3. Indítsa újra az SQuirreL. A hiba már nem kell végrehajtani, a HDInsight Hive történő csatlakozás során.
+3. Indítsa újra a SQuirreL. A hiba csak már nem fordulhat elő, amikor csatlakozik a HDInsight Hive.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik megtudta, hogyan JDBC használhatja a Hive, az alábbi hivatkozások segítségével más módjai Azure HDInsight használata.
+Most, hogy megtanulhatta, hogyan dolgozhat a Hive JDBC segítségével, egyéb módon az Azure HDInsight használata az alábbi hivatkozások segítségével.
 
-* [Hive-adatok ábrázolása a Microsoft Power bi-ban az Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
-* [Interaktív lekérdezés Hive-adatok ábrázolása a Power bi-ban az Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Zeppelin segítségével az Azure HDInsight Hive-lekérdezések futtatása](./../hdinsight-connect-hive-zeppelin.md).
-* [Excel csatlakoztatása a Microsoft Hive ODBC-illesztőprogram HDInsight](apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Az Excel és a Hadoop csatlakoztatása a Power Query használatával](apache-hadoop-connect-excel-power-query.md).
-* [Azure HDInsight csatlakozzon és Hive-lekérdezéseket a Data Lake Tools for Visual Studio használatával futtassa](apache-hadoop-visual-studio-tools-get-started.md).
-* [A HDInsight eszközzel Azure a Visual Studio Code](../hdinsight-for-vscode.md).
+* [A Microsoft Power BI az Azure HDInsight Hive-adatok vizualizálása](apache-hadoop-connect-hive-power-bi.md).
+* [Power BI segítségével az Azure HDInsight adatok interaktív lekérdezéses Hive megjelenítése](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+* [Az Azure HDInsight Hive-lekérdezések futtatása a Zeppelin használatával](./../hdinsight-connect-hive-zeppelin.md).
+* [Excel csatlakoztatása a Microsoft Hive ODBC illesztőprogram segítségével a HDInsight](apache-hadoop-connect-excel-hive-odbc-driver.md).
+* [Az Excel összekapcsolása a Hadooppal a Power Query használatával](apache-hadoop-connect-excel-power-query.md).
+* [Csatlakozás az Azure HDInsight és a Data Lake Tools for Visual Studio használatával Hive-lekérdezések futtatása](apache-hadoop-visual-studio-tools-get-started.md).
+* [Az Azure HDInsight-eszköz használata a Visual Studio Code](../hdinsight-for-vscode.md).
 * [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md)
 * [A Hive használata a HDInsightban](hdinsight-use-hive.md)
 * [A Pig használata a HDInsightban](hdinsight-use-pig.md)

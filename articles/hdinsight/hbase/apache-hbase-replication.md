@@ -1,23 +1,20 @@
 ---
-title: Állítsa be a HBase-fürt replikációja az Azure virtual networkök |} A Microsoft Docs
+title: HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 description: Ismerje meg, hogyan lehet HBase-replikálás beállítása egy HDInsight-verzióról a másikra a terheléselosztást, magas rendelkezésre állású, üzemszünet nélküli áttelepítés és a frissítések és vész-helyreállítási.
 services: hdinsight,virtual-network
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: jgao
-ms.openlocfilehash: f0367b67f141ca65ce2374722016d0fbea6c97d1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: jasonh
+ms.openlocfilehash: 535b5dcc62020119cda3db36bfdbd707badfe549
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951121"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600305"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 
@@ -108,7 +105,7 @@ Az előző szakaszban a sablon létrehoz egy Ubuntu virtuális gép minden a ké
 
 Kötési telepítéséhez yon kell keresnie a két DNS virtuális gép nyilvános IP-címét.
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Nyissa meg a DNS virtuális gép kiválasztásával **erőforráscsoportok > [erőforráscsoport neve] > [vnet1DNS]**.  Az erőforráscsoport nevét az utolsó eljárás során létrehozott egy. Az alapértelmezett DNS virtuális gép neve *vnet1DNS* és *vnet2NDS*.
 3. Válassza ki **tulajdonságok** a virtuális hálózati Tulajdonságok lapjának megnyitásához.
 4. Jegyezze fel a **nyilvános IP-cím**, ellenőrizze azt is, és a **magánhálózati IP-cím**.  A magánhálózati IP-címet kell **10.1.0.4** a vnet1DNS és **10.2.0.4** vnet2DNS számára.  

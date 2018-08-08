@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 42a11607c46f77840b14973dd5b7faf4b1734fdc
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 5a373c397df09653395eea7996b19262aee75c7a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136842"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619049"
 ---
 # <a name="built-in-roles-in-azure"></a>Beépített szerepkörök az Azure-ban
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -63,6 +63,8 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Virtuális gépek hagyományos Közreműködője](#classic-virtual-machine-contributor) | Lehetővé teszi a hagyományos virtuális gépek kezelését, de ezekhez nem biztosít hozzáférést, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
 | [A ClearDB MySQL-Adatbázisok Közreműködője](#cleardb-mysql-db-contributor) | Lehetővé teszi a ClearDB MySQL-adatbázisok kezelését, az azokhoz való hozzáférés nélkül. |
 | [A cosmos DB-fiók olvasói szerepköre](#cosmos-db-account-reader-role) | Olvashatja az Azure Cosmos DB-fiókja adatait. Lásd: [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) kezeléséhez az Azure Cosmos DB-fiókokhoz. |
+| [Data Box Közreműködője](#data-box-contributor) | Kezelheti a Data Box szolgáltatás található minden elemet kivételével másoknak való hozzáférés megadását teszi lehetővé. |
+| [Data Box-operátor](#data-box-operator) | Kezelheti a Data Box szolgáltatás kivéve a rendelés létrehozása vagy szerkesztése a rendelés részleteit, és a másoknak való hozzáférés megadását teszi lehetővé. |
 | [Data Factory Közreműködője](#data-factory-contributor) | Lehetővé teszi az adat-előállítók kezelését, az azokhoz való hozzáférés nélkül. |
 | [Data Lake Analytics-fejlesztő](#data-lake-analytics-developer) | Lehetővé teszi a saját feladatok elküldését, figyelését és kezelését, de nem tud létrehozni vagy törölni Data Lake Analytics-fiókokat. |
 | [Adatok Purger](#data-purger) | Véglegesen törölheti az elemzési adatokat |
@@ -76,6 +78,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Log Analytics olvasó](#log-analytics-reader) | A Log Analytics-olvasó megtekintheti az összes figyelési adatot, és kereshet azokban, valamint megtekintheti a figyelési beállításokat, beleértve az összes Azure-erőforrás Azure-beli diagnosztikájának konfigurációját is. |
 | [A logikai alkalmazás Közreműködője](#logic-app-contributor) | Lehetővé teszi logikai alkalmazások kezelését, de ezekhez nem biztosít hozzáférést. |
 | [Logikai alkalmazás operátora](#logic-app-operator) | Lehetővé teszi logikai alkalmazások olvasását, engedélyezését és letiltását. |
+| [Felügyelt alkalmazás operátori szerepkör](#managed-application-operator-role) | Olvassa el, és műveleteket hajthat végre felügyelt alkalmazásokra vonatkozó erőforrásokhoz |
 | [Felügyelt identitások Közreműködője](#managed-identity-contributor) | A felhasználóhoz hozzárendelt identitás létrehozása, olvasása, frissítése és törlése |
 | [Felügyelt identitások üzemeltetője](#managed-identity-operator) | A felhasználóhoz hozzárendelt identitás olvasása és hozzárendelése |
 | [A felügyeleti csoport Közreműködője](#management-group-contributor) | Felügyeleti csoport közreműködői szerepköre |
@@ -347,33 +350,34 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Network/virtualNetworks/read | A virtuális hálózati definíció beolvasása |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | A Lefoglalt bélyegző beolvasása egy belső művelet, melyet a szolgáltatás használ |
+> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | A biztonságimásolat-kezelési művelet eredmények kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Hozzon létre, és a helyreállítási tár biztonsági mentési hálók belüli biztonsági mentési tárolók kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Biztonsági mentési feladatok létrehozása és kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Feladatok exportálása |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Feladatexportálási művelet eredményét adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Hozzon létre, és biztonsági másolatokat kezelő kapcsolatos metaadatok kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Hozzon létre, és biztonsági másolatokat kezelő operations eredményeinek kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Biztonsági mentési szabályzatok létrehozása és kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Cikkek, amely biztonsági mentésre alkalmas létrehozása és kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | Létrehozni és kezelni a biztonsági másolati elem |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | Létre és felügyelhet tárolókat a tároló biztonsági másolati elemek |
+> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/* |  |
+> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Használati összegzéseket adja vissza a védett elemek és védett kiszolgálók egy Recovery Services. |
 > | Microsoft.RecoveryServices/Vaults/certificates/* | Biztonsági mentés a Recovery Services-tároló kapcsolódó tanúsítványok létrehozásához és felügyeletéhez |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/* | Létrehozásához és kezeléséhez kapcsolódó tároló kiterjesztett adatok |
+> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Lekéri a riasztások a Recovery services-tárolót. |
+> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/read | A tároló Get művelet lekérdezi egy Azure-erőforrásokra "tároló" típusú objektum |
 > | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Az újonnan létrehozott tárolók beolvasása közben a felderítési műveletet kezelése |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | Hozzon létre és a regisztrált felhasználók kezelése |
+> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/usages/* | Hozzon létre, és a Recovery Services-tároló használata kezelheti |
-> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Használati összegzéseket adja vissza a védett elemek és védett kiszolgálók egy Recovery Services. |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | A Lefoglalt bélyegző beolvasása egy belső művelet, melyet a szolgáltatás használ |
-> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Lekéri a riasztások a Recovery services-tárolót. |
-> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Feladatexportálási művelet eredményét adja vissza. |
-> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/* |  |
+> | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
 ## <a name="backup-operator"></a>Biztonsági mentési operátor
@@ -658,6 +662,32 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
+## <a name="data-box-contributor"></a>Data Box Közreműködője
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Kezelheti a Data Box szolgáltatás található minden elemet kivételével másoknak való hozzáférés megadását teszi lehetővé. |
+> | **Azonosító** | add466c9-e687-43fc-8d98-dfcf8d720be5 |
+> | **Műveletek** |  |
+> | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
+> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+> | Microsoft.Databox/* |  |
+
+## <a name="data-box-operator"></a>Data Box-operátor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Kezelheti a Data Box szolgáltatás kivéve a rendelés létrehozása vagy szerkesztése a rendelés részleteit, és a másoknak való hozzáférés megadását teszi lehetővé. |
+> | **Azonosító** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
+> | **Műveletek** |  |
+> | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+> | Microsoft.Databox/jobs/listsecrets/action | A megrendeléssel kapcsolatos titkosítatlan titkos kulcsok listázása. |
+
 ## <a name="data-factory-contributor"></a>Data Factory közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
@@ -828,7 +858,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | Labor létrehozása a lab-fiókokban. |
-> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | Tesztlabor-fiókja alatt mérete kategóriákhoz tartozó régiónkénti rendelkezésre állás információ |
+> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | Tesztkörnyezetfiók konfigurált mérete kategóriákhoz tartozó régiónkénti rendelkezésre állás információk lekérése |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
@@ -918,6 +948,15 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Web/connections/*/read | Olvassa el a kapcsolatot. |
 > | Microsoft.Web/customApis/*/read | Olvassa el az egyéni API-t. |
 > | Microsoft.Web/serverFarms/read | Az App Service-csomag tulajdonságainak beolvasása |
+
+## <a name="managed-application-operator-role"></a>Felügyelt alkalmazás operátori szerepkör
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Olvassa el, és műveleteket hajthat végre felügyelt alkalmazásokra vonatkozó erőforrásokhoz |
+> | **Azonosító** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
+> | **Műveletek** |  |
+> | Microsoft.Solutions/applications/read | Az alkalmazások listájának beolvasása. |
 
 ## <a name="managed-identity-contributor"></a>Felügyelt identitások közreműködője
 > [!div class="mx-tableFixed"]
@@ -1125,6 +1164,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Authorization/policyDefinitions/* | Hozzon létre és kezelhet szabályzatdefiníciókat |
 > | Microsoft.Authorization/policySetDefinitions/* | Létrehozása és kezelése a szabályzat beállítása |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
+> | Microsoft.Management/managementGroups/read | A hitelesített felhasználó felügyeleti csoportok listája. |
 > | Microsoft.operationalInsights/workspaces/*/read | A Log Analytics-adatok megtekintése |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
@@ -1134,8 +1174,9 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Security/locations/tasks/activate/action | Biztonsági ajánlás aktiválása |
 > | Microsoft.Security/locations/tasks/dismiss/action | A biztonsági javaslatok elvetése |
 > | Microsoft.Security/policies/write | A biztonsági házirend frissítése |
+> | Microsoft.Security/securityContacts/write | Frissíti a biztonsági kapcsolattartó |
+> | Microsoft.Security/securityContacts/delete | Törli a biztonsági kapcsolattartó |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
-> | Microsoft.Management/managementGroups/read | A hitelesített felhasználó felügyeleti csoportok listája. |
 
 ## <a name="security-manager"></a>Biztonságkezelő
 > [!div class="mx-tableFixed"]

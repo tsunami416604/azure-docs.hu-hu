@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 1c8fb3314c6ee446de08433f13ed169c6c52e3db
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 42ac1cc7dd50f46ada263089437740e680928e70
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578381"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596052"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Egy Azure virtuális gépek Felügyeltszolgáltatás-identitás (MSI) használata a token beszerzése 
 
@@ -44,7 +44,7 @@ Ha azt tervezi, ez a cikk az Azure PowerShell-példák használata, ügyeljen ar
 
 ## <a name="overview"></a>Áttekintés
 
-Egy ügyfélalkalmazás kérheti a Felügyeltszolgáltatás-identitás [csak az alkalmazásra vonatkozó hozzáférési jogkivonat](../develop/active-directory-dev-glossary.md#access-token) egy adott erőforráshoz való hozzáférést. A jogkivonat [az MSI szolgáltatásnevekkel alapján](overview.md#how-does-it-work). Emiatt a hiba esetén nem kell regisztrálja magát az ügyfél saját egyszerű szolgáltatás a hozzáférési jogkivonat beszerzése. A token használhatók a tulajdonosi jogkivonattal [szolgáltatások közötti hívások igénylő ügyfél-hitelesítő adatok](../develop/v1-oauth2-client-creds-grant-flow.md).
+Egy ügyfélalkalmazás kérheti a Felügyeltszolgáltatás-identitás [csak az alkalmazásra vonatkozó hozzáférési jogkivonat](../develop/developer-glossary.md#access-token) egy adott erőforráshoz való hozzáférést. A jogkivonat [az MSI szolgáltatásnevekkel alapján](overview.md#how-does-it-work). Emiatt a hiba esetén nem kell regisztrálja magát az ügyfél saját egyszerű szolgáltatás a hozzáférési jogkivonat beszerzése. A token használhatók a tulajdonosi jogkivonattal [szolgáltatások közötti hívások igénylő ügyfél-hitelesítő adatok](../develop/v1-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |

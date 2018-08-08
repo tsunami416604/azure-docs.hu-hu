@@ -1,45 +1,41 @@
 ---
-title: HDInsight-fürtök - Azure törlése |} Microsoft Docs
-description: Információ a különböző módszereket, hogy egy HDInsight-fürt törlése.
+title: Egy HDInsight-fürt – Azure törlése
+description: Információk a különböző módszereket, hogy egy HDInsight-fürtöt is törli.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: 55f7838b-9786-47ff-96db-1b64437bd0bb
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 01c59d4970bca54417c9b860ec177ecf5a37d8c5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1d376b365d8755cfea8718d6d0a50cfa6008fdc3
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31398798"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596018"
 ---
-# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>A böngésző, PowerShell vagy az Azure parancssori felület használatával HDInsight-fürtök törlése
+# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>A böngészőben, PowerShell vagy az Azure CLI használatával egy HDInsight-fürt törlése
 
-A HDInsight fürt számlázás követően egy fürt jön létre, és leállítja a fürt törlésekor indul. Az elszámolás percalapú, ezért a fürtöt mindig törölje, ha az már nincs használatban. Ebből a dokumentumból megismerheti, hogyan törlése az Azure portál, Azure PowerShell és az Azure CLI 1.0 egy fürtöt.
+A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. Ebből a dokumentumból megismerheti, hogyan törölni egy fürtöt az Azure Portalon, az Azure PowerShell és az Azure CLI 1.0 használatával.
 
 > [!IMPORTANT]
-> HDInsight-fürtök törlése nem érinti az Azure Storage-fiókokat, vagy a Data Lake Store a fürthöz rendelt. Ezek a szolgáltatások a jövőben tárolt adatokat is felhasználhatja.
+> Egy HDInsight-fürt törlése nem törli az Azure Storage-fiókokat, vagy a fürthöz tartozó Data Lake Store. Újból felhasználhatja ezeket a szolgáltatásokat a jövőben tárolt adatokat.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) válassza ki a HDInsight-fürthöz. Ha a HDInsight-fürt nincs rögzítve az irányítópulton, kereshet, használja a keresőmezőt név szerint.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és válassza ki a HDInsight-fürtöt. A HDInsight-fürt nincs rögzítve az irányítópulton, ha Ön is megkeresheti azt a keresőmező használatával név szerint.
    
     ![portál keresési](./media/hdinsight-delete-cluster/navbar.png)
 
-2. A fürtbeállítások, válassza ki a **törlése** ikonra. Amikor a rendszer kéri, válassza ki a **Igen** törölni a fürtöt.
+2. A fürt beállításait, válassza ki a **törlése** ikonra. Amikor a rendszer kéri, válassza ki a **Igen** törölje a fürtöt.
    
-    ![Törlés ikonja](./media/hdinsight-delete-cluster/deletecluster.png)
+    ![Törlés ikon](./media/hdinsight-delete-cluster/deletecluster.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Egy PowerShell-parancssorból a következő parancs segítségével törölheti a fürtöt:
+PowerShell parancssorból használja a következő parancsot a fürt törléséhez:
 
     Remove-AzureRmHDInsightCluster -ClusterName CLUSTERNAME
 
@@ -47,11 +43,11 @@ Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.
 
 ## <a name="azure-cli-10"></a>Azure CLI 1.0
 
-A parancssorba használja a következő törölni a fürtöt:
+A parancssorba a következő használatával a fürt törléséhez:
 
     azure hdinsight cluster delete CLUSTERNAME
 
 Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.
 
 > [!NOTE]
-> Az Azure CLI 2.0 nem támogatja a HDInsight-fürtök törlése most (2017. október 23.).
+> Az Azure CLI 2.0 nem támogatja a HDInsight-fürtök törlése jelenleg (2017. október 23).

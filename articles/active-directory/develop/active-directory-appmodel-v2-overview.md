@@ -17,12 +17,12 @@ ms.date: 05/01/2017
 ms.author: celested
 ms.reviewer: hirsin, jmprieur, elisol, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 3d71e889fccaa6de59d9a528754a5e11d0220bef
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8cf592ddd2c4a68e15856d968b77813604713b78
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577135"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592040"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Jelentkezzen be Microsoft-Account és az Azure Active Directory a felhasználók egy adott alkalmazásban
 Múltbeli időpont az alkalmazásfejlesztők számára személyes Microsoft-fiókot is támogatja, és a munkahelyi fiókok Azure Active Directoryból kellett két külön rendszerekkel való integrációt segítik. Az Azure Active Directory (Azure AD) v2.0-végpont egy új hitelesítési API-verziót, amely leegyszerűsíti a folyamatot mutatja be. Az Azure AD v2.0-végpont be mindkét típusú fiókok olyan egységes integrációs segítségével teszi lehetővé. Az Azure AD v2.0-végpont használó alkalmazások is használhatnak fel, a REST API-kat a [Microsoft Graph API](https://graph.microsoft.io) mindkét típusú fiók használatával.
@@ -36,7 +36,7 @@ Válassza ki kedvenc platformjának használatával a Microsoft egy olyan alkalm
 ## <a name="learn-more-about-the-azure-ad-v20-endpoint"></a>További információ az Azure AD v2.0-végpont
 Ismerje meg mi mindent az Azure AD v2.0-végpont:
 
-* Fedezze fel a [típusú hozhat létre az Azure AD v2.0-végpont az alkalmazások](active-directory-v2-flows.md).
+* Fedezze fel a [típusú hozhat létre az Azure AD v2.0-végpont az alkalmazások](v2-app-types.md).
 * Megismerheti a [korlátozások, korlátozások és megkötések](active-directory-v2-limitations.md) együtt az Azure AD v2.0-végpont.
 * Ebben a videóban áttekintést az Azure AD v2.0-végpont:
 
@@ -47,7 +47,7 @@ Ismerkedés az Azure AD v2.0-végpont platform kapcsolatos részletes informáci
 
 * [Az Azure AD v2.0 protokoll hivatkozhat.](active-directory-v2-protocols.md)
 * [Az Azure AD v2.0-jogkivonatok referencia](v2-id-and-access-tokens.md)
-* [Hitelesítési tárak az Azure AD v2.0-hivatkozás](active-directory-v2-libraries.md)
+* [Hitelesítési tárak az Azure AD v2.0-hivatkozás](reference-v2-libraries.md)
 * [Hatókörök és jóváhagyás az Azure AD v2.0-végpont](v2-permissions-and-consent.md)
 * [A Microsoft Graph API](https://graph.microsoft.io)
 

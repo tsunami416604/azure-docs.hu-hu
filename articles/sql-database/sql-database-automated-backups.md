@@ -11,12 +11,12 @@ ms.workload: Active
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 1ddc663e6a7dc2d09a140b148c5297299d30d016
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 8798d0f17918ecce473afe8dc21b3f60bf0fa4b1
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262847"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620130"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>További információ az automatikus SQL-adatbázisok biztonsági mentése
 
@@ -26,7 +26,7 @@ SQL Database automatikusan létrehozza és Azure írásvédett georedundáns tá
 
 ## <a name="what-is-a-sql-database-backup"></a>Mi az SQL-adatbázis biztonsági másolatát?
 
-Az SQL Database az SQL Server-technológia segítségével hozza létre [teljes](https://msdn.microsoft.com/library/ms186289.aspx), [különbözeti](http://msdn.microsoft.com/library/ms175526.aspx), és [tranzakciónapló](https://msdn.microsoft.com/library/ms191429.aspx) a jelen időponthoz – biztonsági másolatok visszaállítása (PITR). A tranzakciónapló biztonsági mentései általában 5 – 10 percenként történik, és a különbözeti biztonsági mentések általánosan 12 óránként akkor is a gyakoriságot, a teljesítményszintet és az adatbázis-tevékenység mennyisége alapján. Tranzakciónapló biztonsági mentéseivel, teljes és különbségi biztonsági másolatok, az adatbázis visszaállítása egy adott – időponthoz ugyanarra a kiszolgálóra, amelyen az adatbázis teszi lehetővé. Ha az adatbázis visszaállításához a a szolgáltatás kitalálja, hogy melyik teljes, különbségi és a tranzakciós napló biztonsági mentéseket kell állítani.
+Az SQL Database az SQL Server-technológia segítségével hozza létre [teljes](https://msdn.microsoft.com/library/ms186289.aspx), [különbözeti](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), és [tranzakciónapló](https://msdn.microsoft.com/library/ms191429.aspx) a jelen időponthoz – biztonsági másolatok visszaállítása (PITR). A tranzakciónapló biztonsági mentései általában 5 – 10 percenként történik, és a különbözeti biztonsági mentések általánosan 12 óránként akkor is a gyakoriságot, a teljesítményszintet és az adatbázis-tevékenység mennyisége alapján. Tranzakciónapló biztonsági mentéseivel, teljes és különbségi biztonsági másolatok, az adatbázis visszaállítása egy adott – időponthoz ugyanarra a kiszolgálóra, amelyen az adatbázis teszi lehetővé. Ha az adatbázis visszaállításához a a szolgáltatás kitalálja, hogy melyik teljes, különbségi és a tranzakciós napló biztonsági mentéseket kell állítani.
 
 
 Ezek a biztonsági mentések használhatók:

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: b65b6977dfe2043e260fd9c0eefd6038ca436d50
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 1a0bc85063a80854ff6b970b0a57a991acfb3750
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505814"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593961"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench üzembe helyezése
 
@@ -73,7 +73,7 @@ Blockchain Workbenchet telepítéséhez van szükség a regisztráció az Azure 
 
 ### <a name="modify-application-manifest"></a>Alkalmazásjegyzék módosítása
 
-Ezután meg kell módosítania az alkalmazásjegyzékben, alkalmazás-szerepkörök használatához Azure AD-ben, adja meg a Blockchain Workbench használatával a rendszergazdák.  Alkalmazásjegyzéket kapcsolatos további információkért lásd: [Azure Active Directory alkalmazásjegyzékének](../active-directory/develop/active-directory-application-manifest.md).
+Ezután meg kell módosítania az alkalmazásjegyzékben, alkalmazás-szerepkörök használatához Azure AD-ben, adja meg a Blockchain Workbench használatával a rendszergazdák.  Alkalmazásjegyzéket kapcsolatos további információkért lásd: [Azure Active Directory alkalmazásjegyzékének](../active-directory/develop/reference-app-manifest.md).
 
 1. Az alkalmazás regisztrált, válassza ki a **Manifest** a regisztrált alkalmazás részleteket tartalmazó ablaktáblán.
 2. Hozzon létre egy GUID Azonosítót. Létrehozhat egy GUID Azonosítót a PowerShell-paranccsal [guid]:: NewGuid () vagy a New-GUID-parancsmagot. Egy másik lehetőség, hogy egy GUID-generátor webhely használatára.

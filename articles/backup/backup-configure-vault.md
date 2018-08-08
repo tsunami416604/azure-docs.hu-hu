@@ -1,31 +1,31 @@
 ---
-title: Azure Backup szolgáltatás ügynökének használja a fájlok és mappák biztonsági mentése
-description: A Microsoft Azure Backup szolgáltatás ügynökének használatával Windows-fájlok és mappák biztonsági mentése az Azure-bA. Recovery Services-tároló létrehozása, a biztonsági mentési ügynök telepítése, a biztonsági mentési házirend meghatározása és a fájlok és mappák a kezdeti biztonsági mentés futtatására.
+title: Fájlok és mappák biztonsági mentése az Azure Backup szolgáltatás ügynökének használatával
+description: A Microsoft Azure Backup ügynök használatával Windows-fájlok és mappák biztonsági mentése az Azure-bA. Hozzon létre egy Recovery Services-tárolót, a Backup-ügynök telepítése, a biztonsági mentési házirend meghatározása és a fájlok és mappák a kezdeti biztonsági mentés futtatása.
 services: backup
 author: markgalioto
 manager: carmonm
-keywords: mentési tároló; Készítsen biztonsági másolatot a Windows server; biztonsági mentési Időablakok;
+keywords: Backup-tárolóba; Windows-kiszolgáló biztonsági mentése biztonsági mentési Időablakok;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/5/2018
+ms.date: 8/5/2018
 ms.author: markgal
-ms.openlocfilehash: 583149ed892f82af8687d698cabe1a876aaaa523
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fd988e2209d8a6547ec30edb4ee62fc8ff2c803d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606257"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619955"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Windows-kiszolgálóról vagy -ügyfél biztonsági mentése az Azure-ba a Resource Manager-alapú üzemi modell használatával
-Ez a cikk azt ismerteti, hogyan biztonsági másolatot készíthet a Windows Server (és a Windows-ügyfél) fájlok és mappák Azure Resource Manager telepítési modellel Azure Backup szolgáltatásnál.
+Ez a cikk azt ismerteti, hogyan készíthet biztonsági másolatot a Windows Server (vagy a Windows-ügyfél) fájljairól és mappáiról az Azure az Azure Backuppal a Resource Manager üzemi modell használatával.
 
 ![Biztonsági mentési folyamat lépései](./media/backup-configure-vault/initial-backup-process.png)
 
 ## <a name="before-you-start"></a>Előkészületek
-Biztonsági mentése a kiszolgáló vagy az ügyfél az Azure-ba, az Azure-fiók szükséges. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) néhány percig.
+Biztonsági mentése a kiszolgáló vagy ügyfél az Azure-ba, szüksége van egy Azure-fiókra. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) mindössze néhány perc alatt.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
-Recovery Services-tároló olyan entitás, amely tárolja a biztonsági mentések és a helyreállítási pontokat hoz létre adott idő alatt. A Recovery Services-tároló alkalmazott a védett fájlok és mappák biztonsági mentési házirendet is tartalmaz. Recovery Services-tároló létrehozásakor is válassza ki a megfelelő tárolási redundancia lehetőséget.
+Recovery Services-tároló olyan entitás, amely tárolja a biztonsági mentéseket és helyreállítási pontokat hoz létre, idővel. A Recovery Services-tárolót is tartalmaz a alkalmazni a védett fájlok és mappák biztonsági mentési szabályzat. Amikor létrehoz egy Recovery Services-tárolót, is válassza ki a megfelelő beállítását.
 
 ### <a name="to-create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-előfizetésével.
@@ -66,7 +66,7 @@ Recovery Services-tároló olyan entitás, amely tárolja a biztonsági mentése
   Ha látja a tárolót a Recovery Services-tárolók listájában, készen áll tárhely-redundancia beállítására.
 
 
-### <a name="set-storage-redundancy"></a>Set adattároló redundanciája, amely
+### <a name="set-storage-redundancy"></a>Tárhely-redundancia beállítása
 Amikor először hoz létre Recovery Services-tárolót, meghatározza a tároló replikálásának módját.
 
 1. A **Recovery Services-tárolók** panelen kattintson az új tárolóra.
@@ -91,7 +91,7 @@ Amikor először hoz létre Recovery Services-tárolót, meghatározza a tárol�
 
   Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, folytassa a **georedundáns** beállítás használatát. Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amely csökkenti az Azure Storage költségeit. A [georedundáns](../storage/common/storage-redundancy-grs.md) és a [helyileg redundáns](../storage/common/storage-redundancy-lrs.md) tárolási lehetőségekről többet olvashat ebben a [Tárhely-redundancia áttekintésben](../storage/common/storage-redundancy.md).
 
-Most, hogy létrehozta a tárolót, készítse elő az infrastruktúrát, letöltése és telepítése a Microsoft Azure Recovery Services Agent ügynököt, töltse le a tároló és ezen hitelesítő adatok használatával regisztrálhatja az ügynököt a fájlok és mappák biztonsági a tároló.
+Most, hogy létrehozott egy tárolót, előkészíti az infrastruktúrát a fájlok és mappák biztonsági mentése letöltésével és a Microsoft Azure Recovery Services-ügynök telepítése, a tároló hitelesítő adatainak letöltése, és ezeket a hitelesítő adatokat segítségével regisztrálhatja az ügynököt a a tároló.
 
 ## <a name="configure-the-vault"></a>A tároló konfigurálása
 
@@ -99,7 +99,7 @@ Most, hogy létrehozta a tárolót, készítse elő az infrastruktúrát, letöl
 
   ![A biztonsági mentés célja panel megnyitása](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-  Megnyílik a **Biztonsági mentés célja** panel. Ha a Recovery Services-tároló korábban lett konfigurálva, majd a **biztonsági mentési cél** paneleken kattintva megjelenik **biztonsági mentés** a Recovery Services tároló panel.
+  Megnyílik a **Biztonsági mentés célja** panel. Ha a Recovery Services-tároló korábban lett konfigurálva, akkor a **biztonsági mentés célja** panelek kattintva megnyílik **biztonsági mentés** a Recovery Services-tároló panelen.
 
   ![A biztonsági mentés célja panel megnyitása](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
@@ -171,7 +171,7 @@ Az ügynök most telepítve van, és a gépe regisztrálva van a tárolóban. K�
 
 ## <a name="network-and-connectivity-requirements"></a>Hálózati és kapcsolati követelmények
 
-A machine /-proxy korlátozott internet-hozzáférést, ha győződjön meg arról, hogy tűzfal beállításait a machine /-proxy a engedélyezése a következő URL-címekkel vannak konfigurálva: <br>
+Ha a gép/proxy korlátozott internet-hozzáféréssel rendelkezik, győződjön meg arról, hogy a gép/proxy a tűzfal beállításait a következő URL-címek vannak konfigurálva: <br>
     1. www.msftncsi.com
     2. *.Microsoft.com
     3. *.WindowsAzure.com
@@ -180,24 +180,24 @@ A machine /-proxy korlátozott internet-hozzáférést, ha győződjön meg arr�
 
 
 ## <a name="create-the-backup-policy"></a>A biztonsági mentési házirend létrehozása
-A biztonsági mentési házirend az ütemezés, ha a helyreállítási pontokat készít, és mennyi ideig megőrzi a helyreállítási pontok. A fájlok és mappák biztonsági mentési házirend létrehozásához használja a Microsoft Azure Backup szolgáltatás ügynöke.
+A biztonsági mentési szabályzat, a helyreállítási pontok ütemezése, és mennyi ideig maradnak a helyreállítási pontokat. A fájlok és mappák biztonsági mentési szabályzat létrehozásához használja a Microsoft Azure Backup-ügynök.
 
 ### <a name="to-create-a-backup-schedule"></a>Biztonsági mentési ütemezés létrehozása
-1. Nyissa meg a Microsoft Azure Backup szolgáltatás ügynöke. A megkereséséhez keressen rá a gépen a **Microsoft Azure Backup** kifejezésre.
+1. Nyissa meg a Microsoft Azure Backup ügynököt. A megkereséséhez keressen rá a gépen a **Microsoft Azure Backup** kifejezésre.
 
-    ![Indítsa el az Azure Backup szolgáltatás ügynöke](./media/backup-configure-vault/snap-in-search.png)
-2. A biztonsági mentési ügynök **műveletek** ablaktáblán kattintson a **biztonsági mentés ütemezése** biztonsági mentés ütemezése varázsló indításához.
+    ![Indítsa el az Azure Backup-ügynök](./media/backup-configure-vault/snap-in-search.png)
+2. A Backup-ügynök **műveletek** ablaktáblán kattintson a **biztonsági mentés ütemezése** a biztonsági mentés ütemezése varázsló elindításához.
 
     ![Windows Server biztonsági mentés ütemezése](./media/backup-configure-vault/schedule-first-backup.png)
 
-3. A a **bevezetés** lap az ütemezett biztonsági mentés varázsló kattintson **következő**.
+3. A a **első lépések** lapon kattintson a biztonsági mentés ütemezése varázsló **tovább**.
 4. Az a **elemek kijelölése biztonsági mentéshez** kattintson **elemek hozzáadása**.
 
-  Az elemek kijelölése párbeszédpanel nyílik meg.
+  Elemek kiválasztása párbeszédpanel nyílik meg.
 
 5. Válassza ki a fájlokat és mappákat védeni, és kattintson a kívánt **OK**.
-6. Az a **elemek kijelölése biztonsági mentéshez** kattintson **következő**.
-7. Az a **adja meg a biztonsági mentés ütemezése** lapon adja meg a biztonsági mentési ütemezést, és kattintson **következő**.
+6. Az a **elemek kijelölése biztonsági mentéshez** kattintson **tovább**.
+7. Az a **biztonsági mentési ütemezés megadása** lapon adja meg a biztonsági mentési ütemezését, és kattintson **tovább**.
 
     Napi (legfeljebb napi háromszori) vagy heti biztonsági mentéseket ütemezhet.
 
@@ -208,38 +208,38 @@ A biztonsági mentési házirend az ütemezés, ha a helyreállítási pontokat 
    >
    >
 
-8. A a **válassza ki az adatmegőrzési** lapon, válassza ki az adott adatmegőrzési szabályokról a a biztonsági másolatot, majd kattintson a **következő**.
+8. Az a **adatmegőrzési szabályzat kijelölése** lapon, válassza ki az adott adatmegőrzési szabályokról a a biztonsági másolatot, majd kattintson a **tovább**.
 
-    Az adatmegőrzési Megadja azt az időtartamot, amely a biztonsági másolatot. Ahelyett, hogy mindegyik biztonsági mentési ponthoz „lapos házirendet” határozna meg, különböző megőrzési házirendeket határozhat meg a biztonsági másolat készítésének ideje alapján. Igényei szerint módosíthatja a napi, heti, havi és évi megőrzési házirendeket.
+    A megőrzési házirend megadja az időtartam, amely a biztonsági másolat tárolódik. Ahelyett, hogy mindegyik biztonsági mentési ponthoz „lapos házirendet” határozna meg, különböző megőrzési házirendeket határozhat meg a biztonsági másolat készítésének ideje alapján. Igényei szerint módosíthatja a napi, heti, havi és évi megőrzési házirendeket.
 9. A Kezdeti biztonsági mentés típusának kiválasztása oldalon válassza ki a kezdeti biztonsági mentés típusát. Hagyja bejelölve az **Automatikusan a hálózaton keresztül** beállítást, majd kattintson a **Tovább** gombra.
 
     Automatikusan készíthet biztonsági másolatot a hálózaton keresztül, vagy offline készíthet biztonsági másolatot. Ezen cikk többi része az automatikus biztonsági mentés folyamatát írja le. Ha offline biztonsági mentést szeretne végezni, további információért tekintse meg az [Offline backup workflow in Azure Backup](backup-azure-backup-import-export.md) (Offline biztonsági mentési munkafolyamat az Azure Backupban) című cikket.
 10. A Jóváhagyás lapon ellenőrizze az információkat, majd kattintson a **Befejezés** gombra.
 11. Miután a varázsló befejezte a biztonsági mentési ütemezés létrehozását, kattintson a **Bezárás** gombra.
 
-### <a name="enable-network-throttling"></a>Hálózati sávszélesség-szabályozás engedélyezése
-A Microsoft Azure Backup szolgáltatás ügynökének biztosít a hálózati sávszélesség-szabályozás. Szabályozza, hogyan adatátvitel során használt hálózati sávszélesség-szabályozás. Ez a vezérlő akkor lehet hasznos, ha biztonsági kell során az adatokat munkaidő, de nem szeretné a biztonsági mentési folyamat zavarja a más internetes forgalmat. Sávszélesség-szabályozás biztonsági mentése és visszaállítása tevékenységek vonatkozik.
+### <a name="enable-network-throttling"></a>Hálózati sávszélesség szabályozásának engedélyezése
+A Microsoft Azure Backup szolgáltatás ügynökének biztosít a hálózati sávszélesség-szabályozás. Szabályozás szabályozza a hálózati sávszélesség felhasználásának adatátvitel során. Ez a vezérlő akkor lehet hasznos, ha készítsen biztonsági másolatot kell munkaidő során az adatokat, de nem szeretné, a biztonsági mentési folyamat zavarja a többi internetes forgalmat. Szabályozás biztonsági mentése és a visszaállítást tevékenységekre vonatkozik.
 
 > [!NOTE]
-> Hálózati sávszélesség-szabályozás nem érhető el a Windows Server 2008 R2 SP1, Windows Server 2008 SP2 vagy Windows 7 (szervizcsomagokkal). Az Azure biztonsági mentési hálózati szabályozásával szolgáltatásminőség (QoS) a helyi operációs rendszer kapcsolatba lép. Bár az Azure Backup védheti az ilyen operációs rendszerek, QoS érhető el, ezek a rendszerek verziójának Azure biztonsági mentési hálózati sávszélesség-szabályozás nem működik. Az összes egyéb hálózati sávszélesség-szabályozás használható [támogatott operációs rendszerek](backup-azure-backup-faq.md).
+> Hálózati sávszélesség-szabályozás nem áll rendelkezésre a Windows Server 2008 R2 SP1, Windows Server 2008 SP2 vagy Windows 7 (a szervizcsomagok). A szolgáltatás szabályozása az Azure Backup hálózati szolgáltatásminőség (QoS) a helyi operációs rendszer bekövetkezése várható. Bár az Azure Backup védheti az ilyen operációs rendszerek, a QoS ezeken a platformokon elérhető verzióját az Azure Backup hálózati sávszélesség-szabályozás nem működik. Hálózati sávszélesség-szabályozás használható bármely más [támogatott operációs rendszerek](backup-azure-backup-faq.md).
 >
 >
 
-**Hálózati sávszélesség-szabályozás engedélyezése**
+**A hálózati sávszélesség szabályozásának engedélyezése**
 
-1. Kattintson a Microsoft Azure Backup szolgáltatás ügynökének **tulajdonságainak módosítása**.
+1. A Microsoft Azure Backup-ügynökben kattintson **tulajdonságainak módosítása**.
 
-    ![Tulajdonságainak módosítása](./media/backup-configure-vault/change-properties.png)
-2. Az a **sávszélesség-szabályozási** lapon jelölje be a **engedélyezi az internetes sávszélesség szabályozásának a biztonsági mentési műveleteknél** jelölőnégyzetet.
+    ![Tulajdonságok módosítása](./media/backup-configure-vault/change-properties.png)
+2. Az a **sávszélesség-szabályozási** lapon jelölje be a **szabályozása a biztonsági mentési műveletek internetes sávszélességének** jelölőnégyzetet.
 
     ![Hálózati sávszélesség-szabályozás](./media/backup-configure-vault/throttling-dialog.png)
-3. Miután engedélyezte a sávszélesség-szabályozás, adja meg az engedélyezett sávszélesség vonatkozó biztonsági mentési adatátvitel során **időpontokat a munkaidőhöz** és **munkaidőn kívüli**.
+3. Miután engedélyezte a szabályozás, az engedélyezett sávszélesség megadása a biztonsági mentési adatok átvitele során **munkaidő** és **munkaidőn kívüli**.
 
-    A sávszélesség értékek 512 kilobit / másodperc (Kbps) kezdődik, és folytathatja a legfeljebb 1,023 megabájt / másodperc (MBps). Is kijelölni a kezdő és a Befejezés **időpontokat a munkaidőhöz**, és a hét melyik napjain figyelembe vett munkanapok. Óra között útmutatóul szolgálnak a kijelölt munkahelyi kívül óra munkaórákon kívüli időre.
+    A sávszélesség-értékek legalább 512 kilobit / másodperc (Kbps)-kor kezdődik, és folytathatja a akár 1,023 megabájt / másodperc (MBps). Is kijelöli a kezdő és a Befejezés **munkaidő**, és a hét mely napján számít napokon. Óra számítanak a kijelölt munkán óra munkaórákon kívüli.
 4. Kattintson az **OK** gombra.
 
 ### <a name="to-back-up-files-and-folders-for-the-first-time"></a>A fájlok és mappák biztonsági mentése első alkalommal
-1. Kattintson a biztonságimásolat-készítő ügynök **biztonsági másolat készítése most** befejeződik, a kezdeti összehangolása a hálózaton keresztül.
+1. Kattintson a biztonsági mentési ügynök **azonnali biztonsági mentés** a hálózaton keresztüli kezdeti összehangolás befejezéséhez.
 
     ![Windows Server biztonsági másolat készítése](./media/backup-configure-vault/backup-now.png)
 2. A Jóváhagyás lapon tekintse át azokat a beállításokat, amelyeket a Biztonsági másolat készítése varázsló a gép biztonsági mentéséhez fog használni. Ezután kattintson a **Biztonsági mentés** gombra.
@@ -253,7 +253,7 @@ A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot
 Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](http://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>További lépések
-Virtuális gépek vagy más munkaterhelések biztonsági mentésével kapcsolatos további információkért lásd:
+Virtuális gépek vagy más számítási feladatok biztonsági mentésével kapcsolatos további információkért lásd:
 
 * Most, hogy biztonsági másolatot készített a fájlokról és mappákról, [kezelheti a tárlókat és a kiszolgálókat](backup-azure-manage-windows-server.md).
 * Ha vissza kell állítania egy biztonsági másolatot, ezzel a cikkel [állíthat vissza fájlokat Windows rendszerű gépre](backup-azure-restore-windows-server.md).

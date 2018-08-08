@@ -1,49 +1,44 @@
 ---
-title: Hadoop Hive használata a hdinsight - Azure lekérdezés konzolon |} Microsoft Docs
-description: Megtudhatja, hogyan futtathat Hive-lekérdezéseket a HDInsight Hadoop-fürt a böngészőből a web-alapú lekérdezés konzol segítségével.
+title: A Hadoop Hive használata a lekérdezés-konzolban, a HDInsight – Azure
+description: Útmutató a webes Lekérdezéskonzol használata a Hive-lekérdezések futtatásához egy HDInsight Hadoop-fürtöt a böngészőben.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 5ae074b0-f55e-472d-94a7-005b0e79f779
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 04a6ad67fec4145d8f9164743b08f9e105778091
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 130952cfc0151ce16077117a7b61fc4729e2088d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405945"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597370"
 ---
-# <a name="run-hive-queries-using-the-query-console"></a>A lekérdezés konzollal Hive-lekérdezések futtatása
+# <a name="run-hive-queries-using-the-query-console"></a>A Lekérdezéskonzol használata Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ebben a cikkben, megtudhatja, hogyan futtathat Hive-lekérdezéseket a HDInsight Hadoop-fürt a böngészőből az HDInsight lekérdezés konzollal.
+Ebből a cikkből megtudhatja, a HDInsight Lekérdezéskonzol használata a Hive-lekérdezések futtatásához egy HDInsight Hadoop-fürtöt a böngészőben.
 
 > [!IMPORTANT]
-> A HDInsight lekérdezés konzol a Windows-alapú HDInsight-fürtök csak érhető el. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A HDInsight Lekérdezéskonzol csak akkor használható a Windows-alapú HDInsight-fürtökön. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> HDInsight 3.4-es vagy nagyobb, lásd: [lekérdezések futtatása Hive Ambari Hive nézetben](apache-hadoop-use-hive-ambari-view.md) információ Hive-lekérdezések egy webböngészőből.
+> A HDInsight 3.4 vagy újabb, lásd: [futtatása Hive-lekérdezések Ambari, Hive-nézet](apache-hadoop-use-hive-ambari-view.md) információ a Hive-lekérdezések futtatása egy webböngészőből.
 
 ## <a id="prereq"></a>Előfeltételek
-Ebben a cikkben szereplő lépések elvégzéséhez a következőkre lesz szüksége.
+A jelen cikkben ismertetett lépések elvégzéséhez a következőkre lesz szüksége.
 
-* A Windows-alapú HDInsight Hadoop-fürt
-* Modern webböngésző
+* Windows-alapú HDInsight Hadoop-fürt
+* A modern webböngésző
 
-## <a id="run"></a> A lekérdezés konzollal Hive-lekérdezések futtatása
-1. Nyisson meg egy webböngészőt, és keresse meg **https://CLUSTERNAME.azurehdinsight.net**, ahol **CLUSTERNAME** a HDInsight-fürt neve. Ha a rendszer kéri, adja meg a felhasználónevet és a fürt létrehozásakor használt jelszót.
-2. A lap tetején hivatkozások közül válassza ki a **Hive szerkesztő**. Ez megjeleníti, amelyek segítségével adja meg a HiveQL utasításokat, amelyek a HDInsight-fürt futtatni kívánt űrlap.
+## <a id="run"></a> A Lekérdezéskonzol használata Hive-lekérdezések futtatása
+1. Nyisson meg egy webböngészőt, és navigáljon a **https://CLUSTERNAME.azurehdinsight.net**, ahol **CLUSTERNAME** a HDInsight-fürt neve. Ha a rendszer kéri, adja meg a felhasználónevet és jelszót, amelyet a fürt létrehozásakor használt.
+2. Az oldal tetején lévő hivatkozások közül válassza ki a **Hive szerkesztő**. Megjelenik egy képernyő, amelyek segítségével adja meg a hiveql, amely a HDInsight-fürtön történő futásra szeretné.
 
-    ![a hive szerkesztő](./media/apache-hadoop-use-hive-query-console/queryconsole.png)
+    ![a hive szerkesztőben](./media/apache-hadoop-use-hive-query-console/queryconsole.png)
 
-    Cserélje le a szöveget `Select * from hivesampletable` , a következő hiveql:
+    Cserélje le a szöveget `Select * from hivesampletable` a következő hiveql:
 
         set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
@@ -52,43 +47,43 @@ Ebben a cikkben szereplő lépések elvégzéséhez a következőkre lesz szüks
         STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    Ezekre az utasításokra hajtsa végre a következő műveleteket:
+    Ezek az utasítások hajtsa végre a következő műveleteket:
 
-   * **DROP TABLE**: törli a táblázat és az adatfájlban, ha a tábla már létezik.
-   * **A külső tábla létrehozása**: táblát hoz létre egy új "külső" struktúra. Külső táblák csak a tábladefiníció tárolása Hive; az adatok marad az eredeti helyen.
+   * **DROP TABLE**: törli az a táblázat és az adatfájlban, ha a tábla már létezik.
+   * **CREATE EXTERNAL TABLE**: új táblát hoz létre "külső" struktúrában. Külső táblák csak a tábla definícióját tárolja a Hive; az adatok az eredeti helyén marad.
 
      > [!NOTE]
-     > Külső táblák kell használni, ha az alapul szolgáló adatokat frissítenie kell a külső forrásból (például egy automatizált adatok feltöltési folyamat) vagy egy másik MapReduce művelet által várt, de azt szeretné, hogy a legfrissebb adatok használata a Hive-lekérdezéseket.
+     > Külső táblák használata, ha az alapul szolgáló adatokat frissíteni kell a külső forrásból (például az automatikus feltöltési folyamat), vagy egy másik MapReduce művelet várható, de azt szeretné használni a legújabb adatok Hive-lekérdezéseket.
      >
-     > A külső tábla eldobása does **nem** törli az adatokat, csak a tábla definíciójában.
+     > A külső tábla elvetését does **nem** törölheti az adatokat, csak a tábla definícióját.
      >
      >
-   * **SOR formátum**: Hive közli az adatok formázását. Ebben az esetben a mezőket az egyes naplókon szóközzel elválasztva.
-   * **AS TEXTFILE helyen tárolt**: (a példa/adatkönyvtár) Hive közli az adatokat tárolja, és szövegként tárolt
-   * **Válassza ki**: válassza ki az összes sorok számát ahol oszlop **t4** tartalmazza értékét **[hiba]**. Ez visszaadja-e érték **3** mert három ezt az értéket tartalmazó sorok.
-   * **INPUT__FILE__NAME PÉLDÁUL "%.log"** -struktúra azt ismerteti, amely jelenleg csak a befejezési fájlok kell vissza adatokat. napló. Ez korlátozza a keresési a sample.log fájlt, amely tartalmazza az adatokat, és a nem ad vissza adatot más példa, amelyek nem felelnek meg a sémában meghatározott adatfájlok tartja azt.
-3. Kattintson a **nyújt**. A **feladat munkamenet** a lap alján megjelenjen-e meg a feladat részleteit.
-4. Ha a **állapot** mező módosításai **befejezve**, jelölje be **részleteinek megtekintése** a feladathoz. Részleteit megjelenítő oldalon a **Job Output** tartalmaz `[ERROR]    3`. Használhatja a **letöltése** gombra az ebbe a mezőbe, a feladat eredményének tartalmazó fájl letöltése.
+   * **SOR FORMÁTUMBAN**: arra utasítja a Hive, az adatok formázását. Ebben az esetben minden napló mezőinek vesszővel elválasztva.
+   * **AS TEXTFILE helyen tárolt**: arra utasítja a Hive, az adatok tárolása (a példaadatokat/directory), és azt szövegként tárolt
+   * **Válassza ki**: válassza ki az összes sor számát ahol oszlop **t4** értéket tartalmazza **[hiba]**. A kapott érték **3** mert három sort, amely tartalmazza ezt az értéket.
+   * **INPUT__FILE__NAME PÉLDÁUL "%.log"** -arra utasítja a Hive, amely azt kell csak adatokat adja vissza a végződésű fájlokból. napló. Ez korlátozza a keresést a sample.log fájlt, amely tartalmazza az adatokat, és a más példa adatok visszaadása, amelyek nem egyeznek meg a sémában meghatározott adatfájlok tartja azt.
+3. Kattintson a **elküldése**. A **feladat munkamenet** az oldal alján megjelenik a feladat részleteit.
+4. Ha a **állapot** Mezőváltozások **befejezve**válassza **részleteinek megtekintése** a feladathoz. A Részletek oldalon a **Feladatkimenet** tartalmaz `[ERROR]    3`. Használhatja a **letöltése** egy fájl, amely tartalmazza a feladat kimenetének letöltése a mező alatti gombra.
 
 ## <a id="summary"></a>Summary (Összefoglalás)
-Ahogy látja, a lekérdezés konzol könnyedén futtathat Hive-lekérdezéseket a HDInsight-fürtöt, figyelheti a feladat állapotát és a kimeneti beolvasása.
+Látható, a Hive-lekérdezések futtatása HDInsight-fürtben, a feladat állapotának figyelése és lekérése a kimeneti egyszerű módszert biztosít.
 
-További információt a Hive lekérdezés konzolja segítségével futtathat Hive-feladatokat, válassza ki a **bevezetés** használja majd a biztosított mintákat a lekérdezés konzol felső részén. Minden minta bemutatja, hogyan a folyamatot, amely az adatok elemzése, beleértve a HiveQL utasításokról a mintában használt magyarázata a Hive eszközzel.
+További információ a Hive-lekérdezés konzol használata a Hive-feladatok futtatásához, jelölje be **bevezetés** a Lekérdezéskonzol tetején, majd a mintákkal biztosított. Mindegyik minta bemutatja a folyamat, adatok, beleértve a mintában használt a hiveql vonatkozó magyarázatok elemzése a Hive használatával.
 
 ## <a id="nextsteps"></a>Következő lépések
-Általános információk a hdinsight Hive:
+Általános információk a HDInsight Hive-ról:
 
-* [A Hive használata a hdinsight Hadoop](hdinsight-use-hive.md)
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
 
-Más módszerekkel kapcsolatos információk a HDInsight Hadoop dolgozhat:
+Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Pig használata a HDInsight Hadoop](hdinsight-use-pig.md)
-* [A HDInsight Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
 
-Ha Tez Hive használ, tekintse meg a hibakeresési információk a következő dokumentumokat:
+Ha Tez Hive-val használ, tekintse meg a hibakeresési információkat a következő dokumentumokat:
 
-* [A Tez felhasználói felület használata a Windows-alapú HDInsight-on](../hdinsight-debug-tez-ui.md)
-* [Az Ambari Tez nézetben a Linux-alapú HDInsight-on](../hdinsight-debug-ambari-tez-view.md)
+* [A Tez felhasználói felület használata a Windows-alapú HDInsight](../hdinsight-debug-tez-ui.md)
+* [A Linux-alapú HDInsight az Ambari Tez nézet használata](../hdinsight-debug-ambari-tez-view.md)
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

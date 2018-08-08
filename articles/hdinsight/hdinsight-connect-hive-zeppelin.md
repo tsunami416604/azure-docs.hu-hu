@@ -1,64 +1,60 @@
 ---
-title: Zeppelin segítségével az Azure HDInsight Hive-lekérdezések futtatása |} Microsoft Docs
-description: Ismerje meg, hogyan futtathat Hive-lekérdezéseket Zeppelin segítségével.
-keywords: hdinsight, hadoop, struktúra, interaktív lekérdezés, LLAP
+title: Az Azure HDInsight Hive-lekérdezések futtatása a Zeppelin használata
+description: Útmutató a Hive-lekérdezések futtatása a Zeppelin használatával.
+keywords: hdinsight, hadoop, hive, LLAP interaktív lekérdezés
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: c8fe65d2eadaede1d99befbf76c4d06fab9598fc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: d4767c4d86d03827b0c055af41638988afd632a1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202611"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595933"
 ---
-# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Zeppelin használja az Azure HDInsight Hive-lekérdezések futtatásához 
+# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight Hive-lekérdezések futtatása a Zeppelin használata 
 
-Interaktív lekérdezés HDInsight fürtök Zeppelin notebookok Hive interaktív lekérdezések futtatására használható. Ebből a cikkből megismerheti, hogyan Zeppelin használata az Azure HDInsight Hive-lekérdezések futtatásához. 
+HDInsight interaktív lekérdezési fürtökhöz interaktív Hive-lekérdezések futtatásához használhatja Zeppelin-jegyzetfüzetek tartalmazza. Ebből a cikkből elsajátíthatja az Azure HDInsight Hive-lekérdezések futtatása a Zeppelin használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk keresztül haladó, mielőtt a következő elemeket kell rendelkeznie:
+Mielőtt végrehajtaná ezt a cikket, a következőkkel kell rendelkeznie:
 
-* **Interaktív lekérdezés HDInsight fürt**. Lásd: [fürt létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) egy HDInsight-fürt létrehozásához.  Ügyeljen arra, hogy válassza ki az interaktív lekérdezési módot. 
+* **HDInsight interaktív lekérdezési fürt**. Lásd: [fürt létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) egy HDInsight-fürt létrehozásához.  Ellenőrizze, hogy válassza ki az interaktív lekérdezés. 
 
-## <a name="create-a-zeppelin-note"></a>Zeppelin jegyzet létrehozása
+## <a name="create-a-zeppelin-note"></a>A Zeppelin Megjegyzés létrehozása
 
 1. Keresse meg a következő URL-címe:
 
         https://CLUSTERNAME.azurehdinsight.net/zeppelin
     Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
 
-2. Adja meg a Hadoop-felhasználónevet és jelszót. Zeppelin oldalon új jegyzet létrehozása, vagy nyissa meg a meglévő megjegyzések. HiveSample néhány minta Hive-lekérdezéseket tartalmaz.  
+2. Adja meg a Hadoop-felhasználónevet és jelszót. A Zeppelin lapon hozzon létre egy új megjegyzés, vagy nyissa meg a meglévő megjegyzéseket. HiveSample bizonyos Hive-mintalekérdezések tartalmazza.  
 
     ![HDInsight interaktív lekérdezés zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
-3. Kattintson a **új jegyzet létrehozása**.
+3. Kattintson a **létrehozása új feljegyzés**.
 4. Írja be vagy válassza ki az alábbi értékeket:
 
-    - Megjegyzés: név: Adjon meg egy nevet a megjegyzés.
-    - Alapértelmezett parancsértelmező: válasszon **JDBC**.
+    - Megjegyzés: név: Adja meg a jegyzet nevét.
+    - Alapértelmezett interpretu: válasszon **JDBC**.
 
 5. Kattintson a **jegyzet létrehozása**.
-6. A következő Hive-lekérdezések futtatása:
+6. A következő Hive-lekérdezések futtatásához:
 
         %jdbc(hive)
         show tables
 
     ![HDInsight interaktív lekérdezés zeppelin lekérdezés futtatása](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
 
-    A **%jdbc(hive)** utasítás az első sorban közli a notebook használatához a Hive JDBC értelmező.
+    A **%jdbc(hive)** első sorában utasítás arra utasítja a notebook használata a Hive JDBC értelmezője számára készült.
 
-    A lekérdezés kell visszaadni egy Hive táblát *hivesampletable*.
+    A lekérdezés egy Hive-tábla neve visszaküldik *hivesampletable*.
 
-    A következőkben két további Hive-lekérdezések, amelyek a hivesampletable is futtathatók. 
+    A következőkben két további Hive-lekérdezések, amelyek a hivesampletable vonatkozóan futtathat le. 
 
         %jdbc(hive)
         select * from hivesampletable limit 10
@@ -69,16 +65,16 @@ Ez a cikk keresztül haladó, mielőtt a következő elemeket kell rendelkeznie:
         group by ${group_name=market,market|deviceplatform|devicemake}
         limit ${total_count=10}
 
-    Összehasonlítja a hagyományos struktúra, a lekérdezési eredmények térjen vissza kell gyorsabb.
+    Mint a hagyományos Hive, a lekérdezés eredményeinek térjen vissza kell gyorsabban.
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megismerte a HDInsight a Power BI-adatok ábrázolása.  További tudnivalókért tekintse meg a következő cikkeket:
+Ebben a cikkben megtanulta, hogyan HDInsight használata a Power BI adatok vizualizálásához.  További tudnivalókért tekintse meg a következő cikkeket:
 
-* [Hive-adatok ábrázolása a Microsoft Power bi-ban az Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md).
-* [Interaktív lekérdezés Hive-adatok ábrázolása a Power bi-ban az Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Excel csatlakoztatása a Microsoft Hive ODBC-illesztőprogram HDInsight](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Az Excel és a Hadoop csatlakoztatása a Power Query használatával](hadoop/apache-hadoop-connect-excel-power-query.md).
-* [Azure HDInsight csatlakozzon és Hive-lekérdezéseket a Data Lake Tools for Visual Studio használatával futtassa](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
-* [A HDInsight eszközzel Azure a Visual Studio Code](hdinsight-for-vscode.md).
+* [A Microsoft Power BI az Azure HDInsight Hive-adatok vizualizálása](hadoop/apache-hadoop-connect-hive-power-bi.md).
+* [Power BI segítségével az Azure HDInsight adatok interaktív lekérdezéses Hive megjelenítése](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+* [Excel csatlakoztatása a Microsoft Hive ODBC illesztőprogram segítségével a HDInsight](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+* [Az Excel összekapcsolása a Hadooppal a Power Query használatával](hadoop/apache-hadoop-connect-excel-power-query.md).
+* [Csatlakozás az Azure HDInsight és a Data Lake Tools for Visual Studio használatával Hive-lekérdezések futtatása](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* [Az Azure HDInsight-eszköz használata a Visual Studio Code](hdinsight-for-vscode.md).
 * [Upload Data to HDInsight](./hdinsight-upload-data.md).

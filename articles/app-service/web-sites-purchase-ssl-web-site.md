@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 1b5aa32155afc5264ecf5979ebc25f879bbc5b67
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b7a0050791690e5157a4937df0d49a0f03f3df24
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581689"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617598"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -199,11 +199,11 @@ A tanúsítvány újrakulcsolása összesíti a tanúsítványt, és a egy új t
 
 ## <a name="renew-the-certificate"></a>A tanúsítvány megújítása
 
-A tanúsítvány automatikus megújítás bármikor bekapcsolásához kattintson **az automatikus megújítás beállításai** a tanúsítvány-kezelési oldalán. Válassza ki **a** kattintson **mentése**. A tanúsítvány lejárta előtt 60 nappal megújul, ha engedélyezve van az automatikus megújítását.
+A tanúsítvány automatikus megújítás bármikor bekapcsolásához kattintson **az automatikus megújítás beállításai** a tanúsítvány-kezelési oldalán. Válassza ki **a** kattintson **mentése**. Tanúsítványok automatikus megújítása 90 nappal a lejárat előtt, ha engedélyezve van az automatikus megújítását megkezdéséhez.
 
 ![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-Ehelyett manuálisan újítsa meg a tanúsítványt, kattintson a **manuális megújítás** helyette.
+Ehelyett manuálisan újítsa meg a tanúsítványt, kattintson a **manuális megújítás** helyette. Manuálisan megújítani a tanúsítványt a lejárta előtt 60 nappal kérheti.
 
 > [!NOTE]
 > A megújított tanúsítvány nem automatikusan kötött alkalmazását, akár manuálisan megújítani automatikusan megújul. Kösse az alkalmazáshoz, tekintse meg [tanúsítványok megújítása](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 

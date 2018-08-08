@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2ee54ca3d6e787267010736343a570e614c4204d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 546717330a08b348800ea9c4c9cd7784f54595eb
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427550"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618523"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Azure Active Directoryhoz csatlakoztatott eszközök hibrid kézi konfigurálása 
 
@@ -574,7 +574,12 @@ Amikor befejezte a szükséges lépéseket, tartományhoz csatlakoztatott eszkö
 
 ### <a name="remarks"></a>Megjegyzések
 
-- Csoportházirend-objektum vagy a System Center Configuration Manager ügyfél-eszközbeállítást a szabályozáshoz automatikus regisztráció, a Windows 10 és Windows Server 2016-tartományhoz csatlakoztatott számítógépeket is használhatja. **Ha nem szeretné, hogy ezek az eszközök automatikusan regisztrálnak az Azure ad-ben, vagy szeretné szabályozni a regisztráció**, majd fokozatosan kell az automatikus regisztrációját, hogy ezek az eszközök először letiltása csoportházirend vagy a konfiguráció használata Konfigurálnia kell az ügyfél-eszközbeállítást a felhőalapú szolgáltatások kezelője automatikusan -> Regisztráció új Windows 10 rendszerű, tartományhoz csatlakoztatott eszközökön az Azure Active Directory "Nem", azokkal a konfigurációs lépések megkezdése előtt. Miután végzett konfigurálása, és amikor elkészült, teszteléséhez, kell megkezdik a automatikus regisztráció csak a teszteszközök engedélyezése csoportházirend és majd, mint minden más eszköz válassza.
+- Csoportházirend-objektum vagy a System Center Configuration Manager ügyfél-eszközbeállítást a szabályozáshoz automatikus regisztráció, a Windows 10 és Windows Server 2016-tartományhoz csatlakoztatott számítógépeket is használhatja. **Ha nem szeretné, hogy ezek az eszközök automatikusan regisztrálnak az Azure ad-ben, vagy szeretné szabályozni a regisztráció**, majd fokozatosan kell az automatikus regisztrációját, hogy ezek az eszközök először letiltása csoportházirend vagy a konfiguráció használata Kezelő konfigurálnia kell az ügyfél-eszközbeállítást a Cloud Services > automatikusan regisztrálja az Azure Active Directory "Nem", azokkal a konfigurációs lépések megkezdése előtt új Windows 10 rendszerű, tartományhoz csatlakoztatott eszközökön. 
+
+> [!Important]
+> Mivel az alkalmazás, mely során a Windows 10-eszközök automatikus regisztrációs kísérlet fordulhat elő, újonnan tartományhoz csatlakoztatott számítógépeken a csoportházirend-objektum lehetséges késést, létre kell hoznia egy új sysprep lemezkép a Windows 10-eszköz, amely soha nem volt korábban automatikusan regisztrálja, és tiltsa le a Windows 10-es eszközök automatikus regisztrációját, és az új számítógépek a vállalati tartományba fog belépni a sysprep lemezkép használatával a csoportházirend-objektum, amely már rendelkezik.
+
+Miután végzett konfigurálása, és amikor elkészült, teszteléséhez, kell megkezdik a automatikus regisztráció csak a teszteszközök engedélyezése csoportházirend és majd, mint minden más eszköz válassza.
 
 - Bevezetés a Windows alacsonyabb szintű számítógépek, telepíthet egy [Windows Installer-csomag](#windows-installer-packages-for-non-windows-10-computers) a kiválasztott számítógépekre.
 

@@ -1,73 +1,67 @@
 ---
-title: Telepítse vagy frissítse a HDInsight - Azure monó |} Microsoft Docs
-description: Ismerje meg, hogy egy adott verziójához monó használata a HDInsight-fürthöz. Monó a Linux-alapú HDInsight-fürtökön futó .NET-alkalmazások futtatására szolgál.
+title: A HDInsight - Azure Mono telepítése vagy frissítése
+description: Ismerje meg, hogy egy adott verzióját Mono használata a HDInsight-fürt. Mono segítségével .NET-alkalmazások futtatása a Linux-alapú HDInsight-fürtökön.
 services: hdinsight
-documentationCenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/10/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: hdinsightactive
-ms.openlocfilehash: 165f1d8175c7c7b58a5eec02a208b81fe73cb5f9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5f15d199ac60421340ad844c0964c39a8bfe705a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400435"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598303"
 ---
-# <a name="install-or-update-mono-on-hdinsight"></a>Telepítse vagy frissítse a HDInsight monó
+# <a name="install-or-update-mono-on-hdinsight"></a>A HDInsight Mono telepítése vagy frissítése
 
-Ismerje meg, hogyan telepíthet egy adott verziójához [monó](https://www.mono-project.com) HDInsight 3.4-es vagy újabb rendszerre.
+Ismerje meg, hogyan telepítheti egy adott verzióját [Mono](https://www.mono-project.com) a HDInsight 3.4 vagy újabb verziója.
 
-Monó a HDInsight 3.4-es és újabb rendszer van telepítve, és .NET-alkalmazások futtatására szolgál. Monó részét képező egyes HDInsight-verzió verziójának információkért lásd: [HDInsight-összetevők verziószámozása](hdinsight-component-versioning.md). A fürt egy másik verzió telepítéséhez használja a parancsfájlművelet ebben a dokumentumban. 
+Mono a HDInsight 3.4 vagy újabb van telepítve, és a .NET-alkalmazások futtatására szolgál. A Mono minden HDInsight-verzióhoz mellékelt verzióját kapcsolatos tudnivalókat lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md). A fürt egy másik verziót telepíti, használja a parancsfájlművelet ebben a dokumentumban. 
 
 ## <a name="how-it-works"></a>Működés
 
-Ez a parancsfájl fogadja el a következő paramétert:
+Ez a szkript a következő paramétert fogad el:
 
-* __Monó verziószáma__: monó telepítendő verzióját. A verzió elérhetőnek kell lennie [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
+* __Monó verziószám__: A Mono telepítése verzióját. A verzió elérhetőnek kell lennie [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
 
 A parancsfájl telepíti a következő monó csomagokat:
 
-* __Monó befejezése__
+* __mono teljes körű__
 
 * __ca-certificates-mono__
 
 ## <a name="the-script"></a>A parancsfájl
 
-__Parancsfájl-hely__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
+__Parancsfájl helye__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
 
 __Követelmények__:
 
-* A parancsfájl azon kell alkalmazni a __átjárócsomópontokat__ és __munkavégző csomópontokhoz__.
+* A parancsfájl a alkalmazni kell a __átjárócsomópontokhoz__ és __munkavégző csomópontok__.
 
 ## <a name="to-use-the-script"></a>A parancsfájl használata
 
-Használja ezt a parancsfájlt a hdinsight eszközzel kapcsolatos további információkért lásd: a [testreszabása Linux-alapú HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentum. A parancsfájl az Azure-portálon, az Azure PowerShell vagy az Azure parancssori felület is használhatja.
+Ez a parancsfájl használata a HDInsight információkért lásd: a [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentumot. A szkript az Azure portal, Azure PowerShell vagy az Azure CLI használatával is használhatja.
 
-Közben a következő a parancsfájl művelet dokumentumot, használja a következő URI Azonosítót:
+Következő a parancsprogram-művelet dokumentumban, míg a következő URI-t használja:
 
     https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash
 
-Monó verzió van telepítve, akkor adja meg a verziószámot a __paraméterek__ mező. Adja meg például `5.4` monó 5.4 telepítéséhez.
+A monó verzió van telepítve, akkor adja meg a verziószámot a __paraméterek__ mező. Adja meg például `5.4` Mono 5.4 telepítése.
 
 > [!NOTE]
-> Ezt a parancsfájlt a HDInsight konfigurálásakor jelölje meg a parancsprogramot __megőrzött__. Ez a beállítás lehetővé teszi, hogy a HDInsight a parancsfájl alkalmazandó műveletek a méretezés során hozzáadott munkavégző csomópontokhoz.
+> Ez a szkript HDInsight konfigurálásakor jelölje meg a parancsprogramot __megőrzött__. Ez a beállítás lehetővé teszi, hogy a HDInsight a parancsfájl alkalmazandó műveletek a méretezés során hozzáadott feldolgozó csomópontokat.
 
 ## <a name="next-steps"></a>További lépések
 
-Rendelkezik megtudta, hogyan frissítse vagy a HDInsight monó meghatározott verzióját telepítse. A .NET-alkalmazások használata a HDInsight monó további információkért lásd a következő dokumentumokat:
+Megtanulhatta, hogyan frissítése vagy a HDInsight egy adott verzióját Mono telepítése. További információ a HDInsight a Mono való használatához a .NET-alkalmazások a következő dokumentumokban talál:
 
-* [Az adatfolyamként történő MapReduce a HDInsight .NET használata](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [A Hive és a Pig a HDInsight .NET használata](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [A HDInsight alatt futó Storm a C# megoldások fejlesztése](storm/apache-storm-develop-csharp-visual-studio-topology.md)
-* [Linux-alapú HDInsight .NET megoldások áttelepítése](hdinsight-hadoop-migrate-dotnet-to-linux.md)
+* [A .NET használata a HDInsight MapReduce streameléshez](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [A Hive és a Piggel a HDInsight .NET használata](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [C#, HDInsight alatt futó Stormmal megoldásokat fejleszthet](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [.NET – megoldások áttelepítése Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
-Parancsfájlműveletek használatával kapcsolatos további információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök parancsfájlművelet használatával](hdinsight-hadoop-customize-cluster-linux.md)
+Szkriptműveletek használatával kapcsolatos további információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md)

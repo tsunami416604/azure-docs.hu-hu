@@ -1,34 +1,29 @@
 ---
-title: Hadoop a Pig használata a HDInsight - Azure PowerShell |} Microsoft Docs
-description: Útmutató az Azure PowerShell hdinsight Hadoop-fürthöz Pig feladatok elküldéséhez.
+title: Hadoop a Pig használata a HDInsight – Azure PowerShell használatával
+description: Ismerje meg, hogyan lehet elküldeni egy Hadoop-fürtöt az Azure PowerShell használatával HDInsight Pig-feladatok.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 737089c1-b494-4387-9def-7b4dac3be532
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a3e62647ec41cfdfc7f0f7bb55474215ab435ee8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d8a729177328b2f6f4e7e75f133b91ddb4db5a61
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939440"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597592"
 ---
-# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>A Pig-feladatok futtatása a HDInsight az Azure PowerShell használatával
+# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>A HDInsight Pig-feladatok futtatása az Azure PowerShell használatával
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ez a dokumentum egy példát az Azure PowerShell elküldeni a Pig-feladatokhoz a Hadoop on HDInsight-fürt számára. A Pig MapReduce-feladatok írni egy nyelv (a Pig latin betűs) használatával adott modellek adatátalakítást helyett hozzárendelését és funkciók teszi lehetővé.
+Ez a dokumentum azt szemlélteti, a Hadoop HDInsight-fürtön a Pig-feladatok elküldése az Azure PowerShell-lel. A Pig lehetővé teszi a modellek adatátalakításokat írni MapReduce-feladatok (a Pig latin betűs) nyelv használatával helyett leképezése, és csökkentheti a funkciók.
 
 > [!NOTE]
-> Ez a dokumentum nem biztosít a Pig Latin utasításokat a példákban szereplő mire részletes leírását. A Pig Latin ebben a példában használt kapcsolatos információkért lásd: [a Pig használata a hdinsight Hadoop](hdinsight-use-pig.md).
+> Ez a dokumentum nem biztosít a Pig Latin utasításokkal a példákban használt mire részletes leírását. A Pig Latin ebben a példában használt kapcsolatos információkért lásd: [a Pig használata a hadooppal a HDInsight](hdinsight-use-pig.md).
 
 ## <a id="prereq"></a>Előfeltételek
 
@@ -41,29 +36,29 @@ Ez a dokumentum egy példát az Azure PowerShell elküldeni a Pig-feladatokhoz a
 
 ## <a id="powershell"></a>A Pig-feladat futtatása
 
-Az Azure PowerShell biztosít *parancsmagok* , amelyek lehetővé teszik, hogy távolról ugyanúgy futtathatják a HDInsight a Pig-feladatokhoz. Belsőleg, PowerShell használja a többi hívások [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) futó a HDInsight-fürthöz.
+Az Azure PowerShell biztosít *parancsmagok* , amelyek engedélyezik a HDInsight Pig-feladatok távoli futtatását. Belsőleg, használja a PowerShell a REST-hívások [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) a HDInsight-fürtön futó.
 
-A következő parancsmagok használhatók a Pig-feladatokhoz egy távoli HDInsight-fürt futtatásakor:
+A következő parancsmagok használhatók, amikor Pig-feladatokat futtat egy távoli HDInsight-fürtön:
 
-* **Connect-AzureRmAccount**: az Azure-előfizetések az Azure PowerShell hitelesíti.
-* **Új AzureRmHDInsightPigJobDefinition**: létrehoz egy *definition feladat* a megadott Pig Latin utasítás használatával.
-* **Start-AzureRmHDInsightJob**: a feladat definíciójához küld HDInsight, és elindítja a feladatot. A *feladat* objektumot ad vissza.
-* **Várjon, amíg-AzureRmHDInsightJob**: a feladat állapotának ellenőrzése a feladatobjektum használja. Arra vár, amíg a feladat befejeződött, vagy a várakozási idő túl lett lépve.
+* **Connect-AzureRmAccount**: hitelesíti az Azure PowerShell az Azure-előfizetéshez.
+* **Új AzureRmHDInsightPigJobDefinition**: létrehoz egy *feladat definíciójának* -a megadott Pig Latin utasításokkal.
+* **Start-AzureRmHDInsightJob**: a feladat definíciója HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
+* **Wait-AzureRmHDInsightJob**: a feladat objektumot használ a feladat állapotának ellenőrzéséhez. Arra vár, amíg a feladat befejeződött, vagy a rendszer túllépte a várakozási idő.
 * **Get-AzureRmHDInsightJobOutput**: a feladat kimenetének beolvasása.
 
-A következő lépések bemutatják, hogyan lehet ezeket a parancsmagokat használja a HDInsight-fürt a feladat futtatásához.
+A következő lépések bemutatják, hogyan lehet ezeket a parancsmagokat használja a HDInsight-fürtön futó feladatok futtatásához.
 
-1. Egy szerkesztővel, az alábbi kód, Mentés **pigjob.ps1**.
+1. Egy szerkesztővel, mentse a következő kódot, **pigjob.ps1**.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]
 
-1. Nyisson meg egy új Windows PowerShell parancssort. Módosítsa a könyvtárat, hol található a **pigjob.ps1** fájlt, majd futtassa a parancsfájlt a következő paranccsal:
+1. Nyisson meg egy új Windows PowerShell-parancssort. Módosítsa a könyvtárat a helyét a **pigjob.ps1** fájlt, majd futtassa a parancsfájlt a következő paranccsal:
 
         .\pigjob.ps1
 
-    Jelentkezzen be az Azure-előfizetéshez kéri. Ezt követően meg kell adnia azokat a a HTTPs/rendszergazda fiók nevét és jelszavát a HDInsight-fürthöz.
+    Jelentkezzen be az Azure-előfizetés kéri. Ezt követően a rendszer megkéri a HTTPs vagy rendszergazdai fiók nevét és a HDInsight-fürthöz tartozó jelszót.
 
-2. A feladat befejezése után, az kell visszaadnia információ az alábbihoz hasonló:
+2. A feladat befejezését követően kell visszaadnia információkat az alábbi szöveghez hasonló:
 
         Start the Pig job ...
         Wait for the Pig job to complete ...
@@ -77,7 +72,7 @@ A következő lépések bemutatják, hogyan lehet ezeket a parancsmagokat haszn�
 
 ## <a id="troubleshooting"></a>Hibaelhárítás
 
-Ha nem áll rendelkezésre információ ad vissza, ha a feladat befejeződik, tekintse meg a hibanaplókat. Hiba történt a feladat információinak megtekintése, vegye fel a következő parancsot végén a **pigjob.ps1** fájl, mentse, majd futtassa újból.
+Ha semmilyen adatot nem ad vissza, ha a feladat befejeződik, tekintse meg a hibanaplókat. A feladat hibaadatok megtekintéséhez adja hozzá a következő parancs végéhez a **pigjob.ps1** fájlt, és mentse, majd futtassa újra.
 
     # Print the output of the Pig job.
     Write-Host "Display the standard error output ..." -ForegroundColor Green
@@ -87,17 +82,17 @@ Ha nem áll rendelkezésre információ ad vissza, ha a feladat befejeződik, te
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
-Ez a parancsmag, feladat feldolgozása közben STDERR írni olyan információkat ad vissza.
+Ez a parancsmag adja vissza az információkat arról, hogy STDERR feladat feldolgozása közben.
 
 ## <a id="summary"></a>Summary (Összefoglalás)
-Ahogy látja, Azure PowerShell itt egyszerűen futtassa a Pig-feladatokhoz a HDInsight-fürtöt, figyelheti a feladat állapotát és a kimeneti beolvasása.
+Látható, az Azure PowerShell Pig-feladatok futtatásához egy HDInsight-fürtön, a feladat állapotának nyomon és lekérni a kimeneti egyszerű módszert biztosít.
 
 ## <a id="nextsteps"></a>Következő lépések
-Általános információk a hdinsight Pig:
+A HDInsight Pig általános tájékoztatást:
 
-* [A Pig használata a HDInsight Hadoop](hdinsight-use-pig.md)
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 
-Más módszerekkel kapcsolatos információk a HDInsight Hadoop dolgozhat:
+Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Hive használata a hdinsight Hadoop](hdinsight-use-hive.md)
-* [A HDInsight Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)

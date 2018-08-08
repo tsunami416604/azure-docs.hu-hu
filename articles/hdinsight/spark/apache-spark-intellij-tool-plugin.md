@@ -1,23 +1,20 @@
 ---
-title: 'IntelliJ-hez készült Azure-eszközkészlet: Spark-alkalmazások HDInsight-fürt létrehozása |} A Microsoft Docs'
+title: 'IntelliJ-hez készült Azure-eszközkészlet: Spark-alkalmazások HDInsight-fürt létrehozása '
 description: Spark Scalában írt alkalmazások fejlesztése az IntelliJ-hez készült Azure-eszközkészlet használatával, és küldheti el ezeket a HDInsight Spark-fürt.
 services: hdinsight
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 73304272-6c8b-482e-af7c-cd25d95dab4d
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk
-ms.openlocfilehash: 891a568af7892048eb84646acbf495f32ddd00b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c3442a95bed4f589ca8f939767bb0d0581095927
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427416"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618425"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata Spark-alkalmazások egy HDInsight-fürt létrehozása
 

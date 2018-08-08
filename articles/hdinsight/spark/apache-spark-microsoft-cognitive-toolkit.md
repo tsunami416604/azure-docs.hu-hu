@@ -1,94 +1,90 @@
 ---
-title: Microsoft Azure HDInsight Spark mély biztonságával és kognitív eszközkészlet |} Microsoft Docs
-description: Ismerje meg, hogyan kognitív eszközkészlet Microsoft mély tanulási modell betanítását alkalmazhatja a Spark Python API használatát egy Azure HDInsight Spark-fürt dataset.
+title: A Microsoft Cognitive Toolkit deep learning az Azure HDInsight Spark-
+description: Ismerje meg, hogyan lehet alkalmazni egy Microsoft Cognitive Toolkit deep learning betanított modellt egy adatkészletet, a Spark Python API használatával az Azure HDInsight Spark-fürt.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: jgao
-ms.openlocfilehash: 7afb891642e3e53da5eb1e17ee654fb5fb42c313
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: b37047e42b806110c69264495490348536bc75cd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31518535"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618043"
 ---
-# <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft kognitív eszközkészlet mély tanulása Azure HDInsight Spark-fürt használatára
+# <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>A Microsoft Cognitive Toolkit deep learning-modell az Azure HDInsight Spark-fürt használata
 
-Ez a cikk a hajtsa végre az alábbi lépéseket.
+Ebben a cikkben hajtsa végre a következő lépéseket.
 
-1. Microsoft kognitív eszközkészlet telepítése egy Azure HDInsight Spark-fürt egyéni parancsfájl futtatása.
+1. A Microsoft Cognitive Toolkit telepítése egy Azure HDInsight Spark-fürt egyéni parancsfájl futtatása.
 
-2. Jupyter notebook feltölteni a Microsoft kognitív eszközkészlet mély tanulási modell betanítását alkalmazhat a fájlokra, az Azure Blob Storage-fiók használatával történő Spark-fürtön a [Spark Python API (PySpark)](https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
+2. Jupyter notebook a Spark-fürtöt, hogyan alkalmazhatja a Microsoft Cognitive Toolkit deep learning betanított modell egy Azure Blob Storage-fiókra a fájlok megtekintéséhez töltse fel a [Spark Python API (PySpark)](https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása még ma](https://azure.microsoft.com/free).
 
-* **Az Azure HDInsight Spark-fürt**. Ez a cikk a Spark 2.0 fürt létrehozása. Útmutatásért lásd: [Azure HDInsight létrehozása Apache Spark-fürt](apache-spark-jupyter-spark-sql.md).
+* **Az Azure HDInsight Spark-fürt**. Ebben a cikkben egy Spark 2.0-fürt létrehozása. Útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-## <a name="how-does-this-solution-flow"></a>Hogyan nem flow ehhez a megoldáshoz?
+## <a name="how-does-this-solution-flow"></a>Hogyan nem ez a megoldás flow?
 
-Ebben a megoldásban ez a cikk és ebben az oktatóanyagban részeként feltöltött Jupyter notebook között oszlik meg. Ebben a cikkben végezze el a következő lépéseket:
+Ebben a megoldásban ez a cikk és a egy Jupyter notebookot, ez az oktatóanyag részeként feltöltött között oszlik meg. Ebben a cikkben, kövesse az alábbi lépéseket:
 
-* Futtassa a parancsfájlművelet egy HDInsight Spark-fürt telepítése a Microsoft kognitív eszközkészlet és Python-csomagokat.
-* Töltse fel a Jupyter notebook futtató a megoldás a HDInsight Spark-fürt.
+* Szkriptműveletet futtatunk egy HDInsight Spark-fürt telepítése a Microsoft Cognitive Toolkit- és Python-csomagokat.
+* Töltse fel a Jupyter notebookot, amely a megoldás fut, hogy a HDInsight Spark-fürtön.
 
-A következő fennmaradó lépéseit lásd: a Jupyter notebook.
+A Jupyter notebook ismerkedhet meg a következő hátralévő lépéseket.
 
-- Egy Spark Resiliant elosztott adatkészlet vagy RDD minta képek betöltése
-   - Modulok be, és a készletek meghatározása
-   - Töltse le a dataset helyileg a Spark-fürtön
-   - Az adatkészlethez konvertálása egy RDD
-- Pontszám modell betanítását kognitív eszközkészlet a képeket
-   - Töltse le a betanított modell kognitív eszközkészlet a Spark-fürt
-   - Adja meg a munkavégző csomópontokhoz által használt funkciók
-   - A lemezképek pontozása a feldolgozó csomópontok
-   - Értékelje ki a modell pontosságát
+- Mintaképeket betöltése a Spark Resiliant elosztott adatkészlet vagy RDD
+   - Modulokat betölteni és készletek definiálása
+   - Töltse le az adatkészlet helyileg, a Spark-fürt
+   - Az adatkészlet átalakítása az RDD
+- A Cognitive Toolkit betanított modell használatával képek pontszám
+   - Töltse le a Cognitive Toolkit betanított modell a Spark-fürt
+   - Adja meg a feldolgozó csomópontok által használt funkciók
+   - A képek pontszám a munkavégző csomópontok
+   - Pontosság kiértékelése
 
 
-## <a name="install-microsoft-cognitive-toolkit"></a>Microsoft kognitív eszközkészlet telepítése
+## <a name="install-microsoft-cognitive-toolkit"></a>Telepítse a Microsoft Cognitive Toolkittel
 
-Telepítheti a Microsoft kognitív eszközkészlet parancsfájlművelet használata Spark-fürtön. Parancsfájlművelet összetevőinek telepítése a fürt nem alapértelmezés szerint rendelkezésre álló egyéni parancsfájlokat használ. Használhatja az Azure portálról egyéni parancsfájl HDInsight .NET SDK használatával, vagy az Azure PowerShell használatával. A parancsfájl segítségével az eszközkészlet telepítése vagy részeként a fürt létrehozása, vagy a fürt megfelelően működik, és után is. 
+Telepítheti a Microsoft Cognitive Toolkit szkriptműveletek használatával Spark-fürtön. Parancsfájlműveletekkel egyéni parancsfájlok segítségével összetevők telepíthetők a fürtön, amelyek nem érhetők el alapértelmezés szerint. Az egyéni szkriptet az Azure Portalról, használhatja a HDInsight .NET SDK-val, illetve az Azure PowerShell használatával. Az eszközkészlet telepítésével vagy a fürt létrehozásakor, vagy ha a fürt működik és részeként is használhatja a parancsfájl. 
 
-Ez a cikk a portál használjuk az eszközkészlet telepítése a fürt létrehozása után. Egyéb módjai a egyéni parancsfájl futtatásához, lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](../hdinsight-hadoop-customize-cluster-linux.md).
+Ez a cikk a portál használjuk az eszközkészlet telepítése a fürt létrehozása után. Más módszerekkel egyéni szkript futtatásához lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](../hdinsight-hadoop-customize-cluster-linux.md).
 
 ### <a name="using-the-azure-portal"></a>Az Azure portál használata
 
-Az Azure portál használata parancsfájl művelet, lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation). Ellenőrizze, hogy megadja a következő bemenet Microsoft kognitív eszközkészlet telepítése.
+Parancsprogram-művelet futtatása az Azure Portal használatával, lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation). Győződjön meg arról, adja meg a következő bemeneti adatokat a Microsoft Cognitive Toolkit telepítése.
 
-* Adjon meg egy értéket a parancsfájlművelet nevét.
+* Adja meg egy értéket a parancsfájlművelet nevét.
 
-* A **Bash parancsfájlok URI**, adja meg `https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`.
+* A **Bash parancsfájl URI azonosítója**, adja meg `https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`.
 
-* Győződjön meg arról, hogy csak a head és a feldolgozó csomópontok futtassa a parancsfájlt, és törölje a más jelölést.
+* Győződjön meg arról, hogy csak a fő- és munkavégző csomópontok futtassa a parancsprogramot, és törölje a többi jelölést.
 
 * Kattintson a **Create** (Létrehozás) gombra.
 
-## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Töltse fel a Jupyter notebook Azure HDInsight Spark-fürt
+## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Töltse fel a Jupyter notebook az Azure HDInsight Spark-fürt
 
-A Microsoft kognitív eszközkészlet használata az Azure HDInsight Spark-fürt, be kell tölteni a Jupyter notebook **CNTK_model_scoring_on_Spark_walkthrough.ipynb** az Azure HDInsight Spark-fürtre. A notebook érhető el a Githubon: [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
+A Microsoft Cognitive Toolkit használata az Azure HDInsight Spark-fürt, be kell tölteni a Jupyter notebook **CNTK_model_scoring_on_Spark_walkthrough.ipynb** az Azure HDInsight Spark-fürthöz. Ez a jegyzetfüzet érhető el a Githubon található [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
 
-1. A GitHub-tárház klónozása [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration). Klónozás útmutatásért lásd: [egy tárház klónozása](https://help.github.com/articles/cloning-a-repository/).
+1. Klónozza a GitHub-adattárát [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration). A klónozni kívánt útmutatásért lásd: [a tárház klónozása](https://help.github.com/articles/cloning-a-repository/).
 
-2. Az Azure portálról nyissa meg az Ön már kiépített, kattintson a Spark-fürt panelén **fürt irányítópult**, és kattintson a **Jupyter notebook**.
+2. Az Azure Portalról nyissa meg a már üzembe helyezett, kattintson a Spark-fürt panelén **fürt irányítópultja**, és kattintson a **Jupyter notebook**.
 
-    A Jupyter notebook indítsa el az URL-cím megnyitásával `https://<clustername>.azurehdinsight.net/jupyter/`. Cserélje le \<clustername > kifejezést a HDInsight-fürt nevére.
+    A Jupyter notebook indítsa el az URL-címen `https://<clustername>.azurehdinsight.net/jupyter/`. Cserélje le \<clustername > a HDInsight-fürt nevére.
 
-3. Kattintson a Jupyter notebook **feltöltése** a jobb felső sarokban, és navigáljon arra a helyre, ahol a GitHub-tárházban klónozott.
+3. A Jupyter notebook kattintson **feltöltése** a jobb felső sarokban, és navigáljon arra a helyre, amelybe klónozta a GitHub-adattárban.
 
-    ![Jupyter notebook feltöltése az Azure HDInsight Spark-fürt](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "feltöltése Jupyter notebook használatához Azure HDInsight Spark-fürt")
+    ![Töltse fel a Jupyter notebook az Azure HDInsight Spark-fürt](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "feltöltése Jupyter notebook az Azure HDInsight Spark-fürt")
 
 4. Kattintson a **feltöltése** újra.
 
-5. A notebook feltöltése, után kattintson a notebook neve, és kövesse a saját magát a notebook töltse be az adatokat, és hajtsa végre az oktatóanyag utasításait.
+5. A notebook követően kattintson a notebook nevére, és kövesse az utasításokat, magát a jegyzetfüzet töltse be az adatokat, és hajtsa végre az oktatóanyag.
 
 ## <a name="see-also"></a>Lásd még
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)

@@ -1,41 +1,36 @@
 ---
-title: Hadoop Sqoop használata a hdinsight - Azure Curl |} Microsoft Docs
-description: Megtudhatja, hogyan távolról a Sqoop feladatok HDInsight használata Curl használatával való elküldéséhez.
+title: A curl használatával, a HDInsight - Azure Hadoop Sqoop használata
+description: Ismerje meg, hogyan lehet távolról a Curl használatával HDInsight Sqoop-feladatok elküldése.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 39798321-78ca-428c-bcfe-322e49af4059
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: a83b87f1ed052c6d21d337eb37bc560efbf118ba
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 2c6376772aedbe097d737d97c673447adb12bed3
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202145"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598986"
 ---
-# <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Sqoop feladatok futtatása a hadooppal a Hdinsightban a Curl
+# <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Sqoop-feladatok futtatása a curl használatával HDInsight a Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Megtudhatja, hogyan használja a Curl hdinsight Hadoop-fürthöz Sqoop feladatok futtatásához.
+Ismerje meg, hogyan Sqoop-feladatok futtatása a HDInsight Hadoop-fürtön a Curl használatával.
 
-Curl használatával bemutatják, hogyan kezelheti a HDInsight nyers HTTP-kérelmek futtatásához, a figyelheti és a Sqoop feladatot az eredmények visszakeresésére használatával. Ez a módszer a WebHCat REST API használatával (korábbi nevén lépni a Templeton) a HDInsight-fürt által biztosított.
+A curl használatával mutatja be, hogyan használhatja a HDInsight nyers HTTP-kérelmek futtatásához, figyelése, és kérje le az eredményeket, a Sqoop feladatok használatával szolgál. Ez a módszer a WebHCat REST API-val (korábbi nevén templeton eszközön keresztül végzett) a HDInsight-fürt által biztosított.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ebben a cikkben szereplő lépések elvégzéséhez a következőkre lesz szüksége:
+A jelen cikkben ismertetett lépések elvégzéséhez a következőkre lesz szüksége:
 
-* Teljes [Sqoop használata a hadooppal a Hdinsightban](hdinsight-use-sqoop.md#create-cluster-and-sql-database) környezet konfigurálása a HDInsight-fürt és az Azure SQL-adatbázis.
-* [Curl](http://curl.haxx.se/). Curl egy olyan eszköz, vagy egy HDInsight-fürthöz az adatok átviteléhez.
-* [jq](http://stedolan.github.io/jq/). A jq segédprogram segítségével dolgozza fel a többi kérelem által visszaadott JSON-adatokat.
+* Teljes [a Sqoop használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-sqoop.md#create-cluster-and-sql-database) -környezet konfigurálása a HDInsight-fürt és a egy Azure SQL database.
+* [curl](http://curl.haxx.se/). A curl egy olyan eszköz, vagy egy HDInsight-fürtön az adatok átviteléhez.
+* [jq](http://stedolan.github.io/jq/). A jq segédprogram segítségével dolgozza fel a REST-kérelmeket által visszaadott JSON-adatokat.
 
-## <a name="submit-sqoop-jobs-by-using-curl"></a>Sqoop feladatok elküldéséhez a Curl használatával
+## <a name="submit-sqoop-jobs-by-using-curl"></a>A Curl használatával Sqoop-feladatok elküldése
 > [!NOTE]
 > Amikor a Curl vagy más REST kommunikációt használ a WebHCattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája felhasználónevének és jelszavának megadásával. A fürtnevet a kérések kiszolgálóhoz küldéséhez használt egységes erőforrás-azonosító (URI) részeként is használnia kell.
 > 
@@ -62,8 +57,8 @@ Ebben a cikkben szereplő lépések elvégzéséhez a következőkre lesz szüks
    * **-u** - A kérés hitelesítéséhez használt felhasználónév és jelszó.
    * **-G** - Jelzi, hogy ez egy GET kérés.
      
-     Az URL-cím, az elején **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, minden olyan kérelem esetében megegyezik. Az elérési út **/status**, azt jelzi, hogy a kérelem vissza WebHCat (más néven Templeton) állapota a kiszolgálóhoz. 
-2. Használja a következő sqoop feladat elküldése:
+     Az URL-cím elején **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, összes kérelem esetében azonos. Az elérési út **/status**, azt jelzi, hogy a kérelem WebHCat (más néven templeton eszközön keresztül végzett) állapottal visszatéréshez a kiszolgálón. 
+2. Sqoop feladatok elküldéséhez használja a következő:
 
     ```bash
     curl -u USERNAME:PASSWORD -d user.name=USERNAME -d command="export --connect jdbc:sqlserver://SQLDATABASESERVERNAME.database.windows.net;user=USERNAME@SQLDATABASESERVERNAME;password=PASSWORD;database=SQLDATABASENAME --table log4jlogs --export-dir /example/data/sample.log --input-fields-terminated-by \0x20 -m 1" -d statusdir="wasb:///example/data/sqoop/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/sqoop
@@ -71,62 +66,62 @@ Ebben a cikkben szereplő lépések elvégzéséhez a következőkre lesz szüks
 
     Ezen parancs paraméterei a következők:
 
-    * **-d** - óta `-G` nem használ, akkor a kérelmet az alapértelmezett a POST metódussal. `-d` Megadja a küldött adatértékekkel mellékel a kérelemhez.
+    * **-d** – óta `-G` nem használ, akkor a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
 
         * **User.name** – a parancsot futtató felhasználónak.
 
-        * **a parancs** -a Sqoop parancs végrehajtásához.
+        * **a parancs** – a sqoop használatával a parancs végrehajtásához.
 
-        * **statusdir** -címtárban, ami a feladat állapotát a rendszer úgy tünteti fel.
+        * **statusdir** – a címtárból, amelyhez ez a feladat állapota lesz írva.
 
-    Ez a parancs visszaadja a Feladatazonosítót a feladat állapotának ellenőrzéséhez használható.
+    Ez a parancs visszaadja Feladatazonosítót a feladat állapotának ellenőrzéséhez használható.
 
         ```json
         {"id":"job_1415651640909_0026"}
         ```
 
-3. A feladat állapotának ellenőrzéséhez használja a következő parancsot. Cserélje le **JOBID** az előző lépésben visszaadott értékkel. Például, ha a visszatérési érték volt `{"id":"job_1415651640909_0026"}`, majd **JOBID** lenne `job_1415651640909_0026`.
+3. A feladat állapotának ellenőrzéséhez használja a következő parancsot. Cserélje le **JOBID** adja vissza az előző lépésben értékkel. Ha például a visszaadott érték volt `{"id":"job_1415651640909_0026"}`, majd **JOBID** lenne `job_1415651640909_0026`.
 
     ```bash
     curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
     ```
 
-    Ha a feladat befejeződött, az állapot nem **sikeres**.
+    Ha a feladat befejeződött, az állapota lesz **sikeres**.
    
    > [!NOTE]
-   > A Curl kérelem egy JavaScript Object Notation (JSON) dokumentumot, a feladat; információkat ad vissza csak a állapotérték beolvasásához használt jq.
+   > Ezt a kérelmet a Curl egy JavaScript Object Notation (JSON) dokumentumot, a feladat; információkat ad vissza. csak az állapot értékét a vizualizációhoz jq szolgál.
    > 
    > 
-4. Ha a feladat állapota módosult **sikeres**, a feladat eredményeinek lekérése Azure Blob Storage tárolóban. A `statusdir` a lekérdezés átadott paraméter tartalmazza a hely a kimeneti fájl; ebben az esetben az **wasb: / / / Példa/data/sqoop/curl**. Ez a cím tárolja a feladat kimenete a **curl példa/data/sqoop** könyvtárába a HDInsight-fürt által használt alapértelmezett tárolót.
+4. Miután a feladat állapota módosult az **sikeres**, a feladat eredményeinek kérheti le az Azure Blob storage-ból. A `statusdir` lekérdezése átadott paraméter tartalmazza a helyet, a kimeneti fájl; ebben az esetben **wasb: / / / például/data/sqoop/curl**. Ez a cím tárolja a feladat kimenete a **curl példa/data/sqoop** az alapértelmezett tárolót a HDInsight-fürt által használt könyvtárába.
    
-    Használhatja az Azure-portálon stderr és a stdout blobokhoz való hozzáférést.  Microsoft SQL Server Management Studio segítségével ellenőrizze az adatokat a log4jlogs tábla feltöltött.
+    Az Azure portal segítségével stdout és az stderr blobok elérése.  A Microsoft SQL Server Management Studio segítségével ellenőrizze az adatokat a log4jlogs táblához feltöltött.
 
 ## <a name="limitations"></a>Korlátozások
-* Tömeges export - a Linux-alapú HDInsight, a Sqoop összekötő használt Microsoft SQL Server vagy az Azure SQL Database adatainak exportálása jelenleg nem támogatja a tömeges beszúrások.
-* Kötegelés - és a Linux-alapú HDInsight együttes használata esetén a `-batch` beszúrása végrehajtásakor kapcsoló, a Sqoop több beszúrás helyett a beszúrási műveletek kötegelése hajt végre.
+* Tömeges exportálása – a Linux-alapú HDInsight, a Sqoop-összekötő segítségével a Microsoft SQL Server vagy az Azure SQL Database-adatok exportálása jelenleg nem támogatja a tömeges beszúrás.
+* Kötegelés – a Linux-alapú HDInsight használatakor a `-batch` Beszúrások végrehajtásakor váltson, Sqoop több beszúrás helyett a beszúrási műveletek kötegelése hajt végre.
 
 ## <a name="summary"></a>Összegzés
-Ahogyan az ebben a dokumentumban, használhatja a nyers HTTP-kérelmek futtatásához, a figyelheti és a Sqoop feladat eredményeinek megtekintéséhez a HDInsight-fürt.
+Ahogyan ebben a dokumentumban, is használhatja a nyers HTTP-kérelmek futtatásához, figyelése és a Sqoop feladatok eredményeinek megtekintéséhez a HDInsight-fürtön.
 
-A cikk ezt használja a REST-felület további információkért tekintse meg a <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Sqoop REST API útmutató</a>.
+A cikk ezt használja a REST-felület további információkért lásd: a <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Sqoop REST API-útmutató</a>.
 
 ## <a name="next-steps"></a>További lépések
-Általános információk a hdinsight Hive:
+Általános információk a HDInsight Hive:
 
-* [Sqoop használata a HDInsight Hadoop](hdinsight-use-sqoop.md)
+* [Sqoop használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-sqoop.md)
 
-Az egyéb lehetőségeiről a HDInsight Hadoop dolgozhat:
+Információk az egyéb módon használhatja a Hadoop on HDInsight:
 
-* [A Hive használata a hdinsight Hadoop](hdinsight-use-hive.md)
-* [A Pig használata a HDInsight Hadoop](hdinsight-use-pig.md)
-* [A HDInsight Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
 
-A más HDInsight vonatkozó cikkek curl:
+Más HDInsight kapcsolatos cikkek curl:
  
-* [Az Azure REST API használatával Hadoop-fürtök létrehozása](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
-* [A többi használatával HDInsight Hadoop Hive-lekérdezések futtatása](apache-hadoop-use-hive-curl.md)
-* [A HDInsight a többi hadooppal futtatási MapReduce-feladatok](apache-hadoop-use-mapreduce-curl.md)
-* [Pig-feladatokhoz Hadoop on HDInsight használata cURL használatával futtassa](apache-hadoop-use-pig-curl.md)
+* [Az Azure REST API segítségével Hadoop-fürtök létrehozása](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
+* [Hive-lekérdezések futtatása a REST használatával HDInsight Hadoop-keretrendszerrel](apache-hadoop-use-hive-curl.md)
+* [És a Hadoop MapReduce-feladatok futtatása HDInsight REST használatával](apache-hadoop-use-mapreduce-curl.md)
+* [A Pig-feladatok futtatása és a Hadoop HDInsight a cURL használatával](apache-hadoop-use-pig-curl.md)
 
 
 

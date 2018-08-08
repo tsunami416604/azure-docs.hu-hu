@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: c7d4351a9691c9787c42107306220e075f8648a0
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 53c993b6c7ad868c4781ced374b0c1b227a43e6d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435123"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595093"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrálása belső vnet-en az API Management az Application Gateway segítségével
 
@@ -35,15 +35,16 @@ Belső vnet-en az Application Gateway frontend-üzembe helyezett API Management 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
+Ebben a cikkben ismertetett lépéseket követve, kell rendelkeznie:
 
-+ Aktív Azure-előfizetés.
+* Aktív Azure-előfizetés.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ APIM-példány. További információkért lásd: [Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
+* Tanúsítványok – pfx és az API állomásnév cer és a fejlesztői portál gazdanév pfx.
 
 ##<a name="scenario"> </a> A forgatókönyv
+
 Ez a cikk bemutatja, hogyan használhatja a külső és belső fogyasztók számára egy egy API Management-szolgáltatás, és lehetővé teszi szerepét egy egységes előtérrendszer mind a helyszíni és felhőalapú API-k. Hogyan teszi közzé az API-k (a példában kiemelve jelennek meg a zöld) csak egy része külső felhasználásra a PathBasedRouting érhető el az Application Gateway szolgáltatással is megjelenik.
 
 Az első telepítő minden API-felügyelt csak a virtuális hálózaton belül. Belső fogyasztók számára (kiemelve a narancssárga) férhetnek hozzá az összes belső és külső API-k. Forgalom soha nem kerül ki internetes kézbesíti a rendszer a nagy teljesítményű Expressroute-Kapcsolatcsoportok keresztül.
@@ -52,9 +53,7 @@ Az első telepítő minden API-felügyelt csak a virtuális hálózaton belül. 
 
 ## <a name="before-you-begin"> </a> A telepítés megkezdése előtt
 
-1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
-2. Hozzon létre egy virtuális hálózatot, és hozzon létre különálló alhálózatokat az API Management és az Application Gateway számára.
-3. Ha szeretne létrehozni egy egyéni DNS-kiszolgáló a virtuális hálózat, ehhez az üzembe helyezés megkezdése előtt. Úgy, hogy létrehozott egy új alhálózatot a virtuális hálózatban lévő virtuális gép működik, ellenőrizze megoldhatja és az összes Azure-szolgáltatás végpontjainak eléréséhez.
+* Ügyeljen arra, hogy az Azure PowerShell legújabb verzióját használja. További információ: [A Windows PowerShell használata a Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/powershell-azure-resource-manager).
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Mi szükséges egy API Management és az Application Gateway közötti integrációt létrehozni?
 
@@ -63,39 +62,45 @@ Az első telepítő minden API-felügyelt csak a virtuális hálózaton belül. 
 * **Előtérbeli port:** Ez az, hogy az application gateway-en megnyitott nyilvános port. Szerezze meg a, forgalom átirányítja a háttér-kiszolgálók valamelyikével.
 * **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, a kis- és a nagybetűk megkülönböztetésével) és SSL tanúsítványnévvel rendelkezik (SSL-kiszervezés konfigurálásakor).
 * **Szabály:** a szabály köti a figyelőt egy háttér-kiszolgálókészlethez.
-* **Egyéni állapotadat-mintavétel:** Application Gateway alapértelmezés szerint segítségével IP-cím alapú mintavételek döntse el, hogy mely kiszolgálók a értékre aktívak. Az API Management szolgáltatás csak válaszol a kérelmekre, amelyek rendelkeznek a megfelelő állomásfejlécet, ezért az alapértelmezett mintavételek sikertelen. Egyéni állapotmintát kell definiálni, határozza meg, hogy a szolgáltatás működik-e, és továbbítsa a kérelmek az application gateway segítségével.
-* **Egyéni tartományi tanúsítvány:** eléréséhez az API Management az internetről szeretne létrehozni egy CNAME-leképezés, az állomásnév az Application Gateway előtér DNS-nevével. Ez biztosítja, hogy a hostname fejléc és az Application Gateway és az API Management továbbított küldött tanúsítvány egy APIM felismerje, érvényes.
+* **Egyéni állapotadat-mintavétel:** Application Gateway alapértelmezés szerint segítségével IP-cím alapú mintavételek döntse el, hogy mely kiszolgálók a értékre aktívak. Az API Management szolgáltatás csak válaszol a megfelelő állomásfejléc-kérelmek, ezért az alapértelmezett mintavételek sikertelen. Egyéni állapotmintát kell definiálni, határozza meg, hogy a szolgáltatás működik-e, és továbbítsa a kérelmek az application gateway segítségével.
+* **Egyéni tartomány tanúsítványok:** szeretne hozzáférni az API Management az internetről, hozzon létre egy CNAME-leképezés az Application Gateway előtér DNS-nevével a hostname kell. Ez biztosítja, hogy a hostname fejléc és az Application Gateway és az API Management továbbított küldött tanúsítvány egy APIM felismerje, érvényes. Ebben a példában két tanúsítványok – használjuk a háttérrendszer és a fejlesztői portál.  
 
 ## <a name="overview-steps"> </a> Az API Management és az Application Gateway való integrálásához szükséges lépéseket
 
 1. Egy erőforráscsoport létrehozása a Resource Manager számára.
 2. Hozzon létre egy virtuális hálózat, alhálózat és nyilvános IP-Címek az Application Gateway számára. Hozzon létre egy másik alhálózatot az API Management szolgáltatáshoz.
 3. A fent létrehozott virtuális hálózat alhálózat belül az API Management szolgáltatás létrehozása, és győződjön meg arról, a belső módot használja.
-4. Az API Management szolgáltatásban az egyéni tartománynév beállítása.
+4. Az API Management szolgáltatást az egyéni tartománynév beállítása.
 5. Hozzon létre egy Application Gateway konfigurációs objektumhoz.
 6. Hozzon létre egy Application Gateway-erőforrás.
 7. Hozzon létre egy CNAME rekord, az API Management proxyeszköznév az Application Gateway nyilvános DNS-nevét.
 
-## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
+## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>A fejlesztői portálon kívülről keresztül az Application Gateway által
 
-Ügyeljen arra, hogy az Azure PowerShell legújabb verzióját használja. További információ: [A Windows PowerShell használata a Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/powershell-azure-resource-manager).
+Ebben az útmutatóban fog is elérhetővé tesszük a **fejlesztői portál** a külső célközönség az Application Gatewayen keresztül. Fejlesztői portál figyelőt, mintavételi, beállítások és szabályok létrehozásához további lépések szükségesek. Az összes részletei is szerepelnek a megfelelő lépéseket.
+
+> [!WARNING]
+> Az itt ismertetett beállítások a fejlesztői portál Application Gatewayen keresztül elért az AAD és a Facebook hitelesítési problémákat tapasztalhat.
+
+## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
 
 ### <a name="step-1"></a>1. lépés
 
 Jelentkezzen be az Azure-ba
 
 ```powershell
-Connect-AzureRmAccount
+Login-AzureRmAccount
 ```
 
-Hitelesíti a hitelesítő adataival.<BR>
+Hitelesíti a hitelesítő adataival.
 
 ### <a name="step-2"></a>2. lépés
 
-Ellenőrizze a fiók előfizetéseit, és válassza ki azt.
+Válassza ki a kívánt előfizetés azonosítóértékét.
 
 ```powershell
-Get-AzureRmSubscription -Subscriptionid "GUID of subscription" | Select-AzureRmSubscription
+$subscriptionId = "00000000-0000-0000-0000-000000000000" # GUID of your Azure subscription
+Get-AzureRmSubscription -Subscriptionid $subscriptionId | Select-AzureRmSubscription
 ```
 
 ### <a name="step-3"></a>3. lépés
@@ -103,8 +108,11 @@ Get-AzureRmSubscription -Subscriptionid "GUID of subscription" | Select-AzureRmS
 Hozzon létre egy erőforráscsoportot (hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ).
 
 ```powershell
-New-AzureRmResourceGroup -Name "apim-appGw-RG" -Location "West US"
+$resGroupName = "apim-appGw-RG" # resource group name
+$location = "West US"           # Azure region
+New-AzureRmResourceGroup -Name $resGroupName -Location $location
 ```
+
 Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az application gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot.
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Hozzon létre egy virtuális hálózatot és egy alhálózatot az application gateway számára
@@ -129,10 +137,10 @@ $apimsubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefi
 
 ### <a name="step-3"></a>3. lépés
 
-Nevű virtuális hálózat létrehozása **appgwvnet** erőforráscsoportban **apim-appGw-RG** esetében az USA nyugati régiója, az előtag 10.0.0.0/16 használja a 10.0.0.0/24 alhálózat és 10.0.1.0/24.
+Hozzon létre egy virtuális hálózatot nevű **appgwvnet** erőforráscsoportban **apim-appGw-RG** az USA nyugati RÉGIÓJA számára. Az előtag 10.0.0.0/16 használja a 10.0.0.0/24 alhálózat és 10.0.1.0/24.
 
 ```powershell
-$vnet = New-AzureRmVirtualNetwork -Name "appgwvnet" -ResourceGroupName "apim-appGw-RG" -Location "West US" -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
+$vnet = New-AzureRmVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
 ```
 
 ### <a name="step-4"></a>4. lépés
@@ -140,50 +148,70 @@ $vnet = New-AzureRmVirtualNetwork -Name "appgwvnet" -ResourceGroupName "apim-app
 Rendelje hozzá egy alhálózati változót a következő lépések
 
 ```powershell
-$appgatewaysubnetdata=$vnet.Subnets[0]
-$apimsubnetdata=$vnet.Subnets[1]
+$appgatewaysubnetdata = $vnet.Subnets[0]
+$apimsubnetdata = $vnet.Subnets[1]
 ```
+
 ## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Egy belső módban konfigurált virtuális hálózaton belül az API Management szolgáltatás létrehozása
 
 Az alábbi példa bemutatja, hogyan hozhat létre API Management szolgáltatás csak a belső hozzáférés konfigurált virtuális hálózaton.
 
 ### <a name="step-1"></a>1. lépés
+
 Hozzon létre egy API Management virtuális hálózat objektumot, a fent létrehozott $apimsubnetdata alhálózat használatával.
 
 ```powershell
-$apimVirtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "West US" -SubnetResourceId $apimsubnetdata.Id
+$apimVirtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location $location -SubnetResourceId $apimsubnetdata.Id
 ```
+
 ### <a name="step-2"></a>2. lépés
+
 Hozzon létre egy API Management szolgáltatás a virtuális hálózaton belül.
 
 ```powershell
-$apimService = New-AzureRmApiManagement -ResourceGroupName "apim-appGw-RG" -Location "West US" -Name "ContosoApi" -Organization "Contoso" -AdminEmail "admin@contoso.com" -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
+$apimServiceName = "ContosoApi"       # API Management service instance name
+$apimOrganization = "Contoso"         # organization name
+$apimAdminEmail = "admin@contoso.com" # administrator's email address
+$apimService = New-AzureRmApiManagement -ResourceGroupName $resGroupName -Location $location -Name $apimServiceName -Organization $apimOrganization -AdminEmail $apimAdminEmail -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
-Lásd a fenti parancs sikeres követően [belső virtuális hálózathoz az API Management szolgáltatáshoz való hozzáféréshez szükséges DNS-konfiguráció](api-management-using-with-internal-vnet.md#apim-dns-configuration) az eléréséhez.
+
+Lásd a fenti parancs sikeres követően [belső virtuális hálózathoz az API Management szolgáltatáshoz való hozzáféréshez szükséges DNS-konfiguráció](api-management-using-with-internal-vnet.md#apim-dns-configuration) az eléréséhez. Ebben a lépésben egy több mint fél óráig is eltarthat.
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Az API Management egy egyéni tartománynév beállítása
 
 ### <a name="step-1"></a>1. lépés
-Töltse fel a tanúsítványt a tartományhoz tartozó titkos kulccsal. Ebben a példában lesz `*.contoso.net`.
+
+Töltse fel a tanúsítványokat a titkos kulcsok a tartományra. Ebben a példában használjuk `api.contoso.net` és `portal.contoso.net`.  
 
 ```powershell
-$certUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName "apim-appGw-RG" -Name "ContosoApi" -HostnameType "Proxy" -PfxPath <full path to .pfx file> -PfxPassword <password for certificate file> -PassThru
+$gatewayHostname = "api.contoso.net"                 # API gateway host
+$portalHostname = "portal.contoso.net"               # API developer portal host
+$gatewayCertCerPath = "C:\Users\Contoso\gateway.cer" # full path to api.contoso.net .cer file
+$gatewayCertPfxPath = "C:\Users\Contoso\gateway.pfx" # full path to api.contoso.net .pfx file
+$portalCertPfxPath = "C:\Users\Contoso\portal.pfx"   # full path to portal.contoso.net .pfx file
+$gatewayCertPfxPassword = "certificatePassword123"   # password for api.contoso.net pfx certificate
+$portalCertPfxPassword = "certificatePassword123"    # password for portal.contoso.net pfx certificate
+
+$certUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName $resGroupName -Name $apimServiceName -HostnameType "Proxy" -PfxPath $gatewayCertPfxPath -PfxPassword $gatewayCertPfxPassword -PassThru
+$certPortalUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName $resGroupName -Name $apimServiceName -HostnameType "Proxy" -PfxPath $portalCertPfxPath -PfxPassword $portalCertPfxPassword -PassThru
 ```
 
 ### <a name="step-2"></a>2. lépés
-Miután feltöltötte a tanúsítványt, hozzon létre egy állomásnév konfigurációs objektumot a proxy az állomásnévvel rendelkező `api.contoso.net`, ahogy a példában tanúsítvány lehetővé teszi a szolgáltató a `*.contoso.net` tartományhoz.
+
+A tanúsítványok feltöltése után hozzon létre gazdanév konfigurációs objektumok a proxy és a portál.  
 
 ```powershell
-$proxyHostnameConfig = New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint $certUploadResult.Thumbprint -Hostname "api.contoso.net"
-$result = Set-AzureRmApiManagementHostnames -Name "ContosoApi" -ResourceGroupName "apim-appGw-RG" -ProxyHostnameConfiguration $proxyHostnameConfig
+$proxyHostnameConfig = New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint $certUploadResult.Thumbprint -Hostname $gatewayHostname
+$portalHostnameConfig = New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint $certPortalUploadResult.Thumbprint -Hostname $portalHostname
+$result = Set-AzureRmApiManagementHostnames -Name $apimServiceName -ResourceGroupName $resGroupName –PortalHostnameConfiguration $portalHostnameConfig -ProxyHostnameConfiguration $proxyHostnameConfig
 ```
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
 
-Hozzon létre egy nyilvános IP-erőforrást **publicIP01** erőforráscsoportban **apim-appGw-RG** az USA nyugati RÉGIÓJA számára.
+Hozzon létre egy nyilvános IP-erőforrást **publicIP01** az erőforráscsoportban.
 
 ```powershell
-$publicip = New-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -name "publicIP01" -location "West US" -AllocationMethod Dynamic
+$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $resGroupName -name "publicIP01" -location $location -AllocationMethod Dynamic
 ```
 
 Amikor a szolgáltatás elindul, egy IP-cím lesz kiosztva az Application Gatewaynek.
@@ -207,6 +235,7 @@ Konfigurálja az előtérbeli IP-portot a nyilvános IP-cím végponthoz. A port
 ```powershell
 $fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "port01"  -Port 443
 ```
+
 ### <a name="step-3"></a>3. lépés
 
 Konfigurálja az előtérbeli IP-portot egy nyilvános IP-címvégponttal.
@@ -217,30 +246,35 @@ $fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -
 
 ### <a name="step-4"></a>4. lépés
 
-A tanúsítvány konfigurálása az Application Gateway, áthaladó forgalom újbóli titkosítására és visszafejtésére használt.
+A tanúsítványok konfigurálása az Application gatewayhez, amelyet áthaladó forgalom újbóli titkosítására és visszafejtésére használhat.
 
 ```powershell
-$cert = New-AzureRmApplicationGatewaySslCertificate -Name "cert01" -CertificateFile <full path to .pfx file> -Password <password for certificate file>
+$certPwd = ConvertTo-SecureString $gatewayCertPfxPassword -AsPlainText -Force
+$cert = New-AzureRmApplicationGatewaySslCertificate -Name "cert01" -CertificateFile $gatewayCertPfxPath -Password $certPwd
+$certPortalPwd = ConvertTo-SecureString $portalCertPfxPassword -AsPlainText -Force
+$certPortal = New-AzureRmApplicationGatewaySslCertificate -Name "cert02" -CertificateFile $portalCertPfxPath -Password $certPortalPwd
 ```
 
 ### <a name="step-5"></a>5. lépés
 
-Hozzon létre a HTTP-figyelő az Application Gateway számára. Előtérbeli IP konfigurációja, port és az ssl tanúsítvány rendelje hozzá.
+Hozza létre a HTTP-figyelők az Application Gateway számára. Előtérbeli IP konfigurációja, port és az ssl tanúsítványok rendelhet hozzájuk.
 
 ```powershell
-$listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert
+$listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
+$portalListener = New-AzureRmApplicationGatewayHttpListener -Name "listener02" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $certPortal -HostName $portalHostname -RequireServerNameIndication true
 ```
 
 ### <a name="step-6"></a>6. lépés
 
-Az API Management szolgáltatásban való egyéni mintavétel létrehozása `ContosoApi` proxy tartomány végpont. Az elérési út `/status-0123456789abcdef` egy alapértelmezett egészségügyi végpont az API Management-szolgáltatásokban üzemeltetett. Állítsa be `api.contoso.net` , egy egyéni mintát állomásnév biztonságossá tételéhez, SSL-tanúsítvánnyal.
+Hozzon létre egyéni mintavételek az API Management szolgáltatás `ContosoApi` proxy tartomány végpont. Az elérési út `/status-0123456789abcdef` egy alapértelmezett egészségügyi végpont az API Management-szolgáltatásokban üzemeltetett. Állítsa be `api.contoso.net` , egy egyéni mintát állomásnév biztonságossá tételéhez, SSL-tanúsítvánnyal.
 
 > [!NOTE]
 > A hostname `contosoapi.azure-api.net` konfigurálva, amikor egy elnevezett szolgáltatás az alapértelmezett proxyeszköznév `contosoapi` jön létre a nyilvános Azure-ban.
 >
 
 ```powershell
-$apimprobe = New-AzureRmApplicationGatewayProbeConfig -Name "apimproxyprobe" -Protocol "Https" -HostName "api.contoso.net" -Path "/status-0123456789abcdef" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
+$apimprobe = New-AzureRmApplicationGatewayProbeConfig -Name "apimproxyprobe" -Protocol "Https" -HostName $gatewayHostname -Path "/status-0123456789abcdef" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
+$apimPortalProbe = New-AzureRmApplicationGatewayProbeConfig -Name "apimportalprobe" -Protocol "Https" -HostName $portalHostname -Path "/signin" -Interval 60 -Timeout 300 -UnhealthyThreshold 8
 ```
 
 ### <a name="step-7"></a>7. lépés
@@ -248,15 +282,16 @@ $apimprobe = New-AzureRmApplicationGatewayProbeConfig -Name "apimproxyprobe" -Pr
 Töltse fel a tanúsítványt az SSL-kompatibilis háttérerőforrásokhoz készletben kell használni. Ez az a 4. lépésben megadott ugyanazt a tanúsítványt.
 
 ```powershell
-$authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile <full path to .cer file>
+$authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath
 ```
 
 ### <a name="step-8"></a>8. lépés
 
-Konfigurálja a HTTP-háttérbeállítások az Application Gateway számára. Ide tartoznak a háttérrendszer kérelem megszakadt utána időtúllépési korlát. Ez az érték eltér a mintavétel időkorlátja.
+Konfigurálja a HTTP-háttérbeállítások az Application Gateway számára. Ez magában foglalja a háttérrendszer kérelem, amely után törölve van időtúllépési korlát. Ez az érték eltér a mintavétel időkorlátja.
 
 ```powershell
 $apimPoolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "apimPoolSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimprobe -AuthenticationCertificates $authcert -RequestTimeout 180
+$apimPoolPortalSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "apimPoolPortalSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimPortalProbe -AuthenticationCertificates $authcert -RequestTimeout 180
 ```
 
 ### <a name="step-9"></a>9. lépés
@@ -264,68 +299,33 @@ $apimPoolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "apimP
 A háttérbeli IP-címkészletet konfigurálja **apimbackend** belső virtuális IP-címe az API Management szolgáltatás a fent létrehozott.
 
 ```powershell
-$apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.StaticIPs[0]
+$apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]
 ```
 
 ### <a name="step-10"></a>10. lépés
 
-Hozzon létre egy üres (nem létező) háttérrendszer beállításait. Kérelmek, hogy nem szeretne közzétenni az API-felügyelet az Application Gateway API elérési nyomja le a háttér, és a 404-es adja vissza.
-
-A helyőrző háttérrendszer HTTP beállításainak konfigurálása.
+Az Application Gateway használatára az alapszintű útválasztási szabályokat létrehozni.
 
 ```powershell
-$dummyBackendSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "dummySetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType Basic -HttpListener $listener -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
+$rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Basic -HttpListener $portalListener -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolPortalSetting
 ```
 
-Konfigurálja egy helyőrző háttérrendszer **dummyBackendPool**, amely egy FQDN cím mutat **dummybackend.com**. Az FQDN-cím nem létezik a virtuális hálózatban.
-
-```powershell
-$dummyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "dummyBackendPool" -BackendFqdns "dummybackend.com"
-```
-
-Hozzon létre egy szabályt a beállítás, amelyet az Application Gateway fog használni, amely a nem létező háttérrendszer alapértelmezés szerint **dummybackend.com** a virtuális hálózatban.
-
-```powershell
-$dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistentapis" -Paths "/*" -BackendAddressPool $dummyBackendPool -BackendHttpSettings $dummyBackendSetting
-```
+> [!TIP]
+> -RuleType módosítása és az útválasztást, bizonyos a fejlesztői portál oldalain való hozzáférés korlátozásához.
 
 ### <a name="step-11"></a>11. lépés
 
-Konfigurálja a háttérkészlet URL-cím szabály útvonalai. Ez lehetővé teszi, hogy válassza ki az API-k közül csak az API Management nyilvánosan elérhetővé váljon. Például, ha nincsenek `Echo API` (/ echo /) `Calculator API` (/calc/ stb.) ügyeljen csak `Echo API` interneten).
-
-A következő példában létrehozunk egy egyszerű szabályt a "/ echo /" elérési út útválasztási forgalmat a háttérbeli "apimProxyBackendPool".
-
-```powershell
-$echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
-```
-
-Az elérési út nem egyezik az elérésiút-szabályok az API Management szeretnénk, ha az elérési út térkép szabálykonfiguráció is konfigurálja egy alapértelmezett háttér-címkészletet **dummyBackendPool**. Ha például http://api.contoso.net/calc/sum kerül **dummyBackendPool** , az alapértelmezett címkészlet nem egyező forgalom meghatározott.
-
-```powershell
-$urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting
-```
-
-A fenti lépés biztosítja, hogy csak az elérési út vonatkozó kérések "/ echo" használata engedélyezett az Application Gatewayen keresztül. Az Application Gateway, ha elérhető az internetről érkező kérelmek más API-khoz, az API Management szolgáltatásban konfigurált 404-es hibát kivételt fogja kijelezni.
-
-### <a name="step-12"></a>12. lépés
-
-Hozzon létre egy szabály beállítása az Application Gateway URL-cím-alapú útválasztás használatához.
-
-```powershell
-$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
-```
-
-### <a name="step-13"></a>13. lépés
-
-Az Application Gateway konfigurálása a példányok számát és méretét. Itt a [WAF Termékváltozatban](../application-gateway/application-gateway-webapplicationfirewall-overview.md) az API Management-erőforrás a biztonság fokozása érdekében.
+Az Application Gateway konfigurálása a példányok számát és méretét. Ebben a példában használjuk a [WAF Termékváltozatban](../application-gateway/application-gateway-webapplicationfirewall-overview.md) az API Management-erőforrás a biztonság fokozása érdekében.
 
 ```powershell
 $sku = New-AzureRmApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
 ```
 
-### <a name="step-14"></a>14. lépés
+### <a name="step-12"></a>12. lépés
 
 WAF "Megelőzési" módban kell konfigurálni.
+
 ```powershell
 $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
@@ -335,7 +335,8 @@ $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enab
 Hozzon létre egy Application Gateway az előző lépésekből származó összes konfigurációs objektumot.
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name $applicationGatewayName -ResourceGroupName $resourceGroupName  -Location $location -BackendAddressPools $apimProxyBackendPool, $dummyBackendPool -BackendHttpSettingsCollection $apimPoolSetting, $dummyBackendSetting  -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert -AuthenticationCertificates $authcert -Probes $apimprobe
+$appgwName = "apim-app-gw"
+$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $resGroupName -Location $location -BackendAddressPools $apimProxyBackendPool -BackendHttpSettingsCollection $apimPoolSetting, $apimPoolPortalSetting  -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener, $portalListener -RequestRoutingRules $rule01, $rule02 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert, $certPortal -AuthenticationCertificates $authcert -Probes $apimprobe, $apimPortalProbe
 ```
 
 ## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>Az Application Gateway erőforrás nyilvános DNS-nevet, az API Management proxyeszköznév CNAME
@@ -345,7 +346,7 @@ Az átjáró létrehozása után a következő lépés a kommunikációra szolg�
 Az Application Gateway DNS-nevet használjon, hozzon létre egy CNAME rekordot, amely az APIM-proxy állomás neve (Példa: `api.contoso.net` a fenti példákban) a DNS-névhez. Konfigurálja az előtérbeli IP-CNAME-rekordot, hogy az Application Gateway és a kapcsolódó IP/DNS-név publicipaddress használatával adatai olvashatók be. A-bejegyzések használata nem ajánlott, mivel a virtuális IP-cím változhat az átjáró újraindítása.
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -Name "publicIP01"
+Get-AzureRmPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
 ##<a name="summary"> </a> Összefoglalás

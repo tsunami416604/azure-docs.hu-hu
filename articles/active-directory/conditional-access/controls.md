@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5bf8c491a3edc2efa8fa6361f4c5aec2deb30ccb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2774111ff22572904a958037eed4c17f524770ce
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531628"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591591"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés? 
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások. Feltételes hozzáférési szabályzatot adja meg a válasz ("Ehhez") való indítására, a házirend ("Amikor ez megtörténik") az az oka. 
 
-![Vezérlés](./media/controls/10.png)
+![Vezérlő](./media/controls/10.png)
 
 
 A feltételes hozzáférés, a környezetben 
@@ -40,7 +40,7 @@ A feltételes hozzáférés, a környezetben
 
 Egy feltétel utasítást a vezérlők együttes használata a feltételes hozzáférési szabályzatot jelöli.
 
-![Vezérlés](./media/controls/61.png)
+![Vezérlő](./media/controls/61.png)
 
 Egyes vezérlőelemek követelmény, hogy teljesülnek a személy által vagy rendszer jelentkezik be, vagy a felhasználó korlátozás teheti a bejelentkezést követően. 
 
@@ -59,7 +59,7 @@ Az engedély teljesen letiltja a hozzáférést, vagy a kívánt vezérlők kiv�
 - Az összes kiválasztott teljesítendő vezérlők (*és*) 
 - Az egyik kijelölt vezérlő teljesítendő (*vagy*)
 
-![Vezérlés](./media/controls/17.png)
+![Vezérlő](./media/controls/17.png)
 
 
 
@@ -77,15 +77,15 @@ Multi-factor authentication szolgáltatás használatával segít az erőforrás
 
 ### <a name="compliant-device"></a>Megfelelő eszköz
 
-Konfigurálhatja, amelyek a eszközalapú feltételes hozzáférési szabályzatokat. Az eszközalapú feltételes hozzáférési szabályzat célja, hogy hozzáférést csak a konfigurált erőforrások [felügyelt eszközök](../active-directory-conditional-access-policy-connected-applications.md#managed-devices). A megfelelő eszköz megkövetelése meg kell adnia az egyik lehetőség van egy felügyelt eszközt. Ezt a beállítást, ha a feltételes hozzáférési szabályzat engedélyezi a hozzáférést a hozzáférési kísérletek eszközökkel, amelyek [regisztrált](../devices/overview.md) az Azure Active Directory és a rendszer megfelelőként megjelölt vagy (az összes eszköz operációs rendszere) az Intune által a külső MDM-rendszer Windows 10 rendszerű eszközökhöz. Eszköz operációs rendszer típusa Windows 10-es nem harmadik fél mobileszköz-kezelési rendszerek nem támogatottak.
+Konfigurálhatja, amelyek a eszközalapú feltételes hozzáférési szabályzatokat. Az eszközalapú feltételes hozzáférési szabályzat célja, hogy hozzáférést csak a konfigurált erőforrások [felügyelt eszközök](require-managed-devices.md). A megfelelő eszköz megkövetelése meg kell adnia az egyik lehetőség van egy felügyelt eszközt. Ezt a beállítást, ha a feltételes hozzáférési szabályzat engedélyezi a hozzáférést a hozzáférési kísérletek eszközökkel, amelyek [regisztrált](../devices/overview.md) az Azure Active Directory és a rendszer megfelelőként megjelölt vagy (az összes eszköz operációs rendszere) az Intune által a külső MDM-rendszer Windows 10 rendszerű eszközökhöz. Eszköz operációs rendszer típusa Windows 10-es nem harmadik fél mobileszköz-kezelési rendszerek nem támogatottak.
 
-További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok beállítása](../active-directory-conditional-access-policy-connected-applications.md).
+További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok beállítása](require-managed-devices.md).
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Hibrid Azure AD-csatlakoztatott eszköz
 
 Az Azure AD-eszköztől az eszközalapú feltételes hozzáférési szabályzatok konfigurálására egy másik lehetőség egy hibrid megkövetelése. Ez a követelmény a Windows asztali számítógépek, laptopok és a helyszíni Active Directory-tartományhoz csatlakoztatott vállalati táblagépek hivatkozik. Ha ezt a beállítást, a feltételes hozzáférési szabályzat biztosít a helyszíni Active Directory és az Azure Active Directoryhoz csatlakoztatott eszközök a hozzáférés a hozzáférési kísérletek.  
 
-További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok beállítása](../active-directory-conditional-access-policy-connected-applications.md).
+További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok beállítása](require-managed-devices.md).
 
 
 
@@ -97,7 +97,7 @@ Mivel az alkalmazottak mobileszközök mind a személyes és munkahelyi feladato
 Használhat [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy) független a mobileszköz-kezelési (MDM) megoldásoktól a vállalati adatok védelme érdekében.
 
 
-A jóváhagyott ügyfélalkalmazások is egy ügyfélalkalmazás, amely megpróbálja elérni a felhőalapú alkalmazások támogatásához szükséges [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást. Más néven van egy feltételes hozzáférési szabályzat megköveteli a jóváhagyott ügyfélalkalmazások [alapján az alkalmazásalapú feltételes hozzáférési szabályzat](../active-directory-conditional-access-mam.md). Támogatott a jóváhagyott ügyfélalkalmazások listájának megtekintéséhez lásd: [jóváhagyott alkalmazás megkövetelése ügyfél](../active-directory-conditional-access-technical-reference.md#approved-client-app-requirement).
+A jóváhagyott ügyfélalkalmazások is egy ügyfélalkalmazás, amely megpróbálja elérni a felhőalapú alkalmazások támogatásához szükséges [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást. Más néven van egy feltételes hozzáférési szabályzat megköveteli a jóváhagyott ügyfélalkalmazások [alapján az alkalmazásalapú feltételes hozzáférési szabályzat](app-based-conditional-access.md). Támogatott a jóváhagyott ügyfélalkalmazások listájának megtekintéséhez lásd: [jóváhagyott alkalmazás megkövetelése ügyfél](technical-reference.md#approved-client-app-requirement).
 
 
 ### <a name="terms-of-use"></a>Használati feltételek
@@ -133,12 +133,12 @@ A JSON-adatokat másolja és illessze be a kapcsolódó szövegmezőbe. Nem ne m
 
 Egyéni vezérlő létrehozásának lehetősége van a **kezelés** szakaszában a **feltételes hozzáférési** lapot.
 
-![Vezérlés](./media/controls/82.png)
+![Vezérlő](./media/controls/82.png)
 
 Kattintson a **új egyéni vezérlő**, a JSON-adatok a vezérlőelem egy szövegmező megnyílik egy panel.  
 
 
-![Vezérlés](./media/controls/81.png)
+![Vezérlő](./media/controls/81.png)
 
 
 ### <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
@@ -162,7 +162,7 @@ Egyéni vezérlő szerkesztése, törlése az aktuális vezérlőelem, és hozzo
 
 A munkamenet-vezérlők a funkciók korlátozását teszik lehetővé a felhőalkalmazásokban. A munkamenet-vezérlők felhőalkalmazások tartat be, és az alkalmazáshoz a munkamenet-információk az Azure AD által biztosított további információk alapján.
 
-![Vezérlés](./media/controls/31.png)
+![Vezérlő](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Alkalmazás által kényszerített korlátozások használata
 

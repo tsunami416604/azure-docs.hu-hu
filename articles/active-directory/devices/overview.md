@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 151aa2f8065c7232284c560ff515afab40ae7f5c
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 7e71ff5f5da17165d5127f3547d8eb0756411b8c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414979"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597693"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Az Eszközfelügyelet az Azure Active Directory bemutatása
 
@@ -32,7 +32,7 @@ Mobileszközök és a felhő-és felhőközpontú világában Azure Active Direc
 
 Eszközön a felhasználók egyre hozzáférés a vállalati eszközöket. A vállalati eszközök védelme informatikai rendszergazdaként, érdemes szabályozhatják, ezeket az eszközöket. Ez lehetővé teszi, hogy győződjön meg arról, hogy a felhasználók az erőforrásokhoz hozzáférő eszközei megfeleljenek a biztonsági és megfelelőségi szabványoknak. 
 
-Eszközkezelés egyben alapját [eszközalapú feltételes hozzáférési](../active-directory-conditional-access-policy-connected-applications.md). Eszközalapú feltételes hozzáféréssel biztosíthatja, hogy a környezetben lévő erőforrások elérése csak akkor lehetséges, a felügyelt eszközökkel.   
+Eszközkezelés egyben alapját [eszközalapú feltételes hozzáférési](../conditional-access/require-managed-devices.md). Eszközalapú feltételes hozzáféréssel biztosíthatja, hogy a környezetben lévő erőforrások elérése csak akkor lehetséges, a felügyelt eszközökkel.   
 
 Ez a cikk ismerteti, hogyan Eszközfelügyelet az Azure Active Directoryban.
 
@@ -178,7 +178,7 @@ Egy USB-szabály használjon:
 
 - Áttekintheti az Azure Portalon eszközök felügyelete, lásd: [az Eszközfelügyelet az Azure portal használatával](device-management-azure-portal.md)
 
-- Eszközalapú feltételes hozzáférési kapcsolatos további információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók](../active-directory-conditional-access-policy-connected-applications.md).
+- Eszközalapú feltételes hozzáférési kapcsolatos további információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók](../conditional-access/require-managed-devices.md).
 
 - A telepítő:
     - Az Azure Active Directory regisztrált Windows 10-es eszközök, lásd: [konfigurálása Azure Active Directoryban regisztrált Windows 10-eszközök](../user-help/device-management-azuread-registered-devices-windows10-setup.md)

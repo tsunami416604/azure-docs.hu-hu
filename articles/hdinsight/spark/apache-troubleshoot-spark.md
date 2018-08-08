@@ -1,120 +1,114 @@
 ---
-title: Hibaelhárítás Spark on Azure HDInsight segítségével |} Microsoft Docs
-description: Az Apache Spark és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok.
-keywords: Az Azure HDInsight Spark, gyakran ismételt kérdések, hibaelhárítási útmutató, gyakori problémákat, Alkalmazáskonfiguráció, Ambari
-services: Azure HDInsight
-documentationcenter: na
-author: arijitt
-manager: ''
-editor: ''
-ms.assetid: 25D89586-DE5B-4268-B5D5-CC2CE12207ED
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
+title: A Spark on Azure HDInsight hibaelhárítása
+description: Az Apache Spark és az Azure HDInsight használatához kapcsolatos gyakori kérdésekre adott válaszok.
+services: hdinsight
+ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+ms.topic: conceptual
 ms.date: 11/2/2017
-ms.author: arijitt
-ms.openlocfilehash: 15fe5e6d2acdb8d782342b21f5db81443c44843d
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 7c7f89864d9394ff4527f9a0354b9276f7c01c49
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164533"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591737"
 ---
-# <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Hibaelhárítás Spark on Azure HDInsight segítségével
+# <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Az Azure HDInsight Spark hibaelhárítása
 
-A legfőbb problémákat és azok megoldásait ismerje meg az Apache Ambari az Apache Spark Payload van jelen használatakor.
+A leggyakoribb problémák és azok megoldásait ismerje meg az Apache Ambari az Apache Spark hasznos adatot használatakor.
 
-## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>Hogyan konfigurálhatom a Spark-alkalmazások fürtök az Ambari használatával?
+## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>Hogyan konfigurálhatom egy Spark-alkalmazás a fürtök az Ambari használatával?
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-A konfigurációs értékeket az eljárás végrehajtásához a Hdinsightban korábban beállított. Határozza meg, melyik Spark konfigurációk kell állítani, és milyen értékeket, olvassa el [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception). 
+A konfigurációs értékeket az eljárás végrehajtásához korábban be lett beállítva, a HDInsight. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
-1. A fürtök, jelölje ki **Spark2**.
+1. Fürtök listájából válassza ki **Spark2**.
 
-    ![Válassza ki a fürtöt a listából](./media/apache-troubleshoot-spark/update-config-1.png)
+    ![Válassza ki a fürt listából](./media/apache-troubleshoot-spark/update-config-1.png)
 
 2. Válassza ki a **Configs** fülre.
 
     ![Válassza ki a Configs lap](./media/apache-troubleshoot-spark/update-config-2.png)
 
-3. Válassza a konfigurációk közül, **egyéni-spark2-alapértelmezett**.
+3. A konfigurációk, jelölje ki **egyéni-spark2 – alapértelmezett**.
 
-    ![Válassza ki az egyéni-spark-alapértelmezései](./media/apache-troubleshoot-spark/update-config-3.png)
+    ![Válassza ki az egyéni – a spark-alapértelmezései](./media/apache-troubleshoot-spark/update-config-3.png)
 
-4. Keresse meg a beállítás, amely át kell állítania, mint például **spark.executor.memory**. Ebben az esetben értékének **4608m** túl nagy.
+4. Keresse meg a beállítás, amely kell beállítani, mint például **spark.executor.memory**. Ebben az esetben értékét **4608m** túl magas.
 
-    ![Válassza ki a spark.executor.memory mező](./media/apache-troubleshoot-spark/update-config-4.png)
+    ![Válassza ki a spark.executor.memory mezőt](./media/apache-troubleshoot-spark/update-config-4.png)
 
-5. Adja meg az értéket az ajánlott beállítás. Az érték **2048m** ezt a beállítást ajánlott.
+5. Állítsa az értékét az ajánlott beállítás. Az érték **2048m** állítja ezt a beállítást javasoljuk.
 
-    ![2048 m értékének módosítása](./media/apache-troubleshoot-spark/update-config-5.png)
+    ![Módosítsa az értéket a 2048m](./media/apache-troubleshoot-spark/update-config-5.png)
 
-6. Mentse az értéket, és mentse a konfigurációt. Az eszköztáron válassza **mentése**.
+6. Mentse az értéket, és mentse a konfigurációt. Válassza az eszköztár **mentése**.
 
     ![A beállítás és konfiguráció mentése](./media/apache-troubleshoot-spark/update-config-6a.png)
 
-    Ha a konfigurációkat kezeléséről értesítést kap. Tekintse meg az elemeket, és adja **mégis folytatni**. 
+    Ha a figyelmet igénylő konfigurációk értesítést kap. Jegyezze fel az elemeket, és válassza ki **folytatja ennek ellenére**. 
 
-    ![Válassza ki mégis folytatni](./media/apache-troubleshoot-spark/update-config-6b.png)
+    ![Válassza ki folytatja ennek ellenére](./media/apache-troubleshoot-spark/update-config-6b.png)
 
-    Írjon megjegyzést a konfigurációs módosításokat, majd válassza ki **mentése**.
+    Írjon megjegyzést a konfigurációs változásokról, és válassza ki **mentése**.
 
-    ![Adja meg a végrehajtott változtatásokat Megjegyzés](./media/apache-troubleshoot-spark/update-config-6c.png)
+    ![Adja meg a végzett módosítások kapcsolatos megjegyzés](./media/apache-troubleshoot-spark/update-config-6c.png)
 
-7. Amikor egy konfigurációs mentésekor kéri indítsa újra a szolgáltatást. Válassza ki **indítsa újra a**.
+7. Amikor egy konfigurációs mentette, a rendszer kéri, indítsa újra a szolgáltatást. Válassza ki **indítsa újra a**.
 
-    ![Válassza ki az újraindítást](./media/apache-troubleshoot-spark/update-config-7a.png)
+    ![Válassza az újraindítás](./media/apache-troubleshoot-spark/update-config-7a.png)
 
     Erősítse meg az újraindítást.
 
-    ![Válassza ki erősítse meg, indítsa újra az összes](./media/apache-troubleshoot-spark/update-config-7b.png)
+    ![Indítsa újra az összes jóváhagyás kijelölése](./media/apache-troubleshoot-spark/update-config-7b.png)
 
-    Futó folyamatok tekintheti meg.
+    A futó folyamatok tekintheti meg.
 
     ![Tekintse át a futó folyamatok](./media/apache-troubleshoot-spark/update-config-7c.png)
 
-8. Konfigurációk is hozzáadhat. Válassza a konfigurációk közül, **egyéni-spark2-alapértelmezett**, majd válassza ki **tulajdonság hozzáadása**.
+8. Konfigurációkat adhat hozzá. Konfigurációk listájából válassza ki **egyéni-spark2 – alapértelmezett**, majd válassza ki **tulajdonság hozzáadása**.
 
     ![Válassza ki a tulajdonság hozzáadása](./media/apache-troubleshoot-spark/update-config-8.png)
 
-9. Adja meg az új tulajdonság. Egy-egy tulajdonság az egyes beállítások, például az adatok típusát egy párbeszédpanel segítségével adhat meg. Vagy több tulajdonságok adhatók soronként egy definíciót használatával. 
+9. Adjon meg egy új tulajdonság. Egyetlen tulajdonság meghatározhatja az egyes beállítások, például az adattípus párbeszédpanel használatával. Vagy több tulajdonságok adhatók soronként egy definíció használatával. 
 
-    Ebben a példában a **spark.driver.memory** tulajdonságot definiálták, értékű **4g**.
+    Ebben a példában a **spark.driver.memory** tulajdonság értékkel van definiálva **4g**.
 
-    ![Új tulajdonság megadása](./media/apache-troubleshoot-spark/update-config-9.png)
+    ![Adja meg az új tulajdonság](./media/apache-troubleshoot-spark/update-config-9.png)
 
-10. A konfiguráció mentéséhez, majd indítsa újra a szolgáltatást, 6 és 7 lépésben leírtak szerint.
+10. A konfiguráció mentéséhez, és indítsa újra a 6 és 7 lépésben ismertetett módon.
 
-Ezek a változások fürt kiterjedő, de a Spark feladat elküldése felülbírálható.
-
-### <a name="additional-reading"></a>További olvasnivaló
-
-[Spark feladat elküldése a HDInsight-fürtökön](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
-
-## <a name="how-do-i-configure-a-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hogyan konfigurálhatom a Spark-alkalmazások fürtökön Jupyter notebook használatával?
-
-### <a name="resolution-steps"></a>A megoldás lépései
-
-1. Határozza meg, melyik Spark konfigurációk kell állítani, és milyen értékeket, olvassa el [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception).
-
-2. A Jupyter notebook első cellájában után a **%% konfigurálása** irányelv, érvényes JSON formátumban adja meg a Spark-konfigurációk. A tényleges értékek módosítása szükséges:
-
-    ![A konfiguráció hozzáadása](./media/apache-troubleshoot-spark/add-configuration-cell.png)
+Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felülbírálható.
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[Spark feladat elküldése a HDInsight-fürtökön](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön a Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-livy-on-clusters"></a>Hogyan konfigurálhatom a Spark-alkalmazások fürtökön Livy használatával?
+## <a name="how-do-i-configure-a-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hogyan konfigurálhatom egy Spark-alkalmazás a fürtök Jupyter notebook használatával?
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell állítani, és milyen értékeket, olvassa el [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception). 
+1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception).
 
-2. Küldje el a külső alkalmazás Livy a REST-ügyfelek, például cURL használatával. Használjon a következőhöz hasonló parancsot. A tényleges értékek módosítása szükséges:
+2. Az első olyan cellára, a Jupyter notebookot az után a **%% konfigurálása** irányelv, érvényes JSON formátumban adja meg a Spark-konfigurációkat. A tényleges értékek módosítása szükséges:
+
+    ![Konfiguráció hozzáadása](./media/apache-troubleshoot-spark/add-configuration-cell.png)
+
+### <a name="additional-reading"></a>További olvasnivaló
+
+[A HDInsight-fürtökön a Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+
+
+## <a name="how-do-i-configure-a-spark-application-by-using-livy-on-clusters"></a>Hogyan konfigurálhatom egy Spark-alkalmazás-fürtökön a Livy használatával?
+
+### <a name="resolution-steps"></a>A megoldás lépései
+
+1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception). 
+
+2. Küldje el a Livy-, Spark-alkalmazás REST-ügyfél, például a cURL használatával. Használjon az alábbihoz hasonló parancsot. A tényleges értékek módosítása szükséges:
 
     ```apache
     curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
@@ -122,16 +116,16 @@ Ezek a változások fürt kiterjedő, de a Spark feladat elküldése felülbír�
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[Spark feladat elküldése a HDInsight-fürtökön](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön a Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-spark-submit-on-clusters"></a>Hogyan konfigurálhatók a alkalmazás használatával spark-elküldeni egy Spark-fürtökön?
+## <a name="how-do-i-configure-a-spark-application-by-using-spark-submit-on-clusters"></a>Hogyan konfigurálhatom egy Spark-alkalmazás használatával spark-submit fürtökön?
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell állítani, és milyen értékeket, olvassa el [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception).
 
-2. A következőhöz hasonló parancs használatával indítsa el a spark-rendszerhéjat. A tényleges érték a konfigurációk módosítása, szükség esetén: 
+2. Indítsa el a spark-shell az alábbihoz hasonló parancs használatával. Szükség szerint módosítsa a konfiguráció a tényleges érték: 
 
     ```apache
     spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
@@ -139,14 +133,14 @@ Ezek a változások fürt kiterjedő, de a Spark feladat elküldése felülbír�
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[Spark feladat elküldése a HDInsight-fürtökön](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön a Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="what-causes-a-spark-application-outofmemoryerror-exception"></a>OutofMemoryError Alkalmazáskivétel mi okozza a Spark?
 
 ### <a name="detailed-description"></a>Részletes leírás
 
-A Spark-alkalmazások nem sikerül, a következő típusú nem kezelt kivételekkel:
+A Spark-alkalmazás meghibásodik, a nem kezelt kivételek a következő típusú:
 
 ```apache
 ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439) 
@@ -190,15 +184,15 @@ java.lang.OutOfMemoryError
 
 ### <a name="probable-cause"></a>Lehetséges ok
 
-Ennek a kivételnek ennek legvalószínűbb oka, hogy nincs elég memória a halommemória a Java virtuális gépek (JVMs) van lefoglalva. Ezek JVMs végrehajtója, vagy az illesztőprogramok végrehajtása a Spark alkalmazás részeként. 
+A kivétel legvalószínűbb oka az, hogy a nem elegendő halommemória a Java virtuális gépekhez (JVMs) van lefoglalva. Ezek JVMs vannak vagy illesztőprogramként indít el illesztőprogramokat a Spark-alkalmazás részeként. 
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg a maximális méretét az adatok a Spark alkalmazás kezeli. Egy becslés, a bemeneti adatok, a köztes adatokat a bemeneti adatok átalakítása által létrehozott és a kimeneti adatok, ha az alkalmazás további van a köztes adatok átalakítása előállított maximális mérete alapján végezheti el. Ez a folyamat az ismétlődő lehet, ha egy kezdeti formális becslés nem hajtható végre. 
+1. Határozza meg a maximális méretet, az adatok a Spark alkalmazás kezeli. A bemeneti adatok az előállított a bemeneti adatok átalakításával keletkező köztes adatok és a kimeneti adatokat, amelyek jön létre, amikor az alkalmazás további formálja át a köztes adatok maximális mérete alapján egy találgatásos teheti meg. Ez a folyamat az ismétlődő lehet, ha nem választja ki egy hivatalos kezdeti becslésre. 
 
-2. Győződjön meg arról, hogy a HDInsight-fürt, amely használni fogja memória és a külső alkalmazás befogadásához magok elegendő erőforrással rendelkezik-e. A YARN felhasználói felületen az értékek a fürt metrikák szakasza megtekintésével segítségével meghatározhatja a **használt memória** vs. **Memória összesen**, és **VCores használt** vs. **VCores összesen**.
+2. Győződjön meg arról, hogy a HDInsight-fürtöt fog használni, memória és a Spark-alkalmazás maggal elegendő erőforrással rendelkezik-e. Megadhatja, hogy ez a fürt metrikáit ismertető szakaszban a YARN felhasználói felületén, az értékek megtekintésével **felhasznált memória** vs. **Teljes memória**, és **használatban lévő virtuális magok** vs. **Virtuális magok összesen**.
 
-3. A következő Spark konfigurációt állítson be megfelelő értékekre, amely nem haladhatja meg a rendelkezésre álló memória és -magok 90 %-át. Az értékek is a Spark-alkalmazások memóriaigényének belül kell lennie: 
+3. Állítsa be a következő Spark konfigurációk megfelelő értékekre, amely nem haladhatja meg a rendelkezésre álló memória és magok 90 %-át. Az értékeket is a Spark-alkalmazás memóriakövetelményei belül kell lennie: 
 
     ```apache
     spark.executor.instances (Example: 8 for 8 executor count) 
@@ -210,12 +204,12 @@ Ennek a kivételnek ennek legvalószínűbb oka, hogy nincs elég memória a hal
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
     ```
 
-    Az összes végrehajtója teljes memóriahasználatát kiszámítása: 
+    A kiszámítása az összes végrehajtóval által használt teljes memória: 
     
     ```apache
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
-   A kiszámítása a teljes memória méretét az illesztőprogram használják:
+   A kiszámítása az illesztőprogram által használt a teljes memória:
     
     ```apache
     spark.driver.memory + spark.yarn.driver.memoryOverhead
@@ -223,8 +217,8 @@ Ennek a kivételnek ennek legvalószínűbb oka, hogy nincs elég memória a hal
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-- [Spark memória – áttekintés](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [A Spark on HDInsight-fürt alkalmazások hibakeresése](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [A Spark memória – áttekintés](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
+- [Egy HDInsight-fürtön a Spark-alkalmazás hibakeresése](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>Lásd még:

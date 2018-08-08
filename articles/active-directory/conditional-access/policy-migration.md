@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: fc51282717f713bbe924ad0f1b11a9bf894dbee5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: f76995a522d268011af2440d5d91c55dcd3afd16
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581566"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590517"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Mi a házirend az áttelepítés az Azure Active Directory feltételes hozzáférés? 
 
@@ -133,7 +133,7 @@ Ha egy új szabályzatot, amely rendelkezik **Exchange Active Sync** ügyfél al
 ![Azure Active Directory](./media/policy-migration/16.png)
  
 
-[Alkalmazás-alapú](../active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) klasszikus szabályzatok az Office 365 Exchange Online-hoz, beleértve az **Exchange Active Sync** ügyfél alkalmazások feltételként engedélyezése **támogatott** és **nemtámogatott** [eszközplatformok](../active-directory-conditional-access-technical-reference.md#device-platform-condition). Bár az egyes eszközplatformok kapcsolódó új házirendet nem lehet konfigurálni, korlátozhatja a támogatási [támogatott eszközplatformok](../active-directory-conditional-access-technical-reference.md#device-platform-condition) csak. 
+[Alkalmazás-alapú](technical-reference.md#approved-client-app-requirement) klasszikus szabályzatok az Office 365 Exchange Online-hoz, beleértve az **Exchange Active Sync** ügyfél alkalmazások feltételként engedélyezése **támogatott** és **nemtámogatott** [eszközplatformok](technical-reference.md#device-platform-condition). Bár az egyes eszközplatformok kapcsolódó új házirendet nem lehet konfigurálni, korlátozhatja a támogatási [támogatott eszközplatformok](technical-reference.md#device-platform-condition) csak. 
 
 ![Azure Active Directory](./media/policy-migration/65.png)
 
@@ -156,9 +156,9 @@ Ebben az esetben a klasszikus szabályzatok is kialakíthattunk egy új szabály
 
 ### <a name="device-platforms"></a>Eszközplatformok
 
-Klasszikus szabályzatok [alkalmazásalapú vezérlők](../active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) előre konfigurálva, az iOS és Android rendszerhez, mint a [eszköz platform feltétel](../active-directory-conditional-access-technical-reference.md#device-platform-condition). 
+Klasszikus szabályzatok [alkalmazásalapú vezérlők](technical-reference.md#approved-client-app-requirement) előre konfigurálva, az iOS és Android rendszerhez, mint a [eszköz platform feltétel](technical-reference.md#device-platform-condition). 
 
-Az új házirend, ki kell választania a [eszközplatformok](../active-directory-conditional-access-technical-reference.md#device-platform-condition) külön-külön támogatni kíván.
+Az új házirend, ki kell választania a [eszközplatformok](technical-reference.md#device-platform-condition) külön-külön támogatni kíván.
 
 ![Azure Active Directory](./media/policy-migration/41.png)
 

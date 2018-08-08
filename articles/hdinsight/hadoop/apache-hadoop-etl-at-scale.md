@@ -1,145 +1,140 @@
 ---
-title: Bontsa ki, átalakítási és betöltési (ETL) léptékű - Azure HDInsight |} Microsoft Docs
-description: Ismerje meg, a hadooppal a Hdinsightban ETL használatáról.
+title: Kinyerés, átalakítás és betöltés (ETL) nagy léptékben – Azure HDInsight
+description: Ismerje meg, hogyan ETL és a Hadoop HDInsight használatban van.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 9314b8ae8dceb29a9aee63ba3093ab191d4fdef3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: bae6fde75e0939fc1f3f2f9c14f275d18ea2c4e2
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37116132"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598612"
 ---
-# <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerési, átalakítási és betöltési (ETL) léptékű
+# <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerési, átalakítási és betöltési (ETL) ipari méretekben
 
-Kinyerési, átalakítási és betöltési (ETL) az a folyamat, amellyel adatok különböző forrásokból szerzett, gyűjtése szabványos helyen, tisztítani és feldolgozni, és végső soron betölti, amelyből lekérdezhetők adattárolót. Adatok importálása, megtisztítsa tőle helyen és tárolása egy relációs adatok motor örökölt ETL-folyamatokkal. A hdinsight eszközzel a Hadoop ökoszisztémájának összetevők széles választékát támogatja, ETL elvégzését méretekben. 
+Kinyerési, átalakítási és betöltési (ETL) az a folyamat, amellyel adatok különböző forrásokból származó megszerzett, egy standard szintű helyen, tisztítani és feldolgozását, és végső soron tölt be egy adattár, amelyről lekérdezhetők. Adatok importálása, megtisztítsa tőle a helyen és tárolása egy relációs adatok motor hagyományos ETL-folyamatok. A HDInsight Hadoop-ökoszisztéma összetevők számos támogatják a nagy mennyiségű ETL végrehajtása. 
 
-Ez az adatcsatorna HDInsight használatának az az ETL-folyamat lépései röviden:
+Ez a folyamat HDInsight használatának az az ETL-folyamat lehet összegezni:
 
 ![HDInsight ETL áttekintése](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
-Az alábbiakban megismerkedhet a ETL fázisok és a kapcsolódó összetevők.
+A következő szakaszok Fedezze fel az egyes ETL fázisai és a kapcsolódó összetevőket.
 
 ## <a name="orchestration"></a>Adat-előkészítés
 
-Vezénylési történjen az ETL-folyamat minden egyes szakaszába. Hdinsight ETL-feladatok gyakran tartalmaz, amely számos különböző termékek egymással párhuzamosan működik.  Hive segítségével törlése az adatok egy részét, amíg a Pig megtisztítja egy másik része lehet.  Hogy adatok betöltése az Azure SQL Database az Azure Data Lake Store az Azure Data Factory használatával.
+Vezénylési átfogóan az ETL-folyamat minden szakaszában. A HDInsight ETL-feladatok gyakran egymással együttműködve számos különböző termék magában foglalja.  Hive segítségével az adatok bizonyos része tiszta, amíg a Pig törli egy másik része lehet.  Adatok betöltése az Azure SQL Database az Azure Data Lake Store segítségével az Azure Data Factory lehet.
 
-Vezénylési megfelelő időben a megfelelő feladat futtatásához szükséges.
+Vezénylési van szükség a megfelelő feladat futtatásához a megfelelő időben.
 
 ### <a name="oozie"></a>Oozie
 
-Apache Oozie egy munkafolyamat-koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Oozie belül HDInsight-fürtöt, és integrálva van a Hadoop-veremmel. Oozie Apache MapReduce, Apache Pig, Apache Hive és Apache Sqoop támogatja a Hadoop-feladatokat. Oozie feladatok, amelyek rendszerspecifikus, például Java programok vagy héjparancsfájlok ütemezésére ütemezését is használható.
+Az Apache Oozie egy munkafolyamat-koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Az Oozie egy HDInsight-fürtön belül fut, és a Hadoop-veremmel integrálva van. Az Oozie támogatja a Hadoop-feladatok Apache MapReduce, Apache Pig, Apache Hive- és Apache sqoop használatával. Az Oozie is használható a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
 
-További információkért lásd: [Oozie használja az határozza meg, és egy munkafolyamat futtatása a HDInsight Hadoop](../hdinsight-use-oozie-linux-mac.md) bemutatja, hogyan Oozie segítségével egy végpontok közötti adatcsatorna meghajtó részletes bemutatója, lásd: [azok az adatok adatcsatorna](../hdinsight-operationalize-data-pipeline.md). 
+További információkért lásd: [használni az Oozie megadásához és a munkafolyamat futtatása a HDInsight Hadoop-keretrendszerrel](../hdinsight-use-oozie-linux-mac.md) az Oozie használata a meghajtó egy teljes körű folyamatot ismertető részletes bemutatása, lásd: [üzembe helyezése a adatfolyamat](../hdinsight-operationalize-data-pipeline.md). 
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Az Azure Data Factory a platform,--szolgáltatás formájában vezénylési képességeket biztosít. Egy felhőalapú integrációs szolgáltatás, amely lehetővé teszi az adatvezérelt munkafolyamatok létrehozni levezényli és automatizálja az adatmozgás és adatok átalakítása a felhőben is. 
+Az Azure Data Factory a platform--szolgáltatásként formájában koordinálási lehetőségeket biztosít. Egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi, hogy adatvezérelt munkafolyamatok létrehozását irányítják és automatizálják az adatok áthelyezését és átalakítását a felhőben. 
 
 Azure Data Factory használatával:
 
-1. Hozzon létre, és ütemezés szerinti adatvezérelt munkafolyamatok (más néven folyamatok), amely különálló adattároló származó adatok.
-2. Folyamat és a használatával végzett átalakítás számítási szolgáltatásokat, például az Azure HDInsight Hadoop, Spark, az Azure Data Lake Analytics, Azure Batch és Azure Machine Learning.
+1. Hozzon létre, és az adatvezérelt munkafolyamatokat (folyamatokat is nevezik) különböző adattárolókból adatokat beolvasó ütemezése.
+2. Folyamat és az adatokat az átalakítási számítási szolgáltatások, például az Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics, Azure Batch- és Azure Machine Learning.
 3. A kimeneti adatokat olyan adattárakban teheti közzé, mint az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket.
 
 Az Azure Data Factory további információkért lásd: a [dokumentáció](../../data-factory/introduction.md).
 
 ## <a name="ingest-file-storage-and-result-storage"></a>A file storage és az eredmény tárolási betöltési
 
-Forrásadatfájlok általában töltődnek be az Azure Storage vagy az Azure Data Lake Store egy helyre. Tetszőleges méretű fájlok lehetnek, ugyanakkor általában egybesimított fájlokba, például a CSV-k. 
+Forrásadatfájlok általában töltődnek be az Azure Storage vagy az Azure Data Lake Store egy helyre. Fájlok bármilyen formátumú is lehet, de általában egybesimított fájlok, például a CSV-k legyenek. 
 
 ### <a name="azure-storage"></a>Azure Storage 
 
-[Az Azure Storage](https://azure.microsoft.com/services/storage/blobs/) rendelkezik [egyedi méretezhetőségi célok](../../storage/common/storage-scalability-targets.md).  A legtöbb elemzési csomópontok számára Azure Storage arányosan legjobb sok kisebb fájlt a meghatározásakor.  Az Azure Storage biztosítja, hogy ugyanaz a teljesítmény, függetlenül attól, fájlokat vagy méretét (amennyiben a határokon belül áll) fájlok.  Ez azt jelenti, hogy terabájtos adatkészleteket tárolja, és egységes teljesítmény továbbra is megjelenik, függetlenül attól, hogy az adatokat, vagy az adatok egy részét.
+[Az Azure Storage](https://azure.microsoft.com/services/storage/blobs/) rendelkezik [adott teljesítménycélokat](../../storage/common/storage-scalability-targets.md).  A legtöbb elemzési csomópontok esetében az Azure Storage méretezhető legjobb sok kisebb fájlok esetén.  Az Azure Storage garantálja, hogy ugyanazokat a méretezhetőségi, függetlenül attól, hogy hány fájlok, vagy mekkora a fájlokat (amennyiben Ön a határokon belül).  Ez azt jelenti, hogy terabájtnyi adat tárolásához, és továbbra is élvezhesse az állandó teljesítmény érdekében, akár az adatok vagy az adatok egy részét használja.
 
-Az Azure Storage blobs számos különféle típusú rendelkezik.  Egy *hozzáfűző blob* naplókat web vagy érzékelői adatok tárolásához nagyszerű lehetőséget.  
+Az Azure Storage blobok számos különböző típusú rendelkezik.  Egy *hozzáfűző blob* webnapló- vagy érzékelőktől kapott adatok tárolására szolgáló nagyszerű lehetőséget.  
 
-Több blobok környezetekben, sok kiszolgálón való hozzáférés horizontális terjeszthető, de egyetlen blob csak egyetlen kiszolgáló szolgálhatók ki. Blobok logikailag csoportosíthatók blobtárolók, amíg nincsenek nem ez a csoportosítás a particionálási megvalósítását.
+Több blobok számos kiszolgáló azokhoz való hozzáférés horizontális szét lehetnek osztva, de egy blob csak egyetlen kiszolgáló kiszolgálható. Blobok logikailag lehet csoportosítani a blob-tárolók, amíg nincsenek külön particionálási kihatása a csoportosítást.
 
-Az Azure Storage a blob Storage WebHDFS API réteggel is rendelkezik.  Összes szolgáltatásban a HDInsight férhetnek hozzá az Azure Blob Storage fájlok tisztítása adatokat és az adatok feldolgozása hasonló módon, hogy hogyan ezek a szolgáltatások akkor használják a Hadoop elosztott fájlok rendszer (HDFS).
+Az Azure Storage a blob Storage a WebHDFS API-réteget is tartalmaz.  A HDInsight összes szolgáltatás el tudja érni adattisztító és adatfeldolgozási, hasonló módon, hogy hogyan ezeket a szolgáltatásokat a Hadoop elosztott fájlokat (HDFS) használja az Azure Blob Storage-fájlokat.
 
-Adatok általában okozhatnak az Azure Storage PowerShell, az Azure Storage szolgáltatás SDK vagy AZCopy használatával.
+Adatok általában betöltött, PowerShell, az Azure Storage SDK-t vagy az AZCopy használatával Azure Storage-bA.
 
 ### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
-Azure Data Lake Store-(ADLS-) tárháza felügyelt, hyperscale, amely kompatibilis a HDFS analitikai adatok számára.  ADLS HDFS hasonló, és korlátlan méretezhetőség tekintetében teljes kapacitás és az egyes fájlok mérete kínál a Tervező paradigma használja. ADLS nem nagyon jó ha nagyméretű fájlokat, mivel a nagy fájlok tárolhatók több csomópont között.  Particionálás ADLS adatokat a háttérben történik.  Kiemelkedő átviteli sebességet biztosít a több ezer párhuzamos végrehajtóval rendelkező elemzési feladatok futtatásához, amelyekben a több száz terabájt adat olvasása és írása hatékonyan történik.
+Az Azure Data Lake Store (ADLS) egy felügyelt, nagy kapacitású adattár a HDFS-kompatibilis elemzési adatok.  ADLS használ egy tervezési paradigm, amely a HDFS hasonló, és korlátlan skálázhatóság tekintetében teljes kapacitás és az egyes fájlok mérete. ADLS akkor nagyon jó, ha nagy méretű fájlok használata, mivel nagy fájlok tárolhatók több csomóponton.  Az ADLS az adatok particionálása a háttérben történik.  Kiemelkedő átviteli sebességet biztosít a több ezer párhuzamos végrehajtóval rendelkező elemzési feladatok futtatásához, amelyekben a több száz terabájt adat olvasása és írása hatékonyan történik.
 
-Adatok általában okozhatnak az Azure Data Factory, ADLS SDK-k, AdlCopy szolgáltatás, Apache ból a DistCp vagy Apache Sqoop használatával ADLS.  Ezen szolgáltatások használatára nagy mértékben függ az adatokat.  Ha az adatok jelenleg egy meglévő Hadoop-fürttel, használhatja a Apache ból a DistCp, a AdlCopy szolgáltatás vagy az Azure Data Factory.  Ha az Azure Blob Storage, Azure Data Lake Store .NET SDK, az Azure PowerShell vagy az Azure Data Factory használhatja.
+Adatok általában az Azure Data Factory, ADLS SDK-k, AdlCopy szolgáltatás, Apache DistCp vagy az Apache Sqoop használatával ADLS-be lett töltve.  Ezek a szolgáltatások nagymértékben használandó közül melyik attól függ, hogy az adatok.  Ha az adatokat jelenleg egy meglévő Hadoop-fürtöt, az Apache DistCp, AdlCopy szolgáltatás vagy az Azure Data Factory használhat.  Ha az Azure Blob Storage, Azure Data Lake Store .NET SDK, az Azure PowerShell vagy az Azure Data Factory használhat.
 
-ADLS is Azure Event Hubs vagy alatt futó Apache Storm esemény adatfeldolgozást van optimalizálva.
+ADLS is az Azure Event Hub vagy az Apache Storm használatával eseményfogadás van optimalizálva.
 
-#### <a name="considerations-for-both-storage-options"></a>Mindkét tárolási lehetőségek szempontjai
+#### <a name="considerations-for-both-storage-options"></a>Mindkét tárolási lehetőség szempontjai
 
-Feltöltése adatkészletek terabájt tartományba, hálózati késés nagyobb problémát okozhat, különösen akkor, ha az adatokat a helyszíni helyről érkezik.  Ilyen esetben használhatja az alábbi beállítások közül:
+Fel a tartományba terabájtos adatkészleteket, hálózati késés nagyobb problémát jelenthetnek, különösen akkor, ha a helyszíni helyről az adatok várható.  Ezekben az esetekben használhatja az alábbi beállításokat:
 
-* Azure ExpressRoute: Azure ExpressRoute létrehozhatja saját kapcsolatot Azure adatközpontjaiban és a helyszíni infrastruktúra között. Ezek a kapcsolatok nagy mennyiségű adat átvitele egy megbízható beállítást adja meg. További információkért lásd: [Azure ExpressRoute dokumentációja](../../expressroute/expressroute-introduction.md).
+* Az Azure ExpressRoute: Azure ExpressRoute használatával privát kapcsolatok létesíthetők az Azure-adatközpontok és a helyszíni infrastruktúra között. Ezek a kapcsolatok lehetőséget nyújtanak olyan megbízható nagy mennyiségű adat átvitele. További információkért lásd: [Azure ExpressRoute dokumentációja](../../expressroute/expressroute-introduction.md).
 
-* "Offline" feltölteni az adatokat. Használhat [Azure Import/Export szolgáltatás](../../storage/common/storage-import-export-service.md) szállítási merevlemez-meghajtók az adatait az Azure adatközpontba. Az adatok először tölt fel az Azure Storage blobs szolgáltatásban. Ezután [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) vagy a [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) adatok másolása az Azure Storage blobs Data Lake Store az eszközt.
+* "Offline állapotba helyezi" az adatok feltöltése. Használhat [Azure Import/Export szolgáltatás](../../storage/common/storage-import-export-service.md) tehetnek a merevlemez-meghajtók egy Azure-adatközpontban található adatait. Az adatfeltöltés először az Azure Storage-blobokat. Ezután [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) vagy a [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) adatok másolása az Azure Storage-blobokból a Data Lake Store az eszközt.
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-Az Azure SQL DW tárolásához kiváló választás, tisztítani és eredmények előkészítve a jövőbeli elemzés.  Az Azure HDInsight az Azure SQL DW szolgáltatások végrehajtásához használható.
+Az Azure SQL DW tárolásához kiváló választás az tisztítani és az eredmények előkészítve a jövőbeli elemzések.  Az Azure HDInsight segítségével hajtsa végre ezeket a szolgáltatásokat az Azure SQL dw-ben.
 
-Az SQL Data Warehouse (SQL DW) egy relációs adatbázis-tároló koncepción alapuló adatelemzési célokra optimalizálva.  Az Azure SQL DW alapján méretezi a particionált táblákat.  Táblák több csomópont között lehet particionálni.  Azure SQL DW-csomópontok ki van jelölve, a létrehozás időpontjában.  Lehessen őket méretezni bekövetkeztek, de ez egy aktív folyamat igénylő adatátvitelt jelölik. Lásd: [SQL Data Warehouse - kezelése számítási](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) további információt.
+Az Azure SQL Data Warehouse (az SQL DW) egy relációs adatbázis-tároló elemzési feladatokra optimalizált.  Az Azure SQL DW alapján méretezi a particionált táblákat.  Táblák több csomóponton lehet particionálni.  Azure SQL DW-csomópontok ki van jelölve, a létrehozás időpontjában.  Az utólag lehessen méretezni őket, de ez egy aktív folyamat, amely lehet szükség az adatok áthelyezését. Lásd: [SQL Data Warehouse - kezelése számítási](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) további információt.
 
 ### <a name="hbase"></a>HBase
 
-Apache HBase érhető el az Azure HDInsight egy kulcs-érték tárolóban.  Az Apache HBase egy nyílt forráskódú NoSQL-adatbázis, amely a Hadoopra épült, és a Google BigTable után van modellezve. A HBase biztosít performant véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok egy séma nélküli adatbázisban szerint rendezve.
+Az Apache HBase egy Azure HDInsight elérhető kulcs-érték tárolóra.  Az Apache HBase egy nyílt forráskódú NoSQL-adatbázis, amely a Hadoopra épült, és a Google BigTable után van modellezve. A HBase biztosít a nagy teljesítményű véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok séma nélküli adatbázisban oszlopcsaládok szerint rendezve.
 
-Az adatok a táblasorokban vannak tárolva, és a sorokon belüli adatok oszlopcsalád szerint vannak csoportosítva. A HBase egy séma nélküli adatbázis abban az értelemben, hogy az oszlopokat és a bennük tárolt adattípusokat sem kell meghatározni a használatuk előtt. A nyílt forráskód lineáris módon méreteződik át a több ezer csomópontnyi adat petabájtjainak kezelése érdekében. A HBase számíthat adatredundanciát, kötegfeldolgozási és a Hadoop ökoszisztémájának elosztott alkalmazások által biztosított egyéb szolgáltatásokat.   
+Az adatok a táblasorokban vannak tárolva, és a sorokon belüli adatok oszlopcsalád szerint vannak csoportosítva. A HBase egy séma nélküli adatbázis abban az értelemben, hogy az oszlopokat és a bennük tárolt adattípusokat sem kell meghatározni a használatuk előtt. A nyílt forráskód lineáris módon méreteződik át a több ezer csomópontnyi adat petabájtjainak kezelése érdekében. A HBase hagyatkozhat adatredundancia, kötegelt feldolgozás és a Hadoop-ökoszisztéma elosztott alkalmazások által biztosított funkciókat.   
 
-A HBase egy kiváló célja érzékelő és naplózási adatok további elemzés céljából.
+A HBase az érzékelő és a naplózási adatok jövőbeli elemzések kiváló célhelyet.
 
-A HBase a méretezhetőség azt a HDInsight-fürt a csomópontok száma függ.
+A HBase méretezhetőség az adott nyelvtől függ a HDInsight-fürtben található csomópontok számát.
 
 ### <a name="azure-sql-database-and-azure-database"></a>Az Azure SQL Database és az Azure-adatbázis
 
-Az Azure platform,--szolgáltatás (PAAS), három különböző relációs adatbázisok kínál.
+Az Azure platform –-szolgáltatásként (PAAS) kínál három különböző relációs adatbázist.
 
-* [Az Azure SQL Database](../../sql-database/sql-database-technical-overview.md) Microsoft SQL Server megvalósítása. A teljesítményre további információkért lásd: [teljesítményének hangolása az Azure SQL Database](../../sql-database/sql-database-performance-guidance.md).
-* [Azure MySQL-adatbázis](../../mysql/overview.md) Oracle, MySQL megvalósítása.
-* [Azure-adatbázis PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) PostgreSQL megvalósítása.
+* [Az Azure SQL Database](../../sql-database/sql-database-technical-overview.md) a Microsoft SQL Server implementációja. További információ a teljesítményre: [teljesítmény hangolása az Azure SQL Database](../../sql-database/sql-database-performance-guidance.md).
+* [Azure Database for MySQL](../../mysql/overview.md) az Oracle, MySQL implementációja.
+* [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) PostgreSQL implementációja.
 
-Ezeket a termékeket növelheti, ami azt jelenti, hogy azok több Processzor és memória hozzáadásával méretezhető.  Választhatja azt is, premium lemezek használata a termékek i/o-teljesítmény növelése érdekében.
+Ezeket a termékeket, méretezhető, ami azt jelenti, hogy azok több Processzor és memória hozzáadásával horizontálisan.  Prémium szintű lemezek használata a termékeket a jobb i/o-teljesítmény azt is beállíthatja.
 
 ## <a name="azure-analysis-services"></a>Azure Analysis Services 
 
-Az Azure Analysis Services (AAS) döntési támogatási és üzleti analitikai lehetőségeket biztosítva az analitikus adatok üzleti jelentések és ügyfélalkalmazásokat, például a Power BI, Excel, Reporting Services-jelentések, és egyéb adatok használt analitikus adatok motor a képi megjelenítés eszközök.
+Az Azure Analysis Serviceshez (AAS) egy olyan analitikai adatokat motor, Döntéstámogatás és üzleti elemzés, a Reporting Services-jelentések, üzleti jelentések és az ügyfélalkalmazások, például a Power BI-, Excel, az analitikus adatok biztosítása és egyéb adatok vizualizációs eszközök.
 
-Elemzési kockák minden egyes adatkocka rétegek módosításával is méretezhető.  További információkért lásd: [Azure Analysis Services szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/analysis-services/).
+Elemzési kockák szinten minden egyes adatkockához módosításával skálázhatja.  További információkért lásd: [Azure Analysis Services díjszabása](https://azure.microsoft.com/pricing/details/analysis-services/).
 
-## <a name="extract-and-load"></a>Bontsa ki és betöltése
+## <a name="extract-and-load"></a>Kinyerés és betöltés
 
-Miután az adatok létezik-e az Azure-ban, számos szolgáltatás segítségével kigyűjtésére, majd töltse be más termékek.  HDInsight a Sqoop és Flume támogatja. 
+Miután az adatok állnak rendelkezésre az Azure-ban, számos szolgáltatás segítségével csomagolja ki, és betöltheti, egyéb termékek.  HDInsight a Sqoop és Flume támogatja. 
 
 ### <a name="sqoop"></a>Sqoop
 
-Apache Sqoop egy olyan eszköz, hatékonyan közötti adatátvitel strukturált, félig strukturált és strukturálatlan adatforrások tervezték. 
+Az Apache sqoop használatával egy olyan eszköz, hatékonyan közötti adatátvitel strukturált, félig strukturált és strukturálatlan adatforrások tervezve. 
 
-Sqoop MapReduce használ az adatok párhuzamos művelet és a hibatűrés importálása és exportálása.
+Sqoop MapReduce importálása és exportálása az adatok párhuzamos művelet és a hibatűrés biztosításához használja.
 
 ### <a name="flume"></a>Flume
 
-Apache Flume olyan elosztott, megbízható és elérhető szolgáltatás hatékonyan gyűjtése, összesítése és nagy mennyiségű napló adatok áthelyezését. Flume rendelkezik egy egyszerű és rugalmas architektúra adatfolyam-adatfolyamok alapján. Flume hatékony és hibatűrő hangolható megbízhatóság mechanizmusok és sok feladatátvételi és helyreállítási mechanizmusokat. Flume egy egyszerű bővíthető adatmodell, amely lehetővé teszi, hogy az online analitikus alkalmazás használja.
+Az Apache Flume egy elosztott, megbízható és elérhető szolgáltatás hatékonyan összegyűjtése, összevonása, és nagy mennyiségű Teljesítménynapló-adatok áthelyezését. Flume egy egyszerű és rugalmas architektúra alapján a streamelési adatok folyamatokat tartalmaz. Flume, hatékony és hibatűrő hangolható megbízhatóság mechanizmusok és számos feladatátvételi és helyreállítási mechanizmusokat. Flume, amely lehetővé teszi, hogy az online analitikus alkalmazás egyszerű bővíthető adatok modellt használ.
 
-Apache Flume Azure HDInsight nem használható.  Helyszíni Hadoop telepítés Flume segítségével adatokat küldeni a vagy az Azure Storage Blobs, vagy az Azure Data Lake Store.  További információkért lásd: [Apache Flume használata a hdinsightban](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Az Azure HDInsight az Apache Flume nem használható.  Egy helyi Hadoop-telepítés Flume használatával vagy az Azure Storage-Blobokkal, vagy az Azure Data Lake Store adatküldéshez.  További információkért lásd: [Apache Flume használata a HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
 ## <a name="transform"></a>Átalakítás
 
-Amennyiben az adatok a választott helyen szerepel, megtisztítsa tőle, kombinálhatja, vagy egy adott használati mód előkészíti szüksége.  Hive, Pig és Spark SQL az összes helyes döntések az adott munka.  Ezek használatát támogatja a hdinsight platformon. 
+Miután adatokat már létezik a megadott helyre, kell megtisztítsa tőle, összevonásához vagy felkészítse az egy adott használati módot.  Hive, Pig és a Spark SQL a munka jellege jó lehetőségeit.  Ezek mind támogatottak a HDInsight. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Pig használata a HDInsight Hadoop](hdinsight-use-pig.md)
-* [Apache Hive használja, mint az ETL-eszköz](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [Az Apache Hive használatával egy ETL-eszközként](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 

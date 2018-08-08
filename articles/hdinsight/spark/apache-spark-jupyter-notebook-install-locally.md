@@ -1,25 +1,20 @@
 ---
-title: Helyi Jupyter telepítése & csatlakozni egy Azure HDInsight Spark-fürt |} A Microsoft Docs
-description: Ismerje meg, hogyan telepítse a Jupyter notebook helyileg a számítógépen, és csatlakoztassa az Azure HDInsight az Apache Spark-fürt.
+title: Helyi Jupyter telepítése és csatlakozás a Spark on Azure HDInsight
+description: Ismerje meg, hogyan telepítse a Jupyter notebook helyileg a számítógépen, és csatlakoztassa egy Apache Spark-fürt.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 48593bdf-4122-4f2e-a8ec-fdc009e47c16
 ms.service: hdinsight
+author: jasonwhowell
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: 72850bc7d7c86f2fefd1b8f4311b038ddd7c8b33
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: jasonh
+ms.openlocfilehash: 5e1a089f24a3223220b703bd4225e2750c7cae72
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423544"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619243"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook telepítse a számítógépre, és csatlakozzon az Apache Spark on HDInsight
 

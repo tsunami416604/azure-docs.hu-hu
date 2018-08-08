@@ -1,147 +1,142 @@
 ---
-title: Magas rendelkezésre állás a Hadoop - Azure HDInsight |} Microsoft Docs
-description: Ismerje meg, hogyan HDInsight-fürtök javítása a megbízhatóság és rendelkezésre állás további központi csomópontra. Ismerje meg, milyen hatással van ez Hadoop szolgáltatások például az Ambari és a Hive, és csatlakozni külön-külön minden átjárócsomópont SSH használatával.
+title: Magas rendelkezésre állás a Hadoop – Azure HDInsight
+description: Ismerje meg, hogyan HDInsight-fürtök megbízhatóságot és rendelkezésre állás javítása egy további fő csomópontjának használatával. Ismerje meg, hogyan csatlakozni külön-külön mindegyik átjárócsomóponthoz, SSH-val és az Ambari és a Hive, például Hadoop-szolgáltatásokhoz ez befolyásolja.
 services: hdinsight
-editor: cgronlun
-manager: cgronlun
-author: Blackmist
-documentationcenter: ''
-tags: azure-portal
+editor: jasonwhowell
+author: jasonwhowell
 keywords: hadoop magas rendelkezésre állás
-ms.assetid: 99c9f59c-cf6b-4529-99d1-bf060435e8d4
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 835e649959164aee5cc8edb1f2e34170d8a321f1
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.author: jasonh
+ms.openlocfilehash: ad42c1acd795d15bbbe951d90ec9b6b09695cd0a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046679"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592583"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>A HDInsight-beli Hadoop-fürtök rendelkezésre állása és megbízhatósága
 
-A HDInsight-fürtök két központi csomópont a rendelkezésre állás és a Hadoop-szolgáltatás és a futó feladatok megbízhatóságának növelése érdekében adja meg.
+HDInsight-fürtökön elérhető két fő csomópont növelheti a rendelkezésre állás és a Hadoop-szolgáltatásokhoz és a futó feladatok megbízhatóságát.
 
-Hadoop éri el a magas rendelkezésre állást és megbízhatóságot által egy fürt több csomópontja replikálása szolgáltatásaikat és adataikat. Standard disztribúciók Hadoop azonban általában csak egy átjárócsomóponttal rendelkeznek. Bármely, a egy átjárócsomóponttal kimaradás a fürt működésének leállását okozhatja. HDInsight Hadoop által rendelkezésre állásának és megbízhatóságának növelése érdekében két headnodes biztosít.
+Hadoop-szolgáltatásait és adatait egy fürtben több csomóponton replikálásával éri el magas rendelkezésre állás és megbízhatóság. Azonban a hadoop disztribúciók jellemzően az csak egy átjárócsomóponttal rendelkeznek. Az egyetlen átjárócsomóponthoz, bármilyen kimaradásról okozhat a fürt nem működik. HDInsight a Hadoop rendelkezésre állásának és megbízhatóságának javítása érdekében két átjárócsomópontokra biztosít.
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a name="availability-and-reliability-of-nodes"></a>Rendelkezésre állásának és megbízhatóságának csomópontok
+## <a name="availability-and-reliability-of-nodes"></a>Rendelkezésre állás és megbízhatóság csomópontok
 
-HDInsight-fürtök csomópontjai Azure virtuális gépek segítségével lehet létrehozni. Az alábbi szakaszok ismertetik az egyes csomóponttípusok HDInsight használt. 
+Egy HDInsight-fürtben található csomópontok az Azure Virtual Machines vannak megvalósítva. A következő részekben bemutatjuk a HDInsight együttes az egyes csomóponttípusok. 
 
 > [!NOTE]
-> A fürt típusa nem minden csomópont-típusok használhatók. Például egy Hadoop-fürt típusa nem rendelkezik egyetlen Nimbus csomópontot. A HDInsight-fürttípusok által használt csomópontok további információkért lásd: a fürt típusok szakasza a [hdinsight létrehozása Linux-alapú Hadoop-fürtök](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) dokumentum.
+> Nem minden csomóponttípusok egy fürttípus szolgálnak. Például egy Hadoop-fürt típusa nem rendelkezik egyetlen Nimbus csomópontot. További információ a HDInsight-fürttípusok által használt csomópontok fürt típusok című szakaszában talál a [Linux-alapú Hadoop-fürtök a HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) dokumentumot.
 
 ### <a name="head-nodes"></a>Átjárócsomópontok
 
-Ahhoz, hogy a magas rendelkezésre állású Hadoop szolgáltatásokat, a HDInsight két átjárócsomópontokkal biztosít. Mindkét átjárócsomópontokkal egyidejűleg aktív és a HDInsight-fürtön belül futnak. Egyes szolgáltatások, például a HDFS vagy YARN, egy adott időpontban csak "active", egy központi csomóponton. Más szolgáltatásokon, például a hiveserver2-n vagy a Hive Metaadattárhoz aktívak mindkét központi csomóponton egyidejűleg.
+Hadoop-szolgáltatásokhoz, magas rendelkezésre állás biztosítása érdekében a HDInsight két fő csomópont biztosít. Két fő csomópont egyszerre aktív és a HDInsight-fürtön belül futnak. Bizonyos szolgáltatásokhoz, például HDFS- vagy YARN, csak "aktív" az egyik fő csomópont egy adott időpontban. Egyéb szolgáltatások, például a hiveserver2-n vagy a Hive-Metaadattár aktívak a két fő csomópont egy időben.
 
-HEAD csomópontok (és más csomópontok a Hdinsightban) rendelkezik egy numerikus érték, a csomópont állomásnév részeként. Például `hn0-CLUSTERNAME` vagy `hn4-CLUSTERNAME`.
+Fő csomópont (és más csomópontjai a HDInsight) állomásneve a csomópont a részét képező numerikus értéknek kell tartoznia. Ha például `hn0-CLUSTERNAME` vagy `hn4-CLUSTERNAME`.
 
 > [!IMPORTANT]
-> Ne társítson a numerikus értéket-e a csomópont a elsődleges vagy másodlagos. A numerikus értéke csak elérhető adjon egyedi nevet az egyes csomópontok.
+> A numerikus értéket rendel egy csomópont-e elsődleges vagy másodlagos. A numerikus érték csak megtalálható annak minden egyes csomópont esetében egyedi nevét.
 
 ### <a name="nimbus-nodes"></a>Nimbus-csomópontok
 
-Nimbus csomópont alatt futó Storm-fürtökkel érhetők el. A Nimbus csomópontot ellátni hasonló a Hadoop JobTracker terjesztése és feldolgozási munkavégző csomópontokhoz átívelő figyelésére is alkalmas. A HDInsight két Nimbus csomóponttal rendelkezik a Storm-fürtök
+Nimbus-csomópontok Storm-fürtök érhetők el. A Nimbus-csomópontok hasonló funkciókat nyújtanak, mint a Hadoop JobTracker terjesztése és feldolgozási figyelése a munkavégző csomópontok között. HDInsight két Nimbus csomóponttal rendelkezik kínál a Storm-fürtök
 
 ### <a name="zookeeper-nodes"></a>Zookeeper-csomópontok
 
-[ZooKeeper](http://zookeeper.apache.org/) csomópontok használt fő szolgáltatást az átjárócsomópontokkal vezető választás. Akkor is használhatók biztosítását, hogy szolgáltatások, a adatcsomópontokat (munkavégző) és az átjárók tudja, hogy mely átjárócsomópont szolgáltatás főkulcsának aktív. Alapértelmezés szerint a HDInsight nyújt három ZooKeeper csomópontok.
+[ZooKeeper](http://zookeeper.apache.org/) csomópontok használt vezetőválasztási az átjárócsomópontokhoz fő szolgáltatások. Annak érdekében, hogy szolgáltatásokat, az adatcsomópontok (munkavégző) és átjárók tudja, melyik átjárócsomópont szolgáltatás főkulcsának aktív a azok is használhatók. Alapértelmezés szerint a HDInsight három ZooKeeper-csomópontok biztosít.
 
-### <a name="worker-nodes"></a>Munkavégző csomópontokhoz
+### <a name="worker-nodes"></a>Munkavégző csomópontok
 
-Munkavégző csomópontokhoz hajtsa végre a tényleges adatok elemzéséhez, amikor egy feladatot a fürt. Ha egy feldolgozó csomópont leáll, a feladat azt végző elküldve a worker egy másik csomópontra. Alapértelmezés szerint a HDInsight létrehoz négy munkavégző csomópontokhoz. Ez a szám a igényeinek alatt és a fürt létrehozása után módosíthatja.
+Munkavégző csomópontok a tényleges adatelemzés végrehajtása a feladat elküldésekor a fürthöz. Ha egy feldolgozó csomópont meghibásodik, az általa feladat elküldésekor egy másik munkavégző csomópont. Alapértelmezés szerint a HDInsight négy feldolgozó csomópontokat hoz létre. Ez a szám igényei alatt és fürt létrehozása után módosíthatja.
 
 ### <a name="edge-node"></a>Határcsomópont
 
-Egy élcsomópontot aktívan nem vesz részt a fürtön belül adatelemzés. Amikor olyan Hadoop fejlesztők vagy adatszakértőkön szolgál. Élcsomópont él, mint a fürt többi csomópontjának azonos Azure virtuális hálózatban, és közvetlenül hozzáférhet az összes csomóponton. Élcsomópont kritikus Hadoop-szolgáltatás vagy a feladatok távol erőforrások anélkül is használható.
+Élcsomópont aktívan nem vesz részt a fürtön belüli adatok elemzéséhez. Akkor használják a fejlesztők és adatszakértők és a hadoop együttes használata során. Az élcsomópont az azonos Azure virtuális hálózatban, mint a fürt más csomópontjain él, és közvetlenül hozzáférhet az összes csomóponton. Az élcsomópont anélkül, hogy az erőforrások erről a kritikus fontosságú Hadoop-szolgáltatásokhoz vagy elemzési feladatokat is használható.
 
-Jelenleg a HDInsight ML szolgáltatások csak akkor fürt, amely alapértelmezés szerint egy élcsomópontot biztosít. Az ML-szolgáltatások hdinsight élcsomópont használatos teszt R-kód helyileg a csomóponton a fürt elosztott feldolgozásra való továbbítás előtt.
+Machine Learning szolgáltatások a HDInsight jelenleg a csak fürt típusát, amely alapértelmezés szerint egy élcsomópontot biztosít. Machine Learning-szolgáltatásokhoz a HDInsight, az élcsomóponton használt R teszt kód helyileg, a csomópont, mielőtt elküldené azokat a fürt elosztott feldolgozásához.
 
-Tájékoztatást egy élcsomópontot más fürttípusok, tekintse meg a [peremhálózati csomópontok használata a Hdinsightban](hdinsight-apps-use-edge-node.md) dokumentum.
+Élcsomópont az és egyéb fürttípusok a további információkért lásd: a [élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md) dokumentumot.
 
 ## <a name="accessing-the-nodes"></a>A csomópontok elérése
 
-A fürt az interneten keresztül való hozzáférés a nyilvános átjárón keresztül valósul meg. Hozzáférés korlátozódik az átjárócsomópontokkal csatlakozik, és (ha van ilyen) a peremhálózati csomópont. A head csomópontokon futó szolgáltatásokhoz való hozzáférés nem azzal, hogy több átjárócsomópontokkal történik. A nyilvános átjáró irányítja a kérelmeket az átjárócsomóponthoz, amelyen a kért szolgáltatást. Például Ambari kiszolgálóvá a másodlagos átjárócsomópont, ha az átjáró irányítja a bejövő kéréseket az Ambari ahhoz a csomóponthoz.
+Hozzáférés a fürthöz az interneten egy nyilvános átjárót nyugtázását. (Ha van ilyen) és hozzáférési korlátozódik az átjárócsomópontokat csatlakozik az élcsomóponthoz. A fő csomópontokon futó szolgáltatásokhoz való hozzáférés nem kellene több átjárócsomópontokhoz függvénye. A nyilvános átjárót irányítja a kérelmeket az átjárócsomóponthoz, amely a kért szolgáltatást futtatja. Például az Ambari jelenleg a másodlagos átjárócsomóponthoz üzemelteti, ha az átjáró irányítja a kérelmeket az Ambari ahhoz a csomóponthoz.
 
-Hozzáférés a nyilvános átjárón keresztül port 443-as (HTTPS), a 22-es és 23 korlátozódik.
+A nyilvános átjárót keresztüli eléréshez port 443-as (HTTPS), a 22-es és a 23 korlátozódik.
 
-* Port __443-as__ Ambari és egyéb webes felhasználói felületén vagy a head csomópontokon futó REST API-k elérésére szolgál.
+* Port __443-as__ használatos az Ambari és egyéb webes felhasználói felületen vagy REST API-k, a központi csomóponton elérésére.
 
-* Port __22__ elérni az elsődleges átjárócsomópont vagy élcsomópont az SSH használatával.
+* Port __22-es__ használatával érheti el az elsődleges átjárócsomóponthoz vagy az élcsomópont SSH-n keresztül.
 
-* Port __23__ az SSH a másodlagos átjárócsomópont eléréséhez használt. Például `ssh username@mycluster-ssh.azurehdinsight.net` nevű fürt elsődleges átjárócsomópontjához csatlakozik **sajátfürt**.
+* Port __23__ használatával érheti el a másodlagos átjárócsomóponthoz SSH-n keresztül. Ha például `ssh username@mycluster-ssh.azurehdinsight.net` nevű fürtöt, az elsődleges átjárócsomóponthoz csatlakozik **sajátfürt**.
 
-További információ az SSH használatával, tekintse meg a [az SSH a Hdinsighttal](hdinsight-hadoop-linux-use-ssh-unix.md) dokumentum.
+SSH használatával kapcsolatos további információkért lásd: a [az SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) dokumentumot.
 
-### <a name="internal-fully-qualified-domain-names-fqdn"></a>Belső teljes tartománynevek (FQDN)
+### <a name="internal-fully-qualified-domain-names-fqdn"></a>Belső teljesen minősített tartománynevet (FQDN)
 
-HDInsight-fürtök csomópontjai rendelkeznek, egy belső IP-cím és a teljes tartománynév, csak elérhető a fürtből. A belső FQDN vagy IP-címet használ a fürt szolgáltatásai elérésekor a Ambari ellenőrzése a a szolgáltatás eléréséhez használt IP vagy FQDN Formátumban kell használnia.
+Egy HDInsight-fürtben található csomópontok rendelkezik egy belső IP-cím és teljes Tartománynevét, amely csak a fürtből. A fürtön, a belső teljes Tartományneve vagy IP-címet használó szolgáltatások elérésekor, ellenőrizheti a IP vagy FQDN a szolgáltatás eléréséhez használt Ambari kell használnia.
 
-Például az Oozie-szolgáltatás csak futtathatja egy átjárócsomópont, és használja a `oozie` SSH-munkamenetet a parancshoz szükséges, a szolgáltatás URL-CÍMÉT. Az URL-cím a következő paranccsal olvasható be a Ambari:
+Például, az Oozie-szolgáltatás csak akkor futtathatnak egy fő csomópontot és a használatával a `oozie` parancsot egy SSH-munkamenetből a szolgáltatás URL-címe van szükség. Az URL-cím is lehet Ambariból lekért adatokkal a következő paranccsal:
 
     curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
-Ez a parancs értéket ad vissza a következő parancsot, amely tartalmazza a belső URL-cím használata hasonlít a `oozie` parancs:
+Ez a parancs hasonló ad vissza értéket az alábbi parancsot, amely tartalmazza a belső URL-cím használata a `oozie` parancsot:
 
     "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-Az Ambari REST API használatával további információkért lásd: [figyelése és az Ambari REST API használatával kezelése HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md).
+Az Ambari REST API-hoz való használatáról további információkért lásd: [figyelése és felügyelete HDInsight az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-### <a name="accessing-other-node-types"></a>Egyéb elérése
+### <a name="accessing-other-node-types"></a>Más csomóponttípusok elérése
 
-Csatlakozhat a csomópontot, amely nem érhető el közvetlenül az interneten keresztül az alábbi módszerekkel:
+Csomópontok nem érhetők el közvetlenül az interneten keresztül az alábbi módszerek segítségével csatlakozhat:
 
-* **SSH**: Miután csatlakozott egy átjárócsomóponttal SSH használatával, majd használhatja SSH az átjárócsomópont kapcsolódni a fürt többi tagján. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **SSH**: egy SSH-val átjárócsomóponthoz a csatlakozás után, majd SSH-val az átjárócsomóponthoz való csatlakozás más csomópontokhoz a fürtben. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **SSH-alagút**: egy webszolgáltatás-bővítmény egy olyan csomópontot, amely nem érhető el az internet eléréséhez szükséges, ha az SSH-alagút kell használnia. További információkért lásd: a [használhat SSH-alagutat a hdinsight eszközzel](hdinsight-linux-ambari-ssh-tunnel.md) dokumentum.
+* **SSH-alagút**: Ha szeretne hozzáférni egy webes szolgáltatás egyik csomópontját, hogy nem lesz közzétéve az interneten lévő üzemeltetett, egy SSH-alagutat kell használnia. További információkért lásd: a [SSH-alagút használata a HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentumot.
 
-* **Azure-beli virtuális hálózat**: a HDInsight-fürt része egy Azure virtuális hálózatra, ha minden erőforrást azonos virtuális hálózaton közvetlenül érhetik el a fürt összes csomópontján. További információkért lásd: a [kiterjesztése HDInsight az Azure Virtual Network a](hdinsight-extend-hadoop-virtual-network.md) dokumentum.
+* **Az Azure Virtual Network**: a HDInsight-fürt az Azure Virtual Network része, ha bármely erőforrás azonos virtuális hálózaton közvetlenül hozzáférhet a fürt összes csomópontján. További információkért lásd: a [kiterjesztése HDInsight használata az Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md) dokumentumot.
 
-## <a name="how-to-check-on-a-service-status"></a>Az a szolgáltatás állapotának ellenőrzése
+## <a name="how-to-check-on-a-service-status"></a>Hogyan lehet a szolgáltatás állapotának ellenőrzése
 
-Az átjárócsomópontokkal futó szolgáltatások állapotának ellenőrzéséhez használja az Ambari webes felhasználói felületén vagy az Ambari REST API-t.
+Az Ambari webes felület vagy az Ambari REST API használatával az átjárócsomópontokkal futó szolgáltatások állapotának ellenőrzéséhez.
 
-### <a name="ambari-web-ui"></a>Ambari webes felhasználói felület
+### <a name="ambari-web-ui"></a>Az Ambari webes felhasználói felületen
 
-Az Ambari webes felhasználói felületén megtekinthető, https://CLUSTERNAME.azurehdinsight.net. Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a HTTP-felhasználó hitelesítő adatait a fürt számára. Az alapértelmezett HTTP felhasználónév **admin** , a jelszó pedig a fürt létrehozásakor megadott jelszó.
+Az Ambari webes Kezelőfelületen megtekinthető, https://CLUSTERNAME.azurehdinsight.net. Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a HTTP felhasználói hitelesítő adatok a fürt számára. Az alapértelmezett HTTP-felhasználónév **rendszergazdai** és a jelszó a a fürt létrehozásakor megadott jelszót.
 
-Amikor megérkezik az Ambari oldalon, a telepített szolgáltatások szerepelnek a lap bal oldalon található.
+Az Ambari oldalon érkezésekor a telepített szolgáltatások listája látható az oldal bal oldalán.
 
 ![Telepített szolgáltatások](./media/hdinsight-high-availability-linux/services.png)
 
-A szolgáltatás állapotának mellett megjelenő ikonok több van. Az a szolgáltatással kapcsolatos riasztások használatával tekinthetők a **riasztások** az oldal tetején. További információk megjelenítéséhez a minden egyes szolgáltatás választhatja ki.
+Nincsenek ikonok mellett egy szolgáltatás, amely állapotát jelzi az esetlegesen megjelenő sorozata. A szolgáltatás olyan riasztások megtekinthetők a a **riasztások** hivatkozásra az oldal tetején. Egyes szolgáltatások további információkat szeretne megtekinteni, választhat.
 
-A szolgáltatás lapján információt nyújt az egyes szolgáltatások konfigurációja és állapota, amíg azt nem szolgál információval melyik központi csomóponton a szolgáltatás fut a. Ez az információ megtekintéséhez használja a **állomások** az oldal tetején. Ez a lap megjeleníti a fürtben, beleértve az átjárócsomópontokkal állomások.
+A szolgáltatás lapján információt nyújt az állapotára és az egyes szolgáltatásokat, bár nem biztosít melyik központi csomóponton fut a szolgáltatás az adatokat. Ezek az információk megtekintéséhez használja a **gazdagépek** hivatkozásra az oldal tetején. Ez a lap megjeleníti a gazdagépet a fürtöt, az átjárócsomópontokat.
 
-![állomások listájához](./media/hdinsight-high-availability-linux/hosts.png)
+![gazdagépek listájához](./media/hdinsight-high-availability-linux/hosts.png)
 
-A hivatkozás egyik az átjárócsomópontokkal látható értesítések valamelyikének kiválasztásakor a szolgáltatások és a leállt csomóponton összetevőket.
+A szolgáltatások és az ezen a csomóponton futó összetevők számára az egyik fő csomópontot mutató hivatkozás jeleníti meg.
 
 ![Összetevő-állapot](./media/hdinsight-high-availability-linux/nodeservices.png)
 
-További információ az Ambari használatával, lásd: [figyelése és kezelése az Ambari webes felhasználói felület használata a HDInsight](hdinsight-hadoop-manage-ambari.md).
+Az Ambari használatával kapcsolatos további információkért lásd: [figyelése és kezelése a HDInsight az Ambari webes kezelőfelületen](hdinsight-hadoop-manage-ambari.md).
 
-### <a name="ambari-rest-api"></a>Ambari REST API-n
+### <a name="ambari-rest-api"></a>Az Ambari REST API
 
-Az Ambari REST API-t az interneten keresztül érhető el. A HDInsight nyilvános átjáró az átjárócsomóponthoz, amely a REST API-t tartalmazó útválasztási kérelmeket kezeli.
+Az Ambari REST API az interneten keresztül érhető el. A HDInsight nyilvános átjárót kezeli a fő csomópont jelenleg a REST API-t üzemeltető érkező kérések útválasztására.
 
-A következő paranccsal ellenőrizze az Ambari REST API-n keresztül egy szolgáltatás állapotát:
+Az alábbi parancs segítségével ellenőrizze a szolgáltatás állapotát, az Ambari REST API-n keresztül:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
-* Cserélje le **jelszó** az a HTTP (rendszergazda) felhasználói fiók jelszavát.
+* Cserélje le **jelszó** a HTTP (rendszergazdai) felhasználói fiók jelszavára.
 * Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
-* Cserélje le **szolgáltatásnév** tekintse meg a kívánt szolgáltatás nevét.
+* Cserélje le **SERVICENAME** állapotát ellenőrizni szeretné a szolgáltatás nevére.
 
-Például tekintse meg a **HDFS** szolgáltatás nevű fürt **sajátfürt**, a jelszó **jelszó**, akkor használja a következő parancsot:
+Például állapotának ellenőrzéséhez a **HDFS** szolgáltatást a nevű fürtben **sajátfürt**, egy jelszót az **jelszó**, akkor használja a következő parancsot:
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
@@ -156,81 +151,81 @@ A válasz a következő JSON hasonlít:
       }
     }
 
-Az URL-cím közli velünk, hogy a szolgáltatás jelenleg fut egy átjárócsomópont nevű **hn0-CLUSTERNAME**.
+Az URL-cím tudatja velünk, hogy a szolgáltatás jelenleg fut a fő csomópontot **hn0-CLUSTERNAME**.
 
-Az állapot közli velünk, hogy a szolgáltatás jelenleg fut, vagy **elindítva**.
+Az állapot azt jelzi, hogy a szolgáltatás jelenleg fut, vagy **elindítva**.
 
-Ha nem tudja, milyen szolgáltatások telepítve vannak a fürtön, a következő parancs használatával kérdezheti le:
+Ha nem tudja, milyen szolgáltatások telepítve vannak a fürthöz, a következő paranccsal kérdezheti le:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
-Az Ambari REST API használatával további információkért lásd: [figyelése és az Ambari REST API használatával kezelése HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md).
+Az Ambari REST API-hoz való használatáról további információkért lásd: [figyelése és felügyelete HDInsight az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 #### <a name="service-components"></a>Szolgáltatás-összetevők
 
-Szolgáltatások tartalmazhatnak, tekintse meg a külön-külön kívánt összetevőket. Például a HDFS a NameNode összetevőt tartalmaz. A parancs információk megtekintéséhez kattintson egy összetevő a következő lesz:
+Szolgáltatások állapotának ellenőrzéséhez külön-külön kívánt összetevőket tartalmazhatnak. Ha például a HDFS a NameNode összetevőt tartalmaz. Információk megtekintéséhez kattintson egy összetevő a következő paranccsal lehetséges:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-Ha nem tudja, milyen összetevők szolgáltatás által biztosított, a következő parancs használatával kérdezheti le:
+Ha nem tudja, milyen összetevők által szolgáltatásként biztosított, a következő parancs segítségével kérdezheti le:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-## <a name="how-to-access-log-files-on-the-head-nodes"></a>Hogyan érhetők el az átjárócsomópontokkal naplófájlok
+## <a name="how-to-access-log-files-on-the-head-nodes"></a>Az átjárócsomópontokkal naplófájlok elérése
 
 ### <a name="ssh"></a>SSH
 
-Ha egy SSH-n keresztül. átjárócsomópontjához csatlakozik, naplófájlok alatt található **/var/log**. Például **/var/log/hadoop-yarn/yarn** YARN naplók tartalmazzák.
+Egy ssh-n keresztül átjárócsomóponthoz csatlakozik, miközben naplófájlok területen található **/var/log**. Ha például **/var/log/hadoop-yarn/yarn** a YARN naplók tartalmaznak.
 
-Minden átjárócsomópont egyedi naplóbejegyzések, van így ellenőrizni kell mind a naplókat.
+Minden egyes átjárócsomópont van egyedi naplóbejegyzések, így ellenőrizze a naplókat is.
 
 ### <a name="sftp"></a>SFTP
 
-Az SSH File Transfer Protocol vagy biztonságos fájl Transfer Protocol (SFTP) átjárócsomópontjához csatlakozik, és töltse le a naplófájlok közvetlenül is.
+Csatlakozás az átjárócsomóponthoz, az SSH File Transfer Protocol vagy biztonságos fájl Transfer Protocol (SFTP) használatával, és töltse le a naplófájlok közvetlenül is.
 
-Hasonló egy SSH-ügyfélprogrammal, amikor a fürthöz csatlakozik biztosítania kell az SSH-felhasználói fiók nevét és az SSH-cím, a fürt. Például: `sftp username@mycluster-ssh.azurehdinsight.net`. Adja meg a fiók, amikor a rendszer kéri a jelszót, vagy adja meg a nyilvános kulcs használatával a `-i` paraméter.
+Hasonló használatát egy SSH-ügyféllel, amikor a fürthöz csatlakozik, meg kell adni, az SSH-felhasználói fiók nevét és a fürt SSH-címét. Például: `sftp username@mycluster-ssh.azurehdinsight.net`. Adja meg a fiók, amikor a rendszer kéri a jelszót, vagy adja meg a nyilvános kulcs használatával a `-i` paraméter.
 
-Miután csatlakozott, lehetősége lesz a `sftp>` kérdés. A parancssorból módosíthatja, könyvtárak, fájlok feltöltését és letöltését. Például a következő parancsok lépjen a **/var/log/hadoop/hdfs** directory és az összes olyan fájl a könyvtárban, majd letöltése.
+A csatlakozás után megnyílik egy `sftp>` parancssort. A parancssorból, könyvtárak, módosíthatja, fájlok feltöltését és letöltését. Címtárak, módosítsa például a következő parancsokat a **/var/log/hadoop/hdfs** directory és az összes olyan fájl a könyvtárban, majd letöltése.
 
     cd /var/log/hadoop/hdfs
     get *
 
-Elérhető parancsok listáját, írja be a `help` , a `sftp>` kérdés.
+Az elérhető parancsok listájának megtekintéséhez írja be a `help` , a `sftp>` parancssort.
 
 > [!NOTE]
-> Van grafikus felületek, amelyek lehetővé teszik a fájlrendszer esetén SFTP használatával jelenítheti meg. Például [MobaXTerm](http://mobaxterm.mobatek.net/) lehetővé teszi, hogy keresse meg a fájlrendszer hasonló a Windows Explorer-felületet segítségével.
+> Is találhatók grafikus felületek, amelyek lehetővé teszik, hogy a fájlrendszer használatakor SFTP használatával jelenítheti meg. Ha például [MobaXTerm](http://mobaxterm.mobatek.net/) lehetővé teszi, hogy a fájlrendszer egy felületen hasonlít a Windows Intézőben keresse meg.
 
 ### <a name="ambari"></a>Ambari
 
 > [!NOTE]
-> Ambari naplófájlokat eléréséhez az SSH-alagút kell használnia. A webes felületek, az egyes szolgáltatások nem érhetők el nyilvánosan az interneten. Az SSH-alagúton keresztül információkért lásd: a [használata SSH Tunneling](hdinsight-linux-ambari-ssh-tunnel.md) dokumentum.
+> Naplófájlok az Ambari megnyitásához az SSH-alagút kell használnia. A webes felületek, az egyes szolgáltatások nem érhetőek nyilvánosan az interneten. SSH-alagút használatával kapcsolatos információkért lásd: a [SSH-bújtatással](hdinsight-linux-ambari-ssh-tunnel.md) dokumentumot.
 
-Az Ambari webes felhasználói felületén jelölje ki a kívánt naplók megtekintése (például YARN) szolgáltatás. Ezután **Gyorshivatkozások** a naplók megtekintéséhez melyik központi csomópont kiválasztásához.
+Az Ambari webes felhasználói Felületet jelölje ki a kívánt megtekinthetők a naplófájlok számára (például YARN) szolgáltatás. Ezután **Gyorshivatkozások** melyik fő csomópont számára a naplók megtekintéséhez válassza ki.
 
-![Gyorshivatkozások használ a naplók megtekintéséhez](./media/hdinsight-high-availability-linux/viewlogs.png)
+![A naplók megtekintéséhez Gyorshivatkozások használatával](./media/hdinsight-high-availability-linux/viewlogs.png)
 
-## <a name="how-to-configure-the-node-size"></a>A csomópont méretének beállítása
+## <a name="how-to-configure-the-node-size"></a>A csomópont méretének konfigurálása
 
-A csomópont mérete csak akkor jelölhető ki, fürt létrehozása során. A HDInsight a különböző elérhető Virtuálisgép-méretek listáját megtalálhatja a [árképzést ismertető oldalra HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+A csomópont mérete csak a fürt létrehozásakor lehet kiválasztani. A HDInsight a különböző elérhető Virtuálisgép-méretek listáját találja a [díjszabását ismertető lapon HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-A fürt létrehozásakor megadhatja a csomópontok méretét. Az alábbi információk megadása a méret használatával nyújt útmutatást a [Azure-portálon][preview-portal], [Azure PowerShell][azure-powershell], és a [Azure CLI][azure-cli]:
+Amikor egy fürtöt hoz létre, megadhatja a csomópontok mérete. A következő információkat nyújt útmutatást a méret használatával megadása a [az Azure portal][preview-portal], [Azure PowerShell-lel][azure-powershell], és a [Az azure CLI][azure-cli]:
 
-* **Azure-portálon**: hoz létre egy fürtöt, beállíthatja a csomópontok a fürt által használt mérete:
+* **Az Azure portal**: a fürt létrehozásakor beállíthatja a fürt által használt csomópontok mérete:
 
-    ![A méret kiválasztása a fürt létrehozása varázsló képe](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![Méret kiválasztása a Fürtlétrehozási varázslóban képe](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Az Azure CLI**: használata esetén a `azure hdinsight cluster create` parancs használatával beállíthatja a head munkavégző és ZooKeeper csomópontok méretét a `--headNodeSize`, `--workerNodeSize`, és `--zookeeperNodeSize` paraméterek.
+* **Az Azure CLI**: használatakor a `azure hdinsight cluster create` paranccsal beállíthatja a fő, feldolgozó és ZooKeeper-csomópontok mérete használatával a `--headNodeSize`, `--workerNodeSize`, és `--zookeeperNodeSize` paramétereket.
 
-* **Az Azure PowerShell**: használata esetén a `New-AzureRmHDInsightCluster` parancsmag, beállíthatja a head munkavégző és ZooKeeper csomópontok méretének használatával a `-HeadNodeVMSize`, `-WorkerNodeSize`, és `-ZookeeperNodeSize` paraméterek.
+* **Az Azure PowerShell**: használatakor a `New-AzureRmHDInsightCluster` parancsmaggal beállíthatja a fő, feldolgozó és ZooKeeper-csomópontok mérete használatával a `-HeadNodeVMSize`, `-WorkerNodeSize`, és `-ZookeeperNodeSize` paramétereket.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi hivatkozások segítségével további ebben a dokumentumban említett szempontot.
+Az alábbi hivatkozások segítségével további információ az említett ebben a dokumentumban dolgokat.
 
-* [Ambari REST-referencia](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Telepítse és konfigurálja az Azure parancssori felület](../cli-install-nodejs.md)
+* [Az Ambari REST-referencia](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+* [Telepítse és konfigurálja az Azure CLI](../cli-install-nodejs.md)
 * [Telepítse és konfigurálja az Azure PowerShellt](/powershell/azure/overview)
-* [HDInsight a Ambari kezelése](hdinsight-hadoop-manage-ambari.md)
+* [A HDInsight az Ambari kezelése](hdinsight-hadoop-manage-ambari.md)
 * [Linux-alapú HDInsight-fürtök kiépítése](hdinsight-hadoop-provision-linux-clusters.md)
 
 [preview-portal]: https://portal.azure.com/

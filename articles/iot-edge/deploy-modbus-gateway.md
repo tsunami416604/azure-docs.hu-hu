@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: a90c60ed6502a36b111d2ecb0f89cb34dc011253
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b5316479011a432f3822448f03b8ad6ecddd4fe1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577626"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590588"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása az IoT Edge-eszközátjárón keresztül
 
@@ -35,7 +35,7 @@ A cikk azt feltételezi, hogy Modbus TCP protokollt használ. További informác
 Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendelkezik egy mintamodullal, amelyet használhat. A mintamodul használatához lépjen [A megoldás futtatása](#run-the-solution) szakaszhoz, és adja meg az alábbiakat a Rendszerkép URI-ja értékeként: 
 
 ```URL
-microsoft/azureiotedge-modbus-tcp:GA-preview-amd64
+mcr.microsoft.com/azureiotedge/modbus:1.0
 ```
 
 Ha saját modult kíván létrehozni és testre szabni a környezethez, a GitHubon található egy nyílt forráskódú [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projekt. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. Ha saját tárolórendszerképet hoz létre, a tárolórendszerképek beállításjegyzékbe való közzétételének módjáról és az egyéni modulok az eszközén való üzembe helyezéséről a [C# IoT Edge-modul fejlesztését és üzembe helyezését](tutorial-csharp-module.md) ismertető részben talál útmutatást. 
@@ -48,7 +48,7 @@ Ha saját modult kíván létrehozni és testre szabni a környezethez, a GitHub
 4. Adja hozzá a Modbus-modult:
    1. Kattintson a **Hozzáadás** válassza **IoT Edge-modul**.
    2. A **Name** (Név) mezőbe írja a következőt: „modbus”.
-   3. Az **Image** (Rendszerkép) mezőbe írja be a mintatároló kép URI-ját: `microsoft/azureiotedge-modbus-tcp:GA-preview-amd64`.
+   3. Az **Image** (Rendszerkép) mezőbe írja be a mintatároló kép URI-ját: `mcr.microsoft.com/azureiotedge/modbus:1.0`.
    4. Jelölje be az **Enable** (Engedélyezés) jelölőnégyzetet a moduliker kívánt tulajdonságainak frissítéséhez.
    5. Másolja az alábbi JSON-t a szövegmezőbe. Módosítsa a **SlaveConnection** értékét a Modbus-eszköz IPv4-címére.
 

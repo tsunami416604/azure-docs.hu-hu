@@ -1,133 +1,128 @@
 ---
-title: A Hadoop-szolgáltatás a HDInsight - Azure halommemória memóriaképek engedélyezése |} Microsoft Docs
-description: A Hibakeresés és elemzésére szolgáló Hadoop Linux-alapú HDInsight-fürtök szolgáltatásai halommemória memóriaképek engedélyezése.
+title: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz a HDInsight – Azure
+description: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz a Linux-alapú HDInsight-fürtök a hibakereséshez és elemzéshez.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 8f151adb-f687-41e4-aca0-82b551953725
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: cd906736f2642d764c2b72a0572f63d675613c81
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: e96cda8560d6fffa3475e7b3130ebc5954548eac
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405123"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592890"
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Halommemória memóriaképek a Linux-alapú HDInsight Hadoop-szolgáltatások engedélyezése
+# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Halomürítések engedélyezése a Linux-alapú HDInsight a Hadoop-szolgáltatásokhoz
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Halommemória memóriaképek tartalmazza az alkalmazás memória, beleértve a változók értékeit a biztonsági másolat létrehozásakor pillanatképet. Ezért futás közben felmerülő problémák diagnosztizálásához.
+Halomürítések az alkalmazás memória, beleértve a változók értékeit, a memóriakép létrehozásakor pillanatképet tartalmaz. Ezért hasznosak lehetnek, amelyet a futásidejű kapcsolatos problémák diagnosztizálásához.
 
 > [!IMPORTANT]
-> A jelen dokumentumban leírt lépések csak a HDInsight-fürtök Linux használó dolgozhat. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A jelen dokumentumban leírt lépések Linux használó HDInsight-fürtök csak dolgozhat. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whichServices"></a>Services
 
-A következő szolgáltatások halommemória memóriaképek engedélyezéséhez:
+A következő szolgáltatásokat halomürítések engedélyezheti:
 
 * **hcatalog** -tempelton
-* **Hive** -hiveserver2-n, metaadattárhoz, derbyserver
-* **mapreduce** -jobhistoryserver
+* **Hive** -hiveserver2-n, metaadattár, derbyserver
+* **a mapreduce** -jobhistoryserver
 * **yarn** -resourcemanager, nodemanager, timelineserver
 * **hdfs** -datanode, secondarynamenode, namenode
 
-Is engedélyezheti a térkép halommemória memóriaképek és csökkentse a HDInsight által futtatott folyamatok.
+Halomürítések engedélyezése a térkép a és is csökkentheti HDInsight által futtatott folyamatok.
 
-## <a name="configuration"></a>Understanding halommemória memóriakép konfiguráció
+## <a name="configuration"></a>Halommemória-memóriakép konfigurációs ismertetése
 
-Úgy, hogy a beállítások engedélyezve vannak a halommemória memóriaképek (néven is ismert, azt, vagy paraméterek) számára a JVM-et a szolgáltatás indításakor. A legtöbb Hadoop-szolgáltatásokra módosíthatja a héjparancsfájlt át ezeket a beállításokat a szolgáltatás elindításához használja.
+Halomürítések engedélyezve vannak a beállítások átadásával (mellett dönt, más néven vagy paraméterek), a JVM-szolgáltatás indításakor. A legtöbb Hadoop-szolgáltatásokhoz módosíthatja a át ezeket a beállításokat a szolgáltatás elindításához használt PowerShell-parancsfájlt.
 
-Minden parancsprogram esetén nincs az exportálás  **\* \_OPTS**, amely tartalmazza a JVM-et átadott beállítást. Például a **hadoop-env.sh** parancsfájl, a sor kezdődő `export HADOOP_NAMENODE_OPTS=` a NameNode szolgáltatás beállításait tartalmazza.
+Minden parancsprogramhoz van egy exportálásának  **\* \_OPTS**, amely tartalmazza a JVM át a beállításokat. Például a **hadoop-env.sh** szkriptet, a sor kezdődő `export HADOOP_NAMENODE_OPTS=` tartalmazza, a NameNode szolgáltatás beállításait.
 
-Rendelve, és csökkentse folyamatok kissé eltérő, mert ezek a műveletek a MapReduce szolgáltatás egyik gyermekfolyamata. Minden egyes hozzárendelését, vagy csökkentse folyamat egy gyermek tárolóban fut, és a JVM beállításokat tartalmazó két bejegyzést is tartalmaz. Mindkét szereplő **mapred-site.xml**:
+Képezze le, és csökkentse folyamatok kissé eltérő, mivel ezek a műveletek egyik gyermekfolyamata a MapReduce szolgáltatást. Minden egyes leképezése, vagy csökkentse egy gyermek tárolóban fut, a folyamat, és két olyan bejegyzéseket, amelyek tartalmazzák a JVM lehetőségeket vannak. Mindkét szereplő **mapred-site.xml**:
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Az Ambari leíró replikálni a módosításokat a fürt csomópontjai között, a parancsfájlok és a mapred-site.xml beállítások módosítása Ambari használatát javasoljuk. Tekintse meg a [Ambari használatával](#using-ambari) szakasz lépéseit.
+> Azt javasoljuk, hogy az Ambari segítségével Ambari leíró módosítások replikálása a fürtben található csomópontok között, a parancsfájlok és a mapred-site.xml beállítások módosítása. Tekintse meg a [az Ambari használatával](#using-ambari) szakasz lépéseit.
 
 ### <a name="enable-heap-dumps"></a>Halomürítések engedélyezése
 
-A következő beállítás lehetővé teszi, hogy halommemória memóriaképek egy OutOfMemoryError esetén:
+A következő beállítás lehetővé teszi, hogy halomürítések egy OutOfMemoryError esetén:
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-A **+** azt jelzi, hogy ez a beállítás engedélyezve van-e. Ez a beállítás alapértelmezés szerint le van tiltva.
+A **+** azt jelzi, hogy ez a beállítás engedélyezve van. Ez a beállítás alapértelmezés szerint le van tiltva.
 
 > [!WARNING]
-> Halommemória memóriaképek nem engedélyezettek a HDInsight Hadoop-szolgáltatás alapértelmezés szerint, lehet, hogy nagy a memóriakép fájlokhoz. Ha engedélyezi ezeket a hibaelhárításhoz, ne felejtse el őket tiltani, miután a probléma másolható és a memóriaképek összegyűjtött.
+> Halomürítések vannak a HDInsight a Hadoop-szolgáltatásokhoz alapértelmezés szerint nincs engedélyezve, mivel lehet, hogy nagy a memóriaképeket. Ha engedélyezi a számukra hibaelhárítási, ne felejtse el reprodukálni a hibát és a memóriaképek összegyűjtése után tiltsa le azokat.
 
-### <a name="dump-location"></a>Biztonsági másolat helye
+### <a name="dump-location"></a>Memóriakép helye
 
-A biztonsági másolat fájl alapértelmezett helye az aktuális munkakönyvtárban. Szabályozhatja, ha a fájl található a következő beállítás használatával:
+A memóriakép-fájl alapértelmezett helye az aktuális munkakönyvtár. Szabályozhatja, ahol a fájlt tárolja a következő kapcsoló használatával:
 
     -XX:HeapDumpPath=/path
 
-Használata esetén például `-XX:HeapDumpPath=/tmp` hatására a memóriaképek könyvtárban kell tárolni.
+Például `-XX:HeapDumpPath=/tmp` hatására a memóriaképek könyvtárban kell tárolni.
 
 ### <a name="scripts"></a>Scripts
 
-Egy parancsfájlt is el lehet indítani amikor egy **OutOfMemoryError** következik be. Például váltanak ki egy értesítést, így megtudhatja, hogy a hiba. A következő kapcsoló használatával indul el, a parancsfájl egy __OutOfMemoryError__:
+Egy parancsfájlt is indíthat amikor egy **OutOfMemoryError** történik. Például riasztást kiváltó értesítést, hogy tudja, hogy a hiba történt. Használja a következő parancsfájl eseményindítás egy __OutOfMemoryError__:
 
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]
-> Mivel a Hadoop elosztott rendszer, bármely használt parancsfájl kell elhelyezni, amely a szolgáltatás fut a fürt összes csomópontján.
+> Mivel a Hadoop elosztott rendszerek, minden más használt parancsfájl, amely a szolgáltatás fut a fürt minden csomópontján kell elhelyezni.
 > 
-> A parancsfájl kell is lehet, amely elérhető a fiók a szolgáltatás fut, és biztosítania kell a helyre végrehajtási engedélyeket. Például előfordulhat, hogy a parancsprogramok tárolásához kívánja `/usr/local/bin` és `chmod go+rx /usr/local/bin/filename.sh` adjon olvasási és végrehajtási engedélyeket.
+> A parancsfájl kell is lehet a szolgáltatás fut, és meg kell adnia a fiók által elérhető helyen végrehajtási engedélyeket. Például előfordulhat, hogy szeretné tárolni a parancsfájlok `/usr/local/bin` és `chmod go+rx /usr/local/bin/filename.sh` adjon olvasási és végrehajtási engedélyeket.
 
-## <a name="using-ambari"></a>Ambari használatával
+## <a name="using-ambari"></a>Az Ambari használatával
 
-A szolgáltatás konfigurációjának módosítása, tegye a következőket:
+Szolgáltatás konfigurációjának módosításához használja az alábbi lépéseket:
 
-1. Nyissa meg a fürt Ambari webes felhasználói Felületét. Az URL-címe https://YOURCLUSTERNAME.azurehdinsight.net.
+1. Nyissa meg az Ambari webes felhasználói felület a fürt számára. Az URL-cím https://YOURCLUSTERNAME.azurehdinsight.net.
 
-    Amikor a rendszer kéri, a helyhez, a HTTP-fiók nevének hitelesíteni (alapértelmezett: admin) és a jelszót a fürt számára.
+    Amikor a rendszer kéri, a webhely a HTTP-fiók használatával hitelesíteni (alapértelmezett: rendszergazdai) és a fürthöz tartozó jelszót.
 
    > [!NOTE]
-   > Kérheti másodszor Ambari által a felhasználónevet és jelszót. Ha igen, adja meg az azonos fióknevet és jelszót
+   > Kérheti egy második alkalommal Ambari által a felhasználónevet és jelszót. Ha igen, adja meg az azonos fióknevet és jelszót
 
-2. A lista a bal oldali meg és jelölje ki a módosítani kívánt szolgáltatási terület. Például **HDFS**. A központ területen válassza ki a **Configs** fülre.
+2. Használatával listája a bal oldalon található, válassza ki a módosítani kívánt szolgáltatás területen. Ha például **HDFS**. A központ területen válassza ki a **Configs** fülre.
 
-    ![Ambari webes kijelölt HDFS Configs lap képe](./media/hdinsight-hadoop-heap-dump-linux/serviceconfig.png)
+    ![Az Ambari webes kiválasztott HDFS Configs lap képe](./media/hdinsight-hadoop-heap-dump-linux/serviceconfig.png)
 
-3. Használja a **szűrő...**  bejegyzést, írjon be **jelentésküldési**. Csak a tartalmazó ezt a szöveget elemek jelennek meg.
+3. Használatával a **szűrése...**  bejegyzést, adja meg **jóváhagyja**. Csak ezt a szöveget tartalmazó elemek jelennek meg.
 
     ![Szűrt lista](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
 
-4. Keresés a  **\* \_OPTS** szolgáltatás bejegyzése szeretné a halommemória memóriaképek engedélyezése, majd adja meg az engedélyezni kívánt beállításokat. Az alábbi képen felvett `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` számára a **HADOOP\_NAMENODE\_OPTS** bejegyzést:
+4. Keresse meg a  **\* \_OPTS** bejegyzést a szolgáltatás kívánt halomürítések engedélyezése a, és adja hozzá az engedélyezni kívánt beállításokat. Az alábbi képen hozzá `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` , a **HADOOP\_NAMENODE\_OPTS** bejegyzés:
 
-    ![A - XX HADOOP_NAMENODE_OPTS: + HeapDumpOnOutOfMemoryError - XX: HeapDumpPath = / tmp /](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    ![-XX-HADOOP_NAMENODE_OPTS: + HeapDumpOnOutOfMemoryError - XX: HeapDumpPath = / tmp /](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
    > [!NOTE]
-   > Ha halommemória engedélyezése a térkép listázása, vagy csökkentse gyermekfolyamat, keresse meg a mezők nevű **mapreduce.admin.map.child.java.opts** és **mapreduce.admin.reduce.child.java.opts**.
+   > Amikor halommemória engedélyezése a térkép listázása, vagy csökkentse gyermekfolyamata, keresse meg a mezők nevű **mapreduce.admin.map.child.java.opts** és **mapreduce.admin.reduce.child.java.opts**.
 
-    Használja a **mentése** gombra a módosítások mentéséhez. A módosítások leíró rövid megjegyzés adhat meg.
+    Használja a **mentése** gombra kattintva mentse a módosításokat. A módosításokat leíró rövid megjegyzés is megadhatja.
 
-5. A módosítások léptek érvénybe, ha a **újraindítás szükséges** ikon jelenik meg egy vagy több szolgáltatás mellett.
+5. A módosítások alkalmazása után a **újraindítás szükséges** ikon jelenik meg egy vagy több szolgáltatás mellett.
 
-    ![Indítsa újra a szükséges ikonra, és indítsa újra a gomb](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
+    ![Indítsa újra a szükséges ikon és gomb](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
 
-6. Válassza ki a számítógép újraindítását igénylő minden szolgáltatást, és használja a **szolgáltatás műveletek** gombra kattint, hogy **kapcsolja be a karbantartási mód**. Karbantartási mód megakadályozza, hogy a riasztások generálása a szolgáltatásból, ha indítja újra.
+6. Válassza ki minden egyes szolgáltatás, amelynek a számítógép újraindítását, és használja a **szolgáltatás műveletek** gombra kattintva **karbantartási mód bekapcsolása**. Karbantartási mód megakadályozza, hogy a riasztások újraindítani, ha a szolgáltatás generálása.
 
     ![Kapcsolja be a karbantartási mód menü](./media/hdinsight-hadoop-heap-dump-linux/maintenancemode.png)
 
-7. Miután engedélyezte a karbantartási mód, használja a **indítsa újra a** gombra a szolgáltatás számára **indítsa újra az összes végrehajtott**
+7. Miután engedélyezte a karbantartási mód, használja a **indítsa újra a** gombra a szolgáltatás **indítsa újra az összes érintett**
 
     ![Indítsa újra az összes érintett bejegyzés](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
 
    > [!NOTE]
-   > a bejegyzéseket a **indítsa újra a** gomb más szolgáltatásaihoz eltérő lehet.
+   > a bejegyzéseket a **indítsa újra a** gomb más szolgáltatásokhoz eltérő lehet.
 
-8. A szolgáltatások újraindítása, ha a **szolgáltatás műveletek** gombra kattint, hogy **kapcsolja ki a karbantartási mód**. Az Ambari riasztások a szolgáltatás figyelésének folytatása.
+8. A szolgáltatások újraindítása, ha az a **szolgáltatás műveletek** gombra kattintva **kapcsolja ki karbantartási módba**. Az Ambari az értesítések a szolgáltatás figyelésének folytatása.
 

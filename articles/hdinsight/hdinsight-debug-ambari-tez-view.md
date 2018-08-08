@@ -1,112 +1,108 @@
 ---
-title: Ambari Tez nézet használata a HDInsight - Azure |} Microsoft Docs
-description: Útmutató az Ambari Tez nézet használata a HDInsight-on Tez feladatokhoz.
+title: Az Ambari Tez nézet használata a HDInsight – Azure
+description: Ismerje meg az Ambari Tez nézet használata a HDInsight a Tez-feladatok hibakereséséhez.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 9c39ea56-670b-4699-aba0-0f64c261e411
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 98874377f31a435e7dd9736410c123ef623928d0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: de8e40081f92ade236c0c6f3b8d12a77ab13a82a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401590"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594253"
 ---
-# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Az Ambari nézetek használata a HDInsight-on Tez feladatokhoz
+# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Ambari-nézetek használata a HDInsight a Tez-feladatok hibakereséséhez
 
-Az Ambari webes felhasználói felületén, a HDInsight a Tez nézetet tartalmaz, amely megértéséhez, valamint a Tez használó feladatok debug használható. A Tez nézet lehetővé teszi a feladathoz egy grafikonon csatlakoztatott elemek megjelenítése, egyes elemek elemezze és statisztika és naplózási információk lekérdezéséhez.
+A HDInsight az Ambari webes Kezelőfelületen tartalmaz egy Tez megtekintése és használata a Tez-feladatok hibakereséséhez használható. A Tez nézet lehetővé teszi a feladatban egy grafikont a csatlakoztatott elemek megjelenítése, minden egyes cikk részletesen és statisztikák és a naplózási információk lekéréséhez.
 
 > [!IMPORTANT]
-> A jelen dokumentumban leírt lépések egy HDInsight-fürt által használt Linux igényelnek. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight-összetevők verziószámozása](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Linux-alapú HDInsight-fürtöt. A fürt létrehozásának lépései: [Ismerkedés a Linux-alapú HDInsight eszközzel](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* Egy Linux-alapú HDInsight-fürt. A fürt létrehozásának lépéseiért lásd: [Linux-alapú HDInsight használatának első lépései](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Egy HTML5-támogatással rendelkező modern webböngésző.
 
 ## <a name="understanding-tez"></a>Tez ismertetése
 
-Tez egy bővíthető keretrendszer, amely a hagyományos MapReduce feldolgozási-nál nagyobb sebesség biztosítja az adatok feldolgozásához. Linux-alapú HDInsight-fürtök az alapértelmezett szolgáltatás a Hive esetén.
+Tez egy bővíthető keretrendszer a Hadoop nagyobb sebességre képes, mint a hagyományos MapReduce feldolgozást biztosító adatfeldolgozási. A Linux-alapú HDInsight-fürtök esetén az alapértelmezett szolgáltatás a Hive.
 
-Tez létrehoz egy irányított aciklikus diagramhoz (DAG), amely leírja a feladatok által szükséges műveletek sorrendjét. Egyes műveletek csúcsban hívják, és egy adat, a teljes feladat végrehajtása. A munkahelyi csúcspont szerint tényleges végrehajtása feladat neve, és előfordulhat, hogy a fürt több csomópontja legyen elosztva.
+Tez létrehoz egy irányított aciklikus Graph (DAG), amely leírja a feladatok által szükséges műveletek sorrendjét. Egyes műveleteket hívják csúcspontokat, és hajtsa végre a teljes feladat egy részét. A tényleges végrehajtása a csúcspont által leírt munka feladat neve, és előfordulhat, hogy legyen elosztva a fürtben több csomóponton.
 
 ### <a name="understanding-the-tez-view"></a>A Tez nézet ismertetése
 
-A Tez nézet futó folyamatok előzményadatok és információkat is biztosít. Ezeket az információkat jeleníti meg, hogyan oszlik meg a feladat más fürtökre. Feladatok és a csúcsban által használt számlálókat, és a feladathoz kapcsolódó hibainformációk is megjeleníti. Felajánlhatja, hogy a következő esetekben hasznos információkat:
+A Tez nézet futó folyamatok, egyaránt előzményadatokat, és információkat nyújt. Ezeket az információkat jeleníti meg, hogyan egy feladatot a fürtök elosztva. Feladatok és a csúcspontok által használt számlálókat, és a feladathoz kapcsolódó hibaadatok is megjeleníti. Felajánlhatja, hogy a következő esetekben hasznos információkat:
 
-* Figyelési hosszan futó dolgozza fel a térkép állapotának megtekintése, és a feladatokat.
-* Megtudhatja, hogyan lehet javítani, feldolgozás, vagy sikertelenségének sikeres vagy sikertelen folyamatok előzményadatainak elemzése.
+* Figyelés hosszú ideig futó folyamatok, a térkép állapotának megtekintése és csökkentési feladatokat.
+* Megtudhatja, hogyan lehet javítani, feldolgozás vagy miért volt sikertelen sikeres vagy sikertelen folyamatok előzményadatok elemzése.
 
-## <a name="generate-a-dag"></a>Egy dag-csoport létrehozása
+## <a name="generate-a-dag"></a>Hozzon létre egy DAG
 
-A Tez nézet csak adatokat tartalmaz, ha egy feladatot, amely használja a Tez motor éppen fut, vagy már korábban lefutott. Egyszerű Hive-lekérdezéseket is feloldható Tez használata nélkül. Összetettebb lekérdezi, hogy tegye szűrés csoportosítás, rendezés, illesztéseket, stb. a Tez motort használja.
+A Tez nézet csak adatokat tartalmaz, ha egy feladatot, használja a Tez-motor fut, vagy lett korábban lefutott. Egyszerű Hive-lekérdezések használata a Tez nélkül feloldható. Összetettebb lekérdezi, hogy tegye szűrést, csoportosítás, rendezése, illesztések stb. a Tez motort használják.
 
-Az alábbi lépések segítségével által használt Tez Hive-lekérdezések futtatása:
+A következő lépések használatával, amely Tez Hive-lekérdezések futtatásához:
 
-1. Egy böngészőben navigáljon https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a HDInsight-fürt neve.
+1. A böngészőben navigáljon a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a HDInsight-fürt neve.
 
-2. Az oldal tetején a menüből válassza ki a **nézetek** ikonra. Ez az ikon négyzetes több tűnik. Válassza ki a legördülő listában megjelenő, **Hive view**.
+2. Az oldal tetején lévő menüben válassza a **nézetek** ikonra. Ez az ikon egy sorozat négyzetes tűnik. Válassza ki a legördülő listában megjelenő, **Hive-nézet**.
 
     ![Hive-nézetek kijelölése](./media/hdinsight-debug-ambari-tez-view/selecthive.png)
 
-3. Ha a Hive nézete betölti, illessze be a következő lekérdezés a lekérdezés-szerkesztő be, és kattintson **hajtható végre**.
+3. Ha a Hive-nézet betölti, illessze be a következő lekérdezést a Lekérdezésszerkesztő, és kattintson a **végrehajtása**.
 
         select market, state, country from hivesampletable where deviceplatform='Android' group by market, country, state;
 
-    A feladat befejezése után a megjelenő kimenetnek kell megjelennie a **lekérdezési folyamat eredményei** szakasz. Az eredmény az alábbihoz hasonló legyen:
+    A feladat befejezését követően kimenetnek kell megjelennie a jelenik meg a **lekérdezési folyamat eredményei** szakaszban. Az eredmények az alábbi szöveghez hasonló lesz:
 
         market  state       country
         en-GB   Hessen      Germany
         en-GB   Kingston    Jamaica
 
-4. Válassza ki a **napló** fülre. Információ az alábbihoz hasonló jelenik meg:
+4. Válassza ki a **Log** fülre. Az alábbi szöveghez hasonló információt jelenik meg:
 
         INFO : Session is already open
         INFO :
 
         INFO : Status: Running (Executing on YARN cluster with App id application_1454546500517_0063)
 
-    Mentse a **alkalmazásazonosító** érték, mivel ez az érték a következő szakaszban használható.
+    Mentse a **alkalmazásazonosító** értékét, mivel ezt az értéket használja a következő szakaszban.
 
-## <a name="use-the-tez-view"></a>A Tez nézetben
+## <a name="use-the-tez-view"></a>A Tez-nézet használata
 
-1. Az oldal tetején a menüből válassza ki a **nézetek** ikonra. Válassza ki a legördülő listában megjelenő, **Tez nézet**.
+1. Az oldal tetején lévő menüben válassza a **nézetek** ikonra. Válassza ki a legördülő listában megjelenő, **Tez nézet**.
 
-    ![Tez nézet kijelölése](./media/hdinsight-debug-ambari-tez-view/selecttez.png)
+    ![Tez nézetek kijelölése](./media/hdinsight-debug-ambari-tez-view/selecttez.png)
 
-2. A Tez nézet betöltésekor megjelenik, amely jelenleg fut, vagy hive-lekérdezések listáját a fürtön futottak.
+2. A Tez nézet betöltésekor láthatja a fürtön, amely jelenleg fut, vagy hive-lekérdezések listáját futottak.
 
-    ![Minden DAG](./media/hdinsight-debug-ambari-tez-view/tez-view-home.png)
+    ![Minden adatbázis-elérhetőségi csoport](./media/hdinsight-debug-ambari-tez-view/tez-view-home.png)
 
-3. Ha csak egy bejegyzés, a lekérdezés, amely futtatta az előző szakaszban is. Ha több bejegyzést, az oldal tetején a mezők használatával kereshet.
+3. Ha csak egy bejegyzést, akkor a lekérdezéshez, amely az előző szakaszban futtatta. Ha több, az oldal tetején a mezők alapján kereshet.
 
-4. Válassza ki a **Lekérdezésazonosítóval** a Hive-lekérdezések. A lekérdezés információkat jelenít meg.
+4. Válassza ki a **Lekérdezésazonosítóval** a Hive-lekérdezést. A lekérdezés információkat jelenít meg.
 
     ![DAG-részletek](./media/hdinsight-debug-ambari-tez-view/query-details.png)
 
-5. Ezen a lapon a lapok engedélyezi, hogy a következő információk megtekintése:
+5. Ezen a lapon lévő lapok engedélyezése a következő információkat tekintheti meg:
 
-    * **Részletei lekérdezni**: a Hive-lekérdezés részleteiről.
-    * **Az idősor**: mennyi ideig tartott minden szakaszhoz feldolgozási információt.
-    * **Konfigurációk**: ehhez a lekérdezéshez használt konfigurációt.
+    * **Lekérdezési adatok**: a Hive-lekérdezés részleteit.
+    * **Idősor**: minden egyes fázisa feldolgozási mennyi ideig tartott információt.
+    * **Konfigurációk**: az ehhez a lekérdezéshez használt konfigurációt.
 
     A __lekérdezés részletei__ hivatkozások segítségével talál információkat a __alkalmazás__ vagy a __DAG__ ehhez a lekérdezéshez.
     
-    * A __alkalmazás__ hivatkozás ehhez a lekérdezéshez a YARN alkalmazással kapcsolatos információkat jeleníti meg. Itt a YARN alkalmazásnaplók végezheti el.
-    * A __DAG__ hivatkozás ehhez a lekérdezéshez irányított aciklikus diagramhoz információit jeleníti meg. Itt megtekintheti a DAG grafikus ábrázolása. A DAG belül a csúcsban információk is megtalálhatók.
+    * A __alkalmazás__ hivatkozásra a YARN-alkalmazást ehhez a lekérdezéshez információit jeleníti meg. Innen érheti el a YARN-alkalmazásnaplók.
+    * A __DAG__ hivatkozás ehhez a lekérdezéshez irányított aciklikus diagramhoz információit jeleníti meg. Itt megtekintheti a DAG grafikus ábrázolását. A DAG belül a csúcspontokat információk is megtalálhatók.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik megtudta, hogyan használja a Tez, további információ [használata a HDInsight Hive](hadoop/hdinsight-use-hive.md).
+Most, hogy megtanulhatta, hogyan használható a Tez nézet, tudjon meg többet [a HDInsight használatával Hive](hadoop/hdinsight-use-hive.md).
 
-Részletesebb műszaki információkat Tez, lásd: a [Hortonworks Tez lapon](http://hortonworks.com/hadoop/tez/).
+Részletes technikai információ a Tez, tekintse meg a [Tez lapot a Hortonworks](http://hortonworks.com/hadoop/tez/).
 
-Az Ambari és a HDInsight együttes használatával további információkért lásd: [kezelése HDInsight-fürtök az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
+A HDInsight az Ambari használatával további információkért lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felülettel](hdinsight-hadoop-manage-ambari.md)

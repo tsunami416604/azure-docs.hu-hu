@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: e4f09e90c1ebb14cdbd528b34e016001c6556540
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9a926eb274e5e4cec721864d1d9c5faee8ec58ef
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389650"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618337"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -81,7 +81,8 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |shortId|A videó azonosítója. Ha például 63c6d532ff.|
 |privacyMode|A részletezése a következő módok egyike lehet: **privát**, **nyilvános**. **Nyilvános** – a videót a fiókját, és bárki, amely rendelkezik a videóra mutató hivatkozást mindenki számára látható-e. **Privát** – a videót a fiókjában mindenki számára látható-e.|
 |időtartam|Egy időtartam, amely leírja a időpontja egy elemzést tartalmaz. Időtartam másodpercen belül van.|
-|thumbnailUrl|A videó miniatűrje teljes URL-CÍMÉT. Például "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Figyelje meg, hogy a videó nem nyilvános, ha az URL-cím egy egy órás hozzáférési jogkivonatot tartalmazza. Egy óra elteltével az URL-cím már nem érvényes, és kérje le újra az új url-táblázat összefoglalja, vagy hívja Getaccesstokenhez új hozzáférési jogkivonatot, és manuálisan hozza létre a teljes URL-címet kell ("https://www.videoindexer.ai/api/Thumbnail/[shortId] / [ThumbnailId]? accessToken = [ a hozzáférési tokent] ").|
+|thumbnailVideoId|A videót, amelyből a miniatűr hibaállapota azonosítója.
+|thumbnailId|A videó miniatűr azonosítója. A tényleges miniatűr hívás Get-miniatűr beolvasásához (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és thumbnailVideoId és thumbnailId adja át.|
 |arcok|Nulla vagy több arcokat is tartalmazhat. Részletesebb információkért lásd: [arcok](#faces).|
 |a kulcsszavak|Nulla vagy több kulcsszavak tartalmazhat. Részletesebb információkért lásd: [kulcsszavak](#keywords).|
 |hangulati|Nulla vagy több hangulati tartalmazhat. Részletesebb információkért lásd: [hangulati](#sentiments).|
@@ -106,7 +107,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |metaadatok|A videó külső metaadat (Ha a felhasználó által megadott).|
 |isAdult|Jelzi, hogy manuálisan lett-e felül a videót, és azonosította az eseményt egy felnőtteknek szóló videót.|
 |megállapítások|Az insights objektum. További információkért lásd: [insights](#insights).|
-|thumbnailUrl|A videó miniatűrje teljes URL-CÍMÉT. Például "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Figyelje meg, hogy a videó nem nyilvános, ha az URL-cím egy egy órás hozzáférési jogkivonatot tartalmazza. Egy óra elteltével az URL-cím már nem érvényes, és kérje le újra az új url-táblázat összefoglalja, vagy hívja Getaccesstokenhez új hozzáférési jogkivonatot, és manuálisan hozza létre a teljes URL-címet kell ("https://www.videoindexer.ai/api/Thumbnail/[shortId] / [ThumbnailId]? accessToken = [ a hozzáférési tokent] ").|
+|thumbnailId|A videó miniatűr azonosítója. A tényleges miniatűr hívás Get-miniatűr beolvasásához (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és adja át azt a videó azonosítója és thumbnailId.|
 |publishedUrl|A Videó-URL-címe.|
 |publishedUrlProxy|(Az Apple-eszközök esetén), a Videó-URL-címe.|
 |viewToken|Egy rövid élettartamú nézet jogkivonatot a videó streameléshez.|

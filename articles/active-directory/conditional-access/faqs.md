@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f23c7f7006c52eb3dfc254080c4f836a65177043
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a5070bf3a243993739875b42ebc562e6b017c3c4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581681"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598279"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Az Azure Active Directory feltételes hozzáférés – gyakori kérdések
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>Mely alkalmazások a feltételes hozzáférési szabályzatainak használatát?
 
-A feltételes hozzáférési szabályzatokkal használható alkalmazások kapcsolatos információkért lásd: [alkalmazások és az Azure Active Directory feltételes hozzáférési szabályok használó böngészőket](../active-directory-conditional-access-technical-reference.md).
+A feltételes hozzáférési szabályzatokkal használható alkalmazások kapcsolatos információkért lásd: [alkalmazások és az Azure Active Directory feltételes hozzáférési szabályok használó böngészőket](technical-reference.md).
 
 ## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Feltételes hozzáférési házirendek érvényben vannak a B2B-együttműködés és a vendég felhasználók számára?
 

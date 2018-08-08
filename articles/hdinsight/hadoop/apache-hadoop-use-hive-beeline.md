@@ -1,91 +1,86 @@
 ---
-title: Apache Hive - az Azure HDInsight Beeline használata |} Microsoft Docs
-description: Megtudhatja, hogyan használhatja a Beeline a HDInsight Hadoop Hive-lekérdezések futtatásához. Beeline olyan eszköz, amellyel a hiveserver2-n keresztül JDBC használata.
+title: Az Apache Hive – Azure HDInsight a Beeline használata
+description: Ismerje meg, hogyan használhatja a Beeline-ügyfél és a Hadoop Hive-lekérdezések futtatása a HDInsight. A beeline használata a hiveserver2-n keresztül JDBC egy segédprogramot.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-keywords: beeline struktúra, hive beeline
-ms.assetid: 3adfb1ba-8924-4a13-98db-10a67ab24fca
+author: jasonwhowell
+editor: jasonwhowell
+keywords: a beeline hive, a hive a beeline
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
-ms.author: larryfr
-ms.openlocfilehash: 970ccf19b5668bd57118fcabc5018c60352ebde7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.author: jasonh
+ms.openlocfilehash: 057c57316a291952b959f1e61b4286e87c074088
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795194"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592366"
 ---
-# <a name="use-the-beeline-client-with-apache-hive"></a>Használhatja a Beeline Apache Hive
+# <a name="use-the-beeline-client-with-apache-hive"></a>A Beeline-kliens használata az Apache Hive
 
-Ismerje meg, hogyan használható [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) hdinsight Hive-lekérdezések futtatásához.
+Ismerje meg, hogyan használható [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) a HDInsight Hive-lekérdezések futtatásához.
 
-Beeline Hive ügyfél, amely az átjárócsomópontokkal a HDInsight-fürt része. Beeline JDBC hiveserver2-n, a HDInsight-fürt üzemeltetett szolgáltatás való kapcsolódáshoz használ. Beeline segítségével távolról fér hozzá a HDInsight Hive az interneten keresztül. Az alábbi példák megadják a leggyakrabban használt Beeline a HDInsight való kapcsolódáshoz használt kapcsolati karakterláncok:
+A beeline egy Hive-ügyfél, amely része az átjárócsomópontokkal a HDInsight-fürt. A beeline JDBC hiveserver2-n keresztül, a HDInsight-fürtön lévő üzemeltetett szolgáltatásként való kapcsolódáshoz használ. A Beeline használatával távoli elérése a Hive a HDInsight az interneten keresztül. Az alábbi példák megadják a leggyakrabban használt kapcsolati karakterláncok Beeline a HDInsight segítségével kapcsolódhat:
 
-* __Az SSH-kapcsolat Beeline segítségével headnode vagy peremhálózati csomópont__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
-* __A HDInsight az Azure virtuális hálózaton keresztül csatlakozó ügyfél, Beeline használatával__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
-* __A HDInsight a nyilvános interneten keresztül csatlakozó ügyfél, Beeline használatával__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
+* __Az SSH-kapcsolatot a Beeline segítségével átjárócsomópontjával vagy peremhálózati csomópont__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
+* __A Beeline használata a HDInsight egy Azure virtuális hálózaton keresztül csatlakozó ügyfél,__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
+* __A Beeline használata a HDInsight a nyilvános interneten keresztül csatlakozó ügyfél,__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]
-> Cserélje le `admin` a fürt a fürt bejelentkezési fiókkal.
+> Cserélje le `admin` az a fürt a fürt bejelentkezési fiókjának.
 >
-> Cserélje le `password` a fürt bejelentkezési fiók jelszavával.
+> Cserélje le `password` az a fürt bejelentkezési fiókjának jelszavát.
 >
 > Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére.
 >
-> Amikor a fürt virtuális hálózaton keresztül kapcsolódik, cserélje le a `<headnode-FQDN>` egy fürt headnode teljes tartománynévvel.
+> Ha a fürt virtuális hálózaton keresztül kapcsolódik, cserélje le a `<headnode-FQDN>` egy fürt átjárócsomójával létesített teljesen minősített nevére.
 
 ## <a id="prereq"></a>Előfeltételek
 
-* A Linux-alapú Hadoop a HDInsight fürt 3.4 vagy újabb verziója.
+* Egy Linux-alapú Hadooppal a HDInsight-fürt verziója 3.4-es vagy nagyobb.
 
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* Egy SSH-ügyfél vagy a helyi Beeline ügyfél. A legtöbb a jelen dokumentumban leírt lépések azt feltételezik, hogy használt Beeline az SSH-munkamenetet a fürthöz. A Beeline fut a fürtön kívüli információkért lásd: a [Beeline távolról használható](#remote) szakasz.
+* Egy SSH-ügyfél vagy a helyi a Beeline-ügyfél. A legtöbb a jelen dokumentumban leírt lépések azt feltételezik, hogy használ a Beeline egy SSH-munkamenetből a fürthöz. A Beeline futtatott a fürtön kívülről információért lásd a [a Beeline használata távoli](#remote) szakaszban.
 
-    További információ az SSH használatával, lásd: [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    SSH használatával kapcsolatos további információkért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a id="beeline"></a>Hive-lekérdezések futtatása
+## <a id="beeline"></a>Hive-lekérdezés futtatása
 
-1. Beeline indításakor adjon meg egy kapcsolati karakterláncot hiveserver2-n a HDInsight-fürt:
+1. Ha a Beeline-től kezdődően meg kell adnia egy kapcsolati karakterláncot a hiveserver2-n keresztül a HDInsight-fürtön:
 
-    * Ha a nyilvános interneten keresztül, meg kell adnia a fürt bejelentkezési fiók neve (alapértelmezett `admin`) és a jelszót. Használata esetén például Beeline ügyfél rendszerről való kapcsolódáshoz a `<clustername>.azurehdinsight.net` cím. A kapcsolat porton keresztül `443`, és titkosítása SSL használatával:
+    * Ha a nyilvános interneten keresztül kapcsolódik, meg kell adnia a fürt bejelentkezési fiók nevét (alapértelmezett `admin`) és a jelszót. Például a Beeline ügyfél rendszerről való kapcsolódáshoz használ a `<clustername>.azurehdinsight.net` címét. A kapcsolat-as porton `443`, és SSL-titkosítás használatával:
 
         ```bash
         beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
         ```
 
-    * Amikor a fürt headnode szeretne csatlakozni az SSH-munkamenetet, csatlakozhat a `headnodehost` cím, port `10001`:
+    * Ha egy fürt átjárócsomójával létesített SSH-munkamenetből történő kapcsolódik, csatlakozhat a `headnodehost` cím, port `10001`:
 
         ```bash
         beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
         ```
 
-    * Ha egy Azure virtuális hálózaton keresztül, a fürt átjárócsomópontjába teljesen minősített tartománynevét (FQDN) kell megadnia. Mivel ez a kapcsolat közvetlenül a fürtcsomópontok történik, a kapcsolat használja-e a port `10001`:
+    * Ha egy Azure virtuális hálózaton keresztül kapcsolódik, meg kell adnia a fürt fő csomópontjának teljes tartománynevét (FQDN). Mivel ez a kapcsolat közvetlenül a fürtcsomópontokon történik, a kapcsolat-portot használja `10001`:
 
         ```bash
         beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
         ```
 
-2. Beeline parancsok kezdődhet egy `!` karakter, például `!help` megjeleníti a súgót. Azonban a `!` egyes parancsok kihagyható. Például `help` is működik.
+2. A beeline-parancsok kezdődhet egy `!` karakter, például `!help` megjeleníti a súgót. Azonban a `!` egyes parancsok elhagyható. Ha például `help` is működik.
 
-    Nincs olyan `!sql`, amellyel HiveQL utasítás végrehajtásához. Azonban HiveQL ezért általában arra használják, hogy az előző elhagyható `!sql`. A következő két utasításokat egyenértékűek:
+    Van egy `!sql`, amely segítségével hajtsa végre a HiveQL utasításokat. Azonban HiveQL ezért gyakran használják, hogy az előző kihagyhatja `!sql`. A következő két utasításokat egyenértékűek:
 
     ```hiveql
     !sql show tables;
     show tables;
     ```
 
-    Az új fürtön csak egy tábla szerepel: **hivesampletable**.
+    Egy új fürtön, csak egy táblázat szerepel: **hivesampletable**.
 
-3. A következő parancs használatával a hivesampletable sémáját meg:
+3. A következő paranccsal a hivesampletable sémáját megjeleníteni:
 
     ```hiveql
     describe hivesampletable;
@@ -109,9 +104,9 @@ Beeline Hive ügyfél, amely az átjárócsomópontokkal a HDInsight-fürt rész
         | sessionpagevieworder  | bigint     |          |
         +-----------------------+------------+----------+--+
 
-    Ez a témakör a tábla oszlopai.
+    Ez a témakör az oszlopokat a táblában.
 
-4. Adja meg a következő utasításokat nevű tábla létrehozása **log4jLogs** a HDInsight-fürthöz megadott mintaadatokat használatával:
+4. Adja meg az alábbi utasításokat, hozzon létre egy táblát nevű **log4jLogs** mintaadatokkal, a HDInsight-fürt használatával:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -130,26 +125,26 @@ Beeline Hive ügyfél, amely az átjárócsomópontokkal a HDInsight-fürt rész
         GROUP BY t4;
     ```
 
-    Ezekre az utasításokra hajtsa végre a következő műveleteket:
+    Ezek az utasítások hajtsa végre a következő műveleteket:
 
-    * `DROP TABLE` -Ha a tábla létezik, akkor az törlődik.
+    * `DROP TABLE` – Ha a tábla létezik, akkor az törlődik.
 
-    * `CREATE EXTERNAL TABLE` -Hoz létre egy **külső** Hive táblát. Külső táblák csak tárolja a tábladefiníció struktúra. Az adatok marad az eredeti helyen.
+    * `CREATE EXTERNAL TABLE` – Létrehoz egy **külső** Hive táblát. Külső táblák csak tárolja a tábla definíciójának Hive. Az adatok az eredeti helyén marad.
 
-    * `ROW FORMAT` -Az adatok formázását. Ebben az esetben a mezőket az egyes naplókon szóközzel elválasztva.
+    * `ROW FORMAT` – Az adatok formázását. Ebben az esetben minden napló mezőinek vesszővel elválasztva.
 
-    * `STORED AS TEXTFILE LOCATION` -Ha az adatok tárolását, és milyen formátumban.
+    * `STORED AS TEXTFILE LOCATION` – Ha az adatok tárolását, és milyen formátumú fájlokban.
 
-    * `SELECT` -Választja ki az összes sorok számát ahol oszlop **t4** értéke **[hiba]**. A lekérdezés által visszaadott érték **3** ahány három ezt az értéket tartalmazó sorok.
+    * `SELECT` -Az összes sor számát kiválasztja ahol oszlop **t4** értéket tartalmazza **[hiba]**. A lekérdezés visszaad egy értéket a **3** annyi három sort, amely tartalmazza ezt az értéket.
 
-    * `INPUT__FILE__NAME LIKE '%.log'` -Hive megkísérli a séma alkalmazása a könyvtárban található összes fájl. Ebben az esetben a directory nem egyeznek meg a séma fájlokat tartalmazza. Szemétgyűjtési adatok a eredmények elkerülése érdekében a jelen nyilatkozat közli struktúra, hogy azt kell csak vissza adatokat fájlok végződése. napló.
+    * `INPUT__FILE__NAME LIKE '%.log'` -Hive megkísérli a alkalmazni a sémát a címtárban található összes fájl. Ebben az esetben a könyvtárban található fájlok, amelyek nem egyeznek a sémát. Szemétgyűjtési adatokat a eredmények elkerülése érdekében a jelen nyilatkozat arra utasítja a Hive, hogy csak adja vissza adatokat a végződésű fájlokból. napló.
 
   > [!NOTE]
-  > Külső táblák kell használni, amikor külső forrásból frissítenie kell az alapul szolgáló adatokat várt. Például egy automatizált adatok feltöltési folyamat vagy a MapReduce művelethez.
+  > Külső táblák kell használni, amikor várhatóan az alapul szolgáló adatokat egy külső forrás frissíteni kell. Például az automatikus feltöltési folyamat vagy a MapReduce művelet.
   >
-  > A külső tábla eldobása does **nem** törli az adatokat, csak a tábla definíciójában.
+  > A külső tábla elvetését does **nem** törölheti az adatokat, csak a tábla definícióját.
 
-    Ez a parancs eredménye az alábbihoz hasonló:
+    Ez a parancs kimenete az alábbi szöveghez hasonló:
 
         INFO  : Tez session hasn't been created yet. Opening session
         INFO  :
@@ -173,46 +168,46 @@ Beeline Hive ügyfél, amely az átjárócsomópontokkal a HDInsight-fürt rész
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-5. Beeline kilépéshez használja `!exit`.
+5. A kilépéshez a Beeline használata `!exit`.
 
-### <a id="file"></a>Futtassa a HiveQL fájlt Beeline segítségével
+### <a id="file"></a>A Beeline használata futtatni egy HiveQL
 
-Az alábbi lépések segítségével hozzon létre egy fájlt, majd Beeline használatával.
+Az alábbi lépések segítségével hozzon létre egy fájlt, majd futtassa azt a Beeline használata.
 
-1. Az alábbi parancs segítségével hozzon létre egy fájlt **query.hql**:
+1. A következő paranccsal hozzon létre egy fájlt **query.hql**:
 
     ```bash
     nano query.hql
     ```
 
-2. A következő szöveg használható a fájl tartalmát. Ez a lekérdezés táblázatot hoz létre új "belső" nevű **errorLogs**:
+2. Használja a következő szöveget a fájl tartalmát. Ez a lekérdezés új táblát hoz létre "belső" nevű **hibanaplókat**:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
     INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
     ```
 
-    Ezekre az utasításokra hajtsa végre a következő műveleteket:
+    Ezek az utasítások hajtsa végre a következő műveleteket:
 
-    * **Hozzon létre Ha nem létezik táblázat** -Ha a tábla már nem létezik, a rendszer létrehozza. Mivel a **külső** kulcsszó nem használható, a jelen nyilatkozat egy belső táblát hoz létre. Belső táblák a Hive-adatraktárban tárolja, és Hive teljesen kezeli.
-    * **TÁROLT AS ORC** -tárolja az adatokat optimalizált sor oszlopos (ORC) formátumban. ORC Hive adattárolás magas optimalizált és hatékony formátuma érvénytelen.
-    * **ÍRJA FELÜL AZ INSERT... Válassza ki** -sorát kiválasztja a **log4jLogs** tartalmazó **[hiba]**, majd szúrja be az adatokat a **errorLogs** tábla.
+    * **Hozzon létre tábla IF NOT EXISTS** – Ha a tábla már nem létezik, a rendszer létrehozza. Mivel a **külső** kulcsszó nem használható, ez az utasítás létrehoz egy belső táblázatban. Belső táblák Hive adattárházban tárolódnak, és Hive teljes egészében kezeli.
+    * **TÁROLT AS ORC** – optimalizált sor Oszlopalapú (ORC) formátumban tárolja az adatokat. ORC formátum Hive-adatok tárolására szolgáló nagymértékben optimalizált és hatékony formátumban.
+    * **ÍRJA FELÜL AZ INSERT... Válassza ki** -sorait kiválasztja a **log4jLogs** tartalmazó tábla **[hiba]**, majd beszúrja az adatokat a **hibanaplókat** tábla.
 
     > [!NOTE]
-    > Ellentétben a külső táblákhoz az alapul szolgáló adatokat egy belső tábla eldobása törli.
+    > Ellentétben a külső táblák elvetését egy belső tábla törli az alapul szolgáló adatokat.
 
 3. Mentse a fájlt, használja a **Ctrl**+**_X**, majd adja meg **Y**, és végül **Enter**.
 
-4. A fájl Beeline futtatásához használja a következőket:
+4. A Beeline használata fájl futtatásához használja a következő:
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
     ```
 
     > [!NOTE]
-    > A `-i` paraméter Beeline elindul, és található utasításokat futtat a `query.hql` fájlt. A lekérdezés után megérkezik a a `jdbc:hive2://headnodehost:10001/>` kérdés. Egy fájl segítségével is futtathatja a `-f` paraméter, amely Beeline kilép a lekérdezés befejeződése után.
+    > A `-i` paraméter Beeline elindul, és található utasításokat futtat a `query.hql` fájlt. Ha a lekérdezés befejeződött, akkor érkeznek a `jdbc:hive2://headnodehost:10001/>` parancssort. Egy fájl segítségével is futtathatja a `-f` paramétert, amely a Beeline indulása után kilép, a lekérdezés befejeződött.
 
-5. Annak ellenőrzésére, hogy a **errorLogs** táblázat létrejött, a következő utasítás használatával adja vissza az összes sorát **errorLogs**:
+5. Ellenőrizze, hogy a **hibanaplókat** létrehozott táblázat maradványai, használja a következő utasítást az összes sorát **hibanaplókat**:
 
     ```hiveql
     SELECT * from errorLogs;
@@ -229,57 +224,57 @@ Az alábbi lépések segítségével hozzon létre egy fájlt, majd Beeline hasz
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (1.538 seconds)
 
-## <a id="remote"></a>Beeline távolról használható
+## <a id="remote"></a>A Beeline használata távoli
 
-Ha helyileg telepített Beeline, és a nyilvános interneten keresztül csatlakozni, használja a következő paramétereket:
+Ha a Beeline helyben telepítve van, és a nyilvános interneten keresztül csatlakozni, használja a következő paramétereket:
 
 * __Kapcsolati karakterlánc__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2'`
 
 * __Fürt bejelentkezési neve__: `-n admin`
 
-* __Fürt bejelentkezési jelszó__ `-p 'password'`
+* __Fürt bejelentkezési jelszava__ `-p 'password'`
 
-Cserélje le a `clustername` a HDInsight-fürt neve a kapcsolati karakterláncban.
+Cserélje le a `clustername` a HDInsight-fürt nevére, a kapcsolati karakterláncban.
 
-Cserélje le `admin` nevű, a fürt bejelentkezési és a név felülírandó `password` a fürt bejelentkezési jelszavával.
+Cserélje le `admin` nevére a fürt bejelentkezési adatai, és cserélje le `password` a fürt bejelentkezési jelszavával.
 
-Ha helyileg telepített Beeline, és az Azure virtuális hálózaton keresztül csatlakozni, használja a következő paramétereket:
+Ha a Beeline helyben telepítve van, és egy Azure virtuális hálózaton keresztül, használja a következő paramétereket:
 
 * __Kapcsolati karakterlánc__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
 
-A teljesen minősített tartománynevét egy headnode megkereséséhez használja az információk a [az Ambari REST API használatával kezelheti a HDInsight](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) dokumentum.
+Egy átjárócsomópontjával teljesen minősített tartományneve megkereséséhez használja a található információk a [kezelése HDInsight az Ambari REST API használatával](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) dokumentumot.
 
-## <a id="sparksql"></a>Beeline használata Spark
+## <a id="sparksql"></a>A Spark a Beeline használata
 
-Spark hiveserver2-n, amelyek van más néven a Spark Thrift-kiszolgáló a saját végrehajtásának biztosít. Ez a szolgáltatás Spark SQL használatával helyett Hive a lekérdezéseket, és attól függően, hogy a lekérdezés jobb teljesítményt biztosíthat.
+Spark biztosít a saját megvalósítását hiveserver2-n keresztül, amely mint a Spark Thrift-kiszolgáló is hívják. Ez a szolgáltatás használ a Spark SQL helyett a Hive a lekérdezéseket, és jobb teljesítmény érdekében a lekérdezéstől függően előfordulhat, hogy adja meg.
 
-A __kapcsolati karakterlánc__ használható, ha az interneten keresztül kapcsolódó némileg eltérő. Helyett tartalmazó `httpPath=/hive2` van `httpPath/sparkhive2`. A következő egy példa az interneten keresztül kapcsolódó:
+A __kapcsolati karakterlánc__ használható, ha az interneten keresztül csatlakozó némileg eltérő. Hanem `httpPath=/hive2` van `httpPath/sparkhive2`. Az alábbiakban látható egy példa az interneten keresztül csatlakozó:
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
 ```
 
-Ha közvetlenül a a fürt átjárócsomópontjába, vagy a HDInsight-fürttel azonos Azure virtuális hálózatán belül erőforrás, port `10002` Spark Thrift-kiszolgáló helyett használható `10001`. A következő egy példa való közvetlen csatlakoztatása az átjárócsomóponthoz:
+Ha kapcsolódik közvetlenül a fürt fő csomópontjának, vagy egy erőforráscsoport, a HDInsight-fürt azonos Azure virtuális hálózaton belül, a port `10002` Spark Thrift-kiszolgáló helyett használjon `10001`. Az alábbiakban látható egy példa a az átjárócsomóponthoz való közvetlen csatlakozás lehetőségét:
 
 ```bash
 beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
 ```
 
-## <a id="summary"></a><a id="nextsteps"></a>További lépések
+## <a id="summary"></a><a id="nextsteps"></a>Következő lépések
 
-A Hive HDInsight további általános információkért tekintse meg a következő dokumentumban:
+A Hive a HDInsight további általános információkért tekintse meg a következő dokumentumot:
 
-* [A Hive használata a hdinsight Hadoop](hdinsight-use-hive.md)
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
 
-A HDInsight Hadoop dolgozhat egyéb lehetőségeiről további információkért lásd a következő dokumentumokat:
+További információ a más módokon használhatja a Hadoop on HDInsight az alábbi dokumentumokban talál:
 
-* [A Pig használata a HDInsight Hadoop](hdinsight-use-pig.md)
-* [A HDInsight Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
 
-Ha Tez Hive használ, tekintse meg a következő dokumentumokat:
+Tez Hive-val használja, ha az alábbi dokumentumokban talál:
 
-* [A Tez felhasználói felület használata a Windows-alapú HDInsight-on](../hdinsight-debug-tez-ui.md)
-* [Az Ambari Tez nézetben a Linux-alapú HDInsight-on](../hdinsight-debug-ambari-tez-view.md)
+* [A Tez felhasználói felület használata a Windows-alapú HDInsight](../hdinsight-debug-tez-ui.md)
+* [A Linux-alapú HDInsight az Ambari Tez nézet használata](../hdinsight-debug-ambari-tez-view.md)
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 

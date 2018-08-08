@@ -16,12 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 41fdf1a61538e43ef17eee2937273f56a4538b76
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 666a677943811af05cd3403eab4887271c1f87b3
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577203"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591210"
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory fejlesztők számára
 
@@ -65,7 +65,7 @@ A következő cikkekben az API-król, a protokollüzenetekről és az Azure AD �
 | ----------------------------------------------------------------------------------| --- |
 | [Hitelesítési tárak (ADAL)](active-directory-authentication-libraries.md)   | Áttekintés az Azure AD által támogatott kódtárakról és SDK-król. |
 | [Kódminták](sample-v1-code.md)                                  | Az Azure AD összes kódmintáját tartalmazó lista. |
-| [Szószedet](active-directory-dev-glossary.md)                                      | A jelen dokumentációban használt fogalmak terminológiája és meghatározásai. |
+| [Szószedet](developer-glossary.md)                                      | A jelen dokumentációban használt fogalmak terminológiája és meghatározásai. |
 |  |  |
 
 

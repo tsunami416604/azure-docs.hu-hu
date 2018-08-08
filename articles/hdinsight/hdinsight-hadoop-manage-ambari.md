@@ -1,39 +1,34 @@
 ---
-title: Megfigyelés és kezelés Azure HDInsight Ambari webes felhasználói felületen |} Microsoft Docs
-description: Megtudhatja, hogyan figyelheti és Linux-alapú HDInsight-fürtök kezelése az Ambari használatával. Ebben a dokumentumban megismerheti, hogyan használható az Ambari webes felhasználói felületén a HDInsight-fürtök részét képező.
+title: Figyelése és felügyelete az Azure HDInsight az Ambari webes felhasználói felülettel
+description: Ismerje meg, hogyan figyelheti és Linux-alapú HDInsight-fürtök kezelése az Ambari használatával. Ebben a dokumentumban megismerheti, hogyan használhatja a mellékelt a HDInsight-fürtök az Ambari webes felhasználói Felületet.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 4787f3cc-a650-4dc3-9d96-a19a67aad046
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 8c58607e191d58d1cb6706569b909a4d709b14b3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: e0efab2caa4f214d407cf8c4f09bfa5f4f619e8d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405266"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591837"
 ---
-# <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>A HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával
+# <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari egyszerűbbé teszi a felügyeleti és a Hadoop-fürthöz, adja meg a webes felhasználói felület és a REST API használatát egy könnyen ellenőrzésére. Ambari Linux-alapú HDInsight-fürtök része, és figyelheti a fürt és a konfigurációs módosításokat.
+Az Apache Ambari leegyszerűsíti a kezelése és figyelése a Hadoop-fürt azáltal, hogy egy könnyen használható webes felhasználói felületen és a REST API-t. Az Ambari Linux-alapú HDInsight-fürtökön része, és a fürt monitorozására és konfigurációs módosításokat.
 
-Ez a dokumentum elsajátíthatja az Ambari webes felhasználói felület használata a HDInsight-fürtöt.
+Ebből a dokumentumból megismerheti, hogyan az Ambari webes felhasználói felület használata egy HDInsight-fürtön.
 
-## <a id="whatis"></a>Mi az az Ambari?
+## <a id="whatis"></a>Mi az Ambari?
 
-[Apache Ambari](http://ambari.apache.org) egy könnyen használható webes felhasználói felület biztosításával egyszerűsíti a Hadoop kezelését. Ambari használatával kezelni és megfigyelni a Hadoop-fürtök. A fejlesztők integrálható a ezeket a képességeket a alkalmazások használatával a [Ambari REST API-k](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Az Apache Ambari](http://ambari.apache.org) egyszerűbbé teszi a Hadoop-kezelés azáltal, hogy egy könnyen használható webes felhasználói felületen. Felügyelheti és figyelheti a Hadoop-fürtök az Ambari segítségével. A fejlesztők beépíthetik ezeket a képességeket alkalmazásaikban használatával a [az Ambari REST API-k](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-Az Ambari webes felhasználói felület alapértelmezés szerint a HDInsight-fürtök, a Linux operációs rendszert használó valósul meg.
+Az Ambari webes felhasználói Felületet biztosít a Linux operációs rendszert használó HDInsight-fürtök az alapértelmezett.
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). 
@@ -43,208 +38,207 @@ Az Ambari webes felhasználói felület alapértelmezés szerint a HDInsight-fü
 Az Ambari webes felhasználói felület érhető el, a HDInsight-fürt HTTPS://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
 
 > [!IMPORTANT]
-> A HDInsight Ambari való csatlakozás igényel a HTTPS PROTOKOLLT. Amikor a rendszer, használja a rendszergazda fiók nevét és a fürt létrehozásakor megadott jelszóval.
+> Csatlakozás a HDInsight az Ambari HTTPS van szüksége. Amikor a rendszer, használja a rendszergazdai fiók nevét és a fürt létrehozásakor megadott jelszót.
 
 ## <a name="ssh-tunnel-proxy"></a>SSH-alagutat (proxy)
 
-A fürt Ambari közvetlenül az interneten keresztül érhető el, amíg az Ambari webes felhasználói felület (például a Hadoopból) az egyes hivatkozások nem érhetők el az interneten. Ezek a szolgáltatások eléréséhez az SSH-alagút kell létrehoznia. További információkért lásd: [használata SSH Tunneling hdinsight](hdinsight-linux-ambari-ssh-tunnel.md).
+A fürt Ambari közvetlenül az interneten keresztül érhető el, amíg a Ambari webes felhasználói felületen (például a JobTracker) egyes hivatkozások nem lesznek közzétéve az interneten. Ezek a szolgáltatások eléréséhez, létre kell hoznia egy SSH-alagutat. További információkért lásd: [SSH-bújtatással való HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Ambari webes felhasználói felület
+## <a name="ambari-web-ui"></a>Az Ambari webes felhasználói felületen
 
 > [!WARNING]
-> Nem minden az Ambari webes felhasználói felület támogatja a hdinsight platformon. További információkért lásd: a [nem támogatott műveletek](#unsupported-operations) szakasz ebben a dokumentumban.
+> HDInsight az Ambari webes felhasználói felület nem minden funkcióját támogatottak. További információkért lásd: a [nem támogatott műveletek](#unsupported-operations) szakasz ebben a dokumentumban.
 
-Az Ambari webes felhasználói felületén történő csatlakozáskor kéri, hogy a lap hitelesítést. A fürt rendszergazdai jogú felhasználó (alapértelmezett Admin) és a fürt létrehozása során használt jelszó használata.
+Az Ambari webes Kezelőfelületen való csatlakozáskor az oldal hitelesítésre kéri. Használja a fürt rendszergazdai felhasználói (alapértelmezett rendszergazdai) és a fürt létrehozásakor használt jelszó.
 
-Az oldal megnyitása, vegye figyelembe a sáv felső részén. A sáv a következő információ és szabályozza tartalmazza:
+Amikor megnyílik az oldal, vegye figyelembe a felső sávon. A sáv tartalmazza a következő információkat és vezérlők:
 
 ![ambari-nav](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
 
-* **Ambari embléma** -megnyitja az irányítópultot, amely a fürt figyelésére használható.
+* **Az Ambari embléma** – megnyitja az irányítópultot, amely a fürt monitorozására használható.
 
-* **A fürt neve # ops** -Ambari folyamatban lévő műveletek számát jeleníti meg. A fürt nevét vagy **# ops** háttérbeli műveletek listáját jeleníti meg.
+* **A fürt neve # ops** -Ambari folyamatban lévő műveletek számát jeleníti meg. A fürt nevének kijelölésekor vagy **# ops** háttérbeli műveletek listáját jeleníti meg.
 
-* **# riasztások** -figyelmeztetés vagy kritikus riasztás, ha vannak ilyenek, a fürt jeleníti meg.
+* **# riasztás** -jelenít meg figyelmeztetést vagy kritikus riasztás, ha bármely, a fürt számára.
 
-* **Irányítópult** -jeleníti meg az irányítópulton.
+* **Irányítópult** -jeleníti meg az irányítópultot.
 
-* **Szolgáltatások** -információkat és a konfigurációs beállítások, a fürt számára.
+* **Szolgáltatások** – információ és a konfigurációs beállítások a szolgáltatások a fürtben.
 
-* **Gazdagépek** -információkat és a konfigurációs beállítások, a fürt csomópontjaihoz.
+* **Gazdagépek** – információ és a konfigurációs beállítások a csomópontok a fürtben.
 
 * **Riasztások** -adatokat, figyelmeztetéseket és a kritikus riasztások naplóját.
 
-* **Felügyeleti** -verem/szoftverszolgáltatások a fürt, a szolgáltatás fiókjának adatait, és a Kerberos biztonsági telepített.
+* **Rendszergazdai** -verem és szolgáltatásokat a fürt szolgáltatásfiók-adatokat és a Kerberos biztonsági telepített.
 
-* **Felügyeleti gomb** -Ambari felügyeleti, a felhasználói beállításokat és kijelentkezési.
+* **Rendszergazdai gomb** -Ambari felügyeleti, a felhasználói beállításokat és a kijelentkezési.
 
 ## <a name="monitoring"></a>Figyelés
 
 ### <a name="alerts"></a>Riasztások
 
-Az alábbi lista tartalmazza az Ambari által használt közös riasztási állapot:
+Az alábbi lista tartalmazza az Ambari által használt gyakori riasztási állapotok:
 
 * **OK**
 * **Figyelmeztetés**
 * **CRITICAL**
 * **ISMERETLEN**
 
-Riasztások eltérő **OK** okozhat a **# riasztások** bejegyzés a riasztások számát jeleníti meg a lap tetején. Ez a bejegyzés látható értesítések valamelyikének kiválasztásakor a riasztások és azok állapotát.
+Más, a riasztások **OK** okozhat a **# riasztás** bejegyzés riasztások számát jeleníti meg a lap tetején. Ez a bejegyzés kiválasztása a riasztások és azok állapotát jeleníti meg.
 
-Riasztások vannak szervezve több alapértelmezett csoport, amely tekintheti meg a **riasztások** lap.
+Riasztások több alapértelmezett csoport, amely tekinthetők vannak szervezve a **riasztások** lapot.
 
 ![Riasztások lap](./media/hdinsight-hadoop-manage-ambari/alerts.png)
 
-A csoportok segítségével kezelheti a **műveletek** menüben, majd válassza **riasztási csoportok kezelése**.
+A csoportok használatával kezelheti a **műveletek** menüben, majd válassza **riasztási csoportok kezelése**.
 
-![riasztási csoportok párbeszédpanel kezelése](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
+![értesítési csoportok párbeszédpanelen kezelése](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
 
-Is kezelheti a riasztási módszerek, és a riasztási értesítések létrehozása a **műveletek** menü kiválasztásával __riasztás értesítések kezelésére__. Aktuális értesítések jelennek meg. Itt értesítéseket is létrehozhat. Keresztül is elküldhetik az értesítéseket **E-mail** vagy **SNMP** Ha adott riasztás/súlyossági kombinációk történik. Például minden egyes a riasztásoknak az e-mailt küldhet a **YARN alapértelmezett** csoport beállítása **kritikus**.
+Emellett riasztási módok kezelése, és hozhat létre riasztási értesítéseit a **műveletek** menü kiválasztásával __riasztás értesítések kezelése__. Aktuális értesítések jelennek meg. Itt értesítéseket is létrehozhat. Az értesítések is küldhetők keresztül **E-mail** vagy **SNMP** amikor adott riasztás/súlyossági kombinációk fordulhat elő. Például ha bármelyik a riasztásoknak az e-mailt küldhet a **YARN alapértelmezett** tulajdonoscsoportja **kritikus**.
 
-![Hozzon létre figyelmeztető párbeszédpanel](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
+![Figyelmeztető párbeszédpanel létrehozása](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
-Végezetül kiválasztásával __riasztást beállításainak kezelése__ a a __műveletek__ menü lehetővé teszi, hogy meg kell adnia a szám, ahányszor egy riasztás akkor fordulhat elő, egy értesítés elküldése előtt. Ez a beállítás segítségével használatának megakadályozása értesítések átmeneti hibák esetén.
+Végül válassza __riasztás beállításainak kezelése__ származó a __műveletek__ menü lehetővé teszi, hogy hányszor riasztást kell történnie, egy értesítés elküldése előtt. Ezt a beállítást, hogy az értesítések átmeneti hibák esetén használható.
 
 ### <a name="cluster"></a>Fürt
 
-A **metrikák** az irányítópult widgetek, amely megkönnyíti a fürt egy pillantással állapotának figyelésére tartalmazza. Több widgets, például a **CPU-használat**, kattintáskor további információkkal.
+A **metrikák** az irányítópult lap tartalmaz, amelyek megkönnyítik a fürt egyetlen pillantással állapotának figyelése widgetek sorozata. Több widgetet, például **CPU-használat**, ha rákattintunk olvashat további információkat.
 
-![a metrikák irányítópult](./media/hdinsight-hadoop-manage-ambari/metrics.png)
+![metrika az irányítópulton](./media/hdinsight-hadoop-manage-ambari/metrics.png)
 
-A **Heatmaps** lapon színes heatmaps, piros a zöld lesz metrikákat jeleníti meg.
+A **Intenzitástérképek** lapon színes intenzitástérképek, vörös, zöld azzal metrikákat jeleníti meg.
 
-![heatmaps irányítópult](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
+![az irányítópulton intenzitástérképek](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
 
-További információ a fürtön belüli csomópontokon, válassza ki a **állomások**. Ezután válassza ki az adott csomópont érdekli.
+További információ a fürtön belül a csomópontokon, válassza ki a **gazdagépek**. Ezután válassza ki az Önt érdeklő adott csomópont.
 
-![állomás részletei](./media/hdinsight-hadoop-manage-ambari/host-details.png)
+![gazdagép részletei](./media/hdinsight-hadoop-manage-ambari/host-details.png)
 
 ### <a name="services"></a>Szolgáltatások
 
-A **szolgáltatások** oldalsávon az irányítópulton a fürtben futó szolgáltatások állapotának gyors betekintést nyújt. Különböző ikonok használatosak állapot vagy a végrehajtandó műveleteket. Például egy sárga újrahasznosítást szimbólum jelenik meg, ha egy szolgáltatásnak kell újrahasznosításra kerül.
+A **szolgáltatások** az irányítópulton lévő oldalsávon a fürtben futó szolgáltatások állapotának gyors betekintést nyújt. Állapot vagy a végrehajtandó műveleteket hajtson végre a különféle ikonok használatosak. Például egy sárga újrahasznosítás szimbólum jelenik meg, ha egy szolgáltatás újraindítására van szükség.
 
 ![szolgáltatások oldalsó sáv](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
 
 > [!NOTE]
-> Megjelenik a szolgáltatások HDInsight-fürttípusok és verziója eltérő. Itt látható a szolgáltatások eltérhetnek a szolgáltatások jelenik meg a fürt számára.
+> Megjelenik a szolgáltatások HDInsight-fürttípusok és verziója eltérő. Itt jelenik meg a szolgáltatások, mint a szolgáltatások jelenik meg a fürt eltérő lehet.
 
-A szolgáltatás látható értesítések valamelyikének kiválasztásakor további részletes információk a szolgáltatásban.
+További információt a szolgáltatás a szolgáltatás kiválasztása jeleníti meg.
 
-![szolgáltatás összefoglaló információk](./media/hdinsight-hadoop-manage-ambari/service-details.png)
+![Service összefoglaló információk](./media/hdinsight-hadoop-manage-ambari/service-details.png)
 
 #### <a name="quick-links"></a>Gyorshivatkozások
 
-Egyes szolgáltatások megjelenítése egy **Gyorshivatkozások** az oldal tetején. Ez a szolgáltatásspecifikus web UI, például a eléréséhez használható:
+Egyes szolgáltatások megjelenített egy **Gyorshivatkozások** hivatkozásra az oldal tetején. Szolgáltatásspecifikus webes, mint például eléréséhez használható:
 
 * **Feladatelőzmények** -MapReduce-feladatok előzményeinek.
-* **Erőforrás-kezelő** -YARN erőforrás-kezelő felhasználói felületén.
-* **NameNode** -Hadoop elosztott fájl System (HDFS) NameNode felhasználói felület.
-* **Oozie webes felhasználói felület** -Oozie felhasználói felület.
+* **Erőforrás-kezelő** -YARN ResourceManager felhasználói felülete.
+* **NameNode** – Hadoop Distributed File System (HDFS) NameNode felhasználói felületén.
+* **Az Oozie webes felhasználói felületen** -Oozie felhasználói felületén.
 
-Új lap ezeket a hivatkozásokat kiválasztásával megnyílik a böngészőben, amely a kijelölt oldalát jeleníti meg.
+Az alábbi hivatkozások kiválasztásával megnyílik egy új lap a böngészőben, amely a kijelölt oldal megjeleníti.
 
 > [!NOTE]
-> Válassza a **Gyorshivatkozások** egy szolgáltatás bejegyzése térhetnek vissza egy "a kiszolgáló nem található" hiba. Ha ezt a hibát észlel, használnia kell az SSH-alagút használata esetén a **Gyorshivatkozások** bejegyzés ezt a szolgáltatást. További információ: [használata SSH Tunneling a hdinsight eszközzel](hdinsight-linux-ambari-ssh-tunnel.md)
+> Válassza a **Gyorshivatkozások** bejegyzés egy szolgáltatáshoz lehet, hogy "a kiszolgáló nem található" hibaüzenetet ad vissza. Ez a hiba jelentkezik, ha az SSH-alagút használata esetén kell használnia a **Gyorshivatkozások** bejegyzés ezt a szolgáltatást. További információ: [SSH-bújtatással való HDInsight](hdinsight-linux-ambari-ssh-tunnel.md)
 
 ## <a name="management"></a>Kezelés
 
-### <a name="ambari-users-groups-and-permissions"></a>Ambari felhasználók, csoportok és engedélyek
+### <a name="ambari-users-groups-and-permissions"></a>Ambari-felhasználók, csoportok és engedélyek
 
-Felhasználók, csoportok és engedélyek végzett használata esetén támogatottak. egy [tartományhoz csatlakoztatott](./domain-joined/apache-domain-joined-introduction.md) HDInsight-fürthöz. A felhasználói felületen az Ambari felügyeleti tartományhoz fürt információkért lásd: [tartományhoz HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-introduction.md).
+A felhasználók, csoportok és engedélyek működő támogatottak használata esetén egy [tartományhoz csatlakoztatott](./domain-joined/apache-domain-joined-introduction.md) HDInsight-fürt. Az Ambari Management UI használatával egy tartományhoz csatlakozó fürtön információkért lásd: [tartományhoz csatlakoztatott HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-introduction.md).
 
 > [!WARNING]
-> Ne változtassa meg jelszavát a Linux-alapú HDInsight-fürtök az Ambari figyelő (hdinsightwatchdog). A jelszó módosítása megsérti a Parancsfájlműveletek vagy méretezési műveleteket a fürthöz.
+> Ne módosítsa a jelszavát a Linux-alapú HDInsight-fürt Ambari figyelő (hdinsightwatchdog). A jelszó módosítása működésképtelenné válik a parancsfájlműveletekkel vagy a fürt skálázási műveleteket végez.
 
 ### <a name="hosts"></a>Hosts
 
-A **állomások** lap felsorolja a fürt összes gazdagépén. Gazdagép kezeléséhez kövesse az alábbi lépéseket.
+A **gazdagépek** lap felsorolja a fürtben lévő minden gazdagép. Gazdagép kezeléséhez kövesse az alábbi lépéseket.
 
 ![gazdagépek lap](./media/hdinsight-hadoop-manage-ambari/hosts.png)
 
 > [!NOTE]
-> Hozzáadása, leszerelése és recommissioning egy gazdagép nem használható a HDInsight-fürtök.
+> Hozzáadása, a leszerelése és a egy gazdagép recommissioning nem használható a HDInsight-fürtökkel.
 
-1. Válassza ki, amelyet felügyelni kíván.
+1. Válassza ki a kezelni kívánt gazdagépen.
 
-2. Használja a **műveletek** menüre kattintva jelölje ki az elvégezni kívánt műveletet:
+2. Használja a **műveletek** menüre, és jelölje ki a végrehajtani kívánt műveletet:
 
-   * **Indítsa el az összes összetevő** -összetevők elindítja a gazdagépen.
+   * **Indítsa el az összes összetevő** -indítsa el az összes összetevő a gazdagépen.
 
-   * **Állítsa le az összes összetevő** -összetevők leállításához a gazdagépen.
+   * **Az összes összetevő leállítása** – az összes összetevő leállítása a gazdagépen.
 
-   * **Indítsa újra az összes összetevő** - Stop, és indítsa el az összes összetevő a gazdagépen.
+   * **Az összes összetevő újraindítása** – állítsa le és indítsa el az összes összetevő a gazdagépen.
 
-   * **Kapcsolja be a karbantartási mód** -riasztások mellőzi a gazdagép. Hozzon létre riasztást műveleteket hajtja végre ezt a módot kell engedélyezni. Például a szolgáltatás indítása és leállítása.
+   * **Karbantartási mód bekapcsolása** -elrejti a riasztásokat a gazdagép számára. Ebben a módban hajt végre műveleteket, amelyeket riasztást engedélyezni kell. Ha például egy szolgáltatás elindítása és leállítása.
 
-   * **Kapcsolja ki a karbantartási mód** – a gazdagép normál riasztási adja vissza.
+   * **Karbantartási mód kikapcsolása** – a gazdagépet a szokásos riasztási adja vissza.
 
-   * **Állítsa le** -leállítja DataNode vagy NodeManagers a gazdagépen.
+   * **Állítsa le** -DataNode leáll vagy NodeManagers a gazdagépen.
 
-   * **Start** -DataNode kezdődik vagy NodeManagers a gazdagépen.
+   * **Indítsa el** -DataNode elindul vagy NodeManagers a gazdagépen.
 
-   * **Indítsa újra a** -leáll, és elindítja DataNode vagy NodeManagers a gazdagépen.
+   * **Indítsa újra a** – leállítja és elindítja DataNode vagy NodeManagers a gazdagépen.
 
-   * **Szerelje le** -állomás eltávolítja a fürtből.
-
-     > [!NOTE]
-     > A HDInsight-fürtökön ne használja ezt a műveletet.
-
-   * **Recommission** -ad hozzá egy korábban már leszerelt állomást a fürthöz.
+   * **Leszerelése** -állomás eltávolítja a fürtből.
 
      > [!NOTE]
-     > A HDInsight-fürtökön ne használja ezt a műveletet.
+     > Ez a művelet ne használja a HDInsight-fürtökön.
+
+   * **Recommission** -hozzáad egy korábban már leszerelt állomást a fürthöz.
+
+     > [!NOTE]
+     > Ez a művelet ne használja a HDInsight-fürtökön.
 
 ### <a id="service"></a>Services
 
-Az a **irányítópult** vagy **szolgáltatások** oldalon a **műveletek** szolgáltatások leállítása és elindítása az összes szolgáltatás a lista alján gombra.
+Az a **irányítópult** vagy **szolgáltatások** oldalon a **műveletek** gomb alsó részén állítsa le és indítsa el az összes szolgáltatás a szolgáltatások listájába.
 
 ![szolgáltatás műveletek](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
 
 > [!WARNING]
-> Amíg **hozzáadása szolgáltatás** szerepel ebben a menüben szereplő, nem használható a szolgáltatások a HDInsight-fürthöz. Új szolgáltatások fel kell venni, hogy egy parancsfájl műveletével a fürtök kiépítése során. Parancsfájlműveletek használatával kapcsolatos további információkért lásd: [testreszabása HDInsight-fürtök Parancsfájlműveletek segítségével](hdinsight-hadoop-customize-cluster-linux.md).
+> Miközben **– szolgáltatás hozzáadása** szerepel ebben a menüben, nem használható szolgáltatások hozzáadása a HDInsight-fürt. Kell hozzáadni az új szolgáltatások szkriptműveletekkel fürtök kiépítése során. Szkriptműveletek használatával kapcsolatos további információkért lásd: [testreszabása HDInsight-fürtök parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
 
-Amíg a **műveletek** gomb újraindíthatja az összes szolgáltatás, gyakran szeretné indítása, leállítása és újraindítása egy adott szolgáltatáshoz. Az alábbi lépések segítségével elvégezheti a kapcsolódó műveleteket egy szolgáltatás:
+Bár a **műveletek** gombra az összes szolgáltatás újraindításával, milyen gyakran szeretne indítása, leállítása vagy egy adott szolgáltatás újraindítása. Az alábbi lépések segítségével műveleteket hajthat végre egy adott szolgáltatás:
 
 1. Az a **irányítópult** vagy **szolgáltatások** lapon, válassza ki a szolgáltatást.
 
-2. A felső részén a **összegzés** lapon a **szolgáltatás műveletek** gombra, majd válassza ki a végrehajtandó műveletet. Ezzel újraindul a szolgáltatás az összes olyan csomóponton.
+2. A felső részén a **összefoglalás** lapján a **szolgáltatás műveletek** gombra, és válassza ki az elvégzendő műveletet. Ezzel újraindítja a szolgáltatás az összes csomópontra.
 
     ![szolgáltatási művelet](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]
-   > Egyes szolgáltatások újraindítása, a fürt futása közben riasztásokat hozhat létre. Riasztások elkerülése érdekében használja a **szolgáltatás műveletek** gomb engedélyezése **karbantartási módba** végrehajtása az újraindítás előtt a szolgáltatás.
+   > Egyes szolgáltatások újraindítása a fürt futása közben is riasztást. Riasztások elkerülése érdekében használja a **szolgáltatás műveletek** engedélyezése gombra **karbantartási módba** végrehajtása az újraindítás előtt a szolgáltatás.
 
-3. Egy műveletet a kijelölt a **# op** bejegyzés felső részén a lap lépésekkel jeleníthető meg, hogy a háttérművelet folyamatban van. Konfigurált megjelenítéséhez, ha a háttérbeli műveletek listája jelenik meg.
+3. Művelet kiválasztása után a **# op** bejegyzés megjelenítése a háttérművelet történik, hogy a lap lépésekben tetején. Ha konfigurálva megjelenítéséhez, a háttérbeli műveletek listája jelenik meg.
 
    > [!NOTE]
-   > Ha engedélyezte a **karbantartási módba** a szolgáltatáshoz, ne felejtse el használatával tiltsa le a **szolgáltatás műveletek** gombra kattint, a művelet befejeződése után.
+   > Ha engedélyezte a **karbantartási módba** a szolgáltatáshoz, ne felejtse el használatával tiltsa le azt a **szolgáltatás műveletek** gombra, miután a művelet befejeződött.
 
-Szolgáltatás konfigurálásához tegye a következőket:
+Egy szolgáltatás konfigurálásához használja az alábbi lépéseket:
 
 1. Az a **irányítópult** vagy **szolgáltatások** lapon, válassza ki a szolgáltatást.
 
-2. Válassza ki a **Configs** fülre. A jelenlegi konfiguráció jelenik meg. A fenti konfiguráció listáját is megjelenik.
+2. Válassza ki a **Configs** fülre. A jelenlegi konfiguráció jelenik meg. Az előző konfigurációk listáját is megjelenik.
 
     ![Konfigurációk](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
 
-3. A megjelenített módosítsa a konfigurációt, és válassza ki a mezők **mentése**. Vagy válassza ki az előző konfigurációt, és válassza ki **ellenőrizze aktuális** szeretné visszaállítani az előző beállítások.
+3. Módosíthatja a konfigurációt, és válassza a megjelenő mezőket használja **mentése**. Vagy válassza ki az előző konfigurációt, és válassza **legyen ez az aktuális** visszaállítása az előző beállításokat.
 
-## <a name="ambari-views"></a>Az Ambari nézetek
+## <a name="ambari-views"></a>Ambari-nézetek
 
-Az Ambari nézetek a fejlesztők olyan felhasználói felületi elemei csatlakoztassa az Ambari webes felhasználói felület használata a [Ambari nézetek keretrendszer](https://cwiki.apache.org/confluence/display/AMBARI/Views). HDInsight Hadoop-fürt típusú a következő nézeteket biztosítja:
+Ambari-nézetek lehetővé teszik a felhasználói felületi elemeket illeszkedik az Ambari webes felhasználói felület használatával a fejlesztők a [Ambari-nézetek keretrendszer](https://cwiki.apache.org/confluence/display/AMBARI/Views). HDInsight Hadoop-fürt típusú a következő nézeteket biztosítja:
 
-* Yarn várólista-kezelő: A várólista-kezelő egy egyszerű felhasználói Felületet biztosít megtekintése és módosítása a YARN várólisták.
 
-* Hive nézete: A Hive nézet lehetővé teszi, hogy közvetlenül a böngészőből Hive-lekérdezések futtatásához. Lekérdezések mentése, eredmények megtekintése, az eredmények mentése a fürttároló vagy eredmények letöltése a helyi rendszer. A Hive-nézetek használata további információkért lásd: [Hive nézetek és a HDInsight együttes](hadoop/apache-hadoop-use-hive-ambari-view.md).
+* Hive-nézet: A Hive-nézet lehetővé teszi, hogy a Hive-lekérdezések futtatása közvetlenül a webböngészőből. Mentheti a lekérdezéseket, eredmények megtekintése, az eredmények mentése a fürttároló vagy eredmények letöltése a helyi rendszerről. További információ a Hive-nézetek használata: [Hive-nézetek a HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md).
 
-* Tez nézet: A Tez nézet lehetővé teszi, hogy jobban megérteni, és optimalizálja a feladatok. A Tez feladatok végrehajtásának módját, és milyen erőforrásokat használt információk is megtekinthetők.
+* Tez nézet: A Tez nézet lehetővé teszi, hogy jobb megismerésében és a feladatok optimalizálása. Megtekintheti az információ a Tez-feladatok végrehajtásának módját, és milyen erőforrásokat használnak.
 
 ## <a name="unsupported-operations"></a>Nem támogatott műveletek
 
 A következő Ambari műveletek nem támogatottak a HDInsight:
 
-* __Helyezze át a metrikákat gyűjtő szolgáltatásának__. A metrikák adatgyűjtő szolgáltatás adatokat megtekintésekor a műveletek a szolgáltatás műveletek menüjében egyik __áthelyezése metrikákat gyűjtő__. Ez nem támogatott a hdinsight eszközzel.
+* __A metrikák gyűjtőszolgáltatás áthelyezése__. A metrikák adatgyűjtő szolgáltatás adatokat megtekintésekor a szolgáltatás műveletek menüből elérhető műveletek egyike __áthelyezése metrikákat gyűjtő__. Ez nem támogatott a HDInsight.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan használható a [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) a hdinsight eszközzel.
+Ismerje meg, hogyan használható a [az Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) a HDInsight.

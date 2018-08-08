@@ -1,38 +1,33 @@
 ---
-title: SSH egy HDInsight-fürt - Azure Hadoop a Pig használata |} Microsoft Docs
-description: Megtudhatja, hogyan kapcsolódnak a Linux-alapú Hadoop-fürtök SSH, majd használja a Pig parancs interaktív Pig Latin utasítás futása vagy kötegelt feladatként.
+title: Az SSH egy HDInsight-fürtön – Azure Hadoop a Pig használata
+description: Ismerje meg, hogyan csatlakozhat egy Linux-alapú Hadoop-fürtöt, az SSH és a Pig parancs futása Pig Latin utasításokkal majd használja, vagy egy batch-feladatot.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: b646a93b-4c51-4ba4-84da-3275d9124ebe
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: c296e01096480b85aea52ace69f25aff39e3bd2d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: c521f5781c1fb8bae1e036649ee31744d0742796
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401149"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590296"
 ---
-# <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>A Pig parancs (SSH) rendelkező Linux-alapú fürtön Pig feladatok futtatása
+# <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>A Pig-parancsot (SSH) rendelkező Linux-alapú fürt Pig-feladatok futtatása
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Megtudhatja, hogyan interaktív módon futtassa Pig-feladatokhoz az SSH-kapcsolat a HDInsight-fürthöz. A Pig Latin programozási nyelv lehetővé teszi a bemeneti adatok a kívánt kimeneti létrehozásához alkalmazott átalakítások ismertetik.
+Ismerje meg, interaktív módon futtatása a HDInsight-fürthöz az SSH-kapcsolatot a Pig-feladatokhoz. A Pig Latin programozási nyelv lehetővé teszi átalakítások használhatók, amelyek érvényesek a bemeneti adatokat és létrehozza a kívánt kimeneti ismertetik.
 
 > [!IMPORTANT]
-> A jelen dokumentumban leírt lépések egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A jelen dokumentumban leírt lépések a Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a id="ssh"></a>Csatlakozzon SSH
+## <a id="ssh"></a>Kapcsolódás az ssh-val
 
-Az SSH használata a HDInsight-fürthöz való csatlakozáshoz. Az alábbi példa nevű fürthöz csatlakozó **myhdinsight** nevű fiók **sshuser**:
+Az SSH használata a HDInsight-fürthöz való csatlakozáshoz. Az alábbi példa nevű fürthöz csatlakozó **myhdinsight** nevű fiókként **sshuser**:
 
 ```bash
 ssh sshuser@myhdinsight-ssh.azurehdinsight.net
@@ -40,15 +35,15 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
 További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a id="pig"></a>A Pig paranccsal
+## <a id="pig"></a>A Pig-parancs használata
 
-1. A csatlakozás után a következő parancs használatával indítsa el a Pig parancssori felület (CLI):
+1. Ha csatlakoztatva van, indítsa el a Pig parancssori felület (CLI) használatával a következő parancsot:
 
     ```bash
     pig
     ```
 
-    Néhány percet, miután a kérdés vált`grunt>`.
+    Pár pillanat után a parancssor megváltozik, és`grunt>`.
 
 2. Adja meg a következő utasítást:
 
@@ -56,13 +51,13 @@ További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-lin
     LOGS = LOAD '/example/data/sample.log';
     ```
 
-    Ez a parancs a sample.log fájl tartalmát betölti a NAPLÓKAT. A fájl tartalmát a következő utasítás használatával tekintheti meg:
+    Ez a parancs a sample.log fájlt tartalmát betölti a NAPLÓKAT. A fájl tartalmát a következő utasítás használatával tekintheti meg:
 
     ```piglatin
     DUMP LOGS;
     ```
 
-3. A következő átalakíthatja az adatokat úgy, hogy alkalmazza minden rekordot a következő utasítás használatával csak a naplózási szint kibontani reguláris kifejezést:
+3. Ezután az adatok átalakítása alkalmazása csak a naplózási szint kinyerésére minden rekord használatával a következő utasítást egy reguláris kifejezést:
 
     ```piglatin
     LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
@@ -70,38 +65,38 @@ További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-lin
 
     Használhat **DUMP** az átalakítás után az adatok megtekintéséhez. Ebben az esetben használjon `DUMP LEVELS;`.
 
-4. További, átalakítások alkalmazása a következő táblázat a kimutatások segítségével:
+4. Továbbra is alkalmazása átalakításokat az alábbi táblázatban a-utasítások használatával:
 
-    | A Pig Latin utasítás | Az utasítás funkciója |
+    | A Pig Latin utasítás | Az utasítás leírása |
     | ---- | ---- |
-    | `FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;` | A naplózási szint megadásához null értéket tartalmazó sorok eltávolítása és az eredményt a `FILTEREDLEVELS`. |
-    | `GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;` | A sorok naplózási szint szerint csoportosítja, és az eredményt a `GROUPEDLEVELS`. |
-    | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | Hoz létre, amely tartalmazza az egyes egyedi napló adatok értéke szinten, és hány alkalommal következik be. Az adatkészlet tárolja azokat `FREQUENCIES`. |
-    | `RESULT = order FREQUENCIES by COUNT desc;` | A naplózási szintek rendelések (csökkenő) száma szerint, és tárolja a `RESULT`. |
+    | `FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;` | A naplózási szint megadásához null értéket tartalmazó sorok eltávolítja, és tárolja az eredményeket az `FILTEREDLEVELS`. |
+    | `GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;` | A sorok naplózási szint szerint csoportosítja, és tárolja az eredményeket az `GROUPEDLEVELS`. |
+    | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | Létrehoz egy csoportot, amely tartalmazza az egyes egyedi naplózási adatok szintű hatékonyságot, és hány alkalommal történik. Az adatkészlet tárolt be `FREQUENCIES`. |
+    | `RESULT = order FREQUENCIES by COUNT desc;` | A naplózási szintek orders (csökkenő) száma szerint, és tárolja `RESULT`. |
 
     > [!TIP]
-    > Használjon `DUMP` az átalakítás lépések után az eredmények megjelenítéséhez.
+    > Használat `DUMP` az átalakítás minden lépése után az eredmény megtekintéséhez.
 
-5. Az átalakítás eredménye használatával is mentheti a `STORE` utasítást. Például a következő utasítás menti a `RESULT` számára a `/example/data/pigout` a fürt az alapértelmezett tároló könyvtár:
+5. Az eredményeket az átalakítás használatával is mentheti a `STORE` utasítást. Ha például a következő utasítás menti a `RESULT` , a `/example/data/pigout` a a fürt alapértelmezett tárolója könyvtárába:
 
     ```piglatin
     STORE RESULT into '/example/data/pigout';
     ```
 
    > [!NOTE]
-   > Az adatok tárolási fájlban található a megadott könyvtár `part-nnnnn`. Ha a könyvtár már létezik, akkor egy hibaüzenet.
+   > Az adatok fájlban található a megadott könyvtárban tárolt `part-nnnnn`. Ha a könyvtár már létezik, hibaüzenetet kap.
 
-6. Lépjen ki a grunt parancssorába, írja be a következő utasítást:
+6. A kilépéshez a grunt használatával adja meg a következő utasítást:
 
     ```piglatin
     QUIT;
     ```
 
-### <a name="pig-latin-batch-files"></a>A Pig Latin parancsfájlokat
+### <a name="pig-latin-batch-files"></a>A Pig Latin kötegfájlok
 
-A Pig-parancs segítségével futtassa a Pig Latin fájlban található.
+A Pig-parancs segítségével is futtathat a Pig Latin a fájlban található.
 
-1. A grunt parancssorába kilépéskor a következő paranccsal nevű fájl létrehozása `pigbatch.pig`:
+1. Után kilép a grunt használatával, a következő parancs használatával hozzon létre fájlt `pigbatch.pig`:
 
     ```bash
     nano ~/pigbatch.pig
@@ -119,15 +114,15 @@ A Pig-parancs segítségével futtassa a Pig Latin fájlban található.
     DUMP RESULT;
     ```
 
-    Ha elkészült, használja __Ctrl__ + __X__, __Y__, majd __Enter__ fájl mentéséhez.
+    Amikor végzett, __Ctrl__ + __X__, __Y__, majd __Enter__ szeretné menteni a fájlt.
 
-3. A következő paranccsal futtassa a `pigbatch.pig` fájl a Pig-parancs használatával.
+3. Futtassa a következő parancs használatával a `pigbatch.pig` fájlt a Pig-parancs segítségével.
 
     ```bash
     pig ~/pigbatch.pig
     ```
 
-    Miután befejeződött a kötegelt, a következő eredmény jelenik meg:
+    A batch-feladat befejezése után a következő kimenet jelenik meg:
 
         (TRACE,816)
         (DEBUG,434)
@@ -139,11 +134,11 @@ A Pig-parancs segítségével futtassa a Pig Latin fájlban található.
 
 ## <a id="nextsteps"></a>Következő lépések
 
-A hdinsight Pig általános információkért lásd: a következő dokumentumban:
+A HDInsight Pig általános információkért lásd a következő dokumentumban:
 
-* [A Pig használata a HDInsight Hadoop](hdinsight-use-pig.md)
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 
-Egyéb módjai használata a HDInsight Hadoop további információkért tekintse meg a következő dokumentumokat:
+További információ az egyéb módon történő használata a HDInsight Hadoop a következő dokumentumokban talál:
 
-* [A Hive használata a hdinsight Hadoop](hdinsight-use-hive.md)
-* [A HDInsight Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
+* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)

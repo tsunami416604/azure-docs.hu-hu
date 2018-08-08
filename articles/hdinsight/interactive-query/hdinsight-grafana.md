@@ -1,37 +1,34 @@
 ---
-title: Használja az Azure HDInsight Grafana |} Microsoft Docs
-description: Az Azure HDInsight Grafana elérése
+title: Az Azure HDInsight a Grafana használata
+description: Útmutató a Grafana az Azure HDInsight eléréséhez.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: jgao
-ms.openlocfilehash: c452cb1264dceff8cb791588fa7c58f73631d422
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ae8e676e9a6d6590398d6ccbb759aa29d33e108e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34305428"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598143"
 ---
-# <a name="access-grafana-in-azure-hdinsight"></a>Az Azure hdinsight hozzáférést Grafana
+# <a name="access-grafana-in-azure-hdinsight"></a>Az Azure HDInsight hozzáférést Grafana
 
 
-Grafana népszerű, nyílt forráskódú graph és az irányítópult jelentéskészítő. Grafana egy szolgáltatás gazdag; nem csak nem, hogy a felhasználók használhassanak testre szabható és megosztható irányítópultok is kínál az irányítópultok sablonalapú/parancsprogrammal létrehozva, LDAP-integráció, több adatforrás és több.
+Grafana egy népszerű, nyílt forráskódú graph és az irányítópult szerkesztő. Grafana funkciója gazdag; nem csak nem, hogy a felhasználók létrehozásához, testre szabható és megosztható irányítópultok is kínál sablonalapú/parancsfájlalapú irányítópultokat, LDAP-integráció, több adatforrást és egyéb.
 
-Grafana jelenleg csak az Azure HDInsight interaktív lekérdezés fürt típusa támogatást.
+Grafana jelenleg csak az interaktív lekérdezési fürt típus szerint az Azure HDInsight támogatást.
 
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="create-a-hadoop-cluster"></a>Hadoop-fürt létrehozása
 
-Ebben a szakaszban az Azure Resource Manager-sablonnal HDInsight interaktív lekérdezés fürtöt hoz létre. Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie a cikk lépéseinek követéséhez. 
+Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Resource Manager-sablon használatával hoz létre. Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie a cikk lépéseinek követéséhez. 
 
 1. Az alábbi **Üzembe helyezés az Azure-ban** gombra kattintva jelentkezzen be az Azure-ba, és nyissa meg a Resource Manager-sablont az Azure Portalon. 
    
@@ -76,19 +73,19 @@ Ebben a szakaszban az Azure Resource Manager-sablonnal HDInsight interaktív lek
 > 
 >
 
-## <a name="access-the-grafana-dashboard"></a>Hozzáférés a Grafana irányítópult
+## <a name="access-the-grafana-dashboard"></a>Hozzáférés a lesz a Grafana irányítópultja
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **a HDInsight-fürtök**, majd válassza ki a fürt nevét, az utolsó szakaszban létrehozott.
-3. A **Gyorshivatkozások**, kattintson a **fürt irányítópult**.
+2. Válassza ki **HDInsight-fürtök**, majd válassza ki az előző szakaszban létrehozott fürt nevét.
+3. A **Gyorshivatkozások**, kattintson a **fürt irányítópultja**.
 
-    ![A HDInsight fürt irányítópult portal](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "HDInsight fürt irányítópult a portálon")
+    ![HDInsight-fürt irányítópult portál](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "HDInsight-fürt irányítópultja a portálon")
 
 4. Az irányítópultról, kattintson a **Grafana** csempére.
-5. A Hadoop-fürt felhasználó hitelesítő adatainak megadása.
-6. A Grafana irányítópult néz ki:
+5. Adja meg a Hadoop-fürt felhasználói hitelesítő adatait.
+6. A Grafana irányítópult hasonlóan néz ki:
 
-    ![HDInsight Grafana irányítópult](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana irányítópult")
+    ![HDInsight lesz a Grafana irányítópultja](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight lesz a Grafana irányítópultja")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. 

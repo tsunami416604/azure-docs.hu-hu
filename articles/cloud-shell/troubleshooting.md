@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 51d9b8e4299cfa3bc850c7405c27233d678f98b6
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: f954e726aabb34f74d81580e3afc08f2b0b9914b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494400"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619406"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Hibaelhárítási & korlátozások az Azure Cloud Shell
 
@@ -82,7 +82,7 @@ Az Azure Cloud Shell a következő ismert korlátozások vonatkoznak:
 
 A gép, amely biztosítja a Cloud Shell-munkamenetek ideiglenes, és legyen újrahasznosítása után a munkamenet a 20 percig inaktív. A cloud Shell Azure-fájlmegosztás csatlakoztatása a szükséges. Az előfizetés ennek eredményeképpen a Cloud Shell eléréséhez a tárolási erőforrások beállításához képesnek kell lennie. Egyéb szempontok közé tartoznak:
 
-- Csatlakoztatott tárolóval, csak a módosítások belül a `clouddrive` könyvtár tárolja. A Bash a `$Home` is megőrzi a könyvtárban van.
+- Csatlakoztatott tárolóval, csak a módosítások belül a `clouddrive` könyvtár tárolja. A Bash a `$HOME` is megőrzi a könyvtárban van.
 - Azure-fájlmegosztások csak a csatlakoztathatók a [régió hozzárendelt](persisting-shell-storage.md#mount-a-new-clouddrive).
   - Futtassa a Bash, `env` állítja be a régióban található `ACC_LOCATION`.
 - Az Azure Files csak helyileg redundáns tárolás és a georedundáns tárolás fiókokat támogatja.

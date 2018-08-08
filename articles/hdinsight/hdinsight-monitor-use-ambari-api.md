@@ -1,67 +1,62 @@
 ---
-title: Az Ambari API-jával - Azure hdinsight Hadoop-fürtök figyelése |} Microsoft Docs
-description: Az Apache Ambari API-k létrehozása, kezelése és figyelése a Hadoop-fürtök használja. Intuitív operátori eszközök és API-k elrejtése a Hadoop összetettségét.
+title: A használatával az Ambari API – Azure HDInsight Hadoop-fürtök monitorozása
+description: Az Apache Ambari API-k létrehozása, kezelése és figyelése a Hadoop-fürtök használja. Intuitív kezelőeszközöket és API-k elrejtése a Hadoop összetettségét.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-editor: cgronlun
-manager: jhubbard
-ms.assetid: 052135b3-d497-4acc-92ff-71cee49356ff
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/07/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3c8b1af3ad151a7a901150352202ab0b85aa6ec8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f55ee02ada5bb53d4634d119311fb9230ff15105
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402036"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592822"
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>A HDInsight-beli Hadoop-fürtök figyelése az Ambari API használatával
-Ismerje meg, hogy a HDInsight-fürtök figyelése az Ambari API-k használatával.
+Útmutató a HDInsight-fürtök figyelése az Ambari API-k használatával.
 
 > [!NOTE]
-> A cikkben szereplő információkat elsősorban a Windows-alapú HDInsight-fürtök az Ambari REST API egy csak olvasható verziója van. Linux-alapú fürtök esetében lásd: [kezelése Hadoop fürtök az Ambari segítségével](hdinsight-hadoop-manage-ambari.md).
+> Ebben a cikkben található információk az elsősorban a Windows-alapú HDInsight-fürtök az Ambari REST API egyik csak olvasható verzióját. A Linux-alapú fürtök esetén lásd: [kezelése Hadoop-fürtök az Ambari](hdinsight-hadoop-manage-ambari.md).
 > 
 > 
 
-## <a name="what-is-ambari"></a>Mi az az Ambari?
-[Apache Ambari] [ ambari-home] kiépítésére, kezelésére és Apache Hadoop-fürtök ellenőrzésére szolgál. Operátori eszközök intuitív gyűjteményét és egy robusztus API-készletet foglal magában, amelyek elfedik a Hadoop összetettségét, és leegyszerűsítik a fürtök működését. Az API-k kapcsolatos további információkért lásd: [Ambari API-referencia][ambari-api-reference]. 
+## <a name="what-is-ambari"></a>Mi az Ambari?
+[Az Apache Ambari] [ ambari-home] kiépítésére, kezelésére és figyelése Apache Hadoop-fürtök szolgál. Operátori eszközök intuitív gyűjteményét és egy robusztus API-készletet foglal magában, amelyek elfedik a Hadoop összetettségét, és leegyszerűsítik a fürtök működését. Az API-k kapcsolatos további információkért lásd: [Ambari API-referencia][ambari-api-reference]. 
 
-A HDInsight jelenleg csak az Ambari figyelési funkció támogatja. Ambari API 1.0 HDInsight 3.0-s és a 2.1-es verziójú fürtöket támogatja. Ez a cikk ismerteti a HDInsight-fürtökön 3.1 és 2.1 elérése során Ambari API-k. A legfontosabb különbség a kettő között, hogy egyes összetevői új képességeket nyújtanak (például előzmények feladatkiszolgáló) bevezetésével megváltoztak. 
+HDInsight jelenleg csak az Ambari figyelési funkció támogatja. HDInsight 3.0-s és a 2.1-es verziójú fürtök az Ambari API 1.0-t támogatja. Ez a cikk ismerteti a HDInsight 3.1-et és a 2.1-es verziójú fürtökön hozzáférni az Ambari API-k. A fő különbség a kettő között, hogy egyes összetevői új funkciókat (például a feladat Előzménykiszolgáló) bevezetésével megváltozott. 
 
 **Előfeltételek**
 
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Munkaállomás Azure PowerShell-lel**.
-* (Választható) [cURL][curl]. A telepítéshez lásd: [kiadások és letöltéseket tartalmazó oldalon cURL][curl-download].
+* (Nem kötelező) [cURL][curl]. A telepítéshez lásd: [cURL-kiadásainak listáját és a letöltéseket][curl-download].
   
   > [!NOTE]
-  > Ha használja a cURL-parancsot a Windows rendszerben egyetlen idézőjelek beállítás értékek helyett használjon idézőjelek közé.
+  > Ha használja a cURL-parancsot a Windows, egyszeres idézőjelek lehetőség az értékek helyett használja idézőjelek közé.
   > 
   > 
-* **Egy Azure HDInsight fürt**. Fürtök kiépítése kapcsolatos útmutatásért lásd: [használatának megkezdésében a HDInsight] [ hdinsight-get-started] vagy [Provision HDInsight clusters][hdinsight-provision]. A következő adatokat az oktatóanyag teljesítéséhez szüksége:
+* **Egy Azure HDInsight-fürt**. Útmutatás a fürtök kiépítése: [HDInsight használatának első lépései] [ hdinsight-get-started] vagy [Provision HDInsight clusters][hdinsight-provision]. A következő adatokat az oktatóanyagot lesz szüksége:
   
-  | Fürt tulajdonság | Az Azure PowerShell változó neve | Érték | Leírás |
+  | Fürt tulajdonság | Az Azure PowerShell-változó neve | Érték | Leírás |
   | --- | --- | --- | --- |
-  |   A HDInsight-fürt neve |$clusterName | |A HDInsight-fürt neve. |
-  |   Fürt felhasználónév |$clusterUsername | |Fürt felhasználónevet megadva, a fürt létrehozásakor. |
-  |   Fürt jelszó |$clusterPassword | |Fürt felhasználói jelszavát. |
+  |   HDInsight-fürt neve |$clusterName | |A HDInsight-fürt nevére. |
+  |   Fürt felhasználóneve |$clusterUsername | |Fürthöz tartozó felhasználónevet megadva, a fürt létrehozásakor. |
+  |   Fürt jelszava |$clusterPassword | |Fürt felhasználói jelszót. |
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
-## <a name="jump-start"></a>Feladat gyors végrehajtásának megkönnyítésére
-Számos módon figyelheti a HDInsight-fürtök az Ambari használatával.
+## <a name="jump-start"></a>Indítsa be
+Többféleképpen is lehet HDInsight-fürtök figyelése az Ambari használatával.
 
 **Azure PowerShell használata**
 
-A következő Azure PowerShell-parancsfájl lekérdezi a MapReduce feladatot követő *HDInsight 3.5 fürtben.*  A fő különbség, hogy azt le ezeket a részleteket a YARN szerviz (hanem MapReduce).
+A következő Azure PowerShell-parancsfájl beolvassa a MapReduce-feladatok tracker adatait *HDInsight 3.5-fürtben.*  A legfontosabb különbség, hogy mi lekéréses ezeket az adatokat a YARN-szolgáltatás (helyett a MapReduce).
 
     $clusterName = "<HDInsightClusterName>"
     $clusterUsername = "<HDInsightClusterUsername>"
@@ -77,7 +72,7 @@ A következő Azure PowerShell-parancsfájl lekérdezi a MapReduce feladatot kö
 
     $response.metrics.'yarn.queueMetrics'
 
-A következő PowerShell-parancsfájl lekérdezi a MapReduce-feladatok követő adatait *HDInsight 2.1-fürtben lévő*:
+A következő PowerShell-parancsfájl beolvassa a MapReduce-feladatok tracker adatait *HDInsight 2.1-fürtben*:
 
     $clusterName = "<HDInsightClusterName>"
     $clusterUsername = "<HDInsightClusterUsername>"
@@ -93,17 +88,17 @@ A következő PowerShell-parancsfájl lekérdezi a MapReduce-feladatok követő 
 
     $response.metrics.'mapred.JobTracker'
 
-A kimenete:
+A kimenet a következő:
 
-![Jobtracker kimeneti][img-jobtracker-output]
+![Jobtracker kimenet][img-jobtracker-output]
 
 **A cURL használata**
 
-Az alábbi példa fürtinformációkat lekérdezi a cURL használatával:
+Az alábbi példa lekéri a fürt adatait a cURL használatával:
 
     curl -u <username>:<password> -k https://<ClusterName>.azurehdinsight.net:443/ambari/api/v1/clusters/<ClusterName>.azurehdinsight.net
 
-A kimenete:
+A kimenet a következő:
 
     {"href":"https://hdi0211v2.azurehdinsight.net/ambari/api/v1/clusters/hdi0211v2.azurehdinsight.net/",
      "Clusters":{"cluster_name":"hdi0211v2.azurehdinsight.net","version":"2.1.3.0.432823"},
@@ -122,34 +117,34 @@ A kimenete:
 
 **A 10/8/2014 kiadásban**:
 
-Az Ambari végpont használatakor "https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}", a *gazdaszámítógép_neve* mező a gazdagép neve helyett a csomópont teljesen minősített tartománynevét (FQDN) adja vissza. A 10/8/2014 kiadásban előtt ebben a példában adott vissza egyszerűen "**headnode0**". 10/8/2014 megjelenése után az FQDN első "**headnode0. { ClusterDNS} .azurehdinsight .net**", az előző példában látható módon. Ez a módosítás lehetővé teszi a forgatókönyvekben, ahol több fürt típust (például a HBase és a Hadoop) is telepíthető egy virtuális hálózathoz (VNET) szükséges. Ez történik, például a HBase a háttér-platformként a Hadoop használatakor.
+Az Ambari végpont használatakor "https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}", a *gazdaszámítógép_neve* mező a gazdagép neve helyett a csomópont teljesen minősített tartománynevét (FQDN) adja vissza. A 10/8/2014 kiadás előtt ebben a példában adja vissza egyszerűen "**headnode0**". A 10/8/2014 kiadása után az FQDN első "**headnode0. { ClusterDNS} .azurehdinsight .net**", az előző példában látható módon. Ez a változás megkönnyítése érdekében a forgatókönyvek, ahol több fürttípusok (például HBase és Hadoop) is telepíthető egy virtuális hálózat (VNET) szükséges. Ez történik, például HBase a háttér-platformként a Hadoop használatakor.
 
-## <a name="ambari-monitoring-apis"></a>Ambari API-k figyelése
-Az alábbi táblázatban a leggyakrabban használt Ambari API-hívások figyelési némelyike. A API-val kapcsolatos további információkért lásd: [Ambari API-referencia][ambari-api-reference].
+## <a name="ambari-monitoring-apis"></a>Az Ambari API-k figyelése
+Az alábbi táblázat a leggyakoribb Ambari API-hívások figyelése néhányat. Az API-val kapcsolatos további információkért lásd: [Ambari API-referencia][ambari-api-reference].
 
 | A figyelő API-hívás | URI | Leírás |
 | --- | --- | --- |
-| Fürtök beolvasása |`/api/v1/clusters` | |
-| Fürt-adatok beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |fürtök, a szolgáltatások, a gazdagépek |
-| Szolgáltatások |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services` |Szolgáltatások közé tartoznak: hdfs, mapreduce |
-| Szolgáltatások adatok beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>` | |
-| Szolgáltatás-összetevők beszerzése |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components` |HDFS: namenode, datanodeMapReduce: jobtracker; tasktracker |
-| Összetevő-adatok beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components/<ComponentName>` |ServiceComponentInfo, gazdagép-összetevők, metrikák |
+| Fürtök lekérése |`/api/v1/clusters` | |
+| Fürt adatainak beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |fürtök esetén a szolgáltatások, a gazdagépek |
+| Szolgáltatások beolvasása |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services` |A szolgáltatások az alábbiak: hdfs, a mapreduce |
+| Szolgáltatások adatainak beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>` | |
+| Szolgáltatás-összetevők lekérése |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components` |HDFS: namenode, datanodeMapReduce: jobtracker; tasktracker |
+| Összetevő-adatainak beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components/<ComponentName>` |ServiceComponentInfo, gazdagép-összetevők, a metrikák |
 | Gazdagépek beolvasása |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts` |headnode0, workernode0 |
-| Gazdagép-adatok beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>` | |
-| Gazdagép-összetevők beszerzése |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>/host_components` |namenode, erőforrás-kezelő |
-| Összetevő-adatok beolvasása a gazdagépen. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>/host_components/<ComponentName>` |HostRoles, összetevőt, a gazdagép, a metrikák |
-| Konfigurációk beolvasása |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations` |Config típusok: core-webhely, hdfs-webhely, mapred-helyet, hive-hely |
-| Konfigurációs adatok beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |Config típusok: core-webhely, hdfs-webhely, mapred-helyet, hive-hely |
+| A gazdagép adatainak beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>` | |
+| Gazdagép-összetevők lekérése |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>/host_components` |namenode, az erőforrás-kezelő |
+| Gazdagép összetevő adatainak beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>/host_components/<ComponentName>` |HostRoles, összetevő, a gazdagép, a metrikák |
+| Konfiguráció beolvasása |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations` |Config típusok: hely, a hdfs-hely, a mapred-hely, a hive-hely |
+| Konfigurációs adatainak beolvasása. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |Config típusok: hely, a hdfs-hely, a mapred-hely, a hive-hely |
 
 ## <a name="next-steps"></a>További lépések
-Most megtanulhatta, hogyan használható az Ambari API-hívások figyelése. További tudnivalókért lásd:
+Most már megtanulhatta, hogyan használhatja az Ambari API-hívások figyelése. További tudnivalókért lásd:
 
-* [Az Azure portál használata a HDInsight-fürtök kezelése][hdinsight-admin-portal]
-* [Az Azure PowerShell HDInsight-fürtök kezelése][hdinsight-admin-powershell]
-* [Parancssori felület használata a HDInsight-fürtök kezelése][hdinsight-admin-cli]
+* [Az Azure portal használatával HDInsight-fürtök kezelése][hdinsight-admin-portal]
+* [Azure PowerShell használatával HDInsight-fürtök kezelése][hdinsight-admin-powershell]
+* [Parancssori felület használatával HDInsight-fürtök kezelése][hdinsight-admin-cli]
 * [HDInsight-dokumentáció][hdinsight-documentation]
-* [Első lépései a hdinsight eszközzel][hdinsight-get-started]
+* [HDInsight – első lépések][hdinsight-get-started]
 
 [ambari-home]: http://ambari.apache.org/
 [ambari-api-reference]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md

@@ -1,63 +1,59 @@
 ---
-title: Java felhasználói függvény (UDF) a Hive HDInsight - Azure |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF), amely kompatibilis a struktúra. Ebben a példában UDF alakít egy szöveges karakterláncot kisbetűssé táblájában.
+title: Java felhasználói függvény (UDF) a Hive a HDInsight - az Azure használatával
+description: Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF), amely Hive-val működik. Ebben a példában UDF alakít egy szöveges karakterláncot kisbetűssé tábláját.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 00af8ca67af6ba3242c0fee6c50640944768ec4c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: eb98b5e4ef2251ad44cbb4b737141fea79adc743
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200758"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590364"
 ---
-# <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Egy Java használni a Hive HDInsight UDF
+# <a name="use-a-java-udf-with-hive-in-hdinsight"></a>A Java használata a HDInsight Hive-val UDF
 
-Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF), amely kompatibilis a struktúra. Ebben a példában a Java UDF alakítja át a táblázatokat szöveges karakterláncok minden-kisbetűs karaktereket.
+Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF), amely Hive-val működik. Ebben a példában a Java UDF alakítja minden-kisbetűs karakterek szöveges karakterláncot tartalmazó táblát.
 
 ## <a name="requirements"></a>Követelmények
 
-* HDInsight-fürtök 
+* Egy HDInsight-fürt 
 
     > [!IMPORTANT]
     > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-    A legtöbb ebben a dokumentumban a lépések mindkét Windows és Linux-alapú fürtökön. A lefordított UDF feltöltése a fürthöz, majd futtassa a lépéseire azonban jellemzőek Linux-alapú fürtökön. Információk a Windows-alapú fürtökön használható hivatkozásokkal.
+    Ez a dokumentum a lépések többségét mindkét Windows - és Linux-alapú fürtökön működik. Töltse fel a lefordított UDF-ben a fürthöz, majd futtassa használt lépéseket azonban olyan Linux-alapú fürtök jellemző. Hivatkozások, amelyek a Windows-alapú fürtök is használható információk állnak rendelkezésre.
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 vagy újabb (vagy egy azzal egyenértékű, például OpenJDK)
+* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 vagy újabb (vagy egy azzal egyenértékű, például az OpenJDK)
 
 * [Apache Maven](http://maven.apache.org/)
 
-* Szöveg- vagy Java IDE
+* Egy szövegszerkesztő vagy a Java ide Környezethez
 
     > [!IMPORTANT]
-    > Ha egy Windows-ügyfélen a Python-fájlokat hoz létre, egy sor befejezési LF használó szerkesztővé kell használnia. Ha nem biztos abban, hogy a szerkesztő LF vagy CRLF használja-e, tekintse meg a [hibaelhárítás](#troubleshooting) szakasz lépései a CR karakter eltávolítása.
+    > Ha egy Windows-ügyfélen a Python-fájlokat hoz létre, egy szerkesztőt, amelynek LF használja, mint egy sor vége kell használnia. Ha nem biztos abban, hogy a szerkesztő LF Karakterrel vagy a CRLF használja, tekintse meg a [hibaelhárítás](#troubleshooting) szükséges lépéseket a CR karakter eltávolítása a következő szakaszban.
 
-## <a name="create-an-example-java-udf"></a>Hozzon létre egy Java UDF példa 
+## <a name="create-an-example-java-udf"></a>Hozzon létre próbaképpen egy Java UDF-ben 
 
-1. A parancssorból használja a következő új Maven-projekt létrehozása:
+1. Egy parancssorból a következő használatával hozzon létre egy új Maven-projektet:
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
    > [!NOTE]
-   > Ha PowerShell használ, a paraméterek idézőjelbe kell helyezni. Például: `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.
+   > Ha Powershellt használ, a paraméterek idézőjelbe kell tenni. Például: `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.
 
-    Ezzel a paranccsal létrejön egy nevű könyvtár **exampleudf**, amely tartalmazza a Maven project.
+    Ez a parancs létrehoz egy könyvtárat nevű **exampleudf**, amely tartalmazza a Maven-projektet.
 
-2. A projekt létrehozása után törölje a **exampleudf/src/test** a projekt részeként létrehozott címtárakat.
+2. Miután létrejött a projekt, törölje a **exampleudf/src/tesztelési** a projekt részeként létrehozott címtárakat.
 
-3. Nyissa meg a **exampleudf/pom.xml**, és cserélje le a meglévő `<dependencies>` bejegyzés van a következő XML:
+3. Nyissa meg a **exampleudf/pom.xml**, és cserélje le a meglévő `<dependencies>` a következő XML-bejegyzés:
 
     ```xml
     <dependencies>
@@ -76,9 +72,9 @@ Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF
     </dependencies>
     ```
 
-    Ezek a bejegyzések adja meg a Hadoop és a Hive HDInsight 3.6 részét képező verzióját. A Hadoop és a Hive HDInsight megadott verzióin információt a [HDInsight-összetevők verziószámozása](../hdinsight-component-versioning.md) dokumentum.
+    Ezek a bejegyzések adja meg a Hadoop és a Hive HDInsight 3.6-os részét képező verzióját. Hadoop és a Hive a HDInsight megadott verzióiban információkat a [HDInsight összetevők verziószámozása](../hdinsight-component-versioning.md) dokumentumot.
 
-    Adja hozzá a `<build>` előtt szakasz a `</project>` sort a fájl végén. Ez a szakasz a következő XML kell tartalmaznia:
+    Adjon hozzá egy `<build>` előtt szakasz a `</project>` sort a fájl végén. Ez a szakasz a következő XML-kódot kell tartalmaznia:
 
     ```xml
     <build>
@@ -132,13 +128,13 @@ Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF
     </build>
     ```
 
-    Ezek a bejegyzések meghatározhatja, hogyan kell a projekt felépítéséhez. Pontosabban a verzióját a projekt használó Java és hogyan hozhat létre egy uberjar a fürt üzembe helyezése.
+    Ezek a bejegyzések határozza meg, hogyan hozhat létre a projektet. Pontosabban a verziója, amely a projekt használja a Java, és hogyan hozhat létre egy uberjar a fürtön való üzembe helyezéshez.
 
-    Mentse a fájlt, miután a módosítások lettek bevezetve.
+    Mentse a fájlt, miután a módosítások történtek-e.
 
-4. Nevezze át **exampleudf/src/main/java/com/microsoft/examples/App.java** való **ExampleUDF.java**, majd nyissa meg a fájlt a szerkesztőben.
+4. Nevezze át **exampleudf/src/main/java/com/microsoft/examples/App.java** való **ExampleUDF.java**, és nyissa meg a szerkesztőben.
 
-5. Cserélje le a tartalmát a **ExampleUDF.java** a következő fájlt, majd mentse a fájlt.
+5. Cserélje le a tartalmát a **ExampleUDF.java** az alábbi fájlt, majd mentse a fájlt.
 
     ```java
     package com.microsoft.examples;
@@ -165,9 +161,9 @@ Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF
     }
     ```
 
-    Ez a kód egy UDF fogad el egy olyan karakterláncértéket, és a karakterlánc kis verziójának visszaadó valósítja meg.
+    Ez a kód egy UDF, amely egy karakterlánc értéket fogad el, és visszaadja a karakterláncot kisbetűssé verzióját valósítja meg.
 
-## <a name="build-and-install-the-udf"></a>Hozza létre és telepítse az UDF-ben
+## <a name="build-and-install-the-udf"></a>Hozhat létre és telepítse az UDF-ben
 
 1. A következő paranccsal fordításához és az UDF csomag:
 
@@ -175,17 +171,17 @@ Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF
     mvn compile package
     ```
 
-    Ez a parancs létrehozza, és az UDF-csomagok a `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` fájlt.
+    Ez a parancs létrehozza, és azokat az UDF-csomagok a `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` fájlt.
 
-2. Használja a `scp` parancs a fájl átmásolása a HDInsight-fürthöz.
+2. Használja a `scp` parancsot a fájl átmásolása a HDInsight-fürt.
 
     ```bash
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    Cserélje le `myuser` a fürthöz SSH felhasználói fiókkal. Cserélje le `mycluster` a fürt nevéhez. Ha a jelszót biztonságos SSH-fiókjának biztonságát, a jelszó megadására kéri. Ha a tanúsítványt használja, előfordulhat, hogy szüksége a `-i` paraméterrel adhatja meg a titkos kulcs fájlja.
+    Cserélje le `myuser` a fürt SSH-felhasználói fiókkal. Cserélje le `mycluster` a fürt nevére. Ha az SSH-fiókhoz jelszót használt, a jelszó megadására kéri. Ha tanúsítványt használt, előfordulhat, hogy szeretné használni a `-i` paraméterrel adja meg a titkos kulcs fájlját.
 
-3. Csatlakozzon a fürthöz SSH használatával.
+3. Csatlakozhat a fürthöz SSH használatával.
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
@@ -193,23 +189,23 @@ Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF
 
     További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-4. Az SSH-munkamenetet másolja a jar-fájlra HDInsight-tárolóba.
+4. Az SSH-munkamenetben másolja a jar-fájlt HDInsight tároló.
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
     ```
 
-## <a name="use-the-udf-from-hive"></a>Az UDF-ben a Hive használata
+## <a name="use-the-udf-from-hive"></a>Az UDF-ben, a Hive használata
 
-1. A következő segítségével indítsa el a Beeline ügyfél az SSH-munkamenetet.
+1. A következő segítségével indítsa el a Beeline-ügyfél az SSH-munkamenetből.
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-    A parancs feltételezi, hogy használja-e a rendszer az alapértelmezett **admin** a bejelentkezési fiók a fürt számára.
+    Ez a parancs feltételezi, hogy használja-e az alapértelmezett **rendszergazdai** a fürt bejelentkezési fiókjának.
 
-2. Miután a kiszolgálófarmban lévő a `jdbc:hive2://localhost:10001/>` kéri, írja be a következő Hive UDF és közzétenni függvényében.
+2. Ha akkor érkeznek a `jdbc:hive2://localhost:10001/>` kéri, adja meg a következőt adja hozzá az UDF-ben a Hive-, és közzéteheti függvényében.
 
     ```hiveql
     ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
@@ -217,15 +213,15 @@ Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF
     ```
 
     > [!NOTE]
-    > Ez a példa feltételezi, hogy a fürt tárolóhelyét alapértelmezett Azure Storage. Ha a fürt helyette használja a Data Lake Store, módosítsa a `wasb:///` egy érték `adl:///`.
+    > Ez a példa feltételezi, hogy a fürt alapértelmezett tárolója az Azure Storage. Ha a fürt a Data Lake Store; ezek helyett használja, módosítsa a `wasb:///` értéket a következőre `adl:///`.
 
-3. Az UDF segítségével olvassa be az táblából kisbetű karakterláncok értékeket átalakítani.
+3. Az UDF segítségével kisbetűs karakterláncokat tábla lekért értékek.
 
     ```hiveql
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    Ez a lekérdezés kiválasztja az eszköz platformjától (Android, Windows, iOS, stb.) a táblából, alakítsa át a alacsonyabb eset, és majd megjeleníti a karakterlánc. A kimenet az alábbihoz hasonló jelenik meg:
+    Ez a lekérdezés kiválasztja azt az eszközplatformot (Android, Windows, iOS, stb.) a táblából, konvertálja a karakterláncot, alacsonyabb eset, és megjeleníti őket. A kimenetben megjelenik az alábbi szöveghez hasonló:
 
         +----------+--+
         |   _c0    |
@@ -244,6 +240,6 @@ Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF
 
 ## <a name="next-steps"></a>További lépések
 
-Más módokon történő együttműködésre a Hive, lásd: [használata a HDInsight Hive](hdinsight-use-hive.md).
+A Hive használata egyéb módjai, lásd: [Hive használata a HDInsight](hdinsight-use-hive.md).
 
-Hive User-Defined funkciók további információkért lásd: [Hive operátor és a felhasználó által definiált függvényeket](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) szakaszt a Hive wiki az Apache.org webhelyen.
+Hive User-Defined funkciók további információkért lásd: [Hive-operátorok és a felhasználó által megadott függvények](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) szakaszt a Hive wiki az Apache.org webhelyen.

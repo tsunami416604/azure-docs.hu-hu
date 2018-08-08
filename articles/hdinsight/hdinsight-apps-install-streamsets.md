@@ -1,85 +1,80 @@
 ---
-title: Telepítés közzétett alkalmazás - StreamSets adatgyűjtő - Azure HDInsight |} Microsoft Docs
-description: Telepítheti és használhatja a StreamSets adatgyűjtő külső Hadoop alkalmazás.
+title: Közzétett alkalmazás – StreamSets Data Collector – Azure HDInsight telepítése
+description: Telepítheti és használhatja a StreamSets Data Collector külső Hadoop-alkalmazásokat.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: e433de82576f8b943988881ed0b6673c0dccd77e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c0b458b19abb707305ca609fbd5bfac63c92567e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401023"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591227"
 ---
-# <a name="install-published-application---streamsets-data-collector"></a>Telepítse a közzétett alkalmazás - StreamSets adatgyűjtő
+# <a name="install-published-application---streamsets-data-collector"></a>Közzétett alkalmazás – StreamSets Data Collector telepítése
 
-Ez a cikk ismerteti, hogyan telepíthetnek és futtathatnak a [StreamSets adatgyűjtő hdinsight](https://streamsets.com/) on Azure HDInsight Hadoop-alkalmazások közzététele. A HDInsight-alkalmazás platform áttekintését, és a rendelkezésre álló független szoftverszállító (ISV) listáját közzétett alkalmazások: [külső Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [StreamSets Data Collector for HDInsight](https://streamsets.com/) közzé az Azure HDInsight Hadoop-alkalmazásokat. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
-## <a name="about-streamsets-data-collector"></a>Kapcsolatos StreamSets adatgyűjtő
+## <a name="about-streamsets-data-collector"></a>Tudnivalók a StreamSets Data Collector
 
-A StreamSets adatgyűjtő telepíti az Azure HDInsight-alkalmazások felett. StreamSets adatgyűjtő biztosít egy teljes körű integrált fejlesztőkörnyezetet (IDE), hogy lehetővé kialakítása, teszteléséhez, telepítéséhez és felügyeletéhez bármely közöttiként feldolgozó folyamatok. Ezek a folyamatok háló adatfolyam és kötegelt adatokat, és adatfolyam átalakítások, számos tartalmazza az összes anélkül, hogy egyéni kód írását.
+A StreamSets Data Collector helyezhető üzembe egy Azure HDInsight-alkalmazás. StreamSets Data Collector egy teljes értékű integrált fejlesztőkörnyezet (IDE), hogy lehetővé teszi, hogy tervezése, tesztelése, üzembe helyezése és felügyelete – bármely betöltési folyamatok biztosít. Ezek a folyamatok tervezhetők stream és kötegelt adatokat, és közé tartozik a stream átalakítások, számos egyéni kódolás nélkül.
 
-StreamSets adatgyűjtő lehetővé teszi számos Big Data-összetevők, például a HDFS, Kafka, Solr, struktúra, a HBASE és a Kudu build adatfolyamok. Ha StreamSets adatgyűjtő fut egy biztonsági kiszolgálót, vagy a Hadoop-fürt, kap valós idejű figyelési adatok rendellenességek észlelését és adatok folyamata műveletek. A figyelés magában foglalja a riasztási küszöbérték-alapú, anomáliadetektálás és automatikus javítási hiba rekordok.
+StreamSets Data Collector lehetővé teszi számos Big Data-összetevőket, például HDFS, Kafka, Solr, Hive, HBASE és a Kudu használatával hozhat létre adatfolyam-gyűjteményre. Miután a StreamSets Data Collector fut egy biztonsági kiszolgálót, vagy a Hadoop-fürt, a valós idejű monitorozási adatok rendellenességeket és a data flow műveletek kap. A monitorozás tartalmazza, küszöbalapú riasztások, rendellenességek észlelése és automatikus szervizelés hiba rekordok.
 
-StreamSets adatgyűjtő logikailag különítheti el minden szakasza a folyamatnak, megfelelhetnek az új üzleti követelmények által kódolás nélkül és minimális állásidővel új processzorok és összekötők ejtésével tervezték.
+StreamSets Data Collector célja egy folyamatot, minden egyes fázisában logikailag elkülönítése, így az új üzleti követelmények teljesítésében elvetését az új feldolgozók és összekötők, kódírás nélkül és minimális állásidővel.
 
-### <a name="streamsets-resource-links"></a>StreamSets erőforrás-hivatkozások
+### <a name="streamsets-resource-links"></a>Erőforrás-hivatkozások StreamSets
 
 * [Dokumentáció](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html)
 * [Blog](https://streamsets.com/blog/)
 * [oktatóanyagokat](https://github.com/streamsets/tutorials)
 * [Fejlesztői támogatási fórum](https://groups.google.com/a/streamsets.com/forum/#!forum/sdc-user)
-* [Slackhez nyilvános StreamSets csatorna](https://streamsetters.slack.com/)
+* [Slack nyilvános StreamSets csatorna](https://streamsetters.slack.com/)
 * [Forráskód](https://github.com/streamsets)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az alkalmazás egy új HDInsight-fürtöt, vagy egy meglévő fürt telepítéséhez a következő konfigurációval kell rendelkeznie:
+Telepíti az alkalmazást egy új HDInsight-fürtöt, vagy egy meglévő fürthöz, a következő konfigurációval kell rendelkeznie:
 
-* A fürt tier(s): Standard vagy prémium
-* A fürt verzió(k): 3.5-ös vagy újabb verzió
+* A fürt tier(s): Standard vagy prémium szint
+* A fürt verziót: 3.5-ös vagy újabb verzió
 
-## <a name="install-the-streamsets-data-collector-published-application"></a>Telepítse a StreamSets adatgyűjtő közzétett alkalmazás
+## <a name="install-the-streamsets-data-collector-published-application"></a>A közzétett alkalmazás telepítése a StreamSets Data Collector
 
-Ez, és más elérhető ISV alkalmazások telepítésével kapcsolatos részletes útmutatás olvasható [külső Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
+Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti útmutatójáért olvassa el a [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
 
-## <a name="launch-streamsets-data-collector"></a>Indítsa el a StreamSets adatgyűjtő
+## <a name="launch-streamsets-data-collector"></a>Indítsa el a StreamSets Data Collector
 
-1. A telepítés után is elindíthatja, StreamSets Azure-portálon fürtről címen a **beállítások** panelen, jelölje be **alkalmazások** alatt a **általános** kategória. A telepített alkalmazások ablaktábla listázza a telepített alkalmazások.
+1. A telepítés után már el is indíthatja StreamSets a fürtből az Azure Portalon lépjen a **beállítások** ablaktáblán, majd válassza **alkalmazások** alatt a **általános** kategória. A telepített alkalmazások panelen a telepített alkalmazás fel van sorolva.
 
-    ![Telepített StreamSets alkalmazás](./media/hdinsight-apps-install-streamsets/streamsets.png)
+    ![A StreamSets telepített alkalmazás](./media/hdinsight-apps-install-streamsets/streamsets.png)
 
-2. Ha StreamSets adatgyűjtő választja, megjelenik egy hivatkozást a weblapot, és az SSH-végpont elérési útja. Válassza ki annak hivatkozására.
+2. StreamSets Data Collector kiválasztásakor megjelenik egy hivatkozás a weblapot, és az SSH-végpont elérési útja. Válassza ki annak hivatkozására.
 
-3. A bejelentkezési párbeszédpanelen a következő hitelesítő adatok segítségével jelentkezzen be: `admin` és `admin`.
+3. A bejelentkezési párbeszédpanelen a következő hitelesítő adatok használatával jelentkezzen be: `admin` és `admin`.
 
-4. Kattintson az első lépések lap **hozzon létre új adatcsatorna**.
+4. Első lépések oldalán kattintson **új folyamat létrehozása**.
 
     ![Új folyamat létrehozása](./media/hdinsight-apps-install-streamsets/get-started.png)
 
-5. Az új folyamat ablakban adja meg az adatcsatorna (a "Hello World") nevét, opcionálisan adjon meg egy leírást, és válassza ki **mentése**.
+5. Az új folyamat ablakban írja be egy nevet, a folyamat (a "Hello World"), igény szerint adjon meg egy leírást, és válassza ki **mentése**.
 
-6. Az adatgyűjtő-konzolon is megjelenik. A Tulajdonságok panelen az adatcsatorna tulajdonságokat jeleníti meg.
+6. A Data Collector konzol jelenik meg. A Tulajdonságok panelen folyamat tulajdonságait jeleníti meg.
  
-    ![Adatokat gyűjtő konzol](./media/hdinsight-apps-install-streamsets/pipeline-canvas.png)
+    ![Data Collector konzol](./media/hdinsight-apps-install-streamsets/pipeline-canvas.png)
 
-7. Most már készen áll a kövesse a [StreamSets oktatóanyag](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Tutorial-title.html). Az oktatóanyag első folyamatát létrehozására vonatkozó részletes utasításokat biztosít.
+7. Most már készen áll, kövesse a [StreamSets oktatóanyag](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Tutorial-title.html). Az oktatóanyag az első folyamat létrehozása a lépésenkénti utasításokat biztosít.
 
 ## <a name="next-steps"></a>További lépések
 
-* [StreamSets adatgyűjtő dokumentáció](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq).
-* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): telepítése egy közzé nem tett HDInsight-alkalmazást.
+* [Dokumentáció a StreamSets Data Collector](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq).
+* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): útmutató HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
 * [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
 * [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
-* [Parancsfájlművelet Linux-alapú HDInsight-fürtök testreszabása](hdinsight-hadoop-customize-cluster-linux.md): megtudhatja, hogyan telepíthet további alkalmazásokat parancsfájl művelettel.
-* [Üres peremhálózati csomópontok használata a Hdinsightban](hdinsight-apps-use-edge-node.md): egy üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetéséhez.
+* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): ismerje meg, hogyan telepíthet további alkalmazásokat használ.
+* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.

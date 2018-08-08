@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 9c0c1ba9dd343baa453f10ad82c0cc8b8e69da7b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187723"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596154"
 ---
 # <a name="create-a-new-simulated-device"></a>Új szimulált eszköz létrehozása
 
@@ -140,6 +140,8 @@ A következő parancsokat használja a `az` parancsot a [Azure CLI 2.0](https://
     ```sh
     az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
+
+    SSH-hozzáférés csak engedélyezze a fejlesztés és tesztelés során. Ha engedélyezi az SSH- [újra minél hamarabb tiltsa le,](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-azure-virtual-machines)
 
 1. Virtuális gép jelszómódosítás ismeri a jelszóra, futtassa a következő parancsot. Használja a korábban feljegyzett virtuális gép nevét és a egy tetszőleges jelszót:
 

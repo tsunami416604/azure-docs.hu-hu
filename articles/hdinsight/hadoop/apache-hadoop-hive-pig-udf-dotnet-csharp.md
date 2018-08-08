@@ -1,73 +1,68 @@
 ---
-title: C# az Hive és a HDInsight - Azure hadoop Pig használata |} Microsoft Docs
-description: Ismerje meg a Hive és az Azure HDInsight streaming Pig használata a C# felhasználói függvény (UDF).
+title: C# használata a Hive és a Piggel a hadoop együttes használata a HDInsight – Azure
+description: Ismerje meg a C# felhasználó által definiált függvények (UDF) használata a Hive és a Pig, az Azure HDInsight streaming.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: d83def76-12ad-4538-bb8e-3ba3542b7211
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: b776b214b9d46293a3ab97ad226dffd3107f3430
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: a2a5581f62a4aa2d9af8302907a144573fd8d3b8
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404035"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596779"
 ---
-# <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>C# felhasználó által definiált függvények használata a Hive és a HDInsight hadoop streamelési Pig használatával
+# <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>C# felhasználó által definiált függvények használata a Hive és a Pig, a hadoop együttes használata a HDInsight streaming
 
-Útmutató Apache Hive és a HDInsight Pig C# felhasználói függvény (UDF) használhat.
+Ismerje meg, az Apache Hive és a HDInsight Pig használata a C# felhasználó által definiált függvények (UDF).
 
 > [!IMPORTANT]
-> A jelen dokumentumban leírt lépések működéséhez mind a Linux-alapú, és a Windows-alapú HDInsight-fürtökkel. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight-összetevők verziószámozása](../hdinsight-component-versioning.md).
+> A jelen dokumentumban leírt lépések mind a Linux-alapú és a Windows-alapú HDInsight-fürtökkel működik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight összetevők verziószámozása](../hdinsight-component-versioning.md).
 
-Mind a Hive és a Pig teljen el az adatok külső alkalmazások feldolgozásához. Ezt a folyamatot nevezik _streaming_. A .NET-alkalmazások használata esetén az adatok átadódik az alkalmazás STDIN, és az alkalmazás STDOUT-on az eredményeket ad vissza. Írási és olvasási STDIN és a STDOUT, használhatja a `Console.ReadLine()` és `Console.WriteLine()` konzol alkalmazás.
+Mind a Hive és Pig adhat át adatokat a feldolgozáshoz külső alkalmazások. Ez a folyamat más néven _streamelési_. .NET-alkalmazás használata esetén az adatok átadott az alkalmazás a STDIN, és az alkalmazás STDOUT-on az eredményeket adja vissza. Írási és olvasási STDIN és STDOUT, használhatja a `Console.ReadLine()` és `Console.WriteLine()` a egy konzolalkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy írást, és C#-kódban, amelynek célpontja a .NET-keretrendszer 4.5 felépítése ismeretét.
+* Írás és létrehozása a C#-kódot, amely a .NET-keretrendszer 4.5 célozza ismeretét.
 
-    * Bármilyen IDE szeretne használni. Ajánlott [Visual Studio](https://www.visualstudio.com/vs) 2015-ös, 2017, vagy [Visual Studio Code](https://code.visualstudio.com/). A jelen dokumentumban leírt lépések a Visual Studio 2017 használja.
+    * Bármilyen kívánt IDE használata. Javasoljuk, hogy [Visual Studio](https://www.visualstudio.com/vs) 2015, 2017-es, vagy [Visual Studio Code](https://code.visualstudio.com/). A jelen dokumentumban leírt lépések a Visual Studio 2017-et használja.
 
-* Az .exe fájlok feltöltése a fürthöz, és futtassa a Pig és Hive feladat lehetőséget. A Data Lake Tools for Visual Studio, Azure PowerShell és az Azure parancssori felület javasoljuk. Ez a dokumentum használja a Data Lake Tools for Visual Studio töltse fel a fájlokat, és futtassa a példa lépései Hive lekérdezés.
+* Oly módon, .exe fájlok feltöltése a fürtöt, és futtassa a Pig and Hive-feladatokat. Javasoljuk, hogy a Data Lake Tools for Visual Studio, az Azure PowerShell-lel és az Azure CLI. Ez a dokumentum használatát a Data Lake Tools for Visual Studio használatával töltse fel a fájlokat, és futtassa a példa lépései Hive-lekérdezés.
 
-    Egyéb lehetőségeiről futtatásához a Hive a lekérdezéseket és Pig-feladatokhoz, lásd a következő dokumentumokat:
+    Információ más különböző módon futtathatja a Hive-lekérdezések és a Pig-feladatokhoz, az alábbi dokumentumokban talál:
 
-    * [Apache Hive használata a Hdinsightban](hdinsight-use-hive.md)
+    * [Az Apache Hive használata a HDInsight](hdinsight-use-hive.md)
 
-    * [Apache Pig használata a HDInsight](hdinsight-use-pig.md)
+    * [Az Apache Pig használata a HDInsight](hdinsight-use-pig.md)
 
-* A Hadoop on HDInsight-fürt. A fürtök létrehozásáról további információk: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).
+* A Hadoop HDInsight-fürtön. Fürt létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy HDInsight-fürt](../hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="net-on-hdinsight"></a>A HDInsight .NET
 
-* __Linux-alapú HDInsight__ használó fürtök [monó (https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 3.6 verzió HDInsight része.
+* __Linux-alapú HDInsight__ -fürtök használatával [Mono (https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 megtalálható a HDInsight 3.6-os verzióját.
 
-    A .NET-keretrendszer verzióival is kompatibilisek monó további információkért lásd: [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/).
+    A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/).
 
-    Monó adott verzióját használja, tekintse meg a [telepítés vagy frissítés monó](../hdinsight-hadoop-install-mono.md) dokumentum.
+    Mono egy adott verzióját használja, tekintse meg a [telepítés vagy frissítés Mono](../hdinsight-hadoop-install-mono.md) dokumentumot.
 
 * __Windows-alapú HDInsight__ fürtök használata a Microsoft .NET CLR-beli .NET-alkalmazások futtatására.
 
-A .NET-keretrendszer és a HDInsight-verziókról mellékelt monó verziójának további információkért lásd: [HDInsight összetevő verziók](../hdinsight-component-versioning.md).
+A verzió a .NET-keretrendszer és a HDInsight-verziók mellékelt Mono további információkért lásd: [HDInsight összetevő verziók](../hdinsight-component-versioning.md).
 
 ## <a name="create-the-c-projects"></a>Hozzon létre a C\# projektek
 
-### <a name="hive-udf"></a>Hive UDF-ben
+### <a name="hive-udf"></a>Hive-UDF-ben
 
-1. Nyissa meg a Visual Studio és a megoldás létrehozása. Válassza ki a projekttípus **Konzolalkalmazás (.NET-keretrendszer)**, és az új projekt neve **HiveCSharp**.
+1. Nyissa meg a Visual Studio és a egy megoldás létrehozásához. A projekt típusaként válassza **Console App (.NET Framework)**, és nevezze el az új projekt **HiveCSharp**.
 
     > [!IMPORTANT]
-    > Válassza ki __.NET-keretrendszer 4.5__ egy Linux-alapú HDInsight-fürt használata. A .NET-keretrendszer verzióival is kompatibilisek monó további információkért lásd: [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/).
+    > Válassza ki __.NET-keretrendszer 4.5__ egy Linux-alapú HDInsight-fürt használata. A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/).
 
-2. Cserélje le a tartalmát **Program.cs** az alábbi kódra:
+2. Cserélje le a tartalmát **Program.cs** a következő kóddal:
 
     ```csharp
     using System;
@@ -120,11 +115,11 @@ A .NET-keretrendszer és a HDInsight-verziókról mellékelt monó verziójának
 
 3. A projekt felépítése.
 
-### <a name="pig-udf"></a>Pig UDF-ben
+### <a name="pig-udf"></a>A Pig UDF-ben
 
-1. Nyissa meg a Visual Studio és a megoldás létrehozása. Válassza ki a projekttípus **Konzolalkalmazás**, és az új projekt neve **PigUDF**.
+1. Nyissa meg a Visual Studio és a egy megoldás létrehozásához. A projekt típusaként válassza **Konzolalkalmazás**, és nevezze el az új projekt **PigUDF**.
 
-2. Cserélje le a tartalmát a **Program.cs** fájl a következő kóddal:
+2. Cserélje le a tartalmát a **Program.cs** fájlt a következő kóddal:
 
     ```csharp
     using System;
@@ -155,35 +150,35 @@ A .NET-keretrendszer és a HDInsight-verziókról mellékelt monó verziójának
     }
     ```
 
-    Ez a kód a Pig küldött sorok elemzi és kezdődő sorok újraformázza `java.lang.Exception`.
+    Ez a kód a sorokat, a Pig küldött elemzi, és kezdődő sorokat újraformázza `java.lang.Exception`.
 
-3. Mentés **Program.cs**, majd a projekt felépítéséhez és.
+3. Mentés **Program.cs**, és ezután hozza létre a projektet.
 
-## <a name="upload-to-storage"></a>Töltse fel a tároló
+## <a name="upload-to-storage"></a>A storage feltöltése
 
 1. A Visual Studióban nyissa meg a **Server Explorer**.
 
 2. Bontsa ki az **Azure** elemet, majd bontsa ki a **HDInsight** elemet.
 
-3. Ha a rendszer kéri, adja meg Azure-előfizetés hitelesítő adatait, és kattintson **bejelentkezés**.
+3. Ha a rendszer kéri, adja meg az Azure-előfizetés hitelesítő adatait, és kattintson **bejelentkezés**.
 
-4. Bontsa ki a kívánja telepíteni az alkalmazást a HDInsight-fürthöz. A szöveg bejegyzés __(alapértelmezett Tárfiók)__ szerepel.
+4. Bontsa ki a HDInsight-fürt, akinél szeretné az alkalmazást. Egy bejegyzés az a szöveg __(alapértelmezett Tárfiók)__ szerepel a listán.
 
-    ![A tárfiók a fürt megjelenítő Server Explorer](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![A storage-fiók a fürt megjelenítése a Server Explorerben](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * Ez a bejegyzés bővíthetők, ha az egy __Azure Storage-fiók__ a fürt alapértelmezett tárolóként. A fürt az alapértelmezett tároló a fájlok megtekintéséhez bontsa ki a bejegyzést, és majd kattintson duplán a __(alapértelmezett tároló)__.
+    * Ez a bejegyzés bővíthetők ki, ha az egy __Azure Storage-fiók__ a fürt alapértelmezett tárolóként. Az alapértelmezett tároló a fürt számára a fájlok megtekintését, bontsa ki a bejegyzést, és kattintson duplán a __(alapértelmezett tároló)__.
 
-    * Ez a bejegyzés nem bonthatók ki, ha az __Azure Data Lake Store__ a fürt alapértelmezett tárolóként. A fürt az alapértelmezett tároló a fájlok megtekintéséhez kattintson duplán a __(alapértelmezett Tárfiók)__ bejegyzés.
+    * Ha ez a bejegyzés nem bonthatók ki, használja a __Azure Data Lake Store__ az alapértelmezett tárolóként, a fürt számára. A fájlok a fürt számára az alapértelmezett tároló megjelenítéséhez kattintson duplán a __(alapértelmezett Tárfiók)__ bejegyzés.
 
 6. Az .exe fájlok feltöltéséhez használja a következő módszerek egyikét:
 
-    * Ha használ egy __Azure Storage-fiók__, kattintson a Feltöltés ikonra, és keresse a **bin\debug** mappát a **HiveCSharp** projekt. Végül válassza ki a **HiveCSharp.exe** fájlt, és kattintson a **Ok**.
+    * Ha használja egy __Azure Storage-fiók__, kattintson a Feltöltés ikonra, és keresse meg a **bin\debug** mappát a **HiveCSharp** projekt. Végül válassza ki a **HiveCSharp.exe** fájlt, és kattintson a **Ok**.
 
-        ![Töltse fel az ikon](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+        ![ikon feltöltése](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * Ha használ __Azure Data Lake Store__, kattintson a jobb gombbal egy üres területre a fájl az átjáróra a listában, majd válassza ki __feltöltése__. Végül válassza ki a **HiveCSharp.exe** fájlt, és kattintson a **nyitott**.
+    * Ha használ __Azure Data Lake Store__, kattintson a jobb gombbal egy üres területre a fájl listáján, és válassza __feltöltése__. Végül válassza ki a **HiveCSharp.exe** fájlt, és kattintson a **nyílt**.
 
-    Egyszer a __HiveCSharp.exe__ befejezte a feltöltést, ismételje meg a feltöltési folyamat számára a __PigUDF.exe__ fájlt.
+    Miután a __HiveCSharp.exe__ feltöltés befejeződött, a feltöltési folyamat esetében ismételje meg a __PigUDF.exe__ fájl.
 
 ## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
@@ -191,7 +186,7 @@ A .NET-keretrendszer és a HDInsight-verziókról mellékelt monó verziójának
 
 2. Bontsa ki az **Azure** elemet, majd bontsa ki a **HDInsight** elemet.
 
-3. Kattintson a jobb gombbal a fürt központilag telepített a **HiveCSharp** alkalmazás számára, és adja **Hive lekérdezés írása**.
+3. Kattintson a jobb gombbal a fürt üzembe helyezett a **HiveCSharp** alkalmazáshoz, és adja meg **egy Hive-lekérdezés írása**.
 
 4. A Hive-lekérdezést használja a következő szöveget:
 
@@ -209,28 +204,28 @@ A .NET-keretrendszer és a HDInsight-verziókról mellékelt monó verziójának
     ```
 
     > [!IMPORTANT]
-    > Állítsa vissza a `add file` utasítást, amely megfelel a fürthöz használt alapértelmezett tárolási típusát.
+    > Állítsa vissza a `add file` , amely a fürt alapértelmezett tárolási típus megfelel kivonat.
 
-    Ez a lekérdezés kiválasztja a `clientid`, `devicemake`, és `devicemodel` mezőit a `hivesampletable`, és adja át a mezők a HiveCSharp.exe alkalmazás. A lekérdezés vár az alkalmazás három mező, mint a tárolt `clientid`, `phoneLabel`, és `phoneHash`. A lekérdezés is vár HiveCSharp.exe az alapértelmezett tároló gyökerében található.
+    Ez a lekérdezés kiválasztja a `clientid`, `devicemake`, és `devicemodel` mezőit a `hivesampletable`, és átadja a mezőket a HiveCSharp.exe alkalmazás. A lekérdezés vár az alkalmazás három mezőt, amelyeket a rendszer, visszaadandó `clientid`, `phoneLabel`, és `phoneHash`. A lekérdezés is vár HiveCSharp.exe az alapértelmezett tároló gyökerében található.
 
-5. Kattintson a **Submit** elküldeni a feladatot a HDInsight-fürthöz. A **Hive feladat összegzése** ablak nyílik meg.
+5. Kattintson a **küldés** elküldeni a feladatot a HDInsight-fürthöz. A **Hive feladat összegzése** ablak nyílik meg.
 
-6. Kattintson a **frissítése** frissítése csak az Összegzés **feladat állapota** vált **befejezve**. A feladat kimenetére megtekintéséhez kattintson **Job Output**.
+6. Kattintson a **frissítése** frissítse az összefoglalást, amíg a **feladatállapot** vált **befejezve**. Feladat kimenetének megtekintéséhez kattintson **Feladatkimenet**.
 
 ## <a name="run-a-pig-job"></a>A Pig-feladat futtatása
 
-1. A HDInsight-fürthöz való kapcsolódáshoz használja a következő módszerek egyikét:
+1. A HDInsight-fürthöz való csatlakozáshoz használja a következő módszerek egyikét:
 
-    * Ha használ egy __Linux-alapú__ HDInsight fürt esetén az SSH használata. Például: `ssh sshuser@mycluster-ssh.azurehdinsight.net`. További információkért lásd: [az SSH withHDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
+    * Ha használ egy __Linux-alapú__ HDInsight-fürt, az SSH-val. Például: `ssh sshuser@mycluster-ssh.azurehdinsight.net`. További információkért lásd: [az SSH withHDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
     
-    * Ha használ egy __Windows-alapú__ HDInsight-fürtjéhez, [a fürt távoli asztal használatával csatlakozhat](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+    * Ha használ olyan __Windows-alapú__ HDInsight-fürt [csatlakozás a fürthöz, a távoli asztal használata](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 
 2. Egyet a következő paranccsal a Pig parancssor elindításához:
 
         pig
 
     > [!IMPORTANT]
-    > Ha egy Windows-alapú fürtöt használ, az alábbi parancsokat használja:
+    > Ha egy Windows-alapú fürtöt használ, használja a következő parancsokat:
     > ```
     > cd %PIG_HOME%
     > bin\pig
@@ -238,7 +233,7 @@ A .NET-keretrendszer és a HDInsight-verziókról mellékelt monó verziójának
 
     A `grunt>` kérdés megjelenik.
 
-3. Adja meg a következőket kell futtatnia a .NET-keretrendszer alkalmazás által a Pig feladatot:
+3. Adja meg a következőket kell futtatnia, amely a .NET-keretrendszer alkalmazás használja a Pig feladatot:
 
         DEFINE streamer `PigUDF.exe` CACHE('/PigUDF.exe');
         LOGS = LOAD '/example/data/sample.log' as (LINE:chararray);
@@ -246,12 +241,12 @@ A .NET-keretrendszer és a HDInsight-verziókról mellékelt monó verziójának
         DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
         DUMP DETAILS;
 
-    A `DEFINE` utasítás hoz létre az alias `streamer` pigudf.exe alkalmazásokhoz és `CACHE` betölti azt a fürt alapértelmezett tárolóból. Később `streamer` használják a `STREAM` a naplóban található egyetlen sorok feldolgozni, és térjen vissza az adatokat az oszlopok sorozataként operátor.
+    A `DEFINE` utasítás létrehoz egy aliast `streamer` pigudf.exe alkalmazásokhoz, és `CACHE` tölt be a fürt alapértelmezett tárolója. Később `streamer` együtt használják a `STREAM` operátor dolgozza fel a naplóban szereplő egyetlen sorok és oszlopok sorozataként állítja vissza az adatokat.
 
     > [!NOTE]
-    > Az alkalmazás nevét, az adatfolyamként történő használt kell lennie.%n a \` (backtick) karakter mikor aliasnevet, és ' (aposztróf) használata esetén `SHIP`.
+    > Az alkalmazás nevét, hogy használt streamelési kell lennie.%n a \` (használni kívánt szintaxiskiemelést) karaktert, amikor aliasnévvel, és a "(szimpla idézőjel) együtt használva `SHIP`.
 
-4. Után utolsó sora bevitelét, a feladat elindul. Azt adja vissza kimenet az alábbihoz hasonló:
+4. Miután megadta az utolsó sort, a feladat indításának. Ez hasonló kimenetet ad vissza a következő szöveget:
 
         (2012-02-03 20:11:56 SampleClass5 [WARN] problem finding id 1358451042 - java.lang.Exception)
         (2012-02-03 20:11:56 SampleClass5 [DEBUG] detail for id 1976092771)
@@ -261,10 +256,10 @@ A .NET-keretrendszer és a HDInsight-verziókról mellékelt monó verziójának
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a dokumentumból megismerte rendelkezik a .NET-keretrendszer alkalmazás a Hive és a Pig használata a HDInsight. Ha szeretné a Hive és a Pig használata a Python, lásd: [Python használni a Hive és a hdinsight Pig](python-udf-hdinsight.md).
+Ebben a dokumentumban megtanulhatta, a .NET-keretrendszer alkalmazás Hive és a Pig használata a HDInsight. Ha szeretné, hogyan Python használata a Hive és Pig, lásd: [Python használata a Hive és a Piggel a HDInsight](python-udf-hdinsight.md).
 
-Más módokon Pig és a Hive segítségével, és tájékozódhat a MapReduce használata tekintse meg a következő dokumentumokat:
+Egyéb módjaival, a Pig and Hive használja, és további információ a MapReduce a következő dokumentumokban talál:
 
 * [A Hive használata a HDInsightban](hdinsight-use-hive.md)
 * [A Pig használata a HDInsightban](hdinsight-use-pig.md)
-* [Use MapReduce with HDInsight](hdinsight-use-mapreduce.md)
+* [A MapReduce használata a HDInsight](hdinsight-use-mapreduce.md)

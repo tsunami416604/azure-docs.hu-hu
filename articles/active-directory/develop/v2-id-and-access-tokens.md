@@ -17,15 +17,15 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7fcc39aed1599c1fa928736453082cbce6d7e27e
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 815311797e1897259b961debc8a0f81157495570
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581625"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596500"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Az Azure Active Directory 2.0-s verziójú jogkivonatok leírása
-Az Azure Active Directory (Azure AD) v2.0-végpont bocsát ki biztonsági jogkivonatokat az egyes számos különböző típusú [hitelesítési folyamat](active-directory-v2-flows.md). Ez a hivatkozás formátuma, biztonsági jellemzőkkel és különböző típusú jogkivonat tartalma ismerteti.
+Az Azure Active Directory (Azure AD) v2.0-végpont bocsát ki biztonsági jogkivonatokat az egyes számos különböző típusú [hitelesítési folyamat](v2-app-types.md). Ez a hivatkozás formátuma, biztonsági jellemzőkkel és különböző típusú jogkivonat tartalma ismerteti.
 
 > [!NOTE]
 > A v2.0-végpont nem támogatja az összes Azure Active Directory-forgatókönyvek és funkciók. Annak megállapításához, hogy használjon a v2.0-végpont, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).

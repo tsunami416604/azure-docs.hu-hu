@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 08/07/2018
 ms.author: szark
-ms.openlocfilehash: d809b71c1fff953e946b842332146f982fca7b74
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5bce08bfc61d5b9b17e9500c002c3b870384c7b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422358"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618658"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja, Red Hat Enterprise Linux (RHEL) virtuális gép előkészítése Azure-beli használatra. Ebben a cikkben ismertetett RHEL-verziók a következők: 6.7 + és 7.1 +. Előkészítésekor a hipervizorok, amelyekre ez a cikk a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware rendszer. Red Hat Cloud Access programban való részvételre vonatkozó jogosultság követelményeivel kapcsolatos további információkért lásd: [Red Hat Cloud Access webhely](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) és [az Azure-ban futó RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -37,7 +37,6 @@ Ez a szakasz azt feltételezi, hogy már egy ISO-fájlt kapott a Red Hat-webhely
 * A maximális engedélyezett a virtuális merevlemez mérete 1,023 GB.
 * Amikor Linux operációs rendszert telepít, azt javasoljuk, hogy, standard partíciók helyett használjon logikai kötet-kezelő (LVM), amelyek gyakran sok telepítés az alapértelmezett érték. Ez az eljárás a rendszer működésében LVM neve nem felel meg a klónozott virtuális gépeket, különösen akkor, ha a átállítására lenne szükség hibaelhárítási egy másik virtuális gép operációsrendszer-lemez csatolása. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) használnak, az adatlemezeket.
 * Univerzális lemez formátum (UDF) fájlrendszer csatlakoztatási kernel támogatására szükség. Az Azure-ban első rendszerindításkor az UDF-formátumú adathordozót, amely csatolva van a Vendég továbbítja az üzembe helyezési konfiguráció a Linux rendszerű virtuális gépet. Az Azure Linux-ügynök csatlakoztatása az UDF-fájlrendszer, olvassa el a konfigurációját, és a virtuális gép üzembe helyezése képesnek kell lennie.
-* A Linux kernel 2.6.37 rendszernél korábbi verziói nem támogatják nem egységes memóriaelérésnek (NUMA) a Hyper-V, nagyobb virtuálisgép-mérettel. A probléma elsősorban hatással van a felsőbb rétegbeli használó régebbi disztribúciók Red Hat 2.6.32 kernel és javítását a RHEL 6.6 (kernel-2.6.32-504). Futtató egyéni kernelekkel, amelyek régebbiek 2.6.37 vagy RHEL-alapú kernelekkel, amelyek régebbiek 2.6.32-504 kell beállítania a `numa=off` paraméter indítja a grub.conf kernel parancssorában. További információkért lásd: Red Hat [KB-os 436883](https://access.redhat.com/solutions/436883).
 * Az operációsrendszer-lemez nem konfigurál egy lapozó partíciót. A Linux-ügynök beállítható úgy, hogy hozzon létre egy ideiglenes erőforrás lemezen a lapozófájl.  További információ található a következő lépéseket.
 * Az Azure-ban minden virtuális merevlemezek rendelkeznie kell egy virtuális méret 1 MB igazítva. A virtuális merevlemez nyers lemezről történő konvertálása során biztosítania kell, hogy a nyers lemez mérete nagyobb-e az átalakítás előtt 1MB többszöröse. További részleteket az alábbi lépéseket is található. Lásd még: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
 
@@ -96,8 +95,6 @@ Ez a szakasz azt feltételezi, hogy már egy ISO-fájlt kapott a Red Hat-webhely
     
     Grafikus és a csendes rendszerindító, amelyek nem hasznos, ha egy felhőalapú környezetben, ahol szeretnénk a soros port kell küldeni a naplókat.  Hagyhatja az `crashkernel` konfigurálható, ha a kívánt beállítást. Vegye figyelembe, hogy ez a paraméter csökkenti a virtuális gépen legalább 128 MB-os rendelkezésre álló memória mennyisége. Ez a konfiguráció kisebb virtuálisgép-méretek problémás lehet.
 
-    >[!Important]
-    6.5-ös és a korábban RHEL is be kell állítania a `numa=off` kernel paraméter. Tekintse meg a Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 
 1. Győződjön meg arról, hogy a secure shell-(SSH) kiszolgálón telepítse és konfigurálja a rendszerindítás közben, ami általában az alapértelmezett elindításához. Módosítsa a /etc/ssh/sshd_config tartalmazza a következő sort:
 
@@ -284,14 +281,12 @@ Ez a szakasz azt feltételezi, hogy már egy ISO-fájlt kapott a Red Hat-webhely
     
     Grafikus és a csendes rendszerindító, amelyek nem hasznos, ha egy felhőalapú környezetben, ahol szeretnénk a soros port kell küldeni a naplókat. Hagyhatja az `crashkernel` konfigurálható, ha a kívánt beállítást. Vegye figyelembe, hogy ezt a paramétert csökkenti az elérhető memória a virtuális gépen legalább 128 MB, amely kisebb virtuálisgép-méretek problémás lehet.
 
-    >[!Important]
-    6.5-ös és a korábban RHEL is be kell állítania a `numa=off` kernel paraméter. Tekintse meg a Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 
 1. Adja hozzá a Hyper-V-modulokkal initramfs:  
 
     Szerkesztés `/etc/dracut.conf`, és adja hozzá az alábbi tartalommal:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     Építse újra initramfs:
 
@@ -436,7 +431,7 @@ Ez a szakasz azt feltételezi, hogy már egy ISO-fájlt kapott a Red Hat-webhely
 
     Szerkesztés `/etc/dracut.conf` , és adja hozzá a tartalmat:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     Építse újra initramfs:
 
@@ -580,7 +575,7 @@ Ez a szakasz azt feltételezi, hogy már telepítve van egy RHEL virtuális gép
 
     Szerkesztés `/etc/dracut.conf`, és adja hozzá az alábbi tartalommal:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     Építse újra initramfs:
 
@@ -690,7 +685,7 @@ Ez a szakasz azt feltételezi, hogy már telepítve van egy RHEL virtuális gép
 
     Szerkesztés `/etc/dracut.conf`, adja hozzá a tartalmat:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
     Építse újra initramfs:
 
@@ -914,7 +909,7 @@ A probléma megoldásához initramfs ad hozzá a Hyper-V-modulokkal és azt újj
 
 Szerkesztés `/etc/dracut.conf`, és adja hozzá az alábbi tartalommal:
 
-        add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
 Építse újra initramfs:
 

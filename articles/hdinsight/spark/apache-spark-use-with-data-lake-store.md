@@ -1,69 +1,65 @@
 ---
-title: Adatok elemzése az Azure Data Lake Store az Apache Spark használatával |} Microsoft Docs
-description: Azure Data Lake Store-ban tárolt adatok elemzése a Spark-feladatok futtatása
+title: Adatok elemzése az Azure Data Lake Store az Apache Spark használatával
+description: Az Azure Data Lake Store-ban tárolt adatok elemzése a Spark-feladatok futtatása
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1f174323-c17b-428c-903d-04f0e272784c
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: c715ea3a3c4e113ec419919d240716517c28ffb8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 1961645e7771fdbddb4cb987a8d72da0075df337
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099520"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617768"
 ---
-# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>A Data Lake Store adatok elemzése a HDInsight Spark-fürt használatával
+# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>Data Lake Store az adatok elemzése a HDInsight Spark-fürt használatával
 
-Ebben az oktatóanyagban Jupyter notebook érhető el a HDInsight Spark-fürtjei futtatásához használt egy feladatot, amely egy Data Lake Store-fiók olvassa be az adatokat.
+Ebben az oktatóanyagban használja elérhető Jupyter notebookot HDInsight Spark-fürtökkel a futtatásához egy feladatot, amely adatokat olvas be egy Data Lake Store-fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure Data Lake Store-fiók. Kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](../../data-lake-store/data-lake-store-get-started-portal.md) című témakör utasításait.
 
-* Az Azure HDInsight Spark-fürt a Data Lake Store tárolóként Kövesse az utasításokat, [gyors üzembe helyezés: hdinsight fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Az Azure HDInsight Spark-fürt a Data Lake Store tárolóként. Kövesse az utasításokat, [a rövid útmutató: a HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
 > [!NOTE]
-> Nem kell végrehajtania ezt a lépést, ha a Data Lake Store alapértelmezett tárolóként hozott létre a HDInsight-fürthöz. A Fürtlétrehozási folyamat néhány adatot hozzáadja a fürt létrehozásakor megadott Data Lake Store-fiókban. Váltson át a szakasz [használata a HDInsight Spark-fürt a Data Lake Store](#use-an-hdinsight-spark-cluster-with-data-lake-store).
+> Nem kell végrehajtani ezt a lépést, ha a HDInsight-fürt a Data Lake Store az alapértelmezett tároló hozott létre. A Fürtlétrehozási folyamat néhány adatot a Data Lake Store-fiókban a fürt létrehozásakor megadott hozzáadja. Váltson át a szakasz [használata a HDInsight Spark-fürt a Data Lake Store](#use-an-hdinsight-spark-cluster-with-data-lake-store).
 >
 >
 
-HDInsight-fürtök Data Lake Store további tárhely és az Azure Storage-Blobba alapértelmezett tárolóként hozta létre, ha először másolja át néhány adatot a Data Lake Store-fiók. A minta a HDInsight-fürthöz kapcsolódó adatokat az Azure Storage-Blobból is használhatja. Használhatja a [ADLCopy eszköz](http://aka.ms/downloadadlcopy) ehhez. Töltse le és telepítse az eszközt a hivatkozásból.
+Ha során létrehozott egy HDInsight-fürt a Data Lake Store további tárterületet, és az alapértelmezett tároló Azure Storage-Blobból, meg kell először másolja át néhány adatot a Data Lake Store-fiókba. A minta az Azure Storage-Blobokból származó adatokat a HDInsight-fürthöz társított is használhatja. Használhatja a [ADLCopy eszköz](http://aka.ms/downloadadlcopy) ennek a végrehajtására. Töltse le és telepítse az eszközt a hivatkozásból.
 
-1. Nyisson meg egy parancssort, és keresse meg azt a könyvtárat, AdlCopy futtató, általában `%HOMEPATH%\Documents\adlcopy`.
+1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahol az AdlCopy telepítve van, általában `%HOMEPATH%\Documents\adlcopy`.
 
-2. A következő parancsot egy adott blob átmásolja a forrás-tároló egy Data Lake Store:
+2. Futtassa a következő parancsot a forrás-tároló egy adott blob átmásolása egy Data Lake Store:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-    Másolás a **HVAC.csv** minta adatfájl **/HdiSamples/HdiSamples/SensorSampleData/hvac/** az Azure Data Lake Store-fiókba. A kódrészletet hasonlóan kell kinéznie:
+    Másolás a **HVAC.csv** minta adatfájl található **/HdiSamples/HdiSamples/SensorSampleDatahvac/** az Azure Data Lake Store-fiókba. A kódtöredék hasonlóan kell kinéznie:
 
         AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
    > [!WARNING]
-   > Ellenőrizze, hogy a megfelelő esetben van a fájl elérési útja és neve.
+   > Ellenőrizze, hogy a fájl elérési útja és neve a tulajdonnévnek megfelelő szerepelnek.
    >
    >
-3. Az Azure-előfizetés alapján, amely rendelkezik a Data Lake Store-fiók a hitelesítő adatok megadását kéri. Az alábbi kódrészlethez hasonló kimenet jelenik meg:
+3. Az Azure-előfizetés alapján, amely rendelkezik a Data Lake Store-fiók a hitelesítő adatainak megadását kéri. Az alábbi kódrészlethez hasonló kimenet jelenik meg:
 
         Initializing Copy.
         Copy Started.
         100% data copied.
         Copy Completed. 1 file copied.
 
-    Az adatfájl (**HVAC.csv**) egy mappában kerülnek **/hvac** a Data Lake Store-fiókban.
+    Az adatfájl (**HVAC.csv**) gyermekmappát másolandó **/hvac** a Data Lake Store-fiókban.
 
-## <a name="use-an-hdinsight-spark-cluster-with-data-lake-store"></a>A Data Lake Store HDInsight Spark-fürt használatára
+## <a name="use-an-hdinsight-spark-cluster-with-data-lake-store"></a>Egy HDInsight Spark-fürt használata a Data Lake Store
 
 1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).
 
@@ -88,21 +84,21 @@ HDInsight-fürtök Data Lake Store további tárhely és az Azure Storage-Blobba
 
      ![A Jupyter notebook feladat állapota](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "A Jupyter notebook feladat állapota")
 
-5. Mintaadatok betöltése az egy ideiglenes táblát használ a **HVAC.csv** fájl másolása a Data Lake Store-fiók. Az adatok a Data Lake Store-fiókot a következő URL-cím minta használatával érheti el.
+5. Mintaadatok betöltése az egy ideiglenes táblát használ a **HVAC.csv** fájlt másolta a Data Lake Store-fiókba. Elérheti az adatokat a Data Lake Store-fiókban a következő URL-minta használatával.
 
-    * Ha a Data Lake Store alapértelmezett tárolóként, HVAC.csv az elérési útját, a következő URL-cím lesz:
+    * Ha a Data Lake Store az alapértelmezett tároló, HVAC.csv lesz hasonló, a következő URL-elérési úton:
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-        Vagy is használhatja a rövidített formátumban, például a következőket:
+        Vagy, például a következő akkor használhatja rövidített formátumban is használhatja:
 
             adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-    * Ha Data Lake Store további tárolóként, HVAC.csv lesz a helyen, ahol másolta, például:
+    * Ha a Data Lake Store kiegészítő tárolóként, HVAC.csv lesz a helyen, ahová másolta, például:
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
 
-     A cella üres, illessze be a következő kódrészlet példa, hogy lecseréli **MYDATALAKESTORE** a Data Lake Store-fiók nevét, és nyomja le az **SHIFT + ENTER**. Ez a kódpélda az adatokat a **hvac** nevű ideiglenes táblába regisztrálja.
+     Egy üres cellába, illessze be az alábbi példakód, cserélje le **MYDATALAKESTORE** a Data Lake Store-fiók nevét, és nyomja le az **SHIFT + ENTER**. Ez a kódpélda az adatokat a **hvac** nevű ideiglenes táblába regisztrálja.
 
             # Load the data. The path below assumes Data Lake Store is default storage for the Spark cluster
             hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -137,6 +133,6 @@ HDInsight-fürtök Data Lake Store további tárhely és az Azure Storage-Blobba
 
 ## <a name="next-steps"></a>További lépések
 
-* [Önálló Scala alkalmazás futtatását a Apache Spark-fürt létrehozása](apache-spark-create-standalone-application.md)
-* [Azure eszköztára IntelliJ HDInsight Tools használatával Spark-alkalmazások HDInsight Spark Linux-fürt létrehozása](apache-spark-intellij-tool-plugin.md)
-* [Az Eclipse Azure eszközkészlet a HDInsight Tools használatával Spark-alkalmazások HDInsight Spark Linux-fürt létrehozása](apache-spark-eclipse-tool-plugin.md)
+* [Hozzon létre egy különálló Scala Apache Spark-fürtön futó alkalmazás](apache-spark-create-standalone-application.md)
+* [IntelliJ-hez készült Azure-eszközkészlet HDInsight Tools használatával Spark-alkalmazások HDInsight Spark Linux-fürt létrehozása](apache-spark-intellij-tool-plugin.md)
+* [HDInsight Tools használata az Azure Toolkit for Eclipse alkalmazásokat hozhat létre a Spark for HDInsight Spark Linux-fürt](apache-spark-eclipse-tool-plugin.md)

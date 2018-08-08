@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d3c033efb034cbce2e439ba22097cafc029d8b63
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412412"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620484"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Felhőalapú Azure multi-factor Authentication szolgáltatás üzembe helyezése
 
@@ -109,3 +109,5 @@ Gratulálunk, az meg van adva az Azure multi-factor Authentication a felhőben.
 További beállítások, például a megbízható IP-címek, egyedi Hangüzenetek és visszaélési riasztás küldésének, lásd: a cikk [konfigurálása az Azure multi-factor Authentication szolgáltatás beállításainak](howto-mfa-mfasettings.md)
 
 Felhasználói beállítások kezelése az Azure multi-factor Authentication a cikkben található információ [az Azure multi-factor Authentication a felhőben a felhasználói beállítások kezelése](howto-mfa-userdevicesettings.md)
+
+[A hiperkonvergens regisztráció az Azure multi-factor Authentication és az Azure AD önkiszolgáló jelszó-visszaállítás engedélyezése](concept-registration-mfa-sspr-converged.md)

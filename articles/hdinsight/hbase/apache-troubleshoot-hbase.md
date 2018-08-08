@@ -1,75 +1,72 @@
 ---
-title: Azure HDInsight HBase hibaelhárításáról |} Microsoft Docs
-description: A HBase és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok.
+title: A HBase hibaelhárítása az Azure HDInsight használatával
+description: Válaszok a HBase és az Azure HDInsight használata kapcsolatos gyakori kérdésekre.
 services: hdinsight
-documentationcenter: ''
-author: nitinver
-manager: ashitg
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 7/7/2017
+author: nitinver
 ms.author: nitinver
-ms.openlocfilehash: d5d50121cd0375af1b57baadeb40efb237aaea11
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 7/7/2017
+ms.openlocfilehash: e25a2dcaf9b7c820f5d7e0312fb2cb55fc558882
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165281"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593899"
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>A HBase hibaelhárítása az Azure HDInsight használatával
 
-A legfőbb problémákat és azok megoldásait ismerje meg az Apache Ambari az Apache HBase hasznos adat található használatakor.
+A leggyakoribb problémák és azok megoldásait ismerje meg az Apache Ambari az Apache HBase is észleltünk adattartalmakat használatakor.
 
-## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Hogyan futtathatok hbck parancs jelentéseket a ki nem osztott több régióba?
+## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Hogyan futtathatok hbck parancs jelentések ki nem osztott több régióval?
 
-Egy általános hibaüzenetet, láthatja, ha futtatja a `hbase hbck` parancs a "több régióba alatt hozzá nem rendelt vagy régiókban láncában lyuk."
+Egy általános hibaüzenetet, láthatja, ha futtatja a `hbase hbck` parancs a "több alatt hozzá nem rendelt régióban vagy régiók láncában lyuk."
 
-A HBase fő felhasználói felületén láthatja, hogy minden régióban kiszolgálóján is tette régiók számát. Ezt követően futtathatja `hbase hbck` parancsot a régió lánc lyuk megtekintéséhez.
+A HBase-Mesterfelület láthatja, hogy az összes régióbeli kiszolgálók között vannak kiegyensúlyozatlan régiók száma. Ezt követően futtathatja `hbase hbck` parancsot lyuk a régió lánc megtekintéséhez.
 
-Lyuk előfordulhat, hogy a kapcsolat nélküli régiók által okozott, ezért javítsa ki a hozzárendelések először. 
+Lyuk lehet, hogy a kapcsolat nélküli régiókban okozta, így javítsa ki a hozzárendelések először. 
 
-Ahhoz, hogy a ki nem osztott régiók normál állapotra, kövesse az alábbi lépéseket:
+Ahhoz, hogy a ki nem osztott régiók vissza a normál állapotban, végezze el az alábbi lépéseket:
 
-1. Jelentkezzen be a HDInsight HBase-fürtöt SSH használatával.
-2. A ZooKeeper rendszerhéj kapcsolódni, futtassa a `hbase zkcli` parancsot.
-3. Futtassa a `rmr /hbase/regions-in-transition` parancs vagy a `rmr /hbase-unsecure/regions-in-transition` parancsot.
+1. Jelentkezzen be az SSH segítségével a HDInsight HBase-fürtnek.
+2. A ZooKeeper-rendszerhéj kapcsolódni, futtassa a `hbase zkcli` parancsot.
+3. Futtassa a `rmr /hbase/regions-in-transition` parancsot vagy a `rmr /hbase-unsecure/regions-in-transition` parancsot.
 4. Kilépés a a `hbase zkcli` rendszerhéj, használja a `exit` parancsot.
-5. Az Apache Ambari felhasználói felületének megnyitásához, és indítsa újra az aktív HBase fő szolgáltatás.
-6. Futtassa a `hbase hbck` parancsot ismét (kapcsolók) nélkül. Ellenőrizze, győződjön meg arról, hogy minden egyes hozzárendelve a parancs kimenetét.
+5. Nyissa meg az Apache Ambari felhasználói felületén, és indítsa újra az aktív HBase főkiszolgáló.
+6. Futtassa a `hbase hbck` parancsot újra (kapcsolók) nélkül. Ellenőrizze, győződjön meg arról, hogy minden régióban hozzárendeli a következő parancs kimenetét.
 
 
-## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Hogyan oldja meg időtúllépés problémák, régió hozzárendelések hbck parancsok használata esetén?
+## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Hogyan lehet kijavítani a hibát időtúllépési problémák régió hozzárendelések hbck parancsok használatakor?
 
 ### <a name="issue"></a>Probléma
 
-Az időtúllépés problémák használatakor egyik lehetséges oka a `hbck` parancs lehet, hogy több régiók állapotban van a "az átmeneti" hosszú ideig. Azokban a régiókban, kapcsolat nélküli a HBase fő felhasználói felületén tekintheti meg. Régiók nagy mennyiségű átmenet megpróbálja, mert a HBase fő időtúllépés lehet, és nem lehet azokban a régiókban újra online állapotba.
+Időtúllépési problémák használata esetén egy lehetséges oka a `hbck` parancs lehet, hogy számos régióban állapotban van a "az átmeneti" hosszú ideje. Ezekben a régiókban, a HBase-Mesterfelület az offline megjelenik. Régiók nagy számú átmeneti próbál, mert a HBase főkiszolgáló előfordulhat, hogy időtúllépés, és nem lehet azokban a régiókban ismét online állapotba.
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Jelentkezzen be a HDInsight HBase-fürtöt SSH használatával.
-2. A ZooKeeper rendszerhéj kapcsolódni, futtassa a `hbase zkcli` parancsot.
+1. Jelentkezzen be az SSH segítségével a HDInsight HBase-fürtnek.
+2. A ZooKeeper-rendszerhéj kapcsolódni, futtassa a `hbase zkcli` parancsot.
 3. Futtassa a `rmr /hbase/regions-in-transition` vagy a `rmr /hbase-unsecure/regions-in-transition` parancsot.
-4. A kilépéshez a `hbase zkcli` rendszerhéj, használja a `exit` parancsot.
-5. Az Ambari felhasználói felületén indítsa újra az aktív HBase fő szolgáltatást.
+4. Kilép a `hbase zkcli` rendszerhéj, használja a `exit` parancsot.
+5. Az Ambari felhasználói felületén indítsa újra az aktív HBase főkiszolgáló szolgáltatást.
 6. Futtassa a `hbase hbck -fixAssignments` újra a parancsot.
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Hogyan tegye I kényszerített – letiltása HDFS csökkentett módban egy fürtben?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Hogyan do I force-letiltása HDFS csökkentett módban egy fürtben?
 
 ### <a name="issue"></a>Probléma
 
-A helyi Hadoop elosztott fájlrendszerrel (HDFS) Beragadt a HDInsight-fürt csökkentett módban.
+A helyi Hadoop elosztott fájlrendszer (HDFS) elakadt csökkentett módban, a HDInsight-fürtön.
 
 ### <a name="detailed-description"></a>Részletes leírás
 
-Ez a hiba oka lehet a hiba a következő HDFS parancs futtatásakor:
+Ez a hiba oka lehet egy hiba a következő HDFS parancs futtatásakor:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-A hiba, láthatja, ha a parancs futtatásakor így néz ki:
+A hiba, láthatja, ha a parancs futtatásakor a következőhöz hasonló:
 
 ```apache
 hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
@@ -125,11 +122,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Lehetséges ok
 
-A HDInsight-fürt csökkentették le egy nagyon kevés csomópontot. A csomópontok száma alatt, vagy a HDFS replikációs tényező közel van.
+A HDInsight-fürt mérete le egy nagyon kevés csomópontot. A csomópontok számát alább, vagy a HDFS replikációs tényező közelében van.
 
 ### <a name="resolution-steps"></a>A megoldás lépései 
 
-1. A HDInsight-fürt a HDFS állapotának lekérése a következő parancsok futtatásával:
+1. A HDFS állapotának lekérése a HDInsight-fürtön a következő parancsok futtatásával:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -170,7 +167,7 @@ A HDInsight-fürt csökkentették le egy nagyon kevés csomópontot. A csomópon
    ...
 
    ```
-2. Is ellenőrizheti a HDFS a HDInsight-fürt integritását a következő parancsokkal:
+2. Akkor is is sértetlenségének ellenőrzéséhez a HDFS a HDInsight-fürtön a következő parancsokat:
 
    ```apache
    hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
@@ -203,18 +200,18 @@ A HDInsight-fürt csökkentették le egy nagyon kevés csomópontot. A csomópon
    The filesystem under path '/' is HEALTHY
    ```
 
-3. Ha azt állapítja meg, amelyek nincsenek nincs hiányzik, sérült, vagy under-replikált blokkolja, vagy az, hogy ezek a blokkok figyelmen kívül hagyható, a következő parancsot a név csomópont biztonságos módból érvénybe:
+3. Ha azt állapítja meg, amelyek nincsenek nem hiányzik, sérült, vagy under-replikált blokkolja, vagy hogy blokkokat figyelmen kívül hagyható, futtassa a következő parancsot a név csomópont biztonságos módból érvénybe:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
    ```
 
 
-## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Hogyan állítsa helyre JDBC vagy SQLLine elérhetőségét Apache Phoenix problémái?
+## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Hogyan lehet kijavítani a hibát hoz a JDBC vagy az SQLLine kapcsolódási problémái az Apache Phoenix?
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-Phoenix kapcsolódni, az aktív ZooKeeper csomópont IP-címét kell megadnia. Győződjön meg arról, hogy a ZooKeeper szolgáltatást, hogy mely sqlline.py csatlakozni próbál működik és elérhető.
+A Phoenix kapcsolódni, meg kell adnia az aktív ZooKeeper-csomópont IP-címét. Győződjön meg arról, hogy a ZooKeeper-szolgáltatást, hogy melyik sqlline.py csatlakozni próbál működik-e.
 1. Jelentkezzen be a HDInsight-fürthöz SSH használatával.
 2. Írja be a következő parancsot:
                 
@@ -223,21 +220,21 @@ Phoenix kapcsolódni, az aktív ZooKeeper csomópont IP-címét kell megadnia. G
    ```
 
    > [!Note] 
-   > Az IP-cím, az aktív ZooKeeper csomópontjának lekérheti az Ambari felhasználói felületén. Ugrás a **HBase** > **Gyorshivatkozások** > **ZK\* (aktív)** > **Zookeeper információ**. 
+   > Az Ambari felhasználói felületén is kap az aktív ZooKeeper-csomópont IP-címét. Lépjen a **HBase** > **Gyorshivatkozások** > **ZK\* (aktív)** > **Zookeeper Info**. 
 
-3. Ha a sqlline.py Phoenix csatlakozik, és amelyen nincs időtúllépés, futtassa a következő parancsot a rendelkezésre állás és a Phoenix állapotának ellenőrzése:
+3. Ha az sqlline.py Phoenix csatlakozik, és nem időkorlátja nem, futtassa a következő parancsot a rendelkezésre állás és a Phoenix állapotának ellenőrzése:
 
    ```apache
            !tables
            !quit
    ```      
-4. Ez a parancs működik, ha nincs probléma. Lehet, hogy a felhasználó által megadott IP-cím helytelen. Ha a parancs hosszabb ideig szünetelteti, és ezután a következő hibaüzenetet jeleníti meg, azonban továbbra is az 5.
+4. Ez a parancs működik, ha nincs probléma. Lehet, hogy a felhasználó által megadott IP-cím helytelen. Ha a parancs hosszabb ideig szünetelteti, és ezután a következő hibaüzenetet jeleníti meg, azonban továbbra is az 5. lépés.
 
    ```apache
            Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
    ```
 
-5. A következő parancsokat a feltétel a Phoenix rendszer diagnosztizálása érdekében a központi csomópontból (hn0). KATALÓGUS tábla:
+5. Futtassa az alábbi parancsokat a fő csomópont (hn0), a feltétel a Phoenix rendszer diagnosztizálása érdekében. KATALÓGUS tábla:
 
    ```apache
             hbase shell
@@ -245,57 +242,57 @@ Phoenix kapcsolódni, az aktív ZooKeeper csomópont IP-címét kell megadnia. G
            count 'SYSTEM.CATALOG'
    ```
 
-   A parancs visszaadja-e hiba a következőhöz hasonló: 
+   A parancs a hiba az alábbihoz hasonlóan kell visszaadnia: 
 
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. Az Ambari felhasználói felületén hajtsa végre az alábbi lépéseket az összes ZooKeeper csomópontok HMaster szolgáltatás újraindításához:
+6. Az Ambari felhasználói felületén hajtsa végre az alábbi lépéseket a ZooKeeper-csomópontok a HMaster szolgáltatás újraindításához:
 
-    1. Az a **összegzés** HBase, szakasza lépjen **HBase** > **aktív HBase fő**. 
-    2. Az a **összetevők** szakaszban, indítsa újra a HBase fő szolgáltatást.
-    3. Ismételje meg ezeket a lépéseket minden fennmaradó **készenléti HBase fő** szolgáltatások. 
+    1. Az a **összefoglalás** szakaszában a HBase, lépjen a **HBase** > **aktív HBase főkiszolgáló**. 
+    2. Az a **összetevők** szakaszban, a HBase főkiszolgáló szolgáltatás újraindításához.
+    3. Ismételje meg ezeket a lépéseket minden fennmaradó **készenléti HBase főkiszolgáló** szolgáltatások. 
 
-A HBase fő szolgáltatás stabilizálását, és fejezze be a helyreállítási folyamat akár öt percet is igénybe vehet. Néhány perc elteltével ismételje meg a sqlline.py parancsokat annak ellenőrzésére, hogy a rendszer. KATALÓGUS tábla működik-e, és, hogy az informatikai kérdezhetők le. 
+A HBase főkiszolgáló szolgáltatás stabilizálódhatnak, majd fejezze be a helyreállítási folyamat akár öt percet is igénybe vehet. Néhány perc múlva ismételje meg az sqlline.py parancsokkal ellenőrizheti, hogy a rendszer. KATALÓGUS tábla mentése, és hogy lekérdezhetők legyenek. 
 
-Amikor a rendszer. KATALÓGUS tábla vissza a normál, a kapcsolódási problémát a Phoenix automatikusan feloldja kell lennie.
+Amikor a rendszer. KATALÓGUS tábla vissza a normál értékre, a kapcsolódási probléma a Phoenix fel kell automatikusan oldani.
 
 
-## <a name="what-causes-a-master-server-to-fail-to-start"></a>Mi okozhatja, hogy elindítsa főkiszolgálóvá?
+## <a name="what-causes-a-master-server-to-fail-to-start"></a>A főkiszolgáló nem indul el, mi okozza?
 
 ### <a name="error"></a>Hiba 
 
-Egy atomi átnevezési hiba történik.
+Egy atomi átnevezési hiba akkor fordul elő.
 
 ### <a name="detailed-description"></a>Részletes leírás
 
-A rendszerindítási folyamat során HMaster sok inicializálási lépések befejeződik. Ezek közé tartozik a teljesen új (.tmp) mappából adatok áthelyezése a data mappán. HMaster is ellenőrzi, hogy az a írási előre naplók (WALs) mappát, ha van-e a nem válaszoló régió kiszolgálók, és így tovább. 
+A rendszerindítási folyamat során a HMaster számos inicializálási lépések befejeződik. Ezek közé tartozik, amely adatokat helyez át a teljesen új (.tmp) mappát a data mappához. HMaster is megvizsgálja a írási előre naplók (WALs) mappában vannak-e bármilyen nem válaszoló régióbeli kiszolgálók, és így tovább. 
 
-Rendszerindítás közben HMaster does alapvető `list` parancs ezeket a mappákat. Ha bármikor HMaster meglátja ezt egy váratlan fájlt ezeket a mappákat, kivételt jelez, és nem indul el.  
+Rendszerindítás során HMaster does alapszintű `list` parancs ezeket a mappákat. Ha bármikor HMaster kap a fájl váratlanul, ezek a mappák egyikében, kivételt jelez, és nem indul el.  
 
 ### <a name="probable-cause"></a>Lehetséges ok
 
-A régió kiszolgálónaplókban próbálja ki a fájl létrehozásának ütemterv azonosíthatja, és ha hiba történt a fájl létrehozásának környékén folyamat crash megjelenik. (Ügyfélszolgálatához HBase segít ennek során.) Ez segítséget nyújt nekünk nyújtanak robusztusabb mechanizmusok, így elkerülheti, hogy elérte-e ezt a hibát, és szabályos folyamat leállítások biztosítása.
+A régió naplófájljai próbálja meg azonosíthatja a támadás idővonalának, a fájl létrehozása, és nézzük meg, ha a fájl létrehozásának időpontja környékén rögzített folyamat összeomlás történt. (A HBase az ügyfélszolgálattól segítséget nyújt a ennek.) Ez segít, hogy elkerülje a hibát, és ellenőrizze, sikeres-e folyamat leállások robusztusabb mechanizmusok velünk a kapcsolatot biztosít.
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-Ellenőrizze a hívási verem és határozza meg, előfordulhat, hogy melyik mappához okozza a problémát (például lehet a WALs vagy a .tmp mappában). A Cloud Explorer vagy a HDFS parancs használatával ezután próbálja meg a probléma fájl megkereséséhez. Általában ez jelenti a \*-renamePending.json fájlt. (A \*-renamePending.json fájl egy atomi átnevezése a WASB illesztő végrehajtásához használt napló fájlt. Ebben a megvalósításban hibák miatt ezeket a fájlokat is hagyható után folyamat leállásából eredő hiba, és így tovább.) Ez a fájl, a Cloud Explorer vagy a HDFS-parancsok segítségével kényszerített-törlés. 
+Ellenőrizze a hívási vermet, és állapítható meg, előfordulhat, hogy melyik mappába okozza a problémát (például lehet a WALs vagy a .tmp mappában). A Cloud Explorerben vagy a HDFS parancs használatával, majd próbálja meg keresse meg a probléma fájlt. Általában ez van egy \*-renamePending.json fájlt. (A \*-renamePending.json fájl egy journal-fájl, amellyel az atomi átnevezési műveletet megvalósítása a WASB-illesztőprogram. Ez a megvalósítás a hibák, mert ezeket a fájlokat is maradhat után a folyamat, és így tovább.) Törlés kényszerített ezt a fájlt a Cloud Explorerben vagy a HDFS-parancsok használatával. 
 
-Egyes esetekben előfordulhat, hogy is van egy ideiglenes fájlt hasonlót *$$$. $$$* ezen a helyen. Akkor alkalmazza a HDFS `ls` nem jelennek meg a fájlt a Cloud Explorer; Ez a fájl megtekintéséhez utasításhoz. Ez a fájl törléséhez használja a HDFS parancs `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
+Egyes esetekben előfordulhat, hogy is van egy hasonló nevű ideiglenes fájl *$$$. $$$* ezen a helyen. Akkor alkalmazza a HDFS `ls` ezt a fájlt parancsot; a fájlt a Cloud Explorer nem fogja látni. Ez a fájl törléséhez használja a HDFS parancs `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
 
-Ezek a parancsok futtatása után HMaster azonnal elindul. 
+Ezek a parancsok futtatása után HMaster azonnal el kell. 
 
 ### <a name="error"></a>Hiba
 
-Nincs kiszolgálói cím szerepel *hbase: meta* a régió xxx.
+Nincs kiszolgálói cím szerepel *hbase: meta* a régióban: xxx.
 
 ### <a name="detailed-description"></a>Részletes leírás
 
-Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy a Linux-fürt a *hbase: meta* tábla nem érhető el. Futó `hbck` előfordulhat, hogy jelenti, hogy "hbase: meta tábla Replikaazonosítójú 0 nem található a bármely régióban." A probléma lehet, hogy HMaster nem tudta inicializálni a HBase újraindítása után. A HMaster naplófájlokban, előfordulhat, hogy üzenetet látja: "nem kiszolgálói címet, a hbase szerepel: meta a terület hbase: biztonsági mentés \<terület neve\>".  
+Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy a Linux-fürtön a *hbase: meta* tábla nem érhető el. Futó `hbck` előfordulhat, hogy jelenti, hogy "a hbase: meta tábla replicaId 0 nem található a bármely régióban." A probléma az lehet, hogy HMaster nem tudta inicializálni a HBase újraindítása után. A HMaster-naplók, előfordulhat, hogy az üzenetet látja: "nincs kiszolgáló-cím szerepel a hbase: régió hbase meta: biztonsági mentési \<régió neve\>".  
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. A HBase rendszerhéjban adja meg a következő parancsokat (tényleges értékek módosítása megfelelő):  
+1. A HBase rendszerhéj adja meg a következő parancsokat (tényleges értékek módosítása, amennyiben alkalmazhatók):  
 
    ```apache
    > scan 'hbase:meta'  
@@ -305,11 +302,11 @@ Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy a Linux-fürt 
    > delete 'hbase:meta','hbase:backup <region name>','<column name>'  
    ```
 
-2. Törölje a *hbase: névtér* bejegyzés. Ez a bejegyzés lehet ugyanaz a hiba, amely alatt jelentett, ha a *hbase: névtér* tábla üzemeltet.
+2. Törölje a *hbase: névtér* bejegyzés. Lehet, hogy ez a bejegyzés alatt álló ugyanaz a hiba jelentve, ha a *hbase: névtér* tábla beolvasása.
 
-3. HBase elindítani fut, az Ambari felhasználói felületén, indítsa újra az aktív HMaster szolgáltatást.  
+3. Csatlakozva a HBase futó állapotban, az Ambari felhasználói felületén, indítsa újra az aktív HMaster szolgáltatást.  
 
-4. A HBase rendszerhéj ahhoz, hogy az összes kapcsolat nélküli tábláit, futtassa a következő parancsot:
+4. A HBase rendszerhéj használata offline tábláit, futtassa a következő parancsot:
 
    ```apache 
    hbase hbck -ignorePreCheckPermission -fixAssignments 
@@ -317,46 +314,46 @@ Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy a Linux-fürt 
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[Nem sikerült feldolgozni a HBase táblában](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[Nem sikerült feldolgozni a HBase-tábla](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Hiba
 
-Hasonló végzetes kivétel miatt időtúllépése HMaster "java.io.IOException: időtúllépésbe került 300000ms névtér tábla hozzárendelendő vár."
+Hasonló végzetes kivétel miatt időtúllépés HMaster "java.io.IOException: időtúllépés 300000ms Várakozás a névtér tábla hozzá kell rendelni."
 
 ### <a name="detailed-description"></a>Részletes leírás
 
-A probléma tapasztalhat, ha sok táblák és régiók, amely nem ki lettek ürítve a HMaster szolgáltatás újraindításakor. Újraindítás sikertelen lehet, és látni fogja az előző hibaüzenet.  
+A probléma tapasztalhat, ha sok tábla és régiók, amelyek rendelkeznek nem kiürítése megtörtént a HMaster szolgáltatás újraindításakor. Újraindítás sikertelen lehet, és az előző hibaüzenet jelenik meg.  
 
 ### <a name="probable-cause"></a>Lehetséges ok
 
-Ez az egy ismert probléma az HMaster szolgáltatással. Általános fürt indítási feladatok hosszú időt vehet igénybe. HMaster leáll, mert a névtér tábla még nincs hozzárendelve. Ez akkor fordul elő, csak a forgatókönyvek, ahol nagy adatmennyiség unflushed létezik, és egy öt perces időkorlát túl kicsi.
+Ez az egy ismert probléma az HMaster szolgáltatással. Általános fürt indítási feladatok hosszú időt vehet igénybe. HMaster leáll, mert a névtér tábla még nincs hozzárendelve. Ez akkor fordul elő, csak a forgatókönyvek, ahol nagy unflushed adatmennyiség létezik, és a egy öt perces időkorlát nem elegendő.
   
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Az Ambari felhasználói felületén, nyissa meg a **HBase** > **Configs**. Az egyéni hbase-site.xml fájlban adja hozzá a következő beállítást: 
+1. Az Ambari felhasználói felületén, nyissa meg **HBase** > **Configs**. Az egyéni hbase-site.xml fájlban adja hozzá a következő beállítást: 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
    ```
 
-2. Indítsa újra a szükséges szolgáltatásokat (HMaster, és valószínűleg más HBase szolgáltatások).  
+2. Indítsa újra a szükséges szolgáltatások (HMaster, és valószínűleg más HBase szolgáltatások).  
 
 
-## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Mi újraindítás hibát okoz a régió kiszolgálón?
+## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Egy régióban kiszolgálón újraindítás hiba mi okozza?
 
 ### <a name="issue"></a>Probléma
 
-Előfordulhat, hogy régió kiszolgáló újraindítása meghibásodása megakadályozása következő bevált gyakorlatát. Azt javasoljuk, hogy nagy munkaterhelést tevékenység felfüggesztése, ha azt tervezi, hogy a HBase régió kiszolgálók újraindítása. Ha egy alkalmazás tovább régió kiszolgálókkal való csatlakozás, ha leállítása folyamatban van, a régiót server Újraindítási művelet lassabb lesz által néhány percig. Azt is érdemes először ürítse ki az összes tábla. Hogyan táblák ürítése referenciáért lásd: [HDInsight HBase: a HBase fürt újraindítási idejét javítására által táblák kiürítési](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Egy régiókiszolgálón újraindítást meghiúsul a következő bevált gyakorlatát előfordulhat, hogy nem történik meg. Azt javasoljuk, hogy nagy munkaterhelést tevékenység felfüggesztése, ha azt tervezi, indítsa újra a HBase-régióbeli kiszolgálók. Ha egy alkalmazás továbbra is régióbeli kiszolgálók összekapcsolása, amikor a Shutdown utasítás folyamatban van, az régió server Újraindítási művelet lassabb lesz szerint néhány percig. Azt is célszerű először kiüríti az összes tábla. Hogyan táblák kiüríteni referenciáért lásd: [HDInsight HBase: hogyan növelheti a HBase fürt újraindítás időpontja a táblák kiürítette](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Ha kezdeményezni az újraindítást, a HBase régió kiszolgálókon a az Ambari felhasználói Felületéről, azonnal láthatja, hogy a régió kiszolgálók csökkent, de azok azonnal ne indítsa újra. 
+Ha kezdeményez az újraindítási műveletet, a HBase-régióbeli kiszolgálók az Ambari felhasználói felületről, azonnal láthatja, hogy a régióbeli kiszolgálók csökkent, de nem azonnal újraindítás. 
 
-Mi történik a háttérben itt található: 
+Íme, mi történik a háttérben: 
 
-1. Az Ambari ügynök leállítási kérelmet küld a régió kiszolgáló.
-2. Az Ambari ügynök megvárja, amíg a régió kiszolgáló leállítása 30 másodpercig. 
-3. Ha az alkalmazás továbbra is fennáll, a régiót kiszolgálóval kapcsolódni, a kiszolgáló nem áll le azonnal. A 30 másodperces időtúllépési előtt leállítás lejár. 
-4. 30 másodperc az Ambari ügynök küld egy kényszerített kill (`kill -9`) parancsot a terület-kiszolgálóhoz. Az ambari-ügynököt tartalmaz (a címtárban /var/napló/a megfelelő munkavégző csomópont) látható:
+1. Az Ambari ügynök leállítási kérést küld a régiókiszolgálón.
+2. Az Ambari ügynök megvárja, amíg a régió kiszolgáló leállítása 30 másodperc. 
+3. Ha az alkalmazás továbbra is a régióbeli kiszolgálók összekapcsolása, a kiszolgáló nem azonnal leállítja. A 30 másodperces időkorlát lejár, mielőtt a leállás akkor fordul elő. 
+4. 30 másodperc elteltével az Ambari ügynök küld egy kényszerített kill (`kill -9`) parancsot a terület-kiszolgálóhoz. Ez az ambari-ügynök napló (a címtárban /var/log/a megfelelő munkavégző csomópont) tekintheti meg:
 
    ```apache
            2017-03-21 13:22:09,171 - Execute['/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/current/hbase-regionserver/conf stop regionserver'] {'only_if': 'ambari-sudo.sh  -H -E t
@@ -370,7 +367,7 @@ Mi történik a háttérben itt található:
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-A lezárás miatt a folyamathoz társított port előfordulhat, hogy nem oldhatók fel, annak ellenére, hogy a régió server-folyamat leáll. Ez a helyzet vezethet egy AddressBindException a régió kiszolgáló indításakor, ahogy az a következő naplók kapcsolódnak. Ez a terület-Server.log elérési úton található a munkavégző csomópontokról, ahol a régió kiszolgáló indítása sikertelen /var/log/hbase könyvtárában található ellenőrizheti. 
+A hirtelen leállás miatt a port, a folyamathoz társított előfordulhat, hogy nem kell szabadítani, annak ellenére, hogy a régió kiszolgáló folyamata leállt. Ez a helyzet vezethet egy AddressBindException a régió kiszolgáló indításakor, ahogyan az a következő naplók kapcsolódnak. Ez a terület-Server.log elérési úton található a feldolgozó csomópontok, ahol a régiókiszolgálón nem indul el /var/log/hbase könyvtárában található ellenőrizheti. 
 
    ```apache
 
@@ -412,8 +409,8 @@ A lezárás miatt a folyamathoz társított port előfordulhat, hogy nem oldhat�
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Próbálja meg újraindítás elindítása előtt, ami csökkenti a HBase régió kiszolgálók terhelését. 
-2. Másik lehetőségként (ha 1. lépésben nem oldották), manuálisan indítsa újra a munkavégző csomóponton régió kiszolgálók a következő parancsokkal:
+1. Próbálja meg a HBase-régióbeli kiszolgálók terhelésének csökkentése előtt újraindítást kezdeményez. 
+2. Másik lehetőségként (ha 1. lépés nem segít), manuálisan indítsa újra a feldolgozó csomópontokon futó régióbeli kiszolgálók a következő parancsokat:
 
    ```apache
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"

@@ -1,46 +1,42 @@
 ---
-title: A HDInsight-fürt létrehozása – Azure során adja hozzá a Hive-könyvtárakhoz |} Microsoft Docs
-description: Megtudhatja, hogyan Hive-könyvtárakhoz (jar fájlok) hozzáadása egy HDInsight-fürtre a fürt létrehozása során.
+title: Hive-kódtárak hozzáadása során a HDInsight-fürt létrehozása – Azure
+description: Ismerje meg, hogyan adja hozzá a Hive-kódtárak (jar fájlok) HDInsight-fürthöz a fürt létrehozásakor.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 2fd74b8d-c006-45c6-a9e2-72ff5d2d978a
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 71e2859085dc4a9f4fa327d88faff4fecf5108ef
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: fe7cb2c3990a5aa161665519490ede90be04e1ee
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400656"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594607"
 ---
-# <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>Adja hozzá az egyedi Hive-könyvtárakhoz, ha a HDInsight-fürt létrehozása
+# <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>A HDInsight-fürt létrehozásakor egyéni Hive-kódtárak hozzáadása
 
-Útmutató a HDInsight Hive-könyvtárakhoz előzetes betöltése. Ez a dokumentum ismerteti a parancsfájl művelet segítségével előre fürt létrehozása során a függvénykönyvtárak betöltésére. A jelen dokumentum lépéseit követve hozzáadott szalagtárak világszerte elérhető a Hive - használatához nincs szükség [hozzáadása JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) betölteni őket.
+Útmutató a HDInsight Hive-kódtárak előzetes betöltése. Ez a dokumentum információkat tartalmaz az szkriptműveletekkel előre a fürt létrehozásakor a függvénykönyvtárak betöltésére. Kódtárakkal kiegészítve, ez a dokumentum lépéseivel globálisan elérhető a Hive - használatához nem kell [hozzáadása JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) betölteni azokat.
 
 ## <a name="how-it-works"></a>Működés
 
-A fürt létrehozásakor a parancsfájlművelet segítségével módosíthatja a fürtcsomópontokat, azok létrehozásakor. Ebben a dokumentumban a parancsfájl egyetlen paramétert, amely a szalagtárak helye fogad el. Egy Azure Storage-fiók ezen a helyen kell lennie, és a szalagtárak jar-fájlok formájában kell tárolni.
+A fürt létrehozásakor Szkriptműveletet segítségével módosíthatja a fürtcsomópontok azok létrehozásakor. Ebben a dokumentumban a szkript egyetlen paramétert, és a szalagtárak helye fogad el. Ezen a helyen kell lennie az Azure Storage-fiókban, és a szalagtárak jar-fájlként kell tárolni.
 
-Fürt létrehozása során a parancsfájl a fájlok enumerálása, másolja őket a `/usr/lib/customhivelibs/` directory head és a munkavégző csomópont, majd hozzáadja őket a `hive.aux.jars.path` tulajdonságot a `core-site.xml` fájlt. Linux-alapú fürtökön is frissíti a `hive-env.sh` fájlt a fájlok helyét.
+Fürt létrehozása során, a szkriptet a fájlok enumerálása, másolja őket a `/usr/lib/customhivelibs/` könyvtár a fő- és munkavégző csomóponton, majd hozzáadja őket a `hive.aux.jars.path` tulajdonságot a `core-site.xml` fájlt. Linux-alapú fürtökön is frissíti a `hive-env.sh` fájlt a fájlok helyét.
 
 > [!NOTE]
 > Ebben a cikkben a Parancsfájlműveletek segítségével elérhetővé teszi a könyvtárak a következő esetekben:
 >
-> * **Linux-alapú HDInsight** – Ha a Hive-ügyfél használatával **WebHCat**, és **hiveserver2-n**.
-> * **Windows-alapú HDInsight** – Ha a Hive-ügyfélprogrammal és **WebHCat**.
+> * **Linux-alapú HDInsight** – Ha egy Hive-ügyfél használatával **WebHCat**, és **hiveserver2-n keresztül**.
+> * **Windows-alapú HDInsight** – Ha a Hive-ügyfél használatával és **WebHCat**.
 
 ## <a name="the-script"></a>A parancsfájl
 
-**Parancsfájl helyét**
+**A parancsprogram helye**
 
-A **Linux-alapú fürtökön**: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
+A **Linux-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
 
 A **Windows-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
@@ -49,52 +45,52 @@ A **Windows-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/s
 
 **Követelmények**
 
-* A parancsfájlok egyaránt telepíteni kell a **Átjárócsomópontokat** és **munkavégző csomópontokhoz**.
+* A parancsfájlokat egyszerre kell alkalmazni a **Átjárócsomópontokhoz** és **munkavégző csomópontok**.
 
-* A telepíteni kívánt JAR-fájlok kivételével az Azure Blob Storage tárolóban kell tárolni egy **egyetlen tároló**.
+* Az Azure Blob Storage-ban kell tárolni a JAR-fájlok kivételével szeretne telepíteni egy **egyetlen tároló**.
 
-* A tárfiók tartalmazó jar-fájlok a könyvtárban **kell** is csatolva van a HDInsight-fürt létrehozása során. Azt az alapértelmezett tárfiókot kell lennie, vagy a fiók hozzáadva __opcionális konfigurációs__.
+* A storage-fiókot tartalmazó jar-fájlok a könyvtárban **kell** csatolható a HDInsight-fürt létrehozása során. Azt kell az alapértelmezett tárfiókot, vagy egy fiók során hozzáadott __opcionális konfigurációs__.
 
-* A tároló WASB elérési útja meg kell adni a Script Action paramétereként. Például, ha a JAR-fájlok kivételével nevű tárolóban vannak tárolva **függvénytárak** egy tárfiókon nevű **mystorage**, a paraméter lenne **wasb://libs@mystorage.blob.core.windows.net/**.
+* A WASB-elérési út a tárolóhoz, a Script Action paraméterként kell megadni. Például, ha a JAR-fájlok kivételével nevű tárolóban tárolt **libs** a storage-fiók nevű **mystorage**, a paraméter lehet **wasb://libs@mystorage.blob.core.windows.net/**.
 
   > [!NOTE]
-  > Jelen dokumentum céljából feltételezzük, hogy már létrehozott egy tárfiókot, a blob tároló, és a fájlok fel.
+  > Jelen dokumentum céljából feltételezzük, hogy már létrehozott egy tárfiókot, a blob-tárolóba, és feltölti a fájlokat.
   >
-  > Ha nem hozott létre egy tárfiókot, ezért a végezhető el a [Azure-portálon](https://portal.azure.com). Ezután egy segédprogramot használhatja például a [Azure Tártallózó](http://storageexplorer.com/) tárolókat hozhat létre, a fiók és a fájlok feltöltése.
+  > Ha nem létrehozott egy tárfiókot, megteheti úgy keresztül a [az Azure portal](https://portal.azure.com). Ezután egy segédprogramot használhatja például [Azure Storage Explorer](http://storageexplorer.com/) , hozzon létre egy tárolót a fiókban, és fájlokat tölthet fel azt.
 
-## <a name="create-a-cluster-using-the-script"></a>Hozzon létre egy fürtöt, a parancsfájl használatával
+## <a name="create-a-cluster-using-the-script"></a>Fürt létrehozása a parancsfájl használatával
 
 > [!NOTE]
-> Az alábbi lépéseket egy Linux-alapú HDInsight-fürtök létrehozása. A Windows-alapú fürtök létrehozásához válasszon **Windows** a fürt létrehozása a fürt és a Windows (PowerShell) a bash parancsfájlok helyett parancsfájl használata esetén operációs rendszer.
+> Az alábbi lépéseket egy Linux-alapú HDInsight-fürt létrehozásához. Válassza ki a Windows-alapú fürt létrehozása **Windows** a fürt operációs rendszer, amikor létrehozza a fürtöt, és használja a Windows (PowerShell) helyett a bash-szkript futtatása.
 >
-> Azure PowerShell vagy a HDInsight .NET SDK használatával is hozzon létre egy fürtöt, a parancsfájl. A következő módszerekkel további információkért lásd: [testreszabása HDInsight-fürtök parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
+> Azure PowerShell vagy a HDInsight .NET SDK használatával is hozzon létre egy fürtöt, ez a szkript használatával. Ezek a módszerek használatáról további információkért lásd: [testreszabása HDInsight fürtök parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
 
-1. Indítsa el a fürt kiépítése a lépések segítségével [Provision HDInsight-fürtök Linux rendszeren](hdinsight-hadoop-provision-linux-clusters.md), de kiépítése nem fejeződött be.
+1. Indítsa el a fürt kiépítése a lépéseket követve [Provision HDInsight-fürtök a linuxon futó](hdinsight-hadoop-provision-linux-clusters.md), azonban nem fejeződnek be kiépítése.
 
 2. Az a **opcionális konfigurációs** szakaszban jelölje be **Parancsfájlműveletek**, és adja meg a következő információkat:
 
-   * **NÉV**: Adja meg a parancsfájlművelet rövid nevét.
+   * **NÉV**: Adjon egy rövid nevet a parancsprogram-művelet.
 
-   * **PARANCSFÁJL URI AZONOSÍTÓJA**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
+   * **SZKRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
 
-   * **HEAD**: ezt a beállítást.
+   * **A fő**: ezt a beállítást választva.
 
-   * **MUNKAVÉGZŐ**: ezt a beállítást.
+   * **FELDOLGOZÓ**: ezt a beállítást választva.
 
    * **ZOOKEEPER**: hagyja üresen a mezőt.
 
-   * **PARAMÉTEREK**: a WASB címet adjon meg a tároló és a storage-fiókhoz, amely tartalmazza a JAR-fájlok kivételével. Például **wasb://libs@mystorage.blob.core.windows.net/**.
+   * **PARAMÉTEREK**: Adja meg a WASB-címet a tároló és a storage-fiókhoz, amely tartalmazza a JAR-fájlok kivételével. Például: **wasb://libs@mystorage.blob.core.windows.net/**.
 
-3. Alján a **Parancsfájlműveletek**, használja a **válasszon** gombra kattintva mentse a konfigurációt.
+3. Alsó részén a **Parancsfájlműveletek**, használja a **kiválasztása** gombra a konfiguráció mentéséhez.
 
-4. Az a **opcionális konfigurációs** szakaszban jelölje be **a társított Tárfiókokban** válassza ki a **tárolási kulcs hozzáadása** hivatkozásra. Válassza ki a tárfiók, amely tartalmazza a JAR-fájlok kivételével. Ezután a **válasszon** gombok beállítások mentéséhez, és térjen vissza a **opcionális konfigurációs**.
+4. Az a **opcionális konfigurációs** szakaszban jelölje be **a társított Tárfiókokban** , és válassza ki a **tárkulcs hozzáadása** hivatkozásra. Válassza ki a tárfiókot, amely tartalmazza a JAR-fájlok kivételével. Ezután a **válassza** gombok beállítások mentéséhez és a **opcionális konfigurációs**.
 
-5. A választható konfiguráció mentéséhez, használja a **kiválasztása** gomb alján a **opcionális konfigurációs** szakasz.
+5. A választható konfiguráció mentéséhez, használja a **kiválasztása** gomb alsó részén a **opcionális konfigurációs** szakaszban.
 
-6. Továbbra is a fürt kiépítése a [Provision HDInsight-fürtök Linux rendszeren](hdinsight-hadoop-provision-linux-clusters.md).
+6. A fürt kiépítése a leírtak szerint folytassa [Provision HDInsight-fürtök a linuxon futó](hdinsight-hadoop-provision-linux-clusters.md).
 
-Miután befejeződött a fürt létrehozása, le is tudja használni a JAR-fájlok kivételével ez a parancsfájl hozzáadva a Hive használata nélkül a `ADD JAR` utasítást.
+Ha befejezte a fürt létrehozása, Ön a JAR-fájlok kivételével ez a szkript keresztül hozzáadva a Hive használata nélkül használhatják az `ADD JAR` utasítást.
 
 ## <a name="next-steps"></a>További lépések
 
-Hive munkavégzés további információkért lásd: [hdinsight Hive használata](hadoop/hdinsight-use-hive.md)
+Hive való használatáról további információkért lásd: [Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)

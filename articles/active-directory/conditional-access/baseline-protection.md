@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/02/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: dc28f4099661d027305faeeabf27de06cc98678d
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 70a0fc4236bc275cf9221f302e63f987a89af0d6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530945"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620348"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Mi az alapvető védelmet (előzetes verzió)?  
 
@@ -95,6 +95,6 @@ Alapkonfiguráció házirendek vonatkoznak az örökölt hitelesítési folyamat
 
 ## <a name="next-steps"></a>További lépések
 
-Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [feltételes hozzáférés az Azure Active Directory használatának első lépései](../active-directory-conditional-access-azure-portal-get-started.md).
+Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
 
 Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md). 

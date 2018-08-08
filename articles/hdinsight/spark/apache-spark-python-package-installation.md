@@ -1,52 +1,47 @@
 ---
-title: Művelet – telepítése Python-csomagokat, az Azure hdinsight Jupyter parancsfájl |} Microsoft Docs
-description: Lépésenkénti útmutató parancsfájlművelet használatára konfigurálhatja a Jupyter notebookok érhető el a HDInsight Spark-fürtjei külső python-csomagok használata.
+title: Parancsfájlművelet - jupyterrel, Cellafunkciók az Azure HDInsight telepítse a Python-csomagok
+description: Lépésenkénti útmutató konfigurálása elérhető Jupyter notebookok a HDInsight Spark-fürtök használatával külső python-csomagok használata.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 21978b71-eb53-480b-a3d1-c5d428a7eb5b
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.author: nitinme
-ms.openlocfilehash: 4d9d1e0aaf6a1c0155f9ab74a5e63302635a0c11
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 36e727a59b91303c8c62c5525f72c328e2792ad6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517409"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619175"
 ---
-# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Parancsfájlművelet használata Jupyter notebookok külső Python-csomagokat telepíteni az Apache Spark on hdinsight-fürtök
+# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Parancsfájlművelet használata a HDInsight Apache Spark-fürtök Jupyter notebookokhoz külső Python-csomagok telepítése
 > [!div class="op_single_selector"]
-> * [Cella magic használatával](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Parancsfájl művelet segítségével](apache-spark-python-package-installation.md)
+> * [Használatával](apache-spark-jupyter-notebook-use-external-packages.md)
+> * [Szkriptműveletek használatával](apache-spark-python-package-installation.md)
 >
 >
 
-Útmutató Apache Spark-fürt konfigurálása a HDInsight (Linux) használatához a külső, közösségi része volt a Parancsfájlműveletek segítségével **python** csomagok, amelyek nem tartalmazza a fürt, a-kész.
+Szkriptműveletek használata a HDInsight (Linux), külső, a Közösség által biztosított használata Apache Spark-fürt konfigurálása **python** csomagokat, amelyek nem tartalmazza a fürt-a-beépített.
 
 > [!NOTE]
-> Jupyter notebook használatával is konfigurálhatja `%%configure` külső csomagok használata a Bűvös. Útmutatásért lásd: [külső csomagok használata Jupyter notebookok Apache Spark-fürt a HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
+> Beállíthatja a Jupyter notebook használatával `%%configure` Magic Quadrant külső csomagok használata. Útmutatásért lásd: [külső csomagok használata a HDInsight Apache Spark-fürtök Jupyter-notebookjait](apache-spark-jupyter-notebook-use-external-packages.md).
 > 
 > 
 
-Kereshet az [csomagindexet](https://pypi.python.org/pypi) csomagok rendelkezésre álló teljes listáját. Más forrásból is megkapható elérhető csomagok listáját. Például telepíthet keresztül elérhető csomagok [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) vagy [conda-forge](https://conda-forge.org/feedstocks/).
+Kereshet a [csomagindexet](https://pypi.python.org/pypi) a teljes listát az elérhető csomagokat. Elérhető csomagok listáját a más forrásokból is beszerezheti. Például telepíthet keresztül elérhető csomagok [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) vagy [conda-forge](https://conda-forge.org/feedstocks/).
 
-Ebből a cikkből megtanulhatja a telepítése a [TensorFlow](https://www.tensorflow.org/) csomag parancsfájlművelet használatával a fürtön, és a Jupyter notebook keresztül használni.
+Ebben a cikkben megismerheti, hogyan telepítheti a [TensorFlow](https://www.tensorflow.org/) csomag szkriptműveletekkel a fürtön, és ezzel a Jupyter notebook használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbiakkal kell rendelkeznie:
 
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* A HDInsight az Apache Spark-fürt. Útmutatásért lásd: [létrehozása az Apache Spark on Azure hdinsight clusters](apache-spark-jupyter-spark-sql.md).
+* Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 
    > [!NOTE]
-   > Ha még nem rendelkezik egy Spark-fürt HDInsight Linux rendszeren, Parancsfájlműveletek futtathatja a fürt létrehozása során. Látogasson el a dokumentációt a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+   > Ha Ön még nem rendelkezik a HDInsight linuxon futó Spark-fürt, szkriptműveletek futtathatja a fürt létrehozása során. Keresse meg a dokumentációt a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
    > 
    > 
 
@@ -54,14 +49,14 @@ Az alábbiakkal kell rendelkeznie:
 
 1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).   
 
-2. A Spark-fürt panelén kattintson **Parancsfájlműveletek** a bal oldali ablaktáblán. Az egyéni művelet, amely telepíti TensorFlow az átjárócsomópontokkal és a feldolgozó csomópontok. A bash parancsfájlok lehet hivatkozni: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh látogassa meg a dokumentáció a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+2. A Spark-fürt panelén kattintson **Parancsfájlműveletek** a bal oldali ablaktáblán. Futtassa az egyéni művelet, amely tensorflow-hoz telepíti az átjárócsomópontokhoz és a feldolgozó csomópontok. A bash-szkript a lehet hivatkozni: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh látogasson el a dokumentációt a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
    > [!NOTE]
-   > Nincsenek két python telepítések a fürtben. Spark fogja használni a Anaconda python telepítési helye: `/usr/bin/anaconda/bin`. Hivatkozás a telepítést, az egyéni műveletek keresztül a `/usr/bin/anaconda/bin/pip` és `/usr/bin/anaconda/bin/conda`.
+   > Nincsenek két python-telepítés esetén a fürt a. A Spark fogja használni a Anaconda python-telepítés található `/usr/bin/anaconda/bin`. A telepítést, az az egyéni műveletek keresztül hivatkozhat `/usr/bin/anaconda/bin/pip` és `/usr/bin/anaconda/bin/conda`.
    > 
    > 
 
-3. Nyissa meg a PySpark Jupyter notebook
+3. A PySpark Jupyter notebook megnyitása
 
     ![Új Jupyter notebook létrehozása](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Új Jupyter notebook létrehozása")
 
@@ -69,7 +64,7 @@ Az alábbiakkal kell rendelkeznie:
 
     ![Adjon nevet a notebooknak](./media/apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "Adjon nevet a notebooknak")
 
-5. Most fog `import tensorflow` , és futtassa a hello world példa. 
+5. Mostantól `import tensorflow` és a egy hello world példa futtatásához. 
 
     Kód másolása:
 
@@ -78,9 +73,9 @@ Az alábbiakkal kell rendelkeznie:
         sess = tf.Session()
         print(sess.run(hello))
 
-    Az eredmény így néz ki:
+    Az eredmény a következőhöz hasonló:
     
-    ![TensorFlow kód végrehajtása](./media/apache-spark-python-package-installation/execution.png "hajtható végre TensorFlow kódot")
+    ![TensorFlow kódfuttatás](./media/apache-spark-python-package-installation/execution.png "végrehajtása TensorFlow-kód")
 
 ## <a name="seealso"></a>Lásd még:
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
@@ -96,7 +91,7 @@ Az alábbiakkal kell rendelkeznie:
 * [Feladatok távoli futtatása Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
-* [Külső csomagok használata Jupyter notebookok Apache Spark-fürt a HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Külső csomagok használata Jupyter notebookok a HDInsight az Apache Spark-fürtök](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark-alkalmazások távoli hibaelhárításához](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Zeppelin notebookok használata Spark-fürttel HDInsighton](apache-spark-zeppelin-notebook.md)

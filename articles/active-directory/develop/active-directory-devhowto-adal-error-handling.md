@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: ea7ee76a97a06b7f91805af8007a466d1b9f111d
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: b28e1931b9f615ae0eebe40b101f1959e9fcb40a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505277"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593043"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Ajánlott hibakezelési eljárások az Azure Active Directory Authentication Library (ADAL) ügyfelek
 
@@ -44,8 +44,8 @@ Nincs az operációs rendszer, amihez szükséges, az alkalmazásnak adott hibak
 
 ### <a name="application-scenarios"></a>Alkalmazáshasználati helyzetek
 
-- [Natív ügyfél](active-directory-dev-glossary.md#native-client) alkalmazások (iOS, Android, .NET asztali vagy Xamarin)
-- [Webes ügyfél](active-directory-dev-glossary.md#web-client) hívó alkalmazásokhoz egy [erőforrás](active-directory-dev-glossary.md#resource-server) (.NET)
+- [Natív ügyfél](developer-glossary.md#native-client) alkalmazások (iOS, Android, .NET asztali vagy Xamarin)
+- [Webes ügyfél](developer-glossary.md#web-client) hívó alkalmazásokhoz egy [erőforrás](developer-glossary.md#resource-server) (.NET)
 
 ### <a name="error-cases-and-actionable-steps"></a>Hiba eseteket és végrehajtható lépései
 

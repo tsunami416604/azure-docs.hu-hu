@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 212da85f64f876f40e2d84d79a8c6a990d118aca
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: f139f9520b6bcb5f39fd4436a1ea2eee6fddf344
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505086"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618971"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -452,9 +452,9 @@ Hozzávetőleges teljes ideje: 10 perc
 | Lépés | További források |
 | --- | --- |
 | Nyissa meg az Azure AD felügyeleti portálra: feltételes hozzáférés paneljén | [Az Azure AD felügyeleti portálon: Feltételes hozzáférés](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
-| Feltételes hozzáférési szabályzat létrehozása:<br/>-Céloldali PoC-felhasználók "Felhasználók és csoportok" területen<br/>-Cél PoC alkalmazást "Felhőalapú alkalmazások" alatt<br/>-Az összes hely cél azzal a különbséggel "Körülmények" megbízható eszközök -> "Hely" **Megjegyzés:** megbízható IP-címek vannak konfigurálva a [MFA portál](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-A "Engedélyezés" többtényezős hitelesítés megkövetelése | [Az Azure Active Directory feltételes hozzáférés használatának első lépései: a házirend-konfigurációs lépések](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
-| Hozzáférés a vállalati hálózaton belüli alkalmazás | [Az Azure Active Directory feltételes hozzáférés használatának első lépései: a házirend tesztelése](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
-| Hozzáférési kérelem nyilvános hálózat | [Az Azure Active Directory feltételes hozzáférés használatának első lépései: a házirend tesztelése](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
+| Feltételes hozzáférési szabályzat létrehozása:<br/>-Céloldali PoC-felhasználók "Felhasználók és csoportok" területen<br/>-Cél PoC alkalmazást "Felhőalapú alkalmazások" alatt<br/>-Az összes hely cél azzal a különbséggel "Körülmények" megbízható eszközök -> "Hely" **Megjegyzés:** megbízható IP-címek vannak konfigurálva a [MFA portál](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-A "Engedélyezés" többtényezős hitelesítés megkövetelése | [A feltételes hozzáférési szabályzat létrehozása](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#create-your-conditional-access-policy) |
+| Hozzáférés a vállalati hálózaton belüli alkalmazás | [A feltételes hozzáférési házirend tesztelése](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
+| Hozzáférési kérelem nyilvános hálózat | [A feltételes hozzáférési házirend tesztelése](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -553,7 +553,7 @@ Hozzávetőleges időt: 20 perc alatt
 | --- | --- |
 | A felhasználói tanúsítványt kiépített (Windows, iOS vagy Android) a vállalati nyilvános kulcsú infrastruktúra eszköz | [Felhasználói tanúsítványok telepítése](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Az AD FS-összevont Azure AD-tartomány | [Azure AD Connect és összevonás](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Az Active Directory tanúsítványszolgáltatások áttekintése](https://technet.microsoft.com/library/hh831740.aspx)|
-| Az iOS-eszközök rendelkeznek a Microsoft Authenticator alkalmazás telepítve van | [A Microsoft Authenticator alkalmazás használatának első lépései](user-help/microsoft-authenticator-app-how-to.md) |
+| Az iOS-eszközök rendelkeznek a Microsoft Authenticator alkalmazás telepítve van | [Bevezetés a Microsoft Authenticator alkalmazás használatába](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Lépések
 
