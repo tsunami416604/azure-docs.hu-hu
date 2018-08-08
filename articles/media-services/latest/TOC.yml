@@ -39,6 +39,8 @@
       items:
         - name: Áttekintés
           href: content-protection-overview.md
+        - name: Multi-DRM rendszer hozzáférés-vezérléssel
+          href: design-multi-drm-system-with-access-control.md
     - name: Encoding
       items:
         - name: Áttekintés

@@ -171,12 +171,13 @@
 #### [Az Azure AD-csatlakozás megtervezése](devices/azureadjoin-plan.md)
 #### [A hibrid Azure AD-csatlakozás implementálásának megtervezése](devices/hybrid-azuread-join-plan.md)
 #### [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](devices/hybrid-azuread-join-control.md)
+#### [Helyi rendszergazdák hozzárendelése Azure AD-csatlakoztatott eszközökhöz](devices/assign-local-admin.md)
 #### [Jelenlegi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása](devices/troubleshoot-hybrid-join-windows-current.md)
 #### [Korábbi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ### Alapelvek
-### [Eszközök kezelése az Azure Portalon](devices/device-management-azure-portal.md)
-### [Gyakori kérdések](devices/faq.md)
+#### [Eszközök kezelése az Azure Portalon](devices/device-management-azure-portal.md)
+#### [Gyakori kérdések](devices/faq.md)
 
 ## Alkalmazások kezelése
 ### [Áttekintés](manage-apps/what-is-application-management.md)
@@ -403,30 +404,30 @@
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
 #### Gyors útmutatók
-##### [Felhőalkalmazásonkénti MFA konfigurálása](active-directory-conditional-access-app-based-mfa.md)
-##### [A használati feltételek elfogadásának kötelezővé tétele](active-directory-conditional-access-tou.md)
-##### [Hozzáférés letiltása munkameneti kockázat észlelésekor](active-directory-conditional-access-app-sign-in-risk.md)
+##### [Felhőalkalmazásonkénti MFA konfigurálása](conditional-access/app-based-mfa.md)
+##### [A használati feltételek elfogadásának kötelezővé tétele](conditional-access/require-tou.md)
+##### [Hozzáférés letiltása munkameneti kockázat észlelésekor](conditional-access/app-sign-in-risk.md)
 #### Oktatóanyagok
-##### [Klasszikus MFA-szabályzat migrálása](active-directory-conditional-access-migration-mfa.md)
+##### [Klasszikus MFA-szabályzat migrálása](conditional-access/policy-migration-mfa.md)
 #### Alapelvek
-##### [Alapvető védelem](active-directory-conditional-access-baseline-protection.md)
-##### [Feltételek](active-directory-conditional-access-conditions.md)
-##### [Helyfeltételek](active-directory-conditional-access-locations.md)
-##### [Vezérlők](active-directory-conditional-access-controls.md)
-##### [Lehetőségelemzési eszköz](active-directory-conditional-access-whatif.md)
+##### [Alapvető védelem](conditional-access/baseline-protection.md)
+##### [Feltételek](conditional-access/conditions.md)
+##### [Helyfeltételek](conditional-access/location-condition.md)
+##### [Vezérlők](conditional-access/controls.md)
+##### [Lehetőségelemzési eszköz](conditional-access/what-if-tool.md)
 ##### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)
 #### Útmutatók
-##### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
+##### [Ajánlott eljárások](conditional-access/best-practices.md)
 ##### [Feltételes hozzáférési szabályzatok konfigurálása a nem megbízható hálózatokból indított hozzáférési kísérletekre vonatkozóan](active-directory-conditional-access-untrusted-networks.md)
 ##### [Eszközalapú feltételes hozzáférés beállítása](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Alkalmazásalapú feltételes hozzáférés beállítása](active-directory-conditional-access-mam.md)
 ##### [A felhasználókra és az alkalmazásra vonatkozó használati feltételek biztosítása](active-directory-tou.md)
-##### [Klasszikus szabályzatok migrálása](active-directory-conditional-access-migration.md)
+##### [Klasszikus szabályzatok migrálása](conditional-access/policy-migration.md)
 ##### [VPN-kapcsolat beállítása](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [A SharePoint és az Exchange Online beállítása](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Kijavítás](active-directory-conditional-access-device-remediation.md)
 #### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
-#### [Gyakori kérdések](active-directory-conditional-faqs.md)
+#### [Gyakori kérdések](conditional-access/faqs.md)
 
 ### Tanúsítványalapú hitelesítés
 #### [Android](active-directory-certificate-based-authentication-android.md)

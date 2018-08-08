@@ -46,8 +46,8 @@
       href: stream-analytics-compatibility-level.md
     - name: Gyakori lekérdezési minták
       href: stream-analytics-stream-analytics-query-patterns.md
-    - name: Összetett adattípusok kezelése JSON és AVRO formátumban.
-      href: 'https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics'
+    - name: JSON- és AVRO-adatok elemzése
+      href: stream-analytics-parsing-json.md
     - name: Eseményrendezési szempontok
       href: stream-analytics-out-of-order-and-late-events.md
     - name: Ellenőrzőpont és visszajátszás

@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: c7be9079da6be8d9d7f25b910ab07e905e8ac449
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126214"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618614"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -33,9 +33,9 @@ Nincsenek az Azure Functions Core Tools két verziója. A verzió, a helyi fejle
 
 + [Verzió 1.x](#v1): verziót támogatja, amely általánosan elérhető (GA) a futtatókörnyezet 1.x. Ez a verzió, az eszközök csak Windows-számítógépeken támogatott, és telepítve van a egy [npm-csomag](https://docs.npmjs.com/getting-started/what-is-npm). Az ebben a verzióban a kísérleti nem hivatalosan támogatott nyelvek funkciókat is létrehozhat. További információkért lásd: [támogatott nyelv az Azure Functions szolgáltatásban](supported-languages.md)
 
-+ [Verzió 2.x](#v2): verziója támogatja a 2.x verziójú futtatókörnyezet. Ez a verzió támogatja a [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Telepítési platformspecifikus csomagkezelők vagy az npm-et használ. A 2.x verziójú futtatókörnyezet, például ez a alapvető eszközök verziója jelenleg előzetes verzióban érhető el.
++ [Verzió 2.x](#v2): támogatja a [verzió 2.x verziójú futtatókörnyezet](functions-versions.md). Ez a verzió támogatja a [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Telepítési platformspecifikus csomagkezelők vagy az npm-et használ. A 2.x verziójú futtatókörnyezet, például ez a alapvető eszközök verziója jelenleg előzetes verzióban érhető el. 
 
-Ha másként nincs jelezve, az ebben a cikkben szereplő példák verziójára vonatkoznak 2.x.
+Ha másként nincs jelezve, az ebben a cikkben szereplő példák verziójára vonatkoznak 2.x. Verzió fontos frissítések fogadása 2.x, beleértve a használhatatlanná tévő módosítja a bejelentésekről, tekintse meg a [Azure App Service közlemények](https://github.com/Azure/app-service-announcements/issues) tárház.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 

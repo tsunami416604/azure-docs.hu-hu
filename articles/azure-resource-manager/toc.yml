@@ -16,7 +16,6 @@
     - name: Sablonok létrehozása – Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
 - name: Oktatóanyagok
-  expanded: true
   items:
     - name: Titkosított tárfiók létrehozása
       href: resource-manager-tutorial-create-encrypted-storage-accounts.md
@@ -52,10 +51,12 @@
               href: resource-manager-templates-outputs.md
         - name: Kapcsolt és beágyazott sablonok
           href: resource-group-linked-templates.md
-        - name: Függőség megadása két erőforrás között
+        - name: Erőforrás-függőségek
           href: resource-group-define-dependencies.md
         - name: Több példány létrehozása
           href: resource-group-create-multiple.md
+        - name: Erőforráscsoport létrehozása sablonban
+          href: create-resource-group-in-template.md
         - name: Erőforrás frissítése
           href: /azure/architecture/building-blocks/extending-templates/update-resource
     - name: Üzembe helyezés

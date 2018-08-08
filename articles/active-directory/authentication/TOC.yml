@@ -176,6 +176,8 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Hibaelhárítás
       items:
+        - name: Konvergens regisztráció letiltása
+          href: howto-registration-mfa-sspr-converged-troubleshoot.md
         - name: SSPR hibaelhárítása
           href: active-directory-passwords-troubleshoot.md
         - name: SSPR – GYIK

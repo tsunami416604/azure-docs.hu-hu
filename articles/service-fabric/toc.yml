@@ -553,8 +553,8 @@
                   href: service-fabric-cluster-scale-up-down.md
                 - name: Horizontális felskálázás programozott módon
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: Elsődleges csomópont típusú virtuális gépek skálázása vagy frissítése
-                  href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
+                - name: Virtuálisgép-méretezési csoport csomópontalapú horizontális felskálázása
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
             - name: Frissítés
               href: service-fabric-cluster-upgrade.md
             - name: Hozzáférés-vezérlés beállítása

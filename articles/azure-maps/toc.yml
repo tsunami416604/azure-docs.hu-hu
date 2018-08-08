@@ -40,6 +40,8 @@
       items:
         - name: Fiókok és kulcsok kezelése
           href: how-to-manage-account-keys.md
+        - name: Használati metrikák megtekintése
+          href: how-to-view-api-usage.md
     - name: Térképadatok lekérése REST API-kból
       items:
         - name: Cím keresése
