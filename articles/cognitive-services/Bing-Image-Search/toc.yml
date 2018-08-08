@@ -47,8 +47,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
 - name: Útmutatók
   items:
-    - name: Eredmények használata és megjelenítése
-      href: UseAndDisplayRequirements.md
     - name: Képelemzések lekérése
       href: image-insights.md
     - name: .gif formátumú képek lekérése
@@ -91,5 +89,7 @@
       href: image-search-endpoint.md
     - name: Támogatott országok és piacok
       href: supported-countries-markets.md
+    - name: Követelmények használata és megjelenítése
+      href: UseAndDisplayRequirements.md
     - name: Bing Image Search API – elemzés
       href: bing-image-stats.md

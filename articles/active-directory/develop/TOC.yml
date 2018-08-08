@@ -103,9 +103,9 @@
     - name: Mobil és asztali egyszeri bejelentkezés
       items:
         - name: Egyszeri bejelentkezés engedélyezése Android rendszeren
-          href: howto-v1-enable-sso-on-android.md
+          href: howto-v1-enable-sso-android.md
         - name: Egyszeri bejelentkezés engedélyezése iOS rendszeren
-          href: howto-v1-enable-sso-on-ios.md
+          href: howto-v1-enable-sso-ios.md
     - name: Azure AD B2B
       href: ../active-directory-b2b-what-is-azure-ad-b2b.md
     - name: Felhasználókiépítés az SCIM-mel
@@ -116,9 +116,9 @@
         - name: Az AAD Graph használatának első lépései
           href: active-directory-graph-api-quickstart.md
     - name: AppSource-tanúsítvány
-      href: active-directory-devhowto-appsource-certified.md
+      href: howto-get-appsource-certified.md
     - name: Azure AD alkalmazáskatalógus
-      href: active-directory-app-gallery-listing.md
+      href: howto-app-gallery-listing.md
     - name: Office 365-értékesítői információ-központ
       href: 'https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard'
     - name: A Visual Studio használata
@@ -150,7 +150,7 @@
     - name: Kódminták forgatókönyv szerint
       href: sample-v1-code.md
     - name: Szószedet
-      href: active-directory-dev-glossary.md
+      href: developer-glossary.md
     - name: Hitelesítési protokollok
       href: active-directory-authentication-protocols.md
       items:
@@ -178,7 +178,7 @@
         - name: Alkalmazások és az Azure AD
           href: active-directory-how-applications-are-added.md
     - name: Alkalmazásjegyzék
-      href: active-directory-application-manifest.md
+      href: reference-app-manifest.md
     - name: A jogkivonatok élettartama
       href: ../active-directory-configurable-token-lifetimes.md
     - name: Szolgáltatási korlátozások
@@ -189,7 +189,7 @@
       href: active-directory-appmodel-v2-overview.md
       items:
         - name: Alkalmazástípusok
-          href: active-directory-v2-flows.md
+          href: v2-app-types.md
         - name: Korlátozások
           href: active-directory-v2-limitations.md
         - name: v1-v2 összehasonlítása
@@ -239,7 +239,7 @@
     - name: Referencia
       items:
         - name: Hitelesítési tárak
-          href: active-directory-v2-libraries.md
+          href: reference-v2-libraries.md
         - name: 2.0-s verziójú kódminták forgatókönyv szerint
           href: sample-v2-code.md
         - name: 2.0-s hitelesítési protokollok
@@ -266,7 +266,7 @@
 - name: További források
   items:
     - name: Segítség kérése
-      href: active-directory-develop-help-support.md
+      href: developer-support-help-options.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Díjkalkulátor
