@@ -401,10 +401,10 @@
 ### [Hozzáférési felülvizsgálatok eredményeinek lekérése](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Identitások védelme
-### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
-#### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
+### Feltételes hozzáférés
+#### [Áttekintés](conditional-access/overview.md)
 #### Gyors útmutatók
-##### [Felhőalkalmazásonkénti MFA konfigurálása](conditional-access/app-based-mfa.md)
+##### [MFA megkövetelése adott alkalmazásokhoz](conditional-access/app-based-mfa.md)
 ##### [A használati feltételek elfogadásának kötelezővé tétele](conditional-access/require-tou.md)
 ##### [Hozzáférés letiltása munkameneti kockázat észlelésekor](conditional-access/app-sign-in-risk.md)
 #### Oktatóanyagok
@@ -418,15 +418,16 @@
 ##### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)
 #### Útmutatók
 ##### [Ajánlott eljárások](conditional-access/best-practices.md)
-##### [Feltételes hozzáférési szabályzatok konfigurálása a nem megbízható hálózatokból indított hozzáférési kísérletekre vonatkozóan](active-directory-conditional-access-untrusted-networks.md)
-##### [Eszközalapú feltételes hozzáférés beállítása](active-directory-conditional-access-policy-connected-applications.md)
-##### [Alkalmazásalapú feltételes hozzáférés beállítása](active-directory-conditional-access-mam.md)
-##### [A felhasználókra és az alkalmazásra vonatkozó használati feltételek biztosítása](active-directory-tou.md)
+##### [MFA megkövetelése a nem megbízható hálózatokból indított hozzáférési kísérletekhez](conditional-access/untrusted-networks.md)
+##### [Felügyelt eszközök megkövetelése](conditional-access/require-managed-devices.md)
+##### [Jóváhagyott ügyfélalkalmazások megkövetelése](conditional-access/app-based-conditional-access.md)
+##### [A felhasználókra és az alkalmazásra vonatkozó használati feltételek megkövetelése](active-directory-tou.md)
 ##### [Klasszikus szabályzatok migrálása](conditional-access/policy-migration.md)
 ##### [VPN-kapcsolat beállítása](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [A SharePoint és az Exchange Online beállítása](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Kijavítás](active-directory-conditional-access-device-remediation.md)
-#### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
+#### [Referencia](conditional-access/technical-reference.md)
+##### [Technikai útmutató](conditional-access/technical-reference.md)
 #### [Gyakori kérdések](conditional-access/faqs.md)
 
 ### Tanúsítványalapú hitelesítés

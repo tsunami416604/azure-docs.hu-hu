@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 6fe439daad78d6d660fd84be8a1e0263b231adbd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 460a52f240f6b3723f93e81a11a8cd1ccc6c30c9
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444371"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626693"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Oktatóanyag: Azure Active Directory-integráció az Ziflow
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Ziflow az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Ziflow egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Ziflow hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-ziflow-from-the-gallery"></a>Ziflow hozzáadása a katalógusból
 Az Azure AD integrálása a Ziflow konfigurálásához hozzá kell Ziflow a katalógusból a felügyelt SaaS-alkalmazások listájára.
@@ -64,15 +64,15 @@ Az Azure AD integrálása a Ziflow konfigurálásához hozzá kell Ziflow a kata
 
     ![Az Azure Active Directory gomb][1]
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
     
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-1. A Keresés mezőbe írja be a **Ziflow**válassza **Ziflow** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Ziflow**válassza **Ziflow** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredmények listájában Ziflow](./media/ziflow-tutorial/tutorial_ziflow_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felh
 Az Azure AD egyszeri bejelentkezés az Ziflow tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy Ziflow tesztfelhasználót](#create-a-ziflow-test-user)**  – egy megfelelője a Britta Simon Ziflow, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy Ziflow tesztfelhasználót](#create-a-ziflow-test-user)**  – egy megfelelője a Britta Simon Ziflow, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -100,51 +100,50 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+
     ![Egyszeri bejelentkezési párbeszédpanel](./media/ziflow-tutorial/tutorial_ziflow_samlbase.png)
 
-1. Az a **Ziflow tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+3. Az a **Ziflow tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Ziflow tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/ziflow-tutorial/tutorial_ziflow_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.ziflow.io/#/login-sso/<Unique ID>`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://ziflow-production.auth0.com/login/callback?connection=<UniqueID>`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `urn:auth0:ziflow-production:<Unique ID>`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `urn:auth0:ziflow-production:<UniqueID>`
 
-    > [!NOTE] 
-    > Az előző értékek nem valódi. Az egyedi azonosító értéket az azonosító és a bejelentkezési URL-cím a tényleges érték, amelynek az ismertetése az oktatóanyag későbbi részében frissíti. Kapcsolattartó [Ziflow támogatási csapatának](mailto:support@ziflow.com) a bejelentkezési URL-cím altartomány értékéhez.
-    
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+    > [!NOTE]
+    > Az előző értékek nem valódi. Az egyedi azonosító értéket az azonosító és a bejelentkezési URL-cím a tényleges érték, amelynek az ismertetése az oktatóanyag későbbi részében frissíti.
+
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](./media/ziflow-tutorial/tutorial_ziflow_certificate.png) 
 
-1. Kattintson a **mentése** gombra.
+5. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/ziflow-tutorial/tutorial_general_400.png)
 
-1. Az a **Ziflow konfigurációs** területén kattintson **konfigurálása Ziflow** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+6. Az a **Ziflow konfigurációs** területén kattintson **konfigurálása Ziflow** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-CÍMÉT és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Ziflow konfiguráció](./media/ziflow-tutorial/tutorial_ziflow_configure.png) 
 
-1. Egy másik böngészőablakban, jelentkezzen be egy biztonsági-rendszergazdaként Ziflow.
+7. Egy másik böngészőablakban, jelentkezzen be egy biztonsági-rendszergazdaként Ziflow.
 
-
-1. Kattintson az Avatar a jobb felső sarokban, és kattintson **fiók kezelése**.
+8. Kattintson az Avatar a jobb felső sarokban, és kattintson **fiók kezelése**.
 
     ![Ziflow konfiguráció kezelése](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
 
-1. A bal felső sarokban, kattintson **egyszeri bejelentkezés**.
+9. A bal felső sarokban, kattintson **egyszeri bejelentkezés**.
 
     ![Ziflow konfigurációs bejelentkezési](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
-1. Az a **egyszeri bejelentkezés** lapon, a következő lépésekkel:
+10. Az a **egyszeri bejelentkezés** lapon, a következő lépésekkel:
 
     ![Ziflow konfigurációs egyetlen](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
     a. Válassza ki **típus** , **SAML2.0**.
 
-    b.In a **bejelentkezési az URL-CÍMÉT** szövegmezőjébe illessze be az értéket, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
+    b. Az a **bejelentkezési az URL-cím** szövegmezőbe, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
     c. Töltse fel a base-64 kódolású tanúsítványt be az Azure Portalról letöltött a **aláíró tanúsítvány X509**.
 
@@ -164,15 +163,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Az Azure Active Directory gomb](./media/ziflow-tutorial/create_aaduser_01.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/ziflow-tutorial/create_aaduser_02.png)
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media/ziflow-tutorial/create_aaduser_03.png)
 
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
     ![A felhasználó párbeszédpanel](./media/ziflow-tutorial/create_aaduser_04.png)
 
@@ -192,15 +191,15 @@ Ahhoz, hogy az Azure AD-felhasználók Ziflow jelentkezzen be, akkor ki kell ép
 
 1. Jelentkezzen be egy biztonsági-rendszergazdaként Ziflow.
 
-1. Navigáljon a **személyek** felső.
+2. Navigáljon a **személyek** felső.
 
     ![Ziflow konfigurációs személyek](./media/ziflow-tutorial/tutorial_ziflow_people.png)
 
-1. Kattintson a **Hozzáadás** majd **felhasználó hozzáadása**.
+3. Kattintson a **Hozzáadás** majd **felhasználó hozzáadása**.
 
     ![Ziflow konfigurációs felvenni a felhasználót](./media/ziflow-tutorial/tutorial_ziflow_add.png)
 
-1. Az a **felhasználó hozzáadása** előugró ablakban hajtsa végre az alábbi lépéseket:
+4. Az a **felhasználó hozzáadása** előugró ablakban hajtsa végre az alábbi lépéseket:
 
     ![Ziflow konfigurációs felvenni a felhasználót](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
@@ -229,23 +228,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-1. Az alkalmazások listájában jelölje ki a **Ziflow**.
+2. Az alkalmazások listájában jelölje ki a **Ziflow**.
 
     ![Az alkalmazások listáját a Ziflow hivatkozásra](./media/ziflow-tutorial/tutorial_ziflow_app.png)  
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel][203]
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 

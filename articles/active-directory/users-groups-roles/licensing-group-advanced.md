@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecb0919b68516fdb886ea745d963349ff29f83b4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867324"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627389"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátait és ismert problémák csoportok használata kezelheti az Azure Active Directory licencelése
 
@@ -27,7 +27,7 @@ A következő információk és példák segítségével egy Azure Active Direct
 
 ## <a name="usage-location"></a>Felhasználás helye
 
-Bizonyos Microsoft-szolgáltatások nem érhetők el az összes helyen. Egy úgy lehet licencet a felhasználóhoz, mielőtt a rendszergazda adja meg, hogy rendelkezik-e a **a felhasználási hely** tulajdonság a felhasználóra. A [az Azure Portalon](https://portal.azure.com), megadhatja a **felhasználói** &gt; **profil** &gt; **beállítások**.
+Nem minden Microsoft-szolgáltatás érhető el minden területen. Egy úgy lehet licencet a felhasználóhoz, mielőtt a rendszergazda adja meg, hogy rendelkezik-e a **a felhasználási hely** tulajdonság a felhasználóra. A [az Azure Portalon](https://portal.azure.com), megadhatja a **felhasználói** &gt; **profil** &gt; **beállítások**.
 
 A licenc-hozzárendelések bármely felhasználó felhasználás helyének megadása nélkül örökli a könyvtár helye. Ha a felhasználók több helyen van, ügyeljen arra, hogy tükrözik, amely megfelelő a felhasználói objektumok a csoportokhoz licenccel rendelkező felhasználók hozzáadása előtt.
 
@@ -146,13 +146,13 @@ Egy PowerShell-parancsfájlt használhatja annak ellenőrzésére, ha a felhaszn
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Auditnaplók segítségével figyelése a Csoportalapú licencelés
 
-Használhat [az Azure AD auditnaplóinak](./../active-directory-reporting-activity-audit-logs.md#audit-logs) összes tevékenységének megtekintéséhez Csoportalapú licenceléssel kapcsolatos, többek között:
+Használhat [az Azure AD auditnaplóinak](../reports-monitoring/concept-audit-logs.md#audit-logs) összes tevékenységének megtekintéséhez Csoportalapú licenceléssel kapcsolatos, többek között:
 - ki módosította a csoportos licencek
 - egy csoport licenc módosítása feldolgozása a rendszer indításakor és befejezésekor,
 - egy csoport a licenc-hozzárendelés eredményeképpen egy felhasználó mely licencekkel kapcsolatos változások történtek.
 
 >[!NOTE]
-> Auditnaplók a legtöbb paneleket a portal Azure Active Directory szakaszában érhetők el. Attól függően, hol elérni őket, előre alkalmazott csak tevékenységeit a környezetet a panel megfelelő lehet a szűrők. Ha nem jelennek meg a kívánt eredményt, vizsgálja meg [a szűrési beállítások](./../active-directory-reporting-activity-audit-logs.md#filtering-audit-logs) vagy hozzáférni az szűretlen-naplók alatt [ **Azure Active Directory > tevékenység > Naplók** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
+> Auditnaplók a legtöbb paneleket a portal Azure Active Directory szakaszában érhetők el. Attól függően, hol elérni őket, előre alkalmazott csak tevékenységeit a környezetet a panel megfelelő lehet a szűrők. Ha nem jelennek meg a kívánt eredményt, vizsgálja meg [a szűrési beállítások](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs) vagy hozzáférni az szűretlen-naplók alatt [ **Azure Active Directory > tevékenység > Naplók** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
 
 ### <a name="find-out-who-modified-a-group-license"></a>Ismerje meg, akik módosított csoport licenc
 
@@ -231,9 +231,9 @@ Ha Csoportalapú licencelést használ, célszerű Ismerkedjen meg az alábbi li
 
 ## <a name="next-steps"></a>További lépések
 
-Egyéb forgatókönyvek Csoportalapú licencelés keretében licenckezelésre kapcsolatos további információkért lásd:
+A csoportalapú licencelés segítségével folytatott licenckezelés egyéb forgatókönyveivel kapcsolatos további tudnivalókért tekintse át az alábbi témaköröket:
 
 * [Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Licencek hozzárendelése egy csoporthoz az Azure Active Directory](licensing-groups-assign.md)
-* [Az Azure Active Directory csoport kapcsolatos problémák észleléséhez és a](licensing-groups-resolve-problems.md)
-* [Hogyan kell egyéni licenccel rendelkező felhasználók migrálása Csoportalapú licencelésre, az Azure Active Directoryban](licensing-groups-migrate-users.md)
+* [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
+* [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
+* [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)

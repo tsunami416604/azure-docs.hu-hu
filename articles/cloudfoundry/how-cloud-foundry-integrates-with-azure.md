@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 0aac3eab8a60dc1e1e15b4656fad9ffea062c08e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968619"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627440"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>A Cloud Foundry Azure-ral való integrálása
 
@@ -81,8 +81,8 @@ F és a D VM sorozat általában javasolt a Pivotal Cloud Foundry éles környez
 #### <a name="managed-standard-disk"></a>Standard szintű lemezes felügyelt: 
 Prémium szintű lemezeket is megbízható teljesítmény, éles környezetben ajánlott.  A [Managed Disk](https://azure.microsoft.com/services/managed-disks/), Standard szintű tárolást is biztosít hasonló megbízhatóságát, különböző teljesítmény. Amely nem teljesítményigényes számítási feladatokhoz, például fejlesztési, tesztelési vagy a nem kritikus fontosságú környezet a standard szintű felügyelt lemezek és az alacsonyabb költségek egy másik lehetőséget kínálnak.  
 ### <a name="cost-saving-in-general"></a>Az általános költségmegtakarítás 
-#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>Jelentős VM költsége mentése fenntartott példányokkal: 
-Mai összes CF virtuális számolunk fel "igény szerinti" díjszabás, bár a környezetek általában kapcsolatos információk határozatlan időre. Most egy 1 vagy 3 éves távon a Virtuálisgép-kapacitás foglalása, és 45-65 %-os engedményt kapnak. Kedvezmények a számlázási rendszerben a környezet módosítása nélkül. További információkért lásd: [hogyan fenntartott példányok works](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
+#### <a name="significant-vm-cost-saving-with-azure-reservations"></a>Jelentős VM költsége mentése az Azure-foglalások: 
+Mai összes CF virtuális számolunk fel "igény szerinti" díjszabás, bár a környezetek általában kapcsolatos információk határozatlan időre. Most egy 1 vagy 3 éves távon a Virtuálisgép-kapacitás foglalása, és 45-65 %-os engedményt kapnak. Kedvezmények a számlázási rendszerben a környezet módosítása nélkül. További információkért lásd: [Azure foglalások works](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>A felügyelt kisebb méretű prémium szintű lemez: 
 A felügyelt lemezek támogatása kisebb lemezméretet, például a P4(32 GB) és a prémium és standard szintű lemezek P6(64 GB). Ha kis méretű számítási feladatokat, mentheti költség, standard, prémium szintű lemezekből felügyelt premium lemezekre való migrálás során.
 #### <a name="utilizing-azure-first-party-services"></a>Első nyilvános Azure Services használatával: 

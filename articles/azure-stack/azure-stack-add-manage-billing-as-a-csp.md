@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: f119c2803148d68c9c08cbc6a61a3c8733bc1da4
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 66bab9f4b5099099039aa0f60cd86ef23e73cd1f
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090352"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715685"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Használat és számlázás az Azure Stack felhő szolgáltató kezelése 
 
@@ -82,5 +82,5 @@ Mivel bérlői előfizetések CSP-előfizetésekben, számlán küld a CSP-partn
 
 ## <a name="next-steps"></a>További lépések
 
- - A CSP program kapcsolatos további információkért lásd: [Cloud Solution Provider program](https://partnercenter.microsoft.com/en-us/partner/programs).
+ - A CSP program kapcsolatos további információkért lásd: [Cloud Solution Provider program](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
  - Erőforrás-használati adatok lekérése az Azure Stack kapcsolatos további tudnivalókért lásd: [használat és számlázás az Azure Stackben](azure-stack-billing-and-chargeback.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: f139f9520b6bcb5f39fd4436a1ea2eee6fddf344
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d093aa6119b5ab316e5ffba77806e10cd067b032
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618971"
+ms.locfileid: "39626811"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -159,7 +159,7 @@ Hozzávetőleges időt Complete: 60 perc
 | Várjon néhány percet, amíg a kiépítés befejezése.  Addig is a kiépítési jelentéseket ellenőrzéséhez |  |
 | Jelentkezzen be https://myapps.microsoft.com/ teszt felhasználóként, amely hozzáféréssel rendelkezik | [Mi az a hozzáférési panelen?](user-help/active-directory-saas-access-panel-introduction.md) |
 | Kattintson a csempére az újonnan létrehozott alkalmazás. Hozzáférés ellenőrzése |  |
-| Igény szerint megtekinthető az alkalmazás használati jelentéseket. Vegye figyelembe, hogy van néhány késést, ezért meg kell várnia a forgalmat a jelentések megjelenítéséhez egy kis idő. | [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon: felügyelt alkalmazások használati adatai](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Az Azure Active Directory jelentésmegőrzési házirendje](active-directory-reporting-retention.md) |
+| Igény szerint megtekinthető az alkalmazás használati jelentéseket. Vegye figyelembe, hogy van néhány késést, ezért meg kell várnia a forgalmat a jelentések megjelenítéséhez egy kis idő. | [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon: felügyelt alkalmazások használati adatai](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Az Azure Active Directory jelentésmegőrzési házirendje](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -191,7 +191,7 @@ Hozzávetőleges teljes ideje: 15 perc
 | Kattintson a csempére az újonnan létrehozott alkalmazás. | [Mi az a hozzáférési panelen?: jelszóalapú egyszeri bejelentkezés identitás üzembe helyezése nélkül](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Adja meg az hitelesítő adatai | [Mi az a hozzáférési panelen?: jelszóalapú egyszeri bejelentkezés identitás üzembe helyezése nélkül](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Zárja be a böngészőt, majd ismételje meg a bejelentkezés. A felhasználó ezen idő körülbelül kell megjelennie zökkenőmentes hozzáférést az alkalmazáshoz. |  |
-| Igény szerint megtekinthető az alkalmazás használati jelentéseket. Vegye figyelembe, hogy van néhány késést, ezért meg kell várnia a forgalmat a jelentések megjelenítéséhez egy kis idő. | [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon: felügyelt alkalmazások használati adatai](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Az Azure Active Directory jelentésmegőrzési házirendje](active-directory-reporting-retention.md) |
+| Igény szerint megtekinthető az alkalmazás használati jelentéseket. Vegye figyelembe, hogy van néhány késést, ezért meg kell várnia a forgalmat a jelentések megjelenítéséhez egy kis idő. | [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon: felügyelt alkalmazások használati adatai](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Az Azure Active Directory jelentésmegőrzési házirendje](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -223,7 +223,7 @@ Hozzávetőleges teljes ideje: 30 perc
 | Jelszavas egyszeri Bejelentkezést konfigurálása | [Egyszeri bejelentkezés a vállalati alkalmazásokat az új Azure Portalon kezelése: jelszóalapú bejelentkezés](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | Rendelje hozzá az alkalmazás a hitelesítő adatokkal való hozzárendelése közben az előfeltételeket csoporttal | [Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md) |
 | Jelentkezzen be másik felhasználóként, hogy hozzáférési alkalmazást a **ugyanazt a közös fiókot.**  |  |
-| Igény szerint megtekinthető az alkalmazás használati jelentéseket. Vegye figyelembe, hogy van néhány késést, ezért meg kell várnia a forgalmat a jelentések megjelenítéséhez egy kis idő. | [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon: felügyelt alkalmazások használati adatai](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Az Azure Active Directory jelentésmegőrzési házirendje](active-directory-reporting-retention.md) |
+| Igény szerint megtekinthető az alkalmazás használati jelentéseket. Vegye figyelembe, hogy van néhány késést, ezért meg kell várnia a forgalmat a jelentések megjelenítéséhez egy kis idő. | [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon: felügyelt alkalmazások használati adatai](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Az Azure Active Directory jelentésmegőrzési házirendje](reports-monitoring/reference-reports-data-retention.md) |
 
 
 ### <a name="considerations"></a>Megfontolandó szempontok
@@ -500,17 +500,17 @@ Hozzávetőleges teljes ideje: 20 perc alatt
 | Előfeltétel | További források |
 | --- | --- |
 | Tor böngészővel rendelkező eszköz letöltése és telepítése | [Töltse le a Tor-böngésző](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| POC-felhasználó a bejelentkezési annak a hozzáférést | [Az Azure Active Directory Identity Protection-forgatókönyv](active-directory-identityprotection-playbook.md) |
+| POC-felhasználó a bejelentkezési annak a hozzáférést | [Az Azure Active Directory Identity Protection-forgatókönyv](identity-protection/playbook.md) |
 
 ### <a name="steps"></a>Lépések
 
 | Lépés | További források |
 | --- | --- |
 | Nyissa meg a tor-böngésző | [Töltse le a Tor-böngésző](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Jelentkezzen be https://myapps.microsoft.com a POC felhasználói fiókkal | [Az Azure Active Directory Identity Protection-forgatókönyv: kockázati események szimulálása](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| Jelentkezzen be https://myapps.microsoft.com a POC felhasználói fiókkal | [Az Azure Active Directory Identity Protection-forgatókönyv: kockázati események szimulálása](identity-protection/playbook.md#simulating-risk-events) |
 | Várjon 5 – 7 perc |  |
 | Jelentkezzen be globális rendszergazdának kell https://portal.azure.com , és nyissa meg az Identity Protection panel | https://aka.ms/aadipgetstarted |
-| A kockázati események panel megnyitásához. Megjelenik egy bejegyzés "Bejelentkezések névtelen IP-címekről" alatt  | [Az Azure Active Directory Identity Protection-forgatókönyv: kockázati események szimulálása](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| A kockázati események panel megnyitásához. Megjelenik egy bejegyzés "Bejelentkezések névtelen IP-címekről" alatt  | [Az Azure Active Directory Identity Protection-forgatókönyv: kockázati események szimulálása](identity-protection/playbook.md#simulating-risk-events) |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -534,14 +534,14 @@ Hozzávetőleges teljes ideje: 10 perc
 | Lépés | További források |
 | --- | --- |
 | Jelentkezzen be globális rendszergazdának kell https://portal.azure.com , és nyissa meg az Identity Protection panel | https://aka.ms/aadipgetstarted |
-| Engedélyezze a következő bejelentkezési kockázati házirend:<br/>-Hozzárendelve a következőhöz: POC-felhasználó<br/>-Feltételek: Bejelentkezési kockázat közepes vagy nagyobb (bejelentkezési névtelen helyről sikertelennek, közepes méretű kockázati szint)<br/>-Vezérlők: Többtényezős hitelesítés | [Az Azure Active Directory Identity Protection-forgatókönyv: bejelentkezési kockázat](active-directory-identityprotection-playbook.md) |
+| Engedélyezze a következő bejelentkezési kockázati házirend:<br/>-Hozzárendelve a következőhöz: POC-felhasználó<br/>-Feltételek: Bejelentkezési kockázat közepes vagy nagyobb (bejelentkezési névtelen helyről sikertelennek, közepes méretű kockázati szint)<br/>-Vezérlők: Többtényezős hitelesítés | [Az Azure Active Directory Identity Protection-forgatókönyv: bejelentkezési kockázat](identity-protection/playbook.md) |
 | Nyissa meg a tor-böngésző | [Töltse le a Tor-böngésző](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Jelentkezzen be https://myapps.microsoft.com a PoC felhasználói fiókkal |  |
-| Figyelje meg, hogy az MFA-hitelesítést | [Bejelentkezési élmény az Azure AD Identity Protection: kockázatos bejelentkezési helyreállítási](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
+| Figyelje meg, hogy az MFA-hitelesítést | [Bejelentkezési élmény az Azure AD Identity Protection: kockázatos bejelentkezési helyreállítási](identity-protection/flows.md#risky-sign-in-recovery)
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-Ez a funkció az Azure AD Premium P2 és/vagy az EMS E5 csomag részét képezi. Kockázati események olvashat további: [Azure Active Directory kockázati események](active-directory-reporting-risk-events.md)
+Ez a funkció az Azure AD Premium P2 és/vagy az EMS E5 csomag részét képezi. Kockázati események olvashat további: [Azure Active Directory kockázati események](reports-monitoring/concept-risk-events.md)
 
 ## <a name="configuring-certificate-based-authentication"></a>Tanúsítványalapú hitelesítés konfigurálása
 

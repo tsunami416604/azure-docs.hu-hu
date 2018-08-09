@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 29ed96044ceaa914db3f8b7090a1be5f65827e54
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283223"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627474"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
 
@@ -40,19 +40,20 @@ Nem. Közvetlen egyszeri bejelentkezés csak akkor használható az Azure AD vil
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Milyen alkalmazásokat előnyeit `domain_hint` vagy `login_hint` paraméter funkció zökkenőmentes SSO-t?
 
-Az alábbiakban az alkalmazásokat, amelyek ezeket a paramétereket küldése az Azure ad-hez, és ezért felhasználók csendes bejelentkezési élményt nyújt közvetlen egyszeri bejelentkezés (azaz nincs szükség a felhasználók saját felhasználónevek bemeneti) használatával nem teljes listája:
+Az alábbiakban az alkalmazásokat, amelyek elküldheti ezeket a paramétereket az Azure ad-hez, és ezért felhasználók csendes bejelentkezési élményt nyújt közvetlen egyszeri bejelentkezés (azaz nincs szükség a felhasználók a felhasználóneveket vagy jelszavakat bemeneti) használata nem teljes listája:
 
 | Alkalmazásnév | Alkalmazás URL-cím használható |
 | -- | -- |
-| Hozzáférési panel | myapps.microsoft.com/contoso.com |
-| Webes Outlook | outlook.office365.com/contoso.com |
+| Hozzáférési panel | https://myapps.microsoft.com/contoso.com |
+| Webes Outlook | https://outlook.office365.com/contoso.com |
+| Office 365 portál | https://portal.office.com?domain_hint=contoso.com |
 
 Emellett a felhasználók kapnak-e egy csendes bejelentkezési felület Ha kérelmet küld a bejelentkezési kérelmek ábráját végpontok az Azure AD -, https://login.microsoftonline.com/contoso.com/<..> vagy https://login.microsoftonline.com/<tenant_ID>/<..> – helyett az Azure AD közös végpont – vagyis https://login.microsoftonline.com/common/<...>. Az alábbiakban az alkalmazásokat, amelyek az ilyen típusú bejelentkezési kérelmek nem teljes listája.
 
 | Alkalmazásnév | Alkalmazás URL-cím használható |
 | -- | -- |
-| SharePoint Online | contoso.sharepoint.com |
-| Azure Portal | portal.azure.com/contoso.com |
+| SharePoint Online | https://contoso.sharepoint.com |
+| Azure Portal | https://portal.azure.com/contoso.com |
 
 A fenti táblák cserélje le a "contoso.com" a bérlő számára a megfelelő alkalmazás URL-címeinek elérése a tartomány nevét.
 

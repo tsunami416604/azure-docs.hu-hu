@@ -1,66 +1,65 @@
 ---
-title: A Azure idő adatsorozat Insights környezet használata Azure Resource Manager-sablonok kezelése |} Microsoft Docs
-description: Ez a cikk ismerteti a programozott módon, Azure Resource Manager Azure idő adatsorozat Insights környezete kezeléséhez.
+title: Az Azure Resource Manager-sablonok az Azure Time Series Insights-környezet kezelése |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan kezeli az Azure Time Series Insights-környezetet, programozott módon az Azure Resource Manager használatával.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
-ms.reviewer: anshan
+ms.author: anshan
+manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 561483b801773b39ed2ff61efa1496eba472530d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293353"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627127"
 ---
-# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Idő adatsorozat Insights-erőforrások használata Azure Resource Manager-sablonok létrehozása
+# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával a Time Series Insights-erőforrások létrehozása
 
-Ez a cikk ismerteti, hogyan hozhat létre és telepíthet idő adatsorozat Insights-erőforrások Azure Resource Manager sablonok, PowerShell és az idő adatsorozat Insights erőforrás-szolgáltató használatával.
+Ez a cikk bemutatja, hogyan hozhat létre és telepíthet a Time Series Insights-erőforrások Azure Resource Manager-sablonok, a PowerShell és a Time Series Insights erőforrás-szolgáltató.
 
-Idő adatsorozat Insights támogatja a következőket:
+A Time Series Insights támogatja az alábbi forrásanyagokat:
    | Erőforrás | Leírás |
    | --- | --- |
-   | Környezet | Egy alkalommal adatsorozat Insights környezete események, amelyek esemény brókerek olvasni, tárolt és elérhetővé a lekérdezés logikai csoportosítása. További információ: [a Azure idő adatsorozat Insights környezet megtervezése](time-series-insights-environment-planning.md) |
-   | Eseményforrás | Egy esemény forrása kapcsolatot létesíthet egy esemény broker, amelyből idő adatsorozat Insights beolvassa és események ingests környezetbe. Az IoT-központ és az Event Hubs jelenleg támogatott esemény forrásai. |
-   | Referencia-adatkészlet | Hivatkozási adatkészletek adja meg a környezetben eseményekkel kapcsolatos metaadatokat. A hivatkozási adatkészletek metaadatok tartományhoz fog csatlakozni az események érkező során. Az esemény kulcstulajdonságok erőforrásként hivatkozási adatkészletek vannak definiálva. A tényleges metaadatok, amely a referencia-adatkészlet feltöltött, illetve a módosított adatok vezérlősík API-k használatával. |
-   | Hozzáférési szabályzat | Hozzáférési házirendek adja ki a lekérdezések, kezelheti a referenciaadatok a környezetben, lekérdezések és a környezet perspektívák engedélyeket. További információ: [adatokat az Azure-portál használatával idő adatsorozat Insights környezetben való hozzáférést](time-series-insights-data-access.md) |
+   | Környezet | Egy Time Series Insights-környezet logikus csoportosításai események, amelyek eseményszervezőként olvasni, tárolja, és elérhetővé vált a lekérdezést. További információ: [az Azure Time Series Insights-környezet megtervezése](time-series-insights-environment-planning.md) |
+   | Eseményforrás | Eseményforrás egy eseményközvetítőből, amelyről a Time Series Insights olvassa be, és jól alkalmazkodik a környezetbe való kapcsolat. Az IoT Hub és az Eseményközpont jelenleg támogatott esemény forrásai. |
+   | Referencia-adatkészlet | Referencia-adatkészletekhez adja meg, hogy a környezetben eseményekkel kapcsolatos metaadatokat. A referencia-adatkészletekhez metaadatok tartományhoz lesz csatlakoztatva eseményekkel rendelkező bejövő során. Referencia-adatkészletekhez által az esemény kulcstulajdonságok erőforrások vannak meghatározva. A tényleges metaadatok, hogy a referencia-adatkészlet feltöltött vagy módosítani az adatsík API-k használatával. |
+   | Hozzáférési szabályzat | Hozzáférési szabályzatok az adatlekérdezések kiadása, referenciaadatok a környezetben, módosíthatók és jelenthetők megosztása a mentett lekérdezéseket és perspektívákat a környezet társított engedélyeket. További információ: [adathozzáférés biztosítása egy Time Series Insights-környezet az Azure portal használatával](time-series-insights-data-access.md) |
 
-A Resource Manager-sablon egy JSON-fájl, amely meghatározza az infrastruktúra és az erőforrás egy erőforráscsoportban. További információkért lásd a következő dokumentumokat:
+A Resource Manager-sablon egy JSON-fájlt, amely meghatározza az infrastruktúra és az erőforrások egy erőforráscsoportban. További információ a következő dokumentumokban talál:
 
-- [Azure Resource Manager áttekintése – sablon telepítése](../azure-resource-manager/resource-group-overview.md#template-deployment)
+- [Az Azure Resource Manager áttekintése – sablon telepítése](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md)
 
-A [201-timeseriesinsights-környezet-az-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) gyorsindítási sablonon közzé van téve a Githubon. Ez a sablon környezetet hoz létre idő adatsorozat Insights, a gyermek esemény forrását az Eseményközpontban lévő események felhasználásához, valamint a hozzáférési házirendek, amelyek hozzáférést biztosíthat a környezeti adatok konfigurálva. Ha egy meglévő Eseményközpont nincs megadva, a telepítés jön létre.
+A [201-timeseriesinsights-környezet-a-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) gyorssablont a Githubon közzétett. Ez a sablon létrehoz egy Time Series Insights környezetet, a gyermek eseményforrás úgy konfigurálva, hogy az Eseményközpontban lévő események felhasználásához és hozzáférési házirendek, amelyek hozzáférést biztosítani a környezeti adatok. Ha egy meglévő Eseményközponton nincs megadva, az egyik való üzembe helyezéséhez létrejön.
 
-## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Központi telepítése a következő gyorsindítási sablonon helyileg a PowerShell használatával
+## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>A helyi PowerShell-lel gyorsindítási sablon üzembe helyezése
 
-Az alábbi eljárás bemutatja a PowerShell használatával történő központi telepítése egy Azure Resource Manager-sablon által létrehozott egy idő adatsorozat Insights környezetben, a gyermek esemény forrását az Eseményközpontban lévő események felhasználásához, valamint a hozzáférési házirendek, amelyek hozzáférést konfigurálva a a környezetnek adatokat. Ha egy meglévő Eseményközpont nincs megadva, a telepítés jön létre.
+Az alábbi eljárás ismerteti a PowerShell használatával történő üzembe helyezése Azure Resource Manager-sablon, amely létrehoz egy Time Series Insights környezetet, a gyermek eseményforrás úgy konfigurálva, hogy az Eseményközpontban lévő események felhasználásához és hozzáférési házirendek, amelyek hozzáférést biztosítanak a a környezet adatait. Ha egy meglévő Eseményközponton nincs megadva, az egyik való üzembe helyezéséhez létrejön.
 
-A hozzávetőleges munkafolyamata a következőképpen történik:
+A hozzávetőleges munkafolyamat a következőképpen történik:
 
 1. Telepítse a PowerShell.
-1. Hozzon létre a sablont és egy paramétert.
+1. A sablon és a egy paraméterfájl létrehozása.
 1. A PowerShellben jelentkezzen be az Azure-fiókjával.
-1. Ha még nem létezik, hozzon létre egy új erőforráscsoportot.
+1. Hozzon létre egy új erőforráscsoportot, ha még nem létezik.
 1. A telepítés tesztelésére.
-1. A sablon telepítéséhez.
+1. A sablon üzembe helyezéséhez.
 
 ### <a name="install-powershell"></a>A PowerShell telepítése
 
-Azure PowerShell telepítése utasításait követve [Ismerkedés az Azure PowerShell](/powershell/azure/get-started-azureps).
+Azure PowerShell telepítéséhez a következő témakör utasításait követve [Ismerkedés az Azure PowerShell-lel](/powershell/azure/get-started-azureps).
 
 ### <a name="create-a-template"></a>Sablon létrehozása
 
-Klónozott vagy másolása a [201-timeseriesinsights-környezet-az-eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) sablont a Githubból.
+Klónozás vagy másolja ki a [201-timeseriesinsights-környezet-a-eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) sablont a Githubból.
 
-### <a name="create-a-parameters-file"></a>Paraméterek fájl létrehozása
+### <a name="create-a-parameters-file"></a>A paraméterfájl létrehozása
 
-Hozzon létre egy paraméterek fájlt, másolja át a [201-timeseriesinsights-környezet-az-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) fájlt.
+Hozzon létre egy paramétereket tartalmazó fájlt, másolja át a [201-timeseriesinsights-környezet-a-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) fájlt.
 
 ```json
 {
@@ -86,32 +85,32 @@ Hozzon létre egy paraméterek fájlt, másolja át a [201-timeseriesinsights-k�
 }
 ```
 
-#### <a name="required-parameters"></a>Kötelező paraméter
+#### <a name="required-parameters"></a>Szükséges paraméterek
 
    | Paraméter | Leírás |
    | --- | --- |
-   | eventHubNamespaceName | A forrás eseményközpont névtere. |
+   | eventHubNamespaceName | Az adatforrás event hubs-névtér. |
    | eventHubName | A forrás eseményközpont neve. |
-   | consumerGroupName | A fogyasztói csoportot, amely az idő adatsorozat Insights szolgáltatás használatával fogja beolvasni az adatokat az event hubs neve. **Megjegyzés:** Erőforrásverseny elkerülése érdekében a fogyasztói csoportot kell az az idő adatsorozat Insights szolgáltatásban dedikált és nincsenek megosztva, más olvasók. |
-   | EnvironmentName | A környezet neve. A név nem tartalmazhat: "<", ">", "%", "&", ": ','\\','?', '/' és bármely vezérlőkarakterek. Minden egyéb karakterek használhatók.|
-   | eventSourceName | Az esemény forrás gyermek-erőforrás neve. A név nem tartalmazhat: "<", ">", "%", "&", ": ','\\','?', '/' és bármely vezérlőkarakterek. Minden egyéb karakterek használhatók. |
+   | consumerGroupName | A fogyasztói csoportot, amelynek használatával a Time Series Insights szolgáltatás az adatok olvasásához az event hubs neve. **Megjegyzés:** Erőforrásverseny elkerülése érdekében, hogy ezt a fogyasztói csoportot kell a Time Series Insights szolgáltatás számára dedikált és más olvasók sincs megosztva. |
+   | EnvironmentName | A környezeti változó nevére. A neve nem tartalmazhat: "<", ">", '%', 'és', ": ','\\','?", "/" karakterek vezérlőkaraktereket és. Minden egyéb karakter engedélyezett.|
+   | eventSourceName | Az esemény forrás gyermek-erőforrás neve. A neve nem tartalmazhat: "<", ">", '%', 'és', ": ','\\','?", "/" karakterek vezérlőkaraktereket és. Minden egyéb karakter engedélyezett. |
 
 #### <a name="optional-parameters"></a>Választható paraméterek:
 
    | Paraméter | Leírás |
    | --- | --- |
-   | existingEventHubResourceId | Egy nem kötelező erőforrás-azonosítója egy meglévő Eseményközpontot, az idő adatsorozat Insights környezetbe az eseményforrás keresztül csatlakozó. **Megjegyzés:** a felhasználó a sablon telepítéséhez hajtsa végre a listkeys műveletet az Event Hubs jogosultsággal kell rendelkeznie. Ha nem ad meg értéket fogad el, a sablon egy új eseményközpont fogja létrehozni. |
-   | environmentDisplayName | A környezet neve helyett tooling vagy felhasználói felület megjelenítése nem kötelező rövid neve. |
-   | environmentSkuName | A termékváltozat neve. További információkért lásd: a [idő adatsorozat Insights árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
-   | environmentSkuCapacity | A termékváltozat egység kapacitását. További információkért lásd: a [idő adatsorozat Insights árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/time-series-insights/).|
-   | environmentDataRetentionTime | A minimális időtartam a környezet események lesznek elérhetők a lekérdezéshez. Az értéket kell adni az ISO 8601 formátumban, például "P30D" adatmegőrzési a 30 napos. |
-   | eventSourceDisplayName | Megjeleníti az adatforrás neve helyett tooling vagy felhasználói felületek nem kötelező rövid neve. |
-   | eventSourceTimestampPropertyName | Az esemény tulajdonság, amely az eseményforrás Timestamp típusú lesz. Ha az érték nincs megadva timestampPropertyName, vagy null értékű vagy üres-karakterlánc van megadva, az esemény létrehozásának idejét használható. |
-   | eventSourceKeyName | A megosztott elérési kulcsot, amely az idő adatsorozat Insights szolgáltatás az eseményközpontba való kapcsolódáshoz használandó neve. |
-   | accessPolicyReaderObjectIds | A felhasználók vagy alkalmazások az Azure ad-ben, hogy a környezet olvasási hozzáféréssel kell rendelkeznie az objektumazonosítók listáját. A szolgáltatás egyszerű objectId meghívásával érhető el a **Get-AzureRMADUser** vagy a **Get-AzureRMADServicePrincipal** parancsmagok. A hozzáférési házirendek az Azure AD-csoport létrehozása jelenleg nem támogatott. |
-   | accessPolicyContributorObjectIds | Objektumazonosítók a felhasználók vagy alkalmazások az Azure AD, a környezet közreműködői hozzáférési listáját. A szolgáltatás egyszerű objectId meghívásával érhető el a **Get-AzureRMADUser** vagy a **Get-AzureRMADServicePrincipal** parancsmagok. A hozzáférési házirendek az Azure AD-csoport létrehozása jelenleg nem támogatott. |
+   | existingEventHubResourceId | Egy nem kötelező erőforrás-azonosítója egy meglévő Eseményközponttal, amelyek a Time Series Insights-környezet az eseményforrás keresztül fog csatlakozni. **Megjegyzés:** helyezi üzembe a sablont a felhasználónak rendelkeznie kell az Event Hubs listkeys műveletének művelet végrehajtására. Ha nem ad meg értéket fogad el, egy új eseményközpont létrejön a sablon által. |
+   | environmentDisplayName | A környezet neve helyett azokat az eszközöket, vagy a felhasználói felületen megjelenítendő nem kötelező rövid neve. |
+   | environmentSkuName | A termékváltozat neve. További információkért lásd: a [Time Series Insights díjszabása oldalon](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
+   | environmentSkuCapacity | A termékváltozat egység kapacitását. További információkért lásd: a [Time Series Insights díjszabása oldalon](https://azure.microsoft.com/pricing/details/time-series-insights/).|
+   | environmentDataRetentionTime | A minimális időtartam a környezet események lesznek elérhetők a lekérdezéshez. Az értéket meg kell adni az ISO 8601 formátumú, például "P30D" egy megőrzési szabályzat 30 napig. |
+   | eventSourceDisplayName | Egy nem kötelező rövid név azokat az eszközöket, vagy a felhasználói felületen helyett az eseményforrás nevének megjelenítéséhez. |
+   | eventSourceTimestampPropertyName | Az esemény tulajdonság, amely az eseményforrás időbélyegzőként használható. Ha az érték nincs megadva a timestampPropertyName, vagy az null értékű vagy üres karakterlánc van megadva, az esemény létrehozásának időpontját használható. |
+   | eventSourceKeyName | A közös hozzáférési kulcs, amely a Time Series Insights szolgáltatás használni fog csatlakozni az eseményközpont neve. |
+   | accessPolicyReaderObjectIds | A felhasználók vagy alkalmazások az Azure ad-ben, amely elvben olvasó hozzáférést a környezethez azonosítói objektum listáját. A szolgáltatás egyszerű objectId meghívásával is beszerezhetők a **Get-AzureRMADUser** vagy a **Get-AzureRMADServicePrincipal** parancsmagok. Az Azure AD-csoportok a hozzáférési szabályzat létrehozása még nem támogatott. |
+   | accessPolicyContributorObjectIds | A felhasználók vagy alkalmazások, amelyek a környezetet közreműködői hozzáféréssel kell rendelkeznie az Azure AD-ben objektumazonosítók listáját. A szolgáltatás egyszerű objectId meghívásával is beszerezhetők a **Get-AzureRMADUser** vagy a **Get-AzureRMADServicePrincipal** parancsmagok. Az Azure AD-csoportok a hozzáférési szabályzat létrehozása még nem támogatott. |
 
-Tegyük fel a következő paraméterfájl hozzon létre egy olyan környezetben, és olvassa be az eseményeket egy meglévő eseményközpont eseményforrást szeretne használni. A környezet közreműködői hozzáférést két hozzáférési házirendeket is létrehoz.
+Tegyük fel a következő paramétereket tartalmazó fájlt szeretne használható egy környezetet, és a egy eseményforrás, amely eseményeket olvas be egy meglévő eseményközponton. A környezet közreműködői hozzáférést két hozzáférési házirendeket is létrehoz.
 
 ```json
 {
@@ -148,35 +147,35 @@ Tegyük fel a következő paraméterfájl hozzon létre egy olyan környezetben,
 
 További információkért lásd: a [paraméterek](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) cikk.
 
-### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Jelentkezzen be az Azure és az Azure-előfizetés beállítása
+### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Jelentkezzen be az Azure-ba, és állítsa be az Azure-előfizetés
 
-Egy PowerShell-parancssorba futtassa a következő parancsot:
+Egy PowerShell-parancssorban futtassa a következő parancsot:
 
 ```powershell
 Connect-AzureRmAccount
 ```
 
-Jelentkezzen be az Azure-fiókjával kéri. A bejelentkezés után futtassa a következő parancsot az elérhető előfizetések megtekintéséhez:
+Jelentkezzen be az Azure-fiókja kéri. A bejelentkezés után futtassa a következő parancsot a rendelkezésre álló előfizetések megtekintéséhez:
 
 ```powershell
 Get-AzureRMSubscription
 ```
 
-Ez a parancs elérhető Azure-előfizetések listáját adja vissza. Válasszon egy előfizetést, az aktuális munkamenet a következő parancs futtatásával. Cserélje le `<YourSubscriptionId>` használni kívánt Azure-előfizetés GUID:
+Ez a parancs elérhető Azure-előfizetések listáját adja vissza. Válasszon egy előfizetést, az aktuális munkamenet a következő parancs futtatásával. Cserélje le `<YourSubscriptionId>` használni kívánt Azure-előfizetéshez tartozó GUID Azonosítóval rendelkező:
 
 ```powershell
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 ```
 
-### <a name="set-the-resource-group"></a>Az erőforráscsoport beállítása
+### <a name="set-the-resource-group"></a>Állítsa be az erőforráscsoport
 
-Ha a csoport, hozzon létre egy új erőforráscsoportot a meglévő erőforrás még a **New-AzureRmResourceGroup** parancsot. Adja meg az erőforráscsoportot és helyet használni kívánt nevét. Példa:
+Ha nem rendelkezik egy meglévő erőforrást, csoport, hozzon létre egy új erőforráscsoportot a **New-AzureRmResourceGroup** parancsot. Adja meg az erőforráscsoportot és helyet használni kívánt nevét. Példa:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
-Ha sikeres, az új erőforráscsoport összegzését jelenik meg.
+Ha ez sikeres, az új erőforráscsoport összegzését jelenik meg.
 
 ```powershell
 ResourceGroupName : MyDemoRG
@@ -188,35 +187,35 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Az üzemelő példány tesztelése
 
-A központi telepítés futtatásával ellenőrizze a `Test-AzureRmResourceGroupDeployment` parancsmag. Ha a központi telepítés tesztelése, adja meg a paramétereket pontosan ugyanúgy, a központi telepítés végrehajtása közben.
+A telepítés ellenőrzése futtatásával a `Test-AzureRmResourceGroupDeployment` parancsmagot. A központi telepítés tesztelésekor paramétereket megadnia, pontosan, mint a központi telepítés végrehajtása közben.
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
-### <a name="create-the-deployment"></a>A központi telepítés létrehozásához
+### <a name="create-the-deployment"></a>Az üzemelő példány létrehozása
 
-Az új központi telepítés létrehozásához futtassa a `New-AzureRmResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, amikor a rendszer kéri. A paraméternek számít a központi telepítésre, az erőforráscsoport és az elérési út vagy URL neve a sablon fájl nevét. Ha a **mód** paraméter nincs megadva, az alapértelmezett érték **növekményes** szolgál. További információkért lásd: [növekményes és teljes telepítések](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments).
+Az új központi telepítés létrehozásához futtassa a `New-AzureRmResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, amikor a rendszer kéri. A paraméterek tartalmaznia kell egy nevet az üzembe helyezés a sablonfájl az erőforráscsoport és az elérési útja vagy URL-cím nevére. Ha a **mód** paraméter nincs megadva, az alapértelmezett érték **növekményes** szolgál. További információkért lásd: [növekményes és teljes körű központi telepítések](../azure-resource-manager/deployment-modes.md).
 
-A következő parancs bekéri a öt szükséges paramétereket a PowerShell-ablakban:
+A következő parancs kéri a öt szükséges paraméterek a PowerShell-ablakban:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
 ```
 
-Ehelyett adja meg egy paraméterfájl, használja a következő parancsot:
+Ehelyett adja meg a paramétereket tartalmazó fájlt, használja a következő parancsot:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
-Beágyazott paramétereket használhatja a központi telepítési parancsmag futtatása esetén is. A parancs a következőképpen történik:
+Emellett használhatja a beágyazott paraméterek, a központi telepítési parancsmag futtatásakor. A parancs a következőképpen történik:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-Futtatásához egy [teljes](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) központi telepítését, állítsa be a **mód** paramétert **Complete**:
+Futtatásához egy [teljes](../azure-resource-manager/deployment-modes.md) központi telepítését, állítsa be a **mód** paramétert **Complete**:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -224,7 +223,7 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -Resour
 
 ## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-Ha az erőforrások telepítése sikeres volt, a központi telepítés összegzését a PowerShell-ablakban jelenik meg:
+Ha az erőforrások telepítése sikeresen megtörtént, a központi telepítés összegzését a PowerShell-ablakban jelenik meg:
 
 ```powershell
 DeploymentName          : azuredeploy
@@ -262,9 +261,9 @@ Outputs                 :
                           <guid>.env.timeseries.azure.com
 ```
 
-## <a name="deploy-the-quickstart-template-through-the-azure-portal"></a>Az Azure portálon keresztül a gyors üzembe helyezés sablon üzembe helyezése
+## <a name="deploy-the-quickstart-template-through-the-azure-portal"></a>Az Azure Portalon a rövid útmutató sablon üzembe helyezése
 
-A gyorsindítási sablonon kezdőlapja a Githubból is magában foglalja a **az Azure telepítéséhez** gombra. Az Azure portálon kattintson rá egyéni telepítési oldal megnyitása. Ezen a lapon adja meg vagy válassza ki az értékeket az egyes származó paraméterek a [kötelező paraméterek](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) vagy [választható paraméterek:](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) táblákat. Kattintson a beállítások megadása után a **beszerzési** gomb indít el a sablon-üzembehelyezés.
+A gyorsindítási sablon kezdőlapja a GitHub is tartalmaz egy **üzembe helyezés az Azure** gombra. Egy egyéni üzembe helyezés lap kattint, megnyílik az Azure Portalon. Ezen az oldalon adja meg vagy válassza ki az értékeket minden, a paraméterek a [szükséges paraméterek](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) vagy [választható paraméterek](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) táblákat. A beállítások gombra kattintva mezőinek kitöltése után a **beszerzési** gombra a sablon telepítése megkezdődik.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
@@ -272,4 +271,4 @@ A gyorsindítási sablonon kezdőlapja a Githubból is magában foglalja a **az 
 
 ## <a name="next-steps"></a>További lépések
 
-- Idő adatsorozat Insights-erőforrások REST API-val programozott módon kezeléséről további információért lásd: [adatsorozat Insights Időkezelést](https://docs.microsoft.com/rest/api/time-series-insights-management/).
+- Információk a szoftveres kezelése a REST API-k a Time Series Insights-erőforrások: [Time Series Insights-felügyelet](https://docs.microsoft.com/rest/api/time-series-insights-management/).

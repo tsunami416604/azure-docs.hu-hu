@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Cosmos DB: .NET módosítás hírcsatorna processzor API, SDK & erőforrások |} Microsoft Docs'
-description: Tudnivalók a módosítás hírcsatorna processzor API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és minden verziója a .NET módosítás hírcsatorna processzor SDK végzett módosítások.
+title: 'Az Azure Cosmos DB: .NET módosítási hírcsatorna processzor API, SDK és -erőforrások |} A Microsoft Docs'
+description: Mindent megtudhat a módosítási hírcsatorna processzor API és az SDK kiadási dátum, a kivezetési dátum és a processzor .NET módosítási hírcsatorna SDK minden verziója között végrehajtott módosítások.
 services: cosmos-db
 author: ealsur
 manager: kfile
@@ -10,17 +10,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: e8a8edd22fe66df12e9e7327a25e82aa5f07bd1b
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113717"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627627"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítás adatcsatorna processzor SDK: Töltse le és a kibocsátási megjegyzések
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítási hírcsatorna processzor SDK: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítás adatcsatorna](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
@@ -29,106 +29,109 @@ ms.locfileid: "37113717"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
-|**API-JÁNAK dokumentációja**|[Adatcsatorna processzor könyvtár API-referenciadokumentáció módosítása](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Első lépések**|[Ismerkedés a módosítás hírcsatorna processzor .NET SDK-val](change-feed.md)|
+|**API-dokumentáció**|[Módosítsa a Változáscsatorna feldolgozói kódtár API dokumentációja](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
+|**Első lépések**|[A módosítási hírcsatorna processzor .NET SDK használatának első lépései](change-feed.md)|
 |**Aktuális támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [A Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="v2-builds"></a>v2 buildek
 
-### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
+### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
+* Rögzített versenyhelyzet partition split következik. Bérlet beszerzése azonnal során partition split elvesztése, és a versengés okoz a versenyhelyzet vezethet. Ebben a kiadásban a versenyhelyzet feltétel problémát megoldottuk.
+
+### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4-es
 * GA SDK
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-prerelease
 * Az alábbi problémákat javítja:
-  * Partíció vegyes esetben lehet azonos a felosztás előtt módosított dokumentumok feldolgozása.
-  * A GetEstimatedRemainingWork API 0 adott vissza, ha bérleteket nem volt megtalálható a címbérlet gyűjteményben.
+  * Ha partition split történik, lehetnek duplikált a felosztás előtt módosított dokumentumok feldolgozása.
+  * A GetEstimatedRemainingWork API 0 adott vissza, ha nincs bérleteket sem a bérletek gyűjteményének szerepelt.
 
-* A következő kivételeket a nyilvános történik. Bővítmények, amelyek megvalósítják az IPartitionProcessor is throw ezeket a kivételeket.
+* A követező kivételekre nyilvános menjenek végbe. Bővítmények IPartitionProcessor megvalósító nagyvállalat ezeket a kivételeket.
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
 
 ### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-prerelease
-* Kisebb API változásai:
+* API-módosítás kisebb:
   * Elavultként megjelölt ChangeFeedProcessorOptions.IsAutoCheckpointEnabled eltávolítva.
 
 ### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
-* Jobb stabilitás:
-  * Jobban kezeli a címbérlet tanúsítványtár inicializálásához. Ha bérleti tároló üres, csak a processzor több példánya is inicializálnia, a többi várakozik.
-  * További stabil hatékony Címbérlet megújítási-kiadás. Megújításához, és a címbérlet egy partíciót ki független a többi megújítása. A v1, amely végezhető el egymás után minden partíció esetében.
-* Új v2 API:
-  * A processzor rugalmas konstrukció jelentéskészítő mintát: a ChangeFeedProcessorBuilder osztály.
-    * Paraméterek bármilyen kombinációját is igénybe vehet.
-    * Figyelés és/vagy bérleti gyűjteményt (nem érhető el a v1) DocumentClient-példány is igénybe vehet.
-  * IChangeFeedObserver.ProcessChangesAsync most CancellationToken vesz igénybe.
-  * IRemainingWorkEstimator – a fennmaradó munkahelyi négyzetgyökének külön-külön is használható a processzor.
+* Stabilitási fejlesztések:
+  * Jobban kezeli a bérlet tároló inicializálása. Ha bérleti tároló üres, csak egy példánya processzor is inicializálása, a többi várakozik.
+  * További stable/hatékony bérlet megújítási felszabadítása. Független megújítását, más az megújítását, és közzétesz egy bérletet egy partíciót. V1-ben, amely azért volt szükség, egymás után az összes partíciót.
+* Új v2 API-val:
+  * Rugalmas fejlesztés a processzor Builder mintája: ChangeFeedProcessorBuilder osztály.
+    * Paraméterek tetszőleges kombinációját is igénybe vehet.
+    * Figyelés, illetve a bérlet gyűjtemény (v1-ben nem érhető el) DocumentClient-példányt is igénybe vehet.
+  * IChangeFeedObserver.ProcessChangesAsync most már a CancellationToken vesz igénybe.
+  * IRemainingWorkEstimator – a fennmaradó munkahelyi estimator külön-külön is használható a processzor.
   * Új bővítési pontok:
-    * IParitionLoadBalancingStrategy - egyéni terheléselosztás partíciók a processzor példányai között.
-    * ILease, ILeaseManager – az egyéni partícióbérlés-kezelést.
-    * IPartitionProcessor - partíció egyéni feldolgozási módosításait.
-* Naplózás - használ [LibLog](https://github.com/damianh/LibLog) könyvtárban.
-* 100 %-os visszamenőlegesen kompatibilis V1-es API-t.
+    * IParitionLoadBalancingStrategy – egyéni terheléselosztás a partíciók a processzor példányai között.
+    * ILease, ILeaseManager – az egyéni partícióbérlés-kezeléssel.
+    * IPartitionProcessor - partíción egyéni feldolgozási módosításokat.
+* Használja a naplózás – [LibLog](https://github.com/damianh/LibLog) könyvtár.
+* 100 %-os visszamenőlegesen kompatibilisek a v1 API-val.
 * Új kódbázis.
 * Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21.1 verzió vagy újabb verzió.
 
-### <a name="v1-builds"></a>V1 buildek
+### <a name="v1-builds"></a>a V1-buildek
 
 ### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
-* További naplózás hozzá.
-* Rögzített DocumentClient-memóriavesztés többször a függőben lévő munkahelyi becslés hívásakor.
+* További naplózás hozzáadva.
+* A DocumentClient adatszivárgást rögzített, több alkalommal a folyamatban lévő munka-becslésére hívásakor.
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
-* A függőben lévő munkahelyi becslése a javításokat.
+* A folyamatban lévő munka-becslésére javításairól.
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * Jobb stabilitás.
-  * Javítsa ki a megszakított feladatok probléma, amely az egyes partíciók leállított megfigyelők vezethet kezelésére.
+  * Javítsa ki a megszakított feladatok probléma, amely az egyes partíciók vezethet leállított megfigyelőket kezelésére.
 * Manuális ellenőrzőpontok támogatása.
 * Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 verzió vagy újabb verzió.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Támogatást nyújt a .NET-szabvány 2.0. A csomag most már támogatja a `netstandard2.0` és `net451` keretrendszer monikerek.
+* A .NET Standard 2.0 támogat. A csomag most már támogatja a `netstandard2.0` és `net451` keretrendszer zsargonkifejezését.
 * Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.17.0 verzió vagy újabb verzió.
 * Kompatibilis [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1 verzió vagy újabb verzió.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* Javítja a számítás a becsült hátralévő munka a változás-hírcsatorna üres volt, vagy nem volt függőben.
+* Javít egy problémát a számítás a becsült hátralévő munka, ha üres a módosítási hírcsatorna volt, vagy nincs függőben lévő nem.
 * Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 verzió vagy újabb verzió.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* A módosítás hírcsatorna feldolgozandó fennmaradó munka becsléséhez metódus hozzá.
+* Becsült hátralévő munkahelyi használatát a dolgozhatók fel a módosítási hírcsatorna beszerzése metódus hozzáadása.
 * Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 verzió vagy újabb verzió.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
-* Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) verziók 1.14.1 vagy régebbi verzió.
+* Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 verziók és az alábbi.
 
 
-## <a name="release--retirement-dates"></a>Kiadás & használatból való kivonást dátumok
-Microsoft legalább értesítést küldenek **12 hónapon keresztül** SDK eltávolítása érdekében vagy újabb támogatott verzióra való áttérés előtt.
+## <a name="release--retirement-dates"></a>Állapot tárolá & kivezetési dátum
+A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
 
-Új szolgáltatásait és funkcióit és optimalizálás csak hozzá az aktuális SDK, így javasoljuk, hogy mindig a legújabb SDK verzióra frissít legkorábban lehető. 
+Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető. 
 
-A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
+Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer elutasítja a szolgáltatás által.
 
 <br/>
 
-| Verzió | Kiadás dátuma | Kivezetési dátum |
+| Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [1.3.3](#1.3.3) |2018. Előfordulhat, hogy 08. |--- |
+| [1.3.3](#1.3.3) |08 2018. május |--- |
 | [1.3.2](#1.3.2) |2018. április 18. |--- |
 | [1.3.1](#1.3.1) |2018. március 13. |--- |
 | [1.2.0](#1.2.0) |2017. október 31. |--- |
-| [1.1.1](#1.1.1) |2017. augusztus 29. |--- |
+| [1.1.1](#1.1.1) |2017. augusztus 29-én |--- |
 | [1.1.0](#1.1.0) |2017. augusztus 13. |--- |
 | [1.0.0](#1.0.0) |2017. július 07. |--- |
 
@@ -137,5 +140,5 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-A Cosmos DB kapcsolatos további információkért lásd: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
+Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
 

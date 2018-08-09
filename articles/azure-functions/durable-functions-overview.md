@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a760e66d40d7af7178ec9a2d5fc14afec2a55b10
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 25f7cf6de4f217219e510ae00ce21762e755d2e8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115397"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627406"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions áttekintése
 
@@ -44,7 +44,7 @@ Durable Functions elsődleges használati eset van egyszerűsítse összetett, �
 
 Durable Functions lehetővé teszi, hogy ez a minta tömören programkódban implementálni.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C#-szkript
 
 ```cs
 public static async Task<object> Run(DurableOrchestrationContext ctx)
@@ -62,6 +62,8 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
     }
 }
 ```
+> [!NOTE]
+> Nincsenek finom eltérések előre lefordított tartós függvények írása C# és a C# példaszkript előtt látható közben. C# előre lefordított függvény tartós paraméterek megfelelő attribútumokkal rendelkeznie kell rendelkeznie. Például `[OrchestrationTrigger]` az attribútum `DurableOrchestrationContext` paraméter. A paraméterek nem megfelelően kitüntetett, ha a futtatókörnyezet nem tudná a változókat a függvény beszúrása és adnák vissza hibát. Látogasson el [minta](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples) további példákat.
 
 #### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
 
@@ -88,7 +90,7 @@ A `ctx` paraméter ([DurableOrchestrationContext](https://azure.github.io/azure-
 
 A normál funkciók szellőztető hajtható végre több üzenetküldés egy üzenetsor funkciót ellátó. Azonban vissza az szellőztető, sokkal nagyobb kihívást. Ha az üzenetsor által aktivált függvények záró és függvény kimenetek tárolásához kód írása kellene. A Durable Functions bővítmény kezeli ezt a mintát, viszonylag egyszerű kóddal.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C#-szkript
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -203,7 +205,7 @@ Egy példa a korábbi aszinkron HTTP API-forgatókönyv lenne lehet kötelezők�
 
 Durable Functions használja, figyelje meg tetszőleges végpontok monitorok hozhatók néhány sornyi kóddal. A figyelők végrehajtási fejezheti be bizonyos feltétel teljesül, vagy felmondja a [DurableOrchestrationClient](durable-functions-instance-management.md), és a várakozási időköz is módosítható bizonyos feltétel (azaz exponenciális visszatartással.) alapján A következő kódot egy alapszintű figyelő valósítja meg.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C#-szkript
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -271,7 +273,7 @@ Például egy üzleti folyamat, amely magában foglalja az emberi beavatkozás o
 
 Ez a minta egy orchestrator-funkció segítségével valósítható meg. Az orchestrator használna egy [tartós időzítő](durable-functions-timers.md) kérelem jóváhagyása és eszkalálása időtúllépés esetén. Akkor várjon, amíg egy [külső eseményre](durable-functions-external-events.md), amely az egyes emberi beavatkozás által létrehozott értesítés lenne.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C#-szkript
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)

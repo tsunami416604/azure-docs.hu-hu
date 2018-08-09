@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6cd6b139699b38a06a8e3f9fce5eb6e24fe24654
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 99f877a0002e9a631bcfdabdbea51fcf2ca1a2c1
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214175"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626592"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítés hibaelhárítása
 
@@ -43,7 +43,7 @@ Győződjön meg arról, hogy az átmenő hitelesítés funkció továbbra is **
 
 Ha a felhasználó nem tud bejelentkezni az átmenő hitelesítéssel, megjelenhet számukra felhasználói hibák a következők egyikét a bejelentkezési képernyő Azure ad-ben: 
 
-|Hiba|Leírás|Feloldás
+|Hiba|Leírás|Megoldás:
 | --- | --- | ---
 |AADSTS80001|Nem lehet csatlakozni az Active Directory|Győződjön meg arról, hogy az ügynök kiszolgálók tagjai a felhasználókat, amelyeknek a jelszava kell érvényesíteni eltérő AD-erdőben, és azok tud csatlakozni az Active Directory.  
 |AADSTS8002|Időtúllépés történt az Active Directoryhoz csatlakozó|Ellenőrizze, hogy ellenőrizze, hogy az Active Directory elérhető-e, és az ügynököktől származó válaszol a kérelmekre.
@@ -53,13 +53,13 @@ Ha a felhasználó nem tud bejelentkezni az átmenő hitelesítéssel, megjelenh
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Bejelentkezési hibák okai a az Azure Active Directory felügyeleti központban (prémium szintű licencre van szüksége)
 
-Ha a bérlő az Azure AD Premium licenccel rendelkezik, akkor is megjeleníthető a [bejelentkezési tevékenységek jelentésének](../active-directory-reporting-activity-sign-ins.md) a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/).
+Ha a bérlő az Azure AD Premium licenccel rendelkezik, akkor is megjeleníthető a [bejelentkezési tevékenységek jelentésének](../reports-monitoring/concept-sign-ins.md) a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/).
 
 ![Az Azure Active Directory felügyeleti központ – bejelentkezési jelentések](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
 Navigáljon a **Azure Active Directory** -> **bejelentkezések** a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/) kattintson egy adott felhasználó bejelentkezési tevékenységét. Keresse meg a **bejelentkezési hiba kódja** mező. A mező értékét leképezése a hiba oka és a megoldás a következő táblázat használatával:
 
-|Bejelentkezési hiba kódja|Jelentkezzen be a hiba oka|Feloldás
+|Bejelentkezési hiba kódja|Jelentkezzen be a hiba oka|Megoldás:
 | --- | --- | ---
 | 50144 | A felhasználó Active Directory jelszava lejárt. | A helyszíni Active Directoryban a felhasználó jelszavának alaphelyzetbe állítása.
 | 80001 | Nem érhető el hitelesítési ügynök. | Telepíti és regisztrálja a hitelesítési ügynök.

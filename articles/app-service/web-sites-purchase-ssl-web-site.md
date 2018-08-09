@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: b7a0050791690e5157a4937df0d49a0f03f3df24
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617598"
+ms.locfileid: "39627144"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -78,7 +78,7 @@ Az azonos **Tanúsítványkonfiguráció** kattintson a lap a 3. lépésben hasz
 
 Válassza ki a kívánt tartomány-ellenőrzési módszert. 
 
-App Service-tanúsítványok által támogatott tartomány-ellenőrzés négy típusa van: az App Service, tartomány, Mail és manuális ellenőrzést. Ezek a hitelesítési típusok mutatjuk be a további részleteket a [szakasz speciális](#advanced).
+App Service-tanúsítványok által támogatott tartomány-ellenőrzés négy típusa van: App Service-ben, a tartomány és a manuális ellenőrzést. Ezek a hitelesítési típusok mutatjuk be a további részleteket a [szakasz speciális](#advanced).
 
 > [!NOTE]
 > **App Service-ellenőrzés** a legalkalmasabb lehetőség, ha szeretné ellenőrizni a tartományt már hozzá van rendelve egy App Service-alkalmazás ugyanabban az előfizetésben. Azt a tényt, hogy az App Service-alkalmazás már ellenőrizte a tartomány tulajdonjogának kihasználja.
@@ -135,16 +135,7 @@ Ezen a ponton kell látnia, látogasson el az alkalmazás használatával `HTTPS
 
 ### <a name="verifying-domain-ownership"></a>Tartomány tulajdonjogának ellenőrzése
 
-Tartomány-ellenőrzés App service-tanúsítványok által támogatott további két típusa van: E-mail, és a manuális ellenőrzést.
-
-#### <a name="mail-verification"></a>E-mailes ellenőrzés
-
-Megerősítési e-mailt már el lett küldve az egyéni tartományhoz tartozó E-mail-címeit.
-Az E-mail-ellenőrzési lépés befejezéséhez nyissa meg az e-mailt, és kattintson a visszaigazoló hivatkozásra.
-
-![az e-mailes ellenőrzés kép beszúrása](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
-
-Ha újra kell küldenie az ellenőrző e-mailt, kattintson a **E-mail újraküldése** gombra.
+Más App service-tanúsítványok által támogatott tartomány-ellenőrzési két típusa van: tartomány-ellenőrzés és a manuális ellenőrzést.
 
 #### <a name="domain-verification"></a>Tartomány ellenőrzése
 

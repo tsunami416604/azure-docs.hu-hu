@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus erőforrásainak használata a Resource Manager-sablonok létrehozása |} Microsoft Docs
-description: Service Bus erőforrásainak automatizálhatja az Azure Resource Manager-sablonok segítségével
+title: Hozzon létre az Azure Service Bus-erőforrások Resource Manager-sablonokkal |} A Microsoft Docs
+description: Automatizálható a Service Bus-erőforrások létrehozása Azure Resource Manager-sablonok használatával
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/11/2018
 ms.author: sethm
-ms.openlocfilehash: c8d84de608ccf3d9a9293c20c07c10a00b73da68
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 64942d80a2b8477c395abf185a332f31709598c6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598285"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627093"
 ---
-# <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus erőforrásainak használata Azure Resource Manager-sablonok létrehozása
+# <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Hozzon létre a Service Bus-erőforrások Azure Resource Manager-sablonok használatával
 
-Ez a cikk ismerteti, hogyan hozhat létre és telepíthet a Service Bus erőforrásainak Azure Resource Manager sablonok, PowerShell és a Service Bus erőforrás-szolgáltató használatával.
+Ez a cikk ismerteti, hogyan hozhat létre, és üzembe helyezése a Service Bus-erőforrások Azure Resource Manager-sablonok, a PowerShell és a Service Bus erőforrás-szolgáltató használatával.
 
-Az Azure Resource Manager-sablonok segítségével határozza meg az erőforrásokat, a megoldás központi telepítéséhez, és adja meg a paramétereket és változókat, amelyek segítségével beviheti a különböző környezetekhez tartozó értékeket. A sablon JSON nyelven van megírva, és az üzemelő példány értékeit összeállításához használó kifejezéseket tartalmaz. Azure Resource Manager-sablonok és a sablon formátum döntéseken írt kapcsolatos részletes információkért lásd: [struktúra és az Azure Resource Manager-sablonok szintaxisát](../azure-resource-manager/resource-group-authoring-templates.md).
+Az Azure Resource Manager-sablonok segítségével meghatározhatja a az erőforrásokat a megoldás üzembe helyezése, és adja meg a paramétereket és változókat, amelyek segítségével beviheti a különböző környezetekhez tartozó értékeket. A sablon JSON nyelven van megírva, és a következő kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit tartalmazza. Az Azure Resource Manager-sablonok és a sablon formátuma hatásának a megbeszélését írt kapcsolatos részletes információkért lásd: [szerkezetének és szintaxisának az Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md).
 
 > [!NOTE]
-> Ebben a cikkben szereplő példák bemutatják, hogyan hozzon létre egy Service Bus-névtér és üzenetküldési entitásra (várólista) az Azure Resource Manager használatával. Más sablon példákat látogasson el a [Azure gyors üzembe helyezés sablontárban] [ Azure Quickstart Templates gallery] keresse meg a **Service Bus**.
+> Ebben a cikkben szereplő példák bemutatják, hogyan hozzon létre egy Service Bus-névtér és üzenetküldési entitások (üzenetsor) az Azure Resource Manager használatával. Egyéb sablon példákat talál a [Azure gyorsindítási sablonok katalógusában] [ Azure Quickstart Templates gallery] és keressen rá a **a Service Bus**.
 >
 >
 
 ## <a name="service-bus-resource-manager-templates"></a>Service Bus Resource Manager-sablonok
 
-A Service Bus Azure Resource Manager sablonok letöltése és központi telepítés érhetők el. A következő hivatkozásokra kattintva minden egy, a sablonok a Githubon mutató hivatkozásokat tartalmaz információt:
+A Service Bus Azure Resource Manager-sablonok letöltése és központi telepítési érhetők el. Részletes ismertetése, a github-sablonokra mutató hivatkozásokat a következő hivatkozásokra kattintva:
 
 * [Service Bus-névtér létrehozása](service-bus-resource-manager-namespace.md)
-* [Hozzon létre egy Service Bus-névtér várólista](service-bus-resource-manager-namespace-queue.md)
-* [Hozzon létre egy Service Bus-névtér témakör és előfizetés](service-bus-resource-manager-namespace-topic.md)
-* [Hozzon létre egy Service Bus-névtér várólista és engedélyezési szabály](service-bus-resource-manager-namespace-auth-rule.md)
-* [A témakör, előfizetés és a szabály a Service Bus-névtér létrehozása](service-bus-resource-manager-namespace-topic-with-rule.md)
+* [Service Bus-névtér létrehozása az üzenetsorhoz](service-bus-resource-manager-namespace-queue.md)
+* [Service Bus-névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
+* [Service Bus-névtér létrehozása az üzenetsor és engedélyezési szabály](service-bus-resource-manager-namespace-auth-rule.md)
+* [Service Bus-névtér létrehozása témakörrel, előfizetéssel és szabály](service-bus-resource-manager-namespace-topic-with-rule.md)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
-Az alábbi eljárás ismerteti, hogyan lehet egy Service Bus-névtér Standard csomagra, és az adott névtérben várólista létrehozó Azure Resource Manager-sablon üzembe helyezése a PowerShell használatával. Ez a példa alapján a [hozzon létre egy Service Bus-névtér várólista](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) sablont. A hozzávetőleges munkafolyamata a következőképpen történik:
+Az alábbi eljárás ismerteti, hogyan lehet üzembe helyezése Azure Resource Manager-sablon, amely létrehoz egy Standard szintű Service Bus-névtér és a egy adott névtéren belül üzenetsorba a PowerShell használatával. Ez a példa alapján a [várakozási sorral rendelkező Service Bus-névtér létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) sablont. A hozzávetőleges munkafolyamat a következőképpen történik:
 
 1. Telepítse a PowerShell.
-2. A sablont, és (opcionálisan) a paraméterfájl létrehozása.
+2. Hozzon létre a sablont, és (opcionálisan) egy alkalmazásparaméter-fájlt.
 3. A PowerShellben jelentkezzen be az Azure-fiókjával.
-4. Ha még nem létezik, hozzon létre egy új erőforráscsoportot.
+4. Hozzon létre egy új erőforráscsoportot, ha még nem létezik.
 5. A telepítés tesztelésére.
-6. Ha szükséges, állítsa be a rendszerbe állítási mód.
-7. A sablon telepítéséhez.
+6. Ha szükséges, állítsa be az üzembe helyezési mód.
+7. A sablon üzembe helyezéséhez.
 
-Azure Resource Manager-sablonok telepítésével kapcsolatos részletes információkért lásd: [telepítése Azure Resource Manager-sablonok erőforrások][Deploy resources with Azure Resource Manager templates].
+Az Azure Resource Manager-sablonokkal való telepítéséről részletes információkért lásd: [erőforrások Azure Resource Manager-sablonok üzembe helyezése][Deploy resources with Azure Resource Manager templates].
 
 ### <a name="install-powershell"></a>A PowerShell telepítése
 
-Azure PowerShell telepítése utasításait követve [Ismerkedés az Azure PowerShell](/powershell/azure/get-started-azureps).
+Azure PowerShell telepítéséhez a következő témakör utasításait követve [Ismerkedés az Azure PowerShell-lel](/powershell/azure/get-started-azureps).
 
 ### <a name="create-a-template"></a>Sablon létrehozása
 
-Klónozza a tárházat vagy másolása a [201-szolgáltatásbusz--várólista létrehozása](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) sablont a Githubból:
+Klónozza a tárházban vagy a példány a [201-servicebus--várólista létrehozása](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) sablont a Githubból:
 
 ```json
 {
@@ -135,9 +135,9 @@ Klónozza a tárházat vagy másolása a [201-szolgáltatásbusz--várólista l�
 }
 ```
 
-### <a name="create-a-parameters-file-optional"></a>Hozzon létre egy paraméterfájl (nem kötelező)
+### <a name="create-a-parameters-file-optional"></a>A paraméterfájl létrehozása (opcionális)
 
-Az opcionális paraméterek fájlt használ, másolja a [201-szolgáltatásbusz--várólista létrehozása](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) fájlt. Cserélje le a `serviceBusNamespaceName` nevű, a Service Bus-névtér létrehozása ebben a telepítésben, és cserélje le a kívánt `serviceBusQueueName` szeretne létrehozni a várólista nevét.
+Egy választható paramétereket tartalmazó fájlt használ, másolja át a [201-servicebus--várólista létrehozása](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) fájlt. Értékét cserélje `serviceBusNamespaceName` szeretné a központi telepítés létrehozása, és értékét cserélje le a Service Bus-névtér nevét `serviceBusQueueName` szeretne létrehozni az üzenetsor nevére.
 
 ```json
 {
@@ -159,35 +159,35 @@ Az opcionális paraméterek fájlt használ, másolja a [201-szolgáltatásbusz-
 
 További információkért lásd: a [paraméterek](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) cikk.
 
-### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Jelentkezzen be az Azure és az Azure-előfizetés beállítása
+### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Jelentkezzen be az Azure-ba, és állítsa be az Azure-előfizetés
 
-Egy PowerShell-parancssorba futtassa a következő parancsot:
+Egy PowerShell-parancssorban futtassa a következő parancsot:
 
 ```powershell
 Connect-AzureRmAccount
 ```
 
-Jelentkezzen be az Azure-fiókjával kéri. A bejelentkezés után futtassa a következő parancsot az elérhető előfizetések megtekintéséhez:
+Jelentkezzen be az Azure-fiókja kéri. A bejelentkezés után futtassa a következő parancsot a rendelkezésre álló előfizetések megtekintéséhez:
 
 ```powershell
 Get-AzureRMSubscription
 ```
 
-Ez a parancs elérhető Azure-előfizetések listáját adja vissza. Válasszon egy előfizetést, az aktuális munkamenet a következő parancs futtatásával. Cserélje le `<YourSubscriptionId>` használni kívánt Azure-előfizetés GUID:
+Ez a parancs elérhető Azure-előfizetések listáját adja vissza. Válasszon egy előfizetést, az aktuális munkamenet a következő parancs futtatásával. Cserélje le `<YourSubscriptionId>` használni kívánt Azure-előfizetéshez tartozó GUID Azonosítóval rendelkező:
 
 ```powershell
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 ```
 
-### <a name="set-the-resource-group"></a>Az erőforráscsoport beállítása
+### <a name="set-the-resource-group"></a>Állítsa be az erőforráscsoport
 
-Ha a csoport, hozzon létre egy új erőforráscsoportot a meglévő erőforrás még a ** New-AzureRmResourceGroup ** parancsot. Adja meg az erőforráscsoportot és helyet használni kívánt nevét. Példa:
+Ha nem rendelkezik egy meglévő erőforrást, csoport, hozzon létre egy új erőforráscsoportot a ** New-AzureRmResourceGroup ** parancsot. Adja meg az erőforráscsoportot és helyet használni kívánt nevét. Példa:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
-Ha sikeres, az új erőforráscsoport összegzését jelenik meg.
+Ha ez sikeres, az új erőforráscsoport összegzését jelenik meg.
 
 ```powershell
 ResourceGroupName : MyDemoRG
@@ -199,42 +199,42 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Az üzemelő példány tesztelése
 
-A központi telepítés futtatásával ellenőrizze a `Test-AzureRmResourceGroupDeployment` parancsmag. Ha a központi telepítés tesztelése, adja meg a paramétereket pontosan ugyanúgy, a központi telepítés végrehajtása közben.
+A telepítés ellenőrzése futtatásával a `Test-AzureRmResourceGroupDeployment` parancsmagot. A központi telepítés tesztelésekor paramétereket megadnia, pontosan, mint a központi telepítés végrehajtása közben.
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-### <a name="create-the-deployment"></a>A központi telepítés létrehozásához
+### <a name="create-the-deployment"></a>Az üzemelő példány létrehozása
 
-Az új központi telepítés létrehozásához futtassa a `New-AzureRmResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, amikor a rendszer kéri. A paraméternek számít a központi telepítésre, az erőforráscsoport és az elérési út vagy URL neve a sablon fájl nevét. Ha a **mód** paraméter nincs megadva, az alapértelmezett érték **növekményes** szolgál. További információkért lásd: [növekményes és teljes telepítések](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments).
+Az új központi telepítés létrehozásához futtassa a `New-AzureRmResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, amikor a rendszer kéri. A paraméterek tartalmaznia kell egy nevet az üzembe helyezés a sablonfájl az erőforráscsoport és az elérési útja vagy URL-cím nevére. Ha a **mód** paraméter nincs megadva, az alapértelmezett érték **növekményes** szolgál. További információkért lásd: [növekményes és teljes körű központi telepítések](../azure-resource-manager/deployment-modes.md).
 
-A következő parancs bekéri a PowerShell-ablakban három paramétert:
+A következő parancs kéri a három paramétert a PowerShell-ablakban:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-Ehelyett adja meg egy paraméterfájl, használja a következő parancsot:
+Ehelyett adja meg a paramétereket tartalmazó fájlt, használja a következő parancsot:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
-Beágyazott paramétereket használhatja a központi telepítési parancsmag futtatása esetén is. A parancs a következőképpen történik:
+Emellett használhatja a beágyazott paraméterek, a központi telepítési parancsmag futtatásakor. A parancs a következőképpen történik:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-Futtatásához egy [teljes](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) központi telepítését, állítsa be a **mód** paramétert **Complete**:
+Futtatásához egy [teljes](../azure-resource-manager/deployment-modes.md) központi telepítését, állítsa be a **mód** paramétert **Complete**:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ### <a name="verify-the-deployment"></a>A telepítés ellenőrzése
-Ha az erőforrások telepítése sikeres volt, a központi telepítés összegzését a PowerShell-ablakban jelenik meg:
+Ha az erőforrások telepítése sikeresen megtörtént, a központi telepítés összegzését a PowerShell-ablakban jelenik meg:
 
 ```powershell
 DeploymentName    : MyDemoDeployment
@@ -253,10 +253,10 @@ Parameters        :
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most láthatta, a munkafolyamat alapvető és parancsok telepítése Azure Resource Manager-sablonok. További részletes információkért látogasson el az alábbi hivatkozásokra:
+Most láthatta az alapvető munkafolyamat és a parancsok az Azure Resource Manager-sablon üzembe helyezéséhez. További részletes információkért látogasson el az alábbi hivatkozásokat:
 
 * [Az Azure Resource Manager áttekintése][Azure Resource Manager overview]
-* [Erőforrások a Resource Manager-sablonok és Azure PowerShell telepítése][Deploy resources with Azure Resource Manager templates]
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel][Deploy resources with Azure Resource Manager templates]
 * [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/resource-group-overview.md

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 497c3b54238c9e38144a5840b59cac38af581f39
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 62a55672a4326df585fc84699dfd72424be362dc
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525926"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627491"
 ---
 # <a name="configure-named-locations-in-azure-active-directory"></a>Nevesített helyek konfigurálása az Azure Active Directoryban
 
 A nevesített helyek a címkézés megbízható IP-címtartományok a szervezetben. Az Azure Active Directory nevesített helyek összefüggésben használja:
 
-- Észlelését [kockázati események](active-directory-reporting-risk-events.md) jelentett vakriasztások számának csökkentése érdekében.  
+- Észlelését [kockázati események](reports-monitoring/concept-risk-events.md) jelentett vakriasztások számának csökkentése érdekében.  
 
 - [Helyalapú feltételes hozzáférés](conditional-access/location-condition.md).
 
@@ -99,6 +99,6 @@ További információkért lásd:
 
 - [Az Azure Active Directory feltételes hozzáférés a helyszínre vonatkozó feltételek](conditional-access/location-condition.md)
 
-- [Az Azure Active Directory kockázati eseményeivel](active-directory-reporting-risk-events.md).
+- [Az Azure Active Directory kockázati eseményeivel](reports-monitoring/concept-risk-events.md).
 
-- [Kockázatos bejelentkezések jelentés az Azure Active Directory portálon](active-directory-reporting-security-risky-sign-ins.md).  
+- [Kockázatos bejelentkezések jelentés az Azure Active Directory portálon](reports-monitoring/concept-risky-sign-ins.md).  

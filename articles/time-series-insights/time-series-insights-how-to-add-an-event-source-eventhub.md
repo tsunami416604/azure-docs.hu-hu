@@ -1,70 +1,70 @@
 ---
-title: Az Event Hubs eseményforrást hozzáadása Azure idő adatsorozat Insights |} Microsoft Docs
-description: A cikkből megtudhatja, hogyan adhat egy eseményforrás, amely egy Eseményközpontot, az idő adatsorozat Insights-környezethez csatlakozik.
+title: Event Hub-eseményforrás hozzáadása Azure Time Series Insights |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan adhat hozzá egy eseményforrás, amely egy Eseményközpontot, az a Time Series Insights-környezethez csatlakozik.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 8b1fe447cb673b9bc1f4fe4e73f7412a21f701a5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ce4bf1ab74e4203f0deb7b2984ffa6a66d5efd4a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330862"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627110"
 ---
-# <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Az Event Hubs eseményforrást felvétele idő adatsorozat Insights környezet
+# <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Event Hub-eseményforrás hozzáadása a Time Series Insights-környezet
 
-Ez a cikk ismerteti az Azure-portál használatával adja hozzá az eseményforrás, amely adatokat olvas az Eseményközpontban lévő idő adatsorozat Insights környezetébe.
+Ez a cikk ismerteti, amely adatokat olvas egy eseményközpontból a Time Series Insights-környezetbe eseményforrás hozzáadása az Azure portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Hozzon létre egy idő adatsorozat Insights környezetet. További információkért lásd: [Azure idő adatsorozat Insights környezet létrehozása](time-series-insights-get-started.md) 
-- Eseményközpont létrehozása. Az Event Hubs további információkért lásd: [hozzon létre egy Event Hubs névtér és egy eseményközpontot, az Azure portál használatával](../event-hubs/event-hubs-create.md)
-- Az Event Hubs küldési aktív üzenet események rendelkeznie kell. További információkért lásd: [események küldése az Azure Event Hubs használatával a .NET-keretrendszer](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
-- Hozzon létre egy dedikált fogyasztói csoportot az Eseményközpont idő adatsorozat Insight környezetre való felhasználását. Minden alkalommal adatsorozat Insights eseményforrás saját dedikált fogyasztói csoportot, amelyek nincsenek megosztva, más fogyasztóval rendelkeznie kell. Ha több olvasók ugyanazt a felhasználói csoportban lévő események felhasználásához, minden olvasók valószínűleg tekintse meg a hibákat. Vegye figyelembe, hogy nincs-e is maximális hossza 20 felhasználói csoportot az Event Hubs egy. További információkért lásd: a [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md).
+- Egy Time Series Insights környezetet hozhat létre. További információkért lásd: [Azure Time Series Insights-környezet létrehozása](time-series-insights-get-started.md) 
+- Eseményközpont létrehozása. Az Event Hubs további információkért lásd: [hozzon létre egy Event Hubs-névtér és a egy eseményközpontot, az Azure portal használatával](../event-hubs/event-hubs-create.md)
+- Az Event Hubs küld a rendszer aktív üzenetek esemény rendelkeznie kell. További információkért lásd: [események küldése az Azure Event Hubsba a .NET-keretrendszer használatával](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
+- Az Event Hubs a Time Series Insight-környezethez való felhasználásához hozzon létre egy dedikált fogyasztói csoportot. Minden egyes Time Series Insights-eseményforrás rendelkeznie kell a saját dedikált fogyasztói csoportot, amelyek nincsenek megosztva, bármely más fogyasztók számára. Ha több olvasók ugyanabban a fogyasztói csoportban lévő események felhasználásához, minden olvasók valószínűleg hibák. Vegye figyelembe, hogy nincs-e is legfeljebb 20 felhasználói csoportot egy Eseményközpontba. További információkért lásd: a [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md).
 
-### <a name="add-a-consumer-group-to-your-event-hub"></a>Az Event Hubs egy felhasználói csoport hozzáadása
-Alkalmazások az fogyasztói csoportok segítségével olvasnak be adatokat az Azure Event Hubs. Adjon meg egy dedikált fogyasztói csoportot idő adatsorozat Insights környezet csak, megbízhatóan adatokat olvasni az Eseményközpont által használható.
+### <a name="add-a-consumer-group-to-your-event-hub"></a>Az Eseményközpont fogyasztói csoport hozzáadása
+Fogyasztói csoportok adatok kérhetők le az Azure Event Hubs alkalmazások használják. Adja meg a Time Series Insights környezetet csak, megbízhatóan adatokat olvasni az Event Hub által használt, dedikált fogyasztói csoportot.
 
 Az Event Hubs egy új felhasználói csoport hozzáadásához kövesse az alábbi lépéseket:
-1. Keresse meg az Azure-portálon, és nyissa meg az Eseményközpont.
+1. Az Azure Portalon keresse meg és nyissa meg az Eseményközpont.
 
-2. Az a **entitások** elemcsoportban válasszon **fogyasztói csoportok**.
+2. Alatt a **entitások** szakaszban kattintson **fogyasztói csoportok**.
 
-   ![Az Event Hubs - egy felhasználói csoport hozzáadása](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+   ![Event Hub - fogyasztói csoport hozzáadása](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
 
 3. Válassza ki **+ fogyasztói csoportot** egy új felhasználói csoport hozzáadása. 
 
-4. Az a **fogyasztói csoportok** lapján adjon meg egy új egyedi **neve**.  Az azonos név használata, amikor új eseményforrás létrehozása a idő adatsorozat Insights környezetben.
+4. Az a **fogyasztói csoportok** területén adjon meg egy új egyedi **neve**.  Használja ezt a nevet, egy új eseményforrás létrehozása a Time Series Insights-környezet esetén.
 
-5. Válassza ki **létrehozása** létrehozni az új fogyasztói csoportot.
+5. Válassza ki **létrehozás** az új felhasználói csoport létrehozásához.
 
-## <a name="add-a-new-event-source"></a>Új esemény-forrás hozzáadása
+## <a name="add-a-new-event-source"></a>Adjon hozzá egy új esemény forrása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Keresse meg a meglévő idő adatsorozat Insights környezetben. Kattintson a **összes erőforrás** a menüben, az Azure portál bal oldalán. Válassza ki az Azure Time Series Insights-környezetet.
+2. Keresse meg a meglévő Time Series Insights-környezetbe. Kattintson a **összes erőforrás** az Azure portal bal oldali menüben. Válassza ki az Azure Time Series Insights-környezetet.
 
-3. Az a **környezet topológia** elemcsoportban kattintson **eseményforrások**.
+3. Alatt a **környezeti topológia** szakaszban kattintson **eseményforrások**.
 
-   ![Esemény adatforrásokat + Hozzáadás](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)
+   ![Esemény adatforrásokat + hozzáadása](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)
 
 4. Kattintson a **+Hozzáadás** gombra.
 
-5. Adjon meg egy **Eseményforrás neve** egyedi idő adatsorozat Insights ebben a környezetben, mint **esemény-adatfolyam**.
+5. Adjon meg egy **eseményforrás nevének** egyedi a Time Series Insights-környezethez, mint például **esemény-adatfolyam**.
 
-   ![Töltse ki az első három paramétereket a képernyőn.](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)
+   ![Adja meg az első három paramétereket a képernyőn.](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)
 
 6. Válassza ki a **forrás** , **Eseményközpont**.
 
-7. Válassza ki a megfelelő **beállítás importálása**. 
-   - Válasszon **Eseményközpont használja az elérhető előfizetések** Ha már rendelkezik meglévő Eseményközpontban az egyik előfizetése. Ez a legegyszerűbb módszer.
-   - Válasszon **adja meg az Event Hubs beállításokat manuálisan** mikor az Event Hubs nem külső az előfizetésekhez, vagy válassza a speciális beállításokat szeretne. 
+7. Válassza ki a megfelelő **importálási beállítás**. 
+   - Válasszon **Eseményközpontot használja a rendelkezésre álló előfizetések** Ha már rendelkezik egy meglévő Eseményközponton az előfizetések egyike. Ez a legegyszerűbb megközelítés.
+   - Válasszon **adja meg az Eseményközpont-beállítások manuális** mikor az Event Hubs külső az előfizetésekhez, vagy adja meg a speciális beállításokat szeretné. 
 
-8. Ha be van jelölve a **Eseményközpont használja az elérhető előfizetések** beállítást, a következő táblázat ismerteti, minden szükséges tulajdonság:
+8. Ha be van jelölve a **Eseményközpontot használja a rendelkezésre álló előfizetések** beállítást, az alábbi táblázat azt ismerteti, minden kötelező tulajdonság:
 
    ![Előfizetés és az Event hub-adatok](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)
 
@@ -72,31 +72,31 @@ Az Event Hubs egy új felhasználói csoport hozzáadásához kövesse az alább
    | --- | --- |
    | Előfizetési azonosító | Válassza ki az előfizetést, amelyben az eseményközpont létre lett hozva.
    | Service Bus-névtér | Válassza ki a Service Bus-névtér, amely tartalmazza az Eseményközpontba.
-   | Eseményközpont neve | Válassza ki az Eseményközpont nevét.
-   | Eseményközpont házirend neve | Válassza ki a megosztott elérési házirendet, amely az Event Hub konfigurálása lapon is létrehozható. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. A megosztott hozzáférési házirend a eseményforrás *kell* rendelkezik **olvasási** engedélyek.
-   | Event hub házirend kulcs | Előfordulhat, hogy a kulcs értéke előre kitölti.
-   | Event hub fogyasztói csoportot | A rendszer kiolvassa az eseményeket az eseményközpontból fogyasztói csoportot. Ajánlott az eseményforrás dedikált fogyasztói csoportot használja. |
-   | Eseményszerializációs formátum | JSON-ja jelenleg csak a rendelkezésre álló szerializálást. Az eseményüzeneteket a következő formátumban kell lennie, vagy nincsenek adatok olvashatók. |
-   | Időbélyeg-tulajdonság neve | Ez az érték határozza meg, az üzenet adataihoz, az Event Hubs küldi üzenetformátuma tisztában kell. Ez az érték a **neve** az üzenet adataihoz, az esemény időbélyegzője használni kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen marad, a **esemény sorba helyezni időtartam** belül az esemény az esemény időbélyegzője forrás használatos. |
+   | Eseményközpont neve | Válassza ki az Event Hubs nevét.
+   | Eseményközpont szabályzatának neve | Válassza ki a megosztott elérési házirendet, amely az Event Hub konfigurálása lapon hozható létre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. A megosztott hozzáférési szabályzatot az eseményforrás *kell* rendelkezik **olvasási** engedélyeket.
+   | Eseményközpont házirendjének kulcsa | Előfordulhat, hogy előre kitölti a kulcs értékét.
+   | Eseményközpontbeli fogyasztói csoport | A fogyasztói csoportot, olvassa az eseményeket az eseményközpontból. Azt javasoljuk, használjon dedikált fogyasztói csoportot az eseményforrás a. |
+   | Eseményszerializációs formátum | JSON-ja jelenleg csak akkor érhető el szerializálásának. Az eseményt üzenetek a következő formátumban kell lennie, vagy az adatok nem olvashatók. |
+   | Időbélyegző-tulajdonság neve | Ez az érték határozza meg, az üzenet formátuma az Event Hubs-eseményközpontba küldött üzenet adatok megismerése kell. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** belül az eseményt az esemény időbélyegzője forrás szolgál. |
 
 
-9. Ha be van jelölve a **adja meg az Event Hubs-beállítások manuális** beállítást, a következő táblázat ismerteti, minden szükséges tulajdonság:
+9. Ha be van jelölve a **adja meg az Eseményközpont-beállítások manuális** beállítást, az alábbi táblázat azt ismerteti, minden kötelező tulajdonság:
 
    | Tulajdonság | Leírás |
    | --- | --- |
    | Előfizetés azonosítója | Az előfizetés, amelyben az eseményközpont létre lett hozva.
    | Erőforráscsoport | Az erőforráscsoport, amelyben az eseményközpont létre lett hozva.
-   | Service Bus-névtér | A Service Bus-névtér az üzenetküldési entitások készletének tárolója. Egy új Eseményközpont létrehozásakor egy Szolgáltatásbusz-névtér is létrejött.
-   | Eseményközpont neve | Az Eseményközpont neve. Az eseményközpont létrehozásakor meg nevet is adott neki.
-   | Eseményközpont házirend neve | A megosztott elérési házirendet, amely az Event Hub konfigurálása lapon is létrehozható. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. A megosztott hozzáférési házirend a eseményforrás *kell* rendelkezik **olvasási** engedélyek.
-   | Event hub házirend kulcs | A Service Bus-névtér való hozzáférés hitelesítéséhez használt megosztott hozzáférési kulcs. Ide írja be az elsődleges vagy másodlagos kulcsot.
-   | Event hub fogyasztói csoportot | A rendszer kiolvassa az eseményeket az eseményközpontból fogyasztói csoportot. Ajánlott az eseményforrás dedikált fogyasztói csoportot használja.
-   | Eseményszerializációs formátum | JSON-ja jelenleg csak a rendelkezésre álló szerializálást. Az eseményüzeneteket a következő formátumban kell lennie, vagy nincsenek adatok olvashatók. |
-   | Időbélyeg-tulajdonság neve | Ez az érték határozza meg, az üzenet adataihoz, az Event Hubs küldi üzenetformátuma tisztában kell. Ez az érték a **neve** az üzenet adataihoz, az esemény időbélyegzője használni kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen marad, a **esemény sorba helyezni időtartam** belül az esemény az esemény időbélyegzője forrás használatos. |
+   | Service Bus-névtér | Service Bus-névtér az üzenetküldési entitások készletének tárolója. Egy új Eseményközpont létrehozásakor egy Service Bus-névtér is létrejött.
+   | Eseményközpont neve | Az Eseményközpont neve. Az eseményközpont létrehozásakor azt is neki egy egyedi nevet.
+   | Eseményközpont szabályzatának neve | A megosztott elérési házirendet, amely az Event Hub konfigurálása lapon hozható létre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. A megosztott hozzáférési szabályzatot az eseményforrás *kell* rendelkezik **olvasási** engedélyeket.
+   | Eseményközpont házirendjének kulcsa | A közös hozzáférési kulcs segítségével hitelesíti a hozzáférést a Service Bus-névteret. Ide írja be az elsődleges vagy másodlagos kulcsot.
+   | Eseményközpontbeli fogyasztói csoport | A fogyasztói csoportot, olvassa az eseményeket az eseményközpontból. Azt javasoljuk, használjon dedikált fogyasztói csoportot az eseményforrás a.
+   | Eseményszerializációs formátum | JSON-ja jelenleg csak akkor érhető el szerializálásának. Az eseményt üzenetek a következő formátumban kell lennie, vagy az adatok nem olvashatók. |
+   | Időbélyegző-tulajdonság neve | Ez az érték határozza meg, az üzenet formátuma az Event Hubs-eseményközpontba küldött üzenet adatok megismerése kell. Ez az érték a **neve** az állapotüzenet-adatokat használja, mint az esemény időbélyegzője kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen hagyja, a **eseményt sorba idő** belül az eseményt az esemény időbélyegzője forrás szolgál. |
 
-10. Adja hozzá a dedikált ÁME felhasználói csoport nevét az eseményközpont hozzáadott.
+10. A dedikált TSI fogyasztói csoport neve, amely az eseményközpont adott hozzá.
 
-11. Válassza ki **létrehozása** hozzáadása az új esemény forrását.
+11. Válassza ki **létrehozás** hozzáadni az új esemény forrását.
    
    ![Kattintson a Létrehozás gombra](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
 
@@ -104,6 +104,6 @@ Az Event Hubs egy új felhasználói csoport hozzáadásához kövesse az alább
 
 
 ## <a name="next-steps"></a>További lépések
-- [Adja meg az adat-hozzáférési házirendjeit](time-series-insights-data-access.md) az adatok védelmét.
+- [Adathozzáférési házirendek meghatározása](time-series-insights-data-access.md) védi az adatait.
 - [Események küldése](time-series-insights-send-events.md) esemény forrását.
-- A környezet az elérni a [idő adatsorozat Insights explorer](https://insights.timeseries.azure.com).
+- A környezet eléréséhez a [Time Series Insights explorer](https://insights.timeseries.azure.com).
