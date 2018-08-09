@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 90d449de19022b3b427e3d89d5beb18bbd36c6b4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 15bd452ad2b80334c3f6168e6dee89bdd7c5efc4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597987"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424405"
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Alkalmazások üzembe helyezése ACR és egy DC/OS-fürt használatával
 
@@ -34,7 +34,7 @@ Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry üzembe helyezése
 
-Amennyiben szükséges, hozzon létre egy Azure tárolóregisztrációs adatbázist az [az acr create](/cli/azure/acr#az_acr_create) paranccsal. 
+Amennyiben szükséges, hozzon létre egy Azure tárolóregisztrációs adatbázist az [az acr create](/cli/azure/acr#az-acr-create) paranccsal. 
 
 Az alábbi példa egy véletlenszerűen elnevezett beállításjegyzéket hoz létre. A beállításjegyzékhez egy rendszergazdai fiók is konfigurálva lesz az `--admin-enabled` argumentum használatával.
 

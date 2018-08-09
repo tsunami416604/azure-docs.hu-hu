@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 377cb9df8ce09581a5fd5d9d7a7d55368daf44ca
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: a1054d7632c8323990ca7430d2d5203f0ad10ee4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082444"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422116"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
@@ -44,10 +44,10 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
 1. **A küszöb oszlopának kiválasztása**.
     Jelölje ki az adatforrás egyes táblázatainak egy-egy oszlopát, amely alapján az új és a frissített rekordok minden egyes futtatáskor azonosíthatóak. Normális esetben az ebben a kiválasztott oszlopban (például: last_modify_time vagy ID) lévő adatok a sorok létrehozásával vagy frissítésével folyamatosan növekednek. Az ebben az oszlopban lévő legnagyobb érték szolgál a küszöbként.
 
-2. **Egy adatraktár előkészítése a küszöbértékek tárolására**.   
+1. **Egy adatraktár előkészítése a küszöbértékek tárolására**.   
     Ebben az oktatóanyagban a küszöbértékeket egy SQL-adatbázisban tároljuk.
 
-3. **Egy folyamat létrehozása a következő tevékenységekkel**: 
+1. **Egy folyamat létrehozása a következő tevékenységekkel**: 
     
     a. Egy ForEach tevékenység létrehozása, amely végighalad a forrástáblanevek listáján, amelyet a rendszer paraméterként ad át a folyamatnak. Minden forrástáblához elindítja a következő tevékenységeket a változásadatok betöltéséhez az adott tábla esetében.
 
@@ -72,9 +72,9 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 1. Nyissa meg az SQL Server Management Studiót, és csatlakozzon a helyszíni SQL Server-adatbázishoz.
 
-2. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
+1. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
-3. Futtassa a következő SQL-parancsot az adatbázison a `customer_table` és a `project_table` nevű tábla létrehozásához:
+1. Futtassa a következő SQL-parancsot az adatbázison a `customer_table` és a `project_table` nevű tábla létrehozásához:
 
     ```sql
     create table customer_table
@@ -111,9 +111,9 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Céltáblák létrehozása az Azure SQL Database-ben
 1. Nyissa meg az SQL Server Management Studiót, és csatlakozzon az SQL Server-adatbázishoz.
 
-2. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
+1. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
-3. Futtassa a következő SQL-parancsot az SQL-adatbázison a `customer_table` és a `project_table` nevű tábla létrehozásához:  
+1. Futtassa a következő SQL-parancsot az SQL-adatbázison a `customer_table` és a `project_table` nevű tábla létrehozásához:  
     
     ```sql
     create table customer_table
@@ -142,7 +142,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
         WatermarkValue datetime,
     );
     ```
-2. Szúrja be a két forrástábla kezdeti küszöbértékeit a küszöbértékek táblájába.
+1. Szúrja be a két forrástábla kezdeti küszöbértékeit a küszöbértékek táblájába.
 
     ```sql
 
@@ -234,19 +234,19 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 
     Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot.
 
-2. Adjon meg egy változót az adat-előállító helyéhez. 
+1. Adjon meg egy változót az adat-előállító helyéhez. 
 
     ```powershell
     $location = "East US"
     ```
-3. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
+1. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
 
     ```powershell
     New-AzureRmResourceGroup $resourceGroupName $location
     ``` 
     Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot.
 
-4. Adjon meg egy változót az adat-előállító nevéhez. 
+1. Adjon meg egy változót az adat-előállító nevéhez. 
 
     > [!IMPORTANT]
     >  Frissítse az adat-előállító nevét, hogy globálisan egyedi legyen. Például: ADFIncMultiCopyTutorialFactorySP1127. 
@@ -254,7 +254,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
     ```powershell
     $dataFactoryName = "ADFIncMultiCopyTutorialFactory";
     ```
-5. Az adat-előállító létrehozásához futtassa az alábbi **Set-AzureRmDataFactoryV2** parancsmagot: 
+1. Az adat-előállító létrehozásához futtassa az alábbi **Set-AzureRmDataFactoryV2** parancsmagot: 
     
     ```powershell       
     Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
@@ -336,9 +336,9 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
     > - A fájl mentése előtt a &lt;servername>, &lt;databasename>, &lt;username> és &lt;password> értékeket cserélje le az SQL Server-adatbázis értékeire.
     > - Ha perjel karaktert (`\`) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja az escape-karaktert (`\`). Például: `mydomain\\myuser`.
 
-2. A PowerShellben váltson a C:\ADFTutorials\IncCopyMultiTableTutorial mappára.
+1. A PowerShellben váltson a C:\ADFTutorials\IncCopyMultiTableTutorial mappára.
 
-3. Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az AzureStorageLinkedService társított szolgáltatás létrehozásához. A következő példában a *ResourceGroupName* és a *DataFactoryName* paraméter értékeit fogja megadni: 
+1. Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az AzureStorageLinkedService társított szolgáltatás létrehozásához. A következő példában a *ResourceGroupName* és a *DataFactoryName* paraméter értékeit fogja megadni: 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
@@ -370,7 +370,7 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
         }
     }
     ```
-2. A PowerShellben futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az AzureSQLDatabaseLinkedService társított szolgáltatás létrehozásához. 
+1. A PowerShellben futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az AzureSQLDatabaseLinkedService társított szolgáltatás létrehozásához. 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -411,7 +411,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
 
     A tábla neve egy helyőrző. A teljes tábla betöltése helyett a folyamat másolási tevékenysége egy SQL-lekérdezést használ az adatok betöltéséhez.
 
-2. Futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot a SourceDataset adatkészlet létrehozásához.
+1. Futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot a SourceDataset adatkészlet létrehozásához.
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -455,7 +455,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
     }
     ```
 
-2. Futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot a SinkDataset adatkészlet létrehozásához.
+1. Futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot a SinkDataset adatkészlet létrehozásához.
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -491,7 +491,7 @@ Ebben a lépésben egy adatkészletet hozunk létre a felső küszöbértékek t
         }
     }    
     ```
-2. Futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot a WatermarkDataset adatkészlet létrehozásához.
+1. Futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot a WatermarkDataset adatkészlet létrehozásához.
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -512,11 +512,11 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
 1. A keresési tevékenység lekéri a régi küszöbértéket (a kezdeti értéket, vagy a legutóbbi ismétlés során használt értéket).
 
-2. A keresési tevékenység lekéri az új küszöbértéket (a forrástábla küszöbértéket tartalmazó oszlopának legnagyobb értékét).
+1. A keresési tevékenység lekéri az új küszöbértéket (a forrástábla küszöbértéket tartalmazó oszlopának legnagyobb értékét).
 
-3. A másolási tevékenység az előbbi két küszöbérték közötti adatokat másolja a forrásadatbázisból a céladatbázisba.
+1. A másolási tevékenység az előbbi két küszöbérték közötti adatokat másolja a forrásadatbázisból a céladatbázisba.
 
-4. A StoredProcedure (tárolt eljárás) tevékenység frissíti a régi küszöbértéket, hogy a következő ismétlés első lépése azt használja. 
+1. A StoredProcedure (tárolt eljárás) tevékenység frissíti a régi küszöbértéket, hogy a következő ismétlés első lépése azt használja. 
 
 ### <a name="create-the-pipeline"></a>A folyamat létrehozása
 1. Hozzon létre egy IncrementalCopyPipeline.json nevű JSON-fájlt ugyanebben a mappában az alábbi tartalommal: 
@@ -653,7 +653,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
         }
     }
     ```
-2. Az IncrementalCopyPipeline folyamat létrehozásához futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmagot.
+1. Az IncrementalCopyPipeline folyamat létrehozásához futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmagot.
     
    ```powershell
    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -692,7 +692,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
         ]
     }
     ```
-2. Futtassa az IncrementalCopyPipeline folyamatot az **Invoke-AzureRmDataFactoryV2Pipeline** parancsmag használatával. Cserélje le a helyőrzőket a saját erőforráscsoportja és adat-előállítója nevére.
+1. Futtassa az IncrementalCopyPipeline folyamatot az **Invoke-AzureRmDataFactoryV2Pipeline** parancsmag használatával. Cserélje le a helyőrzőket a saját erőforráscsoportja és adat-előállítója nevére.
 
     ```powershell
     $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
@@ -702,26 +702,26 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Kattintson a **Minden szolgáltatás** elemre, végezzen keresést az *Adat-előállítók* kulcsszóval, és válassza az **Adat-előállítók** lehetőséget. 
+1. Kattintson a **Minden szolgáltatás** elemre, végezzen keresést az *Adat-előállítók* kulcsszóval, és válassza az **Adat-előállítók** lehetőséget. 
 
     ![Adat-előállítók menü](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-data-factories-menu-1.png)
 
-3. Keresse meg az adat-előállítóját az adat-előállítók listájában, és kattintson rá az **Adat-előállító** oldal megnyitásához. 
+1. Keresse meg az adat-előállítóját az adat-előállítók listájában, és kattintson rá az **Adat-előállító** oldal megnyitásához. 
 
     ![Az adat-előállító keresése](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-search-data-factory-2.png)
 
-4. Az **Adat-előállító** oldalon válassza a **Figyelés és felügyelet** lehetőséget. 
+1. Az **Adat-előállító** oldalon válassza a **Figyelés és felügyelet** lehetőséget. 
 
     ![Monitor & Manage csempe](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-monitor-manage-tile-3.png)
 
-5. Megnyílik az **adatintegrációs alkalmazás** egy új lapon. Itt megtekintheti az összes folyamatfuttatást és azok állapotát. A következő példában a folyamatfuttatás állapota **Sikeres**. A **Paraméterek** oszlopban található hivatkozásra kattintva megtekintheti a folyamatnak átadott paramétereket. Hiba esetén egy hivatkozás jelenik meg a **Hiba** oszlopban. Válassza ki a **Műveletek** oszlopban található hivatkozást. 
+1. Megnyílik az **adatintegrációs alkalmazás** egy új lapon. Itt megtekintheti az összes folyamatfuttatást és azok állapotát. A következő példában a folyamatfuttatás állapota **Sikeres**. A **Paraméterek** oszlopban található hivatkozásra kattintva megtekintheti a folyamatnak átadott paramétereket. Hiba esetén egy hivatkozás jelenik meg a **Hiba** oszlopban. Válassza ki a **Műveletek** oszlopban található hivatkozást. 
 
     ![Folyamatfuttatások](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-4.png)    
-6. Ha kiválasztja a **Műveletek** oszlopban található hivatkozást, megjelenik a következő lap, amely megmutatja a folyamat összes tevékenységfuttatását: 
+1. Ha kiválasztja a **Műveletek** oszlopban található hivatkozást, megjelenik a következő lap, amely megmutatja a folyamat összes tevékenységfuttatását: 
 
     ![Tevékenységfuttatások](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-activity-runs-5.png)
 
-7. A **Folyamatfuttatások** nézetre való visszaváltáshoz válassza ki a **Folyamatok** lehetőséget a képen látható módon. 
+1. A **Folyamatfuttatások** nézetre való visszaváltáshoz válassza ki a **Folyamatok** lehetőséget a képen látható módon. 
 
 ## <a name="review-the-results"></a>Az eredmények áttekintése
 Az SQL Server Management Studióban futtassa a következő lekérdezéseket a cél SQL-adatbázison annak ellenőrzéséhez, hogy a rendszer átmásolta-e az adatokat a forrástáblákból a céltáblákba: 
@@ -799,15 +799,15 @@ VALUES
     ```powershell
     $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-2. Monitorozza folyamatfuttatásokat [A folyamat figyelése](#monitor-the-pipeline) szakasz utasításait alapján. Mivel a folyamat állapota **Folyamatban**, egy másik művelethivatkozás jelenik meg a **Műveletek** alatt, amellyel megszakíthatja a folyamat futtatását. 
+1. Monitorozza folyamatfuttatásokat [A folyamat figyelése](#monitor-the-pipeline) szakasz utasításait alapján. Mivel a folyamat állapota **Folyamatban**, egy másik művelethivatkozás jelenik meg a **Műveletek** alatt, amellyel megszakíthatja a folyamat futtatását. 
 
     ![Folyamatban állapotú folyamatfuttatások](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-6.png)
 
-3. Válassza ki a **Frissítés** elemet, hogy a lista folyamatosan frissüljön, amíg a folyamat futtatása be nem fejeződik. 
+1. Válassza ki a **Frissítés** elemet, hogy a lista folyamatosan frissüljön, amíg a folyamat futtatása be nem fejeződik. 
 
     ![Folyamatfuttatások frissítése](media\tutorial-incremental-copy-multiple-tables-powershell\monitor-pipeline-runs-succeded-7.png)
 
-4. Szükség esetén kattintson a **Tevékenységfuttatások megtekintése** hivatkozásra a **Műveletek** területen a folyamatfuttatáshoz társított tevékenységfuttatások megtekintéséhez. 
+1. Szükség esetén kattintson a **Tevékenységfuttatások megtekintése** hivatkozásra a **Műveletek** területen a folyamatfuttatáshoz társított tevékenységfuttatások megtekintéséhez. 
 
 ## <a name="review-the-final-results"></a>A végső eredmények áttekintése
 Az SQL Server Management Studióban futtassa a következő lekérdezéseket a céladatbázison annak ellenőrzéséhez, hogy a rendszer átmásolta-e a frissített/új adatokat a forrástáblákból a céltáblákba. 

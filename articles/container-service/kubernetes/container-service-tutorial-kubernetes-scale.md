@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 478c6dcaa6afd67742df91366021c6186fc1427e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 792d9b1409b9571474f47da4940724df7a764d82
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098532"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429882"
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Kubernetes-podok és -infrastruktúra skálázása
 
@@ -115,7 +115,7 @@ Néhány perc elteltével az Azure Vote alkalmazás minimális terhelése mellet
 
 ## <a name="scale-the-agents"></a>Az ügynökök méretezése
 
-Ha a Kubernetes-fürtöt az előző oktatóanyagban lévő alapértelmezett parancsokkal hozta létre, a három ügynökcsomóponttal rendelkezik. Az ügynökök számát manuálisan módosíthatja, ha több vagy kevesebb, tárolókhoz kapcsolódó számítási feladatot tervez futtatni a fürtön. Futtassa az [az acs scale](/cli/azure/acs#az_acs_scale) parancsot, és adja meg az ügynökök számát a `--new-agent-count` paraméterrel.
+Ha a Kubernetes-fürtöt az előző oktatóanyagban lévő alapértelmezett parancsokkal hozta létre, a három ügynökcsomóponttal rendelkezik. Az ügynökök számát manuálisan módosíthatja, ha több vagy kevesebb, tárolókhoz kapcsolódó számítási feladatot tervez futtatni a fürtön. Futtassa az [az acs scale](/cli/azure/acs#az-acs-scale) parancsot, és adja meg az ügynökök számát a `--new-agent-count` paraméterrel.
 
 A következő példában 4-re növeljük az ügynökcsomópontok számát a *myK8sCluster* nevű Kubernetes-fürtben. A parancs végrehajtása eltarthat néhány percig.
 

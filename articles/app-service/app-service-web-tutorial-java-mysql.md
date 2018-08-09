@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 46e222ffe40db186343250efc71e20d41adbc285
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 77cd4c1d5333f7f10e6caccee5011200bdb4ccca
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203119"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424388"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Oktatóanyag: Java- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -126,7 +126,7 @@ Ebben a lépésben egy [Azure Database for MySQL](../mysql/quickstart-create-mys
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) az [`az group create`](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport egy olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli a kapcsolódó erőforrásokat (például webalkalmazásokat, adatbázisokat és tárfiókokat). 
+Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) az [`az group create`](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport egy olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli a kapcsolódó erőforrásokat (például webalkalmazásokat, adatbázisokat és tárfiókokat). 
 
 A következő példában az Észak-Európa régióban hozunk létre egy erőforráscsoportot:
 
@@ -138,7 +138,7 @@ A `--location` paraméterhez használható lehetséges értékek megtekintéséh
 
 ### <a name="create-a-mysql-server"></a>MySQL-kiszolgáló létrehozása
 
-A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) paranccsal.
+A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) paranccsal.
 
 Az alábbi parancsban írjon egy egyedi kiszolgálónevet a *\<mysql_server_name>*, egy felhasználónevet az *\<admin_user>*, valamint egy jelszót az *\<admin_password>* helyőrző helyére. A kiszolgálónév a postgreSQL-végpont (`https://<mysql_server_name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban.
 
@@ -174,7 +174,7 @@ A MySQL-kiszolgáló létrehozása után az Azure CLI az alábbi példához haso
 
 ### <a name="configure-server-firewall"></a>Kiszolgáló tűzfalának konfigurálása
 
-A Cloud Shellben az [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) parancs használatával hozzon létre egy tűzfalszabályt a MySQL-kiszolgáló számára az ügyfélkapcsolatok engedélyezésére. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
+A Cloud Shellben az [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) parancs használatával hozzon létre egy tűzfalszabályt a MySQL-kiszolgáló számára az ügyfélkapcsolatok engedélyezésére. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -217,7 +217,7 @@ quit
 
 ## <a name="deploy-the-sample-to-azure-app-service"></a>A minta üzembe helyezése az Azure App Service-ben
 
-Az [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) CLI-paranccsal hozzon létre egy Azure App Service-csomagot **INGYENES** tarifacsomaggal. Az App Service-csomag határozza meg az alkalmazások üzemeltetéséhez használt fizikai erőforrásokat. Az App Service-csomaghoz rendelt összes alkalmazás ugyanezeket az erőforrásokat használja, így több alkalmazás üzemeltetése esetén is csökkenthetők a költségek. 
+Az [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) CLI-paranccsal hozzon létre egy Azure App Service-csomagot **INGYENES** tarifacsomaggal. Az App Service-csomag határozza meg az alkalmazások üzemeltetéséhez használt fizikai erőforrásokat. Az App Service-csomaghoz rendelt összes alkalmazás ugyanezeket az erőforrásokat használja, így több alkalmazás üzemeltetése esetén is csökkenthetők a költségek. 
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -243,7 +243,7 @@ Amikor készen áll a csomag, az Azure CLI az alábbi példához hasonló kimene
 
 ### <a name="create-an-azure-web-app"></a>Azure-webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/appservice/web#az_appservice_web_create) CLI-paranccsal hozzon létre egy webalkalmazás-definíciót a `myAppServicePlan` App Service-csomagban. A webalkalmazás-definíció egy URL-címet biztosít, amelyen keresztül az alkalmazás elérhető, valamint több beállítást is konfigurál a kód az Azure-ban történő üzembe helyezéséhez. 
+A Cloud Shellben az [`az webapp create`](/cli/azure/appservice/web#az-appservice-web-create) CLI-paranccsal hozzon létre egy webalkalmazás-definíciót a `myAppServicePlan` App Service-csomagban. A webalkalmazás-definíció egy URL-címet biztosít, amelyen keresztül az alkalmazás elérhető, valamint több beállítást is konfigurál a kód az Azure-ban történő üzembe helyezéséhez. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -270,7 +270,7 @@ A webalkalmazás-definíció megadása után az Azure CLI az alábbi példához 
 
 ### <a name="configure-java"></a>A Java konfigurálása 
 
-A Cloud Shellben az [`az webapp config set`](/cli/azure/webapp/config#az_webapp_config_set) paranccsal állítsa be a Java-futtatókörnyezet az alkalmazás által igényelt konfigurációját.
+A Cloud Shellben az [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set) paranccsal állítsa be a Java-futtatókörnyezet az alkalmazás által igényelt konfigurációját.
 
 Az alábbi parancs a webalkalmazást arra konfigurálja, hogy az újabb Java 8 JDK-n és az [Apache Tomcat](http://tomcat.apache.org/) 8.0-s verzióján fusson.
 
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>FTP-s üzembe helyezés hitelesítő adatainak lekérése 
 Az alkalmazás az Azure App Service-ben való üzembe helyezésének számos módja létezik, így például az FTP, a helyi Git, a GitHub, a Visual Studio Team Services és a BitBucket. Példánkban FTP-n keresztül helyezzük üzembe a korábban a helyi gépen létrehozott .WAR-fájlt az Azure App Service-ben.
 
-Ha szeretné kideríteni, hogy milyen hitelesítő adatokat kell megadni az FTP-parancsban a webalkalmazásnak, használja a Cloud Shellben az [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az_appservice_web_deployment_list_publishing_profiles) parancsot: 
+Ha szeretné kideríteni, hogy milyen hitelesítő adatokat kell megadni az FTP-parancsban a webalkalmazásnak, használja a Cloud Shellben az [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az-appservice-web-deployment-list-publishing-profiles) parancsot: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -413,7 +413,7 @@ Az alkalmazás frissítésekor megjelenik a **Time Created** (Létrehozás időp
 
 Bár a Java-alkalmazás az Azure App Service-ben fut, a konzolnaplófájlokat megkaphatja közvetlenül a terminálban is. Így ugyanazokat a diagnosztikai üzeneteket kaphatja meg az alkalmazáshibák elhárításához.
 
-A naplóstreamelés indításához használja az [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) parancsot a Cloud Shellben.
+A naplóstreamelés indításához használja az [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) parancsot a Cloud Shellben.
 
 ```azurecli-interactive 
 az webapp log tail --name <app_name> --resource-group myResourceGroup 

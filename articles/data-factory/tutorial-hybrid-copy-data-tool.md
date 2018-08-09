@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 01/04/2018
 ms.author: jingwang
-ms.openlocfilehash: b080029cdf7e7200663830abad02ae7e61dbdb99
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e9ace23108b33c1e03db2159dd1da68be8d88e0a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053354"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422006"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása az Adatok másolása eszközzel helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,13 +48,13 @@ Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forr
 
 1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [SQL Server Management Studio letöltését ismertető](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) cikket. 
 
-2. Csatlakozzon az SQL Server-példányához a hitelesítő adataival. 
+1. Csatlakozzon az SQL Server-példányához a hitelesítő adataival. 
 
-3. Hozzon létre egy mintaadatbázist. A fanézetben kattintson a jobb gombbal a **Databases** (Adatbázisok) elemre, majd válassza a **New Database** (Új adatbázis) elemet. 
+1. Hozzon létre egy mintaadatbázist. A fanézetben kattintson a jobb gombbal a **Databases** (Adatbázisok) elemre, majd válassza a **New Database** (Új adatbázis) elemet. 
 
-4. Az **New Database** (Új adatbázis) ablakban adjon nevet az új adatbázisnak, majd kattintson az **OK** gombra. 
+1. Az **New Database** (Új adatbázis) ablakban adjon nevet az új adatbázisnak, majd kattintson az **OK** gombra. 
 
-5. Az **emp** tábla létrehozásához és néhány mintaadat beszúrásához futtassa a következő lekérdezési szkriptet az adatbázison. A fanézetben kattintson a jobb gombbal a létrehozott adatbázisra, majd válassza a **New Query** (Új lekérdezés) elemet.
+1. Az **emp** tábla létrehozásához és néhány mintaadat beszúrásához futtassa a következő lekérdezési szkriptet az adatbázison. A fanézetben kattintson a jobb gombbal a létrehozott adatbázisra, majd válassza a **New Query** (Új lekérdezés) elemet.
 
     ```sql
     CREATE TABLE dbo.emp
@@ -78,17 +78,17 @@ Ebben az oktatóanyagban a tárfiók nevét és kulcsát használjuk. A tárfió
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-ban használt felhasználónevével és jelszavával. 
 
-2. A bal oldali panelen válassza a **További szolgáltatások** lehetőséget. Szűrjön rá a **Tárolás** kulcsszóra, majd válassza a **Tárfiókok** lehetőséget.
+1. A bal oldali panelen válassza a **További szolgáltatások** lehetőséget. Szűrjön rá a **Tárolás** kulcsszóra, majd válassza a **Tárfiókok** lehetőséget.
 
     ![Tárfiók keresése](media/tutorial-hybrid-copy-powershell/search-storage-account.png)
 
-3. A tárfiókok listájában állítson be szűrőt a tárfiókhoz, ha szükséges. Ezután válassza ki a tárfiókot. 
+1. A tárfiókok listájában állítson be szűrőt a tárfiókhoz, ha szükséges. Ezután válassza ki a tárfiókot. 
 
-4. A **Tárfiók** ablakban válassza a **Hozzáférési kulcsok** elemet.
+1. A **Tárfiók** ablakban válassza a **Hozzáférési kulcsok** elemet.
 
     ![Elérési kulcs](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
 
-5. Másolja a **Tárfiók neve** és **1. kulcs** mező értékét, majd illessze be őket egy jegyzettömbbe vagy más szerkesztőbe az oktatóanyag későbbi részeiben történő használatra. 
+1. Másolja a **Tárfiók neve** és **1. kulcs** mező értékét, majd illessze be őket egy jegyzettömbbe vagy más szerkesztőbe az oktatóanyag későbbi részeiben történő használatra. 
 
 #### <a name="create-the-adftutorial-container"></a>Adftutorial tároló létrehozása 
 Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Storage-ban. 
@@ -97,19 +97,19 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
     ![A Blobok elem választása](media/tutorial-hybrid-copy-powershell/select-blobs.png)
 
-2. A **Blob service** ablakban válassza a **Tároló** elemet. 
+1. A **Blob service** ablakban válassza a **Tároló** elemet. 
 
     ![Tároló gomb](media/tutorial-hybrid-copy-powershell/add-container-button.png)
 
-3. Az **Új tároló** ablak **Név** mezőjébe írja be az **adftutorial** nevet, majd kattintson az **OK** gombra. 
+1. Az **Új tároló** ablak **Név** mezőjébe írja be az **adftutorial** nevet, majd kattintson az **OK** gombra. 
 
     ![Új tároló](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
-4. A tárolók listájában kattintson az **adftutorial** elemre.
+1. A tárolók listájában kattintson az **adftutorial** elemre.
 
     ![Tároló kiválasztása](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
 
-5. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
+1. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 
     ![Tároló ablaka](media/tutorial-hybrid-copy-powershell/container-page.png)
 
@@ -119,32 +119,32 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 1. A bal oldali menüben válassza az **Új** > **Adatok + analitika** > **Adat-előállító** elemet. 
   
    ![Új adat-előállító létrehozása](./media/tutorial-hybrid-copy-data-tool/new-azure-data-factory-menu.png)
-2. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
+1. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
    
      ![Új adat-előállító](./media/tutorial-hybrid-copy-data-tool/new-azure-data-factory.png)
 
    Az adat-előállító nevének *globálisan egyedinek* kell lennie. Ha a Név mezőnél az alábbi hibaüzenet jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialDataFactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
    ![Új adat-előállító neve](./media/tutorial-hybrid-copy-data-tool/name-not-available-error.png)
-3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
-4. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
+1. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
+1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
   
       - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot.
 
       - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét. 
         
       Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/resource-group-overview.md) ismertető cikket.
-5. A **Verzió** résznél válassza a **V2 ** lehetőséget.
-6. A **Hely** alatt válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például Azure Storage és SQL Database) és számítási erőforrások (például Azure HDInsight) más helyeken/régiókban is lehetnek.
-7. Válassza a **Rögzítés az irányítópulton** lehetőséget. 
-8. Kattintson a **Létrehozás** gombra.
-9. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható:
+1. A **Verzió** résznél válassza a **V2 ** lehetőséget.
+1. A **Hely** alatt válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például Azure Storage és SQL Database) és számítási erőforrások (például Azure HDInsight) más helyeken/régiókban is lehetnek.
+1. Válassza a **Rögzítés az irányítópulton** lehetőséget. 
+1. Kattintson a **Létrehozás** gombra.
+1. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható:
 
     ![Adat-előállító üzembe helyezése csempe](media/tutorial-hybrid-copy-data-tool/deploying-data-factory.png)
-10. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
+1. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
   
     ![Data factory kezdőlap](./media/tutorial-hybrid-copy-data-tool/data-factory-home-page.png)
-11. A Data Factory felhasználói felületének külön lapon történő elindításához válassza a **Tartalomkészítés és monitorozás** csempét. 
+1. A Data Factory felhasználói felületének külön lapon történő elindításához válassza a **Tartalomkészítés és monitorozás** csempét. 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Folyamat létrehozása az Adatok másolása eszközzel
 
@@ -152,43 +152,43 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
    ![Az Adatok másolása eszköz csempéje](./media/tutorial-hybrid-copy-data-tool/copy-data-tool-tile.png)
 
-2. Az Adatok másolása eszköz **Tulajdonságok** lapján a **Feladat neve** alatt írja be a következőt: **CopyFromOnPremSqlToAzureBlobPipeline**. Ezután kattintson a **Tovább** gombra. Az Adatok másolása eszköz létrehoz egy folyamatot a mezőben megadott néven. 
+1. Az Adatok másolása eszköz **Tulajdonságok** lapján a **Feladat neve** alatt írja be a következőt: **CopyFromOnPremSqlToAzureBlobPipeline**. Ezután kattintson a **Tovább** gombra. Az Adatok másolása eszköz létrehoz egy folyamatot a mezőben megadott néven. 
 
    ![Feladat neve](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
-3. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre. 
+1. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre. 
 
    ![Új társított szolgáltatás létrehozása](./media/tutorial-hybrid-copy-data-tool/create-new-source-data-store.png)
 
-4. Az **Új társított szolgáltatás** részben keresse meg a **SQL Server** elemet, majd kattintson a **Következő** gombra. 
+1. Az **Új társított szolgáltatás** részben keresse meg a **SQL Server** elemet, majd kattintson a **Következő** gombra. 
 
    ![Az SQL Server kiválasztása](./media/tutorial-hybrid-copy-data-tool/select-source-data-store.png)
 
-5. Az Új társított szolgáltatás (SQL Server) **Név**** résznél adja meg a következőt: **SqlServerLinkedService**. Válassza a **+Új** elemet a **Csatlakozás integrációs modulon keresztül** résznél. Létre kell hoznia egy saját üzemeltetésű integrációs modult, le kell töltenie a gépére, és regisztrálnia kell a Data Factoryban. A saját üzemeltetésű integrációs modul adatokat másol a helyszíni környezetből a felhőbe.
+1. Az Új társított szolgáltatás (SQL Server) **Név**** résznél adja meg a következőt: **SqlServerLinkedService**. Válassza a **+Új** elemet a **Csatlakozás integrációs modulon keresztül** résznél. Létre kell hoznia egy saját üzemeltetésű integrációs modult, le kell töltenie a gépére, és regisztrálnia kell a Data Factoryban. A saját üzemeltetésű integrációs modul adatokat másol a helyszíni környezetből a felhőbe.
 
    ![Saját üzemeltetésű integrációs modul létrehozása](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-link.png)
 
-6. Az **Integrációs modul telepítése** párbeszédpanelen válassza a**Magánhálózat** lehetőséget. Ezután kattintson a **Tovább** gombra. 
+1. Az **Integrációs modul telepítése** párbeszédpanelen válassza a**Magánhálózat** lehetőséget. Ezután kattintson a **Tovább** gombra. 
 
    ![](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
 
-7. Az **Integrációs modul telepítése** párbeszédpanelen a **Név** mezőbe írja be a **TutorialIntegrationRuntime** értéket. Ezután kattintson a **Tovább** gombra. 
+1. Az **Integrációs modul telepítése** párbeszédpanelen a **Név** mezőbe írja be a **TutorialIntegrationRuntime** értéket. Ezután kattintson a **Tovább** gombra. 
 
    ![Integrációs modul neve](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog.png)
 
-8. Kattintson a **Kattintson ide a számítógépen történő expressz telepítés indításához** elemre. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult. 
+1. Kattintson a **Kattintson ide a számítógépen történő expressz telepítés indításához** elemre. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult. 
 
     ![Expressz telepítés indítása ezen a számítógépen hivatkozás](./media/tutorial-hybrid-copy-data-tool/launch-express-setup-link.png)
 
-9. Futtassa a letöltött alkalmazást. Az expressz telepítés állapota látható az ablakban. 
+1. Futtassa a letöltött alkalmazást. Az expressz telepítés állapota látható az ablakban. 
 
     ![Expressz telepítés állapota](./media/tutorial-hybrid-copy-data-tool/express-setup-status.png)
 
-10. Ellenőrizze, hogy a **TutorialIntegrationRuntime** van-e kiválasztva az **Integrációs modul** mezőben.
+1. Ellenőrizze, hogy a **TutorialIntegrationRuntime** van-e kiválasztva az **Integrációs modul** mezőben.
 
     ![Integrációs modul kiválasztva](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
 
-11. A **Helyszíni SQL Server-adatbázis megadása** területen tegye a következőket: 
+1. A **Helyszíni SQL Server-adatbázis megadása** területen tegye a következőket: 
 
       a. A **Név** mezőben adja meg az **SqlServerLinkedService** nevet.
 
@@ -202,25 +202,25 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
       f. Adja meg a felhasználónévhez tartozó **jelszót**. Válassza a **Finish** (Befejezés) elemet. 
 
-12. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
      ![](./media/tutorial-hybrid-copy-data-tool/select-source-linked-service.png)
 
-13. A **Másolni kívánt adatokat tartalmazó táblák kiválasztása vagy egyéni lekérdezés használata** lapon válassza a listáról a **[dbo].[emp]** táblát, és kattintson a **Tovább** gombra. Az adatbázison alapuló bármelyik másik táblát is kiválaszthatja.
+1. A **Másolni kívánt adatokat tartalmazó táblák kiválasztása vagy egyéni lekérdezés használata** lapon válassza a listáról a **[dbo].[emp]** táblát, és kattintson a **Tovább** gombra. Az adatbázison alapuló bármelyik másik táblát is kiválaszthatja.
 
      ![A Product tábla kiválasztása](./media/tutorial-hybrid-copy-data-tool/select-emp-table.png)
 
-14. A **Céladattár** oldalon válassza ki az **Új kapcsolat létrehozása** elemet
+1. A **Céladattár** oldalon válassza ki az **Új kapcsolat létrehozása** elemet
 
      //image create-new-sink-connection.png
 
      ![Társított célszolgáltatás létrehozása](./media/tutorial-hybrid-copy-data-tool/create-new-sink-connection.png)
 
-15. Az **Új társított szolgáltatás** ablakban keresse meg és válassza ki az **Azure Blob** lehetőséget, majd kattintson a **Folytatás** gombra. 
+1. Az **Új társított szolgáltatás** ablakban keresse meg és válassza ki az **Azure Blob** lehetőséget, majd kattintson a **Folytatás** gombra. 
 
      ![Blob-tároló kiválasztása](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
 
-16. Az **Új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen végezze el az alábbi lépéseket: 
+1. Az **Új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen végezze el az alábbi lépéseket: 
 
      a. A **Név**** résznél adja meg az **AzureStorageLinkedService** értéket.
 
@@ -232,43 +232,43 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
      ![A tárfiók megadása](./media/tutorial-hybrid-copy-data-tool/specify-azure-blob-storage-account.png)
 
-17. A **Céladattár** párbeszédpanelen kattintson a **Következő** gombra. A **Kapcsolat tulajdonságai** résznél az **Azure Storage-szolgáltatást** válassza **Azure Blob Storage** tárolóként. Kattintson a **Tovább** gombra. 
+1. A **Céladattár** párbeszédpanelen kattintson a **Következő** gombra. A **Kapcsolat tulajdonságai** résznél az **Azure Storage-szolgáltatást** válassza **Azure Blob Storage** tárolóként. Kattintson a **Tovább** gombra. 
 
      ![kapcsolat tulajdonságai](./media/tutorial-hybrid-copy-data-tool/select-connection-properties.png)
 
-18. **A kimeneti fájl vagy mappa kiválasztása** párbeszédpanelen a **Mappa elérési útja** alatt adja meg az **adftutorial/fromonprem** nevet. Az előfeltételek részeként létrehozott egy **adftutorial** nevű tárolót. Ha a kimeneti mappa nem létezik (jelen esetben a **fromonprem**), a Data Factory automatikusan létrehozza. A **Tallózás** gombbal is megkeresheti a blobtárolót és a hozzá tartozó tárolókat/mappákat. Ha nem ad meg semmilyen értéket a **Fájlnév** résznél, alapértelmezés szerint a forrásnevet fogja használni (jelen esetben a **dbo.emp** nevet).
+1. **A kimeneti fájl vagy mappa kiválasztása** párbeszédpanelen a **Mappa elérési útja** alatt adja meg az **adftutorial/fromonprem** nevet. Az előfeltételek részeként létrehozott egy **adftutorial** nevű tárolót. Ha a kimeneti mappa nem létezik (jelen esetben a **fromonprem**), a Data Factory automatikusan létrehozza. A **Tallózás** gombbal is megkeresheti a blobtárolót és a hozzá tartozó tárolókat/mappákat. Ha nem ad meg semmilyen értéket a **Fájlnév** résznél, alapértelmezés szerint a forrásnevet fogja használni (jelen esetben a **dbo.emp** nevet).
            
      ![Kimeneti fájl vagy mappa kiválasztása](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
 
-19. A **Fájlformátum beállításai** párbeszédpanelen kattintson a **Tovább** gombra. 
+1. A **Fájlformátum beállításai** párbeszédpanelen kattintson a **Tovább** gombra. 
 
      ![Fájlformátum beállításai lap](./media/tutorial-hybrid-copy-data-tool/file-format-settings-page.png)
 
-20. A **Beállítások** párbeszédpanelen kattintson a **Tovább** gombra. 
+1. A **Beállítások** párbeszédpanelen kattintson a **Tovább** gombra. 
 
      ![Beállítások lap](./media/tutorial-hybrid-copy-data-tool/settings-page.png)
 
-21. Az **Összefoglaló** párbeszédpanelen tekintse át az összes beállítás értékét, és kattintson a **Tovább** gombra. 
+1. Az **Összefoglaló** párbeszédpanelen tekintse át az összes beállítás értékét, és kattintson a **Tovább** gombra. 
 
      ![Összefoglaló lap](./media/tutorial-hybrid-copy-data-tool/summary-page.png)
 
-22. A létrehozott folyamat vagy feladat monitorozásához az **Üzembe helyezés** lapon válassza a **Monitorozás** elemet.
+1. A létrehozott folyamat vagy feladat monitorozásához az **Üzembe helyezés** lapon válassza a **Monitorozás** elemet.
 
      ![Üzembe helyezés lap](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
 
-23. A **Monitorozás** lapon megtekintheti a létrehozott folyamat állapotát. A **Művelet** oszlop hivatkozásaival megtekintheti a folyamat futásához társított tevékenységfuttatásokat, illetve újra futtathatja a folyamatot. 
+1. A **Monitorozás** lapon megtekintheti a létrehozott folyamat állapotát. A **Művelet** oszlop hivatkozásaival megtekintheti a folyamat futásához társított tevékenységfuttatásokat, illetve újra futtathatja a folyamatot. 
 
      ![Folyamatfuttatások monitorozása](./media/tutorial-hybrid-copy-data-tool/monitor-pipeline-runs.png)
 
-24. Kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra a folyamat futásához társított tevékenységfuttatások megtekintéséhez. A másolási művelet részleteinek megtekintéséhez válassza a **Műveletek** oszlop **Részletek** hivatkozását (szemüveg ikon). A **Folyamatfuttatások** nézetre való visszalépéshez válassza a lap tetejének közelében található **Folyamatok** elemet.
+1. Kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra a folyamat futásához társított tevékenységfuttatások megtekintéséhez. A másolási művelet részleteinek megtekintéséhez válassza a **Műveletek** oszlop **Részletek** hivatkozását (szemüveg ikon). A **Folyamatfuttatások** nézetre való visszalépéshez válassza a lap tetejének közelében található **Folyamatok** elemet.
 
      ![Tevékenységfuttatások monitorozása](./media/tutorial-hybrid-copy-data-tool/monitor-activity-runs.png)
 
-25. Ellenőrizze, hogy látja-e a kimeneti fájlt az **adftutorial** tároló **fromonprem** mappájában. 
+1. Ellenőrizze, hogy látja-e a kimeneti fájlt az **adftutorial** tároló **fromonprem** mappájában. 
 
      ![Kimeneti blob](./media/tutorial-hybrid-copy-data-tool/output-blob.png)
 
-26. A szerkesztő módra való váltáshoz kattintson a bal oldalon található **Szerkesztés** fülre. A szerkesztővel frissítheti a társított szolgáltatásokat, az adatkészleteket és az eszközzel létrehozott folyamatokat. A szerkesztőben megnyitott entitáshoz társított JSON-kód megtekintéséhez kattintson a **Kód** elemre. Az entitások Data Factory felhasználói felületen való szerkesztéséről [a jelen oktatóanyag Azure Portal-verziójában](tutorial-copy-data-portal.md) talál további információt.
+1. A szerkesztő módra való váltáshoz kattintson a bal oldalon található **Szerkesztés** fülre. A szerkesztővel frissítheti a társított szolgáltatásokat, az adatkészleteket és az eszközzel létrehozott folyamatokat. A szerkesztőben megnyitott entitáshoz társított JSON-kód megtekintéséhez kattintson a **Kód** elemre. Az entitások Data Factory felhasználói felületen való szerkesztéséről [a jelen oktatóanyag Azure Portal-verziójában](tutorial-copy-data-portal.md) talál további információt.
 
      ![Szerkesztés lap](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 

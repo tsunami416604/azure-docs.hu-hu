@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 07/13/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: 20b549914daf71c0d23235b5c20ebb6f14367471
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: ce84498ab89891bd7b96cfcc6b0c7ac029c93cbd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172034"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423079"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Docker Python- és PostgreSQL-webalkalmazás létrehozása az Azure-ban
 
@@ -133,7 +133,7 @@ Ebben a lépésben egy PostgreSQL-adatbázist hozunk létre az Azure-ban. Miutá
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 
-Hozzon létre egy PostgreSQL-kiszolgálót a Cloud Shellben az [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) paranccsal.
+Hozzon létre egy PostgreSQL-kiszolgálót a Cloud Shellben az [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) paranccsal.
 
 Az alábbi példaparancsban a *\<postgresql_name>* helyett írjon be egy egyedi kiszolgálónevet, az *\<admin_username>* és az *\<admin_password>* helyett pedig a kívánt felhasználói hitelesítő adatokat. A kiszolgálónév a postgreSQL-végpont (`https://<postgresql_name>.postgres.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban. A felhasználói hitelesítő adatok az adatbázis-rendszergazdai felhasználói fiókhoz szükségesek. 
 
@@ -339,7 +339,7 @@ Ebben a lépésben létrehoz egy alkalmazást az Azure App Service-ben, majd úg
 
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozzon létre egy webalkalmazást a *myAppServicePlan* App Service-csomagban.
+A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy webalkalmazást a *myAppServicePlan* App Service-csomagban.
 
 Az alábbi parancsban cserélje le az *\<app_name>* helyőrzőt egy egyedi alkalmazásnévre. Ez a név a webalkalmazás alapértelmezett URL-címének részét képezi majd, így egyedi alkalmazásnévnek kell lennie a teljes Azure App Service-ben.
 
@@ -368,7 +368,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 Az oktatóanyag korábbi részében meghatároztunk környezeti változókat a PostgreSQL-adatbázishoz való kapcsolódáshoz.
 
-Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adhatja meg az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) paranccsal.
+Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adhatja meg az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) paranccsal.
 
 Az alábbi példa az adatbázis kapcsolati adatait alkalmazásbeállításokként adja meg. Emellett a *WEBSITES_PORT* változó értékeként az 5000-es tárolóport van megadva, ami lehetővé teszi a tároló számára HTTP-forgalom fogadását a 80-as porton.
 
@@ -378,7 +378,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 ### <a name="configure-custom-container-deployment"></a>Egyéni tároló üzembe helyezésének konfigurálása
 
-Bár már megadta a tárolórendszerkép nevét, meg kell adnia a tárolóregisztrációs adatbázis egyéni URL-címét és a felhasználói hitelesítő adatokat is. A Cloud Shellben futtassa az [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) parancsot.
+Bár már megadta a tárolórendszerkép nevét, meg kell adnia a tárolóregisztrációs adatbázis egyéni URL-címét és a felhasználói hitelesítő adatokat is. A Cloud Shellben futtassa az [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) parancsot.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app_name> --docker-registry-server-user "<registry_name>" --docker-registry-server-password "<registry_password>" --docker-registry-server-url "https://<registry_name>.azurecr.io"

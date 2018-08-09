@@ -8,12 +8,12 @@ manager: jpconnock
 ms.service: devops
 ms.custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 7f3facbc1bca51061d49ca99778c60d58c525144
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 069c6df38f9caa73a30fbc25baafdf7efbd2f402
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391274"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429396"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>A Jenkins üzemelő példányainak igény szerinti skálázása Azure VM-ügynökökkel
 
@@ -44,13 +44,13 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > Ha a Jenkinst a [megoldássablonnal](install-jenkins-solution-template.md) telepítette az Azure-ban, az Azure VM Agent beépülő modul már telepítve van.
 
 1. A Jenkins irányítópultján válassza a **Manage Jenkins** (Jenkins kezelése), majd a **Manage Plugins** (Beépülő modulok kezelése) lehetőséget.
-2. Válassza az **Available** (Elérhető) lapot, és keresse meg az **Azure VM Agents** (Azure VM-ügynökök) elemet. Jelölje be a beépülő modul mellett található jelölőnégyzetet, majd kattintson az **Install without restart** (Telepítés újraindítás nélkül) elemre az irányítópult alján.
+1. Válassza az **Available** (Elérhető) lapot, és keresse meg az **Azure VM Agents** (Azure VM-ügynökök) elemet. Jelölje be a beépülő modul mellett található jelölőnégyzetet, majd kattintson az **Install without restart** (Telepítés újraindítás nélkül) elemre az irányítópult alján.
 
 ## <a name="configure-the-azure-vm-agents-plugin"></a>Az Azure VM Agents beépülő modul konfigurálása
 
 1. A Jenkins irányítópultján válassza a **Manage Jenkins** (Jenkins kezelése), majd a **Configure System** (Rendszer konfigurálása) lehetőséget.
-2. Görgessen az oldal aljára, és a **Cloud** (Felhő) szakasz **Add new cloud** (Új felhő hozzáadása) legördülő menüjében válassza a **Microsoft Azure VM Agents** (Microsoft Azure VM-ügynökök) lehetőséget.
-3. Az **Azure Credentials** (Azure-beli hitelesítő adatok) szakasz **Add** (Hozzáadás) legördülő menüjében válasszon ki egy meglévő szolgáltatásnevet. Ha a listában nem szerepel ilyen, az alábbi lépések végrehajtásával [hozzon létre egy szolgáltatásnevet](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager) az Azure-fiókhoz, és adja hozzá a Jenkins-konfigurációhoz:   
+1. Görgessen az oldal aljára, és a **Cloud** (Felhő) szakasz **Add new cloud** (Új felhő hozzáadása) legördülő menüjében válassza a **Microsoft Azure VM Agents** (Microsoft Azure VM-ügynökök) lehetőséget.
+1. Az **Azure Credentials** (Azure-beli hitelesítő adatok) szakasz **Add** (Hozzáadás) legördülő menüjében válasszon ki egy meglévő szolgáltatásnevet. Ha a listában nem szerepel ilyen, az alábbi lépések végrehajtásával [hozzon létre egy szolgáltatásnevet](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager) az Azure-fiókhoz, és adja hozzá a Jenkins-konfigurációhoz:   
 
     a. Kattintson az **Add** (Hozzáadás) gombra az **Azure Credentials** (Azure-beli hitelesítő adatok) elem mellett, majd válassza a **Jenkins**lehetőséget.   
     b. Az **Add Credentials** (Hitelesítő adatok hozzáadása) párbeszédpanelen válassza a **Microsoft Azure Service Principal** (Microsoft Azure-szolgáltatásnév) lehetőséget a **Kind** (Altípus) legördülő menüben.   
@@ -95,20 +95,20 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
     
 
-4. A **Resource Group Name** (Erőforráscsoport neve) szakaszban hagyja bejelölve a **Create new** (Új létrehozása) elemet, és adja meg a `myJenkinsAgentGroup` nevet.
-5. A **Verify configuration** (Konfiguráció ellenőrzése) elemre kattintva kapcsolódjon az Azure-hoz a profilbeállítások tesztelése céljából.
-6. Az **Apply** (Alkalmaz) elemre kattintva frissítse a beépülő modul konfigurációját.
+1. A **Resource Group Name** (Erőforráscsoport neve) szakaszban hagyja bejelölve a **Create new** (Új létrehozása) elemet, és adja meg a `myJenkinsAgentGroup` nevet.
+1. A **Verify configuration** (Konfiguráció ellenőrzése) elemre kattintva kapcsolódjon az Azure-hoz a profilbeállítások tesztelése céljából.
+1. Az **Apply** (Alkalmaz) elemre kattintva frissítse a beépülő modul konfigurációját.
 
 ## <a name="configure-agent-resources"></a>Ügynökerőforrások konfigurálása
 
 Konfiguráljon egy sablont az Azure-beli virtuálisgép-ügynökök definiálásához. Ez a sablon határozza meg az újonnan létrehozott ügynökök számítási erőforrásait.
 
 1. Kattintson az **Add** (Hozzáadás) gombra az **Add Azure Virtual Machine Template** (Azure-beli virtuális gép sablonjának hozzáadása) elem mellett.
-2. Adja meg a `defaulttemplate` nevet a **Name** (Név) mezőben.
-3. Adja meg az `ubuntu` címkét a **Label** (Címke) mezőben.
-4. A kombinált listában válassza ki a kívánt [Azure-régiót](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-5. Válassza ki a [virtuális gép méretét](/azure/virtual-machines/linux/sizes) a **Virtual Machine Size** (Virtuális gép mérete) mezőben. Az általános célú `Standard_DS1_v2` méret megfelel ehhez az oktatóanyaghoz.   
-6. A **Retention time** (Megőrzési idő) beállítást hagyja a `60` értéken. Ez a beállítás adja meg, hogy hány percig vár a Jenkins, mielőtt felszabadítaná az inaktív ügynököket. Adjon meg 0 értéket, ha nem kívánja automatikusan eltávolítani az inaktív ügynököket.
+1. Adja meg a `defaulttemplate` nevet a **Name** (Név) mezőben.
+1. Adja meg az `ubuntu` címkét a **Label** (Címke) mezőben.
+1. A kombinált listában válassza ki a kívánt [Azure-régiót](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+1. Válassza ki a [virtuális gép méretét](/azure/virtual-machines/linux/sizes) a **Virtual Machine Size** (Virtuális gép mérete) mezőben. Az általános célú `Standard_DS1_v2` méret megfelel ehhez az oktatóanyaghoz.   
+1. A **Retention time** (Megőrzési idő) beállítást hagyja a `60` értéken. Ez a beállítás adja meg, hogy hány percig vár a Jenkins, mielőtt felszabadítaná az inaktív ügynököket. Adjon meg 0 értéket, ha nem kívánja automatikusan eltávolítani az inaktív ügynököket.
 
    ![Általános VM-konfiguráció](./media/jenkins-azure-vm-agents/general-config.png)
 
@@ -125,18 +125,18 @@ A **Verify Template** (Sablon ellenőrzése) elemre kattintva ellenőrizze a kon
 ## <a name="create-a-job-in-jenkins"></a>Feladat létrehozása a Jenkinsben
 
 1. A Jenkins irányítópulton kattintson az **Új elem** lehetőségre. 
-2. Adja meg a `demoproject1` nevet, és válassza a **Freestyle project** (Szabad stílusú projekt) lehetőséget, majd kattintson az **OK** gombra.
-3. A **General** (Általános) lapon válassza a **Restrict where project can be run** (Projekt futtatási helyének korlátozása) lehetőséget, és írja be az `ubuntu` kifejezést a **Label Expression** (Feliratkifejezés) mezőbe. Egy üzenet jelenik meg, amely megerősíti, hogy a feliratot az előző lépésben létrehozott felhőkonfiguráció szolgálja ki. 
+1. Adja meg a `demoproject1` nevet, és válassza a **Freestyle project** (Szabad stílusú projekt) lehetőséget, majd kattintson az **OK** gombra.
+1. A **General** (Általános) lapon válassza a **Restrict where project can be run** (Projekt futtatási helyének korlátozása) lehetőséget, és írja be az `ubuntu` kifejezést a **Label Expression** (Feliratkifejezés) mezőbe. Egy üzenet jelenik meg, amely megerősíti, hogy a feliratot az előző lépésben létrehozott felhőkonfiguráció szolgálja ki. 
    ![Feladat beállítása](./media/jenkins-azure-vm-agents/job-config.png)
-4. A **Source Code Management** (Forráskódkezelés) lapon válassza a **Git** elemet, és írja be a következő URL-címet a **Repository URL** (Adattár URL-címe) mezőbe: `https://github.com/spring-projects/spring-petclinic.git`
-5. A **Build** lapon válassza az **Add build step** (Buildelési lépés hozzáadása), majd az **Invoke top-level Maven targets** (Felső szintű Maven-célok meghívása) lehetőséget. Írja be a `package` szöveget a **Goals** (Célok) mezőbe.
-6. A feladatdefiníció mentéséhez kattintson a **Mentés** elemre.
+1. A **Source Code Management** (Forráskódkezelés) lapon válassza a **Git** elemet, és írja be a következő URL-címet a **Repository URL** (Adattár URL-címe) mezőbe: `https://github.com/spring-projects/spring-petclinic.git`
+1. A **Build** lapon válassza az **Add build step** (Buildelési lépés hozzáadása), majd az **Invoke top-level Maven targets** (Felső szintű Maven-célok meghívása) lehetőséget. Írja be a `package` szöveget a **Goals** (Célok) mezőbe.
+1. A feladatdefiníció mentéséhez kattintson a **Mentés** elemre.
 
 ## <a name="build-the-new-job-on-an-azure-vm-agent"></a>Az új feladat felépítése egy azure-os virtuálisgép-ügynökön
 
 1. Térjen vissza a Jenkins irányítópultra.
-2. Válassza ki az előző lépésben létrehozott feladatot, és kattintson a **Build now** (Buildelés most) gombra. Egy új build kerül a várólistára, de nem indul el, amíg létre nem jön egy ügynök virtuális gép az Azure-előfizetésben.
-3. A fordítás befejeződése után nyissa meg a **Konzolkimenetet**. Látható, hogy a buildelés távolról lett végrehajtva egy Azure-ügynökön.
+1. Válassza ki az előző lépésben létrehozott feladatot, és kattintson a **Build now** (Buildelés most) gombra. Egy új build kerül a várólistára, de nem indul el, amíg létre nem jön egy ügynök virtuális gép az Azure-előfizetésben.
+1. A fordítás befejeződése után nyissa meg a **Konzolkimenetet**. Látható, hogy a buildelés távolról lett végrehajtva egy Azure-ügynökön.
 
 ![Konzolkimenet](./media/jenkins-azure-vm-agents/console-output.png)
 

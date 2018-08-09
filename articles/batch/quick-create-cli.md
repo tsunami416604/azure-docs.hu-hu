@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f5790f57b66f1d73ff98d5f84276ec9a44568432
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 142305cf371135e71424ca38885c40595398a74d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857926"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427837"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure CLI használatával
 
@@ -29,7 +29,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus2* helyen.
 
@@ -41,7 +41,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-A Batch-fiókot összekapcsolhatja egy Azure Storage-fiókkal. Bár a rövid útmutatóhoz nem kötelező, a Storage-fiók hasznos az alkalmazások üzembe helyezéséhez, valamint a legtöbb valós számítási feladat be- és kimeneti adatainak tárolásához. Az [az storage account create](/cli/azure/storage/account#az_storage_account_create) paranccsal hozzon létre egy Storage-fiókot az erőforráscsoportban.
+A Batch-fiókot összekapcsolhatja egy Azure Storage-fiókkal. Bár a rövid útmutatóhoz nem kötelező, a Storage-fiók hasznos az alkalmazások üzembe helyezéséhez, valamint a legtöbb valós számítási feladat be- és kimeneti adatainak tárolásához. Az [az storage account create](/cli/azure/storage/account#az-storage-account-create) paranccsal hozzon létre egy Storage-fiókot az erőforráscsoportban.
 
 ```azurecli-interactive
 az storage account create \
@@ -53,7 +53,7 @@ az storage account create \
 
 ## <a name="create-a-batch-account"></a>Batch-fiók létrehozása
 
-Az [az batch account create](/cli/azure/batch/account#az_batch_account_create) paranccsal hozzon létre egy Batch-fiókot. Számítási erőforrások (számítási csomópontok készletei) és Batch-feladatok létrehozásához szükség van egy fiókra.
+Az [az batch account create](/cli/azure/batch/account#az-batch-account-create) paranccsal hozzon létre egy Batch-fiókot. Számítási erőforrások (számítási csomópontok készletei) és Batch-feladatok létrehozásához szükség van egy fiókra.
 
 Az alábbi példa egy *mybatchaccount* nevű Batch-fiókot hoz létre a *myResourceGroup* erőforráscsoportban, és összekapcsolja a létrehozott tárfiókkal.  
 
@@ -65,7 +65,7 @@ az batch account create \
     --location eastus2
 ```
 
-A számítási készletek és feladatok létrehozásához és kezeléséhez hitelesítést kell végeznie a Batchben. Jelentkezzen be a fiókba az [az batch account login](/cli/azure/batch/account#az_batch_account_login) paranccsal. A bejelentkezés után az `az batch` parancsok ezt a fiókkörnyezetet használják.
+A számítási készletek és feladatok létrehozásához és kezeléséhez hitelesítést kell végeznie a Batchben. Jelentkezzen be a fiókba az [az batch account login](/cli/azure/batch/account#az-batch-account-login) paranccsal. A bejelentkezés után az `az batch` parancsok ezt a fiókkörnyezetet használják.
 
 ```azurecli-interactive 
 az batch account login \
@@ -76,7 +76,7 @@ az batch account login \
 
 ## <a name="create-a-pool-of-compute-nodes"></a>Számításicsomópont-készlet létrehozása
 
-Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy linuxos számítási csomópontokból álló mintakészletet az [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) paranccsal. A következő példában egy *mypool* nevű, 2 *Standard_A1_v2* méretű, Ubuntu 16.04 LTS rendszert futtató csomópontot tartalmazó készletet hozunk létre. A javasolt csomópontméret jó teljesítmény/költség arányt kínál a jelen rövid példában.
+Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy linuxos számítási csomópontokból álló mintakészletet az [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) paranccsal. A következő példában egy *mypool* nevű, 2 *Standard_A1_v2* méretű, Ubuntu 16.04 LTS rendszert futtató csomópontot tartalmazó készletet hozunk létre. A javasolt csomópontméret jó teljesítmény/költség arányt kínál a jelen rövid példában.
  
 ```azurecli-interactive
 az batch pool create \
@@ -86,7 +86,7 @@ az batch pool create \
     --node-agent-sku-id "batch.node.ubuntu 16.04" 
 ```
 
-A Batch azonnal létrehozza a készletet, de a számítási csomópontok lefoglalása és elindítása igénybe vesz néhány percet. Eközben a készlet `resizing` állapotban van. A készlet állapotának megtekintéséhez futtassa az [az batch pool show](/cli/azure/batch/pool#az_batch_pool_show) parancsot. Ez a parancs a készlet összes tulajdonságát megjeleníti, és lehetővé teszi konkrét tulajdonságok lekérdezését. A következő parancs a készlet lefoglalási állapotát kérdezi le:
+A Batch azonnal létrehozza a készletet, de a számítási csomópontok lefoglalása és elindítása igénybe vesz néhány percet. Eközben a készlet `resizing` állapotban van. A készlet állapotának megtekintéséhez futtassa az [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) parancsot. Ez a parancs a készlet összes tulajdonságát megjeleníti, és lehetővé teszi konkrét tulajdonságok lekérdezését. A következő parancs a készlet lefoglalási állapotát kérdezi le:
 
 ```azurecli-interactive
 az batch pool show --pool-id mypool \
@@ -97,7 +97,7 @@ Miközben a készlet állapotának változására vár, folytassa az alábbi lé
 
 ## <a name="create-a-job"></a>Feladat létrehozása
 
-Most, hogy már rendelkezik készlettel, hozzon létre egy feladatot, amelyet azon futtat.  A Batch-feladat egy vagy több tevékenység logikai csoportja. Egy Batch-feladat magában foglalja a tevékenységek közös beállításait, mint a prioritást, illetve a készletet, amelyeken a tevékenységeket futtatni szeretné. Az [az batch job create](/cli/azure/batch/job#az_batch_job_create) paranccsal hozzon létre egy Batch-feladatot. Az alábbi példa egy *myjob* nevű feladatot hoz létre a *mypool* készleten. A feladat kezdetben nem tartalmaz tevékenységeket.
+Most, hogy már rendelkezik készlettel, hozzon létre egy feladatot, amelyet azon futtat.  A Batch-feladat egy vagy több tevékenység logikai csoportja. Egy Batch-feladat magában foglalja a tevékenységek közös beállításait, mint a prioritást, illetve a készletet, amelyeken a tevékenységeket futtatni szeretné. Az [az batch job create](/cli/azure/batch/job#az-batch-job-create) paranccsal hozzon létre egy Batch-feladatot. Az alábbi példa egy *myjob* nevű feladatot hoz létre a *mypool* készleten. A feladat kezdetben nem tartalmaz tevékenységeket.
 
 ```azurecli-interactive 
 az batch job create \
@@ -107,7 +107,7 @@ az batch job create \
 
 ## <a name="create-tasks"></a>Tevékenységek létrehozása
 
-Most pedig az [az batch task create](/cli/azure/batch/task#az_batch_task_create) paranccsal hozzon létre a feladatban futtatni kívánt tevékenységeket. Ebben a példában négy azonos tevékenységet hozunk létre. Minden tevékenység egy `command-line` futtatásával megjeleníti a Batch környezeti változókat a számítási csomóponton, majd vár 90 másodpercet. Batch használata esetén ebben a parancssorban adhatja meg az alkalmazást vagy a szkriptet. A Batch számos módszert kínál az alkalmazások és szkriptek számítási csomópontokon történő üzembe helyezésére.
+Most pedig az [az batch task create](/cli/azure/batch/task#az-batch-task-create) paranccsal hozzon létre a feladatban futtatni kívánt tevékenységeket. Ebben a példában négy azonos tevékenységet hozunk létre. Minden tevékenység egy `command-line` futtatásával megjeleníti a Batch környezeti változókat a számítási csomóponton, majd vár 90 másodpercet. Batch használata esetén ebben a parancssorban adhatja meg az alkalmazást vagy a szkriptet. A Batch számos módszert kínál az alkalmazások és szkriptek számítási csomópontokon történő üzembe helyezésére.
 
 Az alábbi Bash-szkript 4 párhuzamos tevékenységet hoz létre (*mytask1*–*mytask4*).
 
@@ -127,7 +127,7 @@ A parancskimenet megjeleníti az egyes tevékenységek beállításait. A Batch 
 
 Tevékenység létrehozása után a Batch várólistára helyezi azt a készleten való futtatáshoz. Amint egy csomópont készen áll a futtatásra, a rendszer futtatja a tevékenységet.
 
-Az [az batch task show](/cli/azure/batch/task#az_batch_task_show) paranccsal tekintheti meg a Batch-tevékenységek állapotát. A következő példa a készlet egyik csomópontján futó *mytask1* tevékenység részleteit jeleníti meg.
+Az [az batch task show](/cli/azure/batch/task#az-batch-task-show) paranccsal tekintheti meg a Batch-tevékenységek állapotát. A következő példa a készlet egyik csomópontján futó *mytask1* tevékenység részleteit jeleníti meg.
 
 ```azurecli-interactive 
 az batch task show \
@@ -139,7 +139,7 @@ A parancs kimenete számos részletet tartalmaz. Tekintse meg a tevékenység pa
 
 ## <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
-A tevékenységek által egy számítási csomóponton létrehozott fájlok felsorolásához használja az [az batch task file list](/cli/azure/batch/task#az_batch_task_file_list) parancsot. A következő parancs felsorolja a *mytask1* tevékenység által létrehozott fájlokat: 
+A tevékenységek által egy számítási csomóponton létrehozott fájlok felsorolásához használja az [az batch task file list](/cli/azure/batch/task#az-batch-task-file-list) parancsot. A következő parancs felsorolja a *mytask1* tevékenység által létrehozott fájlokat: 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-A kimeneti fájlok az [az batch task file download](/cli/azure/batch/task#az_batch_task_file_download) paranccsal tölthetők le helyi könyvtárba. Ebben a példában a tevékenység kimenete a `stdout.txt` fájlban található. 
+A kimeneti fájlok az [az batch task file download](/cli/azure/batch/task#az-batch-task-file-download) paranccsal tölthetők le helyi könyvtárba. Ebben a példában a tevékenység kimenete a `stdout.txt` fájlban található. 
 
 ```azurecli-interactive
 az batch task file download \
@@ -192,13 +192,13 @@ AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha folytatni szeretné a Batch-oktatóanyagok és -minták használatát, használja az ebben a rövid útmutatóban létrehozott Batch-fiókot és az ahhoz kapcsolt Storage-fiókot. A Batch-fiók használata díjmentes.
 
-A készletekért díjat számítunk fel, amíg a csomópontok futnak, még akkor is, ha nincsenek feladatok ütemezve. Ha már nincs szüksége a készletre, törölje azt az [az batch pool delete](/cli/azure/batch/pool#az_batch_pool_delete) paranccsal. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. 
+A készletekért díjat számítunk fel, amíg a csomópontok futnak, még akkor is, ha nincsenek feladatok ütemezve. Ha már nincs szüksége a készletre, törölje azt az [az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete) paranccsal. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. 
 
 ```azurecli-interactive
 az batch pool delete --pool-id mypool
 ```
 
-Ha már nincs szükség rájuk, az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolíthatja az erőforráscsoportot, a Batch-fiókot, a készleteket és az összes kapcsolódó erőforrást. Az erőforrásokat a következőképpen törölheti:
+Ha már nincs szükség rájuk, az [az group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot, a Batch-fiókot, a készleteket és az összes kapcsolódó erőforrást. Az erőforrásokat a következőképpen törölheti:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

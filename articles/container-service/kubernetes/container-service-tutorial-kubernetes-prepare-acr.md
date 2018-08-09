@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f58a8d76cc46ac25474c7b91e464974612876a06
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8f14a7aabbdf815992e0777eaf5335a69570ce2e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164954"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429250"
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Az Azure Container Registry üzembe helyezése és használata
 
@@ -39,13 +39,13 @@ Az oktatóanyag elvégzéséhez az Azure CLI 2.0.4-es vagy újabb verziójára l
 
 Az Azure Container Registry üzembe helyezéséhez először is szükség van egy erőforráscsoportra. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Ebben a példában egy `myResourceGroup` nevű erőforráscsoport jön létre a `westeurope` régióban.
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Ebben a példában egy `myResourceGroup` nevű erőforráscsoport jön létre a `westeurope` régióban.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Hozzon létre egy Azure tárolóregisztrációs adatbázist az [az acr create](/cli/azure/acr#az_acr_create) paranccsal. A tárolóregisztrációs adatbázisoknak **egyedi nevekkel kell rendelkezniük**.
+Hozzon létre egy Azure tárolóregisztrációs adatbázist az [az acr create](/cli/azure/acr#az-acr-create) paranccsal. A tárolóregisztrációs adatbázisoknak **egyedi nevekkel kell rendelkezniük**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -55,7 +55,7 @@ Az oktatóanyag hátralevő részében az `<acrname>` elem helyettesíti a táro
 
 ## <a name="container-registry-login"></a>Bejelentkezés a tárolóregisztrációs adatbázisba
 
-Az [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) paranccsal jelentkezzen be az ACR-példányba. Meg kell adnia a tárolóregisztrációs adatbázis egyedi nevét, amelyet az adatbázis létrehozásakor adott meg.
+Az [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) paranccsal jelentkezzen be az ACR-példányba. Meg kell adnia a tárolóregisztrációs adatbázis egyedi nevét, amelyet az adatbázis létrehozásakor adott meg.
 
 ```azurecli
 az acr login --name <acrName>
@@ -124,7 +124,7 @@ Ez eltarthat néhány percig.
 
 ## <a name="list-images-in-registry"></a>A regisztrációs adatbázisban található rendszerképek felsorolása
 
-Az Azure Container Registrybe elküldött rendszerképek listájának lekéréséhez használja az [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) parancsot. Frissítse a parancsot az ACR-példány nevével.
+Az Azure Container Registrybe elküldött rendszerképek listájának lekéréséhez használja az [az acr repository list](/cli/azure/acr/repository#az-acr-repository-list) parancsot. Frissítse a parancsot az ACR-példány nevével.
 
 ```azurecli
 az acr repository list --name <acrName> --output table

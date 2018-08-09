@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: c8bcc2bf11ef4adbe9139635d3c24c240a46783c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 536092c1ee50045e6df4e2933c7d6eb0ee7a8b42
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525757"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429787"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>A Storage Explorer használata az Azure File Storage szolgáltatással
 
@@ -41,17 +41,17 @@ A következő lépések bemutatják, hogyan hozhat létre fájlmegosztást a Sto
 
 1. Nyissa meg a Storage Explorert.
 
-2. A bal oldali ablaktáblán bontsa ki a tárfiókot, ahol létre kívánja hozni a fájlmegosztást
+1. A bal oldali ablaktáblán bontsa ki a tárfiókot, ahol létre kívánja hozni a fájlmegosztást
 
-3. Kattintson a jobb gombbal a **Fájlmegosztások** elemre, majd a helyi menüben válassza a **Fájlmegosztás létrehozása** lehetőséget.
+1. Kattintson a jobb gombbal a **Fájlmegosztások** elemre, majd a helyi menüben válassza a **Fájlmegosztás létrehozása** lehetőséget.
 
     ![Fájlmegosztás létrehozása](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-4. A **Fájlmegosztások** mappa alatt megjelenik egy szövegbeviteli mező. Adja meg a fájlmegosztás nevét. A fájlmegosztások elnevezésére vonatkozó szabályokat és korlátozásokat a [Megosztáselnevezési szabályok](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container) című szakaszban olvashatja el.
+1. A **Fájlmegosztások** mappa alatt megjelenik egy szövegbeviteli mező. Adja meg a fájlmegosztás nevét. A fájlmegosztások elnevezésére vonatkozó szabályokat és korlátozásokat a [Megosztáselnevezési szabályok](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container) című szakaszban olvashatja el.
 
     ![A megosztás elnevezése](media/vs-azure-tools-storage-explorer-files/image2.png)
 
-5. A név megadása után nyomja le az **Enter** billentyűt az új fájlmegosztás létrehozásához, vagy az **Esc** billentyűt a művelet megszakításához. A sikeresen létrehozott fájlmegosztás megjelenik a kiválasztott tárfiókhoz tartozó **Fájlmegosztások** mappában.
+1. A név megadása után nyomja le az **Enter** billentyűt az új fájlmegosztás létrehozásához, vagy az **Esc** billentyűt a művelet megszakításához. A sikeresen létrehozott fájlmegosztás megjelenik a kiválasztott tárfiókhoz tartozó **Fájlmegosztások** mappában.
 
     ![Az új megosztás](media/vs-azure-tools-storage-explorer-files/image3.png)
 
@@ -63,15 +63,15 @@ A következő lépések bemutatják, hogyan tekintheti meg egy fájlmegosztás t
 
 1. Nyissa meg a Storage Explorert.
 
-2. A bal oldali ablaktáblán bontsa ki a megtekinteni kívánt fájlmegosztást tartalmazó tárfiókot.
+1. A bal oldali ablaktáblán bontsa ki a megtekinteni kívánt fájlmegosztást tartalmazó tárfiókot.
 
-3. Bontsa ki a tárfiók **Fájlmegosztásait**.
+1. Bontsa ki a tárfiók **Fájlmegosztásait**.
 
-4. Kattintson a jobb gombbal a megtekinteni kívánt fájlmegosztásra, és a helyi menüben válassza a **Megnyitás** lehetőséget. Vagy kattintson duplán a megtekinteni kívánt fájlmegosztásra.
+1. Kattintson a jobb gombbal a megtekinteni kívánt fájlmegosztásra, és a helyi menüben válassza a **Megnyitás** lehetőséget. Vagy kattintson duplán a megtekinteni kívánt fájlmegosztásra.
 
     ![Megosztás megnyitása](media/vs-azure-tools-storage-explorer-files/image4.png)
 
-5. A fájlmegosztás tartalma megjelenik a fő ablaktáblán.
+1. A fájlmegosztás tartalma megjelenik a fő ablaktáblán.
     
     ![A megosztás tartalma](media/vs-azure-tools-storage-explorer-files/image5.png)
 
@@ -83,15 +83,15 @@ A következő lépések bemutatják, hogyan törölhet fájlmegosztást a Storag
 
 1. Nyissa meg a Storage Explorert.
 
-2. A bal oldali ablaktáblán bontsa ki a megtekinteni kívánt fájlmegosztást tartalmazó tárfiókot.
+1. A bal oldali ablaktáblán bontsa ki a megtekinteni kívánt fájlmegosztást tartalmazó tárfiókot.
 
-3. Bontsa ki a tárfiók **Fájlmegosztásait**.
+1. Bontsa ki a tárfiók **Fájlmegosztásait**.
 
-4. Kattintson a jobb gombbal a törölni kívánt fájlmegosztásra, és a helyi menüben válassza a **Törlés** lehetőséget. Az aktuálisan kijelölt fájlmegosztás a **Delete** billentyű lenyomásával is törölhető.
+1. Kattintson a jobb gombbal a törölni kívánt fájlmegosztásra, és a helyi menüben válassza a **Törlés** lehetőséget. Az aktuálisan kijelölt fájlmegosztás a **Delete** billentyű lenyomásával is törölhető.
 
     ![Törlés](media/vs-azure-tools-storage-explorer-files/image6.png)
 
-5. Válassza az **Igen** lehetőséget a megerősítési párbeszédpanelen.
+1. Válassza az **Igen** lehetőséget a megerősítési párbeszédpanelen.
     
     ![Megerősítési párbeszédpanel](media/vs-azure-tools-storage-explorer-files/image7.png)
 
@@ -103,15 +103,15 @@ A következő lépések bemutatják, hogyan másolhat át fájlmegosztást egyik
 
 1. Nyissa meg a Storage Explorert.
 
-2. A bal oldali ablaktáblán bontsa ki a másolni kívánt fájlmegosztást tartalmazó tárfiókot.
+1. A bal oldali ablaktáblán bontsa ki a másolni kívánt fájlmegosztást tartalmazó tárfiókot.
 
-3. Bontsa ki a tárfiók **Fájlmegosztásait**.
+1. Bontsa ki a tárfiók **Fájlmegosztásait**.
 
-4. Kattintson a jobb gombbal a másolni kívánt fájlmegosztásra, és a helyi menüben válassza a **Fájlmegosztás másolása** lehetőséget.
+1. Kattintson a jobb gombbal a másolni kívánt fájlmegosztásra, és a helyi menüben válassza a **Fájlmegosztás másolása** lehetőséget.
 
     ![Fájlmegosztás másolása](media/vs-azure-tools-storage-explorer-files/image8.png)
 
-5. Kattintson a jobb gombbal a kívánt „cél” tárfiókra, amelybe a fájlmegosztást be kívánja illeszteni, majd válassza a helyi menüből a **Fájlmegosztás beillesztése** lehetőséget.
+1. Kattintson a jobb gombbal a kívánt „cél” tárfiókra, amelybe a fájlmegosztást be kívánja illeszteni, majd válassza a helyi menüből a **Fájlmegosztás beillesztése** lehetőséget.
 
     ![Fájlmegosztás beillesztése](media/vs-azure-tools-storage-explorer-files/image9.png)
 
@@ -123,25 +123,25 @@ A következő lépések bemutatják, hogyan hozhat létre SAS-t egy fájlmegoszt
 
 1. Nyissa meg a Storage Explorert.
 
-2. A bal oldali ablaktáblán bontsa ki azt a fájlmegosztást tartalmazó tárfiókot, amelyhez SAS-t kíván beszerezni.
+1. A bal oldali ablaktáblán bontsa ki azt a fájlmegosztást tartalmazó tárfiókot, amelyhez SAS-t kíván beszerezni.
 
-3. Bontsa ki a tárfiók **Fájlmegosztásait**.
+1. Bontsa ki a tárfiók **Fájlmegosztásait**.
 
-4. Kattintson a jobb gombbal a kívánt fájlmegosztásra, és válassza a helyi menüből a **Közös hozzáférésű jogosultságkód igénylése** lehetőséget.
+1. Kattintson a jobb gombbal a kívánt fájlmegosztásra, és válassza a helyi menüből a **Közös hozzáférésű jogosultságkód igénylése** lehetőséget.
 
     ![Közös hozzáférésű jogosultságkód igénylése](media/vs-azure-tools-storage-explorer-files/image10.png)
 
-5. A **Közös hozzáférésű jogosultságkód** párbeszédpanelen adja meg a szabályzatot, a kezdési és a lejárati dátumokat, az időzónát és az erőforrás kívánt hozzáférési szintjeit.
+1. A **Közös hozzáférésű jogosultságkód** párbeszédpanelen adja meg a szabályzatot, a kezdési és a lejárati dátumokat, az időzónát és az erőforrás kívánt hozzáférési szintjeit.
 
     ![SAS párbeszédpanel](media/vs-azure-tools-storage-explorer-files/image11.png)
 
-6. Az SAS-beállítások megadása után válassza a **Létrehozás** lehetőséget.
+1. Az SAS-beállítások megadása után válassza a **Létrehozás** lehetőséget.
 
-7. Ezután egy második **Közös hozzáférésű jogosultságkód** párbeszédpanel jelenik meg, amelyen fel vannak sorolva a fájlmegosztások, valamint a tárolási erőforrások eléréséhez használható URL-cím és a lekérdezési karakterlánc. Válassza a **Másolás** parancsot a vágólapra másolni kívánt URL-cím mellett.
+1. Ezután egy második **Közös hozzáférésű jogosultságkód** párbeszédpanel jelenik meg, amelyen fel vannak sorolva a fájlmegosztások, valamint a tárolási erőforrások eléréséhez használható URL-cím és a lekérdezési karakterlánc. Válassza a **Másolás** parancsot a vágólapra másolni kívánt URL-cím mellett.
     
     ![Második SAS párbeszédpanel](media/vs-azure-tools-storage-explorer-files/image12.png)
 
-8. Ha elkészült, válassza a **Bezárás** lehetőséget.
+1. Ha elkészült, válassza a **Bezárás** lehetőséget.
 
 ## <a name="manage-access-policies-for-a-file-share"></a>Fájlmegosztás hozzáférési szabályzatainak kezelése
 
@@ -149,19 +149,19 @@ A következő lépések bemutatják, hogyan történik a fájlmegosztáshoz tart
 
 1. Nyissa meg a Storage Explorert.
 
-2. A bal oldali ablaktáblán bontsa ki azt a fájlmegosztást tartalmazó tárfiókot, amelynek a hozzáférési szabályzatait kezelni kívánja.
+1. A bal oldali ablaktáblán bontsa ki azt a fájlmegosztást tartalmazó tárfiókot, amelynek a hozzáférési szabályzatait kezelni kívánja.
 
-3. Bontsa ki a tárfiók **Fájlmegosztásait**.
+1. Bontsa ki a tárfiók **Fájlmegosztásait**.
 
-4. Jelölje ki a kívánt fájlmegosztást, és válassza a helyi menüből a **Hozzáférési szabályzatok kezelése** lehetőséget.
+1. Jelölje ki a kívánt fájlmegosztást, és válassza a helyi menüből a **Hozzáférési szabályzatok kezelése** lehetőséget.
 
     ![Hozzáférési szabályzatok kezelése helyi menü](media/vs-azure-tools-storage-explorer-files/image13.png)
 
-5. A **Hozzáférési szabályzatok** párbeszédpanelen fel lesznek sorolva a kiválasztott fájlmegosztáshoz már létrehozott hozzáférési szabályzatok.
+1. A **Hozzáférési szabályzatok** párbeszédpanelen fel lesznek sorolva a kiválasztott fájlmegosztáshoz már létrehozott hozzáférési szabályzatok.
     
     ![Hozzáférési szabályzatok](media/vs-azure-tools-storage-explorer-files/image14.png)
 
-6. A hozzáférésiszabályzat-kezelési feladattól függően kövesse az alábbi lépéseket:
+1. A hozzáférésiszabályzat-kezelési feladattól függően kövesse az alábbi lépéseket:
     
     - **Új hozzáférési szabályzat hozzáadása** – Válassza a **Hozzáadás** lehetőséget. A **Hozzáférési szabályzatok** megjeleníti az újonnan létrehozott és hozzáadott hozzáférési szabályzatot (az alapértelmezett beállításokkal).
 
@@ -169,7 +169,7 @@ A következő lépések bemutatják, hogyan történik a fájlmegosztáshoz tart
 
     - **Hozzáférési szabályzat eltávolítása** – Válassza az **Eltávolítás** parancsot az eltávolítani kívánt hozzáférési szabályzat mellett.
 
-7. Hozzon létre egy új SAS URL-címet a korábban létrehozott hozzáférési szabályzat használatával:
+1. Hozzon létre egy új SAS URL-címet a korábban létrehozott hozzáférési szabályzat használatával:
     
     ![SAS beszerzése](media/vs-azure-tools-storage-explorer-files/image15.png)
     
@@ -183,19 +183,19 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
 
 1.  Nyissa meg a Storage Explorert.
 
-2.  A bal oldali ablaktáblán bontsa ki a kezelni kívánt fájlmegosztást tartalmazó tárfiókot.
+1.  A bal oldali ablaktáblán bontsa ki a kezelni kívánt fájlmegosztást tartalmazó tárfiókot.
 
-3.  Bontsa ki a tárfiók **Fájlmegosztásait**.
+1.  Bontsa ki a tárfiók **Fájlmegosztásait**.
 
-4.  Kattintson duplán a megtekinteni kívánt fájlmegosztásra.
+1.  Kattintson duplán a megtekinteni kívánt fájlmegosztásra.
 
-5.  A fájlmegosztás tartalma megjelenik a fő ablaktáblán.
+1.  A fájlmegosztás tartalma megjelenik a fő ablaktáblán.
 
     ![A megosztás tartalma](media/vs-azure-tools-storage-explorer-files/image17.png)
 
-6.  A fájlmegosztás tartalma megjelenik a fő ablaktáblán.
+1.  A fájlmegosztás tartalma megjelenik a fő ablaktáblán.
 
-7.  Kövesse az alábbi lépéseket a végrehajtani kívánt feladattól függően:
+1.  Kövesse az alábbi lépéseket a végrehajtani kívánt feladattól függően:
 
     - **Fájlok feltöltése egy fájlmegosztásba**
 

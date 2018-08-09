@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: danlep
-ms.openlocfilehash: ced93032203c33dc4cda362d30192ee8eb37d944
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 86a04393761b79d76339c111d5c5c8b76dc983c2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38455111"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431208"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI-példa: Batch-fiók létrehozása Batch szolgáltatás módban
 
@@ -47,14 +47,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Létrehoz egy Batch-fiókot. |
-| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy tárfiókot. |
-| [az batch account set](/cli/azure/batch/account#az_batch_account_set) | Frissíti a Batch-fiók tulajdonságait.  |
-| [az batch account show](/cli/azure/batch/account#az_batch_account_show) | Lekérdezi a megadott Batch-fiók adatait.  |
-| [az batch account keys list](/cli/azure/batch/account/keys#az_batch_account_keys_list) | Lekérdezi a megadott Batch-fiók hozzáférési kulcsait.  |
-| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Hitelesíti a megadott Batch-fiókot további parancssori felületi interakcióhoz.  |
-| [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Létrehoz egy Batch-fiókot. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy tárfiókot. |
+| [az batch account set](/cli/azure/batch/account#az-batch-account-set) | Frissíti a Batch-fiók tulajdonságait.  |
+| [az batch account show](/cli/azure/batch/account#az-batch-account-show) | Lekérdezi a megadott Batch-fiók adatait.  |
+| [az batch account keys list](/cli/azure/batch/account/keys#az-batch-account-keys-list) | Lekérdezi a megadott Batch-fiók hozzáférési kulcsait.  |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Hitelesíti a megadott Batch-fiókot további parancssori felületi interakcióhoz.  |
+| [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
 
