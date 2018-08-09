@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 6079784a21b5dea8929fcfa3d8f296477b3b9520
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 651f9ba71d08698c64f3e90de59b5f29a8afc77d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083328"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433510"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
@@ -63,47 +63,47 @@ Hozzon létre egy Azure SQL Database-adatbázist az Adventure Works LT mintaadat
 
 1. Ha még nem rendelkezik Azure SQL Data Warehouse-zal, a létrehozás folyamatáért lásd az [SQL Data Warehouse létrehozásával](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) kapcsolatos cikket.
 
-2. Hozzon létre megfelelő táblasémákat az SQL Data Warehouse-ban. Az [áttelepítési segédprogrammal](https://www.microsoft.com/download/details.aspx?id=49100) **áttelepítheti a sémákat** az Azure SQL Database-ből az Azure SQL Data Warehouse-ba. A későbbiekben az Azure Data Factory segítségével fogja áttelepíteni/másolni az adatokat.
+1. Hozzon létre megfelelő táblasémákat az SQL Data Warehouse-ban. Az [áttelepítési segédprogrammal](https://www.microsoft.com/download/details.aspx?id=49100) **áttelepítheti a sémákat** az Azure SQL Database-ből az Azure SQL Data Warehouse-ba. A későbbiekben az Azure Data Factory segítségével fogja áttelepíteni/másolni az adatokat.
 
 ## <a name="azure-services-to-access-sql-server"></a>Az SQL Server elérésének engedélyezése az Azure-szolgáltatások számára
 
 Az SQL Database és az SQL Data Warehouse esetében is engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Győződjön meg arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás **BE** van kapcsolva az Azure SQL Serverhez. Ez a beállítás lehetővé teszi a Data Factory szolgáltatás számára, hogy adatokat olvasson be az Azure SQL Database-ből, és adatokat írjon az Azure SQL Data Warehouse-ba. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
 
 1. Kattintson a **További szolgáltatások** hubra a bal oldalon, majd az **SQL-kiszolgálók** elemre.
-2. Válassza ki a kiszolgálót, és kattintson a **BEÁLLÍTÁSOK** területen a **Tűzfal** elemre.
-3. A **Tűzfalbeállítások** lapon kattintson a **BE** kapcsolóra az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás mellett.
+1. Válassza ki a kiszolgálót, és kattintson a **BEÁLLÍTÁSOK** területen a **Tűzfal** elemre.
+1. A **Tűzfalbeállítások** lapon kattintson a **BE** kapcsolóra az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás mellett.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-bulk-copy-portal/new-azure-data-factory-menu.png)
-2. Az **Új data factory** lapon **névként** adja meg az **ADFTutorialBulkCopyDF** értéket. 
+1. Az **Új data factory** lapon **névként** adja meg az **ADFTutorialBulkCopyDF** értéket. 
       
      ![Új adat-előállító lap](./media/tutorial-bulk-copy-portal/new-azure-data-factory.png)
  
    Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a névmezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialBulkCopyDF). A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name “ADFTutorialBulkCopyDF” is not available`
-3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
-4. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
+1. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
+1. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
      
       - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
       - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
       Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-4. A **Verzió** résznél válassza a **V2** értéket.
-5. Válassza ki a Data Factory **helyét**. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Create** (Létrehozás) gombra.
-8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
+1. A **Verzió** résznél válassza a **V2** értéket.
+1. Válassza ki a Data Factory **helyét**. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+1. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
+1. Kattintson a **Create** (Létrehozás) gombra.
+1. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
-9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
+1. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
     ![Data factory kezdőlap](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
-10. A Data Factory felhasználóifelület-alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
-11. Az **első lépéseket bemutató** lapon váltson a **Szerkesztés** lapra a bal oldali panelen, ahogy az az alábbi képen látható:  
+1. A Data Factory felhasználóifelület-alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
+1. Az **első lépéseket bemutató** lapon váltson a **Szerkesztés** lapra a bal oldali panelen, ahogy az az alábbi képen látható:  
 
     ![Első lépések lap](./media/tutorial-bulk-copy-portal/get-started-page.png)
 
@@ -118,45 +118,45 @@ Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL 
 1. Kattintson az ablak alján látható **Kapcsolatok** elemre, majd kattintson az eszköztáron az **+ Új** lehetőségre. 
 
     ![Új társított szolgáltatás gomb](./media/tutorial-bulk-copy-portal/new-linked-service-button.png)
-2. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre. 
+1. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre. 
 
     ![Az Azure SQL Database kiválasztása](./media/tutorial-bulk-copy-portal/select-azure-sql-database.png)
-3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
+1. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
 
     1. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet. 
-    2. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server kiszolgálóját.
-    3. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL Database adatbázisát. 
-    4. Adja meg az Azure SQL Database-hez csatlakoztatni kívánt **felhasználó nevét**. 
-    5. Adja meg a felhasználóhoz tartozó **jelszót**. 
-    6. Ha tesztelni szeretné az Azure SQL Database-zel létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
-    7. Kattintson a **Save** (Mentés) gombra.
+    1. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server kiszolgálóját.
+    1. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL Database adatbázisát. 
+    1. Adja meg az Azure SQL Database-hez csatlakoztatni kívánt **felhasználó nevét**. 
+    1. Adja meg a felhasználóhoz tartozó **jelszót**. 
+    1. Ha tesztelni szeretné az Azure SQL Database-zel létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
+    1. Kattintson a **Save** (Mentés) gombra.
 
         ![Azure SQL Database beállításai](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
 
 ### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>A fogadó Azure SQL Data Warehouse-beli társított szolgáltatás létrehozása
 
 1. A **Kapcsolatok** lapon kattintson ismét az **+ Új** elemre az eszköztáron. 
-2. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Data Warehouse** lehetőséget, majd kattintson a **Folytatás** elemre. 
-3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
+1. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Data Warehouse** lehetőséget, majd kattintson a **Folytatás** elemre. 
+1. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
 
     1. A **Név** mezőbe írja be az **AzureSqlDWLinkedService** nevet. 
-    2. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server kiszolgálóját.
-    3. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL Database adatbázisát. 
-    4. Adja meg az Azure SQL Database-hez csatlakoztatni kívánt **felhasználó nevét**. 
-    5. Adja meg a felhasználóhoz tartozó **jelszót**. 
-    6. Ha tesztelni szeretné az Azure SQL Database-zel létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
-    7. Kattintson a **Save** (Mentés) gombra.
+    1. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server kiszolgálóját.
+    1. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL Database adatbázisát. 
+    1. Adja meg az Azure SQL Database-hez csatlakoztatni kívánt **felhasználó nevét**. 
+    1. Adja meg a felhasználóhoz tartozó **jelszót**. 
+    1. Ha tesztelni szeretné az Azure SQL Database-zel létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
+    1. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Az átmeneti Azure Storage-beli társított szolgáltatás létrehozása
 Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure Blob Storage-ot átmeneti területként használja a PolyBase engedélyezéséhez.
 
 1. A **Kapcsolatok** lapon kattintson ismét az **+ Új** elemre az eszköztáron. 
-2. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Continue** (Folytatás) elemre. 
-3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
+1. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Continue** (Folytatás) elemre. 
+1. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
 
     1. A **Név** mezőbe írja be az **AzureStorageLinkedService** nevet. 
-    2. A **Storage-fiók neve** elemnél válassza ki saját **Azure Storage-fiókját**.
-    4. Kattintson a **Save** (Mentés) gombra.
+    1. A **Storage-fiók neve** elemnél válassza ki saját **Azure Storage-fiókját**.
+    1. Kattintson a **Save** (Mentés) gombra.
 
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
@@ -173,15 +173,15 @@ Ebben az oktatóanyagban a forrás és cél SQL-táblái nincsenek fixen rögzí
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson az **Adatkészlet** elemre. 
 
     ![Új adatkészlet menü](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
-2. Az **Új adatkészlet** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Befejezés** gombra. Meg kell jelennie egy új, **AzureSqlTable1** nevű lapnak. 
+1. Az **Új adatkészlet** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Befejezés** gombra. Meg kell jelennie egy új, **AzureSqlTable1** nevű lapnak. 
     
     ![Az Azure SQL Database kiválasztása](./media/tutorial-bulk-copy-portal/select-azure-sql-database-dataset.png)
-3. Az alul található Tulajdonságok ablakban a **Név** mezőbe írja be az **AzureSqlDatabaseDataset** nevet.
+1. Az alul található Tulajdonságok ablakban a **Név** mezőbe írja be az **AzureSqlDatabaseDataset** nevet.
 
-4. Váltson a **Kapcsolat** lapra, és végezze el az alábbi lépéseket: 
+1. Váltson a **Kapcsolat** lapra, és végezze el az alábbi lépéseket: 
 
     1. A **Társított szolgáltatás** elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
-    2. Válasszon egy tetszőleges táblát a **Tábla** elemnél. Ez a tábla egy helyőrző tábla. Egy folyamat létrehozásakor meghatározhat egy lekérdezést a forrásadatkészlethez. A lekérdezés segítségével adatok nyerhetők ki az Azure SQL Database-ből. Másik lehetőségként kattinthat a **Szerkesztés** jelölőnégyzetbe, és megadhatja a **dummyName** nevet a tábla neveként. 
+    1. Válasszon egy tetszőleges táblát a **Tábla** elemnél. Ez a tábla egy helyőrző tábla. Egy folyamat létrehozásakor meghatározhat egy lekérdezést a forrásadatkészlethez. A lekérdezés segítségével adatok nyerhetők ki az Azure SQL Database-ből. Másik lehetőségként kattinthat a **Szerkesztés** jelölőnégyzetbe, és megadhatja a **dummyName** nevet a tábla neveként. 
 
     ![Forrásadatkészlet kapcsolata lap](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
  
@@ -189,13 +189,13 @@ Ebben az oktatóanyagban a forrás és cél SQL-táblái nincsenek fixen rögzí
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Adatkészlet létrehozása a fogadó SQL Data Warehouse-hoz
 
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson az **Adatkészlet** elemre. 
-2. Az **Új adatkészlet** ablakban válassza az **Azure SQL Data Warehouse** lehetőséget, majd kattintson a **Befejezés** gombra. Meg kell jelennie egy új, **AzureSqlDWTable1** nevű lapnak. 
-3. Az alul található Tulajdonságok ablakban a **Név** mezőbe írja be az **AzureSqlDWDataset** nevet.
-5. Váltson a **Paraméterek** lapra, és kattintson az **+ Új** elemre, majd adja meg a **DWTableName** értéket a paraméter neveként. Ha másolja/beilleszti ezt a nevet az oldalról, gondoskodjon arról, hogy ne legyen **szóköz karakter** a **DWTableName** név végén. 
+1. Az **Új adatkészlet** ablakban válassza az **Azure SQL Data Warehouse** lehetőséget, majd kattintson a **Befejezés** gombra. Meg kell jelennie egy új, **AzureSqlDWTable1** nevű lapnak. 
+1. Az alul található Tulajdonságok ablakban a **Név** mezőbe írja be az **AzureSqlDWDataset** nevet.
+1. Váltson a **Paraméterek** lapra, és kattintson az **+ Új** elemre, majd adja meg a **DWTableName** értéket a paraméter neveként. Ha másolja/beilleszti ezt a nevet az oldalról, gondoskodjon arról, hogy ne legyen **szóköz karakter** a **DWTableName** név végén. 
 
     ![Forrásadatkészlet kapcsolata lap](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter.png)
 
-6. Lépjen a **Kapcsolat** lapra. 
+1. Lépjen a **Kapcsolat** lapra. 
 
     a. A **Társított szolgáltatás** elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
 
@@ -222,16 +222,16 @@ A **GetTableListAndTriggerCopyData** a táblák listáját használja paraméter
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson a **Folyamat** elemre.
 
     ![Új folyamat menü](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-2. Az **Általános** lapon adja meg az **IterateAndCopySQLTables** nevet. 
+1. Az **Általános** lapon adja meg az **IterateAndCopySQLTables** nevet. 
 
-3. Váltson a **Paraméterek** lapra, és hajtsa végre a következőket: 
+1. Váltson a **Paraméterek** lapra, és hajtsa végre a következőket: 
 
     1. Kattintson az **+ Új** elemre. 
-    2. A paraméter **nevénél** adja meg a **tableList** nevet.
-    3. A **Típus** részben válassza a **Tömb** lehetőséget.
+    1. A paraméter **nevénél** adja meg a **tableList** nevet.
+    1. A **Típus** részben válassza a **Tömb** lehetőséget.
 
         ![Folyamat paramétere](./media/tutorial-bulk-copy-portal/first-pipeline-parameter.png)
-4. A **Tevékenységek** eszközkészletben bontsa ki az **Ismétlés és feltételek** elemet, és húzza a **ForEach** tevékenységet a folyamat tervezőfelületére. A **Tevékenységek** eszközkészletben kereshet is az egyes tevékenységek között. 
+1. A **Tevékenységek** eszközkészletben bontsa ki az **Ismétlés és feltételek** elemet, és húzza a **ForEach** tevékenységet a folyamat tervezőfelületére. A **Tevékenységek** eszközkészletben kereshet is az egyes tevékenységek között. 
 
     a. Az alul található **Általános** lapon a **Név** mezőbe írja be az **IterateSQLTables** nevet. 
 
@@ -245,27 +245,27 @@ A **GetTableListAndTriggerCopyData** a táblák listáját használja paraméter
     
     d. Lépjen a **Tevékenységek** lapra, kattintson a **Tevékenység hozzáadása** gombra egy gyermektevékenység a **ForEach** tevékenységhez adásához.
 
-5. A **Tevékenységek** eszközkészletben bontsa ki a **DataFlow** elemet, és húzza át a **Másolás** tevékenységet a folyamat tervezőfelületére. Figyelje meg felül a navigációs menüt. Az IterateAndCopySQLTable a folyamat neve, az IterateSQLTables pedig a ForEach tevékenység neve. A tervező a tevékenység hatókörében van. Ha vissza szeretne váltani a folyamatszerkesztőre a ForEach szerkesztőjéből, kattintson a navigációs menüben található hivatkozásra. 
+1. A **Tevékenységek** eszközkészletben bontsa ki a **DataFlow** elemet, és húzza át a **Másolás** tevékenységet a folyamat tervezőfelületére. Figyelje meg felül a navigációs menüt. Az IterateAndCopySQLTable a folyamat neve, az IterateSQLTables pedig a ForEach tevékenység neve. A tervező a tevékenység hatókörében van. Ha vissza szeretne váltani a folyamatszerkesztőre a ForEach szerkesztőjéből, kattintson a navigációs menüben található hivatkozásra. 
 
     ![Másolás a ForEach tevékenységbe](./media/tutorial-bulk-copy-portal/copy-in-for-each.png)
-6. Váltson a **Forrás** lapra, és végezze el az alábbi lépéseket:
+1. Váltson a **Forrás** lapra, és végezze el az alábbi lépéseket:
 
     1. **Forrásadatkészletnek** válassza a következőt: **AzureSqlDatabaseDataset**. 
-    2. A **Felhasználói lekérdezésnél** válassza a **Lekérdezés** lehetőséget. 
-    3. Kattintson a **Lekérdezés** beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg a következő kifejezést a **Lekérdezés** értékeként, majd kattintson a **Befejezés** gombra.
+    1. A **Felhasználói lekérdezésnél** válassza a **Lekérdezés** lehetőséget. 
+    1. Kattintson a **Lekérdezés** beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg a következő kifejezést a **Lekérdezés** értékeként, majd kattintson a **Befejezés** gombra.
 
         ```sql
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
         ![Forrásbeállítások másolása](./media/tutorial-bulk-copy-portal/copy-source-settings.png)
-7. Váltson a **Fogadó** lapra, és végezze el az alábbi lépéseket: 
+1. Váltson a **Fogadó** lapra, és végezze el az alábbi lépéseket: 
 
     1. **Fogadó-adatkészletnek** válassza a következőt: **AzureSqlDWDataset**.
-    2. Kattintson a DWTableName paraméter VALUE beviteli mezőjére, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, írja be szkriptként a `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` kifejezést, majd kattintson a **Befejezés** gombra.
-    2. Bontsa ki a **PolyBase-beállítások** elemet, és jelölje be a **PolyBase engedélyezése** lehetőséget. 
-    3. Törölje az **Alapértelmezett használati típus** jelölőnégyzet jelölését. 
-    4. Kattintson a **Tisztítószkript** beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg szkriptként a következő kifejezést, majd kattintson a **Befejezés** gombra. 
+    1. Kattintson a DWTableName paraméter VALUE beviteli mezőjére, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, írja be szkriptként a `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` kifejezést, majd kattintson a **Befejezés** gombra.
+    1. Bontsa ki a **PolyBase-beállítások** elemet, és jelölje be a **PolyBase engedélyezése** lehetőséget. 
+    1. Törölje az **Alapértelmezett használati típus** jelölőnégyzet jelölését. 
+    1. Kattintson a **Tisztítószkript** beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg szkriptként a következő kifejezést, majd kattintson a **Befejezés** gombra. 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
@@ -273,14 +273,14 @@ A **GetTableListAndTriggerCopyData** a táblák listáját használja paraméter
 
         ![Fogadóbeállítások másolása](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
 
-8. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket: 
+1. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket: 
 
     1. Az **Előkészítés engedélyezése** értéke legyen **Igaz**.
-    2. A **Tárfiók társított szolgáltatásánál** válassza az **AzureStorageLinkedService** elemet.
+    1. A **Tárfiók társított szolgáltatásánál** válassza az **AzureStorageLinkedService** elemet.
 
         ![Előkészítés engedélyezése](./media/tutorial-bulk-copy-portal/copy-sink-staging-settings.png)
 
-9. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** gombra a felső folyamateszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
+1. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** gombra a felső folyamateszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>A GetTableListAndTriggerCopyData folyamat létrehozása
 
@@ -292,44 +292,44 @@ Ez a folyamat két lépést hajt végre:
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson a **Folyamat** elemre.
 
     ![Új folyamat menü](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-2. A Tulajdonságok ablakban módosítsa a folyamat nevét a következőre a **GetTableListAndTriggerCopyData** értékre. 
+1. A Tulajdonságok ablakban módosítsa a folyamat nevét a következőre a **GetTableListAndTriggerCopyData** értékre. 
 
-3. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, húzza a **Keresés** tevékenységet a folyamat tervezőfelületére, és tegye a következőket:
+1. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, húzza a **Keresés** tevékenységet a folyamat tervezőfelületére, és tegye a következőket:
 
     1. A **Név** mezőbe írja be a **LookupTableList** nevet. 
-    2. A **Leírásnál** adja meg a következőt: **A táblalista lekérése az Azure SQL Database-ből**.
+    1. A **Leírásnál** adja meg a következőt: **A táblalista lekérése az Azure SQL Database-ből**.
 
         ![Keresési tevékenység – általános lap](./media/tutorial-bulk-copy-portal/lookup-general-page.png)
-4. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket:
+1. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket:
 
     1. **Forrásadatkészletnek** válassza a következőt: **AzureSqlDatabaseDataset**. 
-    2. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget. 
-    3. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést.
+    1. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget. 
+    1. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést.
 
         ```sql
         SELECT TABLE_SCHEMA, TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA = 'SalesLT' and TABLE_NAME <> 'ProductModel'
         ```
-    4. Törölje a **Csak az első sor** mező jelölőnégyzetének jelölését.
+    1. Törölje a **Csak az első sor** mező jelölőnégyzetének jelölését.
 
         ![Keresési tevékenység – beállítások lap](./media/tutorial-bulk-copy-portal/lookup-settings-page.png)
-5. Húzza a **Folyamat végrehajtása** tevékenységet a Tevékenységek eszközkészletből a folyamat tervezőfelületére, és adja neki a **TriggerCopy** nevet.
+1. Húzza a **Folyamat végrehajtása** tevékenységet a Tevékenységek eszközkészletből a folyamat tervezőfelületére, és adja neki a **TriggerCopy** nevet.
 
     ![Folyamat végrehajtása tevékenység – általános lap](./media/tutorial-bulk-copy-portal/execute-pipeline-general-page.png)    
-6. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket: 
+1. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket: 
 
     1. A **Meghívott folyamat** elemnél válassza az **IterateAndCopySQLTables** lehetőséget. 
-    2. Bontsa ki a **Speciális** szakaszt. 
-    3. Kattintson az **+ Új** elemre a **Paraméterek** szakaszban. 
-    4. A **név** paraméternél adja meg a **tableList** értéket.
-    5. Kattintson a VALUE beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg a `@activity('LookupTableList').output.value` értéket a táblanév értékeként, majd kattintson a **Befejezés** gombra. A keresési tevékenység eredménylistáját a második folyamat bemeneteként állítja be. Az eredménylista tartalmazza azokat a táblákat, amelyeknek az adatait a célhelyre kell másolni. 
+    1. Bontsa ki a **Speciális** szakaszt. 
+    1. Kattintson az **+ Új** elemre a **Paraméterek** szakaszban. 
+    1. A **név** paraméternél adja meg a **tableList** értéket.
+    1. Kattintson a VALUE beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg a `@activity('LookupTableList').output.value` értéket a táblanév értékeként, majd kattintson a **Befejezés** gombra. A keresési tevékenység eredménylistáját a második folyamat bemeneteként állítja be. Az eredménylista tartalmazza azokat a táblákat, amelyeknek az adatait a célhelyre kell másolni. 
 
         ![Folyamat végrehajtása tevékenység – beállítások lap](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
-7. A keresési tevékenységhez tartozó **zöld mezőt** a Folyamat végrehajtása tevékenység bal oldalára húzva **csatlakoztassa** a **keresési** tevékenységet a **Folyamat végrehajtása** tevékenységhez.
+1. A keresési tevékenységhez tartozó **zöld mezőt** a Folyamat végrehajtása tevékenység bal oldalára húzva **csatlakoztassa** a **keresési** tevékenységet a **Folyamat végrehajtása** tevékenységhez.
 
     ![A keresési és a Folyamat végrehajtása tevékenység csatlakoztatása](./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png)
-8. A folyamat érvényesítéséhez kattintson az **Érvényesítés** elemre az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
+1. A folyamat érvényesítéséhez kattintson az **Érvényesítés** elemre az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
 
-9. Ha közzé szeretne tenni entitásokat (adathalmazokat, folyamatokat stb.) a Data Factory szolgáltatásban, kattintson az **Összes közzététele** elemre az ablak tetején. Várja meg, amíg befejeződik a közzétételi folyamat. 
+1. Ha közzé szeretne tenni entitásokat (adathalmazokat, folyamatokat stb.) a Data Factory szolgáltatásban, kattintson az **Összes közzététele** elemre az ablak tetején. Várja meg, amíg befejeződik a közzétételi folyamat. 
 
 ## <a name="trigger-a-pipeline-run"></a>Folyamat futtatásának aktiválása
 
@@ -342,10 +342,10 @@ Lépjen a **GetTableListAndTriggerCopyData** folyamathoz, kattintson az **Aktiv�
 1. Váltson a **Monitorozás** lapra. Kattintson a **Frissítés** elemre, amíg meg nem jelennek a futtatások a megoldásában mindkét folyamathoz. Folytassa mindaddig a lista frissítését, amíg meg nem jelenik a **Sikeres** állapot. 
 
     ![Folyamatfuttatások](./media/tutorial-bulk-copy-portal/pipeline-runs.png)
-2. Ha meg szeretné tekinteni a GetTableListAndTriggerCopyData folyamathoz tartozó tevékenységfuttatásokat, kattintson a folyamat Tevékenységek hivatkozásának első hivatkozására. Ehhez a folyamatfuttatáshoz két tevékenységfuttatást kell látnia. 
+1. Ha meg szeretné tekinteni a GetTableListAndTriggerCopyData folyamathoz tartozó tevékenységfuttatásokat, kattintson a folyamat Tevékenységek hivatkozásának első hivatkozására. Ehhez a folyamatfuttatáshoz két tevékenységfuttatást kell látnia. 
 
     ![Tevékenységfuttatások](./media/tutorial-bulk-copy-portal/activity-runs-1.png)    
-3. A **keresési** tevékenység eredményeinek megtekintéséhez kattintson a tevékenység **Kimenet** oszlopában található hivatkozásra. A **Kimenet** ablakot teljes méretre állíthatja és visszaállíthatja. Áttekintés után kattintson az **X** elemre a **Kimenet** ablak bezárásához.
+1. A **keresési** tevékenység eredményeinek megtekintéséhez kattintson a tevékenység **Kimenet** oszlopában található hivatkozásra. A **Kimenet** ablakot teljes méretre állíthatja és visszaállíthatja. Áttekintés után kattintson az **X** elemre a **Kimenet** ablak bezárásához.
 
     ```json
     {
@@ -400,10 +400,10 @@ Lépjen a **GetTableListAndTriggerCopyData** folyamathoz, kattintson az **Aktiv�
         ]
     }
     ```    
-4. A **Folyamatfuttatások** nézetre való visszaváltáshoz kattintson a fent található **Folyamatok** hivatkozásra. Kattintson az **IterateAndCopySQLTables** folyamat **Tevékenységfuttatások megtekintése** hivatkozására (a **Tevékenységek** oszlop első hivatkozása). A kimenetnek az alábbi képen látható módon kell megjelennie. Vegye figyelembe, hogy a **keresési** tevékenység kimenetében minden táblához tartozik egy **másolási** tevékenységfuttatás. 
+1. A **Folyamatfuttatások** nézetre való visszaváltáshoz kattintson a fent található **Folyamatok** hivatkozásra. Kattintson az **IterateAndCopySQLTables** folyamat **Tevékenységfuttatások megtekintése** hivatkozására (a **Tevékenységek** oszlop első hivatkozása). A kimenetnek az alábbi képen látható módon kell megjelennie. Vegye figyelembe, hogy a **keresési** tevékenység kimenetében minden táblához tartozik egy **másolási** tevékenységfuttatás. 
 
     ![Tevékenységfuttatások](./media/tutorial-bulk-copy-portal/activity-runs-2.png)
-5. Ellenőrizze, hogy a rendszer átmásolta-e az adatokat az oktatóanyagban használt SQL Data Warehouse-célra. 
+1. Ellenőrizze, hogy a rendszer átmásolta-e az adatokat az oktatóanyagban használt SQL Data Warehouse-célra. 
 
 ## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 

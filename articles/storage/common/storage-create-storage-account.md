@@ -2,26 +2,20 @@
 title: Tárfiókok létrehozása, kezelése vagy törlése az Azure Portalon | Microsoft Docs
 description: Az Azure Portalon létrehozhat egy új tárfiókot, kezelheti a fiók hozzáférési kulcsait, vagy törölheti a tárfiókokat. Ismerje meg a standard és a prémium szintű tárfiókokat.
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 87c37da0-6cc6-4d88-a330-ef2896a1531d
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 f1_keywords:
 - sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: ce561c61d25946a508df3e92c461f1c8e889a07e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.component: common
+ms.openlocfilehash: 980053adc89cc121f3218233d521c8db4f075eb7
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776720"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523648"
 ---
 # <a name="about-azure-storage-accounts"></a>Tudnivalók az Azure Storage-fiókokról
 
@@ -63,7 +57,7 @@ A tárfiókban lévő objektumok eléréséhez szükséges URL-cím az objektum 
 Emellett konfigurálhat egy egyéni tartománynevet a tárfiókkal való használatra. További információkért lásd: [Configure a custom domain Name for your Blob Storage Endpoint](../blobs/storage-custom-domain-name.md) (Egyéni tartományév konfigurálása a Blob Storage-végponthoz). A konfigurálást emellett a PowerShell használatával is végezheti. További információ: [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) parancsmag.  
 
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az Azure Portalon nyissa ki bal oldalon a szolgáltatásmenüt, és válassza a **További szolgáltatások** lehetőséget. Ezután görgessen le a **Storage** szakaszig, és válassza a **Storage-fiókok** lehetőséget. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 3. Adja meg a tárfiók nevét. Lásd a [Tárfiókvégpontok](#storage-account-endpoints) című részt azzal kapcsolatban, hogy a rendszer hogyan használja a tárfiók nevét az objektumok címzéséhez az Azure Storage-ban.
@@ -112,7 +106,7 @@ Tárfiók létrehozásakor az Azure létrehoz két 512 bites tárelérési kulcs
 > 
 <a id="view-and-copy-storage-access-keys"/></a>
 #### <a name="view-and-copy-storage-access-keys"></a>A tárelérési kulcsok megtekintése és másolása
-Az [Azure Portalon](https://portal.azure.com) lépjen a tárfiókhoz, kattintson **Az összes beállítás** elemre, majd kattintson az **Elérési kulcsok** elemre a tárelérési kulcsok megtekintéséhez, másolásához és újragenerálásához. Az **Elérési kulcsok** panel is tartalmaz az elsődleges és másodlagos kulcsok segítségével előre konfigurált kapcsolati karakterláncokat, amelyeket az alkalmazásokban történő használat céljából másolhat.
+Az [Azure Portalon](https://portal.azure.com) lépjen a tárfiókhoz, kattintson **Az összes beállítás** elemre, majd kattintson az **Elérési kulcsok** elemre a tárelérési kulcsok megtekintéséhez, másolásához és újragenerálásához. Az **Elérési kulcsok** panel is tartalmaz az elsődleges és másodlagos kulcsok segítségével előre konfigurált kapcsolati sztringekat, amelyeket az alkalmazásokban történő használat céljából másolhat.
 
 #### <a name="regenerate-storage-access-keys"></a>Tárelérési kulcsok újragenerálása
 Javasoljuk, hogy rendszeres időközönként cserélje le tárfiókja elérési kulcsait tárolási kapcsolatai biztonságának megőrzése érdekében. A rendszer két tárelérési kulcsot biztosít, így az egyik kulcs újragenerálása esetén a másikkal közben fenntarthatja a tárfiók kapcsolatait.
@@ -130,9 +124,9 @@ Javasoljuk, hogy rendszeres időközönként cserélje le tárfiókja elérési 
 
 A tárelérési kulcsok az alábbi folyamat végrehajtásával rotálhatóak:
 
-1. Frissítse a kapcsolati karakterláncokat az alkalmazás kódjában, hogy a tárfiók másodlagos elérési kulcsára hivatkozzanak.
+1. Frissítse a kapcsolati sztringeket az alkalmazás kódjában, hogy a tárfiók másodlagos elérési kulcsára hivatkozzanak.
 2. Generálja újra a tárfiók elsődleges elérési kulcsát. A **Tárelérési kulcsok** panelen kattintson az **1. kulcs újragenerálása** elemre, majd kattintson az **Igen** gombra annak megerősítéséhez, hogy egy új kulcsot kíván létrehozni.
-3. Frissítse a kapcsolati karakterláncokat a kódban, hogy az új elsődleges tárelérési kulcsra hivatkozzanak.
+3. Frissítse a kapcsolati sztringekat a kódban, hogy az új elsődleges tárelérési kulcsra hivatkozzanak.
 4. Hasonló módon generálja újra a másodlagos elérési kulcsot.
 
 ## <a name="delete-a-storage-account"></a>Tárfiók törlése
@@ -148,7 +142,7 @@ Ha egy Azure virtuális géppel társított tárfiókot próbál törölni, egy 
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Azure Blob Storage: Cool and Hot tiers (Azure Blob Storage: „ritkán használt adatok” és „gyakran használt adatok” hozzáférési szintek)](../blobs/storage-blob-storage-tiers.md)
 * [Azure Storage replication (Azure Storage replikáció)](storage-redundancy.md)
-* [Configure Azure Storage connection strings (Az Azure Storage kapcsolati karakterláncok konfigurálása)](../storage-configure-connection-string.md)
+* [Configure Azure Storage connection strings (Az Azure Storage kapcsolati sztringek konfigurálása)](../storage-configure-connection-string.md)
 * [Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)
 * Látogasson el [az Azure Storage csapat blogjára](http://blogs.msdn.com/b/windowsazurestorage/).
 

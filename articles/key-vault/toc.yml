@@ -44,30 +44,24 @@
       href: key-vault-ovw-throttling.md
 - name: Útmutatók
   items:
-    - name: Kezelés
-      items:
-        - name: Az Azure Key Vault naplózása
-          href: key-vault-logging.md
-        - name: Tűzfal mögötti hozzáférés
-          href: key-vault-access-behind-firewall.md
-        - name: Elérhetőség és redundancia
-          href: key-vault-disaster-recovery-guidance.md
-        - name: Bérlőazonosító módosítása
-          href: key-vault-subscription-move-fix.md
-        - name: Létrehozás és kezelés az Azure CLI-vel
-          href: key-vault-manage-with-cli2.md
-        - name: A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
-          href: key-vault-soft-delete-cli.md
-        - name: A Key Vault helyreállítható törlés funkciójának használata Azure PowerShell-lel
-          href: key-vault-soft-delete-powershell.md
-        - name: Hozzáférés megadása csoportok használatával
-          href: key-vault-group-permissions-for-apps.md
-        - name: Kulcstartó védelme
-          href: key-vault-secure-your-key-vault.md
-    - name: Automatizálás
-      items:
-        - name: Azure Automation
-          href: automation-manage-key-vault.md
+    - name: Az Azure Key Vault naplózása
+      href: key-vault-logging.md
+    - name: Tűzfal mögötti hozzáférés
+      href: key-vault-access-behind-firewall.md
+    - name: Elérhetőség és redundancia
+      href: key-vault-disaster-recovery-guidance.md
+    - name: Bérlőazonosító módosítása
+      href: key-vault-subscription-move-fix.md
+    - name: Létrehozás és kezelés az Azure CLI-vel
+      href: key-vault-manage-with-cli2.md
+    - name: A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
+      href: key-vault-soft-delete-cli.md
+    - name: A Key Vault helyreállítható törlés funkciójának használata Azure PowerShell-lel
+      href: key-vault-soft-delete-powershell.md
+    - name: Hozzáférés megadása csoportok használatával
+      href: key-vault-group-permissions-for-apps.md
+    - name: Kulcstartó védelme
+      href: key-vault-secure-your-key-vault.md
 - name: Referencia
   items:
     - name: Azure PowerShell

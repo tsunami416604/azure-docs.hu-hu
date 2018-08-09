@@ -9,11 +9,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: afdee938145dacf50538ceb186957933fe7ec3bd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 379878e261007eca13a4e455ef2b97237c81eeba
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450028"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
@@ -31,7 +32,7 @@ A következő oktatóanyagokban egy két Azure-régióban futó webalkalmazás s
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyaghoz az Azure CLI (2.0.31-es vagy újabb verzió) helyi telepítésére lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Az oktatóanyaghoz az Azure CLI (2.0.31-es vagy újabb verzió) helyi telepítésére lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 Ismernie kell a Docker fő fogalmait, például a tárolókat, a tárolórendszerképeket és a Docker parancssori felületének alapszintű parancsait. A tárolókkal kapcsolatos alapfogalmakért tekintse meg [a Docker használatának első lépéseivel]( https://docs.docker.com/get-started/) foglalkozó témakört.
 
@@ -89,7 +90,7 @@ A replikáció befejezése után a portál mindkét régió esetén a *Kész* á
 
 Most, hogy konfigurálta a georeplikációt, állítson össze egy tárolórendszerképet, és küldje le azt a tárolójegyzékbe. Először be kell jelentkeznie az ACR-példányba, mielőtt rendszerképeket próbálna leküldeni rá.
 
-Az [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) paranccsal hitelesítheti és gyorsítótárazhatja a tárolójegyzék hitelesítő adatait. Cserélje le az `<acrName>` elemet a korábban létrehozott tárolójegyzék nevére.
+Az [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) paranccsal hitelesítheti és gyorsítótárazhatja a tárolójegyzék hitelesítő adatait. Cserélje le az `<acrName>` elemet a korábban létrehozott tárolójegyzék nevére.
 
 ```azurecli
 az acr login --name <acrName>

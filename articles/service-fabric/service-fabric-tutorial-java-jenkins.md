@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 59e36a2c8b719f2e8e3fd6aec20b91605221d8b2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 925a1af53438e21282e65418edc9ea365ad6a653
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109443"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432439"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Oktatóanyag: Jenkins-környezet konfigurálása a CI/CD engedélyezéséhez Service Fabric-fürtön lévő Java-alkalmazás számára
 
@@ -53,15 +53,15 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
 1. Kérje le a Service Fabric Jenkins-tárolójának rendszerképét: ``docker pull rapatchi/jenkins:v10``. A rendszerképhez előre telepítve van a Service Fabric Jenkins beépülő modulja.
 
-2. Futtassa a tárolórendszerképet, és adja meg azt a helyet, ahová a helyi gépen csatlakoztatva vannak a tanúsítványai.
+1. Futtassa a tárolórendszerképet, és adja meg azt a helyet, ahová a helyi gépen csatlakoztatva vannak a tanúsítványai.
 
     ```bash
     docker run -itd -p 8080:8080 -v /Users/suhuruli/Documents/Work/Samples/service-fabric-java-quickstart/AzureCluster:/tmp/myCerts rapatchi/jenkins:v10
     ```
 
-3. Kérje le a tárolórendszerkép-példány azonosítóját. A ``docker ps –a`` paranccsal az összes Docker-tárolót listázhatja
+1. Kérje le a tárolórendszerkép-példány azonosítóját. A ``docker ps –a`` paranccsal az összes Docker-tárolót listázhatja
 
-4. Kérje le a Jenkins-példány jelszavát a következő parancs futtatásával:
+1. Kérje le a Jenkins-példány jelszavát a következő parancs futtatásával:
 
     ```sh
     docker exec [first-four-digits-of-container-ID] cat /var/jenkins_home/secrets/initialAdminPassword
@@ -71,7 +71,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     * Ez a jelszó szükséges ahhoz, hogy bejelentkezzen a Jenkins-irányítópultra a ``http://<HOST-IP>:8080`` portálról.
     * Az első bejelentkezés után létrehozhatja saját felhasználói fiókját, vagy maradhat a rendszergazdai fiók használata mellett.
 
-5. Állítsa be a GitHubot a Jenkins használatához az [új SSH-kulcs létrehozásával és SSH-ügynökhöz adásával](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) foglalkozó cikk lépéseit követve. Mivel a parancsok futtatása a Docker-tárolóból történik, kövesse a Linux-környezetre vonatkozó útmutatást.
+1. Állítsa be a GitHubot a Jenkins használatához az [új SSH-kulcs létrehozásával és SSH-ügynökhöz adásával](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) foglalkozó cikk lépéseit követve. Mivel a parancsok futtatása a Docker-tárolóból történik, kövesse a Linux-környezetre vonatkozó útmutatást.
     * Kövesse a GitHub utasításait az SSH-kulcs létrehozásához. Ezután adja hozzá az SSH-kulcsot ahhoz a GitHub-fiókhoz, amely az adattárat üzemelteti.
     * Futtassa a fenti hivatkozással elérhető parancsokat a Jenkins Docker-felületén (és ne a saját gazdagépén).
     * Ahhoz, hogy a saját gazdagépéről jelentkezhessen be a Jenkinsbe, használja a következő parancsokat:
@@ -86,17 +86,17 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
 1. Először is, ha még nem rendelkezik adattárral, amellyel üzemeltethetné a szavazási projektet a GitHubon, hozzon létre egyet. Az oktatóanyag a továbbiakban **dev_test** néven hivatkozik erre az adattárra.
 
-2. Hozzon létre egy **új elemet** a Jenkins irányítópultján.
+1. Hozzon létre egy **új elemet** a Jenkins irányítópultján.
 
-3. Adjon nevet az elemnek (pl. **MyJob**). Válassza a **free-style project** (szabad projekt) lehetőséget, majd kattintson az **OK** gombra.
+1. Adjon nevet az elemnek (pl. **MyJob**). Válassza a **free-style project** (szabad projekt) lehetőséget, majd kattintson az **OK** gombra.
 
-4. Nyissa meg a feladat oldalát, majd kattintson a **Configure** (Konfigurálás) elemre.
+1. Nyissa meg a feladat oldalát, majd kattintson a **Configure** (Konfigurálás) elemre.
 
    a. Az általános beállításokban jelölje be a **GitHub project** (GitHub-projekt) jelölőnégyzetet, és adja meg a GitHub-projekt URL-címét. Ez az URL-cím üzemelteti azt a Service Fabric Java-alkalmazást, amelyet integrálni szeretne a Jenkins folyamatos integrációs és üzembe helyezési (CI/CD) folyamatával (például: ``https://github.com/testaccount/dev_test``).
 
    b. A **Source Code Management** (Forráskódkezelés) szakaszban válassza a **Git** elemet. Adja meg annak az adattárnak az URL-címét, amely a Jenkins CI/CD folyamatával integrálni kívánt Service Fabric Java-alkalmazást tartalmazza (például: *https://github.com/testaccount/dev_test.git*). Itt adhatja meg azt is, hogy melyik ágat kívánja létrehozni, például: **/master**.
 
-5. Adja meg a *GitHub* beállítását (amelyiken az adattár üzemel), így létrejöhet a kommunikáció a Jenkinsszel. Ehhez a következő lépések szükségesek:
+1. Adja meg a *GitHub* beállítását (amelyiken az adattár üzemel), így létrejöhet a kommunikáció a Jenkinsszel. Ehhez a következő lépések szükségesek:
 
    a. Nyissa meg a GitHub-adattár oldalát. Lépjen a **Settings** (Beállítások)  > **Integrations and Services** (Integrációk és szolgáltatások) részbe.
 
@@ -108,13 +108,13 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
    ![A Service Fabric Jenkins konfigurálása](./media/service-fabric-tutorial-java-jenkins/jenkinsconfiguration.png)
 
-6. A **Build Triggers** (Eseményindítók létrehozása) területen válassza ki a kívánt felépítési lehetőséget. Jelen esetben minden alkalommal szeretnénk elindítani egy felépítést, amikor valamilyen módosításra kerül sor az adattárban. Így a kiválasztandó lehetőség a következő: **GitHub hook trigger for GITScm polling** (GitHub beavatkozási pont eseményindító GITScm lekérdezés esetén).
+1. A **Build Triggers** (Eseményindítók létrehozása) területen válassza ki a kívánt felépítési lehetőséget. Jelen esetben minden alkalommal szeretnénk elindítani egy felépítést, amikor valamilyen módosításra kerül sor az adattárban. Így a kiválasztandó lehetőség a következő: **GitHub hook trigger for GITScm polling** (GitHub beavatkozási pont eseményindító GITScm lekérdezés esetén).
 
-7. A **Build** (Felépítés) szakaszban az **Add build step** (Felépítési lépés hozzáadása) legördülő listából válassza az **Invoke Gradle Script** (Gradle szkript meghívása) lehetőséget. A megjelenő vezérlőn nyissa meg a speciális menüt, és adja meg a **fő felépítési szkript** elérési útját az alkalmazásához. A rendszer felveszi a build.gradle elemet a megadott elérési útból, és annak megfelelően működik.
+1. A **Build** (Felépítés) szakaszban az **Add build step** (Felépítési lépés hozzáadása) legördülő listából válassza az **Invoke Gradle Script** (Gradle szkript meghívása) lehetőséget. A megjelenő vezérlőn nyissa meg a speciális menüt, és adja meg a **fő felépítési szkript** elérési útját az alkalmazásához. A rendszer felveszi a build.gradle elemet a megadott elérési útból, és annak megfelelően működik.
 
     ![Service Fabric, Jenkins felépítési művelet](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
 
-8. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. Itt meg kell adnia annak a fürtnek az adatait, ahová a Jenkins által lefordított Service Fabric-alkalmazást üzembe kívánja helyezni. A tanúsítvány elérési útja megegyezik a hellyel, ahová a kötet csatlakoztatva van (/tmp/myCerts).
+1. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. Itt meg kell adnia annak a fürtnek az adatait, ahová a Jenkins által lefordított Service Fabric-alkalmazást üzembe kívánja helyezni. A tanúsítvány elérési útja megegyezik a hellyel, ahová a kötet csatlakoztatva van (/tmp/myCerts).
 
     Az üzembe helyezéshez szükséges egyéb adatokat is megadhat. Az alábbi képernyőképen áttekintheti, hogy milyen alkalmazásadatokat lehet megadni:
 
@@ -140,7 +140,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     </div>
     ```
 
-2. Frissítse az **ApplicationTypeVersion** és a **ServiceManifestVersion** verziószámát **2.0.0** értékre a *Voting/VotingApplication/ApplicationManifest.xml* fájlban.
+1. Frissítse az **ApplicationTypeVersion** és a **ServiceManifestVersion** verziószámát **2.0.0** értékre a *Voting/VotingApplication/ApplicationManifest.xml* fájlban.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -167,7 +167,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     </ApplicationManifest>
     ```
 
-3. Frissítse a **ServiceManifest** **Version** mezőjét és a **CodePackage** **Version** mezőjét a *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* fájlban a **2.0.0** értékre.
+1. Frissítse a **ServiceManifest** **Version** mezőjét és a **CodePackage** **Version** mezőjét a *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* fájlban a **2.0.0** értékre.
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">
@@ -179,13 +179,13 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     </CodePackage>
     ```
 
-4. Az alkalmazás frissítését elvégző Jenkins-feladat inicializálásához küldje le az új módosításokat a GitHub-adattárba.
+1. Az alkalmazás frissítését elvégző Jenkins-feladat inicializálásához küldje le az új módosításokat a GitHub-adattárba.
 
-5. A Service Fabric Explorerben kattintson az **Applications** (Alkalmazások) legördülő menüre. A frissítés állapotának megtekintéséhez kattintson az **Upgrades in Progress** (Folyamatban lévő frissítések) fülre.
+1. A Service Fabric Explorerben kattintson az **Applications** (Alkalmazások) legördülő menüre. A frissítés állapotának megtekintéséhez kattintson az **Upgrades in Progress** (Folyamatban lévő frissítések) fülre.
 
     ![Folyamatban lévő frissítés](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-6. A **http://\<Host-IP>:8080** megnyitásakor a szavazóalkalmazás minden funkciójával együtt elérhetővé válik.
+1. A **http://\<Host-IP>:8080** megnyitásakor a szavazóalkalmazás minden funkciójával együtt elérhetővé válik.
 
     ![Szavazóalkalmazás – helyi](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 28c217430dcbc8ee17998742c31888e06dddf96f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 5b7f2f1bd1872f78377a0d16567ca4df8f8d0968
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902146"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440677"
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Azure Container Service-oktatóanyag – A DC/OS kezelése
 
@@ -34,7 +34,7 @@ Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség
 
 ## <a name="create-dcos-cluster"></a>DC/OS-fürt létrehozása
 
-Első lépésként hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Első lépésként hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *westeurope* helyen.
 
@@ -42,7 +42,7 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 az group create --name myResourceGroup --location westeurope
 ```
 
-Ezután hozzon létre egy DC/OS fürtöt az [az acs create](/cli/azure/acs#az_acs_create) paranccsal.
+Ezután hozzon létre egy DC/OS fürtöt az [az acs create](/cli/azure/acs#az-acs-create) paranccsal.
 
 Az alábbi példa egy *myDCOSCluster* nevű DC/OS fürtöt és SSH-kulcsokat hoz létre, ha azok még nem léteznek. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
@@ -240,13 +240,13 @@ Ha erre a címre ugrik, a rendszer visszaadja az alapértelmezett NGINX helyet.
 
 Az előzőekben egy alkalmazást többpéldányosra méreteztünk. A DC/OS infrastruktúra is méretezhető attól függően, hogy több vagy kevesebb számítási kapacitásra van-e szükség. Ez a művelet az [az acs scale]() paranccsal hajtható végre. 
 
-A DC/OS ügynökök aktuális számának megtekintéséhez használja az [az acs show](/cli/azure/acs#az_acs_show) parancsot.
+A DC/OS ügynökök aktuális számának megtekintéséhez használja az [az acs show](/cli/azure/acs#az-acs-show) parancsot.
 
 ```azurecli
 az acs show --resource-group myResourceGroup --name myDCOSCluster --query "agentPoolProfiles[0].count"
 ```
 
-Növelje a számot 5-re az [az acs scale](/cli/azure/acs#az_acs_scale) paranccsal. 
+Növelje a számot 5-re az [az acs scale](/cli/azure/acs#az-acs-scale) paranccsal. 
 
 ```azurecli
 az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-count 5
@@ -254,7 +254,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 ## <a name="delete-dcos-cluster"></a>DC/OS fürt törlése
 
-Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, a DC/OS fürt és az összes kapcsolódó erőforrás.
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a DC/OS fürt és az összes kapcsolódó erőforrás.
 
 ```azurecli 
 az group delete --name myResourceGroup --no-wait

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 58a283f1ce5bd2fd78c4fa2038c3998aea1598c9
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2d959eb9c4f55624d0d0915dd5dea4c62ba1f8e5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070351"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505713"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Bevezetés az Azure Key Vault használatába
 Ez a cikk útmutatást nyújt az Azure Key Vault PowerShell segítségével történő használatának a megismerésében, és az alábbi tevékenységeken vezeti végig:
@@ -175,7 +175,7 @@ Ha a PFX-fájl tulajdonságait szeretné megtekinteni a portálon, akkor az alá
 ![A tanúsítványok megjelenése a portálon](./media/key-vault-get-started/imported-pfx.png)
 ### <a name="to-add-a-secret-to-azure-key-vault"></a>Titkos kód hozzáadása az Azure Key Vaulthoz
 
-A titkos kód – amely egy SQLPassword nevű, Pa$$w0rd értékű jelszó – hozzáadásához az Azure Key Vault szolgáltatásbeli tárolóhoz először konvertálja a Pa$$w0rd értéket egy biztonságos karakterláncra az alábbi paranccsal:
+A titkos kód – amely egy SQLPassword nevű, Pa$$w0rd értékű jelszó – hozzáadásához az Azure Key Vault szolgáltatásbeli tárolóhoz először konvertálja a Pa$$w0rd értéket egy biztonságos sztringre az alábbi paranccsal:
 
 ```powershell    
 $secretvalue = ConvertTo-SecureString 'Pa$$w0rd' -AsPlainText -Force
@@ -206,7 +206,7 @@ A titkos kódban tárolt érték megtekintése egyszerű szövegként:
 A kulcstartó és a kulcs vagy a titkos kód mostantól készen áll az alkalmazásokkal való használatra. Használatukat engedélyeznie kell az alkalmazások számára.  
 
 ## <a id="register"></a>Alkalmazás regisztrálása az Azure Active Directory szolgáltatásban
-Ezt a lépést általában egy fejlesztő végzi egy másik számítógépről. Nem kifejezetten az Azure Key Vaulthoz kapcsolódik. Az alkalmazások Azure Active Directoryban való regisztrálásának részletes lépéseit az [Alkalmazások integrálása az Azure Active Directoryval](../active-directory/develop/active-directory-integrating-applications.md) vagy az [Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portálon erőforrások eléréséhez](../azure-resource-manager/resource-group-create-service-principal-portal.md) című cikkben tekintheti meg.
+Ezt a lépést általában egy fejlesztő végzi egy másik számítógépről. Nem kifejezetten az Azure Key Vaulthoz kapcsolódik. Az alkalmazások Azure Active Directoryban való regisztrálásának részletes lépéseit az [Alkalmazások integrálása az Azure Active Directoryval](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) vagy az [Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portálon erőforrások eléréséhez](../azure-resource-manager/resource-group-create-service-principal-portal.md) című cikkben tekintheti meg.
 
 > [!IMPORTANT]
 > Az oktatóprogram sikeres befejezéséhez a fiókjának, a tárolónak és az ebben a lépésben regisztrálandó alkalmazásnak ugyanabban az Azure-címtárban kell lenniük.

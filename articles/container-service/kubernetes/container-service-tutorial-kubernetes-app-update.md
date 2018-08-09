@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 81f2302df5740b482f03a4a724d2899734579949
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 9cb5769d7f54a1036bf14199c87961c95ed2e7ce
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096859"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432406"
 ---
 # <a name="update-an-application-in-kubernetes"></a>Alkalmazások frissítése a Kubernetesben
 
@@ -80,7 +80,7 @@ A böngészőben nyissa meg a http://localhost:8080 címet a frissített alkalma
 
 Címkézze fel az `azure-vote-front` rendszerképet a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevével. 
 
-Kérje le a bejelentkezési kiszolgáló nevét az [az acr list](/cli/azure/acr#az_acr_list) paranccsal.
+Kérje le a bejelentkezési kiszolgáló nevét az [az acr list](/cli/azure/acr#az-acr-list) paranccsal.
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table

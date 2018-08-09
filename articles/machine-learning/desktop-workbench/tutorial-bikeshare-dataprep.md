@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 951ce8947d113eaad2ea0e3b5df5e9714aa33dd8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2a50350b9ba49d82a20b92804ffb92ec6906186d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723187"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439900"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Oktatóanyag: Az Azure Machine Learning Workbench használata haladó adat-előkészítéshez (Kerékpármegosztási adatok)
 Az Azure Machine Learning (előzetes verzió) egy adatszakértőknek készült, az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőméretű üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
@@ -60,7 +60,7 @@ Ez az oktatóanyag a [Boston Hubway adatkészletet](https://s3.amazonaws.com/hub
       - [201610-hubway-tripdata.zip](https://s3.amazonaws.com/hubway-data/201610-hubway-tripdata.zip)
       - [201701-hubway-tripdata.zip](https://s3.amazonaws.com/hubway-data/201701-hubway-tripdata.zip)
 
-2. A letöltés után csomagolja ki egyesével a .zip fájlokat.
+1. A letöltés után csomagolja ki egyesével a .zip fájlokat.
 
 ## <a name="upload-data-files-to-azure-blob-storage"></a>Adatfájlok feltöltése az Azure Blob Storage-ba
 Az Azure Blob Storage használható az adatfájlok tárolására.
@@ -69,9 +69,9 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 
     ![A HDInsight-fürt tárfiókja](media/tutorial-bikeshare-dataprep/hdinsightstorageaccount.png)
 
-2. Hozzon létre egy új tárolót **data-files** néven, amelyben a **BikeShare**-adatfájlokat tárolja majd.
+1. Hozzon létre egy új tárolót **data-files** néven, amelyben a **BikeShare**-adatfájlokat tárolja majd.
 
-3. Töltse fel az adatfájlokat. Töltse fel a `BostonWeather.csv` fájlt egy `weather` nevű mappába. Töltse fel az útadatfájlokat egy `tripdata` nevű mappába.
+1. Töltse fel az adatfájlokat. Töltse fel a `BostonWeather.csv` fájlt egy `weather` nevű mappába. Töltse fel az útadatfájlokat egy `tripdata` nevű mappába.
 
     ![Adatfájlok feltöltése](media/tutorial-bikeshare-dataprep/azurestoragedatafile.png)
 
@@ -91,7 +91,7 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 
    * **HOURLYWindSpeed**
 
-2. A __hubway__-adatok év és hónap szerint vannak fájlokba rendezve. Például a `201501-hubway-tripdata.zip` nevű fájl egy .csv fájlt tartalmaz, amelyben a 2015. januári adatok szerepelnek. Az adatok a következő mezőket tartalmazzák (minden sor egy kerékpárutat jelöl):
+1. A __hubway__-adatok év és hónap szerint vannak fájlokba rendezve. Például a `201501-hubway-tripdata.zip` nevű fájl egy .csv fájlt tartalmaz, amelyben a 2015. januári adatok szerepelnek. Az adatok a következő mezőket tartalmazzák (minden sor egy kerékpárutat jelöl):
 
    * **Út időtartama (másodpercben)**
 
@@ -114,7 +114,7 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 1. Indítsa el a **Machine Learning Workbench** alkalmazást a Start menüből vagy a gyorsindítóból.
 
-2. Hozzon létre egy új Machine Learning-projektet. Kattintson a **+** gombra a **Projektek** lapon, vagy válassza a **Fájl** > **Új** lehetőséget.
+1. Hozzon létre egy új Machine Learning-projektet. Kattintson a **+** gombra a **Projektek** lapon, vagy válassza a **Fájl** > **Új** lehetőséget.
 
    * Használja a **BikeShare** sablont.
 
@@ -126,7 +126,7 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 
    ![Adatnézet lap](media/tutorial-bikeshare-dataprep/navigatetodatatab.png)
 
-2. Adjon hozzá egy adatforrást. Kattintson a **+** ikonra, és válassza az **Adatforrás hozzáadása** lehetőséget.
+1. Adjon hozzá egy adatforrást. Kattintson a **+** ikonra, és válassza az **Adatforrás hozzáadása** lehetőséget.
 
    ![Adatforrás hozzáadása lehetőség](media/tutorial-bikeshare-dataprep/newdatasource.png)
 
@@ -136,11 +136,11 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 
    ![Fájl(ok)/Mappa bejegyzés](media/tutorial-bikeshare-dataprep/datasources.png)
 
-2. **Fájl kiválasztása**: Adja hozzá az időjárási adatokat. Keresse meg és válassza ki a Blob Storage-ra korábban feltöltött `BostonWeather.csv` fájlt. Kattintson a **Tovább** gombra.
+1. **Fájl kiválasztása**: Adja hozzá az időjárási adatokat. Keresse meg és válassza ki a Blob Storage-ra korábban feltöltött `BostonWeather.csv` fájlt. Kattintson a **Tovább** gombra.
 
    ![Fájlkiválasztás, kiválasztva a BostonWeather.csv](media/tutorial-bikeshare-dataprep/azureblobpickweatherdatafile.png)
 
-3. **Fájl részletei**: Ellenőrizze az észlelt fájlsémát. A Machine Learning Workbench elemzi a fájlban lévő adatokat, és kikövetkezteti a használandó sémát.
+1. **Fájl részletei**: Ellenőrizze az észlelt fájlsémát. A Machine Learning Workbench elemzi a fájlban lévő adatokat, és kikövetkezteti a használandó sémát.
 
    ![Fájlok részleteinek ellenőrzése](media/tutorial-bikeshare-dataprep/fileparameters.png)
 
@@ -170,7 +170,7 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 
    A folytatáshoz kattintson a **Tovább** gombra.
 
-4. **Adattípusok**: Tekintse át az automatikusan észlelt adattípusokat. A Machine Learning Workbench elemzi a fájlban lévő adatokat, és kikövetkezteti a használandó adattípusokat.
+1. **Adattípusok**: Tekintse át az automatikusan észlelt adattípusokat. A Machine Learning Workbench elemzi a fájlban lévő adatokat, és kikövetkezteti a használandó adattípusokat.
 
    a. Ezen adatok esetében minden oszlop **ADATTÍPUS** tulajdonságát módosítsa **Sztring** értékre.
 
@@ -181,7 +181,7 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 
    b. A folytatáshoz kattintson a __Tovább__ gombra. 
 
-5. **Mintavételezés**: Mintavételezési séma létrehozásához válassza a **Szerkesztés** lehetőséget. Válassza a hozzáadott új __Első 10 000__ sort, majd a __Szerkesztés__ lehetőséget. A __Mintavételezési stratégia__ esetében válassza a **Teljes fájl** lehetőséget, majd kattintson az **Alkalmaz** gombra.
+1. **Mintavételezés**: Mintavételezési séma létrehozásához válassza a **Szerkesztés** lehetőséget. Válassza a hozzáadott új __Első 10 000__ sort, majd a __Szerkesztés__ lehetőséget. A __Mintavételezési stratégia__ esetében válassza a **Teljes fájl** lehetőséget, majd kattintson az **Alkalmaz** gombra.
 
    ![Új mintavételezési stratégia hozzáadása](media/tutorial-bikeshare-dataprep/weatherdatasamplingfullfile.png)
 
@@ -191,14 +191,14 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 
    A folytatáshoz kattintson a **Tovább** gombra.
 
-6. **Elérési út oszlop**: Az __Elérési út oszlop__ szakaszban megadhatja a fájl teljes elérési útját az importált adatok egyik oszlopaként. Válassza az __Elérési út oszlop kihagyása__ lehetőséget.
+1. **Elérési út oszlop**: Az __Elérési út oszlop__ szakaszban megadhatja a fájl teljes elérési útját az importált adatok egyik oszlopaként. Válassza az __Elérési út oszlop kihagyása__ lehetőséget.
 
    > [!TIP]
    > Az elérési út oszlopként való hozzáadása akkor hasznos, ha egy olyan mappát importál, amelyben számos fájl található eltérő fájlnevekkel. Emellett akkor is hasznos, ha a fájlnevek olyan információkat tartalmaznak, amelyeket később szeretne kinyerni.
 
    ![Az Elérési út oszlop kihagyásra állítva](media/tutorial-bikeshare-dataprep/pathcolumn.png)
 
-7. **Befejezés**: Az adatforrás létrehozásának befejezéséhez válassza a **Befejezés** lehetőséget.
+1. **Befejezés**: Az adatforrás létrehozásának befejezéséhez válassza a **Befejezés** lehetőséget.
 
     Ekkor megnyílik egy __BostonWeather__ nevű új adatforráslap. Az adatokból vett minta rácsnézetben jelenik meg. A minta a korábban meghatározott aktív mintavételezési séma alapján jön létre.
 
@@ -221,17 +221,17 @@ Az __Adatnézethez__ való visszatéréshez kattintson a lap bal felső sarkába
 
 1. Az adatok előkészítésének megkezdéséhez kattintson az __Előkészítés__ gombra. 
 
-2. Amikor a rendszer arra kéri, írja be az adat-előkészítési csomag nevét, például a **BikeShare Data Prep** nevet. 
+1. Amikor a rendszer arra kéri, írja be az adat-előkészítési csomag nevét, például a **BikeShare Data Prep** nevet. 
 
-3. A folytatáshoz kattintson az __OK__ gombra.
+1. A folytatáshoz kattintson az __OK__ gombra.
 
    ![Előkészítés párbeszédpanel](media/tutorial-bikeshare-dataprep/dataprepdialog.png)
 
-4. Ekkor megjelenik egy **BikeShare Data Prep** nevű új csomag az __Adat__ fül __Adatok előkészítése__ szakaszában. 
+1. Ekkor megjelenik egy **BikeShare Data Prep** nevű új csomag az __Adat__ fül __Adatok előkészítése__ szakaszában. 
 
    A csomag megjelenítéséhez válassza ki a bejegyzést. 
 
-5. Kattintson a **>>** gombra az __Adatfolyamok__ kibontásához és a csomagban található adatfolyamok megjelenítéséhez. Ebben a példában a __BostonWeather__ az egyetlen adatfolyam.
+1. Kattintson a **>>** gombra az __Adatfolyamok__ kibontásához és a csomagban található adatfolyamok megjelenítéséhez. Ebben a példában a __BostonWeather__ az egyetlen adatfolyam.
 
    > [!IMPORTANT]
    > Egy csomag több adatfolyamot is tartalmazhat.
@@ -241,7 +241,7 @@ Az __Adatnézethez__ való visszatéréshez kattintson a lap bal felső sarkába
 ## <a name="filter-data-by-value"></a>Adatok szűrése érték alapján
 1. Az adatok szűréséhez kattintson a jobb gombbal egy adott értéket tartalmazó cellára, majd kattintson a __Szűrő__ lehetőségre. Ezután válassza ki a szűrő típusát.
 
-2. Ehhez az oktatóanyaghoz válasszon egy olyan cellát, amely az `FM-15` értéket tartalmazza. Ezután állítsa a szűrőt **egyenlő** beállításra.  Az adatok közül most csak azok a sorok jelennek meg, amelyekben a __REPORTTYPE__ értéke `FM-15`.
+1. Ehhez az oktatóanyaghoz válasszon egy olyan cellát, amely az `FM-15` értéket tartalmazza. Ezután állítsa a szűrőt **egyenlő** beállításra.  Az adatok közül most csak azok a sorok jelennek meg, amelyekben a __REPORTTYPE__ értéke `FM-15`.
 
    ![Szűrés párbeszédpanel](media/tutorial-bikeshare-dataprep/weatherfilterinfm15.png)
 
@@ -263,17 +263,17 @@ A __REPORTTYPE__ oszlopra már nincs szüksége. Kattintson a jobb gombbal az os
 
    * **HOURLYWindSpeed**
 
-2. Kattintson a jobb gombbal a kiválasztott oszlopfejlécek egyikére, majd válassza a **Mezőtípus átalakítása numerikus típusúvá** lehetőséget. Ez a lehetőség numerikusra konvertálja az oszlopok adattípusát.
+1. Kattintson a jobb gombbal a kiválasztott oszlopfejlécek egyikére, majd válassza a **Mezőtípus átalakítása numerikus típusúvá** lehetőséget. Ez a lehetőség numerikusra konvertálja az oszlopok adattípusát.
 
    ![Több oszlop numerikus típusúvá konvertálása](media/tutorial-bikeshare-dataprep/weatherconverttonumeric.png)
 
-3. Szűrje ki a hibaértékeket. Egyes oszlopok esetén problémák merültek fel az adattípus konvertálásakor. Ezt a problémát az oszlop __Adatminőséget jelző sávjában__ megjelenő piros szín jelzi.
+1. Szűrje ki a hibaértékeket. Egyes oszlopok esetén problémák merültek fel az adattípus konvertálásakor. Ezt a problémát az oszlop __Adatminőséget jelző sávjában__ megjelenő piros szín jelzi.
 
    A hibákat tartalmazó sorok eltávolításához kattintson a jobb gombbal az **HOURLYDRYBULBTEMPF** oszlopfejlécre. Kattintson az **Oszlop szűrése** lehetőségre. Használja a **Cél** lehetőségnél az alapértelmezett **Sorok megtartása** értéket. A **Feltételek** legördülő listában válassza a **nem hiba** lehetőséget. Kattintson az **OK** gombra a szűrő alkalmazásához.
 
    ![Hibaértékek szűrése](media/tutorial-bikeshare-dataprep/filtererrorvalues.png)
 
-4. A többi oszlopban található hibás sorok kiküszöböléséhez ismételje meg ezt a szűrési folyamatot az **HOURLYRelativeHumidity** és az **HOURLYWindSpeed** oszlopok esetén.
+1. A többi oszlopban található hibás sorok kiküszöböléséhez ismételje meg ezt a szűrési folyamatot az **HOURLYRelativeHumidity** és az **HOURLYWindSpeed** oszlopok esetén.
 
 ## <a name="use-by-example-transformations"></a>Példa alapján végzett átalakítások használata
 
@@ -291,9 +291,9 @@ Ha az adatokat egy kétórás időszakokra vonatkozó előrejelzésben szeretné
 
    ![Oszlopok felosztása példa alapján bejegyzés](media/tutorial-bikeshare-dataprep/weathersplitcolumnbyexample.png)
 
-2. A Machine Learning Workbench automatikusan meghatároz egy észszerű elválasztó karaktert, majd két oszlopot hoz létre az adatok dátum- és időértékekre való felosztásával. 
+1. A Machine Learning Workbench automatikusan meghatároz egy észszerű elválasztó karaktert, majd két oszlopot hoz létre az adatok dátum- és időértékekre való felosztásával. 
 
-3. Kattintson az __OK__ gombra a felosztási művelet eredményeinek elfogadásához.
+1. Kattintson az __OK__ gombra a felosztási művelet eredményeinek elfogadásához.
 
    ![Felosztott DATE_1 és DATE_2 oszlopok](media/tutorial-bikeshare-dataprep/weatherdatesplitted.png)
 
@@ -305,7 +305,7 @@ Ha az adatokat egy kétórás időszakokra vonatkozó előrejelzésben szeretné
 
    Ekkor egy új üres oszlop jön létre nullértékekkel.
 
-2. Válassza az új oszlop első üres celláját. Adjon meg egy példát a kívánt időtartományra. Ehhez írja be a **12AM-2AM** értéket az új oszlopba, majd nyomja le az Enter billentyűt.
+1. Válassza az új oszlop első üres celláját. Adjon meg egy példát a kívánt időtartományra. Ehhez írja be a **12AM-2AM** értéket az új oszlopba, majd nyomja le az Enter billentyűt.
 
    ![A 12AM-2AM értéket tartalmazó új oszlop](media/tutorial-bikeshare-dataprep/weathertimerangeexample.png)
 
@@ -315,26 +315,26 @@ Ha az adatokat egy kétórás időszakokra vonatkozó előrejelzésben szeretné
    > [!IMPORTANT]
    > A szélsőséges esetek azonosítása a Workbench jelenlegi verziójában nem feltétlenül működik Mac számítógépeken. Mac számítógép esetén ugorja át a 3. és 4. lépéseket. Ehelyett kattintson az __OK__ gombra, miután az összes sor fel lett töltve származtatott értékekkel.
    
-3. A rács fölötti **Adatok elemzése** szöveg azt jelzi, hogy a Workbench a szélsőséges esetek észlelésén dolgozik. Ha ezzel elkészült, az állapot a következők egyikére változik: **Következő javasolt sor felülvizsgálata** vagy **Nincsenek javaslatok**. Ebben a példában az állapot a **Következő javasolt sor felülvizsgálata**.
+1. A rács fölötti **Adatok elemzése** szöveg azt jelzi, hogy a Workbench a szélsőséges esetek észlelésén dolgozik. Ha ezzel elkészült, az állapot a következők egyikére változik: **Következő javasolt sor felülvizsgálata** vagy **Nincsenek javaslatok**. Ebben a példában az állapot a **Következő javasolt sor felülvizsgálata**.
 
-4. A javasolt változások felülvizsgálatához válassza a **Következő javasolt sor felülvizsgálata** lehetőséget. Ekkor a felülvizsgálandó és szükség esetén javítandó cella kiemelve jelenik meg.
+1. A javasolt változások felülvizsgálatához válassza a **Következő javasolt sor felülvizsgálata** lehetőséget. Ekkor a felülvizsgálandó és szükség esetén javítandó cella kiemelve jelenik meg.
 
    ![Következő javasolt sor felülvizsgálata](media/tutorial-bikeshare-dataprep/weatherreviewnextsuggested.png)
 
     Kattintson az __OK__ gombra az átalakítás elfogadásához.
  
-5. Ezután a rendszer visszalépteti a __BostonWeather__ adatainak rácsnézetéhez. A rács most az előzőleg hozzáadott három oszlopot tartalmazza.
+1. Ezután a rendszer visszalépteti a __BostonWeather__ adatainak rácsnézetéhez. A rács most az előzőleg hozzáadott három oszlopot tartalmazza.
 
    ![A hozzáadott sorokat tartalmazó rácsnézet](media/tutorial-bikeshare-dataprep/timerangecomputed.png)
 
    > [!TIP]
    > A rendszer az elvégzett módosításokat megőrzi a **Lépések** panelen. Keresse meg az Ön által létrehozott lépést a **Lépések** panelen, kattintson a lefelé mutató nyílra és válassza a **Szerkesztés** lehetőséget. Ekkor megjelenik az **Oszlopok származtatása példa alapján** speciális ablak. A rendszer minden példát itt őriz meg. Emellett manuálisan is hozzáadhat példákat, ha duplán kattint a következő rács egyik sorára. Ha a módosítások alkalmazása nélkül szeretne visszatérni a fő rácshoz, kattintson a **Mégse** gombra. Ezt a nézetet úgy is elérheti, ha egy **Oszlopok származtatása példa alapján** átalakítás során a **Speciális mód** lehetőséget választja.
 
-6. Az oszlop átnevezéséhez kattintson duplán az oszlopfejlécre, és írja be az **Hour Range** kifejezést. Nyomja le az Enter billentyűt a módosítás mentéséhez.
+1. Az oszlop átnevezéséhez kattintson duplán az oszlopfejlécre, és írja be az **Hour Range** kifejezést. Nyomja le az Enter billentyűt a módosítás mentéséhez.
 
    ![Az oszlop átnevezése](media/tutorial-bikeshare-dataprep/weatherhourrangecolumnrename.png)
 
-7. A dátum- és óratartomány származtatásához válassza ki egyszerre a **Date\_1** és az **Hour Range** oszlopot, kattintson a jobb gombbal, majd válassza az **Oszlopok származtatása példa alapján** lehetőséget.
+1. A dátum- és óratartomány származtatásához válassza ki egyszerre a **Date\_1** és az **Hour Range** oszlopot, kattintson a jobb gombbal, majd válassza az **Oszlopok származtatása példa alapján** lehetőséget.
 
    ![Oszlopok származtatása példa alapján](media/tutorial-bikeshare-dataprep/weatherderivedatehourrange.png)
 
@@ -350,7 +350,7 @@ Ha az adatokat egy kétórás időszakokra vonatkozó előrejelzésben szeretné
    > * Lépjen az első olyan cellára, amely a **Feb 01, 2015 12AM-2AM** értéket tartalmazza. Ez nagy valószínűséggel a 15. sor. Javítsa ki az értéket **Jan 02, 2015 12AM-2AM** értékre, majd nyomja le az Enter billentyűt. 
    
 
-8. Várjon, amíg az állapot megváltozik **Adatok elemzése** értékről **Következő javasolt sor felülvizsgálata** értékre. Ez a módosítás néhány másodpercig is eltarthat. Kattintson az állapothivatkozásra a javasolt sorhoz való ugráshoz. 
+1. Várjon, amíg az állapot megváltozik **Adatok elemzése** értékről **Következő javasolt sor felülvizsgálata** értékre. Ez a módosítás néhány másodpercig is eltarthat. Kattintson az állapothivatkozásra a javasolt sorhoz való ugráshoz. 
 
    ![A felülvizsgálatra javasolt sor](media/tutorial-bikeshare-dataprep/wetherdatehourrangedisambiguate.png)
 
@@ -358,7 +358,7 @@ Ha az adatokat egy kétórás időszakokra vonatkozó előrejelzésben szeretné
 
    ![A megfelelően formázott adatok](media/tutorial-bikeshare-dataprep/wetherdatehourrangedisambiguated.png)
 
-9. Kattintson az **OK** gombra az átalakítás elfogadásához.
+1. Kattintson az **OK** gombra az átalakítás elfogadásához.
 
    ![Az elkészült átalakítási rács](media/tutorial-bikeshare-dataprep/weatherdatehourrangecomputed.png)
 
@@ -366,9 +366,9 @@ Ha az adatokat egy kétórás időszakokra vonatkozó előrejelzésben szeretné
    > Az **Oszlopok származtatása példa alapján** művelet **Speciális módjának** használatához ehhez a lépéshez. válassza a lefelé mutató nyilat a **Lépések** panelen. Az adatrácson jelölőnégyzetek találhatók a **DATE\_1** és az **Hour Range** oszlopok mellett. Törölje a jelölést az **Hour Range** oszlop melletti jelölőnégyzetből, és figyelje meg, hogyan változik a kimenet. Az **Hour Range** oszlop mint bemenet hiányában a rendszer állandóként kezeli a **12AM-2AM** értéket, és azt fűzi hozzá a származtatott értékekhez. Ha a módosítások alkalmazása nélkül szeretne visszatérni a fő rácshoz, kattintson a **Mégse** gombra.
    ![Speciális mód](media/tutorial-bikeshare-dataprep/derivedcolumnadvancededitdeselectcolumn.png)
 
-10. Az oszlop átnevezéséhez kattintson duplán a fejlécre. Módosítsa a nevet **Date Hour Range** értékűre, majd nyomja le az Enter billentyűt.
+1. Az oszlop átnevezéséhez kattintson duplán a fejlécre. Módosítsa a nevet **Date Hour Range** értékűre, majd nyomja le az Enter billentyűt.
 
-11. Válassza ki együtt a **DATE**, a **DATE\_1**, a **DATE\_2** és az **Hour Range** oszlopot. Kattintson a jobb gombbal, majd válassza az **Oszlop eltávolítása** lehetőséget.
+1. Válassza ki együtt a **DATE**, a **DATE\_1**, a **DATE\_2** és az **Hour Range** oszlopot. Kattintson a jobb gombbal, majd válassza az **Oszlop eltávolítása** lehetőséget.
 
 ## <a name="summarize-data-mean"></a>Adatok összegzése (középérték)
 
@@ -378,7 +378,7 @@ A következő lépés az időjárás összegzése az óratartomány szerint csop
 
     ![Átalakítások menü](media/tutorial-bikeshare-dataprep/weathersummarizemenu.png)
 
-2. Az adatok összegzéséhez húzza az oszlopokat az oldal alján található rácsról a fenti jobb és bal oldali panelre. A bal oldali panelen a **Húzzon ide oszlopokat az adatok csoportosításához** szöveg látható. A jobb oldali panelen a **Húzzon ide oszlopokat az adatok összegzéséhez** szöveg látható. 
+1. Az adatok összegzéséhez húzza az oszlopokat az oldal alján található rácsról a fenti jobb és bal oldali panelre. A bal oldali panelen a **Húzzon ide oszlopokat az adatok csoportosításához** szöveg látható. A jobb oldali panelen a **Húzzon ide oszlopokat az adatok összegzéséhez** szöveg látható. 
 
     a. Húzza a **Date Hour Range** oszlopot a lenti rácsról a bal oldali panelre. Húzza az **HOURLYDRYBULBTEMPF**, az **HOURLYRelativeHumidity** és az **HOURLYWindSpeed** oszlopot a jobb oldali panelre. 
 
@@ -392,7 +392,7 @@ Ha a numerikus oszlopok adatait 0–1 tartományúra módosítja, azzal felgyors
 
 1. Az **Átalakítás** menüben kattintson az **Adatfolyam átalakítása (Szkript)** lehetőségre.
 
-2. A megjelenő szövegmezőbe írja be a következő kódot. Ha a megadott oszlopneveket használta, a kódnak változtatás nélkül is működnie kell. Egy egyszerű min-max normalizálási logikát kell írnia a Pythonban.
+1. A megjelenő szövegmezőbe írja be a következő kódot. Ha a megadott oszlopneveket használta, a kódnak változtatás nélkül is működnie kell. Egy egyszerű min-max normalizálási logikát kell írnia a Pythonban.
 
     > [!WARNING]
     > A szkript az oktatóanyag korábbi részeiben használt oszlopnevek megadását várja. Ha ettől eltérő oszlopneveket adott meg, módosítania kell őket a szkriptben.
@@ -421,7 +421,7 @@ Ha a numerikus oszlopok adatait 0–1 tartományúra módosítja, azzal felgyors
     
    ![Adatfolyam átalakítása (szkript) párbeszédpanel](media/tutorial-bikeshare-dataprep/transformdataflowscript.png)
 
-3. A szkript használatához kattintson az __OK__ gombra. A rács numerikus oszlopai most már a 0–1 tartományban lévő értékeket tartalmaznak.
+1. A szkript használatához kattintson az __OK__ gombra. A rács numerikus oszlopai most már a 0–1 tartományban lévő értékeket tartalmaznak.
 
     ![0 és 1 közötti értékeket tartalmazó rács](media/tutorial-bikeshare-dataprep/datagridwithdecimals.png)
 
@@ -437,13 +437,13 @@ Elkészült az időjárási adatok előkészítésével. A következő lépésbe
 
     * __Adattípus__: fogadja el az alapértelmezett beállításokat.
 
-2. Az adatok importálása után kattintson az __Előkészítés__ gombra az adatok előkészítésének megkezdéséhez. Válassza ki a meglévő **BikeShare Data Prep.dprep** csomagot, majd kattintson az __OK__ gombra.
+1. Az adatok importálása után kattintson az __Előkészítés__ gombra az adatok előkészítésének megkezdéséhez. Válassza ki a meglévő **BikeShare Data Prep.dprep** csomagot, majd kattintson az __OK__ gombra.
 
     Ez a folyamat egy **adatfolyamot** ad a meglévő **adat-előkészítési** fájlhoz, nem hoz létre újat.
 
     ![A meglévő csomag kiválasztása](media/tutorial-bikeshare-dataprep/addjandatatodprep.png)
 
-3. Miután a rendszer betölti a rácsot, bontsa ki az __ADATFOLYAMOK__ lehetőséget. Most már két adatfolyamunk van: a **BostonWeather** és a **201701-hubway-tripdata**. Válassza ki a **201701-hubway-tripdata** bejegyzést.
+1. Miután a rendszer betölti a rácsot, bontsa ki az __ADATFOLYAMOK__ lehetőséget. Most már két adatfolyamunk van: a **BostonWeather** és a **201701-hubway-tripdata**. Válassza ki a **201701-hubway-tripdata** bejegyzést.
 
     ![201701-hubway-tripdata bejegyzés](media/tutorial-bikeshare-dataprep/twodfsindprep.png)
 
@@ -458,11 +458,11 @@ Adatok előkészítésekor a sztring, szám és földrajzi adatokhoz vizsgálón
 
     ![Térkép-vizualizáció](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 
-2. A térkép vizualizáció teljes méretűvé tételéhez kattintson a **Teljes méret** ikonra. A térképet az ablak méretéhez igazíthatja a vizualizáció bal felső részén található **E** ikon segítségével.
+1. A térkép vizualizáció teljes méretűvé tételéhez kattintson a **Teljes méret** ikonra. A térképet az ablak méretéhez igazíthatja a vizualizáció bal felső részén található **E** ikon segítségével.
 
     ![Teljes méretű kép](media/tutorial-bikeshare-dataprep/maximizedmap.png)
 
-3. A **Kis méret** gombra kattintva térjen vissza a rácsnézethez.
+1. A **Kis méret** gombra kattintva térjen vissza a rácsnézethez.
 
 ## <a name="use-the-column-statistics-inspector"></a>Az Oszlopstatisztika vizsgáló használata
 
@@ -491,7 +491,7 @@ A hisztogram nem hasznos, mert a kiugró értékek elferdítik a diagramot.
 
     ![Oszlop hozzáadása (szkript) menü](media/tutorial-bikeshare-dataprep/computecolscript.png)
 
-2. Az __Oszlop hozzáadása (szkript)__ párbeszédablakban a következő értékeket használja:
+1. Az __Oszlop hozzáadása (szkript)__ párbeszédablakban a következő értékeket használja:
 
     * __Új oszlop neve__: logtripduration
 
@@ -503,9 +503,9 @@ A hisztogram nem hasznos, mert a kiugró értékek elferdítik a diagramot.
 
    ![Oszlop hozzáadása (szkript) párbeszédpanel](media/tutorial-bikeshare-dataprep/computecolscriptdialog.png)
 
-3. Kattintson az __OK__ gombra a **logtripduration** oszlop hozzáadásához.
+1. Kattintson az __OK__ gombra a **logtripduration** oszlop hozzáadásához.
 
-4. Kattintson a jobb gombbal az oszlopra, és válassza a **Hisztogram** lehetőséget.
+1. Kattintson a jobb gombbal az oszlopra, és válassza a **Hisztogram** lehetőséget.
 
     ![A logtripduration oszlop hisztogramja](media/tutorial-bikeshare-dataprep/logtriphistogram.png)
 
@@ -517,7 +517,7 @@ Ha szűrőt alkalmaz az adatokra, a vizsgálók frissülnek az új elosztással.
 
 1. Kattintson a jobb gombbal a **logtripduration** oszlopra, majd válassza az **Oszlop szűrése** lehetőséget. 
 
-2. A __Szerkesztés__ párbeszédablakban használja a következő értékeket:
+1. A __Szerkesztés__ párbeszédablakban használja a következő értékeket:
 
     * __Numerikus oszlop szűrése__: logtripduration
 
@@ -531,7 +531,7 @@ Ha szűrőt alkalmaz az adatokra, a vizsgálók frissülnek az új elosztással.
 
     ![Szűrési lehetőségek](media/tutorial-bikeshare-dataprep/loftripfilter.png)
 
-3. Kattintson az __OK__ gombra a szűrő alkalmazásához.
+1. Kattintson az __OK__ gombra a szűrő alkalmazásához.
 
     ![A frissített hisztogramok a szűrő alkalmazása után](media/tutorial-bikeshare-dataprep/loftripfilteredinspector.png)
 
@@ -550,11 +550,11 @@ Ha szűrőt alkalmaz az adatokra, a vizsgálók frissülnek az új elosztással.
     > [!NOTE]
     > Figyelje meg, hogy a kék hisztogram rövidebbnek tűnik az előzőhöz képest. Ez a különbség az adatok az új tartományban való újragyűjtésének köszönhető.
 
-2. A Hatás effektus eltávolításához kattintson a __Szerkesztés__ gombra, és törölje a __Hatás megjelenítése__ lehetőség jelölését.
+1. A Hatás effektus eltávolításához kattintson a __Szerkesztés__ gombra, és törölje a __Hatás megjelenítése__ lehetőség jelölését.
 
     ![A hisztogram beállításai](media/tutorial-bikeshare-dataprep/uncheckhalo.png)
 
-3. Kattintson az **OK** gombra a hatás effektus letiltásához. Ezután állítsa a hisztogramot kis méretűre.
+1. Kattintson az **OK** gombra a hatás effektus letiltásához. Ezután állítsa a hisztogramot kis méretűre.
 
 ### <a name="remove-columns"></a>Oszlopok eltávolítása
 
@@ -570,7 +570,7 @@ A kerékpárigény két órás periódusra való összegzéséhez használjon sz
 
     ![Oszlopok származtatása példa alapján lehetőség](media/tutorial-bikeshare-dataprep/tripdataderivebyexample.png)
 
-2. Ebben a példában adja meg a **Jan 01, 2017 12AM-2AM** értéket az első sorhoz.
+1. Ebben a példában adja meg a **Jan 01, 2017 12AM-2AM** értéket az első sorhoz.
 
     > [!IMPORTANT]
     > Az oszlopok származtatásának előző példájában több lépésben származtatott egy oszlopot, amely a dátumot és az időszakot tartalmazta. Ebben a példában láthatja, hogy ez a művelet egyetlen lépésben is elvégezhető a végső kimenet példájának megadásával.
@@ -585,19 +585,19 @@ A kerékpárigény két órás periódusra való összegzéséhez használjon sz
    >
    > * Lépjen az első olyan cellára, amely a **Jan 01, 2017 1AM-2AM** értéket tartalmazza. Ez nagy valószínűséggel a 14. sor. Javítsa ki az értéket **Jan 01, 2017 12AM-2AM** értékre, majd nyomja le az Enter billentyűt. 
 
-3. Várjon, amíg az alkalmazás kiszámítja a összes sorhoz tartozó értékeket. Ez a folyamat néhány másodpercig is eltarthat. Miután az elemzés befejeződött, kattintson a __Következő javasolt sor felülvizsgálata__ hivatkozásra az adatok felülvizsgálatához.
+1. Várjon, amíg az alkalmazás kiszámítja a összes sorhoz tartozó értékeket. Ez a folyamat néhány másodpercig is eltarthat. Miután az elemzés befejeződött, kattintson a __Következő javasolt sor felülvizsgálata__ hivatkozásra az adatok felülvizsgálatához.
 
    ![Az elkészült elemzés felülvizsgálati hivatkozással](media/tutorial-bikeshare-dataprep/tripdatabyexanalysiscomplete.png)
 
     Ellenőrizze, hogy a kiszámított értékek helyesek-e. Ha nem, frissítse az értéket a várt értékkel, és nyomja le az Enter billentyűt. Ezután várjon, amíg az elemzés befejeződik. Folytassa a **Következő javasolt sor felülvizsgálata** folyamatot, amíg meg nem jelenik a **Nincsenek javaslatok** állapot. A **Nincsenek javaslatok** azt jelenti, hogy az alkalmazás megvizsgálta a szélsőséges eseteket, és megfelelőnek találja a szintetizált programot. Ajánlott eljárás az átalakított adatok vizuális ellenőrzése az átalakítás elfogadása előtt. 
 
-4. Kattintson az **OK** gombra az átalakítás elfogadásához. Nevezze át az újonnan létrehozott oszlopot a következőre: **Date Hour Range**.
+1. Kattintson az **OK** gombra az átalakítás elfogadásához. Nevezze át az újonnan létrehozott oszlopot a következőre: **Date Hour Range**.
 
     ![Átnevezett oszlop](media/tutorial-bikeshare-dataprep/tripdatasummarize.png)
 
-5. Kattintson a jobb gombbal a **starttime** oszlop fejlécére, majd válassza az **Oszlop eltávolítása** lehetőséget.
+1. Kattintson a jobb gombbal a **starttime** oszlop fejlécére, majd válassza az **Oszlop eltávolítása** lehetőséget.
 
-6. Az adatok összegzéséhez válassza az __Átalakítás__ menü __Összegzés__ lehetőségét. Az átalakítás létrehozásához kövesse a következő lépéseket:
+1. Az adatok összegzéséhez válassza az __Átalakítás__ menü __Összegzés__ lehetőségét. Az átalakítás létrehozásához kövesse a következő lépéseket:
 
     * Húzza a __Date Hour Range__ és a __start station id__ oszlopot a bal oldali **Csoportosítási szempont** panelre.
 
@@ -605,7 +605,7 @@ A kerékpárigény két órás periódusra való összegzéséhez használjon sz
 
    ![Összegzési lehetőségek](media/tutorial-bikeshare-dataprep/tripdatacount.png)
 
-7. Kattintson az **OK** gombra az összegzés eredményének elfogadásához.
+1. Kattintson az **OK** gombra az összegzés eredményének elfogadásához.
 
 ## <a name="join-dataflows"></a>Adatfolyamok összekapcsolása
 
@@ -613,15 +613,15 @@ Az időjárási adatok és az útadatok összekapcsolásához kövesse az alább
 
 1. Az __Átalakítások__ menüben válassza az __Összekapcsolás__ lehetőséget.
 
-2. __Táblák__: **Bal** oldali adatfolyamként válassza a **BostonWeather** adatfolyamot, a **jobb** oldaliként pedig a **201701-hubway-tripdata** adatfolyamot. A folytatáshoz kattintson a **Tovább** gombra.
+1. __Táblák__: **Bal** oldali adatfolyamként válassza a **BostonWeather** adatfolyamot, a **jobb** oldaliként pedig a **201701-hubway-tripdata** adatfolyamot. A folytatáshoz kattintson a **Tovább** gombra.
 
     ![A táblák kiválasztásai](media/tutorial-bikeshare-dataprep/jointableselection.png)
 
-3. __Kulcsoszlopok__: Válassza ki a **Date Hour Range** oszlopot mindkét táblázatban, majd kattintson a __Tovább__ lehetőségre.
+1. __Kulcsoszlopok__: Válassza ki a **Date Hour Range** oszlopot mindkét táblázatban, majd kattintson a __Tovább__ lehetőségre.
 
     ![A kulcsoszlopok kiválasztásai](media/tutorial-bikeshare-dataprep/joinkeyselection.png)
 
-4. __Összekapcsolás típusa__: Válassza az __Egyező sorok__ lehetőséget az összekapcsolás típusaként, majd kattintson a __Befejezés__ lehetőségre.
+1. __Összekapcsolás típusa__: Válassza az __Egyező sorok__ lehetőséget az összekapcsolás típusaként, majd kattintson a __Befejezés__ lehetőségre.
 
     ![Az Egyező sorok összekapcsolási típus](media/tutorial-bikeshare-dataprep/joinscreen.png)
 
@@ -633,11 +633,11 @@ Az időjárási adatok és az útadatok összekapcsolásához kövesse az alább
 
     ![Új oszlop létrehozása a hét napjához](media/tutorial-bikeshare-dataprep/featureweekday.png)
 
-2. Ha az adott sorhoz tartozó időszakot tartalmazó oszlopot szeretne létrehozni, kattintson a jobb gombbal a **Date Hour Range** oszlopra, és válassza az **Oszlopok származtatása példa alapján** lehetőséget. Használja a **12AM-2AM** értéket a **Jan 01, 2017 12AM-2AM** értéket tartalmazó sorhoz. Nyomja le az Enter billentyűt, majd kattintson az **OK** gombra. Nevezze át az oszlopot a következőre: **Period**.
+1. Ha az adott sorhoz tartozó időszakot tartalmazó oszlopot szeretne létrehozni, kattintson a jobb gombbal a **Date Hour Range** oszlopra, és válassza az **Oszlopok származtatása példa alapján** lehetőséget. Használja a **12AM-2AM** értéket a **Jan 01, 2017 12AM-2AM** értéket tartalmazó sorhoz. Nyomja le az Enter billentyűt, majd kattintson az **OK** gombra. Nevezze át az oszlopot a következőre: **Period**.
 
     ![A Period oszlop](media/tutorial-bikeshare-dataprep/featurehourrange.png)
 
-3. A **Date Hour Range** és az **r_Date Hour Range** oszlop eltávolításához tartsa lenyomva a Ctrl (Mac gépen a Command ⌘) billentyűt, és közben jelölje ki az egyes oszlopfejléceket. Kattintson a jobb gombbal, majd válassza az **Oszlop eltávolítása** lehetőséget.
+1. A **Date Hour Range** és az **r_Date Hour Range** oszlop eltávolításához tartsa lenyomva a Ctrl (Mac gépen a Command ⌘) billentyűt, és közben jelölje ki az egyes oszlopfejléceket. Kattintson a jobb gombbal, majd válassza az **Oszlop eltávolítása** lehetőséget.
 
 ## <a name="read-data-from-python"></a>Adatok beolvasása a Pythonból
 
@@ -672,7 +672,7 @@ Ha az **Összekapcsolás eredményei** adatfolyamot egy .CSV fájlba szeretné m
 
     ![Megnyitott projekt a Visual Studio Code-ban](media/tutorial-bikeshare-dataprep/openprojectinvscode.png)
 
-2. Frissítse a Python-szkriptet a `BikeShare Data Prep.py` fájlban az alábbi kód használatával:
+1. Frissítse a Python-szkriptet a `BikeShare Data Prep.py` fájlban az alábbi kód használatával:
 
     ```python
     import pyspark
@@ -706,7 +706,7 @@ Ha az **Összekapcsolás eredményei** adatfolyamot egy .CSV fájlba szeretné m
     print('done')
     ```
 
-3. Cserélje le a `Your Azure Storage blob path` elemet a létrehozandó kimeneti fájl elérési útjára. Cserélje le a `blobfolder` és a `csvfiles` változókat is.
+1. Cserélje le a `Your Azure Storage blob path` elemet a létrehozandó kimeneti fájl elérési útjára. Cserélje le a `blobfolder` és a `csvfiles` változókat is.
 
 ## <a name="create-an-hdinsight-run-configuration"></a>HDInsight futtatási konfiguráció létrehozása
 
@@ -717,7 +717,7 @@ Ha az **Összekapcsolás eredményei** adatfolyamot egy .CSV fájlba szeretné m
    >[!IMPORTANT]
    >Az alábbi lépéseket a (a Workbench alkalmazásból megnyitott) parancssori ablakban kell elvégeznie.
 
-2. Jelentkezzen be az Azure-ba a parancssor használatával. 
+1. Jelentkezzen be az Azure-ba a parancssor használatával. 
 
    A Workbench alkalmazás és a parancssori felület az Azure-erőforrások hitelesítésekor független hitelesítőadat-gyorsítótárakat használ. Ezt csak egyszer kell megtennie, amíg a gyorsítótárazott jogkivonat le nem jár. Az `az account list` parancs visszaadja a bejelentkezéséhez elérhető előfizetések listáját. Ha egynél több található, használja a kívánt előfizetés azonosítóértékét. Állítsa be az adott előfizetést alapértelmezett fiókként az `az account set -s` paranccsal, majd adja meg az előfizetés azonosítóértékét. Ezután erősítse meg a beállítást az account `show` paranccsal.
 
@@ -735,7 +735,7 @@ Ha az **Összekapcsolás eredményei** adatfolyamot egy .CSV fájlba szeretné m
    az account show
    ```
 
-3. Hozza létre a HDInsight futtatási konfigurációt. Ehhez a fürtje nevére és az `sshuser` jelszavára lesz szüksége.
+1. Hozza létre a HDInsight futtatási konfigurációt. Ehhez a fürtje nevére és az `sshuser` jelszavára lesz szüksége.
 
     ```azurecli
     az ml computetarget attach cluster --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password>
@@ -750,9 +750,9 @@ A szkript HDInsight-fürtben való futtatásához lépjen vissza a Machine Learn
 
 1. Lépjen vissza a projekt kezdőlapjára a bal oldali **Kezdőlap** ikonra kattintva.
 
-2. Válassza a **hdinsight** lehetőséget a legördülő listából a szkript HDInsight-fürtben való futtatásához.
+1. Válassza a **hdinsight** lehetőséget a legördülő listából a szkript HDInsight-fürtben való futtatásához.
 
-3. Válassza a **Futtatás** lehetőséget. A rendszer ekkor egy feladat formájában elküldi a szkriptet. Ha a feladat __Befejezve__ állapotúra változik, miután a rendszer a fájlt a tárolón belül megadott helyre írja.
+1. Válassza a **Futtatás** lehetőséget. A rendszer ekkor egy feladat formájában elküldi a szkriptet. Ha a feladat __Befejezve__ állapotúra változik, miután a rendszer a fájlt a tárolón belül megadott helyre írja.
 
     ![HDInsight futtatási szkript](media/tutorial-bikeshare-dataprep/hdinsightrunscript.png)
 
@@ -776,13 +776,13 @@ Az előző lépésekben a `201701-hubway-tripdata.csv` és a `BostonWeather.csv`
 
    Mentse az adatforrás nevét, mivel arra a későbbi lépések során is szükség lesz.
 
-2. Válassza ki a mappa ikont a projekt fájljainak megtekintéséhez. Bontsa ki az __aml\_config__ könyvtárat, és válassza a `hdinsight.runconfig` fájlt.
+1. Válassza ki a mappa ikont a projekt fájljainak megtekintéséhez. Bontsa ki az __aml\_config__ könyvtárat, és válassza a `hdinsight.runconfig` fájlt.
 
     ![A hdinsight.runconfig helye](media/tutorial-bikeshare-dataprep/hdinsightsubstitutedatasources.png) 
 
-3. Kattintson a **Szerkesztés** gombra a fájl Visual Studio Code-ban való megnyitásához.
+1. Kattintson a **Szerkesztés** gombra a fájl Visual Studio Code-ban való megnyitásához.
 
-4. Adja hozzá az alábbi sorokat a `hdinsight.runconfig` fájl végéhez, majd a fájl mentéséhez kattintson a lemez ikonra.
+1. Adja hozzá az alábbi sorokat a `hdinsight.runconfig` fájl végéhez, majd a fájl mentéséhez kattintson a lemez ikonra.
 
     ```yaml
     DataSourceSubstitutions:
@@ -827,9 +827,9 @@ Az előző lépésekben a `201701-hubway-tripdata.csv` és a `BostonWeather.csv`
     print('done')
     ```
 
-2. Használja a `traindata` nevű mappát a tanítási adatokat tartalmazó kimenethez.
+1. Használja a `traindata` nevű mappát a tanítási adatokat tartalmazó kimenethez.
 
-3. Új feladat létrehozásához válassza a **Futtatás** lehetőséget. Győződjön meg arról, hogy a **hdinsight** van kiválasztva. A rendszer elküld egy feladatot az új konfigurációval. A feladat kimenetei a betanítási adatok. Ezek az adatok a korábban használt adat-előkészítési lépések használatával lesznek létrehozva. A feladat néhány percet vehet igénybe.
+1. Új feladat létrehozásához válassza a **Futtatás** lehetőséget. Győződjön meg arról, hogy a **hdinsight** van kiválasztva. A rendszer elküld egy feladatot az új konfigurációval. A feladat kimenetei a betanítási adatok. Ezek az adatok a korábban használt adat-előkészítési lépések használatával lesznek létrehozva. A feladat néhány percet vehet igénybe.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

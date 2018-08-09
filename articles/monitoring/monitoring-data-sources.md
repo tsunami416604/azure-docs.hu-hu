@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: bwren
-ms.openlocfilehash: 262099bbe45e483efd269445aa8042b30668ebe3
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 48cbfac78b41b47419799584837e094d45757628
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036523"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627457"
 ---
 # <a name="sources-of-monitoring-data-in-azure"></a>Források a figyelési adatok az Azure-ban
 Ez a cikk ismerteti az adatok állapotát és teljesítményét az Azure-erőforrások és a rajtuk futó alkalmazások figyeléséhez másolatára.  Adatokat gyűjthet és elemezhet az ismertetett eszközökkel [gyűjtését monitorozási adatok az Azure-ban](monitoring-data-collection.md)
@@ -42,7 +42,7 @@ A tevékenységnapló egy bizonyos erőforrás esetén több erőforrást az Azu
 
 
 ### <a name="azure-active-directory-audit-logs"></a>Az Azure Active Directory-naplók
-[Jelentéskészítés az Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md) bejelentkezési tevékenység és a naplózási beállításainak egy adott bérlőn belül végrehajtott módosítások előzményeit tartalmazza. Nem lehet jelenleg kombinálja az Azure Active Directory naplózási adatok más figyelési adatok, mert csak az Azure Active Directory-n keresztül elérhető és a [Azure Active Directory reporting API](../active-directory/active-directory-reporting-api-getting-started-azure-portal.md).
+[Jelentéskészítés az Azure Active Directory](../active-directory/reports-monitoring/overview-reports.md) bejelentkezési tevékenység és a naplózási beállításainak egy adott bérlőn belül végrehajtott módosítások előzményeit tartalmazza. Nem lehet jelenleg kombinálja az Azure Active Directory naplózási adatok más figyelési adatok, mert csak az Azure Active Directory-n keresztül elérhető és a [Azure Active Directory reporting API](../active-directory/reports-monitoring/concept-reporting-api.md).
 
 
 ## <a name="azure-services"></a>Azure-szolgáltatások

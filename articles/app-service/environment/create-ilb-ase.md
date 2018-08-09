@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 9fdbfd0338b1c4b6ac863f07e5808ce6ccd9a6c7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: df4730078b890353c697b0e9213fb66cdb4e7f9b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347284"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436692"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -58,17 +58,17 @@ Az ILB ASE létrehozása:
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web + mobil** > **App Service Environment** elemet.
 
-2. Válassza ki előfizetését.
+1. Válassza ki előfizetését.
 
-3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
+1. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 
-4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
+1. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
 
-5. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/24` méretet javasoljuk, amely 256 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet és tetszőleges skálázási igényeket. 
+1. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/24` méretet javasoljuk, amely 256 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet és tetszőleges skálázási igényeket. 
 
-6. Válassza a **Virtuális hálózat/hely** > **Virtuális hálózati konfiguráció** elemet. A **VIP típust** állítsa **Belsőre**.
+1. Válassza a **Virtuális hálózat/hely** > **Virtuális hálózati konfiguráció** elemet. A **VIP típust** állítsa **Belsőre**.
 
-7. Adjon meg egy tartománynevet. Ezt a tartományt használják az ASE környezetben létrehozott alkalmazások. Van néhány korlátozás. A név nem lehet:
+1. Adjon meg egy tartománynevet. Ezt a tartományt használják az ASE környezetben létrehozott alkalmazások. Van néhány korlátozás. A név nem lehet:
 
     * net   
 
@@ -88,7 +88,7 @@ Az ILB ASE létrehozása:
 
    Ha ismeri alkalmazásai egyéni tartományneveit, válasszon olyan tartományt az ILB ASE környezetnek, amely nem ütközik az egyéni tartománynevekkel. Ebben a példában használhatja a *contoso-internal.com* nevet az ASE tartományaként, mert az nem ütközik *.contoso.com* végződésű tartománynevekkel.
 
-8. Kattintson az **OK**, majd a **Létrehozás** gombra.
+1. Kattintson az **OK**, majd a **Létrehozás** gombra.
 
     ![ASE létrehozása][1]
 
@@ -105,19 +105,19 @@ Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létr
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web + mobil** > **Webes alkalmazás** elemet.
 
-2. Adja meg az alkalmazás nevét.
+1. Adja meg az alkalmazás nevét.
 
-3. Válassza ki az előfizetést.
+1. Válassza ki az előfizetést.
 
-4. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
+1. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 
-5. Válassza ki az operációs rendszert. 
+1. Válassza ki az operációs rendszert. 
 
     * Ha egyéni Docker-tárolóval szeretne Linux-alkalmazást létrehozni, az [itt][linuxapp] található útmutató segítségével egyszerűen használhatja a saját tárolóját erre a célra. 
 
-6. Válassza ki vagy hozzon létre egy App Service-csomagot. Amennyiben új App Service-csomagot szeretne létrehozni, válassza az ASE környezetet helyként. Válassza ki a feldolgozókészletet, amelyben az App Service-csomagot szeretné létrehozni. Amikor létrehozza az új App Service-csomagot, válassza az ASE környezetet helyként és feldolgozókészletként. Az alkalmazás nevének megadásakor az alkalmazás tartománya az ASE tartománynevére cserélődik.
+1. Válassza ki vagy hozzon létre egy App Service-csomagot. Amennyiben új App Service-csomagot szeretne létrehozni, válassza az ASE környezetet helyként. Válassza ki a feldolgozókészletet, amelyben az App Service-csomagot szeretné létrehozni. Amikor létrehozza az új App Service-csomagot, válassza az ASE környezetet helyként és feldolgozókészletként. Az alkalmazás nevének megadásakor az alkalmazás tartománya az ASE tartománynevére cserélődik.
 
-7. Kattintson a **Létrehozás** gombra. Ha szeretné, hogy az alkalmazás megjelenjen az irányítópulton, jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
+1. Kattintson a **Létrehozás** gombra. Ha szeretné, hogy az alkalmazás megjelenjen az irányítópulton, jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
 
     ![App Service-csomag létrehozása][2]
 
@@ -156,27 +156,27 @@ Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez 
 
 1. Az ASE létrehozása után keresse fel az ASE felhasználói felületét. Válassza az **ASE** > **Beállítások** > **ILB-tanúsítvány** lehetőséget.
 
-2. Az ILB-tanúsítvány beállításához válassza ki a tanúsítvány .pfx fájlját, majd adja meg a jelszót. Ennek a lépésnek a feldolgozása beletelhet egy kis időbe. Egy üzenet jelzi, hogy egy feltöltési művelet van folyamatban.
+1. Az ILB-tanúsítvány beállításához válassza ki a tanúsítvány .pfx fájlját, majd adja meg a jelszót. Ennek a lépésnek a feldolgozása beletelhet egy kis időbe. Egy üzenet jelzi, hogy egy feltöltési művelet van folyamatban.
 
-3. Szerezze be az ASE ILB-címét. Válassza ki az **ASE** > **Tulajdonságok** > **Virtuális IP-cím** elemet.
+1. Szerezze be az ASE ILB-címét. Válassza ki az **ASE** > **Tulajdonságok** > **Virtuális IP-cím** elemet.
 
-4. Az ASE létrehozását követően hozzon létre egy webalkalmazást az ASE környezetben.
+1. Az ASE létrehozását követően hozzon létre egy webalkalmazást az ASE környezetben.
 
-5. Amennyiben nincs virtuális gépe abban a virtuális hálózatban, hozzon létre egyet.
+1. Amennyiben nincs virtuális gépe abban a virtuális hálózatban, hozzon létre egyet.
 
     > [!NOTE] 
     > Ne próbálja az ASE környezettel azonos alhálózatban létrehozni a virtuális gépet, mert az sikertelen lehet vagy problémákat okozhat.
     >
 
-6. Állítsa be az ASE tartomány DNS-ét. A DNS-ben helyettesítő karaktert is használhat tartományhoz. Pár egyszerű teszt végrehajtásához állítsa a webalkalmazás nevét a virtuális IP-címére a virtuális gép hosts fájljának szerkesztésével:
+1. Állítsa be az ASE tartomány DNS-ét. A DNS-ben helyettesítő karaktert is használhat tartományhoz. Pár egyszerű teszt végrehajtásához állítsa a webalkalmazás nevét a virtuális IP-címére a virtuális gép hosts fájljának szerkesztésével:
 
     a. Ha az ASE tartományneve _.ilbase.com_ és egy _mytestapp_ nevű webalkalmazást hoz létre, akkor annak címe _mytestapp.ilbase.com_ lesz. Ezután állítsa be, hogy a _mytestapp.ilbase.com_ tartománynév az ILB-címre mutasson. (Windows rendszeren a hosts fájl a _C:\Windows\System32\drivers\etc\_ elérési úton található.)
 
     b. A webtelepítés közzétételének teszteléséhez vagy a haladó konzol eléréséhez hozzon létre egy rekordot a _mytestapp.scm.ilbase.com_ tartományban.
 
-7. A virtuális gép böngészőjével keresse fel a következő oldalt: http://mytestapp.ilbase.com. (Vagy keresse fel webalkalmazásának nevét, a saját tartománnyal.)
+1. A virtuális gép böngészőjével keresse fel a következő oldalt: http://mytestapp.ilbase.com. (Vagy keresse fel webalkalmazásának nevét, a saját tartománnyal.)
 
-8. A virtuális gép böngészőjével keresse fel a következő oldalt: https://mytestapp.ilbase.com. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
+1. A virtuális gép böngészőjével keresse fel a következő oldalt: https://mytestapp.ilbase.com. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
 
     Az ILB IP-címe az **IP-címek** területen látható. Ez a lista tartalmazza a külső virtuális IP-címet és a bejövő felügyeleti forgalmak IP-címeit is.
 

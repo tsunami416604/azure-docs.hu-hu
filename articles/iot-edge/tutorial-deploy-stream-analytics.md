@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f2ef53ee53eb2e95d84fc11f3190f62d0e3c2455
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: afbdf2171c1fc1eef95514526a509d171e262d4a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413875"
+ms.locfileid: "39435682"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Stream Analytics üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -60,7 +60,7 @@ Az Azure Stream Analytics-feladatokhoz szükség van egy Azure Storage-fiókra, 
 
 1. Az Azure Portalon lépjen az **Erőforrás létrehozása** menüpontra, írja be a **Tárfiók** kifejezést a keresőmezőbe, majd válassza a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.
 
-2. A **Tárfiók létrehozása** panelen adja meg a tárfiók nevét, válassza ki ugyanazt a helyet, ahol az IoT-központot tárolja, válassza ugyanazt az erőforráscsoportot, amelyet az IoT-központhoz is, majd kattintson a **Létrehozás** gombra. Jegyezze fel a nevet későbbi felhasználásra.
+1. A **Tárfiók létrehozása** panelen adja meg a tárfiók nevét, válassza ki ugyanazt a helyet, ahol az IoT-központot tárolja, válassza ugyanazt az erőforráscsoportot, amelyet az IoT-központhoz is, majd kattintson a **Létrehozás** gombra. Jegyezze fel a nevet későbbi felhasználásra.
 
     ![Tárfiók létrehozása][1]
 
@@ -69,40 +69,40 @@ Az Azure Stream Analytics-feladatokhoz szükség van egy Azure Storage-fiókra, 
 
 1. Az Azure Portalon lépjen az **Erőforrás létrehozása** > **Eszközök internetes hálózata** pontra, majd válassza a **Stream Analytics-feladat** lehetőséget.
 
-2. Az **Új Stream Analytics-feladat** panelen hajtsa végre a következő lépéseket:
+1. Az **Új Stream Analytics-feladat** panelen hajtsa végre a következő lépéseket:
 
    1. A **Feladat neve** mezőbe írja be a feladat nevét.
    
-   2. Használja ugyanazt az **erőforráscsoportot** és **helyet**, mint az IoT Hub esetében. 
+   1. Használja ugyanazt az **erőforráscsoportot** és **helyet**, mint az IoT Hub esetében. 
 
       > [!NOTE]
       > Az Azure Stream Analytics-feladatok IoT Edge-en való futtatása az USA 2. nyugati régiójában jelenleg nem támogatott. 
 
-   3. Az **Üzemeltetési környezet** mezőben válassza a **Perem** lehetőséget.
+   1. Az **Üzemeltetési környezet** mezőben válassza a **Perem** lehetőséget.
     
-3. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** gombra.
 
-4. A létrehozott feladatban a **Feladattopológia** területen nyissa meg a **Bemenetek** pontot.
+1. A létrehozott feladatban a **Feladattopológia** területen nyissa meg a **Bemenetek** pontot.
 
    ![Azure Stream Analytics-bemenet](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-5. Válassza a **Streambemenet hozzáadása**, majd az **Edge Hub** lehetőséget.
+1. Válassza a **Streambemenet hozzáadása**, majd az **Edge Hub** lehetőséget.
 
-6. Az **Új bemenet** panelen adja meg a **temperature** (hőmérséklet) nevet a bemenet aliasaként. 
+1. Az **Új bemenet** panelen adja meg a **temperature** (hőmérséklet) nevet a bemenet aliasaként. 
 
-7. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
-8. A **Feladattopológia** területen nyissa meg a **Kimenetek** pontot.
+1. A **Feladattopológia** területen nyissa meg a **Kimenetek** pontot.
 
    ![Azure Stream Analytics-kimenet](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-9. Válassza a **Hozzáadás**, majd az **Edge Hub** lehetőséget.
+1. Válassza a **Hozzáadás**, majd az **Edge Hub** lehetőséget.
 
-10. Az **Új kimenet** panelen adja meg az **alert** (riasztás) nevet a kimenet aliasaként. 
+1. Az **Új kimenet** panelen adja meg az **alert** (riasztás) nevet a kimenet aliasaként. 
 
-11. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
-12. A **Feladattopológia** területen válassza a **Lekérdezés** lehetőséget, majd cserélje le az alapértelmezett szöveget a következő lekérdezésre, amely riasztást indít, ha az átlagos géphőmérséklet bármely 30 másodperces időablakban eléri a 70 fokot:
+1. A **Feladattopológia** területen válassza a **Lekérdezés** lehetőséget, majd cserélje le az alapértelmezett szöveget a következő lekérdezésre, amely riasztást indít, ha az átlagos géphőmérséklet bármely 30 másodperces időablakban eléri a 70 fokot:
 
     ```sql
     SELECT  
@@ -115,15 +115,15 @@ Az Azure Stream Analytics-feladatokhoz szükség van egy Azure Storage-fiókra, 
     HAVING Avg(machine.temperature) > 70
     ```
 
-13. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
-14. A **Konfigurálás** területen válassza az **IoT Edge-beállítások** lehetőséget.
+1. A **Konfigurálás** területen válassza az **IoT Edge-beállítások** lehetőséget.
 
-15. Válassza ki a **tárfiókját** a legördülő listából.
+1. Válassza ki a **tárfiókját** a legördülő listából.
 
-16. A **Tároló** mezőben válassza az **Új létrehozása** lehetőséget, és adja meg a tárfiók nevét. 
+1. A **Tároló** mezőben válassza az **Új létrehozása** lehetőséget, és adja meg a tárfiók nevét. 
 
-17. Kattintson a **Mentés** gombra. 
+1. Kattintson a **Mentés** gombra. 
 
 
 ## <a name="deploy-the-job"></a>A feladat üzembe helyezése
@@ -132,25 +132,25 @@ Most készen áll az Azure Stream Analytics-feladat IoT Edge-eszközön való ü
 
 1. Az Azure Portalon, az IoT-központban lépjen az **IoT Edge** részhez, és nyissa meg az IoT Edge-eszköz adatait tartalmazó lapot.
 
-2. Válassza a **Set modules** (Modulok beállítása) lehetőséget.  
+1. Válassza a **Set modules** (Modulok beállítása) lehetőséget.  
 
    Ha korábban már üzembe helyezte a tempSensor modult ezen az eszközön, előfordulhat, hogy az automatikusan megjelenik a mezőben. Amennyiben nem, vegye fel a modult a következő lépésekkel:
 
    1. Kattintson a **Hozzáadás** gombra, és válassza az **IoT Edge-modul** lehetőséget.
-   2. A névnél adja meg a **tempSensor** nevet.
-   3. A kép URI-címénél adja meg az **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** címet. 
-   4. A többi beállítást ne módosítsa.
-   5. Kattintson a **Mentés** gombra.
+   1. A névnél adja meg a **tempSensor** nevet.
+   1. A kép URI-címénél adja meg az **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** címet. 
+   1. A többi beállítást ne módosítsa.
+   1. Kattintson a **Mentés** gombra.
 
-3. Adja hozzá az Azure Stream Analytics Edge-feladatot a következő lépésekkel:
+1. Adja hozzá az Azure Stream Analytics Edge-feladatot a következő lépésekkel:
 
    1. Kattintson a **Hozzáadás** gombra, és válassza az **Azure Stream Analytics-modul** lehetőséget.
-   2. Válassza ki az előfizetést, és a létrehozott Azure Stream Analytics Edge-feladatot. 
-   3. Kattintson a **Mentés** gombra.
+   1. Válassza ki az előfizetést, és a létrehozott Azure Stream Analytics Edge-feladatot. 
+   1. Kattintson a **Mentés** gombra.
 
-4. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-5. Cserélje le az **Útvonalak** alapértelmezett értékét az alábbi kódra. A _{moduleName}_ helyére írja az Azure Stream Analytics-modul nevét. A modul nevének egyeznie kell a feladat nevével, amelyből létre lett hozva. 
+1. Cserélje le az **Útvonalak** alapértelmezett értékét az alábbi kódra. A _{moduleName}_ helyére írja az Azure Stream Analytics-modul nevét. A modul nevének egyeznie kell a feladat nevével, amelyből létre lett hozva. 
 
     ```json
     {
@@ -163,11 +163,11 @@ Most készen áll az Azure Stream Analytics-feladat IoT Edge-eszközön való ü
     }
     ```
 
-6. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-7. Az **Üzembe helyezés áttekintése** lépésben kattintson a **Küldés** elemre.
+1. Az **Üzembe helyezés áttekintése** lépésben kattintson a **Küldés** elemre.
 
-8. Térjen vissza az eszköz részleteit tartalmazó oldalra, majd kattintson a **Frissítés** elemre.  
+1. Térjen vissza az eszköz részleteit tartalmazó oldalra, majd kattintson a **Frissítés** elemre.  
 
     Látható, hogy az új Stream Analytics-modul az IoT Edge-ügynökmodullal és az IoT Edge-központtal együtt fut.
 
@@ -185,7 +185,7 @@ Most az IoT Edge-eszközre lépve ellenőrizze az Azure Stream Analytics-modul �
 <!--
    ![Docker output][8]
 -->
-2. Tekintse át az összes rendszernaplót és metrikaadatot. Használja a Stream Analytics-modul nevét:
+1. Tekintse át az összes rendszernaplót és metrikaadatot. Használja a Stream Analytics-modul nevét:
 
    ```cmd/sh
    iotedge logs -f {moduleName}  
@@ -210,7 +210,7 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 Ha csak az IoT Hubot szeretné törölni, hajtsa végre az alábbi parancsot a saját hubja és a saját erőforráscsoportja nevével:
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 
@@ -218,14 +218,14 @@ A teljes erőforráscsoport név alapján való törléséhez:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
-2. A **Szűrés név alapján...** mezőbe írja be az IoT Hubot tartalmazó erőforráscsoport nevét. 
+1. A **Szűrés név alapján...** mezőbe írja be az IoT Hubot tartalmazó erőforráscsoport nevét. 
 
-3. Az eredménylistában kattintson az erőforráscsoporttól jobbra lévő **…** ikonra, majd kattintson az **Erőforráscsoport törlése** elemre.
+1. Az eredménylistában kattintson az erőforráscsoporttól jobbra lévő **…** ikonra, majd kattintson az **Erőforráscsoport törlése** elemre.
 
 <!--
    ![Delete](./media/iot-edge-quickstarts-clean-up-resources/iot-edge-delete-resource-group.png)
 -->
-4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
+1. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
 ## <a name="next-steps"></a>További lépések
 

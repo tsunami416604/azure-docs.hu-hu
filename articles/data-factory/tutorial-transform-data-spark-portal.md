@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: e62953ddfcc3f6d08430c477efbd7efc23064e19
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 52b1ec9a1f69273723129050820bb3b4efd7f36d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085418"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441340"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
 Ebben az oktatóanyagban egy Azure Data Factory-folyamatot hoz létre az Azure Portal használatával. Ez a folyamat egy Spark-tevékenységgel és egy igény szerinti Azure HDInsight társított szolgáltatással alakítja át az adatokat. 
@@ -63,17 +63,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     if __name__ == "__main__":
         main()
     ```
-2. Cserélje a *&lt;storageAccountName&gt;* kifejezést az Azure Storage-fiókja nevére. Ezután mentse a fájlt. 
-3. Az Azure Blob Storage-ban hozzon létre egy **adftutorial** nevű tárolót, ha még nem létezik. 
-4. Hozzon létre egy **spark** mappát.
-5. Hozzon létre egy **script** almappát a **spark** mappában. 
-6. Töltse fel a **WordCount_Spark.py** fájlt a **szkript** almappába. 
+1. Cserélje a *&lt;storageAccountName&gt;* kifejezést az Azure Storage-fiókja nevére. Ezután mentse a fájlt. 
+1. Az Azure Blob Storage-ban hozzon létre egy **adftutorial** nevű tárolót, ha még nem létezik. 
+1. Hozzon létre egy **spark** mappát.
+1. Hozzon létre egy **script** almappát a **spark** mappában. 
+1. Töltse fel a **WordCount_Spark.py** fájlt a **szkript** almappába. 
 
 
 ### <a name="upload-the-input-file"></a>A bemeneti fájl feltöltése
 1. Hozzon létre egy **minecraftstory.txt** nevű fájlt némi szöveges tartalommal. A Spark-program megszámolja a szavak számát ebben a szövegben. 
-2. Hozzon létre egy **inputfiles** nevű almappát a **spark** mappában. 
-3. Töltse fel a **minecraftstory.txt** fájlt az **inputfiles** almappába. 
+1. Hozzon létre egy **inputfiles** nevű almappát a **spark** mappában. 
+1. Töltse fel a **minecraftstory.txt** fájlt az **inputfiles** almappába. 
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
@@ -81,30 +81,30 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 1. Kattintson az **Új** elemre a bal oldali menüben, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
-2. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
+1. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
       
    ![„Új adat-előállító” lap](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
    Az Azure data factory nevének *globálisan egyedinek* kell lennie. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például: **&lt;sajátneve&gt;ADFTutorialDataFactory**). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
    ![Hibaüzenet, ha egy név nem érhető el](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
-3. **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni. 
-4. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
+1. **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni. 
+1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
      
    - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
    - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
    A rövid útmutató egyes lépései azt feltételezik, hogy az **ADFTutorialResourceGroup** nevet adta az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-5. A **Verzió** résznél válassza a **V2** értéket.
-6. **Hely:** válassza ki az adat-előállító helyét. 
+1. A **Verzió** résznél válassza a **V2** értéket.
+1. **Hely:** válassza ki az adat-előállító helyét. 
 
    Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-7. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-8. Kattintson a **Létrehozás** gombra.
-9. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható: 
+1. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
+1. Kattintson a **Létrehozás** gombra.
+1. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható: 
 
    ![„Adat-előállító üzembe helyezése” csempe](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)
-10. A létrehozás befejezése után megjelenik az **Adat-előállító** lap. A Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
+1. A létrehozás befejezése után megjelenik az **Adat-előállító** lap. A Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
 
     ![Az adat-előállító kezdőlapja a „Létrehozás és monitorozás” csempével](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
 
@@ -120,13 +120,13 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
 
    ![„Első lépések” lap](./media/tutorial-transform-data-spark-portal/get-started-page.png)
 
-2. Kattintson az ablak alján látható **Kapcsolatok**, majd az **+ Új** elemre. 
+1. Kattintson az ablak alján látható **Kapcsolatok**, majd az **+ Új** elemre. 
 
    ![Új kapcsolat létrehozására szolgáló gombok](./media/tutorial-transform-data-spark-portal/new-connection.png)
-3. Az **Új társított szolgáltatás** ablakban válassza az **Adattár** > **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** elemre. 
+1. Az **Új társított szolgáltatás** ablakban válassza az **Adattár** > **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** elemre. 
 
    ![Az „Azure Blob Storage” csempe kiválasztása](./media/tutorial-transform-data-spark-portal/select-azure-storage.png)
-4. A **Storage-fiók neve** mezőben válassza ki a nevet a listából, majd kattintson a **Mentés** gombra. 
+1. A **Storage-fiók neve** mezőben válassza ki a nevet a listából, majd kattintson a **Mentés** gombra. 
 
    ![A tárfiók nevének megadására szolgáló mező](./media/tutorial-transform-data-spark-portal/new-azure-storage-linked-service.png)
 
@@ -134,10 +134,10 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>Igény szerinti HDInsight társított szolgáltatás létrehozása
 
 1. Kattintson ismét az **+ Új** gombra egy további társított szolgáltatás létrehozásához. 
-2. Az **Új társított szolgáltatás** ablakban válassza a **Compute** > **Azure HDInsight** lehetőséget, majd kattintson a **Folytatás** gombra. 
+1. Az **Új társított szolgáltatás** ablakban válassza a **Compute** > **Azure HDInsight** lehetőséget, majd kattintson a **Folytatás** gombra. 
 
    ![Az „Azure HDInsight” csempe kiválasztása](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
-2. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
+1. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
 
    a. A **Név** mezőben adja meg a következőt: **AzureHDInsightLinkedService**.
    
@@ -173,17 +173,17 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
 1. Kattintson a **+** (plusz) gombra, majd a menüben válassza a **Folyamat** elemet.
 
    ![Új folyamat létrehozására szolgáló gombok](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
-2. A **Tevékenységek** eszközkészletben bontsa ki a **HDInsight** elemet. Húzza a **Spark** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére. 
+1. A **Tevékenységek** eszközkészletben bontsa ki a **HDInsight** elemet. Húzza a **Spark** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére. 
 
    ![A Spark-tevékenység áthúzása](./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png)
-3. A **Spark**-tevékenység tulajdonságok ablakában végezze el az alábbi lépéseket: 
+1. A **Spark**-tevékenység tulajdonságok ablakában végezze el az alábbi lépéseket: 
 
    a. Váltson a **HDI-fürt** lapra.
    
    b. Válassza ki az előző lépésben létrehozott **AzureHDInsightLinkedService** elemet. 
         
    ![Az HDInsight kapcsolódó szolgáltatás megadása](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
-4. Váltson a **Szkript/Jar** lapra, és végezze el az alábbi lépéseket: 
+1. Váltson a **Szkript/Jar** lapra, és végezze el az alábbi lépéseket: 
 
    a. A **Feladathoz társított szolgáltatás** mezőben válassza az **AzureStorage1** lehetőséget.
    
@@ -193,10 +193,10 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
    
    c. Keresse meg az **adftutorial/spark/script mappát**, válassza ki a **WordCount_Spark.py** fájlt, majd kattintson a **Befejezés** gombra.      
 
-5. A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra. 
+1. A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra. 
     
    ![„Érvényesítés” gomb](./media/tutorial-transform-data-spark-portal/validate-button.png)
-6. Kattintson **Az összes közzététele** gombra. A Data Factory felhasználói felülete entitásokat (társított szolgáltatásokat és folyamatot) tesz közzé az Azure Data Factory szolgáltatásban. 
+1. Kattintson **Az összes közzététele** gombra. A Data Factory felhasználói felülete entitásokat (társított szolgáltatásokat és folyamatot) tesz közzé az Azure Data Factory szolgáltatásban. 
     
    ![„Az összes közzététele” gomb](./media/tutorial-transform-data-spark-portal/publish-button.png)
 
@@ -210,11 +210,11 @@ Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiv
 
 1. Váltson a **Monitorozás** lapra. Ellenőrizze, hogy megjelenik-e a futó folyamat. Egy Spark-fürt létrehozása nagyjából 20 percet vesz igénybe. 
    
-2. Rendszeres időközönként kattintson a **Frissítés** gombra a folyamat futási állapotának ellenőrzéséhez. 
+1. Rendszeres időközönként kattintson a **Frissítés** gombra a folyamat futási állapotának ellenőrzéséhez. 
 
    ![Folyamatok monitorozására szolgáló lap, „Frissítés” gombbal](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
 
-3. A folyamat futásához kapcsolódó tevékenységfuttatások megtekintéséhez kattintson a **Tevékenységfuttatások megtekintése** elemre a **Műveletek** oszlopban.
+1. A folyamat futásához kapcsolódó tevékenységfuttatások megtekintéséhez kattintson a **Tevékenységfuttatások megtekintése** elemre a **Műveletek** oszlopban.
 
    ![Folyamat futási állapota](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 

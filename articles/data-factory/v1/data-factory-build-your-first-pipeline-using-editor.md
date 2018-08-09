@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e57a2e72479d36908ef1e9f537506bb67ae311fe
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d6d6282c3e997a41a27fb65ed7c06fd1bc7916f2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048407"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444660"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első adat-előállító létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -56,11 +56,11 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Kattintson az **Új** > **Adatok + analitika** > **Adat-előállító** elemre.
+1. Kattintson az **Új** > **Adatok + analitika** > **Adat-előállító** elemre.
 
    ![A Create (Létrehozás) panel](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 
-3. Az **Új adat-előállító** **Név** mezőjében írja be a **GetStartedDF** értéket.
+1. Az **Új adat-előállító** **Név** mezőjében írja be a **GetStartedDF** értéket.
 
    ![A New data factory (Új data factory) panel](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
@@ -70,25 +70,25 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
    > Az adat-előállító neve később DNS-névként regisztrálható, és nyilvánosan láthatóvá tehető.
    >
    >
-4. Az **Előfizetés** területen válassza ki azt az Azure-előfizetést, ahol létre kívánja hozni az adat-előállítót.
+1. Az **Előfizetés** területen válassza ki azt az Azure-előfizetést, ahol létre kívánja hozni az adat-előállítót.
 
-5. Jelöljön ki egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Az oktatóanyag elvégzéséhez hozzon létre egy erőforráscsoportot a következő névvel: **ADFGetStartedRG**.
+1. Jelöljön ki egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Az oktatóanyag elvégzéséhez hozzon létre egy erőforráscsoportot a következő névvel: **ADFGetStartedRG**.
 
-6. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listában csak a Data Factory szolgáltatás által támogatott régiók jelennek meg.
+1. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listában csak a Data Factory szolgáltatás által támogatott régiók jelennek meg.
 
-7. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
+1. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
 
-8. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** gombra.
 
    > [!IMPORTANT]
    > Data Factory-példányok létrehozásához a [Data Factory közreműködője](../../role-based-access-control/built-in-roles.md#data-factory-contributor) szerepkör tagjának kell lennie az előfizetés/erőforráscsoport szintjén.
    >
    >
-9. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható:    
+1. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható:    
 
    ![Adat-előállító üzembe helyezése – állapot](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 
-10. Az adat-előállító sikeres létrehozása után megjelenik az **Adat-előállító** oldal, amely megjeleníti az adat-előállító tartalmát.     
+1. Az adat-előállító sikeres létrehozása után megjelenik az **Adat-előállító** oldal, amely megjeleníti az adat-előállító tartalmát.     
 
     ![Adat-előállító panel](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
 
@@ -104,17 +104,17 @@ Ebben a lépésben társítja a tárfiókot az adat-előállítójához. A jelen
 
    ![Az Author and deploy (Fejlesztés és üzembe helyezés) csempe](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
 
-2. Kattintson az **Új adattár** elemre, és válassza az **Azure Storage** lehetőséget.
+1. Kattintson az **Új adattár** elemre, és válassza az **Azure Storage** lehetőséget.
 
    ![Új adattár panel](./media/data-factory-build-your-first-pipeline-using-editor/new-data-store-azure-storage-menu.png)
 
-3. A szerkesztőben megjelenik a Storage társított szolgáltatás létrehozására szolgáló JSON-szkript.
+1. A szerkesztőben megjelenik a Storage társított szolgáltatás létrehozására szolgáló JSON-szkript.
 
    ![Storage társított szolgáltatás](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-4. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A tárelérési kulcs lekéréséről [a tárfiók kezelését](../../storage/common/storage-create-storage-account.md#manage-your-storage-account) ismertető szakasz tárelérési kulcsok megtekintéséről, másolásáról és ismételt létrehozásáról szóló részében olvashat.
+1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A tárelérési kulcs lekéréséről [a tárfiók kezelését](../../storage/common/storage-create-storage-account.md#manage-your-storage-account) ismertető szakasz tárelérési kulcsok megtekintéséről, másolásáról és ismételt létrehozásáról szóló részében olvashat.
 
-5. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
+1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
     ![A Deploy (Üzembe helyezés) gomb](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
@@ -129,7 +129,7 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
 
     ![A New compute (Új számítás) elem](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 
-2. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-kódrészlet megadja az igény szerinti HDInsight-fürt létrehozásához használt tulajdonságokat.
+1. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-kódrészlet megadja az igény szerinti HDInsight-fürt létrehozásához használt tulajdonságokat.
 
     ```JSON
     {
@@ -167,11 +167,11 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
 
      További információ: [Igény szerinti HDInsight társított szolgáltatás](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 
-3. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
+1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
     ![Üzembe helyezés lehetőség](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
 
-4. Győződjön meg arról, hogy a bal oldali fanézetben megjelenik az **AzureStorageLinkedService** és a **HDInsightOnDemandLinkedService**.
+1. Győződjön meg arról, hogy a bal oldali fanézetben megjelenik az **AzureStorageLinkedService** és a **HDInsightOnDemandLinkedService**.
 
     ![Fanézet a társított szolgáltatásokkal](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
@@ -183,7 +183,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 
     ![New dataset (Új adatkészlet)](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 
-2. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-kódrészletben hozza létre az **AzureBlobInput** nevű adatkészletet, amely a folyamat egyik tevékenységének bemeneti adatait képviseli. Emellett határozza meg azt is, hogy a bemeneti adatok az **adfgetstarted** nevű blobtárolóban és az **inputdata** nevű mappában találhatók.
+1. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-kódrészletben hozza létre az **AzureBlobInput** nevű adatkészletet, amely a folyamat egyik tevékenységének bemeneti adatait képviseli. Emellett határozza meg azt is, hogy a bemeneti adatok az **adfgetstarted** nevű blobtárolóban és az **inputdata** nevű mappában találhatók.
 
     ```JSON
     {
@@ -223,14 +223,14 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 
     További információ ezekről a JSON-tulajdonságokról: [Azure Blob-összekötő](data-factory-azure-blob-connector.md#dataset-properties).
 
-3. Az újonnan létrehozott adatkészlet üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére. Az adatkészlet megjelenik a bal oldali fanézetben.
+1. Az újonnan létrehozott adatkészlet üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére. Az adatkészlet megjelenik a bal oldali fanézetben.
 
 ### <a name="create-the-output-dataset"></a>A kimeneti adatkészlet létrehozása
 Most a kimeneti adatkészletet hozza létre, amely a blobtárolóban tárolt kimeneti adatokat képviseli.
 
 1. A Data Factory Editorban válassza a **Továbbiak** > **Új adatkészlet** > **Azure Blob-tároló** lehetőséget.
 
-2. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-kódrészletben hozza létre az **AzureBlobOutput** nevű adatkészletet, és határozza meg a Hive-szkript által előállított adatok szerkezetét. Emellett határozza meg azt is, hogy az eredmények tárolása az **adfgetstarted** nevű blob-tárolóban és a **partitioneddata** nevű mappában történjen. Az **availability** (rendelkezésre állás) szakasz meghatározza, hogy a kimeneti adatkészlet havonta jön létre.
+1. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-kódrészletben hozza létre az **AzureBlobOutput** nevű adatkészletet, és határozza meg a Hive-szkript által előállított adatok szerkezetét. Emellett határozza meg azt is, hogy az eredmények tárolása az **adfgetstarted** nevű blob-tárolóban és a **partitioneddata** nevű mappában történjen. Az **availability** (rendelkezésre állás) szakasz meghatározza, hogy a kimeneti adatkészlet havonta jön létre.
 
     ```JSON
     {
@@ -254,9 +254,9 @@ Most a kimeneti adatkészletet hozza létre, amely a blobtárolóban tárolt kim
     ```
     A tulajdonságok leírását a „Bemeneti adatkészlet létrehozása” című szakaszban tekintheti meg. Külső adatkészlet esetén nem kell beállítania a külső tulajdonságot, mert az adatkészletet a Data Factory szolgáltatás állítja elő.
 
-3. Az újonnan létrehozott adatkészlet üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére.
+1. Az újonnan létrehozott adatkészlet üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére.
 
-4. Ellenőrizze az adatkészlet létrehozása sikeres volt-e.
+1. Ellenőrizze az adatkészlet létrehozása sikeres volt-e.
 
     ![Fanézet a társított szolgáltatásokkal](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-data-set.png)
 
@@ -267,7 +267,7 @@ Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező els
 
     ![Az Új folyamat lehetőség](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 
-2. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba.
+1. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba.
 
    > [!IMPORTANT]
    > A JSON-kódrészletben cserélje a **storageaccountname** kifejezést a tárfiókja nevére.
@@ -333,7 +333,7 @@ Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező els
    > A példában használt JSON-tulajdonságokkal kapcsolatos további információért lásd a [Data Factory folyamatait és tevékenységeit](data-factory-create-pipelines.md) ismertető témakör a folyamat JSON-fájljáról szóló részét.
    >
    >
-3. Ellenőrizze az alábbiakat:
+1. Ellenőrizze az alábbiakat:
 
    a. Az **input.log** fájl létezik a blobtároló **adfgetstarted** tárolójának **inputdata** mappájában.
 
@@ -341,9 +341,9 @@ Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező els
 
    c. A folyamat JSON-fájljában lecserélte a **storageaccountname** kifejezést a tárfiókja nevére.
 
-4. A folyamat üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére. Mivel a **start** (kezdés) és az **end** (befejezés) időpontok múltbeli értékekre vannak beállítva, és az **isPaused** tulajdonság értéke **false** (hamis), a folyamat (a folyamatban foglalt tevékenység) az üzembe helyezés után azonnal fut.
+1. A folyamat üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére. Mivel a **start** (kezdés) és az **end** (befejezés) időpontok múltbeli értékekre vannak beállítva, és az **isPaused** tulajdonság értéke **false** (hamis), a folyamat (a folyamatban foglalt tevékenység) az üzembe helyezés után azonnal fut.
 
-5. Győződjön meg arról, hogy a folyamat megjelenik a fanézetben.
+1. Győződjön meg arról, hogy a folyamat megjelenik a fanézetben.
 
     ![A fanézet a folyamattal](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-pipeline.png)
 
@@ -355,31 +355,31 @@ Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező els
 
     ![Diagram csempe](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
 
-2. A **diagramnézet** áttekintést nyújt az oktatóanyagban használt folyamatokról és adatkészletekről.
+1. A **diagramnézet** áttekintést nyújt az oktatóanyagban használt folyamatokról és adatkészletekről.
 
     ![Diagramnézet](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png)
 
-3. A folyamat összes tevékenységének megtekintéséhez kattintson a jobb gombbal a folyamatra a diagramban, majd kattintson a **Feldolgozási sor megnyitása** elemre.
+1. A folyamat összes tevékenységének megtekintéséhez kattintson a jobb gombbal a folyamatra a diagramban, majd kattintson a **Feldolgozási sor megnyitása** elemre.
 
     ![Folyamat megnyitása menü](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-menu.png)
 
-4. Győződjön meg arról, hogy a **Hive-tevékenység** megjelenik a folyamatban.
+1. Győződjön meg arról, hogy a **Hive-tevékenység** megjelenik a folyamatban.
 
     ![Folyamat megnyitása nézet](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-view.png)
 
     Az előző nézethez való visszatéréshez a fenti menüben kattintson a **Data Factory** elemre.
 
-5. A **diagramnézetben** kattintson duplán az **AzureBlobInput** adatkészletre. Győződjön meg arról, hogy a szelet állapota **Kész**. Eltarthat néhány percig, amíg a szelet **Kész** állapotúként jelenik meg. Ha ez néhány perces várakozás után sem történik meg, ellenőrizze, hogy a megfelelő tárolóba (**adfgetstarted**) és mappába (**inputdata**) helyezte-e a bemeneti fájlt (**input.log**).
+1. A **diagramnézetben** kattintson duplán az **AzureBlobInput** adatkészletre. Győződjön meg arról, hogy a szelet állapota **Kész**. Eltarthat néhány percig, amíg a szelet **Kész** állapotúként jelenik meg. Ha ez néhány perces várakozás után sem történik meg, ellenőrizze, hogy a megfelelő tárolóba (**adfgetstarted**) és mappába (**inputdata**) helyezte-e a bemeneti fájlt (**input.log**).
 
    ![Kész állapotú bemeneti szelet](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
 
-6. Zárja be az **AzureBlobInput** panelt.
+1. Zárja be az **AzureBlobInput** panelt.
 
-7. A **diagramnézetben** kattintson duplán az **AzureBlobOutput** adatkészletre. Megjelenik a feldolgozás alatt álló szelet.
+1. A **diagramnézetben** kattintson duplán az **AzureBlobOutput** adatkészletre. Megjelenik a feldolgozás alatt álló szelet.
 
    ![Adatkészlet feldolgozása folyamatban](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 
-8. A feldolgozás végeztével a szelet **Kész** állapotúra vált.
+1. A feldolgozás végeztével a szelet **Kész** állapotúra vált.
 
    ![Kész állapotú adatkészlet](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)  
 
@@ -388,15 +388,15 @@ Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező els
    >
    >
 
-9. Ha a szelet **Kész** állapotú, a kimeneti adatok **adfgetstarted** Blob Storage-tárolójában ellenőrizze a **partitioneddata** mappát.  
+1. Ha a szelet **Kész** állapotú, a kimeneti adatok **adfgetstarted** Blob Storage-tárolójában ellenőrizze a **partitioneddata** mappát.  
 
    ![Kimeneti adatok](./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png)
 
-10. A szelet részleteinek az **Adatszelet** panelen való megtekintéséhez kattintson a szeletre.
+1. A szelet részleteinek az **Adatszelet** panelen való megtekintéséhez kattintson a szeletre.
 
     ![Az adatszeletre vonatkozó információk](./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png)
 
-11. A **Tevékenységfuttatások** listában válasszon egy tevékenységet a további információk megtekintéséhez. (Ebben a forgatókönyvben ez egy Hive-tevékenység.) Az információ a **Tevékenységfuttatás** részletei panelen jelenik meg.   
+1. A **Tevékenységfuttatások** listában válasszon egy tevékenységet a további információk megtekintéséhez. (Ebben a forgatókönyvben ez egy Hive-tevékenység.) Az információ a **Tevékenységfuttatás** részletei panelen jelenik meg.   
 
     ![Tevékenységfuttatás részletei ablak](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png)    
 
@@ -415,11 +415,11 @@ A folyamatok monitorozásához a Monitor & Manage alkalmazást is használhatja.
 
     ![Monitor & Manage csempe](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-2. A Monitor & Manage alkalmazásban módosítsa a **kezdési idő** és a **befejezési idő** értékét, hogy megfeleljen a folyamat kezdési és befejezési idejének. Kattintson az **Alkalmaz** gombra.
+1. A Monitor & Manage alkalmazásban módosítsa a **kezdési idő** és a **befejezési idő** értékét, hogy megfeleljen a folyamat kezdési és befejezési idejének. Kattintson az **Alkalmaz** gombra.
 
     ![Monitor & Manage alkalmazás](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 
-3. Válasszon egy tevékenységablakot az **Activity Windows** (Tevékenységablakok) listában az információk megtekintéséhez.
+1. Válasszon egy tevékenységablakot az **Activity Windows** (Tevékenységablakok) listában az információk megtekintéséhez.
 
     ![Tevékenységablakok lista](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
 

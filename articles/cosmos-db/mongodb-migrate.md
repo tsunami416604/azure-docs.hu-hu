@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a55727c58f8f9d4a05f547100875f18291328ea2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100296"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435322"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: MongoDB-adatok importálása 
 
@@ -45,8 +45,8 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 ## <a name="find-your-connection-string-information-host-port-username-and-password"></a>A kapcsolati sztringre vonatkozó információk (gazdagép, port, felhasználónév és jelszó) megkeresése
 
 1. Az [Azure Portalon](https://portal.azure.com) a bal oldali panelen kattintson az **Azure Cosmos DB** bejegyzésre.
-2. Az **Előfizetések** panelen válassza ki a fióknevét.
-3. A **Kapcsolati sztring** panelen kattintson a **Kapcsolati sztring** elemre.
+1. Az **Előfizetések** panelen válassza ki a fióknevét.
+1. A **Kapcsolati sztring** panelen kattintson a **Kapcsolati sztring** elemre.
 
    A jobb oldali panel tartalmazza a fiókhoz való kapcsolódáshoz szükséges összes információt.
 
@@ -102,7 +102,7 @@ Példa:
         }
         ```
 
-2. Számítsa ki az egyetlen dokumentum írására vonatkozó, közelítő kérelemegységenkénti díjat:
+1. Számítsa ki az egyetlen dokumentum írására vonatkozó, közelítő kérelemegységenkénti díjat:
 
     a. Csatlakozzon az Azure-Cosmos DB MongoDB-adatbázisához a MongoDB-felületről. Ezzel kapcsolatos további útmutatást a [MongoDB-alkalmazások az Azure Cosmos DB-hez való csatlakoztatását ismertető](connect-mongodb-account.md) cikkben találhat.
     
@@ -125,7 +125,7 @@ Példa:
         
     d. Jegyezze fel a kérelem díját.
     
-3. Határozza meg a gépe és az Azure Cosmos DB felhőszolgáltatás közötti késleltetést:
+1. Határozza meg a gépe és az Azure Cosmos DB felhőszolgáltatás közötti késleltetést:
     
     a. A MongoDB-felületről engedélyezze a részletes naplózást a következő paranccsal: ```setVerboseShell(true)```
     
@@ -135,9 +135,9 @@ Példa:
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. A migrálás előtt távolítsa el a beszúrt dokumentumot, hogy ne jöhessenek létre ismétlődések. A következő paranccsal távolíthat el dokumentumokat: ```db.coll.remove({})```
+1. A migrálás előtt távolítsa el a beszúrt dokumentumot, hogy ne jöhessenek létre ismétlődések. A következő paranccsal távolíthat el dokumentumokat: ```db.coll.remove({})```
 
-5. Számítsa ki a *batchSize* és a *numInsertionWorkers* tulajdonságok közelítő értékeit:
+1. Számítsa ki a *batchSize* és a *numInsertionWorkers* tulajdonságok közelítő értékeit:
 
     * A *batchSize* tulajdonság esetében ossza el az összes kiosztott kérelemegységet a 3. lépésben egyetlen dokumentum írásához felhasznált kérelemegységek számával.
     
@@ -157,7 +157,7 @@ Példa:
     
     *numInsertionWorkers = (10 000 RU x 0,1 s) / (24 x 10 RU) = 4,1666*
 
-6. Futtassa a végső migrálási parancsot:
+1. Futtassa a végső migrálási parancsot:
 
    ```
    mongoimport.exe --host comsosdb-mongodb-account.documents.azure.com:10255 -u comsosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24

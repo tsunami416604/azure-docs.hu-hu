@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 5b751546320ca6728573954290bd2258e837775f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2270080f8612c69a69955202ececab44136f335c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723221"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445536"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>3. oktatóanyag: Írisz osztályozása: Modellek üzembe helyezése
 Az Azure Machine Learning (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
@@ -47,11 +47,11 @@ Az oktatóanyag előző részében az **iris_sklearn.py** szkriptet helyileg, az
 
 1. Nyissa meg a Machine Learning Workbench alkalmazást. Nyissa meg az oktatóanyag-sorozat előző részeiben létrehozott **myIris** projektet.
 
-2. A projekt megnyitása után a bal oldali ablaktáblán kattintson a **Fájlok** gombra (mappa ikon) a projektmappa fájllistájának megnyitásához.
+1. A projekt megnyitása után a bal oldali ablaktáblán kattintson a **Fájlok** gombra (mappa ikon) a projektmappa fájllistájának megnyitásához.
 
-3. Válassza ki az **iris_sklearn.py** fájlt. A Workbench alkalmazásban egy új szövegszerkesztő lapon megnyílik a Python-kód.
+1. Válassza ki az **iris_sklearn.py** fájlt. A Workbench alkalmazásban egy új szövegszerkesztő lapon megnyílik a Python-kód.
 
-4. Tekintse át az **iris_sklearn.py** fájlt és keresse meg, hol jött létre a pickle-fájl. A Control+F billentyűkombinációval nyissa meg a **Keresés** párbeszédpanelt, és a Python-kódban keresse meg a **pickle** szót.
+1. Tekintse át az **iris_sklearn.py** fájlt és keresse meg, hol jött létre a pickle-fájl. A Control+F billentyűkombinációval nyissa meg a **Keresés** párbeszédpanelt, és a Python-kódban keresse meg a **pickle** szót.
 
    Ez a kódrészlet megmutatja, hogyan jött létre a pickle kimeneti fájlja. A kimeneti pickle-fájl neve a lemezen **model.pkl**. 
 
@@ -62,7 +62,7 @@ Az oktatóanyag előző részében az **iris_sklearn.py** szkriptet helyileg, az
    f.close()
    ```
 
-5. Keresse meg a modell pickle-fájlját egy korábbi futtatás kimeneti fájljai között.
+1. Keresse meg a modell pickle-fájlját egy korábbi futtatás kimeneti fájljai között.
    
    Az **iris_sklearn.py** szkript futtatásakor a szkript a modellfájlt az **outputs** mappába írta **model.pkl** néven. Ez a mappa abban a végrehajtási környezetben található, ahol a szkriptet futtatta, és nem a helyi projektmappában. 
    
@@ -83,29 +83,29 @@ A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van e
 
 1. Nyissa meg a Machine Learning Workbench alkalmazást. Nyissa meg az oktatóanyag-sorozat előző részében létrehozott **myIris** projektet.
 
-2. A projekt megnyitása után a bal oldali ablaktáblán kattintson a **Fájlok** gombra (mappa ikon) a projektmappa fájllistájának megnyitásához.
+1. A projekt megnyitása után a bal oldali ablaktáblán kattintson a **Fájlok** gombra (mappa ikon) a projektmappa fájllistájának megnyitásához.
 
-3. Válassza a **score_iris.py** fájlt. Megnyílik a Python-szkript. Ezt a fájlt használjuk pontozófájlként.
+1. Válassza a **score_iris.py** fájlt. Megnyílik a Python-szkript. Ezt a fájlt használjuk pontozófájlként.
 
    ![Pontozófájl](media/tutorial-classifying-iris/model_data_collection.png)
 
-4. A sémafájl lekéréséhez futtassa a szkriptet. Válassza ki a **helyi** környezetet és a **score_iris.py** szkriptet a parancssorban, majd válassza a **Futtatás** lehetőséget. 
+1. A sémafájl lekéréséhez futtassa a szkriptet. Válassza ki a **helyi** környezetet és a **score_iris.py** szkriptet a parancssorban, majd válassza a **Futtatás** lehetőséget. 
 
    A szkript létrehoz az **Outputs** szakaszban egy JSON-fájlt, amely a modellhez szükséges bemenetiadat-sémát tartalmazza.
 
-6. Figyelje meg a **Projekt-irányítópult** panel jobb oldalán található **Feladatok** panelt. Várja meg, hogy a legfrissebb **score_iris.py** feladat mellett a zöld **Befejezve** állapot jelenjen meg. Ezután kattintson a legfrissebb feladatfuttatáshoz tartozó **score_iris.py** hiperhivatkozásra a futtatási részletek megtekintéséhez. 
+1. Figyelje meg a **Projekt-irányítópult** panel jobb oldalán található **Feladatok** panelt. Várja meg, hogy a legfrissebb **score_iris.py** feladat mellett a zöld **Befejezve** állapot jelenjen meg. Ezután kattintson a legfrissebb feladatfuttatáshoz tartozó **score_iris.py** hiperhivatkozásra a futtatási részletek megtekintéséhez. 
 
-7. A **Futtatás tulajdonságai** lap **Kimenetek** részében válassza ki az újonnan létrehozott **service_schema.json** fájlt. Jelölje be a fájl neve melletti jelölőnégyzetet, majd válassza a **Letöltés** gombot. Mentse a fájlt a projektmappa gyökérkönyvtárába.
+1. A **Futtatás tulajdonságai** lap **Kimenetek** részében válassza ki az újonnan létrehozott **service_schema.json** fájlt. Jelölje be a fájl neve melletti jelölőnégyzetet, majd válassza a **Letöltés** gombot. Mentse a fájlt a projektmappa gyökérkönyvtárába.
 
-8. Lépjen vissza az előző lapra, ahol megnyitotta a **score_iris.py** szkriptet. Az adatgyűjtés lehetővé teszi modellbemenetek és előrejelzések rögzítését a webszolgáltatásból. A következő lépések érdekesek az adatgyűjtés szempontjából:
+1. Lépjen vissza az előző lapra, ahol megnyitotta a **score_iris.py** szkriptet. Az adatgyűjtés lehetővé teszi modellbemenetek és előrejelzések rögzítését a webszolgáltatásból. A következő lépések érdekesek az adatgyűjtés szempontjából:
 
-9. Tekintse át a **ModelDataCollector** fájlimportálási osztály tetején található kódot, mert tartalmazza a következő modelladat-gyűjtési funkciót:
+1. Tekintse át a **ModelDataCollector** fájlimportálási osztály tetején található kódot, mert tartalmazza a következő modelladat-gyűjtési funkciót:
 
    ```python
    from azureml.datacollector import ModelDataCollector
    ```
 
-10. Tekintse át a következő, a **ModelDataCollector** osztályt példányosító kódsorokat az **init()** függvényben:
+1. Tekintse át a következő, a **ModelDataCollector** osztályt példányosító kódsorokat az **init()** függvényben:
 
     ```python
     global inputs_dc, prediction_dc
@@ -113,7 +113,7 @@ A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van e
     prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
     ```
 
-11. Tekintse át a következő, bemeneti és előrejelzési adatokat gyűjtő kódsorokat a **run(input_df)** függvényben.
+1. Tekintse át a következő, bemeneti és előrejelzési adatokat gyűjtő kódsorokat a **run(input_df)** függvényben.
 
     ```python
     inputs_dc.collect(input_df)
@@ -139,7 +139,7 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A Docker Eng
    Ekkor megnyílik a parancssor az aktuális projektmappában (**c:\temp\myIris>**).
 
 
-2. Győződjön meg arról, hogy a **Microsoft.ContainerRegistry** Azure-erőforrásszolgáltató regisztrálva van az előfizetésben. Ezt az erőforrás-szolgáltatót regisztrálnia kell, mielőtt létrehozna egy környezetet a 3. lépésben. A következő paranccsal ellenőrizheti, hogy regisztrálva van-e már:
+1. Győződjön meg arról, hogy a **Microsoft.ContainerRegistry** Azure-erőforrásszolgáltató regisztrálva van az előfizetésben. Ezt az erőforrás-szolgáltatót regisztrálnia kell, mielőtt létrehozna egy környezetet a 3. lépésben. A következő paranccsal ellenőrizheti, hogy regisztrálva van-e már:
    ``` 
    az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table 
    ``` 
@@ -169,7 +169,7 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A Docker Eng
    >[!NOTE] 
    Ha egy ACS-fürtön hajtja végre az üzembe helyezést, ugyanezen módszerrel regisztrálnia kell a **Microsoft.ContainerService** erőforrás-szolgáltatót is.
 
-3. Hozza létre a környezetet. Ezt a lépést környezetenként egyszer kell futtatnia. Például egyszer kell futtatni fejlesztési, és egyszer éles környezetben. Ehhez az első környezethez használja a _helyi módot_. A következő parancsban a `-c` vagy a `--cluster` kapcsolóval egy _fürtmódú_ környezetet is létrehozhat később.
+1. Hozza létre a környezetet. Ezt a lépést környezetenként egyszer kell futtatnia. Például egyszer kell futtatni fejlesztési, és egyszer éles környezetben. Ehhez az első környezethez használja a _helyi módot_. A következő parancsban a `-c` vagy a `--cluster` kapcsolóval egy _fürtmódú_ környezetet is létrehozhat később.
 
    A következő setup parancs használatához közreműködői hozzáférés szükséges az előfizetéshez. Ha ezzel nem rendelkezik, akkor ahhoz az erőforráscsoporthoz szükséges Közreműködői hozzáférés, ahová a telepítést végzi. Utóbbi esetben meg kell adnia az erőforráscsoport nevét a setup parancs részeként a `-g` jelző használatával. 
 
@@ -191,17 +191,17 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A Docker Eng
 
    ![Kiépítési állapot](media/tutorial-classifying-iris/provisioning_state.png)
  
-3. Ha az oktatóanyag előző részeiben nem hozott létre Modellkezelési fiókot, tegye meg most. Ez egy egyszeri beállítás.
+1. Ha az oktatóanyag előző részeiben nem hozott létre Modellkezelési fiókot, tegye meg most. Ez egy egyszeri beállítás.
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
    
-4. Állítsa be a modellkezelési fiókot.
+1. Állítsa be a modellkezelési fiókot.
    ```azurecli
    az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
    ```
 
-5. Állítsa be a környezetet.
+1. Állítsa be a környezetet.
 
    A beállítás befejezése után az alábbi paranccsal állíthatja be a környezet üzembe helyezéséhez szükséges környezeti változókat. Használja ugyanazt a környezetnevet, amelyet korábban, a 3. lépésben használt. Használja ugyanazt az erőforráscsoport-nevet, amelyet a beállítási folyamat végeztével a parancsablakban kimenetként kapott.
 
@@ -209,7 +209,7 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A Docker Eng
    az ml env set -n <deployment environment name> -g <existing resource group name>
    ```
 
-6. A következő paranccsal ellenőrizze, hogy megfelelően konfigurálta-e az üzembe helyezett környezetet a helyi webszolgáltatás üzembe helyezéséhez:
+1. A következő paranccsal ellenőrizze, hogy megfelelően konfigurálta-e az üzembe helyezett környezetet a helyi webszolgáltatás üzembe helyezéséhez:
 
    ```azurecli
    az ml env show
@@ -247,13 +247,13 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
    >[!IMPORTANT]
    >A szolgáltatásnév, amely az új Docker-rendszerkép neve is, csak kisbetűkből állhat. Ellenkező esetben a rendszer hibaüzenetet küld. 
 
-2. A parancs futtatásakor a modellt és a pontozófájlt a rendszer feltölti a környezet beállítása során létrehozott tárfiókba. A telepítési folyamat összeállít egy Docker-rendszerképet, amely tartalmazza a modellt, a sémát és a pontozófájlt, majd leküldi azt az Azure Container Registrybe: **\<ACR_név\>.azureacr.io/\<rendszerképnév\>:\<verzió\>**. 
+1. A parancs futtatásakor a modellt és a pontozófájlt a rendszer feltölti a környezet beállítása során létrehozott tárfiókba. A telepítési folyamat összeállít egy Docker-rendszerképet, amely tartalmazza a modellt, a sémát és a pontozófájlt, majd leküldi azt az Azure Container Registrybe: **\<ACR_név\>.azureacr.io/\<rendszerképnév\>:\<verzió\>**. 
 
    A parancs lekéri a rendszerképet a helyi számítógépre, és a rendszerkép alapján elindít egy Docker-tárolót. Ha a környezet fürt üzemmódban lett konfigurálva, a Docker-tároló az Azure Cloud Services Kubernetes-fürtön lesz üzembe helyezve.
 
    Az üzembe helyezés részeként a webszolgáltatáshoz létrejön egy HTTP REST-végpont a helyi számítógépen. A parancs futtatása néhány percen belül befejeződik egy sikert jelző üzenettel. A webszolgáltatása használatra kész!
 
-3. A futó Docker-tárolót a **docker ps** paranccsal tekintheti meg:
+1. A futó Docker-tárolót a **docker ps** paranccsal tekintheti meg:
 
    ```azurecli
    docker ps
@@ -271,7 +271,7 @@ Először regisztrálja a modellt. Ezután hozza létre a jegyzéket, állítsa 
    ```
    Ez a parancs létrehoz egy modellazonosítót.
 
-2. Hozzon létre egy jegyzéket.
+1. Hozzon létre egy jegyzéket.
 
    Jegyzék létrehozásához használja az alábbi parancsot, és adja meg az előző lépésből származó modellazonosító-kimenetet:
 
@@ -280,7 +280,7 @@ Először regisztrálja a modellt. Ezután hozza létre a jegyzéket, állítsa 
    ```
    Ez a parancs létrehoz egy jegyzékazonosítót.
 
-3. Hozzon létre egy Docker-rendszerképet.
+1. Hozzon létre egy Docker-rendszerképet.
 
    Docker-rendszerkép létrehozásához használja a következő parancsot, és adja meg a jegyzékazonosító kimenetét az előző lépésből. Szükség esetén belefoglalhatja a Conda-függőségeket is a `-c` kapcsoló használatával.
 
@@ -289,7 +289,7 @@ Először regisztrálja a modellt. Ezután hozza létre a jegyzéket, állítsa 
    ```
    Ez a parancs létrehoz egy Docker-rendszerképazonosítót.
    
-4. Hozza létre a szolgáltatást.
+1. Hozza létre a szolgáltatást.
 
    Szolgáltatás létrehozásához használja az alábbi parancsot, és adja meg a rendszerkép-azonosító kimenetét az előző lépésből:
 
@@ -310,7 +310,7 @@ A futó **irisapp** webszolgáltatás teszteléséhez használjon egy JSON kódo
    az ml service usage realtime -i <web service ID>
    ```
 
-2. A szolgáltatás teszteléséhez hajtsa végre a visszaadott szolgáltatásfuttatási parancsot:
+1. A szolgáltatás teszteléséhez hajtsa végre a visszaadott szolgáltatásfuttatási parancsot:
     
    ```azurecli
    az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
@@ -322,20 +322,20 @@ A futó **irisapp** webszolgáltatás teszteléséhez használjon egy JSON kódo
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Keresse meg a Storage-fiókjait. Ehhez válassza a **Minden szolgáltatás** lehetőséget.
+1. Keresse meg a Storage-fiókjait. Ehhez válassza a **Minden szolgáltatás** lehetőséget.
 
-3. A keresőmezőbe írja be a **Storage-fiókok** kifejezést, majd nyomja le az Enter billentyűt.
+1. A keresőmezőbe írja be a **Storage-fiókok** kifejezést, majd nyomja le az Enter billentyűt.
 
-4. A **Storage-fiókok** keresőoldalán válassza ki a környezetének megfelelő **Storage-fiók** erőforrást. 
+1. A **Storage-fiókok** keresőoldalán válassza ki a környezetének megfelelő **Storage-fiók** erőforrást. 
 
    > [!TIP]
    > A használatban lévő Storage-fiók meghatározásához:
    > 1. Nyissa meg a Machine Learning Workbenchet.
-   > 2. Válassza ki a projektet, amelyen dolgozik.
-   > 3. Nyisson meg egy parancssort a **Fájl** menüből.
-   > 4. A parancssorba írja be az `az ml env show -v` parancsot, és ellenőrizze a *storage_account* értékét. Ez az Ön Storage-fiókjának neve
+   > 1. Válassza ki a projektet, amelyen dolgozik.
+   > 1. Nyisson meg egy parancssort a **Fájl** menüből.
+   > 1. A parancssorba írja be az `az ml env show -v` parancsot, és ellenőrizze a *storage_account* értékét. Ez az Ön Storage-fiókjának neve
 
-5. A **Storage-fiók** panel megnyílása után válassza a **Szolgáltatások** szakasz **Blobok** elemét. Keresse meg a **modeldata** nevű tárolót. 
+1. A **Storage-fiók** panel megnyílása után válassza a **Szolgáltatások** szakasz **Blobok** elemét. Keresse meg a **modeldata** nevű tárolót. 
  
    Ha nem jelennek meg adatok, lehet, hogy az első webszolgáltatás-kérés elküldése után várnia kell kb. 10 percet ahhoz, hogy az adatok propagálódjanak a Storage-fiókba.
 
@@ -345,7 +345,7 @@ A futó **irisapp** webszolgáltatás teszteléséhez használjon egy JSON kódo
    /modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv
    ```
 
-6. Ezeket az adatokat felhasználhatja az Azure Blob Storage-ból. Számos különféle, Microsoft szoftvereket és nyílt forráskódú eszközöket használó eszköz érhető el, például:
+1. Ezeket az adatokat felhasználhatja az Azure Blob Storage-ból. Számos különféle, Microsoft szoftvereket és nyílt forráskódú eszközöket használó eszköz érhető el, például:
 
    * Machine Learning: a CSV-fájl adatforrásként való felvételével nyissa meg a CSV-fájlt.
 

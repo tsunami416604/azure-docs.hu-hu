@@ -16,12 +16,12 @@ ms.date: 07/30/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: d81a41a0012d4e0be4e812d48074e7af1e92213a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: c6c7b3f897e38fbd67098c9f881380bc073f13da
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391146"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432650"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Eseményekre való válaszadás Azure Monitor-riasztásokkal
 Az Azure Alerts naplókeresési szabályokat hoz létre megadott naplólekérdezések rendszeres időközönként való automatikus futtatására.  Ha a naplólekérdezés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés. A szabály ekkor automatikusan futtathat egy vagy több műveletet [Műveletcsoportok](../monitoring-and-diagnostics/monitoring-action-groups.md) használatával.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](log-analytics-tutorial-dashboards.md) oktatóanyag folytatása.   
@@ -43,15 +43,15 @@ A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és re
 A következő példában létrehoz egy metrikamérési riasztási szabályt az [adatok vizualizációját ismertető oktatóanyagban](log-analytics-tutorial-dashboards.md) mentett *Azure-beli virtuális gépek – Processzorhasználat* lekérdezés alapján. Létrejön egy riasztás minden egyes, a 90%-os küszöbértéket meghaladó virtuális géphez.
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Monitorozás** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Monitorozás** lehetőséget.
-2. Új riasztás létrehozásához a bal oldali panelen válassza a **Riasztások** elemet, majd kattintson az oldal tetején található **Új riasztási szabály** elemre.
+1. Új riasztás létrehozásához a bal oldali panelen válassza a **Riasztások** elemet, majd kattintson az oldal tetején található **Új riasztási szabály** elemre.
 
     ![Új riasztási szabály létrehozása](./media/log-analytics-tutorial-response/alert-rule-02.png)
 
-3. Az első lépésben a **Riasztás létrehozása** szakaszban ki fogja választani a Log Analytics-munkaterületet erőforrásként, mivel ez egy naplóalapú riasztási jelzés.  Az eredmények szűréséhez válassza ki az adott **előfizetést** a legördülő listából, ha több előfizetés is van, amely tartalmazza a korábban létrehozott virtuális gépet és Log Analytics-munkaterületet.  Szűrje az **erőforrástípusokat** a **Log Analytics** a legördülő menüből való kiválasztásával.  Végül válassza az **Erőforrás** **DefaultLAWorkspace** elemet, majd kattintson a **Kész** gombra.
+1. Az első lépésben a **Riasztás létrehozása** szakaszban ki fogja választani a Log Analytics-munkaterületet erőforrásként, mivel ez egy naplóalapú riasztási jelzés.  Az eredmények szűréséhez válassza ki az adott **előfizetést** a legördülő listából, ha több előfizetés is van, amely tartalmazza a korábban létrehozott virtuális gépet és Log Analytics-munkaterületet.  Szűrje az **erőforrástípusokat** a **Log Analytics** a legördülő menüből való kiválasztásával.  Végül válassza az **Erőforrás** **DefaultLAWorkspace** elemet, majd kattintson a **Kész** gombra.
 
     ![Riasztás létrehozása, 1. lépés](./media/log-analytics-tutorial-response/alert-rule-03.png)
 
-4. A **Riasztási feltételek** szakaszban kattintson a **Feltétel hozzáadása** elemre a lekérdezés definiálásához, majd adja meg a logikát, amelyet a riasztási szabály követ. A **Jellogika konfigurálása** panelen válassza az **Egyéni naplókeresés** lehetőséget a jel nevénél, és adja meg a lekérdezést a **Keresési lekérdezés** mezőben.
+1. A **Riasztási feltételek** szakaszban kattintson a **Feltétel hozzáadása** elemre a lekérdezés definiálásához, majd adja meg a logikát, amelyet a riasztási szabály követ. A **Jellogika konfigurálása** panelen válassza az **Egyéni naplókeresés** lehetőséget a jel nevénél, és adja meg a lekérdezést a **Keresési lekérdezés** mezőben.
 
     Például:
     ```
@@ -62,21 +62,21 @@ A következő példában létrehoz egy metrikamérési riasztási szabályt az [
 
     A panel frissül, és a riasztás konfigurációs beállításait mutatja.  Felül a kiválasztott jel eredményeit mutatja az elmúlt 30 percre vonatkozóan.
 
-5. Konfigurálja a riasztást az alábbi információkkal:  
+1. Konfigurálja a riasztást az alábbi információkkal:  
    a. A **Riasztás alapja* legördülő menüből válassza a **Metrikus egység** elemet.  A metrikamérés egy riasztást hoz létre a lekérdezés minden egyes objektumához, amelynek értéke meghaladja a megadott küszöbértéket.  
    b. A **Feltétel** értékeként válassza a **Nagyobb, mint** lehetőséget, majd adja meg a **Küszöbérték** mezőben a **90** értéket.  
    c. A Riasztás aktiválásának alapja részben válassza az **Egymás utáni incidensek** elemet, a legördülő listából válassza a **Nagyobb, mint** lehetőséget, és adja meg a 3 értéket.  
    d. Az Értékelés alapja részben fogadja el az alapértelmezett beállításokat. A szabály öt percenként fog futni, és visszaadja azokat a rekordokat, amelyek az aktuális idő ezen tartományában jöttek létre.  
-6. Kattintson a **Kész** gombra a riasztási szabály létrehozásának befejezéséhez.
+1. Kattintson a **Kész** gombra a riasztási szabály létrehozásának befejezéséhez.
 
     ![Riasztási jel konfigurálása](./media/log-analytics-tutorial-response/alert-signal-logic-02.png)
 
-7. A második lépésben adja meg a riasztás nevét a **Riasztási szabály neve** mezőben, például **Percentage CPU greater than 90 percent**.  Adjon meg egy **Leírást**, ahol részletezi a riasztás tulajdonságait, majd a **Súlyosság** értéknél a megadott lehetőségek közül válassza a **Kritikus (0. súlyosság)** lehetőséget.
+1. A második lépésben adja meg a riasztás nevét a **Riasztási szabály neve** mezőben, például **Percentage CPU greater than 90 percent**.  Adjon meg egy **Leírást**, ahol részletezi a riasztás tulajdonságait, majd a **Súlyosság** értéknél a megadott lehetőségek közül válassza a **Kritikus (0. súlyosság)** lehetőséget.
 
     ![Riasztás részleteinek konfigurálása](./media/log-analytics-tutorial-response/alert-signal-logic-04.png)
 
-8. Ha a létrehozásakor azonnal aktiválni kívánja a riasztási szabályt, fogadja el a **Szabály engedélyezése a létrehozásakor** alapértelmezett értékét.  
-9. A harmadik és egyben végső lépésben adjon meg egy **műveletcsoportot**, amely biztosítja, hogy minden alkalommal, amikor egy riasztás aktiválódik ugyanazok a műveletek lesznek végrehajtva, és amely mindegyik meghatározott szabályra használható.  Hozzon létre egy új műveletcsoportot a következő információkkal:  
+1. Ha a létrehozásakor azonnal aktiválni kívánja a riasztási szabályt, fogadja el a **Szabály engedélyezése a létrehozásakor** alapértelmezett értékét.  
+1. A harmadik és egyben végső lépésben adjon meg egy **műveletcsoportot**, amely biztosítja, hogy minden alkalommal, amikor egy riasztás aktiválódik ugyanazok a műveletek lesznek végrehajtva, és amely mindegyik meghatározott szabályra használható.  Hozzon létre egy új műveletcsoportot a következő információkkal:  
    a. Válassza az **Új műveletcsoport** lehetőséget, és megnyílik a **Műveletcsoport hozzáadása** panel.  
    b. A **Műveletcsoport neve** részben adjon meg egy nevet, például **IT Operations - Notify** és egy **Rövid nevet** például **itops-n**.  
    c. Ellenőrizze, hogy az alapértelmezett értékek helyesek-e az **Előfizetés** és az **Erőforráscsoport** mezőben. Ha nem, válassza ki a megfelelőt a legördülő listából.  
@@ -85,8 +85,8 @@ A következő példában létrehoz egy metrikamérési riasztási szabályt az [
    f. Kattintson az **OK** gombra a módosítások mentéséhez.  
        ![Új műveletcsoport létrehozása](./media/log-analytics-tutorial-response/action-group-properties-01.png)
 
-10. Kattintson az **OK** gombra a műveletcsoport létrehozásának befejezéséhez.
-11. Kattintson a **Riasztási szabály létrehozás** gombra a riasztási szabály létrehozásának befejezéséhez. Azonnal el fog indulni.
+1. Kattintson az **OK** gombra a műveletcsoport létrehozásának befejezéséhez.
+1. Kattintson a **Riasztási szabály létrehozás** gombra a riasztási szabály létrehozásának befejezéséhez. Azonnal el fog indulni.
 
     ![Új riasztási szabály létrehozásának befejezése](./media/log-analytics-tutorial-response/alert-rule-01.png)
 

@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: de295a93d395cee4c4dfbea4f2e7f7338036feb8
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358138"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494373"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Oktatóanyag: 1. Egyéni tartományt használó alkalmazás létrehozása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan használhatja a **szándékokat** a felhasználó _szándékának_ meghatározásához az alkalmazás számára elküldött kimondott szöveg (szöveg) alapján. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
@@ -84,19 +84,15 @@ Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformat
     Ha a LUIS-t hívó alkalmazásban, például egy csevegőrobotban a LUIS a **None** szándékot adja vissza egy kimondott szöveghez, a robot meg tudja kérdezni, hogy a felhasználó be szeretné-e fejezni a beszélgetést. A csevegőrobot további iránymutatásokat is adhat a beszélgetés folytatásához, ha a felhasználó azt szeretné. 
 
 ## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
-1. A LUIS-webhely jobb felső részén kattintson a **Train** (Betanítás) gombra. 
 
-    ![Betanítás gomb](./media/luis-quickstart-intents-only/train-button.png)
-
-2. A betanítás akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
-
-    ![Sikeres betanítást jelző állapotsáv](./media/luis-quickstart-intents-only/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>Alkalmazás közzététele a végponton
 
 [!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>Végpont lekérdezése a GetJobInformation szándékhoz
+
 1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `I'm looking for a job with Natual Language Processing`. Az utolsó lekérdezésisztring-paraméter a `q`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg a 4. lépésben található egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `GetJobInformation` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként. 
@@ -189,7 +185,8 @@ A JSON-eredmény azonosítja a legmagasabb pontszámú szándékot. Minden ponts
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, a topScoringIntent eredmény segítségével megkeresheti az információkat (amelyek nem a LUIS-ban vannak tárolva) a kérdés megválaszolásához, vagy befejezheti a beszélgetést. Ezek programozható lehetőségek a robothoz vagy a hívó alkalmazáshoz. Ezt nem végzi el a LUIS. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a **My apps** (Saját alkalmazások) elemet a bal oldali felső menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 

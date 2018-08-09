@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 83cd90babaa5bcb396f792c7e933d38b3911cebb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: cedc13cb18440eee32e333d395494043e2eca9d1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970356"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442513"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Rövid útmutató: Java Spring Boot-alkalmazás telepítése a Service Fabricben
 
@@ -48,13 +48,13 @@ A gyorsútmutató elvégzéséhez:
     
     b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
 
-2. [A Git telepítése](https://git-scm.com/)
-3. A Yeoman telepítése
+1. [A Git telepítése](https://git-scm.com/)
+1. A Yeoman telepítése
 
     a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
 
     b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-4. A Java-környezet beállítása
+1. A Java-környezet beállítása
 
     a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
     
@@ -78,11 +78,11 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 ## <a name="package-the-spring-boot-application"></a>A Spring Boot-alkalmazás becsomagolása 
 1. A klónban lévő `gs-spring-boot` könyvtárban futtassa a `yo azuresfguest` parancsot. 
 
-2. Az egyes sorokban adja meg a következő adatokat.
+1. Az egyes sorokban adja meg a következő adatokat.
 
     ![Yeoman-bejegyzések](./media/service-fabric-quickstart-java-spring-boot/yeomanspringboot.png)
 
-3. A `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` mappában hozzon létre egy `entryPoint.sh` nevű fájlt. Adja a következőket az `entryPoint.sh` fájlhoz. 
+1. A `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` mappában hozzon létre egy `entryPoint.sh` nevű fájlt. Adja a következőket az `entryPoint.sh` fájlhoz. 
 
     ```bash
     #!/bin/bash
@@ -91,7 +91,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-4. Adja hozzá az **Endpoints** erőforrást a `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` fájlban:
+1. Adja hozzá az **Endpoints** erőforrást a `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` fájlban:
 
     ```xml 
         <Resources>
@@ -150,19 +150,19 @@ Mostanra más létrehozta Spring Boot mintájához tartozó Service Fabric-alkal
     
     ![A helyi fürt kifogástalan](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
-2. Navigáljon a `gs-spring-boot/SpringServiceFabric` mappához.
-3. A helyi fürthöz való csatlakozáshoz futtassa a következő parancsot.
+1. Navigáljon a `gs-spring-boot/SpringServiceFabric` mappához.
+1. A helyi fürthöz való csatlakozáshoz futtassa a következő parancsot.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
-4. Futtassa az `install.sh` szkriptet.
+1. Futtassa az `install.sh` szkriptet.
 
     ```bash
     ./install.sh
     ```
 
-5. Nyissa meg a kedvenc webböngészőjét, és nyissa meg az alkalmazást a **http://localhost:8080** címen.
+1. Nyissa meg a kedvenc webböngészőjét, és nyissa meg az alkalmazást a **http://localhost:8080** címen.
 
     ![Helyi alkalmazás kezelőfelülete](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
@@ -213,18 +213,18 @@ Tetszőleges módszerrel importálhatja a tanúsítványt a rendszerre. Példáu
 Az alkalmazást és a fürtjét a létrehozása után közvetlenül a parancssori felületről telepítheti egy fürtre.
 
 1. Navigáljon a `gs-spring-boot/SpringServiceFabric` mappához.
-2. Az Azure-fürthöz való csatlakozáshoz futtassa a következő parancsot.
+1. Az Azure-fürthöz való csatlakozáshoz futtassa a következő parancsot.
 
     ```bash
     sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
     ```
-3. Futtassa az `install.sh` szkriptet.
+1. Futtassa az `install.sh` szkriptet.
 
     ```bash
     ./install.sh
     ```
 
-4. Nyissa meg a webböngészőjét, és nyissa meg az alkalmazást a **http://\<ConnectionIPOrUrl>:8080** címen.
+1. Nyissa meg a webböngészőjét, és nyissa meg az alkalmazást a **http://\<ConnectionIPOrUrl>:8080** címen.
 
     ![Helyi alkalmazás kezelőfelülete](./media/service-fabric-quickstart-java-spring-boot/springbootsfazure.png)
 
@@ -239,13 +239,13 @@ A Service Fabric Explorer az összes Service Fabric-fürtben fut. Az eléréséh
 A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
 1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://localhost:19080`.
-2. Kattintson a három pontra a fanézetben a **fabric:/SpringServiceFabric/SpringGettingStarted** csomópont mellett, és válassza a **Szolgáltatás méretezése** lehetőséget.
+1. Kattintson a három pontra a fanézetben a **fabric:/SpringServiceFabric/SpringGettingStarted** csomópont mellett, és válassza a **Szolgáltatás méretezése** lehetőséget.
 
     ![A Service Fabric Explorer méretezési szolgáltatása](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     Most már méretezheti a szolgáltatás példányainak számát.
 
-3. Módosítsa a számot **3**-ra, és kattintson a **Szolgáltatás méretezése** parancsra.
+1. Módosítsa a számot **3**-ra, és kattintson a **Szolgáltatás méretezése** parancsra.
 
     A szolgáltatás parancssorral történő skálázása a következőképpen is végrehajtható.
 
@@ -257,7 +257,7 @@ A webes előtér-szolgáltatás skálázásához tegye a következőket:
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-4. Kattintson a **fabric:/SpringServiceFabric/SpringGettingStarted** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
+1. Kattintson a **fabric:/SpringServiceFabric/SpringGettingStarted** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
 
     ![A Service Fabric Explorer skálázási szolgáltatása kész](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
@@ -270,10 +270,10 @@ Ezzel az egyszerű felügyeleti eljárással megduplázta az előtér-szolgálta
 A szolgáltatás feladatátvételének bemutatásához a Service Fabric Explorerben szimuláljuk egy csomópont újraindítását. Győződjön meg arról, hogy a szolgáltatásnak kizárólag egy példánya fut.
 
 1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://localhost:19080`.
-2. Kattintson a három pontra a szolgáltatás példányát futtató csomópont mellett, és indítsa újra a csomópontot.
+1. Kattintson a három pontra a szolgáltatás példányát futtató csomópont mellett, és indítsa újra a csomópontot.
 
     ![Csomópont újraindítása a Service Fabric Explorerben](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
-3. A szolgáltatás példánya egy új csomópontra kerül át anélkül, hogy az alkalmazás leállna.
+1. A szolgáltatás példánya egy új csomópontra kerül át anélkül, hogy az alkalmazás leállna.
 
     ![A csomópont-újraindítás a Service Fabric Explorerben sikeres volt](./media/service-fabric-quickstart-java-spring-boot/sfxfailedover.png)
 

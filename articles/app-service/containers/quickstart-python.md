@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/13/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5686266774603413fc255c53a0d1ad30f9baa8eb
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 6d328d8a3556f565e7eac8ee079bd191b7dcadef
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173860"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433442"
 ---
 # <a name="deploy-a-python-web-app-in-web-app-for-containers"></a>Python-webalkalmazás üzembe helyezése a Web App for Containersben
 
@@ -96,7 +96,7 @@ Miután a rendszerkép leküldése befejeződött, használatba is veheti az Azu
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Az [ az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](../app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban. Az *\<app name>* helyett adjon meg egy globálisan egyedi alkalmazásnevet, a *\<dockerhub_id>* helyett pedig Docker Hub-azonosítóját.
+Az [ az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy [webalkalmazást](../app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban. Az *\<app name>* helyett adjon meg egy globálisan egyedi alkalmazásnevet, a *\<dockerhub_id>* helyett pedig Docker Hub-azonosítóját.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name <dockerhub_id>/flask-quickstart
@@ -125,7 +125,7 @@ Ha már korábban töltött fel adatokat privát adattárba, akkor emellett az A
 
 A _Docker-fájlban_ megadottak szerint a tároló a 8000-es porton figyel. Ahhoz, hogy az App Service a megfelelő porthoz tudja irányítani a kéréseket, meg kell adnia a *WEBSITES_PORT* alkalmazásbeállítást.
 
-A Cloud Shellben futtassa az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot.
+A Cloud Shellben futtassa az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot.
 
 
 ```azurecli-interactive

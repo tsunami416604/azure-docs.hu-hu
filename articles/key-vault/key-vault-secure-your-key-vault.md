@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: a3493c9e9ef6a5bafd832510f42f33cc3f07f088
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070379"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576967"
 ---
 # <a name="secure-your-key-vault"></a>Kulcstartó védelme
-Az Azure Key Vault egy felhőszolgáltatás, mely a titkosítási kulcsokat és titkos kulcsokat (pl. tanúsítványok, kapcsolati karakterláncok, jelszavak) védi az Ön felhőalkalmazásainál. Mivel ezek érzékeny és üzleti szempontból kritikus jellegű adatok, fontos, hogy Ön csak jogosult alkalmazások és felhasználók számára engedélyezzen kulcstartó-hozzáférést. Ez a cikk áttekintést ad a kulcstartó-hozzáférési modellről, elmagyarázza, mi a hitelesítés és az engedélyezés, és egy példával szemlélteti, hogyan biztosíthat kulcstartó-hozzáférést felhőalkalmazásai számára.
+Az Azure Key Vault egy felhőszolgáltatás, mely a titkosítási kulcsokat és titkos kulcsokat (pl. tanúsítványok, kapcsolati sztringek, jelszavak) védi az Ön felhőalkalmazásainál. Mivel ezek érzékeny és üzleti szempontból kritikus jellegű adatok, fontos, hogy Ön csak jogosult alkalmazások és felhasználók számára engedélyezzen kulcstartó-hozzáférést. Ez a cikk áttekintést ad a kulcstartó-hozzáférési modellről, elmagyarázza, mi a hitelesítés és az engedélyezés, és egy példával szemlélteti, hogyan biztosíthat kulcstartó-hozzáférést felhőalkalmazásai számára.
 
 ## <a name="overview"></a>Áttekintés
 A kulcstartó-hozzáférés vezérlése két külön felületen, a felügyeleti síkon és az adatsíkon keresztül történik. Mindkét sík esetében megfelelő hitelesítés és engedélyezés szükséges ahhoz, hogy a hívó (felhasználó vagy alkalmazás) kulcstartó-hozzáférést kaphasson. A hitelesítés a hívó azonosítását szolgálja, az engedélyezés pedig meghatározza, milyen műveletek elvégzésére jogosult a hívó.
@@ -47,7 +47,7 @@ Amikor Azure-előfizetésében kulcstartót hoz létre, az automatikusan az elő
 * **felhasználó + alkalmazás-hozzáférés** – ez általában olyan alkalmazások esetén történik, amelyek bejelentkezett felhasználó nevében férnek hozzá a kulcstartóhoz. Ilyen típusú hozzáférés például az Azure PowerShell vagy az Azure Portal. A felhasználóknak kétféle módon adható hozzáférés: az egyik szerint bármilyen alkalmazásból hozzáférhetnek a kulcstartóhoz, a másik mód esetén csak akkor, amikor egy meghatározott alkalmazást használnak (ezt összetett identitásnak nevezik). 
 * **csak alkalmazás hozzáférése** – démonszolgáltatásokat, háttérfeladatokat stb. futtató alkalmazások számára. A kulcstartó-hozzáférés az alkalmazásidentitás számára engedélyezett.
 
-Az Azure Active Directory-hitelesítés és -tokenbeolvasás az alkalmazás mindkét típusa esetén elvégezhető a [támogatott hitelesítési módszerek](../active-directory/active-directory-authentication-scenarios.md) bármelyikével. A hitelesítés módszere az alkalmazás típusától függ. Az alkalmazás a későbbiekben ezt a tokent használja, amikor REST API-kérelmet küld a kulcstartónak. Felügyeletisík-hozzáférés esetén a kérelmek az Azure Resource Manager végpontjához kerülnek. Adatsík-hozzáférés esetén az alkalmazások közvetlenül a kulcstartó végpontjával kommunikálnak. További részletek a [teljes hitelesítési folyamatról](../active-directory/active-directory-protocols-oauth-code.md). 
+Az Azure Active Directory-hitelesítés és -tokenbeolvasás az alkalmazás mindkét típusa esetén elvégezhető a [támogatott hitelesítési módszerek](../active-directory/develop/authentication-scenarios.md) bármelyikével. A hitelesítés módszere az alkalmazás típusától függ. Az alkalmazás a későbbiekben ezt a tokent használja, amikor REST API-kérelmet küld a kulcstartónak. Felügyeletisík-hozzáférés esetén a kérelmek az Azure Resource Manager végpontjához kerülnek. Adatsík-hozzáférés esetén az alkalmazások közvetlenül a kulcstartó végpontjával kommunikálnak. További részletek a [teljes hitelesítési folyamatról](../active-directory/develop/v1-protocols-oauth-code.md). 
 
 Annak az erőforrásnak a neve, melyhez az alkalmazás tokent kér, attól függően változik, hogy az alkalmazás felügyeleti vagy adatsíkhoz készül hozzáférni. Így az erőforrásnév vagy felügyeleti sík, vagy adatsík végpontja, amint az egy később szakasz táblázatában szerepel, az Azure-környezettől függően.
 
@@ -109,7 +109,7 @@ Tegyük fel, hogy Ön egy olyan alkalmazást fejleszt, amely az SSL-hez tanúsí
 
 Most nézzük meg, kik kezelik, helyezik üzembe és naplózzák ezt az alkalmazást. Ebben a példában három szerepkört használunk.
 
-* **Biztonsági csapat** – ezek rendszerint a CSO (biztonsági vezető) irodájának informatikai munkatársai vagy nekik megfelelő személyek, akik a titkos kulcsok – például SSL-tanúsítványok, aláíráshoz használt RSA-kulcsok, adatbázisok kapcsolati karakterláncai és tárfiókok kulcsai – megfelelő biztonságban tartásáért felelősek.
+* **Biztonsági csapat** – ezek rendszerint a CSO (biztonsági vezető) irodájának informatikai munkatársai vagy nekik megfelelő személyek, akik a titkos kulcsok – például SSL-tanúsítványok, aláíráshoz használt RSA-kulcsok, adatbázisok kapcsolati sztringjei és tárfiókok kulcsai – megfelelő biztonságban tartásáért felelősek.
 * **Fejlesztők/operátorok** – Ezek azok munkatársak, akik az alkalmazást fejlesztik és üzembe helyezik az Azure-ban. Általában nem tagjai a biztonsági csapatnak, így nem javasolt, hogy bármilyen bizalmas adathoz, például SSL-tanúsítványokhoz vagy RSA-kulcsokhoz hozzáférhessenek, de az általuk üzembe helyezett alkalmazásnak hozzá kell férnie azokhoz.
 * **Ellenőrök** – Általában külön csoport, akik a fejlesztőktől és az általános informatikai személyzettől elkülönítve dolgoznak. Felelősségük a tanúsítványok, kulcsok stb. helyes használatának és karbantartásának felügyeletére, illetve az adatbiztonsági szabványoknak való megfelelés biztosítására terjed ki. 
 
@@ -223,7 +223,7 @@ Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a való
 * [Szerepköralapú hozzáférés-vezérlés az Ignite-tól a Microsoft Azure számára](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
   
   Ez a hivatkozás a Channel 9 2015-ös MS Ignite-konferencia videójára mutat. Ebben a részben arról beszélnek, milyen hozzáférés-kezelési és jelentési képességeket nyújt az Azure, és bemutatják az Azure-előfizetés hozzáférés-biztosításának legjobb gyakorlatait az Azure Active Directory használatával.
-* [Hozzáférés engedélyezése webalkalmazásoknak OAuth 2.0 és az Azure Active Directory használatával](../active-directory/active-directory-protocols-oauth-code.md)
+* [Hozzáférés engedélyezése webalkalmazásoknak OAuth 2.0 és az Azure Active Directory használatával](../active-directory/develop/v1-protocols-oauth-code.md)
   
   A cikk az Azure Active Directoryval történő hitelesítés teljes OAuth 2.0-s folyamatát ismerteti.
 * [Kulcstartókezelési REST API-k](https://msdn.microsoft.com/library/azure/mt620024.aspx)
@@ -238,7 +238,7 @@ Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a való
 * [Titkoskulcs-hozzáférés vezérlése](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
   A kulcshozzáférés-vezérlés referenciadokumentációjára mutató hivatkozás.
-* Kulcstartó-hozzáférési házirend [beállítása](https://msdn.microsoft.com/library/mt603625.aspx) és [eltávolítása](https://msdn.microsoft.com/library/mt619427.aspx) PowerShell használatával
+* Kulcstartó-hozzáférési házirend [beállítása](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) és [eltávolítása](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy) PowerShell használatával
   
   PowerShell-parancsmagok kulcstartó-hozzáférési házirend kezeléséhez szükséges referenciadokumentációjára mutató hivatkozások.
 

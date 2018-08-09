@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 887ed316605ab423159ef0d2e07f0960c702ed8b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 161207b96deb2f7bd605d845a9207393f9f59c23
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317957"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444742"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban
 
@@ -205,7 +205,7 @@ Az Azure Web Apps használatával natív Linux-alkalmazásokat tehet elérhetőv
 
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. Ne felejtse el egyedi alkalmazásnévre cserélni az _<appname>_, valamint a Docker-azonosítóra a _\<docker-ID>_ kifejezést.
+A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy [webalkalmazást](app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. Ne felejtse el egyedi alkalmazásnévre cserélni az _<appname>_, valamint a Docker-azonosítóra a _\<docker-ID>_ kifejezést.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --deployment-container-image-name <docker-ID>/mydockerimage:v1.0.0
@@ -232,7 +232,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 A legtöbb Docker-rendszerképhez környezeti változók tartoznak, amelyeket konfigurálni kell. Ha valaki más által létrehozott, meglévő Docker-rendszerképet használ, előfordulhat, hogy a rendszerkép nem a 80-as portot használja. Az Azure-t a `WEBSITES_PORT` alkalmazásbeállítás használatával tájékoztathatja a rendszerkép által használt portról. A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani.
 
-Az alkalmazásbeállítások megadásához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
+Az alkalmazásbeállítások megadásához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITES_PORT=8000
@@ -353,7 +353,7 @@ Gratulálunk! Sikeresen konfigurált egy egyéni Docker-rendszerképet a Web App
 
 A [webalkalmazás létrehozása](#create-a-web-app) során megadott egy Docker Hubon lévő rendszerképet az `az webapp create` paranccsal. Ez nyilvános rendszerkép esetén használatos. Privát rendszerkép használatához be kell állítania a Docker-fiókja azonosítóját és jelszavát az Azure-webalkalmazásában.
 
-A Cloud Shellben az `az webapp create` parancs után adja ki az [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) parancsot. Cserélje le az *\<app_name>* kifejezést, illetve a _\<docker-id>_ és a _\<password>_ esetén használja a Docker-azonosítóját és a jelszavát.
+A Cloud Shellben az `az webapp create` parancs után adja ki az [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) parancsot. Cserélje le az *\<app_name>* kifejezést, illetve a _\<docker-id>_ és a _\<password>_ esetén használja a Docker-azonosítóját és a jelszavát.
 
 ```azurecli-interactive
 az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-registry-server-user <docker-id> --docker-registry-server-password <password>
@@ -393,7 +393,7 @@ Az Azure Container Registry az Azure egy felügyelt, privát rendszerképek hasz
 
 ### <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
 
-A Cloud Shellben használja az [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az_acr_create) parancsot egy Azure Container Registry létrehozásához. Adja meg a nevet, az erőforráscsoportot és termékváltozatként a `Basic` értéket. Az elérhető termékváltozatok a következők: `Classic`, `Basic`, `Standard` és `Premium`.
+A Cloud Shellben használja az [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) parancsot egy Azure Container Registry létrehozásához. Adja meg a nevet, az erőforráscsoportot és termékváltozatként a `Basic` értéket. Az elérhető termékváltozatok a következők: `Classic`, `Basic`, `Standard` és `Premium`.
 
 ```azurecli-interactive
 az acr create --name <azure-container-registry-name> --resource-group myResourceGroup --sku Basic --admin-enabled true
@@ -431,7 +431,7 @@ Use an existing service principal and assign access:
 
 ### <a name="log-in-to-azure-container-registry"></a>Bejelentkezés az Azure Container Registrybe
 
-A rendszerkép a tárolójegyzékbe küldéséhez meg kell adnia a hitelesítő adatokat, különben a tárolójegyzék nem fogadja el a leküldést. Ezeket a hitelesítő adatokat az [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az_acr_show) parancs használatával kérheti le a Cloud Shellben. 
+A rendszerkép a tárolójegyzékbe küldéséhez meg kell adnia a hitelesítő adatokat, különben a tárolójegyzék nem fogadja el a leküldést. Ezeket a hitelesítő adatokat az [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) parancs használatával kérheti le a Cloud Shellben. 
 
 ```azurecli-interactive
 az acr credential show --name <azure-container-registry-name>
@@ -495,7 +495,7 @@ A tárolójegyzék rendszerképeinek kilistázásával ellenőrizheti, hogy a t�
 
 Beállíthatja a Web App for Containers szolgáltatást egy, az Azure Container Registryben eltárolt tároló futtatására. Az Azure Container Registry használata megegyezik bármilyen egyéb privát tárolójegyzékével, így ha saját, privát tárolójegyzéket kell használnia, a feladat elvégzéséhez szükséges lépések hasonlóak.
 
-A Cloud Shellben futtassa az [`az acr credential show`](/cli/azure/acr/credential?view=azure-cli-latest#az_acr_credential_show) parancsot az Azure Container Registryhez tartozó felhasználónév és jelszó megjelenítéséhez. Másolja ki a felhasználónevet és a jelszavak egyikét, hogy felhasználhassa azokat a webalkalmazás konfigurálásához a következő lépésben.
+A Cloud Shellben futtassa az [`az acr credential show`](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) parancsot az Azure Container Registryhez tartozó felhasználónév és jelszó megjelenítéséhez. Másolja ki a felhasználónevet és a jelszavak egyikét, hogy felhasználhassa azokat a webalkalmazás konfigurálásához a következő lépésben.
 
 ```bash
 az acr credential show --name <azure-container-registry-name>
@@ -517,7 +517,7 @@ az acr credential show --name <azure-container-registry-name>
 }
 ```
 
-A Cloud Shellben futtassa az [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) parancsot az egyéni Docker-rendszerkép a webalkalmazáshoz való hozzárendeléséhez. Cserélje le az *\<app_name>*, a *\<docker-registry-server-url>*, a _\<registry-username>_ és a _\<password>_ értékét. Az Azure Container Registry esetében a *\<docker-registry-server-url>* formátuma a következő: `https://<azure-container-registry-name>.azurecr.io`. Ha bármilyen tárolójegyzéket használ a Docker Hubon kívül, a rendszerkép nevének a tárolójegyzék teljes tartománynevével (FQDN) kell kezdődnie. Az Azure Container Registry esetében ez így fog kinézni: `<azure-container-registry>.azurecr.io/mydockerimage`. 
+A Cloud Shellben futtassa az [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) parancsot az egyéni Docker-rendszerkép a webalkalmazáshoz való hozzárendeléséhez. Cserélje le az *\<app_name>*, a *\<docker-registry-server-url>*, a _\<registry-username>_ és a _\<password>_ értékét. Az Azure Container Registry esetében a *\<docker-registry-server-url>* formátuma a következő: `https://<azure-container-registry-name>.azurecr.io`. Ha bármilyen tárolójegyzéket használ a Docker Hubon kívül, a rendszerkép nevének a tárolójegyzék teljes tartománynevével (FQDN) kell kezdődnie. Az Azure Container Registry esetében ez így fog kinézni: `<azure-container-registry>.azurecr.io/mydockerimage`. 
 
 ```azurecli-interactive
 az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
