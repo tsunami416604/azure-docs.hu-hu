@@ -2,22 +2,21 @@
 title: Fájl címterület-kezelés az Azure SQL Database |} A Microsoft Docs
 description: Ezen a lapon azt ismerteti, hogyan kezelheti az Azure SQL Database területe, és miként állapítható meg, ha szeretné-e egy adatbázist, valamint csökkentheti, hogy hogyan végrehajtásához egy adatbázis tömörítése a művelet-mintakódot biztosít.
 services: sql-database
-author: CarlRabeler
+author: oslake
 manager: craigg
 ms.service: sql-database
 ms.custom: how-to
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 9d461c2b9b01ef269decbcae920cb4d2a1824f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 08/08/2018
+ms.author: moslake
+ms.openlocfilehash: 5dce07996191af3df3a4bdf16b211c29d59a994f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620501"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003858"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Lapozófájl-terület az Azure SQL Database kezelése
-
 Ez a cikk ismerteti a különböző típusú tárterület az Azure SQL Database és a lépések, amelyeket elvégezhet a fájlhely lefoglalt adatbázisok és rugalmas adatbáziskészletekhez explicit módon kell kezelnie.
 
 ## <a name="overview"></a>Áttekintés
@@ -33,7 +32,7 @@ Nincsenek munkaterhelési mintákat, ahol a mögöttes adatok fájlok adatbázis
 Az SQL Database szolgáltatás automatikusan nem csökkentheti az adatfájlokat az adatbázis teljesítményét a lehetséges hatás miatt nem használt lefoglalt terület felszabadítását.  Azonban ügyfelek előfordulhat, hogy adatokat fájlok zsugorítása keresztül önkiszolgáló ismertetett lépéseket követve hozhatna egyszerre [visszaigénylési fel nem használt lefoglalt terület](#reclaim-unused-allocated-space). 
 
 > [!NOTE]
-> Adatfájlok, ellentétben az SQL Database szolgáltatás automatikusan zsugorítja naplófájlok, mivel a művelet nem befolyásolja az adatbázis teljesítményét.
+> Adatfájlok, ellentétben az SQL Database szolgáltatás automatikusan zsugorítja naplófájlok, mivel a művelet nem befolyásolja az adatbázis teljesítményét. 
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>Egy adatbázis-tárolási terület típusainak ismertetése
 
@@ -49,7 +48,7 @@ A következő tárolási hely mennyiségek ismertetése fontosak a lapozófájl-
 
 A következő ábra szemlélteti a különböző típusú tárterület-adatbázis közötti kapcsolat.
 
-![tárolási hely adattípusok és a kapcsolatok](./media/sql-database-file-space-management/storage-types.png)
+![tárolási hely adattípusok és a kapcsolatok](./media/sql-database-file-space-management/storage-types.png) 
 
 ## <a name="query-a-database-for-storage-space-information"></a>Egy adatbázis a tárolási terület adatainak lekérdezése
 

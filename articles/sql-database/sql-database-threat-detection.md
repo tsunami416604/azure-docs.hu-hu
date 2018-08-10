@@ -1,76 +1,77 @@
 ---
-title: Veszélyforrások Detektálása - Azure SQL adatbázis |} Microsoft Docs
-description: A Fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket, amelyek esetleges biztonsági fenyegetéseket jelezhetnek a észleli.
+title: Fenyegetések észlelése – az Azure SQL Database |} A Microsoft Docs
+description: Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések az adatbázishoz.
 services: sql-database
 author: rmatchoro
 manager: craigg
 ms.service: sql-database
+ms.subservice: advanced-threat-protection
 ms.custom: security
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: 09ba4b3b72d5c82dc42199f2f883cedee6609bd2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c82692525f06fda93f94a8d856eb65254e5fd211
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649543"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003943"
 ---
-# <a name="azure-sql-database-threat-detection"></a>Az Azure SQL adatbázis fenyegetések észlelése
+# <a name="azure-sql-database-threat-detection"></a>Az Azure SQL Database Threat Detection
 
-Az Azure SQL adatbázis Fenyegetésészlelés szokatlan és potenciálisan káros kísérletek eléréséhez, vagy a biztonsági rések elleni adatbázisok jelző rendellenes tevékenységek észleli.
+Az Azure SQL Database Threat Detection észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek.
 
-A Fenyegetésészlelés része a [SQL Advanced Threat Protection](sql-advanced-threat-protection.md) (ATP) ajánlat, amely a speciális SQL biztonsági képességei egyesített csomagok. A Fenyegetésészlelés érhető el, és a központi SQL ATP portálon kezelt.
+A Fenyegetésészlelés része a [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md) (ATP) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A Fenyegetésészlelés érheti el és a központi SQL ATP portálján felügyelt.
 
 ## <a name="what-is-threat-detection"></a>Mi az a Fenyegetésészlelés?
 
-A Fenyegetésészlelés SQL biztonsági, amelyek segítségével a felhasználók észlelése és azok bekövetkezésekor, adja meg a biztonsági riasztások a rendellenes tevékenységek reagáljon a lehetséges veszélyforrásokra egy új réteget biztosít. Felhasználók adatbázis gyanús tevékenységeket, a potenciális biztonsági réseket, hogy riasztást kapjon, és az SQL-injektálás támadások, valamint hozzáfér a rendellenes adatbázis, és lekérdezi a minták. SQL Fenyegetésészlelés integrálja riasztások [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amely tartalmazza a gyanús tevékenységet, és az ajánlott művelet vizsgálja meg, és a fenyegetések mérséklésére. A Fenyegetésészlelés SQL egyszerűen potenciális fenyegetések ellen az adatbázisba történő szakértői biztonsági vagy speciális biztonsági rendszerek kezelése nélkül. 
+SQL-fenyegetésészlelés egy új réteget jelent, amely lehetővé teszi az ügyfelek bekövetkezésük pillanatában biztonsági riasztások révén a rendellenes tevékenységekre adott reagáljon a lehetséges veszélyforrásokra, és. A felhasználók kapnak riasztás esetén a gyanús adatbázis-tevékenységekről, a lehetséges biztonsági résekről, és az SQL-injektálási támadások, valamint a rendellenes adatbázis-hozzáférés, és lekérdezi a minták. Az SQL Fenyegetésészlelési riasztásokat az integrálható [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amely tartalmazza a gyanús tevékenység és a javasolt művelet vizsgálata, valamint a fenyegetés részleteit. Az SQL Fenyegetésészlelési is egyszerűvé teszi cím potenciális fenyegetések, az adatbázis szakértői biztonsági szakértelem vagy fejlett biztonsági monitorozási rendszerek felügyelete nélkül. 
 
-A teljes vizsgálat élmény érdekében javasoljuk, hogy engedélyezze [SQL Database Auditing](sql-database-auditing.md), amely ír az adatbázis naplózási események jelentkezzen be az Azure storage-fiók.  
+Teljes vizsgálat biztosítása érdekében, javasoljuk, hogy engedélyezze [SQL Database naplózási szolgáltatásával](sql-database-auditing.md), amely írja az adatbázissal kapcsolatos események egy naplófájlba, jelentkezzen be az Azure storage-fiókjában.  
 
-## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>A fenyegetésészlelés az adatbázis az Azure portálon beállítása
-1. Indítsa el az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
-2. Keresse meg a lap a védeni kívánt Azure SQL adatbázis-kiszolgáló. Válassza ki a biztonsági beállítások **Advanced Threat Protection**.
-3. Az a **Advanced Threat Protection** konfigurálása lapon:
+## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Állítsa be az Azure Portalon az adatbázishoz tartozó fenyegetések észlelése
+1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com).
+2. Keresse meg a konfigurációs lapon, a védeni kívánt Azure SQL Database-kiszolgáló. Válassza ki a biztonsági beállítások **komplex veszélyforrások elleni védelem**.
+3. Az a **komplex veszélyforrások elleni védelem** konfigurációs lapon:
 
-   - Advanced Threat Protection engedélyezéséhez a kiszolgálón.
-   - A **fenyegetés észlelési beállítások**, a a **küldje a riasztásokat** szöveget adja meg a biztonsági riasztások adatbázist érintő rendellenes tevékenységeket a észlelésekor e-mailek listáját.
+   - Komplex veszélyforrások elleni védelem engedélyezése a kiszolgálón.
+   - A **Fenyegetésészlelési beállításokat**, a a **küldje a riasztásokat** szöveget adja meg a rendellenes adatbázis-tevékenységek észlelésekor biztonsági riasztást küld e-mailek listáját.
   
-   ![A fenyegetésészlelés beállítása](./media/sql-database-threat-detection/set_up_threat_detection.png)
+   ![Állítsa be a fenyegetések észlelése](./media/sql-database-threat-detection/set_up_threat_detection.png)
 
-## <a name="set-up-threat-detection-using-powershell"></a>Állítsa be a fenyegetésészlelés PowerShell használatával
+## <a name="set-up-threat-detection-using-powershell"></a>Állítsa be a PowerShell-lel fenyegetésészlelés
 
-Tekintse meg a parancsfájl például [konfigurálhatja a naplózás és a fenyegetések észlelésére, a PowerShell használatával](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés konfigurálása](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
-## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Fedezze fel az adatbázist érintő rendellenes tevékenységeket gyanús esemény észlelése
+## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Ismerkedés a rendellenes adatbázis-tevékenységek észlelésekor a gyanús esemény
 
-A adatbázist érintő rendellenes tevékenységeket észlelésekor e-mailben értesítést kapni. Az e-mailt a gyanús biztonsági esemény, például a rendellenes tevékenységek, adatbázisnév, kiszolgálónév, az alkalmazásnév és az esemény időpontja jellege tájékoztatást nyújt. Emellett az e-mailt lehetséges okok és a javasolt műveletek vizsgálatához és az adatbázis következő potenciális fenyegetések csökkentésében.
+Rendellenes adatbázis-tevékenységek észlelésekor e-mail-értesítést kap. Az e-mailt a gyanús biztonsági eseményről, beleértve az esetleges rendellenes tevékenységekről, adatbázisnevet, kiszolgáló neve, alkalmazás neve és az esemény időpontját jellege nyújt tájékoztatást. Emellett az e-mailt információkat biztosít a lehetséges okokat, és javasolt műveleteket is vizsgálata és enyhítése érdekében az esetleges adatbázis-fenyegetések.
 
-![Rendellenes tevékenységgel kapcsolatos jelentés](./media/sql-database-threat-detection/anomalous_activity_report.png)
+![Rendellenes tevékenység jelentés](./media/sql-database-threat-detection/anomalous_activity_report.png)
      
-1. Kattintson a **legújabb SQL-riasztások megtekintése** indítsa el az Azure-portálon, és aktív fenyegetéseket észlelt áttekintést nyújt az SQL Database az Azure Security Center riasztások lap megjelenítése az e-mailben szereplő hivatkozásra.
+1. Kattintson a **SQL legutóbbi riasztás megtekintése** hivatkozásra az e-mailben, megnyílik az Azure portal és az aktív fenyegetéseket észlel áttekintést nyújt az SQL database az Azure Security Center riasztások lap megjelenítése.
 
    ![Activty fenyegetések](./media/sql-database-threat-detection/active_threats.png)
 
-2. Kattintson a további részletek és a műveletek lekérése vizsgálja az ilyen veszélyek kockázatát, és a jövőbeli fenyegetések szervizelés egy meghatározott riasztásra.
+2. Kattintson egy adott riasztás kivizsgálása a fenyegetés és a jövőbeli fenyegetésekkel szembeni szervizelését további részletek és műveletek beolvasásához.
 
-   Például SQL-injektálás az egyik a leggyakrabban használt webes alkalmazás biztonsági problémákra, amellyel az adatvezérelt alkalmazások támadás az interneten. A támadók előnyeit alkalmazás biztonsági rések rosszindulatú SQL-utasítások alkalmazás mezőkbe szúrjon megsértése vagy módosítása az adatbázis adatai. Az SQL-injektálás riasztásokat a riasztás részletei tartalmazza azokat az sebezhető SQL-utasítás kihasználni.
+   Például SQL-injektálás az egyik a leggyakoribb webes biztonsági probléma az interneten, amellyel adatvezérelt alkalmazások támadásokkal szemben. A támadók előnyeit alkalmazások biztonsági réseinek rosszindulatú SQL-utasításokat injektálhatnak alkalmazás beviteli mezőibe visszaéléshez vagy azok az adatbázisban található adatok módosításához. SQL-injektálás riasztások a riasztás részleteit tartalmazza a sebezhető kihasználni SQL-utasítás.
 
    ![Adott riasztás](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Megismerheti a figyelmeztetések az adatbázis az Azure-portálon
+## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Ismerkedés a fenyegetésészlelési riasztásokat az adatbázis az Azure Portalon
 
-SQL-adatbázis Fenyegetésészlelés integrálja a riasztások [az Azure Security Center](https://azure.microsoft.com/services/security-center/). Az adatbázis és az Azure portálon SQL ATP paneleken élő SQL-threat észlelési csempék aktív fenyegetések állapotának nyomon követi.
+Az SQL Database Threat Detection a riasztásokat az integrálható [az Azure Security Center](https://azure.microsoft.com/services/security-center/). Egy élő SQL fenyegetés észlelése csempék belül az adatbázis és az Azure Portal SQL ATP paneleket az aktív fenyegetéseket állapotát követi nyomon.
 
-Kattintson a **fenyegetés észleléséről szóló figyelmeztetés a** elindíthatja az Azure Security Center riasztások lapon, és a rendszer észlelt az adatbázis aktív SQL fenyegetések áttekintést kaphat.
+Kattintson a **fenyegetés-észlelési riasztás** indítsa el az Azure Security Center a riasztások lapon, és áttekintheti a aktív SQL észlelt veszélyforrások alapján az adatbázis.
 
    ![Fenyegetés-észlelési riasztás](./media/sql-database-threat-detection/threat_detection_alert.png)
    
-   ![Fenyegetések észlelése alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![Fenyegetés-észlelési alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
-## <a name="azure-sql-database-threat-detection-alerts"></a>Az Azure SQL adatbázis Fenyegetésészlelés riasztások 
-A Fenyegetésészlelés az Azure SQL Database szokatlan és potenciálisan káros kísérletek eléréséhez, vagy a biztonsági rések elleni adatbázisok jelző rendellenes tevékenységek észleli, és azt is elindíthatja az alábbi riasztások:
+## <a name="azure-sql-database-threat-detection-alerts"></a>Az Azure SQL Database Fenyegetésészlelési riasztások 
+Az Azure SQL Database Fenyegetésészlelés észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek, és azt is aktiválhatja a következő riasztásokat:
 - **Biztonsági rés az SQL-injektálás számára**: Ez a riasztás akkor aktiválódik, ha egy alkalmazás egy hibás SQL-utasítást hoz létre az adatbázisban. Ez az SQL-injektálási támadásokkal kihasználható biztonsági rést jelezhet. A hibás utasításokat két dolog okozhatja:
    - Egy hiba a hibás SQL-utasítást létrehozó alkalmazáskódban
    - Az alkalmazáskódok és tárolt eljárások nem ellenőrzik a felhasználói adatbevitelt a hibás SQL-utasítás létrehozásakor, amelyeket így SQL-injektálással ki lehet használni.
@@ -83,7 +84,7 @@ A Fenyegetésészlelés az Azure SQL Database szokatlan és potenciálisan káro
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ [SQL Advanced Threat Protection](sql-advanced-threat-protection.md). 
-* További információ [Azure SQL Database Auditing](sql-database-auditing.md)
-* További információ [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Az árakkal kapcsolatos további információkért lásd: a [lap SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/)  
+* Tudjon meg többet [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md). 
+* Tudjon meg többet [Azure SQL Database naplózási szolgáltatásával](sql-database-auditing.md)
+* Tudjon meg többet [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Díjszabási információkért tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/)  

@@ -43,3 +43,9 @@
       href: 'https://registry.terraform.io/modules/Azure'
     - name: Terraform-referencia
       href: 'http://aka.ms/terraform'
+- name: További források
+  items:
+    - name: Azure és Terraform
+      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'

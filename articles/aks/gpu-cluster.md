@@ -1,6 +1,6 @@
 ---
-title: Feldolgozóegységekkel Azure Kubernetes-szolgáltatáshoz (AKS)
-description: Feldolgozóegységekkel használata Azure Kubernetes-szolgáltatáshoz (AKS)
+title: Gpu-k az Azure Kubernetes Service (AKS)
+description: A GPU-k használata az Azure Kubernetes Service (AKS)
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -9,51 +9,51 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7ee5198b070fee6b6ce04d9fc2639ba23ae93296
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070566"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716117"
 ---
 # <a name="using-gpus-on-aks"></a>GPU-k használata az AKS-en
 
-AKS kompatibilis GPU csomópont készletek létrehozását támogatja. Azure tartalmaz egy vagy több GPU engedélyezett virtuális gépeket. GPU engedélyezve van a virtuális gépek számítási igényű grafikai igényű és a képi megjelenítés munkaterhelések készültek. A GPU listáját engedélyezve van a virtuális gépek található [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
+Az AKS támogatja a GPU-kompatibilis csomópontkészletek létrehozását. Az Azure jelenlegi kínálatában egy vagy több GPU-val kompatibilis virtuális gépek érhetők el. A GPU-kompatibilis virtuális gépeket a nagy számítási és grafikai igényű, valamint vizualizációs számítási feladatok elvégzésére tervezték. GPU listáját engedélyezve van a virtuális gépek találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Feldolgozóegységekkel általában a számítási-igényes munkaterhelések, például grafikai igényű és a képi megjelenítés munkaterhelések van szükség. Tekintse meg a következő [dokumentum](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) meghatározásához a munkaterhelés jobb Virtuálisgép-méretet.
-Azt javasoljuk, hogy a minimális méret `Standard_NC6` az Azure Kubernetes szolgáltatás (AKS) csomópontok.
+A GPU-k általában nagy számítási igényű számítási feladatok, például a magas grafikai igényű, és a vizualizációs feladatokhoz van szükség. Tekintse meg a következő [dokumentum](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) meghatározni a megfelelő Virtuálisgép-méretet a számítási feladatok számára.
+Azt javasoljuk, hogy a minimális méret `Standard_NC6` az Azure Kubernetes Service (AKS) csomópontokhoz.
 
 > [!NOTE]
-> GPU engedélyezett virtuális gépeket tartalmaz, amelyek magasabb tarifa- és régió rendelkezésre állási hatálya alá tartozik, speciális hardverre. További információkért lásd: a [árképzési](https://azure.microsoft.com/pricing/) eszköz és [régiónkénti elérhetőség](https://azure.microsoft.com/global-infrastructure/services/) webhelyen olvashat.
+> GPU-t tartalmazó virtuális gépek speciális hardvereket, amely a készlet erejéig magasabb díjszabással és a régiót tartalmazhat. További információkért lásd: a [díjszabás](https://azure.microsoft.com/pricing/) eszköz és [régiók rendelkezésre állása](https://azure.microsoft.com/global-infrastructure/services/) hely további információt.
 
 
-Ha egy AKS fürt, amely megfelel a minimális javaslaton van szüksége, a következő parancsokat.
+Ha egy AKS-fürtöt, amely megfelel a minimális javaslat, futtassa a következő parancsokat.
 
-Hozzon létre egy erőforráscsoportot a fürthöz.
+Hozzon létre egy erőforráscsoportot, a fürt számára.
 
 ```azurecli
 az group create --name myGPUCluster --location eastus
 ```
 
-Hozzon létre a AKS fürtöt csomópontot, amely méretű `Standard_NC6`.
+Az AKS-fürt létrehozása, amelyek méretű csomópont `Standard_NC6`.
 
 ```azurecli
 az aks create --resource-group myGPUCluster --name myGPUCluster --node-vm-size Standard_NC6
 ```
 
-Csatlakozzon a AKS fürthöz.
+Csatlakozás az AKS-fürtöt.
 
 ```azurecli
 az aks get-credentials --resource-group myGPUCluster --name myGPUCluster
 ```
 
-## <a name="confirm-gpus-are-schedulable"></a>Győződjön meg róla Feldolgozóegységekkel ütemezhető
+## <a name="confirm-gpus-are-schedulable"></a>A GPU-k program ütemezhető megerősítése
 
-Futtassa a következő parancsok futtatásával győződjön meg róla a Feldolgozóegységekkel keresztül Kubernetes ütemezhető.
+Futtassa a következő parancsok futtatásával győződjön meg róla a GPU-kon keresztül Kubernetes ütemezhető.
 
-A csomópontok aktuális listájának lekérdezése.
+Csomópontok aktuális listájának beolvasása.
 
 ```
 $ kubectl get nodes
@@ -63,7 +63,7 @@ aks-nodepool1-22139053-1   Ready     agent     10h       v1.9.6
 aks-nodepool1-22139053-2   Ready     agent     10h       v1.9.6
 ```
 
-Győződjön meg róla a Feldolgozóegységekkel ütemezhető a csomópontok egyikét ismertetik. Ez alatt található a `Capacity` szakasz. Például: `alpha.kubernetes.io/nvidia-gpu:  1`.
+Írja le a csomópontokat a GPU program ütemezhető egyikét. Ez alatt találhatók a `Capacity` szakaszban. Például: `alpha.kubernetes.io/nvidia-gpu:  1`.
 
 ```
 $ kubectl describe node aks-nodepool1-22139053-0
@@ -131,13 +131,13 @@ Allocated resources:
 Events:         <none>
 ```
 
-## <a name="run-a-gpu-enabled-workload"></a>A GPU-kompatibilis munkaterhelések futtatása
+## <a name="run-a-gpu-enabled-workload"></a>A GPU-t tartalmazó számítási feladatok futtatásához
 
-Ahhoz, hogy bemutatja a Feldolgozóegységekkel valóban működik, ütemezés GPU engedélyezve van a megfelelő erőforrás-kérelem-feladatok. Ez a példa fog futni egy [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) elleni feladat a [MNIST dataset](http://yann.lecun.com/exdb/mnist/).
+Annak érdekében, hogy bemutatja a GPU-k valóban működik, az ütemezés egy GPU számítási feladat a megfelelő erőforrás-kérelemmel engedélyezve van. Ebben a példában fog futni egy [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) feladat ellen a [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/).
 
-A következő feladat jegyzék tartalmazza erőforrás legfeljebb `alpha.kubernetes.io/nvidia-gpu: 1`. A megfelelő CUDA szalagtárak és hibakeresési eszközök nem érhetők el a csomóponton, `/usr/local/nvidia` és csatlakoztatni kell a megfelelő kötetet specifikáció használatával, az alább látható módon fogyasztanak be.
+A következő feladat jegyzékfájlt tartalmaz erőforrás legfeljebb `alpha.kubernetes.io/nvidia-gpu: 1`. A megfelelő CUDA-kódtárak és hibakeresési eszközök lesz elérhető, a csomóponton `/usr/local/nvidia` és csatlakoztatva kell lenniük, a pod a megfelelő kötetet specifikáció használatával, az alább látható módon.
 
-Másolja át a jegyzékfájlt és a Mentés másként **minták-tf-mnist-demo.yaml**.
+Másolja a jegyzékfájlban és a Mentés másként **minták – tf-mnist-demo.yaml**.
 ```
 apiVersion: batch/v1
 kind: Job
@@ -169,13 +169,13 @@ spec:
             path: /usr/local/nvidia
 ```
 
-Használja a [kubectl alkalmazása] [ kubectl-apply] parancsot kell futtatni a feladatot. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat.
+Használja a [a kubectl a alkalmazni] [ kubectl-apply] parancsot futtatja a feladatot. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat.
 ```
 $ kubectl apply -f samples-tf-mnist-demo.yaml
 job "samples-tf-mnist-demo" created
 ```
 
-A feladat előrehaladásának figyeléséhez sikeres befejezése használatával csak a [kubectl feladatok lekérdezése] [ kubectl-get] parancsot a `--watch` argumentum.
+Sikeres telepítést használ, amíg a feladat előrehaladásának figyeléséhez a [kubectl get feladatok] [ kubectl-get] parancsot a `--watch` argumentum.
 ```
 $ kubectl get jobs samples-tf-mnist-demo --watch
 NAME                    DESIRED   SUCCESSFUL   AGE
@@ -183,14 +183,14 @@ samples-tf-mnist-demo   1         0            8s
 samples-tf-mnist-demo   1         1            35s
 ```
 
-Három munkaállomás-csoporttal megjelenítő befejeződött által a naplók megtekintéséhez pod nevének megállapítása.
+Határozza meg, hogy a podnév megjelenítése befejeződött podok szerint a naplók megtekintéséhez.
 ```
 $ kubectl get pods --selector app=samples-tf-mnist-demo --show-all
 NAME                          READY     STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-smnr6   0/1       Completed   0          4m
 ```
 
-A fenti parancs kimenetében pod név használatával tekintse meg a pod naplókat annak ellenőrzéséhez, hogy a megfelelő GPU-eszköz ebben az esetben visszaélésre derült fény `Tesla K80`.
+Győződjön meg arról, hogy a megfelelő GPU a felderítésük ebben az esetben a pod-naplókat tekintse meg a fenti parancs kimenetéből származó a podnév használatával `Tesla K80`.
 ```
 $ kubectl logs samples-tf-mnist-demo-smnr6
 2018-04-13 04:11:08.710863: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
@@ -266,15 +266,73 @@ Adding run metadata for 499
 ```
 
 ## <a name="cleanup"></a>Felesleges tartalmak törlése
-Távolítsa el az ebben a lépésben létrehozott társított Kubernetes objektumokat.
+Távolítsa el a társított ebben a lépésben létrehozott Kubernetes-objektumokat.
 ```
 $ kubectl delete jobs samples-tf-mnist-demo
 job "samples-tf-mnist-demo" deleted
 ```
 
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+Bizonyos esetekben Ön nem láthatja GPU erőforrásokat a kapacitást. Például: utáni verzió 1.10 kubernetes fürt frissítése vagy fürtöt hoz létre egy új Kubernetes 1.10 verziója, a várt `nvidia.com/gpu` erőforrás hiányzik a `Capacity` futtatásakor `kubectl describe node <node-name>`. 
+
+A megoldás a alkalmazni a következő daemonset post kiépítése vagy a frissítést, fog megjelenni `nvidia.com/gpu` ütemezhető erőforrásként. 
+
+Másolja a jegyzékfájlban és a Mentés másként **nvidia-device-beépülő modul – ds.yaml**. A kép címke `image: nvidia/k8s-device-plugin:1.10` lent, frissíteni a címkét a Kubernetes-verziót. Például használja a címke `1.11` a Kubernetes 1.11-es verzió esetében.
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    kubernetes.io/cluster-service: "true"
+  name: nvidia-device-plugin
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      # Mark this pod as a critical add-on; when enabled, the critical add-on scheduler
+      # reserves resources for critical add-on pods so that they can be rescheduled after
+      # a failure.  This annotation works in tandem with the toleration below.
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+      labels:
+        name: nvidia-device-plugin-ds
+    spec:
+      tolerations:
+      # Allow this pod to be rescheduled while the node is in "critical add-ons only" mode.
+      # This, along with the annotation above marks this pod as a critical add-on.
+      - key: CriticalAddonsOnly
+        operator: Exists
+      containers:
+      - image: nvidia/k8s-device-plugin:1.10 # Update this tag to match your Kubernetes version
+        name: nvidia-device-plugin-ctr
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+          - name: device-plugin
+            mountPath: /var/lib/kubelet/device-plugins
+      volumes:
+        - name: device-plugin
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+        accelerator: nvidia
+```
+
+Használja a [a kubectl a alkalmazni] [ kubectl-apply] parancsot a daemonset létrehozásához.
+
+```
+$ kubectl apply -f nvidia-device-plugin-ds.yaml
+daemonset "nvidia-device-plugin" created
+```
+
 ## <a name="next-steps"></a>További lépések
 
-A Machine Learning munkafolyamatot futtató Kubernetes érdekelt? Tekintse meg a Kubeflow labs, további információkhoz juthat.
+Machine Learning számítási feladatok futtatása a kubernetes használatával szeretne? Tekintse meg a Kubeflow labs további részleteket talál.
 
 > [!div class="nextstepaction"]
 > [Kubeflow Labs][kubeflow-labs]

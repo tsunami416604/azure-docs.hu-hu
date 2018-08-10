@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/05/2017
-ms.openlocfilehash: a58b5c315b9f1baa3a0c3fe55917e94a47006f62
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 85f80ef1ea776d48d9c2f8091568d40dbf46db46
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258531"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716474"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel
 Az Azure Stream Analyticsben az SQL-nyelv, illetve a felhasználó által definiált JavaScript-függvények (UDF-ek) és felhasználó által definiált összesítések (UDA-k) kombinációja lehetővé teszi, hogy a felhasználók fejlett elemzéseket végezzenek. A fejlett elemzések magukban foglalhatnak például online gépi tanulásra vonatkozó tanítási és pontozási, valamint állapotalapú folyamat-szimulációkat. Ez a cikk bemutatja, hogyan történik egy nagy gyakoriságú kereskedelmi forgatókönyvben a folyamatos tanítási és pontozási folyamatokat végrehajtó lineáris regressziós modell futtatása egy Azure Stream Analytics-feladatban.
@@ -441,10 +441,10 @@ Végül a képi megjelenítés a Power BI-irányítópulton történik.
 ![PNL](./media/stream-analytics-high-frequency-trading/pnl.png)
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure Stream Analyticsben valósághű nagy gyakoriságú kereskedelmi modellt hozhatunk létre egy közepesen összetett lekérdezéssel. A beépített lineáris regressziós funkció hiánya miatt le kell egyszerűsítenünk a modellt úgy, hogy öt bemeneti változó helyett csak kettőt használjon. Az eltökélt felhasználók számára azonban a több dimenzióval rendelkező és kifinomultabb algoritmusok implementálhatóak JavaScript UDA-ként is. 
 
-Érdemes megjegyezni, hogy a legtöbb lekérdezés (a JavaScript UDA kivételével) tesztelése és hibakeresése elvégezhető a [Visual Studióhoz készült Azure Stream Analytics](stream-analytics-tools-for-visual-studio.md) eszközökkel a Visual Studióban. A kezdeti lekérdezés megírását követően a szerző kevesebb mint 30 percet töltött teszteléssel és hibakereséssel a Visual Studióban. 
+Érdemes megjegyezni, hogy a legtöbb lekérdezés (a JavaScript UDA kivételével) tesztelése és hibakeresése elvégezhető a [Visual Studióhoz készült Azure Stream Analytics](stream-analytics-tools-for-visual-studio-install.md) eszközökkel a Visual Studióban. A kezdeti lekérdezés megírását követően a szerző kevesebb mint 30 percet töltött teszteléssel és hibakereséssel a Visual Studióban. 
 
 Az UDA hibakeresése jelenleg nem végezhető el a Visual Studióban. Dolgozunk ennek lehetővé tételén a JavaScript-kód megírásának lehetőségével együtt. Továbbá vegye figyelembe, hogy az UDA-val kapcsolatos mezők nevei kisbetűsek. A lekérdezés tesztelése során ez nem volt nyilvánvaló. Az Azure Stream Analytics 1.1-es kompatibilitási szintjén azonban megtartjuk a mezőnév kis- és nagybetűhasználatát, természetesebb működést biztosítva.
 

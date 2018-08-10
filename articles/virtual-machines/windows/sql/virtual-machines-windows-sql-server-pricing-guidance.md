@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/02/2018
+ms.date: 08/09/2018
 ms.author: jroth
-ms.openlocfilehash: e9033724f62b383ce70488b98a3a8919e3cb198a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345277"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003559"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Az SQL Server Azure virtuális gépek díjszabási útmutatóját
 
@@ -90,9 +90,12 @@ SQL Server 2017 Azure virtuális gép létrehozása egy használatalapú / haszn
 >
 >Nem tartalmazza a további SQL Server licencelési költségeit, Web, Standard és Enterprise kiadások. A legpontosabb díjszabási becslés lekéréséhez válassza ki az operációs rendszer és az SQL Server-kiadást díjszabási oldalán [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) vagy [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-## <a name="bring-your-own-license-byol"></a>Hozza magával a licencét (BYOL).
+## <a id="byol"></a> Hozott licences (BYOL)
 
 **Saját SQL Server licence keretében**, más néven **BYOL**, az azt jelenti, hogy egy Azure virtuális Gépen a frissítési garanciával rendelkező SQL Server egy meglévő mennyiségi licenc használatával. SQL Server virtuális gép használatával BYOL csak díjak a virtuális gép futtatásával járó költségeket, a nem SQL Server-licenc, tekintve, hogy már vásárolt licencek és a frissítési garanciával rendelkező mennyiségi licencelési program keretében.
+
+> [!IMPORTANT]
+> BYOL-lemezképeknek a frissítési garanciával rendelkező nagyvállalati szerződés szükséges. Ezek nem érhető el az Azure Cloud Solution Partner (CSP) részeként most.
 
 > [!NOTE]
 > A BYOL-lemezképeknek jelenleg csak Windows virtuális gépek számára elérhető. A csak Linux rendszerű virtuális gép azonban az SQL Server manuálisan telepítheti. Tekintse meg a az irányelveket a [Linux rendszerű SQL virtuális gép – gyakori kérdések](../../linux/sql/sql-server-linux-faq.md).

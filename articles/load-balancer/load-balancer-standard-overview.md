@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: f8779af725346a456efe8e718cfc8ff3a91c72fc
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: dad76ab9f2a1a621fb513a4d411792fe2f88a557
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325251"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005875"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer Standard áttekintése
 
@@ -64,7 +64,15 @@ A háttérkészlet önálló virtuális gépek, a rendelkezésre állási csopor
 
 Amikor kiválasztja a háttérkészlet tervezéséről, megtervezheti a legkevésbé egyedi készlet háttérerőforrásokhoz tovább optimalizálható a felügyeleti műveletek időtartama száma.  Nincs adat adatsík teljesítmény vagy a méretezési csoport nincs különbség.
 
-## <a name="az"></a>A rendelkezésre állási zónák
+### <a name="probes"></a>Állapotadat-mintavételek
+  
+A standard Load Balancer támogatásával bővült [HTTPS állapotadat-mintavételek](load-balancer-custom-probe-overview.md#httpprobe) (HTTP-mintavétel a Transport Layer Security (TLS) burkoló) pontosan az a HTTPS-alkalmazások figyelésére.  
+
+Emellett, ha a teljes háttérkészlet [le mintavételek](load-balancer-custom-probe-overview.md#probedown), a Standard Load Balancer lehetővé teszi, hogy a létrehozott összes TCP-kapcsolatok a folytatáshoz. (Az alapszintű Load Balancer összes TCP-kapcsolatok az összes példányra megszűnik).
+
+Felülvizsgálat [Load Balancer állapot-mintavételei](load-balancer-custom-probe-overview.md) részleteiről.
+
+### <a name="az"></a>A rendelkezésre állási zónák
 
 Standard Load Balancer támogatja a további képességek régióban, ahol érhetők el rendelkezésre állási zónák.  Ezek a funkciók hozzáadódnak az összes Standard Load Balancer biztosít.  A Standard Load Balancer nyilvános és belső rendelkezésre állási zónák konfigurációk érhetők el.
 
@@ -167,7 +175,7 @@ SKU-k, amelyek nem módosítható. Kövesse az ebben a szakaszban egy erőforrá
 
 ### <a name="migrate-from-basic-to-standard-sku"></a>A Standard Termékváltozat az alapszintű áttelepítése
 
-1. Hozzon létre egy új Standard erőforrást (a Load Balancer és a nyilvános IP-címek, szükség szerint). Hozza létre újra a szabályok és mintavétel definíciókat.
+1. Hozzon létre egy új Standard erőforrást (a Load Balancer és a nyilvános IP-címek, szükség szerint). Hozza létre újra a szabályok és mintavétel definíciókat.  Egy, a tcp/443-as TCP-mintavétel használatakor is korábban, érdemes lehet módosítani a mintavételi protokoll egy HTTPS-mintavétel, és adja hozzá az útvonalat.
 
 2. Új létrehozása vagy a meglévő NSG-t a hálózati adapter vagy alhálózat engedélyezett elosztott terhelésű forgalmat, mintavétel, valamint az engedélyezni kívánt bármely egyéb forgalom.
 
@@ -177,7 +185,7 @@ SKU-k, amelyek nem módosítható. Kövesse az ebben a szakaszban egy erőforrá
 
 ### <a name="migrate-from-standard-to-basic-sku"></a>Standard áttelepíteni az alapszintű Termékváltozat
 
-1. Hozzon létre egy új alapszintű erőforrást (a Load Balancer és a nyilvános IP-címek, szükség szerint). Hozza létre újra a szabályok és mintavétel definíciókat. 
+1. Hozzon létre egy új alapszintű erőforrást (a Load Balancer és a nyilvános IP-címek, szükség szerint). Hozza létre újra a szabályok és mintavétel definíciókat.  Egy HTTPS-mintavétel váltani egy, a tcp/443-as TCP-mintavétel. 
 
 2. Távolítsa el a Standard Termékváltozat erőforrások (Load Balancer és nyilvános IP-címek területen, amennyiben alkalmazhatók) összes Virtuálisgép-példányt. Győződjön meg arról, egy rendelkezésre állási csoport összes Virtuálisgép-példányt is eltávolítja.
 
@@ -218,15 +226,16 @@ Standard Load Balancer, amely a díjazás a terheléselosztási szabályok konfi
 
 ## <a name="next-steps"></a>További lépések
 
-- A megismerése [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md)
+- A megismerése [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md).
+- Ismerje meg [állapotadat-mintavételek](load-balancer-custom-probe-overview.md).
 - Tudjon meg többet [rendelkezésre állási zónák](../availability-zones/az-overview.md).
 - Ismerje meg [Standard Load Balancer diagnosztikai](load-balancer-standard-diagnostics.md).
 - Ismerje meg [többdimenziós metrikák támogatott](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) a diagnosztikai [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
-- A megismerése [terheléselosztó kimenő kapcsolatok](load-balancer-outbound-connections.md)
-- Ismerje meg [Standard Load Balancer a magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok](load-balancer-ha-ports-overview.md)
-- A megismerése [terheléselosztót, több Előtérrendszer](load-balancer-multivip-overview.md)
+- A megismerése [terheléselosztó kimenő kapcsolatok](load-balancer-outbound-connections.md).
+- Ismerje meg [magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok a Standard Load Balancer](load-balancer-ha-ports-overview.md).
+- A megismerése [több Előtérrendszer rendelkező terheléselosztó](load-balancer-multivip-overview.md).
 - Ismerje meg [virtuális hálózatok](../virtual-network/virtual-networks-overview.md).
 - Tudjon meg többet [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
-- Ismerje meg [virtuális hálózati Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md)
+- Ismerje meg [virtuális hálózati Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 - A másik hívóbetűt némelyikét [hálózat képességeivel](../networking/networking-overview.md) az Azure-ban.
 - Tudjon meg többet [terheléselosztó](load-balancer-overview.md).

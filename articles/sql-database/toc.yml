@@ -84,6 +84,8 @@
           href: sql-database-service-tiers-dtu.md
         - name: Erőforráskorlátok
           href: sql-database-resource-limits.md
+        - name: Előre fizetés fenntartott kapacitásért
+          href: sql-database-reserved-capacity.md
     - name: Logikai kiszolgálók
       items:
         - name: Létrehozás és kezelés

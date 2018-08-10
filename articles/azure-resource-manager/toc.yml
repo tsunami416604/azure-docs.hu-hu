@@ -32,6 +32,8 @@
       maintainContext: true
     - name: Felhőkonzisztencia-sablonok
       href: templates-cloud-consistency.md
+    - name: Üzembehelyezési módok
+      href: deployment-modes.md
 - name: Útmutató
   items:
     - name: Sablonok létrehozása

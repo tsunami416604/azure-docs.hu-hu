@@ -96,6 +96,8 @@
           href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
         - name: Feladatok monitorozása – Azure .NET SDK
           href: stream-analytics-monitor-jobs.md
+        - name: Feladatok monitorozása – Visual Studio
+          href: stream-analytics-monitor-jobs-use-vs.md
     - name: Méretezés
       items:
         - name: Skálázás streamelési egységekkel
@@ -117,8 +119,10 @@
       items:
         - name: Eszközök telepítése
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Felhőalapú feladat fejlesztése
-          href: stream-analytics-tools-for-visual-studio.md
+        - name: Feladat helyi tesztelése
+          href: stream-analytics-vs-tools-local-run.md
+        - name: Feladatok megtekintése a Visual Studióban
+          href: stream-analytics-vs-tools.md
         - name: Edge-feladatok fejlesztése
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: CI-/CD-folyamat beállítása

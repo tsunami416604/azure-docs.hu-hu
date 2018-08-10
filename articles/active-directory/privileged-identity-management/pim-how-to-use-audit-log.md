@@ -13,15 +13,15 @@ ms.component: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: af3ba66bbc0be3aca3999abc6a0de5ec0e0aae95
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 922658f75a0d00998072c7bd8f2160e9db27f318
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621436"
+ms.locfileid: "39627790"
 ---
 # <a name="using-the-audit-log-in-pim"></a>A PIM az auditnapló használata
-A Privileged Identity Management (PIM) napló segítségével tekintse meg a felhasználó-hozzárendelés és aktiválás egy adott időtartamon belül. Ha meg szeretné tekinteni a teljes naplózási előzmények tevékenység a saját bérlőjében, beleértve a rendszergazda, a végfelhasználó és a szinkronizálási tevékenység, használhatja a [Azure Active Directory hozzáférési és használati jelentéseket.](../active-directory-reporting-azure-portal.md)
+A Privileged Identity Management (PIM) napló segítségével tekintse meg a felhasználó-hozzárendelés és aktiválás egy adott időtartamon belül. Ha meg szeretné tekinteni a teljes naplózási előzmények tevékenység a saját bérlőjében, beleértve a rendszergazda, a végfelhasználó és a szinkronizálási tevékenység, használhatja a [Azure Active Directory hozzáférési és használati jelentéseket.](../reports-monitoring/overview-reports.md)
 
 ## <a name="navigate-to-the-audit-log"></a>Keresse meg a napló
 Az a [az Azure portal](https://portal.azure.com) irányítópulton válassza a **Azure AD Privileged Identity Management** alkalmazást. Itt kattintva férhet hozzá a felügyeleti napló **kiemelt szerepkörök kezelése** > **naplózási előzmények** a PIM-irányítópulton.

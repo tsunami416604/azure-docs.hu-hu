@@ -81,6 +81,10 @@
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Események fogadása a .NET-keretrendszer használatával
       href: event-hubs-dotnet-framework-getstarted-receive-eph.md
+    - name: Események küldése a Go használatával
+      href: event-hubs-go-get-started-send.md
+    - name: Események fogadása a Go használatával
+      href: event-hubs-go-get-started-receive-eph.md
     - name: Az Apache Kafkához készült Event Hubs
       items:
         - name: Kafka-kompatibilis eseményközpontok létrehozása

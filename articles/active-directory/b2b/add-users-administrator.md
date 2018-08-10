@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f654aaa6d44011a089008558849d37bf6cdfa6f6
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6dfa1f247a079bf801f28d1083c86d36a74117c5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037262"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004198"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon
 
@@ -40,6 +40,9 @@ B2B-együttműködés felhasználók hozzáadása a címtárhoz, kövesse az al�
 5. A **felhasználónév**, adja meg a külső felhasználó e-mail-címét. Szükség esetén üdvözlő üzenet hozzáadása. Példa:
 
    ![Látható, ahol új vendégfelhasználó a felhasználói felületen](./media/add-users-administrator/InviteGuest.png) 
+
+    > [!NOTE]
+    > Néhány e-mail-szolgáltatók engedélyezése a felhasználók hozzáadása a plusz jelet (+) és az e-mail címeket, például a Beérkezett üzenetek szűrése érdekében további szöveget. Azure ad-ben azonban jelenleg nem támogatja e-mail-címek szereplő szimbólumok jelentései a plusz. Kézbesítési problémák elkerülése érdekében hagyja ki ezt a szimbólumot, és akár a következő karaktereket a @ karaktert.
 
 6. Válassza ki **meghívása** meghívóban leírtakat, a vendégfelhasználó automatikus küldése. 
  

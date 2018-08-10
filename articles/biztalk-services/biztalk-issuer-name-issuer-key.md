@@ -1,6 +1,6 @@
 ---
-title: Kiállító neve és a BizTalk szolgáltatások Issuer Key |} Microsoft Docs
-description: Ismerje meg, hogyan lehet lekérni a kibocsátó neve és Issuer Key Service Bus vagy Access Control (ACS) a BizTalk szolgáltatások. MABS, WABS
+title: Kiállító neve és kiállító kulcsa a BizTalk Services |} A Microsoft Docs
+description: Ismerje meg, hogyan kérheti le a kiállító neve és kiállító kulcsa vagy a Service Bus, vagy az Access Control (ACS) a BizTalk Services számára. MABS, WABS
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 18eac72d75680ab12c4a0bea9dfc5ac8a5fce566
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 78796b5dc62cb573f149c24d90205d26fb139cf7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24103429"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628647"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Kiállító neve és kiállító kulcsa
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Azure BizTalk-szolgáltatásokat használja, a Service Bus kibocsátó neve és Issuer Key, és a hozzáférés-vezérlő Kibocsátónév és Issuer Key. Konkrétan:
+Az Azure BizTalk Services használ, a Service Bushoz kapcsolódó kibocsátói név és kiállító kulcsa, és a hozzáférés-vezérlési kiállító neve és kiállító kulcsa. Konkrétan:
 
-| Tevékenység | Mely kibocsátó neve és Issuer Key |
+| Tevékenység | Melyik kiállító neve és kiállító kulcsa |
 | --- | --- |
-| A Visual Studio az alkalmazás telepítéséhez |Hozzáférés-vezérlő Kibocsátónév és Issuer Key |
-| Az Azure BizTalk szolgáltatások portál konfigurálása |Hozzáférés-vezérlő Kibocsátónév és Issuer Key |
-| LOB-továbbítók létrehozása a Visual Studio BizTalk Adapter szolgáltatásokkal |Service Bus kibocsátó neve és Issuer Key |
+| Az alkalmazás a Visual Studióból üzembe helyezése |Hozzáférés-vezérlési kiállító neve és kiállító kulcsa |
+| Az Azure BizTalk Services portáljának konfigurálása |Hozzáférés-vezérlési kiállító neve és kiállító kulcsa |
+| A BizTalk Adapter szolgáltatás a Visual Studióban való létrehozását ismertető LOB-továbbítók |Service Bus kiállító neve és kiállító kulcsa |
 
-Ez a témakör a kibocsátó neve és Issuer Key beolvasandó lépéseit sorolja fel. 
+Ez a témakör a kiállító neve és kiállító kulcsa lekérdezésének lépéseit sorolja fel. 
 
-## <a name="access-control-issuer-name-and-issuer-key"></a>Hozzáférés-vezérlő Kibocsátónév és Issuer Key
-A hozzáférés-vezérlő Kibocsátónév és Issuer Key használnak a következő:
+## <a name="access-control-issuer-name-and-issuer-key"></a>Hozzáférés-vezérlési kiállító neve és kiállító kulcsa
+A hozzáférés-vezérlési kiállító neve és kiállító kulcsa használják a következőket:
 
-* Az Azure BizTalk szolgáltatás alkalmazás létrehozása a Visual Studio: sikeres telepítéséhez a BizTalk szolgáltatás alkalmazást a Visual Studio Azure Access Control kibocsátó neve és Issuer Key adja meg. 
-* Az Azure BizTalk szolgáltatások portálon: BizTalk szolgáltatás létrehozása, és nyissa meg a BizTalk szolgáltatások portált, a hozzáférés-vezérlő Kibocsátónév és Issuer Key automatikusan regisztrálva vannak a hozzáférés-vezérlés értékeitől telepítések esetén.
+* Az Azure BizTalk-szolgáltatás-alkalmazás létrehozása a Visual Studióban: sikeresen üzembe helyezhetik a BizTalk-szolgáltatás a Visual Studio Azure, a hozzáférés-vezérlési kiállító neve és kiállító kulcsa adja meg. 
+* Az Azure BizTalk Services portáljának: Amikor BizTalk-szolgáltatás létrehozása és a BizTalk Services portáljának megnyitásához, a hozzáférés-vezérlési kiállító neve és kiállító kulcsa automatikusan regisztrálva vannak a központi telepítések, hozzáférés-vezérlés ugyanazon értékekkel.
 
-### <a name="get-the-access-control-issuer-name-and-issuer-key"></a>A hozzáférés-vezérlő kibocsátó neve és a kiállító kulcs beszerzése
+### <a name="get-the-access-control-issuer-name-and-issuer-key"></a>Hozzáférés-vezérlési kiállító neve és kiállító kulcsa
 
-ACS használata a hitelesítéshez, és a kiállító nevével és Issuer Key értékek, az általános lépések az alábbiak:
+ACS használnak a hitelesítéshez, és a kiállító neve és kiállító kulcsa értékének lekéréséhez, hogy a lépések a következők:
 
 1. Telepítse a [Azure Powershell-parancsmagok](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-2. Adja hozzá az Azure-fiókjával:`Add-AzureAccount`
-3. Az előfizetés nevét adja vissza:`get-azuresubscription`
-4. Jelölje ki az előfizetését:`select-azuresubscription <name of your subscription>` 
-5. Új névtér létrehozása:`new-azuresbnamespace <name for the service bus> "Location" -CreateACSNamespace $true -NamespaceType Messaging`
+2. Adja hozzá az Azure-fiókjával: `Add-AzureAccount`
+3. Az előfizetés nevét adja vissza: `get-azuresubscription`
+4. Válassza ki az előfizetését: `select-azuresubscription <name of your subscription>` 
+5. Hozzon létre egy új névteret: `new-azuresbnamespace <name for the service bus> "Location" -CreateACSNamespace $true -NamespaceType Messaging`
 
-    Példa:`new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
+    Példa:    `new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
       
-5. Létrehozásakor az új ACS-névtér (amely több percet is igénybe vehet), a kiállító nevével és Issuer Key értékek listáját a kapcsolati karakterlánc: 
+5. Az új ACS-névtér (Ez több percig is eltarthat) létrehozását követően a kiállító neve és kiállító kulcsa értékek szerepelnek a kapcsolati karakterlánc: 
 
     ```
     Name                  : biztalksbnamespace
@@ -69,30 +69,30 @@ ACS használata a hitelesítéshez, és a kiállító nevével és Issuer Key é
 
 Összefoglalásképpen:  
 Kiállító neve = SharedSecretIssuer  
-Kiállító kulcsát = SharedSecretKey
+Kiállító kulcsa = SharedSecretKey
 
-A több a [New-AzureSBNamespace](https://msdn.microsoft.com/library/dn495165.aspx) parancsmag. 
+A több a [New-AzureSBNamespace](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace) parancsmagot. 
 
-## <a name="service-bus-issuer-name-and-issuer-key"></a>Service Bus kibocsátó neve és Issuer Key
-Service Bus kibocsátó neve és Issuer Key BizTalk Adapter szolgáltatások használják. BizTalk szolgáltatások projektre a Visual Studio, a segítségével a BizTalk Adapter szolgáltatások egy helyszíni üzletági (LOB) rendszerhez való csatlakozás. Szeretne csatlakozni, a LOB-továbbítási létrehozása, és adja meg a LOB-rendszer részleteit. Ennek során azt is adja meg a Service Bus kibocsátó neve és Issuer Key.
+## <a name="service-bus-issuer-name-and-issuer-key"></a>Service Bus kiállító neve és kiállító kulcsa
+A BizTalk Adapter szolgáltatás által használt Service Bus kiállító neve és kiállító kulcsa. A BizTalk Services projektre a Visual Studióban a BizTalk Adapter szolgáltatás használhatja egy helyszíni üzletági (LOB) rendszerhez való csatlakozáshoz. Szeretne csatlakozni, hozzon létre a LOB-továbbítót, és adja meg a LOB-rendszer adatait. Ha így tesz, akkor is adja meg a Service Bushoz kapcsolódó kibocsátói név és kiállító kulcsa.
 
-### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>A Service Bus kibocsátó neve és Issuer Key beolvasása
+### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>A Service Bushoz kapcsolódó kibocsátói név és kiállító kulcsa lekéréséhez
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
-2. Keresse meg **Service Bus**, és válassza ki a névteret. 
-3. Nyissa meg a **megosztott elérési házirendek** tulajdonságait, válassza ki a házirendet, és tekintse meg a **kapcsolati karakterlánc** tartozó név és kulcs értékeket.  
+2. Keresse meg **a Service Bus**, és válassza ki a névteret. 
+3. Nyissa meg a **megosztott elérési házirendek** tulajdonságait, válassza ki a szabályzatot, és megtekintheti a **kapcsolati karakterlánc** tartozó név és kulcs értékeit.  
 
 ## <a name="next"></a>Következő lépés
-További Azure BizTalk szolgáltatások témakörök:
+További Azure BizTalk Services témakörök:
 
-* [Az Azure BizTalk szolgáltatások SDK telepítése](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [Oktatóanyag: Azure BizTalk szolgáltatások](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [Az Azure BizTalk Services SDK telepítése](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [Az oktatóanyagok: Az Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
 * [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Az Azure BizTalk szolgáltatások](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+* [Az Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>Lásd még:
-* [Hogyan: ACS felügyeleti szolgáltatás segítségével a szolgáltatás-identitások konfigurálása](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
-* [BizTalk szolgáltatások: Fejlesztői, Basic, Standard és prémium kiadás diagram](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk szolgáltatások: kiépítés](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [How to: ACS felügyeleti szolgáltatás segítségével Szolgáltatásidentitások konfigurálása](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
+* [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [A BizTalk Services: kiépítés](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [BizTalk Services: Kiépítési állapot diagramja](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
 * [BizTalk Services: Irányítópult, Figyelés és Méret lapok](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk Services: Biztonsági mentés és visszaállítás](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2560296c088491b7ae0cd414f88ae337c1383c9a
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258796"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627525"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési lehetőségek az Azure AD-jelszókezelés
 
@@ -23,7 +23,7 @@ Az üzembe helyezést követően számos szervezet szeretné tudni, hogy hogyan 
 
 ![Jelentéskészítés][Reporting]
 
-Az alábbi kérdésekre választ, amely az [Azure Portalt] () szerepel a jelentések szerinthttps://portal.azure.com/):
+Az alábbi kérdésekre választ, amely az [Azure Portalt] szerepel a jelentések szerint (https://portal.azure.com/):
 
 > [!NOTE]
 > Kell [globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md), és akkor jóvá kell hagyatnia a adatok gyűjthetők a szervezet nevében. Elvégezni a beléptetést, lépjen a **jelentéskészítési** tab vagy az ellenőrzés során legalább egyszer naplózza. Addig nem adatgyűjtés a szervezet számára.
@@ -40,7 +40,7 @@ Az alábbi kérdésekre választ, amely az [Azure Portalt] () szerepel a jelent�
 
 ## <a name="power-bi-content-pack"></a>A Power BI-tartalomcsomag
 
-Ha Ön a Power BI-felhasználó, van egy tartalomcsomagot, amely tartalmazza a könnyen használható jelentéskészítési SSPR az Azure AD-hez. Használja, és üzembe helyezése a tartalomcsomag további információkért lásd: [használata az Azure Active Directory Power BI-tartalomcsomag](../active-directory-reporting-power-bi-content-pack-how-to.md). A tartalomcsomag létrehozása a saját irányítópultjait, és megoszthatja másokkal a szervezetében.
+Ha Ön a Power BI-felhasználó, van egy tartalomcsomagot, amely tartalmazza a könnyen használható jelentéskészítési SSPR az Azure AD-hez. Használja, és üzembe helyezése a tartalomcsomag további információkért lásd: [használata az Azure Active Directory Power BI-tartalomcsomag](../reports-monitoring/howto-power-bi-content-pack.md). A tartalomcsomag létrehozása a saját irányítópultjait, és megoszthatja másokkal a szervezetében.
 
 ## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Jelszókezelési jelentések megtekintése az Azure Portalon
 

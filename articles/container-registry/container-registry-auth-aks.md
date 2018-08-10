@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: b56f2a8b2ae8cf04b8c27ab657be3f4d77ee7402
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: d2f7769469c9f3ebdbef5fc6ee1f09b1acd573ef
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205391"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715829"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Az Azure Kubernetes Service-ből az Azure Container Registry a hitelesítéshez
 
@@ -72,7 +72,7 @@ echo "Service principal password: $SP_PASSWD"
 
 A szolgáltatásnév hitelesítő adatainak most már tárolhat egy Kubernetes [kép lekérési titkos kulcs][image-pull-secret], amely az AKS-fürt fog hivatkozni, amikor a futó tárolók.
 
-Használja a következő **kubectl** parancsot a Kubernetes titkos kódjának létrehozása. Cserélje le `<acr-login-server>` az Azure container registry (szerepel a formátum "acrname.azurecr.io") teljes nevét. Cserélje le `<service-principal-ID>` és `<service-principal-password>` az előző parancsfájl futtatásával beszerzett értékekkel.
+Használja a következő **kubectl** parancsot a Kubernetes titkos kódjának létrehozása. Cserélje le `<acr-login-server>` az Azure container registry (szerepel a formátum "acrname.azurecr.io") teljes nevét. Cserélje le `<service-principal-ID>` és `<service-principal-password>` az előző parancsfájl futtatásával beszerzett értékekkel. Cserélje le `<email-address>` bármely szabályos e-mail-címmel.
 
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>

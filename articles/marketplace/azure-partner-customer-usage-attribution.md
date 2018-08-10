@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ellacroi
-ms.openlocfilehash: ce862758d97737d16ef26ca7172cad39f8d8336a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 95ad327380707dcfe14aa5aa3d91b8da2309eb05
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359961"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630891"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -55,23 +55,8 @@ A GUID azonosító hozzáadása a fő sablonfájl egyetlen módosítását a kö
 
 ## <a name="sample-template-code"></a>Sablon mintakód
 
-```
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG?token=Ak8ZDB0JzsBdUGlKEIeHNJRS7b0BWn4Gks5bbMwwwA%3D%3D)
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
-      "apiVersion": "2018-02-01",
-      "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your GUID here
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": []
-        }
-      }
-    } // remove all comments from the file when done
-
-```
 
 ## <a name="method-2-azure-resource-manager-apis"></a>2. módszer: Az Azure Resource Manager API-k
 
@@ -81,6 +66,8 @@ Ha egy Azure Resource Manager-sablont használ, a megoldás a fenti utasítások
 
 **Az Azure Resource Manager API-kat használó telepítés címkézése:** az ebben a megközelítésben az API-hívások, egy GUID Azonosítót tartalmazza a felhasználói ügynök a kérelemben szereplő tartományfejléc tervezésekor. A globálisan egyedi Azonosítót minden ajánlat vagy Termékváltozat hozzá kell adni.  A karakterlánc a előtaggal kell formázni kell pid - majd illessze be a partner létrehozott GUID.   
 
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG?token=Ak8ZDDiokRcj4PJj0aMkZmfF8BdOuOTzks5bbM35wA%3D%3D)
+
 >[!Note] 
 >GUID formátumú szúr be a felhasználói ügynök: pid-eb7927c8-dd66-43e1-b0cf-c346a422063 / / a GUID megadása után a "pid-"
 
@@ -88,13 +75,7 @@ A karakterlánc formátuma fontos. Az előtag "pid-" lehetőség nem része, ha 
 
 **A példában a Python SDK-val:** a Python, kell használnia a "konfiguráció" attribútum. Csak akkor adhat hozzá egy UserAgent. Például:
 
-```python
-
-client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
-        client.config.add_user_agent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
-
-
-```
+![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/python-for-lu.PNG?token=Ak8ZDK5Um4J6oY-7x25tuBpa168BEiYMks5bbMuUwA%3D%3D)
 
 >Ez az egyes ügyfelek elvégezni, akkor nem tartozik globális statikus konfiguráció (Előfordulhat, hogy választja egy ügyfél-előállítót, és ellenőrizze, hogy minden ügyfél állapotát. 
 >[További információk](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)

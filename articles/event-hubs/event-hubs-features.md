@@ -1,9 +1,9 @@
 ---
-title: Az Azure Event Hubs-szolgáltatások áttekintése |} Microsoft Docs
-description: Áttekintés és az Azure Event Hubs szolgáltatások részleteit
+title: Az Azure Event Hubs-szolgáltatások – áttekintés |} A Microsoft Docs
+description: Áttekintés és Azure Event Hubs-szolgáltatásokról részleteit
 services: event-hubs
 documentationcenter: .net
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
@@ -11,27 +11,30 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/08/2018
-ms.author: sethm
-ms.openlocfilehash: f16f8aa73ecfa3e0a47ce2373a2e28a7a9968ff5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: shvija
+ms.openlocfilehash: abc85c322f7b8ee63c06639ae8845a5f07266b50
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248741"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40006448"
 ---
-# <a name="event-hubs-features-overview"></a>Event Hubs szolgáltatások – áttekintés
+# <a name="event-hubs-features-overview"></a>Event Hubs-szolgáltatások – áttekintés
 
-Az Azure Event Hubs egy méretezhető Eseményfeldolgozási szolgáltatás, amely ingests és dolgozza fel az eseményeket és adatok, nagy mennyiségű, alacsony késéssel és nagy megbízhatósággal. Lásd: [Mi az az Event Hubs?](event-hubs-what-is-event-hubs.md) a magas szintű áttekintését.
+Az Azure Event Hubs egy rugalmasan méretezhető Eseményfeldolgozási szolgáltatás, amely feltölti és dolgozza fel az eseményeket és az adatok, nagy mennyiségű, alacsony késéssel és magas megbízhatósággal. Lásd: [Mi az Event Hubs?](event-hubs-what-is-event-hubs.md) magas szintű áttekintése.
 
-Ebben a cikkben szereplő információk épül a [a cikk áttekintése](event-hubs-what-is-event-hubs.md), és részletesen bemutatja a műszaki és megvalósítási Event Hubs-összetevők és szolgáltatásokkal kapcsolatban.
+Ebben a cikkben található információk épül a [áttekintő cikkben](event-hubs-what-is-event-hubs.md), és ismerteti az Event Hubs-összetevők és szolgáltatások műszaki és megvalósítási részleteit.
+
+## <a name="namespace"></a>Névtér
+Event Hubs-névtér által hivatkozott egyedi hatókörkezelési tárolót biztosít a [teljesen minősített tartománynevét](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), amely létrehoz egy vagy több event hubs vagy Kafka-témaköröket a. 
 
 ## <a name="event-publishers"></a>Esemény-közzétevők
 
-Minden entitás, amely adatokat küld egy eseményközpontba egy esemény készítő vagy *esemény-közzétevő*. Az esemény-közzétevők a HTTPS vagy az AMQP 1.0 használatával tehetik közzé az eseményeket. Az esemény-közzétevők egy közös hozzáférésű jogosultságkód- (SAS-) token használatával azonosítják magukat az eseményközpontok felé, és rendelkezhetnek egyedi azonosítóval vagy közös SAS-tokennel is.
+Minden entitás, amely adatokat küld egy eseményközpontnak egy esemény-előállítót, vagy *esemény-közzétevő*. Az esemény-közzétevők a HTTPS vagy az AMQP 1.0 használatával tehetik közzé az eseményeket. Az esemény-közzétevők egy közös hozzáférésű jogosultságkód- (SAS-) token használatával azonosítják magukat az eseményközpontok felé, és rendelkezhetnek egyedi azonosítóval vagy közös SAS-tokennel is.
 
 ### <a name="publishing-an-event"></a>Esemény közzététele
 
-Az eseményeket az AMQP 1.0 vagy HTTPS használatával teheti közzé. Az Event Hubs biztosít [klienskódtárak és -osztályok](event-hubs-dotnet-framework-api-overview.md) számára események közzétételét egy eseményközpontba a .NET-ügyfelekről. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](http://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Az egyes közzétételekre (eseményadat-példány) 256 KB-os korlát érvényes, függetlenül attól, hogy önálló vagy kötegelt közzétételről van-e szó. Nagyobb, mint a küszöbérték eredmények események közzététele hibát eredményez. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
+Az eseményeket az AMQP 1.0 vagy HTTPS használatával teheti közzé. Event hubs szolgáltatás [klienskódtárak és -osztályok](event-hubs-dotnet-framework-api-overview.md) számára események közzétételét egy eseményközpontba .NET-ügyfelekről. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](http://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Az egyes közzétételekre (eseményadat-példány) 256 KB-os korlát érvényes, függetlenül attól, hogy önálló vagy kötegelt közzétételről van-e szó. Nagyobb, mint a küszöbérték eredmények események közzététele hibát. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
 
 Az AMQP vagy HTTPS használata a használati forgatókönyvtől függ. Az AMQP használatához ki kell alakítani egy állandó kétirányú szoftvercsatornát az TLS vagy SSL/TLS mellett. Az AMQP használata a munkamenet inicializálásakor nagyobb hálózati költséggel jár, a HTTPS azonban minden egyes kérés esetében további SSL-többletterhelést igényel. Gyakori közzététel esetén az AMQP nagyobb teljesítményt biztosít.
 
@@ -51,7 +54,7 @@ Nem kell előre létrehoznia a közzétevők neveit, azoknak azonban egyezniük 
 
 ## <a name="capture"></a>Rögzítés
 
-[Event Hubs rögzítése](event-hubs-capture-overview.md) lehetővé teszi, hogy automatikusan rögzítheti az Event Hubs streamadatok, és mentse a Blob storage-fiók, vagy egy Azure Data Lake szolgáltatásfiók választott. Rögzítési engedélyezése az Azure-portálon, és adja meg a minimális és a rögzítés végrehajtásához időkerete. Használatával Event Hubs rögzítése Megadja, hogy a saját Azure Blob Storage-fiók és a tároló vagy az Azure Data Lake szolgáltatás fiókja, amelyek egyike a rögzített adatok tárolására szolgál. A rögzített adatok írása az Apache Avro formátumban.
+[Az Event Hubs Capture](event-hubs-capture-overview.md) lehetővé teszi, hogy automatikusan a streamelt adatokat az Event Hubs capture, és mentse a Blob storage-fiók vagy egy Azure Data Lake Service fiókot választott. Rögzítés funkció engedélyezése az Azure Portalról, és adjon meg egy minimális méret és időtartomány hajtsa végre a rögzítést. Az Event Hubs Capture révén, adja meg a saját Azure Blob Storage-fiók és a tároló vagy az Azure Data Lake szolgáltatás-fiókot, ilyen például a rögzített adatok tárolására szolgál. A rögzített adatok az Apache Avro formátum nyelven van megírva.
 
 ## <a name="partitions"></a>Partíciók
 
@@ -61,15 +64,15 @@ A partíció események egy rendezett sorozata az eseményközpontban. Ha új es
 
 ![Event Hubs](./media/event-hubs-features/partition.png)
 
-Az Event Hubs adatok őrzi meg a konfigurált megőrzési időtartamig összes partíciójára érvényes a központ. Az események időalapon évülnek el – nem törölhetők külön. Mivel a partíciók függetlenek egymástól, és saját adatsorozataikat tartalmazzák, gyakran különböző ütemben nőnek.
+Eseményközpont összes partíciójára érvényes az eseményközpont konfigurált megőrzési időtartamig őrzi meg az adatokat. Az események időalapon évülnek el – nem törölhetők külön. Mivel a partíciók függetlenek egymástól, és saját adatsorozataikat tartalmazzák, gyakran különböző ütemben nőnek.
 
 ![Event Hubs](./media/event-hubs-features/multiple_partitions.png)
 
 A partíciók száma az eseményközpont létrehozásakor határozható meg, és 2 és 32 közé eshet. A partíciószám nem módosítható, a megadásakor tehát hosszú távú szempontokat érdemes mérlegelni. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. A partíciószám 32 fölé növeléséhez vegye fel a kapcsolatot az Event Hubs-csapattal.
 
-Partíciók azonosíthatóak, és közvetlenül lehet küldeni, közvetlenül küld egy partíció nem ajánlott. Helyette használhatja az [Esemény-közzétevő](#event-publishers) és a [Kapacitás](#capacity) című szakaszokban bemutatott magasabb szintű szerkezeteket. 
+Jóllehet a partíciók azonosíthatók, és közvetlenül lehet küldeni, nem ajánlott közvetlenül egy partíció küld. Helyette használhatja az [Esemény-közzétevő](#event-publishers) és a [Kapacitás](#capacity) című szakaszokban bemutatott magasabb szintű szerkezeteket. 
 
-A partíciók eseményadatok sorozatát tartalmazzák, az eseményadatok pedig az esemény törzsét, a felhasználó által definiált tulajdonságcsomagot és olyan metaadatokat foglalnak magukban, mint az esemény eltolása a partícióban vagy a száma a streamsorozatban.
+A partíciók eseményadatok az esemény, a felhasználó által definiált tulajdonságcsomagot és a metaadatokat, például eltolását a partícióban vagy a száma a streamsorozatban törzse tartalmazó sorozatát ki vannak töltve.
 
 További információt a partíciókról és a rendelkezésre állás és a megbízhatóság közötti kellő egyensúly kialakításáról az [Event Hubs programozási útmutatójában](event-hubs-programming-guide.md#partition-key) és az [Event Hubs rendelkezésre állásával és következetességével](event-hubs-availability-and-consistency.md) foglalkozó cikkben talál.
 
@@ -91,7 +94,7 @@ Minden entitás, amely eseményadatokat olvas egy eseményközpontból, *esemén
 
 Az Event Hubs közzétételi/feliratkozási mechanizmusa *felhasználói csoportokon* keresztül engedélyezhető. A felhasználói csoport a teljes eseményközpont egyik nézete (állapot, pozíció vagy eltolás). A felhasználói csoportok révén több felhasználó alkalmazás rendelkezhet az eseménystream külön nézetével, és a többitől függetlenül saját tempójában és saját eltolásával olvashatja a streamet.
 
-A streamfeldolgozási architektúrákban mindegyik alárendelt alkalmazás megfelel egy felhasználói csoportnak. Amennyiben eseményadatokat kíván írni egy hosszú távú tárhelyre, az adott tárhelyírási alkalmazás is egy felhasználói csoport. Az összetett eseményfeldolgozást már egy másik, külön felhasználói csoport végzi. A partíciókat csak a felhasználói csoportokon keresztül érheti el. Lehet, legfeljebb 5 egyidejű olvasók egy partíciót engedélyez fogyasztói csoportot; azonban **javasoljuk, hogy nincs-e csak egy aktív fogadó egy fogyasztói csoporton partíciók**. Az eseményközpontokban mindig van egy alapértelmezett felhasználói csoport, és akár 20 felhasználói csoportot is létrehozhat a standard szintű eseményközpontokban.
+A streamfeldolgozási architektúrákban mindegyik alárendelt alkalmazás megfelel egy felhasználói csoportnak. Amennyiben eseményadatokat kíván írni egy hosszú távú tárhelyre, az adott tárhelyírási alkalmazás is egy felhasználói csoport. Az összetett eseményfeldolgozást már egy másik, külön felhasználói csoport végzi. A partíciókat csak a felhasználói csoportokon keresztül érheti el. Lehet, legfeljebb 5 egyidejű olvasók egy partíciót engedélyez fogyasztói csoportot; azonban **javasoljuk, hogy nincs-e csak egy aktív fogadót egy fogyasztói csoportot partíción**. Az eseményközpontokban mindig van egy alapértelmezett felhasználói csoport, és akár 20 felhasználói csoportot is létrehozhat a standard szintű eseményközpontokban.
 
 Az alábbiakban néhány példa látható felhasználói csoportok URI-szabályaira:
 
@@ -114,11 +117,11 @@ Az *eltolás* egy esemény pozíciója a partíción belül. Az eltolásokat tek
 
 Az *ellenőrzőpontok használatával* az olvasók megjelölhetik vagy véglegesíthetik pozíciójukat a partíciók eseménysorozatában. Az ellenőrzőpontok használata a felhasználó felelőssége, és partíciónkénti alapon történik a felhasználói csoportban. A felelősség itt azt jelenti, hogy mindegyik felhasználói csoport esetében mindegyik partícióolvasónak nyilván kell tartania aktuális pozícióját az eseménystreamben, és tájékoztathatja a szolgáltatást, amikor az adatstreamet befejezettnek tekinti.
 
-Ha egy olvasó lecsatlakozik egy partícióról, az újracsatlakozáskor az adott felhasználói csoportban az adott partíció utolsó olvasója által elküldött ellenőrzőpontnál kezdi az olvasást. Amikor az olvasó csatlakozik, átadja ezt az eltolásértéket az eseményközpontnak azon hely meghatározásához, ahol az olvasást kezdi. Az ellenőrzőpontok használatával az alárendelt alkalmazások így megjelölhetik az eseményeket „befejezettként”, valamint biztosítható a rugalmasság a különböző gépeken futó olvasók közötti feladatátvétel esetén. Lehetséges visszatérni a régebbi adatokhoz egy alacsonyabb értékű eltolás megadásával az ellenőrzőpontok használata során. Ezzel a mechanizmussal az ellenőrzőpontok használata rugalmasságot biztosít feladatátvétel esetén, és lehetővé teszi az eseménystream visszajátszását.
+Ha egy olvasó lecsatlakozik egy partícióról, az újracsatlakozáskor az adott felhasználói csoportban az adott partíció utolsó olvasója által elküldött ellenőrzőpontnál kezdi az olvasást. Amikor az olvasó csatlakozik, átadja az eltolás az event hubs segítségével megadhatja a helyet, ahol az olvasást kezdi. Az ellenőrzőpontok használatával az alárendelt alkalmazások így megjelölhetik az eseményeket „befejezettként”, valamint biztosítható a rugalmasság a különböző gépeken futó olvasók közötti feladatátvétel esetén. Lehetséges visszatérni a régebbi adatokhoz egy alacsonyabb értékű eltolás megadásával az ellenőrzőpontok használata során. Ezzel a mechanizmussal az ellenőrzőpontok használata rugalmasságot biztosít feladatátvétel esetén, és lehetővé teszi az eseménystream visszajátszását.
 
 ### <a name="common-consumer-tasks"></a>Általános felhasználói feladatok
 
-Minden Event Hubs-felhasználó keresztül egy AMQP 1.0-munkamenet, egy állapot-kompatibilis kétirányú kommunikációs csatorna csatlakozzon. Mindegyik partíció rendelkezik AMQP 1.0-munkamenettel, ami megkönnyíti a partíció szerint elkülönített események átvitelét.
+Minden Event Hubs-felhasználó AMQP 1.0-munkamenettel, állapotközpontú kétirányú kommunikációs csatorna csatlakozás. Mindegyik partíció rendelkezik AMQP 1.0-munkamenettel, ami megkönnyíti a partíció szerint elkülönített események átvitelét.
 
 #### <a name="connect-to-a-partition"></a>Csatlakozás partícióhoz
 
@@ -145,16 +148,16 @@ Az Event Hubs hatékonyan méretezhető párhuzamos architektúrával rendelkezi
 
 Az Event Hubs átviteli kapacitásának szabályozása *átviteli egységek* révén történik. Az átviteli egységek előre megvásárolt kapacitásegységek. Egy átviteli egység a következő kapacitást biztosítja:
 
-* Bemenő forgalom: másodpercenként legfeljebb 1 MB vagy 1000 esemény (amelyik előbb teljesül)
-* Kimenő forgalom: másodpercenként legfeljebb 2 MB
+* Bemenő forgalom: Legfeljebb 1 MB, második vagy 1000 esemény / másodperc (amelyik előbb bekövetkezik).
+* Kimenő forgalom: Legfeljebb 2 MB, második vagy 4096 esemény / másodperc.
 
-A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek kezelheti a **méretezési** panel a névterek a [Azure-portálon](https://portal.azure.com). Átviteli egységek programozott módon is kezelhetők a [Event Hubs API-k](event-hubs-api-overview.md).
+A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek segítségével kezelheti a **méretezési** névtereket paneljén a [az Azure portal](https://portal.azure.com). Átviteli egységek használatával programozott módon is kezelhetők a [Event Hubs API-k](event-hubs-api-overview.md).
 
-Átviteli egységek előre megvásárolt és óraalapú díjszabással rendelkeznek. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Legfeljebb 20 átviteli egység az Event Hubs névtér megvásárolható, és adott névtér összes eseményközpontjában érvényesülnek.
+Átviteli egységek előre megvásárolt és díjszabása óradíjalapú. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Legfeljebb 20 átviteli egység vásárolható meg az Event Hubs-névtér és a névtér összes event hubs vannak megosztva.
 
-További átviteli egységek vásárlásához vegye fel a kapcsolatot az Azure támogatási szolgálatával, ahol 20-as csomagokban vásárolhat átviteli egységeket 100 egységig. Túl 100 átviteli egységek blokkok vásárolhat.
+További átviteli egységek 20-átviteli egységeket 100 egységig egységekben vásárolhatja meg az Azure támogatási szolgálatával. Meghaladja a korlátot vásárolhat átviteli egységeket 100 blokk.
 
-Azt javasoljuk, hogy optimális mértékben átviteli egységek és partíciók elosztása. Egy partíció legfeljebb egy átviteli egységgel rendelkezhet. Az egyes eseményközpontokban az átviteli egységek száma nem haladhatja meg a partíciók számát.
+Azt javasoljuk, hogy optimális méretezhetőség az átviteli egységek és partíciók kiegyenlítése. Egy partíció legfeljebb egy átviteli egységgel rendelkezhet. Az egyes eseményközpontokban az átviteli egységek száma nem haladhatja meg a partíciók számát.
 
 Részletes információk az Event Hubs díjszabásáról: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -166,7 +169,7 @@ Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi 
 * [Event Hubs programozási útmutató](event-hubs-programming-guide.md)
 * [Rendelkezésre állás és konzisztencia az Event Hubsban](event-hubs-availability-and-consistency.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
-* [Event Hubs – minták][]
+* [Event Hubs-minták][]
 
 [Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
-[Event Hubs – minták]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Event Hubs-minták]: https://github.com/Azure/azure-event-hubs/tree/master/samples

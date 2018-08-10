@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 1475e1955a282581c66235c13d4dbe7153735a35
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e0c9708107139ec899cd5902a68ff90b57b741f7
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526742"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005919"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -674,6 +674,12 @@ if ($fileShare -eq $null) {
 2. Győződjön meg arról **hibrid File Sync szolgáltatásbeli** a listában megjelenik a **olvasó és adatelérés** szerepkör. 
 
     ![A hibrid File Sync szolgáltatásbeli szolgáltatásnév az a tárfiók a hozzáférés-vezérlési lap látható képernyőfelvétel](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
+
+    Ha **hibrid File Sync szolgáltatásbeli** nem szerepelnek a listán, hajtsa végre az alábbi lépéseket:
+
+    - Kattintson a **Hozzáadás** parancsra.
+    - Az a **szerepkör** mezőben válassza **olvasó és adatelérés**.
+    - Az a **kiválasztása** mezőbe írja be a **hibrid File Sync szolgáltatásbeli**, válassza ki a szerepkört, és kattintson a **mentése**.
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 ```PowerShell    

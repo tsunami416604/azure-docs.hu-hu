@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bdbcfca64c2e680dfdf8feefe1bafdefb84981f4
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 975b3d30f242b877512312f8a5a030bde9349287
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125820"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003647"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows-számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -154,7 +154,7 @@ Közvetlenül az ügynök telepítési csomagból lekérdezheti a termékkód, h
     ```
 
 4. [Importálja a MMAgent.ps1 konfigurációs parancsfájlt](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) az Automation-fiókba. 
-5. [Rendeljen hozzá egy Windows-számítógép vagy a csomópont](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-dsc) a konfigurációhoz. 15 percen belül a csomópont ellenőrzi annak konfigurációját, és az ügynököt a csomópontra a rendszer továbbítja.
+5. [Rendeljen hozzá egy Windows-számítógép vagy a csomópont](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) a konfigurációhoz. 15 percen belül a csomópont ellenőrzi annak konfigurációját, és az ügynököt a csomópontra a rendszer továbbítja.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Ellenőrizheti az ügynök csatlakozását a Log Analyticsbe
 

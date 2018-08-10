@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 123ae27310d70812918f3c81ac3b9a71959a6c2c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917227"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003831"
 ---
 # <a name="azure-activity-log-event-schema"></a>Az Azure tevékenységnapló eseménysémája
 A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./monitoring-diagnostic-logs-schema.md) van megadva a cikk végén található.
@@ -120,7 +120,7 @@ A kategória tartalmazza az összes rekordot létrehozni, frissítési, törlés
 | leírás |Statikus szöveg egy esemény leírása. |
 | eventDataId |Az esemény egyedi azonosítója. |
 | Törzsparaméterei |A Http-kérelem leíró BLOB. Általában tartalmazza a "ügyfélkérelem", "clientIpAddress" és "method" (HTTP-metódust. For example, PUT). |
-| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Hiba", "Figyelmeztetés", "Tájékoztatási szintű" vagy "Részletes" |
+| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" és "Tájékoztatási szintű" |
 | resourceGroupName |Az érintett erőforrás az erőforráscsoport neve. |
 | erőforrás-szolgáltató neve |Az érintett erőforrás az erőforrás-szolgáltató neve |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |
@@ -266,7 +266,7 @@ Ez a kategória összes aktiválás az Azure-riasztások rekordot tartalmaz. Itt
 | correlationId | GUID, amely a karakterlánc-formátum. |
 | leírás |A figyelmeztetési esemény statikus szöveges leírása. |
 | eventDataId |A figyelmeztetési esemény egyedi azonosítója. |
-| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Hiba", "Figyelmeztetés", "Tájékoztatási szintű" vagy "Részletes" |
+| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" és "Tájékoztatási szintű" |
 | resourceGroupName |Az érintett erőforrás metrikariasztás esetén az erőforráscsoport neve. Más riasztástípusok esetén, amely tartalmazza a riasztás magát az erőforráscsoport nevét. |
 | erőforrás-szolgáltató neve |Metrikariasztás esetén az érintett erőforrás az erőforrás-szolgáltató neve. Más riasztástípusok esetén ez a riasztás magát az erőforrás-szolgáltató nevét. |
 | resourceId | Metrikariasztás esetén az érintett erőforrás erőforrás-azonosító neve. Más riasztástípusok esetén ez a riasztás erőforrásán erőforrás-Azonosítóját. |
@@ -375,7 +375,7 @@ Ez a kategória tartalmazza a rekord a meghatározott az előfizetés automatiku
 | correlationId | GUID, amely a karakterlánc-formátum. |
 | leírás |Az automatikus skálázási esemény statikus szöveges leírása. |
 | eventDataId |Az automatikus skálázási esemény egyedi azonosítója. |
-| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Hiba", "Figyelmeztetés", "Tájékoztatási szintű" vagy "Részletes" |
+| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" és "Tájékoztatási szintű" |
 | resourceGroupName |Az automatikus skálázási beállítás az erőforráscsoport neve. |
 | erőforrás-szolgáltató neve |Az automatikus skálázási beállítás erőforrás-szolgáltató neve. |
 | resourceId |Automatikus skálázási beállítás erőforrás-azonosító. |
@@ -465,7 +465,7 @@ Ez a kategória tartalmazza azt a rekordot, bármely Azure Security Center álta
 | eventDataId |A biztonsági esemény egyedi azonosítója. |
 | EventName |A biztonsági események rövid neve. |
 | id |A biztonsági események egyedi erőforrás-azonosítója. |
-| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Hiba", "Figyelmeztetés", "Tájékoztatási szintű" vagy "Részletes" |
+| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" vagy "Tájékoztatási szintű" |
 | resourceGroupName |Az erőforrás az erőforráscsoport neve. |
 | erőforrás-szolgáltató neve |Az Azure Security Center erőforrás-szolgáltató neve. Always "Microsoft.Security". |
 | resourceType |A biztonsági esemény, például a "Microsoft.Security/locations/alerts" létrehozott erőforrás típusa |
@@ -545,7 +545,7 @@ Ez a kategória tartalmazza a rekord az új javaslatok, amelyek akkor jönnek l�
 | eventDataId | Az ajánlás esemény egyedi azonosítója. |
 | category | Mindig "javaslat" |
 | id |Az ajánlás esemény egyedi erőforrás-azonosítója. |
-| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Hiba", "Figyelmeztetés", "Tájékoztatási szintű" vagy "Részletes" |
+| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" vagy "Tájékoztatási szintű" |
 | operationName |A művelet neve.  Mindig "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |Az erőforrás az erőforráscsoport neve. |
 | erőforrás-szolgáltató neve |Az erőforrás-szolgáltató, amely a javaslat vonatkozik, például a "MICROSOFT.COMPUTE" erőforrás neve |

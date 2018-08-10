@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 373a35ea7b93c7717cd251e276be60b14df0920f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4da8ec3bb20f2af2b8172731bbf9f43c302ffa94
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400426"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004749"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Az első függvény létrehozása a Java és az eclipse-ben (előzetes verzió)
 
@@ -73,7 +73,7 @@ A modul a konzolablakban az leáll, ha elkészült a függvény tesztelése. Csa
 
 ### <a name="debug-the-function-in-eclipse"></a>Hibakeresés az eclipse-ben a függvény
 
-A Futtatás mint konfigurációját állítsa be az előző lépésben, módosítsa a `azure-functions:run` való `mvn azure-functions:run -DenableDebug` , és futtassa a frissített konfigurációt, a függvényalkalmazás elindításához hibakeresési módban.
+Az a **futtató** állítsa be az előző lépésben, a módosítás konfigurációs `azure-functions:run` való `mvn azure-functions:run -DenableDebug` , és futtassa a frissített konfigurációt, a függvényalkalmazás elindításához hibakeresési módban.
 
 Válassza ki a **futtatása** menüt, és nyissa meg **konfigurációk hibakeresése**. Válasszon **távoli Java-alkalmazás** , és hozzon létre egy újat. Adja meg a konfiguráció nevét, és adja meg a beállításokat. A port a hibakeresési port függvény gazdagépre, amely alapértelmezés szerint az által megnyitott összhangban kell lennie `5005`. A telepítés után kattintson a `Debug` hibakeresésének elkezdéséhez.
 

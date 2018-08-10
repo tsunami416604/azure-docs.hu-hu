@@ -5,18 +5,18 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 08/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 189484291dd337535fe6988f919326b6e997b290
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: b34386a7b416d6f7d8b008a9cb5ef142948a370f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506289"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005395"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid az üzenetek kézbesítését, és próbálkozzon újra 
 
-Ez a cikk bemutatja, hogyan kezeli az Azure Event Grid a kézbesítési nem elfogadott, amikor eseményeket.
+Ez a cikk bemutatja, hogyan kezeli az Azure Event Grid a eseményeket, amikor a kézbesítési arra nem vonatkozik.
 
 Event Grid biztosít a tartós kézbesítési. Minden üzenet legalább egyszer minden egyes előfizetés esetén kínál. Az események küldhetők a regisztrált webhook-előfizetések azonnal. Ha a webhook nem igazolhatom egy eseményt az első kézbesítési kísérlet 60 másodpercen belül, az Event Grid kézbesítési esemény újrapróbálkozik. 
 
@@ -42,11 +42,12 @@ A következő HTTP-válaszkódot adja meg, hogy az esemény kézbesítési kís�
 - 404 – Nem található
 - 408 kérés időtúllépése
 - 414 URI túl hosszú
+- 429 túl sok kérelem
 - 500 Belső kiszolgálóhiba
 - 503 A szolgáltatás nem érhető el
 - 504 Időtúllépés az átjárón
 
-Event Grid megkapja a hibát, amely azt jelzi, hogy a végpont átmenetileg nem érhető el, ha megpróbálja újra az eseményt. Ha eseményrács egy hibaüzenetet, amely a szállítási soha nem fog sikerülni, és [kézbesíthetetlen levelek végpont konfigurálva van](manage-event-delivery.md), a kézbesíthetetlen levelek végpont elküldi az eseményt. 
+Ha eseményrács hiba, amely azt jelzi, hogy a végpont átmenetileg nem érhető el, vagy egy jövőbeli kérés sikeres lehet, újrapróbálkozik az eseményt. Ha eseményrács egy hibaüzenetet, amely a szállítási soha nem fog sikerülni, és [kézbesíthetetlen levelek végpont konfigurálva van](manage-event-delivery.md), a kézbesíthetetlen levelek végpont elküldi az eseményt. 
 
 ## <a name="retry-intervals-and-duration"></a>Újrapróbálkozási időközök és időtartama
 
@@ -62,7 +63,7 @@ Event Grid egy exponenciális leállítási újrapróbálkozási házirend esem�
 
 Event Grid egy kis véletlenszerű ad hozzá minden újrapróbálkozási időközhöz. Egy óra elteltével eseménykézbesítés rendszer óránként egyszer.
 
-Alapértelmezés szerint az Event Grid összes eseményt, amely még nem lett kézbesítve 24 órán belül lejár. Is [testre szabhatja az újrapróbálkozási szabályzat](manage-event-delivery.md) egy esemény-előfizetés létrehozásakor. Biztosítanak a maximális számát (alapértelmezés: 30) a kézbesítési kísérletek és az esemény élő idő (1440 perc az alapértelmezett érték).
+Alapértelmezés szerint az Event Grid összes eseményt, amely nem biztosított 24 órán belül lejár. Is [testre szabhatja az újrapróbálkozási szabályzat](manage-event-delivery.md) egy esemény-előfizetés létrehozásakor. Biztosítanak a maximális számát (alapértelmezés: 30) a kézbesítési kísérletek és az esemény élő idő (1440 perc az alapértelmezett érték).
 
 ## <a name="dead-letter-events"></a>Kézbesítetlen üzenetek esemény
 

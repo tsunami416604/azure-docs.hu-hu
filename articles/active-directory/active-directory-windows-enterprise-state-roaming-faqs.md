@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: ee03ed3159ad2fc1cd8da4a84fd1be34d0b656c8
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e6cb83eb6aaaea38686c63d0f3f70738efa4bcff
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224330"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630756"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 Ez a cikk rendszergazdák lehet beállításai és alkalmazás data Sync szolgáltatással kapcsolatos kérdésekre ad választ.
@@ -99,7 +99,7 @@ Enterprise State Roaming tárolja az összes szinkronizált adatot az Azure-felh
 ## <a name="who-owns-the-data-thats-being-roamed"></a>Kié az adatokat, amelyek a forrásul van folyamatban?
 A saját vállalatok számára az adatok forrásul Enterprise State Roaming-n keresztül. Az Azure-adatközpontban tárolt adatokat. Összes felhasználói adatot van titkosítva, mind az átvitel során, míg az inaktív, a felhőben az Azure Information Protection az Azure Rights Management szolgáltatás használatával. Ez az, hogy javulást Microsoft tárfiókalapú beállítások szinkronizálása, amely csak bizonyos felhasználói hitelesítő adatokat például bizalmas adatokat titkosítja, mielőtt az eszköz kikerül képest.
 
-A Microsoft elkötelezett a vásárlói adatok védelmére. Mielőtt elhagyja a Windows 10 rendszerű eszköz, hogy más felhasználó nem tudja olvasni ezeket az adatokat egy vállalati felhasználó beállítások adatokat automatikusan titkosítja az Azure Rights Management szolgáltatás által. Ha a szervezet rendelkezik az Azure Rights Management szolgáltatás fizetős, is egyéb adatvédelmi funkciói, például nyomon követheti és visszavonhatja a dokumentumot, automatikusan bizalmas információkat tartalmazó e-mailek védelme, és kézben tarthatja saját kulcsait (a "használata a saját kulcs"megoldás, más néven BYOK). Ezek a funkciók és a védelmi szolgáltatás működésével kapcsolatos további információkért lásd: [Mi az Azure Rights Management](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection).
+A Microsoft elkötelezett a vásárlói adatok védelmére. Mielőtt elhagyja a Windows 10 rendszerű eszköz, hogy más felhasználó nem tudja olvasni ezeket az adatokat egy vállalati felhasználó beállítások adatokat automatikusan titkosítja az Azure Rights Management szolgáltatás által. Ha a szervezet rendelkezik az Azure Rights Management szolgáltatás fizetős, is egyéb adatvédelmi funkciói, például nyomon követheti és visszavonhatja a dokumentumot, automatikusan bizalmas információkat tartalmazó e-mailek védelme, és kézben tarthatja saját kulcsait (a "használata a saját kulcs"megoldás, más néven BYOK). Ezek a funkciók és a védelmi szolgáltatás működésével kapcsolatos további információkért lásd: [Mi az Azure Rights Management](/azure/information-protection/what-is-information-protection).
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>Kezelheti egy adott alkalmazás vagy beállítás-szinkronizálás?
 A Windows 10-es nem tartozik MDM vagy a csoportházirend beállítás letiltása barangolás esetén az egyes alkalmazásokhoz. A bérlői rendszergazdák letilthatják appdata szinkronizálása a felügyelt eszközök összes alkalmazáshoz, de nem lehet finomabb szabályozásra alkalmazásonkénti vagy alkalmazáson belül szinten van.

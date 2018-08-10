@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: shlo
-ms.openlocfilehash: e1ca5356959197ae416caf0330a5a1c7eec96f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7f186a819e2142bef6e736c7f7b5d0c733413fd5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621453"
+ms.locfileid: "39716331"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -77,7 +77,7 @@ A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcso
 
 ![A UX szerzői kód tárház beállításainak konfigurálása](media/author-visually/configure-repo-2.png)
 
-#### <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-adattár
+## <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-adattár
 
 Váltson át egy másik Git-adattár, keresse meg a ikonra a Data Factory – Áttekintés lap jobb felső sarokban az alábbi képernyőképen látható módon. Ha nem látja a ikonra, törölje a helyi böngésző gyorsítótárát. Válassza ki a ikonra kattintva távolítsa el az aktuális tárház a hozzárendelését.
 
@@ -85,7 +85,7 @@ Miután eltávolítja a társítást az aktuális tárház, konfigurálhatja a G
 
 ![Távolítsa el az aktuális Git-adattárat a hozzárendelését.](media/author-visually/remove-repo.png)
 
-### <a name="use-version-control"></a>Használja a verziókövetés
+## <a name="use-version-control"></a>Használja a verziókövetés
 Verziókövető rendszereket (más néven _verziókövetés_) lehetővé teszik a fejlesztőknek, kód és nyomon követésére helyadatbázisokban végrehajtott módosításokat a kód alap másokkal közös használatához. Verziókövetés fontos több fejlesztési projektek eszközzel.
 
 Minden egyes VSTS Git-tárház az adat-előállító társított együttműködési ág rendelkezik. (`master` alapértelmezett együttműködési ág). Felhasználók is létrehozhat a szolgáltatás ágak kattintva **+ új ág** és végezze el a szolgáltatás ágak fejlesztés.
@@ -96,7 +96,7 @@ Amikor készen áll a funkció fejlesztéséhez a szolgáltatás ágban, kattint
 
 ![Új lekéréses kérelem létrehozása](media/author-visually/create-pull-request.png)
 
-#### <a name="publish-code-changes"></a>Kód módosítások közzététele
+## <a name="publish-code-changes"></a>Kód módosítások közzététele
 Rendelkezik sikeresen összevonta a együttműködési ág módosításai után (`master` az alapértelmezett beállítás), jelölje be **közzététel** , manuálisan tegye közzé a kódmódosításokat a főágban, a Data Factory szolgáltatásban.
 
 ![Módosítások mentése a Data Factory szolgáltatásban](media/author-visually/publish-changes.png)
@@ -104,16 +104,16 @@ Rendelkezik sikeresen összevonta a együttműködési ág módosításai után 
 > [!IMPORTANT]
 > Nem áll a Data Factory szolgáltatásban üzembe helyezett képviselő a master ággal. A főág *kell* manuálisan tehetők közzé a Data Factory szolgáltatásban.
 
-### <a name="author-with-github-integration"></a>Felügyeleti csomagok készítése a Github-integráció
+## <a name="author-with-github-integration"></a>Felügyeleti csomagok készítése a GitHub-integráció
 
-Github-integráció történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító egy Github-fiók tárházat a verziókövetés, együttműködési, versioning is társíthat. Egy Github-fiók több tárházak rendelkezhet, de egy Github-adattár társítható csak egy adat-előállító. Ha nem rendelkezik aGithub fiók vagy a tárház, hajtsa végre a [ezek az utasítások](https://github.com/join) az erőforrások létrehozásához. A GitHub-integráció, a Data Factory támogatja mind nyilvános Github és a GitHub Enterprise-zal.
+GitHub-integráció történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító egy GitHub-fiók tárházat a verziókövetés, együttműködési, versioning is társíthat. Egy GitHub-fiók több tárházak rendelkezhet, de egy GitHub-adattár társítható csak egy adat-előállító. Ha nem rendelkezik aGitHub fiók vagy a tárház, hajtsa végre a [ezek az utasítások](https://github.com/join) az erőforrások létrehozásához. A GitHub-integráció, a Data Factory támogatja mind nyilvános GitHub és a GitHub Enterprise-zal.
 
 > [!NOTE]
-> Egy Github-adattár feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölt fel egy Github-tárházat az Azure Storage tárolja, a parancsfájl vagy adatfájlok.
+> Egy GitHub-adattár feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölt fel egy GitHub-tárházat az Azure Storage tárolja, a parancsfájl vagy adatfájlok.
 
-#### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Egy nyilvános Github-adattár konfigurálása az Azure Data Factoryvel
+### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Egy nyilvános GitHub-adattár konfigurálása az Azure Data Factoryvel
 
-Az adat-előállító két módszer segítségével konfigurálhatja egy Github-adattárból.
+Az adat-előállító két módszer segítségével konfigurálhatja egy GitHub-adattárból.
 
 **1 (nyilvános tárházban) a konfigurálási módszerhez: első lépések lap**
 
@@ -130,24 +130,24 @@ A panelen látható a következő VSTS kód adattár beállításai:
 | **Beállítás**                                              | **Leírás**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Érték**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | **Adattár típusa**                                      | A VSTS-kódtárral típusa.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
-| **GitHub-fiók**                                       | A GitHub-fiók neve. Ez a név megtalálja https://github.com/{account neve} / {adattár neve}. Ellenőrizheti, hogy ezen a lapon kéri, hogy adja meg a Github OAuth hitelesítő adatokat ahhoz a GitHub-fiókhoz.                                                                                                                                                                                                                                               |                    |
+| **GitHub-fiók**                                       | A GitHub-fiók neve. Ez a név megtalálja https://github.com/{account neve} / {adattár neve}. Ellenőrizheti, hogy ezen a lapon kéri, hogy adja meg a GitHub OAuth hitelesítő adatokat ahhoz a GitHub-fiókhoz.                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | A GitHub code-adattár neve. GitHub-fiókjukban, kezelheti a forráskód Git-tárházak tartalmaznak. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely már a fiókjához.                                                                                                                                                                                                                              |                    |
 | **Együttműködés ág**                                 | A GitHub együttműködési ág közzététel szolgálja ki. Alapértelmezés szerint a főadatbázis. Ezen beállítás módosításához, abban az esetben, ha szeretne közzétenni egy másik ágban származó erőforrásokat.                                                                                                                                                                                                                                                               |                    |
 | **Gyökérmappa**                                          | A legfelső szintű mappát a GitHub együttműködési ágban.                                                                                                                                                                                                                                                                                                                                                                             |                    |
 | **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy GitHub-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 | **Az erőforrás importálásához ág**                       | Itt adhatja meg, mely a főágban (a folyamatok, adatkészletek, a társított szolgáltatások stb.) a data factory-erőforrások importálása. Erőforrások importálhatja a következő fiókok közül: egy. Együttműködés b. Hozzon létre új c. Meglévő használata                                                                                                                                                                                                     |                    |
 
-**2 (nyilvános tárházban) a konfigurálási módszerhez: UX szerzői vászon**
+#### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>2 (nyilvános tárházban) a konfigurálási módszerhez: UX szerzői vászon
 
 Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 
 A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcsolatos információkért lásd: található leírások *konfigurációs módszer 1* felett.
 
-#### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>A Github Enterprise-zal adattár konfigurálása az Azure Data Factoryvel
+### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>A GitHub Enterprise-zal adattár konfigurálása az Azure Data Factoryvel
 
-Az adat-előállító két módszer segítségével konfigurálhatja a Github Enterprise-zal tárház.
+Az adat-előállító két módszer segítségével konfigurálhatja a GitHub Enterprise-zal tárház.
 
-**1 (Enterprise tárházban) a konfigurálási módszerhez: első lépések lap**
+ #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>1 (Enterprise tárházban) a konfigurálási módszerhez: első lépések lap
 
 Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
 
@@ -164,14 +164,14 @@ A panelen látható a következő VSTS kód adattár beállításai:
 | **Adattár típusa**                                      | A VSTS-kódtárral típusa.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **Használja a GitHub Enterprise-zal**                                | Jelölőnégyzetet, válassza ki a GitHub Enterprise-zal                                                                                                                                                                                                                                                                                                                                                                                              |                    |
 | **GitHub Enterprise-zal URL-címe**                                | A GitHub Enterprise-zal gyökér URL-címe. Például:https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
-| **GitHub-fiók**                                       | A GitHub-fiók neve. Ez a név megtalálja https://github.com/{account neve} / {adattár neve}. Ellenőrizheti, hogy ezen a lapon kéri, hogy adja meg a Github OAuth hitelesítő adatokat ahhoz a GitHub-fiókhoz.                                                                                                                                                                                                                                               |                    |
+| **GitHub-fiók**                                       | A GitHub-fiók neve. Ez a név megtalálja https://github.com/{account neve} / {adattár neve}. Ellenőrizheti, hogy ezen a lapon kéri, hogy adja meg a GitHub OAuth hitelesítő adatokat ahhoz a GitHub-fiókhoz.                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | A GitHub code-adattár neve. GitHub-fiókjukban, kezelheti a forráskód Git-tárházak tartalmaznak. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely már a fiókjához.                                                                                                                                                                                                                              |                    |
 | **Együttműködés ág**                                 | A GitHub együttműködési ág közzététel szolgálja ki. Alapértelmezés szerint a főadatbázis. Ezen beállítás módosításához, abban az esetben, ha szeretne közzétenni egy másik ágban származó erőforrásokat.                                                                                                                                                                                                                                                               |                    |
 | **Gyökérmappa**                                          | A legfelső szintű mappát a GitHub együttműködési ágban.                                                                                                                                                                                                                                                                                                                                                                             |                    |
 | **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy GitHub-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 | **Az erőforrás importálásához ág**                       | Itt adhatja meg, mely a főágban (a folyamatok, adatkészletek, a társított szolgáltatások stb.) a data factory-erőforrások importálása. Erőforrások importálhatja a következő fiókok közül: egy. Együttműködés b. Hozzon létre új c. Meglévő használata                                                                                                                                                                                                     |                    |
 
-**2 (Enterprise tárházban) a konfigurálási módszerhez: UX szerzői vászon**
+#### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>2 (Enterprise tárházban) a konfigurálási módszerhez: UX szerzői vászon
 
 Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 

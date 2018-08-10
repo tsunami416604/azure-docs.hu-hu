@@ -1,9 +1,9 @@
 ---
-title: Események küldése az Azure Event Hubs C használatával |} Microsoft Docs
+title: Események küldése az Azure Event Hubs C használatával |} A Microsoft Docs
 description: Események küldése az Azure Event Hubs C használatával
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,45 +13,45 @@ ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
 ms.date: 12/4/2017
-ms.author: sethm
-ms.openlocfilehash: e3267b54fa0c8593e0f9366c009656f36e4094ef
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.author: shvija
+ms.openlocfilehash: 25da8255af6a23a4f01db5a1ec4f1ddcd2eeb1bb
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807815"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002457"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Események küldése az Azure Event Hubs C használatával
 
 ## <a name="introduction"></a>Bevezetés
-Az Event Hubs egy kiválóan méretezhető fogadórendszer, amely is több millió eseményt másodpercenként, az alkalmazás engedélyezése feldolgozni, és elemezze a nagy mennyiségű adatot a csatlakoztatott eszközök és alkalmazások által létrehozott. Miután egy eseményközpontba való összegyűjtését, átalakítás és tárolására is használható adatok bármilyen valós idejű elemzési szolgáltató vagy tárolási fürt használatával.
+Event Hubs szolgáltatás egy kiválóan méretezhető fogadórendszer, amely képes másodpercenként több millió feldolgozására, ezáltal az alkalmazások feldolgozásához, és a csatlakoztatott eszközök és alkalmazások által létrehozott hatalmas adatmennyiségek elemzését. Miután az adatoknak egy eseményközpontba való összegyűjtését, átalakíthatja és adatok bármilyen valós idejű elemzési szolgáltató vagy tárolási fürt használatával tárolhatja.
 
-További információkért lásd: a [Event Hubs – áttekintés](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview).
+További információkért tekintse meg a [Event Hubs – áttekintés](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview).
 
-Ez az oktatóanyag ismerteti, hogyan lehet események küldése az event hubs egy konzolalkalmazás használatával a c kiszolgálóra. További események fogadása, kattintson a bal oldali tartalomjegyzék a megfelelő fogadó nyelvet.
+Ez az oktatóanyag azt ismerteti, hogyan küldhet eseményeket egy eseményközpontba egy konzolalkalmazás a c használatával Fogadott események kapcsolatos további információkért kattintson a megfelelő fogadónyelvre a bal oldali tartalomjegyzékben.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* A C környezet. Ez az oktatóanyag azt feltételezi, hogy az Azure Linux virtuális gép az Ubuntu 14.04 ÖET verembe.
+* C-fejlesztési környezetre. Ez az oktatóanyag feltételezi, hogy a gcc-verem Ubuntu 14.04 Azure Linux rendszerű virtuális Gépekhez.
 * [A Microsoft Visual Studio](https://www.visualstudio.com/).
 * Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="send-messages-to-event-hubs"></a>Üzenetek küldése az Event Hubs szolgáltatásnak
-Ebben a szakaszban is küldi az eseményeket az eseményközpontjába C alkalmazások írásához mutatja be. A kódot használja a Proton AMQP kódtárat a [Apache Qpid projekt](http://qpid.apache.org/). Ez hasonló használata a Service Bus-üzenetsorok és témakörök AMQP c látható az [Ez a példa](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). További információkért lásd: a [Qpid Proton dokumentáció](http://qpid.apache.org/proton/index.html).
+Ez a rész bemutatja, hogyan küldhet eseményeket az eseményközpontjába C alkalmazások írásához. A kód a Proton AMQP kódtárat használja a [Apache Qpid projekt](http://qpid.apache.org/). Ez hasonló a Service Bus-üzenetsorok és témakörök az amqp-vel a C látható módon a [ebben a példában](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). További információkért lásd: a [Qpid Proton dokumentáció](http://qpid.apache.org/proton/index.html).
 
-1. Az a [Qpid AMQP Messenger lap](https://qpid.apache.org/proton/messenger.html), kövesse az utasításokat a környezettől függően Qpid Proton telepítéséhez.
-2. Fordítása a Proton könyvtárban, a következő csomagok telepítése:
+1. Az a [Qpid AMQP Messenger lap](https://qpid.apache.org/proton/messenger.html), kövesse az utasításokat követve Qpid Proton, telepítse a környezettől függően.
+2. A Proton könyvtár fordítása, telepítse a következő csomagokat:
    
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. Töltse le a [Qpid Proton könyvtár](http://qpid.apache.org/proton/index.html), és bontsa ki, pl.:
+3. Töltse le a [Qpid Proton könyvtár](http://qpid.apache.org/proton/index.html), és csomagolja ki, például:
    
     ```shell
     wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
     tar xvfz qpid-proton-0.7.tar.gz
     ```
-4. Hozzon létre egy build directory, a fordítás és a telepítés:
+4. Hozzon létre egy build könyvtárat, fordítás, és telepítse:
    
     ```shell
     cd qpid-proton-0.7
@@ -60,7 +60,7 @@ Ebben a szakaszban is küldi az eseményeket az eseményközpontjába C alkalmaz
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. Munka címtárat, hozzon létre egy új fájlt nevű **sender.c** a következő kóddal. Ne felejtse el lecserélni a SAS/kulcsnév, az eseményközpont neveként és a névtér értékeit. Is helyettesítse be a kulcsot egy URL-kódolású verziója a **SendRule** korábban létrehozott. Beállíthatja az URL-kódolja azt [Itt](http://www.w3schools.com/tags/ref_urlencode.asp).
+5. A munkahelyi könyvtárban hozzon létre egy új fájlt **sender.c** az alábbi kódra. Ne feledje el az értékeket a SAS/kulcsnév, az eseményközpont neve és a névtér. Továbbá cserélje le a kulcs URL-kódolású verzióját a **SendRule** korábban létrehozott. URL-kódolása is azt [Itt](http://www.w3schools.com/tags/ref_urlencode.asp).
    
     ```c
     #include "proton/message.h"
@@ -141,14 +141,14 @@ Ebben a szakaszban is küldi az eseményeket az eseményközpontjába C alkalmaz
         return 0;
     }
     ```
-6. A fájlt, feltéve, hogy **ÖET**:
+6. Fordítsa le a fájlt, feltéve, hogy **gcc**:
    
     ```
     gcc sender.c -o sender -lqpid-proton
     ```
 
     > [!NOTE]
-    > Ez a kód egy kimenő 1-ablakban kimenő üzenetek minél hamarabb kényszerítése használja. Javasoljuk, hogy az alkalmazás megpróbálja kötegelt üzenetek növelheti a teljesítményt. Tekintse meg a [Qpid AMQP Messenger lap](https://qpid.apache.org/proton/messenger.html) olvashat ebben és más környezetekben, illetve a platformok, amelynek kötések találhatók Qpid Proton tár használatára (jelenleg Perl, PHP, Python vagy Ruby).
+    > Ezt a kódot egy kimenő ablakban 1 használja az üzenetek meg minél hamarabb kényszerítése. Javasoljuk, hogy az alkalmazás próbál kötegelt üzenetek átviteli sebesség növelése érdekében. Tekintse meg a [Qpid AMQP Messenger lap](https://qpid.apache.org/proton/messenger.html) ezzel és más környezetekben, és platformokon, amelynek kötések vannak megadva a Qpid Proton library használatával kapcsolatos információk (jelenleg a Perl, a PHP, Python vagy Ruby).
 
 
 ## <a name="next-steps"></a>További lépések

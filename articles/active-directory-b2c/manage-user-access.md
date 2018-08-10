@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8243f67dee231a896f8d7248f9582c333f797d52
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 15bc320bd82ea21ff608fcc834ba51b9bc7b6dea
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480625"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716144"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói hozzáférés felügyelete
 
@@ -106,7 +106,7 @@ Az alábbi lépések bemutatják, hogyan kezelheti a használati feltételek:
 Rögzítheti a feltételek használata elfogadási alatt a következő esetekben:
 
 - Új felhasználó jelentkezik. A használati feltételek jelennek meg, és az elfogadási eredmény tárolja.
-- A felhasználó jelentkezik be, akik korábban elfogadta a legújabb vagy aktív szerződés feltételeit. A használati feltételek nem jelennek meg.
+- Egy felhasználó jelentkezik be, akik korábban elfogadta a legújabb vagy aktív használati feltételeket. A használati feltételek nem jelennek meg.
 - A felhasználó bejelentkezik ki nem már fogadta el a legújabb vagy aktív használati feltételeket. A használati feltételek jelennek meg, és az elfogadási eredmény tárolja.
 - A felhasználó bejelentkezik már elfogadta, akik egy régebbi verzióját a használati feltételeket, amelyek most frissülnek, hogy a legújabb verzióra. A használati feltételek jelennek meg, és az elfogadási eredmény tárolja.
 

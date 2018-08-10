@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
-ms.component: protection
+ms.component: conditional-access
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 7bcfb8d23b9f92db8c5ccae87fceef5fa96ed457
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b59e4898f85de7ad93d9172cdb3c551a17799194
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601996"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630483"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: Szükséges felügyelt eszközökre vonatkozó feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés
 
@@ -34,9 +34,9 @@ Ez a cikk azt ismerteti, hogy hogyan konfigurálhat feltételes hozzáférési s
 
 A felügyelt eszközök megkövetelése a cloud app access ties **Azure AD feltételes hozzáférés** és **Azure AD eszközkezeléséről** együtt. Ha Ön még nem ismeri a következő területeken, olvassa el a következő témakörök először:
 
-- **[Az Azure Active Directory feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)**  – Ez a cikk ismerteti a feltételes hozzáférés és a kapcsolódó terminológia fogalmi áttekintése.
+- **[Az Azure Active Directory feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) ** – Ez a cikk ismerteti a feltételes hozzáférés és a kapcsolódó terminológia fogalmi áttekintése.
 
-- **[Az Eszközfelügyelet az Azure Active Directory bemutatása](../devices/overview.md)**  – Ez a cikk áttekintést nyújt a különböző beállítások eszközök szervezeti ellenőrzés alatt van. 
+- **[Az Eszközfelügyelet az Azure Active Directory bemutatása](../devices/overview.md) ** – Ez a cikk áttekintést nyújt a különböző beállítások eszközök szervezeti ellenőrzés alatt van. 
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -60,11 +60,11 @@ Egyszerűen fogalmazva a felügyelt eszközök azok az alatt álló eszközök *
 
 Három lehetősége van az Azure ad-vel regisztrált eszköz lekéréséhez:
 
-- **[Az Azure ad-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices)**  – az Azure ad-vel regisztrált egy személyes eszköz
+- **[Az Azure ad-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices) ** – az Azure ad-vel regisztrált egy személyes eszköz
 
-- **[Az Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices)**  – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
+- **[Az Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices) ** – egy szervezeti Windows 10 rendszerű eszköz, amely nem csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben. 
 
-- **[Hibrid Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices)**  – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
+- **[Hibrid Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices) ** – a Windows 10-es vagy a támogatott régebbi verziójú eszközt, amely csatlakozik egy helyszíni ad-ben regisztrált az Azure ad-ben.
 
 Felügyelt eszközzé válik, egy regisztrált eszközt kell, vagy egy **hibrid Azure AD-hez csatlakoztatott eszköz** vagy egy **megfelelőként megjelölt eszköz**.  
 

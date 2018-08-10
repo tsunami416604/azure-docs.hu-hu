@@ -171,6 +171,8 @@
           href: functions-how-to-use-azure-function-app-settings.md
         - name: Futtatókörnyezet verziójának beállítása
           href: set-runtime-version.md
+        - name: Függvény letiltása
+          href: disable-function.md
     - name: Figyelés
       href: functions-monitoring.md
     - name: Integrálás

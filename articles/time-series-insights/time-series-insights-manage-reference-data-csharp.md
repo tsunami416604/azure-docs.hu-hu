@@ -1,43 +1,43 @@
 ---
-title: Azure idő adatsorozat Insights környezetben C# referencia adatok kezelése |} Microsoft Docs
-description: Ez a cikk a C# (c-éles) .NET nyelve egyéni alkalmazás létrehozásával referenciaadatok Azure idő adatsorozat Insights környezet kezelését ismerteti.
+title: Az Azure Time Series Insights-környezet C# referencia-adatok kezelése |} A Microsoft Docs
+description: Ez a cikk ismerteti az Azure Time Series Insights-környezet referenciaadatok kezelése a C# (c-éles) .NET nyelven írt egyéni alkalmazás létrehozásával.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: venkatja
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 0bb216e8be98b0ee795176a6d3ca9ed73baad231
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 52456533d40c8efde6a196d4e480c06bce2f08ab
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294124"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629185"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# használatával referenciaadatok Azure idő adatsorozat Insights környezet kezelése
+# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Az Azure Time Series Insights-környezet referenciaadatok kezelése a C# használatával
 
-Ez a cikk egy C# példaprojektet ír referenciaadatok Azure idő adatsorozat Insights környezet kezeléséhez állíthat össze.
+Ez a cikk ismerteti egy példa C#-projektben a referencia-adatok az Azure Time Series Insights-környezet kezelése állíthat össze.
 
-## <a name="prerequistes"></a>Prerequistes
-Fordítsa le és futtassa a mintakódot előtt, kövesse az alábbi lépéseket:
+## <a name="prerequistes"></a>Előfeltételeket
+Fordítsa le és futtassa a mintakód előtt, kövesse az alábbi lépéseket:
 1. [Hozzon létre egy referencia-adatkészlet](time-series-insights-add-reference-data-set.md).
 
-2. Állítsa be az alkalmazás számára az engedélyezési jogkivonatot. Győződjön meg arról, hogy a jogkivonat keletkezik, az Azure Active Directory API-n keresztül. Akkor adja át ennek a jogkivonat a `Authorization` minden lekérdezés API-kérelem fejlécében. 
+2. Állítsa be az alkalmazás a hitelesítési hozzáférési jogkivonat. Győződjön meg arról, hogy a jogkivonat igényelve, a Azure Active Directory API-n keresztül. Meg kell átadnia a tokent a `Authorization` minden query API-kérelem fejléce. 
  
-   Nem interaktív alkalmazások beállításával kapcsolatos információkért lásd: [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md).
+   Nem interaktív alkalmazások beállításával kapcsolatos további információkért lásd: [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md).
 
-3. Cserélje le a példában állandók, a kijelölt mintakódot szerkesztése **#DUMMY #**, a kód elejére közelében. 
+3. A mintakód cserélje le a példában állandókat, a kijelölt szerkesztése **DUMMY #**, a kód kezdetét közelében. 
 
 Ez a példa kód is érhető el: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
 
-## <a name="project-references"></a>A projekt hivatkozásainak
-Adja hozzá a NuGet-csomagok `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json` ehhez a példához. 
+## <a name="project-references"></a>Projekt Referenciáihoz
+Adja hozzá a NuGet-csomagok `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json` ebben a példában. 
 
-## <a name="c-sample-code"></a>C# mintakód 
+## <a name="c-sample-code"></a>C#-mintakód 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 27068c1154a4cc5776bbcc74922ca31c4f28ced6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4e6600d81fedd884cf415d055aedd29d163b3365
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399917"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629650"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>A hibrid Azure Active Directory join megvalósítás tervezése
 
@@ -96,6 +96,13 @@ Megbízható függő entitásokat a rendszer-előkészítő eszköz (Sysprep), h
 Ha további virtuális gépek létrehozása egy virtuális gép (VM) pillanatképre, győződjön meg arról, hibrid Azure AD-csatlakozás a virtuális gép pillanatképét, amely nincs konfigurálva használhat.
 
 A Windows régebbi verziójú eszközök regisztrálása nem támogatott eszközök felhasználói profil központi vagy a hitelesítő adatok barangolás konfigurálva. Ha Ön hagyatkoznia a barangoló profilok vagy a beállítások, használja a Windows 10-es.
+
+- A Windows régebbi verziójú eszközök regisztrációja **van** nem összevont környezetben keresztül zökkenőmentes egyszeri bejelentkezést támogatja [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
+ 
+- A Windows régebbi verziójú eszközök regisztrációja **nem** nélkül zökkenőmentes egyszeri bejelentkezést az Azure AD átmenő hitelesítés használata esetén támogatott.
+
+- A Windows régebbi verziójú eszközök regisztrációja **nem** barangoló profilok használó eszközök esetében támogatott. Ha Ön hagyatkoznia a barangoló profilok vagy a beállítások, használja a Windows 10-es.
+
 
 A regisztráció, a tartományvezérlőn (DC) szerepkört futtató Windows Server nem támogatott.
 

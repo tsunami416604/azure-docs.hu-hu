@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: fb4ac675462cf9946a0667e2956c4c0c75b591bf
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f0a6e164ed6b2269ec223a18f37d3475316d3e77
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390347"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629072"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>A helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációjával
 Ha munkahelyi-csatlakozás a felhasználók saját eszközét, az Azure Active Directory (Azure AD) eszközregisztrációs szolgáltatás, eszközeiket is lehet megjelölve ismert, hogy a szervezet. Következő egy lépésenkénti útmutató a helyszíni alkalmazások feltételes hozzáférése engedélyezve van a Windows Server 2012 R2 Active Directory összevonási szolgáltatások (AD FS) használatával.
@@ -158,14 +158,14 @@ Nincsenek számos különböző módon való kommunikációhoz az URL-címet a f
 
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Windows 8.1-eszköz csatlakoztatása az Azure Active Directory eszközregisztrációjával
 1. Válassza ki a Windows 8.1-eszköz **gépház** > **hálózati** > **munkahelyi**.
-2. Egyszerű felhasználónév formátumú; adja meg a felhasználónevet Ha például **dan@contoso.com**.
+2. Egyszerű felhasználónév formátumú; adja meg a felhasználónevet Ha például ** dan@contoso.com **.
 3. Válassza ki **csatlakozzon**.
 4. Amikor a rendszer kéri, jelentkezzen be hitelesítő adataival. Az eszköz most már csatlakozott.
 
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Windows 7 eszköz csatlakoztatása az Azure Active Directory eszközregisztrációjával
 Windows 7-tartományhoz csatlakoztatott eszközök regisztrálását, telepíteni kell a [eszközregisztrációs szoftvercsomagot](https://www.microsoft.com/download/details.aspx?id=53554).
 
-A csomag használatával kapcsolatos utasításokért lásd: [Windows Installer-csomagokat a Windows 10-számítógépeket](devices/hybrid-azuread-join-manual-steps.md#windows-installer-packages-for-non-windows-10-computers).
+A csomag használatával kapcsolatos utasításokért lásd: [Windows Installer-csomagokat a Windows 10-számítógépeket](devices/hybrid-azuread-join-control.md#control-windows-down-level-devices).
 
 ## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>Győződjön meg arról, hogy regisztrált eszközöket a rendszer visszaírja az Active Directoryhoz
 Megtekintheti, és győződjön meg arról, hogy az eszköz objektumok alkalmazáskonfigurációjának vissza az Active Directory LDP.exe vagy ADSI-szerkesztő használatával. Mindkét érhetők el az Active Directory rendszergazdai eszközök.

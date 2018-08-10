@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 446fe139e3d1abe79b877d663842f7c7c6168f19
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 01aeaee03a4cfabbda3a29cddd17febdc8a16e45
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126694"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003532"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
@@ -31,7 +31,7 @@ Minden IoT Hub-csomag érhető el három méretben alapú körül mennyi adat á
 
 A standard szintű IoT-központ összes funkciókat tesz elérhetővé, és kötelező megadni minden olyan IoT-megoldások, győződjön meg arról, hogy a kívánt kétirányú kommunikációt képességeket használhatja. Az alapszintű csomag lehetővé teszi, hogy az funkciók egy részét, és csak egyirányú kommunikációs eszközökről a felhőbe igénylő IoT-megoldások szól. Mindkét rétegei ugyanazokat a biztonsági és hitelesítési szolgáltatásokat.
 
-Miután létrehozta az IoT hub a frissíthető az alapszintű csomag a standard szintre a meglévő operations megszakítása nélkül. További információkért lásd: [az IoT hub frissítése](iot-hub-upgrade.md). Vegye figyelembe, hogy a partíció korlátot, az alapszintű díjcsomag az IoT Hub 8. Ez a korlátozás változatlan marad, az alapszintű csomag a standard szintű csomag áttelepítésekor.
+Miután létrehozta az IoT hub a frissíthető az alapszintű csomag a standard szintre a meglévő operations megszakítása nélkül. További információkért lásd: [az IoT hub frissítése](iot-hub-upgrade.md). Vegye figyelembe, hogy a partíciók maximális korlátot, az alapszintű csomag az IoT Hub 8 és a standard csomag az 32. A legtöbb IoT-központok csak 4 partíciók van szükség. A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és az eszköz – felhő üzeneteket vonatkozik, az ezeket az üzeneteket az egyidejű olvasók. Ez az érték az alapszintű csomag a standard szintű csomag áttelepítésekor változatlan marad. Azt is vegye figyelembe, hogy csak egyféle típusú [edition](https://azure.microsoft.com/pricing/details/iot-hub/) szinten belüli választható ki az IoT Hub száma. Létrehozhat például egy IoT hubot, több S1-egységet, de nem különböző kiadásait, például az S1 és B3, vagy S1 és S2 egységek vegyesen.
 
 | Képesség | Alapszintű csomag | Standard csomag |
 | ---------- | ---------- | ------------- |
@@ -106,6 +106,9 @@ Mellett az átviteli sebességgel kapcsolatos információkat lásd: [az IoT Hub
 Az IoT Hub identitásjegyzék műveletei vannak nem lehet futásidejű művelet, mivel ezek többnyire kapcsolódó eszközök üzembe helyezését.
 
 Adott burst teljesítményszámokhoz lásd [az IoT Hub kvótái és szabályozások][IoT Hub quotas and throttles].
+
+## <a name="auto-scale"></a>Automatikus méretezés
+Ha Ön hamarosan eléri az engedélyezett üzenetkorlát az IoT hubon, akkor használhatja ezeket [automatikusan elvégzi a méretezést lépéseket](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) egy IoT Hub egységet az IoT hubbal megegyező szinten növekszik.
 
 ## <a name="sharding"></a>Sharding
 Egyetlen IoT hubra eszközök millióira méretezhetők, míg egyes esetekben a megoldáshoz szükséges specifikus teljesítményt nyújt, amely nem garantálja az egyetlen IoT hubra. Ebben az esetben az eszközök particionáló több IoT hubon keresztül. Több IoT hubon forgalomnövekedések smooth, és szerezze be a szükséges kapacitás vagy a művelet díjakat, amelyek szükségesek.

@@ -1,31 +1,31 @@
 ---
-title: Hozzon létre egy Azure event hubs |} Microsoft Docs
-description: Hozzon létre egy Azure Event Hubs névtér és egy eseményközpontot, az Azure portál használatával
+title: Az Azure event hub létrehozása |} A Microsoft Docs
+description: Hozzon létre egy Azure Event Hubs-névtér és a egy eseményközpontot, az Azure portal használatával
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
-ms.author: sethm
-ms.openlocfilehash: 9b466d4e727c1511ca2318c0da3ec2807a965a5d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: shvija
+ms.openlocfilehash: fb2020f7bfc8521e141adb4eefbc227e8123a269
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625542"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002620"
 ---
-# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Hozzon létre egy Event Hubs névtér és egy eseményközpontot, az Azure portál használatával
+# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Hozzon létre egy Event Hubs-névtér és a egy eseményközpontot, az Azure portal használatával
 
-## <a name="create-an-event-hubs-namespace"></a>Az Event Hubs-névtér létrehozása
+## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-1. Jelentkezzen be a [Azure-portálon][Azure portal], és kattintson a **hozzon létre egy erőforrást** , a képernyő bal felső.
-2. Kattintson a **az eszközök internetes hálózatát**, és kattintson a **Event Hubs**.
+1. Jelentkezzen be a [az Azure portal][Azure portal], és kattintson a **erőforrás létrehozása** , a képernyő bal felső.
+2. Kattintson az **Eszközök internetes hálózata**, majd az **Event Hubs** lehetőségre.
    
     ![](./media/event-hubs-create/create-event-hub9.png)
 
-3. A **névtér létrehozása**, adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.  
+3. A **Névtér létrehozása** területen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.  
 
 4. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic vagy Standard). Valamint válassza ki azt az Azure-előfizetést, erőforráscsoportot és helyet, amellyel az erőforrást létre kívánja hozni.
  
@@ -33,19 +33,19 @@ ms.locfileid: "34625542"
 
     ![](./media/event-hubs-create/create-event-hub1.png)
 
-6. A portál névterek listája kattintson az újonnan létrehozott névtérre.
+6. A névterek listájában a Portalon kattintson az újonnan létrehozott névtérre.
 
-7. Kattintson a **megosztott elérési házirendek**, és kattintson a **RootManageSharedAccessKey**.
+7. Kattintson a **Megosztott elérési szabályzatok** lehetőségre, majd a **RootManageSharedAccessKey** elemre.
     
     ![](./media/event-hubs-create/create-event-hub7.png)
 
-8. Kattintson a másolás gombra, hogy a **RootManageSharedAccessKey** kapcsolati sztringet a vágólapra másolja. Mentse ezt a kapcsolati karakterláncot egy ideiglenes helyre, például a Jegyzettömbben későbbi használat céljából.
+8. Kattintson a másolás gombra, hogy a **RootManageSharedAccessKey** kapcsolati sztringet a vágólapra másolja. Mentse ezt a kapcsolati sztringet egy átmeneti helyre, például a Jegyzettömbbe, mert később szüksége lesz rá.
     
     ![](./media/event-hubs-create/create-event-hub8.png)
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-1. Az Event Hubs névtér, kattintson az újonnan létrehozott névtér.      
+1. Az Event Hubs névtérlistájában kattintson az újonnan létrehozott névtérre.      
    
     ![](./media/event-hubs-create/create-event-hub2.png) 
 
@@ -53,12 +53,12 @@ ms.locfileid: "34625542"
    
     ![](./media/event-hubs-create/create-event-hub3.png)
 
-3. Kattintson a panel tetején **+ Eseményközpont**.
+3. Kattintson a panel tetején **+ Event Hub**.
    
     ![](./media/event-hubs-create/create-event-hub4.png)
-4. Adja meg az eseményközpont nevét, majd kattintson az **létrehozása**. 
+4. Adjon egy nevet az eseményközpontnak, majd kattintson a **Létrehozás** elemre. 
 
-Az eseményközpont megtörtént, és az események küldéséhez és fogadásához szükséges kapcsolati karakterlánccal rendelkezik.
+Az eseményközpont létrehozása megtörtént, és a az események küldéséhez és fogadásához szükséges kapcsolati karakterlánccal rendelkezik.
 
 ## <a name="next-steps"></a>További lépések
 

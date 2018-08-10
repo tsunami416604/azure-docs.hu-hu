@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: e732164e50a270b3eacdef2e5c17e6c226702103
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: c9595b0e6313dc4620b48296fdca6dc2c6ae6413
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596130"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628137"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
@@ -197,19 +197,6 @@ Ha a sablon szintaktikai hibát tartalmaz, a parancs visszaadja egy hibaüzenet,
 }
 ```
 
-[!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
-
-Teljes módot használja, használja a `mode` paramétert:
-
-```azurecli-interactive
-az group deployment create \
-  --name ExampleDeployment \
-  --mode Complete \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS
-```
-
 ## <a name="sample-template"></a>Példasablon
 
 Ebben a cikkben szereplő példák a következő sablon szolgál. Másolja, és mentse egy storage.json nevű fájlt. Ez a sablon létrehozása ismertetése: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).  
@@ -261,7 +248,7 @@ Ebben a cikkben szereplő példák a következő sablon szolgál. Másolja, és 
 
 ## <a name="next-steps"></a>További lépések
 * Ebben a cikkben szereplő példák erőforrások üzembe helyezése az erőforráscsoporthoz, az alapértelmezett előfizetést. Használjon másik előfizetést, lásd: [több Azure-előfizetések kezelése](/cli/azure/manage-azure-subscriptions-azure-cli).
-* Teljes minta parancsfájl, amely üzembe helyezi a sablont, tekintse meg a [Resource Manager-sablon üzembe helyezési parancsfájl](resource-manager-samples-cli-deploy.md).
+* Adja meg, hogyan kezelje az erőforrást, amely az erőforráscsoportban létezik, de nincsenek definiálva a sablonban, lásd: [Azure Resource Manager üzembe helyezési mód](deployment-modes.md).
 * A sablonban szereplő paraméterekkel definiálása ismertetése: [struktúra és az Azure Resource Manager-sablonok szintaxisát](resource-group-authoring-templates.md).
 * Gyakori üzembehelyezési hibák elhárítása a tippek: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * SAS-token igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-cli-sas-token.md).

@@ -1,75 +1,75 @@
 ---
-title: Események küldése az Azure idő adatsorozat Insights környezetre |} Microsoft Docs
-description: Ez az oktatóanyag azt ismerteti, hogyan létrehozása és konfigurálása az event hubs, és futtassa a mintaalkalmazást, leküldéses események jelennek meg Azure idő adatsorozat Insights.
+title: Hogyan küldhet eseményeket egy Azure Time Series Insights-környezetbe |} A Microsoft Docs
+description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre és konfigurálhatja az event hubs és a mintaalkalmazás futtatása események leküldéséhez jelennek meg az Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: venkatja
-manager: jhubbard
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.author: anshan
+manager: cshankar
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: fb550942debf26691a0deac2a1ad8093128e4e63
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 30b83c54d314934f1de170955eec22e7b2a264b8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294513"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629752"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Események küldése Time Series Insights-környezetbe eseményközponton keresztül
-Ez a cikk ismerteti, hogyan hozza létre és konfigurálja az eseményközpont, és futtassa a mintaalkalmazást leküldéses eseményekre. Ha egy meglévő event hubs eseményközpontot, az események JSON formátumban, ez az oktatóanyag kihagyhatja, és megtekintheti a környezet [idő adatsorozat Insights](https://insights.timeseries.azure.com).
+Ez a cikk azt ismerteti, hogyan hozhat létre és konfigurálhatja az eseményközpont, és futtathat egy mintaalkalmazást események leküldéséhez. Ha egy meglévő eseményközponton eseményekkel rendelkező JSON-formátumban, átugorhatja ezt az oktatóanyagot, és megtekintheti a környezetet a [Time Series Insights](https://insights.timeseries.azure.com).
 
 ## <a name="configure-an-event-hub"></a>Eseményközpont konfigurálása
 1. Eseményközpont létrehozásához kövesse az Event Hubs [dokumentációjában](../event-hubs/event-hubs-create.md) foglalt utasításokat.
 
-2. Keresse meg **eseményközpont** a keresési sávon. Kattintson a **Event Hubs** a visszaadott lista.
+2. Keresse meg **eseményközpont** a keresősávba. Kattintson a **az Event Hubs** a visszaadott listában.
 
-3. Az eseményközpont kijelöléséhez kattintson a nevére.
+3. Az eseményközpont nevére kattintva kiválaszthat.
 
-4. A **entitások** középső konfigurációs ablakában kattintson **Event Hubs** újra.
+4. A **entitások** középső konfigurációs ablakában kattintson **az Event Hubs** újra.
 
-5. Válassza ki az event hubs konfigurálásának nevét.
+5. Válassza ki az event hubs konfigurálásához nevét.
 
   ![Az eseményközpont fogyasztói csoportjának kiválasztása](media/send-events/consumer-group.png)
 
-6. A **entitások**, jelölje be **fogyasztói csoportok**.
+6. A **entitások**válassza **fogyasztói csoportok**.
  
 7. Olyan fogyasztói csoportot hozzon létre, amelyet csak a Time Series Insights-eseményforrás használ.
 
    > [!IMPORTANT]
-   > Ügyeljen arra, hogy ezt a fogyasztói csoportot ne használja másik szolgáltatás (például Stream Analytics-feladat vagy másik Time Series Insights-környezet). Ha használ egyéb a fogyasztói csoportot szolgáltatások olvasási művelete negatívan befolyásolja ebben a környezetben, és az egyéb szolgáltatások. Ha a „$Default” elemet használja a fogyasztói csoportként, előfordulhat, hogy más olvasók újra fel fogják használni a csoportot.
+   > Ügyeljen arra, hogy ezt a fogyasztói csoportot ne használja másik szolgáltatás (például Stream Analytics-feladat vagy másik Time Series Insights-környezet). Ha a fogyasztói csoportot más által használt szolgáltatások, olvassa el a műveletet, az zavarhatja az ebben a környezetben és az egyéb szolgáltatások. Ha a „$Default” elemet használja a fogyasztói csoportként, előfordulhat, hogy más olvasók újra fel fogják használni a csoportot.
 
-8. A a **beállítások** elemcsoportban válasszon **megosztás hozzáférési házirendek**.
+8. Alatt a **beállítások** szakaszban kattintson **megosztás hozzáférési szabályzatok**.
 
-9. Az eseményközpontok felé, hozzon létre **MySendPolicy** csharp minta események küldésére szolgál.
+9. Az eseményközpontok felé, hozzon létre **MySendPolicy** események küldésére #-példában használt.
 
   ![A Megosztott elérési házirendek kiválasztása, majd kattintás a Hozzáadás gombra](media/send-events/shared-access-policy.png)  
 
   ![Új megosztott elérési házirend hozzáadása](media/send-events/shared-access-policy-2.png)  
 
-## <a name="add-time-series-insights-reference-data-set"></a>Idő adatsorozat Insights referencia-adatkészlet hozzáadása 
-A telemetriai adatok referenciaadatok használatát ÁME contextualizes.  Ebben a kontextusban jelentését felvétele az adatok, és megkönnyíti szűrő és összesítést.  ÁME illesztések referenciaadatok érkező időpontban, és ezek az adatok visszamenőleges nem tudja csatlakoztatni.  Ezért kiemelten fontos annak referenciaadatok egy eseményforrás adatokkal hozzáadása előtt adja hozzá.  Például a hely vagy érzékelő típus esetén hasznos, amelyeket érdemes eszköz/címke/érzékelő csatlakoztatása dimenziók könnyebb szelet és szűrő azonosítója.  
+## <a name="add-time-series-insights-reference-data-set"></a>A Time Series Insights referencia-adatkészlet hozzáadása 
+Referenciaadatok használata a TSI-ben nyújtott a telemetriai adatokat.  Ebben a kontextusban jelentése ad hozzá az adatokat, és könnyebbé szűrő és összesítés.  A TSI illesztések referenciaadatok bejövő időpontban, és visszamenőlegesen nem tud csatlakozni az adatok.  Ezért fontos a referenciaadatok adatokkal eseményforrás hozzáadása előtt adja hozzá.  Adatok helye vagy az érzékelőadatok írja be például, amelyeket érdemes eszköz/címke vagy adatbiztonságra csatlakoztatása hasznos dimenziók könnyebb szelet és szűrő azonosítója.  
 
 > [!IMPORTANT]
-> Hogy konfigurált egy referencia adatkészlet fontos előzményadatokat feltöltésekor.
+> Konfigurált egy referencia-adatkészlet kellene fontos előzményadatok feltöltésekor.
 
-Győződjön meg arról, hogy referenciaadatok helyen amikor feltöltés korábbi adatok ÁME tömeges.  Ne feledje, ÁME azonnal megkezdi olvasási illesztett esemény forrásból származó adatokat, hogy a forrás-e.  Akkor célszerű csatlakoztatása egy eseményforrás ÁME mindaddig, amíg a referenciaadatok van érvényben, különösen akkor, ha a forrás adatokat tartalmaz, a várakozási idő után. Másik lehetőségként megvárhatja adatokat küldeni a forrás, amíg a referencia-adatkészlet rendelkezésre áll.
+Gondoskodjon arról, hogy a referenciaadatok helyen, tömeges TSI korábbi adatok feltöltése során.  Ne feledje, a TSI azonnal megkezdi olvasási illesztett esemény forrásból származó adatokat a forrás-e.  Hasznos csatlakoztatása eseményforrás TSI mindaddig, amíg a referenciaadatok működik a különösen akkor, ha a forrás adatokat tartalmaz, várjon. Azt is megteheti akkor megvárhatja az adatok leküldéséhez az esemény-adatforráshoz, amíg a referencia-adatkészlet van beállítva.
 
-Hivatkozás adatok kezelésére, a webes felhasználói felület be van a ÁME Explorer, és van a programozott C# API. ÁME Explorer egy visual felhasználói felülettel fájlokat vagy illessze be a meglévő hivatkozási adatkészletek JSON- vagy CSV formátumban rendelkezik. Az API-val hozhat létre egy egyéni alkalmazást, amikor szükséges.
+Referenciaadatok kezelése, szerepel a webes felhasználói felület a TSI Explorerben engedélyezett, és egy programozható C# API-t. A TSI Explorer egy vizuális felhasználói felülettel fájlok feltöltése vagy illessze be a meglévő hivatkozási adatkészletek JSON vagy CSV formátumban van. Az API-val létrehozhat egy egyéni alkalmazást, amikor szükséges.
 
-Referenciaadatok idő adatsorozat insightsban kezeléséről további információkért lásd: a [hivatkozás adatok cikk](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+A Time Series Insights referencia-adatok kezeléséről további információkért lásd: a [adatok referenciacikk](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 ## <a name="create-time-series-insights-event-source"></a>Time Series Insights-eseményforrás létrehozása
 1. Ha még nem hozott létre eseményforrást, tegye ezt meg [ezeket az utasításokat](time-series-insights-how-to-add-an-event-source-eventhub.md) követve.
 
-2. Adja meg **deviceTimestamp** a időbélyeg-tulajdonság neve – Ez a tulajdonság része lesz a C# mintában tényleges időbélyegző. Az időbélyegző-tulajdonság neve megkülönbözteti a kis- és nagybetűket, és az értékeknek __éééé-HH-nnTÓÓ:pp:mm.FFFFFFFK__ formátumban kell lenniük, ha JSON formátumban lesznek elküldve az eseményközpontba. Ha a tulajdonság nem létezik az eseményben, akkor a rendszer azt az időpontot használja, amikor az eseményt sorba helyezték az eseményközpontban.
+2. Adja meg **deviceTimestamp** az időbélyegző-tulajdonság neveként – ezt a tulajdonságot használja, a tényleges időbélyegzőként a C#-minta. Az időbélyegző-tulajdonság neve megkülönbözteti a kis- és nagybetűket, és az értékeknek __éééé-HH-nnTÓÓ:pp:mm.FFFFFFFK__ formátumban kell lenniük, ha JSON formátumban lesznek elküldve az eseményközpontba. Ha a tulajdonság nem létezik az eseményben, akkor a rendszer azt az időpontot használja, amikor az eseményt sorba helyezték az eseményközpontban.
 
   ![Eseményforrás létrehozása](media/send-events/event-source-1.png)
 
 ## <a name="sample-code-to-push-events"></a>Mintakód események leküldéséhez
-1. Nyissa meg az event hub csoportházirend nevű **MySendPolicy**. Másolás a **kapcsolati karakterlánc** a házirend-kulccsal.
+1. Nyissa meg az eseményközpont házirendjének nevű **MySendPolicy**. Másolás a **kapcsolati karakterlánc** házirendkulccsal rendelkező.
 
   ![A MySendPolicy kapcsolati sztring másolása](media/send-events/sample-code-connection-string.png)
 
@@ -155,7 +155,7 @@ Egyszerű JSON-objektum.
     "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-#### <a name="output---one-event"></a>Kimeneti - események
+#### <a name="output---one-event"></a>Kimenet – egy esemény
 
 |id|időbélyeg|
 |--------|---------------|
@@ -177,7 +177,7 @@ JSON-tömb két JSON-objektummal. Minden JSON-objektum eseménnyé lesz átalak�
     }
 ]
 ```
-#### <a name="output---two-events"></a>Kimeneti - két esemény
+#### <a name="output---two-events"></a>Kimenet – két esemény
 
 |id|időbélyeg|
 |--------|---------------|
@@ -188,7 +188,7 @@ JSON-tömb két JSON-objektummal. Minden JSON-objektum eseménnyé lesz átalak�
 
 #### <a name="input"></a>Input (Bemenet)
 
-Egy beágyazott JSON-tömb, amely két JSON-objektum tartalmazza a JSON-objektum:
+A beágyazott JSON-tömb két JSON-objektumot tartalmazó JSON-objektum:
 ```json
 {
     "location":"WestUs",
@@ -205,8 +205,8 @@ Egy beágyazott JSON-tömb, amely két JSON-objektum tartalmazza a JSON-objektum
 }
 
 ```
-#### <a name="output---two-events"></a>Kimeneti - két esemény
-Figyelje meg, hogy a tulajdonság "hely" másolja a rendszer minden, az esemény.
+#### <a name="output---two-events"></a>Kimenet – két esemény
+Figyelje meg, hogy a "location" tulajdonság mindegyik eseménybe át van másolva.
 
 |location|events.id|events.timestamp|
 |--------|---------------|----------------------|
@@ -248,7 +248,7 @@ Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-obje
     ]
 }
 ```
-#### <a name="output---two-events"></a>Kimeneti - két esemény
+#### <a name="output---two-events"></a>Kimenet – két esemény
 
 |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
@@ -259,4 +259,4 @@ Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-obje
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Tekintse meg a környezetben idő adatsorozat Insights explorer](https://insights.timeseries.azure.com).
+> [Tekintse meg a környezetet a Time Series Insights explorer](https://insights.timeseries.azure.com).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/31/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a43b70d2ce7a8205903fb877ea056dea88ac8bb5
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2990ba290dfdaf45d8a341138ea515bad16d5b30
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389609"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628171"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -50,11 +50,11 @@ Emellett tekintse át a [Azure Event Hubs – gyakori kérdések](../event-hubs/
 
 ## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatok be az Azure-bérlő figyelési adatokat egy eseményközpontba is streamelhetők?
 
-Az Azure-bérlő monitorozási adatok jelenleg csak az Azure Active Directory érhető el. Származó adatokat is használhatja [jelentéskészítés az Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md), amely bejelentkezési tevékenység és a naplózási beállításainak egy adott bérlőn belül végrehajtott módosítások előzményeit tartalmazza.
+Az Azure-bérlő monitorozási adatok jelenleg csak az Azure Active Directory érhető el. Származó adatokat is használhatja [jelentéskészítés az Azure Active Directory](../active-directory/reports-monitoring/overview-reports.md), amely bejelentkezési tevékenység és a naplózási beállításainak egy adott bérlőn belül végrehajtott módosítások előzményeit tartalmazza.
 
 ### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Az Azure Active Directory-adatok Stream egy eseményközpontba
 
-Az Azure Active Directory-naplóból származó adatokat küldeni az Event Hubs-névtér, beállíthatja egy bérlő diagnosztikai beállítás az AAD-bérlőre. [Ezt az útmutatót](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md) állíthatja be a bérlő diagnosztikai beállítást.
+Az Azure Active Directory-naplóból származó adatokat küldeni az Event Hubs-névtér, beállíthatja egy bérlő diagnosztikai beállítás az AAD-bérlőre. [Ezt az útmutatót](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md) állíthatja be a bérlő diagnosztikai beállítást.
 
 ## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatok be Azure-előfizetés monitorozási adatai is streamelhetők az eseményközpontok felé?
 

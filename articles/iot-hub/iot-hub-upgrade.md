@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 1f60b7d30c073c49d5e0a7d35e7263c2181ed744
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: e1342ed574d84ed5b4edd5060c2d6d3ec8bca1a8
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903064"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003111"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Az IoT hub frissítése
 
@@ -27,7 +27,7 @@ Ha több eszközt rendelkezik, és további funkciókat, három módja van az Io
 
 Ezek a változások meglévő műveletek megzavarása nélkül fordulhat.
 
-Ha alacsonyabb szolgáltatásszintre váltásához az IoT hub, egységek eltávolítása, és az IoT hub méretének csökkentésére. Azonban nem léphet vissza egy alacsonyabb szintre. Például átválthat az S2 szint az S1 szintre, azonban nem az B1 szint, az S2 szint. 
+Ha alacsonyabb szolgáltatásszintre váltásához az IoT hub, egységek eltávolítása, és az IoT hub méretének csökkentésére. Azonban nem léphet vissza egy alacsonyabb szintre. Például átválthat az S2 szint az S1 szintre, azonban nem az B1 szint, az S2 szint. Azt is vegye figyelembe, hogy csak egyféle típusú [edition](https://azure.microsoft.com/pricing/details/iot-hub/) szinten belüli választható ki az IoT Hub száma. Létrehozhat például egy IoT hubot, több S1-egységet, de nem különböző kiadásait, például az S1 és B3, vagy S1 és S2 egységek vegyesen.
 
 Ezek a példák segítségével megismerheti, hogyan állíthatja be az IoT hub, a megoldás módosítások hivatottak. Részletes információ az egyes szolgáltatásszintek lehetőségei mindig hivatkozzon [Azure IoT Hub díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/). 
 
@@ -45,7 +45,7 @@ Ezek a példák segítségével megismerheti, hogyan állíthatja be az IoT hub,
 4. Ha módosítani szeretné az hub egységek számát, adja meg egy új értéket a **IoT Hub-egységek**. 
 5. Válassza ki **mentése** a módosítások mentéséhez. 
 
-Az IoT hub most módosul, és a beállítások nem változnak. Vegye figyelembe, hogy a partíció korlátot, az alapszintű díjcsomag az IoT Hub 8. Ez a korlátozás változatlan marad, az alapszintű csomag a standard szintű csomag áttelepítésekor.
+Az IoT hub most módosul, és a beállítások nem változnak. Vegye figyelembe, hogy a partíciók maximális korlátot, az alapszintű csomag az IoT Hub 8 és a standard csomag az 32. A legtöbb IoT-központok csak 4 partíciók van szükség. A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és az eszköz – felhő üzeneteket vonatkozik, az ezeket az üzeneteket az egyidejű olvasók. Ez az érték az alapszintű csomag a standard szintű csomag áttelepítésekor változatlan marad. 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,9 +1,9 @@
 ---
-title: Azure Event Hubs-hitelesítés és a biztonsági modell áttekintése |} Microsoft Docs
-description: Event Hubs hitelesítés és a biztonsági modell – áttekintés.
+title: Az Azure Event Hubs hitelesítési és biztonsági modell áttekintése |} A Microsoft Docs
+description: Event Hubs hitelesítési és biztonsági modell áttekintése.
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: 93841e30-0c5c-4719-9dc1-57a4814342e7
@@ -13,37 +13,37 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/30/2018
-ms.author: sethm
-ms.openlocfilehash: 5264930dcb802c2a58abc179bdd0041acc9f58d0
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: shvija
+ms.openlocfilehash: 484b5109678b04943e59b0e6bc516926f5d61838
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311369"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003155"
 ---
-# <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs hitelesítés és a biztonsági modell – áttekintés
+# <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs hitelesítési és biztonsági modell áttekintése
 
-Az Azure Event Hubs biztonsági modell megfelel-e a következő követelményeknek:
+Az Azure Event Hubs biztonsági modell megfelel az alábbi követelményeknek:
 
-* Csak ügyfeleket, hogy érvényes hitelesítő adatokat küldhet egy eseményközpontba.
-* Egy ügyfél egy másik ügyfél nem tudja megszemélyesíteni.
-* Egy támadó ügyfelet is letiltja a adatok küldése az eseményközpontba.
+* Csak olyan ügyfelek érvényes hitelesítő adatokat küldhet adatokat egy eseményközpontba.
+* Egy ügyfél egy másik ügyfél nem lehet megszemélyesíteni.
+* Adatok küldése eseményközpontba blokkolható a támadó ügyfelet.
 
 ## <a name="client-authentication"></a>Ügyfél-hitelesítés
 
-Az Event Hubs biztonsági modell kombinációja alapján [közös hozzáférésű Jogosultságkód (SAS)](../service-bus-messaging/service-bus-sas.md) jogkivonatok és *esemény-közzétevők*. Egy esemény-közzétevő határozza meg egy virtuális végpont az eseményközpontban. A közzétevő csak használható küldhet üzeneteket az eseményközpontba. Nincs lehetőség a közzétevők érkező üzenetek fogadására.
+Az Event Hubs biztonsági modellt kombinációját alapján [közös hozzáférésű Jogosultságkód (SAS)](../service-bus-messaging/service-bus-sas.md) jogkivonatok és *esemény-közzétevők*. Egy esemény-közzétevő egy eseményközpontba egy virtuális végpontot határozza meg. A kiadó csak használható üzeneteket küldeni egy eseményközpontba. Nem alkalmas közzétevőtől származó üzenetek fogadásához.
 
-Az eseményközpontok általában egy publisher ügyfelenként funkcióit használja. Az eseményközpontok a közzétevők bármelyikét küldött összes üzenet a várólistában levő adott eseményközpont belül. Közzétevők részletes hozzáférés-vezérlés és a szabályozás engedélyezéséhez.
+Általában egy eseményközpontba alkalmaz egy közzétevő ügyfelenként. Sem a kiadók az eseményközpontok felé küldött összes üzenet a várólistán lévő adott eseményközpontban. Közzétevők részletes hozzáférés-vezérléshez és a szabályozás engedélyezéséhez.
 
-Minden Event Hubs-ügyfél hozzá van rendelve egy egyedi jogkivonatot, amely az ügyfél feltöltődött. A jogkivonatok úgy, hogy mindegyik egyedi token engedélyezi a hozzáférést egy másik egyedi publisher előállítása. Ügyfél, amely rendelkezik egy token csak egy publisher, de nincs más publisher küldhet. Több ügyfelek osztják meg ugyanezt a tokent, ha azok a közzétevők osztja ki.
+Minden Event Hubs-ügyfél hozzá van rendelve egy egyedi jogkivonatot, amely az ügyfél fel a rendszer. A jogkivonatokat hoz létre, hogy minden egyes egyedi tokent egy másik egyedi közzétevő engedélyezi a hozzáférést. Ügyfél, amely rendelkezik egy token csak egy közzétevő, de nincs más kiadó küldhet. Ha több ügyfél ugyanezt a tokent, majd azok fájlmegosztások közzétevő.
 
-Bár nem javasolt, akkor lehet jogkivonatokkal eseményközpontokba való közvetlen hozzáférést biztosító eszközök ellátására. Minden olyan eszköz, amely tárolja Ez a token közvetlenül az adott eseményközpont küldhet üzeneteket. Ilyen eszköz sávszélesség-szabályozás nem függvénye. Továbbá az eszköz nem lehet feketelistára teszi, az adott eseményközpont küld.
+Noha nem ajánlott, lehetőség, amely közvetlen hozzáférést biztosít egy eseményközpontba jogkivonatokkal eszközök számára. Bármely eszköz, amely tartalmazza a token küldhet üzeneteket közvetlenül adott event hubs-eseményközpontba. Ilyen eszközök nem vonatkoznak a szabályozás. Továbbá az eszköz nem tiltólistán ennek az eseményközpontnak küldjön.
 
-Összes jogkivonatot egy SAS-kulcs van aláírva. Általában minden jogkivonatok aláírt ugyanazzal a kulccsal. Az ügyfelek nem ismerik a kulcsot. Ez megakadályozza, hogy más ügyfelekkel gyártási jogkivonatokat.
+Az összes jogkivonatok az SAS-kulcs van bejelentkezve. Általában minden jogkivonatok ugyanazzal a kulccsal van bejelentkezve. Az ügyfelek nem ismeri a kulcsot. Ez megakadályozza, hogy más ügyfelek gyártási jogkivonatokat.
 
-### <a name="create-the-sas-key"></a>A SAS-kulcs létrehozása
+### <a name="create-the-sas-key"></a>A SAS-kulcsának létrehozása
 
-Az Event Hubs névtér létrehozásakor a szolgáltatás automatikusan létrehozza az SAS-kulcsot 256 bites nevű **RootManageSharedAccessKey**. Ez a szabály rendelkezik társított párjának küldés engedélyezése az elsődleges és másodlagos kulcsok, figyelésére és a névtérhez jogosultságaik kezelését. További kulcsok is létrehozhat. Javasoljuk, hogy a egy kulcs, küldjön engedélyeket biztosít az adott event hubs eredményez. Ez a témakör hátralévő, feltételezzük, hogy ez a kulcs elnevezett **EventHubSendKey**.
+Event Hubs-névtér létrehozásakor a szolgáltatás automatikusan előállítja az SAS-kulcsot 256 bites nevű **RootManageSharedAccessKey**. Ez a szabály rendelkezik egy elsődleges és másodlagos kulcsok, amelyek küldési biztosítanak álló kulcspárral, figyelésére és kezelésére a névtérhez. További kulcsokat is létrehozhat. Javasoljuk, hogy a kulcs, küldjön engedélyeket biztosít az adott event hubs előállításához. Ez a témakör további részében, feltételezzük, hogy ezt a kulcsot elnevezett **EventHubSendKey**.
 
 Az alábbi példa létrehoz egy csak küldési kulcsot, az eseményközpont létrehozásakor:
 
@@ -65,57 +65,57 @@ ed.Authorization.Add(eventHubSendRule);
 nm.CreateEventHub(ed);
 ```
 
-### <a name="generate-tokens"></a>Rendszer jogkivonatokat hoz létre
+### <a name="generate-tokens"></a>Jogkivonatokat hoz létre
 
-Az SAS-kulcsot használó tokenek hozhat létre. Csak egy token ügyfelenként kell eredményez. Jogkivonatok az alábbi módszerrel majd előállított. Minden jogkivonatok segítségével hozhatók létre a **EventHubSendKey** kulcs. A tokenek hozzá van rendelve egy egyedi URI-t.
+A jogkivonatok az SAS-kulcs használatával is létrehozhat. Ügyfelenként csak egy tokent kell dolgoznia. Jogkivonatok majd elő lehet állítani a következő módszerrel. Az összes jogkivonatok segítségével hozhatók létre a **EventHubSendKey** kulcsot. Minden tokenhez hozzá van rendelve egy egyedi URI-t.
 
 ```csharp
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
-Ez a metódus hívásakor az URI Azonosítót kell megadni: `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Minden jogkivonatokat URI megegyezik, kivéve a `PUBLISHER_NAME`, amely nem lehet ugyanaz a minden token. Ideális esetben `PUBLISHER_NAME` , amely megkapja a jogkivonatot az ügyfél Azonosítójának jelöli.
+Ez a metódus hívásakor meg kell adni az URI-t `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Az összes jogkivonatokat, az URI-ja azonos, kivéve a `PUBLISHER_NAME`, amely minden tokenhez eltérőnek kell lennie. Ideális esetben `PUBLISHER_NAME` jelöli, amely megkapja ezt a jogkivonatot az ügyfél azonosítója.
 
-Ez a módszer létrehoz egy jogkivonatot az alábbi szerkezettel:
+Ez a módszer létrehoz egy tokent az alábbi struktúra használatával:
 
 ```csharp
 SharedAccessSignature sr={URI}&sig={HMAC_SHA256_SIGNATURE}&se={EXPIRATION_TIME}&skn={KEY_NAME}
 ```
 
-A jogkivonat lejárati ideje másodpercben 1970. január 1. a van megadva. A következő egy példa egy jogkivonatot:
+A jogkivonat lejárati ideje 1970. január 1. a másodpercek alatt van megadva. Az alábbiakban látható egy példa a jogkivonat:
 
 ```csharp
 SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFmBHG77A%3d&se=1403130337&skn=RootManageSharedAccessKey
 ```
 
-Általában a jogkivonatok élettartama hasonlít, vagy meghaladja az ügyfél élettartamát. Ha az ügyfél új jogkivonat beszerzése képességgel rendelkezik, egy rövidebb élettartamot rendelkező jogkivonatokat használható.
+Általában a jogkivonatok-élettartamot, amely a következőhöz hasonló, vagy meghaladja az ügyfél a gyűjteményszintű rendelkezik. Ha az ügyfél képes az új jogkivonat beszerzése, egy rövidebb gyűjteményszintű-jogkivonatokat is használható.
 
 ### <a name="sending-data"></a>Adatok küldése
 
-A jogkivonatok létrehozása után, minden ügyfél a saját egyedi jogkivonattal lett kiépítve.
+A jogkivonatok létrehozása után, minden ügyfél saját egyedi tokenhez van kiépítve.
 
-Az ügyfél eseményközpontnak adatokat küld, azt a küldési kérelem a token címkét. Megakadályozza a lehallgatást, és a token ellophassák támadók, hogy az az ügyfél és az event hubs közötti kommunikációra egy titkosított csatornán keresztül.
+Amikor az ügyfél adatokat küld egy eseményközpontba, akkor a jogkivonattal a küldési kérelmek címkék. Hogy megakadályozza a lehallgatást, és a jogkivonat ellophatják a támadók, az ügyfél és az eseményközpont közötti kommunikáció egy titkosított csatornán keresztül kell történnie.
 
-### <a name="blacklisting-clients"></a>Az ügyfelek letiltott
+### <a name="blacklisting-clients"></a>Az ügyfelek áruházat
 
-A jogkivonat támadók ellopják, a támadó megszemélyesíthet-e az ügyfél, amelynek token ellopott. Letiltott ügyfél jeleníti meg, hogy az ügyfél használhatatlanná amíg nem kap egy új jogkivonatot, amely egy másik közzétevőt használ.
+Ha a jogkivonat támadók ellopják, a támadó az ügyfél, amelynek jogkivonat ellopott tudja megszemélyesíteni. Ügyfél áruházat jelenik meg, hogy az ügyfél használhatatlan amíg nem kap egy új jogkivonatot, amely egy másik közzétevő használja.
 
-## <a name="authentication-of-back-end-applications"></a>Háttér-alkalmazások hitelesítése
+## <a name="authentication-of-back-end-applications"></a>Az alkalmazások háttér-hitelesítés
 
-Hitelesítést végezni, amely az adatokat az Event Hubs-ügyfelek által generált háttér-alkalmazások, az Event Hubs egy Service Bus-témakörök használt modell hasonló biztonsági modellt alkalmaz. Az Event Hubs fogyasztói csoportot megegyezik egy Service Bus-témakörbe való előfizetés. Egy ügyfél egy fogyasztói csoportot hozhat létre, ha a felhasználói csoport létrehozására vonatkozó kérelem kíséri jogkivonatot, hogy biztosít kezelése jogosultságokkal az event hubs és a névteret, amelyhez az event hubs tartozik. Egy ügyfél egy felhasználói csoport származó adatok felhasználásához, ha a fogadási kérelem egy jogkivonatot, amely megadja az adott felhasználói csoportban, az event hubs vagy a névteret, amelyhez az event hubs tartozik fogadási jogosultságot kap.
+Háttér-használó alkalmazások programozása az Event Hubs-ügyfelek által létrehozott adatokat hitelesítéséhez, az Event Hubs egy a Service Bus-üzenettémakörök használt modell hasonló biztonsági modellt alkalmaz. Az Event Hubs fogyasztói csoportot megegyezik a Service Bus témakör-előfizetés. Egy ügyfél egy fogyasztói csoportot hozhat létre, ha a fogyasztói csoportot létrehozására vonatkozó kérelem kíséri egy jogkivonatot, hogy engedélyezi kezelése jogosultságokkal az event hubs, illetve a névtér, amely az event hubs tartozik. Egy ügyfél számára engedélyezett a tárolt adatokat használják egy fogyasztói csoportot Ha fogadási kérést egy jogkivonatot, amely megadja az adott felhasználói csoportban, az event hubs vagy a névtér, amely az event hubs tartozik fogadási jogosultságot kíséri.
 
-A Service Bus jelenlegi verziója nem támogatja a SAS-szabályokat az egyes előfizetések. Ugyanez érvényes Event Hubs fogyasztói csoportok. SAS-támogatás a jövőben is a szolgáltatások lesz hozzáadva.
+A Service Bus jelenlegi verziója nem támogatja a SAS-szabályok az egyes előfizetések. Ugyanez érvényes Eseményközpont fogyasztói csoportja. SAS fogja támogatni a mindkét funkció a jövőben.
 
-Egyéni fogyasztói csoportok SAS hitelesítési hiányában a SAS-kulcs segítségével biztonságos minden felhasználói csoport egy közös kulccsal. Ez a megközelítés lehetővé teszi az alkalmazás bármelyik a fogyasztói csoportok eseményközpontban az adatokat.
+Egyéni fogyasztói csoportok SAS hitelesítési hiányában a SAS-kulcsok segítségével összes fogyasztóvédelmi csoport biztonságos közös kulccsal. Ez a megközelítés lehetővé teszi az alkalmazás bármely eseményközpont fogyasztói csoportját a tárolt adatokat használják.
 
 ## <a name="next-steps"></a>További lépések
 
 Az Event Hubs kapcsolatos további információkért látogasson el a következő témaköröket:
 
 * [Event Hubs – áttekintés]
-* [Közös hozzáférésű Jogosultságkód áttekintése]
+* [Közös hozzáférésű Jogosultságkódok áttekintése]
 * [Az Event Hubsot használó mintaalkalmazások]
 
 [Event Hubs – áttekintés]: event-hubs-what-is-event-hubs.md
 [Az Event Hubsot használó mintaalkalmazások]: https://github.com/Azure/azure-event-hubs/tree/master/samples
-[Közös hozzáférésű Jogosultságkód áttekintése]: ../service-bus-messaging/service-bus-sas.md
+[Közös hozzáférésű Jogosultságkódok áttekintése]: ../service-bus-messaging/service-bus-sas.md
 

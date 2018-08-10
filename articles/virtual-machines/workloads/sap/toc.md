@@ -63,6 +63,7 @@
 ##### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)
 ##### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
 ## [Azure Site Recovery az SAP-vészhelyreállításhoz](../../../site-recovery/site-recovery-workload.md#protect-sap)
+## [Az Azure SAP LaMa összekötője](lama-installation.md)
 # AAD SAP-identitásintegráció és egyszeri bejelentkezés
 ## [Integráció az SAP-felhővel](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD-integráció az SAP-felhőplatform identitáshitelesítésével](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)

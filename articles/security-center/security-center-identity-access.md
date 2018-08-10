@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2018
+ms.date: 08/08/2018
 ms.author: rkarlin
-ms.openlocfilehash: 821a88f3627b19951c26677838bd2f86d0948ab9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a934bd69e63605fd624d06533c4e411bc94b531
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526830"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630918"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
@@ -86,7 +86,7 @@ A **előfizetések**, nincs az előfizetések listáját. Az első oszlop az el�
 
   - **Javaslatok**: nem sikerült, a Security Center által végzett alapján.
   - **Sikeres értékelések**: megfelelt a Security Center által végzett listája.
-  - **Értékelések nem érhetők el**: listáját, amelyek nem tudott futtatni egy hiba miatt értékelések, vagy mert az előfizetés legfeljebb 250 fiókkal rendelkezik.
+  - **Értékelések nem érhetők el**: list-vizsgálat futtatása egy hiba miatt sikertelen volt, vagy mert az előfizetés több mint 600 fiókkal rendelkezik.
 
   A **javaslatok** minden javaslat súlyosságát és a kiválasztott előfizetéshez tartozó a javaslatok listája.
 

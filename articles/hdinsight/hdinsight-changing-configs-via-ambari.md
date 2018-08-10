@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: b16020ec421eb077dca8318c765834e6f64f3235
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a516f1a22f4bb802d1b0c93b38dd36b56e2b5e0e
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600597"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716178"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>HDInsight-fürt konfigurációjának optimalizálása az Ambari használatával
 
@@ -25,7 +25,7 @@ Jelentkezzen be az Ambari, `https://CLUSTERNAME.azurehdidnsight.net` a fürt hit
 
 ![Ambari-irányítópult](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
 
-Az Ambari webes Felülettel gazdagépek, szolgáltatások, riasztások, konfigurációk és nézetek kezelésére használható. Hozzon létre egy HDInsight-fürtöt, frissítse szolgáltatásokat, platformok és verziók kezelése, leszerelése vagy gazdagépek recommission vagy szolgáltatásokat hozzáadni a fürthöz t Ambari is használható.
+Az Ambari webes Felülettel gazdagépek, szolgáltatások, riasztások, konfigurációk és nézetek kezelésére használható. Az Ambari hozzon létre egy HDInsight-fürt, szolgáltatások frissítése, platformok és verziók kezelése, leszerelése vagy recommission gazdagépek vagy szolgáltatások hozzáadása a fürt nem használható.
 
 ## <a name="manage-your-clusters-configuration"></a>A fürt konfigurációjának kezelése
 
@@ -190,7 +190,7 @@ A rendelkezésre álló tömörítési típusok a következők:
     ![Hive exec compress köztes](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
     > [!NOTE]
-    > A köztes fájlok tömörítése, válassza ki a tömörítési kodek költsége alacsonyabb CPU-még akkor is, ha a kodek adatforgalmi egy nagy tömörítési kimenet nincs.
+    > A köztes fájlok tömörítése, válassza ki a tömörítési kodek költsége alacsonyabb CPU-még akkor is, ha a kodeket nem rendelkezik egy nagy tömörítési kimeneti.
 
 1. A köztes tömörítési kodeket, adja hozzá az egyéni tulajdonság `mapred.map.output.compression.codec` , a `hive-site.xml` vagy `mapred-site.xml` fájlt.
 
@@ -227,7 +227,7 @@ A végeredmény Hive is tömöríthető.
 
 Spekulatív végrehajtás kockázatának csökkentése annak érdekében, hogy észlelni és tiltólistára a lassú lefutású feladat követőt, miközben a teljes feladat-végrehajtási egyéni feladat eredményei optimalizálásával ismétlődő feladatok bizonyos számú indít.
 
-Spekulatív végrehajtás kockázatának csökkentése shouldn t hosszú ideig futó MapReduce feladatok nagy mennyiségű, bemeneti kapcsolható be.
+Spekulatív végrehajtás kockázatának csökkentése nem kapcsolható be a bemeneti nagy mennyiségű hosszú ideig futó MapReduce feladatok.
 
 * Ahhoz, hogy spekulatív végrehajtás kockázatának csökkentése, keresse meg a Hive **Configs** lapra, és állítsa a `hive.mapred.reduce.tasks.speculative.execution` paraméter igaz. Az alapértelmezett értéke FALSE (hamis).
 

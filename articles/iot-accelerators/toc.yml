@@ -88,6 +88,8 @@
           href: iot-accelerators-time-series-insights.md
         - name: Telemetria elemzése a Data Lake használatával
           href: iot-accelerators-integrate-data-lake.md
+        - name: A szerepköralapú hozzáférés-vezérlés konfigurálása
+          href: iot-accelerators-remote-monitoring-rbac.md
     - name: Távoli monitorozás (előző verzió)
       items:
         - name: Mik azok az előre konfigurált megoldások?

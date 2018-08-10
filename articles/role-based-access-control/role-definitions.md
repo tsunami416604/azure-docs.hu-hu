@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 416565a248fc9ef0861b5309d71fdac3b8fccc22
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116061"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715770"
 ---
 # <a name="understand-role-definitions"></a>A szerepkör-definíciók ismertetése
 
@@ -141,12 +141,12 @@ A [tulajdonosa](built-in-roles.md#owner) Alice szerepkör és a [Storage-Blobada
 
 Tulajdonos
 
-&nbsp;&nbsp;&nbsp;&nbsp;műveletek<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Műveletek<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
 Storage-blobadatok közreműködője (minta)
 
-&nbsp;&nbsp;&nbsp;&nbsp;műveletek<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Műveletek<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/write`<br>
@@ -214,7 +214,7 @@ A `NotDataActions` engedélyt megadja a kizárt Adatműveletek az engedélyezett
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-A `AssignableScopes` tulajdonság határozza meg, hogy a szerepkör-hozzárendelés érhető hatókörök (felügyeleti csoportok (jelenleg előzetes verzióban érhető el), az előfizetések, erőforráscsoportok vagy erőforrás). Elérhetővé teheti a szerepkör-hozzárendelés csak az előfizetések alatt vagy erőforráscsoportok, és nem a legyen zsúfolt felhasználó igénylő többi része az előfizetések vagy erőforráscsoportok esetében tapasztalható. Szüksége lesz legalább egy felügyeleti csoportot, előfizetés, erőforráscsoport vagy erőforrás-azonosítója.
+A `AssignableScopes` tulajdonság határozza meg, hogy a szerepkör-hozzárendelés érhető hatókörök (előfizetések, erőforráscsoportok vagy az erőforrások). Elérhetővé teheti a szerepkör-hozzárendelés csak az előfizetések alatt vagy erőforráscsoportok, és nem a legyen zsúfolt felhasználó igénylő többi része az előfizetések vagy erőforráscsoportok esetében tapasztalható. Kell használni legalább egy előfizetés, erőforráscsoport vagy erőforrás-azonosítója.
 
 Beépített szerepkör rendelkezik `AssignableScopes` állítsa be a legfelső szintű hatókörhöz (`"/"`). A gyökérszintű hatókörben azt jelzi, hogy a szerepkör minden hatókör-hozzárendelés érhető el. Érvényes hozzárendelhető hatókörökkel közé:
 

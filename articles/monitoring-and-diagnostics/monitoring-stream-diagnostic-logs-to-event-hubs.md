@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258184"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627916"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream Azure diagnosztikai naplók egy eseményközpontba
-**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható bármely alkalmazás a beépített "Exportálás az Event Hubs" lehetőség használatával, a portálon, vagy az Event Hub engedélyezési szabály azonosítója a diagnosztikai beállítást az Azure-on keresztül engedélyezésével közel valós időben PowerShell-parancsmagok vagy az Azure CLI 2.0 használatával.
+**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md) ** továbbítható bármely alkalmazás a beépített "Exportálás az Event Hubs" lehetőség használatával, a portálon, vagy az Event Hub engedélyezési szabály azonosítója a diagnosztikai beállítást az Azure-on keresztül engedélyezésével közel valós időben PowerShell-parancsmagok vagy az Azure CLI 2.0 használatával.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Mire képes a diagnosztikai naplók és az Event Hubs
 Az alábbiakban néhány olyan módon, a streamelési funkciót használhat a diagnosztikai naplókhoz:
@@ -180,7 +180,7 @@ A következő minta kimeneti adatokat az Event Hubsról:
 | Elem neve | Leírás |
 | --- | --- |
 | rekordok |Az adattartalomban szereplő összes alkalmazásnapló-események tömbje. |
-| idő- |Idő az esemény történt. |
+| time |Idő az esemény történt. |
 | category |Naplókategória ezt az eseményt. |
 | resourceId |Erőforrás-azonosító az erőforrás által generált ezt az eseményt. |
 | operationName |A művelet neve. |
@@ -195,6 +195,6 @@ A Windows Azure Diagnostics-ügynök használatával, a számítási erőforrás
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Monitor szolgáltatással Stream Azure Active Directory-naplók](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
-* [További információ az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
+* [Az Azure Monitor szolgáltatással Stream Azure Active Directory-naplók](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [További információk az Azure Diagnostics-naplókról](monitoring-overview-of-diagnostic-logs.md)
 * [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

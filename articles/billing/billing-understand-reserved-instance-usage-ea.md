@@ -1,6 +1,6 @@
 ---
-title: A vállalati Azure fenntartott példány használatának megértéséhez |} Microsoft Docs
-description: Olvassa el a megértése, hogyan kell alkalmazni az Azure fenntartott Virtuálisgép-példány a nagyvállalati beléptetés a használati útmutató.
+title: Vállalati használati Azure foglalás adatai |} A Microsoft Docs
+description: Ismerje meg, hogyan olvashatja be a használat megértéséhez, hogyan kell alkalmazni az Azure a nagyvállalati beléptetés-foglalás.
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,22 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2018
+ms.date: 08/08/2018
 ms.author: manshuk
-ms.openlocfilehash: d6e8b2544f919abeb7fde0e37fc12bd29f0171ef
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 5ce0103315f297996ed3f3bd88b5e53558e22e14
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064012"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628232"
 ---
-# <a name="understand-azure-reserved-instance-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés használata az Azure fenntartott példány ismertetése
-Egy fenntartott példány kihasználtsági értelmezése segítségével a **ReservationId** a [foglalások lap](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) és használata a fájl a [EA portal](https://ea.azure.com). Azt is láthatja a használati összefoglaló szakaszában foglalt példány használatát [EA portal](https://ea.azure.com).
+# <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés Azure foglalás használati adatai
 
->[!NOTE]
->Ha beszerezte a fenntartott példány, használatalapú számlázási környezetben, tekintse meg [megértése fenntartott példány használati a használatalapú fizetéses előfizetésre.](billing-understand-reserved-instance-usage.md)
+Használja a **reservationid értékhez** a [foglalások lap](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) és a használatot részletező fájl a a [a nagyvállalati szerződések portáljának](https://ea.azure.com) kiértékelni a Foglalás használat. Megtekintheti a Foglalás használati használat összefoglaló szakaszában is [a nagyvállalati szerződések portáljának](https://ea.azure.com).
 
-A következő szakasz azt feltételezik, hogy a Windows Standard D1 v2 virtuális gép fut a US régió keleti és a következő táblázatban foglalt példány információk tűnik:
+Ha beszerezte a foglalást, használatalapú számlázási környezetben, lásd: [a használatalapú fizetéses előfizetést foglalás használatának megértéséhez.](billing-understand-reserved-instance-usage.md)
+
+## <a name="usage-for-reserved-virtual-machines-instances"></a>Fenntartott virtuálisgép-példányok használatát
+
+A következő szakaszokban feltételezzük, hogy Windows Standard D1 v2 virtuális gép fut a keleti régiójában és az alábbi táblázat a Foglalás információk tűnik:
 
 | Mező | Érték |
 |---| --- |
@@ -36,38 +38,59 @@ A következő szakasz azt feltételezik, hogy a Windows Standard D1 v2 virtuáli
 |SKU | Standard_D1|
 |Régió | eastus |
 
-## <a name="reserved-instance-application"></a>Fenntartott példány alkalmazás
+A hardver része a virtuális gép hatálya alá tartozó, mert az üzembe helyezett virtuális gép megfelel a Foglalás attribútumok. A foglalás nem rendelkezik Windows szoftverek megtekintéséhez lásd: [Azure számára fenntartott VM-példányok Windows szoftverek díjait](billing-reserved-instance-windows-software-costs.md).
 
-A virtuális Gépet, a hardver része van tartalmazza, mivel a központilag telepített virtuális gép megfelel a fenntartott példány attribútumokat. Milyen Windows szoftverek nem fedi le a fenntartott példány megtekintéséhez nyissa meg az Azure fenntartott Virtuálisgép-példányok származó szoftverek költségeit, írja be a [Azure tartalék virtuális gép példányok Windows szoftverek költségeit.](billing-reserved-instance-windows-software-costs.md)
+### <a name="usage-in-csv-file-for-reserved-vm-instances"></a>Használat a Reserved VM Instances CSV-példafájlja
 
+Letöltheti a vállalati használati CSV-fájl a vállalati portálról. Szűrés a CSV-fájl **további adatok** , és írja be a **reservationid értékhez**. Az alábbi képernyőfelvételen a Foglalás kapcsolódó mezőket:
 
-### <a name="reserved-instance-usage-in-csv"></a>Fürt megosztott kötetei szolgáltatás fenntartott példány használata
-Letöltheti a EA Használati csv EA portálról. További információ a szűrje a letöltött csv-fájlban, és írja be a **ReservationID**. Az alábbi képernyőfelvételen látható a fenntartott példányhoz kapcsolódó mezők:
+![Nagyvállalati Szerződés (EA) fürt megosztott kötetei szolgáltatás az Azure-foglalás](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-csv.png)
 
-![Nagyvállalati Szerződés (EA) csv Azure fenntartott példány](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-csv.png)
+1. **Reservationid értékhez** a **további adatok** mező képviseli a alkalmazni a virtuális gép foglalást.
+2. **ConsumptionMeter** a mérőszám azonosítója van a virtuális gép számára.
+3. **Mérőszám azonosítója** 0 USD költséget a Foglalás mérőszám. A fenntartott VM-példány fizeti a futó virtuális gép költsége.
+4. Standard_D1 egy vCPU virtuális gép és a virtuális gép központi telepítése az Azure Hybrid Benefit nélkül. Tehát ez az érték magában foglalja a Windows-szoftverek külön díjfizetés nélkül. A mérőszám, a D sorozatú virtuális gép 1 mag, lásd: [Azure számára fenntartott VM-példányok Windows szoftverek díjait](billing-reserved-instance-windows-software-costs.md).  Ha az Azure Hybrid Benefit, ez külön díjfizetés nélkül nem alkalmazza.
 
-1. **ReservationId** további információ a mező juttatás alkalmazása a virtuális gép használt fenntartott példányt jelenti.
-2. ConsumptionMeter a MeterId a virtuális gép.
-3. A foglalási mérő $0 költség Ez azért, mert a fenntartott példány által már fizetett a virtuális gép futtatásának. 
-4. Standard szintű, D1 egy vCPU virtuális gép és a virtuális gép központi telepítése Azure hibrid juttatás nélkül. Ezért a mérési hozzá van rendelve a felesleges ingyenesen elérhető Windows szoftver. Lásd: [Azure tartalék virtuális gép példányok Windows szoftverek költségeit.](billing-reserved-instance-windows-software-costs.md) a mérő megfelelő D sorozat 1 core virtuális gép található. Azure hibrid juttatás használata esetén ez külön díj nem alkalmazható.
+## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>Használat az SQL Database szolgáltatás számára fenntartott kapacitás foglalások
 
-### <a name="reserved-instance-usage-in-usage-summary-page-in-ea-portal"></a>Használat összegzése lapjára EA fenntartott példány használata
+A következő szakaszokban feltételezzük, hogy futtatja a keleti régiójában és a foglalási adatokat úgy tűnik, az alábbi táblázat, egy SQL Database Gen 4:
 
-Fenntartott példány használati is megjelennek EA portál használati összefoglaló adatai: ![nagyvállalati szerződés (EA) használatának összegzése](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+| Mező | Érték |
+|---| --- |
+|ReservationId |8244e673-83e9-45ad-b54b-3f5295d37cae|
+|Mennyiség |2|
+|Product| Az SQL Database Gen 4 (2 mag)|
+|Régió | eastus |
 
-1. Meg nem felszámított hardverösszetevő a virtuális gép fenntartott példány módosított. 
-2. Van szó, a szoftver a Windows Azure hibrid juttatás nem használt. 
+### <a name="usage-in-csv-file-for-sql-database-reserved-capacity"></a>Használat az SQL Database szolgáltatás számára fenntartott kapacitás CSV-példafájlja
+
+Szűrés **további adatok** , és írja be a **Foglalásazonosító**. Az alábbi képernyőfelvételen a Foglalás kapcsolódó mezőket.
+
+![Nagyvállalati Szerződés (EA) fürt megosztott kötetei szolgáltatás az SQL Database szolgáltatás számára fenntartott kapacitás](./media/billing-understand-reserved-instance-usage-ea/billing-ea-sql-db-reserved-capacity-csv.png)
+
+1. **Reservationid értékhez** a a **további adatok** mező a alkalmazni az SQL Database erőforrás foglalást.
+2. **ConsumptionMeter** az SQL Database erőforrás mérő azonosítója.
+3. **Mérőszám azonosítója** 0 USD költséget a Foglalás mérőszám. Bármely SQL-adatbázis-erőforrás, amely jogosult a Foglalás jeleníti meg a CSV-fájlt a mérőszám azonosítója.
+
+## <a name="usage-summary-page-in-enterprise-portal"></a>Használati Összegzés lapon a vállalati portál
+
+A foglalást az Azure-használat is megjelenik-e, a vállalati portál használati összesítő szakaszában: ![nagyvállalati szerződés (EA) használatának összegzése](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+
+1. Ön nem számítunk fel díjat a virtuális gép a hardverösszetevő, Foglalás körébe. Egy SQL Database foglalás lát egy sort a **szolgáltatásnév** mint az Azure SQL Database szolgáltatás számára fenntartott kapacitás kihasználtsága.
+2. Ebben a példában nem rendelkezik a az Azure Hybrid Benefit, így a Windows szoftverek, a virtuális gép együttes díjkötelesek.
 
 ## <a name="next-steps"></a>További lépések
-Azure fenntartott példányok kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-- [Mik azok a Azure fenntartott Virtuálisgép-példányok?](billing-save-compute-costs-reservations.md)
-- [A virtuális gépek Azure fenntartott virtuális gép osztályt előre fizetés](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Az Azure-ban fenntartott példányok kezelése](billing-manage-reserved-vm-instance.md)
-- [A fenntartott példány kedvezményeket alkalmazásának a módját ismertetése](billing-understand-vm-reservation-charges.md)
-- [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](billing-understand-reserved-instance-usage.md)
-- [A Windows szoftverek költségeit fenntartott példányok nem találhatók](billing-reserved-instance-windows-software-costs.md)
+Azure foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+
+- [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
+- [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás](../sql-database/sql-database-reserved-capacity.md) 
+- [Az Azure-fenntartások kezelése](billing-manage-reserved-vm-instance.md)
+- [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
+- [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
+- [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 
-Ha további kérdései további, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.
+Ha további kérdése van, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

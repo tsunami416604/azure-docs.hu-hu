@@ -1,35 +1,30 @@
 ---
-title: Az Azure Event Hubs .NET-keretrendszer API-k áttekintése |} Microsoft Docs
-description: A kulcs Event Hubs .NET-keretrendszer ügyfél API-k részének összefoglalása.
+title: Az Azure Event Hubs .NET-keretrendszer API-k áttekintése |} A Microsoft Docs
+description: Néhány kulcsfontosságú Event Hubs .NET-keretrendszer ügyfél API-k összegzése.
 services: event-hubs
-documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: ''
-ms.assetid: 7f3b6cc0-9600-417f-9e80-2345411bd036
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: a51d4552df2643a25ce492b8525b9aa7fa36e21c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.date: 06/13/2018
+ms.author: shvija
+ms.openlocfilehash: dd915671c8b7d51595fea520187b917005f5dc53
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781894"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40006443"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET-keretrendszer API – áttekintés
 
-Ez a cikk foglal össze néhányat a kulcs Event Hubs .NET-keretrendszer ügyfél API-k. Két kategóriába sorolhatók: felügyeleti és futásidejű API-kat. Futásidejű API-k küldeni és fogadni az üzenetet szükséges összes műveletek alkotják. Felügyeleti műveletek lehetővé teszik az Event Hubs entitásállapot létrehozása, frissítése és törlése entitások kezelését.
+Ez a cikk összefoglaltuk a kulcsot az Azure Event Hubs [.NET-keretrendszer ügyfél API-k](https://www.nuget.org/packages/WindowsAzure.ServiceBus/). Két kategóriába sorolhatók: felügyeleti és a futtatókörnyezeti API-k. Futási idő API-k állnak küldeni és fogadni, egy üzenet szükséges összes műveletet. Felügyeleti műveletek lehetővé teszik az Event Hubs-entitás állapot létrehozása, frissítése és törlése entitások kezelését.
 
-[Figyelési forgatókönyveket](event-hubs-metrics-azure-monitor.md) span felügyeleti és a futásidőben. Részletes útmutató a .NET API-k dokumentációja, tekintse meg a [Service Bus .NET](/dotnet/api/microsoft.servicebus.messaging) és [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) hivatkozik.
+[Figyelési forgatókönyvek](event-hubs-metrics-azure-monitor.md) felügyeleti és a futásidejű is kiterjednek. Részletes útmutató a .NET API-k dokumentációjáért lásd: a [.NET-keretrendszer](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs), és [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) hivatkozik.
 
-## <a name="management-apis"></a>API-val
+## <a name="management-apis"></a>Felügyeleti API-k
 
-A következő felügyeleti műveletek végrehajtásához rendelkeznie kell **kezelése** az Event Hubs névtéren engedélyek:
+A következő felügyeleti műveletek végrehajtásához rendelkeznie kell **kezelés** engedélyek az Event Hubs-névtér:
 
 ### <a name="create"></a>Létrehozás
 
@@ -59,7 +54,7 @@ await namespaceManager.UpdateEventHubAsync(ehd);
 await namespaceManager.DeleteEventHubAsync("event hub name");
 ```
 
-## <a name="run-time-apis"></a>Futásidejű API-k
+## <a name="run-time-apis"></a>Futási idő API-k
 ### <a name="create-publisher"></a>Közzétevő létrehozása
 
 ```csharp
@@ -86,7 +81,7 @@ data.Properties.Add("Type", "Telemetry_" + DateTime.Now.ToLongTimeString());
 await client.SendAsync(data);
 ```
 
-### <a name="create-consumer"></a>Felhasználó létrehozása
+### <a name="create-consumer"></a>Fogyasztói létrehozása
 
 ```csharp
 // Create the Event Hubs client
@@ -105,7 +100,7 @@ var consumer = await defaultConsumerGroup.CreateReceiverAsync(partitionId: index
 var consumer = await defaultConsumerGroup.CreateReceiverAsync(partitionId: index,startingOffset:-1); 
 ```
 
-### <a name="consume-message"></a>Üzenet felhasználása
+### <a name="consume-message"></a>Üzenet használata
 
 ```csharp
 var message = await consumer.ReceiveAsync();
@@ -118,9 +113,9 @@ var info = message.GetBytes();
 msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
-## <a name="event-processor-host-apis"></a>Esemény processzor állomás API-k
+## <a name="event-processor-host-apis"></a>Event Processor állomás API-k
 
-Ezen API-k munkavégző folyamatokat, amelyek egyaránt elérhetetlenné válhatnak, partíciók keresztül elérhető munkavállalók elosztásával rugalmasságot biztosítanak.
+Ezen API-k rugalmasságot biztosítanak a munkavégző folyamatokat, amelyek a partíciók osztja meg a rendelkezésre álló feldolgozók között nem érhető el, válhat.
 
 ```csharp
 // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
@@ -137,7 +132,7 @@ await host.RegisterEventProcessorAsync<SimpleEventProcessor>();
 await host.UnregisterEventProcessorAsync();
 ```
 
-A [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) felületet a következők:
+A [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) kapcsolat a következőképpen van meghatározva:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -180,12 +175,13 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 Az Event Hubs-forgatókönyvekkel kapcsolatos további információkért látogasson el a következő hivatkozásokra:
 
 * [Mi az Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
 * [Event Hubs programozási útmutató](event-hubs-programming-guide.md)
 
-A .NET API-hivatkozások jelenleg itt:
+A .NET API-referenciák jelenleg itt tart:
 
 * [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
 * [Microsoft.Azure.EventHubs.EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)

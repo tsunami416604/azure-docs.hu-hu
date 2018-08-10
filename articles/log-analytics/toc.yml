@@ -110,9 +110,17 @@
     - name: Adatok lekérdezése
       items:
         - name: Nyelvi dokumentáció
-          href: 'https://docs.loganalytics.io'
-        - name: Váltás az örökölt nyelvről
-          href: log-analytics-log-search-transition.md
+          items:
+            - name: Váltás az örökölt nyelvről
+              href: log-analytics-log-search-transition.md
+            - name: Ismerkedés az Analytics-portál használatával
+              href: query-language/get-started-analytics-portal.md
+            - name: Ismerkedés a lekérdezések használatával
+              href: query-language/get-started-queries.md
+            - name: Keresési lekérdezések
+              href: query-language/search-queries.md
+            - name: Nyelvi referencia
+              href: 'https://docs.loganalytics.io'
         - name: Keresés több erőforrásban
           href: log-analytics-cross-workspace-search.md
         - name: Műveletek végrehajtása a keresési eredményekből

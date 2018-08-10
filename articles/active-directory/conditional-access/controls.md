@@ -9,7 +9,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: protection
+ms.component: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2774111ff22572904a958037eed4c17f524770ce
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ba770415d7371463f1370d982f179c2a6f41ee65
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591591"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629558"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés? 
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások. Feltételes hozzáférési szabályzatot adja meg a válasz ("Ehhez") való indítására, a házirend ("Amikor ez megtörténik") az az oka. 
 
-![Vezérlő](./media/controls/10.png)
+![Vezérlés](./media/controls/10.png)
 
 
 A feltételes hozzáférés, a környezetben 
@@ -40,7 +40,7 @@ A feltételes hozzáférés, a környezetben
 
 Egy feltétel utasítást a vezérlők együttes használata a feltételes hozzáférési szabályzatot jelöli.
 
-![Vezérlő](./media/controls/61.png)
+![Vezérlés](./media/controls/61.png)
 
 Egyes vezérlőelemek követelmény, hogy teljesülnek a személy által vagy rendszer jelentkezik be, vagy a felhasználó korlátozás teheti a bejelentkezést követően. 
 
@@ -59,7 +59,7 @@ Az engedély teljesen letiltja a hozzáférést, vagy a kívánt vezérlők kiv�
 - Az összes kiválasztott teljesítendő vezérlők (*és*) 
 - Az egyik kijelölt vezérlő teljesítendő (*vagy*)
 
-![Vezérlő](./media/controls/17.png)
+![Vezérlés](./media/controls/17.png)
 
 
 
@@ -133,12 +133,12 @@ A JSON-adatokat másolja és illessze be a kapcsolódó szövegmezőbe. Nem ne m
 
 Egyéni vezérlő létrehozásának lehetősége van a **kezelés** szakaszában a **feltételes hozzáférési** lapot.
 
-![Vezérlő](./media/controls/82.png)
+![Vezérlés](./media/controls/82.png)
 
 Kattintson a **új egyéni vezérlő**, a JSON-adatok a vezérlőelem egy szövegmező megnyílik egy panel.  
 
 
-![Vezérlő](./media/controls/81.png)
+![Vezérlés](./media/controls/81.png)
 
 
 ### <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
@@ -162,7 +162,7 @@ Egyéni vezérlő szerkesztése, törlése az aktuális vezérlőelem, és hozzo
 
 A munkamenet-vezérlők a funkciók korlátozását teszik lehetővé a felhőalkalmazásokban. A munkamenet-vezérlők felhőalkalmazások tartat be, és az alkalmazáshoz a munkamenet-információk az Azure AD által biztosított további információk alapján.
 
-![Vezérlő](./media/controls/31.png)
+![Vezérlés](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Alkalmazás által kényszerített korlátozások használata
 

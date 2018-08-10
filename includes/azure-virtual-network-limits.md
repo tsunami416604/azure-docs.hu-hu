@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/20/2018
+ms.date: 08/03/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 9ba9bc993832350f6b6ce1c642e2dc852731b6f0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 60f1b133bdd6acdb25717c2b98f81b57b751d505
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39029971"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39720995"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -37,31 +37,37 @@ ms.locfileid: "39029971"
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Hálózatkezelési korlátok – Azure Resource Manager
 Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
+> [!NOTE]
+> A Microsoft a közelmúltban növelte az összes alapértelmezett korlátok a maximális korlátig való. Ha nincs **maximálisan** oszlop, akkor az erőforrás nem állítható korlátokkal rendelkeznek. Ha rendelkezik, ezek megnövelve korlátok a múltban támogatja, és nem látható frissített korlátait az alábbi, érdemes [nyisson meg egy online támogatási kérést díj nélkül](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+
+| Erőforrás | Alapértelmezett korlát | 
+| --- | --- |
+| Virtuális hálózatok |1000 |
+| Alhálózatok száma virtuális hálózatonként |3000 |
+| Virtuális hálózati társviszony-létesítések száma virtuális hálózatonként |100 |
+| DNS-kiszolgálók száma virtuális hálózatonként |25 |
+| Magánhálózati IP-címek száma virtuális hálózatonként |a 65536 értékű |
+| Magánhálózati IP-címek száma hálózati adapterenként |256 |
+| Egyidejű TCP vagy UDP-folyamatok egy virtuális gép vagy szerepkörpéldány adapterenként |500 000 |
+| Hálózati adapterek (NIC) |24000 |
+| Hálózati biztonsági csoportok (NSG) |5000 |
+| NSG-ben szereplő NSG-szabályok |1000 |
+| IP-címek és a forrás vagy cél egyetlen biztonsági csoportba tartozó megadott tartományok |4000 |
+| Alkalmazásbiztonsági csoportok |3000 |
+| Az alkalmazásbiztonsági csoportok száma / hálózati adapter IP-Címének konfigurálása |20 |
+| IP-konfigurációk száma alkalmazásbiztonsági csoport |4000 |
+| Az alkalmazásbiztonsági csoportok belül az összes biztonsági szabályok egy hálózati biztonsági csoport adható meg |100 |
+| Felhasználó által megadott útvonaltáblák |200 |
+| Felhasználó által megadott útvonalak száma útvonaltáblánként |400 |
+| Pont–hely kapcsolati főtanúsítványok száma VPN Gateway-példányonként |20 |
+
+#### <a name="publicip-address"></a>Nyilvános IP-cím korlátok
+
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Virtuális hálózatok |50 |1000 |
-| Alhálózatok száma virtuális hálózatonként |1000 |10000 |
-| Virtuális hálózati társviszony-létesítések száma virtuális hálózatonként |50 ** |100 |
-| DNS-kiszolgálók száma virtuális hálózatonként |9 |25 |
-| Magánhálózati IP-címek száma virtuális hálózatonként |16384 ** |16384 |
-| Magánhálózati IP-címek száma hálózati adapterenként |256 |256 |
-| Egyidejű TCP vagy UDP-folyamatok egy virtuális gép vagy szerepkörpéldány adapterenként |500 000 |500 000 |
-| Hálózati adapterek (NIC) |24000 ** |24000 |
-| Hálózati biztonsági csoportok (NSG) |100 |5000 |
-| NSG-ben szereplő NSG-szabályok |1000 ** |1000 |
-| IP-címek és a forrás vagy cél egyetlen biztonsági csoportba tartozó megadott tartományok |2000 |4000 |
-| Alkalmazásbiztonsági csoportok |500 |3000 |
-| Az alkalmazásbiztonsági csoportok száma / hálózati adapter IP-Címének konfigurálása |10 |20 |
-| IP-konfigurációk száma alkalmazásbiztonsági csoport |1000 |4000 |
-| Az alkalmazásbiztonsági csoportok belül az összes biztonsági szabályok egy hálózati biztonsági csoport adható meg |50 |100 |
-| Felhasználó által megadott útvonaltáblák |100 |200 |
-| Felhasználó által megadott útvonalak száma útvonaltáblánként |400 ** |400 |
-| Nyilvános IP-címek – dinamikus |(Basic) 60 |kapcsolatfelvétel az ügyfélszolgálattal |
-| Nyilvános IP-címek – statikus |(Basic) 20 |kapcsolatfelvétel az ügyfélszolgálattal |
-| Nyilvános IP-címek – statikus |(Standard) 20 |kapcsolatfelvétel az ügyfélszolgálattal |
-| Pont–hely kapcsolati főtanúsítványok száma VPN Gateway-példányonként |20 |20 |
-
-** A frissített alapértelmezett korlátok vonatkoznak az előfizetésekre, amelyek korábban nem volt ezeket a korlátokat támogatásának nőtt. Ha rendelkezik növelni a múltban támogatja ezeket a korlátokat, és szeretne kapni az új alapértelmezett frissítését [nyisson meg egy online támogatási kérést díj nélkül](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+| Nyilvános IP-címek – dinamikus |200-as (alapszintű) |kapcsolatfelvétel az ügyfélszolgálattal |
+| Nyilvános IP-címek – statikus |200-as (alapszintű) |kapcsolatfelvétel az ügyfélszolgálattal |
+| Nyilvános IP-címek – statikus |200-as (standard) |kapcsolatfelvétel az ügyfélszolgálattal |
 
 #### <a name="load-balancer"></a>Load Balancer korlátok
 Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Ismerje meg, hogyan [az aktuális erőforrás-használat az előfizetés korlátozások megtekintése](../articles/networking/check-usage-against-limits.md)

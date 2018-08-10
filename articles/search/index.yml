@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 6995022626e2abe52e4fd72b401cbb01b5bc92e6
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714935"
 documentType: LandingData
 title: Azure Search-dokumentáció
 metadata:
@@ -13,22 +19,16 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/01/2018
   ms.author: heidist
-  ms.openlocfilehash: 7c03fba9071225453b059d6bcaf9cac1be9a9f02
-  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/02/2018
-  ms.locfileid: "37341824"
 abstract:
-  description: Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal. <p/><b>Az új kognitív keresési előzetes verziója.</b> Egy kiadás előtti verziójú REST API-val mesterséges intelligencia által vezérelt algoritmusokat társíthat az indexelési folyamathoz. Az adatok kinyerésével és a természetes nyelvi és képfeldolgozással a nyers, strukturálatlan tartalmak kereshető tartalmakká alakíthatóak egy Azure Search-indexben. <p/>Megkezdheti az <a href="/azure/search/cognitive-search-quickstart-blob">erőforrások és a mintaadatok</a> használatát, vagy többet tudhat meg a <a href="/azure/search/cognitive-search-concept-intro">fogalmakat</a> ismertető cikkben.
+  description: Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal. <p/><b>Az új kognitív keresési előzetes verziója.</b> Egy kiadás előtti verziójú REST API-val mesterséges intelligencia által vezérelt algoritmusokat társíthat az indexelési folyamathoz. Az adatok kinyerésével és a természetes nyelvi és képfeldolgozással a nyers, strukturálatlan tartalmak kereshető tartalmakká alakíthatóak egy Azure Search-indexben. <p/>Megismerkedhet a kognitív kereséssel az <a href="/azure/search/cognitive-search-quickstart-blob">erőforrások és a mintaadatok</a> használatával, vagy többet tudhat meg a <a href="/azure/search/cognitive-search-concept-intro">fogalmakat</a> ismertető cikkben.
   aside:
     image:
       alt: 
       height: 110
       src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
       width: 250
-    title: Tudnivalók az Azure Searchről (9:32)
-    href: https://channel9.msdn.com/Events/Connect/2016/138/player
+    title: Mi az az Azure Search? (1:27)
+    href: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
     width: 250
 sections:
 - title: 5 perces gyors útmutatók

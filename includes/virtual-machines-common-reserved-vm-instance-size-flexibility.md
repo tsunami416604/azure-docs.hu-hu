@@ -4,12 +4,12 @@ ms.author: manshuk
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-03-2018
-ms.openlocfilehash: d8e749d7c665bcaef9190bcc572e9552a307aa08
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 41216fe12e10f72f76043f1a8bc361b538259ac1
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39496208"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39721130"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Virtuális gép mérete rugalmasan fenntartott VM-példányok
 
@@ -22,7 +22,7 @@ A fenntartott virtuálisgép-példányt, amely optimalizált rendelkezik példá
 
 A foglalási kedvezményt a különböző táblák, például, hogy mi az a DSv2-sorozat magas memóriahasználat táblázatban felsorolt virtuálisgép-méretek nem vonatkozik, de: Standard_DS11_v2, Standard_DS12_v2, és így tovább.
 
-A méretcsoport sorozat virtuális gépek, alkalmazza a foglalási kedvezményt a virtuális gép méretét, válasszon ki egy fenntartott példányok vásárlásakor függ. Attól is függ, a méret a virtuális gépek, amely rendelkezik futó. Az arány oszlop az alábbi táblázatban szereplő minden egyes Virtuálisgép-méret, hogy a csoportban a relatív erőforrás-igényű hasonlítja össze. Használat alapján számítja ki, hogyan a foglalási kedvezményt vonatkozik a virtuális gépek, az arány értéknek futtatása.
+A méretcsoport sorozat virtuális gépek, alkalmazza a foglalási kedvezményt a virtuális gép méretét, válasszon ki, amikor vásárol egy foglalást függ. Attól is függ, a méret a virtuális gépek, amely rendelkezik futó. Az arány oszlop az alábbi táblázatban szereplő minden egyes Virtuálisgép-méret, hogy a csoportban a relatív erőforrás-igényű hasonlítja össze. Használat alapján számítja ki, hogyan a foglalási kedvezményt vonatkozik a virtuális gépek, az arány értéknek futtatása.
 
 ## <a name="examples"></a>Példák
 

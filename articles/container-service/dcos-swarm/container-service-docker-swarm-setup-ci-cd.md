@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: b88fba4e04adb56742edf8023fde34e8ff6519c2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ac3133ac093d578c89d24bddd1cc0a7c9588c2fd
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437916"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714998"
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>A teljes CI/CD-folyamat üzembe helyezéséhez egy többtárolós alkalmazást az Azure Container Service a Docker Swarmmal Visual Studio Team Services használatával
 
@@ -46,7 +46,7 @@ Az oktatóanyag elindítása előtt kell végrehajtani az alábbi feladatokat:
 - [Swarm-fürt létrehozása az Azure Container Service-ben](container-service-deployment.md)
 - [Csatlakozás a Swarm-fürthöz az Azure Container Service-ben](../container-service-connect.md)
 - [Az Azure container registry létrehozása](../../container-registry/container-registry-get-started-portal.md)
-- [Rendelkezik egy Visual Studio Team Services-fiók és a team projekt létrehozása](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+- [Rendelkezik egy Visual Studio Team Services-fiók és a team projekt létrehozása](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student)
 - [A GitHub-fiókjába a GitHub tárház elágaztatása](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]

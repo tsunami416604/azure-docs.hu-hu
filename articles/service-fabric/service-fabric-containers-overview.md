@@ -1,6 +1,6 @@
 ---
-title: A Service Fabric és a tárolók áttekintése |} Microsoft Docs
-description: Mikroszolgáltatási alkalmazások központi telepítése a Service Fabric és tárolók használatának áttekintése. Ez a cikk ismerteti, hogyan használható a tárolók áttekintése és a Service Fabric elérhető képességek.
+title: A Service Fabric és a tárolók áttekintése |} A Microsoft Docs
+description: Mikroszolgáltatás-alkalmazások üzembe helyezése a Service Fabric és a tárolók használatának áttekintése. A cikk ismerteti, hogyan használhatók tárolók áttekintése és az elérhető képességek a Service Fabricben.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -12,78 +12,103 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 5/21/2018
+ms.date: 8/8/2018
 ms.author: msfussell
-ms.openlocfilehash: fe6db569c0f70362676251a9413fa859f27f5046
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6715142be7f40955861afa634bf6e2472c9f7294
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641912"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005775"
 ---
 # <a name="service-fabric-and-containers"></a>A Service Fabric és a tárolók
 
 ## <a name="introduction"></a>Bevezetés
-Az Azure Service fabric egy [orchestrator](service-fabric-cluster-resource-manager-introduction.md) szolgáltatások gépet fürtön belül, használatát és az optimalizálást a jelentős mértékű évnyi szolgáltatásokat, amely Microsoft. Szolgáltatások használatával számos módon fejleszthetők a [programozási modellek Service Fabric](service-fabric-choose-framework.md) telepítésével [Vendég végrehajtható fájlok](service-fabric-guest-executables-introduction.md). Alapértelmezés szerint a Service Fabric telepíti, és ezek a szolgáltatások, folyamatok aktiválja. Folyamatok adja meg a leggyorsabb aktiválás és a legmagasabb sűrűség használatát egy fürtön. A Service Fabric szolgáltatások tároló képek is telepítheti. Fontos kombinálhatja a folyamatokat a szolgáltatások és szolgáltatások tárolókban ugyanabban az alkalmazásban.   
 
-## <a name="what-are-containers"></a>Mik azok a tárolók?
-Tárolók összetevői beágyazott, külön-külön telepíthető, amely a azonos kernel előnyeit, amely az operációs rendszer biztosít a virtualizálási elszigetelt példányai futtassa. Így minden alkalmazás és a futtatókörnyezet, a függőségeket és a rendszer tárak futhat egy tároló teljes, privát hozzáférést az operációs rendszer megoldások tároló saját elkülönített nézethez. Hordozhatósága, valamint biztonsági és erőforrás-elkülönítést az ilyen mértékű tárolók használata a Service Fabric, amelyek egyébként szolgáltatást futtat folyamatokat a fő juttatása.
+Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését.
 
-Tárolók egy virtualizációs technológia, amely Virtualizálja az alapul szolgáló operációs rendszer alkalmazások. Tárolók különböző mértékben elkülönítési futó alkalmazások nem módosítható környezetet biztosíthat. Tárolók közvetlenül a kernel fut, és a fájlrendszerben és egyéb erőforrások elkülönített nézetet. Virtuális gépek képest, tárolók rendelkezik a következő előnyökkel jár:
+Service Fabric a Microsoft [tárolóvezénylő](service-fabric-cluster-resource-manager-introduction.md) üzembe helyezésének mikroszolgáltatásokat Vezényel számítógépfürtökön. A Microsoft-szolgáltatásokat futtató nagy mennyiségben év során szerzett tapasztalatokat a Service Fabric előnyei.
 
-* **Kis**: tárolók használata egyetlen tárolóhely és a réteg verziója és a frissítések a hatékonyság növelése érdekében.
-* **Gyors**: tárolók nem rendelkezik teljes operációs rendszert, rendszerindító, így indításához sokkal gyorsabb, általában másodpercben.
-* **Hordozhatósága**: egy indexelése alkalmazás-lemezképet is tartalomfájlokat a helyszíni virtuális gépeken belül, vagy közvetlenül a fizikai gép a felhőben való futtatásra.
-* **Erőforrás-irányítás**: A tárolók korlátozhatja a fizikai erőforrásokat vehet igénybe, a gazdagépen.
+A mikroszolgáltatások számos különféle módon fejleszthetőek a [Service Fabric programozási modellektől](service-fabric-choose-framework.md) és az [ASP.NET Core-tól](service-fabric-reliable-services-communication-aspnetcore.md) [tetszőleges kód üzembe helyezéséig](service-fabric-guest-executables-introduction.md). Vagy, ha csak át szeretné [tárolók telepítése és felügyelete](service-fabric-containers-overview.md), Service Fabric is, amely nagyszerű választás.
 
-## <a name="container-types-and-supported-environments"></a>Támogatott környezetek és a tároló esetében
-A Service Fabric tárolók támogatja a Linux és a Windows, és is támogatja az utóbbi a Hyper-V elkülönítési üzemmódját. 
+Alapértelmezés szerint a Service Fabric üzembe helyezi, és ezek a szolgáltatások, folyamatok aktiválja. Folyamatok adja meg, a leggyorsabb aktiválási és a legnagyobb kapacitású használatát egy fürtön. A Service Fabric is szolgáltatást is üzembe helyezhet tárolórendszerképeket a. A folyamatok szolgáltatások és szolgáltatások a tárolókban, ugyanabban az alkalmazásban is kombinálhatók.
 
-### <a name="docker-containers-on-linux"></a>Linux docker-tároló
-Docker biztosít magas szintű API-k létrehozásához és kezeléséhez tárolók Linux kernel tárolók felett. Docker egy központi tárházban tárolásához és lekéréséhez tároló képek is.
-Az oktatóanyagok esetén lásd: [egy Docker-tároló telepíteni a Service Fabric](service-fabric-get-started-containers-linux.md).
+Ugrani, és próbálja ki a Service Fabric tárolók, próbálja meg egy rövid, az oktatóanyag vagy minta:  
 
-### <a name="windows-server-containers"></a>Windows Server-tárolók
-Windows Server 2016 biztosít két különböző típusú tárolókat, amely nem egyezik a megadott elkülönítési szintjét. Windows Server-tárolók és a Docker-tárolók hasonlítanak, mivel mindkét rendszer elkülönítési névtér és a fájl rendelkezik, de a kernel megosztása gazdagépen futnak a gazdagép. Linux, elkülönítés hagyományosan által szolgáltatott `cgroups` és `namespaces`, és a Windows Server-tárolók hasonlóan viselkednek.
+[Gyors útmutató: A Service Fabric egy Linux-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers-linux.md)  
+[Gyors útmutató: A Service Fabric Windows-tároló alkalmazás üzembe helyezése](service-fabric-quickstart-containers.md)  
+[Meglévő .NET-alkalmazás tárolóalapúvá](service-fabric-host-app-in-a-container.md)  
+[Service Fabric-tárolóminták](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
-Hyper-támogatással rendelkező Windows-tárolók további elkülönítési és biztonsági adja meg, mert minden egyes tároló nem osztja meg az operációs rendszer kernel más tárolók vagy a gazdagépen. A magasabb szintű biztonsági elkülönítés engedélyezve van a Hyper-V tárolók rosszindulatú, több-bérlős forgatókönyvek célozzák.
-Az oktatóanyagok esetén lásd: [egy Windows-tároló üzembe a Service Fabric](service-fabric-get-started-containers.md).
+## <a name="what-are-containers"></a>Mik a tárolók
 
-Az alábbi ábrán látható a különböző típusú virtualizálás és az elkülönítési szint érhető el az operációs rendszerben.
-![Service Fabric-platformról][Image1]
+Tárolók megoldani a problémát futó alkalmazások megbízhatóan különböző számítástechnikai környezetekben azáltal, hogy az alkalmazás futtatása a környezet nem módosítható. Tárolók burkolhatja az alkalmazást és annak minden függőségét, kódtárak és konfigurációs fájlok, például szöveget a saját elkülönített' ", amely tartalmaz mindent, a tárolóban a szoftver futtatásához szükséges. A tárolóban fut, ahol az alkalmazás mindig azon belül mindent tartalmaz, például a függő kódtárak és konfigurációs fájlok bármi más futtatásához megfelelő verzióinak futtatásához.
+
+A tárolók közvetlenül a kernel fut, és egy elkülönített nézetnek a fájlrendszer és egyéb erőforrásokat. Egy alkalmazás egy tárolóban nem rendelkezik más alkalmazások vagy a tárolón kívüli folyamatokat. Egyes alkalmazások és a futtatókörnyezet, a függőségeket és a rendszer könyvtárak futtassa a tárolókon belül a tároló saját elkülönített nézetet, az operációs rendszer teljes, privát hozzáférést. Amellett, hogy egyszerűen adja meg az összes futtatásához a különböző számítási környezeteket, az alkalmazás-függőségek biztonsági és erőforrás-elkülönítést is fontos előnyei a tárolók a Service Fabric – a szolgáltatásai milyen más módon fut egy a folyamat.
+
+A virtuális gépekhez képest a tárolók rendelkezik a következő előnyökkel jár:
+
+* **Kis**: tárolók használata egyetlen tárhely és a réteg verziók és a frissítés a hatékonyság növelése érdekében.
+* **Gyors**: tárolók nem rendelkezik egy teljes operációs rendszer rendszerindító, így elindíthatják sokkal gyorsabban – általában másodpercek alatt.
+* **Hordozhatóságot**: egy tárolóba helyezett alkalmazást rendszerképet is már futtathat a felhőben, a helyszínen, a virtuális gépeken belül, vagy közvetlenül a fizikai gépek.
+* **Erőforrás-szabályozás**: tároló korlátozhatja a gazdagépen lefoglalhatja a fizikai erőforrásokat.
+
+### <a name="container-types-and-supported-environments"></a>Tároló-típusok és a támogatott környezetek
+
+Service Fabric támogatja a tárolók a Linux és a Windows és a Hyper-V elkülönítési módban támogatja a Windows.
+
+#### <a name="docker-containers-on-linux"></a>Docker-tárolók linuxon
+
+Docker API-kat hozhat létre és felügyelhet tárolókat épülő Linux-kernel tárolókat biztosít. A docker Hub biztosít egy központi tárházban tárolására és beolvasására a tárolórendszerképeket.
+Linux-alapú oktatóanyagért lásd: [az első Service Fabric-tárolóalkalmazás létrehozása linuxon](service-fabric-get-started-containers-linux.md).
+
+#### <a name="windows-server-containers"></a>A Windows Server-tárolók
+
+A Windows Server 2016-ban két különböző típusú tárolók két elkülönítési szintet biztosít. A Windows Server-tárolók és a Docker-tárolók hasonlóak, mert is rendelkezik a névtér és a fájl rendszer elkülönítést, a kernel osztanak meg a gazdagép, amelyen futnak. Linuxon Ez az elkülönítés hagyományosan megadott cgroupokban és a névterek, és a Windows Server-tárolók hasonlóan viselkednek.
+
+Hyper-V-támogatással rendelkező Windows-tárolók további elkülönítési és biztonsági adja meg, mert nincs tároló megosztja az operációs rendszer kernelén bármilyen másik tároló vagy a gazdagép. Ez magasabb szintű biztonsági elkülönítés engedélyezve van a Hyper-V-tárolók esetleg rosszindulatú, több-bérlős forgatókönyvek célozzák meg.
+Windows-alapú oktatóanyagért lásd: [az első Service Fabric-tárolóalkalmazás létrehozása Windows](service-fabric-get-started-containers.md).
+
+A következő ábrán látható a különböző típusú virtualizálás és elkülönítési szinten érhető el.
+![Service Fabric platformot][Image1]
 
 ## <a name="scenarios-for-using-containers"></a>Tárolók használatára vonatkozó forgatókönyvek
-Íme jellemző példa arra, ahol a tároló, akkor a:
 
-* **IIS növekedési, és az eltolás mértékét megadó**: Ha rendelkezik meglévő [ASP.NET MVC](https://www.asp.net/mvc) továbbra is használhatja, kívánt alkalmazások helyezze őket egy tároló áttelepítése helyett az ASP.NET Core azokat. ASP.NET MVC alkalmazások az Internet Information Services (IIS) határozza meg. Ezeket az alkalmazásokat a tároló képek a precreated IIS lemezképből csomag, és a Service Fabric telepíteni őket. Lásd: [tároló lemezképek a Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) Windows tárolók kapcsolatos információkat.
-* **Tárolók és a Service Fabric mikroszolgáltatások**: meglévő tároló lemezképet használja az alkalmazás a része. Használhatja például a [NGINX tároló](https://hub.docker.com/_/nginx/) a webalkalmazás első végén az alkalmazás- és állapot-nyilvántartó a intenzívebb háttér-számításhoz.
-* **"Zajos szomszédok" szolgáltatások hatásának csökkentéséhez**: tárolók erőforrás irányítás képességét segítségével korlátozni az erőforrások, a szolgáltatás által használt egy gazdagépen. Ha szolgáltatások előfordulhat, hogy sok erőforrást és teljesítményét befolyásoló mások (például egy hosszan futó, a lekérdezés-szerű művelet), fontolja meg, ezek a szolgáltatások üzembe erőforrás irányítás tárolókat.
+Az alábbiakban tipikus példák egy tároló esetén a jó választás:
 
-## <a name="service-fabric-support-for-containers"></a>A Service Fabric tárolók támogatása
-A Service Fabric a Docker-tároló központi telepítését támogatja a Linux és Windows Server-tárolókra vonatkozóan a Windows Server 2016 működési feltételeit, támogatja a Hyper-V elkülönítési üzemmódját. 
+* **IIS lift- and -shift**: egy meglévő helyezheti [ASP.NET MVC](https://www.asp.net/mvc) alkalmazás áttelepítése helyett egy tárolóban, az ASP.NET Core. Az ASP.NET MVC-alkalmazások attól függnek, hogy az Internet Information Services (IIS). Az alkalmazások a precreated IIS rendszerkép tárolórendszerképekbe csomagot, és a Service Fabric segítségével telepíthet. Lásd: [Tárolórendszerképeket a Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) Windows-tárolókkal kapcsolatos információkat.
 
-A Service Fabric a [alkalmazásmodell](service-fabric-application-model.md), a tároló jelöli egy alkalmazásgazda, mely több szolgáltatásban replikák kerülnek. A Service Fabric tárolókkal futtathatja, és a forgatókönyv hasonlít a [Vendég végrehajtható forgatókönyv](service-fabric-guest-executables-introduction.md), ahol a becsomagolt belül egy tárolót egy meglévő alkalmazást. Ebben a forgatókönyvben a gyakori használati eset az tárolókat, és példák bármilyen nyelvet vagy keretrendszert használja, de nem használ a beépített Service Fabric programozási modellek írása egy alkalmazást futtat.
+* **Tárolók és mikroszolgáltatások Service Fabric vegyesen**: egy meglévő tároló-rendszerkép használata a alkalmazás részeként. Például előfordulhat, hogy használja a [NGINX-tároló](https://hub.docker.com/_/nginx/) a webes kezelőfelület az alkalmazás és a háttér-intenzívebb számítási az állapotalapú szolgáltatások esetében.
 
-Ezenkívül futtatása [Service Fabric szolgáltatások tárolókba](service-fabric-services-inside-containers.md) is. Tárolók belül futó Service Fabric-szolgáltatások támogatása jelenleg korlátozott, és a jövőbeli kiadásokban javítani kell.
+* **A "zajos szomszédok" szolgáltatások gyakorolt hatást**: a tárolók erőforrás cégirányítási képessége segítségével korlátozhatja az erőforrások, amelyeket a szolgáltatás használ egy gazdagépen. Ha a szolgáltatások előfordulhat, hogy sok erőforrást igényelnek, és teljesítményét befolyásoló mások (például egy hosszan futó, lekérdezés-szerű művelet), fontolja meg, ezek a szolgáltatások üzembe helyezése erőforrás-szabályozás rendelkező tárolókat.
 
-A Service Fabric van több tárolóhoz képességeket, amelyek segítenek a mikroszolgáltatások létrehozására, amelyek indexelése épülnek alkalmazásokat hozhatnak létre. A Service Fabric indexelése szolgáltatások a következő szolgáltatásokat biztosítja:
+## <a name="service-fabric-support-for-containers"></a>A Service Fabric-tárolók támogatása
 
-* Tároló lemezkép-telepítés és az aktiválás.
-* Erőforrás irányítás, beleértve a beállítás erőforrás értéke alapértelmezés szerint az Azure-fürtökön.
-* Tárház-hitelesítés.
-* Host port hozzárendelését tároló portot.
-* Tároló-tároló felderítése és a kommunikáció.
-* Konfigurálja, és állítsa be a környezeti változók lehetősége.
-* Lehetővé teszi biztonsági hitelesítő adatok beállítása a tárolón.
-* A tárolók hálózati mód választható.
+A Service Fabric Docker-tárolókat, Linux és Windows Server-tárolók telepítését támogatja a Windows Server 2016 esetében támogatja a Hyper-V elkülönítési módban. 
+
+A Service Fabric biztosít egy [alkalmazásmodell](service-fabric-application-model.md) található, amely egy tároló jelöli egy alkalmazásgazda, mely több szolgáltatásban replikák kerülnek. A Service Fabric emellett támogatja a [Vendég végrehajtható forgatókönyv](service-fabric-guest-executables-introduction.md) amely, ne használja a beépített Service Fabric programozási modelleket, de ehelyett csomag belül bármilyen nyelvet vagy keretrendszert, használatával írt, meglévő alkalmazást egy a tároló. Ebben a forgatókönyvben a gyakori használati tárolókhoz.
+
+Futtathat [Service Fabric-szolgáltatások a tárolókon belül](service-fabric-services-inside-containers.md). Tárolókon belül futó Service Fabric-szolgáltatások támogatása jelenleg korlátozódik.
+
+A Service Fabric biztosít, amelyekkel különböző lehetőségek alkalmazások összeállítását, amelyek tárolóalapú mikroszolgáltatások például alkotják:
+
+* Tároló-lemezkép központi telepítéséhez és az aktiválás.
+* Erőforrás-szabályozás beállítása a erőforrás értékek alapértelmezés szerint az Azure-fürtökön.
+* Adattár-hitelesítést.
+* Port kontejneru host port hozzárendelését.
+* Tároló – tároló felderítés és a kommunikáció.
+* Lehetővé teszi konfigurálása és a környezeti változókat.
+* Lehetőség biztonsági hitelesítő adatok beállítása a tárolón.
+* Tárolók hálózati mód közül választhat.
+
+Átfogó tájékoztatást tároló támogatja az Azure-ban, például a Kubernetes-fürt létrehozása az Azure Kubernetes Service szolgáltatással, hogyan privát Docker-tárolójegyzék létrehozása az Azure Container Registrybe, és további: [Azure tárolókhoz](https://docs.microsoft.com/azure/containers/).
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, tárolók, kapcsolatban, hogy a Service Fabric egy tárolót az orchestrator, és a Service Fabric tárolókat támogató szolgáltatások. A következő lépésben azt ismerteti példák az egyes mutatjuk be, hogyan használhatja ezeket a szolgáltatásokat.
 
-[Az első Service Fabric tároló alkalmazás létrehozása Windows rendszeren](service-fabric-get-started-containers.md)
+Ebben a cikkben megismerkedett a Service Fabric biztosít a futó tárolók támogatása. Ezután fogja meg is vagyunk példák bemutatják, hogyan használhatja azokat a szolgáltatásokat az egyes keresztül.
 
-[Az első Service Fabric-tároló alkalmazás létrehozása Linux rendszeren](service-fabric-get-started-containers-linux.md)
-
-[További információ a Windows-tárolók](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[Az első Service Fabric-tárolóalkalmazás létrehozása linuxon](service-fabric-get-started-containers-linux.md)  
+[Az első Service Fabric-tárolóalkalmazás létrehozása Windows](service-fabric-get-started-containers.md)  
+[További tudnivalók a Windows-tárolók](https://docs.microsoft.com/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

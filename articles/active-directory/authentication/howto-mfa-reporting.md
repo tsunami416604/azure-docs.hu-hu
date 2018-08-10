@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: bb5a005ba553d6392bf1427a4c2bba9ac5aad191
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: dc4cd28fe61c422f65f47c74c7cbc4686d73ab77
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358666"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628834"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication jelentései
 
@@ -50,7 +50,7 @@ A bejelentkezések jelentés biztosíthat kapcsolatos információk a felügyelt
 - Hány felhasználó nem tudta elvégezni az MFA-hitelesítést?
 - Melyek a gyakori MFA-problémák, amelyekkel a végfelhasználók találkoznak?
 
-Ezek az adatok keresztül érhető el a [az Azure portal](https://portal.azure.com) és a [reporting API](../active-directory-reporting-api-getting-started-azure-portal.md).
+Ezek az adatok keresztül érhető el a [az Azure portal](https://portal.azure.com) és a [reporting API](../reports-monitoring/concept-reporting-api.md).
 
 ![Felhő](./media/howto-mfa-reporting/sign-in-report.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Search – alapok lekérdezése |} A Microsoft Docs
+title: Típusok és létrehozása az Azure Search lekérdezési |} A Microsoft Docs
 description: Alapjait, amellyel egy keresési lekérdezést az Azure Search szolgáltatásban paraméterek használatával szeretne szűrni, jelölje ki, és rendezheti az eredményeket.
 author: HeidiSteen
 manager: cgronlun
@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.openlocfilehash: 7e34e5fdfc674804faaba5d1fc19d24b9f51c61e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 098718293cda1699fb07e09fa81af94a95bbdeca
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503057"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715158"
 ---
-# <a name="query-fundamentals-in-azure-search"></a>Az Azure Search lekérdezési alapjai
+# <a name="query-types-and-composition-in-azure-search"></a>Lekérdezés típusa és létrehozása az Azure Search
 
 Lekérdezés létrehozása az Azure Search egy teljes megadását, egy kérelem: felel meg a feltételeket, valamint irányítja a lekérdezés-végrehajtás és a válasz alakításra. Egy kérelem megadja a mezőket tartalmaz, mely mezők, a rendezés vagy szűrőt, és így tovább. Nincs megadva, a lekérdezés fut kereshető mező alapján egy teljes szöveges keresési művelet egy tetszőleges sorrendben pontozás nélküli eredményhalmazt visszaadása.
 
@@ -55,7 +55,7 @@ Más paramétereket, a példában a lekérdezés eredményeit vonatkoznak:
 
 **Keresztül indexattribútumokat műveletek engedélyezése**
 
-Index tervezési és kialakítási szorosan összekapcsolva az Azure Search lekérdezési. Itt nem látható, amíg a kritikus ponttá előre tudni, hogy a *indexsémát*, az egyes mezők attribútumai, határozza meg, milyen típusú lekérdezési hozhat létre. Egy mező állapítsa meg az index attribútumainak engedélyezett műveletek –, hogy az adott mező kitöltése *kereshető* az indexben *lekérhető* eredmények között, *rendezhető*,  *szűrhető*, és így tovább. A példában `"orderby": "listingId"` csak akkor működik, ha a listingId mező van megjelölve *rendezhető* az indexsémában. Az index attribútumainak kapcsolatos további információkért lásd: [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Index tervezési és kialakítási szorosan összekapcsolva az Azure Search lekérdezési. Itt nem látható, amíg a kritikus ponttá előre tudni, hogy a *indexsémát*, az egyes mezők attribútumai, határozza meg, milyen típusú lekérdezési hozhat létre. Egy mező állapítsa meg az index attribútumainak engedélyezett műveletek –, hogy az adott mező kitöltése *kereshető* az indexben *lekérhető* eredmények között, *rendezhető*, * szűrhető*, és így tovább. A példában `"orderby": "listingId"` csak akkor működik, ha a listingId mező van megjelölve *rendezhető* az indexsémában. Az index attribútumainak kapcsolatos további információkért lásd: [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 Engedélyezett műveletek egy mezőnként könnyen módon egy index definícióját, hogy tájékoztatja a lekérdezés végrehajtása. Egyéb képességek engedélyezve van az indexben a következők:
 

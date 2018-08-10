@@ -1,38 +1,38 @@
 ---
-title: Adatait kéri le egy C#-kódban használó Azure idő adatsorozat Insights környezetben |} Microsoft Docs
-description: Ez a cikk ismerteti a adatait kéri le egy Azure idő adatsorozat Insights környezet által a C# (C-éles) .NET nyelven írt egyéni alkalmazás kódolása.
+title: Az Azure Time Series Insights környezetből a C#-kód használatával adatokat kérdezhet le |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan kérdezhet le adatokat Azure Time Series Insights-környezetből kódolása C# (C-éles) .NET nyelven írt egyéni alkalmazás által.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: ankryach
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 19531fc5bde1f833021cf5bd781e4811b2c23155
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 6c4a99096efc95f439d6c9479cb9014957207ea6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293602"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630857"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Az Azure idő adatsorozat Insights környezet használatával C# az adatait
+# <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Adatok lekérdezése az Azure Time Series Insights-környezetből C# használatával
 
-A C# példa bemutatja, hogyan kérdezhet le adatokat az Azure idő adatsorozat Insights környezetben a.
+A C#-példa bemutatja, hogyan kérdezhet le adatokat az Azure Time Series Insights-környezetből.
 A minta számos alapszintű példát is tartalmat a Query API használatára:
-1. Előkészítő lépéseként szerezzen be a hozzáférési tokent az Azure Active Directory API-n keresztül. Ez a token átadni a `Authorization` minden lekérdezés API-kérelem fejlécében. Nem interaktív alkalmazások beállításának, lásd: [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md). Gondoskodjon arról is, a minta elején definiált összes állandók megfelelően van beállítva.
-2. A beolvasni a felhasználó rendelkezik hozzáférési jogosultsággal környezetek listáját. Egyik a környezetben van felvenni, mint a környezet egyik fontos, és további adatokat kérnek ebben a környezetben.
+1. Az előkészítő lépésben beszerezni a hozzáférési jogkivonatot az Azure Active Directory API segítségével. A token továbbítja a `Authorization` minden Query API-kérés fejlécébe. Nem interaktív alkalmazások beállításához, tekintse meg a [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md). Gondoskodjon arról is, a minta elején definiált összes állandók megfelelően vannak beállítva.
+2. A környezetek listáját tartalmazza, amely a felhasználó hozzáféréssel rendelkezik kapjuk meg. Az egyik környezet a környezet összesített eseményadatait van kiválasztva, és további adatok lekérdezése követi, ebben a környezetben.
 3. A HTTPS-kérés példájaként a rendszer lekéri az érintett környezet rendelkezésreállási adatait.
 4. A websocket-kérés példájaként a rendszer lekéri az érintett környezet összesített eseményadatait. Az adatokat a rendszer a teljes rendelkezésre állási időtartamra lekéri.
 
 Ez a példa kód is érhető el: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
 
-## <a name="project-references"></a>A projekt hivatkozásainak
-Adja hozzá a NuGet-csomagok `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json` ehhez a példához. 
+## <a name="project-references"></a>Projekt Referenciáihoz
+Adja hozzá a NuGet-csomagok `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json` ebben a példában. 
 
-## <a name="c-example"></a>C# – példa
+## <a name="c-example"></a>C#-példa
 
 ```csharp
 using System;
@@ -456,4 +456,4 @@ namespace TimeSeriesInsightsQuerySample
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [API-referencia lekérdezése](/rest/api/time-series-insights/time-series-insights-reference-queryapi).
+> [Lekérdezési API-referencia](/rest/api/time-series-insights/time-series-insights-reference-queryapi).

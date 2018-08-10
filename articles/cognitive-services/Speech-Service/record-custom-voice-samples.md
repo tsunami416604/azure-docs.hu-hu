@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 80b65b8bc2e2947575004269f45922e2306dd32e
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ebd9943ad7f54a329dee16d57ab980b882d508f3
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284166"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715107"
 ---
 # <a name="how-to-record-voice-samples-for-a-custom-voice"></a>Hogyan lehet egyéni beszédfelismerési rögzítése a voice-minták
 
@@ -68,13 +68,13 @@ Minden olyan egyéni beszédfelismerési munkamenet rögzítése kiindulópontja
 
 A parancsfájlban megcímkézzen származhatnak bárhol: fantasztikus, nem fantasztikus, beszédek, news jelentések és bármi más elérhető átiratok nyomtatott űrlap. Ha azt szeretné, hogy a hangját does is az adott típusú szavakat (például terminológiát vagy programozási szakkifejezéseivel), érdemes mondatokat egyetemi tanulmányok vagy műszaki dokumentáció tartalmazza. (Azonban [Legalities](#legalities) alatt.) A saját szöveget is írhat.
 
-A kimondott szöveg azonos forrásból, vagy a forrás ugyanolyan típusú nem kell származnia. Nem is szükséges, ami ehhez egymással. Azonban akkor, ha fogja használata állítsa mondatokat (például "sikeresen bejelentkezett") az speech-alkalmazás ügyeljen arra, hogy a szkriptet fogja össze őket. Ez lehetőséget biztosít az egyéni beszédfelismerési jobb esélye a ezeket a kifejezéseket is felel. És kell való használatra megad egy felvételt szintetizált helyett, ha már rendelkezik, a mint a szintetizált azonos használatának.
+A kimondott szöveg azonos forrásból, vagy a forrás ugyanolyan típusú nem kell származnia. Nem is szükséges, ami ehhez egymással. Azonban akkor, ha fogja használata állítsa mondatokat (például "sikeresen bejelentkezett") az speech-alkalmazás ügyeljen arra, hogy a szkriptet fogja össze őket. Ez lehetőséget biztosít az egyéni beszédfelismerési jobb esélye a ezeket a kifejezéseket is felel. És kell való használatra megad egy felvételt szintetizált helyett, ha már rendelkezik, az azonos használatának.
 
 Kulcsot hangalapú szakembereket kiválasztása a konzisztencia pedig különböző a hallmark jó parancsfájlra. A szkript számos más szavakat és a mondat hosszúságú, és a hangulatokra különböző mondatokat tartalmaznia kell. Minden nyelven hang mindig és számos olyan környezeteket kezeli őket több kell lennie (nevű *fonetikus lefedettség).* 
 
 Továbbá a szöveget kell tartalmazniuk, összes lehetséges, hogy az adott hang írásban jelölhető, és helyezze el az egyes hang különböző helyeken a mondatokban. Deklaratív mondatokat és kérdéseket is érdemes lehet tartalmazza, és olvassa el a megfelelő intonation.
 
-Nehéz írni egy parancsfájlt, amely biztosít *éppen elegendő* ahhoz, hogy a Custom Speech-portál hozhat létre egy jó hangalapú adatokat. A gyakorlatban a legegyszerűbb módja, hogy egy parancsfájl, amely hatékony fonetikus lefedettséget biztosít az minták nagy számú. A Microsoft standard beszédhangot utterances tízezer lett létrehozva. Jegyezze fel a több ezer utterances hozhat létre egy gyártási minőségű egyéni beszédfelismerési néhány előkészített kell lennie.
+Nehéz írni egy parancsfájlt, amely biztosít *éppen elegendő* ahhoz, hogy a Custom Speech-portál hozhat létre egy jó hangalapú adatokat. A gyakorlatban a legegyszerűbb módja, hogy egy parancsfájl, amely hatékony fonetikus lefedettséget biztosít az minták nagy számú. A Microsoft standard beszédhangot utterances tízezer lett létrehozva. Jegyezze fel a több ezer utterances legalább egy gyártási minőségű egyéni beszédfelismerési hozhat létre néhány előkészített kell lennie.
 
 Ellenőrizze a parancsfájl alaposan a hibákat. Ha lehetséges valaki más próbálja túl van. Amikor a szakembereket futtatja a parancsfájl segítségével, valószínűleg az néhány további hibák tényleges lesz.
 
@@ -85,7 +85,7 @@ A szkript írhat a Microsoft Word programban. A parancsfájl a rögzítési munk
 Alapvető parancsprogram formátum három oszlopot tartalmazza:
 
 * Az utterance (kifejezés), 1-gyel kezdődik száma. Számozása megkönnyíti a Studio hivatkozni egy adott utterance (kifejezés) mindenki számára ("próbálkozzon szám 356 újra"). A Word bekezdés számozása funkció segítségével automatikusan száma a tábla sorait.
-* Üres oszlop hol fogja írja be a lekérési szám, vagy minden kimondásakor segítséget nyújtanak a befejezett felvétel az található kód idő.)
+* Egy üres oszlop, hol fogja írja be a lekérési szám, vagy minden kimondásakor segítséget nyújtanak a befejezett felvétel az található kód idő.
 * Az utterance (kifejezés) maga szövege.
 
 ![Példaszkript](media/custom-voice/script.png)
@@ -113,7 +113,7 @@ Szerencsére a lehetőség a problémák teljes egészében elkerülése érdek�
 
 ## <a name="recording-your-script"></a>A szkript rögzítése
 
-Lehetőleg kell rögzíteni található szakmai felvétel stúdióban, amely a szkriptet hangvétel munkahelyi. A rögzítés érzékelőadatainak, a megfelelő eszközök és működjön, a megfelelő személyeknek rendelkeznek. Nem, a rögzítés mulassza fizet.
+Jegyezze fel a található szakmai felvétel stúdióban, amely a szkriptet az hangalapú során. A rögzítés érzékelőadatainak, a megfelelő eszközök és működjön, a megfelelő személyeknek rendelkeznek. Nem, a rögzítés mulassza fizet.
 
 A projekt tárgyalják a studio felvétel szakértővel, és figyeli a saját tanácsokat. A felvétel alig vagy egyáltalán nem dinamikus tartományának tömörítés (legfeljebb 4:1) kell rendelkeznie. Rendkívül fontos, hogy a hanganyag konzisztens kötet és a egy magas jel zaj arány rendelkezik ugyanakkor nemkívánatos hangok ingyenes.
 
@@ -142,7 +142,7 @@ A "érzékelőadatainak," zaj ahol származik, és az OK kiküszöbölése vizsg
 > [!TIP]
 > Bizonyos esetekben előfordulhat, hogy kell segítségével egy hangszínszabályzó vagy egy zaj csökkentésére szoftverfrissítési beépülő modul zaj eltávolítása felvételeit, bár minden esetben célszerű állítsa le a forrásban.
 
-A legtöbb digitális felvétel elérhető dinamikus tartományának overdriving nélkül történik, így szintek kell beállítani. Ez azt jelenti, hangos lejátszásra, de nem így hangos, hogy a hanganyag eltorzítják. Alább egy példát a helyes felvétel hullám van.
+A legtöbb digitális felvétel elérhető dinamikus tartományának overdriving nélkül történik, így szintek megadása Ez azt jelenti, hangos lejátszásra, de nem így hangos, hogy a hanganyag eltorzítják. Alább egy példát a helyes felvétel hullám van.
 
 ![jó felvétel hullám](media/custom-voice/good-recording.png)
 
@@ -159,9 +159,9 @@ A szerepkörök igazgató, a visszafejtés és szakembereket szolgálja ki a kü
 Elkerülése érdekében, ami pazarolja a studio idő, futtassa a parancsfájlt a hangalapú szakembereket keresztül a rögzítési munkamenet előtt. A beszédfelismerési szakembereket válik a szöveg ismeri, miközben ő a kiejtés bármely ismeretlen szavak is tisztázása.
 
 > [!NOTE]
-> A legtöbb felvétel studios elektronikus megjelenítését a rögzítés érzékelőadatainak parancsfájlok kínálnak. Ebben az esetben a run-through megjegyzések közvetlenül írja be a parancsfájl-dokumentumot. Érdemes a papír másolatot feljegyzéseket a munkamenet során azonban továbbra is. A legtöbb mérnökök túl érdemes egy vezetékhelyettesítési. És továbbra is gondoskodni a harmadik biztonsági mentéséhez a szakembereket a nyomtatott példány, abban az esetben, ha a számítógép nem működik.
+> A legtöbb felvétel studios elektronikus megjelenítését a rögzítés érzékelőadatainak parancsfájlok kínálnak. Ebben az esetben a run-through megjegyzések közvetlenül írja be a parancsfájl-dokumentumot. Érdemes a papír másolatot feljegyzéseket a munkamenet során azonban továbbra is. A legtöbb mérnökök túl érdemes egy vezetékhelyettesítési. És továbbra is gondoskodni a harmadik a szakembereket a biztonsági nyomtatott példány, abban az esetben, ha a számítógép nem működik.
 
-A beszédfelismerési szakembereket kérheti, mely azt szeretné, word megcélzó az utterance (kifejezés). Aktorok hívja, ez az "operatív szót." Mondja el neki, nincs különös tekintettel a természetes olvasó szeretne. Kiemelés speech synthesized van; Ha adhatók hozzá nem lehet az eredeti felvétel részét.
+A beszédfelismerési szakembereket megcélzó (az "operatív szót") az utterance (kifejezés) szeretné word kérheti. Mondja el neki, nincs különös tekintettel a természetes olvasó szeretne. Kiemelés speech synthesized van; Ha adhatók hozzá nem lehet az eredeti felvétel részét.
 
 Közvetlenül a szakembereket a jelszórészek mondjuk ki szavakat. A parancsfájl minden szó kell lennie ejtsd formában. Hangok nem szabad nincs megadva vagy slurred, gyakori az alkalmi-beszéd átalakítás, együttesen *, kivéve, ha azok alkalmazáskonfigurációjának ezzel a módszerrel a szkriptben.*
 
@@ -176,7 +176,7 @@ Szakembereket kell *nem* adja hozzá a szavak közötti különböző szünetel.
 
 ### <a name="the-recording-session"></a>A rögzítési munkamenet
 
-Hozzon létre egy felvételt, referencia vagy *egyezés fájlt,* egy tipikus utterance (kifejezés), a munkamenet elején annak. Kérje meg a szakembereket, ismételje meg ezt a sort, vagy minden lapon és a egy fél. Minden alkalommal, amikor, hasonlítsa össze az új rögzítés-referenciáját. Ez az eljárás segítségével a szakembereket a kötetet, tempo, lényegét és intonation konzisztens marad. Eközben a mérnök használhatja az egyezés fájl hivatkozásként van listázva szinteket és az e hang.
+Hozzon létre egy felvételt, referencia vagy *egyezés fájlt,* egy tipikus utterance (kifejezés), a munkamenet elején annak. Ismételje meg ezt a sort, hogy a szakembereket minden oldalon fel, tehát. Minden alkalommal, amikor, hasonlítsa össze az új rögzítés-referenciáját. Ez az eljárás segítségével a szakembereket a kötetet, tempo, lényegét és intonation konzisztens marad. Eközben a mérnök használhatja az egyezés fájl hivatkozásként van listázva szinteket és az e hang.
 
 A match fájl különösen fontos, amikor folytatása a felvételt, egy szünet után, vagy egy másik napon. Érdemes a szakembereket a néhányszor, lejátszásához, és ismételje meg minden egyes alkalommal, amíg nem jól megfelelő őket.
 
@@ -185,16 +185,16 @@ A részletes például és a egy kis ideig, mielőtt minden kimondásakor szüne
 Jegyezze fel a helyes öt másodpercenként az első rögzítés előtt csend rögzítheti a "hely képviselő hangvételét." Ez segít az egyéni beszédfelismerési portálon minden fennmaradó lényeget a felvételt a meghiúsult lépések kompenzációjához.
 
 > [!TIP]
-> Valóban szüksége a hangalapú szakembereket vonalak érdekében, hogy csak azok a sorok monophonic (single-csatorna) felvétel. Azonban ha sztereó rögzíti, a második csatorna segítségével rögzítse az adott sorokat tárgyalása rögzítése a vezérlő helyiségben a chatter, vagy vesz igénybe. Távolítsa el a nyomon követése a egyéni beszédfelismerési portálra történő feltöltés verzió.
+> Valóban szüksége a hangalapú szakembereket érdekében, hogy csak azok a sorok monophonic (single-csatorna) felvétel. Azonban ha sztereó rögzíti, a második csatorna segítségével rögzítse az adott sorokat tárgyalása rögzítése a vezérlő helyiségben a chatter, vagy vesz igénybe. Távolítsa el a nyomon követése a egyéni beszédfelismerési portálra történő feltöltés verzió.
 
 Szorosan, figyelési, fejhallgatót a hangalapú szakembereket teljesítménye. Helyes, de természetes diction írásmódja megfelelő és nem kívánt hangok hiánya keres. Ne habozzon, kérje meg a szakembereket újra jegyezze fel az utterance (kifejezés), amely nem felel meg ezeknek a szabványoknak. 
 
 > [!TIP] 
-> Beszédmódok nagy mennyiségű rögzítésekor egy egyetlen utterance (kifejezés) nem lehet az így kapott, egyéni hangalapú észrevehető hatása. Ezért érdemes lehet egyszerűen problémákkal rendelkező megszólalásokat jegyezze fel, zárja ki őket az adatkészlet, és tekintse meg, hogyan az egyéni beszédfelismerési elemről kiderül, hogy több bármelyikére. Mindig lépjen vissza a studióban, és jegyezze fel a kihagyott minták később.
+> Beszédmódok nagy számú használja, ha egy egyetlen utterance (kifejezés) nem lehet az így kapott, egyéni hangalapú észrevehető hatása. Ezért érdemes lehet egyszerűen problémákkal rendelkező megszólalásokat jegyezze fel, zárja ki őket az adatkészlet, és tekintse meg, hogyan az egyéni beszédfelismerési elemről kiderül, hogy több bármelyikére. Mindig lépjen vissza a studióban, és jegyezze fel a kihagyott minták később.
 
 Jegyezze fel az a lekérési szám, vagy minden kimondásakor, amikor a parancsfájlt a kódot. Kérje meg a mérnök, ha minden kimondásakor, a rögzítés metaadatok vagy köteg táblázatban is jelölheti.
 
-Rendszeres oldaltörések igénybe vehet, és adjon meg olyan, amelyet a hangalapú szakembereket fenntartható jó minősége hangjának segítségével.
+Rendszeres oldaltörések igénybe vehet, és adjon meg egy ital érdekében a hangalapú szakembereket hangjának fenntartható a jó minősége.
 
 ### <a name="after-the-session"></a>A munkamenet után
 

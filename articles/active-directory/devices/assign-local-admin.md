@@ -13,21 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 2dfef8d0dbaf4d70559c966f1587764210d8b49c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b72cab6ce90f0cbb74afd3e00a9aec73fb2908f7
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598330"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003780"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközök
 
 Windows-eszköz felügyelete, a helyi Rendszergazdák csoport tagjának lennie kell. Az Azure Active Directory (Azure AD) való csatlakozás folyamat részeként az Azure AD frissíti egy eszközön a csoport tagságát. Testre szabhatja a csoporttagság-frissítést, az üzleti követelményeinek kielégítéséhez. A csoporttagság-frissítést akkor lehet hasznos, például a segélyszolgálat munkatársait a feladatok végrehajtására kellene rendszergazdai jogosultságokkal az eszközön engedélyezni kívánja.
 
-Ez a cikk azt ismerteti, hogyan működik az a csoporttagság-frissítést, és hogyan lehet testre szabni.
+Ez a cikk bemutatja, hogyan működik az a csoporttagság-frissítést, és hogyan tudná testre szabni az Azure AD-csatlakozás során. Ez a cikk tartalma nem vonatkozik a **hibrid** az Azure AD Joint.
 
 
 ## <a name="how-it-works"></a>Működés

@@ -1,63 +1,63 @@
 ---
-title: Az Azure idő adatsorozat Insights környezet méretezése |} Microsoft Docs
-description: Ez a cikk ismerteti az Azure idő adatsorozat Insights környezet méretezése. Az Azure portál segítségével növekménye árképzési SKU belül.
+title: Az Azure Time Series Insights-környezet skálázása |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan skálázható az Azure Time Series Insights-környezetet. Az Azure portal segítségével hozzáadhatók vagy kivonhatók díjszabási Termékváltozat kapacitásokat.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 3e357f8a1667677c763e94c6f7d57402a7aa175d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: f80c3ad28c3944bd365100d1d873231869da46f8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294353"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629718"
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>A idő adatsorozat Insights környezet méretezése
+# <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet méretezése
 
-Ez a cikk ismerteti a kapacitás, a környezet módosításáról a idő adatsorozat Insights környezet az Azure portál használatával. A többszöröző alkalmazza a érkező sebessége, tárolási kapacitás és a kiválasztott Termékváltozat költsége. 
+Ez a cikk bemutatja, hogyan módosíthatja a környezet kapacitása a Time Series Insights-környezet az Azure portal használatával. A kapacitása a alkalmazni a bejövő forgalom, a tárolási kapacitás és a kiválasztott Termékváltozat kapcsolódó költségek szorzó. 
 
-Az Azure portál segítségével növelheti vagy csökkentheti a belül egy adott árképzési Termékváltozat. 
+Az Azure portal használatával növelheti vagy csökkentheti a belül egy adott díjszabási Termékváltozat kapacitása. 
 
-Azonban ez a tarifacsomag Termékváltozat nem módosítható. Például a Termékváltozat árképzési egy S1 tartalmazó környezet nem konvertálható egy S2 vagy fordítva. 
+Azonban a tarifacsomag módosítása Termékváltozat nem engedélyezett. Például egy S1 Termékváltozat díjszabása környezet nem lehet konvertálni az S2 szintű, vagy fordítva. 
 
 
-## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 SKU érkező sebességét és a kapacitások
+## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 Termékváltozat telemetriabevitelt régiójának és kapacitás
 
-| S1 Termékváltozat-kapacitás | Érkező arány | Tárolókészlet teljes tárhelykapacitását
+| S1 Termékváltozat kapacitása | Bejövő forgalom | Maximális tárolási kapacitás
 | --- | --- | --- |
-| 1 | 1 GB (1 millió esemény) | Havonta 30 GB (30 millió esemény) |
-| 10 | 10 GB-os (10 millió esemény) | Havonta 300 GB (300 millió esemény) |
+| 1 | 1 GB (1 millió esemény) | 30 GB (30 millió esemény) / hó |
+| 10 | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
 
-## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 SKU érkező sebességét és a kapacitások
+## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 Termékváltozat telemetriabevitelt régiójának és kapacitás
 
-| S2 Termékváltozat-kapacitás | Érkező arány | Tárolókészlet teljes tárhelykapacitását
+| S2 Termékváltozat kapacitása | Bejövő forgalom | Maximális tárolási kapacitás
 | --- | --- | --- |
-| 1 | 10 GB-os (10 millió esemény) | Havonta 300 GB (300 millió esemény) |
-| 10 | 100 GB (100 millió esemény) | Havonta 3 TB (3 milliárd esemény) |
+| 1 | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
+| 10 | 100 GB (100 millió esemény) | 3 TB (3 milliárd eseményig) / hó |
 
-Kapacitások lineárisan lehessen méretezni, így egy S1 SKU 2 kapacitással rendelkező havonta támogatja a 2 GB (2 millió) események / nap érkező sebessége és 60 GB (60 millió esemény).
+Kapacitások költségráfordításokkal egyenes arányban, méretezhető, így egy S1 Termékváltozat kapacitása 2 támogatja a 2 GB (2 millió) esemény napi bejövő forgalom és 60 GB (60 millió esemény) / hó.
 
-## <a name="change-the-capacity-of-your-environment"></a>A kapacitás, a környezet módosítása
-1. Az Azure-portálon keresse meg és válassza ki azt az időt adatsorozat Insights környezetet. 
+## <a name="change-the-capacity-of-your-environment"></a>A környezet a kapacitás módosításához
+1. Az Azure Portalon keresse meg és válassza ki a Time Series Insights-környezetet. 
 
-2. Az idő adatsorozat Insighs környezet menüben válasszon ki **konfigurálása**.
+2. A Time Series Insighs környezet menüben válassza **konfigurálása**.
 
    ![Configure.png](media/scale-your-environment/configure.png)
 
-3. Módosítsa a **kapacitás** csúszkát a, amely megfelel az érkező sebesség és a tárolási kapacitás. Figyelje meg a **érkező arány**, **tárolási kapacitás**, és **becsült költség** frissítés dinamikusan milyen hatással bír a változtatás megjelenítéséhez. 
+3. Módosítsa a **kapacitás** csúszkával válassza ki a kapacitás, amely megfelel a követelményeknek, a bejövő forgalom arányát és a tárolási kapacitást. Figyelje meg a **bejövő forgalom**, **tárolókapacitás**, és **becsült költség** dinamikusan frissülnek a megjelenítése, milyen hatású a változtatás. 
 
-   ![A csúszka](media/scale-your-environment/slider.png)
+   ![Csúszka](media/scale-your-environment/slider.png)
 
-   Másik lehetőségként adhatja meg a kapacitás többszöröző száma a szövegmezőbe, a csúszka jobbra. 
+   A kapacitás szorzó száma beírhatja azt is megteheti, a csúszka jobbra a szövegmezőben. 
 
-4. Válassza ki **mentése** méretezése a környezetben. Folyamatjelző jelenik meg, amíg a módosítás véglegesítve lesz, rövid ideig. 
+4. Válassza ki **mentése** a környezet méretezése. A folyamatjelző jelenik meg, amíg a módosítás véglegesítve lesz, rövid ideig. 
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Ellenőrizze, hogy az új kapacitása elegendő, hogy megakadályozza a sávszélesség-szabályozás](time-series-insights-diagnose-and-solve-problems.md).
+> [Győződjön meg arról, hogy az új kapacitást elegendő szabályozás elkerülése érdekében](time-series-insights-diagnose-and-solve-problems.md).

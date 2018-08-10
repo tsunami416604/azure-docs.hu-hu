@@ -25,6 +25,8 @@
       href: app-service-web-get-started-java.md
     - name: Statikus HTML-webhely létrehozása
       href: app-service-web-get-started-html.md
+    - name: Egyéni Windows-tároló futtatása
+      href: app-service-web-get-started-windows-container.md
 - name: Oktatóanyagok
   items:
     - name: Adatbázist használó alkalmazás

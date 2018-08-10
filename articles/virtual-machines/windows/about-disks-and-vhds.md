@@ -1,83 +1,82 @@
 ---
-title: Hamarosan nem felügyelt (lapblobokat) és a lemezek tárolási felügyelt Microsoft Azure Windows virtuális gépek |} Microsoft Docs
-description: További tudnivalók a alapjait nem felügyelt (lapblobokat) és a felügyelt Windows virtuális gépek Azure-lemezeket tároló.
-services: virtual-machines
+title: Körülbelül nem felügyelt (lapblobok) és a managed disks storage a Microsoft Azure Windows virtuális gépek |} A Microsoft Docs
+description: További információ a alapjait nem felügyelt (lapblobok) és a felügyelt lemezes tárolás az Azure Windows virtual machines.
+services: virtual-machines-windows,storage
 author: roygara
-manager: jeconnoc
-ms.service: virtual-machines
-ms.workload: storage
+ms.service: virtual-machines-windows
 ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 4323f4fd9b94c38d99557f1d4426682a8c16dd9b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.component: disks
+ms.openlocfilehash: 4fa8341b4d1953e3c59d345f45853f4c9a4a2941
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267094"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715454"
 ---
-# <a name="about-disks-storage-for-azure-windows-vms"></a>Lemezek tárolás Azure Windows virtuális gépek
-Csakúgy, mint bármely más számítógépre az Azure virtuális gépek lemezek használatával egy olyan hely az operációs rendszerek, alkalmazások és adatok tárolására. Minden Azure virtuális gépek legalább két lemezt – a Windows operációs rendszer és egy ideiglenes lemezzel rendelkezik. Az operációs rendszer lemez létrehozása lemezkép, és mind az operációsrendszer-lemez, és a lemezkép virtuális merevlemezeket (VHD) Azure-tárfiók tárolja. Virtuális gépek is rendelkeznek legalább egy adatlemezt, virtuális merevlemezekként is tárolt. 
+# <a name="about-disks-storage-for-azure-windows-vms"></a>Az Azure Windows virtuális gépek disks storage-ról
+Minden olyan számítógépre, mint az Azure-beli virtuális gépek lemezeket használnak egy olyan hely operációs rendszert, alkalmazásokat és adatokat szeretne tárolni. Az összes Azure-beli virtuális gépek legalább két lemezt – egy Windows operációs rendszert tartalmazó lemez és a egy ideiglenes lemezzel rendelkezik. Az operációsrendszer-lemez jön létre egy rendszerképből, és az operációsrendszer-lemez és a kép is tárolt virtuális merevlemezek (VHD) egy Azure storage-fiókban. Virtuális gépek is rendelkezhet egy vagy több adatlemezt, is tárolt VHD-ként. 
 
-Ebben a cikkben rendszer szolgáltatással kapcsolatban a lemezek különböző használ, és a különböző típusú lemezek létrehozhat és használhat majd ismertetik. Ez a cikk érhető el is [Linux virtuális gépek](../linux/about-disks-and-vhds.md).
+Ebben a cikkben fogja különböző felhasználási módja a lemezeket, és, amelyet majd ismertetjük a különböző típusú is létrehozhat és használhat lemezeket. Ez a cikk érhető el is [Linux rendszerű virtuális gépek](../linux/about-disks-and-vhds.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="disks-used-by-vms"></a>Virtuális gépek által használt lemezek
 
-Vessen egy pillantást a lemezt a virtuális gépek által használt hogyan.
+Vessünk egy pillantást a lemezeket a virtuális gépek általi felhasználási módjáról.
 
 ### <a name="operating-system-disk"></a>Operációsrendszer-lemez
-Minden virtuális gép egy csatolt operációsrendszer-lemez van. SATA meghajtóként regisztrálva van, a C: meghajtóra, alapértelmezés szerint a sorban. Ezen a lemezen vannak 2048 gigabájt (GB) maximális kapacitását. 
+Minden virtuális gép rendelkezik egy csatlakoztatott operációsrendszer-lemez. Regisztrált egy SATA-meghajtót, és alapértelmezés szerint a C: meghajtón kerülhetnek. Ez a lemez maximális kapacitása 2048 gigabájt (GB). 
 
 ### <a name="temporary-disk"></a>Ideiglenes lemez
-Minden virtuális gép ideiglenes lemezt tartalmaz. Az ideiglenes lemezre rövid távú tárolás biztosít az alkalmazások és folyamatok, és csak az adatok, például az oldal vagy swap fájlok tárolására szolgál. Az ideiglenes lemezen lévő adatok elveszhetnek során egy [karbantartási esemény](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) és mikor meg [újratelepíteni a virtuális gépek](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Során a virtuális gép sikeres szabványos újraindítás egészen addig megmarad, az ideiglenes meghajtón található adatokat. 
+Minden virtuális gép egy ideiglenes lemezt tartalmaz. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok, és csak az adatok, például lapozófájlokat tárolására szolgál. Az ideiglenes lemezen lévő adatok elveszhetnek során egy [karbantartási esemény](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) , vagy ha Ön [egy virtuális gép ismételt üzembe](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Során a virtuális gép sikeres standard újraindítása az ideiglenes meghajtón lévő adatok megmaradnak. 
 
-Az ideiglenes lemez a d meghajtó címkézve alapértelmezett és pagefile.sys tárolására szolgál. Adja meg újból a lemezt egy másik meghajtóbetűjelet, lásd: [a meghajtóbetűjel, a Windows ideiglenes lemez](change-drive-letter.md). Változik a ideiglenes lemez méretét, a virtuális gép méretétől függ. További információkért lásd: [méretek a Windows virtuális gépek](sizes.md).
+Az ideiglenes lemez a D: meghajtó címkével alapértelmezés szerint és azt pagefile.sys tárolására szolgál. Tekintse meg ezt a lemezt, más meghajtóbetűt újramegfeleltetése, [a Windows ideiglenes lemez meghajtóbetűjelét](change-drive-letter.md). Az ideiglenes lemez méretének a függvénye a virtuális gép méretét. További információkért lásd: [méretek a Windows virtuális gépek](sizes.md).
 
-Hogyan Azure használja az ideiglenes lemez a további információkért lásd: [az ideiglenes meghajtón a Microsoft Azure virtuális gépeken ismertetése](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Az Azure általi az ideiglenes lemez további információkért lásd: [az ideiglenes meghajtó a Microsoft Azure Virtual Machines ismertetése](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 
 ### <a name="data-disk"></a>Adatlemez
-Adatlemezt tartalmazó virtuális merevlemez csatolva van egy virtuális gép tárolásához, alkalmazás vagy egyéb adatok szüksége. Az adatlemezek SCSI meghajtóként regisztrálva van, és az Ön által betűvel fel van tüntetve. Minden egyes adatlemez 4095 GB maximális kapacitása nem. A virtuális gép mérete határozza meg, hány adatlemezt csatol, és a tároló típusa szerinti használhatja a lemezek.
+Adatlemez egy alkalmazás vagy egyéb adatok továbbra is szeretné tárolni a virtuális géphez csatolt virtuális merevlemez. Adatlemezek SCSI-meghajtók, regisztrálva van, és betűvel, Ön által választott vannak ellátva. Az egyes adatlemezek kapacitása maximum 4095 GB-ot. A virtuális gép mérete határozza meg, hány adatlemez csatolható, és a tárolás típusát használhatja a lemezek.
 
 > [!NOTE]
-> További információ a virtuális gépek kapacitások: [méretek a Windows virtuális gépek](sizes.md).
+> Virtuális gépek kapacitások kapcsolatos további információkért lásd: [méretek a Windows virtuális gépek](sizes.md).
 > 
 
-Azure operációsrendszer-lemez hoz létre, amikor egy virtuális gépet hoz létre a lemezkép. Ha adatlemezt tartalmaz egy képet, a Azure is létrehoz az adatlemezek, amikor létrehozza a virtuális gép. Ellenkező esetben az adatlemezek hozzáadása, a virtuális gép létrehozása után.
+Az Azure létrehozza az operációsrendszer-lemez egy rendszerképből egy virtuális gép létrehozásakor. Adatlemezek tartalmazó lemezképek használata, ha az Azure az, amikor létrehozza a virtuális gép is létrehoz az adatlemezeket. Ellenkező esetben hozzáadhat adatlemezeket a virtuális gép létrehozása után.
 
-Adhat hozzá adatlemezt egy virtuális gép bármikor, az **csatolása** a lemezt a virtuális géphez. Használja a már feltöltött, illetve a tárfiókhoz másolt virtuális Merevlemezt, vagy egy üres virtuális merevlemez, amely az Azure létrehozza, használja. A virtuális gép adatlemezt csatol társítja a VHD-fájlt a címbérlet helyez a VHD-t, így azt nem lehet törölni az tárolási amíg továbbra is csatlakoztatva van.
+Adhat hozzá adatlemezeket a virtuális gépek bármikor, az **csatolása** a lemezt a virtuális géphez. Egy virtuális Merevlemezt, amelyet feltöltött, vagy másolja a tárfiók használata, vagy használjon egy üres VHD-t, amely az Azure létrehozza az Ön számára. A virtuális gép adatlemezt csatol társítja a VHD-fájlt a címbérlet helyez a VHD-t, így azt nem törölhető a tárolás közben továbbra is csatlakoztatva van.
 
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Egy utolsó javaslat: használja a nem kezelt szabványos lemezek vágás 
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Egy utolsó javaslat: TRIM standard szintű nem felügyelt lemezek használata 
 
-Nem felügyelt standard lemezek (HDD) használatakor vágást kell engedélyeznie. VÁGÁS elveti a nem használt blokkok a lemezen, így csak a ténylegesen használt tárolási kell fizetni. Ez is mentheti költségek Ha nagy fájlok létrehozása, majd törli őket. 
+Ha nem felügyelt a standard szintű lemezek (HDD) használja, engedélyeznie kell a vágás. TRIM elveti a nem használt blokkolja a lemezen, tehát csak a ténylegesen használt tárolási lesznek számlázva. Ez érhet el költségmegtakarítást Ha nagyméretű fájlokat hoz létre, és törölje őket. 
 
-Ez a parancs a vágás beállítás ellenőrzéséhez futtathatja. Nyissa meg a Windows virtuális gép, és írja be a parancssorba:
+Ez a parancs vágás beállítás ellenőrzéséhez futtathatja. Nyissa meg a Windows virtuális gép, és írja be a parancssorba:
 
 
 ```
 fsutil behavior query DisableDeleteNotify
 ```
 
-A parancs a 0 értéket adja vissza, vágást engedélyezve van-e megfelelően. Ha a visszaadott érték 1, vágást engedélyezéséhez a következő parancsot:
+A parancs a 0 értéket adja vissza, ha TRIM megfelelően engedélyezve van. Ha a visszaadott érték 1, TRIM engedélyezéséhez a következő parancsot:
 
 ```
 fsutil behavior set DisableDeleteNotify 0
 ```
 
 > [!NOTE]
-> Megjegyzés: A vágás támogatása kezdődik-e a Windows Server 2012 vagy Windows 8 és újabb verzióiban lásd: [új API lehetővé teszi, hogy a mutatók "Vágás és megfeleltetésének törlése" küldendő tárolási adathordozókon alkalmazások](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
+> Megjegyzés: A vágás támogatása elindítja a Windows Server 2012 vagy Windows 8 és újabb, lásd: [új API lehetővé teszi, hogy az alkalmazások "TRIM és megfeleltetésének törlése" mutatók küldendő adathordozók](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
 > 
 
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>További lépések
-* [A lemez csatolása](attach-disk-portal.md) további tárhely hozzáadása a virtuális gép számára.
+* [Lemez csatolása](attach-disk-portal.md) , adjon hozzá további tárterületet a virtuális géphez.
 * [Pillanatkép létrehozása](snapshot-copy-managed-disk.md).
-* [Alakítsa át a felügyelt](convert-unmanaged-to-managed-disks.md).
+* [Konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md).
 
 

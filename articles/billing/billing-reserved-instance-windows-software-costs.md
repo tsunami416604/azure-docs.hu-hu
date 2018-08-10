@@ -1,6 +1,6 @@
 ---
-title: Az Azure tartalék példányok Windows szoftverek költségeit |} Microsoft Docs
-description: Ismerje meg, melyik Windows szoftver mérőszámok nem szerepelnek az Azure fenntartott Virtuálisgép-példány költségeket.
+title: A Windows Azure foglalás szoftverek díjait |} A Microsoft Docs
+description: Ismerje meg, mely Windows szoftverek mérőszámok nem szerepelnek az Azure fenntartott VM-példány költségeket.
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 6602424e2b2e4a4c2c3c51b5cb4bb1024a39d2e0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8ff2d126fd491ddc40f6223b6d4ec1fc4505b8fb
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063843"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630111"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>A Windows szoftverek költségeit Azure fenntartott példányok nem találhatók
+# <a name="windows-software-costs-not-included-with-azure-reservations"></a>Windows szoftverek díjait nem találhatók meg az Azure-foglalások
 
-Ha egy Azure hibrid használata juttatás nem rendelkezik a fenntartott példány virtuális gépeken, majd van szó, a a Windows szoftverek mérőszámok szerepel a következő szakaszban.
+Ha az Azure Hybrid Use Benefit nem rendelkezik a fenntartott VM-példányokon, majd díja az alábbi szakaszban felsorolt Windows szoftverek mérőszámokhoz tartozó.
 
-## <a name="windows-software-meters-not-included-in-reserved-instance-cost"></a>A Windows szoftverek mérőszámok nem foglalt példány költség szerepel
+## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Windows szoftverek mérőszámok nem szerepel a fenntartás költsége
 
 | Fogyasztásmérő azonosítója | A használati fájlban MeterName | Virtuális gép által használt |
 | ------- | ------------------------| --- |
-| e7e152ac-f29c-4cce-ad6e-026192c01ef2 | Windows-foglalás Svr kapacitásnövelés (1 mag) | B sorozat |
-| cac255a2-9f0f-4c62-8bd6-f0fa449c5f76 | Windows-foglalás Svr kapacitásnövelés (2 mag) | B sorozat |
-| 09756b58-3fb5-4390-976d-9ddd14f9ed18 | Windows-foglalás Svr kapacitásnövelés (4 mag) | B sorozat |
-| e828cb37-5920-4dc7-b30f-664e4dbcb6c7 | Windows-foglalás Svr kapacitásnövelés (8 mag) | B sorozat |
-| f65a06cf-c9c3-47a2-8104-f17a8542215a | Windows-foglalás Svr (1 mag) | B sorozat kivételével |
-| b99d40ae-41fe-4d1d-842b-56d72f3d15ee | Windows-foglalás Svr (2 mag) | B sorozat kivételével |
-| 1cb88381-0905-4843-9ba2-7914066aabe5 | Windows-foglalás Svr (4 mag) | B sorozat kivételével |
-| 07d9e10d-3e3e-4672-ac30-87f58ec4b00a | Windows-foglalás Svr (6 mag) | B sorozat kivételével |
-| 603f58d1-1e96-460b-a933-ce3775ac7e2e | Windows-foglalás Svr (8 mag) | B sorozat kivételével |
-| 36aaadda-da86-484a-b465-c8b5ab292d71 | Windows-foglalás Svr (12 mag) | B sorozat kivételével |
-| 02968a6b-1654-4495-ada6-13f378ba7172 | Windows-foglalás Svr (16 mag) | B sorozat kivételével |
-| 175434d8-75f9-474b-9906-5d151b6bed84 | Windows-foglalás Svr (20 mag) | B sorozat kivételével |
-| 77eb6dd0-88f5-4a16-ab39-05d1742efb25 | Windows-foglalás Svr (24 mag) | B sorozat kivételével |
-| 0d5bdf46-b719-4b1f-a780-b9bdfffd0591 | Windows-foglalás Svr (32 mag) | B sorozat kivételével |
-| f1214b5c-cc16-445f-be6c-a3bb75f8395a | Windows-foglalás Svr (40 mag) | B sorozat kivételével |
-| 637b7c77-65ad-4486-9cc7-dc7b3e9a8731 | Windows-foglalás Svr (64 mag) | B sorozat kivételével |
-| da612742-e7cc-4ca3-9334-0fb7234059cd | Windows-foglalás Svr (72 mag) | B sorozat kivételével |
-| a485cb8c-069b-4cf3-9a8e-ddd84b323da2 | Windows-foglalás Svr (128 mag) | B sorozat kivételével |
-| 904c5c71-1eb7-43a6-961c-d305a9681624 | Windows-foglalás Svr (256 mag) | B sorozat kivételével |
-| 6fdab81b-4284-4df9-8939-c237cc7462fe | Windows-foglalás Svr (96 mag) | B sorozat kivételével |
+| e7e152ac-f29c-4cce-ad6e-026192c01ef2 | Foglalás-Windows fenntartott példányok periódusai (1 mag) | B sorozat |
+| cac255a2-9f0f-4c62-8bd6-f0fa449c5f76 | Foglalás-Windows fenntartott példányok periódusai (2 mag) | B sorozat |
+| 09756b58-3fb5-4390-976d-9ddd14f9ed18 | Foglalás-Windows fenntartott példányok periódusai (4 mag) | B sorozat |
+| e828cb37-5920-4dc7-b30f-664e4dbcb6c7 | Foglalás-Windows fenntartott példányok periódusai (8 mag) | B sorozat |
+| f65a06cf-c9c3-47a2-8104-f17a8542215a | Foglalás-Windows fenntartott példányok (1 mag) | Mindenhol, kivéve a B sorozat |
+| b99d40ae-41fe-4d1d-842b-56d72f3d15ee | Foglalás-Windows fenntartott példányok (2 mag) | Mindenhol, kivéve a B sorozat |
+| 1cb88381-0905-4843-9ba2-7914066aabe5 | Foglalás-Windows fenntartott példányok (4 mag) | Mindenhol, kivéve a B sorozat |
+| 07d9e10d-3e3e-4672-ac30-87f58ec4b00a | Foglalás-Windows fenntartott példányok (6 mag) | Mindenhol, kivéve a B sorozat |
+| 603f58d1-1e96-460b-a933-ce3775ac7e2e | Foglalás-Windows fenntartott példányok (8 mag) | Mindenhol, kivéve a B sorozat |
+| 36aaadda-da86-484a-b465-c8b5ab292d71 | Foglalás-Windows fenntartott példányok (12 mag) | Mindenhol, kivéve a B sorozat |
+| 02968a6b-1654-4495-ada6-13f378ba7172 | Foglalás-Windows fenntartott példányok (16 mag) | Mindenhol, kivéve a B sorozat |
+| 175434d8-75f9-474b-9906-5d151b6bed84 | Foglalás-Windows fenntartott példányok (20 mag) | Mindenhol, kivéve a B sorozat |
+| 77eb6dd0-88f5-4a16-ab39-05d1742efb25 | Foglalás-Windows fenntartott példányok (24 mag) | Mindenhol, kivéve a B sorozat |
+| 0d5bdf46-b719-4b1f-a780-b9bdfffd0591 | Foglalás-Windows fenntartott példányok (32 mag) | Mindenhol, kivéve a B sorozat |
+| f1214b5c-cc16-445f-be6c-a3bb75f8395a | Foglalás-Windows fenntartott példányok (40 mag) | Mindenhol, kivéve a B sorozat |
+| 637b7c77-65ad-4486-9cc7-dc7b3e9a8731 | Foglalás-Windows fenntartott példányok (64 mag) | Mindenhol, kivéve a B sorozat |
+| da612742-e7cc-4ca3-9334-0fb7234059cd | Foglalás-Windows fenntartott példányok (72 mag) | Mindenhol, kivéve a B sorozat |
+| a485cb8c-069b-4cf3-9a8e-ddd84b323da2 | Foglalás-Windows fenntartott példányok (128 mag) | Mindenhol, kivéve a B sorozat |
+| 904c5c71-1eb7-43a6-961c-d305a9681624 | Foglalás-Windows fenntartott példányok (256 mag) | Mindenhol, kivéve a B sorozat |
+| 6fdab81b-4284-4df9-8939-c237cc7462fe | Foglalás-Windows fenntartott példányok (96 mag) | Mindenhol, kivéve a B sorozat |
 
-Ezek a mérőszámok költségét Azure RateCard API-n keresztül érheti el. A díjszabás beszerzésére egy azure mérő információkért lásd: [ár és a metaadat-információ az Azure-előfizetés használt erőforrások lekérése](https://msdn.microsoft.com/library/azure/mt219004).
+Ezek a mérőszámok költsége Azure RateCard API-n keresztül kérheti le. A díjszabás lekérése egy azure-mérőszámok információkért lásd: [Azure-előfizetésben használt erőforrások kapcsolatos díja és metaadatok beolvasása](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>További lépések
-Azure fenntartott példányok kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Azure foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik azok a Azure fenntartott Virtuálisgép-példányok?](billing-save-compute-costs-reservations.md)
-- [A virtuális gépek Azure fenntartott virtuális gép osztályt előre fizetés](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Az Azure-ban fenntartott példányok kezelése](billing-manage-reserved-vm-instance.md)
-- [A fenntartott példány kedvezményeket alkalmazásának a módját ismertetése](billing-understand-vm-reservation-charges.md)
-- [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](billing-understand-reserved-instance-usage.md)
-- [A nagyvállalati beléptetés használata fenntartott példány ismertetése](billing-understand-reserved-instance-usage-ea.md)
+- [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
+- [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Az Azure-ban foglalások kezelése](billing-manage-reserved-vm-instance.md)
+- [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
+- [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
+- [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 
-Ha további kérdései további, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.
+Ha további kérdése van, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
 
 

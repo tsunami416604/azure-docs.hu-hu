@@ -1,51 +1,52 @@
 ---
-title: Az Azure SQL adatbázis dinamikus felügyeleti nézetekkel figyelése |} Microsoft Docs
-description: Megtudhatja, hogyan észlelheti és diagnosztizálhatja a gyakori problémák a Microsoft Azure SQL Database figyelése dinamikus felügyeleti nézetek használatával.
+title: Figyelés dinamikus felügyeleti nézetek használatával az Azure SQL Database |} A Microsoft Docs
+description: Megtudhatja, hogyan észlelheti és diagnosztizálhatja a teljesítményproblémákat gyakran figyelése a Microsoft Azure SQL Database dinamikus felügyeleti nézetek használatával.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 08/08/2018
 ms.author: carlrab
-ms.openlocfilehash: a1333680225923a4e27f96e61a5b6530f32a9329
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4d1170bd2fe4acb135c88191b447f734e312723
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647884"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715957"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Az Azure SQL Database felügyelete dinamikus felügyeleti nézetek használatával
-A Microsoft Azure SQL Database lehetővé teszi, hogy a dinamikus felügyeleti nézetekkel teljesítményproblémákat, amely valószínűleg az okozza letiltott vagy hosszan futó lekérdezések, erőforrás-keresztmetszetek, gyenge lekérdezésterveket, és így tovább diagnosztizálásához egy részét. Ez a témakör információkat kapcsolatos gyakori problémák észlelése dinamikus felügyeleti nézetek használatával.
+A Microsoft Azure SQL Database lehetővé teszi, hogy a dinamikus felügyeleti nézetek által letiltott vagy hosszú ideig futó lekérdezéseket, erőforrás-keresztmetszetek, gyenge lekérdezési tervek és így tovább okozhatta teljesítményproblémák diagnosztizálásához egy részét. Ez a témakör információt nyújt az gyakori teljesítményproblémák észlelése dinamikus felügyeleti nézetek használatával.
 
-SQL-adatbázis részben három kategóriáinak dinamikus felügyeleti nézetekkel támogatja:
+Az SQL Database támogatja a dinamikus felügyeleti nézetek három kategóriába részben:
 
-* Adatbázissal kapcsolatos dinamikus felügyeleti nézetekkel.
-* Végrehajtási kapcsolatos dinamikus felügyeleti nézetekkel.
+* Adatbázissal kapcsolatos dinamikus felügyeleti nézetek.
+* Végrehajtási kapcsolatos dinamikus felügyeleti nézetek.
 * Tranzakció-hoz kapcsolódó dinamikus felügyeleti nézetek.
 
-A dinamikus felügyeleti nézetekkel részletes információkért lásd: [dinamikus felügyeleti nézetek és függvények (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) az SQL Server Online könyvekben.
+A dinamikus felügyeleti nézetek részletes információkért lásd: [dinamikus felügyeleti nézetek és függvények (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) az SQL Server Online könyvekben.
 
 ## <a name="permissions"></a>Engedélyek
-Az SQL-adatbázis, a dinamikus felügyeleti nézetben lekérdezése szükséges **adatbázis állapotának megtekintése** engedélyek. A **adatbázis állapotának megtekintése** engedélyt az aktuális adatbázisban lévő objektumok információt ad vissza.
-Megadását a **adatbázis állapotának megtekintése** engedéllyel a megadott adatbázis-felhasználó, futtassa a következő lekérdezést:
+Az SQL Database dinamikus felügyeleti nézetek lekérdezéséhez szükséges **VIEW DATABASE STATE** engedélyeket. A **VIEW DATABASE STATE** engedélyt az aktuális adatbázisban lévő összes objektum adatait adja vissza.
+Megadását a **VIEW DATABASE STATE** engedélyt egy adott adatbázis-felhasználót a következő lekérdezés futtatásával:
 
 ```GRANT VIEW DATABASE STATE TO database_user; ```
 
-A helyszíni SQL Server egy példányát, a dinamikus felügyeleti nézetekkel kiszolgáló állapota adatokat ad vissza. Az SQL-adatbázis akkor csak az aktuális logikai adatbázis vonatkozó információkat adja vissza.
+A helyszíni SQL Server-példányt, a dinamikus felügyeleti nézetek kiszolgáló állapot adatait adja vissza. SQL Database-ben, csak az aktuális logikai adatbázis kapcsolatos információkat ad vissza.
 
-## <a name="calculating-database-size"></a>Adatbázisméret kiszámítása
-A következő lekérdezés az adatbázis (megabájtban) a méretét adja vissza:
+## <a name="calculating-database-size"></a>Adatbázis méretének kiszámítása
+A következő lekérdezés (megabájtban) az adatbázis méretét adja vissza:
 
 ```
 -- Calculates the size of the database.
-SELECT SUM(reserved_page_count)*8.0/1024
-FROM sys.dm_db_partition_stats;
+SELECT SUM(CAST(FILEPROPERTY(name, 'SpaceUsed') AS bigint) * 8192.) / 1024 / 1024 AS DatabaseSizeInMB
+FROM sys.database_files
+WHERE type_desc = 'ROWS';
 GO
 ```
 
-A következő lekérdezés az adatbázis méretét (megabájtban) egyéni objektumokat adja vissza:
+A következő lekérdezés az adatbázis méretét (megabájtban) objektumokat adja vissza:
 
 ```
 -- Calculates the size of individual database objects.
@@ -56,9 +57,9 @@ GROUP BY sys.objects.name;
 GO
 ```
 
-## <a name="monitoring-connections"></a>Kapcsolatok figyelése
-Használhatja a [sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) nézet az adott Azure SQL adatbázis-kiszolgálót és mindegyik kapcsolat részleteinek fennálló kapcsolatok vonatkozó információk lekéréséhez. Emellett a [sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) nézet akkor hasznos, ha az összes aktív felhasználói kapcsolatok és belső feladatok adatainak lekérése.
-Az alábbi lekérdezés lekéri az aktuális kapcsolat információkat:
+## <a name="monitoring-connections"></a>Kapcsolatok ellenőrzése
+Használhatja a [sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) kérhet le információt a kapcsolatok egy adott Azure SQL Database-kiszolgáló és minden kapcsolat részleteinek megtekintése. Emellett a [sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) megtekintése hasznos, amikor az összes aktív felhasználói kapcsolat és belső feladatok adatainak lekérése.
+Az alábbi lekérdezés lekérdezi az aktuális kapcsolat információkat:
 
 ```
 SELECT
@@ -74,15 +75,15 @@ WHERE c.session_id = @@SPID;
 ```
 
 > [!NOTE]
-> Végrehajtásakor a **sys.dm_exec_requests** és **sys.dm_exec_sessions nézetek**, ha **adatbázis állapotának megtekintése** engedéllyel az adatbázishoz, megjelenik az összes végrehajtás alatt álló munkamenetek az adatbázisban. Ellenkező esetben tekintse meg az aktuális munkamenet.
+> Végrehajtásakor a **sys.dm_exec_requests** és **sys.dm_exec_sessions nézetek**, ha rendelkezik **VIEW DATABASE STATE** engedéllyel az adatbázis láthatja az összes végrehajtása munkamenetek a az adatbázisban. Ellenkező esetben tekintse meg az aktuális munkamenet.
 > 
 > 
 
-## <a name="monitoring-query-performance"></a>Lekérdezés teljesítmény figyelése
-Lassú vagy hosszú ideig futó lekérdezések jelentős rendszererőforrásokat is felhasználhatnak. Ez a szakasz bemutatja, hogyan kell néhány gyakori lekérdezési teljesítmény problémák észlelése dinamikus felügyeleti nézetek használatával. A hibaelhárításhoz, egy régebbi, de továbbra is hasznos a hivatkozás a [teljesítményproblémák elhárítása az SQL Server 2008](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) a Microsoft TechNet cikket.
+## <a name="monitoring-query-performance"></a>A lekérdezési teljesítmény figyelése
+Lassú vagy hosszú ideig futó lekérdezések jelentős rendszer-erőforrásokat használhatnak fel. Ez a szakasz bemutatja, hogyan dinamikus felügyeleti nézetek használatával néhány gyakori lekérdezési teljesítmény problémák észleléséhez. Egy régebbi, de továbbra is hasznos lehet a hibaelhárításhoz, a hivatkozás a [teljesítménybeli problémák elhárítása az SQL Server 2008](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) a cikk a Microsoft TechNet webhelyen.
 
 ### <a name="finding-top-n-queries"></a>Legfontosabb N lekérdezések keresése
-Az alábbi példa átlagos CPU-idő szerinti sorrendben első öt lekérdezések információt ad vissza. Ebben a példában a lekérdezés kivonat szerint a lekérdezések összesíti az, hogy logikailag egyenértékű lekérdezések saját összesítő hálózatierőforrás-fogyasztás szerint vannak csoportosítva.
+Az alábbi példa szerint átlagos CPU-idő az első öt lekérdezés adatait adja vissza. Ebben a példában a lekérdezések a lekérdezés kivonata alapján összesíti az, hogy logikailag egyenértékű lekérdezések azok összesített erőforrás-használat szerint vannak csoportosítva.
 
 ```
 SELECT TOP 5 query_stats.query_hash AS "Query Hash",
@@ -102,10 +103,10 @@ ORDER BY 2 DESC;
 ```
 
 ### <a name="monitoring-blocked-queries"></a>Letiltott lekérdezések figyelése
-Lassú vagy hosszan futó lekérdezések járulnak hozzá sok erőforrást használ, és letiltott lekérdezések következménye lehet. A blokkolás okát gyenge alkalmazás tervét, hibás lekérdezésterveket, hasznos indexek, és így tovább hiánya lehet. A sys.dm_tran_locks nézet segítségével az Azure SQL-adatbázisban az aktuális zárolási tevékenység adatainak beolvasása. Például kódját, lásd: [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx) az SQL Server Online könyvekben.
+Lassú vagy hosszú ideig futó lekérdezések hozzájárulhatnak a túlzott erőforrás-használat és a letiltott lekérdezések következménye lehet. A blokkolás okát gyenge alkalmazástervezést, a hibás terveket, a hasznos indexeket, és így tovább hiánya lehet. A sys.dm_tran_locks nézet segítségével az aktuális zárolási tevékenység adatainak lekérése az Azure SQL Database-ben. Például kódját, lásd: [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx) az SQL Server Online könyvekben.
 
-### <a name="monitoring-query-plans"></a>Figyelési lekérdezésterveket
-Egy hatékony lekérdezésterv is növelheti CPU-használat. Az alábbi példában a [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) nézet segítségével meghatározhatja, melyik lekérdezés használja a legtöbb összegző CPU-t.
+### <a name="monitoring-query-plans"></a>Figyelési lekérdezési tervek
+Egy hatékony lekérdezési terv is előfordulhat, hogy növelje CPU-felhasználás. Az alábbi példában a [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) nézet segítségével meghatározhatja, melyik lekérdezésben használja a legtöbb összegző Processzor.
 
 ```
 SELECT
@@ -128,5 +129,5 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
 ## <a name="see-also"></a>Lásd még
-[SQL-adatbázis bemutatása](sql-database-technical-overview.md)
+[Az SQL Database bemutatása](sql-database-technical-overview.md)
 

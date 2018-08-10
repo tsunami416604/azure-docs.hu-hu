@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: cfe034d6dcac48d7c9e4b2ce17e4926a81a27886
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 1d7855ff840fc1dd68effb19c43c3a691bd15d62
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216104"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714672"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Hálózati konfiguráció az Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Az Azure Kubernetes Service (AKS)-fürt létrehozásakor két hálózatkezelési
 
 ## <a name="basic-networking"></a>Egyszerű hálózatkezelés
 
-A **alapszintű** hálózatkezelés lehetőség az AKS-fürt létrehozása az alapértelmezett konfigurációja. A hálózati konfigurációt a fürt és a podok teljes egészében az Azure által felügyelt, és egyéni VNet-konfiguráció nem igénylő központi telepítésekhez megfelelő. Szabályozhatja a hálózati konfiguráció nem rendelkezik, például alapszintű hálózatkezelési kiválasztásakor a fürthöz rendelt alhálózatok vagy az IP-címtartományt.
+A **alapszintű** hálózatkezelés lehetőség az AKS-fürt létrehozása az alapértelmezett konfigurációja. A hálózati konfigurációt a fürt és a podok az Azure teljes mértékben felügyelt, és egyéni VNet-konfiguráció nem igénylő központi telepítésekhez megfelelő. Szabályozhatja a hálózati konfiguráció nem rendelkezik, például alapszintű hálózatkezelési kiválasztásakor a fürthöz rendelt alhálózatok vagy az IP-címtartományt.
 
 Alapszintű hálózatkezelési használatra konfigurált egy AKS-fürt csomópontjain a [kubenet] [ kubenet] Kubernetes beépülő modult.
 
@@ -97,15 +97,14 @@ AKS-fürt létrehozásakor konfigurálható speciális hálózati a következő 
 
 **Alhálózat**: az alhálózaton, ahol szeretné a fürt üzembe helyezése a Vneten belül. Ha azt szeretné, hozzon létre egy új alhálózatot a virtuális hálózat a fürt számára, válassza *új létrehozása* kövesse a lépéseket a *alhálózat létrehozásához* szakaszban.
 
-**Kubernetes szolgáltatás címtartomány**: A *Kubernetes szolgáltatás címtartomány* van, amelyről címeket rendel a fürtben Kubernetes-szolgáltatás az IP-címtartomány (További információ a Kubernetes-szolgáltatás: [ Szolgáltatások] [ services] a Kubernetes dokumentációjában).
-
-A Kubernetes szolgáltatás IP-címtartomány:
+**Kubernetes szolgáltatás címtartomány**: Ez a Kubernetes rendel a virtuális IP-címek készletét [szolgáltatások] [ services] a fürtben. Használhatja bármely magánhálózati címtartomány, amely eleget tesz a következő követelményeknek:
 
 * Nem lehet a virtuális hálózat IP-címtartomány a fürt
 * Nem lehet átfedésben, amellyel a fürt virtuális hálózaton is társul bármely más virtuális hálózatokhoz
 * Nem lehet átfedésben bármilyen helyszíni IP-címek
+* Nem lehet a tartományokon belül `169.254.0.0/16`, `172.30.0.0/16`, vagy `172.31.0.0/16`
 
-Előre nem látható viselkedéshez vezethet, átfedő IP-címtartományok használatakor. Például ha egy pod próbál meg hozzáférni a fürtön kívüli IP-címet, és hogy IP is történik a szolgáltatás IP-cím lehet, előfordulhat, hogy látni kiszámíthatatlan működést és hibákat.
+Bár technikailag lehetséges, adja meg a fürt egy szolgáltatás-címtartományt az azonos virtuális hálózaton belül, ez nem ajánlott. Előre nem látható viselkedéshez vezethet, átfedő IP-címtartományok használatakor. További információkért lásd: a [– gyakori kérdések](#frequently-asked-questions) című szakaszát. Kubernetes-szolgáltatásokra vonatkozó további információkért lásd: [szolgáltatások] [ services] a Kubernetes dokumentációjában.
 
 **Kubernetes DNS szolgáltatás IP-cím**: a DNS szolgáltatás a fürt IP-cím. Ez a cím belül kell lennie a *Kubernetes szolgáltatás címtartomány*.
 
@@ -154,6 +153,10 @@ A alkalmazni az alábbi kérdések és válaszok a **speciális** hálózati kon
 * *Hogyan konfigurálhatom az alhálózatot, amelyet az AKS-fürt létrehozása során létrehozott további tulajdonságok? Ha például a Szolgáltatásvégpontok.*
 
   A virtuális hálózatot és alhálózatot hoz létre az AKS-fürt létrehozása során, tulajdonságok teljes listáját a normál virtuális hálózatok közötti konfigurációs lapja az Azure Portalon konfigurálhatók.
+
+* *Használhatok egy másik alhálózatot fürt virtuális hálózaton belül a a* **Kubernetes szolgáltatás címtartomány**?
+
+  Nem ajánlott, de ez a konfiguráció lehetséges. A szolgáltatás-címtartomány egy virtuális IP-címek (VIP), amelyet a szolgáltatások a fürtben Kubernetes rendel hozzá. Az Azure-hálózatok nem a szolgáltatás IP-címtartomány a Kubernetes-fürt láthassa. A fürt service címtartomány betekintést hiánya miatt is lehet később hozzon létre egy új alhálózatot a virtuális hálózattal, a szolgáltatás-címtartomány átfedésben van a fürtben. Ilyen átfedés esetén Kubernetes hozzárendelhet egy szolgáltatás IP-címet már használja egy másik erőforráshoz az alhálózatban, előre nem látható viselkedéshez vagy hibákat okoz. Úgy, hogy a fürt virtuális hálózaton kívüli címtartományt használja, a átfedés kockázat elkerülése érdekében.
 
 ## <a name="next-steps"></a>További lépések
 

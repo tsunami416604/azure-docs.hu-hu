@@ -6,18 +6,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/09/2018
 ms.author: raynew
-ms.openlocfilehash: fc45b9e4a568842b5a935d7c28de5ef0a57e1b86
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d19aa4c3765beecc853a1b800a7ba1d3ebd74e9c
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442530"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004327"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware-alapú és fizikai kiszolgáló replikálása az Azure-támogatási mátrixa
 
 Ez a cikk összefoglalja a támogatott összetevők és a VMware virtuális gépek vészhelyreállítása az Azure-bA beállításait [Azure Site Recovery](site-recovery-overview.md).
+
+A legegyszerűbb környezet az Azure Site Recovery használatának megkezdéséhez látogasson el a [oktatóanyagok](tutorial-prepare-azure.md). További információ az Azure Site Recovery architektúrájáról [Itt](vmware-azure-architecture.md).
 
 ## <a name="replication-scenario"></a>Replikációs forgatókönyv
 
@@ -241,12 +243,15 @@ Tároló áthelyezése erőforráscsoportok közt<br/><br/> Belül és azok az e
 Tárolás, hálózat, Azure-beli virtuális gépek erőforráscsoportok közötti áthelyezése<br/><br/> Belül és azok az előfizetések között | Nem
 
 
-## <a name="mobility-service"></a>A mobilitási szolgáltatás
+## <a name="download-latest-azure-site-recovery-components"></a>Töltse le a legújabb Azure Site Recovery-összetevők
 
-**Name (Név)** | **Leírás** | **Legújabb verziója** | **Részletek**
+**Name (Név)** | **Leírás** | **Legújabb verzió letöltése utasítások** 
 --- | --- | --- | --- | ---
-Az Azure Site Recovery egyesített telepítővel | Koordinálja a helyszíni VMware-kiszolgálók és Azure közötti kommunikációt <br/><br/> A helyszíni VMware-kiszolgálók telepítése | 9.12.4653.1 (portálról érhető el) | [Legújabb funkciókkal és javításokkal](https://aka.ms/latest_asr_updates)
-A mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgálók/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikáció<br/><br/> A VMware virtuális gépek vagy fizikai kiszolgálókat szeretne replikálni telepítve | 9.12.4653.1 (portálról érhető el) | [Legújabb funkciókkal és javításokkal](https://aka.ms/latest_asr_updates)
+Konfigurációs kiszolgáló | Koordinálja a helyszíni VMware-kiszolgálók és Azure közötti kommunikációt <br/><br/> A helyszíni VMware-kiszolgálók telepítése | Kattintson a friss telepítés helyett, [Itt](vmware-azure-deploy-configuration-server.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+Folyamatkiszolgáló|Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítással optimalizálja őket és elküldi azt az Azure Storage. Az üzembe helyezés növekedésével további, külön folyamatkiszolgálók nagyobb mértékű replikációs forgalom kezelésére is hozzáadhat.| Kattintson a friss telepítés helyett, [Itt](vmware-azure-set-up-process-server-scale.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-azure-manage-process-server.md#upgrade-a-process-server).
+A mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgálók/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikáció<br/><br/> A VMware virtuális gépek vagy fizikai kiszolgálókat szeretne replikálni telepítve | Kattintson a friss telepítés helyett, [Itt](vmware-azure-install-mobility-service.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-azure-install-mobility-service.md#update-mobility-service).
+
+A legújabb funkciókkal és javításokkal kapcsolatos további információkért kattintson [Itt](https://aka.ms/latest_asr_updates).
 
 
 ## <a name="next-steps"></a>További lépések

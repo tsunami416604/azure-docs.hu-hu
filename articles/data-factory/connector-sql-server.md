@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 403f1214758c48b4c05d2ae116d0f5125c341504
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 06535cd86e32d9e5d083bfde5f1c40e345a88640
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620113"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004619"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Adatok másolása, és az SQL Serverről az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -444,7 +444,7 @@ Adja meg az SqlSink szakaszban a másolási tevékenység a következőképpen.
 }
 ```
 
-Az adatbázis SqlWriterStoredProcedureName definiálhatja a tárolt eljárás ugyanazzal a névvel. A kimeneti táblába bemeneti adatokat a megadott forrás és a merge kezel. Figyelje meg, hogy a tárolt eljárás paraméter neve legyen ugyanaz, mint a "tableName" adatkészletben definiált.
+Az adatbázis SqlWriterStoredProcedureName definiálhatja a tárolt eljárás ugyanazzal a névvel. A kimeneti táblába bemeneti adatokat a megadott forrás és a merge kezel. A tábla típusú a tárolt eljárás paraméter neve ugyanaz, mint a "tableName" adatkészletben definiált kell lennie.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
