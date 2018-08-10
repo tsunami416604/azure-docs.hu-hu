@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: fa4005d1f09a2e0abca1e0083603d4335fb023c9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 37edf60ed0b63b4ff97094a496a08a592cb46fc0
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902921"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715420"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
 
 A Stream Analytics-lekérdezés tervez, tekintse meg a kimenethez használt nevére a [be záradék](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Feladatonként egy egyetlen kimeneti, vagy ha több INTO záradék a lekérdezés megadásával van szüksége a streamelési feladat több kimenetek is használhatja.
 
-Létrehozása, módosítása és tesztelése a Stream Analytics-feladat kimenete, használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [Azure PowerShell-lel](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API-val](https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output), és [a Visual Studio](stream-analytics-tools-for-visual-studio.md).
+Létrehozása, módosítása és tesztelése a Stream Analytics-feladat kimenete, használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [Azure PowerShell-lel](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API-val](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), és [a Visual Studio](stream-analytics-quick-create-vs.md).
 
 Néhány kimenetek típusok támogatása [particionálás](#partitioning), és [köteg méretek kimeneti](#output-batch-size) eltérőek lehetnek a teljesítmény optimalizálása.
 
@@ -58,7 +58,7 @@ A Stream Analytics az Azure Data Lake Store-kimenet jelenleg nem érhető el az 
 ### <a name="renew-data-lake-store-authorization"></a>Data Lake Store engedély megújítása
 A Data Lake Store-fiók hitelesítse magát újra, ha a jelszó megváltozott, mivel a feladat létrehozásának vagy utolsó hitelesített kell. Ha Ön nem újrahitelesítéséhez, a feladat nem állít elő a kimeneti eredmények, és akkor jelez hibát jelezve a műveletnaplók a reauthorization van szükség. Jelenleg korlátozott, a hitelesítési jogkivonat kell manuálisan frissíteni kell a Data Lake Store-kimenet az összes feladat 90 naponta. 
 
-Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Store-Kimenet > kattintson a **engedély megújítása** hivatkozásra, és a egy rövid ideig lap felugró jelző **átirányítása engedélyezési...** . A lap automatikusan bezárja, és jelzi, ha ez sikeres, **engedélyezési sikeresen megújítva**. Szeretne kattintson **mentése** a lap alján, és folytathatja a feladatot újraindítja a **leállt utoljára** adatvesztés elkerülése érdekében.
+Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Store-Kimenet > kattintson a **engedély megújítása** hivatkozásra, és a egy rövid ideig lap felugró jelző **átirányítása engedélyezési... **. A lap automatikusan bezárja, és jelzi, ha ez sikeres, **engedélyezési sikeresen megújítva**. Szeretne kattintson **mentése** a lap alján, és folytathatja a feladatot újraindítja a **leállt utoljára** adatvesztés elkerülése érdekében.
 
 ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
@@ -207,7 +207,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és a egy tábla kimenet l�
 | Kimeneti alias |A lekérdezés kimenete ezen táblatároló lekérdezésekben használt rövid név. |
 | Tárfiók |A tárfiókot, ahol a kimeneti küld neve. |
 | Tárfiók kulcsa |A storage-fiókhoz társított hozzáférési kulcs. |
-| Táblanév |A tábla neve. A tábla jön létre, ha még nem létezik. |
+| Tábla neve |A tábla neve. A tábla jön létre, ha még nem létezik. |
 | Partíciókulcs |A partíciókulcsot tartalmazó kimeneti oszlop neve. A partíciós kulcs a partíción belül egy adott táblán egy entitás elsődleges kulcsának első részét képező egyedi azonosítója. Egy karakterláncérték, amely legfeljebb 1 KB méretű lehet. |
 | Sorkulcs |A sorkulcsot tartalmazó kimeneti oszlop neve. A sorkulcs pedig egy entitás egy adott partíción belül egyedi azonosítója. Egy entitás elsődleges kulcsának második részét képezi. A sorkulcs pedig egy karakterláncérték, amely legfeljebb 1 KB méretű lehet. |
 | Köteg mérete |A kötegelt műveleti rekordok száma. Az alapértelmezett (100) érték elegendők a legtöbb feladatot. Tekintse meg a [kötegelt művelet specifikációja](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx) Ez a beállítás módosításával kapcsolatos további részletekért. |

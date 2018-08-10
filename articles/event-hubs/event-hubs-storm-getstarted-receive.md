@@ -1,9 +1,9 @@
 ---
-title: Események fogadása az Azure Event Hubs Apache Storm használatának |} Microsoft Docs
-description: Fogadását az Event Hubs Apache Storm használatának első lépései
+title: Események fogadása az Azure Event Hubs Apache Stormot használó |} A Microsoft Docs
+description: Fogadása az Event Hubs használatával az Apache Storm – első lépések
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2018
-ms.author: sethm
-ms.openlocfilehash: 6f558ff0613937d17f2dd7c2c9db6eb2de31ab9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: shvija
+ms.openlocfilehash: 3880ffe1b61b59e4d05e594a34e1119188177b56
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405670"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002763"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Események fogadása Apache Storm használatának az Event Hubs
+# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Események fogadása az Event Hubs, az Apache Storm használatával
 
-[Apache Storm](https://storm.incubator.apache.org) egy elosztott, valós idejű számítási rendszer, amely egyszerűbbé teszi a megbízható unbounded adatstreamek feldolgozására. Ez a szakasz bemutatja, hogyan használható az Azure Event Hubs Storm spout események fogadásához az Event Hubs. Apache Storm használatának fel események különböző csomópontokon üzemelnek folyamatok között. Az Event Hubs integráció Storm leegyszerűsíti események felhasználásához transzparens módon ellenőrzőpontok használata a telepítés előrehaladását, Storm tartozó Zookeeper telepítést használ, kezeli az állandó ellenőrzőpontokat és párhuzamos fogadásokat az Event Hubs.
+[Az Apache Storm](https://storm.incubator.apache.org) egy elosztott, valós idejű számítási rendszer, amely leegyszerűsíti a kötetlen adatstreamek megbízható feldolgozása. Ez a szakasz bemutatja, hogyan használhatja az Azure Event Hubs Storm spout események fogadása az Event hubs szolgáltatás. Apache Storm használatával, akkor is feloszthatja az eseményeket ezek különböző csomópontokon üzemelnek több folyamat között. A Storm és az Event Hubs-integráció leegyszerűsíti az eseményforrás, átlátható módon ellenőrzőpontok előrehaladási állapotát a Storm a Zookeeper-telepítés, kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az Event hubs Eseményközpontokból.
 
-További információ az Event Hubs minták kap, tekintse meg a [Event Hubs – áttekintés][Event Hubs overview].
+Az Event Hubs szolgáltatásról további információt kap a mintákat, tekintse meg a [Event Hubs – áttekintés][Event Hubs overview].
 
-## <a name="create-project-and-add-code"></a>Projekt létrehozása, és adja hozzá a kódot
+## <a name="create-project-and-add-code"></a>Projekt létrehozása és kód hozzáadása
 
-Ez az oktatóanyag használja egy [HDInsight alatt futó Storm] [ HDInsight Storm] telepítés, amely az Event Hubs spout már elérhető.
+Ebben az oktatóanyagban egy [HDInsight Storm] [ HDInsight Storm] telepítése, amely már elérhető az Event Hubs spout is tartalmaz.
 
-1. Kövesse a [HDInsight alatt futó Storm - első lépések](../hdinsight/storm/apache-storm-overview.md) eljárással hozzon létre egy új HDInsight-fürtöt, és a távoli asztalon keresztül kapcsolódni hozzá.
-2. Másolás a `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` fájlt a helyi fejlesztési környezetet. Az események-storm-spout tartalmazza.
-3. A következő paranccsal telepítse a csomagot a helyi tárolójába Maven. Ez lehetővé teszi, hogy vegye fel a Storm projekt egy későbbi lépésben hivatkozásként.
+1. Kövesse a [HDInsight Storm – első lépések](../hdinsight/storm/apache-storm-overview.md) eljárást követve hozzon létre egy új HDInsight-fürtöt, és a távoli asztalon keresztül csatlakozni hozzá.
+2. Másolás a `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` fájlt a helyi fejlesztési környezetbe. Az esemény-storm-spout tartalmazza.
+3. A következő paranccsal telepítse a csomagot a helyi Maven-tárolóba. Ez lehetővé teszi, hogy egy későbbi lépésben a Storm-projekt hivatkozásként való hozzáadáshoz.
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. Az eclipse-ben hozzon létre egy új Maven project (kattintson **fájl**, majd **új**, majd **projekt**).
+4. Az eclipse-ben hozzon létre egy új Maven-projektet (kattintson **fájl**, majd **új**, majd **projekt**).
    
     ![][12]
-5. Válassza ki **alapértelmezett munkaterület helyet**, majd kattintson a **következő**
-6. Válassza ki a **maven-archetype – gyors üzembe helyezés** archetype, majd kattintson a **következő**
-7. Helyezze be a **GroupId** és **artifactid szakaszát**, majd kattintson **Befejezés**
-8. A **pom.xml**, adja hozzá a következő függőségek a `<dependency>` csomópont.
+5. Válassza ki **használja az alapértelmezett munkaterület helye**, majd kattintson a **tovább**
+6. Válassza ki a **maven-archetype-quickstart** archetype, majd kattintson a **tovább**
+7. Helyezze be egy **GroupId** és **ArtifactId**, majd kattintson a **Befejezés**
+8. A **pom.xml**, adja hozzá a következő függőségeket a `<dependency>` csomópont.
 
     ```xml  
     <dependency>
@@ -76,7 +76,7 @@ Ez az oktatóanyag használja egy [HDInsight alatt futó Storm] [ HDInsight Stor
     </dependency>
     ```
 
-9. Az a **src** mappa, nevű fájl létrehozása **Config.properties** , és másolja a következő tartalmat, és a `receive rule key` és `event hub name` értékeket:
+9. Az a **src** mappában nevű fájl létrehozása **Config.properties** , és másolja az alábbi tartalmat, és cserélje le a `receive rule key` és `event hub name` értékeket:
 
     ```java
     eventhubspout.username = ReceiveRule
@@ -91,8 +91,8 @@ Ez az oktatóanyag használja egy [HDInsight alatt futó Storm] [ HDInsight Stor
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    A következő **eventhub.receiver.credits** határozza meg, hány események vannak kötegelni azokat a Storm-feldolgozási folyamat feloldása előtt. Az egyszerűség kedvéért ebben a példában ez az érték 10 állítja be. Éles akkor általában meg magasabb értékkel; például: 1024.
-10. Hozzon létre egy új osztályt **LoggerBolt** az alábbi kódra:
+    Az érték **eventhub.receiver.credits** határozza meg, hány eseményt vannak kötegelni előtt címek felszabadításával azok a Storm-folyamat számára. Az egyszerűség kedvéért ebben a példában ez az érték 10 állítja be. Éles környezetben, általában ra kell állítani a magasabb értékek; Ha például 1024.
+10. Hozzon létre egy új osztályt nevű **LoggerBolt** a következő kóddal:
     
     ```java
     import java.util.Map;
@@ -131,8 +131,8 @@ Ez az oktatóanyag használja egy [HDInsight alatt futó Storm] [ HDInsight Stor
     }
     ```
     
-    A Storm bolt naplózza a fogadott események a tartalmát. Ez egyszerűen bővíthető rekordokat tárolni egy tároló szolgáltatást. A [Eseményközpont például a HDInsight alatt futó Storm] ezt a módszert használja az adatok tárolásához Azure Storage és a Power bi-ban.
-11. Hozzon létre egy osztályt **LogTopology** az alábbi kódra:
+    A Storm bolt naplózza a fogadott események tartalmát. Ez egyszerűen bővíthető tárolja a rekordokat egy adattárolási szolgáltatásban. A [Event Hub-példában a HDInsight Storm] ugyanezzel a módszerrel használja az adatok tárolásához Azure Storage és a Power bi-ban.
+11. Hozzon létre egy osztályt nevű **LogTopology** a következő kóddal:
     
     ```java
     import java.io.FileReader;
@@ -236,7 +236,7 @@ Ez az oktatóanyag használja egy [HDInsight alatt futó Storm] [ HDInsight Stor
     }
     ```
 
-    Ez az osztály hoz létre egy új Event Hubs spout, a konfigurációs fájl a tulajdonságok használatával példányosítható azt. Fontos megjegyezni, hogy ez a példa feladatokat hoz létre annyi spoutokkal kapcsolatban a partíciók az eseményközpont számának ahhoz, hogy az adott eseményközpont által engedélyezett maximális párhuzamossági.
+    Ez az osztály hoz létre egy új Event Hubs-spout, a konfigurációs fájl a tulajdonságok segítségével hozza létre azt. Fontos megjegyezni, hogy ez a példa létrehoz, számos különböző feladat, az event hubs a partíciók száma az adott eseményközpont által engedélyezett maximális párhuzamossági használatához.
 
 ## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
@@ -248,7 +248,7 @@ Az alábbi webhelyeken további információt talál az Event Hubsról:
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[Eseményközpont például a HDInsight alatt futó Storm]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
+[Az Event Hubs-példában a HDInsight Storm]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
 
 <!-- Images -->
 

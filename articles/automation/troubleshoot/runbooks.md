@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 48b2aab9d2a3937fb53a2e63efa26efc18a894f8
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413858"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714485"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -38,18 +38,42 @@ Ez a hiba akkor fordul elő, ha az eszköz hitelesítő adat neve nem érvényes
 
 Annak megállapításához, hogy mi okozza, tegye a következőket:  
 
-1. Győződjön meg arról, hogy nincs-e különleges karaktereket, beleértve a **@** Automation nevű hitelesítő adat eszköz csatlakozhat az Azure-ban használt karakter.  
+1. Győződjön meg arról, hogy nincs-e különleges karaktereket, beleértve a ** @ ** Automation nevű hitelesítő adat eszköz csatlakozhat az Azure-ban használt karakter.  
 2. Ellenőrizze, hogy használhatja-e a felhasználónevet és jelszót, amelyet az Azure Automation hitelesítő adat a helyi PowerShell ISE-szerkesztőben van tárolva. Ez a PowerShell ISE-ben a következő parancsmag futtatásával teheti meg:  
 
    ```powershell
    $Cred = Get-Credential  
-   #Using Azure Service Management   
+   #Using Azure Service Management
    Add-AzureAccount –Credential $Cred  
    #Using Azure Resource Manager  
    Connect-AzureRmAccount –Credential $Cred
    ```
 
 3. Ha a hitelesítés helyben nem sikerül, ez azt jelenti, hogy Ön még nem állította be az Azure Active Directory hitelesítő adatai megfelelően. Tekintse meg [hitelesítése az Azure-ban az Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) blogbejegyzés megfelelően állítsa be az Azure Active Directory-fiók létrehozása.  
+
+4. Ha az átmeneti hiba jelenik meg, próbálja meg újrapróbálkozási logika hozzáadása a hitelesítési rutin, hogy hitelesítése robusztusabb.
+
+   ```powershell
+   # Get the connection "AzureRunAsConnection"
+   $connectionName = "AzureRunAsConnection"
+   $servicePrincipalConnection = Get-AutomationConnection -Name $connectionName
+
+   $logonAttempt = 0
+   $logonResult = $False
+
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+   $LogonAttempt++
+   # Logging in to Azure...
+   $connectionResult = Connect-AzureRmAccount `
+      -ServicePrincipal `
+      -TenantId $servicePrincipalConnection.TenantId `
+      -ApplicationId $servicePrincipalConnection.ApplicationId `
+      -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint
+
+   Start-Sleep -Seconds 30
+   }
+   ```
 
 ### <a name="unable-to-find-subscription"></a>Forgatókönyv: Nem található az Azure-előfizetés
 
@@ -285,7 +309,7 @@ Néhány általános oka, hogy egy modul előfordulhat, hogy nem sikerült impor
 
 A probléma elhárításához a következő megoldások valamelyikét:
 
-* Győződjön meg arról, hogy a modul követi a következő formátumban: ModuleName.Zip **->** ModuleName vagy a verziószám **->** (ModuleName.psm1, ModuleName.psd1)
+* Győződjön meg arról, hogy a modul követi a következő formátumban: ModuleName.Zip ** -> ** ModuleName vagy a verziószám ** -> ** (ModuleName.psm1, ModuleName.psd1)
 * Nyissa meg a .psd1 fájlban, és tekintse meg, ha a modul rendelkezik-e függőségek. Ha igen, töltse fel ezeket a modulokat az Automation-fiókot.
 * Győződjön meg arról, hogy minden hivatkozott .dll modul mappában találhatók.
 

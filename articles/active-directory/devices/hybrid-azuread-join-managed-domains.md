@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: f61f0649900c27a6aa3a873f60dc60b4985f5d4f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 55818bf3c6997925fbac32f913d573d630bc20f4
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424187"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004378"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
 
@@ -49,6 +49,9 @@ Ez az oktatóanyag feltételezi, hogy Ön ismeri a:
 -  [Az Eszközfelügyelet az Azure Active Directory bemutatása](../device-management-introduction.md)
     
 -  [A hibrid Azure Active Directory-csatlakozás megvalósításának tervezése](hybrid-azuread-join-plan.md)
+
+-  [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](hybrid-azuread-join-control.md)
+  
 
 Ez a cikk a forgatókönyv konfigurálásához lesz szüksége a [az Azure AD Connect legújabb verziójának](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 vagy újabb) kell telepíteni. 
  
@@ -101,7 +104,7 @@ Egy Azure AD Connect használatával a hibrid Azure AD-csatlakozás konfigurál�
 
     ![Eszközbeállítások](./media/hybrid-azuread-join-managed-domains/15.png)
 
-6. Az a **SCP** az egyes erdőkhöz, az az SCP-t az Azure AD Connect szeretné, hajtsa végre az alábbi lépéseket, és kattintson a lap **tovább**: 
+6. Az a **SCP** lapon az egyes erdőkhöz, azt szeretné, hogy az az SCP konfigurálása, hajtsa végre az alábbi lépéseket, és kattintson az Azure AD Connect **tovább**: 
 
     ![SCP](./media/hybrid-azuread-join-managed-domains/16.png)
 
@@ -156,15 +159,13 @@ Sikeresen befejeződött a hibrid Azure AD-csatlakozás a Windows régebbi verzi
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - `https://autologon.microsoftazuread-sso.com`.
 
 Ezenkívül engedélyeznie kell **lehetővé teszik a frissítések állapotsor keresztül parancsfájl** a felhasználó helyi intranet zónába.
 
 ## <a name="verify-the-registration"></a>A regisztráció-ellenőrzés
 
-Az Azure-bérlőhöz, az eszköz regisztrációs állapotának ellenőrzéséhez használhatja a **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** parancsmagot a  **[Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Az Azure-bérlőhöz, az eszköz regisztrációs állapotának ellenőrzéséhez használhatja a ** [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) ** parancsmagot a ** [Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
 
 Használatakor a **Get-MSolDevice** parancsmaggal ellenőrizheti a szolgáltatás részletei:
 

@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e926bfb023fe3edfd564aa6389e21f6594bec169
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117503"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002678"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Az első függvény létrehozása a Java és az intellij-vel (előzetes verzió)
 
@@ -74,8 +74,15 @@ A Maven egy _artifactId_ nevű új mappában hozza létre a projektfájlokat. A 
 Ha elkészült, zárja be a Futtatás párbeszédpanelen a függvény tesztelése. Csak egy függvényt gazdagép lehet aktív és futó helyi egyszerre.
 
 ### <a name="debug-the-function-in-intellij"></a>Hibakeresés az intellij-ben a függvény
+A függvény gazdagép indítása hibakeresési módban, adjon hozzá **- DenableDebug** argumentumként, a függvény futtatásakor. Nem sikerült futtassa az alábbi parancssori terminálban, vagy adja meg, a [maven célok](https://www.jetbrains.com/help/idea/maven-support.html#run_goal). A függvény gazdagép majd hibakeresési port, az 5005 megnyílik. 
 
-A hibakeresési funkciók az intellij-ben indítás után a függvény gazdagéphez csatolva.  Az Azure-függvény használatával helyben a lépéseket, fent, majd a Futtatás a **futtatása** menüből válassza **olyan helyi folyamat csatolása**.  Egy folyamat port elérhető 5005 kell megjelennie.  Amikor csatolni próbál töréspontok találati és hibakeresése a függvényalkalmazás belül rendelkezhet.
+```
+mvn azure-functions:run -DenableDebug
+```
+
+Hibakeresése az intellij-ben, az a **futtatása** menüből válassza **konfigurációk szerkesztése**. Kattintson a ** + ** hozzáadása egy **távoli**. Töltse ki **neve** és **beállítások**, és kattintson a **OK** a konfiguráció mentéséhez. A telepítés után kattintson a **Debug** (a távoli Configuration Name), vagy nyomja le **Shift + F9** hibakeresésének elkezdéséhez.
+
+![Az intellij-ben függvények hibakeresése](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 
 Amikor végzett a hibakeresőt és a futó folyamat leállítása. Csak egy függvényt gazdagép lehet aktív és futó lévő helyi időben.
 

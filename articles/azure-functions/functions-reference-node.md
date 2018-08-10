@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: b0e078e3e7f18e3370ff1bcd90935e7fece265f0
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391180"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005475"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -94,7 +94,9 @@ context.bindings.myOutput = {
 context.done([err],[propertyBag])
 ```
 
-Arról tájékoztatja a futtatókörnyezet, amely a kód befejeződött. Meg kell hívni `context.done`, vagy ellenkező esetben a modul soha nem tudja, hogy a függvény készen, és a végrehajtása időtúllépést okoz. 
+Arról tájékoztatja a futtatókörnyezet, amely a kód befejeződött. Ha a függvényt használ a `async function` deklarace (érhető el a függvények verzió 8 + csomópontja használatával 2.x-es), nem szeretné használni `context.done()`. A `context.done` visszahívási implicit módon nevezzük.
+
+Ha a függvény nem egy aszinkron függvény **hívja meg `context.done` ** tájékoztatja a futtatókörnyezet, hogy helyesek-e a függvényt. A végrehajtás időtúllépést okoz, ha hiányzik.
 
 A `context.done` módszer lehetővé teszi, hogy vissza mindkét egy felhasználó által definiált hiba történt a futásidejű és tulajdonságai egy tulajdonságcsomagot, hogy felülírja a tulajdonságok a adnia a `context.bindings` objektum.
 

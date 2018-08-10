@@ -1,56 +1,56 @@
 ---
-title: Gyakorlati tanácsok JSON alakító Azure idő adatsorozat Insights lekérdezésekben.
-description: Ismerje meg, hogyan lehet fokozni az az idő adatsorozat Insights lekérdezés hatékonyságát.
+title: Ajánlott eljárások az Azure Time Series Insights-lekérdezések JSON alakításra.
+description: Ismerje meg, hogyan javíthatja a Time Series Insights-lekérdezés hatékonyságát.
 services: time-series-insights
 author: ashannon7
-manager: timlt
+manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/24/2018
-ms.author: bryanla
-ms.openlocfilehash: 29919a3ce8c18982c88f7f0e6bbd774c612e9c44
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: anshan
+ms.openlocfilehash: 11bea78315ff7ebb4b0c167dbb687ce940907527
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660930"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628912"
 ---
-# <a name="how-to-shape-json-to-maximize-query-performance"></a>Hogyan alakul a lekérdezési teljesítmény maximalizálása érdekében JSON 
+# <a name="how-to-shape-json-to-maximize-query-performance"></a>Hogyan formázhatja a JSON-lekérdezési teljesítmény maximalizálása 
 
-Ez a cikk nyújt útmutatást JSON Azure idő adatsorozat Insights (ÁME) lekérdezései hatékonyságának maximalizálása kialakításában.
+Ez a cikk nyújt útmutatást, amelyeket formázhat JSON-t, a hatékonyság az Azure Time Series Insights (TSI) lekérdezéseket.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Fontos, hogyan küldött események idő adatsorozat Insights gondolniuk. Kulcstartó akkor mindig:
+Fontos, milyen eseményeket küldeni a Time Series Insights állításoknak. Nevezetesen akkor mindig:
 
-1. adatokat küldeni a hálózaton keresztül lehető leghatékonyabb módon.
-2. Győződjön meg arról, hogy lehetővé teszi a forgatókönyvnek megfelelő összesítések tárolja az adatokat.
-3. Győződjön meg arról nem kattint az ÁME tartozó maximális tulajdonság korlátai
+1. az adatok elküldése a hálózaton keresztül lehető leghatékonyabb.
+2. Győződjön meg arról, az adatok olyan módon, amely lehetővé teszi, hogy a forgatókönyvnek megfelelő összesítések tárolása.
+3. Győződjön meg, hogy ne eléri a TSI a maximális tulajdonság korlátai
    - S1 környezetek 600 tulajdonságait (oszlop).
    - S2 környezetek 800 tulajdonságait (oszlop).
 
-A következő útmutatást biztosíthatja a legjobb lehetséges lekérdezési teljesítmény:
+Az alábbi útmutató segít a legjobb lehetséges lekérdezési teljesítmény érdekében:
 
-1. Ne használjon dinamikus tulajdonságait, például egy tulajdonság neve, mint a címke azonosítója, mert részt vesz a Tulajdonságok maximális korlátot elérte-e.
-2. Ne küldjön a szükségtelen tulajdonságok. Ha a lekérdezés tulajdonság nem szükséges, célszerű nem küldje el, és elkerülheti a tárolási korlátozások.
-3. Használjon [referenciaadatok](time-series-insights-add-reference-data-set.md), nehogy statikus adatok elküldése a hálózaton keresztül.
-4. Megosztás dimenzió tulajdonságai között több esemény hatékonyabban küldhet adatokat a hálózaton keresztül.
-5. A részletes tömb beágyazási ne használjon. ÁME objektumokat tartalmazó beágyazott tömbök legfeljebb két szintet támogat. ÁME az üzenetek a tömbök simítja be tulajdonság-érték párok több eseményeket.
-6. Ha csak néhány intézkedések a legtöbb vagy összes esemény létezik, akkor ezeket a mértékeket küldése külön tulajdonságként az objektumon belül. Külön-külön elküldi őket csökkenti az események számát, és teheti lekérdezések performant több, mint a kevesebb eseménnyel kell feldolgozni. Ha több intézkedések, elküldi őket egy-egy tulajdonság értékeiként minimálisra csökkenti a lehetőségét, hogy elérte-e a tulajdonság maximális korlátot.
+1. NA használjon dinamikus tulajdonságait, például a címke azonosítója,-tulajdonság neveként, mivel a üzletmentében szerezze meg a Tulajdonságok maximális korlátot.
+2. Ne küldjön a szükségtelen tulajdonságait. Ha egy lekérdezést a tulajdonság nem szükséges, célszerű nem küldje el, és elkerülheti a storage korlátozásaival.
+3. Használat [referenciaadatok](time-series-insights-add-reference-data-set.md), nehogy a statikus adatok küldése a hálózaton keresztül.
+4. Megosztás dimenzió tulajdonságai között több esemény adatok hatékonyabb a hálózaton keresztüli küldéshez.
+5. Ne használja a részletes tömb beágyazást. A TSI objektumokat tartalmazó beágyazott tömbök legfeljebb két szintet támogat. A TSI tömbök az üzeneteket, a tulajdonság-érték párokat a több események simítja egybe.
+6. Ha csak néhány mértékek minden vagy a legtöbb esemény létezik, érdemes küldeni ezeket a mértékeket különálló tulajdonságként az objektumon belül. Külön-külön elküldheti csökkenti az események számát, és előfordulhat, hogy elérhetővé lekérdezések több nagy teljesítményű, mint a kevesebb eseménnyel kell feldolgozni. Ha több mértékek, elküldheti az egy-egy tulajdonság értékeként minimálisra csökkenti a szerezze meg a tulajdonság maximális korlát lehetőségét.
 
 ## <a name="examples"></a>Példák
 
-A következő két példák bemutatják, küldő események, jelölje ki az előző javaslatokat. Követően minden példában láthatja, hogyan ajánlások vannak érvényben.
+Az alábbi két példák bemutatják, küldő események, a fenti javaslatok kiemeléséhez. Következő valamennyi példa láthatja, hogyan lettek alkalmazva a javaslatokat.
 
-A példa egy olyan forgatókönyvet, ahol több eszközre küldése mérések vagy jelek alapulnak. Mérések vagy jelek Flow sebességét, a motor olaj nyomás, a hőmérséklet és a páratartalom lehet. Az első példában nincsenek néhány mérések az összes eszközön. A második példában több eszközt, és minden egyes sok egyedi mérések küld.
+A példák egy forgatókönyvet, ahol több eszköz küldése mérések vagy jelek alapulnak. Mérések vagy jelek Flow arány, motor olaj nyomás, hőmérsékleti és páratartalom lehet. Az első példában nincsenek néhány mérések összes eszközön. A második példában sok eszköz, és minden egyes számos egyedi mértékek küld.
 
 ### <a name="scenario-only-a-few-measurementssignals-exist"></a>Forgatókönyv: csak néhány mérések/jelek létezik
 
-**Javaslat:** minden mérési küldeni egy külön tulajdonság oszlop.
+**Javaslat:** egyes mérések küldése egy külön tulajdonság oszlop.
 
-A következő példában nincs egyetlen IoT-központ üzenet, ahol a a külső tömb közös dimenzióértékek megosztott szakasza tartalmaz. A külső tömb referenciaadatok használja az üzenet hatékonyságát. Referenciaadatok eszköz metaadatot tartalmaz, minden esemény nem változik, de hasznos tulajdonságok biztosítja az adatok elemzésére. Közös dimenzióértékek kötegelés, mind a referenciaadatok, takaríthat meg a hálózaton keresztül küldött bájtok alkalmazó így hatékonyabb az üzenetet.
+A következő példában van egy IoT Hub üzenet, ahol a külső tömb tartalmaz-e a közös dimenzióértékek egy közös szakaszhoz. A külső tömb referenciaadatok használja az üzenet a hatékonyság növelése érdekében. Referenciaadatok tartalmazza az eszközök metaadatait, minden eseményhez nem változik, de hasznos tulajdonságok biztosít az adatok elemzésére. Közös dimenzióértékek kötegelés, mind referenciaadatok takaríthat meg a hálózaton keresztül küldött bájtok alkalmazó így hatékonyabb az üzenetet.
 
-Példa JSON-adattartalmat:
+Példa JSON-adattartalom:
 
 ```json
 [
@@ -81,16 +81,16 @@ Példa JSON-adattartalmat:
 ]
 ```
 
-Referencia-adattábla (kulcstulajdonsága deviceId):
+Referencia-adattábla (kulcstulajdonság a deviceId):
 
 | deviceId | messageId | deviceLocation |
 | --- | --- | --- |
 | FXXX | SOR\_ADATOK | EU |
 | PÉÉÉ | SOR\_ADATOK | USA |
 
-Adatsorozat Insights esemény időtáblázatát (után egybesimítását):
+Time Series Insights esemény tábla (után az egybesimítás):
 
-| deviceId | messageId | deviceLocation | időbélyeg | adatsorozat. Egymást követő láb3/s sebesség | adatsorozat. Motor olaj nyomás psi |
+| deviceId | messageId | deviceLocation | időbélyeg | adatsorozat. A folyamat arány láb3/s | adatsorozat. Olaj nyomás psi motor |
 | --- | --- | --- | --- | --- | --- |
 | FXXX | SOR\_ADATOK | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
 | FXXX | SOR\_ADATOK | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
@@ -98,21 +98,21 @@ Adatsorozat Insights esemény időtáblázatát (után egybesimítását):
 
 Megjegyzés: az előző példában a következőket:
 
-- A **deviceId** oszlop fejlécének egy járműflotta különböző eszközökön funkcionál. DeviceId érték létesíteni saját tulajdonság neve volna korlátozott eszközök teljes száma (S1 környezetben) 595 vagy 795 (S2 környezetben), az egyéb öt oszlopokat.
+- A **deviceId** oszlop szolgál a különböző eszközökhöz egy járműflotta az az oszlop fejlécére. DeviceId érték létesíteni a saját tulajdonságnév volna csak korlátozott 595 (S1 környezetben) vagy 795 (S2 környezetben), az összes eszköz az egyéb öt oszlopokat.
 
-- A felesleges tulajdonságok elkerülhetők, például a gyártmányának és modelljének információt, stb. Mivel azok nem kérdezhető le, a jövőben, megszüntetése lehetővé teszi a nagyobb hálózati és tároló-hatékonyságot biztosít.
+- A felesleges tulajdonságok elkerülhetők a, például a gyártmány és modell, stb. Mivel azok nem kérdezhető le a jövőben, távolítsa el őket lehetővé teszi, hogy jobb hálózati és tárolási hatékonyságot.
 
-- Referenciaadatok segítségével csökkentheti a hálózaton keresztül továbbított bájtok száma. Két attribútum **messageId** és **deviceLocation** , a kulcstulajdonsága van illesztve **deviceId**. Ezek az adatok csatlakoztatni a telemetriai adatokat a érkező időpontban, és ezt követően tárolja ÁME lekérdezése.
+- Referenciaadatok segítségével csökkentheti a hálózaton keresztül továbbított bájtok száma. Két attribútum **üzenetazonosító** és **deviceLocation** , a kulcs tulajdonságot, csatlakozott **deviceId**. Ezeket az adatokat a telemetriai adatokat a bejövő egyidejűleg csatlakoztatott, és ezt követően a TSI-ben tárolt lekérdezéséhez.
 
-- Két réteg beágyazási használ, amely az a maximális beágyazási ÁME által támogatott. Nagyon fontos a mélyen beágyazott tömbök elkerülése érdekében.
+- Két réteg beágyazási vannak használatban, amely a beágyazási TSI által támogatott maximális számát. Rendkívül fontos a mélyen beágyazott tömbök elkerülése érdekében.
 
-- Intézkedések küldése a külön tulajdonságokat ugyanahhoz az objektumhoz, mert néhány mérték. Itt **adatsorozat. Egymást követő arány psi** és **adatsorozat. A motor olaj nyomás láb3/s** egyedi oszlop.
+- Mértékek belül ugyanarra az objektumra, különálló tulajdonságként érkeznek, mivel néhány mértékeket. Itt **sorozat. Flow arány psi** és **sorozat. A motor olaj nyomás láb3/s** egyedi oszlop.
 
-### <a name="scenario-several-measures-exist"></a>Forgatókönyv: több intézkedések létezik
+### <a name="scenario-several-measures-exist"></a>Forgatókönyv: több mértékek létezik
 
-**Javaslat:** mérések elküldeni a "type", "egység", "érték" rekordokat.
+**Javaslat:** mérések küldése a "type", "egység", "value" rekordokat.
 
-Példa JSON-adattartalmat:
+Példa JSON-adattartalom:
 
 ```json
 [
@@ -155,42 +155,42 @@ Példa JSON-adattartalmat:
 ]
 ```
 
-A referenciaadatok (kulcsfontosságú tulajdonságainak deviceId és series.tagId):
+A referenciaadatok (kulcstulajdonságok olyan deviceId és series.tagId):
 
 | deviceId | series.tagId | messageId | deviceLocation | type | egység |
 | --- | --- | --- | --- | --- | --- |
-| FXXX | pumpRate | SOR\_ADATOK | EU | Attribútumfolyam arány | láb3/s |
-| FXXX | oilPressure | SOR\_ADATOK | EU | Motor olaj nyomás | psi |
-| PÉÉÉ | pumpRate | SOR\_ADATOK | USA | Attribútumfolyam arány | láb3/s |
-| PÉÉÉ | oilPressure | SOR\_ADATOK | USA | Motor olaj nyomás | psi |
+| FXXX | pumpRate | SOR\_ADATOK | EU | A folyamat arány | láb3/s |
+| FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | psi |
+| PÉÉÉ | pumpRate | SOR\_ADATOK | USA | A folyamat arány | láb3/s |
+| PÉÉÉ | oilPressure | SOR\_ADATOK | USA | Olaj nyomás motor | psi |
 
-Adatsorozat Insights esemény időtáblázatát (után egybesimítását):
+Time Series Insights esemény tábla (után az egybesimítás):
 
 | deviceId | series.tagId | messageId | deviceLocation | type | egység | időbélyeg | Series.Value |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| FXXX | pumpRate | SOR\_ADATOK | EU | Attribútumfolyam arány | láb3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
-| FXXX | oilPressure | SOR\_ADATOK | EU | Motor olaj nyomás | psi | 2018-01-17T01:17:00Z | 34.7 |
-| FXXX | pumpRate | SOR\_ADATOK | EU | Attribútumfolyam arány | láb3/s | 2018-01-17T01:17:00Z | 2.445906400680542 |
-| FXXX | oilPressure | SOR\_ADATOK | EU | Motor olaj nyomás | PSI | 2018-01-17T01:17:00Z | 49.2 |
-| PÉÉÉ | pumpRate | SOR\_ADATOK | USA | Attribútumfolyam arány | láb3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-| PÉÉÉ | oilPressure | SOR\_ADATOK | USA | Motor olaj nyomás | psi | 2018-01-17T01:18:00Z | 22.2 |
+| FXXX | pumpRate | SOR\_ADATOK | EU | A folyamat arány | láb3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
+| FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | psi | 2018-01-17T01:17:00Z | 34.7 |
+| FXXX | pumpRate | SOR\_ADATOK | EU | A folyamat arány | láb3/s | 2018-01-17T01:17:00Z | 2.445906400680542 |
+| FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | PSI | 2018-01-17T01:17:00Z | 49.2 |
+| PÉÉÉ | pumpRate | SOR\_ADATOK | USA | A folyamat arány | láb3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+| PÉÉÉ | oilPressure | SOR\_ADATOK | USA | Olaj nyomás motor | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 Vegye figyelembe a következő az előző példában, és az első példához hasonló:
 
-- oszlopok **deviceId** és **series.tagId** az oszlopfejlécek a különféle eszközök és egy járműflotta címkék szolgál. Egyes saját attribútumaként lesz korlátozott az 594 (S1 környezetben) vagy 794 (S2 környezetben) eszközök teljes száma a más hat oszlopokkal lekérdezést.
+- oszlopok **deviceId** és **series.tagId** az oszlopfejléceket a különböző eszközökön és a egy járműflotta a címkék szolgál. Mindegyik a saját attribútumként használatával szeretné csak korlátozottan 594 (S1 környezetben) vagy 794 (S2 környezetben) összes eszköz az egyéb hat oszlopokat a lekérdezésben.
 
-- szükségtelen tulajdonságok volt elkerülhető, fájljaiban az első példában szereplő okból.
+- a felesleges tulajdonságok lettek kerülni, az okból az első példában szereplő.
 
-- Referenciaadatok szolgál, mert megjelentek a hálózaton keresztül továbbított bájtok számának csökkentése érdekében **deviceId**, az egyedi két **messageId** és **deviceLocation**. Összetett kulcsot használnak, **series.tagId**, az egyedi párjainak **típus** és **egységben**. Az összetett kulcs lehetővé teszi, hogy a **deviceId** és **series.tagId** használandó, tekintse meg a négy érték párt: **messageId, deviceLocation, írja be,** és **egység** . Ezek az adatok csatlakoztatni a telemetriai adatokat a érkező időpontban, és ezt követően tárolja ÁME lekérdezése.
+- Referenciaadatok segítségével csökkentse a bevezetésével a hálózaton keresztül továbbított bájtok számát **deviceId**, az egyedi párjai **üzenetazonosító** és **deviceLocation**. Összetett kulcsot használ, **series.tagId**, az egyedi párjainak **típus** és **időegységet**. Az összetett kulcs lehetővé teszi, hogy a **deviceId** és **series.tagId** pár használandó, tekintse meg négy értéket: **üzenetazonosító, deviceLocation, írja be,** és **egység **. Ezeket az adatokat a telemetriai adatokat a bejövő egyidejűleg csatlakoztatott, és ezt követően a TSI-ben tárolt lekérdezéséhez.
 
-- két réteg beágyazási használata esetén az első idézett okból.
+- két réteg beágyazási használata esetén az első példában szereplő okból.
 
-### <a name="for-both-scenarios"></a>Mindkét forgatókönyvek esetén
+### <a name="for-both-scenarios"></a>Mindkét forgatókönyv esetében
 
-Ha egy tulajdonság lehetséges értékei nagy mennyiségű, érdemes elküldeni különböző értékeket belül csak egy oszlop, nem pedig minden egyes értékre egy olyan új oszlop létrehozása. Az előző két példákban:
-  - Az első példában, hogy egy külön tulajdonság megkönnyítésére mindegyik több értéket tartalmazó néhány tulajdonságok vannak. 
-  - Azonban a második példában láthatja, hogy a mértékeket egyéni tulajdonságok, de ehelyett egy közös series tulajdonságának értékek/intézkedéseinek tömb kapcsolójaként nincs megadva. Egy új kulcsot a rendszer küld **tagId** , ami létrehoz egy olyan új oszlop **series.tagId** a egybesimított táblában. Új tulajdonságok jönnek létre, **típus** és **egység**, hivatkozási adatok használatával, így a tulajdonság korlátját meggátolja alatt kattintson a.
+Ha egy tulajdonság lehetséges értékek nagy számú, célszerű különböző értékeket belül csak egy oszlop, nem pedig minden egyes érték egy olyan új oszlop létrehozása, küldése. Az előző két példákban:
+  - Az első példában nincsenek néhány tulajdonsággal, amely számos értékkel rendelkezik, így a szükséges, hogy minden egyes külön tulajdonság. 
+  - Azonban a második példában láthatja, hogy a mértékek nincs megadva az egyes tulajdonságok, de, egy közös series tulajdonságának értékek/intézkedéseinek tömb. Egy új kulcsot a rendszer elküldte, **tagId** , ami létrehoz egy olyan új oszlop **series.tagId** a egybesimított táblában. Új tulajdonságok jönnek létre, **típus** és **egység**, referenciaadatokkal, így meggátolja, hogy a tulajdonság korlát találati folyamatban van.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezeket az irányelveket a gyakorlatba, tekintse meg [Azure idő adatsorozat Insights lekérdezés szintaxisa](/rest/api/time-series-insights/time-series-insights-reference-query-syntax) további információt a lekérdezés szintaxisa az ÁME adatok elérésével REST API-t.
+Ezeket az irányelveket a gyakorlatba, tekintse meg [Azure Time Series Insights-lekérdezés szintaxisa](/rest/api/time-series-insights/time-series-insights-reference-query-syntax) további információ a lekérdezés szintaxisa a TSI adatelérési REST API számára.

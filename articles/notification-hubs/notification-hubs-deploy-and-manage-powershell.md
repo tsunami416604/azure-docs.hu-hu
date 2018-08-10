@@ -1,6 +1,6 @@
 ---
 title: A Notification Hubs telepítése és kezelése a PowerShell-lel
-description: Létrehozása és kezelése a PowerShell használatával az automatizáláshoz a Notification Hubs
+description: Hogyan hozhat létre és kezelheti a Notification Hubs, az Automation PowerShell-lel
 services: notification-hubs
 documentationcenter: ''
 author: dimazaid
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 2d70aff4cc569a194740fdab9373b7e11a1fcb15
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: c2297f072786bdc1e80255dee278d640b0c0d26d
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084348"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629514"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>A Notification Hubs telepítése és kezelése a PowerShell-lel
 ## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan használja a létrehozása és kezelése Azure Notification Hubs PowerShell használatával. Ez a témakör a következő általános automatizálási feladatok láthatók.
+Ez a cikk bemutatja, hogyan használható létrehozása és kezelése az Azure Notification Hubs PowerShell-lel. A következő gyakori automatizálási feladatok jelennek meg ebben a témakörben.
 
-* Egy értesítési központ létrehozása
-* A hitelesítő adatokat
+* Értesítési központ létrehozása
+* Hitelesítő adatok beállítása
 
-Ha is szeretne létrehozni egy új service bus-névtér esetében a notification hubs használatával, lásd: [Service Bus kezelése a PowerShell-lel](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
+Ha is szeretne létrehozni egy új service bus-névtér a notification hubs szolgáltatásban, lásd: [a Service Bus kezelése a PowerShell-lel](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
 
-Értesítések hubok kezelése nem támogatja közvetlenül az Azure PowerShell parancsmagok. A legjobb módszer a PowerShell-hoz a Microsoft.Azure.NotificationHubs.dll szerelvény hivatkozik. A szerelvény terjeszthető a [Microsoft Azure Notification Hubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Értesítési központ kezelése közvetlenül az Azure PowerShell-parancsmagok által nem támogatott. A PowerShellben a legjobb módja, hogy a Microsoft.Azure.NotificationHubs.dll szerelvény hivatkozik. A szerelvény terjeszthető a [a Microsoft Azure Notification Hubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Azure előfizetés-alapú platform. Előfizetés beszerzésével kapcsolatos további információkért lásd: [Vásárlási lehetőségek], [Tag ajánlatok], vagy [Ingyenes próbaverzió].
-* Az Azure PowerShell számítógép. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt].
-* A PowerShell-parancsfájlok, NuGet-csomagok és a .NET-keretrendszer általános ismertetése.
+* Azure-előfizetés. Az Azure az előfizetés-alapú platform. Előfizetés beszerzésével kapcsolatos további információkért lásd: [vásárlási lehetőségek], [ajánlatok tagoknak], vagy [ingyenes próbaverzió].
+* Egy számítógép az Azure PowerShell használatával. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt].
+* PowerShell-parancsfájlok NuGet-csomagok és a .NET-keretrendszer általános ismeretekkel.
 
-## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Beleértve a .NET-szerelvény Service Bus
-Azure Notification Hubs kezelése még nincs a PowerShell-parancsmagok az Azure PowerShell tartalmazza. A notification hubs telepítéséhez, használhatja a .NET-ügyfél a megadott a [Microsoft Azure Notification Hubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Service Bus számára, a .NET-szerelvény hivatkozást
+Azure Notification Hubs kezelése még nem áll a PowerShell-parancsmagok az Azure PowerShell. Hozza létre a notification hubs használatával, használhatja a .NET ügyféloldali megadott a [a Microsoft Azure Notification Hubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Először győződjön meg arról, hogy a parancsfájl keresheti meg a **Microsoft.Azure.NotificationHubs.dll** szerelvény, ami a Visual Studio-projektet a NuGet csomag telepítve van. Ahhoz, hogy a rugalmas, a parancsfájl ezeket a lépéseket hajtja végre:
+Győződjön meg róla, keresse meg azt a parancsfájlt a **Microsoft.Azure.NotificationHubs.dll** szerelvény, amennyiben van telepítve, mint a Visual Studio-projekt NuGet-csomagot. Ahhoz, hogy rugalmas, a parancsfájl ezeket a lépéseket hajtja végre:
 
-1. Meghatározza, hogy az elérési utat, ahol azt lett meghívva.
-2. Az elérési út jár, amíg nem talál egy nevű mappát `packages`. A mappa létrehozása a Visual Studio-projektek NuGet-csomagok telepítésekor.
-3. Rekurzív keresést a `packages` egy összeállítás nevű mappa **Microsoft.Azure.NotificationHubs.dll**.
-4. A szerelvényre hivatkozik, hogy a típusok későbbi használatra.
+1. Meghatározza, hogy az elérési utat, amelyen meghívása.
+2. Amíg nem talál egy nevű mappát is az útvonalat járja `packages`. Ebben a mappában jön létre a Visual Studio projekteket NuGet-csomag telepítésekor.
+3. Rekurzív keresést a `packages` nevű szerelvény mappáját **Microsoft.Azure.NotificationHubs.dll**.
+4. A szerelvény hivatkozik, így a típusok későbbi használatra érhetők el.
 
-Ez hogyan valósíthatók meg ezeket a lépéseket egy PowerShell-parancsfájlt:
+Itt látható, hogyan találhatók meg ezeket a lépéseket egy PowerShell-parancsfájlt:
 
 ``` powershell
 
@@ -70,10 +70,10 @@ catch [System.Exception]
 }
 ```
 
-## <a name="create-the-namespacemanager-class"></a>A NamespaceManager osztály létrehozása
-Notification Hubs kiépítéséhez, hozzon létre egy példányát a [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) osztályt az SDK-ból. 
+## <a name="create-the-namespacemanager-class"></a>Hozzon létre a NamespaceManager osztályról
+A Notification Hubs kiépítéséhez, hozzon létre egy példányt a [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) osztályt az SDK-t. 
 
-Használhatja a [Get-AzureSBAuthorizationRule] parancsmag részét képező Azure PowerShell beolvasni egy engedélyezési szabályt, amellyel meg egy kapcsolati karakterláncot. Egy hivatkozást a `NamespaceManager` példány tárolja a `$NamespaceManager` változó. `$NamespaceManager` egy értesítési központ létrehozásához használt.
+Használhatja a [Get-AzureSBAuthorizationRule] parancsmagot az Azure PowerShell-lel beolvasni egy engedélyezési szabályt, amellyel meg egy kapcsolati karakterláncot tartalmazza. Egy hivatkozást a `NamespaceManager` példány tárolja a `$NamespaceManager` változó. `$NamespaceManager` egy értesítési központ kiépítéséhez használatos.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -85,19 +85,19 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 
 ## <a name="provisioning-a-new-notification-hub"></a>Új értesítési központ kiépítése
-Új értesítési központ létrehozásához használja a [.NET API-t a Notification hubs használatával].
+Üzembe helyez egy új értesítési központ, használja a [Notification Hubs .NET API-val].
 
-Ez a parancsfájl részében beállította négy helyi változók. 
+A parancsfájl ezen részében beállított négy helyi változók. 
 
-1. `$Namespace` : Válassza az a névtér neve hol szeretne létrehozni egy értesítési központot.
-2. `$Path` : Állítsa be ezt az elérési utat az új értesítési központ nevét.  Például "MyHub."    
-3. `$WnsPackageSid` : A fájl hozzáadása után a csomag biztonsági AZONOSÍTÓJÁT, a Windows-alkalmazás a a [Windows fejlesztői központ](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
-4. `$WnsSecretkey`: Állítsa a titkos kulcsot a Windows-alkalmazás a [Windows fejlesztői központ](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
+1. `$Namespace` : Állítsa ezt a beállítást a névtér neve kívánja egy értesítési központ létrehozása.
+2. `$Path` : Állítsa ezt az elérési utat az új értesítési központ nevét.  Például "MyHub."    
+3. `$WnsPackageSid` : Állítsa ezt a beállítást a csomag biztonsági AZONOSÍTÓJÁT, a Windows-alkalmazáshoz, a [Windows Dev Center](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
+4. `$WnsSecretkey`: Állítsa ezt a beállítást a titkos kulcs for a Windows-alkalmazást a [Windows Dev Center](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
 
-Ezek a változók csatlakozni a névtérhez, és hozzon létre egy új értesítési központ konfigurálva a Windows értesítési szolgáltatások (WNS) értesítések WNS hitelesítő adatokkal rendelkező Windows-alkalmazás segítségével. Információ lekérése a csomag biztonsági azonosítója és a titkos kulcs lásd: a [Ismerkedés a Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyag. 
+Ezeket a változókat a névtér csatlakozik, és hozzon létre egy új értesítési központ konfigurálva a Windows értesítési szolgáltatása (WNS) értesítések WNS hitelesítő adatokkal rendelkező Windows-alkalmazás kezeléséhez használhatók. A csomag beszerzésével kapcsolatos információért biztonsági azonosítója és a titkos kulcs tekintse meg a [Ismerkedés a Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyag. 
 
-* A parancsfájl kódrészletet használja a `NamespaceManager` objektum ellenőrizze, hogy ha az értesítési központ által azonosított `$Path` létezik-e.
-* Ha még nem létezik, a parancsfájl létrehoz `NotificationHubDescription` WNS-sel való hitelesítő adatait, és adja át, hogy a `NamespaceManager` osztály `CreateNotificationHub` metódust.
+* A parancsfájl kódrészlet a `NamespaceManager` objektum, ellenőrizze, hogy ha az értesítési központ által azonosított `$Path` létezik.
+* Ha még nem létezik, a szkript létrehoz `NotificationHubDescription` WNS-sel hitelesítő adatait, és adja a `NamespaceManager` osztály `CreateNotificationHub` metódust.
 
 ``` powershell
 
@@ -146,20 +146,20 @@ else
 
 
 ## <a name="additional-resources"></a>További források
-* [A PowerShell használatával a Service Bus kezelése](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-* [A Service Bus üzenetsorok, témakörök és előfizetések egy PowerShell-parancsfájl használatával létrehozása](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [A Service Bus Namespace és a PowerShell parancsfájl használatával Eseményközpont létrehozása](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [Service Bus kezelése a PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
+* [Hogyan hozhat létre a Service Bus-üzenetsorokat, üzenettémákat és előfizetéseket, egy PowerShell-parancsfájl használatával](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [A Service Bus-Namespace és a egy Eseményközpontba egy PowerShell-parancsprogram létrehozása](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
-Néhány előre elkészített parancsfájlok letölthetők is:
+Bizonyos előre elkészített parancsfájlok letölthető is érhetők el:
 
-* [Service Bus PowerShell parancsfájlok](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
+* [Service Bus PowerShell-parancsprogramok](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
 
 [Vásárlási lehetőségek]: http://azure.microsoft.com/pricing/purchase-options/
-[Tag ajánlatok]: http://azure.microsoft.com/pricing/member-offers/
+[Ajánlatok tagoknak]: http://azure.microsoft.com/pricing/member-offers/
 [Ingyenes próbaverzió]: http://azure.microsoft.com/pricing/free-trial/
 [Telepítse és konfigurálja az Azure PowerShellt]: /powershell/azureps-cmdlets-docs
-[.NET API-t a Notification hubs használatával]: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-[Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
-[New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
-[Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
+[A Notification Hubs .NET API-val]: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
+[New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
+[Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule
 

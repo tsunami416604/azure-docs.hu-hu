@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/02/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f0bfc494894a31a1ee61a4f23d702df38b13c4e7
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 856673d2a5465f9646172a1436ed75c0d73692cb
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626498"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003172"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Mi az alapvető védelmet (előzetes verzió)?  
 
@@ -51,7 +51,7 @@ Kiemelt jogosultságú fiókok hozzáféréssel rendelkező felhasználó ugyano
 
 ![Azure Active Directory](./media/baseline-protection/01.png)
 
-Ez a alapvető házirend biztosít arra, hogy felhasználók és csoportok kizárása. Előfordulhat, hogy szeretne zárni egy *[válságkezelési hozzáférés rendszergazdai fiók](../users-groups-roles/directory-emergency-access.md)* , győződjön meg arról, hogy nem záródik ki a bérlő.
+Ez a alapvető házirend biztosít arra, hogy felhasználók és csoportok kizárása. Előfordulhat, hogy szeretne zárni egy * [válságkezelési hozzáférés rendszergazdai fiók](../users-groups-roles/directory-emergency-access.md) * , győződjön meg arról, hogy nem záródik ki a bérlő.
 
 
 ## <a name="enable-a-baseline-policy"></a>Egy alapkonfiguráció házirend engedélyezése 
@@ -95,6 +95,9 @@ Alapkonfiguráció házirendek vonatkoznak az örökölt hitelesítési folyamat
 
 ## <a name="next-steps"></a>További lépések
 
-Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
+További információkért lásd:
 
-Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md). 
+- [Öt lépést a személyazonosság-infrastruktúra védelme](https://docs.microsoft.com/azure/security/azure-ad-secure-steps)
+
+- [Mi az az Azure Active Directory feltételes hozzáférés?](overview.md) 
+

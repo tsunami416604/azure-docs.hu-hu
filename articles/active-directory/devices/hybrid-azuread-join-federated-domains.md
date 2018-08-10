@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b5cd03098f4b4698c40966ceb79d5263b456a979
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cc6d08de74097ba7566037664fd33d9be85ac390
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430305"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628988"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás összevont tartományok konfigurálása
 
@@ -50,6 +50,7 @@ Ez az oktatóanyag feltételezi, hogy Ön ismeri a:
 
 -  [A hibrid Azure Active Directory-csatlakozás megvalósításának tervezése](hybrid-azuread-join-plan.md)
 
+-  [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](hybrid-azuread-join-control.md)
 
 
 Ebben az oktatóanyagban a forgatókönyv konfigurálásához lesz szüksége:
@@ -185,7 +186,7 @@ Ezenkívül engedélyeznie kell **lehetővé teszik a frissítések állapotsor 
 
 ## <a name="verify-the-registration"></a>A regisztráció-ellenőrzés
 
-Az Azure-bérlőhöz, az eszköz regisztrációs állapotának ellenőrzéséhez használhatja a **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** parancsmagot a  **[Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Az Azure-bérlőhöz, az eszköz regisztrációs állapotának ellenőrzéséhez használhatja a ** [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) ** parancsmagot a ** [Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
 
 Használatakor a **Get-MSolDevice** parancsmaggal ellenőrizheti a szolgáltatás részletei:
 
