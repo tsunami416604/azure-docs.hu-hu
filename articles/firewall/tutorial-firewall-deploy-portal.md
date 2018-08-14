@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358946"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480883"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -166,7 +166,7 @@ Az Srv-Work virtuális gép **beállításainak** konfigurálásához használja
    |Erőforráscsoport     |**Meglévő használata**: Test-FW-RG |
    |Hely     |Válassza a korábban használt helyet|
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: Test-FW-VN|
-   |Nyilvános IP-cím     |Új létrehozása|
+   |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 
 2. Kattintson az **Áttekintés + létrehozás** elemre.
 3. Tekintse át az összefoglalást, majd kattintson a **Létrehozás** elemre a tűzfal létrehozásához.
@@ -175,10 +175,6 @@ Az Srv-Work virtuális gép **beállításainak** konfigurálásához használja
 4. Ha az üzembe helyezés elkészült, nyissa meg a **Test-FW-RG** erőforráscsoportot, majd kattintson a **Test-FW01** tűzfalra.
 6. Jegyezze fel a magánhálózati IP-címet. Később, az alapértelmezett útvonal létrehozásakor szükség lesz rá.
 
-> [!NOTE]
-> A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.
-
-[//]: # (Ne felejtse el feljegyezni a tűzfal magánhálózati IP-címét.)
 
 ## <a name="create-a-default-route"></a>Alapértelmezett útvonal létrehozása
 
@@ -279,7 +275,7 @@ Ezzel ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
+A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
 
 ## <a name="next-steps"></a>További lépések

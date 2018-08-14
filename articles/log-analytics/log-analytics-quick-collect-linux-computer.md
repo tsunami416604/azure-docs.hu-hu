@@ -1,6 +1,6 @@
 ---
-title: Adatok gyűjtése helyszíni linuxos számítógépekről az Azure Log Analyticsszel | Microsoft Docs
-description: Megtudhatja, hogyan telepítheti a Linuxhoz készült Log Analytics-ügynököket, és hogyan gyűjthet adatokat Linux rendszerről Log Analytics használatával.
+title: Azure Log Analytics-ügynök konfigurálása Linux rendszerű hibrid számítógéphez | Microsoft Docs
+description: Megtudhatja, hogyan helyezheti üzembe az Azure-on kívüli gépeken futó Linuxhoz készült Log Analytics-ügynököket, és hogyan gyűjthet adatokat a Log Analytics használatával.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/02/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: aca8ee7305f919068733dfa3cb636a0f9bad7b05
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f1e363351cb214a80652aaef599a1306ad270e3f
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127169"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480809"
 ---
-# <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>Adatok gyűjtése saját környezetben futtatott linuxos számítógépről
-Az [Azure Log Analytics](log-analytics-overview.md) közvetlenül tud adatokat gyűjteni az Ön környezetében található fizikai vagy virtuális Linux-gépekről és egyéb erőforrásokról egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  
+# <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Log Analytics-ügynök konfigurálása Linux rendszerű számítógépekhez hibrid környezetekben
+Az [Azure Log Analytics](log-analytics-overview.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Linux-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  
 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Linux operációs rendszerek](log-analytics-concept-hybrid.md#supported-linux-operating-systems) és [hálózati tűzfal konfigurációk](log-analytics-concept-hybrid.md#network-firewall-requirements) részt.
 

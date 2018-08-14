@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: f4e03271f45c29ed2556256346e29c297be563cc
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 41f74ff00e4fad751d4a2b7ae96ebb048bbcdfcd
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345358"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492698"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Oktatóanyag: 5. Hierarchikus entitás hozzáadása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan lehet kapcsolódó adatrészleteket keresni kontextus alapján. 
@@ -70,7 +70,7 @@ A teljes kimondott szöveg megjelenítéséhez és a hierarchikus gyermek megjel
 
 2. A szándékok listájából válassza ki a **MoveEmployee** elemet.
 
-    [ ![Képernyőfelvétel a LUIS-alkalmazásról a kiemelt MoveEmployee szándékkal a bal menüben](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
+    [ ![Képernyőkép a LUIS-alkalmazásról a kiemelt MoveEmployee szándékkal a bal oldali menüben](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
 3. Vegye fel az alábbi kimondott szövegpéldákat:
 
@@ -119,15 +119,8 @@ Adja hozzá ismét az előre összeállított szám entitást az alkalmazáshoz.
     ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
-Amíg nincs betanítva, a LUIS nem ismeri fel a szándékok és entitások (a modell) módosításait. 
 
-1. A LUIS-webhely jobb felső részén kattintson a **Train** (Betanítás) gombra.
-
-    ![Az alkalmazás betanítása](./media/luis-quickstart-intent-and-hier-entity/train-button.png)
-
-2. A betanítás akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
-
-    ![A betanítás sikeres volt](./media/luis-quickstart-intent-and-hier-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
 
@@ -242,6 +235,10 @@ Igen, hozza létre a reguláris kifejezést indulási és érkezési szerepkör�
 
 Az ebben a példában lévő helyek, például az `a-1234`, egy adott formátumot követnek: egy vagy két betű, kötőjellel elválasztva, ezután egy 4 vagy 5 számból álló sorozat. Ez az adat leírható reguláris kifejezés entitásként az egyes helyekhez kapcsolódó szerepkörrel. A szerepkörök elérhetők a mintákhoz. Ezen kimondott szövegek alapján létrehozhat mintákat, majd létrehozhat egy reguláris kifejezést a helyformátumhoz, és hozzáadhatja a mintákhoz. <!-- Go to this tutorial to see how that is done -->
 
+## <a name="patterns-with-roles"></a>Minták szerepkörökkel
+
+[!include[LUIS Compare hierarchical entities to patterns with roles](../../../includes/cognitive-services-luis-hier-roles.md)]
+
 ## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
 Az alkalmazás mindössze néhány szándékkal és egy hierarchikus entitással azonosított egy természetes nyelvi lekérdezési szándékot, és visszaadta a kinyert adatokat. 
 
@@ -251,7 +248,8 @@ A csevegőrobot már elég információval rendelkezik az elsődleges művelet (
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, felhasználhatja a topScoringIntent eredményt és az entitás adatait a következő lépés végrehajtásához. A LUIS nem végzi el ezt a programozható munkát a csevegőrobotnak vagy a hívó alkalmazásnak. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 

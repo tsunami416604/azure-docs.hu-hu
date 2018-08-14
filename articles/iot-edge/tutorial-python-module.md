@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 49fa81d89fb195e1caedc2348a8b0990022b0d0d
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5766f9708d2439f42f9ad77169fd1fe7f7dc451e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414266"
+ms.locfileid: "39439112"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -34,15 +34,21 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Linux](quickstart-linux.md) eszköz rövid útmutatójában létrehozott Azure IoT Edge-eszköz.
+Egy Azure IoT Edge-eszköz:
 
-   >[!Note]
-   >Az Azure IoT Edge-hez elérhető Python-modulok nem támogatják a Windows- és ARM-eszközöket. 
+* Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [linuxos](quickstart-linux.md) rövid útmutató lépéseit követve.
+* Az IoT Edge-hez elérhető Python-modulok nem támogatják az ARM-processzorokat és a Windows-eszközöket.
+
+Felhőerőforrások:
+
+* Egy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban. 
+
+Fejlesztési erőforrások:
 
 * [Visual Studio Code](https://code.visualstudio.com/). 
-* [Azure IoT Edge-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
-* [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
-* [Docker](https://docs.docker.com/engine/installation/) ugyanazon a számítógépen, amelyre telepítve van a Visual Studio Code. A Community Edition (CE) kiadás elegendő ehhez az oktatóanyaghoz. 
+* [Azure IoT Edge-bővítmény](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) a Visual Studio Code-hoz.
+* [Python-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-python.python) a Visual Studio Code-hoz. 
+* [Docker CE](https://docs.docker.com/engine/installation/). 
 * [Python](https://www.python.org/downloads/).
 * [Pip](https://pip.pypa.io/en/stable/installing/#installation) a Python-csomagok telepítéséhez (általában a Python-telepítés részét képezi).
 
@@ -243,7 +249,7 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 Ha csak az IoT Hub-központot szeretné törölni, hajtsa végre az alábbi parancsot a saját központja és a saját erőforráscsoportja nevével:
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 

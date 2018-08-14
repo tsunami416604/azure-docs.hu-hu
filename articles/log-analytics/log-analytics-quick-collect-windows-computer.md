@@ -1,6 +1,6 @@
 ---
-title: Adatok gyűjtése helyszíni windowsos számítógépekről az Azure Log Analyticsszel | Microsoft Docs
-description: Megtudhatja, hogyan telepítheti az Azure-on kívüli gépeken futó Windowshoz készült Log Analytics-ügynököket, és hogyan gyűjthet adatokat a Log Analytics használatával.
+title: Azure Log Analytics-ügynök konfigurálása Windows rendszerű hibrid számítógéphez | Microsoft Docs
+description: Megtudhatja, hogyan helyezheti üzembe az Azure-on kívüli gépeken futó Windowshoz készült Log Analytics-ügynököket, és hogyan gyűjthet adatokat a Log Analytics használatával.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/02/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: b3c3e020a685147411fc784c41d9eca8b7dd8db0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 91a656b055dbe882bdd5e5c208cc5d8955c74041
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130993"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480439"
 ---
-# <a name="collect-data-from-windows-computers-hosted-in-your-environment"></a>Adatok gyűjtése saját környezetben futtatott windowsos számítógépekről
-Az [Azure Log Analytics](log-analytics-overview.md) közvetlenül tud adatokat gyűjteni az Ön környezetében található fizikai vagy virtuális Windows-gépekről és egyéb erőforrásokról egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a windowsos számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli windowsos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  
+# <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Log Analytics-ügynök konfigurálása Windows rendszerű számítógépekhez hibrid környezetekben
+Az [Azure Log Analytics](log-analytics-overview.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Windows-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a windowsos számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli windowsos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  
 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszereket](log-analytics-concept-hybrid.md#supported-windows-operating-systems) és a [hálózati tűzfalkonfigurációkat](log-analytics-concept-hybrid.md#network-firewall-requirements) ismertető részt.
  

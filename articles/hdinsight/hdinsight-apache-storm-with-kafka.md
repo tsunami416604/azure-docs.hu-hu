@@ -1,25 +1,20 @@
 ---
-title: 'Oktatóanyag: Az Apache Kafka használata a Storm on HDInsighttal – Azure | Microsoft Docs'
+title: 'Oktatóanyag: Az Apache Kafka használata a Storm on HDInsighttal – Azure '
 description: Megtudhatja, hogyan hozhat létre streamelési folyamatot az Apache Storm és az Apache Kafka on HDInsight használatával. Ebben az oktatóanyagban a KafkaBolt és a KafkaSpout összetevőkkel streamel adatokat a Kafkából.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/21/2018
-ms.author: larryfr
-ms.openlocfilehash: b973890caddf598d5ba4e96a04a18df46cdb5cf8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: jasonh
+ms.openlocfilehash: a20cf616b119d208c9b2baa0f2cf608aa44c21ad
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626290"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595161"
 ---
 # <a name="tutorial-use-apache-storm-with-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Storm használata a Kafka on HDInsighttal
 
@@ -80,8 +75,7 @@ Az Apache Storm több összetevőt is biztosít a Kafka használatához. Ebben a
 
     * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`: Leírja a témakört, amelybe a rendszer ír.
 
-    * 
-  `org.apache.kafka.common.serialization.StringSerializer`: Arra konfigurálja a boltot, hogy sztringértékekként szerializálja az adatokat.
+    * `org.apache.kafka.common.serialization.StringSerializer`: Arra konfigurálja a boltot, hogy sztringértékekként szerializálja az adatokat.
 
     * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: Leképezi a Storm-topológiában használt rekord-adatstruktúrát a Kafkában tárolt mezőkre.
 

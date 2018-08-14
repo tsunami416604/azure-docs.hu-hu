@@ -1,6 +1,6 @@
 ---
-title: Azure rövid útmutató – Key Vault parancssori felület létrehozása | Microsoft Docs
-description: Rövid útmutató, amely bemutatja az Azure Key Vault létrehozását a parancssori felület használatával
+title: Rövid Azure-útmutató – Titkos kulcs beállítása és lekérése a Key Vaultból az Azure CLI használatával | Microsoft Docs
+description: Rövid útmutató, amely bemutatja a titkos kulcsok beállítását és lekérését az Azure Key Vaultból az Azure CLI használatával
 services: key-vault
 author: barclayn
 manager: mbaldwin
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: ae8957e5bf87fc190076db87d4eaca0e7a757c5e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: dc69d472e38bcc39de35204c26068a98e0549601
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067656"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480918"
 ---
-# <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>Rövid útmutató: Azure Key Vault létrehozása a parancssori felülettel
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure CLI használatával
 
 Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. A Key Vaulttal kapcsolatos további információt az [Áttekintés](key-vault-overview.md) szakaszban talál. Az Azure CLI az Azure-erőforrások létrehozására és kezelésére szolgál, parancsok és szkriptek alkalmazásával. Ebben a rövid útmutatóban egy kulcstartót hoz létre. Miután végzett ezzel, titkos kulcsot fog tárolni.
 

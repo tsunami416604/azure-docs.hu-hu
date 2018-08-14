@@ -14,12 +14,12 @@ ms.date: 07/20/2018
 ms.author: lizross
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 7804d6b0d4a100997fb545e678458424dac6ceed
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 45637122af3df1906a8c3b4b16233f6361eecca3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227268"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528326"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Rövid útmutató: Vállalati arculat megjelenítése az Azure AD bejelentkezési oldalán
 A félreértések elkerülése végett számos vállalat igyekszik egységes megjelenést adni az általa kezelt összes webhelynek és szolgáltatásnak. Az Azure Active Directory (Azure AD) ennek érdekében testreszabhatóvá teszi a bejelentkezési oldal megjelenését a vállalat emblémájának elhelyezésével és egyéni színsémák alkalmazásával. A bejelentkezési oldal az olyan webes alkalmazásokba, például az Office 365-be történő bejelentkezéskor jelenik meg, amelyek identitásszolgáltatóként az Azure AD-t használják. Ezzel az oldallal a hitelesítő adatainak megadásakor találkozik.
@@ -71,7 +71,7 @@ Alacsony sávszélességű kapcsolat használatakor ez a háttérszín jelenik m
 ### <a name="square-logo-image"></a>Négyzet alakú embléma képe
 Leírás | Korlátozások | Javaslatok
 ------- | ------- | ----------
-Ez a kép jelenik meg a telepítés során az új vállalati Windows 10-es számítógépeken. Biztosítja a megfelelő környezetet az alkalmazottaknak az új munkahelyi számítógépek üzembe helyezésekor. A kép azon bérlők számára jelenik meg, akik a [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) segítségével végzik a munkahelyi eszközeik üzembe helyezését, valamint az egyéb Windows 10-változatokban a jelszókérő képernyőn látható. | Átlátszó PNG (előnyben részesített) vagy JPG<br>Kép méretei: 240 x 240 képpont<br>Fájlméret: &lt; 10 KB | Itt használhatja a szervezet emblémáját.<br> Használjon egy átlátszó képet.<br>Ne feltételezze azt, hogy a háttér színe fehér lesz.<br>A kép ne tartalmazzon szegélyt az embléma körül, mert ettől az embléma aránytalanul kicsinek tűnhet.
+Ez a kép jelenik meg a telepítés során az új vállalati Windows 10-es számítógépeken. Biztosítja a megfelelő környezetet az alkalmazottaknak az új munkahelyi számítógépek üzembe helyezésekor. A kép azon bérlők számára jelenik meg, akik a [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) segítségével végzik a munkahelyi eszközeik üzembe helyezését, valamint az egyéb Windows 10-változatokban a jelszókérő képernyőn látható.<br>A Windows-hitelesítésben kizárólag a négyzetes embléma használatos. A sötét témájú verzió elavult, és már sehol nincs használatban. | Átlátszó PNG (előnyben részesített) vagy JPG<br>Kép méretei: 240 x 240 képpont<br>Fájlméret: &lt; 10 KB | Itt használhatja a szervezet emblémáját.<br> Használjon egy átlátszó képet.<br>Ne feltételezze azt, hogy a háttér színe fehér lesz.<br>A kép ne tartalmazzon szegélyt az embléma körül, mert ettől az embléma aránytalanul kicsinek tűnhet.
 
 ### <a name="show-option-to-remain-signed-in"></a>A bejelentkezve maradás lehetőségének megjelenítése
 Leírás | Korlátozások | Javaslatok

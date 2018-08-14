@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/20/2018
 ms.author: victorh
-ms.openlocfilehash: 9ebbc955bcb426738db598491266c2a1bcb9dd33
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b39c2c672869bb446e58134a85130d10491fe047
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39204942"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621113"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Oktatóanyag: Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban 
 
@@ -56,7 +56,7 @@ Miután létrehozott egy zónát, és delegálta azt az Azure DNS-be, létrehozh
 
 ## <a name="create-an-a-record-and-txt-record"></a>„A” és TXT típusú rekord létrehozása
 
-A rendszer az „A” rekordot használja a név IP-címre történő leképezéséhez. Az alábbi példában egy „@” karaktert fog hozzárendelni „A” rekordként a webalkalmazás IPv4-címének használatával. Az „@” karakter általában a gyökértartományt jelöli.
+A rendszer az „A” rekordot használja a név IP-címre történő leképezéséhez. Az alábbi példában egy „\@” karaktert fog hozzárendelni „A” rekordként a webalkalmazás IPv4-címének használatával. Az „\@” karakter általában a gyökértartományt jelöli.
 
 ### <a name="get-the-ipv4-address"></a>Az IPv4-cím lekérése
 

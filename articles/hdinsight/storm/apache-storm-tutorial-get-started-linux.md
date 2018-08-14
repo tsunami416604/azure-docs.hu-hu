@@ -1,27 +1,21 @@
 ---
-title: Storm Starter-példák az Azure HDInsight-alapú Apache Storm rendszerben | Microsoft Docs
+title: Storm Starter-példák a HDInsight-alapú Apache Storm rendszerben – Azure
 description: Ismerje meg az Apache Storm használatával történő valós idejű big data-elemzést és adatfeldolgozást, valamint a HDInsight-alapú Storm Starter-példákat.
 keywords: storm starter, apache storm-példa
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: d710dcac-35d1-4c27-a8d6-acaf8146b485
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: java
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 02/27/2018
-ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: a5abce003849258cf02616dc34b15597b3c6ea19
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 3c874e296f984355800868eb530c52fa9fcc0104
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099381"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620188"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>A HDInsight-alapú Apache Storm rendszer használatának első lépései Storm Starter-példákkal
 

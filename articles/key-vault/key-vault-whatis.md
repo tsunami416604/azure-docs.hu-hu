@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: barclayn
-ms.openlocfilehash: cd9dd4d400177e511f23c2677b77198a50420a35
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 08331a399044eba17060d15f24af1863df38caf5
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282996"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480253"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -33,6 +33,8 @@ Az Azure Key Vault egy titkos kulcsok biztonságos tárolására és hozzáfér�
 Az alábbiakban néhány kulcsfontosságú fogalom ismertetése található:
 - **Bérlő** – A bérlő az a szervezet, amely egy Microsoft-felhőszolgáltatás egy adott példányát birtokolja és kezeli. A kifejezéssel általában egy szervezet Azure- és Office 365-szolgáltatásainak pontos listájára hivatkozunk.
 - **Kulcstartó-tulajdonos** – Létrehozhat egy Key Vault-tárolót, amely felett teljes körű hozzáféréssel és irányítással rendelkezik. Emellett beállíthat naplózást, amellyel naplózhatja a titkos kulcsok elérését. A kulcsok életciklusát a rendszergazdák kezelhetik. Kiadhatnak új kulcsverziókat, biztonsági másolatokat készíthetnek stb.
+- **Erőforrás** – Egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. Általános erőforrás például a következő: virtuális gép, tárfiók, webalkalmazás, adatbázis, virtuális hálózat, de számos további fajtája is létezik.
+- **Erőforráscsoport** – Egy olyan tároló, amely egy Azure-megoldáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Lásd az erőforráscsoportokat.
 - **Kulcstartóhasználó** – Műveleteket hajthat végre a Key Vault-tárolóban található objektumokon, ha a kulcstartó-tulajdonos felruházta hozzáféréssel. Ez a kiosztott jogosultságokon múlik.
 - Az **[Azure Active Directory](../active-directory/active-directory-whatis.md)** egy adott bérlő Azure AD-szolgáltatása. Minden címtárhoz tartozik egy vagy több tartomány. Egy címtárhoz számos előfizetés tartozhat, de csak egyetlen bérlő. 
 - **Azure-bérlő azonosítója** – Egy egyedi módszer az Azure-előfizetéseken belüli Azure Active Directory-címtárak azonosítására. 

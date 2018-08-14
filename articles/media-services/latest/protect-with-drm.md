@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2ceae5b530d1967ccca2b33c05c183302684be41
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8bfe2fb7274fb8c6dcf977e8bd72af525d8ce8a5
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116767"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528170"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata
 
@@ -65,6 +65,7 @@ A cikkben leírt minta a következőt eredményezi:
 Az oktatóanyag elvégzésének a következők a feltételei.
 
 * Tekintse meg a [Content Protection áttekintését](content-protection-overview.md) ismertető cikket.
+* Tekintse meg a [hozzáférés-vezérléssel ellátott Multi-DRM rendszerek tervezését](design-multi-drm-system-with-access-control.md) ismertető cikket.
 * A Visual Studio Code vagy a Visual Studio telepítése
 * Hozzon létre egy új Azure Media Services-fiókot [az ebben a gyors útmutatóban](create-account-cli-quickstart.md) leírt módon.
 * Szerezze be a Media Services API-k használatához szükséges hitelesítő adatokat az [adatelérési API-kat](access-api-cli-how-to.md) bemutató szakasz leírását követve.

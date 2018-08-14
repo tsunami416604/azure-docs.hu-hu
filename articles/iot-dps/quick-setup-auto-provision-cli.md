@@ -1,20 +1,20 @@
 ---
 title: A Device Provisioning Service üzembe helyezése Azure CLI használatával | Microsoft Docs
 description: Azure rövid útmutató – Az Azure IoT Hub Device Provisioning Service üzembe helyezése az Azure CLI használatával
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2cf611e12402b22587faa83fefc4651e7307c41c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cf2e108aa7cab6be2996cb535d27d597e462617c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38482135"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626539"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Az IoT Hub Device Provisioning szolgáltatás beállítása az Azure CLI használatával
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *my-sample-resource-group* nevű erőforráscsoportot a *westus* helyen.
 
@@ -47,7 +47,7 @@ az group create --name my-sample-resource-group --location westus
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-IoT Hub létrehozása az [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) parancs segítségével. 
+Egy IoT Hubot az [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal hozhat létre.
 
 A következő példában létrehozunk egy *my-sample-hub* nevű IoT Hubot a *westus* helyen.  
 
@@ -57,7 +57,7 @@ az iot hub create --name my-sample-hub --resource-group my-sample-resource-group
 
 ## <a name="create-a-provisioning-service"></a>Eszközkiépítési szolgáltatás létrehozása
 
-Eszközkiépítési szolgáltatás létrehozása az [az iot dps create](/cli/azure/iot/dps#az_iot_dps_create) paranccsal. 
+Eszközkiépítési szolgáltatás létrehozása az [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) paranccsal. 
 
 A következő példában létrehozunk egy *my-sample-dps* nevű eszközkiépítési szolgáltatást a *westus* helyen.  
 
@@ -72,7 +72,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>Az IoT Hub kapcsolati sztringjének lekérése
 
-Az IoT Hub kapcsolati sztringjére az eszközkiépítési szolgáltatással való összekapcsoláshoz van szükség. Az [az iot hub show-connection-string](/cli/azure/iot/hub#az_iot_hub_show_connection_string) használatával kérje le a kapcsolati sztringet, majd használja a kimenetét egy olyan változó megadásához, amelyet a két erőforrás összekötésére fog használni. 
+Az IoT Hub kapcsolati sztringjére az eszközkiépítési szolgáltatással való összekapcsoláshoz van szükség. Az [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) használatával kérje le a kapcsolati sztringet, majd használja a kimenetét egy olyan változó megadásához, amelyet a két erőforrás összekötésére fog használni. 
 
 Az alábbi példa a *hubConnectionString* változót a hub *iothubowner* szabályzatának elsődleges kulcsához tartozó kapcsolati sztring értékére állítja. Megadhat egy másik szabályzatot is a `--policy-name` paraméterrel. A parancs az Azure CLI [lekérdezés](/cli/azure/query-azure-cli) és [kimenet](/cli/azure/format-output-azure-cli#tsv-output-format) lehetőségeinek használatával nyeri ki a kapcsolati sztringet a parancskimenetből.
 
@@ -92,7 +92,7 @@ echo $hubConnectionString
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>Az IoT Hub és az eszközkiépítési szolgáltatás csatolása
 
-Az IoT Hub és az eszközkiépítési szolgáltatás csatolása az [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az_iot_dps_linked_hub_create) paranccsal. 
+Az IoT Hub és az eszközkiépítési szolgáltatás csatolása az [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create) paranccsal. 
 
 A következő példában egy, a *westus* helyen található, *my-sample-hub* nevű IoT Hubot csatolunk egy *my-sample-dps* nevű eszközkiépítési szolgáltatáshoz. A *my-sample-hub* kapcsolati sztringjét használja, amelyet az előző lépésben szereplő *hubConnectionString* változó tárol.
 
@@ -102,7 +102,7 @@ az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample
 
 ## <a name="verify-the-provisioning-service"></a>Eszközkiépítési szolgáltatás ellenőrzése
 
-Eszközkiépítési szolgáltatás adatainak lekérése az [az iot dps show](/cli/azure/iot/dps#az_iot_dps_show) paranccsal.
+Eszközkiépítési szolgáltatás adatainak lekérése az [az iot dps show](/cli/azure/iot/dps#az-iot-dps-show) paranccsal.
 
 Az alábbi példa lekéri a *my-sample-dps* nevű eszközkiépítési szolgáltatás adatait. A csatolt IoT Hub a *properties.iotHubs* gyűjteményben jelenik meg.
 
@@ -114,18 +114,18 @@ az iot dps show --name my-sample-dps
 
 Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, a következő parancsok használatával törölheti az eszközkiépítési szolgáltatást, az IoT Hubot, vagy az erőforráscsoportot az ahhoz tartozó összes erőforrással együtt.
 
-Az eszközkiépítési szolgáltatás törléséhez futtassa az [az iot dps delete](/cli/azure/iot/dps#az_iot_dps_delete) parancsot:
+Az eszközkiépítési szolgáltatás törléséhez futtassa az [az iot dps delete](/cli/azure/iot/dps#az-iot-dps-delete) parancsot:
 
 ```azurecli-interactive
 az iot dps delete --name my-sample-dps --resource-group my-sample-resource-group
 ```
-Az IoT Hub törléséhez futtassa az [az iot hub delete](/cli/azure/iot/hub#az_iot_hub_delete) parancsot:
+Az IoT Hub törléséhez futtassa az [az iot hub delete](/cli/azure/iot/hub#az-iot-hub-delete) parancsot:
 
 ```azurecli-interactive
 az iot hub delete --name my-sample-hub --resource-group my-sample-resource-group
 ```
 
-Erőforráscsoport és az ahhoz tartozó összes erőforrás törléséhez futtassa az [az group delete](/cli/azure/group#az_group_delete) parancsot:
+Erőforráscsoport és az ahhoz tartozó összes erőforrás törléséhez futtassa az [az group delete](/cli/azure/group#az-group-delete) parancsot:
 
 ```azurecli-interactive
 az group delete --name my-sample-resource-group

@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 10/13/2017
 ms.author: asutton
 ms.custom: ''
-ms.openlocfilehash: 9834dbbc2232fc286451bcdcd19dfc639f49d3bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 504504f278907536e89055cd5c912d2d1f280931
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30903475"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627202"
 ---
 # <a name="what-is-batch-ai-in-azure"></a>Mi az a Batch AI az Azure-ban?
 A Batch AI egy felügyelt szolgáltatás, amely lehetővé teszi az adatelemzők és AI-kutatók számára, hogy betanítsanak mesterséges intelligenciákat és egyéb gépi tanulási modelleket az Azure virtuális gépek fürtjein, beleértve a GPU-támogatással rendelkező virtuális gépeket. Csak adja meg a feladata követelményeit, valamint a bemeneti és kimeneti adatok tárolási helyét, a Batch AI pedig elvégzi a többit.  
@@ -40,7 +40,7 @@ A Batch AI erőforrás-kezelési és feladatütemezési szolgáltatásokat nyúj
 * A GPU-kat vagy processzorokat használó VM-fürtök automatikus vagy manuális skálázása 
 * SSH-kommunikáció konfigurálása a VM-ek között és a táveléréshez 
 * Mély tanulási és machine learning-keretrendszerek támogatása az olyan népszerű eszközökre optimalizált konfigurációkkal, mint a [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), a [TensorFlow](https://www.tensorflow.org/) és a [Chainer](https://chainer.org/). 
-* Prioritásalapú feladat-várólistázás a fürtök megosztásához, illetve az alacsony prioritású virtuális gépek és fenntartott példányok kiaknázásához  
+* Prioritásalapú feladat-várólistázás a fürtök megosztásához, illetve az alacsony prioritású virtuális gépek és az Azure Reservations képességeinek kiaknázásához  
 * Rugalmas tárolási lehetőségek, köztük az Azure Files és egy felügyelt NFS-kiszolgáló használata 
 * Távoli fájlmegosztások csatolása a VM-hez és a választható tárolóhoz 
 * Feladatok állapotának biztosítása és újraindítás VM-hibák esetén 

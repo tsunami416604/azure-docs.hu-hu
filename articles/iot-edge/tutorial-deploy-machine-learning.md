@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a1b34fe75f76d5f615ab33069f3012f22dc7ef2e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 28b963922b423bb776aa97e9b76392bc484ddcd6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413073"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627807"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -46,9 +46,10 @@ Egy Azure IoT Edge-eszköz:
 Felhőerőforrások:
 
 * Egy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban. 
+* Egy Azure Machine Learning-fiók. Kövesse az [Azure Machine Learning-fiókok létrehozása és az Azure Machine Learning Workbench telepítése](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts) szakaszban megadott utasításokat. Az oktatóanyag elvégzéséhez nincs szükség a Workbench alkalmazás telepítésére. 
 
 Fejlesztési erőforrások:
-* Egy Azure Machine Learning-fiók. Kövesse az [Azure Machine Learning-fiókok létrehozása és az Azure Machine Learning Workbench telepítése](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts) szakaszban megadott utasításokat. Az oktatóanyag elvégzéséhez nincs szükség a Workbench alkalmazás telepítésére. 
+
 * Az Azure ML modelljeinek kezelése. A környezet beállításához és fiók létrehozásához kövesse [A modellkezelés beállítása](../machine-learning/desktop-workbench/deployment-setup-configuration.md) szakaszban megadott utasításokat. Az üzembe helyezés során lehetőség szerint a fürt helyett helyi lépéseket használjon.
 
 ### <a name="disable-process-identification"></a>Folyamatazonosítás letiltása
@@ -93,7 +94,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 ## <a name="create-the-azure-ml-container"></a>Azure ML-tároló létrehozása
 Ebben a szakaszban letölti a betanított modell fájljait, és Azure ML-tárolóvá konvertálja azokat.
 
-Az Azure ML modulkezelési alkalmazását futtató számítógépen töltse le és mentse a GitHub Azure ML IoT-eszközkészletéből származó [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) és a [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) fájlokat. Ezek a fájlok határozzák meg azt a betanított Machine Learning-modellt, amelyet az IoT Edge-eszközön üzembe fog helyezni.
+Az Azure ML modellkezelési alkalmazását futtató számítógépen töltse le és mentse a GitHub Azure ML IoT-eszközkészletéből származó [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) és a [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) fájlt. Ezek a fájlok határozzák meg azt a betanított Machine Learning-modellt, amelyet az IoT Edge-eszközön üzembe fog helyezni.
 
 A betanított modell használatával hozzon létre egy, az IoT Edge-eszközökön üzembe helyezhető tárolót. Az alábbi paranccsal végezze el a következőket:
 
@@ -187,7 +188,7 @@ Ha ezeket a parancsokat Linux-eszközön hajtja végre, lehetséges, hogy haszn�
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>Az IoT-központba érkező adatok megtekintése
 
-Az IoT-központba érkező, eszközről a felhőbe küldött üzeneteket az [IoT Hub Explorer](https://github.com/azure/iothub-explorer) eszközzel vagy a [Visual Studio Code Azure IoT-eszközkészlet bővítményével](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) tekintheti meg.
+Az IoT Hub által fogadott, az eszközről a felhőbe küldött üzeneteket a [Visual Studio Code Azure IoT Toolkit bővítményével](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) tekintheti meg.
 
 A következő lépések azt mutatják be, hogyan állítható be a Visual Studio Code az IoT-központba érkező, eszközről a felhőbe küldött üzenetek monitorozására. 
 
@@ -220,7 +221,7 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 Ha csak az IoT Hubot szeretné törölni, hajtsa végre az alábbi parancsot a saját hubja és a saját erőforráscsoportja nevével:
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 

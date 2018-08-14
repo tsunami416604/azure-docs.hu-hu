@@ -1,6 +1,6 @@
 ---
-title: Rövid Azure-útmutató – Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához | Microsoft Docs
-description: A rövid útmutató bemutatja, hogyan konfigurálhat ASP.NET Core-alkalmazást a Key Vault titkos kulcsainak olvasásához
+title: Rövid Azure-útmutató – Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak beállítására és lekérésére | Microsoft Docs
+description: Rövid útmutató, amely bemutatja, hogyan konfigurálhat ASP.NET Core-alkalmazásokat a Key Vault titkos kulcsainak beállítására és lekérésére
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 07a7bc5713f093e34a775aacab27094780ac6c7e
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247825"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480202"
 ---
-# <a name="quickstart-set-and-read-a-secret-from-key-vault-in-a-net-web-app"></a>Rövid útmutató: A Key Vault titkos kulcsainak beállítása és olvasása egy .NET-webalkalmazásban
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból .NET-webalkalmazások használatával
 
 Ebben a rövid útmutatóban azokat a lépéseket ismerheti meg, amelyekkel Azure-webalkalmazásokat konfigurálhat a Key Vaultban tárolt adatok felügyeltszolgáltatás-identitások használatával való olvasására. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -56,7 +56,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 Válasszon egy erőforráscsoport-nevet, és töltse ki a helyőrzőt.
 A következő példában létrehozunk egy *<YourResourceGroupName>* nevű erőforráscsoportot az *eastus* helyen.

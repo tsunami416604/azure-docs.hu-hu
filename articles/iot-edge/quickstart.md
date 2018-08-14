@@ -4,17 +4,17 @@ description: Az Azure IoT Edge kipróbálása elemzés futtatásával egy szimul
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/24/2018
+ms.date: 08/02/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1437c3552a7af5d5474cf3bdaabe95d5415af603
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3b54a326fc648a443897a6e39c823d9c097cf1d3
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414211"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626382"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése az Azure Portal segítségével egy Windows-eszközön – előzetes verzió
 
@@ -56,14 +56,13 @@ Felhőerőforrások:
    az group create --name IoTEdgeResources --location westus
    ```
 
-Egy Windows rendszerű számítógép vagy virtuális gép, amely IoT Edge-eszközként szolgál majd. 
+IoT Edge-eszköz: 
 
-* Használjon támogatott Windows-verziót:
+* Egy Windows rendszerű számítógép vagy virtuális gép, amely IoT Edge-eszközként szolgál majd. Használjon támogatott Windows-verziót:
    * Windows 10 vagy újabb
    * Windows Server 2016 vagy újabb
 * Ha virtuális gépről van szó, engedélyezze a [beágyazott virtualizálást][lnk-nested], és foglaljon le legalább 2 GB memóriát. 
 * Telepítse a [Windowshoz készült Dockert][lnk-docker], és ellenőrizze, hogy fut-e.
-* A Docker konfigurálása [Linux-tárolók](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) használatára
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -86,7 +85,9 @@ A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResourc
 Regisztráljon egy IoT Edge-eszközt az újonnan létrehozott IoT Hubon.
 ![Eszköz regisztrálása][4]
 
-Hozzon létre egy eszközidentitást a szimulált eszközhöz, hogy az kommunikálhasson az IoT Hubbal. Mivel az IoT Edge-eszközök másként viselkednek, mint a hagyományos IoT-eszközök, és kezelésük is másként történik, ezért IoT Edge-eszközként kell deklarálni a kezdetektől fogva. 
+Hozzon létre egy eszközidentitást a szimulált eszközhöz, hogy az kommunikálhasson az IoT Hubbal. Az eszközidentitás a felhőben található, és egy egyedi eszközkapcsolati sztringgel társíthat fizikai eszközt az eszközidentitáshoz. 
+
+Mivel az IoT Edge-eszközök másként viselkednek, mint a hagyományos IoT-eszközök, és kezelésük is másként történik, ezért IoT Edge-eszközként kell deklarálni a kezdetektől fogva. 
 
 1. Az Azure Cloud Shellben a következő paranccsal hozza létre a **myEdgeDevice** nevű eszközt a központjában.
 
@@ -104,129 +105,31 @@ Hozzon létre egy eszközidentitást a szimulált eszközhöz, hogy az kommunik�
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet telepítése és elindítása
 
-Telepítse és indítsa el IoT Edge-eszközén az Azure IoT Edge-futtatókörnyezetet. 
+Telepítse az Azure IoT Edge-futtatókörnyezetet az IoT Edge-eszközön, és a konfigurálást eszközkapcsolati sztring használatával végezze el. 
 ![Eszköz regisztrálása][5]
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. Az **IoT Edge biztonsági démon** az Edge-eszközök indulásakor lép működésbe, és az IoT Edge-ügynök elindításával elvégzi az eszköz rendszerindítását. Az **IoT Edge-ügynök** a modulok üzembe helyezését és monitorozását segíti az IoT Edge-eszközön, beleértve az IoT Edge-központot is. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli. 
 
->[!NOTE]
->Ennek a szakasznak a lépéseit egyelőre manuálisan kell elvégezni, a telepítési szkript fejlesztése folyamatban van. 
+A futtatókörnyezet telepítése során a rendszer rá fog kérdezni az eszközkapcsolati sztringre. Ez esetben az Azure CLI-ről lekért sztringet használja. Ez a sztring társítja a fizikai eszközt az IoT Edge-eszköz identitásához az Azure-ban. 
 
 Ebben a szakaszban az IoT Edge-futtatókörnyezet Linux-tárolókkal történő konfigurálásához talál útmutatást. Ha Windows-tárolókat kíván használni, tekintse meg az [Azure IoT Edge-futtatókörnyezet Windows rendszeren, Windows-tárolókhoz történő telepítését](how-to-install-iot-edge-windows-with-windows.md) ismertető cikket.
 
+Hajtsa végre a következő lépéseket a Windows rendszerű számítógépen vagy az IoT Edge-eszközként előkészített virtuális gépen. 
+
 ### <a name="download-and-install-the-iot-edge-service"></a>Az IoT Edge-szolgáltatás letöltése és telepítése
+
+Az IoT Edge-futtatókörnyezet letöltése és telepítése a PowerShell használatával történik. Az eszköz konfigurálásához az IoT Hubról lekért eszközkapcsolati sztringet használja. 
 
 1. IoT Edge-eszközén futtassa a PowerShellt rendszergazdaként.
 
-2. Töltse le az IoT Edge-szervizcsomagot.
+2. Töltse le és telepítse az IoT Edge-szolgáltatást az eszközre. 
 
    ```powershell
-   Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
-   Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
-   Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
-   rmdir C:\ProgramData\iotedge\iotedged-windows
-   $sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
-   $path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
-   Set-ItemProperty -Path $sysenv -Name Path -Value $path
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   Install-SecurityDaemon -Manual -ContainerOs Linux
    ```
 
-3. Telepítse a vcruntime környezetet.
-
-  ```powershell
-  Invoke-WebRequest -useb https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe -o vc_redist.exe
-  .\vc_redist.exe /quiet /norestart
-  ```
-
-4. Hozza létre és indítsa el az IoT Edge-szolgáltatást.
-
-   ```powershell
-   New-Service -Name "iotedge" -BinaryPathName "C:\ProgramData\iotedge\iotedged.exe -c C:\ProgramData\iotedge\config.yaml"
-   Start-Service iotedge
-   ```
-
-5. Adjon hozzá tűzfalkivételeket azokhoz a portokhoz, amelyeket az IoT Edge-szolgáltatás használ.
-
-   ```powershell
-   New-NetFirewallRule -DisplayName "iotedged allow inbound 15580,15581" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 15580-15581 -Program "C:\programdata\iotedge\iotedged.exe" -InterfaceType Any
-   ```
-
-6. Hozzon létre egy **iotedge.reg** nevű új fájlt, és nyissa meg egy szövegszerkesztőben. 
-
-7. Adja hozzá a következő tartalmat, és mentse a fájlt. 
-
-   ```input
-   Windows Registry Editor Version 5.00
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
-   "CustomSource"=dword:00000001
-   "EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
-   "TypesSupported"=dword:00000007
-   ```
-
-8. Keresse meg a fájlt a Fájlkezelőben, és kattintson rá duplán a módosítások a Windows-beállításjegyzékbe történő importálásához. 
-
-### <a name="configure-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet konfigurálása 
-
-Konfigurálja a futtatókörnyezetet az IoT Edge-eszköz kapcsolati sztringjével, amelyet az új eszköz regisztrálásakor másolt ki. Ezután konfigurálja a futtatókörnyezet hálózatát. 
-
-1. Nyissa meg az IoT Edge konfigurációs fájlját, amely itt található: `C:\ProgramData\iotedge\config.yaml`. A fájl védett, ezért a megnyitásához futtasson rendszergazdaként egy szövegszerkesztőt, például a Jegyzettömböt. 
-
-2. Keresse meg a fájl **provisioning** szakaszát, és frissítse a **device_connection_string** értékét arra a sztringre, amelyet az IoT Edge-eszköz részletes adatai közül kimásolt. 
-
-3. A rendszergazdai PowerShell-ablakban kérje le az IoT Edge-eszköz gazdanevét, és másolja ki a kapott eredményt. 
-
-   ```powershell
-   hostname
-   ```
-
-4. A konfigurációs fájlban keresse meg az **Edge-eszköz gazdanevét** tartalmazó szakaszt. Frissítse a **hostname** (gazdanév) értéket a PowerShellből kimásolt gazdanévre.
-
-3. A rendszergazdai PowerShell-ablakban kérje le az IoT Edge-eszköz IP-címét. 
-
-   ```powershell
-   ipconfig
-   ```
-
-4. Másolja az **IPv4-cím** értékét a kimenet **vEthernet (DockerNAT)** szakaszába. 
-
-5. Hozzon létre egy **IOTEDGE_HOST** nevű környezeti változót, és cserélje le az *\<ip_address\>* paraméter értékét az IoT Edge-eszköz IP-címére. 
-
-   ```powershell
-   [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
-   ```
-
-6. A `config.yaml` fájlban keresse meg a **Connect settings** (Kapcsolati beállítások) szakaszt. Frissítse a **management_uri** és a **workload_uri** paraméter értékét az IP-címre és az előző szakaszban megnyitott portokra. Cserélje le a **\<GATEWAY_ADDRESS\>** címet a kimásolt DockerNAT IP-címére. 
-
-   ```yaml
-   connect: 
-     management_uri: "http://<GATEWAY_ADDRESS>:15580"
-     workload_uri: "http://<GATEWAY_ADDRESS>:15581"
-   ```
-
-7. Keresse meg a **Listen settings** (Figyelési beállítások) szakaszt, és adja meg ugyanezeket az értékeket a **management_uri** és a **workload_uri** paraméter esetén. 
-
-   ```yaml
-   listen:
-     management_uri: "http://<GATEWAY_ADDRESS>:15580"
-     workload_uri: "http://<GATEWAY_ADDRESS>:15581"
-   ```
-
-8. Keresse meg a **Moby Container Runtime settings** (Moby-tároló futtatókörnyezeti beállításai) szakaszt, és győződjön meg róla, hogy a **network** (hálózat) nincs megjegyzéssel ellátva, és az értéke **azure-iot-edge**.
-
-   ```yaml
-   moby_runtime:
-     docker_uri: "npipe://./pipe/docker_engine"
-     network: "azure-iot-edge"
-   ```
-
-9. Mentse a konfigurációs fájlt. 
-
-10. A PowerShellben indítsa újra az IoT Edge-szolgáltatást.
-
-   ```powershell
-   Stop-Service iotedge -NoWait
-   sleep 5
-   Start-Service iotedge
-   ```
+3. Ha a rendszer a **DeviceConnectionString** megadására kéri, akkor illessze be az előző szakaszból átmásolt sztringet. A kapcsolati sztring elé és után ne írjon idézőjeleket. 
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Az IoT Edge-futtatókörnyezet állapotának megtekintése
 
@@ -259,6 +162,8 @@ Ellenőrizze, hogy a futtatókörnyezet megfelelően lett-e telepítve és konfi
 
    ![Egy modul megtekintése az eszközön](./media/quickstart/iotedge-list-1.png)
 
+Ezzel konfigurálta az IoT Edge-eszközt. Az eszköz készen áll a felhőben üzembe helyezett modulok futtatására. 
+
 ## <a name="deploy-a-module"></a>Modul üzembe helyezése
 
 Azure IoT Edge-eszközeit kezelheti a felhőből, és üzembe helyezhet egy olyan modult, amely telemetriaadatokat küld az IoT Hubra.
@@ -286,7 +191,7 @@ iotedge logs tempSensor -f
 
   ![A modulból származó adatok megtekintése](./media/quickstart/iotedge-logs.png)
 
-Az IoT Hub által fogadott üzeneteket az [IoT Hub Explorer eszközzel][lnk-iothub-explorer] vagy a [Visual Studio Code Azure IoT Toolkit bővítményével](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) is megtekintheti. 
+Az IoT Hub által fogadott üzeneteket a [Visual Studio Code Azure IoT Toolkit bővítményével](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) is megtekintheti. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -321,8 +226,8 @@ Ha el szeretné távolítani a telepítéseket az eszközéről, azt a következ
 Távolítsa el az IoT Edge-futtatókörnyezetet.
 
    ```powershell
-   cmd /c sc delete iotedge
-   rm -r c:\programdata\iotedge
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   Uninstall-SecurityDaemon
    ```
 
 Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tárolók leállnak, de továbbra is ott lesznek az eszközön. Tekintse meg az összes tárolót.
@@ -360,11 +265,8 @@ Továbbléphet bármely másik oktatóanyagra, és megtudhatja, hogyan alakítha
 
 <!-- Links -->
 [lnk-docker]: https://docs.docker.com/docker-for-windows/install/ 
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-account]: https://azure.microsoft.com/free
 [lnk-portal]: https://portal.azure.com
 [lnk-nested]: https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization
-[lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az_iot_hub_delete
+[lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-delete
 
-<!-- Anchor links -->
-[anchor-register]: #register-an-iot-edge-device

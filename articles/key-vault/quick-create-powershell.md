@@ -1,5 +1,5 @@
 ---
-title: Azure rövid útmutató – Kulcstartó létrehozása a Powershell használatával | Microsoft Docs
+title: Rövid Azure-útmutató – Titkos kulcs beállítása és lekérése a Key Vaultból a PowerShell használatával | Microsoft Docs
 description: ''
 services: key-vault
 author: barclayn
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 4acd8286cb8635f9a76815c936328a7c441e3115
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d4f512a9450422d819d0134f9f5d291db4ef9b20
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187148"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480063"
 ---
-# <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a PowerShell használatával
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból a PowerShell használatával
 
 Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. A Key Vaulttal kapcsolatos további információt az [Áttekintés](key-vault-overview.md) szakaszban talál. Ebben a rövid útmutatóban egy kulcstartót hoz létre a PowerShell használatával. Ezután titkos kulcsokat tárolhat az újonnan létrehozott tárolóban.
 
