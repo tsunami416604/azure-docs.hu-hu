@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: 798bf5f2b2a408798539c2e30076c2eca15c214a
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 603e7c3a0c30eb42cb75d6a6ff87a96d847b7c9f
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043761"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "40100665"
 ---
 Azure-beli virtuális gépek (VM) halad át, amely osztályozhatók állapotot *kiépítés* és *power* állapotok. Ez a cikk célja be ezeket az állapotokat, és kifejezetten kiemelés, ha az ügyfelek a számlázás például használat. 
 
@@ -44,13 +44,13 @@ Példány használati számlázás
 </td>
 <td>
 <p>Virtuális gép indítása folyamatban van.</p>
-<code>"statuses": [</br>
-   {</br>
-      "code": "PowerState/starting",</br>
-       "level": "Info",</br>
-        "displayStatus": "VM starting"</br>
-    }</br>
-    ]</code></br>
+<code>"statuses": [<br>
+   {<br>
+      "code": "PowerState/starting",<br>
+       "level": "Info",<br>
+        "displayStatus": "VM starting"<br>
+    }<br>
+    ]</code><br>
 </td>
 <td>
 <p><b>Nem számítunk fel díjat</b></p>
@@ -62,13 +62,13 @@ Példány használati számlázás
 </td>
 <td>
 <p>Virtuális gép normál működő állapotban</p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/running",</br>
- "level": "Info",</br>
- "displayStatus": "VM running"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/running",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM running"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>A számlázás</b></p>
@@ -80,13 +80,13 @@ Példány használati számlázás
 </td>
 <td>
 <p>Ez csak átmeneti állapot. Amikor elkészült, állapotúként jelenik meg **leállítva**.</p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/stopping",</br>
- "level": "Info",</br>
- "displayStatus": "VM stopping"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/stopping",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM stopping"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>A számlázás</b></p>
@@ -99,13 +99,13 @@ Példány használati számlázás
 <td>
 <p>A virtuális gép lett állítva a vendég operációs rendszeren belül lefelé a, vagy a kikapcsolt API-k használatával.</p>
 <p>Hardver még hozzá van rendelve a virtuális gép, és a gazdagép marad. </p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/stopped",</br>
- "level": "Info",</br>
- "displayStatus": "VM stopped"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/stopped",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM stopped"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>Nem számítunk fel díjat&#42;</b></p>
@@ -117,13 +117,13 @@ Példány használati számlázás
 </td>
 <td>
 <p>Átmeneti állapot. Amikor elkészült, a virtuális gép jelenik meg: **Deallocated**.</p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/deallocating",</br>
- "level": "Info",</br>
- "displayStatus": "VM deallocating"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/deallocating",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM deallocating"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>Nem számítunk fel díjat&#42;</b></p>
@@ -135,13 +135,13 @@ Példány használati számlázás
 </td>
 <td>
 <p>A virtuális gép sikeresen leállítva, és a eltávolítása a gazdagépről. </p>
-<code>"statuses": [</br>
- {</br>
- "code": "PowerState/deallocated",</br>
- "level": "Info",</br>
- "displayStatus": "VM deallocated"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "PowerState/deallocated",<br>
+ "level": "Info",<br>
+ "displayStatus": "VM deallocated"<br>
+ }<br>
+ ]</code><br>
 </td>
 <td>
 <p><b>Nem számítunk fel díjat</b></p>
@@ -186,12 +186,12 @@ A platform elfogadta a felhasználó által kezdeményezett művelet után az al
 <p><b>Létrehozás</b></p>
 </td>
 <td width="366">
-<code>"statuses": [</br>
- {</br>
- "code": "ProvisioningState/creating",</br>
- "level": "Info",</br>
- "displayStatus": "Creating"</br>
- }</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/creating",<br>
+ "level": "Info",<br>
+ "displayStatus": "Creating"<br>
+ }</code><br>
 </td>
 </tr>
 <tr>
@@ -199,13 +199,13 @@ A platform elfogadta a felhasználó által kezdeményezett művelet után az al
 <p><b>Frissítése</b></p>
 </td>
 <td width="366">
-<code>"statuses": [</br>
- {</br>
- "code": "ProvisioningState/updating",</br>
- "level": "Info",</br>
- "displayStatus": "Updating"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/updating",<br>
+ "level": "Info",<br>
+ "displayStatus": "Updating"<br>
+ }<br>
+ ]</code><br>
 </td>
 </tr>
 <tr>
@@ -213,13 +213,13 @@ A platform elfogadta a felhasználó által kezdeményezett művelet után az al
 <p><b>Törlése</b></p>
 </td>
 <td width="366">
-<code>"statuses": [</br>
- {</br>
- "code": "ProvisioningState/deleting",</br>
- "level": "Info",</br>
- "displayStatus": "Deleting"</br>
- }</br>
- ]</code></br>
+<code>"statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/deleting",<br>
+ "level": "Info",<br>
+ "displayStatus": "Deleting"<br>
+ }<br>
+ ]</code><br>
 </td>
 </tr>
 <tr>
@@ -229,21 +229,21 @@ A platform elfogadta a felhasználó által kezdeményezett művelet után az al
 <td width="366">
 <p>Ha egy virtuális gép létrehozása egy operációs rendszer lemezképe és nem a speciális rendszerképek, majd következő alállapottal figyelhető meg:</p>
 <p>1. <b>OSProvisioningInprogress</b> &ndash; a virtuális gép fut, és a vendég operációs rendszer telepítése folyamatban van. <p /> 
-<code> "statuses": [</br>
- {</br>
- "code": "ProvisioningState/creating/OSProvisioningInprogress",</br>
- "level": "Info",</br>
- "displayStatus": "OS Provisioning In progress"</br>
- }</br>
-]</code></br>
+<code> "statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
+ "level": "Info",<br>
+ "displayStatus": "OS Provisioning In progress"<br>
+ }<br>
+]</code><br>
 <p>2. <b>OSProvisioningComplete</b> &ndash; rövid ideig tartó állapota. A virtuális gép átkerül gyorsan **sikeres** , kivéve, ha bármely bővítményeket külön kell telepíteni. Bővítmények telepítése időt is igénybe vehet. <br />
-<code> "statuses": [</br>
- {</br>
- "code": "ProvisioningState/creating/OSProvisioningComplete",</br>
- "level": "Info",</br>
- "displayStatus": "OS Provisioning Complete"</br>
- }</br>
-]</code></br>
+<code> "statuses": [<br>
+ {<br>
+ "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
+ "level": "Info",<br>
+ "displayStatus": "OS Provisioning Complete"<br>
+ }<br>
+]</code><br>
 <p><b>Megjegyzés:</b>: operációs rendszer telepítése váltáshoz **sikertelen** Ha egy operációs rendszer hibája, vagy az operációs rendszer telepítése nem időben. Ügyfeleink az infrastruktúra a központilag telepített virtuális gép díját felszámítjuk.</p>
 </td>
 </tr>
@@ -255,14 +255,14 @@ A művelet végrehajtása után a virtuális gép fognak váltani a következő 
 - **Sikeres** – a felhasználó által kezdeményezett műveletek végrehajtása.
 
     ```
- "statuses": \[ 
+ "statuses": [ 
  {
      "code": "ProvisioningState/succeeded",
      "level": "Info",
      "displayStatus": "Provisioning succeeded",
      "time": "time"
  }
- \]
+ ]
     ```
 
  
@@ -278,6 +278,7 @@ A művelet végrehajtása után a virtuális gép fognak váltani a következő 
       "message": "Operation abandoned due to internal error. Please try again later.",
       "time": "time"
     }
+    ]
     ```
 
 
