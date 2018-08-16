@@ -11,17 +11,18 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: d18e6dd9464ef103157a8532215fa797ab282437
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cdf3edf5bfd8d13f71c25b8bf0bbf0ea3d992a5d
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38543854"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628154"
 ---
 # <a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása az Azure Cosmos DB használatával
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js – 2.0-s verzió (előzetes verzió)](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
 > * [Python](sql-api-python-application.md)
 > 
@@ -62,15 +63,21 @@ Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-pro
 1. Nyissa meg kedvenc terminálját, például a Node.js parancssort.
 2. Keresse meg azt a könyvtárat, amelyben tárolni szeretné az új alkalmazást.
 3. Az Express generátor használatával hozzon létre egy új alkalmazást **todo** (teendők) néven.
-   
-        express todo
+
+   ```bash
+   express todo
+   ```
 4. Nyissa meg az új **todo** könyvtárat, és telepítse a függőségeket.
-   
-        cd todo
-        npm install
+
+   ```bash
+    cd todo
+    npm install
+   ```
 5. Futtassa az új alkalmazást.
-   
-        npm start
+
+   ```bash
+   npm start
+   ```
 6. Az új alkalmazás megtekintéséhez navigáljon a böngészőben a következő címre: [http://localhost:3000](http://localhost:3000).
    
     ![A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
@@ -81,11 +88,15 @@ Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-pro
 A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmappájában létrejönnek. Ez a fájl tartalmazza a Node.js-alkalmazáshoz szükséges további modulok listáját. Később, amikor az Azure Websitesra telepíti az alkalmazást, a rendszer ennek a fájlnak a segítségével határozza meg, hogy melyik modulokat kell az Azure-ban telepíteni ahhoz, hogy működjön az alkalmazás. A jelen oktatóanyag befejezéséhez még két csomag telepítésére van szükség.
 
 1. A terminálban telepítse az **async** modult az npm segítségével.
-   
-        npm install async --save
+
+   ```bash
+   npm install async --save
+   ```
 2. Telepítse a **DocumentDB** modult az npm segítségével. Ez az a modul, amelyben az Azure Cosmos DB-vel kapcsolatos csodák történnek.
-   
-        npm install documentdb --save
+
+   ```bash
+   npm install documentdb --save
+   ```
 
 ## <a name="_Toc395783180"></a>4. lépés: Az Azure Cosmos DB szolgáltatás használata Node.js-alkalmazásokban
 Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni a kódírást az Azure Cosmos DB használatával.
@@ -377,7 +388,7 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
     var DocumentDBClient = require('documentdb').DocumentClient;
     var config = require('./config');
     var TaskList = require('./routes/tasklist');
-    var TaskModel = require('./models/taskModel');
+    var TaskModel = require('./models/task-model');
     ```
 3. Ez a kód fogja meghatározni a használni kívánt konfigurációs fájlt, és kiolvasni belőle az értékeket néhány változóhoz, amelyekre hamarosan szüksége lesz.
 4. Cserélje ki az **app.js** fájl alábbi két sorát:

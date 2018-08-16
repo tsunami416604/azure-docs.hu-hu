@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/12/2018
 ms.author: jroth
-ms.openlocfilehash: 2d38e5d7902e0db2342bce19ae2022a9433bfcfe
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 905caa7d0de514ae9fd13cb058b2b7826b8b6abf
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617734"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003671"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az az Azure Virtual Machines szolgáltatásban futó SQL Server? (Windows)
 
@@ -68,7 +68,7 @@ A következő táblázat a használatalapú fizetéssel elérhető SQL Server-re
 A Linux rendszerhez elérhető SQL Server-virtuálisgépek rendszerképeivel kapcsolatban lásd [az SQL Server használatának áttekintését az Azure Virtual Machines szolgáltatásban (Linux rendszeren)](../../linux/sql/sql-server-linux-virtual-machines-overview.md).
 
 ### <a id="BYOL"></a> Saját licenc használata
-Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül.  Saját licence használatával hosszú távon pénzt takaríthat meg a folyamatos éles számítási feladatok esetében. A lehetőség követelményeivel kapcsolatos információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
+Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül.  Saját licence használatával hosszú távon pénzt takaríthat meg a folyamatos éles számítási feladatok esetében. A lehetőség követelményeivel kapcsolatos információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
 
 | Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |

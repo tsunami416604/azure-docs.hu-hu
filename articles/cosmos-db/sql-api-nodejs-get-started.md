@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/14/2017
 ms.author: sngun
-ms.openlocfilehash: 6a98d3b477a3cb06c1454a79b77dffa685853a35
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8eba0f70141fe28a478e842523023a22c2db50fe
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38668124"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628749"
 ---
 # <a name="nodejs-tutorial-use-the-sql-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Node.js-oktatóanyag: Node.js-konzolalkalmazás létrehozása az Azure Cosmos DB-hez készült SQL API-val
 
@@ -26,6 +26,7 @@ ms.locfileid: "38668124"
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
 > * [Node.js MongoDB-hez](mongodb-samples.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.js – 2.0-s verzió (előzetes verzió)](sql-api-nodejs-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 
 

@@ -3,7 +3,7 @@ title: Az Azure Event Hubs Capture engedélyezése a portálon keresztül | Micr
 description: Engedélyezze az Event Hubs Capture funkciót az Azure Portal használatával.
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: 39fbdba404bda9383c9164dd1ecd9cb23bfb5cd7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: shvija
+ms.openlocfilehash: dbe140163c1cb852befb9347bbbaee819e922104
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "26855011"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004004"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Az Event Hubs Capture engedélyezése az Azure Portal használatával
 
@@ -31,7 +31,7 @@ További információk: [Az Event Hubs Capture áttekintése][capture-overview].
 
 ## <a name="capture-data-to-an-azure-storage-account"></a>Adatok rögzítése Azure Storage-fiókba  
 
-Eseményközpont létrehozásakor a **Be** gombra kattintva engedélyezheti a Capture-t az **Eseményközpont létrehozása** portál képernyőjén. Ezután a **Capture-szolgáltató** mező **Azure Storage** gombjára kattintva adhatja meg a Storage-fiókot és -tárolót. Mivel az Event Hubs Capture szolgáltatások közötti hitelesítést használ a tárolóval, nem kell megadnia egy tárfiók kapcsolati sztringjét. Az erőforrás-választó automatikusan kiválasztja az erőforrás URI-azonosítóját a tárfiókhoz. Az Azure Resource Manager használatakor explicit módon meg kell adnia ezt az URI-t karakterláncként.
+Eseményközpont létrehozásakor a **Be** gombra kattintva engedélyezheti a Capture-t az **Eseményközpont létrehozása** portál képernyőjén. Ezután a **Capture-szolgáltató** mező **Azure Storage** gombjára kattintva adhatja meg a Storage-fiókot és -tárolót. Mivel az Event Hubs Capture szolgáltatások közötti hitelesítést használ a tárolóval, nem kell megadnia egy tárfiók kapcsolati sztringjét. Az erőforrás-választó automatikusan kiválasztja az erőforrás URI-azonosítóját a tárfiókhoz. Az Azure Resource Manager használatakor explicit módon meg kell adnia ezt az URI-t sztringként.
 
 Az időkeret alapértelmezett értéke 5 perc. A minimális értéke 1, a maximális 15. A **Méret** ablak 10–500 MB tartománnyal rendelkezik.
 
@@ -71,7 +71,7 @@ A Capture-t olyan meglévő eseményközpontokon konfigurálhatja, amelyek az Ev
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az Event Hub Capture-ről: [Az Event Hubs Capture áttekintése][capture-overview].
 - Az Azure Resource Manager-sablonok használatával is konfigurálhatja az Event Hubs Capture-t. További információkért lásd: [Rögzítés funkció engedélyezése az Azure Resource Manager-sablonjának használatával](event-hubs-resource-manager-namespace-event-hub-enable-capture.md).

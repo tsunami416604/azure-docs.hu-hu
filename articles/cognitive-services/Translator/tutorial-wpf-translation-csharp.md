@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: nolachar
-ms.openlocfilehash: 5dc9478516f4e9850543a6ee129fef0f1d3ee4f7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 353c1d91b7925a84667ef1bb7c38ab87c6a89cc1
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214917"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716372"
 ---
 # <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>Oktatóanyag: Translator Textet használó WPF-alkalmazás írása C&#35 nyelven
 
@@ -666,9 +666,9 @@ Ezután továbbítsa a szöveget a `Translate` API számára egy POST-kérés t�
 Az `X-ClientTraceId` nevű HTTP-fejléc használata nem kötelező. Az értéknek egy GUID-nak kell lennie. Az ügyfél által biztosított nyomkövetési azonosító sokat segíthet a kérések nyomon követésében, ha valami nem a várt módon alakul. Ehhez rögzíteni kell az ügyfélben az X-ClientTraceID értékét. Az ügyfél nyomkövetési azonosítója és a kérések dátuma segíthet a Microsoft szakembereinek azonosítani a fellépő problémák okát.
 
 > [!NOTE]
-> Mivel az oktatóanyag elsősorban a Microsoft Translator szolgáltatással foglalkozik, ezért a `DetectLanguage()` és a `CorrectSpelling()` metódussal nem foglalkozik részletesen. A szövegelemzési és a Bing helyesírás-ellenőrzési szolgáltatások XML helyett JSON-válaszokat adnak, és a szövegelemzés esetében a kérésnek is JSON formátumúnak kell lennie. Az itt tárgyalt metódusok kódjai közötti legtöbb különbség ezen jellemzők következménye.
+> Mivel az oktatóanyag elsősorban a Microsoft Translator szolgáltatással foglalkozik, ezért a `DetectLanguage()` és a `CorrectSpelling()` metódussal nem foglalkozik részletesen.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Microsoft Translator Text API-referencia](http://docs.microsofttranslator.com/text-translate.html)
+> [Microsoft Translator Text API-referencia](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

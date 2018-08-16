@@ -5,18 +5,18 @@ ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
 ms.author: anshan
-manager: jhubbard
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc
 ms.date: 11/15/2017
-ms.openlocfilehash: 45eb469fdbd3603d1ebdcb558485ff0f93822f6b
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 6d1e5951ed8cdd9542463ffc57be81e55e4b9194
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293860"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629633"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Rövid útmutató: Ismerkedés az Azure Time Series Insightsszal
 Ez a rövid útmutató egy ingyenes bemutató környezetben ismerteti az Azure Time Series Insights Explorer használatának első lépéseit. Megtudhatja, hogyan jeleníthet meg nagy mennyiségű IoT-adatot a webböngészőjében, és megismerkedhet a Time Series Insights Explorer főbb jellemzőivel. 

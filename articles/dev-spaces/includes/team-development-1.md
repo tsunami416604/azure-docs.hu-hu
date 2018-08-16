@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: ab6fdbcd3d1a6a5e611809ccee2343fced05d1e0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0d3bdb6cc56b90d1975af73be1bb8cc1f73e1213
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39189216"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40129121"
 ---
 Eddig úgy futtatta alkalmazása kódját, mintha csak Ön dolgozna fejlesztőként az alkalmazáson. Ebben a szakaszban megismerheti, hogyan teszi zökkenőmentessé az Azure Dev Spaces a csapatban végzett fejlesztést:
 * Lehetővé teszi, hogy egy fejlesztőcsapat ugyanabban a környezetben dolgozhasson. Ez lehet egy megosztott Dev Spaces-tér, vagy igény szerint több különálló Dev Spaces-tér.

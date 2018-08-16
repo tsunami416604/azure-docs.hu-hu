@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/03/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 60f1b133bdd6acdb25717c2b98f81b57b751d505
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9dbd230e431b2bc3041cfc854c0161ce8d453870
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39720995"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40133171"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -38,7 +38,7 @@ ms.locfileid: "39720995"
 Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
-> A Microsoft a közelmúltban növelte az összes alapértelmezett korlátok a maximális korlátig való. Ha nincs **maximálisan** oszlop, akkor az erőforrás nem állítható korlátokkal rendelkeznek. Ha rendelkezik, ezek megnövelve korlátok a múltban támogatja, és nem látható frissített korlátait az alábbi, érdemes [nyisson meg egy online támogatási kérést díj nélkül](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+> A Microsoft a közelmúltban növelte az összes alapértelmezett korlátok a maximális korlátig való. Ha nincs **maximálisan** oszlop, akkor az erőforrás nem állítható korlátokkal rendelkeznek. Ha ezeket a korlátokat, támogatja a múltban nagyobb volt, és nem látható frissített korlátait az alábbi, [nyisson meg egy online támogatási kérést díj nélkül](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- |

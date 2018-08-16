@@ -3,19 +3,19 @@ title: Azure rövid útmutató – Eseménystreamek feldolgozása az Azure Porta
 description: Ezen rövid útmutató segítségével megismerheti, hogyan dolgozgatók fel az eseménystreamek az Azure Portal használatával.
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: da48294962dc5af5f9d623c84f9bbff1d49be03e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: 1938f7a8400587f8f0405cb576bfbdfe8bf1dddd
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132293"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004310"
 ---
 # <a name="quickstart-process-event-streams-using-the-azure-portal-and-net"></a>Rövid útmutató – Eseménystreamek feldolgozása az Azure Portal és a .NET használatával
 

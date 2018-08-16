@@ -2,7 +2,7 @@
 title: Azure rövid útmutató – eseménystreamek feldolgozása a PowerShell használatával | Microsoft Docs
 description: Ez a rövid útmutató azt ismerteti, hogyan küldhet és fogadhat Azure Event Hubs-eseményeket a PowerShell és egy .NET-mintaalkalmazás használatával.
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs
@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: 9216372038db7a6f97cfc8034f715b34de08d83c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: fd2b8b2e8bd075e029a07519ced186424798fd9c
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132298"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003610"
 ---
 # <a name="quickstart-process-event-streams-using-powershell-and-net-standard"></a>Rövid útmutató: Eseménystreamek feldolgozása a PowerShell és a .NET Standard használatával
 

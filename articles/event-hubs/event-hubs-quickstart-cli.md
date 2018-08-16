@@ -2,20 +2,20 @@
 title: Azure rövid útmutató – Eseménystreamek feldolgozása az Azure CLI használatával | Microsoft Docs
 description: Ezen rövid útmutató segítségével megismerheti, hogyan dolgozhatók fel az eseménystreamek az Azure CLI használatával.
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: 3e4689aa4ef5cdbd52aa2c70b8ba754013cab3db
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: shvija
+ms.openlocfilehash: 7a15b252727589194da90af729a74e1baad7094f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425952"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004565"
 ---
 # <a name="quickstart-process-event-streams-using-azure-cli-and-java"></a>Rövid útmutató: Eseménystreamek feldolgozása az Azure CLI és a Java használatával
 

@@ -1,50 +1,50 @@
-## <a name="automatic-device-management"></a>Automatikus Eszközkezelés
-Automatikus kezelés az Azure IoT Hub automatizálja az ismétlődő és az összetett feladatok nagy eszköz flották kezelését a teljes egészében a életciklusának keresztül. Automatikus felügyeleti (MDM) az eszközök tulajdonságaik alapján célozza, adja meg a kívánt konfiguráció, és lehetővé teszik az IoT-központ frissítése az eszközöket, amikor a hatókör származnak.  Áll [automatikus eszközkonfigurációk](/articles/iot-hub/iot-hub-auto-device-config.md) és [IoT peremhálózati automatikus telepítések](/articles/iot-edge/how-to-deploy-monitor.md).
+## <a name="automatic-device-management"></a>Automatikus eszközkezelés
+Az Azure IoT Hub automatikus kezelés automatizálja az ismétlődő és összetett feladatok nagy eszköz flották kezelésének azok életciklusának teljes keresztül. Automatikus felügyeleti (MDM) cél az eszközök a hozzájuk tartozó tulajdonságok alapján, a kívánt konfiguráció definiálása és frissítheti az eszközeit, amikor hatókör lépnek az IoT Hub segítségével.  Áll [automatikus eszközkonfigurációk](../articles/iot-hub/iot-hub-auto-device-config.md) és [automatikus IoT Edge-telepítések](../articles/iot-edge/how-to-deploy-monitor.md).
 
 ## <a name="iot-edge"></a>IoT Edge
-Az Azure IoT peremhálózati lehetővé teszi, hogy a felhő alapú telepítési Azure-szolgáltatások és a helyszíni eszközök Megoldásfüggő kódot. IoT peremeszközök képes összesíteni az adatokat más számítástechnikai végrehajtásához eszközök és az elemzés az adatok a felhőben való elküldése előtt. További információkért lásd: [Azure IoT peremhálózati](https://docs.microsoft.com/azure/iot-edge/).
+Az Azure IoT Edge lehetővé teszi, hogy a felhőalapú fejlesztésben és üzembe helyezése, Azure-szolgáltatások megoldásspecifikus kódját a helyi eszközökre. IoT Edge-eszközök összesítheti azokat a más számítástechnikai végrehajtásához eszközök és az analytics az adatokat a felhőbe való elküldése előtt. További információkért lásd: [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/).
 
-## <a name="iot-edge-agent"></a>Az IoT-Edge ügynök
-Az IoT peremhálózati runtime telepítését és megfigyelését modulok felelős részét.
+## <a name="iot-edge-agent"></a>IoT Edge-ügynök
+Az IoT Edge-futtatókörnyezet üzembe helyezése és figyelése a modulok felelős a része.
 
 ## <a name="iot-edge-device"></a>IoT Edge-eszköz
-Az IoT-peremeszközök az IoT peremhálózati runtime telepítve van és vannak megjelölve, mint a **IoT peremhálózati eszköz** az eszköz részleteit. Megtudhatja, hogyan [Azure IoT peremhálózati telepítése Linux a szimulált eszköz – előzetes](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
+IoT Edge-eszközökön az IoT Edge-modul telepítve van és vannak megjelölt **IoT Edge-eszköz** az eszköz részletei között. Ismerje meg, hogyan [üzembe helyezése az Azure IoT Edge a Linux szimulált eszközön – előzetes verzió](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
 
-## <a name="iot-edge-automatic-deployment"></a>Az IoT-Edge automatikus központi telepítési
-Az IoT-Edge automatikus központi telepítési konfigurálja az IoT peremeszközök futtatása az IoT-Edge modulok cél készlete. Minden központi telepítési folyamatosan biztosítja, hogy minden olyan eszköz, a cél feltételének futtatja a megadott adapterkészlet olyan modulok, még akkor is, ha új eszközök jönnek létre, vagy módosultak, hogy a célként megadott feltételnek megfelelő. Minden egyes IoT peremhálózati eszköz csak megkapja a legmagasabb prioritású központi telepítést akiknek cél állapota megfelel-e. További információ [IoT peremhálózati automatikus központi telepítési](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
+## <a name="iot-edge-automatic-deployment"></a>IoT Edge automatikus központi telepítési
+Az IoT Edge automatikus központi telepítési konfigurálja az IoT Edge-eszközök egy készletét az IoT Edge-modulok futtatásához cél készletét. Minden egyes üzembe helyezési folyamatosan biztosítható, hogy a célként megadott feltételnek megfelelő összes eszköz modulok megadott készlete futnak, még akkor is, ha új eszközök jönnek létre, vagy módosultak, hogy a célként megadott feltételnek megfelelő. Minden IoT Edge-eszköz csak fogadja a legmagasabb prioritású üzembe helyezés amelynek célfeltétel megfelel-e. Tudjon meg többet [IoT Edge automatikus központi telepítési](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
-## <a name="iot-edge-deployment-manifest"></a>Az IoT-Edge üzembe helyezési jegyzék
-Egy vagy több IoT peremhálózati eszköz modul twin(s) modulok készlete telepítendő másolni kívánt adatokat tartalmazó Json-dokumentum, útvonalak és társított modul szükséges tulajdonságai.
+## <a name="iot-edge-deployment-manifest"></a>IoT Edge-manifest nasazení
+Egy vagy több IoT Edge-eszközök általi modul twin(s) való üzembe helyezésének-modulok a másolni kívánt adatokat tartalmazó Json-dokumentumok, útvonalak és a kapcsolódó modul kívánt tulajdonságot.
 
-## <a name="iot-edge-gateway-device"></a>Az IoT-peremhálózati átjáró eszköz
-Az IoT-peremhálózati eszköz alárendelt eszközzel. Az alsóbb rétegbeli eszköz IoT peremhálózati vagy a nem a IoT peremhálózati eszköz lehet.
+## <a name="iot-edge-gateway-device"></a>IoT Edge-átjáróeszköz
+IoT Edge-eszköz az alsóbb rétegbeli eszközök. Lehet, hogy az alsóbb rétegbeli eszköz IoT Edge vagy a nem az IoT Edge-eszköz.
 
 ## <a name="iot-edge-hub"></a>IoT Edge hub
-A modul a modul-kommunikációhoz (felé az IoT-központ) felsőbb és alsóbb rétegbeli (elhagyja az IoT-központ) felelős IoT peremhálózati futásidejű részét kommunikáció. 
+A modul a modul-kommunikációhoz (felé az IoT Hub) felsőbb és alsóbb rétegbeli (erről az IoT Hub) felelős az IoT Edge-futtatókörnyezet részét kommunikáció. 
 
-## <a name="iot-edge-leaf-device"></a>Az IoT-peremhálózati levél eszköz
-Az IoT peremhálózati eszköz nincs az alárendelt eszközzel. 
+## <a name="iot-edge-leaf-device"></a>Levél IoT Edge-eszköz
+IoT Edge-eszköz nem alsóbb rétegbeli eszközzel. 
 
-## <a name="iot-edge-module"></a>Az IoT-Edge modul
-Az IoT-Edge modul egy Docker-tároló, amely központilag telepíthető a IoT peremeszközök. Egy adott feladat, például választásával dolgozhat fel egy eszközről egy üzenetet, egy üzenet átalakítása vagy üzenetet küld az IoT-központ hajtja végre. Egyéb modulok kommunikál, és az IoT-Edge futásidejű adatokat küld. [Követelmények és eszközök IoT peremhálózati modulok fejlesztési](https://docs.microsoft.com/azure/iot-edge/module-development).
+## <a name="iot-edge-module"></a>IoT Edge-modul
+Az IoT Edge-modul Docker-tároló, amely IoT Edge-eszközökre telepíti központilag is. Egy adott feladat, például egy üzenetet az eszközről tölt, egy üzenet átalakítása vagy egy üzenetet küld az IoT hub hajtja végre. Ez más modulokkal kommunikál, és adatokat küld az IoT Edge-futtatókörnyezet. [A követelmények és az eszközök IoT Edge-modulok megismerése](https://docs.microsoft.com/azure/iot-edge/module-development).
 
-## <a name="iot-edge-module-identity"></a>Az IoT-Edge modul identitás
-Az IoT-központ modul identitásjegyzékhez, és részletesen leírja a létezését és a biztonsági hitelesítő adatokat, amelyek egy modul egy peremhálózati központ vagy az IoT-központ szolgáltatással való hitelesítésre rekord.
+## <a name="iot-edge-module-identity"></a>IoT Edge-modul identitás
+Az IoT Hub modul eszközidentitás-jegyzékben lévő részletező létezését és a biztonsági hitelesítő adatok a modul által az edge hub vagy az IoT Hub-hitelesítésre használható egy rekord.
 
-## <a name="iot-edge-module-image"></a>Az IoT-Edge modul kép
-A docker lemezkép, amellyel az IoT-Edge-futtatókörnyezet modul példányok elindítását.
+## <a name="iot-edge-module-image"></a>IoT Edge-modul rendszerképének
+A docker-rendszerképet, amelyet az IoT Edge-futtatókörnyezet modul példányok elindítását.
 
-## <a name="iot-edge-module-twin"></a>Az IoT-Edge modul iker
-A Json-dokumentum őrzi meg az IoT Hub, amely tárolja az állapotadatokat, a modul példányához.
+## <a name="iot-edge-module-twin"></a>IoT Edge ikermodul
+Json-dokumentumok állandó az IoT hubban, amely tárolja az állapotadatokat, a modul példányhoz.
 
-## <a name="iot-edge-priority"></a>Az IoT-Edge prioritása
-Ha két IoT peremhálózati telepítés cél ugyanarra az eszközre, a központi telepítést, a nagyobb prioritású alkalmazva. Ha két központi telepítések a azonos prioritással rendelkezik, a központi telepítés létrehozása dátumnál későbbi alkalmazva. További információ [prioritás](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority).
+## <a name="iot-edge-priority"></a>IoT Edge prioritás
+Ha két IoT Edge üzembe ugyanarra az eszközre, az üzembe helyezés, magasabb prioritású alkalmazva lesz. Ha két üzembe helyezés azonos prioritású rendelkezik, az üzembe helyezés az újabb létrehozási dátummal együtt alkalmazva lesz. Tudjon meg többet [prioritású](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority).
 
 ## <a name="iot-edge-runtime"></a>IoT Edge-futtatókörnyezet
-Az IoT-Edge futásidejű tartalmaz mindent, ami Microsoft ellátó IoT peremhálózati eszköz kell telepíteni. Ez magában foglalja a peremhálózati ügynök Edge hub és az IoT-Edge biztonsági démon.
+IoT Edge-futtatókörnyezet tartalmaz mindent, ami egy IoT Edge-eszközön telepíteni kell a Microsoft osztja el. Az Edge agent, az Edge hub és az IoT Edge biztonsági démon tartalmazza.
 
-## <a name="iot-edge-set-modules-to-a-single-device"></a>IoT peremhálózati egyetlen eszközt modulok beállítása
-Másolja a tartalmat egy IoT peremhálózati jegyzékfájl egy eszközön művelet "modul iker. Az alapul szolgáló API egy általános "alkalmazni a konfiguráció", amely egyszerűen veszi az IoT-Edge jegyzékfájl bemenetként.
+## <a name="iot-edge-set-modules-to-a-single-device"></a>IoT Edge egy eszközre modulok beállítása
+Másolja át az egyik eszközről egy IoT Edge-jegyzékfájl a tartalmat egy műveletet ' ikermodul. A mögöttes API egy általános "konfiguráció alkalmazása", amely egyszerűen fogadja bemenetként egy IoT Edge-jegyzékfájlt.
 
-## <a name="iot-edge-target-condition"></a>Az IoT-Edge cél feltétel
-IoT Edge-telepítés, cél feltétele bármely logikai feltétel jelölje be például a központi telepítés, a Céleszközök eszköz twins címkékre **tag.environment = prod**. Cél feltétel folyamatosan értékelése követelményeknek megfelelő új eszköz vagy az eszközöket, amelyek többé nem távolíthatja el. További információ [céloz feltétel](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)
+## <a name="iot-edge-target-condition"></a>IoT Edge célfeltétel
+Célfeltétel IoT Edge-példányban, az eszközök ikerállapotának címkékre, például az üzembe helyezés céleszközeinek kiválasztásához bármely logikai feltétel **tag.environment éles =**. A célfeltétel a rendszer folyamatosan értékeli a követelményeknek megfelelő új eszközök, vagy távolítsa el az eszközöket, amelyek többé nem. Tudjon meg többet [feltétel cél](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)
