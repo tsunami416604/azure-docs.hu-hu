@@ -196,13 +196,13 @@ Az Azure Premium Storage szolgáltatás teljesítménye a virtuális gépek azon
 Ha Linux rendszerű a Premium Storage, ellenőrizze a nagy teljesítmény biztosítása érdekében szükséges illesztőprogramokkal kapcsolatos a legújabb frissítéseket.
 
 ## <a name="premium-storage-disk-sizes"></a>Prémium tárolási lemezméretek
-Az Azure Premium Storage jelenleg hét adatlemez-méretet biztosít. Minden lemezméret esetében a különböző méretezési IOPS-, sávszélesség-és tárolási. Válassza ki a jobb oldalon az alkalmazás követelményei és a nagy méretű virtuális gép méretétől függően a prémium szintű Storage-lemez mérete. Az alábbi táblázat a hét lemezt méretek és azok képességeinek. P4-és a P6 jelenleg csak a Managed Disks esetében támogatott.
+Az Azure Premium Storage jelenleg nyolc adatlemez-méretet biztosít. Minden lemezméret esetében a különböző méretezési IOPS-, sávszélesség-és tárolási. Válassza ki a jobb oldalon az alkalmazás követelményei és a nagy méretű virtuális gép méretétől függően a prémium szintű Storage-lemez mérete. Az alábbi táblázat a nyolc lemezek méretek és azok képességeinek. P4 P6 és p15-ös méretek jelenleg csak a Managed Disks esetében támogatott.
 
-| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Lemezméret           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| IOPS-érték lemezenként       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Adattovábbítás lemezenként | 25 MB / s  | 50 MB / s  | 100 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s | 
+| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Lemezméret           | 32 GB | 64 GB | 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| IOPS-érték lemezenként       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 
+| Adattovábbítás lemezenként | 25 MB / s  | 50 MB / s  | 100 MB / s |125 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s | 
 
 
 Hány lemezek határozza meg, hogy a lemez méretét a választott. Egyetlen P50 lemez vagy több P10 lemezt használhat az alkalmazás követelményeinek kielégítése érdekében. Amikor a választás az alább felsorolt fiókok és jogosultságok figyelembe.

@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8a7207328f49488b0df8f6e1e0ed86c6f965d32f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 533fa1a8491a701571011f407b338e04fb6a7e8b
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307437"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40183360"
 ---
-A B sorozatnak VM termékcsalád lehetővé teszi annak meghatározását, mely Virtuálisgép-méretet a megfelelő alap szint teljesítmény a munkaterhelés a lehetőséget nyújt a CPU-teljesítmény az Intel® Broadwell E5-2673 v4 legfeljebb 100 %-os kapacitásnövelés 2.3 GHz-es, vagy egy Intel® Haswell 2.4 GHz -es E5-2673 v3 processzor vCPU.
+A B sorozat Virtuálisgép-család lehetővé teszi, hogy válassza ki, melyik Virtuálisgép-méretet biztosít a számítási feladatok számára szükséges alapszinten teljesítményének a CPU-teljesítmény akár 100 %-a-Intel® Broadwell E5-2673 v4-eszközcsomag lehetővé teszi 2,3 GHz-es és a egy Intel® Haswell 2.4 GHz E5-2673 v3 processzor vCPU.
 
-A B sorozatú virtuális gépek ideálisak munkaterhelések esetén, amelyek nem kell a Processzor teljes teljesítményének folyamatosan, például a webkiszolgálók, a kis adatbázisok és a fejlesztési és tesztelési környezetben. Az ilyen terhelések általában burstable teljesítmény követelményekkel rendelkezik. A B sorozatnak lehetőséget nyújt a beszerzési egy Virtuálisgép-méretet, a teljesítmény alapértékeiről, és kevesebb, mint az eredeti használata esetén a kreditek elkészít a Virtuálisgép-példány. A virtuális gép jóváírás keletkezett, amikor a virtuális Gépet a alapmennyiséget meghaladóan használatát az akár 100 %-a a vCPU, ha az alkalmazás által igényelt nagyobb processzorteljesítmény is kapacitásnövelés.
+A B sorozatú virtuális gépek ideálisak a nagy számítási feladatokhoz, amelyek nem a teljes teljesítmény, a processzor folyamatos kell például a webkiszolgálók, kis méretű adatbázisokhoz, és a fejlesztési és tesztelési környezetek. Ezeket a feladatokat jellemzően rendelkeznek – adatlöket-kezelés teljesítményre vonatkozó követelmények. A B sorozat hogy is vásároljon a virtuális gép méretét, az alapszintű teljesítményt nyújtja, és a Virtuálisgép-példány épül fel kreditek, kevesebb, mint az alapterv használata esetén. A virtuális gép kredit keletkezett, amikor a a virtuális Géphez is megnövelheti arra 100 %-át megtakaríthatja a virtuális processzor használatát, amikor az alkalmazás magasabb CPU-teljesítményre van szükség az alapkonfiguráció fent.
 
-A B sorozatnak érkezik a következő hat Virtuálisgép-méretek:
+A B sorozat a következő hat VM-méret érhető el:
 
-| Méret          | vCPU meg | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Kiinduló virtuális gép CPU-teljesítmény | Maximális CPU telj VM | Banki kreditek / óra | Maximális banki kreditek |
+| Méret          | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Kiinduló virtuális gép CPU-teljesítmény | Virtuális gép maximális CPU Teljesítményoptimalizált | A kreditek banki / óra | Maximális banki kreditek |
 |---------------|--------|-------------|----------------|--------------------------------|---------------------------|-----------------------|--------------------|
 | Standard_B1s  | 1      | 1           | 4              | 10%                            | 100%                      | 6                     | 144                |
 | Standard_B1ms | 1      | 2           | 4              | 20%                            | 100%                      | 12                    | 288                |
@@ -35,32 +35,32 @@ A B sorozatnak érkezik a következő hat Virtuálisgép-méretek:
 
 ## <a name="q--a"></a>Kérdések és válaszok 
 
-### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>K: hogyan 135-ös % alapterv teljesítmény eléréséhez a virtuális gép alapján
-**A**: A 135-ös % 8 vCPU-a Virtuálisgép-méretet alkotó között meg van osztva. Például ha az alkalmazás által a dolgozik a köteges feldolgozás 8 magos, 4, és ezek 4 vCPU mindegyikének futnak, 30 %-os kihasználtsága a teljes rendszermemóriához viszonyítva VM CPU-teljesítmény 120 % volna egyenlő.  Ami azt jelenti, hogy a virtuális gép volna kell felépítése a 15 % különbözeti a alapteljesítményének a jóváírás időpontokat.  De azt is jelenti, hogy ha van elérhető, hogy ugyanazon VM használhatja minden 8 vCPU 100 %-os kreditek meg ezt a virtuális Gépet egy maximális CPU teljesítményt nyújtó 800 %.
+### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>K: hogyan 135-ös % alapkonfiguráció teljesítmény eléréséhez a virtuális gép
+**A**: 8 vCPU-a Virtuálisgép-méret alkotó között meg van osztva a 135-ös %. Például ha az alkalmazás használja a kötegelt feldolgozás dolgozik 8 magos, 4, és ezek 4 vCPU mindegyike 30 %-os kihasználtságot futtatását a virtuális gép CPU-teljesítmény teljes mennyisége 120 % lenne egyenlő.  Ami azt jelenti, hogy a virtuális gép lenne kell létrehozásához kredit idő a 15 %-os különbözeti alapkonfiguráció teljesítménye alapján.  De azt is jelenti, hogy mikor van, hogy ugyanazon a virtuális gép használhat-e minden 8 vCPU 100 %-ban rendelkezésre álló kreditek megadja a virtuális Gépeket egy 800 %-os maximális CPU-teljesítményre.
 
 
-### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>K: hogyan követheti nyomon a saját kreditegyenlege és felhasználási
-**A**: azt fogja bevezetése 2 új mérőszámok az elkövetkező hetektől a **jóváírás** metrika lehetővé teszi a virtuális gép rendelkezik banki hány kreditek megtekintése és a **ConsumedCredit** metrika megjelenik, hány Processzor a virtuális gép már felhasználta a Bank kreditek.    A metrikák panelről metrikákat megtekintheti a portálon vagy programozottan az Azure-figyelő API-k segítségével fogja.
+### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>K: hogyan figyelhetem a saját jóváírási használattal és egyenleggel
+**A**: azt fogja lesz bevezetve 2 új mérőszámok az elkövetkező hetektől a **Kredit** metrika lehetővé teszi, hogy hány kreditjeit a virtuális gép rendelkezik banki megtekintéséhez és a **ConsumedCredit** metrika megjelenik, hány CPU a virtuális gép a Bank rendelkezik felhasznált kreditek.    Fogja tudni megtekinteni ezeket a metrikákat, a metrikák panelről, a portálon vagy programozottan az Azure Monitor API-kon keresztül.
 
-A metrikai adatok elérésével az Azure-további információkért lásd: [áttekintése a Microsoft Azure-ban mérőszámok](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Az Azure-hoz a mérőszámadatokat elérésével további információkért lásd: [Microsoft Azure-ban mérőszámok áttekintése](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-### <a name="q-how-are-credits-accumulated"></a>K: hogyan kreditek összegzi a rendszer?
-**A**: A virtuális gépi felhalmozódása és felhasználási díjszabás vannak beállítva, úgy, hogy egy virtuális Gépet, pontosan az alapszintű teljesítmény szint fog rendelkezni, sem a nettó felhalmozódása, vagy a teljesítménynövelés érdekében kreditek fogyasztását.  A virtuális gép lesz a nettó növelését kreditek amikor fut-e az alapszintű teljesítmény szint alatt, és kreditek nettó csökkenése fog rendelkezni, amikor a virtuális gép van használ, több processzor-Hozzáférést, mint az alap teljesítményszint szükséges.
+### <a name="q-how-are-credits-accumulated"></a>K: hogyan tevődik össze kreditek?
+**A**: A virtuális gép felhalmozódása és a használatalapú díjszabás szerint vannak beállítva, hogy pontosan az alap teljesítményi szinten rendszerű virtuális gép fog rendelkezni, sem a nettó felhalmozódása, vagy az tartalékkapacitás kreditek felhasználását.  Virtuális gép lesz a nettó növekedés értékű kreditet kap, amikor az alapszintű teljesítmény szint alatt fut, és lesz a nettó csökkenését értékű kreditet kap, amikor a virtuális gép több a CPU, mint az alapszintű teljesítményszint okból rendszerbetöltést végrehajtani.
 
-**Példa**: a virtuális gépek B1ms méretét a kis munkaidő-nyilvántartási adatbázis-alkalmazás központi telepítésére. Ez a méret lehetővé teszi, hogy az alkalmazás saját / perc használata vagy a bank.2 kreditek alapterv legfeljebb 20 %-át egy vCPU használandó. 
+**Példa**:-alapú virtuális gép B1ms mérete kisebb munkaidő-nyilvántartási adatbázis alkalmazás telepíthető. Ez a méret legfeljebb 20 %-a vCPU-használhatja saját alapterv, amely.2 krediteket is használhatok perc vagy banki alkalmazás lehetővé teszi. 
 
-Az alkalmazás jelenleg elfoglalt elején és az alkalmazottak munka 7:00 – 9:00-kor és 4:00 – 18:00:00 között nap végén. Az órában más 20 nap, a saját alkalmazása általában a tétlen, csak a 10 %-át a vCPU. A nem csúcsidőre I / perc 0,2 kreditek nyerjen, de csak felhasználják 0.l kreditek / perc, így a virtuális gép lesz banki ikonra.1 x 60 = 6 kreditek óránként.  A csúcsidőn kívüli vagyok 20 órában I fog banki 120 kreditek.  
+Az alkalmazásom elején és végén saját alkalmazottak munka nap, 7:00 – 9:00-kor és 4:00 – 18:00:00 közötti elfoglalt. A többi 20 óra a nap, az alkalmazásom van alatt általában, tétlen, csak a 10 %-a virtuális processzor. A nem csúcsidőre I percenkénti 0,2 krediteket szerezhet, de csak felhasználják az 0.l kreditek száma percenként, így a virtuális gépem fog banki ikonra.1 x 60 = 6 kreditek / óra.  Csúcsidőszakon kívüli vagyok 20 óra e fog banki 120 krediteket.  
 
-Csúcsidőben alkalmazás 60 % vCPU kihasználtsági átlaga szerepel, percenként 0,2 kreditek továbbra is nyerjen, de I / perc 0,6 kreditek felhasználását, a nettó költségét.4 kreditek egy perc vagy.4 x 60 = 24 kreditek óránként. Napi használat, 4 óra van, 4 x 24 = 96 költséggel kreditek esetében a használati csúcsot.
+Alacsony kínálat csúcsidőben alkalmazásom átlagának kiszámítása 60 %-os vCPU-kihasználtság, percenként 0,2 kreditjeit még megszerzésére, de I / perc a 0.6-os kreditek felhasználását,.4 havonta felhasználható kreditek nettó költségek mellett egy percig vagy a.4 × 60 = 24-kreditet írunk jóvá / óra. A használati csúcsot naponta 4 órán keresztül van, 4 x 24 = 96 költségei kreditek a saját használati csúcsot.
 
-Ha a 120 jóváírásokat I csúcsidőn kívüli érvénybe és kivonás a 96 kreditek a saját csúcsidőszak használt I banki naponta, a más felszakadásáig tevékenység használható egy további 24 kreditek.
+Ha a 120 jóváírásokat I csúcsidőn kívüli igénybe vehet, és a saját időszakokban használtam 96 kreditek kivonása, e banki naponta más csúcsforgalomra tevékenység használható egy további 24-krediteket.
 
 
-### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>K: a B sorozatnak támogatja a prémium szintű Storage adatlemezek?
-**A**: Igen, támogatja a B sorozatnak különböző méretű a prémium szintű Storage adatok lemezeket.   
+### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>K: a B sorozat támogatja a Premium Storage az adatlemezeket?
+**A**: Igen, a B sorozatú méretek támogatják a Premium Storage az adatlemezeket.   
     
-### <a name="q-why-is-my-remaining-credit-are-set-to-0-after-a-redepoy-or-a-stopstart"></a>K: Miért a Fennmaradó jóváírás rendszer 0 értékre van állítva egy redepoy vagy leállítása vagy elindítása után?
-**A** : Ha egy virtuális gép "REDPLOYED", és a virtuális gép áthelyezése egy másik csomópontra, a halmozott jóváírás elvész. Ha a virtuális gép leállítása vagy indítása, de továbbra is ugyanazon a csomóponton, a virtuális gép megőrzi a halmozott jóváírás. A virtuális gép elindul egy csomóponton friss, amikor egy kezdeti jóváírás nyer, a Standard_B8ms 240 perc.
+### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>K: Mi a fennmaradó kredit 0 értékre van állítva egy ismételt üzembe helyezése vagy leállításához/elindításához után?
+**A** : Ha a virtuális gép "REDPLOYED" és a virtuális gép áthelyezése egy másik csomópontra, a halmozott jóváírás elvész. Ha a virtuális gép leállítása/elindítása, de továbbra is megtalálható ugyanazon a csomóponton, a virtuális gép megőrzi a halmozott kreditet. Minden alkalommal, amikor a virtuális gép elindul egy csomóponton friss, egy kezdeti kreditet kap, a Standard_B8ms 240 perc.
 
     
 

@@ -37,7 +37,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Üzembe helyezése az Azure Marketplace-ről Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2016-1?tab=Overview).
+- [Üzembe helyezése az Azure Marketplace-ről Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
 
 
 ## <a name="cloud-init"></a>Cloud-init

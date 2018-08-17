@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 9e78d534579a89f0fc97830616d7b5cd550253f7
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40177320"
+documentType: LandingData
+title: Az Azure AD feltételes hozzáférésének dokumentációja
+metadata:
+  document_id: 
+  title: Az Azure Active Directory feltételes hozzáférésének dokumentációja – oktatóanyagok, rövid útmutatók, alapfogalmak és referenciák | Microsoft Docs
+  description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja és tesztelheti az Azure Active Directory feltételes hozzáférését.
+  services: active-directory
+  ms.component: authentication
+  author: MarkusVi
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/14/2018
+  ms.author: markvi
+abstract:
+  description: Megismerheti, hogyan alakíthat ki egyensúlyt a biztonság és a termelékenység között az Azure AD feltételes hozzáférésének konfigurálásával. A feltételes hozzáférési szabályzatokkal figyelembe veheti a felhőalapú alkalmazások elérésének módját a hozzáféréssel kapcsolatos döntések meghozásakor. A hozzáférési döntésekben például figyelembe veheti a következő kérdéseket:<ul><li>Mi a felhasználó hálózati helye?</li><li>Felügyelt eszközről kezdeményezték a hozzáférési kísérletet?</li><li>Melyik ügyfélalkalmazásból kezdeményezték a kapcsolódási kísérletet?</li><li>Történt hozzáférési kísérlet kockázatos bejelentkezéssel?</li></ul>Az alábbi forrásanyagokkal gyorsan felkészülhet.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/video.png
+      width: 246
+    title: A feltételes hozzáférés ismertetése
+    href: https://www.youtube.com/watch?v=A7IrxAH87wc
+    width: 246
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan konfigurálhat feltételes hozzáférési szabályzatokat gyakori hozzáférési forgatókönyvekhez.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: MFA megkövetelése adott alkalmazásokhoz
+      href: app-based-mfa.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Hozzáférés letiltása munkameneti kockázat észlelésekor
+      href: app-sign-in-risk.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: A használati feltételek elfogadásának kötelezővé tétele
+      href: require-tou.md
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megismerheti, hogyan migrálhatók a klasszikus feltételes hozzáférési szabályzatok.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/conditional-access/policy-migration-mfa">Többtényezős hitelesítést megkövetelő klasszikus szabályzat migrálása</a>

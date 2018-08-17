@@ -1,0 +1,32 @@
+items:
+- name: A Project Acoustics dokumentációja
+- name: Áttekintés
+  items:
+  - name: Mi az a Project Acoustics?
+    href: what-is-acoustics.md
+- name: Gyors útmutatók
+  items:
+  - name: Első lépések
+    href: getting-started.md
+- name: Használati útmutatók
+  items:
+  - name: Azure Batch-fiók létrehozása
+    href: create-azure-account.md
+  - name: Bake Acoustics
+    href: bake-ui-walkthrough.md
+  - name: Design Acoustics
+    href: design-process.md
+- name: További források
+  items:
+  - name: Acoustics-mintajelenet
+    href: sample-walkthrough.md
+  - name: Gyakori kérdések
+    href: faq.md
+  - name: Ismert problémák
+    href: known-issues.md
+ms.openlocfilehash: 225d620cddfd68f3d5fb6d6d841c8f33254f1309
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "40181834"

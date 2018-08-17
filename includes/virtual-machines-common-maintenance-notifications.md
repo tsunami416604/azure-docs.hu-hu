@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 782c855ff6d28f2cd96a87893ebf74023472badc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: efedb2f48748264fb936fe82a1dbb3cf4403cc5e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38941075"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40167130"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>A portálon a karbantartásra ütemezett virtuális gépek megtekintése
 
@@ -38,6 +38,8 @@ Az Azure Portalon, és keresse meg a karbantartásra ütemezett virtuális gépe
       | Már frissítve | A virtuális gép már frissítve van, és jelenleg semmilyen további műveletet nem szükséges. | 
       | Újrapróbálkozás később. | A művelet nem sikerült az karbantartási kezdeményezett. Fogja tudni használni az önkiszolgáló karbantartás lehetősége egy későbbi időpontban. | 
       | Próbálkozás most | A korábban sikertelen önálló által kezdeményezett karbantartás újra. | 
+      | - | A virtuális gép nem szerepel egy tervezett karbantartási műveletek. |
+      
 
    **Karbantartás – önkiszolgáló ablak**: jeleníti meg az időtartomány, ha önálló elindítható a karbantartás a virtuális gépeken.
    
