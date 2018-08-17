@@ -1,251 +1,235 @@
 ---
-title: SQL-kiszolgáló áttelepítése az Azure SQL Database az Azure-adatbázis áttelepítési szolgáltatás segítségével |} Microsoft Docs
-description: Megismerheti, hogyan kell áttelepíteni a helyszíni SQL Server az Azure SQL Database az Azure-adatbázis áttelepítési szolgáltatás használatával.
+title: Az SQL Server migrálása az Azure SQL Database-be kapcsolat nélküli üzemmódban, az Azure Database Migration Service használatával | Microsoft Docs
+description: Ismerje meg, hogyan migrálhat a helyi SQL Serverről az Azure SQL Database-be kapcsolat nélküli üzemmódban az Azure Database Migration Service használatával.
 services: dms
 author: edmacauley
-ms.author: edmaca
+ms.author: jtoland
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: f64b2922818eddcab02f7d1c7b8f97671d92589e
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
-ms.translationtype: MT
+ms.date: 08/13/2018
+ms.openlocfilehash: 9f4ff8684576d90f1958a307d6ab876f0e2515fb
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850253"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "40099462"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-using-dms"></a>Azure SQL Database szolgáltatáshoz DMS SQL-kiszolgáló áttelepítése
-Az Azure-adatbázis áttelepítési szolgáltatás segítségével az adatbázisok át egy helyi SQL Server-példány, [Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/). Ebben az oktatóanyagban az áttelepítést a **Adventureworks2012** adatbázis egy helyszíni példányát az SQL Server 2016 (vagy újabb) visszaállítani egy Azure SQL Database az Azure-adatbázis áttelepítése szolgáltatás használatával.
+# <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>SQL Server migrálása felügyelt Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával
+Az Azure Database Migration Service használatával migrálhatja egy helyszíni SQL Server-példány adatbázisait az [Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/)-be. Ebben az oktatóanyagban az SQL Server 2016 (vagy újabb) helyi példányára visszaállított **Adventureworks2012** adatbázist migrálhatja egy Azure SQL Database-példányba az Azure Database Migration Service használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Az adatok áttelepítési Segéd segítségével mérje fel a helyi adatbázis.
-> * A minta segítségével az adatok áttelepítési Segéd áttelepítéséhez.
-> * Az Azure-adatbázis áttelepítési szolgáltatás egy példányának létrehozásakor.
-> * Áttelepítési projekt létrehozása az Azure-adatbázis áttelepítése szolgáltatás használatával.
-> * Az áttelepítéshez.
-> * Áttelepítésének figyelése.
-> * Áttelepítési jelentés letöltése.
+> * A helyszíni adatbázis felmérése a Data Migration Assistant szolgáltatás használatával.
+> * A mintaséma migrálása a Data Migration Assistant szolgáltatás használatával.
+> * Egy Azure Database Migration Service-példány létrehozása.
+> * Migrálási projekt létrehozása az Azure Database Migration Service használatával.
+> * A migrálás futtatása.
+> * A migrálás monitorozása.
+> * Migrálási jelentés letöltése.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag elvégzéséhez kell:
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-- Töltse le és telepítse [SQL Server 2016 vagy újabb](https://www.microsoft.com/sql-server/sql-server-downloads) (minden kiadás).
-- Engedélyezze a TCP/IP protokollt, amely le van tiltva alapértelmezés szerint az SQL Server Express telepítése során az a cikk utasításait követve [engedélyezheti vagy tilthatja le a hálózati protokoll](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
-- Az Azure SQL Database-példányt, amely a következő cikkben található részletes úgy teheti meg egy példányának létrehozása [Azure SQL-adatbázis létrehozása az Azure portálon](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
-- Töltse le és telepítse a [adatok áttelepítési Segéd](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 vagy újabb.
-- Az Azure Resource Manager telepítési modell, amely webhelyek kapcsolatot biztosít annak a helyszíni adatforrás-kiszolgálók használatával vagy használatával hozhat létre egy VNETET az Azure-adatbázis áttelepítése szolgáltatás [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-- Győződjön meg arról, hogy az Azure virtuális hálózatot (VNET) hálózati biztonsági csoport szabályok tegye letiltása a következő kommunikációs portok 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG forgalomszűrést végez, olvassa el a [hálózati forgalmat hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
-- Konfigurálja a [Windows tűzfalat a hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-- Nyissa meg a Windows tűzfalat ahhoz, hogy az Azure adatbázis áttelepítése az SQL-kiszolgálón, amely alapértelmezés szerint 1433-as TCP-port forrás eléréséhez.
-- Ha több elnevezett SQL Server-példány dinamikus portok használatával futtatja, előfordulhat, hogy kívánja az SQL Browser szolgáltatás engedélyezése és 1434 UDP-portot a tűzfalon keresztüli hozzáférés engedélyezése, hogy az Azure-adatbázis áttelepítési szolgáltatás csatlakozhat a forrás nevesített példány a kiszolgáló.
-- Egy tűzfal készülék elé a forrás-adatbázis használata esetén szükség lehet ahhoz, hogy az Azure adatbázis áttelepítése az áttelepítés forrás adatbázis(ok) eléréséhez Tűzfalszabályok hozzáadása.
-- Hozzon létre egy kiszolgálószintű [tűzfalszabály](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) az Azure SQL Database-kiszolgáló eléréséhez az Azure-adatbázis áttelepítése szolgáltatás a céladatbázisokhoz. Adja meg a virtuális hálózat az Azure-adatbázis áttelepítése szolgáltatáshoz használt alhálózati tartományán.
-- Győződjön meg arról, hogy rendelkezik-e az adatforrás SQL Server-példányhoz való csatlakozásnál használt hitelesítő adatok [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedélyek.
-- Győződjön meg arról, hogy rendelkezik-e a cél Azure SQL Database-példányt való kapcsolódáshoz használt hitelesítő adatok FELADATVEZÉRLŐ ADATBÁZISHOZ engedéllyel a cél Azure SQL-adatbázisok.
+- Töltse le és telepítse az [SQL Server 2016-os vagy újabb verzióját](https://www.microsoft.com/sql-server/sql-server-downloads) (bármely kiadást).
+- Engedélyezze a TCP/IP protokollt, amely az SQL Server Express telepítése során alapértelmezés szerint le van tiltva – kövesse a [Kiszolgálói hálózati protokoll engedélyezése vagy letiltása](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure) cikk utasításait.
+- Hozzon létre egy Azure SQL Database-példányt az [Azure SQL Database létrehozása az Azure Portalon](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) cikk lépéseit követve.
+- Töltse le a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) 3.3-as vagy újabb verzióját.
+- Hozzon létre egy virtuális hálózatot az Azure Database Migration Service-hez az Azure Resource Manager-alapú üzemi modell használatával, amely a hálózat helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóknak [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) használatával.
+- Győződjön meg arról, hogy az Azure Virtual Network (VNET) hálózati biztonsági szabályok nem blokkolják a következő kommunikációs portokat: 443, 53, 9354, 445, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+- Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse az SQL-kiszolgáló forrását, amely alapértelmezés szerint az 1433-as TCP-port.
+- Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
+- Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
+- Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure), hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg az Azure Database Migration Service-hez használt virtuális hálózat alhálózati tartományát.
+- Gondoskodjon róla, hogy a forrásként szolgáló SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedélyekkel.
+- Gondoskodjon róla, hogy a forrásként szolgáló Azure SQL Database-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek CONTROL DATABASE engedéllyel a célként szolgáló Azure SQL adatbázisokban.
 
-## <a name="assess-your-on-premises-database"></a>A helyi adatbázis felmérése
-Mielőtt telepítene át adatokat a helyszíni SQL Server-példány az Azure SQL Database, ki kell értékelnie az SQL Server-adatbázis az olyan problémák elhárítását, amelyek megakadályozhatják az áttelepítés. Az adatok áttelepítési Segéd v3.3 használatával, vagy később, kövesse a cikkben ismertetett [hajt végre egy SQL-kiszolgáló áttelepítési assessment](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) végrehajtásához a helyi adatbázis-értékelés. A szükséges lépések összefoglalása a következőképpen:
-1.  Az adatok áttelepítési segédjében, válassza ki az új (+) ikonra, majd a **Assessment** projekttípus.
-2.  Adja meg a projekt nevét a **server adatforrástípust** szövegmezőben, jelölje be **SQL Server**, a a **server Céltípust** szövegmezőben, jelölje be **Azure SQL Database**, majd válassza ki **létrehozása** a projekt létrehozásához.
+## <a name="assess-your-on-premises-database"></a>A helyszíni adatbázis felmérése
+Mielőtt migrálhatná az adatokat egy helyszíni SQL Server-példányból az Azure SQL Database szolgáltatásba, fel kell mérnie az SQL Server-adatbázist, és ellenőriznie, hogy fennáll-e bármilyen blokkolási probléma, amely akadályozná a migrálást. A Data Migration Assistant 3.3-as vagy újabb verzióját használva kövesse az [SQL Server migrálási felmérés végzése](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) cikkben leírt lépéseket, és végezze el a helyszíni adatbázis felmérését. A szükséges lépések összefoglalva a következők:
+1.  A Data Migration Assistant eszközben válassza az Új (+) ikont, majd a **Felmérés** projekttípust.
+2.  Nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza az **SQL Servert**, a **Célkiszolgáló típusa** szövegbeviteli mezőben pedig az **Azure SQL Database** lehetőséget. Ezután a **Létrehozás** lehetőséggel hozza létre a projektet.
 
-    A forrás SQL Server-adatbázis áttelepítése az Azure SQL Database értékelésekor beállíthatja a következő értékelési jelentés típusok közül:
+    Amikor a forrás SQL Server-adatbázis Azure SQL Database-be való migrálásának felmérését végzi, a következő két jelentéstípus közül választhat:
     - Adatbázis-kompatibilitás ellenőrzése
-    - Funkcióparitás ellenőrzése
+    - Szolgáltatásparitás ellenőrzése
 
-    Mindkét jelentéstípusra alapértelmezés szerint ki van jelölve.
+    Alapértelmezés szerint mindkét jelentéstípus ki van választva.
 
-3.  Az adatok áttelepítési segédjében a a **beállítások** képernyőn válassza ki **következő**.
-4.  Az a **válassza ki az adatforrások** képernyő a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a kapcsolat adatait az SQL-kiszolgálóhoz, és válassza **Connect**.
-5.  A a **források hozzáadását** párbeszédpanelen jelölje ki **AdventureWorks2012**, jelölje be **hozzáadása**, majd válassza ki **Start Assessment**.
+3.  A Data Migration Assistant programon belül a **Beállítások** ablakban válassza a **Tovább** lehetőséget.
+4.  A **Források kiválasztása** képernyőn, a **Kapcsolódás kiszolgálóhoz** párbeszédablakban adja meg az SQL-kiszolgálója adatait, majd válassza a **Csatlakozás** lehetőséget.
+5.  A **Források hozzáadása** párbeszédablakban válassza az **AdventureWorks2012** elemet, majd a **Hozzáadás**, végül a **Felmérés indítása** lehetőséget.
 
-    Ha az értékelés befejeződött, az eredményekben az alábbi ábrán látható módon:
+    A felmérés befejeztével az eredmények a következőképpen jelennek meg:
 
-    ![Adatok áttelepítése felmérése](media\tutorial-sql-server-to-azure-sql\dma-assessments.png)
+    ![Adatmigrálás felmérése](media\tutorial-sql-server-to-azure-sql\dma-assessments.png)
 
-    Azure SQL Database, a az értékelések határozza meg a szolgáltatás paritásos problémákat és áttelepítési problémák elhárítását.
+    Az Azure SQL Database-ben a felmérések szolgáltatásparitási problémákat és a migrálást akadályozó problémákat azonosítanak.
 
-    - A **SQL Server szolgáltatásparitást** kategória ajánlások, Azure-ban érhető el alternatív módszerek széles választékát nyújtja, és orvoslása lépések történő áttelepítés projektjeikbe részéről az erőfeszítés tervezéséhez nyújtanak segítséget.
-    - A **kompatibilitási problémák** azonosító részben támogatott vagy nem támogatott funkciókat, hogy tükrözze a kompatibilitási problémák, amelyek blokkolhatják a áttelepítése a helyszíni SQL Server adatbázis (oka) Azure SQL Database. Javaslatok segítségével hárítsa el ezeket a problémákat is biztosítja.
+    - Az **SQL Server szolgáltatásparitás** kategória átfogó javaslatokat ad, az Azure-ban elérhető alternatív megközelítéseket javasol, valamint kockázatcsökkentő lépéseket ajánl fel a migrálási projektek megtervezéséhez.
+    - A **Kompatibilitási problémák** kategória azonosítja a csak részben támogatott vagy nem támogatott funkciókat, amelyek olyan kompatibilitási problémákat okozhatnak, amelyek akadályozhatják az SQL Server-adatbázis(ok) migrálását az Azure SQL Database szolgáltatásba. A felmerülő problémák megoldására a program javaslatokat is tesz.
 
-6.  Tekintse át az értékelési eredmények áttelepítési problémák elhárítását, és a szolgáltatás paritásos problémák az adott beállítások bejelölésével.
+6.  Tekintse át a felmérés eredményeit, és az egyes lehetőségek kiválasztásával ellenőrizze, fennáll-e bármilyen akadályozó, illetve paritási probléma.
 
-## <a name="migrate-the-sample-schema"></a>A minta áttelepítéséhez
-Miután részeként irányul, és meggyőződött arról, hogy a kijelölt adatbázis áttelepítése az Azure SQL Database életképes jelöltségét ellenőrző, használja az adatok áttelepítési Segéd áttelepítéséhez a séma az Azure SQL Database.
+## <a name="migrate-the-sample-schema"></a>A mintaséma migrálása
+Ha elégedett a felmérés eredményeivel, és meggyőződött arról, hogy a kiválasztott adatbázis megfelel az Azure SQL Database-be való migráláshoz, a Data Migration Assistant használatával migrálja a sémát az Azure SQL Database-be.
 
 > [!NOTE]
-> Az adatok áttelepítési Segéd hoz létre az áttelepítési projektet, előtt mindenképpen, hogy már ellátta Azure SQL-adatbázis az Előfeltételek említetteknek megfelelően. Ez az oktatóanyag céljából, az Azure SQL-adatbázis neve adottnak **AdventureWorksAzure**, de megadhatja a kívánt nevet.
+> Mielőtt létrehoz egy migrálási projektet a Data Migration Assistant programban, győződjön meg arról, hogy az előkövetelményekben említettek alapján már létrehozott egy Azure SQL-adatbázist. Ebben az oktatóanyagban az Azure SQL Database neve **AdventureWorksAzure**, de megadhat bármilyen másik nevet is.
 
-Áttelepíteni a **AdventureWorks2012** séma az Azure SQL Database, a következő lépésekkel:
+Az **AdventureWorks2012** séma Azure SQL Database-be való migrálásához végezze el a következő lépéseket:
 
-1.  Az adatok áttelepítési Segéd, válassza ki az új (+) ikonra, majd a **projekttípus**, jelölje be **áttelepítési**.
-2.  Adja meg a projekt nevét a **server adatforrástípust** szövegmezőben, jelölje be **SQL Server**, majd a a **server Céltípust** szövegmezőben, jelölje be **Azure SQL Adatbázis**.
-3.  A **áttelepítési hatókör**, jelölje be **séma csak**.
+1.  A Data Migration Assistant programban válassza az Új (+) ikont, majd a **Projekt típusa** alatt válassza a **Migrálás** lehetőséget.
+2.  Nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza az **SQL Server** elemet, a **Célkiszolgáló típusa** szövegbeviteli mezőben pedig az **Azure SQL Database** lehetőséget.
+3.  A **Migrálási hatókör** alatt válassza a **Csak a séma** lehetőséget.
 
-    Az előző lépések elvégzése után az adatok áttelepítési Segéd felület megjelenjen-e az alábbi ábrán látható módon:
+    A fent leírt lépések elvégzése után megjelenik a Data Migration Assistant felhasználói felülete, ahogy az a következő képen látható:
     
-    ![Adatok áttelepítése Segéd projekt létrehozása](media\tutorial-sql-server-to-azure-sql\dma-create-project.png)
+    ![Data Migration Assistant-projekt létrehozása](media\tutorial-sql-server-to-azure-sql\dma-create-project.png)
 
-4.  Válassza ki **létrehozása** a projekt létrehozásához.
-5.  Az adatok áttelepítési Segéd, adja meg az adatforrás kapcsolódási adatait az SQL Server, válassza ki a **Connect**, majd válassza ki a **AdventureWorks2012** adatbázis.
+4.  A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
+5.  A Data Migration Assistant programban, adja meg az SQL Server forráskapcsolati adatait, válassza a **Csatlakozás** lehetőséget, majd válassza ki az **AdventureWorks2012** adatbázist.
 
-    ![Adatok áttelepítése Segéd adatforrás kapcsolódási adatait.](media\tutorial-sql-server-to-azure-sql\dma-source-connect.png)
+    ![Data Migration Assistant forráskapcsolati adatok](media\tutorial-sql-server-to-azure-sql\dma-source-connect.png)
 
-6.  Válassza ki **tovább**a **kapcsolódás a célkiszolgáló**, adja meg a célként megadott kapcsolódási adatait az Azure SQL-adatbázis, válassza ki **Connect**, majd válassza ki a **AdventureWorksAzure** kellett előzetes kiosztása az Azure SQL database adatbázishoz.
+6.  Válassza a **Tovább**, lehetőséget. A **Csatlakozás célkiszolgálóhoz** területen alatt adja meg az Azure SQL Database célkapcsolati adatait, válassza a **Csatlakozás** lehetőséget, majd válassza ki azt az **AdventureWorksAzure** adatbázist, amelyek az Azure SQL Database-ben előzetesen kiépített.
 
-    ![Adatok áttelepítése Segéd cél kapcsolódási adatait.](media\tutorial-sql-server-to-azure-sql\dma-target-connect.png)
+    ![Data Migration Assistant célkapcsolati adatok](media\tutorial-sql-server-to-azure-sql\dma-target-connect.png)
 
-7.  Válassza ki **következő** ahhoz, hogy értékről a **objektumok kijelölése** képernyő, amelyen megadhatja az adatbázisséma objektumaiban a a **AdventureWorks2012** adatbázis, amely kell üzembe helyezni az Azure-bA SQL-adatbázis.
+7.  A **Tovább** lehetőséggel lépjen tovább az **Objektumok kiválasztása** képernyőre, ahol megadhatja azokat a sémaobjektumokat az **AdventureWorks2012** adatbázisban, amelyeket üzembe kell helyezni az Azure SQL Database-ben.
 
-    Alapértelmezés szerint minden objektum ki lesz választva.
+    Alapértelmezés szerint az összes objektum ki van jelölve.
 
-    ![SQL-parancsfájlok létrehozása](media\tutorial-sql-server-to-azure-sql\dma-assessment-source.png)
+    ![SQL-szkriptek létrehozása](media\tutorial-sql-server-to-azure-sql\dma-assessment-source.png)
 
-8.  Válassza ki **létrehozni SQL-parancsfájl** az SQL-parancsfájlok létrehozásához, és tekintse át a hibákat a parancsfájlokat.
+8.  Az **SQL-szkript létrehozása** lehetőséggel hozza létre az SQL-szkripteket, majd tekintse át azokat, hogy észrevehesse az esetleges hibákat.
 
-    ![Séma parancsfájl](media\tutorial-sql-server-to-azure-sql\dma-schema-script.png)
+    ![Sémaszkript](media\tutorial-sql-server-to-azure-sql\dma-schema-script.png)
 
-9.  Válassza ki **telepítés séma** a séma telepítéséhez az Azure SQL Database és a séma telepítése után ellenőrizze a célkiszolgálón a bármely rendellenességeket.
+9.  Válassza a **Séma üzembe helyezése** lehetőséget a séma üzembe helyezéséhez az Azure SQL Database-ben. Az üzembe helyezés után ellenőrizze a célt az esetleges hibákért.
 
-    ![Séma telepítése](media\tutorial-sql-server-to-azure-sql\dma-schema-deploy.png)
+    ![Séma üzembe helyezése](media\tutorial-sql-server-to-azure-sql\dma-schema-deploy.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
-1. Jelentkezzen be az Azure-portálon válassza **minden szolgáltatás**, majd válassza ki **előfizetések**.
+1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás** **Előfizetések** elemét.
  
-   ![Portál előfizetések megjelenítése](media\tutorial-sql-server-to-azure-sql\portal-select-subscription1.png)
+   ![Portál-előfizetések megtekintése](media\tutorial-sql-server-to-azure-sql\portal-select-subscription1.png)
        
 2. Válassza ki azt az előfizetést, amelyen az Azure Database Migration Service példányát létre szeretné hozni, majd válassza az **Erőforrás-szolgáltatók** elemet.
  
-    ![erőforrás-szolgáltatók megjelenítése](media\tutorial-sql-server-to-azure-sql\portal-select-resource-provider.png)
+    ![Erőforrás-szolgáltatók megtekintése](media\tutorial-sql-server-to-azure-sql\portal-select-resource-provider.png)
     
-3.  Keresés az áttelepítéshez, majd a jobbra **Microsoft.DataMigration**, jelölje be **regisztrálása**.
+3.  Keressen a „migration” kifejezésre, majd a **Microsoft.DataMigration** jobb oldalán válassza a **Regisztrálás** elemet.
  
     ![Erőforrás-szolgáltató regisztrálása](media\tutorial-sql-server-to-azure-sql\portal-register-resource-provider.png)    
 
-## <a name="create-an-instance"></a>Hozzon létre egy példányt
-1.  Válassza ki az Azure-portálon + **hozzon létre egy erőforrást**, keresse meg az Azure-adatbázis áttelepítése szolgáltatás, és válassza **Azure adatbázis áttelepítési szolgáltatás** a legördülő listából.
+## <a name="create-an-instance"></a>Példány létrehozása
+1.  Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service**-t.
 
     ![Azure Piactér](media\tutorial-sql-server-to-azure-sql\portal-marketplace.png)
 
-2.  Az a **Azure adatbázis áttelepítési szolgáltatás** képernyőn válassza ki **létrehozása**.
+2.  Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
  
-    ![Azure adatbázis áttelepítési szolgáltatáspéldány létrehozása](media\tutorial-sql-server-to-azure-sql\dms-create1.png)
+    ![Azure Database Migration Service-példány létrehozása](media\tutorial-sql-server-to-azure-sql\dms-create1.png)
   
-3.  Az a **hozzon létre áttelepítési szolgáltatás** képernyőn, adja meg a szolgáltatás, az előfizetés és egy új vagy meglévő erőforráscsoport nevét.
+3.  **A migrálási szolgáltatás létrehozása** képernyőn adja meg a szolgáltatás, az előfizetés és egy új vagy meglévő erőforráscsoport nevét.
 
-4. Válasszon ki egy meglévő virtuális hálózatot (VNET), vagy hozzon létre egy újat.
+4. Válassza ki azt a helyet, amelyen az Azure Database Migration Service példányát létre szeretné hozni. 
 
-    A virtuális hálózat biztosít a forrás SQL Server elérésére az Azure-adatbázis áttelepítése szolgáltatás és a cél Azure SQL Database-példányt.
+5. Válasszon ki egy meglévő virtuális hálózatot (VNET), vagy hozzon létre egy újat.
 
-    Egy VNETET az Azure portálon létrehozásával kapcsolatos további információkért lásd: a cikk [hozzon létre egy virtuális hálózatot az Azure portál használatával](https://aka.ms/DMSVnet).
+    A VNET biztosítja az Azure Database Migration Service számára a forrásként szolgáló SQL Serverhez és az Azure SQL Database-célpéldányhoz való hozzáférést.
 
-5. Válasszon tarifacsomagot.
+    További információk a virtuális hálózatok létrehozásáról az Azure Portallal: [Virtuális hálózat létrehozása az Azure Portallal](https://aka.ms/DMSVnet).
 
-    A költségeket és a tarifacsomagok további információkért lásd: a [árképzést ismertető oldalra](https://aka.ms/dms-pricing).
+6. Válasszon tarifacsomagot.
 
-    Ha segítségre van szüksége a megfelelő Azure adatbázis áttelepítési szolgáltatási rétegben kiválasztása van szüksége, tekintse meg a javaslatok, az a könyvelési [Itt](https://go.microsoft.com/fwlink/?linkid=861067).  
+    További tájékoztatás a költségekről és a tarifacsomagokról a [díjszabási lapon](https://aka.ms/dms-pricing) olvasható.
 
-     ![Azure adatbázis áttelepítési példány beállításainak megadása](media\tutorial-sql-server-to-azure-sql\dms-settings1.png)
+    Ha segítségre van szüksége a megfelelő szintű Azure Database Migration Service kiválasztásában, tekintse meg az [itt](https://go.microsoft.com/fwlink/?linkid=861067) közzétett javaslatokat.  
 
-6.  Válassza ki **létrehozása** létrehozni a szolgáltatást.
+     ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media\tutorial-sql-server-to-azure-sql\dms-settings2.png)
 
-## <a name="create-a-migration-project"></a>Áttelepítési-projekt létrehozása
-A szolgáltatás létrehozása után keresse meg azt az Azure portálon, nyissa meg, és ezután hozzon létre egy új áttelepítési projektet.
+7.  A szolgáltatás létrehozásához válassza a **Létrehozás** lehetőséget.
 
-1. Válassza ki az Azure-portálon **minden szolgáltatás**, keresse meg az Azure-adatbázis áttelepítése szolgáltatás, és válassza **Azure adatbázis áttelepítési szolgáltatások**.
+## <a name="create-a-migration-project"></a>Migrálási projekt létrehozása
+A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa meg, és hozzon létre egy új migrálási projektet.
+
+1. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, keresse meg az Azure Database Migration Service-t, majd válassza ki az **Azure Database Migration Servicest**.
  
-      ![Keresse meg az Azure-adatbázis áttelepítési szolgáltatás összes példánya](media\tutorial-sql-server-to-azure-sql\dms-search.png)
+      ![Az Azure Database Migration Service minden példányának megkeresése](media\tutorial-sql-server-to-azure-sql\dms-search.png)
 
-2. Az a **Azure adatbázis áttelepítési szolgáltatások** képernyőn, keresse meg az Azure-adatbázis áttelepítési szolgáltatás nevének példány létrehozott, majd válassza ki a példány.
+2. Az **Azure Database Migration Services** képernyőn keresse meg a létrehozott Azure Database Migration Service-példány nevét, és válassza ki ezt a példányt.
  
-     ![Keresse meg az Azure-adatbázis áttelepítési szolgáltatás példányát](media\tutorial-sql-server-to-azure-sql\dms-instance-search.png)
+     ![Az Azure Database Migration Service személyes példányának megkeresése](media\tutorial-sql-server-to-azure-sql\dms-instance-search.png)
  
-3. Válassza ki + **új áttelepítési projekt**.
-4. A a **új áttelepítési projekt** meg kell adnia egy nevet a projekthez, kattintson a jobb a **server adatforrástípust** szövegmezőben, jelölje be **SQL Server**, majd a a **cél kiszolgáló típusa** szövegmezőben, jelölje be **Azure SQL Database**.
+3. Válassza a + **Új migrálási projekt** lehetőséget.
+4. Az **Új migrálási projekt** képernyőn nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza ki az **SQL Servert**, a **Célkiszolgáló típus** szövegbeviteli mezőben pedig az **Azure SQL Database-t**. A **Válassza ki a tevékenység típusát** szövegbeviteli mezőben válassza az **Offline adatok migrálása** lehetőséget. 
 
-    ![Adatbázis áttelepítési Service-projekt létrehozása](media\tutorial-sql-server-to-azure-sql\dms-create-project1.png)
+    ![Azure Database Migration Service-projekt létrehozása](media\tutorial-sql-server-to-azure-sql\dms-create-project2.png)
 
-5.  Válassza ki **létrehozása** a projekt létrehozásához.
+5.  Válassza a **Tevékenység létrehozása és futtatása** lehetőséget a projekt létrehozásához és a migrálási művelet lefuttatásához.
 
-## <a name="specify-source-details"></a>Adja meg az adatforrás részletei
-1. Az a **részletek forrás** jobb kapcsolati adatainak megadása az adatforrás SQL Server-példány.
+## <a name="specify-source-details"></a>Forrás adatainak megadása
+1. A **Migrálási forrás adatai** képernyőn adja meg a forrásként szolgáló SQL Server-példány kapcsolati adatait.
  
-    Ügyeljen arra, hogy a teljes tartomány neve (FQDN) használ a forrás SQL Server-példány neve. Az IP-cím is használható olyan helyzetekben, mely DNS-név feloldása nem lehetséges.
+    Gondoskodjon róla, hogy az SQL Server-példány neveként teljes tartománynevet (FQDN) használjon. Amikor a DNS-névfeloldás nem lehetséges, használhatja az IP-címet is.
 
-2. Ha nem telepítette a megbízható tanúsítványt a forráskiszolgálón, válassza ki a **megbízható kiszolgálói tanúsítvány** jelölőnégyzetet.
+2. Ha nem telepített megbízható tanúsítványt a forráskiszolgálón, jelölje be a **Kiszolgálótanúsítvány megbízhatósága** jelölőnégyzetet.
 
-    Ha nincs telepítve megbízható tanúsítvány, a SQL Server önaláírt tanúsítványt hoz létre a példány indításakor. Ez a tanúsítvány az ügyfél-kommunikációhoz hitelesítő adatok titkosításához használható.
+    Ha nincs telepítve egy megbízható tanúsítvány, az SQL Server a példány indításakor előállít egy önaláírt tanúsítványt. A rendszer ezt a tanúsítványt használja az ügyfélkapcsolatok hitelesítő adatainak titkosítására.
 
     > [!CAUTION]
-    > SSL-kapcsolatokat, amelyek egy önaláírt tanúsítványt használ encyopted nem nyújt erős biztonságot. Azok ki vannak téve a átjárójának. Ne hagyatkozzon kizárólag éles környezetben az önaláírt tanúsítványok használatát az SSL vagy az internethez csatlakozó kiszolgálókon.
+    > Az önaláírt tanúsítványokkal titkosított SSL-kapcsolatok nem biztosítanak erős védelmet. Az ilyen tanúsítványok közbeékelődéses támadásoknak vannak kitéve. Éles környezetben vagy az internethez csatlakozó kiszolgálók esetén az önaláírt tanúsítványokkal működő SSL nem megbízható.
 
-   ![Adatforrás részletei](media\tutorial-sql-server-to-azure-sql\dms-source-details1.png)
-  
-2. Válassza ki **mentése**, majd válassza ki a **AdventureWorks2012** adatbázis az áttelepítéshez.
+   ![Forrás részletei](media\tutorial-sql-server-to-azure-sql\dms-source-details2.png)
 
-    ![Válassza ki a forrás DB](media\tutorial-sql-server-to-azure-sql\dms-select-source-db1.png)
+## <a name="specify-target-details"></a>Cél adatainak megadása
+1. Válassza a **Mentés** lehetőséget, majd a **Migrálási cél részletei** képernyőn adja meg a célul szolgáló Azure SQL Database Server kapcsolati adatait. Ez a cél az az Azure SQL Database, amelyen üzembe helyezte az **AdventureWorks2012** sémát a Data Migration Assistant szolgáltatással.
 
-## <a name="specify-target-details"></a>Adja meg a cél adatait
-1. Válassza ki **mentése**, majd a a **céloz részletek** képernyőn, adja meg a kapcsolódási adatait a cél Azure SQL adatbázis-kiszolgáló, amely a előtti ponton aktívvá vált Azure SQL adatbázis, amelyhez a **AdventureWorks2012** séma használatával az adatok áttelepítési Segéd telepített.
+    ![Cél kiválasztása](media\tutorial-sql-server-to-azure-sql\dms-select-target2.png)
 
-    ![Válassza ki a cél](media\tutorial-sql-server-to-azure-sql\dms-select-target1.png)
+2. Válassza a **Mentés** lehetőséget, majd a **Leképezés céladatbázisokra** képernyőn képezze le a forrás- és a céladatbázist a migráláshoz.
 
-2. Válassza ki **mentése** menteni a projektet.
+    Ha a céladatbázis neve megegyezik a forrásadatbázis nevével, az Azure Database Migration Service alapértelmezés szerint a céladatbázist választja ki.
 
-3. Az a **projekt összefoglalása** képernyőn tekintse át, ellenőrizze az áttelepítési projekttel kapcsolatos részleteket.
+    ![Leképezés céladatbázisokra](media\tutorial-sql-server-to-azure-sql\dms-map-targets-activity2.png)
 
-    ![DMS összegzése](media\tutorial-sql-server-to-azure-sql\dms-summary1.png)
+3. Válassza a **Mentés**, lehetőséget, majd a **Táblák kiválasztása** képernyőn bontsa ki a táblák listáját, és tekintse át az érintett mezőket.
 
-4. Kattintson a **Mentés** gombra.
+    Vegye figyelembe, hogy az Azure Database Migration Service automatikusan kiválasztja az összes üres forrástáblát, amely a célként szolgáló Azure SQL Database-példányon megtalálható. Ha újra kíván migrálni olyan táblákat, amelyek már tartalmaznak adatokat, azokat ezen a panelen külön kikell választania.
 
-## <a name="run-the-migration"></a>Az áttelepítés futtatása
-1.  Válassza ki a nemrég mentett projektet, jelölje be + **új tevékenység**, majd válassza ki **áttelepítés**.
+    ![Select tables (Táblák kiválasztása)](media\tutorial-sql-server-to-azure-sql\dms-configure-setting-activity2.png)
 
-    ![Új tevékenység](media\tutorial-sql-server-to-azure-sql\dms-new-activity1.png)
+4.  Válassza a **Mentés** lehetőséget. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét.
 
-2.  Amikor a rendszer kéri, adja meg a hitelesítő adatait a forrás- és célkiszolgálók, és válassza **mentése**.
-
-3.  Az a **céladatbázisokhoz térkép** képernyőn, a forrás és a céladatbázis az áttelepítéshez.
-
-    Ha a céladatbázis adatbázis neve megegyezik a forrásadatbázis, Azure DMS a céladatbázis alapértelmezés szerint választja ki.
-
-    ![Leképezés céladatbázisokra](media\tutorial-sql-server-to-azure-sql\dms-map-targets-activity1.png)
-
-4. Válassza ki **mentése**, a **táblák kiválasztása** képernyőn, bontsa ki a felsoroló táblát, és tekintse át az érintett mezők listája.
-
-    Vegye figyelembe, hogy az Azure-adatbázis áttelepítése szolgáltatás automatikus jelöli ki, amely létezik a cél Azure SQL Database-példányt összes üres forrás tábla. Ha szeretne táblázatot, amely már tartalmazza az adatok áttelepítéséhez, explicit módon válassza ki a panel táblákat szeretné.
-
-    ![Select tables (Táblák kiválasztása)](media\tutorial-sql-server-to-azure-sql\dms-configure-setting-activity1.png)
-
-5.  Válassza ki **mentése**, a a **áttelepítési összegzés** képernyő a **tevékenységnév** szöveg adja meg az áttelepítési tevékenység nevét.
-
-6. Bontsa ki a **érvényesítési lehetőség** rész a **válassza ki az érvényesítési beállítás** adja meg, hogy az áttelepített adatbázisok érvényesítéséhez kattintson a jobb **séma összehasonlító**, **Adatkonzisztenciát**, és **lekérdezési nézetet**.
+5. Bontsa ki az **Érvényesítési lehetőség** szakaszt a **Válasszon egy ellenőrzési lehetőséget** képernyő megjelenítéséhez, és itt adja meg, hogy a migrált adatbázisok ellenőrzése **Séma-összehasonlítás**, **Adatkonzisztencia** vagy **Lekérdezés helyessége** szerint történjen.
     
-    ![Válasszon egy ellenőrzési lehetőséget](media\tutorial-sql-server-to-azure-sql\dms-configuration1.png)
+    ![Ellenőrzési lehetőség kiválasztása](media\tutorial-sql-server-to-azure-sql\dms-configuration2.png)
 
-6.  Válassza ki **mentése**, tekintse át az összefoglalást, annak érdekében, hogy a forrás és cél részletei egyeznek-e a mi korábban megadott.
+6.  Válassza a **Mentés** lehetőséget, és tekintse át az összefoglalást, hogy meggyőződhessen arról, hogy a forrás és cél adatai megegyeznek a korábban megadottakkal.
 
-    ![Áttelepítési összegzése](media\tutorial-sql-server-to-azure-sql\dms-run-migration1.png)
+    ![A migrálás összegzése](media\tutorial-sql-server-to-azure-sql\dms-run-migration2.png)
 
-7.  Válassza ki **áttelepítés**.
+## <a name="run-the-migration"></a>A migrálás futtatása
+1.  Válassza a **Migrálás futtatása** lehetőséget.
 
-    Az áttelepítési tevékenység ablak megjelenik, és a **állapot** a tevékenység van **függőben lévő**.
+    Megjelenik a migrálás műveletének ablaka. A tevékenység **Állapota**: **Függőben**.
 
-    ![Tevékenységi állapot](media\tutorial-sql-server-to-azure-sql\dms-activity-status1.png)
+    ![Tevékenység állapota](media\tutorial-sql-server-to-azure-sql\dms-activity-status1.png)
 
-## <a name="monitor-the-migration"></a>A figyelő az áttelepítés
-1. Az áttelepítési tevékenység képernyőn válassza ki a **frissítése** frissíti a képernyőt, amíg a **állapot** az áttelepítés jeleníti meg, mint a **befejezve**.
+## <a name="monitor-the-migration"></a>A migrálás monitorozása
+1. A migrálás műveletének ablakában válassza a **Frissítés** lehetőséget a megjelenítés frissítéséhez addig, amíg a migrálás **Állapota** át nem vált **Befejezve** értékre.
 
-    ![Befejeződött a tevékenység állapota](media\tutorial-sql-server-to-azure-sql\dms-completed-activity1.png)
+    ![Tevékenység állapota: Befejezve](media\tutorial-sql-server-to-azure-sql\dms-completed-activity1.png)
 
-2. Az áttelepítés befejezése után válassza ki a **töltse le a jelentés** megszerezni a jelentés az áttelepítési folyamathoz tartozó részletek.
+2. A migrálás befejezése után válassza a **Jelentés letöltése** lehetőséget. A megjelenő jelentés a migrálás folyamatával kapcsolatos részleteket listázza.
 
-3. Ellenőrizze a cél adatbázis (oka) a cél Azure SQL Database-kiszolgálón.
+3. Ellenőrizze a céladatbázisokat a célként szolgáló Azure SQL Database-kiszolgálón.
 
 ### <a name="additional-resources"></a>További források
 
- * [SQL-áttelepítés Azure adatok áttelepítési szolgáltatás (DMS) segítségével](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) gyakorlati labor.
+ * [SQL-migrálás az Azure Database Migration Service (DMS) használatával](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) – gyakorlati labor.

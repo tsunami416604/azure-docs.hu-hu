@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2e0bf35f73a355197f821f7cce12294f7b35576
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344749"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714451"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?
 
@@ -79,16 +79,15 @@ Az Azure-ban bevezettünk különféle adatműveleteket (ezek jelenleg előzetes
 
 A *hatókör* az a határ, ameddig a hozzáférés terjed. Szerepkörök hozzárendelésekor hatókör meghatározásával tovább korlátozhatja az engedélyezett műveletek körét. Ez hasznos lehet például, ha egy felhasználót [Webhelyek közreműködője](built-in-roles.md#website-contributor) szerepkörrel szeretne felruházni, de csak egyetlen erőforráscsoportra vonatkozóan.
 
-Az Azure-ban a hatókörök több szinten határozhatók meg: az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. A hatókörök szülő-gyermek kapcsolatokba vannak strukturálva, ahol minden gyermeknek csak egy szülője lehet.
+Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti csoport](../azure-resource-manager/management-groups-overview.md), az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve.
 
 ![Szerepkör-hozzárendelés hatóköre](./media/overview/rbac-scope.png)
 
-A szülő hatókörökhöz rendelt hozzáféréseket azok gyermekei öröklik. Például:
+Amikor hozzáférést rendel egy szülő hatókörhöz, az engedélyeket azok származtatott hatókörei is öröklik. Például:
 
+- Ha [tulajdonosi](built-in-roles.md#owner) szerepkört rendel egy, a felügyeleti csoport hatóköréhez tartozó felhasználóhoz, a felhasználó a felügyeleti csoportban lévő összes előfizetésben mindent felügyelhet.
 - Ha az [Olvasó](built-in-roles.md#reader) szerepkört hozzárendeli egy csoporthoz az előfizetés hatókörében, a csoport tagjai az előfizetésben lévő összes erőforráscsoportot és erőforrást megtekinthetik.
 - Ha a [Közreműködő](built-in-roles.md#contributor) szerepkört hozzárendeli egy alkalmazáshoz az erőforrás-csoport hatókörében, az alkalmazás bármilyen típusú erőforrást kezelhet majd az adott erőforráscsoportban, az előfizetésben lévő többi erőforráscsoportban azonban nem.
-
-Az Azure tartalmaz továbbá egy, az előfizetések feletti hatókört is: ez a [felügyeleti csoport](../azure-resource-manager/management-groups-overview.md), amely jelenleg előzetes verzióban érhető el. A felügyeleti csoportokkal több előfizetés kezelhető. RBAC-hatókörök megadásakor megadhat egy felügyeleti csoportot, vagy megadhat egy előfizetést, egy erőforráscsoportot vagy egy erőforrás-hierarchiát.
 
 ### <a name="role-assignment"></a>Szerepkör-kijelölés
 
