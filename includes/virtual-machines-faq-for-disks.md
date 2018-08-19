@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: fabb734d5e21015f7cc3022993f01809daec0648
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935782"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "40211179"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -67,7 +67,7 @@ Nem. A virtuális gépeket egy rendelkezésre állási csoportot az összes fel�
 
 **Managed Disks szolgáltatás alapértelmezett, hogy az Azure Portalon?**
 
-Igen. 
+Igen.
 
 **Üres felügyelt lemez hozható létre?**
 
@@ -101,7 +101,6 @@ Csak olvasható közös hozzáférésű jogosultságkód (SAS) URI-t a felügyel
 
 Igen, támogatja a nem felügyelt, és a felügyelt lemezek támogatottak. Azt javasoljuk, hogy az új számítási feladatok a felügyelt lemezek használata, és az aktuális számítási feladatok migrálása felügyelt lemezekre.
 
-
 **Ha hozzon létre egy 128 GB-os lemezt, és növelje a 130 GB méretű, kell fizetnem az a következő lemez mérete (256 GB)?**
 
 Igen.
@@ -129,6 +128,14 @@ Nem. A számítógép neve tulajdonság nem frissíthető. Az új virtuális gé
 **Is szeretnék kerüljenek a nem felügyelt és felügyelt lemezek ugyanazon a virtuális Gépen?**
 
 Nem.
+
+**Egy blob egy lemezt hoz létre, amikor nincs semmilyen folyamatosan meglévő kapcsolatot, hogy a forrás blob?**
+
+Nem, ha az új lemez jön létre, hogy a blob teljes önálló másolatát ekkor és a kettő között nincs kapcsolat. Ha szeretné a lemez létrehozása után a forrásblob törölheti működésének megzavarása nélkül megtesztelheti az újonnan létrehozott lemez bármilyen módon.
+
+**Is átnevezek egy felügyelt vagy nem felügyelt lemez létrehozása után?**
+
+Felügyelt lemezek nem nevezhető át őket. Azonban nem felügyelt lemez is átnevezése, mindaddig, amíg azt nem jelenleg csatlakozik egy virtuális Merevlemezt vagy virtuális Gépet.
 
 ## <a name="standard-ssd-disks-preview"></a>Standard SSD-lemezeket (előzetes verzió)
 
@@ -177,11 +184,11 @@ Standard SSD-lemez nem felügyelt lemezként csak érhetők el.
 **Standard SSD-lemez támogatják a "egypéldányos virtuális gép SLA"?**
 Standard SSD-k nem, nem kell egypéldányos virtuális gép SLA-t. Prémium szintű SSD-lemezeket egypéldányos virtuális gép SLA-t használja.
 
-## <a name="migrate-to-managed-disks"></a>Migrálás felügyelt lemezekre 
+## <a name="migrate-to-managed-disks"></a>Migrálás felügyelt lemezekre
 
 **Milyen változtatásokra van szükség, egy már meglévő Azure Backup szolgáltatás konfigurációs előtti/utáni migrálás a Managed Disks szolgáltatásba?**
 
-Nincs módosításokra szükség. 
+Nincs módosításokra szükség.
 
 **Azure Backup szolgáltatás az áttelepítés előtt létrehozott virtuális gép biztonsági mentések továbbra is működni fog?**
 
@@ -189,15 +196,15 @@ Igen, biztonsági mentések problémamentesen működik.
 
 **Milyen változtatásokra van szükség, egy már meglévő Azure-lemezek titkosítása konfigurációs előtti/utáni migrálás a Managed Disks szolgáltatásba?**
 
-Nincs módosításokra szükség. 
+Nincs módosításokra szükség.
 
 **Az egy meglévő virtuálisgép-méretezési csoport automatikus áttelepítése a Managed Disks szolgáltatásba támogatott nem felügyeltről felügyelt csoportok?**
 
-Nem. Létrehozhat egy új méretezési csoportot a Managed Disks nem felügyelt lemezek a régi méretezési csoportból a lemezkép használatával. 
+Nem. Létrehozhat egy új méretezési csoportot a Managed Disks nem felügyelt lemezek a régi méretezési csoportból a lemezkép használatával.
 
 **Létrehozhatok egy felügyelt lemezt egy oldal blob pillanatkép a Managed Disks szolgáltatásba való migrálás előtt a?**
 
-Nem. Oldal blob-pillanatkép exportálása lapblobként, és majd az exportált lapblob létrehozása egy felügyelt lemezt. 
+Nem. Oldal blob-pillanatkép exportálása lapblobként, és majd az exportált lapblob létrehozása egy felügyelt lemezt.
 
 **Is lehet feladatátvételt beállítani a helyszíni gépek felügyelt lemezekkel rendelkező virtuális géphez az Azure Site Recovery által védett?**
 
@@ -211,7 +218,7 @@ Igen. Felügyelt lemezekkel rendelkező virtuális gépek Azure-bA védelmét az
 
 Igen
 
-## <a name="managed-disks-and-storage-service-encryption"></a>A felügyelt lemezek és a Storage Service Encryption szolgáltatással 
+## <a name="managed-disks-and-storage-service-encryption"></a>A felügyelt lemezek és a Storage Service Encryption szolgáltatással
 
 **Az Azure Storage Service Encryption alapértelmezés szerint engedélyezve van egy felügyelt lemez létrehozásakor?**
 
