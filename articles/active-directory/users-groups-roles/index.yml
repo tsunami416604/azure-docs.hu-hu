@@ -1,0 +1,52 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 153c3884d3802259fafac82650d79534472d7641
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "40209078"
+documentType: LandingData
+title: Az Azure Active Directory-felhasználókezelés dokumentációja
+metadata:
+  document_id: 
+  title: Azure Active Directory-felhasználók, -csoportok, -szerepkörök és -licencek dokumentációja
+  description: Megtudhatja, hogyan használhatja a felhasználókat, csoportokat, szerepköröket és licenceket az Azure-felhőszolgáltatásokkal végzett hitelesítésére a bérlőben.
+  services: active-directory
+  ms.component: users-groups-roles
+  author: curtand
+  manager: mtillman
+  ms.service: active-directory
+  ms.topic: landing-page
+  ms.date: 08/12/2018
+  ms.author: curtand
+abstract:
+  description: Az Azure AD felhasználókezelői eszközei, például a rendszergazdai szerepkörök hozzárendelése vagy a csoportok segítségével gyorsabban hajthatja végre a mindennapos feladatokat, és a növekedésnek is helyet adhat. Licenceket vagy SaaS-alkalmazások hozzáféréseit egyéni felhasználók helyett csoportokhoz is hozzárendelheti, vagy engedélyeket delegálhat az Azure AD-identitáskezelő többletterhelésének elosztásához.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan használhatja a kezelőeszközöket az Azure Active Directoryban
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Felhasználók hozzáadása az Azure AD-hez</a>
+    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Licencek hozzárendelése felhasználókhoz</a>
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Azure AD Premium-fiók regisztrálása</a>
+    - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">Felhasználó által létrehozott csoportok lejáratának beállítása</a>
+    - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">Felhasználó által létrehozott csoportok csoportelnevezési szabályzatának beállítása</a>
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan tölthet fel csoportokat dinamikusan az Azure Active Directoryban
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">Dinamikusan feltöltött csoport létrehozása</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Referenciákra mutató hivatkozások
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Azure AD PowerShell-parancsmagok</a></p>
