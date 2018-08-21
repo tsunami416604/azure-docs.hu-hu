@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fabb734d5e21015f7cc3022993f01809daec0648
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40211179"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40237858"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -142,18 +142,11 @@ Felügyelt lemezek nem nevezhető át őket. Azonban nem felügyelt lemez is át
 **Mik az Azure Standard SSD-lemez?**
 Standard SSD-lemez IOPS alacsonyabb szinten egységes teljesítményt igénylő számítási feladatok költséghatékony tárolására optimalizált SSD adathordozóján által támogatott standard szintű lemezek. Előzetes verzióban érhetők el a korlátozott számú régióban, és korlátozott kezelhetőségi (Resource Manager-sablonok keresztül érhető el).
 
-<a id="standard-ssds-azure-regions"></a>**Mik a Standard SSD-lemez (előzetes verzió) jelenleg támogatott régiókat?**
-* Észak-Európa
-* Közép-Franciaország
-* USA 2. keleti régiója
-* USA középső régiója
-* Közép-Kanada
-* Kelet-Ázsia
-* Korea déli régiója
-* Kelet-Ausztrália
+<a id="standard-ssds-azure-regions"></a>**Mik a Standard SSD-lemez jelenleg támogatott régiókat?**
+Minden Azure-régióban mostantól támogatja a Standard SSD-lemezeket.
 
 **Hogyan hozhatok létre Standard SSD-lemez?**
-Jelenleg standard szintű SSD-lemezeket az Azure Resource Manager-sablonok használatával is létrehozhat. Az alábbiakban Standard SSD-lemez létrehozása a Resource Manager-sablon a szükséges paraméterek:
+Standard SSD-lemez Azure Resource Manager-sablonok, SDK-t, a PowerShell vagy a parancssori felület használatával is létrehozhat. Az alábbiakban Standard SSD-lemez létrehozása a Resource Manager-sablon a szükséges paraméterek:
 
 * *API-verzió* a Microsoft.Compute kell beállítani: `2018-04-01` (vagy újabb)
 * Adja meg *managedDisk.storageAccountType* , `StandardSSD_LRS`
@@ -177,6 +170,9 @@ Standard SSD-lemez létrehozása sablon alapján, a teljes sablont példa: [egy 
 **Átválthatok saját meglévő lemezek Standard SSD-re?**
 Igen. Tekintse meg [átalakítása az Azure disks storage felügyelt standard prémium szintre, és ez fordítva is igaz](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage) kapcsolatos konvertálása a Managed Disks az általános útmutatást. És a Standard SSD-re frissíteni a lemez típusát a következő értéket használja.
 -AccountType StandardSSD_LRS
+
+**Mi az az előnye, hogy Standard SSD-lemezek használata helyett HDD?**
+Standard SSD-lemez nyújthat nagyobb késést, konzisztencia, rendelkezésre állás és megbízhatóság HDD lemezek képest. Alkalmazások és szolgáltatások zökkenőmentes rengeteg további a standard szintű SSD, amely miatt. Vegye figyelembe, hogy prémium szintű SSD-lemezeket az ajánlott megoldás a legtöbb i/o-igényes éles számítási feladathoz. 
 
 **Standard SSD-k használhatok a nem felügyelt lemezként?**
 Standard SSD-lemez nem felügyelt lemezként csak érhetők el.

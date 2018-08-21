@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 2223c1ed95675a5091ce91a38a7901d6b61ac8d4
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: e6a2493b0bc9e2b4c9695e29ae0c175dac9814fe
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40166000"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40238430"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
 Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatás a virtuális gépek (VM) biztosít a bemeneti/kimeneti (I/O)-igényű számítási feladatokhoz. A Premium Storage szolgáltatást használó Virtuálisgép-lemezek tartós állapotú meghajtókhoz (SSD-kkel) adatokat tárolja. A sebesség előnyeit, és a prémium szintű tárolólemezeket teljesítményét is, áttelepítheti a meglévő Virtuálisgép-lemezek prémium szintű Storage.
@@ -52,7 +52,7 @@ További információ a meglévő virtuális gépek Premium Storage-ba való mig
 
 * **Prémium szintű tárolólemezeket**
 
-    A Premium Storage támogatja a Virtuálisgép-lemezek, amelyek adott méret-sorozat virtuális gépei csatolhatók. A Premium Storage számos különböző Azure virtuális gépeket támogatja. A hét lemezméretek megválaszthatja: P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). P4 és a P6 szintű lemezméretek csak még támogatottak Managed Disks esetében. Minden lemez méretét a saját teljesítmény specifikációi. Az alkalmazás követelményeitől függően egy vagy több lemez is csatlakoztatható a virtuális géphez. A specifikációk részletesebben leírjuk, hogy [prémium szintű Storage méretezhetőségi és teljesítménycéljai](#scalability-and-performance-targets).
+    A Premium Storage támogatja a Virtuálisgép-lemezek, amelyek adott méret-sorozat virtuális gépei csatolhatók. A Premium Storage számos különböző Azure virtuális gépeket támogatja. A hét lemezméretek megválaszthatja: P4 (32 GB), P6 (64 GB), P10 (128 GB), p15-ös (256 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). P4 és a P6 szintű lemezméretek csak még támogatottak Managed Disks esetében. Minden lemez méretét a saját teljesítmény specifikációi. Az alkalmazás követelményeitől függően egy vagy több lemez is csatlakoztatható a virtuális géphez. A specifikációk részletesebben leírjuk, hogy [prémium szintű Storage méretezhetőségi és teljesítménycéljai](#scalability-and-performance-targets).
 
 * **Prémium szintű lapblobok**
 

@@ -1,0 +1,1 @@
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek.*
