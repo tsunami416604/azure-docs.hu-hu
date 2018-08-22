@@ -19,8 +19,8 @@ Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 - [Ansible telepítése és konfigurálása Linux rendszeren használható az Azure-ral](../articles/virtual-machines/linux/ansible-install-configure.md).
-- [Alapszintű virtuális gép létrehozása](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Hozzon létre egy teljes virtuális gépből álló környezeteket, beleértve a támogató erőforrások](../articles/virtual-machines/linux/ansible-create-complete-vm.md).
+- [Hozzon létre egy Linux rendszerű virtuális gép](../articles/virtual-machines/linux/ansible-create-vm.md).
+- [Linux rendszerű virtuális gép kezelése](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
