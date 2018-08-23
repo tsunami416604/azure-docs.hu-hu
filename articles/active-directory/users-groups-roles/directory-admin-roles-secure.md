@@ -13,19 +13,19 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627933"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057260"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD felhőalapú és hibrid telepítések emelt szintű hozzáférés biztonságossá tétele
 
 A legtöbb vagy az összes üzleti eszköz biztonsága az a modern szervezet kiemelt jogosultságú fiókok felügyelheti és kezelheti az informatikai rendszerek biztonságának függ. Gyakran többek között az internetes támadók rosszindulatú actors célozhat meg rendszergazdai fiókok, és gyorsan hozzáférhessenek a bizalmas adatok és rendszerek a hitelesítő adatok ellopására irányuló támadásokkal próbál emelt szintű hozzáférés más elemeit. Cloud services, a megelőzési és a válaszok a közös felelősséget a felhőbeli szolgáltató és az ügyfél a. A végpontok és a felhő legújabb fenyegetések kapcsolatos további információkért lásd: a [a Microsoft Security Intelligence Report](https://www.microsoft.com/security/sir/default.aspx). Ez a cikk segítséget nyújt a fejlesztés egy ütemtervet felé bezárása között az aktuális csomagok és az itt ismertetett útmutatást a hiányosságok pótlásában.
 
 > [!NOTE] 
-> A Microsoft elkötelezett a legmagasabb szintű megbízhatóság, átláthatóság, szabványoknak és előírásoknak való megfelelés. További információ hogyan csökkenti az a Microsoft globális incidenskezelő csapata a felhőszolgáltatások elleni támadások hatásainak, és hogyan biztonsági beépített Microsoft üzleti termékeivel, és a cloud services [Microsoft Trust Center – biztonság](https://www.microsoft.com/en-us/trustcenter/security)és a Microsoft megfelelőségi célkitűzések [Microsoft Trust Center – megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance).
+> A Microsoft elkötelezett a legmagasabb szintű megbízhatóság, átláthatóság, szabványoknak és előírásoknak való megfelelés. További információ hogyan csökkenti az a Microsoft globális incidenskezelő csapata a felhőszolgáltatások elleni támadások hatásainak, és hogyan biztonsági beépített Microsoft üzleti termékeivel, és a cloud services [Microsoft Trust Center – biztonság](https://www.microsoft.com/trustcenter/security)és a Microsoft megfelelőségi célkitűzések [Microsoft Trust Center – megfelelőségi](https://www.microsoft.com/trustcenter/compliance).
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -173,7 +173,7 @@ Kapcsolja be:
 
 Ha használ Windows Hello for Business, az MFA úgy érheti el használata a Windows Hello bejelentkezési élményt nyújt. További információkért lásd: [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
-#### <a name="configure-identity-protection"></a>Az Identity Protection konfigurálása 
+#### <a name="configure-identity-protection"></a>Identity Protection konfigurálása 
 
 Az Azure AD Identity Protection, az algoritmus-alapú figyelési és jelentéskészítési eszköz, amellyel a szervezet identitásait érintő esetleges biztonsági rések észlelését. Automatikus válaszok e észlelt gyanús tevékenységek konfigurálhatja, és hajtsa végre a problémák megoldásához a megfelelő műveletet. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
@@ -337,7 +337,7 @@ A privilegizált hozzáférési fiókok kezelése, mellett azt javasoljuk, tekin
 * Csak emelt szintű hozzáférést, amikor szükséges, és távolítsa el ezt követően (just-in-time).
 * Megőrzi, és tekintse át a kiemelt jogosultságú fiókok kapcsolatos naplózási tevékenység.
 
-Az alkalmazásfejlesztés egy teljes körű biztonsági ütemterv további információkért lásd: [a Microsoft felhőalapú informatikai architektúra erőforrásaihoz](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). További információ a Microsoft-szolgáltatások, amelyek segítik a következő témakörökhöz, forduljon a Microsoft helyi képviselőjéhez, vagy tekintse meg [hozhat létre a vállalati védelme érdekében a kritikus fontosságú számítógépes védelem](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Az alkalmazásfejlesztés egy teljes körű biztonsági ütemterv további információkért lásd: [a Microsoft felhőalapú informatikai architektúra erőforrásaihoz](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). További információ a Microsoft-szolgáltatások, amelyek segítik a következő témakörökhöz, forduljon a Microsoft helyi képviselőjéhez, vagy tekintse meg [hozhat létre a vállalati védelme érdekében a kritikus fontosságú számítógépes védelem](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Ez a biztonságos emelt szintű hozzáférés védelmének ütemterve folyamatban lévő utolsó szakasza a következő összetevőket tartalmazza.
 
@@ -370,7 +370,7 @@ Ha szeretné meghatározni [Azure-előfizetés tulajdonjogának átruházása m�
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Vészhelyzeti": Mi a teendő vészhelyzet esetén
 
-![Vészhelyzet](./media/directory-admin-roles-secure/emergency.jpeg)
+![A válságkezelési](./media/directory-admin-roles-secure/emergency.jpeg)
 
 1. Kulcs kezelők és a profiljával kapcsolatos információkat az incidens security officer értesíti.
 
@@ -440,16 +440,16 @@ Hogyan kezeli a Microsoft Office 365-höz a biztonsági incidensek kapcsolatos t
 
 ## <a name="next-steps"></a>További lépések
 
-* [Microsoft Trust Center termék biztonsági](https://www.microsoft.com/en-us/trustcenter/security) – biztonsági funkciói a Microsoft felhőalapú termékek és szolgáltatások
+* [Microsoft Trust Center termék biztonsági](https://www.microsoft.com/trustcenter/security) – biztonsági funkciói a Microsoft felhőalapú termékek és szolgáltatások
 
-* [A Microsoft Trust Center – megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) – a Microsoft átfogó megfelelőségi ajánlattal, a cloud services
+* [A Microsoft Trust Center – megfelelőségi](https://www.microsoft.com/trustcenter/compliance/complianceofferings) – a Microsoft átfogó megfelelőségi ajánlattal, a cloud services
 
-* [Hogyan kockázatbecslés](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) -biztonsági és megfelelőségi követelmények a Microsoft cloud services kezelése
+* [Hogyan kockázatbecslés](https://www.microsoft.com/trustcenter/guidance/risk-assessment) -biztonsági és megfelelőségi követelmények a Microsoft cloud services kezelése
 
 ### <a name="other-ms-online-services"></a>Más MS Online szolgáltatások 
 
-* [A Microsoft Intune-ban biztonsági](https://www.microsoft.com/en-us/trustcenter/security/intune-security) – az Intune mobileszköz-kezelés, mobilalkalmazás-felügyelet és a felhőalapú számítógép-felügyeleti képességek biztosít.
+* [A Microsoft Intune-ban biztonsági](https://www.microsoft.com/trustcenter/security/intune-security) – az Intune mobileszköz-kezelés, mobilalkalmazás-felügyelet és a felhőalapú számítógép-felügyeleti képességek biztosít.
 
-* [A Microsoft Dynamics 365 security](https://www.microsoft.com/en-us/trustcenter/security/dynamics365-security) – Dynamics 365 a Microsoft felhőalapú megoldása, amely egyesíti az Ügyfélkapcsolat-kezelés (CRM) és a vállalatierőforrás-tervezési (ERP) képességeit.
+* [A Microsoft Dynamics 365 security](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365 a Microsoft felhőalapú megoldása, amely egyesíti az Ügyfélkapcsolat-kezelés (CRM) és a vállalatierőforrás-tervezési (ERP) képességeit.
 
  

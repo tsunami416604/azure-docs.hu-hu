@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: d0762f80267fa927681344a3e0de78b0800c8306
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fc245d38af90e0c395389e24b14d061fcfe0c10c
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630211"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054736"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Az SSH-kulcsok használata a Windows Azure-ban
 
@@ -33,9 +33,9 @@ Ez a cikk bemutatja a létrehozása és a egy Windows-számítógépre secure sh
 ## <a name="windows-packages-and-ssh-clients"></a>Windows-csomagok és az SSH-ügyfél
 Csatlakozhat, és a Linux rendszerű virtuális gépek kezelése az Azure-ban egy *SSH-ügyfél*. Linux vagy macOS rendszerű általában számítógépek rendelkezik SSH parancskészlet létrehozni és felügyelni az SSH-kulcsokat, és győződjön meg arról, SSH-kapcsolatokat. 
 
-Windows-számítógépek nem mindig rendelkezik telepített összehasonlítható SSH-parancsokat. Windows 10-verziók, amelyek tartalmazzák a [a Linux Windows alrendszere](https://docs.microsoft.com/windows/wsl/about) futtatásához és eléréséhez, például egy SSH-ügyfél natív módon a Bash felületen belül segédprogramok segítségével. 
+Windows-számítógépek nem mindig rendelkezik telepített összehasonlítható SSH-parancsokat. Adja meg a Windows 10 legújabb verzióit [OpenSSH-ügyfél parancsai](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) létrehozása és SSH-kulcsok kezelése, és győződjön meg arról, SSH-kapcsolatok a parancssorból. Legutóbbi Windows 10-es verziói is tartalmaznak a [a Linux Windows alrendszere](https://docs.microsoft.com/windows/wsl/about) futtatásához és eléréséhez, például egy SSH-ügyfél natív módon a Bash felületen belül segédprogramok. 
 
-Ha eltérő Bash Windows használni kíván, gyakori Windows SSH ügyfelek helyben is telepítheti a következő csomagok tartalmazza:
+Ha szeretne egy másik SSH-eszközt használja a Windows, gyakori Windows SSH ügyfelek helyben is telepítheti a következő csomagokat tartalmazza:
 
 * [Putty-kapcsolaton keresztül](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git Pro Windows](https://git-for-windows.github.io/)
@@ -52,7 +52,7 @@ Ez a szakasz bemutatja, hozzon létre ssh-kulcs a Windows két alternatívája k
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>Az ssh-keygen az SSH-kulcsok létrehozása
 
-Ha egy parancs-rendszerhéj, például a Bash-a Windows vagy a GitBash (vagy az Azure Cloud Shell Bash) futtatható, hozzon létre egy SSH kulcspár a `ssh-keygen` parancsot. Írja be a következő parancsot, és a kérések megválaszolásával. Ha ssh-kulcs már létezik az aktuális helyen, ezeket a fájlokat írja felül. 
+Ha egy parancs-rendszerhéj futtatja, amely támogatja az SSH-ügyfél eszközök Windows (vagy használhatja az Azure Cloud Shell), hozzon létre egy SSH kulcspár a `ssh-keygen` parancsot. Írja be a következő parancsot, és a kérések megválaszolásával. Ha ssh-kulcs már létezik az aktuális helyen, ezeket a fájlokat írja felül. 
 
 ```bash
 ssh-keygen -t rsa -b 2048

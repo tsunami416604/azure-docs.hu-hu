@@ -1,6 +1,6 @@
 ---
-title: Adatok elemzése az Azure Naplóelemzés nézetek létrehozása |} Microsoft Docs
-description: Naplóelemzési adatforrásnézet-tervezőből használatával és az Azure-portálon jelenik meg az adatmegjelenítéseket a Naplóelemzési munkaterület különböző egyéni nézeteket is létrehozhat. Ez a cikk adatforrásnézet-tervezőből áttekintését tartalmazza, és eljárások létrehozásának és szerkesztésének egyéni nézetek mutatja be.
+title: Adatok elemzése az Azure Log Analytics nézetek létrehozása |} A Microsoft Docs
+description: Nézettervező a Log Analytics használatával jelennek meg az Azure Portalon, és a Log Analytics-munkaterületen adatvizualizációk széles tartalmazó egyéni nézeteket hozhat létre. Ez a cikk áttekintést ad a Nézettervező, és létrehozását és szerkesztését, az egyéni nézetek eljárásokat mutat be.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,98 +15,98 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: d900a778aa003357fb85d3e8ec8e40dee64f0f9c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 77c7d9a549b10a56faaf6226062d0e6212ce19c0
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131854"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055344"
 ---
-# <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Naplóelemzési adatforrásnézet-tervezőből segítségével egyéni nézeteket hozhat létre
-Az adatforrásnézet-tervezőből használatával [Azure Naplóelemzés](log-analytics-overview.md), az Azure portálon, amelyik segíthet a Naplóelemzési munkaterület az adatok megjelenítése egyéni nézetek számos hozhat létre. Ez a cikk áttekintést nyújt adatforrásnézet-tervezőből és eljárások létrehozásának és szerkesztésének egyéni nézetek.
+# <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Az egyéni nézetek létrehozása az adatforrásnézet-tervezőből a Log Analytics használatával
+Az adatforrásnézet-tervezőből használatával [Azure Log Analytics](log-analytics-overview.md), különböző egyéni nézeteket hozhat létre az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozása és módosítása az egyéni nézetek.
 
-Az adatforrásnézet-tervezőből kapcsolatos további információkért lásd:
+Nézettervező kapcsolatos további információkért lásd:
 
-* [Hivatkozás csempe](log-analytics-view-designer-tiles.md): a beállítások az egyes az egyéni nézetekben elérhető csempék hivatkozás ismerteti.
-* [A képi megjelenítés része hivatkozás](log-analytics-view-designer-parts.md): egy referencia-útmutató az egyéni nézetek elérhető képi megjelenítés összetevőkre vonatkozó beállításokat tartalmaz.
+* [Csempe referencia](log-analytics-view-designer-tiles.md): biztosít egy referencia-útmutató az egyéni nézetekben a rendelkezésre álló csempék beállításai.
+* [Vizualizációs rész referenciája](log-analytics-view-designer-parts.md): biztosít egy referencia-útmutató a beállítások a vizualizációs rész, amely az egyéni nézetek érhetők el.
 
 
 ## <a name="concepts"></a>Alapelvek
-Nézetek jelennek meg a **áttekintése** lap a Naplóelemzési munkaterület az Azure portálon. Betűrendben jelennek meg az egyes egyéni nézetek csempéket, és a csempék a megoldások telepített ugyanazon a munkaterületen.
+Nézetek jelennek meg a **áttekintése** lapján a Log Analytics-munkaterületet az Azure Portalon. Betűrend szerint jelennek meg a csempék az egyes egyéni nézetek és megoldások a csempék vannak telepítve az ugyanazon a munkaterületen.
 
 ![– Áttekintés oldalra](media/log-analytics-view-designer/overview-page.png)
 
-Az adatforrásnézet-tervezőből létrehozott nézetek a következő táblázatban leírt elemeket tartalmazzák:
+Az adatforrásnézet-tervezőből létrehozott nézeteket az alábbi táblázatban leírt elemeket tartalmazzák:
 
 | Rész | Leírás |
 |:--- |:--- |
-| Csempék | A Naplóelemzési munkaterület megjelenő **áttekintése** lap. Mindegyik mozaiknál ezt az egyéni nézetének visual összegzését jeleníti meg. Minden egyes csempetípus biztosít a rekordok eltérő képi megjelenítést alkalmazott. Választhat egy csempe olyan egyéni nézetet. |
-| Egyéni nézet | Amikor kiválaszt egy csempe jelenik meg. Mindegyik nézetről tartalmaz egy vagy több képi megjelenítés részeit. |
-| A képi megjelenítés részei | Az adatok a Naplóelemzési munkaterület egy vagy több alapuló képi megjelenítés jelenleg [keresések jelentkezzen](log-analytics-log-searches.md). A legtöbb részeit közé tartozik a fejlécet, amely magas szintű képi megjelenítés biztosít, és a listáját, ami a felső eredményeit jeleníti meg. Minden egyes rész típusának biztosít a Naplóelemzési munkaterület rekordját eltérő képi megjelenítést alkalmazott. Elem kiválasztása a rész a részletes rekordok biztosító napló keresést végezni. |
+| Csempék | A Log Analytics-munkaterületre jelennek **áttekintése** lapot. Minden csempe ezt az egyéni nézetének visual összegzését jeleníti meg. Minden csempe írja be a rekordok egy másik vizualizációt biztosít. Egyéni nézet megjelenítéséhez olyan csempét választ. |
+| Egyéni nézet | Amikor kiválaszt egy csempe jelenik meg. Egyes nézetek egy vagy több Vizualizáció részt tartalmaz. |
+| Vizualizáció részei | Egy vizualizációt, az adatok alapján egy vagy több Log Analytics-munkaterületnek jelentenek [naplókereséseket](log-analytics-log-searches.md). A legtöbb részei egy fejlécet, amely biztosít magas szintű képi megjelenítés, és a egy listát, amely megjeleníti a kiemelt találatok tartalmazzák. Minden egyes rész írja be a Log Analytics-munkaterületet a rekordok egy másik vizualizációt biztosít. A rész részletes rekordok biztosító Naplókeresés végrehajtásához elemek választhatja ki. |
 
 
-## <a name="work-with-an-existing-view"></a>Egy meglévő nézethez használata
-Adatforrásnézet-tervezőből létrehozott nézetek megjelenítése a következő beállításokat:
+## <a name="work-with-an-existing-view"></a>Meglévő nézet használata
+Az adatforrásnézet-tervezőből létrehozott nézetek jelenítse meg a következő beállításokat:
 
-![Áttekintés menü](media/log-analytics-view-designer/overview-menu.png)
+![Áttekintése menü](media/log-analytics-view-designer/overview-menu.png)
 
 A beállítások a következő táblázat ismerteti:
 
 | Beállítás | Leírás |
 |:--|:--|
 | Frissítés   | Frissíti a nézetet a legújabb adatokkal. | 
-| Elemzés | Megnyitja a [Advanced Analytics portál](log-analytics-log-search-portals.md#advanced-analytics-portal) napló keresések adatok elemzésére. |
-| Szerkesztés       | A nézet megnyitása az adatforrásnézet-tervezőből annak tartalmát és a konfiguráció szerkesztése.  |
-| Klónozás      | Létrehoz egy új nézetet, és megnyitja azt a adatforrásnézet-tervezőből. Az új nézet neve megegyezik az eredeti neve megegyezik, azonban *másolási* utótaggal. |
-| Dátumtartomány | A dátum és idő tartomány szűrő szerepel a nézetben adatok beállításával. |
-| +          | Adja meg egy egyéni szűrő van definiálva a nézet. |
+| Elemzés | Megnyílik a [bővített analitika portál](log-analytics-log-search-portals.md) naplólekérdezések az adatok elemzéséhez. |
+| Szerkesztés       | A nézet megnyitása az adatforrásnézet-tervezőből tartalmának és konfigurációs szerkesztéséhez.  |
+| Klónozás      | Létrehoz egy új nézetet, és megnyílik a adatforrásnézet-tervezőből. Az új nézet neve ugyanaz, mint az eredeti nevén, de nem *másolási* rá hozzáfűzve. |
+| Dátumtartomány | A dátum és idő dátumtartomány-szűrő, amely megtalálható a nézet az adatok megadása |
+| +          | Egyéni szűrő megadásához, hogy van definiálva a nézet. |
 
 
 ## <a name="create-a-new-view"></a>Új nézet létrehozása
-Létrehozhat egy új nézetet az adatforrásnézet-tervezőből kiválasztásával **adatforrásnézet-tervezőből** a Naplóelemzési munkaterület menüjében.
+Létrehozhat egy új nézetet az adatforrásnézet-tervezőből kiválasztásával **adatforrásnézet-tervezőből** a Log Analytics-munkaterület menüben.
 
-![Tervező csempéje](media/log-analytics-view-designer/view-designer-tile.png)
+![Tervező csempe megtekintéséhez](media/log-analytics-view-designer/view-designer-tile.png)
 
 
-## <a name="work-with-view-designer"></a>Az adatforrásnézet-tervezőből működik
-Adatforrásnézet-tervezőből segítségével hozzon létre új nézetek, vagy módosítsa a létezőket. 
+## <a name="work-with-view-designer"></a>Nézettervező használata
+Nézettervező használatával hozzon létre új nézetek, vagy szerkesztheti a meglévőket. 
 
-Adatforrásnézet-tervezőből három ablaktáblából áll: 
-* **Tervezési**: az egyéni nézetet tartalmaz, amely éppen létrehozását és szerkesztését. 
-* **Vezérlők**: tartalmazza a csempék és a hozzáadott részek a **tervezési** ablaktáblán. 
-* **Tulajdonságok**: a csempék vagy kijelölt tulajdonságokat jeleníti meg.
+Nézettervező három ablaktáblák rendelkezik: 
+* **Tervezési**: az egyéni nézetet tartalmaz, amely létrehozásakor és szerkesztését. 
+* **Vezérlők**: tartalmazza a csempék és hozzáadott részek a **tervezési** ablaktáblán. 
+* **Tulajdonságok**: a csempék vagy a kiválasztott részek tulajdonságait jeleníti meg.
 
 ![Nézettervező](media/log-analytics-view-designer/view-designer-screenshot.png)
 
-### <a name="configure-the-view-tile"></a>Konfigurálja a csempéje
-Egyéni nézet csak egyetlen csempe rendelkezhet. Az aktuális csempe megtekintéséhez, vagy válasszon másik kódot, válassza ki a **csempe** lapra a **vezérlő** ablaktáblán. A **tulajdonságok** ablaktábla megjeleníti az aktuális csempe tulajdonságait. 
+### <a name="configure-the-view-tile"></a>Konfigurálja a nézet csempe
+Egyéni nézet csak egy adott csempe rendelkezhet. A jelenlegi csempe megtekintéséhez, vagy válasszon ki egy másik meglévőt, jelölje be a **csempe** lapján a **vezérlő** ablaktáblán. A **tulajdonságok** ablaktábla megjeleníti az aktuális csempe tulajdonságait. 
 
-A csempe tulajdonságait található információk alapján konfigurálhatja a [hivatkozás csempe](log-analytics-view-designer-tiles.md) , majd **alkalmaz** menti a módosításokat.
+A csempe tulajdonságok található információk alapján konfigurálhatja a [referencia Csempére](log-analytics-view-designer-tiles.md) majd **alkalmaz** menti a módosításokat.
 
-### <a name="configure-the-visualization-parts"></a>A képi megjelenítés kijelzők konfigurálása
-A nézet a képi megjelenítés részek tetszőleges számú tartalmazhatnak. Kijelzők hozzáadása egy nézetet, válassza ki a **nézet** lapot, és válassza ki a képi megjelenítés része. A **tulajdonságok** ablaktáblán megjelennek azok a kijelölt kijelző tulajdonságait. 
+### <a name="configure-the-visualization-parts"></a>A Vizualizáció részek konfigurálása
+Nézet tartalmazhat bármilyen vizualizációt kijelzők száma. Egy olyan nézetre részek hozzáadásához válassza a **nézet** lapra, és kattintson a Vizualizáció tartozik. A **tulajdonságok** ablaktábla a kijelölt részt tulajdonságait jeleníti meg. 
 
-A Nézet tulajdonságai található információk alapján konfigurálhatja a [képi megjelenítés része hivatkozás](log-analytics-view-designer-parts.md) , majd **alkalmaz** menti a módosításokat.
+A nézet tulajdonságaiban található információk alapján konfigurálhatja a [vizualizációs rész referenciája](log-analytics-view-designer-parts.md) majd **alkalmaz** menti a módosításokat.
 
-A nézetekben a képi megjelenítés részei csak egy sor van. A meglévő kijelzők átrendezheti húzással egy új helyre.
+A nézetekben Vizualizáció részei csak egy sor van. Egy új helyre húzásával átrendezheti a meglévő részeket.
 
-Eltávolíthatja a képi megjelenítés része a nézet kiválasztásával a **X** felső sarkában a része.
+Eltávolíthat egy vizualizációs rész a nézet kiválasztásával a **X** felső rész, jobb.
 
 
-### <a name="menu-options"></a>A beállítások menü
-A beállítások használatához a nézetek szerkesztési módban részelemcímkék ismertetését a következő táblázatban.
+### <a name="menu-options"></a>Menü parancsai
+A beállítások használatához a nézetek szerkesztési módban az alábbi táblázatban leírtak szerint.
 
-![A Szerkesztés menü](media/log-analytics-view-designer/edit-menu.png)
+![Szerkesztés menü](media/log-analytics-view-designer/edit-menu.png)
 
 | Beállítás | Leírás |
 |:--|:--|
-| Mentés        | Menti a változtatásokat, és bezárja a nézetet. |
-| Mégse      | Elveti a módosításait, és bezárja a nézetet. |
+| Mentés        | Menti a módosításokat, és bezárja a nézetet. |
+| Mégse      | Elveti a módosításokat, és bezárja a nézetet. |
 | Nézet törlése | Törli a nézetet. |
-| Exportálás      | Exportálja a nézetet, hogy egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) , amelyet importálhat egy másik munkaterületre. A fájl nevét a nézet nevét, és egy *omsview* bővítmény. |
-| Importálás      | Importálja a *omsview* fájlt, amely egy másik munkaterület-ból exportált. Ez a művelet felülírja a meglévő nézetek konfigurációs. |
-| Klónozás       | Létrehoz egy új nézetet, és megnyitja azt a adatforrásnézet-tervezőből. Az új nézet neve megegyezik az eredeti neve megegyezik, azonban *másolási* utótaggal. |
+| Exportálás      | Exportálja a nézetet, hogy egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) importálható egy másik munkaterületre. A fájl nevét a nézet nevét, és rendelkezik egy *omsview* bővítmény. |
+| Importálás      | Importálja a *omsview* exportált egy másik munkaterületről. Ez a művelet felülírja a meglévő nézetek konfigurációját. |
+| Klónozás       | Létrehoz egy új nézetet, és megnyílik a adatforrásnézet-tervezőből. Az új nézet neve ugyanaz, mint az eredeti nevén, de nem *másolási* rá hozzáfűzve. |
 
 ## <a name="next-steps"></a>További lépések
-* Adja hozzá [Csempék](log-analytics-view-designer-tiles.md) a egyéni nézetben.
-* Adja hozzá [képi megjelenítés részek](log-analytics-view-designer-parts.md) a egyéni nézetben.
+* Adjon hozzá [Csempék](log-analytics-view-designer-tiles.md) a egyéni nézethez.
+* Adjon hozzá [Vizualizáció részek](log-analytics-view-designer-parts.md) a egyéni nézethez.

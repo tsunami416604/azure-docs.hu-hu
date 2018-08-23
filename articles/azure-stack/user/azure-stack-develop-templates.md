@@ -1,9 +1,9 @@
 ---
-title: Sablonok az Azure-verem fejlesztése |} Microsoft Docs
-description: További tudnivalók az Azure verem sablon gyakorlati tanácsok
+title: Sablonok fejlesztése az Azure Stackhez |} A Microsoft Docs
+description: Ajánlott eljárások az Azure Stack-sablon
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 8a5bc713-6f51-49c8-aeed-6ced0145e07b
@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 046866d9ed7ce65e3b46be1c67b4ab2058cefa4d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d09dec2f327d8b5911a4e55832ba106838c7ebc3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34304147"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058428"
 ---
-# <a name="azure-resource-manager-template-considerations"></a>Az Azure Resource Manager sablon kapcsolatos szempontok
+# <a name="azure-resource-manager-template-considerations"></a>Az Azure Resource Manager-sablon kapcsolatos szempontok
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az alkalmazás fejlesztése, fontos annak biztosítása érdekében a sablon hordozhatóság Azure és az Azure-verem között. Ez a cikk ismerteti az Azure Resource Manager fejlesztése szempontjai [sablonok](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), így a prototípus az alkalmazás teszt központi és az Azure-ban Azure verem környezetben való hozzáférés nélkül is.
+Az alkalmazás fejlesztését, fontos annak biztosítása érdekében az Azure és az Azure Stack közötti sablon hordozhatóság. Ez a cikk ismerteti az Azure Resource Manager fejlesztési szempontok [sablonok](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), így az alkalmazás- és vizsgálati üzembe helyezés az Azure-ban az Azure Stack környezettel való hozzáférés nélkül is prototípusát.
 
-## <a name="resource-provider-availability"></a>Erőforrás-szolgáltató elérhetőség
+## <a name="resource-provider-availability"></a>Az erőforrás-szolgáltató elérhetőség
 
-A sablont szeretne telepíteni, csak kell használnia, amelyek már a rendelkezésre álló vagy Azure verem Preview Microsoft Azure-szolgáltatások.
+A sablont szeretné telepíteni, csak kell használnia a Microsoft Azure-szolgáltatások, amelyek már elérhető, vagy az Azure Stack előzetes verzióban érhető el.
 
 ## <a name="public-namespaces"></a>Nyilvános névterek
 
-Mivel Azure verem az adatközpontban található, mint az Azure nyilvános felhőjében rendelkezik másik végpont névterei. Ennek eredményeképpen szoftveresen kötött nyilvános végpontok Azure Resource Manager-sablonok nem telepítheti őket az Azure-verem megkísérlésekor. Dinamikusan Szolgáltatásvégpontok használatával hozhat létre a *hivatkozás* és *összefűzésére* funkciók értékek lekérése az erőforrás-szolgáltató telepítése során. Például helyett hardcoding *blob.core.windows.net* a sablonban beolvasni a [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) dinamikusan beállítása a *osDisk.URI* végpont:
+Mivel a helyi adatközpontban Azure Stack, azt különböző szolgáltatási végpont névtérrel rendelkezik, mint az Azure nyilvános felhő. Ennek eredményeképpen szoftveresen kötött nyilvános végpontokat az Azure Resource Manager-sablonokban sikertelen üzembe helyezheti őket az Azure Stack megkísérlésekor. Dinamikusan hozhat létre Szolgáltatásvégpontok használatával a *referencia* és *összefűzni* funkciók értékeket beolvasni az erőforrás-szolgáltató üzembe helyezése során. Hardcoding helyett például *blob.core.windows.net* a sablonban lekérni a [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) dinamikus beállításához az *osDisk.URI* végpont:
 
      "osDisk": {"name": "osdisk","vhd": {"uri":
      "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, variables('vmStorageAccountContainerName'),
@@ -42,7 +42,7 @@ Mivel Azure verem az adatközpontban található, mint az Azure nyilvános felh�
 
 ## <a name="api-versioning"></a>API-verziószámozás
 
-Azure-szolgáltatások verziók Azure és az Azure-verem eltérőek. Az egyes erőforrásokra van szükség a **apiVersion** attribútum, amely meghatározza a biztosított képességeket. Ahhoz, hogy az Azure-verem API verziókompatibilitás ellenőrzése érdekében, a következő API-verziók érvényesek minden egyes erőforrás-szolgáltató:
+Azure-szolgáltatás verziói között az Azure és az Azure Stack eltérhet. Az egyes erőforrások igényel a **apiVersion** attribútum, amely meghatározza a funkció által kínált lehetőségeket. Az Azure Stackben API-verzió kompatibilitás biztosítása érdekében a következő API-verziók esetében érvényesek minden egyes erőforrás-szolgáltató:
 
 | Erőforrás-szolgáltató | apiVersion |
 | --- | --- |
@@ -54,20 +54,20 @@ Azure-szolgáltatások verziók Azure és az Azure-verem eltérőek. Az egyes er
 
 ## <a name="template-functions"></a>Sablonfüggvények
 
-Az Azure Resource Manager [funkciók](../../azure-resource-manager/resource-group-template-functions.md) dinamikus sablonok létrehozásához szükséges képességek biztosítása. Példaként használható funkciók feladatokat, például:
+Az Azure Resource Manager [funkciók](../../azure-resource-manager/resource-group-template-functions.md) dinamikus sablonok létrehozásához szükséges képességeket biztosít. Tegyük fel a feladatokat, mint a functions használhatja:
 
-* Hozzáfűzésével vagy karakterláncok díszítésre.
+* Összetűzésének, vagy karakterlánc-csonkolás.
 * Egyéb erőforrások hivatkozó értékeit.
-* A több példány üzembe helyezendő erőforrásokat léptetés.
+* A több példány üzembe helyezendő erőforrások léptetés.
 
-Ezek a funkciók Azure verem nem érhetők el:
+Ezek a függvények nem érhetők el az Azure Stack:
 
 * Kihagyás
 * hajtsa végre a megfelelő
 
 ## <a name="resource-location"></a>Erőforrás helye
 
-Az Azure Resource Manager-sablonok segítségével egy helyen attribútum erőforrások üzembe helyezése során. Azure-helyek a például az USA nyugati régiója vagy Délkelet-amerikai régió alatt. Azure verem más helyen mert Azure verem az adatközpontban található. Annak érdekében sablonok továbbítható Azure és az Azure-verem között, az erőforráscsoport helye kell hivatkozik, az egyes erőforrások központi telepítésekor. Ehhez használja `[resourceGroup().Location]` összes erőforrás öröklik az erőforráscsoport helye biztosításához. A következő cikkből egyik példája egy tárfiókot másikban ezen függvény használata:
+Az Azure Resource Manager-sablonok egy helyen attribútum használatával helyezze el az erőforrások üzembe helyezése során. Az Azure-ban mint például az USA nyugati RÉGIÓJA vagy Délkelet-amerikai régió helyekre utalnak. Az Azure Stackben más helyen, mert az Azure Stack az adatközpontjában. Annak érdekében, hogy a sablonok olyan adatközpontomba között az Azure és az Azure Stack, az erőforráscsoport helyét kell hivatkoznia, az egyéni erőforrások üzembe helyezése során. Ezt megteheti használatával `[resourceGroup().Location]` annak érdekében, hogy az összes erőforrás öröklik az erőforráscsoport helyét. A következő cikkből szerint példaként szolgál a storage-fiók üzembe helyezése során ez a függvény használatával:
 
     "resources": [
     {
@@ -85,5 +85,5 @@ Az Azure Resource Manager-sablonok segítségével egy helyen attribútum erőfo
 ## <a name="next-steps"></a>További lépések
 
 * [Sablonok üzembe helyezése a PowerShell-lel](azure-stack-deploy-template-powershell.md)
-* [Sablonok az Azure parancssori felület telepítése](azure-stack-deploy-template-command-line.md)
+* [Az Azure CLI-vel sablonok üzembe helyezése](azure-stack-deploy-template-command-line.md)
 * [Sablonok üzembe helyezése a Visual Studióval](azure-stack-deploy-template-visual-studio.md)

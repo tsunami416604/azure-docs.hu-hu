@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: ff349c480ca14b4242fb7597751b4eb6acb0ee78
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308476"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055531"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Előzetes verzió: Windows Server Active Directory az Azure AD jelszóvédelem kényszerítése
 
@@ -37,7 +37,7 @@ Nincsenek Azure AD jelszóvédelem alkotó három szoftverösszetevőket:
 ## <a name="requirements"></a>Követelmények
 
 * Minden olyan gép, amelyen telepítve vannak az Azure AD jelszó védelmi összetevők többek között a tartományvezérlők futnia kell a Windows Server 2012 vagy újabb.
-* Minden olyan gép, amelyen telepítve vannak az Azure AD jelszó-védelem összetevői beleértve a tartományvezérlőket kell rendelkeznie a Universal C futásidejű telepítve. Ez lehetőleg azáltal, hogy teljes mértékben kijavítja a gép Windows Update-en keresztül történik. Ellenkező esetben lehet, egy megfelelő operációsrendszer-specifikus frissítési csomag telepítve – lásd: [Universal C-modul a Windows Update](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows)
+* Minden olyan gép, amelyen telepítve vannak az Azure AD jelszó-védelem összetevői beleértve a tartományvezérlőket kell rendelkeznie a Universal C futásidejű telepítve. Ez lehetőleg azáltal, hogy teljes mértékben kijavítja a gép Windows Update-en keresztül történik. Ellenkező esetben lehet, egy megfelelő operációsrendszer-specifikus frissítési csomag telepítve – lásd: [Universal C-modul a Windows Update](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
 * Minden olyan tartományban legalább egy tartományvezérlő és az Azure AD jelszó védelme proxy szolgáltatást futtató legalább egy kiszolgáló között léteznie kell a hálózati kapcsolatot.
 * Minden olyan Active Directory-tartományban, a Tartományvezérlőn futó ügynök szolgáltatás szoftvert kell használnia elosztott fájlrendszer replikációs szolgáltatása a sysvol replikáció.
 * Az Azure AD jelszó védelme proxy szolgáltatás regisztrálása az Azure AD egy globális rendszergazdai fiókkal.

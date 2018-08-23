@@ -1,6 +1,6 @@
 ---
 title: Az IoT Device Provisioning Service biztonsági végpontok |} A Microsoft Docs
-description: Alapelvei – hogyan szabályozható hozzáférést az IoT Device Provisioning Service a háttér-alkalmazások számára. Biztonsági jogkivonatok kapcsolatos információkat tartalmaz.
+description: Alapelvei – hozzáférés az IoT Device Provisioning Service háttérrendszer alkalmazások vezérlése. Biztonsági jogkivonatok kapcsolatos információkat tartalmaz.
 author: wesmc7777
 manager: timlt
 ms.service: iot-dps
@@ -8,25 +8,25 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: b4776ef3589d994fff692e450d252c491c20f7b2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4751a76c39060f48d3b816ecee0de5b58e29bdaa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522866"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42056879"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Hozzáférés vezérlése az Azure IoT Hub Device Provisioning Service
 
-Ez a cikk ismerteti az IoT-eszköz kiépítési szolgáltatás biztonsági beállításaival. A kiépítési szolgáltatás által használt *engedélyek* minden végpont hozzáférést. Engedélyek a funkcionalitás alapján szolgáltatáspéldány való hozzáférést korlátozza.
+Ez a cikk leírja a biztonságos az IoT Device Provisioning service beállításait. A kiépítési szolgáltatás által használt *engedélyek* minden végpont hozzáférést. Engedélyek a funkcionalitás alapján szolgáltatáspéldány való hozzáférést korlátozza.
 
 Ez a cikk ismerteti:
 
-* A különböző engedélyekkel, hogy a kiépítési szolgáltatáshoz való hozzáféréshez a háttéralkalmazás biztosíthat.
+* A különböző engedélyekkel, hogy a kiépítési szolgáltatáshoz való hozzáféréshez háttér-alkalmazásokhoz biztosíthat.
 * A hitelesítési folyamat és a jogkivonatok segítségével ellenőrizze az engedélyeket.
 
 ### <a name="when-to-use"></a>A következő esetekben használja
 
-A kiépítési szolgáltatás végpontok bármelyikét eléréséhez szükséges engedélyekkel kell rendelkeznie. A háttéralkalmazás például egy jogkivonatot, és minden üzenetet küld a szolgáltatás biztonsági hitelesítő adatokat tartalmazó tartalmaznia kell.
+A kiépítési szolgáltatás végpontok bármelyikét eléréséhez szükséges engedélyekkel kell rendelkeznie. Például egy háttérbeli alkalmazás tartalmaznia kell egy jogkivonatot, és minden üzenetet küld a szolgáltatás biztonsági hitelesítő adatokat tartalmazó.
 
 ## <a name="access-control-and-permissions"></a>Hozzáférés-vezérlés és engedélyek
 
@@ -34,7 +34,7 @@ Biztosítani [engedélyek](#device-provisioning-service-permissions) a következ
 
 * **Megosztott hozzáférés engedélyezési házirendek**. Megosztott elérési házirendeket is biztosítson tetszőleges kombinációját [engedélyek](#device-provisioning-service-permissions). A szabályzatokat definiálhat a [az Azure portal][lnk-management-portal], vagy programozott módon használatával a [Device Provisioning Service REST API-k][lnk-resource-provider-apis]. Újonnan létrehozott eszközkiépítési szolgáltatás az alábbi alapértelmezett házirend van:
 
-  * **provisioningserviceowner**: a házirend az összes engedélyt.
+   **provisioningserviceowner**: a házirend az összes engedélyt.
 
 > [!NOTE]
 > Lásd: [engedélyek](#device-provisioning-service-permissions) részletes információkat.
@@ -51,12 +51,16 @@ Hozhatnak létre, és a biztonsági jogkivonatokkal kapcsolatos további inform�
 HTTP az egyetlen támogatott protokoll és hitelesítési érvényes token felvételével valósítja meg a **engedélyezési** kérés fejlécéhez.
 
 #### <a name="example"></a>Példa
-`SharedAccessSignature sr=mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`
+```csharp
+SharedAccessSignature sr = 
+   mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`\
+```
 
 > [!NOTE]
 > A [Azure IoT Device Provisioning Service SDK] [ lnk-sdks] automatikusan a szolgáltatáshoz való csatlakozáskor jogkivonatokat hoz létre.
 
 ## <a name="security-tokens"></a>Biztonsági jogkivonatok
+
 A Device Provisioning Service biztonsági jogkivonatokat használ elkerülése érdekében a kulcsok küldése az átviteli szolgáltatások hitelesítéséhez. Emellett biztonsági jogkivonatok érvényesség, és a hatókör korlátozott. [Az Azure IoT Device Provisioning szolgáltatási SDK-k] [ lnk-sdks] automatikusan jogkivonatokat hoz létre, anélkül, hogy semmiféle speciális beállítást. Bizonyos forgatókönyvek megkövetelik hozhat létre és használhat közvetlenül a biztonsági jogkivonatokat. Az ilyen forgatókönyvek között megtalálható a közvetlen használatát a HTTP-felületen.
 
 ### <a name="security-token-structure"></a>Biztonsági jogkivonat szerkezete
@@ -131,7 +135,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 > [!NOTE]
 > Mivel a token érvényességének idő érvényesítési IoT Device Provisioning Service-gépeken, az eltéréseket az óra, a gép, amely létrehozza a jogkivonat a minimális kell lennie.
 
-
 ### <a name="use-security-tokens-from-service-components"></a>Használja a biztonsági jogkivonatokat a szolgáltatás-összetevők
 
 Szolgáltatás-összetevők csak hozhatja létre a megfelelő engedélyek megadása a korábbiakban leírtak megosztott elérési házirendeket használó biztonsági jogkivonatokat.
@@ -150,9 +153,9 @@ Például, egy szolgáltatást, egy előre létrehozott használatával létreho
 * erőforrás-URI: `{mydps}.azure-devices-provisioning.net`,
 * aláíró kulcs: kulcsainak egyikét a `enrollmentread` házirend
 * házirend neve: `enrollmentread`,
-* minden olyan lejárati időt.
+* bármely lejárati time.backn
 
-![A DPS példány megosztott hozzáférési szabályzat létrehozása a portálon][img-add-shared-access-policy]
+![A Device Provisioning service-példány megosztott hozzáférési szabályzat létrehozása a portálon][img-add-shared-access-policy]
 
 ```nodejs
 var endpoint ="mydps.azure-devices-provisioning.net";
@@ -170,17 +173,17 @@ Az eredmény, szeretne hozzáférést biztosítani, olvassa el az összes regisz
 
 A következő referencia-témakörök nyújtanak további információt az IoT Device Provisioning Service-hozzáférés szabályozása.
 
-## <a name="device-provisioning-service-permissions"></a>Device Provisioning Service-engedélyek
+### <a name="device-provisioning-service-permissions"></a>Device Provisioning Service-engedélyek
 
 A következő táblázat felsorolja az engedélyeket, ki férhet hozzá az IoT Device Provisioning Service használatával.
 
 | Engedély | Megjegyzések |
 | --- | --- |
-| **ServiceConfig** |Engedélyezi a hozzáférést a szolgáltatáskonfiguráció módosítása. <br/>Ezt az engedélyt a háttér felhőszolgáltatások használják. |
-| **EnrollmentRead** |Ad. olvassa el az eszközök regisztrációját és regisztrációs csoportokkal való hozzáférést. <br/>Ezt az engedélyt a háttér felhőszolgáltatások használják. |
-| **EnrollmentWrite** |Biztosít írási hozzáférés az eszközök regisztrációját és regisztrációs csoportokkal. <br/>Ezt az engedélyt a háttér felhőszolgáltatások használják. |
-| **RegistrationStatusRead** |Az olvasási biztosít hozzáférést az eszköz regisztrációs állapotát. <br/>Ezt az engedélyt a háttér felhőszolgáltatások használják. |
-| **RegistrationStatusWrite**  |Engedélyezi a hozzáférést az eszköz regisztrációs állapota törlése. <br/>Ezt az engedélyt a háttér felhőszolgáltatások használják. |
+| **ServiceConfig** |Engedélyezi a hozzáférést a szolgáltatáskonfiguráció módosítása. <br/>Ez az engedély háttérbeli felhőszolgáltatásokat használják. |
+| **EnrollmentRead** |Ad. olvassa el az eszközök regisztrációját és regisztrációs csoportokkal való hozzáférést. <br/>Ez az engedély háttérbeli felhőszolgáltatásokat használják. |
+| **EnrollmentWrite** |Biztosít írási hozzáférés az eszközök regisztrációját és regisztrációs csoportokkal. <br/>Ez az engedély háttérbeli felhőszolgáltatásokat használják. |
+| **RegistrationStatusRead** |Az olvasási biztosít hozzáférést az eszköz regisztrációs állapotát. <br/>Ez az engedély háttérbeli felhőszolgáltatásokat használják. |
+| **RegistrationStatusWrite**  |Engedélyezi a hozzáférést az eszköz regisztrációs állapota törlése. <br/>Ez az engedély háttérbeli felhőszolgáltatásokat használják. |
 
 <!-- links and images -->
 

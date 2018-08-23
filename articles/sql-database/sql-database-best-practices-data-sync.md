@@ -2,18 +2,18 @@
 title: Ajánlott eljárások az Azure SQL Data Sync |} A Microsoft Docs
 description: Konfigurálása és futtatása az Azure SQL Data Sync bevált gyakorlatok megismeréséhez.
 services: sql-database
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 2b23f9f2edbec468ecbd1395bd138e1be801c6e5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 96fff35b95a63e4f806258eff59d08afb2db0ffd
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620800"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059174"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Az SQL Data Synchez ajánlott eljárások 
 
@@ -75,17 +75,16 @@ Ez a szakasz bemutatja az SQL Data Sync kiépítés vonatkozó korlátozások.
 
 #### <a name="autoprovisioning-limitations"></a>Autoprovisioning korlátozások
 
-Az SQL Data Sync autoprovisioning meg a következő korlátozások vonatkoznak:
+Az SQL Data Sync számára autoprovisioning a következő korlátozások vonatkoznak:
 
--   Csak a céltábla létrehozott oszlopok kiválasztása.  
-    Minden oszlopot, amely nem része a szinkronizálási csoport nem kiépített a céltáblákba.
--   Indexek csak a kijelölt oszlopok jönnek létre.  
-    Ha a forrás táblázatindexhez oszlopokat, amelyek a szinkronizálási csoport nem rendelkezik, nem kiépített ezeket az indexeket a céltáblákba.  
+-   Csak a céltábla létrehozott oszlopok kiválasztása. Minden oszlopot, amely nem része a szinkronizálási csoport nem kiépített a céltáblákba.
+-   Indexek csak a kijelölt oszlopok jönnek létre. Ha a forrás táblázatindexhez oszlopokat, amelyek a szinkronizálási csoport nem rendelkezik, nem kiépített ezeket az indexeket a céltáblákba.  
 -   XML-típusú oszlopok indexei nem kiépítve.  
 -   ELLENŐRZÉSI korlátozásokban nincs kiépítve.  
 -   A forrástáblákból a meglévő eseményindítók nincsenek kiépítve.  
 -   Nézetek és tárolt eljárások hozhatók létre az adatbázist.
 -   AZ UPDATE CASCADE és ON DELETE CASCADE műveleteket a külső kulcsra vonatkozó megkötések nem újra létre kell hozni a céltáblákba.
+-   Ha 28-nál nagyobb pontosságú tizedes tört vagy numerikus oszlopokat, az SQL Data Sync You may encounter egy átalakítás túlcsordulás probléma szinkronizálás során. Azt javasoljuk, hogy korlátozza a tizedes tört vagy numerikus oszlopok 28 vagy kisebb pontosságot.
 
 #### <a name="recommendations"></a>Javaslatok
 

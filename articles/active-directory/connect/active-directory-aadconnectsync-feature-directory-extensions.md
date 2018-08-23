@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect szinkronizálása: címtárbővítmények |} Microsoft Docs'
-description: Ez a témakör ismerteti az Azure AD Connectben a directory böngészőbővítmények funkciója.
+title: 'Az Azure AD Connect szinkronizálása: címtárbővítmények |} A Microsoft Docs'
+description: Ez a témakör ismerteti a directory böngészőbővítmények funkciója az Azure AD Connectben.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,54 +15,54 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dda35e63c209951547a667c46639dc0f37c87b43
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a19fa124396bf9c9db4a60591b74f5425ce9670b
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593632"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054909"
 ---
-# <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect szinkronizálása: címtárbővítmények
-Az Azure Active Directory (Azure AD) a séma kiterjesztése címtárbővítmények használható saját attribútumait a helyszíni Active Directoryból. Ez a funkció lehetővé teszi a LOB-alkalmazásokat hozhat létre attribútumokat, amelyek továbbra is kezelheti a helyszíni fel. Ezek az attribútumok felhasználhatók, keresztül [Azure AD Graph API címtárbővítmények](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) vagy [Microsoft Graph](https://graph.microsoft.io/). Megjelenik a rendelkezésre álló attribútumok használatával [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) és [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer), illetve.
+# <a name="azure-ad-connect-sync-directory-extensions"></a>Az Azure AD Connect szinkronizálása: címtárbővítmények
+Címtárbővítmények segítségével az Azure Active Directoryban (Azure AD) a séma kiterjesztése a saját helyszíni Active Directoryból származó attribútumok. Ez a funkció lehetővé teszi felhasználása az attribútumokat, amelyek továbbra is kezelheti a helyszíni LOB-alkalmazások készítését. Ezek az attribútumok felhasználhatók keresztül [Azure AD Graph API címtárbővítmények](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) vagy [Microsoft Graph](https://graph.microsoft.io/). Megjelenik a rendelkezésre álló attribútumok használatával [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) és [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer), illetve.
 
-Jelenleg nincsenek Office 365 munkaterhelés igényel, ezek az attribútumok.
+Jelenleg nincs Office 365 számítási feladat használ fel ezeket az attribútumokat.
 
-Szeretné szinkronizálni a telepítési varázsló egyéni beállítások útvonalán mely további attribútumok konfigurálása
+Milyen további attribútumok szeretné szinkronizálni az egyéni beállítások elérési út a telepítési varázslóban konfigurálja.
 
 ![Séma kiterjesztése varázsló](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png)  
 
-A telepítés a következő attribútumok, amelyek a deduplikációra kijelölt érvényes jeleníti meg:
+A telepítés a következő attribútumokat, amelyek érvényes jelöltek látható:
 
 * Felhasználók és csoportok objektumtípusok
-* Egyértékű attribútumok: String, Boolean, egész, bináris
+* Egyértékű attribútumokkal: karakterlánc, a logikai érték, az egész szám, a bináris
 * Többértékű attribútumok: karakterlánc, a bináris
 
 
 >[!NOTE]
-> Az Azure AD Connect szinkronizálási többértékű Active Directory-attribútumok Azure ad szolgáltatásba többértékű címtárbővítmények támogatja. De nincs funkció jelenleg az Azure AD-ben támogatja a többértékű címtárbővítmények.
+> Az Azure AD Connect szinkronizálási többértékű Active Directory-attribútumok az Azure AD szolgáltatásba többértékű címtárbővítmények támogatja. Azonban nem, jelenleg az Azure AD-ben szolgáltatások többértékű címtárbővítmények használatát támogatja.
 
-Az attribútumok listájában van gyorsítótárából olvasta be a séma, amely az Azure AD Connect telepítés során jön létre. Ha további attribútumok az Active Directory-séma már ki van bővítve, kell [a séma frissítése](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema) előtt ezeket az új attribútumokat láthatók.
+A séma gyorsítótárból, az Azure AD Connect telepítése során létrehozott attribútumok listája olvasható. Ha további attribútumok az Active Directory-séma ki van bővítve, meg kell [a sémát](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema) előtt ezeket az új attribútumokat láthatók.
 
-Az Azure AD-objektum lehet címtárbővítmények legfeljebb 100 attribútumait. A hossza legfeljebb 250 karakterből áll. Ha egy attribútum-érték hosszabb, a szinkronizálási motor csonkolja azt.
+Az Azure AD-objektum címtárkiterjesztések attribútumait legfeljebb 100 lehet. A hossza legfeljebb 250 karakter lehet. Ha egy attribútumérték hosszabb, a szinkronizálási motor csonkolja azt.
 
-Az Azure AD Connect telepítése során az alkalmazás regisztrálva van, ahol elérhetők ezek az attribútumok. Ez az alkalmazás az Azure-portálon tekintheti meg.
+Az Azure AD Connect telepítése során az alkalmazás regisztrálva van, ahol ezek az attribútumok elérhetők. Ez az alkalmazás az Azure Portalon látható.
 
 ![Séma kiterjesztése alkalmazás](./media/active-directory-aadconnectsync-feature-directory-extensions/extension3new.png)
 
-Az attribútumok fűzve előtagként a bővítmény \_{AppClientId}\_. AppClientId értéke az összes attribútum esetében az Azure AD-bérlőben.
+Az attribútumok van fűzve előtagként a bővítmény \_{AppClientId}\_. AppClientId ugyanazt az értéket az összes attribútum esetében az Azure AD-bérlővel rendelkezik.
 
-Ezek az attribútumok elérhetők az Azure AD Graph API-n keresztül. Segítségével lekérdezhető [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/).
+Ezek az attribútumok elérhetők az Azure AD Graph API-n keresztül. Használatával is lekérdezhetők [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/).
 
 ![Az Azure AD Graph Explorer](./media/active-directory-aadconnectsync-feature-directory-extensions/extension4.png)
 
-Vagy a Microsoft Graph API-n keresztül, az attribútumok alkalmazásával lekérheti [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer#).
+Vagy a Microsoft Graph API-val, az attribútumok használatával lekérdezheti [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
 > Az attribútumok vissza kell kérnie kell. Explicit módon az ilyen attribútumok kiválasztása: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division =. 
 >
-> További információkért lásd: [Microsoft Graph: lekérdezés paraméterekkel](https://developer.microsoft.com/en-us/graph/docs/concepts/query_parameters#select-parameter).
+> További információkért lásd: [Microsoft Graph: használja a lekérdezési paraméterek](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 
 ## <a name="next-steps"></a>További lépések
-További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.
+Tudjon meg többet a [Azure AD Connect szinkronizálási](active-directory-aadconnectsync-whatis.md) konfigurációja.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

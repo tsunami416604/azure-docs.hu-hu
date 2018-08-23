@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2017
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 67a7a701eb7700fab9aa9d0ec22354cc1618f856
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 9b4d992d690bb3237f8c92e44020c0ac83978d7e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004694"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42057249"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia az Event Hubs
 
@@ -37,7 +37,7 @@ Sörgyár a tétel határozza meg konzisztencia és a rendelkezésre állás a k
 Az Event Hubs egy particionált adatok modell épül. Konfigurálhatja a partíciók száma az eseményközpont telepítés során, de ezt az értéket később nem módosítható. Mivel a partíciók az Event hubs szolgáltatást kell használnia, akkor rendelkezésre állás és konzisztencia az alkalmazás kapcsolatos döntéseket.
 
 ## <a name="availability"></a>Rendelkezésre állás
-Event Hubs használatának első lépései a legegyszerűbb módja, hogy használja az alapértelmezett viselkedést. Ha létrehoz egy új ** [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) ** objektumra, és használja a ** [küldése](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_) ** módot, az eseményeket a rendszer automatikusan terjeszt között a partíciók az eseményközpont. Ez a viselkedés lehetővé teszi, hogy a lehető legnagyobb mennyisége óta eltelt idő.
+Event Hubs használatának első lépései a legegyszerűbb módja, hogy használja az alapértelmezett viselkedést. Ha létrehoz egy új **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** objektumra, és használja a **[küldése](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** módot, az eseményeket a rendszer automatikusan terjeszt között a partíciók az eseményközpont. Ez a viselkedés lehetővé teszi, hogy a lehető legnagyobb mennyisége óta eltelt idő.
 
 A maximális időt szentelhet igénylő használati esetek Ez a modell használata ajánlott.
 

@@ -1,6 +1,6 @@
 ---
-title: Hívás-válasz - Java gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing kép Search API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a kép Bing keresési API a Microsoft Azure kognitív Services.
+title: 'Gyors útmutató: Küldési keresési lekérdezések a REST API a Bing Image Search API és a Java használatával'
+description: Ez a rövid útmutatóban küldeni keresési lekérdezések a Bing Search API a javával megfelelő rendszerképek listájának beolvasásához.
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,33 +9,33 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 658025e997f27a3974b473e5c556780733d68045
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3d779bae099bde5b015ee8316906ace77c0ad3bb
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348991"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41988793"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-java"></a>Hívás-válasz: a Java első Bing kép keresési lekérdezés
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-java"></a>Gyors útmutató: Küldési keresési lekérdezések a REST API-t és a Java használatával
 
-A kép Bing keresési API Bing.com/Images hasonló élményt nyújt akkor azáltal, hogy egy felhasználó keresési lekérdezés küldése a Bing, és vissza megfelelő képek listájának lekérése.
+A Bing Image Search API azáltal, hogy egy felhasználó keresési lekérdezést küld a Bing, majd az érintett rendszerképek listájának Bing.com/Images hasonló élményt nyújt.
 
-A cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing kép Search API lekérdezést hajt végre, és a visszaadott nyers keresési eredmények között, amelyek JSON formátumban jeleníti meg. Az alkalmazás Java nyelven van megírva, amíg az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+Ez a cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing Image Search API-lekérdezést hajt végre, és megjeleníti a visszaadott nyers keresési eredmények között, amely JSON formátumban vannak. Ez az alkalmazás Java nyelven van megírva, míg a API-ját kompatibilis minden programozási nyelvet, amely JSON elemzése és a HTTP-kéréseket a webes RESTful szolgáltatás. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) fordításához, és futtassa a következő kódot. A Java IDE lehet használni, ha kedvenc, de elegendő egy szövegszerkesztőben.
+Szüksége lesz [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) fordítsa le és futtassa ezt a kódot. Ha kedvencként, de egy szövegszerkesztőben elegendő használhatja a Java ide Környezethez.
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket.
 
-1. Töltse le és telepítse a [gson könyvtár](https://github.com/google/gson). Is elérhető, Maven keresztül.
-2. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztő.
-3. A megadott kód hozzáadása nevű fájlba `BingImageSearch.java`.
-4. Cserélje le a `subscriptionKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
+1. Töltse le és telepítse a [gson könyvtár](https://github.com/google/gson). Emellett szerezheti be, Maven-n keresztül.
+2. Hozzon létre egy új Java-projektet a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével a.
+3. A megadott kód hozzáadása egy nevű fájl `BingImageSearch.java`.
+4. Cserélje le a `subscriptionKey` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 5. Futtassa a programot.
 
 ```java
@@ -154,7 +154,7 @@ class SearchResults{
 
 ## <a name="json-response"></a>JSON-válasz
 
-A következő mintát választ. A JSON hosszát korlátozásához csak egyetlen eredmény látható, és a választ más részei le lettek rövidítve. 
+A következő mintát választ. A JSON hosszának korlátozása, csak egyetlen eredmény jelenik meg, és egyéb részei a válasz a rendszer csonkolta. 
 
 ```json
 {
@@ -243,11 +243,11 @@ A következő mintát választ. A JSON hosszát korlátozásához csak egyetlen 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing kép keresési alkalmazás oktatóanyag](../tutorial-bing-image-search-single-page-app.md)
+> [Bing – Képkeresés egyoldalas alkalmazás oktatóanyag](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Lásd még 
 
-[Bing kép keresési áttekintése](../overview.md)  
+[Bing – Képkeresés áttekintése](../overview.md)  
 [Próbálja ki](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-[Egy ingyenes próba hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Bing kép keresési API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+[Ingyenes próba hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+[A Bing Image Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

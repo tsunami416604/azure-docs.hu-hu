@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2018
+ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 25bb455ea46fdc96e32e34d434dd844779b0b650
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495298"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616844"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Riasztás megjelenítése és figyelése az Azure Monitor használatával adat-előállítók
 A felhőalapú alkalmazások összetettek a részek. Győződjön meg arról, hogy az alkalmazás mindig elérhető fel az adatokat és kifogástalan állapotban fut figyelést biztosít. Segít, hogy ki a lehetséges problémák stave vagy korábbi kiépítettektől hibaelhárítása. Monitorozási adatok segítségével emellett részletes elemzéseket kaphat az alkalmazásról. A Tudásbázis segítségével javíthatja az alkalmazás teljesítménye vagy Karbantarthatóság, vagy ellenkező esetben manuális beavatkozást igénylő műveletek automatizálása.
@@ -26,7 +26,7 @@ A felhőalapú alkalmazások összetettek a részek. Győződjön meg arról, ho
 Az Azure Monitor a Microsoft Azure-ban a legtöbb szolgáltatás alapszintű infrastruktúra metrikákat és naplókat biztosít. További információkért lásd: [Figyelés áttekintése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Az Azure diagnosztikai naplók az erőforrás által kibocsátott naplókat, a műveletet az erőforrás vonatkozó részletes, gyakori adatokkal szolgálnak. A Data Factory jelenít meg az Azure Monitor-diagnosztikai naplók.
 
 ## <a name="persist-data-factory-data"></a>Data Factory adatok megőrzése
-A Data Factory csak 45 nap folyamatfuttatás adatokat tárolja. Ha azt szeretné megőrizni a folyamatfuttatás adatok legfeljebb 45 nap, az Azure Monitor használatával, nem csak irányíthatja a diagnosztikai naplók elemzéséhez, megőrizheti a azokat egy tárfiókba történő így gyári adatokat a chossing időtartamára.
+A Data Factory csak 45 nap folyamatfuttatás adatokat tárolja. Ha azt szeretné megőrizni a folyamatfuttatás adatok legfeljebb 45 nap, az Azure Monitor használatával, nem csak irányíthatja a diagnosztikai naplók elemzéséhez, megőrizheti a őket egy tárfiókot, így szabadon idejére gyári adatokat kell.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
@@ -398,6 +398,70 @@ ADFV2 bocsát ki a következő metrikák
 | TriggerFailedRuns    | Nem sikerült az eseményindító-futtatások metrikák     | Darabszám    | Összes                | Perc időtartamon belül az összes eseményindító sikertelen futtatások      |
 
 A mérőszámok elérése, kövesse a cikk- https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics
+
+## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Data Factory metrikák figyelése az Azure Monitor
+
+Használhatja az Azure Data Factory integrációs az Azure Monitor szolgáltatással az Azure monitornak adatátirányításhoz. Ez az integráció a következő esetekben hasznos:
+
+1.  Az Azure Monitor a Data Factory által közzétett mérőszámok széles választékának összetett lekérdezéseket írni szeretne. Egyéni riasztásokat is létrehozhat az Azure monitoron keresztül ezeket a lekérdezéseket.
+
+2.  Adat-előállítók különböző figyelni kívánt. Több adat-előállítók egyetlen Azure Monitor-munkaterületre is irányíthatja adatokat.
+
+A 7 perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
+
+### <a name="configure-diagnostic-settings-and-workspace"></a>Diagnosztikai beállítások és a munkaterület konfigurálása
+
+Diagnosztikai beállítások engedélyezése a data Factory.
+
+1.  Válassza ki **Azure Monitor** -> **diagnosztikai beállítások** -> Válassza ki a data factory -> kapcsolja be a diagnosztikát.
+
+    ![a figyelő-oms-image1.png](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+2.  Adja meg, beleértve a munkaterület a diagnosztikai beállítások.
+
+    ![a figyelő-oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Az Azure Marketplace-ről az Azure Data Factory Analytics telepítése
+
+![a figyelő-oms-image3.png](media/data-factory-monitor-oms/monitor-oms-image3.png)
+
+![a figyelő-oms-image4.png](media/data-factory-monitor-oms/monitor-oms-image4.png)
+
+Kattintson a **létrehozás** , és válassza ki a munkaterületet, és a munkaterület beállításait.
+
+![a figyelő-oms-image5.png](media/data-factory-monitor-oms/monitor-oms-image5.png)
+
+### <a name="monitor-data-factory-metrics"></a>Data Factory-metrikák figyelése
+
+Telepítés **az Azure Data Factory Analytics** létrehozza az alapértelmezett készletét, nézetek, amely lehetővé teszi a következő metrikákat:
+
+- A Folyamatfuttatások ADF futtatások-1) az adat-előállítók által
+
+- ADF-futtatások-2) tevékenység-végrehajtás a Data Factory által
+
+- Adat-előállítók által eseményindító-futtatások ADF futtatások-3)
+
+- ADF-hibák-1) első 10 folyamatot hibák adat-előállítók által
+
+- ADF-hibák-2) első 10 tevékenység-végrehajtás a Data Factory által
+
+- ADF-hibák-3) első 10 eseményindító hibák adat-előállítók által
+
+- Tevékenység-végrehajtás statisztikai ADF-1) típus szerint
+
+- Eseményindító-futtatások ADF statisztika-2) típus szerint
+
+- ADF-statisztikák-3) maximális Folyamatfuttatások időtartama
+
+![a figyelő-oms-image6.png](media/data-factory-monitor-oms/monitor-oms-image6.png)
+
+![a figyelő-oms-image7.png](media/data-factory-monitor-oms/monitor-oms-image7.png)
+
+Megjelenítheti a fenti metrikák, tekintse meg a lekérdezések mögötti ezeket a metrikákat, a lekérdezések szerkesztése, riasztásokat hozhat létre, és így tovább.
+
+![a figyelő-oms-image8.png](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 ## <a name="alerts"></a>Riasztások
 

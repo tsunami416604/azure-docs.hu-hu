@@ -1,6 +1,6 @@
 ---
-title: Fájlfeltöltés konfigurálása az Azure-portál használatával |} Microsoft Docs
-description: Hogyan használható az Azure-portálon az IoT hub engedélyezéséhez a csatlakoztatott eszközökből fájlfeltöltéseket konfigurálásához. A cél Azure storage-fiók konfigurálásával kapcsolatos információkat tartalmazza.
+title: Fájlfeltöltés konfigurálása az Azure portal használatával |} A Microsoft Docs
+description: Hogyan konfigurálása az IoT hubhoz csatlakoztatott eszközökről feltöltésének engedélyezése az Azure portal használatával. A cél az Azure storage-fiók konfigurálásával kapcsolatos információkat tartalmaz.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,63 +8,49 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 0100cbe4bbc66d0c4ef940cc40f4fa3441176a1a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9f9eeaed2716c5d492099568fd6f90080471af2
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633206"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055728"
 ---
-# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Az Azure portál használatával fájlfeltöltések IoT-központ konfigurálása
+# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurálja az IoT Hub fájlt tölt fel az Azure portal használatával
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
 ## <a name="file-upload"></a>Fájl feltöltése
 
-Használatához a [feltöltés funkció fájlt az IoT-központ][lnk-upload], először társítania kell egy Azure Storage-fiókot a központ. Válassza ki **fájlfeltöltés** és jelenítse meg a fájl feltöltése tulajdonságait az IoT hub, amely módosítás alatt áll.
+Használatához a [fájlba feltöltésének működését az IoT Hub](iot-hub-devguide-file-upload.md), először társítania kell egy Azure Storage-fiókot a hub. Válassza ki **fájlfeltöltés** Fájlfeltöltés tulajdonságai az IoT hub éppen módosított listájának megjelenítéséhez.
 
-![Az IoT-központ fájlfeltöltés a portál beállítások megtekintése][13]
+![Nézet az IoT Hub-fájl feltöltése a portál beállítások](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-**A tároló**: az Azure portál segítségével válassza ki a blob-tároló az IoT Hub társítani az aktuális Azure-előfizetéshez az Azure Storage-fiók. Ha szükséges, létrehozhat egy Azure Storage-fiókot a **tárfiókok** a panel megnyitásához, és a blob tároló a **tárolók** panelen. Az IoT-központ automatikusan létrehozza a SAS URI-azonosítók eszközöket használja, ha ezek a fájlok feltöltése a blob tároló írási engedéllyel rendelkező.
+* **A tároló**: válassza ki az aktuális Azure-előfizetés társítása az IoT Hub az Azure Storage-fiók egy blob-tárolóba az Azure portal használatával. Ha szükséges, létrehozhat egy Azure Storage-fiókot a a **tárfiókok** panelre, és a blob-tároló a **tárolók** panelen. Az IoT Hub automatikusan létrehozza az SAS URI-k eszközöket használja, ha azok a fájlok feltöltése a blob-tárolóba írási engedéllyel rendelkező.
 
-![A fájl feltöltése a tároló megtekintése a portálon][14]
+   ![Fájl feltöltése a storage-tárolók megtekintése a portálon](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-**A feltöltött fájlok értesítéseket**: engedélyezheti vagy tilthatja le a fájl feltöltése értesítések a váltógomb keresztül.
+* **A feltöltött fájlokkra vonatkozó értesítések fogadása**: a váltógomb keresztül fájl feltöltése értesítések engedélyezése vagy letiltása.
 
-**SAS-élettartam**: Ez a beállítás akkor a idő élettartamát az az eszközt az IoT-központ által visszaadott SAS URI-azonosítók. Alapértelmezés szerint egyórás beállítva, de más értékek, a csúszka segítségével testre szabható.
+* **SAS-élettartam**: Ez a beállítás akkor a time-to-live, az eszközt az IoT Hub által visszaadott SAS URI-azonosítókat. Alapértelmezés szerint egy óra beállítva, de más értékeket, a csúszka segítségével testre szabható.
 
-**Az értesítési beállítások alapértelmezett élettartam**: az idő TTL-fájl feltöltése értesítési, előtt lejárt. Alapértelmezés szerint egy nap beállítva, de más értékek, a csúszka segítségével testre szabható.
+* **Értesítési beállítások alapértelmezett TTL fájl**: A time-to-live-fájl feltöltése értesítési, mielőtt lejár. Alapértelmezés szerint állítsa be egy nap, de más értékeket, a csúszka segítségével testre szabható.
 
-**Értesítési maximális száma fájl**: A szám, ahányszor az IoT Hub megpróbál egy fájl feltöltése értesítést. Alapértelmezés szerint 10-re állítva, de más értékek, a csúszka segítségével testre szabható.
+* **A fájl értesítési kézbesítések maximális száma**: hányszor az IoT Hub fájlt próbál meg feltölteni értesítés. Alapértelmezés szerint a 10-re állítva, de más értékeket, a csúszka segítségével testre szabható.
 
-![Konfigurálja a portálon az IoT Hub-fájl feltöltése][15]
+   ![Konfigurálás a portálon az IoT Hub-fájl feltöltése](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Az IoT-központ a fájl feltöltése képességeivel kapcsolatos további információk: [egy eszközről tölt fel] [ lnk-upload] az IoT Hub fejlesztői útmutató.
+Az IoT Hub a fájl feltöltése képességeivel kapcsolatos további információkért lásd: [fájlfeltöltés az eszközökről](iot-hub-devguide-file-upload.md) az IoT Hub fejlesztői útmutatójában található.
 
 Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 
-* [Tömeges az IoT-eszközök kezelése][lnk-bulk]
-* [Az IoT-központ metrikák][lnk-metrics]
-* [Figyelési műveletek][lnk-monitor]
+* [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
+* [Az IoT Hub-metrikák](iot-hub-metrics.md)
+* [Műveletek figyelése](iot-hub-operations-monitoring.md)
 
-Az IoT-központ képességeit további megismeréséhez lásd:
+Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 
-* [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
-* [Az IoT-megoldásból az alapoktól biztonságos mentése][lnk-securing]
-
-[13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png
-[14]: ./media/iot-hub-configure-file-upload/file-upload-container-selection.png
-[15]: ./media/iot-hub-configure-file-upload/file-upload-selected-container.png
-
-[lnk-upload]: iot-hub-devguide-file-upload.md
-
-[lnk-bulk]: iot-hub-bulk-identity-mgmt.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-securing]: iot-hub-security-ground-up.md
+* [Az IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
+* [Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [Az IoT-megoldás az alapoktól biztonságos mentése](../iot-fundamentals/iot-security-ground-up.md)

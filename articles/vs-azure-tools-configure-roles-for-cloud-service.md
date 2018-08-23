@@ -1,134 +1,135 @@
 ---
-title: A szerepkörök az Azure-felhőszolgáltatás konfigurálása a Visual Studio |} Microsoft Docs
-description: Megtudhatja, hogyan beállítása és konfigurálása a szerepkörök az Azure felhőszolgáltatások Visual Studio használatával.
+title: A szerepkörök az Azure cloud Services számára konfigurálása a Visual Studióval |} A Microsoft Docs
+description: Megtudhatja, hogyan állíthatja be, és a szerepkörök a Visual Studio használatával Azure cloud services konfigurálása.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: d397ef87-64e5-401a-aad5-7f83f1022e16
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: 09e6c3a9c27342ef27d49674d62ccf74d70d2e0f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 010a345d0bc756855b9a85660afcd647d111db75
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798726"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056884"
 ---
-# <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>A Visual Studio Azure cloud service szerepkörök konfigurálása
-Azure-felhőszolgáltatás rendelkezhet egy vagy több munkavégző vagy a webes szerepkörök. Az egyes szerepkörökhöz szükség határozza meg, akkor az a szerepkör beállítására és is konfigurálhatja, hogyan fut a szerepkörhöz. A felhőszolgáltatások szerepkörök kapcsolatos további információkért lásd: a videó [Bevezetés az Azure Felhőszolgáltatások](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services). 
+# <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>Az Azure cloud service szerepkörök konfigurálása a Visual Studióval
+Egy Azure-felhőszolgáltatás egy vagy több feldolgozói vagy a webes szerepkörök rendelkezhet. Az egyes szerepkörökhöz kell határozza meg, hogy hogyan van beállítva, hogy a szerepkör és a is konfigurálhatja, hogyan fut a szerepkörhöz. A cloud services-szerepkörök kapcsolatos további információkért tekintse meg a videó [Azure Cloud Services bemutatása](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services). 
 
-A felhőalapú szolgáltatás adatait tárolja a következő fájlokat:
+A felhőszolgáltatás adatait tárolja a következő fájlokat:
 
-- **ServiceDefinition.csdef** -a szolgáltatásdefiníciós fájlban a milyen szerepkörre szükség, beleértve a felhőalapú szolgáltatás, a végpontok és a virtuális gép méretét a futásidejű beállításokat határoz meg. A tárolt adatokat `ServiceDefinition.csdef` módosítható, ha a szerepkör fut.
-- **ServiceConfiguration.cscfg** – a szolgáltatás konfigurációs fájlja konfigurálja, hogy hány példánya egy futnak, és a beállítások értékeit az egy szerepkörhöz definiált. A tárolt adatok `ServiceConfiguration.cscfg` módosíthatja a szerepkör futása közben.
+- **ServiceDefinition.csdef** – a szolgáltatásdefiníciós fájlt a futásidő beállításait, a felhőalapú szolgáltatás, többek között, hogy milyen szerepkörök szükségesek, végpontok és virtuális gép mérete határozza meg. A tárolt adatokat `ServiceDefinition.csdef` módosítható, ha a szerepkör fut.
+- **ServiceConfiguration.cscfg** – a szolgáltatás konfigurációs fájlja konfigurálja, hogy hány példánya egy futnak, és a beállítások értékeit meghatározott szerepkör. A tárolt adatok `ServiceConfiguration.cscfg` munkaköre futása közben is módosítható.
 
-Eltérő értékek tartoznak a szerepkör működésével szabályozó beállítások tárolására, több szolgáltatáskonfiguráció adhat meg. Minden környezet különböző szolgáltatáskonfiguráció használható. Például beállíthatja a tárolási fiók kapcsolati karakterlánc a helyi Azure storage emulatorral helyi szolgáltatás konfigurációban, és hozzon létre egy másik szolgáltatás konfigurációját az Azure storage használata a felhőben.
+A beállítás szabályozza, hogyan fut a egy szerepkör különböző értékeket szeretne tárolni, több szolgáltatáskonfiguráció adhatja meg. Minden üzembehelyezési környezetet is használhat egy másik szolgáltatás konfigurációját. Például beállíthatja a tárfiók kapcsolati sztringje a helyi Azure storage emulatorral helyi szolgáltatás konfigurációban, és hozzon létre egy másik szolgáltatás konfigurációját az Azure storage használata a felhőben.
 
-Azure-felhőszolgáltatás létrehozása a Visual Studióban, ha a két szolgáltatáskonfiguráció a rendszer automatikusan létrehozott és az Azure-projekt hozzáadja:
+Egy Azure-felhőszolgáltatás a Visual Studióban történő létrehozásakor két szolgáltatáskonfiguráció automatikusan létrehozott és hozzáadott Azure-projektjéhez:
 
 - `ServiceConfiguration.Cloud.cscfg`
 - `ServiceConfiguration.Local.cscfg`
 
-## <a name="configure-an-azure-cloud-service"></a>Azure-felhőszolgáltatás konfigurálása
-A Visual Studio megoldáskezelőjében egy Azure felhőszolgáltatást konfigurálhatja, ahogy az az alábbi lépéseket:
+## <a name="configure-an-azure-cloud-service"></a>Az Azure felhőszolgáltatás konfigurálása
+Konfigurálhatja egy Azure-felhőszolgáltatásban a Megoldáskezelőből a Visual Studióban, ahogyan az az alábbi lépéseket:
 
-1. Hozzon létre, vagy a Visual Studio Azure cloud service projekt megnyitása.
+1. Hozzon létre vagy nyisson meg egy Azure-felhőszolgáltatás-projekt a Visual Studióban.
 
-1. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki a helyi menüből **tulajdonságok**.
+1. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, és a helyi menüből válassza ki a **tulajdonságok**.
    
-    ![Solution Explorer projekt helyi menü](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-project-context-menu.png)
+    ![Megoldás Explorer projekt helyi menüjében](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-project-context-menu.png)
 
-1. A projekt Tulajdonságok lapján válassza a **fejlesztési** fülre. 
+1. A projekt tulajdonságai lapon válassza ki a **fejlesztési** fülre. 
 
-    ![Projekt párbeszédpanel - fejlesztési lap](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-development-tab.png)
+    ![Projekt tulajdonságai lap – fejlesztési lap](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-development-tab.png)
 
-1. Az a **szolgáltatáskonfiguráció** listára, válassza ki a szerkeszteni kívánt szolgáltatáskonfiguráció neve. (Ha a szerepkör szolgáltatáskonfiguráció módosításokat, jelölje be **összes konfiguráció**.)
+1. Az a **szolgáltatáskonfiguráció** listájához, válassza ki a szerkeszteni kívánt szolgáltatáskonfiguráció nevét. (Ha azt szeretné, ezt a szerepkört az összes szolgáltatás konfiguráció módosításához válassza **az összes konfiguráció**.)
    
     > [!IMPORTANT]
-    > Ha úgy dönt, hogy egy adott szolgáltatás konfigurációs, néhány tulajdonságát le vannak tiltva, mivel azok csak az összes konfiguráció állítható be. Ezek a Tulajdonságok szerkesztése, ki kell választania **összes konfiguráció**.
+    > Ha úgy dönt, hogy egy adott szolgáltatás konfigurációja, bizonyos tulajdonságok le vannak tiltva, mert azok a konfigurációk csak állítható. Ezek a tulajdonságok szerkesztéséhez választania kell **az összes konfiguráció**.
     > 
     > 
    
-    ![Azure-felhőszolgáltatás szolgáltatáskonfiguráció listája](./media/vs-azure-tools-configure-roles-for-cloud-service/cloud-service-service-configuration-property.png)
+    ![Az Azure cloud Services számára Service Configuration list](./media/vs-azure-tools-configure-roles-for-cloud-service/cloud-service-service-configuration-property.png)
 
 ## <a name="change-the-number-of-role-instances"></a>A szerepkörpéldányok számát
-A felhőalapú szolgáltatás teljesítményének javítása érdekében módosíthatja a hány példánya egy szerepkört futtató, a felhasználók vagy a terhelés, az adott szerepkörök várt száma alapján. Egy különálló virtuális gép szerepkör minden egyes példányánál létrejön, amikor a felhőalapú szolgáltatás fut az Azure-ban. Ez hatással van a számlázás a felhőalapú szolgáltatás telepítését. Számlázással kapcsolatos további információkért lásd: [a számlázási megérteni a Microsoft Azure](billing/billing-understand-your-bill.md).
+A felhőszolgáltatás a teljesítmény javítása érdekében módosíthatja a példányok egy szerepkör, amely futtatja, a felhasználók vagy a terhelés egy adott szerepkör esetében várt száma alapján. Egy különálló virtuális gép szerepkör minden egyes példányánál jön létre az Azure-ban a felhőszolgáltatás futtatásakor. Ez hatással van a számlázás a felhőalapú szolgáltatás központi telepítésére vonatkozóan. Számlázással kapcsolatos további információkért lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing/billing-understand-your-bill.md).
 
-1. Hozzon létre, vagy a Visual Studio Azure cloud service projekt megnyitása.
+1. Hozzon létre vagy nyisson meg egy Azure-felhőszolgáltatás-projekt a Visual Studióban.
 
-1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára. Az a **szerepkörök** csomópontot, kattintson a jobb gombbal a frissíteni, és a helyi menüből válassza ki a kívánt szerepkör **tulajdonságok**.
+1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára. Alatt a **szerepkörök** csomópontot, kattintson a jobb gombbal a frissíteni, és a helyi menüből válassza ki a kívánt szerepkör **tulajdonságok**.
 
-    ![Solution Explorer Azure szerepkör helyi menü](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
+    ![Megoldás Explorer Azure szerepkör helyi menü](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
 
 1. Válassza ki a **konfigurációs** fülre.
 
     ![Konfiguráció lap](./media/vs-azure-tools-configure-roles-for-cloud-service/role-configuration-properties-page.png)
 
-1. Az a **szolgáltatáskonfiguráció** listára, válassza ki a frissíteni kívánt szolgáltatás konfigurációját.
+1. Az a **szolgáltatáskonfiguráció** listájához, válassza ki a frissíteni kívánt szolgáltatás konfigurációját.
    
-    ![Konfigurációs szolgáltatás listája](./media/vs-azure-tools-configure-roles-for-cloud-service/role-configuration-properties-page-select-configuration.png)
+    ![Service Configuration list](./media/vs-azure-tools-configure-roles-for-cloud-service/role-configuration-properties-page-select-configuration.png)
 
-1. Az a **száma példány** szöveget adja meg, hogy el szeretné indítani a szerepkör-példányok száma. Minden példány külön virtuális gépen fut, az Azure felhőalapú szolgáltatásából közzétételekor.
+1. Az a **példányszám** szöveget adja meg, hogy el szeretné indítani a szerepkör-példányok száma. Minden példány egy külön virtuális gépet futtat, a felhőalapú szolgáltatás az Azure-ba való közzétételekor.
 
-    ![A példányok száma frissítése](./media/vs-azure-tools-configure-roles-for-cloud-service/role-configuration-properties-page-instance-count.png)
+    ![A példányok számának frissítése](./media/vs-azure-tools-configure-roles-for-cloud-service/role-configuration-properties-page-instance-count.png)
 
 1. A Visual Studio eszköztárában kattintson **mentése**.
 
 ## <a name="manage-connection-strings-for-storage-accounts"></a>Kapcsolati karakterláncok storage-fiókok kezelése
-Hozzáadhat, távolítsa el, vagy módosítsa a szolgáltatáskonfiguráció-kapcsolati karakterláncok. Például érdemes egy helyi kapcsolati karakterláncot egy helyi szolgáltatás konfigurációjához, amely értéke `UseDevelopmentStorage=true`. Azt is szeretné beállítani egy felhőalapú szolgáltatás konfigurációja, amely egy tárfiókot használja az Azure-ban.
+Hozzáadása, eltávolítása vagy módosítása a szolgáltatáskonfiguráció kapcsolati karakterláncokat. Például érdemes egy helyi kapcsolati karakterláncot, amelynek értéke helyi szolgáltatás konfiguráció `UseDevelopmentStorage=true`. Érdemes konfigurálni egy felhőalapú szolgáltatás konfigurációja, amely egy storage-fiókot használja az Azure-ban is.
 
 > [!WARNING]
-> Az Azure storage kulcs fiókadatai tárolási fiók kapcsolati karakterláncot adja meg, ezeket az információkat tárolja helyileg a szolgáltatás konfigurációs fájljában. Azonban ez az információ nem tárolt titkosított szövegként.
+> Írja be az Azure storage fiók kulcs adatait egy tárfiók kapcsolati sztringje, ezeket az információkat tárolja helyileg a konfigurációs fájlban. Azonban ezeket az adatokat jelenleg nem tárolja a titkosított szövegként.
 > 
 > 
 
-Minden szolgáltatás konfigurációját egy másik értéket használ, nincs különböző kapcsolati karakterláncok használata a felhőalapú szolgáltatás, vagy módosítsa a kódot, a felhőalapú szolgáltatás az Azure-ba való közzétételekor. A kapcsolati karakterlánc ugyanazt a nevet használhatja a kódban, és értéke nem egyezik a felhőalapú szolgáltatás építésekor, vagy amikor közzétesszük a választott szolgáltatás konfigurációja alapján.
+Egy másik értéket használatával minden egyes szolgáltatás konfigurációja, nem kell különböző kapcsolati karakterláncok használata a cloud service-ben, vagy módosítsa a kódot, a cloud Services az Azure-ba való közzétételekor. Használhatja ugyanazt a nevet a kapcsolati karakterláncot a kódban, és az érték nem egyezik, a szolgáltatás konfigurációja, amely a felhőszolgáltatás készítése során, vagy már a közzététel idején alapján.
 
-1. Hozzon létre, vagy a Visual Studio Azure cloud service projekt megnyitása.
+1. Hozzon létre vagy nyisson meg egy Azure-felhőszolgáltatás-projekt a Visual Studióban.
 
-1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára. Az a **szerepkörök** csomópontot, kattintson a jobb gombbal a frissíteni, és a helyi menüből válassza ki a kívánt szerepkör **tulajdonságok**.
+1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára. Alatt a **szerepkörök** csomópontot, kattintson a jobb gombbal a frissíteni, és a helyi menüből válassza ki a kívánt szerepkör **tulajdonságok**.
 
-    ![Solution Explorer Azure szerepkör helyi menü](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
+    ![Megoldás Explorer Azure szerepkör helyi menü](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
 
 1. Válassza ki a **beállítások** fülre.
 
     ![Beállítások lap](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab.png)
 
-1. Az a **szolgáltatáskonfiguráció** listára, válassza ki a frissíteni kívánt szolgáltatás konfigurációját.
+1. Az a **szolgáltatáskonfiguráció** listájához, válassza ki a frissíteni kívánt szolgáltatás konfigurációját.
 
     ![Szolgáltatás konfigurációja](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-select-configuration.png)
 
-1. A kapcsolati karakterlánc hozzáadásához válassza **beállítás hozzáadása**.
+1. Kapcsolati karakterlánc hozzáadásához válassza **beállítás hozzáadása**.
 
-    ![Kapcsolati karakterlánc hozzáadása](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting.png)
+    ![Kapcsolati sztring hozzáadása](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting.png)
 
-1. Miután az új beállítás hozzáadta a listához, frissítse a sort a listán a szükséges információkat.
+1. Miután a lista az új beállítással bővült, frissítse a sorra a listában a szükséges információkat.
 
-    ![Új kapcsolati karakterlánc](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting-new-setting.png)
+    ![Új kapcsolati sztring](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting-new-setting.png)
 
-    - **Név** -adja meg a kapcsolati karakterlánc használni kívánt nevét.
-    - **Típus** – Itt adhatja meg **kapcsolati karakterlánc** a legördülő listából.
-    - **Érték** -adhatja meg a kapcsolati karakterlánc közvetlenül a **érték** cella, vagy válassza ki a munkát a három ponttal (…) a **tárolási kapcsolati karakterlánc létrehozása** párbeszédpanel.  
+    - **Név** – adja meg a kapcsolati karakterláncot használni kívánt nevét.
+    - **Típus** – ki **kapcsolati karakterlánc** a legördülő listából.
+    - **Érték** -adhatja meg a kapcsolati karakterláncot, közvetlenül a **érték** cella, vagy válassza ki a munkát a három pontra (...) a **tárolási kapcsolati karakterlánc létrehozása** párbeszédpanel.  
 
-1. Az a **tárolási kapcsolati karakterlánc létrehozása** párbeszédpanelen válasszon egy beállítást **protokoll használatával kapcsolódó levelezőprogramokkal**. Ezután kövesse a kiválasztott beállítás:
+1. Az a **tárolási kapcsolati karakterlánc létrehozása** párbeszédpanelen jelöljön ki egy lehetőséget **érdemesebb**. Kövesse az utasításokat a lehetőséget választja:
 
-    - **A Microsoft Azure storage emulator** – Ha ezt a lehetőséget választja, a többi beállítást a párbeszédpanelen le vannak tiltva megfelelően csak az Azure-bA. Kattintson az **OK** gombra.
-    - **Az előfizetés** – Ha ezt a beállítást, a legördülő lista segítségével válassza ki, és jelentkezzen be Microsoft-fiókkal, vagy vegye fel a Microsoft-fiókkal. Válassza ki az Azure-előfizetés és a tárolási fiók. Kattintson az **OK** gombra.
-    - **Manuálisan kell megadni a hitelesítő adatok** -adja meg a tárfiók nevét és a második vagy elsődleges kulcs. Válassza ki a **kapcsolat** (HTTPS ajánlott a legtöbb esetben.) Válassza ki **OK**.
+    - **A Microsoft Azure storage emulator** – Ha ezt a lehetőséget választja, a többi beállítás párbeszédpanelen le vannak tiltva mivel azok csak az Azure-bA. Kattintson az **OK** gombra.
+    - **Az előfizetés** – Ha ezt a beállítást, használja a legördülő listából válassza ki, és jelentkezzen be Microsoft-fiókot, vagy a Microsoft-fiók hozzáadása. Válassza ki az Azure előfizetés- és storage-fiók. Kattintson az **OK** gombra.
+    - **Manuálisan kell megadni a hitelesítő adatok** – adja meg a tárfiók nevét és az elsődleges vagy a második kulcsot. Válassza ki a **kapcsolat** (a legtöbb forgatókönyvhöz HTTPS ajánlott.) Válassza ki **OK**.
 
-1. A kapcsolati karakterlánc törléséhez válassza ki a kapcsolati karakterláncot, majd válassza ki **eltávolítása beállítás**.
+1. Kapcsolati karakterlánc törléséhez válassza ki a kapcsolati karakterláncot, és válassza **távolítsa el a beállítás**.
 
 1. A Visual Studio eszköztárában kattintson **mentése**.
 
-## <a name="programmatically-access-a-connection-string"></a>A kapcsolati karakterlánc programon keresztüli eléréséhez
+## <a name="programmatically-access-a-connection-string"></a>Egy kapcsolati karakterláncot programozott módon érheti el
 
-A következő lépések bemutatják, hogyan egy kapcsolati karakterláncot, amely C# programon keresztüli eléréséhez.
+A következő lépések bemutatják, hogyan C# használatával kapcsolati karakterláncot programozott módon érheti el.
 
-1. Adja hozzá a következő irányelvek segítségével egy C# fájlban hová beállítást használják:
+1. Adja hozzá az alábbi irányelvek használatával hol kívánja használni a beállítás C# fájlban:
 
     ```csharp
     using Microsoft.WindowsAzure;
@@ -136,55 +137,55 @@ A következő lépések bemutatják, hogyan egy kapcsolati karakterláncot, amel
     using Microsoft.WindowsAzure.ServiceRuntime;
     ```
 
-1. Az alábbi kód bemutatja, hogyan férhet hozzá a kapcsolati karakterláncot egy példát. Cserélje le a &lt;ConnectionStringName > helyőrzőt a megfelelő értékkel. 
+1. Az alábbi kód bemutatja, hogyan érhető el egy kapcsolati karakterláncot egy példát. Cserélje le a &lt;ConnectionStringName > helyőrzőt a megfelelő értékre. 
 
     ```csharp
     // Setup the connection to Azure Storage
     var storageAccount = CloudStorageAccount.Parse(RoleEnvironment.GetConfigurationSettingValue("<ConnectionStringName>"));
     ```
 
-## <a name="add-custom-settings-to-use-in-your-azure-cloud-service"></a>Adja hozzá az egyéni beállítások használata az Azure-felhőszolgáltatás
-Egyéni beállítások a konfigurációs fájlban adja hozzá egy nevet és értéket egy adott szolgáltatás konfiguráció lehetővé teszik. Dönthet a beállítás segítségével állítsa be a szolgáltatás az a felhőalapú szolgáltatás olvasásakor a beállítás értékét, és ezt az értéket segítségével vezérelheti, a kódban a programot. A szolgáltatás konfigurációs értékeket módosíthatja anélkül, hogy a szolgáltatáscsomag vagy amikor a felhőalapú szolgáltatás fut-e. A kódot is keresése az értesítések, amikor a beállítások módosítása. Lásd: [RoleEnvironment.Changing esemény](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx).
+## <a name="add-custom-settings-to-use-in-your-azure-cloud-service"></a>Az Azure cloud service-ben használható egyéni beállítások hozzáadása
+Egyéni beállítások a konfigurációs fájlban segítségével adjon hozzá egy nevet és a egy adott szolgáltatás konfigurációs karakterlánc értékét. Előfordulhat, hogy használni kívánja ezt a beállítást, a szolgáltatás konfigurálása a cloud service-ben a beállítás értékét olvasásakor, és ezt az értéket használja a kód a logika. Módosíthatja a szolgáltatás konfigurációs értékek nélkül építse újra a szolgáltatáscsomag vagy a felhőszolgáltatás futtatásakor. A kód az értesítések ellenőrizheti, amikor a beállítások módosításai. Lásd: [RoleEnvironment.Changing esemény](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx).
 
-Is hozzáadhat, távolítsa el, vagy módosítsa a szolgáltatáskonfiguráció egyéni beállításait. Ezek a különböző szolgáltatáskonfiguráció karakterláncok érdemes eltérő értékek tartoznak.
+Hozzáadhat, távolítsa el, vagy egyéni beállítások a szolgáltatáskonfiguráció módosítása. Ezek a karakterláncok eltérő konfigurációk esetében érdemes lehet különböző értékeket.
 
-Minden szolgáltatás konfigurációját egy másik értéket használ, nincs másik karakterláncok használata a felhőalapú szolgáltatás, vagy módosítsa a kódot, a felhőalapú szolgáltatás az Azure-ba való közzétételekor. A karakterlánc ugyanazt a nevet használhatja a kódban, és értéke nem egyezik a felhőalapú szolgáltatás építésekor, vagy amikor közzétesszük a választott szolgáltatás konfigurációja alapján.
+Egy másik értéket használatával minden egyes szolgáltatás konfigurációja, nem kell különböző karakterláncokat használni a cloud service-ben, vagy módosítsa a kódot, a cloud Services az Azure-ba való közzétételekor. Használhatja ugyanazt a nevet a karakterláncot a kódban, és az érték nem egyezik, a szolgáltatás konfigurációja, amely a felhőszolgáltatás készítése során, vagy már a közzététel idején alapján.
 
-1. Hozzon létre, vagy a Visual Studio Azure cloud service projekt megnyitása.
+1. Hozzon létre vagy nyisson meg egy Azure-felhőszolgáltatás-projekt a Visual Studióban.
 
-1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára. Az a **szerepkörök** csomópontot, kattintson a jobb gombbal a frissíteni, és a helyi menüből válassza ki a kívánt szerepkör **tulajdonságok**.
+1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára. Alatt a **szerepkörök** csomópontot, kattintson a jobb gombbal a frissíteni, és a helyi menüből válassza ki a kívánt szerepkör **tulajdonságok**.
 
-    ![Solution Explorer Azure szerepkör helyi menü](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
+    ![Megoldás Explorer Azure szerepkör helyi menü](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
 
 1. Válassza ki a **beállítások** fülre.
 
     ![Beállítások lap](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab.png)
 
-1. Az a **szolgáltatáskonfiguráció** listára, válassza ki a frissíteni kívánt szolgáltatás konfigurációját.
+1. Az a **szolgáltatáskonfiguráció** listájához, válassza ki a frissíteni kívánt szolgáltatás konfigurációját.
 
-    ![Konfigurációs szolgáltatás listája](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-select-configuration.png)
+    ![Service Configuration list](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-select-configuration.png)
 
-1. Egyéni beállítás hozzáadásához válassza **beállítás hozzáadása**.
+1. Egy egyéni beállítás hozzáadásához válassza **beállítás hozzáadása**.
 
-    ![Egyéni Alkalmazásbeállítás hozzáadása](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting.png)
+    ![Egyéni beállítás hozzáadása](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting.png)
 
-1. Miután az új beállítás hozzáadta a listához, frissítse a sort a listán a szükséges információkat.
+1. Miután a lista az új beállítással bővült, frissítse a sorra a listában a szükséges információkat.
 
-    ![Új egyéni beállítása](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting-new-setting.png)
+    ![Új egyéni beállítás](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-add-setting-new-setting.png)
 
-    - **Név** -adja meg a beállítás nevét.
-    - **Típus** – Itt adhatja meg **karakterlánc** a legördülő listából.
-    - **Érték** -adja meg a beállítás értékét. Megadhat közvetlenül be értéket a **érték** cella, vagy jelölje ki a három ponttal (…) a értékek a **karakterlánc szerkesztése** párbeszédpanel.  
+    - **Név** – adja meg a beállítás nevét.
+    - **Típus** – ki **karakterlánc** a legördülő listából.
+    - **Érték** – adja meg a beállítás értékét. Vagy megadhatja közvetlenül az érték a **érték** cella, vagy jelölje ki a három pontra (...), írja be az értéket a **karakterlánc szerkesztése** párbeszédpanel.  
 
-1. Törölni egy egyéni beállítást, a beállítás, majd válassza ki és **eltávolítása beállítás**.
+1. Egy egyéni beállítás törléséhez jelölje ki a beállítást, és válassza **távolítsa el a beállítás**.
 
 1. A Visual Studio eszköztárában kattintson **mentése**.
 
-## <a name="programmatically-access-a-custom-settings-value"></a>Programon keresztüli eléréséhez az egyéni beállítás értéke
+## <a name="programmatically-access-a-custom-settings-value"></a>Programozott módon érheti el az egyéni beállítás értéke
  
-A következő lépések bemutatják, hogyan programon keresztüli eléréséhez használ C# egyéni beállítás.
+A következő lépések bemutatják, hogyan programozott módon érheti el az egyéni beállítás C# használatával.
 
-1. Adja hozzá a következő irányelvek segítségével egy C# fájlban hová beállítást használják:
+1. Adja hozzá az alábbi irányelvek használatával hol kívánja használni a beállítás C# fájlban:
 
     ```csharp
     using Microsoft.WindowsAzure;
@@ -192,52 +193,52 @@ A következő lépések bemutatják, hogyan programon keresztüli eléréséhez 
     using Microsoft.WindowsAzure.ServiceRuntime;
     ```
 
-1. Az alábbi kód bemutatja, hogyan férhet hozzá az egyéni beállítás példát. Cserélje le a &lt;SettingName > helyőrzőt a megfelelő értékkel. 
+1. A következő kódot egy egyéni beállítás elérése példáját mutatja be. Cserélje le a &lt;SettingName > helyőrzőt a megfelelő értékre. 
     
     ```csharp
     var settingValue = RoleEnvironment.GetConfigurationSettingValue("<SettingName>");
     ```
 
-## <a name="manage-local-storage-for-each-role-instance"></a>Minden egyes szerepkörpéldányhoz helyi tárterület kezelése
-Egy szerepkör minden egyes példányánál helyi fájl rendszerhez szükséges tárhelyet adhat hozzá. A található adatokhoz tároló nem érhető el az adatok tárolását a szerepkör más példányát, vagy más szerepköröket.  
+## <a name="manage-local-storage-for-each-role-instance"></a>Minden egyes szerepkör-példány helyi tárterület kezelése
+Hozzáadhat a helyi fájlrendszer-tárhely a szerepkör minden egyes példányánál. Az adatok tárolt abban, hogy a tároló nem érhető el, további példányok szerepköréhez tartozó adatokat tárolja, vagy más szerepköröket.  
 
-1. Hozzon létre, vagy a Visual Studio Azure cloud service projekt megnyitása.
+1. Hozzon létre vagy nyisson meg egy Azure-felhőszolgáltatás-projekt a Visual Studióban.
 
-1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára. Az a **szerepkörök** csomópontot, kattintson a jobb gombbal a frissíteni, és a helyi menüből válassza ki a kívánt szerepkör **tulajdonságok**.
+1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára. Alatt a **szerepkörök** csomópontot, kattintson a jobb gombbal a frissíteni, és a helyi menüből válassza ki a kívánt szerepkör **tulajdonságok**.
 
-    ![Solution Explorer Azure szerepkör helyi menü](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
+    ![Megoldás Explorer Azure szerepkör helyi menü](./media/vs-azure-tools-configure-roles-for-cloud-service/solution-explorer-azure-role-context-menu.png)
 
 1. Válassza ki a **helyi tároló** fülre.
 
-    ![Helyi tárolás lap](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab.png)
+    ![Helyi tároló lap](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab.png)
 
-1. Az a **szolgáltatáskonfiguráció** listában, ügyeljen arra, hogy **összes konfiguráció** van jelölve, hogy a helyi tároló beállítások érvényesek minden szolgáltatáskonfiguráció. Semmilyen más érték a beviteli mezők le van tiltva az oldalon eredményez. 
+1. Az a **szolgáltatáskonfiguráció** listában, ellenőrizze, hogy **az összes konfiguráció** van jelölve, hogy a helyi tároló beállítások vonatkoznak az összes szolgáltatás konfigurációja. Bármely más érték eredményez az adatbeviteli mezők le van tiltva, az oldalon. 
 
-    ![Konfigurációs szolgáltatás listája](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab-service-configuration.png)
+    ![Service Configuration list](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab-service-configuration.png)
 
-1. A helyi tárterület-bejegyzés hozzáadásához válassza ki a **hozzáadása helyi tároló**.
+1. Egy helyi tárterület-bejegyzés hozzáadásához válassza **helyi tárhely hozzáadása**.
 
-    ![Adja hozzá a helyi tároló](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab-add-local-storage.png)
+    ![Helyi tároló hozzáadása](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab-add-local-storage.png)
 
-1. Az új helyi tároló bejegyzés hozzáadva a listához, frissíti a listában a sort a szükséges információkat.
+1. Ha az új helyi tárterület-bejegyzést a listához hozzáadott, frissítse a sorra a listában a szükséges információkat.
 
     ![Új helyi tárterület-bejegyzés](./media/vs-azure-tools-configure-roles-for-cloud-service/role-local-storage-tab-new-local-storage.png)
 
-    - **Név** -adja meg az új helyi tárolására használni kívánt nevét.
-    - **Méret (MB)** -adja meg a mérete (MB), amelyekre szüksége van az új helyi tárolására.
-    - **Tiszta a szerepkör újrahasznosítást** – válassza ezt a beállítást, az új helyi tároló eltávolítja az adatokat, amikor a szerepkör a virtuális gép újraindul.
+    - **Név** – adja meg az új helyi tárolására használni kívánt nevét.
+    - **Méret (MB)** – adja meg a mérete (MB), amely az új helyi tárhelyre van szüksége.
+    - **Törölje a szerepkör újraindítási** – ezzel a lehetőséggel távolítsa el az adatokat az új helyi tároló, amikor a szerepkör a virtuális gép újraindul.
 
-1. Törli a helyi tároló bejegyzést, válassza ki a bejegyzést, és válassza **helyi tárhely eltávolítása**.
+1. A helyi tároló bejegyzés törléséhez válassza ki a bejegyzést, és válassza **helyi tároló eltávolítása**.
 
 1. A Visual Studio eszköztárában kattintson **mentése**.
 
-## <a name="programmatically-accessing-local-storage"></a>Programozott módon a helyi tároló elérése
+## <a name="programmatically-accessing-local-storage"></a>Programozott módon a helyi tárolók elérése során
 
-Ez a szakasz bemutatja, hogyan való szoftveres hozzáféréshez helyi tárolóhely-C# teszt szövegfájlba írásával `MyLocalStorageTest.txt`.  
+Ez a szakasz bemutatja, hogyan programozott módon érheti el a helyi tároló használata a C#, ha a teszt szövegfájl `MyLocalStorageTest.txt`.  
 
 ### <a name="write-a-text-file-to-local-storage"></a>Szövegfájl írni a helyi tároló
 
-A következő kód bemutatja a példa bemutatja, hogyan szövegfájlba írni a helyi tárterület. Cserélje le a &lt;LocalStorageName > helyőrzőt a megfelelő értékkel. 
+A következő kódot egy szövegfájlba írásával helyi tárba egy példát mutat be. Cserélje le a &lt;LocalStorageName > helyőrzőt a megfelelő értékre. 
 
     ```csharp
     // Retrieve an object that points to the local storage resource
@@ -255,9 +256,9 @@ A következő kód bemutatja a példa bemutatja, hogyan szövegfájlba írni a h
 
     ```
 
-### <a name="find-a-file-written-to-local-storage"></a>A fájl helyi tárhelyen található
+### <a name="find-a-file-written-to-local-storage"></a>Helyi tároló írt fájl keresése
 
-A kódot az előző szakaszban létrehozott fájl megtekintéséhez kövesse az alábbi lépéseket:
+A fájl által a kód az előző szakaszban létrehozott megtekintéséhez kövesse az alábbi lépéseket:
     
 1.  A Windows értesítési területen kattintson a jobb gombbal az Azure ikonra, és, a helyi menüből válassza ki a **Show Compute Emulator felhasználói felületén**. 
 
@@ -267,12 +268,12 @@ A kódot az előző szakaszban létrehozott fájl megtekintéséhez kövesse az 
 
     ![Az Azure compute emulator](./media/vs-azure-tools-configure-roles-for-cloud-service/compute-emulator.png)
 
-1. Az a **Microsoft Azure Compute Emulator** menü **eszközök** > **nyissa meg a helyi tárolójába**.
+1. Az a **a Microsoft Azure Compute Emulator** menüjében válassza **eszközök** > **nyissa meg a helyi tároló**.
 
-    ![Nyissa meg a helyi tárolójába menüpont](./media/vs-azure-tools-configure-roles-for-cloud-service/compute-emulator-open-local-store-menu.png)
+    ![Nyissa meg a helyi tároló menüpont](./media/vs-azure-tools-configure-roles-for-cloud-service/compute-emulator-open-local-store-menu.png)
 
-1. Amikor megnyílik a Windows Intéző ablakot, írja be a "MyLocalStorageTest.txt" be a **keresési** szövegmezőbe, majd válassza ki **Enter** a keresés indításához. 
+1. Amikor megnyílik a Windows Intéző ablakot, írja be a "MyLocalStorageTest.txt:" % be a **keresési** szövegmezőbe, majd válassza ki **Enter** kereséséhez. 
 
 ## <a name="next-steps"></a>További lépések
-További tudnivalók a Visual Studio Azure projektek olvasásával [konfigurálása az Azure-projekt](vs-azure-tools-configuring-an-azure-project.md). További információ a felhőalapú szolgáltatás séma olvasásával [Sémareferenciája](https://msdn.microsoft.com/library/azure/dd179398).
+Olvassa el a Visual Studio Azure-projektek többet [egy Azure-projekt konfigurálása](vs-azure-tools-configuring-an-azure-project.md). További információ a cloud service-séma olvasásával [Sémaleírás](https://msdn.microsoft.com/library/azure/dd179398).
 

@@ -3,19 +3,19 @@ title: Hozzon létre Apache Kafka engedélyezve van az Azure Event Hubs |} A Mic
 description: Hozzon létre egy Kafka engedélyezve van az Azure Event Hubs-névtér az Azure portal használatával
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
+author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: shvija
-ms.openlocfilehash: 79b6b879bd2332c044ce871e2c9a938c6b9c900c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.date: 08/16/2018
+ms.author: bahariri
+ms.openlocfilehash: 7ce12f9dcaa15ade95274419f99c13d5915dbaaa
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285085"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061394"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Az Apache Kafka engedélyezve van az event hubs létrehozása
 
@@ -29,29 +29,29 @@ Ez a cikk ismerteti, hogyan hozzon létre egy Event Hubs-névtér és a Kafka-ko
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a feladatok megkezdése előtt.
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Hozzon létre egy Kafka engedélyezve van az Event Hubs-névtér
+## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka-kompatibilis Event Hubs-névtér létrehozása
 
 1. Jelentkezzen be a [az Azure portal][Azure portal], és kattintson a **erőforrás létrehozása** , a képernyő bal felső.
 
-2. Keresse meg az Event Hubs, és válassza ki a beállításokat itt látható:
+2. Keressen rá az Event Hubsra, és válassza az itt látható lehetőségeket:
     
-    ![A portálon az Event Hubs keresése](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
+    ![Event Hubs keresése a portálon](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Adjon meg egy egyedi nevet, és engedélyezze a Kafka a névtérhez. Kattintson a **Create** (Létrehozás) gombra.
+3. Adjon meg egy egyedi nevet, és engedélyezze a Kafkát a névtéren. Kattintson a **Create** (Létrehozás) gombra.
     
     ![Névtér létrehozása](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
  
-4. A névtér létrehozása után a a **beállítások** lapon kattintson **megosztott elérési házirendek** , kérje le a kapcsolati karakterláncot.
+4. A névtér létrehozását követően a **Beállítások** lap **Megosztott elérési szabályzatok** elemére kattintva kérje le a kapcsolati sztringet.
 
-    ![Kattintson a megosztott elérési szabályzatok](./media/event-hubs-create/create-event-hub7.png)
+    ![Kattintás a Megosztott elérési szabályzatok elemre](./media/event-hubs-create/create-event-hub7.png)
 
-5. Kiválaszthatja az alapértelmezett **RootManageSharedAccessKey**, vagy adjon hozzá egy új házirendet. Kattintson a házirend nevére, és másolja a kapcsolati karakterláncot. 
+5. Választhatja az alapértelmezett **RootManageSharedAccessKey** szabályzatot, vagy hozzáadhat egy újat is. Kattintson a szabályzat nevére, és másolja a vágólapra a kapcsolati sztringet. 
     
-    ![Válasszon ki egy szabályzatot](./media/event-hubs-create/create-event-hub8.png)
+    ![Szabályzat kiválasztása](./media/event-hubs-create/create-event-hub8.png)
  
-6. Adja hozzá ezt a kapcsolati karakterláncot a Kafka-alkalmazás konfigurációja.
+6. Adja hozzá ezt a kapcsolati sztringet a Kafka-alkalmazás konfigurációjához.
 
-Az Event hubsba a Kafka-protokollt használó alkalmazások már streamelheti eseményeket.
+Így már streamelheti az eseményeket az Event Hubsba a Kafka-protokollt használó alkalmazásaiból.
 
 ## <a name="next-steps"></a>További lépések
 

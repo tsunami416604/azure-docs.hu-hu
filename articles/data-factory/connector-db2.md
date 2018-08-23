@@ -1,6 +1,6 @@
 ---
-title: Másolja az Azure Data Factory használatával DB2 adatait |} Microsoft Docs
-description: 'Útmutató: adatok másolása DB2 támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
+title: Azure Data Factory használatával DB2 adatokat másolni |} A Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatokat a DB2 támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,64 +11,64 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 11647c231db3ff7beb2fed641dc72ff339b2b45a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f9d1d2181649cf24784dc7ad11638946c9ee4406
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046241"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42061384"
 ---
-# <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása az DB2 Azure Data Factory használatával
+# <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása DB2 az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](v1/data-factory-onprem-db2-connector.md)
+> * [1-es verzió](v1/data-factory-onprem-db2-connector.md)
 > * [Aktuális verzió](connector-db2.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatokat másolni egy DB2-adatbázishoz. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység adatokat másol egy DB2-adatbázis használata. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-Adatok bármely támogatott fogadó adattárolóhoz másolhatja DB2-adatbázishoz. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+DB2-adatbázisból származó adatok másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Pontosabban a DB2-összekötő a következő IBM DB2-platformok és verziók rendelkező elosztott relációs adatbázis architektúra (DRDA) SQL Access Manager (SQLAM) 9, 10, 11 verziót támogatja:
+Pontosabban a DB2-összekötő a következő IBM DB2-platformokat és verziókat az elosztott relációs adatbázis architektúra (DRDA) SQL Access Manager (SQLAM) 9, 10, 11 verzió támogatja:
 
-* IBM DB2 z/os 11.1
-* IBM DB2 z/OS 10.1
-* Az IBM DB2 i 7.2
-* Az IBM DB2 i 7.1
+* Z/os 11.1 IBM DB2-höz
+* Z/OS 10.1 IBM DB2-höz
+* Az IBM DB2-höz i 7.2
+* Az IBM DB2-höz i 7.1
 * IBM DB2 LUW 11
-* IBM DB2 LUW 10.5 számára
-* IBM DB2 LUW 10.1 számára
+* IBM DB2-höz tartozó LUW 10,5
+* IBM DB2-höz tartozó LUW 10.1
 
 > [!TIP]
-> Ha kap olyan hibaüzenetet, amely szerint az "a megfelelő SQL-utasítás végrehajtása kérelmet csomag nem található. SQLSTATE 51002 SQLCODE =-805 = ", a hiba oka egy szükséges csomag nem lesz létrehozva normál felhasználói ilyen operációs rendszeren. Ezek a lépések alapján a DB2-kiszolgáló típusa:
-> - A DB2 i (AS400): lehetővé teszik a kiemelt felhasználó létrehozása a másolási tevékenység használata előtt a bejelentkezési felhasználói gyűjteményt. Parancs: `create collection <username>`
-> - A z/OS- vagy LUW DB2: egy magas jogosultságú fiók - kiemelt felhasználói vagy a felügyeleti csomag hitelesítésszolgáltatók és a kötési, BINDADD, GRANT hajtható végre a nyilvános engedélyeket - használatával futtassa egyszer a másolási tevékenység során, majd a szükséges csomag másolása során automatikusan létrejön. Ezután válthat vissza a normál felhasználói a későbbi másolási kísérletekhez.
+> Ha egy hibaüzenetet küld, hogy "az SQL-utasítás végrehajtási kérelméhez tartozó csomag nem található. SQLSTATE 51002 SQLCODE =-805 = ", a hiba oka szükséges csomag nem jön az ilyen operációs rendszer normál felhasználó számára. Kövesse az alábbi utasításokat a DB2-kiszolgáló típusa szerint:
+> - A DB2 i (AS400): lehetővé teszik a kiemelt felhasználó, a másolási tevékenység használata előtt a bejelentkezési felhasználói gyűjtemény létrehozása. A parancs: `create collection <username>`
+> - A – z/OS- vagy LUW DB2: egy magas jogosultságú fiók – kiemelt felhasználói vagy a felügyeleti csomag hitelesítésszolgáltatók és a kötési, BINDADD, támogatás hajtsa végre a nyilvános engedélyeket – segítségével a másolási tevékenység futtatása után, majd a szükséges csomag másolása során automatikusan létrejön. Ezt követően válthat vissza a normál felhasználói az ezt követő másolási futtatások.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szeretné használni az adatok másolása egy DB2-adatbázisból, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Önálló üzemeltetett integrációs futtatókörnyezetek kapcsolatos további tudnivalókért lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk. Az integrációs futásidejű biztosít egy beépített DB2-illesztőprogramot, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram DB2-adatok másolásakor kell.
+Használja az adatok másolása a DB2-adatbázis, amely nem érhető el nyilvánosan, meg kell egy helyi Integration Runtime beállítása. Saját üzemeltetésű integrációs modulok kapcsolatos további információkért lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) cikk. Az Integration Runtime biztosít egy beépített DB2-illesztőprogramot, ezért nem kell manuálisan telepítenie az összes illesztőprogram DB2-adatok másolásakor.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják való DB2-összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
+Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások DB2-összekötő-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A következő tulajdonságok DB2 kapcsolódó szolgáltatás támogatottak:
+DB2-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Db2** | Igen |
-| kiszolgáló |A DB2-kiszolgáló neve. |Igen |
-| adatbázis |Neve a DB2-adatbázishoz. |Igen |
-| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az érték engedélyezett: **alapvető**. |Igen |
-| felhasználónév |Adja meg a felhasználónevet a DB2-adatbázishoz való kapcsolódáshoz. |Igen |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+| type | A type tulajdonság értékre kell állítani: **Db2** | Igen |
+| kiszolgáló |A DB2-kiszolgáló neve. Megadhatja, hogy a port számát, a kiszolgáló neve, pontosvesszővel elválasztva például a következő `server:port`. |Igen |
+| adatbázis |A DB2-adatbázis neve. |Igen |
+| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az érték engedélyezett: **alapszintű**. |Igen |
+| felhasználónév |Adja meg a felhasználónevet, a DB2-adatbázishoz való csatlakozáshoz. |Igen |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
 
@@ -78,7 +78,7 @@ A következő tulajdonságok DB2 kapcsolódó szolgáltatás támogatottak:
     "properties": {
         "type": "Db2",
         "typeProperties": {
-            "server": "<servername>",
+            "server": "<servername:port>",
             "database": "<dbname>",
             "authenticationType": "Basic",
             "username": "<username>",
@@ -97,13 +97,13 @@ A következő tulajdonságok DB2 kapcsolódó szolgáltatás támogatottak:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg az adatkészletek cikket. Ez a szakasz a DB2 dataset által támogatott tulajdonságokról listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a DB2-adathalmaz által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása DB2, az adatkészlet típus tulajdonságának beállítása **RelationalTable**. A következő tulajdonságok támogatottak:
+Adatokat másol a DB2, állítsa be a type tulajdonság, az adatkészlet **RelationalTable**. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adathalmaz értékre kell állítani: **RelationalTable** | Igen |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **RelationalTable** | Igen |
 | tableName | A DB2-adatbázishoz a tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -125,16 +125,16 @@ Adatok másolása DB2, az adatkészlet típus tulajdonságának beállítása **
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a DB2-forrás által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a DB2-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="db2-as-source"></a>DB2 forrásaként
+### <a name="db2-as-source"></a>Forrásként DB2
 
-Adatok másolása DB2, állítsa be a forrás típusa a másolási tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása a DB2, állítsa be a forrás típusaként a másolási tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **RelationalSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével adatokat olvasni. Például: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
@@ -168,22 +168,22 @@ Adatok másolása DB2, állítsa be a forrás típusa a másolási tevékenység
 ]
 ```
 
-## <a name="data-type-mapping-for-db2"></a>Adattípus-leképezés a DB2 rendszerhez
+## <a name="data-type-mapping-for-db2"></a>Adattípus-leképezés DB2
 
-Az adatok másolása DB2, amikor az Azure Data Factory ideiglenes adattípusok a következő megfeleltetéseket használtak DB2 adattípusokat. Lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md) hogyan másolási tevékenység van leképezve a séma- és adatok típusa a fogadó tájékozódhat.
+Ha az adatok másolása a DB2, Azure Data Factory-közbenső adattípusok a következő hozzárendeléseket használtak DB2 adattípusok. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
-| DB2-adatbázishoz típusa | Data factory ideiglenes adattípus |
+| DB2-adatbázis típusa | Data factory közbenső adattípus |
 |:--- |:--- |
 | BigInt |Int64 |
 | Bináris |Byte] |
 | Blob |Byte] |
-| karakter |Sztring |
+| CHAR |Sztring |
 | CLOB |Sztring |
 | Dátum |Dátum és idő |
 | DB2DynArray |Sztring |
 | DbClob |Sztring |
-| Decimális |Decimális |
-| DecimalFloat |Decimális |
+| tizedes tört |tizedes tört |
+| DecimalFloat |tizedes tört |
 | Dupla |Dupla |
 | Lebegőpontos |Dupla |
 | Kép |Sztring |
@@ -191,10 +191,10 @@ Az adatok másolása DB2, amikor az Azure Data Factory ideiglenes adattípusok a
 | LongVarBinary |Byte] |
 | LongVarChar |Sztring |
 | LongVarGraphic |Sztring |
-| Numerikus |Decimális |
+| Numerikus |tizedes tört |
 | Real |Önálló |
 | SmallInt |Int16 |
-| Time |A TimeSpan |
+| Time |Időtartam |
 | Időbélyeg |DateTime |
 | VarBinary |Byte] |
 | VarChar |Sztring |
@@ -203,4 +203,4 @@ Az adatok másolása DB2, amikor az Azure Data Factory ideiglenes adattípusok a
 
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

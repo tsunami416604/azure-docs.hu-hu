@@ -1,74 +1,74 @@
 ---
-title: A csapat adatok tudományos folyamatsablont-projektek szerkezeti |} Microsoft Docs
-description: Hogyan hozható létre csoport adatok tudományos folyamat (TDSP) sablonok az Azure Machine Learning, amely az együttműködési projektek struktúra
+title: A csoportos adatelemzési folyamat sablon a projektek strukturálása |} A Microsoft Docs
+description: Hogyan hozza létre a csoportos adatelemzési folyamat (TDSP) sablonok az Azure Machine Learning, amely struktúra-projektek, az együttműködéshez
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
+ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.author: bradsev
-ms.openlocfilehash: 5b53bd3ec479ba6e096b4d00089f968e37f0135c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 05cb2a62cf0f001012f5faa022de233d7cbdce97
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831768"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059503"
 ---
-# <a name="structure-projects-with-the-team-data-science-process-template"></a>A csapat adatok tudományos folyamatsablont struktúra-projektek
+# <a name="structure-projects-with-the-team-data-science-process-template"></a>Projektek strukturálása a csoportos adatelemzési folyamat sablon
 
-Ez a dokumentum útmutatás adatok tudományos projektek létrehozása az Azure Machine Learning Team adatok tudományos folyamat (TDSP) sablonokkal. Ezek a sablonok segítségével való együttműködés és reprodukálhatósági struktúra projektek. 
+Jelen dokumentum útmutatásokat nyújt az adatelemzési projektek létrehozása az Azure Machine Learning a csoportos adatelemzési folyamat (TDSP) sablonok segítségével. Ezek a sablonok segítségével az együttműködéshez és megismételhetőség projektek. 
 
 
 ## <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
-A TDSP egy gyors, fokozatos, adatok tudományos folyamat végrehajtása és a speciális elemzési megoldásokat kézbesítéséhez. Úgy van kialakítva, együttműködés és adatok tudományos csapatok vállalati szervezetekben hatékonyságának javítása érdekében. A négy fő összetevőből ezen célkitűzések támogatja:
+A TDSP az egy rugalmas és iteratív, adatelemzési folyamat végrehajtása és a fejlett analitikai megoldások kidolgozását. Feladata, hogy az együttműködés és a vállalati szervezetek adatok adattudománnyal foglalkozó csapatai hatékonyságát javítása. A négy fő összetevőből e célok támogatja:
 
-   * Szabványos [adatok tudományos életciklus](../team-data-science-process/lifecycle.md) definíciója.
-   * Szabványos szerkezetének, [projektek dokumentációját, és a jelentési sablonok](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
-   * Az infrastruktúra és az erőforrások projekt végrehajtásra, mint például a, a számítási és tárolási infrastruktúra és kód tárházak találhatók.
-   * [Eszközök és segédprogramok](https://github.com/Azure/Azure-TDSP-Utilities) adattudomány projekt feladatok, például:
-      - Együttműködési verziókezelést
+   * Standard [adattudományi életciklus](../team-data-science-process/lifecycle.md) definíciója.
+   * Szabványos projektstruktúra [dokumentáció, és a jelentési sablonok](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
+   * Az infrastruktúra és a projekt végrehajtása, például, egy számítási és tárolási infrastruktúra és kód tárházak erőforrásait.
+   * [Eszközök és segédprogramok](https://github.com/Azure/Azure-TDSP-Utilities) adatelemzési projekt feladatok, például:
+      - Együttműködésen alapuló verziókövetés
       - Kód áttekintése
-      - Az adatok feltárása és modellezési
+      - Adatáttekintés és modellezés
       - Munkahelyi tervezése
 
-A TDSP bővebb leírását, tekintse meg a [Team adatok tudományos folyamat áttekintése](../team-data-science-process/overview.md).
+A TDSP teljes tárgyalását lásd: a [csoportos adatelemzési folyamat áttekintése](../team-data-science-process/overview.md).
 
-## <a name="why-should-you-use-the-tdsp-structure-and-templates"></a>Miért kell használni a TDSP struktúra és sablonok?
-A struktúra, életciklusának és az adatok tudományos projektek dokumentáció szabványosítás az adatok tudományos csoportok hatékony együttműködés elősegítése kulcsát. Hozzon létre a machine learning projektek ilyen keretet biztosít a koordinált alkották TDSP sablonnal.
+## <a name="why-should-you-use-the-tdsp-structure-and-templates"></a>Miért használjam a TDSP szerkezetét és a sablonok?
+Szabványügyi szervezet szerkezetét, életciklusát és adatelemzési projektek dokumentációját, fontos a azoknak a hatékony együttműködés megkönnyítése. Machine learning-projektek létrehozása a TDSP-sablonnal koordinált csapatmunkát ilyen keretrendszert biztosít.
 
-Korábban megjelent egy [GitHub-tárházban TDSP szerkezetének és sablonok](https://github.com/Azure/Azure-TDSP-ProjectTemplate) e célok elérése érdekében. De nem volt lehetséges, eddig TDSP felépítését és sablonok belül a tudományos eszköz elindítását. Már lehetséges, hogy a TDSP struktúra és dokumentáció található sablonok példányosítja gépi tanulás projekt létrehozásához. 
+Korábban kiadott egy [GitHub-tárházat a TDSP projekt felépítése és sablonok](https://github.com/Azure/Azure-TDSP-ProjectTemplate) e célok elérése érdekében. De nem volt lehetséges, eddig a TDSP szerkezetét és a egy adattudományi eszközt belül sablonok elindítását. Most is létrehozhat egy machine learning-projektet, amely a TDSP struktúra és a dokumentáció sablonok példányosítja. 
 
-## <a name="things-to-note-before-creating-a-new-project"></a>Új projekt létrehozása előtt ügyeljen a következőkre
-Az alábbi elemek áttekintésével *előtt* új projekt létrehozása:
+## <a name="things-to-note-before-creating-a-new-project"></a>Új projekt létrehozása előtt érdemes megjegyezni
+Az alábbi elemek áttekintésével *előtt* egy új projektet hoz létre:
 * Tekintse át a TDSP Machine Learning [sablon](https://aka.ms/tdspamlgithubrepo).
-* (Kívül mit már jelen a "dokumentumok" mappában) tartalmát 25 MB-nál kevesebb lehet szükséges. Lásd az ebben a listában követő megjegyzést.
-* A minta\_Adatmappa van csak a kisméretű fájlok (5 MB-nál kevesebb), amellyel tesztelheti a kódját vagy korai fejlesztési elindításához.
-* Fájlok, például a Word és PowerPoint-fájlokat tárolja, növelheti a "dokumentumok" mappa méretét jelentősen. Javasoljuk, hogy egy közös Wiki megtalálhatja [SharePoint](https://products.office.com/en-us/sharepoint/collaboration), vagy más együttműködési erőforrás ilyen fájlok tárolásához.
-* Nagy méretű fájlok és a gépi tanulás kimenetek kezelésének módját, olvassa el [módosítások megőrzése, és nagy méretű fájlok foglalkozó](http://aka.ms/aml-largefiles).
+* (Nem a Mi már szerepel a "dokumentumok" mappában) tartalma 25 MB-nál kevesebb lehet szükséges. Tekintse meg az alábbi ebben a listában.
+* A minta\_Adatmappa van csak a kis méretű adatfájlokat (5 MB-nál kevesebb), amellyel tesztelheti a kódját vagy indítsa el a korai fejlesztési.
+* Fájlok, például a Word és PowerPoint-fájlokat tárolja, növelheti a "dokumentumok" mappában mérete közel teljes értékesítése miatt. Azt javasoljuk, hogy egy együttműködésen alapuló Wiki megtalálhatók [SharePoint](https://products.office.com/en-us/sharepoint/collaboration), vagy más együttműködésen alapuló erőforrás az ilyen fájlok tárolására.
+* Nagy méretű fájlok és a Machine Learning kimenetek kezelésének módját, olvassa el [módosítások megőrzése, és a nagy méretű fájlok foglalkozó](http://aka.ms/aml-largefiles).
 
 > [!NOTE]
-> Minden dokumentációhoz kapcsolódó tartalom (text, markdowns, képek és egyéb fájlok), amely *nem* használt projekt végrehajtása közben, a readme.md fájl eltérő mappában kell lennie a "dokumentumok" (összes, kisbetű) nevű. A "dokumentumok" mappa nem a Machine Learning végrehajtási figyelmen kívül hagyja, hogy ez a mappa tartalmát nem másolódnak a célok feleslegesen kiszámításához speciális mappába. Ebben a mappában lévő objektumok is nem számítanak a projekt méretének 25 MB kap felé. A "dokumentumok" mappa például az a hely, a dokumentáció szükség nagy méretű kép fájlok tárolásához. Ezek a fájlok továbbra is kötetblokkok Git keresztül futtatási előzményeit. 
+> Minden dokumentáció kapcsolatos tartalom (szöveg, markdowns, képek és egyéb fájlok), amely *nem* projekt végrehajtása során használt, más, mint a readme.md fájl kell lennie, a "docs" (csak kisbetűkkel) nevű mappát. A "dokumentumok" mappában, a Machine Learning végrehajtási figyelmen kívül hagyja, hogy ez a mappa tartalma nem másolódik feleslegesen számítási céljainak speciális mappába. Ebben a mappában lévő objektumok is nem beleszámítanak a 25 MB-ot kap a projekt méretét. A "dokumentumok" mappában, például az a hely, a dokumentáció a szükséges nagy méretű kép fájlok tárolására. Ezek a fájlok továbbra is a futtatási előzmények keresztül Git követi. 
 
-## <a name="instantiate-the-tdsp-structure-and-templates-from-the-machine-learning-template-gallery"></a>A TDSP struktúra és a gépi tanulás sablon gyűjteményből sablonok példányosítható
-Új projekt létrehozása a TDSP struktúra és dokumentáció található sablonok, végezze el az alábbi eljárásokat.
+## <a name="instantiate-the-tdsp-structure-and-templates-from-the-machine-learning-template-gallery"></a>Hozza létre a TDSP szerkezetét és a Machine Learning sablongyűjteményből sablonok
+A TDSP struktúra és a dokumentáció sablonokkal új projekt létrehozásához hajtsa végre az alábbi eljárásokat.
 
 ### <a name="create-a-new-project"></a>Új projekt létrehozása
-Hozzon létre egy új projektet, nyissa meg az Azure Machine Learning. A **projektek** a bal felső ablaktáblán jelölje ki a plusz jelre (**+**), majd válassza ki **új projekt**.
+Hozzon létre egy új projektet, nyissa meg az Azure Machine Learning. A **projektek** a bal felső ablaktáblán válassza a pluszjelet (**+**), majd válassza ki **új projekt**.
 
 ![Új projekt](./media/how-to-use-tdsp-in-azure-ml/instantiation-1.png)
 
 
-### <a name="create-a-new-tdsp-structured-project"></a>Új TDSP strukturált projekt létrehozása
-   1. Adja meg a paraméterek és az adatok a megfelelő jelölőnégyzet vagy listáját:
+### <a name="create-a-new-tdsp-structured-project"></a>Hozzon létre egy új strukturált TDSP projekt
+   1. Adja meg a paraméterek és az adatok a megfelelő jelölőnégyzetet, vagy a listán:
 
       - Projektnév
       - Projektkönyvtár
@@ -76,45 +76,45 @@ Hozzon létre egy új projektet, nyissa meg az Azure Machine Learning. A **proje
       - Egy üres Git-tárház elérési útja
       - Munkaterület neve
 
-   2. Ezt a a **keresési** adja meg a **TDSP**. 
-   3. Ha a **TDSP projekt szerkezeti** beállítás úgy jelenik meg, válassza ki, hogy a sablon. 
-   4. Válassza ki a **létrehozása** TDSP struktúrával az új projekt létrehozása gombra. Ha megad egy üres Git-tárház (a megfelelő mezőbe) a projekt létrehozásakor, majd a tárház feltöltődik a projekt struktúra és a tartalmakat a projekt létrehozása után.
+   2. Ezt a a **keresési** mezőbe írja be **TDSP**. 
+   3. Ha a **projekt strukturálása TDSP** lehetőség jelenik meg, válassza ki a sablont. 
+   4. Válassza ki a **létrehozás** TDSP struktúra az új projekt létrehozása gombra. Ha egy üres Git-tárház meg kell adnia, amikor létrehozza a projektet (a megfelelő szövegmezőbe), majd adott tárházba feltöltődik a projektstruktúra és annak tartalmát a projekt létrehozása után.
 
-![TDSP-projekt létrehozása](./media/how-to-use-tdsp-in-azure-ml/instantiation-2.png)
+![TDSP projekt létrehozása](./media/how-to-use-tdsp-in-azure-ml/instantiation-2.png)
 
 
-## <a name="examine-the-tdsp-project-structure"></a>Vizsgálja meg a TDSP projekt struktúra
-Az új projekt létrehozása után ellenőrizheti a struktúra (a bal oldali panelen az alábbi ábrán látható). Az üzleti ismertetése szabványosított dokumentációjában szempontjaival tartalmaz. Ezek az elemek közé tartozik a a TDSP életciklusát, az adatok helye, a definíciók és a dokumentációs sablon architektúrájának szakaszában. 
+## <a name="examine-the-tdsp-project-structure"></a>A TDSP projektstruktúra vizsgálata
+Az új projekt létrehozása után ellenőrizheti a struktúra (lásd az alábbi ábrán a bal oldali panelen). Az üzleti igények felmérése szabványos dokumentációját minden szempontját tartalmazza. Ezek az elemek közé tartozik a TDSP életciklusa, az adatok helye, definícióit és az architektúra a dokumentációs sablon fázisa. 
 
-Bemutatott struktúra származik a közzétett TDSP struktúra [TDSP struktúra, a dokumentumok és az összetevő projektsablonjai](https://github.com/Azure/Azure-TDSP-ProjectTemplate), néhány módosításokkal. Például a dokumentum sablonok számos egyesülnek egy markdown, nevezetesen [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport). 
+A struktúra látható a TDSP struktúra, a közzétett van származtatva [TDSP projekt struktúra, a dokumentumok és az összetevő sablonok](https://github.com/Azure/Azure-TDSP-ProjectTemplate), az néhány módosítást kell végrehajtani. Például a dokumentum sablonok számos egyesítve egy markdown, nevezetesen, [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport). 
 
-### <a name="project-folder-structure"></a>Projekt mappaszerkezet
-A TDSP projektsablon tartalmazza a következő legfelső szintű mappák:
-   - **kód**: olyan kódot tartalmaz.
-   - **dokumentumok**: szükséges dokumentációjában, a projekt (például a markdown-fájlokat és a kapcsolódó media) tartalmazza.
-   - **sample_data**: tartalmaz **minta (kicsi)** korai fejlesztési vagy tesztelési használható adatokat. Ezeket a kiszolgálócsoportokat általában nem több (5) nagyobb MB. Ez a mappa nem a teljes vagy nagy adatkészletek van.
+### <a name="project-folder-structure"></a>Projekt mappastruktúra
+A TDSP projekt sablon tartalmaz a következő legfelső szintű mappák:
+   - **kód**: kódját tartalmazza.
+   - **Docs**: a projekt (például a markdown-fájlok és a kapcsolódó media) vonatkozó dokumentációt tartalmazza.
+   - **sample_data**: tartalmaz **minta (kicsi)** adatok korai fejlesztési vagy tesztelési célokra használható. Ezen készletek általában nem nagyobb, mint számos (5) MB. Ez a mappa teljes vagy nagy méretű adatkészletek nem tartozik.
 
 ![Mintaadatok](./media/how-to-use-tdsp-in-azure-ml/instantiation-3.png)
 
 
 ## <a name="use-the-tdsp-structure-and-templates"></a>A TDSP struktúra és sablonok
-Kell hozzáadnia a projekt-specifikus adatait. a struktúra és a sablonokat. Ezek a kóddal és hajtható végre, és a projekt biztosításához szükséges adatok feltöltése van várt. A [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) fájl egy sablont, módosítania kell a projekttel adatokkal. Az tartalmaz egy kérdést, amelyek segítenek az adatok az egyes négy szakaszainak a [TDSP életciklus](../team-data-science-process/lifecycle.md).
+A szerkezeti és sablonok projektinformációk hozzá kell. Feltölti ezeket a kódot, és hajtsa végre, és továbbítja a projekthez szükséges információkat az Ön várt. A [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) fájl egy sablont, amely a projekthez kapcsolódó adatokkal módosítani kell. Együttműködik a kérdésekre, amelyek segítségével adja meg az adatokat az egyes négy fázisát a [TDSP életciklus](../team-data-science-process/lifecycle.md).
 
-Egy szerkezetének néz végrehajtása közben vagy után a létrehozása után a bal oldali panelen az alábbi ábrán látható példát. Ez a projekt már a a [Team adatok tudományos folyamat mintaprojektet: az Azure Machine Learning USA nyilvántartásba adatokból bevételek besorolása](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) mintaprojektet.
+Egy olyan projektstruktúra néz végrehajtása során vagy után befejezését a bal oldali panelen az alábbi ábrán látható példát. A projekt származik-e a [csoportos adatelemzési folyamat mintaprojektet: USA népszámlálási adatok az Azure Machine Learning jövedelmek besorolása](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) mintaprojektet.
 
-![Példa projekt struktúra](./media/how-to-use-tdsp-in-azure-ml/instantiation-4.png)
+![Példa projektstruktúra](./media/how-to-use-tdsp-in-azure-ml/instantiation-4.png)
 
 ## <a name="document-your-project"></a>Dokumentálja a projekthez
-Tekintse meg a [TDSP dokumentáció sablonok](https://github.com/Azure/Azure-TDSP-ProjectTemplate) a projekt dokumentálása olvashat. A Machine Learning TDSP dokumentációs sablon azt javasoljuk, hogy tartalmazza-e az összes adatot a [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) fájlt. Ez a sablon a projekt vonatkozó információkkal ki kell tölteni. 
+Tekintse meg a [TDSP dokumentáció sablonok](https://github.com/Azure/Azure-TDSP-ProjectTemplate) információk dokumentálni a projekthez. A Machine Learning TDSP dokumentációs sablon az ajánlott az összes adatait a [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) fájlt. Ez a sablon olyan információkkal, amelyek kifejezetten a projekthez, ki kell tölteni. 
 
-Azt adja meg a [ProjectLearnings](https://aka.ms/tdspamlgithubrepoprojectlearnings) sablont. Ez a sablon használatával, amely nem szerepel az elsődleges projekt dokumentumot, de továbbra is hasznosak dokumentálása semmilyen információt tartalmaz. 
+Is biztosítunk egy [ProjectLearnings](https://aka.ms/tdspamlgithubrepoprojectlearnings) sablont. Ez a sablon használatával adjon meg, amely nem szerepel az elsődleges projekt dokumentumot, de ez továbbra is hasznos, ha szeretné, hogy a dokumentum információkat. 
 
-### <a name="example-project-report"></a>Példa a projekt jelentés
-Kaphat egy [példa projekt jelentés](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). Ez a projekt a jelentés a [USA bevétel besorolás mintaprojektet](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bemutatja, hogyan hozható létre, és a TDSP sablon használata az adatok tudományos projekt.
+### <a name="example-project-report"></a>A példában a projekt jelentés
+Megjelenik egy [példa Projektjelentés](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). A projekt jelentés a [Egyesült Államokbeli bevételek besorolása mintaprojektet](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bemutatja, hogyan hozható létre, és a TDSP-sablont használ egy adatelemzési projektjéhez.
 
 ## <a name="next-steps"></a>További lépések
-A Machine Learning-projektek a TDSP struktúra és a sablonok használatával megértését elősegítő nyújtunk a Machine Learning dokumentációjában több befejezett projekt példa:
+Megkönnyítése érdekében a megértése a Machine Learning-projektek TDSP szerkezetét és sablonok használatával, a Machine Learning dokumentációja több befejezett projekt példái kínálunk:
 
-- Ez a minta bemutatja, hogyan TDSP-projekt létrehozása a Machine Learning, lásd: [Team adatok tudományos folyamat mintaprojektet: az Azure Machine Learning Velünk nyilvántartásba adatokból bevételek besorolása](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome).
-- A Machine Learning TDSP-példányként létrehozott projektben (NLP) feldolgozási természetes nyelven mély tanulási használó mintaalkalmazás, lásd: [életrajza orvosi entitás felismerés mély tanulási feldolgozáson természetes nyelvezetet használva](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction).
+- Ez a minta azt mutatja be TDSP projekt létrehozása a Machine Learning, lásd: [csoportos adatelemzési folyamat mintaprojektet: USA népszámlálási adatok az Azure Machine Learning jövedelmek besorolása](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome).
+- A természetes nyelvi feldolgozási (NLP) egy TDSP példányosítása projekt a Machine Learning deep learninget használó minta: [önéletrajz orvosi entitások felismerése természetes nyelvi feldolgozási használatával deep learninget használó](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction).
 

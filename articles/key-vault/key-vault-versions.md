@@ -1,9 +1,9 @@
 ---
-title: Kulcstároló-verziók
+title: Key Vault-verziók
 description: Az Azure Key Vault-verziók
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: e8622dcc-59a3-4f4b-9f63-cd2232515a65
@@ -13,61 +13,61 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: beb73be66f36ccf95fe27d4d8128106cd12722a8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: bryanla
+ms.openlocfilehash: 50d35f0dbfb180628577286d6e658daca3c41dc8
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012102"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055508"
 ---
-# <a name="key-vault-versions"></a>Kulcstároló-verziók
+# <a name="key-vault-versions"></a>Key Vault-verziók
 
 ## <a name="2016-10-01---managed-storage-account-keys"></a>2016-10-01 - felügyelt Tárfiókkulcsok
 
-Nyári 2017 - Tárfiókkulcsok funkció hozzáadása az Azure Storage egyszerűbb integrálását. Az áttekintési témakörben további információkért lásd: [Tárfiókkulcsok felügyelete – áttekintés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys).
+Nyári 2017 - Tárfiókkulcsok funkció hozzáadása az Azure Storage egyszerűbb integráció. További információ az áttekintése című témakörben talál [felügyelt Tárfiókkulcsok áttekintése](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys).
 
-## <a name="2016-10-01---soft-delete"></a>2016-10-01-soft-törlés
+## <a name="2016-10-01---soft-delete"></a>2016-10-01-helyreállítható törlés
 
-Nyári 2017 - soft-törlés funkció hozzáadása a kulcstárolót, és a kulcstároló továbbfejlesztett adatainak védelme objektumok. Az áttekintési témakörben további információkért lásd: [Soft-törlés – áttekintés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).
+Nyáron rendezzük 2017 - helyreállítható törlési funkció hozzáadva a kulcstartó és a key vault továbbfejlesztett adatvédelmi objektumokat. További információ az áttekintése című témakörben talál [helyreállítható törlés áttekintése](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).
 
-## <a name="2015-06-01---certificate-management"></a>2015-06-01 - tanúsítványkezelés
+## <a name="2015-06-01---certificate-management"></a>2015-06-01 - tanúsítványok kezelése
 
-A tanúsítványkezelés kerül szolgáltatásként GA verziójával 2015-06-01 2016 szeptemberétől 26.
+Tanúsítványkezelés hozzáadódik szolgáltatásként az általánosan elérhető verziót 2015-06-01-2016. szeptember 26.
 
-## <a name="2015-06-01---general-availability"></a>2015-06-01 - általánosan rendelkezésre álló
+## <a name="2015-06-01---general-availability"></a>2015-06-01 – általános elérhetőség
 
-Általánosan rendelkezésre álló verzió 2015-06-01 szóló bejelentések a 2015. június 24.
+Általánosan elérhető verziója 2015-06-01, 2015. június 24-én bejelentettük.
 
-A következő módosítások történtek, ebben a kiadásban:
+A következő változtak, ebben a kiadásban:
 
-- A kulcs törlése, – "használja a" mező eltávolítása.
-- Az információk egy kulcs - információ "használata" mező eltávolítása.
+- Kulcs törlése – "használata" mező eltávolítása.
+- Egy kulcs - információ "használata" mező eltávolítása adatai olvashatók be.
 - Kulcs importálása egy tárolóba – "használata" mező eltávolítása.
-- Vissza a kulcsot egy – a "használata" mező eltávolítása.
-- Módosított "RSA_OAEP" a "RSA-OAEP típusú" az RSA algoritmust. Lásd: [kulcsokat, a titkos kulcsok és a tanúsítványok](about-keys-secrets-and-certificates.md).
+- Kulcs helyreállítása – "használata" mező eltávolítása.
+- Módosított "RSA_OAEP", "RSA-OAEP" RSA algoritmusok. Lásd: [kapcsolatos kulcsok, titkos kódok és tanúsítványok](about-keys-secrets-and-certificates.md).
 
-## <a name="2015-02-01-preview"></a>2015-02-01. dátumú előnézeti 
+## <a name="2015-02-01-preview"></a>2015. 02. 01-előzetes verzió 
 
-Második előzetes verzió 2015-02-01. dátumú előnézeti, szóló bejelentések a 2015. áprilisi 20. További információkért lásd: [REST API frissítés](http://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx) blogbejegyzést.
+Második előzetes verziója 2015-02-01-preview, 2015. április 20 jelentettük be. További információkért lásd: [REST API frissítése](http://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx) blogbejegyzést.
 
 Frissítve a következő feladatokat:
 
-- Egy tároló - művelet hozzáadott tördelési támogatási kulcsainak listázása.
-- A verziók listában egy kulcs - hozzáadott művelet egy kulcs verzióinak listázása.
-- Egy tároló - hozzáadott tördelési támogatási titkos kulcsainak listázása.
-- Titkos kulcs verzióinak listázása - hozzáadási művelet a titkos kulcs verzióinak listázása.
-- Összes művelet - attribútumok létrehozása/frissítése időbélyegeket hozzá.
-- Content-Type - titkos kulcs létrehozása hozzá a titkos kulcsok.
-- Hozzon létre egy kulcs - címkék fel, mert választható adatokat.
-- Hozzon létre a titkos kulcs - címkék fel, mert választható adatokat.
-- A kulcs - címkék fel, mert választható adatokat.
-- Frissítse a titkos kulcs - címkék fel, mert választható adatokat.
-- Módosult titkos kulcsok legfeljebb 10 KB-os 25 kilobájt. Megtekintéséhez [kulcsokat, a titkos kulcsok és a tanúsítványok](about-keys-secrets-and-certificates.md).
+- Egy tároló - műveletet a hozzáadott tördelés támogatási kulcsainak listázása.
+- Verziók listázása egy kulcs - kulcs verzióinak listázása művelet hozzáadva.
+- Egy tároló - hozzáadott tördelés támogatása titkos kulcsainak listázása.
+- Titkos kulcs verzióinak listázása – a titkos kulcs verzióinak listázása művelet hozzáadása.
+- Minden művelet - attribútumok létrehozott vagy módosított időbélyegeket hozzá.
+- Titkos kódok Content-Type - titkos kulcs létrehozása hozzá.
+- Hozzon létre egy kulcsot - címkék hozzáadva opcionális információk.
+- Hozzon létre egy titkos kulcsot - címkék hozzáadva opcionális információk.
+- Egy kulcs - címkék hozzáadva opcionális információk.
+- Frissítse a titkos kulcs - címkék hozzáadva opcionális információk.
+- Módosult a titkos kulcsok maximális méret 10 ezer 25 kilobájt. Látható, [kapcsolatos kulcsok, titkos kódok és tanúsítványok](about-keys-secrets-and-certificates.md).
 
-## <a name="2014-12-08-preview"></a>2014-12-08-minta
+## <a name="2014-12-08-preview"></a>2014. 12-08-előzetes verzió
 
-Első előzetes verzió 2014-12-08-előzetes szóló bejelentések a 2015. januári 8.
+Első előzetes verziója 2014-12-08-preview, 2015. január 8 jelentettük be.
 
 ## <a name="see-also"></a>Lásd még
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)

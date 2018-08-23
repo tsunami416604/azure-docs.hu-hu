@@ -1,6 +1,6 @@
 ---
-title: Importálás és exportálás Azure IoT Hub eszköz identitások |} Microsoft Docs
-description: Hogyan használható az Azure IoT szolgáltatás SDK szemben az identitásjegyzékhez történő importálására és exportálására eszköz identitások tömeges műveletek végrehajtásához. Importálási műveletek lehetővé teszik létrehozása, frissítése és törlése eszköz identitások egyszerre.
+title: Importálás és exportálás az Azure IoT Hub-eszközidentitásokat |} A Microsoft Docs
+description: Hogyan használható az Azure IoT service SDK szemben az eszközidentitás-jegyzék, importálása és exportálása az eszközidentitások tömeges műveletek végrehajtásához. Importálási műveletek létrehozása, frissítése és törlése az eszközidentitások tömeges lehetővé teszik.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,59 +8,65 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 63e7fd5807f0cf6d05d81af138d649b75024d9bb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aedf2d0012f5af8ea2eb8e944f06b20c7f1a6bb8
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634022"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42055297"
 ---
-# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Az IoT Hub eszköz identitásai tömeges kezelése
+# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Az IoT Hub eszközidentitások tömeges kezelése
 
-Minden egyes IoT-központ rendelkezik egy identitásjegyzékhez eszközönkénti erőforrásokat létrehozni a szolgáltatás segítségével. Az identitásjegyzékhez is lehetővé teszi az eszköz felé néző végpontok való hozzáférés vezérlése érdekében. Ez a cikk ismerteti, hogyan importálhat és exportálhat eszköz identitások tömeges irányuló és onnan az identitásjegyzékhez.
+Minden IoT hub tartalmaz egy identitásjegyzéket, eszköz erőforrások létrehozása a szolgáltatás segítségével. Az eszközidentitás-jegyzék azt is lehetővé teszi, hogy ki férhet hozzá az eszközök felé néző végpontok. Ez a cikk bemutatja, hogyan importálhat és exportálhat az eszközidentitások tömeges, és a egy identitásjegyzéket.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Importálás és exportálás zajlanak környezetében *feladatok* , amelyek lehetővé teszik az IoT-központ szolgáltatás tömeges műveleteket végrehajtani.
+Importálás és exportálás műveletek egy kontextusában *feladatok* , amely lehetővé teszi az IoT hub elleni tömeges szolgáltatás műveletek végrehajtásához.
 
-A **RegistryManager** osztály tartalmazza a **ExportDevicesAsync** és **ImportDevicesAsync** módszereket, amelyek a **feladat** keretrendszer. Ezek a módszerek lehetővé teszik a exportálása, importálása és az IoT hub identitásjegyzékhez a a teljes szinkronizálás.
+A **RegistryManager** osztály tartalmazza a **ExportDevicesAsync** és **ImportDevicesAsync** használó metódusok a **feladat** keretrendszer. Ezek a metódusok lehetővé teszi exportálása, importálása és a egy IoT hub-identitásjegyzék teljes szinkronizálása.
 
-Ez a témakör ismerteti, amelyek használatával a **RegistryManager** osztály és **feladat** rendszer tömeges és -eszközökhöz, illetve onnan az IoT-központ identitásjegyzékhez exportot végrehajtásához. Az Azure IoT Hub eszköz kiépítése szolgáltatás segítségével is nulla-érintés, közvetlenül az időponthoz kötött emberi beavatkozás nélkül egy vagy több IoT-központok kiépítés engedélyezése. További tudnivalókért tekintse meg a [szolgáltatás dokumentációja kiépítés][lnk-dps].
+Ez a témakör ismerteti a használatával a **RegistryManager** osztály és **feladat** rendszer végrehajtsa bulk behozatali és kiviteli az eszközök és a egy IoT hub identitásjegyzékében. Az Azure IoT Hub Device Provisioning Service használatával engedélyezze a beavatkozás nélküli, just-in-time egy vagy több IoT hubon való üzembe helyezést, emberi beavatkozás nélkül. További tudnivalókért tekintse meg a [provisioning service dokumentációja](/azure/iot-dps).
 
 
 ## <a name="what-are-jobs"></a>Mik azok a feladatok?
 
-Identitás kapcsolatos műveletek használata a **feladat** rendszer Ha a művelet:
+Identitásjegyzék műveletei használja a **feladat** rendszer Ha a művelet:
 
-* Potenciálisan hosszú végrehajtási időt képest van szabványos futásidejű műveletek.
+* Rendelkezik egy potenciálisan hosszú végrehajtási időt képest standard szintű futásidőt műveletek.
+
 * A felhasználó egy nagy mennyiségű adatot adja vissza.
 
-Egyetlen API-hívással Várakozás vagy blokkolja-e a művelet eredményét, helyett a művelet aszinkron módon létrehoz egy **feladat** , hogy az IoT hub. A műveletet, majd azonnal értéket ad vissza egy **JobProperties** objektum.
+Egyetlen API hívással Várakozás vagy blokkolja-e a művelet eredménye helyett a művelet aszinkron módon létrehoz egy **feladat** , hogy az IoT hub számára. A műveletet, majd azonnal értéket ad vissza egy **JobProperties** objektum.
 
-A következő C# kódrészletet exportálási feladat létrehozását szemlélteti:
+Az alábbi C# kódrészlet bemutatja, hogyan exportálási feladat létrehozása:
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
-JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
+JobProperties exportJob = await 
+  registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
 
 > [!NOTE]
-> Használatához a **RegistryManager** osztály a C#-kódban, adja hozzá a **Microsoft.Azure.Devices** NuGet-csomagot a projekthez. A **RegistryManager** osztály a **Microsoft.Azure.Devices** névtér.
+> Használatához a **RegistryManager** a C#-kódot az osztályhoz, adja hozzá a **Microsoft.Azure.Devices** NuGet-csomagot a projekthez. A **RegistryManager** osztály szerepel a **Microsoft.Azure.Devices** névtér.
 
-Használhatja a **RegistryManager** osztály állapotának lekérdezése a **feladat** használatával a visszaadott **JobProperties** metaadatok. Egy példányának létrehozása a **RegistryManager** osztály, használja a **CreateFromConnectionString** módszert:
+Használhatja a **RegistryManager** osztály állapotának lekérdezése a **feladat** használatával a visszaadott **JobProperties** metaadatait. Hozzon létre egy példányt, a **RegistryManager** osztály, használja a **CreateFromConnectionString** metódust.
 
 ```csharp
-RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
+RegistryManager registryManager =
+  RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
 ```
 
-A kapcsolati karakterlánc megkeresése az IoT hub, az Azure-portálon:
+A kapcsolati karakterlánc megkeresése az IoT hub, az Azure Portalon:
 
 - Keresse meg az IoT-központot.
-- Válassza ki **megosztott elérési házirendek**.
-- Jelöljön ki egy házirendet, figyelembe véve a szükséges engedélyekkel.
-- A képernyő jobb oldali panelen másolja ki a ConnectionString kapcsolódási karakterláncban.
 
-A következő C# kódrészletet öt másodpercenként kérdezze le a megjelenítéséhez, ha a feladat végrehajtása befejeződött mutatja be:
+- Válassza ki **megosztott elérési házirendek**.
+
+- Válasszon ki egy szabályzatot, figyelembe véve a szükséges engedélyekkel.
+
+- Másolja a connectionstring a panel a képernyő jobb oldalán.
+
+Az alábbi C# kódrészlet bemutatja, hogyan öt másodpercenként lekérdezi a megtekintéséhez, ha a feladat végrehajtása befejeződött:
 
 ```csharp
 // Wait until job is finished
@@ -81,25 +87,27 @@ while(true)
 
 ## <a name="export-devices"></a>Eszközök exportálása
 
-Használja a **ExportDevicesAsync** a a teljes az IoT hub identitásjegyzékhez történő exportálására egy [Azure Storage](../storage/index.yml) blob tároló használata egy [közös hozzáférésű Jogosultságkód](../storage/common/storage-security-guide.md#data-plane-security).
+Használja a **ExportDevicesAsync** metódus az IoT hub eszközidentitás-jegyzék, a teljes exportálása egy [Azure Storage](../storage/index.yml) blob-tároló használatával egy [közös hozzáférésű Jogosultságkód](../storage/common/storage-security-guide.md#data-plane-security).
 
-Ez a módszer lehetővé teszi a személyes eszköz adatok megbízható biztonsági mentések létrehozását egy blob a tárolóban, amelyek.
+Ez a módszer lehetővé teszi, hogy az eszköz adatai megbízható biztonsági másolatokat készíthet egy Ön által megadott blob-tárolóban.
 
-A **ExportDevicesAsync** módszernél két paramétert:
+A **ExportDevicesAsync** metódus két paraméter szükséges:
 
-* A *karakterlánc* , amely tartalmazza a blob-tároló URI. Ezt az URI írási hozzáférést a tároló SAS-jogkivonatot kell tartalmaznia. A feladat a blokkblob ebben a tárolóban a szerializált export eszköz adatainak tárolására hoz létre. A SAS-jogkivonat tartalmaznia kell azokat az engedélyeket:
+* A *karakterlánc* , amely tartalmaz egy URI-ját egy blob-tárolóba. Ez az URI tartalmaznia kell egy SAS-token, amely írási hozzáférést biztosít a tárolóhoz. A feladat egy blokkblobot szerializált export eszköz adatokat tárolni ebben a tárolóban hoz létre. A SAS-jogkivonatát ezekkel az engedélyekkel kell tartalmaznia:
 
    ```csharp
-   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
+     | SharedAccessBlobPermissions.Delete
    ```
 
-* A *logikai* , amely azt jelzi, hogy szeretné-e a hitelesítési kulcsokat kizárása az adatok exportálása. Ha **hamis**, hitelesítési kulcsokat exportálás kimeneti szerepelnek. Ellenkező esetben kulcsok exportálása **null**.
+* A *logikai* , amely azt jelzi, hogy szeretné-e az adatok exportálása hitelesítési kulcsok kizárása. Ha **hamis**, hitelesítési kulcsok szerepelnek exportálás kimenete. Ellenkező esetben kulcsok vannak exportálva mint **null**.
 
-A következő C# kódrészletet mutatja be, amely tartalmazza az eszköz hitelesítési kulcsokat az adatok exportálása az exportálási feladat kezdeményezése, és majd kérdezze le az Befejezés:
+Az alábbi C# kódrészlet azt mutatja, amely tartalmazza az eszköz hitelesítési kulcsokat az adatok exportálása az exportálási feladat indítása, és ezután lekérdezi a befejezési:
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
-JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
+JobProperties exportJob = 
+  await registryManager.ExportDevicesAsync(containerSasUri, false);
 
 // Wait until job is finished
 while(true)
@@ -117,9 +125,9 @@ while(true)
 }
 ```
 
-A feladat tárolja a kimenetet a megadott blob-tárolóban egy blokkblob nevű **devices.txt**. A kimeneti adatok JSON szerializált eszközadatok, soronként egy eszközzel áll.
+A feladat kimenetét tárolja a megadott blob-tároló nevű blokkblobként **devices.txt**. A kimeneti adatokat soronként egy eszközzel rendelkező JSON-szerializált eszközadatok, áll.
 
-A következő példa bemutatja a kimeneti adatokat:
+Az alábbi példa bemutatja a kimeneti adatokat:
 
 ```json
 {"id":"Device1","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
@@ -129,7 +137,7 @@ A következő példa bemutatja a kimeneti adatokat:
 {"id":"Device5","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 ```
 
-Ha egy eszköz iker adatokat, majd a kettős adatok is exportált együtt az eszközadatok. A következő példa bemutatja, ezt a formátumot. A "twinETag" sor végéig minden adatát iker adatok.
+Ha egy eszköz az ikereszköz adatok rendelkezik, majd az ikereszköz is exportálás és az eszközön lévő adatokat. Az alábbi példa bemutatja ezt a formátumot. A "twinETag" sor, amíg a teljes ikereszköz adatok összes adata.
 
 ```json
 {
@@ -176,7 +184,7 @@ Ha egy eszköz iker adatokat, majd a kettős adatok is exportált együtt az esz
 }
 ```
 
-Ha az adatokhoz, a kódban van szüksége, is könnyen deszerializálása ezen adatok segítségével a **ExportImportDevice** osztály. A következő C# kódrészletet olvassa el a korábban exportált blokkblobba eszközadatokat mutatja be:
+Ha ezeket az adatokat a code-ban való hozzáférésre van szüksége, is könnyen deszerializálása ezen adatok segítségével a **ExportImportDevice** osztály. Az alábbi C# kódrészlet bemutatja, hogyan olvassa el a korábban exportált blokkblobba eszköz adatai:
 
 ```csharp
 var exportedDevices = new List<ExportImportDevice>();
@@ -194,74 +202,77 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 ## <a name="import-devices"></a>Eszközök importálása
 
-A **ImportDevicesAsync** metódust a **RegistryManager** osztály lehetővé teszi az IoT hub identitásjegyzékhez tömeges importálása és szinkronizálás műveleteinek elvégzéséhez. Például a **ExportDevicesAsync** metódus, a **ImportDevicesAsync** módszert használ a **feladat** keretrendszer.
+A **ImportDevicesAsync** metódus az a **RegistryManager** osztály lehetővé teszi az IoT hub-identitásjegyzék tömeges importálás és a szinkronizálási műveletek végrehajtása. Például a **ExportDevicesAsync** metódus, a **ImportDevicesAsync** metódus az **feladat** keretrendszer.
 
-Mi gondoskodunk használatával a **ImportDevicesAsync** metódus mert használt dinamikus kiosztásnál a identitásjegyzékhez új eszközök mellett is frissíteni és törölje a meglévő eszközökön.
+Legyen óvatos használatával a **ImportDevicesAsync** metódus mert mellett az eszközidentitás-jegyzékben lévő új eszközök kiépítése, is frissíteni és törölni a meglévő eszközök.
 
 > [!WARNING]
-> Az importálási művelet nem vonható vissza. Mindig készítsen biztonsági másolatot a meglévő adatok a **ExportDevicesAsync** egy másik blob-tároló előtt tömeges módszert biztosít az identitásjegyzékhez változik.
+> Az importálási művelet nem vonható vissza. Mindig készítsen biztonsági másolatot a meglévő adatok használatával a **ExportDevicesAsync** metódus egy másik blob-tárolóba előtt tömeges megváltozik biztosít az identitásjegyzékhez.
 
-A **ImportDevicesAsync** metódus két paramétereket fogadja:
+A **ImportDevicesAsync** metódus két paraméter szükséges:
 
-* A *karakterlánc* , amely tartalmazza egy URI-azonosítója egy [Azure Storage](../storage/index.yml) kívánja használni, mint a blobtárolót *bemeneti* a feladathoz. Ezt az URI tartalmaznia kell egy SAS-jogkivonatot, amely olvasási hozzáférést biztosít a tárolóhoz. Ez a tároló tartalmaznia kell egy blob nevű **devices.txt** , amely tartalmazza a szerializált eszközadatok a identitásjegyzékhez rendszerbe való importálás érdekében. Az importálási adatok tartalmaznia kell az eszközinformáció ugyanazon JSON formátumban a **ExportImportDevice** feladatot használ, amikor létrehozza a **devices.txt** blob. A SAS-jogkivonat tartalmaznia kell azokat az engedélyeket:
+* A *karakterlánc* , amely tartalmaz egy URI-ját egy [Azure Storage](../storage/index.yml) blobtároló adatokként *bemeneti* a feladathoz. Ez az URI tartalmaznia kell egy SAS-token, amely olvasási hozzáférést biztosít a tárolóhoz. Ez a tároló tartalmaznia kell egy blob nevű **devices.txt** , amely tartalmazza a szerializált eszközön lévő adatokat importálja az eszközidentitás-jegyzékében. Az adatok importálása tartalmaznia kell az eszköz adatai ugyanazon JSON formátumban, amely a **ExportImportDevice** feladat használ, amikor létrehozza a **devices.txt** blob. A SAS-jogkivonatát ezekkel az engedélyekkel kell tartalmaznia:
 
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
-* A *karakterlánc* , amely tartalmazza egy URI-azonosítója egy [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) kívánja használni, mint a blobtárolót *kimeneti* a feladatból. A feladat létrehoz egy blokkblob ebben a tárolóban, az importálás befejezése hiba adatok tárolására **feladat**. A SAS-jogkivonat tartalmaznia kell azokat az engedélyeket:
+
+* A *karakterlánc* , amely tartalmaz egy URI-ját egy [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) blobtároló adatokként *kimeneti* a feladatból. A feladat létrehoz egy blokkblobot ebben a tárolóban, az importálás befejezése bármilyen hiba adatainak tárolására **feladat**. A SAS-jogkivonatát ezekkel az engedélyekkel kell tartalmaznia:
 
    ```csharp
-   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
+     | SharedAccessBlobPermissions.Delete
    ```
 
 > [!NOTE]
-> A két paraméter blob tárolóhoz is mutat. A különböző paraméterek egyszerűen további szabályozásának engedélyezése az adatok a kimeneti tároló jogosultságokra van szüksége.
+> A két paraméter blob-tárolóban is mutat. A különböző paraméterek egyszerűen engedélyezze az adatok felett több szabályozási, a kimeneti tárolóhoz a további engedélyekkel kell rendelkeznie.
 
-A következő C# kódrészletet jeleníti meg az importálási feladat indítása:
+Az alábbi C# kódrészlet bemutatja az importálási feladat indítása:
 
 ```csharp
-JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
+JobProperties importJob = 
+   await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
-Ez a módszer az adatok importálása az eszköz iker is használható. A bemeneti adatok formátuma látható formátuma megegyezik a **ExportDevicesAsync** szakasz. Ezzel a módszerrel importálja újra az exportált adatokat. A **$metadata** nem kötelező megadni.
+Ez a módszer is használható az adatok importálása az ikereszköz. A bemeneti adatok formátuma megegyezik a formátumot, ahogyan a **ExportDevicesAsync** szakaszban. Ezzel a módszerrel importálja újra az exportált adatok. A **$metadata** nem kötelező.
 
-## <a name="import-behavior"></a>Importálás viselkedése
+## <a name="import-behavior"></a>Importálás viselkedés
 
-Használhatja a **ImportDevicesAsync** metódus a következő tömeges műveleteinek elvégzéséhez a identitásjegyzékhez:
+Használhatja a **ImportDevicesAsync** metódus az eszközidentitás-jegyzékben lévő tömeges műveletek végrehajtásához:
 
-* Az új eszközök tömeges regisztrálása
-* Meglévő eszközök tömeges törlése
-* Tömeges állapotmódosítások (engedélyezése vagy letiltása az eszközök)
-* Új eszköz hitelesítési kulcsokat tömeges hozzárendelése
-* Tömeges eszköz hitelesítési kulcsokat, automatikus-újragenerálása
-* Tömeges frissítés iker adatok
+* Új eszközök tömeges regisztrálása
+* A meglévő eszközök tömeges törlés
+* Tömeges állapotmódosítások (engedélyezése vagy letiltása az eszköz)
+* Új eszköz hitelesítési kulcsok tömeges hozzárendelését
+* Tömeges automatikus – eszköz hitelesítési kulcsok újragenerálása
+* Az ikereszköz adatok tömeges frissítés
 
-Végezheti el az előző művelet egy bármely kombinációja **ImportDevicesAsync** hívható meg. Például új eszközöket regisztrálni és törölheti vagy frissítheti a meglévő eszközöket egy időben. Mentén használata esetén a **ExportDevicesAsync** módszer, teljesen át lehet az összes eszközt egy IoT-központot egy másikra.
+A fenti műveletek egy tetszőleges kombinációját is végezhet **ImportDevicesAsync** hívja. Ha például új eszközök regisztrálása és törölheti vagy frissítheti a meglévő eszközök egyszerre. A használatakor a **ExportDevicesAsync** metódus, telepíthet teljesen át eszközeit egy IoT hub egy másikba.
 
-Ha az importált fájl iker metaadatokat tartalmaz, a metaadatok felülírja a meglévő iker metaadatokat. Ha az importált fájl nem tartalmaz iker metaadatokat, majd csak a `lastUpdateTime` metaadatok frissül, az aktuális idő.
+Ha a fájl ikereszköz metaadatokat tartalmaz, a metaadatok felülírja a meglévő ikereszköz metaadatokat. Ha a fájl nem tartalmaz ikereszköz metaadatokat, majd csak a `lastUpdateTime` metaadatok frissül az aktuális időt használja.
 
-Használja az opcionális **amelyben a importMode** tulajdonság szerializációs adatok importálása az egyes eszközök az importálási folyamat eszközönkénti szabályozására. A **amelyben a importMode** tulajdonságnak a következő beállításokat:
+A választható **amelyben a importMode** tulajdonság a szerializálási adatok importálása az importálási folyamat eszközönkénti szabályozásához minden egyes eszközhöz. A **amelyben a importMode** tulajdonsága a következő beállításokat:
 
 | amelyben a importMode | Leírás |
 | --- | --- |
-| **createOrUpdate** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a megadott bemeneti adatok nélkül tekintettel felülírja a meglévő adatokat a **ETag** érték. <br> A felhasználó megadja a két adatok az eszköz adatokkal együtt. A kettős etag, ha meg van adva, akkor feldolgozott egymástól függetlenül az eszköz etag. Ha eltérést okoz a meglévő iker etag, egy hiba kerül a naplófájlba írást. |
-| **létrehozás** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, egy hiba kerül a naplófájlba írást. <br> A felhasználó megadja a két adatok az eszköz adatokkal együtt. A kettős etag, ha meg van adva, akkor feldolgozott egymástól függetlenül az eszköz etag. Ha eltérést okoz a meglévő iker etag, egy hiba kerül a naplófájlba írást. |
-| **update** |Ha egy eszköz már létezik a megadott **azonosító**, a megadott bemeneti adatok nélkül tekintettel felülírja a meglévő adatokat a **ETag** érték. <br/>Ha az eszköz nem létezik, egy hiba kerül a naplófájlba írást. |
-| **updateIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosító**, meglévő információt felülírja a megadott bemeneti adatok csak akkor, ha van egy **ETag** felel meg. <br/>Ha az eszköz nem létezik, egy hiba kerül a naplófájlba írást. <br/>Ha egy **ETag** eltérés, hiba ír a naplófájlba írást. |
-| **createOrUpdateIfMatchETag** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, meglévő információt felülírja a megadott bemeneti adatok csak akkor, ha van egy **ETag** felel meg. <br/>Ha egy **ETag** eltérés, hiba ír a naplófájlba írást. <br> A felhasználó megadja a két adatok az eszköz adatokkal együtt. A kettős etag, ha meg van adva, akkor feldolgozott egymástól függetlenül az eszköz etag. Ha eltérést okoz a meglévő iker etag, egy hiba kerül a naplófájlba írást. |
-| **törlés** |Ha egy eszköz már létezik a megadott **azonosító**, nélkül tekintettel törlődik a **ETag** érték. <br/>Ha az eszköz nem létezik, egy hiba kerül a naplófájlba írást. |
-| **deleteIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosító**, törlése, csak akkor, ha van egy **ETag** felel meg. Ha az eszköz nem létezik, egy hiba kerül a naplófájlba írást. <br/>Ha az egy ETag nem egyezik, egy hiba kerül a naplófájlba írást. |
+| **createOrUpdate** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a megadott bemeneti adatok nélkül tekintettel a következőkre felülírja a meglévő adatokat a **ETag** értéket. <br> A felhasználó igény szerint megadhatja az ikereszköz adatokat és az eszközön lévő adatokat. Az ikereszköz ETag címke, ha meg van adva, a feldolgozása egymástól függetlenül, az eszköz etag. A meglévő ikereszköz etag-eltérés van, ha hiba történt a naplófájlba írt. |
+| **létrehozás** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, hibát a naplófájlba írt. <br> A felhasználó igény szerint megadhatja az ikereszköz adatokat és az eszközön lévő adatokat. Az ikereszköz ETag címke, ha meg van adva, a feldolgozása egymástól függetlenül, az eszköz etag. A meglévő ikereszköz etag-eltérés van, ha hiba történt a naplófájlba írt. |
+| **update** |Ha egy eszköz már létezik a megadott **azonosító**, felülírja a meglévő adatokat a megadott bemeneti adatok nélkül tekintettel a következőkre a **ETag** értéket. <br/>Ha az eszköz nem létezik, hibát a naplófájlba írt. |
+| **updateIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosító**, meglévő információt felülírja a megadott bemeneti adatok csak akkor, ha van egy **ETag** felel meg. <br/>Ha az eszköz nem létezik, hibát a naplófájlba írt. <br/>Ha egy **ETag** eltérés, hiba van a naplófájlba írt. |
+| **createOrUpdateIfMatchETag** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, meglévő információt felülírja a megadott bemeneti adatok csak akkor, ha van egy **ETag** felel meg. <br/>Ha egy **ETag** eltérés, hiba van a naplófájlba írt. <br> A felhasználó igény szerint megadhatja az ikereszköz adatokat és az eszközön lévő adatokat. Az ikereszköz ETag címke, ha meg van adva, a feldolgozása egymástól függetlenül, az eszköz etag. A meglévő ikereszköz etag-eltérés van, ha hiba történt a naplófájlba írt. |
+| **törlés** |Ha egy eszköz már létezik a megadott **azonosító**, nélkül tekintettel a következőkre törölné a rendszer a **ETag** értéket. <br/>Ha az eszköz nem létezik, hibát a naplófájlba írt. |
+| **deleteIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosító**, törölné a rendszer csak akkor, ha van egy **ETag** felel meg. Ha az eszköz nem létezik, hibát a naplófájlba írt. <br/>Ha az ETag nem egyezik, a naplófájlba írt hiba. |
 
 > [!NOTE]
-> Ha a szerializációs adatok nem definiálhat explicit módon egy **amelyben a importMode** jelző egy eszközhöz, alapértelmezés szerint a **createOrUpdate** az importálási művelet során.
+> Ha a szerializálási adatok nem explicit módon definiál egy **amelyben a importMode** jelző eszköz, a rendszer alapértelmezés szerint **createOrUpdate** az importálási művelet során.
 
-## <a name="import-devices-example--bulk-device-provisioning"></a>Eszközök például importálása – tömeges eszköz kiépítése
+## <a name="import-devices-example--bulk-device-provisioning"></a>Példa eszközök importálása – tömeges eszköz kiépítése
 
-A következő C# kódminta bemutatja, hogyan hozható létre több eszközt identitás, amely:
+Az alábbi C# kódminta azt ábrázolja, hogyan hozzon létre több eszközidentitások, amely:
 
-* Például a hitelesítési kulcsokat.
-* Adott eszköz kapcsolatos adatokat ír az blokkblobba.
-* Az eszközök importálnia kell az identitásjegyzékhez.
+* Például a hitelesítési kulcsok.
+* A blokkblobok, eszköz adatai írni.
+* Az eszközök importálása az eszközidentitás-jegyzék.
 
 ```csharp
 // Provision 1,000 more devices
@@ -308,7 +319,8 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
 // Call import using the blob to add new devices
 // Log information related to the job is written to the same container
 // This normally takes 1 minute per 100 devices
-JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
+JobProperties importJob =
+   await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
 // Wait until job is finished
 while(true)
@@ -326,9 +338,9 @@ while(true)
 }
 ```
 
-## <a name="import-devices-example--bulk-deletion"></a>Eszközök például – tömeges törlésének importálása
+## <a name="import-devices-example--bulk-deletion"></a>Importálási eszköz példa – tömeges törlés
 
-A következő példakód bemutatja, hogyan használja az előző példakód hozzáadott eszközök törlése:
+Az alábbi példakód bemutatja, hogyan használja az előző példakód hozzáadott eszközök törlése:
 
 ```csharp
 // Step 1: Update each device's ImportMode to be Delete
@@ -378,7 +390,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>A tároló SAS URI-JÁNAK beolvasása
 
-A következő példakód bemutatja, hogyan létrehozni egy [SAS URI](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) az olvasási, írási és törlési engedélyek egy blob-tároló:
+Az alábbi példakód bemutatja, hogyan hozhat létre egy [SAS URI-t](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) az olvasási, írási és törlési engedélyek blob tárolóhoz:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -405,24 +417,16 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan hajthat végre az identitásjegyzékhez tömeges műveleteket a az IoT-központ. Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
+Ebben a cikkben megtanulta, hogyan az IoT hub szemben az eszközidentitás-jegyzék tömeges műveletek végrehajtásához. Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 
-* [Az IoT-központ metrikák][lnk-metrics]
-* [Figyelési műveletek][lnk-monitor]
+* [Az IoT Hub-metrikák](iot-hub-metrics.md)
+* [Műveletek figyelése](iot-hub-operations-monitoring.md)
 
-Az IoT-központ képességeit további megismeréséhez lásd:
+Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 
-* [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
+* [Az IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
+* [Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
 
-Az IoT Hub eszköz kiépítése szolgáltatás segítségével nulla-érintés engedélyezése megismeréséhez just-in-time kiépítés, lásd: 
+Böngészhet a beavatkozás nélküli, just-in-time kiépítését lehetővé tevő, olvassa el az IoT Hub Device Provisioning Service használatával: 
 
-* [Az Azure IoT Hub eszköz-üzembehelyezési szolgáltatás][lnk-dps]
-
-
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+* [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)

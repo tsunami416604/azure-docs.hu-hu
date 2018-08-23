@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: acfff95afacfa1e5c75a799ba84d64cfa0579f66
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: cd67e612dd020ba600e33ac8baf77bc094d8afd3
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592091"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057268"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Az Azure Functions és a Cognitive Services IoT DevKit AZ3166 használata nyelvű fordító
 
@@ -122,10 +122,6 @@ A fordítási eredmény képernyőn a következő műveletek végezhetők el:
 ![Mini-Solution-Voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
 Az Arduino rajz rekordok a hangját, majd közzéteszi egy HTTP-trigger egy Azure-függvény kérelmet. Az Azure-függvény meghívja a cognitive Services-szolgáltatás a beszédfordító API-t ehhez a fordítás. Miután az Azure-függvény beolvassa a fordítandó szöveg, C2D (felhőből az eszközre irányuló) üzenetet küld az eszköz. Majd a fordítást a képernyő jelenik meg.
-
-## <a name="change-device-id"></a>Változás-Eszközazonosító
-
-Az alapértelmezett eszköz azonosítója az Azure IoT Hub regisztrálva van **AZ3166**. Az eszköz azonosítója módosítása esetén lásd: hogyan [az IoT-eszköz azonosítója testre a fejlesztői készlet](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/).
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 

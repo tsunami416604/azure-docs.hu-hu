@@ -1,102 +1,103 @@
 ---
-title: Engedélyezze a távoli asztali kapcsolat egy szerepkör esetén az Azure Cloud Services csomag
-description: Az Azure cloud service alkalmazás távoli asztali kapcsolatok lehetővé tételéhez konfigurálása
+title: Egy szerepkörhöz az Azure Cloud Services távoli asztali kapcsolat engedélyezése
+description: Az Azure cloud service-alkalmazás lehetővé teszi a távoli asztali kapcsolatok konfigurálása
 services: cloud-services
 author: ghogen
 manager: douge
 ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
+ms.custom: vs-azure
 ms.topic: conceptual
-ms.workload: azure
+ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: fe8b2b59616246743b38aa3b7a7972c092529b5d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 87c7029836bf28464fd48e17480119a4dcb1201c
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31788466"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060632"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Engedélyezze a távoli asztali kapcsolat egy szerepkör esetén az Azure Felhőszolgáltatások Visual Studio használatával
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services, a Visual Studio használatával
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
-A távoli asztal lehetővé teszi az asztalon, egy Azure-beli szerepkör eléréséhez. A távoli asztali kapcsolat segítségével hibaelhárítását és diagnosztizálását az alkalmazás futtatása során.
+A távoli asztal segítségével elérheti az Azure-ban futó szerepkörök asztalát. Az alkalmazással kapcsolatos problémák diagnosztizálására futás közben és használhatja a távoli asztali kapcsolatot.
 
-A Közzététel varázsló, amely a Visual Studio felhőszolgáltatás biztosít hozzátartozik, hogy egy lehetőség, hogy a távoli asztal engedélyezése a közzétételi folyamat során megadott hitelesítő adatokat. Ez a beállítás akkor megfelelő, amikor a Visual Studio 2017 15,4 és korábbi verzióiban használatával.
+A közzétételi varázsló, amely a Visual Studio biztosít a felhőalapú szolgáltatások beállítással rendelkezik, amely távoli asztal engedélyezése a közzétételi folyamat során megadott hitelesítő adatokat használ. Ezt a lehetőséget akkor megfelelő, ha a Visual Studio 2017 15.4-es és korábbi használatával.
 
-A Visual Studio 2017 15.5 és újabb verziók azonban ajánlott elkerülni, a távoli asztal engedélyezése a Közzététel varázsló lépéseinek, kivéve, ha csak egyetlen fejlesztőként dolgozik. Bármely helyzetet, amelyben a projekt előfordulhat, hogy nyithatja meg más fejlesztők számára helyette engedélyeznie a távoli asztal az Azure portálon, a PowerShell segítségével, vagy a folyamatos üzembe helyezés munkafolyamat kiadási-definícióból keresztül. Ez a javaslat hogyan Visual Studio kommunikál a távoli asztal virtuális gép, felhőalapú szolgáltatás, a témakörben leírt változás miatt van.
+A Visual Studio 2017 15.5-ös és újabb verziók azonban ajánlott, hogy, ne engedélyezze a távoli asztal a publish varázsló lépéseit, kivéve, ha csak egyetlen fejlesztőként dolgozik. Minden olyan helyzet, amelyben a projekt előfordulhat, hogy nyitható meg a-fejlesztőknek szántam ehelyett engedélyeznie a távoli asztal keresztül az Azure portal, PowerShell-lel vagy a folyamatos üzembe helyezést megvalósító munkafolyamat a kiadási definíció. Ez a javaslat hogyan Visual Studio kommunikál a távoli asztal a felhőszolgáltatásbeli virtuális Gépet, az ebben a cikkben leírtak megváltozása miatt van.
 
-## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>A Visual Studio 2017 15,4 és korábbi verzióiban a távoli asztal konfigurálása
+## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>A Visual Studio 2017 15.4-es és korábbi keresztül a távoli asztal konfigurálása
 
-A Visual Studio 2017 15,4 és korábbi verzióiban használata esetén használhatja a **összes szerepkör távoli asztal engedélyezése** a Közzététel varázsló lehetőséget. A varázsló továbbra is használhatja a Visual Studio 2017 15.5 és újabb verzióit, de nem használja a távoli asztal szolgáltatást.
+A Visual Studio 2017 15.4-es és korábbi használata esetén használhatja a **távoli asztal engedélyezése az összes szerepkörhöz** lehetőség a publish varázsló. A varázsló továbbra is használhatja a Visual Studio 2017 15.5-ös és újabb verziók, de ne használja a távoli asztal szolgáltatást.
 
 1. A Visual Studio publish varázsló elindításához kattintson a jobb gombbal a felhőszolgáltatási projektet a Megoldáskezelőben, majd válassza a **közzététel**.
 
-2. Jelentkezzen be az Azure-előfizetéssel, ha szükséges, és válassza ki **következő**.
+2. Jelentkezzen be az Azure-előfizetése, ha szükséges, és válassza ki **tovább**.
 
-3. Az a **beállítások** lapon jelölje be **összes szerepkör távoli asztal engedélyezése**, majd jelölje be a **beállítások...**  hivatkozások megnyithassanak a **a távoli asztal konfigurálásának** párbeszédpanel megnyitásához.
+3. Az a **beállítások** lapon jelölje be **távoli asztal engedélyezése az összes szerepkörhöz**, majd válassza a **beállítások...**  címre mutató hivatkozást a **a távoli asztal konfigurálásának** párbeszédpanel bezárásához.
 
-4. A párbeszédpanel alján válassza **további beállítások**. A parancs megjeleníti a legördülő listából válassza ki, amelyben létrehozása, vagy válasszon egy tanúsítványt, így amikor a távoli asztali kapcsolatra hitelesítő adatok titkosíthatók.
+4. A párbeszédpanel alján válassza **további beállítások**. Ez a parancs megjeleníti a legördülő listából válassza ki, amelyben hoz létre, vagy válasszon ki tanúsítványt úgy, hogy a hitelesítő adatok használatával titkosítsa, amikor a távoli asztali kapcsolatra.
 
    > [!Note]
-   > A tanúsítványokat, amelyekre szüksége van a távoli asztali kapcsolat eltérnek a többi Azure művelet használt tanúsítvány. A távelérési tanúsítványnak rendelkeznie kell egy titkos kulccsal.
+   > A tanúsítványok, szüksége lesz egy távoli asztali kapcsolatot a tanúsítványokat az Azure műveletnél használó eltérnek. A távelérési tanúsítványnak titkos kulccsal kell rendelkeznie.
 
-5. Jelöljön ki egy tanúsítványt a listából, vagy válasszon  **&lt;létrehozása... &gt;**. Ha egy új tanúsítvány létrehozása, adja meg egy rövid nevet az új tanúsítványt, amikor a rendszer kéri, majd válasszon **OK**. Az új tanúsítvány megjelenik a legördülő listában.
+5. Válasszon ki egy tanúsítványt a listából, vagy válasszon  **&lt;létrehozása... &gt;**. Ha létrehoz egy új tanúsítványt, adjon meg egy rövid nevet az új tanúsítványt, amikor a rendszer kéri, és válassza ki **OK**. Az új tanúsítvány megjelenik a legördülő listában.
 
-6. Adjon meg egy felhasználónevet és jelszót. Nem használhat egy meglévő fiókkal. Ne használja a "Rendszergazda" az új fiók felhasználónevet.
+6. Adjon meg egy felhasználónevet és jelszót. Nem használhat egy meglévő fiókot. Ne használja a "Rendszergazda" felhasználói nevet az új fiókhoz.
 
-7. Válassza ki a dátum a fiók jár és után, mely a távoli asztali kapcsolatok le lesz tiltva.
+7. Válassza ki a dátum az a fiók lejár, és melyik távoli asztali kapcsolatok le lesznek tiltva után.
 
-8. A szükséges adatokat a megadott, után válassza ki **OK**. A Visual Studio a távoli asztal beállításait hozzáadja a projekt `.cscfg` és `.csdef` fájlokat, beleértve a jelszavát, amelyet a kiválasztott tanúsítvány használatával titkosított.
+8. Után az összes szükséges információt megadott, válassza ki a **OK**. A Visual Studio a távoli asztal beállításait hozzáadja a projekthez `.cscfg` és `.csdef` fájlok, például a jelszó, amelyet a kiválasztott tanúsítvány van titkosítva.
 
-9. Végezze el minden fennmaradó lépéseit használatával a **tovább** gombra, majd válassza ki **közzététel** amikor készen áll a felhőalapú szolgáltatást teszik közzé. Ha nem Ön elkészült, válassza ki a **Mégse** és válasz **Igen** felkéréskor menti a módosításokat. A felhőalapú szolgáltatás később közzéteheti ezeket a beállításokat.
+9. Végezze el a hátralévő lépéseket használatával a **tovább** gombra, majd válassza **közzététel** , amikor készen közzététele a felhőalapú szolgáltatás. Ha Ön nem közzétételre kész, válassza ki a **Mégse** és válasz **Igen** amikor a rendszer kéri a módosítások mentéséhez. A felhőszolgáltatások később közzéteheti ezeket a beállításokat.
 
-## <a name="configure-remote-desktop-when-using-visual-studio-2017-version-155-and-later"></a>A távoli asztal konfigurálása, a Visual Studio 2017 15.5 vagy újabb verziója használatakor
+## <a name="configure-remote-desktop-when-using-visual-studio-2017-version-155-and-later"></a>A Visual Studio 2017 15.5-ös vagy újabb verzió használata esetén a távoli asztal konfigurálása
 
-A Visual Studio 2017 15.5 és újabb verziók továbbra is használhatja a egy felhőszolgáltatás-projekt közzététele varázsló. Használhatja a **távoli asztal engedélyezése az összes szerepkör** lehetőséget, ha csak egyetlen fejlesztőként dolgozik.
+A Visual Studio 2017 15.5-ös és újabb verziói a Közzététel varázslót, és egy felhőszolgáltatás-projekt továbbra is használhatja. Is használhatja a **távoli asztal engedélyezése az összes szerepkörhöz** beállítást, ha csak egyetlen fejlesztőként dolgozik.
 
-Ha egy csoport részeként dolgozik, helyette engedélyezze-e be a távoli asztal Azure felhőalapú szolgáltatás használatával vagy a [Azure-portálon](cloud-services-role-enable-remote-desktop-new-portal.md) vagy [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md).
+Dolgozik a csapat tagjaként, ha meg kell helyette távoli asztal engedélyezése a az Azure cloud Services használatával a [az Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md) vagy [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md).
 
-Ez a javaslat hogyan kommunikál a Visual Studio 2017 15.5 és újabb verzióit a felhőalapú szolgáltatás VM változás miatt van. A távoli asztal engedélyezése a Közzététel varázsló használatával, a Visual Studio korábbi verzióiban kommunikálni a virtuális gép keresztül mi hívta meg a "RDP beépülő modul." A Visual Studio 2017 15.5 és újabb verzióit kommunikál, inkább a "RDP bővítményének" használatával, amely biztonságosabb és rugalmasabb. Ez a változás is azt a tényt, hogy az Azure portál és a távoli asztal engedélyezése a PowerShell módszereket is használhatja a az RDP-bővítmény igazodik.
+Ez a javaslat hogyan kommunikál a Visual Studio 2017 15.5-ös és újabb verziói a felhőszolgáltatás virtuális gép megváltozása miatt van. A távoli asztal engedélyezése a publish varázsló lépéseit, a Visual Studio korábbi verziói kommunikálni a virtuális Gépeket a mi van neve az "RDP beépülő modult." A Visual Studio 2017 15.5-ös és újabb kommunikál, Ehelyett használja az "RDP-bővítmény" Ez a biztonságosabb és rugalmasabb. Ez a változás is igazodik a azt a tényt, hogy az Azure portal és a távoli asztal engedélyezése a PowerShell módszereket is használhatja a az RDP-bővítmény.
 
-Ha a Visual Studio kommunikál az RDP-bővítmény, SSL-en keresztül továbbít egy egyszerű szöveges jelszó. A projekt konfigurációs fájlok azonban csak egy titkosított jelszót, és csak a tanúsítvánnyal helyi titkosításához használt egyszerű szöveggé visszafejthető tárolja.
+Amikor a Visual Studio kommunikál az RDP-bővítmény, SSL-en keresztül továbbítja egy egyszerű szöveges jelszó. Azonban a projekt konfigurációs fájlok tárolása csak titkosított jelszót, amelyek úgy fejthetők vissza egyszerű szöveggé, csak az eredetileg a titkosításhoz használt helyi tanúsítvánnyal.
 
-Ha minden alkalommal, amikor telepíti a felhőszolgáltatás-projekt ugyanazon a fejlesztési számítógépen, majd a helyi tanúsítványtárolóban érhető el. Ebben az esetben továbbra is használhatja a **távoli asztal engedélyezése az összes szerepkör** a Közzététel varázsló lehetőséget.
+Ha minden alkalommal, amikor telepíti a felhőszolgáltatás-projekt ugyanazon a fejlesztési számítógépen, majd a helyi tanúsítványtárolóban érhető el. Ebben az esetben továbbra is használhatja a **távoli asztal engedélyezése az összes szerepkörhöz** lehetőség a publish varázsló.
 
-Ha Ön vagy más fejlesztők számára telepíteni kívánja a felhőszolgáltatás-projekt különböző számítógépekről, azonban majd más számítógépeken nem kell a jelszó visszafejtéséhez szükséges tanúsítvány. Ennek eredményeképpen a következő hibaüzenet jelenik meg:
+Ha, vagy más fejlesztők számára telepíteni kívánja a felhőszolgáltatás-projekt különböző számítógépekről, azonban akkor más számítógépek nem rendelkezik a jelszó visszafejtéséhez szükséges tanúsítvány. Ennek eredményeképpen a következő hibaüzenet jelenik meg:
 
 ```output
 Applying remote desktop protocol (RDP) extension.
 Certificate with thumbprint [thumbprint] doesn't exist.
 ```
 
-A jelszó is módosíthatja, minden alkalommal, amikor a felhőalapú szolgáltatás telepítéséhez, de a művelet kényelmetlenné válik összes felhasználója számára a távoli asztal használata szükséges.
+Sikerült módosítani a jelszót, minden alkalommal, amikor a felhőalapú szolgáltatás telepítéséhez, de a művelet kényelmetlenné válik nyújtson mindenkinek, aki kell használnia a távoli asztal.
 
-Ha megosztja a projekt egy csapattal, majd, érdemes törölje a közzététel varázslóban, és helyette a közvetlenül a távoli asztal engedélyezése a [Azure-portálon](cloud-services-role-enable-remote-desktop-new-portal.md) vagy használatával [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md).
+Ha a projekt a csapattal, majd, érdemes a publish varázsló bejelölését, és helyette a közvetlenül keresztül a távoli asztal engedélyezése a [az Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md) vagy [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md).
 
-### <a name="deploying-from-a-build-server-with-visual-studio-2017-version-155-and-later"></a>A Visual Studio 2017 15.5 és újabb verzióit a build server telepítése
+### <a name="deploying-from-a-build-server-with-visual-studio-2017-version-155-and-later"></a>Üzembe helyezése a Visual Studio 2017 15.5-ös és újabb buildelési kiszolgáló
 
-Egy felhőszolgáltatás-projekt egy kiszolgálóról build (például a Visual Studio Team Services) mely Visual Studio 2017 15.5 vagy újabb verziója telepítve van a build-ügynök telepítése. Ezzel az elrendezéssel telepítése történik, ugyanazon a számítógépen, amelyen a titkosítási tanúsítvány áll rendelkezésre.
+Telepíthet egy kiszolgálóról egy build (például a Visual Studio Team Services) melyik Visual Studio 2017 15.5-ös vagy újabb verziója telepítve van a fordító-ügynökhöz a felhőszolgáltatás-projekt. Ezzel az elrendezéssel az üzembe helyezés még ugyanazon a számítógépen, amelyen a titkosítási tanúsítvány áll rendelkezésre.
 
-A Visual Studio Team Services RDP bővítményt használja, a következőket foglalja a build definícióban:
+Az RDP-bővítmény a Visual Studio Team Services használata esetén a builddefiníció az a következő részleteket tartalmazza:
 
-1. Tartalmaznak `/p:ForceRDPExtensionOverPlugin=true` az MSBuild-argumentumok győződjön meg arról, hogy a központi telepítés együttműködve biztosítja a RDP beépülő modul helyett az RDP-bővítmény a. Példa:
+1. Például `/p:ForceRDPExtensionOverPlugin=true` az, hogy az üzembe helyezés működik együtt az RDP-beépülő modul helyett inkább az RDP-bővítmény az MSBuild-argumentumok. Példa:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
         /p:SkipInvalidConfigurations=true /p:ForceRDPExtensionOverPlugin=true
     ```
 
-1. A build lépések után adja hozzá a **Azure Cloud Service telepítési** . lépés:, és adja meg az tulajdonságait.
+1. A létrehozási lépések után adja hozzá a **Azure Felhőszolgáltatás üzembe helyezésének** lépést, valamint a tulajdonságainak beállításával.
 
-1. A központi telepítési lépés után adja hozzá egy **Azure Powershell** . lépés:, állítsa be a **megjelenített név** tulajdonságot "Azure központi telepítés: engedélyezze az RDP bővítménye" (vagy egy másik megfelelő nevet), és válassza ki a megfelelő Azure előfizetés.
+1. A központi telepítési lépés után adja hozzá egy **Azure PowerShell-lel** lépést, és állítsa annak **megjelenített név** tulajdonság "Azure üzembe helyezési: engedélyezze az RDP bővítmény" (vagy egy másik megfelelő nevet), és válassza ki a megfelelő Azure az előfizetés.
 
-1. Állítsa be **parancsfájl típusa** "Beágyazott" való és illessze be az alábbi kódot a **beágyazott parancsfájlja** mező. (Is létrehozhat egy `.ps1` ezt a parancsfájlt a projekt fájlt, és állítsa **parancsfájl** "Parancsfájl elérési útja", és állítsa a **parancsfájl elérési útján** a fájlra mutasson.)
+1. Állítsa be **Szkripttípus** "Beágyazott", és illessze be az alábbi kódot a **beágyazott parancsfájlja** mező. (Is létrehozhat egy `.ps1` ezzel a parancsprogrammal a projekt fájlban **Szkripttípus** "Parancsprogram-fájl elérési útja", és állítsa be a **parancsprogram elérési útja** a fájlra mutasson.)
 
     ```ps
     Param(
@@ -135,15 +136,15 @@ A Visual Studio Team Services RDP bővítményt használja, a következőket fog
     Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry -Verbose
     ```
 
-## <a name="connect-to-an-azure-role-by-using-remote-desktop"></a>A távoli asztal használatával csatlakoznak az Azure-szerepkör
+## <a name="connect-to-an-azure-role-by-using-remote-desktop"></a>Csatlakozás egy Azure-szerepkörhöz a távoli asztal használatával
 
-Miután közzététele a felhőalapú szolgáltatás, az Azure-on, és engedélyezte a távoli asztal, használhatja a Visual Studio Server Explorer a felhőszolgáltatás Virtuálisgép jelentkezni:
+Miután közzététele a felhőalapú szolgáltatás, az Azure-ban, és a távoli asztal engedélyezve van, használhatja a Visual Studio Server Explorerben a felhőszolgáltatás Virtuálisgép-ba való bejelentkezéshez:
 
-1. A Server Explorer eszközben bontsa ki a **Azure** csomópontot, majd bontsa ki a felhőszolgáltatás és a szerepkörök és példányok jelenítse meg egyik csomópontját.
+1. A Server Explorerben bontsa ki a **Azure** csomópontot, majd bontsa ki a csomópontot a felhő alapú szolgáltatás és -példányok listájának megjelenítéséhez a szerepkörök egyikét.
 
-2. Kattintson a jobb gombbal egy példány csomópont, és válassza ki **csatlakozzon a távoli asztal**.
+2. Kattintson a jobb gombbal egy példány csomópont, és válassza ki **csatlakoztatása a távoli asztal**.
 
-3. Adja meg a felhasználónevet és jelszót, amelyet korábban hozott létre. Most jelentkezett be a távoli munkamenethez.
+3. Adja meg a felhasználónevet és jelszót, amelyet korábban hozott létre. Most már bejelentkezett a távoli munkamenetet.
 
 ## <a name="additional-resources"></a>További források
 

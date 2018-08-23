@@ -1,49 +1,50 @@
 ---
-title: A Visual Studio Azure verem sablonok telepítése |} Microsoft Docs
-description: Útmutató a Visual Studio Azure verem sablonok telepítése.
+title: Sablonok üzembe helyezése az Azure Stackben Visual studióval |} A Microsoft Docs
+description: Útmutató a sablonok üzembe helyezése az Azure Stackben Visual studióval.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 628da2ae-64cc-42e0-b8b7-a6a3724cb974
 ms.service: azure-stack
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 6cd722fedc0483e37ce6ee491d74a7c985111353
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 585f890b11ab71f9c10479ff65aff74922a30ed1
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605123"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42147051"
 ---
-# <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>A Visual Studio használatával Azure verem sablonok telepítése
+# <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Az Azure Stack használatával a Visual Studio sablonok üzembe helyezése
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Visual Studio használatával Azure verem Azure Resource Manager sablonok telepítése.
+A Visual Studio használatával üzembe helyezése Azure Resource Manager-sablonok az Azure Stackhez.
 
-## <a name="to-deploy-a-template"></a>A sablon telepítéséhez
+## <a name="to-deploy-a-template"></a>A sablon üzembe helyezése
 
-1. [Telepítse, és csatlakozzon](azure-stack-install-visual-studio.md) a Visual Studio Azure verem.
+1. [Telepítése és csatlakozás](azure-stack-install-visual-studio.md) az Azure Stackhez a Visual Studio használatával.
 2. Nyissa meg a Visual Studiót.
-3. Válassza ki **fájl**, majd válassza ki **új**. A **új projekt**, jelölje be **Azure erőforráscsoport**.
-4. Adjon meg egy **neve** az új projekt, és válassza a **OK**.
-5. A **Azure-sablon kiválasztása**, válasszon **Azure verem gyors üzembe helyezés** a legördülő listából.
+3. Válassza ki **fájl**, majd válassza ki **új**. A **új projekt**válassza **Azure-erőforráscsoport**.
+4. Adjon meg egy **neve** az új projekt, és válassza ki a **OK**.
+5. A **Azure-sablon kiválasztása**, válasszon **Azure Stack gyors üzembe helyezés** a legördülő listából.
 6. Válassza ki **101--storage-fiók létrehozása**, majd válassza ki **OK**.
 7. Az új projekt, bontsa ki a **sablonok** csomópontja **Megoldáskezelőben** a rendelkezésre álló sablonok megtekintéséhez.
-8. A **Megoldáskezelőben**, válassza ki a projekt nevét, majd válassza ki **telepítés**. Válassza ki **új központi telepítési**.
-9. A **telepítés erőforráscsoportra**, használja a **előfizetés** legördülő lista segítségével válassza ki a Microsoft Azure verem előfizetését.
-10. Az a **erőforráscsoport** listában, válasszon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
-11. Az a **erőforráscsoport helye** listában válassza ki azt a helyet, és válassza ki **telepítés**.
-12. A **paraméterek szerkesztése**, adjon meg értékeket a paraméterek (amelyek eltérőek lehetnek a sablon függően), majd válassza ki **mentése**.
+8. A **Megoldáskezelőben**, válassza ki a projekt nevére, és válassza **telepítés**. Válassza ki **új üzembe helyezési**.
+9. A **telepítés erőforráscsoportra**, használja a **előfizetés** legördülő listából válassza ki a Microsoft Azure Stack-előfizetés kiválasztására.
+10. Az a **erőforráscsoport** listában válasszon ki egy meglévő erőforráscsoportot vagy hozzon létre egy újat.
+11. Az a **erőforráscsoport helye** listában válassza ki a helyet, és válassza ki **telepítés**.
+12. A **paraméterek szerkesztése**, adja meg az értékeket a paraméterek (amely régiónként eltérő sablon), majd válassza ki **mentése**.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Sablonok üzembe helyezése a parancssorral](azure-stack-deploy-template-command-line.md)
-* [Az Azure-verem sablonok fejlesztése](azure-stack-develop-templates.md)
+* [Sablonok fejlesztése az Azure Stackhez](azure-stack-develop-templates.md)

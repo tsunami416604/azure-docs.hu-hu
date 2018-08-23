@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: a86c4c4227795a712dd51ace1fbefe9d2b96518a
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9eef382ea264bcf9e59dcc408d14a59355b0369b
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116112"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445677"
 ---
 # <a name="reference-architecture-enterprise-integration-with-queues-and-events"></a>Referenciaarchitektúra: üzenetsorokat és események vállalati integráció
 
@@ -42,7 +42,7 @@ Az architektúra a következő összetevőkből áll:
 - **Összekötők**. Használja a Logic Apps [összekötők](https://docs.microsoft.com/azure/connectors/apis-list) szeretne csatlakozni a gyakran használt szolgáltatásokat. A Logic Apps már rendelkezik a különböző összekötők több száz, de létrehozhat egy egyéni összekötőt is.
 - **Az Azure Service Bus**. [A Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) biztonságos és megbízható üzenetküldést biztosít. Üzenetküldési használható alkalmazások szétválaszthatók és más üzenetalapú rendszerekkel való integrációt segítik.
 - **Az Azure Event Grid**. [Event Grid](https://docs.microsoft.com/azure/event-grid/overview) egy kiszolgáló nélküli platform, amely tehet közzé és alkalmazásesemények továbbítására szolgál.
-- **IP-cím**. Az Azure API Management szolgáltatás rendelkezik egy nyilvános [IP-cím](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) és a egy tartomány nevét. A tartománynév altartománya API.NET-webhelyen, azure, például a contoso.azure-API.NET webhelyen. A Logic Apps és a Service Bus is nyilvános IP-címet. Azonban ebben az architektúrában azt korlátozza a hozzáférést a Logic Apps-végpontok csak IP-címet az API Management hívása (a biztonság). A Service Bus-hívások közös hozzáférésű jogosultságkód (SAS) védik.
+- **IP-cím**. Az Azure API Management szolgáltatás rendelkezik egy nyilvános [IP-cím](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) és a egy tartomány nevét. Az alapértelmezett tartománynevet altartománya API.NET-webhelyen, azure, például a contoso.azure-API.NET webhelyen, de [egyéni tartományok](https://docs.microsoft.com/azure/api-management/configure-custom-domain) is konfigurálható. A Logic Apps és a Service Bus is nyilvános IP-címet. Azonban ebben az architektúrában azt korlátozza a hozzáférést a Logic Apps-végpontok csak IP-címet az API Management hívása (a biztonság). A Service Bus-hívások közös hozzáférésű jogosultságkód (SAS) védik.
 - **Azure DNS**. [Az Azure DNS](https://docs.microsoft.com/azure/dns/) DNS-tartományok egy üzemeltetési szolgáltatás. Az Azure DNS névfeloldás biztosít a Microsoft Azure-infrastruktúra használatával. A tartományok Azure-ban üzemelteti, azonos hitelesítő adatokkal, API-kkal, eszközökkel és számlázási használata más Azure-szolgáltatások DNS-rekordok is kezelheti. Egy egyéni tartománynevet (például contoso.com) használatához hozzon létre az egyéni tartománynév leképezése az IP-cím DNS-rekordjait. További információkért lásd: [egyéni tartománynév beállítása az API Management](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain).
 - **Azure Active Directory (Azure AD)**. Használat [Azure ad-ben](https://docs.microsoft.com/azure/active-directory/) vagy egy másik identitásszolgáltatót a hitelesítéshez. Az Azure AD hitelesítési API-végpontjainak eléréséhez átadásával biztosít egy [JSON Web Token az API Management](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims) ellenőrzése. Az Azure AD biztosíthat hozzáférést az API Management fejlesztői portálon (Standard és prémium szinten csak).
 

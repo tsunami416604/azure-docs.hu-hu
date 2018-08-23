@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 79585195cf95e2074a1c455c82faa500af20218a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d7cbeebff42bddd93cac35a0205d031a90bb4715
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618767"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059168"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan történik az adatok az Azure Cosmos DB indexelése?
 
@@ -36,6 +36,22 @@ Ez a cikk elolvasása után is elérheti az alábbi kérdések megválaszolásá
 * Hogyan konfigurálhatok ORDER BY vagy a tartomány-lekérdezések végrehajtása az indexelés?
 * Hogyan tehetem módosításokat egy gyűjtemény indexelési házirendet?
 * Hogyan összehasonlítása tárolás és teljesítmény különböző indexelési szabályzat?
+
+## <a id="Indexing"></a> A cosmos DB-indexelő
+
+Az adatbázisa indexei célja, hogy a különböző űrlapokban és az alakzatok-lekérdezések kiszolgálása a minimális erőforrás-használat (például CPU és a bemeneti és kimeneti) művelet során gondoskodik a magas átviteli sebességű és kis késése. A kiválasztott adatbázisok lekérdezése megfelelő indexe gyakran sokkal tervezés és a kísérletezés szükséges. Ez a megközelítés a séma nélküli adatbázis, ahol az adatok nem felelnek meg a szigorú sémát, és gyorsan haladásával nagy kihívást jelent. 
+
+A Cosmos DB-indexelő alrendszer alakítottuk ki, amikor azt állítsa be az alábbi célok:
+
+* Anélkül, hogy a séma Indexeljük a dokumentumokat: az indexelési alrendszer nem igényelnek semmilyen adatbázisséma-információk és győződjön meg arról, a dokumentumok séma feltételezésekre.  
+
+* Hatékony és sokrétű hierarchikus és relációs lekérdezéseket támogatja: az index támogatja a Cosmos DB lekérdezési nyelv hatékonyan, beleértve a hierarchikus és relációs leképezések támogatását.  
+
+* Az írások tartós kötet in face of konzisztens lekérdezések támogatása: nagy írási átviteli számítási feladatokhoz konzisztens lekérdezések, az index frissítése Növekményesen, hatékony és online mennyiségű írást esetén. A konzisztens index frissítése elengedhetetlen a konzisztencia szintjét, amelyben a felhasználó konfigurált a dokumentum-szolgáltatás, a lekérdezések kiszolgálása érdekében.  
+
+* Több-bérlős támogatás: Adja meg a Foglalás-alapú modell az erőforrás-szabályozás bérlőn, index frissítéseit belül menjenek végbe a költségvetés rendszererőforrást (Processzor, memória és bemeneti/kimeneti műveletek száma másodpercenként) replikánként lefoglalva.  
+
+* Tárolási hatékonyság: A költséghatékonyság, az index a lemezen indextárolási terheléssel jár a körülhatárolt és kiszámítható. Ez a rendkívül fontos, mert a Cosmos DB lehetővé teszi, hogy a fejlesztő, hogy a költség-alapú és kompromisszumot kínál a lekérdezési teljesítmény viszonyítva index terhelés között.  
 
 ## Gyűjtemény indexelési házirend testreszabása <a id="CustomizingIndexingPolicy"></a>  
 Testre szabhatja a storage, írási és lekérdezési teljesítmény és a lekérdezési konzisztenciát közötti skálán letiltásával alapértelmezett indexelési szabályzat egy Azure Cosmos DB-gyűjteményen. Konfigurálhatja a következő szempontokat:

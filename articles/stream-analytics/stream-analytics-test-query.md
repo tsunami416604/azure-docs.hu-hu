@@ -1,7 +1,7 @@
 ---
-title: Egy Azure Stream Analytics-feladat mintaadatokkal tesztelése
+title: Azure Stream Analytics-feladat, mintaadatokkal tesztelése
 description: Hogyan tesztelheti a lekérdezéseket a Stream Analytics-feladatok.
-keywords: A cikkből megtudhatja, hogyan használható az Azure-portálon tesztelése egy Azure Stream Analytics-feladat, a minta bemenet, és töltse fel a mintaadatokat.
+keywords: Ez a cikk ismerteti, hogyan használhatja az Azure Portalon egy Azure Stream Analytics-feladat, a minta bemenet tesztelése, és töltse fel a mintaadatokat.
 services: stream-analytics
 author: jasonwhowell
 ms.author: jasonh
@@ -10,44 +10,42 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 3dc9091934f3db8ededc13f74d2f302eccace4d6
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d699d69362b2d28c205aab14a4bfb26570a68a4e
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312990"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055300"
 ---
-# <a name="test-a-stream-analytics-query-with-sample-data"></a>A Stream Analytics-lekérdezés mintaadatokkal tesztelése
+# <a name="test-a-stream-analytics-query-with-sample-data"></a>A Stream Analytics lekérdezési mintaadatokkal tesztelése
 
-Azure Stream Analytics segítségével töltse fel adatokat, valamint a lekérdezés az Azure portálon elindítása vagy a feladat leállítása nélkül.
+Az Azure Stream Analytics használatával indítása és feladat leállítása nélkül tölthet fel adatokat, valamint mintalekérdezések az Azure Portalon.
 
-## <a name="upload-sample-data-and-test-the-query"></a>Töltse fel a mintaadatok és a lekérdezés tesztelése
+## <a name="upload-sample-data-and-test-the-query"></a>Mintaadatok feltöltése és a lekérdezés tesztelése
 
 1. Jelentkezzen be az Azure portálra. 
 
-2. Keresse meg a meglévő Stream Analytics-feladat, és válassza ki azt.
+2. Keresse meg a meglévő Stream Analytics-feladatot, és válassza ki azt.
 
-3. A Stream Analytics a sikertelen feladat-oldalon, a a **feladat topológia** elemcsoportban válasszon **lekérdezés** a Lekérdezésszerkesztő ablakának megnyitása. 
+3. A Stream Analytics a feladat oldal, a a **Feladattopológia** szakaszban kattintson **lekérdezés** a lekérdezés szerkesztő ablak megnyitásához. 
 
-4. A minta bemeneti adatokat tartalmazó lekérdezés teszteléséhez kattintson a jobb gombbal bármelyik bemenet.  Válassza ki **tölthet fel fájlból adatot**.
+4. Bemeneti mintaadatok a lekérdezés teszteléséhez kattintson a jobb gombbal bármelyik a bemeneteket.  Válassza ki **fájlból mintaadatok feltöltése**. Az adatok JSON-, CSV-vagy AVRO szerializálni kell.
 
-   Az adatok csak JSON formátumú adatokat kell lennie. Ha az adatok egy másik formátumban, például a fürt megosztott kötetei szolgáltatás, akkor kell azt átalakíthatja JSON feltöltés előtt. Használhatja, mint bármely opensource átalakítás eszközt [a JSON-konverter CSV](http://www.convertcsv.com/csv-to-json.htm) az adatok JSON formátumúvá konvertálni.
+    ![Stream analytics query editor testovat dotaz](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-    ![Stream analytics lekérdezési szerkesztő lekérdezés tesztelése](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
+5. Válassza a feltöltés befejeződése után **tesztelése** a lekérdezést a mintaadatokkal tesztelheti.
 
-5. A feltöltés befejeződése után válassza ki a **tesztelése** tesztelése a megadott mintaadatokat irányuló lekérdezés.
+    ![Stream analytics-lekérdezés szerkesztő teszt mintaadatok](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 
-    ![Stream analytics lekérdezési szerkesztő teszt mintaadatokat](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
+6. A teszt eredménye későbbi használatra van szükség, ha a lekérdezés kimenete a böngészőt a letöltés eredményeit mutató hivatkozást tartalmazó jelenik meg. 
 
-6. Ha a teszt eredménye későbbi használatra, a lekérdezés kimenetét megjelenik egy hivatkozás a letöltés eredményeit a webböngésző. 
+7. Iteratív módosítsa a lekérdezést, és a tesztelés közben ismételt használatával ellenőrizheti, hogyan változik a kimenet.
 
-7. Ismételt módosítsa a lekérdezést, és tesztelik azt ismételt használatával ellenőrizheti, hogyan a kimeneti változik.
+   ![Stream Analytics query editor kimeneti](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
 
-   ![Stream Analytics query editor minta kimenet](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
+   Amikor lekérdezést használ több kimenetek, az eredményeket külön lapokra jelennek meg, és könnyedén válthat közöttük.
 
-   Ha több kimenet egy lekérdezésben használja, a eredmények jelennek külön lapon, és akkor könnyen lehet váltani közöttük.
-
-8. Miután ellenőrizte, hogy a böngészőben megjelenített eredményekre **mentése** a lekérdezést. Majd **Start** a feladatot, és hagyja, hogy a bejövő események feldolgozásához.
+8. Miután meggyőződött a böngészőben megjelenített eredményekre **mentése** a lekérdezést. Ezután **Start** a feladatot, és biztosítani, hogy a bejövő események feldolgozására.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

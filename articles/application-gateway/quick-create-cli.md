@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 282f6d965ea85b25f1eada1a63897734c6c7b298
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 23ab97918d7def744f9ac3427faa3743b15124eb
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435264"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42022527"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Első lépések – A webes forgalom irányítása az Azure Application Gateway szolgáltatással – Azure CLI
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 Ahhoz, hogy az alkalmazásátjáró kommunikálhasson más erőforrásokkal, létre kell hoznia egy virtuális hálózatot. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat. Ebben a példában két alhálózatot hozunk létre: egyet az Application Gateway számára, egyet pedig a virtuális gépekhez. 
 
-Hozza létre a virtuális hálózatot és az alhálózatot az [az network vnet create](/cli/azure/vnet#az-vnet-create) paranccsal. Hozza létre a nyilvános IP-címet az [az network public-ip create](/cli/azure/public-ip#az-public-ip-create) paranccsal.
+Hozza létre a virtuális hálózatot és az alhálózatot az [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) paranccsal. Hozza létre a nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az-public-ip-create) paranccsal.
 
 ```azurecli-interactive
 az network vnet create \
@@ -140,7 +140,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Hozzon létre egy Application Gatewayt az [az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create) paranccsal. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. A hálózati interfészek privát IP-címeit kiszolgálóként adjuk hozzá az Application Gateway háttérkészletéhez.
+Hozzon létre egy Application Gatewayt az [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) paranccsal. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. A hálózati interfészek privát IP-címeit kiszolgálóként adjuk hozzá az Application Gateway háttérkészletéhez.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')

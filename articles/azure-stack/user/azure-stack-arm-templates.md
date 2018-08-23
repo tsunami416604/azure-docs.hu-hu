@@ -1,9 +1,9 @@
 ---
-title: Használja az Azure Resource Manager-sablonok Azure verem |} Microsoft Docs
-description: Megtudhatja, hogyan használható az Azure-verem Azure Resource Manager-sablonok erőforrások kiépítése.
+title: Az Azure Resource Manager-sablonok használata az Azure Stackben |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure Resource Manager-sablonok az Azure Stackben erőforrások kiépítése.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
@@ -12,71 +12,71 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
-ms.author: brenduns
-ms.reviewer: ''
-ms.openlocfilehash: 9c4d538f77ae056163fd17aa547162a4ad3eff63
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 08/15/2018
+ms.author: sethm
+ms.reviewer: jeffgo
+ms.openlocfilehash: 456f27b97ee644aef34f9bb9e2c0525bd61c1c84
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301678"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060836"
 ---
-# <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Azure Resource Manager-sablonok használata az Azure-verem
+# <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Az Azure Resource Manager-sablonok használata az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Azure Resource Manager-sablonok segítségével telepítése és jogosultságok kiosztása összes erőforrását egyetlen, koordinált műveletben az alkalmazáshoz. Módosítja az erőforrásokat az erőforráscsoport-sablonok is telepítheti.
+Az Azure Resource Manager-sablonok segítségével telepítése és jogosultságok kiosztása összes erőforrását egyetlen, koordinált műveletben az alkalmazáshoz. Telepítse újra a sablonok az erőforrásokat egy erőforráscsoportba tartozó módosíthatja is.
 
-Ezeket a sablonokat is telepíthető a Microsoft Azure verem portal, PowerShell, a parancssor és a Visual Studio.
+Ezeket a sablonokat is üzembe helyezhetők a Microsoft Azure Stack portal, PowerShell, a parancssor és a Visual Studio.
 
-A következő gyors üzembe helyezési sablonokat [GitHub](http://aka.ms/azurestackgithub).
+A következő gyorsindítási sablonok érhetők el a [GitHub](http://aka.ms/azurestackgithub).
 
-## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>Telepítse a SharePoint Server (nem-magas rendelkezésre állású telepítés)
+## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>A SharePoint Server (nem – magas rendelkezésre állású üzembe helyezés) üzembe helyezése
 
-A PowerShell DSC-bővítmény segítségével létrehozása a SharePoint Server 2013, amely a következőket tartalmazza:
-
-* Virtuális hálózat
-* Három storage-fiókok
-* Két, a külső terheléselosztók
-* Egyetlen tartományt az új erdő tartományvezérlőjeként konfigurált egy virtuális gép (VM)
-* Önálló SQL Server 2014-kiszolgálóként konfigurált egy virtuális gép
-* Egy üzemelő Azure virtuális Gépet egy számítógépen a SharePoint Server 2013 farmhoz
-
-## <a name="deploy-ad-non-high-availability-deployment"></a>AD (nem magas-rendelkezésre állási-telepítési) telepítése
-
-A PowerShell DSC-bővítmény segítségével hozzon létre egy AD tartományvezérlő kiszolgálót, amely a következőket tartalmazza:
+A PowerShell DSC bővítmény segítségével hozzon létre egy SharePoint Server 2013-farm, amely tartalmazza az alábbi forrásanyagokat:
 
 * Virtuális hálózat
-* Egy tárfiók
+* Három tárfiókot tartalmaz
+* Két a külső terheléselosztók
+* Egy virtuális gép (VM) egy új erdő egyetlen tartományt a tartományvezérlővel konfigurálva
+* Egy virtuális Gépet egy önálló SQL Server 2014-kiszolgáló
+* Egy virtuális Gépet egy egy számítógépen a SharePoint Server 2013-farm
+
+## <a name="deploy-ad-non-high-availability-deployment"></a>(Nem nagy – rendelkezésre állás – telepítési) AD üzembe helyezése
+
+A PowerShell DSC bővítmény segítségével hozzon létre egy AD tartományvezérlő kiszolgálóra, amely tartalmazza az alábbi forrásanyagokat:
+
+* Virtuális hálózat
+* Egy storage-fiók
 * Egy külső terheléselosztó
-* Egyetlen tartományt az új erdő tartományvezérlőjeként konfigurált egy virtuális gép (VM)
+* Egy virtuális gép (VM) egy új erdő egyetlen tartományt a tartományvezérlővel konfigurálva
 
-## <a name="deploy-adsql-non-high-availability-deployment"></a>Active/SQL (nem magas-rendelkezésre állási-telepítési) telepítése
+## <a name="deploy-adsql-non-high-availability-deployment"></a>Az AD/SQL (nem nagy – rendelkezésre állás – telepítési) üzembe helyezése
 
-A PowerShell DSC-bővítmény segítségével hozzon létre egy SQL Server 2014 önálló kiszolgáló, amely a következőket tartalmazza:
+A PowerShell DSC bővítmény segítségével hozzon létre egy SQL Server 2014 önálló kiszolgáló, amely a következő forrásokat tartalmazza:
 
 * Virtuális hálózat
-* Két storage-fiókok
+* Két tárfiókot
 * Egy külső terheléselosztó
-* Egyetlen tartományt az új erdő tartományvezérlőjeként konfigurált egy virtuális gép (VM)
-* Önálló SQL Server 2014-kiszolgálóként konfigurált egy virtuális gép
+* Egy virtuális gép (VM) egy új erdő egyetlen tartományt a tartományvezérlővel konfigurálva
+* Egy virtuális Gépet egy önálló SQL Server 2014-kiszolgáló
 
 ## <a name="vm-dsc-extension-azure-automation-pull-server"></a>VM-DSC-Extension-Azure-Automation-Pull-Server
 
-Használja a PowerShell DSC-bővítményt egy meglévő virtuális gép helyi Configuration Manager (LCM) konfigurálása és regisztrálása az Azure Automation szolgáltatásbeli fiók DSC lekéréses kiszolgáló.
+A PowerShell DSC bővítmény segítségével egy meglévő virtuális gép helyi Configuration Manager (LCM) konfigurálása és a egy Azure Automation fiókhoz DSC lekéréses kiszolgálón való bejegyzéséhez.
 
-## <a name="create-a-virtual-machine-from-a-user-image"></a>Virtuális gép létrehozása egy felhasználó lemezképből
+## <a name="create-a-virtual-machine-from-a-user-image"></a>Virtuális gép létrehozása felhasználói rendszerképből
 
-Hozzon létre egy virtuális gépet egy egyéni felhasználói lemezkép. Ez a sablon is telepíti, a virtuális hálózaton (DNS), a nyilvános IP-cím és a hálózati illesztő.
+Virtuális gép létrehozása egyéni felhasználói rendszerképből. Ez a sablon is üzembe helyez egy virtuális hálózatot (a DNS-), a nyilvános IP-cím és a egy hálózati adapter.
 
 ## <a name="basic-virtual-machine"></a>Alapszintű virtuális gép
 
-A Windows virtuális gép, amely tartalmazza a virtuális hálózaton (DNS), a nyilvános IP-cím és a hálózati illesztő telepíthető.
+Windows virtuális gép üzembe helyezése egy virtuális hálózatot (a DNS-), a nyilvános IP-cím és a egy hálózati adaptert tartalmaz.
 
-## <a name="cancel-a-running-template-deployment"></a>Folyamatban lévő futó sablon központi telepítés
+## <a name="cancel-a-running-template-deployment"></a>Mégse sablon üzemelő példányban
 
-Egy futó sablon-üzembehelyezés törléséhez használja a `Stop-AzureRmResourceGroupDeployment` PowerShell-parancsmagot.
+Mégse sablon üzemelő példányban, használja a `Stop-AzureRmResourceGroupDeployment` PowerShell-parancsmagot.
 
 ## <a name="next-steps"></a>További lépések
 

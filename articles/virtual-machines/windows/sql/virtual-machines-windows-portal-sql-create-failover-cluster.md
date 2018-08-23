@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a4b63c9d184f58fe13c1271f9a425919a42fd897
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216505"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056154"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server feladatátvevő Fürtpéldányának konfigurálása
 
@@ -175,7 +175,7 @@ Ezek az előfeltételek teljesülnek folytathatja a feladatátvevő fürt létre
 
    | Cél | TCP-Port | Megjegyzések
    | ------ | ------ | ------
-   | SQL-kiszolgáló | 1433 | Normál port az SQL Server alapértelmezett példánya esetében. Ha a gyűjteményből használt lemezkép, a port automatikusan megnyílik.
+   | SQL Server | 1433 | Normál port az SQL Server alapértelmezett példánya esetében. Ha a gyűjteményből használt lemezkép, a port automatikusan megnyílik.
    | Állapotadat-mintavétel | 59999 | Bármely nyitott TCP-port. Egy későbbi lépésben, a load balancer konfigurálása [állapotadat-mintavétel](#probe) és a fürt ezt a portot használja.  
 
 1. Adja hozzá a tárolót a virtuális géphez. Részletes információkért lásd: [adja hozzá a tárolási](../premium-storage.md).
@@ -368,7 +368,7 @@ A load balancer létrehozása:
    - **Virtuális hálózat**: a virtuális gépek ugyanazon a hálózaton.
    - **Alhálózat**: a virtuális gépeket ugyanabban az alhálózatban.
    - **Magánhálózati IP-cím**: az azonos IP-cím, amelyet az SQL Server FCI fürt hálózati erőforráshoz rendelt.
-   - **előfizetés**: az Azure-előfizetést.
+   - **Előfizetés**: az Azure-előfizetést.
    - **Erőforráscsoport**: használja ugyanazt az erőforráscsoportot a virtuális gépek.
    - **Hely**: használja az ugyanazon Azure-beli hely, a virtuális gépek.
    Tekintse meg a következő képen látható:
@@ -481,7 +481,13 @@ A kapcsolat tesztelése, jelentkezzen be egy másik virtuális géphez ugyanazon
 >Ha szükséges, akkor az [töltse le az SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Korlátozások
-Az Azure virtual machines, a Microsoft elosztott tranzakciók koordinátora (DTC) nem támogatott az példányoktól, mert az RPC-portot a terheléselosztó által nem támogatott.
+
+A fürt megosztott kötetei (CSV) tárolással az Azure Virtual Machines támogatja a Windows Server verzióját 2019 Microsoft elosztott tranzakciók koordinátora (MSDTC) és a egy [a standard load balancer](../../../load-balancer/load-balancer-standard-overview.md).
+
+Azure-beli virtuális gépeken az MSDTC nem támogatott a Windows Server 2016-os vagy korábbi mert:
+
+- A fürtözött MSDTC-erőforrást nem lehet konfigurálni a megosztott tárolók használatához. Windows Server 2016-MSDTC-erőforrás létrehozásakor, nem jelenik meg minden megosztott tároló elérhetővé használatra, akkor is, ha a tároló nem létezik. Ez a hiba elhárítása a Windows Server 2019.
+- Az alapszintű load balancer RPC-portok nem kezeli.
 
 ## <a name="see-also"></a>Lásd még:
 

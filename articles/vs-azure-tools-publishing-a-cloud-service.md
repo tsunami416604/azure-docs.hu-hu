@@ -1,160 +1,161 @@
 ---
-title: Egy felhőalapú szolgáltatás, az Azure-eszközökkel közzététele |} Microsoft Docs
-description: További tudnivalók az Azure cloud service projektek közzététele a Visual Studio használatával.
+title: Egy Felhőszolgáltatás, Azure-eszközök segítségével közzététele |} A Microsoft Docs
+description: Ismerje meg az Azure cloud service-projektek közzététele a Visual Studio használatával.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 1a07b6e4-3678-4cbf-b37e-4520b402a3d9
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: bde00dfbf4a7ffde90d1a9a3d57d3a2decf74cad
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 78a313e824ee7926ab9f1875407d650d614afce2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799464"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059485"
 ---
-# <a name="publishing-a-cloud-service-using-visual-studio"></a>Egy felhőalapú szolgáltatás, a Visual Studio használatával közzététele
+# <a name="publishing-a-cloud-service-using-visual-studio"></a>Közzététel a felhőszolgáltatás a Visual Studio használatával
 
-A Visual Studio közvetlenül az Azure-ba, átmeneti és üzemi környezetben is egy felhőszolgáltatás-támogatással rendelkező alkalmazások közzététele. Közzétételekor, a környezet és a központi telepítési csomag ideiglenesen használt tárfiók választja.
+A Visual Studio közzétesz egy alkalmazást az Azure-felhőszolgáltatás átmeneti és az éles környezetekben támogatással. A közzétételkor kiválaszthatja a központi telepítési környezet és a egy storage-fiókot, amely ideiglenesen szolgál a központi telepítési csomag.
 
-Ha Ön fejlesztés és tesztelés az Azure-alkalmazások, segítségével a Web Deploy a webes szerepkörök Növekményesen változtatásokat. Miutá közzéteszi az alkalmazás központi telepítési környezetben, a Web Deploy segítségével telepíthet módosításokat közvetlenül a virtuális gépet, hogy fut a webes szerepkör. Nem kell csomagot, és tegye közzé a teljes Azure alkalmazást minden alkalommal, amikor frissíti a webes szerepkör segítségével tesztelje a módosításokat. Ezt a módszert használja elérhető a webes szerepkör módosítások nélkül vár a központi telepítési környezetben közzétett alkalmazás teszteléséhez a felhőben lehet.
+Takarít meg fejlesztés és tesztelés az Azure-alkalmazások, használhatja a Web Deploy a webes szerepkörök növekményes módosítások közzétételére. Miután közzéteszi az alkalmazás központi telepítési környezetre, a Web Deploy lehetővé teszi a közvetlenül üzembe helyezhetők a módosításokat a virtuális gép, amelyen fut a webes szerepkör. Nem kell csomagot, és közzétenni a teljes Azure-alkalmazásokat minden alkalommal, amikor a módosítások teszteléséhez a webes szerepkör frissíteni szeretné. Ezt a módszert használja akkor is az elérhető a webes szerepkör módosítások teszteléshez nélkül szeretné, hogy az alkalmazás közzétenni egy üzembehelyezési környezetet a felhőben.
 
-Az alábbi eljárásokkal az Azure alkalmazás közzétételére és a webes szerepkör frissítése a Web Deploy használatával:
+Az alábbi eljárásokkal közzététele az Azure-alkalmazásokat és a egy webes szerepkör frissítése a Web Deploy használatával:
 
-- Közzététel vagy a csomag a Visual Studio Azure-alkalmazásfejlesztő
-- A webes szerepkör részeként a fejlesztési és tesztelési ciklus frissítése
+- Tegyen közzé, illetve a Visual Studióból az Azure alkalmazás becsomagolása
+- A fejlesztési és tesztelési ciklus részeként egy webes szerepkör frissítése
 
-## <a name="publish-or-package-an-azure-application-from-visual-studio"></a>Közzététel vagy a csomag a Visual Studio Azure-alkalmazásfejlesztő
+## <a name="publish-or-package-an-azure-application-from-visual-studio"></a>Tegyen közzé, illetve a Visual Studióból az Azure alkalmazás becsomagolása
 
-Az Azure-alkalmazásában közzétételekor teheti az alábbi műveletek közül:
+Ha közzéteszi az Azure-alkalmazásokat, az alábbi feladatok valamelyikét teheti:
 
-- Service-csomag létrehozása: a központi telepítési környezetben az alkalmazás közzétételére használhatja ezt a csomagot és a szolgáltatás konfigurációs fájlja a [Azure-portálon](https://portal.azure.com).
+- Hozzon létre egy szolgáltatási csomagot: az alkalmazás egy központi telepítési környezetben való közzétételéhez használhatja ezt a csomagot, és a szolgáltatás konfigurációs fájlja a [az Azure portal](https://portal.azure.com).
 
-- Az Azure a Visual Studio-projekt közzététele: az alkalmazás közvetlenül az Azure-bA közzétételére, a varázslóval közzététele. További információ: [Azure alkalmazás közzététele varázsló](vs-azure-tools-publish-azure-application-wizard.md).
+- A Visual Studióból az Azure projekt közzététele: tesz közzé az alkalmazást közvetlenül az Azure-ba, a közzétételi varázsló használható. További információ: [Azure alkalmazás közzététele varázsló](vs-azure-tools-publish-azure-application-wizard.md).
 
-### <a name="to-create-a-service-package-from-visual-studio"></a>Service-csomag létrehozása a Visual Studio eszközből
+### <a name="to-create-a-service-package-from-visual-studio"></a>Szolgáltatási csomag létrehozása a Visual Studióból
 
-1. Ha készen áll az alkalmazás közzétételére, nyissa meg a Megoldáskezelőben, amely tartalmazza a szerepkörök Azure-projekt helyi menüjének megnyitásához, és válassza a Publish.
+1. Amikor készen áll az alkalmazás közzétételéhez, nyissa meg a Megoldáskezelőben, nyissa meg a helyi menü, az Azure projekt, amely tartalmazza a szerepkörök, és válassza a közzététel.
 
-1. A service-csomag létrehozásához kövesse az alábbi lépéseket:
+1. Csak egy service-csomag létrehozásához kövesse az alábbi lépéseket:
 
-   a. Az Azure-projekt helyi menüjében válassza **csomag**.
+   a. Az Azure-projekt helyi menüjében válassza a **csomag**.
 
-   b. Az a **Azure alkalmazás becsomagolása** párbeszédpanelen válassza ki a szolgáltatás konfigurációját, amelyekhez hozzon létre egy csomagot, és válassza a a build konfigurációját.
+   b. Az a **Azure-alkalmazás becsomagolása** párbeszédpanelen válassza ki a szolgáltatás konfigurációja, amelyhez hozzá szeretné hozzon létre egy csomagot, és válassza a build konfigurációját.
 
-   c. (Választható) Kapcsolja be a távoli asztal a felhőszolgáltatás közzététel után, jelölje be **összes szerepkör távoli asztal engedélyezése**, majd válassza ki **beállítások** konfigurálása a távoli asztal hitelesítő adatokat. További információkért lásd: [engedélyezése a távoli asztali kapcsolat egy szerepkör esetén az Azure Felhőszolgáltatások Visual Studio használatával](cloud-services/cloud-services-role-enable-remote-desktop-visual-studio.md).
+   c. (Nem kötelező) Kapcsolja be a távoli asztal a felhőalapú szolgáltatás közzététel után, jelölje be **távoli asztal engedélyezése az összes szerepkörhöz**, majd válassza ki **beállítások** távoli asztali kapcsolatok hitelesítő adatainak konfigurálása. További információkért lásd: [távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services, a Visual Studio használatával](cloud-services/cloud-services-role-enable-remote-desktop-visual-studio.md).
 
-      Ha azt szeretné, a felhőalapú szolgáltatás hibakeresési közzététel után, kapcsolja be a távoli hibakeresés kiválasztásával **távoli hibakereső engedélyezése az összes szerepkör**.
+      Ha azt szeretné, hogy a cloud service hibakeresése a közzététel után, kapcsolja be a távoli hibakeresésről kiválasztásával **távoli hibakeresőt engedélyezése az összes szerepkörhöz**.
 
-   d. A csomag létrehozásához válassza ki a **csomag** hivatkozásra.
+   d. A csomag létrehozásához, válassza ki a **csomag** hivatkozásra.
 
-      A Fájlkezelőben az újonnan létrehozott csomag fájl helye látható. Erre a helyre másolhatja, hogy használhassa az Azure portálról.
+      A fájlkezelő jeleníti meg a fájl helyét, az újonnan létrehozott csomagot. Erre a helyre másolhatja, hogy használhatja az Azure Portalról.
 
-   e. Ezt a csomagot a központi telepítési környezetekben való közzétételéhez kell használnia ezen a helyen csomag helye felhőalapú szolgáltatás létrehozása és központi telepítésekor ez a csomag és az Azure portál környezetbe.
+   e. Ez a csomag közzététele egy üzembehelyezési környezetet, kell használnia ezen a helyen a csomag helyével felhőszolgáltatás létrehozása és központi telepítésekor ez a csomag és az Azure portal-környezetben.
 
-1. (Választható) Megszakítja a telepítési folyamatot, a helyi menüben a műveletnaplóban, sor elem kiválasztása **szakítsa meg, és távolítsa el**. Ez a parancs a telepítési folyamat leáll, és törli a környezet az Azure-ból. Telepítés után a környezet eltávolításához használja az Azure-portálon.
+1. (Nem kötelező) Megszakítja a telepítési folyamatot a vonal elem a tevékenységnaplóban a helyi menüben válassza ki a **megszakítása és törlése**. Ez a parancs leállítja a telepítési folyamatot, és törli az üzembehelyezési környezetet az Azure-ból. Üzembe helyezés után a környezet eltávolításához használja az Azure Portalon.
 
-1. (Választható) Miután elindította a szerepkörpéldányok, a Visual Studio automatikusan megjeleníti a telepítési környezet a **Felhőszolgáltatások** a Server Explorer csomópont. Itt láthatja az egyéni szerepkörpéldányok állapotát. Lásd: [erőforrások kezelése Azure Cloud Explorer](vs-azure-tools-resources-managing-with-cloud-explorer.md). Az alábbi ábrán a szerepkörpéldányok, amíg azok továbbra is az inicializálás állapotban:
+1. (Nem kötelező) Miután elindította a szerepkörpéldányok, a Visual Studio automatikusan megjeleníti a központi telepítési környezet a **Cloud Services** csomópont a Server Explorerben. Itt láthatja az egyes szerepkörpéldányok állapotát. Lásd: [kezelése az Azure-erőforrások a Cloud Explorer](vs-azure-tools-resources-managing-with-cloud-explorer.md). Az alábbi ábrán látható a szerepkörpéldányok, miközben továbbra is az inicializálás állapotban vannak:
 
     ![VST_DeployComputeNode](./media/vs-azure-tools-publishing-a-cloud-service/IC744134.png)
 
-## <a name="update-a-web-role-as-part-of-the-development-and-testing-cycle"></a>A webes szerepkör részeként a fejlesztési és tesztelési ciklus frissítése
+## <a name="update-a-web-role-as-part-of-the-development-and-testing-cycle"></a>A fejlesztési és tesztelési ciklus részeként egy webes szerepkör frissítése
 
-Ha az alkalmazás háttér-infrastruktúra stabil, de a webes szerepkörök ki kell gyakoribb, frissítése, használhatja a Web Deploy csak egy webes szerepkör frissítése a projektben. A Web Deploy akkor hasznos, ha nem kívánja építse újra, és telepítse újra a háttérrendszer feldolgozói szerepköröket, vagy ha még több webes szerepkör, és frissíti a webes szerepkörök közül csak.
+Ha az alkalmazás háttérrendszere infrastruktúra stabil, de a webes szerepkörök több igényelnek gyakori frissítést, használhatja a Web Deploy csak egy webes szerepkör frissítése a projektben. A Web Deploy akkor hasznos, ha nem kívánja újraépítése és ismételt üzembe helyezése a háttérrendszer feldolgozói szerepkörök, vagy ha több webes szerepkört és a webes szerepkörök közül csak a frissíteni kívánt.
 
 ### <a name="requirements-for-using-web-deploy"></a>A Web Deploy használatának követelményei
 
-- **A fejlesztéshez és teszteléshez csak jellegű**: A módosításai közvetlenül a virtuális gép amelyen fut a webes szerepkör. Ha a virtuális gép újrahasznosításra kerül, a módosítások elvesznek az eredeti csomagot közzétett használatával hozza létre újra a virtuális gép a szerepkörhöz. Az alkalmazás számára elérhetők legyenek a legutóbbi változtatások a webes szerepkör közzé.
+- **Fejlesztési és tesztelési célra használja csak**: A módosítások közvetlenül a virtuális gép a webes szerepkört futtató kiszolgáló. Ha a virtuális gép újraindítására, a módosítás végleg elvész, mert az eredeti csomag közzétett segítségével hozza létre újra a virtuális gép a szerepkörhöz. Az alkalmazások a legutóbbi változtatásokat a webes szerepkör újbóli közzététele.
 
 - **Csak a webes szerepkörök frissíthető**: feldolgozói szerepkörök nem lehet frissíteni. Emellett nem lehet frissíteni a `RoleEntryPoint` a `web role.cs`.
 
-- **Csak egyet támogat a webes szerepkör egyetlen példányát**: a webes szerepkör több példánya a központi telepítési környezetben nem lehet. Azonban több webes szerepkör minden csak egy példány támogatott.
+- **Csak egy webes szerepkör egyetlen példányát támogatja**: minden olyan webes szerepkör több példányát a központi telepítési környezet nem rendelkezik. Azonban több webes szerepkört minden egyes csak egy példánnyal rendelkező támogatottak.
 
-- **Engedélyezze a távoli asztali kapcsolatokat**: Ez a követelmény lehetővé teszi, hogy a Web Deploy a felhasználói és jelszót használják a virtuális gép központi telepítése a módosításokat az Internet Information Services (IIS) rendszert futtató kiszolgálóhoz való kapcsolódáshoz. Ezenkívül szükség lehet csatlakozni a virtuális gép hozzáadása a megbízható tanúsítvány az IIS a virtuális gépen. (Ez a tanúsítvány biztosítja, hogy az IIS által a Web Deploy használt távoli kapcsolat biztonságos.)
+- **Engedélyezze a távoli asztali kapcsolatokat**: Ez a követelmény lehetővé teszi, hogy a Web Deploy a felhasználónév és jelszó használata a virtuális gép üzembe helyezése a módosításokat az Internet Information Services (IIS) rendszert futtató kiszolgálóhoz való kapcsolódáshoz. Emellett szüksége lehet csatlakozni a virtuális gép hozzáadása egy megbízható tanúsítványt az IIS-hez a virtuális gépen. (Ez a tanúsítvány biztosítja, hogy az IIS, amelyet a Web Deploy a távoli kapcsolat biztonságos.)
 
-A következő eljárás feltételezi, hogy a **Azure-alkalmazás közzététele** varázsló.
+A következő eljárás azt feltételezi, hogy használja a **Azure-alkalmazások közzététele** varázsló.
 
-### <a name="enable-web-deploy-when-you-publish-your-application"></a>Engedélyezze a Web Deploy, amikor az alkalmazás közzétételére
+### <a name="enable-web-deploy-when-you-publish-your-application"></a>Engedélyezze a Web Deploy, ha az alkalmazás közzététele
 
-1. Ahhoz, hogy a **engedélyezéséhez a Web Deploy minden webes szerepkörök** beállítás, először konfigurálnia kell a távoli asztali kapcsolatokhoz. Válassza ki **távoli asztal engedélyezése** összes szerepkörhöz, majd megadja a távolról a kapcsolódáshoz használt hitelesítő adatait a **a távoli asztal konfigurálásának** meg. Lásd: [engedélyezése a távoli asztali kapcsolat egy szerepkör esetén az Azure Felhőszolgáltatások Visual Studio használatával](cloud-services/cloud-services-role-enable-remote-desktop-visual-studio.md).
+1. Ahhoz, hogy a **Web Deploy engedélyezése az összes webes szerepkörök** lehetőség, először konfigurálnia kell a távoli asztali kapcsolatokat. Válassza ki **távoli asztal engedélyezése** összes szerepköre, majd megadja a távolról, a kapcsolódáshoz használt hitelesítő adatokat a **a távoli asztal konfigurálásának** jelölőnégyzetet a megjelenő. Lásd: [távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services, a Visual Studio használatával](cloud-services/cloud-services-role-enable-remote-desktop-visual-studio.md).
 
-1. Annak engedélyezéséhez a Web Deploy az alkalmazás a webes szerepkörök **engedélyezéséhez a Web Deploy minden webes szerepkörök**.
+1. Web Deploy alkalmazását a webes szerepkörök esetében jelöljön ki **Web Deploy engedélyezése az összes webes szerepkörök**.
 
-    Figyelmeztetést jelző sárga háromszög jelenik meg. A Web Deploy alapértelmezés szerint nem ajánlott a bizalmas adatok feltöltése egy nem megbízható, önaláírt tanúsítványt használ. Ha szeretné megvédeni a folyamatot a bizalmas adatokat, a Web Deploy kapcsolatokhoz használt SSL-tanúsítvány is hozzáadhat. Ez a tanúsítvány megbízható tanúsítvány szükséges. További információkért lásd: [telepítése webes biztonságosabbá teheti](#make-web-deploy-secure).
+    Figyelmeztetést jelző sárga háromszög jelenik meg. A Web Deploy, alapértelmezés szerint nem ajánlott a bizalmas adatok feltöltése egy nem megbízható, önaláírt tanúsítványt használ. Ha szeretné megvédeni a folyamatot a bizalmas adatokat, a Web Deploy-kapcsolatokhoz használandó SSL-tanúsítvány is hozzáadhat. Ennek a tanúsítványnak kell lennie egy megbízható tanúsítványt. További információkért lásd: [biztonságosabbá teheti a webalkalmazás üzembe helyezése](#make-web-deploy-secure).
 
-1. Válassza ki **tovább** megjelenítése a **összegzés** képernyőn, és válassza a **közzététel** a felhőalapú szolgáltatás telepítéséhez.
+1. Válasszon **tovább** megjelenítéséhez a **összegzése** képernyőn, és válassza **közzététel** a felhőalapú szolgáltatás üzembe helyezéséhez.
 
-    A felhőszolgáltatás közzé van téve. A létrehozott virtuális gépek rendelkezik távoli kapcsolatok engedélyezése az IIS-hez, így a Web Deploy segítségével a webes szerepkörök frissítése nélkül újbóli közzétételét őket.
+    A felhőszolgáltatás közzé van téve. A létrehozott virtuális gép rendelkezik távoli kapcsolatokat, az IIS engedélyezve van, hogy a Web Deploy segítségével a webes szerepkörök frissítése nélkül kijavítható őket.
 
    > [!NOTE]
-   > Ha a konfigurált webes szerepkör több példánya van, egy figyelmeztető üzenet jelenik meg, arról, hogy minden webes szerepkör csak a csomagban, amely az alkalmazás közzétételére létrejön egy példányra korlátozott. A folytatáshoz kattintson az **OK** gombra. A követelményeket ismertető részben leírtaknak egynél több webes szerepkör, de csak egy példányát minden egyes szerepkör lehet.
+   > Ha több példány egy webes szerepkör konfigurálva van, egy figyelmeztető üzenet jelenik meg, hogy minden webes szerepkör egy példány csak a csomagot, amely jön létre az alkalmazás közzétételéhez korlátozódik. A folytatáshoz kattintson az **OK** gombra. A követelmények szakaszban leírtaknak egynél több webes szerepkör, de az egyes szerepkörök csak egy példány lehet.
 
 ### <a name="update-your-web-role-by-using-web-deploy"></a>A webes szerepkör frissítése a Web Deploy használatával
 
-1. A Web Deploy használatához módosításokat kód a projektet a Visual Studio közzététele, majd kattintson a jobb gombbal a projektcsomópontra, a megoldásban, és mutasson a kívánt webes szerepkörök bármelyikéhez **közzététel**. A **webhely közzététele** párbeszédpanel jelenik meg.
+1. A Web Deploy használatához módosítsa a kódokat a projekthez, sem a webes szerepkörök a Visual Studióban közzététele, majd kattintson a jobb gombbal a projektcsomópontra, a megoldás, és mutasson a kívánt **közzététel**. A **Publish Web** párbeszédpanel jelenik meg.
 
-1. (Választható) Ha egy megbízható SSL-tanúsítványt az IIS a távoli kapcsolatokhoz használandó, törölheti a **engedélyezése nem megbízható tanúsítvány** jelölőnégyzetet. Annak a Web Deploy biztonságos tanúsítvány adásával kapcsolatos információkért lásd: a szakasz **való ellenőrizze webalkalmazás telepítése biztonságos** című cikkben.
+1. (Nem kötelező) Ha hozzáadott egy megbízható SSL-tanúsítványt az IIS távoli kapcsolatok használata, törölheti a **engedélyezése nem megbízható tanúsítványt** jelölőnégyzetet. Egy tanúsítványt, hogy a Web Deploy biztonságos adásával kapcsolatos információkért lásd: a szakasz **, győződjön meg arról, webes üzembe biztonságos** a cikk későbbi részében.
 
-1. A Web Deploy használatához a közzététel mechanizmus a felhasználónevet és jelszót, amely állít be a távoli asztali kapcsolat esetén a csomag először közzé kell.
+1. A Web Deploy használatához a közzétételi mechanizmust kell, a felhasználónevet és jelszót, beállíthat egy, a távoli asztali kapcsolat a csomag első közzétételekor.
 
-   a. A **felhasználónév**, írja be a felhasználónevet.
+   a. A **felhasználónév**, adja meg a felhasználónevet.
 
-   b. A **jelszó**, írja be a jelszót.
+   b. A **jelszó**, adja meg a jelszót.
 
-   c. (Választható) Ha azt szeretné, a jelszó mentése a ebbe a profilba, **jelszó mentése**.
+   c. (Nem kötelező) Ha azt szeretné, a jelszó mentéséhez ebben a profilban válassza **jelszó mentése**.
 
-1. A változások közzétételére a webes szerepkör, válassza ki a **közzététel**.
+1. Válassza ki a változások közzétételére a webes szerepkör, **közzététel**.
 
-    Az állapotsor megjelenítése **lépések közzététel**. A közzétételi befejezése után **sikeres közzététel** jelenik meg. A módosítások most már van telepítve a webkiszolgáló szerepkör a virtuális gépen. Most már megkezdheti az Azure alkalmazás tesztelése a módosításokat az Azure környezetben.
+    Állapotsor megjelenítése **lépések közzététel**. A közzététel befejezése után **közzététel sikerült** jelenik meg. A módosítások a webes szerepkör, a virtuális gépen, most már van telepítve. Most elkezdheti az Azure-alkalmazásokat az Azure-környezetben tesztelheti a módosításokat.
 
-### <a name="make-web-deploy-secure"></a>Biztonságosabbá teheti a webszolgáltatás telepítése
+### <a name="make-web-deploy-secure"></a>Biztonságosabbá teheti a webalkalmazás üzembe helyezése
 
-1. A Web Deploy alapértelmezés szerint nem ajánlott a bizalmas adatok feltöltése egy nem megbízható, önaláírt tanúsítványt használ. Ha szeretné megvédeni a folyamatot a bizalmas adatokat, a Web Deploy kapcsolatokhoz használt SSL-tanúsítvány is hozzáadhat. Ezt a tanúsítványt kell lennie egy megbízható tanúsítványt, amely a hitelesítésszolgáltatótól (CA) kapott.
+1. A Web Deploy, alapértelmezés szerint nem ajánlott a bizalmas adatok feltöltése egy nem megbízható, önaláírt tanúsítványt használ. Ha szeretné megvédeni a folyamatot a bizalmas adatokat, a Web Deploy-kapcsolatokhoz használandó SSL-tanúsítvány is hozzáadhat. Ennek a tanúsítványnak kell lennie egy megbízható tanúsítványt, amely egy hitelesítésszolgáltatótól (CA) beszerezte.
 
-    Ahhoz, hogy a Web Deploy biztonságos az egyes virtuális gépek a webes szerepkörök, fel kell töltenie a megbízható tanúsítványok, amelyek a weben használni kívánt központi telepítése az Azure-portálon. Ez a tanúsítvány lehetővé teszi, hogy a tanúsítvány hozzá van adva a virtuális gépet, amely a webes szerepkör jön létre, amikor az alkalmazás közzétételére.
+    Ahhoz, hogy a Web Deploy biztonságos, minden egyes virtuális géphez a webes szerepkörök mindegyikéhez, fel kell töltenie a megbízható tanúsítványt, amelyet szeretne használni a webes üzembe helyezése az Azure Portalra. Ez a tanúsítvány gondoskodik arról, hogy a virtuális gép számára a webes szerepkör, az alkalmazás közzétételekor létrehozott hozzáadta a tanúsítványt.
 
-1. Megbízható az SSL-tanúsítvány hozzáadása az IIS használata a távoli kapcsolatokhoz, kövesse az alábbi lépéseket:
+1. Megbízható SSL-tanúsítványt az IIS-hez a távoli kapcsolatokhoz használandó hozzáadásához kövesse az alábbi lépéseket:
 
-   a. A webes szerepkör-példányt jelöli ki, hogy a webes szerepkör fut a virtuális gép csatlakozni **Cloud Explorer** vagy **Server Explorer**, majd válassza a **csatlakozzon a távoli asztali kapcsolattal**  parancsot. A virtuális géphez történő csatlakozáshoz kapcsolatos részletes lépéseiért lásd: [engedélyezése a távoli asztali kapcsolat egy szerepkör esetén az Azure Felhőszolgáltatások Visual Studio használatával](cloud-services/cloud-services-role-enable-remote-desktop-visual-studio.md). A böngésző felszólítja, hogy töltse le egy `.rdp` fájlt.
+   a. Szeretne csatlakozni a virtuális gép, amelyen fut a webes szerepkör, válassza ki a webes szerepkör példányának **Cloud Explorer** vagy **Server Explorer**, majd válassza a **csatlakoztatása a távoli asztal használatával**  parancsot. Hogyan lehet csatlakozni a virtuális gép kapcsolatos részletes lépéseiért lásd: [távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services, a Visual Studio használatával](cloud-services/cloud-services-role-enable-remote-desktop-visual-studio.md). A böngésző megkéri, hogy töltse le egy `.rdp` fájlt.
 
-   b. Az SSL-tanúsítvány hozzáadása, nyissa meg a felügyeleti szolgáltatás az IIS-kezelőben. Az IIS-kezelőben SSL engedélyezéséhez nyissa meg a **kötések** hivatkozásra a **művelet** ablaktáblán. A **hely kötésének hozzáadása** párbeszédpanel jelenik meg. Válasszon **hozzáadása**, és válassza ki a HTTPS a **típus** legördülő listából. Az a **SSL-tanúsítvány** menüben válassza ki az SSL-tanúsítványt, hogy meg kellett egy hitelesítésszolgáltató által aláírt és feltöltése az Azure portálon. További információkért lásd: [kapcsolat konfigurálása a felügyeleti szolgáltatás](http://go.microsoft.com/fwlink/?LinkId=215824).
+   b. SSL-tanúsítvány hozzáadásához nyissa meg a felügyeleti szolgáltatás az IIS-kezelőben. Az IIS-kezelőben az SSL engedélyezéséhez nyissa meg a **kötések** hivatkozásra a **művelet** ablaktáblán. A **hely kötésének hozzáadása** párbeszédpanel jelenik meg. Válasszon **Hozzáadás**, majd válassza a HTTPS a **típus** legördülő listából válassza ki. Az a **SSL-tanúsítvány** menüben válassza ki az SSL-tanúsítványt, hogy Ön volt hitelesítésszolgáltató által aláírt és feltöltése az Azure Portalra. További információkért lásd: [Biztonságoskapcsolat-beállításainak konfigurálása a felügyeleti szolgáltatás](http://go.microsoft.com/fwlink/?LinkId=215824).
 
       > [!NOTE]
-      > Ha hozzáad egy megbízható az SSL-tanúsítvány, figyelmeztetést jelző sárga háromszög nem fog többé megjelenni a **közzététele varázsló**.
+      > Ha hozzáad egy megbízható SSL-tanúsítványt, figyelmeztetést jelző sárga háromszög nem fog többé megjelenni a **közzététele varázsló**.
 
-## <a name="include-files-in-the-service-package"></a>Fájlok szerepeljenek a service-csomag
+## <a name="include-files-in-the-service-package"></a>Beágyazott fájlok a szolgáltatási csomag
 
-Szükség lehet ahhoz, hogy adott fájlok szerepeljen a szolgáltatáscsomagot, hogy elérhetők a virtuális gépen, amely a szerepkör jön létre. Például előfordulhat, hogy hozzáadandó egy `.exe` vagy egy `.msi` fájlt egy indítási parancsfájl a szolgáltatáscsomag által használt. Vagy előfordulhat, hogy szeretné egy szerelvény, amelyhez a webes szerepkör vagy feldolgozói szerepkör projekt hozzáadása. A beágyazandó fájlokat, azokat hozzá kell adni a megoldáshoz az Azure alkalmazáshoz.
+Szüksége lehet meghatározott fájlok szerepeljenek az szolgáltatáscsomag, hogy elérhetők a szerepkör számára létrehozott virtuális gépen. Például előfordulhat, hogy szeretné hozzáadni egy `.exe` vagy egy `.msi` fájlt egy indítási szkriptet a service-csomag a által használt. Vagy szüksége lehet egy olyan webes szerepkört vagy feldolgozói szerepkör projekt igénylő szerelvény hozzáadása. Fájlokat tartalmazza, azokat hozzá kell adni a megoldás az Azure alkalmazáshoz.
 
-1. Egy szerelvény hozzáadása a szolgáltatáscsomagot, tegye a következőket:
+1. Egy szerelvény hozzáadása egy szolgáltatáscsomag, használja az alábbi lépéseket:
 
-   a. A **Megoldáskezelőben**, nyissa meg a projekt csomópontjára a projekthez, hiányzik a hivatkozott szerelvényt.
-   b. A szerelvény hozzáadása a projekthez, nyissa meg a helyi menüje a **hivatkozások** mappa majd **hivatkozás hozzáadása**. A hivatkozás hozzáadása párbeszédpanel jelenik meg.
-   c. Válassza ki a hivatkozás hozzáadása, és válassza a kívánt **OK**. A hivatkozás alatti listában hozzáadódik a **hivatkozások** mappát.
-   d. Nyissa meg a helyi menü hozzáadott szerelvénynek, és válassza a **tulajdonságok**. A **tulajdonságok** ablak jelenik meg.
+   a. A **Megoldáskezelőben**, nyissa meg a projekt csomópontjára a projekthez, hogy hiányzik a hivatkozott szerelvényt.
+   b. A szerelvény hozzáadása a projekthez, nyissa meg a helyi menüjének a **hivatkozások** mappa majd **hivatkozás hozzáadása**. A hivatkozás hozzáadása párbeszédpanel jelenik meg.
+   c. Válassza ki a hivatkozást, amelyet szeretne hozzáadni, majd **OK**. A hivatkozás alatti listában hozzáadódik a **hivatkozások** mappát.
+   d. A szerelvény hozzáadott a helyi menü megnyitásához, és válassza ki **tulajdonságok**. A **tulajdonságok** ablak jelenik meg.
 
-      Ez a szolgáltatás csomagban szerelvényét bele szeretné a **másolása helyi lista** válasszon **igaz**.
-1. A **Megoldáskezelőben** nyissa meg a projekt csomópontjára a projekthez, hiányzik a hivatkozott szerelvényt.
+      Ezt a szerelvényt a szervizcsomagban szerepeljenek a **másolási helyi listát** válassza **igaz**.
+1. A **Megoldáskezelőben** nyissa meg a projekt csomópontjára a projekthez, hogy hiányzik a hivatkozott szerelvényt.
 
-1. A szerelvény hozzáadása a projekthez, nyissa meg a helyi menüje a **hivatkozások** mappa majd **hivatkozás hozzáadása**. A **hivatkozás hozzáadása** párbeszédpanel jelenik meg.
+1. A szerelvény hozzáadása a projekthez, nyissa meg a helyi menüjének a **hivatkozások** mappa majd **hivatkozás hozzáadása**. A **hivatkozás hozzáadása** párbeszédpanel jelenik meg.
 
-1. Válassza ki a hivatkozást, amelyet szeretne hozzáadni, és válassza ki a **OK** gombra.
+1. Válassza ki a hivatkozást, amelyet szeretne hozzáadni, majd a **OK** gombra.
 
     A hivatkozás alatti listában hozzáadódik a **hivatkozások** mappát.
 
-1. Nyissa meg a helyi menü hozzáadott szerelvénynek, és válassza a **tulajdonságok**. A Tulajdonságok ablak.
+1. A szerelvény hozzáadott a helyi menü megnyitásához, és válassza ki **tulajdonságok**. A Tulajdonságok ablak jelenik meg.
 
-1. Ez a szolgáltatás csomagban szerelvényét bele szeretné a **másolása helyi** menüben válassza ki **igaz**.
+1. Ezt a szerelvényt a szervizcsomagban szerepeljenek a **másolási helyi** menüben válassza ki **igaz**.
 
-1. A szervizcsomagban, amely a webes szerepkör projekt lettek hozzáadva a beágyazandó fájlokat, a fájlt a helyi menü megnyitásához, és válassza **tulajdonságok**. Az a **tulajdonságok** ablakban válassza a **tartalom** a a **Build művelet** lista.
+1. A csomag, amely a webes szerepkör projekt lettek hozzáadva a beágyazott fájlok, a fájl a helyi menü megnyitásához, és válassza **tulajdonságok**. Az a **tulajdonságok** ablakban válassza a **tartalom** a a **Build Action** lista.
 
-1. Fájlok szerepeljenek a service-csomagot, amely a feldolgozói szerepkör projekt lettek hozzáadva, a fájlt a helyi menü megnyitásához, és válassza **tulajdonságok**. Az a **tulajdonságok** ablakban válassza a **másolhatja, ha újabb** a a **másolása a kimeneti könyvtárba** lista.
+1. A csomag, amely a feldolgozói szerepkör projektje lettek hozzáadva a beágyazott fájlok, a fájl a helyi menü megnyitásához, és válassza **tulajdonságok**. Az a **tulajdonságok** ablakban válassza a **másolás, ha újabb** a a **Másolás a kimeneti könyvtár** lista.
 
 ## <a name="next-steps"></a>További lépések
 
-További információt a közzététel az Azure-bA a Visual Studio eszközből, lásd: [Azure alkalmazás közzététele varázsló](vs-azure-tools-publish-azure-application-wizard.md).
+Tudjon meg többet a közzététel az Azure-bA a Visual Studióból, lásd: [Azure alkalmazás közzététele varázsló](vs-azure-tools-publish-azure-application-wizard.md).

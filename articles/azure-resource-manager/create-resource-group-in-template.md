@@ -9,20 +9,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 90d21ac817f6fd4730ff4a7e98500a80af10ac70
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 003f5d114a233738783d265a18ee7d2ccbfaba10
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623290"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617266"
 ---
 # <a name="create-resource-groups-in-azure-resource-manager-templates"></a>Erőforráscsoportok létrehozása az Azure Resource Manager-sablonok
 
-Hozzon létre egy erőforráscsoportot az Azure Resource Manager-sablon, adjon meg egy **Microsoft.Resources/resourceGroups** erőforrás nevét és az erőforráscsoport helyét. A sablon üzembe helyezése az Azure-előfizetéshez. Az adott erőforráscsoporton ugyanazt a sablont az erőforrások is telepítheti.
+Hozzon létre egy erőforráscsoportot az Azure Resource Manager-sablon, adjon meg egy **Microsoft.Resources/resourceGroups** erőforrás nevét és az erőforráscsoport helyét. A sablon üzembe helyezése az Azure-előfizetéshez. Előfizetés-szintű telepítések kapcsolatos további információkért lásd: [erőforrások üzembe helyezése az Azure-előfizetés](deploy-to-subscription.md).
 
-Ez a cikk az Azure parancssori felület használatával a sablonok üzembe helyezése. PowerShell jelenleg nem támogatja a sablonok telepítésével előfizetésre.
+Az adott erőforráscsoporton ugyanazt a sablont az erőforrások is telepítheti.
+
+Ez a cikk az Azure CLI és PowerShell használatával a sablonok üzembe helyezése.
 
 ## <a name="create-empty-resource-group"></a>Üres erőforráscsoport létrehozása
 
@@ -62,6 +64,17 @@ az deployment create \
   -l southcentralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
   --parameters rgName=demoRG rgLocation=northcentralus
+```
+
+Ez a PowerShell használatával a sablon üzembe helyezéséhez használja:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoEmptyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
+  -rgName demogroup `
+  -rgLocation northcentralus
 ```
 
 ## <a name="create-several-resource-groups"></a>Számos erőforrás-csoportok létrehozása
@@ -109,6 +122,18 @@ az deployment create \
   -l southcentralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json \
   --parameters rgNamePrefix=demoRG rgLocation=northcentralus instanceCount=3
+```
+
+Ez a PowerShell használatával a sablon üzembe helyezéséhez használja:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoCopyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json `
+  -rgName demogroup `
+  -rgLocation northcentralus `
+  -instanceCount 3
 ```
 
 ## <a name="create-resource-group-and-deploy-resource"></a>Erőforráscsoport létrehozása és üzembe helyezése erőforrás
@@ -190,7 +215,20 @@ az deployment create \
   --parameters rgName=rgStorage rgLocation=northcentralus storagePrefix=storage
 ```
 
+Ez a PowerShell használatával a sablon üzembe helyezéséhez használja:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoRGStorage `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/newRGWithStorage.json `
+  -rgName rgStorage `
+  -rgLocation northcentralus `
+  -storagePrefix storage
+```
+
 ## <a name="next-steps"></a>További lépések
+* Előfizetés-szintű telepítések kapcsolatos további információkért lásd: [erőforrások üzembe helyezése az Azure-előfizetés](deploy-to-subscription.md).
 * Üzembe helyezés során függőségek hibaelhárítással kapcsolatos tudnivalókért lásd: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Az Azure Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [sablonok készítése](resource-group-authoring-templates.md). 
 * A sablonban rendelkezésre álló függvények listája: [sablonfüggvények](resource-group-template-functions.md).

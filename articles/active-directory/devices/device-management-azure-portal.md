@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd810f6e5a4211f64044a88ae6ca6bb6dc044e28
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bc29fbd0946f0abfe692e2270d145cd2cb292356
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415224"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054096"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Az Eszközfelügyelet az Azure portal használatával
 
@@ -42,11 +42,11 @@ Az Azure portal egy központi helyen kezelheti az eszközöket biztosít. Ennek 
 
 2. A bal oldali navigációs sávon kattintson **Active Directory**.
 
-    ![Eszközbeállítások megadása](./media/device-management-azure-portal/01.png)
+    ![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/01.png)
 
 3. Az a **kezelés** területén kattintson **eszközök**.
 
-    ![Eszközbeállítások megadása](./media/device-management-azure-portal/11.png)
+    ![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/74.png)
  
 A **eszközök** lap lehetővé teszi, hogy:
 
@@ -59,24 +59,24 @@ A **eszközök** lap lehetővé teszi, hogy:
 - Tekintse át az eszközfelügyeleti kapcsolódó naplók  
   
 
-## <a name="configure-device-settings"></a>Eszközbeállítások megadása
+## <a name="configure-device-settings"></a>Eszközbeállítások konfigurálása
 
 Az eszközök kezeléséhez az eszközöket az Azure portal segítségével, kell lennie [regisztrált vagy azzal összekapcsolt](overview.md#getting-devices-under-the-control-of-azure-ad) az Azure ad-hez. A rendszergazdák finomhangolhatja regisztrálása és az eszközök csatlakoztatása az eszköz beállításait konfigurálja. 
 
-![Eszközbeállítások megadása](./media/device-management-azure-portal/22.png)
+![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/22.png)
 
 Az eszköz beállításai lapon konfigurálását teszi lehetővé:
 
 ![Az Intune-eszközök kezelése](./media/device-management-azure-portal/21.png)
 
 
-- **Felhasználók eszközöket csatlakoztathatnak az Azure AD** – Ez a beállítás lehetővé teszi a felhasználók, akik is [eszközöket](overview.md#azure-ad-joined-devices) az Azure ad-hez. Az alapértelmezett érték **összes**.
+- **Felhasználók eszközöket csatlakoztathatnak az Azure AD** – Ez a beállítás lehetővé teszi a felhasználók, akik is [eszközöket](overview.md#azure-ad-joined-devices) az Azure ad-hez. Az alapértelmezett érték **összes**. A beállítás csak akkor alkalmazható az Azure AD Join a Windows 10-es.
 
 - **További helyi rendszergazdák az Azure AD-hez csatlakoztatott eszközök** – kiválaszthatja, hogy az adott eszközön helyi rendszergazdai jogosultságokkal rendelkező felhasználók. Az itt hozzáadott felhasználók hozzáadódnak a *Device Administrators* az Azure AD-szerepkörhöz. Az Azure AD globális rendszergazdák és eszköztulajdonosok alapértelmezés szerint helyi rendszergazdai jogokat kapnak. Ez a beállítás akkor például az Azure AD prémium vagy nagyvállalati mobilitási csomag (EMS) termékeken keresztül elérhető premium edition képességet. 
 
 - **A felhasználók regisztrálhatják eszközeiket az Azure ad-vel** -be kell állítania ezt a beállítást szeretné lehetővé tenni az eszközök számára [regisztrált](overview.md#azure-ad-registered-devices) az Azure ad-ben. Ha **None**, eszközök regisztrálása, ha azok nem Azure AD-hez vagy a hibrid Azure AD-hez való nem engedélyezett. Az Office 365-höz a Microsoft Intune- vagy mobileszköz-felügyeleti (MDM) beléptetési regisztráció szükséges. Ha ezen szolgáltatások bármelyikét konfigurálta **összes** van kiválasztva, és **NONE** nem érhető el.
 
-- **Eszközök csatlakoztatása a többtényezős hitelesítés megkövetelése** -kiválaszthatja a felhasználóknak kell-e egy második hitelesítési tényezőt ahhoz, hogy [illesztési](overview.md#azure-ad-joined-devices) az eszközt az Azure AD. Az alapértelmezett érték **nem**. Azt javasoljuk, hogy a multi-factor authentication megkövetelése az eszköz regisztrálásához ajánlatos. Mielőtt engedélyezné ezt a szolgáltatást a multi-factor Authentication hitelesítés, biztosítania kell, hogy a multi-factor Authentication hitelesítés van konfigurálva a felhasználók regisztrálják az eszközeiket. A másik az Azure multi-factor authentication szolgáltatások további információkért lásd: [az Azure multi-factor authentication – első lépések](../authentication/concept-mfa-whichversion.md). 
+- **Eszközök csatlakoztatása a többtényezős hitelesítés megkövetelése** -kiválaszthatja a felhasználóknak kell-e egy második hitelesítési tényezőt ahhoz, hogy [illesztési](overview.md#azure-ad-joined-devices) az eszközt az Azure AD. Az alapértelmezett érték **nem**. Azt javasoljuk, hogy a multi-factor authentication megkövetelése az eszköz regisztrálásához ajánlatos. Mielőtt engedélyezné ezt a szolgáltatást a multi-factor Authentication hitelesítés, biztosítania kell, hogy a multi-factor Authentication hitelesítés van konfigurálva a felhasználók regisztrálják az eszközeiket. A másik az Azure multi-factor authentication szolgáltatások további információkért lásd: [az Azure multi-factor authentication – első lépések](../authentication/concept-mfa-whichversion.md). Ez a beállítás nem érinti a hibrid csatlakozás a Windows 10 vagy Windows 7. Ez a tulajdonság csak a Windows 10, iOS és Android rendszerhez készült Windows 10-es és a BYOD eszközregisztráció az Azure AD Join vonatkozik. 
 
 - **Eszközök maximális számát** – Ez a beállítás lehetővé teszi, hogy válassza ki, hogy a felhasználók még az Azure AD-eszközök maximális számát. Ha egy felhasználó eléri ezt a kvótát, azok vannak nem tud további eszközöket felvenni, amíg egy vagy több olyan meglévő eszközt el lesznek távolítva. Az eszköz ajánlat, amely az Azure AD-hez, vagy még ma az Azure AD minden eszköz után kell fizetnie. Az alapértelmezett érték **20**.
 
@@ -243,7 +243,7 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 - Tevékenység
 - Dátumtartomány
 - Cél
-- Kezdeményező (Szereplő)
+- Kezdeményező (szereplő)
 
 A szűrők mellett bejegyzéseit konkrét bejegyzések kereshet.
 

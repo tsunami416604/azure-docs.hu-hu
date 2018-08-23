@@ -1,10 +1,10 @@
 ---
-title: Kulcs tároló .NET 2.x API kibocsátási megjegyzései |} Microsoft Docs
-description: .NET-fejlesztők számára a kód API-t fogja használni az Azure Key Vault
+title: Key Vault .NET 2.x API kibocsátási megjegyzései |} A Microsoft Docs
+description: .NET-fejlesztők számára az Azure Key Vault fogja használni a kódot az API
 services: key-vault
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
-editor: alleonar
+editor: bryanla
 ms.assetid: 1cccf21b-5be9-4a49-8145-483b695124ba
 ms.service: key-vault
 ms.devlang: CSharp
@@ -12,67 +12,67 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/02/2017
-ms.author: alleonar
-ms.openlocfilehash: a7735f8c1c4332bf2472bc83c0c37baf49019004
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: bryanla
+ms.openlocfilehash: f2bcace1ba328aff20971b46880f317295f3a406
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "27909754"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054687"
 ---
-# <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Az Azure Key Vault .NET 2.0 – kibocsátási megjegyzések és az áttelepítési útmutató
-Az alábbi információk segítségével történő az Azure Key Vault kódtár 2.0-s verzióját, a C# és a .NET.  Korábbi verzióira írt kell támogatja a legújabb verzióra frissíti.  Ezek a változások szükségesek, teljes körű támogatásához, mint az új és továbbfejlesztett szolgáltatásaival, **Key Vault tanúsítványok**.
+# <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Az Azure Key Vault .NET 2.0 – kibocsátási megjegyzések és a Migrálási útmutatót
+A következő információk segítséget nyújtanak a C# és a .NET 2.0-s verzióját az Azure Key Vault tár-ba való migrálás.  A korábbi verziók írt alkalmazásokat kell legújabb verzióját frissíti.  Ezek a változások szükségesek, teljes körűen támogatja az új és továbbfejlesztett funkciók, mint például **Key Vault tanúsítványokkal**.
 
-## <a name="key-vault-certificates"></a>Key Vault tanúsítványok
+## <a name="key-vault-certificates"></a>A Key Vault-tanúsítványok
 
-Key Vault tanúsítványok kezelése x509 tanúsítványokat, és támogatja az alábbiak egyike:  
+A Key Vault-tanúsítványok kezelése x509 tanúsítványokat, és támogatja az alábbi viselkedés tapasztalható:  
 
-* A Key Vault létrehozási folyamat tanúsítványok létrehozása vagy meglévő tanúsítvány importálása. Ez magában foglalja, mindkettő önaláírt, és a tanúsítvány hitelesítésszolgáltatói (CA) tanúsítvány jön létre.
-* Biztonságos helyen tárolja, és kezelheti a x509 tárolási tanúsítvány titkos kulcs adatai használatával beavatkozás nélkül.  
-* Adja meg a házirendekben, amelyek közvetlenül a Key Vault kezeléséhez a tanúsítvány élettartama.  
-* Adja meg a kapcsolattartási adatok életciklus-események, például lejárati figyelmeztetések és megújítási értesítések.  
-* A kiválasztott kiállítók (Key Vault partner X509 tanúsítvány szolgáltatók és tanúsítványszolgáltatók) tanúsítványok automatikus megújítására. * támogatási tanúsítványt a másodlagos (nem partnerként) biztosít, és a hitelesítésszolgáltatók (nem támogatja az automatikus tartománymegújítási).  
+* A Key Vault létrehozási folyamata keretében tanúsítványok létrehozása vagy meglévő tanúsítvány importálása. Ez magában foglalja, mindkettő önaláírt, és a hitelesítésszolgáltató (CA) tanúsítvány jön létre.
+* Biztonságosan tárolhatja és kezelheti a x509 tárolási tanúsítvány titkos kulcs adatai használatával beavatkozás nélkül.  
+* Határozza meg, hogy a tanúsítvány életciklusának kezelése a Key Vault közvetlen házirendjét.  
+* Kapcsolattartási adatok életciklus-események, például lejárati figyelmeztetések és a megújítására vonatkozó értesítéseket biztosítanak.  
+* A kiválasztott kiállítók (Key Vault partner X509 tanúsítványszolgáltatók és hitelesítésszolgáltatók) tanúsítványok automatikus megújítására. * támogatási tanúsítványt a másodlagos (partnerek) biztosít, és a hitelesítésszolgáltatók (nem támogatja az automatikus megújítás).  
 
-## <a name="net-support"></a>.NET-támogatás
+## <a name="net-support"></a>.NET-támogatásnak
 
-* **A .NET 4.0** nem támogatja az Azure Key Vault .NET könyvtár a 2.0-s verziójához
-* **.NET-keretrendszer 4.5.2-es** támogatja az Azure Key Vault .NET könyvtár a 2.0-s verziójához
-* **.NET-szabvány 1.4** támogatja az Azure Key Vault .NET könyvtár a 2.0-s verziójához
+* **.NET 4.0-s** az Azure Key Vault .NET-kódtár 2.0-s verziója nem támogatott
+* **.NET-keretrendszer 4.5.2-es** támogatja az Azure Key Vault .NET-kódtár 2.0-s verziója
+* **.NET standard 1.4-es** az Azure Key Vault .NET-kódtár 2.0-s verziója támogatja
 
 ## <a name="namespaces"></a>Névterek
 
-* A névtér **modellek** változtatják **Microsoft.Azure.KeyVault** való **Microsoft.Azure.KeyVault.Models**.
-* A **Microsoft.Azure.KeyVault.Internal** névtér megszakad.
+* A névtér a **modellek** változtatják **Microsoft.Azure.KeyVault** való **Microsoft.Azure.KeyVault.Models**.
+* A **Microsoft.Azure.KeyVault.Internal** névtér már nincs használatban.
 * A következő Azure SDK-függőségek névterek rendelkezik 
 
-    - **Hyak.Common** most **Microsoft.Rest**.
-    - **Hyak.Common.Internals** most **Microsoft.Rest.Serialization**.
+    - **Hyak.Common** mostantól **Microsoft.Rest**.
+    - **Hyak.Common.Internals** mostantól **Microsoft.Rest.Serialization**.
 
-## <a name="type-changes"></a>Módosításai
+## <a name="type-changes"></a>Adattípus-módosítások
 
 * *Titkos kulcs* változott *SecretBundle*
 * *Szótár* változott *IDictionary*
-* *Lista<T>, string []* változott *IList elemet.<T>*
+* *Lista<T>, string []* változott *IList<T>*
 * *NextList* változott *NextPageLink*
 
-## <a name="return-types"></a>Visszatérési típusokat
+## <a name="return-types"></a>Návratové typy
 
-* **KeyList** és **SecretList** most adja vissza *IPage<T>*  helyett *ListKeysResponseMessage*
-* A létrehozott **BackupKeyAsync** most adja vissza *BackupKeyResult*, amely tartalmazza *érték* (biztonsági másolat blob). Korábban a metódus lett burkolt, és csak a értéket adott vissza.
+* **KeyList** és **SecretList** mostantól ad vissza *IPage<T>*  helyett *ListKeysResponseMessage*
+* A generált **BackupKeyAsync** mostantól ad vissza *BackupKeyResult*, tartalmazó *érték* (biztonsági mentési blobtárat). Korábban a metódus lett burkolt be, és csak a értéket adott vissza.
 
 ## <a name="exceptions"></a>Kivételek
 
-* *KeyVaultClientException* változott *KeyVaultErrorException*
-* Hiba a szolgáltatás változása *kivétel. Hiba* való *kivétel. Body.Error.Message*.
-* További információ eltávolítja a hibaüzenetet **[JsonExtensionData]**.
+* *KeyVaultClientException* módosul, amelyikben *KeyVaultErrorException*
+* Hiba a szolgáltatás változása: *kivétel. Hiba* való *kivétel. Body.Error.Message*.
+* További információ eltávolítva a hibaüzenetben **[JsonExtensionData]**.
 
 ## <a name="constructors"></a>Konstruktorok
 
-* Elfogadása helyett egy *HttpClient* konstruktor argumentumként, a konstruktor csak fogad *HttpClientHandler* vagy *DelegatingHandler []*.
+* Ahelyett, hogy elfogadja az *HttpClient* konstruktor argumentumként, a konstruktor csak fogad *HttpClientHandler* vagy *DelegatingHandler []*.
 
 ## <a name="downloaded-packages"></a>A letöltött csomagok
 
-Amikor egy ügyfél Kulcstárolónak függőséget dolgoz fel, a következő csomagok tölti:
+Amikor egy ügyfél a Key Vault függőség feldolgozza, a következő csomagok tölti:
 
 ### <a name="previous-package-list"></a>Előző csomaglista
 
@@ -85,28 +85,28 @@ Amikor egy ügyfél Kulcstárolónak függőséget dolgoz fel, a következő cso
 * `package id="Microsoft.Bcl.Build" version="1.0.14" targetFramework="net45"`
 * `package id="Microsoft.Net.Http" version="2.2.22" targetFramework="net45"`
 
-### <a name="current-package-list"></a>Aktuális csomaglista
+### <a name="current-package-list"></a>Jelenlegi csomag listája
 
 * `package id="Microsoft.Azure.KeyVault" version="2.0.0-preview" targetFramework="net45"`
 * `package id="Microsoft.Rest.ClientRuntime" version="2.2.0" targetFramework="net45"`
 * `package id="Microsoft.Rest.ClientRuntime.Azure" version="3.2.0" targetFramework="net45"`
 
-## <a name="class-changes"></a>Osztály változások
+## <a name="class-changes"></a>Osztály módosítások
 
 * **UnixEpoch** osztály el lett távolítva.
-* **Base64UrlConverter** osztály neve módosult az **Base64UrlJsonConverter**.
+* **Base64UrlConverter** osztály neve mostantól **Base64UrlJsonConverter**.
 
-## <a name="other-changes"></a>Az egyéb módosítások
+## <a name="other-changes"></a>Egyéb módosítások
 
-* A konfiguráció KV művelet újrapróbálkozási házirend átmeneti hibáiról már támogatja az API ezen verziójára.
+* Az API-verzió támogatása KV művelet újrapróbálkozási szabályzat az átmeneti hibák konfigurációját bővült.
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* A művelet által visszaadott egy *tároló*, a visszatérési típusa történt egy osztály, amely tartalmazza a **tároló** tulajdonság. A visszatérési típus már *tároló*.
-* *PermissionsToKeys* és *PermissionsToSecrets* most már *Permissions.Keys* és *Permissions.Secrets*
-* Bizonyos visszatérési típusokat módosítások a vezérlő-vezérlősík is vonatkoznak.
+* A műveletek, amelyek adott vissza egy *tároló*, a visszatérési típus lett egy osztályt, amely tartalmaz egy **tároló** tulajdonság. A visszatérési típus már *tároló*.
+* *PermissionsToKeys* és *PermissionsToSecrets* immár *Permissions.Keys* és *Permissions.Secrets*
+* Bizonyos návratové typy módosítások a vezérlősík is vonatkoznak.
 
 ## <a name="microsoftazurekeyvaultextensions-nuget"></a>Microsoft.Azure.KeyVault.Extensions NuGet
 
-* A csomag megszakad legfeljebb **Microsoft.Azure.KeyVault.Extensions** és **Microsoft.Azure.KeyVault.Cryptography** a titkosítási műveletek.
+* A csomag sérült akár **Microsoft.Azure.KeyVault.Extensions** és **Microsoft.Azure.KeyVault.Cryptography** a titkosítási műveletek.
 

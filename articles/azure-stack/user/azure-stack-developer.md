@@ -1,9 +1,9 @@
 ---
-title: Alkalmazások fejlesztése az Azure verem |} Microsoft Docs
-description: Azure-veremben prototípusának alkalmazások fejlesztési szempontjai
+title: Alkalmazások fejlesztése az Azure Stackhez |} A Microsoft Docs
+description: Fejlesztési szempontok prototípus-készítés alkalmazásokhoz az Azure Stackben
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: d3ebc6b1-0ffe-4d3e-ba4a-388239d6cdc3
@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: a1b5a90ca40ce2b19186220344b22ec0ae77e34b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a6f89f9a7e5960e4749c14fc9a4adb648f6781f4
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199194"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054087"
 ---
 # <a name="develop-for-azure-stack"></a>Fejlesztés az Azure Stackhez
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Ismerkedés fejleszt alkalmazásokat, akkor is, ha nincs hozzáférése a Azure verem környezethez. Mivel Azure verem nyújt az adatközpontban található futtatása Microsoft Azure-szolgáltatások, hasonló eszközök és folyamatok használhatja fejlesztéséhez szemben Azure verem, mint az Azure-ral. Bizonyos előkészítés, és az útmutató használatával a következő témakörökben található Azure verem környezet emulálni Azure használhatja.
+Kezdheti alkalmazások fejlesztésével, még akkor is, ha nem rendelkezik az Azure Stack környezettel való hozzáférést. Azure Stack biztosít a Microsoft Azure-szolgáltatások, amelyek a helyi adatközpontban futnak, mert segítségével hasonló eszközökkel és folyamatokkal szemben az Azure Stack fejleszthet, mint az Azure-ral. Az egyes előkészítése, és a következő témakörök útmutatása használhatja az Azure az Azure Stack-környezet emulációjához.
 
-* Azure-ban Azure Resource Manager-sablonok, amelyek központilag telepíthető Azure verem is létrehozhat. Lásd: [sablon szempontok](azure-stack-develop-templates.md) sablonok hordozhatóság biztosításához az útmutatót.
-* A szolgáltatás rendelkezésre állása és service versioning Azure és az Azure-verem közötti különbségek vannak. Használhatja a [Azure verem irányelvmodul](azure-stack-policy-module.md) korlátozhatja az Azure-szolgáltatások rendelkezésre állásának és erőforrás típusok elérhető Azure-készletben. Szolgáltatások korlátozási biztosítja, hogy az alkalmazások az Azure veremnek az elérhető szolgáltatások támaszkodnak.
-* A [Azure verem gyorsindítási sablonok](https://github.com/Azure/AzureStack-QuickStart-Templates) példák gyakori forgatókönyv, amelyek bemutatják, hogyan fejleszthet Azure és az Azure-verem telepített sablonok.
+* Az Azure-ban létrehozhat az Azure Resource Manager-sablonok, amelyek az Azure Stack üzembe helyezhető. Lásd: [sablon szempontok](azure-stack-develop-templates.md) útmutatást annak biztosítása érdekében a hordozhatóság sablonok fejlesztéséhez.
+* Az Azure és az Azure Stack közötti a szolgáltatás rendelkezésre állása és service versioning különbségek vannak. Használhatja a [Azure Stack-házirendmodul](azure-stack-policy-module.md) , hogy korlátozza azokat az Azure service rendelkezésre állását és az erőforrás elérhető az Azure Stackben. Szolgáltatások korlátozásra biztosítja, hogy az alkalmazások támaszkodjon az Azure Stackben elérhető szolgáltatások.
+* A [Azure Stack gyorsindítási sablonok](https://github.com/Azure/AzureStack-QuickStart-Templates) gyakori forgatókönyv példák azt mutatják be, hogyan hozhat létre a sablonok, az Azure és az Azure Stackben is telepíthető.

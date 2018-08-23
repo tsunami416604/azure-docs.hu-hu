@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2caa9a5137edd4e012adf704c01dc5c470e1bb51
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f6b0ea7479910f7026974e37f8c05099453c0b26
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972444"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059733"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure Virtual Machines DBMS üzembe helyezése
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1161,7 +1161,7 @@ A telepítés és a művelet az SRS működik, valamint funkcionálisan üzemelt
 ASE HADR SAP replikációs kiszolgálón keresztül nem támogatott ezen a ponton az időben. Előfordulhat, hogy ez teszteltük, és a jövőben jelent meg a Microsoft Azure platformon.
 
 ## <a name="specifics-to-oracle-database-on-windows"></a>Oracle-adatbázishoz a Windows tulajdonságairól
-Oracle-szoftverek futtatásához a Microsoft Windows Hyper-V és az Azure-on Oracle támogatja. A részleteket a Windows Hyper-V és az Azure általános támogatási tekintse meg: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle-szoftverek futtatásához a Microsoft Windows Hyper-V és az Azure-on Oracle támogatja. 
 
 Az általános támogatási követően az adott forgatókönyvtől az Oracle-adatbázisok felhasználásával SAP-alkalmazások használata is támogatott. A dokumentum ezen részében a részletek neve.
 
@@ -1199,7 +1199,7 @@ Oracle Data Guard támogatott magas rendelkezésre állású és vész-helyreál
 Egyéb általános területeken, például az Azure rendelkezésre állási csoportok vagy az SAP-figyelés a alkalmazni: az első három fejezetek a jelen dokumentum az Oracle-adatbázishoz, valamint a virtuális gépek központi telepítései leírtak szerint.
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Oracle Database, Oracle Linux rendszeren rögzítésen
-Oracle-szoftverek futtatásához a Microsoft Windows Hyper-V és az Azure-on Oracle támogatja. A részleteket a Windows Hyper-V és az Azure általános támogatási tekintse meg: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle-szoftverek futtatásához a Microsoft Windows Hyper-V és az Azure-on Oracle támogatja. 
 
 Az általános támogatási követően az adott forgatókönyvtől az Oracle-adatbázisok felhasználásával SAP-alkalmazások használata is támogatott. A dokumentum ezen részében a részletek neve.
 

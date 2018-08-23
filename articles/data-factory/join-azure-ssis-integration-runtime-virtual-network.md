@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: aa723fb765d4432d9bcdd56e4b520bf00660f84c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d89abfd0ec2ae5de8366a12bb38d9358aa8ab76d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444849"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060153"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
@@ -86,11 +86,11 @@ A következő lépéseket javasoljuk:
 További információ: [névfeloldás saját DNS-kiszolgálót használó](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). 
 
 ### <a name="nsg"></a> Hálózati biztonsági csoport
-Kell egy hálózati biztonsági csoport (NSG) megvalósítása az Azure-SSIS integrációs modul által csatlakoztatott virtuális hálózat, ha engedélyezi a bejövő/kimenő forgalom az alábbi portokon keresztül: 
+Ha egy hálózati biztonsági csoport (NSG) megvalósítása az Azure-SSIS integrációs modul által használt alhálózat van szüksége, a bejövő/kimenő forgalom engedélyezése az alábbi portokon keresztül: 
 
 | Irány | Átviteli protokoll | Forrás | Forrás porttartomány | Cél | Célporttartomány | Megjegyzések |
 |---|---|---|---|---|---|---|
-| Bejövő | TCP | Internet | * | VirtualNetwork | 29876-os, a 29877-es portot (ha az integrációs modul csatlakoztatása egy Azure Resource Managerbeli virtuális hálózat) <br/><br/>10100, 20100, 30100-as portokat (ha az integrációs modul csatlakoztatása egy klasszikus virtuális hálózat)| A Data Factory szolgáltatás használ a ezeket a portokat a virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján folytatott kommunikációhoz. <br/><br/> Egy NSG-t, vagy nem ad meg, hogy a Data Factory mindig konfigurálja egy NSG-t a csatolva a virtuális gépek, amelyek az Azure-SSIS integrációs modult. a hálózati adapterek (NIC) szintjén Csak bejövő forgalmat a Data Factory IP-címek használata engedélyezett. Akkor is, ha az internetes forgalmat, ezek a portok megnyitásához, amelyek nem a Data Factory IP-címek IP-címekről érkező forgalom le van tiltva, a hálózati adapterek szintjén. |
+| Bejövő | TCP | Internet | * | VirtualNetwork | 29876-os, a 29877-es portot (ha az integrációs modul csatlakoztatása egy Azure Resource Managerbeli virtuális hálózat) <br/><br/>10100, 20100, 30100-as portokat (ha az integrációs modul csatlakoztatása egy klasszikus virtuális hálózat)| A Data Factory szolgáltatás használ a ezeket a portokat a virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján folytatott kommunikációhoz. <br/><br/> Egy alhálózat-szintű NSG-t hoz létre, vagy sem, hogy Data Factory mindig konfigurálja a hálózati biztonsági csoportok, amelyek az Azure-SSIS integrációs modult. a virtuális gépekhez csatlakoztatott hálózati adapterek (NIC) szintjén Csak az Data Factory IP-címek a megadott porton érkező bejövő forgalmat a NIC-szintű NSG által engedélyezett. Akkor is, ha megnyitja ezeket a portokat az internetes forgalmat az alhálózatok, IP-címek, amelyek nem a Data Factory IP-címek érkező forgalom le van tiltva, a hálózati adapterek szintjén. |
 | Kimenő | TCP | VirtualNetwork | * | Internet | 443 | A virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján el az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs ezen a porton. |
 | Kimenő | TCP | VirtualNetwork | * | Az Internet vagy az Sql | 1433-as, 11000-11999, 14000-14999 | Az Azure-SSIS integrációs modul az Azure SQL Database-kiszolgáló – futó SSISDB el ezeket a portokat a virtuális hálózat használatban csomópontjai az erre a célra nem alkalmazható a felügyelt példány (előzetes verzió) futó SSISDB. |
 ||||||||

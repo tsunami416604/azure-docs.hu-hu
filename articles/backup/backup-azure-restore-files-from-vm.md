@@ -7,14 +7,14 @@ manager: shivamg
 keywords: elemszintű helyreállítás; az Azure virtuális gép biztonsági mentése; fájlok helyreállítása fájlok helyreállítása Azure virtuális gépből
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 8/22/2018
 ms.author: pullabhk
-ms.openlocfilehash: fecdb54af58faaf601ab74f89039a47e0d32e650
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1f3b81c31dc566e5e3011167eee00145f6791cb1
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493381"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616909"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
 
@@ -33,13 +33,17 @@ A fájlok és mappák visszaállítása a helyreállítási pontot, nyissa meg a
 
 2. A virtuális gép menüben kattintson **Backup** a biztonsági mentés irányítópultjának megnyitásához.
 
-    ![Nyissa meg a Recovery Services vault biztonsági másolati elem](./media/backup-azure-restore-files-from-vm/open-vault-from-vm.png)
+    ![Nyissa meg a Recovery Services vault biztonsági másolati elem](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. A biztonsági mentés irányítópultos menüjében kattintson **fájlhelyreállítás** a menü megnyitásához.
+3. A biztonsági mentés irányítópultos menüjében kattintson **fájlhelyreállítás**.
+
+    ![Helyreállítási szolgáló gomb](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+
+    A **fájlhelyreállítás** menü megnyitása.
 
     ![A fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/file-recovery-blade.png)
 
-4. Az a **válassza ki a helyreállítási pont** legördülő menüben válassza ki a helyreállítási pontot, amely tartalmazza a kívánt fájlokat. Alapértelmezés szerint már be van jelölve a legutóbbi helyreállítási pontot.
+4. Az a **válassza ki a helyreállítási pont** legördülő menüben válassza ki a kívánt fájlokat tárolja a helyreállítási pont. Alapértelmezés szerint már be van jelölve a legutóbbi helyreállítási pontot.
 
 5. Töltse le a szoftverfrissítési fájlokat másolhat a helyreállítási pontot, kattintson a **végrehajtható fájl letöltése** (a Windows Azure virtuális Gépen), vagy **szkript letöltése** (a Linux Azure VM).
 
@@ -95,7 +99,7 @@ Fájlok azonosítása, és másolja őket egy helyi helyre, miután eltávolít�
 
 ![Lemezek leválasztása](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
-Után a lemezek nem csatlakoztatott, kap egy üzenetet, amely közli, hogy az sikeres volt. A kapcsolat frissítéséhez, hogy a lemezek eltávolíthatja néhány percig is eltarthat.
+Miután a lemezek le lett, kap egy üzenetet. A kapcsolat frissítéséhez, hogy a lemezek eltávolíthatja néhány percig is eltarthat.
 
 A Linux Miután a kapcsolat és a helyreállítási pont daraboltak van, az operációs rendszer nem távolítja el a megfelelő csatlakoztatási elérési utak automatikusan. A csatlakoztatási elérési út létezik, és "árva" kötetek és láthatók, de a hibaüzenetet küldjön, amikor Ön hozzáférési írható a fájlokat. Manuálisan távolíthatja el. A parancsfájl végrehajtásakor, minden korábbi helyreállítási pontjait a meglévő kötetek azonosítja, és törli azokat a jóváhagyás után.
 
@@ -213,7 +217,7 @@ Ha problémába ütközik a virtuális gépekről származó fájlok helyreáll�
 | Exe-fájl kimeneti: *csatlakozik a cél kivétel* |Parancsfájl nem sikerül a helyreállítási pont eléréséhez    | Ellenőrizze, hogy a gép megfelel-e a fenti hozzáférési követelmények. |  
 | Exe-fájl kimeneti: *a cél már bejelentkezett iSCSI-munkamenet-n keresztül.* | A szkript már végre lett hajtva ugyanarra a gépre, és a meghajtók rendelkeznek-e csatlakoztatva | A kötetek a helyreállítási pont már csatlakoztatva van. Előfordulhat, hogy nem kell csatlakoztatni a ugyanolyan meghajtóbetűjellel rendelkező meghajtót az eredeti virtuális gép. Böngésszen az elérhető kötetek a Fájlkezelőben, a fájl |
 | Exe-fájl kimeneti: *Ez a szkript érvénytelen, mert a lemezek korlát portal/túllépte a 12-hr-n keresztül is le lett választva. Töltsön le egy új parancsfájlt a portálról.* |    A lemezek rendelkezik le lett választva, a portálról vagy a 12-hr túllépte a korlátot | Az adott exe nem érvényes, és nem futtatható. Ha azt szeretné, hogy a helyreállítási pont kötött fájljainak eléréséhez, látogasson el a portál egy új exe-fájl|
-| A gépen, amelyen az exe fut: az új kötetek nem leválasztása, miután a Leválasztás gombra kattint | Az iSCSI-kezdeményező a számítógépen nem válaszol vagy frissíteni a kapcsolatot a cél- és a gyorsítótár karbantartása |    Várjon, amíg néhány perc után a leválasztás bekapcsolva. Ha az új kötetek még mindig nem leválasztották, tallózással keresse meg minden kötet keresztül. Ez kényszeríti a kezdeményező frissíteni a kapcsolatot, és a kötet le van választva, egy hibaüzenet, hogy a lemez nem érhető el|
+| A gépen, amelyen az exe fut: az új kötetek nem leválasztása, miután a Leválasztás gombra kattint | Az iSCSI-kezdeményező a számítógépen nem válaszol vagy frissíteni a kapcsolatot a cél- és a gyorsítótár karbantartása. |  Kattintás után **leválasztani**, várjon néhány percet. Ha az új kötetek nem le vannak választva, böngésszen összes kötetet. Böngészés az összes kötet kényszeríti a kezdeményező frissíteni a kapcsolatot, és a kötet le van választva, egy hibaüzenet, hogy a lemez nem érhető el.|
 | Exe-fájl kimeneti: szkript sikeres futtatása, de az "Új kötetek csatlakoztatva" nem jelenik meg a parancsprogram kimenete |    Ez az átmeneti hiba    | Szeretné a kötetek már lett csatolva. Tallózással nyissa meg. Ha a parancsfájlok futtatásához minden alkalommal ugyanazt a gépet használ, fontolja meg a gép újraindítását, és az ezt követő exe fut megjelennie a listában. |
 | Linux-specifikus: nem sikerült a kívánt kötetek megtekintése | A gép, ahol a parancsfájl futtatása az operációs rendszer nem ismeri fel az alapul szolgáló fájlrendszer, a védett virtuális gép | Ellenőrizze, hogy a helyreállítási pont összeomlás-konzisztens vagy fájlkonzisztens. Ha a fájl egységes, futtassa a szkriptet egy másik gép amelynek operációs rendszer felismeri a védett virtuális gép fájlrendszer |
 | Windows-specifikus: nem sikerült a kívánt kötetek megtekintése | A lemezek csatolt, de a kötetek nem lettek konfigurálva. | A lemez felügyeleti képernyőről azonosítsa a további lemezek a helyreállítási ponttal kapcsolatos. Ha bármelyik ezeket a lemezeket a kapcsolat nélküli állapot próbálja ki, így azok online kattintson a jobb gombbal a lemezen, és kattintson az "Online"|

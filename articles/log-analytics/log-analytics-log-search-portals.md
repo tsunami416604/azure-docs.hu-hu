@@ -1,6 +1,6 @@
 ---
-title: Portálok a létrehozása és módosítása az Azure Naplóelemzés napló lekérdezések |} Microsoft Docs
-description: Ez a cikk ismerteti a portálok, melyekkel az Azure Naplóelemzés létrehozásához és szerkesztéséhez jelentkezzen kereséseket.
+title: Az Azure Log Analyticsben adatok megtekintésére és elemzésére |} A Microsoft Docs
+description: Ez a cikk ismerteti, amelyek segítségével használhatja a portálok létrehozásához és szerkesztéséhez az Azure Log Analytics naplóbeli kereséseivel.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,48 +11,59 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 08/20/2018
 ms.author: magoedte; bwren
 ms.component: na
-ms.openlocfilehash: e2ea0bf1fb3f1c63f4e6f037e465e8fdfd9a4374
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 386aad94461fa3f2ceafb7564342797eefa2f086
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132930"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058141"
 ---
-# <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>Portálok a létrehozása és módosítása az Azure Naplóelemzés napló lekérdezések
+# <a name="viewing-and-analyzing-data-in-log-analytics"></a>A Log Analytics adatok megtekintésére és elemzésére
+Két lehetőség van a Log analytics szolgáltatásban tárolt adatok elemzése és az alkalmi elemzési lekérdezések létrehozásához az Azure Portalon érhető el. A lekérdezések létrehozásakor használja a fenti portálokhoz más funkciók, például a riasztások és az irányítópultok is használható.
 
-A különböző pontjain lehet elérni a Naplóelemzési napló keresések segítségével adatainak lekérése a munkaterületen.  Ténylegesen létrehozásának, és a lekérdezések használata interaktív visszaadott adatok mellett, ha szerkesztésének, két lehetősége, hogy az alábbiakban található.  
+## <a name="log-analytics-page-preview"></a>Log Analytics-lap (előzetes verzió)
+Nyissa meg a Log Analytics lapot **naplók (előzetes verzió)** a Log Analytics menüben. Ez az új felülettel jelentkezik a naplóadatok használatának és lekérdezések létrehozásáról. Ismerkedjen meg ezen a portálon, és vizsgálja meg a szolgáltatásokat [Ismerkedés a Log Analytics-oldal az Azure Portalon](query-language/get-started-analytics-portal.md).
 
-## <a name="log-search"></a>Naplókeresés 
-Az Azure-portálon elérhető-e a napló lapon.  Alkalmas alapvető lekérdezések külön sorba hozható létre.  Naplófájl-keresési egy külső portál megnyitása nélkül használható, és számos feladatot végrehajtani a napló keresések többek között a riasztási szabályok létrehozásához, számítógép-csoportok létrehozásáról és a lekérdezés eredményeit az használhatja.  
+A Log Analytics lapot a következő fejlesztéseket kínálja keresztül a [naplóbeli keresés](#log-search) tapasztalható.
 
-Naplófájl-keresési több szolgáltatásokat nyújt a lekérdezés szerkesztése a lekérdezési nyelv teljes ismerete nélkül.  Ezeket a funkciókat az összegzését kaphat [létrehozás napló megkeresi a naplófájl-keresési Azure Naplóelemzés](log-analytics-log-search-log-search-portal.md).
+* Több lap – hozzon létre külön lapokra több lekérdezés használata.
+* Látványos vizualizációkkal – különböző értékeléséről vagy beállítások.
+* Továbbfejlesztett Intellisense és nyelvi automatikus kiegészítését.
+* Szintaxiselemek kiemelése – az az olvashatóságot a lekérdezések. 
+* Lekérdezéskezelő – mentett hozzáférés lekérdezése, és működik.
+* Séma nézet – tekintse át a lekérdezések írásának módját segítség az adatok struktúráját.
+* Megosztás – lekérdezések vagy PIN-kód-lekérdezést minden olyan megosztott Azure-irányítópultra mutató hivatkozások létrehozása.
+* Az intelligens elemzés – azonosítja a diagramok és a egy gyors elemzés a OK adatforgalmi csúcsokhoz.
+* Oszlop kiválasztása – rendezheti, és a lekérdezési eredményekben oszlopok csoportban.
+
+> [!NOTE]
+> A Log Analytics lapot a bővített analitika portál, amely egy külső eszköz, az Azure Portalon kívül ugyanazokkal a funkciókkal rendelkezik. A bővített analitika portál továbbra is elérhető, de hivatkozások és a rá mutató hivatkozásokat az Azure Portalon váltotta fel az új lap.
+
+![A speciális analitika portálon](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
 
 
-![Naplófájl-keresési lap](media/log-analytics-log-search-portals/log-search-portal.png)
+### <a name="firewall-requirements"></a>Tűzfalra vonatkozó követelmények
+A böngészőben a Log Analytics lapot, és a bővített analitika portál eléréséhez a következő címek hozzáférésre van szüksége.  Ha a böngésző tűzfalon keresztül fér hozzá az Azure Portalon, engedélyeznie kell ezeket a címeket a hozzáférést.
 
-## <a name="advanced-analytics-portal"></a>Speciális Analytics portál
-A speciális elemzés portál egy dedikált portál, amely speciális funkció nem érhető el a napló keresési Azure-portálról.  Szolgáltatásai közé tartozik a lekérdezés több sorban való szerkesztése, a szelektív kódvégrehajtás, a kontextusfüggő Intellisense és az intelligens elemzés.  Az Advanced Analytics portál legalkalmasabb összetett lekérdezések, amelyek vagy mentett napló keresést vagy másolja és illeszthetők be más Naplóelemzési elemek.  A napló lapon egy hivatkozást a Advanced Analytics portálon indíthatja el.
-
-![Speciális Analytics portál](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
-
-
-A speciális funkciók miatt általában használni a speciális elemzés portal az elsődleges eszközként létrehozása és szerkesztése a lekérdezések.  Egyszer meghatározta, hogy a lekérdezés megfelelően működik-e, majd lesz másolja és illessze be máshol például napló keresése oldal vagy adatforrásnézet-tervezőből.  
-
-### <a name="firewall-requirements"></a>A tűzfalra vonatkozó követelmények
-A böngésző Advanced Analytics portál eléréséhez a következő címekre hozzáférésre van szüksége.  Ha a böngésző a tűzfalon keresztül fér hozzá az Azure-portálon, engedélyeznie kell ezeket a címeket a hozzáférést.
-
-| URI | IP | Portok |
+| URI-t | IP | Portok |
 |:---|:---|:---|
 | portal.loganalytics.io | Dinamikus | 80,443 |
 | api.loganalytics.io    | Dinamikus | 80,443 |
 | docs.loganalytics.io   | Dinamikus | 80,443 |
 
 
+## <a name="log-search"></a>Naplókeresés
+Nyissa meg a keresési oldalon a **naplók** a Log Analytics menüben, vagy a **Log Analytics** az Azure figyelő menü. Ez a alapvető lekérdezések segítségével naplóadatokat elemzésére alkalmas. Szerkesztési lekérdezések több funkciókat biztosít a lekérdezési nyelv a teljes ismerete nélkül.  Megtekintheti ezeket a funkciókat az összegzését [naplókeresések létrehozása az Azure Log Analytics naplóbeli keresés](log-analytics-log-search-log-search-portal.md). 
+
+
+![Log Search lap](media/log-analytics-log-search-portals/log-search-portal.png)
+
+
 ## <a name="next-steps"></a>További lépések
 
-- Az oktatóanyag bízná [naplófájl-keresési](log-analytics-tutorial-viewdata.md) megtudhatja, hogyan létrehozhat olyan lekérdezéseket, a lekérdezési nyelv használatával
-- Tekintse meg a [Advanced Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587) kifinomult lekérdezések létrehozása és a napló keresések a fejlesztési környezet használata.
+- Végig egy [oktatóanyag naplóbeli keresés használatával](log-analytics-tutorial-viewdata.md) megtudhatja, hogyan hozhat létre lekérdezést a lekérdezési nyelv segítségével
+- Végig egy [. lecke a bővített analitika portál használatával](query-language/get-started-analytics-portal.md) amely biztosítja, hogy ugyanazt a felhasználói élményt, mint a Log Analytics lapot.
 

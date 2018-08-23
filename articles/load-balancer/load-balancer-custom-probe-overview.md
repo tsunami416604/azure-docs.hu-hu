@@ -13,37 +13,53 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2018
+ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: 69af189ce04d8bcfb2fe0c6842c845cc988b5380
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 91c7d16296653aea2381793f2e52f2b33b831185
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577913"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42056661"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
-Az Azure Load Balancer állapot-mintavételei alapján határozza meg, mely háttérbeli címkészlet példányok új folyamatok fog kapni. Állapot-mintavételei használatával észleli a hibát egy alkalmazás egy háttér-példányon. Is hozzon létre egy állapotmintát egyéni választ, és használja az állapotmintát esetében forgalomszabályozás, és jelezze a Load Balancer-e a folytatáshoz küldjön új folyamatokat, vagy új folyamatok küld egy háttér-példány leállítása. Ez a terhelés és a tervezett leállás kezelésére használható.
+Az Azure Load Balancer állapot-mintavételei alapján határozza meg, mely háttérbeli címkészlet példányok új folyamatok fog kapni. Állapot-mintavételei használatával észleli a hibát egy alkalmazás egy háttér-példányon. Is hozzon létre egy állapotmintát egyéni választ, és használja az állapotmintát esetében forgalomszabályozás, és jelezze a Load Balancer-e a folytatáshoz küldjön új folyamatokat, vagy új folyamatok küld egy háttér-példány leállítása. Ez a terhelés és a tervezett leállás kezelésére használható. Ha az állapotfigyelő mintavételező nem sikerül, a terheléselosztó nem irányít, több új folyamatok a megfelelő nem megfelelő állapotú példányhoz.
 
-Ha az állapotfigyelő mintavételező nem sikerül, a terheléselosztó nem irányít, több új folyamatok a megfelelő nem megfelelő állapotú példányhoz. A meglévő és új folyamatok viselkedése attól függ, egy flow-e a TCP vagy UDP, valamint melyik Load Balancer Termékváltozatot használja.  Felülvizsgálat [mintavételi viselkedésének le részletes](#probedown).
+Az állapot-mintavételei elérhető típusú és állapot-mintavételek viselkednek attól függ, milyen Termékváltozat Load Balancer, módja. Például az új és meglévő folyamatok működése függ egy flow-e a TCP vagy UDP, valamint melyik Load Balancer Termékváltozatot használja.
+
+| | Standard termékváltozat | Alapszintű termékváltozat |
+| --- | --- | --- |
+| [Mintavétel típusok](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Mintavételi viselkedésének lefelé](#probedown) | Az összes mintavételek le, az összes TCP-adatfolyamok továbbra is. | Minden mintavételek le, az összes TCP-adatfolyamok megszűnik. | 
 
 > [!IMPORTANT]
 > Load Balancer állapot-mintavételei származnak 168.63.129.16 IP-címről, és nem le kell tiltani a mintavételek a példány megjelöléséhez.  Felülvizsgálat [IP-forráscím mintavételi](#probesource) részleteiről.
 
 ## <a name="types"></a>Állapot-mintavételi típusok
 
-Állapot-mintavételei figyelheti, bármely portra háttér-példány, beleértve a portot, amelyen elérhető a tényleges service. Az állapotminta figyelői a TCP- vagy HTTP-végpontokat támogatja. 
+Állapot-mintavételei figyelheti, bármely portra háttér-példány, beleértve a portot, amelyen elérhető a tényleges service. Az egészségügyi mintavételi protokoll állapotadat-mintavételek három különböző típusú konfigurálhatók:
 
-UDP terheléselosztásra, hozza létre a háttér-példány HTTP vagy TCP-állapotminta használatával egyéni állapot mintavételi jel.
+- [TCP-figyelő](#tcpprobe)
+- [HTTP-végpontokat](#httpprobe)
+- [Koncové body protokolu HTTPS](#httpsprobe)
 
-Használata esetén [magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok](load-balancer-ha-ports-overview.md) a [Standard Load Balancer](load-balancer-standard-overview.md), minden port elosztott terhelésű, és egyetlen egészségügyi mintavételi választ tükröznie kell azt, hogy az egész példány állapotának.  
+Az elérhető típusokat állapot-mintavételei eltérőek lehetnek attól függően, a Load Balancer Termékváltozat kiválasztott:
+
+|| TCP | HTTP | HTTPS |
+| --- | --- | --- | --- |
+| Standard termékváltozat |    &#9989; |   &#9989; |   &#9989; |
+| Alapszintű termékváltozat |   &#9989; |   &#9989; | &#10060; |
+
+UDP terheléselosztásra kell létrehoznia egy egyéni állapot mintavételi jel a háttér-példány használatával a TCP, HTTP-n vagy HTTPS-állapotminta.
+
+Használata esetén [magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok](load-balancer-ha-ports-overview.md) a [Standard Load Balancer](load-balancer-standard-overview.md), minden port elosztott terhelésű, és egyetlen egészségügyi mintavételi választ az egész példány állapotának szeretné bemutatni.  
 
 Meg kell, nem a NAT- és egy állapotminta a példány, amely egy másik példányhoz az állapotminta kap a virtuális hálózatban található, mivel ez a hiba egész hibasorozatot indíthat ebben az esetben proxy.
 
 Ha szeretné egészségügyi mintavételi hiba tesztelése, vagy egy egyéni példány le megjelölése, explicit letiltása az állapotminta egy biztonsági csoportot használhatja (cél vagy [forrás](#probesource)).
 
-### <a name="tcpprobe"></a>TCP-mintavétel
+### <a name="tcpprobe"></a> TCP-mintavétel
 
 TCP-mintavétel kapcsolatot kezdeményezzen egy háromutas nyitott TCP kézfogás-a meghatározott portot elvégzésével.  Ezt követi a négy Bezárás TCP kézfogás.
 
@@ -53,19 +69,60 @@ A TCP-mintavétel meghiúsul, ha:
 * A TCP-figyelőt a példányon egyáltalán nem válaszol az időkorláton során.  Mintavétel van megjelölve lettek konfigurálva nyissa meg a megválaszolatlan a mintavétel megjelölése előtti meghiúsult mintavételi kérések száma alapján.
 * A mintavétel egy TCP alaphelyzetbe állítani a példányt kap.
 
-### <a name="httpprobe"></a>HTTP-mintavétel
+#### <a name="resource-manager-template"></a>Resource Manager-sablon
 
-HTTP-mintavételek TCP-kapcsolatot létesítsen, és a egy HTTP GET probléma a megadott elérési út. HTTP-mintavételek a HTTP GET relatív útvonalakat támogatja. Az állapotminta van megjelölve, ha a példány válaszol a HTTP-állapotkódot 200 az időkorláton belül.  HTTP állapotának mintavételei kísérlet a alapértelmezés szerint 15 másodpercenként ellenőrizze a beállított állapot-mintavételi portot. A minimális mintavételi időköz 5 másodperc. A teljes időtartam legfeljebb 120 másodperc. 
+```json
+    {
+      "name": "tcp",
+      "properties": {
+        "protocol": "Tcp",
+        "port": 1234,
+        "intervalInSeconds": 5,
+        "numberOfProbes": 2
+      },
+```
 
+### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP / HTTPS-mintavétel
 
-HTTP-mintavételt is lehet hasznos, ha a saját logikai példányt eltávolítja a load balancer rotációból megvalósításához. Például előfordulhat, hogy úgy dönt, eltávolít egy példányt, ha ez meghaladja a 90 %-ot, és nem 200-as HTTP - állapot adja vissza. 
+> [!NOTE]
+> Csak akkor érhető el, a HTTPS-mintavétel [Standard Load Balancer](load-balancer-standard-overview.md).
+
+A HTTP és HTTPS-vizsgálatok TCP-kapcsolatot létesítsen, és a egy HTTP GET probléma a megadott elérési út. Relatív elérési utakat is az ilyen mintavételezők támogatja a HTTP GET. HTTPS-vizsgálatok ugyanazok, mint a HTTP-mintavételek a Transport Layer Security (TLS, SSL-ként ismert) igény szerinti hozzáadásával burkolót. Az állapotminta van megjelölve, ha a példány válaszol a HTTP-állapotkódot 200 az időkorláton belül.  Ezek állapotának mintavételei próbál meg alapértelmezés szerint 15 másodpercenként ellenőrizze a beállított állapot-mintavételi portot. A minimális mintavételi időköz 5 másodperc. A teljes időtartam legfeljebb 120 másodperc. 
+
+HTTP / HTTPS-vizsgálatok akkor is hasznos lehet, ha azt szeretné megvalósítani a saját logikai példányt eltávolítja a load balancer rotációból. Például előfordulhat, hogy úgy dönt, eltávolít egy példányt, ha ez meghaladja a 90 %-ot, és nem 200-as HTTP - állapot adja vissza. 
 
 Ha Felhőszolgáltatásokat használ, és webes szerepkörök, amelyek a w3wp.exe rendelkezik, akkor is megvalósítható automatikus figyeléssel a webhely. Hibák a webhely kódban nem 200 állapot térjen vissza a terheléselosztói mintavételezők.  A HTTP-mintavétel felülbírálja az alapértelmezett Vendég ügynök mintavétel. 
 
-A HTTP-mintavétel meghiúsul, ha:
-* HTTP-állapotminta-végpontot egy HTTP-válaszkód, 200-as (például a 403-as, 404-es vagy 500-as) eltérő adja vissza. Ezzel a művelettel kijelöli az állapotminta azonnal. 
-* HTTP-állapotminta-végpontot a során egyáltalán nem válaszol a 31-ig második időtúllépési időszakot. Az időtúllépési érték, amely be van állítva, attól függően több mintavételi kérések mehet megválaszolatlan előtt nem fut, a mintavétel megjelölve (azaz előtt SuccessFailCount mintavételek érkeznek).
-* HTTP-mintavétel végpont lezárja a kapcsolatot a TCP alaphelyzetbe állítása keresztül.
+Egy olyan HTTP / HTTPS-mintavétel meghiúsul, ha:
+* Állapotminta-végpontot egy HTTP-válaszkód, 200-as (például a 403-as, 404-es vagy 500-as) eltérő adja vissza. Ezzel a művelettel kijelöli az állapotminta azonnal. 
+* Állapotminta-végpontot a során egyáltalán nem válaszol a 31-ig második időtúllépési időszakot. Az időtúllépési érték, amely be van állítva, attól függően több mintavételi kérések mehet megválaszolatlan előtt nem fut, a mintavétel megjelölve (azaz előtt SuccessFailCount mintavételek érkeznek).
+* Állapotminta-végpontot lezárja a kapcsolatot a TCP alaphelyzetbe állítása keresztül.
+
+#### <a name="resource-manager-templates"></a>Resource Manager-sablonok
+
+```json
+    {
+      "name": "http",
+      "properties": {
+        "protocol": "Http",
+        "port": 80,
+        "requestPath": "/",
+        "intervalInSeconds": 5,
+        "numberOfProbes": 2
+      },
+```
+
+```json
+    {
+      "name": "https",
+      "properties": {
+        "protocol": "Https",
+        "port": 443,
+        "requestPath": "/",
+        "intervalInSeconds": 5,
+        "numberOfProbes": 2
+      },
+```
 
 ### <a name="guestagent"></a>Vendég ügynök szonda (csak Klasszikus modell)
 
@@ -83,7 +140,7 @@ Webes szerepkör használata esetén a webhely kód általában lefut az w3wp.ex
 
 ## <a name="probehealth"></a>Állapot-mintavételi
 
-TCP- és HTTP állapotadat-mintavételek tekinti a kifogástalan állapotú, és jelölje meg a szerepkörpéldány kifogástalan amennyiben:
+TCP, HTTP és HTTPS állapot-mintavételei tekinti a kifogástalan állapotú, és jelölje meg a szerepkörpéldány kifogástalan amennyiben:
 
 * Az állapotminta létrejött a virtuális gép elindul, amikor első alkalommal.
 * (Lásd a korábbiakban) SuccessFailCount számát határozza meg a szerepkörpéldány kifogástalan állapotúként kell megjelölnie sikeres mintavételezők értékét. Ha egy szerepkörpéldány el lett távolítva, sikeres, egymást követő mintavételek száma egyenlő vagy kell megjelölni a szerepkörpéldány futtatásával SuccessFailCount értéke meghaladja.
@@ -122,7 +179,6 @@ UDP kapcsolat nélküli, és nincs teljesítményfolyamati állapot nyomon köve
 
 Minden mintavételek háttérkészlet szereplő összes példány sikertelen lesz, ha a meglévő UDP-folyamatok az alapszintű és standard szintű terheléselosztóhoz le fog állni.
 
-
 ## <a name="probesource"></a>Mintavételi forrás IP-címe
 
 Az összes Load Balancer állapot-mintavételei származnak 168.63.129.16 IP-címről használja forrásként.  Tenné a saját IP-címek az Azure virtuális hálózathoz, ha ezen állapotfigyelő mintavételi forrás IP-címet garantáltan egyedinek kell lennie, globálisan a Microsoft számára van fenntartva.  Ez a cím minden régióban azonos, és nem változik. Azt nem tekinthető biztonsági kockázatot jelent, mivel csak a belső Azure platformon is forrás egy csomag az IP-címről. 
@@ -137,17 +193,18 @@ Ha a virtuális Gépen több adapterrel rendelkezik, annak érdekében, hogy a m
 
 ## <a name="monitoring"></a>Figyelés
 
-Az összes [Standard Load Balancer](load-balancer-standard-overview.md) állapot-mintavételi többdimenziós metrikák példányonként az Azure monitoron keresztül mutatja.
+A nyilvános és a belső [Standard Load Balancer](load-balancer-standard-overview.md) végpont és a háttérkiszolgáló példány állapota Hálózatfigyelő állapot szerint, többdimenziós metrikák az Azure monitoron keresztül teszi közzé. Ez majd által felhasználható más Azure-szolgáltatások vagy a 3. fél alkalmazásokat. 
 
-Alapszintű Load Balancer mintavételi állapot per Log Analytics funkciójával háttérkészlet tesz elérhetővé.  Ezt csak akkor érhető el nyilvános alapszintű Load Balancer Terheléselosztók és belső alapszintű terheléselosztó esetén nem érhető el.  Használhat [log analytics](load-balancer-monitor-log.md) a nyilvános load balancer mintavételi állapot ellenőrzéséhez és mintavételi száma. Adja meg a load balancer állapot statisztikája naplózás használható a Power bi-ban vagy az Azure Operational Insights.
-
+Alapszintű nyilvános Load Balancer összegzése a Log Analytics funkciójával háttérkészlet mintavételi állapotát mutatja.  Ez nem használható belső alapszintű Load Balancer Terheléselosztók.  Használhat [log analytics](load-balancer-monitor-log.md) a nyilvános load balancer mintavételi állapot ellenőrzéséhez és mintavételi száma. Adja meg a load balancer állapot statisztikája naplózás használható a Power bi-ban vagy az Azure Operational Insights.
 
 ## <a name="limitations"></a>Korlátozások
 
--  HTTP-állapotminta nem támogatja a TLS (HTTPS).  Inkább egy TCP-Hálózatfigyelővel a 443-as porton.
+-  HTTPS-vizsgálatok nem támogatják a kölcsönös hitelesítés ügyféltanúsítvánnyal.
+-  SDK-t és PowerShell nem támogatja a HTTPS-vizsgálatok jelenleg.
 
 ## <a name="next-steps"></a>További lépések
 
+- További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
 - [Első lépések a Resource Managerben nyilvános load balancer létrehozása PowerShell használatával](load-balancer-get-started-internet-arm-ps.md)
-- [Állapot-mintavételei REST API-val](https://docs.microsoft.com/en-us/rest/api/load-balancer/loadbalancerprobes/get)
-
+- [Állapot-mintavételei REST API-val](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- Az új állapotfigyelő mintavételi képességekhez kérelem [Load Balancer uservoice-on](https://aka.ms/lbuservoice)

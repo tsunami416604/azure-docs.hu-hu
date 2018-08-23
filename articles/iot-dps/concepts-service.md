@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatás az Azure IoT Hub eszköz kiépítése szolgáltatáshoz fogalmak |} Microsoft Docs
-description: Jellemző a terjesztési pontok és az IoT-központ szolgáltatás létesítési fogalmakat ismerteti
+title: Szolgáltatás az Azure IoT Hub Device Provisioning Service fogalmak |} A Microsoft Docs
+description: Szolgáltatás üzembe helyezési kapcsolatos fogalmakat ismerteti a Device Provisioning Service és az IoT Hub-eszközökre vonatkozó
 author: nberdy
 ms.author: nberdy
 ms.date: 03/30/2018
@@ -8,68 +8,71 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 2908e08e36f41ebb8a154e7c490e5c6719d911be
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ca2ea3c000e811223ded3022021c2516f547ae66
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628300"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058728"
 ---
-# <a name="iot-hub-device-provisioning-service-concepts"></a>Az IoT Hub eszköz kiépítése szolgáltatással kapcsolatos fogalmak
+# <a name="iot-hub-device-provisioning-service-concepts"></a>IoT Hub Device Provisioning Service-fogalmak
 
-IoT Hub eszköz kiépítése szolgáltatáshoz olyan IoT hub, amely egy megadott IoT-központ nulla érintéssel eszközkiépítési konfigurálására használt segítő szolgáltatás. Az eszköz kiépítése szolgáltatáshoz is [automatikus-kiépítési](concepts-auto-provisioning.md) biztonságos és skálázható módon eszközök millióira.
+IoT Hub Device Provisioning Service, amellyel egy adott IoT hub használatával beavatkozás nélküli eszközök konfigurálása IoT hub segítő szolgáltatása. A Device Provisioning Service szolgáltatással is [automatikus üzembe](concepts-auto-provisioning.md) eszközök, biztonságos és méretezhető módon.
 
-Eszköz kiépítése két lépésben. Az első rész hozza létre azt a kezdeti kapcsolatot az eszköz és az IoT-megoldás által *regisztrálása* az eszközt. A második rész alkalmazza a megfelelő *konfigurációs* az eszközre, a megoldás a meghatározott követelmények alapján. Mindkét lépések elvégzése után, az eszköz teljes mértékben lett *kiépített*. A Device Provisioning Service a két lépés automatizálásával biztosítja az eszközök zökkenőmentes kiépítését.
+Eszköz kiépítése két részből álló folyamat. Az első rész az eszköz és az IoT-megoldások között a kezdeti kapcsolatot létesít *regisztrálása* az eszközön. A második rész alkalmazza a megfelelő *konfigurációs* az eszközön, a megoldás egyéni követelményei alapján. Ha mindkét lépés befejeződött, az eszköz teljes mértékben van *kiépített*. A Device Provisioning Service a két lépés automatizálásával biztosítja az eszközök zökkenőmentes kiépítését.
 
-Ez a cikk áttekintést nyújt a kiépítési fogalmakat kezelésének alkalmazható a *szolgáltatás*. Ez a cikk az érintett személyeknek igényeinek jobban megfelelő a [felhő telepítő lépés](about-iot-dps.md#cloud-setup-step) az eszköz telepítési felkészülés.
+Ez a cikk áttekintést nyújt a legjobban megfelelő kezelése kiépítési fogalmakat a *szolgáltatás*. Ez a cikk a megfelelő személyeknek, résztvevő a [felhőbeli telepítési lépés](about-iot-dps.md#cloud-setup-step) szerezhető egy eszköz telepítésre készen áll.
 
-## <a name="service-operations-endpoint"></a>Szolgáltatásvégpont műveletek
+## <a name="service-operations-endpoint"></a>Szolgáltatásvégpont-műveletek
 
-A szolgáltatásvégpont műveletek a szolgáltatás beállításainak kezelése és a beléptetési lista végpontja. Ez a végpont csak használja a szolgáltatás-rendszergazda; eszközök nem használják.
+A szolgáltatásvégpont műveletek az a végpont a szolgáltatás beállításainak kezelése és fenntartása a regisztrációs listán. Ez a végpont csak használják; a szolgáltatás-rendszergazda az eszközök nem használatos.
 
-## <a name="device-provisioning-endpoint"></a>Eszköz üzembe helyezési végpont
+## <a name="device-provisioning-endpoint"></a>Üzembe helyezési eszközvégpont
 
-Az eszköz üzembe helyezési végpont esetében minden eszköz automatikus-történő üzembe helyezéséhez használjon a végpontot. Az URL-cím megegyezik a összes üzembe helyezési szolgáltatáspéldányok, nincs szükség az új kapcsolat információkkal eszközök reflash ellátási lánc forgatókönyvekben. A [azonosító hatókör](#id-scope) biztosítja a bérlők elkülönítését.
+Az eszköz regisztrációs végpont az az egyetlen végpont az Automatikus kiépítés használata minden eszköz. Az URL-cím megegyezik az összes kiépítési szolgáltatás példány, nem kell az új kapcsolati adatokkal eszközök reflash ellátási lánc forgatókönyvekben. Az azonosító hatókörének biztosítja a bérlők elkülönítését.
 
 ## <a name="linked-iot-hubs"></a>Összekapcsolt IoT-központok
 
-Eszköz kiépítése szolgáltatáshoz csak oszthat meg a hozzá csatolt IoT-központok eszközök. Az IoT-központ Linking eszköz kiépítése szolgáltatáshoz biztosít a service olvasási/írási engedéllyel az IoT hub eszköz beállításjegyzékébe; a hivatkozás eszköz kiépítése szolgáltatáshoz regisztrálja az Eszközazonosítót és az eszköz iker a kezdeti beállítása. Csatolt IoT-központok bármely Azure régióban lehet. A létesítési szolgáltatás előfordulhat, hogy más előfizetések központok kapcsolódik.
+A Device Provisioning Service-eszközöket az ahhoz kapcsolt IoT hubra csak helyezhet üzembe. Az IoT hub csatolása a Device Provisioning service egy példányát lehetővé teszi az IoT hub eszközjegyzékében; a szolgáltatás olvasási/írási engedélyekkel a hivatkozást tartalmazó a Device Provisioning service regisztrálni egy Eszközazonosítót, és állítsa be a kezdeti konfigurációt az ikereszköz. Összekapcsolt IoT-központok lehet bármely Azure-régióban. Előfordulhat, hogy más előfizetésekben hubs összekapcsolása a kiépítési szolgáltatáshoz.
 
-## <a name="allocation-policy"></a>Elosztási házirend
+## <a name="allocation-policy"></a>Foglalási szabályzat
 
-A szolgáltatási szint beállítása, amely meghatározza, hogy hogyan eszköz kiépítése szolgáltatáshoz az IoT-központ eszközökhöz rendeli. Három támogatott kiosztási szabályzat létezik:
-* **Terjesztési egyenletesen súlyozott**: csatolt IoT-központok valószínűleg egyaránt számukra kiosztott eszközök. Az alapértelmezett beállítás. Akkor érdemes megtartani, ha csak egy IoT-központban épít ki eszközöket.
-* **Legkisebb mértékű késleltetést**: eszközök az eszközre a legkisebb mértékű késleltetést törlődnek az IoT-központ számára. Ha több csatolt IoT-központok volna a azonos legkisebb mértékű késleltetést biztosít, a létesítési szolgáltatás eszközök csak ezek hubok között
-* **A beléptetési listán keresztül statikus konfigurációs**: a regisztráció listán a kívánt IoT-központ megadását prioritást élvez a szolgáltatásiszint-elosztási házirend.
+A szolgáltatásiszint-beállítás, amely meghatározza, hogy hogyan Device Provisioning Service rendeli hozzá eszközöket egy IoT hubra. Három támogatott kiosztási szabályzat létezik:
+
+* **Egyenletesen súlyozott elosztás**: összekapcsolt IoT-központok valószínűleg egyaránt neki biztosított eszközök. Az alapértelmezett beállítás. Akkor érdemes megtartani, ha csak egy IoT-központban épít ki eszközöket.
+
+* **Legkisebb késés**: eszközök kiosztása egy IoT hubra az a legkisebb mértékű késleltetéssel rendelkezik az eszközön. Ha több összekapcsolt IoT-központok ugyanolyan legkisebb késéssel biztosítja, a kiépítési szolgáltatás eszközök kivonatolja ezeket hubs között
+
+* **A regisztrációs listán keresztül statikus konfiguráció**: a regisztrációs listában meghatározott IoT-központ specifikace keresztül a szolgáltatás-szintű kiosztási szabályzat élvez elsőbbséget.
 
 ## <a name="enrollment"></a>Regisztráció
 
-A beléptetési eszközöket vagy eszközöket, amelyeket automatikus kiépítés keresztül lehet regisztrálni a bejegyzését. A beléptetési rekord az eszközt vagy eszközöket, beleértve a vonatkozó információkat tartalmazza:
-- a [állapotigazolási mechanizmus](concepts-security.md#attestation-mechanism) a eszköz által használt
-- a nem kötelező kezdeti szükségeskonfiguráció
+Regisztrációnak az Automatikus kiépítés keresztül regisztrálható eszközök csoportját a rekordját. A regisztrációs rekord az eszközről vagy eszközcsoportról, köztük kapcsolatos információkat tartalmazza:
+- a [igazolási mechanizmus](concepts-security.md#attestation-mechanism) az eszközök
+- a választható kívánt kezdeti konfiguráció
 - kívánt IoT-központ
 - a kívánt eszköz azonosítója
 
-Az eszköz kiépítése szolgáltatáshoz által támogatott regisztrációkat két típusa van:
+Kétféle regisztrációtípust támogat: a Device Provisioning Service-hiba:
 
-### <a name="enrollment-group"></a>Beléptetési csoport
+### <a name="enrollment-group"></a>Regisztrációs csoportot
 
-Egy regisztrációs csoport olyan eszközök, amelyek egy adott igazolási módszert. A beléptetési csoport minden eszköze jelent-e a legfelső szintű vagy köztes hitelesítésszolgáltató által aláírt X.509-tanúsítványokat. Beléptetési csoportok csak használhatja az X.509 tanúsítvány mechanizmus. A beléptetési csoport nevét és a tanúsítvány neve alfanumerikus, kisbetűnek kell lennie, és kötőjeleket tartalmazhat.
-
-> [!TIP]
-> Azt javasoljuk, egy beléptetési csoport az eszközök, amelyek egy kezdeti szükségeskonfiguráció számos vagy eszközök valamennyi amelyet ugyanannak a bérlőnek.
-
-### <a name="individual-enrollment"></a>Az egyes beléptetési
-
-Az egyes regisztrációs bejegyzés regisztrálni lehet, hogy egyetlen eszközökhöz. Egyes regisztrációkat használhatja X.509 levél tanúsítványok vagy (a fizikai vagy virtuális TPM) SAS-tokenje igazolás mechanizmusokat. Az egyes tagság található regisztrációs Azonosítót alfanumerikus, nagybetűk, és kötőjeleket tartalmazhat. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
+Egy regisztrációs csoportnak egy igazolási mechanizmussal rendelkező eszközök egy csoportját. A regisztrációs csoport minden eszköze megegyező legfelső szinttel által aláírt X.509-tanúsítványokat vagy köztes hitelesítésszolgáltató (CA) található. Regisztrációs csoportok X.509 igazolási eljárás csak használható. A regisztrációs csoport nevének és a tanúsítvány neve alfanumerikus karakterek, kisbetűs kell lennie, és kötőjeleket tartalmazhat.
 
 > [!TIP]
-> Azt javasoljuk, egyes regisztrációkat külön kezdeti konfigurációt igénylő eszközök, vagy hitelesítheti, hogy csak a SAS-tokenje TPM igazolás keresztül használó eszközök esetében.
+> Ajánlott regisztrációs csoportot használni kívánt kezdeti konfigurációval rendelkező eszközök nagy számú, vagy eszközök célzó ugyanazt bérlőhöz.
+
+### <a name="individual-enrollment"></a>Egyéni regisztráció
+
+Egyéni regisztrációt regisztrálható egyetlen eszközhöz tartozó bejegyzés. Egyéni regisztrációk X.509 levél-tanúsítványokat vagy SAS-tokeneket (a fizikai vagy virtuális TPM) felhasználhatja igazolási mechanizmusként. A regisztrációs azonosító egyedi regisztrációs alfanumerikus karakterek, kisbetűs, és kötőjeleket tartalmazhat. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
+
+> [!TIP]
+> Azt javasoljuk, hogy az egyedi kezdeti konfigurációt igénylő eszközök részére, vagy hitelesítheti, hogy csak a TPM-igazolást keresztül SAS-tokeneket használó eszközökhöz egyéni regisztrációk használatát.
 
 ## <a name="registration"></a>Regisztráció
 
-A regisztráció az a rekord a eszközkiépítési sikeresen regisztrálása/eszköz kiépítése szolgáltatáson keresztül az IoT hubhoz. Regisztrációs jönnek létre, amelyek automatikusan; Törölje őket, de nem lehet frissíteni.
+A regisztráció az a rekord az eszköz sikeres regisztrációja/való üzembe helyezést az IoT Hub Device Provisioning Service használatával. Regisztrációs rekordok jönnek létre automatikusan; ezek törölhetők, de nem lehet frissíteni.
 
 ## <a name="operations"></a>Műveletek
 
-Műveletek esetében a számlázási egysége eszköz kiépítése szolgáltatáshoz. Egy művelet. a szolgáltatás egy utasítás sikeres befejezését. Művelet lehet az eszköz regisztrálása és újraregisztrálása, vagy a szolgáltatásoldali változások, például tételek hozzáadása a regisztrálási listákhoz vagy a tételek frissítése a listákban.
+Műveletek a következők a Device Provisioning Service elszámolási egysége. Egy művelet egy utasítást a szolgáltatás sikeres befejezését. Művelet lehet az eszköz regisztrálása és újraregisztrálása, vagy a szolgáltatásoldali változások, például tételek hozzáadása a regisztrálási listákhoz vagy a tételek frissítése a listákban.

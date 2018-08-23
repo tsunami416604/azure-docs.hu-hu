@@ -1,175 +1,198 @@
 ---
 title: A Batch-és EDI-üzenetek feldolgozásával egy csoport vagy a gyűjtemény – Azure Logic Apps |} A Microsoft Docs
 description: A kötegelt feldolgozási, a logic apps EDI-üzenetek küldése
-keywords: a Batch, kötegelt feldolgozásához, a kötegelt kódolása
-author: divswa
-manager: jeconnoc
-editor: ''
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: divyaswarnkar
+ms.author: divswa
+manager: jeconnoc
 ms.topic: article
-ms.date: 09/21/2017
-ms.author: LADocs; estfan; divswa
-ms.openlocfilehash: fb15688968cb29039fc669ed6b8685ba64df9e81
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 08/19/2018
+ms.reviewer: estfan, LADocs
+ms.openlocfilehash: 77965e20e7d42d12b34bcb2f7cc6c8680ba34b3a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432133"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059176"
 ---
-# <a name="send-x12-messages-in-batch-to-trading-partners"></a>A kereskedelmi partnerekkel batch üzeneteket küldhetünk X12
+# <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>EDI-üzenetek küldése kötegekben kereskedelmi partnerekkel az Azure Logic Apps
 
-Vállalatközi (B2B) környezetek, a partnerek gyakran exchange-csoportok vagy kötegek üzenetek. Üzenetek küldéséhez a csoportok vagy kötegek kereskedelmi partnerek számára, létrehozhat egy batch több elemet, majd ezekhez az elemekhez feldolgozásához a Batch használatát a X12 kötegelt művelet.
+Vállalatközi (B2B) környezetek, a partnerek gyakran alkalmazásközi csoportokban vagy *kötegek*. Ha a kötegelés megoldás logikai alkalmazásokkal hoz létre, üzeneteket küldeni a kereskedelmi partnerekkel, és együtt, és kötegekben üzeneteket feldolgozni. Ez a cikk bemutatja, hogyan kötegelt EDI-üzenetek feldolgozásával, X12 használatával például egy "batch küldő" logikai alkalmazás és a egy "batch fogadó" logikai alkalmazás létrehozásával. 
 
+Kötegelés X12 üzenetek működését hasonlóan a többi üzenet; kötegelés egy batch-trigger, amely gyűjti az üzeneteket a batch és a egy kötegelt művelet, amely üzeneteket küld a batch használhatja. Ezenkívül X12 kódolást lépés, mielőtt az üzenetek nyissa meg a kereskedelmi partnerekkel vagy más célhelyre X12 kötegelés tartalmazza. A batch-eseményindító és művelet kapcsolatos további információkért lásd: [kötegelt feldolgozási üzenetek](../logic-apps/logic-apps-batch-process-send-receive-messages.md).
 
-Teljesítménynövelő célú kötegelés X12 üzenetek, például a többi üzenet, használja a batch eseményindító és művelet. Emellett a X12, a batch halad végig X12 Encode lépés előtt a partner vagy bármely más célhelyre. A batch-eseményindító és művelet kapcsolatos további információkért lásd: [kötegelt feldolgozási üzenetek](logic-apps-batch-process-send-receive-messages.md).
+Ez a cikk az Azure-előfizetéshez, az Azure-régióban és a következő két logikai alkalmazások létrehozásával a kötegelés megoldás fog létrehozni a megadott sorrendben:
 
-Ez a témakör bemutatja, hogyan dolgozhatja fel X12 üzenetek egy kötegelt feladatok elvégzésével:
-* [Hozzon létre egy logikai alkalmazást, amely fogadja az elemeket, és létrehoz egy batch](#receiver). A "címzett" logikai alkalmazás a következő műveleteket hajtja végre:
- 
-   * Feltételeket határozza meg a batch nevét és verzióját egy kötegelt elemek közzététele előtt kielégítése érdekében.
+* A ["batch fogadó"](#receiver) logikai alkalmazást, amely fogadja, és gyűjti az üzeneteket, a batch a megadott feltételeknek megfelelő teljesüléséig ad ki, és ezeket az üzeneteket feldolgozásához. Ebben a forgatókönyvben a batch fogadó is kódolja a kötegben található üzenetek a megadott X12 használatával szerződés vagy -partnerétől identitásokat.
 
-   * Dolgozza fel, vagy a cikkek a Batch a megadott X12 használatával kódolja a szerződés vagy -partnerétől identitásokat.
+  Ellenőrizze, hogy először hozzon létre a batch fogadó ezért kiválaszthatja a batch cél később a batch küldő létrehozásakor.
 
-* [Hozzon létre egy logikai alkalmazást, amely elemeket küld egy batch](#sender). A "feladó" logikai alkalmazás meghatározza, hova küldhetők elemek kötegelés, amelynek kell lennie egy meglévő fogadó logikai alkalmazást.
+* A ["batch küldő"](#sender) logikai alkalmazást, amely üzeneteket küld a korábban létrehozott batch-fogadó. 
 
+Győződjön meg arról, hogy a batch fogadó és a batch küldő megosztása az Azure-előfizetéshez *és* az Azure-régióban. Ha nem, a batch fogadó a batch küldő létrehozásakor, mert azok még nem látható, egymáshoz nem választhat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Kövesse az ebben a példában, ezek az elemek szükségesek:
 
-* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [kezdhet egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/). Egyéb esetben [regisztrálhat használatalapú fizetéses előfizetésre](https://azure.microsoft.com/pricing/purchase-options/).
+* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [kezdhet egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/). Másik lehetőségként [regisztrálhat egy használatalapú fizetéses előfizetésre](https://azure.microsoft.com/pricing/purchase-options/).
 
-* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéséhez társított
+* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , hogy meghatározta az integrációs fiókban. Győződjön meg arról, hogy az egyes partnerek a X12 (Standard Alpha szolgáltatókódot) használja, a partner tulajdonságai egy üzleti identitás minősítője.
+* Egy meglévő [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amely az Azure-előfizetéséhez társított, és kapcsolódik a logic apps
 
-* Egy [X12 szerződés](logic-apps-enterprise-integration-x12.md) , amely már definiálva van az integrációs fiók
+* Legalább két meglévő [partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md) az integrációs fiókban. Egyes partnerek a X12 (Standard Alpha szolgáltatókódot) kell használnia a partner tulajdonságai egy üzleti identitás minősítője.
+
+* Egy meglévő [X12 szerződés](../logic-apps/logic-apps-enterprise-integration-x12.md) az integrációs fiókjában
+
+* Szeretné használni az Azure portal helyett a Visual Studióban, győződjön meg arról, hogy [beállítása a Visual Studio használata a Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="receiver"></a>
 
-## <a name="create-a-logic-app-that-receives-x12-messages-and-creates-a-batch"></a>Hozzon létre egy logikai alkalmazást, amely X12 fogad üzeneteket, és létrehoz egy batch
+## <a name="create-x12-batch-receiver"></a>Hozzon létre X12 batch fogadó
 
-Üzeneteket küldhet egy kötegelt, akkor először létre kell hoznia egy "címzett" logikai alkalmazás a **Batch** eseményindító. Ezzel a módszerrel választhat a fogadó logikai alkalmazás a küldő logikai alkalmazás létrehozásakor. A címzett, adja meg a batch-név, kiadási feltételek, X12 szerződés és az egyéb beállításokat. 
+Üzeneteket küldhet egy kötegben, a batch először léteznie kell a célhelyeként, ahol ezeket az üzeneteket küld. Ezért először létre kell hoznia a "batch fogadó" logikai alkalmazást, amely kezdődik a **Batch** eseményindító. Ezzel a módszerrel a "batch küldő" logikai alkalmazás létrehozásakor kiválaszthatja a batch fogadó logikai alkalmazást. A batch fogadó továbbra is gyűjtése üzeneteket a megadott feltételeknek megfelelő teljesüléséig ad ki, és ezeket az üzeneteket feldolgozásához. Batch fogadók nem batch feladók ismernie kell, amíg a batch feladók ismernie kell a cél, ahol az üzeneteket küldenek. 
 
+A batch fogadóhoz, adja meg a kötegelt módban, a neve, a kiadási feltételekben, X12 szerződés és az egyéb beállításokat. 
 
-1. Az a [az Azure portal](https://portal.azure.com), hozzon létre egy logikai alkalmazást ezen a néven: "BatchX12Messages".
+1. Az a [az Azure portal](https://portal.azure.com) vagy a Visual Studióban hozzon létre egy logikai alkalmazást ezen a néven: "BatchX12Messages"
 
-1. A Logic Apps Designer, adja hozzá a **Batch** eseményindító, amely elindítja a logikai alkalmazás munkafolyamatának. A Keresés mezőbe írja be a "batch" szűrőként. Válassza ki a következő eseményindítót: **Batch – kötegelt üzenetek**
+2. [A logikai alkalmazáshoz csatolni az integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
+
+3. A Logic Apps Designer, adja hozzá a **Batch** eseményindító, amely elindítja a logikai alkalmazás munkafolyamatának. A Keresés mezőbe írja be a "batch" szűrőként. Válassza ki a következő eseményindítót: **Batch-üzenetek**
 
    ![Batch-eseményindító hozzáadása](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
-1. Adjon meg egy nevet a batch, és adja meg a kötegelt, például kiadása feltételeket:
+4. Állítsa be a batch-fogadó tulajdonságokat: 
 
-   * **Batch-név**: azonosítja a batch, amely "TestBatch" Ebben a példában a neve.
+   | Tulajdonság | Érték | Megjegyzések | 
+   |----------|-------|-------|
+   | **Kötegelt mód** | Beágyazott |  |  
+   | **Kötegnév** | TestBatch | Csak a rendelkezésre álló **beágyazott** kötegelt mód | 
+   | **Kiadási feltételek** | Üzenetszám-alapú, ütemezés alapján | Csak a rendelkezésre álló **beágyazott** kötegelt mód | 
+   | **Üzenetek száma** | 10 | Csak a rendelkezésre álló **Message count alapú** kiadási feltételek | 
+   | **Intervallum** | 10 | Csak a rendelkezésre álló **ütemezésalapú** kiadási feltételek | 
+   | **Gyakoriság** | perc | Csak a rendelkezésre álló **ütemezésalapú** kiadási feltételek | 
+   ||| 
 
-   * **Kiadási feltételek**: A kötegelt kiadási feltételek, amely az üzenetek száma, az ütemezés vagy mindkettőt alapulhat.
-   
-     ![Adja meg a Batch a trigger részletei](./media/logic-apps-batch-process-send-receive-messages/receive-batch-release-criteria.png)
+   ![Adja meg a batch a trigger részletei](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
 
-   * **Üzenetek száma**: tárolásához egy kötegelt feldolgozásra, amely ebben a példában az "5" kibocsátása előtt üzenetek száma.
+   > [!NOTE]
+   > Ebben a példában nem állítsa be a Batch egy partíciót, úgy az egyes kötegek használja ugyanazt a partíciókulcsot. A partíciók kapcsolatos további információkért lásd: [kötegelt feldolgozási üzenetek](../logic-apps/logic-apps-batch-process-send-receive-messages.md#batch-sender).
 
-     ![Adja meg a Batch a trigger részletei](./media/logic-apps-batch-process-send-receive-messages/receive-batch-count-based.png)
+5. Adjon hozzá egy műveletet, amely az egyes kötegek kódol: 
 
-   * **Ütemezés**: A kötegelt feldolgozásra, amely "10 percenként" Ebben a példában kiadás ütemezése.
+   1. A batch-eseményindító területén válassza a **új lépés**.
 
-     ![Adja meg a Batch a trigger részletei](./media/logic-apps-scenario-EDI-send-batch-messages/receive-batch-schedule-based.png)
+   2. A Keresés mezőbe írja be az "X 12 batch" szűrőként, és válassza ki ezt a műveletet (bármilyen verzió): **kötegelt kódolás <*verzió*>-X12** 
 
+      ![Válassza ki a X12 művelet kötegelt kódolása](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
-1. Adjon hozzá egy másik művelet, amely a csoportosított kódol vagy kötegeli az üzeneteket, és létrehozza a X12 kötegelt üzenet. 
+   3. Ha korábban nem csatlakozik az integrációs fiók, hozzon létre most már a kapcsolatot. Adja meg a kapcsolat nevét, válassza ki, és válassza az integrációs fiók **létrehozás**.
 
-   a. Válasszon **+ új lépés** > **művelet hozzáadása**.
+      ![Batch-kódoló és integrációs fiók közötti kapcsolat létrehozása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encoder-connect-integration-account.png)
 
-   b. A Keresés mezőbe írja be az "X 12 batch" szűrőként, és válassza ki a művelet **X12-kötegelt kódolás**. Például a X12 összekötő kódolása, nincs művelet kódolás Batch több változata. Ki lehet őket.
+   4. Állítsa be ezeket a tulajdonságokat, a batch-kódoló művelet:
 
-   ![Válassza ki a X12 művelet kötegelt kódolása](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
-   
-1. Állítsa be az imént hozzáadott művelet tulajdonságait.
+      | Tulajdonság | Leírás |
+      |----------|-------------|
+      | **X12 nevére szerződés** | Nyissa meg a listát, és válassza ki a meglévő szerződés hatálya alá. <p>Ha a lista üres, győződjön meg arról, hogy [a logikai alkalmazáshoz csatolni az integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) , amely rendelkezik a megállapodás szeretné. | 
+      | **BatchName** | Ebben a mezőben kattintson, és miután a dinamikus tartalmak listája jelenik meg, válassza ki a **Kötegnév** token. | 
+      | **PartitionName** | Ebben a mezőben kattintson, és miután a dinamikus tartalmak listája jelenik meg, válassza ki a **partíciónévre** token. | 
+      | **elemek** | A cikk részletes bezárásához, majd kattintson a belül be ezt a jelölőnégyzetet. Miután a dinamikus tartalmak listája jelenik meg, válassza ki a **kötegelt elemek** token. | 
+      ||| 
 
-   * Az a **X12 nevére szerződés** jelölje ki a szerződést a legördülő listából. Ha a lista üres, ellenőrizze, hogy létrehozta a kapcsolatot az integrációs fiókba.
+      ![Kötegelt kódolása művelet részletei](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-details.png)
 
-   * Az a **BatchName** jelölje ki a **Kötegnév** mezőt, a dinamikus tartalmú listából.
-   
-   * Az a **PartitionName** jelölje ki a **partíciónévre** mezőt, a dinamikus tartalmú listából.
+      Az a **elemek** mezőbe:
 
-   * Az a **elemek** jelölje ki a **kötegelt elemek** a dinamikus tartalmú listából.
+      ![Kötegelt kódolása máveleti elemek](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-items.png)
 
-   ![Kötegelt kódolása művelet részletei](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-details.png)
+6. Mentse a logikai alkalmazást. 
 
-1. Tesztelési célokra, adja hozzá a kötegelt üzenet küldéséhez egy HTTP-művelet [kérelem Bin szolgáltatás](https://requestbin.fullcontact.com/). 
+7. Ha Visual Studio használata esetén győződjön meg arról, hogy [batch fogadó logikai alkalmazás üzembe helyezése az Azure-bA](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). Ellenkező esetben a batch fogadó nem választható, ha a batch küldő létrehozása.
 
-   1. Adja meg a "HTTP" szűrőként a keresőmezőbe. Válassza a következő műveletet: **HTTP - HTTP**
+### <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
+
+Ahhoz, hogy a batch-fogadó működik megfelelően, hozzáadhat egy HTTP-művelet tesztelési célokra, és a kötegelt üzenet küldése a [kérelem Bin szolgáltatás](https://requestbin.fullcontact.com/). 
+
+1. A X12 alatt kódolása a művelet, válassza a **új lépés**. 
+
+2. A Keresés mezőbe írja be a "http" szűrőként. Válassza a következő műveletet: **HTTP - HTTP**
     
-      ![Válassza ki a HTTP-művelet](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receive-add-http-action.png)
+   ![Válassza ki a HTTP-művelet](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
-   1. Az a **metódus** listáról válassza ki **POST**. Az a **Uri** mezőbe, a kérelem bin URI generálása, és adja meg az URI-ra. Az a **törzs** be, amikor a dinamikus lista jelenik meg, válassza ki a **törzs** eleménél a **kötegelt kódolás a Szerződés neve szerint** szakaszban. Ha nem lát **törzs**, válassza a **Továbbiak** melletti **kötegelt kódolás a Szerződés neve szerint**.
+3. Állítsa be a tulajdonságokat a HTTP-művelet:
 
-      ![Adja meg a HTTP-művelet részletei](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receive-add-http-action-details.png)
+   | Tulajdonság | Leírás | 
+   |----------|-------------|
+   | **Metódus** | Válassza ki a listáról, **POST**. | 
+   | **URI-t** | A kérelem bin URI generálása, és adja meg az URI-ra ebben a mezőben. | 
+   | **Törzs** | Ebben a mezőben kattintson, és miután megnyílik a dinamikus tartalmú listából, válassza ki a **törzs** jogkivonatot, amely megjelenik a szakaszt, **kötegelt kódolás a Szerződés neve szerint**. <p>Ha nem látja a **törzs** token melletti **kötegelt kódolás a Szerződés neve szerint**, jelölje be **Továbbiak**. | 
+   ||| 
 
-1.  Most, hogy a fogadó Logic Apps-alkalmazás hozta létre, mentse a logikai alkalmazást.
+   ![Adja meg a HTTP-művelet részletei](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action-details.png)
 
-    ![A logikai alkalmazás mentése](./media/logic-apps-scenario-EDI-send-batch-messages/save-batch-receiver-logic-app.png)
+4. Mentse a logikai alkalmazást. 
 
-    > [!IMPORTANT]
-    > Egy partíció legfeljebb 5000 üzenetek vagy a 80 MB rendelkezik. Ha mindkét feltétel teljesül, a batch előfordulhat, hogy elérhető, akkor is, ha a felhasználó által megadott feltétel nem teljesül.
+   A batch fogadó logikai alkalmazás az alábbihoz hasonlít: 
+
+   ![A batch fogadó logikai alkalmazás mentése](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-finished.png)
 
 <a name="sender"></a>
 
-## <a name="create-a-logic-app-that-sends-x12-messages-to-a-batch"></a>Hozzon létre egy logikai alkalmazást, amely X12 küld egy kötegelendő üzenetek
+## <a name="create-x12-batch-sender"></a>Hozzon létre X12 batch-feladó
 
-Most hozzon létre egy vagy több, a batch, a fogadó logikai alkalmazás által meghatározott elemek küldenek a logic apps. A küldő megadhatja a fogadó logikai alkalmazás és a batch-név, üzenet tartalma és a további beállításokat. Opcionálisan megadhat egy egyedi partíciókulccsal történő részekre a kötegelt elemek összegyűjtése ezzel a kulccsal.
+Most hozzon létre egy vagy több logikai alkalmazásokat, amelyek üzeneteket küldeni a batch fogadó logikai alkalmazást. Minden egyes batch küldő a batch fogadó logikai alkalmazás és a batch-név, üzenet tartalma és a további beállításokat kell megadni. A batch osztani részekre gyűjtheti az üzeneteket ezzel a kulccsal egyedi partíciókulccsal is megadhat. 
 
-Küldő a logic apps, hova küldhetők a cikkeket, amíg fogadó a logic apps nem kell tudnia semmit a feladók ismernie kell.
+* Győződjön meg arról, hogy már [létrehozott batch fogadó](#receiver) , a batch küldő létrehozásakor kiválaszthatja a cél kötegelt a már meglévő batch fogadó. Batch fogadók nem batch feladók ismernie kell, amíg a batch feladók tudnia kell, hova küldhetők üzenetek. 
 
+* Ellenőrizze, hogy a batch fogadó és a batch küldő megosztása megegyező Azure-régióban *és* Azure-előfizetést. Ha nem, a batch fogadó a batch küldő létrehozásakor, mert azok még nem látható, egymáshoz nem választhat.
 
-1. Egy másik logikai alkalmazás létrehozása ezen a néven: "X12MessageSender". Ez az eseményindító hozzáadása a logikai alkalmazás: **kérelem / válasz – kérelem** 
+1. Egy másik logikai alkalmazás létrehozása ezen a néven: "SendX12MessagesToBatch" 
+
+2. A Keresés mezőbe írja be a "Amikor egy http-kérelem" szűrőként. Válassza ki a következő eseményindítót: **amikor egy HTTP-kérés fogadásakor.** 
    
    ![A kérelem típusú trigger hozzáadása](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
-1. Adjon hozzá egy új lépést, az üzenetek küldése az egy kötegben.
+3. Üzeneteket küld el egy kötegelt művelet hozzáadása lehetőséget.
 
-   1. Válasszon **+ új lépés** > **művelet hozzáadása**.
+   1. A HTTP-kérelem művelet alatt válassza **új lépés**.
 
-   1. A Keresés mezőbe írja be a "batch" szűrőként. 
+   2. A Keresés mezőbe írja be a "batch" szűrőként. 
+   Válassza ki a **műveletek** listában, és válassza ki a következő műveletet: **válassza ki egy kötegtriggert - kötegelendő üzenetek küldése a Logic Apps-munkafolyamatot**
 
-1. Válassza a következő műveletet: **batch – válasszon ki egy kötegtriggert tartalmazó Logic Apps munkafolyamatot üzenetek küldése**
+      ![Válassza a "Válasszon egy kötegtriggert tartalmazó Logic Apps-munkafolyamatot"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
-   ![Válassza a "Kötegelendő üzenetek küldése"](./media/logic-apps-scenario-EDI-send-batch-messages/send-messages-batch-action.png)
+   3. Most válassza ki a korábban létrehozott "BatchX12Messages" logikai alkalmazás.
 
-1. Most válassza ki a korábban létrehozott "BatchX12Messages" logikai alkalmazás, így jelenik meg egy műveletet.
+      ![Válassza ki a "batch fogadó" logikai alkalmazás](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   ![Válassza ki a "batch fogadó" logikai alkalmazás](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-select-batch-receiver.png)
+   4. Válassza a következő műveletet: **Batch_messages - <*a batch-fogadó*>**
 
-   > [!NOTE]
-   > A lista minden más logikai alkalmazás kötegtriggereket rendelkező is bemutatja.
+      !["Batch_messages" művelet kiválasztása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
-1. Állítsa be a batch-tulajdonságokat.
+4. Állítsa be a batch-feladó tulajdonságait.
 
-   * **Batch-név**: A batch nevét határozza meg a fogadó logikai alkalmazást, amely ebben a példában "TestBatch", és futásidőben érvényesíti.
-
-     > [!IMPORTANT]
-     > Győződjön meg arról, hogy meg kell egyeznie a batch a fogadó logikai alkalmazás által meghatározott kötegnév nem módosítja.
-     > A batch nevének módosítása hatására a küldő a logikai alkalmazás sikertelen lesz.
-
-   * **Üzenet tartalma**: a köteg küldeni kívánt üzenet tartalma
+   | Tulajdonság | Leírás | 
+   |----------|-------------| 
+   | **Kötegnév** | A batch-nevét, a fogadó logikai alkalmazást, amely ebben a példában "TestBatch" által definiált <p>**Fontos**: batch-név futásidőben beolvassa érvényesítve, és meg kell egyeznie a fogadó logikai alkalmazás által megadott név. A batch nevének módosítása hatására a batch küldő sikertelen. | 
+   | **Üzenet tartalma** | A tartalom is szeretne küldeni, az üzenet, amely a **törzs** token ebben a példában | 
+   ||| 
    
-   ![Batch-tulajdonságainak megadása](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-select-batch-properties.png)
+   ![Batch-tulajdonságainak megadása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-set-batch-properties.png)
 
-1. Mentse a logikai alkalmazást. Küldő logikai alkalmazás most az alábbihoz hasonlít:
+5. Mentse a logikai alkalmazást. 
 
-   ![A küldő logikai alkalmazás mentése](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-finished.png)
+   A batch küldő logikai alkalmazás az alábbihoz hasonlít:
+
+   ![A batch küldő logikai alkalmazás mentése](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-finished.png)
 
 ## <a name="test-your-logic-apps"></a>A logic apps tesztelése
 
-A kötegelés megoldás teszteléséhez post X12 küldött üzeneteket a küldő logikai alkalmazást [Postman](https://www.getpostman.com/postman) vagy hasonló eszközt. Hamarosan el kell indítania az első X12 üzenetek, vagy egy kötegelt öt elemek vagy 10 percenként, a kérelem van – az azonos partíciókulccsal rendelkező összes.
+A kötegelés megoldás teszteléséhez post X12 küldött üzeneteket a batch küldő logikai alkalmazás a [Postman](https://www.getpostman.com/postman) vagy egy hasonló eszközt. Hamarosan, megkezdődik az X12 üzenetek a kérelem van, vagy 10 percenként vagy 10, ugyanazzal a partíciókulccsal rendelkező összes kötegekben.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Üzenetek feldolgozásával kötegként](logic-apps-batch-process-send-receive-messages.md) 
-* [A Visual Studióban, az Azure Logic Apps és Functions kiszolgáló nélküli alkalmazás készítése](../logic-apps/logic-apps-serverless-get-started-vs.md)
-* [Kivételkezelés és a hibanaplózás logikai alkalmazásokhoz](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [Üzenetek feldolgozásával kötegként](../logic-apps/logic-apps-batch-process-send-receive-messages.md) 

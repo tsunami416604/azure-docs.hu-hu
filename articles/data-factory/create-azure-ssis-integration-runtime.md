@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 08/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d55139a6b0c4da4869c65f0a19eb3f6f3bf31066
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: a497ceab45bb3ace4e3f1ea063ef9c3e33818426
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39481032"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058723"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul létrehozása az Azure Data Factoryban
 Ez a cikk egy Azure-SSIS integrációs modul az Azure Data Factory üzembe helyezés lépéseit. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával SQL Server Integration Services- (SSIS-) csomagokat helyezhet üzembe és futtathat ebben az Azure-beli modulban. 
@@ -68,7 +68,7 @@ A következő táblázat összehasonlítja a bizonyos funkciók az SQL-adatbázi
 | **Hitelesítés** | Egy adatbázis egy tartalmazott adatbázis felhasználói fiókkal, amely bármely Azure Active Directory-felhasználó a hozhat létre a **dbmanager** szerepkör.<br/><br/>Lásd: [engedélyezése az Azure ad-ben az Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Nem hozható létre egy adatbázis egy tartalmazott adatbázis felhasználói fiókot, amely bármely Azure Active Directory-felhasználó nem rendszergazda Azure ad-ben. <br/><br/>Lásd: [engedélyezése az Azure SQL Database felügyelt példány az Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Szolgáltatásszint** | Az SQL Database az Azure-SSIS integrációs modul létrehozásakor ki kiválaszthatja a szolgáltatási rétegben az SSISDB. Nincsenek a többrétegű szolgáltatások. | Felügyelt példány az Azure-SSIS integrációs modul hoz létre, amikor a szolgáltatási rétegben SSISDB nem lehet kiválasztani. Minden adatbázis ugyanazon a felügyelt példányon ossza meg ehhez a példányhoz lefoglalt ugyanarra az erőforrásra. |
 | **Virtuális hálózat** | Azure Resource Manager és klasszikus virtuális hálózatok egyaránt támogatja. | Csak a virtuális hálózat Azure Resource Manager támogatja. A virtuális hálózatot kötelező megadni.<br/><br/>Ha az Azure-SSIS integrációs modul csatlakoztatása a felügyelt példány ugyanazon a virtuális hálózaton, győződjön meg róla, hogy az Azure-SSIS integrációs modul egy másik alhálózatot, mint a felügyelt példány. Ha az Azure-SSIS integrációs modul csatlakoztatása a felügyelt példány, mint egy másik virtuális hálózatot, javasoljuk, virtuális hálózatok közötti társviszony (amely ugyanabban a régióban legfeljebb) vagy a virtuális hálózat virtuális hálózati kapcsolat. Lásd: [alkalmazását az Azure SQL Database felügyelt példányába való csatlakozás](../sql-database/sql-database-managed-instance-connect-app.md). |
-| **Elosztott tranzakciók** | Rugalmas tranzakciók és az egyéni kód keresztül támogatja. A Microsoft elosztott tranzakciók koordinátora (MSDTC) tranzakciók nem támogatottak. Ha a csomagok MSDTC elosztott tranzakciók koordinálására használja, fontolja meg az SQL Database rugalmas tranzakció-ba való migrálás. Az SSIS-csomag rugalmas tranzakciók használatához van, az egyéni kódok írása egy parancsfájl feladatot, mivel SSIS nem rendelkezik beépített támogatást nyújt a rugalmas tranzakciók. További információ: [elosztott tranzakciók több felhőalapú adatbázisban](../sql-database/sql-database-elastic-transactions-overview.md). | Nem támogatott. |
+| **Elosztott tranzakciók** | A Microsoft elosztott tranzakciók koordinátora (MSDTC) tranzakciók nem támogatottak. Ha a csomagok MSDTC használatával az elosztott tranzakciók koordinálja, előfordulhat, az SQL Database rugalmas tranzakciók használatával egy ideiglenes megoldást valósíthat meg. Jelenleg az SSIS beépített támogatást nyújt a rugalmas tranzakciók nem rendelkezik. Rugalmas tranzakciók használata az SSIS-csomag, akkor egyéni ADO.NET-kódok írása egy parancsfájl feladat. Ez a szkript feladat tartalmaznia kell az elején és végén a tranzakciót, és a műveleteket, amelyeket a tranzakción belül történik.<br/><br/>Rugalmas tranzakciók kódolási kapcsolatos további információkért lásd: [az Azure SQL Database Elastic Database-tranzakciók](https://azure.microsoft.com/en-us/blog/elastic-database-transactions-with-azure-sql-database/). Rugalmas tranzakciók kapcsolatos további információk általában: [elosztott tranzakciók több felhőalapú adatbázisban](../sql-database/sql-database-elastic-transactions-overview.md). | Nem támogatott. |
 | | | |
 
 ## <a name="azure-portal"></a>Azure Portal

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b4b37a073f41295bf800d4e6c34681e0a06799c7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449777"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617249"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: PaaS webes alkalmazások üzemeltetése Egyesült Királyság hivatalos számítási feladatokhoz
 
@@ -23,7 +23,7 @@ Az Azure tervezetek útmutató dokumentumok és architektúrák felhőalapú meg
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure biztonsági és megfelelőségi terv nyújt útmutatást és automatizálási szkriptek, hogy a Microsoft Azure [platformszolgáltatás (PaaS)](https://azure.microsoft.com/overview/what-is-paas/) üzemeltetett megfelelő feladat elvégezhető a besorolt webalkalmazás-architektúra mint [UK-OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/251480/Government-Security-Classifications-April-2014.pdf). Ehhez a besoroláshoz magában foglalja a legtöbb létrehozott vagy az állami szektor által feldolgozott adatokat. Ez magában foglalja a rutinszerű üzleti tevékenységét és a szolgáltatások, mely Ha elveszett, ellopott vagy a média, ezek közül néhány következményekkel járhat káros közzétett. A hivatalos besorolást a tipikus threat profilja nincs ugyanúgy zajlik, mint egy privát üzleti, akik értékes adatokat és szolgáltatásokat biztosít. Egyesült Királyság hivatalos helyesen, Egyesült Királyság kormányának adatok és szolgáltatások fenyegetést vagy a támadók a biztonsági sérülés elleni védelemre a szükséges korlátozott funkciók és erőforrások például (de nem korlátozódik az) hactivists, single-issue nyomás csoportok, nyomozói újságíróknak teljes mértékben az egyes támadók, és a legtöbb büntetőjogi egyének és csoportok.
+Az Azure biztonsági és megfelelőségi terv nyújt útmutatást és automatizálási szkriptek, hogy a Microsoft Azure [platformszolgáltatás (PaaS)](https://azure.microsoft.com/overview/what-is-paas/) üzemeltetett megfelelő feladat elvégezhető a besorolt webalkalmazás-architektúra mint [UK-OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf). Ehhez a besoroláshoz magában foglalja a legtöbb létrehozott vagy az állami szektor által feldolgozott adatokat. Ez magában foglalja a rutinszerű üzleti tevékenységét és a szolgáltatások, mely Ha elveszett, ellopott vagy a média, ezek közül néhány következményekkel járhat káros közzétett. A hivatalos besorolást a tipikus threat profilja nincs ugyanúgy zajlik, mint egy privát üzleti, akik értékes adatokat és szolgáltatásokat biztosít. Egyesült Királyság hivatalos helyesen, Egyesült Királyság kormányának adatok és szolgáltatások fenyegetést vagy a támadók a biztonsági sérülés elleni védelemre a szükséges korlátozott funkciók és erőforrások például (de nem korlátozódik az) hactivists, single-issue nyomás csoportok, nyomozói újságíróknak teljes mértékben az egyes támadók, és a legtöbb büntetőjogi egyének és csoportok.
 
 Ez a megoldás által az Egyesült Királyság nemzeti Kibertámadások biztonsági központ (NCSC) felülvizsgálták, és illeszkedik az NCSC 14 Felhőbiztonsági irányelveinek.
 

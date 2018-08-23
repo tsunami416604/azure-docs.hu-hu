@@ -9,16 +9,16 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a5ab49beed79a8ea3a7ded0848c09acad27a5fb1
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 78e952b5b1eedc1757cfe636eb13e411044dce54
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390537"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42060815"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Fejlesztés és hibakeresés a Node.js modulok az Azure IoT Edge segítségével a Visual Studio Code
 
-Elküldheti az üzleti logikát a peremhálózaton csempefolyamot modulokat az Azure IoT Edge megfelelően működjenek. Ez a cikk részletesen ismerteti a fő fejlesztési eszközként, C# modul fejlesztése a Visual Studio Code (a VS Code).
+Elküldheti az üzleti logikát a peremhálózaton csempefolyamot modulokat az Azure IoT Edge megfelelően működjenek. Ez a cikk részletesen ismerteti a Visual Studio Code (a VS Code), a fő fejlesztőeszközt, a Node.js modulok fejlesztését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk azt feltételezi, hogy egy számítógép vagy futtató fejlesztői gépen Windows vagy Linux rendszerű virtuális gépet használ. Az IoT Edge-eszköz lehet egy másik fizikai eszközt, vagy az IoT Edge-eszköz szimulálhatja a fejlesztői gépen.
@@ -43,7 +43,7 @@ A modul egy eszközön teszteléséhez van szüksége active IoT hub legalább e
 
 ## <a name="create-a-new-solution-template"></a>Új megoldássablon létrehozásához
 
-A következő lépések bemutatják, hogyan hozhat létre egy IoT Edge-modul a .NET Core 2.0-alapú Visual Studio Code és az Azure IoT Edge bővítmény használatával. Indítsa el a megoldás létrehozásával és majd létrehozni ebben a megoldásban az első modult. Egyes megoldások a több modul is tartalmazhat. 
+A következő lépések bemutatják, hogyan hozhat létre egy Node.js-alapú, IoT Edge-modul a Visual Studio Code és az Azure IoT Edge bővítmény használatával. Indítsa el a megoldás létrehozásával és majd létrehozni ebben a megoldásban az első modult. Egyes megoldások a több modul is tartalmazhat. 
 
 1. Válassza ki a Visual Studio Code- **nézet** > **integrált terminálon**.
 2. Az integrált terminálon írja be a következő parancsot az Azure IoT Edge-modul sablon legújabb verziójának telepítéséhez (vagy frissítéséhez) node.js-hez készült:
@@ -67,22 +67,22 @@ A VS Code vesz igénybe az adatokat a megadott, létrehoz egy IoT Edge-megoldás
 A megoldáson belül, akkor három elemet: 
 * A **.vscode** mappa hibakeresési konfigurációkat tartalmaz.
 * A **modulok** mappát az egyes modulok almappát tartalmaz. Jelenleg csak eggyel rendelkezik, de a paranccsal a parancskatalógus több felvehet **Azure IoT Edge: IoT Edge-modul hozzáadása**. 
-* A **.env** sorolja a környezeti változók. Ha Ön ACR, a beállításjegyzék megfelelő most már rendelkezik ACR felhasználónévvel és jelszóval. 
+* A **.env** sorolja a környezeti változók. Ha az Azure Container Registry a beállításjegyzékbe, lesz egy Azure Container Registry-felhasználónév és jelszó szerepel.
 
    >[!NOTE]
    >A környezet fájl csak akkor jön létre, ha a modul adja meg egy lemezképtárban. Ha korábban elfogadta a localhost alapértelmezett tesztelése és hibakeresése helyileg, majd, nem kell környezeti változók deklarálása. 
 
 * A **deployment.template.json** sorolja az új modul és a egy minta **tempSensor** modul, amely szimulálja az adatokat, amelyek a teszteléshez használható. Hogyan az üzembe helyezés jegyzékfájlok munkahelyi kapcsolatos további információkért lásd: [megismerheti, hogyan IoT Edge-modulok használják, konfigurálhatók, és újra felhasználható](module-composition.md).
 
-## <a name="devlop-your-module"></a>A modul Devlop
+## <a name="develop-your-module"></a>A modul fejlesztése
 
-Az alapértelmezett a megoldás az Azure-függvény kódjának következő helyen található **modulok** > **\<a modulnév\>**   >   **App.js**. A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
+Az alapértelmezett Node.js-kód, amely a megoldás a következő helyen található **modulok** > **\<a modulnév\>** > **app.js** . A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
 
 Ha már készen áll a saját kód a Node.js-sablon testre szabása, a [Azure IoT Hub SDK-k](../iot-hub/iot-hub-devguide-sdks.md) hozhat létre a modulok a kulcsot kell IoT-megoldások, például a biztonság, a kezelés és a megbízhatóság címmel. 
 
 ## <a name="build-and-deploy-your-module-for-debugging"></a>Készíthet és helyezhet üzembe a modul a hibakereséshez
 
-Minden modul mappában nincsenek különböző tároló esetében több Docker-fájl. Bármilyen ezeket a fájlokat, amelyek a bővítmény végződhet **.debug** hozhat létre a teszteléshez modul. Jelenleg a C# modul csak támogatja a linux-amd64 tárolók hibakeresését.
+Minden modul mappában nincsenek különböző tároló esetében több Docker-fájl. Bármilyen ezeket a fájlokat, amelyek a bővítmény végződhet **.debug** hozhat létre a teszteléshez modul. Jelenleg a Node.js modulok csak támogatja a linux-amd64, a windows-amd64 és a linux-arm32v7 tárolók hibakeresését.
 
 1. A VS Code-ban keresse meg a `deployment.template.json` fájlt. A modul kép URL-címe frissítés hozzáadásával **.debug** vége.
 2. Cserélje le a Node.js-modul createOptions a **deployment.template.json** az alábbi tartalmat, és mentse a fájlt: 
@@ -99,7 +99,7 @@ Láthatja majd a központi telepítés sikeres létrehozása a központi telepí
 
 Ellenőrizheti a tárolót a Docker a VS Code Explorerben, vagy futtassa a `docker ps` parancsot a terminálon.
 
-## <a name="start-debugging-nodejs-module-in-vs-code"></a>Hibakeresés a Node.Js-modul a VS Code-ban
+## <a name="start-debugging-nodejs-module-in-vs-code"></a>Hibakeresés a Node.js-modul a VS Code-ban
 
 A VS Code tartja a hibakeresés konfigurációs információinak egy `launch.json` fájlt egy `.vscode` a munkaterület mappájában. Ez `launch.json` fájl jött létre, ha létrehozott egy új IoT Edge-megoldás. Új modul, amely támogatja a hibakeresés hozzáadásakor minden alkalommal frissíti. 
 

@@ -1,10 +1,10 @@
 ---
-title: Az Azure Machine Learning-csomaggal számítógép stratégiai és csapata adatok tudományos folyamat (TDSP) besorolás kép |} Microsoft Docs
-description: Leírja, hogy a számítógép átfogóan bemutató kép besorolási Team adatok tudományos folyamat (TDSP) és az Azure Machine Learning csomag használható.
+title: Számítógépes látástechnológia, és a csoportos adatelemzési folyamat (TDSP) az Azure Machine Learning csomag képbesorolás |} A Microsoft Docs
+description: Számítógépes látástechnológia képek besorolása a csoportos adatelemzési folyamat (TDSP) és az Azure Machine Learning csomag használatát ismerteti.
 services: machine-learning, team-data-science-process
 documentationcenter: ''
-author: xibingao
-manager: deguhath
+author: deguhath
+ms.author: deguhath
 editor: cgronlun
 ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
@@ -14,71 +14,70 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
-ms.author: xibingao
-ms.openlocfilehash: f9e88cfb7185845e96f287b39bebaaa24320f537
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 427ea1f3f22855b2c54beacbfb89a8f7fd37cce0
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300796"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054932"
 ---
-# <a name="skin-cancer-image-classification-with-the-azure-machine-learning-package-for-computer-vision-and-team-data-science-process"></a>Felszín kapcsolatos kép besorolás és az Azure Machine Learning csomag számítógép stratégiai és csapata tudományos folyamata
+# <a name="skin-cancer-image-classification-with-the-azure-machine-learning-package-for-computer-vision-and-team-data-science-process"></a>Felszín rák képek besorolása az Azure Machine Learning-csomaggal számítógépes látástechnológiai és a csoportos adatelemzési folyamat
 
-Ez a cikk bemutatja, hogyan használható a [számítógép stratégiai Azure Machine Learning-csomagja](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest) betanítása, tesztelését és rendszerbe egy *besorolás kép* modell. A mintánkban Team adatok tudományos folyamat (TDSP) felépítését és sablonok [Azure Machine Learning-munkaterület](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation). A forgatókönyvben a teljes minta. Használja a [Microsoft kognitív eszközkészlet](https://www.microsoft.com/en-us/cognitive-toolkit/) keretrendszer megtanulásával és betanítása átfogó történik, egy [Adattudomány virtuális gép](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) GPU gép. Telepítés az Azure Machine Learning operationalization CLI-t használ.
+Ez a cikk bemutatja, hogyan használható a [számítógépes látástechnológiai Azure Machine Learning-csomagja](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest) munkámnak, teszteléséhez és üzembe egy *besorolási kép* modell. A példa a csoportos adatelemzési folyamat (TDSP) struktúra és a sablonok [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation). Ez az útmutató a teljes minta biztosít. Használja a [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) , a deep learning-keretrendszert, és képzési hajtja végre a [Data Science virtuális gép](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) GPU gép. Üzembe helyezés az Azure Machine Learning operacionalizálás CLI használ.
 
-A számítógép stratégiai tartomány számos alkalmazás is keretezhető, kép besorolás problémák. Ezek közé tartoznak, létrehozási modelleket, hogy egyszerű kérdéseire választ "Is szerepel a kép objektum?" Ha az objektum egy kutya, a car és a szállítási lehet. Ezenkívül tartalmazza a kérdésekre adott válaszok összetettebb, mint például "a türelmet retinal vizsgálat során szem elleni súlyosságú mely osztály érintő?" Az Azure Machine Learning csomag számítógép stratégiai leegyszerűsíti a kép besorolás az adatfeldolgozás és a modellezési folyamat. 
+Számos alkalmazásban a számítógép vision tartományban is megalkotni, mint kép osztályozási problémák. Ezek közé tartozik, hogy választ kaphat a egyszerű "egy olyan objektum szerepel a lemezkép?" modellek készítése Ha az objektum lehet egy kutya, autó vagy szállítási. Ezenkívül összetettebb kérdésekre adott válaszok például "a betegek retinal vizsgálat szerint milyen szemmel betegségek súlyossági osztályát érintő?" Az Azure Machine Learning-csomagot számítógépes látástechnológiai leegyszerűsíti a besorolási adatok képfeldolgozás és a modellezési folyamat. 
 
-## <a name="link-to-the-github-repository"></a>A GitHub-tárházban csatolása
-Ez a cikk a minta kapcsolatos összefoglaló dokumentumot. A szélesebb körű dokumentációjában talál a [GitHub hely](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification).
+## <a name="link-to-the-github-repository"></a>A GitHub-adattárra mutató hivatkozás
+Ez a cikk a minta kapcsolatos összefoglaló dokumentumot. További részletes dokumentációt találhat a [a GitHub-webhelyről](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification).
 
-## <a name="team-data-science-process-walkthrough"></a>Team adatok tudományos folyamat forgatókönyv
+## <a name="team-data-science-process-walkthrough"></a>Csapat adatelemzési folyamat forgatókönyv
 
-Ez az útmutató használja a [Team adatok tudományos folyamat](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) életciklusát. A forgatókönyv a következő életciklus lépéseket ismerteti.
+Ez az útmutató használja a [csoportos adatelemzési folyamat](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) életciklusát. A forgatókönyv a következő életciklus lépéseket ismerteti.
 
-### <a name="1-data-acquisitionhttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode01dataacquisitionandunderstanding"></a>[1. Adatok beszerzése](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/01_data_acquisition_and_understanding)
-A kép hálóbesorolási feladat használható a nemzetközi felszín Imaging együttműködés (ISIC) adatkészlet. ISIC van tudomány és az iparág tanulmányozására és melanómás mortalitás csökkentése érdekében imaging digitális felszín alkalmazásához közötti partneri kapcsolat áll fenn. A [ISIC archív](https://isic-archive.com/#images) tartalma szerint jóindulatú vagy rosszindulatú több mint 13,000 felszín valamely lemezképet is tartalmaz. Töltse le a lemezképet minta ISIC fájlból.
+### <a name="1-data-acquisitionhttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode01dataacquisitionandunderstanding"></a>[1. Adatgyűjtés](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/01_data_acquisition_and_understanding)
+A kép hálóbesorolási feladat a nemzetközi felszín Imaging együttműködési (ISIC) adatkészlet használható. Nemzetközi DIÁKIGAZOLVÁNY az egyetemi és iparági megkönnyítése érdekében a digitális felszín imaging tanulmányozása és melanómás mortalitási csökkentheti az alkalmazás közötti partneri. A [nemzetközi DIÁKIGAZOLVÁNYA archív](https://isic-archive.com/#images) , ártalmatlan vagy rosszindulatú van jelölve, hogy több mint 13 000 példányból álló felszín valamely lemezképet tartalmaz. Töltse le a rendszerképet egy minta a nemzetközi DIÁKIGAZOLVÁNY archív szintről.
 
-### <a name="2-modelinghttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode02modeling"></a>[2. Modellezési](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/02_modeling)
-A modellezési a lépésben a következő részlépések megy végbe.
+### <a name="2-modelinghttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode02modeling"></a>[2. Modellezés](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/02_modeling)
+A modellezés a lépésben a következő részlépések történik.
 
 #### <a name="dataset-creation"></a>Adatkészlet létrehozása
 
-A helyi lemezen képek gyökérkönyvtár megadásával számítógép stratégiai az Azure Machine Learning-csomagot létrehozni egy dataset objektum. 
+Hozzon létre egy adatkészlet-objektum az Azure Machine Learning-csomagot számítógépes látástechnológiai lemezképek gyökérkönyvtár azáltal, hogy a helyi lemezen. 
 
-#### <a name="image-visualization-and-annotation"></a>Kép képi megjelenítés és Megjegyzés
+#### <a name="image-visualization-and-annotation"></a>Kép megjelenítési és jegyzet
 
-Megjelenítheti az adatkészlet-objektumot a lemezképeket, és javítsa ki a címkék szükség szerint.
+Megjelenítheti a rendszerképeket az adatkészlet-objektum, és szükség esetén javítsa ki a címkék.
 
-#### <a name="image-augmentation"></a>Kép bővítés
+#### <a name="image-augmentation"></a>Kép kiegészítését.
 
-Az átalakítás ismertetett használatával egy dataset objektum kiegészítheti a [imgaug](https://github.com/aleju/imgaug) könyvtárban.
+Egy adatkészlet-objektum bővítésével ismertetett átalakítások használatával a [imgaug](https://github.com/aleju/imgaug) könyvtár.
 
-#### <a name="dnn-model-definition"></a>DNN modell meghatározása
+#### <a name="dnn-model-definition"></a>A DNN model definition
 
-A modell architektúra használt a képzés lépést ad meg. Hat előre képzett mély Neurális hálózat modellek támogatottak az Azure Machine Learning csomag számítógép stratégiai: AlexNet, Resnet-18-ra, Resnet-34, Resnet-50, Resnet-101 és Resnet-152.
+Adja meg a használt modell architektúra a betanítási lépést. Az Azure Machine Learning-csomagot számítógépes látástechnológiai hat előre betanított Neurális hálózat-modellek támogatottak: AlexNet, a Resnet-18-ra, a Resnet-34, a Resnet-50, a Resnet-101 és a Resnet-152.
 
-#### <a name="classifier-training"></a>Osztályozó képzési
+#### <a name="classifier-training"></a>Osztályozó által igénybe vett képzés
 
-A Neurális hálózatokat és a alapértelmezett vagy egyéni paraméterek betanításához.
+Az alapértelmezett vagy egyéni paraméterek a Neurális hálózatokat betanításához.
 
-#### <a name="evaluation-and-visualization"></a>Kiértékelési és -megjelenítésre
+#### <a name="evaluation-and-visualization"></a>Kipróbálási és Vizualizáció
 
-Egy független tesztelési adatkészletnél a betanított modell teljesítményétől kiértékelése ellátni. A kiértékelési mérőszámok közé tartozik a pontossága, visszaírási, és: ROC-görbe.
+Olyan funkciókat kínálnak az a betanított modell egy független vizsgálati adatkészleten teljesítményének értékeléséhez. Az értékelési mérőszámok közé tartozik a pontosság, a pontosság, a visszaírási és a ROC-görbe.
 
-A részlépések a megfelelő Jupyter Notebook részletesen taglalja. A notebook is hasznos útmutatást ad a paraméterek, például a tanulási rátát mini kötegméret vagy jelkiesés arány további a modell teljesítményének növelése érdekében kapcsolja.
+A részlépések tartozó Jupyter Notebookot az részletesen taglalja. A notebook útmutatásokat is tartalmaz a paraméterek, például a tanulási ráta mini kötegméret és jelkiesés arány további modell teljesítményének javítása érdekében kapcsolja.
 
-### <a name="3-deploymenthttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode03deployment"></a>[3. központi telepítés](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/03_deployment)
+### <a name="3-deploymenthttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode03deployment"></a>[3. Üzembe helyezés](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/03_deployment)
 
-Ez a lépés a modell a modellezési. lépésben létrehozott operationalizes. Az Előfeltételek és a szükséges beállításokat okozna. A felhasználási webszolgáltatás kifejtett is. Ebben az oktatóanyagban elsajátíthatja az Azure Machine Learning csomag számítógép stratégiai mély tanulási modellek létrehozásához, és azok a modellt az Azure-ban.
+Ebben a lépésben a modell az modellezési lépésben előállított operationalizes. Azt mutatja be, az Előfeltételek és a szükséges beállításokat. A felhasználási webszolgáltatás kifejtett is. Ebben az oktatóanyagban elsajátíthatja az Azure Machine Learning-csomaggal a számítógépes látástechnológiai mély tanulási modelleket készíthet, és az Azure-ban a modell üzembe helyezéséhez.
 
 ## <a name="next-steps"></a>További lépések
-- Olvassa el, további dokumentációt [számítógép stratégiai Azure Machine Learning-csomagja](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest).
-- Olvassa el a [Team adatok tudományos folyamat](https://aka.ms/tdsp) dokumentáció a kezdéshez.
+- További dokumentációját olvassa [számítógépes látástechnológiai Azure Machine Learning-csomagja](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest).
+- Olvassa el a [csoportos adatelemzési folyamat](https://aka.ms/tdsp) dokumentációja a kezdéshez.
 
 
 ## <a name="references"></a>Referencia
 
-* [A számítógép stratégiai Azure Machine Learning-csomag](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)
+* [Számítógépes látástechnológia az Azure Machine Learning-csomagja](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)
 * [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation)
-* [Adatok tudományos virtuális gép](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)
+* [Adatelemző virtuális gép](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)
 

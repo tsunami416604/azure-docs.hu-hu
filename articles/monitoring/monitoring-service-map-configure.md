@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2018
+ms.date: 08/20/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 0140c34a14f67064eaa28df65360cee6e92ff31a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: faf4e06b714714fce206ef8227a934df8c290447
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618454"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055550"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -87,19 +87,12 @@ A következő szakasz a támogatott operációs rendszerek listázása a függő
 | 6.8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
 
-### <a name="red-hat-linux-5"></a>Red Hat Linux 5
-
-| Operációs rendszer verziója | Kernel verziója |
-|:--|:--|
-| 5.8 | 2.6.18-308 |
-| 5.9 | 2.6.18-348 |
-| 5.10 | 2.6.18-371 |
-| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417<br>2.6.18-419<br>2.6.18-420 |
-
 ### <a name="ubuntu-server"></a>Ubuntu Server
 
 | Operációs rendszer verziója | Kernel verziója |
 |:--|:--|
+| Ubuntu 18.04 | kernel 4.15. * |
+| Ubuntu 16.04.3 | kernel 4.15. * |
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
@@ -119,13 +112,12 @@ A következő szakasz a támogatott operációs rendszerek listázása a függő
 | 5.10 | Oracle 2.6.39-400 (UEK R2) |
 | 5.11 | Oracle 2.6.39-400 (UEK R2) |
 
-### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 nagyvállalati Server
+## <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 vállalati kiszolgáló
 
 | Operációs rendszer verziója | Kernel verziója
 |:--|:--|
-| 11 SP2 | 3.0.101-0.7 |
-| 11 SP3 | 3.0.101-0.47 |
-| 11 SP4 | 3.0.101-65 |
+|12 SP2 | 4.4. * |
+|12 SP3 | 4.4. * |
 
 ## <a name="dependency-agent-downloads"></a>Függőségi ügynök letöltése
 
@@ -264,7 +256,7 @@ A függőségi ügynök telepítve van a Linux-számítógépeken `InstallDepend
 
 Az alábbi lépések segítségével a függőségi ügynök telepítése minden egyes Linux rendszerű számítógépen:
 
-1.  Telepítse az OMS-ügynök a következő ismertetett módszerek valamelyikét [gyűjthet adatokat a Log Analytics-ügynökkel rendelkező hibrid környezetben](../log-analytics/log-analytics-concept-hybrid.md).
+1.  Az ismertetett módszerek valamelyikét a következő Log Analytics-ügynök telepítése [gyűjthet adatokat a Log Analytics-ügynökkel rendelkező hibrid környezetben](../log-analytics/log-analytics-concept-hybrid.md).
 2.  A Linux függőségi ügynök telepítése rendszergazdaként a következő parancs futtatásával:
     
     `sh InstallDependencyAgent-Linux64.bin`
@@ -394,9 +386,9 @@ Ha a függőségi ügynök telepítése sikeres volt, de a kiszolgáló a Servic
 
 * A kiszolgáló küldő napló- és teljesítményadatok van a Log Analytics? Lépjen a naplók keresése, és a számítógép a következő lekérdezés futtatásával: 
 
-        * Computer="<your computer name here>" | measure count() by Type
-        
-  Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, az OMS-ügynök megfelelően működik és a Log Analytics használatával való kommunikációhoz. Ha nem, akkor ellenőrizze az OMS-ügynököt a kiszolgálón: [OMS ügynök Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) vagy [OMS-ügynök Linux hibaelhárítási](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
+        Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+
+Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, a Log Analytics-ügynök megfelelően működik és a Log Analytics használatával való kommunikációhoz. Ha nem, ellenőrizze a kiszolgálón az ügynök: [Log Analytics-ügynököket Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) vagy [Log Analytics-ügynök Linux hibaelhárítási](../log-analytics/log-analytics-agent-linux-support.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Kiszolgáló megjelenik a Szolgáltatástérkép, de nincs folyamatokat
 Ha a kiszolgáló a Service Map, de azt nem rendelkezik folyamat vagy kapcsolati adatokkal, azt jelzi, hogy a függőségi ügynök telepítve és fut, de a kernel-illesztőprogram nem töltődött be. 

@@ -11,12 +11,12 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247322"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055303"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -63,6 +63,27 @@ A Visual Studióban:
 2. Módosítsa a beállításokat a **MSBuild project build kimeneti részletességi** való **részletes** vagy **diagnosztikai**.
 
     ![Képernyőkép a beállítások panel](media/common/VerbositySetting.PNG)
+    
+## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>DNS-névfeloldás nem sikerül, egy fejlesztői tárolóhelyek szolgáltatással társított nyilvános URL-cím
+
+Ha ez történik, előfordulhat, hogy megjelenik egy "A lap nem jeleníthető meg." vagy "ezen a helyen nem érhető el" hiba a böngészőben, amikor egy fejlesztési tárolóhelyek szolgáltatás próbál csatlakozni a nyilvános URL-címhez társított.
+
+### <a name="try"></a>Próbálja ki:
+
+Használhatja ki a fejlesztői, szóközök szolgáltatásokkal kapcsolatos összes URL-címek listája az alábbi parancsot:
+
+```cmd
+azds list-uris
+```
+
+Ha egy URL-cím a *függőben lévő* állapot, amely azt jelenti, hogy fejlesztői, szóközök még mindig várakozik DNS-regisztráció végrehajtásához. Egyes esetekben, hogy ez néhány percet vesz igénybe. Fejlesztői szóközöket is megnyílik a localhost alagút minden egyes szolgáltatás, amellyel DNS-regisztráció történő várakozás során.
+
+Ha egy URL-cím marad a *függőben lévő* több mint 5 perc, a külső DNS-pod, amely a nyilvános végpontot hoz létre és/vagy nginx bejövő tartományvezérlő-pod szerez be a nyilvános végponthoz problémájára utalhat. állapotát. A következő parancsokat használhatja ezeket a podok törlése. Ezek létrejönnek, automatikusan.
+
+```cmd
+kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
+kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
+```
 
 ## <a name="error-required-tools-and-configurations-are-missing"></a>"Szükséges az eszközök és konfigurációk hiányoznak" hiba
 
@@ -119,6 +140,14 @@ A VS Code hibakereső indítása előfordulhat, hogy időnként ezt a hibát ere
 1. Zárja be és nyissa meg újra a VS Code.
 2. Nyomja le az F5 újra.
 
+## <a name="debugging-error-failed-to-find-debugger-extension-for-typecoreclr"></a>Hibakeresés a "Sikertelen hibakereső bővítmény típusa: coreclr található" hiba
+A VS Code hibakereső futó jelentést a hiba: `Failed to find debugger extension for type:coreclr.`
+
+### <a name="reason"></a>Ok
+Nem rendelkezik a VS Code-bővítmény használata a C# telepítve van a fejlesztői gépen, amely tartalmazza a hibakeresés támogatása a .net Core (CoreCLR).
+
+### <a name="try"></a>Próbálja ki:
+Telepítse a [VS Code-bővítmény használata a C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
 ## <a name="debugging-error-configured-debug-type-coreclr-is-not-supported"></a>A "konfigurált hibakeresési típus"coreclr"nem támogatott" hiba hibakeresés
 A VS Code hibakereső futó jelentést a hiba: `Configured debug type 'coreclr' is not supported.`

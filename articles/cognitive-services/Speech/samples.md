@@ -1,6 +1,6 @@
 ---
-title: Példák Microsoft beszéd szolgáltatással |} Microsoft Docs
-description: Minta, amely szóbeli hang szöveggé alakít Microsoft beszéd szolgáltatásunkat használja.
+title: Microsoft Speech szolgáltatással-minták |} A Microsoft Docs
+description: A minták a Microsoft beszédfelismerési szolgáltatás, amely a beszélt hangot képes szöveggé alakít.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
@@ -9,27 +9,27 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: 63c767483fa56f1b716ef61a18fa93c6947a1d3b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 20ffba69d9f0f5b6648b19967c086e23e1dcb923
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347402"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41987608"
 ---
-# <a name="microsoft-speech-client-samples"></a>Microsoft beszéd ügyfél minták
+# <a name="microsoft-speech-client-samples"></a>Microsoft speech ügyfél-minták
 
-Microsoft beszéd szolgáltatás biztosítja a végpont minták bemutatja, hogyan használja a Microsoft a beszédfelismerés API különféle használati esetekben, például a parancs használatát, a folyamatos felismerése és leképezési észlelése. Összes mintát a Githubon elérhető, és letölthetik a következő hivatkozások: A README.md minden tárházban, valamint a [klienskódtárak](GetStarted/GetStartedClientLibraries.md) oldalon adja meg a létrehozása és futtatása a minták részleteit.
+Microsoft Speech Service: hogyan kell használni a Microsoft beszédfelismerési API különböző használati helyzetekhez, például a parancs felismerés, a folyamatos felismerése és szándékának észlelési-végpontok mintáit tartalmazza. Az összes minta a Githubon érhető el, és letölthetik az alábbi hivatkozások: A README.md mindegyik tárház, valamint a [klienskódtárak](GetStarted/GetStartedClientLibraries.md) oldalon részletesen leírják, hogyan hozhat létre és futtassa a mintát.
 
 - [REST API-minták](https://github.com/Azure-Samples/SpeechToText-REST)
 
 - [JavaScript-minták](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)
 
-- [C# asztali ügyfél minták](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows)
+- [C# Asztalialkalmazás-ügyfél minták](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows)
 
-- [Szolgáltatás – C#-minták](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary)
+- [C# service minták](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary)
 
-- [Java Android minták](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android)
+- [Java az Androidos minták](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android)
 
-- [IOS-minták ObjectiveC](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS)
+- [Az iOS-minták ObjectiveC](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS)
 
-Az összes Microsoft kognitív Services SDK-k és minták a MIT licenccel rendelkező licencét. További információkért lásd: [licenc](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+Minden Microsoft Cognitive Services SDK-k és minták az MIT-licenccel rendelkező rendelkezik licenccel. További információkért lásd: [licenc](https://github.com/Azure-Samples/SpeechToText-REST/blob/master/LICENSE).

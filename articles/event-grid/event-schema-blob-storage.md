@@ -1,36 +1,37 @@
 ---
-title: Az Azure Event rács blob storage esemény séma
-description: A blob storage-események Azure esemény rácshoz tartozó tulajdonságait ismerteti
+title: Az Azure Event Grid a blob storage eseménysémája
+description: A blob storage-események Azure Event Grid-okat tulajdonságokat ismerteti
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: a4d3f5d50df49851437cfd3bcec16ad217220eca
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 11524f8868a0102e30b06f3385a26b1bd06aae6e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301389"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054905"
 ---
-# <a name="azure-event-grid-event-schema-for-blob-storage"></a>A Blob storage Azure esemény rács esemény séma
+# <a name="azure-event-grid-event-schema-for-blob-storage"></a>A Blob Storage Azure Event Grid eseménysémája
 
-Ez a cikk a tulajdonságok és a séma biztosít a blob storage-események. Egy esemény sémák bemutatása, lásd: [Azure esemény rács esemény séma](event-schema.md).
+Ez a cikk a séma és a blob storage-események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
 
-## <a name="available-event-types"></a>Rendelkezésre álló eseményoszlopok típusok
+Mintaszkriptek és oktatóanyagok listáját lásd: [tárolási eseményforrás](event-sources.md#storage).
 
-A BLOB storage bocsát ki a következő esemény típusa:
+## <a name="available-event-types"></a>Rendelkezésre álló események típusai
+
+A BLOB storage a következő esemény típusú bocsát ki:
 
 | Esemény típusa | Leírás |
 | ---------- | ----------- |
-| Microsoft.Storage.BlobCreated | Egy blob létrehozásakor következik be. |
-| Microsoft.Storage.BlobDeleted | Egy blob törlésekor következik be. |
+| Microsoft.Storage.BlobCreated | Következik be, amikor egy blob jön létre. |
+| Microsoft.Storage.BlobDeleted | Következik be, amikor egy blob törlése. |
 
 ## <a name="example-event"></a>Példa esemény
 
-A következő példa bemutatja a séma, esemény létrehozott BLOB: 
+Az alábbi példa bemutatja egy esemény létrehozott blob sémája: 
 
 ```json
 [{
@@ -58,7 +59,7 @@ A következő példa bemutatja a séma, esemény létrehozott BLOB:
 }]
 ```
 
-A séma blob törlése esemény hasonlít: 
+Egy blob törlése esemény sémája hasonlít: 
 
 ```json
 [{
@@ -85,36 +86,36 @@ A séma blob törlése esemény hasonlít:
  
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
-Az esemény a következő legfelső szintű adatokat tartalmaz:
+Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| A témakör | karakterlánc | A forrás teljes erőforrás elérési útja. Ez a mező nincs írható. Esemény rács biztosítja ezt az értéket. |
-| Tulajdonos | karakterlánc | Az esemény tulajdonos közzétevő által megadott elérési útja. |
-| eventType | karakterlánc | Az esemény adatforrás regisztrált esemény típusok egyike. |
-| eventTime | karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
-| id | karakterlánc | Az esemény egyedi azonosítója. |
-| adat | objektum | A BLOB storage eseményadatok. |
-| dataVersion | karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | karakterlánc | Az esemény-metaadatok sémaverziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
+| témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| Tulajdonos | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| adatok | objektum | A BLOB storage-eseményadatok. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
-Az objektum tulajdonságai a következők:
+Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| api-t | karakterlánc | A művelet az eseményt kiváltó. |
-| clientRequestId | karakterlánc | Egy ügyfél által létrehozott, nem átlátszó értéket egy 1 KB-os karakteres korlátot. Ha engedélyezte a naplózás tárolási analitika, az elemzési naplókat van rögzítve. |
-| Kérelemazonosító | karakterlánc | A kérelem egyedi azonosítója. A hibaelhárítás a kérelem használni. |
-| ETag | karakterlánc | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
-| contentType | karakterlánc | A BLOB megadott tartalomtípus. |
-| contentLength | egész szám | A blob bájtban kifejezett mérete. |
-| blobType | karakterlánc | A blob típusú. Érvényes értékek: "BlockBlob" vagy "PageBlob". |
-| url | karakterlánc | A blob elérési útja. |
-| sorrendvezérlő | karakterlánc | Egy felhasználó által felügyelt érték, amely segítségével nyomon követheti a kéréseket. |
+| api-t | sztring | A művelet, amely kiváltotta az eseményt. |
+| clientRequestId | sztring | Egy ügyfél által generált, átlátszatlan érték, és a egy 1 KB-os karakter korlátja. Ha engedélyezte a naplózást a storage analytics, az elemzési naplók van rögzítve. |
+| Kérelemazonosító: | sztring | A kérelem egyedi azonosítója. Ezzel a kérést a hibaelhárításhoz. |
+| az eTag | sztring | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
+| contentType | sztring | A blob megadott tartalom típusa. |
+| contentLength | egész szám | A blob (bájt) mérete. |
+| blobType | sztring | A blob típusa. Érvényes értékek: "BlockBlob" vagy "PageBlob". |
+| url | sztring | A blob elérési útja. |
+| sorrendvezérlő | sztring | Egy felhasználó általi érték, amely a kérések nyomon követésére használható. |
 | storageDiagnostics | objektum | A tárolási diagnosztikai információt. |
  
 ## <a name="next-steps"></a>További lépések
 
-* Megismerkedhet az Azure Event rács, lásd: [Mi az az esemény rács?](overview.md)
-* Egy esemény rács Azure-előfizetés létrehozásával kapcsolatos további információkért lásd: [esemény rács előfizetés séma](subscription-creation-schema.md).
-* A blob storage-események működő bevezető, lásd: [útvonal Blob storage-események - Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json). 
+* Azure Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md)
+* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
+* A blob storage-események működő bemutatását lásd: [útvonal Blob storage-események – Azure CLI-vel](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json). 

@@ -1,9 +1,9 @@
 ---
-title: Azure API Management-szolgáltatások telepítése több Azure-régiók |} Microsoft Docs
-description: Ismerje meg, hogyan lehet telepíteni az Azure API Management szolgáltatáspéldány több Azure-régiók.
+title: Az Azure API Management-szolgáltatások üzembe helyezése több Azure-régiók |} A Microsoft Docs
+description: Ismerje meg, hogyan helyezhet üzembe egy Azure API Management-szolgáltatáspéldány több Azure-régióban.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,56 +11,101 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ff0101bde54f99f99461d0f042af520b1642d0df
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2ec8d53b0d8da3a7d643362abf58d3a5d4b42e74
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31586806"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42057572"
 ---
-# <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Az Azure API Management szolgáltatáspéldány üzembe helyezése több Azure-régiók
-Az API Management több területi környezetben, amely lehetővé teszi, hogy egyetlen API management szolgáltatás szét a kívánt Azure-régiók tetszőleges számú API közzétevők támogatja. Ezzel csökkenthető a kérelem által érzékelt késleltetés földrajzilag elosztott API fogyasztók és a szolgáltatás rendelkezésre állása is támogatja, ha egy régió tartozik offline állapotba kerül. 
+# <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Az Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban
 
-Amikor egy API-kezelés szolgáltatás a kezdetben létrejön, csak az egyik tartalmaz [egység] [ unit] és egy egyetlen Azure-régió, amelyhez az elsődleges régióban kijelölt fájlcsoportban helyezkedik el. További régiókban könnyen felveheti az Azure portálon keresztül. Az API Management átjárókiszolgáló minden régió telepít, és hívás forgalmat a rendszer a legközelebbi átjáró irányítsa. Ha egy régiót offline állapotba kerül, akkor kimenő forgalomról automatikusan újra irányított, a következő legközelebbi átjáró. 
+Az Azure API Management támogatja a több régióból álló üzemelő, amely lehetővé teszi tetszőleges számú kívánt Azure-régiók között oszthatja el a egyetlen Azure API management szolgáltatás API-kiadók. Ez segít csökkenteni a kérelem által által tapasztalt késés földrajzilag elosztott az API-fogyasztókat és szolgáltatás rendelkezésre állása is növeli, ha egy adott régióban offline állapotba kerül.
+
+Egy új Azure API Management szolgáltatás tartalmaz kezdetben csak az egyik [egység] [ unit] egyetlen Azure-régióban, az elsődleges régióba. További régiók könnyen hozzáadhatók az Azure Portalon keresztül. Az API Management-átjáró kiszolgáló összes régióban telepíti, és hívás forgalmat a rendszer átirányítja a legközelebbi átjáró. Ha egy régió elérhetetlenné válik, a rendszer automatikusan átirányítja a forgalmat tovább legközelebbi átjáróhoz.
 
 > [!IMPORTANT]
-> Több területi telepítési érhető el csak a **[prémium] [ Premium]** réteg.
-> 
-> 
+> Többrégiós üzembe helyezés csak érhető el a **[prémium] [ Premium]** szint.
 
-## <a name="add-region"> </a>Az API Management szolgáltatás példányt telepítése egy új régióban
 > [!NOTE]
-> Ha még nem hozott létre az API Management szolgáltatáspéldány, lásd: [hozzon létre egy API-kezelés szolgáltatás példányt][Create an API Management service instance].
-> 
-> 
+> Az Azure API Management az API gateway összetevővel régióban replikálja. A szolgáltatás felügyeleti összetevőt csak az elsődleges régióban üzemel. Egy esetleges leállás az elsődleges régióban konfigurációs módosítások alkalmazása az Azure API Management szolgáltatáspéldányt, esetén nem lehet – beleértve a beállítások és szabályzatok frissítéseket.
 
-Az Azure portálon keresse meg a **és az árképzés** az API Management szolgáltatáspéldány a lap. 
+## <a name="add-region"> </a>Az API Management-szolgáltatáspéldány üzembe egy új régióban
 
-![Skála lap][api-management-scale-service]
+> [!NOTE]
+> Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg [az API Management szolgáltatáspéldány létrehozása][Create an API Management service instance].
 
-Egy új régió telepíteni, kattintson a **+ Hozzáadás régió** az eszköztáron.
+Az Azure Portalon lépjen a **skálázás és díjszabás** az API Management szolgáltatáspéldányhoz tartozó oldal. 
+
+![Méretezés lapon][api-management-scale-service]
+
+Egy új régióban üzembe helyezéséhez kattintson a **+ Hozzáadás régió** az eszköztáron.
 
 ![Régió hozzáadása][api-management-add-region]
 
-A legördülő listából válassza ki a helyet, és állítsa be a csúszkával egységek száma.
+A legördülő listából válassza ki a helyet, és állítsa a csúszkát az egységek száma.
 
-![Adja meg a egység][api-management-select-location-units]
+![Adja meg a egységek][api-management-select-location-units]
 
-Kattintson a **Hozzáadás** helyezhető el a kiválasztott a helyek táblában. 
+Kattintson a **Hozzáadás** helyezi el a kijelölt a helyek táblában. 
 
-Ismételje meg ezt a folyamatot, amíg a konfigurált összes hellyel rendelkezik, és kattintson a **mentése** a telepítési folyamat elindításához az eszköztáron.
+Ismételje meg ezt a folyamatot, mindaddig, amíg az összes hely konfigurálva van, és kattintson a **mentése** az eszköztárról az üzembe helyezés elindításához.
 
-## <a name="remove-region"> </a>Egy API-kezelés szolgáltatás példány törlése
+## <a name="remove-region"> </a>Az API Management-szolgáltatáspéldány törölje egy helyéről
 
-Az Azure portálon keresse meg a **és az árképzés** az API Management szolgáltatáspéldány a lap. 
+Az Azure Portalon lépjen a **skálázás és díjszabás** az API Management szolgáltatáspéldányhoz tartozó oldal. 
 
-![Skála lap][api-management-scale-service]
+![Méretezés lapon][api-management-scale-service]
 
-Szeretné eltávolítani a helyet nyissa meg a helyi menü használatával a **...**  gomb a tábla jobb oldali végén. Válassza ki a **törlése** lehetőséget.
+A helyre, amelyet szeretne eltávolítani, nyissa meg a helyi menü használatával a **...**  gomb a tábla jobb szélén. Válassza ki a **törlése** lehetőséget.
 
 A törlés jóváhagyásához, és kattintson a **mentése** a módosítások életbe léptetéséhez.
+
+## <a name="route-backend"> </a>Regionális háttérszolgáltatások útvonal API-hívások
+
+Az Azure API Management funkciókat csak egy háttérkiszolgáló URL-címe. Annak ellenére, hogy a különböző régiókban vannak az Azure API Management példányok, az API-átjáró lesz kérelmeket továbbra is továbbítsa a azonos háttérszolgáltatáshoz, amely csak egy adott régióban üzemel. Ebben az esetben a teljesítmény csak gyorsítótárazza az Azure API Management egy régióban a kérelemre adott válasz fog érkezni, de vegye fel a kapcsolatot a háttérrendszer szerte a világon előfordulhat, hogy továbbra is magas késést eredményezhetnek.
+
+Teljes mértékben kihasználhatja a rendszer földrajzi eloszlása, a Háttérszolgáltatásokhoz üzembe helyezett Azure API Management-példány az azonos régióban lévő kell rendelkeznie. Ezután házirendekkel és `@(context.Deployment.Region)` tulajdonság, a forgalom átirányítása a háttérrendszer helyi példányát.
+
+1. Keresse meg az Azure API Management-példány, és kattintson a **API-k** a bal oldali menüből.
+2. Válassza ki a kívánt API-hoz.
+3. Kattintson a **Kódszerkesztő** a a nyíl legördülő listából a **bejövő feldolgozás**.
+
+    ![API Kódszerkesztő](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
+
+4. Használja a `set-backend` feltételes kombinálva `choose` szabályzatokat hozhat létre a megfelelő útválasztási házirend a `<inbound> </inbound>` fájl szakaszában.
+
+    Ha például az alábbi XML fájl akkor működik, az USA nyugati RÉGIÓJA és Kelet-Ázsia régióban:
+
+    ```xml
+    <policies>
+        <inbound>
+            <base />
+            <choose>
+                <when condition="@("West US".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase))">
+                    <set-backend-service base-url="http://contoso-us.com/" />
+                </when>
+                <when condition="@("East Asia".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase))">
+                    <set-backend-service base-url="http://contoso-asia.com/" />
+                </when>
+                <otherwise>
+                    <set-backend-service base-url="http://contoso-other.com/" />
+                </otherwise>
+            </choose>
+        </inbound>
+        <backend>
+            <base />
+        </backend>
+        <outbound>
+            <base />
+        </outbound>
+        <on-error>
+            <base />
+        </on-error>
+    </policies>
+    ```
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 
@@ -77,4 +122,3 @@ A törlés jóváhagyásához, és kattintson a **mentése** a módosítások é
 
 [unit]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
-

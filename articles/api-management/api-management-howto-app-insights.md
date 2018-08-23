@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8546b1228c8d8f213cb87692144e8d1d31a949d8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a660b36f383eaf1fd0e868200ad7f59aba0f8225
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001803"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42060606"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Hogyan integrálható az Azure API Management az Azure Application insights segítségével
 
@@ -111,9 +111,15 @@ A sikertelen kérelmek tulajdonképpen egy kérelem, amely:
 
 Belső tesztek alapján, a funkció engedélyezése az okozza, 40 %-os – 50 %-os csökkenést átviteli sebesség kérelmek arányának túllépésekor 1000 vonatkozó kérelmek másodpercenkénti száma. Az Azure Application Insights készült alkalmazás előadások értékelésére statisztikai elemzésekhez használja. Ez nem célja, hogy egy naplózási a rendszer, és nem alkalmas a nagy mennyiségű API-k minden egyes kérés naplózás.
 
-Fokozottabban naplózott kérések száma is módosíthatja a **mintavételi** beállítás (lásd a fenti lépéseket). Tulajdonság értéke 100 %-os azt jelenti, hogy az összes kérés naplózásra kerül, míg a 0 %-os tükrözi, hogy egyáltalán nincs naplózás. **Mintavételi** telemetriát, hatékonyan meggátolja, hogy jelentős teljesítménycsökkenéséről számolt, továbbra is a naplózás előnyeinek végrehajtása közben a kötet csökken.
+Fokozottabban naplózott kérések száma is módosíthatja a **mintavételi** beállítás (lásd a fenti lépéseket). Tulajdonság értéke 100 %-os azt jelenti, hogy az összes kérés naplózásra kerül, míg a 0 %-os tükrözi, hogy egyáltalán nincs naplózás. **Mintavételi** telemetriát, hatékonyan meggátolja, hogy jelentős teljesítménycsökkenéshez naplózásának előnyei továbbra is végrehajtása közben a kötet csökken.
 
 A rendszer kihagyja a fejlécek és törzs kérelmek és válaszok naplózását is pozitív hatással lehet a teljesítménnyel kapcsolatos problémák enyhítése.
+
+## <a name="video"></a>Videó
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2pkXv]
+>
+>
 
 ## <a name="next-steps"></a>További lépések
 

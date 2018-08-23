@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: c4a755d0c13516ce3cb0177cea2ea17e4a3abcbb
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8a9409c46cac8397bc449c586374729a4d864036
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390969"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41987547"
 ---
 # <a name="upload-and-index-your-videos"></a>A videók feltöltése és az  
 
@@ -47,15 +47,15 @@ POST URL-címe értesítése, ha az indexelés hajtható végre. A video Indexer
 
 Is hozzáadhat további paramétereket az URL-címet a Video Indexer hívása előtt, és ezeket a paramétereket fog szerepelni a visszahívás. Később a kódban, a lekérdezési karakterlánc elemzésére és az első biztonsági összes a megadott paramétereket a lekérdezési karakterláncban (adatok meg kellett eredetileg hozzáfűzi az URL-címe és a Video Indexer a megadott adatokat.) 
 
-### <a name="streamingpereset"></a>streamingPereset
+### <a name="streamingpreset"></a>streamingPreset
 
 A videó feltöltése után a Video Indexer, igény szerint kódolja a videót. Ezt követően az indexelést és a videó elemzése abból. Mikor történik a Video Indexer elemzése, a videó azonosítójú értesítést fog kapni  
 
-Használatakor a [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [videó újraindexelése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API-t, a választható paraméterek egyike `streamingPreset`. Ha `streamingPereset` való `Default`, `SingleBitrate`, vagy `AdaptiveBitrate`, a kódolási folyamat akkor indul el. Ha az indexelés és a kódolási feladat kész, a videó közzététele, így streamelheti a videót is. A folyamatos átviteli végponton, ahonnan a videó továbbításához kell lennie a **futó** állapota.
+Használatakor a [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [videó újraindexelése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API-t, a választható paraméterek egyike `streamingPreset`. Ha `streamingPreset` való `Default`, `SingleBitrate`, vagy `AdaptiveBitrate`, a kódolási folyamat akkor indul el. Ha az indexelés és a kódolási feladat kész, a videó közzététele, így streamelheti a videót is. A folyamatos átviteli végponton, ahonnan a videó továbbításához kell lennie a **futó** állapota.
 
 Annak érdekében, hogy az indexelést és a kódolási feladat, futtassa a [a Video Indexer-fiókot az Azure Media Services-fiók csatlakoztatva](connect-to-azure.md), fenntartott egységet igényel. További információkért lásd: [Media feldolgozás skálázása](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview). Mivel ezek olyan nagy számításigényű számítási feladatok, erősen ajánlott S3-egység típusa. A fenntartott egységek számát, amelyek párhuzamosan futtatható feladatok maximális száma határozza meg. Az alapkonfiguráció javasoljuk 10 S3 szintű fenntartott. 
 
-Ha csak a videó indexeléséről kívánja, de nem kódolja azokat, állítsa be `streamingPereset`való `NoStreaming`.
+Ha csak a videó indexeléséről kívánja, de nem kódolja azokat, állítsa be `streamingPreset`való `NoStreaming`.
 
 ## <a name="code-sample"></a>Kódminta
 

@@ -1,46 +1,46 @@
 ---
 ms.assetid: ''
-title: Az Azure Key Vault biztonsági világot |} Microsoft Docs
+title: Az Azure Key Vault biztonsági világai |} A Microsoft Docs
 ms.service: key-vault
-author: lleonard-msft
-ms.author: alleonar
+author: bryanla
+ms.author: bryanla
 manager: mbaldwin
 ms.date: 07/03/2017
-ms.openlocfilehash: aeab36153d3a4e004d12206bab92cea9b30400ad
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 7fd7357a317d5059d6169de2c1536568a254e016
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27928100"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42057238"
 ---
-# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Az Azure Key Vault biztonsági világot és földrajzi határok
+# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Az Azure Key Vault biztonsági világok és földrajzi korlátok
 
-Az Azure Key Vault egy több-bérlős szolgáltatás, és az egyes Azure-beli hely használja a hardveres biztonsági modulokkal (HSM) készletét. 
+Az Azure Key Vault hardveres biztonsági modulokban (HSM) álló készletet használ minden egyes Azure-beli helyen, és a egy több-bérlős szolgáltatás. 
 
-A ugyanabban a földrajzi régióban Azure helyen lévő összes HSM ossza meg az azonos kriptográfiai határ (Thales Biztonságivilág). Például USA keleti régiója, és az USA nyugati régiója megoszthatja a ugyanazt biztonsági világ mert tartoznak az USA földrajzi hely. Ehhez hasonlóan japán minden Azure hely ossza meg a ugyanazt biztonsági világ és az összes Azure helyek Ausztrália, India és így tovább. 
+Minden HSM-jeiről ugyanabban a földrajzi régióban található Azure-helyen ossza meg a ugyanolyan titkosítási határ (Thales Biztonságivilág). Például USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA megoszthatja az ugyanazon biztonsági világ mert az Egyesült Államok földrajzi hely tartoznak. Ehhez hasonlóan az összes Azure-helyen a japán ossza meg az azonos biztonsági világához és Ausztrália, India és így tovább az összes Azure-helyen. 
 
-## <a name="backup-and-restore-behavior"></a>Biztonsági mentés és helyreállítás viselkedése
+## <a name="backup-and-restore-behavior"></a>Biztonsági mentési és visszaállítási viselkedés
 
-Egy készült biztonsági másolatok a kulcstároló egyetlen Azure helyen kulcs vissza tudja állítani egy másik Azure-beli hely, a kulcstároló, amíg az alábbi két feltétel teljesül:
+A kulcsok a key vault egy Azure-beli helyen készült biztonsági másolatok visszaállíthatók, egy másik Azure-beli helyen, egy kulcstárolóba mindaddig, amíg az alábbi két feltétel teljesül:
 
-- Az Azure-hely tartoznak ugyanazon a földrajzi helyen
-- Mind a kulcstárolók az azonos Azure-előfizetés tartozik
+- Mindkettő az Azure-helyen azonos földrajzi helyen tartozik
+- A kulcstartók mindegyikét Azure-előfizetéshez tartozik
 
-Például egy kulcs kulcstároló Nyugat-Indiában, az adott előfizetés által végrehajtott biztonsági csak vissza tudja állítani az ugyanahhoz az előfizetéshez és a földrajzi hely; egy másik kulcstároló Nyugat-Indiában, közép-Indiában és Dél-India.
+Például egy adott egy kulcsot a Nyugat-India, a key vault-előfizetés által készített biztonsági másolat csak állítható vissza egy másik kulcstartó ugyanahhoz az előfizetéshez és földrajzi helyet; Nyugat-India, közép-India és Dél-India.
 
 ## <a name="regions-and-products"></a>Régiók és termékek
 
 - [Azure-régiók](https://azure.microsoft.com/regions/)
-- [Microsoft-termékek régió szerint](https://azure.microsoft.com/regions/services/)
+- [A Microsoft-termékek régiók szerint](https://azure.microsoft.com/regions/services/)
 
-Régiók biztonsági világot fő fejlécében a táblázatok látható van leképezve:
+Biztonsági világok jelenik meg a táblázatok jelentős fejlécében régióban van leképezve:
 
-A termékek régió cikkben, például a **Americas** lap tartalmaz kelet VELÜNK, USA KÖZÉPSŐ RÉGIÓJA, USA nyugati RÉGIÓJA Americas régió összes leképezésére. 
+A régió cikkben, például a termékek a **Dél-Amerika** lap tartalmaz a keleti NEKÜNK, USA KÖZÉPSŐ RÉGIÓJA, USA nyugati RÉGIÓJA Dél-Amerika régió összes hozzárendelést. 
 
 >[!NOTE]
->Egy kivétel ez alól, Velünk DOD EAST és a US DOD központi rendelkezik-e a saját biztonsági világot. 
+>Kivétel ez alól, az USA védelmi Minisztériuma – keleti RÉGIÓJA és USA védelmi Minisztériuma – KÖZÉPSŐ rendelkezik-e a saját biztonsági világot. 
 
-Hasonlóképpen, a a **Európa** lap, Észak-Európa, és Nyugat-Európa, mind a Európa régió van leképezve. Ugyanez érvényes is a a **Ázsia Csendes-óceáni** fülre.
+Hasonlóképpen, az a **Európa** lapon, Észak-EURÓPÁBAN és Nyugat-EURÓPÁBAN egyaránt leképezése az Európa régiót. Ugyanez érvényes is az a **Ázsia Csendes-óceáni** fülre.
 
 
 

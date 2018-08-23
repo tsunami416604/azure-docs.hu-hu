@@ -1,9 +1,9 @@
 ---
-title: A portál használata az Azure-készletben sablonok telepítése |} Microsoft Docs
-description: Megtudhatja, hogyan használhatja az Azure-verem portált sablonok telepítése.
+title: A portál használatával az Azure Stackben sablonok üzembe helyezése |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure Stack portálon sablonok üzembe helyezése.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: eafa60f2-16c9-4ef1-b724-47709e9ea29e
@@ -12,31 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: eea4f568f21693764222c8fdbe3316bf6008cc05
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 931c3d8beb9f2ed12228c74f09f84bbdee1798b8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604233"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056683"
 ---
-# <a name="deploy-templates-using-the-azure-stack-portal"></a>Üzembe helyezheti a sablonokat a verem Azure portál használatával
+# <a name="deploy-templates-using-the-azure-stack-portal"></a>Az Azure Stack portálon sablonok üzembe helyezése
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A portál központi telepítése Azure Resource Manager-sablonok Azure verem használható.
+A portál segítségével az Azure Stack üzembe helyezése Azure Resource Manager-sablonok.
 
-## <a name="to-deploy-a-template"></a>A sablon telepítéséhez
+## <a name="to-deploy-a-template"></a>A sablon üzembe helyezése
 
-1. Jelentkezzen be a portálra, jelölje be **új**, majd válassza ki **egyéni**.
-2. Válassza ki **sablon-üzembehelyezés**.
-3. Válassza ki **Szerkesztés sablon**, majd illessze be a sablon JSON-kódot a kód ablakba. Kattintson a **Mentés** gombra.
-4. Válassza ki **paraméterek szerkesztése**, adjon meg értékeket a paraméterek jelennek meg, majd válassza ki, **OK**.
-5. Válassza ki **előfizetés**. Válassza ki a kívánt előfizetést, és válassza **OK**.
-6. Válassza ki **erőforráscsoport**. Válasszon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat, és válassza **OK**.
-7. Kattintson a **Létrehozás** gombra. Egy új csempe az irányítópulton a sablon-üzembehelyezés előrehaladását követi nyomon.
+1. Jelentkezzen be a portálra, válassza ki **új**, majd válassza ki **egyéni**.
+2. Válassza ki **sablonalapú telepítés**.
+3. Válassza ki **szerkesztési sablon**, majd illessze be a sablon JSON-kód a kód ablakba. Kattintson a **Mentés** gombra.
+4. Válassza ki **paraméterek szerkesztése**, adja meg, hogy látható-e, és válassza a paraméterek értékeit **OK**.
+5. Válassza ki **előfizetés**. Válassza ki az előfizetést szeretné használni, és válassza ki **OK**.
+6. Válassza ki **erőforráscsoport**. Válasszon ki egy meglévő erőforráscsoportot vagy hozzon létre egy újat, és válassza **OK**.
+7. Kattintson a **Létrehozás** gombra. Egy új csempét az irányítópulton a sablon központi telepítéséhez előrehaladását követi nyomon.
 
 ## <a name="next-steps"></a>További lépések
 

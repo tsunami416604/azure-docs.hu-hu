@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 492a0a63198fe2013cfeac0459fc6da8521a5e6e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b43c082b5c4925fee2b1145956a2847e7f30bb11
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056800"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060185"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 
@@ -28,7 +28,7 @@ NSG-Folyamatnaplók tárfiókok vannak tárolva [blokkblobok](/rest/api/storages
 
 ## <a name="scenario"></a>Forgatókönyv
 
-A következő esetben van egy példa a storage-fiókban tárolt folyamat napló. hogy végighaladhat hogyan szelektív módon tudja olvasni az NSG-Folyamatnaplók legújabb események. Ebben a cikkben a PowerShell használjuk, azonban a cikkben tárgyalt fogalmakat nem korlátozódnak az programozási nyelvet, és az Azure Storage API-k által támogatott összes nyelv vonatkozó
+A következő esetben van egy példa a storage-fiókban tárolt folyamat napló. Megismerheti, hogyan szelektív olvasni az NSG-Folyamatnaplók legújabb események. Ez a cikk a PowerShell-lel, azonban a cikkben tárgyalt fogalmakat nem korlátozódnak az programozási nyelv és alkalmazandó összes nyelv által támogatott az Azure Storage API-k.
 
 ## <a name="setup"></a>Beállítás
 
@@ -98,7 +98,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>A blokkblobok olvasása
 
-Ezután azt kell olvasni az `$blocklist` változó adatok lekéréséhez. Ebben a példában azt a tiltólista iterálódnak a bájtot olvas minden egyes, és szövegegység őket a tömbben. Használjuk a [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódusának segítéségével lekérheti az adatokat.
+Ezután kell olvasni az `$blocklist` változó adatok lekéréséhez. Ebben a példában azt a tiltólista iterálódnak a bájtot olvas minden egyes, és szövegegység őket a tömbben. Használja a [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódusának segítéségével lekérheti az adatokat.
 
 ```powershell
 # Set the size of the byte array to the largest block
@@ -132,7 +132,7 @@ $valuearray += $value
 }
 ```
 
-Most már a `$valuearray` tömb minden egyes karakterlánc értékét tartalmazza. Ellenőrizze a bejegyzést, kérje le a második az utolsó értékre a tömbből futtatásával `$valuearray[$valuearray.Length-2]`. Nem szeretnénk utolsó értéke csak a záró zárójelet.
+Most már a `$valuearray` tömb minden egyes karakterlánc értékét tartalmazza. Ellenőrizze a bejegyzést, kérje le a második az utolsó értékre a tömbből futtatásával `$valuearray[$valuearray.Length-2]`. Nem szeretné, hogy az utolsó olyan értéket, a záró zárójel volt, mert.
 
 Ezt az értéket az eredmények az alábbi példában látható:
 
@@ -157,7 +157,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 ```
 
 Ebben a forgatókönyvben, amelyek a bejegyzéseket az NSG-forgalom naplóinak olvasása elemezni a teljes naplót nélkül. Új bejegyzések a naplóban, a Blokkazonosítót használatával, vagy tárolja a blokkblob típusú blokkok hossza nyomon követése révén megírásának olvashat. Ez lehetővé teszi, hogy csak az új bejegyzések olvasását.
-
 
 ## <a name="next-steps"></a>További lépések
 

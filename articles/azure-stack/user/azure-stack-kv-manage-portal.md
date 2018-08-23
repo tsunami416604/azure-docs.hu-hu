@@ -1,9 +1,9 @@
 ---
-title: A verem Azure Key Vault kezeléséhez a portál használatával |} Microsoft Docs
-description: Megtudhatja, hogyan kezelheti a verem Azure Key Vault a portál használatával
+title: A portál használatával kezelheti a Key Vault az Azure Stackben |} A Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a Key Vault az Azure Stack a portál használatával
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: D4300668-461F-45F6-BF3B-33B502C39D17
@@ -13,90 +13,90 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: mabrigg
-ms.openlocfilehash: e387e365b2de3412c23c995939f75400a03eeb80
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: sethm
+ms.openlocfilehash: 91035f84d02810d838127ecf6a2f6424ef5df6cf
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070464"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054898"
 ---
-# <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>A verem Azure Key Vault kezeléséhez a portál használatával
+# <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>A portál használatával kezelheti a Key Vault az Azure Stackben
 
-Kezelheti a verem Azure Key Vault a verem Azure portál használatával. Ez a cikk segít létrehozása és kezelése az Azure-készletben kulcstároló első lépései.
+Key Vault az Azure Stack az Azure Stack portal használata kezelheti. Ez a cikk segít az induláshoz létrehozása és kezelése a key vault az Azure Stackben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ajánlat, amely tartalmazza az Azure Key Vault szolgáltatás elő kell fizetnie.
+Meg kell előfizetés egy ajánlatra, amely magában foglalja az Azure Key Vault szolgáltatást.
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
 1. Jelentkezzen be a [felhasználói portál](https://portal.local.azurestack.external).
 
-2. Válassza ki az irányítópultról **új** > **biztonság + identitás szakaszában** > **Key Vault**.
+2. Az irányítópulton, válassza ki a **új** > **biztonság + identitás** > **Key Vault**.
 
-    ![Key Vault képernyő](media/azure-stack-kv-manage-portal/image1.png)
+    ![A Key Vault képernyő](media/azure-stack-kv-manage-portal/image1.png)
 
-3. Az a **kulcstároló létrehozása** ablaktáblán, rendelje hozzá egy **neve** a tároló számára. Tároló neve csak alfanumerikus karaktereket és a speciális karakterből álló kötőjel (-) tartalmazhat. Ezek nem kezdődhet számmal.
+3. Az a **kulcstartó létrehozása** panelen rendelje hozzá egy **neve** a tároló számára. Tároló neve csak alfanumerikus karaktereket és a speciális karakterből álló kötőjel (-) tartalmazhat. Ezek nem kezdődhet számmal.
 
-4. Válasszon egy **előfizetés** az elérhető előfizetések listájából. A Key Vault szolgáltatás kínáló előfizetéseket a legördülő listában jelennek meg.
+4. Válasszon egy **előfizetés** elérhető előfizetések listájából. Minden előfizetés, a Key Vault szolgáltatás által a legördülő listában jelennek meg.
 
-5. Válasszon ki egy létező **erőforráscsoport** vagy hozzon létre egy újat.
+5. Válasszon egy meglévő **erőforráscsoport** , vagy hozzon létre egy újat.
 
 6. Válassza ki a **tarifacsomag**.
     >[!NOTE]
-    > Azure verem szoftverfejlesztői készlet támogatásában tárolók kulcs **szabványos** csak a termékváltozat.
+    > Tárolók az Azure Stack Development Kit támogatási kulcs **Standard** csak az SKU-k.
 
-7. Válasszon egyet a meglévő **hozzáférési házirendek** vagy hozzon létre egy újat. Hozzáférési házirend lehetővé teszi a felhasználó, az alkalmazás vagy a biztonsági csoport a jelen tárolóban való műveletek elvégzésére vonatkozó engedélyeket.
+7. Válasszon egyet a meglévő **hozzáférési házirendek** , vagy hozzon létre egy újat. Hozzáférési házirend lehetővé teszi egy felhasználó, alkalmazás vagy egy biztonsági csoportot, ez a kulcstartó-műveletek végrehajtásához engedélyeit.
 
-8. Másik lehetőségként válasszon egy **speciális hozzáférési házirend** funkciók engedélyezéséhez. Például: virtuális gépek (VM) üzembe helyezés esetén a Resource Manager sablon üzembe helyezését és a kötet titkosítási Azure Disk Encryption való hozzáférést.
+8. Szükség esetén válasszon egy **speciális hozzáférési szabályzat** szolgáltatások elérésének engedélyezéséhez. Például: virtuális gépek (VM) üzembe helyezés Resource Manager-sablon üzembe helyezési és tárkötet-titkosítást az Azure Disk Encryption való hozzáférést.
 
-9. A beállítások konfigurálása után válassza ki **OK**, majd válassza ki **létrehozása**. Ekkor elindul a kulcstároló-telepítésben.
+9. Miután konfigurálta a beállításokat, jelölje ki **OK**, majd válassza ki **létrehozása**. Ekkor elindul a key vault-telepítésben.
 
 ## <a name="manage-keys-and-secrets"></a>Kulcsok és titkos kulcsok kezelése
 
-Tároló létrehozása után a következő lépésekkel hozhatja létre és kezelheti a kulcsok és titkos belül a tárolóban.
+Miután létrehozott egy tárolót, a következő eljárással hozhatja létre és kezelheti a kulcsokat és titkos kulcsok a tároló.
 
 ### <a name="create-a-key"></a>Kulcs létrehozása
 
 1. Jelentkezzen be a [felhasználói portál](https://portal.local.azurestack.external).
 
-2. Az irányítópulton, válassza ki a **összes erőforrás**, válassza ki a korábban létrehozott kulcstartó, majd a **kulcsok** csempére.
+2. Az irányítópulton, válassza ki a **összes erőforrás**, jelölje be a kulcstartóhoz, amely a korábban létrehozott, és válassza a **kulcsok** csempére.
 
 3. Az a **kulcsok** ablaktáblán válassza előbb **Hozzáadás**.
 
-4. Az a **hozható létre kulcs** ablaktáblában közül **beállítások**, válassza ki a kulcs létrehozásához használni kívánt módszert. Is **Generate** egy új kulcsot, **feltöltése** egy meglévő kulcs, vagy használjon **biztonsági másolat visszaállítása** egy kulcs biztonsági másolatának kiválasztásához.
+4. Az a **hozzon létre egy kulcsot** panel listájában **beállítások**, válassza ki a kulcs létrehozásához használni kívánt módszert. Is **Generate** egy új kulcsot, **feltöltése** egy meglévő kulcs, vagy használjon **biztonsági másolat visszaállítása** kulcs biztonsági másolatának kiválasztásához.
 
-5. Adjon meg egy **neve** a kulcshoz. A kulcs neve csak alfanumerikus karaktereket és a speciális karakterek kötőjel (-) tartalmazhat.
+5. Adjon meg egy **neve** a kulcshoz. A kulcs neve csak alfanumerikus karaktereket és kötőjelet (-) speciális karaktert tartalmazhat.
 
-6. Nem kötelező lépésként beállíthatja az **aktiválási dátuma** és **lejárati dátuma** a kulcs értékeit.
+6. Igény szerint állítsa be a **aktiválási dátum megadása** és **lejárati dátum megadása** a kulcs értékeit.
 
-7. Válassza ki **létrehozása** a telepítés elindításához.
+7. Válassza ki **létrehozás** a üzembe helyezésének megkezdéséhez.
 
-A kulcs sikeres létrehozása után kiválaszthatja azt a **kulcsok** és tulajdonságainak megtekintése vagy módosítása a. A Tulajdonságok szakaszának tartalmazza a **kulcsazonosító**, amely egy egységes erőforrás-azonosító (URI), amellyel külső alkalmazások hozzáférhetnek a kulcs. A kulcs műveletek korlátozása érdekében adja meg a beállításokat a **engedélyezett műveletek**.
+A kulcs sikeres létrehozása után kiválaszthatja azt a **kulcsok** és megtekintéséhez vagy a hozzá tartozó tulajdonságok módosításával. A Tulajdonságok szakaszának tartalmazza a **azonosítója**, azaz egy egységes erőforrás-azonosító (URI), amely a külső alkalmazások használatával férhet hozzá a kulcshoz. Ezt a kulcsot a műveletek számának korlátozásához adja meg a beállításokat a **engedélyezett műveletek**.
 
-![URI-kulcs](media/azure-stack-kv-manage-portal/image4.png)
+![A kulcs URI-t](media/azure-stack-kv-manage-portal/image4.png)
 
 ### <a name="create-a-secret"></a>Titkos kulcs létrehozása
 
 1. Jelentkezzen be a [felhasználói portál](https://portal.local.azurestack.external).
-2. Az irányítópulton, válassza ki a **összes erőforrás**, válassza ki a korábban létrehozott kulcstartó, majd a **titkok** csempére.
+2. Az irányítópulton, válassza ki a **összes erőforrás**, jelölje be a kulcstartóhoz, amely a korábban létrehozott, és válassza a **titkos kódok** csempére.
 
-3. A **titkok**, jelölje be **Hozzáadás**.
+3. A **titkos kódok**válassza **Hozzáadás**.
 
-4. A **titkos kulcs létrehozása**, közül **feltöltési beállításokat**, válasszon egy lehetőséget, amellyel titkos kulcs létrehozásához kíván. A titkos kulcsot is létrehozhat **manuálisan** Ha megad egy értéket a titkos kulcs vagy feltöltés egy **tanúsítvány** a helyi számítógépről.
+4. A **titkos kulcs létrehozása**, listájából **feltöltési beállítások**, válasszon egy lehetőséget, amellyel hozhat létre egy titkos kulcsot kíván. Létrehozhat egy titkos kulcsot **manuálisan** Ha megad egy értéket a titkos kulcsot vagy a feltöltési egy **tanúsítvány** a helyi gépen.
 
-5. Adjon meg egy **neve** a a titkos kulcsot. A titkos név csak alfanumerikus karaktereket és a speciális karakterek kötőjel (-) tartalmazhat.
+5. Adjon meg egy **neve** számára a titkos kulcsot. A titkos kód neve csak alfanumerikus karaktereket és kötőjelet (-) speciális karaktert tartalmazhat.
 
-6. Opcionálisan meghatározhatja a **tartalomtípus**, és konfigurálja az értékeket **aktiválási dátuma** és **lejárati dátuma** a titkos kulcsot a.
+6. Szükség esetén adja meg a **tartalom típusa**, és konfigurálja az értékeket **aktiválási dátum megadása** és **lejárati dátum megadása** számára a titkos kulcsot.
 
-7. Válassza ki **létrehozása** a telepítés elindításához.
+7. Válassza ki **létrehozás** a üzembe helyezésének megkezdéséhez.
 
-A titkos kulcs sikeres létrehozása után kiválaszthatja azt a **titkok** és tulajdonságainak megtekintése vagy módosítása a. A **titkos kulcs azonosítója** egy URI, amely a külső alkalmazások használhatják ezt a titkot eléréséhez.
+A titkos kód sikeres létrehozása után kiválaszthatja azt a **titkok** és megtekintéséhez vagy a hozzá tartozó tulajdonságok módosításával. A **titkos azonosító** egy URI-t, amely a külső alkalmazások a titkos kulcs elérésére szolgál.
 
-![URI titkos kulcs](media/azure-stack-kv-manage-portal/image5.png)
+![URI-secret](media/azure-stack-kv-manage-portal/image5.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Key Vault tárolt jelszó lekérésével egy virtuális gép üzembe helyezése](azure-stack-kv-deploy-vm-with-secret.md)
-* [A Key Vault tárolt tanúsítvány egy virtuális gép üzembe helyezése](azure-stack-kv-push-secret-into-vm.md)
+* [Virtuális gép üzembe helyezése a Key vaultban tárolt jelszó beolvasásával](azure-stack-kv-deploy-vm-with-secret.md)
+* [Virtuális gép üzembe helyezése a Key Vault-tanúsítvánnyal](azure-stack-kv-push-secret-into-vm.md)

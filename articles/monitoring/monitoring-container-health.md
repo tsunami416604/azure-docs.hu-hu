@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2018
+ms.date: 08/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8027149f3e5ace163bf380bc5362fcb101397986
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521931"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060159"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Figyelje az Azure Kubernetes Service (AKS) tároló állapotát (előzetes verzió)
 
 Ez a cikk ismerteti, hogyan beállítása és használata az Azure Monitor tárolójának állapotára üzembe helyezett Kubernetes-környezeteket, és az Azure Kubernetes Service (AKS) üzemeltetett számítási feladatok teljesítményének figyeléséhez. A Kubernetes-fürt és -tárolók monitorozása alapvető fontosságú, különösen akkor, ha nagy mennyiségű, több alkalmazással rendelkező egy éles fürtöt futtat.
 
-Tároló állapotának alkalmazásteljesítmény-figyelés gyűjtését memória és a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók processzor mérőszámainak lehetőségét biztosítja. Miután engedélyezte a tároló állapotának, ezeket a metrikákat automatikusan az Ön számára a Linuxhoz készült Operations Management Suite (OMS) ügynök tárolóalapú verziója gyűjtött és tárolt a [Log Analytics](../log-analytics/log-analytics-overview.md) munkaterületen. A csomagban foglalt előre meghatározott nézeteket megjeleníti az adataihoz, tárolókhoz kapcsolódó számítási feladatot, és milyen hatással van a Kubernetes-fürt teljesítménybeli állapotát, így is:  
+Tároló állapotának alkalmazásteljesítmény-figyelés gyűjtését memória és a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók processzor mérőszámainak lehetőségét biztosítja. Miután engedélyezte a tároló állapotának, ezek a metrikák automatikusan egy tárolóalapú a Linuxhoz készült Log Analytics-ügynök verziója az Ön számára gyűjtött és tárolt a [Log Analytics](../log-analytics/log-analytics-overview.md) munkaterületen. A csomagban foglalt előre meghatározott nézeteket megjeleníti az adataihoz, tárolókhoz kapcsolódó számítási feladatot, és milyen hatással van a Kubernetes-fürt teljesítménybeli állapotát, így is:  
 
 * Azonosíthatja a csomópont és a processzor és memória átlagos kihasználtság a futó tárolók. A Tudásbázis segítségével erőforrás szűk keresztmetszetek azonosítása.
 * Azonosítsa, amelyben a tároló található a vezérlő vagy podot. A Tudásbázis segítségével megtekintheti a vezérlő vagy a pod általános teljesítménye. 
@@ -38,13 +38,15 @@ Ha érdekli, figyelése és kezelése a Docker és a Windows a tárológazdagép
 Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 - Egy új vagy meglévő AKS-fürtöt.
-- A tárolóba az OMS-ügynök Linux-verzió esetében a microsoft / oms:ciprod04202018 vagy újabb. A verziószám képviseli egy dátumot a következő formátumban: *mmddyyyy*. Az ügynök automatikusan települ a tároló állapotának az előkészítés során. 
+- A Linux-verzió tárolóalapú Log Analytics-ügynököket a microsoft / oms:ciprod04202018 vagy újabb. A verziószám képviseli egy dátumot a következő formátumban: *mmddyyyy*. Az ügynök automatikusan települ a tároló állapotának az előkészítés során. 
 - Egy Log Analytics-munkaterület. Létrehozhat, engedélyezze a monitorozást az új AKS-fürt, vagy lehetővé teszik az előkészítési folyamatot, hozzon létre egy alapértelmezett munkaterületet az AKS-fürt előfizetés alapértelmezett az erőforráscsoportban. Ha úgy döntött, hogy saját maga létrehozni, azt a létrehozhat [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)segítségével, [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 - A Log Analytics közreműködő szerepkört, a figyelési szint. A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md).
 
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+
 ## <a name="components"></a>Összetevők 
 
-A teljesítmény monitorozását teszi lehetővé a Linux rendszerre, amely teljesítmény- és esemény-adatokat gyűjti össze a fürt összes csomópontja tárolóalapú OMS-ügynök támaszkodik. Az ügynök automatikus telepítése és regisztrálása a megadott Log Analytics-munkaterület-, miután engedélyezte a tárolók figyelését. 
+A teljesítmény monitorozását teszi lehetővé a teljesítmény- és esemény-adatokat gyűjti össze a fürt összes csomópontja Linux rendszeren tárolóalapú Log Analytics-ügynököket támaszkodik. Az ügynök automatikus telepítése és regisztrálása a megadott Log Analytics-munkaterület-, miután engedélyezte a tárolók figyelését. 
 
 >[!NOTE] 
 >Ha már telepített egy AKS-fürtöt, akkor engedélyeznie figyelése Azure CLI vagy a megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. Nem használhat `kubectl` frissítése, törlése, telepítse újra vagy telepítheti az ügynököt. 
@@ -59,7 +61,7 @@ A telepítés során engedélyezheti a figyelését egy új AKS-fürtöt az Azur
 Egy új Azure CLI használatával létrehozott AKS-fürt figyelése engedélyezéséhez kövesse a lépés a rövid útmutató a cikkben a szakaszában [létrehozása AKS-fürt](../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Kell futnia az Azure CLI 2.0.27-es vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+>Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.43 verzióját kell futtatnia vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 >
 
 Miután engedélyezte a figyelés, és minden konfigurációs feladat sikeresen befejeződött, a teljesítmény, a fürt két módon figyelheti:
@@ -303,7 +305,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>06072018-nél korábbi ügynökverzió
 
-Ellenőrizze, hogy az OMS-ügynök verziója előtt kiadott *06072018* megfelelően üzemel, a következő parancsot:  
+Ellenőrizze, hogy a Log Analytics-ügynök verziója előtt kiadott *06072018* megfelelően üzemel, a következő parancsot:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -501,7 +503,7 @@ Gyakran hasznos hozhatók létre olyan lekérdezések, amelyek például vagy a 
 | ContainerInventory<br> &#124;Számítógép, név, kép, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime projekt<br> &#124;táblázat megjelenítése | Összes egy tároló tárolóéletciklus-adat listázása| 
 | KubeEvents_CL<br> &#124;ahol not(isempty(Namespace_s))<br> &#124;Rendezés a TimeGenerated desc<br> &#124;táblázat megjelenítése | Kubernetes-események|
 | ContainerImageInventory<br> &#124;summarize AggregatedValue futó = count() by ImageTag, kép | Rendszerképek leltára | 
-| **A speciális analitika, válassza ki a vonaldiagramok**:<br> Teljesítményoptimalizált<br> &#124;ahol ObjectName == "Container" és a CounterName == "processzoridő"<br> &#124;Összegzés AvgCPUPercent avg(CounterValue) a bin (TimeGenerated, 30 millió), InstanceName = | Tároló CPU | 
+| **A speciális analitika, válassza ki a vonaldiagramok**:<br> Perf<br> &#124;ahol ObjectName == "Container" és a CounterName == "processzoridő"<br> &#124;Összegzés AvgCPUPercent avg(CounterValue) a bin (TimeGenerated, 30 millió), InstanceName = | Tároló CPU | 
 | **A speciális analitika, válassza ki a vonaldiagramok**:<br> Teljesítményoptimalizált &#124; ahol ObjectName == "Container" és a CounterName == "Memória kihasználtsága MB"<br> &#124;Összegzés AvgUsedMemory avg(CounterValue) a bin (TimeGenerated, 30 millió), InstanceName = | Tároló memória |
 
 ## <a name="how-to-stop-monitoring-with-container-health"></a>Előfordulhat, hogy a tároló állapotának figyelése

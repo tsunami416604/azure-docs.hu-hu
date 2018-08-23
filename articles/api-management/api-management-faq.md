@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management – gyakori kérdések |} Microsoft Docs
-description: Ismerje meg a választ gyakran ismételt kérdések (GYIK) kombinációját, és gyakorlati tanácsok az Azure API Management.
+title: Az Azure API Management – gyakori kérdések |} A Microsoft Docs
+description: Ismerje meg a válaszok a gyakori kérdések (GYIK), a mintákat, és gyakorlati tanácsok az Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,125 +14,125 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 243f0b8206166e3e054dfc423259bd3444d8a2db
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7082edf43e53766d32bd967d0b894f6439eaa492
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589832"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054082"
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
-Válaszok a gyakori kérdéseket, a mintákat és ajánlott eljárások az Azure API Management.
+Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API Management.
 
 ## <a name="contact-us"></a>Kapcsolat
-* [Hogyan lehet I kérdés a Microsoft Azure API Management csapata?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
+* [Hogyan tehetek fel a Microsoft Azure API Management csapata egy kérdést?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-* [Mit jelent, ha a szolgáltatás egyelőre?](#what-does-it-mean-when-a-feature-is-in-preview)
-* [Hogyan biztosíthassa a kapcsolatot az API Management-átjáró és a háttér-szolgáltatásaihoz?](#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)
-* [Hogyan másolja az API Management service-példány egy új példányt?](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
-* [Programozott módon is kezelhető az API Management példányt?](#can-i-manage-my-api-management-instance-programmatically)
-* [Hogyan adja hozzá a felhasználó a rendszergazdák csoporthoz?](#how-do-i-add-a-user-to-the-administrators-group)
-* [Miért van a házirendet, amely a felvenni kívánt nem érhető el a Helyicsoportházirend-szerkesztő?](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
-* [Hogyan állíthatom be több környezeteknek a egyetlen API-val?](#how-do-i-set-up-multiple-environments-in-a-single-api)
-* [Használhatok SOAP API Management?](#can-i-use-soap-with-api-management)
-* [Az API Management gateway IP cím állandó? Képes használni a tűzfalszabályok?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
-* [Beállítható az OAuth 2.0 hitelesítési kiszolgáló AD FS biztonsági?](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
-* [Milyen útválasztási módszert használni a API-kezelés a több földrajzi helyen történő telepítését?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
-* [Az Azure Resource Manager-sablon használatával hozzon létre egy API-kezelés szolgáltatás példányt?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
-* [Használhatók a háttérből az önaláírt SSL-tanúsítvány?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
-* [Miért jelenik meg hitelesítési hiba, a GIT-tárház klónozása közben?](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
-* [Az API Management működik az Azure ExpressRoute?](#does-api-management-work-with-azure-expressroute)
-* [Miért azt igényelnek erőforrás-kezelő stílusban Vnetek dedikált alhálózat amikor API Management központilag telepítik őket?](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
-* [Mi az az API Management egy VNETET történő telepítésekor szükséges minimális alhálózat méretét?](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
-* [Áthelyezhető egy API-kezelés szolgáltatás a egy előfizetés másik?](#can-i-move-an-api-management-service-from-one-subscription-to-another)
-* [Korlátozások vagy importálása a API ismert problémái vannak-e?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
+* [Mit jelent az, ha egy funkció előzetes verzióban érhető el?](#what-does-it-mean-when-a-feature-is-in-preview)
+* [Hogyan védhetem meg a kapcsolatot az API Management-átjáró és a háttérszolgáltatások között?](#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)
+* [Hogyan másolja az API Management-szolgáltatáspéldány egy új példányt?](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
+* [Programozott módon is kezelhető az API Management-példány?](#can-i-manage-my-api-management-instance-programmatically)
+* [Hogyan adhatok hozzá a felhasználó a rendszergazdák csoporthoz?](#how-do-i-add-a-user-to-the-administrators-group)
+* [Miért van a házirend, amelyet szeretnék hozzáadni a Helyicsoportházirend-szerkesztő nem érhető el?](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
+* [Hogyan állíthatok be egy egyetlen API több környezetet?](#how-do-i-set-up-multiple-environments-in-a-single-api)
+* [Használhatom-e a SOAP API Management?](#can-i-use-soap-with-api-management)
+* [Az API Management gateway IP cím állandó? Is használhatók a tűzfalszabályok?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
+* [Konfigurálhatok az OAuth 2.0 engedélyezési kiszolgáló az AD FS biztonsági?](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
+* [Milyen útválasztási módszert használni a az API Management a több földrajzi helyen történő központi telepítések?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
+* [Az Azure Resource Manager-sablonok segítségével az API Management szolgáltatáspéldány létrehozása?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
+* [Használható a háttéralkalmazás az önaláírt SSL-tanúsítvány?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
+* [Miért kapok hitelesítési hiba jelenik meg egy GIT-tárház klónozása?](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
+* [Az API Management működik az Azure ExpressRoute használatával?](#does-api-management-work-with-azure-expressroute)
+* [Miért azt igénylik kijelölt alhálózatot a virtuális hálózatok Resource Manager-stílus be központi telepítésekor az API Management?](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
+* [Mi az API Management egy vnetbe telepítésekor szükséges minimális alhálózat méretét?](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
+* [Áthelyezhető egy API Management-szolgáltatás egy előfizetésből egy másikba?](#can-i-move-an-api-management-service-from-one-subscription-to-another)
+* [A korlátozásokat és saját API importálása ismert problémái vannak-e?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
-### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Hogyan lehet I kérdés a Microsoft Azure API Management csapata?
-Akkor is kapcsolatba velünk a következő beállítások egyikét:
+### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Hogyan tehetek fel a Microsoft Azure API Management csapata egy kérdést?
+Kapcsolatfelvétel az alábbi lehetőségek egyikét használja:
 
-* A kérdéseit a [API Management MSDN fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt).
-* E-mail küldése <mailto:apimgmt@microsoft.com>.
-* Funkció kérés küldése a [Azure visszajelzési fórumon](https://feedback.azure.com/forums/248703-api-management).
+* Felteheti a kérdéseit a [API Management az MSDN-fórumokra](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt).
+* Küldjön egy e-mailt a következő címre: <mailto:apimgmt@microsoft.com>.
+* Küldjön nekünk szolgáltatással kapcsolatos kéréseit az [Azure visszajelzési fórumára](https://feedback.azure.com/forums/248703-api-management).
 
-### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>Mit jelent, ha a szolgáltatás egyelőre?
-A szolgáltatás egyelőre, az azt jelenti, hogy azt aktívan kérdése megválaszolásában kapcsolatos visszajelzéseket a funkció az Ön alakulását. Egy előzetes szolgáltatás funkcionálisan befejeződött, de előfordulhat, hogy az ügyfelek visszajelzései alapján megváltozik a legfrissebb lesz biztosítjuk. Azt javasoljuk, hogy nincs-e függ egy szolgáltatás, amely jelenleg előzetes verzióban érhető az éles környezetben. Ha olyan visszajelzést az előzetes verziójú funkciókat, tudassa velünk, a kapcsolattartási lehetőségek egyikével [hogyan is szeretnék kérdés a Microsoft Azure API Management csapata?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question).
+### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>Mit jelent az, ha egy funkció előzetes verzióban érhető el?
+Ha egy funkció előzetes verzióban érhető el, az azt jelenti, hogy a Microsoft aktívan kérdése megválaszolásában visszajelzésnek, hogyan működik a funkció az Ön számára. A funkció előzetes verzióban érhető el funkcionálisan befejeződött, de lehetséges, hogy az ügyfelek visszajelzései alapján módosíthatja a kompatibilitástörő elkészítjük. Azt javasoljuk, hogy Ön nem függnek egy szolgáltatás, amely az éles környezetben előzetes verzióban érhető el. Ha visszajelzést szeretne az előzetes verziójú funkciók, vegye fel velünk a kapcsolattartási beállítások egyikével [Hogyan tehetek fel a Microsoft Azure API Management csapata egy kérdést?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question).
 
-### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Hogyan biztosíthassa a kapcsolatot az API Management-átjáró és a háttér-szolgáltatásaihoz?
-Több lehetőség közül választhat az API Management-átjáró és a háttér-szolgáltatásaihoz közötti kapcsolat biztonságossá tétele érdekében. A következőket teheti:
+### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Hogyan lehet biztonságossá tenni a kapcsolatot az API Management-átjáró és a háttér-szolgáltatások között?
+Az API Management-átjáró és a háttér-szolgáltatások közötti kapcsolat biztonságossá tételéhez számos lehetősége van. A következőket teheti:
 
-* Egyszerű HTTP-hitelesítést használjon. További információkért lásd: [importálása és az első API-t közzétenni](import-and-publish.md).
-* SSL kölcsönös hitelesítést használ, a [háttérszolgáltatások ügyfél segítségével biztonságossá tétele a tanúsítványhitelesítés az Azure API Management](api-management-howto-mutual-certificates.md).
-* IP-engedélyezése a háttér-szolgáltatáshoz felhasználhat. Minden csomagban API-kezelés, az IP-címet az átjáró állandó marad, néhány [figyelmeztetések](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Az engedélyezett címekhez, hogy az IP-cím engedélyezése állíthatja be. A IP-címet a API Management példány kaphat az irányítópulton az Azure portálon.
-* Az API Management-példány csatlakozni az Azure virtuális hálózat.
+* Egyszerű HTTP-hitelesítés használata. További információkért lásd: [importálása és közzététele az első API](import-and-publish.md).
+* Ismertetett módon kihasználhassák a kölcsönös hitelesítés SSL [háttérszolgáltatások ügyfél használatával biztonságossá tétele a Tanúsítványalapú hitelesítés az Azure API Management](api-management-howto-mutual-certificates.md).
+* IP-címei engedélyezési listára helyezhetők a háttér-szolgáltatáshoz felhasználhat. Minden szinten az API Management, az átjáró IP-címét állandó marad, néhány [figyelmeztetések](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Beállíthatja, hogy az IP-címet az engedélyezési listán. Az API Management-példány IP-címét is kap az Azure portal irányítópultján.
+* Az API Management-példány csatlakozhat egy Azure virtuális hálózaton.
 
-### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Hogyan másolja az API Management service-példány egy új példányt?
-Erre számos lehetősége van, ha át kívánja másolni az API Management példány új példányára. A következőket teheti:
+### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Hogyan másolja az API Management-szolgáltatáspéldány egy új példányt?
+Ha szeretné másolni az API Management-példány új példányára számos lehetősége van. A következőket teheti:
 
-* A biztonsági mentése és visszaállítása az API Management függvény. További információkért lásd: [valósítja meg a vész-helyreállítási szolgáltatás biztonsági másolat használatával, és az Azure API Management visszaállítása](api-management-howto-disaster-recovery-backup-restore.md).
-* A saját biztonsági mentést, majd állítsa vissza a szolgáltatás használatával a [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx). A REST API használatával mentése és visszaállítása az entitásokat, amelyet a szolgáltatás példányból.
-* Töltse le a szolgáltatás konfigurációját a Git használatával, és töltse fel azt egy új példányát. További információkért lásd: [mentése, és az API Management szolgáltatás konfigurációs beállítása a Git használatával](api-management-configuration-repository-git.md).
+* A biztonsági másolat, és állítsa vissza a függvény az API Management szolgáltatásban. További információkért lásd: [vész-helyreállítási szolgáltatás biztonsági mentése segítségével megvalósítható, és az Azure API Management visszaállítása](api-management-howto-disaster-recovery-backup-restore.md).
+* Saját biztonsági mentést, és állítsa vissza a szolgáltatás használatával a [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx). A REST API használatával mentése és visszaállítása az entitásokat a kívánt szolgáltatás példányból.
+* A Git használatával töltheti le a szolgáltatás konfigurációját, és töltse fel azt egy új példányát. További információkért lásd: [mentésére és a Git használatával az API Management szolgáltatás konfigurációs konfigurálása](api-management-configuration-repository-git.md).
 
-### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Programozott módon is kezelhető az API Management példányt?
-Igen, akkor az API Management programozott módon segítségével kezelheti:
+### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Programozott módon is kezelhető az API Management-példány?
+Igen, kezelheti az API Management programozott módon használatával:
 
-* A [API Management REST API-t](https://msdn.microsoft.com/library/azure/dn776326.aspx).
-* A [ApiManagement szolgáltatás könyvtár Microsoft Azure SDK](http://aka.ms/apimsdk).
-* A [szolgáltatás telepítését](https://msdn.microsoft.com/library/mt619282.aspx) és [szolgáltatásfelügyelet](https://msdn.microsoft.com/library/mt613507.aspx) PowerShell-parancsmagokkal.
+* A [az API Management REST API-val](https://msdn.microsoft.com/library/azure/dn776326.aspx).
+* A [a Microsoft Azure az ApiManagement Service Management Library SDK](http://aka.ms/apimsdk).
+* A [szolgáltatás telepítését](https://docs.microsoft.com/powershell/module/wds) és [szolgáltatásfelügyelet](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) PowerShell-parancsmagokat.
 
-### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Hogyan adja hozzá a felhasználó a rendszergazdák csoporthoz?
-Itt látható, hogyan adhat hozzá a felhasználó a Rendszergazdák csoportnak:
+### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Hogyan adhatok hozzá a felhasználó a rendszergazdák csoporthoz?
+Itt látható, hogyan adhat hozzá egy felhasználót a Rendszergazdák csoport:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Ugrás az erőforráscsoport, amely már a frissíteni kívánt API Management-példányt.
-3. Az API Management, rendelje hozzá a **Api Management közreműködői** a felhasználói szerepkört.
+2. Nyissa meg az erőforráscsoport, amely rendelkezik az API Management-példány frissíteni szeretné.
+3. Az API Management, rendelje hozzá a **Api Management közreműködői** szerepkört a felhasználóhoz.
 
-Az újonnan hozzáadott közreműködői használhatja az Azure PowerShell most [parancsmagok](https://msdn.microsoft.com/library/mt613507.aspx). Jelentkezzen be rendszergazdaként hogyan itt található:
+Az újonnan hozzáadott közreműködői használható Azure PowerShell most [parancsmagok](https://docs.microsoft.com/powershell/azure/overview). A következő rendszergazdai bejelentkezés:
 
-1. Használja a `Connect-AzureRmAccount` parancsmag futtatásával jelentkezzen be.
+1. Használja a `Connect-AzureRmAccount` parancsmagot, hogy jelentkezzen be.
 2. A környezet beállítása az előfizetéshez, amely rendelkezik a szolgáltatás használatával `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.
-3. Egyszeri bejelentkezési URL-cím segítségével könnyebben nyerhet `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
-4. Az URL-címet használja a felügyeleti portál eléréséhez.
+3. Egy egyszeri bejelentkezési URL-cím beszerzése a `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
+4. A felügyeleti portál eléréséhez használja az URL-címet.
 
-### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Miért van a házirendet, amely a felvenni kívánt nem érhető el a Helyicsoportházirend-szerkesztő?
-Ha hozzá szeretne adni a házirend megjelenik a szürkén jelenik meg, vagy a Helyicsoportházirend-szerkesztő árnyékolt, arról, hogy a házirend a megfelelő hatókörben vannak-e. Minden egyes házirend-utasítás célja a hatókörökre és házirend szakaszok használata. A házirend szakaszok és egy házirend hatókörök ellenőrzéséhez tekintse meg a Csoportházirend használata című szakaszában található [API-felügyeleti házirendek](https://msdn.microsoft.com/library/azure/dn894080.aspx).
+### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Miért van a házirend, amelyet szeretnék hozzáadni a Helyicsoportházirend-szerkesztő nem érhető el?
+Ha a szabályzatot, amely a hozzáadni kívánt halványan jelenik meg, vagy a Helyicsoportházirend-szerkesztő árnyékolt, arra, hogy a megfelelő terjed ki a szabályzat jelenik meg. Minden egyes házirendutasítás lett tervezve, bizonyos hatókörökre és szabályzat szakaszok. A szabályzat szakaszok és a egy házirend hatóköreinek című témakörben találja a szabályzat használata című szakaszában található [API Management házirendek](https://msdn.microsoft.com/library/azure/dn894080.aspx).
 
-### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hogyan állíthatom be több környezeteknek a egyetlen API-val?
-Állítsa be több környezetekben, például egy tesztkörnyezetben és éles környezetben a egyetlen API-val, két lehetősége van. A következőket teheti:
+### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hogyan állíthatok be egy egyetlen API több környezetet?
+Állítsa be több környezetet, például a tesztelési környezet és a egy éles környezetben egy API, két lehetősége van. A következőket teheti:
 
-* Gazdagép másik API-k ugyanannál a bérlőnél.
-* A különböző bérlők azonos API-k üzemeltetéséhez.
+* Gazdagép másik API-k bérlőnél.
+* A gazdagép a különböző bérlők számára az API-kkal.
 
-### <a name="can-i-use-soap-with-api-management"></a>Használhatok SOAP API Management?
-[SOAP-áteresztő](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) a rendszer támogatja. -Rendszergazdák importálni tudják a WSDL SOAP szolgáltatása, és az Azure API Management létrehoz egy SOAP-előtér. Fejlesztői portál dokumentációjában, a teszt konzol, a házirendek és a analytics az összes elérhető SOAP-szolgáltatások.
+### <a name="can-i-use-soap-with-api-management"></a>Használhatom-e a SOAP API Management?
+[SOAP típusú továbbítás](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) már elérhető támogatás. -Rendszergazdák importálni tudják a WSDL a SOAP-szolgáltatás, és az Azure API Management létrehoz egy SOAP-előtérrendszerhez. Fejlesztői portál dokumentációja, a tesztelési konzol, a házirendek és a analytics mind elérhetők a SOAP-szolgáltatások.
 
-### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>Az API Management gateway IP cím állandó? Képes használni a tűzfalszabályok?
-Az API Management összes rétege a nyilvános IP-cím (VIP) az API Management-bérlő statikus a bérlő teljes néhány kivétellel. Az IP-cím módosításainak ilyen körülmények között:
+### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>Az API Management gateway IP cím állandó? Is használhatók a tűzfalszabályok?
+Az API Management minden szinten a nyilvános IP-cím (VIP) az API Management-bérlőkulcs statikus a bérlő teljes élettartama néhány kivétellel. Az IP-cím módosításainak ilyen körülmények között:
 
-* A szolgáltatás törlődik, és újból létrehozza majd.
-* A szolgáltatás az előfizetés [felfüggesztve](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) vagy [figyelmezteti](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (például nonpayment) és majd érvényességét.
-* Vegye fel vagy távolítsa el az Azure Virtual Network (is használja a virtuális hálózat csak a fejlesztői és a prémium csomagban).
+* A szolgáltatás törli és újból létrehozza majd.
+* A szolgáltatás az előfizetés [felfüggesztve](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) vagy [figyelmezteti](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (például a fizetés elmaradása), és ezután vizsgadíj.
+* Adja hozzá, vagy távolítsa el az Azure Virtual Network (virtuális hálózathoz használhat csak a fejlesztői és a prémium szintű).
 
-Több területi telepítések esetén a regionális címet érintő változásról, ha a régió vacated és majd érvényességét (használhat több területi telepítés csak a prémium csomagban).
+Többrégiós üzemelő példányokhoz, a regionális cím megváltozik, ha a régió vacated, és ezután vizsgadíj (használhat több régióban történő üzembe helyezés csak a prémium szint).
 
-Prémium szint bérlők több területi telepítési konfigurált rendelt régiónként egy nyilvános IP-címet.
+Prémium szintű bérlők többrégiós üzembe helyezési konfigurált rendelt régiónkénti egy nyilvános IP-címet.
 
-Az IP-cím (vagy címek, a központi telepítés több területi) az Azure-portálon a bérlő oldalon kaphat.
+A bérlő oldalon az Azure Portalon kérheti le az IP-cím (vagy címek, a több régióból álló üzemelő).
 
-### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Beállítható az OAuth 2.0 hitelesítési kiszolgáló AD FS biztonsági?
-Az OAuth 2.0 hitelesítési kiszolgáló konfigurálása az Active Directory összevonási szolgáltatások (AD FS) biztonsági további tudnivalókért lásd: [AD FS segítségével az API Management](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/).
+### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Konfigurálhatok az OAuth 2.0 engedélyezési kiszolgáló az AD FS biztonsági?
+Az OAuth 2.0 engedélyezési kiszolgáló konfigurálása az Active Directory összevonási szolgáltatások (AD FS) biztonsági kapcsolatban lásd: [AD FS használatával az API Management](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/).
 
-### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>Milyen útválasztási módszert használni a API-kezelés a több földrajzi helyen történő telepítését?
-API-kezelési funkciója a [teljesítmény forgalom-útválasztási módszer](../traffic-manager/traffic-manager-routing-methods.md#performance) telepítések több földrajzi helyekre. Bejövő továbbítódik a legközelebbi API-átjáró. Ha egy régió tartozik offline állapotba kerül, bejövő automatikusan továbbítódik a következő legközelebbi átjáró. További tudnivalók az útválasztási metódusait [Traffic Manager útválasztási módjai](../traffic-manager/traffic-manager-routing-methods.md).
+### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>Milyen útválasztási módszert használni a az API Management a több földrajzi helyen történő központi telepítések?
+Az API Management használja a [teljesítmény forgalom-útválasztási módszer](../traffic-manager/traffic-manager-routing-methods.md#performance) telepítések esetén, több földrajzi helyekre. A bejövő forgalmat irányítja a rendszer a legközelebbi API-átjáró. Ha egy régió elérhetetlenné válik, a bejövő forgalom automatikusan irányítja a rendszer a következő legközelebbi átjáró. További információ az útválasztási metódusok [Traffic Manager útválasztási módszerei](../traffic-manager/traffic-manager-routing-methods.md).
 
-### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Az Azure Resource Manager-sablon használatával hozzon létre egy API-kezelés szolgáltatás példányt?
-Igen. Tekintse meg a [Azure API Management Service](http://aka.ms/apimtemplate) gyorsindítási sablonok.
+### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Az Azure Resource Manager-sablonok segítségével az API Management szolgáltatáspéldány létrehozása?
+Igen. Tekintse meg a [Azure API Management szolgáltatás](http://aka.ms/apimtemplate) gyorsindítási sablonok.
 
-### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>Használhatók a háttérből az önaláírt SSL-tanúsítvány?
-Igen. Ez a PowerShell segítségével, vagy közvetlenül elküldése az API által végezhető. Ez letiltja a tanúsítványlánc érvényesítése, és lehetővé teszi az API Management a háttér-szolgáltatásokhoz való kommunikációhoz használni önaláírt vagy közvetlenül a Microsoftnak által aláírt tanúsítványokat.
+### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>Használható a háttéralkalmazás az önaláírt SSL-tanúsítvány?
+Igen. Ez elvégezhető elküldésével közvetlenül az API-t vagy a Powershellen keresztül. Ez lesz a tanúsítványlánc érvényesítésének letiltása, és lehetővé teszi, hogy az önaláírt vagy privát módon által aláírt tanúsítványokat használ a háttérszolgáltatásoknak az API Management közötti kommunikáció során.
 
 #### <a name="powershell-method"></a>PowerShell-módszer ####
-Használja a [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (az új háttér) vagy [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (a meglévő háttér) PowerShell-parancsmagok és állítsa be a `-SkipCertificateChainValidation` paramétert `True`. 
+Használja a [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (az új háttér-) vagy [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (a meglévő háttér) PowerShell-parancsmagok és állítsa be a `-SkipCertificateChainValidation` paramétert `True`. 
 
 ```
 $context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
@@ -140,25 +140,25 @@ New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/mya
 ```
 
 #### <a name="direct-api-update-method"></a>Közvetlen API frissítési módszer ####
-1. Hozzon létre egy [háttér](https://msdn.microsoft.com/library/azure/dn935030.aspx) entitás API Management használatával.       
+1. Hozzon létre egy [háttérrendszer](https://msdn.microsoft.com/library/azure/dn935030.aspx) entitás API Management segítségével.       
 2. Állítsa be a **skipCertificateChainValidation** tulajdonságot **igaz**.     
-3. Már nem szeretne önaláírt tanúsítványok használatának engedélyezése, ha a háttérkiszolgáló entitást, vagy állítsa a **skipCertificateChainValidation** tulajdonságot **hamis**.
+3. Ha már nem szeretné, hogy az önaláírt tanúsítványokat, a háttérbeli entitás törlése, vagy állítsa be a **skipCertificateChainValidation** tulajdonságot **hamis**.
 
-### <a name="why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository"></a>Miért jelenik meg hitelesítési hiba, a Git-tárház klónozása közben?
-Ha Git hitelesítőadat-kezelő, vagy egy Git-tárház klónozása a Visual Studio használatával próbál, mutatjuk be egy ismert hiba, mely a Windows hitelesítő adatok párbeszédpanel. A párbeszédpanel korlátozza a jelszó hossza 127 karakter hosszúságú lehet, és hogy csonkolja a Microsoft által létrehozott jelszót. Jelenleg is dolgozunk lerövidíteni a jelszót. Most használja a Git bash eszközt a Git-tárház klónozása.
+### <a name="why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository"></a>Miért kapok hitelesítési hiba jelenik meg egy Git-tárház klónozása?
+Ha a Git Credential Managert használja, vagy ha egy Git-tárház klónozásához a Visual Studio használatával, előfordulhat, hogy tapasztal egy ismert probléma, amely a Windows hitelesítő adatok párbeszédpanel. A párbeszédpanel 127 karakter hosszú lehet a jelszó hossza korlátozza, és hogy csonkolja a Microsoft által létrehozott jelszót. Dolgozunk lerövidíteni a jelszót. Most használja a Git Bash a Git-tárház klónozásához.
 
-### <a name="does-api-management-work-with-azure-expressroute"></a>Az API Management működik az Azure ExpressRoute?
-Igen. Az API Management Azure ExpressRoute működik.
+### <a name="does-api-management-work-with-azure-expressroute"></a>Az API Management működik az Azure ExpressRoute használatával?
+Igen. Az API Management az Azure ExpressRoute használatával működik.
 
-### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Miért azt igényelnek erőforrás-kezelő stílusban Vnetek dedikált alhálózat amikor API Management központilag telepítik őket?
-Az API Management dedikált alhálózati szükségessége, hogy be van építve (PAAS V1 réteg) klasszikus telepítési modell származik. Telepíthetünk egy erőforrás-kezelő virtuális hálózat (V2 réteg) azokat, amíg nincsenek következményekkel jár-e. A Resource Manager modellt együtt nem szorosan használja a klasszikus telepítési modellt az Azure-ban, és így V2 réteg erőforrás hoz létre, ha a V1 réteg nem ismert, és probléma akkor fordulhat elő, például az API Management próbálja használni az IP-cím már le van foglalva a hálózati adapterhez  (V2 épülő).
-Ismerje meg, klasszikus és Resource Manager modellt az Azure-ban különbségét bővebben lásd [különbség az üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md).
+### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Miért azt igénylik kijelölt alhálózatot a virtuális hálózatok Resource Manager-stílus be központi telepítésekor az API Management?
+A kijelölt alhálózatot követelmény az API Management származik, hogy (PAAS V1 réteg) klasszikus üzembe helyezési modell alapján készült. Azt üzembe helyezhető Resource Manager VNET (2. réteg), amíg nincsenek, amely a következményekkel. A Resource Manager-modell nem szorosan összekapcsolt a klasszikus üzemi modellben az Azure-ban, és így V2 réteg egy erőforrást hoz létre, ha a V1 réteg nem ismert, és problémák fordulhat elő, például az API Management próbál használni, amely már hozzá van rendelve egy hálózati adapter IP-címet  (V2 alapul).
+További információ az Azure-ban a klasszikus és Resource Manager modellek különbség lásd: [különbség az üzemi modellekben található](../azure-resource-manager/resource-manager-deployment-model.md).
 
-### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>Mi az az API Management egy VNETET történő telepítésekor szükséges minimális alhálózat méretét?
-Az API Management üzembe helyezéséhez szükséges minimális alhálózat mérete [/29](../virtual-network/virtual-networks-faq.md#configuration), vagyis a minimális alhálózat méretét, amely támogatja az Azure.
+### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>Mi az API Management egy vnetbe telepítésekor szükséges minimális alhálózat méretét?
+Az API Management üzembe helyezéséhez szükséges minimális alhálózat mérete [/29](../virtual-network/virtual-networks-faq.md#configuration), azaz az Azure által támogatott minimális alhálózat méretét.
 
-### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>Áthelyezhető egy API-kezelés szolgáltatás a egy előfizetés másik?
-Igen. Megtudhatja, hogyan: [erőforrások áthelyezése egy új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
+### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>Áthelyezhető egy API Management-szolgáltatás egy előfizetésből egy másikba?
+Igen. További információ [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
 
-### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>Korlátozások vagy importálása a API ismert problémái vannak-e?
-[Ismert problémák és korlátozások](api-management-api-import-restrictions.md) nyitott API(Swagger), a WSDL és WADL formázza.
+### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>A korlátozásokat és saját API importálása ismert problémái vannak-e?
+[Ismert problémák és korlátozások](api-management-api-import-restrictions.md) az Open API(Swagger) WSDL és WADL formázza.

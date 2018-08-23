@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/06/2018
+ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 1f3b17f3163c29f9b9e1e47e14ccdbc1e37e1010
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 27030256b88f429d080c7a7ce69ed3c83eca337c
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39635006"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055100"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Mi az új Azure SQL Data warehouse? 2018. augusztus
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 augusztus.
@@ -26,6 +26,15 @@ A Microsoft vezetett be [automatikus intelligent insights](https://azure.microso
 A javaslatok az Advisor az Azure Portalon is megtekintheti: ![Azure Advisor portál javaslatokat az Azure SQL Data warehouse-hoz](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
 
 Részletesen is megtekintheti az adott riasztásra vonatkozó javaslatok láthatók kategóriákhoz: ![Azure Advisor portál javaslat részletei az Azure SQL Data warehouse-hoz](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
+
+
+## <a name="bug-fixes"></a>Hibajavítások
+
+| Beosztás | Leírás |
+|:---|:---|
+| **A felosztás száma meghaladja a maximális korlátot lehetséges lekérdezés-hibák** |A felső határa 1 millió fájl-felosztás korlát túllépésekor nem kezelt kivételt okozott az SQL-kezelő kiírása, és az összes lekérdezés nem sikerült. A javítás címmel a probléma a kivétel megfelelően kezeli, és anélkül, hogy ez a lekérdezések hibát adnak vissza. |
+| **ExternalMoveReadersPerNode alapértelmezett hasznosításával betöltési teljesítmény javítása érdekében** |A probléma a ExternalMoveReadersPerNode tulajdonság beállítása folyamatban van a szinkronizált beállítása service fabric okozta. A regresszió miatt egy csökkentett teljesítményű Gen2 betöltési teljesítmény. A javítás Gen2 betöltési teljesítmény optimalizált tervezési paraméterek belül újra elérhetővé teszi.|
+
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy jobban megismerte az SQL Data warehouse, megtudhatja, hogyan lehet gyorsan [hozzon létre egy SQL Data Warehouse][create a SQL Data Warehouse]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure glossary], amikor az új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  

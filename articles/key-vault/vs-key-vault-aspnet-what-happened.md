@@ -1,35 +1,36 @@
 ---
-title: Az ASP.NET módosításainak projektre, ha az Azure Key Vaultba Connect |} Microsoft Docs
-description: Ismerteti, mi történik az ASP.NET projektben, amikor csatlakozik a Visual Studio szolgáltatások segítségével toKey tároló csatlakozik.
+title: Az ASP.NET végrehajtott módosítások a projekt mikor, való csatlakozásra szolgáló Azure Key Vault |} A Microsoft Docs
+description: Leírja, mi történik, az ASP.NET-projektben, toKey Vault használatával a Visual Studio kapcsolódó szolgáltatásaival való csatlakozáskor.
 services: key-vault
 author: ghogen
 manager: douge
 tags: azure-resource-manager
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
+ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: a43f893c7ee87ffb02179c06ea5786715547e93a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a74e4e10681f6b91e028067d8985408b0745dcd2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787359"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056378"
 ---
-# <a name="what-happened-to-my-aspnet-project-visual-studio-key-vault-connected-service"></a>Mi történt az ASP.NET-projekt (a Visual Studio Key Vault szolgáltatás csatlakozik)?
+# <a name="what-happened-to-my-aspnet-project-visual-studio-key-vault-connected-service"></a>Mi történt az ASP.NET-projektemmel (a Visual Studio a Key Vault csatlakoztatott szolgáltatás)?
 
 > [!div class="op_single_selector"]
 > - [Első lépések](vs-key-vault-aspnet-get-started.md)
 > - [mi történt](vs-key-vault-aspnet-what-happened.md)
 
-Ez a cikk azonosítja a pontos módosításai az ASP.NET-projekt hozzáadásakor a [Key Vault szolgáltatás Visual Studio használatával csatlakoztatott](vs-key-vault-add-connected-service.md).
+Ez a cikk azonosítja a pontos módosításait ASP.NET-projekt hozzáadásakor a [Key Vault csatlakoztatott szolgáltatás Visual studióval](vs-key-vault-add-connected-service.md).
 
-A csatlakoztatott szolgáltatás munkavégzés további információkért lásd: [bevezetés](vs-key-vault-aspnet-get-started.md).
+A csatlakoztatott szolgáltatás való használatáról információkért lásd: [bevezetés](vs-key-vault-aspnet-get-started.md).
 
-## <a name="added-references"></a>A hozzáadott hivatkozások
+## <a name="added-references"></a>A hozzáadott referenciák
 
-A projekt fájlhivatkozások *.NET van hatással és `packages.config` (NuGet-hivatkozás).
+A projekt fájlhivatkozásokat *.NET érinti és `packages.config` (NuGet-hivatkozás).
 
 | Típus | Leírások |
 | --- | --- |
@@ -38,18 +39,18 @@ A projekt fájlhivatkozások *.NET van hatással és `packages.config` (NuGet-hi
 | .NET; NuGet | Microsoft.Rest.ClientRuntime |
 | .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
 
-## <a name="added-files"></a>A hozzáadott fájlok
+## <a name="added-files"></a>Hozzáadott fájlok
 
-- ConnectedService.json hozzá, amelyek bizonyos kapcsolatos adatokat rögzíti a csatlakoztatott szolgáltató, verziót és egy a dokumentációra mutató hivatkozással.
+- ConnectedService.json ad hozzá, amely rögzíti a csatlakoztatott szolgáltatás szolgáltató, verzióját és a egy hivatkozást a dokumentációban némi információt.
 
-## <a name="project-file-changes"></a>Projekt fájlváltozások
+## <a name="project-file-changes"></a>Projekt fájlmódosítás
 
-- A kapcsolódó szolgáltatások ItemGroup és ConnectedServices.json fájl hozzáadása.
-- A .NET-szerelvények ismertetett hivatkozik a [hozzá hivatkozásokat](#added-references) szakasz.
+- A csatlakoztatott szolgáltatások ItemGroup és ConnectedServices.json fájl megtörtént.
+- A .NET-szerelvények ismertetett mutató hivatkozásokat a [hozzá hivatkozásokat](#added-references) szakaszban.
 
 ## <a name="webconfig-or-appconfig-changes"></a>Web.config vagy az App.config fájlt módosítások
 
-- A következő konfigurációs bejegyzések felvételekor:
+- Adja hozzá a következő konfigurációs bejegyzéseket:
 
     ```xml
     <appSettings>
@@ -58,8 +59,8 @@ A projekt fájlhivatkozások *.NET van hatással és `packages.config` (NuGet-hi
     </appSettings>
     ```
 
-## <a name="changes-on-azure"></a>Változások az Azure-on
+## <a name="changes-on-azure"></a>Változások az Azure-ban
 
-- Erőforráscsoport létrehozása (vagy egy meglévő használja).
-- A kulcstároló létrehozása a megadott erőforráscsoportban.
+- Létrehozott egy erőforráscsoportot (vagy egy meglévő használja).
+- A megadott erőforráscsoportban létrehozott egy kulcstartót.
 

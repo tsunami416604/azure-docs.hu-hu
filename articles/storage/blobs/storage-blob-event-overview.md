@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 6f3afa22a50728070c42cd6e2eff0cc148815fbc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d38ab71ed2d2ebff04004f02589cfccca4199318
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262684"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060639"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob storage-események
 
@@ -21,7 +21,7 @@ Az Azure Storage-események lehetővé teszik az alkalmazások létrehozását �
 
 Blob storage esemény gyakori forgatókönyvek kép vagy videó feldolgozása, keresési indexelő vagy minden fájl alapú munkafolyamat tartalmazza.  Aszinkron fájlfeltöltéseket egy kiválóan alkalmas eseményeket a rendszer.  Módosítások ritkák, de a forgatókönyvhöz szükséges azonnali válaszképességét, eseményalapú architektúrát különösen hatékony is lehet.
 
-A Storage-események rendelkezésre állása az Event Grid [rendelkezésre állásától](../../event-grid/overview.md) függ, a többi régióban pedig az Event Griddel egyszerre válnak majd elérhetővé. Vessen egy pillantást [útvonal Blob storage-események az egyéni webes végpont - CLI](storage-blob-event-quickstart.md) vagy [útvonal Blob storage-események az egyéni webes végpont - PowerShell](storage-blob-event-quickstart-powershell.md) rövid példában. 
+Vessen egy pillantást [útvonal Blob storage-események az egyéni webes végpont - CLI](storage-blob-event-quickstart.md) vagy [útvonal Blob storage-események az egyéni webes végpont - PowerShell](storage-blob-event-quickstart-powershell.md) rövid példában. 
 
 ![Event Grid-modell](./media/storage-blob-event-overview/event-grid-functional-model.png)
 

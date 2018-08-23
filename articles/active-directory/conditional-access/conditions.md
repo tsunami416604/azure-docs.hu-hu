@@ -2,7 +2,7 @@
 title: Mik azok a feltételek az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
 description: Ismerje meg, hogyan feltételek használatával az Azure Active Directory feltételes hozzáférési szabályzat aktiválása.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, az Azure AD feltételes hozzáférés, biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
+keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -17,16 +17,16 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5f5e2051f9c67fa4e37ce0e1213e14e197222f05
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627542"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056384"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Mik azok a feltételek az Azure Active Directory feltételes hozzáférés? 
 
-Szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások használatával [Azure Active Directory (Azure AD) feltételes hozzáférés](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal). Feltételes hozzáférési szabályzat adja meg a választ a szabályzat riasztást kiváltó okát. Egy példa válasz **majd ehhez**. Egy példa oka **ebben az esetben**.
+Szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások használatával [Azure Active Directory (Azure AD) feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). Egy feltételes hozzáférési szabályzatot határoz meg a választ ("majd ehhez"), az az oka a szabályzat elindítása ("e hiba megjelenésekor"). 
 
 ![OK és válasz](./media/conditions/10.png)
 
@@ -64,15 +64,17 @@ Felhasználók adott részhalmazához célzó hasznos a központi telepítés eg
 
 ## <a name="cloud-apps"></a>Felhőalkalmazások 
 
-Egy felhőalapú alkalmazás esetében, egy webhelyre vagy szolgáltatásba. Webhelyek az Azure AD Application Proxy által védett felhőalapú alkalmazások is. Támogatott felhőbeli részletes ismertetését lásd: [felhőalapú alkalmazások hozzárendelések](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
+Egy felhőalapú alkalmazás esetében, egy webhelyre vagy szolgáltatásba. Webhelyek az Azure AD Application Proxy által védett felhőalapú alkalmazások is. Támogatott felhőbeli részletes ismertetését lásd: [felhőalapú alkalmazások hozzárendelések](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
 
 A **felhőalkalmazások** feltétel megadása kötelező a feltételes hozzáférési szabályzat. A házirendben válassza ki is **az összes felhőalapú alkalmazások** vagy konkrét alkalmazások kiválasztása.
 
 ![Tartalmazza a felhőalapú alkalmazások](./media/conditions/03.png)
 
-- Válassza ki **az összes felhőalapú alkalmazások** alapkonfiguráció-szabályzatokhoz, a teljes szervezetre érvényesek. Használja ezt a lehetőséget a házirendekben, amelyek a többtényezős hitelesítés megkövetelése bejelentkezési kockázat észlelésekor bármely felhőalapú alkalmazás esetében. Alkalmazott házirend **az összes felhőalapú alkalmazások** hozzáférés vonatkozik az összes webhelyek és szolgáltatások. Ez a beállítás nem jelenik meg a felhőalkalmazások korlátozódik a **alkalmazások kiválasztása** listája. 
+A következők szerint válasszon:
 
-- Válassza ki a célként megadott konkrét szolgáltatások az egyes felhőalapú alkalmazásokat házirend. Ha például szükség lehet a felhasználókat, hogy egy [szabályzatnak megfelelő eszköz](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) a SharePoint Online-hoz. A házirend más szolgáltatások is érvényben van, a SharePoint-tartalmakhoz férhetnek. Ilyen például a Microsoft Teams. 
+- **Az összes felhőalapú alkalmazások** alapkonfiguráció-szabályzatokhoz, a teljes szervezetre érvényesek. Használja ezt a lehetőséget a házirendekben, amelyek a többtényezős hitelesítés megkövetelése bejelentkezési kockázat észlelésekor bármely felhőalapú alkalmazás esetében. Alkalmazott házirend **az összes felhőalapú alkalmazások** hozzáférés vonatkozik az összes webhelyek és szolgáltatások. Ez a beállítás nem jelenik meg a felhőalkalmazások korlátozódik a **alkalmazások kiválasztása** listája. 
+
+- Az egyes felhőalapú alkalmazások a cél a házirend által meghatározott szolgáltatások. Ha például szükség lehet a felhasználókat, hogy egy [szabályzatnak megfelelő eszköz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) a SharePoint Online-hoz. A házirend más szolgáltatások is érvényben van, a SharePoint-tartalmakhoz férhetnek. Ilyen például a Microsoft Teams. 
 
 Konkrét alkalmazások kizárhat a szabályzat alól. Ezek az alkalmazások azonban továbbra is a alkalmazni szabályzatokat az elért szolgáltatások is. 
 
@@ -80,18 +82,18 @@ Konkrét alkalmazások kizárhat a szabályzat alól. Ezek az alkalmazások azon
 
 ## <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
-A bejelentkezési kockázat azt jelzi, hogy a magas, közepes vagy alacsony annak valószínűsége, hogy egy bejelentkezés nem volt kísérlet egy felhasználói fiók jogos tulajdonosa. Az Azure AD számítja ki a bejelentkezési kockázati szint alatt egy felhasználó a bejelentkezést. A számított bejelentkezési kockázati szint lehet egy feltétel, a feltételes hozzáférési szabályzat. 
+A bejelentkezési kockázat azt jelzi, hogy annak a valószínűségét (magas, közepes vagy alacsony), amely egy bejelentkezés nem volt kísérlet egy felhasználói fiók jogos tulajdonosa. Az Azure AD számítja ki a bejelentkezési kockázati szint alatt egy felhasználó a bejelentkezést. A számított bejelentkezési kockázati szint használhatja feltételként egy feltételes hozzáférési házirendben.
 
 ![Bejelentkezési kockázati szintek](./media/conditions/22.png)
 
-Ez a feltétel használatához rendelkeznie kell [Azure Active Directory Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection-enable) engedélyezve van.
+Ez a feltétel használatához rendelkeznie kell [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-enable) engedélyezve van.
  
 Ez a feltétel gyakori alkalmazási helyzetei, amelyek rendelkeznek a következő védelmi szabályzatok: 
 
 - A magas bejelentkezési kockázat a felhasználók blokkolása. Ez a védelem megakadályozza, hogy a felhasználók vélhetően feldolgozásától a felhőalkalmazásokhoz hozzáférő. 
 - Egy közepes méretű bejelentkezési kockázat rendelkező felhasználók számára a többtényezős hitelesítés szükséges. A többtényezős hitelesítés kényszerítése, megadhat további bizalom, hogy a bejelentkezési végzi el a fiók jogos tulajdonosa.
 
-További információkért lásd a [kockázatos bejelentkezésekkel](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-security-risky-sign-ins) foglalkozó részt.  
+További információkért lásd a [kockázatos bejelentkezésekkel](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins) foglalkozó részt.  
 
 ## <a name="device-platforms"></a>Eszközplatformok
 
@@ -114,7 +116,7 @@ Az eszköz Eszközállapot-feltételt nem tartalmazza a hibrid Azure AD-hoz csat
 
 ![Eszközállapot konfigurálása](./media/conditions/112.png)
 
-Ha azt szeretné, a nem felügyelt eszközök hozzáférésének letiltására, alkalmazzon [eszközalapú feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
+Ha azt szeretné, a nem felügyelt eszközök hozzáférésének letiltására, alkalmazzon [eszközalapú feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
 
 
 ## <a name="locations"></a>Helyek
@@ -148,7 +150,7 @@ Az ügyfélalkalmazások, használhatja a feltételes hozzáférési házirend l
 
 Gyakori alkalmazási esetei ezt az állapotot a következő védelmi szabályzatok: 
 
-- Szükséges egy [szabályzatnak megfelelő eszköz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) mobil- és asztali alkalmazásokhoz, amelyek nagy mennyiségű adat letöltése az eszközön. Egy időben bármilyen eszközről böngészőalapú hozzáférés engedélyezése.
+- Szükséges egy [szabályzatnak megfelelő eszköz](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) mobil- és asztali alkalmazásokhoz, amelyek nagy mennyiségű adat letöltése az eszközön. Egy időben bármilyen eszközről böngészőalapú hozzáférés engedélyezése.
 
 - Webes alkalmazásokhoz való hozzáférés letiltása, de a mobil és asztali alkalmazásokhoz való hozzáférés.
 
@@ -163,7 +165,7 @@ Kiválasztásával **Exchange ActiveSync** ügyfélként alkalmazások feltétel
  
 ![Házirend alkalmazása csak a támogatott platformokra](./media/conditions/33.png)
 
-Ez a feltétel alkalmazása csak a támogatott platformokra megegyezik az összes eszközplatformot egy [eszköz platform feltétel](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
+Ez a feltétel alkalmazása csak a támogatott platformokra megegyezik az összes eszközplatformot egy [eszköz platform feltétel](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
 
 ![Eszközplatformok konfigurálása](./media/conditions/34.png)
 
@@ -172,7 +174,7 @@ Ez a feltétel alkalmazása csak a támogatott platformokra megegyezik az össze
 
 - [Az Azure Active Directory feltételes hozzáférés beállítása a SharePoint Online és Exchange online-hoz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
  
-- [Az Azure Active Directory, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam). 
+- [Az Azure Active Directory, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
 
 
 ### <a name="legacy-authentication"></a>Örökölt hitelesítés  

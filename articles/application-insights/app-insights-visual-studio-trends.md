@@ -7,17 +7,20 @@ author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
 ms.service: application-insights
-ms.workload: tbd
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
-ms.author: mbullwin; daviste
-ms.openlocfilehash: 77ed0b5809a1da4629b80f65d1a27da2a2758236
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 17303186b176c6d14b1c895d17d21c0f29cdcdcf
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42441789"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trendek elemzése a Visual Studióban
 Az Application Insights Trends eszköze megjeleníti webalkalmazásai fontos telemetria-eseményeinek időbeli változásait, ezzel segítve a problémák és hibák gyors azonosítását. Azáltal, hogy részletesebb diagnosztikai információhoz ad hozzáférést, a Trends segíthet az alkalmazás teljesítményének növelésében, a kivételek okának megtalálásában, valamint az egyéni eseményeire vonatkozó háttérismeretek feltárásában.
@@ -57,7 +60,7 @@ Az Application Insights Trends idősorozatos megjelenítést hoz létre az alkal
 
 Használja az ablak tetején található vezérlőket annak módosításához, hogy milyen típusú telemetriákat szeretne megjeleníteni. Először válassza ki az Önt érdeklő telemetriatípust:
 
-* **Telemetria típus** -kiszolgálói kérelmek, kivételek, függőségeit vagy egyéni események
+* **Telemetria típusa** -kiszolgálókérelmek, kivételek, függőségek vagy egyéni események
 * **Időtartomány** – Bármely időpont az elmúlt 30 perctől az elmúlt 3 napig
 * **Csoportosítási szempont** – Kivétel típusa, probléma azonosítója, ország/régió, és továbbiak.
 

@@ -1,6 +1,6 @@
 ---
-title: A Power bi-bA az Azure Application Insights exportálása |} Microsoft Docs
-description: A Power BI elemzési lekérdezések olvasható.
+title: Az Azure Application Insights szolgáltatásból a Power bi-bA exportálása |} A Microsoft Docs
+description: Analytics-lekérdezések a Power bi-ban is megjeleníthetők.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,120 +11,104 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/18/2016
+ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: dee3313082fbe75d76bf27105979cf7e869fafad
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fc651b3bc28e59c5c5a195211d811e206eee3e42
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294122"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055347"
 ---
-# <a name="feed-power-bi-from-application-insights"></a>Az Application Insights hírcsatorna a Power bi-ban
-[A Power BI](http://www.powerbi.com/) üzleti eszközök szükséges, amely segít az adatok elemezheti és megoszthatja az elemzések csomagja. Gazdag az irányítópultok olyan rendelkezésre álljanak minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések adatok kombinálhatja [Azure Application Insights](app-insights-overview.md).
+# <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
+[Power bi-ban](http://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](app-insights-overview.md).
 
-Az Application Insights adatainak exportálása a Power bi-ban három javasolt módszer áll rendelkezésre. Használhatja őket külön-külön vagy együtt.
+Az Application Insights-adatok exportálása Power bi-hoz három módszer van:
 
-* [**A Power BI adapter**](#power-pi-adapter). Állítsa be egy teljes irányítópult telemetriai adatot az alkalmazásból. Előre definiált diagramok készletét, de más forrásból is hozzáadhat a saját lekérdezések.
-* [**Elemzési lekérdezések exportálásáról**](#export-analytics-queries). Írás a lekérdezés szeretne, és exportálja a Power bi-bA. A lekérdezés írás Analytics segítségével, vagy a használati tölcsérek a írja azokat. Ez a lekérdezés elhelyezheti az irányítópulton, egyéb adatokat.
-* [**A folyamatos exportálás és az Azure Stream Analytics**](app-insights-export-stream-analytics.md). Ez a módszer akkor hasznos, ha az adatokat hosszú ideig megtartja. Ha ezt elmulasztja, a más módszerek valamelyikével, mert a további munkahelyi beállítása magában foglalja.
+* [**Exportálja az elemzési lekérdezések**](#export-analytics-queries). Ez az előnyben részesített módszere. Minden írási lekérdezés szeretne, majd exportálhatja, és a Power bi-ban. Ez a lekérdezés állíthat be egy irányítópultot, valamint minden egyéb adatot.
+* [**A folyamatos exportálás és az Azure Stream Analytics**](app-insights-export-stream-analytics.md). Ez a módszer akkor hasznos, ha azt szeretné, hogy hosszú ideig tárolja az adatait. Ha nem rendelkezik egy kibővített adatok megőrzési követelmény, exportálás analytics lekérdezési módszert használja. A folyamatos exportálás és a Stream Analytics magában foglalja a több munkahelyi beállításához és további indextárolási terheléssel jár.
+* [**A Power BI adapter**](#power-pi-adapter). A diagramok készletét parancspéldány előre definiált, de a más forrásokból is hozzáadhat a saját lekérdezéseket.
 
-## <a name="power-bi-adapter"></a>A Power BI-adapter
-Ez a módszer létrehoz egy teljes irányítópult telemetriai adatot. A kezdeti adatkészlet előre definiált, de további adatokat adhat.
+> [!NOTE]
+> A Power BI-adaptert már **elavult**. Ez a megoldás az előre definiált diagramok statikus szakaszához lekérdezések fel van töltve. Nem rendelkezik a lekérdezések szerkesztése és az adatok bizonyos tulajdonságait függően lehetséges, a Power bi-ba, a sikeres kapcsolat, de nincs adat nem üres. Kizárási feltétel szoftveresen kötött a lekérdezés beállított okozza. Amíg ez a megoldás lehet, hogy továbbra is működni egyes ügyfelek számára, az adapter flexiblity hiánya miatt az ajánlott megoldás az, hogy használja a [ **exportálja az elemzési lekérdezés** ](#export-analytics-queries) funkciót.
 
-### <a name="get-the-adapter"></a>Az adapter beolvasása
-1. Jelentkezzen be [a Power BI](https://app.powerbi.com/).
-2. Nyissa meg **adatok**, **szolgáltatások**, majd **az Application Insights**.
+## <a name="export-analytics-queries"></a>Analytics-lekérdezések exportálása
+Ezt az útvonalat, vagy használati tölcsérek exportálhat bármely Analytics-lekérdezés írása, és teszi majd exportálja, amelyek a Power BI-irányítópultra. (Is hozzáadhat az irányítópulthoz, a csatoló által létrehozott.)
+
+### <a name="one-time-install-power-bi-desktop"></a>Egy alkalommal: Power BI Desktop telepítése
+Az Application Insights-lekérdezés importálásához a Power BI asztali verzióját használja. Ezután közzéteheti a weben vagy a Power BI-felhő munkaterületre. 
+
+Telepítés [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
+
+### <a name="export-an-analytics-query"></a>Analytics-lekérdezések exportálása
+1. [Nyissa meg a Analytics és a lekérdezés írása](app-insights-analytics-tour.md).
+2. Tesztelje, és pontosítsa a lekérdezést, mindaddig, amíg az eredmények elégedett. Győződjön meg arról, hogy a lekérdezés megfelelően fut az Analyticsben exportálás előtt.
+3. Az a **exportálása** menüben válassza a **Power bi-ban (M)**. Mentse a fájlt.
    
-    ![Képernyőképeket az beszerzése az Application Insights-adatforrás](./media/app-insights-export-power-bi/power-bi-adapter.png)
-3. Adja meg az Application Insights-erőforrás adatait.
-   
-    ![Képernyőkép az beszerzése az Application Insights-adatforrás](./media/app-insights-export-power-bi/azure-subscription-resource-group-name.png)
-4. Várjon egy percet, amíg az adatok, importálandók.
-   
-    ![Képernyőfelvétel a Power BI-adapter](./media/app-insights-export-power-bi/010.png)
+    ![Képernyőkép, Analytics, az Exportálás menü kiemelésével](./media/app-insights-export-power-bi/analytics-export-power-bi.png)
+4. A Power BI Desktopban, válassza ki a **adatok lekérése** > **üres lekérdezés**. Ezt követően a Lekérdezésszerkesztő alatt **nézet**válassza **speciális szerkesztő**.
 
-Az irányítópult az Application Insights diagramok kombinálásának más forrásokból, valamint elemzési lekérdezések szerkesztheti. Kaphat további diagramok a képi megjelenítés gyűjteményben, és minden egyes diagram beállítható paraméterrel rendelkezik.
+    Az exportált M nyelvi parancsfájl illessze be a speciális szerkesztő.
 
-A kezdeti importálás után az irányítópulton és a jelentések is naponta. Szabályozhatja, hogy a frissítési ütemezés az adatkészlettel.
+    ![Képernyőkép a Power BI Desktopban, a speciális szerkesztő kiemelésével](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
 
-## <a name="export-analytics-queries"></a>Elemzési lekérdezések exportálása
-Ez az útvonal írás Analytics lekérdezés, vagy használati tölcsérek exportálása, és teszi majd exportálja, amelyek a Power BI-irányítópultot. (Adhat hozzá a csatoló által létrehozott irányítópult.)
-
-### <a name="one-time-install-power-bi-desktop"></a>Egy alkalommal: telepítse a Power BI Desktop
-Az Application Insights lekérdezés importálásához a Power BI asztali verzióját használja. Majd közzéteheti azt az interneten vagy a Power BI felhő munkaterületet. 
-
-Telepítés [a Power BI Desktopban](https://powerbi.microsoft.com/en-us/desktop/).
-
-### <a name="export-an-analytics-query"></a>Az elemzési lekérdezések exportálása
-1. [Nyissa meg a elemzés és a lekérdezés írása](app-insights-analytics-tour.md).
-2. Tesztelje, pontosítsa a lekérdezést, amíg megfelelőnek találja az eredményeket. Győződjön meg arról, hogy a lekérdezés megfelelően fut Analytics exportálás előtt.
-3. Az a **exportálása** menüben válasszon **Power BI (M)**. Mentse a fájlt.
-   
-    ![Képernyőkép az elemzés, exportálás menüvel kiemelve](./media/app-insights-export-power-bi/analytics-export-power-bi.png)
-4. Válassza ki a Power BI Desktopban, **adatok beolvasása** > **üres lekérdezés**. Ezt követően a a Lekérdezésszerkesztő alatt **nézet**, jelölje be **speciális szerkesztő**.
-
-    Illessze be az exportált M nyelvi parancsfájlt a speciális szerkesztőbe.
-
-    ![Képernyőfelvétel a Power BI Desktop, speciális szerkesztővel kiemelve](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
-
-1. Ahhoz, hogy a Power BI Azure eléréséhez, lehetséges, hogy hitelesítő adatok. Használjon **szervezeti fiók** a Microsoft-fiókkal bejelentkezni.
+1. Ahhoz, hogy a Power BI Azure eléréséhez, akkor előfordulhat, hogy adja meg hitelesítő adatait. Használat **szervezeti fiók** kattintva jelentkezhet be Microsoft-fiókjával.
    
     ![A Power BI lekérdezés beállításai képernyőkép párbeszédpanel](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
 
-    Ha a hitelesítő adatok ellenőrzéséhez szükség, akkor a **adatforrás-beállítások** menüparancs a lekérdezés-szerkesztő. Ne használja az Azure-ba, elképzelhető, hogy a hitelesítő adatait a Power BI eltérő hitelesítő adatok megadása.
-2. Válassza ki a lekérdezést a képi megjelenítés, és válassza ki azokat a mezőket az x tengely, y tengely és szegmentálja a dimenzió.
+    Ha a hitelesítő adatok ellenőrzése van szüksége, használja a **adatforrás-beállítások** menüparancs a Lekérdezésszerkesztő. Győződjön meg róla, Azure-t, amely eltérhet a hitelesítő adatait a Power bi-ban használt hitelesítő adatok megadásához.
+2. Válasszon olyan vizualizációt, a lekérdezés, és jelölje ki a mezőket az x tengely, az y tengely és a dimenzió szegmentálja.
    
-    ![Képernyőfelvétel a Power BI Desktop vizualization beállítások](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
-3. A jelentés közzététele a Power BI felhő munkaterületen. Ott egy szinkronizált verziót is beágyazása más weblapokat.
+    ![Képernyőkép a Power BI Desktopban Vizualizációk beállítások](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
+3. A jelentés közzététele a Power BI-felhő munkaterületre. Itt egy szinkronizált verziót is beágyazása más weblapok.
    
-    ![Képernyőfelvétel a Power BI Desktop, a kiemelt Publish gombbal](./media/app-insights-export-power-bi/publish-power-bi.png)
-4. Manuálisan frissítse a jelentést, időközönként, vagy állítson be egy ütemezett frissítés a beállítások lapon.
+    ![Képernyőkép a Power BI Desktop közzététel gomb kiemelésével](./media/app-insights-export-power-bi/publish-power-bi.png)
+4. A beállítások lapon egy ütemezett frissítés beállítása, illetve manuálisan frissítse a jelentést, időközönként.
 
 ### <a name="export-a-funnel"></a>A tölcsér exportálása
-1. [Ellenőrizze a tölcsér](usage-funnels.md).
-2. Válassza ki **a Power BI**. 
+1. [Győződjön meg arról, a tölcsér](usage-funnels.md).
+2. Válassza ki **Power bi-ban**.
 
-   ![Képernyőfelvétel a Power BI gomb](./media/app-insights-export-power-bi/button.png)
-   
-3. Válassza ki a Power BI Desktopban, **adatok beolvasása** > **üres lekérdezés**. Ezt követően a a Lekérdezésszerkesztő alatt **nézet**, jelölje be **speciális szerkesztő**.
+   ![Képernyőfelvétel: a Power BI gomb](./media/app-insights-export-power-bi/button.png)
 
-   ![Képernyőfelvétel a Power BI Desktop, az üres lekérdezés gomb](./media/app-insights-export-power-bi/blankquery.png)
+3. A Power BI Desktopban, válassza ki a **adatok lekérése** > **üres lekérdezés**. Ezt követően a Lekérdezésszerkesztő alatt **nézet**válassza **speciális szerkesztő**.
 
-   Illessze be az exportált M nyelvi parancsfájlt a speciális szerkesztőbe. 
+   ![Képernyőfelvétel: a Power BI Desktopban, üres lekérdezés gomb kiemelésével](./media/app-insights-export-power-bi/blankquery.png)
 
-   ![Képernyőfelvétel a Power BI Desktop, speciális szerkesztővel kiemelve](./media/app-insights-export-power-bi/advancedquery.png)
+   Az exportált M nyelvi parancsfájl illessze be a speciális szerkesztő. 
 
-4. Válassza ki az elemeket a lekérdezésből, és válassza a tölcsér képi megjelenítés.
+   ![Képernyőkép a Power BI Desktopban, a speciális szerkesztő kiemelésével](./media/app-insights-export-power-bi/advancedquery.png)
 
-   ![Képernyőfelvétel a Power BI Desktop vizualization beállítások](./media/app-insights-export-power-bi/selectsequence.png)
+4. Válassza ki az elemeket a lekérdezésből, és válassza ki a tölcsér Vizualizációk.
 
-5. Módosítsa a címet abba, hogy a jelentéssel bíró, és a jelentés közzététele a Power BI felhő munkaterületen. 
+   ![Képernyőkép a Power BI Desktopban Vizualizációk beállítások](./media/app-insights-export-power-bi/selectsequence.png)
 
-   ![Képernyőfelvétel a Power BI Desktop, a kiemelt címmódosítás](./media/app-insights-export-power-bi/changetitle.png)
+5. Módosítsa a címet a értelmezhető legyen, és tegye közzé a jelentését a Power BI felhőalapú munkaterületén. 
+
+   ![Képernyőkép a Power BI Desktopban az kiemelt cím módosítása](./media/app-insights-export-power-bi/changetitle.png)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Hitelesítő adatok vagy az adatkészlet méretének vonatkozó hibák jelentkezhetnek. Íme néhány Mi a teendő, ezek a hibák kapcsolatos információt.
+Hitelesítő adatok vagy az adatkészlet méretének kapcsolatos hibák léphetnek fel. Íme néhány információt, mi a teendő kapcsolatos ezeket a hibákat.
 
 ### <a name="unauthorized-401-or-403"></a>Jogosulatlan (401-es vagy 403-as)
-Ez akkor fordulhat elő, ha a frissítési jogkivonat nem lett frissítve. Próbálja meg ezeket a lépéseket, győződjön meg arról, hogy továbbra is hozzáfér a:
+Ez akkor fordulhat elő, ha a frissítési token nem lett frissítve. Próbálja ki ezeket a lépéseket, győződjön meg arról, hogy továbbra is hozzáférhetnek a:
 
-1. Jelentkezzen be az Azure-portálra, és győződjön meg arról, hogy az erőforrás végezheti el.
-2. Próbálja meg frissíteni az irányítópult hitelesítő adatait.
+1. Jelentkezzen be az Azure Portalra, és győződjön meg arról, hogy az erőforrás eléréséhez.
+2. Próbálja meg frissíteni a hitelesítő adatok az irányítópulton.
 
- Ha Ön rendelkezik hozzáféréssel, és a hitelesítő adatok frissítése nem működik, nyisson egy támogatási jegy.
+ Ha rendelkezik hozzáféréssel, és a hitelesítő adatok frissítése nem működik, nyisson egy támogatási jegyet.
 
-### <a name="bad-gateway-502"></a>Hibás átjáró (502-es)
-Ezt általában az Analytics-lekérdezés túl sok adat visszaadó okozza. Próbálja meg a lekérdezés egy kisebb időtartományt használatával. 
+### <a name="bad-gateway-502"></a>Hibás átjáró (502)
+Ez általában okozza az Analytics-lekérdezések, amelyek túl sok adatot adja vissza. Próbáljon kisebb időtartományt a lekérdezés. 
 
-Ha csökkenti az Analytics-lekérdezés érkező adatkészlet nem felel meg a követelményeknek, érdemes lehet a [API](https://dev.applicationinsights.io/documentation/overview) való lekérésére nagyobb adatkészletet. Ez az API-t használó M-lekérdezés exportálás konvertálása.
+Ha az adatkészlethez megadott elemzési lekérdezésből származó csökkentése nem felel meg a követelményeknek, fontolja meg a [API](https://dev.applicationinsights.io/documentation/overview) lekérni egy nagyobb adatkészletet. Íme az M-lekérdezés Exportálás az API-val való konvertálása.
 
 1. Hozzon létre egy [API-kulcs](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
-2. A Power BI M parancsfájlt, amely azáltal, hogy az Azure Resource Manager URL-címet az Application Insights API Analytics exportált frissítése.
+2. Frissítse a Power BI M szkriptet, és cserélje le az Azure Resource Manager URL-címet az Application Insights API által exportált Analytics.
    * Cserélje le  **https://management.azure.com/subscriptions/...**
-   * a  **https://api.applicationinsights.io/beta/apps/...**
-3. Végül frissítse a hitelesítő adatokat egyszerű, és az API-kulcsot használ.
+   * **https://api.applicationinsights.io/beta/apps/...**
+3. Végül frissítse a hitelesítő adatok alapszintű, és az API-kulcsot használja.
   
 
 **Meglévő parancsfájl**
@@ -136,11 +120,40 @@ Ha csökkenti az Analytics-lekérdezés érkező adatkészlet nem felel meg a k�
  Source = Json.Document(Web.Contents("https://api.applicationinsights.io/beta/apps/<APPLICATION_ID>/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
  ```
 
-## <a name="about-sampling"></a>Mintavételi kapcsolatos
-Ha az alkalmazás nagy mennyiségű adatot küld, előfordulhat, hogy használni kívánt az adaptív mintavételi funkció, amely csak a telemetriai adatok százaléka küld. Ugyanez igaz Ha állított mintavételi manuálisan vagy az SDK-t vagy a adatfeldolgozást. [További információ a mintavételi](app-insights-sampling.md).
+## <a name="about-sampling"></a>Tudnivalók a mintavételezésről
+Ha az alkalmazás nagy mennyiségű adatot küld, akkor érdemes használni az adaptív mintavételezés funkció, amely csak a telemetria százalékát küldi. Ugyanez igaz akkor is, ha manuálisan állította mintavételi az SDK vagy betöltéskor. [További tudnivalók a mintavételezésről](app-insights-sampling.md).
 
+## <a name="power-bi-adapter-deprecated"></a>(Elavult) a Power BI-adapter
+Ez a módszer létrehoz egy teljes irányítópultot telemetria. A kezdeti adatkészlet parancspéldány előre definiált, de további adatokat adhat.
+
+### <a name="get-the-adapter"></a>Az adapter lekérése
+1. Jelentkezzen be a [Power bi-ban](https://app.powerbi.com/).
+2. Nyissa meg **adatok lekérése** ![képernyőképe a GetData ikonra, a bal alsó sarokban](./media/app-insights-export-power-bi/001.png), **szolgáltatások**.
+
+    ![Képernyőképek az Application Insights-adatforrás lekérése](./media/app-insights-export-power-bi/002.png)
+
+3. Válassza ki **Letöltés most** mellett az Application Insights.
+
+   ![Képernyőképek az Application Insights-adatforrás lekérése](./media/app-insights-export-power-bi/003.png)
+4. Adja meg az Application Insights-erőforrás adatait, majd **bejelentkezési**.
+
+    ![Képernyőkép az Application Insights-adatforrás lekérése](./media/app-insights-export-power-bi/005.png)
+
+     Ez az információ az Application Insights áttekintés ablaktábláján található:
+
+     ![Képernyőkép az Application Insights-adatforrás lekérése](./media/app-insights-export-power-bi/004.png)
+
+5. Nyissa meg az újonnan létrehozott Application Insights Power BI alkalmazás.
+
+6. Várjon néhány percig is importálja az adatokat.
+
+    ![Képernyőfelvétel: a Power BI-adapter](./media/app-insights-export-power-bi/010.png)
+
+Módosíthatja az irányítópulton, az Application Insights-diagramok kombinálásával más forrásokból, valamint az elemzési lekérdezések. Megjelenik a további diagramokat, a Vizualizációk katalógusban, és minden egyes diagram is megadhatja a paraméterrel rendelkezik.
+
+Az első importálás után az irányítópult és a jelentések továbbra is naponta frissülnek. Szabályozhatja, hogy az adatkészlet frissítési ütemezését.
 
 ## <a name="next-steps"></a>További lépések
-* [A Power BI - információ](http://www.powerbi.com/learning/)
-* [Elemzés oktatóanyag](app-insights-analytics-tour.md)
+* [Power bi-ban – ismerje meg,](http://www.powerbi.com/learning/)
+* [Elemzések – oktatóanyag](app-insights-analytics-tour.md)
 

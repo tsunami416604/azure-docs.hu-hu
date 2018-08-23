@@ -1,58 +1,59 @@
 ---
-title: Hogyan szeretné megőrizni az Azure-felhőszolgáltatás állandó virtuális IP-cím |} Microsoft Docs
-description: 'Útmutató: Győződjön meg arról, hogy a virtuális IP-cím (VIP) az Azure felhőalapú szolgáltatás nem változik.'
+title: Az Azure cloud Services számára állandó virtuális IP-cím megőrzése |} A Microsoft Docs
+description: Ismerje meg, hogyan győződjön meg arról, hogy a virtuális IP-címét (VIP) az Azure-felhőszolgáltatás nem változik.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 4a58e2c6-7a79-4051-8a2c-99182ff8b881
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: c02e80a97fe5943019f446299e370bf029a01ff4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2f82663f6b53c6d4e32b8d655dcbd67a321d91ed
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795092"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059484"
 ---
-# <a name="retain-a-constant-virtual-ip-address-for-an-azure-cloud-service"></a>Tartsa meg az Azure-felhőszolgáltatás állandó virtuális IP-cím
-Amikor frissíti egy felhőszolgáltatás, amely az Azure szolgáltatásban üzemeltetett, szükség lehet győződjön meg arról, hogy a virtuális IP-cím (VIP) a szolgáltatás nem változik. Sok tartományi szolgáltatások a tartománynévrendszer (DNS) tartománynevek a regisztrációhoz használja. DNS működését csak akkor, ha a VIP változatlan marad. Használhatja a **közzététele varázsló** Azure eszközök annak érdekében, hogy a felhőszolgáltatás VIP nem változik mikor végezzen frissítést. A felhőszolgáltatások DNS-tartományok használatával kapcsolatos további információkért lásd: [egy egyéni tartománynevet, az Azure-felhőszolgáltatás konfigurálása](cloud-services/cloud-services-custom-domain-name-portal.md).
+# <a name="retain-a-constant-virtual-ip-address-for-an-azure-cloud-service"></a>Az Azure cloud Services számára állandó virtuális IP-cím megőrzése
+Amikor frissít egy felhőszolgáltatás, amely az Azure-ban üzemeltetett, szükség lehet annak érdekében, hogy a virtuális IP-cím (VIP) szolgáltatás nem változik. Tartományi szolgáltatások számos tartománynevek regisztrálásához használt a tartománynévrendszer (DNS). DNS működik, csak akkor, ha a virtuális IP-cím ugyanaz marad. Használhatja a **közzététele varázsló** az Azure-eszközöket, győződjön meg arról, hogy a felhőszolgáltatás virtuális IP-cím nem változik mikor frissítést. DNS-tartományok kezelése a cloud services használatával kapcsolatos további információkért lásd: [Azure cloud Services számára egyéni tartománynév beállítása](cloud-services/cloud-services-custom-domain-name-portal.md).
 
-## <a name="publish-a-cloud-service-without-changing-its-vip"></a>Egy felhőalapú szolgáltatás közzététele a VIP módosítása nélkül
-A VIP felhőalapú szolgáltatások üzembe helyezésekor az Azure-bA az adott környezetben, például az éles környezetben van lefoglalva. A VIP csak változik, ha explicit módon törölheti a központi telepítést, vagy a központi telepítés implicit módon törölte a frissítési folyamat. A VIP megőrzéséhez nem törölnie kell a központi telepítés, és meg kell győződnie arról, hogy a Visual Studio nem automatikusan törli a központi telepítés. 
+## <a name="publish-a-cloud-service-without-changing-its-vip"></a>Egy felhőalapú szolgáltatás közzététele a virtuális IP-cím megváltoztatása nélkül
+Felhőszolgáltatás virtuális IP-cím van lefoglalva, először üzembe helyezésekor az Azure-bA az adott környezetben, például az éles környezetbe. A virtuális IP-cím csak akkor, ha explicit módon törölni az üzemelő példányt, vagy a központi telepítés implicit módon törlődött a frissítés üzembe helyezési folyamat módosítja. A virtuális IP-cím megőrzése, nem törölnie kell az üzembe helyezés, és meg kell győződnie arról, hogy a Visual Studio nem automatikusan törli a központi telepítés. 
 
-A központi telepítési beállításokat adhat meg a **közzététele varázsló**, amely támogatja több központi telepítési beállítások. A friss telepítés vagy frissítés központi telepítés, amely lehet növekményes vagy egyidejű adhat meg. Mindkét típusú központi telepítést a VIP megőrzése mellett. Különböző központi telepítési típusainak-definíciók, lásd: [Azure alkalmazás közzététele varázsló](vs-azure-tools-publish-azure-application-wizard.md). Ezenkívül azt is szabályozhatja, hogy a korábbi központi telepítés egy felhőalapú szolgáltatás törölni, ha a hiba akkor fordul elő. Ha ez a lehetőség nincs megfelelően beállítva, a VIP váratlanul változhatnak.
+Megadhatja a központi telepítési beállítások a **közzététele varázsló**, amely támogatja több központi telepítési lehetőség. Friss telepítését vagy egy központi telepítést, amely lehet növekményes vagy egyidejű is megadhat. Mindkét típusú központi telepítését a virtuális IP-cím megőrzése. Ezek a különböző típusú központi definícióit, lásd: [Azure alkalmazás közzététele varázsló](vs-azure-tools-publish-azure-application-wizard.md). Továbbá szabályozhatja e felhőalapú szolgáltatások a korábbi központi telepítés törlődik, ha hiba történik. Ha ez a beállítás nincs megfelelően beállítva, a virtuális IP-CÍMEK váratlanul módosulhat.
 
-## <a name="update-a-cloud-service-without-changing-its-vip"></a>Egy felhőalapú szolgáltatás frissítése a VIP módosítása nélkül
-1. Hozzon létre, vagy a Visual Studio Azure cloud service projekt megnyitása. 
+## <a name="update-a-cloud-service-without-changing-its-vip"></a>Felhőszolgáltatások frissítése a virtuális IP-cím megváltoztatása nélkül
+1. Hozzon létre vagy nyisson meg egy Azure-felhőszolgáltatás-projekt a Visual Studióban. 
 
-2. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre. Válassza a helyi menü **közzététel**.
+2. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre. A helyi menüben válassza ki a **közzététel**.
 
     ![Közzététel menü](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/solution-explorer-publish-menu.png)
 
-3. Az a **Azure-alkalmazás közzététele** párbeszédpanelen jelölje ki az Azure-előfizetés, amelyre telepíteni szeretné. Jelentkezzen be, ha szükséges, és jelölje be **következő**.
+3. Az a **Azure-alkalmazások közzététele** párbeszédpanelen jelölje ki az Azure-előfizetést, amely számára telepíteni kívánja. Jelentkezzen be, ha szükséges, és válassza ki **tovább**.
 
-    ![Azure alkalmazás bejelentkezési oldal közzététele](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-signin.png)
+    ![Közzététel az Azure alkalmazás bejelentkezési oldal](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-signin.png)
 
-4. Az a **azokat a beállításokat** lapra, győződjön meg arról, hogy a felhő neve szolgáltatás, amely telepítése esetén pedig, a **környezet**, a **Build konfigurációját**, és a **szolgáltatáskonfiguráció** helyességét.
+4. Az a **közös beállítások** lapra, győződjön meg arról, hogy az a felhő nevére, amelyre telepíti, a **környezet**, a **buildkonfigurációhoz**, és a **Szolgáltatáskonfiguráció** helyességét.
 
-    ![Azure-alkalmazás általános beállítások lapon közzététele](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-common-settings.png)
+    ![Az Azure-alkalmazás általános beállítások lapon közzététele](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-common-settings.png)
 
-5. Az a **speciális beállítások** lapon ellenőrizze, hogy a **üzemelő példány címkéje** és a **tárfiók** helyes-e. Ellenőrizze, hogy a **törölje a központi telepítési hiba esetén** jelölőnégyzet nincs bejelölve, és ellenőrizze, hogy a **üzemelő példány frissítése** jelölőnégyzet be van jelölve. Törölje a jelet a **törölje a központi telepítési hiba esetén** jelölőnégyzetet, akkor győződjön meg arról, hogy a VIP akkor nem vesznek el, ha hiba történik a telepítés során. Kiválasztásával a **üzemelő példány frissítése** jelölőnégyzetet, akkor győződjön meg arról, hogy a telepítés nem törlődik, és a VIP nem vesznek el, amikor újra közzé az alkalmazást. 
+5. Az a **speciális beállítások** lapon ellenőrizze, hogy a **üzemelő példány címkéje** és a **tárfiók** helyes-e. Ellenőrizze, hogy a **hiba esetén a telepítés törlése** jelölőnégyzet nincs bejelölve, és ellenőrizze, hogy a **aktualizace Nasazení** jelölőnégyzet be van jelölve. Törölje a jelet a **hiba esetén a telepítés törlése** jelölőnégyzet, akkor győződjön meg arról, hogy a virtuális IP-cím akkor nem vesznek el, ha hiba történik az üzembe helyezés során. Válassza a **aktualizace Nasazení** jelölőnégyzet, akkor győződjön meg arról, hogy az üzemelő példány nem törlődik, és a virtuális IP-cím nem vesznek el, ha ismét közzéteszi az alkalmazást. 
 
-    ![Közzététele az Azure alkalmazás Speciális beállítások lap](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-advanced-settings.png)
+    ![Közzététel az Azure Application speciális beállítások lap](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-advanced-settings.png)
 
-6. További, adja meg, hogyan szeretné frissíteni a szerepkörök **beállítások** melletti **üzemelő példány frissítése**. Válassza ki vagy **növekményes frissítés** vagy **egyidejű frissítése**, és válassza ki **OK**. Válasszon **növekményes frissítés** minden példányának frissítése az alkalmazás egymás után, így az alkalmazás mindig elérhető. Válasszon **egyidejű frissítése** frissítése az alkalmazás egyszerre az összes példányát. Egyidejű frissítése gyorsabb, de a szolgáltatás nem feltétlenül érhető el a frissítési folyamat alatt. Ha elkészült, válassza ki a **következő**.
+6. További, adja meg, hogyan szeretné frissíteni kell a szerepkörök **beállítások** melletti **aktualizace Nasazení**. Ezek közül bármelyikre **növekményes frissítés** vagy **egyidejű frissítése**, és válassza ki **OK**. Válasszon **növekményes frissítés** minden egyes példányának frissítése az alkalmazás egymás után, így az alkalmazás mindig elérhető. Válasszon **egyidejű frissítése** frissíteni egy időben az alkalmazás összes példányáról. Egyidejű frissítése gyorsabb, de a szolgáltatás nem feltétlenül érhető el a frissítési folyamat alatt. Ha elkészült, válassza ki a **tovább**.
 
-    ![Azure-alkalmazás központi telepítési beállítások lapon közzététele](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-deployment-update-settings.png)
+    ![Az Azure-alkalmazás központi telepítési beállítások lapon közzététele](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-deployment-update-settings.png)
 
-7. Az a **Azure-alkalmazás közzététele** párbeszédpanelen jelölje ki **következő** mindaddig, amíg a **összegzés** lap is megjelenik. Ellenőrizze a beállításokat, majd válassza ki **közzététel**.
+7. Az a **Azure-alkalmazások közzététele** párbeszédpanelen jelölje ki **tovább** mindaddig, amíg a **összefoglalás** lap jelenik meg. Ellenőrizze a beállításokat, és válassza ki **közzététel**.
    
-    ![Azure alkalmazáshoz összegzése lap közzététele](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-summary.png)
+    ![Az Azure-alkalmazások – összegzés lapján közzététele](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-summary.png)
 
 ## <a name="next-steps"></a>További lépések
-- [A Visual Studio használatával Azure varázsló közzététele](vs-azure-tools-publish-azure-application-wizard.md)
+- [A Visual Studio közzététel az Azure-alkalmazás varázsló](vs-azure-tools-publish-azure-application-wizard.md)
 

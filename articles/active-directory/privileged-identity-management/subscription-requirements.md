@@ -16,12 +16,12 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2fe80f01faae89256c96e23944025d3bd0c55811
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617190"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617069"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Az Azure Active Directory Privileged Identity Management előfizetési követelmények
 
@@ -42,7 +42,7 @@ Ez a parancs lekéri a bérlő az előfizetések listáját. Ha nincs visszaadot
 
 Ha ez a parancs visszaadja a sor melyik SkuPartNumber "AAD_PREMIUM_P2" vagy "EMSPREMIUM" és a IsTrial értéke "True", ez azt jelzi, hogy az Azure AD Premium P2 próbaverziójára megtalálható a bérlőben.  Ha nincs engedélyezve az előfizetési állapotot, és nem kell vásárolni az Azure AD Premium P2 vagy az EMS E5 előfizetéssel, majd meg kell vásárolnia egy Azure AD Premium P2 szintű előfizetésre, vagy az EMS E5 csomagra szóló előfizetés az Azure AD Privileged Identity Management használatának folytatásához.
 
-Az Azure AD Premium P2 keresztül érhető el egy [Microsoft nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), a [Open mennyiségi licencprogramok](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx), és a [Cloud Solution Providers program](https://partner.microsoft.com/en-US/cloud-solution-provider). Az Azure és Office 365-előfizetők online az Azure AD Premium P2 szolgáltatást is megvásárolhatják.  További információ a prémium szintű Azure AD díjszabási és online rendezésének módját található [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
+Az Azure AD Premium P2 keresztül érhető el egy [Microsoft nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), a [Open mennyiségi licencprogramok](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx), és a [Cloud Solution Providers program](https://partner.microsoft.com/cloud-solution-provider). Az Azure és Office 365-előfizetők online az Azure AD Premium P2 szolgáltatást is megvásárolhatják.  További információ a prémium szintű Azure AD díjszabási és online rendezésének módját található [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Az Azure AD Privileged Identity Management bérlő nem érhető el
 

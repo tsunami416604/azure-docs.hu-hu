@@ -1,6 +1,6 @@
 ---
-title: Létrehozása, módosítása vagy törlése az Azure útválasztási táblázatot |} Microsoft Docs
-description: Megtudhatja, hogyan létrehozása, módosítása vagy törlése egy útválasztási táblázatot.
+title: Létrehozása, módosítása vagy törlése az Azure útválasztási táblázatban |} A Microsoft Docs
+description: Ismerje meg, hogyan létrehozása, módosítása vagy törlése egy útválasztási táblázatot.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,240 +15,240 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: cd97b00a522ff41a74f46195da5d8b1a0d92d344
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 04db7655f3f4b63edffcb731d0e92db25f1847b9
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960008"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42059145"
 ---
-# <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy törlése egy útválasztási táblázatot
+# <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy egy útvonaltábla törlése
 
-Azure automatikusan irányítja a forgalmat Azure alhálózatokat, virtuális hálózatok között, és a helyszíni hálózatokhoz. Ha bármely Azure alapértelmezett útválasztási módosítani kívánja, akkor hozzon létre egy útválasztási táblázatot megteheti. Ha most ismerkedik az útválasztást a virtuális hálózatok, további információt a a [Útválasztás – áttekintés](virtual-networks-udr-overview.md) vagy; Ehhez hajtsa végre a [oktatóanyag](tutorial-create-route-table-portal.md).
+Az Azure automatikusan irányítja az Azure az alhálózatok, virtuális hálózatok közötti adatforgalom és a helyszíni hálózatokkal. Ha szeretné módosítani az Azure alapértelmezett útválasztás, hogy hozzon létre egy útválasztási táblázatot megteheti. Ha most ismerkedik az Útválasztás a virtuális hálózatok, többet is megtudhat a kapcsolatos a [Útválasztás áttekintése](virtual-networks-udr-overview.md) vagy; Ehhez hajtsa végre egy [oktatóanyag](tutorial-create-route-table-portal.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a következőket:
+Ez a cikk bármely szakaszban ismertetett lépések elvégzése előtt hajtsa végre a következőket:
 
-- Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
-- A portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
-- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-- Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.31 verziója szükséges, vagy később. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
+- Ha még nincs Azure-fiókkal, regisztráljon egy [ingyenes próbafiókot](https://azure.microsoft.com/free).
+- Ha a portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
+- Ha a PowerShell-parancsokkal cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Ha használja az Azure parancssori felület (CLI) parancsai cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy a parancssori felület futtatásával a számítógépről. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31-es verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` kapcsolat létrehozása az Azure-ral.
 
-Hozzá kell rendelni a fiókot, jelentkezzen be, vagy csatlakozzon az Azure-ba, a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepel a megfelelő műveleteket rendelt [engedélyek ](#permissions).
+Jelentkezzen be, vagy csatlakozhat az Azure-ban, a fiókot hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepel a megfelelő műveleteket rendelt [engedélyek ](#permissions).
 
 ## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 
-Hány útvonal táblákat hozhat létre egy Azure-beli hely és az előfizetés korlátozva van. További részletek: [Az Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Létrehozhat egy Azure-helyen és az előfizetés hány útvonaltábláihoz korlátozva van. További részletek: [Az Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. Válassza ki a portál bal felső sarkában **+ hozzon létre egy erőforrást**.
-2. Válassza ki **hálózati**, majd jelölje be **útvonaltábla**.
-3. Adja meg egy **neve** útvonaltábla, válassza ki a **előfizetés**, hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő erőforráscsoportot, válassza ki a **helye** , majd jelölje be **létrehozása**. A **tiltsa le a BGP útválasztási propagálás** beállítás megakadályozza, hogy a helyszíni útvonalakat a BGP keresztül jutott el a hálózati illesztők egyetlen alhálózatának sem, amely hozzá van rendelve az útvonaltábla. Ha a virtuális hálózat nincs csatlakoztatva egy Azure-hálózatot átjáró (VPN- vagy ExpressRoute), hagyja a beállítást *letiltott*.
+1. A portál bal felső sarkában válassza **+ erőforrás létrehozása**.
+2. Válassza ki **hálózatkezelés**, majd **útvonaltábla**.
+3. Adjon meg egy **neve** útvonaltáblához, válassza ki a **előfizetés**, hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő erőforráscsoportot, válassza ki egy **helye** , majd **létrehozás**. Ha azt tervezi, hogy társít egy alhálózathoz, virtuális hálózatban, amely a helyszíni hálózathoz egy VPN-átjárón keresztül csatlakozik, és letiltja a **BGP-útvonalpropagálás**, a helyszíni útvonalakat nem vonatkoznak az a a hálózati adapterek.
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati útvonal-táblázat létrehozása](/cli/azure/network/route-table/route#az_network_route_table_create)
+- Az Azure CLI: [az network route-table létrehozása](/cli/azure/network/route-table/route#az_network_route_table_create)
 - PowerShell: [új AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable)
 
-## <a name="view-route-tables"></a>Az útvonaltáblák megtekintése
+## <a name="view-route-tables"></a>Útvonaltáblák megtekintése
 
-Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt. Az útvonaltáblák az előfizetéshez létező vannak felsorolva.
+Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt. Az útválasztási táblázatokat, amelyek szerepelnek az előfizetésében szerepelnek.
 
 **Parancsok**
 
-- Az Azure CLI: [az útvonaltábla lista](/cli/azure/network/route-table/route#az_network_route_table_list)
+- Az Azure CLI: [az network route-table list](/cli/azure/network/route-table/route#az_network_route_table_list)
 - PowerShell: [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable)
 
-## <a name="view-details-of-a-route-table"></a>Egy útválasztási táblázatot részleteinek megtekintése
+## <a name="view-details-of-a-route-table"></a>Útválasztási táblázat részleteinek megtekintése
 
-1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Az útvonaltábla jelölje ki a listában a létrehozott részleteinek megtekintése. A **beállítások**, megtekintheti a **útvonalak** az útválasztási táblázatban és a **alhálózatok** útvonaltábla társítva.
-3. Közös Azure beállításaival kapcsolatos további tudnivalókért tekintse meg a következő információkat:
+1. Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Válassza ki az útvonaltáblában a listában a részleteinek megtekintéséhez. A **beállítások**, megtekintheti a **útvonalak** az útvonaltáblában lévő és a **alhálózatok** az útvonaltábla társítva.
+3. Gyakori Azure beállításaival kapcsolatos további tudnivalókért tekintse meg a következő információkat:
     *   [Tevékenységnapló](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Zárolások feloldása](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Automatizálási parancsfájl](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
+    *   [Zárolások](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Automation-szkript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati útvonal-táblázat megjelenítése](/cli/azure/network/route-table/route#az_network_route_table_show)
+- Az Azure CLI: [az network route-table show](/cli/azure/network/route-table/route#az_network_route_table_show)
 - PowerShell: [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable)
 
-## <a name="change-a-route-table"></a>Egy útválasztási táblázatot módosítása
+## <a name="change-a-route-table"></a>Útválasztási táblázat módosítása
 
-1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Válassza ki a módosítani kívánt útválasztási táblázatot. A leggyakoribb változások a következők [hozzáadása](#create-a-route) vagy [eltávolítása](#delete-a-route) útvonalak és [társítása](#associate-a-route-table-to-a-subnet) útvonaltáblát, vagy [törléséhez](#dissociate-a-route-table-from-a-subnet) az útvonaltáblát alhálózatok.
+1. Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Válassza ki a módosítani kívánt útválasztási táblázatot. A leggyakoribb változások [hozzáadása](#create-a-route) vagy [eltávolítása](#delete-a-route) útvonalak és [társítása](#associate-a-route-table-to-a-subnet) útválasztási táblázatok, vagy [való társításának megszüntetése](#dissociate-a-route-table-from-a-subnet) útválasztási táblázatok a alhálózatok.
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati útvonal-táblázat frissítése](/cli/azure/network/route-table/route#az_network_route_table_update)
+- Az Azure CLI: [az network route-table update](/cli/azure/network/route-table/route#az_network_route_table_update)
 - PowerShell: [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable)
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
-Egy alhálózat állhat nulla vagy egy útválasztási táblázatot társítva. Egy útválasztási táblázatot lehet nulla vagy több alhálózatból társítva. Mivel az útvonaltáblák nem társított virtuális hálózatokhoz, társítania kell egy útválasztási táblázatot azt szeretné, hogy az útvonaltáblát társított minden egyes alhálózathoz. Az alhálózat összes forgalomra útvonaltábláit, belül létrehozott útvonalak alapján továbbítja [alapértelmezett útvonalak](virtual-networks-udr-overview.md#default), útvonalak egy helyszíni hálózatból kiterjednek, ha a virtuális hálózathoz van csatlakoztatva egy Azure virtuális hálózati átjáró ( Expressroute-on, vagy VPN-profilok, ha a VPN-átjáró BGP használatával). Csak egy útválasztási táblázatot működő azonos Azure-beli hely és az útválasztási táblázatot előfizetés virtuális hálózatok alhálózatokra is hozzárendelhető.
+Egy alhálózat rendelkezhet, nulla vagy egy útvonaltábla társítható. Egy útválasztási táblázatot lehet nulla vagy egynél több alhálózat van társítva. Az útvonaltáblák nem lettek társítva a virtuális hálózatok, mivel társítania kell egy útválasztási táblázatot az egyes alhálózatokon azt szeretné, hogy a társított útvonaltáblába. Minden, az alhálózatot elhagyó forgalom útválasztási táblázatokat, belül létrehozott útvonalak alapján továbbítja [alapértelmezett útvonalakat](virtual-networks-udr-overview.md#default), és útvonalak propagálni egy a helyszíni hálózathoz, ha a virtuális hálózathoz csatlakoztatva van egy Azure virtuális hálózati átjáró () ExpressRoute vagy VPN-, VPN gateway a BGP használatakor). Csak egy útválasztási táblázatot a megegyező Azure-helyen és előfizetésen az útvonaltáblában lévő virtuális hálózatok alhálózataihoz társíthatja.
 
-1. Adja meg a keresési mezőbe, a portál felső, *virtuális hálózatok* be a keresőmezőbe. Ha **virtuális hálózatok** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Jelölje ki a virtuális hálózat a hozzárendeli egy útválasztási táblázatot az alhálózathoz tartalmazó lista.
+1. Írja be a keresőmezőbe, a portál tetején, *virtuális hálózatok* kifejezést a keresőmezőbe. Amikor **virtuális hálózatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Válassza ki a virtuális hálózat, amely tartalmazza az alhálózat egy útválasztási táblázatot annak társítani szeretné a listában.
 3. Válassza ki **alhálózatok** alatt **beállítások**.
-4. Jelölje ki az alhálózatot, hozzárendeli az útvonaltábla.
-5. Válassza ki **útvonaltábla**, jelölje be az útvonaltábla társítása alhálózathoz, majd válassza a kívánt **mentése**.
+4. Válassza ki az alhálózatot, hozzárendeli az útvonaltáblát.
+5. Válassza ki **útvonaltábla**, válassza ki az útválasztási táblázatot az alhálózathoz társítja, majd válassza a kívánt **mentése**.
 
-Ha a virtuális hálózat egy Azure VPN-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot olyan [átjáróalhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub), amely 0.0.0.0/0 célú útvonalat tartalmaz. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően. Egy útvonalat a 0.0.0.0/0 használatával kapcsolatos további információkért lásd: [virtuális hálózati forgalmának irányítását a](virtual-networks-udr-overview.md#default-route).
+Ha a virtuális hálózat egy Azure VPN-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot olyan [átjáróalhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub), amely 0.0.0.0/0 célú útvonalat tartalmaz. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően. Egy útvonalat a 0.0.0.0/0 használatával kapcsolatos további információkért lásd: [virtuális hálózat forgalmának útválasztása](virtual-networks-udr-overview.md#default-route).
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózat vnet alhálózat frissítése](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
+- Az Azure CLI: [az hálózati virtuális hálózat alhálózati update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
 - PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
-## <a name="dissociate-a-route-table-from-a-subnet"></a>A társítást egy útválasztási táblázatot egy alhálózatból
+## <a name="dissociate-a-route-table-from-a-subnet"></a>Egy alhálózatról egy útválasztási táblázatot társításának megszüntetése
 
-Ha megszünteti egy útválasztási táblázatot alhálózatból származó, Azure irányítja a forgalmat alapján a [alapértelmezett útvonalak](virtual-networks-udr-overview.md#default).
+Egy alhálózatról egy útválasztási táblázatot, leválasztja, amikor Azure irányítja-e a forgalom alapján a [alapértelmezett útvonalakat](virtual-networks-udr-overview.md#default).
 
-1. Adja meg a keresési mezőbe, a portál felső, *virtuális hálózatok* be a keresőmezőbe. Ha **virtuális hálózatok** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Válassza ki a virtuális hálózat, amely tartalmazza a leválasztja egy útválasztási táblázatot az alhálózathoz.
+1. Írja be a keresőmezőbe, a portál tetején, *virtuális hálózatok* kifejezést a keresőmezőbe. Amikor **virtuális hálózatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Válassza ki a virtuális hálózat, amely tartalmazza az leválasztja egy útválasztási táblázatot az alhálózathoz.
 3. Válassza ki **alhálózatok** alatt **beállítások**.
-4. Jelölje ki az alhálózatot, az útvonaltábla leválasztja.
-5. Válassza ki **útvonaltábla**, jelölje be **nincs**, majd jelölje be **mentése**.
+4. Válassza ki az leválasztja az útválasztási táblázatot az alhálózathoz.
+5. Válassza ki **útvonaltábla**, jelölje be **nincs**, majd **mentése**.
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózat vnet alhálózat frissítése](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
+- Az Azure CLI: [az hálózati virtuális hálózat alhálózati update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
 - PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
 
-## <a name="delete-a-route-table"></a>Új útvonaltábla törlése
+## <a name="delete-a-route-table"></a>Útválasztási táblázat törlése
 
-Ha egyetlen alhálózatot társítva egy útválasztási táblázatot, nem lehet törölni. [A társítást](#dissociate-a-route-table-from-a-subnet) egy útválasztási táblázatot az összes alhálózatot az törlése megkísérlése előtt.
+Ha egy útválasztási táblázatot is tartozik, az esetleges olyan alhálózatokra, nem lehet törölni. [Leválasztja](#dissociate-a-route-table-from-a-subnet) egy útválasztási táblázatot az összes alhálózatot, mielőtt megkísérelné törölni.
 
-1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Válassza ki **...**  jobb oldalán a törölni kívánt útválasztási táblázatot.
+1. Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Válassza ki **...**  törli az útvonaltábla jobb-oldalán.
 3. Válassza ki **törlése**, majd válassza ki **Igen**.
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati útvonaltábla törlése](/cli/azure/network/route-table/route#az_network_route_table_delete)
+- Az Azure CLI: [az network route-table törlése](/cli/azure/network/route-table/route#az_network_route_table_delete)
 - PowerShell: [Delete-AzureRmRouteTable](/powershell/module/azurerm.network/delete-azurermroutetable) 
 
 ## <a name="create-a-route"></a>Útvonal létrehozása
 
-Hány útvonalak útvonaltáblánkénti hozhat létre egy Azure-beli hely és az előfizetés korlátozva van. További részletek: [Az Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Hány útvonalak útvonaltáblánkénti hozhat létre egy Azure-helyen és az előfizetés korlátozva van. További részletek: [Az Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Válassza ki az útvonaltábla a listából, amely hozzá szeretné adni egy útvonalat.
-3. Válassza ki **útvonalak**a **beállítások**.
+1. Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Válassza ki az útválasztási táblázatot, amely szeretne hozzáadni egy útvonalat a listából.
+3. Válassza ki **útvonalak**alatt **beállítások**.
 4. Válassza a **+ Hozzáadás** lehetőséget.
-5. Adjon meg egy egyedi **neve** belül az útvonaltáblát az útvonal.
-6. Adja meg a **címelőtag**, a CIDR-jelöléssel irányíthatja a forgalmat a kívánt. Az előtag nem lehet duplikálni útválasztási táblázatot belül egynél több útvonal, bár a előtag lehet belül egy másik előtag. Például ha egy útvonal előtagjaként definiált 10.0.0.0/16, továbbra is definiálhat a 10.0.0.0/24 címelőtagot egy másik útvonalat. Azure egy útvonalat a forgalmat a leghosszabb előtag egyezés alapján választják ki. Hogyan választja ki a Azure útvonalak kapcsolatos további információkért lásd: [Útválasztás – áttekintés](virtual-networks-udr-overview.md#how-azure-selects-a-route).
-7. Válassza ki a **a következő ugrás típusa**. Összes következő ugrás típusa részletes ismertetését lásd: [Útválasztás – áttekintés](virtual-networks-udr-overview.md).
-8. Adja meg az IP-címének **következő ugrási cím**. Csak akkor adhat meg egy címet, ha a kiválasztott *virtuális készülék* a **a következő ugrás típusa**.
+5. Adjon meg egy egyedi **neve** az útvonal route a táblán belül.
+6. Adja meg a **címelőtag**, a CIDR-jelölésrendszerben, irányíthatja a forgalmat a kívánt. Az előtag nem duplikálható az útvonaltáblában lévő egynél több útvonal ellenére, hogy az előtag lehet egy másik előtag belül. Például ha egy útvonal előtagjaként definiált 10.0.0.0/16, is meghatározhatja egy másik útvonal a 10.0.0.0/24 címelőtaggal. Az Azure útvonalválasztásának a forgalmat a leghosszabb előtag-megfeleltetés alapján. Hogyan választja ki a Azure útvonalakkal kapcsolatos további információkért lásd: [Útválasztás áttekintése](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+7. Válassza ki a **következő ugrás típusa**. Az összes következő ugrási típusokat részletes ismertetését lásd: [Útválasztás áttekintése](virtual-networks-udr-overview.md).
+8. Adja meg az IP-cím **következő ugrási cím**. Csak akkor adhat meg címet, ha a kiválasztott *virtuális berendezés* a **következő ugrás típusa**.
 9. Kattintson az **OK** gombra.
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati útvonaltábla útvonal létrehozása](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
+- Az Azure CLI: [az network route-table route létrehozása](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
 - PowerShell: [New-AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
 
 ## <a name="view-routes"></a>Útvonalak megtekintése
 
-Egy útválasztási táblázatot nulla vagy egynél több útvonalak tartalmazza. Útvonalak megtekintésekor felsorolt információkkal kapcsolatos további tudnivalókért lásd: [Útválasztás – áttekintés](virtual-networks-udr-overview.md).
+Útválasztási táblázat nulla vagy egynél több útvonalakat tartalmazza. Útvonalak megtekintésekor felsorolt információkkal kapcsolatos további tudnivalókért lásd: [Útválasztás áttekintése](virtual-networks-udr-overview.md).
 
-1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Az útvonaltábla válassza a listából, hogy meg szeretné tekinteni az útvonalakat.
+1. Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Válassza ki az útválasztási táblázatot, hogy meg szeretné tekinteni az útvonalakat a listából.
 3. Válassza ki **útvonalak** alatt **beállítások**.
 
 **Parancsok**
 
-- Az Azure CLI: [az útvonaltábla útvonal lista](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
+- Az Azure CLI: [az network route-table route listája](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
 - PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
 ## <a name="view-details-of-a-route"></a>Útvonal részleteinek megtekintése
 
-1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Válassza ki az útválasztási táblázatot egy útvonal a részletek megtekintéséhez.
+1. Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Válassza ki az útválasztási táblázatot egy útvonalat a részletek megtekintéséhez.
 3. Válassza ki **útvonalak**.
 4. Válassza ki az útvonal részleteinek megtekintéséhez.
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati útvonaltábla útvonal megjelenítése](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_show)
+- Az Azure CLI: [az network route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_show)
 - PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
-## <a name="change-a-route"></a>Egy olyan útvonalat módosítása
+## <a name="change-a-route"></a>Egy útvonalat módosítása
 
-1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Válassza ki a módosítandó útvonal útválasztási táblázatot.
+1. Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Jelölje be az útvonaltábla módosítja egy útvonalat.
 3. Válassza ki **útvonalak**.
 4. Válassza ki a módosítani kívánt útvonalat.
-5. Módosítsa a meglévő beállítások az új beállítások, majd válassza ki **mentése**.
+5. Módosítsa a meglévő beállításokat új beállításait, majd válassza ki **mentése**.
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózat útvonaltábla útvonal frissítése](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_update)
+- Az Azure CLI: [az network route-table route update](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_update)
 - PowerShell: [Set-AzureRmRouteConfig](/powershell/module/azurerm.network/set-azurermrouteconfig)
 
 ## <a name="delete-a-route"></a>Útvonal törlése
 
-1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Válassza ki a törlendő útvonal útválasztási táblázatot.
+1. Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt.
+2. Jelölje be az útvonaltábla törli egy útvonalat.
 3. Válassza ki **útvonalak**.
-4. Válassza ki a listáról az útvonalak **...**  jobb oldalán a törölni kívánt útvonal.
-5. Válassza ki **törlése**, majd jelölje be **Igen**.
+4. Útvonalakat listáról válassza ki **...**  a jobb oldalon – az útvonal törli.
+5. Válassza ki **törlése**, majd **Igen**.
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati útvonaltábla útvonal törlése](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
+- Az Azure CLI: [az network route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
 - PowerShell: [Remove-AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
 
-## <a name="view-effective-routes"></a>Hatékony útvonalak megtekintése
+## <a name="view-effective-routes"></a>Érvényes útvonalak megtekintése
 
-A hatékony útvonalak mindegyik hálózati interfész egy virtuális géphez csatolt a következők: útválasztási táblázatban, amely a korábban létrehozott kombinációja, Azure alapértelmezett útvonalak és bármely útvonalakat a helyszíni hálózatokban BGP keresztül egy Azure virtuális hálózati átjárón keresztül érvényesítve. Egy adott hálózati csatoló hatékony útvonalak ismertetése akkor hasznos, ha útválasztási problémák elhárítása. A futó virtuális gép csatlakoztatott hálózati csatolóhoz hatékony útvonalait tekintheti meg.
+Az érvényes útvonalak mindegyik hálózati interfész egy virtuális géphez csatolt létrehozott útvonaltáblák kombinációját, az Azure alapértelmezett útvonalakat és egy Azure virtuális hálózati átjárón keresztül BGP-n keresztül a helyszíni hálózatok propagálni hozzáférésvezérlési. Hálózati adapter érvényes útvonalaihoz ismertetése akkor hasznos, ha az útválasztási problémák elhárítása. Minden olyan futó virtuális géphez csatolt hálózati adapter érvényes útvonalaihoz tekintheti meg.
 
-1. A keresési mezőbe, a portál felső adja meg meg szeretné tekinteni a hatékony útvonalait a virtuális gép nevét. Ha nem tudja a virtuális gép nevét, adja meg a *virtuális gépek* be a keresőmezőbe. Ha **virtuális gépek** jelennek meg a keresési eredmények között, jelölje ki, majd válasszon ki egy virtuális gépet a listából.
-2. Válassza ki **hálózati** alatt **beállítások**.
-3. Válassza ki a hálózati kapcsolat neve.
-4. Válassza ki **hatékony útvonalak** alatt **támogatási + hibaelhárítás**.
-5. Tekintse át a meghatározásához, hogy létezik-e a megfelelő útvonalat, ahol szeretné továbbítani a forgalmat hatékony útvonalak listáját. Tudjon meg többet a következő ugrás típusa, melyek megjelennek a listában lévő [Útválasztás – áttekintés](virtual-networks-udr-overview.md).
+1. A keresőmezőbe, a portál tetején adja meg az érvényes útvonalak a megtekinteni kívánt virtuális gép nevét. Ha nem ismeri a virtuális gép nevét, adja meg a *virtuális gépek* kifejezést a keresőmezőbe. Amikor **virtuális gépek** jelennek meg a keresési eredmények között, válassza ki, és válasszon ki egy virtuális gépet a listából.
+2. Válassza ki **hálózatkezelés** alatt **beállítások**.
+3. Válassza ki a hálózati adapter nevét.
+4. Válassza ki **érvényes útvonalak** alatt **támogatás + hibaelhárítás**.
+5. Tekintse át a meghatározásához, hogy létezik-e a megfelelő útvonalat, ahol szeretné irányítani a forgalmat az érvényes útvonalak. További információ jelenik meg ebben a listában szereplő következő ugrástípusok [Útválasztás áttekintése](virtual-networks-udr-overview.md).
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati nic megjelenítése-hatályos-útvonal-tábla](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
+- Az Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
 - PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) 
 
-## <a name="validate-routing-between-two-endpoints"></a>Két végpontok közötti útválasztást ellenőrzése
+## <a name="validate-routing-between-two-endpoints"></a>Ellenőrizze a két végpontok közötti útválasztás
 
-A következő ugrás típusa, a virtuális gépek és az IP-cím, egy másik Azure-erőforrás, egy helyszíni erőforrás vagy internetes erőforrás között azt is meghatározhatja. Meghatározó Azure útválasztási akkor hasznos, ha útválasztási problémák elhárítása. A feladat végrehajtásához rendelkeznie kell egy meglévő hálózati figyelőt. Ha még nem rendelkezik egy meglévő hálózati figyelőt, hozzon létre egyet a lépések végrehajtásával [hozzon létre egy hálózati figyelőt példányt](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Megadhatja, hogy a következő ugrás típusa között a virtuális gép és a egy másik Azure-erőforrás, egy helyszíni erőforráshoz, vagy internetes erőforrás IP-címét. Meghatározó Azure útválasztás akkor hasznos, ha az útválasztási problémák elhárítása. Ez a feladat végrehajtásához rendelkeznie kell egy meglévő hálózati figyelő. Ha egy meglévő a Network Watcher nincs, hozzon létre egyet a lépéseket követve [Network Watcher-példány létrehozása](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-1. Adja meg a keresési mezőbe, a portál felső, *hálózati figyelőt* be a keresőmezőbe. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
-2. Válassza ki **a következő Ugrás** alatt **diagnosztikai eszközök**.
+1. Írja be a keresőmezőbe, a portál tetején, *a network watcher* kifejezést a keresőmezőbe. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
+2. Válassza ki **a következő Ugrás** alatt **hálózati diagnosztikai eszközök**.
 3. Válassza ki a **előfizetés** és a **erőforráscsoport** a forrás virtuális gép szeretné érvényesíteni az útválasztást.
-4. Válassza ki a **virtuális gép**, **hálózati illesztő** csatolva a virtuális géphez, és **forrás IP-címe** rendelt az érvényesíteni kívánt hálózati adapter az útválasztást.
-5. Adja meg a **cél IP-címe** , amely szeretné érvényesíteni a történő továbbítást.
+4. Válassza ki a **virtuális gép**, **hálózati adapter** a virtuális géphez csatolt és **forrás IP-címe** rendelve az érvényesíteni kívánt hálózati adapter útválasztás az.
+5. Adja meg a **cél IP-címe** , amelyet szeretne érvényesíteni az Útválasztás.
 6. Válassza ki **a következő Ugrás**.
-7. Egy rövid várakozás után információt ad vissza, amely azt ismerteti, hogy a következő ugrás típusa és irányíthatja a forgalmat útvonal a azonosító. Tudjon meg többet a következő ugrás típusok, melyek megjelennek a visszaadott [Útválasztás – áttekintés](virtual-networks-udr-overview.md).
+7. Rövid várakozás után információt ad vissza, amely arról tájékoztatja, akkor a következő ugrás típusa és az azonosítója, amely irányítja a forgalmat útvonal. További tudnivalók a következő ugrási típusokat láthatja, amelyeket a visszaadott [Útválasztás áttekintése](virtual-networks-udr-overview.md).
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati megjelenítése-következő ugrás figyelője](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
+- Az Azure CLI: [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
 - PowerShell: [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) 
 
 ## <a name="permissions"></a>Engedélyek
 
-Az útvonaltáblák és útvonalak feladatok elvégzésekor, a fiókot hozzá kell rendelni a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkör, amely hozzá van rendelve a megfelelő műveleteket az alábbi táblázatban felsorolt:
+Útválasztási táblázatokat és útvonalak feladatok végrehajtására, a fiókot hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy olyan [egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkör, amely hozzá van rendelve a megfelelő műveleteket az alábbi táblázatban felsorolt:
 
 | Műveletek                                                          |   Name (Név)                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
-| Microsoft.Network/routeTables/read                              |   Egy útválasztási táblázatot olvasása                                    |
-| Microsoft.Network/routeTables/write                             |   Hozható létre vagy frissíthető egy útválasztási táblázatot                        |
-| Microsoft.Network/routeTables/delete                            |   Új útvonaltábla törlése                                  |
+| Microsoft.Network/routeTables/read                              |   Olvassa el az útválasztási táblázat                                    |
+| Microsoft.Network/routeTables/write                             |   Hozzon létre vagy egy útvonaltábla frissítése                        |
+| Microsoft.Network/routeTables/delete                            |   Útválasztási táblázat törlése                                  |
 | Microsoft.Network/routeTables/join/action                       |   Útválasztási táblázat társítása alhálózattal                   |
-| Microsoft.Network/routeTables/routes/read                       |   Olvassa el a útvonal                                          |
-| Microsoft.Network/routeTables/routes/write                      |   Egy útvonal létrehozása vagy frissítése                              |
+| Microsoft.Network/routeTables/routes/read                       |   Olvassa el az útvonalat                                          |
+| Microsoft.Network/routeTables/routes/write                      |   Egy útvonal létrehozása vagy módosítása                              |
 | Microsoft.Network/routeTables/routes/delete                     |   Útvonal törlése                                        |
-| Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   Az effektív útvonaltábla beolvasása a hálózati illesztő |
-| Microsoft.Network/networkWatchers/nextHop/action                |   A következő ugrás a virtuális gép beolvasása                           |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   Az effektív útvonaltábla első hálózati adapter |
+| Microsoft.Network/networkWatchers/nextHop/action                |   A következő ugrás lekérdezi egy virtuális gépről                           |
 
 ## <a name="next-steps"></a>További lépések
 
-- Hozzon létre egy útvonal tábla használatával [PowerShell](powershell-samples.md) vagy [Azure CLI](cli-samples.md) parancsfájlok, vagy az Azure használatával [Resource Manager-sablonok](template-samples.md)
-- Létrehozása és alkalmazása [Azure házirend](policy-samples.md) virtuális hálózatok
+- Hozzon létre egy útválasztási táblázatban az [PowerShell](powershell-samples.md) vagy [Azure CLI-vel](cli-samples.md) parancsfájlokat, vagy az Azure-minta [Resource Manager-sablonok](template-samples.md)
+- Hozzon létre, és a alkalmazni [az Azure policy](policy-samples.md) virtuális hálózatok

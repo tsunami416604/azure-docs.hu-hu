@@ -1,6 +1,6 @@
 ---
-title: Az Azure App Service hibrid kapcsolatok |} Microsoft Docs
-description: Hozzon létre és különálló hálózaton lévő erőforrások eléréséhez használhatnak hibrid kapcsolatokat
+title: Az Azure App Service hibrid kapcsolataira |} A Microsoft Docs
+description: Hogyan hozhat létre, és a hibrid kapcsolatok segítségével különböző hálózatokon lévő erőforrások eléréséhez
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -12,186 +12,226 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: 677642e4e97523ed71ff5857ae27263743dca535
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 69897e288a90a731d95db82d0ff978d776c12580
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
-ms.locfileid: "25990819"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054285"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatok #
+# <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai #
 
-Hibrid kapcsolatok egyben a szolgáltatás az Azure-ban és az Azure App Service szolgáltatás. Szolgáltatásként rendelkezik használ és képességekkel ruházzák, az App Service-ben használt. Hibrid kapcsolatok és az App Service kívül használatát kapcsolatos további információkért lásd: [Azure hibrid kapcsolatok][HCService].
+Hibrid kapcsolatok az Azure egy szolgáltatása, és a egy szolgáltatás az Azure App Service-ben. Szolgáltatás rendelkezik használ, és az App Service-ben használt képességeinél több képességet. A hibrid kapcsolatok és a használatuk kívül az App Service kapcsolatos további információkért lásd: [Azure Relay hibrid kapcsolatok][HCService].
 
-App Service-ben belül hibrid kapcsolatok használható más hálózatokkal alkalmazás erőforrásaihoz. Egy alkalmazás végpontjának a alkalmazás hozzáférést biztosít. Nem engedélyezi egy másik képességet az alkalmazáshoz való hozzáféréshez. Az App Service-ben használt, minden a hibrid kapcsolat felel meg egyetlen TCP-állomás és port kombinációját. Ez azt jelenti, hogy a hibrid kapcsolat végpont lehet operációs rendszert, és bármilyen alkalmazás, feltéve, hogy a TCP-figyelési port elérésére. A hibrid kapcsolatok száma a szolgáltatás nem tudja, vagy ügyeljen arra, mi az a protokoll, vagy mi elérésére. Hálózati hozzáférés egyszerűen is ellát.  
+App Service a hibrid kapcsolatok alkalmazás-erőforrások a más hálózatok eléréséhez használható. Egy alkalmazás végpontnak az alkalmazásból való elérést biztosít. Nem engedélyezi egy másik képesség elérhetik az alkalmazást. Az App Service-ben használ, egyetlen TCP-állomás és port kombinációja utal. minden hibrid kapcsolat. Ez azt jelenti, hogy a hibrid kapcsolat végpontja is lehet bármely operációs rendszerben, és minden alkalmazás, feltéve, hogy érnek el egy figyelő TCP-portot. Hibrid kapcsolatok szolgáltatását nem ismert, és gondoskodik a protokoll van, vagy amit Ön hozzáfér. Egyszerűen csak a számítógép hálózati hozzáférést.  
 
 
 ## <a name="how-it-works"></a>Működés ##
-Két kimenő hívások Azure Service Bus Relay a hibrid kapcsolatok szolgáltatás foglalja magában. Van-e kapcsolat a könyvtárból a gazdagépen, amelyen fut az alkalmazás az App Service-ben. Service Bus Relay a hibrid kapcsolat Manager (HCM) kapcsolat is van. A HCM a továbbítási szolgáltatás, amely telepít elérni kívánt erőforrást a hálózaton belül. 
+Hibrid kapcsolatok szolgáltatását az Azure Service Bus Relay két kimenő hívások áll. Van egy kapcsolat egy erőforrástárból a gazdagépen, hol futnak az alkalmazás az App Service-ben. A Service Bus Relay a hibrid kapcsolat Manager (HCM) kapcsolat is van. A HCM a továbbítási szolgáltatás úgy, hogy az elérni kívánt erőforrást üzemeltető a hálózaton belül. 
 
-A két illesztett kapcsolatokon keresztül az alkalmazás rendelkezik egy rögzített gazdagépet: port kombinációján TCP alagút a HCM másik oldalán. A kapcsolat a TLS 1.2 használja a biztonság és a közös hozzáférésű jogosultságkód (SAS) kulcsok a hitelesítéshez és engedélyezéshez.    
+A két csatlakoztatott kapcsolatokon keresztül alkalmazása egy rögzített gazdagépet: port kombináció TCP vezető alagút rendelkezik a HCM másik oldalon. A kapcsolat a TLS 1.2 használja, a biztonság és a közös hozzáférésű jogosultságkód (SAS) kulcsokat a hitelesítéshez és engedélyezéshez.    
 
-![A hibrid kapcsolat magas szintű folyamata ábrája][1]
+![Hibrid kapcsolat magas szintű folyamat ábrája][1]
 
-Az alkalmazás, amely megfelel a konfigurált kötéssel a hibrid kapcsolat DNS-kérelmet küld, ha a kimenő TCP-forgalmat a rendszer átirányítja a hibrid kapcsolaton keresztül.  
+Amikor az alkalmazás egy DNS-kérelmet, amely megfelel a konfigurált hibrid kapcsolódási végpontot, a kimenő TCP-forgalmat a rendszer átirányítja a hibrid kapcsolaton keresztül.  
 
 > [!NOTE]
-> Ez azt jelenti, hogy egy DNS-nevet a hibrid kapcsolat mindig használandó használja. Néhány ügyfélszoftver nem teendő DNS-címkeresést, ha a végpont egy IP-címet használja helyette.
+> Ez azt jelenti, hogy lehetőleg mindig használja a hibrid kapcsolat egy DNS-neve. Néhány ügyfél szoftver nem egy DNS-címkeresés Ha a végpont; ezek helyett használja az IP-címet.
 >
->
 
-A hibrid kapcsolatok szolgáltatás két típusa van: a hibrid kapcsolatok felkínált egy Service Bus Relay szolgáltatást, és a régebbi Azure BizTalk szolgáltatások hibrid kapcsolatok. Ez néven klasszikus hibrid kapcsolatok a portálon. Nincs további információkat a cikk későbbi részében.
 
-### <a name="app-service-hybrid-connection-benefits"></a>App Service a hibrid kapcsolat előnyei ###
+### <a name="app-service-hybrid-connection-benefits"></a>App Service hibrid kapcsolat előnyei ###
 
-Számos a hibrid kapcsolatok funkció előnyei többek között:
+Számos arra, hogy a hibrid kapcsolatok képesség, beleértve:
 
-- Alkalmazások férjenek hozzá a helyszíni rendszer és a szolgáltatások biztonságosan.
-- A szolgáltatás nem szükséges egy internetről elérhető végpontot.
-- Fontos, hogy gyorsan és egyszerűen állíthat be. 
-- Minden egyes hibrid kapcsolat felel meg egyetlen állomás: port kombinációjához, a biztonsági hasznosak.
-- Általában nem szükséges tűzfal lyuk. A kapcsolatok az összes kimenő szokásos webes portokon keresztül.
-- Mivel a szolgáltatás hálózati szint, akkor független az alkalmazás által használt nyelv és a végpont által használt technológiára.
-- Több hálózat egyetlen alkalmazásból hozzáférést biztosíthat használható. 
+- Az alkalmazások hozzáférhessenek a helyszíni rendszerek és szolgáltatások biztonságos.
+- A funkció nem igényel az internethez csatlakozó végponttal.
+- Fontos, hogy gyors és könnyű őket beállítani. 
+- Minden hibrid kapcsolat megegyezik az egyetlen fogadó: port kombinációjához, a biztonság hasznos.
+- Általában nem szükséges tűzfal lyuk. A kapcsolatok összes kimenő szabványos webes portokon keresztül.
+- Mivel a szolgáltatás hálózati szinten, a független az alkalmazás által használt nyelvet és a végpont által használt technológia.
+- Több hálózat egyetlen alkalmazásból származó hozzáférést biztosíthat használható. 
 
-### <a name="things-you-cannot-do-with-hybrid-connections"></a>Művelet nem hajtható végre a hibrid kapcsolatok ###
+### <a name="things-you-cannot-do-with-hybrid-connections"></a>A hibrid kapcsolatokkal nem hajtható végre dolgokat ###
 
-Néhány dolgot a hibrid kapcsolatok, beleértve a nem hajtható végre:
+Elvégzésére nem használatával hibrid kapcsolatokat létesítenek a következők:
 
-- A meghajtó csatlakoztatása.
-- UDP segítségével.
-- Dinamikus portok, például a passzív FTP-módban vagy passzív módban kiterjesztett használó TCP-alapú szolgáltatások eléréséhez.
-- LDAP, támogató, mert UDP néha igényel.
-- Active Directory támogatása.
+- Meghajtót csatlakoztatni.
+- Használja a UDP.
+- Hozzáférés a TCP-alapú használó szolgáltatások dinamikus portok, például az FTP passzív mód vagy a kiterjesztett Paszív mód.
+- Támogatja az LDAP, mert ehhez szükség lehet a UDP.
+- Támogatja az Active Directory, mert a tartományhoz való csatlakozás egy App Service-feldolgozó nem.
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Adja hozzá, és a hibrid kapcsolatok létrehozása az alkalmazásban ##
 
-Hibrid kapcsolatok App Service-alkalmazás az Azure portálon, vagy az Azure-továbbító az Azure portálon keresztül is létrehozhat. Azt javasoljuk, hogy hozzon létre hibrid kapcsolatok révén az App Service-alkalmazás, amelyet a hibrid kapcsolat használata. A hibrid kapcsolat létrehozásához, lépjen a [Azure-portálon] [ portal] , és válassza ki az alkalmazást. Válassza ki **hálózati** > **hibrid kapcsolati végpontok konfigurálása**. Itt láthatja a hibrid kapcsolatok konfigurált az alkalmazásra vonatkozóan.  
+Hibrid kapcsolat létrehozása, lépjen a [az Azure portal] [ portal] válassza ki az alkalmazást. Válassza ki **hálózatkezelés** > **a hibrid kapcsolati végpontok konfigurálása**. Itt láthatja az alkalmazás a hibrid kapcsolatok konfigurált.  
 
-![Képernyőfelvétel a hibrid kapcsolat listája][2]
+![Képernyőfelvétel: a hibrid kapcsolat listája][2]
 
-Új hibrid kapcsolat hozzáadásához válassza **adja hozzá a hibrid kapcsolat**.  Látni fogja, hogy már létrehozta a hibrid kapcsolatok listáját. Egy vagy több hozzáadása az alkalmazáshoz, jelölje be a meglévők közül, és válassza **hozzáadása a hibrid kapcsolat kijelölt**.  
+Új hibrid kapcsolat hozzáadásához válassza **[+] hibrid kapcsolat hozzáadása**.  A már létrehozott hibrid kapcsolatok listáját láthatja. Egy vagy több őket az alkalmazás hozzáadásához válassza ki azokat, és válassza **hozzáadása a kiválasztott hibrid kapcsolat**.  
 
-![Képernyőfelvétel a hibrid kapcsolat portál][3]
+![A portál képernyőképe a hibrid kapcsolat][3]
 
-Ha az új hibrid kapcsolat létrehozásához, jelölje be **új hibrid kapcsolat létrehozása**. Adja meg a: 
+Ha szeretne létrehozni egy új hibrid kapcsolatot, jelölje be **új hibrid kapcsolat létrehozása**. Adja meg a: 
 
-- Végpont nevét.
-- Végpont állomásneve.
-- Végpont portja.
-- Service Bus-névtér szeretne használni.
+- Hibrid kapcsolat neve.
+- Végpont gazdaneve.
+- Végponti port.
+- Service Bus-névtér létrehozásához használni szeretne.
 
-![Képernyőfelvétel a hozzon létre új hibrid kapcsolat párbeszédpanel][4]
+![Képernyőkép, hozzon létre új hibrid kapcsolat párbeszédpanel][4]
 
-Minden hibrid kapcsolat egy Service Bus-névtér van kötve, és minden egyes Service Bus-névtér az Azure-régióban van. Fontos próbálja használni a Service Bus-névtér az alkalmazás ugyanabban a régióban előidézett hálózati késleltetés elkerülése érdekében.
+Service Bus-névtér minden hibrid kapcsolat van kötve, és minden egyes Service Bus-névtér egy Azure-régióban. Fontos próbálja használni a Service Bus-névtér ugyanabban a régióban, az alkalmazás által kiváltott hálózati késés csökkentése érdekében.
 
-Ha szeretné a hibrid kapcsolat eltávolítása az alkalmazásból, a jobb gombbal kattintson rá, és válassza ki **Disconnect**.  
+Ha el kívánja távolítani a hibrid kapcsolat az alkalmazásból, kattintson a jobb gombbal, és válassza ki **Disconnect**.  
 
-A hibrid kapcsolat való hozzáadásakor az alkalmazást, részletes információkat tekinthet meg által egyszerűen jelölje ki. 
+Hibrid kapcsolat van adva az alkalmazáshoz, ha részletes információkat tekinthet, egyszerűen, ha kiválasztja. 
 
-![Képernyőfelvétel a hibrid kapcsolatok részletei][5]
+![Képernyőfelvétel: a hibrid kapcsolatok részletei][5]
 
-### <a name="create-a-hybrid-connection-in-the-azure-relay-portal"></a>A hibrid kapcsolat létrehozása az Azure-továbbítási portálon ###
+### <a name="create-a-hybrid-connection-in-the-azure-relay-portal"></a>Hibrid kapcsolat létrehozása az Azure Relay-portálon ###
 
-Az alkalmazáson belül a portál élmény mellett a hibrid kapcsolatok a Azure Relay-portálon is létrehozhat. A hibrid kapcsolat App Service által használható kell:
+Az alkalmazáson belül a portál élmény mellett az Azure Relay Portalon hibrid kapcsolatokat hozhat létre. A hibrid kapcsolat az App Service által használandó kell:
 
 * Ügyfél-hitelesítés szükséges.
-* Rendelkezik egy metaadatelem nevű végpont, gazdagép: port kombinációját, értéke.
+* Rendelkezik egy metaadatelem nevű végpontot, értékeként gazdagépet: port kombinációját.
 
 ## <a name="hybrid-connections-and-app-service-plans"></a>Hibrid kapcsolatok és az App Service-csomagok ##
 
-A hibrid kapcsolatok funkció a Basic, Standard, Premium és termékváltozatok árképzési elszigetelt csak érhető el. Nincsenek korlátai, a tarifacsomag kötődik.  
+App Service hibrid kapcsolataira csak alapszintű, Standard, prémium szintű és elkülönített díjszabású termékváltozatban érhető el. Vannak kötve, a díjszabással korlátozva van.  
 
-> [!NOTE] 
-> Csak új hibrid kapcsolatok Azure továbbítási alapján hozhat létre. Új BizTalk hibrid kapcsolatok nem hozható létre.
->
-
-| terv díjszabása | A terv felhasználható hibrid kapcsolatok száma |
+| Díjszabási csomag | A csomag használható a hibrid kapcsolatok száma |
 |----|----|
-| Basic | 5 |
+| Alapszintű | 5 |
 | Standard | 25 |
 | Prémium | 200 |
 | Izolált | 200 |
 
-Vegye figyelembe, hogy az App Service-csomag bemutatja, hogy hány hibrid kapcsolatok használatban vannak, és alkalmazásokat.  
+Az App Service-csomag felhasználói felület megtudhatja, hány hibrid kapcsolatot használ, és milyen alkalmazásokat.  
 
 ![Képernyőkép az App Service-csomag tulajdonságai][6]
 
-A hibrid kapcsolat részleteinek kiválasztása Láthatja, hogy az alkalmazás megtekintése a látott összes információt. A csomagot hány más alkalmazásokat használ, hogy a hibrid kapcsolat is látható.
+Válassza ki a hibrid kapcsolat részleteinek megtekintéséhez. Láthatja, hogy az alkalmazás megtekintése a látott összes információt. Hány más alkalmazásokat a csomagot használ, hogy a hibrid kapcsolat is megjelenik.
 
-Az App Service-csomag használható hibrid kapcsolati végpontok száma korlátozva van. Minden egyes használt, a hibrid kapcsolat azonban használható tetszőleges számú alkalmazások között, hogy a tervben. Például öt külön alkalmazásokban használt az App Service-csomag egy hibrid kapcsolat egy hibrid kapcsolat számít.
+Az App Service-csomagban használható hibrid kapcsolati végpontok száma korlátozva van. Minden egyes használt, a hibrid kapcsolat azonban használható alkalmazások bármennyi-csomag. Az App Service-csomag öt különböző alkalmazásokban használt egyetlen hibrid kapcsolat például egy hibrid kapcsolat számít.
 
-A hibrid kapcsolatot is használ további költségek van. További információkért lásd: [Service Bus árképzési][sbpricing].
+### <a name="pricing"></a>Díjszabás ###
 
-## <a name="hybrid-connection-manager"></a>Hibrid Csatlakozáskezelő ##
+Folyamatban van egy App Service-csomag SKU követelmény itt kívül a rendszer a hibrid kapcsolatok használatával további költségekkel járnak. Nincs a hibrid kapcsolat által használt minden egyes figyelő esetén számítunk fel. A figyelő a Hibridkapcsolat-kezelő rendszer. Ha a két Hibridkapcsolat-kezelők által támogatott 5 hibrid kapcsolatot, 10 figyelői lenne. További információkért lásd: [Service Bus díjszabásáról][sbpricing].
 
-A hibrid kapcsolatok a hálózat, amelyen a hibrid kapcsolat végpont továbbító ügynök szolgáltatáshoz. A továbbító ügynök neve a hibrid kapcsolat Manager (HCM). HCM, az alkalmazást a töltheti le a [Azure-portálon][portal], jelölje be **hálózati** > **hibridkapcsolativégpontokkonfigurálása**.  
+## <a name="hybrid-connection-manager"></a>Hibridkapcsolat-kezelő ##
 
-Ez az eszköz a Windows Server 2012 vagy újabb fut. Amikor telepíti, HCM szolgáltatásként fut, amely kapcsolódik a Service Bus Relay, a beállított végpontjaikra alapján. HCM közötti kapcsolatok kimenő Azure 443-as porton keresztül.    
+A hibrid kapcsolatok szolgáltatást a hálózaton, amelyen a hibrid kapcsolat végpontja továbbító ügynök szükséges. A továbbító ügynök a hibrid kapcsolat Manager (HCM) nevezzük. HCM, az alkalmazás töltheti le a [az Azure portal][portal], jelölje be **hálózatkezelés** > **a hibrid kapcsolati végpontokkonfigurálása**.  
 
-Miután telepítette a HCM, a felhasználói felület használata az eszköz HybridConnectionManagerUi.exe is futtathatja. A fájl a Hybrid Connection Manager telepítő könyvtárában van. Windows 10-ben csak is kereshet *Hybrid Connection Manager felhasználói felületén* be a keresőmezőbe.  
+Ez az eszköz fut, a Windows Server 2012 és újabb verziók. A HCM szolgáltatásként fut, és kapcsolódik az Azure Relay a 443-as porton a kimenő.  
 
-![Képernyőfelvétel a Hybrid Connection Manager][7]
+HCM telepítés után a felhasználói felület használata az eszköz HybridConnectionManagerUi.exe is futtathatja. Ez a fájl a Hibridkapcsolat-kezelő telepítési könyvtárban van. A Windows 10-ben is kereshet *Hibridkapcsolat-kezelő felhasználói felületén* kifejezést a keresőmezőbe.  
 
-A HCM felhasználói felületének indításakor az első nevezzük ezen példánya számára a HCM használatára konfigurált összes hibrid kapcsolatok listáját. Ha azt szeretné, hogy hajtsa végre a módosításokat, először hitelesíteniük az Azure-ral. 
+![Képernyőkép a Hibridkapcsolat-kezelő][7]
+
+A HCM felhasználói felületének indításakor megjelenik az első lépésben egy táblázat listázza az adott a HCM-példány konfigurált összes hibrid kapcsolatok. Ha semmilyen módosítást szeretne, először az Azure-hitelesítésre. 
 
 Egy vagy több hibrid kapcsolat hozzáadása a HCM:
 
 1. Indítsa el a HCM felhasználói felületén.
-1. Válassza ki **egy másik hibrid kapcsolat konfigurálása**.
-![Képernyőkép a konfigurálása az új hibrid kapcsolatok][8]
+1. Válassza ki **konfigurálása egy másik hibrid kapcsolat**.
+![Képernyőkép az új hibrid kapcsolatok konfigurálása][8]
 
 1. Jelentkezzen be az Azure-fiókjával.
 1. Válasszon egy előfizetést.
-1. Válassza ki a hibrid kapcsolatok, amelyet továbbítani HCM.
+1. Válassza ki a hibrid kapcsolatok a HCM továbbítani kívánt.
 ![Képernyőkép a hibrid kapcsolatok][9]
 
 1. Kattintson a **Mentés** gombra.
 
-Most már megtekintheti a hibrid kapcsolatok hozzáadott. Igény szerint kiválaszthatja a konfigurált hibrid kapcsolat részletek megtekintéséhez.
+Most már megtekintheti a hibrid kapcsolatok hozzáadott. Választhatja a konfigurált hibrid kapcsolat részleteinek megtekintéséhez.
 
-![Képernyőkép a hibrid kapcsolat adatai][10]
+![Képernyőkép a hibrid kapcsolat részleteivel][10]
 
-A hibrid kapcsolatok konfigurálja azokat támogatásához HCM van szükség:
+A konfigurált hibrid kapcsolatok támogatásához HCM van szükség:
 
-- TCP Azure-hozzáférést 80-as és 443-as porton keresztül.
-- A hibrid kapcsolat végpont TCP elérésére.
-- A végpont gazdagép és a Service Bus-névtér DNS look-ups tegye lehetővé teszi.
-
-HCM támogatja az új hibrid kapcsolatok és BizTalk hibrid kapcsolatok.
+- TCP hozzáférés az Azure-bA 443-as porton keresztül.
+- A hibrid kapcsolat végpontja TCP hozzáférés.
+- Lehetővé teszi a végponti gazdagép és a Service Bus-névtér DNS look-ups.
 
 > [!NOTE]
-> Webes szoftvercsatornák csatlakozási Azure továbbítási támaszkodik. Ez a lehetőség csak akkor érhető el a Windows Server 2012 vagy újabb. Miatt, amely HCM nem támogatott semmit a Windows Server 2012-nél régebbi.
+> Az Azure Relay támaszkodik a Web Sockets, a hálózati kapcsolatot. Ez a lehetőség csak akkor érhető el a Windows Server 2012 vagy újabb. Ezért HCM nem támogatott az semmit a Windows Server 2012-nél régebbi.
 >
 
 ### <a name="redundancy"></a>Redundancia ###
 
-Minden egyes HCM támogathatja több hibrid kapcsolatok. Ezenkívül egy adott hibrid kapcsolathoz több HCMs használható. Az alapértelmezett viselkedés bármely adott végpont konfigurált HCMs közötti forgalom irányítására. Ha magas rendelkezésre állás a hibrid kapcsolatok használata esetén a hálózatról, több HCMs külön gépeken futnak. 
+Minden egyes HCM több hibrid kapcsolatot támogat. Emellett bármely adott hibrid kapcsolat több HCMs támogatható. Az alapértelmezett viselkedést, hogy a konfigurált HCMs bármely adott végponton keresztül irányítja a forgalmat. Ha magas rendelkezésre állás a hibrid kapcsolatok a hálózatról, több HCMs külön gépeken fussanak. Betöltés terjesztési használt algoritmust határozza meg a továbbítási szolgáltatás által a HCMs forgalom elosztása véletlenszerű hozzárendelés. 
 
-### <a name="manually-add-a-hybrid-connection"></a>A hibrid kapcsolat manuális hozzáadása ###
+### <a name="manually-add-a-hybrid-connection"></a>Adja hozzá manuálisan a hibrid kapcsolat ###
 
-Valaki kívül az előfizetés HCM példány futtatásához egy adott hibrid kapcsolat engedélyezéséhez megoszthatja velük a hibrid kapcsolat az átjáró kapcsolati karakterlánca. Erre úgy tekinthet tulajdonságai a hibrid kapcsolat a [Azure-portálon][portal]. A karakterlánc használatához válassza **adja meg manuálisan** HCM, és illessze be az átjáró kapcsolati karakterlánca.
+Ahhoz, hogy valakinek, aki nem az előfizetés egy adott a hibrid kapcsolat HCM példány üzemeltetésére, ossza meg az átjáró kapcsolati karakterlánca velük a hibrid kapcsolat. A hibrid kapcsolat tulajdonságai az átjáró kapcsolati karakterlánca látható a [az Azure portal][portal]. A karakterlánc használatához válassza **adja meg manuálisan** a HCM, és illessze be az átjáró kapcsolati karakterlánca.
 
+![Adja hozzá manuálisan a hibrid kapcsolat][11]
+
+### <a name="upgrade"></a>Frissítés ###
+
+Nincsenek időszakos frissítések, a Hibridkapcsolat-kezelő kapcsolatos problémák megoldása vagy biztosítanak. Frissítések jelennek meg, amikor egy előugró ablak jelennek meg a HCM felhasználói felületén. A frissítés alkalmazása a alkalmazni a módosításokat, és indítsa újra a HCM. 
+
+## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Hibrid kapcsolat hozzáadása az alkalmazáshoz programozott módon ##
+
+Az alábbi esetekben API-k segítségével közvetlenül kezelheti a hibrid kapcsolatok a web apps csatlakozik. 
+
+    /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
+
+A hibrid kapcsolat társított JSON-objektum hasonlóan néz ki:
+
+    {
+      "name": "[hybrid connection name]",
+      "type": "Microsoft.Relay/Namespaces/HybridConnections",
+      "location": "[location]",
+      "properties": {
+        "serviceBusNamespace": "[namespace name]",
+        "relayName": "[hybrid connection name]",
+        "relayArmUri": "/subscriptions/[subscription id]/resourceGroups/[resource group name]/providers/Microsoft.Relay/namespaces/[namespace name]/hybridconnections/[hybrid connection name]",
+        "hostName": "[endpoint host name]",
+        "port": [port],
+        "sendKeyName": "defaultSender",
+        "sendKeyValue": "[send key]"
+      }
+    }
+
+Egy ezzel az információval módja a armclient, amelyeket kérhet le a [ARMClient] [ armclient] github-projekt. Íme egy példa egy már létező hibrid kapcsolat csatolására a webalkalmazáshoz. Hozzon létre egy JSON-fájlt, mint például a fenti séma szerint:
+
+    {
+      "name": "relay-demo-hc",
+      "type": "Microsoft.Relay/Namespaces/HybridConnections",
+      "location": "North Central US",
+      "properties": {
+        "serviceBusNamespace": "demo-relay",
+        "relayName": "relay-demo-hc",
+        "relayArmUri": "/subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myrelay-rg/providers/Microsoft.Relay/namespaces/demo-relay/hybridconnections/relay-demo-hc",
+        "hostName": "my-wkstn.home",
+        "port": 1433,
+        "sendKeyName": "defaultSender",
+        "sendKeyValue": "Th9is3is8a82lot93of3774stu887ff122235="
+      }
+    }
+
+Az API használatához, van szükség a küldési kulcs és a relay erőforrás-azonosítója. Ha mentette az adatait a filename hctest.json rendelkező, adja ki a hibrid kapcsolat az alkalmazáshoz csatolja ezt a parancsot: 
+
+    armclient login
+    armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
 
 ## <a name="troubleshooting"></a>Hibaelhárítás ##
 
-"Csatlakoztatott" állapotának azt jelenti, hogy, hogy legalább egy HCM, hogy a hibrid kapcsolat van konfigurálva, és képes Azure eléréséhez. Ha a hibrid kapcsolat állapota nem kéri a **csatlakoztatva**, a hibrid kapcsolat nincs konfigurálva a bármely HCM, amely hozzáfér az Azure-bA.
+Az állapot "Csatlakoztatva", azt jelenti, hogy legalább egy HCM, hogy a hibrid kapcsolat van konfigurálva, és képes éri el az Azure. Ha a hibrid kapcsolat állapota nem tegyük fel, hogy **csatlakoztatva**, a hibrid kapcsolat nincs konfigurálva minden olyan HCM, amely hozzáfér az Azure-bA.
 
-A legfőbb oka, hogy az ügyfelek nem tudnak csatlakozni a végpont nem, mert a végpont IP-cím segítségével, a DNS-név lett megadva. Ha az alkalmazás nem tudja elérni a kívánt végpont, és egy IP-címet, váltson a HCM futtató egy a gazdagépen érvényes DNS-név használatával. Emellett ellenőrizze, hogy a gazdagépen, amelyen fut a HCM megfelelően feloldja a DNS-nevét. Győződjön meg arról, hogy nincs-e kapcsolat a gazdagép, amelyen fut a HCM a hibrid kapcsolat végpontjához.  
+Az elsődleges célja, hogy az ügyfelek nem tudnak csatlakozni a végpont az oka, hogy a végpont IP-cím helyett egy DNS-név lett megadva. Ha az alkalmazás nem érhető el a kívánt végpontot, és egy IP-címet használva, váltson a HCM futtató kiszolgáló, amely a gazdagépen érvényes DNS-név használatával. Emellett ellenőrizze, hogy a gazdagépen, amelyen a HCM fut megfelelően feloldja a DNS-nevét. Győződjön meg arról, hogy nincs-e kapcsolat a gazdagép a HCM futtató kiszolgáló, a hibrid kapcsolat végpontja.  
 
-Az App Service-ben a tcpping eszköz is elindítható a speciális eszközök (a Kudu) konzolról. Ez az eszköz segítségével megállapíthatja, hogy ha rendelkezik hozzáféréssel a TCP-végpontot, de azt nem közli, ha hozzáfér a hibrid kapcsolat végponthoz. Az eszköz a konzolon, szemben a hibrid kapcsolat végpontjának használatakor csak megerősíti, hogy használja-e a gazdagép és a portszám kombináció.  
+Az App Service-ben a tcpping eszköz a speciális eszközök (Kudu) konzolról is hívható. Ez az eszköz eláruljuk, ha hozzáfér a TCP-végpont, de azt nem mondja el, ha egy hibrid kapcsolat végpontja hozzáféréssel rendelkezik. Az eszköz a konzolon, a hibrid kapcsolat végponton való használatakor csak megerősíti, hogy a gazdagép: port kombinációját használja.  
 
 ## <a name="biztalk-hybrid-connections"></a>Hibrid kapcsolatok a BizTalk szolgáltatásokban ##
 
-A régebbi BizTalk hibrid kapcsolatok funkció le van zárva, új BizTalk hibrid kapcsolatok. A meglévő BizTalk hibrid kapcsolatok használata az alkalmazások továbbra is, de át kell telepíteni az új Azure továbbítási használó hibrid kapcsolatok. A BizTalk verzióra az új szolgáltatás előnye között a következők:
+Ez a funkció korai formájában BizTalk hibrid kapcsolatok lett meghívva. Ez a funkció 2018. május 31-ig. a végfelhasználók az élettartam történt, és operations megszűnt. BizTalk hibrid kapcsolatok a web Apps-alkalmazások összes el lettek távolítva, és nem a portál vagy API-n keresztül elérhető. Ha továbbra is ezeket a a Hibridkapcsolat-kezelő konfigurált régebbi kapcsolatokat, majd meg Kifutott állapotot és egy záró az élettartam utasítás megjelenítéséhez a lap alján.
 
-- Nincsenek további BizTalk fiókot kell megadni.
-- A TLS 1.2-es verziója helyett az 1.0-s verziója.
-- Kommunikációs 80-as és 443-as porton keresztül, és használja a DNS-név Azure helyett IP-címek és további portokat számos eléréséhez.  
-
-Meglévő BizTalk hibrid kapcsolat hozzáadása az alkalmazáshoz, keresse fel az alkalmazást a a [Azure-portálon][portal], és válassza ki **hálózati** > **konfigurálása a hibrid kapcsolati végpontok**. A klasszikus hibrid kapcsolatok kijelölése **klasszikus hibrid kapcsolat hozzáadása**. A BizTalk hibrid kapcsolatok listáját megtekintheti.  
+![BizTalk hibrid kapcsolatok a HCM a][12]
 
 
 <!--Image references-->
@@ -205,9 +245,12 @@ Meglévő BizTalk hibrid kapcsolat hozzáadása az alkalmazáshoz, keresse fel a
 [8]: ./media/app-service-hybrid-connections/hybridconn-hcmadd.png
 [9]: ./media/app-service-hybrid-connections/hybridconn-hcmadded.png
 [10]: ./media/app-service-hybrid-connections/hybridconn-hcmdetails.png
+[11]: ./media/app-service-hybrid-connections/hybridconn-manual.png
+[12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
 [HCService]: http://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
 [portal]: http://portal.azure.com/
 [oldhc]: http://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
 [sbpricing]: http://azure.microsoft.com/pricing/details/service-bus/
+[armclient]: https://github.com/projectkudu/ARMClient/

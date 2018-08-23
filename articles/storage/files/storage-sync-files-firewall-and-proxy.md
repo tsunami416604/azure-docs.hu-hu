@@ -5,15 +5,15 @@ services: storage
 author: fauhse
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/08/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: 44bfdd192f846b710e378b1f00799eda304cec1e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f5fa68488fa8130ad49da37c91b7f4c04376edb3
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522764"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42440679"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Az Azure File Sync kapcsolódik a helyszíni kiszolgálók az Azure Files többhelyes szinkronizálás és a felhőbeli rétegezés szolgáltatások engedélyezése. Ezért egy helyszíni kiszolgálón kapcsolódnia kell az internethez. Egy rendszergazdának kell döntenie, hogy a legjobb útvonalat a közvetítőn keresztül az Azure cloud services-kiszolgáló.
@@ -46,15 +46,47 @@ Az Azure File Sync minden rendelkezésre álló eszközöket, amelyek lehetővé
 ## <a name="proxy"></a>Proxy
 Az Azure File Sync támogatja az alkalmazásspecifikus és gépre kiterjedő proxy beállításai.
 
-Gépre kiterjedő proxy beállításai az Azure File Sync ügynök átlátható, mert a teljes kiszolgáló adatforgalmat a proxyn keresztül.
-
-Alkalmazás-specifikus proxy-beállítások lehetővé teszik a kifejezetten az Azure File Sync-forgalmat a proxy konfigurációját. Alkalmazás-specifikus proxybeállításokat a ügynökverzió 3.0.12.0 vagy újabb és az ügynök telepítése közben, vagy a Set-StorageSyncProxyConfiguration PowerShell-parancsmag használatával konfigurálható.
+**Alkalmazás-specifikus proxybeállítások** kifejezetten a forgalmat az Azure File Sync proxy konfigurálását teszik lehetővé. Alkalmazás-specifikus proxybeállításokat a ügynökverzió 3.0.12.0 vagy újabb és az ügynök telepítése közben, vagy a Set-StorageSyncProxyConfiguration PowerShell-parancsmag használatával konfigurálható.
 
 Alkalmazás-specifikus Proxybeállítások konfigurálása a PowerShell-parancsokat:
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
+**Gépre kiterjedő proxy beállításai** transzparensek az Azure File Sync ügynök, a teljes kiszolgáló adatforgalmat a proxyn keresztül.
+
+Gépre kiterjedő proxy beállításainak konfigurálásához kövesse az alábbi lépéseket: 
+
+1. Konfigurálja a proxybeállításokat a .NET-alkalmazásokban 
+
+  - Módosítsa a két fájlt:  
+    C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
+    C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+
+  - Adja hozzá a < system.net > szakasz a machine.config fájlok (alább a < system.serviceModel > szakaszban).  127.0.01:8888 módosítsa az IP-cím és a proxykiszolgáló portját. 
+  ```
+      <system.net>
+        <defaultProxy enabled="true" useDefaultCredentials="true">
+          <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
+        </defaultProxy>
+      </system.net>
+  ```
+
+2. Állítsa be a WinHTTP-proxybeállítások 
+
+  - Futtassa a következő parancsot egy rendszergazda jogú parancssort vagy a Powershellt, tekintse meg a meglévő proxy beállításai:   
+
+    a Netsh winhttp show proxy
+
+  - Futtassa a következő parancsot egy rendszergazda jogú parancssort vagy a PowerShell segítségével állítsa be a proxybeállítást a (127.0.01:8888 módosítsa az IP-cím és a proxykiszolgáló port):  
+
+    a Netsh winhttp proxy 127.0.0.1:8888 beállítása
+
+3. Indítsa újra a Storage Sync-ügynök szolgáltatást a PowerShell vagy egy rendszergazda jogú parancssorból a következő parancs futtatásával: 
+
+      net stop filesyncsvc
+
+      Megjegyzés: A Storage Sync-ügynök (filesyncsvc) szolgáltatást fogja automatikusan elinduló egyszer leállt.
 
 ## <a name="firewall"></a>Tűzfal
 Az egyik előző szakaszban említett port 443-as kell lennie kimenő megnyitásához. Az adatközpontban, a fiókiroda vagy a régiót a házirendek alapján, további korlátozása adott tartományokra porton keresztüli forgalmat kívánt vagy szükséges.
@@ -76,7 +108,22 @@ Ha &ast;. one.microsoft.com túl széleskörű, a kiszolgálói kommunikációho
 
 Az üzletmenet-folytonossági és vészhelyreállítási (BCDR) helyreállítási okok miatt előfordulhat, hogy megadta az Azure-fájlmegosztások globálisan redundáns (GRS) tárfiók található. Ha ez a helyzet, majd az Azure-fájlmegosztások feladatátvételt hajt végre a párosított régióra tartós regionális kimaradás esetén. Az Azure File Sync az azonos regionális párok tárolóként használ. Ezért GRS-tárfiókok használatakor, engedélyeznie kell, hogy a kiszolgálót, hogy a párosított régió beszélgethet Azure File Sync további URL-címet. Az alábbi táblázat a "Paired régió" meghívja. Emellett van egy traffic manager profil URL-CÍMÉT, valamint engedélyezni kell. Ez biztosítja a hálózati forgalom zökkenőmentesen újra átirányítható a párosított régióra feladatátvétel esetén, és az alábbi táblázatban az "Felderítési URL-címe" nevezzük.
 
-| Régió |} Elsődleges végpont URL-címe |} Párosított régió |} Felderítési URL-cím |} |}---|}---|| --------|| ---------------------------------------| | Kelet-Ausztrália |} https://kailani-aue.one.microsoft.com | Ausztrália Souteast |} https://kailani-aue.one.microsoft.com | | Délkelet-Ausztrália |} https://kailani-aus.one.microsoft.com | Kelet-Ausztrália |} https://tm-kailani-aus.one.microsoft.com | | Közép-Kanada |} https://kailani-cac.one.microsoft.com | Kelet-Kanada |} https://tm-kailani-cac.one.microsoft.com | | Kelet-Kanada |} https://kailani-cae.one.microsoft.com | Közép-Kanada |} https://tm-kailani.cae.one.microsoft.com | | USA középső RÉGIÓJA |} https://kailani-cus.one.microsoft.com | USA keleti RÉGIÓJA 2 |} https://tm-kailani-cus.one.microsoft.com | | Kelet-Ázsia |} https://kailani11.one.microsoft.com | Délkelet-Ázsia |} https://tm-kailani11.one.microsoft.com | | USA keleti Régiójában |} https://kailani1.one.microsoft.com | USA nyugati RÉGIÓJA |} https://tm-kailani1.one.microsoft.com | | USA keleti RÉGIÓJA 2 |} https://kailani-ess.one.microsoft.com | USA középső RÉGIÓJA |} https://tm-kailani-ess.one.microsoft.com | | Észak-Európa |} https://kailani7.one.microsoft.com | Nyugat-Európa |} https://tm-kailani7.one.microsoft.com | | Délkelet-Ázsia |} https://kailani10.one.microsoft.com | Kelet-Ázsia |} https://tm-kailani10.one.microsoft.com | | Egyesült Királyság déli régiója |} https://kailani-uks.one.microsoft.com | Egyesült Királyság nyugati régiója |} https://tm-kailani-uks.one.microsoft.com | | Egyesült Királyság nyugati régiója |} https://kailani-ukw.one.microsoft.com | Egyesült Királyság déli régiója |} https://tm-kailani-ukw.one.microsoft.com | | Nyugat-Európa |} https://kailani6.one.microsoft.com | Észak-Európa |} https://tm-kailani6.one.microsoft.com | | USA nyugati RÉGIÓJA |} https://kailani.one.microsoft.com | USA keleti Régiójában |} https://tm-kailani.one.microsoft.com |
+| Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
+|--------|---------------------------------------|--------|---------------------------------------|
+| Kelet-Ausztrália | https://kailani-aue.one.microsoft.com | Ausztrália Souteast | https://kailani-aue.one.microsoft.com |
+| Délkelet-Ausztrália | https://kailani-aus.one.microsoft.com | Kelet-Ausztrália | https://tm-kailani-aus.one.microsoft.com |
+| Közép-Kanada | https://kailani-cac.one.microsoft.com | Kelet-Kanada | https://tm-kailani-cac.one.microsoft.com |
+| Kelet-Kanada | https://kailani-cae.one.microsoft.com | Közép-Kanada | https://tm-kailani.cae.one.microsoft.com |
+| USA középső régiója | https://kailani-cus.one.microsoft.com | USA 2. keleti régiója | https://tm-kailani-cus.one.microsoft.com |
+| Kelet-Ázsia | https://kailani11.one.microsoft.com | Délkelet-Ázsia | https://tm-kailani11.one.microsoft.com |
+| USA keleti régiója | https://kailani1.one.microsoft.com | USA nyugati régiója | https://tm-kailani1.one.microsoft.com |
+| USA 2. keleti régiója | https://kailani-ess.one.microsoft.com | USA középső régiója | https://tm-kailani-ess.one.microsoft.com |
+| Észak-Európa | https://kailani7.one.microsoft.com | Nyugat-Európa | https://tm-kailani7.one.microsoft.com |
+| Délkelet-Ázsia | https://kailani10.one.microsoft.com | Kelet-Ázsia | https://tm-kailani10.one.microsoft.com |
+| Az Egyesült Királyság déli régiója | https://kailani-uks.one.microsoft.com | Az Egyesült Királyság nyugati régiója | https://tm-kailani-uks.one.microsoft.com |
+| Az Egyesült Királyság nyugati régiója | https://kailani-ukw.one.microsoft.com | Az Egyesült Királyság déli régiója | https://tm-kailani-ukw.one.microsoft.com |
+| Nyugat-Európa | https://kailani6.one.microsoft.com | Észak-Európa | https://tm-kailani6.one.microsoft.com |
+| USA nyugati régiója | https://kailani.one.microsoft.com | USA keleti régiója | https://tm-kailani.one.microsoft.com |
 
 - Ha helyileg redundáns (LRS) vagy zóna redundáns (ZRS) storage-fiókokat használ, csak az "elsődleges végpont URL-címe" alatt felsorolt URL-cím engedélyeznie kell.
 

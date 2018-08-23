@@ -1,84 +1,85 @@
 ---
-title: Felkészülés az közzététele, vagy telepítse a Visual Studio Felhőszolgáltatás |} Microsoft Docs
-description: Ismerje meg, az eljárások a felhő- és tárolási fiók szolgáltatások beállítása és konfigurálása az Azure-alkalmazásában.
+title: Közzétételekor vagy telepítésekor a Visual Studio Felhőszolgáltatás előkészítése |} A Microsoft Docs
+description: Ismerje meg, az eljárások a felhőbeli és a tárolási fiók szolgáltatások beállítása és konfigurálása az Azure-alkalmazásokat.
 services: visual-studio-online
 author: ghogen
 manager: douge
 ms.assetid: 92ee2f9e-ec49-4c7a-900d-620abe5e9d8a
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ghogen
-ms.openlocfilehash: 7656f0ea7ddc283d430eacdccb60a1a2df6e3b70
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 084ba64389e2f3f8d62b77697df368dac7e09eac
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798981"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42061391"
 ---
-# <a name="prepare-to-publish-or-deploy-a-cloud-service-from-visual-studio"></a>Felkészülés az közzététele, vagy egy felhőalapú szolgáltatás, a Visual Studio telepítése
+# <a name="prepare-to-publish-or-deploy-a-cloud-service-from-visual-studio"></a>Közzétételekor vagy telepítésekor a Visual Studio felhőszolgáltatás előkészítése
 
 Egy felhőszolgáltatás-projekt közzététele, be kell állítania a következő szolgáltatások ebben a cikkben leírtak szerint:
 
-* A **felhőalapú szolgáltatás** környezetben való futtatásához a szerepkörök az Azure, és 
-* A **tárfiók** , amely biztosítja, hogy a Blob, Queue és Table szolgáltatások eléréséhez.
+* A **felhőszolgáltatás** a szerepkörök futtatásához az Azure-környezetben, és 
+* A **tárfiók** , amely a Blob, Queue és Table szolgáltatások hozzáférést biztosít.
 
 ## <a name="create-a-cloud-service"></a>Felhőszolgáltatás létrehozása
 
-Egy felhőalapú szolgáltatás fut a szerepkörök az Azure környezetben. Visual Studio vagy a felhőszolgáltatás hozhat létre a [Azure-portálon](https://portal.azure.com/) a következő szakaszok leírtak szerint.
+Egy felhőalapú szolgáltatás a szerepkörök az Azure-környezetben fut. Létrehozhat egy felhőalapú szolgáltatás, vagy a Visual studióban, vagy keresztül a [az Azure portal](https://portal.azure.com/) az az alábbi szakaszokban leírtak szerint.
 
-### <a name="create-a-cloud-service-from-visual-studio"></a>Felhőalapú szolgáltatás létrehozása a Visual Studio eszközből
+### <a name="create-a-cloud-service-from-visual-studio"></a>Egy felhőalapú szolgáltatás létrehozása a Visual Studióból
 
-1. Egy korábban létrehozott Felhőszolgáltatás-projekt, kattintson a jobb gombbal a projekt válassza **közzététel**.
-1. Szükség esetén a Microsoft vagy az Azure-előfizetéshez társított szervezeti fiókkal jelentkezzen be, majd válassza ki **következő** ahhoz, hogy értékről a **beállítások** lap.
-1. A **felhőalapú szolgáltatás létrehozása és a Tárfiók** párbeszédpanel jelenik meg (Ha nem, válassza ki a **hozzon létre új** a a **Felhőszolgáltatás** lista).
-1. Adjon meg egy nem betűérzékeny nevet a felhőalapú szolgáltatás, amely a URL-CÍMÉT a részét képezi, és egyedinek kell lennie. Válasszon egy régiót vagy Affinitáscsoportot és is replikációs beállítás.
+1. A korábban létrehozott Felhőszolgáltatás-projektben kattintson a jobb gombbal a projekt válassza **közzététel**.
+1. Ha szükséges, jelentkezzen be a Microsoft vagy a szervezeti fiók az Azure-előfizetéséhez társított, majd válassza ki **tovább** azt mutatja be, hogy a **beállítások** lapot.
+1. A **Felhőszolgáltatás létrehozása és a Storage-fiók** párbeszédpanel jelenik meg (Ha nem, válassza ki a **hozzon létre új** származó a **Felhőszolgáltatás** lista).
+1. Adja meg a kis-és nevét, a felhőalapú szolgáltatás, amely az URL-Címének részét képezi, és egyedinek kell lennie. Is válasszon egy régió vagy Affinitáscsoport, és válassza ki a replikációs beállítás.
 
-### <a name="create-a-cloud-service-through-the-azure-portal"></a>Az Azure portálon keresztül felhőalapú szolgáltatás létrehozása
+### <a name="create-a-cloud-service-through-the-azure-portal"></a>Az Azure Portalon keresztül felhőalapú szolgáltatás létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Válassza ki **Felhőszolgáltatások (klasszikus)** a lap bal oldalán.
-1. Válassza ki **+ Hozzáadás**, majd adja meg a szükséges információkat (DNS-neve, előfizetés, erőforráscsoportban, és helyet). Nincs szükség ezen a ponton feltölteni egy csomagot, mert így tesz, amely később a Visual Studióban.
-1. Válassza ki **létrehozása** a folyamat befejezéséhez.
+1. Válassza ki **Felhőszolgáltatások (klasszikus)** az oldal bal oldalán.
+1. Válassza ki **+ Hozzáadás**, majd adja meg a szükséges információkat (DNS név, előfizetés, erőforráscsoport és hely). Nem kell csomagot ezen a ponton feltölteni, mert később a Visual Studióban megtenni.
+1. Válassza ki **létrehozás** a folyamat befejezéséhez.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-A tárfiók a Blob, Queue és Table szolgáltatások hozzáférést biztosít. Visual Studio alkalmazással tárfiókot is létrehozhat vagy a [Azure-portálon](https://portal.azure.com/).
+A tárfiók a Blob, Queue és Table szolgáltatások hozzáférést biztosít. Hozhat létre egy tárfiókot, Visual Studión keresztül vagy a [az Azure portal](https://portal.azure.com/).
 
-### <a name="create-a-storage-account-from-visual-studio"></a>A storage-fiók létrehozása a Visual Studio eszközből
+### <a name="create-a-storage-account-from-visual-studio"></a>Storage-fiók létrehozása a Visual Studióból
 
-1. A **Megoldáskezelőben** egy korábban létrehozott Felhőszolgáltatás-projekt esetében, keresse meg a **kapcsolódó szolgáltatások** csomópont egy szerepkör projekt, kattintson a jobb gombbal és válassza ki **hozzá kapcsolódó szolgáltatás**. (A Visual Studio 2015, kattintson a jobb gombbal a **tárolási** csomópont, és válassza **Storage-fiók létrehozása**.)
-1. Az a **kapcsolódó szolgáltatások** megjelenő listában, válasszon **felhőalapú tárolás az Azure Storage**.
-1. Válassza ki az Azure Storage párbeszédpanelen megjelenő **+ új Tárfiók létrehozása**, amely megjelenik egy párbeszédpanel, amely az előfizetéséhez, a neve meg fő a fiók, egy árképzési szint, erőforráscsoportot és helyet.
-1. Válassza ki **létrehozása** befejezése. Az új tárfiók az előfizetésben a rendelkezésre álló tárfiókok listájában jelenik meg.
+1. A **Megoldáskezelőben** a korábban létrehozott Felhőszolgáltatás-projektben keresse meg a **csatlakoztatott szolgáltatás** belül egy szerepkör projekt, kattintson a jobb gombbal, és válassza a csomópontot **csatlakoztatott szolgáltatás hozzáadása**. (A Visual Studio 2015, kattintson a jobb gombbal a **tárolási** csomópontra, és válassza **Create Storage Account**.)
+1. Az a **csatlakoztatott szolgáltatás** megjelenő listában, válassza ki **felhőalapú tárolás az Azure Storage**.
+1. Azure Storage, a megjelenő párbeszédpanelen jelölje ki a **+ létrehozás új Tárfiók**, amely megjelenik egy párbeszédpanel, amelyben adja meg az előfizetés nevét fo a fiók, egy árképzési szint, erőforráscsoportot és helyet.
+1. Válassza ki **létrehozás** befejezése. Az új tárfiókot az előfizetésében rendelkezésre álló tárfiókok listájában jelenik meg.
 1. Válassza ki, hogy a fiókot, és válassza ki **Hozzáadás**.
 
-### <a name="create-a-storage-account-through-the-azure-portal"></a>Hozzon létre egy tárfiókot az Azure portálon keresztül
+### <a name="create-a-storage-account-through-the-azure-portal"></a>Hozzon létre egy tárfiókot az Azure Portalon keresztül
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza ki **+ új** a bal felső sarokban.
-1. Válassza ki **tárolási** az "Azure piactérről," majd **tárfiók - blob, a fájl, a tábla, a várólista** jobb oldalán.
-1. Adja meg a szükséges információkat (név, üzembe helyezési modellt, és így tovább.
-1. Válassza ki **létrehozása** a folyamat befejezéséhez.
+1. Válassza ki **tárolási** szerint "Az Azure Marketplace-en," majd **tárfiók – blob, fájl, tábla, üzenetsor** jobb oldaláról.
+1. Adja meg a szükséges információkat (név, üzembe helyezési modell, és így tovább.
+1. Válassza ki **létrehozás** a folyamat befejezéséhez.
 
-## <a name="configure-your-app-to-use-the-storage-account"></a>Állítsa be alkalmazását annak a tárfiók használata
+## <a name="configure-your-app-to-use-the-storage-account"></a>A storage-fiókot az alkalmazás konfigurálása
 
-A storage-fiók létrehozása után lehet hozzá csatlakozni a Visual Studio automatikusan frissíti a szolgáltatáskonfiguráció a projekthez, beleértve az URL-címek és hozzáférési kulcsokkal.
+Miután létrehozott egy tárfiókot, csatlakoztathatja azt a Visual Studio automatikusan frissíti a szolgáltatáskonfiguráció a projekt URL-címek és a hozzáférési kulcsokat.
 
-Ha a Visual Studio használatával hozott létre egy felhőalapú szolgáltatást a **kapcsolódó szolgáltatás hozzáadása**, megnyitásával ellenőrizheti a kapcsolatok `ServiceConfiguration.Cloud.cscfg` és `ServiceConfiguration.Local.cscfg`.
+Ha a felhőszolgáltatás a Visual Studio használatával hozott létre a **csatlakoztatott szolgáltatás hozzáadása**, a kapcsolatok megnyitásával ellenőrizheti `ServiceConfiguration.Cloud.cscfg` és `ServiceConfiguration.Local.cscfg`.
 
-Ha létrehozott egy felhőalapú szolgáltatás, az Azure portálon keresztül, ugyanazokat a lépéseket a [storage-fiók létrehozása a Visual Studio eszközből](#create-a-storage-account-from-visual-studio) , de a meglévő fiók kiválasztása helyett egy új létrehozásával. A Visual Studio majd frissíti a konfigurációt.
+Ha létrehozott egy felhőalapú szolgáltatás, az Azure Portalon keresztül, ugyanazokat a lépéseket a [storage-fiók létrehozása a Visual Studióból](#create-a-storage-account-from-visual-studio) , de válassza ki a meglévő fiók helyett egy új létrehozásához. A Visual Studio majd frissíti a konfigurációt.
 
-Konfigurálandó beállításokat manuálisan, használja a tulajdonságlapokon a Visual Studio a megfelelő szerepkör esetén a felhőszolgáltatás-projekt (kattintson a jobb gombbal a szerepkört, és válassza ki **tulajdonságok**). További információkért lásd: [tárfiók kapcsolati karakterláncának konfigurálása](https://docs.microsoft.com/azure/vs-azure-tools-multiple-services-project-configurations#configuring-a-connection-string-to-a-storage-account).
+Konfigurálása beállításokat manuálisan, használja a tulajdonságlapokon a Visual Studióban a felhőszolgáltatási projektet a alkalmazni szerepkörének (kattintson a jobb gombbal a szerepkört, és válassza ki **tulajdonságok**). További információkért lásd: [egy tárfiók kapcsolati sztringjének konfigurálása](https://docs.microsoft.com/azure/vs-azure-tools-multiple-services-project-configurations#configuring-a-connection-string-to-a-storage-account).
 
 ### <a name="about-access-keys"></a>Hozzáférési kulcsok
 
-Az Azure-portálon jeleníti meg az URL-címek használható az Azure storage szolgáltatások, valamint a fiók elsődleges és másodlagos elérési kulcsainak mindegyikében erőforrások eléréséhez. Ezek a kulcsok használatával a tárolási szolgáltatások ellen kérelmek hitelesítéséhez szükséges.
+Az Azure Portalon látható, hogy az egyes az Azure storage szolgáltatások, valamint az a fiók elsődleges és másodlagos hívóbetűit erőforrások eléréséhez használhatja az URL-címeket. Ezek a kulcsok használatával hitelesíti a tárolási szolgáltatások kérelmekre.
 
-A másodlagos elérési kulcsát hozzáférést biztosít a azonos a tárfiók elsődleges elérési kulcsát, és jön létre biztonsági az elsődleges elérési kulcsát utaló jeleket. Emellett ajánlott, hogy a tárelérési kulcsok rendszeresen újragenerálja. Módosíthatja a kapcsolati karakterlánc beállítása használható a másodlagos kulcs újragenerálja az elsődleges kulcsot úgy, hogy használja a rendszer újragenerálta elsődleges kulcs, miközben a másodlagos kulcs újragenerálása módosíthatja.
+A másodlagos elérési kulcsot azonos hozzáféréssel a tárfiók elsődleges hívóbetűjét biztosít, és akkor jön létre biztonsági mentéséhez az elsődleges elérési kulcs sérült. Emellett ajánlott, hogy a a hozzáférési kulcsok rendszeres újragenerálása. Módosíthatja a kapcsolati karakterlánc beállítása használata a másodlagos kulcsot amíg az elsődleges kulcs, majd módosíthatja úgy, hogy az elsődleges kulcs újragenerálása használja, míg a másodlagos kulcs újragenerálása.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet a közzétételi alkalmazások az Azure-bA a Visual Studio eszközből, lásd: [közzététele a felhőalapú szolgáltatás, az Azure-eszközökkel](vs-azure-tools-publishing-a-cloud-service.md).
+Alkalmazások közzététele az Azure-bA a Visual Studio-bővebben lásd: [közzétételéhez egy Cloud Service, Azure-eszközök segítségével](vs-azure-tools-publishing-a-cloud-service.md).

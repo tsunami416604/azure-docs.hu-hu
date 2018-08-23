@@ -1,8 +1,8 @@
 ---
-title: "SCOM-integráció az Application insights szolgáltatással |} Microsoft Docs"
-description: "Ha az SCOM-felhasználó, teljesítmény figyeléséhez és eseményadatokat az Application insights szolgáltatással. Átfogó irányítópultok, intelligens riasztások, hatékony diagnosztikai eszközöket és elemzési lekérdezések."
+title: Az Application Insights az SCOM-integrációval |} A Microsoft Docs
+description: Ha Ön egy SCOM-felhasználó, teljesítményének figyelése, és diagnosztizálhatja a problémákat az Application insights segítségével. Az irányítópultok átfogó, intelligens riasztások, hatékony diagnosztikai eszközöket és elemzési lekérdezések.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
@@ -10,92 +10,96 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 08/12/2016
+ms.topic: conceptual
+ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 35ea37b751909e14e616a965462b832e4e51bae0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8880fbeaad85bc2615292820527c6a9e87000d66
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059509"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Alkalmazásteljesítmény-figyelés az Application Insights az SCOM-hoz használatával
-Ha a System Center Operations Manager (SCOM) használatával kezeli a kiszolgálók, teljesítmény figyeléséhez, és segítségével. a teljesítménnyel kapcsolatos problémák diagnosztizálásához [Azure Application Insights](app-insights-asp-net.md). Az Application Insights figyeli a webes alkalmazás bejövő kérelmet, REST és SQL-hívások, kivételek és naplókivonatokat kimenő. Nyújtja a irányítópultok metrika diagramok és intelligens riasztások, valamint hatékony diagnosztikai keresési és elemzési lekérdezéseket a telemetriai keresztül. 
+Ha a System Center Operations Manager (SCOM) használatával felügyelheti kiszolgálóit, teljesítmény figyelheti és diagnosztizálhatja a teljesítménnyel kapcsolatos problémák segítségével. [Azure Application Insights](app-insights-asp-net.md). Az Application Insights figyeli a bejövő kéréseket a webes alkalmazás, REST és SQL-hívások, kivételek és nyomkövetési naplók kimenő. Ez biztosítja, irányítópultokat mérőszám-diagramok és intelligens riasztások, valamint hatékony diagnosztikai keresés és elemző lekérdezések képest ezt a telemetriát. 
 
-Az Application Insights általi figyelés az SCOM felügyeleti csomagok használatával válthat.
+Application insights általi figyelés az SCOM felügyeleti csomagok használatával válthat.
+
+> [!IMPORTANT]
+> A System Center Operations Manager felügyeleti csomag már **elavult**. Ez nem támogatja a legújabb Application Insights SDK-k és a továbbiakban nem javasolt.
 
 ## <a name="before-you-start"></a>Előkészületek
 Feltételezzük, hogy:
 
-* Megismerheti az SCOM, és hogy használatával SCOM 2012 R2 vagy 2016 kezeli az IIS webkiszolgálón.
-* Már telepítette a kiszolgálókon, amelyek az Application insights szolgáltatással figyelni kívánt webalkalmazás.
-* Az alkalmazás-keretrendszer verziója a .NET 4.5-ös vagy újabb.
-* Rendelkezik hozzáféréssel az előfizetés [Microsoft Azure](https://azure.com) és való bejelentkezés a [Azure-portálon](https://portal.azure.com). A szervezet előfordulhat, hogy rendelkezik előfizetéssel, és adhat hozzá a Microsoft-fiókjához azt.
+* Ismerkedjen meg az SCOM és az SCOM 2012 R2 vagy 2016 használata kezelheti az IIS webkiszolgálóhoz.
+* Már telepítette a kiszolgálók egy webalkalmazást, amely az Application Insights figyelni szeretné.
+* Alkalmazás-keretrendszer verziója a .NET 4.5-ös vagy újabb verzió.
+* Hozzáfér egy előfizetés [Microsoft Azure](https://azure.com) és bejelentkezhet a [az Azure portal](https://portal.azure.com). A szervezet egy előfizetéssel rendelkezhet, és adhatja hozzá a Microsoft-fiókjával.
 
-(A fejlesztői csapat létrehozhat a [Application Insights SDK](app-insights-asp-net.md) a webes alkalmazásban. A felépítés során instrumentation egyéni telemetria írásban nagyobb rugalmasságot biztosít. Azonban nem számít: az SDK-t a beépített nélkül akár az itt leírt lépéseket követheti.)
+(A fejlesztői csapat felépíthet a [Application Insights SDK](app-insights-asp-net.md) a webalkalmazásba. A build-idő kialakítása egyéni telemetriát írásban nagyobb rugalmasságot biztosít. Azonban nem számít: az itt ismertetett, akár anélkül az SDK-t a beépített lépéseket követnie.)
 
-## <a name="one-time-install-application-insights-management-pack"></a>(Egy alkalommal) Az Application Insights felügyeleti csomag telepítéséhez
-A számítógépen, amelyen az Operations Manager futtatja:
+## <a name="one-time-install-application-insights-management-pack"></a>(Egy idő) Az Application Insights a felügyeleti csomag telepítése
+A gépen, amelyen az Operations Manager futtatni:
 
-1. Távolítsa el a régi verziót a felügyeleti csomag:
-   1. Az Operations Manager programban nyissa meg a felügyeleti, a felügyeleti csomagokat. 
+1. Távolítsa el a felügyeleti csomag minden régebbi verzióját:
+   1. Az Operations Manager rendszerben nyissa meg a felügyeleti csomagok a felügyelet. 
    2. Törölje a régi verzióját.
-2. Töltse le és telepítse a felügyeleti csomag a katalógusban.
+2. Töltse le és telepítse a felügyeleti csomag a katalógusból.
 3. Indítsa újra az Operations Manager.
 
 ## <a name="create-a-management-pack"></a>Felügyeleti csomag létrehozása
-1. Az Operations Manager programban nyissa meg a **szerzői műveletek**, **.NET... az Application insights szolgáltatással**, **figyelés felvétele varázsló**, és újra válasszon **... az Application insights szolgáltatással .NET**.
+1. Nyissa meg az Operations Manager programban **szerzői műveletek**, **... az Application Insights .NET**, **figyelés felvétele varázsló**, és újra válassza **.NET alkalmazással... Insights**.
    
     ![](./media/app-insights-scom/020.png)
-2. A konfiguráció után az alkalmazás nevét. (Hogy egyetlen alkalmazás állíthatnak be egyszerre.)
+2. A konfiguráció után az alkalmazás neve. (Kell alakítsa ki egy alkalmazást egyszerre.)
    
     ![](./media/app-insights-scom/030.png)
-3. Ugyanazon az oldalon varázsló vagy hozzon létre egy új felügyeleti csomagot, vagy válassza ki az Application Insights korábban létrehozott csomagot.
+3. Ugyanazon az oldalon varázsló vagy hozzon létre egy új felügyeleti csomagot, vagy válasszon ki egy korábban létrehozott Application insights csomagot.
    
-     (Az Application Insights [felügyeleti csomag](https://technet.microsoft.com/library/cc974491.aspx) egy sablon, amelyből példányt létrehozni. Többször is felhasználhatja ugyanazon később.)
+     (Az Application Insights [felügyeleti csomag](https://technet.microsoft.com/library/cc974491.aspx) egy sablon, amelyen-példány létrehozása. Újból felhasználhatja a példányt később.)
 
-    ![Az általános tulajdonságok lapján írja be az alkalmazás nevét. Az új gombra, és írja be a felügyeleti csomag nevét. Kattintson az OK gombra, majd kattintson a Tovább gombra.](./media/app-insights-scom/040.png)
+    ![Általános Tulajdonságok lapján írja be az alkalmazás nevét. Az új gombra, és írja be a felügyeleti csomag nevét. Kattintson az OK gombra, majd kattintson a Tovább gombra.](./media/app-insights-scom/040.png)
 
-1. Válasszon egy alkalmazást, amely segítségével nyomon követni kívánt. A keresési funkciót keres a kiszolgálókon telepített alkalmazások között.
+1. Válasszon egy figyelni kívánt alkalmazást. A keresési funkció megkeresi a kiszolgálókon telepített alkalmazások között.
    
-    ![Mit figyeljen lapon kattintson a Hozzáadás gombra, írja be az alkalmazás nevére részét, kattintson a Keresés gombra, válassza ki az alkalmazást, és hozzáadása, az OK gombra.](./media/app-insights-scom/050.png)
+    ![Mit figyeljen lapon kattintson a Hozzáadás gombra, írja be az alkalmazás nevének egy részét, kattintson a Keresés elemre, válassza ki az alkalmazást, és Add, az OK gombra.](./media/app-insights-scom/050.png)
    
-    A figyelés hatóköre nem kötelező mező segítségével egy részét a kiszolgálóit, ha nem kívánja az összes kiszolgálót az alkalmazás figyelése.
-2. A varázsló következő lapján meg kell adnia a Microsoft Azure bejelentkezési adatait.
+    A figyelés hatóköre nem kötelező mező, adja meg a kiszolgálók egy része használható, ha nem szeretné az alkalmazást az összes kiszolgáló figyeléséhez.
+2. A varázsló következő lapjára meg kell adnia hitelesítő adataival, és jelentkezzen be a Microsoft Azure-bA.
    
-    Ezen a lapon válassza ki az Application Insights-erőforrást, ha azt szeretné, hogy a telemetriai adatok elemzése és jelenik meg. 
+    Ezen az oldalon válassza ki az Application Insights-erőforrást, ahol azt szeretné, hogy a telemetriai adatokat elemzi és jelenik meg. 
    
    * Ha az alkalmazás fejlesztése során az Application Insights lett konfigurálva, válassza ki a meglévő erőforrást.
-   * Máskülönben hozzon létre egy új erőforrást az alkalmazáshoz. Ha más alkalmazásokat, amelyek az adott rendszer összetevők, helyezze el őket ugyanabban az erőforráscsoportban, könnyebben hozzáférés a telemetriai adatok kezeléséhez.
+   * Máskülönben hozzon létre egy új erőforrást, az alkalmazás neve. Ha más alkalmazásokat, amelyek egy adott rendszer összetevői, helyezze el őket ugyanabban az erőforráscsoportban, könnyebben hozzáférés telemetriai adatokat kezelheti.
      
-     Ezeket a beállításokat később bármikor módosíthatja.
+     Ezek a beállítások később módosíthatók.
      
-     ![Az Application Insights-beállítások lapján kattintson a "bejelentkezés", és adja meg a Microsoft-fiók hitelesítő adatait az Azure-bA. Ezután válasszon ki egy előfizetést, az erőforráscsoport és az erőforrás.](./media/app-insights-scom/060.png)
-3. A varázsló befejezéséhez.
+     ![Az Application Insights beállítások lapon kattintson a "bejelentkezés" gombra, és adja meg a Microsoft-fiók hitelesítő adatait az Azure-hoz. Ezután válassza ki egy előfizetés, erőforráscsoport és erőforrások.](./media/app-insights-scom/060.png)
+3. A varázsló befejezése.
    
     ![Kattintson a Létrehozás gombra](./media/app-insights-scom/070.png)
 
-Ismételje meg az eljárást minden, amely segítségével nyomon követni kívánt alkalmazáshoz.
+Ismételje meg ezt az eljárást minden egyes figyelni kívánt alkalmazást.
 
-Ha beállításait később módosítani szeretné, nyissa meg ismét a tulajdonságok a figyelő a szerzői műveletek ablakból.
+Ha beállításait később módosítani szeretné, nyissa meg újra a figyelő a szerzői műveletek ablakból tulajdonságait.
 
-![A szerzői műveletek, válassza ki a .NET alkalmazásteljesítmény-figyelés az Application insights szolgáltatással, válassza ki a figyelő, és kattintson a Tulajdonságok elemre.](./media/app-insights-scom/080.png)
+![A szerzői műveletek, válassza ki a .NET alkalmazásteljesítmény-figyelés az Application Insights, válassza ki a figyelőt és a Tulajdonságok parancsra.](./media/app-insights-scom/080.png)
 
 ## <a name="verify-monitoring"></a>Ellenőrizze a figyelés
-A figyelő, hogy telepítette minden kiszolgálón megkeresi az alkalmazást. Ha úgy találja, hogy az alkalmazást, és azt konfigurálja az Application Insights Állapotmonitort a figyelheti az alkalmazást. Szükség esetén azt először telepíti Állapotmonitort a kiszolgálón.
+A figyelő, hogy minden kiszolgálón megkeresi az alkalmazás telepítve. Ha úgy találja, hogy az alkalmazás Application Insights Állapotfigyelőt az alkalmazás figyelésére konfigurálja. Ha szükséges, először telepíti az állapotfigyelő a kiszolgálón.
 
-Talált alkalmazáspéldányok, mely ellenőrizheti:
+Talált az alkalmazás melyik példánya ellenőrizheti:
 
-![A figyelés, nyissa meg az Application insights szolgáltatással](./media/app-insights-scom/100.png)
+![A figyelés, nyissa meg az Application Insights](./media/app-insights-scom/100.png)
 
-## <a name="view-telemetry-in-application-insights"></a>Az Application Insightsban nézet telemetria
-Az a [Azure-portálon](https://portal.azure.com), keresse meg az alkalmazás erőforrás. Ön [telemetriai ábrázoló diagramok megjelenítéséhez](app-insights-dashboards.md) az alkalmazásból. (Ha ez nem látható fő lapján még, kattintson a metrikák élő adatfolyam.)
+## <a name="view-telemetry-in-application-insights"></a>Az Application Insights telemetria megtekintése
+Az a [az Azure portal](https://portal.azure.com), keresse meg az erőforrást az alkalmazáshoz. Ön [telemetriai ábrázoló diagramok megjelenítéséhez](app-insights-dashboards.md) az alkalmazásból. (Ha ez még nem látható a főoldalon még, kattintson az élő metrikák Stream.)
 
-## <a name="next-steps"></a>Következő lépések
-* [Állítson be egy irányítópultot](app-insights-dashboards.md) kell összefogni a legfontosabb diagramok ezzel és más alkalmazások figyelését.
-* [További tudnivalók a metrikák](app-insights-metrics-explorer.md)
+## <a name="next-steps"></a>További lépések
+* [Állítsa be egy irányítópultot](app-insights-dashboards.md) összegyűjthetők a legfontosabb diagramok ezzel és más alkalmazások figyelését.
+* [Ismerkedés a metrikákkal](app-insights-metrics-explorer.md)
 * [Riasztások beállítása](app-insights-alerts.md)
-* [Teljesítménnyel kapcsolatos problémák diagnosztizálása](app-insights-detect-triage-diagnose.md)
-* [Hatékony elemzési lekérdezések](app-insights-analytics.md)
-* [A webteszt rendelkezésre állása](app-insights-monitor-web-app-availability.md)
+* [Teljesítményproblémák diagnosztizálása](app-insights-detect-triage-diagnose.md)
+* [Nagy teljesítményű elemzési lekérdezések](app-insights-analytics.md)
+* [Rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md)
 

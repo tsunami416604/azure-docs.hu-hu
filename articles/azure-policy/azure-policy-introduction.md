@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 405f69ae1c37e478758d984ddf7dc0e267910fef
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364428"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022697"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -119,19 +119,7 @@ Például létrehozhat egy listát, amely a következő lehetséges értékeket 
 
 ## <a name="maximum-count-of-policy-objects"></a>Policy-objektumok maximális száma
 
-Az Azure Policy egyes objektumtípusainak van egy maximális száma. A _Hatókör_ bejegyzés az előfizetést vagy a felügyeleti csoportot jelöli.
-
-| Ahol | Mi | Maximális darabszám |
-|---|---|---|
-| Hatókör | Szabályzatdefiníciók | 250 |
-| Hatókör | Kezdeményezési definíciók | 100 |
-| Bérlő | Kezdeményezési definíciók | 1000 |
-| Hatókör | Szabályzat-/Kezdeményezés-hozzárendelések | 100 |
-| Szabályzatdefiníció | Paraméterek | 20 |
-| Kezdeményezési definíció | Házirendek | 100 |
-| Kezdeményezési definíció | Paraméterek | 100 |
-| Szabályzat-/Kezdeményezés-hozzárendelések | Kizárások (notScope) | 100 |
-| Szabályzat szabálya | Beágyazott feltételes értékek | 512 |
+[!INCLUDE [policy-limits](../../includes/azure-policy-limits.md)]
 
 ## <a name="recommendations-for-managing-policies"></a>Javaslatok a szabályzatok kezeléséhez
 

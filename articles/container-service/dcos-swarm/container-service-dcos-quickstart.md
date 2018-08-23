@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ccc0836a296bb392e60dd0c973516a7087ff6ea5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c2c1ef83ade7040e16f54b87f63f6eb27714bf2a
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429326"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42022913"
 ---
 # <a name="deploy-a-dcos-cluster"></a>DC/OS fürt üzembe helyezése
 
@@ -78,7 +78,7 @@ Ha az SSH-alagút sikeresen létrejött, a rendszer visszaadja a DC/OS portált.
 
 ## <a name="install-dcos-cli"></a>A DC/OS parancssori felület telepítése
 
-A DC/OS parancssori felülettel kezelhetők a DC/OS fürtök a parancssorból. Telepítse a DC/OS parancssori felületet az [az acs dcos install-cli](/azure/acs/dcos#install-cli) paranccsal. Az Azure Cloud Shell használata esetén a DC/OS parancssori felület már telepítve van. 
+A DC/OS parancssori felülettel kezelhetők a DC/OS fürtök a parancssorból. Telepítse a DC/OS parancssori felületet az [az acs dcos install-cli](/cli/azure/acs/dcos#az-acs-dcos-install-cli) paranccsal. Az Azure Cloud Shell használata esetén a DC/OS parancssori felület már telepítve van. 
 
 Ha az Azure CLI felületet macOS vagy Linux rendszeren futtatja, előfordulhat, hogy sudo módban kell futtatnia a parancsot.
 

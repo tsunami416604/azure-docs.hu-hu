@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a9aa4680d91a4ab95933ae636c4467217fd162b2
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: e2e8da3d2dec2c74bbd1c0ca0f52b7eaba5c024e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39278025"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42059736"
 ---
 | Erőforrás | Cél | Rögzített korlátja |
 |----------|--------------|------------|
@@ -27,5 +27,6 @@ ms.locfileid: "39278025"
 | Fájlrendszer-objektumok (fájlok és könyvtárak) szinkronizálási csoportonként | 25 millió objektumok | Nem |
 | Fájlrendszer-objektumok (fájlok és könyvtárak) egy könyvtár a maximális számát | 200 000 objektumok | Igen |
 | Maximális objektum (fájlok és könyvtárak) nevének hossza | 255 karakter lehet | Igen |
+| Maximális (fájlok és könyvtárak) biztonsági leíró objektumméret | 4 KiB | Igen |
 | Fájlméret | 100 GiB | Nem |
 | A fájlok helyezhető el a minimális fájlméret | 64 KiB | Igen |

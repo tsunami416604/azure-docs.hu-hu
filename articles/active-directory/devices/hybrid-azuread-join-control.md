@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d49b5404f1a2b4ac7fa4cc170ccc010a28bf98a2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622170"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055741"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>A hibrid Azure AD join eszköz vezérlése
 
@@ -116,7 +116,7 @@ Kíván hivatkozni egy Ön által választott helyre ezt az ügyfélbeállítás
 
 ## <a name="control-windows-down-level-devices"></a>Windows régebbi verziójú eszközök
 
-Windows régebbi verziójú eszközök regisztrálásához, töltse le és telepítse a Windows Installer-csomag (.msi) a letöltőközpontból szeretne a [Microsoft munkahelyi csatlakoztatás Windows 10-számítógépek](https://www.microsoft.com/en-us/download/details.aspx?id=53554) lapot.
+Windows régebbi verziójú eszközök regisztrálásához, töltse le és telepítse a Windows Installer-csomag (.msi) a letöltőközpontból szeretne a [Microsoft munkahelyi csatlakoztatás Windows 10-számítógépek](https://www.microsoft.com/download/details.aspx?id=53554) lapot.
 
 Telepítheti a csomagot a szoftverterjesztési rendszer például System Center Configuration Manager használatával. A csomag a standard szintű beavatkozás nélküli telepítéssel beállítások quiet paraméter támogatja. [A System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) aktuális ág további előnyöket kínál a korábbi verziójú, például a befejezett regisztrációk nyomon követéséhez.
 

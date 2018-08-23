@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 13a2b78b50b1b10975a90c1da38810f1a62a6bb5
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 4084a5bd8cb82442eb37844f88f2ff6dd166b5ee
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436909"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42446064"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzleti folytonosság és vészhelyreállítás helyreállítási (BCDR): Azure párosított régiói
 
@@ -19,7 +19,7 @@ ms.locfileid: "37436909"
 
 Az Azure világszerte több földrajzi területeken működik. Egy Azure földrajzi területet adtunk a világ, amely tartalmaz legalább egy Azure-régióban. Egy Azure-régióban egy olyan terület, a földrajzi helyen tartalmazó egy vagy több adatközpont tartozhat.
 
-Minden egyes Azure-régió párban áll egy regionális párokból érdemes együtt így azonos földrajzi helyen belül egy másik régióban. A kivétel, Dél-Brazília, amely kívül a földrajzi régió párban áll.
+Minden egyes Azure-régió párban áll egy regionális párokból érdemes együtt így azonos földrajzi helyen belül egy másik régióban. A kivétel, Dél-Brazília, amely kívül a földrajzi régió párban áll. A régiópárok Azure fog szerializálni között platform (tervezett karbantartás) frissíti, így egyszerre csak egy párosított régió frissülni fog. Ezenkívül ez az esemény szolgáltatáskimaradások hatással lenne a több régióban lévő minden párból legalább egy régió prioritása lehet a helyreállítás.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
@@ -57,7 +57,7 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 - (4) Egyesült Államok beli államigazgatás – Virginia másodlagos régióba US Gov Texas, de US Gov Texas másodlagos régió nem US Gov Virginia.
 
 
-Azt javasoljuk, hogy számítási feladatok replikálhatja számára, hogy az Azure-elkülönítési és rendelkezésre állás házirendek regionális párokról. Ha például a tervezett Azure-rendszerfrissítések telepített egymás után (nem egy időben) párosított régiók között elosztva. Ez azt jelenti, hogy az esemény ritkán fordul elő egy hibás frissítés, még akkor is, mindkét régióban nem lesz hatással egyszerre. Továbbá egy széles körű leállás nem valószínű esetben minden párból legalább egyik régió helyreállítása előnyt élvez.
+Javasoljuk, hogy úgy beállítani, hogy üzleti folytonossági vészhelyreállítás (BCDR) számára, hogy az Azure-elkülönítési és rendelkezésre állás házirendek regionális párok között. Több aktív régiók támogató alkalmazások esetében azt javasoljuk használatával régió párban mindkét régióban, ahol csak lehetséges. Ez biztosítja az optimális rendelkezésre állását, alkalmazások és a egy esetleges vészhelyzet esetén kis méretben helyreállítási idő. 
 
 ## <a name="an-example-of-paired-regions"></a>Egy példa párosított régiók
 2. ábra alább látható egy képzeletbeli alkalmazást, amely a regionális párokból érdemes használja a vész-helyreállítási. A zöld számok jelölje ki a régiók közötti tevékenységek három Azure-szolgáltatások (Azure számítási, tárolási és adatbázis-) és azok miként vannak konfigurálva a régiók közötti replikálására. Az üzembe helyezést több párosított régióra egyedi előnyeit a narancssárga számok ki vannak emelve.

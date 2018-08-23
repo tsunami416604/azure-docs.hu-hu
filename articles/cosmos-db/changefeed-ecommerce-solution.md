@@ -9,18 +9,18 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 21f63ebcca4b766f8df8c7b2390c4f44ff4dc7b1
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099906"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055724"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Használja az Azure Cosmos DB módosításcsatornáját valós idejű adatelemzés megjelenítése
 
 Az Azure Cosmos DB-módosítási hírcsatorna egy olyan mechanizmus, a rekordok és a folyamatos növekményes hírcsatorna lekérése egy Azure Cosmos DB-tárolók, azokat a rekordokat a rendszer éppen létrehozott vagy módosított. Módosítási hírcsatorna támogatása működését úgy tároló nem változott. Majd megjeleníti a dokumentumok a sorrendben, amelyben a módosítás módosult a listán. Módosítási hírcsatorna kapcsolatos további információkért lásd: [dolgozik a változáscsatorna](change-feed.md) cikk. 
 
-Ez a cikk bemutatja, hogyan módosítási hírcsatorna segítségével olyan kereskedelmi cég felhasználói mintákról, hajtsa végre a valós idejű adatok elemzését és megjelenítését. Esemény, például egy felhasználó egy elem megtekintése, felvesz egy elemet a bevásárlókocsihoz vagy elemeire vásárlási elemzi. Esetén ezek az események közül egy új bejegyzést hoznak létre, és a módosítási hírcsatorna rögzítő. Módosítási hírcsatorna majd eseményindítók lépések metrikák elemzéséhez, a vállalati teljesítmény és a tevékenység Vizualizáció eredményez. Mintametrikák, amelyek segítségével megjelenítheti például bevétel, a látogató egyedi, népszerű cikkek, és tekinthetők meg és és a egy bevásárlókocsihoz hozzáadott elem átlagár vásárolt. Minta metrikák segítségével egy e-kereskedelmi cég kiértékelése a hely népszerűsége, a reklám- és árképzési stratégiák kidolgozásában és milyen támogatásán készletre vonatkozó döntéseket.
+Ez a cikk bemutatja, hogyan módosítási hírcsatorna használhatja egy e-kereskedelmi cég felhasználói mintákról, hajtsa végre a valós idejű adatok elemzését és megjelenítését. Esemény, például egy felhasználó egy elem megtekintése, felvesz egy elemet a bevásárlókocsihoz vagy elemeire vásárlási elemzi. Esetén ezek az események közül egy új bejegyzést hoznak létre, és a módosítási hírcsatorna rögzítő. Módosítási hírcsatorna majd eseményindítók lépések metrikák elemzéséhez, a vállalati teljesítmény és a tevékenység Vizualizáció eredményez. Mintametrikák, amelyek segítségével megjelenítheti például bevétel, a látogató egyedi, népszerű cikkek, és tekinthetők meg és és a egy bevásárlókocsihoz hozzáadott elem átlagár vásárolt. Minta metrikák segítségével egy e-kereskedelmi cég kiértékelése a hely népszerűsége, a reklám- és árképzési stratégiák kidolgozásában és milyen támogatásán készletre vonatkozó döntéseket.
 
 Figyelése érdekli az első lépések előtt a megoldást ismertető videó lásd a következő videót:
 
@@ -315,7 +315,7 @@ Power BI egy üzleti elemzési eszközök az adatok elemzése és elemzéseket o
    * Bevétel azt lenne értelme ehhez idejét tengely és díjak összege értékeként egy vonaldiagramot. A megjelenítendő időtartomány a legnagyobb lehetséges kell ahhoz, hogy a lehető legtöbb információt biztosít.  
    * Egyedi látogatóinak azt lenne értelme értékeként az egyedi látogatóinak száma kártyavizualizáció tennie.
 
-   Ez az, hogy hogyan néz ki az irányítópultról az ezekbe a diagramokba:
+   Ez a minta-irányítópult beírja a diagramokat:
 
    ![Vizualizációk](./media/changefeed-ecommerce-solution/visualizations.png)
 

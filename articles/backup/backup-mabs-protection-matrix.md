@@ -5,16 +5,16 @@ services: backup
 author: markgalioto
 ms.service: backup
 keywords: ''
-ms.date: 7/14/2018
+ms.date: 08/17/2018
 ms.topic: conceptual
 ms.author: markgal
 manager: carmonm
-ms.openlocfilehash: 4167e8214674527039fd838f81c3489840e6ef68
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ff12428027225c62bec03b05da8e43d60cae9739
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284912"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056421"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
 
@@ -80,7 +80,7 @@ Ez a cikk felsorolja a különböző kiszolgálókon és védheti az Azure Backu
 |A Hyper-V gazdagép – DPM védelmi ügynök a Hyper-V gazdakiszolgálón, fürtön vagy VM|A Windows Server 2012 – Datacenter és Standard|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV)<br /><br />Helyreállítás: virtuális gép, fájlok és a mappában, a kötetek, a virtuális merevlemezek elemszintű helyreállítása|
 |A Hyper-V gazdagép – DPM védelmi ügynök a Hyper-V gazdakiszolgálón, fürtön vagy VM|A Windows Server 2008 R2 SP1 – Enterprise és Standard|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV)<br /><br />Helyreállítás: virtuális gép, fájlok és a mappában, a kötetek, a virtuális merevlemezek elemszintű helyreállítása|
 |A Hyper-V gazdagép – DPM védelmi ügynök a Hyper-V gazdakiszolgálón, fürtön vagy VM|Windows Server 2008 SP2|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|N|N|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV)<br /><br />Helyreállítás: virtuális gép, fájlok és a mappában, a kötetek, a virtuális merevlemezek elemszintű helyreállítása|
-|VMware virtuális gépek|5.5 és 6.0-s vagy 6.5-ös VMware-kiszolgáló |Fizikai kiszolgáló <br/>Helyszíni Hyper-V virtuális Gépen <br/> Windows virtuális gép VMWare-ben|I|I (az UR1)|VMware virtuális gépek a fürt megosztott köteteinek (CSV), NFS, és a SAN-tároló<br /> Elemszintű helyreállítás fájlok és mappák csak Windows érhető el<br /> A VMware vapp alkalmazásokra nem támogatott|
+|VMware virtuális gépek|VMware vCenter/vSphere ESX/ESXi-licenccel rendelkező verzió 5.5/6.0/6.5 |Fizikai kiszolgáló <br/>Helyszíni Hyper-V virtuális Gépen <br/> Windows virtuális gép VMWare-ben|I|I (az UR1)|VMware virtuális gépek a fürt megosztott köteteinek (CSV), NFS, és a SAN-tároló<br /> A fájlok és mappák elemszintű helyreállítás csak a Windows virtuális gép esetében elérhető, a VMware vapp alkalmazásokra nem támogatottak.|
 |Linux|Hyper-V vagy VMware-alapú vendégként futó Linux|Fizikai kiszolgáló <br/>Helyszíni Hyper-V virtuális Gépen <br/> Windows virtuális gép VMWare-ben|I|I|A Hyper-V a Windows Server 2012 R2 vagy Windows Server 2016-ra kell futnia. Védelmét: Az egész virtuális gép<br /><br />Helyreállítás: Az egész virtuális gép <br/><br/> Támogatott Linux-disztribúciók és verziók listáját lásd: a cikk [Linux-disztribúciók, Azure által támogatott](../virtual-machines/linux/endorsed-distros.md).|
 
 ## <a name="cluster-support"></a>Fürtök támogatása

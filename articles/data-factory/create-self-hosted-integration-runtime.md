@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 705f2ce674a31d7dda4d87d893078a2ade26e327
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341579"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443390"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
@@ -27,17 +27,20 @@ Egy saját üzemeltetésű integrációs modul képes a másolási tevékenység
 Ez a dokumentum bemutatja, hogyan hozzon létre és konfigurálhatja a helyi IR.
 
 ## <a name="high-level-steps-to-install-self-hosted-ir"></a>Telepítse a saját üzemeltetésű integrációs modul magas szintű lépései
-1.  Hozzon létre egy saját üzemeltetésű integrációs modult. Itt látható egy PowerShell-példa:
+1. Hozzon létre egy saját üzemeltetésű integrációs modult. Használhat ADF felhasználói felület létrehozása a saját üzemeltetésű Itt látható egy PowerShell-példa:
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
-2.  Töltse le és telepítse a saját üzemeltetésű integration runtime (helyi gépen).
-3.  Kérje le a hitelesítési kulcsot, és saját üzemeltetésű integrációs modult regisztrálhassa a a kulcsot. Itt látható egy PowerShell-példa:
+2. Töltse le és telepítse a saját üzemeltetésű integration runtime (helyi gépen).
+3. Kérje le a hitelesítési kulcsot, és saját üzemeltetésű integrációs modult regisztrálhassa a a kulcsot. Itt látható egy PowerShell-példa:
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
+
+## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automatation"></a>Az Azure Resource Manager-sablon (automatation) használata Azure virtuális Gépen lévő saját üzemeltetésű integrációs modul beállítása
+Helyi integrációs modul telepítése egy Azure virtuális gép használatával automatizálható [ezen Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime). Ez itt egy egyszerű módja annak, hogy rendelkezik Azure virtuális hálózaton belül teljes mértékben működő helyi integrációs modul magas Avalaibility és méretezhetőséget biztosít a szolgáltatással (feltéve, meg kell a 2-es vagy újabb csomópontok száma).
 
 ## <a name="command-flow-and-data-flow"></a>Parancsot a folyamat és az adatfolyam
 Amikor a helyszíni és a felhő között helyezi át az adatokat, a tevékenység használja egy saját üzemeltetésű integrációs modult helyszíni adatforrásból az adatok átvitelét a felhőbe, és fordítva.
@@ -48,9 +51,9 @@ Amikor a helyszíni és a felhő között helyezi át az adatokat, a tevékenys�
 
 1. Adatok fejlesztői hoz létre egy saját üzemeltetésű integrációs modul egy Azure data factory egy PowerShell-parancsmaggal belül. Az Azure portal jelenleg nem támogatja ezt a szolgáltatást.
 2. Adatok fejlesztői egy helyszíni adattár társított szolgáltatás megadja a saját üzemeltetésű integrációsmodul-példány, amelyet szeretne csatlakozni az adattárak használnia kell hoz létre. A társított szolgáltatás beállításának részeként az adatok fejlesztői hitelesítőadat-kezelő alkalmazást használja (jelenleg nem támogatott) hitelesítési típusok és a hitelesítő adatok beállításához. A Credential manager párbeszédpanel kommunikál az adattár kapcsolati és hitelesítő adatok mentését a saját üzemeltetésű integrációs modul teszteléséhez.
-4.  Saját üzemeltetésű integration runtime csomópontja a hitelesítő adatok használata a Windows Data Protection alkalmazás alkalmazásprogramozási felületet (DPAPI) titkosítja, és helyben menti. Ha több csomóponton vannak beállítva, a magas rendelkezésre állás, a hitelesítő adatok további szinkronizálódnak, más csomópontok között. Minden egyes csomópont titkosítja a DPAPI-t, és helyileg tárolja azokat. Adatok szinkronizálása a data-fejlesztési átlátható és kezeli a saját üzemeltetésű    
-5.  A saját üzemeltetésű integrációs modul az ütemezés és a felügyeleti feladatok keresztül kommunikál a Data Factory szolgáltatás **vezérlőcsatorna** , amely egy megosztott az Azure service bus-üzenetsorba használ. Amikor egy tevékenység feladatot kell futtatni, a Data Factory semmilyen hitelesítő információt együtt a kérelem várólistára helyezi (Ha a hitelesítő adatok már nem kerülnek be a saját üzemeltetésű integrációs modul). Saját üzemeltetésű integrációs modul elindít a feladat az üzenetsorba lekérdezés után.
-6.  Saját üzemeltetésű integrációs modul adatokat másol egy helyszíni adattár, a felhőalapú tárolást, vagy fordítva az adatok folyamatban, a másolási tevékenység konfigurációjától függően. Az ebben a lépésben a saját üzemeltetésű integrációs modul közvetlenül kommunikál a felhőalapú tárolási szolgáltatások az Azure Blob Storage például egy biztonságos csatornán (HTTPS).
+   - Saját üzemeltetésű integration runtime csomópontja a hitelesítő adatok használata a Windows Data Protection alkalmazás alkalmazásprogramozási felületet (DPAPI) titkosítja, és helyben menti. Ha több csomóponton vannak beállítva, a magas rendelkezésre állás, a hitelesítő adatok további szinkronizálódnak, más csomópontok között. Minden egyes csomópont titkosítja a DPAPI-t, és helyileg tárolja azokat. Adatok szinkronizálása a data-fejlesztési átlátható és kezeli a saját üzemeltetésű    
+   - A saját üzemeltetésű integrációs modul az ütemezés és a felügyeleti feladatok keresztül kommunikál a Data Factory szolgáltatás **vezérlőcsatorna** , amely egy megosztott az Azure service bus-üzenetsorba használ. Amikor egy tevékenység feladatot kell futtatni, a Data Factory semmilyen hitelesítő információt együtt a kérelem várólistára helyezi (Ha a hitelesítő adatok már nem kerülnek be a saját üzemeltetésű integrációs modul). Saját üzemeltetésű integrációs modul elindít a feladat az üzenetsorba lekérdezés után.
+   - Saját üzemeltetésű integrációs modul adatokat másol egy helyszíni adattár, a felhőalapú tárolást, vagy fordítva az adatok folyamatban, a másolási tevékenység konfigurációjától függően. Az ebben a lépésben a saját üzemeltetésű integrációs modul közvetlenül kommunikál a felhőalapú tárolási szolgáltatások az Azure Blob Storage például egy biztonságos csatornán (HTTPS).
 
 ## <a name="considerations-for-using-self-hosted-ir"></a>Saját üzemeltetésű integrációs modul használatának szempontjai
 
@@ -113,7 +116,20 @@ Több csomópont egyszerűen csak a helyi Integration Runtime szoftver telepít�
 > [!NOTE]
 > Egy másik csomópont hozzáadása előtt **magas rendelkezésre állás és méretezhetőség**, ellenőrizze, hogy **"Az intranetes távoli hozzáférés"** beállítás **engedélyezve** az 1. csomóponton (Microsoft Integration Runtime konfigurációkezelőjének -> Beállítások -> távoli hozzáférést az intranet). 
 
+### <a name="scale-considerations"></a>Méretezési szempontok
+
+#### <a name="scale-out"></a>Horizontális felskálázás
+
+Ha a **a saját üzemeltetésű integrációs modul az elérhető memória pedig kevés** és a **CPU-használata túl magas**, új csomópont hozzáadása segíti a horizontális felskálázást a terhelés gépek között. Ha a tevékenységek időtúllépés miatt sikertelen, vagy saját üzemeltetésű integrációs modul csomópontja offline állapotú, ha csomópontot ad hozzá az átjáró segít.
+
+#### <a name="scale-up"></a>Vertikális felskálázás
+
+A rendelkezésre álló memória és a Processzor nem használhatók jól, de az egyidejű feladatok végrehajtását hamarosan eléri a korlátot, érdemes a vertikális felskálázáshoz, amely képes futni a csomóponton egyidejű feladatok számának növelése. Érdemes azt is, vertikális felskálázás akár, amikor a tevékenységek időtúllépésekbe ütközzenek, mert a saját üzemeltetésű integrációs modul túl van terhelve. Ahogy az az alábbi képen is látható, a maximális kapacitás egy csomópont lehet növelni.  
+
+![](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+
 ### <a name="tlsssl-certificate-requirements"></a>A TLS/SSL-tanúsítvány követelményei
+
 Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommunikáció tehető biztonságossá használt TLS/SSL-tanúsítvány követelményei:
 
 - A tanúsítványnak kell lennie egy nyilvánosan megbízható X509 v3 tanúsítvány. Azt javasoljuk, hogy a nyilvános (külső) hitelesítésszolgáltató (CA) által kiállított tanúsítványokat használ.
@@ -121,9 +137,57 @@ Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommu
 - A rendszer támogatja a helyettesítő tanúsítványokat. Ha a tartománynév **node1.domain.contoso.com**, használhatja ***. domain.contoso.com** a tanúsítvány tulajdonos neve.
 - A SAN-tanúsítványok használata nem ajánlott, mert a tulajdonos alternatív neveket csak az utolsó elem fogja használni, és minden más figyelmen kívül jelenlegi korlátozás miatt. Például van egy SAN-tanúsítvány, amelynek SAN vannak **node1.domain.contoso.com** és **node2.domain.contoso.com**, ezzel a tanúsítvánnyal csak használhatja a gépet, amelynek FQDN-je **node2.domain.contoso.com**.
 - Támogatja az SSL-tanúsítványokra vonatkozó Windows Server 2012 R2 által támogatott bármely kulcsának mérete.
-- Tanúsítvány használata a CNG kulcsok nem támogatottak. Doesrted DoesDoes támogatja a CNG-kulccsal használó tanúsítványok.
+- Tanúsítvány használata a CNG kulcsok nem támogatottak.  
+
+## <a name="sharing-the-self-hosted-integration-runtime-ir-with-multiple-data-factories"></a>A saját üzemeltetésű integrációs modul (IR) osztanak meg több adat-előállítók
+
+Használhat egy meglévő saját üzemeltetésű integrációs modul infrastruktúra, hogy előfordulhat, hogy már rendelkezik a telepítő egy adat-előállítóban. Ez lehetővé teszi, hogy hozzon létre egy **társított saját üzemeltetésű integrációs modul** a másik egy már meglévő hivatkozva factory saját üzemeltetésű IR (megosztott).
+
+#### <a name="terminologies"></a>**Terminológiát**
+
+- **Integrációs modul megosztott** – az eredeti saját üzemeltetésű integrációs modul, amely a fizikai infrastruktúra fut-e.  
+- **Integrációs modul társított** – hivatkozó egy másik megosztott integrációs az integrációs modul Ez egy logikai integrációs modul és a egy másik saját üzemeltetésű integrációs modul (megosztott)-infrastruktúrát használja.
+
+#### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>Társított saját üzemeltetésű integrációs modul létrehozásának magas szintű lépései
+
+A megosztását a saját üzemeltetésű integrációs modul
+
+1. Az adat-előállítót, amelyben szeretné létrehozni a csatolt bemutathatja engedély megadása 
+
+   ![](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+
+2. Megjegyzés: a **erőforrás-azonosító** a megosztását a saját üzemeltetésű integrációs modul.
+
+   ![](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+
+Az adat-Előállítóban, amelyhez az engedélyeket megadta,
+
+3. Hozzon létre egy új helyi integrációs modul (csatolt), és adja meg a fenti **erőforrás-azonosító**
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+
+#### <a name="known-limitations-of-self-hosted-ir-sharing"></a>A saját üzemeltetésű integrációs modul megosztási ismert korlátozások
+
+1. Alapértelmezett száma társított integrációs modul egy saját üzemeltetésű integrációs modul alatt létrehozható **20**. Ha szüksége van több majd forduljon az ügyfélszolgálathoz. 
+
+2. Az adat-előállítót, társított integrációs modul van, amelyben a létrehozandó rendelkeznie kell egy olyan MSI Csomaghoz ([felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Alapértelmezés szerint az adat-előállítók Ibiza portálon létrehozott, vagy a PowerShell-parancsmagokat kell MSI implicit módon létrehozva. Azonban bizonyos esetekben létrehozásakor a data factory használatával az Azure Resorce Manager-sablon vagy az SDK-t a "**identitás**" **tulajdonságot be kell állítani** explicit módon az Azure Resorce Manager létrehoz egy adat-előállító biztosítása egy olyan MSI Csomaghoz tartalmazó. 
+
+3. A saját üzemeltetésű integrációs modul verzióját egyenlő vagy nagyobb, mint 3.8.xxxx.xx kell lennie. Adjon [a legújabb verzió letöltéséhez](https://www.microsoft.com/download/details.aspx?id=39717) saját üzemeltetésű integrációs modul
+
+4. Az adat-előállítót, társított integrációs modul van, amelyben a létrehozandó rendelkeznie kell egy olyan MSI Csomaghoz ([felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Alapértelmezés szerint az Ibiza portal vagy a PowerShell-parancsmagokkal létrehozott adat-előállítók MSI lesz ([felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)).
+létrehozott implicit módon, azonban az Azure Resource Manager (ARM) sablon vagy az SDK használatával létrehozott adat-előállítók kell állítani annak érdekében, hogy egy MSI-csomag létrehozása "Identity" tulajdonság.
+
+5. Az ADF .net SDK, amely támogatja ezt a funkciót az verziója > = 1.1.0-s
+
+6. Az Azure PowerShell, amely támogatja ezt a funkciót az verziója > = 6.6.0 (AzureRM.DataFactoryV2 > = 0.5.7)
+
+  > [!NOTE]
+  > Ez a funkció csak érhető el az Azure Data Factory 2-es verzió 
 
 ## <a name="system-tray-icons-notifications"></a>Rendszer ikony hlavního panelu és értesítések
+
 Ha a rendszer tálcai ikon/értesítési üzenet fölé viszi a kurzort, megtalálhatja a saját üzemeltetésű integrációs modul állapotának részleteit.
 
 ![Rendszerértesítésekhez. tálca](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
@@ -180,10 +244,10 @@ Az integration runtime gazdaszolgáltatása automatikusan újraindul, miután me
 
 Miután a saját üzemeltetésű integrációs modul sikeresen regisztrálva lett, ha szeretné megtekintheti vagy frissítheti a webproxy beállításai, használja az Integration Runtime konfigurációkezelőjének.
 
-1.  Indítsa el a **Microsoft Integration Runtime konfigurációkezelőjének**.
-2.  Váltson a **Settings** (Beállítások) lapra.
-3.  Kattintson a **módosítása** hivatkozásra **HTTP-Proxy** indítsa el a szakasz a **állítsa be a HTTP-Proxy** párbeszédpanel.
-4.  Miután rákattintott a **tovább** gombra, megjelenik egy figyelmeztető párbeszédpanel, mentse a proxybeállításokat, és indítsa újra az Integration Runtime gazdaszolgáltatása engedélyt kér.
+1. Indítsa el a **Microsoft Integration Runtime konfigurációkezelőjének**.
+   - Váltson a **Settings** (Beállítások) lapra.
+   - Kattintson a **módosítása** hivatkozásra **HTTP-Proxy** indítsa el a szakasz a **állítsa be a HTTP-Proxy** párbeszédpanel.
+   - Miután rákattintott a **tovább** gombra, megjelenik egy figyelmeztető párbeszédpanel, mentse a proxybeállításokat, és indítsa újra az Integration Runtime gazdaszolgáltatása engedélyt kér.
 
 Megtekintheti, és a HTTP-proxy frissítése a Configuration Manager eszközzel.
 
@@ -229,8 +293,8 @@ Ezeken a pontokon kívül is szüksége, hogy a Microsoft Azure, amely a vállal
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Tűzfal és proxy-kiszolgálóval kapcsolatos problémák lehetséges tünetek
 Ha a következő hasonló hibákat észlel, akkor valószínű, a tűzfal vagy proxy kiszolgálóra, amely letiltja a csatlakozzanak a Data Factory saját üzemeltetésű integrációs modul önmaga hitelesítéséhez a helytelen konfiguráció miatt. Tekintse át a tűzfalat, hogy az előző szakaszban, és a proxykiszolgáló megfelelően legyenek konfigurálva.
 
-1.  Ha a saját üzemeltetésű integrációs modult regisztrálni próbál, a következő hibaüzenetet kapja: "nem sikerült regisztrálni az Integration Runtime ezen csomópontja! Győződjön meg arról, hogy a hitelesítési kulcs érvényes, és az integrációs szolgáltatási gazdaszolgáltatása fut ezen a gépen. "
-2.  Integration Runtime konfigurációkezelőjének megnyitásakor látni állapotjelentése "**leválasztott**"vagy"**csatlakozás**". Ha Windows-eseménynaplók, a "Eseménynapló" > "Alkalmazások és szolgáltatások Logs" > "Microsoft Integration Runtime" hibaüzenetek jelennek meg például a következő hiba:
+1. Ha a saját üzemeltetésű integrációs modult regisztrálni próbál, a következő hibaüzenetet kapja: "nem sikerült regisztrálni az Integration Runtime ezen csomópontja! Győződjön meg arról, hogy a hitelesítési kulcs érvényes, és az integrációs szolgáltatási gazdaszolgáltatása fut ezen a gépen. "
+   - Integration Runtime konfigurációkezelőjének megnyitásakor látni állapotjelentése "**leválasztott**"vagy"**csatlakozás**". Ha Windows-eseménynaplók, a "Eseménynapló" > "Alkalmazások és szolgáltatások Logs" > "Microsoft Integration Runtime" hibaüzenetek jelennek meg például a következő hiba:
 
     ```
     Unable to connect to the remote server

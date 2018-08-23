@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 8afd743f6010822709bf3d49f7a3bbcd51b19edf
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: c8e14091d7a3fb5b925735824b1dd3ce26f034e8
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346487"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054921"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás használatának első lépései
 
-A Microsoft Authenticator alkalmazás segít az illetéktelen hozzáférés megakadályozása a csalárd tranzakciókat leállítás, így Ön egy további biztonsági szint a munkájához és fiókok vagy az iskolai fiókjával (például alain@contoso.com) vagy (a személyes Microsoft-fiókja a példában alain@outlook.com). Használhatja azt egy második hitelesítési módszerrel vagy cserélni a jelszót telefonos bejelentkezés használata esetén. Állítsa be, és beállításának telefonos bejelentkezés használata kapcsolatos további információkért lásd: [jelentkezzen be a telefonjára, nem kell jelszót](microsoft-authenticator-app-phone-signin-faq.md).
+A Microsoft Authenticator alkalmazás segít az illetéktelen hozzáférés megakadályozása a csalárd tranzakciókat leállítás, így Ön egy további biztonsági szint a munkájához és fiókok vagy az iskolai fiókjával (például alain@contoso.com) vagy (a személyes Microsoft-fiókja a példában alain@outlook.com).
 
 Az alkalmazás a kétlépéses ellenőrzéshez használatakor együtt tudjon működni a két módszer egyikével:
 
@@ -110,8 +110,6 @@ Ha úgy döntött, hogy ellenőrző kódok használata az alkalmazásban, kezdet
 ## <a name="next-steps"></a>További lépések
 
 - Ha az alkalmazással kapcsolatos további általános kérdése van, tekintse meg [a Microsoft Authenticator – gyakori kérdések](microsoft-authenticator-app-faq.md)
-
-- Ha a telefonos bejelentkezés használatával kapcsolatos kérdése van, tekintse meg [jelentkezzen be a telefonjára, nem kell jelszót](microsoft-authenticator-app-phone-signin-faq.md)
 
 - Ha azt szeretné, hogy további információ a kétlépéses ellenőrzést, [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md)
 

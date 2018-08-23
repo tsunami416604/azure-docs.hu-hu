@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 08/17/2018
 ms.author: terrylan
-ms.openlocfilehash: 7533f9db25da8e69d3fcfa76a61a06af2f1bc78c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345957"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056686"
 ---
 # <a name="azure-network-security-overview"></a>Azure-hálózat biztonsági áttekintése
 
@@ -57,6 +57,9 @@ Az Azure számos különböző típusú hálózati hozzáférés-vezérlés, min
 ### <a name="network-layer-control"></a>Hálózati réteg szabályozása
 
 Minden biztonságos telepítéséhez van szükség egy adott mérték hálózati hozzáférés-vezérlést. A hálózati hozzáférés-vezérlés célja, hogy korlátozni a virtuális gép kommunikációt a szükséges rendszereken. Más kommunikációs kísérlet le vannak tiltva.
+
+>[!NOTE]
+A Storage-tűzfalak terjed ki a [az Azure storage biztonsági áttekintése](security-storage-overview.md) cikk
 
 #### <a name="network-security-rules-nsgs"></a>Hálózati biztonsági szabályok (NSG-k)
 
@@ -323,7 +326,6 @@ Is [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), egy ha
 További információ:
 
 * [Naplóelemzés hálózati biztonsági csoportok (NSG-k)](../virtual-network/virtual-network-nsg-manage-log.md)
-
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 

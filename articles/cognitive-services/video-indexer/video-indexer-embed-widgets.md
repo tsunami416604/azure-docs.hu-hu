@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 4ce1eedac69b06f491510be93fcfbdfbc879ff7e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ba81030c3d6384ca6b66d6a3b14e614d1626e3e0
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398132"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41987970"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>A Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -241,6 +241,4 @@ Automatikus lejátszás – a Windows Media player elindul a videó lejátszás�
 
 Megtekintheti és szerkesztheti a Videóindexelő-elemzések kapcsolatos információkért lásd: [ez](video-indexer-view-edit.md) cikk.
 
-## <a name="see-also"></a>Lásd még
-
-[Video Indexer – áttekintés](video-indexer-overview.md)
+Emellett tekintse meg [Video indexer codepen](https://codepen.io/videoindexer/pen/eGxebZ).

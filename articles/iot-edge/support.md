@@ -1,6 +1,6 @@
 ---
-title: Eszközplatform-támogatás az Azure IoT peremhálózati |} Microsoft Docs
-description: Azure IoT peremhálózati által támogatott platformok
+title: Eszközplatform-támogatás az Azure IoT Edge |} A Microsoft Docs
+description: Az Azure IoT Edge által támogatott platformok
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -8,59 +8,60 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 05a571c4491122ec5c7c35f6bccc4b8c332a4be2
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 91821d66ac0be265e6b66fd9eb2378169e337430
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130709"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058754"
 ---
 # <a name="azure-iot-edge-support"></a>Az Azure IoT Edge-támogatás
-Nincsenek többféle módon, hogy az Azure IoT peremhálózati termék támogatása.
+Nincsenek többféle módon, hogy az Azure IoT Edge-termék támogatása.
 
-**Hibát** – a legtöbb, amely a Azure IoT peremhálózati termék fejlesztését történik, az IoT-Edge nyílt forráskódú projektben. A hibák jelenthetők a [problémák lap](https://github.com/azure/iotedge/issues) a projekt. Javítások gyorsan ne a projektből a termékfrissítéseket.
+**Hibák Reporting** – a legtöbb fejlesztési, amely az Azure IoT Edge-termék hiányzóra történik, az IoT Edge nyílt forráskódú projekt. A hibák jelenteni lehet a [problémák lap](https://github.com/azure/iotedge/issues) a projekt. Javítások gyorsan eljutnak a projektből a termékfrissítéseket.
 
-**A Microsoft ügyfél-támogatási csapatának** –, akik rendelkeznek a [támogatási csomag](https://azure.microsoft.com/support/plans/) is végezhetnek, amelyet a Microsoft ügyfél-támogatási csapatának közvetlenül a támogatási jegy létrehozásával a [Azure-portálon]( https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
+**A Microsoft ügyfél-támogatási csapatának** – felhasználók, akik rendelkeznek egy [támogatási csomag](https://azure.microsoft.com/support/plans/) hozzon létre egy támogatási jegyet közvetlenül a Microsoft ügyfél-támogatási csapata is léphet az [az Azure portal]( https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
 
-**Szolgáltatás-kérelmek** – az Azure IoT peremhálózati termék frissítéseiről keresztül a termék nyomon követi az [felhasználói véleményekkel foglalkozó weblapunkra](https://feedback.azure.com/forums/907045-azure-iot-edge).
+**Kérelmek funkció** – az Azure IoT Edge-termék nyomon követi a szolgáltatással kapcsolatos kéréseit a termék keresztül [User Voice lap](https://feedback.azure.com/forums/907045-azure-iot-edge).
 
 ## <a name="operating-systems"></a>Operációs rendszerek
-Az Azure IoT peremhálózati futtatható tárolók; a legtöbb operációs rendszeren fut azonban mindegyik nem egyaránt támogatottak. Operációs rendszerek, amelyek megfelelnek a felhasználók várható támogatás szintjének rétegek vannak csoportosítva.
+Az Azure IoT Edge, amelyek futtathatók tárolók; a legtöbb operációs rendszeren fut. azonban ezek mindegyikét nem egyaránt támogatottak. Operációs rendszerek számíthatnak támogatás szintjét képviselő szinten vannak csoportosítva.
 
 ### <a name="tier-1"></a>1. szint
-1. rétegbeli rendszerek-re, hivatalosan támogatott. Ez azt jelenti, hogy a Microsoft:
-* Ezeket az operációs rendszer van az automatikus tesztek
-* a telepítőcsomagok biztosít
+1. rétegbeli rendszerek tekinthető, hivatalosan támogatott. Ez azt jelenti, hogy a Microsoft:
+* Ezek az operációs rendszer automatizált teszteket rendelkezik
+* biztosít a számukra a telepítési csomagok
 
 Általánosan elérhető
-* Ubuntu Server 18.04
-* Ubuntu Server 16.04
-* A stretch Raspbian
+| Operációs rendszer | AMD64 | ARM32 |
+| ---------------- | ----- | ----- |
+| Ubuntu Server 18.04 | Igen | Nem |
+| Ubuntu Server 16.04 | Igen | Nem |
+| A stretch Raspbian | Nem | Igen|
 
 Nyilvános előzetes verzió
-* Windows 10-es kiszolgáló 1803
-* Windows 10 IoT vállalati (április 2018 frissítéssel)
-* Windows 10 IoT mag (április 2018 frissítéssel)
+| Operációs rendszer | AMD64 | ARM32 |
+| ---------------- | ----- | ----- |
+| A Windows 10-es kiszolgáló 1803-as verzióban | Igen | Nem |
+| A Windows 10 IoT Enterprise (2018 áprilisi frissítés) | Igen | Nem |
+| Windows 10 IoT Core (2018 áprilisi frissítés) | Igen | Nem |
 
 ### <a name="tier-2"></a>2. szint
-2. szintű rendszerek-re az Azure IoT él, és viszonylag könnyen használható. Ez azt jelenti, hogy:
-* Microsoft végzett tesztelése a platformokon alkalmi vagy egy partner sikeresen a platformon futó Azure IoT peremhálózati tudja
-* A más platformok telepítőcsomagok működnek ezek a rendszerek
+2. rétegbeli rendszerek szerint kompatibilis az Azure IoT Edge segítségével olyan, és viszonylag könnyen használható. Ez azt jelenti, hogy:
+* A Microsoft alkalmi tesztelése a platformon végzett, vagy tudja, hogy sikeresen rendszeren történő futtatása az Azure IoT Edge egy partner
+* Más platformok telepítőcsomagok ezeken a platformokon is működhet.
 
-Ubuntu 18.04
+| Operációs rendszer | AMD64 | ARM32 |
+| ---------------- | ----- | ----- |
+| Ubuntu 18.04 | Igen | Nem |
+| Ubuntu 16.04 | Igen | Nem |
+| A szél folyó 8 | Igen | Nem |
+| Yocto | Igen | Nem |
+| Debian | Igen | Nem |
+| Mac | Igen | Nem |
 
-Ubuntu 16.04
-
-Szél folyó 8
-
-Yocto
-
-Debian
-
-Mac
-
-## <a name="container-engines"></a>Tároló motorok
-Az Azure IoT peremhálózati kell egy tároló motor modulok, függetlenül attól, amelyen futó operációs rendszer elindításához. A Microsoft biztosít egy tároló motor moby-motor, ez a követelmény teljesítésére. A Moby nyílt forráskódú projekt alapul. Docker CE és a Docker EE más népszerű tároló motorok. Azok a Moby megnyílik-forrás projektre is alapul, és Azure IoT peremhálózati kompatibilis. A Microsoft ajánlott beavatkozást támogatást biztosít az rendszerekről tároló motorok; a Microsoft azonban nem rendelkezik küldje el a probléma javítását a bennük foglalt lehetőséget. Ezért a Microsoft azt javasolja, moby-motor használata az éles rendszerek esetén.
+## <a name="container-engines"></a>Tároló-motorok
+Az Azure IoT Edge kell egy tároló motor modulok, függetlenül attól, amelyen futó operációs rendszer elindításához. A Microsoft biztosít egy tároló motor moby-motor, ez a követelmény teljesítéséhez. A Moby nyílt forráskódú projekt alapul. A docker CE és a Docker EE más népszerű motorokkal. Ezeket is alapján a Moby megnyílik forráskódú projektje, és kompatibilis az Azure IoT Edge segítségével. A Microsoft biztosít a elérhető legjobb lehetőség támogatásával rendszerekben a tároló motorok; használatával a Microsoft azonban nem rendelkezik az LHS.Gold.Multi.B4 őket hibák javításait teszi. Ebből kifolyólag a Microsoft azt javasolja, az éles rendszereket moby-motor használatával.
 
 
 <!-- Links -->

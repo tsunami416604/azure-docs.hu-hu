@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/14/2018
 ms.author: shlo
-ms.openlocfilehash: 7f186a819e2142bef6e736c7f7b5d0c733413fd5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: b457d1ae01e523ac99c6171fa8d2123023ebcd2c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716331"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42059143"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -42,10 +42,10 @@ A felhasználói felület használata esetén **szerzői vászon** ahhoz, hogy a
 VSTS Git-integrációval történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító társíthatja egy VSTS Git-fiók tárház verziókövetés, együttműködési, verziószámozása és így tovább. VSTS Git egyetlen fiók több tárházak rendelkezhet, de egy VSTS Git-tárház társítható csak egy adat-előállító. Ha nem rendelkezik a VSTS-fiók vagy a tárház, hajtsa végre a [ezek az utasítások](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) az erőforrások létrehozásához.
 
 > [!NOTE]
-> Egy VSTS GIT-tárház feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölti fel parancsfájl vagy adatfájlok VSTS GIT-tárházat az Azure Storage tárolja.
+> Egy VSTS Git-tárház feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölti fel parancsfájl vagy adatfájlok VSTS Git-tárházat az Azure Storage tárolja.
 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>VSTS Git-adattár konfigurálása az Azure Data Factoryvel
-Az adat-előállító egy VSTS GIT-tárház két módszer segítségével konfigurálhatja.
+Az adat-előállító egy VSTS Git-tárház két módszer segítségével konfigurálhatja.
 
 #### <a name="method1"></a> 1 (VSTS Git-tárház) a konfigurálási módszerhez: első lépések lap
 
@@ -77,13 +77,17 @@ A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcso
 
 ![A UX szerzői kód tárház beállításainak konfigurálása](media/author-visually/configure-repo-2.png)
 
+## <a name="use-a-different-azure-active-directory-tenant"></a>Egy másik Azure Active Directory-bérlő használata
+
+Létrehozhat egy VSTS Git-tárház egy másik Azure Active Directory-bérlőben található. Egy másik Azure AD-bérlővel, rendelkeznie kell Azure-előfizetést használ, rendszergazdai jogosultságokkal.
+
 ## <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-adattár
 
 Váltson át egy másik Git-adattár, keresse meg a ikonra a Data Factory – Áttekintés lap jobb felső sarokban az alábbi képernyőképen látható módon. Ha nem látja a ikonra, törölje a helyi böngésző gyorsítótárát. Válassza ki a ikonra kattintva távolítsa el az aktuális tárház a hozzárendelését.
 
 Miután eltávolítja a társítást az aktuális tárház, konfigurálhatja a Git-beállításait, hogy használjon egy másik adattárral. Ezután importálhatja meglévő Data Factory-erőforrásokkal az új adattárhoz.
 
-![Távolítsa el az aktuális Git-adattárat a hozzárendelését.](media/author-visually/remove-repo.png)
+![Távolítsa el a hozzárendelését az aktuális Git-adattár](media/author-visually/remove-repo.png)
 
 ## <a name="use-version-control"></a>Használja a verziókövetés
 Verziókövető rendszereket (más néven _verziókövetés_) lehetővé teszik a fejlesztőknek, kód és nyomon követésére helyadatbázisokban végrehajtott módosításokat a kód alap másokkal közös használatához. Verziókövetés fontos több fejlesztési projektek eszközzel.
@@ -92,7 +96,7 @@ Minden egyes VSTS Git-tárház az adat-előállító társított együttműköd�
 
 ![A kód módosítása szinkronizálása vagy közzététele](media/author-visually/sync-publish.png)
 
-Amikor készen áll a funkció fejlesztéséhez a szolgáltatás ágban, kattintson **Create pull-kérelem**. Ez a művelet vesz igénybe, hogy hol is növelheti a pull-kérelmek, VSTS GIT felülvizsgálatok code, és egyesíti az egyes módosításokat az együttműködés ágban. (`master` az alapértelmezett beállítás). A Data Factory szolgáltatásban közzétenni az együttműködés ágból csak engedélyezett. 
+Amikor készen áll a funkció fejlesztéséhez a szolgáltatás ágban, kattintson **Create pull-kérelem**. Ez a művelet vesz igénybe, hogy hol is növelheti a pull-kérelmek, VSTS Git felülvizsgálatok code, és egyesíti az egyes módosításokat az együttműködés ágban. (`master` az alapértelmezett beállítás). A Data Factory szolgáltatásban közzétenni az együttműködés ágból csak engedélyezett. 
 
 ![Új lekéréses kérelem létrehozása](media/author-visually/create-pull-request.png)
 
@@ -106,10 +110,21 @@ Rendelkezik sikeresen összevonta a együttműködési ág módosításai után 
 
 ## <a name="author-with-github-integration"></a>Felügyeleti csomagok készítése a GitHub-integráció
 
-GitHub-integráció történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító egy GitHub-fiók tárházat a verziókövetés, együttműködési, versioning is társíthat. Egy GitHub-fiók több tárházak rendelkezhet, de egy GitHub-adattár társítható csak egy adat-előállító. Ha nem rendelkezik aGitHub fiók vagy a tárház, hajtsa végre a [ezek az utasítások](https://github.com/join) az erőforrások létrehozásához. A GitHub-integráció, a Data Factory támogatja mind nyilvános GitHub és a GitHub Enterprise-zal.
+GitHub-integráció történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító egy GitHub-fiók tárházat a verziókövetés, együttműködési, versioning is társíthat. Egy GitHub-fiók több tárházak rendelkezhet, de egy GitHub-adattár társítható csak egy adat-előállító. Ha nem rendelkezik egy GitHub-fiók vagy egy tárház, hajtsa végre a [ezek az utasítások](https://github.com/join) az erőforrások létrehozásához. A GitHub-integráció, a Data Factory támogatja mind nyilvános GitHub és a GitHub Enterprise-zal.
 
-> [!NOTE]
-> Egy GitHub-adattár feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölt fel egy GitHub-tárházat az Azure Storage tárolja, a parancsfájl vagy adatfájlok.
+Egy GitHub-adattár konfigurálásához rendelkeznie kell Azure-előfizetést használ, rendszergazdai jogosultságokkal.
+
+A 9 perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
+
+### <a name="limitations"></a>Korlátozások
+
+- Egy GitHub-adattár feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölt fel egy GitHub-tárházat az Azure Storage tárolja, a parancsfájl vagy adatfájlok.
+
+- GitHub Enterprise-zal 2.14.0 régebbi verzióját a Microsoft Edge böngészővel nem működik.
+
+- Az adatok tényező vizuális szerzői eszközökkel GitHub-integráció csak a Data Factory általánosan elérhető verziójában működik.
 
 ### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Egy nyilvános GitHub-adattár konfigurálása az Azure Data Factoryvel
 

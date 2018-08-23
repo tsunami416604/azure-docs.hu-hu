@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8bf904b2029790d64a806fcf4a7e4860579a5a2f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: a24ccd456df533542e7cbd2315fc1050cd82afbf
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39204850"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41987641"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>Gyors útmutató: a Microsoft Translator Speech API a Pythonnal 
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ Szüksége lesz [Python 3.x](https://www.python.org/downloads/) Ez a kód futtat
 
 Telepítenie kell a [websocket-client csomagot](https://pypi.python.org/pypi/websocket-client) Pythonhoz készült.
 
-Szüksége lesz egy .wav "speak.wav" ugyanabban a mappában az alábbi kód fordítása futtatható fájlt. Ezt a fájlt .wav standard PCM, 16 bites, 16kHz Monó formátumban kell lennie. Szerezhet be ilyen .wav fájl a [Text to Speech API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+Szüksége lesz egy .wav "speak.wav" ugyanabban a mappában az alábbi kód fordítása futtatható fájlt. Ezt a fájlt .wav standard PCM, 16 bites, 16kHz Monó formátumban kell lennie. 
 
 Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Microsoft Translator Speech API**. Szüksége lesz egy fizetős kulcs a [Azure irányítópultján](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
@@ -132,4 +132,4 @@ Egy sikeres eredménye "speak2.wav" nevű fájl létrehozása. A fájl tartalmaz
 ## <a name="see-also"></a>Lásd még 
 
 [Translator Speech áttekintése](../overview.md)
-[API-referencia](http://docs.microsofttranslator.com/speech-translate.html)
+[API-referencia](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

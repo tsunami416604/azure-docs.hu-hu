@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault használatával az Azure Automation kezelése |} Microsoft Docs
-description: További tudnivalók hogyan az Azure Automation szolgáltatás használható-e az Azure Key Vault kezeléséhez.
+title: Az Azure Key Vault az Azure Automationnel kezelése |} A Microsoft Docs
+description: Ismerje meg hogyan az Azure Automation szolgáltatást is használható az Azure Key Vault kezeléséhez.
 services: Key-Vault, automation
 documentationcenter: ''
 author: mgoedtel
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: magoedte
-ms.openlocfilehash: b5f8a1b826717d51729b0bb621bf26e35d4bdd36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6484c8c9ae1ad109820c3b3912c3a7ea8d49c2a2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406874"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056863"
 ---
-# <a name="managing-azure-key-vault-using-azure-automation"></a>Az Azure Key Vault használatával az Azure Automation kezelése
-Az útmutatóból megismerheti az Azure Automation szolgáltatás, és hogyan használható egyszerűbbé teheti a kulcsok és titkos kulcsok Azure Key Vault a kezelését.
+# <a name="managing-azure-key-vault-using-azure-automation"></a>Azure Automation használatával az Azure Key Vault felügyelete
+Ez az útmutató vezet be, az Azure Automation szolgáltatást, és hogyan használható a kulcsok és titkos kulcsok Azure Key vaultban kezelésének egyszerűsítéséhez.
 
 ## <a name="what-is-azure-automation"></a>Mi az Azure Automation?
-[Azure Automation szolgáltatásbeli](../automation/automation-intro.md) van egy Azure-felhő kezelésüket folyamatok automatizálásához és a kívánt állapot konfigurációs szolgáltatás. Használja az Azure Automation, manuális, ismétlődik, hosszan futó és hibalehetőséget feladatok automatizálhatók megbízhatóságát, hatékonyságát és a szervezet hamarabb növelése érdekében.
+[Az Azure Automation](../automation/automation-intro.md) leegyszerűsíti a felhőfelügyelet a folyamatok automatizálása és a kívánt állapot konfigurációs az Azure-szolgáltatások. Az Azure Automationnel, manuális, ismétlődő, hosszú futású, és sok hibalehetőséget rejtő feladat automatizálható a megbízhatóság, hatékonyságot és a szervezet teljesítések idejét.
 
-Azure Automation szolgáltatásbeli biztosít egy magas rendelkezésre állású, nagymértékben megbízható munkafolyamat-végrehajtási motorjának, amely méretezi az igényeinek. Az Azure Automationben folyamatok is lehet kezdődött el manuálisan, a 3. fél rendszerek vagy rendszeres időközönként, hogy a feladatok fordulhat elő, pontosan, ha szükséges.
+Az Azure Automation segítségével egy rendkívül megbízható, magas rendelkezésre állású munkafolyamat-végző összetevőjével, amely igény szerint méretezhető. Az Azure Automation szolgáltatás folyamatokat is lehet kezdődjön manuálisan, 3. rendszerekben, vagy rendszeres időközönként, hogy a feladatok fordulhat elő, pontosan akkor, ha szükséges.
 
-Csökkentheti a működési munkaterhelés és szabadítson fel informatikai és DevOps alkalmazottak munka, amely üzleti értéket hozzáadja a felhőbeli felügyeleti feladatok automatikusan Azure Automation által futtatandó mozgatásával összpontosíthat.
+Csökkentheti üzemeltetési terheit és szabadítson fel informatikai és a fejlesztési és üzemeltetési csapatának, amely üzleti értéket hozzáadja a felhőfelügyeleti feladatokat automatikusan Azure Automation által futtatandó váltással munkára.
 
-## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>Hogyan segíthet az Azure Automation kezelése az Azure Key Vault?
-Key Vault használatával kezelhető az Azure Automationben a [AzureRM Key Vault parancsmagjainak](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) és [Azure klasszikus Key Vault parancsmagjainak](https://msdn.microsoft.com/library/azure/dn868052.aspx). A klasszikus Key Vault kezeléséhez Azure modul automatikusan az Azure Automationben érhető el, és importálhatja a [AzureRM-KeyVault modul](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) az Azure Automation, hogy a Key Vault felügyeleti feladatok a szolgáltatáson belül végezheti el. Ezek a parancsmagok az Azure Automationben más Azure-szolgáltatások, Azure-szolgáltatások és a 3. fél rendszerek között összetett feladatok automatizálása a parancsmagjaival is párosítható.
+## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>Hogyan segít az Azure Automation kezelése az Azure Key Vault?
+A Key Vault segítségével kezelhetők az Azure Automationben a [AzureRM Key Vault-parancsmagok](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) és [Azure klasszikus Key Vault-parancsmagok](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Az Azure-modul klasszikus Key Vault kezeléséhez érhető el automatikusan az Azure Automationben, és importálhatja a [AzureRM-KeyVault modul](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) az Azure Automationbe, így számos, a Key Vault-felügyeleti feladatokat hajthat végre a szolgáltatásban. Ezek a parancsmagok az Azure Automation parancsmagjaival más Azure-szolgáltatások, az összetett feladatok automatizálása Azure-szolgáltatások és a 3. fél rendszerek párosítása is történik.
 
-Az Azure Key Vault parancsmagjainak hajthatja végre ezeket a feladatokat, többek között: 
+Az Azure Key Vault parancsmagokban végezheti el ezeket a feladatokat, többek között: 
 
-* Hozza létre és konfigurálja a kulcstároló
-* Hozzon létre vagy kulcs importálása
-* Létrehozni vagy frissíteni a titkos kulcs
-* Attribútumok kulcs frissítése
-* A kulcsok vagy titkos kulcsok beszerzése
-* Kulcs vagy titkos kulcs törlése
+* Hozzon létre, és a egy key vault beállítása
+* Hozzon létre vagy importáljon egy kulcs
+* Hozzon létre vagy titkos kulcs frissítése
+* A kulcs attribútumok frissítése
+* Egy kulcs vagy titkos kód beolvasása
+* Egy kulcs vagy titkos kód törlése
 
-Íme néhány példa a Key Vault kezelése a PowerShell használatával:  
+Íme néhány példa a PowerShell használatával a Key Vault kezeléséhez:  
 
 * [Az Azure Key Vault - lépésről lépésre](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step)
-* [Beállítása és konfigurálása az Azure Key Vault](https://www.simple-talk.com/cloud/platform-as-a-service/setting-up-and-configuring-an-azure-key-vault)
+* [És egy Azure Key Vault konfigurálása](https://www.simple-talk.com/cloud/platform-as-a-service/setting-up-and-configuring-an-azure-key-vault)
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte az Azure Automation, és hogyan használható az Azure Key Vault kezeléséhez alapjait, az alábbi hivatkozásokból tudhat meg többet az Azure Automation.
+Most, hogy megismerte az alapokat, az Azure Automationben, és hogyan használható az Azure Key Vault kezeléséhez, az alábbi hivatkozásokból tudhat meg többet az Azure Automationben.
 
-* Tekintse meg az Azure Automation szolgáltatásbeli [használatába bevezető oktatóanyagot](../automation/automation-first-runbook-graphical.md).
+* Tekintse meg az Azure Automation [kezdeti lépéseket ismertető oktatóanyag](../automation/automation-first-runbook-graphical.md).
 * Tekintse meg a [Azure Key Vault PowerShell-parancsfájlok](https://gallery.technet.microsoft.com/scriptcenter/site/search?query=azure%20key%20vault&f%5B0%5D.Value=azure%20key%20vault&f%5B0%5D.Type=SearchText&ac=5).
 

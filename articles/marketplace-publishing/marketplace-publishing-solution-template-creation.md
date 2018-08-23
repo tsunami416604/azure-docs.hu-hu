@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 675316b97e821a81ca4946d57a76d7bce978361b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 0e1c049596b5231ad72590fc17a73cd5aa457e4d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714546"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055753"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Útmutató a megoldássablon létrehozásához az Azure Marketplace-en
 1. lépés befejezése után [fióklétrehozás és a regisztrációs][link-acct-creation], hogy interaktív, egy Azure-kompatibilis megoldás sablon létrehozásakor [létrehozására vonatkozó technikai Előfeltételek egy a megoldássablon](marketplace-publishing-solution-template-creation-prerequisites.md). Most végigvezetjük meg létrehozni egy megoldássablon több virtuális gép a lépéseket a [közzétételi portál] [ link-pubportal] az Azure Marketplace-en.
@@ -60,7 +60,7 @@ Most, hogy a megoldássablon létrehozott és feltöltött zip-fájl, kérjük, 
 Akkor is hasznos lehet a kapcsolódó cikkek:
 
 * Virtuálisgép-rendszerképek: [kapcsolatos virtuálisgép-lemezképek az Azure-ban](https://msdn.microsoft.com/library/azure/dn790290.aspx)
-* A Virtuálisgép-bővítmények: [Virtuálisgép-ügynök és a Virtuálisgép-bővítmények – áttekintés](https://msdn.microsoft.com/library/azure/dn832621.aspx) és [Azure Virtuálisgép-bővítmények és szolgáltatások](https://msdn.microsoft.com/library/azure/dn606311.aspx)
+* A Virtuálisgép-bővítmények: [Azure Virtuálisgép-bővítmények és szolgáltatások](../virtual-machines/extensions/features-windows.md)
 * Az Azure Resource Manager: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) és [egyszerű sablon példák](https://github.com/rjmax/ArmExamples)
 * Storage-fiók szabályozza: [figyelése a Storage-fiók szabályozási](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) és [prémium szintű storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 

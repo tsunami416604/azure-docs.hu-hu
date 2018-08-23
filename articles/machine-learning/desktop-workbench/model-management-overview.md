@@ -1,129 +1,127 @@
 ---
-title: Elméleti áttekintése Azure Machine Learning modell kezelése |} Microsoft Docs
-description: Ez a dokumentum az Azure Machine Learning modell fogalmait ismerteti.
+title: Az Azure Machine Learning Modellkezelés fogalmi áttekintése |} A Microsoft Docs
+description: Ez a dokumentum az Azure Machine Learning Modellkezelés fogalmakat ismerteti.
 services: machine-learning
-author: nk773
-ms.author: padou
-manager: mwinkle
-ms.reviewer: jasonwhowell, mldocs
+author: hjerezmsft
+ms.author: hjerez
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 6fac3fa0207d942c5a7f5fa438ba8262ea5b7a22
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 041f7147f171514d941555ff2f6144bac2062b06
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832227"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056699"
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning Modellkezelés
 
-Az Azure Machine Learning modell Management használatával kezelheti és telepítheti a gépi tanulásra munkafolyamatok és -modellek teszi lehetővé. 
+Az Azure Machine Learning a Modellkezelés lehetővé teszi a machine-learning munkafolyamatok és a modellek üzembe helyezheti és kezelheti. 
 
-Modell-kezelési képességeket biztosítja:
-- Modell versioning
-- Éles környezetben követési modellek
-- Üzemi környezetben keresztül AzureML számítási környezetben a modellek telepítéséről [Azure Tárolószolgáltatás](https://azure.microsoft.com/services/container-service/) és [Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
-- A modellek Docker-tároló létrehozása, és helyi tesztelés
-- Automatikus modell átképezési
-- A gyakorlatban használható elemzések modell telemetria rögzítését. 
+Modellkezelési képességeket biztosít:
+- Modell-verziókezelés
+- Követési modellek éles környezetben
+- Az éles környezetben keresztül AzureML számítási környezetet a modellek üzembe helyezéséhez [az Azure Container Service](https://azure.microsoft.com/services/container-service/) és [Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+- A modellek a Docker-tárolók létrehozása, és helyi tesztelés
+- Automatizált modellbetanítás
+- A rögzítés modell telemetriai adatokat a gyakorlatban is használható. 
 
-Az Azure Machine Learning modell kezelése a modell verziók egy jegyzéket biztosít. Automatizált munkafolyamatok csomagolás és a REST API-k, a Machine Learning tárolók telepítése is tartalmazza. A modellek és futásidejű függősége vannak csomagolva, előrejelzés API Linux-alapú Docker-tárolóban. 
+Az Azure Machine Learning Modellkezelés a modell verzióját egy jegyzéket biztosít. Automatizált munkafolyamatok csomagolás és a REST API-k, Machine Learning-tárolók üzembe helyezése is tartalmazza. A modellek és a futtatókörnyezeti függőségek a Linux-alapú Docker-tárolót az előrejelzési API vannak csomagolva. 
 
-Az Azure Machine Learning-számítási környezetek beállítása és kezelése az üzemeltetési modellek méretezhető fürtök segítségével. A számítási környezet Azure tárolószolgáltatások alapul. Azure tárolószolgáltatások biztosít a Machine Learning API-k automatikus kitettség REST API-végpontokon a következő szolgáltatásokkal:
+Az Azure Machine Learning COMPUTE számítási Környezeteihez beállítását, és a modellek üzemeltetéséhez skálázható fürtök kezelése érdekében. A számítási környezet alapján történik az Azure Container Service szolgáltatásait. Az Azure Container Service biztosítja az automatikus kitettség Machine Learning API-k REST API-végpontokon a következő funkciókkal:
 
 - Hitelesítés
 - Terheléselosztás
-- Automatikus kibővített
+- Az automatikus horizontális felskálázás
 - Titkosítás
 
-Az Azure Machine Learning modell Management további olyan funkciókat kínál, a parancssori felület API és az Azure-portálon keresztül. 
+Az Azure Machine Learning Modellkezelés biztosítja ezeket a képességeket a parancssori felület, API és az Azure Portalon keresztül. 
 
-Az Azure Machine Learning modell management használja a következő információkat:
+Az Azure Machine Learning modellkezelés használja a következő információkat:
 
- - Modell fájl vagy könyvtár a modell fájljai
- - Felhasználó létrehozott egy pontozó függvény modell megvalósításához Python-fájl
- - Conda függőségi fájl futásidejű függőségek listázása
- - Futásidejű környezet választás, és 
- - Fájl API-paraméterek 
+ - Modell-fájl vagy könyvtár a modell fájljai
+ - Felhasználó által létrehozott Python-fájlt egy pontozó függvény modell megvalósítása
+ - Conda függőségi fájl futtatókörnyezeti függőségek listázása
+ - Futásidejű környezet választási lehetőség, és 
+ - A sémafájl API paraméterek 
 
 Ezt az információt használja a következő műveletek végrehajtása során:
 
 - A modell regisztrálása
-- A jegyzékfájl létrehozása, amely használatos, ha a tároló létrehozása
-- A Docker tároló lemezkép
-- A tároló üzembe az Azure Tárolószolgáltatás
+- A jegyzékfájl létrehozása, amely használatos, amikor egy tároló létrehozásához
+- A Docker tároló rendszerképének létrehozása
+- Üzembe helyezni egy tárolót az Azure Container Service-ben
  
-Az alábbi ábra a modellek regisztrált és a fürt helyezett hogyan áttekintését tartalmazza. 
+Az alábbi ábra a modellek regisztrálása és a fürtben üzembe helyezett áttekintése látható. 
 
 ![](media/model-management-overview/modelmanagement.png)
 
-## <a name="create-and-manage-models"></a>Hozzon létre és modellek kezelése 
-Az Azure Machine Learning modell Management modellek regisztrál követési modellverziók éles környezetben. A könnyű reprodukálhatósági és irányítási a szolgáltatás összes függőségeket és társított információit rögzíti. A teljesítmény mérőszámokhoz rögzítheti a modell telemetriai adatokat a megadott SDK használatával. A felhasználó által megadott tárolási modell telemetriai archivált. A modell telemetriai később modell teljesítményének elemzése, átképezési és a saját üzleti elemzések eszközöket is használható.
+## <a name="create-and-manage-models"></a>Hozzon létre, és a modellek kezelése 
+Modellek regisztrálhatja az Azure Machine Learning Modellkezelés, a nyomon követési modell verzióit éles környezetben. Könnyű megismételhetőség és irányítása a szolgáltatás minden függőségeket és társított információk rögzíti. Mélyebb betekintést a teljesítmény, a modell telemetriai adatokat a megadott SDK használatával rögzítheti. Modell telemetriai adatokat a felhasználó által megadott tárolási archiválja a rendszer. A modell telemetriát később használható modellek teljesítményének elemzése, átképezési és üzleti következtetéseket.
 
-## <a name="create-and-manage-manifests"></a>Hozzon létre és kezelheti a jegyzékfájlban 
-Modellek szükséges további összetevők telepítése éles környezetben. A rendszer lehetővé teszi a jegyzékfájl, amely magában foglalja a modell, a függőségek, a megállapítás parancsfájlból (más néven pontozási), a mintaadatok, a séma stb létrehozásához. A jegyzékfájl egy Docker-tároló lemezkép létrehozása receptet funkcionál. Vállalatok automatikusan előállítja a jegyzék, különböző verziói létrehozása és kezelése a jegyzékfájlban. 
+## <a name="create-and-manage-manifests"></a>Hozzon létre és kezelheti a jegyzékek 
+Modellek éles üzembe helyezés további összetevőkhöz szükséges. A rendszer lehetővé teszi, hogy hozzon létre egy jegyzéket, amely magában foglalja a modell, a függőségeket, a következtetésekhez parancsfájl (más néven pontozó szkript), a mintaadatokat, a séma stb. A jegyzékfájl létrehozása egy Docker-tároló rendszerképét a recept funkcionál. Vállalatok jegyzékfájl automatikus létrehozása, hozzon létre különböző verzióit, és a jegyzékek kezelése. 
 
-## <a name="create-and-manage-docker-container-images"></a>Hozzon létre és Docker-tároló lemezképek kezelése 
-Az előző lépésben a jegyzék segítségével a saját környezetükben tároló Docker-alapú lemezképeket. A tárolóalapú, Docker-alapú lemezképek ezeket a lemezképeket futtassa a következő számítási környezetek rugalmassága vállalatok biztosítják:
+## <a name="create-and-manage-docker-container-images"></a>Hozzon létre és kezelheti a tárolólemezképeket a Docker 
+Az előző lépésben a jegyzék használatával hozhat létre tárolórendszerképeket Docker-alapú saját környezetükben lévő. A tárolóalapú, Docker-alapú lemezképek rugalmasan futtathatja a lemezképek a következő számítási környezetet adja meg a vállalatok számára:
 
-- [Kubernetes alapú Azure Tárolószolgáltatásban](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
-- A helyi tároló szolgáltatások
-- Fejlesztési környezetekben
+- [Az Azure Container Service Kubernetes-alapú](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+- A helyszíni tárolószolgáltatások
+- Fejlesztési környezetek
 - IoT-eszközök
 
-A Docker-alapú indexelése lemezképek az összes szükséges függőségek Előrejelzés létrehozásához szükséges. 
+A Docker-alapú tárolóalapú lemezképek olyan önálló az előrejelzések létrehozásához szükséges az összes szükséges függőséget. 
 
-## <a name="deploy-docker-container-images"></a>Docker-tároló lemezképek központi telepítése 
-Az Azure Machine Learning modell Management használatával telepíthet egy parancs képeket tároló Docker-alapú ML számítási környezet kezeli az Azure Tárolószolgáltatás számára. A központi telepítéseket jönnek létre az előtér-kiszolgálót, amely a következő szolgáltatásokat biztosítja:
+## <a name="deploy-docker-container-images"></a>Docker-tárolórendszerképekhez üzembe helyezése 
+Az Azure Machine Learning Modellkezelésben az ML COMPUTE számítási környezet által felügyelt Azure Container Service Docker-alapú tárolólemezképeket egyetlen paranccsal telepítheti. Ezeket az üzemelő példányokat jönnek létre az előtér-kiszolgálót, amely a következő szolgáltatásokat biztosítja:
 
-- Kis késleltetésű előrejelzéseket léptékű
+- Közel valós idejű előrejelzéseket ipari méretekben
 - Terheléselosztás
-- Az automatikus skálázás ML-végpontok
-- API-kulcs engedélyezési
-- API swagger-dokumentum
+- Automatikus skálázás Machine Learning-végpont
+- Hitelesítési API
+- API swagger-dokumentumok
 
-A központi telepítés méretezés és telemetriai adatokat a következő beállítások segítségével szabályozhatja:
+Szabályozhatja, hogy a központi telepítési méretezés és a telemetriai adatok segítségével a következő beállításokat:
 
-- Rendszer-naplózás és a modell telemetriai minden webes szolgáltatási szint. Ha engedélyezve van, az összes stdout napló átvitt [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Modell telemetriai archiválja a rendszer az Ön által biztosított storage. 
-- Automatikus méretezése és a feldolgozási korlátok. Ezek a beállítások automatikusan az üzembe helyezett tárolók alapján a meglévő fürt a terhelés számának növeléséhez. Akkor is szabályozhatja, az átviteli sebesség és előrejelzés késés konzisztenciáját.
+- Rendszer-naplózási és modell telemetriai minden webes szolgáltatási szint. Ha engedélyezve van, minden stdout-naplókat a rendszer streamként továbbítja [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Modell telemetriai adatokat archiválja a rendszer az Ön által megadott storage-ban. 
+- Automatikus méretezést és egyidejűségi korlátok. Ezek a beállítások a meglévő fürt a terhelés alapján üzembe helyezett tárolók száma automatikusan növelhető. Akkor is szabályozhatja az átviteli sebesség és a konzisztencia előrejelzési késés.
 
 ## <a name="consumption"></a>Használat 
-Az Azure Machine Learning modell Management REST API-t a swagger-dokumentum együtt telepített modell hoz létre. Hívása a REST API-kat API-val kulcs, és az előrejelzés lekérni a sor üzleti alkalmazások részeként bemenetek modell által telepített modellek is felhasználhatnak. A mintakód érhető el a Githubon Java, nyelven [Python](https://github.com/CortanaAnalyticsGallery-Int/digit-recognition-cnn-tf/blob/master/client.py), és a C# REST API-k hívásakor. Az Azure Machine Learning modell felügyeleti parancssori felület segítségével egyszerűen a REST API-khoz. Az API-k használata curl használatával, vagy egyetlen parancssori paranccsal, a swagger-kompatibilis alkalmazások is felhasználhatnak. 
+Az Azure Machine Learning Modellkezelési REST API-t hoz létre az üzembe helyezett modelljét, és a swagger-dokumentumok. Ezzel a hívással a REST API-k API-val kulcsra, és modellezheti a bemeneti adatok az előrejelzés beolvasása a sor üzleti alkalmazások részeként üzembe helyezett modellnél használhatnak fel. A mintakód érhető el a GitHub, a Java nyelven [Python](https://github.com/CortanaAnalyticsGallery-Int/digit-recognition-cnn-tf/blob/master/client.py), és a C# REST API-k meghívására szolgáló. Az Azure Machine Learning minta felügyeleti parancssori ezek REST API-khoz egy egyszerűbb megoldást kínál. Az API-k egyetlen parancssori paranccsal, egy swagger-kompatibilis alkalmazások vagy a curl használatával használhatja fel. 
 
 ## <a name="retraining"></a>Átképezési 
-Az Azure Machine Learning modell Management biztosít, amelyek segítségével a modellek újratanítása API-k. Az API-k segítségével is telepítéseit frissíteni a modell frissített verzióit. A adatelemezési munkafolyamatot részeként akkor hozza létre újra a modellt a kísérleti környezetben. Ezután a modell regisztrálása modell kezelése, és frissítse a meglévő telepítések. Frissítések megtörténik egy frissítési CLI parancs használatával. A frissítés parancs frissíti a meglévő telepítések API URL-CÍMÉT vagy a kulcs módosítása nélkül. A modell fel az alkalmazások továbbra is a kód módosítása nélkül, és új modell használatával jobb előrejelzéseket lekérésének elindítása.
+Az Azure Machine Learning Modellkezelés biztosít, amellyel a modellek újratanítása API-k. Az API-k segítségével is a modell frissített verzióval frissíti a meglévő telepítések. Az adatelemzési munkafolyamathoz részeként, hozza létre újra a modellt a Kísérletezési környezetében. Ezután regisztrálja a modellt a Modellkezelés, és frissítse a meglévő telepítések. Frissítések történik, egyetlen frissítési CLI-paranccsal. Az UPDATE parancs frissíti a meglévő telepítések az API URL-cím vagy a kulcs módosítása nélkül. A modell felhasználása az alkalmazások továbbra is minden olyan kód módosítása nélkül működnek, és megkezdődik az új modell használatával jobb javaslatok érdekében.
 
-Az alábbi ábrán a teljes munkafolyamat ezekről a fogalmakról leíró rögzített:
+Az alábbi ábrán a kész munkafolyamat ezeket a fogalmakat ismertető rögzített:
 
 ![](media/model-management-overview/modelmanagementworkflow.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK) 
-- **Milyen adatok típusok támogatottak? Is NumPy tömbök is át közvetlenül webszolgáltatás bemeneteként?**
+- **Milyen adatok típusok támogatottak? Adhat NumPy tömbök is át bemenetként közvetlenül web Service?**
 
-   Ha meg van adva a következő sémafájl generate_schema SDK használatával létrehozott, majd átadhatók NumPy és/vagy Pandas DF. Bármilyen szerializálható JSON-bemenet is átadhatja. Kép átadhatók, valamint a bináris kódolású karakterlánc.
+   Ha meg van adva a sémafájl generate_schema SDK használatával létrehozott, majd adhat át NumPy és/vagy Pandas DF. Is átadhat a szerializálható JSON bemenetet. Kép, valamint bináris kódolású karakterláncként adhat át.
 
-- **A webszolgáltatás támogatja a több bemeneti adatokat vagy más bemeneti adatok elemzése?**
+- **Nem a web service támogatja a több bemenet és elemezni a különböző adatbevitelek?**
 
-   Igen, több bemeneti szótár, egy JSON-kérelmi csomagolt is igénybe vehet. Minden egyes bemeneti egyedi szótárkulcs volna meg.
+   Igen, több bemenet egy szótár, egy JSON-kérelmi csomagolva is igénybe vehet. Minden egyes bemenet lenne felel meg egyetlen egyedi szótár kulcsot.
 
-- **A hívás a webes kérelem által aktivált szolgáltatás blokkoló hívás vagy egy aszinkron hívás?**
+- **A hívás a webes kérelem által aktivált szolgáltatás blokkoló hívást vagy egy aszinkron hívás?**
 
-   Ha a valós idejű funkcióval a CLI-t vagy API-t részeként szolgáltatás lett létrehozva, akkor célszerű blokkolja/aszinkron hívás. Azt kellene lennie a valós idejű gyors. Bár az ügyféloldalon hívása aszinkron HTTP-könyvtár használatával elkerülése érdekében az ügyféloldali szál blokkolja.
+   Szolgáltatás valós idejű lehetőséggel a parancssori felület vagy az API részeként jött létre, majd, hogy blokkolja a/synchronního volání. Valós idejű gyors is várható. Bár az ügyfél oldalán meg lehet hívni az aszinkron HTTP-kódtár használatával elkerülése érdekében a szál blokkolása az ügyfél.
 
-- **Hány kérésnek a webszolgáltatás egyidejűleg kezelheti?**
+- **Hány kérésnek is a web service egyidejűleg kezelni?**
 
-   A fürt és a webes szolgáltatás skála függ. Ki lehet terjeszteni a replikák 100 x szolgáltatást, és ezután is képes kezelni hány kérésnek egyidejűleg. Beállíthatja az egyidejű kérések maximális száma replika szolgáltatás átviteli sebesség növelése.
+   Attól függ, a fürt és a web service skálázást. Ki lehet terjeszteni a 100-szor replikák szolgáltatást, és ezután képes kezelni sok kérelem egyidejűleg. Beállíthatja az egyidejű kérések maximális replikánként szolgáltatás átviteli sebesség növelése érdekében.
 
-- **Hány kérésnek a webszolgáltatás várólistán tárolható?**
+- **Hány kérésnek is a web service várólistára helyezését?**
 
-   Is konfigurálható. Alapértelmezés szerint 10 ~ / replikához értékűre van állítva, de akkor is növelése vagy csökkentése, az alkalmazás igényeinek megfelelően. Általában azt növelése sorba állított kérelmek száma növeli a szolgáltatás átviteli sebességét, de lehetővé teszi a késések ami még rosszabb sebességnél nagyobb százalékos érték. És konzisztens a késések fordulnak elő, ha szeretné állítani a queuing alacsony értékre (1-5), az átviteli sebesség kezelésére replikák számának növeléséhez. Engedélyezheti az automatikus skálázás értékének replikákat száma alapján automatikusan legyen a terhelés. 
+   A nem konfigurálható. Alapértelmezés szerint egyetlen replikánként ~ 10 értékre van állítva, de Ön is növelheti/csökkentheti, az alkalmazás igényeinek megfelelően. Általában, növekvő sorba állított kérelmek száma növeli a szolgáltatás átviteli sebesség, de lehetővé teszi az késleltetések még rosszabb, magasabb percentilisei. És konzisztens az késleltetések, előfordulhat, hogy beállítja az üzenetsor-kezelési alacsony értékre (1-5), és az átviteli sebesség kezelésére replikák számának növelése. Az automatikus skálázás ahhoz, hogy a módosításával replikák száma alapján automatikusan terhelés is bekapcsolhatja. 
 
-- **Számítógép vagy a fürt használható több webszolgáltatás-végpontok?**
+- **Ugyanazon fürt vagy gép használható több webszolgáltatás-végpontok?**
 
-   Abszolút. A szolgáltatások vagy végpontok 100 x futtathatja ugyanazon a fürtön. 
+   Abszolút. 100-szor szolgáltatások/végpontok futtathatja ugyanazon a fürtön. 
 
 ## <a name="next-steps"></a>További lépések
-Első lépések a modell kezelése, lásd: [konfigurálásához modellben felügyeleti](deployment-setup-configuration.md).
+Első lépések a Modellkezelés, lásd: [Modellkezelési konfigurálása](deployment-setup-configuration.md).

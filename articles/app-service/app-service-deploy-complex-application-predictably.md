@@ -1,6 +1,6 @@
 ---
-title: Kiosztását és telepítését mikroszolgáltatások kiszámítható módon tudja az Azure-ban
-description: Útmutató az Azure App Service egy egységként és kiszámítható módon JSON erőforrás csoport sablonok és a PowerShell-parancsprogramok használatával mikroszolgáltatások álló alkalmazás központi telepítése.
+title: Létrehozhatja és üzembe helyezheti a mikroszolgáltatások kiszámítható módon az Azure-ban
+description: Ismerje meg, hogyan helyezhet üzembe egy alkalmazás mikroszolgáltatásokból álló, az Azure App Service egyetlen egységként, és a egy erőforráscsoport-sablonok JSON és a PowerShell-parancsfájlok használatával kiszámítható módon.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -14,259 +14,259 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 3719e037f1564411a8f94d1ca962ba1ef6b5d435
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 884edbf56fbf67e4ee71e0832f8924a3747994c9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23837098"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42054284"
 ---
-# <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Kiosztását és telepítését mikroszolgáltatások kiszámítható módon tudja az Azure-ban
-Ez az oktatóanyag bemutatja, hogyan kiosztását és telepítését, az alkalmazás összetevői [mikroszolgáltatások](https://en.wikipedia.org/wiki/Microservices) a [Azure App Service](/services/app-service/) egyetlen egységként és kiszámítható módon JSON erőforrás csoport sablonok és a PowerShell-parancsfájlok használatával. 
+# <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Létrehozhatja és üzembe helyezheti a mikroszolgáltatások kiszámítható módon az Azure-ban
+Ez az oktatóanyag bemutatja, hogyan létrehozása és üzembe helyezése egy alkalmazás összetevői [mikroszolgáltatások](https://en.wikipedia.org/wiki/Microservices) a [Azure App Service](https://azure.microsoft.com/services/app-service/) egyetlen egységként, és a egy erőforráscsoport-sablonok JSON használatával kiszámítható módon és PowerShell-parancsprogramok. 
 
-Kiépítés és magas szintű alkalmazásokat, amelyek álló magas le mikroszolgáltatások, ismételhetőség és kiszámíthatóságot fontosságúak sikeres. [Az Azure App Service](/services/app-service/) lehetővé teszi a webalkalmazások, mobilalkalmazások, az API apps és a logic apps tartalmazó mikroszolgáltatások létrehozására. [Az Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) lehetővé teszi a mikroszolgáltatások kezelése egységként, például az adatbázis erőforrás-függőségek együtt, és a forrás-vezérlési beállításokkal. Most ilyen alkalmazás JSON sablonok és egyszerű PowerShell-parancsfájlok használatával is telepítheti. 
+Kiépítés, és üzembe helyezésekor épülnek fel, magas leválasztott nagy méretű alkalmazások mikroszolgáltatások, ismételhetőség és kiszámíthatóságot fontosságúak sikeres. [Az Azure App Service](https://azure.microsoft.com/services/app-service/) hozhatók létre, amelyek tartalmazzák a webalkalmazások, mobilalkalmazások, API apps és logic apps. [Az Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy mindegyik mikroszolgáltatás kezelését olyan adategység, például az adatbázis erőforrás-függőségek együtt, és a forrás-ellenőrzési beállítások. Most ilyen alkalmazás JSON-sablonok és egyszerű PowerShell-parancsfájlok használatával is telepítheti. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="what-you-will-do"></a>Mit fog
-Az oktatóanyagban a, amely tartalmazza az alkalmazás központi telepítése:
+Az oktatóanyagban, amely tartalmazza az alkalmazás telepíti:
 
-* Két webes alkalmazások (pl. két mikroszolgáltatások)
-* A háttérrendszer SQL-adatbázis
-* Alkalmazásbeállítások kapcsolati karakterláncok és adatforrás-vezérlő
-* Az Application insights, riasztások, automatikus skálázás beállításai
+* Két webes alkalmazások (pl. két mikroszolgáltatás-alapú)
+* A háttér SQL-adatbázis
+* Alkalmazásbeállítások, kapcsolati karakterláncok és verziókövetés
+* Az Application insights, riasztások, az automatikus skálázási beállítások
 
-## <a name="tools-you-will-use"></a>Eszközök fogja használni
-Ebben az oktatóanyagban a következő eszközöket fogja használni. Mivel ez nem az eszközök átfogó leírást, fogom igazodnak-e a végpont forgatókönyv, és csak Önnek egy rövid bevezető minden, és hol találhatók további információk. 
+## <a name="tools-you-will-use"></a>Ezzel a eszközök
+Ebben az oktatóanyagban a következő eszközöket fogja használni. Nem érhető el az eszközök átfogó leírást, mivel fogom elgondolkodni a teljes körű forgatókönyvre, és csak adhat meg egy rövid bevezető, és ha talál további tájékoztatást. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Az Azure Resource Manager-sablonokat (JSON)
-Minden alkalommal, amikor a webalkalmazás létrehozása az Azure App Service-ben, például Azure Resource Manager használ a JSON-sablon létrehozásához a teljes erőforráscsoport az összetevő-erőforrások. Egy összetett sablon, a [Azure piactér](/marketplace) hasonlóan a [méretezhető WordPress](/marketplace/partners/wordpress/scalablewordpress/) app lehetnek a MySQL-adatbázis, storage-fiókok, az App Service-csomag, a webes alkalmazás maga, a riasztási szabályok, beállítások, automatikus skálázási beállításokat, és több, és ezek a sablonok Powershellen keresztül rendelkezésre álló. További információkért töltse le és használja ezeket a sablonokat: [az Azure PowerShell használata Azure Resource Managerrel](../powershell-azure-resource-manager.md).
+Minden alkalommal, amikor az Azure App Service egy webalkalmazást hoz létre, például az Azure Resource Manager használja egy JSON-sablon létrehozásához teljes erőforráscsoportot összetevő erőforrásokat. A komplex sablonjának a [Azure Marketplace-en](/marketplace) hasonlóan a [méretezhető WordPress](/marketplace/partners/wordpress/scalablewordpress/) alkalmazása magába foglalhatja a MySQL-adatbázishoz, tárfiókok, az App Service-csomag, a webes alkalmazás saját maga, riasztási szabályok, Alkalmazásbeállítások, az automatikus méretezési beállítások, és további, és minden ezek a sablonok Powershellen keresztül, rendelkezésére állnak. Töltse le és használja ezeket a sablonokat a további információkért lásd: [az Azure PowerShell az Azure Resource Manager](../powershell-azure-resource-manager.md).
 
-Az Azure Resource Manager-sablonok további információkért lásd: [Azure Resource Manager sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
+Az Azure Resource Manager-sablonokat a további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
 
-### <a name="azure-sdk-26-for-visual-studio"></a>Az Azure SDK 2.6 Visual Studio
-A legújabb SDK tartalmazza a Resource Manager sablon támogatja a JSON-szerkesztőben fejlesztései. Ennek használatával gyorsan hozzon létre egy erőforrás-sablon a teljesen, vagy nyisson meg egy meglévő JSON-sablon (például egy gyűjtemény letöltött sablon) módosításra, a paraméterek fájl feltöltéséhez, és az erőforráscsoport közvetlenül egy Azure-erőforráscsoport megoldás még akkor is telepíteni.
+### <a name="azure-sdk-26-for-visual-studio"></a>A Visual Studióhoz készült Azure SDK 2.6-os
+A legújabb SDK és a Resource Manager sablon támogatja a JSON-szerkesztőben tartalmaz. Ennek használatával gyorsan hozzon létre egy erőforráscsoport sablonjához teljesen új, vagy nyisson meg egy meglévő JSON-sablon (például egy letöltött katalógus sablonjának) módosítását, töltse ki a paramétereket tartalmazó fájlt, és az erőforráscsoport, közvetlenül az Azure-erőforrás is üzembe Csoport megoldás.
 
-További információkért lásd: [Azure SDK 2.6 a Visual Studio](https://azure.microsoft.com/blog/2015/04/29/announcing-the-azure-sdk-2-6-for-net/).
+További információkért lásd: [Visual Studióhoz készült Azure SDK 2.6](https://azure.microsoft.com/blog/2015/04/29/announcing-the-azure-sdk-2-6-for-net/).
 
-### <a name="azure-powershell-080-or-later"></a>Az Azure PowerShell 0.8.0 vagy újabb verzió
-0.8.0 verziójától kezdve az Azure PowerShell telepítése az Azure Resource Manager modul mellett az Azure-moduljának tartalmazza. Ez a modul parancsfájllal történő lehetővé teszi az erőforráscsoportok telepítését.
+### <a name="azure-powershell-080-or-later"></a>Az Azure PowerShell 0.8.0 vagy újabb
+Kezdve 0.8.0, az Azure PowerShell telepítése mellett az Azure-modul az Azure Resource Manager modult tartalmaz. Ez a modul lehetővé teszi az erőforráscsoportok üzembe helyezési parancsfájlt.
 
-További információkért lásd: [az Azure PowerShell használata Azure Resource Managerrel](../powershell-azure-resource-manager.md)
+További információkért lásd: [az Azure PowerShell az Azure Resource Managerrel](../powershell-azure-resource-manager.md)
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
-Ez [preview eszköz](https://resources.azure.com) lehetővé teszi a JSON-definíciókat az előfizetését és az egyes erőforrások erőforráscsoportok vizsgálatát. Az eszköz szerkessze a JSON-definíciók egy erőforrást, az egész hierarchiát erőforrások törlése és létrehozni az új erőforrásokat.  Ez az eszköz könnyen elérhető információkat nagyon hasznos sablon létrehozásához, mert jeleníti meg, milyen tulajdonságok, meg kell adnia egy adott típusú erőforrás, a helyes az értékük, stb. Az erőforráscsoport a is létrehozhat a [Azure Portal](https://portal.azure.com/), majd vizsgálja meg a JSON-definíciói segítséget nyújtanak az erőforráscsoport templatize explorer eszközben.
+Ez [előzetes eszköz](https://resources.azure.com) lehet felfedezni az előfizetés és az egyedi erőforrásokat az erőforráscsoportok JSON-definíciói. Az eszközben szerkesztheti egy erőforrást a JSON-definíciók, az egész hierarchiát az erőforrások törlése és új erőforrásokat hozhat létre.  Ez az eszköz azonnal elérhető információk nagyon hasznos a sablon létrehozásához, mert jeleníti meg, milyen tulajdonságok, be kell állítani egy adott típusú erőforrás, a helyes értékeket, stb. Az erőforráscsoportban is létrehozható a [az Azure Portal](https://portal.azure.com/), majd vizsgálja meg annak a explorer eszköz segítségével sablonok kialakítása az erőforráscsoport a JSON-definíciói.
 
-### <a name="deploy-to-azure-button"></a>Telepítse az Azure gomb
-Ha GitHub a verziókövetési rendszerrel használja, akkor lehet helyezni egy [az Azure gomb telepítéséhez](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) azokat a fontos. MD, amely lehetővé teszi a kulcsrakész központi telepítés felhasználói felület az Azure-bA. Ehhez minden egyszerű webalkalmazás, amíg egy teljes erőforráscsoport telepítése egy azuredeploy.json fájlt az adattár gyökérkönyvtárában elhelyezett engedélyezheti bővítheti. A JSON-fájl, amely tartalmazza az erőforrás-csoport sablon, használják az Azure gomb telepítéséhez az erőforráscsoport létrehozásához. Egy vonatkozó példáért lásd: a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) mintát, amely ebben az oktatóanyagban használhatja.
+### <a name="deploy-to-azure-button"></a>Deploy to Azure gombbal
+Ha GitHub a verziókezelő használja, akkor lehet helyezni egy [Deploy to Azure gombbal](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) azokat az információs fájlban OLVASHATÓ. MD, amely lehetővé teszi egy kulcsrakész üzembe helyezését az Azure-bA felhasználói felület. Ez minden olyan egyszerű webalkalmazás teheti meg, amíg ezt a lehetőséget egy teljes erőforráscsoport üzembe az azuredeploy.json fájlt az adattár gyökérkönyvtárában való központi telepítéséhez, bővítheti. A JSON-fájlt, az erőforráscsoport sablonjának tartalmaz, amelyek használják az üzembe helyezés az Azure-ban gombra az erőforráscsoport létrehozásához. Egy vonatkozó példáért tekintse meg a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) minta, amely ebben az oktatóanyagban használhatja.
 
-## <a name="get-the-sample-resource-group-template"></a>A minta erőforrás csoport sablon
-Most folytassuk a jobb oldali rá.
+## <a name="get-the-sample-resource-group-template"></a>A minta erőforráscsoport sablonjának beolvasása
+Tehát most folytassuk a megfelelő rá.
 
-1. Keresse meg a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) App Service-mintát.
-2. A readme.md, kattintson **az Azure telepítéséhez**.
-3. Meg van-e a [telepítése-a-azure](https://deploy.azure.com) helyről, és kéri a felhasználótól, üzembe helyezéshez megadott paraméterek. Figyelje meg, hogy a mezők meg a tárház nevét és az egyes véletlenszerű karakterláncokat feltöltött. Ha azt szeretné, de a csak dolog, meg kell adni az SQL Server-rendszergazdai bejelentkezés és a jelszót, majd kattintson a mezők módosíthatja **következő**.
+1. Keresse meg a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) minta App Service-ben.
+2. A readme.md, kattintson **üzembe helyezés az Azure**.
+3. Ekkor átkerül a [üzembe helyezése – azure](https://deploy.azure.com) webhelyről, és ismételt üzembe helyezéshez megadott paraméterek beviteli. Figyelje meg, hogy a mezők fel van töltve a tárház nevének és a egy véletlenszerű karakterlánc az Ön számára. Ha azt szeretné, de a dolog csak meg kell adnia az SQL Server-rendszergazdai bejelentkezés és a jelszót, majd kattintson az összes mezőt módosíthatja **tovább**.
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
-4. Ezután kattintson **telepítés** a telepítés megkezdéséhez. Ha a folyamat befejezését fut, kattintson a http://todoapp*XXXX*. azurewebsites.net hivatkozás a telepített alkalmazás tallózással. 
+4. Ezután kattintson **telepítés** az üzembe helyezés elindításához. Ha a folyamat befejezéséig fut, kattintson a http://todoapp *XXXX*. azurewebsites.net hivatkozásra a telepített alkalmazás tallózással. 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
-   A felhasználói felületen szeretné kissé lassú lehet, amikor először megnyitja a, mert az alkalmazások csak indítása, de meggyőzni a felhasználót saját kezűleg, hogy a rendszer egy teljesen működőképes alkalmazást.
-5. A telepítés lapon kattintson a **kezelése** hivatkozásra kattintva megtekintheti az új alkalmazás az Azure portálon.
-6. Az a **Essentials** legördülő menüben kattintson az erőforrás-csoport hivatkozásra. Ügyeljen arra is, hogy a webalkalmazás már kapcsolódik a GitHub-tárházban alatt **külső projekt**. 
+   A felhasználói felület lenne először böngészése során, mivel az alkalmazások most használja először kell egy kicsit lassan, de meggyőzni a felhasználót saját magának, hogy-e egy teljesen működőképes alkalmazást.
+5. A telepítés lapon kattintson a **kezelés** hivatkozásra kattintva megtekintheti az új alkalmazás az Azure Portalon.
+6. Az a **Essentials** legördülő menüben kattintson az erőforrás-csoport hivatkozásra. Fontos megjegyezni, hogy a webalkalmazás már csatlakoztatva van a GitHub-adattárra mutató **külső projekt**. 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
-7. Az erőforráscsoport panelen jegyezze fel, hogy nincsenek már két webes alkalmazások és az erőforráscsoport egy SQL-adatbázis.
+7. Az erőforráscsoport panelen jegyezze fel, hogy már van két web apps és a egy SQL Database az erőforráscsoportban.
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
 
-Minden, ami az imént látott néhány rövid percben egy teljes körűen rendszerbe állított két-mikroszolgáltatási alkalmazást, az összes összetevőt, függőségek, beállítások, adatbázis, és folyamatos közzétételét, a beállítási egy automatizált vezénylési az Azure Resource Manager. Összes Ez két dolgot végezhető el:
+Mindent, ami az imént látott néhány rövid perc alatt egy teljes mértékben üzembe helyezett két-mikroszolgáltatás-alkalmazás, az összes összetevői, függőségek, beállítások, adatbázis, és folyamatos közzétételre, állíthatja be egy automatizált vezénylési az Azure Resource Manager. Mind a két dolgokat végezhető el:
 
-* Az Azure gomb telepítéséhez
-* a tárház gyökérkönyvtárában azuredeploy.JSON
+* Üzembe helyezés az Azure-ban gombra
+* az adattár gyökérkönyvtárában azuredeploy.JSON
 
-Ez az alkalmazás telepítése több tíz, száz vagy ezer hányszor és minden alkalommal pontos megegyező konfigurációval rendelkezik. Az ismételhetőség és a hátránya kiszámíthatóságot lehetővé teszi nagy méretű alkalmazások központi telepítése az egyszerű és az vetett bizalmat.
+Ez az alkalmazás telepíthet több tíz, száz vagy ezer alkalommal, és pontosan ugyanaz a konfiguráció minden alkalommal. Az ismételhetőség és a háttérrendszeren, ez a megközelítés lehetővé teszi nagy léptékben méretezhető alkalmazások egyszerű és megbízható központi telepítése.
 
 ## <a name="examine-or-edit-azuredeployjson"></a>Vizsgálja meg (vagy szerkesztése) AZUREDEPLOY. JSON-BAN
-Most nézzük hogyan a GitHub-tárházban be lett állítva. Az Azure .NET SDK-ban a JSON-szerkesztő használ, ha még nem telepítette a [Azure .NET SDK 2.6](https://azure.microsoft.com/downloads/), most megtenni.
+Most nézzük, hogyan a GitHub-tárház be lett állítva. Az Azure .NET SDK-ban a JSON-szerkesztőt használni, ha még nem telepítette [Azure .NET SDK 2.6-os](https://azure.microsoft.com/downloads/), most megtenni.
 
-1. Klónozott a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) tárházat a kedvenc git eszköz használatával. Az alábbi képernyőképen I vagyok ezzel a csapat Explorerben a Visual Studio 2013.
+1. Klónozás a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) tárház a kedvenc git-eszközt használ. Az alábbi képernyőképen ezt ennek a Team Explorerben a Visual Studio 2013.
    
    ![](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
-2. Az adattár gyökérkönyvtárában nyissa meg a Visual Studio azuredeploy.json. Ha nem látható a JSON-vázlat ablak, Azure .NET SDK-t telepíteni szeretné.
+2. Az adattár gyökérkönyvtárában nyissa meg az azuredeploy.json a Visual Studióban. Ha nem látja a JSON-vázlat ablak, Azure .NET SDK telepítése szeretné.
    
    ![](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
 
-Nem fogom JSON formátumban minden részletét leírására, de a [több erőforrások](#resources) szakasz az erőforrás csoport sablon nyelv tanulási mutató hivatkozásokat tartalmaz. Itt csak kattintok mutatjuk be, melyek segíthetnek az érdekes szolgáltatások érdekében, hogy saját egyéni sablon az alkalmazások telepítésének első lépései.
+Nem fogom írja le a JSON-formátumban, minden részletét, de a [további erőforrások](#resources) szakasz csoport sablon erőforrásnyelv tanulási hivatkozásokkal rendelkezik. Itt most elindítok mutatni, az érdekes funkciók, amelyek segítségével első lépései a saját, egyéni sablont az alkalmazás üzembe helyezése során.
 
 ### <a name="parameters"></a>Paraméterek
-Tekintse meg a Paraméterek szakaszban, hogy ezek a paraméterek a legtöbb Mi a **az Azure telepítéséhez** gomb kéri a felhasználótól. A hely mögött a **az Azure telepítéséhez** gomb tölti fel a bemeneti felhasználói felület azuredeploy.json definiált paraméterek használatával. Ezek a paraméterek kifejezés egyaránt használatban az erőforrás-definíciókban, például erőforrásnevek, tulajdonságértékek stb.
+Vessen egy pillantást a Paraméterek szakaszban megtekintheti, hogy ezeket a paramétereket a legtöbb, mi a **üzembe helyezés az Azure** gomb felszólítja, hogy adjon meg. A hely mögött a **üzembe helyezés az Azure** gomb tölti fel a bemeneti felhasználói felület azuredeploy.json megadott paraméterek használatával. Ezek a paraméterek előfordulnak az erőforrás-definíciókban, például az erőforrás nevét, a tulajdonságértékek, stb.
 
-### <a name="resources"></a>Erőforrások
-Az erőforrások csomópontjában tekintheti meg, hogy 4 legfelső szintű erőforrások vannak megadva, például egy SQL Server-példányt, az App Service-csomag és két webalkalmazások. 
+### <a name="resources"></a>További források
+Az erőforrások csomóponthoz láthatja, hogy 4 legfelső szintű erőforrások meg vannak határozva, például egy SQL Server-példány, egy App Service-csomagot és két webalkalmazást. 
 
 #### <a name="app-service-plan"></a>App Service-csomag
-Kezdjük a JSON egyszerű gyökér szintű az erőforráshoz. A JSON-vázlat, kattintson az App Service-csomag nevű **[hostingPlanName]** jelölje ki a megfelelő JSON-kódot. 
+Kezdjük a JSON egyszerű gyökér szintű erőforrás. Kattintson a JSON-vázlat nevű App Service-csomag **[hostingPlanName]** jelölje ki a megfelelő JSON-kódot. 
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
 
-Vegye figyelembe, hogy a `type` elem meghatározza azt a karakterláncot, az App Service-csomagot (meghívta a kiszolgálófarm egy hosszú, hosszú idő telt el), és más elemek és tulajdonságok kitölti a JSON-fájlban definiált paraméterek használatával, és ehhez az erőforráshoz nincsenek beágyazott erőforrásai.
+Vegye figyelembe, hogy a `type` elem karakterláncot határozza meg az App Service-csomag (azt byla volána kiszolgálófarmot ezelőtt hosszú, hosszú idő), és más elemeket és a Tulajdonságok ki vannak töltve a JSON-fájlban definiált paraméterek használatával, és az erőforrás nem rendelkezik ilyennel a beágyazott az erőforrásokat.
 
 > [!NOTE]
-> Azt is fontos megjegyezni, hogy értékének `apiVersion` közli az Azure melyik verzióját a REST API-t használja a JSON az erőforrás-definícióban, és hatással lehet a módját a erőforrás kell formázni belül a `{}`. 
+> Figyelje meg azt is, amelyek értékét `apiVersion` jelzi az Azure melyik verzióját a REST API-t használja a JSON-erőforrás-definícióban, és hatással lehet a hogyan az erőforrás kell formázni belül a `{}`. 
 > 
 > 
 
 #### <a name="sql-server"></a>SQL Server
-Ezután kattintson az SQL Server erőforrás-nevű **SQLServer** a JSON-Vázlat.
+Ezután kattintson az SQL Server-erőforrásnév **SQLServer** a JSON-Vázlat.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
 
-A kiemelt JSON-kódot kapcsolatos megjegyzések:
+Vegye figyelembe a következő információk a kiemelt JSON-kódot:
 
-* Paraméterek használata azt biztosítja, hogy a létrehozott erőforrások neve, konfigurálható úgy, hogy egymással konzisztenssé teszi őket.
-* Az SQL Server erőforrás két beágyazott erőforrások, akkor mindegyik rendelkezik-e meg más értéket `type`.
-* A beágyazott erőforrások belül `“resources”: […]`, ahol definiálva vannak az adatbázis és a tűzfalszabályokat, hogy egy `dependsOn` elem, amely meghatározza az erőforrás-azonosítója a gyökér szintű SQLServer erőforrás. Ez alapján Azure Resource Manager "ehhez az erőforráshoz, amely már léteznie kell, más erőforrás; létrehozása előtt Ha más erőforrás van definiálva a sablonban, majd hozza létre, hogy egy először".
+* Paraméterek használatával biztosítja a létrehozott erőforrásokat nevű és konfigurálni úgy, hogy egymással konzisztenssé teszi őket.
+* Az SQL Server erőforrás rendelkezik két beágyazott erőforrások, mindegyiknek eltérő értékeket `type`.
+* A beágyazott erőforrások belül `“resources”: […]`, ahol definiálva vannak az adatbázisban és a tűzfalszabályokat, rendelkezik egy `dependsOn` elem, amely megadja a gyökér szintű SQL Server erőforrás erőforrás-Azonosítóját. Ez közli az Azure Resource Manager "ennek az erőforrásnak, amely a többi erőforrás már léteznie kell; létrehozása előtt és ha a többi erőforrás van definiálva a sablonban, majd hozza létre, hogy egy először".
   
   > [!NOTE]
-  > Részletes információk használatáról a `resourceId()` működik, lásd: [Azure Resource Manager Sablonfüggvényei](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid).
+  > További információk a használatát a `resourceId()` működik, tekintse meg [Azure Resource Manager-Sablonfüggvények](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid).
   > 
   > 
-* A hatását, hogy a `dependsOn` elem, hogy Azure Resource Manager tudhatja, mely erőforrásokat párhuzamosan lehet létrehozni és erőforrások egymás után létre kell hozni. 
+* A hatása a `dependsOn` elem, hogy az Azure Resource Manager tudhatja, mely erőforrásokat párhuzamosan hozhatja létre, és mely erőforrások egymás után létre kell hozni. 
 
 #### <a name="web-app"></a>Webalkalmazás
-Most tegyük lépjen tovább a tényleges webes alkalmazásokat, amelyek bonyolultabb. Kattintson a [variables('apiSiteName')] webalkalmazás a JSON-vázlat jelölje ki a JSON-kódot. Láthatja, hogy dolgot első sokkal ennél is érdekesebb megoldást. Erre a célra I fog kommunikálni egyenként szolgáltatásairól:
+Most már továbbvezet a tényleges web apps, amelyek bonyolultabb. Kattintson a [variables('apiSiteName')] webalkalmazás a JSON-vázlat jelölje ki a JSON-kódot. Láthatja, hogy dolgot első sokkal több érdekes. Erre a célra a szolgáltatások egyenként fogok beszélni:
 
 ##### <a name="root-resource"></a>Legfelső szintű erőforrás
-A webalkalmazás két különböző erőforrások függ. Ez azt jelenti, hogy az Azure Resource Manager a webalkalmazás létrehozása, csak az App Service-csomag, mind az SQL Server-példány létrehozása után.
+A webalkalmazás két különböző erőforrások függ. Ez azt jelenti, hogy az Azure Resource Manager a WebApp létrehozásához, csak az App Service-csomag és az SQL Server-példány létrehozása után.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
 ##### <a name="app-settings"></a>Alkalmazásbeállítások
-Az alkalmazás beállításait is meg van határozva egy beágyazott erőforrásként.
+A beállítások egy beágyazott erőforrást is vannak meghatározva.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-Az a `properties` eleme `config/appsettings`, két Alkalmazásbeállítások formátumban van `“<name>” : “<value>”`.
+Az a `properties` eleme `config/appsettings`, a következő formátumban van két alkalmazás beállítását `“<name>” : “<value>”`.
 
-* `PROJECT`van egy [KUDU beállítás](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) , amely közli az Azure-telepítés mely projektek több projektet a Visual Studio-megoldásban. I bemutatja, hogyan később verziókezelő van konfigurálva, de mivel a ToDoApp kód több projektet a Visual Studio-megoldásban, igazolnia kell-e ezt a beállítást.
-* `clientUrl`rendszer egyszerűen egy beállítás, amely az alkalmazáskódban alkalmazás használ.
+* `PROJECT` van egy [KUDU beállítás](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) , amely közli, az Azure-telepítés használata több projektet a Visual Studio-megoldásban projektet. Bemutatom majd, hogyan később verziókövetés van konfigurálva, de mivel a ToDoApp kód több projektet a Visual Studio-megoldásban, ezt a beállítást kell.
+* `clientUrl` az egyszerűen egy alkalmazás, beállítás, amely az alkalmazáskód használja.
 
-##### <a name="connection-strings"></a>Kapcsolati karakterláncok
+##### <a name="connection-strings"></a>Kapcsolati sztringek
 A kapcsolati karakterláncok egy beágyazott erőforrást is vannak meghatározva.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-Az a `properties` eleme `config/connectionstrings`, minden egyes kapcsolati karakterláncot is nevezünk név: érték pár, meghatározott formátumban `“<name>” : {“value”: “…”, “type”: “…”}`. Az a `type` elem, a lehetséges értékek: `MySql`, `SQLServer`, `SQLAzure`, és `Custom`.
+Az a `properties` eleme `config/connectionstrings`, minden egyes kapcsolati karakterláncot is definiálva van: név-érték párban, meghatározott formátumban `“<name>” : {“value”: “…”, “type”: “…”}`. Az a `type` elem, a lehetséges értékek: `MySql`, `SQLServer`, `SQLAzure`, és `Custom`.
 
 > [!TIP]
-> A karakterláncot kapcsolattípusokat végleges listájának megtekintéséhez futtassa a következő parancsot az Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+> A kapcsolati karakterlánc típusú végleges listájának megjelenítéséhez futtassa a következő parancsot az Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
 > 
 > 
 
-##### <a name="source-control"></a>A verziókövetési rendszerrel
-A verziókövetési beállítások is meg van határozva egy beágyazott erőforrásként. Az Azure Resource Manager használja ezt az erőforrást folyamatos közzétételének konfigurálása (szerint tekintse meg `IsManualIntegration` később) és is indítsa a telepítés automatikusan a JSON-fájl feldolgozása során az alkalmazás kódját.
+##### <a name="source-control"></a>Verziókövetés
+Az adatforrás-ellenőrzési beállítások egy beágyazott erőforrást is vannak meghatározva. Az Azure Resource Manager használja ezt az erőforrást folyamatos közzététel konfigurálása (lásd: csoportosítani a `IsManualIntegration` később) is automatikusan a JSON-fájl feldolgozása során az alkalmazáskód telepítését indíthat, és.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
-`RepoUrl`és `branch` közérthető intuitív kell lennie, és a Git-tárház és a közzététel az ág nevét kell mutatnia. Ebben az esetben ezek határozzák meg a bemeneti paraméterek. 
+`RepoUrl` és `branch` viszonylag intuitív kell lennie, és a Git-tárházba, és szeretné közzétenni az ág nevét kell mutatnia. Újra ezek határozzák meg a bemeneti paraméterek. 
 
-Vegye figyelembe, hogy a `dependsOn` elem, hogy a webes alkalmazás-erőforrást, mellett `sourcecontrols/web` is függ, `config/appsettings` és `config/connectionstrings`. Ennek az az oka után `sourcecontrols/web` van konfigurálva, az Azure telepítési folyamat automatikusan megpróbálja telepíteni, elkészítéséhez és indítsa el az alkalmazás kódját. Ezért a függőség beszúrása segítségével győződjön meg arról, hogy az alkalmazás fér hozzá a szükséges alkalmazás beállításait és a kapcsolati karakterláncokat az alkalmazás kódjának futtatása előtt. 
+Vegye figyelembe a a `dependsOn` elem mellett a web app erőforrásán, amely `sourcecontrols/web` is függ, `config/appsettings` és `config/connectionstrings`. Ennek oka, hogy miután `sourcecontrols/web` van konfigurálva, az Azure üzembe helyezési folyamat automatikusan megpróbálja telepíteni, hozhat létre és indítsa el az alkalmazás kódja. Ezért ezt a függőséget szúr be segítségével győződjön meg arról, hogy az alkalmazás hozzáfér a szükséges alkalmazások beállításai és a kapcsolati karakterláncok az alkalmazás kódjának futtatása előtt. 
 
 > [!NOTE]
-> Azt is fontos megjegyezni, hogy `IsManualIntegration` értéke `true`. Ez a tulajdonság oka szükség ebben az oktatóanyagban ténylegesen nem tulajdonosa a GitHub-tárházban, és így nem ténylegesen engedélyt ad a folyamatos közzétételének konfigurálása Azure [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) (pl. leküldéses Automatikus adattár a frissítések az Azure-bA). Használhatja az alapértelmezett érték `false` csak akkor, ha konfigurálta a tulajdonos GitHub-felhasználó hitelesítő adatait a megadott tárház a [Azure-portálon](https://portal.azure.com/) előtt. Ez azt jelenti Ha meg van adva verziókövetésének GitHub vagy BitBucket szereplő bármely alkalmazásra a [Azure Portal](https://portal.azure.com/) korábban, a felhasználó hitelesítő adatait, akkor Azure fogja a hitelesítő adatok megjegyzése és használata a jövőben telepít a GitHub vagy BitBucket bármely alkalmazás. Azonban ha ezt még nem végezte, telepítés JSON-sablon meghiúsul, ha Azure Resource Manager megpróbálja a webes alkalmazás verziókövetési beállítások konfigurálása, mert azt nem lehet bejelentkezni a GitHub vagy bitbucket szolgáltatásokkal a tárház tulajdonosát hitelesítő adatokkal.
+> Ügyeljen a következőkre is `IsManualIntegration` értékre van állítva `true`. Ez a tulajdonság nem szükséges ebben az oktatóanyagban, mert a GitHub-adattárból ténylegesen nem tulajdonosa, és így nem ténylegesen engedélyt az Azure-ba való folyamatos közzétételre konfigurálása [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) (pl. leküldéses Automatikus adattár frissítés az Azure-bA). Használhatja az alapértelmezett érték `false` csak akkor, ha már konfigurálta a tulajdonos GitHub hitelesítő adatait a megadott adattár a [az Azure portal](https://portal.azure.com/) előtt. Más szóval ha minden olyan alkalmazáshoz, a GitHub vagy bitbucket-alapú Verziókövetés beállítása a [az Azure Portal](https://portal.azure.com/) korábban, a felhasználó hitelesítő adatainak használata, akkor az Azure lesz a hitelesítő adatok megjegyzése, és használja őket, amikor minden olyan alkalmazást telepít GitHub vagy bitbucket-alapú a jövőben. Azonban Ön tette meg, ha a JSON-sablon telepítése sikertelen lesz, ha az Azure Resource Manager megpróbálja a webalkalmazás verziókövetési beállítások konfigurálása, mert az adattár tulajdonosának hitelesítő adatokkal nem jelentkezhet be a GitHub vagy bitbucket-alapú.
 > 
 > 
 
-## <a name="compare-the-json-template-with-deployed-resource-group"></a>A JSON-sablon üzembe helyezett erőforrás csoporttal összehasonlítása
-Itt, lépjen a a webes alkalmazás összes paneleken keresztül a [Azure Portal](https://portal.azure.com/), azonban egy másik eszköz, amely nincs csak, akkor hasznos, ha több. Lépjen a [Azure erőforrás-kezelő](https://resources.azure.com) preview eszközt, amely lehetővé teszi az erőforráscsoportok JSON-ábrázolását előfizetése, a ténylegesen az Azure-háttérrendszernek léteznek. Megtekintheti, milyen az Azure-ban az erőforráscsoport JSON hierarchia megfelel-e a hierarchiában lévő a létrehozásához használt sablonfájl.
+## <a name="compare-the-json-template-with-deployed-resource-group"></a>Hasonlítsa össze a telepített erőforráscsoportot a JSON-sablon
+Itt, Lépkedjen végig a web app minden paneleket az a [az Azure Portal](https://portal.azure.com/), de van egy másik eszköz, amely hasonlóan lehet hasznos, ha nem több. Nyissa meg a [Azure erőforrás-kezelő](https://resources.azure.com) előzetes eszközt, amely lehetővé teszi az erőforráscsoportok JSON-reprezentációja az előfizetésekben, valójában az Azure-beli háttéralkalmazásának léteznek. Az erőforráscsoport JSON hierarchia az Azure-ban hogyan felel meg a hierarchiát a létrehozásához használt sablon fájlban is megjelenik.
 
-Például ha ugrani a [Azure erőforrás-kezelő](https://resources.azure.com) eszköz, és bontsa ki a Explorer csomópontokat, láthatom valahol az erőforráscsoport és a megfelelő erőforrástípusok szerint gyűjtött gyökér szintű erőforrások.
+Például ha megnyitom a [Azure erőforrás-kezelő](https://resources.azure.com) eszközt, és bontsa ki a csomópontokat a Explorerben, látható, hogy az erőforráscsoport és a gyökérszintű erőforrások a megfelelő erőforrástípusok szerint gyűjtött.
 
 ![](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
 
-Ha a webes alkalmazás lebontva, webes alkalmazás konfigurációs adatait hasonló látni kell az alábbi képernyőfelvétel:
+Webes alkalmazás részletezéssel, ha lehet webes alkalmazás konfigurációs adatait hasonló láthatja az alábbi képernyőfelvétel:
 
 ![](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
 
-Ebben az esetben a beágyazott erőforrások kell rendelkeznie a nagyon hasonlít a JSON-sablon fájl a hierarchia, és az alkalmazásbeállítások, kapcsolati karakterláncok, stb., megfelelően a JSON ablaktáblán megjelennek kell megjelennie. Itt beállítások hiányában esetleg utalhatnak a JSON-fájl, és a JSON-sablon fájl hibaelhárításához nyújt segítséget.
+Újra a beágyazott erőforrások nagyon hasonlóak a JSON-sablonfájlt hierarchia kell rendelkeznie, és megjelenik az alkalmazásbeállítások, kapcsolati karakterláncok, stb., megfelelően a JSON-panelen megjelennek. Érhető el a beállításokat itt jelezheti a problémát a JSON-fájllal, és a JSON-sablonfájlt hibaelhárításához nyújt segítséget.
 
-## <a name="deploy-the-resource-group-template-yourself"></a>Az erőforrás-csoport sablon saját kezűleg üzembe helyezése
-A **az Azure telepítéséhez** gomb nagy, de lehetővé teszi az erőforrás-csoport sablon azuredeploy.json telepítése csak akkor, ha már leküldött azuredeploy.json GitHub. Az Azure .NET SDK olyan bármely JSON-sablon fájl közvetlenül a helyi számítógépről telepíthető eszközöket is biztosít. Ehhez kövesse az alábbi lépéseket:
+## <a name="deploy-the-resource-group-template-yourself"></a>Az erőforráscsoport sablonjának saját kezűleg üzembe helyezése
+A **üzembe helyezés az Azure** gomb nagyszerű, de lehetővé teszi az azuredeploy.json erőforrás csoport sablon üzembe helyezése, csak akkor, ha már rendelkezik leküldött azuredeploy.json GitHub. Az Azure .NET SDK-t is biztosít az eszközök üzembe helyezését bármely JSON-sablonfájlt közvetlenül a helyi gépről. Ehhez kövesse az alábbi lépéseket:
 
-1. A Visual Studióban kattintson **fájl** > **új** > **projekt**.
-2. Kattintson a **Visual C#** > **felhő** > **Azure erőforráscsoport**, majd kattintson a **OK**.
+1. A Visual Studióban kattintson a **File (Fájl)** > **New (Új)** > **Project (Projekt)** parancsra.
+2. Kattintson a **Visual C#** > **felhőalapú** > **Azure-erőforráscsoport**, majd kattintson a **OK**.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
-3. A **Azure-sablon kiválasztása**, jelölje be **üres sablont** kattintson **OK**.
-4. Húzza az azuredeploy.json a **sablon** az új projekt mappájából.
+3. A **Azure-sablon kiválasztása**válassza **üres sablon** kattintson **OK**.
+4. Húzza az azuredeploy.json a **sablon** mappában található az új projektet.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
-5. A Solution Explorerben nyissa meg a másolt azuredeploy.json.
-6. Csak az alábbiakban bemutatjuk, adjuk hozzá néhány szokásos Application Insights-erőforrást a JSON-fájlt, hogy kattintva **erőforrás hozzáadása**. Ha csak szeretné használni a JSON-fájl központi telepítése, ugorjon a telepítés lépéseit.
+5. A Megoldáskezelőben nyissa meg a másolt azuredeploy.json.
+6. Csak a bemutató Szemléltetésül adjunk hozzá néhány standard Application Insights-erőforrást a JSON-fájl kattintva **erőforrás hozzáadása**. Ha csak szeretné használni a JSON-fájl telepítése, ugorjon a telepítés lépéseit.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
-7. Válassza ki **Application Insights Web Apps**, majd ellenőrizze, hogy egy meglévő App Service csomag és a webes alkalmazás van kiválasztva, és kattintson a **Hozzáadás**.
+7. Válassza ki **Application Insights Pro Web Apps**, majd győződjön meg arról, hogy meglévő App Service-csomag- és webes alkalmazások ki van jelölve, és kattintson **Hozzáadás**.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
    
-   Most már képes lesz számos új forrásanyagokban talál, attól függően, hogy az erőforrás, és hogyan kezeli, vagy az App Service-csomagot, vagy a web app függőségekkel rendelkeznek. Ezeket az erőforrásokat a meglévő definíciót szerint nincsenek engedélyezve, és módosíthatja, hogy fog.
+   Most már fogja tudni több új erőforrás, erőforrások és a működés megtekintéséhez vagy az App Service-csomagot, vagy a web app függőségekkel rendelkeznek. Ezeket az erőforrásokat a meglévő definíció szerint nincsenek engedélyezve, és módosíthatja, hogy fog.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
-8. Kattintson a JSON-vázlat **appinsights által biztosított automatikus skálázás** jelölje ki a JSON-kódot. Ez az App Service-csomag méretezési beállítása.
-9. A kiemelt JSON-kódot, keresse meg a `location` és `enabled` tulajdonságok és -e meg őket alább látható módon.
+8. Kattintson a JSON-vázlat **appInsights automatikus skálázási** jelölje ki a JSON-kódot. Ez az az App Service-csomag a skálázási beállítást.
+9. A kiemelt JSON-kódot, keresse meg a `location` és `enabled` tulajdonságait, és állítsa be őket alább látható módon.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
-10. Kattintson a JSON-vázlat **CPUHigh appinsights által biztosított** jelölje ki a JSON-kódot. Ez az értesítés.
-11. Keresse meg a `location` és `isEnabled` tulajdonságok és -e meg őket alább látható módon. Tegye meg ugyanezt a másik három riasztások (lila hagymák).
+10. Kattintson a JSON-vázlat **CPUHigh appInsights** jelölje ki a JSON-kódot. Ez a riasztás.
+11. Keresse meg a `location` és `isEnabled` tulajdonságait, és állítsa be őket alább látható módon. Használja ugyanazt a többi három riasztások (lila hagymák).
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. Most már készen áll központi telepítéséhez. Kattintson jobb gombbal a projektre, és válassza ki **telepítés** > **új központi telepítési**.
+12. Most már készen áll az üzembe helyezése. Kattintson a jobb gombbal a projektre, és válassza ki **telepítés** > **új üzembe helyezési**.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
-13. Ha még nem tette meg, jelentkezzen be az Azure-fiókjával.
-14. Jelöljön ki egy meglévő erőforráscsoportot az előfizetés, vagy hozzon létre egy új egy, jelöljön ki **azuredeploy.json**, és kattintson a **paraméterek szerkesztése**.
+13. Ha ezt még nem tette meg, jelentkezzen be Azure-fiókjába.
+14. Válasszon ki egy meglévő erőforráscsoportot az előfizetésében, vagy hozzon létre egy új egyetlen, select **azuredeploy.json**, és kattintson a **paraméterek szerkesztése**.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
-    Most már képes lesz a sablonfájl töltött táblázatban definiált összes paraméterek szerkesztése. Alapértelmezett értékeket meghatározó paraméterek már rendelkezik az alapértelmezett értékekre, és a paraméterek, melyek meghatározzák az engedélyezett értékek listájának jelennek meg a legördülő lista.
+    Most már fogja szerkesztheti a már jól néz kis táblában a sablon fájlban meghatározott összes paramétert. Alapértelmezett értékeket meghatározó paraméterek már rendelkezik alapértelmezett értékekre, és a legördülő menük jelennek paraméterei, melyek meghatározzák az engedélyezett értékek listáját.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
-15. Töltse ki a üres paramétereket, és a [ToDoApp GitHub-tárház címe](https://github.com/azure-appservice-samples/ToDoApp.git) a **repoUrl**. Kattintson a **mentése**.
+15. Adja meg az üres paraméterek, és használja a [ToDoApp GitHub-tárház címet](https://github.com/azure-appservice-samples/ToDoApp.git) a **adattár URL-címe**. Kattintson a **mentése**.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
     > [!NOTE]
-    > Automatikus skálázás egy olyan funkció érhető el **szabványos** réteg vagy magasabb és a terv szintű riasztások a nyújtott szolgáltatások **alapvető** szintjüket, vagy újabb rendszerre, akkor be kell állítania a **sku** paramétert **szabványos** vagy **prémium** láthatók a új App Insights erőforrások könnyű fel.
+    > Automatikus méretezési funkciója érhető el **Standard** szint vagy magasabb szintű és a terv szintű riasztások felajánlott szolgáltatások **alapszintű** díjcsomag vagy újabb verziója szükséges, hogy kell beállítani a **termékváltozat** paraméter a **Standard** vagy **prémium** annak érdekében, hogy tekintse meg az új App Insights erőforrások könnyű fel.
     > 
     > 
-16. Kattintson a **telepítése**. Ha a kiválasztott **menthetik a jelszavakat**, a jelszót a rendszer menti a paraméter fájlban **egyszerű szöveges**. Ellenkező esetben kéri a jelszót a felhasználótól, a telepítési folyamat során.
+16. Kattintson a **üzembe helyezése**. Ha a kiválasztott **jelszavak mentése egyszerű**, a jelszó menti a rendszer a paraméterfájlban **szövegként**. Ellenkező esetben kéri, adja a database jelszavát a telepítési folyamat során.
 
-Készen is van. Most csatlakoznia kell a [Azure Portal](https://portal.azure.com/) és a [Azure erőforrás-kezelő](https://resources.azure.com) eszközt, amely az új riasztások és a JSON új automatikus skálázási beállításokat központilag telepített alkalmazás.
+Készen is van. Most csatlakoznia kell a [az Azure Portal](https://portal.azure.com/) és a [Azure erőforrás-kezelő](https://resources.azure.com) eszközt az új riasztások és automatikus méretezési beállítások a JSON az alkalmazás üzembe helyezése.
 
-A jelen szakaszban szereplő lépéseket általában úgy hajthatja végre a következő:
+A jelen szakaszban ismertetett lépések főként elvégezte a következőket:
 
 1. A sablonfájl előkészítése
-2. A paraméterfájl használata a sablonfájl létrehozása
-3. A sablonfájl paraméter fájllal telepített
+2. A sablonfájl betarthatja paraméterfájl létrehozása
+3. A sablonfájl alkalmazásparaméter-fájlt az üzembe helyezett
 
-Az utolsó lépés egyszerű PowerShell parancsmag végezhető el. Mi a Visual Studio az az alkalmazás telepítésekor nyerte megtekintéséhez nyissa meg a Scripts\Deploy-AzureResourceGroup.ps1. A kódot van, de csak fogom jelölje ki a megfelelő kódot kell telepítenie a sablonfájl paraméter fájllal.
+Az utolsó lépés egyszerű végzi el egy PowerShell-parancsmagot. Mi a Visual Studio az azt az alkalmazás telepítésekor tette megtekintéséhez nyissa meg a Scripts\Deploy-AzureResourceGroup.ps1. A kódot van, de most elindítok kiemelheti a profiljával kapcsolatos kódot kell üzembe helyeznie a sablonfájlt paraméter-fájllal.
 
 ![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
-Az utolsó parancsmag `New-AzureResourceGroup`, van, amely végrehajtja a műveletet. Ez bizonyítania kell Önnek, hogy, tooling segítségével, a rendszer viszonylag egyszerű kiszámítható módon tudja a felhő alkalmazás központi telepítése. Minden alkalommal, amikor az ugyanazon paraméter fájllal ugyanazt a sablont a futtatta a parancsmagot, ugyanazt az eredményt kapja fog.
+Az utolsó parancsmag `New-AzureResourceGroup`, amelyet az végrehajtja a műveletet. Mindez bizonyítania kell, hogy, eszközök segítségével, azaz viszonylag egyszerű, kiszámítható módon a felhőalapú alkalmazások üzembe helyezése. Minden alkalommal, amikor futtatja a parancsmagot ugyanazt a sablont a paraméter ugyanebben a fájlban, meg fogjuk elérhető ugyanaz az eredmény.
 
-## <a name="summary"></a>Összefoglalás
-DevOps ismételhetőség és kiszámíthatóságot a sikeres telepítést mikroszolgáltatások álló nagy méretű kérelem kulccsal. Ebben az oktatóanyagban az Azure Resource Manager sablon használatával egyetlen erőforráscsoportként működnek az Azure két-mikroszolgáltatási alkalmazást telepített. Remélhetőleg az adott ahhoz, hogy indítsa el az alkalmazás az Azure-ban konvertálása a sablonba és kioszthatja és kiszámítható módon tudja központilag telepítenie kell a Tudásbázis. 
+## <a name="summary"></a>Összegzés
+Fejlesztés és üzemeltetés ismételhetőség és kiszámíthatóságot kulcsok mikroszolgáltatásokból álló, nagy méretű alkalmazás sikeres környezethez. Ebben az oktatóanyagban telepítette az Azure Resource Manager-sablon használatával egyetlen erőforráscsoportot, az Azure-ban két-mikroszolgáltatás-alkalmazás. Remélhetőleg Ez a példa adott a Tudásbázis van szüksége ahhoz, hogy indítsa el az Azure-ban az alkalmazás átalakítása sablon üzembe helyezése és is kiszámítható módon telepítheti. 
 
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>További erőforrások
-* [Az Azure Resource Manager sablon nyelve](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Az Azure Resource Manager sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Az Azure Resource Manager Sablonfüggvényei](../azure-resource-manager/resource-group-template-functions.md)
-* [Alkalmazás üzembe helyezése az Azure Resource Manager-sablon](../azure-resource-manager/resource-group-template-deploy.md)
+* [Az Azure Resource Manager-sablon nyelve](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Az Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Az Azure Resource Manager-Sablonfüggvények](../azure-resource-manager/resource-group-template-functions.md)
+* [Alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md)
 * [Az Azure PowerShell használata az Azure Resource Managerrel](../azure-resource-manager/powershell-azure-resource-manager.md)
-* [Az Azure erőforráscsoport-telepítések hibaelhárítása](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Erőforrások üzemelő példányainak hibaelhárítása az Azure-ban](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Hogyan szeretné visszaállítani az X.509-tanúsítványok az Azure IoT Hub Device Provisioning Service |} A Microsoft Docs
-description: Hogyan szeretné visszaállítani az X.509-tanúsítványokat az a device provisioning service-példány
+description: Hogyan szeretné visszaállítani a Device Provisioning service-példányt az X.509-tanúsítványok
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9c73ce159ae7cf5778210e0fb587135f37c73f57
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40025030"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42057250"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Hogyan szeretné visszaállítani az X.509 tanúsítványok
 
@@ -46,7 +46,7 @@ Ha a saját tanúsítványok felügyeli, kell a saját folyamatát, a tanúsítv
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>A tanúsítvány állítsa az IoT hubban
 
-Az eszköz tanúsítványát manuálisan felveheti egy IoT hubra. A tanúsítvány a Device Provisioning Service-példány használatával is automatizálható. Ebben a cikkben fogja feltételezzük egy kiépítési-példány automatikus kiépítés támogatásához használja.
+Az eszköz tanúsítványát manuálisan felveheti egy IoT hubra. A tanúsítvány Device Provisioning service-példány használatával is automatizálható. Ebben a cikkben fogja feltételezzük a Device Provisioning service-példány automatikus kiépítés támogatásához használja.
 
 Amikor egy eszköz kezdetben kiépítése keresztül az Automatikus kiépítés, a rendszerindítás-fel, és kapcsolatba lép a kiépítési szolgáltatás. A kiépítési szolgáltatás által az IoT hub, az eszköz levél tanúsítványt használ, a hitelesítő adatokat az eszközidentitás létrehozása előtt egy identitás-ellenőrzést végrehajtó válaszol. A kiépítési szolgáltatás majd arra utasítja az eszközt, mely az IoT hub hozzá van rendelve, és az eszköz ezután használja a levéltanúsítvány hitelesítéséhez és csatlakoztatása az IoT hubhoz. 
 
@@ -104,7 +104,7 @@ Biztonsági incidensek válaszul egy csoportos regisztráció frissítése, hasz
 
 #### <a name="update-compromised-root-ca-certificates"></a>Sérült biztonságú legfelső szintű Hitelesítésszolgáltatói tanúsítványok frissítése
 
-1. Kattintson a **tanúsítványok** lapon találja az eszközkiépítési szolgáltatás példányát.
+1. Kattintson a **tanúsítványok** lapon találja a Device Provisioning service-példányt.
 
 2. Kattintson a listában a feltört tanúsítványra, és kattintson a **törlése** gombra. A törlés megerősítéséhez írja be a tanúsítvány nevét, és kattintson a **OK**. Ismételje meg ezt a folyamatot minden veszélyeztetett tanúsítványokkal.
 
@@ -112,7 +112,7 @@ Biztonsági incidensek válaszul egy csoportos regisztráció frissítése, hasz
 
 3. Kövesse az ismertetett lépéseket [konfigurálása ellenőrzött Hitelesítésszolgáltatói tanúsítványok](how-to-verify-certificates.md) hozzáadásának és hitelesítésének új legfelső szintű Hitelesítésszolgáltatói tanúsítványokat.
 
-4. Kattintson a **beléptetések kezelése** az eszközkiépítési szolgáltatás példányát lapjára, és kattintson a **regisztrációs csoportok** listája. Kattintson a regisztrációs csoport nevét a listában.
+4. Kattintson a **beléptetések kezelése** a Device Provisioning service-példányt a lapra, majd kattintson a **regisztrációs csoportok** listája. Kattintson a regisztrációs csoport nevét a listában.
 
 5. Kattintson a **Hitelesítésszolgáltatói tanúsítvány**, és válassza ki az új legfelső szintű Hitelesítésszolgáltatói tanúsítvány. Ezután kattintson a **Save** (Mentés) gombra. 
 
@@ -149,13 +149,13 @@ Később esetén a másodlagos is tanúsítvány lejár, és konfigurálni kell,
 
 1. Kövesse az ismertetett lépéseket [konfigurálása ellenőrzött Hitelesítésszolgáltatói tanúsítványok](how-to-verify-certificates.md) hozzáadásának és hitelesítésének új legfelső szintű Hitelesítésszolgáltatói tanúsítványokat.
 
-2. Kattintson a **beléptetések kezelése** az eszközkiépítési szolgáltatás példányát lapjára, és kattintson a **regisztrációs csoportok** listája. Kattintson a regisztrációs csoport nevét a listában.
+2. Kattintson a **beléptetések kezelése** a Device Provisioning service-példányt a lapra, majd kattintson a **regisztrációs csoportok** listája. Kattintson a regisztrációs csoport nevét a listában.
 
 3. Kattintson a **Hitelesítésszolgáltatói tanúsítvány**, és válassza ki az új legfelső szintű Hitelesítésszolgáltatói tanúsítványt a **másodlagos tanúsítvány** konfigurációja. Ezután kattintson a **Save** (Mentés) gombra. 
 
     ![Válassza ki az új legfelső szintű Hitelesítésszolgáltatói tanúsítvány](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. Később amikor elsődleges tanúsítvány lejárt, kattintson a **tanúsítványok** lapon találja az eszközkiépítési szolgáltatás példányát. Kattintson a listában a lejárt tanúsítvány, és kattintson a **törlése** gombra. A törlés megerősítéséhez írja be a tanúsítvány nevét, és kattintson a **OK**.
+4. Később amikor elsődleges tanúsítvány lejárt, kattintson a **tanúsítványok** lapon találja a Device Provisioning service-példányt. Kattintson a listában a lejárt tanúsítvány, és kattintson a **törlése** gombra. A törlés megerősítéséhez írja be a tanúsítvány nevét, és kattintson a **OK**.
 
     ![Legfelső szintű hitelesítésszolgáltató-tanúsítvány törlése](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -177,7 +177,7 @@ Később esetén a másodlagos is tanúsítvány lejár, és konfigurálni kell,
 
 ## <a name="reprovision-the-device"></a>Építse ki újra az eszközt
 
-Ha a tanúsítványt az eszköz és a Device Provisioning Service-be lesz állítva, az eszköz is építse ki újra a maga kapcsolatba lép a Device Provisioning Service. 
+Miután a tanúsítvány a Device Provisioning Service és az eszközhöz be lesz állítva, az eszköz is építse ki újra a saját maga kapcsolatba lép a Device Provisioning service. 
 
 Egy könnyedén programozási eszközöket építenie az, hogy kapcsolatba kell áthaladnia az üzembe helyezési folyamatban, ha az eszköz "nem engedélyezett" hibaüzenetet kap szeretne csatlakozni az IoT hub eszközkiépítési szolgáltatás az eszközt.
 

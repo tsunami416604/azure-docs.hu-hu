@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 3734c30dad0735164d4501d1d63d8ffe301396a3
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 63ea7e384f9bc5713a41f6c5537ec5548810e5d9
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249114"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054708"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Az Azure Cosmos DB-hez készült Power BI oktatóanyag: adatok megjelenítése Power BI-összekötő használatával
 [PowerBI.com](https://powerbi.microsoft.com/) egy online szolgáltatás, ahol létrehozhat és irányítópultok és jelentések megosztása, és a szervezet számára fontos adatokkal.  A Power BI Desktop egy olyan dedikált jelentés, amely lehetővé teszi, hogy a különféle adatforrásokból származó adatok lekéréséhez, egyesítése és átalakíthatja az adatokat, hatékony jelentések és Vizualizációk létrehozása és a jelentések közzététele a Power bi-bA a szerkesztőeszköz.  A Power BI Desktop legújabb verzióját mostantól csatlakozhat az Azure Cosmos DB-fiókot az Azure Cosmos DB-összekötő használatával a Power bi-hoz.   
@@ -42,8 +42,8 @@ Power BI-oktatóanyagban szereplő utasítások követése, előtt, hogy a köve
 * [A Power BI Desktop legújabb verzióját](https://powerbi.microsoft.com/desktop).
 * A bemutató fiók vagy az Azure Cosmos DB-fiókban lévő adatok elérésére.
   * A bemutató fiók van feltöltve a Mexikói ebben az oktatóanyagban látható. Ez a bemutató fiók bármely SLA-k nem kötődik, és csak bemutató célokra tervezték.  Azt fenntartjuk a jogot arra, hogy hajtsa végre a módosításokat, ez a bemutató fiók többek között, de nem korlátozódik, a fiók megszüntetéséről, a kulcs módosítása, korlátozzuk, módosítás, és törölni szeretné az adatokat, bármikor, előzetes értesítés, vagy akár indoklás nélkül.
-    * URL: https://analytics.documents.azure.com
-    * Read-only key: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
+    * URL: `https://analytics.documents.azure.com`
+    * Írásvédett kulcsát: `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`
   * Vagy a saját fiók létrehozásához lásd: [az Azure portal használatával egy Azure Cosmos DB-adatbázisfiók létrehozása](https://azure.microsoft.com/documentation/articles/create-account/). Ezt követően beolvasni a minta mexikói mi hasonló adatok használatban van ebben az oktatóanyagban (de nem tartalmazza a GeoJSON-blokkok), lásd: a [NOAA hely](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5) , majd importálja az adatokat az a [Azure Cosmos DB adatáttelepítési eszköz](import-data.md).
 
 A jelentéseket a powerbi.com webhelyen megosztásához egy fiókkal kell rendelkeznie a powerbi.com webhelyen.  További információ a Power BI ingyenes és a Power BI Pro a, a Microsoft [ https://powerbi.microsoft.com/pricing ](https://powerbi.microsoft.com/pricing).

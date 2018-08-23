@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: 73ad78fc73a7605f8feaf114ebdfac5023cc91b6
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 9032a0b68c4c8789010b0304b64a63d4924521fb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342425"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054893"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Az OpenFoam futtatása a Microsoft HPC Packkal Azure-beli linuxos RDMA-fürtön
 Ez a cikk bemutatja, hogy egyik módja az OpenFoam futtatása az Azure-beli virtuális gépeken. Itt, a Microsoft HPC Pack-fürt Linuxos számítási csomópontok az Azure-ra és a Futtatás telepít egy [OpenFoam](http://openfoam.com/) Intel MPI-feladatok. Használhatja RDMA-kompatibilis Azure virtuális gépek a számítási csomópontok, így a számítási csomópontok Azure RDMA hálózati kommunikációra. Egyéb lehetőségek az OpenFoam futtatása az Azure-ban rendelkezésre álló teljes konfigurációjú kereskedelmi képeket is tartalmaznak a Marketplace-en, például az UberCloud a [OpenFoam 2.3 CentOS 6-os](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud), és a kiszolgálón való futtatásával [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
@@ -46,7 +46,7 @@ A Microsoft HPC Pack biztosítja a funkciók futtathat nagy méretű HPC és a p
   * A Linux-csomópontok üzembe helyezése után csatlakozzon az ssh-KAPCSOLATOT minden további felügyeleti feladatokat hajthat végre. Az SSH-kapcsolat adatai található minden egyes Linux virtuális gép az Azure Portalon.  
 * **Az Intel MPI** – az OpenFOAM futtatása az Azure-ban, SLES 12 HPC számítási csomópontokon az Intel MPI könyvtár 5 futásidejű telepítenie kell a [Intel.com hely](https://software.intel.com/en-us/intel-mpi-library/). (Az Intel MPI 5 előre telepítve van a CentOS-alapú HPC-lemezképekre.)  Egy későbbi lépésben szükség esetén telepítse az Intel MPI a Linuxos számítási csomópontokon. Ebben a lépésben előkészítheti az Intel regisztrálása után, kövesse a visszaigazoló e-mailben szereplő hivatkozást kapcsolódó weblapon. Ezután másolja a letöltési hivatkozást az Intel MPI-t a megfelelő verzióját .tgz fájlt. Ez a cikk az Intel MPI verzió 5.0.3.048 alapul.
 * **Az OpenFOAM forrás csomag** – az OpenFOAM forrás csomag szoftver letöltése a Linuxhoz készült a [OpenFOAM Foundation hely](http://openfoam.org/download/2-3-1-source/). Ez a cikk az OpenFOAM-2.3.1.tgz mint forrás csomag verziója letölthető 2.3.1 alapul. Kövesse a cikk későbbi részében kicsomagolása és fordítsa le az OpenFOAM a Linuxos számítási csomópontokon.
-* **EnSight** (nem kötelező) – az OpenFOAM szimuláció, letöltése és telepítése, az eredmények megtekintéséhez a [EnSight](https://www.ceisoftware.com/download/) megjelenítési és elemzési program. Licencelés és letöltése a EnSight helyen vannak.
+* **EnSight** (nem kötelező) – az OpenFOAM szimuláció, letöltése és telepítése, az eredmények megtekintéséhez a [EnSight](https://ensighttransfe.wpengine.com/direct-access-downloads/) megjelenítési és elemzési program. Licencelés és letöltése a EnSight helyen vannak.
 
 ## <a name="set-up-mutual-trust-between-compute-nodes"></a>Számítási csomópontok közötti kölcsönös bizalmi kapcsolat beállítása
 Csomópontok közötti feladat futtatása a Linux több csomóponton van szükség a csomópontok megbíznak egymásban (által **rsh** vagy **ssh**). A HPC Pack-fürt létrehozásakor a Microsoft HPC Pack IaaS telepítési szkripttel a parancsfájl automatikusan beállítja a megadott rendszergazdai fiók végleges kölcsönös megbízhatósági. A nem rendszergazdai felhasználók számára hoz létre a fürt a tartományban kell beállítania ideiglenes kölcsönös megbízhatósági mozgatja a csomópontok, amikor egy feladat lefoglalt őket, és szüntesse meg a kapcsolat, a feladat befejezése után. Az egyes felhasználók megbízhatósági kapcsolatot hoz létre, adja meg a fürthöz, a bizalmi kapcsolat használó HPC Pack-RSA-kulcspárt.
@@ -362,7 +362,7 @@ Most már küldhet egy feladatot a HPC Cluster Manager. A feldolgozás feladatok
 10. A feladat befejeztével a feladat eredményeinek található C:\OpenFoam\sloshingTank3D, és a naplófájlok, C:\OpenFoam mappát.
 
 ## <a name="view-results-in-ensight"></a>EnSight az eredmények megtekintése
-Lehetősége van [EnSight](https://www.ceisoftware.com/) vizualizálását és elemzését az OpenFOAM feladat eredményét. Vizualizáció, és elvégezheti az animációk renderelését EnSight kapcsolatos további információkért lásd: Ez [Videós útmutató](http://www.ceisoftware.com/wp-content/uploads/screencasts/vof_visualization/vof_visualization.html).
+Lehetősége van [EnSight](http://www.ensight.com/) vizualizálását és elemzését az OpenFOAM feladat eredményét. Vizualizáció, és elvégezheti az animációk renderelését EnSight kapcsolatos további információkért lásd: Ez [Videós útmutató](http://www.ensight.com/ensight.com/envideo/).
 
 1. Miután telepítette a fő csomópontot EnSight, indítsa el.
 2. Nyissa meg a C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.

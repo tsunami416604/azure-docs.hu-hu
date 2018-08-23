@@ -1,6 +1,6 @@
 ---
-title: Kép keresési SDK csomópont gyors üzembe helyezés |} Microsoft Docs
-description: A kép keresési telepítője SDK konzolalkalmazást.
+title: 'Gyors útmutató: A kérés és az SDK-t használó Node.js-ben rendszerképek szűrése'
+description: Ebben a rövid útmutatóban a kérelem, és szűrheti a képeket, a Bing Image Search, a Node.js használata által visszaadott.
 titleSuffix: Azure cognitive services
 services: cognitive-services
 author: mikedodaro
@@ -10,35 +10,35 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: e4c8303e39accbb7caec15c0ef47d701971ce632
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e88c045b220192a617e6b8caf5d8d53f70a25b5e
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349454"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987534"
 ---
-# <a name="image-search-sdk-node-quickstart"></a>Kép keresési SDK csomópont gyors üzembe helyezés
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-nodejs"></a>Gyors útmutató: A kérés és az SDK és a Node.js használatával rendszerképek szűrése
 
-A Bing kép keresési SDK a REST API kép lekérdezések és elemzési eredmények funkcióit tartalmazza. 
+Kép a Bing Search SDK tartalmazza a REST API, a lemezkép-lekérdezések és elemzési eredmények funkcióit. 
 
-A [forráskód csomópont Bing kép keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) érhető el a Git központ.
+A [forráskódját csomópont Bing kép Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) Github érhető el.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Egy konzolalkalmazást, a Bing kép keresési SDK használatával beállításához futtassa `npm install azure-cognitiveservices-imagesearch` a fejlesztői környezetben.
+Állítsa be kép a Bing Search SDK használatával egy konzolalkalmazást, futtassa `npm install azure-cognitiveservices-imagesearch` a fejlesztési környezetben.
 
 ## <a name="image-search-client"></a>Kép keresési ügyfél
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Hozzon létre egy példányát a `CognitiveServicesCredentials`:
+Get- [Cognitive Services hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Hozzon létre egy példányt a `CognitiveServicesCredentials`:
 ```
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
 ```
-Az ügyfél ezután példányosítható:
+Ezután hozza létre az ügyfél:
 ```
 const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
 let client = new ImageSearchAPIClient(credentials);
 ```
-A lekérdezésszöveg ebben az esetben "El Capitan" kereséséhez az ügyfél használni:
+Az ügyfél használja a keresést a lekérdezés szövege, ebben az esetben "El Capitan" segítségével:
 ```
 client.imagesOperations.search('El Capitan', function (err, result, request, response) {
     if (err) throw err;
@@ -55,4 +55,4 @@ The code prints `result.value` items to the console without parsing any text. Th
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+[A cognitive services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)

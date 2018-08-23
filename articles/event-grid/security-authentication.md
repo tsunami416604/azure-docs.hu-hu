@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: 3fe717cb60791d24637ccd5b9a3c08fd34801524
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617941"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42057552"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -33,11 +33,11 @@ Sok más szolgáltatásokhoz hasonlóan webhookokat támogató EventGrid kell ig
 * Az Azure Automation
 * Az Azure Functions EventGrid eseményindító.
 
-Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú Azure-függvényt használ, a végpont-kódot kell egy érvényesítési kézfogást EventGrid részt. EventGrid két különböző érvényesítési kézfogás modell támogatja:
+Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú Azure-függvényt használ, a végpont kódot kell egy érvényesítési kézfogást EventGrid részt. EventGrid két különböző érvényesítési kézfogás modell támogatja:
 
-1. Alapú ValidationCode kézfogás: esemény-előfizetés létrehozása idején EventGrid tesz közzé egy "előfizetés érvényesítési esemény" a végponthoz. Ez az esemény sémája hasonlít bármilyen más EventGridEvent, és ez az esemény adatok részének tartalmaz egy "validationCode" tulajdonság. Miután az alkalmazás ellenőrizte, hogy van-e az érvényesítési kérelmet egy várt esemény-előfizetés, az alkalmazás kódjában kell válaszolnia a echo vissza az érvényesítési kódot EventGrid által. A kézfogás mechanizmus az összes EventGrid-verziót támogatja.
+1. **ValidationCode kézfogás**: esemény-előfizetés létrehozása idején EventGrid tesz közzé egy "előfizetés érvényesítési esemény" a végponthoz. Ez az esemény sémája hasonlít bármilyen más EventGridEvent, és ez az esemény adatok részének tartalmaz egy `validationCode` tulajdonság. Miután az alkalmazás ellenőrizte, hogy van-e az érvényesítési kérelmet egy várt esemény-előfizetés, az alkalmazás kódjában kell válaszolnia a echo vissza az érvényesítési kódot EventGrid által. A kézfogás mechanizmus az összes EventGrid-verziót támogatja.
 
-2. (Manuális kézfogás) alapú ValidationURL kézfogás: bizonyos esetekben valószínűleg nem rendelkezik a forráskódot a végpont tudják megvalósítani a alapú ValidationCode kézfogás ellenőrzése. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), nem fogja tudni programozott módon reagálhat az érvényesítési kóddal vissza. Ezért verzió 2018-05-01-preview verziótól kezdődően EventGrid mostantól támogatja az egy manuális érvényesítésre kézfogás. Ha egy esemény-előfizetést, amely az új API-verzió használata SDK és eszközök használatával hoz létre (2018-05-01-preview), EventGrid küld egy "validationUrl" tulajdonságot (mellett a "validationCode" tulajdonságot) az előfizetés érvényesítési adatok részének részeként az esemény. A kézfogás elvégzéséhez tegye egy GET kérelmek az URL-CÍMRE, vagy a REST-ügyféllel, vagy a webböngésző használatával. A megadott validationUrl csak esetén érvényes nagyjából 10 percet, így a manuális érvényesítésre ezen az időn belül nem végezte el, ha a "Sikertelen" veszi át a provisioningState az esemény-előfizetés, és az esemény létrehozásának naplófájljában kell előfizetés előtt hajtsa végre újra a manuális érvényesítésre.
+2. **ValidationURL kézfogás (manuális kézfogás)**: bizonyos esetekben valószínűleg nem rendelkezik a forráskódot a végpont tudják megvalósítani a alapú ValidationCode kézfogás ellenőrzése. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), nem fogja tudni programozott módon reagálhat az érvényesítési kóddal vissza. Ezért verzió 2018-05-01-preview verziótól kezdődően EventGrid mostantól támogatja az egy manuális érvényesítésre kézfogás. Az új API verzió (2018-05-01-preview), EventGrid küld használó SDK és eszközök használatával egy esemény-előfizetés létrehozásakor egy `validationUrl` tulajdonság (mellett a `validationCode` tulajdonság) az előfizetés érvényesítése esemény adatok részének részeként. A kézfogás elvégzéséhez tegye egy GET kérelmek az URL-CÍMRE, vagy a REST-ügyféllel, vagy a webböngésző használatával. A megadott érvényesítési URL-CÍMÉT a érvényes csak nagyjából 10 percet. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 10 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés létrehozása naplófájljában, mielőtt újra a manuális érvényesítésre kísérel meg kell.
 
 Ez a mechanizmus manuális érvényesítésének az előzetes verzióban. A használatához telepítenie kell az [Event Grid-bővítményt](/cli/azure/azure-cli-extensions-list) az [AZ CLI 2.0](/cli/azure/install-azure-cli) interfészhez. A telepítést az `az extension add --name eventgrid` paranccsal tudja végrehajtani. A REST API használata esetén ügyeljen rá, hogy az `api-version=2018-05-01-preview` verziót használja.
 
@@ -48,7 +48,7 @@ Ez a mechanizmus manuális érvényesítésének az előzetes verzióban. A hasz
 * Az esemény törzsét, más Event Grid-események ugyanazzal a sémával rendelkezik.
 * Az esemény típusa az esemény tulajdonság "Microsoft.EventGrid.SubscriptionValidationEvent".
 * A data-tulajdonság az esemény tartalmaz egy véletlenszerűen létrehozott karakterlánc "validationCode" tulajdonságot. Például "validationCode: acb13 …".
-* API verzió 2018-05-01-preview használatakor az eseményadatokat is tartalmaz egy "validationUrl" tulajdonság egy URL-cím manuális érvényesítésének az előfizetés esetében.
+* API verzió 2018-05-01-preview használatakor az esemény-adatokat is tartalmaz egy `validationUrl` tulajdonság manuális érvényesítésének az előfizetéshez tartozó URL-címet.
 * A tömb csak az érvényesítési eseményt tartalmaz. Az eseményeket küld egy külön kérelmet echo vissza az érvényesítési kód után.
 * A EventGrid-Adatsík SDK-k az előfizetés érvényesítése eseményadatok és előfizetés érvényesítési válaszhoz tartozó osztályok rendelkezik.
 

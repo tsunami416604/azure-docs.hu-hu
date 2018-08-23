@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f3f827958c0c5d71846d8f0d4184ef88b7f0a932
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527403"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058406"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Az Azure-PowerShell-lel független felhőkben tárolás kezelése
 
@@ -35,7 +35,7 @@ Példák Azure PowerShell modul verziója 4.4.0 szükséges vagy újabb. Egy Pow
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Futtassa a [Get-AzureEnvironment](/powershell/module/azure/Get-AzureRmEnvironment) parancsmaggal ellenőrizheti az elérhető Azure-környezetek:
+Futtassa a [Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) parancsmaggal ellenőrizheti az elérhető Azure-környezetek:
    
 ```powershell
 Get-AzureRmEnvironment
@@ -57,7 +57,7 @@ Get-AzureRmLocation | select Location, DisplayName
 
 Az alábbi táblázat a helyek, a Németországi felhőhöz készült adja vissza.
 
-|Hely | Megjelenítendő név |
+|Hely | displayName |
 |----|----|
 | germanycentral | Közép-Németország|
 | germanynortheast | Északkelet-Németország | 

@@ -1,51 +1,52 @@
 ---
-title: A Visual Studio egy Azure-felhőszolgáltatás-projekt konfigurálása |} Microsoft Docs
-description: További tudnivalók az Azure-felhőszolgáltatás-projekt konfigurálása a Visual Studio, a projekt követelményeitől függően.
+title: Az Azure felhőszolgáltatás-projekt konfigurálása a Visual Studióval |} A Microsoft Docs
+description: Ismerje meg az Azure felhőszolgáltatás-projekt konfigurálása a Visual Studio projekt követelményektől függően.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 609d6965-05cc-47b1-82dc-c76a92d4f295
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: ghogen
-ms.openlocfilehash: 0b2b39897407875d2722c7fbaebebc1698f931a9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0e2e03f7a492f5018b99145a63bb1b7432d3e0b3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792171"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054306"
 ---
-# <a name="configure-an-azure-cloud-service-project-with-visual-studio"></a>A Visual Studio egy Azure-felhőszolgáltatás-projekt konfigurálása
-Egy Azure-felhőszolgáltatás-projekt, beállíthatja a projekt követelményeitől függően. Beállítható a projekthez az alábbi kategóriákban:
+# <a name="configure-an-azure-cloud-service-project-with-visual-studio"></a>Az Azure felhőszolgáltatás-projekt konfigurálása a Visual Studióval
+Konfigurálhatja egy Azure-felhőszolgáltatás-projekt projekt követelményektől függően. Az alábbi kategóriákban a projekt tulajdonságai állíthatók be:
 
-- **Egy felhőalapú szolgáltatás közzététele az Azure-bA** -győződjön meg arról, hogy egy meglévő felhőalapú szolgáltatást, az Azure rendszerbe telepítendő nem véletlenül törli egy tulajdonságot.
-- **Futtassa, vagy egy felhőalapú szolgáltatás a helyi számítógépen debug** -kiválaszthatja, hogy a szolgáltatás konfigurációját használja, és adja meg, hogy az Azure storage emulator elindításához.
-- **Ellenőrizze a cloud service-csomag létrehozásakor** -úgy is dönt, hogy hibaként figyelmeztetéseket, így biztosítható, hogy a cloud service-csomag probléma nélkül telepíti. 
+- **Egy felhőalapú szolgáltatás közzététele az Azure-bA** – beállíthatja a tulajdonságot győződjön meg arról, hogy egy meglévő felhőszolgáltatásban üzembe helyezni az Azure nem véletlenül törlődik.
+- **Spustit nebo ladit felhőszolgáltatás a helyi számítógépen** – kiválaszthatja, hogy egy szolgáltatás konfigurációját használja, és adja meg, hogy az Azure storage emulator elindításához.
+- **Felhőszolgáltatás-csomagok érvényesítése létrehozásakor** – Ön dönt, hogy hibaként figyelmeztetéseket, így biztosíthatja, hogy a felhőszolgáltatás-csomagok probléma nélkül telepíti. 
 
-## <a name="steps-to-configure-an-azure-cloud-service-project"></a>Egy Azure-felhőszolgáltatás-projekt konfigurálásának lépései
-1. Nyissa meg vagy egy felhőszolgáltatás-projekt létrehozása a Visual Studióban
+## <a name="steps-to-configure-an-azure-cloud-service-project"></a>Az Azure felhőszolgáltatás-projekt konfigurálásának lépései
+1. Nyissa meg, vagy egy felhőszolgáltatás-projekt létrehozása a Visual Studióban
 
-1. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki a helyi menüből **tulajdonságok**.
+1. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, és a helyi menüből válassza ki a **tulajdonságok**.
    
-1. A projekt Tulajdonságok lapján válassza a **fejlesztési** fülre.
+1. A projekt tulajdonságai lapon válassza ki a **fejlesztési** fülre.
 
     ![Projekt tulajdonságai menü](./media/vs-azure-tools-configuring-an-azure-project/solution-explorer-project-properties-menu.png)
 
-1. Állítsa be **Rákérdezés a meglévő telepítés törlése előtt** való **igaz**. Ez a beállítás segít biztosítani, ne véletlenül törli egy meglévő Azure-telepítés
+1. Állítsa be **kérése egy meglévő üzemelő példány törlése előtt** való **igaz**. Ez a beállítás lehetővé teszi a véletlenül ne törölje a meglévő környezet az Azure-ban
 
-1. Válassza ki a kívánt **szolgáltatáskonfiguráció** mely szolgáltatáskonfiguráció jelzi a futtatásakor vagy a felhőalapú szolgáltatás helyileg debug használni kívánt. A szerepkör szolgáltatáskonfiguráció módosítása további információkért lásd: [a szerepkörök az Azure-felhőszolgáltatás konfigurálása a Visual Studio](./vs-azure-tools-configure-roles-for-cloud-service.md).
+1. Válassza ki a kívánt **szolgáltatáskonfiguráció** melyik szolgáltatáskonfiguráció jelzi a futtatásakor, vagy helyileg a cloud service hibakeresése a használni kívánt. A szerepkör szolgáltatáskonfiguráció módosítása további információkért lásd: [konfigurálása az Azure cloud Services számára a szerepkörök a Visual Studióval](./vs-azure-tools-configure-roles-for-cloud-service.md).
 
-1. Állítsa be **Start Azure storage emulator** való **igaz** futtatásakor vagy a felhőalapú szolgáltatás helyi hibakeresése az Azure storage emulator indításához.
+1. Állítsa be **indítsa el az Azure storage emulator** való **igaz** futtatásakor, vagy helyileg a cloud service hibakeresése az Azure storage emulator indításához.
 
-1. Állítsa be **figyelmeztetések hibaként** való **igaz** győződjön meg arról, nem tehető közzé, ha a csomag érvényesítési hibák vannak.
+1. Állítsa be **figyelmeztetések hibaként** való **igaz** , hogy Ön nem tehető közzé, ha a csomag érvényesítési hibák léptek fel.
 
-1. Állítsa be **webes projekt portok használatára** való **igaz** győződjön meg arról, hogy a webes szerepkör ugyanazt a portot használja minden egyes elindításakor azt a helyi IIS Express.
+1. Állítsa be **web projektet portok használatára** való **igaz** , győződjön meg arról, hogy a webes szerepkör használja ugyanazt a portot, a rendszer minden alkalommal, elindul a helyi IIS Express.
 
-1. Válassza ki a Visual Studio eszköztár **mentése**.
+1. A Visual Studio eszköztárában válassza **mentése**.
 
 ## <a name="next-steps"></a>További lépések
-- [Több szolgáltatáskonfiguráció használata Azure-projekt konfigurálása](vs-azure-tools-multiple-services-project-configurations.md)
+- [Több szolgáltatás-konfiguráció használata Azure-projekt konfigurálása](vs-azure-tools-multiple-services-project-configurations.md)
 

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/22/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: f54849b9fef8ff09aa9b5b6254c92fc3c452ef4a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 48e2f85488adfb776da5f52c154028f8aafb167a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414425"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617021"
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk segít eldönteni, hogy a legjobb integrálása az Azure Stack a meglévő hálózati környezetbe az Azure Stack hálózati infrastruktúra információkat nyújt. 
@@ -41,7 +41,7 @@ Az alábbi táblázat a logikai hálózatok és társított, meg kell tervezni a
 
 | Logikai hálózat | Leírás | Méret | 
 | -------- | ------------- | ------------ | 
-| Nyilvános virtuális IP-cím | Az Azure Stack összesen 32 címet a hálózati használ. Az Azure Stack-szolgáltatások egy kis készletét nyolc nyilvános IP-címeket használja, és a többi bérlő virtuális gépek által használt. Ha azt tervezi, használja az App Service-ben és az SQL erőforrás-szolgáltatók, 7 további címeket használják. | / 26 (62 gazdagépek) – /22 (1022 gazdagép)<br><br>Ajánlott = /24 (254 gazdagép) | 
+| Nyilvános virtuális IP-cím | Az Azure Stack használja ezt a hálózatot 31 címeket összesen. Az Azure Stack-szolgáltatások egy kis készletét nyolc nyilvános IP-címeket használja, és a többi bérlő virtuális gépek által használt. Ha azt tervezi, használja az App Service-ben és az SQL erőforrás-szolgáltatók, 7 további címeket használják. A fennmaradó 15 IP-címek későbbi Azure-szolgáltatások számára vannak fenntartva. | / 26 (62 gazdagépek) – /22 (1022 gazdagép)<br><br>Ajánlott = /24 (254 gazdagép) | 
 | Kapcsoló-infrastruktúra | Az Útválasztás megállapítása, dedikált IP-címek pont-pont típusú váltson a felügyeleti felületek és a kapcsoló visszacsatolási címeket. | /26 | 
 | Infrastruktúra | Azure Stack belső összetevőinek való kommunikációhoz használt. | /24 |
 | Privát | A tárolóhálózat és a privát virtuális IP-cím használható. | /24 | 

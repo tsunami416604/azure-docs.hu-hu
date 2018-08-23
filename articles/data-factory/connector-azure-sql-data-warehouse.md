@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7a9adc8e9b7bcf69cce6b8ecf00e44477c1b0da3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430739"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442239"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -71,6 +71,9 @@ Különböző hitelesítési típus tekintse meg a következő szakaszok az Elő
 - [SQL-hitelesítés](#sql-authentication)
 - Az Azure AD alkalmazástoken-hitelesítésének: [egyszerű szolgáltatás](#service-principal-authentication)
 - Az Azure AD alkalmazástoken-hitelesítésének: [Felügyeltszolgáltatás-identitás](#managed-service-identity-authentication)
+
+>[!TIP]
+>Ha nyomja le az "UserErrorFailedToConnectToSqlServer", hibakód: Hiba történt, és üzenet például a "a munkamenet korlátot, az adatbázis XXX elérte.", és adja hozzá `Pooling=false` a kapcsolati karakterláncot, és próbálkozzon újra.
 
 ### <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -397,7 +400,7 @@ Az SQL Data Warehouse PolyBase támogatja az Azure Blob- és az Azure Data Lake 
 
 A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beállításokat, és automatikusan visszavált az adatok áthelyezése a BULKINSERT mechanizmusa.
 
-1. A **forrás társított szolgáltatás** típus **AzureStorage** vagy **AzureDataLakeStore** az egyszerű szolgáltatásnév hitelesítésével.
+1. A **forrás társított szolgáltatás** írja be az Azure Blob storage (**Azure BLOB Storage szolgáltatásról**/**AzureStorage**) fiók kulcsos hitelesítést vagy az Azure Data Lake Tárolási Gen1 (**AzureDataLakeStore**) az egyszerű szolgáltatásnév hitelesítésével.
 1. A **bemeneti adatkészlet** típus **AzureBlob** vagy **AzureDataLakeStoreFile**. A formátum típusa alapján `type` tulajdonságai **OrcFormat**, **ParquetFormat**, vagy **TextFormat**, az alábbi konfigurációkkal:
 
    1. `rowDelimiter` meg kell **\n**.

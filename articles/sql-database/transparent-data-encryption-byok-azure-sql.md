@@ -17,16 +17,16 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 4a2f751c55a3bd386c6a984a3b5a16a24166f90c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: d3e8d34599600512a1d9d0308c0d6014691bf519
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043902"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442722"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás Bring Your Own Key-támogatással az Azure SQL Database és a Data warehouse-bA
 
-Bring Your Own Key (BYOK) támogatása [transzparens adattitkosítási (TDE)] ((https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption) lehetővé teszi, hogy az adatbázis-titkosítási kulcs (Adattitkosítási) titkosítást a TDE-Védőhöz nevű aszimmetrikus kulccsal.  A TDE-Védőhöz tárolja az Ön kezében [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), az Azure-alapú külső kulcs kezelési rendszer. Az Azure Key Vault egy első kulcskezelő szolgáltatás, amellyel a TDE integrálva van a BYOK támogatása. A TDE adattitkosítási kulcsot, az adatbázis rendszerindító oldal található van titkosítva, és a TDE-védőhöz visszafejteni. A TDE-Védőhöz az Azure Key Vaultban tárolja, és sosem hagyja el a key vaultban. Ha visszavonja a key vaultban a kiszolgáló elérését, egy adatbázis nem lehet visszafejteni és a memóriába.  A TDE-védőhöz a logikai kiszolgáló szintjén van beállítva, és az adott kiszolgálóhoz tartozó összes adatbázis által örökölt. 
+Bring Your Own Key (BYOK) támogatása [transzparens adattitkosítási (TDE)](https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption) lehetővé teszi, hogy az adatbázis-titkosítási kulcs (Adattitkosítási) titkosítást a TDE-Védőhöz nevű aszimmetrikus kulccsal.  A TDE-Védőhöz tárolja az Ön kezében [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), az Azure-alapú külső kulcs kezelési rendszer. Az Azure Key Vault egy első kulcskezelő szolgáltatás, amellyel a TDE integrálva van a BYOK támogatása. A TDE adattitkosítási kulcsot, az adatbázis rendszerindító oldal található van titkosítva, és a TDE-védőhöz visszafejteni. A TDE-Védőhöz az Azure Key Vaultban tárolja, és sosem hagyja el a key vaultban. Ha visszavonja a key vaultban a kiszolgáló elérését, egy adatbázis nem lehet visszafejteni és a memóriába.  A TDE-védőhöz a logikai kiszolgáló szintjén van beállítva, és az adott kiszolgálóhoz tartozó összes adatbázis által örökölt. 
 
 BYOK-támogatással rendelkező felhasználók mostantól megszabhatja, beleértve a kulcsok cseréjét fontos kezelési feladatok, a key vault-engedélyek törlése kulcsokat, és minden TDE védő Azure Key Vault szolgáltatással a naplózás és jelentéskészítés engedélyezéséhez. A Key Vault központi kulcskezelési biztosít, szorosan figyelt hardveres biztonsági modulokban (HSM) használ, és lehetővé teszi a feladatkörök kulcsok kezelését és az adatok között, amelyek az előírásoknak való megfelelőséget.  
 

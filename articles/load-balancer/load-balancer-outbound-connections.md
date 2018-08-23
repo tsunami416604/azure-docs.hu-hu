@@ -1,6 +1,6 @@
 ---
-title: Kimenő kapcsolatok az Azure-ban |} Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan Azure lehetővé teszi a virtuális gépek nyilvános internetes szolgáltatásokkal kommunikálni.
+title: Az Azure kimenő kapcsolatainak |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan biztosítja az Azure virtuális gépek nyilvános internetről szolgáltatásokkal kommunikálni.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -12,91 +12,91 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/08/2018
+ms.date: 08/15/2018
 ms.author: kumud
-ms.openlocfilehash: 2e6b8dd5e0ec0ae73fff4a25ad79045e3414e9cc
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e9249f3a5787da9ad54945195b47cf9af0f45fb1
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824999"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42059153"
 ---
-# <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
+# <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
 
-Azure felhasználói telepítés a kimenő kapcsolatot biztosít számos különböző módon. A cikkből megtudhatja, Mik azok a helyzetek, amikor vonatkoznak, leírás és kezelésük módjával.
+Az Azure számos különféle mechanizmus útján kimenő kapcsolat az ügyfél központi telepítések biztosít. A cikkből megtudhatja, Mik azok az esetek, amikor azok a alkalmazni, hogyan működnek és hogyan kezelhetők.
 
 >[!NOTE] 
->Ez a cikk csak a Resource Manager üzembe helyezések ismerteti. Felülvizsgálati [kimenő kapcsolatok (klasszikus)](load-balancer-outbound-connections-classic.md) összes klasszikus telepítési forgatókönyvek az Azure-ban.
+>Ez a cikk csak a Resource Manager üzembe helyezések ismerteti. Felülvizsgálat [kimenő kapcsolatok (klasszikus)](load-balancer-outbound-connections-classic.md) összes klasszikus üzembe helyezési forgatókönyvek az Azure-ban.
 
-A központi telepítés az Azure-végpontok kívül a nyilvános IP-címtér az Azure kommunikálhatnak. Amikor egy példányát a nyilvános IP-címtér lévő célra egy kimenő folyam kezdeményez, Azure dinamikusan rendeli a magánhálózati IP-cím egy nyilvános IP-cím. Ez a leképezés létrehozása után a kimenő kezdeményezésű áramlás forgalom is elérhető a magánhálózati IP-címet a folyamat származási helyének.
+Központi telepítés az Azure-ban a nyilvános IP-címtér az Azure-on kívülről végpontok kommunikálhat. Ha egy példány egy kimenő folyam lévő nyilvános IP-címterület célra kezdeményezi, az Azure dinamikusan rendeli a magánhálózati IP-cím nyilvános IP-címre. Ez a leképezés létrehozása után a kimenő származó folyamat a visszatérő forgalom is elérheti a magánhálózati IP-címet, adja meg a folyamat.
 
-Azure forrás hálózati címfordítás (SNAT) használja ezt a funkciót. Több privát IP-címek vannak színleg mögött egyetlen nyilvános IP-címnek, az Azure használja [címfordítást (PAT) port](#pat) helyettesítő magánhálózati IP-címek számára. Elmúló port a PAT használja, és [előzetesen lefoglalt](#preallocatedports) készlet mérete alapján.
+Az Azure forrás hálózati címfordítás (SNAT) használ, ez a függvény végrehajtásához. Több magánhálózati IP-címek vannak folyamatnak álcázott mögött egyetlen nyilvános IP-címet, ha az Azure használ [címfordítás (PAT) port](#pat) a magánhálózati IP-címek révén. A rövid élettartamú port a PAT használja, és [előzetesen lefoglalt](#preallocatedports) készlet mérete alapján.
 
-Egyszerre több [kimenő forgatókönyvek](#scenarios). Ezek a forgatókönyvek igény szerint kombinálhatja. Tekintse át alaposan, hogy a képességek, korlátozások és minták tájékozódjon a telepítési modell vonatkoznak és a forgatókönyvet. Tekintse át az útmutató a [forgatókönyvekben kezelése](#snatexhaust).
+Egyszerre több [kimenő forgatókönyveket](#scenarios). Igény szerint kombinálhatja ezeket a forgatókönyveket. Tekintse át alaposan, hogy értelmezését képességek, korlátozások és minták a-alapú üzemi modellre vonatkoznak és a forgatókönyvet. Tekintse át az útmutató a [ezek a forgatókönyvek kezelése](#snatexhaust).
 
 >[!IMPORTANT] 
->Standard terheléselosztó kimenő kapcsolat számára új képességekkel és különböző beállításokat vezet be.   Például [3. forgatókönyv](#defaultsnat) nem létezik, egy szabványos belső terheléselosztón jelen, és különböző lépéseket kell tenni.   Gondosan tekintse át a teljes dokumentum átfogó fogalmakat és termékváltozatok közötti különbségek megértése.
+>A standard Load Balancer kimenő kapcsolat az új funkciókat vehetnek igénybe, és különböző beállításokat vezet be.   Ha például [3. forgatókönyv](#defaultsnat) nem létezik, ha jelen egy belső Standard Load Balancer és különböző lépéseket kell elvégezni.   Gondosan tekintse át ezt a teljes dokumentumot, az általános fogalmak és Termékváltozatai közötti különbségek megértése.
 
 ## <a name="scenarios"></a>Forgatókönyv áttekintése
 
-Az Azure Load Balancer és a kapcsolódó erőforrások explicit módon határozzák meg használatakor [Azure Resource Manager](#arm).  Azure jelenleg három különböző módszert biztosít eléréséhez kimenő kapcsolódás az Azure Resource Manager erőforrások. 
+Az Azure Load Balancer és kapcsolódó erőforrások explicit módon definiálva vannak használatakor [Azure Resource Manager](#arm).  Az Azure jelenleg a kimenő kapcsolat az Azure Resource Manager-erőforrások eléréséhez három különböző módszert biztosít. 
 
 | Forgatókönyv | Módszer | IP-protokollok | Leírás |
 | --- | --- | --- | --- |
-| [1. Virtuális gép példány szint nyilvános IP-címmel (vagy anélkül terheléselosztó)](#ilpip) | SNAT, színleg nem használt port | TCP, UDP, ICMP, ESP | Azure használ a nyilvános IP-címet hozzárendelni az IP-konfiguráció, a példány hálózati adaptert. A példány érhető el az összes rövid élettartamú port tartozik. |
-| [2. A virtuális gép (nem példány szint nyilvános IP-cím a példányon) társított nyilvános terheléselosztó](#lb) | A port színleg (PAT) SNAT használ a Load Balancer frontends | TCP, UDP |Azure több privát IP-címek osztanak meg a nyilvános terheléselosztót frontends nyilvános IP-címét. Azure a PAT frontends elmúló portját használja. |
-| [3. Önálló virtuális gép (nem a terheléselosztóhoz, példány szint nyilvános IP-cím)](#defaultsnat) | A port színleg (PAT) SNAT | TCP, UDP | Azure automatikusan meg, míg a nyilvános IP-címnek a SNAT, a nyilvános IP-címet oszt meg több privát IP-címek, a rendelkezésre állási csoport és a nyilvános IP-cím elmúló port használja. Ez egy webfarmos tartalék a fenti forgatókönyvek esetén. Nem ajánlott, ha figyelemmel kísérelhetik és vezérelhetik van szüksége. |
+| [1. Virtuális gép (vagy anélkül terheléselosztó) példány szintű nyilvános IP-címmel](#ilpip) | Port folyamatnak álcázott nem használja az SNAT, | TCP, UDP, AZ ICMP, ESP | Az Azure használ a nyilvános IP-cím rendelt IP-konfigurációja, a példány hálózati adapteren. A példány érhető el minden rövid élettartamú port rendelkezik. |
+| [2. Nyilvános Load Balancer társított virtuális gép (nem példány szintű nyilvános IP-cím-példányon)](#lb) | Port (PAT) folyamatnak álcázott az SNAT használatával a terheléselosztó előtérrendszer | TCP, UDP |Az Azure több magánhálózati IP-címek osztanak meg a nyilvános terheléselosztó előtérrendszer nyilvános IP-címét. Az Azure az előtérrendszer a PAT-rövid élettartamú port használja. |
+| [3. Önálló virtuális gép (nem a terheléselosztóhoz, nincs példány szintű nyilvános IP-cím)](#defaultsnat) | A port (PAT) folyamatnak álcázott SNAT | TCP, UDP | Az Azure automatikusan jelöl ki egy nyilvános IP-címet az SNAT, a nyilvános IP-címet oszt meg a rendelkezésre állási csoport több magánhálózati IP-címek, és a nyilvános IP-cím elmúló port használja. Ez az a fenti esetekben egy tartalék forgatókönyvet. Nem ajánlott, ha a szükséges átláthatóságot és irányítást. |
 
-Ha nem szeretné a virtuális gépek kívül Azure a nyilvános IP-címterület végpontok kommunikálni, a hálózati biztonsági csoportokkal (NSG-k) segítségével letiltja a hozzáférést, igény szerint. A szakasz [megakadályozza a kimenő kapcsolat](#preventoutbound) NSG-ket ismerteti részletesen. Designing útmutatást, megvalósítás, és minden kimenő-hozzáférés nélküli virtuális hálózat kezelése van ez a cikk hatókörén kívül.
+Ha nem szeretné a virtuális gép nyilvános IP-címtér az Azure-on kívülről végpontok kommunikálni, a hálózati biztonsági csoportok (NSG-k) segítségével letiltja a hozzáférést, igény szerint. A szakasz [megakadályozza, hogy a kimenő kapcsolat](#preventoutbound) NSG-k ismerteti részletesebben. Tervezési útmutatást, végrehajtási és a egy virtuális hálózat minden kimenő hozzáférés nélkül kezelése nem ez a cikk foglalkozik.
 
-### <a name="ilpip"></a>1. forgatókönyv: Virtuális gép példány szint nyilvános IP-címmel
+### <a name="ilpip"></a>1. forgatókönyv: Virtuális gép példány szintű nyilvános IP-címmel
 
-Ebben a forgatókönyvben a virtuális Gépnek legyen egy példány szint nyilvános IP (ILPIP) rendelve. Kimenő kapcsolatok illeti nem számít, hogy a virtuális gép elosztott terhelésű vagy nem. Ebben a forgatókönyvben élvez a többi. Egy ILPIP használata esetén a virtuális Gépet a ILPIP minden kimenő forgalom használ.  
+Ebben a forgatókönyvben a VM-példány szintű nyilvános IP (ILPIP) hozzárendelt rendelkezik. Kimenő kapcsolatok illeti nem számít, hogy a virtuális gép, vagy nem elosztott terhelésű. Ebben a forgatókönyvben a többitől felett élvez elsőbbséget. Egy ILPIP használata esetén a virtuális gép minden kimenő forgalom a ILPIP használ.  
 
-Nyilvános IP-egy virtuális Géphez rendelt egy 1:1 kapcsolat (nem 1:many), és valósul meg állapotmentes 1:1 hálózati címfordítást.  A virtuális Gépnek legyen használható elmúló port, és nem használja a port színleg (PAT).
+Egy nyilvános egy virtuális géphez rendelt IP-1:1 kapcsolatot (nem 1:many) és megvalósítva, állapot nélküli 1:1 helyezkedik el.  Álcázásos port (PAT) nincs használatban, és a virtuális gépen elérhető összes elmúló port.
 
-Ha az alkalmazás számos kimenő forgalom kezdeményez, és SNAT port Erőforrásfogyás tapasztal, érdemes lehet hozzárendelése egy [SNAT megkötések mérséklése ILPIP](#assignilpip). Felülvizsgálati [kezelése SNAT Erőforrásfogyás](#snatexhaust) egészében.
+Ha az alkalmazás számos kimenő forgalom kezdeményezése és SNAT portfogyás tapasztal, vegye fontolóra hozzárendelése egy [csökkentése érdekében az SNAT megkötések ILPIP](#assignilpip). Felülvizsgálat [kezelése SNAT Erőforrásfogyás](#snatexhaust) egészében.
 
-### <a name="lb"></a>2. forgatókönyv: Elosztott terhelésű virtuális gép nélküli példány szint nyilvános IP-cím
+### <a name="lb"></a>2. forgatókönyv: Elosztott terhelésű Virtuálisgép-példány szintű nyilvános IP-cím nélkül
 
-Ebben a forgatókönyvben a VM része egy nyilvános terheléselosztó háttérkészletének. A virtuális gép nem rendelkezik a nyilvános IP-cím hozzárendelve. A terheléselosztó erőforrás olyan terheléselosztó szabályhoz a nyilvános IP-előtérbeli a háttérkészlet közötti kapcsolat létrehozásához kell konfigurálni.
+Ebben a forgatókönyvben a virtuális gép része egy nyilvános Load Balancer háttérkészlethez. A virtuális gép nem rendelkezik hozzárendelt nyilvános IP-címet. A terheléselosztó erőforrás egy terheléselosztó-szabályt létrehozni egy hivatkozást a háttérkészlet előtérbeli nyilvános IP-Címmel kell konfigurálni.
 
-Ha nem tölti ki a szabály konfigurálását, a rendszer nem a forgatókönyvhöz, amelyben a [önálló virtuális gép, és nem példány szint nyilvános IP-cím](#defaultsnat). Nincs szükség a szabályhoz való egy működő figyelő sikeres állapotának mintavétel háttérkészlet.
+Ha nem ez a szabály konfigurálását végrehajtani, viselkedését a forgatókönyvben leírtak szerint van-e [önálló virtuális gép nincs példány szintű nyilvános IP-címmel](#defaultsnat). Nem elengedhetetlen a a szabályt, hogy rendelkezik egy működő figyelőt a háttérkészletben sikeres végrehajtásához az állapotmintához.
 
-A terheléselosztással rendelkező virtuális Gépet egy kimenő folyam hoz létre, amikor az Azure eszköz a személyes forrás IP-címét a kimenő folyam a nyilvános terheléselosztó előtérbeli nyilvános IP-címére. Azure SNAT használja ezt a funkciót. Azure is használ [PAT](#pat) a helyettesítő több privát IP-cím, egy nyilvános IP-cím mögött. 
+Az elosztott terhelésű virtuális gép egy kimenő folyamatot hoz létre, amikor Azure lefordítja a nyilvános Load Balancer előtérbeli nyilvános IP-címét a kimenő folyamat privát forrás IP-címét. Azure SNAT használja ezt a funkciót. Az Azure is használ [PAT](#pat) való révén több magánhálózati IP-cím nyilvános IP-cím mögött. 
 
-A load balancer nyilvános IP-cím előtér-rövid élettartamú port segítségével különböztetheti meg egymástól a virtuális gép által az egyes adatfolyamok. SNAT dinamikusan használ [előzetesen lefoglalt elmúló port](#preallocatedports) kimenő adatfolyamok létrehozásakor. Ebben a környezetben használt SNAT porttartomány SNAT portok nevezzük.
+A terheléselosztó nyilvános IP-cím frontend-port a rövid élettartamú segítségével adja meg a virtuális gép által az egyes folyamatok megkülönböztetésére. Dinamikusan használja az SNAT [előzetesen lefoglalt elmúló port](#preallocatedports) kimenő folyamatok létrehozásakor. Ebben a környezetben a rövid élettartamú tűzfalakon SNAT SNAT portok nevezik.
 
-SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakasz. A véges erőforrása is nagyon gyorsan kimerítették fontosságúak. Fontos tudni, hogyan vannak [felhasznált](#pat). Annak megértése, hogyan tervezhet a a fogyasztás és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
+SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakaszban. Azok, amelyek felhasználhatók, is véges erőforrás. Fontos tudni, hogyan vannak [felhasznált](#pat). Megtudhatja, hogyan tervezhet a felhasználásra és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
 
-Ha [több (nyilvános) IP-címek társítva a Load Balancer alapvető](load-balancer-multivip-overview.md), bármely a nyilvános IP-címek vannak egy [a kimenő forgalom jelölt](#multivipsnat), és egy van választva.  
+Amikor [több (nyilvános) IP-címek társítva a Load Balancer alapszintű](load-balancer-multivip-overview.md), bármely, a nyilvános IP-címek vannak egy [jelölt a kimenő forgalom](#multivipsnat), és a egy van kiválasztva.  
 
-Kimenő kapcsolatok a Load Balancer alapszintű állapotának figyelésére használható [Naplóelemzési terheléselosztóhoz](load-balancer-monitor-log.md) és [eseménynaplók riasztási](load-balancer-monitor-log.md#alert-event-log) SNAT port Erőforrásfogyás üzenetek figyelésére.
+Kimenő kapcsolatok a Load Balancer alapszintű állapotának monitorozásához használja [Log Analytics terheléselosztó](load-balancer-monitor-log.md) és [eseménynaplók riasztás](load-balancer-monitor-log.md#alert-event-log) SNAT port Erőforrásfogyás üzenetek figyeléséhez.
 
-### <a name="defaultsnat"></a>3. forgatókönyv: Önálló virtuális gép példány szint nyilvános IP-cím nélküli
+### <a name="defaultsnat"></a>3. forgatókönyv: Önálló virtuális gép példány szintű nyilvános IP-cím nélkül
 
-Ebben a forgatókönyvben a virtuális gép nem része egy nyilvános terheléselosztó-készlet (és nem része egy belső szabványos terheléselosztó-készlet), és nincs hozzárendelve ILPIP címe. Ha a virtuális Gépet hoz létre egy kimenő folyam, Azure lefordítja a nyilvános IP-forráscím kimenő folyam titkos forrás IP-címét. A nyilvános IP-cím, a kimenő folyam használt nem konfigurálható, és nem tartoznak bele az előfizetés nyilvános IP-erőforrás korlátját ellen.
+Ebben a forgatókönyvben a virtuális gép nem része egy nyilvános terheléselosztó-készlet (és nem egy Standard Load Balancer belső készlet része), és nem rendelkezik egy ILPIP-cím rendelve. Ha a virtuális Gépet hoz létre egy kimenő folyam, Azure lefordítja a kimenő folyamat egy nyilvános IP-forráscím privát forrás IP-címét. A kimenő flow használt nyilvános IP-cím nem konfigurálható, és nem számítanak bele az előfizetéshez tartozó nyilvános IP-erőforráskorlátot.
 
 >[!IMPORTANT] 
->Ebben a forgatókönyvben azt is érvényes, ha __csak__ egy alapszintű belső terheléselosztón van csatolva. 3. forgatókönyv van __nem érhető el__ amikor egy belső szabványos Load Balancer egy virtuális Géphez van csatolva.  Explicit módon kell létrehoznia [1. forgatókönyv](#ilpip) vagy [2. forgatókönyv](#lb) egy szabványos belső terheléselosztó használata mellett.
+>Ebben a forgatókönyvben azt is vonatkozik, amikor __csak__ egy belső alapszintű terheléselosztó van csatolva. 3. forgatókönyv van __nem érhető el__ amikor egy belső Standard Load Balancer egy virtuális Géphez van csatlakoztatva.  Explicit módon létre kell hoznia [1. forgatókönyv](#ilpip) vagy [2. forgatókönyv](#lb) Standard belső terheléselosztó használata mellett.
 
-Azure használ SNAT port színleg ([PAT](#pat)) Ez a függvény végrehajtásához. Ebben a forgatókönyvben hasonlít [2. forgatókönyv](#lb), azonban nem szabályozhatják a használt IP-cím van. Ez az a tartalék forgatókönyv esetén 1 és 2 nem léteznek. Ez a forgatókönyv nem ajánlott, ha azt szeretné, hogy a kimenő cím vezérelheti. Kimenő kapcsolatok az alkalmazáshoz kritikus részét képezik, ha egy másik helyzet kell választotta.
+Azure-port folyamatnak álcázott használja az SNAT ([PAT](#pat)) Ez a függvény végrehajtásához. Ez a forgatókönyv hasonlít a [2. forgatókönyv](#lb), azzal a különbséggel ott nem használt IP-cím nem szabályozza. Ez a tartalék forgatókönyv esetében, ha 1. és 2 forgatókönyvek nem létezik. Ebben a forgatókönyvben nem ajánlott, ha azt szeretné, hogy a kimenő cím felett. Ha a kimenő kapcsolatokat az alkalmazás kritikus része, egy másik forgatókönyv kell választotta.
 
-SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakasz.  A virtuális gépek rendelkezésre állási csoport megosztása számát határozza meg, milyen előzetes lefoglalás szinten vonatkozik.  Egy különálló virtuális gép rendelkezésre állási csoport nélküli hatékonyan 1 készletét előzetes lefoglalás (1024 SNAT portok) meghatározása céljából. SNAT portjait is nagyon gyorsan kimerítették véges erőforrás. Fontos tudni, hogyan vannak [felhasznált](#pat). Annak megértése, hogyan tervezhet a a fogyasztás és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
+SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakaszban.  A virtuális gépek rendelkezésre állási csoport megosztása száma határozza meg, melyik előzetes lefoglalás szint vonatkozik.  Egy különálló virtuális gép rendelkezésre állási csoport nélkül lényegében egy készlet 1 (1024 SNAT portok) előzetes lefoglalás meghatározása céljából. SNAT portjait véges erőforrás, amely is felhasználhatók. Fontos tudni, hogyan vannak [felhasznált](#pat). Megtudhatja, hogyan tervezhet a felhasználásra és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
 
-### <a name="combinations"></a>Több, kombinált forgatókönyv
+### <a name="combinations"></a>Több, kombinált forgatókönyvek
 
-Az egy adott eredmény elérése érdekében a fenti szakaszokban ismertetett forgatókönyvek kombinálhatja. Ha több forgatókönyv jelen, egy rangsora vonatkozik: [1. forgatókönyv](#ilpip) elsőbbséget élvez [2. forgatókönyv](#lb) és [3](#defaultsnat). [2. forgatókönyv](#lb) felülbírálások [3. forgatókönyv](#defaultsnat).
+Egy adott eredmény eléréséhez az előző szakaszokban leírt forgatókönyveket kombinálhatók. Amikor több forgatókönyvek találhatók, vonatkozik-e olyan ellentmondások: [1. forgatókönyv](#ilpip) elsőbbséget élvez [2. forgatókönyv](#lb) és [3](#defaultsnat). [2. forgatókönyv](#lb) felülbírálások [3. forgatókönyv](#defaultsnat).
 
-Példa: az Azure Resource Manager központi telepítése, amikor az alkalmazás erősen támaszkodik a célhelyekre csak korlátozott számú kimenő kapcsolatokat, de is fogad a bejövő forgalom a terheléselosztó előtérbeli keresztül. Ebben az esetben kombinálhatja a 1. és 2 mentességre forgatókönyvek. További kombinációját, tekintse át [kezelése SNAT Erőforrásfogyás](#snatexhaust).
+Ilyen például, egy Azure Resource Manager-alapú, ahol az alkalmazás erősen támaszkodik a célhelyekre csak korlátozott számú kimenő kapcsolatokat, azonban is fogad a terheléselosztó előtérbeli keresztül bejövő forgalom. Ebben az esetben kombinálhat 1 és 2. a mentesség forgatókönyvek. További minták, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
 
-### <a name="multife"></a> A kimenő forgalom több frontends
+### <a name="multife"></a> A kimenő forgalom több előtérrendszer
 
 #### <a name="load-balancer-standard"></a>Load Balancer Standard
 
-Load Balancer szabványos használja minden jelöltek kimenő forgalom ugyanazon az időpontot, amikor [több (nyilvános) IP-frontends](load-balancer-multivip-overview.md) található. Minden egyes előtér szorozza meg a rendelkezésre álló előzetesen lefoglalt SNAT portok száma egy terheléselosztási szabályt engedélyezésekor kimenő kapcsolatok.
+Load Balancer Standard használja minden jelöltek a kimenő forgalom egyszerre időpontot, amikor [több (nyilvános) IP-előtérrendszer](load-balancer-multivip-overview.md) megtalálható. Egyes előtérrendszereken összeszoroz elérhető előzetesen lefoglalt SNAT portok száma, ha a terheléselosztási szabály engedélyezve van a kimenő kapcsolatok számára.
 
-Ha szeretné, ne jelenjen meg többé a front-end IP-címet az új terheléselosztási terheléselosztási szabály lehetőséggel kimenő kapcsolatokat használja:
+Választhat egy előtérbeli IP-cím használatát a kimenő kapcsolatok egy új terhelés terheléselosztási szabályt kapcsolóval le:
 
 ```json    
       "loadBalancingRules": [
@@ -106,149 +106,149 @@ Ha szeretné, ne jelenjen meg többé a front-end IP-címet az új terheléselos
       ]
 ```
 
-Általában ez a beállítás alapértelmezett értéke _hamis_ és jelzi, hogy ez a szabály a társított virtuális gépek a terheléselosztási szabály háttérkészlethez kimenő SNAT programokat.  Ez módosítható _igaz_ megakadályozhatja, hogy a terheléselosztó kimenő kapcsolatok a virtuális géphez társított előtérbeli IP-címét a következőre a terheléselosztási szabály háttérkészlethez.  Továbbra is megjelölhetők, így egy adott IP-cím a kimenő forgalom leírtak szerint, és [több kombinált forgatókönyvek](#combinations) is.
+Általában ez a beállítás alapértelmezés szerint a _hamis_ , és jelzi, hogy ez a szabály a háttérkészlet, a terheléselosztási szabály, a társított virtuális gépek kimenő SNAT programokat.  Ez módosítható _igaz_ a háttérkészlet, a terheléselosztási szabály megakadályozza, hogy a terheléselosztóval társított előtérbeli IP-címet használja a virtuális gép kimenő kapcsolatok k.  És továbbra is kijelölhet egy adott IP-cím a kimenő forgalom leírtak szerint [több kombinált forgatókönyvek](#combinations) is.
 
-#### <a name="load-balancer-basic"></a>Terheléselosztó Basic betöltése
+#### <a name="load-balancer-basic"></a>Load Balancer alapszintű
 
-Load Balancer alapvető választja a kimenő forgalom használandó egyetlen előtérbeli amikor [több (nyilvános) IP-frontends](load-balancer-multivip-overview.md) kimenő forgalom vár. Ez a beállítás nem konfigurálható, és vegye figyelembe a kijelölés algoritmust kell véletlenszerű. Egy adott IP-cím a kimenő forgalom jelölhet ki a [több kombinált forgatókönyvek](#combinations).
+Load Balancer alapszintű választja a kimenő forgalom használandó egyetlen frontend amikor [több (nyilvános) IP-előtérrendszer](load-balancer-multivip-overview.md) kimenő forgalom a deduplikációra. Ez a beállítás nem konfigurálható, és gondolja át a kijelölést algoritmus véletlenszerű. Kimenő forgalom a megadott IP-címet is kijelölhet a leírtak szerint [több kombinált forgatókönyvek](#combinations).
 
-### <a name="az"></a> Rendelkezésre állási zónák
+### <a name="az"></a> A rendelkezésre állási zónák
 
-Használata esetén [szabványos terheléselosztót, rendelkezésre állási zónák](load-balancer-standard-availability-zones.md), zónaredundáns frontends biztosíthat SNAT zónaredundáns kimenő kapcsolatokat, és SNAT programozási survives zóna hiba.  Zonal frontends használata esetén SNAT kimenő kapcsolatok sorsáról megosztása a zónához tartozik.
+Használata esetén [rendelkezésre állási zónák a Standard Load Balancer](load-balancer-standard-availability-zones.md), a zónaredundáns előtérrendszer biztosíthat zónaredundáns kimenő SNAT-kapcsolatok és SNAT programozási survives zóna hiba.  Zónaszintű előtérrendszer használata esetén a kimenő SNAT-kapcsolatok sorsát megoszthatja a zónához tartoznak.
 
 ## <a name="snat"></a>SNAT és a PAT ismertetése
 
-### <a name="pat"></a>Port színleg SNAT (PAT)
+### <a name="pat"></a>Port álcázásos SNAT (PAT)
 
-Egy nyilvános terheléselosztó erőforrás társított Virtuálisgép-példányok esetén a rendszer írni minden kimenő kapcsolat forrása. A forrás az előtérbeli nyilvános IP-cím a terheléselosztó a virtuális hálózat privát IP-címtér van újraírja. A nyilvános IP-címtér 5 rekordos a folyamat (forrás IP-cím, forrásport, IP-átviteli protokoll, cél IP-címe, Célport) egyedinek kell lennie.  Port színleg SNAT TCP vagy UDP IP protokoll használható.
+Ha egy nyilvános terheléselosztó-erőforráshoz társítva a Virtuálisgép-példányok, minden kimenő kapcsolat forrása van átírása. A forrás az előtér a terheléselosztó nyilvános IP-címet a virtuális hálózati magánhálózati IP-címtér van újraírja. A nyilvános IP-címtér 5 rekordos (forrás IP-cím, forrásoldali portszám, IP protokoll, cél IP-címe, Célport) a folyamat egyedinek kell lennie.  Álcázásos SNAT port a TCP vagy UDP IP protokollokkal használható.
 
-Ennek elérése után írja át a magánhálózati IP-forráscím, mert több adatfolyamok egy egyetlen nyilvános IP-címről elmúló port (SNAT portok) segítségével. 
+A rövid élettartamú portok (SNAT port) segítségével ennek elérése után újraírását a magánhálózati IP-forráscím, mert több folyamatok egyetlen nyilvános IP-cím származik. 
 
-Egy SNAT port felhasznált ne egy egyetlen IP-címre, port és protokoll. Több adatfolyamok ugyanahhoz a cél IP-cím, port és protokoll, az egyes SNAT egyetlen portot használ fel. Ez biztosítja, hogy az adatfolyamok egyedi legyenek-e az azonos nyilvános IP-cím oly módon, és nyissa meg az azonos cél IP-cím, port és protokoll. 
+Egy SNAT-port száma a flow számára egy egy cél IP-cím, port és protokoll használja fel. Több folyamatok, az azonos cél IP-cím, port és protokoll az egyes folyamatok SNAT egyetlen portot használ fel. Ez biztosítja, hogy a flow egyediek, amikor azok, azonos nyilvános IP-cím származnak, és nyissa meg az azonos cél IP-cím, port és protokoll. 
 
-Több adatfolyamok, egy másik cél IP-cím, port és protokoll, hogy mindegyik egyetlen SNAT port megosztása. A cél IP-cím, port és protokoll egyedivé adatfolyamok nincs szükség további Forráshelyek segítségével különböztetheti meg egymástól a nyilvános IP-címtér forgalmának portok.
+Több egy másik cél IP-cím, port és protokoll, a folyamatok egyetlen SNAT port megosztása. A cél IP-cím, port és protokoll egyedivé folyamatok nincs szükség további forrás különbséget tenni a nyilvános IP-címtér folyamatok portokat.
 
-SNAT port erőforrások elfogytak, amikor a kimenő forgalom sikertelen, amíg a meglévő forgalom kiadási SNAT portok. Terheléselosztó úgy szabadít fel SNAT portok az adatfolyam bezárása, és használja a [4 perces időtúllépést](#idletimeout) az üresjárati folyamok SNAT portok újraigénylési funkcióját.
+SNAT port erőforrások elfogy, ha a kimenő forgalom sikertelen, amíg a meglévő folyamatok kiadási SNAT portokat. Load Balancer SNAT portok szabadít fel, amikor a folyamat bezárul, és használja a [4 perces üresjárati időkorlátot](#idletimeout) VISSZAIGÉNYLÉSE SNAT portok az inaktív folyamatok esetében.
 
-Feltételeket, amelyek gyakran előfordulhat, hogy SNAT port Erőforrásfogyás mérséklése kombinációját, tekintse át a [kezelése SNAT](#snatexhaust) szakasz.
+Minták csökkentése érdekében a feltételeket, amelyek gyakran vezetnek SNAT portfogyás, tekintse át a [kezelése SNAT](#snatexhaust) szakaszban.
 
-### <a name="preallocatedports"></a>Rövid élettartamú port előzetes lefoglalás port színleg SNAT (PAT)
+### <a name="preallocatedports"></a>A rövid élettartamú port előzetes lefoglalás folyamatnak álcázott SNAT (PAT) port
 
-Használatakor a háttérkészlet mérete alapján az algoritmus meghatározására száma előzetesen lefoglalt SNAT elérhető portok az Azure által használt port színleg SNAT ([PAT](#pat)). SNAT portjait elmúló port egy adott nyilvános IP-forráscím érhető el.
+Portot álcázásos SNAT használata esetén a háttérkészlet mérete alapján egy algoritmus meghatározására száma előzetesen lefoglalt SNAT elérhető portok Azure használja ([PAT](#pat)). SNAT portjait elmúló port egy adott nyilvános IP-forráscím érhető el.
 
-SNAT portok azonos számú előzetesen lefoglalt az UDP- és TCP kulcsattribútumokkal és felhasznált egymástól függetlenül / IP-protokoll. 
+SNAT portok azonos számú előzetesen lefoglalt UDP és TCP rendre és egymástól függetlenül IP protokoll / felhasznált. 
 
 >[!IMPORTANT]
->Standard Termékváltozat SNAT programozási / IP-átviteli protokoll és a terheléselosztási szabályt származik.  Ha csak egy TCP terheléselosztási szabályt létezik, SNAT lehetőség csak a TCP. Ha csak egy TCP terheléselosztási szabály és kimenő SNAT kell UDP-hez, UDP terheléselosztási szabály ugyanazokat az előtér-azonos háttérkészlet létrehozása.  Ez akkor indul el, az UDP programozási SNAT.  Egy működő szabály vagy a rendszerállapot mintavételt nincs szükség.  Alapszintű Termékváltozat SNAT SNAT mindig programok mindkét IP átviteli protokoll, az átviteli protokoll a terheléselosztási szabály megadott függetlenül.
+>Standard Termékváltozat SNAT programozási / IP-átviteli protokoll és a terheléselosztási szabály származik.  Ha csak a TCP terheléselosztási szabály létezik, SNAT lehetőség csak a TCP. Ha csak a TCP terheléselosztási szabály rendelkezik, és kimenő SNAT UDP-hez, hozzon létre UDP terheléselosztási szabály ugyanazt a frontend alhálózatból ugyanazt a háttérkészlethez.  Ezzel megkezdődik az SNAT programozási UDP-hez.  Szabály vagy egészségügyi mintavétel működő, nem szükséges.  Alapszintű Termékváltozat SNAT SNAT mindig programok, attól függetlenül, az átviteli protokoll a terheléselosztási szabály megadott mindkét IP protokoll esetében.
 
-Azure preallocates SNAT portok minden egyes VM hálózati adapter IP-konfigurációhoz. Amikor IP-konfigurációt ad hozzá a készlethez, a SNAT portok vannak előzetesen lefoglalt az IP-konfiguráció, a háttér-készlet mérete alapján. Kimenő forgalom létrehozásakor [PAT](#pat) dinamikusan használ fel (de előzetesen lefoglalt), majd felenged ezeket a portokat, a folyamat befejeződésekor vagy [az üresjárati időkorlát](#idletimeout) fordulhat elő.
+Azure preallocates SNAT portok az egyes virtuális gépek hálózati adapter IP-konfigurációhoz. Amikor egy IP-konfigurációt a készletet ad hozzá, az SNAT portok vannak előzetesen lefoglalt az IP-konfiguráció, a háttérkiszolgáló-készlet mérete alapján. Kimenő forgalom létrehozásakor [PAT](#pat) dinamikusan használ fel (a korlátig előzetesen lefoglalt) és kiadások ezeket a portokat, a folyamat befejeződésekor vagy [üresjárati időtúllépés](#idletimeout) fordulhat elő.
 
-Az alábbi táblázat a SNAT port preallocations háttér címkészletet méretű rétege számára:
+Az alábbi táblázat az SNAT port preallocations készletméretek háttér-szint esetében:
 
-| Készlet mérete (Virtuálisgép-példány) | Előzetesen lefoglalt SNAT portok száma IP-konfiguráció|
+| Készletméret (Virtuálisgép-példányok) | Előzetesen lefoglalt SNAT portok száma IP-konfiguráció|
 | --- | --- |
 | 1-50 | 1,024 |
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
 | 401-800 | 64 |
-| 801-1000 | 32 |
+| 801 – 1000 | 32 |
 
 >[!NOTE]
-> A szabványos terheléselosztó használatakor [több frontends](load-balancer-multivip-overview.md), [minden előtérbeli IP-cím szorozza meg a rendelkezésre álló SNAT portok száma](#multivipsnat) az előző táblázatban. Például egy háttér címkészletet 50 virtuális gép 2 terheléselosztási szabályok, külön-külön előtérbeli IP-címek egy, a 2048 (2 x 1024-es) SNAT portok száma IP-konfigurációt fogja használni. A részletek megtekintéséhez [több frontends](#multife).
+> A Standard Load Balancer használatakor [több előtérrendszer](load-balancer-multivip-overview.md), [minden előtérbeli IP-cím szorozza meg a rendelkezésre álló SNAT portok száma](#multivipsnat) az előző táblázatban. Például az 50 virtuális gép 2 terheléselosztási szabályok, mindegyike külön előtérbeli IP-címek, a háttérkészlet (2 x 1024) 2048 SNAT portok száma IP-konfigurációt fogja használni. A részletek megtekintéséhez [több előtérrendszer](#multife).
 
-Ne feledje, hogy a rendelkezésre álló SNAT portok száma nem jelenti azt, közvetlenül az adatfolyamok száma. Egyetlen SNAT port a több célhoz rendelt egyedi felhasználhatók. Portok csak akkor, ha a forgalom egyedivé kell felhasználni. Tervezési és a megoldás útmutatásért tekintse át a részt kapcsolatos [kezelése a kimeríthető erőforrás](#snatexhaust) és a következő szakasz ismerteti [PAT](#pat).
+Ne feledje, hogy a rendelkezésre álló SNAT portok száma nem fordítja le közvetlenül a folyamatok száma. Egyetlen SNAT port több egyedi célhoz felhasználhatók. Portok csak akkor, ha szükséges, hogy egyedi folyamatok használnak fel. Tervezés és kockázatcsökkentési útmutatásért tekintse meg a szakasz kapcsolatos [kezelése az kimeríthető erőforrás](#snatexhaust) és a szakasz leírja, [PAT](#pat).
 
-A háttérkészlet méretének módosítása hatással lehet a meglévő adatfolyamok némelyike. Ha a háttér-készlet mérete növekszik, és be a következő réteggel átmenetek, a előzetesen lefoglalt SNAT portok felének visszaigényelt vannak a következő nagyobb háttér címkészletet réteg történő áttelepítés során. Folyamatok, amelyek regenerált SNAT portot fog túllépi az időkorlátot, és létre kell hozni. Ha egy új módszer kísérlet történik, a folyamat sikeres lesz azonnal, mindaddig, amíg érhetők el előzetesen lefoglalt portok.
+A háttérkészlet méretének módosítása hatással lehetnek egyes létrehozott folyamatok. Ha a háttérkiszolgáló-készlet méretét növeli, és be a következő réteggel értékre vált, az előzetesen lefoglalt SNAT portok fele visszaigényelt vannak az áttérés a következő nagyobb háttérkiszolgáló-készlet réteggel során. Folyamatok regenerált SNAT port társított időtúllépést okoz, és létre kell hozni. Új folyamat kísérel meg, ha a folyamat sikeres lesz azonnal, mindaddig, amíg az előzetesen lefoglalt portok érhetők el.
 
-Ha csökkenti a háttér-készlet méretét, és az alacsonyabb szint transitions lehetőségnél SNAT elérhető portok száma növekszik. Ebben az esetben meglévő lefoglalt SNAT portok, és a megfelelő adatfolyamok, nem érintettek.
+Ha csökkenti a háttérkiszolgáló-készlet méretét, és a egy alacsonyabb szintre szolgáltatássá SNAT elérhető portok száma növekszik. Ebben az esetben meglévő lefoglalt SNAT portok, és a saját folyamatok nem érinti.
 
-SNAT port lefoglalását meghatározott IP-protokoll (TCP és UDP külön-külön karbantarthatók) és a következő feltételek kiadott:
+SNAT portok hozzárendelések meghatározott IP-protokoll (TCP és UDP-karbantartása külön-külön) és jelennek meg az alábbi feltételek:
 
 ### <a name="tcp-snat-port-release"></a>TCP SNAT port kiadás
 
-- Ha mindkét kiszolgáló ügyfél küld FIN/ACK, SNAT port kiadjuk 240 másodperc múlva.
-- Ha egy RST látható, SNAT port kiadjuk 15 másodperc után.
-- üresjárati időtúllépés el lett érve.
+- Ha mindkét kiszolgáló vagy ügyfél küld a PÉNZÜGY/ACK, SNAT port 240 másodperc múlva elérhető lesz.
+- Ha egy ÜZE látható, SNAT port 15 másodperc múlva elérhető lesz.
+- elérte az üresjárat időkorlátja
 
-### <a name="udp-snat-port-release"></a>UDP-SNAT port kiadás
+### <a name="udp-snat-port-release"></a>UDP SNAT-port kiadás
 
-- üresjárati időtúllépés el lett érve.
+- elérte az üresjárat időkorlátja
 
-## <a name="problemsolving"></a> A probléma megoldásához 
+## <a name="problemsolving"></a> Problémák megoldása 
 
-Ez a szakasz segítséget nyújtanak az SNAT Erőforrásfogyás és a többi olyan forgatókönyvet, amely akkor fordulhat elő, a kimenő kapcsolatok az Azure-ban készült.
+Ez a szakasz célja SNAT Erőforrásfogyás és az egyéb forgatókönyvek, melyek előfordulhatnak az Azure kimenő kapcsolatainak történésekről.
 
-### <a name="snatexhaust"></a> SNAT (PAT) port Erőforrásfogyás kezelése
-[Elmúló port](#preallocatedports) használt [PAT](#pat) egy kimeríthető erőforrás van, a [önálló virtuális gép, egy példány szint nyilvános IP-cím nélküli](#defaultsnat) és [virtuális gép elosztott terhelésű nélküli egy Példány szint nyilvános IP-cím](#lb).
+### <a name="snatexhaust"></a> Portfogyás SNAT (PAT) kezelése
+[Elmúló port](#preallocatedports) használt [PAT](#pat) vannak egy kimeríthető erőforrás leírtak szerint [önálló virtuális gép példány szintű nyilvános IP-cím nélkül](#defaultsnat) és [elosztott terhelésű virtuális gép nélkül- Példány szintű nyilvános IP-cím](#lb).
 
-Ha tudja, hogy sok kimenő TCP vagy UDP-kapcsolata ugyanahhoz a cél IP-cím és port még kezdeményezése, és láthatja a kimenő kapcsolatok sikertelen vagy végigvitelével úgy, hogy Ön skálázását SNAT portok (előzetesen lefoglalt [elmúló portok](#preallocatedports) által használt [PAT](#pat)), több lehetőség közül választhat általános megoldás. Tekintse át ezeket a beállításokat, és határozza meg az elérhető és ajánlott a forgatókönyvéhez. Akkor lehet, hogy egy vagy több segítséget nyújtanak ebben a forgatókönyvben.
+Ha tudja, hogy, sok kimenő TCP vagy UDP-kapcsolatokat ugyanazon cél IP-cím és port még kezdeményezése, és figyelje meg a kimenő kapcsolatok sikertelen vagy végigvitelével támogatja, hogy Ön skálázását SNAT portok (előzetesen lefoglalt [rövid élettartamú portok](#preallocatedports) által használt [PAT](#pat)), általános megoldás több lehetősége is van. Tekintse át ezeket a beállításokat, és döntse el, mi érhető el, és a forgatókönyv esetén ajánlott használni. Akkor lehet, hogy egy vagy több segíthet kezelni az ebben a forgatókönyvben.
 
-Ha problémája van a kimenő kapcsolat viselkedésének megértése, IP-verem statisztika (netstat) is használhatja. Vagy hasznos, és figyelje meg a kapcsolat viselkedés a csomag rögzíti. Hajtsa végre a csomag rögzíti a vendég operációs rendszer a példány, vagy használjon [csomag rögzítési hálózati figyelőt](../network-watcher/network-watcher-packet-capture-manage-portal.md).
+Ha problémába ütközik a kimenő kapcsolatot viselkedésének megértése, IP-verem statisztika (netstat) használhatja. Vagy vizsgálja meg a kapcsolati viselkedések csomagrögzítés használatával a hasznos lehet. Hajtsa végre ezeket a csomagrögzítés a vendég operációs rendszer a példány, vagy használjon [csomagrögzítés a Network Watcher](../network-watcher/network-watcher-packet-capture-manage-portal.md).
 
-#### <a name="connectionreuse"></a>Az alkalmazás kapcsolatok újból módosítása 
-Igény szerinti elmúló SNAT újból felhasználja a kapcsolatot az alkalmazás által használt portok csökkentése érdekében. Ez különösen igaz protokollok, például a HTTP/1.1, ahol a kapcsolat újbóli az alapértelmezett beállítás. És egyéb protokollok (például REST) t a HTTP Protokollt használó pedig előnyei. 
+#### <a name="connectionreuse"></a>Módosítsa az alkalmazást újra felhasználhatja a kapcsolatok 
+Csökkentheti az SNAT-kapcsolatok az alkalmazás a újrafelhasználásával használt elmúló port igény szerint. Ez különösen igaz protokollok, például a HTTP/1.1, ahol a kapcsolat újbóli az alapértelmezett érték. És egyéb protokollok, amelyek a HTTP használata (például a többi) t viszont előnyeit. 
 
-Újbóli mindig jobb, mint az egyes, atomi TCP-kapcsolatok az egyes kérelmek. Használja fel további performant, nagyon hatékony TCP tranzakciók eredményez.
+Újbóli mindig jobb, mint az egyes kérések egyedi, atomi TCP-kapcsolatokat. Újból felhasználhatja a további nagy teljesítményű, nagyon hatékony TCP tranzakciók eredményez.
 
 #### <a name="connection pooling"></a>Az alkalmazás használatához a kapcsolatkészletezést módosítása
-A rendszer az alkalmazásban, ahol kérelmek belső elosztott kapcsolatokat (egyes újból felhasználja a ahol csak lehetséges) készletét kapcsolatkészlet is alkalmazhat. Ez a séma használatban elmúló port száma korlátozza, és a környezetet hoz létre a megfelelő. Ez a séma is növelheti a kapacitásának több egyidejű művelet tételével, amikor egyetlen kapcsolatból blokkolja-e a művelet a válasz.  
+Egy kapcsolatkészlet az alkalmazásban, ahol kérelmek belsőleg elosztva rögzített számú kapcsolatok (minden újbóli felhasználása ahol csak lehetséges) sémát is alkalmazhat. Ez a séma korlátozza a használatban lévő elmúló port számát, és létrehoz egy kiszámíthatóbb környezetet. Ez a séma szerint lehetővé teszi több egyidejű művelet, amikor egyetlen kapcsolaton keresztül blokkolja a válasz egy adott művelethez a is növelheti kérések átviteli sebessége.  
 
-Kapcsolatkészletezést előfordulhat, hogy az alkalmazás vagy a konfigurációs beállítások, az alkalmazás fejlesztése segítségével keretében már létezik. A kapcsolat újbóli kapcsolatkészletezést kombinálhatja. A több kérelmek felhasználni a azonos cél IP-cím és port portok rögzített, előre jelezhető száma. A kérelmek is előnyös TCP tranzakciók, így csökkentve a késést és erőforrás-használat hatékony felhasználását. UDP-tranzakciók számára is hasznos, mert a számot, UDP-forgalom kezelésére is pedig kipufogógáz feltételek elkerülése és kezelheti a SNAT port kihasználtságának.
+Kapcsolatkészletezést előfordulhat, hogy az alkalmazás vagy a konfigurációs beállításokat az alkalmazás fejlesztéséhez használt keretein belül már létezik. A kapcsolat újbóli kapcsolatkészletezést kombinálhatja. A több kérés vállalatoknál egy fix, kiszámítható portok száma: az azonos cél IP-cím és port. A kérések is élvezhetik csökkenti a késést és az erőforrás TCP tranzakciók hatékony kihasználását. UDP-tranzakciók is hasznot, mert kezelése UDP-folyamatok számát is viszont kipufogógáz feltételek elkerülése és kezelheti az SNAT port kihasználtságával.
 
-#### <a name="retry logic"></a>Az alkalmazást, hogy az kisebb agresszív újrapróbálkozási logika módosítása
-Ha [előzetesen lefoglalt elmúló port](#preallocatedports) használt [PAT](#pat) vannak kimerült vagy alkalmazás hiba történik, túl szigorú vagy találgatásos kényszerített újrapróbálja decay nevű és leállítási logika miatt Erőforrásfogyás fordulhat elő, vagy megőrzése nélkül. Igény szerinti rövid élettartamú port egy kisebb agresszív újrapróbálkozási logika használatával csökkentése érdekében. 
+#### <a name="retry logic"></a>Módosítsa az alkalmazást a kevésbé agresszív újrapróbálkozási logika használata
+Amikor [előzetesen lefoglalt elmúló port](#preallocatedports) használt [PAT](#pat) vannak a rendszer vagy alkalmazás esetén fordulhat elő, agresszív és a találgatásos nélkül decay és leállítási logikát miatt fordulhat elő, vagy megőrizni az Erőforrásfogyás újrapróbálkozik. A kevésbé agresszív újrapróbálkozási logikát használatával csökkentheti elmúló port iránti igény. 
 
-Elmúló port (nem állítható) 4 perces üresjárati időtúllépés rendelkezik. Ha az újrapróbálkozások túl agresszív, az Erőforrásfogyás rendelkezik nincs lehetőség arra, hogy a saját törlődnek. Ezért annak eldöntéséhez, hogy hogyan--és milyen gyakran – az alkalmazás újrapróbálja tranzakciók a Tervező kritikus részét képezi.
+A rövid élettartamú port egy 4 perces üresjárati időkorlát (nem állítható) rendelkezik. Ha az újrapróbálkozásokat túl agresszív, az Erőforrásfogyás rendelkezik saját kiürítéséhez nincs lehetőség. Ezért figyelembe vétele – hogyan és milyen gyakran – az alkalmazás újrapróbálkozik a tranzakciók a Tervező egy kritikus részét képezi.
 
-#### <a name="assignilpip"></a>Egy példány szintű nyilvános IP-cím hozzárendelése minden virtuális gép
-A forgatókönyvhöz a hozzárendelése egy ILPIP változik [példány szint nyilvános IP-cím egy virtuális géphez](#ilpip). A virtuális gép érhetők el az egyes virtuális gépek használt rövid élettartamú a nyilvános IP-portok. (Figyelésekor forgatókönyvek, ahol a nyilvános IP-elmúló port megosztott módon működik a virtuális gépek társított megfelelő háttérkészlet.) Nincsenek kompromisszumot kell figyelembe venni, például a nyilvános IP-címek további költségeket és a célgyűjtemény nagyszámú egyedi IP-címek engedélyezése.
+#### <a name="assignilpip"></a>Egy példány szintű nyilvános IP-cím hozzárendelése minden virtuális Géphez
+Egy ILPIP hozzárendelése módosítja, a forgatókönyv [példány szintű nyilvános IP-cím egy virtuális géphez](#ilpip). Minden rövid élettartamú port a nyilvános IP-cím az egyes virtuális Gépekhez használt érhetők el a virtuális géphez. (Ellentétben, forgatókönyvek, ahol a virtuális gépeket tartalmazó megosztott elmúló port egy nyilvános IP-cím társítva a megfelelő háttérkészlet.) Nincsenek feláldozását érdemes figyelembe venni, például a nyilvános IP-címek további költségeket és a nagy számú egyedi IP-címek engedélyezési lehetséges hatását.
 
 >[!NOTE] 
->Ez a beállítás nem érhető el webes feldolgozói szerepköröket.
+>Ez a beállítás nem érhető el a webes feldolgozói szerepkörök.
 
-#### <a name="multifesnat"></a>Több frontends használata
+#### <a name="multifesnat"></a>Több előtérrendszer használata
 
-Ha a szabványos nyilvános terheléselosztót használ, rendeljen hozzá [kimenő kapcsolatok több előtérbeli IP-címet](#multife) és [szorozza meg a rendelkezésre álló SNAT portok számának](#preallocatedports).  Egy előtérbeli IP-konfigurációja, a szabály és a nyilvános IP-címét az előtérbeli SNAT programozását elindítható a háttérkészlet létrehozásához szükséges.  A szabály nem történő működéshez szükségük van, és egy állapotmintáihoz nem kell sikeres.  Ha több frontends a bejövő, valamint (, nem pedig csak kimenő), használjon egyéni állapot-mintavételi csomagjai megbízhatóság biztosításához is.
+Nyilvános Standard Load Balancer használatakor hozzárendelhet [több előtérbeli IP-címet a kimenő kapcsolatok számára](#multife) és [szorozza meg a rendelkezésre álló SNAT portok száma](#preallocatedports).  Hozhat létre egy előtérbeli IP-konfiguráció, a szabály és a háttérkészlet, a programozás, a nyilvános IP-címét az előtér az SNAT aktiválásához szüksége.  A szabály nem kell működni, és az állapotfigyelő mintavételező nincs szükség a sikeres legyen.  Ha több előtérrendszer számára, valamint bejövő (helyett csak a kimenő), használjon egyéni állapotmintákkal és megbízhatóság biztosításához.
 
 >[!NOTE]
->A legtöbb esetben SNAT portok kimerülése rossz tervezési bejelentkezési.  Győződjön meg arról, hogy miért skálázását portok további frontends használata SNAT portok hozzáadása előtt.  Előfordulhat, hogy a problémát, ami sikertelen később maszkolás.
+>A legtöbb esetben az SNAT portok kimerülése rossz kialakítás bejelentkezési.  Ellenőrizze, hogy megismerte, hogy miért áll skálázását portok használata több előtérrendszer SNAT portok hozzáadása előtt.  Előfordulhat, hogy a problémát, ami sikertelen később maszkolás.
 
-#### <a name="scaleout"></a>Horizontális felskálázása
+#### <a name="scaleout"></a>Horizontális felskálázás
 
-[Előzetesen lefoglalt portok](#preallocatedports) a háttér-készlet mérete alapján, és a lehető legkisebb mértékű akadályozása, ha néhány port már foglalhatók le a következő nagyobb háttér címkészletet mérete réteggel befogadásához réteg csoportosított hozzá.  Előfordulhat, hogy egy lehetőség, hogy a megadott időtúllépést SNAT port használatot intenzitásának növelése skálázással a háttérkészlet az adott réteg maximális méretét.  Ehhez az alkalmazás horizontális hatékony.
+[Előzetesen lefoglalt portok](#preallocatedports) háttérrendszer készlet mérete alapján, és a csoportosított leskálázáskor, amikor néhány portot kell kiosztani a következő nagyobb háttérbeli készletet méretréteg befogadásához rétegekben vannak hozzárendelve.  Előfordulhat, hogy egy adott szint maximális mérete a háttérkészlet felskálázásával növelheti a SNAT port kihasználtsága egy adott előtérbeli intenzitását lehetőség.  Az alkalmazás horizontális felskálázása hatékonyan ehhez.
 
-A háttérkészlet 2 virtuális gép például 1024 SNAT portok, amely egy IP-konfiguráció, így 2048 SNAT összesen portok a központi telepítés rendelkezik.  Ha a központi telepítés-ra, 50 virtuális gépek, még ha száma előzetesen lefoglalt portok marad állandó virtuális gépenként 51,200 (50 x 1024-es) összesen SNAT portok a központi telepítés által használható.  Ha a központi telepítés kiterjesztése, ellenőrizheti a [előzetesen lefoglalt portok](#preallocatedports) / módosítása a következőre győződjön meg arról, hogy a megfelelő rétegben maximális kibővítési a alakul.  A portáladatbázis előző példa, ha 51 helyett legfeljebb 50 példányt horizontálisan választotta volna a volna előrehaladás a következő réteggel és a záró mentése kisebb SNAT porttal, valamint virtuális gépenként összesen hasonlóan.
+Például a háttérkészletben 2 virtuális gép kellene álló IP-konfiguráció, így összesen 2048 SNAT portok a központi telepítés 1024 SNAT-port.  Ha az üzembe helyezés-ra, 50 virtuális gépeket, még ha száma előzetesen lefoglalt virtuális gépenként összesen 51,200 (50 x 1024-) portok marad állandó SNAT portok az üzemelő példány által használható.  Ha szeretné az üzemelő példány horizontális, ellenőrizheti a [előzetesen lefoglalt portok](#preallocatedports) / csomag győződjön meg arról, hogy a horizontális felskálázás a megfelelő szint maximális formázása.  Ha horizontális felskálázás legfeljebb 50 példányt helyett 51 választotta volna a portáladatbázis előző példában a lenne halad a következő réteg és a záró mentése kisebb SNAT porttal, valamint virtuális gépenként összesen látható módon.
 
-Ezzel szemben a következő nagyobb háttér címkészletet mérete réteg potenciálisan kimenő kapcsolatok Ha lefoglalt portok kibővítési kell foglalhatók le újra.  Ha nem szeretné, ez kerül sor, akkor alakul a környezetet, hogy a réteg mérete.  Vagy győződjön meg arról, hogy az alkalmazás észleléséhez, majd próbálja megismételni szükség szerint.  Segít a TCP Keep-Alive csomagok küldését a észlelés, ha SNAT portok már nem függvény alatt teljesítményigény miatt.
+Horizontális felskálázás a következő nagyobb háttérrendszer készlet mérete szintre van-e az egyes ideje a kimenő kapcsolatok Ha lefoglalt portokat kell kiosztani.  Ha csak használja az SNAT portok némelyike, között a következő nagyobb háttérkiszolgáló-készlet méretét horizontális felskálázás nem léteznek.  A meglévő fél portokat fog kiosztani minden alkalommal, amikor helyez át a következő háttérkiszolgáló-készlet réteggel.  Ha nem szeretné, hogy végre lehessen hajtani ezt, a központi telepítést a méret az alakzat szeretne.  Vagy ellenőrizze, hogy az alkalmazás észlelésére, és ismételje meg igény szerint.  TCP életben segítheti az észlelés, ha az SNAT portok már nem függvény miatt újra kiosztja folyamatban van.
 
-### <a name="idletimeout"></a>Segítségével a Keep Alive csomagok küldését a kimenő üresjárati időtúllépés
+### <a name="idletimeout"></a>A kimenő üresjárati időtúllépés életben használatával
 
-Kimenő kapcsolatok 4 perces üresjárati időtúllépés rendelkezik. Ez az időkorlát értéke nem állítható. Azonban használhatja (például TCP Keep Alive csomagok küldését) transport vagy alkalmazásréteg Keep-Alive csomagok küldését az üresjárati folyamat frissítése, és alaphelyzetbe állítja az üresjárati időtúllépés, ha szükséges.  
+Kimenő kapcsolatok rendelkezik egy 4 perces üresjárati időkorlátot. Ez az időkorlát nem állítható. Azonban segítségével átviteli (például TCP életben) vagy alkalmazásszintű életben frissítse az üresjárati folyamat, és szükség esetén alaphelyzetbe állíthatja az üresjárati időkorlát.  
 
-TCP Keep-Alive csomagok küldését használata, esetén elegendő, és lehetővé teszi a kapcsolat egyik oldalán. Például elegendő, és lehetővé teszi a kiszolgáló oldalán, csak az időzítőt, a folyamat visszaállítására, és nincs szükség mindkét oldalon kezdeményezett TCP Keep Alive csomagok küldését.  Hasonló fogalmak alkalmazásréteg, beleértve az adatbázis ügyfél-kiszolgáló konfigurációk léteznek.  Ellenőrizze a kiszolgáló oldalán, milyen lehetőségek érhetők el az alkalmazás adott Keep Alive csomagok küldését a.
+Használja a TCP életben, esetén elegendő ahhoz, hogy a kapcsolat egyik oldalán engedélyezheti őket. Például elegendő lehetővé teszi a kiszolgálói oldalon csak az a folyamat az inaktivitási időzítő alaphelyzetbe állítása, és azt nem szükséges mindkét kezdeményezett TCP életben.  Hasonló fogalmak alkalmazásréteg, beleértve az ügyfél és kiszolgáló konfigurációi is léteznek.  Ellenőrizze a kiszolgálói oldalon az alkalmazás adott életben milyen lehetőség is létezik.
 
-## <a name="discoveroutbound"></a>A nyilvános IP-cím egy virtuális gép használ felderítése
-Számos módon határozza meg a nyilvános IP-forráscím egy kimenő kapcsolat. OpenDNS láthatja a nyilvános IP-címet a virtuális gép egy szolgáltatást biztosít. 
+## <a name="discoveroutbound"></a>A nyilvános IP-cím, amely egy virtuális gép felderítése
+Számos módon határozza meg a nyilvános IP-forráscím egy kimenő kapcsolat. OpenDNS biztosít egy szolgáltatás, amely jeleníti meg, a virtuális gép nyilvános IP-címét. 
 
-Az nslookup parancs használatával a OpenDNS feloldó elküldheti a név myip.opendns.com DNS-lekérdezést. A szolgáltatás az IP-forráscím kérés küldése használt adja vissza. A virtuális gépről a következő lekérdezés futtatásakor a rendszer a választ a nyilvános IP-címet használja ezt a virtuális gépet:
+Az nslookup parancs használatával a OpenDNS feloldó elküldheti a név myip.opendns.com DNS-lekérdezést. A szolgáltatás visszaadja a forrás IP-címet, amely a lekérdezés el lett küldve. A virtuális gépről futtassa a következő lekérdezést, a válasz esetén a használt virtuális gép nyilvános IP-cím:
 
     nslookup myip.opendns.com resolver1.opendns.com
 
-## <a name="preventoutbound"></a>Megakadályozza a kimenő kapcsolat
-Néha nemkívánatos is a virtuális gépek számára hozzon létre egy kimenő folyam engedélyezett. Előfordulhat, hogy mely célok elérhető a kimenő forgalom kezeléséhez követelmény, vagy mely célok megkezdheti a bejövő forgalom. Ebben az esetben használhatja [hálózati biztonsági csoportok](../virtual-network/security-overview.md) kezeléséhez, amelyek a virtuális gép el lehet érni a célhelyre. Az NSG-k segítségével is kezelheti, mely nyilvános cél is kezdeményezhető a bejövő forgalom.
+## <a name="preventoutbound"></a>Megakadályozza, hogy a kimenő kapcsolatok
+Néha érdemes engedélyezendő kimenő folyamat létrehozása a virtuális gép nem kívánatos. Előfordulhat, hogy mely célok elérhető, és kimenő forgalom kezeléséhez szükséges, vagy hogy mely célok megkezdheti a bejövő forgalom. Ebben az esetben használhatja [hálózati biztonsági csoportok](../virtual-network/security-overview.md) kezeléséhez, amely a virtuális gép elérheti a célhelyre. NSG-k segítségével is kezelheti, mely nyilvános cél kezdeményezheti a bejövő forgalom.
 
-Amikor egy NSG-t alkalmaz egy elosztott terhelésű virtuális gép, különös a [címkék szolgáltatás](../virtual-network/security-overview.md#service-tags) és [alapértelmezett biztonsági szabályok](../virtual-network/security-overview.md#default-security-rules). Győződjön meg arról, hogy a virtuális gép állapotának mintavételi kérések fogadhat Azure Load Balancer. 
+Amikor alkalmazza az NSG-KET egy elosztott terhelésű virtuális gép, figyelmet fordítani az [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags) és [alapértelmezett biztonsági szabályokat](../virtual-network/security-overview.md#default-security-rules). Biztosítania kell, hogy a virtuális gép az Azure Load Balancer állapot-mintavételi kérések fogadhat. 
 
-Ha egy NSG blokkolja az egészségügyi mintavételi kérelmeit a AZURE_LOADBALANCER az alapértelmezett címke, a virtuális gép állapotmintáihoz sikertelen lesz, és a virtuális gép van megjelölve. Terheléselosztó leállítja az új forgalom küldése ezt a virtuális Gépet.
+Ha az NSG-KET blokkolja az egészségügyi mintavételi kérelmeit a AZURE_LOADBALANCER az alapértelmezett címke, a virtuális gép állapotadat-mintavétel meghiúsul, és a virtuális gép van megjelölve. Terheléselosztó nem küld új folyamatok a virtuális Gépre.
 
 ## <a name="limitations"></a>Korlátozások
-- DisableOutboundSnat nincs lehetőség egy terheléselosztási szabály portálon konfigurálásakor.  Ehelyett használja a többi, sablon vagy ügyfél eszközök.
-- Webes feldolgozói szerepkörök nélkül egy VNet és egyéb Microsoft-platform szolgáltatás elérhető lehet, ha csak egy belső szabványos terheléselosztó használata miatt a hogyan előtti-VNet-szolgáltatások és az egyéb platform szolgáltatás függvény egyik mellékhatása. Meg kell támaszkodjon ezt a mellékhatást, a megfelelő service magát, vagy az alapul szolgáló platform értesítés nélkül változhatnak. Hogy mindig részlegnek feltételeznie kell létrehozásához szükséges kimenő kapcsolat explicit módon ha egy belső szabványos terheléselosztó csak használata esetén szükséges. A [SNAT alapértelmezett](#defaultsnat) cikkben leírt 3. forgatókönyv nem érhető el.
+- Új választható DisableOutboundSnat esetén nem érhető el beállítás konfigurálása egy terheléselosztási szabályt a portálon.  REST, sablon vagy ügyféloldali eszközök használata.
+- Webes feldolgozói szerepkörök egy VNet és más Microsoft-platformszolgáltatások nélkül elérhető lehet, ha csak egy belső Standard Load Balancer miatt a hogyan előtti – VNet-szolgáltatások és más platform sem services függvény mellékhatása szolgál. Meg kell támaszkodjon ezt a mellékhatást, a megfelelő szolgáltatás, saját maga, vagy az alapul szolgáló platform értesítés nélkül változhatnak. Meg kell mindig feltételezze, hogy explicit módon létrehozása a kimenő kapcsolat, ha szükséges, ha egy belső Standard Load Balancer használata csak kell. A [SNAT alapértelmezett](#defaultsnat) ebben a cikkben leírt 3. forgatókönyv nem érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [terheléselosztó](load-balancer-overview.md).
+- Tudjon meg többet [terheléselosztó](load-balancer-overview.md).
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md).
-- További információ [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
-- Ismerje meg, azzal kapcsolatban, a másik kulccsal [hálózati lehetőségeket](../networking/networking-overview.md) az Azure-ban.
+- Tudjon meg többet [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
+- A másik hívóbetűt némelyikét [hálózat képességeivel](../networking/networking-overview.md) az Azure-ban.

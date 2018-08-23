@@ -1,50 +1,50 @@
 ---
-title: Erőforrás-szolgáltató API verziókat támogatja Azure verem profilok |} Microsoft Docs
-description: További tudnivalók az Azure verem profilok által támogatott Azure Resource Manager-verzió.
+title: Erőforrás-szolgáltató API-ja verziókat támogatja az Azure Stackben profilok |} A Microsoft Docs
+description: Ismerje meg a profilok az Azure Stackben által támogatott Azure Resource Manager-verzió.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
-ms.author: mabrigg
+ms.date: 08/17/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054381"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054719"
 ---
-# <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API verziókat támogatja Azure verem profilok
+# <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API-ja verziókat támogatja az Azure Stackben profilok
 
-Az erőforrás-szolgáltató és a verziószámokra minden ebben a cikkben az Azure verem által használt API-profil található. Ez a cikk a táblázat mindegyik erőforrás-szolgáltató és a profilok az API verzió támogatott verziók. Mindegyik erőforrás-szolgáltató olyan típusú erőforrások és az adott verziószámok tartalmazza.
+Ez a cikk az Azure Stack által használt minden egyes API-profil az erőforrás-szolgáltató és a verziószámok találja. Ez a cikk a táblázatokban a verziók mindegyik erőforrás-szolgáltató és a profilok az API-verziók esetében támogatott. Mindegyik erőforrás-szolgáltató erőforrás-típusok és adott verziószámok tartalmazza.
 
-Az API-profil három elnevezési konvenciót használ:
+Az API-profil három elnevezési konvenciókat használja:
  - legújabb
  - éééé-hh-nn-hibrid
  - éééé-hh-nn-profil
 
-Egy ismertetése API profilok és verzió kiadás ütemben történik az Azure-verem [kezelése API verziója profilok Azure verem](azure-stack-version-profiles.md).
+Egy API-profilokat és verzió kiadási ütem az Azure Stack, ismertetését [kezelése API-verzióprofilok az Azure Stackben](azure-stack-version-profiles.md).
 
 > [!Note]  
-> A **legújabb** API profil az erőforrás-szolgáltató API verziója legújabb tartalmazza, és nem szerepel ebben a cikkben.
+> A **legújabb** API profil az erőforrás-szolgáltató API-ja verzió a legújabb tartalmaz, és nem szerepel ebben a cikkben.
 
-## <a name="overview-of-2018--03-01-hybrid"></a>2018 – 03-01-hibrid áttekintése
+## <a name="overview-of-2018--03-01-hybrid"></a>2018-03-01-hibrid áttekintése
 
 | Erőforrás-szolgáltató | API-verzió |
 |-----------------------------------------------|-----------------------------------------------------|
 | Microsoft.Compute | 2017-03-30 |
 | Microsoft.Network | 2017-10-01<br>VPN-átjáró lesz 2017-03-01 |
-| Microsoft.Storage (adatok Vezérlősík) | 2017-04-17 |
-| Microsoft.Storage (vezérlő Vezérlősík) | 2016-01-01 |
-| Microsoft. Web | 2016-08-01<br>Ez az a legújabb (mostantól) az Azure-ban |
-| Microsoft.KeyVault | 2016-10-01 (nem módosítása) |
-| Microsoft.Resources (Azure Resource Manager maga) | 2016-02-01 |
+| A Microsoft.Storage (Adatsík) | 2017-04-17-es |
+| A Microsoft.Storage (Vezérlősík) | 2016-01-01 |
+| A Microsoft. Web | 2016-08-01<br>Ez az a legújabb (jelen pillanatban) az Azure-ban |
+| Microsoft.KeyVault | (Nem módosítása) 2016-10-01 |
+| Microsoft.Resources (Azure Resource Manager magát) | 2016-02-01 |
 | Microsoft.Authorization (házirend műveletek) | 2015-11-01 |
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
@@ -54,44 +54,44 @@ Egy ismertetése API profilok és verzió kiadás ütemben történik az Azure-v
 | Resources_Locks | 2016-10-01 |
 | Előfizetések | 2016-10-01 |
 
-Több a verziók listáját a szolgáltatók a api-profilban szereplő minden erőforrástípus, lásd: [részleteit a 2018-03-01-hibrid](#details-for-the-2018-03-01-hybrid) profil.
+Több a szolgáltatók a api-profilban az egyes erőforrástípusok verzióját, lásd: [részleteit a 2018-03-01-hibrid](#details-for-the-2018-03-01-hybrid) profilt.
 
-## <a name="overview-of-2017-03-09-profile"></a>2017-03-09-profil – áttekintés
+## <a name="overview-of-2017-03-09-profile"></a>2017-03-09-profile áttekintése
 
 | Erőforrás-szolgáltató | API-verzió |
 |------------------------------------------------|------------------------------|
 | Microsoft.Compute | 2016-03-30 |
 | Microsoft.Network | 2015-06-15 |
-| Microsoft.Storage (adatok Vezérlősík) | 2015-04-05  |
-| Microsoft.Storage (vezérlő Vezérlősík) | 2016-01-01   |
+| A Microsoft.Storage (Adatsík) | 2015-04-05  |
+| A Microsoft.Storage (Vezérlősík) | 2016-01-01   |
 | Microsoft.Websites | 2016-01-01 |
 | Microsoft.KeyVault | 2016-10-01<br>(Nem módosítása) |
-| Microsoft.Resources<br>(Az azure Resource Manager maga) | 2016-02-01 |
-| Microsoft.Authorization<Br>(házirend műveletek) | 2015-11-01 |
+| Microsoft.Resources<br>(Az azure Resource Manager magát) | 2016-02-01 |
+| Microsoft.Authorization<Br>(a házirend műveletek) | 2015-11-01 |
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
-| Szabályzat | 2015-10-01. dátumú előnézeti |
+| Szabályzat | 2015-10-01-előzetes verzió |
 | További források | 2016-02-01 |
 | Resources_Links | 2016-09-01 |
 | Resources_Locks | 2016-09-01 |
-| Előfizetések | 2016-06-1 |
+| Előfizetések | 2016. 06. 1 |
 
-Több a verziók listáját a szolgáltatók a api-profilban szereplő minden erőforrástípus, lásd: [2017-03-09-profil részletei](#details-for-the-2017-03-09-profile)
+Több a szolgáltatók a api-profilban az egyes erőforrástípusok verzióját, lásd: [a 2017-03-09-profile részletei](#details-for-the-2017-03-09-profile)
 
-## <a name="details-for-the-2018-03-01-hybrid"></a>2018-03-01-hibrid részletei
+## <a name="details-for-the-2018-03-01-hybrid"></a>A 2018-03-01-hibrid részletei
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-Szerepköralapú hozzáférés-vezérlés használatával a műveleteinek a szervezet felhasználói erőforrások kezelése. A műveletek készletét lehetővé teszi szerepkörök definiálása, felhasználók vagy csoportok szerepkörök hozzárendelése és engedélyek adatainak beolvasása. További információkért lásd: [engedélyezési](https://docs.microsoft.com/rest/api/authorization/).
+Szerepköralapú hozzáférés-vezérlés használatával kezelheti a a szervezeti felhasználók végezhetnek el az erőforrásokon. Ez számos műveletet lehetővé teszi a Szerepkörök definiálása, szerepköröket hozzárendelni felhasználók vagy csoportok és engedélyek adatainak beolvasása. További információkért lásd: [engedélyezési](https://docs.microsoft.com/rest/api/authorization/).
 
 | Erőforrástípusok | API-verziók |
 |---------------------|--------------------|
 | Zárolások | 2017-04-01 |
 | Műveletek | 2015-07-01 |
 | Engedélyek | 2015-07-01 |
-| Szabályzat-hozzárendelések | 2016-12-01 (2017-06-01. előzetes verzió) |
+| Szabályzat-hozzárendelések | 2016-12-01 (2017. 06. 01-előzetes verzió) |
 | Szabályzatdefiníciók | 2016-12-01 |
-| Szolgáltatói műveletekhez | 2015 07-01. dátumú előnézeti |
+| Szolgáltatói műveletek | 2015-07-01-előzetes verzió |
 | Szerepkör-hozzárendelések | 2015-07-01 |
 | Szerepkör-definíciók | 2015-07-01 |
 
@@ -99,33 +99,33 @@ Szerepköralapú hozzáférés-vezérlés használatával a műveleteinek a szer
 
 | Erőforrás típusa | API-verzió |
 |----------------------------------|----------------------|
-| Delegált szolgáltató előfizetések | 2015-06-01 - megtekintése |
-| Delegált használati összesítések | 2015-06-01 - megtekintése |
-| Becsült erőforrás töltött | 2015-06-01 – előzetes |
-| Műveletek | 2015-06-01 - megtekintése |
-| Előfizető használati összesítések | 2015-06-01 - megtekintése |
-| Használati összesítések | 2015-06-01 - megtekintése |
+| Delegált szolgáltatói előfizetés | 2015-06-01 - előzetes verzió |
+| Delegált használati összesítések | 2015-06-01 - előzetes verzió |
+| Erőforrás becsült költségek | 2015-06-01 – előzetes verzió |
+| Műveletek | 2015-06-01 - előzetes verzió |
+| Előfizető használati összesítések | 2015-06-01 - előzetes verzió |
+| Használati összesítések | 2015-06-01 - előzetes verzió |
 
 ### <a name="microsoftcompute"></a>Microsoft.Compute
 
-Az Azure számítási API-k adnia Önnek programozott hozzáférést a virtuális gépek és a támogató erőforrásokat. További információkért lásd: [Azure számítási](https://docs.microsoft.com/rest/api/compute/).
+Az Azure Compute API-k, programozás alapú hozzáférést biztosít a virtuális gépek és az azokat támogató erőforrásokhoz. További információkért lásd: [Azure Compute](https://docs.microsoft.com/rest/api/compute/).
 
 | Erőforrás típusa | API-verzió |
 |---------------------------------------------------------------|-------------|
 | Rendelkezésre állási csoportok | 2016-03-30 |
 | Helyek | 2016-03-30 |
-| Az operations helyek | 2016-03-30 |
-| Helyek/közzétevők | 2016-03-30 |
-| Helyek/módjait | 2016-03-30 |
+| Helyek és műveletek | 2016-03-30 |
+| Helyek-közzétevő | 2016-03-30 |
+| Helyek és használat | 2016-03-30 |
 | Helyek/vmSizes | 2016-03-30 |
 | Műveletek | 2016-03-30 |
 | Virtuális gépek | 2016-03-30 |
 | Virtuálisgép-bővítmények | 2016-03-30 |
 | Virtual Machine Scale Sets | 2016-03-30 |
-| Virtuálisgép-méretezési készletek/bővítmények | 2016-03-30 |
-| Virtuálisgép-méretezési készletek és a hálózati adapterek | 2016-03-30 |
-| Virtuálisgép-méretezési készletek/virtuális gépek | 2016-03-30 |
-| Virtuális gépek méretezési készletek/virtuális gépek vannak/megváltoztatja | 2016-03-30 |
+| Virtual Machine Scale Sets/bővítmények | 2016-03-30 |
+| Virtual Machine Scale Sets/hálózati adapterek | 2016-03-30 |
+| Virtual Machine Scale Sets/virtuális gépek | 2016-03-30 |
+| Virtual Machines Scale Sets/virtuális gép/hálózati | 2016-03-30 |
 
 ### <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -134,7 +134,7 @@ Az Azure számítási API-k adnia Önnek programozott hozzáférést a virtuáli
 | Válogatás | 2015-04-01 |
 | Válogatott tartalom | 2015-04-01 |
 | Válogatott tartalom kivonata | 2015-04-01 |
-| Gyűjteményelemek | 2015-04-01 |
+| Katalóguselemek | 2015-04-01 |
 | Műveletek | 2015-04-01 |
 | Portál | 2015-04-01 |
 | Keresés | 2015-04-01 |
@@ -146,38 +146,38 @@ Az Azure számítási API-k adnia Önnek programozott hozzáférést a virtuáli
 |--------------------|--------------------|
 | Műveletek | 2015-04-01 |
 | Eseménytípusok | 2015-04-01 |
-| Kategóriák | 2015-04-01 |
+| Esemény-kategóriák | 2015-04-01 |
 | Metrikadefiníciók | 2018-01-01 |
 | Mérőszámok | 2018-01-01 |
-| Diagnosztikai beállítások | 2017-05-01. dátumú előnézeti |
-| Diagnosztikai beállítások kategóriák | 2017-05-01. dátumú előnézeti |
+| Diagnosztikai beállítások | 2017-05-01-előzetes verzió |
+| Diagnosztikai beállítások kategóriái | 2017-05-01-előzetes verzió |
 
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
-A kulcs kezelése-tárolók és a kulcsokat, a titkos kulcsok és a tanúsítványok belül a kulcstárolót. További információkért lásd: [Azure Key Vault REST API-referencia](https://docs.microsoft.com/rest/api/keyvault/).
+A kulcs kezelése tárolók, valamint a kulcsok, titkos kódok és tanúsítványok a kulcstartók belül. További információkért lásd: [Azure Key Vault REST API-referencia](https://docs.microsoft.com/rest/api/keyvault/).
 
 | Erőforrástípusok | API-verziók |
 |-------------------------|--------------|
 | Műveletek | 2016-10-01 |
-| tárolók | 2016-10-01 |
+| Tárolók | 2016-10-01 |
 | Tárolók / hozzáférési házirendek | 2016-10-01 |
-| Tárolók/titkos kulcsok | 2016-10-01 |
+| Tárolók vagy titkos kódokkal | 2016-10-01 |
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Műveletek hívás eredménye a a rendelkezésre álló hálózati felhő műveletek listájának megjelenítése. További információkért lásd: [művelet REST API](https://docs.microsoft.com/rest/api/operation/).
+Műveleti hívás eredménye az elérhető hálózati lista reprezentációját. További információkért lásd: [művelet REST API-val](https://docs.microsoft.com/rest/api/operation/).
 
 | Erőforrástípusok | API-verziók |
 |---------------------------|--------------|
 | Kapcsolatok | 2015-06-15 |
-| DNS Zones | 2016-04-01 |
+| DNS-zónák | 2016-04-01 |
 | Terheléselosztók | 2015-06-15 |
 | Helyi hálózati átjáró | 2015-06-15 |
 | Helyek | 2016-04-01 |
 | Hely/operationResults | 2016-04-01 |
-| Az operations helyek | 2016-04-01 |
-| Helyek/módjait | 2016-04-01 |
+| Helyek és műveletek | 2016-04-01 |
+| Helyek és használat | 2016-04-01 |
 | Hálózati illesztők | 2015-06-15 |
 | Network Security Groups (Hálózati biztonsági csoportok) | 2015-06-15 |
 | Műveletek | 2015-06-15 |
@@ -188,50 +188,50 @@ Műveletek hívás eredménye a a rendelkezésre álló hálózati felhő művel
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-Az Azure Resource Manager lehetővé teszi, hogy akkor helyezheti üzembe és felügyelheti a Azure megoldások infrastruktúra. Az erőforráscsoportok kapcsolódó erőforrások rendszerezése, és az erőforrások JSON sablonok telepítése. Bevezető történő központi telepítésére és a Resource Manager-erőforrások kezelése, tekintse meg a [Azure Resource Manager áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Az Azure Resource Manager üzembe helyezése és kezelése az Azure-megoldások infrastruktúrája lehetővé teszi. Az erőforráscsoportok kapcsolódó erőforrások rendezéséhez, és az erőforrások JSON-sablonok üzembe helyezése. Bevezetés az erőforrások Resource Manager használatával történő üzembe helyezéséről, lásd: [Azure Resource Manager áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 | Erőforrástípusok | API-verziók |
 |-----------------------------------------|-------------------|
-| Alkalmazás-regisztráció | 2015-01-01 |
-| Erőforrásnév ellenőrzése | 2015-012016-09-01 |
+| Alkalmazásregisztráció | 2015-01-01 |
+| Erőforrásnév ellenőrzése | 2016-09-01 |
 | Delegált szolgáltatók | 2015-01-01 |
-| Delegált szolgáltatók/ajánlatok | 2015-01-01 |
+| Delegált szolgáltatók és ajánlatokkal. | 2015-01-01 |
 | DelegatedProviders/offers/estimatePrice | 2015-01-01 |
 | Központi telepítés | 2016-0209-01 |
 | Az operations központi telepítések | 2016-0209-01 |
-| Bővítmények metaadatok | 2015-01-01 |
-| Hivatkozások | 2015-012016-09-01 |
+| Bővítmény-metaadatok | 2015-01-01 |
+| Hivatkozások | 2016-09-01 |
 | Helyek | 2015-01-01 |
 | Ajánlatok | 2015-01-01 |
 | Műveletek | 2015-01-01 |
 | Szolgáltatók | 2015-012017-08-01 |
-| Erőforráscsoportok | 2015-012016-09-01 |
-| További források | 2015-012016-09-01 |
-| Előfizetések | 2015-012016-09-01 |
-| Előfizetések/hely | 2015-012016-09-01 |
-| Előfizetések/művelet | 2015-012016-09-01 |
-| Előfizetések/szolgáltatók | 2015-012017-08-01 |
-| Az előfizetések és az erőforrások csoportok | 2015-012016-09-01 |
-| Előfizetések/resourceGroups/erőforrások | 2015-012016-09-01 |
-| Előfizetések/erőforrások | 2015-012016-09-01 |
+| Erőforráscsoportok | 2016-09-01 |
+| További források | 2016-09-01 |
+| Előfizetések | 2016-09-01 |
+| Előfizetések/hely | 2016-09-01 |
+| Előfizetések/műveleti eredmények | 2016-09-01 |
+| Az előfizetések és szolgáltatók | 2015-012017-08-01 |
+| Előfizetések vagy erőforráscsoportok | 2016-09-01 |
+| Előfizetés/resourceGroups/erőforrások | 2016-09-01 |
+| Az előfizetések és erőforrások | 2016-09-01 |
 | Előfizetések/tagNames | 2016-0609-01 |
 | Subscriptions/tagNames/tagValues | 2016-0609-01 |
 | Bérlők | 2015-012017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 
-A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kulcsok programozott módon kezelését. További információkért lásd: [Azure Storage erőforrás szolgáltató REST API-referencia](https://docs.microsoft.com/rest/api/storagerp/).
+A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók és kulcsok programozással felügyelheti. További információkért lásd: [Azure Storage Resource Provider REST API-referencia](https://docs.microsoft.com/rest/api/storagerp/).
 
 | Erőforrástípusok | API-verziók |
 |-------------------------|--------------|
 | Név foglaltságának ellenőrzése | 2016-01-01 |
 | Helyek | 2016-01-01 |
-| Helyek/kvóták | 2016-01-01 |
+| Helyek és kvóták | 2016-01-01 |
 | Műveletek | 2016-01-01 |
 | Tárfiókok | 2016-01-01 |
-| A tanúsítványalgoritmusok | 2016-01-01 |
+| Használati listák | 2016-01-01 |
 
-## <a name="details-for-the-2017-03-09-profile"></a>A 2017-03-09-profil részletei
+## <a name="details-for-the-2017-03-09-profile"></a>A 2017-03-09-profile részletei
 
 ### <a name="microsoft-authorization"></a>Microsoft-engedély
 
@@ -240,9 +240,9 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kul
 | Zárolások | 2017-04-01 |
 | Műveletek | 2015-07-01 |
 | Engedélyek | 2015-07-01 |
-| Szabályzat-hozzárendelések | 2016-12-01 (2017-06-01. előzetes verzió) |
+| Szabályzat-hozzárendelések | 2016-12-01 (2017. 06. 01-előzetes verzió) |
 | Szabályzatdefiníciók | 2016-12-01 |
-| Szolgáltatói műveletekhez | 2015 07-01. dátumú előnézeti |
+| Szolgáltatói műveletek | 2015-07-01-előzetes verzió |
 | Szerepkör-hozzárendelések | 2015-07-01 |
 | Szerepkör-definíciók | 2015-07-01 |
 
@@ -252,31 +252,31 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kul
 |---------------------------------------------------------------|-------------|
 | Rendelkezésre állási csoportok | 2016-03-30 |
 | Helyek | 2016-03-30 |
-| Az operations helyek | 2016-03-30 |
-| Helyek/közzétevők | 2016-03-30 |
-| Helyek/módjait | 2016-03-30 |
+| Helyek és műveletek | 2016-03-30 |
+| Helyek-közzétevő | 2016-03-30 |
+| Helyek és használat | 2016-03-30 |
 | Helyek/vmSizes | 2016-03-30 |
 | Műveletek | 2016-03-30 |
 | Virtuális gépek | 2016-03-30 |
 | Virtuálisgép-bővítmények | 2016-03-30 |
 | Virtual Machine Scale Sets | 2016-03-30 |
-| Virtuálisgép-méretezési készletek/bővítmények | 2016-03-30 |
-| Virtuálisgép-méretezési készletek és a hálózati adapterek | 2016-03-30 |
-| Virtuálisgép-méretezési készletek/virtuális gépek | 2016-03-30 |
-| Virtuális gépek méretezési készletek/virtuális gépek vannak/megváltoztatja | 2016-03-30 |
+| Virtual Machine Scale Sets/bővítmények | 2016-03-30 |
+| Virtual Machine Scale Sets/hálózati adapterek | 2016-03-30 |
+| Virtual Machine Scale Sets/virtuális gépek | 2016-03-30 |
+| Virtual Machines Scale Sets/virtuális gép/hálózati | 2016-03-30 |
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
 | Erőforrástípusok | API-verziók |
 |---------------------------|--------------|
 | Kapcsolatok | 2015-06-15 |
-| DNS Zones | 2016-04-01 |
+| DNS-zónák | 2016-04-01 |
 | Terheléselosztók | 2015-06-15 |
 | Helyi hálózati átjáró | 2015-06-15 |
 | Helyek | 2016-04-01 |
 | Hely/operationResults | 2016-04-01 |
-| Az operations helyek | 2016-04-01 |
-| Helyek/módjait | 2016-04-01 |
+| Helyek és műveletek | 2016-04-01 |
+| Helyek és használat | 2016-04-01 |
 | Hálózati illesztők | 2015-06-15 |
 | Network Security Groups (Hálózati biztonsági csoportok) | 2015-06-15 |
 | Műveletek | 2015-06-15 |
@@ -289,14 +289,14 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kul
 
 | Erőforrástípusok | API-verziók |
 |-----------------------------------------|--------------|
-| Alkalmazás-regisztráció | 2015-01-01 |
+| Alkalmazásregisztráció | 2015-01-01 |
 | Erőforrásnév ellenőrzése | 2016-09-01 |
 | Delegált szolgáltatók | 2015-01-01 |
-| Delegált szolgáltatók/ajánlatok | 2015-01-01 |
+| Delegált szolgáltatók és ajánlatokkal. | 2015-01-01 |
 | DelegatedProviders/offers/estimatePrice | 2015-01-01 |
 | Központi telepítés | 2016-09-01 |
 | Az operations központi telepítések | 2016-09-01 |
-| Bővítmények metaadatok | 2015-01-01 |
+| Bővítmény-metaadatok | 2015-01-01 |
 | Hivatkozások | 2016-09-01 |
 | Helyek | 2015-01-01 |
 | Ajánlatok | 2015-01-01 |
@@ -306,11 +306,11 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kul
 | További források | 2016-09-01 |
 | Előfizetések | 2016-09-01 |
 | Előfizetések/hely | 2016-09-01 |
-| Előfizetések/művelet | 2016-09-01 |
-| Előfizetések/szolgáltatók | 2017-08-01 |
-| Az előfizetések és az erőforrások csoportok | 2016-09-01 |
-| Előfizetések/resourceGroups/erőforrások | 2016-09-01 |
-| Előfizetések/erőforrások | 2016-09-01 |
+| Előfizetések/műveleti eredmények | 2016-09-01 |
+| Az előfizetések és szolgáltatók | 2017-08-01 |
+| Előfizetések vagy erőforráscsoportok | 2016-09-01 |
+| Előfizetés/resourceGroups/erőforrások | 2016-09-01 |
+| Az előfizetések és erőforrások | 2016-09-01 |
 | Subscriptiosn/tagNames | 2016-09-01 |
 | Subscriptions/tagNames/tagValues | 2016-09-01 |
 | Bérlők | 2017-08-01 |
@@ -321,12 +321,12 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kul
 |-------------------------|--------------|
 | Név foglaltságának ellenőrzése | 2016-01-01 |
 | Helyek | 2016-01-01 |
-| Helyek/kvóták | 2016-01-01 |
+| Helyek és kvóták | 2016-01-01 |
 | Műveletek | 2016-01-01 |
 | Tárfiókok | 2016-01-01 |
-| A tanúsítványalgoritmusok | 2016-01-01 |
+| Használati listák | 2016-01-01 |
 
 ## <a name="next-steps"></a>További lépések
 
 * [A PowerShell telepítése az Azure Stack szolgáltatáshoz](azure-stack-powershell-install.md)
-* [Az Azure-verem felhasználói PowerShell környezet konfigurálása](azure-stack-powershell-configure-user.md)  
+* [Az Azure Stack felhasználói PowerShell-környezet konfigurálása](azure-stack-powershell-configure-user.md)  

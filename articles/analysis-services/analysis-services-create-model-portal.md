@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441675"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42059158"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Modell létrehozása az Azure Portalon
 
@@ -23,9 +23,10 @@ Ne feledje, a webes Tervező **előzetes**. A funkció korlátozódik. Speciáli
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-- Az Azure Analysis Services-kiszolgáló, a Standard vagy a fejlesztői csomagra. A webes Tervező használatával létrehozott új modell DirectQuery, csak ezek a csomagok által támogatott.
+- Az Azure Analysis Services-kiszolgáló, a Standard vagy a fejlesztői csomagra kell lennie. A webes Tervező használatával létrehozott új modell DirectQuery, csak ezek a csomagok által támogatott.
 - Egy Azure SQL Database, Azure SQL Data Warehouse vagy egy adatforrást a Power BI Desktop (.pbix) fájlt. A Power BI Desktop-fájlok támogatása az Azure SQL Database és az Azure SQL Data Warehouse létrehozása az új modellek.
 - Egy SQL Server-fiókot és jelszót kapcsolódás az Azure SQL Database vagy Azure SQL Data Warehouse-adatforrásokhoz.
+- Egy új modell létrehozásához a kiszolgáló rendszergazdai jogosultságokat kell rendelkeznie. Adatbázis-rendszergazdai jogosultságok szükségesek, szerkesztése és a egy modell lekérdezése a Tervező használatával.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 

@@ -13,31 +13,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alleonar
-ms.openlocfilehash: 1b7b1455413fb4886b317d468e6d278111c094b1
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 2af87c87916dd272026a3bd7e1438507c655053b
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40225924"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616993"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Tekintse át az Azure erőforrás-használati REST API használatával
 
+Az Azure Cost Management API-k segítségével tekintse át és az Azure-erőforrások fogyasztásának kezeléséhez.
 
-Azure [szolgáltatáshasználati API-jai](https://docs.microsoft.com/rest/api/consumption/) súgó, tekintse át a költség- és használati adatokat az Azure-erőforrások számára.
+Ebből a cikkből elsajátíthatja, hogyan hoz létre egy vesszővel tagolt dokumentum óránkénti használati adatait, és szűrők használatával testre szabhatja a jelentést, hogy lekérdezheti, ha a virtuális gépek, adatbázisok, a használati és megjelölve napi jelentés létrehozása Azure-erőforráscsoportban lévő erőforrásokat.
 
-Ebben a cikkben megismerheti, hogyan kérhető le, és összesített erőforrás-használati adatai az Azure-erőforráscsoport erőforrásainak is, hogy hogyan alapján történő szűréshez ezekkel az eredményekkel [az Azure resource manager-címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags).
+>[!NOTE]
+> A Cost Management API-t jelenleg private preview verzióban.
 
-## <a name="get-usage-for-a-resource-group"></a>Egy erőforráscsoport használatának megtekintése
+## <a name="create-a-basic-cost-management-report"></a>Alapszintű cost management jelentés létrehozása
 
-A számítási, adatbázis és egyéb erőforrásokat egy erőforráscsoportba tartozó erőforrás-használat lekéréséhez használja a `usageDetails` REST-műveletet, és szűrheti az eredményeket erőforráscsoportot.
+Használja a `reports` műveletet a Cost Management API adható a költségek jelentéskészítési létrehozásának módját, és ahol a jelentések lesz közzétéve.
 
 ```http
-https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30&filter=properties/resourceGroup eq '{resource-group}]
+https://management.azure.com/subscriptions/{subscriptionGuid}/providers/Microsoft.CostManagement/reports/{reportName}?api-version=2018-09-01-preview
 Content-Type: application/json   
 Authorization: Bearer
 ```
 
-A `{subscription-id}` paraméter megadása kötelező, és tartalmaznia kell egy előfizetés-azonosító eléréséhez az olvasói szerepkörrel rendelkező {erőforráscsoport} erőforráscsoport. 
+A `{subscriptionGuid}` paraméter megadása kötelező, és tartalmaznia kell egy előfizetés-azonosító, amely az API-jogkivonat a hitelesítő adatok provieed használatával olvashatja. a `{reportName}`
 
 A következő fejléceket szükség: 
 
@@ -46,91 +48,111 @@ A következő fejléceket szükség:
 |*A Content-Type:*| Kötelező. Állítsa be `application/json`. |  
 |*Hitelesítés:*| Kötelező. Egy érvényes értékre `Bearer` token. |
 
-### <a name="response"></a>Válasz  
-
-200 (OK) állapotkódot ad vissza, amely tartalmazza az egyes Azure-erőforrások az erőforráscsoportban subscriptipon azonosítójú vonatkozó lemezhasználati statisztikákat listáját sikeres válasz `00000000-0000-0000-0000-000000000000`.
+Adja meg a jelentés paramétereit a HTTP-kérés törzse. Az alábbi példában a jelentésben van állítva minden nap, amikor aktív, CSV-fájl írása egy Azure Storage blob-tárolóba, és óránként költségadatokat erőforráscsoportban lévő összes erőforrást tartalmaz létrehozásához `westus`.
 
 ```json
 {
-  "value": [
-    {
-      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
-      "name": "usageDetailsId1",
-      "type": "Microsoft.Consumption/usageDetails",
-      "properties": {
-        "billingPeriodId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702",
-        "invoiceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/invoices/201703-123456789",
-        "usageStart": "2017-02-13T00:00:00Z",
-        "usageEnd": "2017-02-13T23:59:59Z",
-        "instanceName": "shared1",
-        "instanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group/providers/Microsoft.Web/sites/shared1",
-        "instanceLocation": "eastasia",
-        "currency": "USD",
-        "usageQuantity": 0.00328,
-        "billableQuantity": 0.00328,
-        "pretaxCost": 0.67,
-        "isEstimated": false,
-        "meterId": "00000000-0000-0000-0000-000000000000",
-        "partNumber": "Part Number 1",
-        "resourceGuid": "00000000-0000-0000-0000-000000000000",
-        "offerId": "Offer Id 1",
-        "chargesBilledSeparately": true,
-        "location": "EU West"
-      }
-    } ] }
-```
-
-## <a name="get-usage-for-tagged-resources"></a>Címkézett erőforrások használatának megtekintése
-
-Erőforrás-használat beolvasni az erőforrásokat használja, a címkék szerint vannak rendezve a `usageDetails` REST-műveletet, és szűrheti az eredményeket a címke neve használatával a `$filter` lekérdezési paraméter.
-
-```http
-https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Consumption/usageDetails?$filter=tags eq 'tag1'&api-version=2018-06-30
-Content-Type: application/json   
-Authorization: Bearer
-```
-
-A `{subscription-id}` paraméter megadása kötelező, és tartalmaznia kell egy előfizetés-azonosító a címkézett erőforrások eléréséhez.
-
-
-### <a name="response"></a>Válasz  
-
-200 (OK) állapotkódot ad vissza, amely tartalmazza az egyes Azure-erőforrások az erőforráscsoportban subscriptipon azonosítójú vonatkozó lemezhasználati statisztikákat listáját sikeres válasz `00000000-0000-0000-0000-000000000000` és a címke nevét a key vault pár `dev` és `tools`. 
-
-Mintaválasz:
-
-```json
-{
-  "value": [
-    {
-      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
-      "name": "usageDetailsId1",
-      "type": "Microsoft.Consumption/usageDetails",
-      "tags": {
-        "dev": "tools"
-      },
-      "properties": {
-        "billingPeriodId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702",
-        "invoiceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/invoices/201703-123456789",
-        "usageStart": "2017-02-13T00:00:00Z",
-        "usageEnd": "2017-02-13T23:59:59Z",
-        "instanceName": "shared1",
-        "instanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-eastasia/providers/Microsoft.Web/sites/shared1",
-        "instanceLocation": "eastasia",
-        "currency": "USD",
-        "usageQuantity": 0.00328,
-        "billableQuantity": 0.00328,
-        "pretaxCost": 0.67,
-        "isEstimated": false,
-        "meterId": "00000000-0000-0000-0000-000000000000",
-        "partNumber": "Part Number 1",
-        "resourceGuid": "00000000-0000-0000-0000-000000000000",
-        "offerId": "Offer Id 1",
-        "chargesBilledSeparately": true,
-        "location": "EU West"
-      }
+    "properties": {
+        "schedule": {
+            "status": "Inactive",
+            "recurrence": "Daily",
+            "recurrencePeriod": {
+                "from": "2018-08-21",
+                "to": "2019-10-31"
+            }
+        },
+        "deliveryInfo": {
+            "destination": {
+                "resourceId": "/subscriptions/{subscriptionGuid}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "container": "MyReportContainer",
+                "rootFolderPath": "MyScheduleTest"
+            }
+        },
+        "format": "Csv",
+        "definition": {
+            "type": "Usage",
+            "timeframe": "MonthToDate",
+            "dataSet": {
+                "granularity": "Hourly",
+                "filter": {
+                    "dimensions": {
+                        "name": "ResourceLocation",
+                        "operator": "In",
+                        "values": [
+                            "westus"
+                        ]
+                    }
+                }
+            }
+        }
     }
-  ]
+}
+```
+
+a
+
+## <a name="filtering-reports"></a>Jelentések szűrése
+
+A `filter` és `dimensions` szakaszában a kérelem törzsében a költségeket az adott erőforrás-típus egy jelentés összpontosíthat a létrehozásakor. Az előző kérelem törzse mutatja be szűrhet az összes egy adott régió erőforrásait. 
+
+### <a name="get-all-compute-usage"></a>Minden számítási használatának megtekintése
+
+Használja a `ResourceType` dimenzió minden régióban az Azure virtuális gépek költségeit az előfizetésében jelenti.
+
+```json
+"filter": {
+    "dimensions": {
+        "name": "ResourceType",
+        "operator": "In",
+        "values": [
+                "Microsoft.ClassicCompute/virtualMachines", 
+                "Microsoft.Compute/virtualMachines"
+        ] 
+    }
+}
+```
+
+### <a name="get-all-database-usage"></a>Az összes adatbázis használatának megtekintése
+
+Használja a `ResourceType` dimenzió jelentés Azure SQL Database a költségek az előfizetésében, minden régióban.
+
+```json
+"filter": {
+    "dimensions": {
+        "name": "ResourceType",
+        "operator": "In",
+        "values": [
+                "Microsoft.Sql/servers"
+        ] 
+    }
+}
+```
+
+### <a name="report-on-specific-instances"></a>Jelentés az adott példányok
+
+A `Resource` dimenzió lehetővé teszi az erőforrások költségek jelentése.
+
+```json
+"filter": {
+    "dimensions": {
+        "name": "Resource",
+        "operator": "In",
+        "values": [
+            "subscriptions/{subscriptionGuid}/resourceGroups/{resourceGroup}/providers/Microsoft.ClassicCompute/virtualMachines/{ResourceName}"
+        ]
+    }
+}
+```
+
+### <a name="changing-timeframes"></a>Változó időkeretének meghatározása
+
+Állítsa be a `timeframe` definíciót `Custom` egy időkereten kívül a hét beállítani a dátumot és a hónap, dátum, a beállítások területen.
+
+```json
+"timeframe": "Custom",
+"timePeriod": {
+    "from": "2017-12-31T00:00:00.000Z",
+    "to": "2018-12-30T00:00:00.000Z"
 }
 ```
 

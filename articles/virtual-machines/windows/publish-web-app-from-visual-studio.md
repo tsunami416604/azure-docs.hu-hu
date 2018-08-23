@@ -1,6 +1,6 @@
 ---
-title: A webes alkalmazás közzététele egy Azure virtuális gépre a Visual Studio eszközből
-description: A Visual Studióból egy Azure virtuális géphez ASP.NET webes alkalmazás közzététele
+title: A webalkalmazás közzététele az Azure virtuális géphez a Visual Studióból
+description: A Visual Studióból az Azure virtuális gépeken az ASP.NET webes alkalmazás közzététele
 services: virtual-machines-windows
 author: ghogen
 manager: douge
@@ -8,124 +8,125 @@ tags: azure-service-management
 ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: aspnet
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d9e2c1a941c25aedd9048f2784350106b8739dba
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 561de3ac9073fe5cfdfadf2dc61d3f7807bf9e46
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "31797194"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058421"
 ---
-# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>ASP.NET webes alkalmazások közzététele egy Azure virtuális gépre a Visual Studio eszközből
+# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>ASP.NET-webalkalmazás közzététele az Azure virtuális géphez a Visual Studióból
 
-Ez a dokumentum ismerteti az Azure virtuális gép (VM) használatával ASP.NET webes alkalmazás közzététele a **Microsoft Azure virtuális gépek** közzétételi szolgáltatást a Visual Studio 2017.  
+Ez a dokumentum ismerteti, hogyan tehet közzé egy ASP.NET-alkalmazás egy Azure virtuális gép (VM) használatával a **Microsoft Azure Virtual Machines** közzétételi szolgáltatás Visual Studio 2017-ben.  
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ahhoz, hogy a Visual Studio egy ASP.NET-projekt közzététele egy Azure virtuális gépre, a virtuális gép lehet megfelelően be kell állítania.
+ASP.NET-projekt közzététele egy Azure virtuális Gépen a Visual Studio használatához a virtuális Gépet kell megfelelően be kell állítania.
 
-- Gép kell állítani egy ASP.NET-webalkalmazás fut, és a WebDeploy telepítve rendelkezik.
+- Egy ASP.NET-alkalmazás futtatásához, és a WebDeploy telepítve van a gépen kell konfigurálni.
 
-- A virtuális gép rendelkeznie kell egy DNS-név. További információkért lásd: [hozzon létre egy teljesen minősített tartománynevet az Azure-portálon a Windows virtuális gépek](portal-create-fqdn.md).
+- A virtuális gép rendelkeznie kell egy DNS-név konfigurálva. További információkért lásd: [teljesen minősített tartománynév létrehozása az Azure Portalon Windows virtuális gép](portal-create-fqdn.md).
 
-## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Az ASP.NET webalkalmazás közzététele a Visual Studio használatával Azure VM
-A következő szakasz ismerteti, hogyan közzététele egy Azure virtuális gép egy meglévő ASP.NET webes alkalmazást.
+## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Az ASP.NET-webalkalmazás közzététele az Azure virtuális géphez, a Visual Studio használatával
+A következő szakasz egy meglévő ASP.NET-alkalmazás egy Azure virtuális gépen való közzétételét ismerteti.
 
-1. Nyissa meg a webes alkalmazás megoldást a Visual Studio 2017.
-2. Kattintson a jobb gombbal a projektben a Megoldáskezelőre, és válassza a **közzététel...**
-3. Az oldalon jobbra látható nyílra segítségével Görgessen végig a közzétételi beállítások, amíg meg nem látja **Microsoft Azure virtuális gépek**.  
+1. Nyissa meg a webes alkalmazás megoldást a Visual Studio 2017-ben.
+2. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza a **Publish...**
+3. A lap jobb oldalán a nyílra használatával Görgessen végig a közzétételi beállítások, amíg meg nem találja **Microsoft Azure Virtual Machines**.  
 
-   ![Lap - jobbra mutató nyílra közzététele]
+   ![Közzététel a lap – jobbra mutató nyíl]
 
-4. Válassza ki a **Microsoft Azure virtuális gépek** ikonra, és válassza ki **közzététel**.
+4. Válassza ki a **Microsoft Azure Virtual Machines** ikonra, majd **közzététel**.
 
-   ![Közzététel lap – a Microsoft Azure virtuális gép ikonja]
+   ![Közzététel a lap – Microsoft Azure virtuális gép ikonja]
 
-5. Válassza ki a megfelelő fiókot (az Azure-előfizetés csatlakoztatva a virtuális gép).  
-   - Ha be van jelentkezve Visual Studio, a fiókok listáján megjelenik a hitelesített fiókok.  
-   - Ha nincs bejelentkezve, vagy ha van szüksége a fiók nem szerepel, válassza a "Fiók hozzáadása...", és kövesse az utasításokat a bejelentkezéshez.  
-   ![Azure-fiók választó]  
+5. Válassza ki a megfelelő fiókot (az Azure-előfizetést a virtuális gép csatlakozik).  
+   - Visual Studio-felhasználó jelentkezett be, ha a fiók listában megjelenik a hitelesített fiókok.  
+   - Ha nincs bejelentkezve, vagy ha a van szüksége a fiók nem szerepel a listán, válassza a "Fiók hozzáadása...", és kövesse az utasításokat követve jelentkezzen be.  
+   ![Azure-fiók-választó]  
 
 6. Válassza ki a megfelelő virtuális Gépet a listából a meglévő virtuális gépek.
 
    > [!Note]
-   > Ez a lista feltöltése némi időbe telhet.
+   > Ez a lista feltöltéséhez hosszabb időt is igénybe vehet.
 
-   ![Azure virtuális gép választó]
+   ![Az Azure VM-választó]
 
-7. Kattintson az OK gombra kattintva megkezdheti a közzététel.
+7. Kattintson az OK gombra a közzététel megkezdéséhez.
 
-8. Ha a hitelesítő adatok megadását kéri, adja meg a felhasználónevet és jelszót egy felhasználói fiók a cél virtuális Gépet, amely a jogok (általában a rendszergazda felhasználónevét és jelszavát, a virtuális gép létrehozásakor használt) közzétételi van konfigurálva.  
+8. Amikor a rendszer kéri a hitelesítő adatokat, adja meg a felhasználónevet és jelszót egy felhasználói fiók a cél virtuális Gépre, amelyet a közzétételi rights (általában a rendszergazdai felhasználónevét és jelszavát, a virtuális gép létrehozásakor használt) van konfigurálva.  
 
    ![WebDeploy-bejelentkezés]
 
-9. A biztonsági tanúsítvány elfogadásához.
+9. Fogadja el a biztonsági tanúsítvány.
 
    ![Tanúsítványhiba]
 
-10. A kimeneti ablakban a közzétételi művelet állapotának ellenőrzéséhez figyelje.
+10. Tekintse meg a kimeneti ablakban, a közzétételi művelet állapotának ellenőrzéséhez.
 
     ![Kimeneti ablak]
 
-11. Sikeres közzététel esetén a böngésző megnyitásához az újonnan közzétett webhely URL-CÍMÉT indít.
+11. Sikeres közzététel esetén a böngésző elindítja az újonnan közzétett hely URL-címre.
 
 **Success!**
 
-Most már sikeresen közzétette a webalkalmazás az Azure virtuális géphez.
+Most már sikeresen közzétette a webalkalmazást az Azure virtuális gépeken.
 
-## <a name="publish-page-options"></a>Közzététel lap beállításai
+## <a name="publish-page-options"></a>Közzétételi beállítások lap
 
-A Közzététel varázsló befejezése után a közzététel lap megnyitása a dokumentumban is a megadott új közzétételi profilhoz.
+A publish varázsló befejezése után a közzétételi oldalon nyílik meg a dokumentumot a kiválasztott új közzétételi profilt.
 
 ### <a name="re-publish"></a>Tegye közzé újra
 
-A frissítések közzétételéhez a webalkalmazást, válassza ki a **közzététel** gombra a Publish oldalán.  
+Válassza ki a frissítések közzétételéhez a webes alkalmazások, a **közzététel** a közzétételi oldalon gombjára.  
 - Ha a rendszer kéri, adja meg a felhasználónevet és jelszót.  
-- A közzététel azonnal megkezdődik.
+- Közzététel azonnal megkezdődik.
 
-![Lap közzététele – a Közzététel gombra]
+![Oldal közzététele – a közzététel gomb]
 
-### <a name="modify-publish-profile-settings"></a>Módosítsa közzétételi profil beállítások
+### <a name="modify-publish-profile-settings"></a>Módosítása közzététel profil beállításai
 
-Beállítások megtekintése és módosítása a közzétételi profil, jelölje be **beállítások...** .  
+Beállítások megtekintése és módosítása a közzétételi profilt, válassza **beállítások...** .  
 
-![Lap - Beállítások gombra közzététele]
+![Közzététel a lap - beállítások gomb]
 
-A beállítások kell kinéznie:  
+A beállítások a következőhöz hasonlóan kell kinéznie:  
 
-![Közzétételi beállítások – csatlakozási lapja]
+![Közzétételi beállítások – kapcsolat lap]
 
 #### <a name="save-user-name-and-password"></a>Felhasználónév és jelszó mentése
-- Hitelesítési adatokat biztosít minden alkalommal, amikor a közzététel elkerüléséhez feltöltheti azt a **felhasználónév** és **jelszó** mezőket és kattintson a **jelszó mentése** mezőbe.
-- Használja a **kapcsolat ellenőrzése** gombra kattintva győződjön meg arról, hogy megadta-e a megfelelő információk.
+- Elkerülheti, hogy megadta a hitelesítési adatokat, minden alkalommal, amikor közzéteszi, feltölti a **felhasználónév** és **jelszó** mezőket, és válassza a **jelszó mentése** mezőbe.
+- Használja a **kapcsolat ellenőrzése** gombra annak megerősítéséhez, hogy megadta a megfelelő adatokat.
 
-#### <a name="deploy-to-clean-web-server"></a>Webkiszolgáló tiszta telepítése
+#### <a name="deploy-to-clean-web-server"></a>Web server tiszta telepítése
 
-- Ha meg szeretné-e győződjön meg arról, hogy a webalkalmazás-kiszolgáló rendelkezik-e a webes alkalmazás egyes feltöltése után tiszta (és, hogy más fájlok nem meghagyott egy korábbi telepítésből függő), ellenőrizheti a **célhelyen további fájlok eltávolítása** a jelölőnégyzet jelölését a **beállítások** fülre.
+- Szeretné-e, ügyeljen arra, hogy a webkiszolgáló egyes feltöltése után a webes alkalmazás tiszta (és más fájlokat egy korábbi telepítésből függő van hátra), ellenőrizheti a **célhelyen további fájlok eltávolítása** a jelölőnégyzet a **beállítások** fülre.
 
-- Figyelmeztetés: Ezt a beállítást a közzététel törli az összes olyan fájlt, amely a webkiszolgáló (wwwroot könyvtárat) létezik. Győződjön meg arról, hogy ez a beállítás engedélyezve van a közzététel előtt a gép állapotát tudja. 
+- Figyelmeztetés: Ezzel a beállítással közzététel törli az összes fájlt, amely létezik a webkiszolgálón (wwwroot könyvtára). Győződjön meg arról, hogy ez a beállítás engedélyezve van a közzététel előtt a gép állapotát tudja. 
 
-![Közzétételi beállítások - beállítások lap]
+![Közzétételi beállítások – beállítások lap]
 
 ## <a name="next-steps"></a>További lépések
 
-### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Automatikus telepítés Azure VM CI/CD beállítása
+### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Azure virtuális géphez az automatikus központi telepítési CI/CD beállítása
 
-A Visual Studio Team szolgáltatással folyamatos kézbesítési adatcsatorna beállításához tekintse meg a [központi telepítése a Windows virtuális gépek](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
+A Visual Studio Team Services egy folyamatos teljesítési folyamat beállításával, tekintse meg [központi telepítése a Windows virtuális gép](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups).
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
-[Lap - jobbra mutató nyílra közzététele]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[Közzététel lap – a Microsoft Azure virtuális gép ikonja]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[Közzététel a lap – jobbra mutató nyíl]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
+[Közzététel a lap – Microsoft Azure virtuális gép ikonja]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
 [Azure Account Selector]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
-[Azure virtuális gép választó]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
+[Az Azure VM-választó]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
 [WebDeploy-bejelentkezés]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
 [Tanúsítványhiba]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
 [Kimeneti ablak]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
-[Lap közzététele – a Közzététel gombra]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
-[Lap - Beállítások gombra közzététele]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
-[Közzétételi beállítások – csatlakozási lapja]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
-[Közzétételi beállítások - beállítások lap]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png
+[Oldal közzététele – a közzététel gomb]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
+[Közzététel a lap - beállítások gomb]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
+[Közzétételi beállítások – kapcsolat lap]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
+[Közzétételi beállítások – beállítások lap]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png

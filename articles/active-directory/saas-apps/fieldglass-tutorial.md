@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 446eac2bf6eed10f919d6c64de1d7b9dbba1f35d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a14aeb55d9e5756660708e9e63a867a66a54a7b6
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420353"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Oktatóanyag: Azure Active Directory-integráció az Fieldglass
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Fieldglass az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Fieldglass egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a Fieldglass konfigurálásához hozzá kell Fieldglas
 
 **Fieldglass hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -121,7 +121,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | `https://<company name>.fgvms.com/<company name>`|
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Fieldglass támogatási csoportjának](http://www.fieldglass.com/solutions/support) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Fieldglass támogatási csoportjának](https://www.fieldglass.com/customer-support) beolvasni ezeket az értékeket.
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -135,7 +135,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/fieldglass-tutorial/tutorial_fieldglass_configure.png) 
 
-1. Az egyszeri bejelentkezés konfigurálása **Fieldglass** oldalon kell küldenie a letöltött **Certificate(Base64)** és **kijelentkezéses URL-címet, a SAML Entitásazonosító** való [ Fieldglass támogatási csoportjának](http://www.fieldglass.com/solutions/support). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **Fieldglass** oldalon kell küldenie a letöltött **Certificate(Base64)** és **kijelentkezéses URL-címet, a SAML Entitásazonosító** való [ Fieldglass támogatási csoportjának](https://www.fieldglass.com/customer-support). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,7 +173,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-a-fieldglass-test-user"></a>Fieldglass tesztfelhasználó létrehozása
 
-Ez a szakasz célja FieldGlass Britta Simon nevű felhasználó létrehozásához. Együttműködve a [Fieldglass támogatási csoportjának](http://www.fieldglass.com/solutions/support) a felhasználók hozzáadása a Fieldglass fiókban.
+Ez a szakasz célja FieldGlass Britta Simon nevű felhasználó létrehozásához. Együttműködve a [Fieldglass támogatási csoportjának](https://www.fieldglass.com/customer-support) a felhasználók hozzáadása a Fieldglass fiókban.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

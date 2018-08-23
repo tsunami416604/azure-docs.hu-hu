@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 22751d7ab38717fefdebe107e7a7d6fc10dda4c4
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 39ae4573b4c447253c4c90a3845a087434dcd77a
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326190"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054718"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -33,7 +33,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
   * Is használhatja a [az Azure portal](https://portal.azure.com). Ezen a portálon nem igényel az Azure AD-licencre.
 * [A tartományok hozzáadásának és hitelesítésének](../active-directory-domains-add-azure-portal.md) tervezi használni az Azure ad-ben. Például ha azt tervezi, hogy a contoso.com a felhasználók számára, majd ellenőrizze, hogy a tartomány ellenőrzése után, és csak nem használja a contoso.onmicrosoft.com alapértelmezett tartomány.
 * Azure AD-bérlő alapértelmezett 50 ezer objektum lehetővé teszi. Ha a tartomány ellenőrzéséhez a korlát 300 k objektumok-ra emelkedett. Ha még több objektumot az Azure ad-ben, majd meg kell nyitnia egy támogatási esetet, még tovább növelni a korlátot. Ha több mint 500 ezer objektumokat, majd licenc szükséges, például az Office 365-höz, az Azure AD alapszintű, az Azure AD Premium vagy Enterprise Mobility + Security.
-* ADSyncPrep egy PowerShell-parancsfájl modul, amely az Active Directory-környezet előkészítése az Azure AD Connect használt funkciókat biztosít.  ADSyncPrep igényel a [v1.1-Azure AD a Microsoft Online PowerShell-modul](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).  2. verzióban nem fog működni.  Akkor is telepíti, a modul használatával a `Install-Module` parancsmagot.  További információ: a megadott hivatkozás.
+* ADSyncPrep egy PowerShell-parancsfájl modul, amely az Active Directory-környezet előkészítése az Azure AD Connect használt funkciókat biztosít.  ADSyncPrep igényel a [v1.1-Azure AD a Microsoft Online PowerShell-modul](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).  2. verzióban nem fog működni. A modul használatával telepítheti a `Install-Module` parancsmagot.  További információ: a megadott hivatkozás.
 
 ### <a name="prepare-your-on-premises-data"></a>A helyszíni adatok előkészítése
 * Használat [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) hibákat, például az ismétlődések és a címtár formázási problémák azonosítására, az Azure AD szinkronizálása előtt és az Office 365.

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 4f4c5870bb1bdd804aa4b2da8c46c0698b897798
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 543f581659d54bd14ccb2a818fd74e379bcc8cfe
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526181"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054086"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure storage emulator használata a fejlesztési és tesztelési célra
 
@@ -204,6 +204,12 @@ A Table storage az emulátorban alkalmazása a következő eltérésekkel:
 Nincsenek meghatározott, a Queue storage az emulátorban különbségek.
 
 ## <a name="storage-emulator-release-notes"></a>A Storage emulator kibocsátási megjegyzései
+
+### <a name="version-57"></a>5.7-es verzióra
+Kijavítva a hiba, amely a naplózás engedélyezve lett egy összeomlási okozhatnak.
+
+### <a name="version-56"></a>5.6-os verziója
+* A storage emulator mostantól támogatja a tárolási szolgáltatások 2018-03-28-as verziójának Blob, Queue és Table service végpontokon.
 
 ### <a name="version-55"></a>5.5-ös verzió
 * A storage emulator mostantól támogatja a tárolási szolgáltatások 2017-11-09 verziója Blob, Queue és Table service végpontokon.

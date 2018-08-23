@@ -4,22 +4,20 @@ description: Azure Resource Manager segítségével az erőforrások áthelyezé
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 69614fe84941ea2003d39de165c692b812d10785
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503580"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617290"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -57,7 +55,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
   Ha a bérlőazonosítók a forrás- és előfizetés esetében nem ugyanaz, a következő módszerek használatával a bérlőazonosítók egyeztetése:
 
   * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
-  * [Társításával vagy Azure-előfizetés hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+  * [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 2. A szolgáltatásnak lehetővé kell tennie az erőforrások áthelyezését. Ez a cikk az erőforrások áthelyezését engedélyező szolgáltatásokat, és mely szolgáltatások nem engedélyezi az erőforrások áthelyezése sorolja fel.
 3. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, akkor megjelenik egy hibaüzenet, arról, hogy a **az előfizetés nincs regisztrálva az erőforrástípushoz**. Ez a probléma erőforrások új előfizetésre történő áthelyezésekor fordulhat elő, ha az előfizetést még nem használták az adott erőforrástípushoz.
@@ -113,11 +111,11 @@ Kapcsolattartó [támogatja](https://portal.azure.com/#blade/Microsoft_Azure_Sup
 
 A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és az előfizetés áthelyezése a következők:
 
+* Analysis Services
 * API Management
 * Az App Service apps (webalkalmazások) – lásd: [App Service korlátai](#app-service-limitations)
 * App Service-tanúsítvány
 * Application Insights
-* Analysis Services
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
@@ -133,6 +131,8 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Cognitive Services
 * Container Registry
 * Tartalommoderátor
+* Cost Management
+* Customer Insights
 * Data Catalog
 * Data Factory
 * Data Lake Analytics
@@ -141,12 +141,14 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Event Grid
 * Event Hubs
 * Tekintse meg a HDInsight-fürtök – [HDInsight korlátozások](#hdinsight-limitations)
+* IOT-központ
 * IoT Hubok
 * Key Vault
 * Terheléselosztók – lásd: [Load Balancer-korlátozások](#lb-limitations)
 * Log Analytics
 * Logic Apps
 * Machine Learning - webszolgáltatások helyezheti át egy erőforráscsoport ugyanabban az előfizetésben, de nem egy másik előfizetésben található Machine Learning Studióban. Egyéb Machine Learning-erőforrások áthelyezhetők, előfizetések között.
+* Felügyelt identitás - felhasználó által hozzárendelt
 * Media Services
 * Mobile Engagement
 * Notification Hubs
@@ -160,6 +162,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Keresés
 * Service Bus
 * Service Fabric
+* Service Fabric háló
 * SignalR Service
 * Storage
 * Tekintse meg a tároló (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
@@ -187,15 +190,19 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrások áthelyez
 * Azure Databricks
 * Batch AI
 * Tanúsítványok – App Service-tanúsítványok is áthelyezhetők, de a feltöltött tanúsítványok [korlátozások](#app-service-limitations).
+* Tárolópéldányok
 * Container Service
+* Data Box
+* Fejlesztői tárolóhelyek
 * Dynamics LCS
 * Express Route
-* Kubernetes-szolgáltatást
+* Kubernetes Service
 * A Lab Services – áthelyezése új erőforráscsoportba ugyanahhoz az előfizetéshez engedélyezve van, de az előfizetés közötti áthelyezése nem engedélyezett.
 * Terheléselosztók – lásd: [Load Balancer-korlátozások](#lb-limitations)
 * Felügyelt alkalmazások
 * Tekintse meg a Managed Disks - [virtuális gépek korlátozások](#virtual-machines-limitations)
 * Microsoft Genomics
+* NetApp
 * Nyilvános IP-Címek – lásd: [nyilvános IP-korlátozások](#pip-limitations)
 * Recovery Services-tároló – még nincs társítva a Recovery Services-tároló a számítási, hálózati és tárolási erőforrások áthelyezése, lásd: [Recovery Servicesre vonatkozó korlátozásokat](#recovery-services-limitations).
 * Azure-beli SAP HANA-szolgáltatás
@@ -225,7 +232,7 @@ Egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések k
 
 ## <a name="virtual-networks-limitations"></a>Virtuális hálózatok korlátozások
 
-Virtuális hálózat áthelyezésekor is át kell helyeznie a tőle függő erőforrások. Ha például helyezze át a virtuális hálózati átjárók.
+Virtuális hálózat áthelyezésekor is át kell helyeznie a tőle függő erőforrások. A VPN-átjárók IP-címek, virtuális hálózati átjárók és minden kapcsolódó kapcsolati erőforrás kell áthelyezni. Helyi hálózati átjárók egy másik erőforráscsoportban található is lehet.
 
 Egy virtuális Társhálózat áthelyezni, előbb le kell tiltania a virtuális hálózatok közötti társviszony. Ha le van tiltva, áthelyezheti a virtuális hálózat. Az áthelyezés után a virtuális hálózatok közötti társviszony újraengedélyezni.
 

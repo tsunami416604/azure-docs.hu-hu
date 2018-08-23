@@ -11,16 +11,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/10/2018
+ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 4dc4ddb2d11cf792bfa6288eadce8eb03470ae1d
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 6a52db27491ef707b813a7645d275b371b11368c
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099909"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054891"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series"></a>Az adatok áttelepíthetők a StorSimple 5000-7000-es sorozat 
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Az Azure File Sync át adatokat a StorSimple 5000-7000-es sorozat
 
 Adatok áttelepítése az a folyamat, amely adatokat helyez át egy tárolási helye a másikra. Ez magában foglalja, így a szervezet aktuális adatokat egy eszközről egy másik eszközre pontos másolatát, lehetőleg nélkül megszakítása vagy aktív alkalmazások letiltása – és az összes bemeneti/kimeneti (I/O) tevékenység majd átirányítása az új eszköz. 
 
@@ -67,17 +67,17 @@ Adatok áttelepítése a storsimple 5000-7000-es, AFS lépésből áll:
 
 A következő lépésekkel migrálása az Azure File Sync megosztások a StorSimple-kötetek konfigurálni a Windows fájlmegosztás. 
 1.  Hajtsa végre ezeket a lépéseket ugyanazon a gazdagépen a Windows Server, a StorSimple-kötetek csatlakoztatva vannak, vagy használjon egy másik rendszer. 
-    - [Készítse elő a Windows Server használata az Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal).
-    - [Az Azure File Sync ügynök telepítése](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal).
-    - [A Storage Sync service telepítése](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
-    - [Regisztrálja a Windows Server Storage Sync service](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
-    - [A szinkronizálási csoport és a felhőbeli végpont létrehozása] (https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal. Szinkronizálási csoportok kell arról, hogy minden Windows fájlmegosztás, amely a gazdagépről kell áttelepíteni.
-    - [Kiszolgálói végpont létrehozása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). A StorSimple-kötet, amely tartalmazza a fájladatok megosztás elérési útját adja meg az elérési utat. Például, ha a StorSimple-kötet meghajtó `J`, és az adatok blobtárolóban találhatók `J:/<myafsshare>`, majd adja hozzá ezt az elérési utat, a kiszolgálói végpont. Hagyja a **Rétegezést** , **letiltott**.
+    - [Készítse elő a Windows Server használata az Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync).
+    - [Az Azure File Sync ügynök telepítése](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent).
+    - [A Storage Sync service telepítése](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
+    - [Regisztrálja a Windows Server Storage Sync service](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
+    - [Szinkronizálási csoport és a felhőbeli végpont létrehozása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint). Szinkronizálási csoportok kell arról, hogy minden Windows fájlmegosztás, amely a gazdagépről kell áttelepíteni.
+    - [Kiszolgálói végpont létrehozása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). A StorSimple-kötet, amely tartalmazza a fájladatok megosztás elérési útját adja meg az elérési utat. Például, ha a StorSimple-kötet meghajtó `J`, és az adatok blobtárolóban találhatók `J:/<myafsshare>`, majd adja hozzá ezt az elérési utat, a kiszolgálói végpont. Hagyja a **Rétegezést** , **letiltott**.
 2.  Várjon, amíg a file server szinkronizálás. Egy adott szinkronizálási csoport minden egyes kiszolgáló esetén ellenőrizze, hogy:
     - A feltöltési és letöltési utolsó kísérlet történt szinkronizálás időbélyegei legutóbbi.
     - Állapota zöld, a fel- és letöltést.
-    - A szinkronizálási tevékenység látható nagyon kevés vagy a hátralévő szinkronizálási fájlokat.
-    - A fájlok nem szinkronizálja a feltöltési és letöltési 0.
+    - A **szinkronizálási tevékenység** látható nagyon kevés vagy a hátralévő szinkronizálási fájlokat.
+    - A **nem szinkronizálja a fájlokat** feltöltési és letöltési 0.
     Ha a kiszolgáló szinkronizálása befejeződött-e további információért látogasson el [hibaelhárítása az Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other). A szinkronizálás több óráig is eltarthat, nap, az adatok mérete és a sávszélesség. A szinkronizálás befejeződése után minden adatát van biztonságosan Azure-fájlmegosztást. 
 3.  Nyissa meg a StorSimple-köteteket a megosztásokat. Válassza ki a megosztást, kattintson a jobb gombbal, és válassza **tulajdonságok**. Vegye figyelembe a megosztási engedélyek alapján **biztonsági**. Ezeket az engedélyeket kell manuálisan kell alkalmazni az új megosztásra a későbbi lépésben.
 4.  Ha használja a Windows Server ugyanazon a gazdagépen vagy egy másik eltérő lesz a következő lépéseket.

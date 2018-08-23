@@ -1,102 +1,103 @@
 ---
-title: Azure Cloud Explorer erőforrások kezelése |} Microsoft Docs
-description: Ismerje meg, hogyan Cloud Explorer segítségével keresse meg és a Visual Studio Azure-erőforrások kezeléséhez.
+title: Az Azure-erőforrások felügyelete a Cloud Explorer |} A Microsoft Docs
+description: Ismerje meg, hogyan Cloud Explorer használatával megkeresheti és felügyelheti az Azure-erőforrások Visual Studión belül.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 6347dc53-f497-49d5-b29b-e8b9f0e939d7
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/25/2017
 ms.author: ghogen
-ms.openlocfilehash: 9d8ae465e80ab38c1d7b0f6082865c110c0ff06b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a4be3f063c51f26e1df9ecf4cca4ae0655554750
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794072"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057574"
 ---
-# <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>A Visual Studio Cloud Explorer Azure fiókokhoz tartozó erőforrások kezelése
-Cloud Explorer lehetővé teszi az Azure-erőforrások és csoportok megtekintése, vizsgálja meg a tulajdonságaikról és műveleteket kulcs fejlesztői diagnosztika a Visual studióban. 
+# <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>A Visual Studio Cloud Explorer az Azure-fiókokhoz kapcsolódó erőforrások kezelése
+Cloud Explorer segítségével is megtekintheti az Azure-erőforrások és erőforráscsoportok, azok tulajdonságait megvizsgálhatja és műveleteket kulcs Fejlesztőeszközök diagnosztika a Visual Studión belül. 
 
-Például a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040), Cloud Explorer épül, az Azure Resource Manager-készletben. Ezért Cloud Explorer megértette erőforrások, például Azure erőforráscsoport-sablonok és a Logic Apps alkalmazásokat és API-alkalmazások például az Azure-szolgáltatásokat, valamint a [szerepköralapú hozzáférés-vezérlés](role-based-access-control/role-assignments-portal.md) (RBAC). 
+Például a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), Cloud Explorer az Azure Resource Manager-verembe épül. Ezért a Cloud Explorer tisztában van azzal, erőforrások, például az Azure-erőforráscsoportot és az Azure-szolgáltatások, például a Logic apps és API-alkalmazások, és támogatja a [szerepköralapú hozzáférés-vezérlés](role-based-access-control/role-assignments-portal.md) (RBAC). 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- [A Visual Studio 2017](https://www.visualstudio.com/downloads/) rendelkező a **Azure számítási** kiválasztva, vagy a Visual Studio egy korábbi verzióját a [Microsoft Azure SDK for .NET 2.9](https://www.microsoft.com/en-us/download/details.aspx?id=51657).
-- A Microsoft Azure-fiók – Ha nincs fiókja, akkor [regisztráljon egy ingyenes próbaverzióra](http://go.microsoft.com/fwlink/?LinkId=623901) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](http://go.microsoft.com/fwlink/?LinkId=623901).
+- [A Visual Studio 2017](https://www.visualstudio.com/downloads/) az a **Azure-beli számítási** kiválasztva, vagy a Visual Studio egy korábbi verzióját a [Microsoft Azure SDK for .NET 2.9](https://www.microsoft.com/en-us/download/details.aspx?id=51657).
+- A Microsoft Azure-fiók – Ha nincs fiókja, akkor az [regisztráljon egy ingyenes próbaverzióra](http://go.microsoft.com/fwlink/?LinkId=623901) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](http://go.microsoft.com/fwlink/?LinkId=623901).
 
 > [!NOTE]
-> Válassza ki, ha Cloud Explorer **nézet** > **Cloud Explorer** menüsávjában.   
+> Cloud Explorer megtekintéséhez jelölje ki **nézet** > **Cloud Explorer** a menüsávon.   
 > 
 > 
 
-## <a name="add-an-azure-account-to-cloud-explorer"></a>Adja hozzá az Azure Cloud Explorer fiókot
-Az Azure-fiókkal társított erőforrások megtekintéséhez előbb a fiókot kell hozzáadnia a Cloud Explorer. 
+## <a name="add-an-azure-account-to-cloud-explorer"></a>Adjon hozzá egy Azure-fiókját a Cloud Explorer
+Az Azure-fiókkal társított erőforrások megtekintéséhez először hozzá kell adnia a fiók a Cloud Explorer. 
 
-1. A **Cloud Explorer**, jelölje be **Azure-fiók beállításai**.
+1. A **Cloud Explorer**válassza **Azure-fiók beállításai**.
 
-    ![Cloud Explorer Azure fiók beállításainak ikonja](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
+    ![Cloud Explorer Azure fiók beállítások ikon](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
 
-1. Válassza ki **új fiókot felveszi**. 
+1. Válassza ki **új fiók hozzáadása**. 
 
     ![Cloud Explorer-fiók hozzáadása hivatkozás](media/vs-azure-tools-resources-managing-with-cloud-explorer/add-account-link.png)
 
-1. Jelentkezzen be az Azure-fiók amelynek tallózni kívánt erőforrásokat. 
+1. Jelentkezzen be az Azure-fiók amelynek Tallózás kívánt erőforrásokat. 
 
-1. Miután bejelentkezett az Azure-fiók, az adott fiókhoz tartozó előfizetések megjelenítéséhez. Válassza ki a kívánt keresse meg és válassza ki a fiók-előfizetések jelölőnégyzeteit **alkalmaz**. 
+1. Miután bejelentkezett Azure-fiókba az előfizetések, a fiókhoz társított jelennek meg. Válassza ki a tallózással keresse meg és jelölje ki a kívánt fiók-előfizetések jelölőnégyzeteit **alkalmaz**. 
  
-    ![Cloud Explorer: válassza ki az Azure-előfizetések megjelenítéséhez](media/vs-azure-tools-resources-managing-with-cloud-explorer/select-subscriptions.png)
+    ![Cloud Explorer: válassza ki az Azure-előfizetések megjelenítése](media/vs-azure-tools-resources-managing-with-cloud-explorer/select-subscriptions.png)
 
-1. Miután kiválasztotta az előfizetéseket, amelyek tallózni kívánt erőforrásokat, ezen előfizetések és az erőforrások megjelenítéséhez, a Cloud Explorerben.
+1. Miután kijelölte az előfizetéseket, amelyek átnézni kívánt erőforrások, ezek előfizetésekre és erőforrásokra megjelenítése a Cloud Explorer.
 
-    ![Cloud Explorer erőforrás Azure-fiókot listázása](media/vs-azure-tools-resources-managing-with-cloud-explorer/resources-listed.png)
+    ![A cloud Explorer erőforrás Azure-fiók listázása](media/vs-azure-tools-resources-managing-with-cloud-explorer/resources-listed.png)
 
-## <a name="remove-an-azure-account-from-cloud-explorer"></a>Távolítsa el az Azure-fiók Cloud Explorer 
+## <a name="remove-an-azure-account-from-cloud-explorer"></a>A Cloud Explorer az Azure-fiók eltávolítása 
 
-1. A **Cloud Explorer**, jelölje be **Azure-fiók beállításai**.
+1. A **Cloud Explorer**válassza **Azure-fiók beállításai**.
 
-    ![Cloud Explorer Azure fiók beállításainak ikonja](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
+    ![Cloud Explorer Azure fiók beállítások ikon](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
 
-1. Mellett a fiók el szeretné távolítani, válassza ki a **eltávolítása**.
+1. El kívánja távolítani a fiókot, mellett válassza ki a **eltávolítása**.
 
-    ![Cloud Explorer Azure fiók beállításainak ikonja](media/vs-azure-tools-resources-managing-with-cloud-explorer/remove-account.png)
+    ![Cloud Explorer Azure fiók beállítások ikon](media/vs-azure-tools-resources-managing-with-cloud-explorer/remove-account.png)
 
-## <a name="view-resource-types-or-resource-groups"></a>Erőforrástípus vagy erőforráscsoportok megtekintésére
-Az Azure-erőforrások megtekintéséhez, vagy választhat **erőforrástípusok** vagy **erőforráscsoportok** nézet.
+## <a name="view-resource-types-or-resource-groups"></a>Típusú erőforrások vagy erőforráscsoportok megtekintése
+Az Azure-erőforrások megtekintéséhez, vagy választhat **erőforrástípusok** vagy **erőforráscsoportok** megtekintése.
 
-1. A **Cloud Explorer**, válassza ki a erőforrás nézet legördülő listában.
+1. A **Cloud Explorer**, válassza ki az erőforrás legördülő menüjére.
 
-    ![Cloud Explorer legördülő lista segítségével válassza ki a kívánt erőforrások megtekintése](media/vs-azure-tools-resources-managing-with-cloud-explorer/resources-view-dropdown.png)
+    ![Cloud Explorer legördülő listában válassza ki a kívánt erőforrások megtekintése](media/vs-azure-tools-resources-managing-with-cloud-explorer/resources-view-dropdown.png)
 
 1. A helyi menüből válassza ki a kívánt nézetet: 
 
-    - **Erőforrástípusok** - az nézet közös használt a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040), az Azure-erőforrások kategóriába sorolt, például webes alkalmazásokat, a storage-fiókok és a virtuális gépek típus szerint jeleníti meg. 
-    - **Erőforráscsoportok** - által az Azure erőforráscsoport, amellyel fontosságúak társított kategorizálja Azure-erőforrások megtekintése. Egy erőforráscsoportot az Azure-erőforrások, általában egy adott alkalmazás által használt csomag egyik gyermekszoftver. Azure erőforráscsoport-sablonok kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](./azure-resource-manager/resource-group-overview.md).
+    - **Erőforrástípusok** megtekintése – a használt gyakori nézet a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), az Azure-erőforrások például a web apps, a storage-fiókok és a virtual machines típusuk szerint osztályozva megjeleníti. 
+    - **Erőforráscsoportok** - a, amellyel még társított Azure-erőforráscsoport szerint kategorizálja a Azure-erőforrások megtekintése. Egy erőforráscsoport egy Azure-erőforrások, általában egy adott alkalmazás által használt csomagot. Azure erőforráscsoportokkal kapcsolatos további tudnivalókért lásd: [Azure Resource Manager áttekintése](./azure-resource-manager/resource-group-overview.md).
 
-    Az alábbi ábrán a két erőforrás nézeteinek társítása összehasonlítása:
+    Az alábbi képen látható a két erőforrás nézeteinek társítása összehasonlítása:
 
-    ![Cloud Explorer erőforrás nézetek összehasonlítása](media/vs-azure-tools-resources-managing-with-cloud-explorer/resource-views-comparison.png)
+    ![A cloud Explorer erőforrás nézetek összehasonlítása](media/vs-azure-tools-resources-managing-with-cloud-explorer/resource-views-comparison.png)
 
 ## <a name="view-and-navigate-resources-in-cloud-explorer"></a>Megtekintheti, és keresse meg a Cloud Explorer erőforrások
-Egy Azure-erőforrás keresse meg, és a Cloud Explorer megtekintse az adataikat, bontsa ki az elem típusa vagy kapcsolódó erőforráscsoport, és válassza ki az erőforrás. Amikor kiválaszt egy erőforrást, információ szerepel a két lap - **műveletek** és **tulajdonságok** - Cloud Explorer alján. 
+Keresse meg az Azure-erőforrás és az információk a Cloud Explorer megtekintéséhez bontsa ki az elem típusa vagy társított erőforráscsoportot, és válassza ki az erőforrást. Amikor kiválaszt egy erőforrást, az információk megjelennek-e a két lap – **műveletek** és **tulajdonságok** – a Cloud Explorer alján. 
 
-- **Műveletek** lap – felsorolja azokat a műveleteket hajthatja végre a Cloud Explorer a kiválasztott erőforrás. Kattintson a jobb gombbal az erőforrás megtekintéséhez a helyi menüből is megtekintheti ezeket a beállításokat.
+- **Műveletek** lap – felsorolja azokat a műveleteket, elvégezhető a kiválasztott erőforrás a Cloud Explorerben. Kattintson a jobb gombbal az erőforrás megtekintéséhez a helyi menüből is megtekintheti ezeket a beállításokat.
 
-- **Tulajdonságok** lap – az erőforrás, például a típusa, területi beállítás és az erőforrás csoport, amelyhez társítva a tulajdonságok láthatók.
+- **Tulajdonságok** lap – például a típus, nyelv és az erőforrás csoportból, amelyhez társítva az erőforrás tulajdonságait mutatja.
 
-Az alábbi ábrán láthatók az egyes lapokon az egy App Service egy példa összehasonlítása:
+Az alábbi képen egy példa összehasonlítása, amit lát az egyes lapokon az App Service-ben:
 
 ![](./media/vs-azure-tools-resources-managing-with-cloud-explorer/actions-and-properties.png)
 
-Minden erőforrás van a művelet **nyissa meg a portál**. Ha úgy dönt, hogy ez a művelet, a Cloud Explorer megjeleníti a kiválasztott erőforrás a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040). A **nyissa meg a portál** jellemzője, ami hasznos lehet, navigáljon a mélyen beágyazott erőforrások.
+Minden erőforrás rendelkezik a művelet **Megnyitás a portálon**. Ha úgy dönt, hogy ez a művelet, a Cloud Explorer jeleníti meg a kiválasztott erőforrás a a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040). A **Megnyitás a portálon** a funkció a mélyen beágyazott erőforrások navigáláshoz praktikus.
 
-További műveletek és a tulajdonságértékek is szerepel az Azure erőforrás-alapú. Például webes alkalmazásokat és a logic apps is műveletet kell végrehajtani a **nyissa meg böngészőben** és **Hibakereső csatlakoztatása** kívül **nyissa meg a portál**. Szerkesztő megnyitásához műveletek jelennek meg, ha úgy dönt, hogy a tárolási fiók blob, üzenetsor vagy tábla. Az Azure-alkalmazások is rendelkeznek **URL-cím** és **állapot** tulajdonságok, míg a tárolási erőforrások kulcs és a kapcsolati karakterlánc tulajdonságait.
+További műveleteket és tulajdonságértékeket is megjelenhetnek az Azure-erőforrások alapján. Például web apps és logic Apps-alkalmazások is rendelkeznek a műveletek **nyissa meg böngészőben** és **Hibakereső csatlakoztatása** mellett **Megnyitás a portálon**. Nyissa meg a szerkesztőknek a műveletek jelennek meg, ha úgy dönt, hogy egy storage-fiók blob, üzenetsor vagy tábla. Az Azure-alkalmazások **URL-cím** és **állapot** tulajdonságok, míg a tárolási erőforrások kulcs és a kapcsolati karakterlánc tulajdonságai.
 
 ## <a name="find-resources-in-cloud-explorer"></a>A Cloud Explorer erőforrások keresése
-Keresse meg az adott névvel rendelkező erőforrásokat az Azure-fiók-előfizetések, adja meg a nevét a **keresési** Cloud Explorer párbeszédpanel.
+Az Azure-fiókba az előfizetések adott névvel rendelkező erőforrások megkereséséhez írja be a nevét a **keresési** Cloud Explorer párbeszédpanel.
 
 ![A Cloud Explorer erőforrások keresése](./media/vs-azure-tools-resources-managing-with-cloud-explorer/search-for-resources.png)
 
-A karakterek megadásakor a **keresési** mezőbe csak azok a karakterek megfelelő erőforrások jelennek meg a erőforrás fában.
+A karakterek beírásával a **keresési** mezőben csak azok a karakterek megfelelő erőforrások jelennek meg az erőforrás-fában.

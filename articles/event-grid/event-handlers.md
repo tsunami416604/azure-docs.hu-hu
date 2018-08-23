@@ -1,90 +1,96 @@
 ---
-title: Az Azure Event rács eseménykezelők
-description: Ismerteti a támogatott eseménykezelők Azure esemény rács
+title: Az Azure Event Grid eseménykezelők
+description: Támogatott eseménykezelők ismerteti az Azure Event Gridhez
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7c012bdf025a352788aec2d2d70bab33d7914577
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 08658c42687626779dea0de7dd724d9431a296da
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849542"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617141"
 ---
-# <a name="event-handlers-in-azure-event-grid"></a>Az eseménykezelők Azure esemény rácsban
+# <a name="event-handlers-in-azure-event-grid"></a>Az Azure Event Grid eseménykezelők
 
-Eseménykezelő az a hely, ahol az esemény érkezik. A kezelő bontja feldolgozni az eseményt néhány további művelet. Több Azure-szolgáltatások automatikusan konfigurált események kezelésére. A webhook események kezelésére is használható. A webhook nem kezelhetnek eseményeket az Azure-ban üzemeltetett kell. Esemény rács csak a HTTPS-végpontnak webhook támogatja.
+Eseménykezelőt az a hely, ahol a rendszer. A kezelő néhány további művelet feldolgozni az eseményt vesz igénybe. Több Azure-szolgáltatások automatikusan megtörténik az események kezeléséhez. Bármilyen WebHook események kezeléséhez is használható. A WebHook nem kell-e üzemeltetni, arra zpracovávat události. Event Grid csak a HTTPS WebHook-végpontokat támogatja.
 
-A cikkben minden eseménykezelő hivatkozások olyan témakörökre mutatnak.
+Ez a cikk tartalmakra mutató hivatkozásokat biztosít minden eseménykezelő.
 
 ## <a name="azure-automation"></a>Azure Automation
 
-Azure Automation segítségével a runbookok automatizált folyamat események.
+Azure Automation segítségével a runbookok automatizált eseményeinek feldolgozása.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-|[Azure Automation szolgáltatásbeli integrálható a esemény rács és a Microsoft csapatai](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, mely küld egy eseményt. Az eseményt akkor váltja ki az Automation-runbook címkéket a virtuális gépet, amely egy Microsoft Teams csatorna küldött üzenetet küld. |
+|[Oktatóanyag: Az Azure Automation az Event Grid és a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, amely eseményt küld. Az esemény aktiválása a címkéket a virtuális gép, és a egy Microsoft Teams-csatornához küldött üzenet aktivál egy Automation-runbook. |
 
 ## <a name="azure-functions"></a>Azure Functions
 
-Használja az Azure Functions események kiszolgáló nélküli válasz.
+Az Azure Functions használata kiszolgáló nélküli által kiváltott kódfuttatáshoz.
 
 Ha az Azure Functionst használja kezelőként, használja az Event Grid-triggereket az általános HTTP-triggerek helyett. Az Event Grid automatikusan érvényesíti az Event Grid függvény eseményindítóit. Általános HTTP-eseményindítók esetén meg kell valósítani az [érvényesítési választ](security-authentication.md#webhook-event-delivery).
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Az Azure Functions rács eseményindító](../azure-functions/functions-bindings-event-grid.md) | Az esemény rács eseményindító funkciókkal használatának áttekintése. |
-| [Feltöltött képek átméretezésének automatizálása az Event Grid használatával](resize-images-on-storage-blob-upload-event.md) | Felhasználók keresztül webalkalmazás képek feltöltése a tárfiókba. A tárolási blob létrehozásakor esemény rács a függvény alkalmazáshoz, amely a feltöltött lemezkép átméretezi küld egy eseményt. |
-| [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md) | Az Event Hubs rögzítési fájlt hoz létre, amikor esemény rács függvény alkalmazásokhoz küld egy eseményt. Az alkalmazás kéri le a rögzítést fájlt, és adatokat áttelepíti az adatraktárban. |
-| [Az Azure Service Bus számára, Azure esemény rács integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Esemény rács üzeneteket küld a Service Bus-témakörbe alkalmazás és a logikai alkalmazás működik. |
+| [Event Grid-trigger az Azure Functions szolgáltatáshoz](../azure-functions/functions-bindings-event-grid.md) | Az Event Grid eseményindító használata a funkciók áttekintése. |
+| [Oktatóanyag: az Event Grid használatával feltöltött képek átméretezésének automatizálása](resize-images-on-storage-blob-upload-event.md) | Felhasználók webalkalmazás keresztül képek feltöltéséhez a storage-fiókot. Amikor létrejön egy storage-blobból, az Event Grid eseményt küld az a függvényalkalmazást, amely átméretezi a feltöltött kép. |
+| [Oktatóanyag: big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md) | Az Event Hubs rögzítési fájlt hoz létre, amikor az Event Grid eseményt küld egy függvényalkalmazáshoz. Az alkalmazás lekéri a rögzítési fájlt, és egy data warehouse-bA migrálja az adatokat. |
+| [Oktatóanyag: Azure Service Bus – Azure Event Grid integráció példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld a Service Bus-témakörbe, alkalmazás és a logikai alkalmazás működéséhez. |
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Az Event Hubs akkor használja, ha a megoldás lekérdezi események gyorsabb, mint az eseményeket is feldolgozza. Az alkalmazás saját ütemezést, akkor az Event Hubs eseményeit dolgozza fel. A bejövő események kezelésére a Eseményfeldolgozási méretezheti.
+Az Event Hubs akkor használja, ha a megoldás gyorsabb ütemben fel tud dolgozni az események beolvassa az eseményeket. Az alkalmazás dolgozza fel az Event hubsból, saját ütemezés. A bejövő események kezeléséhez a Eseményfeldolgozási skálázhatja.
+
+Az Event Hubs egy eseményforrás vagy egy eseménykezelő működhet. A következő cikk az Event Hubs használata a kezelő jeleníti meg.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Egyéni események útvonal az Azure Event hubs az Azure CLI és az esemény rács](custom-event-to-eventhub.md) | Egyéni esemény küld egy eseményközpontot, az alkalmazás általi feldolgozás alatt. |
+| [Gyors útmutató: egyéni események átirányítása az Azure Event Hubs az Azure CLI-vel és az Event Griddel](custom-event-to-eventhub.md) | Egyéni eseményt küld egy event hubot, az alkalmazások feldolgozását. |
+
+Példák az Event hubs forrásként: [az Event Hubs-forrás](event-sources.md#event-hubs).
 
 ## <a name="hybrid-connections"></a>Hibrid kapcsolatok
 
-Azure hibrid kapcsolatok segítségével alkalmazásokat, amelyek a vállalati hálózaton belül van, és nem kell nyilvánosan elérhető végponton elküldje az eseményeket.
+Azure Relay hibrid kapcsolatok használatával az események küldése az alkalmazásokat, amelyek egy vállalati hálózaton belül, és nem rendelkezik egy nyilvánosan elérhető végpontot.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Események küldése a hibrid kapcsolat](custom-event-to-hybrid-connection.md) | Egyéni esemény küld a meglévő hibrid kapcsolat feldolgozása a figyelő alkalmazás. |
+| [Oktatóanyag: a hibrid kapcsolat események küldése](custom-event-to-hybrid-connection.md) | Egyéni eseményt küld egy meglévő, a hibrid kapcsolat feldolgozása egy figyelő alkalmazás. |
 
 ## <a name="logic-apps"></a>Logic Apps
 
-A Logic Apps segítségével automatizálhatja üzleti folyamatait válaszol az események.
+A Logic Apps segítségével automatizálhatja üzleti folyamatait eseményekre reagálni.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps segítségével](monitor-virtual-machine-changes-event-grid-logic-app.md) | Logikai alkalmazás egy virtuális gép módosításai figyeli, és ezeket a módosításokat vonatkozó e-mailek küldése. |
-| [E-mail értesítést kapjanak a Logic Apps segítségével Azure IoT Hub-események](publish-iot-hub-events-to-logic-apps.md) | Logikai alkalmazás e-mailben értesítést küld, minden alkalommal, amikor egy eszközt az IoT hub kerül. |
-| [Az Azure Service Bus számára, Azure esemény rács integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Esemény rács üzeneteket küld a Service Bus-témakörbe alkalmazás és a logikai alkalmazás működik. |
+| [Oktatóanyag: az Azure Event Grid és a Logic Apps a virtuális gépek módosításainak monitorozása](monitor-virtual-machine-changes-event-grid-logic-app.md) | Egy logikai alkalmazást egy virtuális gép módosításainak figyeli, és ezeket a módosításokat kapcsolatos e-mailt küld. |
+| [Oktatóanyag: küldése e-mailes értesítést az Azure IoT Hub-események Logic Apps használatával](publish-iot-hub-events-to-logic-apps.md) | Egy logikai alkalmazás küld értesítő e-mailt, minden alkalommal, amikor egy eszköz az IoT hubhoz való hozzáadása. |
+| [Oktatóanyag: Azure Service Bus – Azure Event Grid integráció példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld a Service Bus-témakörbe, alkalmazás és a logikai alkalmazás működéséhez. |
 
 ## <a name="queue-storage"></a>Queue Storage
 
-A Queue storage segítségével lekérése-események fogadásához. A Queue storage lehet használni, ha egy hosszú ideig tartó folyamatot, amely túl lassan válaszol. Az események a Queue storage címen, az alkalmazás is lekéréses és feldolgozni az eseményeket a saját ütemezés szerint.
+A Queue storage használatával kapja, le kell kérnie. A Queue storage használatával, ha egy hosszú ideig futó folyamatot, amely a túl sok ideig nem válaszolt. Eseményeket küld a Queue storage, az alkalmazás kérheti le és dolgozza fel a saját ütemezés szerint.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Egyéni események útvonal az Azure Queue Storage Azure CLI és az esemény rács](custom-event-to-queue-storage.md) | Egyéni események küldése a várólista tárolási módját ismerteti. |
+| [Gyors útmutató: egyéni események átirányítása az Azure CLI és az Event Grid Azure Queue storage](custom-event-to-queue-storage.md) | Ismerteti, hogyan lehet egyéni eseményeket küldeni egy Queue Storage. |
 
 ## <a name="webhooks"></a>Webhookok
 
-Használja a webhookok testre szabható végpontok események válaszolnak.
+Webhookok használata a eseményekre reagáló, testre szabható végpontok.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [HTTP-végponttal események fogadásához](receive-events.md) | Események fogadása egy esemény-előfizetést, és kaphatnak és események deszerializálni HTTP-végponttal ellenőrzését ismerteti. |
+| Gyors útmutató: hozzon létre, és az egyéni események – útvonal [Azure CLI-vel](custom-event-quickstart.md), [PowerShell](custom-event-quickstart-powershell.md), és [portál](custom-event-quickstart-portal.md). | Bemutatja, hogyan küldhet egyéni eseményeket egy Webhookot. |
+| Gyors útmutató: Blob storage-események átirányítása egyéni webes végpontra az - [Azure CLI-vel](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json), [PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json), és [portál](blob-event-quickstart-portal.md). | Bemutatja, hogyan blob storage-események küldéséhez egy Webhookot. |
+| [Gyors útmutató: a tároló beállításjegyzék események küldése](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja a tároló-beállításjegyzék események küldése az Azure CLI használatával. |
+| [Áttekintés: a HTTP-végponton események fogadása](receive-events.md) | Események fogadása az esemény-előfizetés, és fogadni, és deszerializálni az eseményeket egy HTTP-végpontot ellenőrzését ismerteti. |
 
 ## <a name="next-steps"></a>További lépések
 
 * Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
-* Ha gyorsan esemény rács segítségével, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md).
+* Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).

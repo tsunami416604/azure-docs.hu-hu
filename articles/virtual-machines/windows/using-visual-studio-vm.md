@@ -8,6 +8,8 @@ manager: sacalla
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
@@ -15,12 +17,12 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 2c8cd5cb837787db7bd6cb0d76bdf734b7d7bc0f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 082015929da5ffa15a5a1cd23e137a5f22c8fec8
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285374"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444708"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure Visual Studio-rendszerképek
 A Visual Studio használatával egy előre konfigurált Azure virtuális gépen (VM) módja a gyors és egyszerű nyissa meg a művelet egy felfelé és a futó fejlesztési környezetben. Visual Studio különböző konfigurációival rendszerképek érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -32,9 +34,9 @@ A legutóbbi főbb verziók, Visual Studio 2017-et és a Visual Studio 2015-öt,
 
 | Verzió                                              | Kiadás                     |     Termék verziószáma     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| A Visual Studio 2017: Legújabb (15.7 verzió)                    |    Vállalati, Közösség     |      Verzió 15.7.5     |
+| A Visual Studio 2017: Legújabb (15.8 verzió)                    |    Vállalati, Közösség     |      Verzió 15.8.0     |
 | A Visual Studio 2017: Legújabb előzetes verziót (15.8, 5 előzetes verzió) |    Vállalati, Közösség     |      Verzió 15.8.5     |
-|         Visual Studio 2017: RTW                              |    Vállalati, Közösség     |      Verzió 15.0.15    |
+|         Visual Studio 2017: RTW                              |    Vállalati, Közösség     |      Verzió 15.0.17    |
 |   Visual Studio 2015: Legújabb (3. frissítés)                      |    Vállalati, Közösség     |  Verzió 14.0.25431.01  |
 |         Visual Studio 2015: RTW                              |             None             | (Karbantartási lejárt) |
 

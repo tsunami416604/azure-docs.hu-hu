@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan kezelje az Event Grid-események az Azure Funct
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 08/20/2018
 ms.author: glenga
-ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: f0cb698bad42bcfd035451361b9a20d0f0b5bddf
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715386"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059617"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-trigger az Azure Functions szolgáltatáshoz
 
@@ -53,6 +53,7 @@ Tekintse meg a nyelvspecifikus példát egy Event Grid eseményindító:
 * [C#](#c-example)
 * [C# script (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
+* [Java](#trigger---java-example)
 
 HTTP eseményindító példa: [használata HTTP-eseményindító](#use-an-http-trigger-as-an-event-grid-trigger) a cikk későbbi részében.
 
@@ -180,6 +181,36 @@ module.exports = function (context, eventGridEvent) {
     context.done();
 };
 ```
+
+### <a name="trigger---java-example"></a>Eseményindító - Java-példában
+
+Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a egy [Java függvény](functions-reference-java.md) , amely a kötés használja, és kiírja ezt egy eseményt.
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+A Java-kód itt látható:
+
+```java
+@FunctionName("eventGridMonitor")
+  public void logEvent(
+     @EventGridTrigger(name = "event") String content,
+      final ExecutionContext context
+  ) { 
+      context.getLogger().info(content);
+    }
+```
+
+Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `EventGridTrigger` jegyzet paraméterekkel, amelynek az értéke EventGrid kellene származnia. Ezek a jegyzetek a paraméterek miatt a funkció futtatását, amikor az esemény érkezik.  A jegyzet használható natív Java-típusokat, POJOs vagy nullázható értékek használatával `Optional<T>`. 
      
 ## <a name="attributes"></a>Attribútumok
 
@@ -310,7 +341,7 @@ A rendszer kulcs kaphat (HTTP GET) a következő API-val:
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
 ```
 
-Ez az egy felügyeleti API-t, ezért van szükség a [adminisztrációs kulcsot](functions-bindings-http-webhook.md#authorization-keys). Ne tévessze össze a fájlrendszer kulcsa (az Event Grid eseményindító függvényének meghívása) a rendszergazdai kulccsal (a felügyeleti feladatok végrehajtása a függvényalkalmazás). Amikor előfizet egy Event Grid-témakört, ügyeljen arra, használja a fájlrendszer kulcsa.
+Erre azért egy felügyeleti API-t, hogy a függvényalkalmazás igényel [főkulcs](functions-bindings-http-webhook.md#authorization-keys). Ne tévessze össze a fájlrendszer kulcsa (az Event Grid eseményindító függvényének meghívása) főkulccsal (a felügyeleti feladatok végrehajtása a függvényalkalmazás). Amikor előfizet egy Event Grid-témakört, ügyeljen arra, használja a fájlrendszer kulcsa. 
 
 Íme egy példa a válasz a rendszer kulcsot biztosító:
 

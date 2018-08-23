@@ -1,41 +1,42 @@
 ---
-title: Az Azure felhőszolgáltatások Visual Studio szerepkörök kezelése |} Microsoft Docs
-description: Megtudhatja, hogyan hozzáadása és eltávolítása a szerepkörök az Azure felhőszolgáltatások Visual Studio.
+title: Az Azure felhőszolgáltatások Visual studióval szerepkörök kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan adhat hozzá, és távolítsa el a szerepköröket az Azure felhőszolgáltatások Visual studióval.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 5ec9ae2e-8579-4e5d-999e-8ae05b629bd1
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: d0a2148274cd41654eb789772b3ea46bc4ed01aa
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 023d70fd1f1ae2f79483f44a84cfedd5d1e39f3f
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793970"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054511"
 ---
-# <a name="managing-roles-in-azure-cloud-services-with-visual-studio"></a>Az Azure felhőszolgáltatások Visual Studio szerepkörök kezelése
-Miután létrehozta az Azure-felhőszolgáltatás, új szerepkörök hozzáadása, vagy meglévő szerepkörök eltávolításához. Egy létező projekt importálása is, majd átalakíthatja a szerepkör. Például egy ASP.NET-webalkalmazás importálhatja és kijelöl egy webes szerepkörben.
+# <a name="managing-roles-in-azure-cloud-services-with-visual-studio"></a>Az Azure felhőszolgáltatások Visual studióval szerepkörök kezelése
+Miután létrehozta az Azure-felhőszolgáltatás, új szerepkörök hozzáadása, vagy távolítsa el a meglévő szerepköröket belőle. Egy meglévő projekt importálásához is, és alakítsa át a szerepkört. Például egy ASP.NET-alkalmazás importálása, és a webes szerepkörként kijelölje azt.
 
-## <a name="adding-a-role-to-an-azure-cloud-service"></a>Szerepkör hozzáadása az Azure-felhőszolgáltatás
-A következő lépések végigvezetik egy webes vagy feldolgozói szerepkör hozzáadása a Visual Studio egy Azure-felhőszolgáltatás-projekt.
+## <a name="adding-a-role-to-an-azure-cloud-service"></a>Szerepkör hozzáadása az Azure felhőszolgáltatás
+A következő lépések végigvezetik egy webes vagy feldolgozói szerepkör hozzáadása az Azure felhőszolgáltatás-projekt a Visual Studióban.
 
-1. Hozzon létre, vagy a Visual Studio Azure cloud service projekt megnyitása.
+1. Hozzon létre vagy nyisson meg egy Azure-felhőszolgáltatás-projekt a Visual Studióban.
 
 1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára
 
-1. Kattintson a jobb gombbal a **szerepkörök** csomópontra, hogy megjelenjen a helyi menüből. Válassza ki a helyi menüből **Hozzáadás**, majd válassza ki a jelenlegi megoldást egy meglévő webes szerepkör vagy a feldolgozói szerepkör, vagy hozzon létre egy webes vagy feldolgozói szerepkör projekt. Is válassza ki a megfelelő projektben, például egy ASP.NET webalkalmazás projekthez, és társíthatja egy szerepkör-projektet.
+1. Kattintson a jobb gombbal a **szerepkörök** csomópontot a helyi menü megjelenítéséhez. A helyi menüből válassza ki a **Hozzáadás**, majd válasszon ki egy meglévő webes szerepkört vagy feldolgozói szerepkör az aktuális megoldáshoz, vagy hozzon létre egy webes vagy feldolgozói szerepkör projekt. Válassza ki egy megfelelő projektet, például egy ASP.NET webes alkalmazási projektet is, és társíthatja azt egy szerepkör projekt.
 
-    ![Egy Azure-felhőszolgáltatás-projekt szerepkör hozzáadása menüpont](media/vs-azure-tools-cloud-service-project-managing-roles/add-role.png)
+    ![A szerepkör hozzáadása az Azure felhőszolgáltatás-Projekt menü parancsai](media/vs-azure-tools-cloud-service-project-managing-roles/add-role.png)
 
-## <a name="removing-a-role-from-an-azure-cloud-service"></a>A szerepkör eltávolítását Azure-felhőszolgáltatás
-A következő lépések végigvezetik a Visual Studio egy Azure-felhőszolgáltatás-projekt egy webes vagy feldolgozói szerepkör eltávolítását.
+## <a name="removing-a-role-from-an-azure-cloud-service"></a>A szerepkör eltávolítását az Azure-felhőszolgáltatás
+A következő lépések végigvezetik egy webes vagy feldolgozói szerepkör eltávolítását az Azure felhőszolgáltatás-projekt a Visual Studióban.
 
-1. Hozzon létre, vagy a Visual Studio Azure cloud service projekt megnyitása.
+1. Hozzon létre vagy nyisson meg egy Azure-felhőszolgáltatás-projekt a Visual Studióban.
 
 1. A **Megoldáskezelőben**, bontsa ki a projekt csomópontjára
 
@@ -43,12 +44,12 @@ A következő lépések végigvezetik a Visual Studio egy Azure-felhőszolgálta
 
 1. Kattintson a jobb gombbal a csomópontra, távolítsa el, és a helyi menüből válassza ki a kívánt **eltávolítása**. 
 
-    ![A menüpont szerepkör hozzáadása az Azure-felhőszolgáltatás](media/vs-azure-tools-cloud-service-project-managing-roles/remove-role.png)
+    ![A szerepkör hozzáadása egy Azure-felhőszolgáltatásban menü parancsai](media/vs-azure-tools-cloud-service-project-managing-roles/remove-role.png)
 
-## <a name="readding-a-role-to-an-azure-cloud-service-project"></a>Olvasása a következő szerepkör egy Azure cloud service-projekthez
-Ha a szerepkör eltávolítása a felhőszolgáltatás-projekt, de később úgy dönt, a szerepkör vissza hozzáadása a projekthez, csak a szerepkör nyilatkozat és alapvető attribútumait, például a végpontok és diagnosztikai információk, kerülnek. További erőforrások vagy hivatkozások hozzáadódnak a `ServiceDefinition.csdef` fájl vagy a `ServiceConfiguration.cscfg` fájlt. Ha hozzá szeretne adni ezt az információt, manuálisan adja hozzá ezeket a fájlokat újra üzembe szeretné.
+## <a name="readding-a-role-to-an-azure-cloud-service-project"></a>Újra hozzáadja egy szerepkör, egy Azure-felhőszolgáltatás-projekt
+Ha a szerepkör eltávolítása a felhőszolgáltatási projektet, de később úgy dönt, hogy a szerepkör vissza hozzáadása a projekthez, csak a szerepkör nyilatkozatot és az alapszintű attribútumait, például a végpontok és diagnosztikai információk, kerülnek. További erőforrások vagy hivatkozások hozzáadódnak a `ServiceDefinition.csdef` fájl vagy a `ServiceConfiguration.cscfg` fájlt. Ha azt szeretné, adja meg az adatokat, manuálisan adja hozzá ezeket a fájlokat visszaimportálni szeretne.
 
-Például előfordulhat, hogy távolítsa el a webes szerepkör-szolgáltatás, és később úgy dönt, hogy a szerepkör hozzáadása a megoldás programba. Ha így tesz, akkor hiba történik. Ez a hiba elkerüléséhez fel kell vennie a `<LocalResources>` be a következő XML-elem a `ServiceDefinition.csdef` fájlt. A webes szerepkör-szolgáltatás a name attribútum részeként hozzáadott újra üzembe a projekt nevét használja a **<LocalStorage>** elemet. Ebben a példában a webes szerepkör-szolgáltatás neve nem **WCFServiceWebRole1**.
+Például előfordulhat, hogy eltávolítja a webszolgáltatási szerepkörét, és később úgy dönt, hogy ez a szerepkör hozzáadása vissza a megoldás. Ha így tesz, akkor hiba történik. Ez a hiba elkerülése érdekében fel kell vennie a `<LocalResources>` elem a következő XML formátumú be újra a `ServiceDefinition.csdef` fájlt. A webszolgáltatási szerepkörének hozzáadott vissza a projektbe a name attribútum részeként nevét használja a **<LocalStorage>** elemet. Ebben a példában a webes szolgáltatás szerepkör neve nem **WCFServiceWebRole1**.
 
     <WebRole name="WCFServiceWebRole1">
         <Sites>
@@ -70,4 +71,4 @@ Például előfordulhat, hogy távolítsa el a webes szerepkör-szolgáltatás, 
     </WebRole>
 
 ## <a name="next-steps"></a>További lépések
-- [A szerepkörök az Azure-felhőszolgáltatás konfigurálása a Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md)
+- [A szerepkörök az Azure cloud Services számára konfigurálása a Visual Studióval](vs-azure-tools-configure-roles-for-cloud-service.md)

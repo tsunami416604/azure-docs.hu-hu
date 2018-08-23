@@ -3,7 +3,7 @@ title: Megvalósítása vész-helyreállítási használatával biztonsági ment
 description: 'Útmutató: biztonsági mentés és vészhelyreállítás az Azure API Management végrehajtásához visszaállítása.'
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4135bd66e839037d7db694cb3c6df8f3905222e6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ce3208fed119452ef9383fcb5b5eefb1aac6e224
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283097"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061392"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás szolgáltatás biztonsági mentése és visszaállítása az Azure API Management szolgáltatásban
 
@@ -39,8 +39,6 @@ Ez az útmutató ismerteti, hogyan hitelesítheti az Azure Resource Manager-kér
 
 > [!IMPORTANT]
 > A REST API, a biztonsági mentés és visszaállítás Azure Resource Managert használja, és az API Management entitások kezeléséhez, mint a REST API-k másik hitelesítési mechanizmussal rendelkezik. A jelen szakaszban ismertetett lépések bemutatják, hogyan Azure Resource Manager-kérések hitelesítéséhez. További információkért lásd: [hitelesítése az Azure Resource Manager-kérelmek](http://msdn.microsoft.com/library/azure/dn790557.aspx).
->
->
 
 Minden olyan feladat hivatkozása, amelyeket Ön az erőforrások az Azure Resource Manager használatával kell hitelesíteni, az Azure Active Directoryval az alábbi lépéseket követve:
 
@@ -63,7 +61,7 @@ Minden olyan feladat hivatkozása, amelyeket Ön az erőforrások az Azure Resou
 6. Adja meg például egy helyőrző URL-címet `http://resources` számára a **átirányítási URI-t**szerint kötelező kitölteni, de az értéket később nem használja. Jelölje be a jelölőnégyzetet az alkalmazás mentéséhez.
 7. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="add-an-application"></a>Alkalmazás felvétele
+### <a name="add-an-application"></a>Alkalmazás hozzáadása
 
 1. Az alkalmazás létrehozása után kattintson a **beállítások**.
 2. Kattintson a **szükséges engedélyek**.
@@ -209,15 +207,16 @@ Visszaállítás egy hosszú ideig futó művelet, amely előfordulhat, hogy 30 
 > Biztonsági mentési és visszaállítási műveletek is elvégezhető a PowerShell-lel *Backup-azurermapimanagement parancsmagok* és *Restore-azurermapimanagement parancsmagok* parancsokat jelölik.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő Microsoft-blogok a biztonsági mentési vagy visszaállítási folyamat két különböző forgatókönyvek esetében.
+
+Tekintse meg a biztonsági mentési vagy visszaállítási folyamat különböző forgatókönyvek a következő forrásokat.
 
 * [Az Azure API Management-fiókok replikálása](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
-* [Az Azure API Management: Biztonsági mentése, és konfiguráció visszaállítása](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-  * A megközelítés szerint Stuart részletes nem egyezik meg a hivatalos útmutatást, de ez érdekes.
+* [Automatizálhatja API Management biztonsági mentése és visszaállítása a Logic Apps használatával](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
+* [Az Azure API Management: Biztonsági mentése és visszaállítása konfigurációs](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+  *által Stuart részletes megközelítés nem egyezik meg a hivatalos útmutatást, de ez érdekes.*
 
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2
-
 
 [Azure API Management REST API]: http://msdn.microsoft.com/library/azure/dn781421.aspx
 

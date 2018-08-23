@@ -1,50 +1,51 @@
 ---
-title: Adja hozzá az Azure Storage szolgáltatások csatlakoztatva a Visual Studio használatával |} Microsoft Docs
-description: Azure Storage hozzáadása az alkalmazáshoz a Visual Studio kapcsolódó szolgáltatások hozzáadása párbeszédpanelen
+title: Adja hozzá az Azure Storage a Visual Studio csatlakoztatott szolgáltatásai segítségével |} A Microsoft Docs
+description: Azure Storage hozzáadása az alkalmazáshoz a Visual Studio csatlakoztatott szolgáltatás hozzáadása párbeszédpanelen
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 521ec044-ad4b-4828-8864-01decde2e758
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/26/2017
 ms.author: ghogen
-ms.openlocfilehash: 3c5d3dc1d91a6f8bb1816b2985f86ec5c4a12e63
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 73b9a1725ada07835db518b57140a2e4d43e143a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793596"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054314"
 ---
-# <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Az Azure storage hozzáadása a Visual Studio kapcsolódó szolgáltatások használatával
-A Visual Studio kapcsolódás a következő Azure Storage használatával a **kapcsolódó szolgáltatások hozzáadása** párbeszédpanel:
+# <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Visual Studio csatlakoztatott szolgáltatásai segítségével az Azure storage hozzáadása
+A Visual Studióval csatlakozhat a következő Azure Storage használatával a **csatlakoztatott szolgáltatás hozzáadása** párbeszédpanel:
 
 - C#-felhőszolgáltatás
 - .NET-háttérrendszer mobilszolgáltatás
 - ASP.NET-webhely vagy szolgáltatás
-- Az ASP.NET Core szolgáltatás
+- ASP.NET Core-szolgáltatás
 - Azure WebJob service 
 
-A csatlakoztatott szolgáltatás funkcióit a szükséges hivatkozásokat és a kapcsolat kód hozzáadása a projekthez, és megfelelően módosítja a konfigurációs fájlok. 
+A csatlakoztatott szolgáltatás funkciókat ad hozzá a szükséges hivatkozásokat és a kapcsolat kódot a projekthez, és megfelelően módosítja a konfigurációs fájlokat. 
 
-A művelet befejezését követően a **kapcsolódó szolgáltatások hozzáadása** párbeszédpanel automatikusan megjeleníti a dokumentációját, és részletesen leírja a dolgozni a blob-tároló, várólisták, szükséges lépéseket és táblázatot.
+A művelet befejezését követően a **csatlakoztatott szolgáltatás hozzáadása** párbeszédpanel automatikusan megjeleníti a dokumentáció részletesen ismertetve a blob storage-üzenetsorok, való használatának megkezdéséhez szükséges lépéseket és a táblák.
 
-## <a name="connect-to-azure-storage-using-the-connected-services-dialog"></a>Csatlakozás Azure Storage a kapcsolódó szolgáltatások párbeszédpanelen
-1. Nyissa meg a projektet a Visual Studio
+## <a name="connect-to-azure-storage-using-the-connected-services-dialog"></a>Kapcsolódás az Azure Storage segítségével a csatlakoztatott szolgáltatás párbeszédpanelen
+1. Nyissa meg a projektjét a Visual Studióban
 
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **kapcsolódó szolgáltatások** csomópont, és a helyi menüt, majd válassza a **kapcsolódó szolgáltatás hozzáadása**.
+1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **csatlakoztatott szolgáltatás** csomópontot, és a helyi menüt, és válassza a **csatlakoztatott szolgáltatás hozzáadása**.
    
-    ![Adja hozzá az Azure szolgáltatás csatlakoztatva](./media/vs-azure-tools-connected-services-storage/IC796702.png)
+    ![Adja hozzá az Azure csatlakoztatott szolgáltatás](./media/vs-azure-tools-connected-services-storage/IC796702.png)
 
-1. Az a **kapcsolódó szolgáltatások** lapon jelölje be **felhőalapú tárolás az Azure Storage**.
+1. Az a **csatlakoztatott szolgáltatás** lapon jelölje be **felhőalapú tárolás az Azure Storage**.
    
     ![Az Azure Storage hozzáadása](./media/vs-azure-tools-connected-services-storage/add-azure-storage.png)
 
-1. Az a **Azure Storage** párbeszédpanel, válasszon egy meglévő tárfiókot használ, válassza ki **Hozzáadás**.
+1. Az a **Azure Storage** párbeszédpanel, válassza ki egy meglévő tárfiókot, és válassza ki **Hozzáadás**.
    
-    Ha létrehoz egy tárfiókot van szüksége, nyissa meg a következő lépéssel. Egyéb esetben folytassa a 6. lépés.
+    Ha szeretne létrehozni egy storage-fiókot, nyissa meg a következő lépéssel. Egyéb esetben folytassa a 6. lépés.
     
     ![Meglévő tárfiók hozzáadása a projekthez](./media/vs-azure-tools-connected-services-storage/select-azure-storage-account.png)
 
@@ -52,23 +53,23 @@ A művelet befejezését követően a **kapcsolódó szolgáltatások hozzáadá
    
    1. Válassza ki **hozzon létre egy új Tárfiókot** a párbeszédpanel alján.
 
-   1. Töltse ki a **Storage-fiók létrehozása** párbeszédpanel, válassza ki **létrehozása**.
+   1. Töltse ki a **Create Storage Account** párbeszédpanel, és válassza ki **létrehozás**.
       
        ![Új Azure storage-fiók](./media/vs-azure-tools-connected-services-storage/create-storage-account.png)
       
-   1. Ha a **Azure Storage** párbeszédpanel jelenik meg, az új tárfiók listájában jelenik meg. A listában jelölje ki az új tárfiókot, és válassza ki **Hozzáadás**.
+   1. Ha a **Azure Storage** párbeszédpanel jelenik meg, az új tárfiók megjelenik a listában. Válassza ki a listából az új tárfiókot, és válassza ki **Hozzáadás**.
 
-1. A tárolási csatlakoztatott szolgáltatás alatt jelenik meg a **szolgáltatási hivatkozást lekérni** a projekt csomópontjára.
+1. A tároló csatlakoztatott szolgáltatás megjelenik a **szolgáltatási hivatkozást** a projekt csomópontra.
    
-## <a name="how-your-project-is-modified"></a>A projekt módosítása hogyan
-Ha befejezte a párbeszédpanelen, a Visual Studio hivatkozásokat ad, és módosítja a bizonyos konfigurációs fájlok. Az adott módosítások a projekt típusától függ: 
+## <a name="how-your-project-is-modified"></a>Hogyan módosul a projekthez
+Ha befejezte a párbeszédpanelen, a Visual Studio hivatkozásokat ad, és módosítja a bizonyos konfigurációs fájlokat. Az egyes módosításokat a projekt típusától függ: 
 
-- ASP.NET-projekt - [Mi történt – ASP.NET-projektek](http://go.microsoft.com/fwlink/p/?LinkId=513126)
-- Az ASP.NET Core projekt - [Mi történt – ASP.NET 5 projektek](http://go.microsoft.com/fwlink/p/?LinkId=513124) 
-- Felhőszolgáltatás-projekt (webes és feldolgozói szerepkörök) - [Mi történt – Cloud Service projektek](http://go.microsoft.com/fwlink/p/?LinkId=516965)
+- ASP.NET-projekt – [Mi történt – ASP.NET-projektek](http://go.microsoft.com/fwlink/p/?LinkId=513126)
+- ASP.NET Core-projekt – [Mi történt – ASP.NET 5-projektek](http://go.microsoft.com/fwlink/p/?LinkId=513124) 
+- Felhőszolgáltatás-projekt (webes és feldolgozói szerepkörök) – [Mi történt – a Cloud Service projektek](http://go.microsoft.com/fwlink/p/?LinkId=516965)
 - Webjobs-feladat projekt - [Mi történt – a webjobs-feladat projektek](visual-studio/vs-storage-webjobs-what-happened.md)
 
 ## <a name="next-steps"></a>További lépések
-- [MSDN fórum: Az Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
-- [A Microsoft Azure tárolás fejlesztői Blog](http://blogs.msdn.com/b/windowsazurestorage/)
-- [Az Azure Storage-dokumentáció](https://docs.microsoft.com/azure/storage/)
+- [MSDN-fórum: Az Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+- [A Microsoft Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/)
+- [Az Azure Storage dokumentációja](https://docs.microsoft.com/azure/storage/)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stream Analytics kimeneti Cosmos DB
-description: A cikkből megtudhatja, hogyan Azure Stream Analytics segítségével Azure Cosmos DB JSON kimeneti adatok archiválása és alacsony késésű lekérdezései strukturálatlan JSON-adatok mentése.
+title: Azure Stream Analytics-kimenet a Cosmos DB-hez
+description: Ez a cikk ismerteti az Azure Stream Analytics használatával az Azure Cosmos DB JSON kimeneti adatok archiválása és kis késleltetésű lekérdezéseket a strukturálatlan JSON-adatok mentése.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,53 +9,55 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: ff2071a703b0b5e94cd68122a878b51e9d97669a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 95cfc7e6d9515274aa7a3c5fde382244f3b33fab
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112751"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058752"
 ---
-# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Stream Analytics kimeneti az Azure Cosmos-Adatbázishoz  
-A Stream Analytics célba [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenetét, engedélyezi az archiválási és alacsony késésű kérelmek strukturálatlan JSON-adatokat. Ez a dokumentum ismertet néhány gyakorlati tanácsok a konfiguráció alkalmazásához.
+# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Cosmos DB Azure Stream Analytics-kimenet  
+Stream Analytics célként [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenet, az adatok archiválás és kis késleltetésű lekérdezéseket a strukturálatlan JSON-adatok engedélyezése. Ez a dokumentum áttekint néhány ajánlott eljárást a konfiguráció implementálása a.
 
-Azok számára, akiknek nem ismeri az Cosmos DB, vessen egy pillantást [Azure Cosmos DB képzési terv](https://azure.microsoft.com/documentation/learning-paths/documentdb/) a kezdéshez. 
+Azok számára, aki ismeri az, Cosmos DB, vessen egy pillantást [képzési terv az Azure Cosmos DB](https://azure.microsoft.com/documentation/learning-paths/documentdb/) a kezdéshez. 
 
 > [!Note]
-> Ilyenkor Azure Stream Analytics csak kapcsolatot támogat az Azure Cosmos DB használatával **SQL API**.
-> Egyéb Azure Cosmos DB API-k még nem támogatott. Ha pont Azure Stream Analytics az Azure Cosmos DB fiókok létrehozása, más API-khoz, az adatok nem megfelelően tárolódhat. 
+> Jelenleg az Azure Stream Analytics csak kapcsolatot támogat az Azure Cosmos DB használatával **SQL API**.
+> Más Azure Cosmos DB API-k még nem támogatott. Ha pont Azure Stream Analytics az Azure Cosmos DB-fiókokhoz létrehozott más API-kkal, az adatok esetleg nem megfelelően tárolni. 
 
-## <a name="basics-of-cosmos-db-as-an-output-target"></a>Egy kimeneti célként Cosmos DB alapjai
-Az Azure Cosmos DB kimeneti a Stream Analytics lehetővé teszi, hogy írása a streamfeldolgozási eredmények JSON kimenetként a Cosmos DB következő gyűjtemény(ek) készleteit szinkronizálja azokat. A Stream Analytics nem gyűjtemények létrehozása az adatbázis ehelyett nincs szükség kell létrehoznia őket előzetes megfizetése esetén. Ez az, hogy az Ön által vezérelt Cosmos DB gyűjtemények számlázási költségeit, és úgy, hogy a teljesítmény, a konzisztencia és a kapacitás közvetlenül a gyűjtemények észlelheti a [Cosmos DB API-k](https://msdn.microsoft.com/library/azure/dn781481.aspx). 
+## <a name="basics-of-cosmos-db-as-an-output-target"></a>Cosmos DB-kimenet célként alapjai
+A Stream Analytics az Azure Cosmos DB kimeneti adatfolyam-feldolgozási eredményeket, JSON-kimenet a Cosmos DB próbaidőszakában való írása lehetővé teszi. Stream Analytics nem hoz létre gyűjteményeket az adatbázisban, ehelyett határozhat meg kell előre létrehoznia őket. Ez az, hogy az Ön által vezérelt Cosmos DB-gyűjtemények a számlázási költségeket, és úgy, hogy a teljesítmény, a konzisztencia és a kapacitás a gyűjtemények közvetlenül hangolhassa a [Cosmos DB API-k](https://msdn.microsoft.com/library/azure/dn781481.aspx). 
 
-A Cosmos DB adatgyűjtési beállítások némelyike részleteket lejjebb olvashatja.
+A Cosmos DB adatgyűjtési beállítások némelyike lásd lent.
 
 ## <a name="tune-consistency-availability-and-latency"></a>Konzisztencia, a rendelkezésre állás és a késleltetés hangolása
-Saját alkalmazás igényeinek Azure Cosmos DB lehetővé teszi, hogy jól hangolja az adatbázis és a gyűjtemények és konzisztencia, a rendelkezésre állás és a késleltetés közötti kompromisszumot. Attól függően, hogy milyen szintű olvasási konzisztenciát elleni forgatókönyv igényeinek és olvasási késés, kiválaszthatja a konzisztenciaszint adatbázis fiókja. Alapértelmezés szerint is Azure Cosmos DB engedélyezi szinkron indexelő minden CRUD-műveletnek a gyűjteményhez. Ez a beállítás egy másik hasznos vezérlésére az Azure Cosmos DB írási/olvasási teljesítményt. További információkért tekintse át a [módosítsa az adatbázis és a lekérdezés konzisztenciaszintek](../cosmos-db/consistency-levels.md) cikk.
+Az alkalmazás követelményeinek megfelelően, az Azure Cosmos DB lehetővé teszi jól adhatja meg az adatbázis és a gyűjtemények, és győződjön meg arról, konzisztencia, a rendelkezésre állás és a késleltetés közti kompromisszummal. Attól függően, hogy milyen szintű olvasás következetes ellen a forgatókönyv igényeinek olvassa el, és írási késés, választhatja a konzisztenciaszint a fiókot a. Is alapértelmezés szerint az Azure Cosmos DB lehetővé teszi, hogy szinkron indexelő egyes CRUD-műveletek a gyűjteményhez. Ez a szabályozhatja az írási/olvasási teljesítmény az Azure Cosmos DB egy másik hasznos lehetőség. További információkért tekintse át a [módosítása az adatbázis és a lekérdezés konzisztenciaszintek](../cosmos-db/consistency-levels.md) cikk.
 
 ## <a name="upserts-from-stream-analytics"></a>A Stream Analytics Upserts
-Azure Cosmos DB Stream Analytics integrációja lehetővé teszi beszúrásához vagy frissítéséhez rögzíti a gyűjtemény egy adott dokumentum azonosító oszlop alapján. Ez más néven a egy *Upsert*.
+Stream Analytics-integráció az Azure Cosmos DB lehetővé teszi a Beszúrás, vagy frissíthet rekordokat a gyűjtemény adott dokumentumazonosító oszlop alapján. Ez is nevezik egy *Upsert*.
 
-A Stream Analytics használ optimista upsert megközelítés, ahol frissítések csak végzett insert Dokumentumazonosítója ütközést tartalmazó meghibásodása esetén. A frissítés történik, a javítás, így lehetővé teszi, hogy a részleges frissítési a dokumentumhoz, ez azt jelenti, az új tulajdonságok vagy cseréje a meglévő tulajdonságot Növekményesen történik. A tömb-tulajdonságokat a JSON dokumentum eredmény ez azt jelenti, hogy a tömb első felülírja, teljes tömbben szereplő értékek változásait azonban nem összefésülése megtörténjen.
+Stream Analytics egy optimista upsert módszert használ, ahol frissítéseit csak végzett insert dokumentumazonosító ütközést tartalmazó meghibásodása esetén. A frissítés történik, így, amely lehetővé teszi a dokumentumban a részleges frissítési javítás, az új tulajdonságok vagy lecseréli a meglévő tulajdonságot Növekményesen történik. A tömb tulajdonságokat a JSON-dokumentum eredményt, a tömb első felülírja, teljes tömb a módosítások azonban nem részeként történik.
 
-## <a name="data-partitioning-in-cosmos-db"></a>A Cosmos DB adatparticionálás
-Az Azure Cosmos DB [korlátlan](../cosmos-db/partition-data.md) az ajánlott módszer az adatok particionálása Azure Cosmos DB, automatikusan méretezi a számítási feladatok alapján létrehozott partícióknak van. Korlátlan tárolók írásakor Stream Analytics használ tetszőleges számú párhuzamos írók, például előző lekérdezés lépést vagy bemeneti particionálási sémát.
+## <a name="data-partitioning-in-cosmos-db"></a>Adatparticionálás Cosmos DB-ben
+Az Azure Cosmos DB [korlátlan](../cosmos-db/partition-data.md) van az ajánlott módszer az adatok particionálása, az Azure Cosmos DB automatikusan méretezi a számítási feladatok alapján. Korlátlan tárolók írásakor Stream Analytics tetszőleges számú párhuzamos írók előző lekérdezési lépés vagy a particionálási séma bemeneti használ.
+> [!Note]
+> Jelenleg az Azure Stream Analytics csak támogatja a korlátlan tárolók partíciókulcsok a legfelső szinten. Ha például `/region` használata támogatott. A beágyazott partíciókulcsok (pl. `/region/name`) használata nem támogatott. 
 
-Rögzített Azure Cosmos DB gyűjtemények Stream Analytics lehetővé teszi, hogy semmilyen módon nem vertikális vagy horizontális, miután teljes fontosságúak. 10 GB és 10000 RU/mp-átviteli felső korlátja rendelkeznek.  A rögzített tároló egy korlátlan tárolóhoz (például egy legalább 1000 RU/mp és a partíciós kulcs) az adatok áttelepítéséhez kell használnia a [adatáttelepítési eszköz](../cosmos-db/import-data.md) vagy a [módosítás hírcsatorna könyvtár](../cosmos-db/change-feed.md).
+Rögzített Azure Cosmos DB-gyűjtemények a Stream Analytics lehetővé teszi a vertikális vagy horizontális, amint teljes semmilyen módon nem lehet. 10 GB-os és 10 000 RU/s átviteli sebesség felső korlátja rendelkeznek.  Az adatok áttelepíthetők rögzített tárolóba (például egy legalább 1000 RU/s és a egy partíciókulcsot) korlátlan tárolóra, kell használnia a [adatáttelepítési eszköz](../cosmos-db/import-data.md) vagy a [módosítási hírcsatorna könyvtár](../cosmos-db/change-feed.md).
 
-Több rögzített tároló írás is elavult, és nem az ajánlott módszer az kiterjesztése a Stream Analytics-feladat. A cikk [particionálás és Cosmos DB skálázás](../cosmos-db/sql-api-partition-data.md) további részleteket tartalmaz.
+Több állandó tároló való írás hamarosan elavulttá válik, és nem az ajánlott módszer a horizontális felskálázás a Stream Analytics-feladatot. A cikk [particionálás és skálázás az, Cosmos DB](../cosmos-db/sql-api-partition-data.md) további részleteket tartalmaz.
 
-## <a name="cosmos-db-settings-for-json-output"></a>JSON kimeneti cosmos DB beállításai
-Az alább látható információt adatkérést Cosmos-adatbázis létrehozása a Stream Analytics kimenetként állít elő. Ez a szakasz a Tulajdonságok definíció magyarázattal szolgál.
+## <a name="cosmos-db-settings-for-json-output"></a>JSON-kimenet a cosmos DB beállításai
+Cosmos DB létrehozása a Stream Analytics kimenetként állít elő, információkat az alább látható módon egy parancssort. Ez a szakasz a Tulajdonságok definíció magyarázattal szolgál.
 
 
-![a documentdb stream analytics kimeneti képernyő](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
+![a documentdb a stream analytics kimeneti képernyő](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
 Mező           | Leírás 
 -------------   | -------------
-A kimeneti Alias    | Tekintse meg a kimenetet a ASA lekérdezés aliast   
-Fiók neve    | A name vagy a végpont URI-azonosítója az Azure Cosmos DB fiók 
-Fiókkulcs     | A megosztott elérési kulcsot az Azure Cosmos DB fiókhoz
-Adatbázis        | Az Azure Cosmos DB adatbázis neve
-Gyűjtemény neve | A gyűjtemény nevét, a gyűjtemény használható. `MyCollection` Példa érvényes bemeneti - nevű egy gyűjtemény `MyCollection` léteznie kell.  
-Dokumentumazonosító     | Választható. A kimeneti eseményekben a egyedi kulcs, mely Beszúrás vagy frissítés szabványra kell épülniük műveletek oszlop neve. Ha üres, az összes esemény a program beszúrja, nincs frissítés lehetőség.
+Output Alias (Kimeneti alias)    | Ez a kimenet az ASA-lekérdezésekben hivatkozni alias   
+Fiók neve    | A név vagy a végpont URI-t az Azure Cosmos DB-fiók 
+Fiókkulcs     | Az Azure Cosmos DB-fiókot a megosztott elérési kulcsot
+Adatbázis        | Az Azure Cosmos DB-adatbázis neve
+Gyűjtemény neve | A gyűjtemény nevét, a gyűjtemény használható. `MyCollection` Példa érvényes bemenet - nevű egy gyűjtemény `MyCollection` léteznie kell.  
+Dokumentumazonosító     | Választható. A kimeneti eseményekben a melyik beszúrási vagy frissítési műveletek kell alapozni egyedi kulcsaként használt oszlopok neve. Ha üres, az összes esemény kerül beillesztésre, nincs frissítési lehetőség.

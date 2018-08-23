@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036938"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057284"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
@@ -282,7 +282,7 @@ Ha a repair-kezelő szolgáltatás nem található a fürtön, figyelmeztetési 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-VÁLASZOK. **Miért látok a fürt hibás állapotú, a patch orchestration alkalmazás futása során?**
+K. **Miért látok a fürt hibás állapotú, a patch orchestration alkalmazás futása során?**
 
 A. A telepítési folyamat során a patch orchestration app letiltja, vagy újraindul a csomópontokon, ami növelheti ideiglenesen leáll a fürt állapotát.
 
@@ -296,15 +296,15 @@ A következő példában a fürt hiba történt a hibás állapotú ideiglenesen
 
 Ha a probléma nem szűnik meg, tekintse meg a hibaelhárítási szakaszt.
 
-VÁLASZOK. **Patch orchestration alkalmazás figyelmeztetési állapotban van.**
+K. **Patch orchestration alkalmazás figyelmeztetési állapotban van.**
 
 A. Ellenőrizze, hogy ha egy jelentés tesznek közzé az alkalmazáshoz képest-e a hiba okát. Általában a figyelmeztetés a probléma részleteit tartalmazza. Ha a probléma átmeneti, az alkalmazás az automatikus helyreállítás ebből az állapotból kellene szerepelnie.
 
-VÁLASZOK. **Mi a teendő, ha a fürt nem kifogástalan, és egy sürgős operációsrendszer-frissítés van szükség?**
+K. **Mi a teendő, ha a fürt nem kifogástalan, és egy sürgős operációsrendszer-frissítés van szükség?**
 
 A. A patch orchestration app nem frissítések telepítése, míg a fürt állapota nem kifogástalan. Próbálja meg a fürt hálózatra kapcsolása a tiltásának feloldása a patch orchestration munkafolyamat Kifogástalan állapotba.
 
-VÁLASZOK. **Kell i beállítása "NodeWise" vagy "UpgradeDomainWise" TaskApprovalPolicy a fürtöm számára?**
+K. **Kell i beállítása "NodeWise" vagy "UpgradeDomainWise" TaskApprovalPolicy a fürtöm számára?**
 
 A. "UpgradeDomainWise" lehetővé teszi a teljes fürt javítás gyorsabban azáltal, hogy kijavítja a párhuzamos frissítési tartományokhoz tartozó összes csomópontját. Ez azt jelenti, hogy a teljes frissítési tartományokhoz tartozó lenne nem érhető el (a [letiltott](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) állapot) a javítási folyamat során.
 
@@ -312,7 +312,7 @@ Ezzel szemben a NodeWise"szabályzat javítások egyszerre csak egy csomópont, 
 
 Ha a fürt fut az frissítési tartományok száma N-1 javítás ciklus (ahol N az a fürt frissítési tartományok száma), majd a szabályzat másként "UpgradeDomainWise" alatt képes elviselni, ellenkező esetben állítsa "NodeWise".
 
-VÁLASZOK. **Mennyi idő mindezt hajtsa végre a megfelelő csomópont javítására?**
+K. **Mennyi idő mindezt hajtsa végre a megfelelő csomópont javítására?**
 
 A. Egy csomópont javítás percet is igénybe vehet (például: [Windows Defender definíciófrissítéseit](https://www.microsoft.com/wdsi/definitions)) óra (például: [Windows összegző frissítések](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Egy csomópont javítása szükséges idő leggyakrabban függ 
  - Frissítések mérete
@@ -320,7 +320,7 @@ A. Egy csomópont javítás percet is igénybe vehet (például: [Windows Defend
  - Telepítse a frissítéseket, újraindíthatja a csomópontot (ha szükséges), és újraindítás utáni telepítési lépéseket szükséges idő.
  - Virtuális gép és számítógép- és hálózati körülményekhez teljesítményét.
 
-VÁLASZOK. **Mennyi ideig tart egy teljes fürtre javítására?**
+K. **Mennyi ideig tart egy teljes fürtre javítására?**
 
 A. A teljes fürtöt javítása szükséges idő a következő tényezőktől függ:
 
@@ -331,11 +331,11 @@ A. A teljes fürtöt javítása szükséges idő a következő tényezőktől f�
 - Fürt betöltés – minden javítási műveletet igényel, az ügyfél számítási feladata áthelyezése más elérhető csomópontokhoz a fürtben. Javítás alatt áll csomópont kell, hogy [letiltása](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) állapot ebben az időszakban. Ha a fürt csúcsterhelés között közel fut, a letiltását folyamat hosszabb ideig igénybe. Ezért átfogó a javítási folyamat lassú ilyen teherhordó feltételek jelenhet meg.
 - Állapottal kapcsolatos hibák bármilyen során javítás - fürt [teljesítménycsökkenés](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) a [a fürt állapota](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) megszakítaná a javítási folyamatot. Ez az egész fürt javítása szükséges teljes időt volna hozzá.
 
-VÁLASZOK. **Miért látok néhány frissítést, a Windows Update eredmények REST API-n keresztül, de nem a számítógépen a Windows Update előzmények alapján?**
+K. **Miért látok néhány frissítést, a Windows Update eredmények REST API-n keresztül, de nem a számítógépen a Windows Update előzmények alapján?**
 
 A. Egyes frissítéseket csak tűnik, a megfelelő frissítések/javítások előzményeiben. Például előfordulhat, hogy a Windows Defender frissítések vagy előfordulhat, hogy nem jelennek meg a Windows Server 2016-on Windows Update előzmények.
 
-VÁLASZOK. **Patch Orchestration alkalmazás használható fejlesztési fürt (egycsomópontos fürt) javítására?**
+K. **Patch Orchestration alkalmazás használható fejlesztési fürt (egycsomópontos fürt) javítására?**
 
 A. Nem, Patch orchestration alkalmazás javítás egycsomópontos fürt nem használható. Ezt a korlátozást a rendszer kialakításából fakad, [service fabric-rendszerszolgáltatások](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) vagy vevő alkalmazások leállhatnak, és ezért bármely javítás a javítási feladat lenne soha nem get jóvá manager javítást igényel.
 
@@ -391,6 +391,10 @@ A rendszergazdák beavatkozhat kell, és határozza meg, miért érdemes az alka
 - Hibajavítás a létrehozásakor erőforrás-kezelő feladatot, mely állapota miatt ellenőrizze a javítási feladatok előkészítése során nem a várt módon történik.
 - Windows POANodeSvc Service automatikus késleltetett automatikus módosítani az indítási módja.
 
-### <a name="version-121-latest"></a>1.2.1-es (legújabb)
+### <a name="version-121"></a>1.2.1-es
 
 - Hibajavítás a fürt skálázási munkafolyamatban. Szemétgyűjtési gyűjtemény logikai POA javítási tevékenységek nem létező csomóponthoz tartozó vezetett be.
+
+### <a name="version-122-latest"></a>Verzió 1.2.2 (legújabb)
+
+- Vegyes hibajavításokat tartalmaz.

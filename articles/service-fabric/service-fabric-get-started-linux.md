@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5d4fa878197732daf188fcc318569b178e608684
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 00164789d7f37277127878911c3f368a56ec7710
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345960"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616972"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -208,27 +208,20 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
 
 1. Telepítse a Node.js és az npm eszközt a gépre.
 
-    * Ubuntu
-        ```bash
-        curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-        sudo apt-get install -y nodejs 
-        ```
-
-    * Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
-        ```bash
-        sudo yum install nodejs
-        sudo yum install npm
-        ```
+    ```bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+    nvm install node
+    ```
 2. Telepítse a gépre a [Yeoman](http://yeoman.io/) sablongenerátort az npm-ből.
 
     ```bash
-    sudo npm install -g yo
+    npm install -g yo
     ```
 3. Telepítse a Service Fabric Yeo tárológenerátort és futtatható vendégalkalmazás-generátort az npm-ből.
 
     ```bash
-    sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
-    sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
+    npm install -g generator-azuresfcontainer  # for Service Fabric container application
+    npm install -g generator-azuresfguest      # for Service Fabric guest executable application
     ```
 
 A generátorok telepítése után hozzon létre futtatható vendégalkalmazásokat vagy tárolószolgáltatásokat a `yo azuresfguest` vagy a `yo azuresfcontainer` futtatásával.
@@ -260,7 +253,7 @@ A Service Fabric-szolgáltatások Java használatával történő létrehozásá
 A Service Fabric Yeo-generátort is telepítenie kell végrehajtható Java-fájlokhoz. Győződjön meg róla, hogy [telepítette a Yeomant](#set-up-yeoman-generators-for-containers-and-guest-executables), majd futtassa az alábbi parancsot:
 
   ```bash
-  sudo npm install -g generator-azuresfjava
+  npm install -g generator-azuresfjava
   ```
  
 ## <a name="install-the-eclipse-plug-in-optional"></a>Az Eclipse beépülő modul telepítése (nem kötelező)
@@ -310,8 +303,8 @@ A Service Fabric SDK-k eltávolításához futtassa a következő parancsokat.
 
     ```bash
     sudo apt-get remove servicefabric servicefabicsdkcommon
-    sudo npm uninstall generator-azuresfcontainer
-    sudo npm uninstall generator-azuresfguest
+    npm uninstall -g generator-azuresfcontainer
+    npm uninstall -g generator-azuresfguest
     sudo apt-get install -f
     ```
 
@@ -319,9 +312,9 @@ A Service Fabric SDK-k eltávolításához futtassa a következő parancsokat.
 * Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
 
     ```bash
-    sudo yum remote servicefabric servicefabicsdkcommon
-    sudo npm uninstall generator-azuresfcontainer
-    sudo npm uninstall generator-azuresfguest
+    sudo yum remove servicefabric servicefabicsdkcommon
+    npm uninstall -g generator-azuresfcontainer
+    npm uninstall -g generator-azuresfguest
     ```
 
 ## <a name="next-steps"></a>További lépések

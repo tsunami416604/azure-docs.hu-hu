@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 7cf41a10f13e2edeb4ab1944c0d38cc7064c02bb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 88a4bcf018387ac83b485ec9e2efac11f85ba97c
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161475"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42432289"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service-ben az Azure Stack 3-as frissítés – kibocsátási megjegyzések
 
@@ -70,6 +70,10 @@ Az Azure App Service-ben az Azure Stack Update 3 tartalmazza a következő fejle
   - A hozzáadott Wincache 2.0.0.8
   - V 2.17.1.2 Windows a frissített Git esetében
   - Frissített Kudu 74.10611.3437
+  
+- **Frissítések az alapul szolgáló operációs rendszer összes szerepkör**:
+  - [Karbantartási frissítését Windows Server 2016 x64 alapú rendszerekhez (KB4132216)](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
+  - [2018-07 összegző frissítés a Windows Server 2016 x64 alapú rendszerekhez (KB4338822)](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
 
 ### <a name="post-update-steps-optional"></a>Közzététel a frissítési lépéseket (nem kötelező)
 
@@ -80,7 +84,7 @@ A tartalmazott adatbázis áttelepítése az Azure Stack üzemelő példányok a
 >
 >
 
-1. Adjon hozzá [adatbázis egy rendelkezésre állási csoporthoz](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
+1. Adjon hozzá [az App Service-adatbázisok (appservice_hosting és appservice_metering) egy rendelkezésre állási csoporthoz](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
 
 1. Enable foglalt adatbázis
     ```sql

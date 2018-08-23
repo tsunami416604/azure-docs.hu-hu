@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 07f739243b80230fbf4914535ea65183c3590937
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 61b804b876c91b5fcd12ce15bd7e2438f5d897a0
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020441"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617417"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Az első Java Service Fabric Reliable Actors-alkalmazás létrehozása Linuxon
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md) is.
 A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel Service Fabric Java-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával.  Ha a Yeoman még nincs telepítve, a beállításával kapcsolatos utasításokért lásd: [Service Fabric – Első lépések a Linuxszal](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables). Futtassa az alábbi parancsot a Javához készült Service Fabric Yeoman sablongenerátor telepítéséhez.
 
   ```bash
-  sudo npm install -g generator-azuresfjava
+  npm install -g generator-azuresfjava
   ```
 
 ## <a name="basic-concepts"></a>Alapfogalmak
@@ -220,18 +220,18 @@ Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel 
 Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
 
 > [!IMPORTANT]
-> Biztonságos Linux fürthöz az Azure-ban az alkalmazás központi telepítése, konfigurálása a Service Fabric-futtatókörnyezet az alkalmazásba érvényesítendő tanúsítvánnyal kell. Így lehetővé teszi, hogy a Reliable Actors szolgáltatásokat, hogy az alapul szolgáló Service Fabric-futtatókörnyezet API-k kommunikálni. További tudnivalókért lásd: [konfigurálása a Reliable Services alkalmazás futtatásának Linux fürtökön](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Biztonságos Linux-fürt az Azure-ban az alkalmazás központi telepítése, konfigurálása a Service Fabric-futtatókörnyezet az alkalmazás érvényesítendő tanúsítvánnyal kell. Ez lehetővé teszi a Reliable Actors szolgáltatások kommunikálni az alapul szolgáló Service Fabric-futtatókörnyezet API-k. További tudnivalókért lásd: [egy Reliable Services-alkalmazás Linux-fürtök konfigurálása](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Tesztügyfél elindítása és feladatátvétel végrehajtása
 Egy aktor semmit sem tesz önmagában. Egy másik szolgáltatást vagy alkalmazást igényel, amely üzeneteket küld a számára. Az aktorsablon egy egyszerű tesztszkriptet tartalmaz, amelyet az aktorszolgáltatással való kommunikációra használhat.
 
 > [!Note]
-> A teszt ügyfél a ActorProxy osztály szereplője, amely ugyanabban a fürtben, mint az aktor szolgáltatás levő futtatandó vagy a azonos IP-címtér megosztása folytatott kommunikációhoz használ.  A teszt ügyféllel a helyi fejlesztési fürtök ugyanazon a számítógépen.  Távoli fürtben szereplője kommunikálni, azonban telepítenie kell egy átjárót a fürtön, amely a szereplője külső kommunikációt kezeli.
+> A tesztügyfél az ActorProxy-osztály szereplők, amelyek a fürtön, az aktorszolgáltatás belül futtatandó vagy megoszthatja az ugyanazon IP-címtér folytatott kommunikációhoz használ.  A tesztügyfél futtathatja a helyi fejlesztési fürt ugyanazon a számítógépen.  A távoli fürt actors folytatott kommunikációhoz, azonban telepítenie kell egy átjárót a fürtön, amely az aktorokat külső kommunikációt kezeli.
 
 1. Futtassa a szkriptet a figyelési segédprogram használatával az aktorszolgáltatás kimenetének megtekintéséhez.  A teszt-szkript a(z) `setCountAsync()` metódust hívja meg az aktorhoz a számláló léptetéséhez és a(z) `getCountAsync()` metódust a számláló új értékének beolvasásához, majd megjeleníti ezt az értéket a konzolon.
 
-   MAC OS X esetén kell a tároló belül az egyes helyre, a következő további parancsok futtatásával másolja a HelloWorldTestClient mappát.    
+   MAC OS X esetén kell tárolón belül az egy helyre a HelloWorldTestClient mappába másolja a következő további parancsok futtatásával.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home

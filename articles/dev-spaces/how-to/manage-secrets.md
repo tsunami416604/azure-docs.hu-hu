@@ -1,5 +1,5 @@
 ---
-title: Titkos kulcsok kezelése az Azure fejlesztői címtér az használatakor |} Microsoft Docs
+title: Titkos kulcsok kezelése, egy Azure-fejlesztési területtel rendelkező használata során |} A Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,25 +9,25 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: article
 ms.technology: azds-kubernetes
-description: Gyors Kubernetes fejlesztése a tárolók és mikroszolgáltatások létrehozására az Azure-on
-keywords: Docker, Kubernetes, Azure, AKS, az Azure Tárolószolgáltatás, tárolók
+description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
+keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
 manager: douge
-ms.openlocfilehash: b77d862f578ddc374dbb58117b4ea58eb973e5fe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 352e43633ea1464eb7e28fa698d1ae77d5ac52bd
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198313"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42059141"
 ---
-# <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Titkos kulcsok kezelése az Azure fejlesztői címtér az használatakor
+# <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Titkos kulcsok kezelése, az egy Azure-fejlesztési terület használatakor
 
-A szolgáltatások szükség lehet egyes jelszavak, kapcsolati karakterláncok, és más titkos adatokat, például az adatbázisok vagy más biztonságos Azure-szolgáltatásokkal. Ezeknek a kulcsoknak értékének beállításával konfigurációs fájlokat, akkor is használhatja őket a kódban környezeti változóként.  Ezek a titkos kulcsok biztonságának fenyegetése elkerülése érdekében óvatosan kell kezelni.
+A szolgáltatások szükség lehet bizonyos jelszavak, a kapcsolati karakterláncok és egyéb titkos adatait, például adatbázisok vagy más biztonságos Azure-szolgáltatásokkal. Konfigurációs fájlok titkos adatokat értékének beállításával, elérhetővé teheti őket a kód a környezeti változókként.  Ezek a titkos kódok biztonságának fenyegetése elkerülése érdekében óvatosan kell kezelni.
 
-Azure fejlesztői szóközöket biztosít két ajánlott, hogy a titkos kulcsok tárolására szolgáló beállítások: a values.dev.yaml fájlban, és közvetlenül a azds.yaml beágyazott. A titkos kulcsok tárolása values.yaml nem javasolt.
+Az Azure fejlesztési tárolóhelyek biztosít két ajánlott, hogy a titkos kulcsok tárolására szolgáló beállítások: a values.dev.yaml fájlt, és közvetlenül a azds.yaml beágyazott. Titkos kódok tárolása values.yaml nem ajánlott.
  
 ## <a name="method-1-valuesdevyaml"></a>1. módszer: values.dev.yaml
-1. Nyissa meg a Visual STUDIO Code a projektet a Azure fejlesztői szóközöket engedélyezett.
-2. Adjon hozzá nevű fájlt _values.dev.yaml_ ugyanabban a mappában található, mint a meglévő _values.yaml_ , és adja meg a titkos kulcs és az értékeket, az alábbi példában látható módon:
+1. Nyissa meg a VS Code a projekthez, amely az Azure fejlesztési tárolóhelyek engedélyezve van.
+2. Adjon hozzá egy fájlt _values.dev.yaml_ ugyanabban a mappában, mint a meglévő _values.yaml_ és határozza meg a titkos kulcsot és az értékeket, az alábbi példában látható módon:
 
     ```yaml
     secrets:
@@ -37,7 +37,7 @@ Azure fejlesztői szóközöket biztosít két ajánlott, hogy a titkos kulcsok 
         key: "secretkeyhere"
     ```
      
-3. Frissítés _azds.yaml_ állapítható meg, hogy Azure fejlesztői tárolóhelyekkel szeretné használni az új _values.dev.yaml_ fájlt. Ehhez adja hozzá ezt a konfigurációt a configurations.develop.container szakaszban:
+3. Frissítés _azds.yaml_ állapítható meg, hogy az Azure fejlesztési tárolóhelyek használata az új _values.dev.yaml_ fájlt. Ehhez adja hozzá ezt a konfigurációt a configurations.develop.container szakaszában:
 
     ```yaml
            container:
@@ -45,7 +45,7 @@ Azure fejlesztői szóközöket biztosít két ajánlott, hogy a titkos kulcsok 
              - "charts/webfrontend/values.dev.yaml"
     ```
  
-4. Módosítsa a szolgáltatáskód hibáit hivatkozni ezeknek a kulcsoknak környezeti változóként, az alábbi példában látható módon:
+4. Módosítsa a szolgáltatás kód a titkos adatokat hivatkoznak környezeti változókként, az alábbi példában látható módon:
 
     ```
     var redisPort = process.env.REDIS_PORT
@@ -53,23 +53,23 @@ Azure fejlesztői szóközöket biztosít két ajánlott, hogy a titkos kulcsok 
     var theKey = process.env.REDIS_KEY
     ```
     
-5. Az ezekkel a módosításokkal a fürtben működő szolgáltatások frissítésével. A parancssorban futtassa a parancsot:
+5. Ezeket a módosításokat a fürtben futó szolgáltatás frissítése. A parancssorban futtassa a parancsot:
 
     ```
     azds up
     ```
  
-6. (Választható) A parancssorból ellenőrizze, hogy ezeknek a kulcsoknak létrejöttek:
+6. (Nem kötelező) A parancssorból ellenőrizze, hogy létrejöttek-e a titkos adatokat:
 
       ```
       kubectl get secret --namespace default -o yaml 
       ```
 
-7. Győződjön meg arról, hogy hozzáadta _values.dev.yaml_ számára a _.gitignore_ fájl titkos kulcsainak verziókezelő véglegesítése elkerülése érdekében.
+7. Győződjön meg arról, hogy hozzáadhat _values.dev.yaml_ , a _.gitignore_ fájl verziókövetési rendszerben titkos kódok véglegesítését elkerülése érdekében.
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>2. módszer: Beágyazott közvetlenül a azds.yaml
-1.  A _azds.yaml_, állítsa be a a yam szakasz konfigurációk/fejlesztése/telepítés titkos kulcsok. Bár adhatja meg a titkos kulcs értékeket közvetlenül nincs, akkor nem ajánlott, mert _azds.yaml_ forrás vezérlőbe be van jelölve. Ehelyett adja hozzá a helyőrzők a "$PLACEHOLDER" szintaxis használatával.
+## <a name="method-2-inline-directly-in-azdsyaml"></a>2. módszer: A beágyazott közvetlenül a azds.yaml
+1.  A _azds.yaml_, állítsa be a titkos kulcsokat a yaml szakasz konfigurációk/fejlesztés/telepítés alatt. Bár erre elméletileg titkos kulcs értékeket közvetlenül, ez nem ajánlott, mert _azds.yaml_ forrásvezérlőben be van jelölve. Ehelyett adja hozzá a helyőrzőket a "$PLACEHOLDER" szintaxis használatával.
 
     ```yaml
     configurations:
@@ -84,14 +84,14 @@ Azure fejlesztői szóközöket biztosít két ajánlott, hogy a titkos kulcsok 
                 key: "$REDIS_KEY_DEV"
     ```
      
-2.  Hozzon létre egy _.env_ azonos mappában lévő fájl _azds.yaml_. Adja meg a titkos kulccsal szabványos = érték jelöléssel. Nem véglegesíthető a _.env_ fájl a verziókövetési rendszerrel. (Nincs megadva a verziókövetésből git-alapú rendszerek, vegye fel azt a _.gitignore_ fájl.) Az alábbi példa mutatja egy _.env_ fájlt:
+2.  Hozzon létre egy _.env_ ugyanabban a mappában található fájl _azds.yaml_. Adja meg a titkok standard kulcs = érték jelöléssel. Nem véglegesíteni a _.env_ verziókövetés-fájlt. (Hagyja ki a forráskezelőből git-alapú verziókövető rendszereket, adja hozzá a az _.gitignore_ fájl.) A következő példa bemutatja egy _.env_ fájlt:
 
     ```
     REDIS_PORT_DEV=3333
     REDIS_HOST_DEV=myredishost
     REDIS_KEY_DEV=myrediskey
     ```
-2.  Módosítsa a szolgáltatás forráskódot, ezeknek a kulcsoknak a kódban, az alábbi példában látható módon hivatkozni:
+2.  Módosítsa a szolgáltatás forráskód való hivatkozáshoz a titkos kód, a következő példához hasonlóan az adatokat:
 
     ```
     var redisPort = process.env.REDIS_PORT
@@ -99,13 +99,13 @@ Azure fejlesztői szóközöket biztosít két ajánlott, hogy a titkos kulcsok 
     var theKey = process.env.REDIS_KEY
     ```
  
-3.  Az ezekkel a módosításokkal a fürtben működő szolgáltatások frissítésével. A parancssorban futtassa a parancsot:
+3.  Ezeket a módosításokat a fürtben futó szolgáltatás frissítése. A parancssorban futtassa a parancsot:
 
     ```
     azds up
     ```
 
-4.  (választható) A kubectl titkok megtekintése:
+4.  (nem kötelező) A kubectl nézet titkos kódok:
 
     ```
     kubectl get secret --namespace default -o yaml
@@ -113,5 +113,5 @@ Azure fejlesztői szóközöket biztosít két ajánlott, hogy a titkos kulcsok 
 
 ## <a name="next-steps"></a>További lépések
 
-Az ezekkel a módszerekkel most már biztonságosan csatlakozhat egy adatbázist, a Redis gyorsítótár vagy hozzáférés biztonságos Azure-szolgáltatásokhoz.
+A következő módszerekkel, most már biztonságosan csatlakozhat egy adatbázis, a Redis Cache-gyorsítótárhoz vagy a hozzáférés biztonságos Azure-szolgáltatások.
  

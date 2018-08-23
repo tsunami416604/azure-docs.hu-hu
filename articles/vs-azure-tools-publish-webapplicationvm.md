@@ -1,25 +1,26 @@
 ---
-title: Közzététel WebApplicationVM |} Microsoft Docs
-description: Megtudhatja, hogyan telepítheti egy webalkalmazást egy virtuális géphez. Ezt a parancsfájlt a szükséges erőforrásokat az Azure-előfizetése hoz létre, ha azok még nem léteznek.
+title: Közzététel WebApplicationVM |} A Microsoft Docs
+description: Ismerje meg, hogyan helyezhet üzembe egy webalkalmazást egy virtuális gépet. Ez a szkript létrehoz az Azure-előfizetésben a szükséges erőforrásokkal, ha azok nem léteznek.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: de4cec95-f73f-44d9-babd-9f47f2633cdb
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: 3fdd11387096d95359fb5f578ca64720f2182c45
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c2dc6057eeb4eba1306309785e13192674bc43c6
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795911"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054910"
 ---
-# <a name="publish-webapplicationvm-windows-powershell-script"></a>(A Windows PowerShell-parancsfájl) közzététele-WebApplicationVM
-A webalkalmazások egy virtuális gépet telepít. A parancsfájl a szükséges erőforrásokat az Azure-előfizetése hoz létre, ha azok még nem léteznek.
+# <a name="publish-webapplicationvm-windows-powershell-script"></a>Közzététel-WebApplicationVM (Windows PowerShell-parancsfájl)
+Üzembe helyez egy webalkalmazást egy virtuális géphez. A parancsfájl a szükséges erőforrásokat az Azure-előfizetésben hoz létre, ha azok nem léteznek.
 
 ```
 Publish-WebApplicationVM
@@ -33,86 +34,86 @@ Publish-WebApplicationVM
 ```
 
 ### <a name="configuration"></a>Konfiguráció
-A JSON-konfigurációs fájlt, amely leírja a központi telepítés részleteinek elérési útja.
+Az üzembe helyezés részleteit leíró JSON-konfigurációs fájl elérési útja.
 
-| Aliasnevek | nincs |
+| Aliasok | nincs |
 | --- | --- |
 | Kötelező? |true |
 | Beosztás |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="subscriptionname"></a>Előfizetés neve
-Kívánja a virtuális gép létrehozása Azure-előfizetés neve.
+Az Azure-előfizetést, amelyben szeretné létrehozni a virtuális gép neve.
 
-| Aliasnevek | nincs |
+| Aliasok | nincs |
 | --- | --- |
 | Kötelező? |false |
 | Beosztás |nevű |
-| Alapértelmezett érték |Az előfizetés fájlban az első előfizetést használ |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Alapértelmezett érték |Az első előfizetést használja az előfizetés-fájl |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="webdeploypackage"></a>WebDeployPackage
-A webes telepítési csomag közzétételére a virtuális gép elérési útja. Ezt a csomagot a Visual Studio webhely közzététele varázsló használatával hozhat létre. Lásd: [Útmutató: webes telepítési csomag létrehozása a Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx).
+A webes telepítési Web csomag közzététele a virtuális gép elérési útja. Ezt a csomagot a Visual Studio Publish Web varázsló használatával hozhat létre. Lásd: [Útmutató: webes telepítési csomag létrehozása a Visual Studióban](https://msdn.microsoft.com/library/dd465323.aspx).
 
-| Aliasnevek | nincs |
+| Aliasok | nincs |
 | --- | --- |
 | Kötelező? |false |
 | Beosztás |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="allowuntrusted"></a>AllowUntrusted
-Amennyiben az értéke igaz, nem egy megbízható legfelső szintű hitelesítésszolgáltató által aláírt tanúsítványok használatának engedélyezése.
+Ha az értéke igaz, nem egy megbízható legfelső szintű hitelesítésszolgáltató által aláírt tanúsítványokat használatának engedélyezése.
 
-| Aliasnevek | nincs |
+| Aliasok | nincs |
 | --- | --- |
 | Kötelező? |false |
 | Beosztás |nevű |
 | Alapértelmezett érték |false |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="vmpassword"></a>VMPassword
-A virtuális gép fiók hitelesítő adatait. Példa: - VMPassword @{név = "rendszergazda"; Jelszó = a "password"}
+A virtuális gép fiók hitelesítő adatait. Példa: - VMPassword @{név = "admin"; Jelszó = "password"}
 
-| Aliasnevek | nincs |
+| Aliasok | nincs |
 | --- | --- |
 | Kötelező? |false |
 | Beosztás |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
-A hitelesítő adatokat az Azure SQL-adatbázis. Példa: - DatabaseServerPassword @{név = "rendszergazda"; Jelszó = a "password"}
+Az SQL database az Azure-beli hitelesítő adatait. Példa: - DatabaseServerPassword @{név = "admin"; Jelszó = "password"}
 
-| Aliasnevek | nincs |
+| Aliasok | nincs |
 | --- | --- |
 | Kötelező? |false |
 | Beosztás |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
-Amennyiben az értéke igaz, a nyomtató érkező üzenetek a parancsfájl a kimeneti adatfolyamba.
+Amennyiben az értéke igaz, nyomtatás üzenetek a parancsfájlból a kimeneti adatfolyamba.
 
-| Aliasnevek | nincs |
+| Aliasok | nincs |
 | --- | --- |
 | Kötelező? |false |
 | Beosztás |nevű |
 | Alapértelmezett érték |false |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ## <a name="remarks"></a>Megjegyzések
-A parancsfájl használata létrehozásához teljes leírását fejlesztési és tesztkörnyezetek, lásd: [Windows PowerShell parancsfájlok használata a közzététel a fejlesztési és tesztkörnyezetek](vs-azure-tools-publishing-using-powershell-scripts.md).
+Bemutatja, hogyan hozhat létre a parancsfájl használatával teljes ismertetése: fejlesztési és tesztelési környezetek [Windows PowerShell parancsfájlok használata a fejlesztési és tesztelési környezetek a közzététel](vs-azure-tools-publishing-using-powershell-scripts.md).
 
-A JSON-konfigurációs fájl meghatározza, hogy mit telepítendő részletes adatait. A projekt, például a nevét, a affinitáscsoport, a Virtuálismerevlemez-kép és a virtuális gép mérete létrehozásakor megadott információkat tartalmazza. Azt is magában foglalja a végpontokat a virtuális gépen, az adatbázisok kiépítéséhez, ha van ilyen, webes és üzembe helyezéshez megadott paraméterek. A következő kód bemutatja egy példa JSON-konfigurációs fájlt:
+A JSON konfigurációs fájl meghatározza a részleteit, mi az a telepítésre. A projekt, például a nevét, a affinitáscsoport, a VHD-rendszerképet és a méretet a virtuális gép létrehozásakor megadott információkat tartalmazza. Tartalmazza a végpontok a virtuális gépen, az adatbázisok kiépítéséhez, ha van ilyen, és webes üzembe helyezéshez megadott paraméterek. A következő kód bemutatja egy példa JSON-konfigurációs fájl:
 
 ```
 {
@@ -181,5 +182,5 @@ A JSON-konfigurációs fájl meghatározza, hogy mit telepítendő részletes ad
 }
 ```
 
-Szerkesztheti a JSON-konfigurációs fájl módosítása milyen ki van építve. Szükség egy virtuális gép és egy felhőalapú szolgáltatás, de az adatbázis szakaszban nem kötelező megadni.
+Szerkesztheti a JSON konfigurációs fájl módosítása, hogy mi van kiépítve. Szükség egy virtuális gép és a egy felhőalapú szolgáltatás, de az adatbázis a szakasz nem kötelező.
 

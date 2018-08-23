@@ -1,9 +1,9 @@
 ---
-title: Kezeli az engedélyeket a verem Azure-ban felhasználónként erőforrásokhoz |} Microsoft Docs
-description: Szolgáltatás-rendszergazdaként vagy bérlői megtudhatja, hogyan kezeli az RBAC-engedélyeket.
+title: Felhasználónként az Azure Stack-erőforrások kezelése |} A Microsoft Docs
+description: Szolgáltatás-rendszergazda vagy bérlői megtudhatja, hogyan kezelheti az RBAC-engedélyek.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: PatAltimore
 manager: femila
 editor: ''
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
@@ -12,91 +12,91 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: 026c686b1d5654aa50dd63b9addd619dd5322da0
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 2e36f52568d349aeecd47f90bf9431f096cc4fdc
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808145"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058109"
 ---
-# <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Hozzáférés-vezérléssel Azure Stack Role-Based erőforrásokhoz való hozzáférés kezelése
+# <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>A hozzáférés-vezérléssel Azure Stack Role-Based erőforrásaihoz való hozzáférés kezelése
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Azure verem támogatja a szerepköralapú hozzáférés-vezérlés (RBAC) azonos [kezelési biztonsági modell](https://docs.microsoft.com/azure/role-based-access-control/overview) , amely a Microsoft Azure használja. Az RBAC segítségével kezelheti a felhasználó, csoport vagy előfizetések, erőforrások és szolgáltatások alkalmazás eléréséhez.
+Az Azure Stack is támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), ugyanez [kezelési biztonsági modell](https://docs.microsoft.com/azure/role-based-access-control/overview) , amely a Microsoft Azure. Az RBAC használatával kezelheti a felhasználó, csoport vagy alkalmazás-hozzáférés az előfizetések, erőforrások és szolgáltatások.
 
-## <a name="basics-of-access-management"></a>Kezelési alapjai
+## <a name="basics-of-access-management"></a>Hozzáférés-kezelés alapjait
 
-Szerepköralapú hozzáférés-vezérlés lehetővé részletes hozzáférés-vezérlést használó megvédeni környezetét. Felhasználók megadhatja a pontos által egy adott hatókörben RBAC szerepkör hozzárendelése szükséges engedélyeket. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást. Olvassa el a [szerepköralapú hozzáférés-vezérlés az Azure portálon](https://docs.microsoft.com/azure/role-based-access-control/overview) cikkel, hogy hozzáférés-kezeléssel kapcsolatos további részletes információk.
+Szerepköralapú hozzáférés-vezérlés, hogy biztosítsa a környezetét segítségével részletes hozzáférés-vezérlést biztosít. Felhasználóknak szükségük van egy bizonyos hatókörben RBAC szerepkör hozzárendelésével pontos engedélyeket engedélyezi. A szerepkör-hozzárendelés hatóköre egy előfizetés, erőforráscsoport vagy egyetlen erőforrás lehet. Olvassa el a [szerepköralapú hozzáférés-vezérlés az Azure Portalon](https://docs.microsoft.com/azure/role-based-access-control/overview) cikk kezelési részletes információt szeretne kapni.
 
 ### <a name="built-in-roles"></a>Beépített szerepkörök
 
-Azure verem rendelkezik, amely az összes erőforrástípus alkalmazható három alapvető szerepkörök:
+Az Azure Stack rendelkezik, amelyek minden erőforrástípus alkalmazhat három alapvető szerepkörök:
 
 * **Tulajdonos** mindent felügyelhetnek, beleértve az erőforrásokhoz való hozzáférést.
-* **A közreműködői** erőforrásokhoz való hozzáférés kivételével mindent felügyelhetnek.
-* **Olvasó** mindent megtekinthetnek, de nem módosíthatja.
+* **Közreműködői** erőforrásokhoz való hozzáférés kivételével mindent felügyelhetnek.
+* **Olvasó** , aki mindent megtekinthet, de nem végezhet módosításokat.
 
-### <a name="resource-hierarchy-and-inheritance"></a>Erőforrás-hierarchiát és öröklés
+### <a name="resource-hierarchy-and-inheritance"></a>Erőforrás-hierarchiát és öröklődés
 
-Azure verem rendelkezik a következő erőforrás-hierarchiában:
+Az Azure Stack a következő erőforrás-hierarchia rendelkezik:
 
-* Minden előfizetés tartozik egy címtárban.
-* Egy előfizetés tartozik minden erőforráscsoportban.
-* Az egyes erőforrások egy erőforráscsoporthoz tartozik.
+* Az egyes előfizetésekhez tartozik egy címtárban.
+* Minden erőforráscsoport egy előfizetéshez tartozik.
+* Minden erőforrás egy erőforráscsoportba tartozik.
 
-A gyermekhatókör örökölt, hogy a szülő hatókörben számára biztosítson hozzáférést. Példa:
+A gyermek hatókörök örökölt, amely egy szülő hatókörben számára biztosítson hozzáférést. Példa:
 
-* Az olvasó szerepkört rendelni az előfizetési hatókört, az Azure Active Directory-csoportnak. A csoport tagjai megtekintheti minden erőforrás csoport- és az előfizetés.
-* A közreműködői szerepkör hozzárendelése az erőforrás-csoport hatóköre az alkalmazást. Az alkalmazás kezelhetik az erőforrásokat bármilyen típusú erőforráscsoport, de nem egyéb erőforráscsoportok az előfizetést.
+* Az Olvasó szerepkör hozzárendelése az Azure AD-csoportok az előfizetések szintjén. A csoport tagjai tekinthetik minden erőforráscsoport és az erőforrás az előfizetést.
+* A közreműködő szerepkört rendel egy alkalmazást, az erőforrás-csoport hatókörben. Az alkalmazás az adott erőforráscsoportba tartozó, de nem egyéb erőforráscsoportok az előfizetés összes típusú erőforrások is kezelhetők.
 
-### <a name="assigning-roles"></a>szerepkörök hozzárendelése
+### <a name="assigning-roles"></a>Szerepkörök hozzárendelése
 
-Több szerepkör hozzárendelése egy felhasználóhoz, és minden egyes szerepkör társítható egy másik hatókört. Példa:
+Egynél több szerepkörhöz hozzárendelni egy felhasználóhoz, és minden egyes szerepkör társítható egy másik hatókört. Példa:
 
-* Előfizetés-1 TestUser-A az olvasó szerepkört rendelni.
-* A tulajdonosi TestUser-A szerepkör hozzárendelése TestVM-1.
+* TestUser-A az Olvasó szerepkör hozzárendelése – 1. előfizetéshez.
+* TestUser-A a tulajdonosi szerepkör hozzárendelése TestVM – 1.
 
-Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és szerepkörök törlése kapcsolatos részletes információkat tartalmazza.
+Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és törlése a szerepkörök részletes információkat tartalmaz.
 
-### <a name="resource-hierarchy-and-inheritance"></a>Erőforrás-hierarchiát és öröklés
+### <a name="resource-hierarchy-and-inheritance"></a>Erőforrás-hierarchiát és öröklődés
 
-Azure verem rendelkezik a következő erőforrás-hierarchiában:
+Az Azure Stack a következő erőforrás-hierarchia rendelkezik:
 
-* Minden előfizetés tartozik egy címtárban.
-* Egy előfizetés tartozik minden erőforráscsoportban.
-* Az egyes erőforrások egy erőforráscsoporthoz tartozik.
+* Az egyes előfizetésekhez tartozik egy címtárban.
+* Minden erőforráscsoport egy előfizetéshez tartozik.
+* Minden erőforrás egy erőforráscsoportba tartozik.
 
-A gyermekhatókör örökölt, hogy a szülő hatókörben számára biztosítson hozzáférést. Példa:
+A gyermek hatókörök örökölt, amely egy szülő hatókörben számára biztosítson hozzáférést. Példa:
 
-* Rendel a **olvasó** szerepkört az előfizetés hatókörben az Azure Active Directory-csoportnak. A csoport tagjai megtekintheti minden erőforrás csoport- és az előfizetés.
-* Rendel a **közreműködő** szerepkör erőforrás csoport hatókörben egy alkalmazáshoz. Az alkalmazás kezelhetik az erőforrásokat bármilyen típusú erőforráscsoport, de nem egyéb erőforráscsoportok az előfizetést.
+* Hozzárendelhet a **olvasó** szerepkört az Azure AD-csoportok az előfizetések szintjén. A csoport tagjai tekinthetik minden erőforráscsoport és az erőforrás az előfizetést.
+* Hozzárendelhet a **közreműködői** szerepkör erőforrás-csoportot a csoporthatókörben, egy alkalmazásba. Az alkalmazás az adott erőforráscsoportba tartozó, de nem egyéb erőforráscsoportok az előfizetés összes típusú erőforrások is kezelhetők.
 
-### <a name="assigning-roles"></a>szerepkörök hozzárendelése
+### <a name="assigning-roles"></a>Szerepkörök hozzárendelése
 
-Több szerepkör hozzárendelése egy felhasználóhoz, és minden egyes szerepkör társítható egy másik hatókört. Példa:
+Egynél több szerepkörhöz hozzárendelni egy felhasználóhoz, és minden egyes szerepkör társítható egy másik hatókört. Példa:
 
-* Előfizetés-1 TestUser-A az olvasó szerepkört rendelni.
-* A tulajdonosi TestUser-A szerepkör hozzárendelése TestVM-1.
+* TestUser-A az Olvasó szerepkör hozzárendelése – 1. előfizetéshez.
+* TestUser-A a tulajdonosi szerepkör hozzárendelése TestVM – 1.
 
-Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és szerepkörök törlése kapcsolatos részletes információkat tartalmazza.
+Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és törlése a szerepkörök részletes információkat tartalmaz.
 
-## <a name="set-access-permissions-for-a-user"></a>A felhasználó hozzáférési engedélyeinek beállítása
+## <a name="set-access-permissions-for-a-user"></a>Egy felhasználó hozzáférési engedélyek beállítása
 
-Az alábbi lépéseket egy felhasználó engedélyeinek konfigurálását ismertetik.
+A következő lépések bemutatják, hogyan engedélyek konfigurálása a felhasználó.
 
-1. Olyan fiókkal jelentkezzen be, amely a kezelni kívánt erőforrás tulajdonos jogosult.
+1. A felügyelni kívánt erőforrás tulajdonosi engedélyekkel rendelkező fiókkal jelentkezzen be.
 2. A bal oldali navigációs panelen válassza az **Erőforráscsoportok** lehetőséget.
-3. Válassza ki az engedélyek beállítása a kívánt erőforráscsoport nevét.
-4. Az erőforrás csoport navigációs ablaktábláján válassza **hozzáférés-vezérlés (IAM)**. A **hozzáférés-vezérlés** nézet az erőforráscsoport hozzáféréssel rendelkező elemeket sorolja fel. Az eredmények szűréséhez, és használja a menüsávon hozzáadása vagy eltávolítása.
-5. Az a **hozzáférés-vezérlés** menü megnyitásához, válassza a **+ Hozzáadás**.
+3. Válassza ki a használni kívánt engedélyeket állíthat be az erőforráscsoport nevét.
+4. Az erőforrás csoport navigációs ablaktábláján válassza **hozzáférés-vezérlés (IAM)**. A **hozzáférés-vezérlés** megtekintése az erőforráscsoport számára elérhető elemeket sorolja fel. Ezek az eredmények szűréséhez, és használja a menüsávon hozzáadása és engedélyek eltávolítása.
+5. Az a **hozzáférés-vezérlés** menü sávot, válassza a **+ Hozzáadás**.
 6. A **engedélyek hozzáadása**:
 
-   * Válassza ki a hozzárendelni kívánt szerepkört a **szerepkör** legördülő listából.
-   * Válassza ki a hozzárendelni kívánt erőforrást a **való hozzáférés hozzárendelése** legördülő listából.
+   * Válassza ki a hozzárendelni kívánt szerepkört az **szerepkör** legördülő listából.
+   * Válassza ki a hozzárendelni kívánt erőforrást a **rendelhet hozzáféréseket** legördülő listából.
    * Válassza ki azt a felhasználót, csoportot vagy alkalmazást a címtárában, amely számára hozzáférést kíván biztosítani. A címtárban rákereshet megjelenítendő nevekre, e-mail-címekre és objektumazonosítókra.
 
 7. Kattintson a **Mentés** gombra.

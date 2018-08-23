@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: e0b5978f1c0254cdd4c0216a4188e84f67eb4263
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 059cb0cbc7e62af16dbf95693be421feebcc1ee0
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177615"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059184"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
 Egyfelhasználós módban, minimális környezetet minimális funkciókkal. Rendszerindító kapcsolatos problémák vizsgálatában vagy hálózati problémák hasznos lehet, mivel kevesebb services futhat a háttérben, és attól függően, a paraméterben megadott futtatási szint, a fájlrendszer előfordulhat, hogy még akkor is automatikusan csatlakoztatása nem. Ez akkor hasznos, amikor például egy sérült fájlrendszer, a tört fstab vizsgálata vagy a hálózati kapcsolat (helytelen engedélyezze az iptables konfigurálása).
@@ -64,7 +64,7 @@ Ha meg van adva grub-HIBÁT, és a legfelső szintű eléréséhez a fenti lép�
 1. A kilépéshez, és indítsa újra a alkalmazott beállítások a Ctrl + X
 1. Meg kell adnia a rendszergazdai jelszó előtt képes arra, hogy adja meg az egyfelhasználós módban – Ez az a fenti utasítások létrehozott ugyanazt a jelszót    
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-systemd-unit-rescue-target.png)
+    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Adja meg a egyfelhasználós mód engedélyezve van a RHEL root fiók nélkül
 Ha nem tudta a gyökér szintű felhasználó engedélyezéséhez a fenti lépéseket, a legfelső szintű jelszavát továbbra is visszaállíthatja. Kövesse az alábbi utasításokat:
@@ -81,7 +81,7 @@ Ha nem tudta a gyökér szintű felhasználó engedélyezéséhez a fenti lépé
 1. Miután egyfelhasználós módban indul, írja be a `chroot /sysroot` lehet átváltani a `sysroot` egyes
 1. Ön mostantól legfelső szintű. A legfelső szintű jelszavát is alaphelyzetbe `passwd` , majd a fenti utasítások egyfelhasználós üzemmódra. Típus `reboot -f` elkészült újraindítását.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-rd-break.png)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Megjegyzés: Keresztül a fenti utasítások futtató csökken, akkor vészhelyzeti shellbe, így is elvégezheti a feladatok, például `fstab`. Azonban a általánosan elfogadott javaslat, hogy a legfelső szintű jelszó alaphelyzetbe állítása, és azt használja az egyfelhasználós módot adja meg. 
 
@@ -136,7 +136,7 @@ SLES GRUB-hozzáféréshez YaST rendszerbetöltőt konfiguráció szükséges. E
 1. Adja meg a grub-HIBÁT, indítsa újra a virtuális gép, és nyomja le bármelyik billentyűt, hogy hagyja el a képernyőn lévő GRUB rendszerindítási folyamat során
     - Az alapértelmezett időtúllépési érték GRUB 1s. Ez módosításával módosíthatja a `GRUB_TIMEOUT` változót `/etc/default/grub`
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-bootloader.png)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>A SUSE SLES egyfelhasználós üzemmódban
 Ön automatikusan eldobja vészhelyzeti shellbe SLES általában nem indítható. Adja meg manuálisan a vészhelyzeti rendszerhéj, használja az alábbi utasításokat:

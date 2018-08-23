@@ -1,19 +1,19 @@
 ---
 title: Azure-alkalmazások és -erőforrások monitorozása
 description: Az Azure-szolgáltatások és -alkalmazások teljes monitorozási stratégiájának részét képező Microsoft-szolgáltatások és funkciók áttekintése.
-author: rboucher
+author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: overview
 ms.date: 03/05/2018
-ms.author: robb,bwren
+ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: e6adcc136c273210cc40d23ed2cb177287654005
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9a1c57b54c198e8f0ed85f470e99d5b0469c0c0c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265132"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023585"
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Azure-alkalmazások és -erőforrások monitorozása
 
@@ -30,7 +30,7 @@ Az alábbi ábrán az Azure-erőforrások monitorozásában részt vevő összet
 Az alapvető és a részletes monitorozási szolgáltatás ugyanolyan funkciókat használnak, amelyek az alábbi képességeket biztosítják.
 
 ### <a name="alerts"></a>Riasztások
-Az [Azure-riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktívan értesítik a kritikus állapotokról, és javító intézkedéseket is végrehajthatnak. A riasztási szabályok több forrásból, például metrikákból és naplókból származó adatokat használnak. A szabályok [műveletcsoportokat](../monitoring-and-diagnostics/monitoring-action-groups.md) használnak, amelyek az egyes riasztásokra reagáló címzetteket és műveleteket tartalmazzák. A követelmények alapján a riasztások webhookok használatával külső műveleteket is indíthatnak, vagy integrálhatók az ITSM-eszközökkel.
+Az [Azure-riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktívan értesítik a felhasználót a kritikus állapotokról, és javító intézkedéseket is végrehajthatnak. A riasztási szabályok több forrásból, például metrikákból és naplókból származó adatokat használnak. A szabályok [műveletcsoportokat](../monitoring-and-diagnostics/monitoring-action-groups.md) használnak, amelyek az egyes riasztásokra reagáló címzetteket és műveleteket tartalmazzák. A követelmények alapján a riasztások webhookok használatával külső műveleteket is indíthatnak, vagy integrálhatók az ITSM-eszközökkel.
 
 ### <a name="dashboards"></a>Irányítópultok
 Az [Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md) használatával különféle adatokat kombinálhat egyetlen panelen az [Azure Portalon](https://portal.azure.com). Az irányítópultot ezután megoszthatja más Azure-felhasználókkal.
@@ -48,7 +48,7 @@ A [metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) az A
 
 
 ## <a name="core-monitoring"></a>Alapvető monitorozás
-Az alapvető monitorozás az Azure-erőforrások lényegi és szükséges monitorozását biztosítja. Ezek a szolgáltatások minimális konfigurálást igényelnek, és a prémium monitorozási szolgáltatások által használt telemetriaadatokat gyűjtenek.    
+Az alapvető monitorozás az Azure-erőforrások lényegi és szükséges monitorozását biztosítja. Ezek a szolgáltatások minimális konfigurálást igényelnek, és a prémium monitorozási szolgáltatások által használt telemetriaadatokat gyűjtik.    
 
 ### <a name="azure-monitor"></a>Azure Monitor
 Az [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) az Azure-szolgáltatások alapvető monitorozását teszi lehetővé a [metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md), [tevékenységnaplók](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) és [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) gyűjtésével. A tevékenységnaplók például elárulják, hogy mikor történt az új erőforrások létrehozása vagy módosítása.
@@ -71,7 +71,7 @@ Az [Azure Advisor](../advisor/advisor-overview.md) folyamatosan monitorozza az e
 Az alkalmazás állapota az általa használt Azure-szolgáltatásoktól függ. Az [Azure Service Health](../service-health/service-health-overview.md) azonosítja az Azure-szolgáltatásokkal kapcsolatos azon problémákat, amelyek hatással lehetnek az alkalmazásra. A Service Health a rendszeres karbantartás tervezésében is segítséget nyújt.
 
 ### <a name="activity-log"></a>Tevékenységnapló
-A [tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) az egyes Azure-erőforrások működésével kapcsolatos adatokat biztosít. Ezek az adatok az alábbiak:
+A [tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) az egyes Azure-erőforrások működésével kapcsolatos adatokat biztosítja. Ezek az adatok az alábbiak:
 - Az erőforrás konfigurációjának módosításai.
 - A szolgáltatás állapotával kapcsolatos incidensek.
 - Az erőforrás jobb használatára vonatkozó javaslatok.
@@ -88,15 +88,15 @@ Az alábbi Azure-szolgáltatások sokoldalú képességeket biztosítanak az ada
 ### <a name="application-insights"></a>Application Insights
 Az [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) használatával monitorozhatja az alkalmazások rendelkezésre állását, teljesítményét és használatát, függetlenül attól, hogy a felhőben vagy helyszíni környezetben futnak.
 
-Ha az alkalmazást úgy alakítja ki, hogy képes legyen az Application Insights használatára, részletesebb elemzésekre tehet teszt, és DevOps-forgatókönyveket valósíthat meg. Gyorsan azonosíthatja és diagnosztizálhatja a hibákat anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. A gyűjtött információk alapján megalapozott döntéseket hozhat az alkalmazás karbantartásával és továbbfejlesztésével kapcsolatban.
+Ha az alkalmazást úgy alakítja ki, hogy képes legyen az Application Insights használatára, részletesebb elemzésekre tehet szert, és DevOps-forgatókönyveket valósíthat meg. Gyorsan azonosíthatja és diagnosztizálhatja a hibákat anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. A gyűjtött információk alapján megalapozott döntéseket hozhat az alkalmazás karbantartásával és továbbfejlesztésével kapcsolatban.
 
 Az Application Insights kiterjedt eszközkészlettel rendelkezik az általa gyűjtött adatok feldolgozásához. Az Application Insights egy általános adattárban tárolja az adatait. Képes a különféle közös funkciók, például a riasztások, irányítópultok és részletes elemzés előnyeinek kihasználására a Log Analytics lekérdezési nyelvének használatával.
 
 ## <a name="deep-infrastructure-monitoring"></a>Infrastruktúra részletes monitorozása
 ### <a name="log-analytics"></a>Log Analytics
-A [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) központi szerepet játszik az Azure általi monitorozásban a különféle erőforrásokból (köztük a nem Microsoft-eszközökből) származó adatok egyetlen adattárba gyűjtésével. Az adatokat ezután egy hatékony lekérdezési nyelv használatával elemezheti az adattárban.
+A [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) központi szerepet játszik az Azure általi monitorozásban: a különféle erőforrásokból (köztük a nem Microsoft-eszközökből) származó adatok egyetlen adattárba gyűjti. Az adatokat ezután Ön egy hatékony lekérdezési nyelv használatával elemezheti az adattárban.
 
-Az Application Insights és az Azure Security Center a Log Analytics adattárában tárolják az adataikat, és annak elemzési alrendszerét használják. Adatok gyűjtése az Azure Monitorból, felügyeleti megoldásokból, valamint a felhőben és a helyszíni rendszereken futó virtuális gépeken telepített ügynökökből is történik. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
+Az Application Insights és az Azure Security Center a Log Analytics adattárában tárolják az adataikat, és annak elemzési alrendszerét használják. A rendszer az Azure Monitorból, felügyeleti megoldásokból, valamint a felhőben és a helyszíni rendszereken futó virtuális gépeken telepített ügynökökből is gyűjt adatokat. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
 
 ### <a name="management-solutions"></a>Felügyeleti megoldások
 A [felügyeleti megoldások](../log-analytics/log-analytics-add-solutions.md) olyan összeállított logikakészletek, amelyek megállapításokat biztosítanak egy adott alkalmazással vagy szolgáltatással kapcsolatban. Az általuk gyűjtött monitorozási adatokat a Log Analytics segítségével tárolják és elemzik.
@@ -110,7 +110,7 @@ Az összes felügyeleti megoldást megtekintheti az Azure Portal *Monitorozás* 
 ### <a name="network-monitoring"></a>Hálózatmonitorozás
 Számos eszköz rendelkezésre áll, amelyek együtt képesek a hálózat különböző összetevőit monitorozni, az Azure-on belül és kívül egyaránt.  
 
-A [Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) forgatókönyv-alapú monitorozási és diagnosztikai képességeket biztosít különféle hálózati forgatókönyvekhez az Azure-ban. Az adatokat további elemzések céljával Azure-metrikákban és -diagnosztikákban tárolja. Az alábbi megoldásokkal együttműködve monitorozza a hálózat különböző összetevőit.
+A [Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) forgatókönyv-alapú monitorozási és diagnosztikai képességeket biztosít különféle hálózati forgatókönyvekhez az Azure-ban. Az adatokat a további elemzésekhez Azure-metrikákban és -diagnosztikákban tárolja. Az alábbi megoldásokkal együttműködve monitorozza a hálózat különböző összetevőit.
 
 A [Network Performance Monitor (NPM)](../log-analytics/log-analytics-network-performance-monitor.md) egy felhőalapú hálózatmonitorozási megoldás, amely a nyilvános felhők, adatközpontok és a helyszíni környezetek kapcsolatait monitorozza.
 
@@ -147,7 +147,7 @@ Az Azure-ban Windows és Linux rendszerű virtuális gépeket egyaránt futtat. 
 
 Az üzleti alkalmazásokat futtató virtuális gépekkel kapcsolatos részletesebb adatgyűjtéshez [létrehozhat egy Log Analytics-munkaterületet, és engedélyezheti a virtuálisgép-bővítményt](../log-analytics/log-analytics-quick-collect-azurevm.md) az egyes gépeken. Konfigurálhatja [különböző adatforrások gyűjtését](../log-analytics/log-analytics-data-sources.md) az alkalmazás számára, és [nézeteket hozhat létre](../log-analytics/log-analytics-view-designer.md), amelyek jelentik az alkalmazás napi működésével és teljesítményével kapcsolatos információkat. Ezután [riasztási szabályok létrehozásával](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) értesítéseket kaphat arról, ha adott hibaesemények történnek.
 
-A telepített ügynökök állapotának folyamatos monitorozásához hozzáadhatja az [Ügynökállapot felügyeleti megoldást](../operations-management-suite/oms-solution-agenthealth.md). Az alkalmazással kapcsolatos további megállapítások biztosítása érdekében [hozzáadhatja a függőségi ügynököt](../operations-management-suite/operations-management-suite-service-map-configure.md) a virtuális gépekhez azok a [Szolgáltatástérképre](../operations-management-suite/operations-management-suite-service-map.md) való felvétele érdekében. A Szolgáltatástérkép felderíti a kritikus folyamatokat, és azonosítja az eltérő szolgáltatásokat futtató gépek közötti kapcsolatokat.
+A telepített ügynökök állapotának folyamatos monitorozásához hozzáadhatja az [Ügynökállapot felügyeleti megoldást](../operations-management-suite/oms-solution-agenthealth.md). További adatokat kaphat az alkalmazás működéséről, ha [hozzáadja a függőségi ügynököt](../operations-management-suite/operations-management-suite-service-map-configure.md) a virtuális gépekhez, hogy felvegye őket a [Szolgáltatástérképre](../operations-management-suite/operations-management-suite-service-map.md). A Szolgáltatástérkép felderíti a kritikus folyamatokat, és azonosítja az eltérő szolgáltatásokat futtató gépek közötti kapcsolatokat.
 
 A jelentett leállásokat követően a Szolgáltatástérkép használatával vizsgálatokat végezhet, és megállapíthatja, hogy mely gépeken jelentkezett a probléma. Ezután létrehozhat egy [lekérdezést a Log Analytics-adatokra vonatkozóan](../log-analytics/log-analytics-log-search-new.md) a probléma jövőbeni azonosítása érdekében. Egy riasztási szabály létrehozásával pedig proaktívan értesülhet abban az esetben, ha az adott körülmény megint jelentkezik.
 

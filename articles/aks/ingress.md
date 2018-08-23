@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c65cfec41c2002fd4d4ff27ea74daf0bb4246b5f
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b5adf161c99ebe6d7b8b2d7b0c7b5b73c67bec02
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145597"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054515"
 ---
 # <a name="deploy-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS bejövőforgalom-vezérlőt az Azure Kubernetes Service (AKS) üzembe helyezése
 
@@ -51,6 +51,40 @@ eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none> 
 Bejövő szabályok még hozták létre. Keresse meg a nyilvános IP-címre, ha az NGINX bejövőforgalom-vezérlőjéhez tartozó alapértelmezett 404-es lap jelenik meg, az alábbi példában látható módon:
 
 ![Alapértelmezett NGINX-háttérrendszer](media/ingress/default-back-end.png)
+
+### <a name="use-an-existing-static-public-ip-address"></a>Egy meglévő statikus nyilvános IP-cím használata
+
+Az előző `helm install` a lépésben az NGINX bejövőforgalom-vezérlőjéhez létrehozásakor egy új, dinamikus nyilvános IP-cím hozzárendelése. Általános konfigurációs követelmény, hogy egy meglévő *statikus* nyilvános IP-címet. Ez a megközelítés lehetővé teszi, hogy meglévő DNS-rekordok és a hálózati konfiguráció következetes módon. Az alábbi opcionális lépéseket is használható az előző helyett `helm install` parancsot, ahol a dinamikus nyilvános IP-cím van hozzárendelve, az Ön számára.
+
+Hozzon létre egy statikus nyilvános IP-cím van szüksége, ha először kérje le az erőforráscsoport neve, az AKS-fürtöt a [az aks show] [ az-aks-show] parancsot:
+
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+```
+
+Ezután hozzon létre egy nyilvános IP-címet a *statikus* kiosztási módszer használatával a [az network public-ip létrehozása] [ az-network-public-ip-create] parancsot. Az alábbi példa létrehoz egy nyilvános IP-címet *myAKSPublicIP* az aks-ben a fürt az előző lépésben lekért erőforráscsoportot:
+
+```azurecli
+az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
+```
+
+Már üzembe helyezheti a *nginx-belépő* Helm-diagramot. Adja hozzá a `--set controller.service.loadBalancerIP` paramétert, és adja meg saját nyilvános IP-címet az előző lépésben létrehozott:
+
+```console
+helm install stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="40.121.63.72"
+```
+
+A terheléselosztó Kubernetes szolgáltatás az NGINX bejövőforgalom-vezérlőjéhez hoz létre, ha a statikus IP-cím van hozzárendelve, az alábbi példa kimenetében látható módon:
+
+```
+$ kubectl get service -l app=nginx-ingress --namespace kube-system
+
+NAME                                        TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
+dinky-panda-nginx-ingress-controller        LoadBalancer   10.0.232.56   40.121.63.72   80:31978/TCP,443:32037/TCP   3m
+dinky-panda-nginx-ingress-default-backend   ClusterIP      10.0.95.248   <none>         80/TCP                       3m
+```
+
+Újra nincsenek bejövő szabályok lett hozott létre, így az NGINX bejövőforgalom-vezérlőjéhez tartozó alapértelmezett 404-es lap is megjelenik, miután felkereste a nyilvános IP-cím. Bejövő szabályok a következő lépések vannak konfigurálva.
 
 ## <a name="configure-a-dns-name"></a>Konfigurálja a DNS-név
 
@@ -119,10 +153,10 @@ spec:
     http01: {}
 ```
 
-A kibocsátó létrehozásához használja a `kubectl create -f cluster-issuer.yaml` parancsot.
+A kibocsátó létrehozásához használja a `kubectl apply -f cluster-issuer.yaml` parancsot.
 
 ```
-$ kubectl create -f cluster-issuer.yaml
+$ kubectl apply -f cluster-issuer.yaml
 
 clusterissuer.certmanager.k8s.io/letsencrypt-staging created
 ```
@@ -153,10 +187,10 @@ spec:
     kind: ClusterIssuer
 ```
 
-A tanúsítvány-erőforrás létrehozásához használja a `kubectl create -f certificates.yaml` parancsot.
+A tanúsítvány-erőforrás létrehozásához használja a `kubectl apply -f certificates.yaml` parancsot.
 
 ```
-$ kubectl create -f certificates.yaml
+$ kubectl apply -f certificates.yaml
 
 certificate.certmanager.k8s.io/tls-secret created
 ```
@@ -219,10 +253,10 @@ spec:
           servicePort: 80
 ```
 
-Létrehozhatja a bejövő forgalom erőforrás a `kubectl create -f hello-world-ingress.yaml` parancsot.
+Létrehozhatja a bejövő forgalom erőforrás a `kubectl apply -f hello-world-ingress.yaml` parancsot.
 
 ```
-$ kubectl create -f hello-world-ingress.yaml
+$ kubectl apply -f hello-world-ingress.yaml
 
 ingress.extensions/hello-world-ingress created
 ```
@@ -267,3 +301,5 @@ Ez a cikk tartalmaz néhány külső összetevők az aks-ben. Ezek az összetev�
 <!-- LINKS - internal -->
 [use-helm]: kubernetes-helm.md
 [azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

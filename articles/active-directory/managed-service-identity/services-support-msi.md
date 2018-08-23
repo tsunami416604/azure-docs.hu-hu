@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 74fb9e784122dadd1ad2f6f29a497398eacf7464
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9e49e7cdb9157fea2ae29d015bd84d391c73e71b
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412882"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42061381"
 ---
 # <a name="services-that-support-managed-service-identity"></a>A Felügyeltszolgáltatás-identitást támogató szolgáltatások 
 
@@ -46,4 +46,4 @@ A következő szolgáltatásokat az Azure AD-hitelesítés támogatásához, és
 | Azure SQL | https://database.windows.net/ | Elérhető | 2017. október | |
 | Azure Event Hubs | https://eventhubs.azure.net | Elérhető | 2017. december | |
 | Azure Service Bus | https://servicebus.azure.net | Elérhető | 2017. december | |
-| Azure Storage | https://storage.azure.com/ | Előzetes verzió | 2018. május | |
+| Azure Storage | https://azure.microsoft.com/services/storage/ | Előzetes verzió | 2018. május | |

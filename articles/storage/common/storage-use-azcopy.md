@@ -5,15 +5,15 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 08/13/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: aaae191baaa7b712c77d93303ded777afe97c249
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a0e2400163433ba5290525d0fe807ede624a31ed
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531629"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060611"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Adatok áthelyezése az AzCopy az Windows rendszeren
 Az AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, fájl és Table storage, az adatok másolása szolgál az optimális teljesítmény érdekében tervezett egyszerű parancs használatával. Az adatokat egy fájlrendszer és egy tárfiók, illetve több tárfiók között is másolhatja.  
@@ -22,16 +22,16 @@ Nincsenek töltheti le, Azcopynak két verziója. Az AzCopy Windows az Windows s
 
 ## <a name="download-and-install-azcopy-on-windows"></a>Töltse le és telepítse az AzCopy Windows
 
-### <a name="latest-preview-version-v800"></a>Legújabb előzetes verziójával (v8.0.0)
-Töltse le a [AzCopy Windows a legújabb előzetes verziója](https://aka.ms/downloadazcopypr). Ez az előnézeti verzió teljesítményének jelentős növelése és a telepítés a .NET Core-csomagok érhetők el.
+### <a name="latest-version-v81"></a>Legújabb verzióját (v8.1)
+Töltse le a [Windows az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy).
 
-#### <a name="azcopy-on-windows-80-preview-release-notes"></a>Az AzCopy Windows 8.0-s előzetes verzió kibocsátási megjegyzései
-- TABLE Storage-szolgáltatás a legújabb verzió már nem támogatott. Tábla export szolgáltatás használatakor töltse le a poslední stabilní verze.
+#### <a name="azcopy-on-windows-81-release-notes"></a>Az AzCopy Windows 8.1 kibocsátási megjegyzései
+- TABLE Storage-szolgáltatás a legújabb verzió már nem támogatott. Tábla exportálása szolgáltatását használja, ha az AzCopy 7.3 verzió letöltéséhez.
 - A .NET Core 2.1 használatával létrehozott, és minden .NET Core-függőség most már a telepítés vannak csomagolva.
-- Teljesítményének jelentős növelése is fel- és forgatókönyvek letöltése
+- OAuth hitelesítési támogatás hozzáadva. Használat ```azcopy login``` , jelentkezzen be az Azure Active Directory használatával.
 
-### <a name="latest-stable-version-v710"></a>Poslední Stabilní verze (v7.1.0)
-Töltse le a [az AzCopy Windows a legújabb stabil verzióját](https://aka.ms/downloadazcopy).
+### <a name="azcopy-with-table-support-v73"></a>Az Azcopy (v7.3) tábla támogatásával
+Töltse le a [tábla támogatásával, az AzCopy 7.3](https://aka.ms/downloadazcopynet).
 
 ### <a name="post-installation-step"></a>Telepítés utáni lépés
 

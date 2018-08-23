@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd6228b6cb7409144a0cd16d6c9617b7127c3624
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 4839b1aaa56be1ad93fa1dd685ca3176d1cc8a27
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264961"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060857"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk ismerteti lépések jelentések konfigurálása az Azure Backup helyreállítási tár használatával, és ezeket a jelentéseket a Power BI segítségével történő eléréséhez. Után hajt végre ezeket a lépéseket, a Power BI összes jelentés megtekintését, testre szabhatja, és jelentéseket hozhat létre közvetlenül léphet. 
@@ -26,7 +26,7 @@ Ez a cikk ismerteti lépések jelentések konfigurálása az Azure Backup helyre
 4. A jelentések ütemezett frissítésének gyakoriságát a Power BI 24 óra. Egy ad-hoc frissítése a jelentéseket a Power bi-ban, amely megkülönbözteti a kis legfrissebb adatokat az ügyfél tárfiókja szolgál jelentések megjelenítése is elvégezheti. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Hozzon létre egy [Azure storage-fiók](../storage/common/storage-create-storage-account.md#create-a-storage-account) jelentések konfigurálásához. Ez a tárfiók jelentések kapcsolódó adatok tárolására szolgál.
+1. Hozzon létre egy [Azure storage-fiók](../storage/common/storage-quickstart-create-account.md) jelentések konfigurálásához. Ez a tárfiók jelentések kapcsolódó adatok tárolására szolgál.
 2. [Hozzon létre egy Power BI-fiókkal](https://powerbi.microsoft.com/landing/signin/) megtekintése, testre szabhatja, és létrehozhatja saját jelentéseit a Power BI-portál használatával.
 3. Az erőforrás-szolgáltató regisztrálása **Microsoft.insights** nincs regisztrálva a már, ha az előfizetéshez a storage-fiók és a helyreállítási tár engedélyezése az előfizetés jelentési adatok áramlását a storage fiók. Ugyanez a teendője, akkor be kell lépnie az Azure portal > előfizetés > erőforrás-szolgáltatókat és ellenőrizze a szolgáltató való bejegyzéséhez. 
 
@@ -142,7 +142,7 @@ Miután a tárfiók konfigurálása a jelentéseket a helyreállítási tár has
    Igen, cross-tároló jelentések megtekintéséhez a különböző tárolók ugyanazt a tárfiókot is konfigurálhatók. Konfigurálhatja a tárolók esetében ugyanazt a tárfiókot is, előfizetések között. Ezután használhatja ezt a tárfiókot az Azure Backup-tartalomcsomaghoz a Power bi-ban való kapcsolódás során a jelentések megtekintéséhez. A kiválasztott tárfiók azonban és recovery services-tárolónak ugyanabban a régióban kell lennie.
    
 ## <a name="troubleshooting-errors"></a>Hibaelhárítás
-| Hiba részletei | Megoldás: |
+| A hiba részletei | Megoldás: |
 | --- | --- |
 | A Backup-jelentések, a storage-fiók beállítása után **Tárfiók** még mindig **nincs konfigurálva**. | Ha sikeresen konfigurálta a tárfiókot, a jelentési adatok átkerülnek a annak ellenére, hogy a probléma. A probléma megoldásához nyissa meg az Azure portal > minden szolgáltatás > diagnosztikai beállítások > r-tároló > beállítás szerkesztése. Törli a korábban konfigurált beállítást, és létrehozhat egy új beállítás ugyanaz a panel. Most állítsa a mező **neve** való **szolgáltatás**. Ez meg kell jelennie a konfigurált tárfiók. |
 |Az Azure Backup az importálás után tartalomcsomaghoz a Power BI, a hiba **404-tároló nem található** betölt. | Javasolt ebben a dokumentumban meg kell várnia a Recovery Services-tároló megfelelően megjelenik a Power BI jelentések konfigurálását követő 24 órában. Ha megpróbálja elérni a jelentések előtt 24 óra, ezt a hibát kap, mivel mindazok az adatok még nem található érvényes jelentések megjelenítéséhez. |

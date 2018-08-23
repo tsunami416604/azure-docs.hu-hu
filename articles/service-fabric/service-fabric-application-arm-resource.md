@@ -1,6 +1,6 @@
 ---
-title: Központi telepítése, és frissítse az alkalmazások és szolgáltatások az Azure Resource Manager |} Microsoft Docs
-description: 'Útmutató: az alkalmazások és szolgáltatások Azure Resource Manager-sablonnal Service Fabric-fürt központi telepítése.'
+title: Üzembe helyezése és frissítése az alkalmazások és szolgáltatások az Azure Resource Manager |} A Microsoft Docs
+description: Ismerje meg, hogyan helyezhet üzembe alkalmazásokat és szolgáltatásokat egy Azure Resource Manager-sablon használatával a Service Fabric-fürt.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 8c8ee30a603d439c0fadd0c1569813762bdf4351
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7aa7fc2620fa02af4a720a97eece3c0734252245
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205297"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060619"
 ---
-# <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Alkalmazások és szolgáltatások kezelése az Azure Resource Manager erőforrásként
+# <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Az Azure Resource Manager-erőforrások, alkalmazások és szolgáltatások kezelése
 
-A Service Fabric-fürt keresztül Azure Resource Manager-kiszolgálóra telepíthető alkalmazások és szolgáltatások. Ez azt jelenti, hogy üzembe helyezése és kezelése a PowerShell vagy a parancssori felületen keresztül alkalmazások után várja meg a fürt készen áll arra, hogy, helyett most express alkalmazások és szolgáltatások a JSON-ban és telepítheti őket ugyanabban a Resource Manager-sablonban a fürt. A folyamat regisztrációja, telepítés, és a központi telepítés összes történik, egy lépésben.
+Telepíthet alkalmazásokat és szolgáltatásokat az alakzatot a Service Fabric-fürtön az Azure Resource Manageren keresztül. Ez azt jelenti, hogy üzembe helyezése, és a PowerShell vagy parancssori felület alkalmazások kezelése után készen áll a fürt várnia, helyett mostantól alkalmazásokat és szolgáltatásokat JSON az express és telepíteni kell őket a fürt azonos Resource Manager-sablon. Alkalmazás regisztrálása, kiépítés és üzembe helyezés összes folyamata egy lépésben történik.
 
-Ez az ajánlott, hogy telepítsen minden telepítő, irányítás vagy fürtkezelő alkalmazások, amelyekre szüksége van a fürtben. Ez magában foglalja a [javítás Vezénylési alkalmazás](service-fabric-patch-orchestration-application.md), Watchdogs, vagy olyan alkalmazásokat, amelyek a fürt más alkalmazásokhoz vagy szolgáltatásokhoz központi telepítése előtt futtatnia kell. 
+Ez az az ajánlott módszer, hogy bármely telepítés, a cégirányítási vagy a fürt felügyeleti alkalmazások, amelyekre szüksége van a fürtben üzembe helyezhet. Ez magában foglalja a [Patch Orchestration Application](service-fabric-patch-orchestration-application.md), Watchdogs, vagy olyan alkalmazásokat, amelyek a fürt más alkalmazások vagy szolgáltatások telepítése előtt futtatnia kell. 
 
-Ha lehetséges, kezelheti az alkalmazások erőforrás-kezelő erőforrásként javítása érdekében:
-* Napló: erőforrás-kezelő naplózás minden művelet és tartja a részletes *tevékenységnapló* , amely segítségével nyomon követni ezek az alkalmazások és a fürt módosításai.
-* Szerepköralapú hozzáférés-vezérlést (RBAC): a fürtök, valamint a fürtön központilag telepített alkalmazások hozzáférés-kezelés megteheti ugyanazon a Resource Manager-sablon.
-* Az Azure Resource Manager (az Azure-portál) keresztül lesz egy egy-stop-üzemi a fürt és a kritikus alkalmazások központi telepítésének kezeléséhez.
+Ha alkalmazható, kezelhet alkalmazásokat Resource Manager-erőforrásként javítása érdekében:
+* Auditnapló: Resource Manager naplózza minden művelet, és a egy részletes tartja *tevékenységnapló* , amellyel nyomon követése a végzett módosítások ezeket az alkalmazásokat és a fürtjét.
+* Szerepköralapú hozzáférés-vezérlés (RBAC): fürtök, valamint a fürtön üzembe helyezett alkalmazásokhoz való hozzáférés felügyelete megteheti ugyanazon a Resource Manager-sablon.
+* Az Azure Resource Manager-(Azure-portálon) lesz egy egy-stop-vásárlása a fürt és a kritikus fontosságú alkalmazások központi telepítésének kezelése.
 
-Az alábbi kódrészletben láthatja a különféle típusú erőforrások, egy sablon használatával kezelhető:
+A következő kódrészlet azt mutatja be, a különböző típusú erőforrások, amelyek egy sablon használatával kezelhetők:
 
 ```json
 {
@@ -64,10 +64,10 @@ Az alábbi kódrészletben láthatja a különféle típusú erőforrások, egy 
 
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>A Resource Manager-sablon egy új alkalmazás hozzáadása
 
-1. A fürt Resource Manager-sablon előkészítése telepítéséhez. Lásd: [a Service Fabric-fürt létrehozása az Azure Resource Manager használatával](service-fabric-cluster-creation-via-arm.md) itt olvashat.
-2. Gondolja át az alkalmazások, a fürt telepítését tervezi egy részének. -E függőségek eltarthat azokat, a rendszer mindig fut, amely más alkalmazások? Tervezi a fürt irányítási és a telepítés alkalmazások telepítését? Ezek az alkalmazások rendezi legjobb felügyelt egy Resource Manager-sablon használatával kapcsolatban a fentiekben ismertetett módon. 
-3. Ki milyen alkalmazásokat, amelyeket szeretne ilyen módon telepítve rendelkezik szerepelnek, ha az alkalmazások kell csomagolni, zip és fájlmegosztás elhelyezése. A megosztás kell lennie az Azure Resource Manager üzembe helyezése során felhasználásához REST-végpont elérhető.
-4. A Resource Manager-sablon, a fürt deklaráció alatt minden alkalmazás tulajdonságait ismerteti. E tulajdonságok közé tartozik a replika- vagy példányszámot és bármilyen (más alkalmazások vagy szolgáltatások) erőforrások közötti függőségi láncok. Átfogó tulajdonságok listáját lásd: a [REST API Swagger Spec](https://aka.ms/sfrpswaggerspec). Vegye figyelembe, hogy ez nem helyettesíti az alkalmazás vagy szolgáltatás akkor jelentkezik, de ahelyett, hogy néhány foglalja össze a Resource Manager-sablon a fürt részeként. Íme egy minta-sablont, amely tartalmazza az állapot nélküli szolgáltatás telepítésére *Service1* és állapotalapú szolgáltatási *Service2* részeként *Alkalmaz1*:
+1. A fürt Resource Manager-sablon előkészítése az üzembe helyezéshez. Lásd: [Service Fabric-fürt létrehozása az Azure Resource Managerrel](service-fabric-cluster-creation-via-arm.md) ezzel kapcsolatban további információt.
+2. Gondolja át néhány alkalmazás azt tervezi, hogy a fürt üzembe helyezése. -E függőségek eltarthat azokat is, a rendszer mindig fut, amely más alkalmazások? Tervezi a fürt cégirányítási és a telepítés alkalmazások telepítését? Ezek az alkalmazások számos legjobb felügyelt egy Resource Manager-sablon használatával fentiekben leírtak szerint. 
+3. Ön rendelkezik szükséges milyen alkalmazásokat szeretne ezzel a módszerrel telepített, az alkalmazások után csomagolva, zip és egy fájlmegosztás elhelyezése. A megosztás kell lennie az Azure Resource Manager üzembe helyezése során felhasználásához REST-végponton keresztül érhető el.
+4. A Resource Manager-sablon, a fürt deklarace alább található mindegyik alkalmazás tulajdonságait írják le. E tulajdonságok közé tartozik a replika- vagy példányszámot, és bármilyen (más alkalmazások vagy szolgáltatások) erőforrások közötti függőségi láncok. Átfogó tulajdonságok listáját lásd: a [REST API Swagger-specifikációja](https://aka.ms/sfrpswaggerspec). Vegye figyelembe, hogy ez nem helyettesíti az alkalmazás vagy szolgáltatás jegyzékfájljainak, de inkább néhány mutatja be a őket a fürt Resource Manager-sablon részeként. Íme egy minta-sablont, amely tartalmazza az állapotmentes szolgáltatás telepítése *Service1* és a egy állapotalapú szolgáltatás *Service2* részeként *Alkalmaz1*:
 
   ```json
   {
@@ -255,17 +255,19 @@ Az alábbi kódrészletben láthatja a különféle típusú erőforrások, egy 
   ```
 
   > [!NOTE] 
-  > A *apiVersion* értékre kell állítani `"2017-07-01-preview"`. Ez a sablon is telepíthető a fürtre, függetlenül mindaddig, amíg a fürt már telepítve lett.
+  > A *API-verzió* értékre kell állítani `"2017-07-01-preview"`. Ez a sablon is üzembe helyezhetők a fürt függetlenül mindaddig, amíg a fürt már telepítve lett.
 
-5. Telepítése! 
+5. Üzembe helyezhetők. 
 
-## <a name="manage-an-existing-application-via-resource-manager"></a>Egy meglévő alkalmazást keresztül erőforrás-kezelő kezelése
+## <a name="manage-an-existing-application-via-resource-manager"></a>Resource Manager-n keresztül a meglévő alkalmazások kezelése
 
-Ha a fürt már működik-e, és néhány alkalmazást, hogy szeretné kezelni, erőforrás-kezelő erőforrások már telepítve lettek, az alkalmazások eltávolítása helyett, és újratelepíteni őket, használhatja a azonos API-k segítségével az alkalmazások PUT hívás beolvasása a nyugtázott erőforrás-kezelő erőforrásként. 
+Ha a fürt már fel, és néhány alkalmazást, hogy szeretné, Resource Manager erőforrások már telepítve lettek, ahelyett, hogy eltávolítaná az alkalmazások kezeléséhez, és újbóli őket, használhatja az azonos API-k használatával szeretné, hogy az alkalmazások Put művelet meghívásával beolvasása arra vonatkozik, mint a Resource Manager-erőforrások. 
 
+> [!NOTE]
+> A vásárló lehetővé teszik a nem megfelelő alkalmazások figyelmen kívül a fürtfrissítések adhat meg "maxPercentUnhealthyApplications: 100" a "upgradeDescription/healthPolicy" szakaszban; a rendszer részletes leírását, hogy minden beállítás [szolgáltatás hálók REST API-t fürtben házirend dokumentációja](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>További lépések
 
-* Használja a [Service Fabric CLI](service-fabric-cli.md) vagy [PowerShell](service-fabric-deploy-remove-applications.md) a fürthöz más alkalmazások központi telepítése. 
+* Használja a [Service Fabric parancssori felület](service-fabric-cli.md) vagy [PowerShell](service-fabric-deploy-remove-applications.md) más alkalmazásokat a fürtön üzembe helyezéséhez. 
 * [A Service Fabric-fürt frissítése](service-fabric-cluster-upgrade.md)
 

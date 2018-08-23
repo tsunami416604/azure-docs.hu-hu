@@ -1,34 +1,32 @@
 ---
 title: Azure SQL-bejelentkezések és -felhasználók | Microsoft Docs
-description: Megismerheti az SQL Database biztonsági felügyeletét, azon belül is az adatbázis-hozzáférés és a bejelentkezési biztonság felügyeletét a kiszolgálószintű elsődleges fiókon keresztül.
+description: Ismerje meg az SQL Database és SQL Data Warehouse biztonsági felügyeletét, különös tekintettel a kiszolgálószintű elsődleges fiókon keresztül hozzáférés és a bejelentkezési biztonság adatbázis kezeléséhez.
 keywords: sql database biztonság,adatbázis biztonságának felügyelete,bejelentkezési biztonság,adatbázis biztonsága,adatbázis-hozzáférés
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 08/15/2018
 ms.author: carlrab
-ms.openlocfilehash: 8529256313d8e3cb3b7155bb1b79764c17274397
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7dbd2585628c64f5baf7df6083e38217d00953be
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649805"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42056872"
 ---
-# <a name="controlling-and-granting-database-access"></a>Adatbázis-hozzáférés szabályozása és biztosítása
+# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Szabályozása és adatbázis-hozzáférés biztosítása az SQL Database és SQL Data warehouse-bA
 
-Tűzfalszabályok konfigurálása után személyek csatlakozhat egy SQL-adatbázis, a rendszergazdai fiókok egyikét, az adatbázis tulajdonosa, vagy az adatbázis egy adatbázis felhasználóként.  
+Tűzfal-szabályok konfiguráció után csatlakozhat az Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) a rendszergazdai fiókok egyikeként, az adatbázis tulajdonosa, vagy az adatbázis egy adatbázis-felhasználót.  
 
 >  [!NOTE]  
->  Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. 
->
+>  Ez a témakör az Azure SQL Serverhez és az Azure SQL Serveren létrehozott SQL Database és az SQL Data Warehouse adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. 
 
 > [!TIP]
-> Az oktatóanyagok esetén lásd: [az Azure SQL Database biztonságos](sql-database-security-tutorial.md).
->
-
+> Foglalkozó oktatóanyagért lásd: [biztonságossá tétele az Azure SQL Database](sql-database-security-tutorial.md).
 
 ## <a name="unrestricted-administrative-accounts"></a>Nem korlátozott rendszergazdai fiókok
 Kettő rendszergazdaként működő felügyeleti fiók létezik (**Kiszolgálói rendszergazdai** és **Active Directory-rendszergazdai**). Ha azonosítani szeretné ezeket a rendszergazdai fiókokat az SQL-kiszolgáló esetében, nyissa meg az Azure Portalt, és lépjen az SQL-kiszolgáló tulajdonságaira.
@@ -38,17 +36,17 @@ Kettő rendszergazdaként működő felügyeleti fiók létezik (**Kiszolgálói
 - **Kiszolgálói rendszergazda**   
 Azure SQL Server-kiszolgáló létrehozásakor ki kell jelölnie egy **kiszolgáló-rendszergazdai felhasználónevet**. Az SQL-kiszolgáló ekkor létrehozza a fiókot a master adatbázis egyik bejelentkezési neveként. Ez a fiók SQL Server-hitelesítéssel csatlakozik (felhasználónévvel és jelszóval). Ilyen fiókból csak egy létezhet.   
 - **Azure Active Directory-rendszergazda**   
-Egy Azure Active Directory-fiók (különálló vagy biztonságicsoport-fiók) is konfigurálható rendszergazdaként. Az Azure AD-rendszergazda konfigurálása nem kötelező, de konfigurálni kell egy Azure AD-rendszergazdát, ha az Azure AD-fiókokat szeretné használni az SQL Database-hez történő csatlakozáshoz. Az Azure Active Directory hozzáférésének konfigurálásáról további információért lásd [az SQL Database-hez vagy az SQL Data Warehouse-hoz az Azure Active Directory-hitelesítéssel történő csatlakozást](sql-database-aad-authentication.md), illetve [az Azure AD MFA és az SQL Database, valamint az SQL Data Warehouse együttes támogatását](sql-database-ssms-mfa-authentication.md) ismertető cikket.
+Egy Azure Active Directory-fiók (különálló vagy biztonságicsoport-fiók) is konfigurálható rendszergazdaként. Azure AD-rendszergazda, de az Azure AD-rendszergazda konfigurálása nem kötelező **kell** kell konfigurálni, ha azt szeretné, az Azure AD-fiókok használatához az SQL-adatbázishoz való csatlakozáshoz. Az Azure Active Directory hozzáférésének konfigurálásáról további információért lásd [az SQL Database-hez vagy az SQL Data Warehouse-hoz az Azure Active Directory-hitelesítéssel történő csatlakozást](sql-database-aad-authentication.md), illetve [az Azure AD MFA és az SQL Database, valamint az SQL Data Warehouse együttes támogatását](sql-database-ssms-mfa-authentication.md) ismertető cikket.
  
 
 A **kiszolgáló-rendszergazdai** és **Azure AD-rendszergazdai** fiókok az alábbi jellemzőkkel rendelkeznek:
-- Csak ezek a fiókok képesek automatikusan csatlakozni a kiszolgálón található bármely SQL Database-adatbázishoz. (Felhasználói adatbázishoz történő csatlakozáshoz a többi fióknak vagy az adatbázis tulajdonosának kell lennie, vagy felhasználói fiókkal kell rendelkeznie az adatbázisban.)
+- A csak fiókokat, amelyek képesek automatikusan csatlakozni bármely SQL-adatbázis a kiszolgálón vannak. (Felhasználói adatbázishoz történő csatlakozáshoz a többi fióknak vagy az adatbázis tulajdonosának kell lennie, vagy felhasználói fiókkal kell rendelkeznie az adatbázisban.)
 - Ezek a fiókok `dbo`-felhasználóként lépnek be a felhasználói adatbázisokba, és minden engedéllyel rendelkeznek az adatbázison belül. (A felhasználói adatbázis tulajdonosa szintén `dbo`-felhasználóként jelentkezik be.) 
-- Ezek a fiókok nem `dbo`-felhasználóként lépnek be a `master` adatbázisba, és korlátozott engedélyekkel rendelkeznek azon belül. 
-- Ezek a fiókok nem tagjai a standard SQL Server `sysadmin` rögzített kiszolgálói szerepkörnek, amely az SQL-adatbázisokban nem érhető el.  
-- Ezek a fiókok adatbázisokat, bejelentkezéseket, master felhasználókat és kiszolgálószintű tűzfalszabályokat hozhatnak létre, módosíthatnak vagy vethetnek el.
-- Ezek a fiókok tagokat adhatnak hozzá és távolíthatnak el a `dbmanager` és a `loginmanager` szerepkörből.
-- Ezek a fiókok megtekinthetik a `sys.sql_logins` rendszertáblát.
+- Ne adja meg a `master` adatbázisba, a `dbo` felhasználó, és korlátozott engedélyekkel a főadatbázisban. 
+- Vannak **nem** tagjai a standard SQL Server `sysadmin` rögzített kiszolgálói szerepkör, amely nem érhető el az SQL database-ben.  
+- Létrehozhat, alter, és dobja el az adatbázisok, bejelentkezések, felhasználók a master és a kiszolgálószintű tűzfalszabályokat.
+- Hozzáadhat és eltávolíthat tagokat a `dbmanager` és `loginmanager` szerepköröket.
+- Megtekintheti a `sys.sql_logins` rendszertáblában.
 
 ### <a name="configuring-the-firewall"></a>A tűzfal konfigurálása
 Ha a kiszolgálószintű tűzfal egy önálló IP-címhez vagy -tartományhoz van konfigurálva, az **SQL Server-rendszergazda** és az **Azure Active Directory-rendszergazda** a master adatbázishoz és az összes felhasználói adatbázishoz csatlakozhat. A kezdeti kiszolgálószintű tűzfal az [Azure Portalon](sql-database-get-started-portal.md) konfigurálható a [PowerShell](sql-database-get-started-powershell.md) vagy a [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) segítségével. A kapcsolat létrehozása után további kiszolgálószintű tűzfalszabályok is konfigurálhatók a [Transact-SQL](sql-database-configure-firewall-settings.md) segítségével.
@@ -89,7 +87,7 @@ Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerep
    
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
-   CREATE USER Tran WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
+   CREATE USER Ann WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
@@ -133,7 +131,7 @@ ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
 > [!NOTE]
-> Egy logikai kiszolgáló bejelentkezési alapján adatbázis-felhasználó létrehozása több leggyakoribb oka, a felhasználók számára, amelyeket több adatbázis elérésére. Mivel a tartalmazott adatbázis-felhasználók egyedi entitások, hogy az egyes adatbázisok kezeli a saját felhasználó és a saját jelszavát. A felhasználó majd figyelembe venni az egyes adatbázisok minden jelszót, és hogy lehessen tarthatatlan amikor sok adatbázis több jelszó módosítása kellene többletterhelés okozhatnak. Azonban ha az SQL Server bejelentkezési és a magas rendelkezésre állású (aktív georeplikáció és feladatátvételi csoportok), az SQL Server bejelentkezési meg kell manuálisan minden egyes kiszolgálón. Ellenkező esetben az adatbázis-felhasználót a rendszer már nem rendeli hozzá a kiszolgálói bejelentkezési feladatátvétel történik, és nem tudnak hozzáférni a feladás egy vagy több adatbázis feladatátvétel után. Bejelentkezések a georeplikáció konfigurálásával kapcsolatos további információkért lásd: [konfigurálása és kezelése az Azure SQL Database biztonsági georedundáns helyreállítás vagy feladatátvételi](sql-database-geo-replication-security-config.md).
+> Hozzon létre egy logikai kiszolgáló-bejelentkezésen alapuló felhasználót egyik gyakori oka van, a felhasználók számára, akiknek több adatbázishoz kell hozzáférniük. Mivel a tartalmazott adatbázis-felhasználók önálló entitások, minden egyes adatbázis kezeli a saját felhasználó és a saját jelszavát. Ez terhelést okozhat, a felhasználó akkor ne feledje az egyes adatbázisokhoz minden jelszót, és válhat tarthatatlan során számos adatbázis több jelszó módosítani kellene. Azonban az SQL Server bejelentkezési és a magas rendelkezésre állású (aktív georeplikációs és feladatátvételi csoportok) használata esetén az SQL Server bejelentkezési állítson be manuálisan minden egyes kiszolgálón. Ellenkező esetben az adatbázis-felhasználó már nem kell hozzárendelni a kiszolgálói bejelentkezésen után feladatátvétel történik, és nem fogja tudni elérni az adatbázis-feladatátvétel után. Bejelentkezések a georeplikáció konfigurálásáról további információért tekintse meg [konfigurálása és kezelése az Azure SQL Database biztonsági geo-visszaállítás vagy a feladatátvételi](sql-database-geo-replication-security-config.md).
 
 ### <a name="configuring-the-database-level-firewall"></a>Adatbázisszintű tűzfal konfigurálása
 Ajánlott eljárásként a nem rendszergazdai felhasználóknak csak az általuk használt adatbázisokhoz kell hozzáféréssel rendelkezniük a tűzfalon keresztül. Ahelyett, hogy a kiszolgálószintű tűzfalon keresztül hitelesítené az IP-címüket, és hozzáférést adna nekik az összes adatbázishoz, az [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) utasítással konfigurálja az adatbázisszintű tűzfalat. Az adatbázisszintű tűzfal nem konfigurálható a portálon keresztül.
@@ -187,6 +185,6 @@ Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye fig
 
 - A tűzfalszabályokkal kapcsolatos további információk: [Azure SQL Database-tűzfal](sql-database-firewall-configure.md).
 - Az SQL Database összes biztonsági szolgáltatásáról [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít áttekintést.
-- Az oktatóanyagok esetén lásd: [az Azure SQL Database biztonságos](sql-database-security-tutorial.md).
+- Foglalkozó oktatóanyagért lásd: [biztonságossá tétele az Azure SQL Database](sql-database-security-tutorial.md).
 - Információk a nézetekről és a tárolt eljárásokról: [Nézetek és tárolt eljárások létrehozása](https://msdn.microsoft.com/library/ms365311.aspx)
 - Információk adatbázis-objektumhoz való hozzáférés biztosításáról: [Adatbázis-objektumhoz való hozzáférés biztosítása](https://msdn.microsoft.com/library/ms365327.aspx)

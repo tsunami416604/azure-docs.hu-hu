@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/21/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: c6c388bb98d189d91703c0ce82971b3ec4da4150
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 6c97d7c2f901110421f9fc5d0a1d4468d832c472
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505511"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056083"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -59,7 +59,7 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Címtárírók](#directory-writers)**: egy örökölt szerepkör, amely hozzá kell rendelni az alkalmazásokat, amelyek nem támogatják a [hozzájárulási keretrendszer](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Azt nem lehet hozzárendelni egy felhasználóhoz sem.
 
-* **[Szolgáltatás-rendszergazda Dynamics 365 és CRM-Szolgáltatásadminisztrátor](#dynamics-365-service-administrator)**: az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek a Microsoft Dynamics 365 online-ban, ha a szolgáltatás nem található, ezenkívül lehetővé teszi a támogatási jegyek kezelését és szolgáltatás állapotának figyelése. További információ: [a szolgáltatás-rendszergazdai szerepkör használata kezelheti a bérlő](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
+* **[Szolgáltatás-rendszergazda Dynamics 365 és CRM-Szolgáltatásadminisztrátor](#dynamics-365-service-administrator)**: az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek a Microsoft Dynamics 365 online-ban, ha a szolgáltatás nem található, ezenkívül lehetővé teszi a támogatási jegyek kezelését és szolgáltatás állapotának figyelése. További információ: [a szolgáltatás-rendszergazdai szerepkör használata kezelheti a bérlő](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 * **[Exchange-szolgáltatások rendszergazdája](#exchange-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Exchange online-ban, globális engedélyekkel rendelkeznek, a szolgáltatás megléte esetén. További információ: [Office 365 rendszergazdai szerepköreinek](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -74,7 +74,7 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Information Protection-rendszergazda](#information-protection-administrator)**: az ehhez a szerepkörhöz tartozó felhasználók minden engedéllyel rendelkezni az Azure Information Protection szolgáltatásban. Ez a szerepkör lehetővé teszi, hogy címkéket az Azure Information Protection-házirend konfigurálása, a védelmi sablonokat kezeléséhez és a védelem aktiválása. Ez a szerepkör nem biztosít az Identity Protection Centerben, Privileged Identity Management, Monitor Office 365 Service Healthben vagy Office 365 Security & Compliance Centerben engedélyeket.
 
-* **[Intune-Szolgáltatásadminisztrátor](#intune-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Intune Online globális engedélyekkel rendelkeznek, ha a szolgáltatás nem található. Ez a szerepkör ezenkívül tartalmazza a képes kezelni a felhasználók és eszközök számára annak érdekében, hogy társítja a házirendet, valamint csoportok létrehozásához és kezeléséhez. További információ: [szerepköralapú vezérlés (RBAC) a Microsoft Intune-nal](https://docs.microsoft.com/en-us/intune/role-based-access-control)
+* **[Intune-Szolgáltatásadminisztrátor](#intune-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Intune Online globális engedélyekkel rendelkeznek, ha a szolgáltatás nem található. Ez a szerepkör ezenkívül tartalmazza a képes kezelni a felhasználók és eszközök számára annak érdekében, hogy társítja a házirendet, valamint csoportok létrehozásához és kezeléséhez. További információ: [szerepköralapú vezérlés (RBAC) a Microsoft Intune-nal](https://docs.microsoft.com/intune/role-based-access-control)
 
 * **[Üzenet Center olvasó](#message-center-reader)**: figyelheti, hogy a szerepkör felhasználói értesítések és a tanácsadás egészségügyi módosításokat [Office 365 üzenetközpontjában](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) a cégük számára konfigurált szolgáltatások, például az Exchange, Intune-ban és a Microsoft Teams. Üzenetközpont heti e-mail emésztett hozzászólás, frissítések fogadása és oszthatnak meg üzenet center bejegyzések az Office 365-ben. Az Azure AD-ben ehhez a szerepkörhöz tartozó felhasználók csak van csak olvasási hozzáféréssel az Azure AD szolgáltatások, például a felhasználók és csoportok. 
 
@@ -89,7 +89,7 @@ A következő rendszergazdai szerepkörök érhetők el:
   >
   >
   
-* **[A Power BI-Szolgáltatásadminisztrátor](#power-bi-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése szolgáltatásuk, ezenkívül a Microsoft Power BI, a szolgáltatás megléte esetén globális engedélyekkel rendelkeznek. További információ: [a Power BI rendszergazdai szerepkörét ismertető](https://docs.microsoft.com/en-us/power-bi/service-admin-role).
+* **[A Power BI-Szolgáltatásadminisztrátor](#power-bi-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése szolgáltatásuk, ezenkívül a Microsoft Power BI, a szolgáltatás megléte esetén globális engedélyekkel rendelkeznek. További információ: [a Power BI rendszergazdai szerepkörét ismertető](https://docs.microsoft.com/power-bi/service-admin-role).
 
 * **[Kiemelt szerepkörű rendszergazda](#privileged-role-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a szerepkör-hozzárendelések az Azure Active Directoryban, valamint az Azure AD Privileged Identity Management belül. Emellett ez a szerepkör lehetővé teszi minden aspektusát Privileged Identity Management kezelését.
 
@@ -163,7 +163,7 @@ Az alábbi táblázatok ismertetik az Azure Active Directory minden egyes szerep
 Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos összes létrehozási és felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -198,7 +198,7 @@ Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos �
 Hozhat létre alkalmazást az alkalmazásregisztrációk független a **felhasználók regisztrálhatnak alkalmazásokat** beállítás.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -213,7 +213,7 @@ Hozhat létre alkalmazást az alkalmazásregisztrációk független a **felhaszn
 Számlázással kapcsolatos általános feladatokat hajthat végre, például frissítheti a fizetési adatokat.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -235,7 +235,7 @@ Számlázással kapcsolatos általános feladatokat hajthat végre, például fr
 Az Application Proxy kivételével az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos összes létrehozási és felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -318,7 +318,7 @@ Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokka
 Megtekintheti és kezelheti a megfelelőségi konfigurációt és jelentéseket az Azure AD-ban és az Office 365-ben.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -341,7 +341,7 @@ Megtekintheti és kezelheti a megfelelőségi konfigurációt és jelentéseket 
 A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -360,7 +360,7 @@ A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti j
 Az ehhez a szerepkörhöz tartozó felhasználók a helyi gépek rendszergazdái lesznek az Azure Active Directoryval összekapcsolt összes Windows 10-eszközön. Nem rendelkeznek képes kezelni az eszközobjektumok az Azure Active Directoryban.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -472,7 +472,7 @@ Olvasás, és alapszintű directory adatokat írnak a. Az alkalmazásokhoz való
 A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -493,7 +493,7 @@ A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rende
 Az Exchange termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -536,7 +536,7 @@ Független a vendégfelhasználókat is meghívhat az **tagjai is meghívhatnak 
 Alaphelyzetbe állíthatja a nem rendszergazdák és a segélyszolgálat rendszergazdák jelszavát.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -553,7 +553,7 @@ Alaphelyzetbe állíthatja a nem rendszergazdák és a segélyszolgálat rendsze
 Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -574,7 +574,7 @@ Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogo
 Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -615,7 +615,7 @@ Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezi
 A Skype Vállalati verzió termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -654,7 +654,7 @@ Csak a szervezet Office 365 Üzenetközpontbeli üzeneteit és frissítéseit ol
 Ne használjon – általános használatra nem alkalmas.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -690,7 +690,7 @@ Ne használjon – általános használatra nem alkalmas.
 Ne használjon – általános használatra nem alkalmas.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -729,7 +729,7 @@ Ne használjon – általános használatra nem alkalmas.
 A Power BI termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -750,7 +750,7 @@ A Power BI termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkez
 Szerepkör-hozzárendelésekkel kezelheti az Azure ad-ben
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -787,7 +787,7 @@ Megtekintheti a bejelentkezési és a naplózási jelentéseket.
 Olvashatja a biztonsági információk és jelentések
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -836,7 +836,7 @@ Megtekintheti a biztonsági adatokat és jelentéseket az Azure AD-ban és az Of
 Megtekintheti a szolgáltatásállapot-adatokat, és kezelheti a támogatási jegyeket.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -856,7 +856,7 @@ Megtekintheti a szolgáltatásállapot-adatokat, és kezelheti a támogatási je
 A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -876,7 +876,7 @@ A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultságga
 Felhasználók és csoportok minden aspektusát felügyelheti
 
   > [!NOTE]
-  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Ez a szerepkör örökli a további engedélyeket a [felhasználói szerepkör](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 

@@ -1,43 +1,43 @@
 ---
-title: Hívás-válasz - C# gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing kép Search API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a kép Bing keresési API a Microsoft Azure kognitív Services.
+title: 'Gyors útmutató: Küldési keresési lekérdezések a REST API használatával a Bing Image Search API C# használatával'
+description: Ebben a rövid keresési lekérdezések listáját a C# használatával képeket, a Bing Search API küldünk.
 services: cognitive-services
 documentationcenter: ''
-author: v-jerkin
+author: aahill
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: article
-ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: e5a506b9a25e94c827815323d209bf7c175bac4e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 8/9/2018
+ms.author: aahi
+ms.openlocfilehash: 7a5ef36f02d82ee17698af9c647f043792280fbc
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349006"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987965"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-c"></a>Hívás-válasz: az első Bing kép keresési lekérdezés C#
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-c"></a>Gyors útmutató: Küldési keresési lekérdezések a REST API-t és a C# használatával
 
-A kép Bing keresési API Bing.com/Images hasonló élményt nyújt akkor azáltal, hogy egy felhasználó keresési lekérdezés küldése a Bing, és vissza megfelelő képek listájának lekérése.
+A Bing Image Search API azáltal, hogy egy felhasználó keresési lekérdezést küld a Bing, majd az érintett rendszerképek listájának Bing.com/Images hasonló élményt nyújt.
 
-A cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing kép Search API lekérdezést hajt végre, és a visszaadott nyers keresési eredmények között, amelyek JSON formátumban jeleníti meg. Az alkalmazás írása C# nyelven íródtak, amíg az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+Ez a cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing Image Search API-lekérdezést hajt végre, és megjeleníti a visszaadott nyers keresési eredmények között, amely JSON formátumban vannak. Ez az alkalmazás C# nyelven írt, míg a API-ját minden programozási nyelvet, amely HTTP-kérelmeket és elemezni a JSON-kompatibilis REST-alapú webszolgáltatás. 
 
-A példa program csak a .NET Core-osztályokat használja, és a .NET CLR használata Windows vagy Linux- vagy macOS használatával futtatja [monó](http://www.mono-project.com/).
+A példa program csak a .NET Core-osztályokat használja, és a .NET CLR-beli használatával Windows vagy Linux vagy macOS használata [Mono](http://www.mono-project.com/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) Ez a kód futtatása Windows eléréséhez. (Az ingyenes közösségi Edition fog működni.)
+Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) lekérni ezt a kódot, a Windows rendszerű. (Az ingyenes Community Edition is elegendő.)
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket.
 
-1. Új konzol megoldás létrehozása a Visual Studióban.
-1. Cserélje le `Program.cs` a megadott kód.
-2. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
-3. Futtassa a programot.
+1. Hozzon létre egy új konzol megoldást a Visual Studióban.
+2. Cserélje le `Program.cs` a megadott kóddal.
+3. Cserélje le a `accessKey` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+4. Futtassa a programot.
 
 ```csharp
 using System;
@@ -208,7 +208,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="json-response"></a>JSON-válasz
 
-A következő mintát választ. A JSON hosszát korlátozásához csak egyetlen eredmény látható, és a választ más részei le lettek rövidítve. 
+A következő mintát választ. A JSON hosszának korlátozása, csak egyetlen eredmény jelenik meg, és egyéb részei a válasz a rendszer csonkolta. 
 
 ```json
 {
@@ -297,11 +297,11 @@ A következő mintát választ. A JSON hosszát korlátozásához csak egyetlen 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing kép keresési alkalmazás oktatóanyag](../tutorial-bing-image-search-single-page-app.md)
+> [Bing – Képkeresés egyoldalas alkalmazás oktatóanyag](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Lásd még 
 
-[Bing kép keresési áttekintése](../overview.md)  
+[Bing – Képkeresés áttekintése](../overview.md)  
 [Próbálja ki](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-[Egy ingyenes próba hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Bing kép keresési API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+[Ingyenes próba hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+[A Bing Image Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

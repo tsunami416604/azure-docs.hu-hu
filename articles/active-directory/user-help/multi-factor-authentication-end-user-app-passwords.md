@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: c6340133971a226002ce11ae1521bdc88e3e7975
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343288"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058735"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>A kétlépéses ellenőrzéshez alkalmazásjelszók kezelése
 
@@ -38,7 +38,7 @@ Alkalmazásjelszavak használata esetén ne feledje:
 
 Az első kétlépéses ellenőrzés regisztrációja során felhőszolgáltatására, egy jelszót az alkalmazáshoz. Ha több mint egy jelszót, létrehozhat további jelszavak, a kétlépéses ellenőrzés használata alapján:
 
-- **A kétlépéses ellenőrzés használata a Microsoft Azure-fiókra.** Hozzon létre vagy töröljön az alkalmazás a jelszavak a [az Azure portal](https://portal.azure.com). További információ: a [alkalmazásjelszókat, és a kétlépéses ellenőrzés](https://support.microsoft.com/en-us/help/12409/microsoft-account-app-passwords-two-step-verification) cikk.
+- **A kétlépéses ellenőrzés használata a Microsoft Azure-fiókra.** Hozzon létre vagy töröljön az alkalmazás a jelszavak a [az Azure portal](https://portal.azure.com). További információ: a [alkalmazásjelszókat, és a kétlépéses ellenőrzés](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) cikk.
 
 - **A kétlépéses ellenőrzés használata a személyes Microsoft-fiókjával.** Hozzon létre vagy töröljön az alkalmazás a jelszavak a [biztonsággal kapcsolatos alapok](https://account.microsoft.com/account/) oldal a Microsoft-fiókjához. További információ: a [alkalmazásjelszókat, és a kétlépéses ellenőrzés](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) cikk.
 

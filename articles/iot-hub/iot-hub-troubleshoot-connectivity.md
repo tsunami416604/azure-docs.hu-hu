@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 91e435c60a342768093b3bc869a78fa61df8782f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5bd66e3cb3902665aab9245a524a2bec6f57dc8c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446564"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42061377"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Észlelése és elhárítása bontja a kapcsolatot az Azure IoT Hub szolgáltatással
 
@@ -77,7 +77,7 @@ Diagnosztikai naplók és riasztások csatlakoztatott eszközök vannak kapcsolv
     | 404104 DeviceConnectionClosedRemotely | Az eszköz által a kapcsolat bezárult, de az IoT Hub miért nem ismert. Gyakori okai az AMQP és MQTT időtúllépési és az internetes kapcsolat megszakadását. | Győződjön meg arról, hogy az eszköz csatlakozhat az IoT Hub által [csatlakozási kísérlet](tutorial-connectivity.md). Ha a kapcsolat megfelelően működik, de az eszköz időnként megszakad, ügyeljen arra, hogy megfelelő életben tartási eszköz logikát az Ön által választott protokoll (mqtt-ről/AMPQ). |
     | 401003 IoTHubUnauthorized | Az IoT Hub nem sikerült hitelesíteni a kapcsolatot. | Győződjön meg arról, hogy a SAS- vagy más biztonsági jogkivonat használata nem járt le. [Az Azure IoT SDK-k](iot-hub-devguide-sdks.md) automatikusan jogkivonatokat hoz létre, anélkül, hogy a speciális konfigurációt. |
     | 409002 LinkCreationConflict | Nincsenek ugyanazon az eszközön egynél több kapcsolatot. Új kapcsolat kérelem érkezik egy eszközhöz, az IoT Hub bezárja az előzőre hiba. | A leggyakoribb helyzet, az eszköz észleli, hogy megszakad a kapcsolat, és megpróbálja helyreállítani a kapcsolatot, de az IoT Hub még nem számít, még leválasztott így az előző kapcsolat bezárása és naplózza a hibát. Ezért ez a hiba általában jelenik meg a különböző átmeneti probléma, mellékhatása keressen egyéb hibák a naplókban, további hibaelhárítást. Ellenkező esetben ellenőrizze, hogy ki egy új kapcsolódási kérelmet csak akkor, ha csökken a kapcsolat. |
-    | 500001 Kiszolgálóhibái | Az IoT Hub hibába ütközött egy kiszolgálóoldali problémát. Az a legvalószínűbb a probléma nem átmeneti. Az IoT Hub csapat működik nehezen karbantartása során [SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/), az IoT Hub csomópontok kis részhalmazainak alkalmanként tapasztalhatnak az átmeneti hibák. Ha az eszköz próbál csatlakozni a csomóponthoz, amely esetén problémák adódnak, ezt a hibaüzenetet kapja. | Az átmeneti hibák elhárításához, adjon ki egy újra az eszközről. A [automatikusan kezelheti az újrapróbálkozásokat](iot-hub-reliability-features-in-sdks.md#connection-and-retry), győződjön meg arról, hogy a legújabb verzióját használja, a [Azure IoT SDK-k](iot-hub-devguide-sdks.md).<br><br>A legjobb az átmeneti hibák kezelése és az újrapróbálkozások, lásd: [átmeneti hibák kezelése](/azure/architecture/best-practices/transient-faults.md).  <br><br>Ha az újrapróbálkozás után a probléma továbbra is fennáll, ellenőrizze [Resource Health](iot-hub-monitor-resource-health.md#use-azure-resource-health) és [Azure állapotlapján](https://azure.microsoft.com/status/history/) az IoT Hub tartalmaz olyan ismert probléma. Ha nincs az ismert problémák, és a probléma továbbra is fennáll, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/) további vizsgálat. |
+    | 500001 Kiszolgálóhibái | Az IoT Hub hibába ütközött egy kiszolgálóoldali problémát. Az a legvalószínűbb a probléma nem átmeneti. Az IoT Hub csapat működik nehezen karbantartása során [SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/), az IoT Hub csomópontok kis részhalmazainak alkalmanként tapasztalhatnak az átmeneti hibák. Ha az eszköz próbál csatlakozni a csomóponthoz, amely esetén problémák adódnak, ezt a hibaüzenetet kapja. | Az átmeneti hibák elhárításához, adjon ki egy újra az eszközről. A [automatikusan kezelheti az újrapróbálkozásokat](iot-hub-reliability-features-in-sdks.md#connection-and-retry), győződjön meg arról, hogy a legújabb verzióját használja, a [Azure IoT SDK-k](iot-hub-devguide-sdks.md).<br><br>A legjobb az átmeneti hibák kezelése és az újrapróbálkozások, lásd: [átmeneti hibák kezelése](/azure/architecture/best-practices/transient-faults).  <br><br>Ha az újrapróbálkozás után a probléma továbbra is fennáll, ellenőrizze [Resource Health](iot-hub-monitor-resource-health.md#use-azure-resource-health) és [Azure állapotlapján](https://azure.microsoft.com/status/history/) az IoT Hub tartalmaz olyan ismert probléma. Ha nincs az ismert problémák, és a probléma továbbra is fennáll, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/) további vizsgálat. |
     | 500008 GenericTimeout | Az IoT Hub időkorlátját a kapcsolódási kérelmet nem sikerült befejezni. Például 500001 Kiszolgálóhibái Ez a hiba akkor valószínűleg átmeneti. | Alapvető ok, és ez a hiba megoldásához 500001 Kiszolgálóhibái hibaelhárítási lépésekkel.|
 
 ## <a name="other-steps-to-try"></a>Egyéb lépések
@@ -92,7 +92,7 @@ Mindenki a dokumentációban javítható, hagyja az alábbi megjegyzést, ha ez 
 
 ## <a name="next-steps"></a>További lépések
 
-* Átmeneti problémák elhárításához kapcsolatos további információkért lásd: [átmeneti hibák kezelése](/azure/architecture/best-practices/transient-faults.md).
+* Átmeneti problémák elhárításához kapcsolatos további információkért lásd: [átmeneti hibák kezelése](/azure/architecture/best-practices/transient-faults).
 * További információ az Azure IoT SDK-t és az újrapróbálkozások kezelésére, lásd: [kezelése, kapcsolatok és megbízható üzenetküldést Azure IoT Hub eszközoldali SDK-k használatával](iot-hub-reliability-features-in-sdks.md#connection-and-retry).
 
 <!-- Images -->

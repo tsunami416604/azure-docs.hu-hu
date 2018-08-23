@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 806ae38f614c44ce25b8fcc159b74f1bda3f00f3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 79a44e3f5303aaf0d337333b482c2df670e0b3da
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343117"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059171"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Az MXChip IoT DevKit csatlakoztatása az Azure IoT távoli figyelési megoldásgyorsító
 
@@ -120,7 +120,7 @@ A mintaalkalmazás futtatásakor a DevKit Wi-Fi kapcsolaton érzékelői adatoka
 
 ## <a name="change-device-id"></a>Változás-Eszközazonosító
 
-Az IoT hub-Eszközazonosítót követve módosíthatja a [Eszközazonosító testreszabása útmutató](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/). Ha meg szeretné változtatni a szoftveresen kötött **AZ3166** egy egyéni Eszközazonosító a kódban, módosítsa a megjelenített kódot oi üzletági a [távoli monitorozási példa](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23).
+Ha meg szeretné változtatni a szoftveresen kötött **AZ3166** egy egyéni Eszközazonosító a kódban, módosítsa a megjelenő kódsort a [távoli monitorozási példa](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23).
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
@@ -136,3 +136,5 @@ Most, hogy megtanulhatta, hogyan jelenítheti meg az érzékelő adatokat és a 
 * [Az Azure IoT a megoldásgyorsítók áttekintése](https://docs.microsoft.com/azure/iot-suite/)
 
 * [Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+
+* [IoT fejlesztői készlet](https://microsoft.github.io/azure-iot-developer-kit/) 

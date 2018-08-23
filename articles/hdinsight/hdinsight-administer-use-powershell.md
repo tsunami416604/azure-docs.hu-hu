@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 60868ceb58a9ed4935ea540ad15abd0e5d35f559
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b23662ccda090b4d8a4cbb5eae3029affd075c33
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595528"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054085"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>A HDInsight Hadoop-fürtök kezelése az Azure PowerShell használatával
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Az Azure PowerShell segítségével szabályozhatja és automatizálhatja az üzembe helyezéséhez és felügyeletéhez a számítási feladatokat az Azure-ban. Ebből a cikkből elsajátíthatja az Azure HDInsight Hadoop-fürtök kezelése az Azure PowerShell használatával. A HDInsight PowerShell-parancsmagok listáját lásd: [HDInsight parancsmag-referencia][hdinsight-powershell-reference].
+Az Azure PowerShell segítségével szabályozhatja és automatizálhatja az üzembe helyezéséhez és felügyeletéhez a számítási feladatokat az Azure-ban. Ebből a cikkből elsajátíthatja az Azure HDInsight Hadoop-fürtök kezelése az Azure PowerShell használatával. A HDInsight PowerShell-parancsmagok listáját lásd: [HDInsight parancsmag-referencia](https://msdn.microsoft.com/library/azure/dn479228.aspx).
 
 **Előfeltételek**
 
@@ -231,7 +231,7 @@ Lásd: [megadásához és a munkafolyamat futtatása a HDInsight Hadoop-keretren
 Lásd: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Lásd még:
-* [HDInsight-parancsmagjának referenciadokumentációja][hdinsight-powershell-reference]
+* [HDInsight-parancsmagjának referenciadokumentációja](https://msdn.microsoft.com/library/azure/dn479228.aspx)
 * [HDInsight felügyelete az Azure portal használatával][hdinsight-admin-portal]
 * [Felügyelheti a HDInsight egy parancssori felülettel][hdinsight-admin-cli]
 * [HDInsight-fürtök létrehozása][hdinsight-provision]

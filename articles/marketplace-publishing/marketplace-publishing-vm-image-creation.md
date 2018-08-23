@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 9199c9fc9a46e6b09eb066be5125c74420ad6cd6
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: bf2ba6d31c170715a52b84439276c45665293c35
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715335"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056705"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Útmutató a virtuálisgép-lemezkép létrehozása az Azure Marketplace-en
 Ez a cikk **2. lépés**, a virtuális merevlemezek (VHD), amely központilag telepíti az Azure Marketplace-en való előkészítésének módját mutatja. A virtuális merevlemezek az alapítvány termékváltozat. A folyamat eltér attól függően, hogy egy Linux-alapú vagy Windows-alapú Termékváltozatot. Ez a cikk mindkét forgatókönyvvel foglalkozunk. Ez a folyamat végrehajtható párhuzamosan [fióklétrehozás és a regisztrációs][link-acct-creation].
@@ -69,9 +69,9 @@ A Virtuálisgép-lemezkép az operációs rendszer virtuális Merevlemeze kell l
 
 A kezdéshez egy virtuális gép létrehozása az alábbi lemezképek egyikéből helyén található a [Microsoft Azure-portálon][link-azure-portal]:
 
-* A Windows Server ([2012 R2 Datacenter][link-datactr-2012-r2], [2012 Datacenter][link-datactr-2012], [2008 R2 SP1] [link-datactr-2008-r2])
-* Az SQL Server 2014 ([vállalati][link-sql-2014-ent], [Standard][link-sql-2014-std], [webes] [ link-sql-2014-web])
-* Az SQL Server 2012 SP2 ([vállalati][link-sql-2012-ent], [Standard][link-sql-2012-std], [webes] [ link-sql-2012-web])
+* A Windows Server ([2012 R2 Datacenter] [hivatkozás-datactr-2012-r2], [2012 Datacenter] [hivatkozás-datactr-2012], [2008 R2 SP1][link-datactr-2008-r2])
+* SQL Server 2014 
+* SQL Server 2012 SP2 
 
 A hivatkozások a közzétételi portálon is megtalálhatók az SKU (Termékváltozat) lapon.
 
@@ -431,7 +431,7 @@ Az alábbiakban a lépéseket az SAS URL-cím létrehozása a Microsoft Azure St
 
 Az SAS URL-cím létrehozása az Azure CLI-vel lépései a következők
 
-1.  Töltse le a Microsoft Azure parancssori felületét [Itt](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Különböző mutató hivatkozásokat is talál ** [Windows](http://aka.ms/webpi-azure-cli) ** és ** [MAC OS](http://aka.ms/mac-azure-cli)**.
+1.  Töltse le a Microsoft Azure parancssori felületét [Itt](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Különböző mutató hivatkozásokat is talál **[Windows](http://aka.ms/webpi-azure-cli)** és  **[MAC OS](http://aka.ms/mac-azure-cli)**.
 
 2.  Miután letöltötte, telepítse a
 
@@ -515,11 +515,11 @@ Az ajánlat és a Termékváltozat létrehozása után a Termékváltozathoz tá
 
 |Probléma|Hibaüzenet|Javítás|Dokumentáció-hivatkozás|
 |---|---|---|---|
-|Hiba történt a Másolás-lemezkép - "?" nem található az SAS URL-címe|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|Frissítés az SAS URL-cím használata ajánlott eszközök|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a Másolás lemezkép - "st" és "se" paraméterek nem az SAS URL-címe|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|A kezdő és záró dátuma, az SAS URL-cím frissítése|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek – "sp = rl" nem az SAS URL-cím másolása|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob SAS URI-t használó megadott|Beállítás "Olvasási" & "List engedélyeket a SAS URL-cím frissítése|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek - SAS URL-cím másolása térközt rendelkezik a virtuális merevlemez neve|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|Frissítse a SAS URL-címét, szóközök nélkül|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek – SAS URL-engedélyezési hiba másolása|Hiba: A lemezképek másolása. Töltse le a blob engedélyezési hiba miatt nem sikerült|Az SAS URL-címet generálni|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a Másolás-lemezkép - "?" nem található az SAS URL-címe|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|Frissítés az SAS URL-cím használata ajánlott eszközök|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a Másolás lemezkép - "st" és "se" paraméterek nem az SAS URL-címe|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|A kezdő és záró dátuma, az SAS URL-cím frissítése|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek – "sp = rl" nem az SAS URL-cím másolása|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob SAS URI-t használó megadott|Beállítás "Olvasási" & "List engedélyeket a SAS URL-cím frissítése|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek - SAS URL-cím másolása térközt rendelkezik a virtuális merevlemez neve|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|Frissítse a SAS URL-címét, szóközök nélkül|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek – SAS URL-engedélyezési hiba másolása|Hiba: A lemezképek másolása. Töltse le a blob engedélyezési hiba miatt nem sikerült|Az SAS URL-címet generálni|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Hiba történt a lemezképek – az SAS URL-címe "st" és "se" paraméterek másolása nem rendelkezik teljes dátum-idő specifikáció|Hiba: A lemezképek másolása. Nem sikerült helytelen SAS URL-cím miatt blob letöltése |Teljes dátum-idő előírás 11 például SAS URL-cím indítása és a záró dátum paraméter ("st", "se") van szüksége-02-2017T00:00:00Z, és nem csak a dátum vagy akkor használhatja rövidített verzió alkalommal. Akkor lehet, hogy ezt a forgatókönyvet az Azure CLI 2.0 (az parancs). Mindenképpen adja meg a teljes dátum-idő specifikációinak, és az SAS URL-címet generálni.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Következő lépés
@@ -557,15 +557,6 @@ Miután elkészült, a Termékváltozat adatokkal, áthelyezheti előre a [Azure
 [link-technet-2]:https://msdn.microsoft.com/library/dn495261.aspx
 [link-azure-portal]:https://portal.azure.com
 [link-pubportal]:https://publish.windowsazure.com
-[link-sql-2014-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014enterprisewindowsserver2012r2/
-[link-sql-2014-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014standardwindowsserver2012r2/
-[link-sql-2014-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014webwindowsserver2012r2/
-[link-sql-2012-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2enterprisewindowsserver2012/
-[link-sql-2012-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2standardwindowsserver2012/
-[link-sql-2012-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2webwindowsserver2012/
-[link-datactr-2012-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/
-[link-datactr-2012]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/
-[link-datactr-2008-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
 [link-technet-1]:https://technet.microsoft.com/library/hh848454.aspx
 [link-azure-vm-2]:./virtual-machines-linux-agent-user-guide/

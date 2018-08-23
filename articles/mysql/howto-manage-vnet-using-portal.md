@@ -1,6 +1,6 @@
 ---
-title: Létrehozása és kezelése az Azure-adatbázis MySQL VNet Szolgáltatásvégpontok és szabályok az Azure portál használatával |} Microsoft Docs
-description: Létrehozása és kezelése az Azure-adatbázis MySQL VNet Szolgáltatásvégpontok és szabályok az Azure portál használatával
+title: Hozzon létre és kezelhető az Azure Database for MySQL virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure portal használatával |} A Microsoft Docs
+description: Hozzon létre és kezelhető az Azure Database for MySQL virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure portal használatával
 services: mysql
 author: mbolz
 ms.author: mbolz
@@ -8,38 +8,38 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/01/2018
-ms.openlocfilehash: 7520868fd6bd349043ad2c53e62de5db978db8b1
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 08/15/2018
+ms.openlocfilehash: df703f30119e0cb421b21c524f779b4f43a42b3f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267220"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058402"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Létrehozása és kezelése az Azure-adatbázis MySQL VNet Szolgáltatásvégpontok és a virtuális hálózat szabályok az Azure portál használatával
-Virtuális hálózathoz (VNet) services végpontjainak és szabályok terjessze ki a virtuális hálózat a titkos címtér a MySQL-kiszolgálóhoz tartozó Azure-adatbázis. Az Azure-adatbázis MySQL VNet Szolgáltatásvégpontok korlátozások, beleértve az áttekintést lásd: [MySQL kiszolgáló virtuális hálózat szolgáltatás végpontok Azure adatbázis](concepts-data-access-and-security-vnet.md). Virtuális hálózat Szolgáltatásvégpontok érhetők el minden támogatott régióban nyilvános előzetes MySQL az Azure-adatbázis.
+# <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MySQL virtuális hálózati Szolgáltatásvégpontok és a VNet-szabályok az Azure portal használatával
+Virtuális hálózat (VNet) szolgáltatások végpontok és a szabályok egy virtuális hálózat magáncímterét kiterjesztheti az Azure Database for MySQL-kiszolgáló. Azure Database MySQL virtuális hálózati Szolgáltatásvégpontok, korlátai, beleértve az áttekintést lásd: [, Azure Database for MySQL-kiszolgáló virtuális hálózati Szolgáltatásvégpontok](concepts-data-access-and-security-vnet.md). Virtuális hálózati Szolgáltatásvégpontok az Azure Database for MySQL minden támogatott régióban érhetők el.
 
 > [!NOTE]
-> Virtuális hálózat Szolgáltatásvégpontok támogatása csak olyan általános célú és a Memóriaoptimalizált van.
+> Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
 
-## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Egy VNet szabály létrehozása és engedélyezése az Azure portálon végpontok
+## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Hozzon létre egy virtuális hálózati szabályt, és engedélyezze a szolgáltatásvégpontokat az Azure Portalon
 
-1. MySQL-kiszolgáló a beállítások lapon elemcsoportban kattintson **kapcsolatbiztonsági** a kapcsolat biztonsági ablak megnyitása az Azure Database a MySQL. Ezután kattintson a **+ meglévő virtuális hálózat hozzáadása**. Ha nem rendelkezik egy meglévő virtuális hálózatot, kattintson **+ új virtuális hálózat létrehozása** kattintva létrehozhat egyet. Lásd: [gyors üzembe helyezés: hozzon létre egy virtuális hálózatot az Azure portál használatával](../virtual-network/quick-create-portal.md)
+1. A MySQL server a beállítások lapon szakaszban kattintson **kapcsolatbiztonság** nyissa meg a kapcsolat biztonsági ablaktáblát az Azure Database for MySQL-hez. Ezután kattintson a **+ meglévő virtuális hálózat hozzáadása**. Ha nem rendelkezik egy meglévő Vnetet **+ új virtuális hálózat létrehozása** hozhat létre egyet. Lásd: [a rövid útmutató: hozzon létre egy virtuális hálózatot az Azure portal használatával](../virtual-network/quick-create-portal.md)
 
-   ![Azure portál – kattintson a kapcsolat biztonságát](./media/howto-manage-vnet-using-portal/1-connection-security.png)
+   ![Az Azure portal – kapcsolatbiztonság kattintson](./media/howto-manage-vnet-using-portal/1-connection-security.png)
 
-2. Adja meg a VNet szabály nevét, válassza ki az előfizetés, a virtuális hálózati és alhálózati név, majd kattintson **engedélyezése**. Ez automatikusan VNet szolgáltatás végpontját az alhálózati használata lehetővé teszi a **Microsoft.SQL** címke szolgáltatás.
+2. Adja meg a virtuális hálózati szabály nevét, válassza ki az előfizetést, virtuális hálózat és alhálózat neve, majd kattintson **engedélyezése**. Ez automatikusan lehetővé teszi a virtuális hálózati Szolgáltatásvégpontok az alhálózaton használatával a **Microsoft.SQL** szolgáltatáscímke.
 
-   ![Azure portál – virtuális hálózat konfigurálása](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
+   ![Az Azure portal – virtuális hálózat konfigurálása](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
 
    > [!IMPORTANT]
-   > Erősen ajánlott a cikkből szolgáltatási végpont, valamint szempontok Szolgáltatásvégpontok konfigurálása előtt. **Virtuális hálózati szolgáltatási végpont:** A [virtuális hálózati szolgáltatási végpont](../virtual-network/virtual-network-service-endpoints-overview.md) egy alhálózat, amelyek a következők: egy vagy több hivatalos Azure-szolgáltatás neve. Virtuális hálózat services végpontjainak használja a szolgáltatás típusának neve **Microsoft.Sql**, amely hivatkozik az Azure-szolgáltatás SQL-adatbázis neve. A szolgáltatás címke az Azure SQL Database, PostgreSQL-és MySQL az Azure-adatbázis is vonatkozik. Fontos figyelembe venni, amikor alkalmazza a **Microsoft.Sql** címke szolgáltatás a virtuális hálózat szolgáltatásvégpont konfigurálja a szolgáltatási végpont forgalmat az összes Azure-adatbázis szolgáltatás, beleértve az Azure SQL Database, PostgreSQL az Azure-adatbázis és Az Azure-adatbázis a MySQL-kiszolgálók az alhálózaton. 
+   > Ez a cikk szolgáltatáskonfiguráció endpoint és megfontolandó szempontok a Szolgáltatásvégpontok konfigurálása előtt erősen ajánlott. **Virtuális hálózati szolgáltatásvégpont:** A [virtuális hálózati szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) egy alhálózat, amelynek a következők: egy vagy több hivatalos Azure-szolgáltatás nevét. Virtuális hálózat services végpontjainak használja a szolgáltatás neve **Microsoft.Sql**, amely hivatkozik az Azure-szolgáltatás SQL-adatbázis neve. Ez a szolgáltatás címke az Azure SQL Database, Azure Database for PostgreSQL és MySQL-szolgáltatásokra is vonatkozik. Fontos, hogy alkalmazása esetén vegye figyelembe a **Microsoft.Sql** szolgáltatáscímke egy szolgáltatásvégpont, konfigurálja a szolgáltatás végpontja forgalmat az összes Azure-adatbázis szolgáltatás, így az Azure SQL Database, Azure Database for PostgreSQL és Azure Database for MySQL-kiszolgálók az alhálózaton. 
    > 
 
-3. Kattintson az engedélyezés után **OK** és látni fogja, hogy a VNet Szolgáltatásvégpontok engedélyezve vannak egy VNet szabály együtt.
+3. Kattintson az engedélyezés után a **OK** és látni fogja, hogy a virtuális hálózati Szolgáltatásvégpontok engedélyezve vannak és a egy virtuális hálózati szabályt.
 
-   ![Virtuális hálózat szolgáltatás végpontok engedélyezett és a VNet szabály létrehozása](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   ![Virtuális hálózati Szolgáltatásvégpontok engedélyezve van, és a VNet szabály létrehozása](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
 ## <a name="next-steps"></a>További lépések
-- Ehhez hasonlóan is, a parancsfájl [engedélyezése virtuális hálózat szolgáltatás végpontjait és VNET szabály létrehozása az Azure Database az Azure parancssori felület használatával MySQL](howto-manage-vnet-using-cli.md).
-- A MySQL-kiszolgáló egy Azure-adatbázishoz szeretne csatlakozni, lásd: [adatkapcsolattárak MySQL az Azure-adatbázis](./concepts-connection-libraries.md)
+- Hasonló módon is, a parancsfájl [engedélyezése a virtuális hálózat szolgáltatásvégpontokat, és a VNET szabály létrehozása az Azure Database for MySQL-hez az Azure CLI-vel](howto-manage-vnet-using-cli.md).
+- Egy Azure Database for MySQL-kiszolgáló csatlakozik a kapcsolatos útmutatásért lásd: [adatkapcsolattárak az Azure Database for MySQL-hez](./concepts-connection-libraries.md)

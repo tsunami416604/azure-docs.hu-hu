@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 2730ab1d909ead0431f0dd7fd0061d3080834296
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 305a6c805f14e8d3ef9f77fcd90a78a50e0f770c
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443732"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058716"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet használata az Azure Kubernetes Service (AKS)
 
@@ -36,31 +36,41 @@ A Virtual Kubelet telepítéséhez [Helm](https://docs.helm.sh/using_helm/#insta
 
 ### <a name="for-rbac-enabled-clusters"></a>A fürtök RBAC-kompatibilis
 
-Ha az AKS-fürt RBAC-kompatibilis, létre kell hoznia a szolgáltatásfiók és a szerepkör-kötést használja az a tiller valóban. További információkért lásd: [Helm szerepköralapú hozzáférés-vezérlés][helm-rbac].
-
-A *ClusterRoleBinding* is létre kell hozni a Virtual Kubelet. Hozzon létre egy kötést, hozzon létre egy fájlt *rbac-virtualkubelet.yaml* , és illessze be a következő-definíciót:
+Ha az AKS-fürt RBAC-kompatibilis, létre kell hoznia a szolgáltatásfiók és a szerepkör-kötést használja az a tiller valóban. További információkért lásd: [Helm szerepköralapú hozzáférés-vezérlés][helm-rbac]. A szolgáltatásfiók és a szerepkör kötést, hozzon létre egy fájlt *rbac-virtualkubelet.yaml* , és illessze be a következő-definíciót:
 
 ```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
-  name: virtual-kubelet
+  name: tiller
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: cluster-admin
 subjects:
-- kind: ServiceAccount
-  name: default
-  namespace: default
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
 ```
 
-A kötés a alkalmazni [a kubectl a alkalmazni] [ kubectl-apply] , és adja meg a *rbac-virtualkubelet.yaml* fájljához a következő példában látható módon:
+A alkalmazni a szolgáltatásfiók és a kötési [a kubectl a alkalmazni] [ kubectl-apply] , és adja meg a *rbac-virtualkubelet.yaml* fájljához a következő példában látható módon:
 
 ```
 $ kubectl apply -f rbac-virtual-kubelet.yaml
 
-clusterrolebinding.rbac.authorization.k8s.io/virtual-kubelet created
+clusterrolebinding.rbac.authorization.k8s.io/tiller created
+```
+
+Helm használata a tiller valóban szolgáltatásfiók konfigurálása:
+
+```console
+helm init --service-account tiller
 ```
 
 A Virtual Kubelet telepítése be az AKS-fürt most továbbra is.
@@ -164,7 +174,7 @@ spec:
     spec:
       containers:
       - name: nanoserver-iis
-        image: nanoserver/iis
+        image: microsoft/iis:nanoserver
         ports:
         - containerPort: 80
       nodeSelector:
@@ -199,7 +209,9 @@ az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --conn
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Virtual Kubelet a [folyó projektben Virtual Kubelet Github][vk-github].
+A Virtual Kubelet lehetséges problémák, lásd: a [ismert régi stílusú és megkerülő megoldások][vk-troubleshooting]. Problémák jelentése és a Virtual Kubelet [nyisson meg egy GitHub-problémát][vk-issues].
+
+További információ a Virtual Kubelet a [Virtual Kubelet Github-projekt][vk-github].
 
 <!-- LINKS - internal -->
 [aks-quick-start]: ./kubernetes-walkthrough.md
@@ -215,3 +227,5 @@ További információ a Virtual Kubelet a [folyó projektben Virtual Kubelet Git
 [vk-github]: https://github.com/virtual-kubelet/virtual-kubelet
 [helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[vk-troubleshooting]: https://github.com/virtual-kubelet/virtual-kubelet#known-quirks-and-workarounds
+[vk-issues]: https://github.com/virtual-kubelet/virtual-kubelet/issues

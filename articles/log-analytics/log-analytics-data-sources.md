@@ -1,6 +1,6 @@
 ---
-title: Adatforrások konfigurálása az Azure Naplóelemzés |} Microsoft Docs
-description: Adatforrások határozza meg, hogy a Naplóelemzési gyűjti az ügynökök és egyéb kapcsolódó források adatait.  A cikkből megtudhatja, hogyan Naplóelemzési az adatforrás, konfigurálásukról részleteit ismerteti, és a különböző forrásokból elérhető összegzését tartalmazza.
+title: Adatforrások konfigurálása az Azure Log Analyticsben |} A Microsoft Docs
+description: Adatforrások határozzák meg, hogy a Log Analytics gyűjti az ügynökök és az egyéb kapcsolódó források adatait.  Ez a cikk azt ismerteti, hogyan Log Analytics adatforrásokkal ismerteti konfigurálásuk módját részleteit és a különböző adatforrások elérhető összegzést tartalmaz a fogalmat.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,58 +15,58 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9a43774a5327536ae4fa1346ae933739ea629771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4b7b1a9dc25b1bfaf72ab67dd0725a4518263ca5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130084"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058105"
 ---
-# <a name="data-sources-in-log-analytics"></a>A Naplóelemzési adatforrások
-A Naplóelemzési adatokat gyűjti össze a csatlakoztatott források, és azt a Naplóelemzési munkaterület tárolja.  Az egyes összegyűjtött adatokon az adatforrásokat, amelyeknél megadta határozzák meg.  A Naplóelemzési adatok rekordkészlet tárolja.  Az egyes adatforrások egy adott típusú rekordot hoz létre a saját tulajdonságkészletbe minden típus.
+# <a name="data-sources-in-log-analytics"></a>A Log Analytics adatforrások
+Log Analytics gyűjti az adatokat a csatlakoztatott források, és azt a Log Analytics-munkaterületen tárolja.  Az adatok az egyes gyűjtött határozza meg azokat az adatforrásokat, konfigurálhat.  A Log Analytics Data rekordkészletet van tárolva.  Minden adatforrás egy adott típusú rekordot hoz létre a saját tulajdonságkészlettel minden típus.
 
-![Jelentkezzen az Analytics-adatok gyűjtése](./media/log-analytics-data-sources/overview.png)
+![Log Analytics-adatok gyűjtése](./media/log-analytics-data-sources/overview.png)
 
-Adatforrások eltérnek [megoldások](log-analytics-add-solutions.md), amely is csatlakoztatott források adatokat gyűjteni, és Naplóelemzési rekordokat létrehozni.  Mellett gyűjtött adatokat, megoldások rendszerint napló keresések és nézetek egy adott alkalmazás vagy szolgáltatás működésének elemzéséhez.
+Adatforrások eltérnek [felügyeleti megoldások](log-analytics-add-solutions.md), amely is csatlakoztatva forrásból gyűjthet adatokat, és a Log Analytics-rekordok létrehozása.  Adatgyűjtés, megoldások általában mellett közé tartozik a naplókereséseken és nézeteken, amelyek segítségével elemezheti az egy adott alkalmazás vagy szolgáltatás a műveletet.
 
 
 ## <a name="summary-of-data-sources"></a>Adatforrások áttekintése
-A következő táblázat sorolja fel az adatforrásokat, amelyek jelenleg a Naplóelemzési.  Mindegyik rendelkezik-e egy külön cikk tárgyalja részletek megadása, hogy az adatforrás mutató hivatkozást.   A metódus és a Log Analyticshez való használatra vonatkozó adatok gyűjtésének gyakorisága információkat is biztosít.  Ez a cikk a információt elérhető különböző megoldások azonosítására és a különböző felügyeleti megoldások adatok megismeréséhez és kapcsolat követelmények megértése érdekében használhatja. Az egyes oszlopok, lásd: [az gyűjtemény adatait az Azure-ban a felügyeleti megoldásokra](../monitoring/monitoring-solutions-inventory.md).
+A következő táblázat sorolja fel az adatforrásokat, amelyek jelenleg a Log Analyticsben.  Mindegyik rendelkezik egy külön cikk tárgyalja részletesen biztosítása, hogy az adatforrás mutató hivatkozást.   A módszer és a Log analyticsbe adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más felügyeleti megoldásokkal data flow és a kapcsolat követelményeinek megismeréséhez. Az egyes oszlopok, lásd: [felügyeleti megoldások az Azure-beli adatok gyűjtemény adatait](../monitoring/monitoring-solutions-inventory.md).
 
 
-| Adatforrás | Platform | A Microsoft figyelési ügynök | Operations Manager-ügynök | Azure Storage tárterület | Az Operations Manager szükséges? | Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött | A gyűjtés gyakorisága |
+| Adatforrás | Platform | A Microsoft-figyelőügynököt | Operations Manager-ügynök | Azure Storage tárterület | Az Operations Manager szükséges? | A felügyeleti csoport Operations Manager-ügynök adatok küldött | A gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | érkezésükkor |
-| [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | érkezésükkor |
+| [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | a beérkezéskor |
+| [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | a beérkezéskor |
 | [IIS-naplók](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |naplófájlváltás beállítás függ |
 | [Teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |ütemezett, legalább 10 másodperc |
 | [Teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |ütemezett, legalább 10 másodperc |
-| [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |az Azure storage: 10 perc; az ügynök: érkezésükkor |
-| [Windows-Eseménynapló](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | érkezésükkor |
+| [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |az Azure storage-ból: 10 perc; ügynök: a beérkezéskor |
+| [Windows-eseménynaplók](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | a beérkezéskor |
 
 
 ## <a name="configuring-data-sources"></a>Adatforrások konfigurálása
-Konfigurálja az adatforrást a **adatok** Naplóelemzési menüjében **speciális beállítások**.  A munkaterületen lévő összes csatlakoztatott források kerülnek beállításra.  Ez a konfiguráció jelenleg nem összes ügynököt kizárni.
+Az adatforrásokat kell konfigurálnia a **adatok** menü a Log Analytics **speciális beállítások**.  A munkaterület minden csatlakoztatott források érkeznek semmilyen konfigurálást.  Ez a konfiguráció jelenleg ügynököket nem lehet kizárni.
 
 ![Windows-események konfigurálása](./media/log-analytics-data-sources/configure-events.png)
 
-1. Válassza ki az Azure-portálon **Naplóelemzési** > a munkaterület > **speciális beállítások**.
+1. Az Azure Portalon válassza ki a **Log Analytics** > a munkaterület > **speciális beállítások**.
 2. Válassza ki **adatok**.
-3. Kattintson a konfigurálni kívánt adatforrást.
-4. Kövesse a hivatkozást minden adatforrás a fenti táblázatban további részletek a dokumentációban a konfigurációban.
+3. Kattintson a konfigurálni kívánt adatforrás.
+4. Kövesse a hivatkozást a konfigurációjuk részleteiről a fenti táblázatban szereplő minden adatforrás a dokumentációban.
 
 
 ## <a name="data-collection"></a>Adatgyűjtés
-Adatok forrás konfigurációk érkeznek ügynökök Naplóelemzési közvetlenül csatlakoztatott néhány percen belül.  A megadott adatok gyűjtése az ügynöktől, és minden adatforráshoz adott időközönként közvetlenül Naplóelemzési kerülnek.  A részletekről az egyes adatforrások dokumentációjában olvashatók.
+Az adatforrások konfigurációját az ügynököknek a Log Analytics közvetlenül csatlakoztatott néhány percen belül lépnek.  A megadott adat az ügynöktől gyűjtött és kézbesítése közvetlenül a Log Analytics minden adatforráshoz adott időközönként.  Az egyes adatforrások ezen bírálattal dokumentációjában talál.
 
-A System Center Operations Manager-ügynökök a csatlakoztatott felügyeleti csoporthoz adatok forrás konfigurációk lefordítani a felügyeleti csomagok és a felügyeleti csoport 5 percenként által szállított alapértelmezett.  Az ügynök tölti le a felügyeleti csomag más, és a megadott adatokat gyűjti. Attól függően, hogy az adatforrás adatok lesznek vagy elküldi a felügyeleti kiszolgálóra, amely továbbítja az adatokat a szolgáltatáshoz, vagy az ügynök az adatokat küld a Naplóelemzési a management kiszolgálón keresztül nélkül. Tekintse meg [az gyűjtemény adatait](log-analytics-add-solutions.md#data-collection-details) részleteiről.  Áttekintheti az Operations Manager és a Naplóelemzési összekötő és gyakoriságának módosítása, hogy a konfigurálás a rendszer [integráció konfigurálása a System Center Operations Manager](log-analytics-om-agents.md).
+A System Center Operations Manager-ügynökök a csatlakoztatott felügyeleti csoport az adatforrások konfigurációját fordítja, a felügyeleti csomagok és a felügyeleti csoport 5 percenként által szállított alapértelmezett.  Az ügynök letölti a felügyeleti csomagban, mint minden más, és a megadott adatokat gyűjti össze. Az adatforrástól függően az adatok lesznek, vagy elküldi a felügyeleti kiszolgálóra, amely továbbítja az adatokat a Log Analytics vagy az ügynök az adatokat küld a Log Analytics a felügyeleti kiszolgáló áthaladás nélkül. Lásd: [felügyeleti megoldások az Azure-beli adatok gyűjtemény adatait](../monitoring/monitoring-solutions-inventory.md) részleteiről.  Itt olvashat részleteket összekapcsolása az Operations Manager és a Log Analytics és a gyakoriság módosítása, hogy a konfigurációs érkeznek [integráció konfigurálása a System Center Operations Managerrel](log-analytics-om-agents.md).
 
-Ha az ügynök nem tud kapcsolódni a szolgáltatáshoz, vagy az Operations Manager, adatokat gyűjthet, amelyek akkor fog továbbítani, amikor kapcsolatot létesít az folytatódik.  Ha az adatok el nem éri a gyorsítótár maximális méretét az ügyfél, vagy ha az ügynök nem képes 24 órán belül kapcsolatot létesíteni a adat elveszhet.
+Ha az ügynök nem tud kapcsolódni a Log Analytics vagy az Operations Manager, továbbra is azt fog nyújtani, amikor kapcsolatot létesít, adatok gyűjtésére.  Ha az adatok mennyisége eléri a gyorsítótár maximális mérete az ügyfél, vagy ha az ügynök nem tud 24 órán belül kapcsolatot létesíteni a adat elveszhet.
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
-Naplóelemzési által gyűjtött összes adat rögzíti a munkaterületen tárolja.  Különböző forrásokból gyűjtött rögzíti a saját tulajdonságkészletbe lesz, és azonosítható, ha azok **típus** tulajdonság.  A dokumentáció az egyes adatforrások és a megoldás részletes kapcsolatban típusához.
+Rekordokat a munkaterületet a Log Analytics által gyűjtött összes adat van tárolva.  Különböző adatforrások által összegyűjtött rekordokkal saját tulajdonságkészlettel fog rendelkezni, és azonosítja a **típus** tulajdonság.  A dokumentáció minden adatforráshoz, és a megoldás részletes típusához jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók [megoldások](log-analytics-add-solutions.md) , amely Naplóelemzési funkciók hozzáadása, és is gyűjthet adatokat a munkaterületre.
-* További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére.  
-* Konfigurálása [riasztások](log-analytics-alerts.md) proaktív értesítik a kritikus fontosságú adatok összegyűjtése az adatforrások és megoldásokat.
+* Ismerje meg [megoldások](../monitoring/monitoring-solutions.md) , amelyek további funkciókkal bővítik a Log Analytics és a is gyűjthet adatokat a munkaterületre.
+* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Konfigurálása [riasztások](log-analytics-alerts.md) proaktívan értesíti az adatforrások és megoldások kritikus fontosságú adatok.

@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés a Microsoft beszéd felismerés API klienskódtárak használatával |} Microsoft Docs
-description: A Microsoft beszéd szolgáltatás klienskódtárak segítségével a Microsoft kognitív szolgáltatások segítségével, amelyek a szóbeli hang szöveg alkalmazások fejlesztéséhez.
+title: Első lépésként a Microsoft Speech Recognition API a Bing Speech klienskódtárak használatára |} A Microsoft Docs
+description: A Microsoft Cognitive Services a Microsoft Speech Service klienskódtárak használatával hozhat létre alkalmazásokat, amelyek a beszélt hangot képes szöveggé alakítani.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
@@ -9,34 +9,37 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: 5abe5bc48c2bd73d0facf33e41a8076df2972153
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f4b6a97260c6dc176600af8844001e4de819ff7c
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347403"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42357510"
 ---
-# <a name="get-started-with-speech-service-client-libraries"></a>Ismerkedés a beszédfelismerés szolgáltatás klienskódtárak segítségével
+# <a name="get-started-with-bing-speech-service-client-libraries"></a>Bing – beszédszolgáltatás klienskódtárak használatának első lépései
 
-Hajt végre közvetlen HTTP-kérelmek egy REST API-n keresztül, mellett beszéd szolgáltatás tartalmaz a fejlesztők számára beszéd klienskódtárak segítségével különböző nyelveken. A beszédfelismerés klienskódtárak segítségével:
+Amellett, hogy a REST API-n keresztül közvetlen HTTP-kérelem indítására, a Bing Speech Service nyújt a fejlesztőknek Speech klienskódtárak különböző nyelveken. A beszédfelismerés klienskódtárai:
 
-- A beszédfelismerés, például a köztes eredményhez a valós idejű, a hosszú hangadatfolyam (legfeljebb 10 perc) és a folyamatos felismerést fejlettebb lehetőségeket nyújtanak.
-- Adjon meg egy egyszerű és idiomatikus API igény szerint nyelven történik.
-- Alacsony szintű kommunikáció részletei elrejtése.
+- Támogatja a speciális képességek beszédfelismerés, például a valós idejű, mennyi ideig hang stream (legfeljebb 10 perc) és folyamatos felismerés köztes eredményeket.
+- Adjon meg egy egyszerű és bármilyen API-t a prioritási nyelven.
+- Az alsó szintű kommunikációs Részletek elrejtése.
 
-Jelenleg a következő beszéd klienskódtárak segítségével érhetők el:
+Jelenleg a következő Bing Speech-ügyfélkódtárak érhetők el:
 
 - [C# asztali könyvtár](GetStartedCSharpDesktop.md)
-- [C# service könyvtár](GetStartedCSharpServiceLibrary.md)
+- [C# szolgáltatási kódtár](GetStartedCSharpServiceLibrary.md)
 - [JavaScript-kódtár](GetStartedJSWebsockets.md)
-- [Java kódtár Android rendszerhez](GetStartedJavaAndroid.md)
-- [Az IOS rendszerhez készült Objective-C-függvénytár](Get-Started-ObjectiveC-iOS.md)
+- [Androidhoz készült Java-kódtár](GetStartedJavaAndroid.md)
+- [IOS-es Objective-C-függvénytár](Get-Started-ObjectiveC-iOS.md)
+
+> [!NOTE] 
+A 2018 május is megjelent az új [beszédszolgáltatás](/speech-service/overview.md) nyilvános előzetes verzióban érhető el. Javasoljuk, hogy [ingyenes kipróbálása](/speech-service/get-started.md). 
 
 ## <a name="additional-resources"></a>További források
 
-- A [minták](../samples.md) lap biztosít a beszédfelismerés klienskódtárak használandó teljes minták.
-- Ha még nem támogatott egy ügyfélkönyvtárat van szüksége, létrehozhat saját SDK. Alkalmazzon a [beszéd WebSocket protokoll](../API-Reference-REST/websocketprotocol.md) a platform és használja az Ön által választott nyelv.
+- A [minták](../samples.md) lap Speech-klienskódtárakkal teljes mintáit tartalmazza.
+- Ha egy ügyféloldali kódtár, amely még nem támogatott van szüksége, létrehozhat saját SDK-t. Alkalmazzon a [Speech WebSocket protokoll](../API-Reference-REST/websocketprotocol.md) a platform és a tetszőleges nyelv használata.
 
 ## <a name="license"></a>Licenc
 
-Minden kognitív Services SDK-k és minták a MIT licenccel rendelkező licencét. További információkért lásd: [licenc](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+Az összes Cognitive Services SDK-k és minták az MIT-licenccel rendelkező rendelkezik licenccel. További információkért lásd: [licenc](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).

@@ -1,6 +1,6 @@
 ---
-title: Teljesítménnyel kapcsolatos szempontok az Azure Traffic Managerben |} Microsoft Docs
-description: A Traffic Manager és a webhelye teljesítményét tesztelése a Traffic Manager használata esetén a teljesítmény ismertetése
+title: Teljesítménnyel kapcsolatos megfontolások az Azure Traffic Manager |} A Microsoft Docs
+description: A Traffic Manager és a webhely teljesítményének tesztelése a Traffic Manager használata esetén teljesítményének ismertetése
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
@@ -14,76 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: f686685138625a53971f1fc5fc754fd22c9d67b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43bb407730594498cfe9c78810c4e9dfb17e4af4
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23876389"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054692"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Teljesítménnyel kapcsolatos megfontolások a Traffic Manager esetében
 
-Ezen a lapon a teljesítménnyel kapcsolatos szempontok a Traffic Managerrel ismerteti. Vegye figyelembe a következő forgatókönyvet:
+Jelen lap bemutatja a teljesítménnyel kapcsolatos megfontolások a Traffic Manager használatával. Vegye figyelembe az alábbi forgatókönyvet:
 
-A WestUS és EastAsia régiók a webhely példányai vannak. Egy példányt a traffic manager mintavétel állapot-ellenőrzés sikertelen. Alkalmazás-forgalmat a megfelelő régió van átirányítva. Ennél a feladatátvételnél várt, de a teljesítmény a forgalmat egy távoli régió most utazik késését alapján problémát okozhat.
+A webhely példánya a WestUS és EastAsia régióban van. A traffic manager mintavétel az állapot-ellenőrzés sikertelen egy példányt. Alkalmazás forgalmat a kifogástalan állapotú régió van átirányítva. A feladatátvételi várt, de a teljesítmény most már egy távoli régióba továbbított forgalmat a késéssel problémát jelenthetnek.
 
 ## <a name="performance-considerations-for-traffic-manager"></a>Teljesítménnyel kapcsolatos megfontolások a Traffic Manager esetében
 
-Csak teljesítményére gyakorolt hatást, amely a Traffic Manager is rendelkezik a webhelyen a kezdeti DNS-ben. A Traffic Manager-profil nevét a DNS-kérelmet a Microsoft DNS-gyökérkiszolgáló a trafficmanager.net zónát üzemeltető kezeli. A TRAFFIC Manager tölti fel, és rendszeresen frissíti, a Microsoft DNS gyökérkiszolgálók a Traffic Manager-házirend és a mintavételi eredmények alapján. A kezdeti DNS-címkeresést, során úgy is nincs DNS-lekérdezések felvétele a Traffic Manager küldése.
+A Traffic Manager rendelkezhet a webhelyén csak teljesítményre gyakorolt a kezdeti DNS-címkeresés. A Traffic Manager-profil neve DNS-kérelmet a Microsoft DNS-gyökérkiszolgáló, amelyen a trafficmanager.net zónában kezeli. A TRAFFIC Manager tölti fel, és rendszeresen frissíti, a Microsoft DNS gyökérkiszolgálók a Traffic Manager-házirend és a vizsgálati eredmények alapján. Az első DNS-keresés során tehát még nincs DNS küldi el a Traffic Manager.
 
-A TRAFFIC Manager számos összetevőt épül fel: DNS-kiszolgálók, az API-szolgáltatás, a tárolási réteg és szolgáltatás figyelése a végpont névhez. Ha a Traffic Manager szolgáltatás valamelyik összetevője nem sikerül, akkor nincs hatással a Traffic Manager-profilhoz tartozó DNS-nevét. A Microsoft DNS-kiszolgálókon a rekordok változatlanok maradnak. Azonban végpontmonitoring kijelző és a DNS-frissítését nem fordulhat elő. A Traffic Manager ezért nem tudja frissíteni a DNS a feladatátvételi helyen mutassanak, amikor az elsődleges hely leáll.
+A TRAFFIC Manager több összetevőből épül fel: DNS-kiszolgálók, API-szolgáltatás, a tárolási réteg és a egy endpoint monitoring szolgáltatás névhez. A Traffic Manager szolgáltatás valamelyik összetevője nem sikerül, ha nem nincs hatással a Traffic Manager-profil társított DNS-nevét. A Microsoft DNS-kiszolgálók rekordjait változatlan marad. Azonban végpont-monitorozás és a DNS-frissítése sem történik. Ezért nem sikerül frissíteni a DNS átirányítása a feladatátvételi helyet, ha az elsődleges hely leáll a Traffic Manager.
 
-DNS-névfeloldás gyorsan elvégezhető, és az eredmény tárolódik. A kezdeti DNS-címkeresés sebességétől függ, a DNS-kiszolgálók, az ügyfél használ a névfeloldáshoz. Általában egy ügyfél egy DNS-címkeresés belül ~ 50 ms hajthatja végre. A keresés eredményeinek gyorsítótárba kerüljenek-e a DNS idő élettartamát (TTL) időtartama. Élettartam a Traffic Manager alapértelmezés szerint 300 másodperc.
+DNS-névfeloldás gyors, és az eredmények lettek gyorsítótárazva. A kezdeti DNS-címkeresés sebessége attól függ, hogy a DNS-kiszolgálókat, az ügyfél használ a névfeloldáshoz. Általában egy ügyfél egy DNS-címkeresés belül ~ 50 ms hajthatja végre. A keresési eredményeit a DNS idő-az-élettartam (TTL) részére lettek gyorsítótárazva. Élettartam a Traffic Manager alapértelmezés szerint 300 másodpercig.
 
-Forgalom Traffic Manager használatával nem terjeszthetők. Miután a DNS-keresés befejeződött, az ügyfél rendelkezik egy példányát a webhely IP-címet. Az ügyfél közvetlenül kapcsolódik, hogy a cím, és nem felel meg a Traffic Manager használatával. A Traffic Manager-házirend úgy dönt, a DNS teljesítményét nincs hatással van. Azonban teljesítmény útválasztás-metódus negatív hatással lehet az alkalmazások használhatóságát. Például a házirend átirányítja a felhasználókat Ázsiában található példány Észak-Amerika-forgalom, a hálózati késés, ezek a munkamenetek a teljesítménycsökkenés oka lehet.
+Adatforgalom nem Traffic Manageren keresztül. Ha a DNS-lekérdezés befejeződött, az ügyfél rendelkezik egy példányát a webhely IP-címet. Az ügyfél közvetlenül csatlakozik a címet, és nem felel meg a Traffic Manageren keresztül. A Traffic Manager-szabályzatban lehet kiválasztani nincs semmilyen hatással a DNS teljesítményét. Azonban teljesítmény útválasztás-metódus negatív hatással lehet az alkalmazás felhasználói élményt. Például a szabályzat átirányítja a forgalmat Észak-Amerikában, Ázsiában lévő üzemeltetett példányhoz, a hálózati késést, ezek a munkamenetek teljesítménycsökkenés lehet.
 
 ## <a name="measuring-traffic-manager-performance"></a>A Traffic Manager teljesítményének mérése
 
-A teljesítmény és a Traffic Manager-profil viselkedésének megértése segítségével több webhelye van. Ezeken a webhelyeken számos ingyenes azonban előfordulhat, hogy korlátozott. Bizonyos webhelyek nyújtanak a bővített figyelési és jelentéskészítési díjköteles.
+Nincsenek segítségével megismerheti a teljesítmény és a egy Traffic Manager-profil viselkedését több webhelyet. Ezek a helyek számos ingyenes, de előfordulhat, hogy korlátozásokat. Bizonyos webhelyek fejlett figyelési és jelentéskészítési díj ellenében is nyújtanak.
 
-Az eszközök a helyek mérték DNS késések és megjelenítheti a a feloldani az IP-címeket a világszerte elhelyezkedő ügyfelek helyének. A legtöbb ezek az eszközök nem gyorsítótárazzák a DNS-találatokat. Ezért az eszközök megjelenítése a teljes DNS-címkeresés teszt minden egyes futtatásakor. A saját ügyfélről tesztelésekor csak egyszer a TTL időszakra teljes DNS-keresési teljesítményét felhasználói élmény.
+Az eszközök ezeket a helyek mérték DNS késéseket és megjelenítési a feloldott IP-címei a világ különböző pontjain található ügyfelek helyei. Ezek az eszközök a legtöbb nem gyorsítótárazzák a DNS-találatokat. Ezért az eszközök megjelenítése a teljes DNS-címkeresés egy teszt minden egyes futtatásakor. Ha a saját ügyfélről, a teljes DNS-keresési teljesítményét a TTL időszakra egyszer csak tapasztalható.
 
-## <a name="sample-tools-to-measure-dns-performance"></a>DNS-teljesítményének méréséhez minta eszközök
+## <a name="sample-tools-to-measure-dns-performance"></a>DNS-teljesítmény mérésére mintául szolgáló eszközök
 
 * [SolveDNS](http://www.solvedns.com/dns-comparison/)
 
-    SolveDNS teljesítmény számos eszközt kínál. A DNS-összehasonlítás eszköz tekintheti meg, mennyi időbe telik feloldani a DNS-nevet, és hogyan, amely összehasonlítja a más DNS-szolgáltató.
+    SolveDNS teljesítmény számos eszközt kínál. A DNS-összehasonlító eszköz jeleníti meg, mennyi ideig tart feloldani a DNS-nevet, és hogyan, amely összehasonlítja a más DNS-szolgáltatók.
 
 * [WebSitePulse](http://www.websitepulse.com/help/tools.php)
 
-    A legegyszerűbb eszközök egyik WebSitePulse. Adja meg az URL-címet a DNS-feloldási idejét, az első bájtig eltelt, az utolsó bájtig eltelt és egyéb teljesítménystatisztikáit. Különböző teszt három hely közül választhat. Ebben a példában látható, hogy az első végrehajtása jeleníti meg, hogy a DNS-címkeresés 0.204 mp vesz igénybe.
+    A legegyszerűbb eszközök egyik WebSitePulse. Adja meg az URL-cím DNS-feloldási idő, az első bájtig eltelt, az utolsó bájtig eltelt és a más teljesítménystatisztikáit megtekintéséhez. Három különböző teszthelyszín közül választhat. Ebben a példában láthatja, hogy az első végrehajtás jeleníti meg, hogy a DNS-címkeresés szükséges 0.204 mp-ben.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
-    Az eredmény tárolódik, mert a második vizsgálat a Traffic Manager-végpontot a DNS-címkeresés szükséges 0,002 mp.
+    Az eredményeket a rendszer gyorsítótárazza, mert a Traffic Manager-végpontot a második vizsgálat a DNS-címkeresés veszi 0,002 mp-ben.
 
     ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
 
-* [Hitelesítésszolgáltató App szintetikus figyelője](https://asm.ca.com/en/checkit.php)
+* [Hitelesítésszolgáltató alkalmazás szintetikus figyelője](https://asm.ca.com/en/checkit.php)
 
-    Korábbi nevén a Watchmouse ellenőrzés webhely eszköz, a hely jelzik, hogy a DNS-feloldási idejét a több földrajzi régióban elhelyezkedő egyidejűleg. Adja meg az URL-címet a DNS-feloldási idejét, a kapcsolati időt és a több földrajzi helyről sebessége. Ez a vizsgálat segítségével megtekintheti, melyik üzemeltetett szolgáltatás visszaküldött a világ különböző helyeken.
+    Korábbi nevén a Watchmouse ellenőrzés webhely eszköz, ezen a helyen bemutatják, a DNS-feloldási idő a több földrajzi régióban egyszerre. Adja meg az URL-cím DNS-feloldási idő, a kapcsolat ideje és a több földrajzi helyről sebessége. Ez a teszt segítségével megtekintheti, mely üzemeltetett szolgáltatás számára a világ különböző pontjain különböző helyeken adja vissza.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
 * [Pingdom](http://tools.pingdom.com/)
 
-    Ez az eszköz biztosít minden elem egy weblap teljesítménystatisztikáit. A lap elemzés lapon láthatók a DNS-címkeresés töltött idő százalékos aránya.
+    Ez az eszköz egy weblap egyes elemeinek teljesítménystatisztikáit biztosít. A lap elemzési lapon láthatók a DNS-címkeresés töltött időt.
 
-* [Újdonságok a DNS?](http://www.whatsmydns.net/)
+* [Mi a DNS?](http://www.whatsmydns.net/)
 
-    Ezen a helyen nem a DNS-címkeresést 20 különböző helyekről, és megjeleníti az eredményeket a térképen.
+    Ez a hely DNS-címkeresés nem 20 különböző helyekről, és megjeleníti az eredményeket a térképen.
 
-* [Webes felület Dig](http://www.digwebinterface.com)
+* [Webes felület megismerésére](http://www.digwebinterface.com)
 
-    Ezen a helyen látható, a DNS-adatok, beleértve a CNAME és A rekordok részletes. Győződjön meg arról, hogy a "Kifestés egyszínűre output" és "Statisztikák" Ellenőrizze a beállítások, és válassza az "All" Nameservers alatt.
+    Ezen a helyen jeleníti meg, beleértve a CNAME-rekordokat és a egy a rekordot a DNS-adatok részletesebb. Ellenőrizze a "Kifestés egyszínűre kimenet" és "Statisztikák" Ellenőrizze a beállítások, és válassza ki az "All" alatt delegálásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[A Traffic Manager forgalom-útválasztási módszerei](traffic-manager-routing-methods.md)
+[Tudnivalók a Traffic Manager útválasztási módszerei](traffic-manager-routing-methods.md)
 
-[A Traffic Manager-beállítások tesztelésére](traffic-manager-testing-settings.md)
+[A Traffic Manager beállításainak tesztelése](traffic-manager-testing-settings.md)
 
 [A Traffic Manager műveletei (REST API-referencia)](http://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager-parancsmagok](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+[Az Azure Traffic Manager parancsmagjai](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)
 

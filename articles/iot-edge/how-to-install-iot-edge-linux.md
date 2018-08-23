@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/14/2018
 ms.author: kgremban
-ms.openlocfilehash: be8fb801acfb625685604a302051d813bfd97939
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 5cd12d4fab97f295cad1e0ea06112fc53e376b12
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325302"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055304"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (x64) linuxon
 
@@ -128,6 +128,9 @@ Miután megadta a kiépítési adatokat a konfigurációban, a démon újraindí
 ```cmd/sh
 sudo systemctl restart iotedge
 ```
+
+>[!TIP]
+>Futtassa emelt szintű jogosultságok szükségesek `iotedge` parancsokat. Jelentkezzen ki a gépet, és jelentkezzen be az IoT Edge-modul telepítése után először, az engedélyek automatikusan frissülnek. Addig használja **sudo** elé a parancsokat. 
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 

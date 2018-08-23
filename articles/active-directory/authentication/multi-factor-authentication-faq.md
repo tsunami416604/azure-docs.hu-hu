@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b4fc67acae83573db772923a94cdbb6b1c4a301f
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159841"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054501"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication – gyakran ismételt kérdések
 
@@ -218,7 +218,7 @@ Megoldás esetében ez a hiba, hogy rendelkezzen külön felhasználói fiókok 
 
 Ha a kérdését itt nem válaszolt, hagyja a megjegyzések, az oldal alján. Vagy a segítségkéréshez néhány további lehetőség:
 
-* Keresés a [Microsoft támogatási tudásbázisát](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) megoldások gyakori technikai problémákra.
+* Keresés a [Microsoft támogatási tudásbázisát](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) megoldások gyakori technikai problémákra.
 * Keresse meg és keresse meg a technikai kérdéseket és válaszokat a Közösségtől, vagy kérje meg a saját kérdését a [Azure Active Directory-fórumok](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 * Ha már a régebbi PhoneFactor-ügyfelek és a kérdése van vagy segítségre van szüksége új jelszó kérése, használja a [új jelszó kérésére vonatkozó](mailto:phonefactorsupport@microsoft.com) támogatási eset nyitása mutató hivatkozást.
 * Forduljon a támogatási szakember keresztül [Azure multi-factor Authentication-kiszolgáló (PhoneFactor) támogatás](https://support.microsoft.com/oas/default.aspx?prid=14947). Ha felvette velünk a kapcsolatot, esetén lehet hasznos, a lehető a problémával kapcsolatban, hozzáadhatja a lehető legtöbb információt. Információt adhat meg az oldal, ahol a hiba, a konkrét hibakód, az adott munkamenet-azonosító és a felhasználó, akik láttak a hiba azonosítója látott tartalmazza.

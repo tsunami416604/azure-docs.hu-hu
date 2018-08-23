@@ -1,6 +1,6 @@
 ---
-title: Vállalati B2B - Azure Logic Apps-integráció |} Microsoft Docs
-description: B2B munkafolyamatok építhetők fel, és vállalati integrációs feladatokhoz a logic apps a vállalati integrációs csomaggal támogatás
+title: A B2B - Azure Logic Apps vállalati integrációja |} A Microsoft Docs
+description: B2B-munkafolyamatok és a vállalati integrációs forgatókönyvek támogatása a logic apps és az Enterprise Integration Pack
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 25349d48d88b64568fef0f5a6bac5950da15196b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298637"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42057241"
 ---
-# <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>Áttekintés: B2B forgatókönyvek és a vállalati integrációs csomag kommunikáció
+# <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>Áttekintés: B2B-forgatókönyvekhez és kommunikációs és az Enterprise Integration Pack
 
-Az üzleti vállalatközi (B2B) munkafolyamatok és az Azure Logic Apps zökkenőmentes kommunikációt engedélyezheti a vállalati integrációs feladatokhoz a Microsoft felhőalapú megoldással, a vállalati integrációs csomagot. A szervezetek továbbíthatja az üzenetek elektronikus úton, még akkor is, ha azok használnak a különböző protokollok és formázza az adathordozót. A csomag különböző formátumokban átalakítja az olyan formátumra, amely a szervezet rendszerek értelmezi, és feldolgozni. A szervezetek továbbíthatja az üzeneteket keresztül ipari szabványnak számító protokollokat, beleértve a [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), és [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Titkosítás és a digitális aláírás-üzenetek is biztosíthassa.
+Vállalatközi (B2B) munkafolyamatok és az Azure Logic Apps zökkenőmentes kommunikációt engedélyezheti a vállalati integrációs kérdéseket a Microsoft felhőalapú megoldása, az Enterprise Integration Pack. Szervezetek is alkalmazásközi elektronikus úton, még akkor is, ha eltérő protokollok és formátumok használata. A csomag különböző formátumokat alakítja át az olyan formátumra, amely a szervezet rendszerek és feldolgozható formátumokba. Szervezetek üzenetváltás is beleértve iparági szabványnak megfelelő protokollokon keresztül [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), és [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). A titkosítás és digitális aláírások üzeneteket is gondoskodhat.
 
-Ha ismeri a BizTalk Server vagy a Microsoft Azure BizTalk szolgáltatások, nincsenek a vállalati integrációs szolgáltatások, könnyen használható, mert a legtöbb fogalmak hasonlóak. Egy fő különbség az, hogy a vállalati integrációs integrációs fiókok használja a tárolása és kezelése az összetevők B2B kommunikációban használt leegyszerűsítése érdekében. 
+Ha ismeri a BizTalk Server vagy a Microsoft Azure BizTalk Services, nincsenek az Enterprise Integration funkciói, könnyen használható, mert a legtöbb fogalmak hasonlóak. Egy fő különbség az, hogy a vállalati integrációs integrációs fiókok használja egyszerűsítése érdekében a tároló és a B2B-kommunikációban használt összetevők kezelését. 
 
-A vállalati integrációs csomag architektúráját, "integrációs fiókok" alapul. Ezek a fiókok olyan felhőalapú tárolók tároló összes a összetevők, például a sémák, partnerek, tanúsítványok, a maps és megállapodások. Ezen összetevők is használhatja, tervezése, telepítése és karbantartása a B2B alkalmazások és a logic apps B2B munkafolyamatok építhetők fel. Azonban ezen összetevők használata előtt meg kell először az integráció fiók összekötése a Logic Apps alkalmazást. Ezt követően a Logic Apps alkalmazást integrációs fiókja összetevők férhetnek hozzá.
+Tekintve az Enterprise Integration Pack "integrációs fiók" alapján történik. Ezek a fiókok olyan felhőalapú tárolók tároló összes az összetevőkhöz, például a sémákat, partnerek, tanúsítványok, térképek és megállapodások. Ezek az összetevők megtervezésére, üzembe helyezése és karbantartása a B2B-alkalmazások, és a logic apps B2B-munkafolyamatok létrehozásához is használhatja. De ezek az összetevők használata előtt először az integrációs fiók hozzá kell rendelnie a logikai alkalmazást. Ezt követően a logikai alkalmazás hozzáférhet az integrációs fiók összetevői.
 
-## <a name="why-should-you-use-enterprise-integration"></a>Miért kell használni a vállalati integrációs?
+## <a name="why-should-you-use-enterprise-integration"></a>Miért használjam a vállalati integrációs?
 
-* A vállalati integrációs tárolhatja az összetevők egy helyen--integrációs fiókját.
-* B2B munkafolyamatok építhetők fel, és a külső szolgáltatásként szoftver (SaaS) alkalmazások, a helyszíni alkalmazásokhoz és az egyéni alkalmazások integrálása az Azure Logic Apps és az összekötők használatával.
-* A logic Apps alkalmazások az Azure functions létrehozhat egyéni kódot.
+* Vállalati integráció, az összes összetevőt egy helyen – az integrációs fiók tárolhatja.
+* B2B-munkafolyamatok és a külső szolgáltatottszoftver (SaaS) alkalmazások, a helyszíni alkalmazások és egyéni alkalmazások integrálása az Azure Logic Apps-motor és az összes összekötő használatával.
+* A logic Apps az Azure functions egyéni kódot is létrehozhat.
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>Ismerkedés a vállalati integrációs hogyan?
 
-Létrehozhatja és a vállalati integrációs csomag révén a Logic App Designer B2B alkalmazások kezelése a **Azure-portálon**. Emellett kezelhetők a logic apps a [PowerShell](https://msdn.microsoft.com/library/azure/mt652195.aspx "a Logic apps PowerShell témaköreiben talál").
+Build és a B2B-alkalmazások és az Enterprise Integration Pack a Logikaialkalmazás-tervező segítségével kezelheti a **az Azure portal**. Emellett kezelheti a logic apps- [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "Logic apps PowerShell").
 
-Alkalmazások létrehozása az Azure portálon előtt végre kell hajtania magas szintű lépései a következők:
+Az alábbiakban a magas szintű lépéseket kell tennie, mielőtt alkalmazásokat hozhat létre az Azure Portalon:
 
-![Kép – áttekintés](media/logic-apps-enterprise-integration-overview/overview-0.png)  
+![áttekintő kép](media/logic-apps-enterprise-integration-overview/overview-0.png)  
 
-## <a name="what-are-some-common-scenarios"></a>Mik azok a olyan gyakori forgatókönyveket tartalmaz?
+## <a name="what-are-some-common-scenarios"></a>Mik azok a néhány gyakori helyzet?
 
-Vállalati integrációs ezeket az ipari szabványok támogatja:
+Vállalati integráció a következő iparági szabványok támogatja:
 
 * EDI - elektronikus adatcsere
-* EAI - vállalati alkalmazások integrálása
+* EAI - Enterprise Application Integration
 
-## <a name="heres-what-you-need-to-get-started"></a>Ez szükséges a kezdéshez
+## <a name="heres-what-you-need-to-get-started"></a>Mire lesz szüksége a kezdéshez
 
-* Azure-előfizetés integrációs fiókkal
+* Integrációs fiók az Azure-előfizetés
 * A Visual Studio 2015-leképezések és sémák létrehozása
-* [A Microsoft Azure Logic Apps Enterprise-integrációs eszközök a Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)  
+* [A Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)  
 
 ## <a name="try-it-now"></a>Kipróbálás
 
-[Egy teljesen működőképes minta AS2 küldési telepítése, és a logikai alkalmazás fogadni](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive) , amely a B2B funkciókat használ az Azure Logic Apps.
+[Üzembe helyezése egy teljesen működőképes minta AS2 küldése és fogadása a logic app](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive) a B2B-funkciói, amely használja az Azure Logic Apps.
 
 ## <a name="learn-more"></a>Részletek
-* [Szerződések](../logic-apps/logic-apps-enterprise-integration-agreements.md "vállalati integrációs megállapodások ismertetése")
-* [A vállalatok (B2B) környezetek](../logic-apps/logic-apps-enterprise-integration-b2b.md "megtudhatja, hogyan hozzon létre a Logic apps B2B szolgáltatások ")  
-* [Tanúsítványok](logic-apps-enterprise-integration-certificates.md "vállalati integrációs tanúsítványokkal kapcsolatos további információ")
-* [Fájl kódolás/dekódolás lapos](logic-apps-enterprise-integration-flatfile.md "útmutató kódolni és dekódolási egybesimított fájl tartalma")  
-* [Integrációs fiókok](../logic-apps/logic-apps-enterprise-integration-accounts.md "integrációs fiókok ismertetése")
-* [Leképezhető](../logic-apps/logic-apps-enterprise-integration-maps.md "vállalati integrációs maps ismertetése")
-* [Partnerek](logic-apps-enterprise-integration-partners.md "vállalati integrációs partnerek ismertetése")
-* [Sémák](logic-apps-enterprise-integration-schemas.md "további információ a vállalati integrációs sémák")
-* [XML-üzenet érvényesítés](logic-apps-enterprise-integration-xml.md "megtudhatja, hogyan XML-üzenetek a Logic apps ellenőrzése")
-* [XML-átalakító](logic-apps-enterprise-integration-transform.md "vállalati integrációs maps ismertetése")
-* [Vállalati integrációs összekötők](../connectors/apis-list.md "további információ a vállalati integrációs csomag összekötők")
-* [Integráció fiók metaadat](../logic-apps/logic-apps-enterprise-integration-metadata.md "integrációs fiók metaadat ismertetése")
-* [B2B üzeneteket figyelő](logic-apps-monitor-b2b-message.md "tudhat meg többet a B2B üzenetek figyelése")
-* [Az OMS-portálon B2B üzenetek nyomon követése](logic-apps-track-b2b-messages-omsportal.md "tudhat meg többet az OMS-portálon B2B üzenetek nyomon követése")
+* [Szerződések](../logic-apps/logic-apps-enterprise-integration-agreements.md "megismerheti a vállalati integrációs szerződések")
+* [Vállalatközi (B2B) környezetek](../logic-apps/logic-apps-enterprise-integration-b2b.md "megtudhatja, hogyan hozhat létre a Logic apps B2B-funkciókkal ")  
+* [Tanúsítványok](logic-apps-enterprise-integration-certificates.md "megismerheti a vállalati integrációs tanúsítványokat")
+* [Egybesimított fájl kódolása és dekódolása](logic-apps-enterprise-integration-flatfile.md "megtudhatja, hogyan kódolhat és dekódolhat egybesimított fájl tartalma")  
+* [Integrációs fiókok](../logic-apps/logic-apps-enterprise-integration-accounts.md "megismerheti a integrációs fiókok")
+* [Térképek](../logic-apps/logic-apps-enterprise-integration-maps.md "megismerheti a vállalati integrációs térképek")
+* [Partnerek](logic-apps-enterprise-integration-partners.md "megismerheti a vállalati integrációs partnerek")
+* [Sémák](logic-apps-enterprise-integration-schemas.md "megismerheti a vállalati integrációs sémák")
+* [Üzenet XML-érvényesítés](logic-apps-enterprise-integration-xml.md "megtudhatja, hogyan érvényesítheti az XML-üzenetek a Logic apps használatával")
+* [XML-átalakításhoz](logic-apps-enterprise-integration-transform.md "megismerheti a vállalati integrációs térképek")
+* [Vállalati integrációs összekötők](../connectors/apis-list.md "további tudnivalók az enterprise integration pack-összekötők")
+* [Integrációs fiók metaadat](../logic-apps/logic-apps-enterprise-integration-metadata.md "további információ az integrációs fiók metaadatok")
+* [B2B üzenetek megfigyelése](logic-apps-monitor-b2b-message.md "B2B-üzenetek monitorozásával kapcsolatos további információkért")
+* [Az OMS-portálon B2B üzenetek nyomon követése](logic-apps-track-b2b-messages-omsportal.md "tudjon meg többet az OMS-portálon B2B üzenetek nyomon követése")
 

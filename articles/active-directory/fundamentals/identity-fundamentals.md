@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 797c35bad03c063203e3616740af633b71835a9c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 327cecd129befb56c33d7fcf2d59ee5b58a18549
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39640216"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42022332"
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Az Azure-identitáskezelés alapjai
 
@@ -27,7 +27,7 @@ Ahogy egyre több digitális céges erőforrás kerül a vállalati hálózaton 
 
 A Microsoft immár több mint egy évtizede biztosít védelmet a felhőalapú identitásoknak, és az [Azure Active Directory (AD)](active-directory-whatis.md) révén mostantól ugyanezek a védelmi rendszerek az Ön számára is elérhetővé válnak. Az Azure AD segítségével a vállalati rendszergazdák egyszerűen, minden eddiginél fejlettebb biztonsági és szabályozási megoldásokkal biztosíthatják a felhasználók és a rendszergazdák felelősségre vonhatóságát.
 
-Az Azure AD Premium egy olyan, fejlett védelmi funkciókkal ellátott, felhőalapú identitás- és hozzáférés-kezelési megoldás, amellyel egyetlen biztonságos identitás állítható be az összes alkalmazáshoz, engedélyezhető a ([Microsoft intelligens biztonsági gráffal](https://www.microsoft.com/en-us/security/intelligence) kibővített) identitásvédelem, valamint a Privileged Identity Management. Az Azure AD Premium nem csupán egy újabb monitorozási vagy jelentéskészítési eszköz, de valós idejű védelmet is biztosít a felhasználói identitásoknak, valamint lehetővé teszi kockázatalapú, adaptív hozzáférési szabályzatok létrehozását a céges adatok védelme érdekében.
+Az Azure AD Premium egy olyan, fejlett védelmi funkciókkal ellátott, felhőalapú identitás- és hozzáférés-kezelési megoldás, amellyel egyetlen biztonságos identitás állítható be az összes alkalmazáshoz, engedélyezhető a ([Microsoft intelligens biztonsági gráffal](https://www.microsoft.com/security/intelligence) kibővített) identitásvédelem, valamint a Privileged Identity Management. Az Azure AD Premium nem csupán egy újabb monitorozási vagy jelentéskészítési eszköz, de valós idejű védelmet is biztosít a felhasználói identitásoknak, valamint lehetővé teszi kockázatalapú, adaptív hozzáférési szabályzatok létrehozását a céges adatok védelme érdekében.
 
 Az alábbi rövid videó az Azure AD identitáskezelési és -védelmi funkcióiról nyújt gyors áttekintést:
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]

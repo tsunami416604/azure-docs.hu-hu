@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6ed8265a0b1a014ad15a6bb42fabb6003fb6a775
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 12b5c013a0704eb2d3f7df58011571b902955c75
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342936"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42055296"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Telepítse a Durable Functions bővítmény és a minták (az Azure Functions)
 
@@ -146,14 +146,14 @@ A Visual Studio Code kiterjedő minden főbb platformhoz – a Windows, macOS é
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Igény szerint használhatja az Azure Portalon Durable Functions-fejlesztéshez.
+Igény szerint használhatja a [az Azure portal](https://portal.azure.com) Durable Functions-fejlesztéshez.
 
    > [!NOTE]
    > Tartós függvények használata Javascriptben még nem állnak rendelkezésre a portálon.
 
 ### <a name="create-an-orchestrator-function"></a>Az orchestrator-függvény létrehozása
 
-1. Hozzon létre egy új függvényalkalmazást, [functions.azure.com](https://functions.azure.com/signin).
+1. Új függvényalkalmazás létrehozása a portálon, ahogyan az a [funkciók rövid cikk](functions-create-first-azure-function.md#create-a-function-app).
 
 2. Konfigurálja a függvényalkalmazást, hogy [2.0 futtatókörnyezet verziójának használatához](set-runtime-version.md).
 

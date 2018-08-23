@@ -78,7 +78,7 @@
 ### [Az Azure File Storage használata Linuxszal](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Az Azure Table Storage használatának első lépései](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Az Azure Queue Storage használatának első lépései](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Tárfiók létrehozása](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+### [Tárfiók létrehozása](../../storage/common/storage-quickstart-create-account.md)
 ### [Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Az Azure CLI és az Azure Storage együttes használata](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Storage-ügyféleszközök](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

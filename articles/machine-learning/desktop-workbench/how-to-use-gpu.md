@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learning GPU használata |} Microsoft Docs
-description: Ez a cikk ismerteti a grafikus feldolgozása egységek (GPU) kell még betanítani mély Neurális hálózatokat az Azure Machine Learning-munkaterület használata.
+title: Hogyan használható az Azure Machine Learning GPU |} A Microsoft Docs
+description: Ez a cikk ismerteti a grafikus feldolgozási egységek (GPU) használja a Neurális hálózatokat az Azure Machine Learning Workbenchben.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,31 +11,31 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 852f514a36ea640f478c5cc5ebbb137ca962703a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f3b6c4f6af14615511400650662fe7a350c172ba
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37116058"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061057"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Az Azure Machine Learning GPU használata
-Grafikus processzorra (GPU) széles körben használt, amely általában akkor szükséges, ha bizonyos mély Neurális hálózat modellek betanítása számításilag intenzív feladatok feldolgozásához. Feldolgozóegységekkel használatával jelentősen csökkentheti a modellek képzési idején. Ebben a dokumentumban megismerheti, hogyan konfigurálhatja az Azure ML munkaterület használandó [DSVM (adatok tudományos virtuális gép)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) Feldolgozóegységekkel felszerelt végrehajtási célként. 
+Grafikus feldolgozóegység (GPU) széles körben használt, nagy számítási igényű feladatokat, amelyek általában fordulhat elő, amikor bizonyos Neurális hálózat modellek betanítása feldolgozásához. Gpu-k használatával jelentősen csökkentheti a modellek képzési idején. Ebből a dokumentumból megismerheti, hogyan konfigurálhatja az Azure Machine Learning Workbench használata [DSVM (adatelemző virtuális gép)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) gpu-kkal felszerelt végrehajtási célként. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Ez az útmutató Útmutató lépéseit, kell első [telepítse az Azure ML munkaterület](../service/quickstart-installation.md).
-- Ön hozzáféréssel kell rendelkeznie NVidia Feldolgozóegységekkel felszerelt számítógépeken.
-    - Közvetlenül a helyi számítógépen (Windows vagy macOS) a parancsfájlok futtathatók a GPU-k tekintetében.
-    - A virtuális gép Feldolgozóegységekkel futtathatja parancsfájlok egy Docker-tároló.
+- Ez az útmutató elvégezhető, először szüksége [Azure Machine Learning Workbench telepítése](../service/quickstart-installation.md).
+- Szüksége lesz az NVidia gpu-kkal felszerelt számítógépeken való hozzáférést.
+    - Gpu-k használatával közvetlenül a helyi gépen (Windows vagy macOS) futtathatók a parancsprogramok.
+    - Gpu-k használatával Linux rendszerű gépen a Docker-tárolóban is futtathatja parancsfájlok...
 
-## <a name="execute-in-local-environment-with-gpus"></a>A végrehajtást _helyi_ Feldolgozóegységekkel környezet
-Azure ML munkaterület Feldolgozóegységekkel felszerelt számítógépre telepítheti, és elleni végrehajtása _helyi_ környezetben. Ez lehet:
-- Egy fizikai Windows vagy macOS gép.
-- Windows virtuális gép (virtuális gép) például a Windows DSVM kiépített Azure NC sorozatú virtuális gépek sablon használatával.
+## <a name="execute-in-local-environment-with-gpus"></a>Hajtsa végre a _helyi_ gpu-környezet
+Az Azure Machine Learning Workbench telepítése a GPU-kkal felszerelt számítógépre, és hajtja végre _helyi_ környezetben. Ez lehet:
+- Egy fizikai Windows- vagy MacOS rendszerű gépre.
+- Például egy Windows DSVM Windows VM (virtuális gép) üzembe helyezett Azure NC sorozatú virtuális gépek sablon használatával.
 
-Ebben az esetben nincsenek Azure ML-munkaterület szükséges semmilyen speciális konfigurációra. Csak győződjön meg arról, hogy a szükséges illesztőprogramok, eszközök gazdag és GPU-kompatibilis gépi tanulási helyileg telepített könyvtárak. Egyszerűen hajtható végre elleni _helyi_ környezetben, ahol a Python-futtatókörnyezet közvetlenül hozzáférhetnek a helyi GPU-hardveres.
+Ebben az esetben nem szükséges az Azure ML Workbenchben speciális konfiguráció vannak. Csak a ellenőrizze, hogy Ön rendelkezik a szükséges illesztőprogramok, eszközkészletek és GPU-kompatibilis machine learning-kódtárak helyben telepítve legyen. Egyszerűen hajtja végre _helyi_ környezetben, ahol a Python-futtatókörnyezet közvetlenül hozzáférhet a helyi GPU-hardveres.
 
-1. Nyissa meg a AML munkaterületet. Ugrás a **fájl** és **nyissa meg a parancssort**. 
-2. A parancssorból telepítse a mély tanulási GPU-kompatibilis keretrendszer például a Microsoft kognitív eszközkészlet TensorFlow vagy stb. Példa:
+1. Nyissa meg az AML Workbench. Lépjen a **fájl** és **parancssor megnyitása**. 
+2. A parancssorból telepítse a deep learning GPU-kompatibilis keretrendszert, például a Microsoft Cognitive Toolkit, tensorflow-hoz és stb. Példa:
 
 ```batch
 REM install latest TensorFlow with GPU support
@@ -45,48 +45,48 @@ REM install Microsoft Cognitive Toolkit 2.5 with GPU support on Windows
 C:\MyProj> pip install https://cntk.ai/PythonWheel/GPU/cntk_gpu-2.5.1-cp35-cp35m-win_amd64.whl
 ```
 
-3. Írja be, amely kihasználja a szalagtárak tanulási mély Python-kódot.
-4. Válasszon _helyi_ számítási környezetet, és futtassa a Python-kódot.
+3. Python-kód, amely a deep learning-kódtárak írni.
+4. Válasszon _helyi_ számítási környezet, és hajtsa végre a Python-kódban.
 
 ```batch
 REM execute Python script in local environment
 C:\MyProj> az ml experiment submit -c local my-deep-learning-script.py
 ```
 
-## <a name="execute-in-docker-environment-on-linux-vm-with-gpus"></a>A végrehajtást _docker_ Feldolgozóegységekkel rendelkező Linux virtuális gépet környezete
-Az Azure ML munkaterület végrehajtási is támogatja a Docker egy Azure Linux virtuális gép. Itt lehetősége van egy nagyszerű számításilag időigényes feladat futtatható hatékony virtuális hardvereszköz, és csak azért fizessen a használati által, hogy, amikor hajtja végre. Alapvetően is Feldolgozóegységekkel használata a Linux virtuális gépen, az Ubuntu alapú DSVM rendelkezik a szükséges CUDA illesztőprogramok és előre telepített, könyvtárak így sokkal egyszerűbb, mivel a telepítési. Kövesse az alábbi lépéseket:
+## <a name="execute-in-docker-environment-on-linux-vm-with-gpus"></a>Hajtsa végre a _docker_ környezetben, a Linux rendszerű virtuális gépek a GPU-kkal
+Az Azure Machine Learning Workbench is végrehajtása támogatja a Docker az Azure Linux virtuális gép. Itt van egy remek megoldást futtatható nagy számítási igényű feladatok nagy teljesítményű virtuális hardvereszköz, és csak azért kell fizetnie a használati kikapcsolásával, ha ezzel elkészült. Bár elvileg gpu-k használata Linux rendszerű virtuális gépeken, az Ubuntu-alapú DSVM tartalmaz a szükséges CUDA-illesztőprogramok és kódtárak előre telepítve van, így sokkal könnyebb a telepítési. Kövesse az alábbi lépéseket:
 
-### <a name="create-a-ubuntu-based-linux-data-science-virtual-machine-in-azure"></a>Ubuntu Linux adatokhoz tudományos virtuális gép létrehozása az Azure-ban
-1. Nyissa meg a webböngészőt, és navigáljon a [Azure-portálon](https://portal.azure.com)
+### <a name="create-a-ubuntu-based-linux-data-science-virtual-machine-in-azure"></a>Egy Ubuntu-alapú Linux rendszerű adatelemző virtuális gép létrehozása az Azure-ban
+1. Nyissa meg a webböngészőjét, és nyissa meg a [Azure Portalon](https://portal.azure.com)
 
-2. Válassza ki **+ új** a portál bal oldalon található.
+2. Válassza ki **+ új** bal oldalán a Portalon.
 
-3. Keresse meg az "Adatok tudományos virtuális gép Linux (Ubuntu)" a piactéren.
+3. Keressen a "Adatelemző virtuális gép Linux (Ubuntu)" a Marketplace-en.
 
-4. Kattintson a **létrehozása** egy Ubuntu DSVM létrehozásához.
+4. Kattintson a **létrehozás** hozhat létre egy Ubuntu dsvm-hez.
 
-5. Töltse ki a **alapjai** a szükséges információt a képernyőn.
-Lehetőséget választva a virtuális gép helyét, vegye figyelembe, hogy GPU virtuális gépek találhatók csak bizonyos Azure-régiók, például **déli középső Régiójában**. Lásd: [régiónként rendelkezésre álló termékek számítási](https://azure.microsoft.com/regions/services/).
+5. Töltse ki a **alapjai** űrlapot a szükséges információkkal.
+A virtuális gép helyének kiválasztásakor vegye figyelembe, hogy GPU-beli virtuális gépek csak elérhető egyes Azure-régióban, például **USA déli középső Régiójában**. Lásd: [elérhető termékek régiók szerint számítási](https://azure.microsoft.com/regions/services/).
 Az OK gombra kattintva mentse a **alapjai** információkat.
 
-6. Válassza ki a virtuális gép méretét. Válasszon ki egy virtuális hálózati vezérlő által az utóbbiak NVidia GPU modulok felszerelt méretét.  Kattintson a **nézet összes** a teljes lista megtekintéséhez, igény szerint. További információ [GPU-ellátva Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
+6. Válassza ki a virtuális gép méretét. Válasszon egyet a különböző méretű virtuális gépekkel NC-előtaggal, amely NVidia GPU-lapkáihoz vannak ellátva.  Kattintson a **nézet összes** igény szerint teljes listájának megtekintéséhez. Tudjon meg többet [GPU-megkönnyíti az Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
 
-7. A többi beállítás befejezéséhez, és a vásárlási információk áttekintéséhez. Kattintson a beszerzési a virtuális gép létrehozásához. Jegyezze fel a virtuális gép számára lefoglalt IP-címét. 
+7. Fejezze be a többi beállításnál, és tekintse át a vásárlási információk. Kattintson a vásárlás a virtuális gép létrehozásához. Jegyezze fel a virtuális gép számára lefoglalt IP-cím. 
 
-### <a name="create-a-new-project-in-azure-ml-workbench"></a>Hozzon létre egy új projektet az Azure ML munkaterület 
-Használhatja a _TensorFlow használatával zárolásának MNIST_ példa, vagy a _CNTK zárolásának MNIST adatkészlet_ példa.
+### <a name="create-a-new-project-in-azure-ml-workbench"></a>Új projekt létrehozása az Azure ML Workbenchben 
+Használhatja a _TensorFlow használatával Írisz MNIST_ például vagy a _MNIST Írisz adatkészletet a CNTK_ példa.
 
-### <a name="create-a-new-compute-target"></a>Hozzon létre egy új számítási cél
-Nyissa meg a parancssor az Azure ML munkaterületet. Adja meg a következő parancsot. Az alábbi példa a helyőrzőket cserélje le a saját értékeit a neve, a IP-cím, a felhasználónév és a jelszó. 
+### <a name="create-a-new-compute-target"></a>Hozzon létre egy új számítási célt
+Indítsa el az Azure Machine Learning Workbench parancssori. Adja meg a következő parancsot. A helyőrző szöveget az alábbi példában cserélje le a saját nevét, IP címe, felhasználónév és jelszó értékeit. 
 
 ```batch
 C:\MyProj> az ml computetarget attach remotedocker --name "my_dsvm" --address "my_dsvm_ip_address" --username "my_name" --password "my_password" 
 ```
 
-### <a name="configure-azure-ml-workbench-to-access-gpu"></a>Azure ML-munkaterület GPU hozzáférés konfigurálása
-Lépjen vissza a projektet, és nyissa meg **fájlnézetéhez**, és találat a **frissítése** gombra. Most megjelenik a két új konfigurációs fájlok `my_dsvm.compute` és `my_dsvm.runconfig`.
+### <a name="configure-azure-ml-workbench-to-access-gpu"></a>Az Azure ML Workbenchben való hozzáférés GPU konfigurálása
+Lépjen vissza a projektet, és nyissa meg **Fájlnézetben**, majd kattintson a **frissítése** gombra. Ekkor megjelenik a két új konfigurációs fájlok `my_dsvm.compute` és `my_dsvm.runconfig`.
  
-Nyissa meg a `my_dsvm.compute`. Módosítsa a `baseDockerImage` való `microsoft/mmlspark:plus-gpu-0.7.9` , és adja hozzá egy új sor `nvidiaDocker: true`. Ezért a fájl két sort kell rendelkezniük:
+Nyissa meg a `my_dsvm.compute`. Módosítsa a `baseDockerImage` való `microsoft/mmlspark:plus-gpu-0.7.9` , és adjon hozzá egy új sort `nvidiaDocker: true`. Ezért a fájl alábbi két sorral kell rendelkeznie:
  
 ```yaml
 ...
@@ -94,15 +94,15 @@ baseDockerImage: microsoft/mmlspark:plus-gpu-0.9.9
 nvidiaDocker: true
 ```
  
-Most nyissa meg a `my_dsvm.runconfig`, módosítsa `Framework` értéket `PySpark` való `Python`. Ha ezt a sort nem talál, vegye fel, mert az alapértelmezett érték lesz `PySpark`.
+Most nyissa meg a `my_dsvm.runconfig`, módosítsa `Framework` értéket `PySpark` való `Python`. Ha nem látja ezt a sort, adja hozzá, mivel az alapértelmezett érték `PySpark`.
 
 ```yaml
 "Framework": "Python"
 ```
-### <a name="reference-deep-learning-framework"></a>Hivatkozás a részletes oktatási keretrendszer 
-Nyissa meg `conda_dependencies.yml` fájlt, és ellenőrizze, hogy a tanulási keretrendszer Python-csomagokat, átfogó a GPU verzióját használja. A mintaprojektjeit CPU-verziók listában, ezért meg kell ezt a módosítást.
+### <a name="reference-deep-learning-framework"></a>Hivatkozás Deep Learning keretrendszer 
+Nyissa meg `conda_dependencies.yml` fájlt, és győződjön meg arról, a deep learning-keretrendszer Python-csomagok GPU verzióját használja. A minta-projektek listázása a CPU-verziók, ezért ezt a módosítást kell.
 
-Példa a TensorFlow: 
+Példa a tensorflow-hoz: 
 ```
 name: project_environment
 dependencies:
@@ -111,7 +111,7 @@ dependencies:
   - tensorflow-gpu
 ```
 
-Példa a Microsoft kognitív eszközkészlet:
+Példa a Microsoft Cognitive Toolkit:
 ```yaml
 name: project_environment
 dependencies:
@@ -122,13 +122,13 @@ dependencies:
 ```
 
 ### <a name="execute"></a>Végrehajtás
-Most már készen áll a Python-parancsfájl futtatását. Az Azure ML munkaterület használatával belül futtathatja a `my_dsvm` környezetben, vagy indíthatja el azt a parancssorból:
+Most már készen áll a Python-szkriptek futtatásához. Az Azure Machine Learning Workbench használatával belül futtathatja őket a `my_dsvm` környezet, vagy Ön is indítsa el az eszközt a parancssorból:
  
 ```batch
 C:\myProj> az ml experiment submit -c my_dsvm my_tensorflow_or_cntk_script.py
 ```
  
-Győződjön meg arról, hogy használja-e a GPU, vizsgálja meg a futtatási kimenet az alábbihoz hasonló a következő:
+Győződjön meg arról, hogy a grafikus Processzor szolgál, vizsgálja meg a futtatási kimenet megtekintéséhez a következőhöz hasonló:
 
 ```
 name: Tesla K80
@@ -138,7 +138,7 @@ Total memory: 11.17GiB
 Free memory: 11.11GiB
 ```
 
-Gratulálunk! A parancsfájl csak egy Docker-tároló keresztül GPU hatványa harnessed!
+Gratulálunk! A szkript csak egy Docker-tároló útján GPU hatékonyságát harnessed!
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a GPU annak érdekében, mély Neurális hálózat oktatóanyagokat Azure ML Gallery használatának példája.
+Gyorsítsa fel a Neurális hálózat-betanítást szeretne Azure Machine Learning-katalógus használatával GPU példafájlt.

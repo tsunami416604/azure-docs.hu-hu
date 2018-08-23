@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése az Azure SQL Database az Azure Machine Learning |} Microsoft Docs
-description: SQL-tábla és az adatok betöltése az SQL-tábla létrehozása
+title: Adatok áthelyezése az Azure SQL Database az Azure Machine Learning |} A Microsoft Docs
+description: SQL-táblát és az adatok betöltése az SQL-tábla létrehozása
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,67 +15,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2018
 ms.author: deguhath
-ms.openlocfilehash: edee9216835917e8bd9ee13065f24507e0403cb9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d3a7bc59654ace8dbe647b5a780985fa1556f1da
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839724"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057273"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
-Ez a témakör bemutatja a beállítások megköveteli az adatok strukturálatlan fájlból (CSV vagy TSV formátumban), vagy az Azure SQL-adatbázis egy helyi SQL Server tárolt adatok. Ezeket a feladatokat az adatok áthelyezését a felhőbe az Team tudományos folyamat részét képezik.
+Ez a témakör ismerteti a lehetőség egybesimított fájlok (CSV- vagy TSV formátumokat) vagy egy helyszíni SQL Server egy Azure SQL Database-ban tárolt adatokkal. Adatok áthelyezése a felhőbe ezeket a feladatokat a csoportos adatelemzési folyamat részét képezik.
 
-Ez a témakör bemutatja a Machine Learning megköveteli az adatok egy helyi SQL Server-beállításait, lásd: [adatok áthelyezése az SQL Server Azure virtuális géphez](move-sql-server-virtual-machine.md).
+Ez a témakör ismerteti az adatok áthelyezése egy helyszíni SQL Server Machine Learning a beállításokat, lásd: [adatok áthelyezése SQL Server-beli virtuális gépen](move-sql-server-virtual-machine.md).
 
-A következő **menü** betöltik az adatokat tároló környezetekben, ahol az adatok is tárolhatók és feldolgozhatók, a csapat adatok tudományos folyamat (TDSP) során módját leíró témakörök hivatkozásait.
+A következő **menü** mutató hivatkozásokat talál, amelyek bemutatják, hogyan gyűjthet adatokat a cél környezetekben, ahol az adatok tárolásának és feldolgozása során a csoportos adatelemzési folyamat (TDSP).
 
 [!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
-A következő táblázat összefoglalja az adatok áthelyezése az Azure SQL Database beállításai.
+A következő táblázat összefoglalja az adatok áthelyezése az Azure SQL Database, a beállításokat.
 
-| <b>FORRÁS</b> | <b>CÉL: Az Azure SQL-adatbázis</b> |
+| <b>FORRÁS</b> | <b>CÉL: Az Azure SQL Database</b> |
 | --- | --- |
-| <b>Egybesimított fájl (CSV vagy formázott TSV)</b> |[A tömeges beszúrás SQL-lekérdezés](#bulk-insert-sql-query) |
-| <b>A helyszíni SQL Server</b> |1.[Egybesimított fájl exportálása](#export-flat-file)<br> 2. [SQL-adatbázis áttelepítése varázsló](#insert-tables-bcp)<br> 3. [Adatbázis biztonsági mentése és visszaállítása](#db-migration)<br> 4. [Azure Data Factory](#adf) |
+| <b>Egybesimított fájl (CSV- vagy formázott TSV)</b> |[Tömeges beszúrás SQL-lekérdezés](#bulk-insert-sql-query) |
+| <b>A helyszíni SQL Server</b> |1.[Egybesimított fájl exportálása](#export-flat-file)<br> 2. [Az SQL Database áttelepítése varázsló](#insert-tables-bcp)<br> 3. [Adatbázis biztonsági mentése és visszaállítása](#db-migration)<br> 4. [Azure Data Factory](#adf) |
 
 ## <a name="prereqs"></a>Előfeltételek
-Az itt leírt eljárások szükség van:
+Az itt ismertetett eljárások szükség van:
 
 * Egy **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
-* Egy **Azure storage-fiók**. Egy Azure storage-fiókot használ az adatok tárolása az oktatóanyag. Ha egy Azure storage-fiók nem rendelkezik, tekintse meg a [hozzon létre egy tárfiókot](../../storage/common/storage-create-storage-account.md#create-a-storage-account) cikk. Miután létrehozta a tárfiókot, be kell szereznie a tároló elérésére használt fiókot kulcs. Lásd: [a tárelérési kulcsok kezelése](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
-* A hozzáférést egy **Azure SQL adatbázis**. Ha be kell állítania egy Azure SQL Database [Ismerkedés a Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) bemutatja, hogy miként lehet kiépíteni egy Azure SQL adatbázis új példányát.
-* Telepített és konfigurált **Azure PowerShell** helyileg. Útmutatásért lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
+* Egy **Azure storage-fiók**. Ez az oktatóanyag az adatok tárolása Azure storage-fiók használhat. Ha nem rendelkezik Azure storage-fiókkal, tekintse meg a [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) cikk. Miután létrehozta a tárfiókot, szerezze be a tárterület elérésére használt fiók kulcsot kell. Lásd: [a tárelérési kulcsok kezelése](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
+* A hozzáférést egy **az Azure SQL Database**. Ha be kell állítania az Azure SQL Database [Ismerkedés a Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) információt nyújt az kiépítése az Azure SQL Database egy új példányát.
+* Telepített és konfigurált **Azure PowerShell-lel** helyileg. Útmutatásért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
-**Adatok**: az áttelepítési folyamat egy használatával a [NYC Taxi dataset](http://chriswhong.com/open-data/foil_nyc_taxi/). A következőt: Taxi dataset út adatokkal és vásárokon információkat tartalmazza, és elérhető az Azure blob storage: [NYC Taxi adatok](http://www.andresmh.com/nyctaxitrips/). A minta és az ezek a fájlok leírása szerepelnek [NYC Taxi Utazgatással adatkészlet leírása](sql-walkthrough.md#dataset).
+**Adatok**: találja meg az áttelepítési folyamat használja a [NYC Taxi adatkészlet](http://chriswhong.com/open-data/foil_nyc_taxi/). A NYC Taxi adatkészlet útadatok és vásárokon adatait tartalmazza, és elérhető az Azure blob Storage-: [NYC-i taxik adatait](http://www.andresmh.com/nyctaxitrips/). Egy mintát és egy leírást a fájlok találhatók [NYC Taxi lelassítja adatkészlet leírása](sql-walkthrough.md#dataset).
 
-A saját adatok az itt leírt eljárásokat igazítja, vagy hajtsa végre a következőt: Taxi adatkészlet szerint. Töltse fel a következőt: Taxi dataset a helyszíni SQL Server-adatbázisba, kövesse az ismertetett eljárás [tömeges adatok importálása az SQL Server-adatbázisba](sql-walkthrough.md#dbload). Ezek az utasítások az Azure virtuális gép az SQL Server, de a helyszíni SQL Server feltöltését eljárás megegyezik.
+Mindig a saját adatok egy készletét az itt leírt eljárásokat, vagy kövesse a lépéseket, a NYC Taxi adatkészlet használatával leírtak szerint. Töltse fel a NYC Taxi adatkészlet a helyszíni SQL Server-adatbázisba, kövesse a leírt eljárást [tömeges adatimportálás SQL Server-adatbázisba](sql-walkthrough.md#dbload). Ezek az utasítások a egy SQL Server Azure virtuális gépen, de tölt fel a helyszíni SQL Server eljárás megegyezik.
 
-## <a name="file-to-azure-sql-database"></a> Egybesimított fájl forrásból származó adatok Azure SQL-adatbázis áthelyezése
-A tömeges beszúrás SQL lekérdezést használva Azure SQL-adatbázis (CSV vagy TSV formázott) egybesimított fájlok adatainak helyezheti át.
+## <a name="file-to-azure-sql-database"></a> Egybesimított fájl forrásból származó adatok áthelyezése az Azure SQL Database-adatbázishoz
+Egybesimított fájlok (CSV, TSV vagy formázott) lévő adatok áthelyezhetők a Bulk Insert SQL-lekérdezést használ az Azure SQL Database-adatbázishoz.
 
-### <a name="bulk-insert-sql-query"></a> A tömeges beszúrás SQL-lekérdezés
-A tömeges beszúrás SQL lekérdezést használva eljárás lépései hasonlóak az adatok áthelyezése egy egybesimított fájl forrásból SQL Server egy Azure virtuális gépen szakaszaiban ismertetett. További információkért lásd: [tömeges beszúrás SQL-lekérdezés](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
+### <a name="bulk-insert-sql-query"></a> Tömeges beszúrás SQL-lekérdezés
+A következő eljáráshoz a Bulk Insert SQL-lekérdezést használja a lépések hasonlóak a kezelt adatok áthelyezése egy egybesimított fájl forrás SQL Server-beli virtuális gépen a szakaszokban. További információkért lásd: [Bulk Insert SQL-lekérdezés](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a> Adatok áthelyezése a helyszíni SQL Server az Azure SQL-adatbázis
-Az adatok egy helyi SQL Server tárolja, ha van az adatok áthelyezése az Azure SQL Database különböző lehetőségeit:
+## <a name="sql-on-prem-to-sazure-sql-database"></a> Adatok áthelyezése a helyszíni SQL Serverről Azure SQL Database-adatbázishoz
+A forrásadatok egy helyszíni SQL Server tárolódnak, van-e az adatok áthelyezése az Azure SQL Database-adatbázishoz különböző lehetőségeit:
 
 1. [Egybesimított fájl exportálása](#export-flat-file)
-2. [SQL-adatbázis áttelepítése varázsló](#insert-tables-bcp)
+2. [Az SQL Database áttelepítése varázsló](#insert-tables-bcp)
 3. [Adatbázis biztonsági mentése és visszaállítása](#db-migration)
 4. [Azure Data Factory](#adf)
 
-Az első három lépésekre nagyon hasonló, így ezek a szakaszok a [adatok áthelyezése az SQL Server Azure virtuális géphez](move-sql-server-virtual-machine.md) , amelyek ugyanezeket az eljárásokat vonatkoznak. A témakör megfelelő részeiben mutató hivatkozásokat tartalmaz az alábbi utasítások szerepelnek.
+A lépéseket az első három nagyon hasonlóak a szakaszokat [adatok áthelyezése SQL Server-beli virtuális gépen](move-sql-server-virtual-machine.md) , amelyek ugyanezeket az eljárásokat vonatkoznak. A témakör megfelelő részeiben mutató hivatkozások szerepelnek az alábbi utasításokat.
 
 ### <a name="export-flat-file"></a>Egybesimított fájl exportálása
-Ez egy egyszerű fájlba exportálása lépései hasonlóak a kezelt [Egybesimított fájl exportálása](move-sql-server-virtual-machine.md#export-flat-file).
+Ez egy egybesimított fájl exportálása lépései hasonlóak a kezelt [Egybesimított fájl exportálása](move-sql-server-virtual-machine.md#export-flat-file).
 
-### <a name="insert-tables-bcp"></a>SQL-adatbázis áttelepítése varázsló
-Az SQL-adatbázis áttelepítése varázsló használatához vezető lépések hasonlóak a kezelt [SQL-adatbázis áttelepítése varázsló](move-sql-server-virtual-machine.md#sql-migration).
+### <a name="insert-tables-bcp"></a>Az SQL Database áttelepítése varázsló
+Az SQL Database áttelepítése varázsló használatának lépései is hasonlóak a kezelt [SQL adatbázis-Migrálási varázsló](move-sql-server-virtual-machine.md#sql-migration).
 
 ### <a name="db-migration"></a>Adatbázis biztonsági mentése és visszaállítása
-A lépések adatbázis biztonsági mentése és visszaállítása hasonlóak a kezelt [adatbázis biztonsági mentése és visszaállítása](move-sql-server-virtual-machine.md#sql-backup).
+A lépések adatbázis biztonsági mentése és visszaállítás hasonlóak a kezelt [adatbázis biztonsági mentése és visszaállítása](move-sql-server-virtual-machine.md#sql-backup).
 
 ### <a name="adf"></a>Az Azure Data Factory
-Az adatok áthelyezése az Azure SQL adatbázis Azure Data Factory (ADF) eljárását a következő témakörben találhatók [tárolt adatok mozgatása egy helyi SQL server SQL Azure és az Azure Data Factory](move-sql-azure-adf.md). Ez a témakör bemutatja, hogyan tárolt adatok mozgatása egy helyi SQL Server-adatbázis Azure SQL adatbázis Azure Blob Storage segítségével ADF használatával.
+Adatok áthelyezése az Azure SQL Database-adatbázishoz az Azure Data Factory (ADF) az eljárás beállításokról a témakör [adatok áthelyezése a helyszíni SQL Serverről az SQL Azure, az Azure Data Factoryvel](move-sql-azure-adf.md). Ez a témakör bemutatja az adatok áthelyezése a helyszíni SQL Server-adatbázisból egy Azure SQL Database-adatbázishoz az Azure Blob Storage-n keresztül az ADF használatával.
 
-Érdemes lehet ADF Ha adatokat folyamatosan telepíthető egy hibrid forgatókönyvben, aki hozzáfér a helyszíni és felhőalapú erőforrásaihoz, és az adatok tranzakcióalapú van, vagy módosítani, vagy üzleti logikát, ha az áttelepítés alatt álló hozzáadott rendelkezik. ADF lehetővé teszi, hogy az ütemezés és rendszeres időközönként adatok mozgása kezelő egyszerű JSON-parancsfájlokat használó feladatok figyelését. ADF is rendelkeznek egyéb képességeit, például a összetett műveletek támogatása.
+Fontolja meg az ADF használatával, ha adatokat kell folyamatosan migrálható egy hibrid forgatókönyvben, amely hozzáfér a helyszíni és felhőbeli erőforrások, illetve ha az adatok tranzakció van, vagy üzleti logikát hozzáadni azt, ha az áttelepítés alatt álló, illetve módosítani kell. Az ADF lehetővé teszi, hogy az ütemezés és a figyelési feladatok használata kezelheti az adatmozgás rendszeres időközönként egyszerű JSON-szkript. Az ADF is tartalmaz egyéb szolgáltatásokat, például az összetett műveletek támogatása.

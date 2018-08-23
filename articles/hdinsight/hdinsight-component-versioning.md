@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: a11d8d8ab255a3e0a6adff3d488bcdaf0716f35e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 1dda09896bfe8db5fc78ea64cd20baa78666c593
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594994"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444325"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a HDInsight-verziók?
 
@@ -50,7 +50,7 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 | Az Apache Phoenixhez |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.0-át, 2.2.0, 2.1.0 |1.6.2-es verzióján, 2.0-s |1.6.0-s |1.5.2 |1.3.1 (csak Windows) |-|-|
 | Az Apache Livy |0.4 |0,3 |0,3 |0.2 |-|-|-|
-| Apache Kafka | 1.0-s, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1-es, 1.0-s, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
 | Az Apache Ambari | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Az Apache Zeppelin | 0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -92,7 +92,7 @@ A következő táblázat felsorolja a verziókat HDInsight **nem** elérhető az
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5-ös verzióját. |HDP 2,5 |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2017. szeptember 5. |2018. június 28. |Igen |Nem |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016. március 29-én |2016. december 29-én |2018. január 9. |Igen |Nem |
-| HDInsight 3.3. |HDP 2.3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31-ig. |Igen |Nem |
+| HDInsight 3.3. |HDP 2.3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Igen |Nem |
 | HDInsight 3.3. |HDP 2.3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31-ig. |Igen |Nem |
 | HDInsight 3.2-es verzióját |2.2-ES HDP |Ubuntu 12.04 LTS, vagy a Windows Server 2012 R2 rendszerben |2015. február 18. |2016. március 1-én |2017. április 1. |Igen |Nem |
 | HDInsight 3.1. |HDP 2.1-ES VERZIÓJA |Windows Server 2012 R2 |2014. június 24-én |2015. május 18. |2016. június 30. |Igen |Nem |
@@ -232,12 +232,12 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
 
   | Fürttípus | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark | Machine Learning-kiszolgáló |
   | --- | --- | --- | --- | --- | --- | --- |
-  | A fő: virtuális gépek alapértelmezett mérete |D3 v2 |D3 v2 | D13, D14 |A3 |D12 v2 |D12 v2 |
-  | A fő: javasolt Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A3, A4, A5 CSOMAG |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
+  | A fő: virtuális gépek alapértelmezett mérete |D3 v2 |D3 v2 | D13, D14 |A4 v2 |D12 v2 |D12 v2 |
+  | A fő: javasolt Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A4 v2, A8 v2, A2m v2 |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
   | Feldolgozó: virtuális gépek alapértelmezett mérete |D3 v2 |D3 v2  | D13, D14 |D3 v2 |Windows: D12 v2; Linux: D4 v2 |Windows: D12 v2; Linux: D4 v2 |
   | Feldolgozó: javasolt Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2 és D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |Windows: D12 v2, D13 v2 és D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
-  | ZooKeeper: virtuális gépek alapértelmezett mérete | |A3 | |A2 | | |
-  | ZooKeeper: javasolt Virtuálisgép-méretek | |A3, A4, A5 CSOMAG | | A2, A3, A4 | | |
+  | ZooKeeper: virtuális gépek alapértelmezett mérete | |A4 v2 | |A2 v2 | | |
+  | ZooKeeper: javasolt Virtuálisgép-méretek | |A4 v2, A8 v2, A2m v2 | | A2 v2, A4 v2, A8 v2 | | |
   | Edge: virtuális gépek alapértelmezett mérete | | | | | |Windows: D12 v2; Linux: D4 v2 |
   | Edge: Virtuálisgép-méretet ajánlott | | | | | |Windows: D12 v2, D13 v2 és D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Dél-Brazíliát és Nyugat-Japánban csak (nincs v2 méretű):

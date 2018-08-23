@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: f42948f0f3acf1bacf6c80010489890f4b8d122b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 28a6082718080314a769b59c81cf51a20ff7e120
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523665"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054919"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Az Azure storage táblakötések az Azure Functions szolgáltatáshoz
 
@@ -58,6 +58,7 @@ Tekintse meg az adott nyelvű példa:
 * [C# szkriptet kötéskérelmek CloudTable](#input---c-script-example---cloudtable)
 * [F#](#input---f-example)
 * [JavaScript](#input---javascript-example)
+* [Java](#input---java-example)
 
 ### <a name="input---c-example---one-entity"></a>Adjon meg egy entitás – C#-példa –
 
@@ -414,6 +415,25 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
+### <a name="input---java-example"></a>Bemenet - Java-példában
+
+Az alábbi példa bemutatja egy HTTP által aktivált függvényt, amely elemek teljes számát adja meg a Table storage-ban megadott partíción.
+
+```java
+@FunctionName("getallcount")
+public int run(
+   @HttpTrigger(name = "req",
+                 methods = {"get"},
+                 authLevel = AuthorizationLevel.ANONYMOUS) Object dummyShouldNotBeUsed,
+   @TableInput(name = "items",
+                tableName = "mytablename",  partitionKey = "myparkey",
+                connection = "myconnvarname") MyItem[] items
+) {
+    return items.length;
+}
+```
+
+
 ## <a name="input---attributes"></a>Bemenet - attribútumok
  
 A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a következő attribútumokat a bemeneti tábla kötésének konfigurálása:
@@ -471,6 +491,10 @@ A használandó tárfiókot határozza meg a következő sorrendben:
 * A `StorageAccount` attribútum a függvény a alkalmazni.
 * A `StorageAccount` attribútum az osztály a alkalmazni.
 * Az alapértelmezett tárfiókot a függvényalkalmazás ("AzureWebJobsStorage" alkalmazás beállítás).
+
+## <a name="input---java-annotations"></a>Bemenet - Java-jegyzetek
+
+Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@TableInput` jegyzet paraméterekkel, amelynek az értéke lenne származnak, Table storage-ból.  A jegyzet használható natív Java-típusokat, POJOs vagy nullázható értékek használata nem kötelező<T>. 
 
 ## <a name="input---configuration"></a>Bemenet - konfiguráció
 

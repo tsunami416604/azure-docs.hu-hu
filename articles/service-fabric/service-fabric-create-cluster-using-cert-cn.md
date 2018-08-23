@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Azure Service Fabric-fürt használata a tanúsítvány egyszerű neve |} Microsoft Docs
-description: 'Útmutató: a tanúsítvány köznapi neve a sablon használatával a Service Fabric-fürt létrehozása.'
+title: Hozzon létre egy Azure Service Fabric-fürt tanúsítvány köznapi nevét használó |} A Microsoft Docs
+description: Ismerje meg, hogyan hozzon létre egy olyan sablon alapján a tanúsítvány köznapi nevét használó Service Fabric-fürtön.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8725dd1931b120b0369d0810fa49108a00c71e8e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c4c60cccb890c883e9e57c9f146cc93aae99f224
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211065"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058431"
 ---
-# <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>A Service Fabric-fürt által használt tanúsítvány egyszerű neve helyett ujjlenyomat telepítése
-Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltást vagy felügyeleti rendelkezhet. Több tanúsítvány azonban rendelkezhet ugyanazzal a névvel vagy tulajdonos.  A tanúsítvány köznapi nevek fürt teszi Tanúsítványkezelő jóval egyszerűbbé válik. Ez a cikk ismerteti, hogyan kell használni a tanúsítvány egyszerű neve helyett a tanúsítvány ujjlenyomatát a Service Fabric-fürt központi telepítése.
+# <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Ujjlenyomat helyett a tanúsítvány köznapi nevét használó Service Fabric-fürt üzembe helyezése
+Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltás vagy felügyeleti is rendelkezhet. Több tanúsítvány, azonban lehet a ugyanazzal a névvel vagy a tulajdonos.  Tanúsítvány köznapi nevek a fürtök teszi tanúsítványok kezelése sokkal egyszerűbb. Ez a cikk ismerteti, hogyan helyezhet üzembe Service Fabric-fürt helyett a tanúsítvány ujjlenyomata a tanúsítvány köznapi nevét használni.
  
-## <a name="get-a-certificate"></a>Tanúsítvány beszerzése
-Szereznie egy tanúsítványt egy [hitelesítésszolgáltató-tanúsítvány](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi nevének kell lennie a fürt állomásnevét.  Például "myclustername.southcentralus.cloudapp.azure.com."  
+## <a name="get-a-certificate"></a>A tanúsítvány beszerzése
+Először kérje le a tanúsítványt egy [hitelesítésszolgáltatói (CA)](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi nevével kell lennie a fürt állomásneve.  Például "myclustername.southcentralus.cloudapp.azure.com."  
 
-Tesztelési célokra egy hitelesítésszolgáltató által aláírt tanúsítvány sikerült szabad vagy nyitott hitelesítésszolgáltatójától.
+Tesztelési célokra, ingyenes és nyílt hitelesítésszolgáltatójától lehetett beolvasni egy hitelesítésszolgáltató által aláírt tanúsítvány.
 
 > [!NOTE]
-> Önaláírt tanúsítványokat, beleértve a jönnek létre, ha az Azure portálon, a Service Fabric-fürt üzembe helyezése nem támogatottak.
+> Önaláírt tanúsítványokat, beleértve a jönnek létre, ha az Azure Portalon, a Service Fabric-fürt üzembe helyezése nem támogatott.
 
-## <a name="upload-the-certificate-to-a-key-vault"></a>Töltse fel a tanúsítványt a kulcstároló
-Az Azure Service Fabric-fürt virtuálisgép-méretezési csoport van telepítve.  Töltse fel a tanúsítványt a kulcstároló.  Amikor a fürt telepíti, a tanúsítvány telepítése a virtuálisgép-méretezési csoport a fürtön futó.
+## <a name="upload-the-certificate-to-a-key-vault"></a>Töltse fel a tanúsítványt a key vault
+Az Azure-ban egy Service Fabric-fürtöt helyezünk üzembe egy virtuálisgép-méretezési csoportot a.  Töltse fel a tanúsítványt a key vault.  Amikor üzembe helyezi a fürtöt, a tanúsítvány telepítése a virtuális gép méretezési csoportot, amely a fürt fut, a.
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -72,18 +72,18 @@ Write-Host "SourceVault              :"  $SourceVault
 Write-Host "Common Name              :"  $CommName    
 ```
 
-## <a name="download-and-update-a-sample-template"></a>Töltse le és mintasablon frissítése
-Ebben a cikkben az a [biztonságos 5-csomópontot tartalmazó fürtben példa](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) sablon és a sablon paramétereit. Töltse le a *azuredeploy.json* és *azuredeploy.parameters.json* fájlokat a számítógépre.
+## <a name="download-and-update-a-sample-template"></a>Töltse le és a egy minta-sablon frissítéséhez
+Ez a cikk a [biztonságos fürt 5 csomópontos példa](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) sablon és a sablon paramétereit. Töltse le a *azuredeploy.json* és *azuredeploy.parameters.json* fájlokat a számítógépre.
 
-### <a name="update-parameters-file"></a>Paraméterek fájl frissítése
-Első lépésként nyissa meg a *azuredeploy.parameters.json* fájlt egy szövegszerkesztőben, és adja hozzá a következő paraméter értéke:
+### <a name="update-parameters-file"></a>Frissítse a paramétereket tartalmazó fájlt
+Először nyissa meg a *azuredeploy.parameters.json* fájlt egy szövegszerkesztőben, és adja hozzá a következő paraméter értékét:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
 },
 ```
 
-Következő lépésként állítsa a *certificateCommonName*, *sourceVaultValue*, és *certificateUrlValue* paraméterértékeket kíván az előző parancsfájl által visszaküldött:
+Következő lépésként állítsa a *certificateCommonName*, *sourceVaultValue*, és *certificateUrlValue* azokat a fenti parancsfájl által visszaadott paraméterértékeket:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -97,9 +97,9 @@ Következő lépésként állítsa a *certificateCommonName*, *sourceVaultValue*
 ```
 
 ### <a name="update-the-template-file"></a>A sablon fájl frissítése
-Ezután nyissa meg a *azuredeploy.json* fájlt egy szövegszerkesztőben, és három frissíti a támogatja a tanúsítvány egyszerű neve.
+Ezután nyissa meg a *azuredeploy.json* fájlt egy szövegszerkesztőben, és három frissítéseinek támogatásához a tanúsítvány köznapi nevét.
 
-1. Az a **paraméterek** területen írja be a *certificateCommonName* paraméter:
+1. Az a **paraméterek** területén adjon hozzá egy *certificateCommonName* paramétert:
     ```json
     "certificateCommonName": {
       "type": "string",
@@ -109,14 +109,22 @@ Ezután nyissa meg a *azuredeploy.json* fájlt egy szövegszerkesztőben, és h�
     },
     ```
 
-    Is lehet megvonni a *certificateThumbprint*, előfordulhat, hogy már nem lesz szükség.
+    Emellett érdemes eltávolítani a *certificateThumbprint*, előfordulhat, hogy már nem lesz szükség.
 
-2. Állítsa a *sfrpApiVersion* "2018-02-01" változót:
+2. Az értékét állítsa be a *sfrpApiVersion* "2018-02-01" változó:
     ```json
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. Az a **Microsoft.Compute/virtualMachineScaleSets** erőforrás, a köznapi név tanúsítvány beállításai helyett az ujjlenyomat használandó virtuálisgép-bővítmény frissítése.  A **virtualMachineProfile**->**extenstionProfile**->**bővítmények**->**tulajdonságai** -> **beállítások**->**tanúsítvány**, adja hozzá `"commonNames": ["[parameters('certificateCommonName')]"],` , és távolítsa el `"thumbprint": "[parameters('certificateThumbprint')]",`.
+3. Az a **Microsoft.Compute/virtualMachineScaleSets** erőforrás, a köznapi név használata helyett az ujjlenyomat tanúsítványbeállítások virtuálisgép-bővítmény frissítése.  A **virtualMachineProfile**->**extenstionProfile**->**bővítmények**->**tulajdonságai** -> **beállítások**->**tanúsítvány**, hozzáadása 
+    ```json
+       "commonNames": [
+        "[parameters('certificateCommonName')]"
+       ],
+    ```
+
+    Távolítsa el `"thumbprint": "[parameters('certificateThumbprint')]",`.
+
     ```json
     "virtualMachineProfile": {
       "extensionProfile": {
@@ -139,7 +147,9 @@ Ezután nyissa meg a *azuredeploy.json* fájlt egy szövegszerkesztőben, és h�
                 "enableParallelJobs": true,
                 "nicPrefixOverride": "[variables('subnet0Prefix')]",
                 "certificate": {
-                  "commonNames": ["[parameters('certificateCommonName')]"],
+                  "commonNames": [
+                     "[parameters('certificateCommonName')]"
+                  ],
                   "x509StoreName": "[parameters('certificateStoreValue')]"
                 }
               },
@@ -148,7 +158,7 @@ Ezután nyissa meg a *azuredeploy.json* fájlt egy szövegszerkesztőben, és h�
           },
     ```
 
-4.  Az a **Microsoft.ServiceFabric/clusters** erőforrás, a frissítés az API-verziója "2018-02-01".  Is hozzáadhat egy **certificateCommonNames** beállításnál egy **commonNames** tulajdonság, és távolítsa el a **tanúsítvány** beállítás (a az ujjlenyomat tulajdonság), mint a következő Példa:
+4.  Az a **Microsoft.ServiceFabric/clusters** erőforrás, a "2018-02-01" frissítés az API verziója.  Is hozzáadhat egy **certificateCommonNames** beállítás a egy **commonNames** tulajdonságot, és távolítsa el a **tanúsítvány** beállítás (a az ujjlenyomat tulajdonság), ahogy az alábbi Példa:
     ```json
     {
         "apiVersion": "2018-02-01",
@@ -176,7 +186,7 @@ Ezután nyissa meg a *azuredeploy.json* fájlt egy szövegszerkesztőben, és h�
     ```
 
 ## <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
-A módosítások elvégzése után a frissített sablon újbóli.
+A módosítások elvégzése után a frissített sablon újbóli telepítése.
 
 ```powershell
 # Variables.
@@ -194,8 +204,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateParame
 ```
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók [fürt biztonsági](service-fabric-cluster-security.md).
-* Megtudhatja, hogyan [helyettesítő fürt tanúsítvány](service-fabric-cluster-rollover-cert-cn.md)
-* [Fürt tanúsítványok frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)
+* Ismerje meg [biztonsági fürt](service-fabric-cluster-security.md).
+* Ismerje meg, hogyan [fürttanúsítvány váltása](service-fabric-cluster-rollover-cert-cn.md)
+* [Frissítse és fürttanúsítványok kezelése](service-fabric-cluster-security-update-certs-azure.md)
+* A tanúsítvány kezelésének leegyszerűsítése [tanúsítvány ujjlenyomatát a fürt módosítása köznapi név](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
 
 [image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png

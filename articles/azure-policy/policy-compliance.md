@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343552"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058132"
 ---
 # <a name="getting-compliance-data"></a>Megfelelőségi adatok beolvasása
 
@@ -26,6 +26,9 @@ Többféleképpen is lehet a megfelelőségi adatokat a szabályzat és a kezdem
 - Keresztül [parancssori](#command_line) scripting
 
 Mielőtt megnézzük a jelentés a megfelelőségi módszereket, tekintsük át megfelelőségi adatok frissítésekor és a gyakoriság és a egy kiértékelési ciklusa kiváltó események.
+
+> [!WARNING]
+> Ha a megfelelőségi állapotáról, mint **"N/A"**, ellenőrizze, hogy a **Microsoft.PolicyInsights** erőforrás-szolgáltató regisztrálva van, és hogy a felhasználó rendelkezik-e a megfelelő szerepköralapú hozzáférés-vezérlés (RBAC) engedélyek a leírtak szerint [Itt](azure-policy-introduction.md#rbac-permissions-in-azure-policy).
 
 ## <a name="evaluation-triggers"></a>Értékelés eseményindítók
 

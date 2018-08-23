@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3b05f553e591de2660e9842f316de0cb6f80c852
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412110"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058747"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL Database erőforrás-korlátozások áttekintése 
 
@@ -22,15 +22,15 @@ Ez a cikk az Azure SQL Database erőforrás-áttekintés korlátozza, és mi tö
 
 ## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>Mi az a kiszolgálók és adatbázisok maximális száma?
 
-| Maximum | Érték |
-| :--- | :--- |
-| Adatbázisok kiszolgálónként | 5000 |
-| Kiszolgálók száma előfizetésenként bármelyik régióban alapértelmezett száma | 20 |
-| Kiszolgálók száma előfizetésenként bármelyik régióban maximális száma | 200 |
-| Dtu-k vagy eDTU-kvóta kiszolgálónként | 54,000 |
-| virtuális mag kvóta kiszolgálónként | 540 |
-| Maximális készletek kiszolgálónként | attól függ, dtu-k vagy virtuális magok száma |
-|||
+| Maximum | A logikai kiszolgáló | Felügyelt példány |
+| :--- | :--- | :--- |
+| Adatbázisok száma server-példány | 5000 | 100 |
+| Kiszolgálók száma előfizetésenként bármelyik régióban alapértelmezett száma | 20 | – |
+| Kiszolgálók száma előfizetésenként bármelyik régióban maximális száma | 200 | – | 
+| Dtu-k vagy eDTU-kvóta kiszolgálónként | 54,000 | – |  
+| virtuális mag kvóta server-példány | 540 | 80 |
+| Maximális készletek kiszolgálónként | attól függ, dtu-k vagy virtuális magok száma | – |
+||||
 
 > [!NOTE]
 > További /eDTU DTU-kvótába, virtuális mag kvóta vagy további kiszolgálókat, mint az alapértelmezett érték beszerzéséhez egy új támogatási kérelmet az Azure Portalon, a probléma típusa "Kvóta" az előfizetés beküldhető. A dtu-k / eDTU kvóta- és adatbázis-korlát kiszolgálónként kiszolgálónként rugalmas készletek száma korlátozza. 

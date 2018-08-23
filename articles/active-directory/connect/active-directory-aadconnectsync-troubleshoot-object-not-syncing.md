@@ -1,6 +1,6 @@
 ---
-title: Olyan objektum, amely nem szinkronizál az Azure AD hibaelhárítása |} Microsoft Docs
-description: Végezzen hibaelhárítást, ezért az objektum nem szinkronizál az Azure AD.
+title: Az Azure ad-val nem szinkronizálódó objektumok hibaelhárítása |} A Microsoft Docs
+description: Az objektum nem szinkronizálja az Azure AD okozó hibák elhárításához.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -12,140 +12,140 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 997269efc017a024f2abbcb6561c951d7957af86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9bd3f60800976967e1fc1e5f163a6ae3ea525f2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594329"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42055505"
 ---
-# <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Olyan objektum, amely nem szinkronizál az Azure AD-hibáinak elhárítása
+# <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Az Azure ad-val nem szinkronizálódó objektumok hibaelhárítása
 
-Ha egy objektum nem szinkronizál az Azure AD a várt módon, majd azok több oka. Ha hiba e-mailben kapott az Azure AD vagy az Azure AD Connect Health hibát látja, majd beolvassa [exportálási hibák elhárítása](active-directory-aadconnect-troubleshoot-sync-errors.md) helyette. De ha a probléma, ha az objektum nincs az Azure AD hibaelhárítási, majd a témakör, hogy a felhasználó. Bemutatja, hogyan lehet a helyszíni összetevő az Azure AD Connect szinkronizálási szolgáltatás hibát talál.
+Ha egy objektum nem szinkronizálja az Azure AD a várt módon, majd azok miatt számos oka lehet. Ha a hiba e-mailt az Azure ad-ből kapott, vagy a hibaüzenet jelenik meg az Azure AD Connect Health, majd elolvashatják [exportálási hibák elhárítása](active-directory-aadconnect-troubleshoot-sync-errors.md) helyette. De ha a probléma, ahol az objektum nem az Azure ad-ben van hibaelhárítást, majd a témakör Önnek szól. Bemutatja, hogyan lehet a helyszíni összetevő az Azure AD Connect szinkronizálási hibák megkereséséhez.
 
 >[!IMPORTANT]
->Azure Active Directory (AAD) Connect telepítés verziójával <verison> vagy magasabb, használja a [hibaelhárítása a feladat](active-directory-aadconnect-troubleshoot-objectsync.md) objektum szinkronizálási kapcsolatos problémák elhárítása a varázslóban. 
+>Az Azure Active Directory (AAD) központi telepítés csatlakozzon 1.1.749.0 verzióját, vagy újabb verziója szükséges, használja a [hibaelhárítási feladat](active-directory-aadconnect-troubleshoot-objectsync.md) objektumok szinkronizálási problémáinak hibaelhárítása a varázslóban. 
 
-A hibák megkereséséhez fog nézze meg több különböző helyen, a következő sorrendben:
+A hibák megkereséséhez fog tekintse meg több különböző helyen, a következő sorrendben:
 
-1. A [műveletnaplók](#operations) importálása és szinkronizálás során a szinkronizálási motor által azonosított hibák kereséséhez.
-2. A [kapcsolódási térbe](#connector-space-object-properties) hiányzó objektumokhoz és szinkronizálási hibák kereséséhez.
-3. A [metaverse](#metaverse-object-properties) problémák kapcsolódó adatok kereséséhez.
+1. A [műveletnaplók](#operations) importálás és a szinkronizálás során a szinkronizálási motor által azonosított hibák kereséséhez.
+2. A [összekötőterében](#connector-space-object-properties) hiányzó objektumok és a szinkronizálási hibák kereséséhez.
+3. A [metaverzum](#metaverse-object-properties) adatokkal kapcsolatos problémák kereséséhez.
 
-Start [Synchronization Service Managert](active-directory-aadconnectsync-service-manager-ui.md) lépések megkezdése előtt.
+Indítsa el [Synchronization Service Managert](active-directory-aadconnectsync-service-manager-ui.md) lépések megkezdése előtt.
 
 ## <a name="operations"></a>Műveletek
-A műveletek a lap a Synchronization Service Managert esetén, ahol el kell kezdenie a hibaelhárítást. A műveletek lapon a legutóbbi művelet eredményei láthatók.  
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/operations.png)  
+A Műveletek lap a Synchronization Service Managert el, ahol el kell indítania az a hibaelhárítást. A műveletek lapon láthatók a legutóbbi operations eredményeinek.  
+![Szinkronizálási szolgáltatáskezelő](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/operations.png)  
 
-Felső részén látható minden futtatásakor időrendi sorrendben. Alapértelmezés szerint a műveletek az elmúlt hét napban tartja információinak naplózásához, de ez a beállítás használatával módosítható a [Feladatütemező](active-directory-aadconnectsync-feature-scheduler.md). Bármely futtatása, amelyek nem szerepelnek egy sikeres állapotnak keresni szeretne. Rendezés a fejlécek kattintva módosíthatja.
+Felső részén látható minden Futtatás időrendi sorrendben. Alapértelmezés szerint a műveletek naplófájlformátumának tartja az elmúlt hét nap, de ez a beállítás is módosítható a [scheduler](active-directory-aadconnectsync-feature-scheduler.md). Kívánt összes futtatás, amelyek nem szerepelnek a sikeres állapotú. A rendezés a fejlécek kattintva módosíthatja.
 
-A **állapot** oszlop a legfontosabb adatokat, és a legsúlyosabb károkat okozó problémát futtató jeleníti meg. A leggyakoribb állapotokról a prioritásuk szerinti sorrendben kell vizsgálni gyors összegzése (ahol * több lehetséges hiba karakterláncok jelzi).
+A **állapot** oszlop a legfontosabb információt, és bemutatja a legsúlyosabb problémát egy Futtatás esetében. Íme a leggyakoribb állapotok a prioritásuk szerinti sorrendben kell vizsgálatára gyors összefoglalását (ahol * több lehetséges hiba karakterláncok jelzi).
 
 | status | Megjegyzés |
 | --- | --- |
-| leállított-* |A Futtatás nem sikerült befejezni. Ha például a távoli rendszer nem működik, és nem érhető el. |
-| leállt hiba-korlát |Több mint 5000 hibák vannak. A Futtatás automatikusan hibák nagy száma miatt le lett állítva. |
+| leállított – * |A Futtatás nem sikerült végrehajtani. Ha például a távoli rendszer nem működik, és nem érhető el. |
+| leállítva hiba-korlát |Több mint 5000 hibák vannak. A Futtatás hibák nagy száma miatt automatikusan le lett állítva. |
 | Befejezett -\*-hibák |A Futtatás befejeződött, de hibák (kevesebb mint 5000) meg kell vizsgálni. |
-| Befejezett -\*-figyelmeztetések |A Futtatás befejeződött, de bizonyos adatok nem várt állapotban van. Ha hibákat, majd ezt az üzenetet az általában csak az egyik oka. Mindaddig, amíg meg kell oldani hibák, figyelmeztetések nem ki kell vizsgálni. |
+| Befejezett -\*– figyelmeztetés |A Futtatás befejeződött, de egyes adatokat nem szerepel a várt állapota. Ha hibákat észlel, majd ezt az üzenetet általában a csak a hiba. Hibák elhárítása, amíg nem kell vizsgálni – figyelmeztetések. |
 | sikeres |Nincs probléma. |
 
-Amikor kiválaszt egy sorra, alsó frissítései futtató részleteinek megjelenítése. A bal alsó a, lehetséges, hogy egy lista bármelyiket **lépés #**. Ez a lista csak akkor jelenik meg, ha több tartomány az erdőben, ahol minden egyes tartományhoz egy lépés képviseli. A tartománynév címszó alatt található **partíció**. A **szinkronizálási statisztika**, található további információ a feldolgozott módosítások számát. Kattintson az alábbi hivatkozásokat a módosított objektumok listájának beolvasása. Ha hibákkal objektummal rendelkezik, azokat a hibákat az Eseménynaplón **szinkronizálási hibák**.
+Amikor kiválaszt egy sort, az alsó frissíti az adott Futtatás részleteinek megjelenítéséhez. A bal szélén az alsó, lehetséges, hogy egy lista üzenettel **lépés #**. Ez a lista csak akkor jelenik meg, ha több tartományt az erdőben, ahol minden egyes tartományhoz egy lépés képviseli. A tartomány nevét a cím alatt található **partíció**. A **szinkronizálási statisztika**, talál további információt a feldolgozott módosítások számát. Kattinthat a hivatkozásokra kattintva a módosított objektumok listája. Ha hibákkal objektummal rendelkezik, ezek a hibák jelennek meg **szinkronizálási hibák**.
 
-### <a name="troubleshoot-errors-in-operations-tab"></a>A műveletek lapon hibák elhárítása
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorsync.png)  
-Ha a hibák, mindkét hiba és a hiba, maga az objektum olyan hivatkozásokat tartalmaz, amelyek további információval.
+### <a name="troubleshoot-errors-in-operations-tab"></a>Műveleti lapon kapcsolatos hibák elhárítása
+![Szinkronizálási szolgáltatáskezelő](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorsync.png)  
+Ha hibákat, mindkét hiba és a hiba, maga az objektum olyan hivatkozásokat, amelyek további információval.
 
-Indításához kattintson a hiba karakterlánca (**szinkronizálási szabály-hiba – függvény-indított** a képen látható). Először lehetősége lesz az objektum áttekintését. A tényleges hiba megtekintéséhez kattintson a gombra **Veremkivonat**. A nyomkövetés a hiba hibakeresési szintű információkat nyújt.
+Indítsa el a hiba karakterlánca kattintva (**szinkronizálási szabály-hiba-függvény által indított** a képen látható). Először megnyílik az objektum áttekintést. A tényleges hiba megtekintéséhez kattintson a gombra **Híváslánc**. A nyomkövetés a hiba hibakeresési szintű információkat nyújt.
 
-Kattintson a jobb egérgombbal a a **hívásverem-információk** válassza **válassza ki az összes**, és **másolási**. Ezután másolja a verem, és nézze meg a hiba a kedvenc szerkesztő, például a Jegyzettömböt.
+A jobb gombbal a **hívásverem-információk** válassza **válassza ki az összes**, és **másolási**. Ezután másolja ki a verem, és tekintse meg a hiba a kedvenc szerkesztőjében, például a Jegyzettömbben.
 
-* Ha a hiba érkezett **SyncRulesEngine**, majd a hívásverem-információk először rendelkezik az objektum összes attribútumok listáját. Görgessen lefelé, amíg megjelenik a címsor **belső kivétel leírásában olvasható = >**.  
+* Ha a hiba: a **SyncRulesEngine**, akkor a hívási verem adatokat először rendelkezik az objektum attribútumok listáját. Görgessen lefelé, amíg meg nem látja a fejléc **InnerException = >**.  
   ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorinnerexception.png)  
-  A sor után jeleníti meg a hiba. A fenti kép hiba: a létrehozott egyéni szinkronizálási szabály Fabrikam.
+  A sor után a hibát jeleníti meg. A fenti képen a hiba: a létrehozott egyéni szinkronizálási szabály Fabrikam.
 
-A hiba, maga nem ad elegendő információ áll rendelkezésre, majd esetén tekintse meg az adatokat mozgatná időt. Az objektumazonosító, a hivatkozásra, és folytassa a [összekötő tér importált objektum](#cs-import).
+Ha magát a hibát nem nyújt elegendő információt, majd, és tekintse meg az adatokat mozgatná idő. Kattintson a hivatkozásra a objektumazonosítóval rendelkező, és folytassa a [importált objektum a lemezterület-összekötő](#cs-import).
 
 ## <a name="connector-space-object-properties"></a>Összekötőtér-objektum tulajdonságai
-Ha nincs hiba található a [műveletek](#operations) lapra, majd a következő lépés az, hogy az összekötő terület objektum kövesse az Active Directory, a metaverzumba, és az Azure AD. Az ehhez az elérési úthoz keresse meg a probléma.
+Ha nem rendelkezik minden olyan hibákat talált a [operations](#operations) lapra, majd a következő lépés az, hogy hajtsa végre az összekötőtér objektuma az Active Directoryból, a metaverzumba, és az Azure ad-hez. Ezen az elérési úton keresse meg a probléma esetén.
 
-### <a name="search-for-an-object-in-the-cs"></a>Az objektum a CS keresése
+### <a name="search-for-an-object-in-the-cs"></a>Az objektum a CS lévő keresése
 
-A **Synchronization Service Managert**, kattintson a **összekötők**, válassza ki az Active Directory-összekötőt, és **Összekötőtér keresési**.
+A **Synchronization Service Managert**, kattintson a **összekötők**, válassza ki az Active Directory-összekötő és **keresési Összekötőterét**.
 
-A **hatókör**, jelölje be **RDN** (Ha meg szeretne keresni a CN-attribútum) vagy **megkülönböztető név vagy a horgony** (Ha meg szeretne keresni a distinguishedName attribútum). Adjon meg egy értéket, és kattintson a **keresési**.  
+A **hatókör**válassza **RDN** (Ha meg szeretne keresni a CN-attribútum) vagy **DN-t vagy a forráshorgony** (Ha meg szeretne keresni a distinguishedName attribútum). Adjon meg egy értéket, és kattintson a **keresési**.  
 ![Összekötőtér keresése](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearch.png)  
 
-Ha nem találja az objektum keres, majd az lehet, hogy a rendszer kiszűrt rendelkező [tartományalapú szűrés](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) vagy [OU-alapú szűrés](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering). Olvassa el a [szűrésének beállítása](active-directory-aadconnectsync-configure-filtering.md) a témakörhöz, és győződjön meg arról, hogy a szűrés elvártak szerint van konfigurálva.
+Az objektum nem találja a keresett, akkor a, előfordulhat, hogy vannak szűrve az [tartományalapú szűrés](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) vagy [szervezeti egység szerinti szűrés](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering). Olvassa el a [a szűrés konfigurálása](active-directory-aadconnectsync-configure-filtering.md) témakörhöz, és győződjön meg arról, hogy a szűrés konfigurált elvárt módon.
 
-Jelölje ki az Azure AD-összekötő egy másik keresési **hatókör** válassza ki **függőben lévő importálás**, és válassza ki a **hozzáadása** jelölőnégyzetet. Ez a keresés lehetővé teszi minden szinkronizált objektumnak az Azure ad-ben, amely nem rendelhető hozzá a helyi objektum.  
+Hasznos egy másik kereséssel, hogy válassza ki az Azure AD-összekötő **hatókör** kiválasztása **függőben lévő importálás**, és válassza ki a **Hozzáadás** jelölőnégyzetet. A keresés lehetővé teszi az összes szinkronizált objektumokat, amelyeket nem lehet egy helyszíni objektumhoz társított Azure AD-ben.  
 ![Összekötő terület keresési árva](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearchorphan.png)  
-Azokat az objektumokat egy másik szinkronizálási motor vagy a szinkronizálási motor a különböző szűrési konfigurációval rendelkezik hozott létre. Ez a nézet olvashat egy listát **árva** már nem kezelt objektumok. Át kell tekintenie a ezen a listán, és fontolja meg ezek az objektumok eltávolítását a [Azure AD PowerShell](https://aka.ms/aadposh) parancsmagok.
+Ezek az objektumok egy másik szinkronizálási motor vagy egy másik szűrési konfigurációval rendelkező szinkronizálási motor hozták létre. Ez a nézet az listája **árva** már nem felügyelt objektumokat. Ekkor a felülvizsgálandó ebben a listában, és fontolja meg ezek az objektumok eltávolítását a [az Azure AD PowerShell](https://aka.ms/aadposh) parancsmagok.
 
 ### <a name="cs-import"></a>CS importálása
-Cs-objektum megnyitásakor nincsenek lap tetején. A **importálása** lapon láthatók az importálás után előkészített adatok.  
-![CS objektum](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/csobject.png)    
-A **régi érték** jeleníti meg, mi jelenleg tárolódik a csatlakozás és a **új érték** mi érkezett a forrásrendszerben, és nem alkalmazták. Ha nem sikerül az objektumra, majd változtatások nincsenek feldolgozva.
+Amikor megnyit egy cs objektumot, nincsenek több lapok tetején. A **importálása** lapon látható, amely az importálás után az adatok.  
+![CS-objektum](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/csobject.png)    
+A **régi érték** mutatja a jelenleg tárolja a csatlakozás és a **új érték** mi érkezett a forrásrendszerben, és még nem alkalmazták. Ha hiba van az objektumot, majd módosítások feldolgozása nem.
 
 **Hiba történt**  
-![CS objektum](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssyncerror.png)  
-A **szinkronizálási hiba** lap csak akkor látható, ha a probléma oka az objektum. További információkért lásd: [szinkronizálási hibák elhárítása](#troubleshoot-errors-in-operations-tab).
+![CS-objektum](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssyncerror.png)  
+A **szinkronizálási hiba** lap csak akkor látható, ha a probléma az objektummal. További információkért lásd: [szinkronizálási hibák elhárítása](#troubleshoot-errors-in-operations-tab).
 
-### <a name="cs-lineage"></a>CS Leszármaztatás
-A Leszármaztatás lapon látható, hogyan viszonyul az összekötő terület objektum a metaverzum-objektum. Az összekötő utolsó importálása módosítását a csatlakoztatott rendszer, és mely szabályokat alkalmazza a metaverzumban adatok feltöltése tekintheti meg.  
-![CS Leszármaztatás](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cslineage.png)  
-Az a **művelet** oszlopban láthatja van egy **bejövő** szinkronizálási szabály művelet **rendelkezés**. Azt jelzi, hogy, hogy mindaddig, amíg az összekötő terület objektum jelen, a metaverzum-objektum továbbra is. Ha a szinkronizálási szabályok helyette jeleníti irány szinkronizálási szabály **kimenő** és **rendelkezés**, azt jelzi, hogy ez az objektum törölve, a metaverzum-objektum törlésekor.  
+### <a name="cs-lineage"></a>CS Leszármaztatási
+A leszármaztatási lap bemutatja, hogyan viszonyul az összekötőtér objektuma a metaverzum-objektum. Láthatja, ha az összekötő utolsó importál egy módosítást a a csatlakoztatott rendszer, és mely szabályokat alkalmazza kitölteni az adatokat a metaverzumban.  
+![CS leszármaztatási](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cslineage.png)  
+Az a **művelet** oszlopban látható egy **bejövő** a művelettel a szinkronizálási szabály **kiépítése**. Azt jelzi, hogy mindaddig, amíg a összekötőtér objektuma jelen, a metaverzum-objektum marad. Ha a szinkronizálási szabályok listáját inkább mutatja egy szinkronizálási szabályt, az irány **kimenő** és **kiépítése**, az azt jelzi, hogy ez az objektum törölve van, a metaverzum-objektum törlése.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cslineageout.png)  
-Azt is láthatja a **PasswordSync** oszlopot, amely a bejövő kapcsolódási térbe hozzájárulhat a jelszó vált, mivel egy szinkronizálási szabály értéke **igaz**. A jelszó majd küldése az Azure AD a kimenő forgalomra vonatkozó szabály keresztül.
+Emellett megtekintheti az a **PasswordSync** oszlopot, amely a bejövő összekötőterében közreműködhet változik a jelszót, mert egy szinkronizálási szabály értéke **igaz**. Ezt a jelszót az Azure AD a megadott kimenő szabály majd zajlik.
 
-Leszármaztatás lapján is elérheti a metaverzumba kattintva [Metaverzum-objektum tulajdonságai](#mv-attributes).
+A leszármaztatási lapról érheti el a metaverzumba kattintva [Metaverzumbeli objektumának tulajdonságait](#mv-attributes).
 
-Az összes lap alján van két gomb: **előzetes** és **napló**.
+Az összes lap alján a rendszer két gomb: **előzetes** és **Log**.
 
 ### <a name="preview"></a>Előzetes verzió
-A villámnézeti lap segítségével egy egyetlen objektum szinkronizálásához. Ez akkor hasznos, ha néhány egyéni szinkronizálási szabály kapcsolatos hibaelhárítást végez, és egy adott objektum változás hatásának megtekintéséhez. Választhat **Full sync** és **különbözeti szinkronizálási**. Is választhat **készítése előzetes**, amely csak végleg a módosítás a memória, és **véglegesítése előzetes**, amely frissíti a metaverzumba, és előkészíti a cél összekötőterek összes módosítását.  
+Az előzetes verziójú szolgáltatásainak weblapján szolgál egy egyetlen objektum szinkronizálásához. Ez akkor hasznos, ha néhány egyéni szinkronizálási szabály hibaelhárítást, és szeretné látni a változás hatását egy önálló objektumon. Választhat **teljes szinkronizálás** és **különbözeti szinkronizálási**. Között lehetőség kiválasztásával **előzetes létrehozása**, ami a memória, csak tartja a módosítás és **véglegesítése előzetes**, amely frissíti a metaverzumba, és előkészíti a cél összekötőterek összes módosítását.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/preview.png)  
-Az objektum, és melyik szabály alkalmazása az adott Attribútumfolyam vizsgálhatja meg.  
+Az objektum, és melyik szabály alkalmazása adott attribútum folyamathoz tartozó vizsgálhatja meg.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>Napló
-A napló lap segítségével tekintse meg a jelszó-szinkronizálás állapota és előzményei. További információkért lásd: [hibaelhárítása a Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
+A oldalon tekintse meg a jelszó-szinkronizálás állapota és előzményei szolgál. További információkért lásd: [Jelszókivonat-szinkronizálás hibaelhárítása](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
 
-## <a name="metaverse-object-properties"></a>Metaverzum-objektum tulajdonságai
-Általában célszerűbb kezdeni a keresést a következő forrásból: Active Directory [kapcsolódási térbe](#connector-space). Azonban úgy is elindíthatja, keresés a metaverzumban.
+## <a name="metaverse-object-properties"></a>A Metaverzumbeli objektum tulajdonságai
+Általában jobb kezdeni a keresést az Active Directory forrásból [összekötőterében](#connector-space). De a Keresés a metaverzumban is elindíthatja.
 
-### <a name="search-for-an-object-in-the-mv"></a>Keresse meg az objektumot a MV-ban
-A **Synchronization Service Managert**, kattintson a **Metaverzum-keresés**. Megkeresi a felhasználó ismeri-lekérdezés létrehozása. Általános attribútumokkal rendelkeznek, például a fióknév (sAMAccountName) és a userPrincipalName is kereshet. További információkért lásd: [Metaverzum-keresés](active-directory-aadconnectsync-service-manager-ui-mvsearch.md).
+### <a name="search-for-an-object-in-the-mv"></a>Keresse meg a MV-objektum
+A **Synchronization Service Managert**, kattintson a **keresés a Metaverzumban**. Hozzon létre egy lekérdezést, megkeresi a felhasználó ismeri. Általános attribútumokkal rendelkeznek, például accountName (sAMAccountName) és a userPrincipalName kereshet. További információkért lásd: [keresés a Metaverzumban](active-directory-aadconnectsync-service-manager-ui-mvsearch.md).
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvsearch.png)  
 
-Az a **keresési eredmények** ablak, kattintson az objektumra.
+Az a **keresési eredmények** ablakában kattintson az objektumra.
 
-Ha nem találta meg az objektumot, majd nem még elérte a metaverzumba. Továbbra is keresse meg az objektumot az Active Directory [kapcsolódási térbe](#connector-space-object-properties). Előfordulhat, hogy hiba a szinkronizálás, amely az objektum állapotba kerüljön a metaverzumba történő zárolja, vagy előfordulhat, hogy a szűrő alkalmazása.
+Ha nem látja az objektumot, majd azt nem még érte el a metaverzumba. Keresse meg az objektumot az Active Directory továbbra is [összekötőterében](#connector-space-object-properties). Lehetséges, hogy szinkronizálást, amely blokkolja az objektumot a metaverzumba jelenik meg a hiba, vagy előfordulhat, hogy egy szűrőt alkalmazza.
 
 ### <a name="mv-attributes"></a>MV-attribútumok
-Az attribútumok lapon megtekintheti az értékeket, és melyik összekötő hozzájárult azt.  
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvobject.png)  
+Az attribútumok lapon láthatja, hogy az értékeket, és mely összekötő viszonyított azt.  
+![Szinkronizálási szolgáltatáskezelő](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvobject.png)  
 
-Ha egy objektum nem szinkronizál, majd tekintse meg a metaverzumban a következő attribútumokat:
-- Az attribútum **cloudFiltered** jelent-e, és állítsa be **igaz**? Ha van, akkor a szűrt megfelelően lépéseit [attribútum alapú szűrés](active-directory-aadconnectsync-configure-filtering.md#attribute-based-filtering).
-- Az attribútum **sourceAnchor** jelen? Ha nem rendelkezik egy fiók-erőforrás szolgának? Ha egy objektum hivatkozott postafiókkal azonosítottak (attribútum **msExchRecipientTypeDetails** értéke 2), majd a sourceAnchor azon erdő részére engedélyezve van az Active Directory-fiókkal van hozzájárult. Győződjön meg arról, hogy a fő fiók importálva, és megfelelően szinkronizálva. A fő fióknak szerepelnie kell a [összekötők](#mv-connectors) objektumhoz.
+Ha egy objektum nem szinkronizálja, majd keresse meg a következő attribútumok metaverzumban található:
+- Az attribútum **cloudFiltered** jelen, és állítsa **igaz**? Ha van, akkor a ismertetett lépések szerint szűrve [attribútum alapú szűrést](active-directory-aadconnectsync-configure-filtering.md#attribute-based-filtering).
+- Az attribútum **sourceAnchor** jelen? Ha nem rendelkezik egy fiók-erőforrás szolgának? Ha egy objektum hivatkozott postafiókkal azonosítottak (az attribútum **msExchRecipientTypeDetails** értéke 2), majd a sourceAnchor van százalékaránya az erdő engedélyezve van az Active Directory-fiókkal. Ellenőrizze, hogy a fő fiók importált és megfelelően szinkronizálva. A fő fiók szerepelnie kell a [összekötők](#mv-connectors) objektum számára.
 
 ### <a name="mv-connectors"></a>MV-összekötők
-Az összekötők lapon láthatók, amelyek a megjelenítése, az objektum összes összekötőterek.  
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvconnectors.png)  
-Az összekötő kell rendelkezniük:
+Az összekötők lapon látható minden összekötő szóközt, amely rendelkezik az objektum reprezentációját.  
+![Szinkronizálási szolgáltatáskezelő](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvconnectors.png)  
+Az összekötő kell rendelkeznie:
 
-- Minden Active Directory-erdőt a felhasználók jelennek meg. Ez a megjelenítési módja foreignSecurityPrincipals és ügyfél objektumok lehetnek.
+- Minden egyes Active Directory-erdőben, a felhasználó jelennek meg. E ábrázolás foreignSecurityPrincipals és a Contact objektumot is tartalmazhat.
 - Az Azure AD-összekötő.
 
-Ha az Azure ad-összekötő hiányzik, majd olvassa el [MV attribútumok](#mv-attributes) ellenőrzése az Azure AD létre feltételeit.
+Ha az Azure AD-összekötő hiányoznak, majd elolvashatják [MV attribútumok](#mv-attributes) önköltséggel Azure ad-hez feltételeinek ellenőrzése.
 
-Ezen a lapon azt is lehetővé teszi, hogy keresse meg a [összekötő terület objektum](#connector-space-object-properties). Jelöljön ki egy sort, és kattintson a **tulajdonságok**.
+Ezen a lapon emellett lehetővé teszi keresse meg a [összekötőtér objektuma](#connector-space-object-properties). Jelöljön ki egy sort, és kattintson a **tulajdonságok**.
 
 ## <a name="next-steps"></a>További lépések
-További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.
+Tudjon meg többet a [Azure AD Connect szinkronizálási](active-directory-aadconnectsync-whatis.md) konfigurációja.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

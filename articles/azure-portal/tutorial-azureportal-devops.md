@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: 2764d8a17d50f1589d413c2343badfded6adb66e
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: db3cc8bb546758402e4f0b3fe91449e597e754fa
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216342"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42058400"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Oktatóanyag: A DevOps és az Azure Portalon
 Az Azure platform számos rugalmas DevOps-munkafolyamatot tartalmaz. Ebben az oktatóanyagban elsajátíthatja, hogyan használható a funkcióinak fejlesztése, tesztelése, üzembe helyezése, hibaelhárítása, figyelheti és kezelheti a futó alkalmazások az Azure Portalon. Ez az oktatóanyag a következő témákkal foglalkozik:
@@ -125,7 +125,7 @@ Ezután hajtson végre néhány módosítást az alapkódban, és gyorsan helyez
 12. Lépjen vissza az eszközök paneljére, és a Fejlesztés kategóriában kattintson a Teljesítményteszt elemre.
     
     ![image28][image28]
-13. Be kell állítania egy Team Services-fiókot. További információt itt talál: [Team Services-fiók létrehozása](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
+13. Be kell állítania egy Team Services-fiókot. További információt itt talál: [Team Services-fiók létrehozása](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
 14. Az Új gombra kattintva hozzon létre egy új teljesítménytesztet.
     
     ![image29][image29]

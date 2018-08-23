@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4322f1837c9b7fffba180f7106911d010a9ad8aa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8525dd443e80bb7d67bc48cc007ab1632ee3e611
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448536"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054523"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok betöltése az Azure SQL Data Warehouse-bA az Azure Data Factory használatával
 
@@ -40,7 +40,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
 * Az Azure SQL Data Warehouse: Az adattárház tárolja az SQL database-ből átmásolt adatokat. Ha nem rendelkezik az Azure SQL Data Warehouse, tekintse meg a következő témakör utasításait [hozzon létre egy SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 * Az Azure SQL Database: Ebben az oktatóanyagban adatokat másol egy Azure SQL database, az Adventure Works LT mintaadatokat. Létrehozhat egy SQL-adatbázis található utasításokat követve [hozzon létre egy Azure SQL database](../sql-database/sql-database-get-started-portal.md). 
-* Az Azure storage-fiók: az Azure Storage szolgál a _átmeneti_ blob a tömeges másolási műveletben. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikkben találja.
+* Az Azure storage-fiók: az Azure Storage szolgál a _átmeneti_ blob a tömeges másolási műveletben. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikkben találja.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 

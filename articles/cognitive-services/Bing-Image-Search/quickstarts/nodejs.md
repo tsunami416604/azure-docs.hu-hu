@@ -1,6 +1,6 @@
 ---
-title: Hívás-válasz - Node.js gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing kép Search API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a kép Bing keresési API a Microsoft Azure kognitív Services.
+title: 'Gyors útmutató: Küldési keresési lekérdezések a REST API használatával a Bing Image Search API a Node.js használata'
+description: Ez a rövid útmutatóban küldeni keresési lekérdezések a Bing Search API a Node.js használatával megfelelő rendszerképek listájának beolvasása.
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,32 +9,32 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 00408677d15a00d58720c142cabed96e310c69b2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 975275bea61a5903c06da394b762b1aceb18023f
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348959"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41988794"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-for-nodejs"></a>Hívás-válasz: az első Bing kép keresési lekérdezés a Node.js
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-nodejs"></a>Gyors útmutató: Küldési keresési lekérdezések a REST API-t és a Node.js használatával
 
-A kép Bing keresési API Bing.com/Images hasonló élményt nyújt akkor azáltal, hogy egy felhasználó keresési lekérdezés küldése a Bing, és vissza megfelelő képek listájának lekérése.
+A Bing Image Search API azáltal, hogy egy felhasználó keresési lekérdezést küld a Bing, majd az érintett rendszerképek listájának Bing.com/Images hasonló élményt nyújt.
 
-A cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing kép Search API lekérdezést hajt végre, és a visszaadott nyers keresési eredmények között, amelyek JSON formátumban jeleníti meg. Ez az alkalmazás JavaScript nyelven van megírva, és fut a Node.js, az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+Ez a cikk tartalmaz egy egyszerű konzolalkalmazást, amely a Bing Image Search API-lekérdezést hajt végre, és megjeleníti a visszaadott nyers keresési eredmények között, amely JSON formátumban vannak. Ez az alkalmazás Node.js alatt fut, és a JavaScript nyelven van megírva, míg a API-ját kompatibilis minden programozási nyelvet, amely JSON elemzése és a HTTP-kéréseket a webes RESTful szolgáltatás. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége [Node.js 6](https://nodejs.org/en/download/) futtatásához ezt a kódot.
+Szükséges [Node.js 6](https://nodejs.org/en/download/) Ez a kód futtatásához.
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket.
 
-1. Hozzon létre egy új Node.js-projektet a kedvenc IDE vagy szerkesztő.
+1. Hozzon létre egy új Node.js-projektet a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével a.
 2. Adja hozzá a megadott kódot.
-3. Cserélje le a `subscriptionKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `subscriptionKey` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```javascript
@@ -103,7 +103,7 @@ if (subscriptionKey.length === 32) {
 
 ## <a name="json-response"></a>JSON-válasz
 
-A következő mintát választ. A JSON hosszát korlátozásához csak egyetlen eredmény látható, és a választ más részei le lettek rövidítve. 
+A következő mintát választ. A JSON hosszának korlátozása, csak egyetlen eredmény jelenik meg, és egyéb részei a válasz a rendszer csonkolta. 
 
 ```json
 {
@@ -192,11 +192,11 @@ A következő mintát választ. A JSON hosszát korlátozásához csak egyetlen 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing kép keresési alkalmazás oktatóanyag](../tutorial-bing-image-search-single-page-app.md)
+> [Bing – Képkeresés egyoldalas alkalmazás oktatóanyag](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Lásd még 
 
-[Bing kép keresési áttekintése](../overview.md)  
+[Bing – Képkeresés áttekintése](../overview.md)  
 [Próbálja ki](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-[Egy ingyenes próba hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Bing kép keresési API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+[Ingyenes próba hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+[A Bing Image Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

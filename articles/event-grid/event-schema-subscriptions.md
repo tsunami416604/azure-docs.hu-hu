@@ -3,17 +3,16 @@ title: Az Azure Event Grid-előfizetés eseménysémája
 description: Ismerteti a tulajdonságait, amelyet az Azure Event Grid-előfizetés események
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/02/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6eb5cd9a086522bfe5125189f87a2498dda0ef7e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 18f2a64a4354fbd99f1a471c21cc35cbf5df6619
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493574"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42056679"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Az előfizetések az Azure Event Grid eseménysémája
 
@@ -27,7 +26,9 @@ Amikor előfizet egy Azure-előfizetés eseményeire, a végpont adott előfizet
 
 Események programozott módon kezelje, rendezheti események megtekintésével a `operationName` értéket. Például az esemény-végpont lehet, hogy csak feldolgozni a műveletek eseményeit, amelyek egyenlőnek kell lennie `Microsoft.Compute/virtualMachines/write` vagy `Microsoft.Storage/storageAccounts/write`.
 
-Az esemény áll, akkor az erőforrás, amely a művelet céljaként megadott erőforrás-Azonosítóját. Erőforrás események szűréséhez állítsa be, adja meg, hogy az erőforrás létrehozásakor az esemény-előfizetés AZONOSÍTÓJÁT. Mintaszkriptek, lásd: [az előfizetés és erőforráscsoport - PowerShell szűrő](scripts/event-grid-powershell-resource-group-filter.md) vagy [az előfizetés és erőforráscsoport - Azure CLI-szűrő](scripts/event-grid-cli-resource-group-filter.md). Szűrés erőforrástípus szerint, használja az értéket a következő formátumban: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Az esemény áll, akkor az erőforrás, amely a művelet céljaként megadott erőforrás-Azonosítóját. Erőforrás események szűréséhez állítsa be, adja meg, hogy az erőforrás létrehozásakor az esemény-előfizetés AZONOSÍTÓJÁT. Szűrés erőforrástípus szerint, használja az értéket a következő formátumban: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+
+Mintaszkriptek és oktatóanyagok listáját lásd: [Azure-előfizetés eseményforrás](event-sources.md#azure-subscriptions).
 
 ## <a name="available-event-types"></a>Rendelkezésre álló események típusai
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 7074ae21c1816b5266cbcf69d0126751ded19439
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 907175ac341632d2ba0048ab486392b949f83626
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522604"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054289"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>How to use Queue storage from Ruby (A Queue Storage használata Rubyval)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -156,4 +156,4 @@ Most, hogy megismerte a queue storage alapjait, az alábbi hivatkozásokból tá
 * Látogasson el a [Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/)
 * Látogasson el a [Rubyhoz készült Azure SDK-t](https://github.com/WindowsAzure/azure-sdk-for-ruby) tárházban a Githubon
 
-Az ebben a cikkben tárgyalt Azure Queue szolgáltatás és az Azure Service Bus-üzenetsorok tárgyalt összehasonlítását a [használata a Service Bus-üzenetsorok](/develop/ruby/how-to-guides/service-bus-queues/) cikkre, lásd: [Azure-üzenetsorok és Service Bus-üzenetsorok - képest és Összehasonlítása](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+Az ebben a cikkben tárgyalt Azure Queue szolgáltatás és az Azure Service Bus-üzenetsorok tárgyalt összehasonlítását a [használata a Service Bus-üzenetsorok](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) cikkre, lásd: [Azure-üzenetsorok és Service Bus-üzenetsorok - képest és Összehasonlítása](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

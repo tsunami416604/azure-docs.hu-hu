@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 08/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: f634167f24c221e702696174ea86a212c535695b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258100"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055136"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Virtuális hálózat konfigurálása az Azure SQL Database felügyelt példány
 
@@ -29,7 +29,7 @@ Az Azure SQL Database felügyelt példány (előzetes verzió) kell üzembe hely
 Tervezze meg, hogyan kívánja üzembe helyezni egy virtuális hálózat, az alábbi kérdésekre adott válaszai segítségével felügyelt példány: 
 - Tervezi egy vagy több felügyelt példányok üzembe helyezéséhez? 
 
-  A felügyelt példányok száma a felügyelt példányok lefoglalni az alhálózat minimális mérete határozza meg. További információkért lásd: [alhálózat méretét határozza meg a felügyelt példány](#create-a-new-virtual-network-for-managed-instances). 
+  A felügyelt példányok száma a felügyelt példányok lefoglalni az alhálózat minimális mérete határozza meg. További információkért lásd: [alhálózat méretét határozza meg a felügyelt példány](#determine-the-size-of-subnet-for-managed-instances). 
 - Nem kell a felügyelt példány üzembe egy meglévő virtuális hálózaton, vagy hoz létre egy új hálózati? 
 
    Ha azt tervezi, használja a meglévő virtuális hálózattal, módosítania, hogy a felügyelt példány megfeleljen a hálózati konfigurációt. További információkért lásd: [meglévő virtuális hálózat módosítása a felügyelt példány](#modify-an-existing-virtual-network-for-managed-instances). 
@@ -38,7 +38,7 @@ Tervezze meg, hogyan kívánja üzembe helyezni egy virtuális hálózat, az al�
 
 ## <a name="requirements"></a>Követelmények
 
-A felügyelt példány létrehozásához az alábbi követelményeknek kell dedikált alhálózatot, amely megfelel a virtuális hálózatán:
+A felügyelt példány létrehozásához kell rendelnie egy alhálózaton belül a virtuális hálózat, amely megfelel az alábbi követelményeknek:
 - **Üres**: az alhálózat nem tartalmazhat más felhőalapú szolgáltatás társítva van hozzá, és nem lehet átjáró-alhálózatot. Nem felügyelt példány létrehozása felügyelt példány naplóátvitelen kívüli egyéb erőforrásokra tartalmazó alhálózathoz, vagy később az alhálózaton belüli más erőforrások hozzáadásához.
 - **Nincs hálózati biztonsági csoport**: az alhálózathoz társított hálózati biztonsági csoport nem lehet.
 - **Rendelkezik az adott útválasztási táblázat**: az alhálózat rendelkeznie kell egy felhasználó útválasztási tábla (UDR) 0.0.0.0/0 következő ugrási típusú internettel, az egyetlen útvonal rendelve. További információkért lásd: [hozzon létre a szükséges útválasztási táblázatot, és társítsa azt](#create-the-required-route-table-and-associate-it)
@@ -63,7 +63,28 @@ Ha azt tervezi, az alhálózaton belül több felügyelt példány üzembe helye
 
 **Példa**: tervezett három általános célú és két üzleti az kritikus fontosságú felügyelt példányok. Hogy azt jelenti, hogy 5 + 3 * 2 + 2 * 4 = 19 kell IP-címek. IP-címtartományok 2 hatványa határozzák meg, mint az IP-címtartományt 32 kell (2 ^ 5) IP-címeket. Ezért kell lefoglalni az alhálózat/27-eset a alhálózati maszkkal. 
 
-## <a name="create-a-new-virtual-network-for-managed-instances"></a>Felügyelt példányok egy új virtuális hálózat létrehozása 
+## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>A felügyelt példányhoz az Azure Resource Manager üzembe helyezése egy új virtuális hálózat létrehozása
+
+A létrehozása és konfigurálása virtuális hálózat legegyszerűbben az Azure Resource Manager üzembe helyezési sablon használata.
+
+1. Jelentkezzen be az Azure portálra.
+
+2. Használat **üzembe helyezés az Azure** üzembe helyezése az Azure-felhőben lévő virtuális hálózati gombra:
+
+  <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="http://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
+
+  Ez a gomb megnyílik egy űrlapot, amely segítségével konfigurálhatja a hálózati környezet ahol telepíthet a felügyelt példány.
+
+  > [!Note]
+  > Az Azure Resource Manager-sablont fog üzembe helyezni a virtuális hálózat két alhálózattal. Egy alhálózat nevű **ManagedInstances** felügyelt példányok számára fenntartva, és rendelkezik előre konfigurált útválasztási táblázatot, míg a másik alhálózat nevű **alapértelmezett** szolgál, amely hozzá kell férnie a felügyelt források A példány (például az Azure virtuális gépeken). Eltávolíthatja **alapértelmezett** Ha már nincs szüksége alhálózatra.
+
+3. Konfigurálja a hálózati környezet. A következő képernyőn konfigurálhatja a hálózati környezet paraméterei:
+
+![Azure-hálózat konfigurálása](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+
+Előfordulhat, hogy módosítsa a virtuális hálózatok és alhálózatok nevét, és állítsa be a hálózati erőforrásokhoz tartozó IP-címtartományok. Után a "Vásárlás" gombra az űrlap létrehozása, és konfigurálja a környezetet. Ha már nincs szüksége a két alhálózat törölheti az alapértelmezettet. 
+
+## <a name="create-a-new-virtual-network-for-managed-instances-using-portal"></a>Új virtuális hálózat létrehozása a portál használatával felügyelt példányok
 
 Az Azure virtuális hálózat létrehozása előfeltétele a felügyelt példány létrehozása. Használhatja az Azure Portalon [PowerShell](../virtual-network/quick-create-powershell.md), vagy [Azure CLI-vel](../virtual-network/quick-create-cli.md). A következő szakasz bemutatja a lépéseket az Azure portal használatával. Mindkét módszerhez a részleteit az itt tárgyalt vonatkoznak.
 
@@ -92,9 +113,9 @@ Az Azure virtuális hálózat létrehozása előfeltétele a felügyelt példán
 
    ![virtuális hálózat létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
 
-## <a name="create-the-required-route-table-and-associate-it"></a>Hozzon létre a szükséges útválasztási táblázatot, és társítsa azt
+### <a name="create-the-required-route-table-and-associate-it"></a>Hozzon létre a szükséges útválasztási táblázatot, és társítsa azt
 
-1. Bejelentkezés az Azure Portal webhelyre  
+1. Jelentkezzen be az Azure Portalra  
 2. Keresse meg az **Útvonaltábla** elemet, kattintson rá, majd az Útvonaltábla lapon kattintson a **Létrehozás** gombra.
 
    ![útvonaltábla létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)

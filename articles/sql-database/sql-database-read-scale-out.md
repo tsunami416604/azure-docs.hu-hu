@@ -9,12 +9,12 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: sashan
-ms.openlocfilehash: 7ca033be8a27802db55aec827509b46fed8e471e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 2fe27f93bb48e0581902fd380813c878a4883a5c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090064"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056897"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
@@ -22,7 +22,11 @@ ms.locfileid: "39090064"
 
 ## <a name="overview-of-read-scale-out"></a>Horizontális Felskálázás olvasása áttekintése
 
-Prémium szinten lévő minden egyes adatbázishoz ([DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)) vagy az üzletileg kritikus ([Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)) automatikusan hozzáférést kapnak az AlwaysON replikák több a rendelkezésre állási SLA-t támogatja. Ezeket a replikákat a az írható-olvasható replika rendszeres adatbázis-kapcsolatok által használt teljesítményszint vannak kiosztva. A **olvasási kibővített** funkció lehetővé teszi az egyenleg SQL-adatbázis csak olvasható-alapú számítási feladatokat a kapacitását, csak olvasási replikára osztozik az írható-olvasható replika betölteni. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. A funkció célja az alkalmazások, amelyek tartalmazzák a logikailag elválasztott csak olvasható feladatokhoz, például elemzési, és ezért juthat által nyújtott további kapacitás használatának nélkül többletköltség.
+Prémium szinten lévő minden egyes adatbázishoz ([DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)) vagy az üzletileg kritikus ([Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)) automatikusan hozzáférést kapnak az AlwaysON replikák több a rendelkezésre állási SLA-t támogatja.
+
+![Csak olvasható replikák](media/sql-database-managed-instance/business-critical-service-tier.png)
+
+Ezeket a replikákat a az írható-olvasható replika rendszeres adatbázis-kapcsolatok által használt teljesítményszint vannak kiosztva. A **olvasási kibővített** funkció lehetővé teszi az egyenleg SQL-adatbázis csak olvasható-alapú számítási feladatokat a kapacitását, csak olvasási replikára osztozik az írható-olvasható replika betölteni. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. A funkció célja az alkalmazások, amelyek tartalmazzák a logikailag elválasztott csak olvasható feladatokhoz, például elemzési, és ezért juthat által nyújtott további kapacitás használatának nélkül többletköltség.
 
 Az olvasási horizontális Felskálázás funkció használatához, hogy adott adatbázissal, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy később a PowerShell használatával meghívásával konfiguráció módosítása a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [ Új-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust. 
 
@@ -112,7 +116,7 @@ További információkért lásd: [- adatbázisok létrehozása vagy frissítés
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Horizontális Felskálázás olvasása használata a georeplikált adatbázis
 
-Ha a rendszer olvasási kibővített használatával, amely (pl. egy feladatátvételi csoport tagjai), a georeplikált adatbázis csak olvasható munkaterhelések egyenleg betöltése győződjön meg arról, hogy olvasási horizontális felskálázás az elsődleges és a georeplikált másodlagos adatbázisok is engedélyezve van. Amikor az alkalmazás csatlakozik az új elsődleges a feladatátvételt követően ugyanezt a terheléselosztás hatást tud biztosítani. Ha az olvasási szintű engedélyezve van, a georeplikált másodlagos adatbázishoz kapcsolódik a munkamenetek `ApplicationIntent=ReadOnly` továbbítja a replikára ugyanúgy azt átirányíthatja a kapcsolatokat az elsődleges adatbázison.  A munkamenetek nélkül `ApplicationIntent=ReadOnly` a rendszer átirányítja az elsődleges replika, a georeplikált másodlagos, ami egyben csak olvasható. Georeplikált másodlagos adatbázis egy másik végponti, mint az elsődleges adatbázissal rendelkezik, mert hagyományosan eléréséhez a másodlagos ez nem szükséges beállítása `ApplicationIntent=ReadOnly`. Előző verziókkal való kompatibilitás érdekében `sys.geo_replication_links` DMV látható `secondary_allow_connections=2` (bármely ügyfél kapcsolat engedélyezett).
+Ha használ betölteni az egyenleg csak olvasható számítási feladatok, a georeplikált (pl. tagjaként egy feladatátvételi csoportot) egy adatbázis, győződjön meg arról, hogy olvasási kibővített engedélyezve van az elsődleges, mind a georeplikált másodlagos adatbázisok a felskálázás olvasása. Amikor az alkalmazás csatlakozik az új elsődleges a feladatátvételt követően ugyanezt a terheléselosztás hatást tud biztosítani. Ha az olvasási szintű engedélyezve van, a georeplikált másodlagos adatbázishoz kapcsolódik a munkamenetek `ApplicationIntent=ReadOnly` továbbítja a replikára ugyanúgy azt átirányíthatja a kapcsolatokat az elsődleges adatbázison.  A munkamenetek nélkül `ApplicationIntent=ReadOnly` a rendszer átirányítja az elsődleges replika, a georeplikált másodlagos, ami egyben csak olvasható. Georeplikált másodlagos adatbázis egy másik végponti, mint az elsődleges adatbázissal rendelkezik, mert hagyományosan eléréséhez a másodlagos ez nem szükséges beállítása `ApplicationIntent=ReadOnly`. Előző verziókkal való kompatibilitás érdekében `sys.geo_replication_links` DMV látható `secondary_allow_connections=2` (bármely ügyfél kapcsolat engedélyezett).
 
 > [!NOTE]
 > Az előzetes időszakban nem végezzük el ciklikus időszeletelés vagy bármely más elosztott terhelésű helyi replikáit a másodlagos adatbázis között. 

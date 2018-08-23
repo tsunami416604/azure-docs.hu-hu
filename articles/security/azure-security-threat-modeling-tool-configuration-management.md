@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 5b9ef9691d3d9b9aaced3ad2aaa54e6cfc03fa14
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 254c68c45a06022588ade6ab6f005989205ff405
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857446"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055716"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Biztonsági keret: Konfigurációkezelés |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -606,7 +606,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com) |
 | **Lépések** | <p>Korlát nem helyezi a felhasznált rendszererőforrás erőforrás-fogyási típus és végső soron szolgáltatásmegtagadást eredményezheti.</p><ul><li>**Magyarázat:** Windows Communication Foundation (WCF) lehetőséget biztosít a szolgáltatáskérések szabályozását. Túl sok ügyfél kérésének engedélyezése kéréssekkel túlterhelheti a rendszer, és felhasználta a rendelkezésére az erőforrások. Másrészről így csak kevés egy szolgáltatáshoz érkező kérések megakadályozhatja legitim felhasználók a szolgáltatás használatával. Egyes szolgáltatások külön-külön használatára vannak konfigurálva és konfigurálni kell az erőforrások a megfelelő mennyiségét engedélyezi.</li><li>**JAVASLATOK** az alkalmazás megfelelő engedélyezése WCF szolgáltatás sávszélesség-szabályozási funkciót, és a beállított korlátokat.</li></ul>|
 
 ### <a name="example"></a>Példa
@@ -629,7 +629,7 @@ Az alábbiakban látható egy példa konfiguráció látható sávszélesség-sz
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com) |
 | **Lépések** | Metaadatok segítségével a támadók ismerje meg a rendszer, és a támadás űrlap tervezi. WCF-szolgáltatások elérhetővé metaadatok konfigurálható. Metaadatok szolgáltatás részletes ismertetése információkat nyújt, és nem kell az éles környezetben szórási. A `HttpGetEnabled`  /  `HttpsGetEnabled` ServiceMetaData osztály tulajdonságait határozza meg, hogy egy szolgáltatás a metaadatok teszi közzé. | 
 
 ### <a name="example"></a>Példa

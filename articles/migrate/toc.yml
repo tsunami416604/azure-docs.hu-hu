@@ -1,70 +1,87 @@
+items:
 - name: Az Azure Migrate dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure Migrate bemutatása
-      href: migrate-overview.md
+  - name: Az Azure Migrate bemutatása
+    href: migrate-overview.md
 - name: Oktatóanyagok
   items:
-    - name: VMware virtuális gépek felderítése és értékelése
-      href: tutorial-assessment-vmware.md
+  - name: VMware virtuális gépek felderítése és értékelése
+    href: tutorial-assessment-vmware.md
 - name: Alapelvek
   items:
-    - name: Tudnivalók a gyűjtőről
-      href: concepts-collector.md
-    - name: Értékelési számítások
-      href: concepts-assessment-calculation.md
-    - name: A függőségek vizualizációjának ismertetése
-      href: concepts-dependency-visualization.md
+  - name: Tudnivalók a gyűjtőről
+    href: concepts-collector.md
+  - name: Értékelési számítások
+    href: concepts-assessment-calculation.md
+  - name: A függőségek vizualizációjának ismertetése
+    href: concepts-dependency-visualization.md
 - name: Útmutatók
   items:
-    - name: Contoso migrálási sorozat
-      items:
-        - name: 1. Contoso – migrálás áttekintése
-          href: contoso-migration-overview.md
-        - name: 2. Contoso – Azure-infrastruktúra üzembe helyezése
-          href: contoso-migration-infrastructure.md
-        - name: 3. Contoso – Helyszíni erőforrások értékelése az Azure-ba való migráláshoz
-          href: contoso-migration-assessment.md
-        - name: 4. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre és felügyelt Azure SQL-példányra
-          href: contoso-migration-rehost-vm-sql-managed-instance.md
-        - name: 5. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre
-          href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre és az Azure SQL Server AlwaysOn rendelkezésre állási csoportokba
-          href: contoso-migration-rehost-vm-sql-ag.md
-        - name: 7. Contoso – Linux-alkalmazás áthelyezése Azure-beli virtuális gépekre
-          href: contoso-migration-rehost-linux-vm.md
-        - name: 8. Contoso – Linux-alkalmazás áthelyezése Azure-beli virtuális gépekre és az Azure MySQL-re
-          href: contoso-migration-rehost-linux-vm-mysql.md
-        - name: 9. Contoso – alkalmazás újrabontása az Azure Web Appsben és az Azure SQL Database-ben
-          href: contoso-migration-refactor-web-app-sql.md
-        - name: 10. Contoso – Linux-alkalmazás újrabontása az Azure Web Appsben és az Azure MySQL-ben
-          href: contoso-migration-refactor-linux-app-service-mysql.md
-        - name: 11. Contoso – TFS migrálása a VSTS-be
-          href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso – alkalmazás szerkezetének átalakítása az Azure-tárolókban és az Azure SQL Database-ben
-          href: contoso-migration-rearchitect-container-sql.md
-        - name: 13. Contoso – Alkalmazás újbóli összeállítása az Azure-ban
-          href: contoso-migration-rebuild.md
-    - name: Nagy méretű környezet felderítése és értékelése
-      href: how-to-scale-assessment.md
-    - name: Gépek csoportosítása
-      href: how-to-create-a-group.md
-    - name: Gépek csoportosítása a gépek függőségeivel
-      href: how-to-create-group-machine-dependencies.md
-    - name: Csoport pontosítása csoportos függőségekkel
-      href: how-to-create-group-dependencies.md
-    - name: Értékelés testreszabása
-      href: how-to-modify-assessment.md
-    - name: Gépek migrálása értékelés után
-      href: how-to-get-migration-tool.md
-    - name: Az Azure Migrate hibaelhárítása
-      href: troubleshooting-general.md
+  - name: Contoso migrálási sorozat
+    items:
+    - name: 1. Contoso – migrálás áttekintése
+      href: contoso-migration-overview.md
+    - name: 2. Contoso – Azure-infrastruktúra üzembe helyezése
+      href: contoso-migration-infrastructure.md
+    - name: 3. Contoso – Helyszíni erőforrások értékelése az Azure-ba való migráláshoz
+      href: contoso-migration-assessment.md
+    - name: 4. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre és felügyelt Azure SQL-példányra
+      href: contoso-migration-rehost-vm-sql-managed-instance.md
+    - name: 5. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre
+      href: contoso-migration-rehost-vm.md
+    - name: 6. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre és az Azure SQL Server AlwaysOn rendelkezésre állási csoportokba
+      href: contoso-migration-rehost-vm-sql-ag.md
+    - name: 7. Contoso – Linux-alkalmazás áthelyezése Azure-beli virtuális gépekre
+      href: contoso-migration-rehost-linux-vm.md
+    - name: 8. Contoso – Linux-alkalmazás áthelyezése Azure-beli virtuális gépekre és az Azure MySQL-re
+      href: contoso-migration-rehost-linux-vm-mysql.md
+    - name: 9. Contoso – alkalmazás újrabontása az Azure Web Appsben és az Azure SQL Database-ben
+      href: contoso-migration-refactor-web-app-sql.md
+    - name: 10. Contoso – Linux-alkalmazás újrabontása az Azure Web Appsben és az Azure MySQL-ben
+      href: contoso-migration-refactor-linux-app-service-mysql.md
+    - name: 11. Contoso – TFS migrálása a VSTS-be
+      href: contoso-migration-tfs-vsts.md
+    - name: 12. Contoso – alkalmazás szerkezetének átalakítása az Azure-tárolókban és az Azure SQL Database-ben
+      href: contoso-migration-rearchitect-container-sql.md
+    - name: 13. Contoso – Alkalmazás újbóli összeállítása az Azure-ban
+      href: contoso-migration-rebuild.md
+  - name: Nagy méretű környezet felderítése és értékelése
+    href: how-to-scale-assessment.md
+  - name: Gépek csoportosítása
+    href: how-to-create-a-group.md
+  - name: Gépek csoportosítása a gépek függőségeivel
+    href: how-to-create-group-machine-dependencies.md
+  - name: Csoport pontosítása csoportos függőségekkel
+    href: how-to-create-group-dependencies.md
+  - name: Értékelés testreszabása
+    href: how-to-modify-assessment.md
+  - name: Gépek migrálása értékelés után
+    href: how-to-get-migration-tool.md
+  - name: Az Azure Migrate hibaelhárítása
+    href: troubleshooting-general.md
 - name: További források
   items:
-    - name: Azure Migrate
-      href: 'https://azure.microsoft.com/migrate'
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: GYIK
-      href: resources-faq.md
+  - name: GYIK
+    href: resources-faq.md
+  - name: REST API
+    href: https://docs.microsoft.com/rest/api/migrate/
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/azure-migrate/
+  - name: UserVoice
+    href: http://aka.ms/AzureMigrateUservoice
+  - name: Fórum
+    href: http://aka.ms/AzureMigrateForum
+  - name: Blog
+    href: https://azure.microsoft.com/blog/tag/azure-migrate/
+  - name: Azure Migrate
+    href: https://azure.microsoft.com/migrate
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 2cc402e15ff8d34559192c8162afbbc2397e4fce
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41927632"

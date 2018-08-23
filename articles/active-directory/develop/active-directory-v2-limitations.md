@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/14/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9245e85781482a3aa1e45333d8e8a748983675b6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590749"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056901"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>A v2.0-végpont érdemes használni?
 
@@ -101,6 +101,7 @@ Klienskódtár-támogatásával a v2.0-végpont jelenleg korlátozott. Ha azt sz
 * Ha egy asztali vagy mobil alkalmazást fejleszt, a Microsoft hitelesítési tárak (MSAL) előzetes egyikét használhatja. Ezek a kódtárak vannak egy éles által támogatott előzetes verzióban érhető el, így biztonságosan használhatja őket az éles környezetben. További tudnivalók az előzetes verzió és a rendelkezésre álló kódtárak a feltételek [hitelesítési tárak referencia](reference-v2-libraries.md).
 * A platformon nem fedi le a Microsoft-kódtárak integrálható a v2.0-végpont által közvetlenül üzenetek küldése és fogadása protokoll az alkalmazás kódjában. A 2.0-s OpenID Connectet és az OAuth-protokollok [explicit módon vannak dokumentálva](active-directory-v2-protocols.md) ilyen az integráció végrehajtásához.
 * Végül nyílt forráskódú ID Connect megnyitásához és az OAuth-kódtárak segítségével integrálhatók az a v2.0-végpontra. A 2.0-s protokoll jelentős módosítások nélkül számos nyílt forráskódú protokoll kódtár kompatibilisnek kell lennie. Az ilyen típusú kódtárak rendelkezésre állásának nyelvtől és platformtól függ. A [Open ID Connect](http://openid.net/connect/) és [OAuth 2.0](http://oauth.net/2/) webhelyek népszerű megvalósításokhoz listának a karbantartására. További információkért lásd: [Azure Active Directory v2.0 és hitelesítési kódtárai](reference-v2-libraries.md), és a nyílt forráskódú ügyféloldali függvénytárak és minták a v2.0-végponttal tesztelt listáját.
+  * Referenciaként a `.well-known` végpont a közös v2.0-végpont `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` .  Cserélje le `common` az adatok adott lekérni a bérlő a bérlő Azonosítóját.  
 
 ## <a name="restrictions-on-protocols"></a>Korlátozásokat protokollokkal
 
@@ -109,7 +110,6 @@ A v2.0-végpont nem támogatja a SAML vagy WS-Federation; csak a támogatott Ope
 A következő protokoll funkciók és képességek jelenleg *nem érhető el* a v2.0-végpont:
 
 * Jelenleg a `email` csak jogcímet ad vissza, ha egy nem kötelező jogcím van konfigurálva, és hatókör hatókör = e-mail lett megadva a kérelemben. Azonban ez a viselkedés változik, amint a v2.0-végpont további szabványoknak való megfelelés az Open ID Connect és OAuth2.0 frissül.
-* Az OpenID Connect UserInfo végpont a v2.0-végpont nincs megvalósítva. Azonban a felhasználói profil összes adata kapott potenciálisan volna a végpont érhető el a Microsoft Graph `/me` végpont.
 * A v2.0-végpont nem támogatja kiállító szerepkör vagy csoport jogcímek azonosító-jogkivonatokat.
 * A [OAuth 2.0 erőforrás tulajdonosának jelszava hitelesítő adatok engedélyezés](https://tools.ietf.org/html/rfc6749#section-4.3) a v2.0-végpont nem támogatott.
 

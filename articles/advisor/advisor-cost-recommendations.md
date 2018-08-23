@@ -1,11 +1,10 @@
 ---
-title: Az Azure Advisor költség javaslatok |} Microsoft Docs
-description: Azure Advisor segítségével optimalizálhatja az Azure-környezetekhez költségét.
+title: Az Azure Advisor díjakkal kapcsolatos ajánlások |} A Microsoft Docs
+description: Az Azure Advisor használata az Azure-környezetek költségeinek optimalizálása érdekében.
 services: advisor
 documentationcenter: NA
-author: KumudD
-manager: carmonm
-editor: ''
+author: manbeenkohli
+manager: ''
 ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
@@ -13,44 +12,47 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: kumud
-ms.openlocfilehash: ade6ef996c00c0c06d5b8e44815520e6e4ab7e9f
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.author: makohli
+ms.openlocfilehash: 71c380a1caae730b6b01615ce3047c2e22bd6dfb
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735867"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42060140"
 ---
-# <a name="advisor-cost-recommendations"></a>Költség javaslatokat biztosít
+# <a name="advisor-cost-recommendations"></a>Az Advisor díjakkal kapcsolatos ajánlások
 
-Az Advisor segítségével optimalizálhatja, és csökkentheti a teljes Azure töltött túl magas és üresjárati erőforrások azonosításával. Akkor is beolvasása költség javaslatokat a **költség** az Advisor irányítópult fület.
+Az Advisor segít optimalizálni, és csökkentheti a teljes Azure felhőköltéseiket üresjárati és kihasználatlan erőforrások azonosítása. Akkor is költséget javaslatainak a **költség** az Advisor irányítópult lapon.
 
-## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizálása virtuális gép töltött átméretezésével vagy a túl példány leállítása 
-Bár egyes alkalmazás-forgatókönyvekre eredményezhet alacsony kihasználtságú úgy lett kialakítva, gyakran mentheti pénz való kezelésekor a a virtuális gépek száma és mérete. Az Advisor figyeli a virtuális gépek használatának 14 napja, és majd azonosítja a kis-kihasználtságának virtuális gépek. Virtuális gépek, amelyek CPU-felhasználás csak 5 % vagy kevesebb és hálózati aktivitás a 7 MB vagy kisebb a négy vagy több napot minősülnek alacsony használt virtuális gépek.
+## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizálhatja a virtuális gép felhőköltéseiket kihasználatlan példányok leállítása és átméretezése 
+Egyes alkalmazás-forgatókönyvek elvárt eredményezhetnek alacsony kihasználtságot, bár gyakran pénzt takaríthat, mivel kezeli az méretét és a virtuális gépek száma. Az Advisor 14 nap a virtuális gép használatát figyeli, és alacsony-kihasználtság virtuális gépek azonosítja. Virtuális gépek, amelyek CPU-kihasználtság csak 5 % vagy kevesebb és a hálózati forgalom 7 MB vagy belül a négy vagy több napot számítanak a kis-kihasználtság virtuális gépeket.
 
-Az Advisor jeleníti meg, hogy ha szeretné leállítani, vagy méretezze át a virtuális gép futtatásához Folytatás becsült költségét.
+Az Advisor továbbra is a virtuális gép fut, így dönthet úgy, hogy állítsa le vagy méretezze át a becsült költségeit mutatja.
 
-Ha szigorúbb túl virtuális gépek azonosításához, lehet, módosíthatja a átlagos CPU kihasználtsága szabály egy előfizetés alapon.
+Ha szeretné a virtuális gépek kihasználtságát az azonosító agresszívebb legyen, módosíthatja a átlagos CPU kihasználtsága szabály minden előfizetés.
 
-## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Csökkentheti a költségeket kiépített ExpressRoute-Kapcsolatcsoportok kiküszöbölése révén
-Az Advisor azonosítja a szolgáltató állapota már ExpressRoute-Kapcsolatcsoportok *nincs kiépítve* több mint egy hónap, és javasolja a kapcsolatcsoport törlése, ha nem tervezi a kapcsolatcsoport adja meg a kapcsolatot szolgáltató.
+## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>A rendszer az ExpressRoute-Kapcsolatcsoportok kiküszöbölése révén csökkentheti a költségeket
+Az Advisor azonosítja, amelyeket a szolgáltatói állapotú ExpressRoute-Kapcsolatcsoportok *nincs kiépítve* több mint egy hónapja, és javasolja a kapcsolatcsoport törlése, ha nem tervezi a kapcsolat üzembe helyezi a kapcsolatcsoportot szolgáltató.
 
-## <a name="buy-virtual-machine-reserved-instances-to-save-money-over-pay-as-you-go-costs"></a>Fenntartott virtuálisgép-példányok vásárlásával megtakarítást érhet el a használatalapú fizetéses költségekhez képest
-Az Advisor a virtuális gépek használatának áttekinti az elmúlt 30 napban, és határozza meg, ha Ön sikerült költségtakarékosabb munkavégzésben fenntartott példányok megvásárlásával. Az Advisor bemutatja, régiók és méretét, ha esetleg a legtöbb megtakarítások és bemutatja, mindez a becsült megtakarítás érhető el a beszerzési fenntartott példányok. 
+## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Csökkentheti a költségeket törlése vagy újrakonfigurálása inaktív virtuális hálózati átjárók
+Az Advisor azonosítja a virtuális hálózat kapuk, amely rendelkezik több mint 90 napja inaktív volt. Mivel az átjáró számlázása óránként, érdemes újrakonfigurálása vagy törölni, ha nem kívánja elszámolt. 
 
-Fenntartott osztályt, előre vásárolhat az alap költségek a virtuális gépek számára. Új vagy meglévő virtuális gépek, amelyek ugyanolyan méretű és régió a fenntartott példányként automatikusan érvényesek kedvezményeket jelentenek. [További tudnivalók az Azure fenntartott Virtuálisgép-példányok.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Megtakarítást érhet el a használatalapú fizetéses költségekhez képest fenntartott virtuálisgép-példányok vásárlásával
+Az Advisor fog tekintse át a virtuális gép használatát az elmúlt 30 napban, és határozza meg, ha pénzt menthető egy Azure foglalás megvásárlásával. Az Advisor bemutatja, a régiók és a méreteket, ahol potenciálisan rendelkezik a legtöbb megtakarítások és jelennek meg azt a becsült megtakarítások a foglalásokat vásárol. 
 
-## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Költség javaslatok az Azure Advisor elérése
+Az Azure-foglalásokat akkor is előre történő kifizetését a virtuális gépek számára. Új vagy meglévő virtuális gépek, amelyek az azonos méretű és régió szerint a foglalások automatikusan alkalmazza a kedvezményeket jelentenek. [További információ az Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
+## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Az Azure Advisor díjakkal kapcsolatos ajánlások elérése
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
 
 2.  Az Advisor irányítópultján kattintson a **költség** fülre.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Advisor-javaslatokra kapcsolatos további információkért lásd:
+Az Advisor-javaslatok kapcsolatos további információkért lásd:
 * [Az Advisor bemutatása](advisor-overview.md)
 * [Első lépések](advisor-get-started.md)
-* [Teljesítmény javaslatokat biztosít](advisor-cost-recommendations.md)
-* [Magas rendelkezésre állású javaslatokat biztosít](advisor-cost-recommendations.md)
-* [Biztonsági javaslatokat biztosít](advisor-cost-recommendations.md)
+* [Advisor-teljesítményajánlások](advisor-cost-recommendations.md)
+* [Az Advisor magas rendelkezésre állás – javaslatok](advisor-cost-recommendations.md)
+* [Az Advisor biztonsági javaslatok](advisor-cost-recommendations.md)

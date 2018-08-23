@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: f0a6e164ed6b2269ec223a18f37d3475316d3e77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629072"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060625"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>A helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációjával
 Ha munkahelyi-csatlakozás a felhasználók saját eszközét, az Azure Active Directory (Azure AD) eszközregisztrációs szolgáltatás, eszközeiket is lehet megjelölve ismert, hogy a szervezet. Következő egy lépésenkénti útmutató a helyszíni alkalmazások feltételes hozzáférése engedélyezve van a Windows Server 2012 R2 Active Directory összevonási szolgáltatások (AD FS) használatával.
@@ -48,7 +48,7 @@ Ezek a képességek érhetők el, akiknek az Azure Active Directory Premium-lice
 * Az Azure Active Directory Premium licenc
 * A Windows Server 2012 R2 összevonási szolgáltatások, az Azure AD egyszeri bejelentkezés konfigurálva
 * A Windows Server 2012 R2 a webalkalmazás-Proxy 
-* A Microsoft Azure Active Directory Connect (Azure AD Connect) [(Azure AD Connect letöltése)](http://www.microsoft.com/en-us/download/details.aspx?id=47594)
+* A Microsoft Azure Active Directory Connect (Azure AD Connect) [(Azure AD Connect letöltése)](http://www.microsoft.com/download/details.aspx?id=47594)
 * Ellenőrzött tartomány
 
 ## <a name="known-issues-in-this-release"></a>Ebben a kiadásban az ismert problémák
@@ -158,7 +158,7 @@ Nincsenek számos különböző módon való kommunikációhoz az URL-címet a f
 
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Windows 8.1-eszköz csatlakoztatása az Azure Active Directory eszközregisztrációjával
 1. Válassza ki a Windows 8.1-eszköz **gépház** > **hálózati** > **munkahelyi**.
-2. Egyszerű felhasználónév formátumú; adja meg a felhasználónevet Ha például ** dan@contoso.com **.
+2. Egyszerű felhasználónév formátumú; adja meg a felhasználónevet Ha például **dan@contoso.com**.
 3. Válassza ki **csatlakozzon**.
 4. Amikor a rendszer kéri, jelentkezzen be hitelesítő adataival. Az eszköz most már csatlakozott.
 

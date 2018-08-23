@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 39ec7c979294860967deb3307f5d87112b762257
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358120"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055546"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Biztonsági mentés és helyreállítás fiók hitelesítő adatait a Microsoft Authenticator alkalmazással
 
@@ -100,10 +100,8 @@ Néhány oka miért a biztonsági mentés nem feltétlenül érhető el:
 Most, hogy készíteni és helyreállítani a fiók hitelesítő adatait az új eszközt, továbbra is a Microsoft Authenticator alkalmazás használatához a személyazonosságát.
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
-- [A Microsoft Authenticator alkalmazás használatának első lépései](microsoft-authenticator-app-how-to.md)  
+- [Bevezetés a Microsoft Authenticator alkalmazás használatába](microsoft-authenticator-app-how-to.md)  
 
-- [Bejelentkezés telefonnal](microsoft-authenticator-app-phone-signin-faq.md)
-
-- [A Microsoft Authenticator alkalmazás – gyakori kérdések](microsoft-authenticator-app-faq.md)
+- [A Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdések](microsoft-authenticator-app-faq.md)
 
 - [Többtényezős hitelesítés](https://docs.microsoft.com/azure/multi-factor-authentication/)

@@ -1,5 +1,5 @@
 ---
-title: Folyamatos üzembe helyezés az Azure App Service |} Microsoft Docs
+title: Az Azure App Service folyamatos üzembe helyezés |} A Microsoft Docs
 description: A cikkből többet tudhat meg arról, hogyan engedélyezheti az Azure App Service szolgáltatásba való folyamatos üzembe helyezést.
 services: app-service
 documentationcenter: ''
@@ -13,125 +13,125 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: d83d1ad74d04356f73f18a744c2d1509b5efc280
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 4d3f1c66c6403720bf02c80af1d6833dc3cee3f1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233844"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055521"
 ---
-# <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés az Azure App Service
-Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos üzembe [Azure App Service](app-service-web-overview.md). App Service lehetővé teszi, hogy a folyamatos üzembe helyezést bitbucket szolgáltatásokhoz, a github webhelyen, és [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) modulba húzza a legújabb frissítéseket a meglévő tárházból valamelyik ezeket a szolgáltatásokat.
+# <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés az Azure App Service-ben
+Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezés [Azure App Service](app-service-web-overview.md). Az App Service lehetővé teszi, hogy a BitBucket, GitHub, a folyamatos üzembe helyezés és [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) kiindulásként a a legújabb frissítéseket a meglévő adattárból az egyik szolgáltatásba.
 
-Megtudhatja, hogyan konfigurálhatja manuálisan egy felhőalapú-tárházat az Azure portál által fel nem sorolt a folyamatos üzembe helyezés (például [GitLab](https://gitlab.com/)), lásd: [manuális lépéseket követve folyamatos üzembe helyezés beállítása](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+Megtudhatja, hogyan konfigurálhatja manuálisan a felhőalapú adattárban nem jeleníti meg az Azure portal a folyamatos üzembe helyezés (például [GitLab](https://gitlab.com/)), lásd: [manuális lépések használatával folyamatos üzembe helyezés beállítása](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-Tegye közzé az előkészített tárház támogatott szolgáltatások egyike. A projekt a szolgáltatásokon történő közzétételével kapcsolatos további információért olvassa el az [Adattár létrehozása (GitHub)], [Adattár létrehozása (BitBucket)], illetve a [Bevezetés a VSTS használatába] című cikket.
+Tegye közzé a készített tárház egyik támogatott szolgáltatás. A projekt a szolgáltatásokon történő közzétételével kapcsolatos további információért olvassa el az [Adattár létrehozása (GitHub)], [Adattár létrehozása (BitBucket)], illetve a [Bevezetés a VSTS használatába] című cikket.
 
-## <a name="deploy-continuously-from-github"></a>A Githubból folyamatosan központi telepítése
+## <a name="deploy-continuously-from-github"></a>A Githubról történő folyamatos üzembe helyezés
 
-Ahhoz, hogy a Githubon folyamatos üzembe helyezés, az App Service alkalmazás oldalra léphet a [Azure-portálon](https://portal.azure.com).
+Az App Service-oldalra lépjen ahhoz, hogy a Githubbal való folyamatos üzembe helyezés, a [az Azure portal](https://portal.azure.com).
 
-A bal oldali menüben kattintson **Telepítőközpontot** > **GitHub** > **engedélyezés**. Az engedélyezési útmutatást követve. 
+A bal oldali menüben kattintson a **üzembe helyezési központ** > **GitHub** > **engedélyezés**. Kövesse az engedélyezési utasításokat. 
 
 ![](media/app-service-continuous-deployment/github-choose-source.png)
 
-Csak kell ahhoz, hogy a GitHub egyszer. Ha a felhasználó már jogosult, kattintson **Folytatás**. A meghatalmazott GitHub-fiók kattintva módosíthat **fiók módosítása**.
+Csak egyszer engedélyezése a GitHub kell. Ha a felhasználó már jogosult, egyszerűen kattintson **Folytatás**. A hitelesített GitHub-fiókhoz kattintva módosíthat **fiók módosítása**.
 
 ![](media/app-service-continuous-deployment/github-continue.png)
 
-Az a **Build szolgáltató** lapon válassza ki azt a build szolgáltatót, majd kattintson > **Folytatás**.
+Az a **Build szolgáltató** lapon válassza ki a build-szolgáltatót, és kattintson > **Folytatás**.
 
-### <a name="option-1-use-app-service-kudu-build-server"></a>1. lehetőség: az App Service Kudu build kiszolgáló használata
+### <a name="option-1-use-app-service-kudu-build-server"></a>1. lehetőség: használata App Service Kudu-buildelési kiszolgáló
 
-Az a **konfigurálása** lapon, válassza ki a szervezet tárház és fiókirodai folyamatosan telepíteni szeretné. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** lapra, jelölje be a szervezet, tárházat, és az ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
 
-### <a name="option-2-use-vsts-continuous-delivery"></a>2. lehetőség: VSTS folyamatos kézbesítési használata
+### <a name="option-2-use-vsts-continuous-delivery"></a>2. lehetőség: a VSTS folyamatos készregyártás használata
 
 > [!NOTE]
-> Az App Service segítségével hozzon létre a szükséges összeállítása, és felszabadíthatja a definíciók VSTS-fiókjában, az Azure-fiókjába rendelkeznie kell a szerepe **tulajdonos** az Azure-előfizetésben.
+> Az App Service létrehozná az szükséges, és a kiadási definícióiról a VSTS-fiókban, az Azure-fiókkal kell rendelkeznie szerepe **tulajdonos** az Azure-előfizetésében.
 >
 
-Az a **konfigurálása** lap a **kód** területen válassza ki a szervezet tárház és fiókirodai folyamatosan telepíteni szeretné. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** lap a **kód** területen válassza ki a szervezet, tárházat, és az ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
 
-Az a **konfigurálása** lap a **Build** szakaszban, egy új VSTS-fiókot, vagy adjon meg egy meglévő fiókot. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** lap a **összeállítása** szakaszt, új VSTS-fiók beállításához, vagy egy meglévő fiókot. Ha befejezte, kattintson a **Folytatás**.
 
 > [!NOTE]
-> Ha egy meglévő VSTS-fiókkal, amely nem szerepel a használni kívánt, akkor [a VSTS-fiók összekötése az Azure-előfizetéshez](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Ha egy meglévő VSTS-fiók, amely nem szerepel a használni kívánt, kell [a VSTS-fiók összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
-Az a **teszt** lapon, válassza ki, hogy betöltés tesztek engedélyezése, majd kattintson az **Folytatás**.
+Az a **teszt** lapon, döntse el, hogy engedélyezze a terhelési teszteket, majd kattintson a **Folytatás**.
 
-Attól függően a [tarifacsomag](/pricing/details/app-service/plans/) az App Service-csomag, szintén megjelenik egy **az átmeneti telepítéséhez** lap. Válasszon hogy [üzembe helyezési engedélyezése](web-sites-staged-publishing.md), majd kattintson a **Folytatás**.
+Attól függően, a [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/plans/) az App Service-csomag is megjelenhetnek egy **üzembe helyezés átmeneti környezetbe** lapot. Válassza ki, hogy e [üzembe helyezési pontok engedélyezése](web-sites-staged-publishing.md), majd kattintson **Folytatás**.
 
-### <a name="finish-configuration"></a>Konfigurálás befejezése
+### <a name="finish-configuration"></a>Konfiguráció befejezéséhez
 
-Az a **összegzés** lapon ellenőrizze a beállításokat, majd kattintson **Befejezés**.
+Az a **összefoglalás** oldalon ellenőrizze a beállításokat, kattintson a **Befejezés**.
 
-Konfiguráció befejezése után új véglegesíti a kijelölt tárházban az App Service alkalmazásba folyamatosan vannak telepítve.
+Konfiguráció befejezését követően a kijelölt adattárban új véglegesítéseket az App Service alkalmazásba folyamatosan vannak telepítve.
 
 ![](media/app-service-continuous-deployment/github-finished.png)
 
-## <a name="deploy-continuously-from-bitbucket"></a>Folyamatosan a bitbucket szolgáltatásokhoz központi telepítése
+## <a name="deploy-continuously-from-bitbucket"></a>A BitBucket folyamatos üzembe helyezés
 
-Ahhoz, hogy a Bitbucketből folyamatos üzembe helyezés, az App Service alkalmazás oldalra léphet a [Azure-portálon](https://portal.azure.com).
+Az App Service-oldalra lépjen ahhoz, hogy a folyamatos üzembe helyezés a BitBucket, a [az Azure portal](https://portal.azure.com).
 
-A bal oldali menüben kattintson **Telepítőközpontot** > **BitBucket** > **engedélyezés**. Az engedélyezési útmutatást követve. 
+A bal oldali menüben kattintson a **üzembe helyezési központ** > **BitBucket** > **engedélyezés**. Kövesse az engedélyezési utasításokat. 
 
 ![](media/app-service-continuous-deployment/bitbucket-choose-source.png)
 
-Csak kell ahhoz, hogy BitBucket egyszer. Ha a felhasználó már jogosult, kattintson **Folytatás**. A meghatalmazott BitBucket fiók kattintva módosíthat **fiók módosítása**.
+Csak egyszer a BitBucket-alapú engedélyezésére kell. Ha a felhasználó már jogosult, egyszerűen kattintson **Folytatás**. Módosíthatja a BitBucket engedéllyel rendelkező fiók kattintva **fiók módosítása**.
 
 ![](media/app-service-continuous-deployment/bitbucket-continue.png)
 
-Az a **konfigurálása** lapon, válassza ki a tárházhoz és a fiókiroda, amelyből folyamatosan telepíteni kívánja. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** lapra, jelölje be a tárházat és az ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
 
-Az a **összegzés** lapon ellenőrizze a beállításokat, majd kattintson **Befejezés**.
+Az a **összefoglalás** oldalon ellenőrizze a beállításokat, kattintson a **Befejezés**.
 
-Konfiguráció befejezése után új véglegesíti a kijelölt tárházban az App Service alkalmazásba folyamatosan vannak telepítve.
+Konfiguráció befejezését követően a kijelölt adattárban új véglegesítéseket az App Service alkalmazásba folyamatosan vannak telepítve.
 
-## <a name="deploy-continuously-from-vsts"></a>A VSTS folyamatosan központi telepítése
+## <a name="deploy-continuously-from-vsts"></a>Folyamatos üzembe helyezés VSTS-ből
 
-Ahhoz, hogy a VSTS folyamatos üzembe helyezés, az App Service alkalmazás oldalra léphet a [Azure-portálon](https://portal.azure.com).
+Az App Service-oldalra lépjen ahhoz, hogy a folyamatos üzembe helyezés a VSTS, a [az Azure portal](https://portal.azure.com).
 
-A bal oldali menüben kattintson **Telepítőközpontot** > **VSTS** > **Folytatás**. 
+A bal oldali menüben kattintson a **üzembe helyezési központ** > **VSTS** > **Folytatás**. 
 
 ![](media/app-service-continuous-deployment/vsts-choose-source.png)
 
-Az a **Build szolgáltató** lapon válassza ki azt a build szolgáltatót, majd kattintson > **Folytatás**.
+Az a **Build szolgáltató** lapon válassza ki a build-szolgáltatót, és kattintson > **Folytatás**.
 
-### <a name="option-1-use-app-service-kudu-build-server"></a>1. lehetőség: az App Service Kudu build kiszolgáló használata
+### <a name="option-1-use-app-service-kudu-build-server"></a>1. lehetőség: használata App Service Kudu-buildelési kiszolgáló
 
-Az a **konfigurálása** lapon, válassza ki a VSTS fiók, projekt, tárház és fiókirodai folyamatosan telepíteni szeretné. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** lapon, válassza ki a VSTS fiók, projekt, tárház és ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
 
-### <a name="option-2-use-vsts-continuous-delivery"></a>2. lehetőség: VSTS folyamatos kézbesítési használata
+### <a name="option-2-use-vsts-continuous-delivery"></a>2. lehetőség: a VSTS folyamatos készregyártás használata
 
 > [!NOTE]
-> Az App Service segítségével hozzon létre a szükséges összeállítása, és felszabadíthatja a definíciók VSTS-fiókjában, az Azure-fiókjába rendelkeznie kell a szerepe **tulajdonos** az Azure-előfizetésben.
+> Az App Service létrehozná az szükséges, és a kiadási definícióiról a VSTS-fiókban, az Azure-fiókkal kell rendelkeznie szerepe **tulajdonos** az Azure-előfizetésében.
 >
 
-Az a **konfigurálása** lap a **kód** területen válassza ki a VSTS fiók, projekt, tárház és fiókirodai folyamatosan telepíteni szeretné. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** lap a **kód** területen válassza ki a VSTS fiók, projekt, tárház és ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
 
 > [!NOTE]
-> Ha egy meglévő VSTS-fiókkal, amely nem szerepel a használni kívánt, akkor [a VSTS-fiók összekötése az Azure-előfizetéshez](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Ha egy meglévő VSTS-fiók, amely nem szerepel a használni kívánt, kell [a VSTS-fiók összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
-Az a **konfigurálása** lap a **Build** területén adja meg a VSTS a build feladatok a kiválasztott tárház futtatásához használandó nyelvi keretrendszert. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** lap a **összeállítása** területén adja meg a nyelvi keretrendszerébe, amely vsts-ben a kijelölt tárház az összeállítási feladatok futtatásához csatlakoznia kell. Ha befejezte, kattintson a **Folytatás**.
 
-Az a **teszt** lapon, válassza ki, hogy betöltés tesztek engedélyezése, majd kattintson az **Folytatás**.
+Az a **teszt** lapon, döntse el, hogy engedélyezze a terhelési teszteket, majd kattintson a **Folytatás**.
 
-Attól függően a [tarifacsomag](/pricing/details/app-service/plans/) az App Service-csomag, szintén megjelenik egy **az átmeneti telepítéséhez** lap. Válasszon hogy [üzembe helyezési engedélyezése](web-sites-staged-publishing.md), majd kattintson a **Folytatás**. 
+Attól függően, a [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/plans/) az App Service-csomag is megjelenhetnek egy **üzembe helyezés átmeneti környezetbe** lapot. Válassza ki, hogy e [üzembe helyezési pontok engedélyezése](web-sites-staged-publishing.md), majd kattintson **Folytatás**. 
 
-### <a name="finish-configuration"></a>Konfigurálás befejezése
+### <a name="finish-configuration"></a>Konfiguráció befejezéséhez
 
-Az a **összegzés** lapon ellenőrizze a beállításokat, majd kattintson **Befejezés**.
+Az a **összefoglalás** oldalon ellenőrizze a beállításokat, kattintson a **Befejezés**.
 
-Konfiguráció befejezése után új véglegesíti a kijelölt tárházban az App Service alkalmazásba folyamatosan vannak telepítve.
+Konfiguráció befejezését követően a kijelölt adattárban új véglegesítéseket az App Service alkalmazásba folyamatosan vannak telepítve.
 
-## <a name="disable-continuous-deployment"></a>Tiltsa le a folyamatos üzembe helyezés
+## <a name="disable-continuous-deployment"></a>Folyamatos üzembe helyezés letiltása
 
-Folyamatos üzembe helyezés letiltása, az App Service alkalmazás oldalra léphet a [Azure-portálon](https://portal.azure.com).
+Folyamatos üzembe helyezés letiltása, keresse meg az App Service-oldalra a [az Azure portal](https://portal.azure.com).
 
-A bal oldali menüben kattintson **Telepítőközpontot** > **GitHub** vagy **VSTS** vagy **BitBucket**  >  **Leválasztása**.
+A bal oldali menüben kattintson a **üzembe helyezési központ** > **GitHub** vagy **VSTS** vagy **BitBucket**  >  **Leválasztása**.
 
 ![](media/app-service-continuous-deployment/disable.png)
 
@@ -143,7 +143,7 @@ A bal oldali menüben kattintson **Telepítőközpontot** > **GitHub** vagy **VS
 * [A PowerShell használata az Azure-ban]
 * [A Git dokumentációja]
 * [A Kudu projekt](https://github.com/projectkudu/kudu/wiki)
-* [Használja az Azure automatikusan létrehozni az ASP.NET 4 alkalmazás telepítése CI/CD folyamat](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
+* [Az Azure használatával automatikusan létrehozhat egy CI/CD-folyamat számára egy ASP.NET 4-alkalmazás üzembe helyezése](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
 
 [Azure portal]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx

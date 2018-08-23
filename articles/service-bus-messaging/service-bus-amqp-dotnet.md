@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus .NET és AMQP 1.0 |} Microsoft Docs
-description: A .NET-Azure Service Bus használata AMQP
+title: Az Azure Service Bus .NET-tel és az AMQP 1.0-s |} A Microsoft Docs
+description: Az AMQP használatával a .NET használatával az Azure Service Bus használatával
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/21/2017
+ms.date: 08/16/2018
 ms.author: sethm
-ms.openlocfilehash: 28b8d7a71f01d8633d020b99fbe6bc5c16f272b4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0013301a33dabc9739eed45a1b801c33b791abb9
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188497"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058722"
 ---
-# <a name="use-service-bus-from-net-with-amqp-10"></a>A Service Bus a .NET-használata AMQP 1.0-s
+# <a name="use-service-bus-from-net-with-amqp-10"></a>A Service Bus, a .NET használata az AMQP 1.0 használatával
 
-AMQP 1.0-támogatás a Service Bus csomag 2.1-es vagy újabb verziója érhető el. Biztosíthatja, hogy úgy, hogy a Service Bus bits, az letölti a legújabb verzió van [NuGet][NuGet].
+Az AMQP 1.0-támogatás a Service Bus csomag 2.1-es vagy újabb verzió érhető el. Biztosíthatja úgy, hogy a Service Bus bits, az letölti a legújabb verzióval rendelkezik [NuGet][NuGet].
 
-## <a name="configure-net-applications-to-use-amqp-10"></a>.NET-alkalmazások az AMQP 1.0 konfigurálása
+## <a name="configure-net-applications-to-use-amqp-10"></a>Az AMQP 1.0-s használata .NET-alkalmazások konfigurálása
 
-Alapértelmezés szerint a Service Bus .NET ügyféloldali kódtár a Service Bus szolgáltatás egy dedikált SOAP-alapú protokoll segítségével kommunikál. Az AMQP 1.0 használata helyett az alapértelmezett protokoll úgy kell explicit konfigurálni a Service Bus kapcsolati karakterlánc a következő szakaszban leírtak szerint. Ez a változás nem alkalmazáskód változatlan marad AMQP 1.0 használata esetén.
+Alapértelmezés szerint a Service Bus .NET ügyféloldali kódtár a Service Bus szolgáltatás egy dedikált SOAP-alapú protokoll használatával kommunikál. Az AMQP 1.0-s használata helyett az alapértelmezett protokoll a Service Bus kapcsolati karakterlánc az explicit konfigurációt igényel, a következő szakaszban leírtak szerint. Ez a változás nem alkalmazáskód változatlan marad az AMQP 1.0-s használata esetén.
 
-A jelenlegi kiadásban van néhány AMQP használata esetén nem támogatott API-funkciókat. Nem támogatott szolgáltatások a szakaszban később szereplő [nem támogatott funkciók, korlátozások és viselkedési különbségek](#unsupported-features-restrictions-and-behavioral-differences). Néhány speciális konfigurációs beállítás is eltérő jelentéssel rendelkezhetnek AMQP használatakor.
+A jelenlegi kiadásban van néhány API-funkciók az AMQP használata esetén nem támogatott. Nem támogatott szolgáltatások a szakaszban felsorolt [viselkedésbeli különbségeket](#behavioral-differences). Néhány speciális konfigurációs beállítás is eltérő jelentéssel rendelkeznek az AMQP használata esetén.
 
-### <a name="configuration-using-appconfig"></a>Konfigurációs App.config használatával
+### <a name="configuration-using-appconfig"></a>Konfiguráció App.config használatával
 
-Ajánlott az alkalmazások az App.config konfigurációs fájlt használja a beállítások tárolásához. A Service Bus-alkalmazást a App.config segítségével tárolja a Service Bus kapcsolati karakterlánc. Egy példa App.config fájl a következőképpen történik:
+Ajánlott alkalmazások számára az App.config konfigurációs fájlt használja a beállítások tárolásához. A Service Bus-alkalmazások a Service Bus kapcsolati karakterlánc tárolására App.config használhatja. Egy példa az App.config fájlra a következőképpen történik:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -45,76 +45,76 @@ Ajánlott az alkalmazások az App.config konfigurációs fájlt használja a be�
 </configuration>
 ```
 
-Értékét a `Microsoft.ServiceBus.ConnectionString` beállítás a Service Bus kapcsolati karakterlánc, amely a Service Bus kapcsolat konfigurálására szolgál. A formátum a következőképpen történik:
+Értékét a `Microsoft.ServiceBus.ConnectionString` beállítás a Service Bus kapcsolati karakterlánc, amellyel a Service Bus-kapcsolat konfigurálása. A formátum a következőképpen történik:
 
 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
-Ha `namespace` és `SAS key` kapott a [Azure-portálon] [ Azure portal] létrehozásakor egy Szolgáltatásbusz-névtér. További információkért lásd: [az Azure portál használatával a Service Bus-névtér létrehozása][Create a Service Bus namespace using the Azure portal].
+Ahol `namespace` és `SAS key` kérhetők le a [az Azure portal] [ Azure portal] Service Bus-névtér létrehozásakor. További információkért lásd: [létrehozása az Azure portal használatával a Service Bus-névtér][Create a Service Bus namespace using the Azure portal].
 
-AMQP használata esetén a kapcsolati karakterlánc hozzáfűzése `;TransportType=Amqp`. Ez a notation arra utasítja az ügyféloldali kódtár a kapcsolat a Service Bus AMQP 1.0 használatával.
+Az AMQP használata esetén fűzze hozzá a kapcsolati karakterláncot `;TransportType=Amqp`. Ezen jelölés arra utasítja az ügyféloldali kódtár, hogy a kapcsolatot a Service Bus AMQP 1.0-val.
 
-## <a name="message-serialization"></a>Üzenet szerializálási
+## <a name="message-serialization"></a>Üzenet-szerializáció
 
-Az alapértelmezett protokoll használata esetén a .NET ügyféloldali kódtár szerializálási alapértelmezés lesz-e használni a [DataContractSerializer] [ DataContractSerializer] szerializálható típust egy [BrokeredMessage] [ BrokeredMessage] az ügyféloldali kódtár és a Service Bus szolgáltatás közötti-példányt. Az AMQP átviteli mód használatával, ha az ügyféloldali kódtár álló AMQP típus rendszert használ az [közvetítőalapú üzenet] [ BrokeredMessage] egy AMQP üzenetbe. A szerializálás lehetővé teszi, hogy az üzenet fogadják és értelmezni a fogadó alkalmazás, potenciálisan futó különböző platform, például egy Java-alkalmazás, amely a JMS API Service Bus eléréséhez.
+Az alapértelmezett protokoll használata esetén az alapértelmezett szerializálási viselkedését a .NET ügyféloldali kódtár használatára-e a [DataContractSerializer] [ DataContractSerializer] szerializálható típust egy [BrokeredMessage] [ BrokeredMessage] példány esetében az ügyféloldali kódtár és a Service Bus szolgáltatás között. Az AMQP közlekedési mód használatakor az ügyféloldali kódtár terjesztésről AMQP típus rendszert használ a [közvetítőalapú üzenet] [ BrokeredMessage] egy AMQP üzenetbe. A szerializálás lehetővé teszi, hogy az üzenet és egy fogadó alkalmazás, amely potenciálisan fut egy másik platformon, például Java-alkalmazás elérésére a Service Bus a JMS API-t használó értelmezi.
 
-Ha, hozhat létre egy [BrokeredMessage] [ BrokeredMessage] példány, megadhat egy .NET-objektum az üzenet törzsét szolgálhat a konstruktor paraméterként. Az AMQP egyszerű típusokhoz rendelhetők objektumokat a szervezet szerializálni AMQP adattípusokat. Ha az objektum leképezése nem végezhető el közvetlenül a következő egy AMQP primitív típusra; Ez azt jelenti, hogy az alkalmazás által meghatározott olyan egyéni típusra, akkor az objektum szerializált használatával a [DataContractSerializer][DataContractSerializer], és a szerializált bájtok az AMQP-adatok üzenet küldése.
+Amikor hozhat létre egy [BrokeredMessage] [ BrokeredMessage] példány, megadhat egy .NET-objektumokat az üzenet törzsét, mely a konstruktor paramétereként. Az AMQP-típusokban leképezhető objektumok a szervezet szerializálni AMQP adattípusokat. Ha az objektum nem lehet közvetlenül hozzá van rendelve, egy AMQP primitív típus; azt jelenti, egy egyéni írja be az alkalmazás által meghatározott, akkor az objektum szerializált használatával a [DataContractSerializer][DataContractSerializer], és a szerializált bájtok küldése történik az adatok AMQP üzenet.
 
-Csak a közvetlenül az AMQP típusokat az üzenet törzsét akkor szerializálható .NET típusok segítségével a .NET ügyfelek együttműködés elősegítése érdekében. Az alábbi táblázat részletezi ezeket a típusokat és a hozzárendelés az AMQP típus rendszerre.
+Csak a közvetlenül az üzenet törzse AMQP típusainak szerializálására .NET Tulajdonságtípusokat használatával nem .NET-ügyfelek együttműködés elősegítése érdekében. Az alábbi táblázat részletezi ezeket a feldolgozástípusokat és a megfelelő hozzárendelésének az AMQP-típus rendszerre.
 
-| .NET törzs objektum típusa | Csatlakoztatott AMQP típusa | AMQP törzs szakasz típusa |
+| .NET-törzs objektumtípus | A csatlakoztatott AMQP típusa | Az AMQP törzs szakasz típusa |
 | --- | --- | --- |
-| logikai érték |logikai |AMQP érték |
-| bájt |ubyte |AMQP érték |
-| ushort |ushort |AMQP érték |
-| uint |uint |AMQP érték |
-| ulong |ulong |AMQP érték |
-| sbyte |bájt |AMQP érték |
-| rövid |rövid |AMQP érték |
-| int |int |AMQP érték |
-| hosszú |hosszú |AMQP érték |
-| Lebegőpontos |Lebegőpontos |AMQP érték |
-| double |double |AMQP érték |
-| Decimális |decimal128 |AMQP érték |
-| Karakter |Karakter |AMQP érték |
-| DateTime |időbélyeg |AMQP érték |
-| GUID |UUID |AMQP érték |
-| Byte] |Bináris |AMQP érték |
-| karakterlánc |karakterlánc |AMQP érték |
-| System.Collections.IList illesztőfelületet |lista |AMQP érték: a gyűjteményben lévő elemek csak lehet azokat ebben a táblázatban definiált. |
-| System.Array |tömb |AMQP érték: a gyűjteményben lévő elemek csak lehet azokat ebben a táblázatban definiált. |
-| System.Collections.IDictionary |térkép |AMQP érték: a gyűjteményben lévő elemek csak lehet azokat ebben a táblázatban definiált. Megjegyzés: csak a karakterlánc-kulcsok használata támogatott. |
-| URI |Karakterlánc leírt (lásd az alábbi táblázatot) |AMQP érték |
-| DateTimeOffset |Hosszú leírt (lásd az alábbi táblázatot) |AMQP érték |
-| A TimeSpan |Hosszú leírt (lásd a következő) |AMQP érték |
-| Adatfolyam |Bináris |AMQP adatok (több is lehet). Az adatok szakaszok tartalmazzák a nyers bájt olvasásakor az adatfolyam-objektum. |
-| Másik objektum |Bináris |AMQP adatok (több is lehet). Az objektum, amely a DataContractSerializer vagy az alkalmazás által biztosított szerializálót a szerializált bináris fájlt tartalmaz. |
+| Logikai |logikai |Az AMQP-érték |
+| bájt |ubyte |Az AMQP-érték |
+| ushort |ushort |Az AMQP-érték |
+| uint |uint |Az AMQP-érték |
+| ulong |ulong |Az AMQP-érték |
+| sbyte |bájt |Az AMQP-érték |
+| rövid |rövid |Az AMQP-érték |
+| int |int |Az AMQP-érték |
+| hossz |hossz |Az AMQP-érték |
+| lebegőpontos |lebegőpontos |Az AMQP-érték |
+| double |double |Az AMQP-érték |
+| tizedes tört |decimal128 |Az AMQP-érték |
+| CHAR |CHAR |Az AMQP-érték |
+| DateTime |időbélyeg |Az AMQP-érték |
+| GUID |UUID |Az AMQP-érték |
+| byte] |Bináris |Az AMQP-érték |
+| sztring |sztring |Az AMQP-érték |
+| System.Collections.IList |lista |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. |
+| System.Array |tömb |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. |
+| System.Collections.IDictionary |Térkép |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. Megjegyzés: a csak karakterlánc-kulcsok használata támogatott. |
+| URI |Karakterlánc leírt (lásd az alábbi táblázatban) |Az AMQP-érték |
+| DateTimeOffset |Mennyi ideig leírt (lásd az alábbi táblázatban) |Az AMQP-érték |
+| Időtartam |Mennyi ideig leírt (lásd az alábbi) |Az AMQP-érték |
+| Stream |Bináris |Az AMQP-adatok (több is lehet). Az adatok szakaszok a nyers bájt, olvassa el a Stream-objektumból. |
+| Egyéb objektum |Bináris |Az AMQP-adatok (több is lehet). Az objektum, amely a DataContractSerializer vagy az alkalmazás által biztosított serializátor használ a szerializált bináris tartalmazza. |
 
-| .NET-típusa | Csatlakoztatott AMQP leírt típusa | Megjegyzések |
+| Typ .NET | A csatlakoztatott AMQP leírt típusa | Megjegyzések |
 | --- | --- | --- |
 | URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| A TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
+| Időtartam |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
-## <a name="behavioral-differences"></a>Viselkedés különbségek
+## <a name="behavioral-differences"></a>Viselkedésbeli különbségeket
 
-Néhány kisebb különbségek vannak a Service Bus .NET API működésében AMQP képest az alapértelmezett protokoll használata esetén:
+Van néhány kisebb eltérés, a Service Bus .NET API viselkedését az AMQP és képest az alapértelmezett protokoll használata esetén:
 
-* A [OperationTimeout] [ OperationTimeout] tulajdonság a rendszer figyelmen kívül hagyja.
-* `MessageReceiver.Receive(TimeSpan.Zero)` valósul meg `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
-* Üzenetek befejezése által zárolási jogkivonatok csak végezhető el az üzenetet fogadó számára eredetileg az üzeneteket.
+* A [így időtúllépés történt] [ OperationTimeout] tulajdonság figyelmen kívül hagyja.
+* `MessageReceiver.Receive(TimeSpan.Zero)` van megvalósítva `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
+* Üzenetek befejezése zárolási jogkivonatok szerint csak az üzenet hozzáadásuk kezdetben fogadott üzenetek teheti meg.
 
-## <a name="control-amqp-protocol-settings"></a>Vezérlő AMQP protokoll beállításait
+## <a name="control-amqp-protocol-settings"></a>AMQP protokoll beállításai
 
-A [.NET API-k](/dotnet/api/) teszi közzé az AMQP protokoll működését számos beállítás:
+A [.NET API-k](/dotnet/api/) tegye elérhetővé az AMQP protokollt viselkedését vezérlő több beállítások:
 
-* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: a kezdeti jóváírás hivatkozás alkalmazott szabályozza. Az alapértelmezett érték 0.
-* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: vezérlők, a maximális AMQP keret méretét érhető el kapcsolat, az egyeztetés során nyissa meg az időt. Az alapértelmezett érték a 65 536 bájt.
-* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: batchable átvitel esetén ez az érték határozza meg, a maximális késleltetési dispositions küldéséhez. Alapértelmezés szerint feladók/fogadók örökli. Egyes feladó/fogadó felülbírálhatja az alapértelmezett, amelyet 20 ezredmásodperc.
-* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: meghatározza, hogy SSL-kapcsolaton keresztül létesít AMQP-kapcsolatokat. Az alapértelmezett érték **igaz**.
+* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: meghatározza a kezdeti kredit egy hivatkozást a alkalmazni. Az alapértelmezett érték a 0.
+* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: AMQP keret maximális méretét érhető el a kapcsolatot az egyeztetés során vezérlők nyissa meg az idő. Az alapértelmezett érték a 65 536 bájt.
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: batchable adatátvitel esetén ez az érték határozza meg, a maximális késleltetés dispositions küldéséhez. Alapértelmezés szerint öröklik a küldők és fogadók. Az egyes küldő/fogadó felülbírálhatja az alapértelmezett beállítás, amely 20 ezredmásodperc.
+* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: szabályozza, hogy az AMQP-kapcsolatok létrehozása történik SSL-kapcsolaton keresztül. Az alapértelmezett érték **igaz**.
 
 ## <a name="next-steps"></a>További lépések
 
-Készen áll a további? Látogasson el a következő hivatkozásokra:
+Készen áll további? Látogasson el az alábbi hivatkozásokat:
 
 * [Service Bus AMQP áttekintése]
 * [AMQP 1.0 protokoll – útmutató]

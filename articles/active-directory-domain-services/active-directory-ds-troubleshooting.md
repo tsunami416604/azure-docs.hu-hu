@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 41a06846e914eb79e15aa47c7203b17166731ae0
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fa4d40786fdc61183c119a17b6e36bd853a6fd64
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502328"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42061387"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Az Azure AD tartományi szolgáltatások – hibaelhárítási útmutató
 Ez a cikk a problémák jelentkezhetnek, ha beállítása és felügyelete Azure Active Directory (AD) Domain Services hibaelhárítási útmutatók nyújt.
@@ -139,7 +139,7 @@ Ha az Azure AD-bérlőben egy vagy több felhasználó nem tud bejelentkezni az 
 * **Külső fiókok:** biztosítani, hogy az érintett felhasználói fiók ne külső fiók az Azure AD-bérlőben. Külső fiókok például a Microsoft-fiókok (például "joe@live.com") vagy egy külső felhasználói fiókok Azure AD-címtárban. Az Azure AD Domain Services nem rendelkezik ilyen felhasználói fiókokhoz tartozó hitelesítő adatokat, mivel ezek a felhasználók nem tud bejelentkezni a felügyelt tartományhoz.
 * **Fiókok szinkronizálva:** az érintett felhasználói fiókok helyszíni címtárból vannak szinkronizálva, ellenőrizze, hogy:
 
-  * Van üzembe helyezve, vagy a frissített a [legújabb ajánlott kiadását az Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+  * Van üzembe helyezve, vagy a frissített a [legújabb ajánlott kiadását az Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
   * Konfigurálta az Azure AD Connect [végezzen teljes szinkronizálást](active-directory-ds-getting-started-password-sync.md).
   * A címtár méretétől függően ez lehetséges, hogy tarthat a felhasználói fiókokhoz, és hitelesítőadat-kivonatok Azure AD tartományi szolgáltatások elérhetők. Győződjön meg arról, hogy elég hosszú újrapróbálkozás előtt egy kis hitelesítés.
   * Ha ellenőrizte, hogy a fenti lépéseket a probléma továbbra is fennáll, próbálja meg újraindítani a Microsoft Azure AD Sync szolgáltatást. A szinkronizált gépen nyisson meg egy parancssort, és hajtsa végre a következő parancsokat:

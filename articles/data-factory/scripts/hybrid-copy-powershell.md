@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-parancsprogram: adatok másolása az helyszíni az Azure Data Factory használatával |} Microsoft Docs'
-description: A PowerShell parancsfájl másol adatokat egy helyi SQL Server-adatbázis egy másik egy Azure Blob Storage tárolóban.
+title: 'PowerShell-parancsprogram: adatok másolása a helyszínről az Azure Data Factory használatával |} A Microsoft Docs'
+description: Ez a PowerShell-szkript adatokat másol egy helyszíni SQL Server-adatbázisból egy másikra egy Azure Blob Storage.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: 5c0252e42dd3dd53a0a95684553b193b983e95ee
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c3bc9f04777a9153fd8683b221e7d0aeef4609b3
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30166874"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061049"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>A helyszíni adatok másolása az Azure data factory folyamatokat létrehozni a PowerShell használatával
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Az adatok másolása a helyszínről az Azure data factory-folyamatok létrehozása a PowerShell használatával
 
-A PowerShell-parancsfájlpélda egy folyamatot, amely adatokat másol egy helyi SQL Server-adatbázis egy Azure Blob Storage Azure Data Factory hoz létre.
+A PowerShell-példaszkript létrehoz egy folyamatot az Azure Data Factoryben, amely adatokat másol egy helyszíni SQL Server-adatbázisból egy Azure Blob Storage.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Egy SQL Server**. Mint a helyszíni SQL Server adatbázis használata a **forrás** adatok tárolása a minta.
-- **Azure Storage-fiók** Azure blob Storage tárolót használja a **cél/fogadó** adatok tárolása a minta. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket.
-- **Önállóan üzemel integrációs futásidejű**. Az MSI-fájl letöltésére a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) , majd futtassa egy önálló üzemeltetett integrációs futásidejű telepítése a számítógépre.  
+- **Egy SQL Server**. Egy helyszíni SQL Server-adatbázist használ egy **forrás** adatokat tárolni ebben a példában.
+- **Azure Storage-fiók** Az Azure blob storage-ot használ egy **cél/fogadó** adatokat tárolni ebben a példában. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-quickstart-create-account.md) ismertető cikket.
+- **Saját üzemeltetésű integrációs modul**. Töltse le az MSI-fájlt a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) , majd futtassa a gépen egy saját üzemeltetésű integrációs modul telepítése.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Hozzon létre mintaadatbázist az SQL Server
-1. A helyszíni SQL Server adatbázisban nevű tábla létrehozása **üres** a következő SQL-parancsfájl használatával: 
+1. A helyszíni SQL Server-adatbázis, hozzon létre egy táblázatot nevű **emp** a következő SQL-parancsfájl használatával: 
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -45,7 +45,7 @@ A PowerShell-parancsfájlpélda egy folyamatot, amely adatokat másol egy helyi 
      GO
    ```
 
-2. Szúrja be a mintaadatok a táblázatba:
+2. A táblába néhány Mintaadat beszúrásához:
 
    ```sql
      INSERT INTO emp VALUES ('John', 'Doe')
@@ -55,19 +55,19 @@ A PowerShell-parancsfájlpélda egy folyamatot, amely adatokat másol egy helyi 
 ## <a name="sample-script"></a>Példaszkript
 
 > [!IMPORTANT]
-> Ezt a parancsfájlt a merevlemezen a c:\ mappában hoz létre, amelyek meghatározzák a Data Factory entitások (a társított szolgáltatás, a dataset és a feldolgozási sor) JSON-fájlokat.
+> Ez a szkript létrehoz, amelyek meghatározzák a Data Factory-entitásokat (társított szolgáltatás, adatkészlet és folyamatot) JSON-fájlokat a c:\ mappába a merevlemezen.
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A minta-parancsprogram futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrás:
+A példaszkript futtatása után a következő parancsot használhatja, ha az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás eltávolítása:
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Az erőforráscsoport az adat-előállítóban eltávolításához futtassa a következő parancsot: 
+Az erőforráscsoport az adat-előállító eltávolításához futtassa a következő parancsot: 
 
 ```powershell
 Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -81,12 +81,12 @@ Ez a szkript a következő parancsokat használja:
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2) | Adat-előállító létrehozása |
-| [New-AzureRmDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2linkedserviceencryptedcredential) | A kapcsolódószolgáltatás-felhasználó hitelesítő adatait titkosítja, és létrehoz egy új kapcsolódószolgáltatás-definíció a titkosított hitelesítő adatokat. 
-| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2linkedservice) | Létrehoz egy csatolt szolgáltatást az adat-előállítóban. A társított szolgáltatás egy adat-előállító egy számítási vagy az adattárban hivatkozásokat tartalmaz. |
-| [Set-AzureRmDataFactoryV2Dataset](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2dataset) | A data factory dataset hoz létre. A DataSet adatkészlet egy folyamat egy tevékenység bemeneti jelöli. | 
-| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactorv2ypipeline) | Az adat-előállítóban hoz létre egy folyamatot. Egy folyamatot, amely bizonyos műveletet hajt végre egy vagy több tevékenységet tartalmaz. Az adatcsatorna a másolási tevékenység adatainak másolása egyik helyről egy Azure Blob Storage tárolóban egy másik helyre. |
-| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Invoke-azurermdatafactoryv2pipelinerun) | A tölcsér futtató hoz létre. Ez azt jelenti futtatja a folyamatot. |
-| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | Lekérdezi a futtatáskor a tevékenység (tevékenységfuttatási) adatait a feldolgozási. 
+| [New-AzureRmDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2linkedserviceencryptedcredential) | A társított szolgáltatás hitelesítő adatai titkosítja, és létrehoz egy új társított szolgáltatás definíciójában a titkosított hitelesítő adataival. 
+| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2linkedservice) | Az adat-előállító létrehoz egy társított szolgáltatást. A társított szolgáltatás hivatkozik egy adattárat vagy számítási, adat-előállító. |
+| [Set-AzureRmDataFactoryV2Dataset](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2dataset) | Az adat-előállító egy adatkészletet hoz létre. Adatkészlet egy folyamat egyik tevékenységének bemeneti/kimeneti jelöli. | 
+| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactorv2ypipeline) | Létrehoz egy folyamatot az adat-előállítóban. Egy folyamatot, amely egy bizonyos műveletet hajt végre egy vagy több tevékenységet tartalmaz. Ez a folyamat egy másolási tevékenység adatokat másol egy helyről egy másik helyre egy Azure Blob Storage. |
+| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Invoke-azurermdatafactoryv2pipelinerun) | A folyamat futtatása hoz létre. Más szóval futtatja a folyamatot. |
+| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | A tevékenység (tevékenység-végrehajtásonként), a Futtatás részleteinek beolvasása az adatcsatorna. 
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
@@ -94,4 +94,4 @@ Ez a szkript a következő parancsokat használja:
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Data Factory PowerShell parancsfájl minták megtalálhatók a [Azure Data Factory PowerShell-példák](../samples-powershell.md).
+További Azure Data Factory PowerShell szkriptminták találhatók az [Azure Data Factory PowerShell-minták](../samples-powershell.md).

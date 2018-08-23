@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 21dde5b0199345e9e8faffc6feac4854a3aa7350
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627144"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054299"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -205,7 +205,7 @@ Ehelyett manuálisan újítsa meg a tanúsítványt, kattintson a **manuális me
 Ha az SSL-tanúsítvány automatikus megújítása van konfigurálva, de nem automatikusan megújítani, előfordulhat, hogy rendelkezik egy függőben lévő tartomány-ellenőrzés. Vegye figyelembe: 
 
 - GoDaddy, az App Service-tanúsítványokat hoz létre, amely a tartomány-ellenőrzés két évente van szükség. A tartományi rendszergazda három évente egyszer kap egy e-mailt a tartomány ellenőrzéséhez. Ellenőrizze az e-mailben, vagy ellenőrizze a tartomány megakadályozza, hogy az App Service-tanúsítvány automatikus megújítása. 
-- A GoDaddy házirend módosítása miatt a 2018. március 1. előtt kiadott összes App Service-tanúsítványok reverification tartomány tovább a megújítás időpontjában szükséges a (még akkor is, ha az automatikus megújítás engedélyezve van a tanúsítvány). Tekintse meg az e-mail, és fejezze be az automatikus megújítás az App Service-tanúsítvány továbbra is a egyszeri tartomány-ellenőrzésére. 
+- A GoDaddy házirend módosítása miatt a 2017. március 1. előtt kiadott összes App Service-tanúsítványok reverification tartomány tovább a megújítás időpontjában megkövetelése a (még akkor is, ha az automatikus megújítás engedélyezve van a tanúsítvány). Tekintse meg az e-mail, és fejezze be az automatikus megújítás az App Service-tanúsítvány továbbra is a egyszeri tartomány-ellenőrzésére. 
 
 ## <a name="more-resources"></a>További erőforrások
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d12ce7b3416fac5de5cba9543f3bed5bcedf2012
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115673"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060825"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -213,12 +213,14 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 
 | Tulajdonság | Leírás |
 | --- | --- |
-|Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
-|Operációs rendszer| Válassza ki **Linux** vagy **Windows**.|
-|Frissítendő gépek |Válassza ki, mentett keresést, vagy válasszon **gép** a legördülő listából válassza ki, majd ezután válassza ki az egyes gépek. |
-|Frissítési besorolások|Válassza ki az összes szükséges. CentOS nem támogatja a beépített.|
-|Kihagyandó frissítések|Adja meg a kihagyandó frissítések. Windows, adja meg a tudásbáziscikkben nélkül a **KB-os** előtag. A Linux rendszerre adja meg a csomag nevét, vagy helyettesítő karaktert használni.  |
-|Ütemezési beállítások|Válassza ki a kezdési idejét, és válassza vagy **egyszer** vagy **ismétlődő** az ismétlődés.|| Karbantartási időszak |Frissítések beállított percek száma. Az érték nem lehet kisebb, mint 30 perc vagy 6 óra. |
+| Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
+|Operációs rendszer| Linux vagy Windows|
+| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha úgy dönt, **gépek**, jelenik meg a gép készen áll-e a **frissítési ÜGYNÖK KÉSZÜLTSÉGE** oszlop.</br> Számítógépcsoportok létrehozását a Log Analytics különböző módszereivel kapcsolatos további információkért lásd: [Log Analytics számítógépcsoportjaival](../log-analytics/log-analytics-computer-groups.md) |
+|Frissítési besorolások|Válassza ki az összes szükséges|
+|Kihagyandó frissítések|Adja meg a kihagyandó frissítések. Windows adja meg a KB, a "KB" előtag nélkül. A Linux rendszerre adja meg a csomag nevét, vagy használjon helyettesítő.  |
+|Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|
+| Karbantartási időszak |Frissítések beállított percek száma. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
+| Vezérlő újraindítása| Detemines újraindítások kezelésének módját.</br>Rendelkezésre álló lehetőségek közül választhat:</br>(Alapértelmezett) szükség esetén újraindítás</br>Mindig újraindítás</br>Soha ne újraindítás</br>Csak újraindítás - nem telepíti a frissítéseket|
 
 ## <a name="update-classifications"></a>Frissítési besorolások
 

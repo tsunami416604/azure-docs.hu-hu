@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 1ddc74b1960095509a77d4b3072017847df42d90
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 359648a843375477ea56ab791533208c11af9c81
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235533"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055511"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Az Azure Key Vault vásárlói funkciók
 
@@ -48,11 +48,11 @@ Helyreállítható törlés lehetővé teszi, hogy a törölt adatok helyreáll�
 
 ## <a name="exporting-customer-data"></a>Vásárlói adatok exportálása
 
-A REST API-kkal, portáljának felületén, és SDK-k hozhatók létre, tárolók, kulcsok, titkos kódok, tanúsítványok és fiókok is olyan felügyelt tárolási lehetővé teszi, hogy ezek az objektumok exportálása és.
+A REST API-kkal, portálja és SDK-k hozhatók létre, tárolók, kulcsok, titkos kódok, tanúsítványok, és a storage-fiókok is felügyelt lehetővé teszi, hogy ezek az objektumok exportálása és.
 
 Az Azure Key Vault hozzáférés naplózásának ez nem kötelező, hogy be tudja kapcsolni egyes REST API-hívások naplófájlokat hoznak létre. Ezek a naplók adjuk át egy tárfiókot az előfizetésében, a alkalmazni, ha az adatmegőrzési szabályt, amely megfelel a szervezet követelményeinek.
 
-Az Azure Key Vault diagnosztikai naplók személyes adatokat tartalmazó lekérhetők-exportálási kérelem beállításjegyzékén végrehajtja a felhasználói portálon. Ezt a kérelmet kell végezni a bérlői rendszergazda.
+Személyes adatait tartalmazó Azure Key Vault diagnosztikai naplók lekérhetők-exportálási kérelem beállításjegyzékén végrehajtja a felhasználói portálon. Ezt a kérelmet kell végezni a bérlői rendszergazda.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -60,14 +60,10 @@ Az Azure Key Vault diagnosztikai naplók személyes adatokat tartalmazó lekérh
 
 - [Az Azure Key Vault helyreállítható törlés áttekintése](key-vault-soft-delete-cli.md)
 
-- [Tárolók](https://docs.microsoft.com/rest/api/keyvault/vaults)
-
 - [Az Azure Key Vault-kulcs műveletek](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 
 - [Az Azure Key Vault titkos műveletek](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
 
 - [Az Azure Key Vault-tanúsítványok és szabályzatok](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
-
-- [Tanúsítványkiállítók](https://docs.microsoft.com/rest/api/keyvault/certificate-issuers)
 
 - [Az Azure Key Vault storage-fiók műveletek](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)

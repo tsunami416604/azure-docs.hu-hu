@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: e76ffa3256da5acecf55ad37ea3d927510565ffe
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 41246e434f8adade65f39b3471417888f62d7528
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577288"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055129"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 > [!div class="op_single_selector"]
@@ -204,6 +204,8 @@ A tárolóalapú szolgáltatáshoz szükség van egy kommunikációs végpontra.
   </Endpoints>
 </Resources>
 ```
+> [!NOTE]
+> A szolgáltatás további végpontok hozzáadása is lehetséges további végpont elemek és a alkalmazni tulajdonságértékek deklarálásával. Minden Port csak deklarálhatnak több protokoll értéket.
 
 Egy végpont megadásával a Service Fabric közzéteszi a végpontot az elnevezési szolgáltatásban. A fürtben futó más szolgáltatások feloldhatják ezt a tárolót. Tárolók közötti kommunikációt is folytathat a [fordított proxyval](service-fabric-reverseproxy.md). A kommunikációhoz környezeti változókként adja meg a fordított proxy HTTP-figyelő portját és azon szolgáltatások nevét, amelyekkel kommunikálni kíván.
 
@@ -247,6 +249,8 @@ Konfiguráljon egy gazdagépportot a tárolóval való kommunikációhoz. A port
     ...
 </ServiceManifestImport>
 ```
+> [!NOTE]
+> A szolgáltatás további PortBindings további PortBinding elemek és a alkalmazni tulajdonságértékek deklarálásával is hozzáadhatók.
 
 ## <a name="configure-container-registry-authentication"></a>Tárolóregisztrációs adatbázis hitelesítésének konfigurálása
 A tárolóregisztrációs adatbázis hitelesítésének konfigurálásához adja a hozzá a `RepositoryCredentials` elemet az ApplicationManifest.xml fájl `ContainerHostPolicies` eleméhez. Adja meg a myregistry.azurecr.io tárolóregisztrációs adatbázis fiókját és jelszavát, hogy a szolgáltatás le tudja tölteni a tároló rendszerképét az adattárból.
@@ -598,13 +602,13 @@ A Service Fabric futtatókörnyezete 20 percet foglal le a tárolórendszerképe
 
 ```json
 {
-"name": "Hosting",
+        "name": "Hosting",
         "parameters": [
           {
               "name": "ContainerImageDownloadTimeout",
               "value": "1200"
           }
-]
+        ]
 }
 ```
 
@@ -626,7 +630,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 
 ```json
 { 
-   "name": "Hosting", 
+        "name": "Hosting", 
         "parameters": [ 
           { 
             "name": "ContainerServiceArguments", 

@@ -1,9 +1,9 @@
 ---
-title: Egy sablon érvényesítési eszköz segítségével ellenőrizze a sablonok Azure verem |} Microsoft Docs
-description: Sablonok az Azure-verem való központi telepítésének ellenőrzése
+title: Egy sablon érvényesítése eszköz használatával ellenőrizze a sablonokat az Azure Stackhez |} A Microsoft Docs
+description: A sablonok az Azure Stack való központi telepítésének ellenőrzése
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: d9e6aee1-4cba-4df5-b5a3-6f38da9627a3
@@ -12,45 +12,45 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 61c893848176a89b4b6ed8d7a46f27bdeff5cec1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 73a0766baee8da782f0192fbc17fb2898a8360ac
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294487"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055734"
 ---
-# <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>A sablonok Azure verem egyeztetni a sablon ellenőrzése eszköz
+# <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Ellenőrizze a sablonokat az Azure Stack a sablon érvényesítése eszközzel
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A sablon ellenőrzése eszköz segítségével ellenőrizze, hogy az Azure Resource Manager [sablonok](azure-stack-arm-templates.md) készen áll az Azure-verem központi telepítéséhez. A sablon ellenőrzése eszköz az Azure-verem eszközök részeként érhető el. Töltse le az Azure-verem eszközök ismertetett lépések segítségével a [eszközök letölthető a GitHub](azure-stack-powershell-download.md) cikk.
+A sablon érvényesítése eszköz segítségével ellenőrizze, hogy az Azure Resource Manager [sablonok](azure-stack-arm-templates.md) készen áll az Azure Stack üzembe helyezése. A sablon érvényesítése eszközt az Azure Stack eszközök részeként érhető el. Töltse le az Azure Stack eszközök ismertetett lépések segítségével a [eszközök letöltése a githubról](azure-stack-powershell-download.md) cikk.
 
 ## <a name="overview"></a>Áttekintés
 
-Ellenőrizze a sablont, be kell összeállítása a felhőalapú képességek első fájlt, és futtassa az ellenőrzési eszközt. A következő PowerShell-moduljai a Azure verem eszközök használhatja:
+A sablon érvényesítése, hozhat létre a felhő képességeit kell első fájlt, és futtassa az ellenőrzési eszközt. Használja a következő PowerShell-modulok az Azure Stack-eszközök:
 
-- Az a **CloudCapabilities** mappába:<br>         AzureRM.CloudCapabilities.psm1 létrehoz egy felhőalapú képességek JSON szolgáltatások és egy Azure verem felhőben verziók jelölő.
-- Az a **TemplateValidator** mappába:<br>
-AzureRM.TemplateValidator.psm1 sablonok központi telepítés tesztelése az Azure-verem felhőalapú képességek JSON-fájlt használ.
+- Az a **CloudCapabilities** mappa:<br>         AzureRM.CloudCapabilities.psm1 hoz létre a felhőalapú képességek jelölő JSON-fájlok a szolgáltatások és a egy Azure Stack-felhőben lévő verziók.
+- Az a **TemplateValidator** mappa:<br>
+AzureRM.TemplateValidator.psm1 központi telepítési sablonok tesztelése az Azure Stack a felhőalapú képességek JSON-fájlt használ.
 
-## <a name="build-the-cloud-capabilities-file"></a>A felhő capabilities-fájl létrehozása
+## <a name="build-the-cloud-capabilities-file"></a>A felhőalapú képességek fájl létrehozása
 
-A sablon érvényesítő használatához futtassa a AzureRM.CloudCapabilities PowerShell-modul egy JSON-fájl létrehozásához.
+Mielőtt használná a sablon érvényesítési, futtassa a AzureRM.CloudCapabilities PowerShell-modult hozhat létre egy JSON-fájlt.
 
 >[!NOTE]
->Ha az integrált rendszert, vagy adjon meg új szolgáltatások vagy virtuális bővítmények, ez a modul újra kell futtatnia.
+>Ha az integrált rendszer frissítésére, vagy adjon meg új szolgáltatás, vagy virtuális bővítmények, ez a modul újra kell futtatnia.
 
-1. Ellenőrizze, hogy a kapcsolat Azure verem. Ezek a lépések akkor hajthatók végre a Azure verem development kit gazdagépről, vagy használhat egy [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) csatlakozni a munkaállomáson.
-2. A AzureRM.CloudCapabilities PowerShell modul importálása:
+1. Győződjön meg arról, hogy rendelkezik az Azure Stackhez. Az Azure Stack development kit állomás hajthat végre ezeket a lépéseket, vagy használhatja egy [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) való csatlakozáshoz a munkaállomáson.
+2. Importálja a AzureRM.CloudCapabilities PowerShell-modulját:
 
     ```PowerShell
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. A Get-CloudCapabilities parancsmag segítségével szolgáltatásverziók beolvasása és a felhőalapú képességek JSON-fájl létrehozása. Ha nem adja meg a **- OutputPath**, a fájl AzureCloudCapabilities.Json jön létre az aktuális könyvtárban található. A tényleges helyet használja:
+3. A Get-CloudCapabilities parancsmag segítségével szolgáltatásverziók lekérni, és hozzon létre egy felhőalapú képességek JSON-fájlt. Ha nem ad meg **- OutputPath**, a fájl AzureCloudCapabilities.Json jön létre az aktuális könyvtárban található. A tényleges helyet használja:
 
     ```PowerShell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -58,16 +58,16 @@ A sablon érvényesítő használatához futtassa a AzureRM.CloudCapabilities Po
 
 ## <a name="validate-templates"></a>Sablonok ellenőrzése
 
-Ezek a lépések segítségével ellenőrizheti a sablonok AzureRM.TemplateValidator PowerShell modul használatával. Használhatja a saját sablonokat, vagy ellenőrizze a [Azure verem gyorsindítási sablonok](https://github.com/Azure/AzureStack-QuickStart-Templates).
+Sablonok ellenőrzése AzureRM.TemplateValidator PowerShell-modul segítségével használnia. A saját sablonokat, vagy ellenőrizheti a [Azure Stack-gyorssablonok](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
-1. A AzureRM.TemplateValidator.psm1 PowerShell modul importálása:
+1. Importálja a AzureRM.TemplateValidator.psm1 PowerShell-modulját:
 
     ```PowerShell
     cd "c:\AzureStack-Tools-master\TemplateValidator"
     Import-Module .\AzureRM.TemplateValidator.psm1
     ```
 
-2. A sablon ellenőrző futtatása:
+2. A sablon érvényesítési futtassa:
 
     ```PowerShell
     Test-AzureRMTemplate -TemplatePath <path to template.json or template folder> `
@@ -75,27 +75,27 @@ Ezek a lépések segítségével ellenőrizheti a sablonok AzureRM.TemplateValid
     -Verbose
     ```
 
-Sablon érvényesítési figyelmeztetések vagy hibák naplózása a PowerShell-konzolban és a forráskönyvtár a HTML-fájlba. A következő képernyőfelvétel-készítés ellenőrzési jelentésben példáját mutatja be:
+Sablon érvényesítési figyelmeztetést vagy hibát naplózza a PowerShell-konzol és a egy HTML-fájlt a forráskönyvtárban. A következő képernyőfelvétel egy folyamatérvényesítési jelentés egy példát mutat be:
 
-![Sablon ellenőrzési jelentés](./media/azure-stack-validate-templates/image1.png)
+![Sablon-ellenőrzési jelentés](./media/azure-stack-validate-templates/image1.png)
 
 ### <a name="parameters"></a>Paraméterek
 
-A sablon érvényesítő az alábbi paramétereket támogatja.
+A sablon érvényesítési az alábbi paramétereket támogatja.
 
 | Paraméter | Leírás | Szükséges |
 | ----- | -----| ----- |
-| TemplatePath | Megadja a rekurzív módon elérési található Azure Resource Manager-sablonok | Igen | 
-| TemplatePattern | A neve a sablon fájlok kereséséhez. | Nem |
-| CapabilitiesPath | Felhőalapú képességek JSON-fájl elérési útja | Igen | 
-| IncludeComputeCapabilities | IaaS-erőforrásokhoz, mint a Virtuálisgép-méretek és a Virtuálisgép-bővítmények értékelése tartalmazza | Nem |
-| IncludeStorageCapabilities | Magában foglalja a tárolási erőforrások, például a Termékváltozat típusok kiértékelése | Nem |
-| Jelentés | A generált HTML-jelentés neve | Nem |
-| Részletes | Hibák és figyelmeztetések naplózza a konzolhoz | Nem|
+| TemplatePath | Megadja a rekurzív módon elérési útját, keresse meg az Azure Resource Manager-sablonok | Igen | 
+| TemplatePattern | Meghatározza a megfelelő sablon fájlok nevét. | Nem |
+| CapabilitiesPath | Adja meg a felhőalapú képességek JSON-fájl elérési útja | Igen | 
+| IncludeComputeCapabilities | Tartalmazza a kiértékelés az IaaS-erőforrások, például a Virtuálisgép-méretek és a Virtuálisgép-bővítmények | Nem |
+| IncludeStorageCapabilities | Tartalmazza a kiértékelés tárolási erőforrások, például a Termékváltozat típusa | Nem |
+| Jelentés | Meghatározza a létrehozott HTML-jelentés nevét | Nem |
+| Részletes | Hibák és figyelmeztetések naplózása a konzol | Nem|
 
 ### <a name="examples"></a>Példák
 
-Ebben a példában az összes érvényesíti a [Azure verem gyorsindítási sablonok](https://github.com/Azure/AzureStack-QuickStart-Templates) letöltött helyi tárterület. A példa azt is ellenőrzi, virtuálisgép-méretek és bővítmények Azure verem szoftverfejlesztői készlet képességek ellen.
+Ebben a példában az összes érvényesíti a [Azure Stack-gyorssablonok](https://github.com/Azure/AzureStack-QuickStart-Templates) helyi tároló le. A példa azt is ellenőrzi a virtuálisgép-méretek és bővítmények ellen az Azure Stack fejlesztői készletének képességei.
 
 ```PowerShell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
@@ -107,5 +107,5 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 
 ## <a name="next-steps"></a>További lépések
 
-- [Sablonok telepítése Azure verem](azure-stack-arm-templates.md)
-- [Az Azure-verem sablonok fejlesztése](azure-stack-develop-templates.md)
+- [Sablonok üzembe helyezése az Azure Stackhez](azure-stack-arm-templates.md)
+- [Sablonok fejlesztése az Azure Stackhez](azure-stack-develop-templates.md)

@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 08/20/2018
 ms.author: anwestg
-ms.openlocfilehash: 22901374988f6654bc1fb282315db81bb17c815f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e5fc6b5d396a45d15548cfdd8f445158147ad12f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857865"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054727"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -28,7 +28,7 @@ ms.locfileid: "37857865"
 Azure App Service az Azure Stack üzembe helyezése, előtt elvégzése szükséges az ebben a cikkben előfeltételként felsorolt lépéseket.
 
 > [!IMPORTANT]
-> Az Azure Stackkel integrált rendszereknél 1804 frissítés alkalmazása, vagy a legújabb Azure Stack Development Kit (ASDK) üzembe helyezése, Azure App Service 1.2 üzembe helyezése előtt.
+> Az Azure Stackkel integrált rendszereknél 1807 frissítés alkalmazása, vagy a legújabb Azure Stack Development Kit (ASDK) üzembe helyezése, Azure App Service 1.3 üzembe helyezése előtt.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>A telepítő és a segítő szkripteket letöltése
 
@@ -241,27 +241,6 @@ net share %WEBSITES_SHARE% /delete
 net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
 ```
 
-### <a name="add-the-fileshareowners-group-to-the-local-administrators-group"></a>A FileShareOwners csoportot adja hozzá a helyi Rendszergazdák csoport
-
-Windows távoli kezelési megfelelően működjön hozzá kell adnia a FileShareOwners csoportnak a helyi Rendszergazdák csoportnak.
-
-#### <a name="active-directory"></a>Active Directory
-
-Futtassa a következő parancsokat egy rendszergazda jogú parancssorba, vagy minden fájlkiszolgálón, amely a feladatátvevő fürtcsomópont a fájlkiszolgálón. Cserélje le az értéket a `<DOMAIN>` a tartomány nevét, amelyet használni szeretne.
-
-```DOS
-set DOMAIN=<DOMAIN>
-net localgroup Administrators %DOMAIN%\FileShareOwners /add
-```
-
-#### <a name="workgroup"></a>Munkacsoport
-
-A fájlkiszolgálón futtassa a következő parancsot egy rendszergazda jogú parancssorban:
-
-```DOS
-net localgroup Administrators FileShareOwners /add
-```
-
 ### <a name="configure-access-control-to-the-shares"></a>A megosztások hozzáférés-vezérlés konfigurálása
 
 A következő parancsokat egy rendszergazda jogú parancssorban a fájlkiszolgálón vagy a feladatátvevő fürtcsomóponton, amely az aktuális fürt erőforrás tulajdonosa. Cserélje le a dőlt értékek értékek, amelyek az adott környezetre jellemző.
@@ -353,6 +332,7 @@ Kövesse az alábbi lépéseket:
 | AzureStackAdminCredential | Szükséges | Null | Az Azure AD szolgáltatás rendszergazdai hitelesítő adataihoz. |
 | CertificateFilePath | Szükséges | Null | **Teljes elérési útja** , az identitás alkalmazástanúsítvány-fájlja korábban létrehozott. |
 | CertificatePassword | Szükséges | Null | Olyan jelszót, amely segít megvédeni a tanúsítvány titkos kulcsa. |
+| Környezet | Optional | AzureCloud | A neve, a támogatott Felhőbeli környezet, amelyben a cél Azure Active Directory Graph szolgáltatás érhető el.  Megengedett értékek: "AzureCloud", "AzureChinaCloud", 'AzureUSGovernment', "AzureGermanCloud".|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory összevonási szolgáltatások alkalmazás létrehozása
 

@@ -1,25 +1,24 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 51680005cf1cc414271203f006731167053a702f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41927143"
 documentType: LandingData
-title: Csoportos adatelemzési folyamat dokumentációja
 metadata:
-  title: Csoportos adatelemzési folyamat dokumentációja
+  author: cjgronlund
   description: Útmutató a csoportos adatelemzési folyamat használatához.
-  services: machine-learning
-  author: bradsev
   manager: cgronlun
-  ms.service: machine-learning
+  ms.author: carolyn.gronlund
   ms.component: team-data-science-process
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: bradsev
-  ms.openlocfilehash: ceacb3138fdaf15a2c616aea2cdf55a73e0b73bf
-  ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/07/2018
-  ms.locfileid: "34837514"
+  ms.devlang: na
+  ms.service: machine-learning
+  ms.tgt_pltfrm: na
+  ms.topic: landing-page
+  services: machine-learning
+  title: Csoportos adatelemzési folyamat dokumentációja
 abstract:
   description: A csoportos adatelemzési folyamat rugalmas és iteratív adatelemzési módszer, amelynek célja a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósítása. A csoportos adatelemzési folyamat elősegíti a csoportok hatékonyabb együttműködését és tanulását. A Microsofttól és az iparág más vállalataitól származó, olyan ajánlott eljárásokból és szerkezetekből álló válogatást tartalmaz, amelyek az adatelemzési kezdeményezések sikeres megvalósítását segítik elő. A cél a vállalatok segítése az elemzési programjuk előnyeinek teljes körű megvalósításában.
 sections:

@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric-fürtben lévő tanúsítványok kezelése |} Microsoft Docs
-description: Hozzáadhat új tanúsítványokat, a helyettesítő tanúsítvány, és távolítsa el a tanúsítványt, vagy a Service Fabric-fürt ismerteti.
+title: Tanúsítványok az Azure Service Fabric-fürt kezelése |} A Microsoft Docs
+description: Hozzáadhat új tanúsítványokat, a helyettesítő tanúsítvány, és távolítsa el a tanúsítványt, illetve a Service Fabric-fürt módját ismerteti.
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -14,58 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 16758cc85b552e82d3daa63893558e1048bcefb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a1cfd68b526d8ce63fcfbc3b6e0eac84926fabaa
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207553"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057253"
 ---
-# <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hozzáadhat és eltávolíthat tanúsítványokat a Service Fabric-fürtök az Azure-ban
-Javasoljuk, hogy megismerje a módját a Service Fabric X.509-tanúsítványokat használ, és ismernie kell a [fürtök biztonsági forgatókönyveinek](service-fabric-cluster-security.md). Ismernie kell fürt tanúsítvány és felhasználási területének, mielőtt végrehajtásának folytatásához.
+# <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Adja hozzá, vagy távolítsa el a tanúsítványokat a Service Fabric-fürtön az Azure-ban
+Javasoljuk, hogy Ismerkedjen meg hogyan a Service Fabric X.509-tanúsítványokat használ, és ismernie kell a [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md). Ismernie kell a fürt tanúsítványt, és mire használható, mielőtt folytatná.
 
-A Service fabric lehetővé teszi az ügyfél-tanúsítványok mellett a fürt létrehozása során tanúsítvány biztonsági konfigurálásakor két fürt tanúsítvány, egy elsődleges és másodlagos, adja meg. Tekintse meg [létrehozása egy azure-portálon fürttel](service-fabric-cluster-creation-via-portal.md) vagy [létrehozása az azure-fürttel Azure Resource Manageren keresztül](service-fabric-cluster-creation-via-arm.md) azok beállításával kapcsolatos részleteket létre idő. Ha csak egy fürt tanúsítványt ad meg, létrehozás ideje, majd használt elsődleges tanúsítványként. Fürt létrehozása után hozzáadhat egy új tanúsítványt, a egy másodlagos.
+Az Azure szolgáltatás hálók SDK-k alapértelmezett tanúsítvány betöltési viselkedés az, hogy üzembe helyezése és használata egy meghatározott tanúsítványt amely lejáró dátummal rendelkező a későbbiekben; függetlenül attól, azok elsődleges vagy másodlagos configuration definícióját. Klasszikus viselkedésének való visszaváltás nem javasolt speciális művelet, és beállítása a "UseSecondaryIfNever" beállítás a paraméter értéke hamis belül a Fabric.Code konfiguráció szükséges.
+
+A Service fabric lehetővé teszi két fürttanúsítványok, az elsődleges és a egy másodlagos tanúsítvány biztonsági ügyfél-tanúsítványok mellett a fürt létrehozása során konfigurálásakor adja meg. Tekintse meg [létrehozása egy azure-portálon keresztül fürtön](service-fabric-cluster-creation-via-portal.md) vagy [létrehozása egy azure-fürtön az Azure Resource Manageren keresztül](service-fabric-cluster-creation-via-arm.md) beállításukról a részletekért hozzon létre idő. Ha a fürt csak egy tanúsítványt, létrehozás időpontja, majd használt elsődleges-tanúsítványt. Fürt létrehozása után hozzáadhat egy új tanúsítványt, egy másodlagos.
 
 > [!NOTE]
-> Biztonságos fürt esetén mindig szüksége lesz legalább egy érvényes (a nem visszavont és a nem lejárt) fürt telepített tanúsítvány (elsődleges vagy másodlagos) (Ha nem, a fürt leáll a működése). 90 napig minden érvényes tanúsítvány elérni lejárati, a rendszer létrehoz egy figyelmeztetés nyomkövetést, és egy figyelmeztetés állapotesemény a csomóponton. Jelenleg nincs e-mail vagy más, ezen a cikken küld a Service Fabric értesítést. 
+> Biztonságos fürt esetében mindig szüksége lesz legalább egy érvényes (nem visszavont és nem járt le) fürt telepített tanúsítvány (elsődleges vagy másodlagos) (Ha nem, a fürt leáll a működése). 90 nap elteltével minden érvényes tanúsítvány lejárati, eléri a rendszer létrehoz egy figyelmeztetés a nyomkövetési, és figyelmeztetés állapottal kapcsolatos esemény a csomóponton. Jelenleg nincs e-mail vagy bármely más értesítési, amely ezen a cikken küld a Service Fabric. 
 > 
 > 
 
-## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>A portál használatával a fürt másodlagos tanúsítvány hozzáadásához
-Másodlagos fürt tanúsítvány nem adható hozzá, az Azure-portálon, az Azure powershell használata. A folyamat a dokumentum későbbi szakaszában meghatározott.
+## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>A portál használatával a másodlagos fürttanúsítvány hozzáadása
+Az Azure Portalon, az Azure powershell használata a másodlagos fürttanúsítvány nem adható hozzá. A folyamat a rendszer később a jelen dokumentumban vázolt.
 
-## <a name="swap-the-cluster-certificates-using-the-portal"></a>A felcserélendő a fürt tanúsítványokat, a portál használatával
-Miután egy másodlagos fürt tanúsítványt, ha szeretne váltani, az elsődleges és másodlagos sikeresen telepített, majd lépjen a biztonsági szakaszra, és felcserélni az elsődleges és másodlagos tanúsítvány a helyi menüben válassza a "Elsődleges felcserélés" lehetőséget tanúsítvány.
+## <a name="remove-a-cluster-certificate-using-the-portal"></a>A portál használatával a fürttanúsítvány eltávolítása
+Biztonságos fürt esetében mindig szüksége lesz legalább egy érvényes (nem visszavont és nem járt le) tanúsítványra. A tanúsítvány telepítve a jövőbeli lejáró dátumra legtávolabbi lesz használatban, és a fürt működik; eltávolítása teszik Ügyeljen arra, hogy csupán eltávolítja a tanúsítvány lejárt, vagy egy nem használt tanúsítványt, amely a leghamarabb lejár.
 
-![Lapozófájl-kapacitás tanúsítvány][Delete_Swap_Cert]
+Távolítsa el a fel nem használt fürt biztonsági tanúsítványa, nyissa meg a biztonság szakaszában, és válassza a "Törlés" lehetőséget a fel nem használt tanúsítványt a helyi menüből.
 
-## <a name="remove-a-cluster-certificate-using-the-portal"></a>Távolítsa el a fürt tanúsítványt, a portál használatával
-Biztonságos fürt esetén mindig szüksége lesz legalább egy érvényes (a nem visszavont és a nem lejárt) (elsődleges vagy másodlagos) telepített tanúsítvány ellenkező esetben a fürt megszűnik működni.
+Ha a leképezés eltávolítani a tanúsítványt, amely elsődleges van megjelölve, kell helyezheti üzembe, mint az elsődleges tanúsítvány, a jövőben további lejáró dátummal rendelkező másodlagos tanúsítvány automatikus helyettesítő viselkedésének; engedélyezése Törölje az elsődleges tanúsítványt, az automatikus helyettesítő befejeződése után.
 
-Távolítsa el a másodlagos tanúsítvány használatát a fürt biztonsági okokból és a biztonsági szakaszban lép, és a másodlagos tanúsítvány a helyi menüből válassza a "Törlés" lehetőséget.
-
-Ha a szándéka az, eltávolítani a tanúsítványt, amely elsődleges van megjelölve, majd szüksége lesz a másodlagos felcserélése, és törölje a másodlagos, a frissítés befejeződése után.
-
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Erőforrás-kezelő Powershell-lel másodlagos tanúsítvány hozzáadásához
+## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Resource Manager Powershell-lel másodlagos tanúsítvány hozzáadása
 > [!TIP]
-> Most már jobb és egyszerűbb módon hozzáadni egy másodlagos tanúsítvány használata a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmag. Nem kell kövesse a jelen szakaszban szereplő lépéseket.  Is, nem kell létrehozni és telepíteni a fürt használatakor eredetileg használt sablon a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmag.
+> Most már jobb és egyszerűbb a módon hozzáadni egy másodlagos tanúsítvány használatával a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmagot. Nem kell követhesse a jelen szakaszban ismertetett lépéseket.  Emellett nem kell létrehozni és üzembe helyezni a fürt használatakor eredetileg használt sablon a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmagot.
 
-Ezek a lépések feltételezik, hogy Ön ismeri a Resource Manager működésével és legalább egy Service Fabric-fürt Resource Manager-sablon használatával telepített, és a sablont, amely akkor lesz szüksége a fürt létrehozásakor használt. Az Ön számára elfogadható JSON használatával is feltételezzük.
+A lépések feltételezik, hogy ismeri a Resource Manager működését, és legalább egy Service Fabric-fürtöt egy Resource Manager-sablon használatával telepített, és rendelkezik a sablont, amely hasznos a fürt beállításához használt. Azt is feltételezzük, hogy járatos JSON.
 
 > [!NOTE]
-> Ha a keresett mintasablon és mentén vagy kiindulási pontként használható paramétereket, majd töltse le azt a ez [git-tárház](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
+> Ha a minta sablon és paraméterek, amelyek segítségével hajtsa végre a mentén, és kiindulási pontként, majd töltse le a [git-tárház](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
 > 
 > 
 
-### <a name="edit-your-resource-manager-template"></a>A Resource Manager sablon szerkesztése
+### <a name="edit-your-resource-manager-template"></a>A Resource Manager-sablon szerkesztése
 
-A következő mentén megkönnyítése érdekében a minta 5-VM-1-NodeType tulajdonságok értéke-Secure_Step2.JSON frissítjük összes szerkesztést tartalmazza. a minta érhető el: [git-tárház](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
+Következő mentén könnyű minta 5 – virtuális gép – 1-NodeType-Secure_Step2.JSON teszi azt minden módosításokat tartalmaz. a minta mindig elérhető legyen [git-tárház](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
 
-**Ügyeljen arra, hogy kövesse a lépéseket**
+**Ügyeljen arra, hogy a lépéseket**
 
-1. Nyissa meg a Resource Manager-sablon használt fürtök telepítése. (Ha letöltötte a minta az előző tárházból, 5-VM-1-NodeType tulajdonságok értéke-Secure_Step1.JSON segítségével biztonságos fürt központi telepítése, és nyissa meg, hogy a sablon mentése).
+1. Nyissa meg a Resource Manager-sablon, amellyel-fürt üzembe helyezése meg. (Ha letöltötte a minta az előző adattárból, 5 – virtuális gép – 1-NodeType-Secure_Step1.JSON használatával egy biztonságos fürt üzembe helyezése, és nyissa meg a sablon mentése).
 
-2. Adja hozzá **két új paraméterrel** "secCertificateThumbprint" és "secCertificateUrlValue", írja be a "karakterlánc" a sablon paraméter szakaszába. Másolja a következő kódrészletet, és adja hozzá a sablont. Attól függően, hogy a sablon a forráskiszolgálón előfordulhat, hogy már ezek definiált, ha úgy helyezze át a következő lépéssel. 
+2. Adjon hozzá **két új paraméterrel** "secCertificateThumbprint" és "secCertificateUrlValue", "string" írja a sablon a paraméterek szakaszához. Másolja a következő kódrészletet, és adja hozzá a sablont. A sablon a forrás, attól függően előfordulhat, hogy már ezek definiált, ha úgy helyezze át a következő lépéssel. 
  
     ```json
        "secCertificateThumbprint": {
@@ -83,7 +80,7 @@ A következő mentén megkönnyítése érdekében a minta 5-VM-1-NodeType tulaj
     
     ```
 
-3. Módosítja a **Microsoft.ServiceFabric/clusters** erőforrás - keresse meg a "Microsoft.ServiceFabric/clusters" erőforrás-definíció a sablonban. Az adott definíció tulajdonságai "Tanúsítvány" JSON található címke, amely a következő JSON-részlet hasonlóan kell kinéznie:
+3. Módosítása a **Microsoft.ServiceFabric/clusters** erőforrás - keresse meg az "Microsoft.ServiceFabric/clusters" erőforrás-definíció a sablonban. Annak a definíciónak tulajdonságainál található "Tanúsítványok" JSON-címkével, amely a következő JSON-kódrészletben hasonlóan kell kinéznie:
    
     ```JSON
           "properties": {
@@ -93,9 +90,9 @@ A következő mentén megkönnyítése érdekében a minta 5-VM-1-NodeType tulaj
          }
     ``` 
 
-    Új címke "thumbprintSecondary" hozzáadása, és adjon neki egy "[parameters('secCertificateThumbprint')]" értéket.  
+    Adjon hozzá egy új címke "thumbprintSecondary", és adjon meg egy értéket "[parameters('secCertificateThumbprint')]".  
 
-    Igen, most az erőforrás-definíció a következőképpen kell kinéznie (attól függően, hogy a forrás-sablon, nem lehet pontosan például az alábbi részlet). 
+    Szóval most már az erőforrás-definíció a következőhöz hasonlóan kell kinéznie (attól függően, a forrás-sablon, nem lehet az alábbi kódrészlethez hasonlóan). 
 
     ```JSON
           "properties": {
@@ -106,7 +103,7 @@ A következő mentén megkönnyítése érdekében a minta 5-VM-1-NodeType tulaj
          }
     ``` 
 
-    Ha azt szeretné, hogy **át a cert**, majd adja meg az új tanúsítvány az elsődleges és áthelyezése az aktuális elsődleges, a másodlagos. Ennek eredményeképp az aktuális elsődleges tanúsítvány helyettesítő egy központi telepítési lépésben új tanúsítványt.
+    Ha azt szeretné, hogy **vihetők át a tanúsítványt a**, majd adja meg az új tanúsítvány az elsődleges és áthelyezése az aktuális elsődleges, a másodlagos. Ennek eredményeképpen a Váltás az aktuális elsődleges tanúsítvány az új tanúsítvány egy központi telepítési lépésben.
     
     ```JSON
           "properties": {
@@ -117,13 +114,13 @@ A következő mentén megkönnyítése érdekében a minta 5-VM-1-NodeType tulaj
          }
     ``` 
 
-4. Módosítja **összes** a **Microsoft.Compute/virtualMachineScaleSets** erőforrás-definíciókban - keresse meg a Microsoft.Compute/virtualMachineScaleSets erőforrás-definícióban. Görgessen az "publisher": "Microsoft.Azure.ServiceFabric", "virtualMachineProfile" alatt.
+4. Változtatások **összes** a **Microsoft.Compute/virtualMachineScaleSets** erőforrás-definíciók – keresse meg a Microsoft.Compute/virtualMachineScaleSets erőforrás-definícióban. Görgessen az "publisher": "Microsoft.Azure.ServiceFabric", "virtualMachineProfile" alatt.
 
-    A Service Fabric publisher beállításaiban megtekintheti az alábbihoz hasonló.
+    A Service Fabric közzétevő beállításaiban valami ilyesmit megjelenik.
     
     ![Json_Pub_Setting1][Json_Pub_Setting1]
     
-    Az új tanúsítvány-bejegyzések felvétele
+    Az új tanúsítvány-bejegyzés hozzáadása
     
     ```json
                    "certificateSecondary": {
@@ -134,11 +131,11 @@ A következő mentén megkönnyítése érdekében a minta 5-VM-1-NodeType tulaj
     
     ```
 
-    A Tulajdonságok most példához hasonló
+    A Tulajdonságok kell kinéznie
     
     ![Json_Pub_Setting2][Json_Pub_Setting2]
     
-    Ha azt szeretné, hogy **át a cert**, majd adja meg az új tanúsítvány az elsődleges és áthelyezése az aktuális elsődleges, a másodlagos. Ennek eredményeképp az aktuális tanúsítvány helyettesítő egy központi telepítési lépésben új tanúsítványt.     
+    Ha azt szeretné, hogy **vihetők át a tanúsítványt a**, majd adja meg az új tanúsítvány az elsődleges és áthelyezése az aktuális elsődleges, a másodlagos. Ennek eredményeképpen a Váltás az aktuális tanúsítvány az új tanúsítvány egy központi telepítési lépésben.     
 
     ```json
                    "certificate": {
@@ -152,10 +149,10 @@ A következő mentén megkönnyítése érdekében a minta 5-VM-1-NodeType tulaj
                       },
     ```
 
-    A Tulajdonságok most példához hasonló    
+    A Tulajdonságok kell kinéznie    
     ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-5. Módosítja **összes** a **Microsoft.Compute/virtualMachineScaleSets** erőforrás-definíciókban - keresse meg a Microsoft.Compute/virtualMachineScaleSets erőforrás-definícióban. A "vaultCertificates" görgessen:, a "OSProfile". akkor kell kinéznie.
+5. Változtatások **összes** a **Microsoft.Compute/virtualMachineScaleSets** erőforrás-definíciók – keresse meg a Microsoft.Compute/virtualMachineScaleSets erőforrás-definícióban. Görgessen az "vaultCertificates":, "OSProfile" alatt. valahogy így kell kinéznie.
 
     ![Json_Pub_Setting4][Json_Pub_Setting4]
     
@@ -168,19 +165,19 @@ A következő mentén megkönnyítése érdekében a minta 5-VM-1-NodeType tulaj
                       }
     
     ```
-    Most már az eredményül kapott Json kell kinéznie.
+    Most az eredményül kapott Json következőhöz hasonlóan kell kinéznie.
     ![Json_Pub_Setting5][Json_Pub_Setting5]
 
 
 > [!NOTE]
-> Győződjön meg arról, hogy Ön a következő ismétlődő 4. és 5 a Nodetypes/Microsoft.Compute/virtualMachineScaleSets erőforrás definíciókat a sablonban. Ha kihagyná valamelyik őket, a tanúsítvány nem beolvasása telepítve az, hogy a virtuálisgép-méretezési csoport, és hogy előre az eredmény a fürtben, beleértve a fürt is (Ha Ön végül nem érvényes tanúsítványokat, a fürt biztonsági is használhat. Igen ellenőrizze, a folytatás előtt.
+> Győződjön meg arról, hogy Ön a következő ismétlődő 4. és 5 a Nodetypes/Microsoft.Compute/virtualMachineScaleSets erőforrás definíciókat a sablonban. Ha lemaradt az egyiket, a tanúsítvány nem lekérése telepítve az, hogy a virtuálisgép-méretezési, és hogy kiszámíthatatlan következményekkel járhat a fürtben, beleértve a fürt leállítása előtt (Ha Ön a kialakított nem érvényes tanúsítvány, a fürt biztonsági használhat. Ezért ellenőrizze, mielőtt továbblépne.
 > 
 > 
 
-### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>A sablonfájl megfelelően a korábban ismertetett módon hozzáadott új paraméterek szerkesztése
-Ha a mintát használ a [git-tárház](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) követéséhez, megkezdheti az módosítsa a minta 5-VM-1-NodeType tulajdonságok értéke-Secure.paramters_Step2.JSON 
+### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>A sablonfájl megfelelően a fentiekben hozzáadott új paraméterek szerkesztése
+A minta használata a [git-tárház](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) követéséhez megkezdheti a módosításokat a minta 5 – virtuális gép – 1-NodeType-Secure.paramters_Step2.JSON 
 
-A Resource Manager-sablon paraméter fájl szerkesztése, vegye fel a két új secCertificateThumbprint és paramétereinek secCertificateUrlValue. 
+A Resource Manager-sablon paraméter fájl szerkesztése, a két új paraméterek secCertificateThumbprint és secCertificateUrlValue. 
 
 ```JSON
     "secCertificateThumbprint": {
@@ -192,10 +189,10 @@ A Resource Manager-sablon paraméter fájl szerkesztése, vegye fel a két új s
 
 ```
 
-### <a name="deploy-the-template-to-azure"></a>A sablon telepítéséhez az Azure-bA
+### <a name="deploy-the-template-to-azure"></a>A sablon üzembe helyezéséhez az Azure-bA
 
-- Most már készen áll a sablon telepítéséhez az Azure-bA. Nyisson meg egy Azure PS 1 vagy újabb parancssort.
-- Jelentkezzen be az Azure-fiókjába, és válassza ki az adott azure-előfizetés. Ez egy fontos lépés a segítsen, akik hozzáférhetnek a több azure-előfizetés.
+- Most már készen áll a sablon üzembe helyezéséhez az Azure-bA. Nyisson meg egy Azure PS 1 vagy újabb parancssort.
+- Jelentkezzen be az Azure-fiókot, és válassza ki az adott azure-előfizetés. Ez a fontos lépés a azok számára, akik hozzáférhetnek a több mint egy azure-előfizetéssel.
 
 ```powershell
 Connect-AzureRmAccount
@@ -203,17 +200,17 @@ Select-AzureRmSubscription -SubscriptionId <Subcription ID>
 
 ```
 
-Tesztelje a sablon üzembe helyezése előtt. Ugyanabban az erőforráscsoportban, amely a fürt jelenleg a rendszer használja.
+Tesztelje a sablon üzembe helyezése előtt. Használja ugyanazt az erőforráscsoportot, amely a fürt jelenlegi üzembe.
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 
 ```
 
-Az erőforráscsoport a sablon telepítése Ugyanabban az erőforráscsoportban, amely a fürt jelenleg a rendszer használja. Futtassa a New-AzureRmResourceGroupDeployment parancsot. Nem kell megadnia a a módot, mivel az alapértelmezett érték **növekményes**.
+Az erőforráscsoportba helyezheti üzembe a sablont. Használja ugyanazt az erőforráscsoportot, amely a fürt jelenlegi üzembe. A New-AzureRmResourceGroupDeployment parancs futtatásával. Nem kell megadnia a a módot, mivel az alapértelmezett érték **növekményes**.
 
 > [!NOTE]
-> Mód Complete állítja be, ha véletlenül erőforrásokat, amelyek nem szerepelnek a sablon törölheti. Ebben a forgatókönyvben azt nem használja.
+> Fejezze be a mód állítja be, ha véletlenül törölheti erőforrások, amelyek nem a sablonban. Ebben a forgatókönyvben azt nem használja.
 > 
 > 
 
@@ -221,7 +218,7 @@ Az erőforráscsoport a sablon telepítése Ugyanabban az erőforráscsoportban,
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
-Ez az azonos powershell kitöltött példát.
+Íme egy kitöltött példa az ugyanazon PowerShell.
 
 ```powershell
 $ResouceGroup2 = "chackosecure5"
@@ -232,9 +229,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplatePa
 
 ```
 
-Ha a telepítés befejeződött, csatlakozzon a fürthöz, az új tanúsítványt használja, és hajtsa végre az egyes lekérdezések. Ha tudja megtenni. Törölheti a régi tanúsítvány. 
+Az üzembe helyezés befejezése után csatlakozzon a fürthöz, az új tanúsítványt használja, és hajtsa végre az egyes lekérdezések. Ha Ön tudja megtenni. Ezután törölheti a régi tanúsítványt. 
 
-Ha önaláírt tanúsítványt használ, ne felejtse el a megbízható személyek nevű helyi tanúsítványtároló importálja azokat.
+Ha önaláírt tanúsítványt használ, ne felejtse el a megbízható személyek nevű helyi tanúsítványtár importálja azokat.
 
 ```powershell
 ######## Set up the certs on your local box
@@ -242,7 +239,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath c:\Mycertificates\chackdanTestCertificate9.pfx -Password (ConvertTo-SecureString -String abcd123 -AsPlainText -Force)
 
 ```
-Gyors referenciaként Ez a parancs egy biztonságos fürthöz való kapcsolódás 
+Gyors referenciaként itt látható a parancsot egy biztonságos fürthöz való csatlakozáshoz 
 
 ```powershell
 $ClusterName= "chackosecure5.westus.cloudapp.azure.com:19000"
@@ -256,7 +253,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My
 ```
-Gyors referenciaként Ez a parancs használatával beszerezheti a fürt állapota
+Gyors referenciaként itt látható a parancsot a fürt állapotának lekérése
 
 ```powershell
 Get-ServiceFabricClusterHealth 
@@ -264,38 +261,37 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="deploying-application-certificates-to-the-cluster"></a>A fürt alkalmazás tanúsítványok telepítését.
 
-A portáladatbázis előző 5. lépéseket a csomópontra a keyvault alapján telepített tanúsítványok is használhatja ugyanazokat a lépéseket. ugyanúgy kell definiálására és használjon más paramétereket.
+Az előző lépések 5 leírt módon szeretné, hogy a tanúsítványok, telepítjük a keyvault-ből a csomópontok is használhatja ugyanazokat a lépéseket. Ugyanúgy kell meghatározása és különböző paramétereket használja.
 
 
-## <a name="adding-or-removing-client-certificates"></a>Hozzáadása vagy eltávolítása az ügyfél-tanúsítványok
+## <a name="adding-or-removing-client-certificates"></a>Hozzáadásával vagy eltávolításával ügyféltanúsítványok
 
-A fürt tanúsítvány mellett a Service Fabric-fürt felügyeleti műveletek elvégzéséhez ügyféltanúsítványok is hozzáadhat.
+A fürt-tanúsítványok mellett a felügyeleti műveletek végrehajtása a Service Fabric-fürt ügyféltanúsítványok is hozzáadhat.
 
-Kétféle ügyféltanúsítványok - rendszergazda adhat hozzá vagy csak olvasható. Ezek ezután használhatók a felügyeleti műveletek és a lekérdezési műveletek a fürthöz való hozzáférés vezérlése érdekében. Alapértelmezés szerint a fürt tanúsítványok hozzáadódnak a megengedett felügyeleti tanúsítványok listája.
+Kétféle ügyféltanúsítványok - rendszergazda adhat hozzá vagy csak olvasható. Ezek akkor használhatók a felügyeleti műveletek és lekérdezési műveleteket a fürtön való hozzáférés szabályozásához. Alapértelmezés szerint a fürt tanúsítványok kerülnek az engedélyezett felügyeleti tanúsítványok listája.
 
-megadhatja, hogy minden ügyfél-tanúsítványok száma. A Service Fabric-fürt az egy konfigurációs eredmények minden és törléséről
+Ügyféltanúsítványok tetszőleges számú is megadhat. Minden egyes hozzáadása vagy törlése a Service Fabric-fürthöz eredményez a konfiguráció frissítése
 
 
-### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Ügyféltanúsítványok - rendszergazda felvétele vagy csak olvasható-portálon
+### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Ügyféltanúsítványok - rendszergazda felvétele vagy írásvédett portálon keresztül
 
-1. Lépjen a biztonsági szakaszra, és válassza a "+ hitelesítés" gombra a biztonsági szakasz fölött.
-2. A "Hitelesítés hozzáadása" szakasz válassza ki a "hitelesítés" - "Csak olvasható" vagy "Admin ügyfélszámítógépekhez"
-3. Most adja meg a hitelesítési módját. Ez azt jelzi, hogy a Service Fabric e keresi ezt a tanúsítványt a tulajdonos neve vagy az ujjlenyomat használatával. Ez általában nem egy jó biztonsági gyakorlat a tulajdonos neve a hitelesítési módszer használatát. 
+1. Keresse meg a biztonsági szakaszban, és válassza a "+ hitelesítés" gombra a biztonsági szakasz fölött.
+2. A hitelesítés hozzáadása területen válassza a "hitelesítési típus" - "Csak olvasható ügyfél" vagy "Rendszergazdai ügyfél"
+3. Most válassza ki a hitelesítési módszert. Ez azt jelzi, hogy a Service Fabric-e azt keresi ezt a tanúsítványt a tulajdonos neve vagy az ujjlenyomat használatával. Általában nincs tulajdonos neve, a hitelesítési módszer használata ajánlott biztonsági eljárás. 
 
-![Ügyfél-tanúsítvány hozzáadása][Add_Client_Cert]
+![Ügyféltanúsítvány hozzáadása][Add_Client_Cert]
 
-### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Ügyféltanúsítványok - rendszergazdai vagy csak olvasható a portál használatával törlése
+### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Az ügyféltanúsítványok - rendszergazda vagy a portál használatával csak olvasható törlését
 
-Távolítsa el a másodlagos tanúsítvány használatát a fürt biztonsági okokból és a biztonsági szakaszban lép, és válassza a "Törlés" lehetőséget az adott tanúsítvány a helyi menüből.
+Másodlagos tanúsítvány eltávolítása a fürt biztonsági, nyissa meg a biztonság szakaszában használja, és válassza a "Törlés" lehetőséget az adott tanúsítvány a helyi menüből.
 
 ## <a name="next-steps"></a>További lépések
-Ezek a cikkek további információt a kiszolgálófürt-felügyelet olvasható:
+Olvassa el az alábbi cikkek kezelő további tájékoztatást:
 
-* [Service Fabric-fürt verziófrissítés folyamatáról és az Ön elvárásainak](service-fabric-cluster-upgrade.md)
-* [Az ügyfelek a szerepköralapú hozzáférés-telepítő](service-fabric-cluster-security-roles.md)
+* [Service Fabric-fürt frissítési folyamat és az Ön elvárásainak](service-fabric-cluster-upgrade.md)
+* [Az ügyfelek szerepköralapú hozzáférés beállítása](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->
-[Delete_Swap_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_09.PNG
 [Add_Client_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_13.PNG
 [Json_Pub_Setting1]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_14.PNG
 [Json_Pub_Setting2]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_15.PNG

@@ -1,6 +1,6 @@
 ---
-title: Kép keresési SDK Python gyors üzembe helyezés |} Microsoft Docs
-description: A telepítő lemezkép keresési SDK konzol alkalmazáshoz.
+title: 'Gyors útmutató: A kérés és a Python SDK-val rendszerképek szűrése'
+description: Ebben a rövid útmutatóban a kérelem, és szűrheti a képeket, a Bing Image Search-be a Python által visszaadott.
 titleSuffix: Azure Image Search SDK Python quickstart
 services: cognitive-services
 author: mikedodaro
@@ -10,33 +10,33 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: e30852439ad8ec2d5ddc667b75167e8b5d35be33
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4729f103bb9b50d4ff039907db8eb677f3dc290a
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349450"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41988617"
 ---
-# <a name="image-search-sdk-python-quickstart"></a>Kép keresési SDK Python gyors üzembe helyezés
+ # <a name="quickstart-request-and-filter-images-using-the-sdk-and-python"></a>Gyors útmutató: A kérés és az SDK-t és a Python használatával rendszerképek szűrése
 
-A Bing kép keresési SDK a REST API webkiszolgáló lekérdezések és elemzési eredmények funkcióit tartalmazza. 
+Kép a Bing Search SDK tartalmazza a REST API, webes lekérdezések és az elemzési eredmények funkcióit. 
 
-A [forráskód Python Bing kép keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image_search_samples.py) érhető el a Git központ.
+A [forráskódját Python Bing kép Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image_search_samples.py) Github érhető el.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-Ha az még nincs, telepítse a Python. Az SDK nem kompatibilis a Python 2.7, 3.3-as, illetve 3.4, 3.5-ös és 3.6.
+Ha ez már nincs, telepítse a Pythont. Az SDK-t, a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziója kompatibilis.
 
-A Python fejlesztési általános javaslat, hogy használja a [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse, és a virtuális környezet inicializálása a [venv modul](https://pypi.python.org/pypi/virtualenv). Python 2.7 virtualenv kell telepítenie.
+A Python fejlesztési általános javaslat, hogy használja a [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse, és a virtuális környezet inicializálása a [venv modul](https://pypi.python.org/pypi/virtualenv). Python 2.7-es virtualenv gépre kell telepítenie.
 ```
 python -m venv mytestenv
 ```
-Bing kép keresési SDK-függőség telepítése:
+A Bing kép Search SDK-függőség telepítése:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-imagesearch
 ```
 ## <a name="image-search-client"></a>Kép keresési ügyfél
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Adja hozzá a importálásokat:
+Get- [Cognitive Services hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Adja hozzá a importálásokat:
 ```
 from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
 from azure.cognitiveservices.search.imagesearch.models import ImageType, ImageAspect, ImageInsightModule
@@ -44,11 +44,11 @@ from msrest.authentication import CognitiveServicesCredentials
 
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Hozzon létre egy példányát a `CognitiveServicesCredentials`, és az ügyfél példányának:
+Hozzon létre egy példányt a `CognitiveServicesCredentials`, és hozza létre az ügyfél:
 ```
 client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Keresési lekérdezés (Yosemite) lemezképek animált GIF és széles aspektus szűri. Ellenőrizze az eredmények számát, és nyomtassa ki insightsToken Miniatűr URL-cím és webes URL-címet az első találatra.
+Keresési lekérdezés (yosemite) támogatása,-rendszerképek animált GIF és számos szempont szűrve. Ellenőrizze az eredmények száma, és nyomtassa ki az insightsToken Miniatűr URL-cím és webes URL-címe első eredményt.
 ```
 image_results = client.images.search(
         query="Yosemite",
@@ -67,7 +67,7 @@ image_results = client.images.search(
         print("Couldn't find image results!")
 
 ```
-Animált GIF és széles aspektus szűri (Yosemite) lemezképek keresni.  Ellenőrizze az eredmények száma.  Kinyomtathatja a `insightsToken`, `thumbnail url` és `web url` az első találatra.
+Animált GIF és számos szempont a szűrt (Yosemite), a lemezképek keresése.  Ellenőrizze az eredmények száma.  Nyomtassa ki `insightsToken`, `thumbnail url` és `web url` az első eredmény.
 ```
 image_results = client.images.search(
     query="Yosemite",
@@ -87,7 +87,7 @@ else:
 
 ```
 
-Trendekkel lekéréséhez:
+Felkapott eredményeinek beolvasása:
 ```
 trending_result = client.images.trending()
 print("\r\nSearch trending images")
@@ -111,6 +111,6 @@ if trending_result.categories:
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 

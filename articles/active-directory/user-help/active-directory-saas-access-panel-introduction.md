@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: a5b96279993c35aad4cc49c52950576f12dd15ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345943"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055534"
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panelen?
 
@@ -79,7 +79,7 @@ A jelszóalapú egyszeri bejelentkezés, a kiterjesztést kell használnia. A b�
 - Az alkalmazás közvetlenül az alkalmazás használatával bejelentkezhet **bejelentkezési URL-**. Az alkalmazás URL-cím használata esetén a bővítményt a műveleteket észlel, és lehetővé teszi a jelentkezik be a bővítményt.
 - A hozzáférési panelen alkalmazások bármelyike használatával is elindíthatja a *Gyorskeresés* a bővítmény szolgáltatása. 
 - A bővítményt, utolsó három azokat az alkalmazásokat tartalmazza, amely akkor jelent **a legutóbb használt** szakaszban.
-- Használhatja a belső vállalati URL-címek, miközben keresztül távoli [alkalmazásproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started)
+- Használhatja a belső vállalati URL-címek, miközben keresztül távoli [alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
 > [!NOTE]
 > További funkciók csak az Edge, Chrome és a Firefox érhetők el.
@@ -97,8 +97,8 @@ Ha nem használ egy saját alkalmazások URL-cím `https://myapps.microsoft.com`
 5. Válassza ki **jelentkezzen be a kezdéshez**.
 
 Távoli a bővítmény használata során, a belső vállalati URL-címek használatára, tegye a következőket:
-1. [Proxy konfigurálása](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) a bérlő.
-2. [Az alkalmazás közzététele](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) és proxyn keresztül történő alkalmazás URL-CÍMÉT.
+1. [Proxy konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) a bérlő.
+2. [Az alkalmazás közzététele](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) és proxyn keresztül történő alkalmazás URL-CÍMÉT.
 3. Telepítse a bővítményt, és jelentkezzen be, válassza a bejelentkezés a kezdéshez.
 4. Most megnyithatja a belső vállalati URL-cím távoli közben is.
 

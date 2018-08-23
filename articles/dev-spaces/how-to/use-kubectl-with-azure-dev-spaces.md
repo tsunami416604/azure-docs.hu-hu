@@ -1,5 +1,5 @@
 ---
-title: Kubectl használata Azure fejlesztői szóközöket |} Microsoft Docs
+title: Kubectl használata az Azure fejlesztési tárolóhelyek |} A Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,21 +11,21 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 3dc0dd4b571f716bcabb67c4cbef1ea6d762eb94
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 978274a6059a327c8596df6776eaa47a27ea4a34
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248658"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055519"
 ---
-# <a name="use-kubectl-with-an-azure-dev-space"></a>Az Azure fejlesztői címtér kubectl használata
+# <a name="use-kubectl-with-an-azure-dev-space"></a>Kubectl használata egy Azure-fejlesztési terület
 
-A Kubernetes fürtön belül az Azure fejlesztői címtér végezheti el, és a meglévő Kubernetes eszközök, például `kubectl`.
+Elérheti a Kubernetes-fürt az Azure Dev-Címtéren belüli és a meglévő eszközök használata a Kubernetes, például `kubectl`.
 
-Futtató `az aks use-dev-spaces` parancs automatikusan felveszi a `kubectl` konfigurációs környezet meg, így kubectl Azure fejlesztői szóközöket Kubernetes fürtjét már kell csatlakoztatni. Példák:
-- Erősítse meg az aktuális környezetben: `kubectl config current-context`
-- Az összes rendelkezésre álló környezetek felsorolása: `kubectl config get-contexts`. 
-- Módosítsa a környezetben: `kubectl config use-context <context-name>`
-- A Kubernetes irányítópult megtekintése: futtassa `kubectl proxy`, majd nyissa meg a böngészőt, hogy a cím, a parancs bocsát ki (hozzáfűzése `/ui` navigáljon a Kubernetes irányítópult URL-címet).
-- A futó szolgáltatások az alapértelmezett Azure fejlesztői szóközöket területen nevű lista *alapértelmezett*: `kubectl get services --namespace=default`
+Futó `az aks use-dev-spaces` parancs automatikusan hozzáad egy `kubectl` konfigurációs környezetben, így ez a kubectl már csatlakoztatható az Azure fejlesztői, szóközök Kubernetes-fürthöz. Példák:
+- Erősítse meg az aktuális környezetet: `kubectl config current-context`
+- Az összes rendelkezésre álló környezetek listája: `kubectl config get-contexts`. 
+- Környezet módosítása: `kubectl config use-context <context-name>`
+- A Kubernetes-irányítópult megtekintése: futtassa `kubectl proxy`, majd nyissa meg a böngészőben a cím, amelyet ez a parancs bocsát ki a (hozzáfűzése `/ui` és a Kubernetes-irányítópult arra az URL-címet).
+- A futó szolgáltatások az alapértelmezett Azure fejlesztési tárolóhelyek térben nevű lista *alapértelmezett*: `kubectl get services --namespace=default`
 

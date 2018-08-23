@@ -1,6 +1,6 @@
 ---
-title: Az adatforrásnézet-tervezőből különböző részeinek az Azure Naplóelemzés egy referencia-útmutató |} Microsoft Docs
-description: Naplóelemzési adatforrásnézet-tervezőből használatával egyéni nézeteket hozhat létre az Azure portálon, amelyeknél a Naplóelemzési munkaterület különböző adatmegjelenítési. Ez a cikk egy referencia-útmutató az egyéni nézetek elérhető képi megjelenítés összetevőkre vonatkozó beállításokat.
+title: A referencia-útmutató az adatforrásnézet-tervezőből részére az Azure Log Analyticsben |} A Microsoft Docs
+description: Nézettervező a Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon adatvizualizációk széles megjelennek a Log Analytics-munkaterületet. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,352 +15,352 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: b560022f1f727949021a599e1ab342551f64c084
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: ac81525c107fcc291a8c3ef0163bf0ef2bbfdc3b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129132"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060189"
 ---
-# <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>A Naplóelemzési adatforrásnézet-tervezőből képi megjelenítés különböző részeinek használati útmutató
-Azure Naplóelemzés adatforrásnézet-tervezőből használatával egyéni nézeteket hozhat létre az Azure portálon, hogy az adatmegjelenítéseket a Naplóelemzési munkaterület különböző. Ez a cikk egy referencia-útmutató az egyéni nézetek elérhető képi megjelenítés összetevőkre vonatkozó beállításokat.
+# <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Nézettervező vizualizációs részére a Log Analytics használati útmutató
+Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
 
-Az adatforrásnézet-tervezőből kapcsolatos további információkért lásd:
+Nézettervező kapcsolatos további információkért lásd:
 
-* [Megtekintheti a tervező](log-analytics-view-designer.md): egy áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozásának és szerkesztésének egyéni nézetek.
-* [Hivatkozás csempe](log-analytics-view-designer-tiles.md): biztosítja a beállítások az egyes elérhető csempe az egyéni nézetekben mutató hivatkozás.
+* [Megtekintheti a tervező](log-analytics-view-designer.md): Nézettervező és eljárások áttekintést nyújt a létrehozásának és szerkesztésének egyéni nézeteket.
+* [Csempe referencia](log-analytics-view-designer-tiles.md): tartalmaz egy hivatkozást az egyéni nézetekben elérhető csempékhez beállításait.
 
 
-Az adatforrásnézet-tervezőből csempe elérhető típusok az alábbi táblázat ismerteti:
+A rendelkezésre álló Nézettervező csempe típusokat az alábbi táblázat ismerteti:
 
-| A nézettípus | Leírás |
+| Nézet típusa | Leírás |
 |:--- |:--- |
-| [A lekérdezések listája](#list-of-queries-part) |A naplófájl-keresési lekérdezések listáját jeleníti meg. Kiválaszthatja, hogy minden egyes lekérdezés az eredmények megtekintése céljából. |
-| [Száma és a lista](#number-and-list-part) |A fejléc megjelenítése egyetlen számát jeleníti meg a napló keresési lekérdezés bejegyzések száma. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
-| [Két szám és listája](#two-numbers-and-list-part) |A fejléc megjelenítése számát is rögzíti a különálló naplófájl-keresési lekérdezések két szám jeleníti meg. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
-| [Fánk és listája](#donut-and-list-part) |A fejléc összegzi a napló lekérdezésben érték oszlop egyetlen számot jeleníti meg. A fánk grafikusan felső három rekord eredményeit jeleníti meg. |
-| [Két ütemtervek és listája](#two-timelines-and-list-part) |A fejléc két naplófájl-lekérdezések eredményének oszlopdiagramok, a kihívás, amely egy számot, amely összefoglalja a napló lekérdezésben érték oszlop jeleníti meg az idővel jeleníti meg. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
-| [Információ](#information-part) |A fejléc statikus szöveget és egy nem kötelező hivatkozást jeleníti meg. A lista megjeleníti elemek legalább egy olyan statikus cím és a szöveg. |
-| [Vonaldiagram, a kihívás, és a listája](#line-chart-callout-and-list-part) |A fejléc egy grafikonon, több adatsorozattal idő és az összesített érték egy kihívás napló lekérdezésből. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
-| [Vonaldiagram és listája](#line-chart-and-list-part) |A fejléc egy grafikonon, több adatsorozattal időbeli napló lekérdezésből. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
-| [Sor diagramok rész verem](#stack-of-line-charts-part) |Megjeleníti a három különálló vonaldiagramok esetében, több sorozat időbeli napló lekérdezésből. |
+| [Lekérdezések listája](#list-of-queries-part) |Naplóbeli keresési lekérdezések listáját jeleníti meg. Kiválaszthatja az egyes lekérdezések eredményeinek megjelenítéséhez. |
+| [Szám és lista](#number-and-list-part) |A fejléc egyetlen szám, amely megjeleníti a naplóbeli keresési lekérdezés rekordjainak számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
+| [Két szám és lista](#two-numbers-and-list-part) |A fejléc két szám azt mutatják be, különálló naplóbeli keresési lekérdezések rekordjainak számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
+| [Fánkdiagram és lista](#donut-and-list-part) |A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték oszlop jeleníti meg. A fánkdiagram grafikusan felső három rekord eredményeit jeleníti meg. |
+| [Két idősor és lista](#two-timelines-and-list-part) |A fejléc két naplófájl lekérdezések eredményeit oszlopdiagramként, a kihívás, amely egyetlen szám, amely összefoglalja a log lekérdezésben érték oszlop megjeleníti az idő függvényében jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
+| [Információ](#information-part) |A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg. A listában egy vagy több elemet egy statikus címet és szöveget jeleníti meg. |
+| [Vonaldiagram, képfelirat és lista](#line-chart-callout-and-list-part) |A fejléc egy vonaldiagram látható, az idő függvényében, és az összesített érték felirat log lekérdezésből több sorozat. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
+| [Vonaldiagram és lista](#line-chart-and-list-part) |A fejléc jeleníti meg a vonaldiagramot, több sorozat idővel log lekérdezésből. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
+| [Sor diagramok rész verem](#stack-of-line-charts-part) |Megjeleníti a három külön vonaldiagramok használata több sorozat idővel log lekérdezésből. |
 
-A következő szakaszok ismertetik a mozaik típusát és azok tulajdonságait részletesen.
+A következő szakaszok ismertetik a csempe típusát és azok tulajdonságait az részletei.
 
 ## <a name="list-of-queries-part"></a>Lekérdezések rész listája
-A lekérdezések rész listáját napló keresési lekérdezések listáját jeleníti meg. Kiválaszthatja, hogy minden egyes lekérdezés az eredmények megtekintése céljából. A nézet alapértelmezés szerint egyetlen lekérdezést tartalmazza, és kijelölhet **+ lekérdezés** további lekérdezések hozzáadni.
+A lista lekérdezések egy részét a naplóbeli keresési lekérdezések listáját jeleníti meg. Kiválaszthatja az egyes lekérdezések eredményeinek megjelenítéséhez. A nézet tartalmazza az alapértelmezés szerint egyetlen lekérdezést, és kiválaszthatja **+ lekérdezés** további lekérdezések hozzáadásához.
 
-![Lekérdezések nézet listája](media/log-analytics-view-designer/view-list-queries.png)
+![Lekérdezések megtekintése listája](media/log-analytics-view-designer/view-list-queries.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
 | Beosztás |A nézet tetején megjelenő szöveg. |
-| Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
-| Előre kijelölt szűrők |Amikor kiválaszt egy lekérdezést a bal oldali keresőablak felvenni tulajdonságok vesszővel tagolt listája. |
-| Megjelenítési mód |A kezdeti nézet jelenik meg, ha a lekérdezés van kiválasztva. Bármely elérhető nézeteket választhatja ki a lekérdezés telepítése után. |
+| Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
+| Előre kijelölt szűrők |A bal oldali szűrőterület felhőtulajdonságok, amikor kiválaszt egy vesszővel tagolt listája. |
+| Megjelenítési mód |A kezdeti nézet jelenik meg, ha a lekérdezés van kiválasztva. Minden elérhető nézetek után, nyissa meg a lekérdezés választhat. |
 | **Lekérdezések** | |
 | Keresési lekérdezés |A lekérdezés futtatásához. |
-| Felhasználóbarát név | A leíró nevet, amely akkor jelenik meg. |
+| Felhasználóbarát név | A megjelenített leíró nevet. |
 
-## <a name="number-and-list-part"></a>Száma és a lista része
-A fejléc megjelenítése egyetlen számát jeleníti meg a napló keresési lekérdezés bejegyzések száma. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi.
+## <a name="number-and-list-part"></a>Szám és lista
+A fejléc egyetlen szám, amely megjeleníti a naplóbeli keresési lekérdezés rekordjainak számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
-![Lekérdezések nézet listája](media/log-analytics-view-designer/view-number-list.png)
+![Lekérdezések megtekintése listája](media/log-analytics-view-designer/view-number-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Csoport cím |A nézet tetején megjelenő szöveg. |
-| Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
-| Ikon |A bináris fájl, amely mellett a fejlécben eredménye megjelenik. |
-| Ikon használata |Kattintson erre a hivatkozásra a ikon megjelenítéséhez. |
+| Csoport címe |A nézet tetején megjelenő szöveg. |
+| Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
+| Ikon |A result fejlécben mellett megjelenik az képfájl. |
+| Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
 | **Cím** | |
 | Jelmagyarázat |A fejléc tetején megjelenő szöveg. |
-| Lekérdezés |A lekérdezés futtatásához be az igazítását. A lekérdezés által visszaadott rekordok száma jelenik meg. |
-| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
+| Lekérdezés |A lekérdezés futtatása a fejléc. A lekérdezés által visszaadott rekordok száma jelenik meg. |
+| Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **List** | |
-| Lekérdezés |A lekérdezés futtatásához a listát. Az eredmények első tíz rekordját első két tulajdonságai jelennek meg. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Sávok automatikusan létrejönnek a numerikus oszlopot relatív értékének alapuló.<br><br>Használja a `Sort` parancsot a a listában szereplő bejegyzések rendezése a lekérdezésben. A lekérdezés futtatásához és az összes rekordot ad vissza, jelölje ki **láthatja az összes**. |
-| Gráf elrejtése |Kattintson erre a hivatkozásra letiltja a diagram jobb oldalán a numerikus oszlopot. |
-| Értékgörbéket engedélyezése |Válassza ki a hivatkozás értékgörbe vízszintes vonal helyett. További információkért lásd: [általános beállítások](#sparklines). |
-| Szín |A klasszikus vagy értékgörbéket színét. |
-| Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **List** |**> Oszlopfejlécek** |
+| Lekérdezés |A lekérdezés futtatása a listát. Az első tíz az eredményekben lévő rekordokra első két tulajdonságai jelennek meg. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Sávok automatikusan jönnek létre, amely a numerikus oszlop relatív érték alapján vannak.<br><br>Használja a `Sort` a lekérdezést, hogy a rekordok rendezése a listán a parancsot. Futtassa a lekérdezést, és minden rekordot ad vissza, kiválaszthatja a **összes**. |
+| Gráf elrejtése |Válassza ki ezt a hivatkozást az letiltja a diagram jobb oldalán a numerikus oszlopára. |
+| Értékgörbék engedélyezése |Válassza ki ezt a hivatkozást az értékgörbe helyett egy vízszintes sáv megjelenítése. További információkért lásd: [közös beállítások](#sparklines). |
+| Szín |A klasszikus vagy Értékgörbék színe. |
+| Név és érték elválasztó |A határolójel elemezni a text tulajdonság be több érték használata. További információkért lásd: [közös beállítások](#sparklines). |
+| Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
-| Küszöbértékek engedélyezése |Kattintson erre a hivatkozásra küszöbértékek engedélyezéséhez. További információkért lásd: [általános beállítások](#thresholds). |
+| Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
-## <a name="two-numbers-and-list-part"></a>Két szám és a lista része
-A fejléc van két szám, amely megjeleníti a különálló naplófájl-keresési lekérdezések a rekordok számát. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi.
+## <a name="two-numbers-and-list-part"></a>Két szám és lista része
+A fejléc van két szám, amely megjeleníti az külön naplóbeli keresési lekérdezések rekordjainak számát. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
-![Két szám & a listanézet](media/log-analytics-view-designer/view-two-numbers-list.png)
+![Két szám és lista megtekintése](media/log-analytics-view-designer/view-two-numbers-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Csoport cím |A nézet tetején megjelenő szöveg. |
-| Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
-| Ikon |A bináris fájl, amely mellett a fejlécben eredménye megjelenik. |
-| Ikon használata |Kattintson erre a hivatkozásra a ikon megjelenítéséhez. |
-| **Cím navigációs** | |
-| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
+| Csoport címe |A nézet tetején megjelenő szöveg. |
+| Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
+| Ikon |A result fejlécben mellett megjelenik az képfájl. |
+| Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
+| **Cím navigáció** | |
+| Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **Cím** | |
 | Jelmagyarázat |A fejléc tetején megjelenő szöveg. |
-| Lekérdezés |A lekérdezés futtatásához be az igazítását. A lekérdezés által visszaadott rekordok száma jelenik meg. |
+| Lekérdezés |A lekérdezés futtatása a fejléc. A lekérdezés által visszaadott rekordok száma jelenik meg. |
 | **List** | |
-| Lekérdezés |A lekérdezés futtatásához a listát. Az eredmények első tíz rekordját első két tulajdonságai jelennek meg. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Sávok automatikusan numerikus oszlop relatív érték alapján hozzák létre.<br><br>Használja a `Sort` parancsot a a listában szereplő bejegyzések rendezése a lekérdezésben. A lekérdezés futtatásához és az összes rekordot ad vissza, jelölje ki **láthatja az összes**. |
-| Gráf elrejtése |Kattintson erre a hivatkozásra letiltja a diagram jobb oldalán a numerikus oszlopot. |
-| Értékgörbéket engedélyezése |Válassza ki a hivatkozás értékgörbe vízszintes vonal helyett. További információkért lásd: [általános beállítások](#sparklines). |
-| Szín |A klasszikus vagy értékgörbéket színét. |
-| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
-| Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **List** |**> Oszlopfejlécek** |
+| Lekérdezés |A lekérdezés futtatása a listát. Az első tíz az eredményekben lévő rekordokra első két tulajdonságai jelennek meg. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Sávok automatikusan a numerikus oszlop relatív értéke alapján hozzák létre.<br><br>Használja a `Sort` a lekérdezést, hogy a rekordok rendezése a listán a parancsot. Futtassa a lekérdezést, és minden rekordot ad vissza, kiválaszthatja a **összes**. |
+| Gráf elrejtése |Válassza ki ezt a hivatkozást az letiltja a diagram jobb oldalán a numerikus oszlopára. |
+| Értékgörbék engedélyezése |Válassza ki ezt a hivatkozást az értékgörbe helyett egy vízszintes sáv megjelenítése. További információkért lásd: [közös beállítások](#sparklines). |
+| Szín |A klasszikus vagy Értékgörbék színe. |
+| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [közös beállítások](#sparklines). |
+| Név és érték elválasztó |A határolójel elemezni a text tulajdonság be több érték használata. További információkért lásd: [közös beállítások](#sparklines). |
+| Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
-| Küszöbértékek engedélyezése |Kattintson erre a hivatkozásra küszöbértékek engedélyezéséhez. További információkért lásd: [általános beállítások](#thresholds). |
+| Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
-## <a name="donut-and-list-part"></a>Fánk és lista része
-A fejléc összegzi a napló lekérdezésben érték oszlop egyetlen számot jeleníti meg. A fánk grafikusan felső három rekord eredményeit jeleníti meg.
+## <a name="donut-and-list-part"></a>Fánkdiagram és lista
+A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték oszlop jeleníti meg. A fánkdiagram grafikusan felső három rekord eredményeit jeleníti meg.
 
-![Fánk és lista megtekintése](media/log-analytics-view-designer/view-donut-list.png)
+![Fánkdiagram és lista megtekintése](media/log-analytics-view-designer/view-donut-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Csoport cím |A csempe tetején megjelenő szöveg. |
-| Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
-| Ikon |A bináris fájl, amely mellett a fejlécben eredménye megjelenik. |
-| Ikon használata |Kattintson erre a hivatkozásra a ikon megjelenítéséhez. |
+| Csoport címe |A csempe tetején megjelenő szöveg. |
+| Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
+| Ikon |A result fejlécben mellett megjelenik az képfájl. |
+| Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
 | **Fejléc** | |
 | Beosztás |A fejléc tetején megjelenő szöveg. |
-| Alcím |A fejléc tetején címe alatt megjelenő szöveg. |
-| **Fánk** | |
-| Lekérdezés |A lekérdezés a fánk fussanak. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. |
-| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **Fánk** |**> Center** |
-| Szöveg |A szöveg, amely alatt a fánk értéket jelenik meg. |
-| Művelet |A value tulajdonság egy értékként legyen megadva összefoglalásképpen végre a műveletet.<ul><li>Sum: Hozzáadja az értékeket az összes rekord.</li><li>Százalékos: Levő értékek alapján visszaadott rekordok aránya **center művelet során használt értékek eredménye** a teljes rekordok a lekérdezésben.</li></ul> |
-| A fánkdiagram közepén megjelenített eredményértékek |Ha kijelöl egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonságértéket korlátozódnak. Ha nincs érték ad hozzá, a lekérdezés szereplő összes rekordok. |
+| Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
+| **fánkdiagram** | |
+| Lekérdezés |A lekérdezés futtatása a fánkdiagram. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. |
+| Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **fánkdiagram** |**> Center** |
+| Szöveg |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
+| Művelet |A value tulajdonság együtt, egyetlen értékként kell elvégezni a műveletet.<ul><li>Összeg: Hozzáadja az összes rekord értékeit.</li><li>Százalékban: A szereplő értékek által visszaadott rekordok arány **center művelet során használt értékek eredmény** a teljes rekordot a lekérdezésben.</li></ul> |
+| A fánkdiagram közepén megjelenített eredményértékek |Kiválaszthat egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonság értékek korlátozódnak. Nincsenek értékek vesznek fel, ha a lekérdezés szereplő összes rekordok. |
 | **További beállítások** |**> Színek** |
-| Szín 1<br>Szín 2<br>Szín 3 |Az egyes fánk a megjelenített érték színének kiválasztása. |
-| **További beállítások** |**> Speciális szín leképezése** |
-| Mezőérték |Írja be azt egy másik színt formátumban jeleníti meg, ha a fánk megtalálható mező. |
-| Szín |Jelölje ki az egyedi mező színét. |
+| 1 színe<br>2. szín<br>Szín 3 |Válassza ki a színt a fánkdiagramon megjelenő értékeit. |
+| **További beállítások** |**> Speciális színleképezés** |
+| A mező értéke |Írja be a egy mezőt egy-egy formátumban jeleníti meg, ha a fánk szerepeljen. |
+| Szín |Válassza ki a színt, az egyedi mező. |
 | **List** | |
-| Lekérdezés |A lekérdezés futtatásához a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
-| Gráf elrejtése |Kattintson erre a hivatkozásra letiltja a diagram jobb oldalán a numerikus oszlopot. |
-| Értékgörbéket engedélyezése |Válassza ki a hivatkozás értékgörbe vízszintes vonal helyett. További információkért lásd: [általános beállítások](#sparklines). |
-| Szín |A klasszikus vagy értékgörbéket színét. |
-| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
-| Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **List** |**> Oszlopfejlécek** |
+| Lekérdezés |A lekérdezés futtatása a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
+| Gráf elrejtése |Válassza ki ezt a hivatkozást az letiltja a diagram jobb oldalán a numerikus oszlopára. |
+| Értékgörbék engedélyezése |Válassza ki ezt a hivatkozást az értékgörbe helyett egy vízszintes sáv megjelenítése. További információkért lásd: [közös beállítások](#sparklines). |
+| Szín |A klasszikus vagy Értékgörbék színe. |
+| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [közös beállítások](#sparklines). |
+| Név és érték elválasztó |A határolójel elemezni a text tulajdonság be több érték használata. További információkért lásd: [közös beállítások](#sparklines). |
+| Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
-| Küszöbértékek engedélyezése |Kattintson erre a hivatkozásra küszöbértékek engedélyezéséhez. További információkért lásd: [általános beállítások](#thresholds). |
+| Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
-## <a name="two-timelines-and-list-part"></a>Két ütemtervek és lista része
-A fejléc két naplófájl-lekérdezések eredményének oszlopdiagramok, a kihívás, amely egy számot, amely összefoglalja a napló lekérdezésben érték oszlop jeleníti meg az idővel jeleníti meg. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi.
+## <a name="two-timelines-and-list-part"></a>Két idősor és lista része
+A fejléc két naplófájl lekérdezések eredményeit oszlopdiagramként, a kihívás, amely egyetlen szám, amely összefoglalja a log lekérdezésben érték oszlop megjeleníti az idő függvényében jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
-![Két ütemtervek és lista megtekintése](media/log-analytics-view-designer/view-two-timelines-list.png)
+![Két idősor és lista megtekintése](media/log-analytics-view-designer/view-two-timelines-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Csoport cím |A csempe tetején megjelenő szöveg. |
-| Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
-| Ikon |A bináris fájl, amely mellett a fejlécben eredménye megjelenik. |
-| Ikon használata |Kattintson erre a hivatkozásra a ikon megjelenítéséhez. |
-| **Cím navigációs** | |
-| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **Először diagram<br>második diagram** | |
-| Jelmagyarázat |A szöveg, a kihívás az első adatsorozathoz jelenik meg. |
-| Szín |Az adatsorozatban szereplő oszlopok használandó szín. |
-| Lekérdezés |A lekérdezés futtatásához az első adatsorozathoz. A bejegyzések száma az egyes időtartam alatt a diagram oszlopokat jelképezi. |
-| Művelet |A value tulajdonság, hogy összesítse a egy értékként legyen megadva a kihívás az elvégzendő műveletet.<ul><li>Sum: Minden rekordokban levő értékek összegét.</li><li>Átlagos: Minden rekordokban levő értékek átlaga.</li><li>Legutóbbi minta: az utolsó időköze, amely megtalálható a diagram az értéket.</li><li>Először a mintavételhez: az értéket az első intervallum, amely megtalálható a diagramon.</li><li>Számláló: A lekérdezés által visszaadott összes rekord száma.</li></ul> |
+| Csoport címe |A csempe tetején megjelenő szöveg. |
+| Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
+| Ikon |A result fejlécben mellett megjelenik az képfájl. |
+| Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
+| **Cím navigáció** | |
+| Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **Első diagram<br>második diagram** | |
+| Jelmagyarázat |A kihívás az első adatsor alatt megjelenő szöveg. |
+| Szín |Az a sorozat az oszlopok használandó színt. |
+| Lekérdezés |A lekérdezés futtatása az első adatsorozathoz. Minden egyes idő alatt rekordok számát a tábla oszlopainak képviseli. |
+| Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Összeg: Az összes rekord értékek összegét.</li><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Utolsó minta: az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Először minta: az első időközt, amely megtalálható a diagramon az értékét.</li><li>Száma: Minden, a lekérdezés által visszaadott rekordok számát.</li></ul> |
 | **List** | |
-| Lekérdezés |A lekérdezés futtatásához a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
-| Gráf elrejtése |Kattintson erre a hivatkozásra letiltja a diagram jobb oldalán a numerikus oszlopot. |
-| Értékgörbéket engedélyezése |Válassza ki a hivatkozás értékgörbe vízszintes vonal helyett. További információkért lásd: [általános beállítások](#sparklines). |
-| Szín |A klasszikus vagy értékgörbéket színét. |
-| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
-| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **List** |**> Oszlopfejlécek** |
+| Lekérdezés |A lekérdezés futtatása a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
+| Gráf elrejtése |Válassza ki ezt a hivatkozást az letiltja a diagram jobb oldalán a numerikus oszlopára. |
+| Értékgörbék engedélyezése |Válassza ki ezt a hivatkozást az értékgörbe helyett egy vízszintes sáv megjelenítése. További információkért lásd: [közös beállítások](#sparklines). |
+| Szín |A klasszikus vagy Értékgörbék színe. |
+| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [közös beállítások](#sparklines). |
+| Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
-| Küszöbértékek engedélyezése |Kattintson erre a hivatkozásra küszöbértékek engedélyezéséhez. További információkért lásd: [általános beállítások](#thresholds). |
+| Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
-## <a name="information-part"></a>Információkat
-A fejléc statikus szöveget és egy nem kötelező hivatkozást jeleníti meg. A lista megjeleníti elemek legalább egy olyan statikus cím és a szöveg.
+## <a name="information-part"></a>Információs rész
+A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg. A listában egy vagy több elemet egy statikus címet és szöveget jeleníti meg.
 
 ![Információk megtekintése](media/log-analytics-view-designer/view-information.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Csoport cím |A csempe tetején megjelenő szöveg. |
-| Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
-| Szín |A fejléc háttérszínét. |
+| Csoport címe |A csempe tetején megjelenő szöveg. |
+| Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
+| Szín |A fejléc háttérszíne. |
 | **Fejléc** | |
-| Kép |A képfájl a fejlécben megjelenő. |
-| Címke |A fejlécben megjelenő szöveget. |
+| Kép |A fejléc megjelenik a képfájl. |
+| Címke |A fejlécében megjelenő szöveg. |
 | **Fejléc** |**> Link** |
-| Címke |A hivatkozást a vágólapra. |
+| Címke |A hivatkozás szövege. |
 | URL-cím |A hivatkozás URL-címét. |
-| **Elemek** | |
-| Beosztás |A cím az egyes elemek megjelenített szöveg. |
-| Tartalom |Az egyes elemekhez tartozó megjelenített szöveg. |
+| **Információs elemek** | |
+| Beosztás |A cím az egyes elemek megjelenő szöveg. |
+| Tartalom |Az egyes elemekhez megjelenített szöveg. |
 
-## <a name="line-chart-callout-and-list-part"></a>Vonaldiagram, a kihívás, és a lista részére
-A fejléc egy grafikonon napló lekérdezésből több adatsorozattal időt és az összesített érték egy kihívás keresztül. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi.
+## <a name="line-chart-callout-and-list-part"></a>Vonaldiagram, képfelirat és lista része
+A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és a egy kihívás az összesített értéket jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
-![Vonaldiagram, a kihívás, és a listanézet](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Vonaldiagram, képfelirat és lista megtekintése](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Csoport cím |A csempe tetején megjelenő szöveg. |
-| Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
-| Ikon |A bináris fájl, amely mellett a fejlécben eredménye megjelenik. |
-| Ikon használata |Kattintson erre a hivatkozásra a ikon megjelenítéséhez. |
+| Csoport címe |A csempe tetején megjelenő szöveg. |
+| Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
+| Ikon |A result fejlécben mellett megjelenik az képfájl. |
+| Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
 | **Fejléc** | |
 | Beosztás |A fejléc tetején megjelenő szöveg. |
-| Alcím |A fejléc tetején címe alatt megjelenő szöveg. |
+| Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **Vonaldiagram** | |
-| Lekérdezés |A lekérdezés a vonaldiagram fussanak. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Ez a lekérdezés szokásos használja a *mérték* , hogy összesítse a eredmények kulcsszó. Ha a lekérdezés használ a *időköz* kulcsszóval, a diagram x tengelyéhez használja az adott időszakban. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszót, az x tengely használ óránként történik. |
-| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **Vonaldiagram** |**> Kihívás** |
-| Kihívás cím |A képfelirat érték felett megjelenő szöveg. |
-| Adatsorozat neve |A képfelirat érték használandó adatsorozat tulajdonság értéke. Adatsorozatok valósul meg, ha a lekérdezés összes rekordot szolgálnak. |
-| Művelet |A value tulajdonság, hogy összesítse a egy értékként legyen megadva a kihívás az elvégzendő műveletet.<ul><li>Átlagos: Minden rekordokban levő értékek átlaga.</li><li>Számláló: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: az utolsó időköze, amely megtalálható a diagram az értéket.</li><li>Maximális: A maximális értéket a diagramban szereplő időszakok.</li><li>Minimális: A minimális értéke az a diagramban szereplő időszakok.</li><li>Sum: Minden rekordokban levő értékek összegét.</li></ul> |
+| Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
+| Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **Vonaldiagram** |**> Képfelirat** |
+| Képfelirat címe |A képfelirat értéke felett megjelenő szöveg. |
+| Adatsorozat neve |A képfelirat értékéhez használandó adatsor tulajdonság értéke. Ha nincsenek adatsorozatok áll rendelkezésre, a lekérdezés összes rekordját használja. |
+| Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: Minden, a lekérdezés által visszaadott rekordok számát.</li><li>Utolsó minta: az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Maximális száma: A maximális értékét az intervallumok, a diagram szerepelnek.</li><li>Min.: A minimális érték a a diagramban szereplő időszakok közül.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
 | **Vonaldiagram** |**> Y tengely** |
-| Logaritmikus skála használata |Válassza ki a tengely logaritmikus skála használata ezen a hivatkozáson. |
-| Egység |A lekérdezés által visszaadott értékek a egységeket adjon meg. Az adatok megjelenítési adatfelirat, amelyek jelzik az értéktípusokat és opcionálisan az az értékeket átalakítani. A *egység* típusa határozza meg az egység a kategóriát, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha válasszon ki egy értéket *átalakítása*, számértékek konvertálja a *aktuális egység* típus a *átalakítása* típusa. |
-| Egyéni felirat |A felirat melletti tengely megjelenő szöveg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
+| Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
+| Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
+| Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **List** | |
-| Lekérdezés |A lekérdezés futtatásához a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
-| Gráf elrejtése |Kattintson erre a hivatkozásra letiltja a diagram jobb oldalán a numerikus oszlopot. |
-| Értékgörbéket engedélyezése |Válassza ki a hivatkozás értékgörbe vízszintes vonal helyett. További információkért lásd: [általános beállítások](#sparklines). |
-| Szín |A klasszikus vagy értékgörbéket színét. |
-| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
-| Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **List** |**> Oszlopfejlécek** |
+| Lekérdezés |A lekérdezés futtatása a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
+| Gráf elrejtése |Válassza ki ezt a hivatkozást az letiltja a diagram jobb oldalán a numerikus oszlopára. |
+| Értékgörbék engedélyezése |Válassza ki ezt a hivatkozást az értékgörbe helyett egy vízszintes sáv megjelenítése. További információkért lásd: [közös beállítások](#sparklines). |
+| Szín |A klasszikus vagy Értékgörbék színe. |
+| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [közös beállítások](#sparklines). |
+| Név és érték elválasztó |A határolójel elemezni a text tulajdonság be több érték használata. További információkért lásd: [közös beállítások](#sparklines). |
+| Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
-| Küszöbértékek engedélyezése |Kattintson erre a hivatkozásra küszöbértékek engedélyezéséhez. További információkért lásd: [általános beállítások](#thresholds). |
+| Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
-## <a name="line-chart-and-list-part"></a>Sor diagram és a lista része
-A fejléc egy grafikonon napló lekérdezésből több adatsorozattal adott idő alatt. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi.
+## <a name="line-chart-and-list-part"></a>Diagram és a lista rész sor
+A fejléc log lekérdezésből származó több sorozat vonaldiagramot idővel jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
 ![Sor diagram és a lista megtekintése](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Csoport cím |A csempe tetején megjelenő szöveg. |
-| Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
-| Ikon |A bináris fájl, amely mellett a fejlécben eredménye megjelenik. |
-| Ikon használata |Kattintson erre a hivatkozásra a ikon megjelenítéséhez. |
+| Csoport címe |A csempe tetején megjelenő szöveg. |
+| Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
+| Ikon |A result fejlécben mellett megjelenik az képfájl. |
+| Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
 | **Fejléc** | |
 | Beosztás |A fejléc tetején megjelenő szöveg. |
-| Alcím |A fejléc tetején címe alatt megjelenő szöveg. |
+| Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **Vonaldiagram** | |
-| Lekérdezés |A lekérdezés a vonaldiagram fussanak. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Ez a lekérdezés szokásos használja a *mérték* , hogy összesítse a eredmények kulcsszó. Ha a lekérdezés használ a *időköz* kulcsszóval, a diagram x tengelyéhez használja az adott időszakban. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszót, az x tengely használ óránként történik. |
-| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
+| Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
+| Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **Vonaldiagram** |**> Y tengely** |
-| Logaritmikus skála használata |Válassza ki a tengely logaritmikus skála használata ezen a hivatkozáson. |
-| Egység |A lekérdezés által visszaadott értékek a egységeket adjon meg. Az adatok megjelenítési adatfelirat, amelyek jelzik az értéktípusokat és opcionálisan az az értékeket átalakítani. A *egység* típusa határozza meg az egység a kategóriát, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha válasszon ki egy értéket *átalakítása*, számértékek konvertálja a *aktuális egység* típus a *átalakítása* típusa. |
-| Egyéni felirat |A felirat melletti tengely megjelenő szöveg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
+| Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
+| Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
+| Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **List** | |
-| Lekérdezés |A lekérdezés futtatásához a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
-| Gráf elrejtése |Kattintson erre a hivatkozásra letiltja a diagram jobb oldalán a numerikus oszlopot. |
-| Értékgörbéket engedélyezése |Válassza ki a hivatkozás értékgörbe vízszintes vonal helyett. További információkért lásd: [általános beállítások](#sparklines). |
-| Szín |A klasszikus vagy értékgörbéket színét. |
-| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
-| Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **List** |**> Oszlopfejlécek** |
+| Lekérdezés |A lekérdezés futtatása a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
+| Gráf elrejtése |Válassza ki ezt a hivatkozást az letiltja a diagram jobb oldalán a numerikus oszlopára. |
+| Értékgörbék engedélyezése |Válassza ki ezt a hivatkozást az értékgörbe helyett egy vízszintes sáv megjelenítése. További információkért lásd: [közös beállítások](#sparklines). |
+| Szín |A klasszikus vagy Értékgörbék színe. |
+| Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [közös beállítások](#sparklines). |
+| Név és érték elválasztó |A határolójel elemezni a text tulajdonság be több érték használata. További információkért lásd: [közös beállítások](#sparklines). |
+| Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
-| Küszöbértékek engedélyezése |Kattintson erre a hivatkozásra küszöbértékek engedélyezéséhez. További információkért lásd: [általános beállítások](#thresholds). |
+| Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
 ## <a name="stack-of-line-charts-part"></a>Sor diagramok rész verem
-A vonaldiagram navigációs veremben három különálló vonaldiagramok esetében, több sorozat idővel napló lekérdezésből jeleníti meg, ahogy az itt látható:
+A vonaldiagram-verem három külön vonaldiagramok használata több sorozat idővel log lekérdezésből jeleníti meg, itt látható módon:
 
 ![Vonaldiagram-halom](media/log-analytics-view-designer/view-stack-line-charts.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Csoport cím |A csempe tetején megjelenő szöveg. |
-| Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
-| Ikon |A bináris fájl, amely mellett a fejlécben eredménye megjelenik. |
-| **Diagram – 1<br>2 diagram<br>3 diagram** |**> Header** |
+| Csoport címe |A csempe tetején megjelenő szöveg. |
+| Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
+| Ikon |A result fejlécben mellett megjelenik az képfájl. |
+| **Diagram – 1<br>2 diagram<br>3 mutató részletes diagram** |**> Header** |
 | Beosztás |A diagram tetején megjelenő szöveg. |
-| Alcím |A diagram tetején a cím alatt megjelenő szöveg. |
-| **Diagram – 1<br>2 diagram<br>3 diagram** |**Vonaldiagram** |
-| Lekérdezés |A lekérdezés a vonaldiagram fussanak. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Ez a lekérdezés szokásos használja a *mérték* , hogy összesítse a eredmények kulcsszó. Ha a lekérdezés használ a *időköz* kulcsszóval, a diagram x tengelyéhez használja az adott időszakban. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszót, az x tengely használ óránként történik. |
-| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
-| **A diagram** |**> Y tengely** |
-| Logaritmikus skála használata |Válassza ki a tengely logaritmikus skála használata ezen a hivatkozáson. |
-| Egység |A lekérdezés által visszaadott értékek a egységeket adjon meg. Az adatok megjelenítési adatfelirat, amelyek jelzik az értéktípusokat és opcionálisan az az értékeket átalakítani. A *egység* típusa határozza meg az egység a kategóriát, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha válasszon ki egy értéket *átalakítása*, számértékek konvertálja a *aktuális egység* típus a *átalakítása* típusa. |
-| Egyéni felirat |A felirat melletti tengely megjelenő szöveg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
+| Alcím |A szöveg, amely a diagram tetején a cím alatt jelenik meg. |
+| **Diagram – 1<br>2 diagram<br>3 mutató részletes diagram** |**Vonaldiagram** |
+| Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
+| Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
+| **Diagram** |**> Y tengely** |
+| Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
+| Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
+| Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 
 ## <a name="common-settings"></a>Általános beállítások
-A következő szakaszok ismertetik a képi megjelenítés több részből vonatkozó beállításokat.
+A következő szakaszok ismertetik a beállításokat, amelyek közös több Vizualizáció részére.
 
-### <a name="name-value-separator"></a>Név-érték elválasztó
-A név-érték elválasztó a határolójel a lista lekérdezésből text tulajdonságához értelmezhető több értéket is. Elválasztó megadása esetén megadhatja az egyes mezők, szóközzel elválasztva a azonos elválasztó, a neveket a **neve** mezőbe.
+### <a name="name-value-separator"></a>Név és érték elválasztó
+A név és érték elválasztó a határolójel használatával a text tulajdonság listalekérdezés értelmezhető több érték. Ha megad egy elválasztó karaktert, megadhatja az azonos elválasztója elválasztott mezők nevei a **neve** mezőbe.
 
-Vegyük példaként a tulajdonságot, *hely* például része, amely értékek *Redmond-összeállító 41* és *Bellevue-összeállító 12*. A név-érték elválasztó kötőjellel (-) is megadhat, és *város-összeállító* nevét. Ezt a módszert használja az egyes értékek elemez nevű két tulajdonság be *Város* és *épület*.
+Vegyük példaként a tulajdonságot, *hely* például tartalmazza, amely értékek *Redmond-összeállító 41* és *Bellevue-összeállító 12*. Név és érték elválasztó is megadhat egy kötőjelet (-) és *város-összeállító* neve. Ez a megközelítés elemzi az egyes értékek be két tulajdonság nevű *Város* és *épület*.
 
-### <a name="click-through-navigation"></a>Kattintson a navigációs
-Kattintson a navigációs határozza meg, mit kell tenni, a fejléc vagy listaelem nézetben gombjára kattintva.  Megnyílik a lekérdezés vagy a [naplófájl-keresési portál](log-analytics-log-search-portals.md#log-search) vagy egy másik nézetre indítsa el.
+### <a name="click-through-navigation"></a>Átkattintásos navigáció
+Átkattintásos navigáció határozza meg, milyen műveletet nem hajt egy fejléc vagy a lista elemére kattintva.  Vagy megnyílik a lekérdezés a [Naplókeresési portál](log-analytics-log-search-portals.md) vagy egy másik nézet indítása.
 
-Az alábbi táblázat bemutatja a kattintások navigációs beállításait.
+Az alábbi táblázat az átkattintásos navigáció vonatkozó beállításait ismerteti.
 
 | Beállítás           | Leírás |
 |:--|:--|
-| Naplókeresés (automatikus) | Amikor kiválaszt egy Fejlécelem futtatásához keresési napló.  Ez az elem alapuló ugyanazon napló keresés.
-| Naplók keresése        | Napló keresési fut, amikor kiválaszt egy elemet a listában.  Írja be a lekérdezést a **navigációs lekérdezés** mezőbe.   Használjon *{kijelölt elem}* a cikk a felhasználó által kiválasztott szintaxisát tartalmazza.  Például, ha a lekérdezés tartalmaz egy nevű oszlopot *számítógép* , és a navigációs lekérdezés *{kijelölt elem}*, többek között a lekérdezés *számítógép = "Sajátgép"* fut, amikor kiválaszt egy számítógép. Ha a navigációs lekérdezés *típus = {kijelölt elem} esemény*, a lekérdezés *típus = esemény számítógép = "Sajátgép"* futtatása. |
-| Nézet              | Nézet megnyitásához, amikor kiválaszt egy Fejlécelem vagy elem listáját.  Válassza ki a nézet nevét a munkaterületén a **nézetnév** mezőbe. |
+| Naplókeresés (automatikus) | Naplókeresés futtatásához, amikor kiválaszt egy fejléc elemet.  Ez az azonos naplóbeli keresés a cikk alapján.
+| Naplók keresése        | Naplóbeli keresés futtatását, amikor kiválaszt egy elemet a listában.  Írja be a lekérdezést a **navigációs lekérdezés** mezőbe.   Használat *{kijelölt elem}* a szintaxist, az a felhasználó által kiválasztott elem tartalmazza.  Például, ha a lekérdezés nevű oszlop *számítógép* és a navigációs lekérdezés *{kijelölt elem}*, mint például a lekérdezés *számítógép = "Sajátgép"* fut, amikor kiválaszt egy számítógép. Ha a navigációs lekérdezés *típus = {kijelölt elem} esemény*, a lekérdezés *típusa = esemény számítógép = "Sajátgép"* futtatása. |
+| Nézet              | Nyissa meg a listában egy fejléc elemet vagy egy elem kijelölésekor nézetet.  Válassza ki a nézet nevét a munkaterület a **nézetnév** mezőbe. |
 
 
 
-### <a name="sparklines"></a>Értékgörbéket
-Értékgörbe kis vonaldiagramról, amely bemutatja a lista bejegyzés adott idő alatt. A képi megjelenítés részei a listájával kiválaszthatja, amely megadja, hogy a relatív értéket egy numerikus oszlopot, vagy egy értékgörbe, amely megadja, hogy annak értéke időbeli vízszintes vonal megjelenjen-e.
+### <a name="sparklines"></a>Értékgörbék
+Értékgörbe egy kis vonaldiagramot, amely bemutatja egy regisztrációslista-bejegyzés értéke idővel. Vizualizációs rész listájával választhat, amely azt jelzi, hogy egy numerikus oszlopot, vagy egy értékgörbe, amely azt jelzi, hogy az értékét, idővel relatív értékét vízszintes vonal megjelenjen-e.
 
-Az alábbi táblázat bemutatja a értékgörbéket beállításait:
+Az alábbi táblázat az Értékgörbék vonatkozó beállításait ismerteti:
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Értékgörbék engedélyezése |Válassza ki a hivatkozás értékgörbe vízszintes vonal helyett. |
-| Művelet |Ha értékgörbéket engedélyezve vannak, akkor minden egyes tulajdonsága az értékgörbe az értékek listában végre a műveletet.<ul><li>Legutóbbi minta: az utolsó olyan értéket az időtartam alatt az adatsorozathoz.</li><li>Maximális: Alatt az időtartam alatt a sorozat maximális értéke.</li><li>Minimum: Az adatsorozat alatt az időtartam minimális értéke.</li><li>Sum: Alatt az időtartam alatt a adatsor összege.</li><li>Összefoglalás: Használja ugyanazt `measure` parancsot a lekérdezés a fejlécben.</li></ul> |
+| Értékgörbék engedélyezése |Válassza ki ezt a hivatkozást az értékgörbe helyett egy vízszintes sáv megjelenítése. |
+| Művelet |Ha Értékgörbék engedélyezve vannak, akkor az értékgörbe értékeinek kiszámítása a listában lévő minden egyes tulajdonság elvégezni a műveletet.<ul><li>Utolsó minta: az idő alatt a sorozat utolsó értékét.</li><li>Maximális száma: A maximális érték az idő alatt az adatsorozathoz.</li><li>Min.: A minimális érték az idő alatt az adatsorozathoz.</li><li>Összeg: Az idő alatt az adatsorozathoz értékeinek összegét.</li><li>Összefoglalás: Ugyanazokkal a `measure` parancsot, mivel a lekérdezés a fejlécben.</li></ul> |
 
 ### <a name="thresholds"></a>Küszöbértékek
-Küszöbértékek használatával jelenítheti meg egy színes ikon minden elem mellett a listán. Küszöbértékek adjon egy rövid visual jelzi, hogy lehet egy adott értéket, vagy egy adott tartományba esnek elemek. Például elemek egy elfogadható érték, a sárga, ha az érték, amely figyelmeztet, egy tartományon belül, és a piros zöld ikonnal megjelenítése, ha az érték meghaladja a hibaérték.
+Küszöbértékek használatával megjelenítheti, hogy egy színes ikon mellett az egyes elemek listáját. Küszöbértékek teszik lehetővé, amely meghaladja az egy adott érték vagy egy adott tartományon belüli elemek gyors láthatja. Például egy elfogadható érték, a sárga, ha az érték, amely figyelmeztet, egy tartományon belül, és a piros elemek zöld ikonnal megjelenítése, ha ez meghaladja a hibát.
 
-Ha engedélyezi a küszöbértékeket egy részére, meg kell adnia egy vagy több küszöbértékeket. Ha egy elem értéke nagyobb, mint a küszöbérték és alacsonyabb, mint a következő küszöbértéket, az adott érték színének szolgál. Ha az elem nagyobb, mint a legmagasabb küszöbértéket, egy másik színt használja. 
+Ha engedélyezi a küszöbértékeket egy részére, meg kell adnia egy vagy több küszöbértékeket. Ha egy elem értéke nagyobb, mint a küszöbérték és alacsonyabb, mint a következő küszöbértéket, az adott érték színének szolgál. Ha az elem nagyobb, mint a legmagasabb küszöbértéket, egy másik színét használja. 
 
-Minden egyes küszöbérték beállítása rendelkezik egy küszöbértéket értékkel rendelkező **alapértelmezett**. Ez egy, a színt, amely állítja be, ha nincs más értékek túllépése. Adja hozzá, vagy távolítsa el a küszöbértékek kiválasztásával a **Hozzáadás** (+) vagy **törlése** (x) gombra.
+Minden egyes küszöbérték beállítása egy küszöbértéket értékkel rendelkezik **alapértelmezett**. Ez az meg van adva, ha nincs más értékek túllépése. Adja hozzá, vagy távolítsa el a küszöbértékek kiválasztásával a **Hozzáadás** (+) vagy **törlése** (x) gombra.
 
-Az alábbi táblázat bemutatja a küszöbértékek beállításait:
+A következő táblázat a küszöbértékek beállításai:
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Küszöbértékek engedélyezése |Kattintson erre a hivatkozásra egy szín ikon megjelenítése a bal oldali minden egyes érték. Ikon azt jelzi, hogy az érték állapotfigyelő megadott küszöbértékek viszonyítva. |
+| Küszöbértékek engedélyezése |Válassza ki ezt a hivatkozást egy szín ikon megjelenítése a bal oldali részén minden érték. Az ikon azt jelzi, hogy az érték egészségügyi viszonyítva megadott küszöbértékeket. |
 | Name (Név) |A küszöbérték neve. |
-| Küszöbérték |Értéke a küszöbérték. Mindegyik listaelemhez állapotfigyelő színét értéke a legmagasabb küszöbérték, amely a cikk érték túl van színét. Ha nincs küszöbértéket, egy alapértelmezett színt használja. |
-| Szín |A színt, amely azt jelzi, a küszöbérték. |
+| Küszöbérték |Az értéke a küszöbérték. Az egyes listaelemek egészségügyi színe a legmagasabb küszöbérték, amely az elem értéke túl van színét értékre van állítva. Ha nincs küszöbértéket, egy alapértelmezett szín használja. |
+| Szín |A szín, amely azt jelzi, hogy a küszöbérték. |
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) támogatja a képi megjelenítés részből áll.
+* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) Vizualizáció részeiben lekérdezések támogatásához.

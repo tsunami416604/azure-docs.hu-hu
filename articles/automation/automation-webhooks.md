@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f8ee8a2a4aae61e2edc275527d80a162c9bb4dc0
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 241fd1f9168ce6bfb8a4dfe97bbb1ef45ddf3f74
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345711"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42058713"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation-runbook kezdve egy webhook
 
@@ -114,17 +114,17 @@ Az ügyfél a következő visszatérési kódok a POST-kérelmet fogad.
 | 404 |Nem található |A kérés nem lett elfogadva a következő okok valamelyike: <ul> <li>A webhook nem található.</li> <li>A runbook nem található.</li> <li>A fiók nem található.</li>  </ul> |
 | 500 |Belső kiszolgálóhiba |Az URL-cím érvénytelen volt, de hiba történt. Küldje el újból a kérelmet. |
 
-Feltételezve, hogy a kérelem sikeres, a webhook válaszát feladat azonosítóját tartalmazza JSON formátumban módon. Egyetlen feladatazonosító tartalmazni fog, de lehetséges jövőbeli fejlesztések lehetővé teszi a JSON-formátumban.
+Feltételezve, hogy a kérelem sikeres, a webhook válaszát feladat Azonosítóját tartalmazza JSON formátumban módon. Egyetlen Feladatazonosító tartalmazni fog, de lehetséges jövőbeli fejlesztések lehetővé teszi a JSON-formátumban.
 
 ```json
 {"JobIds":["<JobId>"]}
 ```
 
-Az ügyfél nem tudja megállapítani, ha a runbook-feladat befejeződik, vagy a webhook befejezési állapotát. Ezt az információt a feladatazonosító használjon egy másik módszerrel, például képes meghatározni [Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) vagy a [Azure Automation API](/rest/api/automation/job).
+Az ügyfél nem tudja megállapítani, ha a runbook-feladat befejeződik, vagy a webhook befejezési állapotát. Ezt az információt a Feladatazonosító használjon egy másik módszerrel, például képes meghatározni [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) vagy a [Azure Automation API](/rest/api/automation/job).
 
 ## <a name="sample-runbook"></a>Minta runbook
 
-Az alábbi példában a runbook elfogadja a webhook-adatokat fogad, és elindítja a virtuális gépek, a kérelem törzsében megadott. Ez a runbook tesztelése alatt az Automation-fiók az **Runbookok**, kattintson a **+ forgatókönyv hozzáadása**. Ha nem ismeri egy runbook létrehozása, [runbook létrehozása](automation-quickstart-create-runbook.md).
+Az alábbi példában a runbook a webhook-adatokat fogad, és elindítja a virtuális gépek, a kérelem törzsében megadott. Ez a runbook tesztelése alatt az Automation-fiók az **Runbookok**, kattintson a **+ forgatókönyv hozzáadása**. Ha nem ismeri egy runbook létrehozása, [runbook létrehozása](automation-quickstart-create-runbook.md).
 
 ```powershell
 param

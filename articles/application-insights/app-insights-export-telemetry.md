@@ -1,6 +1,6 @@
 ---
-title: Az Application Insights telemetria a folyamatos exportálás |} Microsoft Docs
-description: Diagnosztikai és használati adatok exportálása Microsoft Azure-tárhelyre, és töltse le innen.
+title: A folyamatos Exportálás az Application Insights telemetria |} A Microsoft Docs
+description: Diagnosztikai és használati adatok exportálása a Microsoft Azure Storage, és töltse le innen.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,119 +10,118 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 02/23/2017
+ms.topic: conceptual
+ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 942cc355c186b73e0b8802bfbf79ef8b4b39191a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a960ace141d5d71559c39c627f96746a25bf5207
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054732"
 ---
-# <a name="export-telemetry-from-application-insights"></a>Az Application Insights telemetria exportálása
-Szeretné megőrizni a telemetriai adat hosszabb, mint a szokásos megőrzési időszakot? Vagy valamilyen speciális módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portáljáról látható JSON formátumban a Microsoft Azure storage exportálhatja. Ott töltse le az adatok és bármit kódját, írási kell feldolgozni azt.  
+# <a name="export-telemetry-from-application-insights"></a>Application insights telemetria exportálása
+Szeretné megtartani a telemetriát azokhoz szabványos megőrzési idejénél hosszabb? Vagy specializált módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portálon látható a JSON-formátumban a Microsoft Azure storage exportálhatók. Innen letöltheti az adatokat és bármilyen kódot írni kell őket feldolgoznia.  
 
-Használja a folyamatos exportálás járhat egy kell külön fizetni. Ellenőrizze a [fizetési modell](https://azure.microsoft.com/pricing/details/application-insights/).
+A folyamatos exportálás beállítása előtt van néhány más érdemes figyelembe venni:
 
-A folyamatos exportálás beállítása előtt van néhány más-érdemes figyelembe venni:
+* Metrikák vagy Keresés a panel tetején az Exportálás gomb lehetővé teszi a táblákat át, és a egy Excel-táblázatban a diagram.
 
-* A metrikák vagy keresési panel tetején az Exportálás gomb lehetővé teszi a táblák átviteli, és Excel-táblázatba diagramokat.
+* [Analytics](app-insights-analytics.md) egy hatékony lekérdezési nyelvet biztosít a telemetriai adatokat. Exportálhatja eredményeket is.
+* Ha szeretne [feltárhatja az adatait a Power bi-ban](app-insights-export-power-bi.md), azt megteheti a folyamatos exportálás használata nélkül.
+* A [adatelérési REST API](https://dev.applicationinsights.io/) a telemetriai adatok programozott módon hozzáférhet.
+* A telepítő is elérhető [Powershellen keresztül a folyamatos exportálás](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 
-* [Elemzés](app-insights-analytics.md) hatékony lekérdezésnyelvet biztosít a telemetriai adatokat. Exportálhatja eredmények.
-* Ha a keresett [az adatokba a Power BI](app-insights-export-power-bi.md), azt teheti a folyamatos exportálás használata nélkül.
-* A [adatelérési REST API](https://dev.applicationinsights.io/) programozott hozzáférést a telemetriai adatok.
-* Emellett a telepítő [a folyamatos exportálás PowerShell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
+Miután az adatok folyamatos exportálása másolja át a Storage (amennyiben azt is marad mindaddig, amíg Ön, mint), érhető el továbbra is az Application Insightsban a szokásos módon [megőrzési időszak](app-insights-data-retention-privacy.md).
 
-A folyamatos exportálás nem másolta az adatok (Ha azt is marad mindaddig, amíg tetszés) tárhelyre, továbbra is rendelkezésre áll az Application Insightsban a szokásos [megőrzési időszak](app-insights-data-retention-privacy.md).
+## <a name="setup"></a> Hozzon létre egy folyamatos exportálás
+1. Az Application Insights-erőforrást az alkalmazáshoz, nyissa meg a folyamatos exportálást, és válassza **Hozzáadás**:
 
-## <a name="setup"></a> A folyamatos exportálás létrehozása
-1. Az Application Insights-erőforrást az alkalmazáshoz, nyissa meg a folyamatos exportálás, és válassza a **Hozzáadás**:
+    ![Görgessen lefelé, és kattintson a folyamatos exportálás](./media/app-insights-export-telemetry/01-export.png)
 
-    ![Görgessen le, majd kattintson a folyamatos exportálás](./media/app-insights-export-telemetry/01-export.png)
-
-2. Válassza ki az exportálni kívánt adattípusok telemetriai adatok.
+2. Válassza ki az exportálni kívánt adattípusok a telemetriát.
 
 3. Hozzon létre vagy válasszon egy [Azure storage-fiók](../storage/common/storage-introduction.md) hol szeretné tárolni az adatokat.
 
     > [!Warning]
-    > Alapértelmezés szerint a tárolóhely állítja be az Application Insights-erőforrás és ugyanabban a földrajzi régióban. Ha egy másik régióban vannak tárolva, az átviteli további költségekkel járhat.
+    > Alapértelmezés szerint a tárolási hely állítja be az Application Insights-erőforrás és ugyanabban a földrajzi régióban. Ha egy másik régióban tárolja, adatforgalmi díjat számítanak fel.
 
-    ![Kattintson a Hozzáadás gombra, exportálás cél tárfiók, és majd létrehoz egy új vagy egy meglévő tároló kiválasztása](./media/app-insights-export-telemetry/02-add.png)
+    ![Kattintson a Hozzáadás, exportálás cél tárfiók, és ezután létrehoz egy új vagy egy meglévő tároló kiválasztása](./media/app-insights-export-telemetry/02-add.png)
 
-4. Hozzon létre vagy jelöljön ki egy tárolót a tárolóban:
+4. Hozzon létre, vagy kiválaszthatja a tárolót a storage-ban:
 
-    ![Válasszon eseménytípust kattintson](./media/app-insights-export-telemetry/create-container.png)
+    ![Kattintson a Kiválasztás eseménytípusok](./media/app-insights-export-telemetry/create-container.png)
 
-Ha létrehozta az exportálás, fog kezdődik. Miután létrehozta az Exportálás érkező adatok csak kap.
+Ha létrehozta az exportálás, elindítja a történik. Csak kap az Exportálás létrehozása után érkező adatokat.
 
-Körülbelül egy óra alatt jelenik meg adat tárolására előtt várnia lehet.
+Kapcsolatos adatok jelenjenek meg a storage-ban egy órás késés is lehet.
 
 ### <a name="to-edit-continuous-export"></a>A folyamatos exportálás szerkesztése
 
-Ha módosítani szeretné a eseménytípusok később, az Exportálás módosításával:
+Ha meg szeretné változtatni az eseménytípusok később, az Exportálás szerkesztésével:
 
-![Válasszon eseménytípust kattintson](./media/app-insights-export-telemetry/05-edit.png)
+![Kattintson a Kiválasztás eseménytípusok](./media/app-insights-export-telemetry/05-edit.png)
 
 ### <a name="to-stop-continuous-export"></a>A folyamatos Exportálás leállítása
 
-Az Exportálás leállításához kattintson a letiltása. Engedélyezze újra kattint, az Exportálás újraindul az új adatokat. Az Exportálás le lett tiltva, amíg a portálon érkező adatokat nem jelenik meg.
+Az Exportálás leállításához kattintson letiltása. Engedélyezze ismét kattintunk, az Exportálás újraindul az új adatokkal. Az adatokat, amíg az Exportálás le lett tiltva a portálon érkező nem jelenik meg.
 
-Véglegesen állítsa le az exportálást, törölje azt. Így nem törlése az adatok tárolására.
+Az Exportálás véglegesen megszüntetéséhez törölje azt. Így nem, törölje a adatait storage-ból.
 
-### <a name="cant-add-or-change-an-export"></a>Nem adható hozzá, vagy módosítsa az export?
-* Adja hozzá, vagy módosítsa a kivitel, tulajdonos, közreműködő vagy Application Insights közreműködői jogokkal kell. [További tudnivalók a szerepkörök][roles].
+### <a name="cant-add-or-change-an-export"></a>Nem adhat hozzá, és módosítsa az export?
+* Adja hozzá, vagy módosítsa az export, tulajdonos, közreműködő vagy Application Insights-közreműködői jogokkal kell. [További információ a szerepkörökről][roles].
 
-## <a name="analyze"></a> Milyen eseményeket kapott?
-Az exportált adatok a nyers telemetriaadatok az alkalmazásból érkező, azzal a különbséggel, hogy az ügyfél IP-címről érkező helyadatok, amelyek Microsoft jelenleg felvenni.
+## <a name="analyze"></a> Milyen eseményeket be?
+Az exportált adatok a az alkalmazásból érkező nyers telemetriát, azzal a különbséggel, hogy a helyadatok, amelyek kiszámítása adjuk hozzá az ügyfél IP-címről.
 
-Adatok, amelyek szerint el lett vetve [mintavételi](app-insights-sampling.md) nem szerepel az exportált adatokat.
+Adatok, amelyek szerint el lett vetve [mintavételi](app-insights-sampling.md) nem szerepel az exportált adatok.
 
-Más számított metrikák nem érhetők el. Például nem exportálása átlagos processzorkihasználtság, de a nyers telemetriaadatok, amelyből az átlagos számított exportálása.
+Egyéb számított metrika nem szerepelnek. Például nem nem exportálni átlagos CPU-kihasználtság, de nem exportálni a nyers telemetriát, amelyről átlagát számítja ki.
 
-Az adatokat is tartalmaz, az eredmények közül [webteszt rendelkezésre állási](app-insights-monitor-web-app-availability.md) , amely meg van adva.
+Az adatokat is tartalmaz az eredmények bármely [rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md) , amely meg van adva.
 
 > [!NOTE]
-> **Mintavételi.** Az alkalmazás nagy mennyiségű adatot küld, ha a mintavételi szolgáltatás működik, és csak töredéke alatt a generált telemetriai adatot küldeni. [További tudnivalók a mintavételezésről.](app-insights-sampling.md)
+> **Mintavétel.** Ha az alkalmazás nagy mennyiségű adatot küld, a mintavételezés funkció működjön, és csak töredéke alatt létrehozott telemetriát küldjön. [További tudnivalók a mintavételezésről.](app-insights-sampling.md)
 >
 >
 
-## <a name="get"></a> Vizsgálja meg az adatok
-A tárolási közvetlenül a portálon vizsgálhatja meg. Kattintson a **Tallózás**, válassza ki a tárfiók, és nyisson **tárolók**.
+## <a name="get"></a> Az adatok vizsgálata
+A storage közvetlenül a portálon ellenőrizheti. Kattintson a **Tallózás**, válassza ki a tárfiókját, és nyissa meg **tárolók**.
 
-Vizsgálja meg az Azure storage a Visual Studio, nyissa meg a **nézet**, **Cloud Explorer**. (Ha még nem rendelkezik az adott parancs, szeretné-e az Azure SDK telepítése: Nyissa meg a **új projekt** párbeszédpanelen bontsa ki a Visual C# / felhőalapú, és válassza **Microsoft Azure SDK for .NET**.)
+Vizsgálja meg az Azure storage a Visual Studióban, nyissa meg a **nézet**, **Cloud Explorer**. (Ha a parancs nem rendelkezik, az Azure SDK-t telepítenie kell: Nyissa meg a **új projekt** párbeszédpanelen bontsa ki a Visual C# / Cloud, és válassza a **a Microsoft Azure SDK for .NET**.)
 
-A blob-tároló megnyitásakor látni fogja a blob-fájlokat a tárolóban. Az egyes fájlok származtatva a Application Insights-erőforrás nevét, a instrumentation kulcs, a telemetria-típus vagy dátum/idő URI. (Az erőforrás neve kisbetű szerepelhet, és a instrumentation kulcs kihagyja a kötőjel.)
+A blobtár megnyitásakor látni fogja a blob-fájlokat tároló. Az URI-t az egyes fájlok származik, az Application Insights-erőforrás neve, a kialakítási kulcsot, a telemetria-típus és dátum/idő. (Az erőforrás neve kisbetűkkel, és kihagyja a kialakítási kulcsot a kötőjelek szerepelhetnek.)
 
-![Vizsgálja meg a megfelelő eszköz blob tárolóba](./media/app-insights-export-telemetry/04-data.png)
+![Vizsgálja meg a blob-tároló megfelelő eszközzel](./media/app-insights-export-telemetry/04-data.png)
 
-A dátum és idő UTC és amikor a telemetria - tárolójában lett letétbe nem hozta létre idejét. Így ha az adatok letöltése kódot ír, áthelyezheti azt lineárisan keresztül az adatok.
+A dátum és idő (UTC) és amikor a telemetria - tárolójában volt letétbe nem hozta létre idejét. Ezért ír kódot, hogy az adatok letöltése, ha azt is lineárisan haladjon át az adatokat.
 
-Az elérési utat a következő:
+A következő formájában az elérési út:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
-Ahol (a(z)
+Ahol
 
-* `blobCreationTimeUtc` van a belső blob létrehozásának időpontja átmeneti tárolási
-* `blobDeliveryTimeUtc` az az idő, amikor blob lett másolva a exportálási cél
+* `blobCreationTimeUtc` a blob a belső létrehozásának ideje átmeneti tárolási
+* `blobDeliveryTimeUtc` az az idő, amikor blob lett másolva a Exportálás célhelye
 
-## <a name="format"></a> Az adatformátum
-* Minden egyes blob egy szövegfájlt, amely több tartalmazza az "\n'-separated sorokat. A telemetriai adatok feldolgozása körülbelül fél perc időszakra tartalmaz.
-* Minden egyes sorára például egy kérelem vagy a lap nézet telemetriai adatpont jelöli.
-* Minden egyes sorára nem formázott JSON-dokumentumhoz. Elhelyezkedik, és azt a stare, nyissa meg a Visual Studio és válassza a Szerkesztés, speciális formátumú fájlba:
+## <a name="format"></a> Adatformátum
+* Minden egyes blob egy több tartalmazó szövegfájlt "\n'-separated sorok. A telemetriai adatok feldolgozása körülbelül felét egy perces időszakra tartalmazza.
+* Minden sor egy kérelem vagy oldalmegtekintés nézet például telemetriai adatok pontot jelöli.
+* Minden egyes sor egy nem formázott JSON-dokumentumot. Ha található, és látta stare, nyissa meg a Visual Studio, és válassza a Szerkesztés, speciális, formátumfájl:
 
 ![A megfelelő eszköz telemetriai adatok megtekintése](./media/app-insights-export-telemetry/06-json.png)
 
-Idő időtartamok vannak ütés, ahol a 10 000-re ölések = 1 ms. Például ezek az értékek megjelenítése a idő 1 ms kérést küldeni a böngészőből, 3 ms és 1.8 s feldolgozni a böngészőben:
+Idő időtartamok vannak órajel során végbemenő, ha 10 000-re ölések = 1 ms. Például jeleníti meg ezeket az értékeket az időszak 1 ms-kérést küldhet a böngészőből, 3 ms és az 1.8-as s feldolgozni a lap a böngészőben:
 
     "sendRequest": {"value": 10000.0},
     "receiveRequest": {"value": 30000.0},
     "clientProcess": {"value": 17970000.0}
 
-[A részletes adatok modell útmutató a tulajdonság típusát és értékét.](app-insights-export-data-model.md)
+[Részletes adatmodell-referencia a tulajdonság típusát és értékét.](app-insights-export-data-model.md)
 
 ## <a name="processing-the-data"></a>Az adatok feldolgozása
-Egy kis méretű írhat néhány kódot egymástól az adatok lekérésére, olvassa el, egy számolótáblába, és így tovább. Példa:
+Egy kis léptékű a írhat némi kódot vannak az adatok beolvasását, olvassa el, egy számolótáblába és így tovább. Példa:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -141,59 +140,59 @@ Egy kis méretű írhat néhány kódot egymástól az adatok lekérésére, olv
       }
     }
 
-A nagyobb kódminta, lásd: [feldolgozói szerepkörök használatával][exportasa].
+Egy nagyobb kódmintát talál [feldolgozói szerepkör használatával][exportasa].
 
 ## <a name="delete"></a>A régi adatok törlése
-Vegye figyelembe, hogy Ön felelősséggel tartozik a tárolási kapacitás kezelése és a régi adatok törlése, ha szükséges.
+Vegye figyelembe, hogy Ön felelős a tárolási kapacitás kezelése és a régi adatok törlése, ha szükséges.
 
-## <a name="if-you-regenerate-your-storage-key"></a>Ha a tárolási kulcs újragenerálása...
-Ha módosítja a kulcsot a tároló, a folyamatos exportálás nem fog tovább működni. Az Azure-fiókjába, megjelenik egy értesítés.
+## <a name="if-you-regenerate-your-storage-key"></a>Ha Ön a kulcs újragenerálása...
+Ha módosítja a kulcsot a storage, a folyamatos exportálás fognak tovább működni. Az Azure-fiók megjelenik egy értesítés.
 
-A folyamatos exportálás panel megnyitásához, és az Exportálás szerkesztése. Az Exportálás cél szerkesztése, de ne változtassa meg a kiválasztott ugyanazt a tárhelyet. Kattintson az OK gombra a megerősítéshez.
+A folyamatos exportálás panel megnyitásához, és az exportálás. Az Exportálás célhelye szerkesztheti, de ne változtassa meg a kiválasztott ugyanazt a tárhelyet. Kattintson az OK gombra.
 
-![Szerkesztés a folyamatos exportálás, és ezekkel a cél exportálása.](./media/app-insights-export-telemetry/07-resetstore.png)
+![Nyílt forráskódú, és zárja be a folyamatos exportálás szerkesztése ezekkel exportálás célhelye.](./media/app-insights-export-telemetry/07-resetstore.png)
 
-A folyamatos exportálás újraindul.
+A folyamatos exportálás újra fog indulni.
 
-## <a name="export-samples"></a>Exportálás minták
+## <a name="export-samples"></a>A minták exportálása
 
-* [A Stream Analytics használ SQL exportálása][exportasa]
+* [Stream Analytics használata SQL-exportálás][exportasa]
 * [Stream Analytics minta 2](app-insights-export-stream-analytics.md)
 
-Nagyobb skálán, érdemes lehet [HDInsight](https://azure.microsoft.com/services/hdinsight/) -Hadoop-fürtök a felhőben. HDInsight számos technológiák kezelése, és a big Data típusú adatok elemzésére, és használhat fel az Application Insights exportált adatokat.
+A nagyobb méretek, érdemes lehet [HDInsight](https://azure.microsoft.com/services/hdinsight/) – Hadoop-fürtök a felhőben. HDInsight biztosít számos különböző technológiával kezelése és big Data típusú adatok elemzésére szolgáló, és használhatja az Application Insights exportált adatok feldolgozásához.
 
 ## <a name="q--a"></a>Kérdések és válaszok
-* *Azonban az összes kívánt egyszeri letölteni egy diagram.*  
+* *Azonban az összes kívánt diagram egyszeri letöltési.*  
 
     Igen, akkor teheti meg. Kattintson a panel tetején **adatok exportálása**.
-* *Exportálás beállítva, de nincs adat a saját tárolóban.*
+* *Az Exportálás beállítása, de nem szerepel megjeleníthető adat a saját tárolóban.*
 
-    Az Application Insights kapta meg összes telemetriai adat az alkalmazás óta állít be az Exportálás? Csak kap új adatokat.
-* *I exportálás beállítása próbált, de a rendszer megtagadta a hozzáférést*
+    Az Application Insights kapott semmilyen telemetriai adatot az alkalmazásból, mert az Exportálás beállítása? Csak kap új adatokat.
+* *E-exportálás beállítása próbált, de a rendszer megtagadta a hozzáférést*
 
-    Ha a fiók a szervezete tulajdonában van, akkor a tulajdonos vagy közreműködő szerepkörrel rendelkező személyek csoportok tagjai.
-* *Is exportálásakor rögtön saját helyszíni tárolási?*
+    Ha a fiók a szervezete tulajdonában van, akkor a tulajdonosai vagy közreműködői csoport tagjának lennie.
+* *E exportálhatja egyenesen a saját helyszíni adattár?*
 
-    Nem, sajnos. Az Exportálás motor jelenleg csak akkor működik az Azure storage most.  
-* *A saját tárolóban lévő adatok bármely korlátozva van?*
+    Nem, Sajnáljuk. Az exportálási motor jelenleg csak együttműködik az Azure storage jelenleg.  
+* *Van-e a saját tárolóban helyezi adatok mennyisége korlátozott?*
 
-    Nem. Azt fogja tartsa kérdez le adatokat exportálás törléséig. Ha azt a külső korlátozhatja a blob-tároló találati, de ez közérthető hatalmas lesz leállítása. Ez legfeljebb lesz vezérlését mennyi tárhelyre, használja.  
-* *Hány blobok kell lásd a tárolóban lévő?*
+    Nem. Hogy fog tartani küld adatokat, amíg nem törli az exportálás. Azt fogjuk le, ha azt nyomja le a külső korlátok a blob Storage, de ez elég nagy. Az szabályozható, hogy mennyi tárhelyet használ van.  
+* *Hány blobok kell lásd a storage-ban?*
 
-  * Minden egyes exportálandó kiválasztott adattípus használatához új blob jön létre percenként (ha érhetők el adatok).
-  * Emellett nagy forgalmú alkalmazások esetén további partíció egységek foglal le. Ebben az esetben tárolóegységekhez hoz létre egy blobot percenként.
-* *Lehet, a kulcs újragenerálása a tárhely, vagy a tároló neve megváltozott, és az exportálás nem működik.*
+  * Minden adattípus az exportálandó kiválasztott egy új blob jön létre percenként (ha elérhető adatok).
+  * Nagy forgalmú alkalmazásokhoz, emellett további partíció egység van lefoglalva. Ebben az esetben minden egység egy blobot hoz létre percenként.
+* *Használom a tárolás, a kulcs újragenerálása, vagy a tároló neve megváltozott, és most az exportálás nem működik.*
 
-    Az Exportálás módosításával, és nyissa meg az Exportálás cél panelt. Hagyja a választott azt korábban ugyanazt a tárhelyet, és kattintson az OK gombra a megerősítéshez. Exportálás újraindul. Ha módosította az elmúlt néhány napon belül, adatok nem vesznek el.
-* *Az exportálás is szüneteltetése?*
+    Az exportálás és az Exportálás célhelye panel megnyitásához. Hagyja kiválasztva, mint korábban ugyanazt a tárhelyet, és kattintson az OK gombra. Exportálás újra fog indulni. Ha a módosítás az elmúlt néhány napon belül volt, adatok nem vesznek el.
+* *Szüneteltetheti az Exportálás?*
 
-    Igen. Kattintson a letiltása.
+    Igen. Kattintson a Letiltás elemre.
 
 ## <a name="code-samples"></a>Kódminták
 
 * [Stream Analytics-minta](app-insights-export-stream-analytics.md)
-* [A Stream Analytics használ SQL exportálása][exportasa]
-* [A részletes adatok modell útmutató a tulajdonság típusát és értékét.](app-insights-export-data-model.md)
+* [Stream Analytics használata SQL-exportálás][exportasa]
+* [Részletes adatmodell-referencia a tulajdonság típusát és értékét.](app-insights-export-data-model.md)
 
 <!--Link references-->
 

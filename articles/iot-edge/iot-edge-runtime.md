@@ -4,16 +4,16 @@ description: Ismerje meg az Azure IoT Edge-futtatókörnyezet, és hogyan lehet�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/05/2018
+ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 36750a4d907da1d4fa029aca0ecc503db7e82d81
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f832b05969c028880f6e375ff4a2ee8dc7a7eaf4
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526092"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054081"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése
 
@@ -23,9 +23,9 @@ Az IoT Edge-futtatókörnyezet az IoT Edge-eszközökön a következő funkciók
 
 * Telepíti és frissíti az eszközökön a számítási feladatokat.
 * Fenntartja Azure IoT Edge biztonsági szabványait az eszközön.
-* Biztosítja, hogy [IoT Edge-modulok][lnk-modulok] folyamatos futását.
+* Biztosítja, hogy [IoT Edge-modulok] [ lnk-modules] folyamatos futását.
 * Jelenti a modulok állapotát a felhőnek a távoli monitorozáshoz.
-* Kommunikációt létesít az alárendelt levéleszközök és az IoT Edge-eszköz között.
+* Kommunikációt létesít alárendelt levéleszközök és az IoT Edge-eszközök között.
 * Kommunikációt létesít a modulok és az IoT Edge-eszköz között.
 * Kommunikációt létesít az IoT Edge-eszközök és a felhő között.
 
@@ -33,7 +33,7 @@ Az IoT Edge-futtatókörnyezet az IoT Edge-eszközökön a következő funkciók
 
 Az IoT Edge-futtatókörnyezet feladatai két kategóriába sorolhatók: modul felügyeleti és kommunikációs. E két szerepkör két összetevőből, az IoT Edge-futtatókörnyezet végzi. Az IoT Edge hubot felelős közötti kommunikáció, míg az IoT Edge-ügynök üzembe helyezése és figyelése a modulok kezeli. 
 
-Az Edge agent és az Edge hub is olyan modulok, csakúgy, mint egy IoT Edge-eszközön futó bármely egyéb modult. További információ a modulok működéséről: [lnk-modulok]. 
+Az Edge agent és az Edge hub is olyan modulok, csakúgy, mint egy IoT Edge-eszközön futó bármely egyéb modult. 
 
 ## <a name="iot-edge-hub"></a>IoT Edge hub
 
@@ -52,9 +52,6 @@ Az IoT Edge-megoldás sávszélesség csökkentése érdekében használja, az E
 ![Edge hubot átjáróként működik, több fizikai eszköz és a felhő között][2]
 
 Edge hubot megállapíthatja, hogy csatlakozik az IoT Hub. Ha megszakad a kapcsolat, Edge hubot menti az üzenetek vagy a helyi ikereszköz-frissítések. Miután a kapcsolat helyreállt, a szinkronizált összes adatot. Az átmeneti gyorsítótár használt helyet az Edge hub ikermodul tulajdonsága határozza meg. A gyorsítótár méretét nem maximumon, és az eszköz tárkapacitása is növekszik. 
-
->[!NOTE]
->Kézben gyorsítótárazási további paraméterek hozzáadásával hozzáadódik a termék előtt, általánosan elérhetővé válik.
 
 ### <a name="module-communication"></a>A modul kommunikáció
 
@@ -86,11 +83,11 @@ A megoldás fejlesztő feladata a szabályok, amelyek meghatározzák, hogyan Ed
 
 Az IoT Edge-ügynök a többi modul, amely az Azure IoT Edge-futtatókörnyezet. Ez felelős modulok hárítható el, biztosítva, hogy továbbra is futni és a modulok állapotát megkezdheti az IoT Hub. Csakúgy, mint bármely egyéb modult az Edge agent az ikermodul használja a konfigurációs adatok tárolására. 
 
-Az Edge agent végrehajtásának megkezdéséhez futtassa az azure-iot-edge-futtatókörnyezet – ctl.py indítási parancsot. Az ügynök az ikermodul lekéri az IoT hubról, és megvizsgálja a modulok szótárban. A modulok szótár nem a gyűjteményt, amelyek kell elindítani. 
+A [IoT Edge biztonsági démon](iot-edge-security-manager.md) az Edge agent elindul az eszköz indításakor. Az ügynök az ikermodul lekéri az IoT hubról, és megvizsgálja a manifest nasazení. Manifest nasazení egy JSON-fájlt, amely deklarálja a modulokat, amelyek kell elindítani. 
 
-A modulok szótár lévő egyes elemek modul kapcsolatos információkat tartalmaz, és a modul életciklus szabályozni az Edge agent használják. Az érdekesebb tulajdonságok a következők: 
+Manifest nasazení lévő egyes elemek modul kapcsolatos információkat tartalmaz, és a modul életciklus szabályozni az Edge agent használják. Az érdekesebb tulajdonságok a következők: 
 
-* **Settings.Image** – a tároló rendszerképét, amely a modul indításához használja az Edge agent. Ha a kép jelszó védi az Edge agent kell konfigurálni a container Registry hitelesítő adataival. Adja meg az Edge agent, frissítse a `config.yaml` fájlt. A Linux használja a következő parancsot: `sudo nano /etc/iotedge/config.yaml`
+* **Settings.Image** – a tároló rendszerképét, amely a modul indításához használja az Edge agent. Ha a kép jelszó védi az Edge agent kell konfigurálni a container Registry hitelesítő adataival. Hitelesítő adatok a tároló-beállításjegyzék konfigurálható manifest nasazení segítségével távolról, vagy maga az Edge-eszköz frissítésével a `config.yaml` az IoT Edge program mappában található fájl.
 * **settings.createOptions** – egy karakterlánc, amely az átadott közvetlenül a Docker-démon indítása egy modul tároló esetén. Ezt a tulajdonságot a Docker-beállítások hozzáadása lehetővé teszi a speciális beállításokat, például a továbbítási vagy kötetek csatlakoztatása egy modul tárolóba port.  
 * **állapot** – az Edge agent helyezi el a modul állapota. Ez az érték beállítása általában *futó* , a legtöbb ember szeretné azonnal elindítani az eszközön lévő összes modult az Edge agent. Azonban megadhatja a modul le kell állítani, és várja meg, hogy az Edge agent modul indítása egy jövőbeli időpontot kezdeti állapota. Az Edge agent visszajelzést az egyes modulok állapotát a jelentett tulajdonságok a felhőbe. Különbség a kívánt tulajdonság és a jelentett tulajdonság azt jelzi, hogy a rosszul eszköz. A támogatott állapotok a következők:
    * Letöltés folyamatban
@@ -114,13 +111,13 @@ Az IoT Edge-ügynök futtatókörnyezeti válasz az IoT hub küldi. A következ�
 
 ### <a name="security"></a>Biztonság
 
-Az IoT Edge-ügynök kritikus szerepet játszik az IoT Edge-eszköz biztonságát. Ha például hajtja végre műveleteket, például egy modul rendszerképének ellenőrzése az újraindítás előtt. Ezeket a funkciókat az általános elérhetőség idején fog bővülni. 
+Az IoT Edge-ügynök kritikus szerepet játszik az IoT Edge-eszköz biztonságát. Ha például hajtja végre műveleteket, például egy modul rendszerképének ellenőrzése az újraindítás előtt. 
 
-<!-- For more information about the Azure IoT Edge security framework, see []. -->
+További információ az Azure IoT Edge biztonsági keretrendszert, olvassa el a [IoT Edge-biztonságkezelő](iot-edge-security-manager.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure IoT Edge-modulok megismerése][lnk-modulok]
+[Az Azure IoT Edge-modulok megismerése][lnk-modules]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -129,4 +126,4 @@ Az IoT Edge-ügynök kritikus szerepet játszik az IoT Edge-eszköz biztonságá
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[lnk-modulok]: iot-edge-modules.md
+[lnk-modules]: iot-edge-modules.md

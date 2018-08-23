@@ -1,6 +1,6 @@
 ---
-title: Állítson be egy Docker-állomás VirtualBox |} Microsoft Docs
-description: Részletes útmutatás a Docker gép és VirtualBox alapértelmezett Docker példányok konfigurálása
+title: Docker-gazdagép konfigurálására a VirtualBox |} A Microsoft Docs
+description: Részletes útmutatás a Docker Machine és a VirtualBox használatával alapértelmezett Docker-példány konfigurálása
 services: azure-container-service
 documentationcenter: na
 author: mlearned
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 11e238fa901a164df1dfd896e38df828601e650b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7c78f27fa948c15202e83df4ed42a805a414a72e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30190398"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060828"
 ---
-# <a name="configure-a-docker-host-with-virtualbox"></a>VirtualBox egy Docker-állomás konfigurálása
+# <a name="configure-a-docker-host-with-virtualbox"></a>Docker-gazdagép VirtualBox konfigurálása
 ## <a name="overview"></a>Áttekintés
-Ez a cikk végigvezeti Önt egy Docker-számítógép és VirtualBox alapértelmezett Docker-példány konfigurálása. Használata esetén a [Docker for Windows beta](http://beta.docker.com/), ez a konfiguráció nincs szükség.
+Ez a cikk végigvezeti a Docker Machine és a VirtualBox használatával alapértelmezett Docker-példány konfigurálását. Ha használja a [Docker for Windows](https://www.docker.com/products/docker-desktop), nem kell ezt a konfigurációt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A következő eszközök telepítve kell lennie.
+A következő eszközök kell telepíteni.
 
-* [Docker eszközkészlet](https://github.com/docker/toolbox/releases)
+* [Docker-eszközkészlet](https://github.com/docker/toolbox/releases)
 
-## <a name="configuring-the-docker-client-with-windows-powershell"></a>A Docker-ügyfél konfigurálása a Windows PowerShell használatával
-Egy Docker-ügyfél konfigurálásához, egyszerűen nyissa meg a Windows Powershellt, és hajtsa végre a következő lépéseket:
+## <a name="configuring-the-docker-client-with-windows-powershell"></a>A Docker-ügyfél konfigurálása a Windows PowerShell-lel
+Egy Docker-ügyfél konfigurálása, egyszerűen nyissa meg a Windows Powershellt, és hajtsa végre az alábbi lépéseket:
 
-1. Hozzon létre alapértelmezett docker-állomás példányt.
+1. Hozzon létre egy alapértelmezett docker-gazdagép példány.
    
     ```PowerShell
     docker-machine create --driver virtualbox default
     ```
-2. Ellenőrizze, hogy az alapértelmezett példány, konfigurálni és futtatni. (Látnia kell egy futtató a "default" nevű példány.
+2. Ellenőrizze, hogy az alapértelmezett példányon be állítva és fut-e. (Megtekintheti az egy példány futtatása "default" nevű.
    
     ```PowerShell
     docker-machine ls 
     ```
    
-    ![docker-gép ls kimeneti][0]
-3. Alapértelmezett állítja be az aktuális állomás, és konfigurálja a rendszerhéj.
+    ![a docker-machine ls-kimenet][0]
+3. Alapértelmezett beállítása a jelenlegi gazdagép, és konfigurálhatja a felületet.
    
     ```PowerShell
     docker-machine env default | Invoke-Expression
     ```
-4. Megjeleníti az aktív Docker-tárolókat. Lehet, hogy a lista üres.
+4. Megjeleníti az aktív Docker-tárolót. Lehet, hogy a lista üres.
    
     ```PowerShell
     docker ps
     ```
    
-    ![docker ps kimeneti][1]
+    ![a docker ps-kimenet][1]
 
 > [!NOTE]
-> Minden alkalommal, amikor a fejlesztői számítógépén, indítsa újra lesz szüksége a helyi docker host újraindítására.
+> Minden alkalommal, amikor a fejlesztői gépén, indítsa újra kell indítani a helyi docker-gazdagép.
 > Ehhez adja ki a következő parancsot a parancssorba: `docker-machine start default`.
 > 
 > 

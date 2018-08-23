@@ -1,72 +1,78 @@
 ---
 title: A Recovery Services-tárolók áttekintése
-description: Áttekintés és Recovery Services-tárolók és az Azure mentési tárolókban összehasonlítása.
+description: Áttekintése és összehasonlítása az Azure Backup-tárolók és a Recovery Services-tárolók.
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/15/2017
+ms.date: 8/10/2018
 ms.author: markgal
-ms.openlocfilehash: b6195feb25a7206d7c453e31f0ac312e070b3113
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 04b755d7ca1ec72b075ecaa4b32a35f5009a938b
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606171"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42060810"
 ---
-# <a name="recovery-services-vaults-overview"></a>Helyreállítási szolgáltatások tárolók áttekintése
+# <a name="recovery-services-vaults-overview"></a>Recovery Services tárolók áttekintése
 
-Ez a cikk ismerteti a Recovery Services-tároló funkcióit. Recovery Services-tároló egy tárolási egység, amely az adatok Azure-ban. Az adatok program általában másolja az adatokat, vagy a virtuális gépek (VM), a munkaterhelés, a kiszolgálókra vagy munkaállomásokra konfigurációs adatait. Recovery Services-tárolók használatával a különböző Azure-szolgáltatásokra például IaaS virtuális gépeket (Linux- vagy Windows-) és az Azure SQL-adatbázisok biztonsági mentési adatok tárolására. Helyreállítási szolgáltatások tárolók támogatása a System Center DPM, a Windows Server, Azure Backup Server, és több. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. 
+Ez a cikk a Recovery Services-tároló funkcióját ismerteti. Recovery Services-tárolót egy tárolóentitás az Azure-beli adat-környezetet tároló. Az adatok általában a másolatait adatokat, illetve a virtuális gépek (VM), a számítási feladatok, a kiszolgálókra vagy munkaállomásokra konfigurációs adatait. Recovery Services-tárolók segítségével különböző Azure-szolgáltatások például az Azure SQL-adatbázisok és az IaaS virtuális gépek (Linux vagy Windows) a biztonsági mentési adatok tárolásához. Helyreállítási szolgáltatások tárolók támogatása a System Center DPM, a Windows Server, az Azure Backup Server és több. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. 
 
-Azure-előfizetéssel, belül régiónként előfizetésenként legfeljebb 500 Recovery Services-tárolók is létrehozhat.
+Egy Azure-előfizetés keretében előfizetésenként és régiónként legfeljebb 500 Recovery Services-tárolót hozhat létre.
 
-## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Összehasonlító Recovery Services-tárolók és a mentési tárolókat
+## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Összehasonlító Recovery Services-tárolók és a Backup-tárolók
 
-Ha továbbra is mentési tárolókban, folyamatosan automatikusan frissülnek a Recovery Services-tárolók. 2017. November, amelyet az összes biztonsági mentési tárolók frissítette a Recovery Services-tárolók. 
+Ha biztonsági mentési tárak továbbra is rendelkezik, azok folyamatban van az automatikus frissítése Recovery Services-tárolókra. 2017 November szerint az összes biztonsági mentési tárak is frissülnek a Recovery Services-tárolók. 
 
-Helyreállítási szolgáltatások tárolók Azure-ban Azure Resource Manager modelljét alapulnak, mivel az Azure Service Manager modell alapuló biztonsági mentési tárolóból. Amikor frissít egy biztonsági mentési tárolót Recovery Services-tároló, a biztonsági mentési adatok sértetlenek maradnak alatt és után a frissítési folyamat. Helyreállítási szolgáltatások tárolók funkciók nem érhető el a biztonsági mentési tárolóból, például a biztosítására:
+Recovery Services-tárolók az Azure-ban, az Azure Resource Manager modellel alapulnak, mivel a Backup-tárolók az Azure Service Manager modellel is alapján. Amikor frissít egy biztonsági mentési tárolót egy Recovery Services-tároló, a biztonsági mentési adatok sértetlenek maradnak alatt és a frissítési folyamat után. Recovery Services-tárolók adja meg a funkciók nem érhető el a Backup-tárolók, például:
 
-- **Bővített képességet biztonságos biztonsági mentési adatok segítségével**: A Recovery Services-tárolók, Azure biztonsági mentési képességeket biztosít a biztonsági felhőbeli biztonsági másolatok védelme érdekében. A biztonsági funkciók ellenőrizze a biztonsági másolatok biztonságos, és biztonságosan az adatokat, helyreállítani, még akkor is, ha az éles és a biztonsági mentés integritása sérül. [További információ](backup-azure-security-feature.md)
+- **Bővített képességet a biztonsági mentési adatainak védelme**: Recovery Services-tárolók, Azure Backup biztonsági képességeket védelme érdekében a felhőbeli biztonsági mentést biztosít. A biztonsági funkciók ellenőrizze, hogy a biztonsági mentések biztonságos, és biztonságosan az adatokat, helyreállítani, még akkor is, ha az éles és a biztonsági mentés integritása sérül. [További információ](backup-azure-security-feature.md)
 
-- **A hibrid informatikai környezetben központi figyelését**: A Recovery Services-tárolók, figyelheti nem csak a [Azure IaaS virtuális gépeket](backup-azure-manage-vms.md) , hanem a [a helyszíni eszközök](backup-azure-manage-windows-server.md#manage-backup-items) központi portálról. [További információ](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **A hibrid informatikai környezet központi figyelését**: Recovery Services-tárolók, figyelheti nem csupán a [Azure IaaS virtuális gépek](backup-azure-manage-vms.md) , hanem a [a helyszíni eszközök](backup-azure-manage-windows-server.md#manage-backup-items) egy központi portálról. [További információ](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: RBAC biztosít a minden részletre kiterjedő felügyeleti hozzáférés az Azure-ban. [Azure biztosít a különféle beépített szerepkörök](../role-based-access-control/built-in-roles.md), és az Azure biztonsági mentés van három [beépített szerepkörök kezelése a helyreállítási pontok](backup-rbac-rs-vault.md). Helyreállítási szolgáltatások tárolók kompatibilisek-e az RBAC, amely korlátozza a biztonsági mentés, és állítsa vissza az elérését a felhasználói szerepkörök adott csoportján. [További információ](backup-rbac-rs-vault.md)
+- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: RBAC biztosítja a hozzáférés részletes felügyeleti vezérlés az Azure-ban. [Az Azure különféle beépített szerepkört biztosít](../role-based-access-control/built-in-roles.md), és az Azure Backup három [beépített szerepkörök kezelése a helyreállítási pontok](backup-rbac-rs-vault.md). Recovery Services-tárolók kompatibilisek az RBAC, amely korlátozza a biztonsági mentés, és állítsa vissza a felhasználói szerepkörök meghatározott készletével való hozzáférést. [További információ](backup-rbac-rs-vault.md)
 
-- **Az összes konfiguráció Azure virtuális gépek védelme**: Recovery Services-tárolók a Resource Manager-alapú virtuális gépek többek között a Premium lemezek, a felügyelt lemezek és a titkosított virtuális gépek védelme. A biztonsági másolatok tárolóját frissítése a Recovery Services-tároló lehetőséget nyújt a Service Manager-alapú virtuális gépek frissítése a Resource Manager-alapú virtuális gépeket. A tároló a frissítés során a Service Manager-alapú virtuális gép helyreállítási pontok megőrzése, és konfigurálja a frissített (Resource Manager-kompatibilis) virtuális gépek védelmét. [További információ](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **Az összes konfiguráció az Azure Virtual Machines védelme**: Recovery Services-tárolók Resource Manager-alapú virtuális gépet is, beleértve a felügyelt lemezek prémium szintű Managed Disks és titkosított virtuális gépek védelmét. Egy biztonsági mentési tároló frissítése Recovery Services-tároló lehetővé teszi, hogy a Service Manager-alapú virtuális gépek frissítése a Resource Manager-alapú virtuális gépeket. A tárolót a frissítés során a Service Manager-alapú virtuális gép helyreállítási pontjai, és a frissített (Resource Manager-kompatibilis) virtuális gépek védelme nem konfigurálható. [További információ](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Infrastruktúra-szolgáltatási virtuális gépek azonnali visszaállítási**: használatával Recovery Services-tárolók, állíthatja vissza fájlokat és mappákat az infrastruktúra-szolgáltatási virtuális gép helyreállítása a teljes virtuális gép, amely lehetővé teszi a gyorsabb visszaállítás nélkül. Infrastruktúra-szolgáltatási virtuális gépek azonnali visszaállítási Windows és Linux virtuális gépek érhető el. [További információ](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **IaaS virtuális gépekhez azonnali helyreállítás**: használatával Recovery Services-tárolók, visszaállíthatja fájlokat és mappákat az IaaS virtuális gépek visszaállítása a teljes virtuális Gépet, amely lehetővé teszi a gyorsabb helyreállítás nélkül. Azonnali helyreállítás IaaS virtuális gépekhez Windows és Linux rendszerű virtuális gépeken érhető el. [További információ](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
-## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>A portál a Recovery Services-tárolók kezelése
-Létrehozása és kezelése az Azure portálon Recovery Services-tárolók nem egyszerű, mert a biztonsági mentési szolgáltatás integrálva van az Azure-beállítások menüjében. Ez az integráció azt jelenti, hogy hozzon létre, vagy kezelheti a Recovery Services-tároló *a célként megadott szolgáltatás kontextusában*. Például egy virtuális Gépet a helyreállítási pontok megtekintéséhez válassza ki azt, és kattintson **biztonsági mentés** a beállítások menüben. Ezt a virtuális Gépet a biztonsági mentési adatokat jelenik meg. A következő példában **ContosoVM** a virtuális gép neve. **ContosoVM-demovault** a Recovery Services-tároló neve. Ne feledje, hogy a helyreállítási pontokat tárolja a Recovery Services-tároló neve nem szükséges, ez az információ a virtuális gép érheti el.  
+## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>A portálon a Recovery Services-tárolók kezelése
+Létrehozása és kezelése az Azure Portalon a Recovery Services-tárolók oka egyszerűen az egyéb Azure-szolgáltatásokkal integrálható a Backup szolgáltatás. Ez az integráció azt jelenti, létrehozhat vagy kezelheti a Recovery Services-tároló *a célként megadott szolgáltatás kontextusában*. Ha például egy virtuális Gépet a helyreállítási pontok megtekintéséhez válassza ki a virtuális Gépet, majd kattintson **Backup** a Műveletek menü. 
 
-![Helyreállítási szolgáltatások tároló tartalmazó virtuális gép részletei](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context.png)
+![Recovery services tár adatait VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
-Ha több kiszolgáló védi a azonos Recovery Services-tároló, több logikai közül a Recovery Services-tároló lehet. Keresse meg az előfizetés összes Recovery Services-tárolók, és válasszon egyet a listáról.
+Ha a virtuális gép nem rendelkezik a biztonsági mentés konfigurálva, majd felszólítja, hogy a biztonsági mentés konfigurálása. Ha a biztonsági mentés konfigurálva van, látni fogja a biztonsági mentési információ a virtuális gép, beleértve a visszaállítási pontok listáját.  
 
-A következő szakaszok tartalmazzák a Recovery Services-tároló minden típusú tevékenység használandó cikkek mutató hivatkozásokat tartalmaz.
+![Recovery services tár adatait VM](./media/backup-azure-recovery-services-vault-overview/vm-recovery-point-list.png)
+
+Az előző példában **ContosoVM** a virtuális gép neve. **ContosoVM-demovault** a Recovery Services-tároló neve. Nem kell jegyezni a nevét, a Recovery Services-tároló, amely tárolja a helyreállítási pontok, ezeket az információkat a virtuális gép érheti el.  
+
+Ha egy Recovery Services-tároló védi azokat több kiszolgálóra, és tekintse meg a Recovery Services-tároló több logikai lehet. Keresse meg az összes, az előfizetés Recovery Services-tárolók, és válassza ki azt a listából.
+
+Az alábbi szakaszok azt ismertetik, hogyan használja a Recovery Services-tároló minden típusú tevékenység található hivatkozásokat.
 
 ### <a name="back-up-data"></a>Adatok biztonsági mentése
-- [Készítsen biztonsági másolatot az Azure virtuális gép](backup-azure-vms-first-look-arm.md)
-- [Biztonsági másolatot készíthet a Windows Server és a Windows munkaállomás](backup-try-azure-backup-in-10-mins.md)
-- [A DPM-munkaterhelések biztonsági mentése az Azure-bA](backup-azure-dpm-introduction.md)
-- [Felkészülés az Azure Backup Server használatával-munkaterhelések biztonsági mentése](backup-azure-microsoft-azure-backup.md)
+- [Készítsen biztonsági másolatot egy Azure virtuális Gépen](backup-azure-vms-first-look-arm.md)
+- [Készítsen biztonsági másolatot a Windows Server vagy Windows-munkaállomás](backup-try-azure-backup-in-10-mins.md)
+- [A DPM-munkaterhelések biztonsági mentéséhez az Azure-bA](backup-azure-dpm-introduction.md)
+- [Használja az Azure Backup Server számítási feladatok biztonsági mentésének előkészítése](backup-azure-microsoft-azure-backup.md)
 
 ### <a name="manage-recovery-points"></a>Helyreállítási pontok kezelése
-- [Azure virtuális gép biztonsági mentések kezelése](backup-azure-manage-vms.md)
+- [Azure virtuális gépek biztonsági másolatainak kezelése](backup-azure-manage-vms.md)
 - [Fájlok és mappák kezelése](backup-azure-manage-windows-server.md)
 
-### <a name="restore-data-from-the-vault"></a>Állítsa vissza az adatokat a tárolóból
-- [Egy Azure virtuális gép egyes fájlok helyreállítása](backup-azure-restore-files-from-vm.md)
-- [Állítsa vissza az Azure virtuális gép](backup-azure-arm-restore-vms.md)
+### <a name="restore-data-from-the-vault"></a>Adatok visszaállítása a tárból
+- [Az egyes fájlok helyreállítása Azure virtuális gép](backup-azure-restore-files-from-vm.md)
+- [Egy Azure virtuális gép visszaállítása](backup-azure-arm-restore-vms.md)
 
-### <a name="secure-the-vault"></a>A tároló biztonságos
-- [A Recovery Services-tárolók a felhő biztonsági mentési adatok védelme](backup-azure-security-feature.md)
+### <a name="secure-the-vault"></a>A tároló biztonságossá tétele
+- [A Recovery Services-tárolók felhőbeli biztonsági mentési adatok védelme](backup-azure-security-feature.md)
 
 
 
 ## <a name="next-steps"></a>További lépések
 Használja a következő cikkeket:</br>
-[Készítsen biztonsági másolatot az infrastruktúra-szolgáltatási virtuális gép](backup-azure-arm-vms-prepare.md)</br>
+[Készítsen biztonsági másolatot egy IaaS-beli virtuális Gépen](backup-azure-arm-vms-prepare.md)</br>
 [Készítsen biztonsági másolatot az Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
-[Készítsen biztonsági másolatot a Windows Server](backup-configure-vault.md)
+[A Windows Server biztonsági mentése](backup-configure-vault.md)

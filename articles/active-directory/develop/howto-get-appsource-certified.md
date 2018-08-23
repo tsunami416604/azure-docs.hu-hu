@@ -13,46 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 83436fe7f47c156f70995d66922e9fc0564ef872
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601947"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056911"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource Certified beszerzése az Azure Active Directory
+
 [A Microsoft AppSource](https://appsource.microsoft.com/) egy cél az üzleti felhasználók felderítése, próbálja meg és kezelése – üzleti SaaS-alkalmazások (önálló SaaS és bővítményt az meglévő Microsoft SaaS-termékek).
 
-Az alkalmazás egyszeri bejelentkezés a munkahelyi fiókok bármely vállalat vagy szervezet, amely rendelkezik az Azure Active Directory egy különálló SaaS-alkalmazás az appsource-on listázásához, el kell fogadnia. A bejelentkezési folyamatot kell használnia a [OpenID Connect](v1-protocols-openid-connect-code.md) vagy [OAuth 2.0](v1-protocols-oauth-code.md) protokollokat. SAML-integráció nem fogadja az AppSource-tanúsítvány.
+Az alkalmazás egyszeri bejelentkezés a munkahelyi fiókok bármely vállalat vagy szervezet, amely rendelkezik az Azure Active Directory (Azure AD) egy különálló SaaS-alkalmazás az appsource-on listázásához, el kell fogadnia. A bejelentkezési folyamatot kell használnia a [OpenID Connect](v1-protocols-openid-connect-code.md) vagy [OAuth 2.0](v1-protocols-oauth-code.md) protokollokat. SAML-integráció nem fogadja az AppSource-tanúsítvány.
 
 ## <a name="guides-and-code-samples"></a>Útmutatók és Kódminták
-Ha azt szeretné, hogyan integrálható az Azure Active Directory-azonosítójával nyissa meg az alkalmazás csatlakoztatása, hajtsa végre az útmutatókat, és Kódminták a a [Azure Active Directory fejlesztői útmutatója](azure-ad-developers-guide.md#get-started "első lépései az Azure-ral A fejlesztők AD").
+
+Ha azt szeretné, hogyan integrálható az alkalmazás az Azure AD szolgáltatással Open ID connect, hajtsa végre az útmutatókat, és Kódminták a a [Azure Active Directory fejlesztői útmutatója](azure-ad-developers-guide.md#get-started "Ismerkedés az Azure AD-hez a fejlesztők").
 
 ## <a name="multi-tenant-applications"></a>Több-bérlős alkalmazások
 
-A felhasználók bármely vállalat vagy szervezet, amely rendelkezik az Azure Active Directory anélkül, hogy egy külön példányt, konfigurációs vagy telepítési bejelentkezések elfogadó alkalmazás más néven egy *több-bérlős alkalmazás*. Appsource-ban azt javasolja, hogy az alkalmazások valósítható meg több-bérlős engedélyezéséhez a *egyetlen kattintással* ingyenes kipróbálására nyújt lehetőséget.
+A *több-bérlős alkalmazás* olyan alkalmazás, amely elfogadja a felhasználók bármely vállalat vagy szervezet, amely rendelkezik az Azure AD anélkül, hogy egy külön példányt, konfigurációs vagy telepítési történő bejelentkezések. Appsource-ban azt javasolja, hogy az alkalmazások valósítható meg több-bérlős engedélyezéséhez a *egyetlen kattintással* ingyenes kipróbálására nyújt lehetőséget.
 
-Annak érdekében, hogy az alkalmazás több bérlős üzemmód engedélyezése:
-- Állítsa be `Multi-Tenanted` tulajdonságot `Yes` a az alkalmazás regisztrációs információit a [az Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) (alapértelmezés szerint az Azure Portalon létrehozott alkalmazásokat-kként vannak konfigurálva *egybérlős*)
-- Kérelmek küldése a kód frissítése a "`common`" végpont (az a végpont frissítéséhez *https://login.microsoftonline.com/{yourtenant}* való *https://login.microsoftonline.com/common*)
-- Egyes platformokon, például az ASP.NET is frissíteni kell a kódot úgy, hogy fogadja el a több kiállítók
+Ahhoz, hogy az alkalmazás több-bérlős, kövesse az alábbi lépéseket:
+1. Állítsa be `Multi-Tenanted` tulajdonságot `Yes` a az alkalmazás regisztrációs információit a [az Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint az Azure Portalon létrehozott alkalmazásokat alkalmazásbeállításait  *[egybérlős](#single-tenant-applications)*.
+1. Kérelmek küldése a kód frissítése a `common` végpont. Ehhez a végponthoz való frissítése `https://login.microsoftonline.com/{yourtenant}` való `https://login.microsoftonline.com/common*`.
+1. Egyes platformokon, például az ASP .NET is frissíteni szeretné a kód több kiállítók fogadására.
 
-Több-bérlős kapcsolatos további információkért lásd: [Azure Active Directory (AD) felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával hogyan](howto-convert-app-to-be-multi-tenant.md).
+Több-bérlős kapcsolatos további információkért lásd: [Azure Active Directory (Azure AD) felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával hogyan](howto-convert-app-to-be-multi-tenant.md).
 
 ### <a name="single-tenant-applications"></a>Egybérlős alkalmazások
-Az alkalmazásokat, amelyek csak fogadja el a felhasználók egy meghatározott Azure Active Directory-példány történő bejelentkezések nevezzük *egybérlős alkalmazás*. Külső felhasználókat (beleértve a más szervezetek a munkahelyi vagy iskolai fiókokhoz vagy személyes fiókkal) bejelentkezhet egy egybérlős alkalmazást minden felhasználó hozzáadása után *vendégfiók* az Azure Active Directory példányt, amely a alkalmazás regisztrálva lesz. Egy Azure Active Directory-n keresztül, a vendég felhasználók is hozzáadhat a [ *Azure AD B2B együttműködés* ](../b2b/what-is-b2b.md) -teheti meg, és [programozottan](../../active-directory-b2c/code-samples.md). Hozzáadásakor a felhasználó Vendég fiókkal az Azure Active Directory, a felhasználó, aki rendelkezik a meghívás elfogadásához kattintson a hivatkozásra a meghívó e-mailben a meghívó e-mail érkezik. A meghívó szervezetet, amely egyben a fiókpartner-szervezet tagja a további felhasználó számára küldött nem szükségesek egy jelentkezzen be a meghívás elfogadásához.
 
-Egybérlős alkalmazások engedélyezheti a *kapcsolatfelvételi* tapasztal, de az egy kattintással / ingyenes próbaverziója által AppSource javasolt engedélyezni szeretné, ha több bérlős üzemmód engedélyezése az alkalmazás helyett.
+A *egybérlős alkalmazás* olyan alkalmazás, amely csak a meghatározott Azure-felhasználók történő bejelentkezések fogad AD-példányt. Külső felhasználókat (beleértve a személyes, munkahelyi vagy iskolai fiókok más szervezetek) egy egybérlős alkalmazást minden felhasználó, hogy az alkalmazás regisztrálva van az Azure AD-példányt, amely a Vendég fiók hozzáadása után bejelentkezhet. 
 
+Az Azure AD-keresztül, a vendég felhasználók is hozzáadhat a [Azure AD B2B együttműködés](../b2b/what-is-b2b.md) és ehhez [programozottan](../../active-directory-b2c/code-samples.md). B2B használata esetén a felhasználók egy önkiszolgáló portált, jelentkezzen be a meghívót nem igénylő hozhat létre. További információ: [önkiszolgáló portál az Azure AD B2B együttműködés előfizetési](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+
+Egybérlős alkalmazások engedélyezheti a *kapcsolatfelvételi* tapasztal, de az egyetlen kattintással/ingyenes próbaverziója által AppSource javasolt engedélyezni szeretné, ha több bérlős üzemmód engedélyezése az alkalmazás helyett.
 
 ## <a name="appsource-trial-experiences"></a>Próbaverziós élményt appsource-ban
 
 ### <a name="free-trial-customer-led-trial-experience"></a>Ingyenes próbaverzió (ügyfél által vezetett kipróbálására nyújt lehetőséget) 
-A *ügyfél által irányított próbaverzió* a szolgáltatás, amelynek a AppSource javasol, mert az egy kattintással az alkalmazáshoz való hozzáférést biztosít. Az ábra bemutatja, hogyan alatt ez a tapasztalat hasonlóan néz ki:<br/><br/>
+
+Az ügyfél által irányított próbaverzió, amely az appsource-ban javasol, mert az egy kattintással az alkalmazáshoz való hozzáférést biztosít a számítógép jelenik meg. Az ábra bemutatja, hogyan alatt ez a tapasztalat hasonlóan néz ki:<br/><br/>
 
 <table >
 <tr>
@@ -67,8 +72,9 @@ A *ügyfél által irányított próbaverzió* a szolgáltatás, amelynek a AppS
 </tr>
 </table>
 
-### <a name="contact-me-partner-led-trial-experience"></a>Megkeresést kérek (Partner által irányított kipróbálására nyújt lehetőséget)
-A *próbaverziója partneri* is használható, ha a manuális vagy hosszú távú műveletet kell a felhasználóhoz / vállalati: például az alkalmazásnak kell kiépíteni a virtuális gépek, adatbázis-példány vagy műveletek mennyi ideig tarthat, amely. Ebben az esetben a felhasználó által után a *próbaverzió kérése* gombra, és alapján tölti ki egy űrlapot, AppSource küld Önnek a felhasználó kapcsolattartási adatait. Ez az információ fogadásakor ezután kiépítése a környezet és az utasítások küldése a felhasználónak az próbaverziója elérésével:<br/><br/>
+### <a name="contact-me-partner-led-trial-experience"></a>Megkeresést kérek (partner által irányított kipróbálására nyújt lehetőséget)
+
+A partner kipróbálására nyújt lehetőséget is használhatja, amikor egy manuális vagy hosszú távú műveletet kell rendelkezni kell a felhasználó és vállalat – például az alkalmazás üzembe helyezése a virtuális gépek, az adatbázis-példány vagy a műveletek, amelyek befejezéséhez sok időt vesz igénybe. Ebben az esetben után a felhasználó által a **próbaverzió kérése** gombra, és alapján tölti ki egy űrlapot, AppSource küld Önnek a felhasználó kapcsolattartási adatait. Ha megkapta ezt az információt, ezután kiépítése a környezet és az utasítások küldése a felhasználónak az próbaverziója elérésével:<br/><br/>
 
 <table valign="top">
 <tr>
@@ -101,17 +107,18 @@ A *próbaverziója partneri* is használható, ha a manuális vagy hosszú táv�
 </table>
 
 ### <a name="more-information"></a>További információ
+
 Az appsource-ban próbaverziója kapcsolatos további információkért lásd: [ebben a videóban](https://aka.ms/trialexperienceforwebapps). 
  
 ## <a name="next-steps"></a>További lépések
 
-- További információ az alkalmazások, amelyek támogatják az Azure Active Directory bejelentkezések létrehozására: [hitelesítési forgatókönyvek az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios) 
-
+- Az alkalmazásokat, amelyek támogatják az Azure AD bejelentkezési további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 - Az SaaS-alkalmazását az appsource-ban való információkért látogasson el lásd: [partneradatok appsource-ban](https://appsource.microsoft.com/partners)
 
 
 ## <a name="get-support"></a>Támogatás kérése
-Az Azure Active Directory-integráció, használunk [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) támogatásához a Közösséggel. 
+
+Az Azure AD-integrációhoz használjuk [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) támogatásához a Közösséggel. 
 
 Először a Stack overflow-ra tesz fel kérdéseket, és keresse meg a meglévő problémák megtekintéséhez, ha valaki kérte a kérdés előtt erősen ajánlott. Győződjön meg arról, hogy a kérdéseit vagy megjegyzéseit címkével ellátott [ `[azure-active-directory]` és `[appsource]` ](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 

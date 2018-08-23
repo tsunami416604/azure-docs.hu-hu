@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 6c288e4492ac56436d40d1e3db98af8eb7b173c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436318"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058107"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Az Azure Active Directoryval az Azure API Management fejlesztői fiókok engedélyezése
 
@@ -63,7 +63,7 @@ Ez a cikk bemutatja, hogyan hozzáférés engedélyezése a felhasználók szám
     A **létrehozás** ablaktáblán a jobb oldalon jelenik meg. Ez hol adja meg az Azure AD-alkalmazás vonatkozó információk.
 1. Adjon meg egy nevet az alkalmazásnak.
 1. Az alkalmazás típusának válassza **Web app és az API**.
-1. A bejelentkezési URL-címet adja meg a bejelentkezési URL-címét a fejlesztői portál. Ebben a példában a bejelentkezési URL-je https://apimwithaad.portal.azure-api.net/signin.
+1. A bejelentkezési URL-címet adja meg a bejelentkezési URL-címét a fejlesztői portál. Ebben a példában a bejelentkezési URL-je `https://apimwithaad.portal.azure-api.net/signin`.
 1. Válassza ki **létrehozás** hozhat létre az alkalmazást.
 1. Az alkalmazás megkereséséhez válassza ki a **alkalmazásregisztrációk** és Keresés név alapján.
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622252"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058741"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -136,6 +136,8 @@ A Microsoft Authenticator alkalmazás segítségével a fiókokhoz való illeté
 >
 > Ha két módszer szükség felhasználók tudják alaphelyzetbe **vagy** értesítési **vagy** ellenőrzőkódot kívül bármely más módszerek engedélyezve van.
 >
+
+Ha engedélyezi a használatát mindkét értesítés, mobilalkalmazás és az ellenőrző kódot a mobilalkalmazásban, felhasználók, akik regisztrálni a Microsoft Authenticator alkalmazás használatával értesítést értesítés és kód is használhatják az identitásukat.
 
 ### <a name="verification-code-from-mobile-app"></a>Mobilalkalmazás ellenőrzőkódja
 

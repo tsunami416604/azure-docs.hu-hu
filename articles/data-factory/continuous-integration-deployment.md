@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 08/16/2018
 ms.author: douglasl
-ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448441"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054928"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integráció és üzembe helyezés az Azure Data Factoryban
 
@@ -47,6 +47,10 @@ Ez a művelet megnyílik az Azure Portalon, ahol az exportált sablon importálh
 Válassza ki **fájl betöltése** válassza ki az exportált Resource Manager-sablont, és adja meg az összes konfigurációs értékeket (például a társított szolgáltatások).
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
+
+**Kapcsolati karakterláncok**. Megtalálhat a kapcsolati karakterláncok a cikkekben tudnivalók az egyéni összekötők létrehozásához szükséges. Az Azure SQL Database, lásd a [másolhat az Azure SQL Database-ből az Azure Data Factory használatával](connector-azure-sql-database.md). Ellenőrizze a megfelelő kapcsolati karakterláncot – a társított szolgáltatás, például: is megnyithatja Kódnézet az erőforrás a Data Factory felhasználói felületén. A kód nézetben azonban a jelszavának vagy fiókjának titkoskulcs-darabjának a kapcsolati karakterláncot a rendszer eltávolítja. Kód nézet megnyitásához, az alábbi képernyőfelvételen kiemelt ikonnal.
+
+![Nyissa meg a kapcsolati karakterlánc kód megtekintéséhez](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Folyamatos integráció életciklusa
 Itt van a folyamatos integráció és üzembe helyezés, amelyekkel a teljes életciklusát a Data Factory felhasználói felületén VSTS GIT-integráció engedélyezése után:
@@ -174,11 +178,7 @@ Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Akt�
 
 Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Trigger` függvény) a telepítést követően újraindítható az eseményindítók.
 
-## <a name="sample-template-and-script"></a>Mintasablon és parancsfájl
-Két mintát, amely segítségével folyamatos integrációt és üzembe helyezést, a Data Factory használatának első lépései a következők:
-
--   Példa a központi telepítési sablont, amelyet importálhat a vsts-ben.
--   Egy mintaszkriptet eseményindítók telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók. A parancsfájl is tartalmaz a kódot, és törölje az erőforrást, amelyek el lettek távolítva.
+## <a name="sample-deployment-template"></a>A mintasablon üzembe helyezés
 
 Íme egy példa központi telepítési sablont, amelyet importálhat a vsts-ben.
 
@@ -718,7 +718,9 @@ Két mintát, amely segítségével folyamatos integrációt és üzembe helyez�
 }
 ```
 
-Itt látható egy minta parancsfájlt eseményindítók telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók:
+## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Mintaparancsfájl állítsa le és indítsa újra az eseményindítók és karbantartása
+
+Íme egy minta parancsfájlt eseményindítók telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók. A parancsfájl használatával törölje az erőforrást, amelyek el lettek távolítva a kódot is tartalmaz.
 
 ```powershell
 param

@@ -1,6 +1,6 @@
 ---
-title: Első lépések útmutató az Azure-operátorok |} A Microsoft Docs
-description: Az első lépéseket ismertető útmutató Azure-operátorok számára
+title: Útmutató az Azure-operátorok első lépésekhez |} A Microsoft Docs
+description: Első lépésekhez készült Azure informatikai dolgozói útmutató
 services: ''
 documentationcenter: ''
 author: themichaelbender-ms
@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 06/12/2017
+ms.date: 08/21/2018
 ms.author: mibender
-ms.openlocfilehash: 86f11e7c2d5503a0c474a6c15501a6b872c564e3
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 286b9b133bfbe633ad1fe69f66aa11b9e4c4fc1d
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072334"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059645"
 ---
-# <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Bevezetés a felhőalapú számítástechnika és a Microsoft Azure
+# <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
 Ez az útmutató a telepítése és felügyelete a Microsoft Azure-infrastruktúra kapcsolatos alapfogalmakat mutatja be. Ha most ismerkedik a felhőalapú számítástechnika, vagy az Azure, az útmutató segítségével gyorsan elsajátíthatja a fogalmak, üzembe helyezési és kezelési információkról. Ez az útmutató számos szakaszok tárgyalják egy művelet, például a virtuális gép üzembe helyezése, és részletes technical részletességgel adja meg egy hivatkozást.
 
@@ -53,27 +53,33 @@ A kisméretű vállalkozások számára az Azure lehetővé teszi, hogy egy alac
 
 Az elérhető Azure-régiók további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
 
-### <a name="cloud-computing-is-classified-into-three-categories-saas-paas-and-iaas"></a>A felhő-számítástechnika a rendszer három kategóriába sorolhatók: SaaS, PaaS és IaaS.
+### <a name="cloud-computing-model"></a>Felhőalapú számítástechnika modell
 
-#### <a name="saas-software-as-a-service"></a>SaaS: Szolgáltatott szoftver
-
-SaaS olyan szoftver, amely központilag üzemeltetett és kezelt. Általában egy több-bérlős architektúra alapján – az alkalmazás egy verzióját minden ügyfelünk esetében használatos. Ez kiterjeszthető az összes helyen a legjobb teljesítmény érdekében több példányra. SaaS általában szoftvert egy havi vagy éves előfizetés keretében.
-
-A Microsoft Office 365 egy jó példa egy SaaS-ajánlatok. Előfizetők havi vagy éves előfizetési díjat kell fizetnie, és a Microsoft Exchange, a Microsoft OneDrive és a többi szolgáltatás a Microsoft Office programcsomag kapnak. -Előfizetők mindig a legújabb verzióra, és az Exchange-kiszolgálóhoz van kezelve. Telepítés és frissítés Office évente képest, ez a kevésbé költséges és kevesebb beavatkozást igényel.
-
-#### <a name="paas-platform-as-a-service"></a>PaaS: Szolgáltatásként nyújtott platformon
-
-A paas az alkalmazást, amely a felhőalapú szolgáltatás szállítójával biztosít környezetbe helyezi üzembe. A szállító az infrastruktúra kezeléséről elvégzi, így Ön az alkalmazásfejlesztéshez is.
-
-Az Azure biztosít több PaaS számítási ajánlatokat, többek között az Azure Cloud Services (webes és feldolgozói szerepkörök) és az Azure App Service Web Apps funkcióját. Mindkét esetben a fejlesztők saját-alkalmazás üzembe helyezése anélkül, hogy semmit, amelyek azt támogatják és alapelemek több lehetőség is rendelkezik. A fejlesztők hozhat létre virtuális gépeket (VM), jelentkezzen be minden egyes egy Remote Desktop Protocol (RDP) használatával vagy az alkalmazás telepítéséhez nem kell. Ezek csak nyomja le a gomb (vagy zárja be azt), és a Microsoft által biztosított eszközök a virtuális gépek kiépítése üzembe helyezése és az alkalmazás telepíthető.
+Az Azure felhőalapú számítástechnikai az ügyfelek számára nyújtott szolgáltatás kategóriák alapján modellt használ. A szolgáltatás három kategória közé tartozik az infrastruktúra-szolgáltatás (IaaS), Platformszolgáltatás (PaaS) és szoftverszolgáltatás (SaaS). Szállítók ossza meg néhány vagy összes feladata a számítástechnikai halomként az egyes kategóriákban lévő összetevőnél. Vessünk egy pillantást az egyes kategóriák felhőalapú számítástechnika.
+![A felhő-számítástechnikai Stack összehasonlítása](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Infrastruktúra-szolgáltatás
 
-Egy felhőalapú IaaS-szolgáltatón fut, és kezeli az összes fizikai számítási erőforrások és a szükséges szoftverek a számítógép-virtualizálás engedélyezése. Ez a szolgáltatás ügyfele ezek üzemeltetett adatközpontok virtuális gépeket helyez üzembe. Bár a virtuális gépek egy külső helyszíni adatközpontban találhatók, az IaaS-felhasználó rendelkezik a konfigurációs és felügyeleti azok felett.
+Egy felhőalapú IaaS-szolgáltatón fut, és kezeli az összes fizikai számítási erőforrások és a szükséges szoftverek a számítógép-virtualizálás engedélyezése. Ez a szolgáltatás ügyfele ezek üzemeltetett adatközpontok virtuális gépeket helyez üzembe. Bár a virtuális gépek egy külső helyszíni adatközpontban találhatók, az IaaS-felhasználó rendelkezik a konfigurációs és az operációs rendszer az alapul szolgáló infrastruktúra és a felhő szállító felügyeleti felett.
 
 Az Azure számos IaaS-megoldások, beleértve a virtual machines, a virtual machine scale sets és a kapcsolódó hálózati infrastruktúrát tartalmaz. Virtuális gépek egy népszerű, kezdetben áttelepítéshez választott services az Azure-ba, mivel lehetővé teszi, hogy a "lift and shift" migrálási modellben. Konfiguráljon egy virtuális Gépet, mint a saját adatközpontjában futó jelenleg a szolgáltatások infrastruktúrát, és majd telepítse át a szoftvert az új virtuális gépre. Szüksége lehet az URL-címek használatával más szolgáltatásokba vagy tárolókba, például a konfigurációs frissítések végrehajtására, de ezzel a módszerrel több alkalmazásokat telepíthet át.
 
 A Virtual machine scale sets beépített épülő Azure Virtual machines szolgáltatásban, és azonos virtuális gépek fürtjeinek üzembe helyezéséhez egyszerű módot biztosítanak. Virtuálisgép-méretezési csoportok automatikus skálázást is támogatják, úgy, hogy az új virtuális gépet is üzembe helyezhetők automatikusan szükség esetén. Így a virtual machine scale sets ideális platformot jelentenek a magasabb szintű mikroszolgáltatás számítási gazdagépfürtökre, például az Azure Service Fabric és Azure Container Service-ben.
+
+#### <a name="paas-platform-as-a-service"></a>PaaS: Szolgáltatásként nyújtott platformon
+
+A paas az alkalmazást, amely a felhőalapú szolgáltatás szállítójával biztosít környezetbe helyezi üzembe. A szállító hajtja végre az összes infrastruktúra-felügyelettel, így Ön az alkalmazásfejlesztéshez és az adatkezelést.
+
+Az Azure biztosít több PaaS számítási ajánlatokat, többek között az Azure Cloud Services (webes és feldolgozói szerepkörök) és az Azure App Service Web Apps funkcióját. Mindkét esetben a fejlesztők saját-alkalmazás üzembe helyezése anélkül, hogy semmit, amelyek azt támogatják és alapelemek több lehetőség is rendelkezik. A fejlesztők hozhat létre virtuális gépeket (VM), jelentkezzen be minden egyes egy Remote Desktop Protocol (RDP) használatával vagy az alkalmazás telepítéséhez nem kell. Ezek csak nyomja le a gomb (vagy zárja be azt), és a Microsoft által biztosított eszközök a virtuális gépek kiépítése üzembe helyezése és az alkalmazás telepíthető.
+
+#### <a name="saas-software-as-a-service"></a>SaaS: Szolgáltatott szoftver
+
+SaaS olyan szoftver, amely központilag üzemeltetett és kezelt. Általában egy több-bérlős architektúra alapján – az alkalmazás egy verzióját minden ügyfelünk esetében használatos. Ez kiterjeszthető az összes helyen a legjobb teljesítmény érdekében több példányra. SaaS általában szoftvert egy havi vagy éves előfizetés keretében. SaaS általában szoftvert egy havi vagy éves előfizetés keretében. SaaS-szoftverszállítók felelős a a szoftververem összes összetevőjét, így az összes Ön által kezelt nyújtott szolgáltatások.
+
+A Microsoft Office 365 egy jó példa egy SaaS-ajánlatok. Előfizetők havi vagy éves előfizetési díjat kell fizetnie, és a Microsoft Exchange, a Microsoft OneDrive és a többi szolgáltatás a Microsoft Office programcsomag kapnak. -Előfizetők mindig a legújabb verzióra, és az Exchange-kiszolgálóhoz van kezelve. Telepítés és frissítés Office évente képest, ez a kevésbé költséges és kevesebb beavatkozást igényel.
+
+
+
 
 ## <a name="azure-services"></a>Azure-szolgáltatások
 
@@ -111,7 +117,7 @@ NFS-adatok tárolására és kezelésére:
 
 Működő alkalmazások és szolgáltatások:
 
--   Az Azure Active Directory (Azure AD)
+-   Azure Active Directory (Azure AD)
 
 -   Kapcsolódás az Azure Service Bus elosztott rendszerek
 
@@ -175,6 +181,9 @@ Az Azure parancssori felület egy olyan eszköz, létrehozása, kezelése és Az
 
 **REST API-k** Azure REST API-k, amelyek támogatják az Azure portal felhasználói felületén egy készletét épül. A legtöbb REST API-k lehetővé teszi, hogy programozott módon üzembe helyezése és kezelése az Azure-erőforrások és az alkalmazások internetes bármely eszközről is támogatottak. További információkért lásd: a [Azure REST SDK-leírás](https://docs.microsoft.com/rest/api/index).
 
+### <a name="azure-cloud-shell"></a>Azure Cloud Shell
+
+Rendszergazdák hozzáférhetnek az Azure PowerShell és az Azure CLI a böngésző-akadálymentes használatot biztosít az Azure Cloud Shell nevű keresztül. Az interaktív felület a választott, vagy a Bash vagy a PowerShell parancssori felület használata a Linux és Windows rendszergazdák rugalmas eszköz biztosít. Az Azure Cloud Shell a portálon keresztül érhetők el, egy különálló webes felület, [shell.azure.com](https://shell.azure.com), vagy egy másik hozzáférési pontok számát. További információkért lásd: [áttekintése az Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 ## <a name="azure-subscriptions"></a>Azure-előfizetések
 
 Egy előfizetés az Azure-szolgáltatások logikai csoportosítása, amely egy Azure-fiókra van csatolva. Egy konfigurált replikához Azure-fiók több előfizetést is tartalmazhat. Azure-szolgáltatások használati díjának felszámolása előfizetésenként alapon történik. Azure-előfizetéssel rendelkezik, az előfizetés teljes hozzáféréssel rendelkező fiókot a rendszergazdák és az előfizetés az összes szolgáltatás felett rendelkező szolgáltatás-rendszergazdák. A rendszergazdák, amellett az egyes fiókok is megadható részletes vezérlési Azure-erőforrások RBAC-n keresztül.
@@ -355,6 +364,7 @@ Az internetről a virtuális gépek elérése szükséges a társított hálóza
 
 A virtuális géphez való hozzáférés a nyilvános IP-címen keresztül, egy hálózati biztonsági csoport (NSG) erőforrás használatával kezelheti. Az NSG-KET gyakorlatilag tűzfalként funkcionál, és lehetővé teszi, hogy vagy a hálózati adapter vagy alhálózat konfigurálásában a meghatározott portokon keresztül a forgalom megtagadásához. Például egy távoli asztali munkamenetet létrehozni egy Azure virtuális Gépen, kell konfigurálni az NSG-t, hogy a bejövő forgalmat a 3389-es porton. További információkért lásd: [egy virtuális gép portjainak megnyitása az Azure-ban az Azure portal használatával](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
+
 Végül minden olyan számítógép rendszer felügyeletét, a kell adnia biztonsági egy Azure virtuális gépen, az operációs rendszer biztonsági hitelesítő adatok és a szoftver tűzfalak használatával.
 
 ## <a name="azure-storage"></a>Azure Storage
@@ -415,7 +425,7 @@ Storage-fiók üzembe helyezésének számos lehetőség van.
 
 **Portál**
 
-Storage-fiók az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférést. Új tárfiók üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Miután létrehozta a tárfiókot, létrehozhat egy blob tárolókhoz vagy fájlmegosztásokhoz a portál használatával. Tábla létrehozása, és a várólista-entitások programozott módon. További információkért lásd: [hozzon létre egy tárfiókot](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
+Storage-fiók az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférést. Új tárfiók üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Miután létrehozta a tárfiókot, létrehozhat egy blob tárolókhoz vagy fájlmegosztásokhoz a portál használatával. Tábla létrehozása, és a várólista-entitások programozott módon. További információkért lásd: [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md).
 
 Mellett egy storage-fiókot az Azure Portalról üzembe helyezése Azure Resource Manager-sablon a portálról is telepítheti. Ez telepítését és konfigurálását összes erőforrást, mert definiálva a sablonban, beleértve az összes tárfiókot. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 

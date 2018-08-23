@@ -1,9 +1,9 @@
 ---
-title: Üzembe helyezheti a sablonokat az Azure-verem PowerShell használatával |} Microsoft Docs
-description: A sablon üzembe helyezése Azure verem PowerShell használatával.
+title: A sablonok PowerShell használatával az Azure Stack üzembe helyezése |} A Microsoft Docs
+description: A sablon üzembe helyezése az Azure Stack PowerShell használatával.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 12fe32d7-0a1a-4c02-835d-7b97f151ed0f
@@ -12,32 +12,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 4af82deef029120aa2699e7c69c501ae61a1e8bd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 445628679a09a1884f63cdce446adec476af39af
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359815"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060631"
 ---
-# <a name="deploy-a-template-to-azure-stack-using-powershell"></a>A sablon telepítéséhez Azure verem PowerShell használatával
+# <a name="deploy-a-template-to-azure-stack-using-powershell"></a>A sablon üzembe helyezése az Azure Stack PowerShell-lel
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-PowerShell központi telepítése Azure Resource Manager-sablonok Azure verem használható. Ez a cikk bemutatja, hogyan lehet egy sablon üzembe helyezése a PowerShell használatával.
+Azure Stack üzembe helyezése Azure Resource Manager-sablonok a PowerShell használatával is. Ez a cikk bemutatja, hogyan-sablon üzembe helyezése a PowerShell használatával.
 
-## <a name="run-azurerm-powershell-cmdlets"></a>AzureRM PowerShell-parancsmagok
+## <a name="run-azurerm-powershell-cmdlets"></a>Futtassa az AzureRM PowerShell-parancsmagok
 
-Ez a példa AzureRM PowerShell-parancsmagok és a Githubon tárolt sablont. A sablon létrehoz egy Windows Server 2012 R2 Datacenter virtuális gépet.
+Ebben a példában az AzureRM PowerShell-parancsmagok és a githubon tárolt sablonból használja. A sablon létrehoz egy Windows Server 2012 R2 Datacenter virtuális gépet.
 
 >[!NOTE]
->Ebben a példában előtt győződjön meg arról, hogy [PowerShell konfigurált](azure-stack-powershell-configure-user.md) Azure verem felhasználók.
+>Előtt meg ebben a példában, győződjön meg arról, hogy [PowerShell konfigurált](azure-stack-powershell-configure-user.md) az Azure Stack felhasználói számára.
 
-1. Ugrás a <http://aka.ms/AzureStackGitHub> , és keresse a **101-egyszerű-windows-alapú virtuális gép** sablont. Menti a sablont, erre a helyre: C:\\sablonok\\azuredeploy-101-egyszerű-windows-vm.json.
+1. Lépjen a <http://aka.ms/AzureStackGitHub> , és keresse meg a **101-egyszerű-windows-vm** sablont. A sablon mentése ezen a helyen: C:\\sablonok\\azuredeploy-101-egyszerű – a windows-vm.json.
 2. Nyisson meg egy rendszergazda jogú PowerShell-parancssort.
-3. Cserélje le *felhasználónév* és *jelszó* a felhasználónévvel és jelszóval és majd futtassa a parancsfájlt a következő parancsfájlban.
+3. Cserélje le *felhasználónév* és *jelszó* a felhasználónév és jelszó és futtassa a parancsfájlt az alábbi szkriptben.
 
    ```PowerShell
        # Set Deployment Variables
@@ -62,9 +62,9 @@ Ez a példa AzureRM PowerShell-parancsmagok és a Githubon tárolt sablont. A sa
    ```
 
    >[!IMPORTANT]
-   >A parancsfájl futtatása Everytime növelhető a "$myNum" paraméter, a központi telepítés felülírásának elkerülése érdekében.
+   >Futtassa ezt a parancsfájlt, amikor valaki növelni az üzemelő példány felülírásának elkerülése érdekében a "$myNum" paraméter értékét.
 
-4. Nyissa meg a verem Azure portálon válassza **Tallózás**, majd válassza ki **virtuális gépek** található a új virtuális gép (*myDeployment001*).
+4. Nyissa meg az Azure Stack portálon, válassza **Tallózás**, majd válassza ki **virtuális gépek** keresése az új virtuális gépet (*myDeployment001*).
 
 ## <a name="next-steps"></a>További lépések
 

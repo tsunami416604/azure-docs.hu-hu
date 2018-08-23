@@ -1,79 +1,80 @@
 ---
-title: Key Vault-támogatás hozzáadása az ASP.NET projektben, Visual Studio használatával |} Microsoft Docs
-description: Ez az oktatóanyag segítségével megtudhatja, hogyan Key Vault támogatásához egy ASP.NET- vagy ASP.NET Core webalkalmazáshoz.
+title: A Key Vault-támogatás hozzáadása az ASP.NET-projektben a Visual Studio használatával |} A Microsoft Docs
+description: Ez az oktatóanyag segítségével elsajátíthatja a Key Vault támogatásának hozzáadása egy ASP.NET- vagy ASP.NET Core-webalkalmazás.
 services: key-vault
 author: ghogen
 manager: douge
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: b4fed559b6364149170dc8b1da421c9c3ee1203c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5b3cea87e7762e492432722c54a1a8aaa342b84a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635763"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058125"
 ---
-# <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webes alkalmazás a Visual Studio kapcsolódó szolgáltatások segítségével
+# <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazás a Visual Studio csatlakoztatott szolgáltatásai segítségével
 
-Ebben az oktatóanyagban, megtudhatja, hogyan könnyen hozzáadása mindent megtalál az Azure Key Vault használatával webes projektek a Visual Studio, a titkos kulcsok kezeléséhez, függetlenül attól, hogy az ASP.NET Core vagy bármilyen ASP.NET-projekt indításához. Visual Studio 2017 kapcsolódó szolgáltatások szolgáltatásának használatát, akkor a Visual Studio automatikusan adja hozzá a NuGet-csomagok és a konfigurációs beállításokat, csatlakoznia kell az Azure Key Vault. 
+Ebben az oktatóanyagban, megtudhatja, hogyan adhat hozzá, amit az Azure Key Vaulttal a webes projekt a Visual Studióban, a titkos kulcsok kezeléséhez, hogy az ASP.NET Core vagy bármilyen típusú ASP.NET-projekt indításához. A csatlakoztatott szolgáltatás használatával a Visual Studio 2017, a Visual Studio automatikusan adja hozzá a NuGet-csomagok és a konfigurációs beállításokat kell csatlakozni a Key Vault az Azure-ban is rendelkezhet. 
 
-A által végzett módosításokat, hogy kapcsolódó szolgáltatások a projekt engedélyezze a Key Vault a részletekért lásd: [kulcsot tároló csatlakoztatott szolgáltatás – Mi történt az ASP.NET 4.7.1 projekt](vs-key-vault-aspnet-what-happened.md) vagy [kulcsot tároló kapcsolódó szolgáltatás – Mi történt az ASP.NET Core projekt](vs-key-vault-aspnet-core-what-happened.md).
+A módosításokat, hogy csatlakoztatott szolgáltatásai lehetővé teszi a projekt a Key Vault engedélyezése a részletekért lásd: [Key Vault csatlakoztatott szolgáltatás – Mi történt a saját ASP.NET 4.7.1 projekt](vs-key-vault-aspnet-what-happened.md) vagy [Key Vault csatlakoztatott szolgáltatás – Mi történt ASP.NET Core-projektemmel](vs-key-vault-aspnet-core-what-happened.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- **A Visual Studio 2017 verzió 15.7** rendelkező a **webes fejlesztési** alkalmazások és szolgáltatások telepítése. [Most töltse le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- Az ASP.NET (és nem alapvető) szüksége van a .NET-keretrendszer 4.7.1 fejlesztői eszközök, amelyek alapértelmezés szerint nincs telepítve. A telepítéshez, indítsa el a Visual Studio telepítő, válassza a **módosítás**, és válassza a **az egyes összetevők**, majd a jobb oldalon bontsa ki a **ASP.NET és a webes fejlesztési**, és válassza a **4.7.1 .NET-keretrendszer fejlesztői eszközök**.
-- Az ASP.NET 4.7.1 vagy az ASP.NET Core 2.0 webes projekt megnyitása.
+- **A Visual Studio 2017 verzió 15.7** együtt a **webfejlesztés** számítási feladattal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- ASP.NET (és nem alapvető) szüksége lesz a .NET-keretrendszer 4.7.1 fejlesztői eszközök, amelyek alapértelmezés szerint nincs telepítve. A telepítéshez indítsa el a Visual Studio telepítőjét, válassza a **módosítás**, és válassza a **az egyes összetevők**, majd a jobb oldalon bontsa ki a **ASP.NET és webfejlesztési**, és válassza a **4.7.1 .NET-keretrendszer fejlesztői eszközök**.
+- Egy ASP.NET 4.7.1 vagy ASP.NET Core 2.0-s webes projekt megnyitása.
 
-## <a name="add-key-vault-support-to-your-project"></a>Key Vault-támogatás hozzáadása a projekthez
+## <a name="add-key-vault-support-to-your-project"></a>Key Vault támogatásának hozzáadása a projekthez
 
-1. A **Megoldáskezelőben**, válassza a **Hozzáadás** > **kapcsolódó szolgáltatás**.
-   A csatlakoztatott szolgáltatás lapján jelenik meg, amelyen szolgáltatások adhat hozzá a projekthez.
-1. A választható szolgáltatások menüben válassza a **biztonságos titkokat az Azure Key Vault**.
+1. A **Megoldáskezelőben**, válassza a **Hozzáadás** > **csatlakoztatott szolgáltatás**.
+   A projekthez is hozzáadhat szolgáltatásokat a csatlakoztatott szolgáltatás oldalon jelenik meg.
+1. Elérhető szolgáltatások menüjében válassza **biztonságos titkos kulcsok az Azure Key Vault**.
 
-   ![Válassza ki a "Biztonságos titkokat az Azure Key Vault"](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
+   !["Az Azure Key Vault biztonságos titkoskulcs" kiválasztása](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-   Ha most jelentkezik be a Visual Studio, és a fiókjához társított Azure-előfizetéssel rendelkezik, megjelenik egy oldal, a legördülő lista az Ön előfizetéseit.
-1. Válassza ki az előfizetést szeretné használni, és válassza az új vagy meglévő Key Vault, vagy válassza ki a szerkesztési hivatkozáshoz, az automatikusan létrehozott nevet módosításához.
+   Ha már bejelentkezett a Visual Studióban, és a fiókhoz társított Azure-előfizetéssel rendelkezik, megjelenik egy oldal, és a egy legördülő lista az összes előfizetés.
+1. Válassza ki az előfizetést szeretné használni, és kattintson az új vagy meglévő kulcstároló, vagy válassza a Szerkesztés hivatkozásra módosíthatja az automatikusan létrehozott nevet.
 
    ![Válassza ki előfizetését.](media/vs-key-vault-add-connected-service/KeyVaultConnectedService3.PNG)
 
 1. Írja be a Key vault használni kívánt nevét.
 
-   ![Nevezze át a Key Vault, és válasszon egy erőforráscsoportot](media/vs-key-vault-add-connected-service/KeyVaultConnectedService-Edit.PNG)
+   ![Nevezze át a Key Vaultban, és válasszon ki egy erőforráscsoportot](media/vs-key-vault-add-connected-service/KeyVaultConnectedService-Edit.PNG)
 
-1. Válasszon ki egy meglévő erőforráscsoportot, vagy válasszon egy automatikusan létrehozott unqiue nevű egy új létrehozásához.  Ha azt szeretné, más néven új csoport létrehozásához, használhatja a [Azure Portal](https://portal.azure.com), majd zárja be a lapot, és töltse be újra az erőforráscsoportok listáját indítsa újra.
-1. Válassza ki a régiót, amelyben a kulcstároló létrehozásához. Ha a webalkalmazás az Azure-ban, a régiót, amelyen az optimális teljesítmény érdekében webalkalmazás kiválasztása
-1. Válasszon ki egy árképzési modellt. További információkért lásd: [Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
+1. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat egy automatikusan létrehozott egyedi neve.  Ha szeretne létrehozni egy új csoportot egy másik névvel, használhatja a [az Azure Portal](https://portal.azure.com), majd zárja be a lapot, és töltse be újra az erőforráscsoportok listájának újraindítás.
+1. Válassza ki a régiót, amelyben létrehozza a Key Vaultban. Ha webalkalmazása az Azure-ban üzemeltetett, válassza ki a régiót, amelyben az optimális teljesítmény webes alkalmazást.
+1. Válasszon ki egy díjszabási modellt. További információkért lásd: [Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/).
 1. Kattintson az OK gombra, fogadja el a konfigurációs beállításokkal.
-1. Válasszon **Hozzáadás** a kulcstároló létrehozásához. A létrehozási folyamat meghiúsulhat, ha úgy dönt, hogy a nevet, amely már használták.  Ha ez előfordul, a **szerkesztése** hivatkozás nevezze át a Key Vault, majd próbálja meg újból.
+1. Válasszon **Hozzáadás** a Key Vault létrehozása. A létrehozási folyamat meghiúsulhat, ha úgy dönt, hogy olyan nevet, amely már használták.  Ha ez történik, használja a **szerkesztése** hivatkozás nevezze át a Key Vaultban, és próbálkozzon újra.
 
    ![Csatlakoztatott szolgáltatás hozzáadása a projekthez](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. Most adja hozzá a titkos kulcsot a kulcstároló, az Azure-ban. Ahhoz, hogy a megfelelő helyen, a portálon, a felügyelete titkos kulcsok a Key Vault tárolt hivatkozásra kattintania. Ha korábban bezárta a lap, vagy a projekt, lépjen vele a [Azure-portálon](https://portal.azure.com) kiválasztásával **minden szolgáltatás**a **biztonsági**, válassza a **Key Vault**, majd válassza ki az imént létrehozott kulcstároló.
+1. Ezután adjon hozzá egy titkos kulcsot a Key vaultban az Azure-ban. A portálon jó helyen lekéréséhez kattintson a kezelés titkos kulcsok a Key vaultban tárolt mutató hivatkozás. Ha már bezárta a lap, vagy a projekthez, navigálhat a a [az Azure portal](https://portal.azure.com) kiválasztásával **minden szolgáltatás**alatt **biztonsági**, válassza a **Key Vault**, majd válassza ki az újonnan létrehozott Key Vault.
 
-   ![Navigáljon a portálon](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
+   ![Navigálás a portálon](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
-1. A kulcs a Key Vault szakaszban létrehozott tároló, válassza a **titkok**, majd **létrehozása vagy importálása**.
+1. A kulcs a Key Vault szakaszban létrehozott tároló, válassza a **titkok**, majd **létrehozás/importálás**.
 
-   ![Titkos kulcs létrehozása és importálása](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
+   ![Titkos kulcs létrehozás/importálás](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
-1. Adjon meg egy titkos kulcsot, például a "MySecret", és adjon neki egy tesztet, bármilyen karakterlánc típusú értéket, majd kattintson a **létrehozása** gombra.
+1. Adja meg a titkos kulcs, például a "MySecret", és adjon neki teszteléshez használhat bármilyen karakterlánc típusú értéket, majd válassza a **létrehozás** gombra.
 
    ![Titkos kulcs létrehozása](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
 
-1. (választható) Adja meg egy másik titkos, de ezúttal tegye közzé a kategória elnevezése "Titkok--MySecret". Ez a szintaxis adja meg egy kategóriát "Kulcsok", amely tartalmazza a titkos kulcs "MySecret."
+1. (nem kötelező) Adjon meg egy másik titkos, de ezúttal helyezzük el egy kategória szerint elnevezése "Titkos – MySecret". Ez a szintaxis adja meg a "Titok" kategória, amely tartalmazza a titkos kulcs "MySecret."
  
-Most a titkos kód végezheti el. A következő lépések eltérnek attól függően, hogy használja-e ASP.NET 4.7.1 vagy az ASP.NET Core.
+Most a kód a titkos kulcsokat is elérheti. A következő lépések eltérnek attól függően, hogy a ASP.NET 4.7.1- vagy ASP.NET Core.
 
-## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>Hozzáférés a titkos kód (az ASP.NET Core projektek)
+## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>A titkos kód (az ASP.NET Core-projektek) eléréséhez
 
-1. A Visual Studióban az ASP.NET Core projektben hivatkozhat ezeknek a kulcsoknak a kódot az alábbi kifejezések használatával:
+1. A Visual Studióban, az ASP.NET Core-projektben most már hivatkozhat titkos adatokat az alábbi kifejezések használatával a kódban:
  
    ```csharp
       config["MySecret"] // Access a secret without a section
@@ -81,13 +82,13 @@ Most a titkos kód végezheti el. A következő lépések eltérnek attól függ
       config.GetSection("Secrets")["MySecret"] // Get the configuration section and access a secret in it.
    ```
 
-1. .Cshtml lapon fel About.cshtml, vegye fel a @inject irányelv tetejénél található a fájl egy változó beállításához használhatja a Key Vault konfigurációjának eléréséhez.
+1. .Cshtml lapon tegyük fel, hogy About.cshtml, adja hozzá a @inject irányelv tetején, a fájl egy változó beállításához használhatja a Key Vault-konfiguráció.
 
    ```cshtml
       @inject Microsoft.Extensions.Configuration.IConfiguration config
    ```
 
-1. Egy teszt, ellenőrizheti, hogy a titkos kulcs értéke érhető el az oldalak egyik megjelenítésével. Használjon @config config változó hivatkozni.
+1. Egy teszt, ellenőrizheti, hogy a titkos kód érhető el az egyik oldalra megjelenítésével. Használat @config a konfigurációs változója hivatkozni.
  
    ```cshtml
       <p> @config["MySecret"] </p>
@@ -95,11 +96,11 @@ Most a titkos kód végezheti el. A következő lépések eltérnek attól függ
       <p> @config["Secrets:MySecret"] </p>
    ```
 
-1. Build és a webalkalmazás futtatásához, nyissa meg a jogi tudnivalók megjelenítése Névjegy lapot, és tekintse meg a "secret" értéket.
+1. Hozhat létre és futtassa a webalkalmazást, navigáljon a névjegy lapra, és tekintse meg a "secret" értéket.
 
-## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>A titkos kód eléréséhez (ASP.NET 4.7.1 projektek)
+## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Hozzáférési kód a titkos kulcsokat (ASP.NET 4.7.1 projektek)
 
-1. Az alábbiak szerint módosítsa a Web.config fájlban. A kulcsokban helyőrzők, amely a Key Vault titkos kulcsainak értékeivel AzureKeyVault ConfigurationBuilder váltja fel.
+1. Módosítsa a következőképpen web.config. A kulcsokat a helyőrzők, amely a Key Vault titkos értékeket az azurekeyvault értékre van ConfigurationBuilder lesz lecserélve.
 
    ```xml
      <appSettings configBuilders="AzureKeyVault">
@@ -112,7 +113,7 @@ Most a titkos kód végezheti el. A következő lépések eltérnek attól függ
      </appSettings>
    ```
 
-1. A HomeController a jogi tudnivalók megjelenítése Névjegy vezérlő metódusban adja hozzá a következő sorokat beolvasni a titkos kulcsot, és tárolja a ViewBag.
+1. A HomeController a névjegy vezérlő metódusban adja hozzá a következő sorokat beolvasni a titkos kulcsot, és tárolja a ViewBag.
  
    ```csharp
             var secret = ConfigurationManager.AppSettings["MySecret"];
@@ -121,18 +122,18 @@ Most a titkos kód végezheti el. A következő lépések eltérnek attól függ
             ViewBag.Secret2 = $"Secret2: {secret2}";
    ```
 
-1. A About.cshtml nézetben adja hozzá a következő, a titkos kulcsát (csak tesztelés) értékének megjelenítésére.
+1. A About.cshtml nézetben adja hozzá a következőt jeleníti meg a titkos kulcsot (csak tesztelés) értékét.
 
    ```csharp
       <h3>@ViewBag.Secret</h3>
       <h3>@ViewBag.Secret2</h3>
    ```
 
-Gratulálunk, mostantól meggyőződött róla, hogy a webalkalmazás biztonságosan tárolt titkos kulcsok eléréséhez Key Vault használhatja.
+Gratulálunk, mostantól meggyőződött róla, hogy a webalkalmazás használhat a Key Vault eléréséhez biztonságosan tárolt titkos kulcsok.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség, törölje a csoportot. Ez a Key Vault és a kapcsolódó erőforrások törlése. Az erőforráscsoport törlése a Portalon keresztül:
+Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
 
 1. Írja be az erőforráscsoport nevét a Portal tetején található keresőmezőbe. Amikor az eredmények listájában megjelenik az ebben a rövid útmutatóban használt erőforráscsoport, jelölje ki.
 2. Válassza az **Erőforráscsoport törlése** elemet.
@@ -140,4 +141,4 @@ Ha már nincs szükség, törölje a csoportot. Ez a Key Vault és a kapcsolód�
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet a Key Vault fejlesztői ehhez beolvassa a [Key Vault fejlesztői útmutatója](key-vault-developers-guide.md)
+További információ a Key Vault fejlesztői olvassa el a [Key Vault fejlesztői útmutató](key-vault-developers-guide.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 7b41d3af5fbbbef90676fe37056b69d89c4f6c48
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: ab6936d62aac5502d70239bacfbfd15bd6b793ab
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581545"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060181"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Feltételes hozzáférés az Azure Active Directory fejlesztői útmutatója
 
@@ -78,7 +78,7 @@ A fejlesztők mutatták igénybe és fűzze hozzá egy új kérelmet az Azure AD
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD feltételes hozzáférés lehetővé teszi a [prémium szintű Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis#choose-an-edition). További információ a licencelésről a követelmények a [licenccel nem rendelkező használati jelentés](../active-directory-conditional-access-unlicensed-usage-report.md). A fejlesztők csatlakozhat a [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), amely tartalmazza a nagyvállalati mobilitási csomag, amely magában foglalja a prémium szintű Azure AD-előfizetés ingyenes.
+Az Azure AD feltételes hozzáférés lehetővé teszi a [prémium szintű Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-whatis#choose-an-edition). További információ a licencelésről a követelmények a [licenccel nem rendelkező használati jelentés](../active-directory-conditional-access-unlicensed-usage-report.md). A fejlesztők csatlakozhat a [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), amely tartalmazza a nagyvállalati mobilitási csomag, amely magában foglalja a prémium szintű Azure AD-előfizetés ingyenes.
 
 ### <a name="considerations-for-specific-scenarios"></a>Bizonyos forgatókönyvek esetén megfontolandó szempontok
 

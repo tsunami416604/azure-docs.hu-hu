@@ -1,6 +1,6 @@
 ---
-title: Üzleti folytonossági és vészhelyreállítási (BCDR) helyreállítási javaslatok az Azure-SSIS integrációs modul |} A Microsoft Docs
-description: Ez a cikk ismerteti az üzleti folytonossági és vészhelyreállítási helyreállítási javaslatok az Azure-SSIS integrációs modul.
+title: Az Azure-SSIS integrációs modul konfigurálása az SQL Database feladatátvételi |} A Microsoft Docs
+description: Ez a cikk ismerteti az Azure-SSIS integrációs modul konfigurálása az Azure SQL Database georeplikációja és a feladatátvételt az SSISDB-adatbázis
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,23 +8,69 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 37347df2d543116085f52fed76c692b60fac2ad6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 2012ccf4d9fd3e62ba248f29f922f868077e4061
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285783"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42061382"
 ---
-# <a name="business-continuity-and-disaster-recovery-bcdr-recommendations-for-azure-ssis-integration-runtime"></a>Üzleti folytonossági és vészhelyreállítási (BCDR) helyreállítási javaslatok az Azure-SSIS integrációs modul
+# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Az Azure SQL Database georeplikációja és a feladatátvétel az Azure-SSIS integrációs modul konfigurálása
 
-Vész-helyreállítási céljából állítsa le az Azure-SSIS integrációs modul az a régió, ahol éppen fut, és indítsa el újra egy másik régiót váltani. Javasoljuk, hogy használjon [Azure párosított régiói](../best-practices-availability-paired-regions.md) erre a célra.
+Ez a cikk ismerteti az Azure-SSIS integrációs modul konfigurálása az Azure SQL Database georeplikáció az SSISDB-adatbázisba. A feladatátvétel esetén biztosítható, hogy az Azure-SSIS integrációs modul használata a másodlagos adatbázis követi.
 
-## <a name="prerequisites"></a>Előfeltételek
+Georeplikáció és feladatátvétel az SQL Database kapcsolatos további információkért lásd: [áttekintése: aktív georeplikációs és automatikus feladatátvételi csoportok](../sql-database/sql-database-geo-replication-overview.md).
+
+## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>1. forgatókönyv – Azure-SSIS integrációs modul mutat-e írási-olvasási figyelői végpont
+
+### <a name="conditions"></a>Feltételek
+
+Ez a szakasz vonatkozik, az alábbi feltételek teljesülése esetén:
+
+- Az Azure-SSIS integrációs modul az írási-olvasási figyelői végpont a feladatátvételi csoport mutat.
+
+  ÉS
+
+- Az SQL Database-kiszolgáló *nem* konfigurálva a virtuális hálózati szolgáltatási végpont szabályhoz.
+
+### <a name="solution"></a>Megoldás
+
+Amikor feladatátvételt hajt végre, nem látja, az Azure-SSIS integrációs modult. Az Azure-SSIS integrációs modul automatikusan csatlakozik az új elsődleges, a feladatátvételi csoport.
+
+## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>2. forgatókönyv – Azure-SSIS integrációs modul mutató elsődleges kiszolgálói végpont
+
+### <a name="conditions"></a>Feltételek
+
+Ez a szakasz vonatkozik, amikor a következő feltételek valamelyike teljesül:
+
+- Az Azure-SSIS integrációs modul a feladatátvételi csoport az elsődleges kiszolgáló végpontra mutat. Ezt a végpontot megváltozik, amikor feladatátvételt hajt végre.
+
+  VAGY
+
+- Az Azure SQL Database-kiszolgáló úgy van konfigurálva, a virtuális hálózati szolgáltatási végpont szabállyal.
+
+  VAGY
+
+- Az adatbázis-kiszolgáló egy SQL Database felügyelt példánya és a virtuális hálózat konfigurálva.
+
+### <a name="solution"></a>Megoldás
+
+Amikor feladatátvételt hajt végre, hogy tegye a következőket:
+
+1. Állítsa le az Azure-SSIS integrációs modult.
+
+2. Konfigurálja újra az integrációs modul, mutasson az új elsődleges végpont és a egy virtuális hálózatot az új régióban.
+
+3. Indítsa újra az integrációs
+
+A következő szakaszok ismertetik részletesebben ezeket a lépéseket.
+
+### <a name="prerequisites"></a>Előfeltételek
 
 - Győződjön meg arról, hogy engedélyezte a vészhelyreállítás az Azure SQL Database-kiszolgáló abban az esetben a kiszolgáló rendelkezik egy kimaradás egyszerre. További információ: [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](../sql-database/sql-database-business-continuity.md).
 
@@ -32,13 +78,13 @@ Vész-helyreállítási céljából állítsa le az Azure-SSIS integrációs mod
 
 - Ha egy egyéni telepítés használ, szükség lehet a SAS URI-t egy másik előkészítése a blob-tároló, amely tárolja az egyéni telepítési parancsfájl és az azokhoz tartozó fájlokat, így továbbra is szolgáltatáskiesés esetén érhető el. További információ: [konfigurálni egy Azure-SSIS integrációs modul egyéni telepítés](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-## <a name="steps"></a>Lépések
+### <a name="steps"></a>Lépések
 
 Állítsa le az Azure-SSIS integrációs modul, az integrációs modul váltson egy új régióban, és indítsa el az alábbi lépéseket követve.
 
 1. Állítsa le az integrációs modul az eredeti régióban.
 
-2. Hívja a következő parancsot a PowerShellben az integrációs modul frissítéséhez
+2. Hívja meg a következő parancsot a PowerShellben az integrációs modul frissítéséhez az új beállításokkal.
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -Location "new region" `

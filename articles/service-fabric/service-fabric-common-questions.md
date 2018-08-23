@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: d864a663604794a249b08a7c7be471c3abba32af
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0b731e94675992e59f79b61a2f3a15fa20bdf8a7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971536"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054312"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések a Service Fabric
 
@@ -27,11 +27,11 @@ Nincsenek számos összetevővel kapcsolatos gyakori kérdésekre mi a Service F
 
 ## <a name="cluster-setup-and-management"></a>Fürt beállítása és kezelése
 
-### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Hogyan hajthatom végre visszaállítási saját Service Fabric-fürt tanúsítványt?
+### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Hogyan do I állítja vissza a Service Fabric-fürt tanúsítványt?
 
 Az alkalmazásnak minden olyan frissítés szükséges visszagörgetése hibaészlelés állapotát a Service Fabric fürtök kvóruma számára a módosítás; véglegesítése előtt véglegesített módosítások csak előre lesz állítva. Eszkalációs mérnök a keresztül ügyfél-támogatási szolgálathoz, helyreállítani, szükség lehet, ha egy nem figyelt használhatatlanná tévő tanúsítvány változás fejlődéséből.  [Service Fabric-alkalmazás frissítése](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) vonatkozik [alkalmazásfrissítési paraméterek](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master), és nyújt nulla állásidő frissítési megtartva.  Az ajánlott alkalmazás a következő frissítési figyelt módot, állapot-ellenőrzések passzok, működés közbeni vissza automatikusan, ha egy alapértelmezett szolgáltatás frissítése nem sikerül típusán alapuló automatikus folyamat révén a frissítési tartományok.
  
-Ha a fürt továbbra is használhatja a a Resource Manager-sablonban, ajánlott a klasszikus tanúsítvány-ujjlenyomat tulajdonság, [köznapi név származó tanúsítvány-ujjlenyomat-módosítás fürt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), használhatja a modern titkos kulcsok felügyeleti funkciókat.
+Ha a fürt továbbra is kihasználva a klasszikus tanúsítvány-ujjlenyomat tulajdonság a Resource Manager-sablonban, azt javasoljuk, Ön [tanúsítvány ujjlenyomatát a fürt módosítása köznapi név](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), használhatja a modern titkos kulcsok felügyeleti funkciókat.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Több Azure-régióban, vagy saját adatközpontok kiterjedő álló fürtöket tud létrehozni?
 
@@ -119,6 +119,12 @@ Igen.  További információkért lásd: [-fürt létrehozása csatlakoztatott a
 | FabricRM.exe |
 | FileStoreService.exe |
  
+### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hogyan hitelesítheti az alkalmazást a KeyVault titkos kódok lekéréséhez?
+Azt jelenti, hogy az alkalmazás hitelesítéséhez a KeyVault hitelesítő adatok beszerzése a következők:
+
+A. Az alkalmazások létrehozási/csomagolási feladat során kérje le a tanúsítványt az SF alkalmazás adatok csomagba, és használja ezt a KeyVault hitelesítésre.
+B. Virtuálisgép-méretezési csoport beállítása engedélyezve van az MSI-gazdagépek, egy egyszerű PowerShell SetupEntryPoint SF alkalmazásához be is fejleszthet [egy hozzáférési jogkivonatot az MSI-végpontról](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/how-to-use-vm-token), majd [beolvasni a titkos kulcsokat a KeyVault](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0)
+
 ## <a name="application-design"></a>Alkalmazás-tervezés
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Mi az a legjobb módszer használatával adatokat lekérdezni, egy megbízható gyűjteményben partíciók között?

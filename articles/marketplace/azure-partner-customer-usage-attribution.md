@@ -14,222 +14,264 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ellacroi
-ms.openlocfilehash: 95ad327380707dcfe14aa5aa3d91b8da2309eb05
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c3690c9be940a69bd2f8745493d4e2648bac6d9b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630891"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055339"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
-Partnerként szoftverek az Azure-hoz, a megoldások vagy szükséges Azure-összetevőket, vagy közvetlenül az Azure-infrastruktúra üzembe helyezni.  Amikor egy ügyfél üzembe helyez egy partneri megoldás, és kiosztja a saját Azure-erőforrások, jelenleg a partner számára ezen központi telepítések állapotát a bonyolult és nehezen optika kaphat Azure fejlődés korlátja lesz hatással. Magasabb szintű láthatóság hozzáadása segíti a partnerek igazodnak a Microsoft értékesítői csapatok és a Microsoft partner programok kreditet kaphat.   
+Partnerként szoftverek az Azure a megoldások Azure-összetevőket kell, vagy közvetlenül az Azure-infrastruktúra üzembe van szükségük. Ügyfelek, akik egy partnermegoldás üzembe helyezését, és a saját Azure-erőforrások kiépítése nehéz értékes információkhoz juthat a központi telepítés állapotát, és optika kaphat a Azure növekedési gyakorolt hatást. Amikor hozzáad egy magasabb szintű láthatóság, igazodnak a Microsoft értékesítői csapatok, és a Microsoft partner programok kreditet kaphat.   
 
-A Microsoft hoz létre egy új módszer köszönhetően elősegítik a partnerek jobban nyomon követheti az Azure-használat eredménye egy ügyfél az Azure-szoftverek üzembe helyezésére. Ez az új módszer alapján az Azure Resource Managerrel történő üzembe helyezés az Azure-szolgáltatások.
+A Microsoft kínál egy metódust elősegítik a partnerek jobban ügyfél központi telepítését a szoftver az Azure használatának nyomon követése az Azure-ban. Az új módszer, amellyel a központi telepítés az Azure-szolgáltatások Azure Resource Managert használja.
 
-A Microsoft-partnerként társíthatja az Azure használati bármely Azure-erőforrások üzembe helyezésekor az ügyfél nevében.  Ezt a társítást az Azure piactéren, a rövid útmutató adattárat, privát github-adattárak és 1 customer engagement 1 még akkor is, megteheti.  Ahhoz, hogy nyomon követése, két módszer érhető el:
+A Microsoft-partnerként bármely Azure-erőforrások, amelyek az ügyfél nevében üzembe Azure-használat is társíthat. A társítás használatával az Azure piactéren, a rövid útmutató tárház, privát GitHub-adattárak és személyes customer engagement is alkotnak. Ahhoz, hogy nyomon követése, két megközelítés érhetők el:
 
-- Az Azure Resource Manager-sablonok: Az Azure Resource Manager-sablonok vagy megoldássablonok a partner szoftverek futtatását az Azure-szolgáltatások üzembe helyezéséhez. Partnerek hozhat létre, amely meghatározza az infrastruktúra és az Azure-megoldás konfigurálása Azure Resource Manager-sablon. Az Azure Resource Manager-sablon létrehozása lehetővé teszi, hogy Ön és ügyfelei üzembe helyezheti megoldását teljes életciklusa során, és biztos lehet benne, az erőforrások telepítése konzisztens lesz. 
+- Az Azure Resource Manager-sablonok: Resource Manager-sablonok vagy megoldássablonok a partner szoftverek futtatását az Azure-szolgáltatások üzembe helyezéséhez. Partnerek hozhat létre egy Resource Manager-sablon infrastruktúráját és konfigurációját az Azure-megoldás meghatározásához. A Resource Manager-sablon lehetővé teszi, hogy Ön és ügyfelei teljes életciklusa során a megoldás üzembe helyezéséhez. Biztos lehet benne, hogy az erőforrások telepítése konzisztens lesz. 
 
-- Az Azure Resource Manager API-k: partnerek meghívhatja az Azure Resource Manager API-k közvetlenül, vagy üzembe helyezése az Azure Resource Manager-sablon vagy létrehozni az API-hívások közvetlenül üzembe helyezése Azure-szolgáltatások. 
+- Az Azure Resource Manager API-k: Partnerek segítségével meghívhatja a Resource Manager API-k, közvetlenül a Resource Manager-sablon üzembe helyezése vagy az API-hívások közvetlen kiosztása az Azure-szolgáltatások létrehozásához. 
 
-## <a name="method-1-azure-resource-manager-templates"></a>1. módszer: Az Azure Resource Manager-sablonok 
+## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
 
-Ma számos partneri megoldás telepítve vannak egy ügyfél-előfizetés Azure Resource Manager-sablonok használatával.  Ha már rendelkezik egy Azure Resource Manager-sablon elérhető az Azure piactéren, a GitHub vagy a rövid útmutatóban a folyamat az új követési módszer engedélyezéséhez a sablon módosításával nagyon egyszerű kell lennie.  Ha az Azure Resource Manager-sablon jelenleg nem használ, az alábbiakban néhány hivatkozások segítenek jobban megismerheti az Azure Resource Manager-sablonok és a egy létrehozása: 
+Számos partneri megoldás telepítve vannak, egy ügyfél előfizetését Resource Manager-sablonok használatával. Ha rendelkezik egy Resource Manager-sablon, amely elérhető a Githubon, vagy a rövid útmutatóban az Azure piactéren, nagyon egyszerű a folyamat módosításához a sablonhoz, amelyekkel engedélyezheti az új követési módszert kell lennie. Ha nem használja az Azure Resource Manager-sablonok, az alábbiakban néhány hivatkozások segítségével jobban megismerheti a Resource Manager-sablonok, és hogyan hozhat létre egyet: 
 
-*   [Létre és helyezhet üzembe az első Azure Resource Manager-sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [Útmutató a megoldássablon létrehozásához az Azure Marketplace-en](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
+*   [Létre és helyezhet üzembe az első Resource Manager-sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
+*   [Megoldássablon létrehozásához az Azure Marketplace-en](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
-## <a name="instructions-add-a-guid-to-your-existing-azure-resource-manager-template"></a>Utasítások: egy GUID Azonosítót a meglévő Azure Resource Manager-sablon hozzáadása
+## <a name="add-a-guid-to-your-template"></a>Adjon hozzá egy GUID Azonosítót a sablonhoz
 
-A GUID azonosító hozzáadása a fő sablonfájl egyetlen módosítását a következő:
- 1. Hozzon létre egy GUID Azonosítót, tegyük fel, hogy a létrehozott értéket eb7927c8-dd66-43e1-b0cf-c346a422063
- 2. Nyissa meg az Azure Resource Manager-sablon
- 3. Adjon hozzá egy új erőforrást a fő sablonfájlban. Az erőforrás csak kell lennie a mainTemplate.json vagy azuredeploy.json, nem az összes beágyazott vagy kapcsolódó sablonok.
- 4. Adja meg a GUID után a "pid-" jelennek meg.
+Adjon hozzá egy globálisan egyedi azonosítóját (GUID), győződjön meg a fő sablonfájl egyetlen módosítása:
 
-   Valami példához hasonlóan kell kinéznie: `pid-eb7927c8-dd66-43e1-b0cf-c346a422063`
+1. Hozzon létre egy GUID Azonosítót (például eb7927c8-dd66-43e1-b0cf-c346a422063).
 
- 5. Ellenőrizze a hibákat a sablont
- 6. Tegye közzé újra a sablont a megfelelő tárházban
+1. Nyissa meg a Resource Manager-sablon.
 
-## <a name="sample-template-code"></a>Sablon mintakód
+1. Adjon hozzá egy új erőforrást a fő sablonfájlban. Az erőforrás kell lennie a **mainTemplate.json** vagy **azuredeploy.json** fájl csak, és nem az összes beágyazott vagy kapcsolódó sablonok.
 
-![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG?token=Ak8ZDB0JzsBdUGlKEIeHNJRS7b0BWn4Gks5bbMwwwA%3D%3D)
+1. Adja meg a GUID értéket után a **pid -** előtagja (például pid-eb7927c8-dd66-43e1-b0cf-c346a422063).
 
+1. Ellenőrizze a sablont, a hibákat.
 
-## <a name="method-2-azure-resource-manager-apis"></a>2. módszer: Az Azure Resource Manager API-k
+1. Tegye közzé újra a sablont a megfelelő tárházban.
 
-Bizonyos esetekben előfordulhat, hogy szeretne hívásokat indítani közvetlenül az Azure Resource Manager REST API-k üzembe helyezéséhez az Azure-szolgáltatások. [Az Azure támogatja több SDK](https://docs.microsoft.com/azure/#pivot=sdkstools) ennek engedélyezéséhez.  Az SDK-k valamelyikével, vagy közvetlenül az erőforrások üzembe helyezése a REST API-kat.
+### <a name="sample-template-code"></a>Sablon mintakód
 
-Ha egy Azure Resource Manager-sablont használ, a megoldás a fenti utasítások kell címkéznie.  Ha nem egy Azure Resource Manager-sablonnal, és közvetlen API-hívások továbbra is megjelölheti a központi telepítés rendelni az Azure-erőforrások használatát. 
+![Sablon mintakód](media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG)
 
-**Az Azure Resource Manager API-kat használó telepítés címkézése:** az ebben a megközelítésben az API-hívások, egy GUID Azonosítót tartalmazza a felhasználói ügynök a kérelemben szereplő tartományfejléc tervezésekor. A globálisan egyedi Azonosítót minden ajánlat vagy Termékváltozat hozzá kell adni.  A karakterlánc a előtaggal kell formázni kell pid - majd illessze be a partner létrehozott GUID.   
+## <a name="use-the-resource-manager-apis"></a>A Resource Manager API-k
 
-![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG?token=Ak8ZDDiokRcj4PJj0aMkZmfF8BdOuOTzks5bbM35wA%3D%3D)
+Bizonyos esetekben előfordulhat, hogy szeretne hívásokat indítani közvetlenül a Resource Manager REST API-k üzembe helyezéséhez az Azure-szolgáltatások. [Az Azure támogatja több SDK](https://docs.microsoft.com/azure/#pivot=sdkstools) ahhoz, hogy ezeket a hívásokat. Az SDK-k valamelyikével, vagy közvetlenül az erőforrások üzembe helyezése a REST API-kat.
 
->[!Note] 
->GUID formátumú szúr be a felhasználói ügynök: pid-eb7927c8-dd66-43e1-b0cf-c346a422063 / / a GUID megadása után a "pid-"
+Resource Manager-sablon használata, a megoldás a korábban ismertetett utasítások szerint kell címkéznie. Ha nem egy Resource Manager-sablon használatával, és közvetlen API-hívások, továbbra is megjelölheti a központi telepítés rendelni az Azure-erőforrások használatát. 
 
-A karakterlánc formátuma fontos. Az előtag "pid-" lehetőség nem része, ha nem lehetséges az adatok lekérdezéséhez. Különböző SDK-k ehhez eltérően.  Ez a metódus megvalósításához, szüksége lesz tekintse át a támogatási és megközelítés az előnyben részesített Azure SDK-hoz készült. 
+### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>A Resource Manager API-kkal központi telepítés megjelölése
 
-**A példában a Python SDK-val:** a Python, kell használnia a "konfiguráció" attribútum. Csak akkor adhat hozzá egy UserAgent. Például:
+Amikor az API-hívások, a nyomon követési módszer a felhasználói ügynök a kérelemben szereplő tartományfejléc közé tartozik a egy GUID Azonosítót. Adja hozzá az egyes ajánlatok GUID azonosítója vagy Termékváltozat. A karakterláncot formázni a **pid -** előtagot, valamint tartalmazza a partner által létrehozott GUID. Íme egy példa a GUID azonosító formátumát szúr be a felhasználói ügynök: 
 
-![](https://raw.githubusercontent.com/ellacroi/azure-docs-pr/lu-images-again-dangit-all/articles/marketplace/media/marketplace-publishers-guide/python-for-lu.PNG?token=Ak8ZDK5Um4J6oY-7x25tuBpa168BEiYMks5bbMuUwA%3D%3D)
+![GUID formátumban](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
->Ez az egyes ügyfelek elvégezni, akkor nem tartozik globális statikus konfiguráció (Előfordulhat, hogy választja egy ügyfél-előállítót, és ellenőrizze, hogy minden ügyfél állapotát. 
->[További információk](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
+> [!Note]
+> A karakterlánc formátuma fontos. Ha a **pid -** előtag nem tartalmaz, ezért nem lehetséges az adatok lekérdezéséhez. Különböző SDK-k eltérően nyomon követése. Ez a metódus megvalósításához, tekintse át a támogatási, és nyomon követi a megközelítést az előnyben részesített Azure SDK-hoz készült. 
 
-Az Azure PowerShell vagy az Azure CLI használatával központi telepítés címkézése: AzurePowerShell erőforrásai telepít, a GUID hozzáfűzheti a következő módon:
+### <a name="example-the-python-sdk"></a>Példa: A Python SDK-t
+
+A Python, használja a **config** attribútum. Az attribútum csak egy UserAgent adhat hozzá. Például:
+
+![Az attribútum hozzáadása a felhasználói ügynök](media/marketplace-publishers-guide/python-for-lu.PNG)
+
+> [!Note]
+> Az attribútum hozzáadása minden ügyfél számára. Nem tartozik a globális statikus konfiguráció. Egy ügyfél-előállítót, és ellenőrizze, hogy minden ügyfél nyomon követéséhez előfordulhat, hogy címkékkel. További információkért lásd: Ez [ügyfél gyári minta a Githubon](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79).
+
+#### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Központi telepítés címkézése az Azure PowerShell-lel
+
+Ha helyez üzembe erőforrásokat az Azure Powershellen keresztül, fűzze hozzá a GUID használatával a következő metódust:
 
 ```
-
 [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
-
-
 ```
 
-Fűzze hozzá a GUID Azonosítót, ha az Azure CLI használatával, állítsa a AZURE_HTTP_USER_AGENT környezeti változót.  Egy parancsfájl vagy globálisan, shell hatókör használatra a hatókörön belüli ezzel a változóval adhatja meg:
+#### <a name="tag-a-deployment-by-using-the-azure-cli"></a>Központi telepítés címkézése az Azure CLI-vel
+
+Az Azure CLI használatával fűzze hozzá a GUID Azonosítót, ha a **AZURE_HTTP_USER_AGENT** környezeti változót. Ezt a változót egy parancsfájl hatókörén belül állíthatja be. A változó globálisan rendszerhéj hatókör számára is állíthatja be:
 
 ```
-
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
-
-
 ```
 
-## <a name="registering-guidsoffers"></a>GUID-ok/ajánlatok regisztrálása
+## <a name="register-guids-and-offers"></a>Regisztrálja a GUID-ok és ajánlatok
 
-Ahhoz, hogy a globálisan egyedi Azonosítót a nyomon követési szerepeltetni regisztrálnia kell azt.  
+Szeretne adni egy GUID Azonosítót a nyomon követés, regisztrálni kell a GUID Azonosítót.  
 
-Az összes regisztrációs sablon GUID-n keresztül az Azure Marketplace-en Cloud Partner Portal (CPP) történik. 
+Az összes regisztrációs sablon GUID-n keresztül az Azure Marketplace-en Cloud Partner Portal (CPP) kell elvégezni. 
 
-A alkalmazni [Azure Marketplace-en](http://aka.ms/listonazuremarketplace) ma és a get-hozzáférés a Cloud Partner portálra.
+Miután a GUID azonosító hozzáadása a sablonhoz, vagy a felhasználói ügynök, és regisztrálja a globálisan egyedi Azonosítót a CPP, központi telepítések nyomon követi. 
 
-*   Partnerek lesz szükség [rendelkeznek profillal a CPP](https://docs.microsoft.com/azure/marketplace/become-publisher) és javasolt, hogy a listában az ajánlat az Azure Marketplace-en vagy az appsource-ban 
-*   Partnerek tudják regisztrálni az több GUID-azonosítói 
-*   Partnerek is tudnak regisztrálni egy GUID Azonosítót a-Marketplace megoldás sablonok/ajánlatok
+1. A alkalmazni [Azure Marketplace-en](http://aka.ms/listonazuremarketplace) és a CPP eléréséhez.
 
-Miután hozzáadta a GUID a sablonhoz, vagy a felhasználói ügynök, és a globálisan egyedi Azonosítót a központi telepítések követi CPP regisztrálva. 
+   * Partnerek szükségesek [rendelkeznek profillal a CPP](https://docs.microsoft.com/azure/marketplace/become-publisher). Javasoljuk, hogy a listában az ajánlat az Azure Marketplace-en vagy az appsource-ban Ön.
+   * Partnerek regisztrálhatja az több GUID-ot.
+   * Partnerek regisztrálhat egy GUID Azonosítót a-Marketplace megoldássablonok és ajánlatokkal.
+ 
+1. Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
 
-## <a name="verification-of-guid-deployment"></a>A GUID-telepítés ellenőrzése 
+1. A jobb felső sarokban válassza a fiók ikont, és válassza **közzétevő profil**.
 
-Miután módosította a sablont, és egy tesztelési üzembe helyezés végrehajtott, használhatja a következő PowerShell-parancsfájlt az üzembe helyezett és címkézett erőforrásokat lekérni. 
+   ![Közzétevő profil kiválasztása](media/marketplace-publishers-guide/guid-image-for-lu.png)
 
-Ellenőrizze, hogy ha a GUID már hozzáadtuk az Azure Resource Manager-sablon sikeresen használható. Nem vonatkozik Azure Resource Manager API-telepítéshez.
+1. Az a **profillapján**válassza **követési GUID hozzáadása.**
 
-Jelentkezzen be az Azure-ba, és válassza ki az előfizetést, amely tartalmazza az üzembe helyezés, a parancsfájl futtatása előtt ellenőrizni szeretné. Az üzembe helyezés előfizetés környezetében kell futtatni.
+   ![Válassza a nyomon követése a GUID azonosító hozzáadása](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
 
-Az üzembe helyezés GUID Azonosítót és az erőforráscsoport nevét is kötelező paraméterei.
+1. Az a **követési GUID** mezőbe írja be a nyomon követési GUID azonosítója. Csak a GUID nélkül adja meg a **pid -** előtag. Az a **egyéni leírása** mezőbe írja be az ajánlat neve vagy leírása.
 
-Az eredeti parancsfájlt annak [Itt](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1).
+   ![Profil oldalához](media/marketplace-publishers-guide/guid-dev-center-login.png)
+   
+   ![Adja meg a GUID Azonosítót és az ajánlat leírása](media/marketplace-publishers-guide/guid-dev-center-example.png)
+
+1. Egynél több GUID regisztrálásához válassza **követési GUID hozzáadása** újra. További mező jelenik meg az oldalon.
+
+   ![Válassza ki újra a követési GUID hozzáadása](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
+   
+   ![Adjon meg egy másik GUID és ajánlat leírása](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
+
+1. Kattintson a **Mentés** gombra.
+
+   ![Mentés kiválasztása](media/marketplace-publishers-guide/guid-dev-center-save.png)
+
+Miután a GUID azonosító hozzáadása a sablonhoz, vagy a felhasználói ügynök, és regisztrálja a globálisan egyedi Azonosítót a CPP, központi telepítések nyomon követi. 
+
+## <a name="verify-the-guid-deployment"></a>A GUID-telepítés ellenőrzése 
+
+Után módosítja a sablont, és üzembe helyezési teszt futtatása, a következő PowerShell-parancsfájl használatával telepített, és a címkézett erőforrásokat lekérni. 
+
+A parancsfájl segítségével győződjön meg arról, hogy a globálisan egyedi Azonosítót sikerült felvenni a Resource Manager-sablon. A parancsfájl nem vonatkozik a Resource Manager API-telepítés.
+
+Jelentkezzen be az Azure-ba. Válassza ki az előfizetést, a parancsfájl futtatása előtt ellenőrizni szeretné a központi telepítésére. Futtassa a szkriptet az üzembe helyezés előfizetés keretén belül.
+
+A **GUID** és **resourceGroup** nevét, a központi telepítés rendszer szükséges paramétereket.
+
+Megjelenik a [az eredeti parancsfájl](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1) a Githubon.
 
 ```
-
 Param(
     [GUID][Parameter(Mandatory=$true)]$guid,
     [string][Parameter(Mandatory=$true)]$resourceGroupName'
 )
 
-#get the correlationId of the pid deployment
+# Get the correlationId of the pid deployment
 
 $correlationId = (Get-AzureRmResourceGroupDeployment -ResourceGroupName 
 $resourceGroupName -Name "pid-$guid").correlationId
 
-#find all deployments with that correlationId
+# Find all deployments with that correlationId
 
 $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName | Where-Object{$_.correlationId -eq $correlationId}
 
-#find all deploymentOperations in a deployment by name (since PowerShell does not surface outputResources on the deployment or correlationId on the deploymentOperation)
+# Find all deploymentOperations in a deployment by name
+# PowerShell doesn't surface outputResources on the deployment
+# or correlationId on the deploymentOperation
 
 foreach ($deployment in $deployments){
 
-#get deploymentOperations by deploymentName and then the resourceId for any create operation
+# Get deploymentOperations by deploymentName
+# then the resourceId for any create operation
 
 ($deployment | Get-AzureRmResourceGroupDeploymentOperation | Where-Object{$_.properties.provisioningOperation -eq "Create" -and $_.properties.targetResource.resourceType -ne "Microsoft.Resources/deployments"}).properties.targetResource.id
 
 }
-
-
 ```
 
-## <a name="guidance-on-creating-guids"></a>Útmutatás a GUID azonosítók létrehozása
+## <a name="create-guids"></a>Hozzon létre GUID-azonosítói
 
-Egy globálisan egyedi azonosító (GUID) egy olyan 32 hexadecimális számjegy egyedi hivatkozási szám. Szeretne létrehozni egy GUID Azonosítót, egy GUID-generátort hozhat létre saját követési GUID kell használnia.  Egyszerre több [online GUID generátorok](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E) is használhatja.
+GUID 32 hexadecimális számjegyet tartalmaz egyedi hivatkozási szám. Követési GUID azonosítókat létrehozni, egy GUID-generátort kell használnia. Egyszerre több [online GUID generátorok](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E) használható.
 
-Javasoljuk, hogy hozzon létre egy egyedi GUID azonosító minden ajánlat és a terjesztési csatornák áll.  Például ha két megoldást, és mindkét sablon segítségével telepítve vannak és az Azure piactéren, és a Githubon érhető el.  Hozzon létre négy GUID-AZONOSÍTÓI:
+Hozzon létre egy egyedi GUID azonosító minden ajánlat és a terjesztési csatornák. Ha két megoldás üzembe helyezése sablon használatával, és mindegyikhez az Azure Marketplace-en és githubon érhető el, hozzon létre négy GUID szeretné:
 
 *   Az Azure Marketplace-en A ajánlat 
 *   Ajánlat A githubon
 *   B ajánlat az Azure Marketplace-en 
 *   Az ajánlat B a Githubon
 
-Jelentéskészítés történik (Microsoft-Partnerazonosító) partner és a GUID Azonosítót. 
+Jelentéskészítés végzi el a partner érték (Microsoft-Partnerazonosító) és a globálisan egyedi Azonosítót. 
 
-Azt is beállíthatja GUID azonosítókat, azaz Termékváltozat (ahol termékváltozatok a következők ajánlat változatának) még finomabban szabályozható szinten nyomon követéséhez.
+GUID azonosítókat, például a Termékváltozat, ahol a termékváltozatok a következők ajánlat változatának részletesebb szinten is követheti.
 
-## <a name="guidance-on-privacy-and-data-collection"></a>Útmutatás az adatvédelem és az adatok gyűjtése
+## <a name="notify-your-customers"></a>Az ügyfelek értesítése
 
-Partnerek üzenetkezelés, amely az Azure Resource Manager GUID követési tartalmazó üzemelő példányok lehetővé teszi a Microsoft ezen központi telepítések számára a partner társított Azure-használati jelentésekhez ügyfelek tájékoztatnia kell biztosítania.  Néhány példa nyelv nem éri el. Amennyiben azt jelzi, hogy "PARTNER", akkor töltse ki a saját cég nevét. Emellett partnereink biztosítania kell a nyelvi igazodik a saját adataik adatvédelmi és -gyűjteményt házirendek, beleértve az ügyfelek ki lesznek zárva a nyomon követése: 
+Partnerek kapcsolatos követési Resource Manager GUID használó központi telepítések tájékoztatnia kell az ügyfeleknek. A Microsoft ezeket az üzemelő példányokat a partnert társított Azure-használatát jelenti. A következő tartalom értesítse a felhasználókat arról a történő központi telepítését, amelyekkel például. A példákban cserélje le a \<PARTNER > a vállalat nevére. Partnerek győződjön meg arról, hogy adataikat adatvédelmi és -gyűjteményt házirendek, beleértve az ügyfelek ki lesznek zárva a követési illeszkedik az értesítést. 
 
-**Az Azure Resource Manager-sablon-üzembehelyezések**
+### <a name="notification-for-resource-manager-template-deployments"></a>Értesítés a Resource Manager-sablon-üzembehelyezések
 
-Ez a sablon üzembe helyezésekor, a Microsoft fogja tudni azonosíthatja a PARTNER szoftver telepítése az Azure-erőforrások üzembe helyezve.  A Microsoft tudnia kell korrelálni a szoftvert támogató Azure-erőforrások lesz.  A Microsoft ezeket az információkat a lehető legjobb élményt biztosíthat a termékeiket és üzleti működésre gyűjt. Az adatokat, és található a Microsoft adatvédelmi irányelvei szabályozzák https://www.microsoft.com/trustcenter. 
+Ez a sablon telepítésekor lehet azonosítani a telepítés,-e a Microsoft \<PARTNER > az Azure-erőforrások, központilag telepített szoftvereket. A Microsoft is képes az Azure-erőforrások, amelyek támogatják a szoftver összekapcsolását. A Microsoft ezeket az információkat a lehető legjobb élményt biztosíthat a termékeiket és üzleti működésre gyűjt. Az adatok gyűjtése és található a Microsoft adatvédelmi irányelvei szabályozzák https://www.microsoft.com/trustcenter. 
 
-**Az SDK vagy API-t központi telepítéséhez**
+### <a name="notification-for-sdk-or-api-deployments"></a>Értesítési SDK vagy API-t központi telepítésekhez
 
-Ha szoftverek központi telepítése PARTNER, a Microsoft képes lesz azonosítani a PARTNER szoftver telepítése az üzembe helyezett Azure-erőforrások.  A Microsoft tudnia kell korrelálni a szoftvert támogató Azure-erőforrások lesz.  A Microsoft ezeket az információkat a lehető legjobb élményt biztosíthat a termékeiket és üzleti működésre gyűjt. Az adatokat, és található a Microsoft adatvédelmi irányelvei szabályozzák https://www.microsoft.com/trustcenter.
+Üzembe helyezésekor \<PARTNER > szoftver, a Microsoft a telepítésének azonosítani tudja \<PARTNER > az Azure-erőforrások, központilag telepített szoftvereket. A Microsoft is képes az Azure-erőforrások, amelyek támogatják a szoftver összekapcsolását. A Microsoft ezeket az információkat a lehető legjobb élményt biztosíthat a termékeiket és üzleti működésre gyűjt. Az adatok gyűjtése és található a Microsoft adatvédelmi irányelvei szabályozzák https://www.microsoft.com/trustcenter.
 
-## <a name="support"></a>Támogatás
+## <a name="get-support"></a>Támogatás kérése
 
-Segítségnyújtás, kövesse az alábbi lépéseket:
- 1. Látogasson el a támogatási oldalon található [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)
- 2. Használati társítása – problémáinak válassza a Problem type: **Marketplace bevezetési** és kategória: **más** majd **kérelem indítása.** 
->[!Note]
->Problémák az Azure Marketplace-en Cloud Partner Portalon – válassza a Problem type elérése: **Marketplace bevezetési** és kategória: **hozzáférési probléma** majd **kérelem indítása.**
- 3. Töltse ki a kötelező mezőket a következő oldalon, és kattintson a **tovább.**
- 4. Fejezze be a következő oldalon a szabad szöveges mezők.  
- 
+Ha segítségre van szüksége, kövesse az alábbi lépéseket.
 
- 
->[!Important] 
->Adja meg az esemény címe **"ISV használat követése"** és ismertesse a problémát a nagy méretű szabad szöveges mező után részletesen ismertetjük.  Fejezze be az űrlapot, és kattintson a **küldés**.
+1. Nyissa meg a [támogatási oldal](https://go.microsoft.com/fwlink/?linkid=844975). 
 
-## <a name="faqs"></a>Gyakori kérdések
+1. Alatt **Problématípus**válassza **Marketplace bevezetési**.
+
+1. Válassza ki a **kategória** a problémára:
+
+   - Válassza ki a társítás kapcsolatos használati **más**.
+   - Hozzáférési problémák az Azure Marketplace-en CPP, válasszon **hozzáférési probléma**.
+   
+    ![Válassza ki a probléma kategóriát](media/marketplace-publishers-guide/lu-article-incident.png)
+
+1. Válassza ki **indítására vonatkozó kérés**.
+
+1. A következő oldalon adja meg a szükséges értékeket. Válassza a **Folytatás** elemet.
+
+1. A következő oldalon adja meg a szükséges értékeket.
+
+   > [!Important] 
+   > Az a **esemény címe** mezőbe írja be **ISV használat nyomon követése**. Ismertesse a problémát, részletesen.
+   
+   ![Adja meg a független Szoftverszállító használat nyomon követése az incidens címe](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
+
+1. Töltse ki az űrlapot, és válassza ki **küldés**.
+
+## <a name="faq"></a>GYIK
 
 **Mi az az előnye, hogy a GUID azonosító hozzáadása a sablonhoz?**
 
-A Microsoft partnerek ügyfél központi telepítései insights, valamint a sablonok nézetet biztosít a befolyásolt felhasználási.  A Microsoft, és a partner is használhatja ezt az információt meghajtó közelebb engagement értékesítői csapatok között. A Microsoft, és a partner segítségével is, az Azure növekedési egy egyedi partner hatás egységesebb képet kaphat. 
+A Microsoft partnereinek ügyfél központi telepítései insights, valamint a sablonok nézetet biztosít, a befolyásolt felhasználási. A Microsoft, és a partner használhatja ezt az információt meghajtó közelebb engagement értékesítői csapatok között. A Microsoft, és a partner segítségével az adatok az Azure növekedési egy egyedi partner hatás egységesebb képet kaphat. 
 
 **Akik GUID adhat hozzá egy sablont?**
 
-A nyomon követési erőforrás az célja, hogy a partner megoldás csatlakoztatása az ügyfeleket az Azure használati.  A használati adatok egy partner Microsoft Partner Network-azonosító (MPN-azonosító) van kötve, és jelentéskészítés lesz elérhető, a partnerek a Cloud Partner Portal (CPP).  
+A nyomon követési erőforrás célja az ügyfél Azure-használat a partnermegoldás csatlakozni. A használati adatok egy partner Microsoft Partner Network-azonosító (MPN-azonosító) van kötve. Jelentéskészítés a CPP partnerei számára érhető el.
 
-**Miután az hozzá lett adva egy GUID Azonosítót, módosítható?**
+**Miután hozzáadott egy GUID Azonosítót, akkor módosítható?**
  
-Igen, egy ügyfél vagy megvalósítási partnere előfordulhat, hogy a sablon testreszabásához és sikerült módosítása vagy eltávolítása a GUID Azonosítót. Javasoljuk, hogy a partnerek proaktív módon írja le a szerepkört az erőforrás és GUID GUID követési eltávolítása és a módosítások megelőzése érdekében az ügyfelek és partnerek számára.  A GUID módosítása csak érinti új, nem meglévő üzemelő példányok és erőforrások.
+Igen, egy ügyfél vagy megvalósítási partnere előfordulhat, hogy a sablon testreszabásához, és módosíthatja vagy eltávolítja a globálisan egyedi Azonosítót. Javasoljuk, hogy a partnerek proaktív módon írja le a szerepkört az erőforrás és GUID GUID követési eltávolítása és a módosítások megelőzése érdekében az ügyfelek és partnerek számára. A GUID módosítása hatással van, csak a új, nem meglévő üzemelő példányok és erőforrások.
 
 **Amikor jelentéskészítési rendelkezésre áll?**
 
-Jelentéskészítés béta verzióját kell hamarosan közzétesszük.  Jelentéskészítés integrálva lesz az a Cloud Partner Portal (CPP).
+Jelentéskészítés béta verzióját kell hamarosan közzétesszük. Jelentéskészítés integráljuk a CPP.
 
 **Sablonok üzembe helyezett egy nem Microsoft-adattárból, például a Githubból tudja követni?**
 
-Igen, mindaddig, amíg a GUID azonosító megtalálható a sablon üzembe helyezésekor, használati követi.  
-Partnereink rendelkeznek profillal a Cloud Partner Portalon közzé az Azure piactéren kívül a kapcsolódó sablonok regisztrálásához szükséges. 
+Igen, mindaddig, amíg a GUID azonosító megtalálható a sablon üzembe helyezésekor, használat nyomon van. Partnereink rendelkeznek profillal a kapcsolódó sablonok az Azure piactéren kívül közzétett regisztrálni a CPP van szükség. 
 
 **Van különbség a Ha a sablon üzembe Azure Marketplace-ről és más tárházakban, amilyen a GitHub?**
 
-Igen, partnereknek, akik ajánlatok közzététele az Azure Marketplace-en, részletes adatok üzemelő példányok esetében az Azure Marketplace-ről kaphat.  A partnerek megnövelt is közzéteheti az ajánlatot az ügyfelek számára az Azure Marketplace-en portál és az Azure felügyeleti portálján. Az Azure piactér lehetővé teszi az érdeklődők is létrehozhat a partner.
+Igen, partnereknek, akik ajánlatok közzététele az Azure Marketplace-en kaphat részletes adatok üzemelő példányok esetében az Azure Marketplace-ről. Partnerek előnyt is közzéteheti az ajánlatot az ügyfelek számára az Azure Marketplace-en portál és az Azure Portalon. Az Azure piactér lehetővé teszi az érdeklődők is létrehozhat a partner.
 
 **Mi történik, ha egy egyéni sablont, és egy egyéni ügyféligények engagement hozhatok létre?**
 
-Ön továbbra is üdvözli a GUID azonosító hozzáadása a sablonhoz.  Egy létező GUID-Azonosítót, amely regisztrálva lett használatakor, szerepelni fog a jelentéskészítés.  Létrehoz egy új GUID Azonosítót, ha letöltés követési tartalmazza az új GUID regisztrálni kell.
+Ön továbbra is üdvözli a GUID azonosító hozzáadása a sablonhoz. Ha egy meglévő regisztrált GUID-Azonosítót használ, a a jelentés tartalmazni fogja. Létrehoz egy új GUID Azonosítót, ha szeretne regisztrálni, hogy a követési tartalmazza az új GUID.
 
 **Az ügyfél fogad, valamint reporting?**
 
-Ügyfelek képesek jelenleg az egyes erőforrások vagy felhasználó által definiált erőforrás-csoportok az Azure felügyeleti portálján használatának nyomon követése.   
+Ügyfelek nyomon követheti az egyes erőforrások vagy erőforráscsoportok felhasználó által meghatározott az Azure Portalon a használatuk.   
 
 **Ez a módszer követési több hasonló a digitális partnert a rekord (DPOR) az?**
 
-Ez az új módszer az üzembe helyezés és használat kapcsolódni egy partneri megoldás célja egy olyan mechanizmust, egy partneri megoldás összekapcsolása az Azure-használatát.  Tanácsadási (rendszerintegrátor) vagy (felügyelt szolgáltató) felügyeleti partnertől, az ügyfél Azure-előfizetés társítása dpor használatára alkalmas.   
+Ez az új módszer az üzembe helyezés és használat kapcsolódni egy partneri megoldás lehetővé teszi a partneri megoldások összekapcsolása az Azure-használat. Tanácsadási (rendszerintegrátor) vagy (felügyelt szolgáltató) felügyeleti partnertől, az ügyfél Azure-előfizetés társítása dpor használatára alkalmas.   

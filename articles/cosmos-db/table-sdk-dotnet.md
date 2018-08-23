@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 03/26/2018
+ms.date: 08/17/2018
 ms.author: rnagpal
-ms.openlocfilehash: 2fba67b247ad0b53e11ca012969163a68013e82f
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d0bd7dba5d50445cb681c16d9575b1bd69167e2f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126711"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056397"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB Table API-t .NET: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "39126711"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
-* Rögzített Nuget-csomagfüggőségeket Microsoft.Azure.Storage.Common és Microsoft.Azure.DocumentDB.
+* Rögzített NuGet-csomagfüggőségeket Microsoft.Azure.Storage.Common és Microsoft.Azure.DocumentDB.
 * A tábla szerializálási JsonConvert.DefaultSettings konfigurálásakor hibajavításokat tartalmaz.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -60,7 +60,7 @@ ms.locfileid: "39126711"
 ## <a name="release-and-retirement-dates"></a>Kiadás és kivezetési dátuma
 A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
 
-A [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes csomag elavult, és váltotta fel a [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) csomagot. 2018. November 15. a WindowsAzure.Storage-PremiumTable SDK-t kivezetjük, mely arra kéri, a kivont SDK nem fog tudni.
+A [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes csomag elavult, és váltotta fel a [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) csomagot. 2018. November 15. a WindowsAzure.Storage-PremiumTable SDK-t kivezetjük, mely arra kéri, a kivont SDK nem fog tudni. A `Microsoft.Azure.CosmosDB.Table` csak jelenleg elérhető a .NET Standard kódtár, akkor még nem áll rendelkezésre a .NET Core.
 
 Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető. 
 
@@ -91,7 +91,7 @@ használja a Microsoft.Azure.CosmosDB.Table NuGet-csomagot próbál, ha a probl�
     Install-Package Microsoft.Azure.CosmosDB.Table -IncludePrerelease
     ```
     
-* Az előnyben részesített Nuget Csomagkezelő eszközt használja, telepítse a Microsoft.Azure.Storage.Common Nuget-csomag Microsoft.Azure.CosmosDB.Table telepítése előtt.
+* Az előnyben részesített NuGet Csomagkezelő eszközt használja, telepítse a Microsoft.Azure.Storage.Common NuGet-csomag Microsoft.Azure.CosmosDB.Table telepítése előtt.
 
 ## <a name="faq"></a>GYIK
 

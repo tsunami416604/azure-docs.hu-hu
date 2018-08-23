@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bda1c4074db123294ffde39e5c4cd5494474ca38
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2daa624dd7912d09f01e5bab5dc6de9cc14a771c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076146"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056865"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Oracle az Azure Virtual Machines DBMS üzembe helyezési SAP számítási feladatokhoz
 
@@ -311,7 +311,7 @@ ms.locfileid: "39076146"
 
 
 ## <a name="specifics-to-oracle-database"></a>Az Oracle Database tulajdonságairól
-Oracle-szoftverek futtatása Microsoft Azure-on Oracle támogatja. A részleteket a Windows Hyper-V és az Azure általános támogatási tekintse meg: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle-szoftverek futtatása Microsoft Azure-on Oracle támogatja. A részleteket a Windows Hyper-V és az Azure általános támogatási tekintse meg: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 Az általános támogatási követően az adott forgatókönyvtől az Oracle-adatbázisok felhasználásával SAP-alkalmazások használata is támogatott. Részleteket a dokumentum neve. Egy Pull-kérelem-olvassa el ezt a dokumentumot, mint rendelkezik olvassa el a dokumentumot [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) lévő többi útmutató és a [SAP számítási feladatok az Azure-dokumentáció](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
@@ -384,7 +384,7 @@ A Windows az Oracle-környezetek, erősen javasoljuk, hogy a dokumentumban ismer
 Egyéb általános területeken, például az Azure rendelkezésre állási csoportok vagy az SAP-figyelés a alkalmazni a dokumentumban ismertetett módon [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) az az Oracle Database-t a virtuális gépek központi telepítéséhez jól.
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Oracle Database, Oracle Linux rendszeren rögzítésen
-Oracle-szoftverek futtatásához a Microsoft Azure, az Oracle Linux vendég operációs rendszer, Oracle támogatja. A részleteket a Windows Hyper-V és az Azure általános támogatási tekintse meg: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle-szoftverek futtatásához a Microsoft Azure, az Oracle Linux vendég operációs rendszer, Oracle támogatja. A részleteket a Windows Hyper-V és az Azure általános támogatási tekintse meg: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 Az általános támogatási követően az adott forgatókönyvtől az Oracle-adatbázisok felhasználásával SAP-alkalmazások használata is támogatott. A dokumentum ezen részében a részletek neve.
 

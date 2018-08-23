@@ -1,7 +1,7 @@
 ---
-title: Az Azure gépi tanulás ALM |} Microsoft Docs
-description: Alkalmazás-életciklus kezelésének ajánlott eljárások az Azure Machine Learning Studióban alkalmazása
-keywords: Az Azure ML, életciklus Alkalmazáskezelés verziókezelést ALM, AML,
+title: Az Azure Machine Learningben ALM |} A Microsoft Docs
+description: Application Lifecycle Management ajánlott eljárások az Azure Machine Learning Studio a alkalmazni
+keywords: ALM, AML, az Azure gépi tanulás, alkalmazás-életciklus kezelése, a verziókövetés
 services: machine-learning
 documentationcenter: ''
 author: hning86
@@ -16,89 +16,89 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.openlocfilehash: 49d1a228132cc220b30091481bb542623b1e222d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ff30afdcfebe51d914d2f7504ab3bf530309c222
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835865"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054892"
 ---
-# <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Alkalmazás-életciklus kezelésének az Azure Machine Learning Studióban
-Az Azure Machine Learning Studio egy olyan eszköz, a machine learning kísérleteket, amely az Azure felhőalapú platform vannak operationalized fejleszt. Ez például a Visual Studio IDE és méretezhető felhőalapú szolgáltatás egyesített egyetlen platformra. Is használhatja az versioning szabványos alkalmazás életciklusa Management (ALM) eljárásait különböző eszközök automatikus végrehajtás és üzembe helyezés, az Azure Machine Learning Studio. A cikk ismerteti az egyes lehetőségek és szempontok.
+# <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Alkalmazáséletciklus-kezelés az Azure Machine Learning Studióban
+Az Azure Machine Learning Studio egy olyan eszköz, amely a rendszer üzembe helyezte azt az Azure-felhőplatformon a machine learning-kísérletek fejlesztéséhez. Például a Visual Studio IDE, és a méretezhető felhőalapú szolgáltatás Egyesítés egyetlen platformban. Beépítheti a verziókezelés standard Application Lifecycle Management (ALM) eljárásait különböző eszközök automatikus végrehajtás és üzembe helyezés, Azure Machine Learning studióba. Ez a cikk ismerteti az egyes beállítások és módszerek.
 
-## <a name="versioning-experiment"></a>Versioning kísérlet
-Két módon ajánlott verzióra a kísérletek. Támaszkodjon a beépített futtatási előzményei, vagy exportálja a kísérletet, hogy külsőleg felügyeletét JSON formátumban. Mindkét megközelítés az előnyei és hátrányai tartalmaz.
+## <a name="versioning-experiment"></a>Verziókezelés kísérlet
+Kétféleképpen ajánlott verzió, a kísérletek. A beépített futtatási előzmények támaszkodnak, vagy exportálja a kísérletet, külsőleg kezelheti, hogy JSON formátumban. Mindegyik megközelítésnek és a hátrányai tartalmaz.
 
-### <a name="experiment-snapshots-using-run-history"></a>Kísérlet a pillanatképek futtatása előzmények használata
-Az Azure Machine Learning Studióban tanulási kísérlet végrehajtási modell a kísérlet egy módosítható pillanatkép elküldve a a Feladatütemező kattintva **futtatása** kísérlet-szerkesztőben. Ebben a listában, a pillanatképek megtekintéséhez kattintson **futtatása előzmények** a parancssávon az a kísérlet szövegszerkesztő nézetben.
+### <a name="experiment-snapshots-using-run-history"></a>Kísérlet a pillanatképek használata a futtatási előzmények
+A végrehajtási modellben, az Azure Machine Learning Studio tanulási kísérletet a kísérlet egy nem módosítható pillanatkép elküldve a a Feladatütemező, amikor kattint **futtatása** a kísérlet szerkesztőben. A pillanatképek listáját megtekintéséhez kattintson **futtatási előzmények** a kísérlet szerkesztő nézetben a parancssávon.
 
 ![Futtatási előzmények gomb](./media/version-control/runhistory.png)
 
-Ezután nyissa meg a pillanatkép a kísérletet a kísérlet, valamint a pillanatkép küldött időben nevére kattintanak zárolt módban készült. Figyelje meg, hogy a listában, amely jelöli az aktuális kísérletet, csak az első elem szerkeszthető állapotban van-e. Figyelje meg, hogy minden pillanatkép lehet különböző állapotát is, valamint államok befejeződött (a részleges futtatása), sikertelen, beleértve sikertelen (a részleges futtatása), vagy vázlatszintű.
+Lehetőség van, akkor nyissa meg a pillanatkép a kísérletet a kísérlet futtatása és a pillanatkép el lett küldve időben nevére kattintva zárolt módban kerül. Figyelje meg, hogy a listában, a jelenlegi kísérletet jelöl, amely csak az első elem szerkeszthető állapotban van. Is figyelje meg, hogy minden pillanatkép különböző állapota lehet, állapotok befejeződött (a részleges futtatása), sikertelen, beleértve a sikertelen (a részleges futtatása), vagy vázlatszintű.
 
 ![Futtatási előzmények lista](./media/version-control/runhistorylist.png)
 
-Miután már meg van nyitva, a pillanatkép kísérlet elmentse egy új kísérletet, és módosíthatja azt. Ha a kísérlet pillanatkép erőforrásokat, például a betanított modellek, átalakítások vagy adatkészletek frissített verzióit tartalmazza, a pillanatkép az eredeti verzió hivatkozásainak megtartja a során létrehozott pillanatképen. A zárolt pillanatkép elmentse egy új kísérletet, ha az Azure Machine Learning Studio ezen eszközök újabb verzióra meglétét észleli, és automatikusan frissíti őket az új kísérlet.
+Megnyitás után mentse a pillanatkép kísérlet egy új kísérlet, és módosíthatja azt. A kísérlet pillanatkép adategységeket, mint a betanított modellek, átalakítások vagy adatkészletek frissített verzióit tartalmazza, ha a pillanatkép megőrzi az eredeti verzió mutató hivatkozásokat, ha a pillanatkép. Új kísérlet menti a zárolt pillanatkép, ha az Azure Machine Learning Studio ezeknek az eszközöknek egy újabb verziója meglétét észleli, és automatikusan frissíti őket az új kísérlet.
 
-Ha törli a kísérletet, törlődnek, hogy a kísérlet összes pillanatképet.
+Ha törli a kísérletet, a rendszer törli a kísérlet összes pillanatképet.
 
 ### <a name="exportimport-experiment-in-json-format"></a>Exportálás/importálás kísérlet JSON formátumban
-A futtatási előzményei pillanatképek ne a kísérlet nem módosítható verziójú Azure Machine Learning Studio minden alkalommal, amikor futtatásához küldené el. Is helyi másolatot készíteni a kísérlet, és ellenőrizze a kedvenc vezérlő forrásrendszer, például a Team Foundation Server, és később hozza létre a helyi fájl kísérlet. Használhatja a [Azure Machine Learning PowerShell](http://aka.ms/amlps) parancsmagjaival [ *Export-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) és [  *Importálás – AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) hajthatja végre, hogy.
+A futtatási előzményeket pillanatképeknek a kísérlet egy nem módosítható verzióját minden alkalommal, amikor azt elküldve a futtatása az Azure Machine Learning Studio ne. Is mentheti a kísérlet egy helyi példányát, és ellenőrizze a kedvenc forráskódú verziókezelő rendszer, például a Team Foundation Server, és később hozza létre újból a helyi fájl kísérlet. Használhatja a [Azure Machine Learning PowerShell](http://aka.ms/amlps) parancsmagok [ *Export-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) és [  *Import-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) hajthatja végre, hogy.
 
-A JSON-fájl nem lehet hivatkozni eszközök például a dataset vagy a modell betanítását munkaterületen kísérlet gráf képviselő szöveges alakot. A szerializált verzió, az eszköz nem tartalmaz. A JSON-dokumentum importálja vissza a munkaterületre kísérli meg, ha a hivatkozott eszközök már léteznie kell az ugyanabban a kísérletben hivatkozott azonosítók eszközt. Ellenkező esetben nem férhet hozzá az importált kísérletet.
+A JSON-fájlt a kísérlet diagram, többek között előfordulhat, hogy eszközökhöz való hivatkozást a munkaterületen, például egy adatkészletet és betanított modell képviselő szöveges alakot. A szerializált verzió az eszköz nem tartalmaz. Kísérel meg importálni a JSON-dokumentum vissza a munkaterületre, ha a hivatkozott eszközök már léteznie kell az adott objektum azonosítóját, amely a kísérletben hivatkozott. Ellenkező esetben nem férhet hozzá az importált kísérletet.
 
-## <a name="versioning-trained-model"></a>Versioning betanított modell
-Az Azure Machine Learning egy trained model szerializált olyan formátumra, úgynevezett iLearner-fájlt (`.iLearner`), és az Azure Blob storage-fiók a munkaterület társított tárolja. Egy iLearner-fájlt egy példánya módja a megőrzési API-n keresztül. [Ez a cikk](retrain-models-programmatically.md) azt ismerteti, hogyan működik, a megőrzési API-t. A magas szintű lépéseket:
+## <a name="versioning-trained-model"></a>Verziókezelés betanított modell
+Az Azure Machine Learning betanított modell szerializált olyan formátumra, más néven iLearner-fájlt (`.iLearner`), és tárolja a munkaterülethez társított Azure Blob storage-fiók. Egyik módja a iLearner-fájlt egy példánya, a megőrzési API-n keresztül. [Ez a cikk](retrain-models-programmatically.md) ismerteti a megőrzési API működése. A magas szintű lépéseket:
 
-1. Állítsa be a tanítási kísérletet.
-2. Adjon hozzá egy webes szolgáltatás kimeneti portot a tanítási modell modulhoz, vagy a modul, amely létrehozza a betanított modell, például a modell Hyperparameter hangolására vagy R modell létrehozása.
-3. Futtassa a tanítási kísérletet, és majd telepítse azt a modell betanítási webszolgáltatásként.
-4. A BES végpont a képzés webes szolgáltatás hívása, és adja meg a kívánt iLearner fájl nevét és a Blob tárfiókhely azt a rendszer hol tárolja.
-5. Nem a létrehozott iLearner-fájlt kér be az adatokat, a BES hívás befejeződése után.
+1. Állítsa be a betanítási kísérlet.
+2. Adja hozzá a web service kimeneti portját a tanítási modell modulhoz, vagy a modul, amely a betanított modell, például a modell Hiperparaméter finomhangolása vagy az R-modell létrehozása.
+3. A betanítási kísérlet futtatásához és majd üzembe helyezheti webszolgáltatásként, amely modell betanítási.
+4. A BES végpont a betanítási webes szolgáltatás hívása, és adja meg a kívánt iLearner fájl neve és a Blob-tárfiók helyszíne azt tárolásához.
+5. Az előállított iLearner-fájlt gyűjtsön, a BES hívás befejeződése után.
 
-Egy másik kérje le a iLearner-fájlt módja a PowerShell-parancsmag segítségével keresztül [ *letöltési-AmlExperimentNodeOutput*](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput). Ez akkor lehet egyszerűbb, ha csak egy példánya nem a modell újratanítása programozott módon kell iLearner-fájlt.
+Kérje le a iLearner-fájlt egy másik módja, a PowerShell parancsmagokon keresztül [ *letöltési-AmlExperimentNodeOutput*](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput). Ez megkönnyíti, ha csak át szeretné anélkül, hogy a modell programozott újratanítás kellene iLearner-fájlt egy példánya lehet.
 
-Miután a betanított modell tartalmazó iLearner-fájlt, majd versioning stratégiát is alkalmaz. Lehet, hogy a stratégia alkalmazása előtti/utótag elnevezési szabályokat alkalmaz, és csak Kilépés a Blob Storage tárolóban iLearner-fájlt, vagy másolása/importálása a verziókezelő rendszert.
+Miután a betanított modellt tartalmazó iLearner-fájlt, majd a saját verziókezelési stratégiát alkalmazhat. A stratégia lehet egyszerűen alkalmazása előtti/utótag egy elnevezési konvenciója, és csak a Blob storage-ban iLearner-fájlt elhagyása, vagy másolja/való importálás a verziókezelő rendszer.
 
-A mentett iLearner-fájlt majd telepített webszolgáltatásokon keresztül pontozó használható.
+A mentett iLearner-fájlt majd keresztül üzembe helyezett webszolgáltatások pontozó használható.
 
-## <a name="versioning-web-service"></a>Versioning webszolgáltatás
-Egy Azure Machine Learning kísérlet webszolgáltatások két típusú telepítése. A klasszikus webszolgáltatás szorosan párosított a kísérletet, valamint a munkaterületen. Az új webszolgáltatás használja az Azure Resource Manager keretrendszer, és már nem használja az eredeti kísérlet vagy a munkaterületen.
+## <a name="versioning-web-service"></a>Verziókezelés webszolgáltatás
+Az Azure Machine Learning-kísérletből webszolgáltatások kétféle telepítheti. A klasszikus webszolgáltatás szorosan összekapcsolt, a kísérletet, valamint a munkaterületen. Az új webszolgáltatás használja az Azure Resource Manager-keretrendszert, és azt már nem az eredeti kísérlet vagy a munkaterület együtt használja.
 
 ### <a name="classic-web-service"></a>Klasszikus webszolgáltatás
-Klasszikus webszolgáltatás verzióra kihasználhatja a webes szolgáltatás végpont szerkezet. Íme egy tipikus folyamatot:
+Klasszikus webszolgáltatások verzióra akkor kihasználhatja a web service végpont szerkezet. A következő jellemzően a következő folyamatot:
 
-1. A prediktív kísérlet telepít egy új klasszikus webes szolgáltatás, amely tartalmaz egy alapértelmezett végpont.
-2. Ep2, amely felfedi a kísérletben/betanítása modell verziószámának nevű új végpont létrehozásához.
-3. Lépjen vissza, és frissítse a prediktív kísérletté és a betanított modell.
-4. A prediktív kísérletté, amely frissíti az alapértelmezett végpont újratelepíti. Azonban ez nem módosítja ep2.
-5. Létrehozhat további végpont nevű ep3, amely felfedi a betanított modell és a kísérlet új verziója.
-6. Lépjen vissza, ha a 3, ha szükséges.
+1. A prediktív kísérletből telepít egy új klasszikus webszolgáltatás, amely tartalmaz egy alapértelmezett végpont.
+2. Ep2, amely a jelenlegi verziója a kísérlet/betanított modell nevű új végpont létrehozásához.
+3. Lépjen vissza, és frissítse a prediktív kísérletet, és a betanított modell.
+4. A prediktív kísérletet, amely frissíti az alapértelmezett végpont újbóli telepítése. De ez nem módosítja a ep2.
+5. Létrehozhat egy további végpont nevű ep3, amely a kísérletet, és a betanított modell új verzióját.
+6. Lépjen vissza, szükség esetén a 3. lépéssel.
 
-Adott idő alatt lehetséges, hogy az azonos webszolgáltatás sok végpontok. Minden egyes végpont a kísérlet, a betanított modell időpontban verzióját tartalmazó pont időponthoz kötött másolatot képviseli. Majd használható külső logikai meghatározni, melyik végponthoz hívására, vagyis hatékonyan kiválasztása a betanított modell pontozási futtatáshoz verzióját.
+Idővel lehetséges, hogy az azonos web service-ben létrehozott sok végpont. Minden végpont a kísérletet, amely tartalmazza a időponthoz verzióját a betanított modell egy időponthoz példányát jelöli. Ezután használhatja a külső logikai szeretne hívásokat indítani, melyik végponthoz meghatározásához vagyis hatékonyan kiválasztja a pontozási Futtatás a betanított modell egy verziója.
 
-Sok azonos a webszolgáltatás végpontjainak is létrehozhat, és a végpontnak hasonló hatás eléréséhez a iLearner fájl különböző verzióinak majd javítás. [Ez a cikk](create-models-and-endpoints-with-powershell.md) részletesebben ismerteti, hogyan hajthatja végre, hogy.
+Sok azonos webszolgáltatás-végpontok is létrehozhat, és ezután javítani a iLearner-fájlt a végpontra hasonló hatás eléréséhez különböző verzióit. [Ez a cikk](create-models-and-endpoints-with-powershell.md) részletesebben ismerteti, hogyan hajthatja végre, hogy.
 
 ### <a name="new-web-service"></a>Új webszolgáltatás
-Ha létrehoz egy új Azure Resource Manager-alapú webszolgáltatás-bővítmény, a végpont szerkezet már nem érhető el. Ehelyett hozhat létre webes szolgáltatás definíciós (WSD) fájlok, JSON formátumban, a prediktív kísérlet használatával a [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell-parancsmag segítségével, vagy a [ *Export-AzureRmMlWebservice* ](https://msdn.microsoft.com/library/azure/mt767935.aspx) telepített Resource Manager-alapú webszolgáltatás a PowerShell-parancsmag segítségével.
+Ha létrehoz egy új Azure Resource Manager-alapú webes szolgáltatás, a végpont szerkezet már nem érhető el. Ehelyett létrehozhat webes szolgáltatás definíciós (WSD) fájlok, JSON formátumban, az a prediktív kísérletből a [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell-parancsmag segítségével, vagy a [ *Export-AzureRmMlWebservice* ](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice?view=azurermps-6.6.0) egy már üzembe helyezett Resource Manager-alapú webszolgáltatás a PowerShell-parancsmag segítségével.
 
-Miután az exportált WSD fájl- és szabályozhatja azt verziója, is telepítheti a WSD új webszolgáltatásként az egy másik web service-csomag egy másik Azure-régióban. Ellenőrizze, hogy a megfelelő tárolási fiók konfigurációját, valamint az új webes szolgáltatás csomag. Adjon meg Javítást különböző iLearner-fájlokban szereplő, a WSD-fájl módosítása és frissítése a betanított modell hivatkozik, és üzembe egy új webszolgáltatás-bővítmény.
+Miután az exportált WSD-fájlt, és szabályozhatja azt a verziót, is telepítheti a WSD új webszolgáltatásként egy másik web service-csomag egy másik Azure-régióban. Csak ellenőrizze, hogy a megfelelő storage-fiók konfigurációját, valamint az új webes szolgáltatási csomag. Adjon meg Javítása a különböző iLearner-fájlt, módosítsa a WSD-fájlt, és a hely hivatkozás a betanított modell frissítése, és új webszolgáltatásként üzembe helyezni.
 
-## <a name="automate-experiment-execution-and-deployment"></a>Kísérlet végrehajtása és a telepítés automatizálása
-ALM fontos eleme, végrehajtási és az alkalmazás telepítési folyamatának automatizálását tennie. Az Azure Machine Learning, ennek segítségével végezheti a [PowerShell modul](http://aka.ms/amlps). Íme egy példa, amely kapcsolódik a szabványos ALM végpont lépéseket automatikus végrehajtási vagy üzembe helyező folyamat használatával a [Azure Machine Learning Studio PowerShell modul](http://aka.ms/amlps). Az egyes lépések, melyekkel a lépés elvégzéséhez legalább egy PowerShell-parancsmagjaival van csatolva.
+## <a name="automate-experiment-execution-and-deployment"></a>Kísérlet-végrehajtás és üzembe helyezésének automatizálása
+Fontos szempont a ALM, hogy tudni végrehajtási és az alkalmazás központi telepítési folyamat automatizálása. Az Azure Machine Learning, ennek segítségével végezheti a [PowerShell-modul](http://aka.ms/amlps). Íme egy példa, amely a standard szintű alkalmazások teljes körű lépések automatikus végrehajtás és üzembe helyezési folyamat használatával a [Azure Machine Learning Studio PowerShell modul](http://aka.ms/amlps). Az egyes lépések, amelyek segítségével a lépés elvégzéséhez legalább egy PowerShell-parancsmagok van csatolva.
 
-1. [Töltse fel a dataset](https://github.com/hning86/azuremlps#upload-amldataset).
-2. Másolja a munkaterületen, a tanítási kísérletet egy [munkaterület](https://github.com/hning86/azuremlps#copy-amlexperiment) vagy [gyűjteménye](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), vagy [importálása](https://github.com/hning86/azuremlps#import-amlexperimentgraph) egy [exportált](https://github.com/hning86/azuremlps#export-amlexperimentgraph) kísérlet a helyi a lemez.
-3. [Az adatkészlet frissítéséhez](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) a a tanítási kísérletet.
-4. [Futtassa a tanítási kísérletet](https://github.com/hning86/azuremlps#start-amlexperiment).
-5. [A betanított modell előléptetni](https://github.com/hning86/azuremlps#promote-amltrainedmodel).
-6. [Másolja a prediktív kísérletté](https://github.com/hning86/azuremlps#copy-amlexperiment) a munkaterületre.
-7. [Frissítse a betanított modell](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) a prediktív kísérletben.
-8. [Futtassa a prediktív kísérletté](https://github.com/hning86/azuremlps#start-amlexperiment).
-9. [Egy webszolgáltatás-bővítmény telepítése](https://github.com/hning86/azuremlps#new-amlwebservice) a prediktív kísérlet.
-10. A webszolgáltatás tesztelése [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) vagy [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) végpont.
+1. [Töltse fel az adatkészlet](https://github.com/hning86/azuremlps#upload-amldataset).
+2. Betanítási kísérlet másolja be a munkaterületet egy [munkaterület](https://github.com/hning86/azuremlps#copy-amlexperiment) vagy [katalógus](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), vagy [importálása](https://github.com/hning86/azuremlps#import-amlexperimentgraph) egy [exportált](https://github.com/hning86/azuremlps#export-amlexperimentgraph) helyi kísérlet a lemez.
+3. [Az adatkészlet frissítéséhez](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) a betanítási kísérlet során.
+4. [A tanítási kísérlet futtatása](https://github.com/hning86/azuremlps#start-amlexperiment).
+5. [A betanított modell előléptetése](https://github.com/hning86/azuremlps#promote-amltrainedmodel).
+6. [Másolja egy prediktív kísérletet](https://github.com/hning86/azuremlps#copy-amlexperiment) a munkaterületre.
+7. [Frissítse a betanított modell](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) az a prediktív kísérletet.
+8. [Futtassa a prediktív kísérletet](https://github.com/hning86/azuremlps#start-amlexperiment).
+9. [Webszolgáltatás üzembe helyezése](https://github.com/hning86/azuremlps#new-amlwebservice) a prediktív kísérletből.
+10. A webszolgáltatás teszteléséhez [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) vagy [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) végpont.
 
 ## <a name="next-steps"></a>További lépések
-* Töltse le a [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps) modul és a kezdő a ALM feladatok automatizálására.
-* Megtudhatja, hogyan [létrehozása és kezelése a nagy számú gépi tanulás modellek csak egyetlen kísérlet használatával](create-models-and-endpoints-with-powershell.md) PowerShell és az átképezési API segítségével.
-* További információ [Azure Machine Learning webszolgáltatások üzembe helyezése](publish-a-machine-learning-web-service.md).
+* Töltse le a [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps) modul és a kezdési a ALM feladatok automatizálására.
+* Ismerje meg, hogyan [létrehozása és kezelése a nagy számú gépi Tanulási modellek csak egyetlen kísérletben használatával](create-models-and-endpoints-with-powershell.md) PowerShell és az átképezési API segítségével.
+* Tudjon meg többet [Azure Machine Learning-webszolgáltatások üzembe helyezéséhez](publish-a-machine-learning-web-service.md).

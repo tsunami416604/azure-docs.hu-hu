@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 0a5c73728f939fc239f4af79f5f084867856581a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494208"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617218"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Tervezési megfontolások a Service Fabric-fürt kapacitása
 Éles rendszerek üzembe a kapacitástervezés egy fontos lépés. Íme néhány, az elem, meg kell figyelembe venni, hogy a folyamat részeként.
@@ -82,7 +82,8 @@ A tartóssági szint, amelyek jelzik, hogy a rendszer a jogosultságokat, amely 
 
 > [!WARNING]
 > A csomóponttípusok a bronz tartóssági futó beszerzése _jogosultság nélküli_. Ez azt jelenti, hogy infrastruktúra feladatok, amelyek hatással az állapot nélküli munkaterhelés nem kell leállt vagy késleltetett, ami hatással lehet a számítási feladatokat. Csak az állapot nélküli számítási feladatokat futtató csomóponttípusok csak bronz használja. Az éles számítási feladatokhoz Silver vagy javasolt felett. 
->
+
+> Függetlenül bármely tartóssági szint [felszabadítási](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/deallocate) Virtuálisgép-méretezési művelet szüntesse meg a fürt
 
 **Silver vagy Gold tartóssági szint használatának előnyei**
  
@@ -150,7 +151,7 @@ Ez a javaslat a megbízhatósági szint választásával.
 
 Itt látható az elsődleges csomópont-példánytípusok kapacitásának tervezési útmutatást:
 
-- **Bármely az éles számítási feladatok futtatása az Azure-beli Virtuálisgép-példányok száma:** meg kell adnia az elsődleges csomópont típusa méretének legalább 5. 
+- **Bármely az éles számítási feladatok futtatása az Azure-beli Virtuálisgép-példányok száma:** meg kell adnia az elsődleges csomópont típusa méretének legalább 5 és a egy ezüst megbízhatósági szint.  
 - **Tesztelési számítási feladatok futtatása az Azure-beli Virtuálisgép-példányok száma** is megadhat egy elsődleges csomópontok minimális méretének 1 vagy 3. Az egyik fürtcsomópont fut, egy speciális konfigurációja, és így, méretezési ki, hogy a fürt nem támogatott. Az egyik fürtcsomópont nincs megbízhatóság rendelkezik, és ezért a Resource Manager-sablonban kell eltávolítása/nem adja meg, hogy a configuration (nem a konfigurációs érték, nem elegendő). Ha beállította a egy csomópontot a fürthöz, állítsa be a portálon keresztül, majd a konfiguráció automatikusan elvégzi. Egy és három csomópontot tartalmazó fürt nem támogatottak az éles számítási feladatok futtatásához. 
 - **A VM-Termékváltozatok:** elsődleges csomóponttípus az, ahol a rendszer szolgáltatások futnak, így a virtuális gép Termékváltozat úgy dönt, kell általános csúcsértéke figyelembe veszik a betöltés, tervezi, hogy a fürt helyezi. Íme egy hasonlattal bemutatják, milyen szeretnél itt – az elsődleges csomóponttípushoz, mint a "tüdőt", úgy érzi mit biztosít oxygent megvalósíthatja a, és így az agy nem elég oxygent kap, ha a szervezet romlik a. 
 
@@ -166,8 +167,7 @@ A termelési számítási feladatokhoz:
 - Standard A1-Termékváltozat nem támogatott a termelési számítási feladatokhoz megfelelő teljesítmény biztosítása érdekében.
 
 > [!WARNING]
-> Az elsődleges csomópont-fürtön futó virtuális gép termékváltozat módosítása jelenleg nem támogatott. Ezért válassza ki az elsődleges csomópont Virtuálisgép-Termékváltozat óvatosan, figyelembe véve a kapacitás jövőbeli igényeit. Jelenleg az egyetlen támogatott módszer helyezni az új Virtuálisgép-Termékváltozat (kisebb vagy nagyobb) az elsődleges csomóponttípus az, hogy a megfelelő kapacitással rendelkező új fürt létrehozása alkalmazások üzembe helyezése és helyreállítása az alkalmazásállapotot az (ha van ilyen) a [ legújabb szolgáltatás a biztonsági mentések](service-fabric-reliable-services-backup-restore.md) elvégzése a régi fürtről. Nem kell minden olyan szolgáltatás rendszerállapot visszaállítása, akkor létrejönnek az új fürtre alkalmazások központi telepítésekor. Ugyanúgy, mintha állapot nélküli alkalmazások a fürtben futó, majd kell az új fürtre alkalmazások üzembe helyezése, akkor semmit nem kell visszaállítani.
-> 
+> Az elsődleges csomópont egy fürtön futó virtuális gép termékváltozat módosítása egy skálázási művelet, és részletes ismertetését lásd: [virtuálisgép-méretezési csoport horizontális felskálázási](virtual-machine-scale-set-scale-node-type-scale-out.md) dokumentációját.
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>A nem elsődleges csomóponttípus - kapacitás útmutatást az állapotalapú alkalmazások és szolgáltatások
 

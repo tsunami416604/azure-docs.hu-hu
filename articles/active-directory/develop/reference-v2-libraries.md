@@ -17,12 +17,12 @@ ms.date: 04/13/2018
 ms.author: celested
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1450cffca7a4cfa57856c75cdcc9e106958ea043
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f3ac6050ca73f96facd621823dc4bad413b139c7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601674"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060624"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Az Azure Active Directory 2.0-s verziójú hitelesítési kódtárai
 
@@ -44,7 +44,7 @@ Az Azure AD v2.0-végpont működik együtt könyvtárak két típusa:
 
 ## <a name="library-support"></a>Klienskódtár-támogatásával
 
-Bármely szabványokkal kompatibilis könyvtár is választja, a v2.0-végpont használata esetén, mert fontos tudni, hogy hol találhat a támogatás. Problémákat és a funkciókérések kódtár kód a szalagtár tulajdonosától. Problémákat és a Szolgáltatásoldali protokollmegvalósítás a szolgáltatással kapcsolatos kéréseit forduljon a Microsofthoz. [A fájl-funkcióigénylés](https://feedback.azure.com/forums/169401-azure-active-directory) további funkciók, tekintse meg a protokoll szeretné. [Hozzon létre egy támogatási kérést](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request) Ha problémát talál, az Azure AD v2.0-végpont esetében ez nem engedélyezett az OAuth 2.0 vagy OpenID Connect 1.0.
+Bármely szabványokkal kompatibilis könyvtár is választja, a v2.0-végpont használata esetén, mert fontos tudni, hogy hol találhat a támogatás. Problémákat és a funkciókérések kódtár kód a szalagtár tulajdonosától. Problémákat és a Szolgáltatásoldali protokollmegvalósítás a szolgáltatással kapcsolatos kéréseit forduljon a Microsofthoz. [A fájl-funkcióigénylés](https://feedback.azure.com/forums/169401-azure-active-directory) további funkciók, tekintse meg a protokoll szeretné. [Hozzon létre egy támogatási kérést](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Ha problémát talál, az Azure AD v2.0-végpont esetében ez nem engedélyezett az OAuth 2.0 vagy OpenID Connect 1.0.
 
 Szalagtárak érkeznek két támogatási kategóriákban:
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/14/2018
 ms.author: raynew
-ms.openlocfilehash: 3fdaaf4bc671996350b8138fb0f7fc3d7adaf567
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442768"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055518"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Hyper-V-replikáció az Azure-támogatási mátrixa
 
@@ -25,7 +25,7 @@ Ez a cikk összefoglalja a támogatott összetevők és az Azure-bA a helyszíni
 
 **Forgatókönyv** | **Részletek**
 --- | ---
-A Hyper-V Virtual Machine Manager | Vészhelyreállítás az Azure-bA végezheti a System Center Virtual Machine Manager-hálóban felügyelt Hyper-V gazdagépeken futó virtuális gépek számára.<br/><br/> Ebben a forgatókönyvben az Azure Portalon vagy a PowerShell használatával is telepítheti.<br/><br/> Ha a Virtual Machine Manager által felügyelt Hyper-V-gazdagépek, is elvégezhet vészhelyreállítást egy másodlagos helyszíni helyre. Ebben a forgatókönyvben kapcsolatos további információkért olvassa el [ebben az oktatóanyagban](tutorial-vmm-to-vmm.md).
+A Hyper-V Virtual Machine Manager | Vészhelyreállítás az Azure-bA végezheti a System Center Virtual Machine Manager-hálóban felügyelt Hyper-V gazdagépeken futó virtuális gépek számára.<br/><br/> Ebben a forgatókönyvben az Azure Portalon vagy a PowerShell használatával is telepítheti.<br/><br/> Ha a Virtual Machine Manager által felügyelt Hyper-V-gazdagépek, is elvégezhet vészhelyreállítást egy másodlagos helyszíni helyre. Ebben a forgatókönyvben kapcsolatos további információkért olvassa el [ebben az oktatóanyagban](hyper-v-vmm-disaster-recovery.md).
 A Hyper-V Virtual Machine Manager nélkül | Vészhelyreállítás az Azure-bA végezheti a Virtual Machine Manager által felügyelt Hyper-V gazdagépeken futó virtuális gépek.<br/><br/> Ebben a forgatókönyvben az Azure Portalon vagy a PowerShell használatával is telepítheti.
 
 
@@ -44,8 +44,8 @@ Az alábbi táblázat foglalja össze a virtuális gépek támogatása. A Site R
 
  **Összetevő** | **Részletek**
 --- | ---
-Virtuálisgép-konfiguráció | Az Azure-bA replikált virtuális gépek meg kell felelnie [Azure-követelmények](#failed-over-azure-vm-requirements).
-Vendég operációs rendszer | Bármilyen vendég operációs rendszer, Azure által támogatott.<br/><br/> A Windows Server 2016 Nano Server nem támogatott.
+Virtuálisgép-konfiguráció | Az Azure-bA replikált virtuális gépek meg kell felelnie [Azure-követelmények](#azure-vm-requirements).
+Vendég operációs rendszer | Bármilyen vendég operációs rendszer [az Azure-ban támogatott](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)...<br/><br/> A Windows Server 2016 Nano Server nem támogatott.
 
 
 ## <a name="vmdisk-management"></a>A felügyeleti Virtuálisgép-lemez
@@ -160,7 +160,7 @@ Hálózati adapterek | Több adapter támogatott |
 Megosztott VHD | Nem támogatott | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Merevlemez formátuma | VHD <br/><br/> VHDX | A Site Recovery automatikusan átalakítja a VHDX VHD-t, ha átadja a feladatokat az Azure-bA. Visszaadja a feladatokat a helyszíni, ha a virtuális gépek továbbra is a VHDX formátumot használja.
-A BitLocker | Nem támogatott | A BitLocker egy virtuális gép a replikáció engedélyezése előtt le kell tiltani.
+BitLocker | Nem támogatott | A BitLocker egy virtuális gép a replikáció engedélyezése előtt le kell tiltani.
 a virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságait, a Site Recoveryben.
 Virtuális gép típusa | Az 1.<br/><br/> Windows – a 2. generációs | 2. generációs virtuális gépek egy operációs rendszer lemez típusa (amely tartalmaz egy vagy két adatkötetek VHDX formátumú) az alapszintű és a kevesebb mint 300 GB méretű lemezterület is támogatottak.<br></br>Linux rendszerű Generation 2 virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 

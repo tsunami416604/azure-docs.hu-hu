@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: db1d449e5c9f66446f00b637c5550dc9144920ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3883fc71c099718face38c16897040788fe0c6ab
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446765"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056140"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Egy Linux CentOS adatelemző virtuális gép Azure-beli üzembe helyezése
 
@@ -38,7 +38,7 @@ A Linux rendszerű adatelemző virtuális gép, a CentOS-alapú Azure virtuális
   * [A cognitive Toolkit](https://github.com/Microsoft/CNTK): a Microsoft Research szoftver eszközkészlet mélytanulási.
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): gyors machine learning-rendszer támogató technikák, például online, kivonatoló, allreduce, csökkentésének, learning2search, aktív, és az interaktív tanulás.
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): egy gyorsított fa gyors és pontos végrehajtását biztosító eszköz.
-  * [Rattle](http://rattle.togaware.com/) (az R analitikai eszközt, ismerje meg, egyszerűen): olyan eszköz, amely lehetővé teszi az adatok elemzési és gépi tanulási R egyszerű, de a GUI-alapú adatfeltárás és modellezés az R-kód automatikus generálása első lépései.
+  * [Rattle](https://togaware.com/rattle/) (az R analitikai eszközt, ismerje meg, egyszerűen): olyan eszköz, amely lehetővé teszi az adatok elemzési és gépi tanulási R egyszerű, de a GUI-alapú adatfeltárás és modellezés az R-kód automatikus generálása első lépései.
 * Az Azure SDK-t a Java, Python, node.js, a Ruby, PHP
 * Az R és Python for kódtárak használata az Azure Machine Learning és más Azure-szolgáltatások
 * Fejlesztői eszközök és a szerkesztők (RStudio, PyCharm, intellij-vel, Emacs, gedit, vi)
@@ -63,7 +63,7 @@ Egy [Ubuntu](dsvm-ubuntu-intro.md) rendszerképet is lehetőség, a legtöbb, a 
 Egy Linux rendszerű adatelemző virtuális gép létrehozásához, az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**: beszerzése utólag, lásd: [lekérése az Azure ingyenes próbaverzió](https://azure.microsoft.com/free/).
-* **Az Azure storage-fiók**: hozzon létre egyet, tekintse meg [hozzon létre egy Azure storage-fiók](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Azt is megteheti Ha nem szeretne meglévő fiók, a storage-fiók is létrehozható, a virtuális gép létrehozása a folyamat részeként.
+* **Az Azure storage-fiók**: hozzon létre egyet, tekintse meg [hozzon létre egy Azure storage-fiók](../../storage/common/storage-quickstart-create-account.md). Azt is megteheti Ha nem szeretne meglévő fiók, a storage-fiók is létrehozható, a virtuális gép létrehozása a folyamat részeként.
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>A Linux Data Science virtuális gép létrehozása
 Hozzon létre egy példányt, a Linux rendszerű adatelemző virtuális gép a lépései a következők:
@@ -160,7 +160,7 @@ További Python-kódtárakat telepítéséhez futtatni szeretné ```conda``` vag
     sudo /anaconda/bin/conda install -n py35 <package> #conda for Python 3.5
 
 
-### <a name="jupyter-notebook"></a>Jupyter notebook
+### <a name="jupyter-notebook"></a>Jupyter Notebook
 A Anaconda terjesztési egy Jupyter notebookot, megosztani a kódot és az elemzési környezet is tartalmaz. A Jupyter notebook JupyterHub keresztül érhető el. Jelentkezzen be a helyi Linux-felhasználónév és jelszó használatával.
 
 A Jupyter notebook server Python 2, a Python 3 és az R kernelekkel előre van konfigurálva. Nincs "Jupyter Notebook" Indítsa el a böngészőt a jegyzetfüzet-kiszolgálóhoz való hozzáféréshez nevű asztali ikon. Ha a virtuális gép SSH- vagy X2Go ügyfél, akkor is ellátogathat [ https://localhost:8000/ ](https://localhost:8000/) a Jupyter notebook kiszolgálóhoz való hozzáféréshez.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure verem datacenter integrációs - DNS
-description: 'Útmutató: Azure verem DNS integrálása a DNS adatközpontot'
+title: Az Azure Stack adatközpont integrációja - DNS
+description: 'Útmutató: Azure Stack DNS integrálhatók az adatközponttaql DNS'
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -10,131 +10,131 @@ ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b4935dc95ccf525c0a40b10dcc8c59ec8aba710e
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29733859"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055717"
 ---
-# <a name="azure-stack-datacenter-integration---dns"></a>Az Azure verem datacenter integrációs - DNS
-Az Azure verem végpontok hozzáférhetnek (`portal`, `adminportal`, `management`, `adminmanagement`stb.)  Azure külső-veremből a DNS-zónák Azure verem használni kívánt futtató DNS-kiszolgálók az Azure verem DNS-szolgáltatások integrálni kell.
+# <a name="azure-stack-datacenter-integration---dns"></a>Az Azure Stack adatközpont integrációja - DNS
+A érhetik el az Azure Stack-végpontok (`portal`, `adminportal`, `management`, `adminmanagement`stb.)  a külső Azure Stack az Azure Stack DNS szolgáltatások integrálását a DNS-kiszolgálók, amelyek a DNS-zónák az Azure Stackben használni kívánt kell.
 
-## <a name="azure-stack-dns-namespace"></a>Az Azure verem DNS-névtér
-Szükségesek bizonyos Azure verem telepítésekor DNS kapcsolatos fontos információkat tartalmaznak.
+## <a name="azure-stack-dns-namespace"></a>Az Azure Stack DNS-névtérben
+Ön szükséges néhány, az Azure Stack üzembe helyezése során a DNS kapcsolatos fontos információkat tartalmaznak.
 
 
 |Mező  |Leírás  |Példa|
 |---------|---------|---------|
-|Régió|Az Azure Alkalmazásveremben üzembe földrajzi helyét.|`east`|
-|Külső tartomány neve|Az Azure-verem központi telepítéshez használni kívánt a zóna nevét.|`cloud.fabrikam.com`|
-|Belső tartománynév|Az infrastruktúra-szolgáltatásokat Azure-készletben használt belső zóna nevét.  Címtárszolgáltatás integrált és titkos (nem érhető el a az Azure Alkalmazásveremben üzembe kívül).|`azurestack.local`|
-|DNS-továbbító|DNS-kiszolgálók, amelyek segítségével az DNS-lekérdezéseket, a DNS-zónák és az azt jelzi, hogy az Azure-vermet, a vállalati intranet vagy a nyilvános interneten kívül üzemeltetett.|`10.57.175.34`<br>`8.8.8.8`|
-|Névelőtagjának (nem kötelező)|Az elnevezési előtag azt szeretné, hogy az Azure-verem infrastruktúra példány gép szerepkörneveket kell rendelkeznie.  Ha nincs megadva, az alapértelmezett érték `azs`.|`azs`|
+|Régió|Az Azure Stack üzemelő példányához földrajzi helye.|`east`|
+|Külső tartomány neve|Az Azure Stack üzembe helyezéshez használni kívánt a zóna nevét.|`cloud.fabrikam.com`|
+|Belső tartomány neve|Az infrastruktúra-szolgáltatások az Azure Stackben használt belső zóna nevét.  Címtárszolgáltatás integrált és személyes (nem érhető el a kívül az Azure Stack üzembe helyezés).|`azurestack.local`|
+|DNS-továbbító|Segítségével az DNS-lekérdezések, DNS-zónák és -rekordok Azure Stack, a vállalati intranet vagy a nyilvános interneten kívül üzemeltetett DNS-kiszolgálók.|`10.57.175.34`<br>`8.8.8.8`|
+|Elnevezési előtag (opcionális)|Azt szeretné, hogy az Azure Stack infrastruktúra példány gép szerepkörneveket kell elnevezési előtag.  Ha nincs megadva, az alapértelmezett érték `azs`.|`azs`|
 
-A teljesen minősített tartományneve (FQDN) az Azure Alkalmazásveremben üzembe és a végpontok a régió és a külső tartománynév paraméter kombinációjából áll. A példákban szereplő értékek felhasználásával az előző táblázatban, lenne az FQDN a Azure verem központi telepítés a következő néven:
+A teljesen minősített tartományneve (FQDN) az Azure Stack üzembe helyezés és a végpontok a régiót és a külső tartománynév paraméter együttes használata. A teljes tartománynév, az üzembe helyezés az Azure Stack használatával a példákban szereplő értékek alapján az előző táblázatban, a következő név a következő lesz:
 
 `east.cloud.fabrikam.com`
 
-Példák a végpontok a központi telepítés olyan, a következő URL-címek jelenne meg:
+Példák a végpontok az üzembe helyezés, a következő URL-címek jelenne meg:
 
 `https://portal.east.cloud.fabrikam.com`
 
 `https://adminportal.east.cloud.fabrikam.com`
 
-A Példa DNS névtér használatához Azure verem központi telepítésre, az alábbi feltételek szükségesek:
+Ebben a példában DNS-névteret használja az Azure Stack üzemelő példányához, az alábbi feltételek szükségesek:
 
-- A zóna `fabrikam.com` regisztrálva van-e a tartományregisztráló, egy belső vállalati DNS-kiszolgálót vagy mindkettőt, attól függően, hogy a megoldás vonatkozó követelményeknek.
-- A gyermektartomány `cloud.fabrikam.com` létezik-e a zóna `fabrikam.com`.
-- A DNS-kiszolgálók, amelyek a zónákat `fabrikam.com` és `cloud.fabrikam.com` elérhető az Azure-verem telepítéséből.
+- A zóna `fabrikam.com` regisztrálva van a tartományregisztráló, a belső vállalati DNS-kiszolgálók vagy mindkét, attól függően, a névfeloldási követelményeit.
+- A gyermektartomány `cloud.fabrikam.com` létezik a zóna `fabrikam.com`.
+- A zónákat a DNS-kiszolgálók `fabrikam.com` és `cloud.fabrikam.com` érhető el az Azure Stack-telepítésből.
 
-Kell tudni oldania az Azure-verem végpontok és példányok külső Azure veremből DNS-neveit, a DNS-kiszolgálók, amelyek a külső DNS-zóna üzemeltetésére Azure verem a használni kívánt szülőzónát futtató DNS-kiszolgálók integrálni kell.
+Tudják feloldani a DNS-nevek Azure Stack-végpontok és a külső Azure Stack, a DNS-kiszolgálók, amelyek a külső DNS-zónát az Azure Stack a használni kívánt szülő zónát futtató DNS-kiszolgálókkal integrálnia kell.
 
 
 ## <a name="resolution-and-delegation"></a>Feloldás és delegálás
 
 Kétféle DNS-kiszolgáló létezik:
 
-- An authoritative DNS server hosts DNS zones. Csak az ezekben a zónákban található rekordokra irányuló DNS-lekérdezéseket válaszolja meg.
+- Egy mérvadó DNS-kiszolgáló DNS-zónákat üzemeltet. Csak az ezekben a zónákban található rekordokra irányuló DNS-lekérdezéseket válaszolja meg.
 - A recursive DNS server does not host DNS zones. Minden DNS-lekérdezést megválaszol a mérvadó DNS-kiszolgálók adatait összegyűjtve.
 
-Azure verem tartalmazza a mérvadó is és a rekurzív DNS-kiszolgálók. A rekurzív kiszolgálók névfeloldását minden, a kivételével a belső személyes és a külső nyilvános DNS-zónát, hogy Azure Alkalmazásveremben üzembe szolgálnak. 
+Az Azure Stack mérvadó is tartalmaz, és a rekurzív DNS-kiszolgálók. A rekurzív kiszolgálók névfeloldását minden, a kivételével a belső, saját zóna és a külső nyilvános DNS-zónát, hogy az Azure Stack üzemelő példányához szolgálnak. 
 
-![Az Azure DNS verem architektúrája](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
+![Azure Stack DNS-architektúra](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
 
-## <a name="resolving-external-dns-names-from-azure-stack"></a>Azure-veremből külső DNS-nevek feloldása
+## <a name="resolving-external-dns-names-from-azure-stack"></a>Az Azure Stack külső DNS-nevek feloldása
 
-A DNS-nevek végpontok Azure verem kívül (például: www.bing.com), meg kell adnia a DNS-kiszolgálók, amelyek használatával Azure verem amelyek Azure verem esetében nem mérvadó DNS-kérelmek továbbítása. Üzembe helyezés esetén a DNS-kiszolgálók, amely Azure verem kérelmeket továbbítja a központi telepítési munkalapra (a DNS-továbbító mezőben) kell megadni. Adjon meg legalább két kiszolgáló ebben a mezőben a hibatűrés. Ezek az értékek nélkül Azure verem telepítése sikertelen.
+Azure Stack kívüli végpontok DNS-nevek feloldására (például: www.bing.com), meg kell adnia a DNS-kiszolgálók az Azure Stack használatával, amelynek az Azure Stack nem mérvadó DNS-kérelmeket továbbítja. A telepítéshez szükséges DNS-kiszolgálók az Azure Stack továbbítja a kérelmeket az üzembehelyezési munkalap (a DNS-továbbító mezőben). A hibatűrés legalább két kiszolgálót ebben a mezőben adja meg. Ezek az értékek nélkül Azure Stack üzembe helyezés sikertelen lesz.
 
 ### <a name="configure-conditional-dns-forwarding"></a>Feltételes DNS-továbbító konfigurálása
 
 > [!IMPORTANT]
 > Ez csak egy AD FS üzembe helyezése vonatkozik.
 
-Ahhoz, hogy a névfeloldás a meglévő DNS-infrastruktúrával, konfigurálja a feltételes továbbítást.
+Ahhoz, hogy a névfeloldás a meglévő DNS-infrastruktúrával, konfigurálja a feltételes továbbítás.
 
-A feltételes továbbítók hozzáadásához a kiemelt végpont kell használnia.
+Adja hozzá a feltételes továbbítók, a kiemelt jogosultságú végpontot kell használnia.
 
-Ez az eljárás az adatközponti hálózat, amely képes kommunikálni a kiemelt végpont Azure-készletben lévő számítógépet használni.
+Ebben az eljárásban az Adatközpont-hálózatát, amely képes kommunikálni az Azure Stack a rendszerjogosultságú végpont számítógépet használni.
 
-1. Nyisson meg egy emelt szintű Windows PowerShell-munkamenetet (Futtatás rendszergazdaként), és kapcsolódjon a kiemelt végpont IP-címét. A hitelesítő adatok használata CloudAdmin hitelesítéshez.
+1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet (Futtatás rendszergazdaként), és csatlakozzon a rendszerjogosultságú végpont IP-címét. A hitelesítő adatok használata a CloudAdmin hitelesítéshez.
 
    ```
    $cred=Get-Credential 
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $cred
    ```
 
-2. A privilegizált végponthoz való kapcsolódás után futtassa a következő PowerShell-parancsot. Helyettesítse be a tartomány nevét a megadott minta értékek és a DNS-kiszolgálók IP-címeket szeretne használni.
+2. A kiemelt végponthoz való csatlakozás után futtassa a következő PowerShell-parancsot. Helyettesítse be a tartomány neve és IP-címek a használni kívánt DNS-kiszolgálók megadott mintaértékeket.
 
    ```
    Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses "192.168.1.1","192.168.1.2"
    ```
 
-## <a name="resolving-azure-stack-dns-names-from-outside-azure-stack"></a>Külső Azure veremből Azure verem DNS-nevek feloldása
-A mérvadó kiszolgálók esetén a gazdarendszerhez a külső DNS-zóna adatainak tárolásához, és a felhasználó által létrehozott zónák. Ezek a kiszolgálók engedélyezéséhez a zónadelegálás vagy feltételes továbbítás külső Azure veremből Azure verem DNS-nevek feloldására integrálható.
+## <a name="resolving-azure-stack-dns-names-from-outside-azure-stack"></a>Külső Azure Stack az Azure Stack DNS-nevek feloldása
+A mérvadó kiszolgálók, amelyekre a a külső DNS-zóna adatainak tárolásához, és minden olyan felhasználó által létrehozott zónák. Ezek a kiszolgálók zónadelegálás vagy feltételes továbbítás külső Azure Stack az Azure Stack DNS névfeloldás engedélyezése integrálható.
 
-## <a name="get-dns-server-external-endpoint-information"></a>DNS-kiszolgáló külső végpont információk
+## <a name="get-dns-server-external-endpoint-information"></a>DNS-kiszolgáló külső végpont információk lekérése
 
-A DNS-infrastruktúra az Azure Alkalmazásveremben üzembe integrálása, szüksége van a következő információkat:
+Az Azure Stack üzemelő példányához integrálása a DNS-infrastruktúra, szüksége van a következő információkat:
 
-- DNS server FQDNs
+- DNS-kiszolgáló teljesen minősített tartománynevek
 - DNS server IP addresses
 
-Az Azure verem DNS-kiszolgálók teljes tartományneveit formátuma a következő:
+Az Azure Stack DNS-kiszolgálók teljes tartományneveit formátuma a következő:
 
 `<NAMINGPREFIX>-ns01.<REGION>.<EXTERNALDOMAINNAME>`
 
 `<NAMINGPREFIX>-ns02.<REGION>.<EXTERNALDOMAINNAME>`
 
-A minta értékek, a teljes tartományneveket, a DNS-kiszolgálók vannak:
+A minta értékeivel, a teljes tartományneveket, a DNS-kiszolgálók vannak:
 
 `azs-ns01.east.cloud.fabrikam.com`
 
 `azs-ns02.east.cloud.fabrikam.com`
 
 
-Ezt az információt is létrejön, minden Azure verem telepítések nevű fájlba végén `AzureStackStampDeploymentInfo.json`. Ez a fájl megtalálható a `C:\CloudDeployment\logs` mappában található a központi telepítés virtuális gépen. Ha nem biztos abban, hogy milyen értékeket az Azure-verem üzembe helyezéshez használt, az értékek lekérheti itt.
+Ezt az információt is létrehoz egy fájlt a központi telepítések Azure Stack végén `AzureStackStampDeploymentInfo.json`. Ez a fájl a `C:\CloudDeployment\logs` mappát a telepítési virtuális gép. Ha nem biztos abban, hogy milyen értékeket használt az Azure Stack üzembe helyezéshez, itt beszerezheti az értékeket.
 
-Ha a központi telepítés virtuális gép már nem érhető el, vagy nem érhető el, szerezheti be az értékeket a kiemelt végpont csatlakozik, és fut a `Get-AzureStackInfo` PowerShell-parancsmagot. A privilegizált végpont kapcsolatos további információkért lásd: (Beszúrás csatolása a következő cikket: Itt).
+Ha az üzembe helyezés virtuális gép már nem érhető el, vagy nem érhető el, úgy szerezhet az értékeket a kiemelt végponthoz csatlakozik, és fut a `Get-AzureStackInfo` PowerShell-parancsmagot. További információkért lásd: [kiemelt végponthoz](azure-stack-privileged-endpoint.md).
 
-## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Feltételes továbbítás Azure verem beállítása
+## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Feltételes továbbítás az Azure Stackhez beállítása
 
-A legegyszerűbb és legbiztonságosabb Azure verem integrálása a DNS-infrastruktúra például úgy a zóna feltételes továbbítás a szülőzónát futtató kiszolgálótól. Ezt a módszert akkor ajánlott, ha rendelkezik a DNS-kiszolgálók közvetlenül lehet szabályozni a szülőzónát futtató a Azure verem külső DNS-névtérben.
+A legegyszerűbb és legbiztonságosabb módját, az Azure Stack integrálható a DNS-infrastruktúra ehhez a zóna feltételes továbbítás a szülőzónát futtató kiszolgálón. Ez a megközelítés akkor ajánlott, ha rendelkezik a DNS-kiszolgálók közvetlenül lehet szabályozni, amelyeken a szülőzónában az Azure Stack külső DNS-névtérben.
 
-Ha még nem ismeri a DNS-beli feltételes továbbítás módjáról, tekintse meg a következő TechNet cikkben találhat: [rendelje hozzá a feltételes továbbítók egy tartománynév](https://technet.microsoft.com/library/cc794735), vagy a DNS-megoldást adott dokumentációjában.
+Ha még nem ismeri a DNS-sel való feltételes továbbítás módjáról, tekintse meg a következő TechNet-cikk: [rendelje hozzá a feltételes továbbítók tartománynév](https://technet.microsoft.com/library/cc794735), vagy a DNS-megoldás adott dokumentációjában.
 
-Olyan esetekben, ahol a külső Azure verem DNS-zóna hasonló vállalati tartománynév tartomány megadott feltételes továbbítás nem használható. DNS-delegálást konfigurálni kell.
+Olyan esetekben, ahol a külső Azure Stack DNS-zónához a következő módon a vállalati tartománynév gyermektartomány megadott feltételes továbbítás nem használható. DNS-delegálást konfigurálni kell.
 
 Példa:
 
 - Vállalati DNS-tartománynév: `contoso.com`
-- Az Azure verem külső DNS-tartománynév: `azurestack.contoso.com`
+- Az Azure Stack külső DNS-tartománynév számára: `azurestack.contoso.com`
 
-## <a name="delegating-the-external-dns-zone-to-azure-stack"></a>A külső DNS-zónáját az Azure-verem delegálása
+## <a name="delegating-the-external-dns-zone-to-azure-stack"></a>A külső DNS-zónáját az Azure Stack delegálása
 
-Egy Azure Alkalmazásveremben üzembe kívül feloldható DNS-nevek, a DNS-delegálás beállítása kell.
+DNS-nevek kívül az Azure Stack üzemelő példányához feloldhatónak lennie meg kell DNS-delegálás beállítása.
 
-Minden tartományregisztráló a saját DNS-kezelési eszközeit használja a tartományok névkiszolgálói rekordjainak módosítására. A regisztráló DNS kezelése lapon szerkessze a Névkiszolgálói rekordokat, és cserélje le a Névkiszolgálói rekordokat, a zóna Azure verem megfelelően.
+Minden tartományregisztráló a saját DNS-kezelési eszközeit használja a tartományok névkiszolgálói rekordjainak módosítására. A regisztráló DNS-kezelési oldalán szerkessze a Névkiszolgálói rekordokat, és cserélje le a Névkiszolgálói rekordokat a zóna azokat az Azure Stackben.
 
 A legtöbb DNS-regisztráló szervezetek esetén meg kell adni legalább két DNS-kiszolgáló a delegálás befejezéséhez.
 

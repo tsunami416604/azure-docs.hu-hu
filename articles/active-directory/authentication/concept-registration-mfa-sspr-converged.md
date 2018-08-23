@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: af57faddcc1413747b4bb847e27287ba86562175
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492892"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056381"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication (nyilvános előzetes verzió)
 
@@ -55,6 +55,9 @@ Felhasználók, akik a rendszer felszólítja a regisztráció közben jelentkez
 > Ez a tapasztalat csak jelennek meg ha a felhasználó regisztrálása közben jelentkezik be kéri. Felhasználók, akik közvetlenül az új tapasztalata aka.ms/setupsecurityinfo jelenik meg a felhasználói felületen, a cikk későbbi részében ismertetett egy másik verziója.
 
 A hitelesítési módszerek látható a módszerek engedélyezve van az MFA vagy az SSPR-házirendek alapján változik. A felhasználó hitelesítési módszerek felel meg a többtényezős hitelesítési szabályzat, SSPR szabályzat vagy mindkettő szükséges minimális száma regisztrálni kell adnia. Ha rugalmasság a hitelesítési módszerekről a felhasználó regisztrálhatja, és kiválaszthatja **válassza ki a biztonsági adatok** további hitelesítési módszerek kiválasztásához.  
+
+> [!NOTE]
+> Mobilalkalmazás-értesítés és a mobilalkalmazás-kód használatának engedélyezése, ha a felhasználók, akik regisztrálni a Microsoft Authenticator alkalmazás használatával értesítést értesítés és kód is használhatják az identitásukat.
 
 Ellentétben az előző MFA regisztrációs működését nem kéri a felhasználótól egy alkalmazásjelszót regisztrálni az új regisztrációs felület végighaladva. Ehelyett az alkalmazások regisztrálni alkalmazásjelszókat az új funkció a jelszavakat az oktatóanyagban szereplő lépéseket követik.  
 

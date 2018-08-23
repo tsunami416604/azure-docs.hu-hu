@@ -1,22 +1,49 @@
 ---
-title: A cognitive Services beszédfelismerő SDK-dokumentáció
+title: A cognitive Services beszédfelismerő SDK-dokumentáció |} A Microsoft Docs
 description: Kibocsátási megjegyzések – mi változott a legfrissebb verziókban
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f346241e1d10d16eae08e389296f4be9149ec086
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0900588f818855d72e415678338c96fb6505318d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502458"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41987468"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services beszédfelismerő SDK 0.6.0: 2018 augusztus kiadás
+
+**Új funkciók**
+
+* A beszédfelismerés SDK-val készített UWP-alkalmazás most már adhat át a Windows App Certification Kit (WACK).
+  Tekintse meg a [UWP rövid](quickstart-csharp-uwp.md).
+* A .NET Standard 2.0 Linux (Ubuntu 16.04 x 64) támogatása.
+* Kísérleti funkció: Támogatja a Java 8 (64 bites) Windows és Linux (Ubuntu 16.04 x 64).
+  Tekintse meg a [Java futtatási környezet a rövid útmutató](quickstart-java-jre.md)
+
+**Funkcionális változások**
+
+* További részletes információ a hibáról a csatlakozási hibák is közzéteheti.
+
+**Használhatatlanná tévő változásai**
+
+* Java (Android) a `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` függvény már nem csak egy elérésiút-paraméter. Az elérési út most már automatikusan észleli az összes támogatott platformon.
+* A get-hozzáférő tulajdonság `EndpointUrl` Java-és C# el lett távolítva.
+
+**Hibajavítások**
+
+* A Java a fordítási felismerő hang összefoglaló eredménye most valósítja meg.
+* Kijavítva a hiba, inaktív a szálak és a egy nyílt és a fel nem használt sockets megnövelt számú okozhatja.
+* Rögzített probléma, ahol egy hosszú ideig futó felismerése sikerült leállítani a középső továbbítására.
+* Rögzített versenyhelyzet felismerő leállítása.
 
 ## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services beszédfelismerő SDK 0.5.0-s: 2018 július kiadás
 

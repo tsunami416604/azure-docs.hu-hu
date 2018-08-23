@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 63244a8f767f71d0f9be80aad09f06f14c4d3acf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8d87312591f44bac5fd9a4ff63eccc19333a870c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503971"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056864"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Az Azure Active Directory (AD) Domain Services, Azure Felhőszolgáltatók (CSP) számára
 Ez a cikk bemutatja, hogyan használhatja az Azure AD tartományi szolgáltatásokat az Azure CSP-előfizetésben.
@@ -87,7 +87,7 @@ Az alábbi megfontolásokat a alkalmazni: az Azure CSP-előfizetésének a felü
 
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure CSP programhoz](https://partnercenter.microsoft.com/partner/programs) és kezdjen el az Azure CSP teheti vállalkozását.
+* [Az Azure CSP programhoz](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) és kezdjen el az Azure CSP teheti vállalkozását.
 * Tekintse át a [Azure services elérhető az Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Az Azure AD Domain Services engedélyezése a PowerShell-lel](active-directory-ds-enable-using-powershell.md)
 * [Az Azure AD Domain Services használatának első lépései](active-directory-ds-getting-started.md)

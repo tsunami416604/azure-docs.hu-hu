@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 0f6a0e2fe3aa632137392efe806aaab265eedf10
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f461a9a7cc900ce5f8fdba7b255417b1790d3f4d
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435542"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055110"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -124,7 +124,7 @@ Az a **konfigurálása** lapon konfigurálja egy új VSTS-fiókot, vagy egy megl
 
 Az a **teszt** lapon, döntse el, hogy engedélyezze a terhelési teszteket, majd kattintson a **Folytatás**.
 
-Attól függően, a [tarifacsomag](/pricing/details/app-service/plans/) az App Service-csomag is megjelenhetnek egy **üzembe helyezés átmeneti környezetbe** lapot. Döntse el, hogy az üzembe helyezési pontok engedélyezése, majd kattintson a **Folytatás**.
+Attól függően, a [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/plans/) az App Service-csomag is megjelenhetnek egy **üzembe helyezés átmeneti környezetbe** lapot. Döntse el, hogy az üzembe helyezési pontok engedélyezése, majd kattintson a **Folytatás**.
 
 Az a **összefoglalás** oldalon ellenőrizze a beállításokat, kattintson a **Befejezés**.
 
@@ -138,7 +138,7 @@ A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a
 git remote add vsts <url>
 ```
 
-A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a Git hitelesítőadat-kezelője kéri, jelentkezzen be a visualstudio.com felhasználói. További hitelesítési módszereket, lásd: [VSTS hitelesítéskonfiguráló áttekintése](/vsts/git/auth-overview?view=vsts).
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a Git hitelesítőadat-kezelője kéri, jelentkezzen be a visualstudio.com felhasználói. További hitelesítési módszereket, lásd: [VSTS hitelesítési áttekintés](/vsts/git/auth-overview?view=vsts).
 
 ```bash
 git push vsts master

@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Analytics-portálon az Azure Log Analyticsben |} A Microsoft Docs
-description: Ez a cikk nyújt segítséget az Analytics-portál használatával kell lekérdezéseket írni a Log Analyticsben.
+title: Ismerkedés a Log Analytics-oldal az Azure Portalon |} A Microsoft Docs
+description: Ez a cikk egy oktatóanyag az a Log Analytics lapot kell lekérdezéseket írni.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6f6916b27aa251bc0a0c25be060378c11faab607
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634643"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055758"
 ---
-# <a name="get-started-with-the-analytics-portal"></a>Ismerkedés az Analytics-portálon
+# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Ismerkedés a Log Analytics-oldal az Azure Portalon
 
-Ebben az oktatóanyagban megtudhatja hogyan használhatja az Analytics-portálon az Azure Log Analytics-lekérdezések írása. Mely arról szól, hogyan való:
+Ebben az oktatóanyagban megtudhatja hogyan Log Analytics-lekérdezések a Log Analytics lapot (jelenleg előzetes verzióban érhető el) az Azure portal használatával. Mely arról szól, hogyan való:
 
 - Egyszerű lekérdezéseket írni
 - A séma az adatok megismerése
@@ -35,12 +35,12 @@ Ebben az oktatóanyagban megtudhatja hogyan használhatja az Analytics-portálon
 - Exportálás és lekérdezések megosztása
 
 
-## <a name="meet-the-analytics-portal"></a>Megfelel az Analytics-portálon
-Az Analytics-portál egy olyan webes eszköz, írható és az Azure Log Analytics-lekérdezések végrehajtására. 
+## <a name="meet-the-log-analytics-page"></a>Felel meg a Log Analytics-lap 
+A Log Analytics-lap egy olyan webes eszköz, írható és az Azure Log Analytics-lekérdezések végrehajtására. Nyissa meg a kiválasztásával **naplók (előzetes verzió)** a Log Analytics menüben. Egy új üres lekérdezés kezdődik.
 
 ![Kezdőlap](media/get-started-analytics-portal/homepage.png)
 
-A kezdőlap hasznos források, például a legutóbbi és a mentett lekérdezések és példákat is egyszerű hozzáférést biztosít. Nyissa meg az új lapon írhat saját lekérdezéseket.
+
 
 ## <a name="basic-queries"></a>Alapszintű lekérdezéseket
 Lekérdezések keresési feltételek, azonosíthatja a trendeket, mintáinak elemzése és sok más összefüggéseket az adatok alapján az használható. Kezdje egy egyszerű lekérdezést:
@@ -74,7 +74,7 @@ A séma az gyűjteményét, vizuálisan logikai kategória szerint csoportosítv
 
 ![Séma](media/get-started-analytics-portal/schema.png)
 
-Minden tábla adatok felépítéséről oszlopok különböző adattípusokkal, az oszlop neve melletti ikon jelzi. Például a _esemény_ a képernyőképen látható tábla oszlopai például _számítógép_ szöveg, azaz _EventCategory_ egy számot, azaz és _ TimeGenerated_ dátum/idő azaz.
+Minden tábla adatok felépítéséről oszlopok különböző adattípusokkal, az oszlop neve melletti ikon jelzi. Például a _esemény_ a képernyőképen látható tábla oszlopai például _számítógép_ szöveg, azaz _EventCategory_ egy számot, azaz és  _TimeGenerated_ dátum/idő azaz.
 
 ## <a name="filter-the-results"></a>Az eredmények szűréséhez
 Első lépésként előkészítés véglegesítése a _esemény_ tábla.
@@ -83,7 +83,7 @@ Első lépésként előkészítés véglegesítése a _esemény_ tábla.
 Event
 ```
 
-Az Analytics-portál automatikusan hatókörök eredményeket szerint:
+A Log Analytics lap automatikusan hatókörök eredményeket szerint:
 
 - Időtartomány: alapértelmezés szerint a lekérdezések korlátozva az utolsó 24 óra.
 - Az eredmények száma: eredmények korlátozva, legfeljebb 10 000 rekord.
@@ -121,7 +121,7 @@ Eredmények táblázatában gyakran sok oszlopot tartalmaz. Előfordulhat, hogy 
 
 
 ## <a name="select-a-time-range"></a>Időtartomány megadása
-Alapértelmezés szerint az Analytics-portál alkalmazza a _elmúlt 24 órában_ időtartomány. Egy másik tartományt használja, válasszon ki egy másik értéket a időválasztó keresztül, és kattintson a **futtatása**. Az előre definiált értékek mellett használhatja a _egyéni időtartomány_ választhatja a lekérdezés egy abszolút címtartományt.
+Alapértelmezés szerint a Log Analytics lap vonatkozik a _elmúlt 24 órában_ időtartomány. Egy másik tartományt használja, válasszon ki egy másik értéket a időválasztó keresztül, és kattintson a **futtatása**. Az előre definiált értékek mellett használhatja a _egyéni időtartomány_ választhatja a lekérdezés egy abszolút címtartományt.
 
 ![Időpontválasztó](media/get-started-analytics-portal/time-picker.png)
 
@@ -131,7 +131,7 @@ Ha a lekérdezés kifejezetten egy szűrőt tartalmaz _TimeGenerated_választó 
 
 
 ## <a name="charts"></a>Diagramok
-Emellett egy tábla eredményt adnak vissza, lekérdezési eredmények vizuális formátumban is megjeleníthetők. Például használja a következő lekérdezést:
+Mellett eredményt adnak vissza egy táblázat, lekérdezési eredmények vizuális formátumban is megjeleníthetők. Például használja a következő lekérdezést:
 
 ```OQL
 Event 
@@ -183,7 +183,7 @@ A lekérdezéskezelő ikonra a jobb felső területen van. Ez felsorolja az öss
 ![Lekérdezéskezelő](media/get-started-analytics-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Exportálási és megosztási hivatkozásként
-Az Analytics-portál számos exportáló módszereket támogatja:
+A Log Analytics lapot több exportáló módszereket támogatja:
 
 - Excel: Az eredmények mentése CSV-fájlként.
 - A Power bi-ban: Exportálhatja az eredményeket a power bi-ban. Lásd: [importálása az Azure Log Analytics-adatok Power BI-bA](../log-analytics-powerbi.md) részleteiről.

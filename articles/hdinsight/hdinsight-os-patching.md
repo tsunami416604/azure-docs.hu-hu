@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 5d8fae7412bece631e6961fb92b7d87e308cc857
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 8bde1e8846dbaee957e2498ea4fae0c5cf79a913
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599214"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42059147"
 ---
 # <a name="os-patching-for-hdinsight"></a>Operációs rendszer javításai a HDInsight 
 Felügyelt Hadoop-szolgáltatás HDInsight gondoskodik az operációs rendszer, a HDInsight-fürtök által használt szoftvert futtató virtuális gépek javítása. 2016. augusztus 1-től módosítottuk a vendég operációs rendszer javítási házirend Linux-alapú HDInsight-fürtök (3.4-es vagy újabb verzió). Az új házirend az a célja, hogy jelentősen csökkentheti a javítás miatt újraindítások száma. Javítás virtuális gépeken (VM) az új házirend továbbra Linux-fürtökön minden hétfőn vagy csütörtök 12 AM UTC lépcsőzetes módon díjtól bármely adott fürtben található csomópontok között. Azonban bármely adott virtuális gép csak újraindítás legfeljebb 30 naponta miatt a vendég operációs rendszer javításait. Emellett az újonnan létrehozott fürt első újraindítás nem történik meg hamarabb fürt létrehozás dátumától számítva 30 napnál. Javítások től lép érvénybe, ha a virtuális gépek indulnak újra.
@@ -59,7 +59,7 @@ Ha a parancsfájl a Fürtlétrehozási folyamat részeként, állandó automatik
 
 ## <a name="next-steps"></a>További lépések
 
-A script actionnel részletes lépéseit lásd a következő szakaszai a [testreszabása Linuz-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md):
+A script actionnel részletes lépéseit lásd a következő szakaszai a [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md):
 
 * [Fürt létrehozása során egy parancsfájlművelettel](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
 * [Egy futó fürt szkriptműveletet vonatkozik](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

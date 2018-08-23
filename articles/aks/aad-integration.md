@@ -1,36 +1,36 @@
 ---
 title: Az Azure Active Directory integrálása az Azure Kubernetes Service
-description: Fürtök létrehozása az Azure Active Directory-kompatibilis Azure Kubernetes Service-ben.
+description: Fürtök létrehozása az Azure Active Directory-kompatibilis Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 6/17/2018
+ms.date: 8/9/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2c4e0f8c31299644c912a70fc91bbdfa6da6795b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9bbf7ad201a70a315b75ed5e1f35671e4a5604fc
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579027"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060176"
 ---
-# <a name="integrate-azure-active-directory-with-aks---preview"></a>Az Azure Active Directory integrálása az AKS - előzetes verzió
+# <a name="integrate-azure-active-directory-with-aks"></a>Azure Active Directory integrálása az aks-sel
 
-Az Azure Kubernetes Service (AKS) beállítható úgy, hogy az Azure Active Directory használata a felhasználók hitelesítéséhez. Ebben a konfigurációban amelyre be tud jelentkezni egy Azure Kubernetes Service-fürtön az Azure Active Directory-hitelesítési tokent. Fürt a rendszergazdák emellett képesek a felhasználók identitás- vagy a csoport tagsága alapján Kubernetes szerepköralapú hozzáférés-vezérlés konfigurálása.
+Az Azure Kubernetes Service (AKS) beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Active Directory (AD) használja. Ebben a konfigurációban amelyre be tud jelentkezni egy AKS-fürtöt az Azure Active Directory hitelesítési token használatával. Ezenkívül a fürt a rendszergazdák olyan Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) a felhasználók identitás- vagy a csoport tagsága alapján konfigurálhatja.
 
-Ez a dokumentum létrehozása AKS és Azure ad-ben az összes szükséges előfeltételeket, az Azure AD-kompatibilis fürt üzembe helyezése és az AKS-fürtöt hoz létre egy egyszerű RBAC szerepkör részletes. Vegye figyelembe, hogy akkor a meglévő nem RBAC engedélyezve van az AKS-fürtök jelenleg nem lehet frissíteni, az RBAC használja.
+Ez a cikk bemutatja, hogyan helyezhet üzembe az AKS és Azure AD előfeltételei, akkor a fürt üzembe helyezése az Azure AD-kompatibilis, és a egy egyszerű RBAC-szerepkör létrehozása a az AKS-fürtöt.
 
-> [!IMPORTANT]
-> Az Azure Kubernetes Service (AKS) RBAC és az Azure AD integrációja jelenleg **előzetes**. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
->
+Az alábbi korlátozások érvényesek:
+
+- Meglévő nem RBAC engedélyezve van az AKS-fürtök jelenleg nem lehet frissíteni, az RBAC használja.
+- *Vendég* felhasználók az Azure AD-ben például, ha egy másik címtárban való összevont bejelentkezést használ nem támogatottak.
 
 ## <a name="authentication-details"></a>Hitelesítés részletei
 
-OpenID-kapcsolattal az Azure-beli Kubernetes-fürtök az Azure AD-hitelesítés van megadva. OpenID Connect, amely egy identitás-ra épülő az OAuth 2.0 protokollt. További információ az OpenID Connect megtalálható a [Open ID connect dokumentáció][open-id-connect].
+Az Azure AD-hitelesítés OpenID-kapcsolattal az AKS-fürtök van megadva. OpenID Connect, amely egy identitás-ra épülő az OAuth 2.0 protokollt. Az OpenID Connect további információkért lásd: a [Open ID connect dokumentáció][open-id-connect].
 
-A belül a Kubernetes-fürt Webhook Eszközjogkivonattal történő hitelesítés segítségével ellenőrizze a hitelesítési tokenek. Webhook tokent használó hitelesítés biztosítását konfigurálja és kezeli az AKS-fürt részeként. További információ az eszközjogkivonattal történő hitelesítés található Webhook a [webhook authentication – dokumentáció][kubernetes-webhook].
+A belül a Kubernetes-fürt Webhook Eszközjogkivonattal történő hitelesítés segítségével ellenőrizze a hitelesítési tokenek. Webhook tokent használó hitelesítés biztosítását konfigurálja és kezeli az AKS-fürt részeként. A Webhook eszközjogkivonattal történő hitelesítés további információkért lásd: a [webhook authentication – dokumentáció][kubernetes-webhook].
 
 > [!NOTE]
 > AKS-hitelesítéshez az Azure AD konfigurálása, ha két Azure AD-alkalmazás vannak konfigurálva. Ez a művelet egy Azure-bérlő rendszergazdája kell elvégezni.
@@ -72,6 +72,10 @@ Az első Azure AD-alkalmazást az Azure AD-felhasználók csoport tagságának e
 7. Válassza ki **kész**, válassza a *Microsoft Graph* API-t, majd válassza ki a listáról **engedélyek megadása**. Ez a lépés sikertelen lesz, ha a jelenlegi fiókot nem Bérlői rendszergazda.
 
   ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/grant-permissions.png)
+
+  Ha az engedélyek sikeresen kapott, a portálon a következő értesítés jelenik meg:
+
+  ![Értesítés a sikeres jogosultságaitól](media/aad-integration/permissions-granted.png)
 
 8. Térjen vissza az alkalmazást, és jegyezze fel a **Alkalmazásazonosító**. Az Azure AD-kompatibilis AKS-fürt üzembe helyezésekor, ezt az értéket a neve a `Server application ID`.
 
@@ -131,7 +135,7 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-k
 
 ## <a name="create-rbac-binding"></a>Az RBAC-kötés létrehozása
 
-Az AKS-fürtöt az Azure Active Directory-fiókkal használhatók legyenek, a szerepkör kötés vagy a fürt szerepkör-kötést kell létrehozni.
+Az AKS-fürtöt az Azure Active Directory-fiókkal használhatók legyenek, a szerepkör kötés vagy a fürt szerepkör-kötést kell létrehozni. *Szerepkörök* határozza meg az engedélyeket, és *kötések* azokat alkalmazni a kívánt felhasználókat. Ezeket a hozzárendeléseket is alkalmazható, egy adott névtérhez vagy az egész fürt között. További információkért lásd: [használatával RBAC-hitelesítés][rbac-authorization].
 
 Először a [az aks get-credentials] [ az-aks-get-credentials] parancsot a `--admin` jelentkezzen be a fürt rendszergazdai hozzáféréssel rendelkező argumentum.
 
@@ -139,7 +143,7 @@ Először a [az aks get-credentials] [ az-aks-get-credentials] parancsot a `--ad
 az aks get-credentials --resource-group myAKSCluster --name myAKSCluster --admin
 ```
 
-Ezután használja a következő jegyzékfájl egy ClusterRoleBinding egy olyan Azure AD-fiók létrehozásához. Frissítse a felhasználónevet egy, az Azure AD-bérlőből. Ebben a példában a teljes körű hozzáférést biztosít a fürt összes névtér.
+Ezután használja a következő jegyzékfájl egy ClusterRoleBinding egy olyan Azure AD-fiók létrehozásához. Frissítse a felhasználónevet egy, az Azure AD-bérlőből. Ebben a példában a teljes körű hozzáférést biztosít a fürt összes névtér:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -156,7 +160,7 @@ subjects:
   name: "user@contoso.com"
 ```
 
-Egy szerepkör kötést is létrehozhatók az Azure AD-csoport összes tagja számára. Az Azure AD-csoportok vannak megadva, a csoport-objektum azonosítójával
+Egy szerepkör kötést is létrehozhatók az Azure AD-csoport összes tagja számára. A csoportobjektum azonosítója, használja az Azure AD-csoportok vannak megadva, az alábbi példában látható módon:
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

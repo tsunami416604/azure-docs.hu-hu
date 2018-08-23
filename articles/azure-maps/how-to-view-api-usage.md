@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9eb58f41ec89d084cc388eeadb335046fb587bc3
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e62d2ff1fdd6bc94244511a2de95c4268a58d6f9
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581574"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42059466"
 ---
 # <a name="how-to-view-the-azure-maps-api-usage"></a>Az Azure Maps API-használat megtekintése
 Ez a cikk bemutatja, hogyan az API-t az Azure Maps-fiók, a használati metrikáinak megtekintéséhez a [portál](https://portal.azure.com). A metrikákat egy testreszabható időtartam mentén kényelmesen használható grafikus formátumban jelennek meg. 
@@ -59,10 +59,6 @@ Ha testre kell szabnia az adott elemzéshez diagramokra továbbra is a következ
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan lehet az Azure Maps-használat nyomon követése, előfordulhat, hogy folytatja a műveletet, ismerje meg, összetettebb funkciók, például:
+Most, hogy megtanulhatta, hogyan lehet az Azure Maps-használat nyomon követése, előfordulhat, hogy folytassa további információ az API-k használata a:
 
-* [Járműtelemetria fogyasztás](consumption-model.md), vagy
-* [Kiterjesztése GeoJSON](extend-geojson.md)
-
-Végül, további információ az API-k használata a:
 * [Az Azure Maps REST API dokumentációja](https://docs.microsoft.com/rest/api/maps)

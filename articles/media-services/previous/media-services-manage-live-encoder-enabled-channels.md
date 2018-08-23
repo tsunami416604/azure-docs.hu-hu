@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f4b57241085381f4b975c07038b41133b8a4319b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 008fac84eedfd58cbcfe563504a50bc19d519382
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436191"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059178"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -130,7 +130,7 @@ Ha a **Kódolótípus** értékre van állítva **Standard**, érvényes beáll�
 * Egyféle sávszélességű **töredékes MP4** (Smooth Streaming)
 
 #### <a id="single_bitrate_RTMP"></a>Egyféle sávszélességű RTMP
-Megfontolandó szempontok:
+Szempontok:
 
 * A beérkező streamben többszörös sávszélességű MP4 videó nem tartalmazhat.
 * A video-adatfolyamot rendelkeznie kell egy alatti 15 MB/s átlagos átviteli
@@ -153,7 +153,7 @@ Tipikus használati eset:
 
 Használja a helyszíni élő kódolók a szállítók, például elemi technológiák, Ericsson, Ateme, Envivio adatfolyam egy közeli Azure a nyílt interneten keresztül elküldi az adatközpontban.
 
-Megfontolandó szempontok:
+Szempontok:
 
 Ugyanaz, mint a [egyszeres sávszélességű RTMP](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP).
 
@@ -228,7 +228,8 @@ Vegye figyelembe, hogy ha egyéni előbeállításokat van szüksége, forduljon
 | 200 |340 |192 |30 |Alapterv |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Kimeneti Audio Stream
-Hang, sztereó AAC-LC, 64 KB/s, mintavételi ráta 44,1 kHz van kódolva.
+
+Hang, sztereó AAC-LC, 128 kb/s, mintavételi ráta 48 kHz van kódolva.
 
 ## <a name="signaling-advertisements"></a>Hirdetmények jelzés
 Ha a csatorna élő kódolás engedélyezve van, van egy összetevő, amely a videó feldolgozása a folyamatban, és kezelheti azokat. Akkor is jelezze a befutók és/vagy hirdetmények beszúrása a kimenő adaptív sávszélességűvé csatorna. Befutók olyan állóképek, amelyekkel elfedhető a bemeneti élő adás bizonyos esetekben a (például reklámszünet). Hirdetési jel, vannak, a kimenő adatfolyam állapítható meg, hogy intézkedjen speciális – mint például a megfelelő időben alkalmazásban a hirdetmény forráshierarchiából való váltáshoz a videólejátszó beágyazása időt szinkronizálva jelek. Ez [blog](https://codesequoia.wordpress.com/2014/02/24/understanding-scte-35/) az erre a célra használt SCTE – 35 jelképző mechanizmus áttekintését. Alább egy gyakori forgatókönyvet is Megvalósíthat az élő esemény van.
@@ -281,7 +282,7 @@ Ha a **alapértelmezett épületkő eszközazonosító** nincs megadva, és **hi
 ## <a name="channels-programs"></a>Csatorna programok
 A csatornákhoz programok vannak társítva. Ezek lehetővé teszik az élő stream szegmenseinek közzétételét és tárolását. A programokat a csatornák kezelik. A csatornák és programok viszonya nagyon hasonlít a hagyományos televíziózáshoz, ahol csatorna tartalmaz egy állandó stream a tartalom és a egy programot az adott csatornán néhány időzített esemény hatókörét.
 
-Az **Archive Window** (Archiválás időtartama) beállításnál megadhatja, hogy hány órára szeretné megőrizni a program felvett tartalmát. Ez az érték 5 perc és 25 óra közötti lehet. Az archiválási időtartam határozza meg azt is, hogy mennyi idővel ugorhatnak vissza az ügyfelek az aktuális élő pozíciótól. Az események hosszabbak lehetnek a megadott időtartamnál, de a rendszer folyamatosan elveti azokat a tartalmakat, amelyek korábbiak a megadott időtartamnál. Ennek a tulajdonságnak az értéke határozza meg azt is, hogy milyen hosszúra nőhetnek az ügyfél jegyzékfájljai.
+Az **Archive Window** (Archiválás időtartama) beállításnál megadhatja, hogy hány órára szeretné megőrizni a program felvett tartalmát. Ez az érték 5 perc és 25 óra közötti lehet. Archiválási időszak hossza is szabja meg, az ügyfelek maximális számát is kérhet időbeli az aktuális élő pozíciótól. Az események hosszabbak lehetnek a megadott időtartamnál, de a rendszer folyamatosan elveti azokat a tartalmakat, amelyek korábbiak a megadott időtartamnál. Ennek a tulajdonságnak az értéke határozza meg azt is, hogy milyen hosszúra nőhetnek az ügyfél jegyzékfájljai.
 
 Minden egyes program társítva egy eszköz, amely a adatfolyamként továbbított tartalmat tárolja. Egy eszköz block blob-tárolóba az Azure Storage-fiókban van hozzárendelve, és a tárolóban lévő blobok formájában tárolja az adategységben található fájlokat. A program közzétételéhez, így az ügyfelek tekintheti meg a streamet, létre kell hoznia egy OnDemand-lokátort a társított objektumhoz. Ez a lokátor teszi lehetővé az ügyfeleknek megadható streamelő URL-cím összeállítását.
 
@@ -338,7 +339,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 
 ## <a name="known-issues"></a>Ismert problémák
 * Csatorna indítási idő lett továbbfejlesztve, hogy átlagosan 2 percet, azonban esetenként megnövekedett igények továbbra is percet is igénybe vehet fel mint 20.
-* Állóképek lemezképek meg kell felelnie ismertetett korlátozások [Itt](media-services-manage-live-encoder-enabled-channels.md#default_slate). Ha megpróbálja csatornát létrehozni egy alapértelmezett lappal, amely nagyobb, mint 1920 × 1080 képpont, az a kérelem rendszer végül megszűnt.
+* Állóképek lemezképek meg kell felelnie ismertetett korlátozások [Itt](media-services-manage-live-encoder-enabled-channels.md#default_slate). Ha megpróbálja csatornát létrehozni az egy alapértelmezett lappal, amely nagyobb, mint 1920 × 1080 képpont, a kérelem rendszer végül hibát.
 * Ismét... ne felejtse el állítsa le a CSATORNÁT, amikor elkészült streamelési. Ha nem, akkor a számlázás továbbra is.
 
 ## <a name="next-step"></a>Következő lépés

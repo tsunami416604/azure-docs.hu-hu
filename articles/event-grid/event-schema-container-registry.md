@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/20/2018
+ms.date: 08/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ed918a7402abcbe79e302421f3b2ac725857464
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188784"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42059471"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Tároló-beállításjegyzék Azure Event Grid eseménysémája
 
@@ -117,8 +117,6 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | művelet | sztring | A művelet, amely magában foglalja a megadott esemény. |
 | cél | objektum | A cél az esemény. |
 | kérelem | objektum | A kérelem, ami az esemény jön létre. |
-| aktor | objektum | Az ügynök által kezdeményezett az eseményt. A legtöbb esetben ez az érték lehet, a kérelem az engedélyezési környezetéből. |
-| source | objektum | A beállításjegyzék-csomópontra, ami az esemény jön létre. Eltérően, PUT, amíg az aktor kezdeményezi az esemény, a forrás létrehozza azt. |
 
 A célobjektum a következő tulajdonságokkal rendelkezik:
 
@@ -129,7 +127,6 @@ A célobjektum a következő tulajdonságokkal rendelkezik:
 | a kivonatoló | sztring | A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat. |
 | Hossza | egész szám | A tartalom bájtok száma. Ugyanaz, mint mérete mező. |
 | Adattár | sztring | A tárház nevét. |
-| url | sztring | A közvetlen URL-címe a tartalmat. |
 | címke | sztring | A címke neve. |
 
 A kérelem objektum a következő tulajdonságokkal rendelkezik:
@@ -141,19 +138,6 @@ A kérelem objektum a következő tulajdonságokkal rendelkezik:
 | gazdagép | sztring | A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem http-állomásfejlécet által megadott. |
 | method | sztring | A kérelmi metódust, ami az esemény jön létre. |
 | USERAGENT | sztring | A felhasználói ügynök fejléc a kérelem. |
-
-Az aktor objektum a következő tulajdonságokkal rendelkezik:
-
-| Tulajdonság | Típus | Leírás |
-| -------- | ---- | ----------- |
-| név | sztring | A tulajdonos vagy a kérelem környezetéből az eseményt létrehozó társított felhasználónevet. |
-
-Az adatforrás-objektum a következő tulajdonságokkal rendelkezik:
-
-| Tulajdonság | Típus | Leírás |
-| -------- | ---- | ----------- |
-| cím | sztring | A IP-cím vagy állomásnév és a portot, a beállításjegyzék-csomópont, ami az esemény jön létre. Általában ezt az értéket az operációs rendszer megszűnik. Valamint a futó hostname(). |
-| instanceID | sztring | Az alkalmazások futó példányát. A módosítások minden egyes újraindítás után. |
 
 ## <a name="next-steps"></a>További lépések
 

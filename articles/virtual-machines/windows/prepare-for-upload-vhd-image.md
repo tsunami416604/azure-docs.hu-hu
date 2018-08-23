@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.author: genli
-ms.openlocfilehash: 48037bc92d26cd01086451fdc778651df5b6bf67
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 0f7b19b0848886c7a906e79d63a814fddf5ef5a6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398971"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055145"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
 Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja a **csak az 1. generációs virtuális gépeket** , amely a VHD formátumban, és rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -67,7 +67,7 @@ A virtuális gépen, amely azt tervezi, hogy töltse fel az Azure-ba, az alábbi
 1. Távolítsa el az útválasztási táblázatban az állandó statikus útvonalakat:
    
    * Az útvonaltábla megtekintéséhez futtassa `route print` parancsot a parancssorba.
-   * Ellenőrizze a **adatmegőrzés útvonalak** szakaszokat. Ha egy állandó útvonalat, akkor [route delete](https://technet.microsoft.com/library/cc739598.apx) eltávolítja azt.
+   * Ellenőrizze a **adatmegőrzés útvonalak** szakaszokat. Ha egy állandó útvonalat, használja a **route delete** távolítsa el a parancsot.
 2. Távolítsa el a WinHTTP proxy:
    
     ```PowerShell
@@ -90,7 +90,7 @@ A virtuális gépen, amely azt tervezi, hogy töltse fel az Azure-ba, az alábbi
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" 1 -Type DWord
 
-    Set-Service -Name w32time -StartupType Auto
+    Set-Service -Name w32time -StartupType Automatic
     ```
 5. A kiemelt profil beállítása a **nagy teljesítményű**:
 
@@ -102,17 +102,17 @@ A virtuális gépen, amely azt tervezi, hogy töltse fel az Azure-ba, az alábbi
 Győződjön meg arról, hogy a következő Windows-szolgáltatások mindegyike értékre van állítva, a **Windows alapértelmezett értékek**. Ezek a szolgáltatások, amelyek kell beállítani, győződjön meg arról, hogy a virtuális gép kapcsolódik, minimális számát. Az indítási beállítások alaphelyzetbe állítása, futtassa a következő parancsokat:
    
 ```PowerShell
-Set-Service -Name bfe -StartupType Auto
-Set-Service -Name dhcp -StartupType Auto
-Set-Service -Name dnscache -StartupType Auto
-Set-Service -Name IKEEXT -StartupType Auto
-Set-Service -Name iphlpsvc -StartupType Auto
+Set-Service -Name bfe -StartupType Automatic
+Set-Service -Name dhcp -StartupType Automatic
+Set-Service -Name dnscache -StartupType Automatic
+Set-Service -Name IKEEXT -StartupType Automatic
+Set-Service -Name iphlpsvc -StartupType Automatic
 Set-Service -Name netlogon -StartupType Manual
 Set-Service -Name netman -StartupType Manual
-Set-Service -Name nsi -StartupType Auto
+Set-Service -Name nsi -StartupType Automatic
 Set-Service -Name termService -StartupType Manual
-Set-Service -Name MpsSvc -StartupType Auto
-Set-Service -Name RemoteRegistry -StartupType Auto
+Set-Service -Name MpsSvc -StartupType Automatic
+Set-Service -Name RemoteRegistry -StartupType Automatic
 ```
 
 ## <a name="update-remote-desktop-registry-settings"></a>A távoli asztal beállításjegyzék-beállítások frissítése
@@ -307,11 +307,22 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
     - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok kiosztása\helyi bejelentkezés megtagadása a távoli asztali szolgáltatások használatával
 
 
-9. Indítsa újra a virtuális Gépen, győződjön meg arról, hogy Windows továbbra is megfelelő, elérhető, az RDP-kapcsolat használatával. Ezen a ponton érdemes a helyi Hyper-V – győződjön meg róla a virtuális gép teljesen elindult-e, és ellenőrizze, hogy RDP érhető el a virtuális gép létrehozásához.
+9. A következő AD házirendben győződjön meg arról, hogy nem távolítja el az alábbi, a hozzáférési fiókok:
 
-10. Távolítsa el a felesleges átviteli Driver Interface szűrőket, például egy szoftver, amely elemzi a TCP csomagokat, vagy további tűzfalakat. Emellett áttekintheti Ez az egy későbbi szakaszban a virtuális gép üzembe helyezése az Azure-ban, szükség esetén után.
+    - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok Assignment\Access a számítási, hálózati
 
-11. Távolítsa el a harmadik féltől származó szoftverek és illesztőprogramot, amely kapcsolódik a fizikai összetevők vagy más virtualizációs technológiát.
+    A következő csoportok szerepelnie kell a szabályzatra vonatkozó:
+
+    - Rendszergazdák
+    - Biztonságimásolat-felelősök
+    - Mindenki
+    - Felhasználók
+
+10. Indítsa újra a virtuális Gépen, győződjön meg arról, hogy Windows továbbra is megfelelő, elérhető, az RDP-kapcsolat használatával. Ezen a ponton érdemes a helyi Hyper-V – győződjön meg róla a virtuális gép teljesen elindult-e, és ellenőrizze, hogy RDP érhető el a virtuális gép létrehozásához.
+
+11. Távolítsa el a felesleges átviteli Driver Interface szűrőket, például egy szoftver, amely elemzi a TCP csomagokat, vagy további tűzfalakat. Emellett áttekintheti Ez az egy későbbi szakaszban a virtuális gép üzembe helyezése az Azure-ban, szükség esetén után.
+
+12. Távolítsa el a harmadik féltől származó szoftverek és illesztőprogramot, amely kapcsolódik a fizikai összetevők vagy más virtualizációs technológiát.
 
 ### <a name="install-windows-updates"></a>Windows-frissítések telepítése
 Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez nem lehetséges, győződjön meg arról, hogy telepítve vannak-e a következő frissítéseket:

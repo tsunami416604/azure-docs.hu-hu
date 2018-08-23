@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: e3be74fbb571a806fc03a92d0b1b373e35d196be
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3231792ed1cb7f80cd2a106faf3760c48dd13c19
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363614"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055536"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: Jelentések automatikus felhasználói fiók kiépítése
 
 
-Az Azure Active Directory tartalmazza egy [létesítési szolgáltatás felhasználói fiók](active-directory-saas-app-provisioning.md) , amelynek segítségével automatizálhatja a kiépítési megszüntetést felhasználói fiókok a SaaS-alkalmazások és más rendszerek, teljes körű identitás-életciklus céljából felügyeleti. Az Azure AD támogatja az összes, az alkalmazások és rendszerek "Kiemelt" szakaszában összekötők előre integrált felhasználókiépítés a [Azure AD alkalmazáskatalógusában](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Az Azure Active Directory tartalmazza egy [létesítési szolgáltatás felhasználói fiók](active-directory-saas-app-provisioning.md) , amelynek segítségével automatizálhatja a kiépítési megszüntetést felhasználói fiókok a SaaS-alkalmazások és más rendszerek, teljes körű identitás-életciklus céljából felügyeleti. Az Azure AD támogatja az összes, az alkalmazások és rendszerek "Kiemelt" szakaszában összekötők előre integrált felhasználókiépítés a [Azure AD alkalmazáskatalógusában](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
 Ez a cikk bemutatja, hogyan ellenőrizheti az üzembe helyezés állapotát az feladatok után azok hoztak létre, és hibaelhárítási információkat ismertetni az egyes felhasználók és csoportok üzembe helyezése.
 

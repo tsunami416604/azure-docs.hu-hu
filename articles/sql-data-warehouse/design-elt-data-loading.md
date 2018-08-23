@@ -1,6 +1,6 @@
 ---
-title: ETL, helyett Azure SQL Data Warehouse ELT kialakítása |} Microsoft Docs
-description: Helyett ETL alakítson ki az adatok vagy az Azure SQL Data Warehouse feltöltését egy kivonatot, betöltés és átalakítás (ELT) folyamatot.
+title: ETL-helyett tervezése az Azure SQL Data Warehouse ELT |} A Microsoft Docs
+description: ETL-helyett betöltésére, adatok vagy az Azure SQL Data Warehouse egy kinyerési, betöltési és átalakítási (ELT) folyamat tervezése.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg-msft
@@ -10,100 +10,100 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 33e4a405547fcdd797ddfdf6aba6c6c1c126b742
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799447"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42054077"
 ---
-# <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Kinyerési, betöltés és átalakítás (ELT) az Azure SQL Data Warehouse tervezése
+# <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>A kinyerési, betöltési és átalakítási (ELT) az Azure SQL Data warehouse tervezése
 
-Helyett a kinyerési, átalakítási és betöltési (ETL) tervezze meg az adatok betöltése az Azure SQL Data Warehouse egy kivonatot, betöltés és átalakítás (ELT) folyamat. Ez a cikk be módjai alakítson ki egy ELT folyamatot, amely az Azure data warehouse-bA helyezi át az adatokat.
+Helyett a kinyerési, átalakítási és betöltési (ETL) tervezze meg az adatok betöltéséhez az Azure SQL Data Warehouse-bA egy kinyerési, betöltési és átalakítási (ELT) folyamat. Ez a cikk bemutatja a módon tervezhet egy ELT folyamattal, amely helyez át adatokat egy Azure data warehouse-bA.
 
-## <a name="what-is-elt"></a>Mi az az ELT?
+## <a name="what-is-elt"></a>Mi az ELT?
 
-Átalakítás (ELT) extract, Load, és egy folyamatot, amely az adatok áthelyezése egy forrásrendszerből a rendeltetési adatraktárra. Ez a folyamat történik rendszeresen, például óránként vagy naponta, lekérni az újonnan létrehozott adat az adatraktárba. Az ideális forrásból származó adatok eléréséhez adatraktár módja az adatok betöltése az SQL Data Warehouse PolyBase használó ELT folyamatai fejlesztéséhez.
+Kinyerési, betöltési, és átalakítási (ELT) egy olyan folyamat, amely adatokat helyez át forrásrendszer egy cél data warehouse-bA. Ez a folyamat történik rendszeres időközönként, például óránként vagy naponta, lekérni az újonnan létrehozott adatok a data warehouse-bA. Az ideális forrásból származó adatok lekérése data warehouse-bA módja-adatok betöltése az SQL Data Warehouse polybase-t használó ELT folyamatok fejlesztéséhez.
 
-ELT tölt be először, és az adatokat, majd átalakítások, mivel a kinyerési, átalakítási és betöltési (ETL) átalakítja az adatok betöltése az előtt. Az adatok átalakítására, mielőtt be van töltve a saját erőforrások rendelkezésre bocsátása költsége helyett ETL ELT végrehajtása menti. Az SQL Data Warehouse használatakor ELT kihasználja az MPP rendszer végrehajthatja az átalakításokat.
+ELT először tölt be, és ezután alakítja át az adatokat, mivel a kinyerési, átalakítási és betöltési (ETL) alakítja át az adatokat betöltés előtt. ELT végrehajtásához helyett ETL menti az adatok átalakításához, mielőtt azokat betölti a saját erőforrások rendelkezésre bocsátása költsége. Az SQL Data Warehouse használatakor ELT kihasználja az MPP rendszer az átalakításokhoz.
 
-Bár vannak ELT végrehajtásához az SQL Data Warehouse számos változata, az alábbiak alapvető lépéseket:  
+Bár vannak ELT végrehajtásához az SQL Data Warehouse számos változata létezik, az alábbiak alapvető lépéseket:  
 
-1. Bontsa ki a forrásadatok szöveg fájlokba.
-2. Megnyílik az adatok Azure Blob-tároló vagy az Azure Data Lake Store.
+1. A forrásadatok kinyerése szövegfájlokba.
+2. Megnyitja az adatok Azure Blob storage vagy az Azure Data Lake Store-bA.
 3. Készítse elő az adatok betöltésekor.
-2. Adatok betöltése az SQL Data Warehouse PolyBase használatával átmeneti tárolási táblákból.
-3. Alakítsa át az adatokat.
-4. Az adatok beszúrása éles táblákba.
+2. Adatok betöltése az SQL Data Warehouse előkészítési táblák a PolyBase használatával.
+3. Az adatok átalakításához.
+4. Az adatok beszúrása a termelési táblákba.
 
 
-Betöltés oktatóanyagok esetén lásd: [használja a PolyBase adatok betöltése az Azure blob storage az Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
+Betöltési oktatóanyag: lásd: [bA a PolyBase használatával az adatok betöltése az Azure blob storage-ból az Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
 
-További információkért lásd: [minták blog betöltése](http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/). 
+További információkért lásd: [blog. mintázatok betöltése](http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/). 
 
-## <a name="options-for-loading-with-polybase"></a>Beállítások betöltése a polybase-zel
+## <a name="options-for-loading-with-polybase"></a>Beállítások betöltése a polybase használatával
 
-A PolyBase olyan technológia, amely hozzáfér az adatok a T-SQL nyelv keresztül az adatbázison kívül. Adatok betöltése az SQL Data Warehouse a legjobb módja. A polybase-zel az adatok a számítási csomópontok számára közvetlenül az adatforrásból párhuzamosan tölti be. 
+A PolyBase technológiája, amely hozzáfér az adatbázist a T-SQL nyelv használatával kívüli adatok. Adatok betöltése az SQL Data Warehouse-bA a legjobb módja. A polybase használatával az adatok betöltődtek, a számítási csomópontok felé közvetlenül az adatforrásból párhuzamosan. 
 
-Adatok betöltése a PolyBase, ezek betöltését beállításokat használhatja.
+Adatok betöltése a PolyBase, ezek a betöltési beállítások bármelyikét használhatja.
 
-- [PolyBase-T-SQL](load-data-from-azure-blob-storage-using-polybase.md) jól működik, ha az adatok Azure Blob-tároló vagy az Azure Data Lake Store van. A betöltés folyamat a legtöbb ellenőrzést ad meg, de rendelkeznie kell a külső objektumok adhatók meg. A többi módszer határozza meg ezeket az objektumokat a háttérben, a forrástábla leképezése céltábla.  Levezényelni a T-SQL terhelés, az Azure Data Factory, SSIS vagy az Azure functions is használhat. 
-- [PolyBase az SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) jól működik, ha a forrásadatok az SQL Server, SQL Server helyi, illetve a felhőben van-e. SSIS cél tábla leképezéseket a forrás definiálja, és is koordinálja a terhelés. Ha már rendelkezik SSIS-csomagok, módosíthatja a csomagokat az új adatok adatraktár cél együttműködni. 
-- [Azure Data Factory (ADF) PolyBase](sql-data-warehouse-load-with-data-factory.md) egy másik eszköz a vezénylési.  Meghatározza egy folyamatot, és feladatok ütemezi. 
-- [PolyBase az Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) továbbítja az adatokat az SQL Data Warehouse-táblából egy Databricks dataframe és/vagy egy Databricks dataframe adatokat ír az SQL Data Warehouse tábla.
+- [A PolyBase T-SQL](load-data-from-azure-blob-storage-using-polybase.md) jól működik, ha az adatait az Azure Blob storage vagy az Azure Data Lake Store van. A legtöbb szabályozhatja a betöltési folyamat biztosítja, de is kell megadni a külső adatok objektumokat. A többi módszer meghatározása a ezeket az objektumokat a háttérben, leképezheti a forrástábla céltáblákba.  A T-SQL-terhelések vezényli, használhatja az Azure Data Factory, az SSIS vagy az Azure functions. 
+- [PolyBase az SSIS használatával](/sql/integration-services/load-data-to-sql-data-warehouse) jól működik, ha a forrásadatok van az SQL Server, SQL Server a helyszínen vagy a felhőben. SSIS határozza meg a forrás, cél táblaleképezések, és a terhelés is koordinálja. Ha már rendelkezik SSIS-csomagok, módosíthatja a csomagokat az új data warehouse cél dolgozhat. 
+- [PolyBase az Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) egy másik üzletifolyamat-tervező eszköz.  Azt határozza meg a folyamatot, és ütemezi a feladatok. 
+- [Az Azure DataBricks PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) átviszi az adatokat egy SQL Data Warehouse-táblából Databricks dataframe és/vagy írja az adatokat egy Databricks-adathalmaz egy SQL Data Warehouse-tábla.
 
 ### <a name="polybase-external-file-formats"></a>A PolyBase külső fájlformátum
 
-A PolyBase adatokat tölt az UTF-8 és UTF-16 kódolású tagolt szövegfájlok. A tagolt szövegfájlok, valamint betölti a Hadoop-fájl formátumok RC fájl ORC és Parquet. A PolyBase adatok betöltése a Gzip és klassz kis tömörített fájlok. A PolyBase jelenleg nem támogatja a kiterjesztett ASCII, rögzített szélességű formátum és beágyazott formátumú például WinZip JSON vagy XML.
+A PolyBase adatokat tölt be az UTF-8 és UTF-16 kódolású, elválasztójellel tagolt szöveges fájlok. A tagolt szöveges fájlok mellett betölti a Hadoop-fájl formátumok RC fájlt, a ORC és a parquet eszközökben. A PolyBase Gzip és Snappy tömörített fájlokból lehet betölteni az adatokat. A PolyBase jelenleg nem támogatja a kiterjesztett ASCII, formátum rögzített szélességű és beágyazott formátumban például WinZip, JSON- és XML.
 
-### <a name="non-polybase-loading-options"></a>A PolyBase nem betöltése beállítások
-Ha az adatok nem kompatibilis a PolyBase, használhatja [bcp](/sql/tools/bcp-utility) vagy a [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP Azure Blob Storage tárolóban keresztül közvetlenül az SQL Data Warehouse betölti, és csak kis terhelések számára készült. Vegye figyelembe, ezek a beállítások betöltése teljesítménye jelentősen lassabb, mint a PolyBase. 
+### <a name="non-polybase-loading-options"></a>A PolyBase nem betöltési beállítások
+Ha az adatok nem kompatibilis a polybase használatával, használhatja [bcp](/sql/tools/bcp-utility) vagy a [kapcsolatot az SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP közvetlenül az SQL Data Warehouse az Azure Blob storage áthaladás nélkül betölt, és csak kis terhelésű szól. Vegye figyelembe, hogy ezek a beállítások az terhelés teljesítménye jelentősen lassabb, mint a PolyBase. 
 
 
 ## <a name="extract-source-data"></a>Forrásadatok kinyerése
 
-A forrásrendszerben kívüli adatok attól függ, hogy a forrás.  A cél, hogy az adatok áthelyezése a tagolt szövegfájlok rendszerbe. Ha SQL Server használ, akkor használhatja [bcp parancssori eszköz](/sql/tools/bcp-utility) exportálja az adatokat.  
+A forrásrendszerben kívüli adatok beolvasása a forrástól függ.  A célja, hogy az adatok áthelyezése az elválasztójellel tagolt szöveges fájlok. Ha SQL Servert használ, akkor használhatja [bcp parancssori eszköz](/sql/tools/bcp-utility) exportálja az adatokat.  
 
-## <a name="land-data-to-azure-storage"></a>Az Azure storage föld adatok
+## <a name="land-data-to-azure-storage"></a>Az Azure storage-adatok betöltése
 
-Megnyílik az adatokat az Azure-tárfiókba, a áthelyezheti úgy, hogy [Azure Blob Storage tárolóban](../storage/blobs/storage-blobs-introduction.md) vagy [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). Az egyik helyen az adatok szövegfájlok be kell tárolni. A Polybase bármely helyről tud betölteni.
+Az adatok kerül az Azure storage-ban, áthelyezheti azt [Azure Blob storage](../storage/blobs/storage-blobs-introduction.md) vagy [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). Az egyik helyen az adatok szövegfájlokba kell tárolni. A Polybase betöltheti bármely helyről.
 
-Ezek azok az eszközök és adatok áthelyezése az Azure Storage segítségével szolgáltatások.
+Ezek azok az eszközök és adatok áthelyezése az Azure Storage segítségével szolgáltatásokat.
 
-- [Az Azure ExpressRoute](../expressroute/expressroute-introduction.md) szolgáltatás növeli a hálózat átviteli sebességét, a teljesítmény és kiszámíthatóságot. ExpressRoute olyan szolgáltatás, amely továbbítja a dedikált titkos kapcsolaton keresztül az adatok az Azure-bA. Az ExpressRoute-kapcsolatok nem útvonal-adatok a nyilvános interneten keresztül. A kapcsolatok kínál további megbízhatóságát, gyorsabb sebességű, kisebb késések és nagyobb biztonságot nyújtana tipikus kapcsolatok a nyilvános interneten keresztül.
-- [AZCopy segédprogram](../storage/common/storage-moving-data.md) adatok áthelyezése az Azure Storage a nyilvános interneten keresztül. Ez működik, ha az adatok mérete legfeljebb 10 TB. Az AZCopy rendszeresen terhelések végrehajtásához tesztelése a hálózati sebességet meg, hogy elfogadható. 
-- [Az Azure Data Factory (ADF)](../data-factory/introduction.md) egy átjárót, amelyek telepítése a helyi kiszolgálón. Majd áthelyezni az adatokat a helyi kiszolgáló Azure Storage legfeljebb egy folyamatot is létrehozhat. Tekintse meg a Data Factory használatához az SQL Data Warehouse szolgáltatással [adatok betöltése az SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
+- [Az Azure ExpressRoute](../expressroute/expressroute-introduction.md) szolgáltatás fokozza a hálózat átviteli sebességét, teljesítmény- és kiszámíthatóságot nyújtanak. Az ExpressRoute egy szolgáltatása, amely az adatok egy dedikált privát kapcsolaton keresztül irányítja az Azure-bA. Az ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül adatokat irányítják. A kapcsolatok több megbízhatóság megbízhatóbbak, gyorsabbak, kisebb a késésük, és biztonságosabbak a szokásos internetkapcsolatoknál kínálnak a nyilvános interneten keresztül.
+- [AZCopy segédprogram](../storage/common/storage-moving-data.md) helyez át adatokat az Azure Storage a nyilvános interneten keresztül. Ez működik, ha az adatok mérete kisebb, mint 10 TB-ot. Végre betölti az Azcopyval rendszeres időközönként, tesztelje a hálózat sebességétől, láthatja, hogy e elfogadható. 
+- [Az Azure Data Factory (ADF)](../data-factory/introduction.md) rendelkezik átjáróval, amely a helyi kiszolgáló is telepíthető. Ezután létrehozhat egy folyamatot az adatok áthelyezése az Azure Storage a helyi kiszolgáló. Tekintse meg a Data Factory-val való használatához az SQL Data Warehouse [adatok betöltése az SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
 
 ## <a name="prepare-data"></a>Adatok előkészítése
 
-Szükség lehet előkészítése és a tárfiókban lévő adatok törlése előtt az SQL Data Warehouse betöltése során. Adatok előkészítése közben a az forrást, mivel az adatok exportálása szövegfájlok, vagy után az adatokat az Azure Storage hajtható végre.  A legegyszerűbb az adatokat a folyamat a lehető legkorábban működik.  
+Szüksége lehet az adatok a storage-fiókban előkészítése és az SQL Data Warehouse-be való betöltés előtt. Adat-előkészítés közben az adatokat a forrás, a szövegfájlok exportálja az adatokat, vagy után az adatok Azure Storage-ban hajtható végre.  Az adatok a folyamat a lehető leghamarabb a legegyszerűbb.  
 
-### <a name="define-external-tables"></a>Adja meg a külső táblákhoz
-Adatok betöltése előtt kell definiálni az adatraktár külső táblákon. A polybase külső táblák segítségével határozza meg, és az adatok elérését az Azure Storage. A külső tábla hasonlít normál táblákhoz. A fő különbség a külső tábla mutat kívül az adatraktárban tárolt adatok. 
+### <a name="define-external-tables"></a>Külső táblák megadása
+Adatok betöltése előtt kell külső táblát határoz meg a data warehouse-ban. A polybase külső táblák és az Azure Storage-adatokkal. A külső tábla a normál táblákhoz hasonló. A fő különbség az adatraktár kívül tárolt adatokat a külső tábla mutat. 
 
-Külső táblák meghatározása magában foglalja a megadása az adatforrás, a szövegfájlok, és a definíciói formátuma. A T-SQL-szintaxis témakörök, amelyre szüksége lesz a következők:
+Külső táblák meghatározása magában foglalja az adatforrást, a szövegfájlok, és a tábladefiníciókat megadása. A T-SQL szintaxist témakörök, amelyre szüksége lesz a következők:
 - [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](/sql/t-sql/statements/create-external-data-source-transact-sql)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
 - [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql)
 
-Külső objektumok létrehozására láthat példát, tekintse meg a [külső táblák létrehozása](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) . lépés: az betöltése oktatóanyag.
+Például egy külső-objektumok létrehozása, tekintse meg a [külső táblák létrehozása](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) lépés használata a betöltési oktatóanyag.
 
 ### <a name="format-text-files"></a>Szövegfájlok formátuma
 
-Miután a külső objektumok meghatározása, úgy kell igazítania, a szövegfájlok, és a külső tábla és -fájlformátum definíciója a sorokat. Az adatfájl egyes soraiban szövegfájl kell igazodnak a tábla definíciójában.
+Miután a külső objektumok meg vannak adva, kell igazítása a szöveges fájlokat, a külső tábla-és fájlformátum-definíció sorait. A szöveges fájl minden sorában az adatok tábladefiníciója kell igazodva.
 
 A szöveg fájlok:
 
-- Ha az adatok érkezik a nem relációs adatforrás, akkor irányítópulttá sorok és oszlopok. Az adatok relációs és nem relációs forrásból származik, hogy az adatok való megfelelés érdekében a tábla, amelybe azt tervezi, hogy az adatok betöltése az oszlopdefiníciók kell alakítani. 
-- A szöveges fájlt való megfelelés érdekében az SQL Data Warehouse céltábla oszlopok és adattípusok formázása. A külső szövegfájlok adattípusok és a data warehouse tábla között a hibás illesztés hibákat okoz a sorokat a rendszer elutasítja a betöltése közben.
-- A szövegfájl, amelynek a lezáró külön mezőket.  Győződjön meg arról, egy karakter vagy egy karaktersorozat, amely nem található a forrásban lévő használatára. A megadott lezáró használja [külső FÁJLFORMÁTUM létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql).
+- Ha az adatok nem relációs forrásból érkezik, akkor átalakítja a nyersanyagokat sorok és oszlopok. Az adatokat relációs és nem relációs forrásból származik-e, hogy az adatokat, amelyek a tábla, amelybe át kívánja betölteni az adatokat az oszlopdefiníciók összhangban vannak lesz átalakítva. 
+- Formázza az adatokat a szövegfájlban való megfelelés érdekében az SQL Data Warehouse céltábla oszlopok és adattípusukkal együtt. Adattípusok a külső szöveges fájlok és a data warehouse-tábla között illesztését hatására a rendszer elutasítja a betöltés során sort.
+- A szövegfájlban egy lezáró jellel ellátott külön mezőkben.  Ügyeljen arra, használja a karakter, vagy egy karaktersorozat, amely a forrásadatok nem található. Használja a megadott lezáró [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
 ## <a name="load-to-a-staging-table"></a>Betöltés előkészítési táblába
-Adatok lekérése az adatraktárba, az jól használható első betöltés az adatok egy átmeneti táblába. Az átmeneti táblázat segítségével hibák kezelheti a termelési táblák zavarása nélkül, és visszaállítási műveletek az éles táblán küszöbölhető. Az átmeneti táblázat is biztosít arra, hogy az SQL Data Warehouse átalakítások futtatása előtt az adatok beszúrása éles táblákat.
+Adatok beolvasása a data warehouse-ba, működik jól az első betöltés az adatokat egy előkészítési táblába. Az előkészítési táblába, nem avatkozik bele a termelési táblákba kezelhetik a hibák, és elkerülheti, hogy fut az éles táblába a visszaállítási műveleteket. Egy előkészítési táblába is lehetővé teszi, hogy az SQL Data Warehouse használatával átalakítások futtatása előtt az adatok beszúrása a termelési táblákba.
 
-Betöltése a következő T-SQL, futtassa a [létrehozása TABLE AS kiválasztása (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL-utasításban. Ez a parancs eredménye egy olyan select utasításon szúr be egy új tábla. Az utasítás kiválaszt egy külső táblát, importálja a külső adatokat. 
+Betöltés a T-SQL, futtassa a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-utasítással. Ez a parancs egy kiválasztási utasítás eredményei szúr be egy új táblát. Az utasítás kiválaszt egy külső táblából, importálja a külső adatokat. 
 
-A következő példában kiegészítő Dátum, a külső tábla. Minden sor egy új táblába dbo importálása. Az adatok.
+A következő példában kiegészítő Amely a külső tábla. Az összes sor is importálja egy új táblába dbo. A dátum.
 
 ```sql
 CREATE TABLE [dbo].[Date]
@@ -116,18 +116,18 @@ AS SELECT * FROM [ext].[Date]
 ```
 
 ## <a name="transform-the-data"></a>Az adatok átalakítása
-Közben az átmeneti tárolási tábla, hajtsa végre, amely a számítási feladat által igényelt átalakításokat. Ezután lépjen az adatok egy éles táblába.
+Bár az előkészítési táblában lévő adatokat, átalakításokat, amely a számítási feladat igényli. Ezután helyezze át az adatokat egy éles táblába.
 
 ## <a name="insert-data-into-production-table"></a>Adatok beszúrása a termelési táblába
 
-AZ INSERT... SELECT utasításban az átmeneti tárolási tábla az adatok áthelyezése az állandó tábla. 
+AZOKAT az INSERT... SELECT utasítás áthelyezi az adatokat az átmeneti tárolási tábla a végleges táblát. 
 
-Az ETL-folyamat tervezéséhez, futtassa a folyamat kis teszt mintán. Próbálja 1000 sor kibontása a táblából fájlba, helyezze az Azure-ba, és ismételje meg az átmeneti tárolási tábla betöltése során. 
+Egy ETL-folyamattal kialakításakor, próbálja meg a folyamat futtatása egy rövid tesztet mintán. Próbálja ki 1000 sor beolvasása a táblából egy fájlba, helyezze át az Azure-ba, és próbálkozzon a betöltené őket az előkészítési táblába. 
 
 ## <a name="partner-loading-solutions"></a>Partnermegoldások betöltése
-Partnereink számos rendelkezik megoldások betöltésekor. További tudnivalókért lásd: listáját a [megoldási partnerek](sql-data-warehouse-partner-business-intelligence.md). 
+Partnereink többsége rendelkezik megoldások betöltése. További információért lásd: listáját a [megoldáspartnerek](sql-data-warehouse-partner-business-intelligence.md). 
 
 ## <a name="next-steps"></a>További lépések
-Útmutatás feltöltését, lásd: [útmutató adatok betöltése a](guidance-for-loading-data.md).
+További útmutatás a betöltéshez: [adatok betöltése útmutató](guidance-for-loading-data.md).
 
 

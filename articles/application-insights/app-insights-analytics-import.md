@@ -11,22 +11,24 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2017
+ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989757"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054483"
 ---
 # <a name="import-data-into-analytics"></a>Elemzési adatok importálása
 
 Az adatok importálása [Analytics](app-insights-analytics.md), vagy a csatlakoztatáshoz az [Application Insights](app-insights-overview.md) az alkalmazásából származó telemetriai adatok, vagy úgy, hogy egy külön adatfolyamként elemzése. Analytics egy hatékony lekérdezési nyelvet, nagy mennyiségű időbélyegzővel Streamek telemetria elemzése jól alkalmazható tevékenységekről a.
-
 A saját séma használatával analyticsbe is importálhat adatokat. Nem kell a standard Application Insights-sémák például kérelem vagy nyomkövetési használja.
 
 Importálhatja, JSON vagy Adatforrásnézet (elválasztó tagolt - vesszőt, pontosvesszőt vagy lap) fájlokat.
+
+> [!IMPORTANT]
+> Ez a cikk **elavult**. Az ajánlott módszer az adatok bevitele a Log Analytics-n keresztül van a [Log Analytics data collector API-t.](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
 
 Nincsenek három olyan helyzetekben, ahol Analyticshez való importálásával hasznos:
 

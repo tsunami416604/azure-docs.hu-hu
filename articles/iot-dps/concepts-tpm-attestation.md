@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub eszköz-üzembehelyezési szolgáltatás – a TPM-igazolás
-description: Ez a cikk általános áttekintést nyújt az a TPM igazolás folyamata az IoT-eszközök kiépítés szolgáltatásának használatát.
+title: Az Azure IoT Hub Device Provisioning Service - TPM-igazolás
+description: Ez a cikk a TPM-igazolás IoT Device Provisioning Service használatával folyamat fogalmi áttekintése.
 author: nberdy
 ms.author: nberdy
 ms.date: 04/23/2018
@@ -8,64 +8,64 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 90f41e56f8e95584959576d3e5ad837f4774048a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb763327eb292feb9d58fb21b1ca808a3f2909aa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629082"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058417"
 ---
 # <a name="tpm-attestation"></a>TPM-igazolás
 
-IoT Hub eszköz kiépítése szolgáltatáshoz olyan IoT hub, amely egy megadott IoT-központ nulla érintéssel eszközkiépítési konfigurálására használt segítő szolgáltatás. Az eszköz kiépítése szolgáltatáshoz megadhat eszközök millióira biztonságos módon.
+IoT Hub Device Provisioning Service, amellyel egy adott IoT hub használatával beavatkozás nélküli eszközök konfigurálása IoT hub segítő szolgáltatása. A Device Provisioning Service szolgáltatással biztonságosan is millió eszköz kiépítését.
 
-Ez a cikk ismerteti a identitását igazoló folyamat használata esetén egy [TPM](./concepts-device.md). TPM a platformmegbízhatósági modul rövidítése, és a hardveres biztonsági modul (HSM) típusa. Ez a cikk azt feltételezi, hogy a különálló, belső vezérlőprogram használja, vagy integrált TPM. Szoftver emulált TPM jól alkalmazható a prototípusának vagy tesztelni, de azok nem adja meg a biztonsági, különálló, belső vezérlőprogram azonos szinten, vagy integrált TPM tegye. Szoftverrel TPM éles környezetben nem javasoljuk. [További](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf) TPM típusú.
+Ez a cikk ismerteti az identitás igazolási folyamat használata esetén egy [TPM](./concepts-device.md). TPM-et a platformmegbízhatósági modul rövidítése, és a egy hardveres biztonsági modul (HSM) típusú. Ez a cikk feltételezi, hogy egy különálló, belső vezérlőprogram használ, vagy TPM integrált. Szoftver emulált TPM kiválóan alkalmas prototípus-készítés, illetve tesztelési, de azok nem nyújtanak biztonsági diszkrét, belső vezérlőprogram, azonos szintű, vagy integrált TPM tegye. Éles környezetben TPM szoftver használatát nem javasoljuk. TPM típusaival kapcsolatban további információkért lásd: [röviden bemutatja A TPM](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
 
-Ez a cikk csak fontos eszközökön TPM 2.0 és HMAC kulcs támogatása és az ellenőrzőkulcs kulcsok használatával. Nincs eszközök X.509 tanúsítvány alapú hitelesítést használ. TPM az iparágban használt, a Trusted Computing Group az ISO-szabvány, és további a TPM a [teljes TPM 2.0 spec](https://trustedcomputinggroup.org/tpm-library-specification/) vagy a [ISO/IEC 11889 spec](https://www.iso.org/standard/66510.html). Ez a cikk is azt feltételezi, hogy ismeri a nyilvános és titkos kulcspár, és azok használata a titkosításhoz.
+Ez a cikk csak akkor jelentősége HMAC-val kulcs támogatása, valamint azok ellenőrzőkulcs kulcsok TPM 2.0-val használó eszközök esetében. Akkor sem eszközök X.509-tanúsítványokat használnak a hitelesítéshez. A TPM-egész iparágra kiterjedő, ISO szabvány a Trusted Computing Group a, és tudjon meg többet a TPM a [teljes TPM 2.0 specifikációja](https://trustedcomputinggroup.org/tpm-library-specification/) vagy a [ISO/IEC 11889 specifikációja](https://www.iso.org/standard/66510.html). Ez a cikk azt is feltételezi, ismeri a nyilvános és titkos kulcspárokat és azok hogyan használhatók a titkosításhoz.
 
-Az eszköz kiépítése szolgáltatáshoz eszköz az SDK-k kezelni a mindent meg ebben a cikkben ismertetett. Nincs szükség az Ön megvalósítani semmi mást, ha az SDK-k használnak az eszközök számára. Ez a cikk segít megérteni fogalmilag, mi jelenít meg a TPM biztonsági lapka használata során az eszköz rendelkezéseket és miért, biztonságos.
+A Device Provisioning Service-eszközök az SDK-k kezelni a mindent, ami az Ön számára ebben a cikkben leírt. Hiba esetén nem kell, hogy semmi mást megvalósításához, ha az eszközök az SDK-kat használ. Ez a cikk segít megérteni a koncepciót tekintve, eseményeit a TPM biztonsági lapkával amikor az eszköz építi ki, és miért így biztonságos.
 
 ## <a name="overview"></a>Áttekintés
 
-TPM használja a kulcsa (EK) úgynevezett biztonságos megbízhatóság. A Ellenőrzőkulcs egyedi, a TPM-be, és ez lényegében módosítása az eszközön be egy új.
+TPM a biztonságos a megbízható legfelső szintű úgynevezett az ellenőrzőkulcs (EK) használja. Az Ellenőrzőkulcs egyedi, a TPM-be, és megváltoztatásának lényegében módosítja az eszköz be egy új.
 
-Nincs más típusú kulcsot, hogy a TPM rendelkezik, néven a legfelső szintű kulcsot (tároló gyökérkulcs azonosító). Egy tároló-gyökérkulcs azonosító a TPM-tulajdonosi generálhatja, miután a platformmegbízhatósági modul vesz igénybe. A TPM saját tulajdonba módja a TPM-specifikus megkapta a "valaki állítja be a jelszót a a hardveres biztonsági MODULT." A TPM eszköz új tulajdonosnak értékesítik, ha az új tulajdonos tulajdonba a TPM egy új tároló-gyökérkulcs azonosító létrehozásához. Az új tároló gyökérkulcs azonosító generációs biztosítja, hogy az előző tulajdonoshoz nem használható a TPM-be. Mivel a tároló Gyökérkulcsa a TPM tulajdonosának egyedi, a tároló Gyökérkulcsa segítségével zárja le adatokat a TPM-eszközre magát, hogy a tulajdonos. A tároló Gyökérkulcsa biztosít a tulajdonos a kulcsok tárolására védőfalhoz, és hozzáférést revocability biztosít, ha az eszköz vagy a TPM megvásárolható. Egy új házat áthelyezése hasonlít: átvétel módosítása a ajtók a zárolását, és a korábbi tulajdonos tároló gyökérkulcs (azonosító) által hátrahagyott összes berendezés megsemmisítése, de a ház (EK) a cím nem módosítható.
+Nincs más típusú, hogy TPM rendelkezik,-e a tároló-gyökérkulcs (tároló-gyökérkulcs azonosító) nevű kulcsot. Egy tároló-gyökérkulcs azonosító a TPM-tulajdonosi generálhatja, miután vesz igénybe a platformmegbízhatósági modul. A TPM-eszköz saját tulajdonba módja a TPM-specifikus üzenettel, "valaki beállít egy jelszót a HSM-en." TPM-eszköz új tulajdonosnak vásárolható meg, ha az új tulajdonos tulajdonukba vehetik a TPM-eszköz hozzon létre egy új tároló-gyökérkulcs azonosító. Az új tároló gyökérkulcs azonosító generációs biztosítja, hogy az előző tulajdonosétól. a TPM-eszköz nem használható. Mivel a tároló Gyökérkulcsa egyedi, a TPM-eszköz tulajdonosa, a tároló-gyökérkulcs azonosító magából a TPM a tulajdonos számára az adatok lezárása használható. A tároló Gyökérkulcsa egy tesztkörnyezet, a tulajdonos, hogy a kulcsokat biztosít, és hozzáférést revocability ide, ha az eszköz vagy TPM vásárolható meg. Olyan, egy új házat megéri: saját tulajdonba módosítása a ajtók szüntetni, és a korábbi tulajdonos tároló gyökérkulcs (azonosító) által az összes bútordarab megsemmisítése, de nem módosíthatja a ház (EK) címét.
 
-Ha egy eszköz be van állítva, és készen áll a használatra, lesz egy Ellenőrzőkulcs és egy tároló-gyökérkulcs azonosító használható is.
+Ha egy eszköz be van állítva, és készen áll a használatra, fog rendelkezni az Ellenőrzőkulcs és a egy tároló-gyökérkulcs azonosító használható.
 
-![Saját tulajdonba vétel TPM](./media/concepts-tpm-attestation/tpm-ownership.png)
+![A TPM saját tulajdonba](./media/concepts-tpm-attestation/tpm-ownership.png)
 
-A TPM saját tulajdonba a OneNote-ra: számos elemet, beleértve a TPM gyártóját, a TPM eszközök használt, és az eszköz operációs rendszere saját tulajdonba vétel TPM függ. Kövesse az utasításokat saját tulajdonba a rendszerben.
+A TPM-eszköz saját tulajdonba a Megjegyzés: a TPM saját tulajdonba függ, hogy sok-sok dolog, beleértve a TPM gyártójával, használja a TPM-eszközök készlete és az eszköz operációs rendszere. Kövesse az utasításokat saját tulajdonba a rendszerben.
 
-Az eszköz kiépítése szolgáltatáshoz használ a nyilvános részét a Ellenőrzőkulcs (EK_pub) regisztrálhatják eszközeiket. Az eszköz gyártója olvashatja a EK_pub előállítás vagy végső tesztelése során, és töltse fel a létesítési szolgáltatás a EK_pub, hogy az eszköz felismerje a rendszer a kiépítés való kapcsolódáskor. Az eszköz kiépítése szolgáltatáshoz nem ellenőrzi a tároló gyökérkulcs azonosító vagy a tulajdonos, így "törlésének" a TPM törli az ügyféladatokat, de a Ellenőrzőkulcs (és más gyártó adatok) megmaradjanak, és az eszköz továbbra is felismer az eszköz kiépítése szolgáltatáshoz kiépítés való kapcsolódáskor.
+A Device Provisioning Service azonosíthatja és-eszközök regisztrálása az Ellenőrzőkulcs (EK_pub) nyilvános részét használja. Az eszköz gyártója olvashatja a EK_pub előállítás vagy végleges tesztelése során, és töltse fel a kiépítési szolgáltatás a EK_pub úgy, hogy az eszköz felismer, amikor csatlakozik a kiépítése. A Device Provisioning Service nem ellenőrzi a tároló gyökérkulcs azonosító vagy a tulajdonos, így "törlésének" a TPM-eszköz törli az ügyféladatokat, de az Ellenőrzőkulcs (és más gyártói adatokat) megmaradjanak, és az eszköz továbbra is felismer a Device Provisioning Service üzembe helyezése szolgáltatáshoz való csatlakozáskor.
 
-## <a name="detailed-attestation-process"></a>Részletes állapotigazolási folyamat
+## <a name="detailed-attestation-process"></a>Részletes igazolási folyamat
 
-Amikor TPM Modullal rendelkező eszköz, először az eszköz kiépítése szolgáltatáshoz csatlakozik, a szolgáltatás először ellenőrzi a megadott EK_pub szemben a EK_pub, a beléptetési listában. Ha a EK_pubs nem egyezik, az eszköz nem engedélyezett kiépítését. A EK_pubs felelnek meg, ha a szolgáltatás majd megköveteli az eszköz tulajdonjogát, a titkos része, amely identitásának igazolásához használt biztonságos kihívást nonce kihívást keresztül Ellenőrzőkulcs igazolásához. Az eszköz kiépítése szolgáltatáshoz egy nonce hoz létre, és ezután titkosítja a tároló Gyökérkulcsa, majd a EK_pub, amelyek mindegyikét által biztosított az eszköz kezdeti regisztrációs hívás során. A TPM mindig tartja a Ellenőrzőkulcs titkos része biztonságos. Ezzel megakadályozza, hogy a hamisítás, és biztosítja a SAS-tokenje biztonságosan szolgálnak hitelesített eszközöket.
+Amikor a TPM-eszköz először csatlakozik a Device Provisioning Service, a szolgáltatás először ellenőrzi a megadott EK_pub ellen a EK_pub tárolja a regisztrációs listában. Ha nem egyeznek a EK_pubs, az eszköz nem engedélyezett üzembe helyezni. A EK_pubs felelnek meg, ha a szolgáltatás majd megköveteli az eszköz az Ellenőrzőkulcs nonce problémásnak bizonyulhatnak, ami biztonságos kihívást használt személyazonosság-n keresztül titkos része tulajdonjogának igazolásához. A Device Provisioning Service létrehoz egy egyszeri, és ezután titkosítja a tároló Gyökérkulcsa, majd a EK_pub, amelyek által biztosított az eszközt a kezdeti regisztrációs hívás során. A TPM mindig a privát része az Ellenőrzőkulcs biztonságban tartja. Ez megakadályozza, hogy a hamisítás, és biztosítja a SAS-tokeneket biztonságosan felhasznált engedéllyel rendelkező eszközökre.
 
-A tanúkiszolgáló folyamatot részletesen bemutatjuk.
+Vizsgáljunk meg részletesen az igazolási folyamat.
 
-### <a name="device-requests-an-iot-hub-assignment"></a>Eszköz kér az IoT-központ hozzárendelés
+### <a name="device-requests-an-iot-hub-assignment"></a>Eszköz kér egy IoT Hub-hozzárendelés
 
-Az eszköz először csatlakozik az eszköz kiépítése szolgáltatáshoz, és kiépítését kéri. Ennek során az eszköz biztosítja azt a szolgáltatást a regisztrációs Azonosítót, egy azonosító hatókört, és a EK_pub és SRK_pub a TPM modul. A szolgáltatás átadja a titkosított nonce vissza az eszközt, és az eszköz használatával fejti vissza a nonce, és, amelyek segítségével bejelentkezhetnek a SAS-jogkivonat ismételt csatlakozással, és üzembe helyezése kéri.
+Az eszköz először csatlakozik a Device Provisioning Service, és kéri, hogy üzembe helyezése. Ennek során az eszköz megadja a szolgáltatás regisztrációs Azonosítóval, egy azonosító hatóköre és a EK_pub és SRK_pub a TPM-ből. A szolgáltatás a titkosított egyszeri továbbítja a az eszközt, és az egyszeri visszafejteni, és újra csatlakozhat, és üzembe helyezése SAS-tokent használ, amely az eszköz kéri.
 
-![Kiépítés eszköz kérelmek](./media/concepts-tpm-attestation/step-one-request-provisioning.png)
+![Eszköz kérések kiépítése](./media/concepts-tpm-attestation/step-one-request-provisioning.png)
 
-### <a name="nonce-challenge"></a>NONCE kérdés
+### <a name="nonce-challenge"></a>NONCE challenge
 
-Az eszköz a nonce vesz igénybe, és használja a Ellenőrzőkulcs és a tároló gyökérkulcs azonosító titkos része a nonce visszafejtése a TPM-eszközre; nonce titkosítási delegáltak bizalmi kapcsolat a Ellenőrzőkulcs, amely nem módosítható, a tároló Gyökérkulcsa, amelyen módosítható, ha az új tulajdonos veszi a platformmegbízhatósági modul sorrendjét.
+Az eszköz vesz igénybe a egyszeri, és használja az Ellenőrzőkulcs és a tároló gyökérkulcs azonosító titkos része az egyszeri visszafejteni a TPM-eszközre; a rendelés nonce titkosítási ad megbízhatósági az Ellenőrzőkulcs, amely nem módosítható, a tároló Gyökérkulcsa, amely módosítható, ha új tulajdonost a platformmegbízhatósági modul vesz igénybe.
 
-![A nonce visszafejtése](./media/concepts-tpm-attestation/step-two-nonce.png)
+![Az egyszeri visszafejtése](./media/concepts-tpm-attestation/step-two-nonce.png)
 
-### <a name="validate-the-nonce-and-receive-credentials"></a>A nonce érvényesítése és a hitelesítő adatok fogadására
+### <a name="validate-the-nonce-and-receive-credentials"></a>Ellenőrizze az egyszeri és hitelesítő adatok fogadása
 
-Az eszköz ezután a visszafejtett nonce használatával SAS-jogkivonat aláírása és az eszköz kiépítése szolgáltatáshoz az aláírt SAS tokent kapcsolat visszaállítása. A Nonce kérdéssel befejeződött a szolgáltatás lehetővé teszi, hogy az eszköz kiépítése.
+Az eszköz ezután egy SAS-jogkivonat használatával a visszafejtett egyszeri bejelentkezés és helyreállítani a kapcsolatot a Device Provisioning Service az aláírt SAS-jogkivonat használatával. Az egyszeri feladat befejeződött, az a szolgáltatás lehetővé teszi, hogy az eszköz kiépítéséhez.
 
-![Eszköz helyreállítja a csatolást kapcsolatot terjesztési pontok Ellenőrzőkulcs tulajdonjog ellenőrzése](./media/concepts-tpm-attestation/step-three-validation.png)
+![Eszköz helyreállítja a csatolást kapcsolat a Device Provisioning Service Ellenőrzőkulcs tulajdonjogának ellenőrzése](./media/concepts-tpm-attestation/step-three-validation.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Az eszköz csatlakozik, IoT-központot, és a rest-e meg, hogy az eszközök kulcsokat biztonságosan tárolja a Tudásbázis biztonságos. Most, hogy tudja, hogyan az eszköz kiépítése szolgáltatáshoz biztonságosan ellenőrzi a TPM használatával egy eszköz identitása, tekintse meg az alábbi cikkekből tudhat meg többet:
+Most, hogy az eszköz csatlakozik az IoT hubhoz, és biztos abban a tudatban, hogy az eszközök kulcsok biztonságos tárolása biztonságos. Most, hogy megismerte, hogyan a Device Provisioning Service biztonságos ellenőrzi egy eszköz identitásának TPM-eszköz használatával, tekintse meg a következő cikkekben további információ:
 
-* [Automatikus üzembe helyezése a fogalmak megismerése](./concepts-auto-provisioning.md)
-* [Az Automatikus kiépítés első lépéseiben](./quick-setup-auto-provision.md) gondoskodunk a folyamat az SDK-k használatával.
+* [További információ az Automatikus kiépítés kapcsolatos fogalmak](./concepts-auto-provisioning.md)
+* [Ismerkedés az automatikus regisztráció](./quick-setup-auto-provision.md) az SDK-k segítségével gondoskodik a folyamatot.

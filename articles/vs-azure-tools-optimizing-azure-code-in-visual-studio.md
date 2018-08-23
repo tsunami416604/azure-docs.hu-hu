@@ -1,6 +1,6 @@
 ---
-title: A Visual Studio Azure kód optimalizálása |} Microsoft Docs
-description: Ismerje meg, az Azure kód optimalizálási eszközök Visual Studio érdekében a kód megbízhatóbb és jobban végrehajtása.
+title: Optimalizálás az Azure kódhoz a Visual Studióban |} A Microsoft Docs
+description: Megtudhatja, Azure kód optimalizálási eszközök a Visual Studio hatékony, és jobban teljesítő, győződjön meg a kódot.
 services: visual-studio-online
 documentationcenter: na
 author: cawa
@@ -11,55 +11,56 @@ ms.service: multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: multiple
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.date: 11/11/2016
 ms.author: cawa
-ms.openlocfilehash: 3ee2cc3ac5098ebf205331167faffa2b5f9b6d56
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 0497ac628d7882a0b722796493c10c0d8b04e759
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937557"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443668"
 ---
-# <a name="optimizing-your-azure-code"></a>Az Azure kód optimalizálása
-Ha a Microsoft Azure használó alkalmazások által programozási, van néhány alkalmazás méretezhetőséget, viselkedését, egy felhőalapú környezetben a teljesítményt és a problémák elkerülése érdekében ajánlott eljárásit. A Microsoft biztosít egy Azure kód elemző eszköz, amely ismeri fel és azonosítja a leggyakrabban észlelt problémák számos, és segítséget nyújt a megoldásukkal együtt. Az eszköz a Visual Studio NuGet útján lehet letölteni.
+# <a name="optimizing-your-azure-code"></a>Az Azure-os kód optimalizálása
+A Microsoft Azure használó alkalmazások által használt programozási, ha nincsenek néhány kódolási gyakorlatot, kövesse az alkalmazás méretezhetőségi, viselkedését és a felhőalapú környezetekben problémák elkerülése érdekében. A Microsoft biztosít egy Azure kód elemző eszköz, amely felismeri és azonosítja a leggyakrabban észlelt problémák számos, és segít elhárítani őket. Az eszköz a Visual Studióban a NuGet segítségével töltheti le.
 
-## <a name="azure-code-analysis-rules"></a>Az Azure Analysis kód szabályok
-Az Azure kód elemző eszköz a következő szabályok segítségével automatikusan jelzőt az Azure kódot, ha talál teljesítményt érintő ismert problémákat. Észlelt problémák jelenhetnek meg a figyelmeztetéseket vagy fordítási hibákat. A villanykörte ikonnal gyakran kipróbálni a kód javítások és a javaslatok a figyelmeztetés vagy a hiba megoldásához.
+## <a name="azure-code-analysis-rules"></a>Az Azure kód Kódelemzési szabályok
+Az Azure kód elemző eszköz a következő szabályok segítségével automatikusan megjelöli az Azure-kódmintát, ha úgy találja, hogy a teljesítményt érintő ismert problémákat. Észlelt problémák jelennek meg a figyelmeztetéseket vagy fordítási hibákat. Opravy kódu vagy javaslatok a figyelmeztetés vagy hiba megoldásához gyakran szolgáltatáson keresztül a villanykörte ikonnal.
 
-## <a name="avoid-using-default-in-process-session-state-mode"></a>Ne használja az alapértelmezett (a folyamat) munkamenet-állapot módját
+## <a name="avoid-using-default-in-process-session-state-mode"></a>Ne használja az alapértelmezett (a-folyamat) munkamenet-állapot módját
 ### <a name="id"></a>ID (Azonosító)
 AP0000
 
 ### <a name="description"></a>Leírás
-Ha használja az alapértelmezett (a folyamat) munkamenet-állapot módját a felhőalapú alkalmazásokhoz, a munkamenet-állapot elveszhet.
+Ha használja az alapértelmezett (a-folyamat) munkamenet-állapot módját a felhőalapú alkalmazásokhoz, a munkamenet-állapot elvesztése fogadható el.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-Alapértelmezés szerint a web.config fájlban megadott munkamenet-állapot módját a folyamatban. Is ha a konfigurációs fájlban megadott bejegyzés, a munkamenet-állapot módját a alapértelmezés szerint az a folyamat. A folyamaton belüli módot a munkamenet-állapot az a memóriában tárolja a webkiszolgálón. Amikor egy újraindítása, vagy egy új példányt a terheléselosztás és feladatátvétel támogatásáról szolgál, a webkiszolgáló a memóriában tárolt munkamenet-állapot nem menti a rendszer. Ez a helyzet megakadályozza, hogy az alkalmazás nem méretezhető a felhő.
+Alapértelmezés szerint a web.config fájlban megadott munkamenet-állapot módját a folyamaton. Is ha a konfigurációs fájlban megadott bejegyzés nem a munkamenet-állapot módját a alapértelmezés szerint a folyamaton. A folyamaton belüli módot a munkamenet-állapot a webkiszolgáló a memóriában tárolja. Ha egy példány újraindítása, vagy egy új példányt használja a terheléselosztási és feladatátvételi támogatást, a webkiszolgáló a memóriában tárolt munkamenet-állapot nem menti a rendszer. Ez a helyzet megakadályozza, hogy az alkalmazás a felhő skálázható folyamatban van.
 
-Az ASP.NET munkamenet-állapot munkamenet-állapot adatainak támogatja a több, eltérő tárolási lehetőség: InProc, StateServer, SQL Server, egyéni, és ki. Javasoljuk, hogy egyéni módot használja adatok tárolására a munkamenet-állapot külső áruházban, például a [Azure munkamenetállapot-szolgáltató az Redis](http://go.microsoft.com/fwlink/?LinkId=401521).
+ASP.NET-munkamenetállapot több különböző tárolási lehetőség támogatja a munkamenet-állapot adatainak: InProc, StateServer, SQL Server, egyéni, kijelentkezniük és. Javasoljuk, hogy egyéni módot használja adatok tárolására egy külső munkamenet-állapot áruházban, például [Redis Azure munkamenetállapot-szolgáltatója](http://go.microsoft.com/fwlink/?LinkId=401521).
 
 ### <a name="solution"></a>Megoldás
-Egyetlen ajánlott megoldás, hogy munkamenet-állapot tárolása egy felügyelt gyorsítótár szolgáltatásra. Ismerje meg, hogyan használható [Azure munkamenetállapot-szolgáltató az Redis](http://go.microsoft.com/fwlink/?LinkId=401521) a munkamenet-állapot tárolásához. A munkamenet-állapot, így az alkalmazás méretezhető a felhő más helyen is tárolhatja. További információt olvassa el az alternatív megoldások [munkamenet-állapot módok](https://msdn.microsoft.com/library/ms178586).
+Egyetlen ajánlott megoldás, ha a managed cache szolgáltatás a munkamenet-állapot tárolása. Ismerje meg, hogyan használható [Redis Azure munkamenetállapot-szolgáltatója](http://go.microsoft.com/fwlink/?LinkId=401521) a munkamenet-állapotának tárolására. A munkamenet-állapot más helyen, hogy az alkalmazás biztosan skálázható a felhőben is tárolhatja. További információért olvassa el az alternatív megoldások tudnivalók [munkamenet-állapot módok](https://msdn.microsoft.com/library/ms178586).
 
 ## <a name="run-method-should-not-be-async"></a>Futtatási mód nem lehet aszinkron
 ### <a name="id"></a>ID (Azonosító)
 AP1000
 
 ### <a name="description"></a>Leírás
-Aszinkron metódusok létrehozása (például [await](https://msdn.microsoft.com/library/hh156528.aspx)) kívül a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) módszer, majd hívja a az aszinkron metódusoknak [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx). Deklaráló a [ [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódus aszinkron módon okoz a feldolgozói szerepkör újraindítás hurok megadását.
+Hozzon létre aszinkron metódusok (például [await](https://msdn.microsoft.com/library/hh156528.aspx)) kívül a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódus majd hívja a aszinkron metódusok a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx). Deklaráló a [ [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódus aszinkron módon okoz, adjon meg egy újraindítási hurokba a feldolgozói szerepkör.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-Aszinkron metódusok belüli meghívása a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódus okoz a felhőalapú szolgáltatás futásideje újrahasznosítása a feldolgozói szerepkör. A feldolgozói szerepkör indulásakor az összes program végrehajtását belül kerül sor a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódust. Kilépés a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódus okoz a feldolgozói szerepkör újraindítására. A feldolgozói szerepkör futásidejű találatok az aszinkron metódussal, ha minden műveletnél kiszállítja az aszinkron metódus után, és adja vissza. Ennek hatására a Kilépés a feldolgozói szerepkör a [ [ [ [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódust, és indítsa újra. A következő munkamenetben végrehajtás a feldolgozói szerepkör az aszinkron metódusban találatok újra, és újraindul, a feldolgozói szerepkör újrahasznosítása újra is, amely.
+Belül aszinkron metódusok meghívása a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódus okoz a cloud service futtatási a feldolgozói szerepkör újraindítása. Feldolgozói szerepkör indulásakor az összes program végrehajtását belül kerül sor a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódust. Kilépés a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódus a feldolgozói szerepkör újraindítását okozza. A feldolgozói szerepkör futtatókörnyezet az async módszert rákeres, amikor továbbítja a minden művelet után az async módszert, és adja vissza. Ennek hatására a feldolgozói szerepkör-ből való kilépéshez a [ [ [ [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódust, és indítsa újra. A következő verzió továbbfejlesztésében végrehajtási a feldolgozói szerepkör ismét eléri az async módszert, és újraindul, a feldolgozói szerepkör-újrahasznosítást újra is okoz.
 
 ### <a name="solution"></a>Megoldás
-Helyezze el az összes aszinkron művelet kívül a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódust. Majd, meghívják a a átkerült aszinkron metódus belül a [ [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) módszer, például RunAsync () .wait. A Azure kód elemző eszköz segít a probléma megoldásához.
+Helyezze el az alkalmazáson kívül minden aszinkron műveletek a [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódust. Ezután hívja meg a újratervezhetők aszinkron metódust a belül a [ [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) ](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) módszer, például RunAsync () .wait. Az Azure kód elemzőeszköz segíthet a probléma megoldásához.
 
-A következő kódrészletet mutatja be a kódját a hiba javítása:
+A következő kódrészletet mutat be a kódot a probléma javítása:
 
 ```
 public override void Run()
@@ -94,15 +95,15 @@ public async Task RunAsync()
 AP2000
 
 ### <a name="description"></a>Leírás
-Hitelesítéshez használandó közös hozzáférésű Jogosultságkód (SAS). A service bus hitelesítéshez Access Control Service (ACS) is elavult.
+Közös hozzáférésű Jogosultságkód (SAS) használata a hitelesítéshez. A service bus-hitelesítés hamarosan elavulttá válik Access Control Service (ACS).
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-A fokozott biztonság érdekében Azure Active Directory SAS hitelesítési ACS hitelesítési lecseréli. Lásd: [Azure Active Directory az ACS a jövőben](https://cloudblogs.microsoft.com/enterprisemobility/2013/06/22/azure-active-directory-is-the-future-of-acs/) az átmenet terv olvashat.
+A fokozott biztonság érdekében az Azure Active Directory lecseréli az ACS-hitelesítés SAS-hitelesítéssel. Lásd: [Azure Active Directory az ACS jövője](https://cloudblogs.microsoft.com/enterprisemobility/2013/06/22/azure-active-directory-is-the-future-of-acs/) az átmenet terv tájékoztatást.
 
 ### <a name="solution"></a>Megoldás
-SAS-hitelesítés használata az alkalmazások. A következő példa bemutatja, hogyan egy meglévő SAS-jogkivonat egy service bus-névtér vagy entitás elérésére használhat.
+SAS-hitelesítés használata az alkalmazásokban. Az alábbi példa bemutatja, hogyan használja egy meglévő SAS-tokent egy service bus-névtér vagy entitás eléréséhez.
 
 ```
 MessagingFactory listenMF = MessagingFactory.Create(endpoints, new StaticSASTokenProvider(subscriptionToken));
@@ -110,34 +111,34 @@ SubscriptionClient sc = listenMF.CreateSubscriptionClient(topicPath, subscriptio
 BrokeredMessage receivedMessage = sc.Receive();
 ```
 
-A következő témakörökben további információt.
+További információ a következő témakörökben talál.
 
-* Megtudhatja, [megosztott hozzáférési aláírást hitelesítést a Service Bus](https://msdn.microsoft.com/library/dn170477.aspx)
-* [A Service Bus megosztott hozzáférési aláírást hitelesítés használata](https://msdn.microsoft.com/library/dn205161.aspx)
-* Egy minta-projekt lásd [használatával közös hozzáférésű Jogosultságkód (SAS) hitelesítés a Service Bus-előfizetések](http://code.msdn.microsoft.com/windowsazure/Using-Shared-Access-e605b37c)
+* Áttekintéséhez lásd: [közös hozzáférésű Jogosultságkódos hitelesítés Service Bus szolgáltatással](https://msdn.microsoft.com/library/dn170477.aspx)
+* [Közös hozzáférésű Jogosultságkódos hitelesítés Service Bus használatával](https://msdn.microsoft.com/library/dn205161.aspx)
+* A mintaprojekt, lásd: [használata közös hozzáférésű Jogosultságkód (SAS) hitelesítés a Service Bus-előfizetések](http://code.msdn.microsoft.com/windowsazure/Using-Shared-Access-e605b37c)
 
-## <a name="consider-using-onmessage-method-to-avoid-receive-loop"></a>Érdemes lehet OnMessage metódus "az üzenetfogadási hurok" elkerülése érdekében
+## <a name="consider-using-onmessage-method-to-avoid-receive-loop"></a>Érdemes lehet OnMessage metódus "hurok jelenik meg" elkerülése érdekében
 ### <a name="id"></a>ID (Azonosító)
 AP2002
 
 ### <a name="description"></a>Leírás
-Egy "az üzenetfogadási hurok," üzembe elkerülése érdekében hívja a **OnMessage** metódus hívása mint üzenetek fogadása egy jobb megoldás a **Receive** metódust. Azonban ha kell használnia a **Receive** metódust, és adjon meg egy nem alapértelmezett server várakozási idő, győződjön meg arról, hogy a kiszolgáló várakozási idő több mint egy percig.
+Elkerülése érdekében a "fogadás hurok," hívása a **OnMessage** metódus hívása, mint az üzenetek fogadása egy jobb megoldás a **Receive** metódust. Azonban ha kell használnia a **Receive** metódust, és adjon meg egy nem alapértelmezett kiszolgáló várakozási idő, győződjön meg arról, hogy a kiszolgáló várakozási idő több mint egy perc.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-Meghívásakor **OnMessage**, az ügyfél elindul egy belső üzenet szivattyú, amely folyamatosan kérdezze le a várólista vagy az előfizetéshez. Az üzenet szivattyú által kiállított üzeneteket fogadni hívás végtelen hurkot tartalmaz. A hívás túllépi az időkorlátot, ha egy új hívás ad ki. Az időkorlát értéke határozza meg a [OperationTimeout](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx) tulajdonsága a [MessagingFactory](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactory.aspx)használt.
+Hívásakor **OnMessage**, az ügyfél elindul egy belső message szivattyú, amely folyamatosan kérdezze le a várólista vagy előfizetést. Ez az üzenet szivattyú végtelen ciklust, amely üzeneteket fogadni hívást tartalmaz. A hívás túllépi az időkorlátot, ha egy új hívást kapcsolatos problémák. Az időkorlát értékét határozza meg a [így időtúllépés történt](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx) tulajdonságát a [MessagingFactory](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactory.aspx)használt.
 
-Használatának előnye **OnMessage** képest **Receive** , hogy a felhasználóknak nem kell manuálisan kérdezze le az üzenetek, kivételek kezelése, párhuzamosan több üzenetek feldolgozásához, és fejezze be az üzenetek.
+Használatának előnye **OnMessage** képest **Receive** , hogy a felhasználóknak nem kell manuálisan üzenetek lekérdezésére, kivételek kezelése, párhuzamosan több üzenetet fel és végezze el az üzeneteket.
 
-Ha meghívja a **Receive** anélkül, hogy az alapértelmezett értéket használja, ügyeljen a *ServerWaitTime* értéke nagyobb, mint egy perc. Beállítás *ServerWaitTime* több mint egy perc alatt megakadályozza, hogy a kiszolgáló időtúllépés miatt az üzenet teljesen megérkezése előtt.
+Ha felhívja **Receive** nélkül használja az alapértelmezett értékére, mindenképpen a *ServerWaitTime* értéke több, mint egy perc. Beállítás *ServerWaitTime* több mint egy perc alatt megakadályozza, hogy a kiszolgáló időtúllépése előtt az üzenetet teljesen.
 
 ### <a name="solution"></a>Megoldás
-Ellenőrizze a következő példák az ajánlott módjait. További részletekért lásd: [QueueClient.OnMessage metódus (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.onmessage.aspx)és [QueueClient.Receive metódus (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.receive.aspx).
+Tekintse át a következő hitelesítésikód-példák a tanúsítványalgoritmusok ajánlott. További részletekért lásd: [QueueClient.OnMessage metódus (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.onmessage.aspx)és [QueueClient.Receive metódus (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.receive.aspx).
 
-Az Azure üzenetküldési infrastruktúra a teljesítmény javítása érdekében tekintse meg a kialakítási mintában [aszinkron üzenetkezelési ismertetése](https://msdn.microsoft.com/library/dn589781.aspx).
+Az Azure-üzenetküldési infrastruktúra, a teljesítmény javítása érdekében tekintse meg a kialakítási mintában [aszinkron üzenetkezelés ismertetését](https://msdn.microsoft.com/library/dn589781.aspx).
 
-Az alábbiakban egy példa annak **OnMessage** üzeneteket fogadni.
+Az alábbiakban egy példát a **OnMessage** üzeneteket fogadni.
 
 ```
 void ReceiveMessages()
@@ -158,7 +159,7 @@ void ReceiveMessages()
     Console.ReadKey();
 ```
 
-Az alábbiakban egy példa annak **Receive** az alapértelmezett kiszolgáló a várakozási idő.
+Az alábbiakban egy példát a **Receive** az alapértelmezett kiszolgáló a várakozási idő.
 
 ```
 string connectionString =  
@@ -191,7 +192,7 @@ while (true)
    }
 ```
 
-Az alábbiakban egy példa annak **Receive** egy nem alapértelmezett kiszolgálóval várakozási idő.
+Az alábbiakban egy példát a **Receive** egy nem alapértelmezett kiszolgálóval várakozási idő.
 
 ```
 while (true)  
@@ -219,37 +220,37 @@ while (true)
    }
 }
 ```
-## <a name="consider-using-asynchronous-service-bus-methods"></a>Érdemes lehet aszinkron Service Bus-metódusok
+## <a name="consider-using-asynchronous-service-bus-methods"></a>Fontolja meg a Service Bus aszinkron metódusok
 ### <a name="id"></a>ID (Azonosító)
 AP2003
 
 ### <a name="description"></a>Leírás
-Módszerekkel aszinkron Service Bus közvetítőalapú üzenettovábbítás a teljesítmény javításához.
+Módszerekkel aszinkron a Service Bus közvetítőalapú üzenettovábbítás a teljesítmény javítása.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-Aszinkron metódusok használatával lehetővé teszi a program egyidejű application, mert minden hívás végrehajtása ne blokkolja a fő szálnak. A Service Bus üzenetkezelés módszerek, egy olyan műveletet hajt használatakor (Küldés, kapni, törlés, stb.) időt vesz igénybe. Most a Service Bus szolgáltatás mellett a kérelem és a válasz késleltetése a művelet feldolgozása tartalmaz. Az idő alatt műveletek számának növeléséhez, műveletek végre kell hajtani egyidejűleg. További információ a tekintse meg [gyakorlati tanácsok a teljesítmény javítását használatával Service Bus Közvetítőalapú üzenetkezelés](https://msdn.microsoft.com/library/azure/hh528527.aspx).
+Alkalmazás program egyidejűségi aszinkron metódusok használata lehetővé teszi, mivel minden hívás végrehajtása nem tiltja a fő szálát. A Service Bus üzenetkezelés módszerek, egy műveletet használatakor (Küldés, kap, törlés, stb.) időt vesz igénybe. Ezúttal a művelet feldolgozása tartalmazza a Service Bus szolgáltatás a kéréseket és a válasz késés mellett. Növelje a műveletek száma idő, műveleteket végre kell hajtani egyidejűleg. További részletekért tekintse meg [ajánlott eljárások a teljesítmény fejlesztései használatával Service Bus felügyelt üzenettovábbítás](https://msdn.microsoft.com/library/azure/hh528527.aspx).
 
 ### <a name="solution"></a>Megoldás
-Lásd: [QueueClient osztály (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.aspx) a javasolt aszinkron metódus használatával kapcsolatos információt.
+Lásd: [QueueClient osztály (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.aspx) aszinkron ajánlott módszer használatával kapcsolatos információkat.
 
-Az Azure üzenetküldési infrastruktúra a teljesítmény javítása érdekében tekintse meg a kialakítási mintában [aszinkron üzenetkezelési ismertetése](https://msdn.microsoft.com/library/dn589781.aspx).
+Az Azure-üzenetküldési infrastruktúra, a teljesítmény javítása érdekében tekintse meg a kialakítási mintában [aszinkron üzenetkezelés ismertetését](https://msdn.microsoft.com/library/dn589781.aspx).
 
-## <a name="consider-partitioning-service-bus-queues-and-topics"></a>Vegye figyelembe a particionálási Service Bus-üzenetsorok és témakörök
+## <a name="consider-partitioning-service-bus-queues-and-topics"></a>Érdemes lehet a particionálási Service Bus-üzenetsorok és témakörök
 ### <a name="id"></a>ID (Azonosító)
 AP2004
 
 ### <a name="description"></a>Leírás
-Partíció Service Bus-üzenetsorok és témakörök a jobb teljesítmény érdekében a Service Bus üzenetkezelés.
+Partíció Service Bus-üzenetsorok és témakörök a jobb teljesítmény érdekében a Service Bus-üzenetkezelés.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-Service Bus-üzenetsorok és témakörök particionálás növeli a teljesítményt átviteli sebesség és a szolgáltatás rendelkezésre állási, mivel a már nem korlátozzák a teljes átviteli képessége – a particionált üzenetsor vagy témakör egyetlen üzenet broker vagy üzenetküldési tárolóban teljesítmény szerint. Ezenkívül átmenetileg nem működik az üzenetküldési tárolóban nem elérhetetlenné particionált üzenetsor vagy témakör. További információkért lásd: [üzenetküldési entitások particionálás](https://msdn.microsoft.com/library/azure/dn520246.aspx).
+Particionálása a Service Bus-üzenetsorok és témakörök növeli a teljesítményt átviteli sebesség és a szolgáltatás rendelkezésre állási, mivel a teljes átviteli képessége particionált üzenetsor vagy témakör már nem korlátozzák a teljesítmény egyetlen üzenettovábbítóról vagy üzenetküldési tárolóban. Emellett egy átmeneti szolgáltatáskimaradás az üzenetküldési tárolóban nem elérhetetlenné egy particionált üzenetsorra vagy témakörbe. További információkért lásd: [üzenetküldési entitások particionálás](https://msdn.microsoft.com/library/azure/dn520246.aspx).
 
 ### <a name="solution"></a>Megoldás
-A következő kódrészletet üzenetküldési entitások particionálásáról jeleníti meg.
+A következő kódrészletet bemutatja, hogyan üzenetküldési entitások particionálásához.
 
 ```
 // Create partitioned topic.
@@ -259,26 +260,26 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-További információkért lásd: [particionálva Service Bus-üzenetsorok és témakörök |} A Microsoft Azure Blog](https://azure.microsoft.com/blog/2013/10/29/partitioned-service-bus-queues-and-topics/) és tekintse meg a [Microsoft Azure Service Bus particionálva várólista](https://code.msdn.microsoft.com/windowsazure/Service-Bus-Partitioned-7dfd3f1f) minta.
+További információkért lásd: [particionált Service Bus-üzenetsorok és témakörök |} A Microsoft Azure Blog](https://azure.microsoft.com/blog/2013/10/29/partitioned-service-bus-queues-and-topics/) , és tekintse meg a [a Microsoft Azure Service Bus-particionált üzenetsor](https://code.msdn.microsoft.com/windowsazure/Service-Bus-Partitioned-7dfd3f1f) minta.
 
-## <a name="do-not-set-sharedaccessstarttime"></a>Ne adja meg az SharedAccessStartTime
+## <a name="do-not-set-sharedaccessstarttime"></a>Nincs beállítva a SharedAccessStartTime
 ### <a name="id"></a>ID (Azonosító)
 AP3001
 
 ### <a name="description"></a>Leírás
-Az aktuális idő azonnal el tudja indítani a megosztott hozzáférési házirend SharedAccessStartTimeset segítségével kerülendő. Csak szeretné állítani ezt a tulajdonságot, ha el szeretné indítani a megosztott hozzáférési házirend egy későbbi időpontban.
+Kerülje a SharedAccessStartTimeset az aktuális időpontnál azonnal elindítani a megosztott hozzáférési szabályzat. Csak akkor kell állítani ezt a tulajdonságot, ha a megosztott hozzáférési szabályzat elindítása egy későbbi időpontban szeretné.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-Számítógépóra-szinkronizálás adatközpontok között enyhe időeltérése okoz. Például akkor logikailag gondol a kezdési időt a tároló SAS-házirend beállítását az aktuális idő DateTime.Now használatával, vagy hasonló módon, akkor azonnal érvénybe lépnek a SAS-házirendet. Azonban az Adatközpont között enyhe időeltérést problémákat okozhat a mivel lehet, hogy néhány datacenter eset némileg későbbi a kezdési időpontnál, míg mások azt előre. Ennek eredményeképpen a SAS-házirend lejárhat gyorsan (vagy akár azonnal) Ha a házirend-élettartam értéke túl rövid.
+Számítógépóra-szinkronizálás eredményezi egy kis idő különbség az adatközpontok között. Például szeretné logikailag úgy gondolja, hogy a tároló SAS-szabályzat kezdési idejét beállítása a jelenlegi idő szerint DateTime.Now használatával, vagy egy hasonló módszer eredményezi a SAS-szabályzat azonnal érvénybe. Azonban az adatközpontok közötti enyhe időeltérést problémákat okozhat a egyes adatközpont lehet némileg későbbi a kezdési időpontnál, míg más modelljei előre, mivel. Ennek eredményeképpen lejár az SAS-szabályzatot is gyorsan (vagy akár azonnal) Ha a házirend élettartamának értéke túl rövid.
 
-Az Azure storage közös hozzáférésű Jogosultságkód használatával további útmutatást lásd: [bevezetéséről tábla SAS (közös hozzáférésű Jogosultságkód), üzenetsor SAS és a frissítést a Blob SAS - Microsoft Azure tárolás fejlesztői Blog - hely kezdőlap - MSDN-blogok](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx).
+Az Azure storage közös hozzáférésű Jogosultságkód használatáról további útmutatóért lásd: [bemutatása tábla SAS (közös hozzáférésű Jogosultságkód), várólista SAS és a Blobokra vonatkozó SAS - a Microsoft Azure Storage csapat blogja - update webhely kezdőlap - MSDN blogok](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx).
 
 ### <a name="solution"></a>Megoldás
-Távolítsa el az utasítást, amely beállítja a megosztott elérési házirend kezdési idejét. Az Azure kód elemző eszköz biztosít egy javítást a probléma. A biztonsági felügyelet további információkért lásd: a kialakítási mintában [Valet kulcs mintát](https://msdn.microsoft.com/library/dn568102.aspx).
+Távolítsa el az utasítást, amely beállítja a megosztott elérési házirend kezdési idejét. Az Azure kód elemző eszközt biztosít a javítás erre a problémára. Biztonságkezelés további információkért tekintse meg a kialakítási mintában [Pótkulcs minta](https://msdn.microsoft.com/library/dn568102.aspx).
 
-A következő kódrészletet mutatja be a kódját a hiba javítása.
+A következő kódrészlet azt mutatja be a kódot a probléma javítása.
 
 ```
 // The shared access policy provides  
@@ -293,24 +294,24 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 });
 ```
 
-## <a name="shared-access-policy-expiry-time-must-be-more-than-five-minutes"></a>Megosztott hozzáférési házirend lejárati idő több mint öt perc kell lennie.
+## <a name="shared-access-policy-expiry-time-must-be-more-than-five-minutes"></a>Megosztott hozzáférési szabályzat lejárati idő több mint öt perc alatt kell lennie.
 ### <a name="id"></a>ID (Azonosító)
 AP3002
 
 ### <a name="description"></a>Leírás
-Lehet, mint amennyit az órák miatt egy "óra eltérésére." néven ismert különböző helyeken adatközpontok között eltérés öt perc A biztonsági Társítások megelőzése érdekében házirend jogkivonat lejárjanak korábbi, mint a tervezett és a lejárati idő több mint öt perc állítsa be.
+Lehet, mint amennyit az órák "óra torzulása." néven ismert feltétel miatt különböző helyeken lévő adatközpontok között eltérés öt perc Hogy a SAS lejárjanak a házirend jogkivonat-esnél korábbi tervezett, állítsa a lejárati idő több mint öt perc alatt.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-A világ különböző helyeken adatközpontok egy órajel szinkronizálni. A különböző helyekre továbbítani órajel időt vesz igénybe, mert lehet a különböző földrajzi helyen adatközpontokat közötti idő eltérés Bár minden támaszkodnak szinkronizálva. Ez eltérést hatással lehet a megosztott hozzáférési házirend kezdési időt és a lejárati időközt. Ezért győződjön meg arról, megosztott hozzáférési házirend azonnal érvénybe lép, nem adja meg a kezdési időpontot. Emellett ellenőrizze, hogy a lejárati idő több mint 5 perc korai időtúllépés megelőzése érdekében.
+A világ különböző pontjain különböző helyeken lévő adatközpontokban óra jel szinkronizálni. Mivel némi időre a órajel továbbítani a különböző helyeken, lehetnek a különböző földrajzi helyen lévő adatközpontok közötti idő eltérés Bár mindent szoftverként szinkronizálva van. Ez eltérést hatással lehet a megosztott hozzáférési szabályzat kezdési időt és a lejárati időköz. Ezért annak érdekében, hogy a megosztott hozzáférési szabályzat azonnal érvénybe lép, ne adja meg a kezdő időpont. Emellett ellenőrizze, hogy a lejárati idő több mint 5 perc korai időtúllépési elkerülése érdekében.
 
-Az Azure storage közös hozzáférésű Jogosultságkód használatával kapcsolatos további információkért lásd: [bevezetéséről tábla SAS (közös hozzáférésű Jogosultságkód), üzenetsor SAS és a frissítést a Blob SAS - Microsoft Azure tárolás fejlesztői Blog - hely kezdőlap - MSDN-blogok](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx).
+Az Azure storage közös hozzáférésű Jogosultságkód használatával kapcsolatos további információkért lásd: [bemutatása tábla SAS (közös hozzáférésű Jogosultságkód), várólista SAS és a Blobokra vonatkozó SAS - a Microsoft Azure Storage csapat blogja - update webhely kezdőlap - MSDN blogok](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx).
 
 ### <a name="solution"></a>Megoldás
-Biztonságkezelés további információkért tekintse meg a kialakítási mintában [Valet kulcs mintát](https://msdn.microsoft.com/library/dn568102.aspx).
+Biztonságkezelés további információkért lásd: a kialakítási mintában [Pótkulcs minta](https://msdn.microsoft.com/library/dn568102.aspx).
 
-Nem adja meg a megosztott hozzáférési házirend kezdő időpont példát a következő:
+Az alábbiakban látható egy példa nem adja meg a megosztott hozzáférési szabályzat kezdési időt.
 
 ```
 // The shared access policy provides  
@@ -325,7 +326,7 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 });
 ```
 
-A megosztott hozzáférési házirend kezdési idő megadása öt percnél nagyobb házirend lejárati időtartammal rendelkező példát a következő:
+Az alábbiakban látható egy példa az öt percnél nagyobb házirend lejárati időtartam kezdési idő megosztott hozzáférési szabályzat megadása.
 
 ```
 // The shared access policy provides  
@@ -341,26 +342,26 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 });
 ```
 
-További információkért lásd: [létrehozhat és használhat egy közös hozzáférésű Jogosultságkód](https://msdn.microsoft.com/library/azure/jj721951.aspx).
+További információkért lásd: [hozhat létre és használhat egy közös hozzáférésű Jogosultságkód](https://msdn.microsoft.com/library/azure/jj721951.aspx).
 
 ## <a name="use-cloudconfigurationmanager"></a>CloudConfigurationManager használata
 ### <a name="id"></a>ID (Azonosító)
 AP4000
 
 ### <a name="description"></a>Leírás
-Használja a [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager\(v=vs.110\).aspx) projektek osztály, például az Azure Websites és az Azure mobile services nem vezetnek be futásidejű problémákat. Ajánlott eljárásként, azonban célszerű a felhő használandó[ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager\(v=vs.110\).aspx) minden Azure felhőalapú alkalmazásokhoz konfigurációk kezelése egyesített módja.
+Használatával a [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager\(v=vs.110\).aspx) osztály projektek, mint például az Azure-webhely és az Azure mobilszolgáltatások nem vezetnek be memóriafelhasználás problémákat. Ajánlott eljárásként, azonban jó ötlet Felhőbeli használandó[ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager\(v=vs.110\).aspx) egységes adtuk meg, az összes Azure-felhőalkalmazások konfigurációk kezelése.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-CloudConfigurationManager olvassa be a konfigurációs fájl megfelelő az alkalmazás-környezetbe.
+CloudConfigurationManager beolvassa a konfigurációs fájl megfelelő az alkalmazás-környezetbe.
 
 [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx)
 
 ### <a name="solution"></a>Megoldás
-A kód használatához refactor a [CloudConfigurationManager osztály](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx). Az Azure kód elemző eszköz a kód a hiba javítása biztosítja.
+Refaktorovat a kódot, és használja a [CloudConfigurationManager osztály](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx). A kód a probléma javítása az Azure kód elemző eszköz által biztosított.
 
-A következő kódrészletet mutatja be a kódját a hiba javítása. Csere
+A következő kódrészlet azt mutatja be a kódot a probléma javítása. Csere
 
 `var settings = ConfigurationManager.AppSettings["mySettings"];`
 
@@ -368,7 +369,7 @@ a következővel:
 
 `var settings = CloudConfigurationManager.GetSetting("mySettings");`
 
-Íme egy példa egy App.config vagy a Web.config fájlban tárolhatja a konfigurációs beállítás. A beállítások hozzáadása a konfigurációs fájl appSettings szakaszában. Az előző példakódban a Web.config fájlban a következő:
+Íme egy példa bemutatja, hogyan egy App.config vagy a Web.config fájlban tárolhatja a konfigurációs beállítás. Adja hozzá az appSettings szakaszt a konfigurációs fájl a beállításokat. Az előző példakódban a Web.config fájlt a következő:
 
 ```
 <appSettings>
@@ -380,68 +381,68 @@ a következővel:
   </appSettings>  
 ```
 
-## <a name="avoid-using-hard-coded-connection-strings"></a>Kerülje a kódolt kapcsolati karakterláncok
+## <a name="avoid-using-hard-coded-connection-strings"></a>Kerülje a szokott kapcsolati karakterláncok
 ### <a name="id"></a>ID (Azonosító)
 AP4001
 
 ### <a name="description"></a>Leírás
-Ha a kódolt kapcsolati karakterláncokat használ, és azokat később frissíteni kell, összekapcsolta módosítja a forráskódot, és fordítsa újra az alkalmazást. Azonban ha egy konfigurációs fájlban tárolja a kapcsolati karakterláncokat, később bármikor módosíthatja azokat a konfigurációs fájl egyszerűen frissítésével.
+Változtatható kapcsolati karakterláncokat használ, és később frissíteni kell, ha módosítja a forráskódot, és az alkalmazás újrafordítottuk fog rendelkezik. Azonban ha a kapcsolati karakterláncokat tárolja a konfigurációs fájlban, módosíthatja őket később egyszerűen a konfigurációs fájl frissítésével.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-Rögzített megadás kapcsolati karakterláncok a hibás célszerű, mert problémák amikor kapcsolati karakterláncok gyorsan módosítani kell. Emellett a projekt van szüksége verziókövetési rendszerrel ellenőrizni kell, ha kódolt kapcsolati karakterláncok vezethet biztonsági rések óta a karakterláncok a forráskód lehet megtekinteni.
+Fix kódolása kapcsolati karakterláncok egy rossz ajánlott, mert problémák, ha a kapcsolati karakterláncok gyorsan módosítani kell. Ezenkívül ha a projekt kell jelölni a forráskezelőhöz, változtatható kapcsolati karakterláncok vezeti be biztonsági rések óta a karakterláncok tekinthet meg a forráskódban.
 
 ### <a name="solution"></a>Megoldás
-Kapcsolati karakterláncok tárolni a konfigurációs fájlok vagy az Azure környezetben.
+Kapcsolati karakterláncok Store a konfigurációs fájlok vagy az Azure környezetben.
 
-* Az önálló alkalmazások app.config segítségével tárolja a kapcsolódási karakterlánc beállításainak.
-* IIS kiszolgálón futó webes alkalmazásokhoz a web.config használatával kapcsolati karakterláncok tárolni.
-* Az ASP.NET-alkalmazások vNext configuration.json segítségével kapcsolati karakterláncok tárolni.
+* Különálló alkalmazások esetében használni app.config kapcsolatikarakterlánc-beállításokat.
+* IIS kiszolgálón futó webalkalmazások esetén használja a web.config kapcsolati karakterláncok tárolásához.
+* Az ASP.NET-alkalmazások vNext használja a configuration.json kapcsolati karakterláncok tárolásához.
 
-Konfigurációk fájlok – például a web.config vagy az App.config fájlt használatáról információkért lásd: [ASP.NET webes beállítási útmutatója](https://msdn.microsoft.com/library/vstudio/ff400235\(v=vs.100\).aspx). Az Azure környezeti változók munkahelyi információkért lásd: [webhelyek Azure: hogyan alkalmazás karakterláncok és a kapcsolati karakterláncok működik](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/). A kapcsolati karakterlánc tárolása verziókezelő információkért lásd: [ne tegye a bizalmas adatokat például kapcsolati karakterláncok forráskódraktárban tárolt fájlok](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control).
+Konfigurációk fájlok, például a web.config vagy az App.config fájlt használatáról további információért lásd: [ASP.NET webes beállítási útmutatója](https://msdn.microsoft.com/library/vstudio/ff400235\(v=vs.100\).aspx). Információ az Azure környezeti változók működése: [Azure-webhelyek: alkalmazás-karakterláncok és a kapcsolati karakterláncok működik](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/). A kapcsolati karakterlánc tárolása verziókövetési rendszerben További információkért lásd: [ne tegye a bizalmas adatokat, például kapcsolati karakterláncokat a forráskód tárházából a tárolt fájlok](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control).
 
-## <a name="use-diagnostics-configuration-file"></a>Diagnosztika konfigurációs fájl használata
+## <a name="use-diagnostics-configuration-file"></a>Diagnosztikai konfigurációs fájl
 ### <a name="id"></a>ID (Azonosító)
 AP5000
 
 ### <a name="description"></a>Leírás
-Diagnosztikai beállítások konfigurálására a kódban, többek között a Microsoft.WindowsAzure.Diagnostics programozási API használatával, konfigurálnia kell az diagnosztikai beállítások a diagnostics.wadcfg fájlban. (Vagy, ha Azure SDK 2.5 diagnostics.wadcfgx). Ezzel az eljárással módosíthatja diagnosztikai beállítások nem kell fordítani a kódot.
+Diagnosztikai beállítások konfigurálására a kódban, mint például a Microsoft.WindowsAzure.Diagnostics programozási API használatával, konfigurálnia kell az diagnosztikai beállítások a diagnostics.wadcfg fájlban. (Vagy, ha az Azure SDK 2.5-ös diagnostics.wadcfgx). Ezzel az eljárással módosíthatja a diagnosztikai beállítások nélkül kell fordítani a kódot.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-Mielőtt az Azure SDK 2.5-ös (amely az Azure diagnostics 1.3), Azure Diagnostics (ÜVEGVATTA) sikerült konfigurálni a számos különböző módszer használatával: hozzáadná a konfiguráció blob Storage, feltétlenül szükséges kódot, deklaratív konfigurációs vagy az alapértelmezett használatával konfiguráció. Azonban az előnyben részesített diagnosztika konfigurálása módja az XML konfigurációs fájl (diagnostics.wadcfg vagy diagnositcs.wadcfgx SDK 2.5 és újabb) az alkalmazás projektben. Ezt a módszert használja, a diagnostics.wadcfg fájl teljesen konfigurációját és frissíthető és újra telepíteni fogja a. A diagnostics.wadcfg konfigurációs fájl használatának keverése kell beállítania a konfigurációk használatával programozott módon a [DiagnosticMonitor](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.diagnosticmonitor.aspx)vagy [RoleInstanceDiagnosticManager](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.management.roleinstancediagnosticmanager.aspx)osztályokat is zavart okozhat. Lásd: [inicializálása vagy Azure Diagnostics konfigurációjának módosítása](https://msdn.microsoft.com/library/azure/hh411537.aspx) további információt.
+Mielőtt az Azure SDK 2.5-ös (amely az Azure diagnostics 1.3-as), az Azure Diagnostics (WAD) sikerült konfigurálni a számos különböző módszer használatával: hozzáadná a konfiguráció blob storage, az imperatív kódok, deklaratív konfigurációs vagy az alapértelmezett használatával konfiguráció. Viszont az előnyben részesített módja diagnosztika konfigurálása, hogy az XML konfigurációs fájl (diagnostics.wadcfg vagy diagnositcs.wadcfgx SDK 2.5-ös és újabb verziók) az alkalmazás-projektben. Ebben a megközelítésben az diagnostics.wadcfg fájl teljesen konfigurációját és is frissíthetők és újratelepítése, majd. A diagnostics.wadcfg konfigurációs fájl használatát keverni a konfigurációk beállítása használatával a programozott módszerekkel a [DiagnosticMonitor](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.diagnosticmonitor.aspx)vagy [RoleInstanceDiagnosticManager](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.management.roleinstancediagnosticmanager.aspx)osztályokat is zavart okozhat. Lásd: [inicializálása vagy az Azure Diagnostics konfigurációjának módosítása](https://msdn.microsoft.com/library/azure/hh411537.aspx) további információt.
 
-(Az Azure SDK 2.5 része) ÜVEGVATTA 1.3 kezdve már nem használható kód diagnosztika konfigurálása. Ennek eredményeképpen csak biztosíthat a konfigurációban, ha az alkalmazása vagy a diagnosztika-bővítmény frissítése.
+(Az Azure SDK 2.5-ös része) WAD 1.3-tól kezdve már nem használható kódot a diagnosztika való konfigurálásához. Ennek eredményeképpen csak biztosíthat a konfiguráció alkalmazása, vagy a diagnosztika bővítmény frissítése közben.
 
 ### <a name="solution"></a>Megoldás
-A diagnosztika configuration designer segítségével diagnosztikai beállítások áthelyezése a diagnosztika konfigurációs fájl (diagnositcs.wadcfg vagy diagnositcs.wadcfgx SDK 2.5 és újabb). Emellett ajánlott telepíteni [Azure SDK 2.5](http://go.microsoft.com/fwlink/?LinkId=513188) és diagnosztika szolgáltatás legújabb verziója.
+A diagnosztika konfigurációtervező használata a diagnosztikai beállítások áthelyezése a diagnosztikai konfigurációs fájl (diagnositcs.wadcfg vagy diagnositcs.wadcfgx SDK 2.5-ös és újabb verziók). Emellett ajánlott telepíteni [Azure SDK 2.5-ös](http://go.microsoft.com/fwlink/?LinkId=513188) és a legújabb diagnosztikai szolgáltatás használata.
 
-1. A helyi menüben a konfigurálni kívánt szerepkör esetében válassza a tulajdonságok, és kattintson a konfiguráció lapon.
-2. Az a **diagnosztika** területen győződjön meg arról, hogy a **engedélyezése diagnosztikai** jelölőnégyzet be van jelölve.
+1. A helyi menüben a szerepkörhöz, amelyet konfigurálni szeretne válassza a Tulajdonságok elemet, és válassza a konfiguráció lapon.
+2. Az a **diagnosztikai** területén ellenőrizze, hogy a **diagnosztika engedélyezése** jelölőnégyzet be van jelölve.
 3. Válassza ki a **konfigurálása** gombra.
 
    ![A diagnosztika engedélyezése beállítás elérése](./media/vs-azure-tools-optimizing-azure-code-in-visual-studio/IC796660.png)
 
-   Lásd: [diagnosztika konfigurálása az Azure Cloud Services és a virtuális gépek](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) további információt.
+   Lásd: [diagnosztika beállítása az Azure Cloud Services és Virtual Machines](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) további információt.
 
-## <a name="avoid-declaring-dbcontext-objects-as-static"></a>Kerülje a DbContext objektumokat statikus deklaráló
+## <a name="avoid-declaring-dbcontext-objects-as-static"></a>Kerülje a DbContext objektum statikus deklaráló
 ### <a name="id"></a>ID (Azonosító)
 AP6000
 
 ### <a name="description"></a>Leírás
-A memóriahasználat, ne a deklaráló statikus DBContext objektumokat.
+A memóriahasználat, kerülje a DBContext objektum statikus deklaráló.
 
-Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ossza meg az ötletek és a visszajelzések [Azure kód elemzési visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-DBContext objektumok minden hívás a lekérdezés eredményeinek tárolásához. Statikus DBContext objektumok nem értékesítik, amíg az alkalmazástartomány eltávolítva. Ezért a statikus DBContext objektum nagy mennyiségű memóriát is felhasználhatnak.
+DBContext objektum tartsa a lekérdezés eredményeit az egyes hívások. Statikus DBContext objektum nem értékesítik, amíg az alkalmazás tartománya a memóriából. Ezért egy statikus DBContext objektum nagy mennyiségű memóriát használ.
 
 ### <a name="solution"></a>Megoldás
-DBContext deklarálható lokális változó vagy nem statikus mezőn, a feladat használni, és engedélyezze azt követően ártalmatlanítani.
+DBContext deklaráljon egy helyi változóhoz vagy Pole instance nem statikus, használhatja azt egy feladatot, és majd biztosítani, hogy a használat után kell értékesíteni.
 
-Az alábbi példa MVC-vezérlő osztályhoz bemutatja, hogyan használja a DBContext objektumot.
+Az alábbi példa MVC vezérlőosztály bemutatja, hogyan használhatja a DBContext objektum.
 
 ```
 public class BlogsController : Controller
@@ -466,4 +467,4 @@ public class BlogsController : Controller
 ```
 
 ## <a name="next-steps"></a>További lépések
-Optimalizálás, és tájékozódhat hibaelhárítása az Azure-alkalmazások súgójának [hibaelhárítása a webes alkalmazás az Azure App Service szolgáltatásban a Visual Studio használatával](app-service/web-sites-dotnet-troubleshoot-visual-studio.md).
+További információ optimalizálás és az Azure-alkalmazások hibáinak elhárítása kapcsolatban lásd: [-webalkalmazás létrehozása az Azure App Service-ben a Visual Studio használatával hibaelhárítása](app-service/web-sites-dotnet-troubleshoot-visual-studio.md).

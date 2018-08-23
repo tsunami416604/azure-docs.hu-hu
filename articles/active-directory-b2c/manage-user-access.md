@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 15bc320bd82ea21ff608fcc834ba51b9bc7b6dea
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716144"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054500"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói hozzáférés felügyelete
 
@@ -46,7 +46,7 @@ Szülői beleegyezési alkalmazás rendelet, függően szükség lehet a felnőt
 
 A következő egy felhasználói folyamat szülői beleegyezési ötvözve egy példát:
 
-1. Egy [Azure Active Directory Graph API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) művelet a felhasználó egy kisebb azonosítja, és a felhasználói adatokat ad vissza az alkalmazás egy előjel nélküli JSON-jogkivonat formájában.
+1. Egy [Azure Active Directory Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) művelet a felhasználó egy kisebb azonosítja, és a felhasználói adatokat ad vissza az alkalmazás egy előjel nélküli JSON-jogkivonat formájában.
 
 2. Az alkalmazás dolgozza fel a JSON-jogkivonatot, és a képernyő látható, a kisebb értesíteni az őt szülői hozzájárulásra szükség, és a hozzájárulás kérése egy szülő online. 
 
@@ -56,7 +56,7 @@ A következő egy felhasználói folyamat szülői beleegyezési ötvözve egy p
 
 5. A kisebb vagy a felnőtt visszavonja a hozzájárulását, amikor az Azure AD Graph API segítségével módosíthatja **consentProvidedForMinor** való **megtagadva**. Az alkalmazás választhatja azt is megteheti, törölni egy kisebb, amelynek hozzájárulási byl odvolán. Úgy is igény szerint testre szabhatja a felhasználói folyamatot, hogy a hitelesített (vagy szülő által használt fiók a kisebb) kisebb vissza tudja vonni hozzájárulását. Az Azure AD B2C-rekordok **consentProvidedForMinor** , **megtagadva**.
 
-További információ **legalAgeGroupClassification**, **consentProvidedForMinor**, és **korcsoport**, lásd: [felhasználói erőforrás típusa](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/user). Egyéni attribútumok kapcsolatos további információkért lásd: [egyéni attribútumok használata a felhasználók adatainak gyűjtésére](active-directory-b2c-reference-custom-attr.md). Kiterjesztett attribútumok oldja meg az Azure AD Graph API-val, amikor például kell használnia az attribútum a hosszú verzió *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+További információ **legalAgeGroupClassification**, **consentProvidedForMinor**, és **korcsoport**, lásd: [felhasználói erőforrás típusa](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Egyéni attribútumok kapcsolatos további információkért lásd: [egyéni attribútumok használata a felhasználók adatainak gyűjtésére](active-directory-b2c-reference-custom-attr.md). Kiterjesztett attribútumok oldja meg az Azure AD Graph API-val, amikor például kell használnia az attribútum a hosszú verzió *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-country-data"></a>Gyűjtse össze a születési idő és az ország-adatok dátuma
 

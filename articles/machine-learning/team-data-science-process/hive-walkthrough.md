@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 556a7d9d921e0f2307445f8f6738b9b845c83112
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ff4daf350783e02141a6afea815165ccecfe0116
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006597"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059182"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: használata Azure HDInsight Hadoop-fürtök
 Ez az útmutató használjuk a [csoportos adatelemzési folyamat (TDSP)](overview.md) egy teljes körű forgatókönyvben. Használjuk egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolását, ismerje meg, és a nyilvánosan elérhető a szolgáltatás-mérnök adatainak [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet, és való az adatokat. Bináris és többosztályos besorolási és regressziós prediktív feladatok kezelésére, hogy ki, hogy az adatok az Azure Machine Learning modellek. 
@@ -75,7 +75,7 @@ Határozza meg, és az előrejelzések azt szeretné, hogy milyen adatok elemzé
 
 Beállíthatja a speciális elemzésekhez, amely egy HDInsight-fürtöt három lépésben alkalmaz az Azure-környezet:
 
-1. [Hozzon létre egy tárfiókot](../../storage/common/storage-create-storage-account.md): ezt a tárfiókot az Azure Blob storage-adatok tárolására szolgál. A HDInsight-fürtök használt adatokat is itt található.
+1. [Hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md): ezt a tárfiókot az Azure Blob storage-adatok tárolására szolgál. A HDInsight-fürtök használt adatokat is itt található.
 2. [Az Azure HDInsight Hadoop-fürtök testreszabása a fejlett analitikai folyamat és technológia](customize-hadoop-cluster.md). Ebben a lépésben létrehoz egy HDInsight Hadoop-fürt összes csomópontjára telepítse a 64 bites Anaconda Python 2.7. Ne feledje, a HDInsight-fürt testreszabása során két fontos lépésből áll.
    
    * Ne feledje, a storage-fiók létrehozásakor, a HDInsight-fürt az 1. lépésben létrehozott. Ehhez a tárfiókhoz fér hozzá a fürtön belül feldolgozott adatok.

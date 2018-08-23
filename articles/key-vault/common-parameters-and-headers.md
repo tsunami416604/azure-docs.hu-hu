@@ -1,9 +1,9 @@
 ---
-title: Közös paraméterek és fejlécek
-description: A paraméterek és az összes művelethez, akkor lehet hasznos, Key Vault erőforrásokkal kapcsolatos gyakori fejlécek.
+title: Gyakori paraméterek és fejlécek
+description: A paraméterek és minden művelet, amely akkor lehet hasznos, a Key Vault-erőforrásra való közös fejlécet.
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed9400fb15b
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: ead1ac550c9b7c489edefd35d5672a9955e78255
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: bryanla
+ms.openlocfilehash: a319dc670b5b1dab163b2d3aa623fc4fb9ce1c3a
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012098"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055513"
 ---
-# <a name="common-parameters-and-headers"></a>Közös paraméterek és fejlécek
+# <a name="common-parameters-and-headers"></a>Gyakori paraméterek és fejlécek
 
-A következő információkat az összes művelethez, akkor lehet hasznos, Key Vault erőforrásokkal kapcsolatos gyakori:
+Minden művelet, amely akkor lehet hasznos, a Key Vault-erőforrásra szokás a következő információkat:
 
-- Cserélje le `{api-version}` URI azonosítójában lévő api-version paraméterrel.
-- Cserélje le `{subscription-id}` az előfizetés az URI azonosítóval
-- Cserélje le `{resource-group-name}` az erőforrás-csoporttal. További információkért lásd: erőforráscsoportok használata az Azure erőforrások kezeléséhez.
-- Cserélje le `{vault-name}` a kulcstartót nevű az URI azonosító.
-- Az application/json a Content-Type fejléc értéke.
-- Az engedélyezési fejléc értéke egy JSON Web Token beszerezni az Azure Active Directory (AAD). További információkért lásd: [hitelesítéséhez az Azure Resource Manager](authentication-requests-and-responses.md) kérelmeket.
+- Cserélje le `{api-version}` az URI-t az api-verzióval rendelkező.
+- Cserélje le `{subscription-id}` az az előfizetés-azonosító, az URI-ban
+- Cserélje le `{resource-group-name}` az erőforráscsoport. További információkért lásd: erőforráscsoportok használata az Azure-erőforrások kezeléséhez.
+- Cserélje le `{vault-name}` a kulcstartó nevére, az URI-ban.
+- A Content-Type fejléc beállítása az application/json.
+- Az engedélyezési fejléc beállítása a JSON Web Token, hogy az Azure Active Directory (AAD). További információkért lásd: [hitelesítése az Azure Resource Manager](authentication-requests-and-responses.md) kérelmeket.
 
-## <a name="common-error-response"></a>Közös hibaválaszba
-A szolgáltatás által használt HTTP-állapotkódok sikerességet vagy sikertelenséget jelző. Ezenkívül hibák tartalmazzák a válasz a következő formátumban:
+## <a name="common-error-response"></a>Gyakori hiba válasz
+A szolgáltatás által használt HTTP-állapotkódok sikerességét vagy sikertelenségét jelzi. Emellett a hibák választ a következő formátumban tartalmazza:
 
    {  
-     "error": {  
-     "kód": "BadRequest"  
-     "az üzenet": "a kulcstartót termékváltozata érvénytelen."  
+     "error": {}  
+     "code": "BadRequest",  
+     "message": "a kulcstartó termékváltozata érvénytelen."  
      }  
    }  
 
 |Elem neve | Típus | Leírás |
 |---|---|---|
-| Kód | karakterlánc | Hiba történt a típusa.|
-| message | karakterlánc | A hiba okáról leírása. |
+| Kód | sztring | Hiba történt a típusa.|
+| message | sztring | Mi okozta a hibát leírása. |
 
 
 

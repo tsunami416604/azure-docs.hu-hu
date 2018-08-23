@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 4c368c3f06347b1164731d056a7341bdabb759b4
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: b368bf76516b0b6f87ad8ff57ca886a44b71926c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34837344"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055551"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – használatával egy Azure HDInsight Hadoop-fürt az 1 TB-os adatkészlet
 
@@ -64,7 +64,7 @@ Ez a forgatókönyv két minta előrejelzési problémák foglalkozik:
 
 A prediktív elemzési megoldások fejlesztése a HDInsight-fürtök három lépésben az Azure Data Science környezet beállítása:
 
-1. [Hozzon létre egy tárfiókot](../../storage/common/storage-create-storage-account.md): ezt a tárfiókot az Azure Blob Storage-adatok tárolására szolgál. Itt a HDInsight-fürtök használt adatokat tárolja.
+1. [Hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md): ezt a tárfiókot az Azure Blob Storage-adatok tárolására szolgál. Itt a HDInsight-fürtök használt adatokat tárolja.
 2. [Az Azure HDInsight Hadoop-fürtök testreszabása adatelemzéshez](customize-hadoop-cluster.md): Ebben a lépésben létrehoz egy Azure HDInsight Hadoop-fürt összes csomópontjára telepítse a 64 bites Anaconda Python 2.7. Nincsenek (ebben a témakörben ismertetett) két fontos lépést a HDInsight-fürt testreszabása hajthatja végre.
    
    * A storage-fiók létrehozásakor a HDInsight-fürt az 1. lépésben létrehozott kell kapcsolni. Ehhez a tárfiókhoz való hozzáféréshez szükséges adatokat a fürtön belül feldolgozható szolgál.

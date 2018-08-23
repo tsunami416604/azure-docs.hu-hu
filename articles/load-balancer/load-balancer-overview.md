@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 08/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: b6547bee13d039dcd34377565eb518eeb6739a38
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 47509cd0a9208f41a52bf1a07c460bcdda2cb479
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480901"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060852"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az Azure Load Balancer?
 
@@ -44,7 +44,7 @@ Használhatja az Azure Load Balancerrel együttműködve:
 
 
 >[!NOTE]
-> Az Azure teljes körűen felügyelt terheléselosztási megoldások együttese a használati eseteihez biztosít. Ha a Transport Layer Security (TLS) protokoll lezárást ("SSL-alapú kiszervezéshez") vagy a száma – HTTP/HTTPS-kérést, az alkalmazásréteg-feldolgozási keres, tekintse át [Application Gateway](../application-gateway/application-gateway-introduction.md). Ha a globális DNS-terheléselosztás, tekintse át [Traffic Manager](../traffic-manager/traffic-manager-overview.md). A végpontok közötti forgatókönyvek előnye származhat ezekkel a megoldásokkal kombinálva, igény szerint.
+> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha Transport Layer Security (TLS) protokoll-lezárást („SSL-kiszervezés”) vagy per-HTTP/HTTPS kérelmeket vagy alkalmazásréteg-feldolgozást keres, tekintse át az [Application Gatewayt](../application-gateway/application-gateway-introduction.md) ismertető cikket. Ha a globális DNS-terheléselosztás, tekintse át [Traffic Manager](../traffic-manager/traffic-manager-overview.md). A végpontok közötti forgatókönyvek esetében előnyt jelenthet ezen megoldások igény szerinti kombinációja.
 
 ## <a name="what-are-load-balancer-resources"></a>Mik a load balancer-erőforrások?
 
@@ -86,15 +86,11 @@ Load Balancer a TCP és UDP-alkalmazások esetén az alábbi alapvető képessé
 
 * **Állapotadat-mintavételek**
 
-     Annak megállapításához, a háttérkészletben példányok állapotát, a terheléselosztó állapot-mintavételei, Ön által meghatározott használja. Ha egy mintavételező nem válaszol, akkor a terheléselosztó nem küld új kapcsolatokat a nem megfelelő állapotú példányokat. Meglévő kapcsolatok nem változnak, és akkor is, amíg az alkalmazás leállítja a folyamatot, egy üresjárati időtúllépés történik, vagy a virtuális gép leállt.
+    Annak megállapításához, a háttérkészletben példányok állapotát, a terheléselosztó állapot-mintavételei, Ön által meghatározott használja. Ha egy mintavételező nem válaszol, akkor a terheléselosztó nem küld új kapcsolatokat a nem megfelelő állapotú példányokat. Meglévő kapcsolatok nem változnak, és akkor is, amíg az alkalmazás leállítja a folyamatot, egy üresjárati időtúllépés történik, vagy a virtuális gép leállt.
+     
+    Load Balancer biztosít [különböző egészségügyi mintavételi típusok](load-balancer-custom-probe-overview.md#types) a TCP, HTTP vagy HTTPS-végpontokat.
 
-    Mintavételezők három típusát támogatja:
-
-    - **Egyéni HTTP-mintavétel**: Ez a Hálózatfigyelő segítségével hozzon létre saját egyéni logikát meghatározni egy háttérkészletpéldányt állapotát. A load balancer rendszeresen mintavételek a végpont (alapértelmezés szerint minden 15 másodperc). A példány állapota megfelelő, ha az időkorlát (alapértelmezés szerint 31 másodperc) belül, válaszol egy HTTP 200 lesz számít. Bármilyen állapot eltérő 200-as HTTP hatására a mintavétel meghiúsul. Ez a Hálózatfigyelő is hasznos, távolítsa el a terheléselosztó Elforgatás példányait saját logika megvalósítása. Konfigurálhatja például, a példány visszatérési nem 200 állapotot, ha a példány nagyobb, mint 90 %-os Processzor.  Ez a Hálózatfigyelő felülbírálja az alapértelmezett Vendég ügynök mintavétel.
-
-    - **Egyéni mintavétel TCP**: Ez a Hálózatfigyelő támaszkodik egy meghatározott mintavételi port sikeres TCP munkamenetet. Mindaddig, amíg a virtuális gép a megadott figyelő létezik, a teszt sikeres. Ha a kapcsolat elutasítják, a mintavétel meghiúsul. Ez a Hálózatfigyelő felülbírálja az alapértelmezett Vendég ügynök mintavétel.
-
-    - **Vendég ügynök mintavétele**: A terheléselosztó is igénybe vehetik a vendégügynököt a virtuális Gépen belül. A vendégügynök figyeli, és válaszol egy HTTP 200 OK válasz csak akkor, ha a példány a kész állapotban van. Az ügynök nem válaszol egy HTTP 200 OK az, ha a terheléselosztó jelöli meg a példány nem válaszol, és nem irányít több forgalmat-példányhoz. A load balancer próbálják elérni a példány továbbra is. Ha a vendégügynök válaszol egy HTTP 200-as, a terheléselosztó forgalmat küld példányhoz újra. Vendég ügynök mintavételek vannak egy _utolsó mentsvára, és nem javasolt_ mikor HTTP vagy TCP-mintavétel egyéni konfigurációk lehetségesek. 
+    Ezenkívül klasszikus a cloud services használata esetén egy további típusa engedélyezett: [vendégügynök](load-balancer-custom-probe-overview.md#guestagent).  Ez kell lennie, fontolja meg az állapotfigyelő mintavételező az utolsó mentsvára lennie, és nem ajánlott, amikor az egyéb lehetőségek is kivitelezhető.
     
 * **Kimenő kapcsolatok (SNAT)**
 
@@ -170,7 +166,7 @@ Standard Load Balancer SLA-ra vonatkozó további információért látogasson e
 ## <a name="limitations"></a>Korlátozások
 
 - Terheléselosztó, amely a TCP vagy UDP-terheléselosztás és porttovábbítást a konkrét IP-protokollt.  Terheléselosztási szabályok és bejövő NAT-szabályokat a TCP és UDP támogatott és más IP-protokollok, beleértve az ICMP esetében nem támogatott. Terheléselosztó nem zárja be, válaszol, vagy ellenkező esetben interaktívan UDP vagy TCP-folyamat a hasznos. Akkor sem proxy. Sikeres érvényesítésének feltétele lesz egy előtérbeli kapcsolatot végre kell hajtania sávon hely ugyanazt a protokollt egy terheléselosztási és bejövő NAT-szabályt (TCP vagy UDP) használt a _és_ a virtuális gépek legalább egyikének kell létrehozni a választ egy ügyfél számára Tekintse meg a frontend alhálózatból választ.  Sávon belüli választ nem fogad a terheléselosztó előtérbeli azt jelzi, hogy nincsenek olyan virtuális gépek is tud válaszolni.  Nem alkalmas a terheléselosztó előtérbeli nélkül tud válaszolni a virtuális gépek kezelése.  Ugyanez vonatkozik a kimenő kapcsolatok ahol [port helyettesítő SNAT](load-balancer-outbound-connections.md#snat) van csak a TCP és UDP; támogatott más IP-protokollok többek között az ICMP is sikertelenek lesznek.  Példányszintű nyilvános IP-címet hozzárendelni csökkentése érdekében.
-- Eltérően ez nyilvános Terheléselosztók [kimenő kapcsolatok](load-balancer-outbound-connections.md) átállás magánhálózati IP-címek a virtuális hálózaton belül, a nyilvános IP-címeket, ha belső Terheléselosztók nem fordítandó kimenő származik magánhálózati IP-címtér kapcsolatokat az előtér egy belső terheléselosztó is vannak.  Ezzel elkerülhető a lehetséges SNAT Erőforrásfogyás belül egyedi belső IP-címtér ahol fordítása nem kötelező.  A mellékhatása, hogy ha egy kimenő folyam a háttérkészletben virtuális gépből próbál egy folyamatot a belső terheléselosztó, mely a készletben található előtérbeli _és_ le van képezve vissza magát, a folyamat mindkét alsó nem felelnek meg, és a flow meghiúsulnak.  Ha a folyamat volt nem feleltethető meg vissza ugyanazon a háttérkészletben, amely létrehozta a folyamatot, az előtérbeli virtuális gép, a folyamat sikeres lesz.   Amikor a folyamat vissza magát a maps oly módon, hogy a virtuális gépek a frontend, megjelenik a kimenő folyam és oly módon, hogy a virtuális gép saját maga a megfelelő bejövő forgalom jelenik meg. A vendég operációs rendszer szempontjából a bejövő és kimenő részeit ugyanezt a folyamatot a virtuális gépen belül nem egyezik. A TCP protokollkészlet nem ismerik fel ezeket a feleket az adott adatfolyam részeként ugyanezt a folyamatot, a forrás- és nem egyeznek.  A folyamat bármely más virtuális Gépet a háttérkészletben képez le, amikor a folyamat a feleket egyezni fog, és a virtuális gép sikeresen válaszolhat a folyamatot.  Ebben a forgatókönyvben a jelenség nem állandó hálózati kapcsolat időtúllépésének. Is számos gyakori megoldás megbízhatóan elérése érdekében ez a forgatókönyv (a háttérkészlet, a háttérbeli készletek megfelelő belső Load Balancer előtérbeli folyamatok származó) vagy egy harmadik féltől származó proxy mögött a belső terheléselosztási beszúrási többek között A terheléselosztó vagy [DSR stílusszabályok használatával](load-balancer-multivip-overview.md).  Nyilvános Load Balancer csökkentése érdekében használhat, miközben a hibalehetőség-e az eredményül kapott forgatókönyv [SNAT Erőforrásfogyás](load-balancer-outbound-connections.md#snat) és el kell kerülni, kivéve, ha körültekintően felügyelt.
+- Eltérően ez nyilvános Terheléselosztók [kimenő kapcsolatok](load-balancer-outbound-connections.md) átállás magánhálózati IP-címek a virtuális hálózaton belül, a nyilvános IP-címeket, ha belső Terheléselosztók nem fordítandó kimenő származik magánhálózati IP-címtér kapcsolatokat az előtér egy belső terheléselosztó is vannak.  Ezzel elkerülhető a lehetséges SNAT portfogyás belül egyedi belső IP-címtér ahol fordítása nem kötelező.  A mellékhatása, hogy ha egy kimenő folyam a háttérkészletben virtuális gépből próbál egy folyamatot a belső terheléselosztó, mely a készletben található előtérbeli _és_ le van képezve vissza magát, a folyamat mindkét alsó nem felelnek meg, és a flow meghiúsulnak.  Ha a folyamat volt nem feleltethető meg vissza ugyanazon a háttérkészletben, amely létrehozta a folyamatot, az előtérbeli virtuális gép, a folyamat sikeres lesz.   Amikor a folyamat vissza magát a maps oly módon, hogy a virtuális gépek a frontend, megjelenik a kimenő folyam és oly módon, hogy a virtuális gép saját maga a megfelelő bejövő forgalom jelenik meg. A vendég operációs rendszer szempontjából a bejövő és kimenő részeit ugyanezt a folyamatot a virtuális gépen belül nem egyezik. A TCP protokollkészlet nem ismerik fel ezeket a feleket az adott adatfolyam részeként ugyanezt a folyamatot, a forrás- és nem egyeznek.  A folyamat bármely más virtuális Gépet a háttérkészletben képez le, amikor a folyamat a feleket egyezni fog, és a virtuális gép sikeresen válaszolhat a folyamatot.  Ebben a forgatókönyvben a jelenség nem állandó hálózati kapcsolat időtúllépése esetén ugyanarra a háttérrendszerre beszúrásra a folyamatot a flow adja vissza. Is számos gyakori megoldás megbízhatóan elérése érdekében ez a forgatókönyv (a háttérkészlet, a háttérbeli készletek megfelelő belső Load Balancer előtérbeli folyamatok származó) többek között a belső terheléselosztó mögötti proxy réteg vagy beszúrási vagy [DSR stílusszabályok használatával](load-balancer-multivip-overview.md).  Ügyfelek kombinálhatják egy belső Load Balancer bármilyen 3. fél proxy- vagy belső helyettesítő [Application Gateway](../application-gateway/application-gateway-introduction.md) korlátozódik, HTTP/HTTPS, proxy forgatókönyvek esetén. Nyilvános Load Balancer csökkentése érdekében használhat, miközben a hibalehetőség-e az eredményül kapott forgatókönyv [SNAT Erőforrásfogyás](load-balancer-outbound-connections.md#snat) és el kell kerülni, kivéve, ha körültekintően felügyelt.
 
 ## <a name="next-steps"></a>További lépések
 

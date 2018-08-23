@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 08/16/2018
 ms.author: byvinyal
-ms.openlocfilehash: 570eee6cc849c474cfeacf5a9ba1798f64f27183
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6b6e713c0da11a3d2c8cfbf388b84940a4542e95
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188075"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054090"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -35,7 +35,8 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 
 > [!NOTE]
 > Fontos kiemelni, hogy meg Azure-erőforráscsoport erőforrásokra vonatkozó kvótákat régiók szerinti az előfizetés által elérhető, és amelyek nem előfizetésenként, mivel a szolgáltatás felügyeleti kvótáit. Példaként használjuk a vCPU-kvóták. Ha szeretné a kvóta növelésére vcpu-k támogatását, döntse el, melyik régióban található, és végezze el az Azure-erőforráscsoport vCPU-kvóták egy adott kérés a összegek és a kívánt régióban szeretné hány vcpu-k szeretne. Ezért ha szüksége van az alkalmazás futtatásához használja a Nyugat-Európában 30 vcpu-k, kifejezetten igényeljen 30 vcpu-k Nyugat-Európában. Azonban nem fog tudni egy vCPU-kvóta bármelyik régióban növelése – csak Nyugat-Európa fog rendelkezni a 30-vCPU-kvóta.
-> <!-- --> Ennek eredményeképpen, előfordulhat, hogy érdemes figyelembe venni, mellett dönt, az Azure-erőforráscsoport kvóták kell lennie minden olyan egy adott régióban a számítási feladatok számára hasznos lehet, és minden régióban, amelybe a központi telepítési releváns, összeg kérelem. Lásd: [telepítési problémák elhárítása](resource-manager-common-deployment-errors.md) felderítése az adott régió esetében az aktuális kvótái további segítséget itt találhat.
+> <!-- -->
+> Ennek eredményeképpen, előfordulhat, hogy érdemes figyelembe venni, mellett dönt, az Azure-erőforráscsoport kvóták kell lennie minden olyan egy adott régióban a számítási feladatok számára hasznos lehet, és minden régióban, amelybe a központi telepítési releváns, összeg kérelem. Lásd: [telepítési problémák elhárítása](resource-manager-common-deployment-errors.md) felderítése az adott régió esetében az aktuális kvótái további segítséget itt találhat.
 >
 >
 
@@ -51,6 +52,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
+* [Azure Policy](#azure-policy-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Biztonsági mentés](#backup-limits)
 * [Batch](#batch-limits)
@@ -293,6 +295,9 @@ További kapcsolatos részletesebb szintű, például a dokumentumok méretétő
 
 ### <a name="azure-maps-limits"></a>Azure Maps-korlátozások
 [!INCLUDE [maps-limits](../includes/maps-limits.md)]
+
+### <a name="azure-policy-limits"></a>Az Azure Policy korlátozza.
+[!INCLUDE [policy-limits](../includes/azure-policy-limits.md)]
 
 ### <a name="storsimple-system-limits"></a>A StorSimple rendszer korlátok
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]

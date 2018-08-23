@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 4bcb6734c33d70e4045860a2c0f0acfedfa06eff
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 06905a2f16a23e5a7c4612f4b567aaf86322924d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215179"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42057242"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -57,7 +57,7 @@ Tervezze meg a felderítések és értékelések az alábbi korlátok alapján:
 
 | **Entitás** | **Gép korlátja** |
 | ---------- | ----------------- |
-| Projekt    | 1,500             |
+| Project    | 1,500             |
 | Detektálás  | 1,500             |
 | Értékelés | 1,500             |
 
@@ -75,7 +75,7 @@ Ha több vCenter-kiszolgálók a környezetében rendelkezik, és kevesebb mint 
 
 ### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>Több vCenter-kiszolgálók legfeljebb 1500 virtuális gépekkel
 
-Ha több vCenter-kiszolgálók a vCenter-kiszolgáló legfeljebb 1500 virtuális gépet, de több mint 1500 virtuális gépet minden vCenter proxykiszolgálójaként között, szeretne létrehozni (egy migrálási projekt csak 1500 virtuális gépet tartalmazhat) több migrálási projektet. Ez a migrálási projekt / vCenter-kiszolgáló létrehozásával, és a felderítések felosztás érheti el. Egyetlen gyűjtő használatával minden vCenter-kiszolgáló felderítése (egymás után). Ha azt szeretné, hogy egy időben elindítani a felderítéseket, is több berendezések üzembe helyezése és a felderítések párhuzamosan futnak.
+Ha több vCenter-kiszolgálók a vCenter-kiszolgáló legfeljebb 1500 virtuális gépet, de több mint 1500 virtuális gépet minden vCenter-kiszolgáló között, szeretne létrehozni (egy migrálási projekt csak 1500 virtuális gépet tartalmazhat) több migrálási projektet. Ez a migrálási projekt / vCenter-kiszolgáló létrehozásával, és a felderítések felosztás érheti el. Egyetlen gyűjtő használatával minden vCenter-kiszolgáló felderítése (egymás után). Ha azt szeretné, hogy egy időben elindítani a felderítéseket, is több berendezések üzembe helyezése és a felderítések párhuzamosan futnak.
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Több mint 1500 gépek egyetlen vCenter-kiszolgáló
 
@@ -93,8 +93,8 @@ Ha készen áll a csomagban, el is indíthatja a helyszíni virtuális gépek fe
 
 Az Azure Migrate-projekt létrehozása a követelményeinek megfelelően:
 
-1. Az Azure Portalon válassza ki a **erőforrás létrehozása**.
-2. Keressen az **Azure Migrate** kifejezésre, és válassza ki az **Azure Migrate (előzetes verzió)** elemet a keresési eredmények közül. Ezután kattintson a **Létrehozás** elemre.
+1. Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget.
+2. Keressen az **Azure Migrate** kifejezésre, és válassza ki az **Azure Migrate** elemet a keresési eredmények közül. Ezután kattintson a **Létrehozás** elemre.
 3. Adja meg a projekt nevét és az Azure-előfizetést a projekthez.
 4. Hozzon létre egy új erőforráscsoportot.
 5. Adja meg a helyét, amelyben a projekt létrehozásához, és válassza ki a kívánt **létrehozás**. Vegye figyelembe, hogy egy másik célhelyet a virtuális gépek továbbra is értékelhet. A projekt számára megadott helyen a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál.
@@ -199,14 +199,14 @@ Az alábbi táblázatban is megjeleníti az értékelések eredményeinek, ha eg
 
 | Számláló                                 | Szint | Az eszközszintű szint | Értékelés gyakorolt hatás                    |
 | --------------------------------------- | ----- | ---------------- | ------------------------------------ |
-| CPU.Usage.average                       | 1.     | n/a               | Javasolt Virtuálisgép-méretet és költség         |
-| mem.usage.average                       | 1.     | n/a               | Javasolt Virtuálisgép-méretet és költség         |
-| virtualDisk.read.average                | 2.     | 2.                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
-| virtualDisk.write.average               | 2.     | 2.                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
-| virtualDisk.numberReadAveraged.average  | 1.     | 3.                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
-| virtualDisk.numberWriteAveraged.average | 1.     | 3.                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
-| NET.Received.average                    | 2.     | 3.                | Virtuális gép mérete és a hálózati költség             |
-| NET.transmitted.average                 | 2.     | 3.                | Virtuális gép mérete és a hálózati költség             |
+| CPU.Usage.average                       | 1     | NA               | Javasolt Virtuálisgép-méretet és költség         |
+| mem.usage.average                       | 1     | NA               | Javasolt Virtuálisgép-méretet és költség         |
+| virtualDisk.read.average                | 2     | 2                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| virtualDisk.write.average               | 2     | 2                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| virtualDisk.numberReadAveraged.average  | 1     | 3                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| virtualDisk.numberWriteAveraged.average | 1     | 3                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| NET.Received.average                    | 2     | 3                | Virtuális gép mérete és a hálózati költség             |
+| NET.transmitted.average                 | 2     | 3                | Virtuális gép mérete és a hálózati költség             |
 
 > [!WARNING]
 > Csak statisztikai magasabb szintű állított be, ha tart naponta létrehozni a teljesítményszámlálókat. Ezért javasoljuk, hogy a felderítés futtatásakor egy nap elteltével.

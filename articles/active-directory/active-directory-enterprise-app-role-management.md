@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 08/10/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8bf7f18f8051f1647a86bbe9c0be638045781a72
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cb4c9f91c7a116e6171a8e94030b6bb40fdb38ea
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989911"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054886"
 ---
 # <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>A vállalati alkalmazások esetén az Azure Active Directory a SAML-jogkivonatban kiadott szerepkörjogcím konfigurálása
 
@@ -67,6 +67,9 @@ Ha az alkalmazás egyéni átadni egy SAML-válasz-szerepkörök vár, szükség
     c. Válassza ki a következő engedélyeket a (ha ezek még nem rendelkezik) lista, és válassza a **módosítási hozzáférést**.
 
       ![Engedélyek és a "Engedélyek módosítása" gombra](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+
+    > [!Note]
+    > Felhőalapú alkalmazás-rendszergazda és az alkalmazás-rendszergazda szerepkör ebben a forgatókönyvben nem fog működni, mivel később a globális rendszergazdai engedélyek a könyvtár olvasási és írási.
 
     d. Fogadja el a feltételeket. Bejelentkezve, a rendszer újra.
 
@@ -165,7 +168,7 @@ Ha az alkalmazás egyéni átadni egy SAML-válasz-szerepkörök vár, szükség
 
     d. Hagyja a **Namespace** mező üres.
 
-    e. Válassza ki **Ok**.
+    e. Kattintson az **OK** gombra.
 
 10. Az alkalmazás teszteléséhez a egy egyszeri bejelentkezést az identitásszolgáltató által kezdeményezett, jelentkezzen be a [hozzáférési Panel](https://myapps.microsoft.com) és az alkalmazás csempe kiválasztásával. A hozzárendelt szerepkörök a jogcím neve, amely az adott felhasználó megtekintheti a SAML-jogkivonat.
 

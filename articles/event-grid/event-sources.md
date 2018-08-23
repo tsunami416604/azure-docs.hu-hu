@@ -1,108 +1,137 @@
 ---
-title: Az Azure Event rács Eseményforrások
-description: Ismerteti a támogatott eseményforrások Azure esemény rács
+title: Az Azure Event Grid Eseményforrások
+description: Támogatott eseményforrások ismerteti az Azure Event Gridhez
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: f9c3bcb6b92b43fe5b5bad72c99e6ce199c17448
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: efc71e02cc02574973f0b6b428b5b670cd9cfd5b
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34302126"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617352"
 ---
-# <a name="event-sources-in-azure-event-grid"></a>Azure Event rácsban Eseményforrások
+# <a name="event-sources-in-azure-event-grid"></a>Az Azure Event Grid zdroje událostí
 
-Egy eseményforrás, ahol az esemény akkor fordul elő. Több Azure-szolgáltatások automatikusan konfigurált küldi az eseményeket. Létrehozhat egyéni alkalmazásokat, amelyek küldi az eseményeket is. Egyéni alkalmazásokat nem kell az események terjesztését esemény rács használandó Azure-ban üzemeltetett.
+Eseményforrás, ahol az esemény történik. Több Azure-szolgáltatások automatikusan megtörténik az események küldésére. Események küldése egyéni alkalmazásokat is létrehozhat. Az események terjesztését Event Grid használata Azure-ban üzemeltetett egyéni alkalmazásokat nem szükséges.
 
-Ez a cikk nyújt minden eseményforrás hivatkozások olyan témakörökre mutatnak.
+Ez a cikk tartalmakra mutató hivatkozásokat biztosít minden egyes esemény forrását.
 
 ## <a name="azure-subscriptions"></a>Azure-előfizetések
 
-Fizessen elő a Azure-előfizetések események válaszolni erőforrások változásainak Azure-előfizetés között.
+Fizessen elő az Azure-előfizetések események reagálni az igények változásaira erőforrásokat az Azure-előfizetés között.
 
 |Beosztás |Leírás  |
 |---------|---------|
-| [Azure Automation szolgáltatásbeli integrálható a esemény rács és a Microsoft csapatai](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, mely küld egy eseményt. Az eseményt akkor váltja ki az Automation-runbook címkéket a virtuális gépet, amely egy Microsoft Teams csatorna küldött üzenetet küld. |
-| [Esemény séma](event-schema-subscriptions.md) | Azure-előfizetés események mezők jeleníti meg. |
+| [Oktatóanyag: Az Azure Automation az Event Grid és a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, amely eseményt küld. Az esemény aktiválása a címkéket a virtuális gép, és a egy Microsoft Teams-csatornához küldött üzenet aktivál egy Automation-runbook. |
+| [Útmutató: az eseményekre a portálon keresztül előfizetés](subscribe-through-portal.md) | A portál használatával feliratkozás Azure-előfizetés eseményeire. |
+| [Az Azure CLI: feliratkozás Azure-előfizetés eseményeire](./scripts/event-grid-cli-azure-subscription.md) |A példaszkript létrehoz egy Event Grid-előfizetés Azure-előfizetéssel, és elküldi az eseményeket egy Webhookot. |
+| [PowerShell: feliratkozás Azure-előfizetés eseményeire](./scripts/event-grid-powershell-azure-subscription.md)| A példaszkript létrehoz egy Event Grid-előfizetés Azure-előfizetéssel, és elküldi az eseményeket egy Webhookot. |
+| [Eseményséma](event-schema-subscriptions.md) | Azure-előfizetés események mezőket jeleníti meg. |
 
-## <a name="custom-topics"></a>Egyéni kapcsolatos témakörök
+## <a name="container-registry"></a>Container Registry
 
-Egyéni témakörök alkalmazásesemények válaszolni előfizetni.
+Fizessen elő a Container Registry események reagálni az igények változásaira képeken.
+
+|Beosztás |Leírás  |
+|---------|---------|
+| [Gyors útmutató: a tároló beállításjegyzék események küldése](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja a tároló-beállításjegyzék események küldése az Azure CLI használatával. |
+| [Eseményséma](event-schema-container-registry.md) | Container Registry események mezőket jeleníti meg. |
+
+## <a name="custom-topics"></a>Egyéni témakörök
+
+Fizessen elő az alkalmazás válaszadására egyéni témaköröket.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Hozzon létre és az Azure parancssori felület segítségével egyéni események útvonal](custom-event-quickstart.md) | Egyéni események küldése az Azure parancssori felület használatával jeleníti meg. |
-| [Hozzon létre és irányításához az Azure PowerShell egyéni események](custom-event-quickstart-powershell.md) | Bemutatja, hogyan egyéni események küldése az Azure PowerShell használatával. |
-| [Hozzon létre és útvonal-egyéni események és az Azure portál](custom-event-quickstart-portal.md) | Bemutatja, hogyan használhatja a portált egyéni események küldésére. |
-| [Küldje el a témakör egyéni](post-to-custom-topic.md) | Bemutatja, hogyan elküldeni egy eseményt, egy egyéni témakörbe. |
-| [Egyéni események útvonal az Azure Queue Storage](custom-event-to-queue-storage.md) | Egyéni események küldése a várólista tárolási módját ismerteti. |
-| [Esemény séma](event-schema.md) | Egyéni események mezők jeleníti meg. |
+| [Rövid útmutató: létrehozása és átirányítása az Azure CLI-vel egyéni események](custom-event-quickstart.md) | Bemutatja, hogyan használható az Azure CLI-vel szeretne egyéni eseményeket küldeni. |
+| [Rövid útmutató: létrehozása és átirányítása egyéni események az Azure PowerShell használatával](custom-event-quickstart-powershell.md) | Bemutatja, hogyan használható az Azure PowerShell-lel szeretne egyéni eseményeket küldeni. |
+| [Rövid útmutató: létrehozása és átirányítása egyéni események az Azure portal használatával](custom-event-quickstart-portal.md) | Bemutatja, hogyan szeretne egyéni eseményeket küldeni a portállal. |
+| [Gyors útmutató: egyéni események átirányítása az Azure Queue storage](custom-event-to-queue-storage.md) | Ismerteti, hogyan lehet egyéni eseményeket küldeni egy Queue Storage. |
+| [Útmutató: közzététel egyéni témakörben](post-to-custom-topic.md) | Bemutatja egy egyéni témakört az esemény közzététele. |
+| [Azure CLI: egyéni Event Grid-témakör létrehozása](./scripts/event-grid-cli-create-custom-topic.md)|Minta parancsfájl, amely létrehoz egy egyéni témakört. A szkript lekéri a végpont és a egy kulcsot.|
+| [Az Azure CLI: feliratkozás egy egyéni témakör eseményeire](./scripts/event-grid-cli-subscribe-custom-topic.md)|Minta parancsfájl, amely egy egyéni témakör-előfizetést hoz létre. Eseményeket küld egy Webhookot.|
+| [PowerShell: egyéni Event Grid-témakör létrehozása](./scripts/event-grid-powershell-create-custom-topic.md)|Minta parancsfájl, amely létrehoz egy egyéni témakört. A szkript lekéri a végpont és a egy kulcsot.|
+| [PowerShell: feliratkozás egy egyéni témakör eseményeire](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Minta parancsfájl, amely egy egyéni témakör-előfizetést hoz létre. Eseményeket küld egy Webhookot.|
+| [Resource Manager-sablon: egyéni témakör és WebHook-végpontot](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Resource Manager-sablonnal, amely létrehoz egy egyéni témakör és egyéni témakör-előfizetés. Eseményeket küld egy Webhookot. |
+|
+| [Resource Manager-sablon: egyéni témakör és az Event Hubs-végpont](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeCustomTopicToEventHub.json)| Resource Manager-sablonnal, amely egy egyéni témakör-előfizetést hoz létre. Az Azure Event Hubs küld eseményeket. |
+| [Eseményséma](event-schema.md) | Egyéni események mezőket jeleníti meg. |
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Az Event Hubs események fájl események rögzítése válaszolni előfizetni.
+Fizessen elő az Event Hubs-események fájl események rögzítése válaszolni. Az Event Hubs egy eseményforrás vagy egy eseménykezelő működhet. A következő cikkek bemutatják, hogyan használható az Event Hubs forrásként.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md) | Az Event Hubs rögzítési fájlt hoz létre, amikor esemény rács függvény alkalmazásokhoz küld egy eseményt. Az alkalmazás kéri le a rögzítést fájlt, és adatokat áttelepíti az adatraktárban. |
-| [Esemény séma](event-schema-event-hubs.md) | Az Event Hubs események mezők jeleníti meg. |
+| [Oktatóanyag: big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md) | Az Event Hubs rögzítési fájlt hoz létre, amikor az Event Grid eseményt küld egy függvényalkalmazáshoz. Az alkalmazás lekéri a rögzítési fájlt, és egy data warehouse-bA migrálja az adatokat. |
+| [Eseményséma](event-schema-event-hubs.md) | Az Event Hubs-események mezőket jeleníti meg. |
+
+Példák az Event hubs, a kezelő: [az Event Hubs-kezelő](event-handlers.md#event-hubs).
 
 ## <a name="iot-hub"></a>IoT Hub
 
-Előfizetés IoT Hub eszköz válaszolni események létrehozása és események törlése.
+Feliratkozás az IoT hub az eseményeket az eszköz válaszolhat létrehozott, és törli az eseményeket.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [E-mail értesítést kapjanak a Logic Apps segítségével Azure IoT Hub-események](publish-iot-hub-events-to-logic-apps.md) | Logikai alkalmazás e-mailben értesítést küld, minden alkalommal, amikor egy eszközt az IoT hub kerül. |
-| [Az IoT-központ események reagálnak műveleteket esemény rács használatával](../iot-hub/iot-hub-event-grid.md) | Iot-központok integrálása esemény rács áttekintése. |
-| [Esemény séma](event-schema-iot-hub.md) | Mezők az IoT hubon eseményt tartalmazza. |
+| [Oktatóanyag: küldése e-mailes értesítést az Azure IoT Hub-események Logic Apps használatával](publish-iot-hub-events-to-logic-apps.md) | Egy logikai alkalmazás küld értesítő e-mailt, minden alkalommal, amikor egy eszköz az IoT hubhoz való hozzáadása. |
+| [Áttekintés: reagálhat rájuk az IoT Hub Event Grid használatával a műveletek indítása](../iot-hub/iot-hub-event-grid.md) | Iot-központok integrálása az Event Grid áttekintése. |
+| [Eseményséma](event-schema-iot-hub.md) | Megjeleníti a mezők az IoT hubon eseményeket. |
 
 ## <a name="media-services"></a>Media Services
 
-Fizessen elő a Media Services események feladat állapotesemények válaszolni.
+Fizessen elő a feladat állapota válaszadására Media Services-események.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Reagál a Media Services-események](../media-services/latest/reacting-to-media-services-events.md) | A Media Services integrálása esemény rács áttekintése. |
-| [Azure Media Services eseményeket továbbítani egy egyéni webkiszolgáló-végpont parancssori felület használatával](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan is küldi az eseményeket a Media Services. |
-| [Esemény séma](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json) | A Media Services események mezők jeleníti meg. |
+| [Áttekintés: reagálás a Media Services-események](../media-services/latest/reacting-to-media-services-events.md) | A Media Services integrálása az Event Grid áttekintése. |
+| [Oktatóanyag: Azure Media Services-események átirányítása egyéni webes végpontra parancssori felület használatával](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan küldhet eseményeket a Media Services szolgáltatásból. |
+| [Eseményséma](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Media Services-események mezőket jeleníti meg. |
 
 ## <a name="resource-groups"></a>Erőforráscsoportok
 
-Fizessen elő a erőforrás események csoportosítása válaszolni erőforrások változásainak között egy erőforráscsoportot.
+Erőforrás-csoport események reagálni az igények változásaira az erőforrások között egy erőforráscsoportot az előfizetés.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps segítségével](monitor-virtual-machine-changes-event-grid-logic-app.md) | Logikai alkalmazás egy virtuális gép módosításai figyeli, és ezeket a módosításokat vonatkozó e-mailek küldése. |
-| [Eseményséma](event-schema-resource-groups.md) | Látható mezők erőforrás események csoportosítása. |
+| [Oktatóanyag: az Azure Event Grid és a Logic Apps a virtuális gépek módosításainak monitorozása](monitor-virtual-machine-changes-event-grid-logic-app.md) | Egy logikai alkalmazást egy virtuális gép módosításainak figyeli, és ezeket a módosításokat kapcsolatos e-mailt küld. |
+| [Az Azure CLI: feliratkozás egy erőforráscsoport eseményeire](./scripts/event-grid-cli-resource-group.md)| Feliratkozik egy erőforráscsoport eseményeire hivatkozó szkriptre példát. Eseményeket küld egy Webhookot. |
+| [Az Azure CLI: feliratkozás egy erőforráscsoport és a egy szűrő eseményeire](./scripts/event-grid-cli-resource-group-filter.md) | A példaszkript feliratkozik egy erőforráscsoport eseményeire, és szűri az eseményeket egy erőforráshoz. |
+| [PowerShell: feliratkozás egy erőforráscsoport eseményeire](./scripts/event-grid-powershell-resource-group.md) | Feliratkozik egy erőforráscsoport eseményeire hivatkozó szkriptre példát. Eseményeket küld egy Webhookot. |
+| [PowerShell: feliratkozás egy erőforráscsoport és a egy szűrő eseményeire](./scripts/event-grid-powershell-resource-group-filter.md) | A példaszkript feliratkozik egy erőforráscsoport eseményeire, és szűri az eseményeket egy erőforráshoz. |
+| [Resource Manager-sablon: erőforráscsoport-feliratkozás](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeResourceGroupToWebHook.json) | Feliratkozik egy erőforráscsoport eseményeire. Eseményeket küld egy Webhookot. |
+| [Eseményséma](event-schema-resource-groups.md) | Megjeleníti a mezők erőforrásban csoport eseményeket. |
 
 ## <a name="service-bus"></a>Service Bus
 
-Fizessen elő a Service Bus események üzenetek nélkül egy aktív figyelő válaszolni.
+Fizessen elő a Service Bus-eseményekre, anélkül, hogy egy aktív figyelője küldött üzeneteket.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [Az Azure Service Bus számára, Azure esemény rács integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Esemény rács üzeneteket küld a Service Bus-témakörbe alkalmazás és a logikai alkalmazás működik. |
-| [Az Azure Service Bus számára, esemény rács integrációjának áttekintése](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus integrálása esemény rács áttekintése. |
-| [Esemény séma](event-schema-service-bus.md) | A Service Bus események mezők jeleníti meg. |
+| [Oktatóanyag: Azure Service Bus – Azure Event Grid integráció példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld a Service Bus-témakörbe, alkalmazás és a logikai alkalmazás működéséhez. |
+| [Áttekintés: Azure Service Bus – Event Grid-integrációt](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus integrálása az Event Grid áttekintése. |
+| [Eseményséma](event-schema-service-bus.md) | Service Bus-eseményekre mezőket jeleníti meg. |
 
 ## <a name="storage"></a>Storage
 
-A Blob Storage-események válaszolni a blob-létrehozott és a törölt események előfizetni.
+Fizessen elő a Blob Storage-események válaszolni a blob-események létrehozása és törlése.
 
 |Beosztás  |Leírás  |
 |---------|---------|
-| [A Blob storage-események átirányítása egy egyéni webkiszolgáló-végpont Azure parancssori felülettel](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan blob storage-események küldése az Azure parancssori felület használatával. |
-| [Útvonal Blob storage-események egy egyéni webkiszolgáló-végponthoz, a PowerShell használatával](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan blob storage-események küldése az Azure PowerShell használatával. |
-| [Reagálás Blob Storage-eseményekre](../storage/blobs/storage-blob-event-overview.md) | A Blob storage integrálása esemény rács áttekintése. |
-| [Esemény séma](event-schema-blob-storage.md) | A Blob Storage-események mezők jeleníti meg. |
+| [Gyors útmutató: Blob storage-események átirányítása egyéni webes végpontra az Azure CLI-vel](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan egy Webhookot a blob storage-események küldése az Azure CLI használatával. |
+| [Gyors útmutató: Blob storage-események átirányítása egyéni webes végpontra a PowerShell-lel](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan használhatja az Azure Powershellt egy Webhookot a blob storage-események küldéséhez. |
+| [Rövid útmutató: hozzon létre, és az Azure Portallal Blob storage-események irányítása](blob-event-quickstart-portal.md) | A portál használata a blob storage-események küldéséhez egy WebHook mutatja. |
+| [Az Azure CLI: feliratkozás egy Blob storage-fiók eseményeire](./scripts/event-grid-cli-blob.md) | Feliratkozik egy Blob storage-fiókhoz tartozó esemény hivatkozó szkriptre példát. WebHook elküldi az eseményt. |
+| [PowerShell: feliratkozás egy Blob storage-fiók eseményeire](./scripts/event-grid-powershell-blob.md) | Feliratkozik egy Blob storage-fiókhoz tartozó esemény hivatkozó szkriptre példát. WebHook elküldi az eseményt. |
+| [Resource Manager-sablon: Blob storage- és előfizetés létrehozása](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/createBlobAndSubscribe.json) | Üzembe helyez egy Azure Blob Storage-fiókot, és feliratkozik a vele kapcsolatos eseményekre. Eseményeket küld egy Webhookot. |
+| [Áttekintés: reagálás Blob storage-események](../storage/blobs/storage-blob-event-overview.md) | A Blob storage integrálása az Event Grid áttekintése. |
+| [Eseményséma](event-schema-blob-storage.md) | A Blob Storage-események mezőket jeleníti meg. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Esemény rácshoz ismertetőért lásd: [esemény rács](overview.md).
-* Ha gyorsan esemény rács segítségével, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md).
+* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
+* Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).

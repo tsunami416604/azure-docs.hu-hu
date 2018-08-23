@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 44781c976afa94ebe3c8df8c7fd70c3e16956916
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871950"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058739"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Az Azure Active Directory-bérlő törlése
 A bérlő törlése esetén a bérlőn található összes erőforrás is törlődik. Elő kell készítenie a bérlő törlése előtt az összes kapcsolódó erőforrás termékeikkel. Csak egy Azure Active Directory (Azure AD) globális rendszergazda törölheti az Azure AD-bérlő a portálról.
@@ -63,7 +63,7 @@ Felfüggesztést (30 nap után le van tiltva) | Törölt adatok (Ha nincs más s
 
 Az előfizetés helyezheti egy **Deprovisoned** állapot használatával a Microsoft Store for Business felügyeleti központban 3 nap múlva törlődnek. Ez a funkció hamarosan elérhető lesz az Office 365 felügyeleti központban.
 
-1. Jelentkezzen be a [Microsoft Store for Business felügyeleti központban](https://businessstore.microsoft.com/en-us/manage/) egy olyan fiókkal, amely a bérlő globális rendszergazdája lesz. Ha a "Contoso" bérlőt, amelyhez a contoso.onmicrosoft.com-ot a kezdeti alapértelmezett tartomány törölni próbál, jelentkezzen be egy egyszerű felhasználónév például admin@contoso.onmicrosoft.com.
+1. Jelentkezzen be a [Microsoft Store for Business felügyeleti központban](https://businessstore.microsoft.com/manage/) egy olyan fiókkal, amely a bérlő globális rendszergazdája lesz. Ha a "Contoso" bérlőt, amelyhez a contoso.onmicrosoft.com-ot a kezdeti alapértelmezett tartomány törölni próbál, jelentkezzen be egy egyszerű felhasználónév például admin@contoso.onmicrosoft.com.
 
 2. Nyissa meg a **kezelés** lapot, és válasszon **termékek és szolgáltatások**, majd válassza ki az előfizetést, szeretné visszavonni. Miután rákattintott **Mégse**, frissítse az oldalt.
   

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: 0cfb583f9d16039249aaffe18f71039e91dc3705
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: cd7a5832faf0fbb15349edee8ed504c1f94d1aa9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359206"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42057233"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso áttelepítése: az Azure virtuális gépek és az SQL Server AlwaysOn rendelkezésre állási csoport helyi alkalmazás Újratárolása
 
@@ -76,8 +76,8 @@ Ebben a forgatókönyvben:
 
 **Szolgáltatás** | **Leírás** | **Költségek**
 --- | --- | ---
-[Adatbázis-kezelési szolgáltatás](https://docs.microsoft.com/azure/dms/dms-overview) | Contoso migráljuk az alkalmazás adatrétegének DMS használatával. A DMS a helyszíni SQLVM géphez összekapcsolásához site-to-site VPN, és több adatbázisforrásokból az Azure-beli adat-platformokra, minimális állásidővel DMS lehetővé teszi, hogy zökkenőmentes áttelepítések át. | Ismerje meg [támogatott régiók](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) DMS és a get [díjszabás](https://azure.microsoft.com/pricing/details/database-migration/).
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Contoso lift-and-shift-áttelepítés, az alkalmazás előtérbeli virtuális gép Site Recovery használja. A Site Recovery koordinálja a migrálás és vész-helyreállítási kezeli az Azure virtuális gépek és a helyszíni virtuális gépek és fizikai kiszolgálók.  | Az Azure-ba, során Azure Storage-díjat számítunk fel.  Azure virtuális gépek jönnek létre, és a költségek, amikor feladatátvételt hajt végre. [További](https://azure.microsoft.com/pricing/details/site-recovery/) kapcsolatos díjakat és díjszabás.
+[Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | A DMS lehetővé teszi a zökkenőmentes áttelepítések adatbázis több forrásból származó, az Azure-beli adat-platformokra, minimális állásidővel. | Ismerje meg [támogatott régiók](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) DMS és a get [díjszabás](https://azure.microsoft.com/pricing/details/database-migration/).
+[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | A Site Recovery koordinálja a migrálás és vész-helyreállítási kezeli az Azure virtuális gépek és a helyszíni virtuális gépek és fizikai kiszolgálók.  | Az Azure-ba, során Azure Storage-díjat számítunk fel.  Azure virtuális gépek jönnek létre, és a költségek, amikor feladatátvételt hajt végre. [További](https://azure.microsoft.com/pricing/details/site-recovery/) kapcsolatos díjakat és díjszabás.
 
  
 
@@ -114,7 +114,7 @@ Itt látható, hogyan Contoso fog futni az áttelepítési:
 > [!div class="checklist"]
 > * **1. lépés: Az SQL Server virtuális gépek létrehozása az Azure-ban**: magas rendelkezésre állás érdekében a Contoso szeretné az Azure-ban fürtözött adatbázis üzembe helyezése. Két SQL Server virtuális gépek és az Azure belső terheléselosztó üzembe helyezése.
 > * **2. lépés: A fürt üzembe helyezéséhez**: az SQL Server virtuális gépek üzembe helyezése után az Azure SQL Server-fürt előkészítéséhez.  Ezek a database fogjuk áttelepíteni az előre létrehozott fürt.
-> * **3. lépés: Készítse elő a DMS**: készítse elő a DMS regisztrálják az adatbázis-Migrálás szolgáltató, hozzon létre egy DMS-példány és a egy projektet. Akkor állítsa be a közös hozzáférésű jogosultságkód (SAS) egységes erőforrás-azonosító (URI). A DMS az SA URI-t használ, amelyhez a szolgáltatás az SQL Server biztonsági mentési fájlokat tölt fel a tárfiók tárolójának eléréséhez.
+> * **3. lépés: Készítse elő a DMS**: készítse elő a DMS regisztrálják az adatbázis-Migrálás szolgáltató, hozzon létre egy DMS-példány és a egy projektet. Akkor állítsa be a közös hozzáférésű jogosultságkód (SAS) egységes erőforrás-azonosító (URI). A DMS a SAS URI-t használ, amelyhez a szolgáltatás az SQL Server biztonsági mentési fájlokat tölt fel a tárfiók tárolójának eléréséhez.
 > * **4. lépés: Készítse elő az Azure Site Recovery**: hoznak létre, amely tárolja a replikált adatok, és a egy Recovery Services-tároló Azure storage-fiókkal.
 > * **5. lépés: A Site Recovery a helyszíni VMware előkészítése**: a virtuális gépek felderítése és az ügynök telepítési fiókokat készít elő, és készítse elő a helyszíni virtuális gépeket, hogy képesek csatlakozni az Azure virtuális gépek a feladatátvételt követően.
 > * **6. lépés: A gépek replikálása**: replikációs beállítások konfigurálása, és engedélyezze a virtuális gép replikációja.

@@ -1,20 +1,8 @@
+---Címe: egy Contoso helyszíni alkalmazás Újratárolása az Azure virtuális gépek és Azure SQL Database felügyelt példányába való migrálással |} A Microsoft Docs description: ismerje meg, hogyan a Contoso áthelyezi egy helyszíni alkalmazást az Azure virtuális gépekhez és Azure SQL Database felügyelt példány használatával.
+szolgáltatások: a site-recovery author: rayne-wiselman manager: carmonm ms.service: a site-recovery ms.topic: fogalmi ms.date: 08/13/2018 ms.author: raynew
+
 ---
-title: A Contoso a helyszíni alkalmazás újratárolása az Azure virtuális gépek és Azure SQL Database felügyelt példányába való migrálással |} A Microsoft Docs
-description: Ismerje meg, hogyan a Contoso áthelyezi egy helyszíni alkalmazást az Azure virtuális gépekhez és Azure SQL Database felügyelt példány használatával.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 07/12/2018
-ms.author: raynew
-ms.openlocfilehash: 3e3f8dffbaa7109423aacdbfbaa658bada8bb84a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215339"
----
+
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso áttelepítési: egy Azure virtuális gép és az SQL Database felügyelt példánya a helyszíni alkalmazások Újratárolása
 
 Ebben a cikkben Contoso áttelepíti a SmartHotel alkalmazás előtérbeli virtuális gép egy Azure virtuális géphez az Azure Site Recovery szolgáltatással. Contoso is áttelepíti az alkalmazás-adatbázis az Azure SQL Database felügyelt példányain.
@@ -25,21 +13,21 @@ Ebben a cikkben Contoso áttelepíti a SmartHotel alkalmazás előtérbeli virtu
 Ez a cikk egy sorozat része cikkeket, amely a fiktív Contoso hogyan a helyszíni erőforrásokkal áttelepíti a Microsoft Azure felhőbe dokumentumok egyike. A sorozat tartalmazza a háttér-információkat és a egy sorozat olyan áttelepítési infrastruktúra beállítása és futtatása a különböző típusú migrálások bemutató forgatókönyvek. Forgatókönyvek egyre összetettebbé válnak. Cikkek idővel felveszi az adatsorozat.
 
 
-Cikk | Részletek | Állapot
+Cikk | Részletek | status
 --- | --- | ---
-[1. cikk: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk sorozat és a sorozat használt mintaalkalmazások áttekintése. | Szabad
-[2. cikk: Egy Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Contoso előkészíti a helyszíni infrastruktúra és az Azure-infrastruktúra az áttelepítéshez. A sorozat minden migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Szabad
-[3. cikk: Mérje fel helyszíni erőforrásait az Azure-ba való migráláshoz](contoso-migration-assessment.md) | Contoso fut, a VMware-en futó helyszíni kétrétegű SmartHotel alkalmazás értékelése. Contoso értékeli az alkalmazás virtuális gépek használatával a [Azure Migrate](migrate-overview.md) szolgáltatás. Contoso alkalmazás SQL Server-adatbázis értékelésére használatával [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Szabad
+[1. cikk: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk sorozat és a sorozat használt mintaalkalmazások áttekintése. | Elérhető
+[2. cikk: Egy Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Contoso előkészíti a helyszíni infrastruktúra és az Azure-infrastruktúra az áttelepítéshez. A sorozat minden migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Elérhető
+[3. cikk: Mérje fel helyszíni erőforrásait az Azure-ba való migráláshoz](contoso-migration-assessment.md) | Contoso fut, a VMware-en futó helyszíni kétrétegű SmartHotel alkalmazás értékelése. Contoso értékeli az alkalmazás virtuális gépek használatával a [Azure Migrate](migrate-overview.md) szolgáltatás. Contoso alkalmazás SQL Server-adatbázis értékelésére használatával [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
 4. cikk: Áthelyezési egy alkalmazást egy Azure virtuális Gépen, és SQL Database felügyelt példány | Contoso lift-and-shift az áttelepítés fut az Azure-bA a helyszíni SmartHotel alkalmazáshoz. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso az alkalmazás-adatbázis áttelepítése az Azure SQL Database felügyelt példányába használatával a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Ez a cikk
-[5. cikk: Áthelyezési egy alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-vm.md) | Contoso Azure virtuális gépekre annak SmartHotel alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással. | Szabad
-[Cikk 6: Azure virtuális gépeken és a egy SQL Server AlwaysOn rendelkezésre állási csoportban található alkalmazások Újratárolása](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Szabad
-[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-linux-vm.md) | Contoso a Site Recovery használatával az Azure virtuális gépek Linux osTicket alkalmazás lift-and-shift áttelepítés befejeződik. | Szabad
-[Cikk 8: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépek és az Azure Database for MySQL-hez](contoso-migration-rehost-linux-vm-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure virtuális gépek Site Recovery használatával. Az áttelepítése az alkalmazás-adatbázis az Azure Database for MySQL-hez a MySQL Workbench használatával. | Szabad
-[9. cikk: Újrabontás egy alkalmazást az Azure web App alkalmazásban és az Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-webalkalmazás, és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány. | Szabad
-[Cikk 10: Újrabontás egy Linux-alkalmazást egy Azure-webalkalmazást és az Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure-webalkalmazás több helyen is előfordul. A webalkalmazás folyamatos készregyártás a GitHub van integrálva. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Szabad
-[11. cikk: Újrabontás a Team Foundation Server, a Visual Studio Team Servicesben](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi migrálással, hogy a Visual Studio Team Services az Azure-ban. | Szabad
-[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-ba, és ezután rearchitects az alkalmazást. Contoso rearchitects az alkalmazás webes réteg Windows tárolójaként, és az alkalmazás-adatbázis rearchitects Azure SQL Database használatával. | Szabad
-[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service-ben, az Azure Functions, az Azure Cognitive Services és az Azure Cosmos DB használatával. | Szabad
+[5. cikk: Áthelyezési egy alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-vm.md) | Contoso Azure virtuális gépekre annak SmartHotel alkalmazás virtuális gépeit áttelepíti a Site Recovery szolgáltatással. | Elérhető
+[Cikk 6: Azure virtuális gépeken és a egy SQL Server AlwaysOn rendelkezésre állási csoportban található alkalmazások Újratárolása](contoso-migration-rehost-vm-sql-ag.md) | Contoso áttelepíti a SmartHotel alkalmazást. Contoso Site Recovery használatával az alkalmazás virtuális gépek áttelepítéséhez. A Database Migration Service használatával az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt. | Elérhető
+[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure-beli virtuális gépeken](contoso-migration-rehost-linux-vm.md) | Contoso a Site Recovery használatával az Azure virtuális gépek Linux osTicket alkalmazás lift-and-shift áttelepítés befejeződik. | Elérhető
+[Cikk 8: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépek és az Azure Database for MySQL-hez](contoso-migration-rehost-linux-vm-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure virtuális gépek Site Recovery használatával. Az áttelepítése az alkalmazás-adatbázis az Azure Database for MySQL-hez a MySQL Workbench használatával. | Elérhető
+[9. cikk: Újrabontás egy alkalmazást az Azure web App alkalmazásban és az Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-webalkalmazás, és az alkalmazás-adatbázis áttelepítése az Azure SQL Server-példány. | Elérhető
+[Cikk 10: Újrabontás egy Linux-alkalmazást egy Azure-webalkalmazást és az Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás Azure-webalkalmazás több helyen is előfordul. A webalkalmazás folyamatos készregyártás a GitHub van integrálva. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Elérhető
+[11. cikk: Újrabontás a Team Foundation Server, a Visual Studio Team Servicesben](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi migrálással, hogy a Visual Studio Team Services az Azure-ban. | Elérhető
+[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-ba, és ezután rearchitects az alkalmazást. Contoso rearchitects az alkalmazás webes réteg Windows tárolójaként, és az alkalmazás-adatbázis rearchitects Azure SQL Database használatával. | Elérhető
+[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service-ben, az Azure Functions, az Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető
 
 Ebben a cikkben használt SmartHotel mintaalkalmazást letöltheti [GitHub](https://github.com/Microsoft/SmartHotel360).
 
@@ -92,9 +80,9 @@ Ebben a forgatókönyvben:
 
 ### <a name="azure-services"></a>Azure-szolgáltatások
 
-Szolgáltatás | Leírás | Költség
+Szolgáltatás | Leírás | Költségek
 --- | --- | ---
-[Adatbázis-kezelési szolgáltatás](https://docs.microsoft.com/azure/dms/dms-overview) | Az adatbázis-kezelési szolgáltatás lehetővé teszi a zökkenőmentes áttelepítés adatbázis több forrásból származó, az Azure-beli adat-platformokra minimális állásidővel. | Ismerje meg [támogatott régiók](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) és [adatbázis-kezelési szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/database-migration/).
+[Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | A Database Migration Service lehetővé teszi a zökkenőmentes áttelepítés adatbázis több forrásból származó, az Azure-beli adat-platformokra minimális állásidővel. | Ismerje meg [támogatott régiók](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) és [Database Migration Service díjszabása](https://azure.microsoft.com/pricing/details/database-migration/).
 [Az Azure SQL Database felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | Felügyelt példány egy felügyelt adatbázis-szolgáltatás, amely egy teljes körűen felügyelt SQL Server-példány az Azure-felhőben jelöli. Ugyanazt a kódot használja, mint a legújabb SQL Server Database Engine, és a legújabb funkciók, a teljesítménnyel kapcsolatos fejlesztések és a biztonsági javítások. | Egy SQL Database felügyelt példányain Azure-ban futó használata tekintetében a kapacitás alapján számítunk fel díjat. Tudjon meg többet [felügyelt példány díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/). 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | A Site Recovery szolgáltatás koordinálja és kezeli az áttelepítés és a vészhelyreállítás az Azure virtuális gépek és a helyszíni virtuális gépek és fizikai kiszolgálók.  | Az Azure-ba, során Azure Storage-díjat számítunk fel.  Az Azure virtuális gépek jönnek létre, és a költségekkel, amikor feladatátvételt hajt végre. Tudjon meg többet [Site Recovery-díjak és árképzési](https://azure.microsoft.com/pricing/details/site-recovery/).
 
@@ -117,7 +105,7 @@ Követelmények | Részletek
 **Regisztrálja a felügyelt példány előzetes verzióban érhető el** | Ön regisztrálva legyenek az SQL Database felügyelt példányain korlátozott nyilvános előzetes verzióban érhető el. Azure-előfizetéssel kell [regisztráció](https://portal.azure.com#create/Microsoft.SQLManagedInstance). A regisztráció végrehajtásához, ezért ügyeljen arra, hogy a forgatókönyv megvalósításához megkezdése előtt regisztráljon néhány napot is igénybe vehet.
 **Azure-előfizetés** | Érdemes már létrehozott egy előfizetést az értékelés az oktatóanyag-sorozatban az első cikkben végrehajtásakor. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> Ha ingyenes fiókot hoz létre, Ön lesz az előfizetés rendszergazdája, és minden műveletet végrehajthat.<br/><br/> Ha egy meglévő előfizetést használ, és Ön nem az előfizetés rendszergazdája, kell dolgozni a rendszergazdától tulajdonosi vagy közreműködői engedélyekkel.<br/><br/> Ha részletesebb engedélyek van szüksége, tekintse meg [Site Recovery-hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](../site-recovery/site-recovery-role-based-linked-access-control.md). 
 **A Site Recovery (helyszíni)** | A helyszíni vCenter Server-példány futhat egy 5.5-ös, 6.0-s vagy 6.5-ös verzió<br/><br/> Egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú ESXi-gazdagép<br/><br/> Egy vagy több futtató VMware virtuális gépeket az ESXi-gazdagépen.<br/><br/> Meg kell felelnie a virtuális gépek [Azure-követelmények](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements).<br/><br/> Támogatott [hálózati](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network) és [tárolási](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage) konfigurációja.
-**Adatbázis-kezelési szolgáltatás** | Az adatbázis-kezelő szolgáltatás, szüksége lesz egy [kompatibilis a helyszíni VPN-eszköz](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).<br/><br/> Konfigurálhatja a helyszíni VPN-eszköznek kell lennie. Egy kívülre irányuló nyilvános IPv4-címmel kell rendelkeznie. A cím nem található a NAT-eszköz mögött.<br/><br/> Ellenőrizze, hogy hozzáférése van a helyszíni SQL Server-adatbázisát.<br/><br/> Windows tűzfal eléréséhez a forrás adatbázismotor képesnek kell lennie. Ismerje meg, hogyan [Windows tűzfal konfigurálása az access adatbázismotor](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).<br/><br/> Ha a tűzfal elé adatbázis számítógépe, adja hozzá az adatbázis és a fájlokat a 445-ös port az SMB-n keresztül való hozzáférést engedélyező szabályokat.<br/><br/> A hitelesítő adatokat az SQL Server-példányhoz való kapcsolódáshoz használt, és amely a cél felügyelt példány a sysadmin (rendszergazda) kiszolgálói szerepkör tagjának kell lennie.<br/><br/> A hálózatra van szükség a helyszíni adatbázis, amely az adatbázis-felügyeleti szolgáltatás használatával a forrás-adatbázis biztonsági mentése a megosztás.<br/><br/> Győződjön meg arról, hogy az a forrás SQL Server-példányt futtató szolgáltatásfiók írási engedéllyel rendelkezik a hálózati megosztáson.<br/><br/> Jegyezze fel a Windows-felhasználói és a jelszót, amely teljes vezérlési engedélyekkel rendelkezzen a hálózati megosztáson. Az adatbázis-kezelési szolgáltatás megszemélyesíti a felhasználói hitelesítő adatokat a biztonsági mentési fájlok feltöltése az Azure Storage-tárolóba.<br/><br/> Az SQL Server Express telepítési folyamat beállítja a TCP/IP protokoll **letiltott** alapértelmezés szerint. Győződjön meg arról, hogy engedélyezve van.
+**Database Migration Service** | A Database Migration Service, szüksége lesz egy [kompatibilis a helyszíni VPN-eszköz](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).<br/><br/> Konfigurálhatja a helyszíni VPN-eszköznek kell lennie. Egy kívülre irányuló nyilvános IPv4-címmel kell rendelkeznie. A cím nem található a NAT-eszköz mögött.<br/><br/> Ellenőrizze, hogy hozzáférése van a helyszíni SQL Server-adatbázisát.<br/><br/> Windows tűzfal eléréséhez a forrás adatbázismotor képesnek kell lennie. Ismerje meg, hogyan [Windows tűzfal konfigurálása az access adatbázismotor](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).<br/><br/> Ha a tűzfal elé adatbázis számítógépe, adja hozzá az adatbázis és a fájlokat a 445-ös port az SMB-n keresztül való hozzáférést engedélyező szabályokat.<br/><br/> A hitelesítő adatokat az SQL Server-példányhoz való kapcsolódáshoz használt, és amely a cél felügyelt példány a sysadmin (rendszergazda) kiszolgálói szerepkör tagjának kell lennie.<br/><br/> A hálózatra van szükség a helyszíni adatbázis, a Database Migration Service segítségével a forrás-adatbázis biztonsági mentése a megosztás.<br/><br/> Győződjön meg arról, hogy az a forrás SQL Server-példányt futtató szolgáltatásfiók írási engedéllyel rendelkezik a hálózati megosztáson.<br/><br/> Jegyezze fel a Windows-felhasználói és a jelszót, amely teljes vezérlési engedélyekkel rendelkezzen a hálózati megosztáson. A Database Migration Service megszemélyesíti a felhasználói hitelesítő adatokat a biztonsági mentési fájlok feltöltése az Azure Storage-tárolóba.<br/><br/> Az SQL Server Express telepítési folyamat beállítja a TCP/IP protokoll **letiltott** alapértelmezés szerint. Győződjön meg arról, hogy engedélyezve van.
 
 ## <a name="scenario-steps"></a>A forgatókönyv lépései
 
@@ -125,11 +113,11 @@ Itt látható, hogy a Contoso tervek az üzembe helyezés:
 
 > [!div class="checklist"]
 > * **1. lépés: Állítsa be egy SQL Database felügyelt példányain**: Contoso cégnek szüksége van egy előre létrehozott felügyelt példány, amelyre áttelepíti a helyszíni SQL Server-adatbázis.
-> * **2. lépés: Felkészülés az adatbázis-kezelési szolgáltatás**: Contoso kell az adatbázis-migrálási szolgáltató regisztrálása, hozzon létre egy példányt, és majd hozzon létre egy adatbázis-kezelési szolgáltatás projektet. Contoso is be kell állítania egy közös hozzáférésű jogosultságkód (SAS) egységes erőforrás-azonosító (URI) az adatbázis-felügyeleti szolgáltatás. Egy SAS URI-t a Contoso storage-fiókban lévő erőforrások delegált hozzáférést biztosít, így a Contoso korlátozott engedélyeket adhat a tárolási objektumra. Contoso beállítja egy SAS URI-t, hogy az adatbázis-kezelő szolgáltatás, amelyhez a szolgáltatás az SQL Server biztonsági mentési fájlokat tölt fel a tárfiók tárolójának hozzáférhessen.
+> * **2. lépés: Készítse elő a Database Migration Service**: Contoso kell az adatbázis-migrálási szolgáltató regisztrálása, hozzon létre egy példányt, és majd a Database Migration Service-projekt létrehozása. Contoso is be kell állítania egy közös hozzáférésű jogosultságkód (SAS) egységes erőforrás-azonosító (URI) a Database Migration Service. Egy SAS URI-t a Contoso storage-fiókban lévő erőforrások delegált hozzáférést biztosít, így a Contoso korlátozott engedélyeket adhat a tárolási objektumra. Contoso beállít egy SAS URI-t, így a Database Migration Service hozzáférhet, amelyhez a szolgáltatás az SQL Server biztonsági mentési fájlokat tölt fel a tárfiók tárolója.
 > * **3. lépés: Az Azure Site Recovery előkészítése**: Contoso létre kell hoznia egy tárfiókot a replikált adatok tárolásához a Site Recovery. Azt is létre kell hoznia egy Azure helyreállítási tárat.
 > * **4. lépés: A Site Recovery a helyszíni VMware előkészítése**: Contoso készítse elő a virtuális gép felderítés és az ügynök telepítése Azure virtuális géphez való kapcsolódásra a feladatátvételt követően fiókokat.
 > * **5. lépés: A gépek replikálása**: a replikáció beállítása a Contoso konfigurálni a Site Recovery forrás és cél környezetekben, állít be egy replikációs szabályzatot és elindítja a virtuális gépek replikálása az Azure Storage.
-> * **6. lépés: Az adatbázis Migrálása az adatbázis-Management szolgáltatás használatával**: Contoso áttelepíti az adatbázisban.
+> * **6. lépés: Az adatbázis Migrálása a Database Migration Service segítségével**: Contoso áttelepíti az adatbázisban.
 > * **7. lépés: A virtuális gépek áttelepítése a Site Recovery használatával**: Contoso fut a teszt feladatátvételt, hogy minden működik-e. Majd a Contoso teljes feladatátvételt az a virtuális gépek áttelepítése az Azure-ban futtatja.
 
 ## <a name="step-1-prepare-a-sql-database-managed-instance"></a>1. lépés: Készítse elő a egy SQL Database felügyelt példány
@@ -229,36 +217,36 @@ Most Contoso építhető ki egy SQL Database felügyelt példánya:
 
 Ismerje meg, hogyan [felügyelt példány üzembe helyezése](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal).
 
-## <a name="step-2-prepare-the-database-management-service"></a>2. lépés: Felkészülés az adatbázis-kezelési szolgáltatás
+## <a name="step-2-prepare-the-database-migration-service"></a>2. lépés: Készítse elő a Database Migration Service
 
-Készítse elő az adatbázis-kezelő szolgáltatás, a Contoso cégnek szüksége van, ehhez néhány dolgot:
+Készítse elő a Database Migration Service, a Contoso cégnek szüksége van, ehhez néhány dolgot:
 
-- Az adatbázis-kezelési szolgáltatás-szolgáltató regisztrálása az Azure-ban.
-- Adja meg az adatbázis-kezelési szolgáltatás hozzáférést az Azure Storage-fel a biztonságimásolat-fájlokat, amelyek adatbázis áttelepítése. A hozzáférés biztosításához az Azure Storage a Contoso egy Azure Blob storage-tárolót hoz létre. Contoso hoz létre egy SAS URI-azonosítóját a Blob storage-tárolóba. 
-- Hozzon létre egy adatbázis-kezelési szolgáltatás projektet.
+- A Database Migration Service-szolgáltató regisztrálása az Azure-ban.
+- Adja meg a Database Migration Service hozzáférést az Azure Storage-fel a biztonságimásolat-fájlokat, amelyek adatbázis áttelepítése. A hozzáférés biztosításához az Azure Storage a Contoso egy Azure Blob storage-tárolót hoz létre. Contoso hoz létre egy SAS URI-azonosítóját a Blob storage-tárolóba. 
+- Database Migration Service-projekt létrehozása.
 
 Contoso befejezi az alábbi lépéseket:
 
 1. Contoso regisztrálja az adatbázis-migrálási szolgáltató az előfizetésben.
-    ![Adatbázis-felügyeleti szolgáltatás – regisztráció](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
+    ![Database Migration Service - regisztráció](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
 
-2. Contoso hoz létre egy Blob storage-tárolóba. Contoso hoz létre egy SAS URI-t, hogy az adatbázis-kezelési szolgáltatás hozzá tud férni.
+2. Contoso hoz létre egy Blob storage-tárolóba. Contoso hoz létre egy SAS URI-t, hogy a Database Migration Service hozzá tud férni.
 
-    ![Adatbázis-kezelési szolgáltatásban – hozzon létre egy SAS URI-t](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
+    ![Database Migration Service – hozzon létre egy SAS URI-t](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
 
-3. Contoso létrehoz egy adatbázis-kezelési szolgáltatás példányt. 
+3. Contoso létrehoz egy Database Migration Service-példányt. 
 
-    ![Felügyeleti szolgáltatás adatbázis - példány létrehozása](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
+    ![Database Migration Service - példány létrehozása](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
 
-4. Contoso helyezi el az adatbázis-kezelési szolgáltatás példány a **ÉLES – DC-EUS2** alhálózatának a **VNET-ÉLES – DC-EUS2** virtuális hálózat.
-    - Contoso van helyezi az adatbázis-kezelő szolgáltatás, mivel a szolgáltatás a virtuális hálózatban, amely hozzáférhet a helyszíni SQL Server virtuális gép egy VPN-átjárót kell lennie.
-    - A **VNET-ÉLES-EUS2** társviszonyban áll a **VNET-HUB-EUS2** és a távoli átjárók használata engedélyezett. A **távoli átjárók használata** beállítással biztosíthatja, hogy az adatbázis-felügyeleti szolgáltatás közötti kommunikációhoz szükséges.
+4. Contoso helyezi el a Database Migration Service-példány az a **ÉLES – DC-EUS2** alhálózatának a **VNET-ÉLES – DC-EUS2** virtuális hálózat.
+    - Contoso van helyezi a Database Migration Service, mivel a szolgáltatás a virtuális hálózatban, amely hozzáférhet a helyszíni SQL Server virtuális gép egy VPN-átjárót kell lennie.
+    - A **VNET-ÉLES-EUS2** társviszonyban áll a **VNET-HUB-EUS2** és a távoli átjárók használata engedélyezett. A **távoli átjárók használata** beállítással biztosíthatja, hogy a Database Migration Service kommunikálhatnak-e szükség szerint.
 
-        ![Adatbázis-kezelési szolgáltatásban – a hálózat konfigurálása](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
+        ![Database Migration Service – a hálózat konfigurálása](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
 
 *További segítségre van szüksége?*
 
-- Ismerje meg, hogyan [az adatbázis-kezelő szolgáltatás beállítása](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal).
+- Ismerje meg, hogyan [állítsa be a Database Migration Service](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal).
 - Ismerje meg, hogyan [hozhat létre és használhat SAS](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
 
@@ -451,15 +439,15 @@ Most Contoso is replikáljon WebVM.
 
 Tudjon meg ezeket a lépéseket teljes bemutató [engedélyezze a replikációt](https://docs.microsoft.com/azure/site-recovery/vmware-azure-enable-replication).
 
-## <a name="step-6-migrate-the-database-by-using-the-database-management-service"></a>6. lépés: Az adatbázis Migrálása az adatbázis-Management szolgáltatás használatával
+## <a name="step-6-migrate-the-database-by-using-the-database-migration-service"></a>6. lépés: Az adatbázis Migrálása a Database Migration Service használatával
 
-Hozzon létre egy adatbázis-kezelési szolgáltatás projektet, majd utána áttelepíteni az az adatbázis a Contoso cégnek szüksége van.
+Contoso cégnek szüksége van a Database Migration Service-projekt létrehozása, és majd telepítse át az adatbázist.
 
-### <a name="create-a-database-management-service-project"></a>Adatbázis-kezelési szolgáltatás projekt létrehozása
+### <a name="create-a-database-migration-service-project"></a>A Database Migration Service-projekt létrehozása
 
-1. Contoso egy adatbázis-kezelési szolgáltatás projektet hoz létre. Contoso kiválasztja a **SQL Server** forráskiszolgáló típusa. Contoso kiválasztja **Azure SQL Database felügyelt példányába** célként.
+1. Contoso a Database Migration Service-projektet hoz létre. Contoso kiválasztja a **SQL Server** forráskiszolgáló típusa. Contoso kiválasztja **Azure SQL Database felügyelt példányába** célként.
 
-     ![Adatbázis-felügyeleti szolgáltatás – új migrálási projekt](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
+     ![Database Migration Service – új migrálási projekt](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
 
 2. Megnyílik a varázsló.
 
@@ -467,34 +455,34 @@ Hozzon létre egy adatbázis-kezelési szolgáltatás projektet, majd utána át
 
 1. A varázsló, a Contoso adja meg a forrás virtuális gép, amelyen a helyszíni adatbázis is található. Contoso megadja a hitelesítő adatait az adatbázis eléréséhez.
 
-    ![Adatbázis-kezelési szolgáltatás - Adatforrás részletei](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
+    ![Database Migration Service - Adatforrás részletei](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
 
 2. Contoso választja ki az adatbázist a migráláshoz (**SmartHotel.Registration**):
 
-    ![Adatbázis-felügyeleti szolgáltatás – válassza ki a forrásadatbázisokat](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
+    ![Database Migration Service - adatbázisokat forrás kiválasztása](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
 
 3. A cél Contoso beírja a nevét, a felügyelt példány az Azure-ban. Contoso eléréséhez szükséges hitelesítő adatokat a felügyelt példány kerül.
 
-    ![Adatbázis-kezelési szolgáltatás - cél részletei](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
+    ![Database Migration Service - cél részletei](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
 
 4. A **új tevékenység** > **áttelepítés futtatása**, Contoso áttelepítés beállításait határozza meg:
     - Forrás és a cél hitelesítő adatait.
     - Az adatbázist a migráláshoz.
-    - A hálózati megosztást, hogy a Contoso a helyszíni virtuális gépen. Az adatbázis-kezelési szolgáltatás forrás biztonsági mentések a megosztáshoz vesz igénybe. 
+    - A hálózati megosztást, hogy a Contoso a helyszíni virtuális gépen. A Database Migration Service forrás biztonsági mentések a megosztáshoz vesz igénybe. 
         - A forrás SQL Server-példányt futtató szolgáltatásfiók írási engedélyekkel rendelkeznie kell a megosztáson található.
         - A teljes Tartománynevet a megosztás elérési útját kell használni.
-    - Az SAS URI-t az adatbázis-kezelő szolgáltatás, amelyhez a szolgáltatás az áttelepítéshez a biztonságimásolat-fájlokat tölt fel a tárfiók tárolójának hozzáférést biztosít.
+    - Az SAS URI-t, amelyhez a szolgáltatás az áttelepítéshez a biztonságimásolat-fájlokat tölt fel a tárfiók tárolójának hozzáférést biztosít a Database Migration Service.
 
-        ![Felügyeleti szolgáltatás adatbázis - migrálási beállítások konfigurálása](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
+        ![Database Migration Service - migrálási beállítások konfigurálása](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
 
 5. Contoso menti az áttelepítést, és futtatja majd.
 6. A **áttekintése**, Contoso az áttelepítés állapotát figyeli.
 
-    ![Adatbázis-kezelési szolgáltatás - figyelő](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
+    ![Database Migration Service - figyelő](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
 
 7. Áttelepítés befejeződött, a Contoso ellenőrzi, hogy létezik-e a céladatbázisok a felügyelt példányon.
 
-    ![Adatbázis-felügyeleti szolgáltatás – az adatbázis-áttelepítés ellenőrzése](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
+    ![Database Migration Service - adatbázis áttelepítésének ellenőrzése](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
 
 ## <a name="step-7-migrate-the-vm-by-using-site-recovery"></a>7. lépés: A Site Recovery használatával Migrálja a virtuális Gépet
 
@@ -580,7 +568,7 @@ A Contoso biztonsági csapat áttekinti az Azure virtuális gépek és az SQL Da
 
 További információ a biztonsági eljárások a virtuális gépek, lásd: [ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control).
 
-### <a name="backups"></a>Tartalékok
+### <a name="backups"></a>Biztonsági másolatok
 
 Contoso biztonsági másolatot készít az adatok a WEBVM az Azure Backup szolgáltatás használatával. Tudjon meg többet [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -592,7 +580,7 @@ Contoso biztonsági másolatot készít az adatok a WEBVM az Azure Backup szolg�
 
 ## <a name="conclusion"></a>Összegzés
 
-Ebben a cikkben Contoso az Azure-ban a SmartHotel alkalmazást áthelyezi telepítse át az alkalmazás előtérbeli virtuális gép az Azure-bA a Site Recovery szolgáltatással. Contoso az Azure Database Service Management használatával a helyszíni adatbázis áttelepíti egy Azure SQL Database felügyelt példányain.
+Ebben a cikkben Contoso az Azure-ban a SmartHotel alkalmazást áthelyezi telepítse át az alkalmazás előtérbeli virtuális gép az Azure-bA a Site Recovery szolgáltatással. Contoso az Azure Database Migration Service használatával a helyszíni adatbázis áttelepíti egy Azure SQL Database felügyelt példányain.
 
 ## <a name="next-steps"></a>További lépések
 

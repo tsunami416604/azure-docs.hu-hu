@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 4f3ffb3c769adeabd1edc10ce064653f7b336330
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264995"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054510"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
@@ -65,7 +65,7 @@ Az egyszerűség kedvéért javasoljuk, hogy a felhasználók, akik az Azure AD 
 Az összes hálózati szoftvert, fizikai eszközök vagy bármi olyanra, amely korlátozza a maximális időtartam, a kapcsolat nyitva maradhat kell használnia egy küszöbértéket legalább öt percig (300 másodperc), ahol az Azure AD Connect-ügyfél telepítve van a kiszolgáló közötti kapcsolat és az Azure Active Directory. Ez a javaslat vonatkozik az összes korábban kiadott Microsoft Identity szinkronizálási eszközöket is.
 
 **K: egycímkés tartományok (által) támogatott vannak?**  
-Bár javasoljuk, hogy ez a hálózati konfiguráció ellen ([cikkben](https://support.microsoft.com/en-us/help/2269810/microsoft-support-for-single-label-domains)), névvégződés nélküli tartomány Azure AD Connect-szinkronizálás használata támogatott, mindaddig, amíg működik-e a hálózati konfigurációt a egyetlen szintű tartomány megfelelően.
+Bár javasoljuk, hogy ez a hálózati konfiguráció ellen ([cikkben](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)), névvégződés nélküli tartomány Azure AD Connect-szinkronizálás használata támogatott, mindaddig, amíg működik-e a hálózati konfigurációt a egyetlen szintű tartomány megfelelően.
 
 **K: a támogatott különálló AD-tartományok erdők van?**  
 Nem, az Azure AD Connect nem támogatja a helyszíni erdők, amelyek tartalmazzák a különálló névtereket.
@@ -91,8 +91,8 @@ Nem. A kiszolgáló nevének módosítása rendereli a szinkronizálási motor n
 **K: Miért nem egyezik meg az Azure ad userPrincipalName (UPN) attribútum a helyszíni egyszerű felhasználónév?**  
 Információkért tanulmányozza a következő cikkeket:
 
-* [Office 365, Azure vagy Intune-ban szereplő felhasználónevek nem egyeznek, a helyszíni egyszerű Felhasználónévvel vagy másodlagos bejelentkezési Azonosítóval](https://support.microsoft.com/en-us/kb/2523192)
-* [Az egyszerű felhasználónév a felhasználói fiókok különböző összevont tartományt használandó módosítása után a módosítások nem az Azure Active Directory szinkronizálási eszköz szinkronizálása](https://support.microsoft.com/en-us/kb/2669550)
+* [Office 365, Azure vagy Intune-ban szereplő felhasználónevek nem egyeznek, a helyszíni egyszerű Felhasználónévvel vagy másodlagos bejelentkezési Azonosítóval](https://support.microsoft.com/kb/2523192)
+* [Az egyszerű felhasználónév a felhasználói fiókok különböző összevont tartományt használandó módosítása után a módosítások nem az Azure Active Directory szinkronizálási eszköz szinkronizálása](https://support.microsoft.com/kb/2669550)
 
 Beállíthatja, hogy a szinkronizálási motor frissítése az egyszerű Felhasználónevet, leírtak szerint az Azure AD [az Azure AD Connect szinkronizálási szolgáltatás funkciók](active-directory-aadconnectsyncservice-features.md).
 
@@ -134,11 +134,11 @@ A PowerShell-parancsprogram futtatásához [töltse le a parancsfájlt](https://
 
 Manuálisan frissíteni, töltse le, és a AADConnect.msi fájl legújabb verzióját futtatják.
  
--  Ha a jelenlegi verzió régebbi, mint 1.1.750.0, [töltse le és frissítsen a legújabb verzióra](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+-  Ha a jelenlegi verzió régebbi, mint 1.1.750.0, [töltse le és frissítsen a legújabb verzióra](https://www.microsoft.com/download/details.aspx?id=47594).
 - Ha az Azure AD Connect verziója 1.1.750.0 vagy újabb, semmilyen további műveletet nem szükséges. A verzió, amely tartalmazza az automatikus frissítési javítás már használja. 
 
 **Kérdés érkezett egy e-mailt kapok kívánja újból engedélyezni az automatikus frissítés a legújabb verzióra frissítéséhez. Verzió 1.1.654.0 használok. Kell frissíteni?**  
-Igen, meg kell 1.1.750.0 frissítést vagy újabb kívánja újból engedélyezni az automatikus frissítés. [Töltse le és frissítsen a legújabb verzióra](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+Igen, meg kell 1.1.750.0 frissítést vagy újabb kívánja újból engedélyezni az automatikus frissítés. [Töltse le és frissítsen a legújabb verzióra](https://www.microsoft.com/download/details.aspx?id=47594).
 
 **Kérdés érkezett egy e-mailt kapok kívánja újból engedélyezni az automatikus frissítés a legújabb verzióra frissítéséhez. Ha az automatikus frissítés engedélyezéséhez használtam a PowerShell, is meg kell telepíteni a legújabb verzióra?**  
 Igen, továbbra is szeretné 1.1.750.0 verzióra való frissítés vagy újabb verziója. A PowerShell-lel az automatikus frissítési szolgáltatás engedélyezése nem az elhárításukra automatikus frissítési 1.1.750.0 előtti verziói találhatók.
@@ -190,7 +190,7 @@ Ha Ön segítségre van szüksége az Azure AD Connect újabb verziójára friss
 ## <a name="troubleshooting"></a>Hibaelhárítás
 **K: hogyan kaphat segítséget az Azure AD Connect?**
 
-[A Microsoft Tudásbázisban (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
+[A Microsoft Tudásbázisban (KB)](https://www.microsoft.com/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
 * Keressen rá a KB, a műszaki megoldásokhoz az Azure AD Connect-támogatással kapcsolatos gyakori javítás/csere problémákra.
 

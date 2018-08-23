@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173050"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444826"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -34,11 +34,11 @@ Ez a cikk összefoglalja a támogatott konfigurációk és replikálásakor öss
 
 ## <a name="resource-support"></a>Erőforrások támogatása
 
-**Erőforrás-áthelyezési típusa** | **Részletek** 
+**Erőforrás-áthelyezési típusa** | **Részletek**
 --- | --- | ---
 **Tároló áthelyezése erőforráscsoportok közt** | Nem támogatott<br/><br/> Recovery services-tároló nem helyezhetők át erőforráscsoportok közt.
 **Számítási és tárolási és hálózati erőforrások áthelyezése erőforráscsoportok közt** | Nem támogatott.<br/><br/> Ha egy virtuális gép vagy a kapcsolódó összetevők, például a tárolási és hálózati után végez, replikáció letiltása és a virtuális gép újraengedélyezni szüksége.
-**Azure virtuális gépek replikálása egy előfizetésből egy másikba vész-helyreállítási** | Nem támogatott.
+**Azure virtuális gépek replikálása egy előfizetésből egy másikba vész-helyreállítási** | Támogatott azonos Azure Active Directory-bérlőben.
 **Virtuális gépek áttelepítése az előfizetések között** | Nem támogatott.
 **Az azonos régión belüli virtuális gépek áttelepítése** | Nem támogatott.
 

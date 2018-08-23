@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d39d98a39fb8692d696adfbedc9bb1a34f8be4d6
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: d4bbf26f6535f50b15068125d911df6a1ca20a72
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358834"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42061390"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
-> Nyissa meg újra a frissítések lapon való előfizetéssel kapcsolatos értesítést kaphat a [ ![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) [hírcsatorna](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us).
+>Értesítést kaphat arról, hogy nyissa meg újra a frissítések ezen a lapon hozzáadhatja ezt mikor [URL-cím](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) , a ![RSS ikon](./media/whats-new/feed-icon-16x16.png) hírcsatorna-olvasó.
 
 Az Azure AD folyamatosan fejlesztései kap. Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
@@ -39,7 +39,25 @@ Ezen a lapon havonta frissül, így rendszeresen ellenőrizni.
 
 ## <a name="july-2018"></a>2018. július
 
-### <a name="improvements-to-azure-active-directory-email-notifications"></a>Fejlesztések az Azure Active Directoryhoz e-mail-értesítések
+### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Az Azure Active Directory IP-címtartományok módosításai
+
+**Típus:** tervezett változtatás  
+**Szolgáltatási kategóriához:** más  
+**A termék funkció:** Platform
+
+Nagyobb IP-címtartományok vezetünk be az Azure ad Szolgáltatásba, ami azt jelenti, ha konfigurálta az Azure AD IP-címtartományok esetében a tűzfalak, útválasztók és hálózati biztonsági csoportok kell azokat. Így nem kell a tűzfalat, útválasztó vagy a hálózati biztonsági csoportok IP-címtartomány konfigurációk újra módosítása esetén az Azure AD új végpontjait hozzáadja ezt a frissítést végzünk. 
+
+Hálózati forgalom ezen új tartományok áthelyezése a következő két hónapban. Szolgáltatás megszakításmentes folytatásához, hozzá kell adnia a frissített értékeket az IP-címek 2018. szeptember 10. előtt:
+
+- 20.190.128.0/18 
+
+- 40.126.0.0/18 
+
+Javasoljuk, hogy nem távolítja a régi IP-címtartományokat, mindaddig, amíg az összes, a hálózati forgalom át lett helyezve az új tartományokat. Frissítések információt, és ismerje meg, amikor eltávolíthatja a régi tartományokat, lásd: [Office 365 URL-címei és IP-címtartományok](https://support.office.com/en-us/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+
+---
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Az Azure Active Directory értesítő e-mailjeinek fejlesztései
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** más  
@@ -63,7 +81,7 @@ Egy vonatkozó példáért egyes új e-mail mintákra és további információk
 
 ---
 
-### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Az Azure AD-Tevékenységnaplók mostantól elérhetők az Azure Monitor használatával
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Az Azure AD tevékenységnaplói most már elérhetők az Azure Monitorban
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** jelentéskészítés  
@@ -81,7 +99,7 @@ Ezekkel az új képességekkel kapcsolatos további információkért lásd: blo
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentések hozzáadott feltételes hozzáférési adatok
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentése feltételes hozzáférési adatokkal bővült
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** jelentéskészítés  
@@ -101,7 +119,7 @@ Bevezetésével a **ügyfélalkalmazás** -naplókat a bejelentkezési tevékeny
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény – 2018. július
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>2018 júliusától új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** vállalati alkalmazások  
@@ -115,7 +133,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrá
 
 ---
  
-### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Új felhasználók SaaS-alkalmazás Integrációk – 2018. július
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>2018. július – új felhasználókiépítési funkció az SaaS-alkalmazás-integrációkban
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** Alkalmazáskiosztási  
@@ -133,7 +151,7 @@ Minden alkalmazás, amely támogatja a felhasználók átadásának az Azure AD 
 
 ---
 
-### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync - megkönnyítő árva és ismétlődő attribútum szinkronizálási hibák javítása
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync – Az árván maradt és ismétlődő attribútumok szinkronizálásából fakadó hibák javításának egyszerűbb módja
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** AD Connect  
@@ -151,7 +169,7 @@ További információkért lásd: [diagnosztizálása és a duplikált attribút
 
 ---
 
-### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Vizualizáció frissítése az Azure ad és az MSA bejelentkezési élmény
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Az Azure AD és az MSA bejelentkezési felületének vizuális frissítései
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** Azure ad-ben  
@@ -161,7 +179,7 @@ Frissítettük a felhasználói felületen, a Microsoft online services bejelent
 
 ---
 
-### <a name="new-release-of-azure-ad-connect---july-2018"></a>Új kiadás az Azure AD Connect – 2018. július
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Az Azure AD Connect új kiadása – 2018. július
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** Alkalmazáskiosztási  
@@ -179,7 +197,7 @@ A frissítéssel kapcsolatos további információkért lásd: [az Azure AD Conn
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>A végfelhasználói használati feltételek (feltételek) felhasználói felület frissítéseit
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>A használati feltételek (TOU) végfelhasználói felületének frissítései
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** használati feltételek  
@@ -193,7 +211,7 @@ Frissítjük a jelen használati feltételek végfelhasználó felhasználói fe
 
 ---
  
-### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Az átmenő hitelesítés támogatja az örökölt protokollok és alkalmazások
+### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Az átmenő hitelesítés támogatja az örökölt protokollok és alkalmazások használatát
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
@@ -213,7 +231,7 @@ Az átmenő hitelesítés most már támogatja az örökölt protokollok és alk
 
 ---
  
-### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Új jelszó önkiszolgáló kérése és a multi-factor Authentication konvergens biztonsági adatok kezelése
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Az önkiszolgáló jelszóátállításhoz és a többtényezős hitelesítéshez használt biztonsági adatok kezelésének összevonása
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** SSPR  
@@ -227,7 +245,7 @@ Egy választható nyilvános előzetes kiadásról. A rendszergazdák bekapcsolh
 
 ---
  
-### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>A Microsoft Authenticator alkalmazás használatával igazolhatja a személyazonosságát, ha a jelszó alaphelyzetbe állításakor
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>A Microsoft Authenticator alkalmazással igazolhatja személyazonosságát a jelszava átállításakor
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** SSPR  
@@ -419,7 +437,7 @@ Ha folytatja, dedikált Kapcsolatcsoportok használni kell, kommunikáljon a Mic
  
 ---
 
-### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Felügyeleti forgatókönyvek a használati feltételek a Microsoft Graph API-k
+### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Microsoft Graph API-k a használati feltételekkel kapcsolatos felügyeleti műveletek végrehajtásához
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** használati feltételek  
@@ -497,7 +515,7 @@ Az Azure AD tevékenységeket tartalmazó naplók, amely tartalmazza a bejelentk
 
 ---
  
-### <a name="improvements-to-the-b2b-redemption-experience-and-leave-an-org"></a>A B2B beváltási környezettel és a cégfiók megszüntetésével kapcsolatos fejlesztések
+### <a name="improvements-to-the-b2b-redemption-experience-and-leave-an-org"></a>A B2B beváltási környezetének továbbfejlesztett funkciói és a cégfiók megszüntetése
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** B2B  
@@ -511,7 +529,7 @@ Az Azure AD tevékenységeket tartalmazó naplók, amely tartalmazza a bejelentk
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény – 2018. május
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>2018 májusától új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** vállalati alkalmazások  
@@ -549,13 +567,13 @@ Ha nem találja az alkalmazás / egyszerű szolgáltatások? Hozzáadtunk továb
 
 ---
  
-### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Az aad Connect kiadása tartalmaz egy nyilvános előzetes verziója a pingfederate-tel, az integráció május fontos biztonsági frissítések, számos hibajavítást és új nagyszerű új hibaelhárítási eszközei. 
+### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Az AAD Connect májusi kiadásának újdonságai a következők: a PingFederate-integráció nyilvános előzetes verziója, fontos biztonsági frissítések, számos hibajavítás és nagyszerű új hibaelhárítási eszközök. 
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** AD Connect  
 **A termék funkció:** identitás-életciklus-felügyelet
  
-Az aad Connect kiadása tartalmaz egy nyilvános előzetes verziója a pingfederate-tel, az integráció május fontos biztonsági frissítések, számos hibajavítást és új nagyszerű új hibaelhárítási eszközei. A kibocsátási megjegyzésekben talál [Itt](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
+Az AAD Connect májusi kiadásának újdonságai a következők: a PingFederate-integráció nyilvános előzetes verziója, fontos biztonsági frissítések, számos hibajavítás és nagyszerű új hibaelhárítási eszközök. A kibocsátási megjegyzésekben talál [Itt](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
 
 ---
 
@@ -795,7 +813,7 @@ További információ erről a [blogbejegyzés](https://cloudblogs.microsoft.com
 
 További információkért lásd:
 
-- [Alkalmazásalapú feltételes hozzáférés beállítása](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Alkalmazásalapú feltételes hozzáférés beállítása](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 - [Felügyeltböngésző-szabályzatok konfigurálása](https://aka.ms/managedbrowser)  
 
@@ -1155,7 +1173,7 @@ A következő alkalmazások szerint február végétől lesznek hozzáadva:
 További információkért lásd:
 
 - [Jóváhagyott alkalmazás megkövetelése](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1447,13 +1465,13 @@ További információkért lásd: [feltételes hozzáférés az Azure ad-ben](ht
 
 A következő alkalmazások olyan listájában [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
 
-- [A Microsoft Kaizala](https://microsoft.com/garage/profiles/kaizala/)
+- [A Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
 
 További információkért lásd:
 
 - [Jóváhagyott alkalmazás megkövetelése](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1491,9 +1509,9 @@ További információkért lásd: [a helyszíni integrációs](https://docs.micr
 **Szolgáltatási kategóriához:** Azure ad-ben  
 **A termék funkció:** identitás biztonsága és védelme
 
-Most már korlátozzuk Office 365-höz és más Azure AD-hez csatlakozó-felhőalkalmazások [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) , amelyek támogatják az Intune alkalmazásvédelmi szabályzatai segítségével [Azure AD alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam). Az Intune alkalmazásvédelmi szabályzatai segítségével konfigurálhatja, és ezek ügyfélalkalmazások számára a vállalati adatok védelmét.
+Most már korlátozzuk Office 365-höz és más Azure AD-hez csatlakozó-felhőalkalmazások [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) , amelyek támogatják az Intune alkalmazásvédelmi szabályzatai segítségével [Azure AD alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Az Intune alkalmazásvédelmi szabályzatai segítségével konfigurálhatja, és ezek ügyfélalkalmazások számára a vállalati adatok védelmét.
 
-Kombinálásával [alkalmazásalapú](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) a [eszközalapú](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) feltételes hozzáférési házirendeket, választhat, az adatok a személyes és vállalati eszközök védelme.
+Kombinálásával [alkalmazásalapú](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) a [eszközalapú](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) feltételes hozzáférési házirendeket, választhat, az adatok a személyes és vállalati eszközök védelme.
 
 A következő feltételeit és szabályzóit számára érhető el az alkalmazásalapú feltételes hozzáférés használata:
 
@@ -1510,7 +1528,7 @@ A következő feltételeit és szabályzóit számára érhető el az alkalmazá
 
 - Jóváhagyott ügyfélalkalmazás megkövetelése
 
-További információkért lásd: [Azure AD alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam).
+További információkért lásd: [Azure AD alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access).
  
 ---
 
@@ -1607,7 +1625,7 @@ A következő alkalmazások listájának hozzáadott [jóváhagyott ügyfélalka
 További információkért lásd:
 
 - [Jóváhagyott alkalmazás megkövetelése](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 
 ---

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d00a6d3c476e10b13d00ff1738cb54c2eeea104c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a98c8ac65de930eabcedea2a009769ed6d245216
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521822"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617192"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -151,7 +151,7 @@ Víruskereső ismert kártevő kódja fájlok vizsgálata úgy működik, mert e
 A következő megoldások ismert támogatására, a rendszer kihagyja a kapcsolat nélküli fájlok:
 
 - [A Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - A Windows Defender automatikus kihagyja az ilyen fájlok olvasása. Azt Defender teszteltük, és egy kisebb hibát azonosított: a kiszolgáló egy meglévő szinkronizálási csoporthoz való hozzáadásakor fájlok kisebb, mint 800 bájt vannak idézni (Letöltés) az új kiszolgálón. Ezek a fájlok továbbra is az új kiszolgálón, és nem lesz rétegzett, mivel azok nem felelnek meg a rétegzési méretkövetelményt (> 64 KB-os).
+    - A Windows Defender automatikusan kihagyja az offline attribútum beállítása rendelkező fájlok olvasásához. Azt Defender teszteltük, és egy kisebb hibát azonosított: a kiszolgáló egy meglévő szinkronizálási csoporthoz való hozzáadásakor fájlok kisebb, mint 800 bájt vannak idézni (Letöltés) az új kiszolgálón. Ezek a fájlok továbbra is az új kiszolgálón, és nem lesz rétegzett, mivel azok nem felelnek meg a rétegzési méretkövetelményt (> 64 KB-os).
 - [A System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
     - SCEP működik, mint a Defender; Lásd a fenti
 - [A Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
@@ -192,11 +192,13 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | Délkelet-Ausztrália | Victoria |
 | Közép-Kanada | Toronto |
 | Kelet-Kanada | Quebec City |
+| Közép-India | Pune |
 | USA középső régiója | Iowa |
 | Kelet-Ázsia | Hongkong KKT |
 | USA keleti régiója | Virginia |
 | USA 2. keleti régiója | Virginia |
 | Észak-Európa | Írország |
+| Dél-India | Csennai |
 | Délkelet-Ázsia | Szingapúr |
 | Az Egyesült Királyság déli régiója | London |
 | Az Egyesült Királyság nyugati régiója | Cardiff |
@@ -212,15 +214,17 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 
 | Elsődleges régió      | Párosított régió      |
 |---------------------|--------------------|
-| Kelet-Ausztrália      | Ausztrália Southest |
+| Kelet-Ausztrália      | Délkelet-Ausztrália |
 | Délkelet-Ausztrália | Kelet-Ausztrália     |
 | Közép-Kanada      | Kelet-Kanada        |
 | Kelet-Kanada         | Közép-Kanada     |
+| Közép-India       | Dél-India        |
 | USA középső régiója          | USA 2. keleti régiója          |
 | Kelet-Ázsia           | Délkelet-Ázsia     |
 | USA keleti régiója             | USA nyugati régiója            |
 | USA 2. keleti régiója           | USA középső régiója         |
 | Észak-Európa        | Nyugat-Európa        |
+| Dél-India         | Közép-India      |
 | Délkelet-Ázsia      | Kelet-Ázsia          |
 | Az Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |
 | Az Egyesült Királyság nyugati régiója             | Az Egyesült Királyság déli régiója           |

@@ -1,37 +1,37 @@
 ---
-title: Azure Application Gateway tanúsítvány megújítása
-description: 'Útmutató: az alkalmazás átjáró figyelő társított tanúsítvány megújítása.'
+title: Az Azure Application Gateway tanúsítvány megújítása
+description: Megtudhatja, hogyan egy application gateway-figyelő társított tanúsítvány megújításához.
 services: application-gateway
 author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: b44a57fe8ebcc985d3ab66ea04936a1558d00863
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 48bd548ec977d2dc4dd3b5b2f34df04562a6e918
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598266"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060613"
 ---
-# <a name="renew-application-gateway-certificates"></a>Alkalmazásátjáró tanúsítványainak megújítása
+# <a name="renew-application-gateway-certificates"></a>Az Application Gateway-tanúsítványok megújítása
 
-Bármikor szüksége lesz a tanúsítványok megújítása, ha az alkalmazás átjáró SSL-titkosításra konfigurált.
+Bármikor szüksége lesz a tanúsítványok megújítása, ha az application gateway SSL-titkosításra konfigurált.
 
-Egy figyelő vagy az Azure portál használatával, az Azure PowerShell vagy Azure CLI társított tanúsítvány megújítása is:
+Egy figyelő vagy az Azure portal használatával, az Azure PowerShell vagy Azure CLI-vel társított tanúsítvány újíthatja meg:
 
 ## <a name="azure-portal"></a>Azure Portal
 
-A portálról figyelő tanúsítvány megújítása, keresse meg az alkalmazás átjáró figyelők. A figyelő, amely rendelkezik egy tanúsítványt, amelyet a megújítani, majd kattintson **megújítási vagy szerkesztése a kiválasztott tanúsítvány**.
+A portálról figyelő tanúsítvány megújításához, keresse meg az application gateway figyelők. Kattintson a figyelő, amely rendelkezik egy tanúsítványt, amelyet meg kell újítani, és kattintson a **megújítása vagy szerkesztése a kiválasztott tanúsítvány**.
 
 ![Tanúsítvány megújítása](media/renew-certificate/ssl-cert.png)
 
-Az új PFX-tanúsítvány feltöltése, adjon neki egy nevet, írja be a jelszót, és kattintson **mentése**.
+Az új PFX-tanúsítvány feltöltéséhez, adjon meg egy nevet, írja be a jelszót, és kattintson **mentése**.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Az Azure PowerShell a tanúsítvány megújításához, használja a következő parancsmagot:
+Az Azure PowerShell-lel tanúsítvány megújításához, használja a következő szkriptet:
 
 ```azurepowershell-interactive
 $appgw = Get-AzureRmApplicationGateway `
@@ -45,6 +45,8 @@ $password = ConvertTo-SecureString `
 
 set-azureRmApplicationGatewaySSLCertificate -Name <oldcertname> `
 -ApplicationGateway $appgw -CertificateFile <newcertPath> -Password $password
+
+Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -59,4 +61,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>További lépések
 
-SSL-Feladatkiszervezést konfigurálása Azure Application Gateway kapcsolatban [SSL-kiszervezés konfigurálása](application-gateway-ssl-portal.md)
+SSL-kiürítés konfigurálása az Azure Application Gateway szolgáltatással kapcsolatban lásd: [SSL kiürítési konfigurálása](application-gateway-ssl-portal.md)

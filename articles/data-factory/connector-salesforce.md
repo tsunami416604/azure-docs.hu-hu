@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 69e3e308fb5af98dd5763c56503cc28bd4ecfa9e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 19ba4a97b93c01a049f921904d0f5aba4b8c0617
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125248"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442054"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a Salesforce-hoz, és az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -184,7 +184,7 @@ Adatok másolása a Salesforce-ból, állítsa a forrás típusaként a másolá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **SalesforceSource**. | Igen |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. Használhat egy SQL-92 lekérdezés vagy [Salesforce objektum Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezés. Például: `select * from MyTable__c`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. Használhat [Salesforce objektum Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) vagy SQL-92 lekérdezés. Tekintse meg a további tippek [lekérdezési tippek](#query-tips) szakaszban. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 | readBehavior | Azt jelzi, hogy a meglévő rekordok lekérdezése, vagy lekérdezheti az összes rekord törölve azokat is beleértve. Ha nincs megadva, a korábbi az alapértelmezett viselkedést. <br>Megengedett értékek: **lekérdezés** (alapértelmezett), **queryAll**.  | Nem |
 
 > [!IMPORTANT]
@@ -282,10 +282,20 @@ Kérheti le adatokat a Salesforce-jelentésekből, a lekérdezés megadásával 
 
 ### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>A Salesforce Lomtárból törölt rekordok beolvasása
 
-Lekérdezés a helyreállíthatóan törölt rekordok a Salesforce Lomtárból, megadhatja **"IsDeleted = 1"** a lekérdezésben. Példa:
+Lekérdezés a helyreállíthatóan törölt rekordok a Salesforce Lomtárból, megadhatja `readBehavior` , `queryAll`. 
 
-* A törölt rekordok lekérdezése, adja meg a "kiválasztása * MyTable__c a **ahol IsDeleted = 1**."
-* Lekérdezés az összes rekordot, beleértve a meglévő és a törölt, adja meg a "kiválasztása * MyTable__c a **ahol IsDeleted = 0 vagy IsDeleted = 1**."
+### <a name="difference-between-soql-and-sql-query-syntax"></a>SOQL és az SQL-lekérdezési szintaxis közötti különbség
+
+Adatok másolása a Salesforce-ból, ha SOQL lekérdezés vagy SQL-lekérdezést is használhatja. Ne feledje, hogy ezt a két különböző szintaxist és a funkciók támogatása, nem használhatók vegyesen. Ön az SOQL lekérdezéssel, amelyet natív módon támogat a Salesforce használata javasolt. Az alábbi táblázat a fő különbség:
+
+| Szintaxis | SOQL mód | SQL-módja |
+|:--- |:--- |:--- |
+| Oszlop kiválasztása | Kell felsorolni a lekérdezés, pl. másolandó mezők `SELECT field1, filed2 FROM objectname` | `SELECT *` Oszlop kiválasztása mellett támogatott. |
+| Idézőjelek között | Nem szerepelhetnek idézőjelek között az iktatott/objektumok nevét. | A mező/objektumok nevét is szerepelhetnek idézőjelek között, például: `SELECT "id" FROM "Account"` |
+| Dátum és idő formátumban |  Tekintse meg a részleteket [Itt](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) és a felhozott példák a következő szakaszban. | Tekintse meg a részleteket [Itt](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) és a felhozott példák a következő szakaszban. |
+| Logikai értékek | -Kiszolgálókként `False` és `Ture`, pl. `SELECT … WHERE IsDeleted=True`. | 0 vagy 1, pl. kiszolgálókként `SELECT … WHERE IsDeleted=1`. |
+| Oszlop átnevezése | Nem támogatott. | Támogatott, például: `SELECT a AS b FROM …`. |
+| Kapcsolat | Támogatott, például `Account_vod__r.nvs_Country__c`. | Nem támogatott. |
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Adatok beolvasása a where záradék található dátum és idő
 

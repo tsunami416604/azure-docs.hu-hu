@@ -1,74 +1,74 @@
 ---
-title: Profiljaival API verziót NYISSA meg az Azure-verem |} Microsoft Docs
-description: Ismerje meg, NYISSA meg az Azure-verem API-verzió profilok használatával kapcsolatban.
+title: API-verzióprofilok használatával nyissa meg az Azure Stackben |} A Microsoft Docs
+description: Ismerje meg az API-verzióprofilok használatával nyissa meg az Azure Stackben.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9ad4402098e938f72cf4b8c61cce8d0d46b5a147
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010064"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42056875"
 ---
-# <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Nyissa meg az Azure-verem API-verzió profilok használata
+# <a name="use-api-version-profiles-with-go-in-azure-stack"></a>API-verzióprofilok használata nyissa meg az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-## <a name="go-and-version-profiles"></a>Nyissa meg és verzió
+## <a name="go-and-version-profiles"></a>A go és a verzió profilok
 
-Egy profil a különböző szolgáltatásokhoz különböző verzióival különböző típusú kombinációja. A profilt használó segítséget kombinációs között különböző típusú. Profilok biztosít:
+A profil a különböző szolgáltatásokhoz különböző verziójú különböző erőforrástípusok kombinációját. A profilt használó segítségével keverheti a különböző erőforrástípusok között. Profilok biztosítja:
 
- - Az alkalmazás az adott API-verzióra történő zárolja stabilitását.
- - Az alkalmazás Azure verem és a regionális Azure adatközpontjaiban való kompatibilitást.
+ - Az adott API-verziók zárolja az alkalmazás stabilitását.
+ - Az alkalmazás az Azure Stack és a regionális Azure-adatközpontok való kompatibilitást.
 
-Nyissa meg SDK profilok alatt érhetők el a profilok / elérési utat, a verziót a **éééé-hh-nn** formátumban. Most, a legújabb Azure verem profil verzió **2017-03-09**. Egy profil importálni egy adott szolgáltatáshoz, szüksége a megfelelő modul importálása a profilt. Ahhoz például, hogy importálja **számítási** a szolgáltatás **2017-03-09** profil:
+A Go SDK érhetők el profilok alapján a profilok / elérési út, a verziójuk a **éééé-hh-nn** formátumban. Most, profil-verzió legújabb Azure Stack **2017-03-09**. Az adott szolgáltatás importálására a profil, a profil a megfelelő modul importálnia kell. Például az importálandó **számítási** a szolgáltatás **2017-03-09** profil:
 
 ````go
 import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute" 
 ````
 
-## <a name="install-azure-sdk-for-go"></a>Nyissa meg az Azure SDK telepítése
+## <a name="install-azure-sdk-for-go"></a>A Góhoz készült Azure SDK telepítése
 
-  1. Telepítse a git szoftvert. Útmutatásért lásd: [első lépések – telepíti a Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-  2. Telepítse a [programozási nyelv Ugrás](https://golang.org/dl).  
-  Az Azure API-profilok Ugrás 1.9 vagy újabb verziója szükséges.
-  3. Az Ugrás Azure SDK-val és függőségeinek telepítése a következő bash parancs futtatásával:
+  1. A Git telepítése. Útmutatásért lásd: [első lépések – Git telepítése](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+  2. Telepítse a [Go programozási nyelvhez](https://golang.org/dl).  
+  Az Azure API-profilok Go 1.9 vagy újabb verziójára lesz szükség.
+  3. Telepítse a Go Azure SDK és annak függőségeit az alábbi bash-parancs futtatásával:
   ```
     go get -u -d github.com/Azure/azure-sdk-for-go/...
   ```
 
-### <a name="the-go-sdk"></a>NYISSA meg a SDK
+### <a name="the-go-sdk"></a>A GO SDK-hoz
 
-További információ: az Azure Ugrás SDK található:
-- Nyissa meg az Azure SDK, [nyissa meg az Azure SDK telepítése](https://docs.microsoft.com/go/azure/azure-sdk-go-install).
-- Az Azure Ugrás SDK nyilvánosan elérhető a Githubon: [azure-sdk-az-Ugrás](https://github.com/Azure/azure-sdk-for-go).
+További információ az Azure GO SDK címen található:
+- Az Azure SDK a Go [Góhoz készült Azure SDK telepítése](https://docs.microsoft.com/go/azure/azure-sdk-go-install).
+- Az Azure a Go SDK nyilvánosan elérhető a Githubon található [azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go).
 
-### <a name="go-autorest-dependencies"></a>Nyissa meg-AutoRest függőségek
+### <a name="go-autorest-dependencies"></a>Go-AutoRest függőségek
 
-Az Ugrás SDK attól függ, hogy a többi kérést küld az Azure Resource Manager végpontok Azure Ugrás-AutoRest modulokat. Importálja az Azure Ugrás-AutoRest modul függőségeket kell [Azure Ugrás-AutoRest a Githubon](https://github.com/Azure/go-autorest). A telepítés bash parancsok található a **telepítése** szakasz.
+A GO SDK attól függ, hogy a REST-kérelmeket küldjön az Azure Resource Manager-végpontok Azure Go-AutoRest modulokat. Importálja az Azure Go-AutoRest modul függőségeket kell [Azure Go-AutoRest a Githubon](https://github.com/Azure/go-autorest). A telepítés a bash-parancsok is megtalálhatja a **telepítése** szakaszban.
 
-## <a name="how-to-use-go-sdk-profiles-on-azure-stack"></a>Azure veremben Ugrás SDK-profilok használatával
+## <a name="how-to-use-go-sdk-profiles-on-azure-stack"></a>GO SDK profilok használata az Azure Stackben
 
-Nyissa meg kód minta futtatásához Azure veremben:
-  1. Azure SDK telepítéséhez nyissa meg és annak függőségeit. Az utasítás lásd az előző szakaszban [Azure SDK telepítéséhez nyissa meg a](#install-azure-sdk-for-go).
-  2. A metaadat-információ lekérése a Resource Manager-végpontot. A végpont egy JSON-fájl futtatásához az Ugrás kód szükséges adatokat adja vissza.
+Go-kódokat a minta futtatása az Azure Stacken:
+  1. Telepítse az Azure SDK a Go és annak függőségeit. Lásd: az előző szakasz utasításait követve [Góhoz készült Azure SDK telepítése](#install-azure-sdk-for-go).
+  2. A metaadatok információinak lekérése a Resource Manager-végpontot. A végpont egy JSON-fájlt a Go kód futtatásához szükséges adatokat adja vissza.
 
   > [!Note]  
-  > A **ResourceManagerUrl** az Azure verem Development Kit (ASDK) van: `https://management.local.azurestack.external/`  
-  > A **ResourceManagerUrl** integrált rendszerekben van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
-  > A szükséges metaadatok beolvasása: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+  > A **ResourceManagerUrl** van az Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/`  
+  > A **ResourceManagerUrl** integrált rendszerek van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
+  > A szükséges metaadatokat lekéréséhez: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
-  A minta JSON-fájlt:
+  JSON-mintafájlt:
 
   ```json
   { "galleryEndpoint": "https://portal.local.azurestack.external:30015/",  
@@ -81,16 +81,16 @@ Nyissa meg kód minta futtatásához Azure veremben:
   }
   ```
 
-  3. Nem érhető el, ha előfizetés létrehozása és mentése a későbbi előfizetés-azonosító. Előfizetés létrehozása a további információkért lásd: [ajánlatok-előfizetések létrehozása az Azure-készletben](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm). 
-  4. Hozzon létre egy egyszerű "Előfizetés" hatókör és **tulajdonos** szerepkör. Mentse a szolgáltatásnevekről Azonosítót és titkos kulcsot. Egy egyszerű Azure verem létrehozásával kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Az Azure-verem környezet be van állítva.
-  5. Szolgáltatás modul importálása a kódban Ugrás SDK profilból. Azure verem profil verziószámának **2017-03-09**. Ahhoz például, hogy a hálózati modul importálása **2017-03-09** profiltípus: 
+  3. Ha nem érhető el, hozzon létre egy előfizetést és az előfizetés-azonosító későbbi felhasználás céljából. Előfizetés létrehozásával kapcsolatos információkért lásd: [ajánlatok, előfizetések létrehozása az Azure Stackben](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm). 
+  4. Egyszerű szolgáltatás létrehozása az "Előfizetés" hatókör és **tulajdonosa** szerepkör. Mentse a szolgáltatásnevek,-azonosítója és kulcsa. Az Azure stack-beli szolgáltatásnév létrehozása információkért lásd: [egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Az Azure Stack-környezet be van állítva.
+  5. Egy modul importálása a kódban a Go SDK profil. Az Azure Stack profil aktuális verziója: **2017-03-09**. Ha például a hálózati modul importálásához **2017-03-09** profil típusa: 
 
   ````go
     package main 
     import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/network/mgmt/network"
   ````
   
-  6. A függvény létrehozása, és az ügyfél hitelesítésére a **új** ügyfél függvény hívásához szükséges. Hozzon létre egy virtuális hálózati ügyfél, a következő kódot használhatja:  
+  6. A függvényben létrehozásához, és az ügyfél hitelesítéséhez egy **új** ügyfél függvény hívásához szükséges. Hozzon létre egy virtuális hálózati ügyfél, a következő kódot használhatja:  
 
   ````go
   package main 
@@ -102,11 +102,11 @@ Nyissa meg kód minta futtatásához Azure veremben:
       vnetClient.Authorizer = autorest.NewBearerAuthorizer(token)
   ````
 
-  Állítsa be `<baseURI>` számára a **ResourceManagerUrl** két lépésben használt érték.
-  Állítsa be `<subscriptionID>` számára a **SubscriptionID** három lépésben mentett érték.
-  Jogkivonat létrehozásához lásd: a hitelesítés az alábbi szakasz.  
+  Állítsa be `<baseURI>` , a **ResourceManagerUrl** két lépésben használt érték.
+  Állítsa be `<subscriptionID>` , a **SubscriptionID** három lépésben mentett érték.
+  Token létrehozásához lásd: hitelesítés az alábbi szakaszban.  
 
-  7. API-módszer meghívásához az ügyfélprogrammal, amelyet az előző lépésben hozott létre. Ha például egy virtuális hálózat létrehozása az előző lépésben ügyfél használatával: 
+  7. API-metódusokat hívhat meg az előző lépésben létrehozott az ügyfél használatával. Ha például egy virtuális hálózat létrehozása az előző lépésből származó ügyfél használatával: 
   
 ````go
 package main
@@ -119,19 +119,19 @@ func main() {
   vnetClient .CreateOrUpdate( ) 
 ````
   
-  Átfogó példát virtuális hálózat létrehozása Azure veremben Ugrás SDK-profilok használatával, lásd: [példa](#example).
+  Virtuális hálózat létrehozása az Azure Stacken Go SDK-profillal egy teljes példa: [példa](#example).
 
 ## <a name="authentication"></a>Hitelesítés
 
-Ahhoz, hogy a Authorizer tulajdonság az Azure Active Directory Ugrás SDK használatával, a Go-AutoRest modulok telepítése. Ezek a modulok lett telepíteni kell az "Ugrás SDK" telepítésének; Ha nem, telepítse a [hitelesítési csomag a Githubon](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
+A hitelesítő tulajdonság lekérdezése a Go SDK-val az Azure Active Directoryból, a Go-AutoRest modulok telepítéséhez. Ezeket a modulokat kell már telepítették a "Go SDK" telepítés; Ha nem, telepítse a [hitelesítési csomag a Githubon](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
 
-Az erőforrás-ügyfél authorizer a Authorizer kell beállítani. Többféle módszerrel lekérni egy Authorizer; a a teljes listáját lásd itt.
+A hitelesítő kell beállítani a hitelesítő az erőforrás-ügyfél. Get-hitelesítő; különböző módszer áll rendelkezésre egy teljes listáját lásd itt.
 
-Ebben a szakaszban egy közös módja authorizer jogkivonatok Azure veremben ügyfél hitelesítő adatok használatával:
+Ez a fejezet ismerteti a gyakori módja tokenekhez hitelesítő az Azure Stacken ügyfél-hitelesítő adatok használatával:
 
-  1. Ha a tulajdonosi szerepkört az előfizetés az egyszerű szolgáltatás nem érhető el, kihagyhatja ezt a lépést. Máskülönben hozzon létre egy egyszerű [utasításokat]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) , és rendelje hozzá az előfizetéséhez hatókörű "owner" szerepet [utasításokat]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). A szolgáltatás egyszerű alkalmazás azonosítója és a titkos kulcs mentése. 
+  1. Ha egy egyszerű szolgáltatást az előfizetésben tulajdonosi szerepkörrel rendelkező érhető el, hagyja ki ezt a lépést. Ellenkező esetben az egyszerű szolgáltatás létrehozása [utasításokat]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) , és rendelje hozzá egy "owner" szerepkör hatóköre úgy, hogy az előfizetés [utasításokat]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). Mentse a szolgáltatás egyszerű Alkalmazásazonosítót és titkos kulcsot. 
 
-  2. Importálás **adal** Ugrás-AutoRest-csomagot a kódban. 
+  2. Importálás **adal** Go-AutoRest csomagot a kódban. 
   
   ````go
   package main
@@ -150,10 +150,10 @@ Ebben a szakaszban egy közös módja authorizer jogkivonatok Azure veremben üg
       oauthConfig, err := adal.NewOAuthConfig(activeDirectoryEndpoint, tenantID)
   ````
    
-  Állítsa be `<activeDirectoryEndpoint>` "loginEndpoint" értékével a tulajdonság a ResourceManagerUrl metaadatok olvassa be az előző szakaszban ebben a dokumentumban.
-  Állítsa be `<tenantID>` értéket az Azure-verem bérlő azonosítójával. 
+  Állítsa be `<activeDirectoryEndpoint>` "loginEndpoint" értékéhez tulajdonság ResourceManagerUrl metaadatok alapján olvassa be az előző szakaszban ebben a dokumentumban.
+  Állítsa be `<tenantID>` érték, az Azure Stack-bérlő azonosítója. 
 
-  4. Végezetül hozza létre egy egyszerű szolgáltatás-jogkivonatot adal modulból NewServicePrincipalToken módszer használatával. 
+  4. Végül hozzon létre egy egyszerű szolgáltatás-jogkivonatot az adal modul NewServicePrincipalToken módszer használatával. 
 
   ````go
   package main 
@@ -171,18 +171,18 @@ Ebben a szakaszban egy közös módja authorizer jogkivonatok Azure veremben üg
       return token, err
   ````
   
-  Állítsa be `<activeDirectoryResourceID>` "célközönség" értékek egyikére a jelen dokumentum az előző szakaszban letölteni a ResourceManagerUrl metaadatok listáját.  
-  Állítsa be `<clientID>` a szolgáltatás egyszerű alkalmazás azonosítója mentett egyszerű szolgáltatás létrehozása az előző szakasz ebben a dokumentumban.  
-  Állítsa be `<clientSecret>` a szolgáltatás egyszerű alkalmazás titkos kulcs mentése egyszerű szolgáltatás létrehozása az előző szakasz ebben a dokumentumban.  
+  Állítsa be `<activeDirectoryResourceID>` egy "célközönség" értékek listája a ResourceManagerUrl metaadatok olvassa be az előző szakaszban Ez a dokumentum.  
+  Állítsa be `<clientID>` a szolgáltatás egyszerű alkalmazást azonosító mentése az előző szakaszban Ez a dokumentum az egyszerű szolgáltatás létrehozásakor.  
+  Állítsa be `<clientSecret>` a szolgáltatás egyszerű alkalmazás titkos kulcs mentése az előző szakaszban Ez a dokumentum az egyszerű szolgáltatás létrehozásakor.  
 
 ## <a name="example"></a>Példa
 
-Ez a szakasz bemutatja egy minta kód nyissa meg a virtuális hálózat létrehozása az Azure veremben. Ugrás SDK teljes példái című [Azure Ugrás SDk minták tárház](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Azure-verem minták érhetők el a hibrid / elérési út a tárház szolgáltatás mappákban.
+Ebben a szakaszban a virtuális hálózat létrehozása az Azure Stacken Go-kódokat mintáját szemlélteti. Go SDK teljes példát talál [Azure Go SDk mintaadattárban](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Azure Stack-minták érhetők el hibrid / szolgáltatásokhoz kapcsolódó mappák a tárház található.
 
 > [!Note]  
-> Az ebben a példában a kódra, győződjön meg arról, hogy rendelkezik-e a használt előfizetés **hálózati** tulajdonosaként erőforrás-szolgáltató **regisztrált**. Annak ellenőrzéséhez, hogy, keresse meg az előfizetést a verem Azure-portálon, és kattintson a **erőforrás-szolgáltatók.**
+> Ebben a példában a kód futtatásához, győződjön meg arról, hogy rendelkezik-e a használt előfizetés **hálózati** állapottal erőforrás-szolgáltató **regisztrált**. Ellenőrzi, hogy, keresse meg az előfizetés az Azure Stack portálon, majd kattintson a **erőforrás-szolgáltatók.**
 
-1. Importálja a szükséges csomagokat a kódban. A modul importálása használjon a legújabb elérhető profil Azure veremben. 
+1. Importálja a szükséges csomagokat a kódban. A modul importálása az Azure Stacken használjon a legújabb elérhető profilt. 
   
   ````go
   package main
@@ -197,7 +197,7 @@ Ez a szakasz bemutatja egy minta kód nyissa meg a virtuális hálózat létreho
   )
   ````
 
-2. Adja meg a környezeti változókat. Virtuális hálózat létrehozásához szükség van erőforráscsoport. 
+2. A környezeti változókat határozhat meg. Egy virtuális hálózat létrehozásához szüksége lesz egy erőforráscsoportot. 
 
   ````go
   var (
@@ -212,7 +212,7 @@ Ez a szakasz bemutatja egy minta kód nyissa meg a virtuális hálózat létreho
   )
   ````
 
-3. Most, hogy a környezeti változók definiált, adja hozzá a metódust a hitelesítési jogkivonat létrehozásához **adal** csomag. Az előző szakaszban hitelesítési adatainak megtekintése.
+3. Most, hogy a környezeti változók meghatározta, adjon meg egy metódust a hitelesítési jogkivonat létrehozásához **adal** csomagot. Megtekintheti az előző szakaszban hitelesítési adatait.
   
   ````go
   //CreateToken creates a service principal token
@@ -228,7 +228,7 @@ Ez a szakasz bemutatja egy minta kód nyissa meg a virtuális hálózat létreho
   }
   ````
 
-4. Adja hozzá a fő metódust. A fő metódus egy tokent először kap az előző lépésben beállított módszer használatával. Egy ügyfél ezután profilból hálózati modul használatával létrehozza. Végül létrehoz egy virtuális hálózatot. 
+4. Adja hozzá a fő metódust. A fő módszert először kér le egy tokent az előző lépésben meghatározott módszer használatával. Egy ügyfél ezután hálózati modulnak a profil használatával létrehoz. Végül létrehoz egy virtuális hálózatot. 
   
 ````go
 package main
@@ -300,4 +300,4 @@ func main() {
 
 ## <a name="next-steps"></a>További lépések
 * [A PowerShell telepítése az Azure Stack szolgáltatáshoz](azure-stack-powershell-install.md)
-* [Az Azure-verem felhasználói PowerShell környezet konfigurálása](azure-stack-powershell-configure-user.md)  
+* [Az Azure Stack felhasználói PowerShell-környezet konfigurálása](azure-stack-powershell-configure-user.md)  

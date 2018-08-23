@@ -1,22 +1,23 @@
 ---
-title: Keresse meg és tárolási erőforrások kezelése a Server Explorer használatával |} Microsoft Docs
-description: Keresse meg és tárolási erőforrások kezelése a Server Explorer használatával
+title: Keresse meg és tárolási erőforrások kezelése a Server Explorer használatával |} A Microsoft Docs
+description: Böngészés és tárolási erőforrások kezelése a Server Explorer használatával
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 658dc064-4a4e-414b-ae5a-a977a34c930d
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: dd867462ce3a1841aa4e2e8943f2c2619d168b08
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 74f5508586d073bcccc54894cce6fcde1b83fe18
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112320"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055739"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Keresse meg és tárolási erőforrások kezelése a Server Explorer használatával
 
@@ -24,243 +25,243 @@ ms.locfileid: "37112320"
 
 ## <a name="overview"></a>Áttekintés
 
-Ha telepítette az Azure-eszközök a Microsoft Visual Studio, megtekintheti blob, queue és table adatok a storage-fiókok a az Azure-bA. Az Azure **tárolási** a Server Explorer csomópontban jelennek meg az adatokat, amelyek a helyi storage emulator fiókja és az egyéb Azure storage-fiókok.
+Ha telepítette az Azure-eszközök a Microsoft Visual Studióhoz készült, megtekintheti a blob, queue és táblaadatokat szolgáltatókból az Azure-hoz. Az Azure **tárolási** csomópont a Server Explorerben, amely a helyi emulátor tárfiók és az egyéb Azure storage-fiókok adatait jeleníti meg.
 
-Server Explorer a Visual Studio, a menüsávban válassza ki, ha **nézet** > **Server Explorer**. A **tárolási** csomópontban jelennek meg minden egyes Azure-előfizetés vagy a tanúsítvány, amely kapcsolódik a meglévő tárfiókok. A tárfiók nem jelenik meg, ha egyszerűen hozzáadhatja az utasításokat követve [Ez a cikk későbbi](#add-storage-accounts-by-using-server-explorer).
+Server Explorer megtekintéséhez a Visual Studióban a menüsávon válassza **nézet** > **Server Explorer**. A **tárolási** csomópont megjeleníti az összes létező minden egyes Azure-előfizetés vagy a tanúsítványt, amely csatlakozik a storage-fiókok. Ha a tárfiók nem jelenik meg, ezt hozzáadhatja utasításokat követve [a cikk későbbi részében](#add-storage-accounts-by-using-server-explorer).
 
-Az Azure SDK 2.7-től kezdődően is használhatja Cloud Explorer megtekintése és kezelése az Azure-erőforrások. További információkért lásd: [erőforrások kezelése Azure Cloud Explorer](vs-azure-tools-resources-managing-with-cloud-explorer.md).
+Azure SDK 2.7-es kezdődően is használhatja Cloud Explorer megtekintése és kezelése az Azure-erőforrások. További információkért lásd: [kezelése az Azure-erőforrások a Cloud Explorer](vs-azure-tools-resources-managing-with-cloud-explorer.md).
 
-## <a name="view-and-manage-storage-resources-in-visual-studio"></a>Megtekintheti, és a Visual Studio tárolási erőforrások kezelése
+## <a name="view-and-manage-storage-resources-in-visual-studio"></a>A Visual Studióban a storage erőforrás megtekintése és kezelése
 
-Server Explorer automatikusan emulátor a tárfiókban lévő blobokat, üzenetsorokat és táblákat listája látható. A tárfiók emulátor, a Server Explorer szerepel a **tárolási** csomópontban a **fejlesztési** csomópont.
+Server Explorer automatikusan emulátor a tárfiókban lévő blobokhoz, üzenetsorokhoz és táblákhoz listája látható. A storage emulator fiók szerepel a Server Explorer alatt a **tárolási** csomópont állapota a **fejlesztési** csomópont.
 
-A storage emulator fiók erőforrások megtekintéséhez bontsa ki a **fejlesztési** csomópont. Ha a storage emulator még nem indult el kibővítésekor a **fejlesztési** csomópont, automatikusan elindul. A folyamat eltarthat néhány másodpercig. Továbbra is működik egyéb területein a Visual Studio, amíg a storage emulator elindul.
+A storage emulator fiók erőforrások megtekintéséhez bontsa ki a **fejlesztési** csomópont. Ha a storage emulator még nem lett elindítva, bontsa ki a **fejlesztési** csomópont, akkor automatikusan elindul. A folyamat eltarthat néhány másodpercig. Továbbra is a storage emulator elindítja a Visual Studio más területeken működik.
 
-A tárfiókban lévő erőforrások megtekintéséhez bontsa ki a tárfiók csomópont a Server Explorer megtapasztalhatja **Blobok**, **várólisták**, és **táblák** csomópontok.
+A storage-fiókban erőforrások megtekintéséhez bontsa ki a Server Explorerben, ahol a tárfiók csomópont **Blobok**, **üzenetsorok**, és **táblák** csomópontok.
 
-## <a name="work-with-blob-resources"></a>A blob erőforrásokat
+## <a name="work-with-blob-resources"></a>A blob-erőforrásokkal való munka
 
-A **Blobok** csomópont a kiválasztott tárolási fiók tárolók listáját jeleníti meg. BLOB tárolók blob fájlokat tartalmazza, és ezek a blobok rendezze mappákban és almappáiban. További információkért lásd: [használata a .NET-Blob-tároló](storage/blobs/storage-dotnet-how-to-use-blobs.md).
+A **Blobok** csomópont a kiválasztott tárfiókhoz tartozó tárolók listáját jeleníti meg. BLOB-tárolók blob fájlokat tartalmazza, és ezek a blobok szervezheti mappákban és almappáiban. További információkért lásd: [használata a Blob storage .NET-](storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
 ### <a name="to-create-a-blob-container"></a>A blob-tároló létrehozása
 
-1. Nyissa meg a helyi menüje a **Blobok** csomópont, és válassza **Blob-tároló létrehozása**.
-1. Az a **Blob-tároló létrehozása** párbeszédpanelen adja meg az új tároló nevét.  
-1. Jelölje be Enter billentyűt, vagy kattintson vagy koppintson kívül blobtárolóba menti a név mező.
+1. Místní nabídka nyissa meg a **Blobok** csomópontot, és válassza ki **Blobtároló létrehozása**.
+1. Az a **Blobtároló létrehozása** párbeszédpanelen adja meg az új tároló nevét.  
+1. Válassza billentyűt a billentyűzeten, vagy kattintson vagy koppintson a név mezőnél a blob-tároló mentéséhez kívülre.
 
    > [!NOTE]
-   > A blob-tároló neve egy szám (0-9) vagy kisbetűt (a – z) kell kezdődnie.
+   > A blobtároló neve szám (0 – 9) vagy kisbetű (a – z) kell kezdődnie.
 
 ### <a name="to-delete-a-blob-container"></a>A blob-tároló törlése
 
-Nyissa meg a blob-tároló, amelyet szeretne eltávolítani, és válassza a helyi menü **törlése**.
+Nyissa meg a blob tároló, amelyet szeretne eltávolítani, és válassza a helyi menü **törlése**.
 
-### <a name="to-display-a-list-of-the-items-in-a-blob-container"></a>A blob-tárolóban lévő elemek listájának megjelenítéséhez
+### <a name="to-display-a-list-of-the-items-in-a-blob-container"></a>Az elemek listájának megjelenítéséhez a blobtárolóban
 
-Nyissa meg a blob-tároló neve helyi menüje a listában, majd válassza ki **nyitott**.
+Nyissa meg a helyi menü egy blobtároló neve a listában, és válassza **nyílt**.
 
-A blob-tároló tartalmának megtekintésekor azt lapon jelenik meg a blob-tároló nézet néven ismert.
+Amikor egy blob-tároló tartalmát, azt lapon jelenik meg a blob-tároló nézete néven.
 
-![A BLOB-tároló nézet](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC749016.png)
+![A BLOB-tároló nézete](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC749016.png)
 
-A blob-tároló nézet jobb felső sarkában a gombok segítségével blobok a következő műveleteket hajthatja végre:
+A blob-tároló nézet jobb felső sarkában a gombok segítségével a blobok a következő műveleteket hajthatja végre:
 
-* Adjon meg egy szűrő értéket, és alkalmazza azt.
+* Adja meg a szűrő értékét, és alkalmazza azt.
 * A tárolóban lévő blobok listájának frissítése.
-* Fájl feltöltése.
-* Blobok törléséhez. (A fájl törlése a blob-tároló nem törli a fájl. Csak eltávolítja azt a blob-tároló.)
-* Nyissa meg a blob.
-* Mentse a blob a helyi számítógépre.
+* Töltsön fel egy fájlt.
+* Blob törlése. (A blob-tárolóból egy fájl törlése nem törli az alapul szolgáló fájlt. Csak eltávolítja azt a blobtárolóban.)
+* Nyissa meg a blobot.
+* Mentse egy blobot a helyi számítógépen.
 
-### <a name="to-create-a-folder-or-subfolder-in-a-blob-container"></a>A blob-tároló mappát vagy almappát létrehozásához
+### <a name="to-create-a-folder-or-subfolder-in-a-blob-container"></a>Hozhat létre egy mappát vagy almappát a blobtárolóban
 
-1. Adja meg a blob-tároló Cloud Explorer. A tároló ablakban válassza ki a **Blob feltöltése** gombra.
+1. A Cloud Explorerben válassza ki a blob-tároló. A tároló ablakában válassza ki a **Blob feltöltése** gombra.
 
-1. Az a **új fájl feltöltése** párbeszédpanelen jelölje ki a **Tallózás** gombra kattintva adja meg a feltölteni kívánt fájlt, és írja be a mappa nevét a a **mappa (nem kötelező)** mezőbe.
+1. Az a **új fájl feltöltése** párbeszédpanelen válassza ki a **Tallózás** gombra kattintva adja meg a feltölteni kívánt fájlt, és írja be a mappa nevét, a a **mappába (nem kötelező)** mezőbe.
 
-   ![A fájl feltöltése a blob mappába](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766037.png)
+   ![A fájl feltöltése a blob-mappába](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766037.png)
 
-   Almappák tároló mappák az azonos lépést követve adhat hozzá. Ha nem adja meg a mappa nevét, a rendszer a fájl feltöltése, a legfelső szintre a blob-tároló. A fájl jelenik meg a megadott mappában a tárolóban.
+   Almappák tároló mappák az azonos lépést követve adhat hozzá. Ha nem adja meg a mappa nevét, a fájlt töltenek fel a legfelső szintű blob-tárolóban. A fájl jelenik meg a megadott mappát a tárolóban.
 
-   ![Egy blob-tárolóba felvett mappában találhatók](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766038.png)
+   ![Blob-tárolóba felvett mappában](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766038.png)
 
-1. Kattintson duplán a mappára, vagy jelölje be a mappa tartalmát meg az Enter billentyűt. Ha a tároló mappában, lépjen vissza a tároló a legfelső szintű kiválasztásával a **nyitott Szülőkönyvtárában** (nyíl) gombra.
+1. Kattintson duplán arra a mappára, vagy válassza le az Enter billentyűt a mappa tartalmának megtekintéséhez. Ha Ön a tároló mappa, később is visszatérhet a tároló gyökérkönyvtárába kiválasztásával a **nyílt szülőkönyvtárhoz** (nyíl) gombra.
 
 ### <a name="to-delete-a-container-folder"></a>Tároló mappa törlése
 
-A mappában található összes fájl törlésére.
+Törölje a mappában lévő összes fájlt.
 
-Mivel a blob tárolók mappák virtuális mappák, az üres mappa nem hozható létre. Még nem törölhető egy mappa, fájl tartalmának törlése, de ehelyett törölnie kell a magában a mappában törlendő mappa teljes tartalmát.
+Mivel a blob-tárolók mappák virtuális mappák, az üres mappa nem hozható létre. Is törli a fájl tartalmát egy olyan mappa nem törölhető, de ehelyett törölnie kell törli magát a mappát egy olyan mappa teljes tartalmát.
 
-### <a name="to-filter-blobs-in-a-container"></a>A tárolóban lévő blobok szűrése
+### <a name="to-filter-blobs-in-a-container"></a>A tárolóban lévő blobokat szűréséhez
 
-Szűrheti a blobot, amely megjeleníti azokat a közös előtag megadása.
+Szűrheti a blobok, amelyek egy közös előtag megadásával jelenik meg.
 
-Például, ha beírja az előtag **hello** a szűrő szövegmezőbe, és válassza ki azt a **Execute** (**!**) gomb, csak a "hello" karakterrel kezdődő blobok jelenik meg.
+Például ha ad meg, hogy az előtag **hello** a szűrő szövegmezőbe, és válassza ki a **Execute** (**!**) gomb, csak a "hello" karakterrel kezdődő blobok jelenik meg.
 
-![Szűrő szövegmező](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC519076.png)
+![Szűrési szövegmező](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC519076.png)
 
-A szűrő szövegmezőbe kis-és nagybetűket, és nem támogatja a helyettesítő karaktereket is tartalmazó szűrést. Blobok csak előtag alapján szűrhetők. Az előtag tartalmazhatnak elválasztó elválasztó blobot, amely egy virtuális hierarchia rendszerezéséhez használatakor. Az előtag alapján például szűrése "HelloFabric /" adja vissza az adott karaktersorozattal kezdődő összes BLOB.
+A szűrő szövegmezőbe kis-és nagybetűket, és nem támogatja a helyettesítő karaktereket is tartalmazó szűrés. Blobok csak előtag alapján szűrhetők. Az előtag lehet egy elválasztó használatával blobok virtuális hierarchiába rendezése egy elválasztó karaktert. Például szűrése előtag "HelloFabric /" adott karaktersorozattal kezdődő összes blobot adja vissza.
 
-### <a name="to-download-blob-data"></a>A blob adatok letöltése
+### <a name="to-download-blob-data"></a>Blob adatainak letöltése
 
-A Cloud Explorer használja az alábbi módszerek bármelyikét:
+A Cloud Explorer az alábbi módszerek bármelyikét használhatja:
 
-* Nyissa meg a helyi menü az egy vagy több blobot, és válassza **nyitott**.
-* Válassza ki a blob nevét, és válassza ki a **nyitott** gombra.
-* Kattintson duplán a blob neve.
+* Egy vagy több blobot a helyi menüjének megnyitásához, és válassza ki **nyílt**.
+* Válassza ki a blob nevét, és válassza ki a **nyílt** gombra.
+* Kattintson duplán a blob nevét.
 
-Megjelenik egy blob letöltés előrehaladását a **Azure tevékenységnapló** ablak.
+Megjelenik egy blob letöltés előrehaladását a **Azure-tevékenységnapló** ablak.
 
-A blob az adott fájltípus alapértelmezett-szerkesztő megnyitása. Ha az operációs rendszer felismeri a fájl típusát, a fájl a helyileg telepített alkalmazások nyílik meg. Ellenkező esetben felkéri a blob típusú fájl megfelelő alkalmazás kiválasztása. A blob letöltésekor létrehozott helyi fájl csak olvashatóként van megjelölve.
+A blob az alapértelmezett szerkesztő az adott fájltípus nyílik meg. Ha az operációs rendszer felismeri a fájl típusa, megnyílik a fájl a helyileg telepített alkalmazások. Ellenkező esetben kéri, hogy válassza ki a blob típusú fájl megfelelő alkalmazás. A helyi fájl létrehozásakor blob letöltése csak olvashatóként van megjelölve.
 
-BLOB adatok helyben és veti össze az Azure Blob storage a blob utolsó módosításának időpontja. Ha a blob óta utolsó letöltési frissítették, azt újra le. Ellenkező esetben a blob a helyi lemez be van töltve.
+Blobadatok a helyi gyorsítótárba, és be van jelölve, az Azure Blob storage a blob legutóbbi módosításuk ideje alapján. Ha a blob frissült, mivel a legutóbb letöltött, letöltött újra. Ellenkező esetben a blobot a helyi lemez be van töltve.
 
-Alapértelmezés szerint a blob letölti egy ideiglenes könyvtárhoz. Egy adott könyvtár blobok letöltéséhez nyissa meg a helyi menüben a kijelölt blob neveket, majd válassza **Mentés másként**. Blob mentésekor ezen a módon kikapcsolja, a blob-fájl nincs megnyitva, és a helyi fájl olvasási/írási attribútumokkal jön létre.
+Alapértelmezés szerint egy blob egy ideiglenes könyvtárba, töltődik le. Egy adott címtárhoz blobok letöltéséhez nyissa meg a kiválasztott blobok neveit menüjét, majd válassza **Mentés másként**. Amikor egy blob mentése ezen a módon kikapcsolja, a blob-fájl nincs megnyitva, és a helyi fájl jön létre az olvasási/írási attribútumok.
 
 ### <a name="to-upload-blobs"></a>Blobok feltöltése
 
-Blobok feltöltése, válassza ki a **Blob feltöltése** gombra kattint, ha a tároló meg nyitva a blob-tároló nézetben megtekinthető.
+Blobok feltöltése, válassza ki a **Blob feltöltése** gombot, ha a tároló meg nyitva, és a blob-tároló nézetben megtekinthető.
 
-Választhat egy vagy több fájlt feltölteni, és feltöltheti az összes fájltípus. A **Azure tevékenységnapló** ablakban követhető a feltöltést. Blob adatokkal kapcsolatos további információkért lásd: [Azure Blob storage használata a .NET](http://go.microsoft.com/fwlink/p/?LinkId=267911).
+Választhat egy vagy több fájlt feltölteni, és bármilyen típusú fájlokat is feltölthet. A **Azure-tevékenységnapló** ablak mutatja a feltöltés állapotának. Blob adatokkal kapcsolatos további információkért lásd: [Azure Blob storage használata .NET-keretrendszerben](http://go.microsoft.com/fwlink/p/?LinkId=267911).
 
-### <a name="to-view-logs-transferred-to-blobs"></a>A blobok továbbított naplók megtekintése
+### <a name="to-view-logs-transferred-to-blobs"></a>A blobokon át a naplók megtekintéséhez
 
-Ha Azure Diagnostics használatával adatokat az Azure alkalmazásból jelentkezik, és amelyre átmásolta naplók tárfiókja, látni fogja, ezek a naplók létrehozott Azure tárolók. Egyszerűen azonosíthatja a problémákat az alkalmazáshoz, ezek a naplók megtekintéséhez a Server Explorer, különösen akkor, ha üzembe helyezésüket követően az Azure-bA.
+Ha adatok naplózása az Azure-alkalmazásokat az Azure Diagnostics használ, és a naplók átmásolta a tárfiókhoz, látni fogja a tárolók, Azure létrehozott ezekhez a naplókhoz. Ezek a naplók megtekintéséhez a Kiszolgálókezelőben szolgáltatás könnyen azonosíthatja a problémákat az alkalmazását, különösen akkor, ha az üzembe helyezésüket az Azure-bA.
 
-Azure Diagnostics kapcsolatos további információkért lásd: [naplózási adatok gyűjtése Azure Diagnostics használatával](https://msdn.microsoft.com/library/azure/gg433048.aspx).
+Azure Diagnostics kapcsolatos további információkért lásd: [naplózási adatok gyűjtése az Azure Diagnostics használatával](https://msdn.microsoft.com/library/azure/gg433048.aspx).
 
-### <a name="to-get-the-url-for-a-blob"></a>Az URL-cím lekérése blob
+### <a name="to-get-the-url-for-a-blob"></a>Egy BLOB az URL-Címének lekéréséhez
 
-A blob helyi menü megnyitásához, és válassza ki **URL-CÍMÉT**.
+A blob helyi menü megnyitásához, majd **példány URL-cím**.
 
-### <a name="to-edit-a-blob"></a>Egy blob szerkesztése
+### <a name="to-edit-a-blob"></a>Blob szerkesztése
 
-Válassza ki a blob, és válassza ki a **nyissa meg a Blob** gombra.
+Válassza ki a blobot, és válassza ki a **nyissa meg a Blob** gombra.
 
-A fájl egy ideiglenes helyre letöltése és megnyitni a helyi számítógépen. Töltse fel újra a blob módosítása után.
+A fájl egy ideiglenes helyre letöltése és megnyitása a helyi számítógépen. Töltse fel újra a blob módosítása után.
 
-## <a name="work-with-queue-resources"></a>A várólista erőforrásokat
+## <a name="work-with-queue-resources"></a>Üzenetsor-erőforrásokkal való munka
 
-Egy Azure storage-fiókban tárolt szolgáltatások tárüzenetsort. Engedélyezi a felhőalapú szerepköreit kommunikálnak egymással, és más szolgáltatásokkal egy üzenet-sikeres mechanizmus használhatja őket. A várólista hozzáférhet programozott módon keresztül egy felhőalapú szolgáltatás, és a külső ügyfelek webszolgáltatáson keresztül. A várólista közvetlenül a Visual Studio Server Explorer használatával is elérhető.
+Tárolási szolgáltatások üzenetsorok üzemel az Azure storage-fiók. Hogy a cloud service szerepkörök üzenettovábbító mechanizmus kommunikáljanak egymással és az egyéb szolgáltatásokkal használhatja őket. A várólista hozzáférhetnek programozott módon egy felhőalapú szolgáltatás segítségével, és a külső ügyfelek webszolgáltatáson keresztül. A várólista közvetlenül a Visual Studio Server Explorer használatával is elérheti.
 
-Amikor egy felhőalapú szolgáltatás által használt várólisták fejlesztése, előfordulhat, hogy használni kívánt Visual Studio várólisták létrehozásához, és azokat interaktív használatához közben az Ön által fejlesztett és tesztelheti a kódját.
+Egy felhőszolgáltatás, amely üzenetsorokat használ fejleszt, akkor érdemes üzenetsorok létrehozása, és dolgozhat velük, interaktív módon fejlesztésekor és tesztelheti a kódját a Visual Studio használatával.
 
-A Server Explorer eszközben, megtekintheti a várólisták tárfiókokban, hozzon létre és Várólisták törlése, nyissa meg a várólisták megtekintheti az üzenetet, és adja hozzá az üzenetek várólistára. Megtekintésre várólista megnyitásakor megtekintheti az egyes üzeneteket, és a következő műveletek végezhetők várakozási bal felső sarokban a gombok használatával:
+A Server Explorerben, megtekintheti az üzenetsorok a storage-fiókban, hozzon létre és üzenetsorok törlése, nyissa meg az üzenetek megtekintése egy üzenetsorba, és üzeneteket ad hozzá egy üzenetsorba. Megtekintésre várólista megnyitásakor megtekintheti az egyes üzeneteket, és elvégzése a következő műveleteket az üzenetsorban a bal felső sarokban a gombok használatával:
 
 * Frissítse a nézetet a várólista.
 * Vegyen fel egy üzenetet az üzenetsorba.
-* A legfelső üzenet feldolgozásához.
-* A teljes várólista törlése.
+* A legfelső üzenet eltávolítása a sorból.
+* Törölje a teljes üzenetsort.
 
-Az alábbi ábrán egy két üzeneteket tartalmazó sor:
+Az alábbi képen egy üzenetsorba, amely két üzenet tartalmazza:
 
-![A várólista megtekintéséhez](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC651470.png)
+![Egy üzenetsor megtekintése](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC651470.png)
 
-További információ a tárolási szolgáltatási várólisták létrehozásáról: [Ismerkedés az Azure Queue storage használatának .NET](http://go.microsoft.com/fwlink/?LinkID=264702). A webszolgáltatás tárolási szolgáltatási várólisták, lásd: [a Queue szolgáltatás alapfogalmai](http://go.microsoft.com/fwlink/?LinkId=264788). Üzenetek küldése egy tárolási szolgáltatások üzenetsorba Visual Studio használatával kapcsolatos információkért lásd: [tárolási szolgáltatások várólista-üzenetek küldése](https://docs.microsoft.com/azure/visual-studio/vs-storage-cloud-services-getting-started-queues).
+További információ a tárolási üzenetsorok szolgáltatási létrehozásáról: [.NET használatával az Azure Queue storage használatának első lépései](http://go.microsoft.com/fwlink/?LinkID=264702). További információ a web service tárolási üzenetsorok szolgáltatási,: [Queue szolgáltatás alapfogalmai](http://go.microsoft.com/fwlink/?LinkId=264788). Hogyan küldhet üzeneteket az üzenetsor-tárolóba szolgáltatások a Visual Studio használatával kapcsolatos információkért lásd: [üzeneteket küldő üzenetsor-tárolóba szolgáltatások](https://docs.microsoft.com/azure/visual-studio/vs-storage-cloud-services-getting-started-queues).
 
 > [!NOTE]
-> Tárolási szolgáltatások sorok különbözőek az Azure Service Bus-üzenetsorok. További információ a Service Bus-üzenetsorok: [Service Bus-üzenetsorok, témakörök és előfizetések](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-queues-topics-subscriptions).
+> Tároló-üzenetsorok szolgáltatások nem azonosak az Azure Service Bus-üzenetsorok. További információ a Service Bus-üzenetsorok: [Service Bus-üzenetsorok, témakörök és előfizetések](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-queues-topics-subscriptions).
 
 ## <a name="work-with-table-resources"></a>A tábla erőforrásokat
 
-Az Azure Table Storage nagy mennyiségű strukturált adat tárolására alkalmas. A szolgáltatás egy NoSQL-adattár, amely elfogadja az érkező hitelesített hívásokat belül és kívül az Azure felhőben. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak.
+Az Azure Table Storage nagy mennyiségű strukturált adat tárolására alkalmas. A szolgáltatás egy NoSQL-adattár, amely elfogadja az érkező hitelesített hívásokat belül és kívül az Azure-felhőben. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak.
 
 ### <a name="to-create-a-table"></a>Tábla létrehozása
 
-1. A Cloud Explorerben válassza ki a **táblák** a tárfiók, és válassza ki azt a csomópont **Create Table**.
+1. A Cloud Explorerben válassza ki a **táblák** a storage-fiókot, és válassza ki a csomópont **Create Table**.
 1. Az a **Create Table** párbeszédpanelen adja meg a tábla nevét.
 
-### <a name="to-view-table-data"></a>Tábla adatainak megtekintéséhez
+### <a name="to-view-table-data"></a>Táblák adatainak megtekintése
 
-1. A Cloud Explorerben nyissa meg a **Azure** csomópont, és nyissa meg a **tárolási** csomópont.
-1. Nyissa meg a tárolási fiók csomópont érdekelt, és nyissa meg a **táblák** csomópont a tárfiók táblázatok listájának megjelenítéséhez.
-1. Nyissa meg a helyi menü táblázat, és válassza **nézet tábla**.
+1. A Cloud Explorerben nyissa meg a **Azure** csomópontot, és nyissa meg a **tárolási** csomópont.
+1. Nyissa meg a storage-fiók csomópontjára, amely van érdekelné, és nyissa meg a **táblák** a csomópontot a tárfiók táblák listájának megtekintéséhez.
+1. Egy tábla a helyi menü megnyitásához, és válassza ki **Zobrazit Tabulku**.
 
-    ![Egy Azure-tábla a Megoldáskezelőben](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC744165.png)
+    ![Az Azure-táblát a Megoldáskezelőben](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC744165.png)
 
-A tábla (látható sorok) entitásokat és a Tulajdonságok (látható oszlopok) szerint van rendezve. Például a következő ábrán entitások tábla Designer szerepel.
+A tábla (sorok látható) entitásokat és tulajdonságait (oszlopban látható) szerint van rendezve. Például a következő ábrán látható entitások Táblatervező szerepel.
 
-### <a name="to-edit-table-data"></a>A tábla adatainak szerkesztése
+### <a name="to-edit-table-data"></a>Táblák adatainak szerkesztése
 
-Tábla Designer, nyissa meg a helyi menüben a tulajdonsághoz (egy cellát) vagy egy entitás (egy sorban), majd válassza ki **szerkesztése**.
+A tábla-tervezőben nyissa meg a helyi menü egy entitás (egyetlen sor) vagy egy tulajdonság (egy cella), és válassza ki **szerkesztése**.
 
     ![Add or edit a table entity](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC656238.png)
 
-Egyetlen tábla az entitások nem ugyanazokat a Tulajdonságok (oszlop) rendelkezniük. Vegye figyelembe a tábla adatok megtekintése és módosítása a következő korlátozások vonatkoznak:
+Egyetlen tábla entitások nem szükséges a azonos tulajdonságkészlettel (oszlop). Tartsa szem előtt a tábla adatok megtekintése és módosítása a következő korlátozásokkal:
 
-* Nem tekinthetők meg és a bináris adatok szerkesztéséhez (`type byte[]`), de egy táblázatban tárolja.
-* Nem lehet szerkeszteni a **PartitionKey** vagy **RowKey** érték található, mert az Azure Table storage nem támogatja a műveletet.
-* Nem hozható létre a tulajdonságot, **időbélyeg**. Azure storage szolgáltatások tulajdonsággal egy ezen a néven.
-* Ha megad egy **DateTime** érték, hajtsa végre az formátuma nem megfelelő. a számítógép területi és nyelvi beállítások a (például hh/nn/éééé óó: pp: [AM |} PM] amerikai angol nyelvű).
+* Tudja megtekinteni vagy szerkeszteni a bináris adatok (`type byte[]`), de a táblában tárolni.
+* Nem lehet szerkeszteni a **PartitionKey** vagy **RowKey** értékeket, mert az Azure Table storage nem támogatja a műveletet.
+* Nem hozható létre tulajdonsággal **időbélyeg**. Az Azure storage szolgáltatások ilyen nevű tulajdonságot használja.
+* Ha megad egy **DateTime** érték, Ön köteles betartani a számítógép területi és nyelvi beállítások megfelelő formátumban (például hh/nn/éééé óó [AM |} PM] amerikai angol nyelven).
 
-### <a name="to-add-entities"></a>Entitás hozzáadása
+### <a name="to-add-entities"></a>Entitások hozzáadása
 
-1. A tábla Designer, válassza ki a **entitás hozzáadása** gombra.
+1. A tábla-tervezőben válassza ki a **entitás hozzáadása** gombra.
 
-    ![Hozzáadás gomb entitás](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655336.png)
+    ![Entitás gomb hozzáadása](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655336.png)
 
-1. Az a **entitás hozzáadása** párbeszédpanelen adja meg az értékeket a **PartitionKey** és **RowKey** tulajdonságok.
+1. Az a **entitás hozzáadása** párbeszédpanelen adja meg az értékét a **PartitionKey** és **rowkey tulajdonságok esetén** tulajdonságai.
 
     ![Entitás párbeszédpanel hozzáadása](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655335.png)
 
-    Gondosan adja meg az értékeket. Ha törölni egy entitást, és vegye fel újra a párbeszédpanel bezárása után nem módosíthatja őket.
+    Adja meg alaposan az értékeket. Őket, ha törölni az entitást, és adja hozzá újra a párbeszédpanel bezárása után nem módosítható.
 
-### <a name="to-filter-entities"></a>Entitások szűrése
+### <a name="to-filter-entities"></a>Entitások szűréséhez
 
-Testre szabhatja az entitásokat, amely egy táblázat jelenik meg, ha a lekérdezés-szerkesztő használata.
+Testre szabhatja az entitásokat, amely egy táblázat jelenik meg, ha a Lekérdezésszerkesztőt használja.
 
-1. A lekérdezés-szerkesztő megnyitásához megtekintésre tábla.
-1. Válassza ki a **Lekérdezésszerkesztő** a tábla nézet eszköztár.
+1. A Lekérdezésszerkesztő megnyitásához egy táblában való megtekintéshez.
+1. Válassza ki a **Lekérdezésszerkesztő** a táblázat nézet eszköztár.
 
-    A **Lekérdezésszerkesztő** párbeszédpanel jelenik meg. A következő ábrán egy lekérdezést, amely éppen készül a Lekérdezésszerkesztőben.
+    A **Lekérdezésszerkesztő** párbeszédpanel jelenik meg. Az alábbi ábrán egy lekérdezést, amely létrehozása folyamatban van a Lekérdezésszerkesztőben.
 
     ![Lekérdezéskészítő](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC652231.png)
-1. Ha elkészült a lekérdezés létrehozása a párbeszédpanel bezárásához. A lekérdezés megjelenő szöveg képernyőn a WCF Data Services szűrő beviteli mezőben jelenik meg.
-1. A lekérdezés futtatásához jelölje ki a zöld háromszögnek ikonra.
+1. Ha befejezte a lekérdezés létrehozásához, zárja be a párbeszédpanelt. Az eredményül kapott szöveg formájában a lekérdezés egy WCF-adatszolgáltatások szűrési szövegmező jelenik meg.
+1. A lekérdezés futtatásához kattintson a zöld háromszögnek ikonra.
 
-Entitás megjelenő adatok tábla Designer beírása esetén egy a WCF Data Services szűrési karakterláncot a szűrő szövegmezőbe közvetlenül is végezhet. Az ilyen típusú karakterlánc egy SQL WHERE záradék hasonló, de a kiszolgálón, a HTTP-kérelem érkezik. Szűrőkarakterláncokban összeállításához kapcsolatos információkért lásd: [Constructing szűrőkarakterláncokban a tábla Designer](https://docs.microsoft.com/azure/vs-azure-tools-table-designer-construct-filter-strings).
+Entitás megjelenő adatok Táblatervező Ha megad egy WCF-adatszolgáltatások szűrési karakterláncot a szűrő szövegmezőbe az közvetlenül is szűrheti. Az ilyen típusú karakterlánc egy SQL WHERE záradék hasonló, de a kiszolgálón, a HTTP-kérést küld. Hogyan hozható létre a szűrő karakterláncok kapcsolatos információkért lásd: [Constructing szűrő karakterláncok Táblatervező](https://docs.microsoft.com/azure/vs-azure-tools-table-designer-construct-filter-strings).
 
-Az alábbi ábrán egy példa egy érvényes szűrési karakterláncot:
+Az alábbi ábrán látható egy példa egy érvényes szűrési karakterlánc:
 
-![Szűrési karakterláncot](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655337.png)
+![Szűrési karakterlánc.](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655337.png)
 
 ## <a name="refresh-storage-data"></a>Tárolási adatok frissítése
 
-Server Explorer csatlakozik, vagy az adatok beolvasása a tárfiókból, a művelet lehet, hogy eltarthat egy percet befejezéséhez. Ha a Server Explorer nem tud csatlakozni, a művelet lehet, hogy túllépi az időkorlátot. Adatok lekérésére, miközben továbbra is működik, a Visual Studio többi részével. Ha túl sokáig tart a művelet megszakításához válassza a **frissítés leállítása** a Server Explorer gombjára.
+Ha a Server Explorer csatlakozik, vagy adatokat olvas be egy storage-fiókot, a művelet is igénybe vehet egy percig befejezéséhez. Ha a Server Explorer nem sikerül, a művelet lehet, hogy időtúllépés. Adatok lekérésére, miközben továbbra is dolgozhat a Visual Studio más részei. Ha túl sokáig tart a művelet megszakításához válassza a **frissítés leállítása** gombra a Server Explorer eszköztárán.
 
-### <a name="to-refresh-blob-container-data"></a>A blob-tároló adatok frissítése
+### <a name="to-refresh-blob-container-data"></a>Blob-tároló adatok frissítése
 
-* Válassza ki a **Blobok** csomóponton sem **tárolási**, majd válassza ki a **frissítése** a Server Explorer gombjára.
-* -Listájának frissítése blobot, amely akkor jelenik meg, válassza ki a **Execute** gombra.
+* Válassza ki a **Blobok** csomópont alatt **tárolási**, majd válassza ki a **frissítése** gombra a Server Explorer eszköztárán.
+* Frissítse a blobok listáját, amely megjelenik, válassza a **Execute** gombra.
 
-### <a name="to-refresh-table-data"></a>A tábla adatainak frissítése
+### <a name="to-refresh-table-data"></a>Táblák adatainak frissítése
 
-* Válassza ki a **táblák** csomóponton sem **tárolási**, majd válassza ki a **frissítése** a Server Explorer gombjára.
-* Tábla tervezőben megjelenő entitások listájának frissítése, válassza ki a **Execute** tábla Designer gombra.
+* Válassza ki a **táblák** csomópont alatt **tárolási**, majd válassza ki a **frissítése** gombra a Server Explorer eszköztárán.
+* Tábla-tervezőben megjelenő az entitások listájának frissítéséhez, jelölje be a **Execute** Táblatervező gombot.
 
-### <a name="to-refresh-queue-data"></a>A várólista adatok frissítése
+### <a name="to-refresh-queue-data"></a>Várólista adatok frissítése
 
-Válassza ki a **várólisták** csomóponton sem **tárolási**, majd válassza ki a **frissítése** a Server Explorer gombjára.
+Válassza ki a **üzenetsorok** csomópont alatt **tárolási**, majd válassza ki a **frissítése** gombra a Server Explorer eszköztárán.
 
-### <a name="to-refresh-all-items-in-a-storage-account"></a>A tárfiók szereplő összes frissítése
+### <a name="to-refresh-all-items-in-a-storage-account"></a>Storage-fiókban lévő összes elem frissítése
 
-Válassza ki a fiók nevét, majd válassza ki a **frissítése** a Server Explorer gombjára.
+Válassza ki a fiók nevét, és válassza ki a **frissítése** gombra a Server Explorer eszköztárán.
 
-## <a name="add-storage-accounts-by-using-server-explorer"></a>A Server Explorer storage-fiókok hozzáadása
+## <a name="add-storage-accounts-by-using-server-explorer"></a>Tárfiókok hozzáadása a Kiszolgálókezelő használatával
 
-Tárfiók hozzáadása a Server Explorer használatával két módja van. Az Azure-előfizetéshez a tárfiókot is létrehozhat, vagy csatolhat a meglévő tárfiókot.
+Kétféleképpen tárfiókok hozzáadása a Kiszolgálókezelő használatával. Hozhat létre egy storage-fiókot az Azure-előfizetésben, vagy egy meglévő tárfiókot is csatlakoztatható.
 
-### <a name="to-create-a-storage-account-by-using-server-explorer"></a>A storage-fiók létrehozása a Server Explorer használatával
+### <a name="to-create-a-storage-account-by-using-server-explorer"></a>Storage-fiók létrehozása a Server Explorer használatával
 
-1. A Server Explorer eszközben a helyi menü megnyitása a **tárolási** csomópont, és válassza **Storage-fiók létrehozása**.
+1. A Server Explorerben nyissa meg a helyi menüjének a **tárolási** csomópontot, és válassza ki **Create Storage Account**.
 
-1. Az a **Storage-fiók létrehozása** párbeszédpanelen jelölje be, vagy adja meg a következő adatokat:
+1. Az a **Create Storage Account** párbeszédpanel mezőben válassza ki vagy adja meg a következőket:
 
-   * Az Azure-előfizetés kívánt tárfiók hozzáadása.
-   * Az új tárfiókot használni kívánt nevét.
-   * A régiót vagy affinitáscsoportot (például az USA nyugati régiója vagy Kelet-Ázsia).
-   * A tárfiók, például a használni kívánt replikációs típusú helyileg redundáns.
+   * Az Azure-előfizetést, amelyhez hozzá szeretné a tárfiók hozzáadása.
+   * Az új storage-fiókhoz használni kívánt név.
+   * A régiója vagy affinitáscsoportja (például az USA nyugati RÉGIÓJA és Kelet-Ázsia).
+   * A tárfiók, például a használni kívánt replikációs típus a helyileg redundáns.
 
    ![Azure-tárfiók létrehozása](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC744166.png)
 
@@ -270,14 +271,14 @@ Az új tárfiók megjelenik a **tárolási** lista a Megoldáskezelőben.
 
 ### <a name="to-attach-an-existing-storage-account-by-using-server-explorer"></a>Meglévő tárfiók csatolása a Server Explorer használatával
 
-1. A Server Explorer eszközben nyissa meg a helyi menü az Azure-beli **tárolási** csomópont, és válassza **külső tárterület csatolása**.
+1. A Server Explorerben nyissa meg a helyi menü az Azure- **tárolási** csomópontot, és válassza ki **külső tárterület csatolása**.
 
     ![Meglévő tárfiók hozzáadása](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766039.png)
-1. Az a **Storage-fiók létrehozása** párbeszédpanelen jelölje be, vagy adja meg a következő adatokat:
+1. Az a **Create Storage Account** párbeszédpanel mezőben válassza ki vagy adja meg a következőket:
 
-   * A csatlakoztatni kívánt meglévő tárfiók neve.
-   * A kiválasztott tárfiók kulcsa. Ez az érték általában biztosított, válasszon egy tárfiókot. Ha azt szeretné, hogy a Visual Studio jegyezze meg a tárfiók hívóbetűjét, válassza a **tárolása fiókkulcs** jelölőnégyzetet.
-   * A tárfiók, például HTTP, HTTPS vagy egy egyéni végpont való csatlakozáshoz használni kívánt protokollt. Egyéni végpontokat kapcsolatos további információkért lásd: [kapcsolati karakterláncok konfigurálása hogyan](https://msdn.microsoft.com/library/azure/ee758697.aspx).
+   * A meglévő storage-fiókhoz csatolja neve.
+   * A kiválasztott tárfiókhoz tartozó kulcs. Ez az érték általában biztosítunk, amikor egy tárfiók kiválasztását. Ha azt szeretné, hogy a Visual Studióban, hogy ne felejtse el a tárfiók kulcsát, válassza ki a **tárolása fiókkulcs** jelölőnégyzetet.
+   * A tárfiók, például a HTTP, HTTPS vagy egyéni végponthoz való kapcsolódáshoz használni kívánt protokollt. Egyéni végpontok kapcsolatos további információkért lásd: [kapcsolati karakterláncok konfigurálása annak](https://msdn.microsoft.com/library/azure/ee758697.aspx).
 
 ### <a name="to-view-the-secondary-endpoints"></a>A másodlagos végpontok megtekintése
 
@@ -285,14 +286,14 @@ Ha létrehozott egy tárfiókot a **írásvédett Georedundáns** replikációs 
 
 ![Tárolási másodlagos végpontok](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766040.png)
 
-### <a name="to-remove-a-storage-account-from-server-explorer"></a>A tárfiók eltávolítása a Server Explorer
+### <a name="to-remove-a-storage-account-from-server-explorer"></a>Storage-fiók eltávolítása a Server Explorerből
 
-A Server Explorer, a megjelenő helyi menüben a fiók neve, majd válassza ki **törlése**. 
+A Server Explorerben nyissa meg a helyi menüben a fiók neve, és válassza ki **törlése**. 
 
-Ha törli a tárfiókot, minden mentett kulcsadatokat fiók is törlődnek.
+Ha törli a storage-fiók, az adott fiók mentett kulcs adataival sem is törlődik.
 
-Ha a tárfiók törlése a Server Explorer, a tárfiók vagy a benne található adatokat nem befolyásolja. Egyszerűen eltávolítja a hivatkozás a Server Explorer. Véglegesen törli a tárfiókot, használja a [Azure-portálon](https://portal.azure.com/).
+Ha törli a storage-fiók a Server Explorer, a storage-fiók vagy a benne található adatokat nem érinti. Egyszerűen eltávolítja a hivatkozás a Server Explorer. Storage-fiók végleges törléséhez használja a [az Azure portal](https://portal.azure.com/).
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure storage szolgáltatások használatával kapcsolatos további információkért lásd: [elérése az Azure Storage szolgáltatásainak](https://msdn.microsoft.com/library/azure/ee405490.aspx).
+Az Azure storage szolgáltatás használatával kapcsolatos további tudnivalókért lásd: [elérése az Azure Storage szolgáltatásainak](https://msdn.microsoft.com/library/azure/ee405490.aspx).

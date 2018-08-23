@@ -3,7 +3,8 @@ title: Egy Linux (Ubuntu) adatelemző virtuális gép Azure-beli üzembe helyez�
 description: Állítsa be, és hozzon létre egy Data Science virtuális gép a Linux (Ubuntu) az Azure-ban, elemzési és gépi tanulás.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
+ms.author: gokuma
 manager: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
@@ -13,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: 19f190c66f7bb4042c640f2cbb82f911746ceb45
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422375"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060644"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
 
@@ -53,7 +53,7 @@ Az adatelemző virtuális gép Linux rendszeren is adatelemzési és fejlesztés
 * Machine learning eszközök
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): gyors machine learning-rendszer támogató technikák, például online, kivonatoló, allreduce, csökkentésének, learning2search, aktív, és az interaktív tanulás
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): egy gyorsított fa gyors és pontos végrehajtását biztosító eszköz
-  * [Rattle](http://rattle.togaware.com/): egy grafikus eszközt, amely lehetővé teszi az adatok elemzési és gépi tanulási R könnyen az első lépései
+  * [Rattle](https://togaware.com/rattle/): egy grafikus eszközt, amely lehetővé teszi az adatok elemzési és gépi tanulási R könnyen az első lépései
   * [LightGBM](https://github.com/Microsoft/LightGBM): kiemelési keretrendszer gyors, elosztott, nagy teljesítményű színskála
 * Az Azure SDK-t a Java, Python, node.js, a Ruby, PHP
 * Az R és Python for kódtárak használata az Azure Machine Learning és más Azure-szolgáltatások
@@ -149,7 +149,7 @@ Bejelentkezés után a virtuális géphez SSH-ügyfél vagy a grafikus asztali X
 
 Az Ubuntu DSVM fut [JupyterHub](https://github.com/jupyterhub/jupyterhub), többfelhasználós Jupyter kiszolgáló. Szeretne csatlakozni, keresse meg a https://your-vm-ip:8000 a hordozható vagy asztali, adja meg a felhasználónevet és jelszót, amellyel a virtuális gép létrehozásához, és jelentkezzen be. Számos mintafüzetek érhetők el, hogy a Tallózás gombra, és próbálja ki.
 
-JupyterLab, a Jupyter-notebookok és JupyterHub, következő generációja érhető el. Szeretné elérni, JupyterHub bejelentkezni, és tallózással keresse meg az URL-cím https://your-vm-ip:8000/lab. Ezt a sort ad hozzá /etc/jupyterhub/jupyterhub_config.py JupyterLab állíthatja be az alapértelmezett notebook-kiszolgálóként:
+JupyterLab, a Jupyter-notebookok és JupyterHub, következő generációja érhető el. Szeretné elérni, JupyterHub bejelentkezni, és tallózással keresse meg az URL-cím https://your-vm-ip:8000/user/your-username/lab. Ezt a sort ad hozzá /etc/jupyterhub/jupyterhub_config.py JupyterLab állíthatja be az alapértelmezett notebook-kiszolgálóként:
 
     c.Spawner.default_url = '/lab'
 
@@ -238,7 +238,7 @@ Conda, mindig a környezet nevét kell megadnia (_py35_ vagy _legfelső szintű_
 
 Ha, vagy a grafikus felület set-továbbítás be X11, beírhatja **pycharm** elindíthatja a PyCharm Python IDE. Az alapértelmezett szövegszerkesztő is használhatja. Emellett használhatja Spyder, a Python ide-vel, amely Anaconda Python disztribúció részét képezi. Spyder kell egy grafikus asztali vagy X11-továbbítást. A grafikus desktop.s Spyder parancsikon van megadva
 
-### <a name="jupyter-notebook"></a>Jupyter notebook
+### <a name="jupyter-notebook"></a>Jupyter Notebook
 A Anaconda terjesztési egy Jupyter notebookot, megosztani a kódot és az elemzési környezet is tartalmaz. A Jupyter notebook JupyterHub keresztül érhető el. Jelentkezzen be a helyi Linux-felhasználónév és jelszó használatával.
 
 A Jupyter notebook server Python 2, a Python 3 és az R kernelekkel előre van konfigurálva. Nincs "Jupyter Notebook" Indítsa el a böngészőt a jegyzetfüzet-kiszolgálóhoz való hozzáféréshez nevű asztali ikon. Ha a virtuális gép SSH- vagy X2Go ügyfél, akkor is ellátogathat [ https://localhost:8000/ ](https://localhost:8000/) a Jupyter notebook kiszolgálóhoz való hozzáféréshez.

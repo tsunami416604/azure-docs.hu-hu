@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: e19130c5ee418ebaa41f9ee42e217c52cdeec6cb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697942"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054903"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuális gép méretezési csoport létrehozása
 
@@ -45,10 +45,10 @@ Amikor telepít egy méretezési csoportot, akkor is telepíteni egyetlen [elhel
 
 ### <a name="zone-balancing"></a>Terheléselosztás zóna
 
-Végül a méretezési csoportok több zónában üzembe helyezett, akkor is "ajánlott beavatkozást zónák kiegyensúlyozásáról" vagy "szigorú zónák kiegyensúlyozásáról" lehetőséget. "Elosztott terhelésű" egy méretezési csoportot akkor tekinthető, ha minden egyes zónában lévő virtuális gépek számát a méretezési csoport a más zónákban lévő virtuális gépek számát egyikében. Példa:
+Végül a méretezési csoportok több zónában üzembe helyezett, akkor is "ajánlott beavatkozást zónák kiegyensúlyozásáról" vagy "szigorú zónák kiegyensúlyozásáról" lehetőséget. Egy méretezési csoportot számít az "elosztott terhelésű" Ha az egyes virtuális gépek azonos számú zóna vagy +\\– 1 virtuális gép a méretezési csoport más zónákban. Példa:
 
-- Elosztott terhelésű zónában 1, 2 és 3 virtuális gépeket a 3. zóna számít zónában 3 virtuális gépek 2 virtuális gépet tartalmazó méretezési.
-- Egy méretezési 1 virtuális gép az 1. zóna, 2 és 3 virtuális gépeket a 3. zóna számít zónában 3 virtuális gépet kiegyensúlyozatlan.
+- Elosztott terhelésű zónában 1, 2 és 3 virtuális gépeket a 3. zóna számít zónában 3 virtuális gépek 2 virtuális gépet tartalmazó méretezési. Van egy másik virtuális gépek száma csak egy zónát pedig csak 1 kisebb, mint a más zónákban. 
+- Egy méretezési 1 virtuális gép az 1. zóna, 2 és 3 virtuális gépeket a 3. zóna számít zónában 3 virtuális gépet kiegyensúlyozatlan. 1. zóna 2 zónák 2. és 3-nál kevesebb virtuális gépet tartalmaz.
 
 Akkor lehet, hogy a méretezési csoportban lévő virtuális gépek létrehozása sikeresen megtörtént, de a bővítményt a virtuális gépek sikertelen üzembe helyezéséhez. Ezek a virtuális gépek-bővítményekkel kapcsolatos hibák továbbra is számításba vesszük, ha egy méretezési csoportot kiegyensúlyozott meghatározásakor. Például egy méretezési csoportot 3 virtuális gépeket az 1. zónába, a 2. zóna 3 virtuális gépet, és 3 virtuális gépeket a 3. zóna számít, még akkor is, ha az összes bővítmény nem sikerült az 1. zóna elosztott terhelésű, és az összes bővítmény zónákban sikeres volt, 2. és 3.
 
@@ -98,7 +98,7 @@ Egy teljes példa – Egyzónás méretezési csoport és a hálózati erőforr�
 
 ### <a name="zone-redundant-scale-set"></a>Zónaredundáns méretezési csoport
 
-Zónaredundáns méretezési csoport létrehozásához állítsa be, használhatja a *Standard* Termékváltozat nyilvános IP cím és a load balancer. A továbbfejlesztett redundancia biztosítása érdekében a *Standard* Termékváltozat zónaredundáns hálózati erőforrást hoz létre. További információkért lásd: [áttekintése az Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
+Zónaredundáns méretezési csoport létrehozásához állítsa be, használhatja a *Standard* Termékváltozat nyilvános IP cím és a load balancer. A továbbfejlesztett redundancia biztosítása érdekében a *Standard* Termékváltozat zónaredundáns hálózati erőforrást hoz létre. További információkért lásd: [áttekintése az Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) és [Standard Load Balancer és rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Zónaredundáns méretezési csoport létrehozása, adja meg a több zónában a `--zones` paraméter. A következő példában létrehozunk egy zónaredundáns méretezési csoport nevű *myScaleSet* zónákban *1,2,3*:
 
@@ -215,7 +215,7 @@ Zónaredundáns méretezési csoport létrehozása, adja meg a több érték a `
 }
 ```
 
-Ha a nyilvános IP-cím vagy egy terheléselosztót hoz létre, adja meg a *"sku": {"name": "Standard"} "* tulajdonság zónaredundáns hálózati erőforrások létrehozása. Is szeretne létrehozni egy hálózati biztonsági csoport és a szabályok minden forgalom engedélyezéséhez. További információkért lásd: [áttekintése az Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
+Ha a nyilvános IP-cím vagy egy terheléselosztót hoz létre, adja meg a *"sku": {"name": "Standard"} "* tulajdonság zónaredundáns hálózati erőforrások létrehozása. Is szeretne létrehozni egy hálózati biztonsági csoport és a szabályok minden forgalom engedélyezéséhez. További információkért lásd: [áttekintése az Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) és [Standard Load Balancer és rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Egy teljes példát egy zónaredundáns méretezési csoport és a hálózati erőforrásokhoz, olvassa el [a mintául szolgáló Resource Manager-sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

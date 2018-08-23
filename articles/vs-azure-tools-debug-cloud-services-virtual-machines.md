@@ -1,6 +1,6 @@
 ---
-title: Egy Azure-felhőszolgáltatásban vagy a virtuális gép a Visual Studio hibakeresési |} Microsoft Docs
-description: Egy felhőalapú szolgáltatás, vagy a virtuális gép a Visual Studio hibakereső
+title: Egy Azure-felhőszolgáltatás vagy a virtuális gépen a Visual Studio hibakereső |} A Microsoft Docs
+description: Hibakeresés a Felhőszolgáltatások és virtuális gép a Visual Studióban
 services: visual-studio-online
 documentationcenter: na
 author: mikejo
@@ -11,184 +11,185 @@ ms.service: visual-studio-online
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: d230632fe49874385e3c337a7b07d1f1acec585e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: af961533648ce3a939c25fca32173684255a52a8
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292798"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444690"
 ---
-# <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Egy Azure-felhőszolgáltatásban vagy a virtuális gép a Visual Studio hibakereső
+# <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Egy Azure-felhőszolgáltatás vagy a virtuális gépen a Visual Studio hibakereső
 
-A Visual Studio hibakeresési Azure felhőszolgáltatások és virtuális gépek különböző lehetőséget biztosít.
+A Visual Studio az Azure cloud services és virtual machines hibakeresési különböző lehetőségeket kínál.
 
-## <a name="debug-your-cloud-service-on-your-local-computer"></a>A felhőalapú szolgáltatás a helyi számítógépen hibakeresése
+## <a name="debug-your-cloud-service-on-your-local-computer"></a>A helyi számítógépen a cloud service hibakeresése
 
-Időt takaríthat meg, és az Azure használatával pénzt számítási emulátor hibakeresése a felhőalapú szolgáltatás a helyi számítógépen. Által a szolgáltatás telepítése előtt helyileg hibakeresés, akkor is megbízhatóságának és teljesítményének javítása számítási alkalommal fizető nélkül. Azonban néhány hiba is felléphet csak futtatásakor egy felhőalapú szolgáltatás az Azure-ban magát. Ezek a hibák megoldhassuk, ha engedélyezi a távoli hibakeresés, majd csatolja a hibakereső a szerepkör példánya és a szolgáltatást teszik közzé.
+Időt takaríthat meg, és költséget takaríthat meg az Azure compute emulator egy helyi gépen a felhőszolgáltatás hibakeresést. A szolgáltatás helyi hibakeresés a telepítése előtt, növelheti megbízhatóságát és teljesítményét anélkül számítási időért. Azonban néhány olyan hiba is felléphet csak futtatásakor egy felhőalapú szolgáltatás az Azure-ban magát. Ezek a hibák is hibakeresési, ha engedélyezi a távoli hibakeresés, amikor közzéteszi a szolgáltatást, és a egy szerepkörpéldány majd csatolja a hibakeresőt.
 
-Az emulátor szimulálja az Azure számítási szolgáltatás, és a helyi környezetben fut, így tesztelése és hibakeresése a felhőalapú szolgáltatás telepítése előtt. Az emulátor kezeli a szerepkörpéldányok életciklusát, és szimulált erőforrások, például a helyi tároló hozzáférést biztosít. Hibakeresési, illetve a szolgáltatás futtatásához a Visual Studio automatikusan elindul az emulátor a háttér-alkalmazásként, és majd központilag telepíti a szolgáltatást a emulátorhoz. Az emulátor segítségével megtekintheti a szolgáltatás, ha fut a helyi környezetben. A teljes verziója vagy a emulator express verziója is futtathatja. (Az Azure 2.3-től kezdődően az express verzió az emulátor az alapértelmezett beállítás.) Lásd: [Emulator Express használatával futtatni, és egy felhőalapú szolgáltatás helyileg hibakeresési](vs-azure-tools-emulator-express-debug-run.md).
+Az emulator szimulálja az Azure számítási szolgáltatás, és a helyi környezetben futtatja, hogy tesztelje, és a cloud service hibakeresése, üzembe helyezés előtt. Az emulator a szerepkörpéldányok életciklusának kezeli, és hozzáférést biztosít a szimulált erőforrásaihoz, például a helyi tárterület. Hibakeresés vagy a szolgáltatás futtatásakor a Visual Studióból, automatikusan elindul az emulátor egy háttér-alkalmazásként, és majd üzembe helyezi a szolgáltatást az emulátorban. Az emulator használatával megtekintheti a szolgáltatás a helyi környezetben futtatásakor. A teljes verziót vagy az emulator express verziója fut. (Az Azure 2.3-as verziótól kezdődően az emulator express verziója a az alapértelmezett.) Lásd: [Emulator Express használatával futtassa, és a helyi Cloud Service hibakeresése a](vs-azure-tools-emulator-express-debug-run.md).
 
-### <a name="to-debug-your-cloud-service-on-your-local-computer"></a>A felhőalapú szolgáltatás a helyi számítógépen hibakeresése
+### <a name="to-debug-your-cloud-service-on-your-local-computer"></a>A helyi számítógépen a cloud service hibakeresése
 
-1. A menüsávban válassza **Debug**, **Start Debugging** az Azure-felhőszolgáltatás-projekt futtatásához. Alternatív megoldásként nyomja le az F5 billentyűt. Egy üzenet, amely megkezdi a Compute Emulator jelenik meg. Amikor elindul az emulátor, a rendszer tálcaikon megerősíti, hogy azt.
+1. A menüsávban válassza **Debug**, **Start Debugging** futtatásához az Azure felhőszolgáltatás-projekt. Alternatív megoldásként megnyomja az F5 billentyűt. Megjelenik egy üzenet, amely a Compute Emulator indítása folyamatban van. Amikor elindul az emulátor, a rendszer tálcai ikonja megerősíti azt.
 
-    ![A tálcán Azure emulátorban](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC783828.png)
+    ![Azure-emulátorban a tálcán](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC783828.png)
 
-2. A felhasználói felület megjelenítése a compute Emulator nyissa meg a helyi menü az Azure ikont az értesítési területen, majd válassza ki **Show Compute Emulator felhasználói felületén**.
+2. A felhasználói felület megjelenítése a compute Emulator nyissa meg a helyi menü, az Azure ikont az értesítési területről, és válassza ki **Show Compute Emulator felhasználói felületén**.
 
-    A felhasználói felület a bal oldali ablaktáblán látható a szolgáltatásokat, amelyeket a compute emulator és a szerepkörpéldányok, hogy fut-e minden service jelenleg telepítve vannak. Kiválaszthatja a szolgáltatás- vagy szerepkörök életciklusát, naplózási és diagnosztikai információk megjelenítéséhez a jobb oldali ablaktáblán. Ha a fókusz be a felső margó egy befoglalt ablak, bővíti kitöltse a jobb oldali ablaktáblán.
+    A bal oldali ablaktáblán a felhasználói felület, amely jelenleg a compute emulator és a szerepkörpéldányok, amely minden egyes szolgáltatás fut a szolgáltatások jeleníti meg. A szolgáltatás vagy -szerepkörök életciklusa, naplózási és diagnosztikai információk megjelenítéséhez a jobb oldali ablaktáblán választhat. Ha a fókusz egy része (Tulajdonságok) ablak felső margó helyezi, akkor kitölti a jobb oldali ablaktáblán.
 
-3. Az alkalmazás lépésenként parancsok választva módosíthatja a **Debug** menü és beállítása a töréspontokat a kódban. Az alkalmazás a hibakeresőben lépéseit, mert az ablak az alkalmazás az aktuális állapotát is frissül. Ha kikapcsolja a hibakeresést, az alkalmazás központi telepítése törlődik. Ha az alkalmazás tartalmaz a webes szerepkör, és beállította az indítási műveletet tulajdonság elindítani a webböngészőt, a Visual Studio a webes alkalmazás elindítja a böngészőben. Ha módosítja a szolgáltatás konfigurációját a szerepkör-példányok száma, akkor leállíthatja a felhőszolgáltatást, és majd indítsa újra a hibakeresést, hogy ezek a szerepkör új példányát is hibakeresése.
+3. A parancsok kiválasztásával az alkalmazáson keresztül. lépés a **Debug** menü és a töréspontok beállításával a kódban. Az alkalmazás a hibakeresőt elvégezhető, mivel az ablaktáblák frissülnek az alkalmazás aktuális állapotát. Ha a hibakeresés leállításához az alkalmazás központi telepítése törlődik. Ha az alkalmazás tartalmaz egy webes szerepkörben, és beállította az indítási műveletet tulajdonság a webböngésző indítása, a Visual Studio elindítja a webalkalmazás a böngészőben. Ha módosítja a szolgáltatáskonfiguráció szolgáltatásbeállítása szerepkör példányainak számát, meg kell leállíthatja a felhőszolgáltatást, és indítsa újra, hogy ezek a szerepkör új példányát is hibakeresése hibakeresés.
 
-    **Megjegyzés:** leállításakor fut, vagy a szolgáltatás hibakeresés, a helyi a compute emulator és a storage emulator nem leállt. Le kell állítani azokat explicit módon az értesítési területről.
+    **Megjegyzés:** leállításakor fut, vagy a szolgáltatás hibakeresés, a helyi compute emulator és a storage emulator nem leállt. Le kell állítani őket explicit módon az értesítési területről.
 
-## <a name="debug-a-cloud-service-in-azure"></a>Hibakeresése az Azure-felhőszolgáltatás
+## <a name="debug-a-cloud-service-in-azure"></a>Az Azure cloud service hibakeresése
 
-Debug egy távoli számítógépről egy felhőalapú szolgáltatás, engedélyeznie kell, hogy a funkció explicit módon a felhőalapú szolgáltatás, hogy a szükséges szolgáltatások (például msvsmon.exe) telepítve legyen a szerepkörpéldányok futó virtuális gépek központi telepítésekor. Ha nem engedélyezi a távoli hibakeresés, a szolgáltatás közzétételekor, akkor a szolgáltatás távoli hibakeresés engedélyezésével közzé.
+Egy távoli számítógépről egy felhőszolgáltatás hibakeresést, engedélyeznie kell a funkció explicit módon, hogy a szükséges szolgáltatások (például msvsmon.exe) telepítve vannak a virtuális gépek, amelyek a szerepkör-példány futtatása a cloud Services telepítésekor. Ha nem engedélyezi a távoli hibakeresés mellett tette közzé a szolgáltatást, akkor tegye közzé újra a szolgáltatás engedélyezve van a távoli hibakeresésnek köszönhetően.
 
-Ha engedélyezi a távoli hibakeresés egy felhőalapú szolgáltatás, ez nem csökkent teljesítményt mutat, vagy további költségek. Ne használjon távoli hibakeresés egy éles szolgáltatásra, mert a szolgáltatást használó ügyfelek negatív hatással lehet.
+Ha engedélyezi a felhőszolgáltatás távoli hibakeresési eszközeivel, ez nem mutatnak, a teljesítmény csökkenését, vagy további díjak vonatkoznak. Ne használjon távoli hibakeresése egy éles szolgáltatást, mert az ügyfelek, akik a szolgáltatást negatívan befolyásolhatja.
 
 > [!NOTE]
-> Ha közzéteszi a Visual Studio felhőszolgáltatás, engedélyezheti a **IntelliTrace** , hogy a szolgáltatás a .NET-keretrendszer 4 vagy a .NET-keretrendszer 4.5 célzó szerepkörök. A **IntelliTrace**, vizsgálja meg az eseményeket, amelyek az elmúlt egy szerepkörpéldányt történt, és Reprodukálja kezdve a környezetben. Lásd: [egy közzétett felhőszolgáltatás IntelliTrace és a Visual Studio hibakeresési](http://go.microsoft.com/fwlink/?LinkID=623016) és [használatával IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx).
+> Amikor közzétesz egy felhőalapú szolgáltatás, a Visual Studióból, engedélyezheti **IntelliTrace** a szolgáltatás, amely a .NET-keretrendszer 4 vagy a .NET-keretrendszer 4.5-ös szerepkörök. Használatával **IntelliTrace**, vizsgálja meg, amely egy szerepkörpéldány a múltban történt eseményeket, és Reprodukálja a környezet ettől. Lásd: [IntelliTrace és a Visual Studio egy közzétett felhőszolgáltatás hibakeresést](http://go.microsoft.com/fwlink/?LinkID=623016) és [használatával IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx).
 
-### <a name="to-enable-remote-debugging-for-a-cloud-service"></a>Egy felhőalapú szolgáltatás távoli hibakeresés engedélyezése
+### <a name="to-enable-remote-debugging-for-a-cloud-service"></a>A felhőszolgáltatások távoli hibakeresés engedélyezése
 
-1. Az Azure-projekt helyi menüjének megnyitásához, majd válassza ki **közzététel**.
+1. Az Azure-projekt helyi menüjének megnyitásához, és válassza ki **közzététel**.
 
-2. Válassza ki a **átmeneti** környezet és a **Debug** konfigurációs.
+2. Válassza ki a **átmeneti** környezet és a **Debug** konfigurációja.
 
-    Ez az útmutató csak. Dönthet úgy is, a tesztkörülmények között éles környezetben való futtatásához. Azonban ez káros hatással lehet felhasználók Ha engedélyezi a távoli hibakeresés a termelési környezetben. Választhat, hogy a kiadás configuration, de a hibakeresési konfiguráció esetén könnyebb hibakeresést.
+    Ez az útmutató csak. Kérheti, hogy a tesztelési környezetek éles környezetben való futtatásához. Azonban Ön kedvezőtlen hatással lehet felhasználók Ha engedélyezi a távoli hibakeresése az éles környezetben. Kiválaszthatja, hogy a kiadás konfigurációban, de a hibakeresési konfiguráció lehetővé teszi, hogy könnyebb hibakeresés.
 
     ![Válassza ki a hibakeresési konfiguráció](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746717.gif)
 
-3. Kövesse a szokásos lépéseket, de válassza ki a **összes szerepkör távoli hibakereső engedélyezése** jelölőnégyzetet a **speciális beállítások** fülre.
+3. Hajtsa végre a szokásos lépéseket, de válassza ki a **távoli hibakeresőt engedélyezése az összes szerepkörhöz** jelölőnégyzet be van jelölve a **speciális beállítások** fülre.
 
     ![Konfigurációs hibakeresése](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746718.gif)
 
-### <a name="to-attach-the-debugger-to-a-cloud-service-in-azure"></a>A hibakereső csatlakoztatni az Azure-felhőszolgáltatás
+### <a name="to-attach-the-debugger-to-a-cloud-service-in-azure"></a>A Hibakereső csatlakoztatása egy felhőalapú szolgáltatás, az Azure-ban
 
-1. A Server Explorer eszközben bontsa ki a csomópontot, a felhőalapú szolgáltatáshoz.
+1. A Server Explorerben bontsa ki a csomópont a felhőszolgáltatáshoz.
 
-2. Nyissa meg a helyi menü csatolja, és válassza ki a kívánt szerepkör vagy szerepkörpéldány **csatolása hibakereső**.
+2. Nyissa meg a helyi menü, amelyhez csatolni, és válassza ki a kívánt szerepkör vagy szerepkörpéldány **csatolja a hibakeresőt**.
 
-    Ha hibakeresési szerepkör, a Visual Studio hibakereső feltünteti az adott szerepkör csatlakozik. A hibakereső megszakítja a töréspont az első szerepkörpéldányhoz, amely futtatja a sort, és azokat a feltételeket, hogy az megfelel-e. Ha a példány, a hibakereső rendeli csak adott példányt és a töréspont csak akkor, ha az adott példány fut a sort, és a töréspont feltételeknek megfelelő oldaltörések hibakeresését.
+    Egy szerepkör hibakeresést, a Visual Studio hibakereső funkcióját csatolja a szerepkör minden példányára. A hibakereső megszakítja az első a szerepkörpéldányhoz, amely adott kódsor fut, és azokat a feltételeket, hogy megfelel-e egy töréspontot a. Ha egy példányt, a hibakereső rendeli, csak a-példány és a egy töréspontot, csak akkor, ha az adott példány adott kódsor fut, és megfelel-e a töréspont az oldaltörések hibakeresést.
 
     ![Hibakereső csatlakoztatása](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746719.gif)
 
-3. A hibakereső példányhoz csatolja, miután hibakeresési a szokásos módon. A hibakereső automatikusan csatolja a megfelelő gazdagép-folyamat az adott szerepkörhöz. Attól függően, hogy mi a szerepkört a hibakereső csatolja a w3wp.exe, WaWorkerHost.exe vagy WaIISHost.exe. A folyamat, amely a hibakereső csatlakozik ellenőrzéséhez bontsa ki a példány csomópontot, a Server Explorer. Lásd: [Azure szerepkör architektúra](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) Azure folyamatokkal kapcsolatos további információkat.
+3. Csatolja a hibakeresőt egy példányt, miután hibakeresése a szokásos módon. Automatikusan csatolja a hibakeresőt a megfelelő gazdagép a folyamathoz a szerepkörhöz. A hibakereső megfelelően a szerepkört, w3wp.exe, WaWorkerHost.exe vagy WaIISHost.exe konzisztenciája érdekben. Ellenőrizze a folyamat, amely a hibakeresőt csatlakozik, bontsa ki a példány csomópontot, a Server Explorerben. Lásd: [Azure szerepkör-architektúra](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) Azure folyamatokkal kapcsolatos további információkat.
 
-    ![Válassza ki a kód párbeszédpanel](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
+    ![Válassza ki a kód típusú párbeszédpanel](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-4. Azonosítására a folyamatok, amelyek a hibakereső csatlakozik, a folyamatok párbeszédpanel megnyitásához, a menüsoron, hibakeresési, a Windows, a folyamatok kiválasztása. (Billentyűzet: Ctrl + Alt + Z) Válassza le a megadott folyamatáról, nyissa meg a helyi menüt, és válassza **leválasztani folyamat**. Vagy, a példány csomópont található a Server Explorer, a folyamat található, a helyi menü megnyitásához, és válassza **leválasztani folyamat**.
+4. Azonosíthatja a folyamatokat, amelyhez a hibakeresőt csatlakozik, a menüsor, kiválasztása hibakeresése, a Windows, a folyamatok által, folyamatok párbeszédpanel megnyitásához. (Billentyűzet: Ctrl + Alt + Z) Egy adott folyamat leválasztása, nyissa meg a helyi menüt, és válassza **leválasztása folyamatban**. Vagy, a Kiszolgálókezelőben keresse meg a példány csomópontot, keresse meg a folyamat, a helyi menü megnyitásához, és kattintson **leválasztása folyamatban**.
 
-    ![Folyamatok hibakeresése](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC690787.gif)
+    ![Hibakeresési folyamatok](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC690787.gif)
 
 > [!WARNING]
-> Hosszú leáll, amikor távoli töréspontok elkerülése hibakeresést. Azure értékként kezelje-e a folyamat, amely válaszol néhány percnél hosszabb ideig leáll, és leállítja a forgalom küldése annak a példánynak. Ha túl sokáig megszakítja, msvsmon.exe leválik a folyamatot.
+> Elkerülése érdekében hosszú leállítja a töréspontok keresése, ha a távoli hibakeresés. Az Azure olyan folyamat, amely válaszol néhány percnél hosszabb ideig le van állítva, és nem irányít több forgalmat az adott példány kezeli. Ha túl sokáig leállítja, a msvsmon.exe leválasztja a folyamatból.
 
-A hibakereső összes folyamatok leválasztása a példány vagy a szerepkör, nyissa meg a szerepkör vagy a példányt, hibakeresése, és válassza a helyi menü **leválasztani hibakereső**.
+Válassza le az összes folyamat a hibakeresőt a példány vagy szerepkör, nyissa meg a szerepkör vagy-példányt, hibakeresés, és válassza a helyi menü **leválasztása hibakereső**.
 
 ## <a name="limitations-of-remote-debugging-in-azure"></a>Korlátozások a távoli hibakeresés az Azure-ban
 
-Az Azure SDK 2.3 távoli hibakeresés rendelkezik a következő korlátozások vonatkoznak:
+Azure SDK 2.3-as, a távoli hibakeresés rendelkezik a következő korlátozások vonatkoznak:
 
-* Távoli hibakeresés engedélyezésével, egy felhőalapú szolgáltatás, amelyben minden olyan szerepkört 25-nél több példánya van nem tehető közzé.
-* A hibakereső 30400 való 30424, 31400 való 31424 és 32400 való 32424 portot használ. Ha használja ezeket a portokat valamelyikét, sem lesz a szolgáltatás közzététele, és az alábbi hibaüzenetek valamelyike jelenik meg a műveletnaplóban Azure:
+* A távoli hibakeresést engedélyezve van, nem tehet közzé egy felhőalapú szolgáltatás, amelyben minden olyan szerepkört a 25-nél több példánnyal rendelkezik.
+* A hibakereső 30400 való 30424, 31400 való 31424 és 32400 való 32424 portokat használ. Ha meg ezeket a portokat használja, nem lehet közzétenni a szolgáltatás, és az alábbi hibaüzenetek valamelyike jelenik meg a tevékenységnaplóban Azure:
 
-  * Hiba történt a .cscfg fájl .csdef fájl ellenőrzése.
-    A fenntartott tartomány "porttartomány" végpont "szerepkör" szerepkör Microsoft.WindowsAzure.Plugins.RemoteDebugger.Connector átfedésben van egy már definiált portot vagy porttartományt.
-  * A lefoglalás sikertelen. Próbálkozzon újra később, próbálja meg csökkenteni a virtuális gép méretét vagy a szerepkörpéldányok számát, vagy próbálja más régióban üzembe helyezni.
+  * Hiba történt a .cscfg fájl .csdef-fájl érvényesítése.
+    A fenntartott tartomány "porttartomány" végpont "szerepkör" szerepkör Microsoft.WindowsAzure.Plugins.RemoteDebugger.Connector átfedésben van egy már meghatározott portot vagy porttartományt.
+  * A lefoglalás sikertelen. Próbálkozzon újra később, csökkentse a virtuális gép méretét vagy a szerepkörpéldányok számát, vagy próbálja más régióban üzembe.
 
-## <a name="debugging-azure-virtual-machines"></a>Az Azure virtuális gépek hibakeresés
+## <a name="debugging-azure-virtual-machines"></a>Hibakeresés az Azure-beli virtuális gépek
 
-A Visual Studio Server Explorer használatával az Azure virtuális gépeken futó programok megoldhassuk. Ha engedélyezi az Azure virtuális géphez távoli hibakeresés, az Azure a távoli hibakeresési bővítmény telepítését a virtuális gépen. Ezután csatolása a virtuális gépen folyamatok és hibakeresése a szokásos módon.
+A Visual Studio Server Explorer használatával Azure-beli virtuális gépeken futó programok hibakeresése is. Ha engedélyezi a távoli hibakeresés az Azure virtuális gépen, Azure telepíti a távoli hibakeresési bővítményt a virtuális gépen. Ezután folyamatok a virtuális gép csatlakoztatása és hibakeresése a megszokott módon.
 
 > [!NOTE]
-> Az Azure resource manager-készletben használatával létrehozott virtuális gépeket a Visual Studio 2015 Cloud Explorer használatával távolról indítja is. További információkért lásd: [Azure-erőforrások kezelése Cloud Explorer](http://go.microsoft.com/fwlink/?LinkId=623031).
+> Az Azure resource manager-készletben keresztül létrehozott virtuális gépek távoli hibakereséséhez is a Visual Studio 2015-öt a Cloud Explorer használatával. További információkért lásd: [Azure-erőforrások kezelése a Cloud Explorer](http://go.microsoft.com/fwlink/?LinkId=623031).
 
-### <a name="to-debug-an-azure-virtual-machine"></a>Egy Azure virtuális gép hibakeresése
+### <a name="to-debug-an-azure-virtual-machine"></a>Az Azure virtuális gép hibakeresése
 
-1. A Server Explorer eszközben bontsa ki a virtuális gépek csomópontot, és jelölje ki a virtuális gép hibakeresése kívánt csomópontot.
+1. A Server Explorerben bontsa ki a virtuális gépek csomópontot, majd válassza ki a virtuális gép, amelyen hibakeresést végez.
 
-2. Nyissa meg a helyi menüt, és válassza ki **hibakeresés engedélyezése**. Amikor a rendszer kéri, ha biztos benne, ha engedélyezi a virtuális gépet, jelölje be a hibakeresés **Igen**.
+2. A megnyíló helyi menüből, és válassza ki **hibakeresés engedélyezése**. Ha a rendszer kéri, hogy biztos benne, hogy szeretné engedélyezni a virtuális gép, jelölje be a hibakeresés, **Igen**.
 
-    Azure-hibakeresés engedélyezése a virtuális gépen a távoli hibakeresési bővítmény telepítését.
+    Azure a virtuális gépet a hibakeresés engedélyezése a távoli hibakeresési bővítmény telepítése.
 
     ![Virtuális gép hibakeresési parancs engedélyezése](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746720.png)
 
-    ![Azure tevékenységnapló](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746721.png)
+    ![Azure-tevékenységnapló](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746721.png)
 
-3. Telepíti a távoli hibakeresési bővítmény befejeződése után nyissa meg a virtuális gép helyi menüt, majd válassza **csatolása hibakereső...**
+3. A távoli hibakeresési bővítmény a telepítés befejezését követően a virtuális gép helyi menü megnyitásához, és válassza ki **Hibakereső csatlakoztatása...**
 
-    Azure a folyamatok listájának lekérése a virtuális gépen, és megjeleníti őket a csatolási folyamat párbeszédpanel.
+    Az Azure a folyamatok listáját kéri le a virtuális gépen, és megjeleníti őket a csatolási folyamat párbeszédpanel.
 
-    ![A hibakereső parancs csatolása](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
+    ![Csatolja a hibakeresőt parancs](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
 
-4. Az a **folyamat csatolása** párbeszédpanelen jelölje ki **kiválasztása** csak hibakeresési kívánt kódot típusú megjelenítendő eredmények-lista korlátozását. 32 bites vagy 64 bites felügyelt kódot, natív kóddal vagy mindkettő megoldhassuk.
+4. Az a **folyamat csatolása** párbeszédpanelen jelölje ki **kiválasztása** korlátozása csak a kódot, amelyen hibakeresést végez típusú megjeleníthető eredmények listájában. Lehetősége nyílik a hibakeresésére 32 bites vagy 64 bites felügyelt kódot, natív kódú vagy mindkettőt.
 
-    ![Válassza ki a kód párbeszédpanel](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
+    ![Válassza ki a kód típusú párbeszédpanel](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-5. Válassza ki a hibakeresési a virtuális gépen, és válassza ki a kívánt folyamatokat **Attach**. Például a w3wp.exe folyamat célszerű használni, ha szeretné a webes alkalmazás a virtuális gép hibakeresése. Lásd: [Debug egy vagy több folyamatot, a Visual Studio](https://msdn.microsoft.com/library/jj919165.aspx) és [Azure szerepkör architektúra](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) további információt.
+5. Válassza ki a kívánt hibakeresése a virtuális gépen, és válassza ki a folyamatok **Attach**. Választhatja például a w3wp.exe folyamat, ha a virtuális gépen webalkalmazás hibakeresése szeretne. Lásd: [hibakeresése egy vagy több folyamatot a Visual Studióban](https://msdn.microsoft.com/library/jj919165.aspx) és [Azure szerepkör-architektúra](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) további információt.
 
-## <a name="create-a-web-project-and-a-virtual-machine-for-debugging"></a>Webes projektet és a hibakereséshez a virtuális gép létrehozása
+## <a name="create-a-web-project-and-a-virtual-machine-for-debugging"></a>Hozzon létre egy webes projekt és a egy virtuális gépet a hibakereséshez
 
-Az Azure-projekt közzététele, hasznosak lehetnek, ha kipróbálja tartalmazott környezetben, amely támogatja a Hibakeresés és tesztelési forgatókönyvek, és ahol telepítése teszteléshez és programok figyelése. Egy ilyen tesztek futtatásához módja távolról alkalmazás hibakeresése a virtuális gépen.
+Az Azure-projekt közzététele, akkor hasznosak lehetnek teszteléséhez tartalmazott környezetben, amely támogatja a hibakeresési és tesztelési forgatókönyvek, és ahol telepítheti a teszteléshez és programok figyelése. Egy ilyen tesztek futtatása módja távoli hibakeresése az alkalmazás virtuális gépen.
 
-A Visual Studio ASP.NET projektek ajánlatot egy lehetőség, hogy az alkalmazás teszteléséhez használható lesz szüksége virtuális gép létrehozása. A virtuális gép tartalmaz, például a PowerShell, a távoli asztal és a WebDeploy gyakran szükséges végpontok.
+A Visual Studio ASP.NET-projektek egy alkalmazás teszteléséhez használható praktikus virtuális gép létrehozása lehetőséget kínálnak. A virtuális gép például PowerShell, a távoli asztal és a WebDeploy gyakran szükséges végpontokat tartalmazza.
 
-### <a name="to-create-a-web-project-and-a-virtual-machine-for-debugging"></a>Webes projektet és a hibakereséshez a virtuális gép létrehozása
+### <a name="to-create-a-web-project-and-a-virtual-machine-for-debugging"></a>Hozhat létre webes projektet és a egy virtuális gépet a hibakereséshez
 
-1. A Visual Studióban hozzon létre egy új ASP.NET Webalkalmazásként való kezelése.
+1. A Visual Studióban hozzon létre egy új ASP.NET-alkalmazás.
 
-2. Új ASP.NET projekt párbeszédpanelen Azure területen válasszon **virtuális gép** a legördülő listában. Hagyja a **távoli erőforrások létrehozása** jelölőnégyzet be van jelölve. Válassza ki **OK** a folytatáshoz.
+2. Az Azure szakaszban, az új ASP.NET projekt párbeszédpanelén válassza **virtuális gép** a legördülő listában. Hagyja a **létre távoli erőforrásokat** jelölőnégyzet be van jelölve. Válassza ki **OK** a folytatáshoz.
 
-    A **virtuális gép létrehozása az Azure** párbeszédpanel jelenik meg.
+    A **virtuális gép létrehozása az Azure-ban** párbeszédpanel jelenik meg.
 
     ![ASP.NET webes projekt párbeszédpanel létrehozása](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746723.png)
 
-    **Megjegyzés:** meg kell adnia az Azure-fiókjával bejelentkezni, ha van már nincs bejelentkezve.
+    **Megjegyzés:** meg kell adnia az Azure-fiókkal bejelentkezni, ha még nem jelentkezett.
 
-3. Válassza ki a virtuális gép különböző beállításait, és válassza ki **OK**. Lásd: [virtuális gépek](http://go.microsoft.com/fwlink/?LinkId=623033) további információt.
+3. Válassza ki a virtuális gépet a különböző beállításait, majd **OK**. Lásd: [virtuális gépek](http://go.microsoft.com/fwlink/?LinkId=623033) további információt.
 
-    A név DNS-név lesz a virtuális gép nevét.
+    A név, DNS-nevet adja meg a virtuális gép neve lesz.
 
-    ![Virtuális gép létrehozása Azure párbeszédpanel](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746724.png)
+    ![Virtuális gép létrehozása az Azure párbeszédpanel](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746724.png)
 
-    Azure létrehozza a virtuális gép, és a rendelkezések, és konfigurálja a végpontokat, például a távoli asztal és a Web Deploy
+    Az Azure létrehozza a virtuális gépet, és a rendelkezések, és konfigurálja a végpontot, például a távoli asztal és a Web Deploy
 
-4. A virtuális gép teljes konfigurálása után válassza ki a virtuális gép csomópontját a Server Explorer.
+4. A virtuális gép teljes konfigurálása után válassza ki a virtuális gép csomópontját a Server Explorerben.
 
-5. Nyissa meg a helyi menüt, és válassza ki **hibakeresés engedélyezése**. Amikor a rendszer kéri, ha biztos benne, ha engedélyezi a virtuális gépet, jelölje be a hibakeresés **Igen**.
+5. A megnyíló helyi menüből, és válassza ki **hibakeresés engedélyezése**. Ha a rendszer kéri, hogy biztos benne, hogy szeretné engedélyezni a virtuális gép, jelölje be a hibakeresés, **Igen**.
 
-    Azure-hibakeresés engedélyezése a virtuális géphez a távoli hibakeresési bővítmény telepítését.
+    Az Azure a virtuális gépet a hibakeresés engedélyezése a távoli hibakeresési bővítmény telepítése.
 
     ![Virtuális gép hibakeresési parancs engedélyezése](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746720.png)
 
-    ![Azure tevékenységnapló](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746721.png)
+    ![Azure-tevékenységnapló](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746721.png)
 
-6. A projekt közzététele a [Útmutató: a webes projekt használ egy kattintással közzététele a Visual Studio telepítése](https://msdn.microsoft.com/library/dd465337.aspx). Mivel a virtuális gépen, a debug szeretné a **beállítások** oldalán a **webhely közzététele** varázslóban válassza **Debug** beállításként. Ez biztosítja, hogy kód szimbólumok hibakeresés során rendelkezésre álló is.
+6. A projekt közzététele a leírt módon [hogyan: egy Web projektet használatával kattintásos közzététellel a Visual Studio telepítése](https://msdn.microsoft.com/library/dd465337.aspx). Mivel a virtuális gépen, a debug szeretné a **beállítások** lapján a **Publish Web** varázslóban válassza **Debug** , a konfiguráció. Ez biztosítja, hogy a kód szimbólumok állnak rendelkezésre a hibakeresés során.
 
     ![Közzétételi beállítások](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718349.png)
 
-7. Az a **Fájlközzétételi beállítás**, jelölje be **célhelyen további fájlok eltávolítása** Ha a projekt korábban már telepítve lett.
+7. Az a **Fájlközzétételi beállítás**válassza **célhelyen további fájlok eltávolítása** Ha a projekt már üzemel egy korábbi időpontra.
 
-8. Kiválasztása után a projekt tesz közzé, a virtuális gép helyi menüben a Server Explorer eszközben **csatolása hibakereső...**
+8. Miután közzéteszi a projektet, a virtuális gép helyi menüben a Server Explorerben válassza **Hibakereső csatlakoztatása...**
 
-    Azure a folyamatok listájának lekérése a virtuális gépen, és megjeleníti őket a csatolási folyamat párbeszédpanel.
+    Az Azure a folyamatok listáját kéri le a virtuális gépen, és megjeleníti őket a csatolási folyamat párbeszédpanel.
 
-    ![A hibakereső parancs csatolása](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
+    ![Csatolja a hibakeresőt parancs](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
 
-9. Az a **folyamat csatolása** párbeszédpanelen jelölje ki **kiválasztása** csak hibakeresési kívánt kódot típusú megjelenítendő eredmények-lista korlátozását. 32 bites vagy 64 bites felügyelt kódot, natív kóddal vagy mindkettő megoldhassuk.
+9. Az a **folyamat csatolása** párbeszédpanelen jelölje ki **kiválasztása** korlátozása csak a kódot, amelyen hibakeresést végez típusú megjeleníthető eredmények listájában. Lehetősége nyílik a hibakeresésére 32 bites vagy 64 bites felügyelt kódot, natív kódú vagy mindkettőt.
 
-    ![Válassza ki a kód párbeszédpanel](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
+    ![Válassza ki a kód típusú párbeszédpanel](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-10. Válassza ki a hibakeresési a virtuális gépen, és válassza ki a kívánt folyamatokat **Attach**. Például a w3wp.exe folyamat célszerű használni, ha szeretné a webes alkalmazás a virtuális gép hibakeresése. Lásd: [Debug egy vagy több folyamatot, a Visual Studio](https://msdn.microsoft.com/library/jj919165.aspx) további információt.
+10. Válassza ki a kívánt hibakeresése a virtuális gépen, és válassza ki a folyamatok **Attach**. Választhatja például a w3wp.exe folyamat, ha a virtuális gépen webalkalmazás hibakeresése szeretne. Lásd: [hibakeresése egy vagy több folyamatot a Visual Studióban](https://msdn.microsoft.com/library/jj919165.aspx) további információt.
 
 ## <a name="next-steps"></a>További lépések
 
-* Használjon **Intellitrace** hívások és események naplózása gyűjteni a kiadási kiszolgáló. Lásd: [egy közzétett Felhőszolgáltatás IntelliTrace és a Visual Studio hibakeresési](http://go.microsoft.com/fwlink/?LinkID=623016).
+* Használat **Intellitrace** naplózása a hívások és az események gyűjtését kiadás kiszolgáló. Lásd: [IntelliTrace és a Visual Studio egy közzétett Felhőszolgáltatás hibakeresést](http://go.microsoft.com/fwlink/?LinkID=623016).
 
-* Használjon **Azure Diagnostics** részletes adatok naplózására kód futását szerepköröket, az, hogy a szerepkörök fut a fejlesztési környezet vagy az Azure-ban. Lásd: [naplózási adatok gyűjtése az Azure Diagnostics használatával](http://go.microsoft.com/fwlink/p/?LinkId=400450).
+* Használat **Azure Diagnostics** jelentkezhet be a részletes információkat a kód futtatásának belül szerepköröket, a szerepkörök a fejlesztői környezetben vagy az Azure-ban fut-e. Lásd: [naplózási adatok gyűjtése az Azure Diagnostics használatával](http://go.microsoft.com/fwlink/p/?LinkId=400450).

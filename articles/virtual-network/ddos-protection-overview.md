@@ -1,6 +1,6 @@
 ---
-title: Az Azure DDoS védelem szabványos áttekintése |} Microsoft Docs
-description: További tudnivalók az Azure DDoS-védelem szolgáltatás.
+title: Az Azure DDoS Protection Standard – áttekintés |} A Microsoft Docs
+description: Ismerje meg az Azure DDoS Protection szolgáltatás.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,71 +15,71 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2018
 ms.author: jdial
-ms.openlocfilehash: 705f69f9143e3d2b27a3099f340218aaa12931f8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 95fc257485aeea396185089b2b73a6e73ee2bfee
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31601899"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060147"
 ---
-# <a name="azure-ddos-protection-standard-overview"></a>Az Azure szabványos DDoS-védelem áttekintése
+# <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
 
-Elosztott szolgáltatásmegtagadásos (DDoS-) támadások az ügyfelek számára, áthelyezi az alkalmazásaikat a felhőbe irányuló legnagyobb rendelkezésre állási és biztonsági szempontok közé tartoznak. DDoS-támadások megkísérli lefoglalhat egy alkalmazás-erőforrásokat, így az alkalmazás valódi felhasználók számára nem érhető el. DDoS-támadások tud célozható tetszőleges végpontot, amely nyilvánosan elérhető az interneten keresztül.
+Az elosztott szolgáltatásmegtagadási (DDoS-) támadásokat néhány a legnagyobb rendelkezésre állással és biztonsággal kapcsolatos aggályokat rendelkező ügyfelek számára a saját alkalmazásait a felhőbe áthelyezni. A DDoS-támadások próbál lefoglalhat egy alkalmazás-erőforrások, így az alkalmazás nem érhető el a jogosult felhasználók számára. DDoS-támadások célozhatják bármely, amely az interneten keresztül nyilvánosan elérhető végponton.
 
-Az alkalmazás tervezési ajánlott eljárásokkal, Azure DDoS védelem DDoS-támadások elleni védelmet biztosít. Az Azure DDos-védelem a következő szolgáltatási szinteket tartalmazza:
+Az Azure DDoS protection alkalmazás tervezés – ajánlott eljárások, kombinálva DDoS-támadásokkal szembeni védelmet biztosít. Az Azure DDoS protection az alábbi szolgáltatási szinteken biztosít:
 
-- **Alapszintű**: automatikusan engedélyezve van, nem kell külön fizetni az Azure platform részeként. – A forgalom figyelése és a valós idejű javaslat közös hálózati szintű támadások, adja meg a Microsoft online services által használt azonos védelmet. Teljes méretű Azure globális hálózati támadás forgalom terjesztése és régiók közötti használható. Védelmet biztosítanak a IPv4 és IPv6-alapú Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
-- **Standard**: további megoldás képességeket biztosít a alapvető szolgáltatási rétegben, amely kifejezetten az Azure virtuális hálózati erőforrások hangolt keresztül. DDoS védelem szabványos felettébb egyszerű engedélyezéséhez és a szükséges alkalmazás ne változzon. Adatvédelmi szabályzatok hangolt dedikált forgalom figyelése és a gépi tanulási algoritmus. Nyilvános IP-címek a virtuális hálózatokon, például az Azure Load Balancer, az Azure Application Gateway és az Azure Service Fabric-példányok üzembe helyezett erőforrás társított házirendek vonatkoznak. Valós idejű telemetriai érhető Azure figyelő nézetek, a támadás során, és az előzmények. Alkalmazásvédelem réteg segítségével is hozzáadhat a [Azure Application Gateway webalkalmazási tűzfal](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Védelmet biztosítanak a IPv4 Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
+- **Alapszintű**: automatikusan engedélyezve van az Azure platformba, külön díj nélkül részeként. Állandó forgalomfigyelést, és valós idejű csökkenti a hálózati szintű gyakori támadásoktól, adja meg a Microsoft online services által használt azonos védelem. A teljes méretezési csoport az Azure globális hálózatán használható, és csökkentheti a támadási forgalom régiók között elosztva. Védelmet biztosítanak az IPv4 és IPv6-alapú Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
+- **Standard szintű**: az alapszintű szolgáltatásszinten kifejezetten az Azure virtuális hálózati erőforrások hangolt keresztül további veszélyelhárítási szolgáltatásokat biztosít. DDoS Protection Standard az egyszerű, ha engedélyezni szeretné, és nem kell application módosítani. Az alkalmazásvédelmi szabályzatok hangolt dedikált forgalomfigyelést és gépi tanulási algoritmus segítségével. Nyilvános IP-címek a virtuális hálózathoz, például az Azure Load Balancer, az Azure Application Gateway és az Azure Service Fabric-ban üzembe helyezett erőforrásokhoz kapcsolódó szabályzatok alkalmazandók. Valós idejű telemetriai támadások során, valamint a korábbi Azure Monitor nézetek érhető el. Alkalmazásréteg-védelem használatával adhatók hozzá a [Azure Application Gateway webalkalmazásokhoz használható tűzfal](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Védelmet biztosítanak a IPv4 Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
 
-![Az Azure DDoS védelem Standard](./media/ddos-protection-overview/ddospic.png)
+![Az Azure DDoS Protection-szabvány](./media/ddos-protection-overview/ddospic.png)
 
-## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>DDoS védelem szabványos csökkenti DDoS-támadások típusai
+## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>Csökkenti a DDoS Protection standard szintű DDoS-támadások típusai
 
-DDoS védelem szabványos csökkentheti a következő típusú támadások:
+A DDoS Protection Standard csökkentheti a következő típusú támadások:
 
-- **-Es támadások**: A támadás célja, hogy a hálózati réteg látszólag jogos forgalom jelentős mennyiségű kéréssekkel. Ez magában foglalja az UDP árvizek, erősítési árvizek és egyéb megtévesztésre csomag árvizek. DDoS védelem szabványos azzal csökkenti a többszörös gigabájt webtartalmak szűkítő és tisztítási őket, amely Azure globális hálózati, automatikusan.
-- **Protokoll támadások**: ilyen támadások leképezési célja nem érhető el, a 3 rétegbeli és a 4. rétegbeli protokollverem egyik támadható gyenge pontja kihasználva. Ez magában foglalja, SZIN árvíz támadások, támadások és más protokoll támadásoknak. DDoS védelem szabványos azzal csökkenti az ilyen támadások, rosszindulatú és jogos forgalom által az ügyfél való interakció, és blokkolja a rosszindulatú forgalom megkülönböztetése. 
-- **Erőforrás (alkalmazás) réteg támadások**: ilyen támadások cél webes alkalmazás csomagok, és megzavarhatják a gazdagépek közötti adatátvitel. A támadások lehetnek a HTTP protokoll megsértése, SQL injektálási, többhelyes parancsfájlok és egyéb réteg 7 támadások. Használja az Azure [Alkalmazásátjáró webalkalmazási tűzfal](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a DDoS védelem Standard, az ilyen támadások elleni védelmet biztosít. Van még külső webes alkalmazás tűzfal ajánlatok érhető el a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
+- **-Es támadások**: A támadás célja, hogy a hálózati réteg látszólag jogos forgalom jelentős mennyiségű kéréssekkel túlterhelheti. UDP árvizek, erősítési árvíz és más megtévesztésre csomag árvíz tartalmazza. A DDoS Protection Standard csökkenti a ezek több gigabájt potenciális támadások elemzésével és tisztítási őket, az Azure globális hálózati skálával automatikusan.
+- **Protokoll támadások**: ezeket a támadásokat jelennek meg a cél nem érhető el, a 3. rétegbeli és a 4. réteg protokollvermet egy gyengeségét kiaknázásával. Ez magában foglalja, külön elárasztó támadások, támadások és más protokollt támadásoknak. A DDoS Protection Standard csökkenti ezeket a támadásokat, rosszindulatú és jogszerű forgalom által az ügyfél használatához, és blokkolja a rosszindulatú forgalom megkülönböztetése. 
+- **Erőforrás (alkalmazás) réteg támadások**: ezeket a támadásokat cél webes alkalmazás csomagok, a gazdagépek közötti adatátvitel akadályozza. A támadások közé tartozik a HTTP protokoll megsértése, az SQL injektálási, webhelyek közötti szkriptelést és egyéb 7. rétegbeli támadásokat. Az Azure használata [Application Gateway webalkalmazási tűzfal](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a DDoS Protection Standard, ezek a támadások elleni védelmet biztosít. Is vannak elérhető külső webes alkalmazás tűzfal ajánlatok a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
 
-DDoS védelem szabványos védi többek között a virtuális gépek terheléselosztók és alkalmazásátjárót társított nyilvános IP-címek egy virtuális hálózatán lévő erőforrásokat. Az Alkalmazásátjáró webalkalmazási tűzfal alapján kialakulhat, amikor DDoS védelem szabványos biztosíthat teljes réteg 3. rétegbeli 7 csökkentése terén.
+A DDoS Protection Standard virtual machines, a terheléselosztók és az application Gateway átjárók társított nyilvános IP-címek többek között a virtuális hálózatban lévő erőforrásokra védi. Az Application Gateway webalkalmazási tűzfal szolgáltatással párosítva, DDoS Protection Standard biztosíthatja teljes layer 3. rétegbeli 7 kockázatcsökkentési képességet.
 
-## <a name="ddos-protection-standard-features"></a>DDoS védelem szabványos szolgáltatások
+## <a name="ddos-protection-standard-features"></a>A DDoS Protection standard szintű funkciók
 
-![DDoS-funkciók](./media/ddos-protection-overview/ddosfeatures.png)
+![A DDoS-funkciók](./media/ddos-protection-overview/ddosfeatures.png)
 
-DDoS védelem szabványos szolgáltatások a következők:
+A DDoS Protection Standard funkciók:
 
-- **Natív platformintegráció:** natív módon integrált Azure be. Az Azure portálon keresztül konfigurációs tartalmazza. DDoS védelem szabványos együttműködik az erőforrások és az erőforrás-konfigurációban.
-- **Kulcsrakész védelmi:** egyszerűsített konfigurációs azonnal védelmet nyújt a virtuális hálózaton lévő összes erőforrást, amint DDoS védelem szabványos engedélyezett. Nincs beavatkozás vagy a felhasználó-definícióra szükség. DDoS védelem szabványos azonnal és automatikusan csökkenti a támadási után észlelhető.
-- **Állandóan működő forgalomfigyelés:** az alkalmazás forgalmi minták figyelt 24 óránként, naponta, a hét, DDoS-támadások mutatók keres. Megoldás adatvédelmi szabályzatok túllépése esetén történik.
-- **Adaptív hangolása:** intelligens forgalom profilkészítési tanulják meg az alkalmazás forgalom adott idő alatt, és kiválasztja, és frissíti a profilt, amely a szolgáltatás számára legalkalmasabb. A profil módosítja, a forgalom idővel változik.
-- **3. rétegbeli réteg 7 védelem:** DDoS-védelem teljes verem biztosít a webalkalmazási tűzfal használata esetén.
-- **Széles körű megoldás méretezési:** keresztül 60 különböző támadás típusok kivédhető, globális kapacitás, a legnagyobb ismert DDoS-támadások elleni védelem érdekében.
-- **Támadás metrikák:** Summarized metrikák minden támadások elleni Azure figyelő keresztül érhetők el.
-- **Támadás riasztási:** riasztások konfigurálhatók a kezdő- és az olyan támadások, állítsa le és a támadás időtartama alatt használja a beépített támadás metrikákat. Riasztások integrálja a működési szoftverek, mint a Microsoft Azure Naplóelemzés, Splunk, Azure Storage, e-mailek és az Azure-portálon.
-- **Költség garancia:** adatátvitelt és alkalmazás kibővített szolgáltatási jóváírások dokumentált DDoS-támadások.
+- **Natív platformintegráció:** natív módon integrált Azure-bA. Az Azure Portalon keresztül konfigurációit is beleértve. A DDoS Protection Standard tisztában van azzal erőforrásait és erőforrás-konfigurációhoz.
+- **Kulcsrakész védelem:** egyszerűsített konfiguráció azonnal védelmet biztosít egy virtuális hálózaton lévő összes erőforrást, amint a DDoS Protection Standard van engedélyezve. Nincs beavatkozás vagy a felhasználó megadása nem kötelező. A DDoS Protection Standard azonnal és automatikusan csökkenti a támadási után a rendszer azt észlelte.
+- **Mindig forgalomfigyelést:** az alkalmazás forgalmi mintázatait figyelt 24 óránként, naponta, a hét, DDoS-támadások kijelzőjét keres. Kockázatcsökkentési alkalmazásvédelmi szabályzatok túllépése esetén történik.
+- **Adaptív hangolás:** intelligens adatforgalom-profilkészítés képes megtanulni az alkalmazás forgalmának idővel, és kiválasztja, és frissíti a profilt, amely a szolgáltatás a legmegfelelőbb. A profil módosítja, a forgalom változik az idő múlásával.
+- **3. rétegbeli 7. rétegbeli védelem:** teljes verem DDoS elleni védelem, biztosít egy webalkalmazási tűzfallal rendelkező használatakor.
+- **Széles körű kockázatcsökkentési méretezési:** 60 feletti különböző támadási típusok enyhíthető, globális kapacitással, a legnagyobb ismert DDoS-támadásokkal szembeni védelem érdekében.
+- **Metrikák támadási:** minden támadástól Summarized metrikák érhetők el Azure monitoron keresztül.
+- **A támadás riasztási:** riasztások konfigurálhatók a kezdő és a egy támadás leállítása és a támadás időtartama alatt a beépített támadási mérőszámok segítségével. Riasztások integrálható a működési szoftver a Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailek és az Azure Portalon.
+- **A Cost garancia:** adatátviteli és az alkalmazás horizontális felskálázás szolgáltatásokhoz biztosított kreditek a dokumentált DDoS-támadások.
 
-## <a name="ddos-protection-standard-mitigation"></a>DDoS védelem szabványos megoldás
+## <a name="ddos-protection-standard-mitigation"></a>A DDoS Protection Standard kockázatcsökkentési
 
-DDoS védelem szabványos tényleges forgalom kihasználtsági figyeli, és folyamatosan összevetett a a DDoS házirendben meghatározott küszöbértékeket. A forgalom küszöbérték túllépésekor DDoS megoldás automatikusan megkezdődik. Ha a forgalom adja vissza, a küszöbérték alá, a megoldás törlődik.
+A DDoS Protection Standard tényleges forgalom kihasználtsági figyeli, és folyamatosan összevetett a a DDoS-házirendben meghatározott küszöbértékeket. A forgalom küszöbérték túllépésekor DDoS-támadás kockázatcsökkentése automatikusan kezdeményez. Amikor a forgalom a küszöbérték alá adja vissza, a kockázatcsökkentési törlődik.
 
 ![Kezelés](./media/ddos-protection-overview/mitigation.png)
 
-Során csökkentése a védett erőforrásokhoz küldött forgalmat a rendszer átirányítja a DDoS védelem szolgáltatás, és számos a rendszer ellenőrzi, például a következő műveleteket:
+Során kockázatcsökkentést a védett erőforrásokhoz irányuló adatforgalmat a rendszer átirányítja a DDoS protection szolgáltatás, és több ellenőrzés történik, mint például a következő ellenőrzések:
 
-- Győződjön meg arról, csomagok felel meg az internet specifikációjának, illetve nem hibás formátumú.
-- Annak megállapításához, hogy a forgalom potenciálisan hamisított csomagot az ügyfél kommunikálni (pl.: SZIN Auth vagy SZIN cookie-k vagy újraküldésére az adatforrásra vonatkozóan egy csomag ejtésével).
-- Sebességhatár csomagok, ha más érvényesítési metódus nem hajtható végre.
+- Győződjön meg arról, csomagok felel meg az internet specifikációjának, és nem hibás formátumú.
+- Annak megállapításához, hogy a forgalom potenciálisan identitáshamisításos csomagot az ügyfél kommunikálni (pl.: SZIN hitelesítéssel vagy külön cookie-k vagy eldobja a csomagot timeouts, hogy a forrás).
+- Sebességkorlát-csomagokat, ha más kényszerítési metódus nem hajtható végre.
 
-DDoS-védelem támadás forgalmat blokkolja, és továbbítja a fennmaradó forgalmat a kívánt rendeltetési. Észlelt támadás, néhány percen belül értesítést kap Azure figyelő metrikák használatával. DDoS védelem szabványos telemetriai bejelentkezés konfigurálásával írhat a naplók jövőbeli elemzéshez beállításokat. Az Azure-figyelő DDoS védelem szabvány metrikaadatokat 30 napig megmarad.
+A DDoS protection a támadás forgalmat blokkol, és továbbítja a fennmaradó forgalmat a szándékolt cél. Támadások észlelése, néhány percen belül értesítést kap az Azure Monitor-metrikák használatával. A DDoS Protection normál telemetriai naplózásának konfigurálásával írhat jövőbeli elemzések a rendelkezésre álló beállítások a naplókat. Az Azure monitorban a DDoS Protection Standard metrikaadatok 30 napig őrződnek meg.
 
-Microsoft rendelkezik közösen rendelkező [BreakingPoint felhő](https://www.ixiacom.com/products/breakingpoint-cloud) hozhat létre egy felület, ahol hozhat létre a forgalom DDoS-védelem engedélyezve nyilvános IP-címek szimulációja ellen. A töréspont felhő szimuláció teszi lehetővé:
+A Microsoft közzétegyék az általuk [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) hozhat létre egy felületet, ahol a DDoS Protection-kompatibilis nyilvános IP-címek szimulációkhoz forgalmát hozhat létre. A töréspont felhőalapú szimuláció lehetővé teszi:
 
-- Ellenőrizze, hogy hogyan a Microsoft Azure DDoS védelem Standard védelmet nyújt az Azure-erőforrások DDoS-támadások
-- Az incidensekre adott reakciók folyamat DDoS támadás optimalizálása
-- A dokumentum DDoS megfelelőségi
-- A hálózati biztonsági csoportok képzése
+- Ellenőrizze, hogy miként a Microsoft Azure DDoS Protection Standard védi az Azure-erőforrások DDoS-támadások ellen
+- Az incidensmegoldási folyamatba, a DDoS-támadások optimalizálása
+- A dokumentum a DDoS-megfelelőség
+- A hálózati biztonsági csoportok betanítása
 
 ## <a name="next-steps"></a>További lépések
 
-- [DDoS védelem Standard konfigurálása](manage-ddos-protection.md)
+- [DDoS Protection-szabvány konfigurálása](manage-ddos-protection.md)

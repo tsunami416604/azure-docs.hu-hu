@@ -1,6 +1,6 @@
 ---
-title: Service Fabric-alkalmazás frissítés PowerShell használatával |} Microsoft Docs
-description: Ez a cikk végigvezeti a Service Fabric-alkalmazás telepítése, kódjának a módosítása és PowerShell használatával frissítés terítésével élménye.
+title: PowerShell-lel Service Fabric-alkalmazás frissítése |} A Microsoft Docs
+description: Ez a cikk végigvezeti a Service Fabric-alkalmazás üzembe helyezése, a kód megváltoztatása és PowerShell-lel frissítés bevezetéséről élménye.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 44f4dc3a9c876e383a6e4df8ef5f467f2b93eaa9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0238dce3f8cbf838e7fce3afefb866e3aaa791bc
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205484"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42059150"
 ---
-# <a name="service-fabric-application-upgrade-using-powershell"></a>Az alkalmazásfrissítés Service Fabric PowerShell-lel
+# <a name="service-fabric-application-upgrade-using-powershell"></a>A Service Fabric alkalmazás frissítése a PowerShell használatával
 > [!div class="op_single_selector"]
 > * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
@@ -30,35 +30,35 @@ ms.locfileid: "34205484"
 
 <br/>
 
-A leggyakrabban használt és ajánlott frissítési módszer a figyelt működés közbeni frissítés.  Az Azure Service Fabric állapotfigyelő házirendjei alapján az alkalmazás frissítés alatt állapotát figyeli. Miután egy frissítési tartományt (UD) frissítve van, a Service Fabric kiértékeli az alkalmazás állapotának, és folytatódik a következő frissítési tartományra vagy attól függően, hogy a házirendek frissítése sikertelen.
+Ajánlott frissítési módszer a leggyakrabban használt és a figyelt működés közbeni frissítés.  Az Azure Service Fabric health házirendjei alapján az alkalmazás frissítés alatt állapotát figyeli. Után (UD) frissítési tartomány frissítve van, Service Fabric kiértékeli az alkalmazás állapotáról, és továbblép a következő frissítési tartomány vagy egészségügyi függően a frissítés meghiúsul.
 
-A figyelt alkalmazáshoz frissítés használatával végezheti el a natív vagy felügyelt API-k, PowerShell vagy REST. Visual Studio használatával történő frissítése, lásd: [Visual Studio segítségével az alkalmazás frissítését](service-fabric-application-upgrade-tutorial.md).
+A figyelt alkalmazás frissítését a felügyelt és natív API-k, PowerShell, Azure CLI-vel, a Java vagy REST használatával hajtható végre. A Visual Studio használatával történő frissítése, lásd: [Visual Studio használatával az alkalmazás frissítéséhez](service-fabric-application-upgrade-tutorial.md).
 
-Az alkalmazás-rendszergazda figyeli a Service Fabric működés közbeni frissítések segítségével beállíthatja a kiértékelési házirendet, amely a Service Fabric használ annak megállapításához, hogy az alkalmazás kifogástalan. Emellett a rendszergazda úgy is konfigurálhatja a a művelet végrehajtását, ha az állapot kiértékelésekor sikertelen (például egy automatikus visszaállítási történt.) Ez a szakasz végigvezeti az SDK-minták PowerShell használó egyik egy figyelt frissítésével. A következő Microsoft Virtual Academy videó is bemutatja, hogyan alkalmazás frissítése: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
+A Service Fabric figyelt működés közbeni frissítésekkel az alkalmazás-rendszergazda konfigurálhatja a kiértékelés olyan házirendet, amely a Service Fabric segítségével határozza meg, ha az alkalmazás állapota kifogástalan. Emellett a rendszergazda konfigurálhatja a művelet végrehajtását, ha az állapot értékelése nem sikerült (például egy automatikus visszaállítása során.) Ez a szakasz végigvezeti egy figyelt a frissítést, amely a Powershellt használja az SDK-minták egyikét. Az alábbi Microsoft Virtual Academy-videó végigvezeti egy alkalmazás frissítése: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
 <img src="./media/service-fabric-application-upgrade-tutorial-powershell/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
-## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>1. lépés: Létrehozása és központi telepítése a Visual objektumok minta
-Hozza létre, és tegye közzé az alkalmazást, kattintson a jobb gombbal a projektet, a **VisualObjectsApplication,** , majd válassza a **közzététel** parancsot.  További információkért lásd: [Service Fabric-alkalmazás frissítési oktatóanyag](service-fabric-application-upgrade-tutorial.md).  Azt is megteheti a PowerShell használatával telepítheti az alkalmazást.
+## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>1. lépés: Hozhat létre, és a vizuális objektumok minta üzembe helyezése
+Hozhat létre, és kattintson a jobb gombbal az alkalmazásprojektre, az alkalmazás közzététele **VisualObjectsApplication,** , és válassza a **közzététel** parancsot.  További információkért lásd: [Service Fabric-alkalmazás frissítési oktatóanyag](service-fabric-application-upgrade-tutorial.md).  Másik megoldásként a PowerShell használatával az alkalmazás üzembe helyezéséhez.
 
 > [!NOTE]
-> A Service Fabric parancsok PowerShell is használható, mielőtt először használatával csatlakozzon a fürthöz a `Connect-ServiceFabricCluster` parancsmag. Hasonlóképpen feltételezzük, hogy a fürt már be van állítva a helyi számítógépen. Olvassa el a [a Service Fabric fejlesztési környezet létrehozása](service-fabric-get-started.md).
+> A Service Fabric-parancsokhoz a PowerShell használni, először birtokában használatával csatlakozni a fürthöz a `Connect-ServiceFabricCluster` parancsmagot. Hasonlóképpen feltételezzük, hogy a fürt már be lett állítva a helyi gépen. Tekintse meg a cikket a [a Service Fabric fejlesztési környezet beállítása](service-fabric-get-started.md).
 > 
 > 
 
-A Visual Studio projekt létrehozása, után a PowerShell-parancsot használhatja [másolási-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) alkalmazás csomag másolása a lemezképtárolóba. Ha szeretné ellenőrizni a csomag helyi, használja a [teszt-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) parancsmag. A következő lépés az, hogy az alkalmazás a Service Fabric futásidejű történő regisztrálása a [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) parancsmag. A következő lépés az, hogy az alkalmazás példányának használatával indítsa el a [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmag.  Fenti három lépést is megfelel a használatával a **telepítés** menüpont a Visual Studióban.  A telepítés elvégzése után kell távolítja el a lemezképtárolóból másolt alkalmazáscsomag az erőforrások használatának csökkentése érdekében.  Ha egy alkalmazás típus már nem szükséges, kell regisztrációját ugyanebből az okból. Lásd: [központi telepítése és törlése alkalmazás PowerShell-lel](service-fabric-application-upgrade-tutorial-powershell.md) további információt.
+Után hoz létre a projektet a Visual Studióban, a PowerShell-parancs használható [másolási-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) az alkalmazáscsomag átmásolása a ImageStore. Ha szeretné ellenőrizni az alkalmazáscsomagot helyileg, használja a [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) parancsmagot. A következő lépés az, hogy regisztrálnia kell az alkalmazást a Service Fabric futtatókörnyezet történő a [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) parancsmagot. A következő lépés az, hogy indítsa el az alkalmazás egy példányát a [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmagot.  Ezek három lépések a következők használatával csatlakoztatja a **telepítés** menüpont a Visual Studióban.  A telepítés elvégzése után meg kell törölni a képet tárból másolt alkalmazáscsomag annak érdekében, hogy csökkentse a felhasznált erőforrásokért.  Az alkalmazástípus már nem szükséges, ha, akkor ugyanezen okból nem regisztrált kell lennie. Lásd: [PowerShell-lel telepítés és eltávolítás alkalmazások](service-fabric-application-upgrade-tutorial-powershell.md) további információt.
 
-Most már használhatja [a fürt és az alkalmazás megtekintése a Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Az alkalmazás rendelkezik egy webszolgáltatás, amelyet is nyílik meg, az Internet Explorerben írja be a [ http://localhost:8081/visualobjects ](http://localhost:8081/visualobjects) a böngésző címsorába.  Navigálás a képernyő néhány lebegőpontos vizuális objektum kell megjelennie.  Emellett használhatja [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) az alkalmazás állapotának ellenőrzéséhez.
+Most már használhatja [a fürt és az alkalmazás megtekintése a Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Az alkalmazás rendelkezik egy webszolgáltatás, amelyet is azután nyit meg, az Internet Explorerben írja be [ http://localhost:8081/visualobjects ](http://localhost:8081/visualobjects) címet a címsorba.  Megtekintheti az egyes lebegőpontos visual objektumok Navigálás a képernyő.  Emellett használhatja [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) alkalmazás állapotának ellenőrzéséhez.
 
-## <a name="step-2-update-the-visual-objects-sample"></a>2. lépés: A Visual objektumok minta frissítése
-Bizonyára észrevette, hogy, hogy az 1. lépésben telepített verziója, a visual objektumok nem elforgatása. Most frissítse az alkalmazás olyanra, ahol a vizuális objektumok is elforgatása.
+## <a name="step-2-update-the-visual-objects-sample"></a>2. lépés: Frissítés a Visual objektumok minta
+Észreveheti, hogy az 1. lépésben telepített verziójával, a vizuális objektumok nem elforgatása. Most frissítse az alkalmazás egy, a vizuális objektumokat is elforgatása.
 
-Válassza ki a VisualObjects.ActorService projektet a VisualObjects megoldáson, és nyissa meg a StatefulVisualObjectActor.cs fájlt. Ugrás a fájlt, a módszer `MoveObject`, megjegyzéssé `this.State.Move()`, és állítsa vissza `this.State.Move(true)`. Ez a változás az objektumok elforgatja, a szolgáltatás frissítése után.
+Válassza ki a VisualObjects megoldáson belül a VisualObjects.ActorService projektet, és nyissa meg a StatefulVisualObjectActor.cs fájlt. Ugrás a fájlt, a metódus `MoveObject`, tegye megjegyzésbe `this.State.Move()`, és vonja vissza `this.State.Move(true)`. Ez a változás elforgatása az objektumok, a szolgáltatás frissítése után.
 
-Is frissíteni kell a *ServiceManifest.xml* fájlt (PackageRoot) a projekt **VisualObjects.ActorService**. Frissítés a *CodePackage* és a 2.0-s és a megfelelő sorok az verziója a *ServiceManifest.xml* fájlt.
-Használhatja a Visual Studio *Manifest fájlok szerkesztése* lehetőséget, kattintson a jobb gombbal a megoldásban a jegyzékfájl módosítások után.
+Frissíteni kell a *ServiceManifest.xml* (alatt PackageRoot) fájlt a projekt **VisualObjects.ActorService**. Frissítés a *CodePackage* és a 2.0-s és a megfelelő sorokat verzióját a *ServiceManifest.xml* fájlt.
+Használhatja a Visual Studio *Manifest fájlok szerkesztése* után a jobb gombbal a megoldás a jegyzékfájl módosíthatja a beállítást.
 
-A módosításokat, miután a jegyzék a következőket kell hasonlítania (kiemelt bizonyos részei a módosításoknak):
+Után a módosításokat, a jegyzékfájlt a következőhöz hasonlóan kell kinéznie (a kiemelt részeket a változások megjelenítéséhez):
 
 ```xml
 <ServiceManifestName="VisualObjects.ActorService" Version="2.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -66,7 +66,7 @@ A módosításokat, miután a jegyzék a következőket kell hasonlítania (kiem
 <CodePackageName="Code" Version="2.0">
 ```
 
-Most a *ApplicationManifest.xml* fájl (alatt található a **VisualObjects** projekt alatt a **VisualObjects** megoldás) 2.0-s verzióját a frissül**VisualObjects.ActorService** projekt. Emellett a alkalmazás verzióra frissül 2.0.0.0-s 1.0.0.0 a. A *ApplicationManifest.xml* az alábbi kódrészletben hasonlóan kell kinéznie:
+Most már a *ApplicationManifest.xml* fájlt (alatt található a **VisualObjects** projektre a **VisualObjects** megoldás) frissül, és a 2.0-sverziójához**VisualObjects.ActorService** projekt. Emellett a alkalmazás verzióra frissült 2.0.0.0-s a 1.0.0.0. A *ApplicationManifest.xml* az alábbi kódrészlethez hasonlóan kell kinéznie:
 
 ```xml
 <ApplicationManifestxmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VisualObjects" ApplicationTypeVersion="2.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -74,14 +74,14 @@ Most a *ApplicationManifest.xml* fájl (alatt található a **VisualObjects** pr
  <ServiceManifestRefServiceManifestName="VisualObjects.ActorService" ServiceManifestVersion="2.0" />
 ```
 
-Most, a projekt buildjének elkészítéséhez kiválasztásával csak a **ActorService** projektet, és majd kattintson a jobb gombbal, majd válassza a **Build** lehetőséget a Visual Studio. Ha **építse újra az összes**, mivel a kód volna frissítenie kell az összes projektet, a verziók. Ezután tegyük a frissített alkalmazás becsomagolása kattintson a jobb gombbal a ***VisualObjectsApplication***, a Service Fabric menü kiválasztásával, és válassza **csomag**. Ez a művelet létrehoz egy alkalmazáscsomagot, amely telepíthető.  A frissített alkalmazás készen áll a telepíthető.
+Most hozza létre a projektet kiválasztásával csak a **ActorService** projektet, és majd kattintson a jobb gombbal, majd válassza a **hozhat létre** lehetőség a Visual Studióban. Ha **újraépíti az összes**, frissítenie kell az összes projekt-verziók a kódot kellene rendelkeznie módosítása óta. Ezután nézzük csomag a frissített alkalmazás kattintson a jobb gombbal a ***VisualObjectsApplication***, a Service Fabric menü kiválasztásával és a választás **csomag**. Ez a művelet létrehoz egy alkalmazáscsomagot, amely telepíthető.  A frissített alkalmazás a telepítésre készen áll.
 
-## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>3. lépés: Házirendek mellett dönt, és frissítse a paraméterek
-Ismerje meg, a [alkalmazás frissítési paraméterei](service-fabric-application-upgrade-parameters.md) és a [frissítési folyamat](service-fabric-application-upgrade.md) lekérni a különböző frissítési paraméterek időtúllépéseket és állapotfigyelő feltétel alkalmazása beható ismerete. Jelen kalauz használatához a szolgáltatás állapotának kiértékelési feltétel az alapértelmezett értékre van beállítva (és a javasolt) értéket, ami azt jelenti, hogy az összes szolgáltatás és példányok legyen *kifogástalan* a frissítés után.  
+## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>3. lépés: Döntse el, a házirendek és a frissítési paraméterek
+Ismerje meg az a [alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md) és a [frissítési folyamat](service-fabric-application-upgrade.md) lekérni a különböző frissítési paraméterek, időtúllépéseket és egészségügyi feltétel alkalmazása beható ismerete. Ebben a bemutatóban a service health értékelési feltétel az alapértelmezett értékre (és javasolt) értéket, ami azt jelenti, hogy az összes szolgáltatás és -példány legyen *kifogástalan* a frissítés után.  
 
-Azonban nézzük növeli a *HealthCheckStableDuration* 60 másodperc (így a szolgáltatások csak megfelelő előtt a frissítés előrehalad az a következő frissítési tartományra legalább 20 másodperc).  Most is beállíthat a *UpgradeDomainTimeout* az 1200-as másodperc és a *UpgradeTimeout* kell 3000 másodperc.
+Most azonban növeli a *HealthCheckStableDuration* 60 másodperc (úgy, hogy a szolgáltatások kifogástalan állapotú a frissítés előrehalad az a következő frissítési tartománnyal, mielőtt legalább 20 másodperc).  Nézzük is beállíthat a *UpgradeDomainTimeout* kell 1200-as másodperc és a *UpgradeTimeout* 3000 másodperc kell.
 
-Végezetül is állítsa a *UpgradeFailureAction* visszaállítani. Ez a beállítás megköveteli a Service Fabric szeretné visszaállítani az előző verzió az alkalmazás Ha probléma merül fel a frissítés során találkozik. Így a frissítés (4. lépés) indításakor a következő paraméterek vannak megadva:
+Végezetül hozzunk is beállíthat a *UpgradeFailureAction* visszaállítására. Ez utóbbi lehetőség megköveteli a Service Fabric szeretné visszaállítani az alkalmazás a korábbi verzióra, ha problémákat tapasztal a frissítés során. Így (a 4. lépését) a frissítés indításakor a következő paraméterek vannak megadva:
 
 FailureAction visszaállítási =
 
@@ -92,58 +92,58 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## <a name="step-4-prepare-application-for-upgrade"></a>4. lépés: A frissítésre alkalmazás előkészítése
-Az alkalmazás most már áll, beépített és készen áll a frissíthető. Ha megnyit egy PowerShell-ablak rendszergazda, írja be [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps), akkor hagyja, hogy azt jelzi, hogy a rendszer alkalmazás típusú 1.0.0.0 **VisualObjects** telepített van.  
+Az alkalmazás mostantól beépített és készen áll a frissítendő áll. Ha, nyissa meg egy PowerShell-ablakot rendszergazdaként, és írja be [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps), hagyja meg tudom, hogy az alkalmazás típusát 1.0.0.0 **VisualObjects** van telepítve.  
 
-Az alkalmazás csomag megtalálható a következő relatív elérési úton, ahol a Service Fabric SDK - tömörítés nélkül *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. Ebben a könyvtárban, az alkalmazáscsomag tárolására látnia kell egy "Csomagja" mappát. Ellenőrizze a helyi időre való győződjön meg arról, hogy-e a legújabb buildjével (esetleg módon módosítsa az is).
+A következő relatív elérési úton, ahol a Service Fabric SDK - tömörítés nélkül tárolja az alkalmazáscsomag *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. Keresse meg a "Csomag" mappát ebben a könyvtárban, az alkalmazáscsomag tárolására. Ellenőrizze a időbélyegei annak érdekében, hogy-e a legújabb buildre (Előfordulhat, hogy módosítania az elérési utak megfelelően is).
 
-Most tegyük másolja a frissített alkalmazáscsomag a Service Fabric lemezképtárolóba (az alkalmazáscsomagok tárolására Service Fabric által). A paraméter *ApplicationPackagePathInImageStore* arról tájékoztatja a Service Fabric hol találnak a alkalmazáscsomagot. Azt a frissített alkalmazás rendelkezik be "VisualObjects\_V2" (esetleg újra annak megfelelően módosítsa a elérési utak) a következő paranccsal.
+Most tekintsük másolja a frissített alkalmazást csomagot a Service Fabric ImageStore (az alkalmazáscsomagok tárolására a Service Fabric által). A paraméter *ApplicationPackagePathInImageStore* tájékoztatja a Service Fabric, ahol megtalálhatja az alkalmazáscsomagot. A frissített alkalmazás rendelkezik tárgyaljuk, "VisualObjects\_V2" az alábbi parancsot (Előfordulhat, hogy módosítania elérési utak újra megfelelően).
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
-A következő lépés az, hogy az alkalmazás regisztrálása a Service Fabric, amelyek használatával végezheti el a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) parancs:
+A következő lépés az, hogy az alkalmazás regisztrálása a Service Fabric, amelyek használatával végezheti el a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) parancsot:
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
 ```
 
-Ha az előző parancs nem jár sikerrel, valószínű, hogy kell-e egy újjáépítését az összes szolgáltatás. 2. lépésben említett, előfordulhat, hogy, valamint a WebService verzióra frissíteni.
+Ha az előző parancs nem jár sikerrel, valószínű, hogy kell-e az összes szolgáltatást újjáépítést. Ahogy már említettük, a 2. lépésben, akkor előfordulhat, hogy, valamint a webszolgáltatás-verziójának frissítése.
 
-Ajánlott az alkalmazáscsomag eltávolítása után az alkalmazás regisztrálása sikeres volt.  Rendszererőforrások szabaddá alkalmazáscsomagok az image store való törlésekor.  Nem használt alkalmazáscsomagok használ fel a lemezes tárolás és alkalmazást teljesítményproblémák vezet.
+Ajánlott az alkalmazáscsomag törlése után az alkalmazás regisztrálása sikeres volt.  Rendszer-erőforrásokat szabadít alkalmazáscsomagok törlése a képet tárból.  A fel nem használt alkalmazáscsomagok lemezes tárolást használ fel, és alkalmazásteljesítménnyel kapcsolatos problémák vezet.
 
 ```powershell
 Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore "VisualObjects\_V2" -ImageStoreConnectionString fabric:ImageStore
 ```
 
-## <a name="step-5-start-the-application-upgrade"></a>5. lépés: Indítsa el az alkalmazás frissítését
-Most, még az alkalmazásfrissítés használatával indítsa el az összes beállítása a [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) parancs:
+## <a name="step-5-start-the-application-upgrade"></a>5. lépés: Indítsa el az alkalmazás frissítése
+Most, hogy minden megvan, indítása az alkalmazás frissítése a [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) parancsot:
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -ApplicationTypeVersion 2.0.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000   -FailureAction Rollback -Monitored
 ```
 
 
-Az alkalmazás neve nem azonos a leírtaknak azt a *ApplicationManifest.xml* fájlt. A Service Fabric azonosítására, mely az alkalmazás első frissítés használja ezt a nevet. Ha az időtúllépéseket túl rövid, egy hibaüzenet arról, hogy a probléma merülhetnek fel. Tekintse át a hibaelhárítási részt, vagy növelje az időtúllépéseket.
+Az alkalmazás neve megegyezik a azt ennek a *ApplicationManifest.xml* fájlt. A Service Fabric azonosításához, amelyek az alkalmazás első frissítés ezt a nevet használja. Ha beállította az időtúllépéseket túl rövid, egy hibaüzenet arról, hogy a probléma felmerülhet. Tekintse meg a hibaelhárítási szakaszt, vagy növelje a várakozási idő.
 
-Most, mint az alkalmazás frissítési telepítése folytatódik, figyelheti használatával a Service Fabric Explorer vagy a [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) PowerShell-parancsot: 
+Most, mint az alkalmazás frissítési telepítése folytatódik, nyomon követheti a Service Fabric Explorer használatával vagy a [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) PowerShell-parancsot: 
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
 ```
 
-Néhány perc múlva, az állapotot, az előző PowerShell-parancs használatával portáltól kell nyújtaniuk, hogy minden frissítési tartományok frissített (elvégezve). És látnia kell, hogy a böngészőablakban visual objektumok elindította elforgatása!
+Néhány perc alatt, az állapot, a PowerShell-paranccsal az előző, tartalmaznia kell, hogy az összes frissítési tartományok frissített (Befejezve). És látnia kell, hogy a vizuális objektumokat a böngészőablak megkezdte az elforgatás!
 
-Próbálja meg frissíteni a 3-as verziójú 2-es verzióját, vagy a 2-es verzióra, egy gyakorlatot 1. A 2-es áthelyezése az 1-es frissítés is minősül. Lejátszás a időtúllépéseket és az állapotházirendeket el saját magának ismeri a őket. Egy Azure fürthöz való telepítéséhez, a paraméterek kell megfelelően be kell állítani. Az időtúllépéseket konzervatív módon beállítása helyes legyen.
+3. verzió 2-es vagy 2-es verzióra gyakorlatként 1 frissítése próbálhatja ki. 1. verziójának 2. verzió áthelyezését, a frissítés is számít. Időtúllépések és, hogy saját maga őket ismeri házirendek kísérletezhet. Egy Azure-fürtön való telepítéséhez, a paramétereket kell megfelelően be kell állítani. A jó konzervatív módon vegyen figyelembe állítsa be a várakozási idő.
 
 ## <a name="next-steps"></a>További lépések
-[Visual Studio segítségével az alkalmazás frissítését](service-fabric-application-upgrade-tutorial.md) végigvezeti Önt az alkalmazásfrissítés Visual Studio használatával.
+[A Visual Studio használata az alkalmazás frissítéséhez](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítése a Visual Studio használatával.
 
-Szabályozhatja, hogy az alkalmazás használatával frissíti [frissítési paraméterek](service-fabric-application-upgrade-parameters.md).
+Vezérelheti, hogyan az alkalmazásfrissítések használatával [frissítési paraméterek](service-fabric-application-upgrade-parameters.md).
 
-Az alkalmazásfrissítéseket által használatának megtanulása kompatibilissé [adatszerializálás](service-fabric-application-upgrade-data-serialization.md).
+Hogyan használja az alkalmazásfrissítések kompatibilissé [adatok szerializálása](service-fabric-application-upgrade-data-serialization.md).
 
-Összetettebb funkciók használata az alkalmazás frissítésekor szakaszra [témakörök speciális](service-fabric-application-upgrade-advanced.md).
+Speciális funkciók használata közben lépésként tekintse át az alkalmazás frissítéséhez [Speciális témakörök](service-fabric-application-upgrade-advanced.md).
 
-Alkalmazásfrissítések gyakori problémáinak megoldásához hajtsa végre a hivatkozással [alkalmazásfrissítések hibaelhárítási](service-fabric-application-upgrade-troubleshooting.md).
+Az alkalmazásfrissítések gyakori problémák megoldása szerint hajtsa végre a hivatkozó [alkalmazásfrissítések hibaelhárítása](service-fabric-application-upgrade-troubleshooting.md).
 

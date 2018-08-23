@@ -1,6 +1,6 @@
 ---
-title: Hívás végpont C# - Bing egyéni keresés – Microsoft kognitív Services segítségével
-description: A gyors üzembe helyezés keresési eredmények kérhet az egyéni keresési példányát a C# hívni a Bing egyéni keresési végpont mutatja be.
+title: Végpont meghívása a C# – Bing egyéni keresés – Microsoft Cognitive Services használatával
+description: Ez a rövid útmutató bemutatja, hogyan használatával C#, a Bing Custom Search-végpont meghívása az egyéni keresőpéldányok keresési eredmények kérhet.
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,32 +9,32 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: be4cc79d16b9a22124f16878b11ca04a916f98ae
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 87970e1c5e8487f9afca2acc680bdfeb610dc89f
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347855"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41987496"
 ---
-# <a name="call-bing-custom-search-endpoint-c"></a>Hívás Bing egyéni keresés végpont (C#)
+# <a name="call-bing-custom-search-endpoint-c"></a>Hívást a Bing Custom Search végpont (C#)
 
-A gyors üzembe helyezés keresési eredmények kérhet az egyéni keresési példányát a C# hívni a Bing egyéni keresési végpont mutatja be. 
+Ez a rövid útmutató bemutatja, hogyan használatával C#, a Bing Custom Search-végpont meghívása az egyéni keresőpéldányok keresési eredmények kérhet. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
--  Egy használatra kész egyéni keresési példányát. Lásd: [hozza létre az első Bing egyéni keresési példányát](quick-start.md).
--  [A .net core](https://www.microsoft.com/net/download/core) telepítve.
-- A [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.  
+-  Egy használatra kész egyéni keresési példány. Lásd: [az első Bing Custom Search-példány létrehozása](quick-start.md).
+-  [.NET core](https://www.microsoft.com/net/download/core) telepítve.
+- A [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Bing Search APIs**. A [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) elegendő ehhez a gyors útmutatóhoz. Szüksége lesz a hozzáférési kulcsot, ha az ingyenes próbaverzió aktiválásának, vagy használhat egy díjköteles előfizetési kulcsot az Azure irányítópultján.  
 
   >[!NOTE]  
-  >Meglévő Bing egyéni keresés ügyfelek rendelkező kiépítve előzetes kulcs, vagy azt megelőzően 2017. október 15 is kulcsokat kíván használni a November 30, 2017, vagy amíg azok kimerített engedélyezett lekérdezések maximális számát. Ezt követően kell az Azure-on általánosan elérhető verziójára való áttérést. 
+  >Bing Custom Search rendelkezik egy kulcsot az előzetes verzióhoz, legkésőbb 2017. október 15-meglévő ügyfeleink fogja tudni azok kulcsait használja, 2017. November 30-ig vagy addig, amíg azok ügynökönként lekérdezések engedélyezett maximális számát. Ezt követően azok kell migrálnia az Azure-on általánosan elérhető verziót. 
  
 ## <a name="run-the-code"></a>A kód futtatása
 
 Ez a példa futtatásához kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy mappát a kódot.
-2. A parancssor vagy a Terminálszolgáltatások keresse meg az imént létrehozott mappára.
+2. A parancssorba vagy terminálba keresse meg az imént létrehozott mappára.
 3. Futtassa az alábbi parancsot:
     ```
     dotnet new console -o BingCustomSearch
@@ -43,8 +43,8 @@ Ez a példa futtatásához kövesse az alábbi lépéseket:
     dotnet restore
    ```
 
-4. Másolja az alábbi kódot a program.cs fájlt.
-5. Cserélje le **YOUR-ELŐFIZETÉS-kulcs** és **YOUR-egyéni-CONFIG-ID** a kulcs és a konfigurációs azonosítóval.
+4. Másolja az alábbi kódot a program.cs fájlhoz.
+5. Cserélje le **YOUR-SUBSCRIPTION-KEY** és **YOUR-CUSTOM-CONFIG-ID** konfigurációját ID azonosítójával.
 
     ``` CSharp
     using System;
@@ -118,16 +118,18 @@ Ez a példa futtatásához kövesse az alábbi lépéseket:
         }
     }
     ```
-6. Építenie az alkalmazást, az alábbi parancs segítségével. Megjegyzés: a parancs kimenete által hivatkozott dll elérési útja.
+6. Hozza létre az alkalmazást, az alábbi paranccsal. Megjegyzés: a parancs kimenete által hivatkozott dll elérési útja.
+
     <pre>
     dotnet build 
     </pre>
-7. Futtassa az alkalmazást, használja a következő parancs cseréje **elérési UTAT a kimeneti** a következő elérési a build lépés hivatkozik.
+7. Futtassa az alkalmazást a következő parancs cseréje **elérési UTAT a kimeneti** az elérési útját a buildelési lépést hivatkozik.
+
     <pre>    
     dotnet **PATH TO OUTPUT**
     </pre>
 
 ## <a name="next-steps"></a>További lépések
-- [A központi felhasználói felületi élmény konfigurálása](./hosted-ui.md)
-- [Jelölje ki a szöveget decoration jelölők használatával](./hit-highlighting.md)
-- [Lap szolgáltatásának konfigurálása](./page-webpages.md)
+- [A központi felhasználói felület konfigurálása](./hosted-ui.md)
+- [Kiemeli a szöveget decoration jelölők használatával](./hit-highlighting.md)
+- [Oldal weblapok](./page-webpages.md)

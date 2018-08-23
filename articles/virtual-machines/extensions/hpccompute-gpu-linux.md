@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.author: roiyz
-ms.openlocfilehash: d95a1b510411f913a05762494dd48d6a5b6f84fd
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 307bdb5fa7a5d14a77c71d0ea40634a55d8507b6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413671"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056700"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogramjának-bővítmény linuxhoz
 
@@ -63,7 +63,8 @@ A következő JSON a bővítmény sémáját jeleníti meg.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -77,7 +78,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 | apiVersion | 2015-06-15 | dátum |
 | publisher | Microsoft.HpcCompute | sztring |
 | type | NvidiaGpuDriverLinux | sztring |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1.1 | int |
 
 
 ## <a name="deployment"></a>Környezet
@@ -103,7 +104,8 @@ Az alábbi példa azt feltételezi, hogy a bővítményt a virtuális gép típu
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -120,7 +122,7 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.0 `
+    -TypeHandlerVersion 1.1 `
     -SettingString '{ `
     }'
 ```
@@ -133,7 +135,7 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverLinux `
   --publisher Microsoft.HpcCompute `
-  --version 1.0 `
+  --version 1.1 `
   --settings '{ `
   }'
 ```
@@ -166,6 +168,8 @@ Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájl
 | 1 | Helytelen-bővítmény használatát. | Forduljon az ügyfélszolgálathoz a végrehajtási napló kimenetét. |
 | 10 | Linux Integration Services, a Hyper-V és az Azure nem érhető el, illetve telepített. | Ellenőrizze a kimenetét lspci. |
 | 11 | NVIDIA GPU nem található a Virtuálisgép-méretet. | Használja a [virtuális gép mérete és az operációs rendszer támogatott](../linux/n-series-driver-setup.md). |
+| 12 | Kép az ajánlat nem támogatott |
+| 13 | Virtuálisgép-méret nem támogatott | Használja az N sorozatú virtuális gépek üzembe helyezése |
 | 14 | A művelet sikertelen | |
 | 21 | Ubuntu rendszeren nem sikerült frissíteni a | "Sudo apt-get frissítése" négyzet kimeneti |
 

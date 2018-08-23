@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/09/2018
+ms.date: 08/20/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: ac338283bfe123e70697b0301fdccca886653c42
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: d6ee8da276bdefb7561a445f6ae0f0281274c5ef
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285299"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061063"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS-alkalmazás integráció az Azure Active Directoryval
 
@@ -41,6 +41,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-15five-tutorial.png)| [15Five](15five-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-23video-tutorial.png)| [23 videó](23video-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-360online-tutorial.png)| [360 Online](360online-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-4me-tutorial.png)| [4me](4me-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-8x8virtualoffice-tutorial.png)| [8 x 8 virtuális Office](8x8virtualoffice-tutorial.md)|
 
 ## <a name="a"></a>A
@@ -115,6 +116,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-boxcryptor-tutorial.png)| [Boxcryptor](boxcryptor-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bpmonline-tutorial.png)| [Bpmâonline](bpmonline-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bridge-tutorial.png)| [Bridge](bridge-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-bridgelineunbound-tutorial.png)| [Bridgeline kötése feloldva.](bridgelineunbound-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-brightspace-desire2learn-tutorial.png)| [Brightspace Desire2Learn szerint](brightspace-desire2learn-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bynder-tutorial.png)| [Bynder](bynder-tutorial.md)|
 
@@ -149,6 +151,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-newsignature-tutorial.png)| [Felhőalapú felügyeleti portálján a Microsoft Azure](newsignature-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-cloudpassage-tutorial.png)| [CloudPassage](cloudpassage-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-collaborativeinnovation-tutorial.png)| [Együttműködésen alapuló innovációt](collaborativeinnovation-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-comm100livechat-tutorial.png)| [Comm100 élő Csevegésben](comm100livechat-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-communifire-tutorial.png)| [Communifire](communifire-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-competencyiq-tutorial.png)| [CompetencyIQ](competencyiq-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-complianceelf-tutorial.png)| [Megfelelőségi ELF](complianceelf-tutorial.md)|
@@ -177,6 +180,8 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-docusign-tutorial.png)| [DocuSign](docusign-tutorial.md)|[DocuSign - felhasználók átadása](docusign-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-dome9arc-tutorial.png)| [Dome9 ív](dome9arc-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-domo-tutorial.png)| [Domo](domo-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-dossier-tutorial.png)| [Dokumentáció](dossier-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-dovetale-tutorial.png)| [Dovetale](dovetale-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-dowjones-factiva-tutorial.png)| [Dő Jones Factiva](dowjones-factiva-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox Business](dropboxforbusiness-tutorial.md)| [Dropbox Business - felhasználók átadása](dropboxforbusiness-provisioning-tutorial.md)| 
 | ![embléma](./media/tutorial-list/active-directory-saas-druva-tutorial.png)| [Druva](druva-tutorial.md)|
@@ -247,6 +252,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-heroku-tutorial.png)| [Heroku](heroku-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-hightail-tutorial.png)| [Hightail](hightail-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-hirevue-tutorial.png)| [HireVue](hirevue-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-hornbill-tutorial.png)| [Szarvascsőrűmadár](hornbill-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-hostedgraphite-tutorial.png)| [Üzemeltetett grafit](hostedgraphite-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-hpesaas-tutorial.png)| [HPE SaaS](hpesaas-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-hr2day-tutorial.png)| [HR2day Merces szerint](hr2day-tutorial.md)|
@@ -297,6 +303,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-jobscience-tutorial.png)| [Jobscience](jobscience-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-jobscore-tutorial.png)| [JobScore](jobscore-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-jostle-tutorial.png)| [Jostle](jostle-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-kanbanize-tutorial.png)| [Kanbanize](kanbanize-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-kantegassoforbamboo-tutorial.png)| [A bambusz Kantega SSO](kantegassoforbamboo-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-kantegassoforbitbucket-tutorial.png)| [A Bitbucket Kantega SSO](kantegassoforbitbucket-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-kantegassoforconfluence-tutorial.png)| [Kantega egyszeri bejelentkezés az való összefolyás felett](kantegassoforconfluence-tutorial.md)|
@@ -348,6 +355,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-mercell-tutorial.png)| [Mercell](mercell-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-mercerhrs-tutorial.png)| [Mercer BenefitsCentral (MBC)](mercerhrs-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-merchlogix-tutorial.png)| [Merchlogix](merchlogix-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-metanetworksconnector-tutorial.png)| [Meta-összekötő hálózatok](metanetworksconnector-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-mimecast-admin-console-tutorial.png)| [Mimecast felügyeleti konzol](mimecast-admin-console-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-mimecast-personal-portal-tutorial.png)| [Mimecast személyes portál](mimecast-personal-portal-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-mindflash-tutorial.png)| [Mindflash](mindflash-tutorial.md)|
@@ -368,6 +376,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 
 | Embléma | Oktatóanyag az egyszeri bejelentkezés | Oktatóanyag az felhasználók átadása |
 | :---: | :--- | :--- |
+| ![embléma](./media/tutorial-list/active-directory-saas-n2fexpensereports-tutorial.png)| [N2F - költségjelentések](n2f-expensereports-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-namely-tutorial.png)| [Nevezetesen](namely-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-neotalogicstudio-tutorial.png)| [Neota logikai Studio](neotalogicstudio-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-netdocuments-tutorial.png)| [NetDocuments](netdocuments-tutorial.md)|
@@ -424,6 +433,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-procoresso-tutorial.png)| [Procore egyszeri bejelentkezés](procoresso-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-projectplace-tutorial.png)| [Projectplace](projectplace-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-promapp-tutorial.png)| [Promapp](promapp-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-promaster-tutorial.png)| [ProMaster (által Inlogik)](promaster-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-proofpoint-ondemand-tutorial.png)| [Igény szerinti Proofpoint](proofpoint-ondemand-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-proxyclick-tutorial.png)| [Proxyclick](proxyclick-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-purelyhr-tutorial.png)| [PurelyHR](purelyhr-tutorial.md)|
@@ -459,10 +469,11 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 
 | Embléma | Oktatóanyag az egyszeri bejelentkezés | Oktatóanyag az felhasználók átadása |
 | :---: | :--- | :--- |
+| ![embléma](./media/tutorial-list/active-directory-saas-safeconnect-tutorial.png)| [SafeConnect](safeconnect-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-safetynet-tutorial.png)| [SafetyNet](safetynet-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)|[Salesforce – felhasználói kiépítése](salesforce-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-salesforce-sandbox-tutorial.png)| [Salesforce Sandbox](salesforce-sandbox-tutorial.md)|[Salesforce-tesztkörnyezet - felhasználók átadása](salesforce-sandbox-provisioning-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-samanage-tutorial.png)| [Samanage](samanage-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-samanage-tutorial.png)| [Samanage](samanage-tutorial.md)|[Samanage - felhasználók átadása](samanage-provisioning-tutorial.md)
 | ![embléma](./media/tutorial-list/active-directory-saas-saml-tutorial.png)| [SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás](saml-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bamboo-tutorial.png)| [A felbontása GmbH bambusz SAML SSO](bamboo-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bitbucket-tutorial.png)| [SAML SSO a Bitbucket GmbH felbontása](bitbucket-tutorial.md)|
@@ -476,6 +487,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial.png)| [SAP Felhőplatform Identitáshitelesítésével](sap-hana-cloud-platform-identity-authentication-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-saphana-tutorial.png)| [SAP HANA](saphana-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-sap-netweaver-tutorial.png)| [SAP NetWeaver](sap-netweaver-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-saucelabs-tutorial.png)| [Mártás Labs - mobil- és webalkalmazás tesztelése](saucelabs-mobileandwebtesting-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-scalexenterprise-tutorial.png)| [ScaleX Enterprise](scalexenterprise-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-scclifecycle-tutorial.png)| [SCC életciklusa](scclifecycle-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-screencast-tutorial.png)| [Képernyőfelvétel-O-értéket](screencast-tutorial.md)|
@@ -486,6 +498,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-sd-elements-tutorial.png)| [SD-elemek](sd-elements-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-secretserver-on-premises-tutorial.png)| [Titkos kód kiszolgáló (helyszíni)](secretserver-on-premises-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-securedeliver-tutorial.png)| [BIZTONSÁGOS DELIVERY](securedeliver-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-securew2joinnowconnector-tutorial.png)| [SecureW2 JoinNow összekötő](securejoinnow-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-sedgwickcms-tutorial.png)| [Sedgwick tartalomkezelő rendszer](sedgwickcms-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-sensoscientific-tutorial.png)| [SensoScientific vezeték nélküli hőmérséklet-figyelő rendszer](sensoscientific-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-sequr-tutorial.png)| [Sequr](sequr-tutorial.md)|
@@ -500,6 +513,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-simplenexus-tutorial.png)| [SimpleNexus](simplenexus-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-skilljar-tutorial.png)| [Skilljar](skilljar-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-skillport-tutorial.png)| [Skillport](skillport-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-skillsbase-tutorial.png)| [Képességek alapja](skillsbase-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-skillsmanager-tutorial.png)| [Skills Manager](skillsmanager-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-skydeskemail-tutorial.png)| [SkyDesk E-mail](skydeskemail-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-skyhighnetworks-tutorial.png)| [Skyhigh hálózatok](skyhighnetworks-tutorial.md)|
@@ -507,12 +521,14 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Slack - felhasználók átadása](slack-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-smallimprovements-tutorial.png)| [Kisebb fejlesztések](smallimprovements-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-smarteru-tutorial.png)| [SmarterU](smarteru-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-smartlpa-tutorial.png)| [SmartLPA](smartlpa-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-smartrecruiters-tutorial.png)| [SmartRecruiters](smartrecruiters-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-softeon-tutorial.png)| [Softeon WMS](softeon-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-soonr-tutorial.png)| [Soonr munkahelyi](soonr-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-spaceiq-tutorial.png)| [SpaceIQ](spaceiq-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-spacio-tutorial.png)| [Spacio](spacio-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-splunkenterpriseandsplunkcloud-tutorial.png)| [Splunk Enterprise szolgáltatásaival és Splunk felhő](splunkenterpriseandsplunkcloud-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-spotinst-tutorial.png)| [Spotinst](spotinst-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-spring-cm-tutorial.png)| [SpringCM](spring-cm-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-springerlink-tutorial.png)| [Springer hivatkozás](springerlink-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-sprinklr-tutorial.png)| [Sprinklr](sprinklr-tutorial.md)|
@@ -531,7 +547,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | Embléma | Oktatóanyag az egyszeri bejelentkezés | Oktatóanyag az felhasználók átadása |
 | :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-tyeexpress-tutorial.png)| [T & E Express](tyeexpress-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-tableauonline-tutorial.png)| [Tableau Online](tableauonline-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-tableauonline-tutorial.png)| [Tableau Online](tableauonline-tutorial.md)|[Online – a tableau felhasználók átadása](tableau-online-provisioning-tutorial.md)
 | ![embléma](./media/tutorial-list/active-directory-saas-tableauserver-tutorial.png)| [Tableau Server](tableauserver-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-talentlms-tutorial.png)| [TalentLMS](talentlms-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-tangoanalytics-tutorial.png)| [Tango Analytics](tangoanalytics-tutorial.md)|
@@ -578,6 +594,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 
 | Embléma | Oktatóanyag az egyszeri bejelentkezés | Oktatóanyag az felhasználók átadása |
 | :---: | :--- | :--- |
+| ![embléma](./media/tutorial-list/active-directory-saas-waywedo-tutorial.png)| [Úgy tesszük](waywedo-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-wdesk-tutorial.png)| [Wdesk](wdesk-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-weekdone-tutorial.png)| [Weekdone](weekdone-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-wikispaces-tutorial.png)| [Wikispaces](wikispaces-tutorial.md)|

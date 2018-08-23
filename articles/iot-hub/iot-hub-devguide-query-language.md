@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444184"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42059477"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
 
@@ -309,7 +309,7 @@ Jelenleg a lekérdezések **devices.jobs** nem támogatják:
 
 Használatával [eszközről a felhőbe útvonalak][lnk-devguide-messaging-routes], konfigurálhatja úgy az IoT Hub tart elküldeni a különböző végpontok eszköz – felhő üzeneteket. Zahájeno szemben az egyes üzenetek értékelt kifejezések alapján történik.
 
-Az útvonal [feltétel] [ lnk-query-expressions] az ugyanazon az IoT Hub lekérdezési nyelv használja, mint az ikereszköz és a feladat lekérdezések feltételek. A fejlécek és törzs útvonal feltételek értékeli ki. Az útválasztási lekérdezési kifejezés csak üzenetfejlécekben is csak az üzenettörzs vagy mindkettőt. Az IoT Hub feltételezi, hogy egy adott séma a fejlécek és az üzenettörzs üzenetek irányítása érdekében. A következő szakaszok ismertetik, hogy mire szükség, az IoT Hub megfelelően továbbítani.
+Az útvonal [feltétel] [ lnk-query-expressions] használja az IoT Hub lekérdezési nyelv szintaxisát, ikereszköz és feladat-lekérdezéseket, de csak az a funkciók egy részét a feltételek érhetők el. A fejlécek és törzs útvonal feltételek értékeli ki. Az útválasztási lekérdezési kifejezés is igénybe vehet csak üzenetfejlécekben, csak az üzenet szövegét, vagy mindkettő fejlécek üzenet, és üzenet törzse. Az IoT Hub feltételezi, hogy egy adott sémát a fejlécek és az üzenet törzse számára ahhoz, hogy az üzenetek, és a következő szakaszok ismertetik, hogy mire szükség, az IoT Hub megfelelően továbbítani.
 
 ### <a name="routing-on-message-headers"></a>Fejlécek az Útválasztás
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 0bd14e85496da8c6c12ecb98b7c8f1730a16e640
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a5a0634e371e4a762b3877b0c3e45682924a27d
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524566"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054722"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -84,6 +84,7 @@ Tekintse meg az adott nyelvű példa:
 * [C#](#trigger---c-example)
 * [C# script (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Eseményindító - C#-példa
 
@@ -181,6 +182,45 @@ module.exports = function(context) {
     context.done();
 };
 ```
+
+### <a name="trigger---java-example"></a>Eseményindító - Java-példában
+
+Az alábbi példa bemutatja egy kötelező a blob eseményindító egy *function.json* fájl és [Java-kódok](functions-reference-java.md) , amely a kötés használja. A függvény ír a napló, amikor egy blob hozzáadásakor vagy frissítésekor a a `myblob` tároló.
+
+Íme a *function.json* fájlt:
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            "name": "file",
+            "type": "blobTrigger",
+            "direction": "in",
+            "path": "myblob/{name}",
+            "connection":"MyStorageAccountAppSetting"
+        }
+    ]
+}
+```
+
+A Java-kód itt látható:
+
+```java
+ @FunctionName("blobprocessor")
+ public void run(
+    @BlobTrigger(name = "file",
+                  dataType = "binary",
+                  path = "myblob/filepath",
+                  connection = "myconnvarname") byte[] content,
+    @BindingName("name") String filename,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info("Name: " + name + " Size: " + content.length + " bytes");
+ }
+
+```
+
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
@@ -391,6 +431,7 @@ Tekintse meg az adott nyelvű példa:
 * [C#](#input---c-example)
 * [C# script (.csx)](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
+* [Java](#input---java-example)
 
 ### <a name="input---c-example"></a>Bemenet – C#-példa
 
@@ -505,6 +546,23 @@ module.exports = function(context) {
 };
 ```
 
+### <a name="input---java-example"></a>Bemenet - Java-példában
+
+Az alábbi példában egy Java-függvény, amely egy üzenetsor eseményindító és a egy bemeneti blob kötés használja. Az üzenetsorban található üzenet a blob nevét tartalmazza, és a függvény naplózza a blob mérete.
+
+```java
+@FunctionName("getBlobSize")
+@StorageAccount("AzureWebJobsStorage")
+public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-items") String filename,
+                    @BlobInput(name = "file", dataType = "binary", path = "samples-workitems/{queueTrigger") byte[] content,
+       final ExecutionContext context) {
+      context.getLogger().info("The size of \"" + filename + "\" is: " + content.length + " bytes");
+ }
+ ```
+
+  Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@BlobInput` jegyzet paraméterekkel, amelynek az értéke egy blob kellene származnia.  A jegyzet használható natív Java-típusokat, POJOs vagy nullázható értékek használatával `Optional<T>`. 
+
+
 ## <a name="input---attributes"></a>Bemenet - attribútumok
 
 A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs).
@@ -587,6 +645,7 @@ Tekintse meg az adott nyelvű példa:
 * [C#](#output---c-example)
 * [C# script (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
+* [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>Kimenet – C#-példa
 
@@ -718,6 +777,24 @@ module.exports = function(context) {
     context.done();
 };
 ```
+
+### <a name="output---java-example"></a>Kimenet – Java-példában
+
+Az alábbi példában látható blob bemeneti és kimeneti kötés egy Java-függvény. A funkció lehetővé teszi a szöveges blob egy példányát. A függvény, amely tartalmazza a blob másolásához nevét, egy üzenetsor által aktivált. Az új blob neve {originalblobname} – másolat
+
+```java
+@FunctionName("copyTextBlob")
+@StorageAccount("AzureWebJobsStorage")
+@BlobOutput(name = "target", path = "samples-workitems/{queueTrigger}-Copy")
+public String blobCopy(
+    @QueueTrigger(name = "filename", queueName = "myqueue-items") String filename,
+    @BlobInput(name = "source", path = "samples-workitems/{queueTrigger}") String content ) {
+      return content;
+ }
+ ```
+
+ Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@BlobOutput` függvény paraméterei, amelynek az értéke az a blob storage-objektum tartalmazná a jegyzet.  A paraméter típusa legyen `OutputBinding<T>`, ahol a T natív Java bármilyen egy pojo-vá.
+
 
 ## <a name="output---attributes"></a>Kimenet – attribútumok
 

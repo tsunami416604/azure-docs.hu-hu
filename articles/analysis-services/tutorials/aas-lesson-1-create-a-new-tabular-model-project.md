@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17abcc7dea2f695b4678b30fe7448b0bcbb11590
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b9d3e9df62ffd31a6a01ea427fec8d5a3d168bfa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441495"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058411"
 ---
 # <a name="create-a-tabular-model-project"></a>Táblázatosmodell-projekt létrehozása
 
-Ebben a leckében a Visual Studio és az SQL Server Data Tools (SSDT) használatával hozhat létre új táblázatosmodell-projektet az 1400-as kompatibilitási szinten. A projekt létrehozása után megkezdheti az adatok hozzáadását és a modell létrehozását. Ez a lecke röviden bemutatja a Visual Studio táblázatosmodell-létrehozási környezetét is.  
+Ebben a leckében használhatja a Visual Studio az Analysis Services-projektek vagy SQL Server Data Tools (SSDT) hozzon létre egy új táblázatosmodell-projektet az 1400-as kompatibilitási szinten. A projekt létrehozása után megkezdheti az adatok hozzáadását és a modell létrehozását. Ez a lecke röviden bemutatja a Visual Studio táblázatosmodell-létrehozási környezetét is.  
   
 A lecke elvégzésének várható időtartama: **10 perc**.  
   
@@ -49,7 +49,7 @@ Ez a témakör a táblázatos modellek létrehozását ismertető oktatóanyag e
     Ha nem látja az SQL Server 2017 / Azure Analysis Services (1400) lehetőséget a Kompatibilitási szint listában, akkor nem az SSDT legújabb verzióját használja. A legújabb verzió beszerzése: [Az SQL Server Data Tools telepítése](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
       
   
-## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>Az SSDT táblázatosmodell-létrehozási környezetének megismerése  
+## <a name="understanding-the-visual-studio-tabular-model-authoring-environment"></a>A Visual Studio táblázatosmodell-létrehozási környezetben ismertetése  
 Az új táblázatosmodell-projekt létrehozása után szánjon néhány percet a Visual Studio táblázatosmodell-létrehozási környezetének felfedezésére.  
   
 A létrehozott projekt megnyílik a Visual Studióban. A jobb oldalon, a **Táblázatosmodell-tallózóban** láthatja a modellben található objektumok fanézetét. Mivel még nem importált adatokat, a mappák üresek. A jobb gombbal egy objektummappára kattintva műveleteket hajthat végre, a menüsorhoz hasonló módon. Az oktatóanyag elvégzése során a Táblázatosmodell-tallózóval navigálhat a modellprojekt különböző objektumai között.
@@ -68,7 +68,7 @@ Modellprojekt létrehozásakor bizonyos modelltulajdonságok beállítása autom
 
 A **Megoldáskezelő** területén kattintson a jobb gombbal az **AW internetes értékesítés** projektre, majd kattintson a **Tulajdonságok** elemre. Megnyílik az **AW internetes értékesítés tulajdonságlapjai** párbeszédpanel. Néhány tulajdonságot ezek közül a modell üzembe helyezése során adhat meg.  
   
-Az SSDT telepítésekor a Visual Studio-környezet több új menüelemmel bővült. Kattintson a **Modell** menüre. Itt importálhat adatokat, frissítheti a munkaterület adatait, az Excelben navigálhat a modellben, létrehozhat perspektívákat és szerepköröket, kiválaszthatja a modellnézetet, valamint számítási beállításokat adhat meg. Kattintson a **Tábla** menüre. Itt kapcsolatokat hozhat létre és kezelhet, megadhatja a dátumtáblázat beállításait, partíciókat hozhat létre és szerkesztheti a tábla beállításait. Ha az **Oszlop** menüre kattint, hozzáadhat és törölhet oszlopokat a táblából, rögzítheti az oszlopokat, és megadhatja a rendezési sorrendet. Az SSDT további gombokat ad hozzá a menüsorhoz is. A leghasznosabb ezek közül az AutoSzum funkció, amellyel standard összesítésmérték hozható létre egy kijelölt oszlophoz. Az eszköztár többi gombja gyors hozzáférést biztosít a gyakran használt funkciókhoz és parancsokhoz.  
+Analysis Services-projektek vagy az SSDT telepítésekor a Visual Studio-környezet több új menüelemmel bővült. Kattintson a **Modell** menüre. Itt importálhat adatokat, frissítheti a munkaterület adatait, az Excelben navigálhat a modellben, létrehozhat perspektívákat és szerepköröket, kiválaszthatja a modellnézetet, valamint számítási beállításokat adhat meg. Kattintson a **Tábla** menüre. Itt kapcsolatokat hozhat létre és kezelhet, megadhatja a dátumtáblázat beállításait, partíciókat hozhat létre és szerkesztheti a tábla beállításait. Ha az **Oszlop** menüre kattint, hozzáadhat és törölhet oszlopokat a táblából, rögzítheti az oszlopokat, és megadhatja a rendezési sorrendet. A Visual Studio is további gombokat ad hozzá a menüsorhoz. A leghasznosabb ezek közül az AutoSzum funkció, amellyel standard összesítésmérték hozható létre egy kijelölt oszlophoz. Az eszköztár többi gombja gyors hozzáférést biztosít a gyakran használt funkciókhoz és parancsokhoz.  
   
 Fedezze fel a táblázatos modellek létrehozásával kapcsolatos különféle funkciók párbeszédpaneljeit és helyét. Habár néhány elem egyelőre nem aktív, jó képet kaphat a táblázatosmodell-létrehozási környezetről.  
   

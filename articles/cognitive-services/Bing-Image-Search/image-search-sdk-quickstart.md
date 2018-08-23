@@ -1,6 +1,6 @@
 ---
-title: Kép keresési gyors üzembe helyezési SDK C# |} Microsoft Docs
-description: A telepítő lemezkép keresési SDK C# Konzolalkalmazás.
+title: 'Gyors útmutató: A kérés és az SDK-t C# használatával rendszerképek szűrése'
+description: Ebben a rövid útmutatóban a kérelem, és szűrheti a képeket, a Bing Képkeresés, C# használatával által visszaadott.
 titleSuffix: Azure cognitive services setup Image search SDK C# console application
 services: cognitive-services
 author: mikedodaro
@@ -10,49 +10,49 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: v-gedod
-ms.openlocfilehash: f58556f13bb25c3ea2ed9378c0669d649554a8c0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 81375019e53b49b531fde1f81fbcb9a061cc5562
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349455"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41988471"
 ---
-# <a name="image-search-sdk-c-quickstart"></a>Kép keresési SDK C# gyors üzembe helyezés
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-c"></a>Gyors útmutató: A kérés és az SDK-t és a C# használatával rendszerképek szűrése
 
-A Bing kép keresési SDK tartalmazza a REST API-t a vonatkozó kérelmek és elemzési eredmények funkcióit. 
+Kép a Bing Search SDK tartalmazza a REST API vonatkozó kérelmek és elemzési eredmények funkcióit. 
 
-A [forráskód C# Bing kép keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) érhető el a Git központ.
+A [forráskódját a C# Bing kép Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) Github érhető el.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Állítsa be a Konzolalkalmazás, a Bing kép keresési SDK használatával, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studio megoldáskezelőjében.  Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.ImageSearch` csomag.
+Szeretne beállítani egy konzolalkalmazást, kép Bing Search SDK használatával, keresse meg a `Manage NuGet Packages` lehetőség a Visual Studio Megoldáskezelőjében.  Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.ImageSearch` csomagot.
 
-Telepíti a [kép keresési NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0) is telepíti a függőségek, beleértve:
+Telepíti a [Képkeresés NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0) is telepíti a függőségeket, többek között:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
 ## <a name="image-search-client"></a>Kép keresési ügyfél
-Egy példányának létrehozása a `ImageSearchAPI` ügyfelet, adja hozzá az irányelvek segítségével:
+Hozzon létre egy példányt, a `ImageSearchAPI` ügyfél, Hozzáadás irányelvekkel:
 ```
 using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
 using Microsoft.Azure.CognitiveServices.Search.ImageSearch.Models;
 
 ```
-Az ügyfél ezután példányosítható:
+Ezután hozza létre az ügyfél:
 ```
 var client = new ImageSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
-Az ügyfél segítségével keresést a lekérdezés szövegének:
+Az ügyfél használja a keresést a lekérdezés szövege:
 ```
 // Search for "Yosemite National Park"
 var imageResults = client.Images.SearchAsync(query: "Canadian Rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 
 ```
-A kép eredmények a korábbi lekérdezés által visszaadott elemezni:
+A kép eredményeket a korábbi lekérdezés által visszaadott elemzése:
 
 ```
 if (imageResults.Value.Count > 0)
@@ -75,7 +75,7 @@ Console.WriteLine($"\r\nImage result total estimated matches: {imageResults.Tota
 
 ## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
 
-A következő Konzolalkalmazás végrehajtja a korábban meghatározott lekérdezést "Kanadai Rockies" keresse meg az eredményeket, majd nyomtassa ki az első kép insights token, miniatűr URL-címét, és a tartalom URL-címe:
+A következő Konzolalkalmazás végrehajtja a korábban meghatározott lekérdezés "Kanadai Rockies" keresse meg az eredményeket, majd nyomtassa ki az első insights token, a Miniatűr URL-címe, és a tartalom URL-címe:
 
 ```
 using System;
@@ -186,11 +186,11 @@ namespace ImageSrchSDK
 
 ## <a name="search-options"></a>Keresési beállítások
 
-Az SDK különböző funkciókat fogunk bemutatni, a Bing keresési minták.  A következő funkciók hozzáadása a korábban meghatározott `ImageSrchSDK` osztály.
+A Bing search-minták az SDK különböző funkcióit mutatják be.  A következő funkciók hozzáadása a korábban meghatározott `ImageSrchSDK` osztály.
 
-### <a name="search-using-a-filter"></a>A keresés szűrő használatával
+### <a name="search-using-a-filter"></a>Keresési szűrő használata
 
-Keressen a "studio ghibli", animált GIF és széles aspektus szűri képek, majd ellenőrizze a találatok száma, és nyomtassa ki insightsToken Miniatűr URL-cím és URL-cím első eredmény.
+"Studio ghibli", GIF, és számos szempont, szűrve rendszerképek keresése, majd ellenőrizze az eredmények száma, és nyomtassa ki az insightsToken Miniatűr URL-cím és az első eredmény URL-címe.
 
 ```
         public static void ImageSearchWithFilters(ImageSearchAPI client)
@@ -234,7 +234,7 @@ Keressen a "studio ghibli", animált GIF és széles aspektus szűri képek, maj
 
 ### <a name="trending-images"></a>A világ legnépszerűbb képei
 
-Keresse meg a trendekkel képek, és ellenőrizze a kategóriák és a csempéket.
+Keresse meg a felkapott képek, és ellenőrizze a kategóriák és a csempék.
 
 ```
         public static void ImageTrending(ImageSearchAPI client)
@@ -288,7 +288,7 @@ Keresse meg a trendekkel képek, és ellenőrizze a kategóriák és a csempéke
 
 ### <a name="image-details"></a>Lemezkép adatait
 
-Lemezképek keressen a "Degas", és keressen a lemezkép adatait az első kép.
+Lemezképek keresése "Degas", és keressen rá az első képen kép adatait.
 ```
         public static void ImageDetail(ImageSearchAPI client)
         {
@@ -406,4 +406,4 @@ Lemezképek keressen a "Degas", és keressen a lemezkép adatait az első kép.
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[A cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

@@ -11,17 +11,17 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 9d269cf00eca4107ea5ccc122b92295b8855cf68
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 3b937eb5498a16e35455ed245696e66e53224969
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347274"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023144"
 ---
 # <a name="reset-password-overview"></a>Új jelszó kérésének áttekintése
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/en-us/azure/active-directory) talál.
+>Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 
 Ha elfelejtette jelszavát, nem kapott jelszót a vállalati támogatási csapattól, vagy ki lett zárva a fiókjából, biztonsági adatai és mobileszköze használatával új jelszót kérhet.
 

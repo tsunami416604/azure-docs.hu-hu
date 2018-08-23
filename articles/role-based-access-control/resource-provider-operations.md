@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a4e062b1bc56eada2fa2c27797151e265271022e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 86a2fba7730a653a254a2fd996f9e45ed322fbe3
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621157"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054923"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -391,8 +391,12 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | --- | --- | --- |
 > | Műveletek | Microsoft.Authorization/checkAccess/action | Ellenőrzi, hogy a hívó jogosult-e egy adott művelet végrehajtására |
 > | Műveletek | Microsoft.Authorization/classicAdministrators/delete | Az előfizetés rendszergazdájának eltávolítása. |
+> | Műveletek | Microsoft.Authorization/classicAdministrators/operationstatuses/read | A rendszergazda az előfizetés opreation állapotának beolvasása. |
 > | Műveletek | Microsoft.Authorization/classicAdministrators/read | Az előfizetés rendszergazdáinak beolvasása. |
 > | Műveletek | Microsoft.Authorization/classicAdministrators/write | Az előfizetés rendszergazdájának beállítása vagy módosítása. |
+> | Műveletek | Microsoft.Authorization/denyAssignments/delete | Elutasítási hozzárendelés törlése a megadott hatókörben. |
+> | Műveletek | Microsoft.Authorization/denyAssignments/read | Elutasítási hozzárendelés adatainak beolvasása. |
+> | Műveletek | Microsoft.Authorization/denyAssignments/write | Elutasítási hozzárendelés létrehozása a megadott hatókörben. |
 > | Műveletek | Microsoft.Authorization/elevateAccess/action | Felhasználói hozzáférés rendszergazdai szerepkörének megadása a hívónak a bérlői hatókörben |
 > | Műveletek | Microsoft.Authorization/locks/delete | A megadott hatókör zárolásainak törlése. |
 > | Műveletek | Microsoft.Authorization/locks/read | A megadott hatókör zárolásainak beolvasása. |
@@ -1165,6 +1169,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Compute/virtualMachineScaleSets/instanceView/read | A virtuálisgép-méretezési csoport példánynézetének beolvasása |
 > | Műveletek | Microsoft.Compute/virtualMachineScaleSets/manualUpgrade/action | A példányok manuális frissítése a virtuálisgép-méretezési csoport legújabb modelljére |
 > | Műveletek | Microsoft.Compute/virtualMachineScaleSets/networkInterfaces/read | Egy virtuálisgép-méretezési csoport összes hálózati adaptere tulajdonságainak beolvasása |
+> | Műveletek | Microsoft.Compute/virtualMachineScaleSets/osRollingUpgrade/action | Működés közbeni frissítés indítása a virtuálisgép-méretezési csoport összes példányának a legújabb elérhető platformlemezkép operációsrendszer-verziójára való frissítéséhez. |
 > | Műveletek | Microsoft.Compute/virtualMachineScaleSets/osUpgradeHistory/read | Virtuálisgép-méretezési csoport gépein végrehajtott operációsrendszer-frissítések előzményeinek beolvasása |
 > | Műveletek | Microsoft.Compute/virtualMachineScaleSets/performMaintenance/action | A virtuálisgép-méretezési csoport példányai tervezett karbantartásának végrehajtása |
 > | Műveletek | Microsoft.Compute/virtualMachineScaleSets/powerOff/action | A virtuálisgép-méretezési csoport példányainak kikapcsolása |
@@ -1229,7 +1234,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/write | A tárolócsoport diagnosztikai beállításának létrehozása vagy frissítése. |
 > | Műveletek | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/metricDefinitions/read | A tárolócsoport elérhető metrikáinak beolvasása. |
 > | Műveletek | Microsoft.ContainerInstance/containerGroups/read | Az összes tárolócsoport beolvasása. |
-> | Műveletek | Microsoft.ContainerInstance/containerGroups/restart/action | Egy adott tárolócsoport újraindul. |
+> | Műveletek | Microsoft.ContainerInstance/containerGroups/restart/action | Egy adott tárolócsoport újraindítása. |
 > | Műveletek | Microsoft.ContainerInstance/containerGroups/stop/action | Egy adott tárolócsoport leáll. A számítási erőforrások fel kell szabadítani, és a számlázása le fog állni. |
 > | Műveletek | Microsoft.ContainerInstance/containerGroups/write | Egy adott tárolócsoport létrehozása vagy frissítése. |
 > | Műveletek | Microsoft.ContainerInstance/register/action | A tárolópéldány erőforrás-szolgáltatójára való előfizetés regisztrálása és a tárolócsoportok létrehozásának engedélyezése. |
@@ -1244,10 +1249,23 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ContainerRegistry/locations/operationResults/read | Egy aszinkron művelet eredményének beolvasása |
 > | Műveletek | Microsoft.ContainerRegistry/operations/read | Felsorolja az összes, a rendelkezésre álló Azure Container Registry REST API-műveletek |
 > | Műveletek | Microsoft.ContainerRegistry/register/action | A tároló beállításjegyzék erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása, és lehetővé teszi a tárolóregisztrációs adatbázis létrehozását. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/builds/cancel/action | Egy meglévő build megszakítja. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/builds/getLogLink/action | Lekérdezi egy hivatkozást a build naplók letöltéséhez. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/builds/read | A megadott build tulajdonságait beolvassa vagy listázza az adott tároló-beállításjegyzék minden build. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/builds/write | Egy tároló-beállításjegyzék build frissíti a megadott paraméterekkel. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/buildTasks/delete | Egy tároló-beállításjegyzéket egy összeállítási feladat törlése. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/buildTasks/listSourceRepositoryProperties/action | A forrás tulajdonságai egy összeállítási feladat sorolja fel. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/buildTasks/read | A megadott összeállítási feladat tulajdonságainak beolvassa vagy listázza a megadott tárolóregisztrációs build-feladatokat. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/buildTasks/steps/delete | Buildelési lépést töröl egy összeállítási feladat. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/buildTasks/steps/listBuildArguments/action | Többek között a titkos argumentumok buildelési lépést a build argumentumait sorolja fel. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/buildTasks/steps/read | A megadott buildelési lépést tulajdonságainak beolvassa vagy listázza az adott összeállítási feladat minden létrehozási lépések. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/buildTasks/steps/write | Létrehozza vagy frissíti az összeállítási feladat buildelési lépést a megadott paraméterekkel. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/buildTasks/write | Létrehozza vagy frissíti a tároló-beállításjegyzék-létrehozási feladat a megadott paraméterekkel. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/delete | Töröl egy tárolóregisztrációs adatbázisba. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/eventGridFilters/delete | Egy tároló-beállításjegyzéket egy event grid-szűrő törlése. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/eventGridFilters/read | A megadott event grid-szűrő tulajdonságainak beolvassa vagy listázza a megadott tárolóregisztrációs összes event grid szűrő. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/eventGridFilters/write | Létrehozza vagy frissíti a tároló-beállításjegyzék egy event grid-szűrő a megadott paraméterekkel. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/getBuildSourceUploadUrl/action | Lekérdezi a felhasználó számára a forrás tölthet fel a feltöltési helyét. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/importImage/action | Kép importálása a container Registry-adatbázisban a megadott paraméterekkel. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/listCredentials/action | Megjeleníti a megadott tárolóregisztrációs adatbázis bejelentkezési hitelesítő adatait. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/listPolicies/read | A megadott tárolóregisztrációs szabályzatok listája |
@@ -1256,12 +1274,18 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ContainerRegistry/registries/providers/Microsoft.Insights/diagnosticSettings/read | Az erőforrás diagnosztikai beállításainak beolvasása |
 > | Műveletek | Microsoft.ContainerRegistry/registries/providers/Microsoft.Insights/diagnosticSettings/write | Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése |
 > | Műveletek | Microsoft.ContainerRegistry/registries/providers/Microsoft.Insights/metricDefinitions/read | A Microsoft ContainerRegistry elérhető metrikáinak lekérése |
+> | Műveletek | Microsoft.ContainerRegistry/registries/pull/read | Kérje le, vagy kérjen lemezképeket tároló-beállításjegyzék. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/push/write | Leküldéses vagy képek írási továbbíthat egy tárolóregisztrációs adatbázisba. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/quarantineRead/read | Kérje le, vagy szerezze be a karanténba helyezett rendszerképeket container registryből |
+> | Műveletek | Microsoft.ContainerRegistry/registries/quarantineWrite/write | Karanténba helyezett rendszerképeket karantén állapotának írási/módosítása |
+> | Műveletek | Microsoft.ContainerRegistry/registries/queueBuild/action | Létrehoz egy új létrehozást, a kérelem paraméterei alapján, és adja hozzá a build várólistára. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/read | A megadott tárolóregisztrációs adatbázis tulajdonságainak beolvassa vagy listázza a megadott erőforráscsoport vagy előfizetés alapján tároló-beállításjegyzékek. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/regenerateCredential/action | Újra létrehozza a megadott tárolóregisztrációs adatbázis bejelentkezési hitelesítő adatainak egyikét. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/replications/delete | Törli a replikációt egy tárolóregisztrációs adatbázisba. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/replications/operationStatuses/read | A replikáció aszinkron műveleti állapotának beolvasása |
 > | Műveletek | Microsoft.ContainerRegistry/registries/replications/read | A megadott replikációs tulajdonságainak beolvassa vagy listázza az adott tároló-beállításjegyzék minden replikációk. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/replications/write | Létrehozza vagy frissíti a replikációt egy tároló-beállításjegyzékhez a megadott paraméterekkel. |
+> | Műveletek | Microsoft.ContainerRegistry/registries/sign/write | A leküldéses tartalom megbízhatósági tároló-beállításjegyzék metaadatait. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/updatePolicies/write | A házirendek a megadott tároló-beállításjegyzék frissítése |
 > | Műveletek | Microsoft.ContainerRegistry/registries/webhooks/delete | Webhook törlése egy tárolóregisztrációs adatbázisba. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/webhooks/getCallbackConfig/action | A webhook a konfigurációs szolgáltatás URI-t és az egyéni fejlécek beolvasása. |
@@ -1524,9 +1548,11 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DataFactory/factories/pipelineruns/activityruns/read | Beolvassa a megadott folyamatfuttatási azonosító. a tevékenység futtatása |
 > | Műveletek | Microsoft.DataFactory/factories/pipelineruns/cancel/action | Megszakítja a folyamatfuttatás azokat a futtatási azonosítót. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelineruns/queryactivityruns/action | A megadott folyamat a tevékenység futtatása lekérdezések futtatása azonosítója. |
+> | Műveletek | Microsoft.DataFactory/factories/pipelineruns/queryactivityruns/read | Beolvassa a megadott folyamatfuttatási azonosító. az eredmény lekérdezés tevékenység fut |
 > | Műveletek | Microsoft.DataFactory/factories/pipelineruns/read | A Folyamatfuttatások beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelines/createrun/action | Futtatás hoz létre a folyamatot. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelines/delete | Törli a folyamatot. |
+> | Műveletek | Microsoft.DataFactory/factories/pipelines/pipelineruns/activityruns/progress/read | Tevékenység-végrehajtás állapotának beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelines/pipelineruns/read | A folyamat futásának beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelines/read | Olvassa be a folyamatot. |
 > | Műveletek | Microsoft.DataFactory/factories/pipelines/write | Létrehozni vagy frissíteni a folyamatot |
@@ -1535,7 +1561,9 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DataFactory/factories/providers/Microsoft.Insights/logDefinitions/read | Az előállítók elérhető naplók beolvasása |
 > | Műveletek | Microsoft.DataFactory/factories/providers/Microsoft.Insights/metricDefinitions/read | Az előállítók elérhető metrikáinak lekérése |
 > | Műveletek | Microsoft.DataFactory/factories/querypipelineruns/action | A Folyamatfuttatások lekérdezi. |
+> | Műveletek | Microsoft.DataFactory/factories/querypipelineruns/read | A Folyamatfuttatások lekérdezés eredményének beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/querytriggerruns/action | Lekérdezi az eseményindító-futtatások. |
+> | Műveletek | Microsoft.DataFactory/factories/querytriggerruns/read | Eseményindító-futtatások eredményének beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/read | A Data Factory beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/triggerruns/read | Az eseményindító-futtatások beolvasása. |
 > | Műveletek | Microsoft.DataFactory/factories/triggers/delete | Törli az összes eseményindító. |
@@ -1546,6 +1574,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DataFactory/factories/triggers/write | Létrehozza vagy frissíti az összes eseményindító. |
 > | Műveletek | Microsoft.DataFactory/factories/write | Létrehozni vagy frissíteni a Data Factory |
 > | Műveletek | Microsoft.DataFactory/locations/configureFactoryRepo/action | Konfigurálja az előállító a tárházban. |
+> | Műveletek | Microsoft.DataFactory/operations/read | A Microsoft Data Factory-szolgáltató az összes művelet beolvasása. |
 > | Műveletek | Microsoft.DataFactory/register/action | A Data Factory erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása. |
 > | Műveletek | Microsoft.DataFactory/unregister/action | A Data Factory erőforrás-szolgáltató az előfizetés regisztrációjának törlése. |
 
@@ -2071,6 +2100,14 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Features/providers/features/unregister/action | Az előfizetéshez tartozó szolgáltatás regisztrációjának törlése az adott erőforrás-szolgáltatón. |
 > | Műveletek | Microsoft.Features/register/action | Az előfizetésben elérhető funkció regisztrálása. |
 
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
+
+> [!div class="mx-tdCol2BreakAll"]
+> | Művelettípus | Művelet | Leírás |
+> | --- | --- | --- |
+> | Műveletek | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | Get Vendég konfigurációs hozzárendelés. |
+> | Műveletek | Microsoft.GuestConfiguration/guestConfigurationAssignments/write | Hozzon létre új Vendég-konfiguráció hozzárendelése. |
+
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -2356,24 +2393,24 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | DataAction | Microsoft.LogAnalytics/logs/ADAssessmentRecommendation/read | Adatok olvasása a ADAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/ADReplicationResult/read | Adatok olvasása a ADReplicationResult táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/ADSecurityAssessmentRecommendation/read | Adatok olvasása a ADSecurityAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/Alert/read | A riasztási táblából adatokat olvasni. |
-> | DataAction | Microsoft.LogAnalytics/logs/AlertHistory/read | Adatok olvasása a AlertHistory táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/ApplicationInsights/read | Adatok olvasása a ApplicationInsights táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/AzureActivity/read | Adatok olvasása a AzureActivity táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/AzureMetrics/read | Adatok olvasása a AzureMetrics táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/ADAssessmentRecommendation/read | Adatok olvasása az ADAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/ADReplicationResult/read | Adatok olvasása az ADReplicationResult táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/ADSecurityAssessmentRecommendation/read | Adatok olvasása az ADSecurityAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/Alert/read | Adatok olvasása az Alert táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/AlertHistory/read | Adatok olvasása az AlertHistory táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/ApplicationInsights/read | Adatok olvasása az ApplicationInsights táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/AzureActivity/read | Adatok olvasása az AzureActivity táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/AzureMetrics/read | Adatok olvasása az AzureMetrics táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/BoundPort/read | Adatok olvasása a BoundPort táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/CommonSecurityLog/read | Adatok olvasása a CommonSecurityLog táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ComputerGroup/read | Adatok olvasása a ComputerGroup táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/ConfigurationChange/read | A konfigurációváltozás táblából adatokat olvasni. |
+> | DataAction | Microsoft.LogAnalytics/logs/ConfigurationChange/read | Adatok olvasása a ConfigurationChange táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ConfigurationData/read | Adatok olvasása a ConfigurationData táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ContainerImageInventory/read | Adatok olvasása a ContainerImageInventory táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ContainerInventory/read | Adatok olvasása a ContainerInventory táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ContainerLog/read | Adatok olvasása a ContainerLog táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ContainerServiceLog/read | Adatok olvasása a ContainerServiceLog táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/CustomLogs/read | Bármilyen egyéni naplóból származó adatok olvasása |
+> | DataAction | Microsoft.LogAnalytics/logs/CustomLogs/read | Adatok olvasása bármelyik egyéni naplóból |
 > | DataAction | Microsoft.LogAnalytics/logs/DeviceAppCrash/read | Adatok olvasása a DeviceAppCrash táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/DeviceAppLaunch/read | Adatok olvasása a DeviceAppLaunch táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/DeviceCalendar/read | Adatok olvasása a DeviceCalendar táblából |
@@ -2396,69 +2433,69 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | DataAction | Microsoft.LogAnalytics/logs/DHWipAppLearning/read | Adatok olvasása a DHWipAppLearning táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/DnsEvents/read | Adatok olvasása a DnsEvents táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/DnsInventory/read | Adatok olvasása a DnsInventory táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/ETWEvent/read | Adatok olvasása a ETWEvent táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/Event/read | Adatokat olvasni az esemény-tábla |
-> | DataAction | Microsoft.LogAnalytics/logs/ExchangeAssessmentRecommendation/read | Adatok olvasása a ExchangeAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/ExchangeOnlineAssessmentRecommendation/read | Adatok olvasása a ExchangeOnlineAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/Heartbeat/read | Adatok olvasása a szívverés-táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/IISAssessmentRecommendation/read | Adatok olvasása a IISAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/InboundConnection/read | Adatok olvasása a InboundConnection táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/ETWEvent/read | Adatok olvasása az ETWEvent táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/Event/read | Adatok olvasása az Event táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/ExchangeAssessmentRecommendation/read | Adatok olvasása az ExchangeAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/ExchangeOnlineAssessmentRecommendation/read | Adatok olvasása az ExchangeOnlineAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/Heartbeat/read | Adatok olvasása a Heartbeat táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/IISAssessmentRecommendation/read | Adatok olvasása az IISAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/InboundConnection/read | Adatok olvasása az InboundConnection táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/KubeNodeInventory/read | Adatok olvasása a KubeNodeInventory táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/KubePodInventory/read | Adatok olvasása a KubePodInventory táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/LinuxAuditLog/read | Adatok olvasása a LinuxAuditLog táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAApplication/read | Adatok olvasása a MAApplication táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealth/read | Adatok olvasása a MAApplicationHealth táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthAlternativeVersions/read | Adatok olvasása a MAApplicationHealthAlternativeVersions táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthIssues/read | Adatok olvasása a MAApplicationHealthIssues táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstance/read | Adatok olvasása a MAApplicationInstance táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstanceReadiness/read | Adatok olvasása a MAApplicationInstanceReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationReadiness/read | Adatok olvasása a MAApplicationReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MADeploymentPlan/read | Adatok olvasása a MADeploymentPlan táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MADevice/read | Adatok olvasása a MADevice táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealth/read | Adatok olvasása a MADevicePnPHealth táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthAlternativeVersions/read | Adatok olvasása a MADevicePnPHealthAlternativeVersions táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthIssues/read | Adatok olvasása a MADevicePnPHealthIssues táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MADeviceReadiness/read | Adatok olvasása a MADeviceReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MADriverInstanceReadiness/read | Adatok olvasása a MADriverInstanceReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MADriverReadiness/read | Adatok olvasása a MADriverReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddin/read | Adatok olvasása a MAOfficeAddin táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealth/read | Adatok olvasása a MAOfficeAddinHealth táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealthIssues/read | Adatok olvasása a MAOfficeAddinHealthIssues táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstance/read | Adatok olvasása a MAOfficeAddinInstance táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstanceReadiness/read | Adatok olvasása a MAOfficeAddinInstanceReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinReadiness/read | Adatok olvasása a MAOfficeAddinReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeApp/read | Adatok olvasása a MAOfficeApp táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppHealth/read | Adatok olvasása a MAOfficeAppHealth táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppInstance/read | Adatok olvasása a MAOfficeAppInstance táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppReadiness/read | Adatok olvasása a MAOfficeAppReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeBuildInfo/read | Adatok olvasása a MAOfficeBuildInfo táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessment/read | Adatok olvasása a MAOfficeCurrencyAssessment táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessmentDailyCounts/read | Adatok olvasása a MAOfficeCurrencyAssessmentDailyCounts táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeDeploymentStatus/read | Adatok olvasása a MAOfficeDeploymentStatus táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealth/read | Adatok olvasása a MAOfficeMacroHealth táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealthIssues/read | Adatok olvasása a MAOfficeMacroHealthIssues táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueInstanceReadiness/read | Adatok olvasása a MAOfficeMacroIssueInstanceReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueReadiness/read | Adatok olvasása a MAOfficeMacroIssueReadiness táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroSummary/read | Adatok olvasása a MAOfficeMacroSummary táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuite/read | Adatok olvasása a MAOfficeSuite táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuiteInstance/read | Adatok olvasása a MAOfficeSuiteInstance táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAProposedPilotDevices/read | Adatok olvasása a MAProposedPilotDevices táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsBuildInfo/read | Adatok olvasása a MAWindowsBuildInfo táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessment/read | Adatok olvasása a MAWindowsCurrencyAssessment táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessmentDailyCounts/read | Adatok olvasása a MAWindowsCurrencyAssessmentDailyCounts táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsDeploymentStatus/read | Adatok olvasása a MAWindowsDeploymentStatus táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsSysReqInstanceReadiness/read | Adatok olvasása a MAWindowsSysReqInstanceReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplication/read | Adatok olvasása az MAApplication táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealth/read | Adatok olvasása az MAApplicationHealth táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthAlternativeVersions/read | Adatok olvasása az MAApplicationHealthAlternativeVersions táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealthIssues/read | Adatok olvasása az MAApplicationHealthIssues táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstance/read | Adatok olvasása az MAApplicationInstance táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationInstanceReadiness/read | Adatok olvasása az MAApplicationInstanceReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAApplicationReadiness/read | Adatok olvasása az MAApplicationReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADeploymentPlan/read | Adatok olvasása az MADeploymentPlan táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevice/read | Adatok olvasása az MADevice táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealth/read | Adatok olvasása az MADevicePnPHealth táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthAlternativeVersions/read | Adatok olvasása az MADevicePnPHealthAlternativeVersions táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADevicePnPHealthIssues/read | Adatok olvasása az MADevicePnPHealthIssues táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADeviceReadiness/read | Adatok olvasása az MADeviceReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADriverInstanceReadiness/read | Adatok olvasása az MADriverInstanceReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MADriverReadiness/read | Adatok olvasása az MADriverReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddin/read | Adatok olvasása az MAOfficeAddin táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealth/read | Adatok olvasása az MAOfficeAddinHealth táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinHealthIssues/read | Adatok olvasása az MAOfficeAddinHealthIssues táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstance/read | Adatok olvasása az MAOfficeAddinInstance táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinInstanceReadiness/read | Adatok olvasása az MAOfficeAddinInstanceReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAddinReadiness/read | Adatok olvasása az MAOfficeAddinReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeApp/read | Adatok olvasása az MAOfficeApp táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppHealth/read | Adatok olvasása az MAOfficeAppHealth táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppInstance/read | Adatok olvasása az MAOfficeAppInstance táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeAppReadiness/read | Adatok olvasása az MAOfficeAppReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeBuildInfo/read | Adatok olvasása az MAOfficeBuildInfo táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessment/read | Adatok olvasása az MAOfficeCurrencyAssessment táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeCurrencyAssessmentDailyCounts/read | Adatok olvasása az MAOfficeCurrencyAssessmentDailyCounts táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeDeploymentStatus/read | Adatok olvasása az MAOfficeDeploymentStatus táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealth/read | Adatok olvasása az MAOfficeMacroHealth táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroHealthIssues/read | Adatok olvasása az MAOfficeMacroHealthIssues táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueInstanceReadiness/read | Adatok olvasása az MAOfficeMacroIssueInstanceReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroIssueReadiness/read | Adatok olvasása az MAOfficeMacroIssueReadiness táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeMacroSummary/read | Adatok olvasása az MAOfficeMacroSummary táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuite/read | Adatok olvasása az MAOfficeSuite táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAOfficeSuiteInstance/read | Adatok olvasása az MAOfficeSuiteInstance táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAProposedPilotDevices/read | Adatok olvasása az MAProposedPilotDevices táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsBuildInfo/read | Adatok olvasása az MAWindowsBuildInfo táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessment/read | Adatok olvasása az MAWindowsCurrencyAssessment táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsCurrencyAssessmentDailyCounts/read | Adatok olvasása az MAWindowsCurrencyAssessmentDailyCounts táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsDeploymentStatus/read | Adatok olvasása az MAWindowsDeploymentStatus táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/MAWindowsSysReqInstanceReadiness/read | Adatok olvasása az MAWindowsSysReqInstanceReadiness táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/NetworkMonitoring/read | Adatok olvasása a NetworkMonitoring táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/OfficeActivity/read | Adatok olvasása a OfficeActivity táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/Operation/read | A művelettel tábla adatok olvasása |
-> | DataAction | Microsoft.LogAnalytics/logs/OutboundConnection/read | Adatok olvasása a OutboundConnection táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/Perf/read | Adatok olvasása a teljesítményadat-táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/OfficeActivity/read | Adatok olvasása az OfficeActivity táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/Operation/read | Adatok olvasása az Operation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/OutboundConnection/read | Adatok olvasása az OutboundConnection táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/Perf/read | Adatok olvasása a Perf táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ProtectionStatus/read | Adatok olvasása a ProtectionStatus táblából |
-> | Műveletek | Microsoft.LogAnalytics/logs/read | Adatok olvasása a naplókból |
+> | Műveletek | Microsoft.LogAnalytics/logs/read | Adatok olvasása az összes naplóból |
 > | DataAction | Microsoft.LogAnalytics/logs/ReservedAzureCommonFields/read | Adatok olvasása a ReservedAzureCommonFields táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ReservedCommonFields/read | Adatok olvasása a ReservedCommonFields táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/SCCMAssessmentRecommendation/read | Adatok olvasása a SCCMAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/SCOMAssessmentRecommendation/read | Adatok olvasása a SCOMAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/SCCMAssessmentRecommendation/read | Adatok olvasása az SCCMAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/SCOMAssessmentRecommendation/read | Adatok olvasása az SCOMAssessmentRecommendation táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/SecurityAlert/read | Adatok olvasása a SecurityAlert táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/SecurityBaseline/read | Adatok olvasása a SecurityBaseline táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/SecurityBaselineSummary/read | Adatok olvasása a SecurityBaselineSummary táblából |
@@ -2467,30 +2504,30 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | DataAction | Microsoft.LogAnalytics/logs/ServiceFabricOperationalEvent/read | Adatok olvasása a ServiceFabricOperationalEvent táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableActorEvent/read | Adatok olvasása a ServiceFabricReliableActorEvent táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/ServiceFabricReliableServiceEvent/read | Adatok olvasása a ServiceFabricReliableServiceEvent táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/SfBAssessmentRecommendation/read | Adatok olvasása a SfBAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/SfBOnlineAssessmentRecommendation/read | Adatok olvasása a SfBOnlineAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/SfBAssessmentRecommendation/read | Adatok olvasása az SfBAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/SfBOnlineAssessmentRecommendation/read | Adatok olvasása az SfBOnlineAssessmentRecommendation táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/SharePointOnlineAssessmentRecommendation/read | Adatok olvasása a SharePointOnlineAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/SPAssessmentRecommendation/read | Adatok olvasása a SPAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/SQLAssessmentRecommendation/read | Adatok olvasása a SQLAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/SQLQueryPerformance/read | Adatok olvasása a SQLQueryPerformance táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/Syslog/read | Adatok olvasása a Syslog-táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/SPAssessmentRecommendation/read | Adatok olvasása az SPAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/SQLAssessmentRecommendation/read | Adatok olvasása az SQLAssessmentRecommendation táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/SQLQueryPerformance/read | Adatok olvasása az SQLQueryPerformance táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/Syslog/read | Adatok olvasása a Syslog táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/SysmonEvent/read | Adatok olvasása a SysmonEvent táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UAApp/read | Adatok olvasása a UAApp táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UAComputer/read | Adatok olvasása a UAComputer táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UAComputerRank/read | Adatok olvasása a UAComputerRank táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UADriver/read | Adatok olvasása a UADriver táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UADriverProblemCodes/read | Adatok olvasása a UADriverProblemCodes táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UAFeedback/read | Adatok olvasása a UAFeedback táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UAHardwareSecurity/read | Adatok olvasása a UAHardwareSecurity táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UAIESiteDiscovery/read | Adatok olvasása a UAIESiteDiscovery táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UAOfficeAddIn/read | Adatok olvasása a UAOfficeAddIn táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UAProposedActionPlan/read | Adatok olvasása a UAProposedActionPlan táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UASysReqIssue/read | Adatok olvasása a UASysReqIssue táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UAUpgradedComputer/read | Adatok olvasása a UAUpgradedComputer táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/Update/read | Adatok beolvasása a tábla frissítése |
-> | DataAction | Microsoft.LogAnalytics/logs/UpdateRunProgress/read | Adatok olvasása a UpdateRunProgress táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/UpdateSummary/read | Adatok olvasása a UpdateSummary táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/Usage/read | Adatok beolvasása a használati táblához |
+> | DataAction | Microsoft.LogAnalytics/logs/UAApp/read | Adatok olvasása az UAApp táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UAComputer/read | Adatok olvasása az UAComputer táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UAComputerRank/read | Adatok olvasása az UAComputerRank táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UADriver/read | Adatok olvasása az UADriver táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UADriverProblemCodes/read | Adatok olvasása az UADriverProblemCodes táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UAFeedback/read | Adatok olvasása az UAFeedback táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UAHardwareSecurity/read | Adatok olvasása az UAHardwareSecurity táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UAIESiteDiscovery/read | Adatok olvasása az UAIESiteDiscovery táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UAOfficeAddIn/read | Adatok olvasása az UAOfficeAddIn táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UAProposedActionPlan/read | Adatok olvasása az UAProposedActionPlan táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UASysReqIssue/read | Adatok olvasása az UASysReqIssue táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UAUpgradedComputer/read | Adatok olvasása az UAUpgradedComputer táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/Update/read | Adatok olvasása az Update táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UpdateRunProgress/read | Adatok olvasása az UpdateRunProgress táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/UpdateSummary/read | Adatok olvasása az UpdateSummary táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/Usage/read | Adatok olvasása a Usage táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/VMBoundPort/read | Adatok olvasása a VMBoundPort táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/VMConnection/read | Adatok olvasása a VMConnection táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/W3CIISLog/read | Adatok olvasása a W3CIISLog táblából |
@@ -2502,7 +2539,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | DataAction | Microsoft.LogAnalytics/logs/WindowsClientAssessmentRecommendation/read | Adatok olvasása a WindowsClientAssessmentRecommendation táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/WindowsFirewall/read | Adatok olvasása a WindowsFirewall táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/WindowsServerAssessmentRecommendation/read | Adatok olvasása a WindowsServerAssessmentRecommendation táblából |
-> | DataAction | Microsoft.LogAnalytics/logs/WireData/read | Adatok olvasása a WireData-táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/WireData/read | Adatok olvasása a WireData táblából |
+> | DataAction | Microsoft.LogAnalytics/logs/WorkloadMonitoringPerf/read | Adatok olvasása a WorkloadMonitoringPerf táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/WUDOAggregatedStatus/read | Adatok olvasása a WUDOAggregatedStatus táblából |
 > | DataAction | Microsoft.LogAnalytics/logs/WUDOStatus/read | Adatok olvasása a WUDOStatus táblából |
 
@@ -2715,6 +2753,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
+> | DataAction | Microsoft.Maps/accounts/data/read | A maps-fiók adatok olvasási hozzáférést biztosít. |
 > | Műveletek | Microsoft.Maps/accounts/delete | A Maps-fiók törlése. |
 > | Műveletek | Microsoft.Maps/accounts/listKeys/action | Maps-fiók kulcsainak listázása |
 > | Műveletek | Microsoft.Maps/accounts/providers/Microsoft.Insights/diagnosticSettings/read | Az erőforrás diagnosztikai beállításainak beolvasása |
@@ -3449,8 +3488,11 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | --- | --- | --- |
 > | Műveletek | Microsoft.PolicyInsights/asyncOperationResults/read | Lekérdezi az aszinkron művelet eredményét. |
 > | Műveletek | Microsoft.PolicyInsights/policyEvents/queryResults/action | A szabályzateseményekkel kapcsolatos adatok lekérdezése. |
+> | Műveletek | Microsoft.PolicyInsights/policyEvents/queryResults/read | A szabályzateseményekkel kapcsolatos adatok lekérdezése. |
 > | Műveletek | Microsoft.PolicyInsights/policyStates/queryResults/action | A szabályzat állapotaival kapcsolatos adatok lekérdezése. |
+> | Műveletek | Microsoft.PolicyInsights/policyStates/queryResults/read | A szabályzat állapotaival kapcsolatos adatok lekérdezése. |
 > | Műveletek | Microsoft.PolicyInsights/policyStates/summarize/action | A szabályzat legutóbbi állapotait tartalmazó összegzés lekérdezése. |
+> | Műveletek | Microsoft.PolicyInsights/policyStates/summarize/read | A szabályzat legutóbbi állapotait tartalmazó összegzés lekérdezése. |
 > | Műveletek | Microsoft.PolicyInsights/policyStates/triggerEvaluation/action | Elindít egy új megfelelőségi kiértékelést a kiválasztott hatókörre. |
 > | Műveletek | Microsoft.PolicyInsights/register/action | Regisztrálja a Policy Insigths erőforrás-szolgáltatót, és lehetővé teszi az azzal végzett műveleteket. |
 
@@ -4809,6 +4851,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/Sites/config/DELETE | Delete Web Apps Config. |
 > | Műveletek | Microsoft.Web/sites/config/list/Action | Webalkalmazás biztonsági bizalmas beállítások, például közzétételi hitelesítő adatok, az alkalmazásbeállítások és a kapcsolati karakterláncok listázása |
 > | Műveletek | Microsoft.Web/sites/config/Read | Webes alkalmazás konfigurációs beállításainak lekérése |
+> | Műveletek | Microsoft.Web/Sites/config/snapshots/Read | Web Apps Config pillanatképek beolvasása. |
 > | Műveletek | Microsoft.Web/sites/config/Write | Webes alkalmazás konfigurációs beállításainak frissítése |
 > | Műveletek | Microsoft.Web/Sites/containerlogs/Action | Tároló naplóinak beolvasása zip webalkalmazás. |
 > | Műveletek | Microsoft.Web/Sites/continuouswebjobs/DELETE | Delete Web Apps Continuous Web Jobs. |
@@ -4857,6 +4900,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/Sites/hostnamebindings/DELETE | Delete Web Apps Hostname Bindings. |
 > | Műveletek | Microsoft.Web/Sites/hostnamebindings/Read | Get Web Apps Hostname Bindings. |
 > | Műveletek | Microsoft.Web/Sites/hostnamebindings/Write | Update Web Apps Hostname Bindings. |
+> | Műveletek | Microsoft.Web/sites/hostruntime/host/_master/read | Függvényalkalmazás főkulcs felügyeleti műveletek beolvasása |
+> | Műveletek | Microsoft.Web/sites/hostruntime/host/action | Hajtsa végre a Függvényalkalmazás futásidejű művelet, például eseményindítók szinkronizálni, adja hozzá a functions, függvények meghívása, delete függvényeket stb. |
 > | Műveletek | Microsoft.Web/Sites/hybridconnection/DELETE | Web Apps hibrid kapcsolat törlése. |
 > | Műveletek | Microsoft.Web/Sites/hybridconnection/Read | Web Apps hibrid kapcsolat beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/hybridconnection/Write | Webes alkalmazások hibrid kapcsolat frissítése. |
@@ -4871,6 +4916,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/Sites/Instances/Extensions/Read | Web Apps példányok kiterjesztések beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/Instances/Processes/DELETE | Törölje a Web Apps példányok folyamatokat. |
 > | Műveletek | Microsoft.Web/Sites/Instances/Processes/Read | Web Apps példányok folyamatok beolvasása. |
+> | Műveletek | Microsoft.Web/Sites/Instances/Processes/threads/Read | Web Apps példányok folyamatok szálat kap. |
 > | Műveletek | Microsoft.Web/Sites/Instances/Read | Web Apps-példány beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/listsyncfunctiontriggerstatus/Action | Lista szinkronizálási függvény Trigger állapota Web Apps. |
 > | Műveletek | Microsoft.Web/Sites/metricdefinitions/Read | Web Apps Metrikadefiníciók beolvasása. |
@@ -4886,6 +4932,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/Sites/premieraddons/DELETE | Web Apps a Premier szintű bővítmények törlése. |
 > | Műveletek | Microsoft.Web/Sites/premieraddons/Read | Web Apps a Premier szintű bővítmények beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/premieraddons/Write | Web Apps a Premier szintű bővítmények frissítése. |
+> | Műveletek | Microsoft.Web/Sites/privateaccess/Read | Kaphat privát hozzáférést lehetővé tétele és engedélyezett virtuális hálózatok, a hely eléréséhez. |
 > | Műveletek | Microsoft.Web/Sites/Processes/Read | Webes alkalmazásokat folyamatok beolvasása. |
 > | Műveletek | microsoft.web/sites/providers/Microsoft.Insights/diagnosticSettings/read | Az erőforrás diagnosztikai beállításainak beolvasása |
 > | Műveletek | microsoft.web/sites/providers/Microsoft.Insights/diagnosticSettings/write | Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése |
@@ -4907,6 +4954,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/sites/restart/Action | Webalkalmazást indíthat újra |
 > | Műveletek | Microsoft.Web/Sites/restore/Read | Webes alkalmazások visszaállítása beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/restore/Write | Webes alkalmazások visszaállítása. |
+> | Műveletek | Microsoft.Web/Sites/restorefrombackupblob/Action | Webalkalmazás visszaállítása biztonsági mentési Blobból. |
 > | Műveletek | Microsoft.Web/Sites/restorefromdeletedwebapp/Action | Vissza a Web Apps, az alkalmazás törlése. |
 > | Műveletek | Microsoft.Web/Sites/restoresnapshot/Action | Állítsa vissza a Web Apps pillanatképeket. |
 > | Műveletek | Microsoft.Web/Sites/siteextensions/DELETE | Web Apps Webhelybővítmények törlése. |
@@ -4917,6 +4965,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/sites/slots/backup/Action | Hozzon létre új webes alkalmazás tárolóhely biztonsági mentést. |
 > | Műveletek | Microsoft.Web/Sites/slots/Backup/Read | Webalkalmazások biztonsági mentésének pontok beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Backup/Write | Webes alkalmazások tárhelyek biztonsági másolat frissítéséhez. |
+> | Műveletek | Microsoft.Web/Sites/slots/backups/Action | Web Apps tárhelyek biztonsági másolatok felderítése. |
 > | Műveletek | Microsoft.Web/Sites/slots/backups/DELETE | Web Apps tárhelyek biztonsági másolatainak törlése. |
 > | Műveletek | Microsoft.Web/Sites/slots/backups/List/Action | Lista webes alkalmazások pontok biztonsági mentése. |
 > | Műveletek | Microsoft.Web/sites/slots/backups/Read | A webalkalmazás tárolóhelyeinek biztonsági másolat tulajdonságainak beolvasása |
@@ -4925,6 +4974,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/sites/slots/config/list/Action | Webes alkalmazás tárolóhely biztonsági bizalmas beállítások, például közzétételi hitelesítő adatok, az alkalmazásbeállítások és a kapcsolati karakterláncok listázása |
 > | Műveletek | Microsoft.Web/sites/slots/config/Read | Webes alkalmazás a tárhely konfigurációja beállításainak beolvasása |
 > | Műveletek | Microsoft.Web/sites/slots/config/Write | Webes alkalmazás pont konfigurációs beállításainak frissítése |
+> | Műveletek | Microsoft.Web/Sites/slots/containerlogs/Action | Tároló naplóinak beolvasása zip webes alkalmazás üzembe helyezési pont. |
 > | Műveletek | Microsoft.Web/Sites/slots/continuouswebjobs/DELETE | Web Apps tárhelyek folyamatos Webjobs-feladatok törlése. |
 > | Műveletek | Microsoft.Web/Sites/slots/continuouswebjobs/Read | Web Apps tárhelyek folyamatos Webjobs-feladatok beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/continuouswebjobs/Start/Action | Indítsa el a Web Apps tárhelyek folyamatos Webjobs-feladatok. |
@@ -4934,6 +4984,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/Sites/slots/Deployments/log/Read | Web Apps tárolóhelyek központi telepítések napló beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Deployments/Read | Web Apps tárhelyek üzemelő példányok beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Deployments/Write | Web Apps tárhelyek frissítéstelepítések. |
+> | Műveletek | Microsoft.Web/Sites/slots/detectors/Read | Web Apps tárhelyek érzékelők beolvasása. |
 > | Műveletek | microsoft.web/sites/slots/diagnostics/analyses/execute/Action | Web Apps tárhelyek diagnosztikai elemzés futtatása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/analyses/Read | Web Apps tárhelyek diagnosztikai elemzési beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/aspnetcore/Read | Szerezze be a Web Apps tárhelyek diagnosztikai az ASP.NET Core-alkalmazás. |
@@ -4958,6 +5009,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/workeravailability/Read | Web Apps tárhelyek diagnosztikai Workeravailability beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/workerprocessrecycle/Read | Web Apps tárhelyek diagnosztikai munkavégző folyamat újrahasznosítását beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/domainownershipidentifiers/Read | Webes alkalmazások tárhelyek tartomány tulajdonjogának azonosítók beolvasása. |
+> | Műveletek | Microsoft.Web/Sites/slots/Functions/Read | Web Apps tárhelyek funkciók beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/hostnamebindings/DELETE | Delete Web Apps Slots Hostname Bindings. |
 > | Műveletek | Microsoft.Web/Sites/slots/hostnamebindings/Read | Get Web Apps Slots Hostname Bindings. |
 > | Műveletek | Microsoft.Web/Sites/slots/hostnamebindings/Write | Update Web Apps Slots Hostname Bindings. |
@@ -4999,6 +5051,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/sites/slots/restart/Action | Indítsa újra a Web App tárolóhelyet |
 > | Műveletek | Microsoft.Web/Sites/slots/restore/Read | Web Apps tárhelyek visszaállítási beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/restore/Write | Webalkalmazások alkalmazások pontjainak visszaállítása. |
+> | Műveletek | Microsoft.Web/Sites/slots/restorefrombackupblob/Action | Web Apps Slot visszaállítani a biztonsági mentési Blob. |
 > | Műveletek | Microsoft.Web/Sites/slots/restorefromdeletedwebapp/Action | Webalkalmazás tárolóhelyeinek vissza az alkalmazás törlése. |
 > | Műveletek | Microsoft.Web/Sites/slots/restoresnapshot/Action | Állítsa vissza a Web Apps tárhelyek pillanatképeket. |
 > | Műveletek | Microsoft.Web/Sites/slots/siteextensions/DELETE | Web Apps tárhelyek Webhelybővítmények törlése. |
@@ -5057,21 +5110,15 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.WorkloadMonitor/components/read | Olvasási műveletek erőforrások |
-> | Műveletek | Microsoft.WorkloadMonitor/healthInstances/read | Olvasási műveletek erőforrások |
-> | Műveletek | Microsoft.WorkloadMonitor/Operations/read | Olvasási műveletek erőforrások |
-> | Műveletek | Microsoft.WorkloadMonitor/workloadInsights/delete | Töröl egy workloadInsights erőforrást |
-> | Műveletek | Microsoft.WorkloadMonitor/workloadInsights/delete | Töröl egy workloadInsights erőforrást |
-> | Műveletek | Microsoft.WorkloadMonitor/workloadInsights/read | WorkloadInsights erőforrás beolvasása |
-> | Műveletek | Microsoft.WorkloadMonitor/workloadInsights/read | WorkloadInsights erőforrás beolvasása |
-> | Műveletek | Microsoft.WorkloadMonitor/workloadInsights/write | Ír workloadInsights erőforrás |
-> | Műveletek | Microsoft.WorkloadMonitor/workloadInsights/write | Ír workloadInsights erőforrás |
-> | Műveletek | Microsoft.WorkloadMonitor/workloads/delete |  |
-> | Műveletek | Microsoft.WorkloadMonitor/workloads/delete |  |
-> | Műveletek | Microsoft.WorkloadMonitor/workloads/read | A számítási erőforrás beolvasása |
-> | Műveletek | Microsoft.WorkloadMonitor/workloads/read | A számítási erőforrás beolvasása |
-> | Műveletek | Microsoft.WorkloadMonitor/workloads/write | Ír egy számítási erőforrás |
-> | Műveletek | Microsoft.WorkloadMonitor/workloads/write | Ír egy számítási erőforrás |
+> | Műveletek | Microsoft.WorkloadMonitor/components/read | Az erőforrás összetevők beolvasása |
+> | Műveletek | Microsoft.WorkloadMonitor/componentsSummary/read | Lekérdezi az összetevők összefoglalása |
+> | Műveletek | Microsoft.WorkloadMonitor/monitorInstances/read | Az erőforrás figyelők példányok beolvasása |
+> | Műveletek | Microsoft.WorkloadMonitor/monitorInstancesSummary/read | Összesítő figyelő példányainak beolvasása |
+> | Műveletek | Microsoft.WorkloadMonitor/monitors/read | Lekérdezi a figyelők az erőforrás |
+> | Műveletek | Microsoft.WorkloadMonitor/monitors/write | Az erőforrás figyelő konfigurálása |
+> | Műveletek | Microsoft.WorkloadMonitor/notificationSettings/read | Az erőforrás vonatkozó értesítési beállításainak beolvasása |
+> | Műveletek | Microsoft.WorkloadMonitor/notificationSettings/write | Az erőforrás értesítési beállítások konfigurálása |
+> | Műveletek | Microsoft.WorkloadMonitor/operations/read | A támogatott műveletek beolvasása |
 
 ## <a name="next-steps"></a>További lépések
 

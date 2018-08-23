@@ -4,7 +4,7 @@ description: Ez a dokumentum részletesen szükséges utáni konfigurációs fel
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: samueld
+manager: mtillman
 editor: billmath
 ms.assetid: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9949275b18206ca66f38bab036337a00fdde6ee5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 05cb6d10a7e4269cbe5f9c97ef70cd9eb5a4d68e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916547"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058424"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>A hibrid Azure AD-csatlakozás utáni konfigurációs feladatok
 
@@ -62,7 +62,7 @@ Ha a szervezet jelentkezzen be az Azure AD összevonási szolgáltatást haszná
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Az Azure AD közvetlen egyszeri bejelentkezés a Windows régebbi verziójú eszközök engedélyezése
 
-Ha a szervezete a Jelszókivonat-szinkronizálás és átmenő hitelesítés az Azure AD-bejelentkezés, az Azure AD közvetlen egyszeri bejelentkezés engedélyezése az adott bejelentkezési mód Windows régebbi verziójú eszközök hitelesítésére: https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso. 
+Ha a szervezete a Jelszókivonat-szinkronizálás és átmenő hitelesítés az Azure AD-bejelentkezés, az Azure AD közvetlen egyszeri bejelentkezés engedélyezése az adott bejelentkezési mód Windows régebbi verziójú eszközök hitelesítésére: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso. 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Régebbi verziójú Windows-eszközökhöz az Azure AD-szabályzat beállítása
 
@@ -81,7 +81,7 @@ Ha használ [közvetlen egyszeri bejelentkezés](https://aka.ms/hybrid/sso), is 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Telepítse a Microsoft munkahelyi csatlakoztatás Windows régebbi verziójú eszközökön
 
-Ez a telepítő az eszköz a rendszer a felhasználó környezetében futó ütemezett feladatot hoz létre. A feladat akkor aktiválódik, ha a felhasználó bejelentkezik a Windows. A feladat csendes csatlakoztatja az eszközt az Azure AD-felhasználói hitelesítő adatok hitelesítése az integrált Windows-hitelesítés használata után. Jelenleg a letöltőközpontból https://www.microsoft.com/en-us/download/details.aspx?id=53554. 
+Ez a telepítő az eszköz a rendszer a felhasználó környezetében futó ütemezett feladatot hoz létre. A feladat akkor aktiválódik, ha a felhasználó bejelentkezik a Windows. A feladat csendes csatlakoztatja az eszközt az Azure AD-felhasználói hitelesítő adatok hitelesítése az integrált Windows-hitelesítés használata után. Jelenleg a letöltőközpontból https://www.microsoft.com/download/details.aspx?id=53554. 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Az eszköz regisztrációjának engedélyezése a csoportházirend konfigurálásához
 

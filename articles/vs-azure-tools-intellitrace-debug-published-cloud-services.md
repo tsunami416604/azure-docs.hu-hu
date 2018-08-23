@@ -1,6 +1,6 @@
 ---
-title: A közzétett Hibakeresés az Azure felhőalapú szolgáltatás a Visual Studio és az IntelliTrace |} Microsoft Docs
-description: Ismerje meg, egy felhőalapú szolgáltatás, a Visual Studio és az IntelliTrace hibakeresése
+title: Hibakeresés a közzétett egy Azure felhőszolgáltatást a Visual Studio és az IntelliTrace |} A Microsoft Docs
+description: Ismerje meg, a Visual Studio és az IntelliTrace cloud service hibakeresése
 services: visual-studio-online
 documentationcenter: n/a
 author: mikejo
@@ -11,74 +11,75 @@ ms.service: visual-studio-online
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.date: 03/21/2017
 ms.author: mikejo
-ms.openlocfilehash: 2ca15bd5ffa88d2e8053decf5b81c265b1d9c6e1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 1deec539d3dfe65a2ac02a9f4cd2b94d9a78274a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292557"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444342"
 ---
-# <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>A közzétett Azure-felhőszolgáltatásban a Visual Studio és az IntelliTrace-hibakeresés
-Intellitrace bejelentkezhet a szerepkör példánya nagy mennyiségű hibakeresési adatok az Azure-ban futtatott. Ha a probléma okát van szüksége, az IntelliTrace-naplók segítségével végighaladhat a kódot a Visual Studio eszközből, mintha csak az Azure-ban futna. Gyakorlatilag IntelliTrace kulccsal rekordok programkód és környezeti adatok az Azure alkalmazás az Azure-ban felhőszolgáltatásként fut, és beállíthatja, a Visual Studio eszközből a rögzített adatokat. 
+# <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>A Visual Studio és az IntelliTrace közzétett Azure felhőszolgáltatás hibakeresést
+IntelliTrace, a széles körű hibakeresési információkat egy szerepkörpéldány számára az Azure-ban való futáskor jelentkezhet meg. Ha a probléma okának feltárásához van szüksége, az IntelliTrace-naplók segítségével végighaladhat a kód a Visual Studióból, ha azt az Azure-ban futó. Érvényben az IntelliTrace kulccsal rekordok programkód és környezeti adatok az Azure-alkalmazásokat az Azure-ban felhőszolgáltatásként fut, és beállíthatja, a Visual Studióból a rögzített adatokat. 
 
-Ha rendelkezik telepített Visual Studio Enterprise IntelliTrace és az Azure-alkalmazásokban célok .NET-keretrendszer 4 vagy újabb verzió használható. IntelliTrace az Azure-szerepkörök adatokat gyűjt. Ezeket a szerepköröket mindig a 64 bites operációs rendszereket futtató virtuális gépekhez.
+IntelliTrace, ha van telepítve a Visual Studio Enterprise és az Azure-alkalmazás célok .NET-keretrendszer 4 vagy újabb verzió használható. IntelliTrace gyűjt adatokat az Azure-szerepkörök számára. Ezek a szerepkörök minden esetben a 64 bites operációs rendszereket futtató virtuális gépekhez.
 
-Alternatív megoldásként használható [távoli hibakeresés](http://go.microsoft.com/fwlink/p/?LinkId=623041) közvetlenül egy felhőszolgáltatás, amely az Azure-ban futó csatolni.
+Alternatív megoldásként használható [távoli hibakeresés](http://go.microsoft.com/fwlink/p/?LinkId=623041) közvetlenül egy felhőszolgáltatás, amely az Azure-ban fut-e csatolni.
 
 > [!IMPORTANT]
-> IntelliTrace csak hibakeresési forgatókönyvekhez készült, és nem használható éles környezet.
+> IntelliTrace csak hibakeresési célokra szolgál, és nem használható éles környezet.
 > 
 
-## <a name="configure-an-azure-application-for-intellitrace"></a>Az Azure-alkalmazások konfigurálása az IntelliTrace
-Az Azure-alkalmazások IntelliTrace engedélyezéséhez hozzon létre, és tegye közzé az alkalmazást a Visual Studio Azure projektből. Az Azure-ba való közzététele előtt IntelliTrace kell konfigurálása az Azure-alkalmazásában. Ha az alkalmazás közzétételére IntelliTrace beállítása nélkül, akkor a projekt közzé kell. További információkért lásd: [közzététele egy Azure cloud services projekteket a Visual Studio használatával](http://go.microsoft.com/fwlink/p/?LinkId=623012).
+## <a name="configure-an-azure-application-for-intellitrace"></a>Azure-alkalmazások konfigurálása az IntelliTrace
+IntelliTrace engedélyezése az Azure-alkalmazások, hozzon létre, és közzé az alkalmazást a Visual Studióhoz kapcsolódó Azure-projektből. IntelliTrace kell konfigurálnia az Azure-alkalmazásokat, az Azure-ba való közzététel előtt. Ha az alkalmazás nem az IntelliTrace konfigurálása, kell tegye közzé ismét a projektet. További információkért lásd: [közzététele az Azure cloud services-projektek, a Visual Studio használatával](http://go.microsoft.com/fwlink/p/?LinkId=623012).
 
-1. Ha készen áll az Azure alkalmazás közzétételéhez, győződjön meg arról, hogy a project build célkitűzések vannak-e beállítva **Debug**.
+1. Készen áll az Azure-alkalmazás üzembe helyezése, győződjön meg arról, hogy a vannak beállítva a project build célok **Debug**.
 
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a projekt, és válassza ki a helyi menüből **közzététel**.
+1. A **Megoldáskezelőben**, kattintson a jobb gombbal a projekt, és a helyi menüből válassza ki a **közzététel**.
    
-1. Az a **Azure-alkalmazás közzététele** párbeszédpanel, válassza ki az Azure-előfizetés, válassza ki **következő**.
+1. Az a **Azure-alkalmazások közzététele** párbeszédpanel, válassza ki az Azure-előfizetést, és válassza ki **tovább**.
 
-1. Az a **beállítások** lapon jelölje be a **speciális beállítások** fülre.
+1. Az a **beállítások** lapon válassza ki a **speciális beállítások** fülre.
 
-1. Kapcsolja be a **engedélyezése IntelliTrace** beállítás gyűjtése az IntelliTrace-naplók az alkalmazáshoz, ha a felhőben van közzétéve.
+1. Kapcsolja be a **IntelliTrace engedélyezése** beállítás gyűjtése az IntelliTrace-naplók az alkalmazáshoz, ha azt közzé van téve a felhőben.
    
-1. Az IntelliTrace-alapkonfiguráció testreszabásához jelölje be **beállítások** melletti **engedélyezése IntelliTrace**.
+1. Az IntelliTrace-alapkonfiguráció testreszabásához válassza **beállítások** melletti **IntelliTrace engedélyezése**.
 
-    ![IntelliTrace beállítások hivatkozására](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/intellitrace-settings-link.png)
+    ![Beállítások hivatkozására az IntelliTrace](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/intellitrace-settings-link.png)
    
-1. Az a **IntelliTrace beállítások** párbeszédpanelen, a napló, e hívás kapcsolatos információk összegyűjtéséhez, mely modulok és a folyamatok gyűjtéséhez naplóit, és mekkora lemezterület lefoglalása a felvétel számára események megadhat. Intellitrace alkalmazással kapcsolatban további információkért lásd: [intellitrace-hibakeresés](http://go.microsoft.com/fwlink/?LinkId=214468).
+1. Az a **nastavení IntelliTrace** párbeszédpanelen megadhatja napló, hívás információkat gyűjtsön-e, melyik modulokat és a folyamatok gyűjthet naplókat, és mekkora lemezterület lefoglalása megkapni a felvételre mutató eseményeket. Intellitrace alkalmazással kapcsolatban további információkért lásd: [intellitrace-hibakeresés](http://go.microsoft.com/fwlink/?LinkId=214468).
    
-    ![IntelliTrace-beállítások](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/IC519063.png)
+    ![Nastavení IntelliTrace](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/IC519063.png)
 
-Az IntelliTrace-naplót, az IntelliTrace-beállításokat (az alapértelmezett mérete 250 MB) a megadott maximális méret körkörös naplófájl. IntelliTrace-naplókat a rendszer egy fájlba, a fájlrendszer, a virtuális gép gyűjti. A naplók igénylésekor pillanatkép hajtja végre, ezen a ponton idő, és letölti a helyi számítógépre.
+Az IntelliTrace-naplót (az alapértelmezett mérete 250 MB) az IntelliTrace-beállításaiban megadott maximális méretét. kör alakú naplófájlt. IntelliTrace-naplók összegyűjtése a fájlrendszer, a virtuális gép egy fájlba. A naplók kér, amikor egy pillanatkép ezen a ponton időben végrehajtott és a helyi számítógépre letöltött.
 
-Miután az Azure felhőszolgáltatást közzé lett téve az Azure-ba, azt is meghatározhatja, ha a IntelliTrace a Azure csomópontján engedélyezve van-e **Server Explorer**, a következő ábrán látható módon:
+Miután az Azure-felhőszolgáltatásban közzétette az Azure-ba, megadhatja, hogy ha IntelliTrace engedélyezve van az Azure csomópontjáról **Server Explorer**, ahogy az alábbi képen látható:
 
-![Server Explorer - IntelliTrace engedélyezve](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/IC744134.png)
+![Server Explorer – IntelliTrace engedélyezve](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/IC744134.png)
 
-## <a name="download-intellitrace-logs-for-a-role-instance"></a>Töltse le az IntelliTrace-naplókat a szerepkörpéldányhoz
-Visual Studio használatával, letöltheti a IntelliTrace-naplókat a szerepkör példánya a következő lépések végrehajtásával:
+## <a name="download-intellitrace-logs-for-a-role-instance"></a>Egy szerepkörpéldány az IntelliTrace-naplók letöltése
+A Visual Studio használatával töltheti le egy szerepkörpéldány az IntelliTrace-naplók az alábbi lépéseket:
 
-1. A **Server Explorer**, bontsa ki a **Felhőszolgáltatások** csomópont, és keresse meg a szerepkörpéldányt, amelynek a naplói, töltse le kívánja. 
+1. A **Server Explorer**, bontsa ki a **Cloud Services** csomópontot, és keresse meg a szerepkörpéldány, amelynek a naplói letöltéséhez. 
 
-1. Kattintson a jobb gombbal a szerepkörpéldányt, és a s helyi menüben válassza a **IntelliTrace-naplók megtekintése**. 
+1. Kattintson a jobb gombbal a szerepkörpéldány, és a s helyi menüből válassza ki a **IntelliTrace-naplók megtekintése**. 
 
     ![IntelliTrace-naplók menüpont megjelenítése](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/view-intellitrace-logs.png)
 
-1. Az IntelliTrace-naplók letölti a fájl a könyvtárban található a helyi számítógépen. Minden alkalommal, amikor kérnie az IntelliTrace-naplók, egy új pillanatkép jön létre. A naplók letöltése folyamatban van, amíg a Visual Studio megjeleníti a műveletnek az előrehaladását a **Azure tevékenységnapló** ablak. A következő ábrán látható, a részletek megtekintéséhez művelet sortételt bővítheti.
+1. Az IntelliTrace-naplókat a rendszer letölti a helyi számítógépen mappában levő fájlt. Minden alkalommal, amikor kérnie az IntelliTrace-naplók, új pillanatkép jön létre. Amíg a naplók letöltése a Visual Studio megjeleníti a a műveletnek az előrehaladását a **Azure-tevékenységnapló** ablak. Az alábbi ábrán látható, kibonthatja a sortételt a művelet további részletek megtekintéséhez.
 
 ![VST_IntelliTraceDownloadProgress](./media/vs-azure-tools-intellitrace-debug-published-cloud-services/IC745551.png)
 
-Továbbra is az IntelliTrace-naplók letöltése a Visual Studio működne. Ha a napló letöltése befejeződött, a Visual Studio nyílik meg.
+Továbbra is az IntelliTrace-naplók letöltése a Visual Studióban működik. Ha a napló letöltése befejeződött, megnyílik a Visual Studióban.
 
 > [!NOTE]
-> Az IntelliTrace-naplókat is tartalmazhatnak, kivételek fellépése, amelyek a keretrendszer hoz létre, és ezt követően kezeli. Belső keretrendszer kódot állít elő, ezeket a kivételeket, így biztonságosan figyelmen kívül hagyhatja őket egy szerepkör indítása normál részeként.
+> Az IntelliTrace-naplók tartalmazhat kivételeket, amelyek a keretrendszer állít elő, és ezt követően végzi. Belső keretrendszer kódot állít elő, az ilyen kivételek részeként egy normál indul el egy szerepkör, így, nyugodtan figyelmen kívül hagyhatja őket.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-- [Azure felhőszolgáltatások hibakeresési lehetőségek](vs-azure-tools-debugging-cloud-services-overview.md)
-- [Egy Visual Studio használatával Azure-felhőszolgáltatásban közzététele](vs-azure-tools-publishing-a-cloud-service.md)
+- [Az Azure cloud services hibakeresési beállításai](vs-azure-tools-debugging-cloud-services-overview.md)
+- [Közzététel az Azure cloud Services, a Visual Studio használatával](vs-azure-tools-publishing-a-cloud-service.md)

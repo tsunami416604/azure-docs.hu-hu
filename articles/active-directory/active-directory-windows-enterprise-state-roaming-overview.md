@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: markvi
-ms.openlocfilehash: c2c94f488da6399965c59f761ff9f0539cf4de2f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c1332679af57a4994f4337e241845a87bf16b341
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228051"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054303"
 ---
 # <a name="enterprise-state-roaming-overview"></a>Vállalati állapothordozás áttekintése
-A Windows 10-ben [Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) felhasználók kapjanak biztonságosan szinkronizálhatók az felhasználói beállítások és az alkalmazás beállításainak adatokat a felhőbe. Enterprise State Roaming nyújt a felhasználók számára egységes felületet a Windows-eszközök között, és csökkenti az új eszköz konfigurálásához szükséges időt. Enterprise State Roaming működik hasonló a normál [fogyasztói szinkronizálását](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) , amely a Windows 8 rendszerben bevezetett. Ezenkívül Enterprise State Roaming a következőket kínálja:
+A Windows 10-ben [Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) felhasználók kapjanak biztonságosan szinkronizálhatók az felhasználói beállítások és az alkalmazás beállításainak adatokat a felhőbe. Enterprise State Roaming nyújt a felhasználók számára egységes felületet a Windows-eszközök között, és csökkenti az új eszköz konfigurálásához szükséges időt. Enterprise State Roaming működik hasonló a normál [fogyasztói szinkronizálását](http://windows.microsoft.com/windows-8/sync-settings-pcs) , amely a Windows 8 rendszerben bevezetett. Ezenkívül Enterprise State Roaming a következőket kínálja:
 
 * **Jobban elkülöníti a vállalati és felhasználói adatok** –, amelyek adataik felett, és ott nem tartozik, tehát a vállalati adatokat a fogyasztói felhőalapú fiókban vagy egy vállalati felhő fiók fogyasztói adatokat.
 * **Fokozott biztonsági** – adat automatikusan titkosítva lesznek mielőtt a felhasználó a Windows 10-es eszköz az Azure Rights Management (Azure RMS) használatával, és az adatok titkosítva, a felhőben inaktív marad. Minden tartalom titkosított a felhőben, kivéve a névtereket, például a beállítások és Windows-alkalmazás nevének inaktív marad.  

@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dda0d8e9496eb310f6d2a2791977e9de0eea6503
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: fc6c97906525b2f575a18ce5357eb3e10bfb4887
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578524"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055327"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Hitelesítési forgatókönyvek az Azure ad-ben
 
@@ -52,7 +52,7 @@ A diagram felett szem előtt, az itt látható különböző összetevőinek ism
 * Azure ad-ben az identitásszolgáltató felelős a felhasználók és az alkalmazásokat, amelyek egy szervezet címtárában található identitásának ellenőrzésére, és végső soron a ezen felhasználók és alkalmazások a sikeres hitelesítést követően a biztonsági jogkivonatok kiállítása.
 * Egy alkalmazás, amely az Azure AD-hitelesítés kiszervezik szeretne regisztrálni kell az Azure ad-ben, amely regisztrálja és egyedileg azonosítja az alkalmazást a címtárban.
 * Fejlesztők használhatják a nyílt forráskódú Azure AD hitelesítési kódtárai megkönnyítése hitelesítési protokoll részleteinek kezeli az Ön számára. További információkért lásd: [Azure Active Directory Authentication Libraries](active-directory-authentication-libraries.md).
-* Miután a felhasználó hitelesítését követően az alkalmazás ellenőrizni kell a felhasználó biztonsági jogkivonatot, győződjön meg arról, hogy a hitelesítés sikeres volt. Rendelkezünk, az alkalmazás kell mire nyelvet és keretrendszert a különböző minták [GitHub](https://github.com/Azure-Samples?q=active-directory). Az ASP.NET webalkalmazás létrehozásakor, tekintse meg a [bejelentkezés felvétele egy ASP.NET webes alkalmazás útmutató](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Ha fejleszt egy webes API-erőforrást az ASP.NET-ben, tekintse meg a [webes API-k – első lépések útmutató](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
+* Miután a felhasználó hitelesítését követően az alkalmazás ellenőrizni kell a felhasználó biztonsági jogkivonatot, győződjön meg arról, hogy a hitelesítés sikeres volt. Rendelkezünk, az alkalmazás kell mire nyelvet és keretrendszert a különböző minták [GitHub](https://github.com/Azure-Samples?q=active-directory). Az ASP.NET webalkalmazás létrehozásakor, tekintse meg a [bejelentkezés felvétele egy ASP.NET webes alkalmazás útmutató](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Ha fejleszt egy webes API-erőforrást az ASP.NET-ben, tekintse meg a [webes API-k – első lépések útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
 * A kérelmek és válaszok a hitelesítési folyamathoz határozzák meg a hitelesítési protokoll, amelyet használt, például az OAuth 2.0, OpenID Connect, SAML 2.0 vagy WS-Federation. Ezeket a protokollokat tárgyalja részletesen az [Azure Active Directory hitelesítési protokolljai](active-directory-authentication-protocols.md) cikk és az alábbi szakaszokban található.
 
 > [!NOTE]

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: b2cdb88ba71b4a3d3005ec9d64b6e94cdb1d1c55
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8c4ae9c7b8be8cf390ad4ad6d99cd1ec41cd3d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857531"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055101"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
 
@@ -107,7 +107,7 @@ A felhasználó nevét és az adattár helye együtt a kódolt jelszó használa
 git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 ```
 
-Ha a tárház klónozták megtekintheti és a helyi fájl rendszerben dolgozni. További információkért lásd: [fájlok és mappák szerkezetének hivatkozást a helyi Git-tárház](#file-and-folder-structure-reference-of-local-git-repository).
+Ha a tárház klónozták, megtekintheti és a helyi fájl rendszerben dolgozni. További információkért lásd: [fájlok és mappák szerkezetének hivatkozást a helyi Git-tárház](#file-and-folder-structure-reference-of-local-git-repository).
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>A helyi tárház a legfrissebb szolgáltatáspéldány konfigurációjának frissítéséhez
 
@@ -166,7 +166,7 @@ Minden mappa tartalmazhat egy vagy több fájlt, és olykor egy vagy több mapp�
 | xml |Házirend-utasítások |
 | CSS |A fejlesztői portál testreszabása stíluslapok |
 
-Ezek a fájlok létrehozása, törlése, szerkeszthető, és a helyi fájlrendszerben felügyelt, és az üzembe helyezett módosításokat vissza a az API Management szolgáltatáspéldányt.
+Ezeket a fájlokat létrehozása, törlése, szerkeszteni és a helyi fájlrendszerben és a módosításokat vissza az API Management-szolgáltatáspéldány üzembe felügyelt.
 
 > [!NOTE]
 > A következő entitásokat nem találhatók meg a Git-tárházban, és a Git használatával nem konfigurálható.
@@ -177,7 +177,7 @@ Ezek a fájlok létrehozása, törlése, szerkeszthető, és a helyi fájlrendsz
 > * Fejlesztői portál entitások eltérő stílusok
 > 
 
-### <a name="root-api-management-folder"></a>Api-felügyeleti gyökérmappa
+### <a name="root-api-management-folder"></a>api-felügyeleti gyökérmappa
 A legfelső szintű `api-management` mappa tartalmaz egy `configuration.json` fájlt, amely a szolgáltatás-példánya a következő formátumban legfelső szintű információkat tartalmaz.
 
 ```json
@@ -221,7 +221,7 @@ A `apis` mappa tartalmaz egy mappát az egyes API-t a szolgáltatás példánya,
 
 * `apis\<api name>\configuration.json` – Ez a konfiguráció az API-hoz és a háttérkiszolgáló URL-címe és a műveletek tartalmaz információkat. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása [beolvasása egy adott API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) a `export=true` a `application/json` formátumban.
 * `apis\<api name>\api.description.html` – Ez az API-t leírása, amely megfelel a `description` tulajdonságát a [API-entitás](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property).
-* `apis\<api name>\operations\` – Ez a mappa tartalmaz `<operation name>.description.html` fájlok, amelyek leképezik a műveletek az API-ban. Minden fájl tartalmazza az API-t, amely az egyetlen művelet leírása a `description` tulajdonságát a [művelet entitás](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) a REST API-ban.
+* `apis\<api name>\operations\` – Ez a mappa tartalmaz `<operation name>.description.html` fájlok, amelyek leképezik a műveletek az API-ban. Minden fájl tartalmaz, amely az API-ban egyetlen művelet leírása a `description` tulajdonságát a [művelet entitás](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) a REST API-ban.
 
 ### <a name="groups-folder"></a>csoportok mappa
 A `groups` mappa tartalmaz egy mappát a szolgáltatáspéldány meghatározott csoportokra.
@@ -259,8 +259,8 @@ A `templates` mappa konfigurációt tartalmazza a [e-mail-sablonok](api-manageme
 A szolgáltatáspéldány felügyeletének további lehetőségeiről további információért lásd:
 
 * A szolgáltatáspéldány, a következő PowerShell-parancsmagok használatával kezelheti.
-  * [Szolgáltatások üzembe helyezése – PowerShell-parancsmagok leírása](https://msdn.microsoft.com/library/azure/mt619282.aspx)
-  * [Szolgáltatásfelügyeleti PowerShell-parancsmagok leírása](https://msdn.microsoft.com/library/azure/mt613507.aspx)
+  * [Szolgáltatások üzembe helyezése – PowerShell-parancsmagok leírása](https://docs.microsoft.com/powershell/module/wds)
+  * [Szolgáltatásfelügyeleti PowerShell-parancsmagok leírása](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * Kezelheti a szolgáltatáspéldány, a REST API használatával
   * [API Management REST API-referencia](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 

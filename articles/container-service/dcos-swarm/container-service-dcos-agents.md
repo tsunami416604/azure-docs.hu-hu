@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9dda6d45caf69734eb135779c8bac00fea721efd
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 17029f51be9fed8fc36c5f919ece84acbf0461d9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901058"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42060811"
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Az Azure Container Service DC/OS-ügynökkészletek
 Az Azure Container Service DC/OS fürtök ügynökcsomópontok két készleteket, a nyilvános készlet és a egy privát készletet tartalmaz. Egy alkalmazás vagy a készlethez, ez hatással lenne a kisegítő lehetőségek között a gépek a container service-ben is telepíthető. A gépek lehetnek közzétéve az interneten (nyilvános) vagy tartani a belső (magánhálózati). Ez a cikk rövid áttekintést ad meg, miért azonban nyilvános és privát.
@@ -24,7 +24,7 @@ Az Azure Container Service DC/OS fürtök ügynökcsomópontok két készleteket
 
 * **Nyilvános ügynökök**: nyilvános ügynökcsomópontok DC/OS-alkalmazások és szolgáltatások futtatása egy nyilvánosan elérhető-e a hálózaton keresztül. 
 
-További információ a DC/OS-hálózati biztonság: a [DC/OS dokumentációt](https://dcos.io/docs/1.7/administration/securing-your-cluster/).
+További információ a DC/OS-hálózati biztonság: a [DC/OS dokumentációt](https://dcos.io/docs/1.8/administration/securing-your-cluster/).
 
 ## <a name="deploy-agent-pools"></a>Ügynökkészletek üzembe helyezése
 

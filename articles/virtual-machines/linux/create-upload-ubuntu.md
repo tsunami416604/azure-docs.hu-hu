@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre, és az Ubuntu Linux VHD-fájlt feltölti az Azure-ban
-description: Ismerje meg, létrehozása és feltöltése az Azure virtuális merevlemez (VHD), amely tartalmazza az Ubuntu Linux operációs rendszer.
+title: Az Azure-ban, egy Ubuntu Linux VHD létrehozása és feltöltése
+description: Ismerje meg, hozhat létre és töltse fel az Azure virtuális merevlemez (VHD), amely az Ubuntu Linux operációs rendszert tartalmazza.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: f9a4588a444b5bfeb37f0bd98ada6a336baabb04
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5b2f902389b96136e0ea0c4c58f5e8be8144a248
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30908867"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058144"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntus virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>Hivatalos Ubuntu felhő lemezképek
-Ubuntu most teszi közzé a következő hivatalos Azure VHD [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/). Ha saját speciális Ubuntu rendszerkép létrehozása az Azure-van szüksége, ahelyett, hogy kövesse az alábbi manuális eljárást, mint ajánlott ezeket a VHD-k használata ismert kezdődnie, és igény szerint testre szabhatja. A kép Újdonságok mindig az alábbi helyeken találhatók:
+## <a name="official-ubuntu-cloud-images"></a>Felhő hivatalos Ubuntu-rendszerképek
+Ubuntu most tesz közzé a hivatalos Azure VHD letölthető innen [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/). A saját specializált Ubuntu-rendszerkép létrehozásához az Azure-ban van szüksége, ha inkább kövesse az alábbi manuális eljárást, mint ajánlott indítsa el az ilyen virtuális merevlemezek használata ismert, és igény szerint testreszabhatja. A rendszerkép legújabb kiadásaihoz mindig az alábbi helyeken találhatók:
 
 * Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rendszer virtuális merevlemezre. Több különféle eszköz található .vhd fájlok, például egy például a Hyper-V virtualizálási megoldás létrehozása. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gépek](http://technet.microsoft.com/library/hh846766.aspx).
+Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rendszer virtuális merevlemezre. Több eszköz létezik a .vhd fájlokat, például például a Hyper-V virtualizálási megoldás létrehozása. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gép](http://technet.microsoft.com/library/hh846766.aspx).
 
-**Ubuntu telepítési megjegyzések**
+**Ubuntu telepítési jegyzetek**
 
-* Is lásd: [általános Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) kapcsolatos további információkat az Azure Linux előkészítése.
-* A VHDX formátum nem támogatott az Azure csak **rögzített VHD**.  Átválthat a lemez VHD formátumú Hyper-V kezelője vagy a convert-vhd-parancsmag segítségével.
-* A Linux rendszer telepítésekor LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használata ajánlott. LVM neve ütközik a klónozott virtuális gépek, így elkerülhető, különösen akkor, ha egy operációsrendszer-lemez legalább egyszer meg kell hibaelhárítási egy másik virtuális géphez csatlakoztatható. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Ha előnyben részesített adatlemezek használható.
-* Ne konfiguráljon egy swap partíciót az operációsrendszer-lemezképet. A Linux-ügynök beállítható úgy, hogy az ideiglenes erőforrás lemezen a lapozófájl létrehozásához.  További információk a megtalálhatók az alábbi lépéseket.
-* Minden, az Azure virtuális merevlemez rendelkeznie kell egy virtuális mérete 1MB igazodik. Virtuális merevlemez egy nyers lemezen történő átalakítása meg kell győződnie arról, hogy a nyers lemez mérete 1MB átalakítás előtti többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
+* Tekintse meg a is [általános Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) kapcsolatos további tippek Linux előkészítése az Azure-hoz.
+* A VHDX formátum nem támogatott az Azure-ban, csak **rögzített VHD**.  Átválthat a lemez VHD formátumú Hyper-V kezelőjével vagy a convert-vhd-parancsmag használatával.
+* A Linux rendszer telepítésekor LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használata ajánlott. LVM neve nem felel meg a klónozott virtuális gépeket, így elkerülhető, különösen akkor, ha minden eddiginél kell operációsrendszer-lemezt egy másik virtuális Géphez van csatlakoztatva a hibaelhárításhoz. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezekre is használható, ha az előnyben részesített.
+* Az operációsrendszer-lemez nem konfigurál egy lapozó partíciót. A Linux-ügynök beállítható úgy, hogy hozzon létre egy ideiglenes erőforrás lemezen a lapozófájl.  További információ található a következő lépéseket.
+* Az Azure-ban minden virtuális merevlemezek rendelkeznie kell egy virtuális méret 1 MB igazítva. A virtuális merevlemez nyers lemezről történő konvertálása során biztosítania kell, hogy a nyers lemez mérete nagyobb-e az átalakítás előtt 1MB többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
 
 ## <a name="manual-steps"></a>Manuális lépések
 > [!NOTE]
-> Mielőtt megpróbálná a saját egyéni Ubuntu lemezkép létrehozása az Azure-ba, fontolja meg az előre elkészített és tesztelt lemezképekkel [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/) helyette.
+> Mielőtt megkísérelné a saját egyéni Ubuntu-rendszerkép létrehozása az Azure-hoz, fontolja meg az előre elkészített és tesztelt rendszerképekből [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/) helyette.
 > 
 > 
 
@@ -53,9 +53,9 @@ Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rends
 
 2. Kattintson a **Connect** a virtuális gép ablak megnyitásához.
 
-3. Cserélje le a jelenlegi tárházak találhatók, az Ubuntu tartozó Azure repók használni kívánt lemezkép. A lépések kissé Ubuntu verziójától függően eltérőek.
+3. Cserélje le a jelenlegi adattárait Azure adattárakkal Ubuntu a használni kívánt lemezkép. A lépések kissé Ubuntu verziójától függően eltérőek.
    
-    Szerkesztése előtt `/etc/apt/sources.list`, ajánlott biztonsági másolatot készíteni:
+    Szerkesztése előtt `/etc/apt/sources.list`, javasoljuk, hogy készítsen biztonsági másolatot:
    
         # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
@@ -74,7 +74,7 @@ Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rends
         # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
         # sudo apt-get update
 
-4. Az Ubuntu Azure lemezképek Mostantól követi a *hardver engedélyezése* (HWE) kernel. Az operációs rendszer frissítése a legújabb kernel a következő parancsok futtatásával:
+4. Az Ubuntu Azure lemezképek Mostantól követi a *hardver engedélyezésre* (HWE) kernel. Az operációs rendszer frissítése a legújabb kernel a következő parancsok futtatásával:
 
     Ubuntu 12.04:
    
@@ -107,36 +107,36 @@ Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rends
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
 
-5. Módosítsa a kernel rendszerindító sort lárvajárat kiegészítő rendszermag paraméterek az Azure-bA felvenni. Ehhez a Megnyitás `/etc/default/grub` egy szövegszerkesztőt, keresse meg a változó neve `GRUB_CMDLINE_LINUX_DEFAULT` (vagy felveheti Ön is szükség esetén), és módosítsa az alábbi paramétereket tartalmazza:
+5. Módosítsa a rendszermag rendszerindítási sorához a grub-hibát további kernel paramétereket tartalmazza az Azure-hoz. Ehhez a nyílt `/etc/default/grub` egy szövegszerkesztőbe, keresse meg a nevű változó `GRUB_CMDLINE_LINUX_DEFAULT` (vagy adja hozzá, ha szükséges), és módosítsa az alábbi paramétereket tartalmazza:
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    Mentse és zárja be ezt a fájlt, és futtassa `sudo update-grub`. Ezzel biztosíthatja, hogy minden konzol küldi el az első soros port, amely segít az Azure technikai támogatást szeretne, a hibakeresés.
+    Mentse és zárja be ezt a fájlt, és futtassa `sudo update-grub`. Ez biztosítja az összes konzol üzenetet küld az első soros porton, is, ezzel segítve a problémák hibakeresése az Azure műszaki támogatást.
 
-6. Győződjön meg arról, hogy az SSH-kiszolgálót telepítse és konfigurálja a rendszerindítás elindításához.  Ez általában az alapértelmezett beállítás.
+6. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve és konfigurálva van rendszerindítás elindításához.  Ez általában az alapértelmezett érték.
 
-7. Az Azure Linux ügynök telepítése:
+7. Az Azure Linux-ügynök telepítése:
    
         # sudo apt-get update
         # sudo apt-get install walinuxagent
 
     >[!Note]
-    A `walinuxagent` távolíthatja el a csomagot a `NetworkManager` és `NetworkManager-gnome` a csomagokat, ha telepítve van.
+    A `walinuxagent` csomagot eltávolíthatja a `NetworkManager` és `NetworkManager-gnome` a csomagokat, ha telepítve vannak.
 
-8. A virtuális gép kiosztásának megszüntetése, és előkészíti az Azure-on történő üzembe helyezéséhez a következő parancsok futtatásával:
+8. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
    
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-9. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
-
-## <a name="next-steps"></a>További lépések
-Most már készen áll az Ubuntu Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, lásd: [Linux virtuális gép létrehozása az egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).
+9. Kattintson a **művelet le -> Leállítás** a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
 
 ## <a name="references"></a>Referencia
-Ubuntu hardver engedélyezése (HWE) kernel:
+[Ubuntu hardver lehetővé tétele (HWE) kernel](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
-* [http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
-* [http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
+## <a name="next-steps"></a>További lépések
+Most már készen áll az Ubuntu Linux virtuális merevlemez használatával hozzon létre új virtuális gépek az Azure-ban. Ha ez az első alkalommal, hogy a .vhd fájlt videófájl az Azure-ba, tekintse meg a [egy Linux virtuális gép létrehozása egy egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).
+
+
+
 

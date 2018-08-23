@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Cisco Spark konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikus kiépítése és leépíti a Cisco külső felhasználói fiókokat.
+title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a Cisco Spark |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Cisco Spark felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: 74907693270e6cd340d3b34585a80077aa87f0f7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: bb3b3061c15a661caff778ca5c0ec48b0434c718
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059072"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054288"
 ---
-# <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Cisco Spark konfigurálása
+# <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Cisco Spark konfigurálása
 
 
-Ez az oktatóanyag célja az Cisco Spark és Azure Active Directory (Azure AD) és az Azure AD konfigurálása automatikusan ellátásához, majd leépíti a felhasználók számára a Cisco Spark végrehajtandó lépések bemutatása.
+Ez az oktatóanyag célja a lépéseket kell végrehajtania a Cisco Spark és az Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók Cisco-alapú Spark bemutatása.
 
 
 > [!NOTE]
-> Ez az oktatóanyag leírja egy összekötőt, az Azure AD-felhasználó kiépítési Service platformra épül. Ez a szolgáltatás funkciója, hogyan működik, és gyakran ismételt kérdések fontos tudnivalókat tartalmaz [felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](./../active-directory-saas-app-provisioning.md).
+> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](./../active-directory-saas-app-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek teljesülését:
+Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
 
 *   Az Azure AD-bérlő
-*   A Cisco Spark bérlők
-*   A Cisco Spark rendszergazdai jogosultságokkal rendelkező felhasználói fiókot
+*   Cisco Spark bérlő
+*   A Cisco Spark rendszergazdai engedélyekkel rendelkező felhasználói fiókkal
 
 
 > [!NOTE]
-> Az Azure AD-integrációs kiépítés támaszkodik a [Cisco Spark Webservice](https://developer.webex.com/getting-started.html), amely Cisco Spark csapat rendelkezésére áll.
+> Az Azure AD létesítési integrációs támaszkodik a [Cisco Spark webszolgáltatás](https://developer.webex.com/getting-started.html), a Cisco Spark teamshez elérhető.
 
-## <a name="adding-cisco-spark-from-the-gallery"></a>Cisco Spark hozzáadása a gyűjteményből
-Mielőtt konfigurálná a Cisco Spark az Azure ad-vel történő üzembe helyezéséhez automatikus felhasználói, kell hozzáadnia Cisco Spark az Azure AD alkalmazás-galériából a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-cisco-spark-from-the-gallery"></a>Cisco Spark hozzáadása a katalógusból
+Konfigurálja a Cisco Spark az Azure AD-felhasználók automatikus átadása, mielőtt szüksége az Azure AD alkalmazáskatalógusában Cisco Spark hozzáadása a felügyelt SaaS-alkalmazások listája.
 
-**Cisco Spark az Azure AD alkalmazás-galériából hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Az Azure AD alkalmazáskatalógusában Cisco Spark hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. A a  **[Azure-portálon](https://portal.azure.com)**, a bal oldali navigációs panelen kattintson a **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a a **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások** > **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** > **minden alkalmazás**.
 
     ![A vállalati alkalmazások szakasz][2]
 
@@ -59,41 +59,41 @@ Mielőtt konfigurálná a Cisco Spark az Azure ad-vel történő üzembe helyez�
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Cisco Spark**.
+4. A Keresés mezőbe írja be a **Cisco Spark**.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/AppSearch.png)
 
-5. Az eredmények panelen válassza ki a **Cisco Spark**, majd kattintson a **Hozzáadás** gombra kattintva vegye fel a Cisco Spark a SaaS-alkalmazásokhoz.
+5. Az eredmények panelen válassza ki a **Cisco Spark**, majd kattintson a **Hozzáadás** gombra kattintva adja hozzá a Cisco Spark a SaaS-alkalmazások listájához.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/AppSearchResults.png)
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/AppCreation.png)
 
-## <a name="assigning-users-to-cisco-spark"></a>Cisco külső felhasználók hozzárendelése
+## <a name="assigning-users-to-cisco-spark"></a>Felhasználók hozzárendelése a Cisco Spark
 
-Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" használ annak meghatározásához, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználókiépítése keretében csak a felhasználók és/vagy csoportok "hozzárendelt" egy az Azure AD alkalmazás szinkronizálva.
+Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve "rendelt" egy alkalmazás az Azure AD-csoportok szinkronizálódnak.
 
-Mielőtt engedélyezése a felhasználó automatikus kiépítés és konfigurálása, meg kell határoznia, melyik felhasználónak az Azure AD hozzá kell férnie a Cisco Spark. Ha úgy döntött, itt utasításokat követve hozzárendelheti ezek a felhasználók Cisco Spark:
+Engedélyezése a felhasználók automatikus átadása és konfigurálása, mielőtt, meg kell határoznia, hogy mely felhasználók Azure AD-ben a Cisco Spark hozzáférésre van szükségük. Ha úgy döntött, utasításokat követve hozzárendelheti ezeket a felhasználókat Cisco Spark:
 
 *   [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-cisco-spark"></a>Felhasználók hozzárendelése Cisco Spark fontos tippek
+### <a name="important-tips-for-assigning-users-to-cisco-spark"></a>Felhasználók hozzárendelése a Cisco Spark fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a Cisco Spark tesztfelhasználó az automatikus létesítési konfiguráció. További felhasználók rendelt később.
+*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a Cisco Spark a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók később is rendelhető.
 
-*   Amikor egy felhasználó rendel a Cisco Spark, a hozzárendelés párbeszédpanelen válassza ki érvényes alkalmazás-specifikus szerepköröket (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem kiépítés tartoznak.
+*   Felhasználó Cisco Spark hozzárendelésekor a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
 
-## <a name="configuring-automatic-user-provisioning-to-cisco-spark"></a>Felhasználólétesítés automatikus Cisco Spark konfigurálása
+## <a name="configuring-automatic-user-provisioning-to-cisco-spark"></a>Cisco-alapú Spark automatikus felhasználókiépítés konfigurálása
 
-Ez a szakasz végigvezeti az Azure AD szolgáltatás kiépítését, módosítása, és tiltsa le a felhasználók a Cisco Spark az Azure AD-felhasználó hozzárendelések alapján történő konfigurálásáról.
-
-
-### <a name="to-configure-automatic-user-provisioning-for-cisco-spark-in-azure-ad"></a>Konfigurálása automatikus felhasználókiépítése Cisco Spark az Azure AD-ben:
+Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók a Cisco Spark az Azure AD felhasználói hozzárendelések alapján történő konfigurálásáról.
 
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) és keresse meg a **Azure Active Directory > Vállalati alkalmazások > összes alkalmazás**.
+### <a name="to-configure-automatic-user-provisioning-for-cisco-spark-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása Cisco Spark az Azure ad-ben:
 
-2. Válassza ki a Cisco Spark a SaaS-alkalmazások listája.
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás**.
+
+2. Válassza ki a Cisco Spark SaaS-alkalmazások listájából.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/Successcenter2.png)
 
@@ -101,26 +101,26 @@ Ez a szakasz végigvezeti az Azure AD szolgáltatás kiépítését, módosítá
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/ProvisioningTab.png)
 
-4. Állítsa be a **kiépítési üzemmódját** való **automatikus**.
+4. Állítsa be a **Kiépítési mód** való **automatikus**.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. Az a **rendszergazdai hitelesítő adataival** területen adjon meg a **bérlői URL-cím**, és **titkos Token** a Cisco Spark-fiók.
+5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **bérlői URL-cím**, és **titkos jogkivonat** a Cisco Spark-fiók.
 
-    *   Az a **bérlői URL-cím** mezőbe tölthető fel a Cisco Spark SCIM API URL-CÍMÉT a bérlő számára, amely nyilvánul `https://api.ciscospark.com/v1/scim/[Tenant ID]/`, ahol `[Tenant ID]` alfanumerikus karakterlánc van, a 6. lépésben leírtak szerint.
+    *   Az a **bérlői URL-cím** mezőben töltse fel a Cisco Spark SCIM API URL-CÍMÉT a bérlő, amelyhez formájában történik `https://api.ciscospark.com/v1/scim/[Tenant ID]/`, ahol `[Tenant ID]` alfanumerikus karakterből áll, 6. lépésben leírtak szerint.
 
-    *   Az a **titkos Token** mezőben, a titkos kulcs Token feltöltése, 6. lépésben leírtak szerint.
+    *   Az a **titkos jogkivonat** mezőben a titkos kulcs Token feltöltéséhez, 6. lépésben leírtak szerint.
 
-1. A **Bérlőazonosító** és **titkos Token** a Cisco Spark fiók is található jelentkezzen be a [Cisco Spark fejlesztői hely](https://developer.webex.com/) rendszergazdai fiókkal. Bejelentkezett egyszer -
-    * Lépjen a [első lépések lap](https://developer.webex.com/getting-started.html)
-    * Görgessen le a [hitelesítési szakasz](https://developer.webex.com/getting-started.html#authentication)
-    ![Cisco Spark hitelesítési jogkivonat](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
-    * A mezőbe a alfanumerikus karakterlánc a **titkos Token**. Ez a token másolása a vágólapra
-    * Lépjen a [beolvasása a saját részleteit megjelenítő oldalra](https://developer.webex.com/endpoint-people-me-get.html)
-        * Győződjön meg arról, hogy vizsgálati üzemmód ON
-        * Írja be a "Tulajdonos" szót követően egy szóközt szót, majd illessze be a titkos kulcs Token az engedélyezés mező ![Cisco Spark hitelesítési jogkivonat](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
+1. A **Bérlőazonosító** és **titkos jogkivonat** a Cisco Spark fiókkal bejelentkezve találhatók a [Cisco Spark fejlesztői webhely](https://developer.webex.com/) rendszergazdai fiókkal. Bejelentkezve egyszer -
+    * Nyissa meg a [első lépések lap](https://developer.webex.com/getting-started.html)
+    * Görgessen le a [hitelesítés szakaszban](https://developer.webex.com/getting-started.html#authentication)
+    ![Cisco Spark hitelesítési Token](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
+    * A mezőbe a alfanumerikus karakterlánc a **titkos jogkivonat**. Ez a token másolása a vágólapra
+    * Nyissa meg a [első saját saját részletei lap](https://developer.webex.com/endpoint-people-me-get.html)
+        * Győződjön meg arról, hogy vizsgálati üzemmód be Kapcsolva
+        * Írja be a "Tulajdonos" és egy szóközt szót, majd illessze be az engedélyezési mező a jogkivonat titkos kulcs ![Cisco Spark hitelesítési Token](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
         * Kattintson a Futtatás
-    * A válasz szöveg jobb a **Bérlőazonosító** "orgId" jelenik meg:
+    * A jobb oldalon, a válasz szövegben a **Bérlőazonosító** "orgId" néven jelenik meg:
 
     ```json
     {
@@ -135,31 +135,31 @@ Ez a szakasz végigvezeti az Azure AD szolgáltatás kiépítését, módosítá
     }
     ```
 
-1. A program kitölti a mezőket az 5. lépés, után kattintson a **kapcsolat tesztelése** biztosításához az Azure AD Cisco Spark kapcsolódhatnak. Ha nem sikerül, győződjön meg arról, a Cisco Spark fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+1. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Cisco Spark csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, a Cisco Spark fiókja rendelkezik rendszergazdai engedélyekkel, és próbálkozzon újra.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/TestConnection.png)
 
-8. Az a **értesítő e-mailt** mezőbe írja be az e-mail cím vagy egy csoportot kell az üzembe helyezési hiba értesítéseket, és jelölje be a jelölőnégyzetet - **e-mailben értesítést küld, ha hiba lép fel**.
+8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/EmailNotification.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
-10. Az a **hozzárendelések** szakaszban jelölje be **szinkronizálása Azure Active Directory-felhasználók a Cisco Spark**.
+10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók Cisco Spark**.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/UserMapping.png)
 
-11. Tekintse át a felhasználói attribútumok, Cisco a Spark on Azure ad-lettek szinkronizálva a **attribútum leképezési** szakasz. A kiválasztott attribútumok **egyező** tulajdonságok használatával felel meg a felhasználói fiókokat a Cisco Spark a frissítési műveleteket. Válassza ki a **mentése** gombra a módosítások véglegesítéséhez.
+11. Tekintse át a Cisco Spark az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a Cisco Spark a frissítési műveleteket. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/UserMappingAttributes.png)
 
-12. Hatókörként szűrők konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../active-directory-saas-scoping-filters.md).
+12. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../active-directory-saas-scoping-filters.md).
 
-13. Az Azure AD szolgáltatás a Cisco Spark kiépítését engedélyezéséhez módosítsa a **kiépítési állapot** való **a** a a **beállítások** szakasz.
+13. Az Azure AD létesítési szolgáltatás Cisco Spark engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/ProvisioningStatus.png)
 
-14. Válassza ki a kívánt értékeket a Cisco Spark azokat a felhasználók és/vagy csoportok, amelyeket meg szeretne meghatározásához **hatókör** a a **beállítások** szakasz.
+14. A felhasználók és/vagy a csoportok, adja meg definiálása Cisco Spark kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/SyncScope.png)
 
@@ -168,19 +168,23 @@ Ez a szakasz végigvezeti az Azure AD szolgáltatás kiépítését, módosítá
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/Save.png)
 
 
-Ez a művelet elindítja a kezdeti szinkronizálás az összes felhasználót és/vagy csoportok meghatározott **hatókör** a a **beállítások** szakasz. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, körülbelül 40 percenként történik, amíg az Azure AD szolgáltatás kiépítését fut-e hosszabb időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentést, amely ismerteti a Cisco Spark szolgáltatás kiépítését az Azure AD által végzett összes műveletet.
+Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás Cisco Spark által végrehajtott összes műveletet ismerteti.
 
-Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](../active-directory-saas-provisioning-reporting.md).
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../active-directory-saas-provisioning-reporting.md).
+
+## <a name="connector-limitations"></a>Összekötő-korlátozások
+
+* Cisco Spark jelenleg Cisco a korai mező tesztelése (elektronikus átutalás) fázisban van. További információkért lépjen kapcsolatba [Cisco a támogatási csapat](https://www.webex.co.in/support/support-overview.html). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](../active-directory-saas-provisioning-reporting.md)
+* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/cisco-spark-provisioning-tutorial/tutorial_general_01.png

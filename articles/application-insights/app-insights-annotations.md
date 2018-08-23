@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 056716e243980f0a8aadc1ff7e9b8776809ad88e
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 660080a629e00884dd61a49bc0950ebe25b6a0c5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036397"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054294"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a mérőszám-diagramok, az Application insights szolgáltatásban
 A jegyzetek [Metrikaböngésző](app-insights-metrics-explorer.md) diagramok megjelenítése, amelybe telepítette egy új létrehozást, vagy egyéb jelentős esemény történt. Vállalnak könnyen látható-e a módosítások volt-e az alkalmazás teljesítményére gyakorolt hatását. Ezek automatikusan létrehozhatók a [Visual Studio Team Services build rendszer](https://docs.microsoft.com/vsts/pipelines/tasks/). Is létrehozhat, hogy ez a jelző azt tetszés szerint bármilyen eseményre [hozza létre őket a PowerShell](#create-annotations-from-powershell).
@@ -34,7 +34,7 @@ Kiadási jegyzetek érhetők el a felhő alapú build és kiadás tartalmazza a 
 ### <a name="install-the-annotations-extension-one-time"></a>A jegyzetek bővítmény (egyszer) telepítése
 Kiadási jegyzetek lehessen kell telepíteni az egyik rendelkezésre álló számos Team Services bővítmény a Visual Studio-piactéren.
 
-1. Jelentkezzen be a [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) projekt.
+1. Jelentkezzen be a [Visual Studio Team Services](https://visualstudio.microsoft.com/vso/) projekt.
 2. A Visual Studio-piactéren [a kiadási jegyzetek bővítmény beszerzése](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations), és adja hozzá a Team Services-fiók.
 
 ![At leggyakoribb jobb oldalán a Team Services weblapot, nyissa meg a piactéren. Válassza ki a vizuális Team Services és a Build és kiadás, válassza a több megjelenítése.](./media/app-insights-annotations/10.png)

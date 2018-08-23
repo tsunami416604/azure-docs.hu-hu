@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 4fef565dbd78cf3559cd47ed6c59800c8e6f9c9d
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ec85a866279412232aa23fad8f975d1642525772
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869143"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023013"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Egyéni események létrehozása és átirányítása az Azure Portallal és az Event Griddel
 
@@ -41,7 +41,7 @@ Az Event Grid-témakörök egy felhasználó által meghatározott végpontot bi
 
    ![Kezdeti lépések](./media/custom-event-quickstart-portal/select-create.png)
 
-1. Adjon egy egyedi nevet az egyéni témakörnek. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Ne a képen látható nevet használja. Ehelyett hozzon létre egy saját nevet. Válasszon egyet a [támogatott régiók](overview.md) közül. Adja meg az erőforráscsoport nevét. Kattintson a **Létrehozás** gombra.
+1. Adjon egy egyedi nevet az egyéni témakörnek. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Ne a képen látható nevet használja. Ehelyett hozzon létre egy saját nevet. Adja meg az erőforráscsoport nevét. Kattintson a **Létrehozás** gombra.
 
    ![Event Grid-témakör értékeinek megadása](./media/custom-event-quickstart-portal/create-custom-topic.png)
 

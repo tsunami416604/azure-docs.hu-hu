@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: eb46347e82063d2e990b319ab108cf257c7e6b88
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4c7dddcb5e39eb1f72fb59af753ab167bc44d3e3
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440626"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054728"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Az Azure Data Factory-folyamatok Spark-programok meghívása
 
@@ -56,7 +56,7 @@ Hozzon létre egy data factory-folyamatot egy Spark-tevékenységgel a tipikus l
 * A létrehozott HDInsight-beli társított szolgáltatásra vonatkozik, Spark-tevékenységgel rendelkező folyamat létrehozása. A tevékenység az adatkészlet kimeneti adatkészletként az előző lépésben létrehozott van konfigurálva. A rendszer a kimeneti adatkészlet vezérli az ütemezést (óránként, naponta). A kimeneti adatkészlet tehát meg kell adnia annak ellenére, hogy a tevékenység nem igazán állít elő kimenetet.
 
 ### <a name="prerequisites"></a>Előfeltételek
-1. Hozzon létre egy általános célú tárfiókot utasításait követve [hozzon létre egy tárfiókot](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
+1. Hozzon létre egy általános célú tárfiókot utasításait követve [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md).
 
 1. A HDInsight Spark-fürt létrehozása az oktatóanyag utasításait követve [a HDInsight Spark-fürt létrehozása](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). A fürt az 1. lépésben létrehozott storage-fiók társításához.
 

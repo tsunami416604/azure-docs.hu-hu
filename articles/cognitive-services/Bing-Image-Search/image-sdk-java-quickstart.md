@@ -1,6 +1,6 @@
 ---
-title: Bing kép keresési SDK Java gyors üzembe helyezés |} Microsoft Docs
-description: Ismerje meg, hogyan állíthat be a Bing kép keresési SDK konzolalkalmazást.
+title: 'Gyors útmutató: A kérés és a Java SDK-val rendszerképek szűrése'
+description: Ebben a rövid útmutatóban a kérelem, és szűrheti a képeket, a Bing Képkeresés Java használatával által visszaadott.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mikedodaro
@@ -10,21 +10,21 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 0c44bb313328081167a419f3b7d5ce17e49d2c99
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 280a4b67d81b0734ea983c1d7fe1389e59651ccd
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349458"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987511"
 ---
-# <a name="bing-image-search-sdk-java-quickstart"></a>Bing kép keresési SDK Java gyors üzembe helyezés
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-java"></a>Gyors útmutató: A kérés és az SDK és a Java használatával rendszerképek szűrése
 
-A Bing kép keresési SDK kép lekérdezések és elemzési eredmények REST API-t a funkcionalitást biztosítja. 
+Kép a Bing Search SDK kép lekérdezések és az elemzési eredmények REST API-val funkciókat biztosítja. 
 
-A [forráskód Java Bing kép keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch) érhető el a Git központ. 
+A [forráskódját Java Bing kép Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch) Github érhető el. 
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt **keresési**. Telepítse a Bing kép keresési SDK-függőség Maven, a gradle-lel vagy a másik függőségi felügyeleti rendszerbe. A Maven POM fájl szükséges a:
+Get- [Cognitive Services hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt **keresési**. Telepítse a Bing kép Search SDK-függőség Maven, Gradle, vagy egy másik függőségkezelési rendszer. A Maven POM-fájljába a nyilatkozat van szükség:
 ```
  <dependencies>
     <dependency>
@@ -35,7 +35,7 @@ Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.micros
  </dependencies> 
 ```
 ## <a name="image-search-client"></a>Kép keresési ügyfél
-Adja hozzá a importálásokat osztály megvalósításához.
+Adja hozzá az osztály implementációját importálja.
 ```
 import com.microsoft.azure.cognitiveservices.imagesearch.*;
 import com.microsoft.azure.cognitiveservices.imagesearch.ImageObject;
@@ -54,7 +54,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 ```
-Alkalmazzon a **ImageSearchAPIImpl** az ügyfelet egy példányát igényli a **ServiceClientCredentials** osztály.
+Alkalmazzon a **ImageSearchAPIImpl** -ügyfelet, amely egy példányát igényli a **ServiceClientCredentials** osztály.
 ```
 public static ImageSearchAPIImpl getClient(final String subscriptionKey) {
     return new ImageSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -79,7 +79,7 @@ public static ImageSearchAPIImpl getClient(final String subscriptionKey) {
 }
 
 ```
-Keresse meg a képek kapcsolatos "Kanadai Rockies." Ellenőrizze a eredmények számát. Nyomtassa ki az értékeket a **firstImageResult**, **pivotSuggestions**, és **queryExpansions** paraméterek.
+Képkeresés kapcsolatos "Kanadai Rockies." Ellenőrizze az eredmények száma. Nyomtassa ki a tartozó értékeket a **firstImageResult**, **pivotSuggestions**, és **queryExpansions** paramétereket.
 ```
 public static void imageSearch(String subscriptionKey)
 {
@@ -164,7 +164,7 @@ public static void imageSearch(String subscriptionKey)
 }
 
 ```
-A lemezképek "Gibraltár" kapcsolatos keresés és szűrés az animált GIF és széles oldalarányának. Ellenőrizze a eredmények számát. Nyomtassa ki az értékeket a **insightsToken**, **thumbnailUrl**, és **webUrl** paramétereinek az első találatra.
+Lemezképek kapcsolatos "Gibraltár" Keresés és szűrés az animált GIF és a egy széles oldalarányának megőrzésével. Ellenőrizze az eredmények száma. Nyomtassa ki a tartozó értékeket a **insightsToken**, **thumbnailUrl**, és **webUrl** az első eredmény paramétereit.
 ```
 public static void imageSearchWithFilters(String subscriptionKey)
 {
@@ -208,7 +208,7 @@ public static void imageSearchWithFilters(String subscriptionKey)
 }
 
 ```
-Keresse meg a trendekkel képek. Ellenőrizze a **kategóriák** és **csempék** paraméterek.
+Keresse meg a felkapott képek. Ellenőrizze a **kategóriák** és **csempék** paramétereket.
 ```
 public static void imageTrending(String subscriptionKey)
 {
@@ -260,7 +260,7 @@ public static void imageTrending(String subscriptionKey)
 }
 
 ```
-Keresse meg a lekérdezés "Degas" képekkel, és az első kép eredmény vonatkozó további információért keressen. 
+A következő lekérdezést: "Degas" Képkeresés, és keressen rá az első képen eredmény részleteit. 
 ```
 public static void imageDetail(String subscriptionKey)
 {
@@ -396,7 +396,7 @@ public static void imageDetail(String subscriptionKey)
     }
 }
 ```
-Adja hozzá a metódusokat, a cikkben egy fő függvénnyel a kódot hajthatók végre osztályra.
+Adjon hozzá egy osztályt, a kód végrehajtása a fő függvény ebben a cikkben ismertetett módszerek.
 ```
 package ImageSDK;
 import com.microsoft.azure.cognitiveservices.imagesearch.*;
@@ -416,4 +416,4 @@ public class ImageSrchSDK {
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Cognitive Services Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)

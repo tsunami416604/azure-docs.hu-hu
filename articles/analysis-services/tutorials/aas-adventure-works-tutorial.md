@@ -8,22 +8,21 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b6e642c86c5e618cae2d46aad84a61b3f4866ae
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a53bcbe90f39999a838c84807ca834a1e6cd1813
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446146"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42060618"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Adventure Works-oktatóanyag
 
-Ez az oktatóanyag azzal kapcsolatos leckéket tartalmaz, hogyan hozhat létre és helyezhet üzembe táblázatos modelleket az 1400-as kompatibilitási szinten a Visual Studio és az [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) együttes használatával.  
-
+Ebben az oktatóanyagban leckéket tartalmaz, hogyan hozhat létre, és üzembe helyezése a táblázatos modelleket az 1400-as kompatibilitási szinten a Visual Studio használatával [Analysis Services-projektek](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects) vagy [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
 Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos modellezéssel, akkor ebből az oktatóanyagból sajátíthatja el leggyorsabban az alapszintű táblázatos modellek Visual Studióval történő létrehozását és üzembe helyezését. Ha az előfeltételek teljesültek, két-három óra szükséges a befejezésig.  
   
 ## <a name="what-you-learn"></a>Ismertetett témák   
   
--   Új táblázatosmodell-projekt létrehozása az **1400-as kompatibilitási szinten** a Visual Studióban az SSDT használatával.
+-   Jelenleg egy új táblázatos modellprojekt létrehozása a **1400-as kompatibilitási szinten** a Visual Studióban.
   
 -   Adatok importálása relációs adatbázisból egy táblázatosmodell-projekt munkaterület-adatbázisába.  
   
@@ -37,7 +36,7 @@ Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos mod
   
 -   Modellobjektumok és -adatok védelme szerepkörökkel rendelkező felhasználói tagok létrehozásával.  
   
--   Táblázatos modell üzembe helyezése egy **Azure Analysis Services**-kiszolgálón vagy **SQL Server 2017 Analysis Services**-kiszolgálón az SSDT-vel.  
+-   Hogyan helyezhet üzembe egy táblázatos modell egy **Azure Analysis Services** kiszolgáló vagy **SQL Server 2017 Analysis Services** Visual Studio használatával.  
   
 ## <a name="prerequisites"></a>Előfeltételek  
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:  

@@ -7,21 +7,21 @@ author: ecfan
 ms.author: estfan
 manager: jeconnoc
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 20ad738541554279ff9fd6dd6babe90a38676c00
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: a63bd8e3b071ed996db8ad5aeaeb5e451b4d92e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263190"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055745"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Adja hozzá, és egyéni kódrészleteket futtat az Azure Logic Apps az Azure Functions használatával
 
-Ha szeretne létrehozni, és a Futtatás csak a megfelelő kód, amely egy konkrét problémával kapcsolatban, a logic Apps, hozhat létre a saját függvények használatával [Azure Functions](../azure-functions/functions-overview.md). Ez a szolgáltatás lehetővé teszi a létrehozására és futtatására nem kell bajlódnunk a teljes alkalmazás vagy a kód futtatásához az infrastruktúra létrehozása a logic Apps Node.js vagy a C#-készült egyéni kódrészleteket. Az Azure Functions biztosít a kiszolgáló nélküli számítási feladatokat a felhőben, és akkor hasznos, ha a feladatok, például a következőket:
+Ha szeretné futtatni, csak a megfelelő kód, amely egy adott feladat végrehajtja a logic Apps, hozhat létre saját együttműködik [Azure Functions](../azure-functions/functions-overview.md). Ez a szolgáltatás segítségével hozhat létre a Node.js, C# vagy F #-kódtöredékek, így nem kell a teljes alkalmazás vagy a kód futtatásához az infrastruktúra. Az Azure Functions biztosít a kiszolgáló nélküli számítási feladatokat a felhőben, és akkor hasznos, ha feladatok, például a következőket:
 
-* Kiterjesztheti a logikai alkalmazás viselkedése a Node.js vagy a C# által támogatott funkciók.
+* Terjessze ki a logikai alkalmazás viselkedése, Node.js vagy a C#-függvényekkel.
 * Hajtsa végre a logikai alkalmazás munkafolyamatának számításokat.
 * Speciális formázás alkalmazása, vagy a logic Apps mezők számítási.
 
@@ -29,69 +29,57 @@ Emellett [a logikai alkalmazások meghívása Azure functions belül](#call-logi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk követéséhez az alábbiakban szükséges elemek:
+Kövesse az ebben a cikkben, ezek az elemek szükségesek:
 
 * Ha nem rendelkezik Azure-előfizetésem, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókkal</a>. 
 
-* A logikai alkalmazás, ahol szeretné a függvény hozzáadása
+* Azure-függvényalkalmazás, amely egy tároló az Azure functions és az Azure-függvény. Ha nem rendelkezik egy függvényalkalmazást, [a függvényalkalmazás létrehozásához először](../azure-functions/functions-create-first-azure-function.md). Létrehozhatja a függvény vagy [külön kívül a logikai alkalmazás](#create-function-external), vagy [a logikai alkalmazáson belül](#create-function-designer) a Logic App Designerben.
+
+  Meglévő és az új függvényalkalmazás és functions rendelkezik ugyanazok a követelmények, a logic apps használatához:
+
+  * A függvényalkalmazás Azure-előfizetéshez, a logikai alkalmazás kell rendelkeznie.
+
+  * A függvény HTTP-trigger, például használ, a **HTTP-eseményindító** függvénysablon a **JavaScript** vagy **C#**. 
+
+    A HTTP-eseményindító sablonját is fogadja el a tartalmat `application/json` írja be a logikai alkalmazás. 
+    Egy Azure-függvényt ad hozzá a logikai alkalmazást, a Logic App Designerben jelenít meg az Azure-előfizetésen belül a sablonból létrehozott egyéni függvényekhez. 
+
+  * A függvény nem használ egyéni útvonalakat, kivéve, ha meghatározta- [OpenAPI-definíció](../azure-functions/functions-openapi-definition.md)nevén, egy [Swagger-fájl](http://swagger.io/). 
+  
+  * A függvény definiálása OpenAPI-definíció, a Logic Apps Designerben biztosít sokoldalúbb felhasználói élményben függvény paraméterei való munkához. Mielőtt a logikai alkalmazás megtalálhatja és elérheti az OpenAPI-definíció rendelkező függvények [az alábbi lépéseket a függvényalkalmazás beállítása](#function-swagger).
+
+* A logikai alkalmazás, ahol szeretné adja hozzá a függvényt, beleértve egy [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) a logikai alkalmazás első lépéseként 
+
+  Műveletek, amelyek futtathatók a Funkciók hozzáadása előtt a logikai alkalmazás egy eseményindítóval kell elindítania.
 
   Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-
-* A [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) a logikai alkalmazás első lépéseként 
-
-  A függvények futtatását műveleteket is hozzáadhat, mielőtt a logikai alkalmazás egy eseményindítóval kell elindítania.
-
-* Azure-függvényalkalmazás, amely egy tároló az Azure functions és az Azure-függvény. Ha a függvényalkalmazás nem rendelkezik, akkor kell [a függvényalkalmazás létrehozásához először](../azure-functions/functions-create-first-azure-function.md). Létrehozhatja a függvény vagy [külön kívül a logikai alkalmazás](#create-function-external), vagy [a logikai alkalmazáson belül](#create-function-designer) a Logic App Designerben.
-
-  Új és meglévő Azure function appsszel és a functions rendelkezik ugyanazok a követelmények, a logic Apps használatához:
-
-  * A függvényalkalmazás Azure-előfizetéshez, a logikai alkalmazás kell tartoznia.
-
-  * A függvényt kell használnia a **általános webhook** függvénysablon a **JavaScript** vagy **C#**. Ez a sablon is fogadja el a tartalmat `application/json` írja be a logikai alkalmazás. Ezeket a sablonokat is segít a Logic App Designerben keresse meg és az egyéni függvények, amelyek ezeket a sablonokat az hoz létre, amikor a logic apps hozzá ezekhez a függvényekhez megjelenítése.
-
-  * Ellenőrizze, hogy a függvénysablon **mód** tulajdonsága **Webhook** és a **webhooktípus** tulajdonsága **általános JSON**.
-
-    1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
-    2. Az Azure fő menüjéből válassza **Függvényalkalmazások**. 
-    3. Az a **Függvényalkalmazások** listában válassza ki a függvényalkalmazást, bontsa ki a függvényt, és válassza ki **integráció**. 
-    4. Ellenőrizze a sablont **mód** tulajdonsága **Webhook** , és hogy a **webhooktípus** tulajdonsága **általános JSON**. 
-
-  * Ha a függvény egy [API-definíció](../azure-functions/functions-openapi-definition.md)nevén, egy [Swagger-fájl](http://swagger.io/), a Logic Apps Designerben függvény paraméterei a munka sokoldalúbb felhasználói élményben kínál. 
-  A logikai alkalmazás megtalálhatja és elérheti az funkciók, amelyek rendelkeznek a Swagger-leírásai, mielőtt [az alábbi lépéseket a függvényalkalmazás beállítása](#function-swagger).
 
 <a name="create-function-external"></a>
 
 ## <a name="create-functions-outside-logic-apps"></a>Függvényeket hozhat létre kívül a logic apps
 
-Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, az Azure függvényalkalmazást, amely az Azure-előfizetéshez, a logikai alkalmazást, és a majd hozza létre az Azure-függvény létrehozása. Ha most ismerkedik az Azure Functions, megtudhatja, hogyan [az első függvény létrehozása az Azure Portalon](../azure-functions/functions-create-first-azure-function.md), azonban vegye figyelembe ezeket, hozzáadhat és a logic apps, hívja meg az Azure functions létrehozásához szükséges követelményeket.
+Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, az Azure függvényalkalmazást, amely az Azure-előfizetéshez, a logikai alkalmazást, és a majd hozza létre az Azure-függvény létrehozása.
+Ha most ismerkedik az Azure functions létrehozása, megtudhatja, hogyan [az első függvény létrehozása az Azure Portalon](../azure-functions/functions-create-first-azure-function.md), de jegyezze fel ezeket az funkciók, amelyeket meghívhat a logikai alkalmazások létrehozásához szükséges követelményeket:
 
-* Mindenképpen jelölje ki a **általános webhook** függvénysablon a **JavaScript** vagy **C#**.
+* Mindenképpen jelölje ki a **HTTP-eseményindító** függvénysablon a **JavaScript** vagy **C#**.
 
-  ![Általános webhook – JavaScript- vagy C#](./media/logic-apps-azure-functions/generic-webhook.png)
-
-* Miután létrehozta az Azure-függvény, ellenőrizze, hogy a sablon **mód** és **webhooktípus** tulajdonságai megfelelően vannak-e beállítva.
-
-  1. Az a **Függvényalkalmazások** listában, válassza ki és bontsa ki a függvényt **integráció**. 
-
-  2. Ellenőrizze, hogy a sablon **mód** tulajdonsága **Webhook** , és hogy a **webhooktípus** tulajdonsága **általános JSON**. 
-
-     ![A függvény "Integrálás" sablontulajdonságok](./media/logic-apps-azure-functions/function-integrate-properties.png)
+  ![HTTP-eseményindító – JavaScript- vagy C#](./media/logic-apps-azure-functions/http-trigger-function.png)
 
 <a name="function-swagger"></a>
 
-* Igény szerint ha Ön [API-definíció létrehozása](../azure-functions/functions-openapi-definition.md)nevén, egy [Swagger-fájl](http://swagger.io/), a függvény kap sokoldalúbb felhasználói élményben függvény paraméterei a Logic Apps Designerben való munka során. A függvényalkalmazás beállítása a logikai alkalmazás megtalálhatja és elérheti az funkciók, amelyek rendelkeznek a Swagger-leírások:
+* Igény szerint ha Ön [API-definíció létrehozása](../azure-functions/functions-openapi-definition.md)nevén, egy [Swagger-fájl](http://swagger.io/), a függvény kap sokoldalúbb felhasználói élményben függvény paraméterei a Logic Apps Designerben való munka során. Állítsa be a függvényalkalmazást, így a logikai alkalmazás megkeresheti és használhatja a functions, amelyek rendelkeznek a Swagger-leírásai, kövesse az alábbi lépéseket:
 
-  * Győződjön meg arról, hogy a függvényalkalmazás aktívan fut-e.
+  1. Győződjön meg arról, hogy a függvényalkalmazás aktívan fut-e.
 
-  * A függvényalkalmazásban, állítsa be [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) így az összes forrás engedélyezettek:
+  2. A függvényalkalmazásban, állítsa be [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) így az összes forrás engedélyezettek az alábbi lépéseket:
 
-    1. Kezdve a **Függvényalkalmazások** listájához, válassza ki a függvényalkalmazást > **platformfunkciók** > **CORS**.
+     1. Az a **Függvényalkalmazások** listájához, válassza ki a függvényalkalmazást > **platformfunkciók** > **CORS**.
 
-       ![Válassza ki a függvényalkalmazást > "Platformfunkciók" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors.png)
+        ![Válassza ki a függvényalkalmazást > "Platformfunkciók" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-    2. A **CORS**, adja hozzá a `*` helyettesítő karakter, de a lista minden más forrást eltávolítása, és válassza **mentése**.
+     2. A **CORS**, adja hozzá a `*` helyettesítő karakter, de a lista minden más forrást eltávolítása, és válassza **mentése**.
 
-       ![Válassza ki a függvényalkalmazást > "Platformfunkciók" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
+        ![Állítsa be "CORS * helyettesítő karaktert a" * "](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
 ### <a name="access-property-values-inside-http-requests"></a>Hozzáférés tulajdonságértékek belső HTTP-kérelmekre
 
@@ -130,7 +118,11 @@ Létrehozhat egy Azure-függvényt a logikai alkalmazás a Logic App Designerben
 
 1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, nyissa meg a logikai alkalmazás a Logic App Designerben. 
 
-2. Válassza ki a lépés, ahol szeretné létrehozni, és adja hozzá a függvényt, alatt **új lépés** > **művelet hozzáadása**. 
+2. Hozhat létre, és adja hozzá a függvényt, végezze el a lépést, amely a forgatókönyvéhez vonatkozik:
+
+   * Válassza ki a logikai alkalmazás munkafolyamat utolsó lépése, **új lépés**.
+
+   * A logikai alkalmazás munkafolyamat meglévő lépéseivel, közötti vigye az egérmutatót a mutató nyílra, válassza a plusz (+) aláírására, és válassza ki **művelet hozzáadása**.
 
 3. A keresőmezőbe írja be az "azure functions" szűrőként.
 Válassza ezt a műveletet a műveletek listájának: **válassza ki az Azure-függvény – az Azure Functions** 
@@ -145,36 +137,34 @@ Válassza ezt a műveletet a műveletek listájának: **válassza ki az Azure-f�
 
    1. Az a **függvénynév** adja meg a függvény nevét. 
 
-   2. Az a **kód** adjon hozzá, a függvény kódját a sablonhoz, beleértve a válasz és a kívánt tartalom a logikai alkalmazáshoz adja vissza, miután a függvény a lejáratot követően újrainduljon. 
-   A sablonban lévő kód a context objektumot mutatja be, az üzenet és a tartalmat, amelyet a logikai alkalmazás átad a függvényt, például:
+   2. Az a **kód** adjon hozzá a kódot a függvénysablon, beleértve a válasz és a kívánt tartalom a visszaadott a logikai alkalmazáshoz után a függvény a lejáratot követően újrainduljon. 
 
       ![A függvény meghatározása](./media/logic-apps-azure-functions/function-definition.png)
 
-      A függvényen belül a tulajdonságokat a context objektumot a következő szintaxis használatával lehet hivatkozni:
+      A sablon kódban a  *`context` objektum* hivatkozik az üzenetet, amely a logikai alkalmazás keresztül küld a **kérelem törzse** mezőt egy későbbi lépésben. 
+      Hozzáférés a `context` objektum tulajdonságait a függvényen belül a következő szintaxist használja: 
 
-      ```text
-      context.<token-name>.<property-name>
-      ```
-      Ebben a példában az itt látható a szintaxist használja:
+      `context.body.<property-name>`
 
-      ```text
-      context.body.content
-      ```
+      Például, hogy hivatkozási a `content` belül a `context` objektumazonosító, a következő szintaxist használja: 
 
+      `context.body.content`
+
+      A sablonban lévő kód is tartalmaz egy `input` változó, amely tárolja az értéket a `data` paraméter, a függvény végezhetnek műveleteket az ezt az értéket. 
+      JavaScript-függvények, belül a `data` változó értéke is parancsikont `context.body`.
+
+      > [!NOTE]
+      > A `body` tulajdonság itt vonatkozik a `context` objektumra, és nem ugyanaz, mint a **törzs** művelet származó jogkivonat kimeneti, amely előfordulhat, hogy is átadhat a függvényt. 
+ 
    3. Ha elkészült, kattintson a **Létrehozás** gombra.
 
-6. Az a **kérelem törzse** adja meg a környezet objektum, a függvény bemeneti, át kell formázni a JavaScript Object Notation (JSON). Amikor rákattint az a **kérelem törzse** mezőben a dinamikus tartalmak listájából a ezért kiválaszthatja a tokenek számára rendelkezésre álló tulajdonságok az előző lépésekből nyílik meg. 
+6. Az a **kérelem törzse** adja meg a függvény bemeneti, amely egy JavaScript Object Notation (JSON) objektumot formátumban kell lenniük. 
 
-   Ez a példa továbbítja az objektumot a **törzs** az e-mail-trigger tokent:  
+   A bemeneti a *context objektumot* vagy üzenet, amely a logikai alkalmazás küld a függvényt. Amikor rákattint az a **kérelem törzse** mező, a dinamikus tartalmak listája jelenik meg, ezért kiválaszthatja a kimenetek jogkivonatok az előző lépésekből. Ebben a példában adja meg, hogy a környezetben hasznos nevű tulajdonságot tartalmaz `content` , amely rendelkezik a **a** token meg az e-mail-trigger értéket:
 
    !["A kérelem törzse" Példa - környezet objektum adattartalom](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   A context objektumot tartalma alapján, a Logic App Designerben állít elő, hogy szerkeszthető beágyazott függvényt sablon. 
-   A Logic Apps változók alapján bemeneti context objektumot is létrehoz.
-
-   Ebben a példában a context objektumot nem alakítható karakterláncként, így a tartalmat közvetlenül, a JSON-adattartalom hozzáadása. 
-   Azonban ha az objektum nem egy JSON-jogkivonatot, amely egy karakterlánc, egy JSON-objektumot, vagy egy JSON-tömböt kell lennie, hibaüzenetet kap. 
-   A context objektumot karakterláncként leadott, adja hozzá a idézőjelek közé, például:
+   Itt a context objektumot is karakterláncként, a leadott nem, hogy az objektum tartalmat közvetlenül a JSON-adattartalom hozzáadása. Azonban a környezeti objektumon nem egy JSON-jogkivonatot, amelyet átad egy karakterlánc, egy JSON-objektum vagy egy JSON-tömböt, ha hibaüzenetet kap. Ha ebben a példában használt a **Received Time** token ehelyett is szavazattal a context objektumot karakterláncként idézőjelek hozzáadásával:  
 
    ![A CAST objektum karakterláncként](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -199,20 +189,17 @@ Válassza ezt a műveletet a műveletek listájának: **válassza ki az Azure-f�
 
    ![Válassza ki a függvényalkalmazást, és az Azure-függvény](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
-   Az funkciók, amelyek API-definíciók (Swagger-leírásai) és, amelyek [állítsa be úgy a logikai alkalmazás megtalálhatja és elérheti az ezekhez a függvényekhez](#function-swagger), választhat **Swagger-műveletek**:
+   A functions API-definíciók (Swagger-leírásai) és amelyek [állítsa be úgy a logikai alkalmazás megtalálhatja és elérheti az ezekhez a függvényekhez](#function-swagger), választhat **Swagger-műveletek**:
 
    ![Válassza ki a függvényalkalmazást, a "Swagger-műveletek" ", és az Azure-függvény](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
-5. Az a **kérelem törzse** adja meg a környezet objektum, a függvény bemeneti, át kell formázni a JavaScript Object Notation (JSON). A környezeti objektumon ismerteti az üzenet és a tartalom, amely a logikai alkalmazás küld a függvényt. 
+5. Az a **kérelem törzse** adja meg a függvény bemeneti, amely egy JavaScript Object Notation (JSON) objektumot formátumban kell lenniük. 
 
-   Amikor rákattint az a **kérelem törzse** mezőben a dinamikus tartalmak listájából a ezért kiválaszthatja a tokenek számára rendelkezésre álló tulajdonságok az előző lépésekből nyílik meg. 
-   Ez a példa továbbítja az objektumot a **törzs** az e-mail-trigger tokent:
+   A bemeneti a *context objektumot* vagy üzenet, amely a logikai alkalmazás küld a függvényt. Amikor rákattint az a **kérelem törzse** mező, a dinamikus tartalmak listája jelenik meg, ezért kiválaszthatja a kimenetek jogkivonatok az előző lépésekből. Ebben a példában adja meg, hogy a környezetben hasznos nevű tulajdonságot tartalmaz `content` , amely rendelkezik a **a** token meg az e-mail-trigger értéket:
 
    !["A kérelem törzse" Példa - környezet objektum adattartalom](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   Ebben a példában a context objektumot nem alakítható karakterláncként, így a tartalmat közvetlenül, a JSON-adattartalom hozzáadása. 
-   Azonban ha az objektum nem egy JSON-jogkivonatot, amely egy karakterlánc, egy JSON-objektumot, vagy egy JSON-tömböt kell lennie, hibaüzenetet kap. 
-   A context objektumot karakterláncként leadott, adja hozzá a idézőjelek közé, például:
+   Itt a context objektumot is karakterláncként, a leadott nem, hogy az objektum tartalmat közvetlenül a JSON-adattartalom hozzáadása. Azonban a környezeti objektumon nem egy JSON-jogkivonatot, amelyet átad egy karakterlánc, egy JSON-objektum vagy egy JSON-tömböt, ha hibaüzenetet kap. Ha ebben a példában használt a **Received Time** token ehelyett is szavazattal a context objektumot karakterláncként idézőjelek hozzáadásával: 
 
    ![A CAST objektum karakterláncként](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -222,7 +209,7 @@ Válassza ezt a műveletet a műveletek listájának: **válassza ki az Azure-f�
 
 ## <a name="call-logic-apps-from-functions"></a>Logikai alkalmazások hívása funkciók
 
-Aktiválhat egy logikai alkalmazást egy Azure-függvényt belül, a logikai alkalmazás rendelkeznie kell egy hívható végponton, vagy még pontosabban egy **kérelem** eseményindító. Majd, az a függvényen belül küldött HTTP POST-kérelmet az URL-címet, amely **kérelem** aktiválása és a hasznos a logikai alkalmazás feldolgozni kívánt adatokat tartalmazza. További információkért lásd: [logikai alkalmazások hívása, eseményindító, vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md). 
+Ha meg szeretné elindítani a logikai alkalmazás egy Azure-függvényt belül, a logikai alkalmazás egy eseményindítóval, amely egy hívható végpontot biztosít kell elindítania. Például elindíthatja az a logikai alkalmazás a **HTTP**, **kérelem**, **Azure-üzenetsorok**, vagy **Event Grid** eseményindító. A függvényen belül HTTP POST-kérelmet küldeni az aktiváló URL-címe, és a hasznos a logikai alkalmazás feldolgozni kívánt adatokat tartalmazza. További információkért lásd: [logikai alkalmazások hívása, eseményindító, vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md). 
 
 ## <a name="get-support"></a>Támogatás kérése
 

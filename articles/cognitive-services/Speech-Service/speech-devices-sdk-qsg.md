@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 463a015b7c01dafc5b30de56b95fa0510ffb98e4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283136"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42424369"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK használatának első lépései
 
@@ -44,11 +44,11 @@ Fejlesztés előtt a Speech eszköz SDK-val, gyűjtsön információkat és szof
 
 ## <a name="set-up-the-development-kit"></a>A fejlesztői készlet beállítása
 
-1. Beépülő modul a fejlesztői készlet tápegység. Egy zöld power kijelző kell helyezzen üzembe az első tábla alatt.
+1. A fejlesztői csomag egy mini USB-kábel használatával hatékonyabbá egy számítógépen vagy egy kiemelt adptor csatlakozik. Egy zöld power kijelző kell helyezzen üzembe az első tábla alatt.
 
-1. A csomag kapcsolódni a számítógéphez egy USB-kábelen keresztül mini.
+1. A csomag egy második mini USB-kábel használatával számítógéphez való csatlakozást.
 
-    ![Csatlakozás a fejlesztői csomag](media/speech-devices-sdk/qsg-1.jpg)
+    ![Csatlakozás a fejlesztői csomag](media/speech-devices-sdk/qsg-1.png)
 
 1. Elhelyezés megfelelően a development Kitet.
 
@@ -57,7 +57,7 @@ Fejlesztés előtt a Speech eszköz SDK-val, gyűjtsön információkat és szof
     |Kör alakú|Mintha a mikrofonok a felső határ irányuló|
     |Lineáris|Az oldalán a mikrofonok felénk (lásd alább)|
 
-    ![lineáris dev csomag tájolása](media/speech-devices-sdk/qsg-2.jpg)
+    ![lineáris dev csomag tájolása](media/speech-devices-sdk/qsg-2.png)
 
 1. Telepítse a tanúsítványokat és a hálózati ébresztési word (kulcsszó) tábla fájlt, és állítsa be az engedélyeket a hangeszköz. Írja be a következő parancsokat egy parancssori ablakban.
 
@@ -82,9 +82,22 @@ Fejlesztés előtt a Speech eszköz SDK-val, gyűjtsön információkat és szof
 
 1.  Az eszköz szerepelnie kell "Eszköz kiválasztása". Kattintson a **nézet** gomb mellett. 
  
-1.  A vezeték nélküli hálózathoz csatlakozni kattintva **beállítások**, majd **WLAN**.
+1.  A mappa ikonra, majd kattintson a vezeték nélküli hálózathoz való csatlakozás **beállítások**, majd **WLAN**.
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
+ 
+ > [!NOTE]
+ > Ha a vállalata rendelkezik házirendek kapcsolatban a kapcsolódó eszközöknél a Wi-Fi rendszernek, a Mac-cím beszerzése és az informatikai részlegtől kapcsolatos útmutató a Wi-Fi-rendszerhez kapcsolódni szeretne. A Mac-cím a fejlesztői csomag megkereséséhez kattintson a fájlmappa ikonra az asztalon, a fejlesztői csomag az **beállítások**, keressen a "Mac-cím", kattintson a **Mac-cím** kerülnek a **speciális WLAN** , írja le a Mac-cím irányába alján található. Egyes vállalatok előfordulhat, hogy legfeljebb mennyi eszközök Wi-Fi rendszereik lehet csatlakoztatni egy időpontot is is. Szüksége lehet egy bizonyos számú nap eltelte után a fejlesztői csomag regisztrálása a Wi-Fi rendszert, a kiterjesztése.  
+ 
+ 
+   ![Vysor fájlmappa](media/speech-devices-sdk/qsg-10.png)
+   
+   ![Vysor Mac-cím](media/speech-devices-sdk/qsg-11.png)
+   
+   
+ > Ha azt szeretné, a beszélő csatlakoztatása a fejlesztői csomag, csatlakozhat a hang sor ki. Egy jó minőségű 3.5-ös mm speaker is kell választania.
+ 
+   ![Vysor hang](media/speech-devices-sdk/qsg-14.png)
  
 ## <a name="run-a-sample-application"></a>A mintaalkalmazás futtatása
 
@@ -126,7 +139,7 @@ Futtassa a Roobo teszteket, és az development kit konfigurációjának ellenőr
         exit
         ```
 
-    * Másolja a fájlokat `kws.table`, `kws_g.fst`, `kws_k.fst`, és `words_kw.txt`) az eszköz \data\keyword\ mappába. O parancssori ablakban futtassa a következő parancsokat.
+    * Másolja a fájlokat `kws.table`, `kws_g.fst`, `kws_k.fst`, és `words_kw.txt`) az eszköz \data\keyword\ mappába. O parancssori ablakban futtassa a következő parancsokat. Ha létrehozott egy [egyéni ébresztési word](speech-devices-sdk-create-kws.md), a létrehozott webes kws.table fájl ugyanabban a címtárban kell fog `kws.table`, `kws_g.fst`, `kws_k.fst`, és `words_kw.txt` fájlokhoz. Használja a adb leküldéses C:\SDSDK\Android-Sample-Release\keyword\[wake_word_name]\kws.table/data/kulcsszó commmand paranccsal küldje le a kws.table fájl helyett a fejlesztői csomag.
 
         ```
         adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
@@ -179,7 +192,11 @@ Futtassa a Roobo teszteket, és az development kit konfigurációjának ellenőr
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha tanúsítványhibák lép a Speech szolgáltatással, győződjön meg arról, a helyes dátum és idő van az eszközön.
+Ha tanúsítványhibák lép a Speech szolgáltatással, győződjön meg arról, a helyes dátum és idő van az eszközön. Lépjen a **beállítások**, kattintson a **dátum és idő** a rendszerben, és **válassza időzóna** kell az aktuális időzóna. Tartsa **automatikus dátum és idő** ON. Amikor megjelenik a fejlesztői csomag idő megegyezik a számítógép idő, majd, tudni fogja, a fejlesztői csomag az internethez csatlakozik. 
+
+ ![Vysor fájlmappa](media/speech-devices-sdk/qsg-12.png)
+ 
+ ![Vysor fájlmappa](media/speech-devices-sdk/qsg-13.png)
 
 Fejlesztési kapcsolatos további információkért lásd: Roobo a [– fejlesztési útmutató](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 

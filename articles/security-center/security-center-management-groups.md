@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/18/2018
+ms.date: 08/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 800ec83b3599dba716e7a4a015b9b8c1745a0975
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 91d1be062dbf05f4c7c9c5c4a1eb3dfcfdb001af
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144567"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42441694"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Összes bérlőre vonatkozó információk megjelenítése az Azure Security Centerben
 Ez a cikk használatának megkezdésébe vezeti be, amely az Azure Security Center biztosít előnyök maximalizálása és több művelet végrehajtásával. Ezek a műveletek végrehajtása lehetővé teszi, hogy nagyobb láthatóságot érhet el az összes Azure-előfizetések vannak kapcsolva, az Azure Active Directory-bérlőhöz, és hatékonyan kezelheti a szervezet biztonsági állapotáról, ipari méretekben több biztonsági házirendek alkalmazásával előfizetések aggregative módon.
@@ -85,21 +85,26 @@ Az Azure Active Directory-Bérlői rendszergazda nem rendelkezik Azure-előfizet
 
 5. A végre kell hajtania az emelt szintű hozzáférési feladatok elvégzéséhez. Ha elkészült, állítsa a kapcsolót vissza **nem**.
 
-### <a name="open-or-refresh-security-center"></a>Nyissa meg, vagy frissítse a Security Centerben
-Ha emelt hozzáférési szintű, nyissa meg, vagy frissítse az Azure Security Center használatával ellenőrizze, hogy az összes előfizetés betekintést az Azure AD-bérlőhöz tartozik. 
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Győződjön meg arról, az előfizetés-választó, amely megtekintése a Security Centerben szeretné előfizetések lehetőséget választja.
-    ![Előfizetés-választó képernyőképe](./media/security-center-management-groups/subscription-selector.png)
-1. Válassza ki **minden szolgáltatás** az Azure főmenüjében válassza **a Security Center**.
-2. Az a **áttekintése**, van egy előfizetési lefedettség diagramot. 
-    ![Előfizetési lefedettség diagram képernyőképe](./media/security-center-management-groups/security-center-subscription-coverage.png)
-3. Kattintson a **lefedettség** kezelt előfizetések listájának megtekintéséhez. 
-    ![Előfizetési lefedettség lista képernyőképe](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="assign-rbac-roles-to-users"></a>RBAC-szerepkörök hozzárendelése felhasználókhoz
-Egy Bérlői rendszergazda emelt szintű hozzáférés, miután azok rendelhet az RBAC-szerepkör a felügyeleti csoport gyökérszintű a megfelelő felhasználók. Az ajánlott szerepkör hozzárendelése: [ **olvasó**](../role-based-access-control/built-in-roles.md#reader). Ez a szerepkör szükséges, adja meg a bérlői szintű látható-e. A hozzárendelt szerepkör automatikusan propagálódik az összes felügyeleti csoportok és az előfizetések a legfelső szintű felügyeleti csoportban. RBAC-szerepkörök kapcsolatos további információkért lásd: [elérhető szerepkörök](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles). 
+Az információk megjelenítése az összes előfizetés, a bérlői rendszergazdák kell a megfelelő RBAC-szerepkörök hozzárendelése egy felhasználóhoz sem kívánnak biztosítanak bérlői szintű láthatóságot, beleértve a maguk a legfelső szintű felügyeleti csoport szintjén. A javasolt szerepkör hozzárendelése a vagy **biztonsági rendszergazda** vagy **biztonsági olvasó**. Általában a biztonsági rendszergazdai szerepkör szükség a gyökérszintű, a szabályzatok alkalmazása, miközben a biztonsági olvasó adja meg a bérlői szintű látható-e elegendő. A szerepkörökhöz rendelt engedélyeket kapcsolatos további információkért lásd: a [biztonsági rendszergazdai szerepkört leírás](../role-based-access-control/built-in-roles.md#security-admin) vagy a [biztonsági olvasó beépített szerepkör leírása](../role-based-access-control/built-in-roles.md#security-reader).
 
+
+#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Rendeljen RBAC-szerepköröket a felhasználók számára az Azure Portalon: 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+2. Felügyeleti csoportok megtekintéséhez jelölje ki **minden szolgáltatás** az Azure főmenüjében válassza **felügyeleti csoportok**.
+3.  Válasszon ki egy felügyeleti csoportot, és kattintson a **részletek**.
+
+    ![Felügyeleti csoportok részletek képernyőképe](./media/security-center-management-groups/management-group-details.PNG)
+ 
+4. Kattintson a **hozzáférés-vezérlés (IAM)** majd **Hozzáadás**.
+5. Válassza ki a szerepkör hozzárendelése és a felhasználót, majd kattintson a **mentése**.  
+   
+   ![Biztonsági olvasó szerepkör képernyőfelvétel hozzáadása](./media/security-center-management-groups/asc-security-reader.png)
+
+
+#### <a name="assign-rbac-roles-to-users-with-powershell"></a>Rendeljen RBAC-szerepköröket a felhasználók számára a PowerShell-lel: 
 1. Telepítse az [Azure PowerShellt](/powershell/azure/install-azurerm-ps).
 2. Futtassa az alábbi parancsot: 
 
@@ -128,19 +133,17 @@ Egy Bérlői rendszergazda emelt szintű hozzáférés, miután azok rendelhet a
     Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
-<!-- Currently, PowerShell method only 6/26/18
+### <a name="open-or-refresh-security-center"></a>Nyissa meg, vagy frissítse a Security Centerben
+Ha emelt hozzáférési szintű, nyissa meg, vagy frissítse az Azure Security Center használatával ellenőrizze, hogy az összes előfizetés betekintést az Azure AD-bérlőhöz tartozik. 
 
-1. Sign in to the [Azure portal](https://portal.azure.com). 
-2. To view management groups, select **All services** under the Azure main menu then select **Management Groups**.
-3.  Select a management group and click **details**.
-
-    ![Management Groups details screenshot](./media/security-center-management-groups/management-group-details.PNG)
- 
-4. Click **Access control (IAM)** then **Add**.
-5. Select the role to assign and the user, then click **Save**.  
-   
-   ![Add Security Reader role screenshot](./media/security-center-management-groups/asc-security-reader.png)
--->
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+2. Ellenőrizze, hogy az előfizetés-választó, amely megtekintése a Security Centerben szeretné előfizetések lehetőséget választja.
+    ![Előfizetés-választó képernyőképe](./media/security-center-management-groups/subscription-selector.png)
+1. Válassza ki **minden szolgáltatás** az Azure főmenüjében válassza **a Security Center**.
+2. Az a **áttekintése**, van egy előfizetési lefedettség diagramot. 
+    ![Előfizetési lefedettség diagram képernyőképe](./media/security-center-management-groups/security-center-subscription-coverage.png)
+3. Kattintson a **lefedettség** kezelt előfizetések listájának megtekintéséhez. 
+    ![Előfizetési lefedettség lista képernyőképe](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása 
 Az RBAC-szerepkörök vannak rendelve a felhasználókat, miután a bérlői rendszergazda távolítsa el magát az a felhasználói hozzáférés rendszergazdájának szerepköre.

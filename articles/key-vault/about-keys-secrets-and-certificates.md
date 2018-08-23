@@ -1,9 +1,9 @@
 ---
-title: Kulcsok, titkos kódok és tanúsítványok
+title: A kulcsok, titkos kódok és tanúsítványok ismertetése
 description: REST-felület és KV fejlesztői részleteket – áttekintés
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: BryanLa
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/14/2018
+ms.author: bryanla
+ms.openlocfilehash: 962f9be53ce0b2022e8e5490bdeb04b2eefb4d7c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359189"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054291"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 Az Azure Key Vault lehetővé teszi, hogy a felhasználók tárolhatják és a Microsoft Azure-környezeten belül titkosítási kulcsok használata. A Key Vault több kulcstípusok és algoritmusokat támogatja, és lehetővé teszi az értékes kulcsok használható hardveres biztonsági modulok (HSM). Emellett a Key Vault lehetővé teszi a felhasználók számára a titkos kulcsok biztonságos tárolása. A titkok olyan mérete korlátozott oktett objektumok nem adott sémantikou. A Key Vault támogatja a tanúsítványok, kulcsok és titkos kulcsok épülnek, és adja hozzá az automatikus megújítási szolgáltatást is.
@@ -28,26 +28,26 @@ Azure Key Vaulttal kapcsolatos további általános információkért lásd: [Mi
 
 **A Key Vault általános adatok**
 
--   [Szabványok támogatása](about-keys-secrets-and-certificates.md#BKMK_Standards)
--   [Adattípusok](about-keys-secrets-and-certificates.md#BKMK_DataTypes)  
--   [Objektumok, azonosítók és verziókezelés](about-keys-secrets-and-certificates.md#BKMK_ObjId)  
+-   [Szabványok támogatása](#BKMK_Standards)
+-   [Adattípusok](#BKMK_DataTypes)  
+-   [Objektumok, azonosítók és verziókezelés](#BKMK_ObjId)  
 
 **Kulcsok**
 
--   [Kulcsok és a kulcs típusa](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)  
--   [Az RSA algoritmus](about-keys-secrets-and-certificates.md#BKMK_RSAAlgorithms)  
--   [RSA-HSM algoritmusok](about-keys-secrets-and-certificates.md#BKMK_RSA-HSMAlgorithms)  
--   [Titkosítási védelme](about-keys-secrets-and-certificates.md#BKMK_Cryptographic)
--   [Kulcsműveletek](about-keys-secrets-and-certificates.md#BKMK_KeyOperations)  
--   [Legfőbb attribútumai](about-keys-secrets-and-certificates.md#BKMK_KeyAttributes)  
--   [Kulcs címkék](about-keys-secrets-and-certificates.md#BKMK_Keytags)  
+-   [Kulcsok és a kulcs típusa](#BKMK_KeyTypes)  
+-   [Az RSA algoritmus](#BKMK_RSAAlgorithms)  
+-   [RSA-HSM algoritmusok](#BKMK_RSA-HSMAlgorithms)  
+-   [Titkosítási védelme](#BKMK_Cryptographic)
+-   [Kulcsműveletek](#BKMK_KeyOperations)  
+-   [Legfőbb attribútumai](#BKMK_KeyAttributes)  
+-   [Kulcs címkék](#BKMK_Keytags)  
 
 **Tudnivalók a titkos kulcsok** 
 
--   [Titkos kulcsok használata](about-keys-secrets-and-certificates.md#BKMK_WorkingWithSecrets)  
--   [Titkos kód attribútumok](about-keys-secrets-and-certificates.md#BKMK_SecretAttrs)  
--   [Titkos kódok](about-keys-secrets-and-certificates.md#BKMK_SecretTags)  
--   [Titkoskulcs-hozzáférés vezérlése](about-keys-secrets-and-certificates.md#BKMK_SecretAccessControl)  
+-   [Titkos kulcsok használata](#BKMK_WorkingWithSecrets)  
+-   [Titkos kód attribútumok](#BKMK_SecretAttrs)  
+-   [Titkos kódok](#BKMK_SecretTags)  
+-   [Titkoskulcs-hozzáférés vezérlése](#BKMK_SecretAccessControl)  
 
 **A tanúsítványokról**
 
@@ -133,7 +133,7 @@ Az Azure Key Vault támogatja a 2048, 3072 és 4096-méretek RSA-kulcsok, és az
 
 ### <a name="BKMK_Cryptographic"></a> Titkosítási védelme
 
-A titkosítási modulok által használt Azure Key Vaultban, HSM, illetve szoftver –, hogy-e FIPS használatával érvényesített. Nem kell különösebb FIPS-módban történő futtatására. Ha Ön **létrehozása** vagy **importálása** HSM által védett kulcsokat, amelyek garantált belül érvényesítve a FIPS 140-2 2 vagy magasabb szintű hardveres biztonsági modulok dolgozzák. Ha Ön **létrehozása** vagy **importálása** kulcsokat, a szoftveres védelemmel ellátott majd belül titkosítási moduljait feldolgozása érvényesítve a FIPS 140-2 1 vagy magasabb szintű. További információkért lásd: [kulcsokat és a kulcstípusok](about-keys-secrets-and-certificates.md#BKMK_KeyTypes).
+A titkosítási modulok által használt Azure Key Vaultban, HSM, illetve szoftver –, hogy-e FIPS használatával érvényesített. Nem kell különösebb FIPS-módban történő futtatására. Ha Ön **létrehozása** vagy **importálása** HSM által védett kulcsokat, amelyek garantált belül érvényesítve a FIPS 140-2 2 vagy magasabb szintű hardveres biztonsági modulok dolgozzák. Ha Ön **létrehozása** vagy **importálása** kulcsokat, a szoftveres védelemmel ellátott majd belül titkosítási moduljait feldolgozása érvényesítve a FIPS 140-2 1 vagy magasabb szintű. További információkért lásd: [kulcsokat és a kulcstípusok](#BKMK_KeyTypes).
 
 ###  <a name="BKMK_ECAlgorithms"></a> EK algoritmusok
  Az Azure Key Vault HSM-EK és a kulcsokat a következő algoritmus azonosítók használata támogatott. 
@@ -174,7 +174,7 @@ Az Azure Key Vault támogatja a következő műveleteket az objektumok:
 -   **Biztonsági mentés**: egy kulcs, védett formátumban exportálja.  
 -   **Visszaállítás**: importál egy biztonsági másolatból kulcsot.  
 
-További információkért lásd: [műveletek kulcs](/rest/api/keyvault/key-operations).  
+További információkért lásd: [kulcsfontosságú műveleteket az a Key Vault REST API-referencia](/rest/api/keyvault).  
 
 Kulcs létrehozása az Azure Key Vaultban, után a következő titkosítási műveleteket végezhetik a kulccsal:  
 
@@ -194,22 +194,22 @@ JWK-objektumokra vonatkozó további információkért lásd: [JSON webes kulcs 
 
 A kulcs adatai mellett a következő attribútumok adható meg. Egy JSON-kérelem a attribútumok kulcsszót, és kapcsos zárójelek a(z) {' "}", szükség, akkor is, ha a megadott attribútum sem.  
 
-- *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Megadja, hogy a kulcs engedélyezve van, és a titkosítási műveletek gyakorlatot. A *engedélyezve* attribútum együtt használatos *nbf* és *exp*. Ha a művelet között történik *nbf* és *exp*, akkor lesz csak engedélyezett, ha *engedélyezve* értékre van állítva **igaz**. Műveletek kívül a *nbf* / *exp* ablak automatikusan engedélyezettek, kivéve a művelet bizonyos [adott feltételek](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops).
-- *NBF*: IntDate, nem kötelező, alapértelmezett értéke jelenleg. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a kulcs nem használható a titkosítási műveletek, kivéve a művelet bizonyos [adott feltételek](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops). A feldolgozása a *nbf* attribútumot igényel, hogy az aktuális dátum/idő után kell vagy a nem egyenlő-szereplő dátum/idő előtt a *nbf* attribútum. Az Azure Key Vault rendelkezhetnek néhány kisebb eltérést általában nem több mint néhány percet, hogy torzulása óra figyelembe. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
-- *Exp*: IntDate, nem kötelező, alapértelmezett érték a "végtelen". A *exp* (lejárati ideje) attribútum azonosítja a lejárati időt, vagy azt követően, amely nem használja a rendszer kriptográfiai művelet, kivéve a művelet bizonyos [adott feltételek](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops). A feldolgozása a *exp* attribútumot igényel, hogy az aktuális dátumot és időpontot kell-e, mielőtt a lejárati dátum/idő szerepel a *exp* attribútum. Az Azure Key Vault rendelkezhetnek néhány kisebb eltérést általában nem több mint néhány percet, hogy torzulása óra figyelembe. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
+- *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Megadja, hogy a kulcs engedélyezve van, és a titkosítási műveletek gyakorlatot. A *engedélyezve* attribútum együtt használatos *nbf* és *exp*. Ha a művelet között történik *nbf* és *exp*, akkor lesz csak engedélyezett, ha *engedélyezve* értékre van állítva **igaz**. Műveletek kívül a *nbf* / *exp* ablak automatikusan engedélyezettek, kivéve a művelet bizonyos [adott feltételek](#BKMK_key-date-time-ctrld-ops).
+- *NBF*: IntDate, nem kötelező, alapértelmezett értéke jelenleg. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a kulcs nem használható a titkosítási műveletek, kivéve a művelet bizonyos [adott feltételek](#BKMK_key-date-time-ctrld-ops). A feldolgozása a *nbf* attribútumot igényel, hogy az aktuális dátum/idő után kell vagy a nem egyenlő-szereplő dátum/idő előtt a *nbf* attribútum. Az Azure Key Vault rendelkezhetnek néhány kisebb eltérést általában nem több mint néhány percet, hogy torzulása óra figyelembe. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
+- *Exp*: IntDate, nem kötelező, alapértelmezett érték a "végtelen". A *exp* (lejárati ideje) attribútum azonosítja a lejárati időt, vagy azt követően, amely nem használja a rendszer kriptográfiai művelet, kivéve a művelet bizonyos [adott feltételek](#BKMK_key-date-time-ctrld-ops). A feldolgozása a *exp* attribútumot igényel, hogy az aktuális dátumot és időpontot kell-e, mielőtt a lejárati dátum/idő szerepel a *exp* attribútum. Az Azure Key Vault rendelkezhetnek néhány kisebb eltérést általában nem több mint néhány percet, hogy torzulása óra figyelembe. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
 
 Nincsenek további csak olvasható attribútumokat választ, amely tartalmazza a kulcsattribútum részét képező:  
 
 - *létrehozott*: IntDate, nem kötelező. A *létrehozott* attribútum azt jelöli, ez a verzió, a kulcs létrehozásakor. Ez az attribútum hozzáadása előtt létrehozott kulcsok null értékű. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
 - *frissített*: IntDate, nem kötelező. A *frissített* attribútum azt jelöli, amikor ez a kulcs verziója módosult. Ez a legutóbb frissített Ez az attribútum hozzáadása előtt kulcsok null értékű. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
 
-IntDate és más adatok további információkért lásd: [adattípusok](about-keys-secrets-and-certificates.md#BKMK_DataTypes)  
+IntDate és más adatok további információkért lásd: [adattípusok](#BKMK_DataTypes)  
 
 #### <a name="BKMK_key-date-time-ctrld-ops"></a> Dátum-idő ellenőrzött műveletek
 
 Nincs még érvényes, és a lejárt kulcsok, ezen kívül a *nbf* / *exp* ablakban fog működni az **visszafejtéséhez**, **kicsomagolása** és **ellenőrzése** operations (nem ad vissza 403, tiltott). A közösségértékek nem még érvényes állapot segítségével, hogy a kulcs kell tesztelni, mielőtt éles környezetben való használathoz. A közösségértékek használata a lejárt állapotban, hogy a helyreállítási műveletek jött létre, amikor a kulcs érvényes volt-adatokat. Ezenkívül letilthatja a hozzáférést egy kulcsot a Key Vault-szabályzatok, vagy frissítésével a *engedélyezve* a kulcsattribútum **false (hamis)**.
 
-További információ az adatok típusok:, [adattípusok](about-keys-secrets-and-certificates.md#BKMK_DataTypes).
+További információ az adatok típusok:, [adattípusok](#BKMK_DataTypes).
 
 Más lehetséges attribútumok kapcsolatban további információért tekintse meg a [JSON webes kulcs (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).
 
@@ -256,9 +256,9 @@ Az Azure Key Vault titkos kódok contentType mező is támogatja. Ügyfelek elő
 
 A titkos adatok mellett a következő attribútumokkal lehet megadni:  
 
-- *Exp*: IntDate, nem kötelező, alapértelmezett érték a **örökre**. A *exp* (lejárati ideje) attribútum azonosítja a lejárati időt, vagy azt követően, amely a titkos kód nem kell beolvasni az adatokat, kivéve az [adott helyzetekben](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops). A feldolgozása a *exp* attribútumot igényel, hogy az aktuális dátumot és időpontot kell-e, mielőtt a lejárati dátum/idő szerepel a *exp* attribútum. Az Azure Key Vault rendelkezhetnek néhány kisebb eltérést általában nem több mint néhány percet, hogy torzulása óra figyelembe. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
-- *NBF*: IntDate, nem kötelező, alapértelmezett érték a **most**. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a titkos adatokat nem kell beolvasni, kivéve az [adott helyzetekben](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops). A feldolgozása a *nbf* attribútumot igényel, hogy az aktuális dátum/idő után kell vagy a nem egyenlő-szereplő dátum/idő előtt a *nbf* attribútum. Az Azure Key Vault rendelkezhetnek néhány kisebb eltérést általában nem több mint néhány percet, hogy torzulása óra figyelembe. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
-- *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Ez az attribútum meghatározza, hogy a titkos adatok lekérhetők-e. Az engedélyezett attribútum együtt használatos, és *exp* között-művelet bekövetkezésekor exp, akkor lesz csak engedélyezett, ha engedélyezve van, és értékre van állítva **igaz**. Műveletek kívül a *nbf* és *exp* ablak a program automatikusan nem megengedett, kivéve a [adott helyzetekben](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops).  
+- *Exp*: IntDate, nem kötelező, alapértelmezett érték a **örökre**. A *exp* (lejárati ideje) attribútum azonosítja a lejárati időt, vagy azt követően, amely a titkos adatokat kell nem olvashatók be, kivéve az [adott helyzetekben](#BKMK_secret-date-time-ctrld-ops). Ez a mező **tájékoztató** célra használja, csak, hogy tájékoztatja a felhasználókat a key vault szolgáltatást, hogy egy adott titkos kód nem használható. Az érték egy IntDate értéket tartalmazó számnak kell lennie.   
+- *NBF*: IntDate, nem kötelező, alapértelmezett érték a **most**. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a titkos adatokat kell nem olvashatók be, kivéve az [adott helyzetekben](#BKMK_secret-date-time-ctrld-ops). Ez a mező **tájékoztató** csak célra használja. Az érték egy IntDate értéket tartalmazó számnak kell lennie. 
+- *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Ez az attribútum meghatározza, hogy a titkos adatok lekérhetők-e. Az engedélyezett attribútum együtt használatos, és *exp* között-művelet bekövetkezésekor exp, akkor lesz csak engedélyezett, ha engedélyezve van, és értékre van állítva **igaz**. Műveletek kívül a *nbf* és *exp* ablak a program automatikusan nem megengedett, kivéve a [adott helyzetekben](#BKMK_secret-date-time-ctrld-ops).  
 
 Nincsenek további csak olvasható attribútumok telepítésben lévő semmilyen választ, amely tartalmazza a titkos attribútumok:  
 
@@ -269,7 +269,7 @@ Nincsenek további csak olvasható attribútumok telepítésben lévő semmilyen
 
 A titkos kulcs **első** kívül nem még érvényes, és a lejárt titkos adatait, a fog működni a művelet a *nbf* / *exp* ablak. A titkos kód hívása **lekérése** művelet, nem még érvényes titkos kulcs, a tesztelési célokra használható. Beolvasása (**első**ing) egy lejárt titkos helyreállítási műveletekhez használható.
 
-További információ az adatok típusok:, [adattípusok](about-keys-secrets-and-certificates.md#BKMK_DataTypes).  
+További információ az adatok típusok:, [adattípusok](#BKMK_DataTypes).  
 
 ###  <a name="BKMK_SecretAccessControl"></a> Titkoskulcs-hozzáférés vezérlése
 
@@ -283,7 +283,7 @@ A következő engedélyeket is használható, egyszerű alapon, az egy tároló 
 -   *Törlés*: a titkos kulcs törlése  
 -   *az összes*: minden engedély  
 
-Titkos kódok való használatáról további információkért lásd: [Titkoskód-műveletek](/rest/api/keyvault/secret-operations).  
+Titkos kódok való használatáról további információkért lásd: [titkos műveletek a a Key Vault REST API-referencia](/rest/api/keyvault).  
 
 ###  <a name="BKMK_SecretTags"></a> Titkos kódok  
 További alkalmazások – is szolgáltatásspecifikus metaadatokat címkék formájában is megadhat. Az Azure Key Vault támogatja a legfeljebb 15 címkék, amelyek mindegyike egy 256 karakter hosszúságú név- és egy 256 karakter hosszúságú lehet.  
@@ -436,18 +436,14 @@ Ha egy tanúsítási szabályzat automatikus megújítás értékre van állítv
 -   *Hozzon létre*: lehetővé teszi a Key Vault-tanúsítvánnyal, hozzon létre.  
 -   *importálása*: lehetővé teszi, hogy az importálás tanúsítvány anyag be a Key Vault-tanúsítvánnyal.  
 -   *frissítés*: lehetővé teszi, hogy a tanúsítvány frissítése.  
--   *manageconnects*: lehetővé teszi, hogy a Key Vault tanúsítványpartnerek kezelése  
+-   *managecontacts*: lehetővé teszi, hogy a Key Vault tanúsítványpartnerek kezelése  
 -   *getissuers*: lehetővé teszi, hogy a get-tanúsítványkiállítókat  
 -   *listissuers*: lehetővé teszi, hogy a tanúsítvány tanúsítványkibocsátók listája  
 -   *setissuers*: lehetővé teszi a létrehozni vagy frissíteni a Key Vault tanúsítványkiállítókat  
 -   *deleteissuers*: lehetővé teszi, hogy a Key Vault tanúsítványkiállítókat delete  
 -   *az összes*: az összes engedélyt megadja  
 
-## <a name="additional-information-for-certificates"></a>További információ a tanúsítványok
-
-- [Tanúsítványok és szabályzatok](/rest/api/keyvault/certificates-and-policies)
-- [Tanúsítványkiállítók](/rest/api/keyvault/certificate-issuers)
-- [Tanúsítványpartnerek](/rest/api/keyvault/certificate-contacts)
+További információkért lásd: a [tanúsítvány-műveletek a a Key Vault REST API-referencia](/rest/api/keyvault). 
 
 ## <a name="see-also"></a>Lásd még:
 

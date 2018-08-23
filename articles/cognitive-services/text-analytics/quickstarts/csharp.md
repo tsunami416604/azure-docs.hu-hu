@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cognitive Services Text Analytics API rövid útmutatóban a C# |} A Microsoft Docs
-description: Get information és kód minták segítségével gyorsan használatának első lépései a szövegelemzési API-t a Microsoft Cognitive Services, Azure-ban.
+title: Cognitive Services Text Analytics API rövid útmutatóban a C# |} A Microsoft Docs
+description: Információk és Kódminták a szövegelemzési API-val a Microsoft Cognitive Services, Azure-beli használatának gyors megkezdéséhez segítséget kaphat.
 services: cognitive-services
 documentationcenter: ''
 author: luiscabrer
@@ -9,46 +9,46 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: 59e2254054f51a8d5f30e1b38dc5e6c23899c054
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 4bf5179ade6f49b847b8b674d33652071e19a769
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284329"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41987514"
 ---
-# <a name="quickstart-for-text-analytics-api-with-c"></a>Szövegelemzési API-t C# Gyorsútmutató 
+# <a name="quickstart-for-the-text-analytics-api-with-c"></a>A szövegelemzési API-t C# Gyorsútmutató 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan nyelv felismerése, vélemények elemzése és kinyerheti a kulcsfontosságú kifejezéseket, használja a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a C# használatával. A kód írása volt működik a .net Core-alkalmazást, minimális hivatkozó külső kódtáraiban, így Linux vagy MacOS rendszeren is futhat.
+Ez a cikk bemutatja, hogyan nyelv felismerése, vélemények elemzése és kinyerheti a kulcskifejezéseket használatával a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a C# használatával. A kód írása volt működik a .NET Core-alkalmazást, minimális hivatkozó külső kódtáraiban, így a Linux vagy MacOS rendszeren is futtathatja.
 
 Tekintse meg a [API-definíciók](//go.microsoft.com/fwlink/?LinkID=759346) technikai dokumentációját az API-kat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Text Analytics API**. Használhatja a **összesen 5 000 tranzakció/hó ingyenes szintet** a rövid útmutató elvégzéséhez.
+Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Text Analytics API-val. Használhatja a *összesen 5 000 tranzakció/hó ingyenes szintet* a rövid útmutató elvégzéséhez.
 
-Rendelkeznie kell a [végpontját és hozzáférési kulcsát](../How-tos/text-analytics-how-to-access-key.md) , amely az Ön számára közben létrehozott jelentkezzen be. 
+Rendelkeznie kell a [végpontját és hozzáférési kulcsát](../How-tos/text-analytics-how-to-access-key.md) , amely jött létre az Ön számára a regisztrációhoz. 
 
 
-## <a name="install-the-nuget-sdk-package"></a>Az Nuget SDK-csomag telepítése
+## <a name="install-the-nuget-sdk-package"></a>Az NuGet SDK-csomag telepítése
 1. Hozzon létre egy új konzol megoldást a Visual Studióban.
-1. A jobb gombbal a megoldásra, majd kattintson a **NuGet-csomagok kezelése megoldáshoz**
-1. Mark az **tartalmaznak Prerelease** jelölőnégyzetet.
-1. Válassza ki a **Tallózás** lapra, és keressen rá a **Microsoft.Azure.CognitiveServices.Language**
-1. Válassza ki a Nuget-csomagot, és telepítse.
+1. Kattintson a jobb gombbal a megoldás, és válassza ki **NuGet-csomagok kezelése megoldáshoz**.
+1. Válassza ki a **tartalmaznak Prerelease** jelölőnégyzetet.
+1. Válassza ki a **Tallózás** lapra, és keressen rá a **Microsoft.Azure.CognitiveServices.Language**.
+1. Válassza ki a NuGet-csomagot, és telepítse.
 
 > [!Tip]
->  Miközben hívhatja a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) közvetlenül a C#, a Microsoft.Azure.CognitiveServices.Language SDK megkönnyíti a szolgáltatás hívása nélkül szerializálásához és deszerializálásához JSON aggódnia kellene.
+> Bár a segítségével meghívhatja a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) közvetlenül a C#, a Microsoft.Azure.CognitiveServices.Language SDK megkönnyíti a szolgáltatás hívása nélkül szerializálásához és deszerializálásához JSON aggódnia kellene.
 >
-> Néhány hasznos hivatkozásokat:
-> - [SDK Nuget-oldalon](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
-> - [SDK-kód ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
+> Hasznos hivatkozások a következők:
+> - [SDK NuGet-oldalon](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [SDK-kód](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 
-## <a name="call-the-text-analytics-api-using-the-sdk"></a>Az SDK-val a szövegelemzési API hívása
-1. Cserélje le a program.cs fájlban az alábbi kódra. Ez a program a szövegelemzési API (nyelv kinyerés, kulcs-kifejezések kinyerése és hangulatelemzés) 3 szakaszokban képességeit mutatja be.
-1. Cserélje le a `Ocp-Apim-Subscription-Key` Fejlécérték egy hozzáférési kulccsal rendelkező érvényes az előfizetéshez.
-1. Cserélje le a hely a `Endpoint` a regisztrált a végponthoz. Az Azure Portal resource találja a végpont. A végpont általában "https://[region].api.cognitive.microsoft.com" előtaggal kezdődik, és itt csak adja meg protokoll és az állomásnevet.
+## <a name="call-the-text-analytics-api-by-using-the-sdk"></a>A szövegelemzési API hívása az SDK-val
+1. Cserélje le a program.cs fájlban a következő kóddal. Ez a program a szövegelemzési API három szakaszra (nyelv kinyerés, kulcs-kifejezések kinyerése és hangulatelemzés) képességeit mutatja be.
+1. Cserélje le a `Ocp-Apim-Subscription-Key` fejléc értéke érvényes az előfizetéshez tartozó hozzáférési kulccsal.
+1. Cserélje le a hely a `Endpoint` a végpontra a bejelentkezéshez. Az Azure-portál erőforrás találja a végpont. A végpont általában kezdődik "https://[region].api.cognitive.microsoft.com." Csak protokoll és a gazdagépcsoport nevét tartalmazza.
 1. Futtassa a programot.
 
 ```csharp
@@ -88,7 +88,7 @@ namespace ConsoleApp1
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            // Extracting language
+            // Extracting language.
             Console.WriteLine("===== LANGUAGE EXTRACTION ======");
 
             var result =  client.DetectLanguageAsync(new BatchInput(
@@ -105,7 +105,7 @@ namespace ConsoleApp1
                 Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
             }
 
-            // Getting key-phrases
+            // Getting key phrases.
             Console.WriteLine("\n\n===== KEY-PHRASE EXTRACTION ======");
 
             KeyPhraseBatchResult result2 = client.KeyPhrasesAsync(new MultiLanguageBatchInput(
@@ -117,7 +117,7 @@ namespace ConsoleApp1
                           new MultiLanguageInput("es", "4", "A mi me encanta el fútbol!")
                         })).Result;
 
-            // Printing keyphrases
+            // Printing key phrases.
             foreach (var document in result2.Documents)
             {
                 Console.WriteLine("Document ID: {0} ", document.Id);
@@ -130,7 +130,7 @@ namespace ConsoleApp1
                 }
             }
 
-            // Extracting sentiment
+            // Extracting sentiment.
             Console.WriteLine("\n\n===== SENTIMENT ANALYSIS ======");
 
             SentimentBatchResult result3 = client.SentimentAsync(
@@ -144,7 +144,7 @@ namespace ConsoleApp1
                         })).Result;
 
 
-            // Printing sentiment results
+            // Printing sentiment results.
             foreach (var document in result3.Documents)
             {
                 Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);
@@ -157,7 +157,7 @@ namespace ConsoleApp1
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szövegelemzés a Power bi-ban](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Lásd még 
 

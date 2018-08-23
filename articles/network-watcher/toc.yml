@@ -1,180 +1,187 @@
+items:
 - name: A Network Watcher dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: A Network Watcher névjegye
-      href: network-watcher-monitoring-overview.md
+  - name: A Network Watcher névjegye
+    href: network-watcher-monitoring-overview.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – Portal
-      href: diagnose-vm-network-traffic-filtering-problem.md
-    - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – PowerShell
-      href: diagnose-vm-network-traffic-filtering-problem-powershell.md
-    - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – Azure CLI
-      href: diagnose-vm-network-traffic-filtering-problem-cli.md
+  - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – Portal
+    href: diagnose-vm-network-traffic-filtering-problem.md
+  - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – PowerShell
+    href: diagnose-vm-network-traffic-filtering-problem-powershell.md
+  - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – Azure CLI
+    href: diagnose-vm-network-traffic-filtering-problem-cli.md
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: A virtuális gép útválasztási problémáinak diagnosztizálása
-      href: diagnose-vm-network-routing-problem.md
-    - name: Virtuális gépek közötti kommunikáció monitorozása
-      href: connection-monitor.md
-    - name: Hálózatok közötti kommunikációs probléma diagnosztizálása
-      href: diagnose-communication-problem-between-networks.md
-    - name: Virtuális gép hálózati forgalmának naplózása
-      href: network-watcher-nsg-flow-logging-portal.md
+  - name: A virtuális gép útválasztási problémáinak diagnosztizálása
+    href: diagnose-vm-network-routing-problem.md
+  - name: Virtuális gépek közötti kommunikáció monitorozása
+    href: connection-monitor.md
+  - name: Hálózatok közötti kommunikációs probléma diagnosztizálása
+    href: diagnose-communication-problem-between-networks.md
+  - name: Virtuális gép hálózati forgalmának naplózása
+    href: network-watcher-nsg-flow-logging-portal.md
 - name: Alapelvek
   items:
-    - name: Virtuális gép hálózati forgalmi problémáinak diagnosztizálása
-      href: network-watcher-ip-flow-verify-overview.md
-    - name: A virtuális gép útválasztási problémáinak diagnosztizálása
-      href: network-watcher-next-hop-overview.md
-    - name: A virtuális gép kimenő kommunikációjával kapcsolatos problémák diagnosztizálása
-      href: network-watcher-connectivity-overview.md
-    - name: A VPN kapcsolati hibáinak elhárítása
-      href: network-watcher-troubleshoot-overview.md
-    - name: Változó csomagrögzítés
-      href: network-watcher-packet-capture-overview.md
-    - name: Hálózati biztonsági csoportforgalom naplózása
-      href: network-watcher-nsg-flow-logging-overview.md
-    - name: Hálózati biztonsági csoport nézet
-      href: network-watcher-security-group-view-overview.md
-    - name: Szerepköralapú hozzáférés-vezérlési engedélyek
-      href: required-rbac-permissions.md
+  - name: Virtuális gép hálózati forgalmi problémáinak diagnosztizálása
+    href: network-watcher-ip-flow-verify-overview.md
+  - name: A virtuális gép útválasztási problémáinak diagnosztizálása
+    href: network-watcher-next-hop-overview.md
+  - name: A virtuális gép kimenő kommunikációjával kapcsolatos problémák diagnosztizálása
+    href: network-watcher-connectivity-overview.md
+  - name: A VPN kapcsolati hibáinak elhárítása
+    href: network-watcher-troubleshoot-overview.md
+  - name: Változó csomagrögzítés
+    href: network-watcher-packet-capture-overview.md
+  - name: Hálózati biztonsági csoportforgalom naplózása
+    href: network-watcher-nsg-flow-logging-overview.md
+  - name: Hálózati biztonsági csoport nézet
+    href: network-watcher-security-group-view-overview.md
+  - name: Szerepköralapú hozzáférés-vezérlési engedélyek
+    href: required-rbac-permissions.md
 - name: Útmutatók
   items:
-    - name: A Network Watcher konfigurálása
-      href: network-watcher-create.md
-    - name: A virtuális gép hálózati problémáinak diagnosztizálása
+  - name: A Network Watcher konfigurálása
+    href: network-watcher-create.md
+  - name: A virtuális gép hálózati problémáinak diagnosztizálása
+    items:
+    - name: Virtuálisgép-bővítmény telepítése
       items:
-        - name: Virtuálisgép-bővítmény telepítése
-          items:
-            - name: Windows
-              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
-            - name: Linux
-              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
-        - name: Útválasztási probléma diagnosztizálása
-          items:
-            - name: Azure PowerShell
-              href: diagnose-vm-network-routing-problem-powershell.md
-            - name: Azure CLI
-              href: diagnose-vm-network-routing-problem-cli.md
-        - name: Kimenő kapcsolati problémák diagnosztizálása
-          items:
-            - name: Azure Portal
-              href: network-watcher-connectivity-portal.md
-            - name: Azure PowerShell
-              href: network-watcher-connectivity-powershell.md
-            - name: Azure CLI
-              href: network-watcher-connectivity-cli.md
-            - name: REST
-              href: network-watcher-connectivity-rest.md
-        - name: Csomagok rögzítése és elemzése
-          items:
-            - name: Csomagrögzítés kezelése
-              items:
-                - name: Azure Portal
-                  href: network-watcher-packet-capture-manage-portal.md
-                - name: Azure PowerShell
-                  href: network-watcher-packet-capture-manage-powershell.md
-                - name: Azure CLI
-                  href: network-watcher-packet-capture-manage-cli.md
-                - name: REST
-                  href: network-watcher-packet-capture-manage-rest.md
-            - name: Csomagrögzítés elemzése
-              items:
-                - name: Rendellenességek keresése
-                  href: network-watcher-deep-packet-inspection.md
-                - name: Proaktív hálózatmonitorozás az Azure Functions használatával
-                  href: network-watcher-alert-triggered-packet-capture.md
-                - name: Behatolásészlelés nyílt forráskódú eszközökkel
-                  href: network-watcher-intrusion-detection-open-source-tools.md
-                - name: Hálózati forgalmi minták vizualizációja nyílt forráskódú eszközökkel
-                  href: network-watcher-using-open-source-tools.md
-    - name: Hálózati biztonsági csoportok használata
+      - name: Windows
+        href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+      - name: Linux
+        href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+    - name: Útválasztási probléma diagnosztizálása
       items:
-        - name: NSG-forgalom naplóinak konfigurálása
-          items:
-            - name: Azure PowerShell
-              href: network-watcher-nsg-flow-logging-powershell.md
-            - name: Azure CLI
-              href: network-watcher-nsg-flow-logging-cli.md
-            - name: REST
-              href: network-watcher-nsg-flow-logging-rest.md
-        - name: NSG-forgalom naplóinak elemzése
-          items:
-            - name: NSG-forgalom naplóinak olvasása
-              href: network-watcher-read-nsg-flow-logs.md
-            - name: A Traffic Analytics használata
-              href: traffic-analytics.md
-              items:
-                - name: Gyakori kérdések
-                  href: traffic-analytics-faq.md
-            - name: A Power BI használata
-              href: network-watcher-visualize-nsg-flow-logs-power-bi.md
-            - name: Elastic Stack használata
-              href: network-watcher-visualize-nsg-flow-logs-open-source-tools.md
-            - name: Grafana használata
-              href: network-watcher-nsg-grafana.md
-            - name: Graylog használata
-              href: network-watcher-analyze-nsg-flow-logs-graylog.md
-        - name: Hálózati biztonsági csoportok megtekintése
-          items:
-            - name: Azure PowerShell
-              href: network-watcher-security-group-view-powershell.md
-            - name: Azure CLI
-              href: network-watcher-security-group-view-cli.md
-            - name: REST
-              href: network-watcher-security-group-view-rest.md
-        - name: Megfelelőségi vizsgálat és naplózás végrehajtása a hálózaton
-          href: network-watcher-nsg-auditing-powershell.md
-    - name: VPN-átjáró és kapcsolatok diagnosztizálása
+      - name: Azure PowerShell
+        href: diagnose-vm-network-routing-problem-powershell.md
+      - name: Azure CLI
+        href: diagnose-vm-network-routing-problem-cli.md
+    - name: Kimenő kapcsolati problémák diagnosztizálása
       items:
-        - name: Hibaelhárítás
-          items:
-            - name: Azure PowerShell
-              href: network-watcher-troubleshoot-manage-powershell.md
-            - name: Azure CLI
-              href: network-watcher-troubleshoot-manage-cli.md
-            - name: REST
-              href: network-watcher-troubleshoot-manage-rest.md
-        - name: VPN-átjáró monitorozása az Azure Automationnel
-          href: network-watcher-monitor-with-azure-automation.md
-        - name: VPN-átjárót használó helyszíni kapcsolatok diagnosztizálása
-          href: network-watcher-diagnose-on-premises-connectivity.md
-    - name: Hálózati topológia megtekintése
-      href: view-network-topology.md
-    - name: Egy hely és egy Azure-régió közötti relatív késés meghatározása
-      href: view-relative-latencies.md
+      - name: Azure Portal
+        href: network-watcher-connectivity-portal.md
+      - name: Azure PowerShell
+        href: network-watcher-connectivity-powershell.md
+      - name: Azure CLI
+        href: network-watcher-connectivity-cli.md
+      - name: REST
+        href: network-watcher-connectivity-rest.md
+    - name: Csomagok rögzítése és elemzése
+      items:
+      - name: Csomagrögzítés kezelése
+        items:
+        - name: Azure Portal
+          href: network-watcher-packet-capture-manage-portal.md
+        - name: Azure PowerShell
+          href: network-watcher-packet-capture-manage-powershell.md
+        - name: Azure CLI
+          href: network-watcher-packet-capture-manage-cli.md
+        - name: REST
+          href: network-watcher-packet-capture-manage-rest.md
+      - name: Csomagrögzítés elemzése
+        items:
+        - name: Rendellenességek keresése
+          href: network-watcher-deep-packet-inspection.md
+        - name: Proaktív hálózatmonitorozás az Azure Functions használatával
+          href: network-watcher-alert-triggered-packet-capture.md
+        - name: Behatolásészlelés nyílt forráskódú eszközökkel
+          href: network-watcher-intrusion-detection-open-source-tools.md
+        - name: Hálózati forgalmi minták vizualizációja nyílt forráskódú eszközökkel
+          href: network-watcher-using-open-source-tools.md
+  - name: Hálózati biztonsági csoportok használata
+    items:
+    - name: NSG-forgalom naplóinak konfigurálása
+      items:
+      - name: Azure PowerShell
+        href: network-watcher-nsg-flow-logging-powershell.md
+      - name: Azure CLI
+        href: network-watcher-nsg-flow-logging-cli.md
+      - name: REST
+        href: network-watcher-nsg-flow-logging-rest.md
+    - name: NSG-forgalom naplóinak elemzése
+      items:
+      - name: NSG-forgalom naplóinak olvasása
+        href: network-watcher-read-nsg-flow-logs.md
+      - name: A Traffic Analytics használata
+        href: traffic-analytics.md
+        items:
+        - name: Gyakori kérdések
+          href: traffic-analytics-faq.md
+      - name: A Power BI használata
+        href: network-watcher-visualize-nsg-flow-logs-power-bi.md
+      - name: Elastic Stack használata
+        href: network-watcher-visualize-nsg-flow-logs-open-source-tools.md
+      - name: Grafana használata
+        href: network-watcher-nsg-grafana.md
+      - name: Graylog használata
+        href: network-watcher-analyze-nsg-flow-logs-graylog.md
+    - name: Hálózati biztonsági csoportok megtekintése
+      items:
+      - name: Azure PowerShell
+        href: network-watcher-security-group-view-powershell.md
+      - name: Azure CLI
+        href: network-watcher-security-group-view-cli.md
+      - name: REST
+        href: network-watcher-security-group-view-rest.md
+    - name: Megfelelőségi vizsgálat és naplózás végrehajtása a hálózaton
+      href: network-watcher-nsg-auditing-powershell.md
+  - name: VPN-átjáró és kapcsolatok diagnosztizálása
+    items:
+    - name: Hibaelhárítás
+      items:
+      - name: Azure PowerShell
+        href: network-watcher-troubleshoot-manage-powershell.md
+      - name: Azure CLI
+        href: network-watcher-troubleshoot-manage-cli.md
+      - name: REST
+        href: network-watcher-troubleshoot-manage-rest.md
+    - name: VPN-átjáró monitorozása az Azure Automationnel
+      href: network-watcher-monitor-with-azure-automation.md
+    - name: VPN-átjárót használó helyszíni kapcsolatok diagnosztizálása
+      href: network-watcher-diagnose-on-premises-connectivity.md
+  - name: Hálózati topológia megtekintése
+    href: view-network-topology.md
+  - name: Egy hely és egy Azure-régió közötti relatív késés meghatározása
+    href: view-relative-latencies.md
 - name: Referencia
   items:
-    - name: Azure CLI
-      href: /cli/azure/network/watcher
-    - name: Azure PowerShell
-      href: '/powershell/module/azurerm.network/#network_watcher'
-    - name: Java
-      href: /java/api/com.microsoft.azure.management.network
-    - name: Ruby
-      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher'
-    - name: Python
-      href: /python/api/overview/azure/network
-    - name: .NET
-      href: /dotnet/api/overview/azure/virtual-network
-    - name: Node.js
-      href: /javascript/api/azure-arm-network
-    - name: REST
-      href: /rest/api/network-watcher/
+  - name: Azure CLI
+    href: /cli/azure/network/watcher
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.network/#network_watcher
+  - name: Java
+    href: /java/api/com.microsoft.azure.management.network
+  - name: Ruby
+    href: http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher
+  - name: Python
+    href: /python/api/overview/azure/network
+  - name: .NET
+    href: /dotnet/api/overview/azure/virtual-network
+  - name: Node.js
+    href: /javascript/api/azure-arm-network
+  - name: REST
+    href: /rest/api/network-watcher/
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=network-watcher'
-    - name: SLA
-      href: 'https://azure.microsoft.com/support/legal/sla/'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/network-watcher'
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/network-watcher/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=network-watcher
+  - name: SLA
+    href: https://azure.microsoft.com/support/legal/sla/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/network-watcher
+ms.openlocfilehash: 16908298ec3ede9cc1bb29b5c05afa3c6c447ad9
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41927140"

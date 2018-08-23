@@ -3,26 +3,28 @@ title: Az Azure Event Hubs-beli Apache kafka |} A Microsoft Docs
 description: Áttekintés és Kafka bemutatása az Azure Event Hubs engedélyezve
 services: event-hubs
 documentationcenter: .net
-author: djrosanova
+author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: darosa
-ms.openlocfilehash: 51f2ad736ccbf27cafb05b8f68653f5effdecbf0
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.date: 08/16/2018
+ms.author: bahariri
+ms.openlocfilehash: 16c101068be48ba1435ef230b29c679fcef17d08
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503502"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059611"
 ---
 # <a name="azure-event-hubs-for-apache-kafka-preview"></a>Az Azure Event Hubs-beli Apache kafka (előzetes verzió)
 
-Az Event Hubs egy Kafka-végpontot, amely segítségével biztosít a meglévő által a Kafka-alapú alkalmazások futtatása a saját Kafka-fürt helyett. Az Event Hubs támogatja [Apache Kafka 1.0](https://kafka.apache.org/10/documentation.html) és újabb ügyfél-verziók, és együttműködik a meglévő Kafka-alkalmazások, beleértve a MirrorMaker. Módosítsa a kapcsolati karakterláncot, és megkezdheti a streamelés az Event hubsba a Kafka-protokollt használó alkalmazások eseményeit.
+Az Event Hubs egy Kafka-végpontot, amely segítségével biztosít a meglévő által a Kafka-alapú alkalmazások futtatása a saját Kafka-fürt helyett. Az Event Hubs támogatja [Apache Kafka 1.0](https://kafka.apache.org/10/documentation.html) és újabb ügyfél-verziók, és együttműködik a meglévő Kafka-alkalmazások, beleértve a MirrorMaker. 
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>Mit nyújt a Kafka az Event Hubs?
 
-Az Event Hubs, Kafka szolgáltatáshoz biztosít egy protokoll a fő Azure Event Hubs, Kafka 1.0-s verziójával, és később a olvasása és írása a Kafka-témakörökhöz bináris kompatibilis felett. Elméleti szinten a Kafka és az Event Hubs majdnem azonos: mindkét particionált naplók tervezve a folyamatos átviteli adatok. Az alábbi táblázat a fogalmak közötti Kafka és az Event Hubs képezi le.
+Az Event Hubs, Kafka szolgáltatáshoz biztosít egy protokoll a fő Azure Event Hubs, Kafka 1.0-s verziójával, és később a olvasása és írása a Kafka-témakörökhöz bináris kompatibilis felett. Nincs kód megváltoztatására, de a minimális konfigurációs változást előfordulhat, hogy a Kafka-végpont az alkalmazások használatához. Frissítse a kapcsolati karakterláncot a konfigurációk, a Kafka-végpontra mutat a Kafka-fürt helyett az eseményközpont által elérhetővé tett mutasson. Ezt követően megkezdheti az Event hubsba a Kafka-protokollt használó alkalmazások az események streamelése. 
+
+Elméleti szinten a Kafka és az Event Hubs majdnem azonos: mindkét particionált naplók tervezve a folyamatos átviteli adatok. Az alábbi táblázat a fogalmak közötti Kafka és az Event Hubs képezi le.
 
 ### <a name="kafka-and-event-hub-conceptual-mapping"></a>A Kafka és az Eseményközpont elméleti leképezését
 
@@ -36,7 +38,7 @@ Az Event Hubs, Kafka szolgáltatáshoz biztosít egy protokoll a fő Azure Event
 
 ### <a name="key-differences-between-kafka-and-event-hubs"></a>A Kafka és az Event Hubs közötti fő különbségeket
 
-Miközben [Apache Kafka](https://kafka.apache.org/) szoftver, amely is futtathatja, bárhol is választja, hasonló az Azure Blob Storage egy felhőalapú szolgáltatás Azure Event Hubs szolgáltatás. Nincsenek kiszolgálók vagy hálózatok kezelése és konfigurálása nélkül közvetítők. Hozzon létre egy névteret, amely egy teljes Tartománynevet, amelyben a témakörök élő, és hozzon létre az Event Hubs vagy az adott névtérben témakörök. Az Event Hubs és a névterek kapcsolatos további információkért lásd: [Mi az Event Hubs](event-hubs-what-is-event-hubs.md). Felhőalapú szolgáltatás, az Event Hubs egyetlen stabil virtuális IP-címet használ végpontként, így az ügyfelek nem kell tudnia a közvetítők vagy fürtön belüli gépek. 
+Miközben [Apache Kafka](https://kafka.apache.org/) szoftver, amely is futtathatja, bárhol is választja, hasonló az Azure Blob Storage egy felhőalapú szolgáltatás Azure Event Hubs szolgáltatás. Nincsenek kiszolgálók vagy hálózatok kezelése és konfigurálása nélkül közvetítők. Hozzon létre egy névteret, amely egy teljes Tartománynevet, amelyben a témakörök élő, és hozzon létre az Event Hubs vagy az adott névtérben témakörök. Az Event Hubs és a névterek kapcsolatos további információkért lásd: [Event Hubs-szolgáltatások](event-hubs-features.md#namespace). Felhőalapú szolgáltatás, az Event Hubs egyetlen stabil virtuális IP-címet használ végpontként, így az ügyfelek nem kell tudnia a közvetítők vagy fürtön belüli gépek. 
 
 Az Event Hubs méretezhető szabályozott szerint hány átviteli egységet vásárol, az egyes kapacitásegységek, amely feljogosítja arra, 1 MB / másodperc, vagy 1000 esemény szolgálhat. Alapértelmezés szerint az Event Hubs méretezhető átviteli egységek Ha egyenlege eléri a korlátot, az a [automatikus feltöltésről](event-hubs-auto-inflate.md) funkció; Ez a funkció is működik az Event Hubs Kafka szolgáltatáshoz. 
 

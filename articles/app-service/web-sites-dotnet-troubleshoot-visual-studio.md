@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 522bc9e757abeae930e47eaf53bb6da4bd9d0531
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224109"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058106"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Az Azure App Service szolgáltatásban a Visual Studio használatával webalkalmazások hibáinak elhárítása
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag bemutatja, hogyan használható a Visual Studio-eszközök segítségével, egy webalkalmazás hibakeresése az [App Service-ben](http://go.microsoft.com/fwlink/?LinkId=529714),-ban történő futtatásával [hibakeresési módban](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) távolról vagy alkalmazásnaplókat és a webkiszolgáló naplóinak megtekintésével.
+Ez az oktatóanyag bemutatja, hogyan használható a Visual Studio-eszközök segítségével, egy webalkalmazás hibakeresése az [App Service-ben](http://go.microsoft.com/fwlink/?LinkId=529714),-ban történő futtatásával [hibakeresési módban](https://docs.microsoft.com/visualstudio/debugger/) távolról vagy alkalmazásnaplókat és a webkiszolgáló naplóinak megtekintésével.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -134,7 +134,8 @@ public ActionResult About()
     return View();
 }
 ```
-4. [Állítson be egy töréspontot](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) a a `ViewBag.Message` sor.
+
+4. [Állítson be egy töréspontot](https://docs.microsoft.com/visualstudio/debugger/) a a `ViewBag.Message` sor.
 
 5. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, majd kattintson **közzététel**.
 
@@ -185,7 +186,7 @@ Csak a folyamatos webjobs-feladatok távoli hibakeresése működik. Ütemezett 
 
 2. A ContosoAdsWebJob projektben nyissa meg a *Functions.cs*.
 
-3. [Állítson be egy töréspontot](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) meg az első utasítás a `GnerateThumbnail` metódust.
+3. [Állítson be egy töréspontot](https://docs.microsoft.com/visualstudio/debugger/) meg az első utasítás a `GnerateThumbnail` metódust.
 
     ![Töréspont beállítása](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -250,7 +251,7 @@ Ha a függvény [okkal készítette el a naplókat](https://github.com/Azure/azu
   <httpRuntime targetFramework="4.5" />
 </system.web>
 ```
-* Ha azt tapasztalja, hogy a hibakeresőt, amelyen hibakeresést végez, a kód nem lép, előfordulhat, hogy rendelkezik a csak saját kód beállításának módosításához.  További információkért lásd: [korlátozása csak saját kód a ke krokování](http://msdn.microsoft.com/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code).
+* Ha azt tapasztalja, hogy a hibakeresőt, amelyen hibakeresést végez, a kód nem lép, előfordulhat, hogy rendelkezik a csak saját kód beállításának módosításához.  További információkért lásd: [adja meg, hogy csak a saját kód használata a Visual Studióban csak felhasználói kód hibakereséséhez](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * A kiszolgáló időmérő elindul, amikor engedélyezi a távoli hibakeresési funkciót, és 48 óra után a szolgáltatás automatikusan ki van kapcsolva. Biztonság és teljesítmény érdekében a 48 órás korlát, készen áll. A funkció azon tetszőleges számú alkalommal próbálkozhat, egyszerűen kapcsolhatja. Azt javasoljuk, hogy hagyja azokat le van tiltva, ha nincs aktív hibakeresés.
 * A hibakereső manuálisan csatlakoztathat valamilyen folyamat, nem csak a webes alkalmazás folyamata (w3wp.exe). A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
 

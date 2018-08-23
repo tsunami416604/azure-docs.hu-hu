@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e10f6cdb60a2c03bfb42e46f179546b623d625dd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5803bf2c71b2cf3fe7bb145b4d3d664c60642294
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443766"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058413"
 ---
 # <a name="get-data"></a>Adatok lekérése
 
@@ -52,11 +52,11 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 5.  A Kezelőben válassza ki az **AdventureWorksDW2014** adatbázist, majd kattintson az **OK** gombra. Így létrehozza a kapcsolatot az adatbázissal. 
   
-6.  A Kezelőben jelölje be a következő táblák jelölőnégyzetét: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** és **FactInternetSales**.  
+6.  A kezelőben válassza ki a következő táblák jelölőnégyzetét: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**,  **DimProductCategory**, **DimProductSubcategory**, és **FactInternetSales**, és kattintson a **szerkesztése**.
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-Miután az OK gombra kattintott, megnyílik a Lekérdezésszerkesztő. A követező szakaszban csak az importálni kívánt adatokat jelölje ki.
+    Megnyílik a Lekérdezésszerkesztő. A követező szakaszban csak az importálni kívánt adatokat jelölje ki.
 
   
 ## <a name="filter-the-table-data"></a>Táblák adatainak szűrése  

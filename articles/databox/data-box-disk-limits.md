@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 07/12/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 4db70fa93914ba0544d9beb8e523241513a2e5ce
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 358f81498d8caad7c0a67519bbb776efa153249f
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009300"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42057548"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Az Azure Data Box-lemezek korlátait (előzetes verzió)
 
@@ -38,7 +38,7 @@ Vegye figyelembe ezeket a korlátokat, üzembe helyezése és működtetése meg
 
 ## <a name="data-box-disk-performance"></a>Data Box-lemezek teljesítménye
 
-Az USB 3.0-s csatlakoztatású lemezeket tesztelésekor a lemezteljesítmény volt akár 430 MB/s. A tényleges szám eltérőek lehetnek attól függően, hogy a fájl méretét használja. A kisebb fájlok esetében a kisebb teljesítményt jelenhet meg.
+A tesztjeink során USB 3.0-ás kapcsolat esetén a lemezeknél 430 MB/s-os adatátviteli sebességet is mértünk. A tényleges szám a használt fájl méretének függvényében eltérő lehet. Kisebb fájlok esetén gyengébb teljesítmény figyelhető meg.
 
 ## <a name="azure-storage-limits"></a>Az Azure storage-korlátok
 
@@ -64,7 +64,7 @@ Az Azure storage szolgáltatási korlátai és gyakorlati tanácsok az elnevezé
 
 ## <a name="azure-storage-account-size-limits"></a>Az Azure storage-fiók blobméretének korlátjai
 
-Itt az adatok tárfiókba történő másolt mérete korlátok vonatkoznak. Győződjön meg arról, hogy a feltöltött adatok megfelel-e ezeket a korlátokat. Ezek a korlátok a legfrissebb információkért nyissa meg [az Azure blob storage méretezési célokat](https://docs.microsoft.com/en-us/azure/storage/cstorage-scalability-targets#azure-blob-storage-scale-targets) és [Azure Files tárolók skálázása](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Itt az adatok tárfiókba történő másolt mérete korlátok vonatkoznak. Győződjön meg arról, hogy a feltöltött adatok megfelel-e ezeket a korlátokat. Ezek a korlátok a legfrissebb információkért nyissa meg [az Azure blob storage méretezési célokat](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) és [Azure Files tárolók skálázása](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
 
 | Az Azure storage-fiókra másolni adatok mérete                      | Alapértelmezett korlát          |
 |---------------------------------------------------------------------|------------------------|
@@ -85,5 +85,5 @@ Az alábbiakban az Azure objektumok lehet írni a méretét. Győződjön meg ar
 
 | Entitás                                       | Konvenciók                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A tároló nevének a blokkblobok és lapblobok | Egy érvényes DNS-nevet, amely 3 – 63 karakter hosszúságúnak kell lennie. <br>  Betűvel vagy számmal kell kezdődnie. <br> Csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. <br> Minden kötőjel (-) kell lennie azonnal előtt és után betűnek vagy számnak. <br> Egymást követő kötőjelek használata nem engedélyezett a nevében. |
-| BLOB-nevek a blokkblobok és lapblobok      | BLOB-nevek a kis-és nagybetűket, és bármilyen karakterkombináció tartalmazhat. <br> Egy blob nevének 1 és 1024 karakter hosszúságúnak kell lennie. <br> Foglalt URL-karaktereket megfelelően escape-karakterrel. <br>A blob nevét tartalmazó elérési út szegmensek száma legfeljebb 254. Egy részleges útvonalat a egymást követő elválasztó karakter közötti hosszúságú karakterláncot (például a perjel (/)), amelyek megfelelnek a virtuális könyvtár neve. |
+| A tároló nevének a blokkblobok és lapblobok | Egy érvényes DNS-nevet, amely 3 – 63 karakter hosszúságúnak kell lennie. <br>  Betűvel vagy számmal kell kezdődnie. <br> Csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. <br> Minden kötőjel (-) előtt és után közvetlenül egy betűnek vagy számnak kell állnia. <br> A tárolók nevében nem szerepelhetnek egymást követő kötőjelek. |
+| Blobnevek blokkblob és lapblob esetén      | A blobnevek megkülönböztetik a kis- és nagybetűket, illetve bármilyen karakterkombinációt tartalmazhatnak <br> A blob nevének 1–1024 karakter hosszúságúnak kell lennie. <br> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. <br>A blob nevét alkotó részleges útvonalak száma legfeljebb 254 lehet. A részleges útvonalak két elválasztókarakter (pl. a perjel „/”) közötti karakterláncok, amelyek megegyeznek egy virtuális könyvtár nevével. |

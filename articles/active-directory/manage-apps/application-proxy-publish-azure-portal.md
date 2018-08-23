@@ -2,25 +2,22 @@
 title: Alkalmazások közzététele az Azure AD-alkalmazásproxyval | Microsoft Docs
 description: A helyszíni alkalmazások a felhőbe az Azure AD-alkalmazásproxy közzététele az Azure Portalon.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 1224642bb7e6fc0c51b3f839a78449132db5b4bb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 973a6201a227e6c2e295e6e5ea2f40c302572504
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364257"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056155"
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Alkalmazások közzététele az Azure AD-alkalmazásproxyval
 
@@ -72,6 +69,7 @@ Kövesse az alábbi lépéseket az alkalmazások közzététele az alkalmazáspr
    ![Az alkalmazás konfigurálása](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. Szükség esetén további beállítások konfigurálására. A legtöbb alkalmazás esetén ezek a beállítások érdemes megtartani az alapértelmezett állapotra. 
    - **Háttéralkalmazás túllépte az időkorlátot**: Ez az érték **hosszú** csak akkor, ha az alkalmazás lassú hitelesítéshez és csatlakozáshoz. 
+   - **HTTP-Only cookie-t használja**: Ez az érték **Igen** kell Application Proxy cookie-kat a HTTPOnly jelző bevonni a HTTP-válaszfejléc.
    - **A fejlécek URL-címek lefordítása**: tartsa ezt az értéket **Igen** , kivéve, ha az alkalmazás által igényelt az eredeti állomásfejlécet a hitelesítési kérelmet.
    - **A kérelem törzsében URL-címek lefordítása**: tartsa ezt az értéket **nem** , ha rendelkezik szoftveresen kötött HTML-hivatkozások más helyszíni alkalmazásokhoz, és ne használja az egyéni tartományok. További információkért lásd: [hivatkozásra a proxyval fordítási](application-proxy-configure-hard-coded-link-translation.md).
    

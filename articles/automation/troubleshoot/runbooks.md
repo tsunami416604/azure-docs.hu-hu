@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714485"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059500"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -38,7 +38,7 @@ Ez a hiba akkor fordul elő, ha az eszköz hitelesítő adat neve nem érvényes
 
 Annak megállapításához, hogy mi okozza, tegye a következőket:  
 
-1. Győződjön meg arról, hogy nincs-e különleges karaktereket, beleértve a ** @ ** Automation nevű hitelesítő adat eszköz csatlakozhat az Azure-ban használt karakter.  
+1. Győződjön meg arról, hogy nincs-e különleges karaktereket, beleértve a **@** Automation nevű hitelesítő adat eszköz csatlakozhat az Azure-ban használt karakter.  
 2. Ellenőrizze, hogy használhatja-e a felhasználónevet és jelszót, amelyet az Azure Automation hitelesítő adat a helyi PowerShell ISE-szerkesztőben van tárolva. Ez a PowerShell ISE-ben a következő parancsmag futtatásával teheti meg:  
 
    ```powershell
@@ -137,7 +137,43 @@ Ezt a hibát okozhatja az elavult Azure-modulokat.
 
 Ez a hiba megoldhatók az Azure-modulok frissítése a legújabb verzióra.
 
-Az Automation-fiókban kattintson **modulok**, és kattintson a **frissítés az Azure-modulok**. A frissítés körülbelül 15 percet vesz igénybe, befejezése után futtassa újból a runbookot, amely sikertelen volt.
+Az Automation-fiókban kattintson **modulok**, és kattintson a **frissítés az Azure-modulok**. A frissítés körülbelül 15 percet vesz igénybe, befejezése után futtassa újból a runbookot, amely sikertelen volt. A modulok frissítésével kapcsolatos további tudnivalókért lásd: [frissítés az Azure-modulokat az Azure Automationben](../automation-update-azure-modules.md).
+
+### <a name="child-runbook-auth-failure"></a>Forgatókönyv: Gyermek runbook nem több előfizetés esetén
+
+#### <a name="issue"></a>Probléma
+
+Gyermek runbookok végrehajtásakor `Start-AzureRmRunbook`, a gyermek runbook nem Azure-erőforrások kezeléséhez.
+
+#### <a name="cause"></a>Ok
+
+A gyermekrunbook nem használja a megfelelő környezet futtatásakor.
+
+#### <a name="resolution"></a>Megoldás:
+
+Ha több előfizetés használata az előfizetési környezet elveszhetnek gyermek runbookok meghívásakor. Győződjön meg arról, hogy a runbookok átadott az előfizetési környezetet, adja hozzá a `DefaultProfile` a parancsmagot, és azt a környezetet pass paramétert.
+
+```azurepowershell-interactive
+# Connect to Azure with RunAs account
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+
+$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
+```
 
 ### <a name="not-recognized-as-cmdlet"></a>Forgatókönyv: A runbook nem hiányzik a parancsmag miatt
 
@@ -189,6 +225,8 @@ A probléma elhárításához a következő megoldások valamelyikét:
 * A memória felső korlátja belül működik javasolt módszerek a következők felosztása több runbook között, nem processzormagonkénti memória, nem a szükségtelen kimeneti írási a runbookok az adatok feldolgozása vagy fontolja meg, hány ellenőrzőpontot ír be a PowerShell-munkafolyamat runbookok.  
 
 * A lépéseket követve az Azure-modulok frissítése [frissítése az Azure PowerShell-modulok az Azure Automationben](../automation-update-azure-modules.md).  
+
+* Egy másik megoldás, ha a runbook futtatása egy [hibrid Runbook-feldolgozó](../automation-hrw-run-runbooks.md). Hibrid feldolgozók nem korlátozza a [igazságos elosztás](../automation-runbook-execution.md#fair-share) korlátozza, hogy az Azure próbakörnyezetbe lefordítja a vannak-e.
 
 ### <a name="fails-deserialized-object"></a>Forgatókönyv: A Runbook nem deszerializált objektum miatt
 
@@ -309,7 +347,7 @@ Néhány általános oka, hogy egy modul előfordulhat, hogy nem sikerült impor
 
 A probléma elhárításához a következő megoldások valamelyikét:
 
-* Győződjön meg arról, hogy a modul követi a következő formátumban: ModuleName.Zip ** -> ** ModuleName vagy a verziószám ** -> ** (ModuleName.psm1, ModuleName.psd1)
+* Győződjön meg arról, hogy a modul követi a következő formátumban: ModuleName.Zip **->** ModuleName vagy a verziószám **->** (ModuleName.psm1, ModuleName.psd1)
 * Nyissa meg a .psd1 fájlban, és tekintse meg, ha a modul rendelkezik-e függőségek. Ha igen, töltse fel ezeket a modulokat az Automation-fiókot.
 * Győződjön meg arról, hogy minden hivatkozott .dll modul mappában találhatók.
 

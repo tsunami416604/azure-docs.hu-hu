@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: isacabe
-ms.openlocfilehash: e900b952ab9bb2054b9e4174670894027cdd2618
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 88ce34125009665d346cf034f5d02ba7e21f48fc
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969452"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056703"
 ---
 # <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>Az MXChip IoT DevKit AZ3166 csatlakozni az IoT távoli figyelési megoldásgyorsító
 
@@ -139,12 +139,6 @@ Néhány másodpercen belül, a fizikai MX lapkával kell a vezetett RGB színé
 
 ![Következtében MX-lapkával](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-devkit-led.png)
 
-
-## <a name="change-device-id"></a>Változás-Eszközazonosító
-
-Módosíthatja az eszköz azonosítója, az IoT Hub a következő [Ez az útmutató](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/).
-
-
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
 Ha problémákat tapasztal, tekintse meg [– gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy fel velünk a kapcsolatot, a következő csatornákon:
@@ -158,3 +152,4 @@ Most, hogy megtanulhatta, hogyan lehet egy DevKit eszköz csatlakoztatása az Io
 
 * [IoT a megoldásgyorsítók áttekintése](https://docs.microsoft.com/azure/iot-suite/)
 * [Az MXChip IoT DevKit eszköz csatlakoztatása a Microsoft IoT Central alkalmazáshoz](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [IoT fejlesztői készlet](https://microsoft.github.io/azure-iot-developer-kit/)

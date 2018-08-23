@@ -13,131 +13,161 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma
-ms.openlocfilehash: b749d8a904bc40eba3346cc03d9274236380c80d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f0fe2bde039cd209514d0cbc4842b20cd4b5fb99
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449756"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444042"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data Science virtuális gép Azure-beli üzembe helyezése
-A Microsoft Data Science virtuális gép egy Windows Azure virtuális gép (VM) rendszerkép előre telepített és konfigurált számos népszerű eszközök, amelyek gyakran használják az adatelemzési és machine learning. Az eszközöket a következők:
+A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális gép (VM) rendszerkép. Előtelepített és konfigurált adatelemzési és machine learning használt számos eszközzel. A következő eszközök foglalja magában:
 
-* [Az Azure Machine Learning](../service/index.yml) Workbench
-* [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
-* Anaconda Python elosztási
-* Jupyter notebook (az R, Python, PySpark-kernelek)
-* A Visual Studio Community Edition
-* Power BI Desktop
-* SQL Server 2017 Developer Edition
-* Önálló Spark-példány helyi fejlesztési és tesztelési célra
-* [JuliaPro](https://juliacomputing.com/products/juliapro.html)
-* Gépi tanulási és adatelemzési eszközök
-  * Deep Learning-keretrendszerek: beleértve AI-keretrendszerek gazdag választékát [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/), [TensorFlow](https://www.tensorflow.org/), [Chainer](https://chainer.org/), mxNet, Keras részét képezik a virtuális Gépet.
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): gyors machine learning-rendszer támogató technikák, például online, kivonatoló, allreduce, csökkentésének, learning2search, aktív, és az interaktív tanulás.
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): egy gyorsított fa gyors és pontos végrehajtását biztosító eszköz.
-  * [Rattle](http://rattle.togaware.com/) (az R analitikai eszközt, ismerje meg, egyszerűen): olyan eszköz, amely lehetővé teszi az adatok elemzési és gépi tanulási R könnyen az első lépései. Ez magában foglalja a GUI-alapú adatáttekintés és modellezés az R-kód automatikus generálása.
-  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) : egy vizuális adatbányászat és a gépi tanulási Java szoftvert.
-  * [Apache Drill](https://drill.apache.org/): egy séma nélküli SQL lekérdezési motorja Hadoop, a nosql-alapú és a felhőalapú tárolást.  ODBC, JDBC és felületek engedélyezéséhez lekérdezését NoSQL- és standard szintű BI eszközök, mint például a Power BI-, Excel-, Tableau fájlokat támogatja.
-* Az R és Python for kódtárak használata az Azure Machine Learning és más Azure-szolgáltatások
-* Többek között a dolgozhat forráskódtárházak, így például GitHub, Visual Studio Team Services Git Bash Git és nyújt számos népszerű Linuxos parancssori segédprogram (beleértve a awk, csökkentésének, perl, a grep, keresés, wget, a curl, stb.) egyaránt a git-bash és a parancs elérhető kérni. 
+* [Az Azure Machine Learning](../service/index.yml) Workbench.
+* [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/index) Developer Edition szoftverhez.
+* Anaconda Python elosztási.
+* Jupyter Notebook az R, Python és a PySpark kernelt.
+* A Microsoft Visual Studio Community.
+* A Microsoft Power BI desktopban.
+* A Microsoft SQL Server 2017 Developer edition.
+* Egy önálló Apache Spark-példányt helyi fejlesztési és tesztelési célra.
+* [JuliaPro](https://juliacomputing.com/products/juliapro.html).
+* Machine learning és az adatok elemzési eszközök:
+  * Deep learning-keretrendszerek. AI-keretrendszerek gazdag választékát részét képezik a virtuális gép: [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/), [TensorFlow](https://www.tensorflow.org/), [Chainer](https://chainer.org/), mxNet, és Keras.
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit). Gyors machine learning-rendszer, amely támogatja az online kivonatoláshoz, allreduce, csökkentésének, learning2search és aktív és interaktív tanulási eljárások.
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/). Egy eszköz, gyorsított fa gyors és pontos végrehajtását.
+  * [Rattle](https://togaware.com/rattle/), az R analitikai eszközt, hogy könnyedén megtudhatja. Olyan eszköz, amely megkönnyíti az adatok elemzési és gépi tanulási az r használatába Ez magában foglalja a GUI-alapú adatáttekintés és modellezés az R-kód automatikus generálása.
+  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/). Vizuális adatbányászat és a gépi tanulási Java szoftvert.
+  * [Apache Drill](https://drill.apache.org/). Séma nélküli SQL lekérdezési motorja Apache Hadoop, a nosql-alapú és a felhőalapú tárolást.  A nosql-alapú, és a standard szintű BI eszközök, Power BI, a Microsoft Excel és a Tableau fájlok ODBC, JDBC és felületek támogatja.
+* Kódtárak R és Python esetében az Azure Machine Learning és más Azure-szolgáltatásokat használja.
+* A Git, beleértve a Git bash eszközt, például a GitHub és Visual Studio Team Services forráskódtárházak dolgozhat. A Git nyújt számos népszerű Linux parancssor eszközök, amelyek elérhetők mind a Git Bash és a egy parancssort. Példák awk, a csökkentésének, a perl, a grep, a keresés, a wget és a curl.
 
-A feladatok egy sorozatát léptetés adatelemzésre áll:
+Az adatelemzés magában foglalja a feladatok egy sorozatát léptetés:
 
-1. Keresés, betöltés és előzetesen feldolgozni az adatokat
-1. Buildelési és tesztelési célokra modellek
-1. A modellek intelligens alkalmazásokban felhasználásra üzembe helyezése
+1. Keresse meg, betöltését és az adatok előfeldolgozása.
+1. Hozhat létre, és tesztelni tudtuk.
+1. A modellek intelligens alkalmazásokban felhasználásra üzembe helyezése.
 
-Az adatszakértők számos eszközt használja ezeket a feladatokat. Ez elég időigényes lehet kereshet a szoftver, a megfelelő verzióját, majd töltse le és telepítse őket. A Microsoft Data Science virtuális gép is megkönnyítése érdekében ezt a terhet azáltal, hogy egy használatra kész-rendszerképet, amelyek kioszthatóak az Azure-ban minden számos olyan népszerű eszközzel előre telepítve és konfigurálva. 
+Az adatszakértők a feladatokhoz számos eszközt használja. Kereshet a szoftver megfelelő verzióját, majd töltse le és telepítse őket a időigényes lehet. A Microsoft Data Science virtuális gép időt takaríthat meg azáltal, hogy egy használatra kész-rendszerképet, amelyek kioszthatóak az Azure-ban előtelepített és konfigurált számos népszerű eszközzel. 
 
-A Microsoft Data Science virtuális gép jump-starts az elemzési projekt. Ez lehetővé teszi, hogy a különböző nyelveken, köztük a R, Python, SQL és C# feladatokkal. A Visual Studio IDE fejlesztéséhez és teszteléséhez a kódot, amely egyszerűen használható biztosít. Az Azure SDK-t a virtuális gép szerepel lehetővé teszi, hogy az alkalmazások különböző szolgáltatások használatával a Microsoft felhőalapú platformja. 
+A Microsoft Data Science virtuális gép jump-starts az elemzési projekt. A feladatok különféle nyelveken, köztük a R, Python, SQL és C# dolgozhat. A Visual Studio fejlesztése és tesztelése a kód egyszerűen használható integrált fejlesztési környezetben (IDE) biztosít. Az Azure SDK-t a virtuális gép szerepel. Így hozhat létre az alkalmazások a Microsoft felhőalapú platformja különböző szolgáltatások használatával. 
 
-Nincsenek szoftvereket díjmentesen használható a data science Virtuálisgép-rendszerképet. Csak kell fizetnie az Azure-használati díjak mely a virtuális gép üzembe helyezésekor méretétől függ. A számítási díjak a további részletek találhatók a díjszabás részletei szakaszban a [adatelemző virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) lapot. 
+Nincsenek szoftvereket díjmentesen használható a data science Virtuálisgép-rendszerképet. Csak az Azure-használati díjat kell fizetnie. A virtuális gép üzembe helyezésekor méretétől függnek. További részleteket a számítási díjak a **díjszabás** szakaszában a [adatelemző virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) lapot. 
 
-## <a name="other-versions-of-the-data-science-virtual-machine"></a>Az adatelemző virtuális gép más verziói
-Egy [Ubuntu](dsvm-ubuntu-intro.md) lemezkép érhető el, valamint számos hasonló eszközökkel, valamint néhány további mélytanulási keretrendszerekkel. A [CentOS](linux-dsvm-intro.md) rendszerképet is rendelkezésre áll. Emellett egy [Windows Server 2012 edition](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm) az adatelemző virtuális gép, azonban néhány eszközök érhetők el csak a Windows Server 2016 rendszeren.  Ez a cikk ellenkező esetben is érvényes a Windows Server 2012 verzióra.
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>Egyéb verziói, a Data Science virtuális gép
+* Egy [Ubuntu](dsvm-ubuntu-intro.md) kép. A dsvm-hez hasonló számos eszközt, valamint néhány további mélytanulási keretrendszerekkel rendelkezik. 
+* A [Linux CentOS](linux-dsvm-intro.md) kép.
+* A [Windows Server 2012 edition](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm) , az adatelemzési virtuális gépet. Néhány eszközök csak a Windows Server 2016 rendszeren érhetők el. Ez a cikk ellenkező esetben is érvényes a Windows Server 2012 verzióra.
 
-## <a name="prerequisites"></a>Előfeltételek
-A Microsoft adatelemző virtuális gép létrehozásához, az alábbiakkal kell rendelkeznie:
-
-* **Azure-előfizetés**: beszerzése utólag, lásd: [lekérése az Azure ingyenes próbaverzió](http://azure.com/free).
+## <a name="prerequisite"></a>Előfeltétel
+A Microsoft adatelemző virtuális gép létrehozásához Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása](http://azure.com/free).
 
 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>A Microsoft Data Science virtuális gép létrehozása
 Hozzon létre egy példányt, a Microsoft Data Science virtuális gép, kövesse az alábbi lépéseket:
 
-1. Keresse meg a virtuális gépet, az ajánlati [az Azure portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016).
-1. Válassza ki a **létrehozás** gombra az alsó kell figyelembe venni a varázslót.![ Konfigurálja-data-adatelemzési – a virtuális gép](./media/provision-vm/configure-data-science-virtual-machine.png)
-1. A varázsló a Microsoft Data Science virtuális gép létrehozásához használt szükséges **bemenetek** minden a **négy lépést** jobb oldalán Ez az ábra számba. Az alábbiakban a bemeneti adatok konfigurálása az egyes lépéseket:
-   
-   1. **Alapvető beállítások**
-      
-      1. **Név**: a data science kiszolgáló hoz létre nevet.
-      1. **Virtuális merevlemez típusa**: SSD vagy HDD közül választhat. NC_v1 GPU példány (NVidia Tesla K80 alapján), válassza a **HDD** , a lemez típusát. 
-      1. **Felhasználónév**: rendszergazdai fiók bejelentkezési azonosítója.
-      1. **Jelszó**: rendszergazdai fiók jelszava.
-      1. **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás.
-      1. **Erőforráscsoport**: létrehozhat egy új vagy egy meglévő csoportot.
-      1. **Hely**: válassza a leginkább megfelelő adatközpontot. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi.
-   1. **Méret**: válassza ki a kiszolgáló típusát, amely megfelel a funkcionális és a költségek megkötések. Virtuálisgép-méretek további lehetőségek "Nézet az összes" gombra kattintva kaphat.
-   1. **Beállítások**:
-      
-      1. **Felügyelt lemezek használata**: felügyelt válassza, ha azt szeretné, hogy a lemezek kezelése a virtuális gép Azure.  Ellenkező esetben kell adjon meg egy új vagy meglévő tárfiókot. 
-      1. **Más paramétereket**: általában csak használja az alapértelmezett értékeket. Ha azt szeretné, érdemes megfontolnia a nem alapértelmezett értékek használatát, a kurzort az egyes mezőkkel tájékoztató mutató hivatkozás.
-    a. **Összefoglalás**: Győződjön meg arról, hogy minden, a megadott adatok helyesek, és kattintson a **létrehozás**. **Megjegyzés:**: A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
+1. Keresse meg a virtuális gépet, az ajánlati a [az Azure portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016).
+1. Válassza ki a **létrehozás** gombra az alsó kell figyelembe venni a varázslót.
+
+  ![Konfigurálja-data-adatelemzési – a virtuális gép](./media/provision-vm/configure-data-science-virtual-machine.png) 
+
+1. A varázsló, amely létrehozza a Microsoft Data Science virtuális gép szükséges **bemeneti**. A következő bemenet konfigurálása jobb oldalán található ábrán bemutatott lépések mindegyike van szükség:
+
+  a. **Alapvető beállítások**:
+
+    i. **Név**. Neve az adatelemzési kiszolgálót hoz létre.  
+
+    II. **Virtuális merevlemez típusa**. Válasszon **SSD** vagy **HDD**. Egy hasonló NVidia Tesla K80-alapú NC_v1 GPU-példány, válassza ki a **HDD** , a lemez típusát.   
+
+    III. **Felhasználónév**. Jelentkezzen be a rendszergazdai fiók azonosítója.   
+
+    IV. **Jelszó**. A rendszergazdai fiók jelszavát.  
+
+    v. **Előfizetés**. Ha egynél több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás.   
+
+    VI. **Erőforráscsoport**. Létrehozhat egy új vagy egy meglévő csoportot.   
+
+    VII. **Hely**. Válassza ki az Adatközpont leginkább megfelelő. A leggyorsabb hálózati hozzáféréshez az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a fizikai helyéhez legközelebbi.   
+
+  b. **Méret**. Válassza ki a kiszolgáló típusát, amely megfelel a funkcionális követelmények és költségek megkötések. További lehetőségek a Virtuálisgép-méretek, válasszon **nézet összes**.  
+
+  c. **Beállítások**:  
+
+    i. **Felügyelt lemezek használata**. Válasszon **felügyelt** Ha azt szeretné, hogy Azure-lemezek kezelése a virtuális gép számára. Ha nem, akkor meg kell adnia egy új vagy meglévő tárfiókot.  
+
+    II. **Más paramétereket**. Az alapértelmezett értékeket is használhat. Ha azt szeretné, nem alapértelmezett értékek, a kurzort az egyes mezőkkel tájékoztató mutató hivatkozás.  
+
+  d. **Összefoglalás**. Győződjön meg arról, hogy helyesen szerepel-e a megadott összes információt. Kattintson a **Létrehozás** gombra. 
 
 > [!NOTE]
-> A kiépítés körülbelül 10 – 20 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
+> * A virtuális gép nem rendelkezik a további díjakat a számítási költség a kiválasztott kiszolgáló mérete meghaladja a **mérete** . lépés. 
+> * Üzembe helyezési idő körülbelül 10 és 20 perc szükséges. Annak állapotát jeleníti meg az Azure Portalon.
 > 
 > 
 
 ## <a name="how-to-access-the-microsoft-data-science-virtual-machine"></a>A Microsoft Data Science virtuális gép elérése
-A virtuális gép létrehozása után azokat a rendszergazdai fiók hitelesítő adatait, amely az előző konfigurálta a távoli asztal is **alapjai** szakaszban. 
-
-A virtuális gép létrehozása és üzembe helyezett, után készen áll az eszközöket, amelyek telepítése és konfigurálása történik rá használatának megkezdéséhez. Start menü csempék és számos olyan eszközzel asztali ikonok vannak. 
+Miután a virtuális gép létrehozása és üzembe helyezett, segítségével a távoli asztal bele a rendszergazdai fiók hitelesítő adatait, amely az előző konfigurált **alapjai** szakaszban. Készen áll az eszközöket, amelyek telepítése és konfigurálása történik meg a virtuális gép használatának megkezdéséhez. Start menü csempék és asztali ikonok számos olyan eszközzel rendelkezik. 
 
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>A Microsoft Data Science virtuális gépen telepített eszközök
 
+### <a name="microsoft-machine-learning-server-developer-edition"></a>Microsoft Machine Learning Server Developer edition
+Használhatja a Microsoft Enterprise Library méretezhető R vagy Python elemzési, mert a Machine Learning Server Developer edition telepítve van a virtuális gépen. Korábbi nevén Microsoft R Server, a Machine Learning-kiszolgáló egy nagyjából üzembe helyezhető, nagyvállalati szintű elemzési platform. R és Python is elérhető és méretezhető, üzleti szempontból támogatott és biztonságos. 
 
+Machine Learning-kiszolgáló támogatja a különböző big data típusú statisztikai, prediktív modellezési és gépi tanulási feladatok. Az elemzések széles skálását támogatja: feltárás, elemzés, vizualizációs és modellezés. Szerint használ, és kiterjeszti a nyílt forráskódú R és Python, a Machine Learning-kiszolgáló a kompatibilis az R és Python-parancsfájlokban és függvényekben. Emellett akkor is kompatibilis a CRAN, a pipet és a Conda-csomagok az adatok a nagyvállalati szintű elemzésére. 
 
-### <a name="microsoft-ml-server-developer-edition"></a>A Microsoft ML Server Developer Edition
-Ha szeretné használni a Microsoft nagyvállalati kódtárak méretezhető R vagy Python elemzési, a virtuális gép rendelkezik a Microsoft ML Server Developer edition (korábbi nevén Microsoft R Server) telepítve van. A Microsoft ML Server széles körben üzembe helyezhető, nagyvállalati szintű elemzési platform az R és Python is elérhető, és, üzleti szempontból támogatott biztonságos és skálázható. Egy számos big data típusú statisztikai, prediktív modellezési és gépi tanulási funkciókat támogat, ML Server analytics – feltárása, elemzés, vizualizációs és modellezés teljes skáláját támogatja. Használatával, és kiterjeszti a nyílt forráskódú R és Python, a Microsoft ML Server rendszer teljesen kompatibilis az R / Python parancsfájlok, a functions és a CRAN / pip / Conda-csomagok elemzése a vállalati adatok skálázhatja. Az adatok párhuzamos és darabolásos feldolgozási hozzáadásával nyílt forráskódú R memórián belüli vonatkozó korlátozások is címek. Ez lehetővé teszi, hogy a data analytics sokkal nagyobb, mint a fő memóriában adatfeldolgozással futtassa.  Tartalmazza a virtuális gépen a Visual Studio Community Edition tartalmazza az R Tools a Visual Studio és a Python Tools for Visual Studio-bővítmény, amely egy teljes IDE-R vagy Python használata biztosít. Is biztosítunk más ide-ket is például [RStudio](http://www.rstudio.com) és [PyCharm Community edition](https://www.jetbrains.com/pycharm/) a virtuális gépen. 
+Machine Learning-kiszolgáló hozzáadásával a párhuzamos és darabolásos adatok feldolgozása a memórián belüli korlátozások, nyílt forráskódú R címek. Ezért analytics futtathatja a fő memóriában adatfeldolgozással-nál nagyobb adatmennyiséget. A Visual Studio Community tartalmazza a virtuális gépen. Az R tools for Visual Studio és a Python Tools, adjon meg egy teljes IDE-R vagy Python használata a Visual Studio (PTVS)-bővítmény rajta. Is biztosítanak, mint más IDEs [RStudio](http://www.rstudio.com) és [PyCharm Community edition](https://www.jetbrains.com/pycharm/) a virtuális gépen. 
 
 ### <a name="python"></a>Python
-Python fejlesztést az Anaconda Python elosztási 2.7-es és 3.6-os telepítve van. Ehhez a terjesztéshez körülbelül 300 a legnépszerűbb matematikai, a mérnöki csapathoz és az analitikai csomagok, valamint az alap Python tartalmazza. Python Tools for Visual Studio (PTVS), amely telepítve van a Visual Studio 2017 Community edition vagy kötegelve IDEs Anaconda TÉTLEN vagy Spyder például az egyik használható. Indíthatja el ezek kereséssel a keresősávba egyikét (**Win** + **S** kulcs).
+-Fejlesztéshez a Python 2.7-es és 3.6-os Anaconda Python disztribúciók nincsenek telepítve. Ezek a disztribúciók körülbelül 300 a legnépszerűbb matematikai, a mérnöki csapathoz és az analitikai csomagok, valamint az alap Python rendelkezik. Projektek készítése PTVS, amelyre telepítve van a Visual Studio Community 2017 is használhatja. Vagy az Ide-k, például TÉTLEN vagy Spyder Anaconda mellékelhető egyikét használhatja. Keresse meg és indítsa el ezeket a csomagokat (Win + S) egyikét.
 
 > [!NOTE]
-> Mutasson a Python Tools for Visual Studio, az Anaconda Python 2.7-es, szeretne létrehozni az egyéni környezet minden verzióhoz. Környezet elérési utak be a Visual Studio 2017 Community Edition, navigáljon a **eszközök** -> **Python Tools** -> **Python-környezetek**majd **+ egyéni**. 
+> Mutasson a Python Tools for Visual Studio, az Anaconda Python 2.7-es, szeretne létrehozni az egyéni környezet minden verzióhoz. E környezet elérési útvonalak beállítása a Visual Studio 2017 Community, navigáljon a **eszközök** > **Python Tools** > **Python-környezetek**. Válassza ki **+ egyéni**. 
 > 
 > 
 
-Anaconda Python 3.6-os C:\Anaconda van telepítve, és Anaconda Python 2.7-es c:\Anaconda\envs\python2 van telepítve. Lásd: [PVTS dokumentációban](/visualstudio/python/installing-python-interpreters.md) a részletes lépéseket. 
+Anaconda Python 3.6-os verziója telepítve van a **C:\Anaconda**. Anaconda Python 2.7-es telepítőmappájában **c:\Anaconda\envs\python2**. Részletes lépéseiért lásd: [PVTS dokumentációban](/visualstudio/python/installing-python-interpreters.md). 
 
-### <a name="jupyter-notebook"></a>Jupyter notebook
-Jupyter notebook, megosztani a kódot és az elemzési környezet anaconda terjesztési is tartalmaz. A Jupyter notebook server van előre konfigurálva, a Python 2.7 esetén Python 3.x, Julia és a R PySpark kernelt. Indítsa el a Jupyter-kiszolgálót, és indítsa el a böngészőt a jegyzetfüzet-kiszolgáló eléréséhez "Jupyter Notebook" nevű asztali ikon van. 
+### <a name="the-jupyter-notebook"></a>A Jupyter Notebook
+A Jupyter Notebookot, megosztani a kódot és az elemzési környezet anaconda terjesztési is tartalmaz. A Jupyter Notebook kiszolgáló előre konfigurálva vannak a Python 2.7-es, Python 3.x, PySpark, Julia és R kernelekkel. Indítsa el a Jupyter-kiszolgálót, és indítsa el a böngészőt a notebook kiszolgálón van egy asztali ikon nevezzük **Jupyter Notebook**. 
 
-A Microsoft van csomagolva több mintafüzetek r és Python A Jupyter notebookok megjelenítése után a Jupyter fér hozzá a Microsoft ML Server, SQL Server Machine Learning Services (adatbázison belüli elemzések), Python, a Microsoft Cognitive ToolKit, tensorflow-hoz és más Azure-technológiák használata. Megjelenik a hivatkozásra kattintva a minták a notebook kezdőlap után hitelesítést a Jupyter notebookot a korábbi lépésben létrehozott jelszó használatával. 
+Mi a Python és az r segítségével számos mintafüzetek csomag Jupyter éri el, miután a notebookok megjelenítése a következő technológiákat használata:
 
-### <a name="visual-studio-2017-community-edition"></a>A Visual Studio 2017 Community edition
-A Visual Studio Community edition telepítve van a virtuális gépen. Olyan díjmentes verziója, a népszerű IDE, amelynek tesztelési célra használja, és kis csapatok számára is használhatja. A licencelési feltételeket megtekinthet [Itt](https://www.visualstudio.com/support/legal/mt171547).  Az asztali ikonra duplán kattintva nyissa meg a Visual Studio vagy a **Start** menü. Programok is kereshet **Win** + **S** , és írja be a "Visual Studio". Ha van például a C#, Python, R, node.js nyelven projekteket hozhat létre. Beépülő modulok települnek, amely az Azure-szolgáltatásokhoz hasonlóan az Azure Data Catalog, az Azure HDInsight (Hadoop, Spark) és az Azure Data Lake használata kényelmes. Most már van is egy nevű beépülő modult ```Visual Studio Tools for AI``` , amely zökkenőmentesen integrálható az Azure Machine Learning, és segít gyorsan hozhat létre AI-alkalmazások. 
+* Machine Learning-kiszolgáló.
+* Az SQL Server Machine Learning-szolgáltatások, adatbázison belüli elemzések. 
+* Python.
+* A Microsoft Cognitive ToolKit.
+* Tensorflow-hoz.
+* Más Azure-technológiákat. 
+
+A minták a hivatkozást a jegyzetfüzet kezdőlap után jelenik a korábbi lépésben létrehozott jelszó használatával hitelesítést a Jupyter Notebookot. 
+
+### <a name="visual-studio-community-2017"></a>A Visual Studio Community 2017.
+A Visual Studio Community telepítve van a virtuális gépen. Olyan díjmentes verziója, a népszerű IDE, amelynek tesztelési célra használja, és a csapatok is használhat. Tekintse meg a [licencfeltételek](https://www.visualstudio.com/support/legal/mt171547). 
+
+Az asztali ikonra duplán kattintva nyissa meg a Visual Studio vagy a **Start** menü. Keresse meg a programok (Win + S), majd a **Visual Studio**. Itt például C#, Python, R és node.js nyelven projekteket hozhat létre. Telepített modulok könnyítse meg az alábbi Azure-szolgáltatások működéséhez:
+* Azure Data Catalog
+* Az Azure HDInsight Hadoop és Spark
+* Azure Data Lake 
+
+Emellett van egy beépülő modul nevű ```Visual Studio Tools for AI``` , amely zökkenőmentesen integrálható az Azure Machine Learning, és segít gyorsan hozhat létre AI-alkalmazások. 
 
 > [!NOTE]
-> Előfordulhat, hogy kap egy üzenetet arról, hogy a próbaidőszak lejárt. Adja meg a Microsoft-fiók hitelesítő adatait, vagy hozzon létre egy új ingyenes fiókot a Visual Studio Community Edition eléréséhez. 
+> Előfordulhat, hogy kap egy üzenetet, hogy a próbaidőszak lejárt. Adja meg a Microsoft-fiók hitelesítő adatait. Vagy hozzon létre egy új, hozzáférhet a Visual Studio Community ingyenes fiókot. 
 > 
 > 
 
 ### <a name="sql-server-2017-developer-edition"></a>SQL Server 2017 Developer edition
-A virtuális gépen, az R vagy Python biztosítja egy ML szolgáltatásokkal futtatni az adatbázison belüli elemzések SQL Server 2017 developer verziója. Machine Learning-szolgáltatások fejlesztéséhez és üzembe helyezéséhez intelligens alkalmazások platformot biztosítani. Használhatja a sokoldalú, hatékony ezeken a nyelveken és csomagok számát, a közösségi modelleket hozhat létre és előrejelzések készítése az SQL Server-adatok. Elemzési adatokhoz közel képes tartani, mivel a Machine Learning Services (adatbázison belüli) integrálható belül az SQL Server az R- és Python nyelven. Ezzel elkerülhető a költségek és az adatáthelyezés biztonsági kockázatokat.
+Egy Machine Learning-szolgáltatások adatbázison belüli elemzések futtatására az SQL Server 2017 developer verzióját biztosítja a virtuális gépen, az R vagy Python. Machine Learning-szolgáltatások fejlesztéséhez és üzembe helyezéséhez intelligens alkalmazások platformot biztosít. Ezeket a nyelveket és a Közösségtől számos csomagok segítségével modelleket hozhat létre és előrejelzések készítése az SQL Server-adatok. Elemzési adatokhoz közel képes tartani, mivel a Machine Learning-szolgáltatások, az adatbázis-, integrálható az SQL Server-kiszolgálón belül az R- és Python nyelveket. Ez az integráció kiküszöböli a költségek és az adatáthelyezés biztonsági kockázatokat.
 
 > [!NOTE]
-> Az SQL Server developer Edition verziót csak fejlesztési és tesztelési célokra használható. Éles környezetben futtatásához licenc szükséges. 
+> Az SQL Server Developer edition csak fejlesztési és tesztelési célokat szolgál. Éles környezetben futtatásához licenc szükséges. 
 > 
 > 
 
-Érhető el az SQL server indítása **SQL Server Management Studio**. A virtuális gép neve megjelenik a kiszolgáló neveként. Ha a Windows rendszergazdaként bejelentkezve Windows-hitelesítést használjon. Miután az SQL Server Management Studio más felhasználók létrehozása, adatbázisok létrehozása, adatok importálása, és futtasson SQL-lekérdezéseket. 
+Az SQL Server a Microsoft SQL Server Management Studio elindításával érheti el. A virtuális gép neve fel van töltve, mint a **kiszolgálónév**. Windows-hitelesítést használ a jelentkezik be, a rendszergazda a Windows. Amikor az SQL Server Management Studióban, más felhasználók létrehozása, adatbázisok létrehozása, adatok importálása, és futtasson SQL-lekérdezéseket. 
 
-Ahhoz, hogy az adatbázison belüli elemzések SQL Machine Learning Services segítségével, futtassa a következő parancsot, egy egyszeri művelet az SQL Server management studióban a kiszolgálói rendszergazdai bejelentkezés után. 
+Engedélyezése az adatbázison belüli elemzések SQL Machine Learning-szolgáltatások használatával, akkor futtassa a következő parancsot, az SQL Server Management Studióban egy egyszeri művelet, miután kiszolgálói rendszergazdaként jelentkezzen be: 
 
         CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 
@@ -147,55 +177,58 @@ Ahhoz, hogy az adatbázison belüli elemzések SQL Machine Learning Services seg
 ### <a name="azure"></a>Azure
 Több Azure-eszközök telepítve vannak a virtuális gépen:
 
-* Nincs az Azure SDK-dokumentáció eléréséhez egy asztali parancsikonjára. 
-* **Az AzCopy**:-ból a Microsoft Azure Storage-fiók adatok mozgatására szolgál. Használati megtekintéséhez írja be a **Azcopy** , a használati parancsot a parancssorba. 
-* **A Microsoft Azure Storage Explorer**: keresse meg az Azure storage szolgáltatásba vagy onnan az Azure Storage-fiókot és az átviteli adatok tárolt objektumok között használt. Beírhatja **Storage Explorer** lévő keresése, vagy keresse meg azt a Windows Start menü az eszköz eléréséhez. 
-* **Az Adlcopy**: adatok áthelyezése az Azure Data Lake segítségével. Használati megtekintéséhez írja be a **adlcopy** parancsot. 
-* **dtui**: adatok importálására és az Azure Cosmos DB egy NoSQL-adatbázis, a felhő segítségével. Típus **dtui** parancssorban. 
-* **Az Azure Data Factory integrációs modul**: lehetővé teszi az adatok áthelyezését a helyszíni adatforrások és a felhő között. Eszközök, mint például az Azure Data Factory belül használható. 
-* **A Microsoft Azure Powershell**: a Powershell parancsnyelv is telepítve van a virtuális gépen az Azure-erőforrások felügyeletére szolgáló eszköz. 
+* Asztali parancsikon kerül az Azure SDK dokumentációját. 
+* **Az AzCopy** történő áthelyezéséhez az adatok átviteléhez az Azure Storage-fiókot használja. Használati megtekintéséhez írja be a **Azcopy** parancsot a parancssorba. 
+* Használat **Azure Storage Explorer** , keresse meg az objektumokat az Azure Storage-fiókban tárolja. Adat- és Azure Storage-ból is átvitele. Ez az eszköz eléréséhez, megadhat **Tártallózó** a a **keresési** mező. Keresés a Windows vagy **Start** menü. 
+* **Az Adlcopy** helyez át adatokat az Azure Data Lake. Használati megtekintéséhez írja be a **adlcopy** parancsot. 
+* **dtui** helyez át adatokat, és az Azure Cosmos DB egy NoSQL-adatbázis a felhőben. Adja meg **dtui** parancsot. 
+* **Az Azure Data Factory integrációs modul** helyez át adatokat a helyszíni adatforrások és a felhő között. Eszközök, mint például az Azure Data Factory belül használható. 
+* **A Microsoft Azure PowerShell** olyan eszköz, amely a PowerShell szkriptelési nyelv az Azure-erőforrások felügyeletére szolgál. Azt is telepítve van a virtuális Gépen. 
 
 ### <a name="power-bi"></a>Power BI
-Irányítópultok és nagyszerű Vizualizációk segíteni a **Power BI Desktop** telepítve van. Az eszköz használható az adatok különböző forrásokból származó az irányítópultokat és jelentéseket készíthet, és közzéteheti őket a felhőbe. További információ: a [Power BI](http://powerbi.microsoft.com) hely. A Start menüben található Power BI desktopban. 
+A **Power BI Desktop** irányítópultokat és vizualizációkat hozhat létre segítségével telepítve van. Az eszköz használható az adatok különböző forrásokból származó az irányítópultokat és jelentéseket készíthet, és közzéteheti őket a felhőbe. További információkért lásd: a [Power BI](http://powerbi.microsoft.com) hely. A Power BI desktop megtalálhatja a **Start** menü. 
 
 > [!NOTE]
-> Office 365-fiókja eléréséhez a Power bi-ban van szüksége. 
+> Egy Power BI eléréséhez a Microsoft Office 365-fiók szükséges. 
 > 
 > 
 
 ### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
 
-Az Azure Machine Learning Workbench egy asztali alkalmazás és parancssori felület. A Workbench rendelkezik beépített adat-előkészítés, amely megtanulja az adat-előkészítési lépéseket azok végrehajtása. Is biztosít a projektmenedzsment, a futtatási előzmények vagy a jegyzetfüzet-integráció tevékenységekbe, így növelheti a hatékonyságot. A legjobb nyílt forráskódú keretrendszerekkel, beleértve a TensorFlow, a Cognitive Toolkit, a Spark Machine Learning és a scikit előnyeit is – ismerje meg, hogyan fejleszthet a modellek. A dsvm-hez biztosítunk egy asztali ikonra az Azure Machine Learning workbench telepítése a felhasználó % LOCALAPPDATA % könyvtárba. Minden egyes felhasználó esetében kell használnia a Workbench szüksége van egy egyszeri művelet, kattintson duplán a ```AzureML Workbench Setup``` asztali ikonra a Workbench a példányának a telepítéséhez. Az Azure Machine Learning is hoz létre, és használja a felhasználónkénti Python-környezetet, amely a % LOCALAPPDATA%\amlworkbench\python ki kell olvasni.
+Az Azure Machine Learning Workbench egy asztali alkalmazás és parancssori felület. A workbench beépített adat-előkészítés, amely megtanulja az adat-előkészítési lépéseket, ezeket is rendelkezik. Is biztosít a projektmenedzsment, a futtatási előzmények vagy a jegyzetfüzet-integráció a hatékonyság növelése érdekében. 
 
-## <a name="additional-microsoft-development-tools"></a>További Microsoft fejlesztési eszközök
-A [ **Microsoft Webplatform-telepítő** ](https://www.microsoft.com/web/downloads/platform.aspx) felderítése és más Microsoft fejlesztői eszközöket tölthet le is használható. Emellett van egy parancsikont a Microsoft adatelemző virtuális gép asztalán a megadott eszköz.  
+Használhatja a nyílt forráskódú keretrendszereket is, a TensorFlow, a Cognitive Toolkit, a Spark Machine Learning és a scikit-ismerje meg, a modellek fejlesztésére. A dsvm-hez, a biztosítunk egy asztali ikonra az Azure Machine Learning Workbench telepítése az egyes felhasználói csoportokban **% LOCALAPPDATA %** könyvtár. 
+
+A munkaterület minden felhasználó végre kell hajtania egy egyszeri művelet. Kattintson duplán a ```AzureML Workbench Setup``` asztali ikonra a workbench-példány telepítése. Az Azure Machine Learning is hoz létre, illetve egy felhasználó Python-környezetet, amely bontja ki / a **%LOCALAPPDATA%\amlworkbench\python** könyvtár.
+
+## <a name="more-microsoft-development-tools"></a>További Microsoft fejlesztési eszközök
+A [Microsoft Webplatform-telepítő](https://www.microsoft.com/web/downloads/platform.aspx) keresse meg és más Microsoft fejlesztői eszközöket tölthet le. Emellett van egy parancsikont a Microsoft adatelemző virtuális gép asztalán a megadott eszköz.  
 
 ## <a name="important-directories-on-the-vm"></a>A virtuális gép fontos könyvtárak
 | Elem | Címtár |
 | --- | --- |
-| Jupyter notebook server konfigurációk |C:\ProgramData\jupyter |
-| Jupyter Notebook minták kezdőkönyvtár |c:\dsvm\notebooks és c:\users\<username > \notebooks|
-| Más minták |c:\dsvm\samples |
-| Anaconda (alapértelmezett: Python 3.6-os) |c:\Anaconda |
-| Anaconda Python 2.7-es környezetben |c:\Anaconda\envs\python2 |
-| A Microsoft ML Server önálló Python  | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
-| Az R alapértelmezett példányt (gépi tanulás kiszolgáló önálló) |C:\Program Files\Microsoft\ML Server\R_SERVER |
-| Machine Learning-szolgáltatások az SQL adatbázis-példány könyvtár |C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
-| Az Azure Machine Learning Workbench (felhasználónként) | %localappdata%\amlworkbench | 
-| Egyéb eszközök |c:\dsvm\tools |
+| Jupyter Notebook server konfigurációk | C:\ProgramData\jupyter |
+| Jupyter Notebook minták kezdőkönyvtár | c:\dsvm\notebooks és c:\users\<username > \notebooks |
+| Más minták | c:\dsvm\samples |
+| Anaconda, alapértelmezett: Python 3.6-os | c:\Anaconda |
+| Anaconda Python 2.7-es környezetben | c:\Anaconda\envs\python2 |
+| Microsoft Machine Learning-kiszolgálója (önálló) Python | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
+| Az R alapértelmezett példány, Machine Learning-kiszolgáló (önálló) | C:\Program Files\Microsoft\ML Server\R_SERVER |
+| Machine Learning-szolgáltatások az SQL-adatbázis-példány könyvtár | C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
+| Az Azure Machine Learning Workbench, felhasználónként | %localappdata%\amlworkbench | 
+| Egyéb eszközök | c:\dsvm\tools |
 
 > [!NOTE]
-> A dsvm-hez és Windows Server 2016 Edition 2018 március előtti Windows Server 2012 kiadásán alapértelmezett Anaconda környezete Python 2.7-t. A másodlagos környezete Python 3.5-ös c:\Anaconda\envs\py35 helyen található. 
+> A dsvm-hez és Windows Server 2016 edition 2018 március előtti Windows Server 2012 kiadásán alapértelmezett Anaconda környezete Python 2.7-t. A másodlagos környezet a Python 3.5, elhelyezés **c:\Anaconda\envs\py35**. 
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-Az alábbiakban további lépések a tanulási és feltárása a folytatáshoz. 
 
-* Megismerheti azokat a különféle beépített adatelemzési eszközzel az adatelemző virtuális gép ehhez kattintson a start menüben, és az eszközök kivételkor látható a menüben.
+* Fedezze fel az eszközök az adatelemző virtuális gép kiválasztásával a **Start** menü.
 * Ismerje meg a termék ellátogat az Azure Machine Learning-szolgáltatások és a Workbench [rövid és oktatóanyagok lap](../service/index.yml). 
-* Navigáljon a **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** minták használatával a RevoScaleR, amely támogatja a data analytics nagyvállalati szintű R-erőforrástárat.  
-* Olvassa el a cikket: [10 dolog, amire alkalmas az adatelemző virtuális gép](http://aka.ms/dsvmtenthings)
-* Ismerje meg, hogyan rendszeresen használatával teljes körű elemzési megoldásokat hozhat létre a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml).
-* Látogasson el a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com) machine learning és a data analytics minták Azure Machine learning és a kapcsolódó adatokat használó szolgáltatások az Azure-ban. Egy ikont is biztosítunk az a **Start** menü, és ez a katalógus a virtuális gép asztalán.
+* Navigáljon a **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** , amely a RevoScaleR kódtára, amely támogatja az adatelemzés, a nagyvállalati szintű R a minták.  
+* A cikk a [tíz dolog, amire alkalmas az adatelemző virtuális gép](http://aka.ms/dsvmtenthings).
+* Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml).
+* Látogasson el a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com) machine learning és a data analytics minták az Azure Machine Learning és a kapcsolódó adatokat használó szolgáltatások az Azure-ban. Is biztosítunk egy ikont a tárban lévő a **Start** menüjében és asztalán a virtuális gép.
 

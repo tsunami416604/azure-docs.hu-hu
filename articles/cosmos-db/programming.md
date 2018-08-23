@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618896"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059622"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Az Azure Cosmos DB kiszolgálóoldali programozása: tárolt eljárások, adatbázis-eseményindítók és felhasználói függvények
 
@@ -98,7 +98,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-A context objektumot biztosít hozzáférést a Cosmos DB storage elvégezhető összes műveletet, valamint a kérések és válaszok objektumok elérését. A válasz objektum ebben az esetben az ügyfélnek küldött válasz törzsében beállításához használható. További információkért lásd: a [SDK-dokumentáció az Azure Cosmos DB a JavaScript-kiszolgáló](http://azure.github.io/azure-documentdb-js-server/).  
+A context objektumot biztosít hozzáférést a Cosmos DB storage elvégezhető összes műveletet, valamint a kérések és válaszok objektumok elérését. A válasz objektum ebben az esetben az ügyfélnek küldött válasz törzsében beállításához használható. További információkért lásd: a [SDK-dokumentáció az Azure Cosmos DB a JavaScript-kiszolgáló](https://azure.github.io/azure-cosmosdb-js-server/).  
 
 Ossza meg velünk az ebben a példában bontsa ki, és további adatbázissal kapcsolatos funkciók hozzáadása a tárolt eljárást. Tárolt eljárások is létrehozni, frissíteni, olvassa el, lekérdezése és dokumentumok és mellékletek belül a gyűjtemény törlése.    
 
@@ -591,7 +591,7 @@ A következő JavaScript-szerkezetek nem optimalizálja az Azure Cosmos DB-index
 * Átvitelvezérlés (például ha, miközben)
 * Függvényhívások
 
-További információkért lásd: a [kiszolgálóoldali JSDocs](http://azure.github.io/azure-documentdb-js-server/).
+További információkért lásd: a [kiszolgálóoldali JSDocs](https://azure.github.io/azure-cosmosdb-js-server/).
 
 ### <a name="example-write-a-stored-procedure-using-the-javascript-query-api"></a>Példa: Írhat egy tárolt eljárást a JavaScript query API használatával
 Az alábbi kódmintában egyik példája a lekérdezési JavaScript API hogyan használható a tárolt eljárás keretében. A tárolt eljárás szúr be egy dokumentumot, adja meg a bemeneti paraméterek, és a egy metaadatainak dokumentálja, használja a `__.filter()` metódus: minSize, a maxSize és a bemeneti dokumentum size tulajdonság alapján totalSize.
@@ -674,7 +674,7 @@ Az alábbi leírásokat a fenti táblázatban szereplő minden egyes lekérdezé
 
 
 ## <a name="runtime-support"></a>Podpora modulu Runtime
-Az Azure Cosmos DB [JavaScript kiszolgáló ügyféloldali API](http://azure.github.io/azure-documentdb-js-server/) támogatást nyújt a legtöbb funkcióját a alapvető technikai JavaScript nyelven, a szabványos [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+Az Azure Cosmos DB [JavaScript kiszolgáló ügyféloldali API](https://azure.github.io/azure-cosmosdb-js-server/) támogatást nyújt a legtöbb funkcióját a alapvető technikai JavaScript nyelven, a szabványos [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
 ### <a name="security"></a>Biztonság
 A JavaScript tárolt eljárások és eseményindítók vendégünk, hogy egy szkript hatásait nem nyilvánosságra kerüljenek a másik a pillanatkép-tranzakció elkülönítés az adatbázis szintjén áthaladás nélkül. A futtatókörnyezetet készletezett, de a környezet minden egyes futás után törlődik. Ezért ezek garantáltan biztonságos, minden olyan nem kívánt mellékhatásokkal egymástól.
@@ -683,7 +683,7 @@ A JavaScript tárolt eljárások és eseményindítók vendégünk, hogy egy szk
 Tárolt eljárások, eseményindítók és felhasználói függvények minden szkripthívás időpontjában fordítási költségek elkerülése érdekében olyan implicit módon lefordított kód bájt formátumra. Üzem előtti fordítási biztosítja a tárolt eljárások hívása gyors és a egy alacsony erőforrás-igényű rendelkezik.
 
 ## <a name="client-sdk-support"></a>Ügyfél SDK-támogatás
-Az Azure Cosmos DB mellett [Node.js](sql-api-sdk-node.md) API, Azure Cosmos DB rendelkezik [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript ](http://azure.github.io/azure-documentdb-js/), és [Python SDK-k](sql-api-sdk-python.md) , valamint az SQL API-hoz. Tárolt eljárások, eseményindítók és felhasználói függvények hozhatók létre, és ezek SDK-k, valamint valamelyik használatával végrehajtott. Az alábbi példa bemutatja, hogyan hozhat létre, és a .NET-kliens használata a tárolt eljárás végrehajtására. Megjegyzés: a .NET-típusokat JSON-fájlként tárolt eljárásnak átadott és olvassa el a biztonsági hogyan.
+Az Azure Cosmos DB mellett [Node.js](sql-api-sdk-node.md) API, Azure Cosmos DB rendelkezik [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript ](sql-api-sdk-node.md), és [Python SDK-k](sql-api-sdk-python.md) , valamint az SQL API-hoz. Tárolt eljárások, eseményindítók és felhasználói függvények hozhatók létre, és ezek SDK-k, valamint valamelyik használatával végrehajtott. Az alábbi példa bemutatja, hogyan hozhat létre, és a .NET-kliens használata a tárolt eljárás végrehajtására. Megjegyzés: a .NET-típusokat JSON-fájlként tárolt eljárásnak átadott és olvassa el a biztonsági hogyan.
 
 ```javascript
 var markAntiquesSproc = new StoredProcedure
@@ -828,7 +828,7 @@ Ellentétben a tárolt eljárások, eseményindítók közvetlenül nem hajthat�
 Itt a kérelemmel előtti eseményindítót a x-ms-documentdb-pre-trigger-include fejlécben megadott. Ennek megfelelően a utáni eseményindítókat a x-ms-documentdb-post-trigger-include fejléc van megadva. Megvalósítás előtti és utáni eseményindítók egy adott kérés esetében adható meg.
 
 ## <a name="sample-code"></a>Mintakód
-Kiszolgálóoldali kód további példákat talál (beleértve a [tömeges törlés](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js), és [frissítése](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) a a [GitHub-adattár](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
+Kiszolgálóoldali kód további példákat talál (beleértve a [tömeges törlés](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/bulkDelete.js), és [frissítése](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/update.js)) a a [GitHub-adattár](https://github.com/Azure/azure-cosmosdb-js-server/tree/master/samples).
 
 Szeretné megosztani a Soft tárolt eljárás? a tárház hozzájárul, és hozzon létre egy pull-kérelem! 
 

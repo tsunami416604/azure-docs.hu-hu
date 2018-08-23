@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 463a00823997f1acfb65fdd739a093e556982a61
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: f7c7877768e2dc06e73f8c91016edd521151a11c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411950"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061396"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogramjának Windows-bővítmény
 
@@ -63,7 +63,8 @@ A következő JSON a bővítmény sémáját jeleníti meg.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.2",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -77,7 +78,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 | apiVersion | 2015-06-15 | dátum |
 | publisher | Microsoft.HpcCompute | sztring |
 | type | NvidiaGpuDriverWindows | sztring |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1.2 | int |
 
 
 ## <a name="deployment"></a>Környezet
@@ -103,7 +104,8 @@ Az alábbi példa azt feltételezi, hogy a bővítményt a virtuális gép típu
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.2",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -120,7 +122,7 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverWindows" `
     -ExtensionType "NvidiaGpuDriverWindows" `
-    -TypeHandlerVersion 1.0 `
+    -TypeHandlerVersion 1.2 `
     -SettingString '{ `
     }'
 ```
@@ -133,7 +135,7 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverWindows `
   --publisher Microsoft.HpcCompute `
-  --version 1.0 `
+  --version 1.2 `
   --settings '{ `
   }'
 ```
@@ -164,7 +166,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | A művelet sikeres |
 | 1 | A művelet sikeres. Újraindításra van szükség. |
-| 4., 10 | A művelet időkorlátja. | Próbálja megismételni a műveletet.
+| 100 | A művelet nem támogatott vagy nem fejeződött be. | Lehetséges okok: PowerShell-verzió nem támogatott, Virtuálisgép-méret nem egy az N sorozatú virtuális gépek, adatok letöltése sikertelen. Ellenőrizze a naplófájlokat a hiba okának megállapításához. |
+| 240, 840 | A művelet időkorlátja. | Próbálja megismételni a műveletet. |
 | -1 | Kivétel történt. | Ellenőrizze a naplófájlokat a kivételek okának meghatározásához. |
 | – 5 x | A művelet függőben lévő újraindítás miatt megszakadt. | Indítsa újra a virtuális gép. A telepítés újraindítás után folytatódik. Távolítsa el manuálisan lehet meghívni. |
 

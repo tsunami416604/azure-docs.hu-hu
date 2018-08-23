@@ -1,26 +1,27 @@
 ---
-title: (A Windows PowerShell-parancsfájl) közzététele-WebApplicationWebSite |} Microsoft Docs
-description: Ismerje meg, hogy egy webes projekt közzététele egy Azure-webhelyen. Ezt a parancsfájlt a szükséges erőforrásokat az Azure-előfizetése hoz létre, ha azok még nem léteznek.
+title: (Windows PowerShell-parancsprogram) közzététele – WebApplicationWebSite |} A Microsoft Docs
+description: Ismerje meg, hogy egy webes projekt közzététele az Azure-webhelyekre. Ez a szkript létrehoz az Azure-előfizetésben a szükséges erőforrásokkal, ha azok nem léteznek.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 63cfaa2d-f04d-40dc-8677-345385c278d5
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: b540734f17ed11e4c438e1248ed9612fb892e89a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ea8e36aabb75839a9c301f45a82241e3a859d42a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792514"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055330"
 ---
-# <a name="publish-webapplicationwebsite-windows-powershell-script"></a>(A Windows PowerShell-parancsfájl) közzététele-WebApplicationWebSite
+# <a name="publish-webapplicationwebsite-windows-powershell-script"></a>Közzététel-WebApplicationWebSite (Windows PowerShell-parancsfájl)
 ## <a name="syntax"></a>Szintaxis
-A webes projekt közzététele egy Azure-webhelyen. A parancsfájl a szükséges erőforrásokat az Azure-előfizetése hoz létre, ha azok még nem léteznek.
+Tesz közzé olyan webes projekt egy Azure-webhelyen. A parancsfájl a szükséges erőforrásokat az Azure-előfizetésben hoz létre, ha azok nem léteznek.
 
     Publish-WebApplicationWebSite
     –Configuration <configuration>
@@ -32,69 +33,69 @@ A webes projekt közzététele egy Azure-webhelyen. A parancsfájl a szükséges
 
 
 ## <a name="configuration"></a>Konfiguráció
-A JSON-konfigurációs fájlt, amely leírja a központi telepítés részleteinek elérési útja.
+Az üzembe helyezés részleteit leíró JSON-konfigurációs fájl elérési útja.
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasnevek |nincs |
+| Aliasok |nincs |
 | Kötelező? |true |
-| Beosztás |nevű |
+| Pozíció |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ## <a name="subscriptionname"></a>Előfizetés neve
-Az Azure-előfizetés, amelyet a webhely neve.
+Az Azure-előfizetést, amelyet szeretne létrehozni a webhely neve.
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasnevek |nincs |
+| Aliasok |nincs |
 | Kötelező? |false |
-| Beosztás |nevű |
+| Pozíció |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ## <a name="webdeploypackage"></a>WebDeployPackage
-A webhelyen közzétenni a webes telepítési csomag elérési útja. Ezt a csomagot a Visual Studio webhely közzététele varázsló használatával hozhat létre. További információkért lásd: [Ismerkedés az Azure felhőalapú szolgáltatásairól és ASP.NET](http://go.microsoft.com/fwlink/p/?LinkID=623089).
+A webhely közzétételéhez a webes telepítési Web csomag elérési útja. Ezt a csomagot a Visual Studio Publish Web varázsló használatával hozhat létre. További információkért lásd: [Ismerkedés az Azure Cloud Services és ASP.NET](http://go.microsoft.com/fwlink/p/?LinkID=623089).
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasnevek |nincs |
+| Aliasok |nincs |
 | Kötelező? |false |
-| Beosztás |nevű |
+| Pozíció |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ## <a name="databaseserverpassword"></a>DatabaseServerPassword
-A felhasználónevet és jelszót az SQL-adatbázis, az Azure-ban.
+A felhasználónevet és jelszót az SQL Database az Azure-ban.
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasnevek |nincs |
+| Aliasok |nincs |
 | Kötelező? |false |
-| Beosztás |nevű |
+| Pozíció |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ## <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
-Amennyiben az értéke igaz, a nyomtató érkező üzenetek a parancsfájl a kimeneti adatfolyamba.
+Amennyiben az értéke igaz, nyomtatás üzenetek a parancsfájlból a kimeneti adatfolyamba.
 
 | Paraméter | Alapértelmezett érték |
 | --- | --- |
-| Aliasnevek |nincs |
+| Aliasok |nincs |
 | Kötelező? |false |
-| Beosztás |nevű |
+| Pozíció |nevű |
 | Alapértelmezett érték |false |
-| Fogadja el a feldolgozási sor beviteli? |false |
+| Adatcsatorna bemenetének elfogadása? |false |
 | Helyettesítő karakterek elfogadása? |false |
 
 ## <a name="remarks"></a>Megjegyzések
-A parancsfájl használata létrehozásához teljes leírását fejlesztési és tesztkörnyezetek, lásd: [Windows PowerShell parancsfájlok használata a közzététel a fejlesztési és tesztkörnyezetek](vs-azure-tools-publishing-using-powershell-scripts.md).
+Bemutatja, hogyan hozhat létre a parancsfájl használatával teljes ismertetése: fejlesztési és tesztelési környezetek [Windows PowerShell parancsfájlok használata a fejlesztési és tesztelési környezetek a közzététel](vs-azure-tools-publishing-using-powershell-scripts.md).
 
-A JSON-konfigurációs fájl meghatározza, hogy mit telepítendő részletes adatait. Ez magában foglalja a projekt, például a nevét, és a felhasználónév, a webhely létrehozásakor megadott adatokat. Is az adatbázis rendelkezésre, ha van ilyen. A következő kód bemutatja egy példa JSON-konfigurációs fájlt:
+A JSON konfigurációs fájl meghatározza a részleteit, mi az a telepítésre. A projekt, például a nevet és egy felhasználónevet a webhely létrehozásakor megadott adatokat tartalmazza. Is az adatbázis létrehozását, ha van ilyen. A következő kód bemutatja egy példa JSON-konfigurációs fájl:
 
     {
         "environmentSettings": {
@@ -118,8 +119,8 @@ A JSON-konfigurációs fájl meghatározza, hogy mit telepítendő részletes ad
         }
     }
 
-Szerkesztheti a JSON-konfigurációs fájl módosítása, hogy telepítve van. A webhely szakaszban szükség, de az adatbázis szakaszban nem kötelező megadni.
+Szerkesztheti a JSON konfigurációs fájl módosítása, hogy mi van telepítve. Egy webhely szakasz megadása kötelező, de az adatbázis a szakasz nem kötelező.
 
 ## <a name="next-steps"></a>További lépések
-További információkért lásd: [Publish-WebApplicationVM (a Windows PowerShell-parancsfájl)](vs-azure-tools-publish-webapplicationvm.md)
+További információkért lásd: [Publish-WebApplicationVM (Windows PowerShell-parancsfájl)](vs-azure-tools-publish-webapplicationvm.md)
 

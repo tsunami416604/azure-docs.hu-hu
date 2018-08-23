@@ -1,26 +1,23 @@
 ---
 title: Az Azure Active Directory Application Proxy és a Tableau |} A Microsoft Docs
-description: Ismerje meg, a Tableau-telepítés a távelérés biztosítása az Azure Active Directory (Azure AD) alkalmazásproxy használatával.  .
+description: Ismerje meg, a Tableau-telepítés a távelérés biztosítása az Azure Active Directory (Azure AD) alkalmazásproxy használatával.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7cace1af527c1c7c80bf0e23f7a88aa9ac9f9d03
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365022"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055752"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Az Azure Active Directory Application Proxy és a Tableau 
 
@@ -35,19 +32,10 @@ Ebben a cikkben a forgatókönyv azt feltételezi, hogy:
 - Egy [Application Proxy connector](application-proxy-enable.md) telepítve. 
 
  
-
 ## <a name="enabling-application-proxy-for-tableau"></a>A Tableau alkalmazásproxy engedélyezése 
 
-Ha szeretné az alkalmazásproxy használata a Tableau, szeretné-e egy e-mailek küldése [ aadapfeedback@microsoft.com ](mailto:aadapfeedback@microsoft.com) beolvasni ebben a forgatókönyvben engedélyezve van.
-Az e-mailben:
+Az alkalmazásproxy támogatja az OAuth 2.0 engedélyezési folyamatát, azért szükség, a Tableau megfelelően működjön. Ez azt jelenti, hogy már nem léteznek bármely különleges lépések szükségesek az alkalmazáshoz, konfigurálni kell a következő közzétételi lépéseket követve eltérő.
 
--   Alkalmazásproxy engedélyezése használata a Tableau, a tulajdonos
--   A bérlő Azonosítóját tartalmazza törzsében.    
-
-Kap egy megerősítő, ha az alkalmazás készen áll. A konfiguráció befejezéséhez a megerősítés várakozás közben.
-
-
- 
 
 ## <a name="publish-your-applications-in-azure"></a>Az alkalmazások közzététele az Azure-ban 
 

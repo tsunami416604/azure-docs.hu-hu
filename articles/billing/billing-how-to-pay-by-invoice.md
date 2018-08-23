@@ -1,6 +1,6 @@
 ---
-title: Azure-előfizetések a számla kibocsátása után kell fizetnie |} Microsoft Docs
-description: Ismerteti, hogyan lehet Azure-előfizetések a számla kibocsátása után kell fizetnie
+title: Azure-előfizetésekre vonatkozó számlás fizetés |} A Microsoft Docs
+description: Ismerteti, hogyan lehet Azure-előfizetésekre vonatkozó számlás fizetés
 services: ''
 documentationcenter: ''
 author: genlin
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: ac8262da05837dcdb4ebddd5029f9b5ece3dbc6f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: cc174822af436e7c31eb5ad4bfa419e1fa022f44
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067947"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617369"
 ---
-# <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Azure-előfizetés fizetési számlán igényelnie
+# <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Azure-előfizetés számlás fizetés kéréséhez
 
-A fizetési módot, az Azure-előfizetés által az Azure támogatási kérelem elküldése számlázása módosíthatja. Amint jóváhagyják a kérelmét, rendelkezésre állni az előfizetése a számla fizetési mód beállításával kapcsolatos utasításokat.
+A fizetési módot, az Azure-előfizetés által az Azure-támogatási kérést a számlához való módosíthatja. Miután jóváhagyják a kérelmét, hogyan állítsa be az előfizetését a számlás fizetési módra.* vannak megadott utasításokat.
 
 > [!IMPORTANT]
-> * Számla fizetési üzleti partnerek csak érhető el.
-> * [Harmadik féltől származó és a külső szolgáltatások](billing-understand-your-azure-marketplace-charges.md) nem vásárolt és kifizette számla fizetési használatával. Ha az előfizetése tartalmazza majd a külső szolgáltatásokat, mint a ClearDB vagy SendGrid erőforrásaihoz, azok fizetési számlázása módosítása előtt kell törölhető. Vásárolja meg a külső szolgáltatásait fizetési számlázása visszakapcsolása után, szüksége a különálló előfizetést vagy követel kártya.
-> * Fizetési számla vált, amennyiben nem visszavált vagy követel kártya fizetési.
+> * Számlás fizetés csak vállalati fiókok esetében érhető el.
+> * [Harmadik féltől származó és a külső szolgáltatásokhoz](billing-understand-your-azure-marketplace-charges.md) nem vásárolta meg vagy fizetett a számlás fizetési használatával. Ha az előfizetés külső szolgáltatásokban, például a SendGrid erőforrásokat tartalmaz, azok használatalapú számlához való módosítása előtt kell törölhető. A külső szolgáltatások megvásárlására használatalapú számlához való váltás után, egy külön előfizetés a hitelkártya vagy bankkártya szükséges.
+> * Miután használatalapú számlázás, nem válthat vissza a hitelkártya vagy bankkártya kártya fizetési.
 
-## <a name="request-pay-by-invoice"></a>Kérelem fizetési számlán
+## <a name="request-pay-by-invoice"></a>Kérelem fizetés számla ellenében
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Válassza ki **súgó + támogatás** > **új támogatja a kérelem**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Válassza ki **súgó + támogatás** > **új támogatási kérelem**.
 
-    ![a Súgó és támogatás gomb](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
+    ![Súgó és támogatás gomb](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
 
-1. Válassza ki **számlázási** probléma típusaként válassza ki az előfizetést, legyen a számla fizet, támogatási terv, majd válassza ki és **következő**.
+1. Válassza ki a **Számlázás** problématípust, válassza ki azt az előfizetést, amelynél számlával szeretne fizetni, válasszon egy támogatási csomagot, majd válassza a **Tovább** lehetőséget.
 
-1. Válassza ki **után kell fizetnie, a számlán** a a **problématípust** mezőbe.
+1. Válassza a **Számlás fizetés** lehetőséget a **Probléma típusa** mezőben.
 
-1. Adja meg a következő adatokat a **részletek** mezőbe, majd válassza ki **következő**.
+1. Adja meg a következő információkat a **részletek** mezőbe, majd válassza ki **tovább**.
 
     * A cég neve
     * Számlázási cím
-    * [Fiók rendszergazdai e-mail címet](billing-add-change-azure-subscription-administrator.md#check-the-account-administrator-of-the-subscription)
+    * [A fiókadminisztrátor e-mail-címe](billing-add-change-azure-subscription-administrator.md#check-the-account-administrator-of-the-subscription)
 
-1. Ellenőrizze a kapcsolattartási adatokat és az elsődleges kapcsolattartási módszert, és kattintson **létrehozása**.
+1. Ellenőrizze a kapcsolattartási adatokat és a kívánt kapcsolatfelvételi módot, majd kattintson a **Létrehozás** lehetőségre.
 
-Ha igazolnia kell a hitelképesség futtatásához szükséges jóváírás mennyisége miatt, küldünk követel meg ellenőrizze az alkalmazás. A kérelem elküldése után a hitelkérelemben is igénybe vehet 5-7 napos feldolgozni.
+Hitelképességét szükséges igényelt kredit mértékének miatt szükséges, ha küldünk követel meg az ellenőrző alkalmazást. Miután elküldi az alkalmazást, az a hitelképesség feldolgozni (5 – 7 nap) is igénybe vehet.
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
 
-Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.
+Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

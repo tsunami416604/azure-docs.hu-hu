@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 9a926eb274e5e4cec721864d1d9c5faee8ec58ef
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618337"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41987625"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -82,7 +82,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |privacyMode|A részletezése a következő módok egyike lehet: **privát**, **nyilvános**. **Nyilvános** – a videót a fiókját, és bárki, amely rendelkezik a videóra mutató hivatkozást mindenki számára látható-e. **Privát** – a videót a fiókjában mindenki számára látható-e.|
 |időtartam|Egy időtartam, amely leírja a időpontja egy elemzést tartalmaz. Időtartam másodpercen belül van.|
 |thumbnailVideoId|A videót, amelyből a miniatűr hibaállapota azonosítója.
-|thumbnailId|A videó miniatűr azonosítója. A tényleges miniatűr hívás Get-miniatűr beolvasásához (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és thumbnailVideoId és thumbnailId adja át.|
+|thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr hívás Get-miniatűr beolvasásához (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és thumbnailVideoId és thumbnailId adja át.|
 |arcok|Nulla vagy több arcokat is tartalmazhat. Részletesebb információkért lásd: [arcok](#faces).|
 |a kulcsszavak|Nulla vagy több kulcsszavak tartalmazhat. Részletesebb információkért lásd: [kulcsszavak](#keywords).|
 |hangulati|Nulla vagy több hangulati tartalmazhat. Részletesebb információkért lásd: [hangulati](#sentiments).|
@@ -107,7 +107,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |metaadatok|A videó külső metaadat (Ha a felhasználó által megadott).|
 |isAdult|Jelzi, hogy manuálisan lett-e felül a videót, és azonosította az eseményt egy felnőtteknek szóló videót.|
 |megállapítások|Az insights objektum. További információkért lásd: [insights](#insights).|
-|thumbnailId|A videó miniatűr azonosítója. A tényleges miniatűr hívás Get-miniatűr beolvasásához (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és adja át azt a videó azonosítója és thumbnailId.|
+|thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr hívás Get-miniatűr beolvasásához (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és adja át azt a videó Azonosítóját és thumbnailId.|
 |publishedUrl|A Videó-URL-címe.|
 |publishedUrlProxy|(Az Apple-eszközök esetén), a Videó-URL-címe.|
 |viewToken|Egy rövid élettartamú nézet jogkivonatot a videó streameléshez.|
@@ -670,7 +670,7 @@ Lehet, hogy videókat, amelyek tartalmazzák a felnőtt vagy pikáns tartalmak c
 
 ## <a name="next-steps"></a>További lépések
 
-[A video Indexer API](https://videobreakdown.portal.azure-api.net/docs/services/582074fb0dc56116504aed75/operations/5857caeb0dc5610f9ce979e4)
+[A video Indexer API](https://api-portal.videoindexer.ai)
 
 Widgetek beágyazása az alkalmazásba kapcsolatos információkért lásd: [az alkalmazásokba történő beágyazása a Video Indexer widgetek](video-indexer-embed-widgets.md). 
 
