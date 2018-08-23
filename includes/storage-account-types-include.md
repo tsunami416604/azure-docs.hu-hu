@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 08/20/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: f60c23e34962396d4ea6e030912d1ca3f3e4571b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40259348"
+---
 Kétféle tárfióktípus létezik:
 
 ### <a name="general-purpose-storage-accounts"></a>Általános célú tárfiókok
@@ -25,5 +42,5 @@ Blob Storage-fiókok további részletei: [Azure Blob Storage: Cool and Hot tier
 
 Ahhoz, hogy létrehozhasson egy tárfiókot, Azure-előfizetéssel kell rendelkeznie. Ez a csomag számos különböző Azure-szolgáltatáshoz biztosít hozzáférést. Az Azure használatát egy [ingyenes fiók](https://azure.microsoft.com/pricing/free-trial/) létrehozásával is elkezdheti. Ha úgy dönt, hogy szeretne előfizetési csomagot vásárolni, több [vásárlási lehetőség](https://azure.microsoft.com/pricing/purchase-options/) közül választhat. Ha Ön [MSDN-előfizető](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), ingyenes havi krediteket kap, amelyeket olyan Azure-szolgáltatásokhoz használhat, mint az Azure Storage. A mennyiségi díjszabásról lásd: [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-A tárfiók létrehozásával kapcsolatos részleteket lásd: [Create a storage account](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása). Akár 200 egyedi névvel ellátott tárfiókot is létrehozhat egyetlen előfizetéssel. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/common/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménykorlátai).
+A tárfiók létrehozásával kapcsolatos részleteket lásd: [Create a storage account](../articles/storage/common/storage-quickstart-create-account.md) (Tárfiók létrehozása). Akár 200 egyedi névvel ellátott tárfiókot is létrehozhat egyetlen előfizetéssel. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/common/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménykorlátai).
 

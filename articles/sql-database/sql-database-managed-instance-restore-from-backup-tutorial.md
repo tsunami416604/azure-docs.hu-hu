@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5dd8b1f662f1ae6d6502743c6d976db4b58e962f
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949884"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918209"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Adatbázis biztonsági másolatának visszaállítása egy felügyelt Azure SQL Database-példányon
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag bemutatja, hogyan állíthatja vissza egy adatbázis az Azure
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag a következő oktatóanyagban létrehozott erőforrásokat használja kiindulási pontként: [Felügyelt Azure SQL Database-példány létrehozása](sql-database-managed-instance-create-tutorial-portal.md).
+Ez az oktatóanyag a következő oktatóanyagban létrehozott erőforrásokat használja kiindulási pontként: [Felügyelt Azure SQL Database-példány létrehozása](sql-database-managed-instance-get-started.md).
 
 ## <a name="download-the-wide-world-importers---standard-backup-file"></a>A Wide World Importers – Standard biztonsági mentési fájl letöltése
 
@@ -39,7 +39,7 @@ Az Internet Explorerben írja be a https://github.com/Microsoft/sql-server-sampl
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
 
 ## <a name="create-azure-storage-account-and-upload-backup-file"></a>Azure Storage-fiók létrehozása és a biztonsági mentési fájl feltöltése
 

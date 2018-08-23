@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 77cd4c1d5333f7f10e6caccee5011200bdb4ccca
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e1d7a88e5a1a8ab60a01aea6ca42e850ac6e0e3
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424388"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41919133"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Oktatóanyag: Java- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -243,7 +243,7 @@ Amikor készen áll a csomag, az Azure CLI az alábbi példához hasonló kimene
 
 ### <a name="create-an-azure-web-app"></a>Azure-webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/appservice/web#az-appservice-web-create) CLI-paranccsal hozzon létre egy webalkalmazás-definíciót a `myAppServicePlan` App Service-csomagban. A webalkalmazás-definíció egy URL-címet biztosít, amelyen keresztül az alkalmazás elérhető, valamint több beállítást is konfigurál a kód az Azure-ban történő üzembe helyezéséhez. 
+A Cloud Shellben az [`az webapp create`](/cli/azure/webapp#az-webapp-create) CLI-paranccsal hozzon létre egy webalkalmazás-definíciót a `myAppServicePlan` App Service-csomagban. A webalkalmazás-definíció egy URL-címet biztosít, amelyen keresztül az alkalmazás elérhető, valamint több beállítást is konfigurál a kód az Azure-ban történő üzembe helyezéséhez. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 A mintaalkalmazás futtatása előtt állítsa be a webalkalmazás alkalmazásbeállításait, hogy az az Azure-ban létrehozott Azure MySQL-adatbázist használja. Ezek a tulajdonságok környezeti változóként érhetők el a webalkalmazás által, és felülbírálják a csomagolt webalkalmazás application.properties tulajdonságaiban megadott értékeket. 
 
-A Cloud Shellben állítsa be az alkalmazásbeállításokat az [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) parancssori parancs kiadásával:
+A Cloud Shellben állítsa be az alkalmazásbeállításokat az [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) parancssori parancs kiadásával:
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>FTP-s üzembe helyezés hitelesítő adatainak lekérése 
 Az alkalmazás az Azure App Service-ben való üzembe helyezésének számos módja létezik, így például az FTP, a helyi Git, a GitHub, a Visual Studio Team Services és a BitBucket. Példánkban FTP-n keresztül helyezzük üzembe a korábban a helyi gépen létrehozott .WAR-fájlt az Azure App Service-ben.
 
-Ha szeretné kideríteni, hogy milyen hitelesítő adatokat kell megadni az FTP-parancsban a webalkalmazásnak, használja a Cloud Shellben az [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az-appservice-web-deployment-list-publishing-profiles) parancsot: 
+Ha szeretné kideríteni, hogy milyen hitelesítő adatokat kell megadni az FTP-parancsban a webalkalmazásnak, használja a Cloud Shellben az [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles) parancsot: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json

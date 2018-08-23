@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 7/10/2018
-ms.openlocfilehash: 303c1cfaf2b91712f706c5b78e027bb02739c770
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d4f1e188a1a145ba3be5fb45d2b0ea4d0bfd57a7
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39074366"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920087"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-vsts"></a>Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése a CI/CD-vel, a VSTS használatával
 Ez az oktatóanyag azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Stream Analytics-feladathoz a Visual Studio Team Services használatával. 
@@ -32,8 +32,8 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse a [Visual Studiót](stream-analytics-tools-for-visual-studio-install.md) és az **Azure-fejlesztési** vagy az **Adattárolási és -feldolgozási** számítási feladatokat.
-* Hozzon létre egy [Stream Analytics-projektet a Visual Studióban](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-vs).
-* Hozzon létre egy [Visual Studio Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)-fiókot.
+* Hozzon létre egy [Stream Analytics-projektet a Visual Studióban](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs).
+* Hozzon létre egy [Visual Studio Team Services](https://visualstudio.microsoft.com/team-services/)-fiókot.
 
 ## <a name="configure-nuget-package-dependency"></a>NuGet csomagfüggőség konfigurálása
 Amennyiben automatikus létrehozást vagy automatikus telepítést kíván alkalmazni egy tetszőleges gépen, a `Microsoft.Azure.StreamAnalytics.CICD` NuGet-csomagot kell használnia. Ez tartalmazza az MSBuild-, helyi futtatási, valamint a telepítési eszközöket, amelyek támogatják a Stream Analytics Visual Studio-projektek folyamatos integrációs és üzembehelyezési folyamatait. További információ: [Stream Analytics CI/CD-eszközök](stream-analytics-tools-for-visual-studio-cicd.md).

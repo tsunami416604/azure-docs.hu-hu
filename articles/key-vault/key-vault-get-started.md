@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 2d959eb9c4f55624d0d0915dd5dea4c62ba1f8e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fcf3c7d47e43adc94d2de933430f16d64ec987a2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505713"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41920038"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Bevezetés az Azure Key Vault használatába
 Ez a cikk útmutatást nyújt az Azure Key Vault PowerShell segítségével történő használatának a megismerésében, és az alábbi tevékenységeken vezeti végig:
@@ -28,9 +28,6 @@ Ez a cikk útmutatást nyújt az Azure Key Vault PowerShell segítségével tör
 - Az adott kulcs vagy jelszó alkalmazások általi használata.
 
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
-
-> [!NOTE]
-> Ebben a cikkben nem szerepelnek az Azure-alkalmazások írására vonatkozó utasítások. Ezen lépésekhez az [Azure Key Vault-mintaalkalmazást](https://www.microsoft.com/download/details.aspx?id=45343) használhatja.
 
 A platformfüggetlen parancssori felületre vonatkozó utasításokat [ebben az oktatóanyagban](key-vault-manage-with-cli2.md) tekintheti meg.
 
@@ -269,7 +266,7 @@ Az alkalmazás kulcsok vagy titkos kódok használatára vonatkozó engedélyez�
 ## <a id="HSM"></a>Hardveres biztonsági modul (HSM) használata
 A nagyobb biztonság érdekében hardveres biztonsági modulokkal importálhat vagy hozhat létre a HSM határait mindig betartó kulcsokat. A hardveres biztonsági modulok a 2. szintű FIPS 140-2 szerint vannak érvényesítve. Ha ez a követelmény nem vonatkozik Önre, ugorja át ezt a szakaszt, és folytassa a [Kulcsartó és a hozzá tartozó kulcsok és titkos kódok törlése](#delete) szakasszal.
 
-Ezeknek a HSM-védelemmel ellátott kulcsoknak a létrehozásához az [Azure Key Vault Premium szolgáltatási réteget kell használni a HSM-védelemmel ellátott kulcsok támogatására](https://azure.microsoft.com/pricing/free-trial/). Emellett felhívjuk figyelmét, hogy ezt a funkciót az Azure China nem támogatja.
+Ezeknek a HSM-védelemmel ellátott kulcsoknak a létrehozásához az [Azure Key Vault Premium szolgáltatási réteget kell használni a HSM-védelemmel ellátott kulcsok támogatására](https://azure.microsoft.com/pricing/details/key-vault/). Emellett felhívjuk figyelmét, hogy ezt a funkciót az Azure China nem támogatja.
 
 A kulcstároló létrehozásakor adja hozzá az alábbi **-SKU** paramétert:
 

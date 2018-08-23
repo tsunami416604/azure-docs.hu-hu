@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 414ef43063cc48b7b9ae7be5fbccbb7906ae8c03
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 271390757b7e79eb29c5a3c14ca9ee1b38b53e29
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29849341"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918004"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Virtuális gép létrehozása virtuális merevlemezzel
 
@@ -29,8 +29,7 @@ Ez a példa virtuális merevlemezzel (VHD) hoz létre egy virtuális gépet.
 Létrehoz egy erőforráscsoportot, egy tárfiókot és egy tárolót, majd feltölti a virtuális merevlemezt a tárolóba egy virtuális gép létrehozásához.
 Lecseréli az SSH nyilvános kulcsát az Ön nyilvános kulcsára, hogy Ön hozzá tudjon férni a virtuális géphez.
 
-Szüksége lesz egy rendszerindító virtuális merevlemezre.
-Az általunk használt VHD letölthető a https://azclisamples.blob.core.windows.net/vhds/sample.vhd címről, de saját VHD-t is használhat. A szkript a `~/sample.vhd` kifejezést keresi.
+Szüksége lesz egy rendszerindító virtuális merevlemezre. A szkript a `~/sample.vhd` kifejezést keresi.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -63,7 +62,6 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Létrehoz egy blobot a tárolóban a VHD feltöltésével. |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | A `--query` elemmel együtt használva ellenőrzi, hogy a virtuális gép neve már használatban van-e. | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Létrehozza a virtuális gépeket. |
-| [az vm access set-linux-user](https://docs.microsoft.com/cli/azure/vm/access#az_vm_access_set_linux_user) | Visszaállítja az SSH-kulcsot, hogy az aktuális felhasználó hozzáférjen a virtuális géphez. |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Lekéri a létrehozott virtuális gép IP-címét. |
 
 ## <a name="next-steps"></a>További lépések
