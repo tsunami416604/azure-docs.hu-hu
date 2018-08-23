@@ -1,6 +1,6 @@
 ---
-title: A Notification Hubs használata Python
-description: Ismerje meg, hogy a Python háttér-Azure Notification Hubs használatával.
+title: A Notification Hubs használata pythonnal
+description: Útmutató az Azure Notification hubs szolgáltatás használata egy Python-háttérrendszert.
 services: notification-hubs
 documentationcenter: ''
 author: dimazaid
@@ -14,44 +14,44 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 32953bacb8fdb135d5f3e0e9324218d2a71b0818
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777018"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056667"
 ---
-# <a name="how-to-use-notification-hubs-from-python"></a>Notification Hubs Python használatával
+# <a name="how-to-use-notification-hubs-from-python"></a>A Notification Hubs a Python használata
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-A Java/PHP/Python vagy Ruby-háttér használata a Notification Hub REST interfész, az MSDN-témakörben leírtak szerint minden értesítési központok szolgáltatás érhető el [Notification hub REST API-k](http://msdn.microsoft.com/library/dn223264.aspx).
+Egy Java/PHP vagy Python vagy Ruby-háttérrendszert a Notification Hub REST-felület használatával, az MSDN-cikkben leírtak szerint a keresztül elérhető összes Notification Hubs szolgáltatás [Notification Hubs – REST API-k](http://msdn.microsoft.com/library/dn223264.aspx).
 
 > [!NOTE]
-> Ez a minta hivatkozás megvalósítása megvalósításához a értesítést küld a Python és nem a hivatalosan támogatott értesítések Hub Python SDK.
+> Ez egy minta referenciaimplementációt megvalósításához a értesítést küld a Python és nem a hivatalosan támogatott értesítések Hub Python SDK-t.
 > 
-> Ez a minta a Python 3.4 leírva.
+> Ez a példa Python 3.4 írt.
 > 
 > 
 
-Ez a cikk azt ismerteti, hogyan számára:
+Ez a cikk bemutatja, hogyan való:
 
-* A Notification Hubs-szolgáltatások a Python egy REST-ügyfél felépítéséhez.
-* A Python felületén a Notification Hub REST API-k értesítések küldéséhez. 
-* Adja a HTTP REST-kérelem/válasz lekérése hibakeresés/oktatási célra. 
+* Hozhat létre REST-ügyfél, a Notification Hubs-szolgáltatások, a Python.
+* A Python felhasználói felületén a Notification Hub REST API-k az értesítések küldéséhez. 
+* Szerezze be a HTTP REST-kérelem/válasz egy memóriakép Hibakeresés és oktatási célú. 
 
-Kövesse a [Get bemutató](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) választás a mobil platform megvalósításához a háttér-rész a Python.
+Kövesse a [első lépéseket ismertető oktatóanyag](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) mobil a választott platformnak, megvalósítása a háttér-részét a Pythonban.
 
 > [!NOTE]
-> A minta a hatókör csak korlátozott mértékben értesítések küldéséhez, és minden olyan regisztrációs felügyeleti nem.
+> A minta a hatókör csak korlátozott értesítések küldéséhez, és bármely regisztrációkezelés még nem csinál.
 > 
 > 
 
 ## <a name="client-interface"></a>Ügyféloldali felület
-A fő ügyféloldali felületen elérhető ugyanazokat a módszereket biztosít a [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx). Ez az interfész lehetővé teszi az oktatóanyagok és ezen a helyen aktuálisan elérhető mintákat közvetlenül fordítását, és az interneten a Közösség által közzétett.
+A fő ügyféloldali felület is adja meg ugyanazokat a módszereket érhetők el a [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx). Ez az interfész lehetővé teszi, hogy közvetlenül fordítása minden az oktatóanyagaink és példáink segítségével érhető el ezen a helyen, és az interneten a Közösség által biztosított.
 
-Az összes elérhető kód megtalálhatja a [Python REST burkoló minta].
+Az összes elérhető kódját megtalálja a [Python REST burkoló minta].
 
-Ha például egy ügyfél létrehozásához:
+Például egy ügyfél létrehozásához:
 
     isDebug = True
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
@@ -62,16 +62,16 @@ Windows bejelentési értesítés küldése:
     hub.send_windows_notification(wns_payload)
 
 ## <a name="implementation"></a>Megvalósítás
-Ha még nem tette, hajtsa végre a [Get bemutató] akár utolsó szakasz esetében a háttér-megvalósításához.
+Ha még nem tette meg, kövesse a [első lépéseket ismertető oktatóanyag] az utolsó szakaszban, hogy a háttér-beállítása.
 
-Egy teljes REST-burkoló megvalósításához a részleteit található [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). Ez a szakasz ismerteti a fő Notification hub REST-végpontok elérését, és értesítések küldéséhez szükséges lépéseket a Python végrehajtása
+A részletekről a teljes REST-burkoló megvalósításához találhatók [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). Ez a szakasz ismerteti a fő lépések Notification hubs szolgáltatás REST-végpontok elérése és értesítések küldéséhez szükséges Python megvalósítása
 
-1. Kapcsolati karakterlánc elemzése
+1. Kapcsolati sztring elemzése
 2. Az engedélyezési jogkivonat létrehozása
-3. A HTTP REST API használatával értesítést küldeni
+3. Egy HTTP REST API használatával értesítést küldeni
 
-### <a name="parse-the-connection-string"></a>Kapcsolati karakterlánc elemzése
-Az ügyfél, amelynek konstruktor elemzi a kapcsolati karakterlánc végrehajtási fő osztály itt található:
+### <a name="parse-the-connection-string"></a>Kapcsolati sztring elemzése
+A következő megvalósítása az ügyfelet, amelynek konstruktor elemzi a kapcsolati karakterláncot a fő osztályban:
 
     class NotificationHub:
         API_VERSION = "?api-version=2013-10"
@@ -96,8 +96,8 @@ Az ügyfél, amelynek konstruktor elemzi a kapcsolati karakterlánc végrehajtá
 
 
 ### <a name="create-security-token"></a>Biztonsági jogkivonat létrehozása
-A részleteket a biztonsági jogkivonat-létrehozási [Itt](http://msdn.microsoft.com/library/dn495627.aspx).
-Adja hozzá a következő módszerek a **NotificationHub** a jogkivonat létrehozásához osztály alapján a jelenlegi kérelem és a hitelesítő adatokat a kapcsolati karakterlánc kinyert URI.
+A részletekért lásd a biztonsági token létrehozása az [Itt](http://msdn.microsoft.com/library/dn495627.aspx).
+Adja hozzá az alábbi módszerek a **Értesítésiközpont** osztállyal hoz létre a token URI-ját az aktuális kérelem és a hitelesítő adatokat a kapcsolati karakterlánc kinyert alapján.
 
     @staticmethod
     def get_expiry():
@@ -126,8 +126,8 @@ Adja hozzá a következő módszerek a **NotificationHub** a jogkivonat létreho
         sas_token = auth_format.format(signature, expiry, self.SasKeyName, my_uri)
         return sas_token
 
-### <a name="send-a-notification-using-http-rest-api"></a>A HTTP REST API használatával értesítést küldeni
-Először is, hogy használja értesítést képviselő osztályt határozza meg.
+### <a name="send-a-notification-using-http-rest-api"></a>Egy HTTP REST API használatával értesítést küldeni
+Először is, hogy használja egy értesítést képviselő osztályt határozza meg.
 
     class Notification:
         def __init__(self, notification_format=None, payload=None, debug=0):
@@ -146,11 +146,11 @@ Először is, hogy használja értesítést képviselő osztályt határozza meg
             # in W3C DTF, YYYY-MM-DDThh:mmTZD (for example, 1997-07-16T19:20+01:00).
             self.headers = None
 
-Ez az osztály egy olyan tároló, a natív értesítési törzs vagy egy sablon értesítés, fejlécek, olyan készlete, (natív platform vagy sablon) és a platform-specifikus tulajdonságok (például az Apple lejárati tulajdonság és WNS fejlécekkel együtt) tartalmazó tulajdonságait.
+Ez az osztály egy olyan tároló, a natív értesítési törzséhez vagy egy sablon értesítés formátuma (natív platform vagy sablon) és az egyes platformokra vonatkozó tulajdonságokat (például Apple lejárati tulajdonságot és a WNS-fejlécek) tartalmazó fejlécek, készletét tulajdonságait.
 
-Tekintse meg a [Notification hub REST API-k dokumentáció](http://msdn.microsoft.com/library/dn495827.aspx) és az összes rendelkezésre álló beállítások az adott értesítési platformok formázza az adathordozót.
+Tekintse meg a [Notification Hubs – REST API-k dokumentációjában](http://msdn.microsoft.com/library/dn495827.aspx) és az adott értesítési platformok formázza az összes rendelkezésre álló lehetőségeket.
 
-Most már ez az osztály írásával küldése értesítési módszerek belül a **NotificationHub** osztály.
+Most már ez az osztály az írási küldése értesítési módszerek belül a **Értesítésiközpont** osztály.
 
     def make_http_request(self, url, payload, headers):
         parsed_url = urllib.parse.urlparse(url)
@@ -258,25 +258,25 @@ Most már ez az osztály írásával küldése értesítési módszerek belül a
         nh = Notification("template", properties)
         self.send_notification(nh, tags)
 
-Ezek a módszerek HTTP POST-kérelmet küld az értesítési központot, és a megfelelő törzs és -fejléceket elküldeni az értesítést /messages végpontja.
+Ezek a metódusok HTTP POST-kérelmet küldeni az értesítési központ, a megfelelő testület és az értesítés elküldéséhez a fejlécek /messages végpontja.
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>Hibakeresési tulajdonság használatával a részletes naplózás engedélyezése
-A HTTP-kérelem részletes naplózás információt ír engedélyezése debug tulajdonság az értesítési központ inicializálása során, és válasz memóriakép, valamint részletes értesítési üzenetet küldeni eredménye. A [Notification Hubs TestSend tulajdonság](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx) az értesítés küldési kimenetelét részletes információt ad vissza. Használja az-inicializálása a következő kódot:
+Engedélyezésével debug tulajdonság az értesítési központ inicializálása során írja a részletes naplózás tájékoztatást talál a HTTP-kérelem és válasz memóriakép, valamint a részletes értesítési üzenet küldése serkenti az eredményt. A [Notification Hubs TestSend tulajdonság](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100)) részletes adatait az értesítés küldési serkenti az eredményt adja vissza. Ezzel – inicializálása a következő kód használatával:
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-A Notification Hub kérés küldése HTTP URL-cím beolvasása kiegészül a "test" lekérdezési karakterlánc eredményeképpen. 
+A Notification Hub küldése kérelem HTTP URL-cím beolvasása hozzáfűzi az egy "test" lekérdezési karakterlánc eredményeként. 
 
 ## <a name="complete-tutorial"></a>Az oktatóanyag befejezése
-Az első lépéseket bemutató oktatóanyaghoz most az értesítés küldésével a Python háttér-hajthatja végre.
+Most már az első lépéseket ismertető oktatóanyag befejezéseként az értesítések küldését egy Python-háttérrendszert.
 
-A Notification Hubs-ügyfél inicializálása (útmutatását, helyettesítse be a kapcsolati karakterlánc és a központ nevét a [Get bemutató]):
+A Notification Hubs-ügyfél inicializálása (helyettesítse be a kapcsolati karakterlánc és a hub nevét a útmutatása a [első lépéseket ismertető oktatóanyag]):
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
-Majd adja hozzá a küldési kódot, attól függően, hogy a célként megadott mobilplatformot. Ez a minta is hozzáad a magasabb szintű módszerek a platformhoz, például a windows; send_windows_notification alapján küldő értesítések engedélyezése (az apple) send_apple_notification stb. 
+Majd adja hozzá a kód küldése a cél mobil platformtól függően. Ez a minta is hozzáadja a magasabb szintű módszerek platformon, például a windows; send_windows_notification küldő értesítések engedélyezése (az apple) send_apple_notification stb. 
 
-### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows áruház és Windows Phone 8.1 (nem Silverlight)
+### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store és a Windows Phone 8.1-es (nem Silverlight)
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
 
@@ -319,45 +319,45 @@ Majd adja hozzá a küldési kódot, attól függően, hogy a célként megadott
     }
     hub.send_baidu_notification(baidu_payload)
 
-A Python kódja egy értesítés jelenik meg a céleszközön kell előállítania.
+A Python-kód futtatása egy értesítés jelenik meg a céleszközön kell előállítania.
 
 ## <a name="examples"></a>Példák:
-### <a name="enabling-debug-property"></a>Debug tulajdonság engedélyezése
-Ha engedélyezi a hibakeresési jelző a NotificationHub inicializálása közben, megjelenik az részletes HTTP-kérelem és válasz memóriakép, valamint NotificationOutcome a következő ahol megismerheti, milyen HTTP-fejlécek át lettek adva, a kérelem, és milyen HTTP-válasz az értesítési központ érkezett: ![][1]
+### <a name="enabling-debug-property"></a>Hibakeresési tulajdonság engedélyezése
+A hibakeresési jelző engedélyezésekor a Értesítésiközpont inicializálása során láthatja részletes HTTP-kérés és válasz memóriakép, valamint NotificationOutcome az alábbihoz hasonló ahol megismerheti, milyen HTTP-fejlécek lesznek átadva a kérésben, és milyen HTTP-válasz az értesítési központ kapott: ![][1]
 
-Megjelenik az értesítési központ eredménye például részletes. 
+Például részletes értesítési központ eredményt látja. 
 
-* Ha az üzenet sikeresen elküldte a leküldéses értesítési szolgáltatáshoz. 
+* Ha az üzenet sikeresen elküldte a Push Notification Service. 
   
         <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
-* Ha nem voltak célok megadva a leküldéses értesítésekhez található, majd valószínűleg kívánja a következő kimenet jelenik meg, a válaszban (amely azt jelzi, hogy történtek-e az értesítés valószínűleg biztosítanak, mert a regisztrációk volt néhány eltérő található regisztrációt. címkék)
+* Ha nem voltak célok megadva leküldéses értesítésekhez található, majd valószínűleg fog a következő eredmény látható, a válaszban (amely azt jelzi, hogy voltak-e, hogy az értesítés valószínűleg, mert a regisztrációk volt néhány eltérő található regisztrációt. címkék)
   
         '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
 
-### <a name="broadcast-toast-notification-to-windows"></a>Szórási Windows bejelentési értesítés
-Figyelje meg a fejlécek beolvasása kiküldött, ha a Windows-ügyfélhez egy szórási bejelentési értesítést küld. 
+### <a name="broadcast-toast-notification-to-windows"></a>Szórási Windows bejelentési értesítése
+Figyelje meg, hogy a fejlécek, amelyek küldi el a rendszer, amikor a Windows-ügyfél egy szórási bejelentési értesítést küld. 
 
     hub.send_windows_notification(wns_payload)
 
 ![][2]
 
-### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Egy tag (vagy egy címke kifejezés) megadása értesítés küldése
-Figyelje meg, a címkék HTTP-fejlécet, amely lekérdezi a HTTP-kérelem fel (az alábbi példában a rendszer értesítést küld csak a "Sport" tartalom regisztrációk)
+### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Adjon meg egy címkét (vagy címkét alkotó kifejezés) értesítés küldése
+Figyelje meg, hogy a címkék HTTP-fejléc, amelyeket hozzá beolvassa a HTTP-kérelem (az alábbi példában a rendszer értesítést küld csak "Sport" hasznos adattal regisztrációk)
 
     hub.send_windows_notification(wns_payload, "sports")
 
 ![][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Több címkék megadásával értesítés küldése
-Figyelje meg, hogyan változik a címkék HTTP-fejléc, több címke elküldésekor. 
+Figyelje meg, hogyan címkék HTTP-fejléc változik, ha több címkét érkeznek. 
 
     tags = {'sports', 'politics'}
     hub.send_windows_notification(wns_payload, tags)
 
 ![][4]
 
-### <a name="templated-notification"></a>Értesítési sablon
-Figyelje meg, hogy a formátum HTTP-fejléc módosítja és a tartalom törzsében van küldi el a HTTP-kérelem törzse:
+### <a name="templated-notification"></a>Sablonalapú értesítés
+Figyelje meg, hogy a formátum HTTP-fejléc változik, és a hasznos adat szervezet zajlik a HTTP-kérés törzse részeként:
 
 **Ügyféloldali - regisztrált sablon**
 
@@ -372,17 +372,17 @@ Figyelje meg, hogy a formátum HTTP-fejléc módosítja és a tartalom törzséb
 ![][5]
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk bemutatta, hogyan Python többi ügyfelet a Notification Hubs létrehozni. Itt a következőket teheti:
+Ez a cikk bemutatta, hogyan hozhat létre a Notification Hubs Python REST-ügyféllel. Itt a következőket teheti:
 
-* Töltse le a teljes [Python REST burkoló minta], amely tartalmazza az ebben a cikkben a kódot.
-* Folytathatja az címkézés funkciót a Notification Hubs a [Megtörje hírek oktatóanyag]
-* A Notification Hubs sablonok funkcióival kapcsolatos folytathatja a [azaz híreket az oktatóanyag]
+* Töltse le a teljes [Python REST burkoló minta], amely ebben a cikkben minden kódját tartalmazza.
+* Többet szeretne megtudni a Notification Hubs címkézési funkciójával az a [Kompatibilitástörő hírek oktatóanyag]
+* A Notification Hubs sablonok szolgáltatása többet szeretne megtudni a [azaz hírek oktatóanyag]
 
 <!-- URLs -->
 [Python REST burkoló minta]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[Get bemutató]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Megtörje hírek oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[azaz híreket az oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[Első lépéseket ismertető oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Kompatibilitástörő hírek oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[Azaz hírek oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

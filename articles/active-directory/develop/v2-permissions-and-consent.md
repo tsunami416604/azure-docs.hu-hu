@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b38d90251ab59e537e7d637f45f04c4db87a94ae
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 6d3847f547646ae7c62f98b4cee716af5c6ba5e9
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581645"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054943"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Hatókörök, engedélyek és jóváhagyás az Azure Active Directory v2.0-végpont
 Alkalmazások, amelyek integrálhatók az Azure Active Directory (Azure AD) egy engedélyezési modellt biztosít a felhasználók hogyan az alkalmazás hozzáférhessen-e adataik felett, kövesse. A rendszer frissítette a 2.0-s verziójú megvalósítása a használt engedélyezési modellt, és hogyan kell működjön az alkalmazás Azure AD-vel változik. Ez a cikk ismerteti az alapvető fogalmait, az engedélyezési modellt, beleértve a hatókörök, engedélyek és jóváhagyás.
@@ -73,6 +73,19 @@ A [ `offline_access` hatókör](http://openid.net/specs/openid-connect-core-1_0.
 Ha az alkalmazás nem kér a `offline_access` hatókör, hogy nem kapja meg frissítési biztonsági jogkivonat. Ez azt jelenti, hogy ha a hozzáférési kód beváltása az [OAuth 2.0 hitelesítési kódfolyamat](active-directory-v2-protocols.md), csak a hozzáférési jogkivonatot kap a `/token` végpont. A hozzáférési jogkivonat érvénytelen, rövid ideig. A hozzáférési jogkivonatot általában egy óra múlva lejár. Biztonsági másolatot at, hogy pont, az alkalmazás kell átirányítja a felhasználót a `/authorize` végpontot, hogy egy új hozzáférési kód lekérése. Az átirányítás, az alkalmazás típusától függően során a felhasználó előfordulhat, hogy szükség írja be újra a hitelesítő adatait, vagy újra járul hozzá az engedélyeket.
 
 Letöltheti a frissítési biztonsági jogkivonat kapcsolatos további információkért lásd: a [v2.0 protokoll referenciái](active-directory-v2-protocols.md).
+
+## <a name="accessing-v10-resources"></a>1.0-s verziójú erőforrások elérése
+2.0-s verziójú alkalmazások jogkivonatok igényelheti és hozzájárulás 1.0-s verziójú alkalmazások (például a Power bi API `https://analysis.windows.net/powerbi/api` vagy a Sharepoint API `https://{tenant}.sharepoint.com`).  Ehhez az alkalmazás URI-t és a hatókör karakterláncát az is lehet hivatkozni a `scope` paraméter.  Ha például `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All` lenne kérése a Power bi `View all Datasets` engedélyt az alkalmazás. 
+
+Több engedélyek kéréséhez, fűzze hozzá a teljes URI-t egy-egy szóközzel vagy `+`, pl. `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://analysis.windows.net/powerbi/api/Report.Read.All`.  Ez egyaránt kér a `View all Datasets` és `View all Reports` engedélyeket.  Vegye figyelembe, hogy az összes Azure AD-hatókörök és engedélyek alkalmazások csak kezdeményezhetik kérést egy erőforrás - egyszerre ezért a kérelem `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://api.skypeforbusiness.com/Conversations.Initiate`, amely kér, mind a Power bi `View all Datasets` engedélyt, és a Skype vállalati verzió `Initiate conversations` engedélyt, a rendszer elutasítja a két különböző erőforrások kérő engedélyek miatt.  
+
+### <a name="v10-resources-and-tenancy"></a>1.0-s verziójú erőforrásokat és bérlős üzemmód
+Az 1.0-s verziója és a 2.0-s verziójú Azure AD-protokollokat használ egy `{tenant}` paraméter beágyazva az URI-t (`https://login.microsoftonline.com/{tenant}/oauth2/`).  1.0-s verzió szervezeti erőforrások eléréséhez a v2.0-végpont használata esetén a `common` és `consumers` bérlők nem használható, mivel ezeket az erőforrásokat csak elérhetők a szervezeti (Azure AD) fiókok.  Így ezeket az erőforrásokat, csak a bérlő GUID elérésekor vagy `organizations` lehet használni a `{tenant}` paraméter.  
+
+Ha egy alkalmazás megpróbál hozzáférni egy szervezeti 1.0-s verzió-erőforrást egy nem megfelelő bérlőnek a használatával, az alábbihoz hasonló hibát visszaad. 
+
+`AADSTS90124: Resource 'https://analysis.windows.net/powerbi/api' (Microsoft.Azure.AnalysisServices) is not supported over the /common or /consumers endpoints. Please use the /organizations or tenant-specific endpoint.`
+
 
 ## <a name="requesting-individual-user-consent"></a>Egyéni felhasználói jóváhagyás kérése
 Az egy [OpenID Connect vagy az OAuth 2.0-s](active-directory-v2-protocols.md) engedélyezési kérést, egy alkalmazás kérheti a szükséges engedélyeket a `scope` lekérdezési paraméter. Például amikor egy felhasználó bejelentkezik az alkalmazásba, az alkalmazás küld egy kérést például az alábbi példa (a sortörések hozzáadva az olvashatóság érdekében):

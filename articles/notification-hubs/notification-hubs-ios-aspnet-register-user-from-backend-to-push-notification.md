@@ -1,6 +1,6 @@
 ---
-title: Az aktuális felhasználó a leküldéses értesítések regisztrálása webes API használatával |} Microsoft Docs
-description: Útmutató az iOS-alkalmazásoknak az Azure Notification Hubs a leküldéses értesítési regisztrációban kérése regisztrálás ASP.NET Web API hajtja végre.
+title: Az aktuális felhasználó a leküldéses értesítések regisztrálása a webes API-val |} A Microsoft Docs
+description: Ismerje meg, hogyan kérjen egy iOS-alkalmazást az Azure Notification Hubs a leküldéses értesítési regisztrációban, ha registeration végzi, az ASP.NET webes API-t.
 services: notification-hubs
 documentationcenter: ios
 author: dimazaid
@@ -14,37 +14,37 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c43c15131afb5fbf346b0137dac566f5331c65a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f89c97f1220c0e949912a3002021eca20f91441d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776372"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060823"
 ---
-# <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Az aktuális felhasználó a leküldéses értesítések regisztrálása ASP.NET használatával
+# <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>A leküldéses értesítések az aktuális felhasználó regisztrálása az ASP.NET használatával
 > [!div class="op_single_selector"]
 > * [iOS](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 > 
 > 
 
 ## <a name="overview"></a>Áttekintés
-Ez a témakör bemutatja, hogyan kérjen az Azure Notification Hubs leküldéses értesítési regisztrációban, ha regisztrációs ASP.NET Web API hajtja végre. Ez a témakör kibővíti az oktatóanyag [értesítse a felhasználókat a Notification hubs használatával]. Már végrehajtotta a szükséges lépéseket, hogy az oktatóanyagban a hitelesített mobilszolgáltatás létrehozásához. Az értesítendő felhasználók forgatókönyvön további információkért lásd: [értesítse a felhasználókat a Notification hubs használatával].
+Ez a témakör bemutatja, hogyan kérhet az Azure Notification Hubs leküldéses értesítések regisztrálása regisztrációs ASP.NET webes API által végrehajtott. Ez a témakör az oktatóanyag kibővíti [értesítse a felhasználókat a Notification hubs használatával]. Kell már végrehajtotta a szükséges lépéseket, hogy az oktatóanyag a hitelesített mobilszolgáltatás létrehozásához. Az értesítendő felhasználók forgatókönyv további információkért lásd: [értesítse a felhasználókat a Notification hubs használatával].
 
 ## <a name="update-your-app"></a>Az alkalmazás frissítése
 1. A MainStoryboard_iPhone.storyboard adja hozzá a következő összetevőket az objektumtárból:
    
-   * **Címke**: "A Notification Hubs felhasználói leküldése"
-   * **Címke**: "Végrehajtott"
+   * **Címke**: "A felhasználó a Notification hubs használatával leküldéses"
+   * **Címke**: "InstallationId"
    * **Címke**: "User"
    * **Szövegmező**: "User"
    * **Címke**: "Password"
    * **Szövegmező**: "Password"
    * **Gomb**: "Bejelentkezés"
      
-     Ezen a ponton a storyboard néz ki a következő:
+     Ezen a ponton a storyboard fájlt definiál a következőhöz hasonlóan néz ki:
      
       ![][0]
-2. Segéd-szerkesztőben kimeneteket a kapcsolt vezérlők létrehozása, keresheti őket, az mezők csatlakozzon a nézetvezérlő (delegált), és hozzon létre egy **művelet** a a **bejelentkezési** gombra.
+2. A Segéd-szerkesztőben a kapcsolt vezérlők kimeneteket hozzon létre és hívhatják meg őket, a szöveges mezők összekapcsolása a View-Controller (delegált) és hozzon létre egy **művelet** számára a **bejelentkezési** gombra.
    
        ![][1]
    
@@ -55,11 +55,11 @@ Ez a témakör bemutatja, hogyan kérjen az Azure Notification Hubs leküldéses
         @property (weak, nonatomic) IBOutlet UITextField *Password;
    
         - (IBAction)login:(id)sender;
-3. Hozzon létre egy osztályt **deviceinfo információja**, és másolja az alábbi kódot a fájl DeviceInfo.h felület szakaszába:
+3. Hozzon létre egy osztályt **DeviceInfo**, és másolja az alábbi kódot a fájl DeviceInfo.h felület szakaszába:
    
         @property (readonly, nonatomic) NSString* installationId;
         @property (nonatomic) NSData* deviceToken;
-4. Az implementációs szakaszban DeviceInfo.m fájl másolja az alábbi kódot:
+4. Másolja az alábbi kódot a megvalósítási szakaszban DeviceInfo.m fájl:
    
             @synthesize installationId = _installationId;
    
@@ -90,32 +90,32 @@ Ez a témakör bemutatja, hogyan kérjen az Azure Notification Hubs leküldéses
                                       ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
                 return hexToken;
             }
-5. PushToUserAppDelegate.h adja hozzá a következő tulajdonság egypéldányos:
+5. PushToUserAppDelegate.h adja hozzá a következő tulajdonság egyszeres:
    
         @property (strong, nonatomic) DeviceInfo* deviceInfo;
-6. Az a **didFinishLaunchingWithOptions** PushToUserAppDelegate.m, metódusban adja hozzá a következő kódot:
+6. Az a **didFinishLaunchingWithOptions** metódus az PushToUserAppDelegate.m, adja hozzá a következő kódot:
    
         self.deviceInfo = [[DeviceInfo alloc] init];
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    Az első sor inicializálja a **deviceinfo információja** egypéldányos. A második sor elindul a regisztráció a leküldéses értesítések, amelyek már létezik, ha már végrehajtotta a [Ismerkedés a Notification Hubs] oktatóanyag.
-7. A PushToUserAppDelegate.m, valósítja meg a **didRegisterForRemoteNotificationsWithDeviceToken** a AppDelegate a, és adja hozzá a következő kódot:
+    Az első sor inicializálja a **DeviceInfo** egypéldányos. A második sor elindítja a regisztráció leküldéses értesítésekhez, amely már van jelen, ha már végrehajtotta a [Notification Hubs használatának első lépései] oktatóanyag.
+7. A metódus megvalósításához PushToUserAppDelegate.m, **didRegisterForRemoteNotificationsWithDeviceToken** az AppDelegate-ben, és adja hozzá a következő kódot:
    
         self.deviceInfo.deviceToken = deviceToken;
    
-    Ez a beállítás az eszköz jogkivonatát a kérelemhez.
+    Ez a beállítás az eszköz jogkivonatát a kéréshez.
    
    > [!NOTE]
-   > Ezen a ponton nem lehetnek többi kód az ezzel a módszerrel. Ha már rendelkezik egy hívás a **registerNativeWithDeviceToken** metódus befejezése felvett a [Ismerkedés a Notification Hubs](/manage/services/notification-hubs/get-started-notification-hubs-ios/) oktatóanyag, kell Megjegyzés kimenő, vagy távolítsa el az adott hívás.
+   > Ezen a ponton nem lehetnek bármilyen más kód ezzel a módszerrel. Ha már rendelkezik egy hívás a **registerNativeWithDeviceToken** metódus befejezésekor jelent meg a [Ismerkedés a Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md) oktatóanyag, ha megjegyzésbe, vagy távolítsa el a hívást.
    > 
    > 
 8. A PushToUserAppDelegate.m fájlban adja hozzá a következő kezelő metódust:
    
-   * (a "void") alkalmazás:(UIApplication *) alkalmazás didReceiveRemoteNotification:(NSDictionary *) userInfo {NSLog (@"% @", userInfo);   UIAlertView * riasztás = [[UIAlertView foglalási] initWithTitle:@"Notification" üzenetet: [userInfo objectForKey:@"inAppMessage"] delegált: üres cancelButtonTitle: @"OK" otherButtonTitles:nil, üres];   [riasztás megjelenítése]; }
+   * (void) alkalmazás:(UIApplication *) alkalmazás didReceiveRemoteNotification:(NSDictionary *) userInfo {NSLog (@"a(z) % @", userInfo);   UIAlertView * riasztás = [[UIAlertView foglalási] initWithTitle:@"Notification" üzenetet: [userInfo objectForKey:@"inAppMessage"] delegált: nil cancelButtonTitle: @"OK" otherButtonTitles:nil, nil];   [riasztás megjelenítése]; }
    
-   Ez a módszer a felhasználói felületen megjelenít egy riasztást, amikor az alkalmazás futtatása értesítéseket fogad.
-9. Nyissa meg a PushToUserViewController.m fájlt, és térjen vissza a billentyűzet a következő megvalósításában:
+   Ez a módszer a felhasználói felületen megjelenít egy riasztást, ha az alkalmazás értesítéseket fogad a futás közben.
+9. Nyissa meg a PushToUserViewController.m fájlt, és a következő implementációban a billentyűzet vissza:
    
         - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
             if (theTextField == self.User || theTextField == self.Password) {
@@ -123,15 +123,15 @@ Ez a témakör bemutatja, hogyan kérjen az Azure Notification Hubs leküldéses
             }
             return YES;
         }
-10. Az a **viewDidLoad** PushToUserViewController.m fájlban metódus inicializálni a végrehajtott címke az alábbiak szerint:
+10. Az a **viewDidLoad** metódus PushToUserViewController.m a fájlban a következő inicializálása a installationId címkét:
     
          DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
          Self.installationId.text = deviceInfo.installationId;
-11. Adja hozzá a következő tulajdonságok PushToUserViewController.m felülettel:
+11. Adja hozzá a következő tulajdonságokat a PushToUserViewController.m felületen:
     
         @property (readonly) NSOperationQueue* downloadQueue;
         - (NSString*)base64forData:(NSData*)theData;
-12. Adja hozzá a következő végrehajtására:
+12. Adja hozzá az alábbi megvalósításra:
     
             - (NSOperationQueue *)downloadQueue {
                 if (!_downloadQueue) {
@@ -174,7 +174,7 @@ Ez a témakör bemutatja, hogyan kérjen az Azure Notification Hubs leküldéses
     
                 return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
             }
-13. Másolja az alábbi kódot a **bejelentkezési** eseménykezelő metódus hozta létre xcode-ban:
+13. Másolja az alábbi kódot a **bejelentkezési** kezelő metódus xcode-ban hozott létre:
     
             DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
     
@@ -207,9 +207,9 @@ Ez a témakör bemutatja, hogyan kérjen az Azure Notification Hubs leküldéses
                 }
             }];
     
-    Ez a módszer egy telepítési Azonosítót és a csatorna lekérdezi a leküldéses értesítések, és elküldi, az eszköz típusa, valamint a hitelesített webes API-módszer, amely a Notification Hubs egy regisztrációs hoz. A Web API lett definiálva [értesítse a felhasználókat a Notification hubs használatával].
+    Ez a módszer a leküldéses értesítésekhez egy telepítési Azonosítót és a csatorna beolvasása, és a hitelesített webes API-metódus, amely létrehoz egy regisztrációt a Notification Hubs küldi az eszköz típusától, valamint azt. A webes API lett definiálva [értesítse a felhasználókat a Notification hubs használatával].
 
-Most, hogy az ügyfélalkalmazás frissítették, térjen vissza a [értesítse a felhasználókat a Notification hubs használatával] , és frissítse a mobilszolgáltatáshoz az értesítések küldése a Notification Hubs használatával.
+Most, hogy az ügyfélalkalmazás frissítve lett, térjen vissza a [értesítse a felhasználókat a Notification hubs használatával] és frissítheti a mobilszolgáltatást küldhetők értesítések a Notification Hubs használatával.
 
 <!-- Anchors. -->
 
@@ -218,6 +218,6 @@ Most, hogy az ügyfélalkalmazás frissítették, térjen vissza a [értesítse 
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-[értesítse a felhasználókat a Notification hubs használatával]: /manage/services/notification-hubs/notify-users-aspnet
+[Értesítse a felhasználókat a Notification hubs használatával]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 
-[Ismerkedés a Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+[Notification Hubs használatának első lépései]: notification-hubs-ios-apple-push-notification-apns-get-started.md

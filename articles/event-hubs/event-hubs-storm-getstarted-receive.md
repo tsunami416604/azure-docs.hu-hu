@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 3880ffe1b61b59e4d05e594a34e1119188177b56
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: c70096796bb038c27d18bb3467d7c425dafd5c5b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002763"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058414"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Események fogadása az Event Hubs, az Apache Storm használatával
 
@@ -131,7 +131,7 @@ Ebben az oktatóanyagban egy [HDInsight Storm] [ HDInsight Storm] telepítése, 
     }
     ```
     
-    A Storm bolt naplózza a fogadott események tartalmát. Ez egyszerűen bővíthető tárolja a rekordokat egy adattárolási szolgáltatásban. A [Event Hub-példában a HDInsight Storm] ugyanezzel a módszerrel használja az adatok tárolásához Azure Storage és a Power bi-ban.
+    A Storm bolt naplózza a fogadott események tartalmát. Ez egyszerűen bővíthető tárolja a rekordokat egy adattárolási szolgáltatásban. A [Az Event Hubs-példában a HDInsight Storm] ugyanezzel a módszerrel használja az adatok tárolásához Azure Storage és a Power bi-ban.
 11. Hozzon létre egy osztályt nevű **LogTopology** a következő kóddal:
     
     ```java

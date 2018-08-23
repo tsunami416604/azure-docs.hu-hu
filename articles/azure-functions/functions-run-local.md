@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan programozásához és teszteléséhez a parancs
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cb336d6742aab10e1fd8305fd52f1376bb4f2598
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618614"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060859"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -131,13 +131,13 @@ A terminálablakban, vagy a parancssorból futtassa a projektet és a helyi Git-
 func init MyFunctionProj
 ```
 
+Ha megadta a projekt nevét, egy ilyen nevű új mappát, és a inicializálva. Ellenkező esetben az aktuális mappa inicializálva van.  
 A verzió 2.x, ha a parancs futtatása választania kell egy modult a projekthez. Ha azt tervezi, JavaScript-függvények kifejlesztése, válassza a **csomópont**:
 
 ```output
 Select a worker runtime:
 dotnet
 node
-java
 ```
 
 A felfelé és lefelé nyíl billentyűk, válasszon egy nyelvet, majd nyomja le az Enter. A kimenet egy JavaScript-projekt az alábbi példához hasonlóan néz ki:
@@ -298,19 +298,24 @@ A Functions-projekt futtatása, futtassa az a funkciók gazdagép. A gazdagép l
 ```bash
 func host start
 ```
+A `host` parancs csak szükséges verzió 1.x.
 
 `func host start` a következő beállításokat támogatja:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
-|**`--port -p`** | A helyi port figyelésére. Alapértelmezett érték: 7071. |
-| **`--debug <type>`** | Elindul az a gazdagép, a hibakeresési port meg, hogy lehet kapcsolódni a **func.exe** feldolgozása a [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) vagy [Visual Studio 2017](functions-dotnet-class-library.md). A *\<típus\>* lehetőségeket vannak `VSCode` és `VS`.  |
 | **`--cors`** | CORS-források, szóközök nélküli szövegláncként vesszővel tagolt listája. |
-| **`--nodeDebugPort -n`** | A csomópont hibakereső használandó port. Alapértelmezett: Launch.json vagy 5858 egy értéket. |
-| **`--debugLevel -d`** | A konzol nyomkövetési szintet (kikapcsolva, részletes, adatok, figyelmeztetés vagy hiba). Alapértelmezett: információ.|
+| **`--debug <type>`** | Elindul az a gazdagép, a hibakeresési port meg, hogy lehet kapcsolódni a **func.exe** feldolgozása a [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) vagy [Visual Studio 2017](functions-dotnet-class-library.md). A *\<típus\>* lehetőségeket vannak `VSCode` és `VS`.  |
+| **`--port -p`** | A helyi port figyelésére. Alapértelmezett érték: 7071. |
 | **`--timeout -t`** | Az a funkciók gazdagép indítása, másodpercek alatt időtúllépése. Alapértelmezett érték: 20 másodperc.|
 | **`--useHttps`** | Kösse `https://localhost:{port}` helyett a `http://localhost:{port}`. Alapértelmezés szerint ez a beállítás a számítógép megbízható tanúsítványt hoz létre.|
-| **`--pause-on-error`** | Mielőtt kilépne a folyamat szüneteltetéséhez további adatokat. Használt Core Tools a Visual Studio vagy a VS Code elindításához.|
+| **`--build`** | Aktuální projekt futtatása előtt hozhat létre. Verzió 2.x-es és a C# projekty csak. |
+| **`--cert`** | Egy titkos kulcsot tartalmazó .pfx-fájl elérési útja. Csak a felhasznált `--useHttps`. Verzió csak 2.x. | 
+| **`--password`** | A jelszó vagy egy fájlt, amely a jelszót a .pfx fájl tartalmazza. Csak a felhasznált `--cert`. Verzió csak 2.x. |
+| **`--language-worker`** | A nyelvi feldolgozó konfigurálása argumentumokat. Verzió csak 2.x. |
+| **`--nodeDebugPort -n`** | A csomópont hibakereső használandó port. Alapértelmezett: Launch.json vagy 5858 egy értéket. Verzió csak 1.x. |
+
+Esetében a C# hordozhatóosztálytár-projektjének (.csproj), meg kell adni a `--build` létrehozni a szalagtár .dll fájl.
 
 A Functions gazdagép indításakor, azt az URL-cím a HTTP által aktivált függvények kimenete:
 

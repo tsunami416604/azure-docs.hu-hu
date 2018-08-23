@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 6e7de0a7b580c0028982895487117ab98d0cd612
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 028a8f35b6ffc4b429725e91045e70112f2bdabd
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503451"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055302"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Az Azure App Service Web Apps szolgáltatásban PHP konfigurálása
 
@@ -189,7 +189,7 @@ Alapértelmezés szerint az App Service nem csinál semmi a composer.json, ha re
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért lásd: a [PHP fejlesztői központ](/develop/php/).
+További információkért lásd: a [PHP fejlesztői központ](https://azure.microsoft.com/develop/php/).
 
 > [!NOTE]
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.

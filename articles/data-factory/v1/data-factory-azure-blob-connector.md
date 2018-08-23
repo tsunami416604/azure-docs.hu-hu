@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Blob Storage |} Microsoft Docs
-description: 'Ismerje meg, hogy a blob-adatok másolása az Azure Data Factory. A minta: adatok másolása az Azure Blob Storage és az Azure SQL Database.'
+title: Adatok másolása és- tárolókról az Azure Blob Storage |} A Microsoft Docs
+description: 'Megtudhatja, hogyan másolhat blob adatokat az Azure Data Factoryban. A minta: adatok másolása az Azure Blob Storage és az Azure SQL Database.'
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,85 +14,85 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ec3c87c39cd8b8d1dafa8ad062776171c602135b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2efc20d5a2248fed69f38880a9e75a6ccb2403dd
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047060"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057285"
 ---
-# <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Blob Storage Azure Data Factory használatával
+# <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatával az Azure Blob Storage-ból
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](data-factory-azure-blob-connector.md)
-> * [(Az aktuális verzió) 2-es verzió](../connector-azure-blob-storage.md)
+> * [1-es verzió](data-factory-azure-blob-connector.md)
+> * [2-es verzió (aktuális verzió)](../connector-azure-blob-storage.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [Azure Blob Storage-összekötőt, a V2](../connector-azure-blob-storage.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a v2-ben az Azure Blob Storage-összekötő](../connector-azure-blob-storage.md).
 
 
-Ez a cikk ismerteti, hogyan a másolási tevékenység során az Azure Data Factory és az Azure Blob Storage-adatok másolása. Buildekről nyújtanak a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amelynek során adatátvitel a másolási tevékenység az általános áttekintést.
+Ez a cikk bemutatja, hogyan kell használni a másolási tevékenység az Azure Data Factoryban az adatok másolásához, és az Azure Blob Storage-ból. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
 
 ## <a name="overview"></a>Áttekintés
-Bármely támogatott forrás adattárolóból Azure Blob Storage vagy az Azure Blob Storage bármely támogatott fogadó adattárolóhoz adatainak másolhatja. A következő táblázat adattárolókhoz támogatott adatforrások listáját tartalmazza, vagy a másolási tevékenység által fogadók esetében. Adatok áthelyezése például **a** egy SQL Server-adatbázist vagy egy Azure SQL-adatbázis **való** egy Azure blobtárolóba. És adatainak másolhatja **a** Azure blob storage **való** Azure SQL Data Warehouse vagy egy Azure Cosmos DB gyűjteményt. 
+Másolhatja az adatokat bármely támogatott forrás adattárból az Azure Blob Storage vagy az Azure Blob Storage bármilyen támogatott fogadó adattárba. Az alábbi táblázat források támogatott adattárak listáját tartalmazza, vagy a másolási tevékenység által fogadók. Adatok áthelyezése például **a** egy SQL Server-adatbázist vagy egy Azure SQL database **való** egy Azure blob storage. És az adatokat másolja **a** az Azure blob storage-bA **való** az Azure SQL Data Warehouse és a egy Azure Cosmos DB-gyűjteményben. 
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
-Adatokat másolhat **az Azure Blob Storage** tárolja a következő adatokat:
+Adatokat másolja **Azure Blob Storage-ból** tárolja, a következő adatokat:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-Adatok másolása a következő adatokat tárolja **Azure Blob Storage**:
+A következő adattárakból származó adatokat másolja **az Azure Blob Storage**:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
  
 > [!IMPORTANT]
-> Másolási tevékenység támogatja az adatok másolását a/az általános célú Azure Storage-fiókok és a gyakran használt adatok/ritkán Blob Storage tárolóban. A tevékenység támogatja **blokk, hozzáfűzése, vagy olvasása lapblobokat**, azonban a **csak a blokkblobokat írása**. Prémium szintű Storage nem támogatott, a fogadó, mert a lapblobokat ezt támogatja.
+> A másolási tevékenység másolhatja az adatokat, és az általános célú Azure Storage-fiókok és a gyakori és ritka elérésű Blob storage támogatja. A tevékenység támogatja **letiltása, hozzáfűzése, vagy olvasása lapblobokat**, azonban a **csak blokkblobok írása**. Az Azure Premium Storage nem támogatott fogadóként, mert azt-je támogat lapblobokat.
 > 
-> Másolási tevékenység adatot nem töröl a forrás után a rendszer sikeresen átmásolja az adatokat a célhelyre. Ha sikeres másolatot megszüntetését követően törölheti a forrásadatok van szüksége, hozzon létre egy [egyéni tevékenység](data-factory-use-custom-activities.md) törli az adatokat, és az adatcsatorna használja a tevékenységet. Egy vonatkozó példáért lásd: a [Delete blob vagy mappa mintát a Githubon](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity). 
+> A másolási tevékenység nem törli adatokat a forrás-után az adatok sikerült átmásolni a célhelyre. Ha a forrás-adatok törlése után a sikeres másolási van szüksége, hozzon létre egy [egyéni tevékenység](data-factory-use-custom-activities.md) törölheti az adatokat, és használja a tevékenységet a folyamat. Egy vonatkozó példáért tekintse meg a [Delete blob vagy mappa minta a Githubon](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity). 
 
 ## <a name="get-started"></a>Bevezetés
-A másolási tevékenység, amely helyezi át az adatokat az Azure Blob Storage vagy a különböző eszközök/API-k használatával létrehozhat egy folyamatot.
+Létrehozhat egy folyamatot egy másolási tevékenységgel, amely áthelyezi az adatokat és-tárolókról az Azure Blob Storage más eszközök/API-k használatával.
 
-Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Ennek a cikknek a [forgatókönyv](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) adatok másolása az Azure Blob Storage-helyre máshová Azure Blob Storage folyamat létrehozásához. Az adatok másolása az Azure Blob Storage Azure SQL Database adatcsatorna létrehozásával oktatóanyagok esetén lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md).
+A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. A cikk egy [forgatókönyv](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) folyamat adatokat másol egy Azure Blob Storage-helyre egy másik Azure Blob Storage-helyre létrehozására szolgáló. A folyamat adatokat másol egy Azure Blob Storage az Azure SQL Database létrehozására, olvassa el [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 
-Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+-Folyamatok létrehozására is használhatja az alábbi eszközöket: **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
-Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban:
+Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
-1. Hozzon létre egy **adat-előállító**. Egy adat-előállító tartalmazhat egy vagy több folyamatok. 
-2. Hozzon létre **összekapcsolt szolgáltatások** bemeneti és kimeneti adatok csatolásához tárolja a a data factory. Például ha a másolt adatok az az Azure blob storage Azure SQL-adatbázishoz, hoz létre az Azure storage-fiók és az Azure SQL adatbázis összekapcsolása a data factory két összekapcsolt szolgáltatások. Azure Blob Storage jellemző csatolt szolgáltatás tulajdonságait, lásd: [szolgáltatástulajdonságok kapcsolódó](#linked-service-properties) szakasz. 
-2. Hozzon létre **adatkészletek** a másolási művelet bemeneti és kimeneti adatok. A példában az előző lépésben említett hozzon létre egy adatkészlet adja meg a blob-tároló és a bemeneti adatokat tartalmazó mappát. És hoz létre, ha meg szeretné adni az SQL-tábla az Azure SQL-adatbázis, amely tárolja az adatokat a blob-tároló átmásolja egy másik DataSet adatkészletben. Adott Azure Blob-tároló adatkészlet tulajdonságai, lásd: [adatkészlet tulajdonságai](#dataset-properties) szakasz.
-3. Hozzon létre egy **csővezeték** , amely fogad egy bemeneti adatkészlet és egy kimeneti adatkészletet másolási tevékenységgel. A korábban említett példában BlobSource forrás-és SqlSink akár használhatja a fogadó a másolási tevékenységhez. Ehhez hasonlóan az Azure SQL Database az Azure Blob Storage másolása, használható SqlSource és BlobSink a másolási tevékenység. Tekintse meg a másolási tevékenység tulajdonságok adott Azure Blob Storage [tevékenység Tulajdonságok másolása](#copy-activity-properties) szakasz. További részletek a tárolóban használatáról a forrás vagy a fogadó a hivatkozásra a adattároló az előző szakaszban.  
+1. Hozzon létre egy **adat-előállító**. Adat-előállító egy vagy több folyamattal is tartalmazhat. 
+2. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához. Például ha a másolt adatokat egy Azure blob storage-ból egy Azure SQL Database-adatbázishoz, létrehozhat két társított szolgáltatást az Azure storage-fiók és Azure SQL database összekapcsolása a data factory. Konkrétan az Azure Blob Storage társított szolgáltatás tulajdonságait, lásd: [társított szolgáltatások tulajdonságai](#linked-service-properties) szakaszban. 
+2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. A példában az előző lépésben említett megadja a blobtárolót és a bemeneti adatokat tartalmazó mappát egy adatkészletet hoz létre. És adja meg az SQL-táblát az Azure SQL Database tárolja az adatokat a blob storage-tárhelyéből, egy másik adatkészletet hoz létre. Konkrétan az Azure Blob Storage-adatkészlet tulajdonságai, lásd: [adatkészlet tulajdonságai](#dataset-properties) szakaszban.
+3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. A példában azt korábban említettük használhat BlobSource a forrás-és SqlSink fogadóként a másolási tevékenység. Hasonlóképpen, az Azure SQL Database-ből az Azure Blob Storage másolása, SqlSource és a használata BlobSink a másolási tevékenység. Másolási tevékenység tulajdonságai konkrétan az Azure Blob Storage, lásd: [másolási tevékenység tulajdonságai](#copy-activity-properties) szakaszban. A forrás vagy a fogadó adattár használatát részletekért kattintson a hivatkozásra az adattár az előző szakaszban.  
 
-A varázsló használatakor a Data Factory entitások (összekapcsolt szolgáltatások adatkészletek és a feldolgozási sor) JSON-definíciók automatikusan létrejönnek. Eszközök/API-k (kivéve a .NET API-t) használata esetén adja meg a Data Factory entitások a JSON formátum használatával.  A mintában használt adatok másolása az Azure Blob Storage az adat-előállító entitások JSON-definíciók, lásd: [JSON példák](#json-examples-for-copying-data-to-and-from-blob-storage  ) című szakaszát.
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  Az adatok másolása az Azure Blob Storage-tárolók/használt Data Factory-entitások JSON-definíciói minták, lásd: [JSON példák](#json-examples-for-copying-data-to-and-from-blob-storage  ) című szakaszát.
 
-A következő szakaszok részletesen bemutatják, amely segítségével határozza meg a Data Factory entitások adott Azure Blob Storage JSON-tulajdonságok.
+A következő szakaszok az Azure Blob Storage adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
-Az összekapcsolt szolgáltatások használatával egy Azure Storage összekapcsolása egy Azure data factory két típusa van. Ezek: **AzureStorage** társított szolgáltatás és **AzureStorageSas** társított szolgáltatás. Az Azure tárolás társított szolgáltatása az adat-előállítóban globális hozzáférést biztosít az Azure Storage. Mivel az Azure Storage SAS (közös hozzáférésű Jogosultságkód) kapcsolódó szolgáltatás korlátozott/időhöz kötött hozzáféréssel a data factory biztosítja az Azure Storage. Nincsenek más különbségek a következő két összekapcsolt szolgáltatások között. Válassza ki az igényeinek megfelelő társított szolgáltatás. A következő szakaszokban további részleteket a következő két összekapcsolt szolgáltatások.
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+Használhatja az Azure Storage összekapcsolása egy Azure data factoryt, társított szolgáltatásokat két típusa van. Ezek: **AzureStorage** társított szolgáltatást, és **AzureStorageSas** társított szolgáltatást. Az Azure Storage társított szolgáltatás az adat-előállító globális hozzáférést biztosít az Azure Storage. Mivel az Azure Storage SAS (közös hozzáférésű Jogosultságkód) társított szolgáltatás az adat-előállító korlátozott/időhöz kötött hozzáféréssel rendelkező biztosítja az Azure Storage. Nincs más két társított szolgáltatás közötti különbségek vannak. Válassza ki az igényeinek megfelelő társított szolgáltatás. A következő szakaszok további részletekkel szolgálnak ezek két társított szolgáltatást.
 
 [!INCLUDE [data-factory-azure-storage-linked-services](../../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Adja meg a bemeneti vagy kimeneti adatok az Azure Blob-tároló adatkészlet, állítsa be a type tulajdonságot az adathalmaz: **AzureBlob**. Állítsa be a **linkedServiceName** tulajdonság nevére, az Azure Storage vagy az Azure Storage SAS DataSet társított szolgáltatás.  A DataSet tulajdonságait adja meg a **blob tároló** és a **mappa** a blob Storage tárolóban.
+Adjon meg egy adatkészletet, amely egy Azure Blob Storage bemeneti vagy kimeneti adatokat jelöli, állítsa be a type tulajdonság, az adatkészlet: **AzureBlob**. Állítsa be a **linkedServiceName** tulajdonságot az adatkészlet neve lesz az Azure Storage vagy az Azure Storage SAS-beli társított szolgáltatást.  A az adatkészlet tulajdonságait adja meg a **blobtároló** és a **mappa** a blob storage-ban.
 
-JSON-szakaszok & meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például struktúra, a rendelkezésre állás és a házirend a DataSet adatkészlet JSON hasonlítanak minden adatkészlet esetében (Azure SQL, az Azure blob, Azure-tábla, stb.).
+JSON-szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
 
-Adat-előállítót a következő alapú CLS-kompatibilis .NET típusú értékek támogatja a például az Azure blob séma olvasható az adatforrásokhoz tartozó "structure" írja be az adatokat biztosító: Int16, Int32, Int64, egyetlen, Double, Decimal, Byte [], Bool, String, Guid, Datetime, Datetimeoffset, Timespan. Adat-előállító automatikusan típuskonverziók hajt végre, amikor adatokat a forrás-tárolóban a fogadó tárolóban.
+A Data factory a következő CLS-kompatibilis .NET-alapú típusú értékeket támogatja a "struktúra," olvasási séma adatforrások esetében például az Azure blob írja be az adatokat, amelyek biztosítják: Int16, Int32, Int64, egyetlen, Double, Decimal, Byte [], Bool, String, Guid, Datetime, Datetimeoffset, időtartam. A Data Factory automatikusan típuskonverziók hajt végre, amikor, amely adatokat helyez át egy forrásadattárból egy fogadó adattárba.
 
-A **typeProperties** szakasz eltérő adatkészlet egyes típusai és információkat nyújt a hely formátumra stb, az adatok az adattárban. A typeProperties szakasz típusú adatkészlet **AzureBlob** adatkészlet tulajdonságai a következők:
+A **typeProperties** szakasz eltérő az egyes adatkészletet, és információkat nyújt a hely formátumra stb, az adatok az adattárban. A typeProperties szakasz típusú adatkészlet **AzureBlob** adatkészlet a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| folderPath |A tároló és a blob-tároló mappa elérési útja. Példa: myblobcontainer\myblobfolder\ |Igen |
-| fileName |A blob neve. Fájlnév nem, kötelező, és a kis-és nagybetűket.<br/><br/>Ha megad egy fájlnevet, a tevékenység (például a Másolás) működik a megadott Blob.<br/><br/>Ha nincs megadva fájlnév, másolása összes BLOB bemeneti adatkészlet folderPath tartalmazza.<br/><br/>Ha **Fájlnév** nincs megadva egy kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl nevét a következő lenne ebben a formátumban: adatok.<Guid>. txt (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
-| partitionedBy |partitionedBy egy nem kötelező tulajdonság. Használhatja a dinamikus folderPath és fájlnevét idő adatsorozat adatok megadása. Például folderPath is paraméteres adatok óránkénti. Tekintse meg a [partitionedBy tulajdonság szakaszában](#using-partitionedBy-property) részletek és a példákat. |Nem |
-| Formátumban | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. <br><br> Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
-| tömörítés | Adja meg a típus és az adatok tömörítése szintjét. Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők: **Optimal** és **leggyorsabb**. További információkért lásd: [formátumú és tömörítést az Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| folderPath |A tároló és a blob Storage-mappa elérési útja. Példa: myblobcontainer\myblobfolder\ |Igen |
+| fileName |A blob nevével. a fájlnév paraméter nem kötelező, és a kis-és nagybetűket.<br/><br/>Ha megadja a FileName paramétert, a Blobra a (beleértve a másolási) tevékenység működik.<br/><br/>Ha a fájlnév nincs megadva, példány összes BLOB bemeneti adatkészlet a folderPath tartalmazza.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő lenne ebben a formátumban: Data.<Guid>. txt típusú (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
+| partitionedBy |partitionedBy tulajdonság megadása nem kötelező. Használhatja a dinamikus folderPath és fájlnevét, idősorozat-adatok megadása. Ha például folderPath rendelkeznek az adatok minden óra. Tekintse meg a [partitionedBy tulajdonság szakaszának használatával](#using-partitionedBy-property) a részletek és példák. |Nem |
+| Formátum | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquetformátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
+| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők: **Optimal** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 ### <a name="using-partitionedby-property"></a>PartitionedBy tulajdonság használatával
-Az előző szakaszban említett, megadhat egy dinamikus folderPath és a fájlnév idő adatsorozat adatokhoz a **partitionedBy** tulajdonság, [adat-előállító funkciók és a rendszer változók](data-factory-functions-variables.md).
+Az előző szakaszban ismertetett módon, megadhat egy dinamikus folderPath és fájlnevét, idősorozat-adatokat a **partitionedBy** tulajdonság, [Data Factory-függvények, és a rendszerváltozók](data-factory-functions-variables.md).
 
-Idő adatsorozat adatkészleteket, az ütemezés és a szeletek további információkért lásd: [létrehozása adatkészletek](data-factory-create-datasets.md) és [ütemezés & végrehajtási](data-factory-scheduling-and-execution.md) cikkeket.
+A time series adatkészleteket, az ütemezés és a szeletek további információkért lásd: [adatkészletek létrehozása](data-factory-create-datasets.md) és [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikkeket.
 
 #### <a name="sample-1"></a>1. példa
 
@@ -104,7 +104,7 @@ Idő adatsorozat adatkészleteket, az ütemezés és a szeletek további inform�
 ],
 ```
 
-Ebben a példában {szelet} adat-előállító rendszer változó SliceStart (YYYYMMDDHH) formátumban megadott érték helyére. A szelet kezdete a SliceStart hivatkozik. A folderPath nem azonos az egyes szeletek. Például: wikidatagateway/wikisampledataout/2014100103 vagy wikidatagateway/wikisampledataout/2014100104
+Ebben a példában {szelet} helyére a változó értékét, a Data Factory rendszer SliceStart (YYYYMMDDHH) formátumban megadva. Indítsa el a szelet időpontja a SliceStart hivatkozik. A folderPath eltér az egyes szeletekhez. Például: wikidatagateway/wikisampledataout/2014100103 vagy wikidatagateway/wikisampledataout/2014100104
 
 #### <a name="sample-2"></a>2. példa
 
@@ -120,160 +120,160 @@ Ebben a példában {szelet} adat-előállító rendszer változó SliceStart (YY
 ],
 ```
 
-Ebben a példában év, hónap, nap és SliceStart idején ki kell olvasni a külön változókat, amelyek folderPath és a fájlnév tulajdonság.
+Ebben a példában év, hónap, nap és SliceStart idején kinyert folderPath és a fileName tulajdonság által használt külön változókba.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-Szakaszok & rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [létrehozása folyamatok](data-factory-create-pipelines.md) cikk. Az összes tevékenység tulajdonságai, például nevét, leírását, valamint bemeneti és kimeneti adatkészletek és házirendek érhetők el. Mivel a tulajdonságok érhetők el a **typeProperties** szakasz a tevékenység tevékenységek minden típusának függenek. A másolási tevékenység során két érték források és mosdók típusától függően. Ha egy Azure Blob Storage-ból adatokat helyez át, a másolási tevékenység beállítása a forrástípus **BlobSource**. Hasonlóképpen, ha adatokat az Azure Blob Storage, beállítása a fogadó típusa a másolási tevékenység **BlobSink**. Ez a témakör BlobSource és BlobSink által támogatott tulajdonságokról.
+Szakaszok & definiálását tevékenységek tulajdonságainak teljes listáját lásd: a [folyamatok létrehozása](data-factory-create-pipelines.md) cikk. Tulajdonságok, mint például a nevét, leírását, bemeneti és kimeneti adatkészleteket és szabályzatokat minden típusú tevékenységek érhetők el. Mivel a tulajdonságok érhetők el a **typeProperties** a tevékenység szakaszban tevékenységek minden típusának számától függ. A másolási tevékenységhez azok változhat a forrásként és fogadóként típusú is. Egy Azure Blob Storage-ból helyez át adatokat, ha a forrás típusaként állítsa be a másolási tevékenység **BlobSource**. Ehhez hasonlóan ha egy Azure Blob Storage helyez át adatokat, állítsa be a fogadó típusa a másolási tevékenység **BlobSink**. Ez a szakasz a BlobSource és BlobSink által támogatott tulajdonságok listáját tartalmazza.
 
-**BlobSource** támogatja a következő tulajdonságok a **typeProperties** szakasz:
-
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
-| --- | --- | --- | --- |
-| rekurzív |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappát. |TRUE hamis (alapértelmezés) |Nem |
-
-**BlobSink** támogatja a következő tulajdonságok **typeProperties** szakasz:
+**BlobSource** támogatja a következő tulajdonságok a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| copyBehavior |Másolás viselkedését határozza meg, ha az adatforrás BlobSource vagy a fájlrendszer. |<b>PreserveHierarchy</b>: őrzi meg a fájl hierarchia a célmappában. A következő forrásfájl forrásmappához relatív elérési a relatív elérési út a cél-fájlját és a célmappa megegyezik.<br/><br/><b>FlattenHierarchy</b>: a forrásmappából a fájlok a célmappában első szintjét is. A fájlok céljaként automatikusan létrehozott nevet adni. <br/><br/><b>Mergefiles típusú</b>: egy fájl összes fájlt a forrásmappából egyesíti. Ha a fájl/Blob neve meg van adva, az egyesített neve legyen a megadott név; Ellenkező esetben lenne automatikusan létrehozott fájl nevét. |Nem |
+| a rekurzív |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. |(Alapértelmezett érték), true a False |Nem |
 
-**BlobSource** is támogatja a visszamenőleges kompatibilitás érdekében a két tulajdonság.
+**BlobSink** támogatja a következő tulajdonságok **typeProperties** szakaszban:
 
-* **treatEmptyAsNull**: Megadja, hogy null vagy üres karakterlánc null értékként kezelje-e.
-* **skipHeaderLineCount** -határozza meg, hogy hány sort kell figyelmen kívül hagyja. Azt is alkalmazható csak amikor bemeneti adatkészlet által használt szöveges.
+| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| --- | --- | --- | --- |
+| a copyBehavior |A másolási viselkedés határozza meg, ha a forrás BlobSource vagy fájlrendszer. |<b>PreserveHierarchy</b>: megőrzi a hierarchiája a célmappában. A forrásmappa forrás-fájl elérési útja megegyezik a célmappában a célfájl elérési útja.<br/><br/><b>FlattenHierarchy</b>: a forrásmappából a fájlok a célmappában az első szintjét is. A cél fájlok automatikusan létrehozott nevet adni. <br/><br/><b>MergeFiles</b>: egyesíti a forrásmappából egy fájl összes fájlt. Ha a fájl/Blob neve van megadva, az egyesített fájl neve lesz a megadott név; Ellenkező esetben lenne automatikusan létrehozott fájl nevét. |Nem |
 
-Hasonlóképpen **BlobSink** támogatja a következő tulajdonságot a visszamenőleges kompatibilitás érdekében.
+**BlobSource** is támogatja a két tulajdonság a visszamenőleges kompatibilitás érdekében.
 
-* **blobWriterAddHeader**: Megadja, hogy az oszlopdefiníciók fejlécet hozzá egy kimeneti adatkészlet írása közben.
+* **treatEmptyAsNull**: Megadja, hogy kezelni a nullértékű vagy üres karakterlánc értéke null.
+* **skipHeaderLineCount** – Itt adhatja meg, hogy hány sort kell hagyni. Ez akkor alkalmazható, csak amikor bemeneti adatkészletet használ TextFormat.
 
-Adatkészletek mostantól támogatja a következő tulajdonságok funkcióit megvalósító: **treatEmptyAsNull**, **skipLineCount**, **firstRowAsHeader**.
+Ehhez hasonlóan **BlobSink** támogatja a következő tulajdonságot a visszamenőleges kompatibilitás érdekében.
 
-A következő táblázat az új adatkészlet tulajdonságai helyett a blob-forrás/fogadó tulajdonságok használatával nyújt útmutatást.
+* **blobWriterAddHeader**: Megadja, hogy a magyarázat az oszlopokhoz fejléc hozzáadása egy kimeneti adatkészletet írása közben.
 
-| Másolja az Activity tulajdonság | A DataSet tulajdonság |
+Az adatkészletek most már támogatja a következő tulajdonságok ugyanazokat a funkciókat megvalósító: **treatEmptyAsNull**, **skipLineCount**, **firstRowAsHeader**.
+
+Az alábbi táblázat az új adatkészlet tulajdonságai helyett a blob-forrás/fogadó tulajdonságok használatával nyújt útmutatást.
+
+| Másolási tevékenység tulajdonság | Adatkészlet tulajdonság |
 |:--- |:--- |
-| a BlobSource skipHeaderLineCount |skipLineCount és firstRowAsHeader. Sorok először kimarad, és az első sor fejléc, olvassa el. |
+| a BlobSource skipHeaderLineCount |skipLineCount és a firstRowAsHeader. A rendszer először kihagyja sorokat, és majd beolvassa az első sort fejlécnek. |
 | a BlobSource treatEmptyAsNull |a bemeneti adatkészlet treatEmptyAsNull |
 | a BlobSink blobWriterAddHeader |a kimeneti adatkészlet firstRowAsHeader |
 
-Lásd: [megadása szöveges](data-factory-supported-file-and-compression-formats.md#text-format) szakasz ezeket a tulajdonságokat részletes tájékoztatást.    
+Lásd: [TextFormat megadása](data-factory-supported-file-and-compression-formats.md#text-format) ezeket a tulajdonságokat a részletes információt a következő szakaszban.    
 
-### <a name="recursive-and-copybehavior-examples"></a>rekurzív és copyBehavior példák
-Ez a szakasz ismerteti az eredményül kapott viselkedéstől rekurzív és copyBehavior kombinációk a másolási művelet.
+### <a name="recursive-and-copybehavior-examples"></a>a rekurzív és copyBehavior példák
+Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási művelet rekurzív és copyBehavior értékek különböző kombinációihoz.
 
-| rekurzív | copyBehavior | Viselkedésről |
+| a rekurzív | a copyBehavior | Eredményül kapott viselkedés |
 | --- | --- | --- |
-| true |preserveHierarchy |A forrásmappa mappa1, az alábbi szerkezettel: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappában mappa1 forrásaként azonos struktúrájú jön létre.<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| true |flattenHierarchy |A forrásmappa mappa1, az alábbi szerkezettel: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A cél az alábbi szerkezettel mappa1 jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File5 |
-| true |mergeFiles |A forrásmappa mappa1, az alábbi szerkezettel: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A cél az alábbi szerkezettel mappa1 jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + fájl3 + File4 + 5 fájl tartalmát egy fájl automatikusan létrehozott fájlnévvel egyesülnek |
-| false |preserveHierarchy |A forrásmappa mappa1, az alábbi szerkezettel: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>Fájl3, File4 és File5 Subfolder1 nem átveszik. |
-| false |flattenHierarchy |A forrásmappa mappa1, az alábbi szerkezettel:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/><br/>Fájl3, File4 és File5 Subfolder1 nem átveszik. |
-| false |mergeFiles |A forrásmappa mappa1, az alábbi szerkezettel:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Egy fájl automatikusan létrehozott fájlnévvel egyesített file1 + File2 tartalma. automatikusan létrehozott nevet a file1 kiszolgálón<br/><br/>Fájl3, File4 és File5 Subfolder1 nem átveszik. |
+| true |preserveHierarchy |Forrás mappa mappa1 az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappában mappa1 szerkezete ugyanaz, mint a forrás jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| true |flattenHierarchy |Forrás mappa mappa1 az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A cél mappa1 jön létre az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File5 |
+| true |mergeFiles |Forrás mappa mappa1 az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A cél mappa1 jön létre az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + fájl3 + File4 + 5 fájl tartalmát egy fájlba a fájl automatikusan létrehozott névvel egyesítésekor |
+| false |preserveHierarchy |Forrás mappa mappa1 az alábbi struktúra használatával: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Az alábbi struktúra használatával jön létre a célmappában mappa1<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
+| false |flattenHierarchy |Forrás mappa mappa1 az alábbi struktúra használatával:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Az alábbi struktúra használatával jön létre a célmappában mappa1<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
+| false |mergeFiles |Forrás mappa mappa1 az alábbi struktúra használatával:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Az alábbi struktúra használatával jön létre a célmappában mappa1<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + 2. fájl tartalmát egy fájlba a fájl automatikusan létrehozott névvel összefésülése megtörténjen. Automatikusan létrehozott nevet a file1 kiszolgálón<br/><br/>Fájl3, File4 és File5 Subfolder1 a rendszer nem követi. |
 
-## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Forgatókönyv: Másolása varázsló használata a Blob Storage az adatok másolása
-Vizsgáljuk meg gyorsan az adatok az Azure blob storage és a másolása. Ebben a bemutatóban forrás- és célkiszolgálón adatokat tárolja, típus: Azure Blob Storage tárolóban. A kimenetátirányítási mechanizmusával Ez a forgatókönyv adatokat egy mappából ugyanabban a blob-tárolóban egy másik mappába másolja. Ez a forgatókönyv nem szándékosan egyszerű mutatjuk be, beállítások vagy tulajdonságok forrás vagy a fogadó Blob Storage használata esetén. 
+## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Forgatókönyv: A másolás varázsló használata adatok másolása Blob Storage-ból /
+Tekintsük át gyorsan másolása az adatok Azure blob storage. Ez az útmutató a forrás- és cél adattárak típusa: az Azure Blob Storage. Ebben az útmutatóban a folyamat adatokat másol egy mappát ugyanazon blob-tárolóban egy másik mappába. Ez a forgatókönyv nem szándékosan egyszerű mutatni, beállítások vagy a tulajdonságok a forrás vagy a fogadó Blob tároló használata esetén. 
 
 ### <a name="prerequisites"></a>Előfeltételek
-1. Hozzon létre egy általános célú **Azure Storage-fiók** Ha Ön nem rendelkezik ilyennel. A blob storage használata egyaránt **forrás** és **cél** adattároló ebben a forgatókönyvben. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket.
-2. Hozzon létre egy blob-tároló nevű **adfblobconnector** tárfiókban. 
+1. Hozzon létre egy általános célú **Azure Storage-fiók** Ha még nincs ilyen. A blob storage-használunk használja **forrás** és **cél** adatokat tárolni ebben az útmutatóban. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-quickstart-create-account.md) ismertető cikket.
+2. Hozzon létre egy blobtárolót **adfblobconnector** a storage-fiókban. 
 4. Hozza létre a **bemeneti** a a **adfblobconnector** tároló.
-5. Hozzon létre egy fájlt **emp.txt** az a következő tartalmat, és töltse fel, hogy a **bemeneti** mappa eszközökkel, mint [Azure Tártallózó](https://azurestorageexplorer.codeplex.com/)
+5. Hozzon létre egy fájlt **emp.txt** az az alábbi tartalmat, és töltse fel a **bemeneti** mappa-eszközökkel például [Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/)
     ```json
     John, Doe
     Jane, Doe
     ```
-### <a name="create-the-data-factory"></a>A data factory létrehozása
+### <a name="create-the-data-factory"></a>Az adat-előállító létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson **hozzon létre egy erőforrást** kattintson a bal felső sarkának **Eszközintelligencia + analitika**, és kattintson **Data Factory**.
+2. Kattintson a **erőforrás létrehozása** a bal felső sarokban, kattintson a **intelligencia és elemzés**, és kattintson a **adat-előállító**.
 3. Az a **új adat-előállító** panelen:   
-    1. Adja meg **ADFBlobConnectorDF** a a **neve**. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: `*Data factory name “ADFBlobConnectorDF” is not available`, változtassa meg az adat-előállítóban (például yournameADFBlobConnectorDF) nevét, és próbálja meg újra létrehozni. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
+    1. Adja meg **ADFBlobConnectorDF** számára a **neve**. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: `*Data factory name “ADFBlobConnectorDF” is not available`, módosítsa a nevet az adat-előállító (például yournameADFBlobConnectorDF), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
     2. Jelölje ki az Azure-**előfizetést**.
-    3. Az erőforráscsoport, válassza ki a **használata meglévő** jelöljön ki egy meglévő erőforráscsoportot (vagy) az **hozzon létre új** egy erőforráscsoport nevének megadása.
+    3. Válassza ki az erőforráscsoportban **meglévő használata** válasszon ki egy meglévő erőforráscsoportot (vagy) válasszon **új létrehozása** erőforráscsoport nevének megadását.
     4. Válassza ki a Data Factory **helyét**.
     5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.
     6. Kattintson a **Create** (Létrehozás) gombra.
-3. A létrehozásának befejezése után megjelenik a **adat-előállító** panelen a következő ábrán látható módon: ![Data factory kezdőlap](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
+3. A létrehozás befejezése után megjelenik a **adat-előállító** panelnek az alábbi képen látható módon: ![Data factory kezdőlap](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Másolás varázsló
-1. A Data Factory kezdőlapján kattintson a **adatok másolása** elindíthatja a csempe **másolása varázsló** egy külön lapján.    
+1. A Data Factory kezdőlapján kattintson a **adatmásolás** csempére kattintva indítsa el a **másolás varázsló** külön lapon.    
     
     > [!NOTE]
-    >    Ha azt látja, hogy a webböngésző akadt-e a "Engedélyező...", tiltsa le vagy törölje a jelet **külső cookie-k blokkolását, és a helyadatok** beállítása (vagy) engedélyezve legyen, és hozzon létre egy kivételt **login.microsoftonline.com**, és ezután próbálja meg újból elindítani a varázslót.
+    >    Ha látja, hogy a böngésző "Authorizing..." megakadt, tiltsa le vagy törölje a jelet **külső cookie-k blokkolását és a helyadatok** beállítása (vagy) engedélyezve legyen, és hozzon létre kivételt a **login.microsoftonline.com**, majd próbálja ismét a varázsló elindítását.
 2. A **Properties** (Tulajdonságok) oldalon:
-    1. Adja meg **CopyPipeline** a **feladatnév**. A feladatnév: a kimenetátirányítási mechanizmusával a data factory nevét.
-    2. Adjon meg egy **leírás** a feladathoz (választható).
-    3. A **feladat ütemben történik vagy ütemezett feladat**, tartsa a **futtatása rendszeres ütemezés szerint** lehetőséget. Ha szeretné végrehajtani a feladatot csak egyszer ütemezés ismételten a Futtatás helyett, jelölje be **futtassa egyszer most**. Választ ki, ha **futtassa egyszer most** beállítást, a [egyszeri folyamat](data-factory-create-pipelines.md#onetime-pipeline) jön létre. 
-    4. Megtarthatja a **ismétlődő mintát**. Ez a feladat futtatása naponta a következő lépésben megadhatja a kezdő és befejező időpontja között.
-    5. Módosítsa a **kezdő dátum/idő** való **04/21/2017**. 
-    6. Módosítsa a **záró dátum és idő** való **04/25/2017**. Érdemes lehet írja be a dátum, keresse meg azt a naptár helyett.     
+    1. Adja meg **CopyPipeline** a **feladatnév**. A feladat neve az a név a data Factory-folyamatot.
+    2. Adjon meg egy **leírás** (nem kötelező) a feladathoz.
+    3. A **feladat kiadása ütemben történik, vagy a feladat ütemezés**, tartsa a **rendszeres ütemezés szerint fut** lehetőséget. Ha azt szeretné, ezt a feladatot csak egyszer helyett a Futtatás ismétlődő ütemezés szerint futtatni, válassza ki a **már egyszer futtatni**. Ha kiválasztja, **már egyszer futtatni** beállítást, egy [egyszeri folyamat](data-factory-create-pipelines.md#onetime-pipeline) jön létre. 
+    4. A megadott beállításokat tartsa **ismétlődő minta**. Ez a feladat fut, naponta, a következő lépésben adja meg a kezdési és befejezési idejének között.
+    5. Módosítsa a **kezdő dátum/idő** való **2017-04/21**. 
+    6. Módosítsa a **záró dátum és idő** való **2017-04/25-ös**. Írja be a dátum a naptár böngészés helyett érdemes.     
     8. Kattintson a **Tovább** gombra.
-      ![Másolja az eszköz - Tulajdonságok lap](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
-3. A **Source data store** (Forrásadattár) oldalon kattintson az **Azure Blob Storage** csempére. Az oldal használatával megadhatja a forrásadattárat a másolási feladathoz. Használhatja egy meglévő adattár társított szolgáltatását, vagy megadhat egy új adattárat. Egy meglévő társított szolgáltatást használja, a kiválasztott **a meglévő összekapcsolt szolgáltatások** válassza ki a megfelelő társított szolgáltatás. 
-    ![Másolja az eszköz - forrás egy adattárolási lap](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
+      ![Másolja ki az eszköz – Tulajdonságok lap](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
+3. A **Source data store** (Forrásadattár) oldalon kattintson az **Azure Blob Storage** csempére. Az oldal használatával megadhatja a forrásadattárat a másolási feladathoz. Használhatja egy meglévő adattár társított szolgáltatását, vagy megadhat egy új adattárat. Egy meglévő társított szolgáltatás használatához kiválasztott **a meglévő társított szolgáltatások** , és válassza ki a megfelelő társított szolgáltatást. 
+    ![Másolja ki az eszköz - forrás adattároló lap](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
 4. A **Specify the Azure Blob storage account** (Az Azure Blob Storage-fiók megadása) oldalon:
-   1. Az automatikusan létrehozott nevet **kapcsolatnév**. A kapcsolat nevének megadása típusú társított szolgáltatás neve: Azure Storage. 
+   1. Az automatikusan létrehozott nevet, a **kapcsolatnevet**. A kapcsolat neve pedig típusú társított szolgáltatás neve: Azure Storage. 
    2. Győződjön meg arról, hogy az **Account selection method** (Fiókválasztási módszer) mezőben a **From Azure subscriptions** (Azure-előfizetésekből) lehetőség van kiválasztva.
-   3. Válassza ki az Azure-előfizetéssel, vagy hagyja **válassza ki az összes** a **Azure-előfizetés**.   
-   4. A kiválasztott előfizetéshez elérhető Azure Storage-fiókok listájából válasszon ki egy **Azure Storage-fiókot**. Másik lehetőségként tárolási fiók beállításainak manuális megadása kiválasztásával **manuálisan adja meg** választás, a **kijelöléséről fiók**.
+   3. Válassza ki az Azure-előfizetését, vagy hagyja **válassza ki az összes** a **Azure-előfizetés**.   
+   4. A kiválasztott előfizetéshez elérhető Azure Storage-fiókok listájából válasszon ki egy **Azure Storage-fiókot**. Azt is beállíthatja a kiválasztásával manuálisan adja meg a tárfiók-beállítások **adja meg manuálisan** első számú megoldás a **kijelöléséről fiók**.
    5. Kattintson a **Tovább** gombra. 
-      ![Eszköz másolni - adja meg az Azure Blob storage-fiók](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
+      ![Másolja ki az eszköz – az Azure Blob storage-fiók megadása](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. A **Choose the input file or folder** (A bemeneti fájl vagy mappa kiválasztása) oldalon:
    1. Kattintson duplán a **adfblobcontainer**.
-   2. Válassza ki **bemeneti**, és kattintson a **válasszon**. Ebben a bemutatóban válassza ki a bemeneti mappát. Kiválaszthatja a emp.txt fájl a mappában helyette. 
-      ![Másolja az eszköz – a bemeneti fájl vagy mappa kiválasztása](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
-6. Az a **válassza ki azt a bemeneti fájl vagy mappa** lap:
-    1. Ellenőrizze, hogy a **fájl vagy mappa** értéke **adfblobconnector/bemeneti**. Ha a fájlok runbookok, 2017/04/01, 2017/04/02, és így tovább, írja be például adfblobconnector/bemeneti / {year} / {month} / {day} fájlra vagy mappára. A szövegmező kívül TAB billentyű megnyomásával, lásd: három legördülő listában formátumok (éééé) év, hónap (hh) és nap (nn). 
-    2. Ne adja meg az **fájl rekurzív módon másolja**. Válassza ki ezt a beállítást a célhelyre másolja a fájlokat a rekurzív módon bejárás mappák segítségével. 
-    3. Nem a **bináris másolási** lehetőséget. Ezt a beállítást a célként megadott forrásfájl bináris elkészítésére. Nem jelölt ki ez a forgatókönyv, hogy a további beállítások a következő lapokon megjelenik. 
-    4. Ellenőrizze, hogy a **tömörítési típus** értéke **nincs**. Válassza az ehhez a beállításhoz tartozó értéket, ha a forrásfájlok tömörített a támogatott formátumok egyikében. 
+   2. Válassza ki **bemeneti**, és kattintson a **válasszon**. Ebben az útmutatóban válassza ki a bemeneti mappában. Kiválaszthatja az emp.txt fájlt a mappába helyette. 
+      ![Másolja ki az eszköz – a bemeneti fájl vagy mappa kiválasztása](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+6. Az a **a bemeneti fájl vagy mappa kiválasztása** oldalon:
+    1. Ellenőrizze, hogy a **fájl vagy mappa** értékre van állítva **adfblobconnector/input**. Ha a fájlok almappákban levő, írja be például 2017/04/01, 2017/04/02, és így tovább, adfblobconnector/input / {year} / {month} / {day} fájlra vagy mappára vonatkozóan. Amikor lenyomja a TAB billentyűt a szövegmezőben jelölje ki, látható három legördülő listán válassza ki a formátumok év (éééé), (MM) hónap és nap (nn). 
+    2. Nincs beállítva **fájl rekurzív módon másolja**. Válassza ezt a beállítást a célhelyre kell másolni a fájlokat a rekurzív módon bejárás mappák között. 
+    3. Nem a **bináris másolat** lehetőséget. Válassza ki ezt a beállítást, hajtsa végre a célhelyre forrásfájl bináris másolatát. Ne válassza a forgatókönyv, hogy további beállításokat a következő lapokon megjelenik. 
+    4. Ellenőrizze, hogy a **tömörítési típus** értékre van állítva **None**. Ez a beállítás értékét akkor válassza, ha a forrásfájlok tömörített a támogatott formátumok valamelyikében. 
     5. Kattintson a **Tovább** gombra.
-    ![Másolja az eszköz – a bemeneti fájl vagy mappa kiválasztása](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
+    ![Másolja ki az eszköz – a bemeneti fájl vagy mappa kiválasztása](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. A **File format settings** (Fájlformátum beállításai) oldalon a fájl elemzése során a varázsló által automatikusan észlelt elválasztó karakterek és séma láthatók. 
-    1. Erősítse meg a következő beállításokat: egy. A **fájlformátum** értéke **szövegformátum**. A támogatott formátumok a legördülő listában tekintheti meg. Például: JSON, Avro, ORC, Parquet.
-        b. A **oszlop elválasztó** értéke `Comma (,)`. A legördülő listából válassza ki a Data Factory által támogatott más oszlop határolójeleket tekintheti meg. Egy egyéni elválasztó karakter is megadható.
-        c. A **sor elválasztó** értéke `Carriage Return + Line feed (\r\n)`. A legördülő listából válassza ki a Data Factory által támogatott más sor határolójeleket tekintheti meg. Egy egyéni elválasztó karakter is megadható.
-        d. A **sorszám kihagyása** értéke **0**. Ha azt szeretné, hogy néhány sorok figyelmen kívül hagyja a fájl elején, adja meg itt.
-        e.  A **adatok első sora oszlopneveket tartalmaz** nincs beállítva. Ha a forrásfájlok oszlopnevek az első sort tartalmaz, akkor válassza ezt a lehetőséget.
-        f. A **üres oszlopérték tekinti null** beállítás.
-    2. Bontsa ki a **speciális beállítások** elérhető speciális beállítás megjelenítéséhez.
-    3. A lap alján, tekintse meg a **előzetes** adatok emp.txt fájlból.
-    4. Kattintson a **SÉMA** fül megtekintéséhez a séma, amely a varázsló következtetni rá, ha megnézi a forrás-fájlt.
+    1. Erősítse meg a következő beállításokat: egy. A **fájlformátum** értékre van állítva **szövegformátum**. Láthatja, hogy a támogatott formátumok a legördülő listában. Például: JSON-t, Avro, ORC, Parquet.
+        b. A **oszlophatároló** értékre van állítva `Comma (,)`. A legördülő listából válassza ki a Data Factory által támogatott más oszlophatárolókat látható. Megadhat egy egyéni elválasztó karakter is.
+        c. A **Sorelválasztó** értékre van állítva `Carriage Return + Line feed (\r\n)`. Láthatja, hogy az a legördülő listából válassza ki a Data Factory által támogatott más sorok határolókaraktereit. Megadhat egy egyéni elválasztó karakter is.
+        d. A **hagyja ki a sor száma** értékre van állítva **0**. Ha azt szeretné, hogy néhány sort a fájl elején hagyni, adja meg az ide.
+        e.  A **adatok első sora tartalmazza az oszlopnevek** nincs beállítva. Ha a forrásfájlok az első sorban oszlopneveket tartalmaz, akkor válassza ezt a lehetőséget.
+        f. A **kezelni üres oszlop értékének null** beállítás.
+    2. Bontsa ki a **speciális beállítások** megjelenítéséhez a speciális beállítás érhető el.
+    3. A lap alján jelennek meg a **előzetes** adatok az emp.txt fájlban találhatók.
+    4. Kattintson a **SÉMA** lap alján, a séma, amely a másolás varázsló következtetni megnézzük a forrás-fájlban lévő adatokat.
     5. Az elválasztó karakterek megtekintése és adatok előzetes megtekintése után kattintson a **Next** (Tovább) gombra.
-    ![Eszköz - fájl formátuma beállítások másolása](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
-8. Az a **cél adattároló lap**, jelölje be **Azure Blob Storage**, és kattintson a **következő**. Az Azure Blob Storage mind a forrás és cél adattárolókhoz a forgatókönyv használ.    
-    ![Eszköz - célkiszolgáló kijelölése adattár másolása](media/data-factory-azure-blob-connector/select-destination-data-store.png)
-9. A **adja meg az Azure Blob storage-fiók** lap:
-   1. Adja meg **AzureStorageLinkedService** a a **kapcsolatnév** mező.
+    ![Másolja ki az eszköz - fájlformátum beállításai](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
+8. Az a **céladattár lap**válassza **Azure Blob Storage**, és kattintson a **tovább**. Használja az Azure Blob Storage, a forrás és cél adattárolók ebben az útmutatóban.    
+    ![Másolja ki az eszköz - válassza célként megadott adattárba](media/data-factory-azure-blob-connector/select-destination-data-store.png)
+9. A **adja meg az Azure Blob storage-fiók** oldalon:
+   1. Adja meg **AzureStorageLinkedService** számára a **kapcsolatnevet** mező.
    2. Győződjön meg arról, hogy az **Account selection method** (Fiókválasztási módszer) mezőben a **From Azure subscriptions** (Azure-előfizetésekből) lehetőség van kiválasztva.
    3. Jelölje ki az Azure-**előfizetést**.  
-   4. Válassza ki az Azure storage-fiók. 
+   4. Válassza ki az Azure storage-fiókjában. 
    5. Kattintson a **Tovább** gombra.     
-10. Az a **válassza ki azt a kimeneti fájl vagy mappa** lap: 
-    6. Adja meg **mappa elérési útja** , **adfblobconnector/kimeneti / {year} / {month} / {day}**. Adja meg **lapon**.
-    7. Az a **év**, jelölje be **éééé**.
+10. Az a **a kimeneti fájl vagy mappa kiválasztása** oldalon: 
+    6. Adja meg **mappa elérési útja** , **adfblobconnector/output / {year} / {month} / {day}**. Adja meg **lapon**.
+    7. Az a **év**válassza **éééé**.
     8. Az a **hónap**, győződjön meg arról, hogy van-e állítva **MM**.
     9. Az a **nap**, győződjön meg arról, hogy van-e állítva **nn**.
-    10. Ellenőrizze, hogy a **tömörítési típus** értéke **nincs**.
-    11. Ellenőrizze, hogy a **viselkedés másolása** értéke **fájlok egyesítése**. Ha a kimeneti fájl ugyanazzal a névvel már létezik, az új tartalom kerüljön végén ugyanazt a fájlt.
+    10. Ellenőrizze, hogy a **tömörítési típus** értékre van állítva **None**.
+    11. Ellenőrizze, hogy a **viselkedés másolása** értékre van állítva **fájlok egyesítése**. Ha a kimeneti fájl ezzel a névvel már létezik, az új tartalmakról ugyanazt a fájlt a végén.
     12. Kattintson a **Tovább** gombra.
-    ![Másolja az eszköz - a kimeneti fájl vagy mappa](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
-11. Az a **fájl formázási beállítások** lapon tekintse át a beállításokat, és kattintson a **következő**. A további beállítások egyik egy fejléc hozzáadását a kimeneti fájl. Ha ezt a beállítást választja, a fejlécsor hozzá rendelkező oszlopok neveinek a séma, a forrás. Az alapértelmezett oszlopnevek átnevezheti a séma a következő adatforrás megtekintésekor. Például megváltoztathatja az első oszlop Utónév és Vezetéknév második oszlopnak. Ezt követően a kimeneti fájl jön létre ezekkel a nevekkel fejléccel oszlopnevekként. 
-    ![Eszköz - cél formátum beállításainak fájl másolása](media/data-factory-azure-blob-connector/file-format-destination.png)
-12. A a **Teljesítménybeállítások** lapján ellenőrizze, hogy **egységek cloud** és **másolatok párhuzamos** vannak beállítva, hogy **automatikus**, és kattintson a Tovább gombra. Ezek a beállítások kapcsolatos részletekért lásd: [másolása tevékenység teljesítmény- és hangolási útmutató](data-factory-copy-activity-performance.md#parallel-copy).
+    ![Másolja ki az eszköz – a kimeneti fájl vagy mappa kiválasztása](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+11. Az a **fájlformátum beállításai** lapon tekintse át a beállításokat, és kattintson a **tovább**. A további beállítások egyik egy fejléc hozzáadását a kimeneti fájlt. Ha ezt a lehetőséget választja, egy fejléc sorra kerül az oszlopok neveit, a forrás sémája. Az alapértelmezett oszlopnevek nevezheti át a forrás sémája megtekintésekor. Az első oszlop, például utónév és Vezetéknév második oszlopnak sikerült módosítani. Ezt követően a kimeneti fájl jön létre az ezekkel a nevekkel fejléc oszlopnevekként. 
+    ![Másolja ki az eszköz - cél fájlformátum beállításai](media/data-factory-azure-blob-connector/file-format-destination.png)
+12. A a **teljesítménybeállításokat** lapon, ellenőrizze, hogy **felhőbeli egység** és **másolatok párhuzamos** vannak beállítva, hogy **automatikus**, és kattintson a Tovább gombra. Ezekkel a beállításokkal kapcsolatos részletekért lásd: [másolási tevékenységek teljesítményéhez és finomhangolási útmutató](data-factory-copy-activity-performance.md#parallel-copy).
     ![Eszköz - teljesítmény beállítások másolása](media/data-factory-azure-blob-connector/copy-performance-settings.png) 
-14. Az a **összegzés** lapon tekintse át az összes beállítást (a feladat tulajdonságai, a beállításokat a forrás és cél és a beállítások), és kattintson a **következő**.
-    ![Másolja az eszköz - összegző lapja](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
+14. Az a **összefoglalás** lapon tekintse át a beállításokat (feladat tulajdonságai, a forrás és cél beállításai és beállítások), és kattintson a **tovább**.
+    ![Másolja ki az eszköz - összegző lapja](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
 15. Tekintse át a **Summary** (Összegzés) oldalon szereplő információkat, majd kattintson a **Finish** (Befejezés) gombra. A varázsló létrehoz két társított szolgáltatást, két adathalmazt (bemeneti és kimeneti), valamint egy folyamatot a data factoryban (ahonnét elindította a Másolás varázslót).
-    ![Másolja az eszköz - központi telepítés lap](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
+    ![Másolja ki az eszköz – üzembe helyezés lap](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
 
-### <a name="monitor-the-pipeline-copy-task"></a>A figyelő az adatcsatorna (feladatok)
+### <a name="monitor-the-pipeline-copy-task"></a>A folyamat (a másolási tevékenység) figyelése
 
-1. Kattintson a hivatkozásra `Click here to monitor copy pipeline` a a **telepítési** lap. 
-2. Megjelenik a **felügyeletéhez és kezeléséhez az alkalmazás** egy külön lapján.  ![Megfigyelés és kezelés alkalmazás](media/data-factory-azure-blob-connector/monitor-manage-app.png)
-3. Módosítás a **start** időt legfelül `04/19/2017` és **end** beosztásba `04/27/2017`, és kattintson a **alkalmaz**. 
-4. Az öt tevékenység windows kell megjelennie a **tevékenység WINDOWS** listája. A **WindowStart** alkalommal minden nap közé tartozik folyamat kezdetétől a csővezeték-befejezési időpontjával. 
-5. Kattintson a **frissítése** gombra kattint, az a **tevékenység WINDOWS** lista néhány alkalommal amíg meg nem jelenik a tevékenység windows állapotának a Kész értékre van állítva. 
-6. Most győződjön meg arról, hogy a kimeneti fájlok adfblobconnector tároló kimeneti mappában vannak-e létre. A következő gyökérmappa-szerkezetében kimeneti mappában kell megjelennie: 
+1. Kattintson a hivatkozásra `Click here to monitor copy pipeline` a a **üzembe helyezési** lapot. 
+2. Megtekintheti a **figyelése és felügyelete az alkalmazás** külön lapon.  ![Figyelheti és kezelheti az alkalmazás](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+3. Változás a **start** idő a legfelül `04/19/2017` és **záró** időt `04/27/2017`, és kattintson a **alkalmaz**. 
+4. Az öt tevékenységablakok kell megjelennie a **TEVÉKENYSÉGABLAKOK** lista. A **WindowStart** alkalommal le kell fednie minden nap a folyamat kezdő folyamatfuttatások záró időponttal. 
+5. Kattintson a **frissítése** gombot a **TEVÉKENYSÉGABLAKOK** néhányszor, amíg megjelenik az állapotát a tevékenységablakok lista kész értékre van állítva. 
+6. Most győződjön meg arról, hogy a kimeneti fájlok jönnek létre adfblobconnector tároló kimeneti mappában. A kimeneti mappában a következő mappastruktúra kell megjelennie: 
     ```
     2017/04/21
     2017/04/22
@@ -281,29 +281,29 @@ Vizsgáljuk meg gyorsan az adatok az Azure blob storage és a másolása. Ebben 
     2017/04/24
     2017/04/25    
     ```
-Figyelése és kezelése az adat-előállítók kapcsolatos részletes információkért lásd: [figyelése és kezelése a Data Factory-folyamathoz](data-factory-monitor-manage-app.md) cikk. 
+Figyelése és kezelése az adat-előállítók kapcsolatos részletes információkért lásd: [figyelése és kezelése a Data Factory-folyamatot](data-factory-monitor-manage-app.md) cikk. 
  
-### <a name="data-factory-entities"></a>Data Factory entitások
-Most lépjen vissza a lap a Data Factory kezdőlapján. Figyelje meg, hogy van két összekapcsolt szolgáltatások, két adatkészletet, és a data factory egyik adatcsatornáinak most. 
+### <a name="data-factory-entities"></a>Data Factory-entitások
+Most váltson vissza a lap a Data Factory kezdőlapján. Figyelje meg, hogy jelenleg két társított szolgáltatást, két adatkészletet és egy folyamatot az adat-előállítóban. 
 
-![Data Factory kezdőlapján entitások](media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png)
+![Data Factory kezdőlapjának az entitásokkal](media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png)
 
-Kattintson a **Szerző és központi telepítése** elindíthatja a Data Factory Editor. 
+Kattintson a **készítése és üzembe helyezése** , indítsa el a Data Factory Editor. 
 
 ![A Data Factory szerkesztője](media/data-factory-azure-blob-connector/data-factory-editor.png)
 
-A következő adat-előállító entitások az adat-előállítóban kell megjelennie: 
+A data factory a következő Data Factory-entitások kell megjelennie: 
 
- - Két társított szolgáltatások. Egyet a forrás- és a cél a másik egy. Az összekapcsolt szolgáltatások tekintse meg az azonos Azure Storage-fiók ebben a forgatókönyvben. 
- - Két adatkészletet. Egy bemeneti adatkészlet és egy kimeneti adatkészletet. Ebben a bemutatóban mindkét blob tárolóhoz használni de különböző mappák (bemeneti és kimeneti) hivatkozik.
- - Egy folyamat. A folyamat, amely egy blob-forrás- és egy blob fogadó használja az adatok másolása az Azure blob helyére máshová az Azure blob másolási tevékenységet tartalmaz. 
+ - Két társított szolgáltatást. Egyet a forrás- és a másik egy, a cél. A társított szolgáltatások tekintse meg az azonos Azure Storage-fiók ebben az útmutatóban. 
+ - Két adatkészletet. A bemeneti adatkészletek és a egy kimeneti adatkészletet. Ez az útmutató is ugyanazt a blob-tárolót használja, de különböző mappák (bemeneti és kimeneti) hivatkozik.
+ - Egy folyamat. A folyamat egy másolási tevékenység adatokat másol egy Azure blob-helyre máshová az Azure blob egy blob forrás és a egy blob fogadó használó tartalmazza. 
 
-Az alábbi szakaszok nyújtanak további információt arról ezeket az entitásokat. 
+A következő szakaszok ezeket az entitásokat további információt. 
 
 #### <a name="linked-services"></a>Társított szolgáltatások
-Két összekapcsolt szolgáltatások kell megjelennie. Egyet a forrás- és a cél a másik egy. Ebben a bemutatóban mindkét definíciók ugyanúgy néznek ki, kivéve a neveket. A **típus** társított szolgáltatás beállítása **AzureStorage**. A társított szolgáltatás definíciójának legfontosabb tulajdonsága nem a **connectionString**, amely használják adat-előállító csatlakozni az Azure Storage-fiók futásidőben. Figyelmen kívül hagyja a hubName tulajdonság a-definícióban. 
+Két társított szolgáltatást kell megjelennie. Egyet a forrás- és a másik egy, a cél. Ez az útmutató mindkét definíciók néznek ki, kivéve a neveket. A **típus** társított szolgáltatás beállítása **AzureStorage**. A társított szolgáltatás definíciójában legfontosabb tulajdonsága a **connectionString**, amelyekkel az adat-előállító való csatlakozáshoz futásidőben Azure Storage-fiókját. Hagyja figyelmen kívül a hubName tulajdonság a definícióban. 
 
-##### <a name="source-blob-storage-linked-service"></a>Forrás blob storage társított szolgáltatás
+##### <a name="source-blob-storage-linked-service"></a>Forrás blob storage-beli társított szolgáltatás
 ```json
 {
     "name": "Source-BlobStorage-z4y",
@@ -316,7 +316,7 @@ Két összekapcsolt szolgáltatások kell megjelennie. Egyet a forrás- és a c�
 }
 ```
 
-##### <a name="destination-blob-storage-linked-service"></a>Cél blob storage társított szolgáltatás
+##### <a name="destination-blob-storage-linked-service"></a>Cél blob storage-beli társított szolgáltatás
 
 ```json
 {
@@ -330,16 +330,16 @@ Két összekapcsolt szolgáltatások kell megjelennie. Egyet a forrás- és a c�
 }
 ```
 
-Az Azure tárolás társított szolgáltatásának kapcsolatos további információkért lásd: [szolgáltatástulajdonságok kapcsolódó](#linked-service-properties) szakasz. 
+Azure Storage társított szolgáltatás kapcsolatos további információkért lásd: [társított szolgáltatások tulajdonságai](#linked-service-properties) szakaszban. 
 
 #### <a name="datasets"></a>Adathalmazok
-Két adatkészletet van: egy bemeneti adatkészlet és egy kimeneti adatkészletet. A DataSet adatkészlet típusúra **AzureBlob** is. 
+Nincsenek a két adatkészletet: a bemeneti adatkészletek és a egy kimeneti adatkészletet. Az adatkészlet típusa értékre van állítva **AzureBlob** esetében is. 
 
-A bemeneti adatkészlet mutat a **bemeneti** mappában található a **adfblobconnector** blob tároló. A **külső** tulajdonsága **igaz** ehhez az adatkészlethez az adatok nem előállított, a másolási tevékenység során, amely ehhez az adatkészlethez bemeneti adatokként a folyamat. 
+A bemeneti adatkészlet mutat a **bemeneti** mappában található a **adfblobconnector** blob-tárolóba. A **külső** tulajdonsága **igaz** ehhez az adatkészlethez, a másolási tevékenység, amely bemenetként az adatkészlet a folyamat nem hozzák az adatokat. 
 
-A kimeneti adatkészlet mutat a **kimeneti** a azonos blob-tároló mappa. A kimeneti adatkészletet is használ az évet, hónapot és napot a **SliceStart** rendszerváltozó dinamikusan kiértékelése a kimeneti fájl elérési útját. Függvények és a Data Factory által támogatott rendszerváltozók listáját lásd: [adat-előállító funkciók és rendszerváltozók](data-factory-functions-variables.md). A **külső** tulajdonsága **hamis** (alapértelmezett érték), mert ez az adatkészlet hozzák a feldolgozási sor. 
+A kimeneti adatkészlet mutat a **kimeneti** ugyanazt a blob-tárolót, mappát. A kimeneti adatkészletet is használ, az év, hónap és napja a **SliceStart** rendszerváltozó dinamikusan értékelheti ki a kimeneti fájl elérési útját. Funkciók és a Data Factory által támogatott rendszerváltozók listáját lásd: [Data Factory-függvények és rendszerváltozók](data-factory-functions-variables.md). A **külső** tulajdonsága **hamis** (alapértelmezett érték), mert ez az adatkészlet a folyamat állítja elő. 
 
-Azure Blob-adathalmazra által támogatott tulajdonságokról kapcsolatos további információkért lásd: [adatkészlet tulajdonságai](#dataset-properties) szakasz.
+Támogatja az Azure Blob-adatkészlet-tulajdonságokkal kapcsolatos további információkért lásd: [adatkészlet tulajdonságai](#dataset-properties) szakaszban.
 
 ##### <a name="input-dataset"></a>Bemeneti adatkészlet
 
@@ -405,9 +405,9 @@ Azure Blob-adathalmazra által támogatott tulajdonságokról kapcsolatos továb
 ```
 
 #### <a name="pipeline"></a>Folyamat
-A folyamat csak egy tevékenység rendelkezik. A **típus** a tevékenység értéke **másolási**.  A tevékenység típusa tulajdonságai nincsenek két részből áll, egy forrás és a többi fogadó egy. A forrás típusa **BlobSource** , a tevékenység egy blob-tároló az adatok másolása. A fogadó típusa **BlobSink** adatok másolása egy blob Storage tevékenységként. A másolási tevékenység veszi InputDataset-z4y bemeneteként és OutputDataset-z4y kimeneteként. 
+A folyamat egyetlen tevékenységet tartalmaz. A **típus** a tevékenység értékre van állítva **másolási**.  A tevékenység típusa tulajdonságai között nincsenek két szakasz, egyet a forrás és a többi fogadó. A forrástípus értéke **BlobSource** , a tevékenység adatokat másol egy blob storage-ból. A fogadó típusa **BlobSink** a tevékenység adatokat másol egy blob Storage-t. A másolási tevékenység bemeneti InputDataset-z4y vesz igénybe, és OutputDataset-z4y a kimenetként. 
 
-BlobSource és BlobSink által támogatott tulajdonságokról kapcsolatos további információkért lásd: [tevékenység Tulajdonságok másolása](#copy-activity-properties) szakasz. 
+BlobSource és BlobSink által támogatott tulajdonságokkal kapcsolatos további információkért lásd: [másolási tevékenység tulajdonságai](#copy-activity-properties) szakaszban. 
 
 ```json
 {
@@ -462,21 +462,21 @@ BlobSource és BlobSink által támogatott tulajdonságokról kapcsolatos továb
 }
 ```
 
-## <a name="json-examples-for-copying-data-to-and-from-blob-storage"></a>Adatok másolása, és a Blob Storage JSON példák  
-Az alábbi példák megadják minta JSON-definíciókat tartalmazzon, segítségével hozzon létre egy folyamatot [Azure-portálon](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása az Azure Blob Storage és az Azure SQL Database mutatnak. Azonban az adatok átmásolhatók **közvetlenül** a forrásokban, sem a megadott nyelő [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenység során az Azure Data Factory használatával.
+## <a name="json-examples-for-copying-data-to-and-from-blob-storage"></a>Adatok másolása Blob Storage szolgáltatásba vagy onnan a JSON-példák  
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása az Azure Blob Storage és az Azure SQL Database mutatnak. Azonban az adatok átmásolhatók **közvetlenül** bármelyik források a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
-### <a name="json-example-copy-data-from-blob-storage-to-sql-database"></a>JSON-NÁ. példa: Adatok másolása az Blob-tároló az SQL-adatbázis
-A következő példában:
+### <a name="json-example-copy-data-from-blob-storage-to-sql-database"></a>JSON-példa: Adatok másolása Blob Storage-ból SQL Database-adatbázishoz
+Az alábbi mintában látható:
 
 1. A társított szolgáltatás típusa [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties).
 2. A társított szolgáltatás típusa [AzureStorage](#linked-service-properties).
-3. Bemeneti [dataset](data-factory-create-datasets.md) típusú [AzureBlob](#dataset-properties).
-4. Egy kimeneti [dataset](data-factory-create-datasets.md) típusú [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
-5. A [csővezeték](data-factory-create-pipelines.md) , a másolási tevékenység által használt [BlobSource](#copy-activity-properties) és [SqlSink](data-factory-azure-sql-connector.md#copy-activity-properties).
+3. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](#dataset-properties).
+4. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
+5. A [folyamat](data-factory-create-pipelines.md) egy másolási tevékenységgel, amely használja [BlobSource](#copy-activity-properties) és [SqlSink](data-factory-azure-sql-connector.md#copy-activity-properties).
 
-A minta másolatok idősorozat adatokat az Azure blob-Azure SQL táblázat óránként. A mintákat a következő szakaszok ismertetik ezeket a mintákat használt JSON-tulajdonságok.
+A minta másolatokat idősorozat-adatokat egy Azure-blobból egy Azure SQL table óránként történik. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
 
-**Az Azure SQL társított szolgáltatásnak:**
+**Az Azure SQL társított szolgáltatást:**
 
 ```json
 {
@@ -489,7 +489,7 @@ A minta másolatok idősorozat adatokat az Azure blob-Azure SQL táblázat órá
   }
 }
 ```
-**Az Azure tárolás társított szolgáltatásának:**
+**Az Azure Storage társított szolgáltatást:**
 
 ```json
 {
@@ -502,11 +502,11 @@ A minta másolatok idősorozat adatokat az Azure blob-Azure SQL táblázat órá
   }
 }
 ```
-Az Azure Data Factory két típusú Azure Storage társított szolgáltatásokat támogat: **AzureStorage** és **AzureStorageSas**. Az első címtárra a kapcsolati karakterlánc, amely tartalmazza a fiókkulcs ad meg, és a későbbi egy, a közös hozzáférésű Jogosultságkód (SAS) Uri megadása. Lásd: [összekapcsolt szolgáltatások](#linked-service-properties) című szakaszban talál információt.  
+Az Azure Data Factory két típusú Azure Storage társított szolgáltatásokat támogat: **AzureStorage** és **AzureStorageSas**. Az első címtárra, adja meg a kapcsolati karakterláncot, amely tartalmazza a kulcsát, és az újabb már, adja meg a közös hozzáférésű Jogosultságkód (SAS) URI-t. Lásd: [társított szolgáltatások](#linked-service-properties) című szakasz részletezi.  
 
-**Az Azure Blob bemeneti adatkészletet:**
+**Azure blobbemeneti adatkészlet:**
 
-Adatok van felvett egy új blobból minden órában (gyakoriság: óra, időköz: 1). A mappa elérési útját és nevét a BLOB dinamikusan értékeli ki a kezdési időt a szelet által feldolgozott alapján. A mappa elérési útját használja év, hónap és nap részét kezdési idejét, valamint fájl nevét a kezdő időpontja óra részét. "external": "true" beállítás arról értesíti az, hogy a tábla az adat-előállítóban külső, és egy tevékenység adat-előállító nem hozzák adat-Előállítóban.
+Adatok felülettől új blob minden órában (frequency: óra, interval: 1). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útjának év, hónap és nap részét a kezdési időpont és fájlnevet a kezdő időpontja óra részét használja. "external": "true" beállítással, hogy a tábla a data factory a külső, és nem egy adat-előállító tevékenység által előállított tájékoztatja a Data Factory.
 
 ```json
 {
@@ -544,9 +544,9 @@ Adatok van felvett egy új blobból minden órában (gyakoriság: óra, időköz
   }
 }
 ```
-**Az Azure SQL kimeneti adatkészlet:**
+**Az Azure SQL kimeneti adatkészlete:**
 
-A mintaadatok másolatok táblához "MyTable" Azure SQL adatbázis neve. A tábla létrehozása az Azure SQL adatbázis azonos számú oszlopot tartalmaz a Blob CSV-fájl várt. Új sorok hozzáadásakor a tábla minden órában.
+A minta adatokat másol egy táblához "MyTable" nevű egy Azure SQL database-ben. A tábla létrehozása az Azure SQL database, az azonos számú oszlopot az a Blob CSV-fájl tartalmazza a várt módon. Új sorok hozzáadódnak a tábla minden órában.
 
 ```json
 {
@@ -564,9 +564,9 @@ A mintaadatok másolatok táblához "MyTable" Azure SQL adatbázis neve. A tábl
   }
 }
 ```
-**A másolási tevékenység során a Blob-forrás és fogadó SQL-feldolgozási folyamat:**
+**Fogadó-Blob-forrás- és SQL rendelkező folyamatot egy másolási tevékenységgel:**
 
-A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra nem ütemezték. Az adatcsatorna JSON-definícióból a **forrás** típusúra **BlobSource** és **fogadó** típusúra **SqlSink**.
+A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **BlobSource** és **fogadó** típusa **SqlSink**.
 
 ```json
 {  
@@ -613,18 +613,18 @@ A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és
    }
 }
 ```
-### <a name="json-example-copy-data-from-azure-sql-to-azure-blob"></a>JSON-NÁ. példa: Adatok másolása az Azure SQL Azure-blobba
-A következő példában:
+### <a name="json-example-copy-data-from-azure-sql-to-azure-blob"></a>JSON-példa: Adatok másolása az Azure SQL Azure-blobba
+Az alábbi mintában látható:
 
 1. A társított szolgáltatás típusa [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties).
 2. A társított szolgáltatás típusa [AzureStorage](#linked-service-properties).
-3. Bemeneti [dataset](data-factory-create-datasets.md) típusú [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
-4. Egy kimeneti [dataset](data-factory-create-datasets.md) típusú [AzureBlob](#dataset-properties).
-5. A [csővezeték](data-factory-create-pipelines.md) a másolási tevékenység által használt [SqlSource](data-factory-azure-sql-connector.md#copy-activity-properties) és [BlobSink](#copy-activity-properties).
+3. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
+4. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](#dataset-properties).
+5. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [SqlSource](data-factory-azure-sql-connector.md#copy-activity-properties) és [BlobSink](#copy-activity-properties).
 
-A minta-idősoros adatok az Azure SQL tábla másolja az Azure blob óránként. A mintákat a következő szakaszok ismertetik ezeket a mintákat használt JSON-tulajdonságok.
+A minta idősorozat-adatokat másol egy Azure SQL-táblát az Azure-blobba óránként. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
 
-**Az Azure SQL társított szolgáltatásnak:**
+**Az Azure SQL társított szolgáltatást:**
 
 ```json
 {
@@ -637,7 +637,7 @@ A minta-idősoros adatok az Azure SQL tábla másolja az Azure blob óránként.
   }
 }
 ```
-**Az Azure tárolás társított szolgáltatásának:**
+**Az Azure Storage társított szolgáltatást:**
 
 ```json
 {
@@ -650,13 +650,13 @@ A minta-idősoros adatok az Azure SQL tábla másolja az Azure blob óránként.
   }
 }
 ```
-Az Azure Data Factory két típusú Azure Storage társított szolgáltatásokat támogat: **AzureStorage** és **AzureStorageSas**. Az első címtárra a kapcsolati karakterlánc, amely tartalmazza a fiókkulcs ad meg, és a későbbi egy, a közös hozzáférésű Jogosultságkód (SAS) Uri megadása. Lásd: [összekapcsolt szolgáltatások](#linked-service-properties) című szakaszban talál információt.  
+Az Azure Data Factory két típusú Azure Storage társított szolgáltatásokat támogat: **AzureStorage** és **AzureStorageSas**. Az első címtárra, adja meg a kapcsolati karakterláncot, amely tartalmazza a kulcsát, és az újabb már, adja meg a közös hozzáférésű Jogosultságkód (SAS) URI-t. Lásd: [társított szolgáltatások](#linked-service-properties) című szakasz részletezi.  
 
 **Az Azure SQL bemeneti adatkészlet:**
 
-A minta azt feltételezi, hogy létrehozott egy tábla "MyTable" Azure SQL, egy "timestampcolumn" nevű adatsorozat időadatok oszlopot tartalmaz.
+A minta azt feltételezi, létrehozott egy táblát "MyTable" az Azure SQL-ben és a egy idősorozat-adatok a "timestampcolumn" nevű oszlopot tartalmaz.
 
-"External" beállítása: "true" tájékoztatja Data Factory szolgáltatásnak, hogy a tábla külső data factoryval való, és nem hozzák adat-előállító tevékenység.
+Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásban, hogy a tábla a data factory a külső, és nem hozzák az adat-előállító adott tevékenységéhez.
 
 ```json
 {
@@ -683,9 +683,9 @@ A minta azt feltételezi, hogy létrehozott egy tábla "MyTable" Azure SQL, egy 
 }
 ```
 
-**Az Azure Blob kimeneti adatkészlet:**
+**Azure blobkimeneti adatkészlet:**
 
-Adatot ír egy új blob minden órában (gyakoriság: óra, időköz: 1). A mappa elérési útját a BLOB a szelet által feldolgozott kezdési ideje alapján dinamikusan történik. A mappa elérési útját használja, év, hónap, nap és a kezdési idő órában részeit.
+Adatok írása egy új blob minden órában (frequency: óra, az interval: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {
@@ -717,9 +717,9 @@ Adatot ír egy új blob minden órában (gyakoriság: óra, időköz: 1). A mapp
 }
 ```
 
-**A másolási tevékenység során az SQL-forrás és fogadó Blob egy folyamaton belül:**
+**Az SQL-forrás és fogadó Blob egy folyamatot egy másolási tevékenységgel:**
 
-A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra nem ütemezték. Az adatcsatorna JSON-definícióból a **forrás** típusúra **SqlSource** és **fogadó** típusúra **BlobSink**. A megadott SQL-lekérdezést a **SqlReaderQuery** tulajdonság kiválasztása az adatok másolása az elmúlt órában.
+A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **SqlSource** és **fogadó** típusa **BlobSink**. A megadott SQL-lekérdezést a **SqlReaderQuery** tulajdonság kiválasztja az adatokat másolni az elmúlt órában.
 
 ```json
 {  
@@ -769,7 +769,7 @@ A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és
 ```
 
 > [!NOTE]
-> Képezze le a fogadó adatkészletből oszlopok forrás adatkészletből oszlopokat, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).
+> Fogadó-adatkészlet az oszlopok a forrásadatkészlet oszlopok leképezésére, lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
 
-## <a name="performance-and-tuning"></a>Teljesítmény- és hangolása
-Lásd: [másolási tevékenység teljesítmény- és hangolása útmutató](data-factory-copy-activity-performance.md) tájékozódhat az kulcsfontosságú szerepet játszik adatátvitelt jelölik a (másolási tevékenység során) az Azure Data Factory és különböző módokon optimalizálhatja azt, hogy hatás teljesítményét.
+## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
+Lásd: [másolási tevékenységek teljesítményéhez és teljesítményhangolási útmutatóból](data-factory-copy-activity-performance.md) megismerheti a kulcsfontosságú szerepet játszik az adatáthelyezés (másolási tevékenység) az Azure Data Factory és a különféle módokon optimalizálhatja azt, hogy hatással lehet a teljesítményre.

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2018
+ms.date: 08/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a82cae05bfd11145a1415494908679748870f680
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 6c080d44aed7c2b3db54a34f4b711db66681cbe9
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494489"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056913"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -41,7 +41,7 @@ Letöltés |} [Töltse le az Azure AD Connect](http://go.microsoft.com/fwlink/?L
 
 ### <a name="release-status"></a>Kiadási állapot
 
-7/20/2018: Megjelent a letöltésről és automatikus frissítés. Az automatikus frissítés még folyamatban van.
+2018-8-21: Megjelent a letöltésről és automatikus frissítés. 
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 
@@ -67,7 +67,7 @@ Letöltés |} [Töltse le az Azure AD Connect](http://go.microsoft.com/fwlink/?L
 - Kijavítva a hiba, amelyet problémák, amikor a felhasználó halad előre és vissza a varázsló
 - Kijavítva a hiba miatt átadja a varázslóban helytelen több szál történik hiba elkerülése érdekében
 - Csoport szinkronizálás szűrése lap LDAP-hibát észlel, biztonsági csoportok feloldásakor, az Azure AD Connect most visszatér a kivétel teljes igazodva.  A hivatkozási kivételt kiváltó továbbra is ismeretlen, és a egy másik hiba fog fordulni.
--  Kijavítva a hiba, ahol Találkozhatunk és NGC-kulcsok (msDS-KeyCredentialLink attribútum a WHfB felhasználó/eszköz objektumok) engedélyeit is nincs megfelelően beállítva.     
+-  Kijavítva a hiba, ahol Találkozhatunk és NGC-kulcsok (ms-DS-KeyCredentialLink attribútum a WHfB felhasználó/eszköz objektumok) engedélyeit is nincs megfelelően beállítva.     
 - Kijavítva a hiba, ahol "Set-ADSyncRestrictedPermissions" nem lett meghívva megfelelően
 -  Engedély biztosítása a csoportok visszaírásához AADConnect a telepítővarázslóban támogatása
 - Ha módosítja a bejelentkezési módszer a Jelszókivonat-szinkronizálás az AD FS-hez, Jelszókivonatok szinkronizálása nem le lett tiltva.
@@ -362,7 +362,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 
 ### <a name="ad-fs-management"></a>AD FS-kezelőben
 #### <a name="fixed-issue"></a>Kijavítva a hiba
-* A használatával kapcsolatos probléma kijavítva [msDS-ConsistencyGuid, mint a Forráshorgony](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) funkció. A probléma hatással van az ügyfelek, akik a beállított *és az AD FS összevonási* felhasználói bejelentkezési módszert. Végrehajtása közben *Forráshorgony konfigurálása* feladata a varázslót, az Azure AD Connect használatával vált * ms-DS-ConsistencyGuid immutableId a forrás-attribútumként. Ez a változás részeként az Azure AD Connect megkísérli jogcímszabályainak frissítése az AD FS immutableid azonosítója. Azonban ez a lépés nem sikerült, mert az Azure AD Connect nem volt az rendszergazdájának hitelesítő adatait az AD FS konfigurálásához szükséges. A javítás az Azure AD Connect most megadását kéri a rendszergazdai hitelesítő adatait az AD FS végrehajtása közben a *Forráshorgony konfigurálása* feladat.
+* A használatával kapcsolatos probléma kijavítva [Forráshorgony, ms-DS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) funkció. A probléma hatással van az ügyfelek, akik a beállított *és az AD FS összevonási* felhasználói bejelentkezési módszert. Végrehajtása közben *Forráshorgony konfigurálása* feladata a varázslót, az Azure AD Connect használatával vált * ms-DS-ConsistencyGuid immutableId a forrás-attribútumként. Ez a változás részeként az Azure AD Connect megkísérli jogcímszabályainak frissítése az AD FS immutableid azonosítója. Azonban ez a lépés nem sikerült, mert az Azure AD Connect nem volt az rendszergazdájának hitelesítő adatait az AD FS konfigurálásához szükséges. A javítás az Azure AD Connect most megadását kéri a rendszergazdai hitelesítő adatait az AD FS végrehajtása közben a *Forráshorgony konfigurálása* feladat.
 
 
 
@@ -377,7 +377,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 * Van egy ismert probléma az Azure AD Connect frissítés, amely befolyásolja az ügyfelek, akik engedélyezték [zökkenőmentes egyszeri bejelentkezést](active-directory-aadconnect-sso.md). Után az Azure AD Connect frissítve van, a szolgáltatás megjelenik a módon le van tiltva, a varázslóban, annak ellenére, hogy a szolgáltatás továbbra is engedélyezett marad. A javítás a probléma jövőbeni biztosítjuk engedje el. A megjelenített problémáról az érintett felhasználókat manuálisan javíthassuk azt a varázsló zökkenőmentes egyszeri bejelentkezés engedélyezésével.
 
 #### <a name="fixed-issues"></a>Rögzített kapcsolatos problémák
-* Javítva lett egy probléma, amely ebben az esetben az Azure AD Connect frissítése a jogcímszabályok a helyszíni Active Directory összevonási szolgáltatások, miközben lehetővé teszi a [msDS-ConsistencyGuid Forráshorgony,](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) funkció. A probléma akkor fordul elő, ha megpróbálja engedélyezni a meglévő Azure AD Connect központi telepítésre van konfigurálva, a bejelentkezési módszer az AD FS szolgáltatást. A probléma oka, hogy a varázsló nem ADFS hitelesítő adatok kérése előtt próbálja frissíteni a jogcímszabályok az AD FS-ben.
+* Kijavítva, amely ebben az esetben az Azure AD Connect frissítése a jogcímszabályok a helyszíni Active Directory összevonási szolgáltatások, miközben lehetővé teszi a [ms-DS-ConsistencyGuid Forráshorgony,](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) funkció. A probléma akkor fordul elő, ha megpróbálja engedélyezni a meglévő Azure AD Connect központi telepítésre van konfigurálva, a bejelentkezési módszer az AD FS szolgáltatást. A probléma oka, hogy a varázsló nem ADFS hitelesítő adatok kérése előtt próbálja frissíteni a jogcímszabályok az AD FS-ben.
 * Javítva lett egy probléma, amely miatt a telepítés sikertelen lesz, ha az Azure AD Connect a helyszíni AD-erdőben van, az NTLM le van tiltva. A probléma okozza az Azure AD Connect varázsló a Kerberos-hitelesítéshez szükséges biztonsági környezet létrehozásakor nem adja meg teljesen minősített hitelesítő adatokat. Ennek hatására a Kerberos-hitelesítés sikertelen lesz, és az Azure AD Connect varázsló tud visszatérni NTLM használatával.
 
 ### <a name="azure-ad-connect-sync"></a>Az Azure AD Connect szinkronizálása
@@ -427,7 +427,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 
   * A probléma akkor fordul elő, ha az Azure AD Connect frissítve van, vagy ha a feladat beállítás *szinkronizálási konfiguráció frissítése* az Azure AD Connect varázsló használata az Azure AD Connect szinkronizálási konfiguráció frissítése.
   
-  * A szinkronizálási szabály az ügyfél számára, akik engedélyezték a [msDS-ConsistencyGuid Forráshorgony funkcióként](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor). Ez a funkció verzió 1.1.524.0 és követően jelent meg. A szinkronizálási szabály eltávolítása után az Azure AD Connect már nem töltheti fel a helyszíni AD-ms-DS-ConsistencyGuid attribútum az ObjectGuid attribútum értéke. Nem akadályozza meg azt, hogy a felhasználók új önköltséggel Azure AD-be.
+  * A szinkronizálási szabály az ügyfél számára, akik engedélyezték a [ms-DS-ConsistencyGuid Forráshorgony funkcióként](active-directory-aadconnect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). Ez a funkció verzió 1.1.524.0 és követően jelent meg. A szinkronizálási szabály eltávolítása után az Azure AD Connect már nem töltheti fel a helyszíni AD-ms-DS-ConsistencyGuid attribútum az ObjectGuid attribútum értéke. Nem akadályozza meg azt, hogy a felhasználók új önköltséggel Azure AD-be.
   
   * A javítás biztosítja, hogy a szinkronizálási szabály már nem törlődnek a frissítés során, vagy a konfiguráció módosításának, mindaddig, amíg a szolgáltatás engedélyezve van. A meglévő ügyfeleknek, akik a probléma által érintett a javítás emellett biztosítja, hogy a szinkronizálási szabály vissza erre a verzióra, az Azure AD Connect frissítése után kerül.
 
@@ -463,7 +463,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 
 #### <a name="fixed-issue"></a>Kijavítva a hiba
 
-* Kijavítva a beépített szinkronizálási szabály "Az AD - felhasználó ImmutableId Out" okozó el kell távolítani a szervezeti egység szerinti szűrés konfiguráció frissítésekor. A szinkronizálási szabály szükség a [msDS-ConsistencyGuid Forráshorgony funkcióként](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor).
+* Kijavítva a beépített szinkronizálási szabály "Az AD - felhasználó ImmutableId Out" okozó el kell távolítani a szervezeti egység szerinti szűrés konfiguráció frissítésekor. A szinkronizálási szabály szükség a [ms-DS-ConsistencyGuid Forráshorgony funkcióként](active-directory-aadconnect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
 
 * Megtörtént egy probléma javítása, a [tartomány és szervezeti egységek szűrése képernyő](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) az az Azure AD Connect varázsló jelenik *minden tartomány és szervezeti egységek szinkronizálása* lehetőség választása, annak ellenére, hogy a szervezeti egység szerinti szűrés engedélyezve van.
 
@@ -529,14 +529,14 @@ A probléma, amely akkor keletkezik, hogy a **minden tartomány és szervezeti e
 
 * Kijavítva a jelszóvisszaírás, amely lehetővé teszi az Azure AD-rendszergazda, alaphelyzetbe állíthatja a jelszót a helyszíni AD az emelt szintű felhasználói fiókot. A probléma akkor fordul elő, amikor az Azure AD Connect a jelszó alaphelyzetbe állítása engedélyt kap a rendszerjogosultságú fiók keresztül. A problémával ebben a verzióban az Azure AD Connect szerint nem engedélyezi az Azure AD-rendszergazda, alaphelyzetbe állíthatja a jelszót egy tetszőleges helyszíni AD az emelt szintű felhasználói fiókot, ha a rendszergazda az adott fiók tulajdonosának. További információkért tekintse meg [biztonsági tanácsadó 4033453](https://technet.microsoft.com/library/security/4033453).
 
-* Kapcsolatos probléma kijavítva a [msDS-ConsistencyGuid, mint a Forráshorgony](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) a szolgáltatás hol tárolódnak az Azure AD Connect a nem visszaírását a helyszíni AD-msDS-ConsistencyGuid attribútum. A probléma akkor fordul elő, ha több helyszíni AD-erdőhöz hozzá az Azure AD Connect és az *felhasználói identitások könyvtárak több lehetőség is léteznek* van kiválasztva. Az ilyen konfiguráció használata esetén a eredő szinkronizálási szabályok nem adja meg a sourceAnchorBinary attribútum tartozik a metaverzumba. A sourceAnchorBinary attribútum az msDS-ConsistencyGuid attribútum a forrásattribútum szolgál. Ennek eredményeképpen az ms-DSConsistencyGuid attribútum visszaírását nem történik meg. A probléma megoldásához, következő szinkronizálási szabályok frissültek, győződjön meg arról, hogy a rendszer mindig kitölti a sourceAnchorBinary attribútum tartozik a metaverzumba:
+* Kapcsolatos probléma kijavítva a [Forráshorgony, ms-DS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) a szolgáltatás hol tárolódnak az Azure AD Connect a nem visszaírását a helyszíni AD-ms-DS-ConsistencyGuid attribútum. A probléma akkor fordul elő, ha több helyszíni AD-erdőhöz hozzá az Azure AD Connect és az *felhasználói identitások könyvtárak több lehetőség is léteznek* van kiválasztva. Az ilyen konfiguráció használata esetén a eredő szinkronizálási szabályok nem adja meg a sourceAnchorBinary attribútum tartozik a metaverzumba. Ms-DS-ConsistencyGuid attribútum sourceAnchorBinary attribútum a forrásattribútum lesz. Ennek eredményeképpen az ms-DSConsistencyGuid attribútum visszaírását nem történik meg. A probléma megoldásához, következő szinkronizálási szabályok frissültek, győződjön meg arról, hogy a rendszer mindig kitölti a sourceAnchorBinary attribútum tartozik a metaverzumba:
   * Az AD - InetOrgPerson AccountEnabled.xml-ből
   * Az AD - InetOrgPerson Common.xml-ből
   * Az AD - felhasználó AccountEnabled.xml-ből
   * Az AD - felhasználó Common.xml-ből
   * Az ad - felhasználó csatlakozhat SOAInAAD.xml
 
-* Korábban akkor is, ha a [msDS-ConsistencyGuid, mint a Forráshorgony](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) funkció nem engedélyezett, a "Az AD-felhasználó ImmutableId Out" szinkronizálási szabály továbbra is adnak hozzá az Azure AD Connect. A hatás jóindulatú, és nem okoz a visszaírás megtörténjen msDS-ConsistencyGuid attribútum. A félreértések elkerülése végett logikai bővült győződjön meg arról, hogy a szinkronizálási szabály csak hozzáadni, ha a szolgáltatás engedélyezve van.
+* Korábban akkor is, ha a [Forráshorgony, ms-DS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) funkció nem engedélyezett, a "Az AD-felhasználó ImmutableId Out" szinkronizálási szabály továbbra is adnak hozzá az Azure AD Connect. A hatás jóindulatú, és nem okoz a visszaírás megtörténjen ms-DS-ConsistencyGuid attribútum. A félreértések elkerülése végett logikai bővült győződjön meg arról, hogy a szinkronizálási szabály csak hozzáadni, ha a szolgáltatás engedélyezve van.
 
 * Rögzített 611 událost chyby a Jelszókivonat-szinkronizálás sikertelen kiváltó problémát. Ez a probléma akkor fordul elő, amikor valamelyik vagy további domain controllers el lettek távolítva a helyszíni AD. Az egyes jelszó-szinkronizálási ciklust végén kiadott a szinkronizálási cookie-k által a helyszíni AD meghívási azonosítóit eltávolított tartományvezérlők USN (frissítési sorszám) értéke a 0 tartalmaz. A jelszó-szinkronizálás kezelője nem tudja megőrizni szinkronizálási cookie-t tartalmazó USN értéke 0, és meghiúsul, és 611 událost chyby. A következő szinkronizálási ciklus során a jelszó-szinkronizálás kezelője újrahasználja az utolsó megőrzött szinkronizálási cookie-t, amely nem tartalmaz 0 USN-értéket. Ez azt eredményezi, hogy ugyanazt a jelszómódosítást kell szinkronizálni. A javítás a jelszó-szinkronizálás kezelője továbbra is fennáll a szinkronizálási cookie-k megfelelően.
 
@@ -544,10 +544,10 @@ A probléma, amely akkor keletkezik, hogy a **minden tartomány és szervezeti e
 
 #### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 
-* Korábban a [msDS-ConsistencyGuid, mint a Forráshorgony](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) funkció csak az új telepítések számára elérhető volt. Eljött a meglévő telepítések számára elérhető. Pontosabban:
+* Korábban a [Forráshorgony, ms-DS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) funkció csak az új telepítések számára elérhető volt. Eljött a meglévő telepítések számára elérhető. Pontosabban:
   * A funkció eléréséhez az Azure AD Connect varázsló elindításához, és válassza ki a *frissítés Forráshorgony* lehetőséget.
   * Ez a beállítás csak akkor látható, az objectGuid használja, a sourceAnchor attribútum telepítéseit.
-  * Konfigurálja a beállítást, ha a varázsló ellenőrzi a helyszíni Active Directoryban az msDS-ConsistencyGuid attribútum állapotát. Ha az attribútum a címtárban lévő összes felhasználói objektum nincs konfigurálva, a varázsló használja az msDS-ConsistencyGuid Forráshorgony-attribútumként. Ha az attribútum egy vagy több felhasználói objektumok a címtárban van konfigurálva, a varázsló azt állapítja meg az attribútum más alkalmazások által használt, és nem felel meg a sourceAnchor attribútum, és nem teszi lehetővé a Forráshorgony módosítást, a folytatáshoz. Ha biztos benne, hogy az attribútum nem használja meglévő alkalmazásokat, meg kell le a hiba részleteiért forduljon az ügyfélszolgálathoz.
+  * Konfigurálja a beállítást, ha a varázsló ellenőrzi a helyszíni Active Directoryban az ms-DS-ConsistencyGuid attribútum állapotát. Ha az attribútum a címtárban lévő összes felhasználói objektum nincs konfigurálva, a varázsló használja az ms-DS-ConsistencyGuid Forráshorgony-attribútumként. Ha az attribútum egy vagy több felhasználói objektumok a címtárban van konfigurálva, a varázsló azt állapítja meg az attribútum más alkalmazások által használt, és nem felel meg a sourceAnchor attribútum, és nem teszi lehetővé a Forráshorgony módosítást, a folytatáshoz. Ha biztos benne, hogy az attribútum nem használja meglévő alkalmazásokat, meg kell le a hiba részleteiért forduljon az ügyfélszolgálathoz.
 
 * Jellemző **userCertificate** eszközobjektumok, most már az Azure AD Connect attribútum úgy tűnik, a szükséges tanúsítványok értékek [tartományhoz csatlakoztatott eszközök csatlakoztatása az Azure AD-hez Windows 10-es élmény](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy) és a többi Azure ad szinkronizálása előtt kiszűri. Ahhoz, hogy ez a viselkedés, a beépített szinkronizálási szabály "Ki az aad-ben – eszköz csatlakozzon SOAInAD" frissítve lett.
 
@@ -667,7 +667,7 @@ Az Azure AD Connect szinkronizálása
   * Hozzáadott **preferredDataLocation** metaverzumséma és AAD-összekötő séma. Egyéni szinkronizálási szabályok ezt vagy attribútumok frissítése az Azure ad-ben kívánó ügyfelek valósítható meg. 
   * Hozzáadott **userType** metaverzumséma és AAD-összekötő séma. Egyéni szinkronizálási szabályok ezt vagy attribútumok frissítése az Azure ad-ben kívánó ügyfelek valósítható meg.
 
-* Az Azure AD Connect most már automatikusan lehetővé teszi, hogy ConsistencyGuid attribútum használata a Forráshorgony-attribútumként a helyszíni AD-objektumok. További, az Azure AD Connect feltölti az objectGuid attribútum értéke ConsistencyGuid attribútum, akkor, ha üres. Ez a funkció akkor alkalmazható, csak az új telepítéshez. A szolgáltatásról további információért tekintse meg a cikk szakasz [az Azure AD Connect: tervezési alapelvei – az msDS-ConsistencyGuid használata sourceanchorként](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor).
+* Az Azure AD Connect most már automatikusan lehetővé teszi, hogy ConsistencyGuid attribútum használata a Forráshorgony-attribútumként a helyszíni AD-objektumok. További, az Azure AD Connect feltölti az objectGuid attribútum értéke ConsistencyGuid attribútum, akkor, ha üres. Ez a funkció akkor alkalmazható, csak az új telepítéshez. A szolgáltatásról további információért tekintse meg a cikk szakasz [az Azure AD Connect: tervezési alapelvei – az ms-DS-ConsistencyGuid használata sourceanchorként](active-directory-aadconnect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
 * A parancsmag új hibaelhárítási Invoke-ADSyncDiagnostics lett hozzáadva a Jelszókivonat-szinkronizálás diagnosztizálásához kapcsolatos problémákat. A parancsmag használatával kapcsolatos információkért tekintse meg a cikk [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
 * Most már támogatja a szinkronizálási postafiókhoz nyilvános mappa objektumait ki az Azure AD Connect a helyszíni AD az Azure ad-hez. A funkciót, az Azure AD Connect varázsló a választható funkciók használatával engedélyezheti. A szolgáltatásról további információért tekintse meg a cikk [Office 365 Directory-alapú biztonsági blokkolás támogatása a helyszíni levelezés engedélyezett nyilvános mappái](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
 * Az Azure AD Connectnek szüksége van az AD DS-fiókot a szinkronizálás a helyszíni AD. Korábban Ha telepítette az Expressz mód használata az Azure AD Connect, biztosíthatja az Azure AD Connect és egy vállalati rendszergazdai fiók hitelesítő adatait az AD DS-fiókot hozna létre. Azonban az egyéni telepítés és erdők hozzáadása egy meglévő üzemelő példányt, kellett adja meg ehelyett az AD DS-fiókot. Most is arra, hogy adjon meg egy vállalati rendszergazdai fiók hitelesítő adatait az egyéni telepítés során, és lehetővé teszik az Azure AD Connect az AD DS-fiókot létrehozni.
@@ -1070,7 +1070,7 @@ Kiadás dátuma: 2014. December
 **Új funkciók:**
 
 * Jelszó-szinkronizálás attribútum szerinti szűrés mostantól támogatott. További információkért lásd: [jelszó-szinkronizálás szűrése](active-directory-aadconnectsync-configure-filtering.md).
-* Az msDS-ExternalDirectoryObjectID attribútum visszaírja az Active Directoryhoz. Ez a funkció az Office 365-alkalmazások támogatásával bővült. Az OAuth2 Exchange hibrid telepítés az Online és helyszíni postaládákhoz keresztül.
+* Az ms-DS-ExternalDirectoryObjectID attribútum visszaírja az Active Directoryhoz. Ez a funkció az Office 365-alkalmazások támogatásával bővült. Az OAuth2 Exchange hibrid telepítés az Online és helyszíni postaládákhoz keresztül.
 
 **Rögzített frissítési problémák:**
 

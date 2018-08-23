@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: juliako
-ms.openlocfilehash: 220ff194ab5f8fa49ba7603ecd91122459d4dc1e
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: cdfd19f2dfd599eacaa0759b63c94767e760a874
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249223"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054911"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
@@ -35,7 +35,7 @@ Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója vál
 | Probléma | Leírás |
 | --- | --- |
 | Számos gyakori HTTP-fejlécek nem biztosított a REST API-ban. |A Media Services-alkalmazások fejlesztése a REST API-val, ha úgy gondolja, hogy néhány általános HTTP-fejléc mezők (beleértve a CLIENT-REQUEST-ID REQUEST-ID és a VISSZAADANDÓ-CLIENT-REQUEST-ID) nem támogatottak. A fejlécek, egy következő frissítés fog bővülni. |
-| %-Os-kódolást nem engedélyezett. |A Media Services IAssetFile.Name tulajdonság értékét használja, a streamelési tartalom (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) URL-címek létrehozását. Ebből kifolyólag százalék-kódolást nem engedélyezett. A Name tulajdonság értéke nem lehet a következő [százalék-kódolás – fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Ezenkívül lehetnek csak egy "." a fájlnév kiterjesztésével. |
+| %-Os-kódolást nem engedélyezett. |A Media Services a IAssetFile.Name tulajdonság értékét használja, URL-címek létrehozását, a streamelési tartalom (például `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Ebből kifolyólag százalék-kódolást nem engedélyezett. A Name tulajdonság értéke nem lehet a következő [százalék-kódolás – fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Ezenkívül lehetnek csak egy "." a fájlnév kiterjesztésével. |
 | A ListBlobs metódust, amely része az Azure Storage SDK-verzió 3.x sikertelen lesz. |A Media Services SAS URL-címek alapján hoz létre a [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) verzió. Ha szeretne egy blob-tárolóban lévő blobok listázása a Storage SDK-val, használja a [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) módszer, amely része a Storage SDK-verziója 2.x. |
 | A Media Services mechanizmus szabályozás korlátozza az alkalmazásokat, amelyek a szolgáltatás túl sok kérést az erőforrás-használati. A szolgáltatás a "Szolgáltatás nem érhető el" 503-as HTTP-állapotkód: Előfordulhat, hogy vissza. |További információkért lásd az 503-as HTTP-állapotkód leírását [Media Services-hibakódok](media-services-encoding-error-codes.md). |
 | Ha entitást lekérdezni, legfeljebb 1000 entitások adja vissza egy időben, mert a nyilvános REST 2-es verzió korlátozza az 1000 eredmények lekérdezési eredményeket. |Kihagyás és igénybe (.NET) / (REST) leírtak szerint az első [ebben a példában .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) és [a REST API-példa](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
@@ -172,7 +172,7 @@ A Basic, Standard és Premium kódoláshoz fenntartott egységek az S1, S2, is �
 ### <a name="azure-sdk-for-php"></a>Azure SDK a PHP-hoz
 Az Azure SDK csapata közzétett új kiadása a [php-hez készült Azure SDK-t](http://github.com/Azure/azure-sdk-for-php) csomagot, amely a Media Services frissítéseit és új funkcióit tartalmazza. Ilyen például a Media Services php SDK mostantól támogatja a legújabb [content protection szolgáltatása](media-services-content-protection-overview.md) funkciókat. Ezeket a funkciókat a dinamikus titkosítás, az AES és DRM (PlayReady és Widevine), a és a jogkivonat-korlátozások nélkül. Ezenkívül támogatja skálázás [kódolási egységek](media-services-dotnet-encoding-units.md).
 
-További információ eléréséhez lásd:
+További információkért lásd:
 
 * A következő [Kódminták](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) segítenek a gyors kezdéshez:
   * **vodworkflow_aes.php**: A PHP-fájl bemutatja, hogyan használhatja a dinamikus AES-128 titkosítást és a kulcstovábbítást. A .NET-minta leírtak alapján [használata AES-128, a dinamikus titkosítás és a kulcstovábbítást](media-services-protect-with-aes128.md).
@@ -211,7 +211,7 @@ Az AssetDeliveryConfiguration Widevine használatára történő beállításáh
 További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a id="august_changes_15"></a>2015 augusztus kiadás
-* A Media Services SDK a Java 0.8.0. verzió kiadását és az új mintát, mostantól elérhetők. További információ eléréséhez lásd:
+* A Media Services SDK a Java 0.8.0. verzió kiadását és az új mintát, mostantól elérhetők. További információkért lásd:
     
 * Az Azure Media Player frissítve lett a többszörös hang Streamek támogatását. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 
@@ -398,7 +398,7 @@ További információkért lásd: [Újrapróbálkozási logika, a Media Services
 A 3.0.0.1 és 3.0.0.2 a változások a következők:
 
 * Javítva lett a LINQ-lekérdezések az OrderBy utasítások használatát kapcsolatos problémákat.
-* -Megoldások teszteléséhez [GitHub] egység alapján tesztek és a forgatókönyv-alapú tesztek lett felosztva.
+* -Megoldások teszteléséhez [GitHubon] egység alapján tesztek és a forgatókönyv-alapú tesztek lett felosztva.
 
 A változásokkal kapcsolatos további információkért lásd: a [3.0.0.1 és 3.0.0.2 Media Services .NET SDK-kiadások](http://gtrifonov.com/2014/02/07/windows-azure-media-services-net-sdk-3-0-0-2-release/index.html).
 
@@ -414,7 +414,7 @@ A következő változások történtek 3.0.0.3 verzióban:
 > 
 > 
 
-A Media Services SDK legújabb verzióját már 3.0.0.0. Töltse le a legújabb csomagot a Nugetről, vagy a bits, az első [GitHub].
+A Media Services SDK legújabb verzióját már 3.0.0.0. Töltse le a legújabb csomagot a Nugetről, vagy a bits, az első [GitHubon].
 
 A Media Services SDK 3.0.0.0 verziójával kezdődően újból felhasználhatja a [Azure AD Access Control Service](http://msdn.microsoft.com/library/hh147631.aspx) jogkivonatokat. További információkért lásd: "Újbóli Access Control Service tokenek" szakasz a [kapcsolódás a Media Services Media Services SDK-val .NET-keretrendszerhez készült](http://msdn.microsoft.com/library/azure/jj129571.aspx).
 
@@ -573,7 +573,7 @@ Az alábbi funkciókat lett az SDK novemberi kiadásában új:
 [Connect to Media Services with the Media Services SDK for .NET]: http://msdn.microsoft.com/library/azure/jj129571.aspx
 [Media Services .NET SDK extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [Azure SDK tools]: https://github.com/Azure/azure-sdk-tools
-[GitHub]: https://github.com/Azure/azure-sdk-for-media-services
+[GitHubon]: https://github.com/Azure/azure-sdk-for-media-services
 [Manage Media Services assets across multiple Storage accounts]: http://msdn.microsoft.com/library/azure/dn271889.aspx
 [Handle Media Services job notifications]: http://msdn.microsoft.com/library/azure/dn261241.aspx
 

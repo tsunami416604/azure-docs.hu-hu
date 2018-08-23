@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c2297f072786bdc1e80255dee278d640b0c0d26d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 5a134e14768e0576c501232b6aedb1f836bc05b1
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629514"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42060617"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>A Notification Hubs telepítése és kezelése a PowerShell-lel
 ## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan használható létrehozása és kezelése az Azure Notification Hubs PowerShell-lel. A következő gyakori automatizálási feladatok jelennek meg ebben a témakörben.
+Ez a cikk bemutatja, hogyan használható létrehozása és kezelése az Azure Notification Hubs PowerShell-lel. Ez a cikk a következő gyakori automatizálási feladatok láthatók.
 
 * Értesítési központ létrehozása
 * Hitelesítő adatok beállítása
@@ -85,19 +85,19 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 
 ## <a name="provisioning-a-new-notification-hub"></a>Új értesítési központ kiépítése
-Üzembe helyez egy új értesítési központ, használja a [Notification Hubs .NET API-val].
+Üzembe helyez egy új értesítési központ, használja a [A Notification Hubs .NET API-val].
 
 A parancsfájl ezen részében beállított négy helyi változók. 
 
-1. `$Namespace` : Állítsa ezt a beállítást a névtér neve kívánja egy értesítési központ létrehozása.
-2. `$Path` : Állítsa ezt az elérési utat az új értesítési központ nevét.  Például "MyHub."    
-3. `$WnsPackageSid` : Állítsa ezt a beállítást a csomag biztonsági AZONOSÍTÓJÁT, a Windows-alkalmazáshoz, a [Windows Dev Center](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
-4. `$WnsSecretkey`: Állítsa ezt a beállítást a titkos kulcs for a Windows-alkalmazást a [Windows Dev Center](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
+1. `$Namespace`: Állítsa ezt a beállítást a névtér neve kívánja egy értesítési központ létrehozása.
+2. `$Path`: Állítsa ezt az elérési utat az új értesítési központ nevét.  Például "MyHub."    
+3. `$WnsPackageSid`: Állítsa ezt a beállítást a csomag biztonsági AZONOSÍTÓJÁT, a Windows-alkalmazáshoz, a [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
+4. `$WnsSecretkey`: Állítsa ezt a beállítást a titkos kulcs for a Windows-alkalmazást a [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
 
 Ezeket a változókat a névtér csatlakozik, és hozzon létre egy új értesítési központ konfigurálva a Windows értesítési szolgáltatása (WNS) értesítések WNS hitelesítő adatokkal rendelkező Windows-alkalmazás kezeléséhez használhatók. A csomag beszerzésével kapcsolatos információért biztonsági azonosítója és a titkos kulcs tekintse meg a [Ismerkedés a Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyag. 
 
 * A parancsfájl kódrészlet a `NamespaceManager` objektum, ellenőrizze, hogy ha az értesítési központ által azonosított `$Path` létezik.
-* Ha még nem létezik, a szkript létrehoz `NotificationHubDescription` WNS-sel hitelesítő adatait, és adja a `NamespaceManager` osztály `CreateNotificationHub` metódust.
+* Ha még nem létezik, a szkript létrehoz `NotificationHubDescription` WNS-sel hitelesítő adatait, és azt a `NamespaceManager` osztály `CreateNotificationHub` metódust.
 
 ``` powershell
 

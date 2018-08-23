@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/09/2017
+ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: 39171f7d7a7b27ec54f67b592e184e90134a1a52
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c7d8631a8e7b99cca8f84ea1011c361db01e399e
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611371"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42058710"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
 
@@ -58,7 +58,7 @@ A kapcsolatok kategóriában nyomon követi eszköz csatlakoztatása, és esemé
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>Felhőből az eszközre irányuló parancsok
+#### <a name="cloud-to-device-commands"></a>Felhő–eszköz irányú parancsok
 
 A felhőből az eszközre irányuló parancsok kategória előforduló hibák az IoT hubra a felhőből az eszközre irányuló üzenetek folyamat kapcsolódó követi nyomon. Ez a kategória tartalmazza a hibák fordulhatnak elő, amikor a felhőből az eszközre irányuló üzenetküldés (például illetéktelen küldő), (például a szállítási darabszám túllépve) a felhőből az eszközre irányuló üzenetek fogadása és visszajelzés a felhőből az eszközre irányuló üzenetek fogadása (mint például a visszajelzések lejárt). Ez a kategória nem dolgozza hibák az eszközről, amely nem megfelelően kezeli a felhőből az eszközre irányuló üzenet, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítve.
 
@@ -155,7 +155,7 @@ Ez a kategória nem tényleges jelentkező hibák közvetlenül az eszköz egy f
 
 #### <a name="cloud-to-device-twin-operations"></a>Felhőalapú ikereszköz műveletek
 
-A felhő ikereszköz műveletkategória események szolgáltatás által az ikereszközök követi nyomon. Ezek a műveletek közé tartozik a get-twin, jelentett tulajdonságok frissítésére és iratkozzon fel a kívánt tulajdonságok
+A felhő ikereszköz műveletkategória események szolgáltatás által az ikereszközök követi nyomon. Ezek a műveletek belefoglalhat get ikereszköz, frissítése vagy cserélje le a címkéket, és a frissítése vagy cserélje le a kívánt tulajdonságok. 
 
 ```json
 {
@@ -172,7 +172,7 @@ A felhő ikereszköz műveletkategória események szolgáltatás által az iker
 
 #### <a name="device-to-cloud-twin-operations"></a>Eszközről a felhőbe – az ikereszköz-műveletek
 
-Az eszközről a felhőbe – az ikereszköz műveletkategória eszköz által kezdeményezett események az ikereszközök követi nyomon. Ezek a műveletek belefoglalhat get ikereszköz, frissítése vagy cserélje le a címkéket, és a frissítése vagy cserélje le a kívánt tulajdonságok. 
+Az eszközről a felhőbe – az ikereszköz műveletkategória eszköz által kezdeményezett események az ikereszközök követi nyomon. Ezek a műveletek közé tartozik a get-twin, jelentett tulajdonságok frissítésére, és feliratkozhat a kívánt tulajdonságok.
 
 ```json
 {
