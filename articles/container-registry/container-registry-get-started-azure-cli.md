@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 78dc9eceba11ce07deb7fe0d10df1fea9cd74a75
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b17df81dd1d972f3e559140e9f43963e9c8cab2a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426122"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023491"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Rövid útmutató: Tárolóregisztrációs adatbázis létrehozása az Azure CLI-vel
 
@@ -40,9 +40,7 @@ Ebben a rövid útmutatóban egy *Alapszintű* regisztrációs adatbázist hoz l
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
-Hozzon létre egy ACR-példányt az [az acr create][az-acr-create] paranccsal.
-
-A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az alábbi példában a *myContainerRegistry007* nevet használjuk. Ezt cserélje le egy egyedi értékre.
+Hozzon létre egy ACR-példányt az [az acr create][az-acr-create] paranccsal. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az alábbi példában a *myContainerRegistry007* nevet használjuk. Ezt cserélje le egy egyedi értékre.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic

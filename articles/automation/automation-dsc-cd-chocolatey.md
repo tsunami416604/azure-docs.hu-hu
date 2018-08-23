@@ -9,12 +9,12 @@ ms.author: dacoulte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f3c008ad58ed7e274ffe0e9f670b4303d057182
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: dc0e49f2857468338f6e1f16462ed814893ea6e7
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003987"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055294"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Példa: Való Automation konfigurációs és a chocolatey-t használó virtuális gépek folyamatos üzembe helyezés
 
@@ -194,6 +194,11 @@ Nem kell ezt a technikát használni a virtuális gépek a Resource Manager-sabl
 Természetesen Ha frissít egy csomagot a virtuális gép, éles környezetben, kell a virtuális gép rotációból igénybe vehet, amíg a frissítés telepítve van. Hogyan teheti ezt érték nagy eltéréseket mutat. Például egy Azure-terheléselosztó mögötti virtuális gépen, hozzáadhat egy egyéni mintavétel. A virtuális gép frissítése során rendelkezik az állapotminta-végpontot egy 400-as adja vissza. Szükségesek, hogy ez a módosítás hatására értékelésére lehet belül a konfigurációját, térjen vissza 200-as, a frissítés befejeződése után váltson a értékelésére is.
 
 Teljes használat ebben a példában forrása a [a Visual Studio-projekt](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) a Githubon.
+
+## <a name="related-articles"></a>Kapcsolódó cikkek
+* [Az Azure Automation DSC – áttekintés](automation-dsc-overview.md)
+* [Azure Automation DSC-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
+* [Gépek előkészítése kezelésre, amelyet az Azure Automation DSC](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>További lépések
 

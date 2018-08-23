@@ -1,39 +1,39 @@
 ---
-title: A Maps-Azure útválasztási érvényességének |} Microsoft Docs
-description: További tudnivalók a Maps-Azure útválasztási érvényességének
-author: jinzh-azureiot
+title: Azure Maps-útválasztási lefedettség |} A Microsoft Docs
+description: További tudnivalók az Azure Maps-útválasztási lefedettség
+author: jingjing-z
 ms.author: jinzh
 ms.date: 03/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: aa611b1cc406cd16ffdecb244c3010a7e0318519
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 80d98fd8108d0b64f9c25b82d6d79f60fcdd771e
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599949"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42056858"
 ---
-# <a name="azure-maps-routing-coverage"></a>Az Azure Maps érvényességének Útválasztás
+# <a name="azure-maps-routing-coverage"></a>Az Azure Maps útválasztási lefedettség
 
-Ez a cikk az Azure Maps útválasztási érvényességének információkat nyújt. 
+Ez a cikk az Azure Maps útválasztási lefedettség információkat szolgáltat. 
 
-Tekintse meg a szervezet [ **Geokódolás**](geocoding-coverage.md).       
-Tekintse meg a szervezet [ **forgalom**](traffic-coverage.md).  
-Tekintse meg a szervezet [ **leképezési**](render-coverage.md).
+Tekintse meg a lefedettség [ **Geokódolás**](geocoding-coverage.md).       
+Tekintse meg a lefedettség [ **forgalom**](traffic-coverage.md).  
+Tekintse meg a lefedettség [ **Render**](render-coverage.md).
 <br>  
 **Jelmagyarázat**
 
 | Szimbólum             | Jelentés                                |
 |--------------------|----------------------------------------|
-| ✓                  | Ország megadott részletes adatokkal.   |
-| Ø                  | Ország megadott egyszerűsített adatokkal. |
-| Ország hiányzik. | Nincsenek megadva ország adatai.          |
+| ✓                  | Az ország megadott részletes adatokkal.   |
+| Ø                  | Az ország megadott egyszerűsített adatokkal. |
+| Ország hiányzik. | Országadatokat nem áll rendelkezésre.          |
 
 <br>  
 
-Az alábbi táblázat tájékoztatást érvényességének Azure Maps irányításához.
+Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 <br>  
 
 | Régió                         | Útválasztás |
@@ -56,7 +56,7 @@ Az alábbi táblázat tájékoztatást érvényességének Azure Maps irányít�
 | Malawi                         |        ✓       |
 | Mali                           |        ✓       |
 | Mauritánia                     |        ✓       |
-| Mauritius, Mayotte és Réunion |        ✓       |
+| Réunion, Mauritius és Mayotte |        ✓       |
 | Marokkó                        |        ✓       |
 | Mozambik                     |        ✓       |
 | Namíbia                        |        ✓       |
@@ -76,7 +76,7 @@ Az alábbi táblázat tájékoztatást érvényességének Azure Maps irányít�
 | **Dél-Amerika**                       |                |
 | Argentína                      |        ✓       |
 | Brazília                         |        ✓       |
-| Karibi-szigetek              |        ✓       |
+| Karib-szigetek-szigetek              |        ✓       |
 | Kanada                         |        ✓       |
 | Chile                          |        ✓       |
 | Kolumbia                       |        ✓       |
@@ -92,7 +92,7 @@ Az alábbi táblázat tájékoztatást érvényességének Azure Maps irányít�
 | Ausztrália                      |        ✓       |
 | Brunei                         |        ✓       |
 | Guam                           |        ✓       |
-| Hongkong                      |        ✓       |
+| Hongkong KKT                      |        ✓       |
 | Indonézia                      |        ✓       |
 | Makao                          |        ✓       |
 | Malajzia                       |        ✓       |
@@ -124,7 +124,7 @@ Az alábbi táblázat tájékoztatást érvényességének Azure Maps irányít�
 | Görögország                         |        ✓       |
 | Magyarország                        |        ✓       |
 | Izland                        |        ✓       |
-| Írországban (Köztársaság)          |        ✓       |
+| Írország (Köztársaság)          |        ✓       |
 | Olaszország                          |        ✓       |
 | Lettország                         |        ✓       |
 | Liechtenstein                  |        ✓       |

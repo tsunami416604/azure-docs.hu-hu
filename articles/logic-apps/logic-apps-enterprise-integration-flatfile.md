@@ -1,6 +1,6 @@
 ---
 title: Kódolás vagy dekódolandó egybesimított fájlokba, az Azure logic appsben |} A Microsoft Docs
-description: A fájl fájl kódoló és dekóder használata a logic Apps, az Enterprise Integration Pack
+description: A fájl kódoló és dekóder használata a logic Apps, az Enterprise Integration Pack
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: divyaswarnkar
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; divswa
-ms.openlocfilehash: 4c8ac7aa3ccafaf14c0399860f3576430dd6ba1a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b13e8da04c984456027f152f5af63cfa6604ddc4
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429998"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058389"
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>Vállalati integrációs egybesimított fájlok áttekintése
 

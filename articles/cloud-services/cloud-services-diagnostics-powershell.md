@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: c46c0665eefd7615bf90aeca7b918ddf9195237f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 4c4b5491bba072ba22ec20e164b7315691877a22
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004863"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42061361"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services szolgáltatással a PowerShell használatával
 Alkalmazásnaplók, például a diagnosztikai adatokat gyűjthet a teljesítményszámlálók stb egy felhőalapú szolgáltatásából, az Azure Diagnostics bővítmény használatával. Ez a cikk ismerteti az Azure diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás, PowerShell-lel.  Lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) esetében ez a cikk szükséges előfeltételeket.
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>A diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás telepítésének részeként
-Ez a megközelítés olyan forgatókönyvek, ahol a diagnosztikai bővítményt a felhőszolgáltatás telepítésének részeként is engedélyezhető a folyamatos integráció típusú alkalmazható. Egy új felhőalapú szolgáltatás központi telepítés létrehozásakor a diagnosztikai bővítmény megadásával engedélyezheti az *ExtensionConfiguration* paramétert a [New-AzureDeployment](/powershell/module/azure/new-azuredeployment?view=azuresmps-3.7.0) parancsmagot. A *ExtensionConfiguration* paraméter egy diagnosztikakonfigurációs tömböt foglal magába, amelyek segítségével hozható létre a [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) parancsmagot.
+Ez a megközelítés olyan forgatókönyvek, ahol a diagnosztikai bővítményt a felhőszolgáltatás telepítésének részeként is engedélyezhető a folyamatos integráció típusú alkalmazható. Egy új felhőalapú szolgáltatás központi telepítés létrehozásakor a diagnosztikai bővítmény megadásával engedélyezheti az *ExtensionConfiguration* paramétert a [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) parancsmagot. A *ExtensionConfiguration* paraméter egy diagnosztikakonfigurációs tömböt foglal magába, amelyek segítségével hozható létre a [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) parancsmagot.
 
 Az alábbi példa bemutatja, hogyan engedélyezheti a WebRole és WorkerRole, egy másik diagnosztikai konfigurációja kellene a felhőszolgáltatások diagnosztikai.
 
@@ -97,7 +97,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 ```
 
 ## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>A diagnosztikai bővítmény engedélyezése egy meglévő felhőszolgáltatáson
-Használhatja a [Set-AzureServiceDiagnosticsExtension](/powershell/module/azure/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) parancsmagot, engedélyezéséhez, vagy egy Felhőszolgáltatás, amely már fut a diagnostics konfigurációjának frissítése.
+Használhatja a [Set-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) parancsmagot, engedélyezéséhez, vagy egy Felhőszolgáltatás, amely már fut a diagnostics konfigurációjának frissítése.
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -113,14 +113,14 @@ Set-AzureServiceDiagnosticsExtension -DiagnosticsConfiguration @($webrole_diagco
 ```
 
 ## <a name="get-current-diagnostics-extension-configuration"></a>Az aktuális diagnosztikai bővítmény konfigurációjának lekérése
-Használja a [Get-AzureServiceDiagnosticsExtension](/powershell/module/azure/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) -parancsmaggal beolvasható az aktuális diagnosztikai konfiguráció a felhőszolgáltatás használatához.
+Használja a [Get-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) -parancsmaggal beolvasható az aktuális diagnosztikai konfiguráció a felhőszolgáltatás használatához.
 
 ```powershell
 Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>A diagnosztikai bővítmény eltávolítása
-Egy felhőszolgáltatás, használhatja a diagnosztika kikapcsolása az [Remove-AzureServiceDiagnosticsExtension](/powershell/module/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) parancsmagot.
+Egy felhőszolgáltatás, használhatja a diagnosztika kikapcsolása az [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) parancsmagot.
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"

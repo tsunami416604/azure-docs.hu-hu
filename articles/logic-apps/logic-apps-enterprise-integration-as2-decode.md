@@ -1,6 +1,6 @@
 ---
-title: AS2-üzenetek - Azure Logic Apps dekódolása |} Microsoft Docs
-description: Az AS2 dekóder a vállalati integrációs csomagot az Azure Logic Apps használata
+title: AS2-üzenetek – Azure Logic Apps-dekódolást |} A Microsoft Docs
+description: Az AS2-dekódoló az Enterprise Integration Pack for Azure Logic Apps használata
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -12,39 +12,39 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2016
+ms.date: 08/08/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: a5ca615d984d07513b12399b6f7e7901490f2e41
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a1b2d68a4a9433dc5c68d65552bf6bd509463958
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298831"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42059125"
 ---
-# <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Az Azure Logic Apps a vállalati integrációs csomaggal AS2 üzenetek dekódolása 
+# <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Az Azure Logic Apps és az Enterprise Integration Pack AS2-üzenetek dekódolása 
 
-Biztonsága és megbízhatósága közben üzenetek továbbítására létrehozásához az AS2 dekódolása üzenet összekötő használatára. Ez az összekötő biztosít digitális aláírására, visszafejtéshez és nyugták üzenet törlése értesítések (MDN) keresztül.
+Biztonságának és megbízhatóságának közben továbbítására üzenetek létrehozásához használja az AS2-dekódolást üzenet connector. Ez az összekötő biztosít a digitális aláírás, visszafejtési és nyugtázás üzenet törlése értesítések (MDN) keresztül.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A szükséges elemeket itt található:
+A következő szükséges elemek:
 
-* Az Azure-fiók; létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free)
-* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéshez társítva. Az AS2 dekódolása üzenet összekötő használatára integrációs fiókkal kell rendelkeznie.
-* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva vannak az integráció-fiókban
-* Egy [AS2 megállapodás](logic-apps-enterprise-integration-as2.md) , amely már definiálva van az integráció-fiókban
+* Az Azure-fiók; létrehozhat egy [ingyenes fiókkal](https://azure.microsoft.com/free)
+* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéséhez társított. Az AS2-dekódolást üzenet connector használatához egy integrációs fiókhoz kell rendelkeznie.
+* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva vannak az integrációs fiók
+* Egy [AS2-egyezményt](logic-apps-enterprise-integration-as2.md) , amely már definiálva van az integrációs fiók
 
 ## <a name="decode-as2-messages"></a>AS2-üzenetek dekódolása
 
-1. [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+1. [Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2. Az AS2 dekódolása üzenet összekötő nincs eseményindítók, hozzá kell adni egy eseményindító indítása el a logikai alkalmazás, például a kérelem eseményindítót. A Logic App-tervezőben, vegye fel egy eseményindítót, majd egy műveletet a logikai alkalmazáshoz.
+2. Az AS2-dekódolást üzenet connector eseményindítók, nem rendelkezik, ezért hozzá kell adnia egy eseményindítót a logikai alkalmazást, például a kérelem-eseményindítóval indítása. A Logic App Designerben az eseményindító hozzáadása, és adja hozzá a művelet a logikai alkalmazáshoz.
 
-3.  A keresési mezőbe írja be a "AS2" a szűrőhöz. Válassza ki **AS2 - dekódolási AS2 üzenet**.
+3.  A keresőmezőbe adja meg a szűrőnek "AS2". Válassza ki **AS2 - dekódolást AS2-üzenet**.
    
-    ![Keresse meg a "AS2"](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage1.png)
+    ![Keressen a "AS2"](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage1.png)
 
-4. Integráció fiókjába korábban a kapcsolatokat nem hozott létre, ha a program kéri, most, hogy a kapcsolat létrehozásához. A kapcsolat neve, és válassza ki a integrációs fiókot, amely csatlakozni szeretne.
+4. Korábban létrehozott kapcsolatokat az integrációs fiókba, most, hogy a kapcsolat létrehozására kéri. Nevezze el a kapcsolatot, és válassza ki az integrációs fiók, amely kapcsolódni szeretne.
    
     ![Integráció kapcsolat létrehozása](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage2.png)
 
@@ -52,44 +52,53 @@ A szükséges elemeket itt található:
 
     | Tulajdonság | Részletek |
     | --- | --- |
-    | Kapcsolat neve * |Adjon meg egy tetszőleges nevet a kapcsolat. |
-    | Integráció fiók * |Adja meg a integrációs fiók nevét. Ellenőrizze, hogy az integrációs fiók és a logikai alkalmazást az Azure ugyanazon a helyen. |
+    | Kapcsolat neve * |Adja meg a kapcsolat bármilyen nevet. |
+    | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon Azure-helyen. |
 
-5.  Amikor elkészült, a kapcsolódási adatait. Ez a példa hasonlóan kell kinéznie. Válassza ki a kapcsolat létrehozásának befejezéséhez **létrehozása**.
+5.  Ha elkészült, a kapcsolat adatait példához hasonlóan kell kinéznie. A kapcsolat létrehozásának befejezéséhez válasszon **létrehozás**.
 
-    ![integráció kapcsolódási adatait.](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage3.png)
+    ![integráció a kapcsolat részletei](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage3.png)
 
-6. A kapcsolat létrehozása után ebben a példában látható módon, válassza ki a **törzs** és **fejlécek** az a kérelem kimenetek.
+6. A kapcsolat létrejötte után ebben a példában látható módon, válassza ki **törzs** és **fejlécek** a kérelem-kimeneteket a.
    
-    ![integráció kapcsolat létrehozása](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage4.png) 
+    ![integráció kapcsolat létrehozva](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage4.png) 
 
     Példa:
 
     ![Válassza ki a szervezet és a fejlécek a kérelem kimenetek](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage5.png) 
 
-## <a name="as2-decoder-details"></a>AS2 dekóder részletei
 
-A dekódolása AS2-összekötő az alábbi feladatokat hajtja végre: 
+## <a name="as2-decoder-details"></a>AS2-dekódoló részletei
 
-* Feldolgozza a AS2/HTTP-fejlécek
+Az AS2-dekódolást-összekötő az alábbi feladatokat hajtja végre: 
+
+* Dolgozza fel az AS2/HTTP-fejlécek
 * Ellenőrzi az aláírást (Ha be van állítva)
-* Az üzenetek visszafejti (Ha be van állítva)
+* Mindig visszafejti az üzeneteket az (Ha be van állítva)
 * Az üzenet kibontja (Ha be van állítva)
-* Egyezteti a fogadott MDN eredeti kimenő üzenet
-* Frissítések és az nem megtagadás adatbázis korrelálja
-* Írja a rekordokat az AS2 állapotjelentés
-* A kimeneti hasznos tartalma base64-kódolású
-* Beállítja, hogy egy MDN szükség, hogy kell, hogy a MDN szinkron vagy aszinkron konfigurációtól függően az AS2-megállapodás
-* Létrehoz egy szinkron vagy aszinkron MDN (megállapodás konfigurációk alapján)
-* A MDN beállítása a korrelációs jogkivonat és tulajdonságai
+* Ellenőrizze és ismétlődésének üzenet azonosítója (Ha be van állítva)
+* A fogadott MDN kimenő eredeti üzenettel összehangolja ezzel
+* A frissítések letöltésének utal. az letagadhatatlanság adatbázis
+* Az AS2-állapotjelentés rekordokat ír
+* A kimeneti tartalom tartalma base64-kódolású
+* Beállítja, hogy az MDN szükség, e lehet, hogy az MDN szinkron vagy aszinkron eseményadatokra konfigurációtól függően az AS2-megállapodás
+* Létrehoz egy szinkron vagy aszinkron MDN (a szerződés konfigurációk alapján)
+* Az MDN a korrelációs jogkivonatok és a tulajdonságok beállítása
 
-## <a name="try-this-sample"></a>Ismételje meg ezt a mintát
 
-Próbálja meg egy teljesen működőképes logic app és a minta AS2 forgatókönyv üzembe helyezését, tekintse meg a [AS2 logic app-sablon és a forgatókönyv](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
+  > [!NOTE]
+  > Ha tanúsítványok kezelése az Azure Key Vault használ, győződjön meg arról, hogy konfigurálnia a kulcsokat, hogy lehetővé tegye a **visszafejtéséhez** műveletet.
+  > Ellenkező esetben az AS2-dekódolást sikertelen lesz.
+  >
+  > ![Keyvault visszafejti](media/logic-apps-enterprise-integration-as2-decode/keyvault1.png)
+
+## <a name="try-this-sample"></a>Ez a minta kipróbálása
+
+Próbálja meg egy teljesen működőképes logic app és a minta AS2 forgatókönyv üzembe helyezéséhez, tekintse meg a [AS2 logikaialkalmazás-sablon és a forgatókönyv](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
 
 ## <a name="view-the-swagger"></a>A swagger megtekintése
 Tekintse meg a [részletek swagger](/connectors/as2/). 
 
 ## <a name="next-steps"></a>További lépések
-[További tudnivalók a vállalati integrációs csomag](logic-apps-enterprise-integration-overview.md) 
+[További információ az Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) 
 

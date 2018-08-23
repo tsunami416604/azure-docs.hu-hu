@@ -1,181 +1,52 @@
 ---
-title: Futtassa a Ansible Bash Azure felhőben rendszerhéj
-description: Megtudhatja, hogyan végezhető különböző Ansible Bash Azure Cloud rendszerhéj
+title: Az Azure Cloud Shellben lévő Bash Ansible futtatása
+description: Az Azure Cloud Shell Bash-környezet különböző Ansible feladatok elvégzése
 ms.service: ansible
-keywords: ansible, az azure, a devops, a bash, a cloudshell, a forgatókönyv, a bash
+keywords: az ansible, azure, devops, bash, cloud Shell, forgatókönyv, bash
 author: tomarcher
-manager: routlaw
+manager: jeconnoc
 ms.author: tarcher
-ms.date: 02/01/2018
+ms.date: 08/07/2018
 ms.topic: article
-ms.openlocfilehash: 9fe65f4cf10119002bcb7a3855d112d850e20f1a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9928f646905dd0da4b15166ec55e5d8a183cb210
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150379"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055493"
 ---
-# <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Futtassa a Ansible Bash Azure felhőben rendszerhéj
+# <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Az Azure Cloud Shellben lévő Bash Ansible futtatása
 
-Ebben az oktatóanyagban elsajátíthatja a felhő rendszerhéj Bash Ansible különböző feladatok elvégzéséhez. Ezek a feladatok közé tartozik egy virtuális géphez való kapcsolódás és Ansible playbooks létrehozása és törlése az Azure-erőforráscsoport létrehozása.
+Ebben az oktatóanyagban elsajátíthatja, hogyan használhatja a Cloud Shellben lévő Bash Ansible munkaterületét egy Azure-előfizetés konfigurálása. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) megkezdése előtt.
+- **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Azure hitelesítő adataival** - [létrehozása Azure-felhasználó hitelesítő adatait, és Ansible konfigurálása](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- **Konfigurálja az Azure Cloud Shell** – Ha még csak ismerkedik az Azure Cloud Shellt, a cikk [gyors útmutató: az Azure Cloud Shell Bash](https://docs.microsoft.com/azure/cloud-shell/quickstart), azt ábrázolja, hogyan elindítása és konfigurálása a Cloud Shellben. 
 
-- **Azure Cloud rendszerhéj konfigurálása** – Ha még nem ismeri a Azure Cloud rendszerhéj, a cikk [gyors üzembe helyezés az Azure felhőalapú rendszerhéj Bash](https://docs.microsoft.com/azure/cloud-shell/quickstart) azt ábrázolja, hogyan indítani és konfigurálni a felhő rendszerhéj. Egy külön webhelyen itt felhő rendszerhéj elindításához:
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[![Indítsa el a felhő rendszerhéjat](https://shell.azure.com/images/launchcloudshell.png "indítsa el a felhő rendszerhéjat")](https://shell.azure.com)
+## <a name="automatic-credential-configuration"></a>Automatikus hitelesítő adatok konfigurációját
 
-## <a name="use-ansible-to-connect-to-a-vm"></a>Csatlakoztassa a virtuális Gépet Ansible segítségével
-Ansible hozott létre nevű Python-parancsfájl [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) azáltal, hogy az API-kérelmek az Azure erőforrás-kezelő létrehozó Azure-erőforrások dinamikus készlet. A következő lépések végigvezetik használatával a `azure_rm.py` parancsfájl egy Azure virtuális géphez való csatlakozáshoz:
+Miután bejelentkezett a Cloud Shellben, az Ansible hitelesíti a további konfiguráció nélkül infrastruktúra kezelése Azure-ral. Ha több előfizetéssel rendelkezik, hogy melyik előfizetéssel, az Ansible exportálása által működnie kiválaszthatja a `AZURE_SUBSCRIPTION_ID` környezeti változót. Az Azure-előfizetések kilistázásához, futtassa a következő parancsot:
 
-1. Nyissa meg a felhő rendszerhéj Bash. A felhő rendszerhéj ablak bal oldalán rendszerhéj típus helyén.
+```azurecli-interactive
+az account list
+```
 
-1. Ha nem rendelkezik a virtuális gép használja, adja meg a következő parancsokat a felhő felület, amellyel tesztelheti a virtuális gép létrehozásához:
+Használatával a **azonosító** az előfizetés kívánja használni, állítsa be a **AZURE_SUBSCRIPTION_ID** módon:
 
-  ```azurecli-interactive
-  az group create --resource-group ansible-test-rg --location eastus
-  ```
+```azurecli-interactive
+export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
+```
 
-  ```azurecli-interactive
-  az vm create --resource-group ansible-test-rg --name ansible-test-vm --image UbuntuLTS --generate-ssh-keys
-  ```
+## <a name="verify-the-configuration"></a>Ellenőrizze
+A sikeres konfigurációjának ellenőrzéséhez hozzon létre egy erőforráscsoportot az Ansible használatával.
 
-1. Használja a GNU `wget` parancs beolvasása a `azure_rm.py` parancsfájlt:
-
-  ```azurecli-interactive
-  wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
-  ```
-
-1. Használja a `chmod` parancs futtatásával módosíthatja a hozzáférési engedélyeket a `azure_rm.py` parancsfájl. A következő parancsot használja a `+x` paraméter lehetővé végrehajtásából (fut) a megadott fájl (`azure_rm.py`):
-
-  ```azurecli-interactive
-  chmod +x azure_rm.py
-  ```
-
-1. Használja a [ansible parancs](https://docs.ansible.com/ansible/2.4/ansible.html) a virtuális géphez történő csatlakozáshoz: 
-
-  ```azurecli-interactive
-  ansible -i azure_rm.py ansible-test-vm -m ping
-  ```
-
-  A csatlakozás után eredmények hasonló, a kimenetnek kell megjelennie:
-
-  ```Output
-  The authenticity of host 'nn.nnn.nn.nn (nn.nnn.nn.nn)' can't be established.
-  ECDSA key fingerprint is SHA256:&lt;some value>.
-  Are you sure you want to continue connecting (yes/no)? yes
-  test-ansible-vm | SUCCESS => {
-      "changed": false,
-      "failed": false,
-      "ping": "pong"
-  }
-  ```
-
-1. Ha ez a szakasz egy erőforráscsoport és a virtuális gép létrehozása
-
-  ```azurecli-interactive
-  az group delete -n <resourceGroup>
-  ```
-
-## <a name="run-a-playbook-in-cloud-shell"></a>Forgatókönyv futtatása a Cloud Shellben
-A [ansible-forgatókönyv](https://docs.ansible.com/ansible/2.4/ansible-playbook.html) parancs végrehajtása során Ansible playbooks, a feladatok futó célzott gazdagépe (ke). Ez a szakasz bemutatja, hogyan hozhatnak létre és két playbooks - érdekében hozzon létre egy erőforráscsoportot, és egy második, a csoport törléséhez egy futtathatnak a felhőalapú rendszerhéjának használatával. 
-
-1. Hozzon létre egy fájlt `rg.yml` az alábbiak szerint:
-
-  ```azurecli-interactive
-  vi rg.yml
-  ```
-
-1. A következő tartalom másolása a felhő rendszerhéj ablakba (ilyenkor a VI szerkesztő példányának):
-
-  ```yml
-  - name: My first Ansible Playbook
-    hosts: localhost
-    connection: local
-    tasks:
-    - name: Create a resource group
-      azure_rm_resourcegroup:
-        name: demoresourcegroup
-        location: eastus
-  ```
-
-1. Mentse a fájlt, és zárja be a VI szerkesztőt megadásával `:wq` gomb lenyomásával &lt;Enter >.
-
-1. Használja a `ansible-playbook` parancsot kell futtatni a `rg.yml` forgatókönyv:
-
-  ```azurecli-interactive
-  ansible-playbook rg.yml
-  ```
-
-1. A következő kimeneti hasonló eredményeket kell megjelennie:
-
-  ```Output
-  PLAY [My first Ansible Playbook] **********
-
-  TASK [Gathering Facts] **********
-  ok: [localhost]
-
-  TASK [Create a resource group] **********
-  changed: [localhost]
-
-  PLAY RECAP **********
-  localhost : ok=2 changed=1 unreachable=0 failed=0
-  ```
-
-1. A telepítés ellenőrzése:
-
-  ```azurecli-interactive
-  az group show -n demoresourcegroup
-  ```
-
-1. Most, hogy létrehozta az erőforráscsoportot, hozzon létre egy második Ansible alkalmazástervezési a csoport törléséhez:
-
-  ```azurecli-interactive
-  vi rg2.yml
-  ```
-
-1. A következő tartalom másolása a felhő rendszerhéj ablakba (ilyenkor a VI szerkesztő példányának):
-
-  ```yml
-  - name: My second Ansible Playbook
-    hosts: localhost
-    connection: local
-    tasks:
-    - name: Delete a resource group
-      azure_rm_resourcegroup:
-        name: demoresourcegroup
-        state: absent
-  ```
-
-1. Mentse a fájlt, és zárja be a VI szerkesztőt megadásával `:wq` gomb lenyomásával &lt;Enter >.
-
-1. Használja a `ansible-playbook` parancsot kell futtatni a `rg2.yml` forgatókönyv:
-
-  ```azurecli-interactive
-  ansible-playbook rg.yml
-  ```
-
-1. A következő kimeneti hasonló eredményeket kell megjelennie:
-
-  ```Output
-  The output is as following. 
-  PLAY [My second Ansible Playbook] **********
-
-  TASK [Gathering Facts] **********
-  ok: [localhost]
-
-  TASK [Delete a resource group] **********
-  changed: [localhost]
-
-  PLAY RECAP **********
-  localhost : ok=2 changed=1 unreachable=0 failed=0
-  ```
+[!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-create-resource-group.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Alapszintű virtuális gép létrehozása az Azure-ban Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Alapszintű virtuális gép létrehozása az Azure-ban, az ansible segítségével](/azure/virtual-machines/linux/ansible-create-vm)

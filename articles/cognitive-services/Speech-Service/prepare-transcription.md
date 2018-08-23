@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: a219db14d659348ef3ed4de1dffa640a948f1954
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: db324b6c5444955debdc6a3e09906a0de47ff819
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283336"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41987637"
 ---
 # <a name="transcription-guidelines-for-using-speech-service"></a>A Speech szolgáltatással beszédátírási irányelvek
 
@@ -154,7 +154,7 @@ Mielőtt importálná azokat a alkalmazni a szöveget az alábbi normalizálási
 *   Tizedesjel legyen ","és nem"."
 *   Idő elválasztó óra és perc között kell lennie ":"és nem".": 12:00 Uhr
 *   Rövidítéseket, például a "ca". nem cserélhető le. Azt javasoljuk, hogy a teljes képernyőn.
-*   Az öt fő matematikai operátorokat el lesznek távolítva: +, -, \*, /. Azt javasoljuk, és cserélje le őket a szövegkonstans forma: plusz fiókközpont, geteilt csökkentve.
+*   A négy fő matematikai operátorokat el lesznek távolítva: +, -, \*, /. Azt javasoljuk, és cserélje le őket a szövegkonstans forma: plusz fiókközpont, geteilt csökkentve.
 *   Ugyanez vonatkozik az összehasonlítási operátor (=, <>,) – gleich, kleiner als, grösser als
 *   Használja a percenkénti egységeinek törtrészeként 3/4-es, mint a word formátumban (például "drei viertel" ¾ helyett)
 *   Cserélje le a szóformaként "Euró" a "szimbólumot

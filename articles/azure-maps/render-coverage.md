@@ -1,38 +1,38 @@
 ---
-title: A Maps-Azure érvényességének leképezési |} Microsoft Docs
-description: További tudnivalók a Maps-Azure leképezési érvényességének
-author: jinzh-azureiot
+title: Megjelenítési lefedettség Azure Maps-|} A Microsoft Docs
+description: További tudnivalók az Azure Maps-megjelenítési lefedettség
+author: jingjing-z
 ms.author: jinzh
 ms.date: 03/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: c973897015df978f31d267ec6f2a20812d9d541c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6e4ebd5bfd7225537046d34dd885d04e8a94878f
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600578"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054283"
 ---
-# <a name="azure-maps-render-coverage"></a>Az Azure Maps érvényességének leképezése
+# <a name="azure-maps-render-coverage"></a>Az Azure Maps megjelenítési lefedettség
 
-Az Azure Maps használja mind a bitképes csempék, és a vektoros csempék maps létrehozásához. A legalacsonyabb felbontásban a teljes globális fér el egyetlen csempe. A legmagasabb felbontásban egyetlen csempe 38 négyzetes mérőszámok jelöli. A térképen nagyítás, ezért láthatja földrészekre, régiók, városokat és egyedi utca egyre további információt. További információkért lásd: [nagyítás szintek és a rács csempe](zoom-levels-and-tile-grid.md).
+Az Azure Maps Raszter csempék és az vektorcsempék használja a térképek létrehozása. A legalacsonyabb felbontású az egész világ elférjen egyetlen csempét. A legmagasabb felbontású az egy adott csempe 38 négyzetes mérőszámok jelöli. Módon ráközelít térképen, ezért láthatja kontinensen, régió, város és egyéni utcák egyre további információt. További információkért lásd: [nagyítási szintek és csemperács](zoom-levels-and-tile-grid.md).
 
-A Maps azonban nem rendelkezik azonos szintű információkat, és minden egyes pontosságot. Az alábbi táblázatok ismertetik a megjelenített részletessége elvárható mindegyik régióhoz.
+A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság minden régió esetében. Az alábbi táblázat az egyes régiókban várható megjelenített részletessége adatainak megadása.
 
 ## <a name="legend"></a>Jelmagyarázat
 
 | Szimbólum | Jelentés |
 |--------|---------|
 | ✓ | Részletes adatokkal régiót jelöli.   |
-| Ø | Egyszerűsített adatokkal régiót jelöli. |
+| Ø | Az egyszerűsített régiót jelöli. |
 
 
 ## <a name="africa"></a>Afrika 
 
 
-| Régió | Egyesített bitképes Csempéket | Egyesített vektoros Csempéket |
+| Régió | Egyesített Raszter Csempék | Egyesített Vektorcsempék |
 | ------ | :------------------: | :------------------: |
 | Algéria                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
@@ -93,7 +93,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat, és minden egyes 
 
 ## <a name="americas"></a>Amerika
 
-| Régió | Egyesített bitképes Csempéket | Egyesített vektoros Csempéket |
+| Régió | Egyesített Raszter Csempék | Egyesített Vektorcsempék |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua és Barbuda       | ✓ | ✓ |
@@ -140,10 +140,10 @@ A Maps azonban nem rendelkezik azonos szintű információkat, és minden egyes 
 | Saint-Barthélemy          | ✓ | ✓ |
 | Saint Kitts és Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
-| Saint Anna (magyar)     | ✓ | ✓ |
+| Saint Martin (francia)     | ✓ | ✓ |
 | Saint-Pierre és Miquelon |   | ✓ |
 | Saint Vincent és Grenadine-szigetek | ✓ | ✓ |
-| Sint Martin (holland)      | ✓ | ✓ |
+| Saint Martin (holland)      | ✓ | ✓ |
 | Déli-Georgia és Déli-Sandwich-szigetek |   | ✓ |
 | Suriname                  |   | ✓ |
 | Trinidad és Tobago       | ✓ | ✓ |
@@ -156,7 +156,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat, és minden egyes 
 
 ## <a name="asia"></a>Ázsia 
 
-| Régió | Egyesített bitképes Csempéket | Egyesített vektoros Csempéket |
+| Régió | Egyesített Raszter Csempék | Egyesített Vektorcsempék |
 | ------ | :------------------: | :------------------: |
 | Afganisztán               |   | Ø |
 | Bahrein                   | ✓ | ✓ |
@@ -169,7 +169,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat, és minden egyes 
 | Cocos (Keeling)-szigetek   |   | Ø |
 | Koreai Népi Demokratikus Köztársaság |   | Ø |
 | Dokdo és Takeshima       |   | Ø |
-| Hongkong                 | ✓ | ✓ |
+| Hongkong KKT                 | ✓ | ✓ |
 | Indonézia                 | ✓ | ✓ |
 | Irán                      |   | Ø |
 | Irak                      | ✓ | ✓ |
@@ -210,7 +210,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat, és minden egyes 
 
 ## <a name="oceania"></a>Óceánia
 
-| Régió | Egyesített bitképes Csempéket | Egyesített vektoros Csempéket |
+| Régió | Egyesített Raszter Csempék | Egyesített Vektorcsempék |
 | ------ | :------------------: | :------------------: |
 | Amerikai Szamoa            |   | ✓ |
 | Ausztrália                 | ✓ | ✓ |
@@ -240,7 +240,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat, és minden egyes 
 
 ## <a name="europe"></a>Európa
 
-| Régió | Egyesített bitképes Csempéket | Egyesített vektoros Csempéket |
+| Régió | Egyesített Raszter Csempék | Egyesített Vektorcsempék |
 | ------ | :------------------: | :------------------: |
 | Albánia                   | ✓ | ✓ |
 | Andorra                   | ✓ | ✓ |
@@ -266,7 +266,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat, és minden egyes 
 | Guernsey                  |   | ✓ |
 | Magyarország                   | ✓ | ✓ |
 | Izland                   | ✓ | ✓ |
-| Írországban (Köztársaság)     | ✓ | ✓ |
+| Írország (Köztársaság)     | ✓ | ✓ |
 | Man-sziget               |   | ✓ |
 | Olaszország                     | ✓ | ✓ |
 | Jan Mayen                 |   | ✓ |
@@ -302,6 +302,6 @@ A Maps azonban nem rendelkezik azonos szintű információkat, és minden egyes 
 
 ## <a name="next-steps"></a>További lépések
 
-Azure-leképezések megjelenítési kapcsolatos további információkért lásd: [nagyítás szintek és a rács csempe](zoom-levels-and-tile-grid.md).
+Az Azure Maps renderelési kapcsolatos további információkért lásd: [nagyítási szintek és csemperács](zoom-levels-and-tile-grid.md).
 
-További tudnivalók a [az útválasztási szolgáltatás a Maps érvényességének területek](routing-coverage.md). 
+További információ a [lefedettsége területeit az útválasztási szolgáltatás Maps](routing-coverage.md). 

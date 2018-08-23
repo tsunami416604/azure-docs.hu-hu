@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: 252e4f9fe5ed6b4ff9997fc41c691636e6d002b3
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bb9e30489aa8870fe1c71c8c9a8bd557a2dcf2b1
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413538"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055496"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 ## <a name="overview"></a>Áttekintés
@@ -645,7 +645,7 @@ Az alábbi kódot a VNN beállításokat listázása, és beállítja azt az Ön
 
 Egy későbbi lépésben áttelepítési frissítenie kell az Always On figyelő, amely hivatkozik a terheléselosztó frissített IP-címet, ebbe beletartozik egy IP-cím erőforrás eltávolítása és hozzáadását. Az IP-frissítés után kell a DNS-zóna frissítve lett az új IP-cím, valamint, hogy az ügyfelek frissítése folyamatban van a helyi gyorsítótárban.
 
-Ha az ügyfelek egy másik hálózati szegmensben tartalmazhat, és a egy másik DNS-kiszolgálóra hivatkozik, fontolja meg, mi történik, kapcsolatos DNS-zóna átvitele az áttelepítés során, az alkalmazás újracsatlakozás idő kell által korlátozott legalább a zóna átvitele időt bármely új IP-cím a figyelő a címeket. Ha alatt itt az ideje megkötés, érdemes megvitatása és a egy növekményes zónaletöltést a Windows csapata kényszerítése, és a DNS-állomásrekord is helyezni egy alacsonyabb idő az élettartam (TTL), így az ügyfelek frissítése. További információkért lásd: [növekményes zónaletöltések](https://technet.microsoft.com/library/cc958973.aspx) és [Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx).
+Ha az ügyfelek egy másik hálózati szegmensben tartalmazhat, és a egy másik DNS-kiszolgálóra hivatkozik, fontolja meg, mi történik, kapcsolatos DNS-zóna átvitele az áttelepítés során, az alkalmazás újracsatlakozás idő kell által korlátozott legalább a zóna átvitele időt bármely új IP-cím a figyelő a címeket. Ha alatt itt az ideje megkötés, érdemes megvitatása és a egy növekményes zónaletöltést a Windows csapata kényszerítése, és a DNS-állomásrekord is helyezni egy alacsonyabb idő az élettartam (TTL), így az ügyfelek frissítése. További információkért lásd: [növekményes zónaletöltések](https://technet.microsoft.com/library/cc958973.aspx) és [Start-DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer).
 
 Alapértelmezés szerint a figyelő az Always On Azure-beli társított DNS-rekord Élettartama az 1200-as másodperc. Előfordulhat, hogy szeretne Ez csökkentheti, ha korlátozás ahhoz, hogy az ügyfelek a migrálás során a DNS frissítése az IP-cím frissítése a figyelő az idő alatt. Megtekintheti és módosíthatja a konfigurációt a konfiguráció a VNN az okai:
 

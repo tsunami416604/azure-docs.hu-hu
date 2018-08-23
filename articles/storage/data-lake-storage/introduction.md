@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 51f38cf7ade01b58ad5ce7925af5546d1a4f1a0c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 072573b16fbeebac1ec942b0be508cf901b5cd27
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525382"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42058699"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Bevezetés az Azure Data Lake Storage Gen2 előzetes verzió
 
@@ -33,6 +33,8 @@ Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítm
 
 - **Felügyeleti** azért egyszerűbben rendszerezheti és a fájlkezelő könyvtárak és alkönyvtárak keresztül.
 
+- **Biztonsági** végrehajtható, mert meghatározhatja a POSIX-engedélyeket a mappákat vagy egyéni felhasználók számára a fájlok.
+
 - **Költséghatékonysága** lehetséges legyen, a Data Lake Storage Gen2 épül az alacsony költségű [Azure Blob storage](../blobs/storage-blobs-introduction.md). A további szolgáltatások tovább csökkentheti a teljes tulajdonosi költség, a big data-elemzés futtatása az Azure-ban.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 főbb funkciói
@@ -43,9 +45,7 @@ Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítm
 
 - **Hadoop-kompatibilis hozzáférés**: kezelését és az adatok eléréséhez, ugyanúgy, mint a Data Lake Storage Gen2 lehetővé teszi egy [Hadoop elosztott fájlrendszer (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS illesztőprogram](./abfs-driver.md) elérhető összes Apache Hadoop-környezetekben, beleértve a [Azure HDInsight](../../hdinsight/index.yml) és [Azure Databricks](../../azure-databricks/index.yml) Data Lake Storage-ban tárolt adatok elérését Gen2.
 
-- **Több protokoll és a többszörös modális adatelérési**: Data Lake Storage Gen2 számít egy **több modális** , mert a storage szolgáltatás biztosít objektumtároló és a fájl ugyanazokat az adatokat a rendszer felületek **egyszerre idő**. Ez azáltal, hogy több protokollvégpontokat olyan ugyanazokkal az adatokkal érhető el. 
-
-    Ellentétben más elemzési megoldásokkal Data Lake Storage Gen2-ban tárolt adatok nem kell áthelyezni vagy lesz átalakítva, elemzési eszközök különböző futtatása előtt. Hagyományos keresztül az adatok eléréséhez [a Blob storage API-k](../blobs/storage-blobs-introduction.md) (például: keresztül adatokat [Event Hubs Capture](../../event-hubs/event-hubs-capture-enable-through-portal.md)) és a egy időben HDInsight vagy Azure Databricks használatával adatokat feldolgozni. 
+- **Felülbírálja a POSIX-engedélyek**: A biztonsági modell a Data Lake Gen2 teljes körűen támogatja az ACL-JEI és POSIX engedélyekkel együtt néhány további pontossággal megadott Data Lake Storage Gen2-re. Beállítások felügyeleti eszközökkel vagy keretrendszereket, mint például a Hive és a Spark segítségével konfigurálhatók.
 
 - **Költséghatékony**: Data Lake Storage Gen2 funkciói költséghatékony tárolási kapacitás és a tranzakciók. A teljes körű életciklus keresztül adatok transitions lehetőségnél szerint díjszabása nem módosul módosítja a megtartja költségeket a beépített funkciók használatával minimális például [Azure Blob storage életciklus](../common/storage-lifecycle-managment-concepts.md).
 

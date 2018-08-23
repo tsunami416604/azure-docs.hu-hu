@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: a41cd658060ef92efb0fc21a98ca616276378c5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113854"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42060597"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -148,12 +148,44 @@ Mivel a SuSE Linux symlinks tanúsítvány listának a karbantartására haszná
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>A Site Recovery URL-címek vagy IP-címtartományokat (hibakód: 151037 vagy 151072) kimenő kapcsolatok
 
-A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-címtartományok szükség a virtuális gépről. A virtuális gép tűzfal mögött található, vagy használja a hálózati biztonsági csoport (NSG) szabályai kimenő kapcsolat szabályozásához, ha valamelyik alábbi hibaüzeneteket láthatja:
+A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-címtartományok szükség a virtuális gépről. Ha a virtuális gép tűzfal mögött található, vagy használja a hálózati biztonsági csoport (NSG) szabályai kimenő kapcsolat szabályozásához, előfordulhat, hogy között ezek a problémák egyike.
 
-**Hibakódok** | **Lehetséges okok** | **Javaslatok**
---- | --- | ---
-151037<br></br>**Üzenet**: nem sikerült regisztrálni az Azure virtuális gépek Site recoveryvel. | -Az NSG-t használ kimenő hozzáférés vezérléséhez meg a virtuális gép és a szükséges IP-címtartományok nem szerepel az engedélyezési listán a kimenő hozzáféréshez.</br></br>-Használ külső tűzfal eszközök és a szükséges IP címtartományok/URL-címek nem szerepel az engedélyezési listán.</br>| – Ha tűzfalproxyt segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges URL-címek vagy adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [tűzfal-proxy útmutatást](https://aka.ms/a2a-firewall-proxy-guidance).</br></br>– Ha az NSG-szabályok segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [hálózati biztonsági csoport útmutató](https://aka.ms/a2a-nsg-guidance).
-151072<br></br>**Üzenet**: a Site Recovery konfigurálása nem sikerült. | A Site Recovery szolgáltatási végpontjaival nem létesíthető kapcsolat. | – Ha tűzfalproxyt segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges URL-címek vagy adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [tűzfal-proxy útmutatást](https://aka.ms/a2a-firewall-proxy-guidance).</br></br>– Ha az NSG-szabályok segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [hálózati biztonsági csoport útmutató](https://aka.ms/a2a-nsg-guidance).
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151037-br"></a>1 probléma: Nem sikerült regisztrálni az Azure virtuális gépet a Site Recovery (151037) </br>
+- **Lehetséges ok** </br>
+  - NSG-t használ a kimenő hozzáférésének meg a virtuális gép és a szükséges IP-címtartományok nem szerepel az engedélyezési listán a kimenő hozzáféréshez.
+  - Külső gyártótól származó tűzfaleszközöket használ és a szükséges IP címtartományok/URL-címek nem szerepel az engedélyezési listán.
+
+
+- **Felbontás**
+   - Ha használ tűzfalproxyt szabályozhatja a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges URL-címek vagy adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [tűzfal-proxy útmutatást](https://aka.ms/a2a-firewall-proxy-guidance).
+   - Ha az NSG-szabályok segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [hálózati biztonsági csoport útmutató](https://aka.ms/a2a-nsg-guidance).
+   - Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](site-recovery-azure-to-azure-networking-guidance.md).
+
+### <a name="issue-2-site-recovery-configuration-failed-151072"></a>2 probléma: A Site Recovery konfigurálása nem sikerült (151072)
+- **Lehetséges ok** </br>
+  - A Site Recovery szolgáltatási végpontjaival nem létesíthető kapcsolat
+
+
+- **Felbontás**
+   - Ha használ tűzfalproxyt szabályozhatja a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges URL-címek vagy adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [tűzfal-proxy útmutatást](https://aka.ms/a2a-firewall-proxy-guidance).
+   - Ha az NSG-szabályok segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [hálózati biztonsági csoport útmutató](https://aka.ms/a2a-nsg-guidance).
+   - Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](site-recovery-azure-to-azure-networking-guidance.md).
+
+### <a name="issue-3-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>3. hiba: Az A2A-replikáció sikertelen, ha a hálózati forgalom halad át a helyi proxykiszolgáló (151072)
+ - **Lehetséges ok** </br>
+   - Érvénytelenek az egyéni proxy beállításait, és az ASR a mobilitási szolgáltatás ügynökének fejeződött nincs automatikus észlelés a proxybeállításokat az Internet Explorer
+
+
+ - **Felbontás**
+  1.    A mobilitási szolgáltatás ügynökének a proxybeállításokat az Internet Explorer a Windows és Linux rendszeren /etc/environment észleli.
+  2.  Ha inkább a állítsa be a proxy csak az automatikus rendszer-Helyreállítás a mobilitási szolgáltatást, majd megadhatja a proxy adatait a ProxyInfo.conf helyen található:</br>
+      - ``/usr/local/InMage/config/`` a ***Linux***
+      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` a ***Windows***
+  3.    A ProxyInfo.conf kell a proxybeállításokat a következő INI-formátumban. </br>
+                   *[proxy]*</br>
+                   *Cím =http://1.2.3.4*</br>
+                   *Port = 567*</br>
+  4. Csak támogatja az automatikus rendszer-Helyreállítás a mobilitási szolgáltatás ügynökének ***nem hitelesített proxyk***.
 
 ### <a name="fix-the-problem"></a>A probléma megoldása
 Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](site-recovery-azure-to-azure-networking-guidance.md).
@@ -213,6 +245,20 @@ Ahhoz, hogy a gép replikációját, a kiépítési állapotot kell **sikeres**.
 - Ha **provisioningState** van **sikertelen**, forduljon az ügyfélszolgálathoz hibaelhárítása adatokkal.
 - Ha **provisioningState** van **Updating**, egy másik bővítmény sikerült első üzembe helyezhető. Annak ellenőrzése, hogy minden folyamatban lévő műveletek a virtuális Gépen, várja meg, hogy végezze el, és próbálkozzon újra a sikertelen Site Recovery **engedélyezze a replikációt** feladat.
 
+## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>Nem sikerült jelölje ki a cél virtuális hálózat - hálózat kiválasztása lapon szürkén jelenik meg.
+
+**1. ok: Ha a virtuális gép csatlakoztatva van egy hálózatot, amely a cél hálózati már hozzá van rendelve.**
+- Ha a forrásoldali virtuális gép virtuális hálózat része, és a egy másik virtuális gépről az azonos virtuális hálózatban már le van képezve egy hálózati célerőforrás-csoportban, majd a alapértelmezett hálózat kiválasztása legördülő lista letiltásra kerül.
+
+![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
+
+**2. ok: Ha korábban a virtuális gép az Azure Site Recovery által védett, és le van tiltva a replikáció.**
+ - A virtuális gépek replikáció letiltása nem törli a Hálózatleképezés. A recovery Services-tároló, amelyben a virtuális gép védett ből törlendő rendelkezik. </br>
+ Lépjen a recovery Services-tároló > Site Recovery-infrastruktúra > hálózatleképezés. </br>
+ ![Delete_NW_Mapping](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
+ - A vész-helyreállítási telepítése során konfigurált célhálózat után a kezdeti beállítása, a virtuális gép védelme után is módosítható. </br>
+ ![Modify_NW_mapping](./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png)
+ - Vegye figyelembe, hogy a hálózatleképezés módosítása hatással van az összes, adott hálózatleképezés használó virtuális gépek nem védett.
 
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM +/ hiba a kötet árnyékmásolata szolgáltatás (hibakód: 151025)

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database-adatbázisok Azure Automation kezelése |} Microsoft Docs
-description: További tudnivalók hogyan az Azure Automation szolgáltatás Azure SQL-adatbázisok léptékű kezelésére használható.
+title: Azure Automation használatával Azure SQL-adatbázisok kezelése |} A Microsoft Docs
+description: Ismerje meg hogyan az Azure Automation szolgáltatás nagy mennyiségű Azure SQL Database-adatbázisok kezeléséhez használható.
 services: sql-database, automation
 author: CarlRabeler
 manager: craigg
@@ -9,40 +9,40 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a45a3e7e8c4381aa7df15628bfc57f5ad4f94100
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c68a493f439b5bc54cb04162de88ef31058d25f3
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647601"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058093"
 ---
-# <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure SQL Database-adatbázisok Azure Automation kezelése
-Az útmutatóból megismerheti az Azure Automation szolgáltatás, és hogyan használható egyszerűbbé teheti az Azure SQL-adatbázisok kezelését.
+# <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure Automation használatával Azure SQL Database adatbázisok felügyelete
+Ez az útmutató vezet be, az Azure Automation szolgáltatást, és hogyan használható az Azure SQL-adatbázisok kezelésének egyszerűsítéséhez.
 
 ## <a name="what-is-azure-automation"></a>Mi az Azure Automation?
-[Azure Automation szolgáltatásbeli](https://azure.microsoft.com/services/automation/) egy Azure szolgáltatás felhő kezelésüket folyamatok automatizálása révén. Azure Automation használ, hosszan futó, manuális, hibákhoz vezethet, és gyakran ismétlődő feladatok automatizálhatók megbízhatóságát, hatékonyságát és a szervezet hamarabb növelése érdekében.
+[Az Azure Automation](https://azure.microsoft.com/services/automation/) leegyszerűsíti a felhőfelügyelet a folyamatok automatizálása révén az Azure-szolgáltatások. Az Azure Automationnel, hosszan futó, manuális, sok hibalehetőséget rejtő és gyakran ismételt feladatok automatizálható a megbízhatóság, hatékonyságot és a szervezet teljesítések idejét.
 
-Azure Automation szolgáltatásbeli egy magas rendelkezésre állású és nagymértékben megbízható munkafolyamat-végrehajtási motorjának, amely az igényeinek, ha a szervezet növekedésének megfelelően méretezi biztosít. Az Azure Automationben folyamatok is lehet kezdődött el manuálisan, a 3. fél rendszerek vagy rendszeres időközönként, hogy a feladatok fordulhat elő, pontosan, ha szükséges.
+Az Azure Automation segítségével egy rendkívül megbízható és magas rendelkezésre állású munkafolyamat-végző összetevőjével, amely az igényeinek, ha a szervezet növekedésével skálázható. Az Azure Automation szolgáltatás folyamatokat is lehet kezdődjön manuálisan, 3. rendszerekben, vagy rendszeres időközönként, hogy a feladatok fordulhat elő, pontosan akkor, ha szükséges.
 
-Működési munkaterhelés csökkentése és az szabadítson fel informatikai / azáltal, hogy a felhő felügyeleti feladatok automatikusan Azure Automation által futtatandó value DevOps személyzet üzleti hozzáadó munkahelyi összpontosíthat.
+Csökkentheti üzemeltetési terheit és szabadítson fel informatikai fejlesztési és üzemeltetési csapatának munkára, így üzleti érték a felhőfelügyeleti feladatokat automatikusan Azure Automation által futtatandó való váltással.
 
-## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Hogyan segíthet az Azure Automation Azure SQL-adatbázisok kezelése?
-Az Azure SQL Database az Azure Automationben használatával kezelhető a [Azure SQL Database PowerShell parancsmagjait](https://docs.microsoft.com/powershell/servicemanagement/azure.sqldatabase/v1.6.1/azure.sqldatabase/) , amelyek elérhetők a [Azure PowerShell eszközök](/powershell/azure/overview). Azure Automation a elérhető Azure SQL Database PowerShell parancsmagok alapesetben rendelkezik, így az SQL-adatbázis a felügyeleti feladatokat a szolgáltatáson belül végezheti el. Ezek a parancsmagok az Azure Automationben más Azure-szolgáltatások, Azure-szolgáltatások és a 3. fél rendszerek között összetett feladatok automatizálása a parancsmagjaival is párosítható.
+## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Hogyan segít az Azure Automation kezelése az Azure SQL Database-adatbázisok?
+Az Azure SQL Database használatával kezelhetők az Azure Automationben a [Azure SQL Database PowerShell parancsmagjait](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#sql) , amelyek elérhetők a [Azure PowerShell-eszközök](/powershell/azure/overview). Az Azure Automation a ezeket az Azure SQL Database PowerShell parancsmagjait elérhető, beépített rendelkezik, így a SQL DB-felügyeleti feladatokat a szolgáltatáson belül is végrehajthatja. Ezek a parancsmagok az Azure Automation parancsmagjaival más Azure-szolgáltatások, az összetett feladatok automatizálása Azure-szolgáltatások és a 3. fél rendszerek párosítása is történik.
 
-Azure Automation szolgáltatásbeli is van lehetősége, kiszolgálókkal való kommunikációhoz SQL közvetlenül, PowerShell-lel SQL-parancsok beírásával.
+Az Azure Automation is képes kommunikálni az SQL-kiszolgálók közvetlenül, PowerShell-lel SQL-parancsok kiadásával.
 
-A [Azure Automation-runbook gyűjtemény](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) termék csoportját, és a Közösség runbookok Ismerkedés az Azure SQL-adatbázisok, más Azure-szolgáltatások és a 3. fél rendszerek felügyeletének automatizálására különböző tartalmaz. Gyűjteményelem forgatókönyvek a következők:
+A [Azure Automation forgatókönyv-katalógusában](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) a termék csapatával és a Közösség runbookok automatizálásának kezelése az Azure SQL Database, a más Azure-szolgáltatások és a 3. fél rendszerek különböző tartalmaz. A katalógus forgatókönyveinek a következők:
 
 * [SQL Server-adatbázis SQL-lekérdezések futtatásához](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
-* [Függőleges méretezni a (felfelé vagy lefelé) Azure SQL adatbázis ütemezés szerint](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
-* [Egy SQL-tábla csonkolni, ha az adatbázis megközelíti a maximális méretét](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
-* [Azure SQL adatbázis táblák index, ha azok nagy mértékben töredezettek](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
+* [Vertikális skálázása a (felfelé vagy lefelé) az Azure SQL Database egy ütemezés szerint](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
+* [Csonkolása egy SQL-táblára, ha az adatbázis megközelíti a maximális méretét](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
+* [Az Azure SQL Database tábláiban indexelése, ha azok a nagy mértékben töredezettek](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte az Azure Automation, és hogyan használható az Azure SQL-adatbázisok kezelése alapjait, az alábbi hivatkozásokból tudhat meg többet az Azure Automation.
+Most, hogy megismerte az Azure Automation, és hogyan használható az Azure SQL-adatbázisok kezelését, az alábbi hivatkozásokból tudhat meg többet az Azure Automationben.
 
-* [Azure Automation – áttekintés](../automation/automation-intro.md)
+* [Azure Automation áttekintése](../automation/automation-intro.md)
 * [Az első runbookom](../automation/automation-first-runbook-graphical.md)
-* [Azure Automation tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/automation/)
-* [Azure Automation szolgáltatásbeli: Az SQL Agent a felhőben](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
+* [Az Azure Automation tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/automation/)
+* [Az Azure Automation: Az SQL Agent a felhőben](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
 

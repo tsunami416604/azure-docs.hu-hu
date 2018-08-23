@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 13456dc53f85f6f26aab222ab0cb499aabb7d1cc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 721bb725538b0b1f6eb0e7132b99e75491b6f969
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916231"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054473"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-bA vészhelyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és Azure Resource Manager használatával
 
@@ -205,4 +205,4 @@ A Kezdés előtt vegye figyelembe, hogy a megadott tárfiók ugyanabban a régi�
         $TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
 ## <a name="next-steps"></a>További lépések
-[További](https://msdn.microsoft.com/library/azure/mt637930.aspx) Azure Site Recoveryvel Azure Resource Manager PowerShell-parancsmagokkal kapcsolatos.
+[További](https://docs.microsoft.com/powershell/module/azurerm.siterecovery) Azure Site Recoveryvel Azure Resource Manager PowerShell-parancsmagokkal kapcsolatos.

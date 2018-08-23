@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b3c74631515301498aedcb035fae32b0a451e308
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 44cae95cfd01f8d6fbd6ddb4a11e9af290042ffa
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424777"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Oktatóanyag: Azure Active Directory-integráció az Intralinks
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Intralinks az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Intralinks egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a Intralinks konfigurálásához hozzá kell Intralink
 
 **Intralinks hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -115,7 +115,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe:  `https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>`
 
     > [!NOTE] 
-    > Az érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Intralinks ügyfél-támogatási csapatának](https://www.intralinks.com/contact-1) lekérni ezt az értéket. 
+    > Az érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Intralinks ügyfél-támogatási csapatának](https://www.intralinks.com/contact) lekérni ezt az értéket. 
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -125,7 +125,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_general_400.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **Intralinks** oldalon kell küldenie a letöltött **metaadatainak XML** [Intralinks támogatási csoportjának](https://www.intralinks.com/contact-1). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **Intralinks** oldalon kell küldenie a letöltött **metaadatainak XML** [Intralinks támogatási csoportjának](https://www.intralinks.com/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -163,7 +163,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-an-intralinks-test-user"></a>Egy Intralinks tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Intralinks hoz létre. Együttműködve [Intralinks támogatási csoportjának](https://www.intralinks.com/contact-1) a felhasználók hozzáadása az Intralinks platformon.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Intralinks hoz létre. Együttműködve [Intralinks támogatási csoportjának](https://www.intralinks.com/contact) a felhasználók hozzáadása az Intralinks platformon.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -204,7 +204,7 @@ Ezt követően, kövesse az alábbi eljárást követve egy másik Intralinks al
 >[!NOTE]
 >Ez a funkció csak az Azure AD Premium SKU-ügyfelek számára érhető el, és nem érhető el az ingyenes vagy alapszintű Termékváltozat ügyfelek.
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -237,7 +237,7 @@ Ezt követően, kövesse az alábbi eljárást követve egy másik Intralinks al
  
     ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
 
-1. Az SP által kezdeményezett egyszeri bejelentkezési URL-címet első [Intralinks csapat](https://www.intralinks.com/contact-1) a másik Intralinks alkalmazás írja be a **bejelentkezési URL-cím konfigurálása** alább látható módon. 
+1. Az SP által kezdeményezett egyszeri bejelentkezési URL-címet első [Intralinks csapat](https://www.intralinks.com/contact) a másik Intralinks alkalmazás írja be a **bejelentkezési URL-cím konfigurálása** alább látható módon. 
     
      ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
     

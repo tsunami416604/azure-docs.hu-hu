@@ -2,19 +2,19 @@
 title: Tippek a Hadoop használatával a Linux-alapú HDInsight – Azure
 description: A jól ismert Linux-környezet az Azure-felhőben futó Linux-alapú HDInsight (Hadoop) fürtöket használó megvalósítás tippek beolvasása.
 services: hdinsight
-author: jasonwhowell
-editor: jasonwhowell
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 5a896edd87b2e7741ade2f9d475049086fb86833
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.date: 08/09/2018
+ms.openlocfilehash: 85741e91ab074ca45fef79e7e946a74824a1734f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598517"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055500"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -98,18 +98,21 @@ Hadoop elosztott fájlrendszer címen található példa adatok és a JAR-fájlo
 
 ## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS, az Azure Storage és Data Lake Store
 
-A legtöbb Hadoop disztribúciók HDFS helyi tároló alapját a gépeken, a fürtben. Helyi tároló használata kell egy felhőalapú megoldás, óránként vagy percenként számítási erőforrások díjkötelesek.
+A legtöbb Hadoop-disztribúció az adatokat HDFS, a gépek a fürt helyi tároló biztonsági mentése tárolódik. Helyi tároló használata kell egy felhőalapú megoldás, óránként vagy percenként számítási erőforrások díjkötelesek.
 
-HDInsight a blobok Azure Storage vagy Azure Data Lake Store az alapértelmezett tárolóként használ. Ezek a szolgáltatások a következő előnyöket nyújtják:
+HDInsight használatakor az adatfájlokat a felhőben az Azure Blob Storage és Azure Data Lake Store igény szerint méretezhető és rugalmas úgy vannak tárolva. Ezek a szolgáltatások a következő előnyöket nyújtják:
 
 * Költséghatékony hosszú távú tárolás
 * Kisegítő lehetőségek a külső szolgáltatások, például a websites, a fájl feltöltése/letöltése segédprogramok, a különböző nyelvű SDK és a böngészők
+* Nagyméretű fájlok kapacitást és nagy méretezhető tárhely
 
-Azure Storage-fiók tartalmazhat 4,75 TB, bár az egyes blobok (vagy a HDInsight szempontból fájl) csak megnyithatja és 195 GB. Az Azure Data Lake Store dinamikusan növelhető billiónyi fájl, az egyes nagyobb, mint egy petabájtnyi fájlok tárolásához. További információkért lásd: [ismertetése blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
+További információkért lásd: [ismertetése blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
 
 Azure Storage vagy a Data Lake Store használata esetén nem kell semmit speciális a HDInsight férhet hozzá az adatokhoz. Például a következő parancs felsorolja a fájlokat a `/example/data` függetlenül attól, hogy tárolása Azure Storage vagy a Data Lake Store mappa:
 
     hdfs dfs -ls /example/data
+
+A HDInsight az adatok tárolási erőforrások (Azure Blob Storage és az Azure Data Lake Store) vannak választva a számítási erőforrásokat. Ezért hozhat létre HDInsight-fürtök számítási ehhez az szükséges, és később törli a fürtöt, a munka végeztével, eközben tartja az adatfájlokat biztonságosan a felhőbeli tárban őrzött mindaddig, amíg van szüksége.
 
 ### <a name="uri-and-scheme"></a>URI-t és a séma
 

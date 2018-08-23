@@ -2,19 +2,19 @@
 title: Az Azure Cosmos DB üzembe helyezése átviteli |} A Microsoft Docs
 description: Ismerje meg, hogyan állíthatja be az Azure Cosmos DB containsers, gyűjtemények, diagramok és táblázatok a kiosztott átviteli sebesség.
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
-ms.author: sngun
-ms.openlocfilehash: a454bfc06cf119d43e545a5a911a2f6686fb755b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.author: andrl
+ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600159"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42059129"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Állítsa be, és az Azure Cosmos DB-tárolók és az adatbázis átviteli sebesség lekérdezése
 
@@ -262,20 +262,6 @@ Egy fenntartott adattovábbítási kapacitással, az alkalmazás számára szük
 > Ha a konfigurációelem-típusok tekintetében méretét és az indexelt tulajdonságok jelentősen eltérő rendelkezik, majd jegyezze fel a megfelelő művelet kérelem egységek használata után az egyes társított *típus* tipikus elem.
 > 
 > 
-
-## <a id="RequestchargeGraphAPI"></a>Kérelem díja Gremlin API-fiókok beolvasása 
-
-Íme egy példa a kérelem díj beszerzése a Gremlin API-fiókok a Gremlin.Net-könyvtár használatával. 
-
-```csharp
-
-var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
-                var resultSet = response.AsResultSet();
-                var statusAttributes= resultSet.StatusAttributes;
-```
-
-A fenti módszerrel mellett is használhatja "x-ms-összesen-kérelem-díj" fejléc kérelemegység számításokhoz.
-
 
 ## <a name="throughput-faq"></a>Átviteli sebesség – gyakori kérdések
 

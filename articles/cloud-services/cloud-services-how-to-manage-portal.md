@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 3e4520df5c1ca8477abf5a9c4b4e7e124bb38282
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005757"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055707"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services kezelése az Azure Portalon
 Az a **Cloud Services** az Azure portal területén is:
@@ -83,7 +83,7 @@ Van egy sikeres üzembe helyezés felcserélés két fő előfeltételei:
 
 - Ha szeretne statikus IP-címet használja az éles üzembe helyezési pont, le kell egyet az előkészítési ponton. Ellenkező esetben a felcserélés sikertelen lesz.
 
-- A szerepkörök összes példánya futnia kell a felcserélés végrehajtása előtt. A példányok állapotának ellenőrzéséhez a **áttekintése** panel az Azure Portal. Másik lehetőségként használhatja a [Get-AzureRole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) parancsot a Windows PowerShellben.
+- A szerepkörök összes példánya futnia kell a felcserélés végrehajtása előtt. A példányok állapotának ellenőrzéséhez a **áttekintése** panel az Azure Portal. Másik lehetőségként használhatja a [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) parancsot a Windows PowerShellben.
 
 Vegye figyelembe, hogy Vendég operációs rendszer frissítése és a szolgáltatás is javítási műveletek telepítési cseréje sikertelen okozhatnak. További információkért lásd: [felhőalapú szolgáltatás üzembe helyezési problémák elhárítása](cloud-services-troubleshoot-deployment-problems.md).
 

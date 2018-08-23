@@ -12,18 +12,20 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 08/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8c828bb49548adfdb02ed6fb1611eb405ebf4ff2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: df9c218c275367852885e67ac2649926ba1d31d3
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466260"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42058393"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
+
+Erőforrások címkékkel, a felhasználó adott erőforrástípus írási hozzáféréssel kell rendelkeznie. Címkéjét szeretné alkalmazni az összes erőforrástípus, használja a [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkör. A címkék alkalmazása csak egy erőforrás típusa, használja a közreműködő szerepkört az adott erőforráshoz. Például a címkék alkalmazása a virtuális gépekhez használja a [virtuális gépek Közreműködője](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 

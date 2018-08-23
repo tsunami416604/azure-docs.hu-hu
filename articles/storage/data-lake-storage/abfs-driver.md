@@ -9,12 +9,12 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 8be6df5f4098b8a97e41c73edc5664799fd3edbe
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: dedf398064dd0a49e5691e952ea7c9b6d16e34fd
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520819"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055701"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer illesztőprogram (ABFS): egy dedikált Azure Storage-illesztőprogram a Hadoophoz
 
@@ -45,7 +45,11 @@ Belsőleg az ABFS illesztőprogram fordítja le a fájlokat és könyvtárakat a
 
 ### <a name="authentication"></a>Hitelesítés
 
-A ABFS illesztőprogram megosztott kulcsos hitelesítés jelenleg támogatja, így előfordulhat, hogy a Hadoop-alkalmazásokat biztonságosan elérheti a Data Lake Storage Gen2 bennük foglalt erőforrás. A kulcs titkosítva, és a Hadoop konfigurációs tárolja.
+A ABFS illesztőprogram hitelesítési két formáját támogatja, így a Hadoop-alkalmazásokat lehet, hogy biztonságosan elérheti egy Data Lake Storage Gen2 képes a fiókban tárolt erőforrásoktól. A használható hitelesítési rendszerek összes részletét szerepelnek a [Azure Storage biztonsági útmutatóját](../common/storage-security-guide.md). Ezek a következők:
+
+- **Megosztott kulcs:** Ez lehetővé teszi a felhasználók erőforrásokhoz való teljes hozzáférés a fiókban. A kulcs titkosítva, és a Hadoop konfigurációs tárolja.
+
+- **Az Azure Active Directory OAuth tulajdonosi jogkivonat:** az Azure AD-tulajdonosi jogkivonatokat szerezte be, és frissíteni az illesztőprogram, a felhasználó identitását, vagy egy konfigurált egyszerű szolgáltatás használatával. A hitelesítési modellt használ, minden hozzáférés engedélyezve van a megadott tokent kérelmező és ellen a hozzárendelt POSIX hozzáférés-vezérlési lista (ACL) értékeli ki az identitással hívás alapon.
 
 ### <a name="configuration"></a>Konfiguráció
 

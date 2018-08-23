@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413103"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42060136"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Hogyan működik: az Azure AD önkiszolgáló jelszó-visszaállítás
 
@@ -94,6 +94,9 @@ Jelszó-visszaállítás módszerként mobilalkalmazás, például a Microsoft A
 | Elérhető Mobile Apps funkciói | Kód | Kód vagy az értesítés |
 
 Felhasználóknak nem kell regisztrálni a mobilalkalmazásukkal a önkiszolgáló jelszó-átállítási való regisztrálásakor [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup). A mobilalkalmazás, a felhasználók regisztrálhatják [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup), vagy az új biztonsági adatok regisztrációs verzió díjának [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
+
+> [!WARNING]
+> Engedélyeznie kell a [regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication (nyilvános előzetes verzió) összevont](concept-registration-mfa-sspr-converged.md) felhasználók fognak tudni hozzáférni az új felhasználói felületre, mielőtt [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
 
 ### <a name="change-authentication-methods"></a>Módosítsa a hitelesítési módszerek
 

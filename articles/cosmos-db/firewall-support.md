@@ -3,20 +3,20 @@ title: Az Azure Cosmos DB tűzfaltámogatásáról & IP hozzáférés-vezérlés
 description: Ismerje meg, IP hozzáférés-vezérlési házirendeket használata az Azure Cosmos DB-adatbázisfiókhoz tűzfaltámogatás.
 keywords: IP hozzáférés-vezérlés, a tűzfaltámogatás
 services: cosmos-db
-author: SnehaGunda
+author: kanshiG
 manager: kfile
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
-ms.author: sngun
-ms.openlocfilehash: e67fc5e00a638f116a69dbb36c60cf183cbde808
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.author: govindk
+ms.openlocfilehash: 7c9367cccf8d59d60dfa474f02567d59b9c8c8c2
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857830"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42061360"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Az Azure Cosmos DB-tűzfaltámogatás
 Az Azure Cosmos DB-adatbázisfiók tárolt adatok védelméhez, az Azure Cosmos DB rendelkezett támogatási alapú titkos [engedélyezési modellt](https://msdn.microsoft.com/library/azure/dn783368.aspx) , amely már használja egy erős kivonat-alapú üzenet hitelesítési kód (HMAC). Most a titkos kód alapú engedélyezési modell mellett az Azure Cosmos DB IP-alapú hozzáférés-vezérlést a tűzfaltámogatás bejövő vezérelt házirend támogatja. Ez a modell a tűzfalszabályok a hagyományos adatbázisok rendszer hasonló, és a egy további, az Azure Cosmos DB-adatbázisfiók biztonsági szintet. Ebben a modellben az Azure Cosmos DB-adatbázis fiók elérésére csak egy jóváhagyott gépekre és/vagy felhőszolgáltatásokra történő most konfigurálhatja. Azure Cosmos DB-erőforrásokat ezen jóváhagyott készletek gépek és szolgáltatások való hozzáférés továbbra is szükséges a hívó érvényes engedélyezési jogkivonat nyújtjuk.

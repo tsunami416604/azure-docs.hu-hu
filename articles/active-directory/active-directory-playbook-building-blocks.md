@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: d093aa6119b5ab316e5ffba77806e10cd067b032
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626811"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42057542"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -82,7 +82,7 @@ Hozzávetőleges időt Complete: kevesebb mint 1000 PoC-felhasználók számára
 
 További információ: [ismertetése az Office 365 identitás- és Azure Active Directory - összevont identitás](https://support.office.com/article/Understanding-Office-365-identity-and-Azure-Active-Directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9#bk_federated)
 
-## <a name="branding"></a>Védjegyzési
+## <a name="branding"></a>Védjegyezés
 
 Hozzávetőleges teljes ideje: 15 perc
 
@@ -185,7 +185,7 @@ Hozzávetőleges teljes ideje: 15 perc
 | --- | --- |
 | A webböngésző-bővítmény telepítése | [Hozzáférési Panel az Internet Explorer – bővítmény](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Hozzáférési Panel kiterjesztése a Chrome-ban](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Hozzáférési Panel kiterjesztése a Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Alkalmazás-galériából konfigurálása | [Újdonságok a vállalati alkalmazások kezelése az Azure Active Directory: az új és továbbfejlesztett alkalmazáskatalógusában](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Jelszavas egyszeri Bejelentkezést konfigurálása | [Egyszeri bejelentkezés a vállalati alkalmazásokat az új Azure Portalon kezelése: jelszóalapú bejelentkezés](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Jelszavas egyszeri Bejelentkezést konfigurálása | [Egyszeri bejelentkezés a vállalati alkalmazásokat az új Azure Portalon kezelése: jelszóalapú bejelentkezés](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Az alkalmazás hozzárendelése az előfeltételeket a csoporttal | [Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md) |
 | Jelentkezzen be https://myapps.microsoft.com/ teszt felhasználóként, amely hozzáféréssel rendelkezik |  |
 | Kattintson a csempére az újonnan létrehozott alkalmazás. | [Mi az a hozzáférési panelen?: jelszóalapú egyszeri bejelentkezés identitás üzembe helyezése nélkül](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
@@ -220,7 +220,7 @@ Hozzávetőleges teljes ideje: 30 perc
 | --- | --- |
 | A webböngésző-bővítmény telepítése | [Hozzáférési Panel az Internet Explorer – bővítmény](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Hozzáférési Panel kiterjesztése a Chrome-ban](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Hozzáférési Panel kiterjesztése a Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Alkalmazás-galériából konfigurálása | [Újdonságok a vállalati alkalmazások kezelése az Azure Active Directory: az új és továbbfejlesztett alkalmazáskatalógusában](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Jelszavas egyszeri Bejelentkezést konfigurálása | [Egyszeri bejelentkezés a vállalati alkalmazásokat az új Azure Portalon kezelése: jelszóalapú bejelentkezés](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Jelszavas egyszeri Bejelentkezést konfigurálása | [Egyszeri bejelentkezés a vállalati alkalmazásokat az új Azure Portalon kezelése: jelszóalapú bejelentkezés](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Rendelje hozzá az alkalmazás a hitelesítő adatokkal való hozzárendelése közben az előfeltételeket csoporttal | [Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md) |
 | Jelentkezzen be másik felhasználóként, hogy hozzáférési alkalmazást a **ugyanazt a közös fiókot.**  |  |
 | Igény szerint megtekinthető az alkalmazás használati jelentéseket. Vegye figyelembe, hogy van néhány késést, ezért meg kell várnia a forgalmat a jelentések megjelenítéséhez egy kis idő. | [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon: felügyelt alkalmazások használati adatai](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Az Azure Active Directory jelentésmegőrzési házirendje](reports-monitoring/reference-reports-data-retention.md) |

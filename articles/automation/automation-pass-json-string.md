@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: PowerShell, a runbook, json, az azure automation
-ms.openlocfilehash: 9fa60a56ecbff802e69e01e038bb45c7a6639873
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 1bdeef02621924bbb7af1e676d2b275229761081
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435761"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054073"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>JSON-objektum továbbítása Azure Automation-runbookba
 
@@ -23,7 +23,7 @@ Egy runbook egy JSON-fájlt az átadni kívánt adatokat tárolhat hasznos lehet
 Például előfordulhat, hogy hozzon létre egy JSON-fájlt, amely tartalmazza az összes runbook az átadni kívánt paramétert.
 Ehhez meg kell konvertálja a JSON-karakterlánc, és majd konvertálja a karakterláncot egy PowerShell-objektumot a tartalmát a runbook való továbbítása előtt.
 
-Ebben a példában létrehozunk egy PowerShell-parancsprogram, amely meghívja ezt [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) egy PowerShell-forgatókönyvet, a tartalmát a JSON-fájllal való átadásához a runbook elindításához.
+Ebben a példában létrehozunk egy PowerShell-parancsprogram, amely meghívja ezt [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) egy PowerShell-forgatókönyvet, a tartalmát a JSON-fájllal való átadásához a runbook elindításához.
 A PowerShell-runbook elindítja egy Azure virtuális Gépen, a paramétereket JSON-t lett átadva a virtuális gép lekérése.
 
 ## <a name="prerequisites"></a>Előfeltételek

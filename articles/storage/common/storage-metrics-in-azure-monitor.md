@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 880632a39332f7d9ad24b0f7aa2301660eb2f9b8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 849253dd4a2e66acc6a509a0515a22309c90e081
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528573"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42057225"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -332,14 +332,14 @@ Az Azure Storage a következő kapacitási mérőszámot az Azure monitorban biz
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| UsedCapacity | A tárfiók által felhasznált tárterület mennyisége. Standard szintű tárfiókok esetén, az összeg, a blob, table, fájl és várólista által használt kapacitás. A premium storage-fiókok és a Blob storage-fiókok hogy megegyezik a BlobCapacity. <br/><br/> Egység: bájt <br/> Összesítés típusa: átlagos <br/> Érték példa: 1024 |
+| UsedCapacity | A tárfiók által felhasznált tárterület mennyisége. Standard szintű tárfiókok esetén, az összeg, a blob, table, fájl és várólista által használt kapacitás. A premium storage-fiókok és a Blob storage-fiókok hogy megegyezik a BlobCapacity. <br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Érték példa: 1024 |
 
 ### <a name="blob-storage"></a>Blob Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| BlobCapacity | A teljes használható a storage-fiókban lévő blobtárolóba. <br/><br/> Egység: bájt <br/> Összesítés típusa: átlagos <br/> Érték példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
-| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Egység: száma <br/> Összesítés típusa: átlagos <br/> Érték példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
+| BlobCapacity | A teljes használható a storage-fiókban lévő blobtárolóba. <br/><br/> Egység: bájt <br/> Összesítés típusa: összes <br/> Érték példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
+| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Érték példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
 | ContainerCount    | A tárfiókban lévő tárolók száma. <br/><br/> Egység: száma <br/> Összesítés típusa: átlagos <br/> Érték példa: 1024 |
 
 ### <a name="table-storage"></a>Table Storage

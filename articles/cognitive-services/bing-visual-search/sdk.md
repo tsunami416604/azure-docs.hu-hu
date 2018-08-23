@@ -1,7 +1,7 @@
 ---
-title: Bing Visual keresési SDK |} Microsoft Docs
+title: A Bing Visual Search SDK |} A Microsoft Docs
 titleSuffix: Microsoft Cognitive Services
-description: Bing Visual keresési SDK olyan alkalmazásnál, amely a webes keresés.
+description: A Bing Visual Search SDK össze, amelyek a webes alkalmazások számára.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,25 +10,30 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 4/19/2018
 ms.author: scottwhi
-ms.openlocfilehash: 43b7b71ee1cce3d0f9f8d9f955004825d6b1a3af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9095ef443e406c0f3e40ae575cdf6d6484726e0f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349699"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41994386"
 ---
-# <a name="bing-visual-search-sdk"></a>Bing Visual keresési SDK
+# <a name="bing-visual-search-sdk"></a>A Bing Visual Search SDK
 
-Bing Visual keresése a következő ügyfél SDK-k, amelyek segítségével a Visual Search API gyakorolja biztosít.
+Bing vizuális keresés az alábbi ügyfél SDK-kat használhatja, amelyeket szeretne a Visual Search API-t biztosít.
 
 * [.NET-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
     * [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/1.2.0)
     * [.NET-kódtárakra](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingVisualSearch) definíciók és a függőségek
 * [Node.js-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
-    * [NODE.js szalagtárak](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/imageSearch) definíciók és a függőségek
-* [Java-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
-    * [Java-tárak](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) definíciók és a függőségek
+    * [NODE.js-kódtárak](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/imageSearch) definíciók és a függőségek
+* [Java-példák](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
+    * [Java-kódtárak](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) definíciók és a függőségek
 * [Python-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
-    * [Python szalagtárak](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-imagesearch) definíciók és a függőségek
+    * [Python-kódtárakat](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-imagesearch) definíciók és a függőségek
 
-Az egyes nyelvekhez SDK-minták telepítéséhez és futtatásához a minták együtt lépéseket SDK használatára vonatkozó Előfeltételek fontos fájljai közé tartozik.
+SDK-minták az egyes nyelvekhez telepítéséhez és futtatásához a mintákat és lépéseket az SDK használatára vonatkozó Előfeltételek fontos fájljai tartalmazzák.
+
+### <a name="sdk-tools"></a>SDK-eszközök
+Fedezze fel a Bing Visual Search SDK eszközöket tekintheti meg a Git-Adattárnak: [a Bing vizuális keresési eszközök](https://github.com/Azure-Samples/bing-visualsearch-tools)
+
+

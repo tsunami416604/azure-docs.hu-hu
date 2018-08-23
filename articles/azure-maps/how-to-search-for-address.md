@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8b7d2119e1eef8532c30b0a45ae2684493462277
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fe3bb3a778a42696cd15f9e4265448479bf043a1
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990013"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42055504"
 ---
 # <a name="how-to-find-an-address-using-the-azure-maps-search-service"></a>Hogyan találhatja meg egy címet az Azure Maps search szolgáltatással
 
@@ -164,19 +164,11 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
 
     | Kulcs | Érték |
     |-----|------------|
-    | spatialKeys | true |
-
-    Ha a [spatialKeys](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz szellemi tulajdont képező térinformatikai kulcsot tartalmazza egy adott helyre vonatkozóan.
-
-6. Adja hozzá a következő kulcs / érték-pár, a **paraméterei** szakaszt, és kattintson a **küldése**:
-
-    | Kulcs | Érték |
-    |-----|------------|
     | returnSpeedLimit | true |
     
     Ha a [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válaszban visszaadandó, a közzétett sebességkorlátozás.
 
-7. Adja hozzá a következő kulcs / érték-pár, a **paraméterei** szakaszt, és kattintson a **küldése**:
+6. Adja hozzá a következő kulcs / érték-pár, a **paraméterei** szakaszt, és kattintson a **küldése**:
 
     | Kulcs | Érték |
     |-----|------------|
@@ -184,7 +176,7 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
 
     Ha a [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz adja vissza az utca szintjén reversegeocodes a út használata tömb.
 
-8. Adja hozzá a következő kulcs / érték-pár, a **paraméterei** szakaszt, és kattintson a **küldése**:
+7. Adja hozzá a következő kulcs / érték-pár, a **paraméterei** szakaszt, és kattintson a **küldése**:
 
     | Kulcs | Érték |
     |-----|------------|

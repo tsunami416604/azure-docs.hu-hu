@@ -11,29 +11,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 1fb7716ff1b5ce661dff55c3a8dac90a062fad53
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f6a2b3f242e5989d0c72083eef4faad9c4798cfe
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630782"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42058386"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Kubernetes-fürt üzembe helyezése az Azure Stackhez
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
-> Az Azure Container szolgáltatások (ACS) Kubernetes az Azure Stacken private preview verzióban van. Az Azure Stack-operátorokról kell kérnie a Kubernetes Piactéri elem ebben a cikkben az utasítások végrehajtásához szükséges hozzáférést.
-<!-- Should "Azure Container Services" be replaced globally with Azure Kubernetes Services? It seems the Azure container page is now redirectin to Azure Kubernetes https://azure.microsoft.com/en-us/services/container-service -->
+> Azure Stack az Azure Kubernetes-szolgáltatások (AKS) szolgáltatásban Kubernetesen private preview verzióban van. Az Azure Stack-operátorokról kell kérnie a Kubernetes Piactéri elem ebben a cikkben az utasítások végrehajtásához szükséges hozzáférést.
 
 A következő cikkben megvizsgál egy megoldás Azure Resource Manager-sablon használatával történő üzembe helyezése és a Kubernetes-erőforrások kiépítése egyetlen, koordinált műveletben. Fogja kell az Azure Stack-telepítés, a szükséges információkat gyűjthet, létrehozni a sablont, és ezután üzembe helyezése a felhőben.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes és a tárolók
 
-A Kubernetes Azure Stack az Azure Container szolgáltatások (ACS)-motor által létrehozott Azure Resource Manager-sablonok használatával is telepítheti. [Kubernetes](https://kubernetes.io) üzembe helyezés automatizálásához egy nyílt forráskódú rendszer méretezés, és a tárolókban található alkalmazások felügyeletét. A [tároló](https://www.docker.com/what-container) az a képen hasonló virtuális gép szerepel. Ellentétben a virtuális gép, a tároló rendszerképét csak az olyan erőforrások tartoznak az alkalmazás, például a kódot, a kód, az adott könyvtárakat és a beállítások végrehajtásához futásidejű futtatásához.
+A Kubernetes Azure Stack az Azure Kubernetes-szolgáltatások (AKS)-motor által létrehozott Azure Resource Manager-sablonok használatával is telepítheti. [Kubernetes](https://kubernetes.io) üzembe helyezés automatizálásához egy nyílt forráskódú rendszer méretezés, és a tárolókban található alkalmazások felügyeletét. A [tároló](https://www.docker.com/what-container) az a képen hasonló virtuális gép szerepel. Ellentétben a virtuális gép, a tároló rendszerképét csak az olyan erőforrások tartoznak az alkalmazás, például a kódot, a kód, az adott könyvtárakat és a beállítások végrehajtásához futásidejű futtatásához.
 
 A Kubernetes használhatja:
 
@@ -73,7 +72,7 @@ Első lépésként ellenőrizze, hogy a megfelelő engedélyekkel rendelkezik, �
 
     c. Kattintson a **Create** (Létrehozás) gombra.
 
-1. Jegyezze fel a **Alkalmazásazonosító**. A fürt létrehozásakor kell a azonosítója. Az azonosító néven van hivatkozott **egyszerű szolgáltatás ügyfél-azonosító**.
+1. Jegyezze fel az **alkalmazás azonosítóját**. A fürt létrehozásakor kell a azonosítója. Az azonosító néven van hivatkozott **egyszerű szolgáltatás ügyfél-azonosító**.
 
 1. Válassza ki **beállítások** > **kulcsok**.
 

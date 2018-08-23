@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 7b7f9c079a1fc9d74fed4cc4d94d37f336ca5dc7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916740"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42060595"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Különböző Azure-régiókban található virtuális hálózatok leképezése
 
@@ -88,16 +88,36 @@ Ha a forrás virtuális gép hálózati adapterét használ a DHCP, a a cél vir
 ### <a name="static-ip-address"></a>Statikus IP-cím
 Ha a forrás virtuális gép hálózati adapterét statikus IP-címet használ, a cél virtuális gép hálózati adapterét is használatára van beállítva a statikus IP-címet. A következő szakaszok ismertetik, hogyan statikus IP-cím van beállítva.
 
-#### <a name="same-address-space"></a>Azonos címtartomány
+### <a name="ip-assignment-behavior-during-failover"></a>IP-hozzárendelésének viselkedését feladatátvétel során
+#### <a name="1-same-address-space"></a>1. Azonos címtartomány
 
 Ha a forrásoldali alhálózat és a célként megadott alhálózat ugyanazt a címtartományt, a forrás virtuális gép hálózati adapterének IP-címét a cél IP-cím van beállítva. Az azonos IP-cím nem érhető el, ha a cél IP-cím a következő elérhető IP-címe van beállítva.
 
-#### <a name="different-address-spaces"></a>Különböző címterek
+#### <a name="2-different-address-spaces"></a>2. Különböző címterek
 
 Ha a forrásoldali alhálózat és a célként megadott alhálózat címe különböző tárolóhelyek, a célként megadott alhálózat következő elérhető IP-címek a cél IP-cím van beállítva.
 
-A cél IP-címet minden egyes hálózati adapter módosításához nyissa meg a **számítás és hálózat** a virtuális gép beállításait.
 
+### <a name="ip-assignment-behavior-during-test-failover"></a>IP-hozzárendelésének viselkedését a feladatátvételi teszt során
+#### <a name="1-if-the-target-network-chosen-is-the-production-vnet"></a>1. Ha a kiválasztott célhálózat az éles virtuális hálózat
+- A helyreállítási IP-cím (cél-IP) lesz, de statikus IP-cím **nem lesz az azonos IP-cím** szerint foglalva feladatátvételhez.
+- A hozzárendelt IP-cím lesz végéről az alhálózat címtartományának következő elérhető IP.
+- A például, ha a forrás virtuális gép statikus IP-cím van beállítva: 10.0.0.19 és a feladatátvételi teszt kíséreltek meg a beállított éles hálózati környezetben: ***dr-ÉLES-északnyugati része***, a 10.0.0.0/24 alhálózati tartományba. </br>
+A feladatátvételi virtuális Gépen az alhálózat címtartományának, amely végéről – a következő elérhető IP-Címmel rendelkező hozzájuk: 10.0.0.254 </br>
+
+**Megjegyzés:** terminológia **éles vNet** a neve a "célhálózat" leképezve a vész-helyreállítási konfiguráció során.
+####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Ha a kiválasztott célhálózat nem az éles virtuális hálózathoz, de az egyező alhálózati tartományba éles hálózati környezetben van 
+
+- A helyreállítási IP-cím (cél IP-címet) a statikus IP-cím lesz a **azonos IP-címet** (azaz a konfigurált statikus IP-cím), foglalva feladatátvételhez. A megadott azonos IP-cím áll rendelkezésre.
+- Ha a konfigurált statikus IP-cím már hozzá van rendelve egy másik virtuális gép/eszköz, a helyreállítási IP-cím végéről az alhálózat címtartományának következő elérhető IP lesz.
+- A például, ha a forrás virtuális gép statikus IP-cím van beállítva: 10.0.0.19 és a feladatátvételi teszt kísérlet történt egy tesztelési célú hálózat az: ***dr-nem – ÉLES-északnyugati része***, az éles hálózati környezetben – egyező alhálózati tartományba 10.0.0.0/24. </br>
+  A feladatátvételi virtuális Gépen hozzájuk a következő statikus IP-cím </br>
+    - statikus IP-cím beállítva: 10.0.0.19, ha az IP-cím.
+    - Következő elérhető IP: 10.0.0.254, ha az IP-cím 10.0.0.19 elem már szerepel használja.
+
+
+A cél IP-címet minden egyes hálózati adapter módosításához nyissa meg a **számítás és hálózat** a virtuális gép beállításait.</br>
+Ajánlott eljárásként, mindig ajánlott feladatátvételi teszt végrehajtásához tesztelési hálózatot választ.
 ## <a name="next-steps"></a>További lépések
 
 * Felülvizsgálat [hálózatkezelési útmutató Azure-beli virtuális gépek replikálásához](site-recovery-azure-to-azure-networking-guidance.md).

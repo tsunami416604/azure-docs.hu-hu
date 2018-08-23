@@ -1,6 +1,6 @@
 ---
-title: SQL Server virtuális gépek az Azure PowerShell kialakítási útmutatója |} Microsoft Docs
-description: Lépéseket és a PowerShell-parancsok biztosít az Azure virtuális gép létrehozása az SQL Server virtuális gép a gyűjtemény lemezképei.
+title: Kiépítési útmutató az SQL Server virtuális gépek az Azure PowerShell-lel |} A Microsoft Docs
+description: Egy Azure virtuális gép létrehozása az SQL Server virtuálisgép-katalógus rendszerképek biztosít lépéseket és a PowerShell-parancsokat.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f0d9c42e32f2dd1181eac8d74c324b5ff2b0c53
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bb7a0b8c2d0511088282e180a108f8d925f0e4e8
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944518"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055097"
 ---
-# <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>SQL Server virtuális gépek az Azure PowerShell kiépítése
+# <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Hogyan építheti ki az SQL Servert futtató virtuális gépek az Azure PowerShell használatával
 
-Ez az útmutató ismerteti a beállításokat, az Azure PowerShell Windows SQL Server virtuális gépek létrehozásához. Például egy egyszerű Azure PowerShell további alapértelmezett értékekkel, tekintse meg a [SQL virtuális gép Azure PowerShell gyors üzembe helyezés](quickstart-sql-vm-create-powershell.md).
+Ez az útmutató ismerteti a lehetőségek Windows SQL Server virtuális gépek létrehozása az Azure PowerShell használatával. Egy egyszerű Azure PowerShell-példa több alapértelmezett értékekkel, lásd: a [SQL virtuális gép az Azure PowerShell rövid](quickstart-sql-vm-create-powershell.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Ez a cikk az Azure PowerShell 3,6 vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ez a cikk az Azure PowerShell modul 3.6-os vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
 ## <a name="configure-your-subscription"></a>Az előfizetés konfigurálása
 
@@ -40,33 +40,33 @@ Ez a cikk az Azure PowerShell 3,6 vagy újabb verziója szükséges. A verzió a
 
 1. Ekkor meg kell jelennie egy bejelentkezési képernyőnek, amely a hitelesítő adatainak megadását kéri. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
 
-## <a name="define-image-variables"></a>Adja meg a lemezkép változókat
-A újbóli és parancsfájl és egyszerűsítése érdekében először számos változó definiálása. Igényei, de figyeljen a megadott értékek módosításakor név hosszának és speciális karakterek kapcsolatos korlátozás elnevezési paraméterértékének megváltoztatásához.
+## <a name="define-image-variables"></a>Kép változókat határozhat meg
+Újbóli használata és parancsfájl-létrehozások leegyszerűsítése először számos változó megadása. Igény szerint, de ügyeljen arra, hogy ha módosítja a megadott értékek név hosszának és speciális karakterek kapcsolatos korlátozás elnevezési paraméterértékének megváltoztatásához.
 
-### <a name="location-and-resource-group"></a>Hely és az erőforráscsoport
-Két változókkal adható meg az adatterületen és az erőforráscsoport, amelybe további erőforrásokat a virtuális gép létrehozása.
+### <a name="location-and-resource-group"></a>Helyen és erőforráscsoportban
+Két változók használatával adja meg az adatterületen, és az erőforráscsoportot, amelybe a többi erőforrást a virtuális gép létrehozása.
 
-Módosítsa a kívánt módon működjenek, és majd hajtható végre a következő parancsmagok változókhoz inicializálása.
+Igény szerint módosíthatja, és ezek a változók inicializálása a következő parancsmagokat végre.
 
 ```PowerShell
 $Location = "SouthCentralUS"
 $ResourceGroupName = "sqlvm2"
 ```
 
-### <a name="storage-properties"></a>Tárolási tulajdonságai
-A következő változókkal adható meg a tárfiók és a virtuális gép által használandó tárolási típusát.
+### <a name="storage-properties"></a>A tárolótulajdonságok
+A következő változókat használja a tárfiók és a virtuális gép által használandó tárolási típus meghatározása érdekében.
 
-Módosítsa a kívánt módon működjenek, és majd hajtható végre a következő parancsmag változókhoz inicializálása. Vegye figyelembe, hogy a jelen példában használjuk [prémium szintű Storage](../premium-storage.md), amely a termelési számítási feladatokhoz ajánlott.
+Igény szerint módosíthatja, és ezután hajtsa végre az alábbi parancsmagot, ezek a változók inicializálása. Vegye figyelembe, hogy ebben a példában használjuk [prémium szintű Storage](../premium-storage.md), amely a termelési számítási feladatokhoz ajánlott.
 
 ```PowerShell
 $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>Hálózat tulajdonságai
-Adja meg a hálózati kapcsolat, a TCP/IP-kiosztási módszerrel, a virtuális hálózat neve, a virtuális alhálózati név, a virtuális hálózat az IP-címeket, az alhálózat és nyilvános tartománynév-címke az IP-címeket a következő változó segítségével a hálózat a virtuális gép által használható.
+### <a name="network-properties"></a>Hálózati tulajdonságok
+A következő változók használatával adja meg a hálózati adapterhez, a TCP/IP-kiosztási módszer, a virtuális hálózat neve, a virtuális alhálózat neve, az IP-címtartományt a virtuális hálózat, az IP-címtartományt az alhálózat és a nyilvános tartomány neve felirat a virtuális gép a hálózat által használt.
 
-Módosítsa a kívánt módon működjenek, és majd hajtható végre a következő parancsmag változókhoz inicializálása.
+Igény szerint módosíthatja, és ezután hajtsa végre az alábbi parancsmagot, ezek a változók inicializálása.
 
 ```PowerShell
 $InterfaceName = $ResourceGroupName + "ServerInterface"
@@ -80,9 +80,9 @@ $DomainName = $ResourceGroupName
 ```
 
 ### <a name="virtual-machine-properties"></a>Virtuális gép tulajdonságai
-A következő változók segítségével határozza meg a virtuális gép nevét, a számítógép nevét, a virtuális gép méretét és az operációs rendszer lemez a virtuális gép neve.
+A következő változók használatával adja meg a virtuális gép nevét, a számítógép nevét, a virtuális gép mérete és az operációs rendszer lemez a virtuális gép neve.
 
-Módosítsa a kívánt módon működjenek, és majd hajtható végre a következő parancsmag változókhoz inicializálása.
+Igény szerint módosíthatja, és ezután hajtsa végre az alábbi parancsmagot, ezek a változók inicializálása.
 
 ```PowerShell
 $VMName = $ResourceGroupName + "VM"
@@ -91,16 +91,16 @@ $VMSize = "Standard_DS13"
 $OSDiskName = $VMName + "OSDisk"
 ```
 
-### <a name="choose-a-sql-server-image"></a>Válassza ki az SQL Server-rendszerképet
-A következő változó segítségével határozza meg a virtuális géphez használandó SQL Server-rendszerképet.
+### <a name="choose-a-sql-server-image"></a>Válassza ki az SQL Server-lemezképet
+A következő változók használatával adja meg az SQL Server-rendszerképet a virtuális gép használatához.
 
-1. Először kijelentkezik az SQL Server kép ajánlatokat a listában a **Get-AzureRmVMImageOffer** parancs:
+1. Először listázza ki az SQL Server lemezkép típusú ajánlatok mindegyike a **Get-AzureRmVMImageOffer** parancsot:
 
    ```PowerShell
    Get-AzureRmVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
    ```
 
-1. Ebben az oktatóanyagban a következő változó segítségével adja meg a Windows Server 2016 SQL Server 2017.
+1. Ebben az oktatóanyagban a következő változók használatával adja meg az SQL Server 2017-ben a Windows Server 2016-on.
 
    ```PowerShell
    $OfferName = "SQL2017-WS2016"
@@ -108,20 +108,20 @@ A következő változó segítségével határozza meg a virtuális géphez hasz
    $Version = "latest"
    ```
 
-1. Ezt követően lista ki az elérhető kiadásai a szolgáltatásokat.
+1. Ezután a az ajánlatban elérhető kiadások listázásához.
 
    ```PowerShell
    Get-AzureRmVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
-1. A jelen oktatóanyag esetében használja az SQL Server 2017 Developer edition (**SQLDEV**). A fejlesztői edition szabadon licenccel tesztelési és fejlesztési, és csak kell fizetnie a virtuális gép futtatásának.
+1. A jelen oktatóanyag esetében használja az SQL Server 2017 Developer edition (**SQLDEV**). A Developer edition szabadon licencköteles teszteléshez és fejlesztéshez, és csak a virtuális gép futtatásával járó költségeket fizetni.
 
    ```PowerShell
    $Sku = "SQLDEV"
    ```
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-A Resource Manager üzembe helyezési modellben az Ön által létrehozott első objektum az erőforráscsoportot. Használja a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmag segítségével hozzon létre egy Azure-erőforráscsoportot és az erőforrások erőforráscsoport-név és hely határozza meg a változókat, amelyek korábban inicializálták.
+A Resource Manager üzemi modellel az első létrehozott objektum az erőforráscsoport. Használja a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmaggal hozzon létre egy Azure-erőforráscsoportot és az erőforrások az erőforráscsoport-nevet és a változókat, amelyek korábban inicializálták által meghatározott helyre.
 
 Hajtsa végre az alábbi parancsmagot az új erőforráscsoport létrehozásához.
 
@@ -129,10 +129,10 @@ Hajtsa végre az alábbi parancsmagot az új erőforráscsoport létrehozásáho
 New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
-A virtuális gép igényel a tárolási erőforrások, az az operációsrendszer-lemez, és az SQL Server adatainak és naplókönyvtárainak fájlok. Az egyszerűség kedvéért mindkét azt létrehozhat egyetlen lemezt. További lemezek csatolhat később a [Add-Azure lemez](/powershell/module/azure/add-azuredisk) dedikált lemezeken fájlok parancsmag ahhoz, hogy az SQL Server adatainak és naplókönyvtárainak helyezze el. Használja a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) parancsmaggal hozzon létre egy standard szintű tárfiókot, az új erőforráscsoportban, és a tárfiók neve, tárolási termékváltozat és a változókat, amelyek korábban inicializálták megadott helyre .
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+A virtuális géphez szükséges tárolási erőforrások, az operációsrendszer-lemez és az SQL Server adat- és naplófájljai. Az egyszerűség kedvéért mindkét hozunk létre egy egyetlen lemezt. További lemez is csatlakoztatható később a a [hozzáadása Azure-lemez](/powershell/module/servicemanagement/azure/add-azuredisk) parancsmagot annak érdekében, hogy az SQL Server adat- és naplófájlok elhelyezése dedikált lemezeken található fájlokat. Használja a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) parancsmaggal hozzon létre egy standard szintű tárfiókot, az új erőforráscsoportban, és a tárfiók neve, a storage Sku-név és a korábban inicializált változókban meghatározott helyre .
 
-Hajtsa végre a következő parancsmaggal hozhat létre az új tárfiók.
+Hajtsa végre az alábbi parancsmagot az új tárfiók létrehozása.
 
 ```PowerShell
 $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName `
@@ -141,31 +141,31 @@ $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupNam
 ```
 
 > [!TIP]
-> A tárfiók létrehozása eltarthat néhány percig.
+> A storage-fiók létrehozása pár percet is igénybe vehet.
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
-A virtuális gép hálózati erőforrások több hálózati kapcsolatot igényel.
+A virtuális géphez több hálózati erőforrások a hálózati kapcsolat szükséges.
 
-* Minden virtuális gép virtuális hálózat szükséges.
-* A virtuális hálózati rendelkeznie kell legalább egy meghatározott alhálózatot.
-* Egy adott hálózati csatoló nyilvános vagy magán IP-címet kell megadni.
+* Minden virtuális gép egy virtuális hálózatra van szükség.
+* Virtuális hálózat rendelkeznie kell legalább egy alhálózatot meghatározva.
+* Egy hálózati adaptert meg kell határozni egy nyilvános vagy magánhálózati IP-cím.
 
-### <a name="create-a-virtual-network-subnet-configuration"></a>Hozzon létre egy virtuális hálózati alhálózat beállítása
-Először hozzon létre a virtuális hálózati alhálózat konfigurációját. A jelen oktatóanyagban létrehozhatunk olyan alapértelmezett alhálózati használata a [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) parancsmag. A virtuális hálózati alhálózat beállítása nem létrehozni a változókat, amelyek korábban inicializálták megadott előtagot nevét és címét.
+### <a name="create-a-virtual-network-subnet-configuration"></a>Hozzon létre egy virtuális hálózat alhálózati konfigurációt
+Először hozzon létre egy alhálózati konfigurációt a virtuális hálózathoz. A jelen oktatóanyagban létrehozunk egy alapértelmezett alhálózati használata a [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) parancsmagot. A virtuális hálózat alhálózati konfigurációt a korábban inicializált változókban meghatározott alhálózat nevét és címét előtaggal rendelkező hozunk létre.
 
 > [!NOTE]
-> A virtuális hálózati alhálózat konfiguráció Ez a parancsmag segítségével további tulajdonságok adhatók, de ez az oktatóanyag terjed.
+> Megadhatja, hogy a virtuális hálózat alhálózati konfigurációt a parancsmag használatának további tulajdonságainak, de ez az oktatóanyag hatókörén kívül esik.
 
-Hajtsa végre a következő parancsmaggal hozhat létre a virtuális alhálózati konfigurációt.
+Hajtsa végre a következő parancsmag hozza létre a virtuális alhálózati konfigurációt.
 
 ```PowerShell
 $SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
 ```
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Ezután hozzon létre a virtuális hálózat használatával a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) parancsmag. A virtuális hálózat létrehozása az új erőforráscsoport, a nevét, helyét és cím előtag meghatározni a változókat, amelyek korábban inicializálták használ, és az alhálózati konfigurációt, amelyet az előző lépésben megadott használni.
+Ezután hozza létre a virtuális hálózat használatával a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) parancsmagot. A virtuális hálózat létrehozása az új erőforráscsoportban, a nevét, helyét és cím előtagja által definiált, a korábban inicializált változók használata, és az alhálózati konfigurációt, amelyet az előző lépésben megadott használ.
 
-Hajtsa végre a következő parancsmaggal hozhat létre a virtuális hálózat.
+Hajtsa végre a következő parancsmagot a virtuális hálózat létrehozásához.
 
 ```PowerShell
 $VNet = New-AzureRmVirtualNetwork -Name $VNetName `
@@ -174,12 +174,12 @@ $VNet = New-AzureRmVirtualNetwork -Name $VNetName `
 ```
 
 ### <a name="create-the-public-ip-address"></a>A nyilvános IP-cím létrehozása
-Most, hogy a megadott virtuális hálózat, igazolnia kell a hálózati kapcsolatot a virtuális gép IP-címének beállítása. Ebben az oktatóanyagban létrehozhatunk egy nyilvános IP-címet, dinamikus IP-címzés támogatja az internetkapcsolat működését használatával. Használja a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) parancsmaggal hozhat létre a nyilvános IP-a korábban létrehozott erőforráscsoport és a nevét, a hellyel, a elosztási módszert és a DNS tartománynév-címke definiálva a változók használata, amikor korábban inicializálták.
+Most, hogy a megadott virtuális hálózat, kell az IP-cím a kapcsolatot a virtuális géphez. Ebben az oktatóanyagban létrehozunk egy nyilvános IP-cím dinamikus IP-címzési támogató internetkapcsolat használatával. Használja a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) parancsmaggal hozzon létre a nyilvános IP-címet a korábban létrehozott erőforráscsoportot és a neve, a hely, a kiosztási módszer és a DNS-tartománynév címkét a változókban meghatározott korábban inicializálták.
 
 > [!NOTE]
-> A nyilvános IP-cím, ez a parancsmag segítségével további tulajdonságok adhatók, de ez a kezdeti oktatóanyag terjed. Is létrehozhatja saját cím vagy a cím statikus cím, de ez az oktatóanyag túlmutató is ez.
+> A nyilvános IP-cím, ez a parancsmag használatával további tulajdonságok adhatók, de ez az első oktatóanyag hatókörén kívül esik. Is létrehozhat saját cím vagy -cím statikus-címmel, de, amely egyben ebben az oktatóanyagban hatókörén kívül esik.
 
-Hajtsa végre a következő parancsmaggal hozhat létre a nyilvános IP-cím.
+Hajtsa végre a következő parancsmagot a nyilvános IP-cím létrehozásához.
 
 ```PowerShell
 $PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName `
@@ -188,16 +188,16 @@ $PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName `
 ```
 
 ### <a name="create-the-network-security-group"></a>A hálózati biztonsági csoport létrehozása
-Biztonságos a virtuális gép és az SQL Server-forgalomhoz, a hálózati biztonsági csoport létrehozása.
+A virtuális gép és az SQL Server forgalom védelmére, hozzon létre egy hálózati biztonsági csoportot.
 
-1. Először hozzon létre egy hálózati biztonsági szabály RDP távoli asztali kapcsolatok lehetővé tételéhez.
+1. Először hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt az RDP-vel a távoli asztali kapcsolatok.
 
    ```PowerShell
    $NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
    ```
-1. Konfigurálja a hálózati biztonsági csoport szabályt, amely lehetővé teszi a forgalom 1433-as TCP-porton. Ez lehetővé teszi az SQL Server kapcsolatok az interneten keresztül.
+1. Konfigurálja a hálózati biztonsági csoportra vonatkozó szabályt, amely engedélyezi a forgalmat a 1433-as TCP-porton. Ez lehetővé teszi SQL Serverhez való csatlakozásának az interneten keresztül.
 
    ```PowerShell
    $NsgRuleSQL = New-AzureRmNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
@@ -205,7 +205,7 @@ Biztonságos a virtuális gép és az SQL Server-forgalomhoz, a hálózati bizto
       -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
    ```
 
-1. Ezután hozzon létre a hálózati biztonsági csoportot.
+1. Ezután hozzon létre a hálózati biztonsági csoport.
 
    ```PowerShell
    $Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
@@ -213,10 +213,10 @@ Biztonságos a virtuális gép és az SQL Server-forgalomhoz, a hálózati bizto
       -SecurityRules $NsgRuleRDP,$NsgRuleSQL
    ```
 
-### <a name="create-the-network-interface"></a>A hálózati illesztő létrehozása
-A Microsoft most már készen áll a virtuális gép által használt hálózati kapcsolat létrehozásához. Ezt nevezik a [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) parancsmag a hálózati kapcsolat létrehozásához, a korábban létrehozott erőforráscsoportot és a nevét, a hellyel, az alhálózat és a nyilvános IP-címet korábban már definiálva.
+### <a name="create-the-network-interface"></a>A hálózati adapter létrehozása
+Mi most már készen áll a virtuális gép által használt hálózati adapter létrehozása. Nevezzük a [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) korábban definiált parancsmagot, hogy a hálózati adaptert létrehozni a korábban létrehozott erőforráscsoportot és a nevét, helyét, alhálózat és nyilvános IP-címet.
 
-Hajtsa végre a következő parancsmaggal hozhat létre a hálózati illesztőhöz.
+Hajtsa végre a következő parancsmagot a hálózati adapter létrehozásához.
 
 ```PowerShell
 $Interface = New-AzureRmNetworkInterface -Name $InterfaceName `
@@ -225,20 +225,20 @@ $Interface = New-AzureRmNetworkInterface -Name $InterfaceName `
    -NetworkSecurityGroupId $Nsg.Id
 ```
 
-## <a name="configure-a-vm-object"></a>A Virtuálisgép-objektum konfigurálása
-Most, hogy meghatározott tárolási és hálózati erőforrásokat, azt határozza meg a számítási erőforrásokat a virtuális gép készen áll. A jelen oktatóanyagban azt adja meg a virtuálisgép-méret és a különböző operációs rendszeri tulajdonságok, adja meg a hálózati adaptert, korábban létrehozott, adja meg a blob-tároló, és adja meg az operációs rendszer tárolására.
+## <a name="configure-a-vm-object"></a>Egy Virtuálisgép-objektum konfigurálása
+Most, hogy meghatározott tárolási és hálózati erőforrásokat, hogy készen áll a virtuális gép számítási erőforrásokat határoz meg. A jelen oktatóanyagban azt adja meg a virtuális gép mérete és a különböző operációs rendszeri tulajdonságok, adja meg a hálózati adaptert, amely a korábban létrehozott, adja meg a blob storage-ba, és adja meg az operációsrendszer-lemez.
 
 ### <a name="create-the-vm-object"></a>A Virtuálisgép-objektum létrehozása
-Indítsa el a virtuálisgép-méret megadása. Ebben az oktatóanyagban egy DS13 meg azt. Ezt nevezik a [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) parancsmag segítségével hozzon létre egy konfigurálható virtuálisgép-objektum neve és korábban inicializálták változókkal megadott méret.
+Indítsa el a virtuális gép mérete megadásával. Ebben az oktatóanyagban egy DS13 útjához azt. Nevezzük a [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) parancsmaggal hozzon létre egy konfigurálható virtuálisgép-objektum nevére, illetve a korábban inicializált változókban megadott méret.
 
-Hajtsa végre a következő parancsmaggal hozhat létre a virtuálisgép-objektumot.
+Hajtsa végre a következő parancsmag a virtuálisgép-objektum létrehozásához.
 
 ```PowerShell
 $VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
 ```
 
-### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>Tartsa a nevet és jelszót a helyi rendszergazdai hitelesítő adatokat a hitelesítőadat-objektum létrehozása
-Azt is a virtuális gép operációs rendszer tulajdonságainak beállításához igazolnia kell a helyi rendszergazdai fiók, mint egy biztonságos karakterláncot kell megadnia a hitelesítő adatok megadását. Ehhez használja a [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) parancsmag.
+### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>Hozzon létre egy hitelesítő objektumot, amely tárolja a nevét és jelszavát a helyi rendszergazdai hitelesítő adatait
+Azt is állítsa be a virtuális gép operációs rendszer tulajdonságait, mielőtt kell adnia a hitelesítő adatokat a helyi rendszergazdai fiók biztonságos karakterláncként. Ehhez használja a [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) parancsmagot.
 
 Hajtsa végre az alábbi parancsmagot, és a hitelesítő adatok kérelem PowerShell ablakban írja be a nevét és a virtuális gépen a helyi rendszergazdai fiók jelszavát.
 
@@ -247,9 +247,9 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>A virtuális gép operációs rendszer tulajdonságainak beállítása
-Most már készen áll a virtuális gép operációs rendszer tulajdonságainak a beállítása azt [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) parancsmag Windows, mint az operációs rendszer típusát igényelnek a [virtuális gép ügynökének](../../extensions/agent-windows.md) legyen telepítve, adja meg, hogy a parancsmag lehetővé teszi, hogy az automatikus frissítés, és állítsa be a virtuális gép nevét, a számítógép nevét és a hitelesítő adatok használata a változókat, amelyek korábban inicializálták.
+Most a virtuális gép operációs rendszer tulajdonságainak a készen állunk [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) megkövetelése-parancsmaggal beállítható az operációs rendszer típusa Windows, mint a [virtuálisgép-ügynök](../../extensions/agent-windows.md) legyen telepítve, adja meg, hogy a parancsmag lehetővé teszi, hogy az automatikus frissítés, és állítsa be a virtuális gép nevét, a számítógép nevét és a hitelesítő adatok a korábban inicializált változók használatával.
 
-Hajtsa végre a következő parancsmagot a virtuális gép operációs rendszer tulajdonságainak beállításához.
+Hajtsa végre a következő parancsmagot a virtuális gép operációs rendszeri tulajdonságok beállításához.
 
 ```PowerShell
 $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
@@ -257,26 +257,26 @@ $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
    -ProvisionVMAgent -EnableAutoUpdate
 ```
 
-### <a name="add-the-network-interface-to-the-virtual-machine"></a>Adjon hozzá a hálózati illesztő a virtuális géphez
-Ezután azt adja hozzá a hálózati illesztő létrehozott korábban a virtuális géphez. Hívja a [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) parancsmaggal adja hozzá a hálózati adapter a hálózati illesztő változóval, amelyet korábban megadott.
+### <a name="add-the-network-interface-to-the-virtual-machine"></a>A hálózati adapter hozzáadása a virtuális géphez
+Ezután hozzáadunk a létrehozott hálózati adapter korábban a virtuális géphez. Hívja a [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) parancsmag hozzáadása a hálózati adaptert, amely a korábban megadott hálózati adapter változó használatával.
 
-A hálózati illesztő a virtuális gép beállítása a következő parancsmag végrehajtása.
+Hajtsa végre a következő parancsmagot a hálózati adaptert a virtuális gép beállításához.
 
 ```PowerShell
 $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
 ```
 
-### <a name="set-the-blob-storage-location-for-the-disk-to-be-used-by-the-virtual-machine"></a>A blob tárolási helyét a lemezt a virtuális gép által használandó beállítása
-Következő lépésként állítsa a lemezt a változókat, amelyek korábban meghatározott használó virtuális gépek által használható blob tárolási helyét.
+### <a name="set-the-blob-storage-location-for-the-disk-to-be-used-by-the-virtual-machine"></a>A lemez a virtuális gép által használandó blob tárolási helyének beállítása
+Következő lépésként állítsa a lemezt a virtuális gép által korábban definiált változókat használ által használt blob tárolási helyét.
 
-Blob storage helyének megadása a következő parancsmag végrehajtása.
+Hajtsa végre a következő parancsmagot a blob storage helyének beállítása.
 
 ```PowerShell
 $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName + ".vhd"
 ```
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>Az operációs rendszer a virtuális gép lemez tulajdonságainak beállítása
-Ezután állítsa be az operációs rendszer lemez tulajdonságait a virtuális gép. Használja a [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) parancsmag használatával adja meg, határozza meg, hogy a virtuális gép operációs rendszerét a képfájl, a gyorsítótár-olvasni a csak (mivel az SQL-kiszolgáló van telepítés alatt azon a lemezen), és adja meg a virtuális gép név és a változókat, amelyek korábban meghatározott megadott operációsrendszer-lemeze.
+Következő lépésként állítsa az operációs rendszer a virtuális gép lemez tulajdonságait. Használja a [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) parancsmag használatával adja meg, hogy a virtuális gép operációs rendszerét származnak képet, a virtuális gép meghatározásához és gyorsítótár-olvasható (mivel az SQL Server telepítése ugyanazon a lemezen a) név és az operációsrendszer-lemez, amely a korábban meghatározott változókban meghatározott.
 
 Hajtsa végre az alábbi parancsmagot, az operációs rendszer a virtuális gép lemez tulajdonságainak beállítása.
 
@@ -285,10 +285,10 @@ $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name `
    $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
 ```
 
-### <a name="specify-the-platform-image-for-the-virtual-machine"></a>Adja meg a platform-lemezképet a virtuális géphez
-Az utolsó konfigurációs lépés annak adja meg a platform-lemezképet a virtuális gép. A jelen oktatóanyagban használjuk a legújabb SQL Server 2016 CTP-lemezképet. Használja a [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) parancsmag által korábban meghatározott változókat által meghatározott a kép használható.
+### <a name="specify-the-platform-image-for-the-virtual-machine"></a>Adja meg a platform-lemezképet a virtuális gép
+Az utolsó konfigurációs lépéssel, hogy adja meg a platform-lemezképet a virtuális gép számára. A jelen oktatóanyagban a legújabb SQL Server 2016 CTP-rendszerképet használunk. Használja a [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) parancsmagot a rendszerkép használata, ahogyan korábban definiált változókat a.
 
-Hajtsa végre az alábbi parancsmagot, adja meg a platform-lemezképet a virtuális gép számára.
+Hajtsa végre az alábbi parancsmagot, adja meg a platform-lemezképet a virtuális gép.
 
 ```PowerShell
 $VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine `
@@ -297,7 +297,7 @@ $VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine `
 ```
 
 ## <a name="create-the-sql-vm"></a>Az SQL virtuális gép létrehozása
-Most, hogy befejezte a konfigurációs lépésekkel, készen áll a virtuális gép létrehozásához. Használja a [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) parancsmaggal hozhat létre a virtuális gépet a változókat, amelyek definiáltuk használatával.
+Most, hogy befejezte a konfigurálás lépéseinek végrehajtásához, készen áll a virtuális gép létrehozásához. Használja a [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) parancsmaggal hozzon létre a virtuális gépet, hogy meghatároztuk a változók használatával.
 
 Hajtsa végre a következő parancsmagot a virtuális gép létrehozásához.
 
@@ -308,16 +308,16 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
 A virtuális gép jön létre.
 
 > [!NOTE]
-> A rendszerindítási diagnosztika kapcsolatos hibát figyelmen kívül hagyhatja. Standard szintű tárfiók rendszerindítási diagnosztika, mert a virtuális gép lemezét a megadott tárfiók egy prémium szintű storage-fiók jön létre.
+> Információ a rendszerindítási diagnosztika a hiba figyelmen kívül hagyhatja. A standard szintű tárfiók létrejön a rendszerindítási diagnosztika, mert a virtuálisgép-lemez a megadott tárfiók premium storage-fiók.
 
 ## <a name="install-the-sql-iaas-agent"></a>Az SQL IaaS-ügynök telepítése
-SQL Server virtuális gépek támogatják a automatizált felügyeleti funkcióinak használatát a [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md). Az ügynök az új virtuális gépen való telepítéséhez futtassa a következő parancsot a gép létrehozása után.
+Az SQL Server virtuális gépek támogatják a automatizált felügyeleti funkcióinak a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md). Az ügynök az új virtuális gépen való telepítéséhez futtassa a következő parancsot a gép létrehozása után.
 
    ```PowerShell
    Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
    ```
 
-## <a name="remove-a-test-vm"></a>A teszteléshez használt virtuális gép eltávolítása
+## <a name="remove-a-test-vm"></a>Tesztelési virtuális gép eltávolítása
 
 Ha nem szükséges, hogy a virtuális gép folyamatosan fusson, a szükségtelen költségeket elkerülendő leállíthatja az épp használaton kívüli gépet. A következő parancs leállítja a virtuális gépet, de elérhető állapotban hagyja későbbi használat céljából.
 
@@ -328,7 +328,7 @@ Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 Emellett véglegesen is törölheti a virtuális géppel társított erőforrásokat a **Remove-AzureRmResourceGroup** paranccsal. Ez véglegesen törli magát a virtuális gépet is, ezért ezt a parancsot körültekintően alkalmazza.
 
 ## <a name="example-script"></a>Példaszkript
-A következő parancsfájl tartalmazza a teljes PowerShell parancsprogramot ehhez az oktatóanyaghoz. Azt feltételezi, hogy már beállítása az Azure-előfizetés használata a **Connect-AzureRmAccount** és **Select-AzureRmSubscription** parancsok.
+A következő parancsfájl ebben az oktatóanyagban a teljes PowerShell-parancsfájlt tartalmazza. Azt feltételezi, hogy már a telepítő az Azure-előfizetés használata az **Connect-AzureRmAccount** és **Select-AzureRmSubscription** parancsokat.
 
 ```PowerShell
 # Variables
@@ -398,10 +398,10 @@ Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $V
 ## <a name="next-steps"></a>További lépések
 A virtuális gép létrehozása után is:
 
-- Csatlakoztassa a virtuális géphez a távoli asztal (RDP) használatával.
-- A portál SQL Server-beállítások konfigurálása a virtuális Gépet, beleértve:
-   - [tárolási beállítások](virtual-machines-windows-sql-server-storage-configuration.md) 
-   - [Automatikus felügyeleti feladatok](virtual-machines-windows-sql-server-agent-extension.md)
+- Csatlakozzon a virtuális gép távoli asztali (RDP) használatával.
+- SQL Server-beállítások konfigurálása a portálon a virtuális gép, többek között:
+   - [Tárolási beállítások](virtual-machines-windows-sql-server-storage-configuration.md) 
+   - [Automatizált felügyeleti feladatokat](virtual-machines-windows-sql-server-agent-extension.md)
 - [Kapcsolat konfigurálása](virtual-machines-windows-sql-connect.md).
-- Csatlakoztassa az ügyfeleket és alkalmazásokat az új SQL Server-példányra.
+- Csatlakozzon az ügyfelek és alkalmazások az új SQL Server-példányon.
 

@@ -3,18 +3,18 @@ title: Az Azure HDInsight alatt futó stormra SCP.NET – programozási útmutat
 description: Megtudhatja, hogyan hozhat létre az SCP.NET használatával. NET-alapú Storm-topológiák az Azure HDInsight-ban futó Storm használható.
 services: hdinsight
 ms.service: hdinsight
-author: raviperi
-ms.author: raviperi
+author: jasonwhowell
+ms.author: jasonwhowell
 editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 35f26d6acca26a8800407fe0d76f8b79689ce122
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 8ac0703fa0ec5f9a9e3f994ccaac61c3748bb8f0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621004"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058390"
 ---
 # <a name="scp-programming-guide"></a>Szolgáltatáskapcsolódási pont programozási útmutató
 Szolgáltatáskapcsolódási pont platformot hozhat létre valós idejű, megbízható és konzisztens, és nagy teljesítményű adatokat feldolgozó alkalmazást. Be van építve a [Apache Storm](http://storm.incubator.apache.org/) – egy streamfeldolgozó rendszer, a nyílt Forráskódú Közösségek által tervezték. A Storm Nathan Marz által készült, és a nyílt forráskódú lett a Twitteren. A modul [Apache ZooKeeper](http://zookeeper.apache.org/), magas megbízhatóságú engedélyezése egy másik Apache-projecttel elosztott koordinálása és állapot-kezelés. 

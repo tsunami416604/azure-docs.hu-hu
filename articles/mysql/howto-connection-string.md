@@ -1,27 +1,27 @@
 ---
-title: Csatlakozás a MySQL az Azure Database-alkalmazások
-description: Ez a dokumentum a jelenleg támogatott kapcsolati karakterláncok az alkalmazások az Azure Database-MySQL, beleértve az ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python vagy Ruby kapcsolati sorolja fel.
+title: Csatlakozás az alkalmazások az Azure Database for MySQL-hez
+description: Ez a dokumentum a jelenleg támogatott kapcsolati karakterlánc, a csatlakozás az Azure Database for MySQL, beleértve a (C#) ADO.NET, JDBC, Node.js, ODBC, PHP, Python és Ruby-alkalmazások listája.
 services: mysql
-author: mswutao
-ms.author: wuta
+author: ajlam
+ms.author: andrela
 editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 083c6850151340ba8cb307a237f489e5923761a5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 06bd91adb0a86198f7709d0989624657ce00dfa9
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265683"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42056850"
 ---
-# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>A MySQL az Azure Database-alkalmazások összekapcsolása
-Ez a témakör felsorolja a karakterláncot kapcsolattípusokat által támogatott Azure-adatbázis a MySQL, sablonok és példákkal együtt. Lehetséges, hogy különböző paraméterek és beállítások a kapcsolati karakterláncban.
+# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Kapcsolódás az alkalmazások az Azure Database for MySQL-hez
+Ez a témakör felsorolja a kapcsolati karakterlánc típusú által támogatott Azure Database for MySQL, példák és sablonok. Lehetséges, hogy különböző paraméterek és beállítások a kapcsolati karakterláncban.
 
 - A tanúsítvány beszerzéséről [SSL konfigurálása](./howto-configure-ssl.md).
 - {your_host} = <servername>.mysql.database.azure.com
-- {your_user}@{servername} megfelelően = userID formátum a hitelesítéshez.  Használata esetén a felhasználói azonosítóját, a hitelesítés sikertelen lesz.
+- {your_user}@{servername} = megfelelően a felhasználói azonosító formátuma a hitelesítéshez.  Ha csak a felhasználói azonosítót használja, a hitelesítés sikertelen lesz.
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
@@ -64,10 +64,10 @@ cnx = mysql.connector.connect(user={username@servername}, password={your_passwor
 client = Mysql2::Client.new(username: {username@servername}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Ismerje meg a kapcsolati karakterlánc részleteket az Azure-portálon
-Az a [Azure-portálon](https://portal.azure.com), nyissa meg a MySQL-kiszolgáló Azure-adatbázishoz, és kattintson a **kapcsolati karakterláncok** karakterlánc listájának lekérdezése a példányhoz: ![a kapcsolati karakterláncok ablaktáblán az Azure-ban portál](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>A kapcsolati karakterlánc adatait lekérése az Azure Portalról
+Az a [az Azure portal](https://portal.azure.com), nyissa meg az Azure Database for MySQL-kiszolgálóhoz, és kattintson **kapcsolati karakterláncok** karakterlánc lekéréséhez a példány: ![a kapcsolati karakterláncok panel az Azure-ban portál](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-A karakterlánc részletesen bemutatja a például az illesztőprogram, a kiszolgáló és a más adatbázis kapcsolat paramétereit. Módosítsa a példákat a saját paraméterekkel, például az adatbázis nevét, jelszó és így tovább. Ez a karakterlánc segítségével majd csatlakozni a kiszolgálóhoz, a kódot és az alkalmazások.
+A karakterláncban biztosít például az illesztőprogram, a kiszolgáló és az egyéb adatbázis kapcsolódási paraméterek. Módosítsa a példákat a saját paramétereivel, például az adatbázis nevét, jelszó és így tovább. Ezután használhatja ezt a karakterláncot a kód és az alkalmazások csatlakozni a kiszolgálóhoz.
 
 ## <a name="next-steps"></a>További lépések
-- Kapcsolat szalagtárakkal kapcsolatos további információkért lásd: [fogalmak - adatkapcsolattárak](./concepts-connection-libraries.md).
+- Csatlakozási kódtárak kapcsolatos további információkért lásd: [alapelvei – adatkapcsolattárak](./concepts-connection-libraries.md).

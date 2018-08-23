@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 6/20/2018
+ms.date: 8/10/2018
 ms.author: victorh
-ms.openlocfilehash: b8b5b1da902a854dacea7e3019e3fa1116f04212
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399143"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058097"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -122,6 +122,12 @@ Hálózati biztonsági csoportok az Application Gateway-alhálózat a következ�
 * Kimenő internetkapcsolattal nem lehet blokkolni.
 
 * Az AzureLoadBalancer címkét a forgalmat engedélyezni kell.
+
+**Q. Felhasználó által megadott útvonalakat az application gateway alhálózatának támogatottak?**
+
+Mindaddig, amíg nem módosítja a kérelem/válasz végpontok közötti kommunikáció az application gateway alhálózatának, felhasználó által megadott útvonalak (udr-EK) támogatottak.
+
+Például beállíthat egy UDR az application gateway alhálózatának az, hogy a csomagok vizsgálata készülékként egy tűzfalat mutasson, de győződjön meg arról, hogy a csomag elérje a kívánt rendeltetési post ellenőrzés. Ezt a nem megfelelő állapot vizsgálatok és a forgalom útválasztási viselkedés eredményezhet. Ez magában foglalja a megismert vagy alapértelmezett 0.0.0.0/0 útvonalakat a virtuális hálózat ExpressRoute vagy VPN-átjárók propagálása.
 
 **Q. Mik azok a korlátok Application Gateway-en? Növelheti ezeket a korlátokat?**
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 6777842f3ca336eb4ae0d134cbc7ffd062bc6f29
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1a4be7b5caba751f0f90e865d8ef23e5e9c899d6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37889588"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42056656"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -87,7 +87,7 @@ Ha a virtuális gép kifogástalan állapotúként szerepel és az állapot-mint
 * A terheléselosztó háttérkészletének virtuális gép nem figyel az adatportot 
 * Hálózati biztonsági csoport nem blokkolja a portot a Load Balancer háttérkészletének virtuális Gépén futó  
 * A virtuális gép és a hálózati Adaptert a terheléselosztó elérése 
-* A programban részt vevő Load Balancer háttérkészletének virtuális Gépén az Internet Terheléselosztói VIP elérése 
+* Internetes Load Balancer előtér elérése a programban részt vevő Load Balancer háttérkészletének virtuális Gépén 
 
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>1. ok: Load Balancer háttérkészletének virtuális Gépén nem figyel a következőn: az adatok port 
 Ha a virtuális gép nem válaszol az adatforgalmat, mert nem nyissa meg a programban részt vevő virtuális Gépen, vagy a célként megadott port lehet vagy a virtuális gép nem adott portot figyel. 
@@ -119,10 +119,11 @@ Ha az alkalmazás a virtuális Gépet egy terheléselosztó lévő üzemeltetett
 * Alkalmazásonkénti külön háttérkészletének virtuális gépek konfigurálása. 
 * Az alkalmazás konfigurálása kettős NIC-beli virtuális gépeken, így mindegyik alkalmazás használta a szolgáltatást, a saját hálózati adapter és IP-címet. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>4. ok: A belső Terheléselosztói VIP elérése a programban részt vevő Load Balancer háttérkészletének virtuális Gépén
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>4. ok: A belső terheléselosztó előtérbeli elérése a programban részt vevő Load Balancer háttérkészletének virtuális Gépén
 
-Ha egy ILB virtuális IP-CÍMEK egy virtuális hálózaton belül van konfigurálva, és a résztvevők háttérbeli virtuális gépek egyik próbál meg hozzáférni a belső Terheléselosztói VIP, a hibát az eredmények. Ez egy nem támogatott eset.
-**Feloldási** Application Gateway kiértékelése vagy más proxyk (például a nginx-et vagy a haproxy) ezt a fajta forgatókönyv támogatásához. Az Application Gateway kapcsolatos további információkért lásd: [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
+Ha egy belső terheléselosztó van konfigurálva, egy virtuális hálózaton belül, és a résztvevők háttérbeli virtuális gépek egyik próbál meg hozzáférni a belső terheléselosztó előtérbeli, hibák előfordulhatnak, ha a folyamat az eredeti virtuális gép le van képezve. Ez a forgatókönyv nem támogatott. Felülvizsgálat [korlátozások](load-balancer-overview.md#limitations) részletes leírását.
+
+**Feloldási** többféleképpen feloldása ebben a forgatókönyvben, beleértve a proxyt használ. Értékelje ki, az Application Gateway vagy más 3. fél proxyk (például a nginx-et vagy a haproxy). Az Application Gateway kapcsolatos további információkért lásd: [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
 
 ## <a name="additional-network-captures"></a>További hálózati rögzíti.
 Ha úgy dönt, hogy nyisson meg egy támogatási esetet, gyorsabb megoldást a következő adatainak összegyűjtése. Válassza ki az egyetlen olyan háttérszolgáltatással virtuális Gépet a következő ellenőrzés végrehajtásához:

@@ -1,6 +1,6 @@
 ---
-title: Azure-felhőbe rendszerhéj beágyazása |} Microsoft Docs
-description: Ismerkedjen meg az Azure felhőalapú rendszerhéj beágyazása.
+title: Az Azure Cloud Shell beágyazása |} A Microsoft Docs
+description: Ismerkedjen meg az Azure Cloud Shell beágyazása.
 services: cloud-shell
 documentationcenter: ''
 author: jluk
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: juluk
-ms.openlocfilehash: 3ceddb94336fc2703e6f916f05ab1ec3676cb50d
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 0bd5382e5ea37f7c3c52d119e9d39fe7e0bfdc7c
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
-ms.locfileid: "27864884"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42060593"
 ---
-# <a name="embed-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj beágyazása
+# <a name="embed-azure-cloud-shell"></a>Az Azure Cloud Shell beágyazása
 
-Felhő rendszerhéj beágyazás lehetővé teszi a fejlesztők és a tartalom írók közvetlenül egy dedikált URL-címet, a felhő rendszerhéj megnyitása [shell.azure.com](https://shell.azure.com). Ekkor azonnal felhő rendszerhéj hitelesítési tooling eszköz, a teljes power, és naprakész az Azure CLI-t vagy az Azure PowerShell eszközöket a felhasználók számára.
+A Cloud Shell beágyazása lehetővé teszi a fejlesztők és a tartalom írók közvetlenül egy dedikált URL-címet, nyissa meg a Cloud Shell [shell.azure.com](https://shell.azure.com). Ekkor azonnal a Cloud Shell-hitelesítés, eszközök, minden előnyét, és naprakész az Azure parancssori felület vagy az Azure PowerShell-eszközök a felhasználók számára.
 
 Normál méretű gomb
 
-[![](https://shell.azure.com/images/launchcloudshell.png "Indítsa el az Azure-felhőbe rendszerhéj")](https://shell.azure.com)
+[![](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
 
 Nagy méretű gomb
 
-[![](https://shell.azure.com/images/launchcloudshell@2x.png "Indítsa el az Azure-felhőbe rendszerhéj")](https://shell.azure.com)
+[![](https://shell.azure.com/images/launchcloudshell@2x.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
 
 ## <a name="how-to"></a>Használati útmutató
 
-Felhő rendszerhéj indítási gomb integrálja markdown-fájlokat másolja a következő:
+A Cloud Shell indítása gombra integrálása markdown-fájlok másolása a következő:
 
 ```markdown
 [![Launch Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "Launch Cloud Shell")](https://shell.azure.com)
 ```
 
-A HTML-beágyazás egy előugró ablak felhő rendszerhéj nem éri el:
+Egy előugró ablak nem éri el a Cloud Shell beágyazása HTML:
 ```html
-<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
+<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><img alt="Launch Azure Cloud Shell" src="https://shell.azure.com/images/launchcloudshell.png" /></a>
 ```
 
-## <a name="customize-experience"></a>Testreszabásához
+## <a name="customize-experience"></a>Élmény testreszabása
 
-Egy adott rendszerhéj élmény bővítheti az URL-cím megadásához.
-|Felhasználói élmény   |URL-cím   |
+Állítsa be egy adott rendszerhéj-felület az URL-cím való bővítésével.
+|Felhasználói élményt   |URL-cím   |
 |---|---|
-|Legutóbb használt rendszerhéj   |shell.azure.com           |
-|Bash                       |shell.azure.com/bash       |
-|PowerShell                 |shell.azure.com/powershell |
+|Legutóbb használt rendszerhéj   |[shell.azure.com](https://shell.azure.com)           |
+|Bash                       |[Shell.Azure.com/bash](https://shell.azure.com/bash)       |
+|PowerShell                 |[Shell.Azure.com/PowerShell](https://shell.azure.com/powershell) |
 
 ## <a name="next-steps"></a>További lépések
-[A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md)<br>
-[PowerShell használatával a felhő rendszerhéj gyors üzembe helyezés](quickstart-powershell.md)
+[A rövid útmutatóban a Cloud Shell bash](quickstart.md)<br>
+[A PowerShell Cloud Shell a rövid útmutatóban](quickstart-powershell.md)

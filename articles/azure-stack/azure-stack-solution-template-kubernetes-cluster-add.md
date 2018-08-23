@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: ed2d55b8346acb79563a882bbaf2f46110dcf1bb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442717"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055698"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Adjon hozzá egy Kubernetes-fürtöt az Azure Stack piactéren
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!note]  
-> Az Azure Container szolgáltatások (ACS) Kubernetes az Azure Stacken private preview verzióban van. A Kubernetes Piactéri elem ebben a cikkben szereplő utasítások végrehajtásához szükséges hozzáférési kérelmek [hozzáférés beolvasására irányuló kérelem elküldése](https://aka.ms/azsk8).
+> Azure Stack az Azure Kubernetes-szolgáltatások (AKS) szolgáltatásban Kubernetesen private preview verzióban van. A Kubernetes Piactéri elem ebben a cikkben szereplő utasítások végrehajtásához szükséges hozzáférési kérelmek [hozzáférés beolvasására irányuló kérelem elküldése](https://aka.ms/azsk8).
 
 Elérhetővé teheti egy Kubernetes-fürtöt, a Piactéri elem a felhasználók számára. A felhasználók egyetlen, koordinált műveletben telepítheti a Kubernetes.
 

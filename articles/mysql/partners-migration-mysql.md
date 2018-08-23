@@ -4,16 +4,15 @@ description: Listák külső áttelepítési partnerek olyan megoldásokkal, ame
 services: mysql
 author: HJToland3
 ms.author: jtoland
-manager: craigg
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 4fba09c7d655fa835fffc324826e5dba93e647b0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e50cd285d904830bd7332f39d51aaa149f38b82a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631027"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42057228"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL áttelepítési partnerek
 A széles körben támogatja az Azure Database MySQL-megoldás, iparágvezető partnerei és eszközök széles közül választhat. Ez a cikk a migrálási megoldásokkal, amelyek támogatják az Azure Database MySQL-hez készült Microsoft-partnerek emeli ki.

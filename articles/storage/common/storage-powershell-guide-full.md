@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f9d962b96df760d1382439abcd80eb21fef62128
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6cf7f35e60502d0e21ffa2b777f1700a57add965
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530888"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055705"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
 
@@ -215,7 +215,6 @@ Most, hogy megismerkedett a PowerShell-lel a tárfiók kezelése, a következő 
 Az Azure Cosmos DB Table API a table storage, például a kulcsrakész globális disztribúciót, kis késleltetésű olvasásokhoz, és írási, automatikus másodlagos indexelést és dedikált átviteli sebességet biztosít a prémium szintű funkciók. 
 
 * További információkért lásd: [Azure Cosmos DB Table API](../../cosmos-db/table-introduction.md). 
-* Az Azure Cosmos DB Table API-műveletek végrehajtása a PowerShell használatával kapcsolatban lásd: [hajtsa végre az Azure Cosmos DB Table API-műveletek a PowerShellben](../../cosmos-db/table-powershell.md).
 
 ## <a name="independent-cloud-deployments-of-azure"></a>Az Azure a független felhőben üzemelő példányok
 

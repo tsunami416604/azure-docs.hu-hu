@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 05/30/2018
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d8d911acf3e3eff2cf3340972b9b77a10be0a5f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 79bdab4c7a867117f6473864f1654f77603f7b26
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "35645732"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42057543"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Az Azure AD Connect: Tervezési alapelvei
 A jelen dokumentum célja, hogy írja le, amely az Azure AD Connect megvalósítási tervezése során kell gondoltam területeket. Ez a dokumentum az egyes területeken egy részletes bemutatása, és ezek a fogalmak rövid leírását, valamint az egyéb dokumentumokat.
@@ -72,20 +72,20 @@ Ebből kifolyólag a következő korlátozások vonatkoznak, az Azure AD Connect
 * Ha egy másik Azure AD Connect kiszolgáló telepítése, majd ki kell választania a korábban használt azonos sourceAnchor attribútum. Ha és áthelyezése az Azure AD Connect a korábban DirSync már használta, akkor kell használni **objectGUID** mivel az a DirSync által használt attribútum.
 * Ha az érték a sourceAnchor után módosítva lett az objektum az Azure ad Szolgáltatásba, majd az Azure AD Connect szinkronizálási hibát jelez, és nem engedélyezi a további módosításokat az, hogy objektum, mielőtt a probléma megoldódott, és a sourceAnchor módosítják a forrás igazgató vissza a exportálása y.
 
-## <a name="using-msds-consistencyguid-as-sourceanchor"></a>MsDS-ConsistencyGuid használata sourceanchorként
-Az Azure AD Connect alapértelmezés szerint (1.1.486.0 verziója és a régebbi) objectGUID használja Forráshorgony-attribútumként. ObjectGUID, a rendszer. Nem adható meg az értékét, amikor létrehozza a helyszíni AD-objektumok. A szakaszban leírtak szerint [sourceAnchor](#sourceanchor), ahol meg kell adnia a sourceAnchor érték forgatókönyv közül választhat. Ha a forgatókönyveket akkor alkalmazható, Forráshorgony-attribútumként egy konfigurálható az AD-attribútum (például msDS-ConsistencyGuid) kell használnia.
+## <a name="using-ms-ds-consistencyguid-as-sourceanchor"></a>Ms-DS-ConsistencyGuid használata sourceanchorként
+Az Azure AD Connect alapértelmezés szerint (1.1.486.0 verziója és a régebbi) objectGUID használja Forráshorgony-attribútumként. ObjectGUID, a rendszer. Nem adható meg az értékét, amikor létrehozza a helyszíni AD-objektumok. A szakaszban leírtak szerint [sourceAnchor](#sourceanchor), ahol meg kell adnia a sourceAnchor érték forgatókönyv közül választhat. Ha a forgatókönyveket akkor alkalmazható, konfigurálható AD-attribútum kell használnia (például az ms-DS-ConsistencyGuid) Forráshorgony-attribútumként.
 
-Az Azure AD Connect (1.1.524.0 verziót, és utána) sourceAnchor attribútum az msDS-ConsistencyGuid használatát teszik lehetővé. Ez a funkció használatakor az Azure AD Connect automatikusan konfigurálja a szinkronizálási szabályok:
+Az Azure AD Connect (1.1.524.0 verziót, és utána) ms-DS-ConsistencyGuid sourceAnchor attribútum használatát teszik lehetővé. Ez a funkció használatakor az Azure AD Connect automatikusan konfigurálja a szinkronizálási szabályok:
 
-1. MsDS-ConsistencyGuid használja Forráshorgony-attribútumként felhasználói objektumok. Egyéb típusú objektumokat ObjectGUID használható.
+1. Ms-DS-ConsistencyGuid használja Forráshorgony-attribútumként felhasználói objektumok. Egyéb típusú objektumokat ObjectGUID használható.
 
-2. Bármely adott a helyszíni AD-felhasználói objektum, amelynek msDS-ConsistencyGuid attribútum az msDS-ConsistencyGuid attribútum a helyszíni Active Directoryban az objectGUID értékét biztonsági töltve, az Azure AD Connect írások nem. Az msDS-ConsistencyGuid attribútum feltöltése után az Azure AD Connect majd exportálja az objektum az Azure ad-hez.
+2. Bármely adott a helyszíni AD-felhasználói objektum, amelynek az ms-DS-ConsistencyGuid attribútum nem az ms-DS-ConsistencyGuid attribútum a helyszíni Active Directoryban az objectGUID értékét biztonsági töltve, az Azure AD Connect írások. Követően az ms-DS-ConsistencyGuid attribútum feltöltése az Azure AD Connect majd exportálja az objektum az Azure ad-hez.
 
 >[!NOTE]
-> Ha egy helyszíni AD-objektum importálja az Azure AD Connect (amely, importálja a az AD Összekötőtérben, és előre jelzett költségről a metaverzumba), a sourceAnchor érték már nem módosítható. Adjon értéket a sourceAnchor egy adott a helyszíni AD objektumazonosító, konfigurálja az msDS-ConsistencyGuid attribútum, az Azure AD Connect az importálás előtt.
+> Ha egy helyszíni AD-objektum importálja az Azure AD Connect (amely, importálja a az AD Összekötőtérben, és előre jelzett költségről a metaverzumba), a sourceAnchor érték már nem módosítható. Adjon értéket a sourceAnchor egy adott a helyszíni AD objektumazonosító, az ms-DS-ConsistencyGuid attribútum konfigurálása az Azure AD Connect az importálás előtt.
 
 ### <a name="permission-required"></a>Engedély szükséges
-Ez a funkció működéséhez az AD DS-fiókot a helyszíni Active Directoryval való szinkronizálásához használt engedéllyel kell rendelkezni írási az msDS-ConsistencyGuid attribútumra, a helyszíni Active Directoryban.
+Ez a funkció működéséhez az AD DS-fiókot a helyszíni Active Directoryval való szinkronizálásához használt engedéllyel kell rendelkezni írási az ms-DS-ConsistencyGuid attribútumra, a helyszíni Active Directoryban.
 
 ### <a name="how-to-enable-the-consistencyguid-feature---new-installation"></a>A ConsistencyGuid szolgáltatás – új telepítés engedélyezése
 ConsistencyGuid használata sourceanchorként új telepítése során engedélyezheti. Ez a szakasz ismertet Express és az egyéni telepítés részletei között.
@@ -104,7 +104,7 @@ Az Azure AD Connect telepítése az Expressz mód esetén az Azure AD Connect va
   >[!NOTE]
   > Csak az Azure AD Connect újabb verzióit (1.1.524.0 és után) a telepítés során használt tárolók információ az Azure AD-bérlőben a sourceAnchor attribútum. Az Azure AD Connect régebbi verzióit viszont nem.
 
-* Ha a használt sourceAnchor attribútum információ nem érhető el, a varázsló az msDS-ConsistencyGuid attribútum a helyszíni Active Directory állapotát ellenőrzi. Ha az attribútum a címtárban lévő összes objektum nincs konfigurálva, a varázsló használja az msDS-ConsistencyGuid Forráshorgony-attribútumként. Az attribútum konfigurálva van egy vagy több objektumot a címtárban, ha a varázsló azt állapítja meg az attribútum más alkalmazások által használt, és nem felel meg a sourceAnchor attribútum...
+* Ha a használt sourceAnchor attribútum információ nem érhető el, a varázsló az ms-DS-ConsistencyGuid attribútum a helyszíni Active Directory állapotát ellenőrzi. Ha az attribútum a címtárban lévő összes objektum nincs konfigurálva, a varázsló használja az ms-DS-ConsistencyGuid Forráshorgony-attribútumként. Az attribútum konfigurálva van egy vagy több objektumot a címtárban, ha a varázsló azt állapítja meg az attribútum más alkalmazások által használt, és nem felel meg a sourceAnchor attribútum...
 
 * Ebben az esetben a varázsló visszaáll a objectGUID Forráshorgony-attribútumként.
 
@@ -140,7 +140,7 @@ Váltás az objectGUID ConsistencyGuid Forráshorgony-attribútumként:
 
 3. Adja meg az Azure AD-rendszergazda hitelesítő adatait, és kattintson a **tovább**.
 
-4. Az Azure AD Connect varázsló elemzi az msDS-ConsistencyGuid attribútum a helyszíni Active Directory állapotát. Ha az attribútum a címtárban lévő összes objektum nincs konfigurálva, az Azure AD Connect azt állapítja meg, hogy egyetlen másik alkalmazás éppen használja az attribútum, és használhatja azt a Forráshorgony-attribútumként. Kattintson a **tovább** folytatásához.
+4. Az Azure AD Connect varázsló elemzi az ms-DS-ConsistencyGuid attribútum a helyszíni Active Directory állapotát. Ha az attribútum a címtárban lévő összes objektum nincs konfigurálva, az Azure AD Connect azt állapítja meg, hogy egyetlen másik alkalmazás éppen használja az attribútum, és használhatja azt a Forráshorgony-attribútumként. Kattintson a **tovább** folytatásához.
 
    ![A meglévő üzembe helyezése – 4. lépés ConsistencyGuid engedélyezése](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -148,7 +148,7 @@ Váltás az objectGUID ConsistencyGuid Forráshorgony-attribútumként:
 
    ![A meglévő üzembe helyezés – 5. lépés ConsistencyGuid engedélyezése](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment03.png)
 
-6. A konfiguráció befejezése után a varázsló azt jelzi, hogy msDS-ConsistencyGuid most már használja a Forráshorgony-attribútumként.
+6. A konfiguráció befejezése után a varázsló azt jelzi, hogy az ms-DS-ConsistencyGuid most már használja a Forráshorgony-attribútumként.
 
    ![A meglévő üzembe helyezés – 6. lépés ConsistencyGuid engedélyezése](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment04.png)
 
@@ -170,7 +170,7 @@ Ha az AD FS az Azure AD Connect-en kívül kezeli, vagy harmadik féltől szárm
 ![Harmadik féltől származó összevonási konfiguráció](./media/active-directory-aadconnect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Új könyvtárak hozzáadása meglévő üzemelő példányt
-Tegyük fel, hogy telepítette az Azure AD Connect a ConsistencyGuid szolgáltatás engedélyezve van, és most szeretné a központi telepítés hozzáadása egy másik címtárban. Próbál meg hozzáadni a könyvtár, amikor az Azure AD Connect varázsló a címtárban az mSDS-ConsistencyGuid attribútum állapotát ellenőrzi. Az attribútum konfigurálva van egy vagy több objektumot a címtárban, ha a varázsló azt állapítja meg az attribútum az egyéb alkalmazások használják, és hibát ad vissza, az alábbi ábrán szemléltetett módon. Ha biztos benne, hogy az attribútum nem használja meglévő alkalmazásokat, meg kell le a hiba részleteiért forduljon az ügyfélszolgálathoz.
+Tegyük fel, hogy telepítette az Azure AD Connect a ConsistencyGuid szolgáltatás engedélyezve van, és most szeretné a központi telepítés hozzáadása egy másik címtárban. Próbál meg hozzáadni a könyvtár, amikor az Azure AD Connect varázsló a címtárban az ms-DS-ConsistencyGuid attribútum állapotát ellenőrzi. Az attribútum konfigurálva van egy vagy több objektumot a címtárban, ha a varázsló azt állapítja meg az attribútum az egyéb alkalmazások használják, és hibát ad vissza, az alábbi ábrán szemléltetett módon. Ha biztos benne, hogy az attribútum nem használja meglévő alkalmazásokat, meg kell le a hiba részleteiért forduljon az ügyfélszolgálathoz.
 
 ![Új könyvtárak hozzáadása meglévő üzemelő példányt](./media/active-directory-aadconnect-design-concepts/consistencyGuid-04.png)
 

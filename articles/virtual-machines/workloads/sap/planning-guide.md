@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da7d3898e1385119c8241efc89c68a6a60c29994
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a64c27b9634e2da6b0c46c5233b9ed5c61aea282
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619090"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42054066"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1017,7 +1017,7 @@ Egy meglévő virtuális Gépet vagy virtuális merevlemez feltöltéséhez a he
 * Használja *sysprep* a Windows vagy *waagent-deprovision* Linux általánosítani a virtuális gép – lásd: [technikai útmutató a Sysprep](https://technet.microsoft.com/library/cc766049.aspx) a Windows vagy [rögzítése egy Linuxos virtuális gép használja, mint egy Resource Manager-sablon] [ capture-image-linux-step-2-create-vm-image] linuxhoz
 * Töltse fel a VHD-t a Powershell vagy az Azure CLI-vel
 * (Nem kötelező) Felügyelt lemez rendszerképének létrehozása a Powershell-lel, az Azure parancssori felület vagy az Azure Portalon a virtuális merevlemezből
-* Telepítse a virtuális Gépet egy JSON-sablon hivatkozik a kép VHD-t, ahogyan az a [Ez a példa JSON-sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json) vagy a felügyelt lemez rendszerkép használatával, ahogyan az [Ez a példa JSON-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
+* Telepítse a virtuális Gépet egy JSON-sablon hivatkozik a kép VHD-t, ahogyan az a [Ez a példa JSON-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) vagy a felügyelt lemez rendszerkép használatával, ahogyan az [Ez a példa JSON-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>A helyszíni virtuális merevlemezek vagy a felügyelt lemezek letöltése
 Az Azure infrastruktúra-szolgáltatás nem egy egyirányú utcában csak tudnak töltse fel a VHD-k és az SAP-rendszerek. Továbbléphet az SAP az Azure-ból rendszerek vissza világszerte, valamint a helyszíni szolgáltatásba.

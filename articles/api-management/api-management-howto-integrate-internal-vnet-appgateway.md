@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 53c993b6c7ad868c4781ced374b0c1b227a43e6d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ce4fd27c89f529b9c12999689152c3025648d2ce
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595093"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054680"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrálása belső vnet-en az API Management az Application Gateway segítségével
 
@@ -45,7 +45,7 @@ Ebben a cikkben ismertetett lépéseket követve, kell rendelkeznie:
 
 ##<a name="scenario"> </a> A forgatókönyv
 
-Ez a cikk bemutatja, hogyan használhatja a külső és belső fogyasztók számára egy egy API Management-szolgáltatás, és lehetővé teszi szerepét egy egységes előtérrendszer mind a helyszíni és felhőalapú API-k. Hogyan teszi közzé az API-k (a példában kiemelve jelennek meg a zöld) csak egy része külső felhasználásra a PathBasedRouting érhető el az Application Gateway szolgáltatással is megjelenik.
+Ez a cikk bemutatja, hogyan használhatja a külső és belső fogyasztók számára egy egy API Management-szolgáltatás, és lehetővé teszi szerepét egy egységes előtérrendszer mind a helyszíni és felhőalapú API-k. Hogyan teszi közzé az API-k (a példában kiemelve jelennek meg a zöld) csak egy részhalmazát útválasztási szolgáltatással elérhető az Application Gatewayben külső felhasználásra is megjelenik.
 
 Az első telepítő minden API-felügyelt csak a virtuális hálózaton belül. Belső fogyasztók számára (kiemelve a narancssárga) férhetnek hozzá az összes belső és külső API-k. Forgalom soha nem kerül ki internetes kézbesíti a rendszer a nagy teljesítményű Expressroute-Kapcsolatcsoportok keresztül.
 
@@ -80,7 +80,7 @@ Az első telepítő minden API-felügyelt csak a virtuális hálózaton belül. 
 Ebben az útmutatóban fog is elérhetővé tesszük a **fejlesztői portál** a külső célközönség az Application Gatewayen keresztül. Fejlesztői portál figyelőt, mintavételi, beállítások és szabályok létrehozásához további lépések szükségesek. Az összes részletei is szerepelnek a megfelelő lépéseket.
 
 > [!WARNING]
-> Az itt ismertetett beállítások a fejlesztői portál Application Gatewayen keresztül elért az AAD és a Facebook hitelesítési problémákat tapasztalhat.
+> Az itt ismertetett beállítások a fejlesztői portál Application Gatewayen keresztül elért az AAD és a harmadik féltől származó hitelesítési problémákat tapasztalhat.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
 

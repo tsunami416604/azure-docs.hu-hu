@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 5b8c7e8880f7e467b1b5a305cc7381e6499571f5
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 30a23010f326189ffd5886407d70e357abb9c53e
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238621"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055095"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálása és felügyelete hibák: gyakran ismételt kérdések (GYIK)
 
@@ -126,7 +126,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Válassza ki a blob- vagy helyi, a csdef és a szolgáltatáskonfigurációs séma feltöltése hely lehetősége hamarosan elérhető lesz. Használatával [New-AzureDeployment](/powershell/module/azure/new-azuredeployment?view=azuresmps-4.0.0), minden egyes hely érték között állítható be.
+Válassza ki a blob- vagy helyi, a csdef és a szolgáltatáskonfigurációs séma feltöltése hely lehetősége hamarosan elérhető lesz. Használatával [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0), minden egyes hely érték között állítható be.
 
 A példány szintjén metrikák monitorozását teszi lehetővé. További figyelési funkciók is elérhetők a [a Cloud Services monitorozása hogyan](cloud-services-how-to-monitor.md).
 
@@ -295,7 +295,7 @@ A napló beállításra nem konfigurálható, így Ön nem kapcsolhatja ki.
 A kártevőirtó bővítmény indítási feladat a PowerShell-parancsfájl használatával engedélyezheti. Kövesse ezeket a cikkeket, megvalósításához: 
  
 - [PowerShell indítási feladat létrehozása](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/Azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
 Kártevőirtó központi telepítési forgatókönyvei és engedélyezését a portálról kapcsolatos további információkért lásd: [kártevőirtó központi telepítési forgatókönyv](../security/azure-security-antimalware.md#antimalware-deployment-scenarios).
 

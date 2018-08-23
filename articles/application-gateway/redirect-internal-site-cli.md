@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 2ff4a5aa8ed9d1eb6d828fb5916a6b6156d87b7d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f1bf61aaf7fefea5bca216b3ba880c23910b9391
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436403"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42056859"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Egy application gateway létrehozása belső átirányítás, az Azure CLI használatával
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása 
 
-Hozza létre a *myVNet* nevű virtuális hálózatot és a *myAGSubnet* nevű alhálózatot az [az network vnet create](/cli/azure/network/vnet#az-net) paranccsal. Ezután hozzáadhatja a nevű alhálózat *myBackendSubnet* -kiszolgálók háttérkészletéhez van szükség, amely [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create). Hozza létre a *myAGPublicIPAddress* elnevezésű nyilvános IP-címet az [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) paranccsal.
+Hozza létre a *myVNet* nevű virtuális hálózatot és a *myAGSubnet* nevű alhálózatot az [az network vnet create](/cli/azure/network/vnet#az-net) paranccsal. Ezután hozzáadhatja a nevű alhálózat *myBackendSubnet* -kiszolgálók háttérkészletéhez van szükség, amely [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create). Hozza létre a *myAGPublicIPAddress* elnevezésű nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) paranccsal.
 
 ```azurecli-interactive
 az network vnet create \
@@ -72,7 +72,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/application-gateway#create) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
+Az [az network application-gateway create](/cli/azure/network/application-gateway#create) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -103,7 +103,7 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmaz�
 
 A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában figyelői jönnek létre, a tartományra *www.contoso.com* és *www.contoso.org*.
 
-Adja hozzá a forgalom irányításához szükséges háttérfigyelőket az [az network application-gateway http-listener create](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create) paranccsal.
+Adja hozzá a forgalom irányításához szükséges háttérfigyelőket az [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) paranccsal.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -141,7 +141,7 @@ az network application-gateway redirect-config create \
 
 Szabályok létrehozása, amelyben a rendelés feldolgozása, és átirányítja a forgalmat az application gateway az első szabály, amely megfelel az URL-cím használatával küld. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
 
-Ebben a példában két új szabályokat hozhat létre, és törölje az alapértelmezett szabályt, amely lett létrehozva.  A szabályt az [az network application-gateway rule create](/cli/azure/application-gateway#az-network_application_gateway_rule_create) paranccsal adhatja hozzá.
+Ebben a példában két új szabályokat hozhat létre, és törölje az alapértelmezett szabályt, amely lett létrehozva.  A szabályt az [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) paranccsal adhatja hozzá.
 
 ```azurecli-interactive
 az network application-gateway rule create \

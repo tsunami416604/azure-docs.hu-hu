@@ -1,6 +1,6 @@
 ---
-title: Állítsa vissza az Azure SQL Data Warehouse (PowerShell) |} Microsoft Docs
-description: PowerShell feladatok Azure SQL Data Warehouse visszaállítására.
+title: Állítsa vissza az Azure SQL Data Warehouse (PowerShell) |} A Microsoft Docs
+description: PowerShell-feladatok az Azure SQL Data Warehouse visszaállításához.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 332b80d5c6dbe0b46a6fb793d3c0c04574744b19
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dbf86bfc82706586dfb438b167d13b32b6a4b968
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600036"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42056857"
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Állítsa vissza az Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]
@@ -26,23 +26,23 @@ ms.locfileid: "31600036"
 > 
 > 
 
-Ebben a cikkben, megtudhatja, hogyan lehet visszaállítani az PowerShell használata Azure SQL Data Warehouse.
+Ebben a cikkben megtudhatja hogyan állíthatja vissza az Azure SQL Data Warehouse PowerShell-lel.
 
 ## <a name="before-you-begin"></a>Előkészületek
-**A DTU-kapacitásának ellenőrzése.** Minden egyes SQL Data Warehouse egy SQL server (pl. myserver.database.windows.net), amely rendelkezik egy alapértelmezett DTU-kvótáról üzemelteti.  SQL Data Warehouse visszaállítása előtt ellenőrizze, hogy az az SQL server elég fennmaradó DTU-kvótáról az adatbázis visszaállítása folyamatban van. DTU-igény kiszámításához, vagy kérjen további DTU, lásd: [DTU-kvótát Módosítás kérése][Request a DTU quota change].
+**A dtu-k kapacitásának ellenőrzése.** Minden egyes SQL Data Warehouse egy SQL Servert (például a myserver.database.windows.net) rendelkezik alapértelmezett DTU-kvótát üzemelteti.  SQL Data Warehouse a visszaállításhoz, ellenőrizze, hogy az az SQL Servernek elég fennmaradó DTU-kvótába a visszaállított adatbázis számára. Szükséges DTU kiszámításához, vagy kérjen további DTU kezelésével kapcsolatos információkért lásd: [DTU-kvóta módosítási kérése][Request a DTU quota change].
 
 ### <a name="install-powershell"></a>A PowerShell telepítése
-Azure PowerShell használatához az SQL Data Warehouse szolgáltatással, akkor telepítse az Azure PowerShell 1.0-ás vagy újabb verziója.  A verzió futtatásával ellenőrizheti **Get-Module - ListAvailable-Name AzureRM**.  A legújabb verzió telepíthető [Microsoft Webplatform-telepítő][Microsoft Web Platform Installer].  A legújabb verzió telepítésével kapcsolatban lásd: [How to install and configure Azure PowerShell][How to install and configure Azure PowerShell] (Az Azure PowerShell telepítése és konfigurálása).
+Annak érdekében, hogy az Azure PowerShell használata az SQL Data warehouse-ba, szüksége lesz Azure PowerShell 1.0-s vagy újabb verzió telepítéséhez.  A verzió ellenőrzéséhez futtassa **Get-Module - ListAvailable-Name-AzureRM**.  A legújabb verzió telepíthető [Microsoft Webplatform-telepítő][Microsoft Web Platform Installer].  A legújabb verzió telepítésével kapcsolatban lásd: [How to install and configure Azure PowerShell][How to install and configure Azure PowerShell] (Az Azure PowerShell telepítése és konfigurálása).
 
-## <a name="restore-an-active-or-paused-database"></a>Az aktív vagy szüneteltetett adatbázis visszaállítása
-A pillanatkép használatát egy adatbázis visszaállítása a [visszaállítási-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] PowerShell-parancsmagot.
+## <a name="restore-an-active-or-paused-database"></a>Egy aktív vagy szüneteltetett adatbázis visszaállítása
+Adatbázis visszaállítása egy pillanatkép használata a [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] PowerShell-parancsmagot.
 
 1. Nyissa meg a Windows PowerShellt.
-2. Csatlakozás az Azure-fiókjával, és a fiókjához társított előfizetéseket listája.
-3. Válassza ki az előfizetést, állítani az adatbázist.
-4. Az adatbázis visszaállítási pontok listája
-5. Válassza ki a kívánt visszaállítási pontot a RestorePointCreationDate használatával.
-6. Állítsa vissza az adatbázist a kívánt visszaállítási pontot.
+2. Azure-fiókjához csatlakozhat, és a fiókjához társított összes előfizetés listázása.
+3. Válassza ki az előfizetést, amely tartalmazza az adatbázist vissza kell állítani.
+4. Az adatbázis visszaállítási pontok listája.
+5. Válassza ki a kívánt visszaállítási pont a RestorePointCreationDate használatával.
+6. Állítsa vissza az adatbázist a kívánt helyreállítási pontot.
 7. Győződjön meg arról, hogy a visszaállított adatbázis online állapotban.
 
 ```Powershell
@@ -78,16 +78,16 @@ $RestoredDatabase.status
 ```
 
 > [!NOTE]
-> Miután a visszaállítás befejeződött, a helyreállított adatbázis követve konfigurálhatja [konfigurálása az adatbázis helyreállítása után][Configure your database after recovery].
+> A visszaállítás befejezését követően a helyreállított adatbázis konfigurálhatja az alábbi [konfigurálása az adatbázis helyreállítása után][Configure your database after recovery].
 > 
 > 
 
 ## <a name="restore-a-deleted-database"></a>Törölt adatbázis visszaállítása
-A törölt adatbázisok visszaállításához használja a [visszaállítási-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] parancsmag.
+Törölt adatbázis visszaállítása, használja a [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] parancsmagot.
 
 1. Nyissa meg a Windows PowerShellt.
-2. Csatlakozás az Azure-fiókjával, és a fiókjához társított előfizetéseket listája.
-3. Válassza ki az előfizetést, amely tartalmazza a visszaállítandó törölt adatbázis.
+2. Azure-fiókjához csatlakozhat, és a fiókjához társított összes előfizetés listázása.
+3. Válassza ki az előfizetést, amelyhez vissza kell állítani a törölt adatbázist tartalmaz.
 4. Az adott törölt adatbázis beolvasása.
 5. A törölt adatbázis visszaállítása.
 6. Győződjön meg arról, hogy a visszaállított adatbázis online állapotban.
@@ -114,24 +114,24 @@ $RestoredDatabase.status
 ```
 
 > [!NOTE]
-> Miután a visszaállítás befejeződött, a helyreállított adatbázis követve konfigurálhatja [konfigurálása az adatbázis helyreállítása után][Configure your database after recovery].
+> A visszaállítás befejezését követően a helyreállított adatbázis konfigurálhatja az alábbi [konfigurálása az adatbázis helyreállítása után][Configure your database after recovery].
 > 
 > 
 
-## <a name="restore-from-an-azure-geographical-region"></a>Egy Azure-földrajzi régióban visszaállítása
-Adatbázis helyreállítása, használja a [visszaállítási-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] parancsmag.
+## <a name="restore-from-an-azure-geographical-region"></a>Egy Azure-földrajzi régió visszaállítása
+Adatbázis helyreállítása, használja a [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] parancsmagot.
 
 > [!NOTE]
-> Az optimalizált egy földrajzi-visszaállításhoz számítási teljesítményszinttel hajtható végre! Ehhez az szükséges, adja meg a számítási ServiceObjectiveName egy nem kötelező paraméter egy optimalizált. 
+> A geo-visszaállítás, az optimalizált számítási teljesítményszint végezhetők el! Ehhez adja meg az optimalizált számítási ServiceObjectiveName, mint egy nem kötelező paraméter. 
 >
 > 
 
 1. Nyissa meg a Windows PowerShellt.
-2. Csatlakozás az Azure-fiókjával, és a fiókjához társított előfizetéseket listája.
-3. Válassza ki az előfizetést, állítani az adatbázist.
+2. Azure-fiókjához csatlakozhat, és a fiókjához társított összes előfizetés listázása.
+3. Válassza ki az előfizetést, amely tartalmazza az adatbázist vissza kell állítani.
 4. A helyreállítani kívánt adatbázis beolvasása.
-5. Az adatbázist a helyreállítási kérelmet létrehozni.
-6. Ellenőrizze a földrajzi visszaállított adatbázis állapotát.
+5. A helyreállítási kérelem, az adatbázis létrehozásához.
+6. Ellenőrizze a geo-visszaállított adatbázis állapotát.
 
 ```Powershell
 Connect-AzureRmAccount
@@ -149,14 +149,14 @@ $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> A visszaállítás befejezése után az adatbázis konfigurálásához lásd: [konfigurálása az adatbázis helyreállítása után][Configure your database after recovery].
+> A visszaállítás befejezése után az adatbázis beállítása: [konfigurálása az adatbázis helyreállítása után][Configure your database after recovery].
 > 
 > 
 
-A helyreállított adatbázis TDE-kompatibilis akkor lesz a forrásadatbázis TDE engedélyezve van.
+A helyreállított adatbázis TDE-kompatibilis akkor lesz a forrásadatbázis TDE-t.
 
 ## <a name="next-steps"></a>További lépések
-Az üzleti folytonosságot biztosító szolgáltatásokat az Azure SQL Database kiadásainak kapcsolatos információkért olvassa el a [Azure SQL Database üzleti folytonosság – áttekintés][Azure SQL Database business continuity overview].
+Az üzletmenet-folytonossági funkciókat az Azure SQL Database-kiadás kapcsolatos további információkért olvassa el a [Azure SQL Database üzletmenet folytonossága – áttekintés][Azure SQL Database business continuity overview].
 
 <!--Image references-->
 
@@ -172,7 +172,7 @@ Az üzleti folytonosságot biztosító szolgáltatásokat az Azure SQL Database 
 [Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
 
 <!--MSDN references-->
-[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
+[Restore-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/

@@ -1,6 +1,6 @@
 ---
-title: Terheléselosztó támogatása az Azure Resource Manager |} Microsoft Docs
-description: Az Azure Resource Manager terheléselosztóhoz powershell használatával. Terheléselosztó sablonok használata
+title: Az Azure Resource Manager támogatása a terheléselosztó számára |} A Microsoft Docs
+description: Load Balancer az Azure Resource Managerben powershell használatával. Terheléselosztó-sablonok használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 599c016763fde6f1dc8221fffa554cf68e8c498f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 43db9db3842d05fa13c3be92df14b905d2ddfc17
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790389"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42059457"
 ---
-# <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Az Azure erőforrás-kezelő támogatási használata az Azure terheléselosztó
+# <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Az Azure Resource Manager-támogatás használata az Azure Load Balancer
 
 
 
-Az Azure Resource Manager az előnyben részesített felügyeleti keretet biztosít az Azure-szolgáltatások. Az Azure Load Balancer Azure Resource Manager-alapú API-k és eszközök használatával kezelhetők.
+Az Azure Resource Manager az előnyben részesített felügyeleti keretrendszer szolgáltatásokhoz az Azure-ban. Az Azure Load Balancer az Azure Resource Manager-alapú API-k és eszközök használatával kezelhetők.
 
 ## <a name="concepts"></a>Alapelvek
 
-A Resource Manager Azure terheléselosztó a következő gyermekerőforrásait tartalmazza:
+A Resource Manager Azure Load Balancer következő gyermek erőforrásokat tartalmazza:
 
-* Terheléselosztó előtér-IP-konfiguráció – tartalmazhat egy vagy több előtérbeli IP-címek, más néven a virtuális IP-címek (VIP). Ezek az IP-címek szolgálnak a forgalom bemeneti pontjaként.
-* Háttér-címkészlet – ezek azok az a virtuális gép hálózati kártya (NIC), amelyhez a terhelés elosztása társított IP-címeket.
-* Terheléselosztási szabályok – a szabály tulajdonság leképezi a megadott előtér-IP- és port kombinációján a háttérbeli IP-címek egy készletének – port kombináció. Egyetlen terheléselosztó több terheléselosztási szabállyal is rendelkezhet. Minden egyes szabály egy előtér-IP- és a port és a háttér IP-címet és a virtuális gépek társított port.
-* Mintavételt – a mintavételt lehetővé teszik a Virtuálisgép-példányok állapotának nyomon követéséhez. Ha egy állapotmintáihoz nem sikerül, a Virtuálisgép-példány szükséges kívül Elforgatás automatikusan.
-* Bejövő NAT-szabályok – meghatározása a bejövő forgalom haladnak keresztül az előtér-IP- és terjesztése a háttér IP-címet a NAT-szabályok.
+* Előtérbeli IP-konfiguráció – a terheléselosztó egy vagy több előtérbeli IP-címek, más néven virtuális IP-címek (VIP) tartalmazhat. Ezek az IP-címek szolgálnak a forgalom bemeneti pontjaként.
+* Háttér címkészletet – ezek az a virtuális gép hálózati kártya (NIC), amelyhez a terhelés eloszlik társított IP-a.
+* Terheléselosztási szabályok – olyan szabálytulajdonság leképezi egy adott előtérbeli IP és port kombinációját háttérbeli IP-címek készletét és port kombinációját. Egyetlen terheléselosztó több terheléselosztási szabállyal is rendelkezhet. Minden egyes szabály egy előtérbeli IP és port és a háttérbeli IP és port virtuális gépekhez társított kombinációja.
+* Mintavételezők – mintavételek lehetővé teszik a Virtuálisgép-példányok állapotát nyomon követéséhez. Ha az állapotfigyelő mintavételező nem sikerül, a Virtuálisgép-példány a rotációból automatikusan.
+* Bejövő NAT-szabályok – NAT-szabályok definiálása a bejövő forgalom áramolnak át az előtérbeli IP-címet, és ossza el a háttérbeli IP-Címmel.
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 
@@ -43,31 +43,31 @@ A Resource Manager Azure terheléselosztó a következő gyermekerőforrásait t
 
 Az Azure Resource Manager lehetővé teszi, hogy alkalmazásait egy deklaratív sablon használatával helyezze üzembe. Egyetlen sablonnal több szolgáltatást is üzembe helyezhet azok függőségeivel együtt. Ugyanazt a sablont újra és újra, az alkalmazás életciklusának minden fázisában felhasználhatja az alkalmazás üzembe helyezéséhez.
 
-Sablonok tartalmazhatnak a virtuális gépek, virtuális hálózatok, rendelkezésre állási csoportok, hálózati adapterek (NIC), Storage-fiókok, Terheléselosztók, hálózati biztonsági csoportok és nyilvános IP-címek definícióit. Sablonok hozhat létre mindent megtalál az összetett alkalmazások. A sablonfájl ellenőrizhetők a verziókövetés és együttműködés tartalomkezelési rendszerbe.
+Sablonok virtuális gépek, virtuális hálózatok, a rendelkezésre állási csoportok, hálózati adapterek (NIC), Tárfiókok, Terheléselosztók, hálózati biztonsági csoportok és nyilvános IP-címek definícióit is tartalmaznak. A sablonok olyan hozhat létre minden olyan összetett alkalmazás szükséges. A sablonfájl be verziókövetés és együttműködési tartalomkezelő rendszer ellenőrizhető.
 
 [További információ a sablonok](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
 [További információ a hálózati erőforrások](../networking/networking-overview.md)
 
-Gyors üzembe helyezés sablonok használata az Azure Load Balancer, tekintse meg a [GitHub-tárházban](https://github.com/Azure/azure-quickstart-templates) üzemeltető közösségi létrehozott sablonok készlete.
+Gyorsindítási sablonok az Azure Load Balancer használatával, lásd: a [GitHub-adattár](https://github.com/Azure/azure-quickstart-templates) helyadatbázist közösségi létrehozott sablonok készletét.
 
-Sablonok példái:
+Példákat láthat sablonokra:
 
-* [2 virtuális gép egy terheléselosztó és terheléselosztási szabályok](http://go.microsoft.com/fwlink/?LinkId=544799)
-* [2 virtuális gép egy belső terheléselosztó és a terheléselosztó szabályait a VNETEN belül](http://go.microsoft.com/fwlink/?LinkId=544800)
-* [2 virtuális gép egy terheléselosztó és a Terheléselosztó NAT-szabályok konfigurálása](http://go.microsoft.com/fwlink/?LinkId=544801)
+* [2 virtuális gép, egy terheléselosztó és terheléselosztási szabályok](http://go.microsoft.com/fwlink/?LinkId=544799)
+* [2 virtuális gép, egy belső Load Balancer és a Load Balancer-szabályok a virtuális hálózat](http://go.microsoft.com/fwlink/?LinkId=544800)
+* [2 virtuális gép, egy terheléselosztó és az LB NAT-szabályok konfigurálása](http://go.microsoft.com/fwlink/?LinkId=544801)
 
-## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>A PowerShell vagy a CLI Azure Load Balancer beállítása
+## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>Az Azure Load Balancer PowerShell vagy parancssori felület beállítása
 
-Ismerkedés az Azure Resource Manager parancsmagok, a parancssori eszköz és a REST API-k
+Ismerkedés az Azure Resource Manager parancsmagok, a parancssori eszközöket és a REST API-k
 
-* [Azure-hálózat parancsmagokat](https://msdn.microsoft.com/library/azure/mt163510.aspx) hozzon létre egy terheléselosztó használható.
-* [Azure Resource Manager használatával terheléselosztó létrehozása](load-balancer-get-started-ilb-arm-ps.md)
-* [Az Azure erőforrás-kezelés az Azure parancssori felület használatával](../xplat-cli-azure-resource-manager.md)
-* [Terheléselosztó REST API-k](https://msdn.microsoft.com/library/azure/mt163651.aspx)
+* [Azure-hálózat parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.network#networking) hozzon létre egy terheléselosztó használható.
+* [Az Azure Resource Manager terheléselosztó létrehozása](load-balancer-get-started-ilb-arm-ps.md)
+* [Az Azure CLI használatával az Azure Resource Managerrel](../xplat-cli-azure-resource-manager.md)
+* [Load Balancer – REST API-k](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 ## <a name="next-steps"></a>További lépések
 
-Is [Internet felé néző terheléselosztó létrehozásához](load-balancer-get-started-internet-arm-ps.md) és konfigurálása, hogy milyen típusú [mód](load-balancer-distribution-mode.md) egy meghatározott típusú terheléselosztó hálózati forgalom viselkedését.
+Emellett [egy internetkapcsolattal rendelkező terheléselosztó létrehozásának első lépései](load-balancer-get-started-internet-arm-ps.md) és konfigurálása, hogy milyen típusú [elosztási módjának](load-balancer-distribution-mode.md) számára egy adott terheléselosztó hálózati forgalom viselkedését.
 
-Megtudhatja, hogyan kezelheti [üresjárati TCP időtúllépési beállítások terheléselosztó](load-balancer-tcp-idle-timeout.md). Ez azért fontos, ha az alkalmazás kell életben tartása kapcsolatok kiszolgálók egy terheléselosztó mögött.
+Ismerje meg, hogyan kezelheti a [TCP-időkorlátjának beállításairól a terheléselosztó üresjárati](load-balancer-tcp-idle-timeout.md). Ez akkor fontos, ha az alkalmazásnak kell tartania a kapcsolatot egy terheléselosztó mögött lévő kiszolgálókkal életben.

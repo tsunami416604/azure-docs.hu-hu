@@ -6,14 +6,14 @@ keywords: az ansible, azure, devops, bash, cloud Shell, dinamikus készlet
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 35033f7a6a0340be4dff5fa0051fd3c5ddb3c0eb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5f4793759bfba68c8a01d682b6b13de5cb96a8f6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449417"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058704"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Ansible segítségével az Azure dinamikus leltárak kezelése
 Az Ansible segítségével Hardverleltár-információk lekérése a különböző forrásokból (például az Azure felhőalapú forrásokból is beleértve) egy *dinamikus készlet*. Ebben a cikkben fogja használni a [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) konfigurálása az Ansible az Azure dinamikus készlet két virtuális gépet hoz létre, ezeket a virtuális gépeket egyik címkét, és az Nginx telepítése a címkézett virtuális gépen.
@@ -31,6 +31,9 @@ Az Ansible segítségével Hardverleltár-információk lekérése a különböz
 1. Nyissa meg [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 1. Hozzon létre egy Azure-erőforráscsoportot, amely tárolja a virtuális gépek ehhez az oktatóanyaghoz.
+
+    > [!IMPORTANT]  
+    > Az ebben a lépésben létrehozott Azure-erőforráscsoportot, amely kizárólag kisbetűket névvel kell rendelkeznie. Ellenkező esetben a dinamikus készlet generációja sikertelen lesz.
 
     ```azurecli-interactive
     az group create --resource-group ansible-inventory-test-rg --location eastus
@@ -183,7 +186,7 @@ Ez a szakasz azt mutatja be, tesztelheti, hogy az Nginx telepítve van-e a virtu
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. A [nginx - v](https://nginx.org/en/docs/switches.html) parancs szolgál az Nginx verzióját nyomtatásához. Azonban azt is segítségével határozza meg, hogy az Nginx telepítve van-e. Adja meg azt, ha csatlakozik a `ansible-inventory-test-vm1` virtuális gépet.
+1. Csatlakozva a `ansible-inventory-test-vm1` virtuális gép futtatása az [nginx - v](https://nginx.org/en/docs/switches.html) parancsot annak meghatározásához, hogy az Nginx telepítve van-e.
 
     ```azurecli-interactive
     nginx -v

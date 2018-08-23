@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 33d7c7f7f2e127647b43a62541fbc29c8417743c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 722f350c4f11648753465e302e84949fc340e281
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595994"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42060135"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Rázó, egy tweetet rázza meg – az Azure Functions Twitter-üzenet lekérdezése
 
@@ -163,7 +163,7 @@ A mintaprojekt tesztelési célokra használja az előre konfigurált Twitter tu
 
 1. Lépjen a [Twitter-fejlesztői portál](https://dev.twitter.com/) Twitteren új alkalmazás regisztrálásához.
 
-2. [Fogyasztói kulcs és a fogyasztói titkos kódok lekérése](https://support.yapsody.com/hc/en-us/articles/203068116-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) az alkalmazás.
+2. [Fogyasztói kulcs és a fogyasztói titkos kódok lekérése](https://support.yapsody.com/hc/en-us/articles/360003291573-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) az alkalmazás.
 
 3. Használat [néhány segédprogram](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) használatával hozzon létre egy Twitter-tulajdonosi jogkivonat ezen két kulcsot.
 

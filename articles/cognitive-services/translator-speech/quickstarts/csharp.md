@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 4f12d74aedbcadc311cd9c5ccd12dc1ad3501dbf
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 0a6d3775238512cacc21fb3e47f395e37c3fd29b
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205102"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41987615"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>Gyors útmutató: a Microsoft Translator Speech API a C# használatával 
 <a name="HOLTop"></a>
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan .wav fájl a kimondott szavakat lefordítása a Micr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes közösségi kiadása fog működni.)
+Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes Community Edition is elegendő.)
 
 Szüksége lesz egy .wav "speak.wav" ugyanabban a mappában az alábbi kód fordítása futtatható fájlt. Ezt a fájlt .wav standard PCM, 16 bites, 16kHz Monó formátumban kell lennie. Szerezhet be ilyen .wav fájl a [Text to Speech API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
@@ -156,4 +156,4 @@ Egy sikeres eredménye "speak2.wav" nevű fájl létrehozása. A fájl tartalmaz
 ## <a name="see-also"></a>Lásd még 
 
 [Translator Speech áttekintése](../overview.md)
-[API-referencia](http://docs.microsofttranslator.com/speech-translate.html)
+[API-referencia](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

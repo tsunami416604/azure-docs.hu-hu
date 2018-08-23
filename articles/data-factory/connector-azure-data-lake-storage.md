@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 172747032990bb16d19ecf9d53adbd3da2f5887c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 65495209714c37e5e166545ed7ed029e36c258c0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592057"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42059462"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 előzetes verzió használata az Azure Data Factory (előzetes verzió)
 
@@ -33,7 +33,7 @@ Pontosabban az összekötő támogatja:
 - Másolja a fájlokat,- vagy elemzési vagy -fájlok létrehozása [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 >[!TIP]
->Ha engedélyezi a hierarchikus névtér, jelenleg nincs műveletek Blob és ADLS Gen2 API-k közötti együttműködés. Abban az esetben, ha eléri a hibát az "ErrorCode = FilesystemNotFound", részletes üzenet az "a megadott fájlrendszer nem létezik.", a megadott fogadó okozza fájlrendszer máshol létrehozása helyett ADLS Gen2 API Blob API-n keresztül. A probléma megoldásához használja a rendszer nem létező fájl nevét, és ADF megfelelően másolja az adatokat.
+>Ha engedélyezi a hierarchikus névtér, jelenleg nincs műveletek Blob és ADLS Gen2 API-k közötti együttműködés. Abban az esetben, ha eléri a hibát az "ErrorCode = FilesystemNotFound", részletes üzenet az "a megadott fájlrendszer nem létezik.", a megadott fogadó okozza fájlrendszer máshol létrehozása helyett ADLS Gen2 API Blob API-n keresztül. A probléma elhárításához adjon meg egy új fájlrendszer, amelynek neve nem létezik a blobtároló nevét, és ADF automatikusan létrehozza a fájlrendszer adatmásolás során.
 
 ## <a name="get-started"></a>Bevezetés
 

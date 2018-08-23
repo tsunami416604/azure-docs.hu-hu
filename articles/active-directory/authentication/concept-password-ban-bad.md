@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: dfeacb266d6aa6a43e49a39bd19c9699ef65ce82
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ad499e2703ff8376c063d933c0cc1f03765fc23
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162014"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054072"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Rossz jelszavak, a szervezet számára
 
@@ -28,7 +28,7 @@ Iparági vezetők mondja el, hogy nem összetett, és nem révén egyszerűen/Pa
 
 ## <a name="global-banned-password-list"></a>Globális letiltott jelszavak listája
 
-A Microsoft mindig egy lépéssel a számítógépes bűnözők dolgozik. Ezért az Azure AD Identity Protection csapata folyamatosan keresse meg a gyakran használt és a feltört jelszavakat. Ezután letiltják ezeket a jelszavakat, hogy mi a globális letiltott jelszavak lista neve túl gyakori beállításkulcsoknak. Bűnözők is hasonló stratégiákat használnak a saját támadások, ezért a Microsoft nem teszi közzé a lista tartalma nyilvánosan. Ezek a sebezhető jelszavak le vannak tiltva, mielőtt azok a valódi fenyegetést Microsoft ügyfeleire vonatkozik. Az aktuális biztonsági erőfeszítések kapcsolatos további információkért tekintse meg a [a Microsoft Security Intelligence Report](https://www.microsoft.com/security/intelligence-report).
+A Microsoft mindig azon dolgozik, hogy egy lépéssel a számítógépes bűnözők előtt járjon. Ezért az Azure AD Identity Protection csapata folyamatosan keresse meg a gyakran használt és a feltört jelszavakat. Ezután letiltják ezeket a jelszavakat, hogy mi a globális letiltott jelszavak lista neve túl gyakori beállításkulcsoknak. Bűnözők is hasonló stratégiákat használnak a saját támadások, ezért a Microsoft nem teszi közzé a lista tartalma nyilvánosan. Ezek a sebezhető jelszavak le vannak tiltva, mielőtt azok a valódi fenyegetést Microsoft ügyfeleire vonatkozik. Az aktuális biztonsági erőfeszítések kapcsolatos további információkért tekintse meg a [a Microsoft Security Intelligence Report](https://www.microsoft.com/security/intelligence-report).
 
 ## <a name="preview-custom-banned-password-list"></a>Előzetes verzió: Egyéni le van tiltva jelszó listája
 
@@ -54,11 +54,10 @@ Minden alkalommal, amikor a felhasználó visszaállítja vagy megváltoztatja, 
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 
-A globális letiltott jelszavak lista előnyeit az Azure Active Directory (Azure AD) minden felhasználóra érvényes.
-
-A letiltott jelszavak egyéni lista alapszintű Azure AD-licenc szükséges.
-
-Az Azure AD jelszóvédelem a Windows Server Active Directory prémium szintű Azure AD-licenc szükséges. 
+|   | Az Azure AD jelszóvédelem globális letiltott jelszavak listájával | Az Azure AD jelszóvédelem egyéni letiltott jelszavak listájával|
+| --- | --- | --- |
+| Csak felhőbeli felhasználók | Azure AD Free | Azure AD Basic |
+| Szinkronizálja a helyszíni Windows Server Active Directory felhasználók | Az Azure AD Premium P1 vagy P2 | Az Azure AD Premium P1 vagy P2 |
 
 További licencelési információk, beleértve a költségek, találhatók a [Azure Active Directory díjszabását ismertető a hely](https://azure.microsoft.com/pricing/details/active-directory/).
 

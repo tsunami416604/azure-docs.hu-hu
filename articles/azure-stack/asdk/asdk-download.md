@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: b55bc7f6aab522a6313498b6fdccc88870796224
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: a6ccfa439b58d36ee44d5f8441c2058622965653
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213027"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42056649"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Töltse le és csomagolja ki az Azure Stack Development Kit (ASDK)
 Miután meggyőződött arról, hogy a fejlesztői csomag fogadó számítógép megfelel-e a ASDK telepítésére vonatkozó minimális követelményeinek, a következő lépés az töltse le és csomagolja ki a ASDK központi telepítési csomag beolvasni a Cloudbuilder.vhdx.
@@ -43,7 +43,7 @@ Miután meggyőződött arról, hogy a fejlesztői csomag fogadó számítógép
 2. Tekintse át és fogadja el a megjelenített licencszerződése a **licencszerződés** az mappába varázslót, majd kattintson az oldal **tovább**.
 3. Tekintse át az adatvédelmi nyilatkozat adatokat jelenik meg a **fontos figyelmeztetés** az mappába varázslót, majd kattintson az oldal **tovább**.
 4. Válassza ki a helyet, az Azure Stack telepítőfájlokat a kinyerni a **célhely megadása** az mappába varázslót, majd kattintson az oldal **tovább**. Az alapértelmezett hely a *aktuális mappa*\Azure Stack Development Kit. 
-5. Tekintse át az összefoglalót célhelye a **készen áll a kinyerési** mappába varázslót, és kattintson az oldal **kinyerése** kibontani a CloudBuilder.vhdx (körülbelül 25 GB) és a ThirdPartyLicenses.rtf fájlokat. Ez a folyamat befejezése hosszabb időt vesz igénybe.
+5. Tekintse át az összefoglalót célhelye a **készen áll a kinyerési** mappába varázslót, és kattintson az oldal **kinyerése** kibontani a CloudBuilder.vhdx (körülbelül 28 GB) és a ThirdPartyLicenses.rtf fájlokat. Ez a folyamat befejezése hosszabb időt vesz igénybe.
 6. Másolja, vagy helyezze át a CloudBuilder.vhdx fájlt a C:\ meghajtó (C:\CloudBuilder.vhdx) gyökérkönyvtárában ASDK a gazdagépen.
 
 > [!NOTE]
