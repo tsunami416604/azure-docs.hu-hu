@@ -6,20 +6,20 @@ documentationcenter: ''
 author: brenduns
 manager: femila
 editor: ''
-ms.assetid: 96b080a4-a9a5-407c-ba54-111de2413d59
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/2/2018
+ms.date: 08/20/2018
 ms.author: brenduns
-ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.reviewer: efemmano
+ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345889"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42139419"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Ajánlat létrehozása az Azure Stackben
 
@@ -46,20 +46,16 @@ ms.locfileid: "37345889"
    > [!TIP]  
    > Az ajánlat módosítások nem közvetlenül a felhasználó számára látható. A módosítások megtekintéséhez jelentkezzen ki, majd jelentkezzen be újra a felhasználói portálra, tekintse meg az új ajánlat felhasználók előfordulhat, hogy kell.
 
-   Az ajánlat állapotának módosítása:
-
-   - **1803-es és újabb verziók**:  
-     Válassza ki az ajánlat áttekintése, **kisegítő lehetőségek állapota**. Válassza ki a használni kívánt állapot (például *nyilvános*), majd **mentése**.
+   Válassza ki az ajánlat áttekintése, **kisegítő lehetőségek állapota**. Válassza ki a használni kívánt állapot (például **nyilvános**), majd **mentése**.
  
-     ![Válassza ki a kisegítő lehetőségek állapota](media/azure-stack-create-offer/change-state.png)
+     ![Válassza ki az állapot](media/azure-stack-create-offer/change-stage-1807.png)
 
-     Alternatív megoldásként egy ajánlatot elérése után megnyithatja **ajánlat beállításai**. Válassza ki **kisegítő lehetőségek állapota** a állapotának módosítása.
+     Alternatív megoldásként válassza **Állapotváltozáshoz** majd állapotba.
 
-   - **Korábbi 1803**:  
-     Válassza ki **összes erőforrás**, keresse meg az új ajánlat, és válassza ki az új ajánlat. Válassza ki **állapot módosítása**, majd válassza ki **nyilvános**.
+    ![Válassza ki a kisegítő lehetőségek állapota](media/azure-stack-create-offer/change-stage-select-1807.png)
 
    > [!NOTE]
-   > PowerShell használatával alapértelmezett ajánlatok, tervek és kvóták létrehozása. További információkért lásd: [Azure Stack PowerShell-modul 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0).
+   > PowerShell használatával alapértelmezett ajánlatok, tervek és kvóták létrehozása. További információkért lásd: [Azure Stack PowerShell-modul 1.4.0-s](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/14/2018
+ms.date: 08/14/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 9322c364832a12e711ee7e1b6ad9722ec82d8468
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449969"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139376"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Csatlakozás Azure Stack az Azure ExpressRoute használatával
 
@@ -180,7 +180,7 @@ A virtuális hálózati átjáró létrehozása után megtekintheti az átjáró
 
 1. Az Azure Stack felhasználói portálon, válassza ki a **összes erőforrás**.
 1. A **összes erőforrás**, válassza ki a virtuális hálózati átjáró, amely **GW1** példában.
-1. A **virtuális hálózati átjáró**válassza **áttekintése**. az erőforrások listájából. Másik lehetőségként kiválaszthatja **tulajdonságok**.
+1. A **virtuális hálózati átjáró**válassza **áttekintése** az erőforrások listájából. Másik lehetőségként kiválaszthatja **tulajdonságok**.
 1. Az IP-címet, vegye figyelembe kívánt részen **nyilvános IP-cím**. A példában a konfigurációhoz a címe 192.68.102.1.
 
 #### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
@@ -360,7 +360,7 @@ Ismételje meg ezeket a lépéseket minden olyan további bérlői virtuális h�
 
 ## <a name="configure-the-router"></a>Az útválasztó konfigurálása
 
-A következő használható *útválasztó konfigurálása ExpressRoute* diagram konfigurálása az ExpressRoute-útválasztó segítségképp. Az ábrán két bérlő (1 bérlői és bérlői 2) a megfelelő Expressroute-Kapcsolatcsoportok az. Mindegyik bérlő saját VRF (virtuális útválasztást és a továbbítás) az ExpressRoute-útválasztó LAN és WAN oldalán van csatolva. Ez a konfiguráció biztosítja, hogy a két bérlőjéhez végpontok közötti elkülönítését. Jegyezze fel a példakonfigurációt végrehajtásával lehetősége van az útválasztó felületei használt IP-címeket.
+A következő használható *útválasztó konfigurálása ExpressRoute* diagram konfigurálása az ExpressRoute-útválasztó segítségképp. Az ábrán két bérlő (1 bérlői és bérlői 2) a megfelelő ExpressRoute-Kapcsolatcsoportok az. Mindegyik bérlő saját VRF (virtuális útválasztást és a továbbítás) az ExpressRoute-útválasztó LAN és WAN oldalán van csatolva. Ez a konfiguráció biztosítja, hogy a két bérlőjéhez végpontok közötti elkülönítését. Jegyezze fel a példakonfigurációt végrehajtásával lehetősége van az útválasztó felületei használt IP-címeket.
 
 *4. ábra Az ExpressRoute-útválasztó konfigurációját*
 
@@ -368,7 +368,7 @@ A következő használható *útválasztó konfigurálása ExpressRoute* diagram
 
 Használhat bármilyen útválasztó, amely támogatja az IKEv2 VPN és BGP leállítja az Azure Stack Site-to-Site VPN-kapcsolatot. Az azonos útválasztó csatlakoztatása az Azure ExpressRoute-kapcsolatcsoporttal történő szolgál.
 
-Az alábbi példa a Cisco Azure Site Recovery 1000 konfiguráció támogatja a hálózati infrastruktúra, ahogyan a *ExpressRoute útválasztó-konfigurálási* diagramja.
+Az alábbi példa a Cisco ASR 1000 sorozatú összesítési szolgáltatás útválasztó konfiguráció támogatja a hálózati infrastruktúra, ahogyan a *ExpressRoute útválasztó-konfigurálási* diagramja.
 
 **Cisco ASR 1000 példakonfigurációt**
 
@@ -457,7 +457,7 @@ description S2S VPN Tunnel for Tenant 2
  tunnel protection ipsec profile V4-PROFILE
 !
 interface GigabitEthernet0/0/1
- description PRIMARY Express Route Link to AZURE over Equinix
+ description PRIMARY ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !
@@ -476,7 +476,7 @@ description Primary WAN interface of Tenant 2
  ip address 192.168.1.17 255.255.255.252
 !
 interface GigabitEthernet0/0/2
- description BACKUP Express Route Link to AZURE over Equinix
+ description BACKUP ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !

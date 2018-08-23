@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: f6c78a3e79ac88194e7e34ad8be7a941ee715d39
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 3f87721dcf7485e15a473e82597f6bf4baeca659
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235384"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42139560"
 ---
 # <a name="set-up-your-validation-as-a-service-account"></a>Az ellenőrzés, amely szolgáltatásfiókként beállítása
 
@@ -95,7 +95,7 @@ Ezek a lépések bemutatják, hogyan állíthatja be, és hozzon létre egy stor
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-1. Hozzon létre egy tárfiókot, kövesse az utasításokat, [hozzon létre egy tárfiókot](https://docs.microsoft.com/azure/storage/storage-create-storage-account#create-a-storage-account).
+1. Hozzon létre egy tárfiókot, kövesse az utasításokat, [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md).
 
 2. A tárfiók típusát kiválasztásakor válassza ki a **a Blob storage-** fiók típusa.
 

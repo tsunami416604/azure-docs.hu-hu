@@ -9,19 +9,19 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: ad1bf15f198529487dbed92d8f8639704b0c5fc7
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: bbf10d9bd0912dab22c81e2bb850ede52a3bd9e3
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325125"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41987483"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést Java nyelven a Speech SDK használatával Android rendszeren
 
 [!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ebben a cikkben megismerheti, hogyan hozhat létre egy Java-alkalmazást az Android a Cognitive Services beszédfelismerő SDK a beszédfelismerés lefényképezze lesz.
-Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK Maven csomag, a 0.5.0-s verzió és az Android Studio 3.1 alapul.
+Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK Maven csomag, a verzió 0.6.0 és az Android Studio 3.1 alapul.
 
 > [!NOTE]
 > A beszédfelismerés Devices SDK-val és a Roobo eszköz, keresse fel a [Speech Devices SDK-val](speech-devices-sdk.md) lapot.
@@ -63,7 +63,7 @@ Futtatás ideje után kell az újonnan létrehozott Android Studio project merü
 
 [!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services beszédfelismerő SDK jelenlegi verziója `0.5.0`.
+A Cognitive Services beszédfelismerő SDK jelenlegi verziója `0.6.0`.
 
 A beszédfelismerés SDK for Android van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak, valamint a szükséges Android-engedélyek útmutatójához.
 A Maven adattárban található https://csspeechstorage.blob.core.windows.net/maven/.
@@ -81,7 +81,7 @@ Az ablakban, hogy ellenőrizze a következő módosításokat (kattintson **OK**
 
   ![](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. Az ablakban, hogy írja be a nevét és verzióját, a beszéd SDK Android- `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0`, majd kattintson a **OK**.
+1. Az ablakban, hogy írja be a nevét és verzióját, a beszéd SDK Android- `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0`, majd kattintson a **OK**.
    A beszédfelismerés SDK szeretné adni a függőségek listáját, alább látható módon:
 
   ![](media/sdk/qs-java-android-08-dependency-added.png)

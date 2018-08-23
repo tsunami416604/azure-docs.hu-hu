@@ -1,9 +1,9 @@
 ---
-title: Az Azure Key Vault verem bemutatása |} Microsoft Docs
-description: Ismerje meg, hogyan kezeli az Azure verem Key Vault a kulcsok és titkos kulcsok
+title: Az Azure Stack a Key Vault bemutatása |} A Microsoft Docs
+description: Ismerje meg, hogyan kezeli az Azure Stack Key Vault a kulcsok és titkok
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 70f1684a-3fbb-4cd1-bf29-9f9882e98fe9
@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/04/2017
-ms.author: mabrigg
-ms.openlocfilehash: a50a03e70ccf014a8a9d33e0f177febed560853f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 08/15/2018
+ms.author: sethm
+ms.openlocfilehash: a6b4e8c3543d4681c92fbbde30eec0a543fcb0fd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26636726"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139283"
 ---
-# <a name="introduction-to-key-vault-in-azure-stack"></a>Bevezetés az Azure-készletben kulcstároló
+# <a name="introduction-to-key-vault-in-azure-stack"></a>A Key Vault az Azure Stack bemutatása
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-* Az ajánlat, amely tartalmazza az Azure Key Vault szolgáltatás elő kell fizetnie.  
-* [PowerShell Azure verem való használatra van beállítva](azure-stack-powershell-configure-user.md).
+* Meg kell előfizetés egy ajánlatra, amely magában foglalja az Azure Key Vault szolgáltatást.  
+* [PowerShell van konfigurálva, az Azure Stackkel való használathoz](azure-stack-powershell-configure-user.md).
  
-## <a name="key-vault-basics"></a>Key Vault alapjai
-Verem Azure Key Vault segít a titkosítási kulcsok védelme és titkos kulcsok, amelyek a felhőalapú alkalmazások és szolgáltatások használatára. Key Vault használatával titkosíthatja kulcsok és titkos kulcsok, például:
-   * Hitelesítési kulcsokat 
+## <a name="key-vault-basics"></a>A Key Vault alapjai
+Az Azure Stack a Key Vault segít a kriptográfiai kulcsokat, és a titkos kódok, amelyek felhőalapú alkalmazásokat és szolgáltatásokat használja. A Key Vault használata esetén, titkosítsa a kulcsokat és titkos kódokat, például:
+   * Hitelesítési kulcsok 
    * Tárfiókkulcsok
    * Az adattitkosítási kulcsokat
    * PFX-fájlokat
@@ -38,37 +38,37 @@ Verem Azure Key Vault segít a titkosítási kulcsok védelme és titkos kulcsok
 
 A Key Vault leegyszerűsíti a kulcskezelési folyamatot, valamint lehetővé teszi az adatok titkosításához használt kulcsok feletti teljes körű felügyeletet. A fejlesztők a fejlesztéshez és a teszteléshez percek alatt létrehozhatják a kulcsokat, később pedig zökkenőmentesen áttelepíthetik őket éles kulcsokká. A biztonsági rendszergazdák igény szerint adhatják meg (és vonhatják vissza) a kulcsokkal kapcsolatos engedélyeket.
 
-Egy Azure verem előfizetés birtokában bárki létrehozhat és használhat kulcstárolót. Bár a Key Vault elsősorban a fejlesztők és rendszergazdák, a szervezet más Azure-verem szolgáltatások felügyelő operátor valósítja meg, és kezelheti. Az Azure verem operátor bejelentkezhet egy Azure verem-előfizetést, például a kulcsok tárolására, és akkor lesz a működési feladatok felelős a szervezet tároló létrehozása:
+Az Azure Stack-előfizetés birtokában bárki létrehozhat és használhat kulcstárolót. Bár a Key Vault elsősorban a fejlesztők és a biztonsági rendszergazdák, a szervezet számára más Azure Stack-szolgáltatásokat felügyelő operátor végrehajtása, és felügyelheti azokat. Például az Azure Stack operátori bejelentkezhet az Azure Stack-előfizetéshez, hozzon létre egy tárolót a szervezet kulcsainak tárolásához és felel, a üzemeltetési feladatokhoz:
 
-* Hozzon létre, vagy importáljon a kulcsok vagy titkos kulcsok.
-* Visszavonására, és a kulcs vagy titkos kulcs törlése.
-* Felhasználók vagy -alkalmazásokat a kulcstároló, így azok kezeléséhez, vagy használja a benne tárolt kulcsokat és titkos kulcsok engedélyezése.
-* Kulcshasználat konfigurálása (például regisztráljon vagy titkosítása).
+* Hozzon létre, vagy importáljon egy kulcs vagy titkos kód.
+* Visszavonása, illetve egy kulcs vagy titkos kód törlése.
+* Engedélyezze a felhasználók vagy alkalmazások, így azok kezeléséhez, vagy használja a kulcsok és titkos kulcsok a key vault eléréséhez.
+* Kulcshasználat konfigurálása (például jelentkezzen vagy titkosítása).
 
-Az operátor majd biztosíthat a fejlesztők egységes erőforrás-azonosítók (URI) meghívhatnak saját alkalmazásaikból. Operátorok kulcshasználat naplózási információk biztonsági rendszergazdák is biztosíthat.
+Az üzemeltető majd rendelkező egységes erőforrás-azonosítók (URI) meghívhatnak fejlesztőknek biztosít. Operátorok is lehetővé teszi biztonsági rendszergazdák kulcshasználat naplózás adatokkal.
 
-A fejlesztők közvetlenül is kezelhetik a kulcsokat API-k használatával. További információkért lásd: a Key Vault fejlesztői útmutatója.
+A fejlesztők közvetlenül is kezelhetik a kulcsokat API-k használatával. További információ a Key Vault fejlesztői útmutatójában talál.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
-A következő esetekben ismertetik, hogyan segíti a Key Vault a fejlesztők és a biztonsági rendszergazdák igényeinek.
+## <a name="scenarios"></a>Forgatókönyvek
+A következő forgatókönyveket ismertetik, hogyan segíti a Key Vault a fejlesztők és a biztonsági rendszergazdák igényeinek.
 
-### <a name="developer-for-an-azure-stack-application"></a>Az Azure-verem alkalmazás fejlesztői
-**Probléma:** szeretnék írni a kérelmet az aláírási és titkosítási kulcsokat használó Azure verem. Ezek a kulcsok kívül legyenek, lehet, hogy a megoldás megfelelő-e olyan alkalmazás, amely a földrajzilag elosztott szeretnék.
+### <a name="developer-for-an-azure-stack-application"></a>Fejlesztői az Azure Stack-alkalmazáshoz
+**Probléma:** szeretnék írni egy alkalmazást az Azure Stack, amely kulcsokat használ az aláíráshoz és titkosításhoz. Ezek a kulcsok az alkalmazáson, lehet, így, hogy a megoldás egy földrajzilag elosztott alkalmazás szeretnék.
 
-**Utasítás:** kulcsok tárolása tárolóban, és szükség esetén egy URI által meghívott.
+**Utasítás:** kulcsok tárolása tárolóban történik, és szükség esetén egy URI-t hív.
 
-### <a name="developer-for-software-as-a-service-saas"></a>Fejlesztő a szolgáltatott szoftverként (SaaS)
-**Probléma:** nem szeretnék felelősséget és esetleges felelőssége saját felhasználói kulcsok és titkos kulcsok. Az ügyfelek számára saját maguk kezelnék a kulcsaikat, így I pedig arra összpontosíthatnék Mi a teendő, legjobb, amely biztosítja a core szoftverfunkciók kívánt.
+### <a name="developer-for-software-as-a-service-saas"></a>Fejlesztői szoftverfrissítési szolgáltatásként (SaaS)
+**Probléma:** saját ügyfél a kulcsok és titkos kulcsok nem szeretnék felelősséget és esetleges felelőssége. Ügyfelek kezelhetik a kulcsokat, és szeretném, hogy szeretnék végezni, mi a teendő, leginkább, amely biztosítja az alapvető szoftverfunkciók összpontosíthat.
 
-**Utasítás:** ügyfelek importálhatják a saját kulcsaikat az Azure-vermet, és kezelheti azokat. 
+**Utasítás:** ügyfelek importálhatják a saját kulcsaikat az Azure Stack, és felügyeli őket. 
 
-### <a name="chief-security-officer-cso"></a>Fő biztonsági vezető (CSO)
-**Probléma:** kívánt győződjön meg arról, hogy a saját szervezetem kézben tartja a kulcs életciklusához kapcsolódó, és képes figyelni a kulcshasználatot.
+### <a name="chief-security-officer-cso"></a>Biztonsági vezető (CSO)
+**Probléma:** szeretném helyezni, ellenőrizze, hogy a szervezet a kulcs életciklusához kapcsolódó felett van, és képes figyelni a kulcshasználatot.
 
-**Utasítás:** Key Vault kialakításának köszönhetően a Microsoft tekintheti meg, illetve nem nyerheti ki a kulcsokat. Amikor egy alkalmazásnak titkosítási műveleteket ügyfelek kulcsainak használatával kell, Key Vault használ a kulcsok az alkalmazás nevében. Az alkalmazás nem látja az ügyfelek kulcsait. Bár több Azure verem szolgáltatásokat és erőforrásokat használjuk, a kulcsok Azure verem egyetlen helyről kezelheti. A tároló egyetlen felületet, függetlenül attól, hogy Ön hány tárolóval rendelkezik Azure-készletben, mely régiókat azok biztosít, támogatása, és mely alkalmazások használják őket.
+**Utasítás:** Key Vault célja, hogy a Microsoft nem tekintheti meg és fejtheti vissza a kulcsokat. -Alkalmazásnak titkosítási műveleteket ügyfelek kulcsainak használatával kell, amikor a Key Vault használja a kulcsok az alkalmazás nevében. Az alkalmazás nem látja az ügyfelek kulcsait. Bár több Azure Stack-szolgáltatásokat és erőforrásokat, az Azure Stack egyetlen helyről kezelheti a kulcsokat. A tároló egyetlen felületet, hány tárolóval rendelkezik az Azure Stackben, mely régiókban, függetlenül biztosít, támogatás, és mely alkalmazások használják őket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A verem Azure Key Vault kezeléséhez a portál használatával](azure-stack-kv-manage-portal.md)  
-* [A verem Azure Key Vault kezelése a PowerShell használatával](azure-stack-kv-manage-powershell.md)
+* [A portál használatával kezelheti a Key Vault az Azure Stackben](azure-stack-kv-manage-portal.md)  
+* [A Key Vault az Azure Stackben kezelése a PowerShell használatával](azure-stack-kv-manage-powershell.md)
 
