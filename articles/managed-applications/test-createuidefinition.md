@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/10/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2c313538e297c5781b48fcfe9d0d5390f94c97f5
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: c88bdce64e88f8639da2c4ebb01f4594fccff8a0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043842"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747088"
 ---
 # <a name="test-azure-portal-interface-for-your-managed-application"></a>Az Azure portal felületet a felügyelt alkalmazás tesztelése
 Miután [a createUiDefinition.json fájl létrehozása](create-uidefinition-overview.md) az Azure által felügyelt alkalmazás a felhasználói élmény tesztelni kell. Tesztelés leegyszerűsítése használja egy parancsfájlt, amely betölti a fájlt a portálon. Nem kell üzembe helyezni a felügyelt alkalmazás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A **createUiDefinition.json** fájlt. Ha nem ezt a fájlt, másolja a [mintafájl](https://github.com/Azure/azure-quickstart-templates/blob/master/test/template-validation-tests/sample-template/createUIDefinition.json) , és mentse helyileg.
+* A **createUiDefinition.json** fájlt. Ha nem ezt a fájlt, másolja a [mintafájl](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json) , és mentse helyileg.
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -36,16 +36,16 @@ A kapcsolat tesztelése a portálon, másolja az alábbi parancsfájlok egyikét
 
 ## <a name="run-script"></a>Parancsfájl futtatása
 
-A portálon a felület fájl megtekintéséhez futtassa a letöltött szkript. A szkript létrehoz egy tárfiókot az Azure-előfizetésben, és feltölti a createUiDefinition.json fájlt a storage-fiókot. Ezt követően megnyílik a portálon, és betölti a fájlt a tárfiókból.
+A portálon a felület fájl megtekintéséhez futtassa a letöltött szkript. A szkript létrehoz egy tárfiókot az Azure-előfizetésben, és feltölti a createUiDefinition.json fájlt a storage-fiókot. A szkript első futtatásakor jön létre a storage-fiók, vagy ha a tárfiók törölve lett. Ha a tárfiók már létezik az Azure-előfizetése, az a parancsfájlt használja. A parancsfájl a portál megnyitja, és betölti a fájlt a tárfiókból.
 
-Adja meg a tárfiók helyét, és adja meg a createUiDefinition.json fájlt tartalmazó mappát. Csak meg kell adnia, a storage-fiók az első hely ideje futtassa a szkriptet, vagy ha a tárfiók törölve lett.
+Adja meg a tárfiók helyét, és adja meg a createUiDefinition.json fájlt tartalmazó mappát.
 
 PowerShell esetén használja az alábbi parancsot:
 
 ```powershell
 .\SideLoad-CreateUIDefinition.ps1 `
   -StorageResourceGroupLocation southcentralus `
-  -ArtifactsStagingDirectory <path-to-folder-with-createuidefinition>
+  -ArtifactsStagingDirectory .\100-Marketplace-Sample
 ```
 
 Azure CLI esetén használja az alábbi parancsot:
@@ -53,7 +53,21 @@ Azure CLI esetén használja az alábbi parancsot:
 ```azurecli
 ./sideload-createuidef.sh \
   -l southcentralus \
-  -a <path-to-folder-with-createuidefinition>
+  -a .\100-Marketplace-Sample
+```
+
+Ha a createUiDefinition.json fájl a parancsfájl ugyanabban a mappában, és a tárfiók már létrehozott, nem kell meg ezeket a paramétereket.
+
+PowerShell esetén használja az alábbi parancsot:
+
+```powershell
+.\SideLoad-CreateUIDefinition.ps1
+```
+
+Azure CLI esetén használja az alábbi parancsot:
+
+```azurecli
+./sideload-createuidef.sh
 ```
 
 ## <a name="test-your-interface"></a>A kapcsolat tesztelése
@@ -73,6 +87,18 @@ Ha a felületdefiníció azonban hibát tartalmaz, a konzol leírása jelenik me
 Adja meg a mezők értékeit. Amikor végzett, megjelenik az értékeket, amelyeket a rendszer átad a sablont.
 
 ![Értékek megjelenítése](./media/test-createuidefinition/show-json.png)
+
+A központi telepítési sablont tesztelési alkalmazásparaméter-fájlt is használhatja ezeket az értékeket.
+
+## <a name="troubleshooting-the-interface"></a>A kapcsolat hibaelhárítása
+
+Előfordulhat, hogy látható néhány gyakori hibák a következők:
+
+* A portál nem tölt be a kapcsolat. Ehelyett könnycsepp dobja el a felhő ikon látható. Általában ez ikon látható, ha a fájl szintaktikai hiba van. Nyissa meg a fájlt a VS Code (vagy más JSON-szerkesztő, amely rendelkezik a séma érvényesítése), és keresse meg a szintaktikai hibákat.
+
+* A portálon az Összegzés képernyőn lefagy. Általában ez a megszakítás történik, ha a kimeneti szakaszban programhiba van. Például, előfordulhat, hogy rendelkezik a hivatkozott olyan vezérlőelem, amely nem létezik.
+
+* A kimenet egy paraméter üres. Előfordulhat, hogy a paraméter lehet hivatkozik olyan tulajdonságot, amely nem létezik. A vezérlő mutató hivatkozást például érvényes, de a tulajdonsághivatkozás nem érvényes.
 
 ## <a name="test-your-solution-files"></a>A megoldás fájl tesztelése
 

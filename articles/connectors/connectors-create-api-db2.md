@@ -1,282 +1,368 @@
 ---
-title: DB2 - Azure Logic Apps csatlakozni |} Microsoft Docs
-description: DB2 REST API-k és az Azure Logic Apps-erőforrások kezelése
-author: gplarsen
-manager: jeconnoc
-ms.author: plarsen
-ms.date: 09/26/2016
-ms.topic: article
-ms.service: logic-apps
+title: Csatlakozhat az IBM DB2-höz – Azure Logic Apps |} A Microsoft Docs
+description: Az IBM DB2 REST API-k és az Azure Logic Apps-erőforrások kezelése
 services: logic-apps
-ms.reviewer: klam, estfan
+ms.service: logic-apps
+author: ecfan
+ms.author: estfan
+ms.reviewer: plarsen, LADocs
 ms.suite: integration
+ms.topic: article
+ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 507bc48b6b775d6a6fb5f855210d33520e187a74
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 354e67183a36f511811d74a0685dea2e23d6c0e2
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295091"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818875"
 ---
-# <a name="get-started-with-the-db2-connector"></a>Ismerkedjen meg a DB2-összekötő
-Microsoft DB2-összekötő Logic Apps csatlakozik egy IBM DB2-adatbázisban tárolt erőforrások. Ez az összekötő tartalmazza a Microsoft TCP/IP-hálózaton keresztül DB2-kiszolgáló távoli számítógépekkel folytatott kommunikációhoz. Ez magában foglalja a felhőalapú adatbázisok, például az IBM Bluemix dashDB vagy a Windows Azure virtualizálási futó IBM DB2 és a helyszíni adatbázisokat az helyszíni átjáró használatával. Tekintse meg a [lista támogatott](connectors-create-api-db2.md#supported-db2-platforms-and-versions) IBM DB2-platformok és-verziói (Ez a témakör).
+# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Az Azure Logic Apps IBM DB2-erőforrások kezelése
 
-A DB2-összekötő a következő adatbázis műveleteket támogatja:
+Az Azure Logic Apps és az IBM DB2-összekötő automatikus feladatokkal és munkafolyamatokkal, a DB2-adatbázisban tárolt erőforrások alapján is létrehozhat. A munkafolyamatok is csatlakozni az erőforrásokat az adatbázisban, olvassa el és az adatbázis-táblák listázása, sorok hozzáadása, sorok, törölje a sorokat és egyebek módosításához. A logic Apps választ kaphat az adatbázisból, és az egyéb műveletek elérhetővé a kimeneti műveleteket is felvehet. 
 
-* Lista adatbázistáblák
-* Válasszon használatával egy sor olvasása
-* Válassza ki a összes sorok olvasása
-* INSERT használatával egy sort ad hozzá
-* Egy sor frissítés használatával frissíthető az ALTER
-* Egy sor törlése használatával eltávolítása
+Ez a cikk bemutatja, hogyan hozhat létre egy logikai alkalmazást, amely a különböző adatbázis-műveleteket hajt végre. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
-Ez a témakör bemutatja, hogyan az összekötő használatára a logikai alkalmazás folyamat adatbázis műveletekhez.
+## <a name="supported-platforms-and-versions"></a>Támogatott platformok és verziók
 
-A Logic Apps kapcsolatos további információkért lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+A DB2-összekötő tartalmazza a Microsoft, amely a TCP/IP-hálózaton keresztül távoli DB2-kiszolgálókkal kommunikál. Felhőalapú adatbázisok, például az IBM Bluemix dashDB vagy az IBM DB2-höz, a virtualizálás az Azure-ban futó Windows eléréséhez ezt az összekötőt is használhatja. Miután is elérheti a helyszíni DB2-adatbázisok [telepítése és beállítása a helyszíni adatátjáró](../logic-apps/logic-apps-gateway-connection.md). 
 
-## <a name="available-actions"></a>Rendelkezésre álló műveletek
-A DB2-összekötő a következő logic app műveleteket támogatja:
+Az IBM DB2-összekötő támogatja ezeket a IBM DB2-platformok és verziók IBM DB2-höz kompatibilis termékek, például az IBM Bluemix dashDB, elosztott relációs adatbázis architektúra (DRDA) SQL Access Manager (SQLAM) verziók 10-es és 11 támogató együtt:
 
-* GetTables
-* GetRow
-* GetRows hívás
-* InsertRow
-* UpdateRow
-* DeleteRow
+| Platform | Verzió | 
+|----------|---------|
+| Z/os IBM DB2-höz | 11.1, 10.1 |
+| Az IBM DB2-höz i | 7.3, 7.2, 7.1 |
+| IBM DB2-höz tartozó LUW | 11, 10,5 |
+|||
 
-## <a name="list-tables"></a>Táblák listázása
-Bármely művelet logikai alkalmazás létrehozása a Microsoft Azure portálon keresztül sok lépéseken áll.
+## <a name="supported-database-operations"></a>Támogatott adatbázis-műveletek
 
-A logikai alkalmazásban is hozzáadhat egy művelet listáját táblákat DB2-adatbázisban. A művelet feldolgozására DB2-schema utasításban, például az összekötő utasítja `CALL SYSIBM.SQLTABLES`.
+Az IBM DB2-összekötő ezen adatbázis műveleteket, amelyeket a megfelelő műveleteket az összekötőben leképezése támogatja:
 
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
-2. Adja meg a **neve**, például a `Db2getTables`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
+| Adatbázis-művelet | Összekötő-művelet | 
+|--------------------|------------------|
+| Lista adatbázistáblák | Táblák beolvasása | 
+| SELECT használatával egy sor olvasása | Sor beolvasása | 
+| VÁLASSZA a minden sorok olvasása | Sorok beolvasása | 
+| Adjon hozzá egy sort INSERT használatával | Sor beszúrása | 
+| FRISSÍTÉS használatával egy sor szerkesztése | Sor frissítése | 
+| Távolítsa el az egyik sor a DELETE használata | Sor törlése | 
+|||
 
-### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
-1. Az a **Logic Apps Designer**, jelölje be **üres LogicApp** a a **sablonok** listája.
-2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
-3. Az a **ismétlődési** eseményindító, jelölje be **szerkesztése**, jelölje be **gyakorisága** legördülő listán válassza ki a **nap**, és utána állítsa be a  **Időköz** be **7**.  
-4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** kilistázásához írja be `db2` a a **keresse meg a további műveletek** szerkesztési mezőhöz, és válassza **DB2 - Get táblák (előzetes verzió)**.
+## <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+
+* Az IBM DB2-adatbázis, vagy felhőalapú vagy helyszíni
+
+* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* A logikai alkalmazás, ahol szeretné a DB2-adatbázis eléréséhez. Ez az összekötő biztosít csak műveletek, így a logikai alkalmazás indítására jelöljön ki egy külön eseményindítót, például a **ismétlődési** eseményindító.
+A példák a jelen cikk használja a **ismétlődési** eseményindító.
+
+<a name="add-db2-action"></a>
+
+## <a name="add-db2-action---get-tables"></a>Adja hozzá a DB2 művelet – Get-táblák
+
+1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a logikai alkalmazás a Logic App Designerben, ha nincs már nyissa meg.
+
+1. Az eseményindító területén válassza a **új lépés**.
+
+1. A Keresés mezőbe írja be szűrőként "db2". Ebben a példában műveletek listája alatt válassza a következő műveletet: **(előzetes verzió) táblák lekérése**
    
-   ![](./media/connectors-create-api-db2/Db2connectorActions.png)  
-6. Az a **DB2 - Get táblák** konfigurációs ablaktáblán válassza előbb **jelölőnégyzet** engedélyezése **keresztül, a helyszíni adatátjáró**. Figyelje meg, hogy a beállítások módosítása a felhőből a helyszínen.
+   ![Művelet kiválasztása](./media/connectors-create-api-db2/select-db2-action.png)
+
+   Most adja meg a DB2-adatbázis kapcsolati adatait kéri. 
+
+1. Kövesse a kapcsolatok létrehozásának lépései [felhőalapú adatbázisok](#cloud-connection) vagy [a helyszíni adatbázisok](#on-premises-connection).
+
+<a name="cloud-connection"></a>
+
+## <a name="connect-to-cloud-db2"></a>Csatlakozás felhőalapú DB2
+
+A kapcsolat beállításához, adja meg az alábbi kapcsolati adatokat, amikor a rendszer kéri, válassza a **létrehozás**, majd mentse a logikai alkalmazás:
+
+| Tulajdonság | Szükséges | Leírás | 
+|----------|----------|-------------| 
+| **Csatlakozás helyszíni átjárón keresztül** | Nem | Csak a helyi kapcsolatok vonatkozik. | 
+| **Kapcsolat neve** | Igen | A hálózati kapcsolatot, például "MyLogicApp – DB2-kapcsolat" nevét |
+| **Kiszolgáló** | Igen | A cím vagy alias kettőspont port számát a DB2-kiszolgáló, például a "myDB2server.cloudapp.net:50000" <p><p>**Megjegyzés:**: Ez az érték egy TCP/IP-címet jelölő vagy alias, vagy IPv4- vagy IPv6 formátumban, majd egy kettőspontot és a egy TCP/IP-port száma. |
+| **Adatbázis** | Igen | Az adatbázis neve <p><p>**Megjegyzés:**: Ez az érték a DRDA relációs adatbázis nevét (RDBNAM) jelölő: <p>-DB2 z/os fogad egy 16 bájtos karakterláncot, ahol az adatbázis egy "A – z/os IBM DB2-höz" hely nevezik. <br>-DB2 i-18-többbájtos karakterlánc, ahol az adatbázis nevezik, fogadja el a egy "az IBM DB2-höz i" relációs adatbázis. <br>-DB2 LUW számára egy 8 bájtos-karakterláncot fogad el. |
+| **Felhasználónév** | Igen | A felhasználónév, az adatbázis <p><p>**Megjegyzés:**: Ez az érték egy karakterláncot, amelynek hossza alapján az adott adatbázis: <p><p>-DB2 z/os egy 8 bájtos-karakterláncot fogad el. <br>-DB2 i fogad egy 10 – többbájtos karakterlánc esetében. <br>-A Linux vagy UNIX DB2 egy 8 bájtos-karakterláncot fogad el. <br>-DB2 a Windows-30 bájtos-karakterláncot fogad el. | 
+| **Jelszó** | Igen | A Database jelszavát | 
+|||| 
+
+Példa:
+
+![Felhőalapú adatbázisok esetében a kapcsolat részletei](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
+
+<a name="on-premises-connection"></a>
+
+## <a name="connect-to-on-premises-db2"></a>Csatlakozhat a helyszíni DB2-höz
+
+A kapcsolat létrehozása, előtt már rendelkeznie kell a telepített helyszíni adatátjáróval. Ellenkező esetben a beállítás nem tudta befejezni a kapcsolatot. Ha az átjáró telepítése, folytassa az alábbi kapcsolati adatokat biztosít, és válassza **létrehozás**.
+
+| Tulajdonság | Szükséges | Leírás | 
+|----------|----------|-------------| 
+| **Csatlakozás helyszíni átjárón keresztül** | Igen | Érvényes, ha azt szeretné, hogy egy helyszíni kapcsolat, és bemutatja a helyi kapcsolat tulajdonságai. | 
+| **Kapcsolat neve** | Igen | A hálózati kapcsolatot, például "MyLogicApp – DB2-kapcsolat" nevét | 
+| **Kiszolgáló** | Igen | A cím vagy alias kettőspont port számát a DB2-kiszolgáló, például a "myDB2server:50000" <p><p>**Megjegyzés:**: Ez az érték egy TCP/IP-címet jelölő vagy alias, vagy IPv4- vagy IPv6 formátumban, majd egy kettőspontot és a egy TCP/IP-port száma. | 
+| **Adatbázis** | Igen | Az adatbázis neve <p><p>**Megjegyzés:**: Ez az érték a DRDA relációs adatbázis nevét (RDBNAM) jelölő: <p>-DB2 z/os fogad egy 16 bájtos karakterláncot, ahol az adatbázis egy "A – z/os IBM DB2-höz" hely nevezik. <br>-DB2 i-18-többbájtos karakterlánc, ahol az adatbázis nevezik, fogadja el a egy "az IBM DB2-höz i" relációs adatbázis. <br>-DB2 LUW számára egy 8 bájtos-karakterláncot fogad el. | 
+| **Hitelesítés** | Igen | A hálózati kapcsolatot, például "Alapszintű" hitelesítési típusát <p><p>**Megjegyzés:**: válassza ezt az értéket a listából, amely tartalmazza az alapszintű vagy Windows (Kerberos). | 
+| **Felhasználónév** | Igen | A felhasználónév, az adatbázis <p><p>**Megjegyzés:**: Ez az érték egy karakterláncot, amelynek hossza alapján az adott adatbázis: <p><p>-DB2 z/os egy 8 bájtos-karakterláncot fogad el. <br>-DB2 i fogad egy 10 – többbájtos karakterlánc esetében. <br>-A Linux vagy UNIX DB2 egy 8 bájtos-karakterláncot fogad el. <br>-DB2 a Windows-30 bájtos-karakterláncot fogad el. | 
+| **Jelszó** | Igen | A Database jelszavát | 
+| **Átjáró** | Igen | A telepített helyszíni adatátjáró neve <p><p>**Megjegyzés:**: válassza ezt az értéket a listából, amely tartalmazza az összes telepített átjárók az Azure-előfizetésben és erőforráscsoportban csoporton belül. | 
+|||| 
+
+Példa:
+
+![A helyszíni adatbázisok esetében a kapcsolat részletei](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
+
+### <a name="view-output-tables"></a>Kimeneti táblák megtekintése
+
+A logikai alkalmazás manuálisan futtatásához a Tervező eszköztárán válassza **futtatása**. A logikai alkalmazás futtatásának befejeződése után megtekintheti a Futtatás kimenete.
+
+1. A logikai alkalmazás menüjében válassza **áttekintése**. 
+
+1. A **összefoglalás**, a a **futtatási előzmények** területen válassza ki a legutóbbi futtatás, amely az első elem a listában. 
+
+   ![Futtatási előzmények megtekintése](./media/connectors-create-api-db2/run-history.png)
+
+1. A **a logikai alkalmazás futtatásának**, most megtekintheti az állapotot, bemenetei, és az egyes kimenetek. lépés: a logikai alkalmazásban. Bontsa ki a **táblák lekérése** művelet.
+
+   ![Bontsa ki a művelet](./media/connectors-create-api-db2/expand-action-step.png)
+
+1. A bemeneti adatok megtekintéséhez válassza **nyers bemenetek megjelenítése**. 
+
+1. A kimenetek megtekintéséhez válassza **nyers kimenetek megjelenítése**. 
+
+   A kimenetek közé tartozik a táblák listáját. 
    
-   * Írja be a következő **Server**, cím- vagy aliasnév kettőspont portszám formájában. Írja be például `ibmserver01:50000`.
-   * Írja be a következő **adatbázis**. Írja be például `nwind`.
-   * Válassza ki a következő **hitelesítési**. Válassza például **alapvető**.
-   * Írja be a következő **felhasználónév**. Írja be például `db2admin`.
-   * Írja be a következő **jelszó**. Írja be például `Password1`.
-   * Válassza ki a következő **átjáró**. Válassza például **datagateway01**.
-7. Válassza ki **létrehozása**, majd válassza ki **mentése**. 
+   ![Kimeneti táblák megtekintése](./media/connectors-create-api-db2/db2-connector-get-tables-outputs.png)
+
+## <a name="get-row"></a>Sor beolvasása
+
+Beolvasása egy DB2-adatbázis tábla több rekordot, használja a **sor beolvasása** művelet a logikai alkalmazásban. Ez a művelet futtat egy DB2 `SELECT WHERE` utasítással, például `SELECT FROM AREA WHERE AREAID = '99999'`.
+
+1. Ha korábban már DB2 műveletek előtt soha nem használta a logikai alkalmazásban, tekintse át a lépések a [DB2 hozzáadása művelet – Get táblák](#add-db2-action) szakaszt, de a hozzá a **sor beolvasása** művelet ehelyett és követően térjen vissza ide a folytatáshoz. 
+
+   Miután hozzáadta a **sor beolvasása** művelet, hogyan jelenik meg a példa logikai alkalmazás a következő:
+
+   ![Első sor művelet](./media/connectors-create-api-db2/db2-get-row-action.png)
+
+1. Adja meg az összes szükséges tulajdonság (*) értékeket. Miután kiválasztotta a tábla, a művelet a releváns tulajdonságok, konkrétan az adott tábla rekordjait a jeleníti meg.
+
+   | Tulajdonság | Szükséges | Leírás | 
+   |----------|----------|-------------| 
+   | **Tábla neve** | Igen | A tábla, amely rendelkezik a rekordot szeretne, például az ebben a példában a "terület" | 
+   | **Terület azonosítója** | Igen | A rekord azonosítója szeretne, például az ebben a példában a "99999" | 
+   |||| 
+
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+
+1. Ha elkészült, a Tervező eszköztárán válassza a **mentése**. 
+
+### <a name="view-output-row"></a>Nézet kimeneti sor
+
+A logikai alkalmazás manuálisan futtatásához a Tervező eszköztárán válassza **futtatása**. A logikai alkalmazás futtatásának befejeződése után megtekintheti a Futtatás kimenete.
+
+1. A logikai alkalmazás menüjében válassza **áttekintése**. 
+
+1. A **összefoglalás**, a a **futtatási előzmények** területen válassza ki a legutóbbi futtatás, amely az első elem a listában. 
+
+1. A **a logikai alkalmazás futtatásának**, most megtekintheti az állapotot, bemenetei, és az egyes kimenetek. lépés: a logikai alkalmazásban. Bontsa ki a **sor beolvasása** művelet.
+
+1. A bemeneti adatok megtekintéséhez válassza **nyers bemenetek megjelenítése**. 
+
+1. A kimenetek megtekintéséhez válassza **nyers kimenetek megjelenítése**. 
+
+   A kimenetek közé tartozik a megadott sort. 
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
-8. Az a **Db2getTables** panelen, melyhez a **minden futtatásakor** listában az **összegzés**, válassza ki az első felsorolt elemet (legutóbbi futtatás).
-9. Az a **logikai alkalmazás futtatása** panelen válassza **futtatása részletek**. Belül a **művelet** listáról válassza ki **Get_tables**. Tekintse meg a következő **állapot**, amely kell **sikeres**. Válassza ki a **bemenetek hivatkozás** a bemeneti adatok megtekintéséhez. Válassza ki a **kimenetek hivatkozás**, és megtekintheti a kimenetek; kell tartalmaznia, amely olyan táblák listáját.
+   ![Nézet kimeneti sor](./media/connectors-create-api-db2/db2-connector-get-row-outputs.png)
+
+## <a name="get-rows"></a>Sorok beolvasása
+
+Beolvasása egy DB2-adatbázis tábla összes rekordot, használja a **sorok beolvasása** művelet a logikai alkalmazásban. Ez a művelet futtat egy DB2 `SELECT` utasítással, például `SELECT * FROM AREA`.
+
+1. Ha korábban már DB2 műveletek előtt soha nem használta a logikai alkalmazásban, tekintse át a lépések a [DB2 hozzáadása művelet – Get táblák](#add-db2-action) szakaszt, de a hozzá a **sorok beolvasása** művelet ehelyett és követően térjen vissza ide a folytatáshoz. 
+
+   Miután hozzáadta a **sorok beolvasása** művelet, hogyan jelenik meg a példa logikai alkalmazás a következő:
+
+   ![Első sorok művelet](./media/connectors-create-api-db2/db2-get-rows-action.png)
+
+1. Nyissa meg a **táblanév** listában, és válassza ki a kívánt, táblát, amely "Terület" Ebben a példában: 
+
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+
+1. Adjon meg egy szűrő vagy a lekérdezési eredményeket, válassza a **speciális beállítások megjelenítése**.
+
+1. Ha elkészült, a Tervező eszköztárán válassza a **mentése**. 
+
+### <a name="view-output-rows"></a>Nézet kimeneti sorok
+
+A logikai alkalmazás manuálisan futtatásához a Tervező eszköztárán válassza **futtatása**. A logikai alkalmazás futtatásának befejeződése után megtekintheti a Futtatás kimenete.
+
+1. A logikai alkalmazás menüjében válassza **áttekintése**. 
+
+1. A **összefoglalás**, a a **futtatási előzmények** területen válassza ki a legutóbbi futtatás, amely az első elem a listában. 
+
+1. A **a logikai alkalmazás futtatásának**, most megtekintheti az állapotot, bemenetei, és az egyes kimenetek. lépés: a logikai alkalmazásban. Bontsa ki a **sorok beolvasása** művelet.
+
+1. A bemeneti adatok megtekintéséhez válassza **nyers bemenetek megjelenítése**. 
+
+1. A kimenetek megtekintéséhez válassza **nyers kimenetek megjelenítése**. 
+
+   A kimenetek a megadott tábla összes rekordját tartalmazza.
    
-   ![](./media/connectors-create-api-db2/Db2connectorGetTablesLogicAppRunOutputs.png)
+   ![Nézet kimeneti sorok](./media/connectors-create-api-db2/db2-connector-get-rows-outputs.png)
 
-## <a name="create-the-connections"></a>A kapcsolatok létrehozása
-Ez az összekötő-példányokhoz-adatbázisok védelmét a helyszíni és a felhőben, használja a következő csatlakozási tulajdonságokat. 
+## <a name="insert-row"></a>Sor beszúrása
 
-| Tulajdonság | Leírás |
-| --- | --- |
-| kiszolgáló |Kötelező. Egy karakterláncértéket, amely egy TCP/IP-cím vagy az alias, IPv4 vagy IPv6 formátumú, majd (pontosvesszővel elválasztott) egy TCP/IP-portszám fogad el. |
-| adatbázis |Kötelező. Fogadja el a DRDA relációs adatbázis nevét (RDBNAM) jelölő karakterlánc-érték. Z/os DB2 fogad el egy 16 bájtos karakterlánc (adatbázis egy IBM DB2 z/OS helyének nevezzük). DB2 i5/os fogad el egy 18-többbájtos karakterlánc (adatbázis egy IBM DB2 a néven relációs i adatbázis). A LUW DB2 egy 8 bájtos karakterlánc fogad el. |
-| hitelesítés |Választható. Fogadja el a cikk listaértéket, alapszintű vagy a Windows (kerberos). |
-| felhasználónév |Kötelező. Egy karakterláncértéket fogad el. Z/os DB2 egy 8 bájtos karakterlánc fogad el. DB2 az i fogad el egy 10 – többbájtos karakterlánc. A Linux vagy UNIX DB2 egy 8 bájtos karakterlánc fogad el. DB2 Windows 30 bájtos karakterlánc fogad el. |
-| jelszó |Kötelező. Egy karakterláncértéket fogad el. |
-| átjáró |Kötelező. Elem listaértéket, az a helyszíni átjáró meghatározott a Logic Apps a tárolócsoport képviselő fogad el. |
+Egyetlen rekordot ad hozzá egy DB2-adatbázis táblában, használja a **sor beszúrása** művelet a logikai alkalmazásban. Ez a művelet futtat egy DB2 `INSERT` utasítással, például `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
-## <a name="create-the-on-premises-gateway-connection"></a>A helyszíni átjáró kapcsolat létrehozása
-Ez az összekötő egy helyszíni DB2-adatbázishoz, a helyszíni átjáró hozzáférhet. Átjáró témakörök további információt. 
+1. Ha korábban már DB2 műveletek előtt soha nem használta a logikai alkalmazásban, tekintse át a lépések a [DB2 hozzáadása művelet – Get táblák](#add-db2-action) szakaszt, de a hozzá a **sor beszúrása** művelet ehelyett és követően térjen vissza ide a folytatáshoz. 
 
-1. Az a **átjárók** konfigurációs ablaktáblán válassza előbb **jelölőnégyzet** engedélyezése **Connect átjárón keresztül**. Figyelje meg, hogy a beállítások módosítása a felhőből a helyszínen.
-2. Írja be a következő **Server**, cím- vagy aliasnév kettőspont portszám formájában. Írja be például `ibmserver01:50000`.
-3. Írja be a következő **adatbázis**. Írja be például `nwind`.
-4. Válassza ki a következő **hitelesítési**. Válassza például **alapvető**.
-5. Írja be a következő **felhasználónév**. Írja be például `db2admin`.
-6. Írja be a következő **jelszó**. Írja be például `Password1`.
-7. Válassza ki a következő **átjáró**. Válassza például **datagateway01**.
-8. Válassza ki **létrehozása** folytatja. 
+   Miután hozzáadta a **sor beszúrása** művelet, hogyan jelenik meg a példa logikai alkalmazás a következő:
+
+   ![Sor művelet beszúrása](./media/connectors-create-api-db2/db2-insert-row-action.png)
+
+1. Adja meg az összes szükséges tulajdonság (*) értékeket. Miután kiválasztotta a tábla, a művelet a releváns tulajdonságok, konkrétan az adott tábla rekordjait a jeleníti meg. 
+
+   Ebben a példában az alábbiakban a tulajdonságai:
+
+   | Tulajdonság | Szükséges | Leírás | 
+   |----------|----------|-------------| 
+   | **Tábla neve** | Igen | A tábla hozzáadása a rekordot, például "Terület" where | 
+   | **Terület azonosítója** | Igen | A terület szeretne hozzáadni, például a "99999" azonosítója | 
+   | **Terület leírása** | Igen | A terület szeretne hozzáadni, például a "99999 közötti terület" leírása | 
+   | **Régió azonosítója** | Igen | A régióban szeretne hozzáadni, például a "102" azonosítója | 
+   |||| 
+
+   Példa:
+
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+
+1. Ha elkészült, a Tervező eszköztárán válassza a **mentése**. 
+
+### <a name="view-insert-row-outputs"></a>Nézet kimeneti sor beszúrása
+
+A logikai alkalmazás manuálisan futtatásához a Tervező eszköztárán válassza **futtatása**. A logikai alkalmazás futtatásának befejeződése után megtekintheti a Futtatás kimenete.
+
+1. A logikai alkalmazás menüjében válassza **áttekintése**. 
+
+1. A **összefoglalás**, a a **futtatási előzmények** területen válassza ki a legutóbbi futtatás, amely az első elem a listában. 
+
+1. A **a logikai alkalmazás futtatásának**, most megtekintheti az állapotot, bemenetei, és az egyes kimenetek. lépés: a logikai alkalmazásban. Bontsa ki a **sor beszúrása** művelet.
+
+1. A bemeneti adatok megtekintéséhez válassza **nyers bemenetek megjelenítése**. 
+
+1. A kimenetek megtekintéséhez válassza **nyers kimenetek megjelenítése**. 
+
+   A kimenetek közé tartozik a megadott táblázathoz hozzáadott rekord.
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
+   ![Beszúrt sor kimenet megtekintése](./media/connectors-create-api-db2/db2-connector-insert-row-outputs.png)
 
-## <a name="create-the-cloud-connection"></a>A felhő kapcsolat létrehozása
-Az összekötő hozzáférhessen egy felhő DB2-adatbázishoz. 
+## <a name="update-row"></a>Sor frissítése
 
-1. Az a **átjárók** konfigurációs panelen hagyja a **jelölőnégyzet** (rákattintás előtt) le van tiltva **átjárón keresztül Connect**. 
-2. Írja be a következő **kapcsolatnév**. Írja be például `hisdemo2`.
-3. Írja be a következő **DB2 kiszolgálónév**, cím- vagy aliasnév kettőspont portszám formájában. Írja be például `hisdemo2.cloudapp.net:50000`.
-4. Írja be a következő **DB2 adatbázisnév**. Írja be például `nwind`.
-5. Írja be a következő **felhasználónév**. Írja be például `db2admin`.
-6. Írja be a következő **jelszó**. Írja be például `Password1`.
-7. Válassza ki **létrehozása** folytatja. 
+Egyetlen rekordot egy DB2-adatbázis tábla frissítéséhez használja a **sor frissítése** művelet a logikai alkalmazásban. Ez a művelet futtat egy DB2 `UPDATE` utasítással, például `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`.
+
+1. Ha korábban már DB2 műveletek előtt soha nem használta a logikai alkalmazásban, tekintse át a lépések a [DB2 hozzáadása művelet – Get táblák](#add-db2-action) szakaszt, de a hozzá a **sor frissítése** művelet ehelyett és követően térjen vissza ide a folytatáshoz. 
+
+   Miután hozzáadta a **sor frissítése** művelet, hogyan jelenik meg a példa logikai alkalmazás a következő:
+
+   ![Sor művelet frissítése](./media/connectors-create-api-db2/db2-update-row-action.png)
+
+1. Adja meg az összes szükséges tulajdonság (*) értékeket. Miután kiválasztotta a tábla, a művelet a releváns tulajdonságok, konkrétan az adott tábla rekordjait a jeleníti meg. 
+
+   Ebben a példában az alábbiakban a tulajdonságai:
+
+   | Tulajdonság | Szükséges | Leírás | 
+   |----------|----------|-------------| 
+   | **Tábla neve** | Igen | A tábla hol frissítse a rekordot, például "Terület" | 
+   | **Sorazonosító** | Igen | Például a "99999" frissítéséhez a rekord azonosítója | 
+   | **Terület azonosítója** | Igen | Az új terület azonosítója, például a "99999" | 
+   | **Terület leírása** | Igen | Új terület leírása, például a "99999 frissítve" | 
+   | **Régió azonosítója** | Igen | Új régió azonosító, például a "102" | 
+   |||| 
+
+   Példa:
+
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+
+1. Ha elkészült, a Tervező eszköztárán válassza a **mentése**. 
+
+### <a name="view-update-row-outputs"></a>Megjeleníti a sor a nézet frissítése
+
+A logikai alkalmazás manuálisan futtatásához a Tervező eszköztárán válassza **futtatása**. A logikai alkalmazás futtatásának befejeződése után megtekintheti a Futtatás kimenete.
+
+1. A logikai alkalmazás menüjében válassza **áttekintése**. 
+
+1. A **összefoglalás**, a a **futtatási előzmények** területen válassza ki a legutóbbi futtatás, amely az első elem a listában. 
+
+1. A **a logikai alkalmazás futtatásának**, most megtekintheti az állapotot, bemenetei, és az egyes kimenetek. lépés: a logikai alkalmazásban. Bontsa ki a **sor frissítése** művelet.
+
+1. A bemeneti adatok megtekintéséhez válassza **nyers bemenetek megjelenítése**. 
+
+1. A kimenetek megtekintéséhez válassza **nyers kimenetek megjelenítése**. 
+
+   A kimenetek közé tartozik a megadott táblában frissített rekord.
    
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
+   ![A frissített sort nézet kimeneti](./media/connectors-create-api-db2/db2-connector-update-row-outputs.png)
 
-## <a name="fetch-all-rows-using-select"></a>Válassza ki a összes sorok beolvasása
-Megadhat egy logic app művelet egy DB2-tábla összes sorának beolvasása. Ez az összekötő egy DB2 SELECT utasítás feldolgozására például arra utasítja `SELECT * FROM AREA`.
+## <a name="delete-row"></a>Sor törlése
 
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
-2. Adja meg a **neve**, például a `Db2getRows`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
+Egyetlen rekord törlése egy DB2-adatbázis táblából, használja a **sor törlése** művelet a logikai alkalmazásban. Ez a művelet futtat egy DB2 `DELETE` utasítással, például `DELETE FROM AREA WHERE AREAID = '99999'`.
 
-### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
-1. Az a **Logic Apps Designer**, jelölje be **üres LogicApp** a a **sablonok** listája.
-2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
-3. A a **ismétlődési** eseményindító, jelölje be **szerkesztése**, jelölje be **gyakoriság** legördülő listán válassza ki a **nap**, majd válassza ki **időköz** be **7**. 
-4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** kilistázásához írja be `db2` a a **keresse meg a további műveletek** szerkesztési mezőhöz, és válassza **DB2 - Get sorok (előzetes verzió)**.
-6. Az a **első sort (előzetes verzió)** művelet, jelölje be **kapcsolat módosítása**.
-7. Az a **kapcsolatok** konfigurációs ablaktáblán válassza előbb **hozzon létre új**. 
+1. Ha korábban már DB2 műveletek előtt soha nem használta a logikai alkalmazásban, tekintse át a lépések a [DB2 hozzáadása művelet – Get táblák](#add-db2-action) szakaszt, de a hozzá a **sor törlése** művelet ehelyett és követően térjen vissza ide a folytatáshoz. 
+
+   Miután hozzáadta a **sor törlése** művelet, hogyan jelenik meg a példa logikai alkalmazás a következő:
+
+   ![Sor művelet törlése](./media/connectors-create-api-db2/db2-delete-row-action.png)
+
+1. Adja meg az összes szükséges tulajdonság (*) értékeket. Miután kiválasztotta a tábla, a művelet a releváns tulajdonságok, konkrétan az adott tábla rekordjait a jeleníti meg. 
+
+   Ebben a példában az alábbiakban a tulajdonságai:
+
+   | Tulajdonság | Szükséges | Leírás | 
+   |----------|----------|-------------| 
+   | **Tábla neve** | Igen | A táblázat helyét, például a "Terület" a-rekord törlése | 
+   | **Sorazonosító** | Igen | Szeretné törölni, például a "99999" a rekord azonosítója | 
+   |||| 
+
+   Példa:
+
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+
+1. Ha elkészült, a Tervező eszköztárán válassza a **mentése**. 
+
+### <a name="view-delete-row-outputs"></a>Nézet törlése sor kimenetek
+
+A logikai alkalmazás manuálisan futtatásához a Tervező eszköztárán válassza **futtatása**. A logikai alkalmazás futtatásának befejeződése után megtekintheti a Futtatás kimenete.
+
+1. A logikai alkalmazás menüjében válassza **áttekintése**. 
+
+1. A **összefoglalás**, a a **futtatási előzmények** területen válassza ki a legutóbbi futtatás, amely az első elem a listában. 
+
+1. A **a logikai alkalmazás futtatásának**, most megtekintheti az állapotot, bemenetei, és az egyes kimenetek. lépés: a logikai alkalmazásban. Bontsa ki a **sor törlése** művelet.
+
+1. A bemeneti adatok megtekintéséhez válassza **nyers bemenetek megjelenítése**. 
+
+1. A kimenetek megtekintéséhez válassza **nyers kimenetek megjelenítése**. 
+
+   A kimenetek a továbbiakban nem tartalmazza a megadott tábla törölte a rekordot.
    
-    ![](./media/connectors-create-api-db2/Db2connectorNewConnection.png)
-8. Az a **átjárók** konfigurációs panelen hagyja a **jelölőnégyzet** (rákattintás előtt) le van tiltva **átjárón keresztül Connect**.
-   
-   * Írja be a következő **kapcsolatnév**. Írja be például `HISDEMO2`.
-   * Írja be a következő **DB2 kiszolgálónév**, cím- vagy aliasnév kettőspont portszám formájában. Írja be például `HISDEMO2.cloudapp.net:50000`.
-   * Írja be a következő **DB2 adatbázisnév**. Írja be például `NWIND`.
-   * Írja be a következő **felhasználónév**. Írja be például `db2admin`.
-   * Írja be a következő **jelszó**. Írja be például `Password1`.
-9. Válassza ki **létrehozása** folytatja.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
-10. Az a **táblanév** listáról válassza ki a **lefelé mutató nyíl**, majd válassza ki **terület**.
-11. Bejelölheti **speciális beállítások megjelenítése** lekérdezés beállításainak megadását.
-12. Kattintson a **Mentés** gombra. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsTableName.png)
-13. Az a **Db2getRows** panelen, melyhez a **minden futtatásakor** listában az **összegzés**, válassza ki az első felsorolt elemet (legutóbbi futtatás).
-14. Az a **logikai alkalmazás futtatása** panelen válassza **futtatása részletek**. Belül a **művelet** listáról válassza ki **Get_rows**. Tekintse meg a következő **állapot**, amely kell **sikeres**. Válassza ki a **bemenetek hivatkozás** a bemeneti adatok megtekintéséhez. Válassza ki a **kimenetek hivatkozás**, és megtekintheti a kimenetek; kell tartalmaznia, amely sorok listája.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsOutputs.png)
+   ![Nézet kimeneti törölt sor nélkül](./media/connectors-create-api-db2/db2-connector-delete-row-outputs.png)
 
-## <a name="add-one-row-using-insert"></a>INSERT használatával egy sort ad hozzá
-A logic app művelet egy sort ad hozzá egy DB2-tábla adhat meg. Ez a művelet arra utasítja az összekötő egy DB2 INSERT utasítás feldolgozására például `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
+## <a name="connector-reference"></a>Összekötő-referencia
 
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
-2. Adja meg a **neve**, például a `Db2insertRow`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
+További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/db2/). 
 
-### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
-1. Az a **Logic Apps Designer**, jelölje be **üres LogicApp** a a **sablonok** listája.
-2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
-3. A a **ismétlődési** eseményindító, jelölje be **szerkesztése**, jelölje be **gyakoriság** legördülő listán válassza ki a **nap**, majd válassza ki **időköz** be **7**. 
-4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** kilistázásához írja be **db2** a a **keresse meg a további műveletek** szerkesztési mezőhöz, és válassza **DB2 - (előzetes verzió) sor beszúrása**.
-6. Az a **DB2 - (előzetes verzió) sor beszúrása** művelet, jelölje be **kapcsolat módosítása**. 
-7. Az a **kapcsolatok** konfigurációs ablaktáblán válasszon ki egy kapcsolattípust. Válassza például **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. Az a **táblanév** listáról válassza ki a **lefelé mutató nyíl**, majd válassza ki **terület**.
-9. Adja meg (lásd a piros csillaggal jelölt) minden szükséges oszlopot. Írja be például `99999` a **AREAID**, típus `Area 99999`, és írja be `102` a **REGIONID**. 
-10. Kattintson a **Mentés** gombra.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowValues.png)
-11. Az a **Db2insertRow** panelen, melyhez a **minden futtatásakor** listában az **összegzés**, válassza ki az első felsorolt elemet (legutóbbi futtatás).
-12. Az a **logikai alkalmazás futtatása** panelen válassza **futtatása részletek**. Belül a **művelet** listáról válassza ki **Get_rows**. Tekintse meg a következő **állapot**, amely kell **sikeres**. Válassza ki a **bemenetek hivatkozás** a bemeneti adatok megtekintéséhez. Válassza ki a **kimenetek hivatkozás**, és megtekintheti a kimenetek; kell tartalmaznia, amely az új sor.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowOutputs.png)
+## <a name="get-support"></a>Támogatás kérése
 
-## <a name="fetch-one-row-using-select"></a>Válasszon használatával egy sort lehívni
-A logic app művelet egy DB2-táblázat egy sort lehívni adhat meg. Ez a művelet feldolgozására egy DB2 ahol válasszon utasítás, például az összekötő utasítja `SELECT FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
-2. Adja meg a **neve** (pl. "**Db2getRow**"), **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
-
-### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
-1. Az a **Logic Apps Designer**, jelölje be **üres LogicApp** a a **sablonok** listája. 
-2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
-3. A a **ismétlődési** eseményindító, jelölje be **szerkesztése**, jelölje be **gyakoriság** legördülő listán válassza ki a **nap**, majd válassza ki **időköz** be **7**. 
-4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** kilistázásához írja be **db2** a a **keresse meg a további műveletek** szerkesztési mezőhöz, és válassza **DB2 - Get sorok (előzetes verzió)**.
-6. Az a **első sort (előzetes verzió)** művelet, jelölje be **kapcsolat módosítása**. 
-7. Az a **kapcsolatok** konfigurációk ablaktáblán válassza ki egy létező kapcsolatot. Válassza például **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. Az a **táblanév** listáról válassza ki a **lefelé mutató nyíl**, majd válassza ki **terület**.
-9. Adja meg (lásd a piros csillaggal jelölt) minden szükséges oszlopot. Írja be például `99999` a **AREAID**. 
-10. Bejelölheti **speciális beállítások megjelenítése** lekérdezés beállításainak megadását.
-11. Kattintson a **Mentés** gombra. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowValues.png)
-12. Az a **Db2getRow** panelen, melyhez a **minden futtatásakor** listában az **összegzés**, válassza ki az első felsorolt elemet (legutóbbi futtatás).
-13. Az a **logikai alkalmazás futtatása** panelen válassza **futtatása részletek**. Belül a **művelet** listáról válassza ki **Get_rows**. Tekintse meg a következő **állapot**, amely kell **sikeres**. Válassza ki a **bemenetek hivatkozás** a bemeneti adatok megtekintéséhez. Válassza ki a **kimenetek hivatkozás**, és megtekintheti a kimenetek; amely sort kell tartalmaznia.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowOutputs.png)
-
-## <a name="change-one-row-using-update"></a>FRISSÍTÉS használatával frissíthető egy sor módosítása
-A logic app művelet soronként egy DB2-tábla módosítása adhat meg. Ez a művelet feldolgozására DB2 utasítást, például az összekötő utasítja `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
-
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
-2. Adja meg a **neve**, például a `Db2updateRow`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
-
-### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
-1. Az a **Logic Apps Designer**, jelölje be **üres LogicApp** a a **sablonok** listája.
-2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
-3. A a **ismétlődési** eseményindító, jelölje be **szerkesztése**, jelölje be **gyakoriság** legördülő listán válassza ki a **nap**, majd válassza ki **időköz** be **7**. 
-4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** kilistázásához írja be **db2** a a **keresse meg a további műveletek** szerkesztési mezőhöz, és válassza **DB2 - frissítés sor (előzetes verzió)**.
-6. Az a **DB2 - frissítés sor (előzetes verzió)** művelet, jelölje be **kapcsolat módosítása**. 
-7. Az a **kapcsolatok** konfigurációk ablaktáblán válassza előbb jelölje be a meglévő kapcsolat. Válassza például **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. Az a **táblanév** listáról válassza ki a **lefelé mutató nyíl**, majd válassza ki **terület**.
-9. Adja meg (lásd a piros csillaggal jelölt) minden szükséges oszlopot. Írja be például `99999` a **AREAID**, típus `Updated 99999`, és írja be `102` a **REGIONID**. 
-10. Kattintson a **Mentés** gombra. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowValues.png)
-11. Az a **Db2updateRow** panelen, melyhez a **minden futtatásakor** listában az **összegzés**, válassza ki az első felsorolt elemet (legutóbbi futtatás).
-12. Az a **logikai alkalmazás futtatása** panelen válassza **futtatása részletek**. Belül a **művelet** listáról válassza ki **Get_rows**. Tekintse meg a következő **állapot**, amely kell **sikeres**. Válassza ki a **bemenetek hivatkozás** a bemeneti adatok megtekintéséhez. Válassza ki a **kimenetek hivatkozás**, és megtekintheti a kimenetek; kell tartalmaznia, amely az új sor.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowOutputs.png)
-
-## <a name="remove-one-row-using-delete"></a>Egy sor törlése használatával eltávolítása
-Megadhatja a logikai alkalmazás művelet egy sor eltávolítása egy DB2-tábla. Ez a művelet arra utasítja az összekötő egy DB2 DELETE utasítás feldolgozására például `DELETE FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
-2. Adja meg a **neve**, például a `Db2deleteRow`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
-
-### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
-1. Az a **Logic Apps Designer**, jelölje be **üres LogicApp** a a **sablonok** listája. 
-2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
-3. A a **ismétlődési** eseményindító, jelölje be **szerkesztése**, jelölje be **gyakoriság** legördülő listán válassza ki a **nap**, majd válassza ki **időköz** be **7**. 
-4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** listáról válassza ki **db2** a a **keresse meg a további műveletek** szerkesztési mezőhöz, és válassza **DB2 - sor törlése (előzetes verzió)**.
-6. Az a **DB2 - sor törlése (előzetes verzió)** művelet, jelölje be **kapcsolat módosítása**. 
-7. Az a **kapcsolatok** konfigurációk ablaktáblán válassza ki egy létező kapcsolatot. Válassza például **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. Az a **táblanév** listáról válassza ki a **lefelé mutató nyíl**, majd válassza ki **terület**.
-9. Adja meg (lásd a piros csillaggal jelölt) minden szükséges oszlopot. Írja be például `99999` a **AREAID**. 
-10. Kattintson a **Mentés** gombra. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowValues.png)
-11. Az a **Db2deleteRow** panelen, melyhez a **minden futtatásakor** listában az **összegzés**, válassza ki az első felsorolt elemet (legutóbbi futtatás).
-12. Az a **logikai alkalmazás futtatása** panelen válassza **futtatása részletek**. Belül a **művelet** listáról válassza ki **Get_rows**. Tekintse meg a következő **állapot**, amely kell **sikeres**. Válassza ki a **bemenetek hivatkozás** a bemeneti adatok megtekintéséhez. Válassza ki a **kimenetek hivatkozás**, és megtekintheti a kimenetek; kell tartalmaznia, amely a törölt sor.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowOutputs.png)
-
-## <a name="supported-db2-platforms-and-versions"></a>Támogatott platformok DB2 és verziók
-Ez az összekötő támogatja a következő IBM DB2-platformok és verziók, valamint IBM DB2 kompatibilis termékek (pl. IBM Bluemix dashDB), amely elosztott relációs adatbázis architektúra (DRDA) SQL Access Manager (SQLAM) 10 vagy 11 verziója támogatja:
-
-* IBM DB2 z/os 11.1
-* IBM DB2 z/OS 10.1
-* Az IBM DB2 i 7.3.
-* Az IBM DB2 i 7.2
-* Az IBM DB2 i 7.1
-* IBM DB2 LUW 11
-* IBM DB2 LUW 10.5 számára
-
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
-
-Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/db2/). 
+* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
-[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
 
+* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)

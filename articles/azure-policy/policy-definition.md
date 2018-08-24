@@ -4,16 +4,16 @@ description: 'Ismerteti, hogy a szabályzatdefiníció erőforrás az Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/03/2018
+ms.date: 08/16/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ced8ebad0122973595cdede4497cd200e3090043
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ac561be75306cab6b73b457a7d450bd640aac067
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524107"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818697"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -107,7 +107,7 @@ A metaadat-tulajdonságot belül használhatja **strongType** biztosít az Azure
 - `"existingResourceGroups"`
 - `"omsWorkspace"`
 
-A szabályzatbeli szabályban hivatkozási paraméterek a következő szintaxissal:
+A szabályzatbeli szabályban hivatkozik az alábbi paraméterek `parameters` telepítési érték függvény Szintaxis:
 
 ```json
 {
@@ -245,6 +245,53 @@ A **AuditIfNotExists** és **DeployIfNotExists** is létezik-e a kapcsolódó er
 Példa a naplózást, ha egy virtuálisgép-bővítmény nincs telepítve, tekintse meg a [naplózása nem létezik olyan bővítmény](scripts/audit-ext-not-exist.md).
 
 Minden egyes hatás, értékelési, tulajdonságokat és példákat sorrendje a részleteket lásd: [ismertetése házirend hatások](policy-effects.md).
+
+### <a name="policy-functions"></a>A házirend-funkciók
+
+Egy részhalmazát [Resource Manager-sablonfüggvények](../azure-resource-manager/resource-group-template-functions.md) házirendszabály belül használható. A jelenleg támogatott funkciók a következők:
+
+- [paraméterek](../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
+- [concat](../azure-resource-manager/resource-group-template-functions-array.md#concat)
+- [resourceGroup](../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
+- [előfizetést](../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+
+Ezenkívül a `field` funkció érhető el a szabályzat előírásainak. Ezt a funkciót elsősorban való használatra van **AuditIfNotExists** és **DeployIfNotExists** referencia mezők a kiértékelt erőforrás. Ilyen például a láthatók a [DeployIfNotExists példa](policy-effects.md#deployifnotexists-example).
+
+#### <a name="policy-function-examples"></a>A házirend függvény példák
+
+Ez a házirend a szabály a példa a `resourceGroup` erőforrás függvény a **neve** tulajdonság, kombinálva a `concat` tömb- és függvény hozhat létre egy `like` feltételt, amely érvényesíti az erőforrás neve indítása az az erőforráscsoport nevét.
+
+```json
+{
+    "if": {
+        "not": {
+            "field": "name",
+            "like": "[concat(resourceGroup().name,'*')]"
+        }
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+Ez a házirend a szabály a példa a `resourceGroup` erőforrás függvény a **címkék** tulajdonság tömb értékét a **CostCenter** címkét a az erőforráscsoportot, és fűzze hozzá a a **költséghely**  címkét a az új erőforrás.
+
+```json
+{
+    "if": {
+        "field": "tags.CostCenter",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "tags.CostCenter",
+            "value": "[resourceGroup().tags.CostCenter]"
+        }]
+    }
+}
+```
 
 ## <a name="aliases"></a>Aliasok
 

@@ -1,21 +1,21 @@
 ---
-title: Language Understanding (LUIS) régiók |} A Microsoft Docs
+title: Language Understanding (LUIS) régióban, és a végpontok – az Azure - Cognitive Services LUIS |} A Microsoft Docs
 titleSuffix: Azure
-description: Ez a cikk a LUIS-régiók, a LUIS webhely, az Azure-előfizetések és a régiók listáját tartalmazza.
+description: A régió, amelyben a LUIS-alkalmazás közzététele a régiónak vagy az Azure Portalon egy Azure LUIS végponti kulcs létrehozásakor megadott felel meg. Amikor közzétesz egy alkalmazást, a LUIS automatikusan létrehozza a kulcsot az ahhoz tartozó régiót-végpont URL-címe. A LUIS alkalmazás közzététele több régióban, régiónként legalább egy kulcs szükséges.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 08/23/2018
 ms.author: diberry
-ms.openlocfilehash: 1f6090bf1ac588585a16f93d2ac091e8950ca45f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 7812ce37cb22c8774c785f5f645b8fef90b02a3e
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238930"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815503"
 ---
 # <a name="regions-and-keys"></a>Régiók és a kulcsok
 
@@ -59,6 +59,24 @@ Tesz közzé, az Európai régiókban, létre kell hozni a LUIS Apps alkalmazás
 ## <a name="publishing-to-australia"></a>Közzététel az Ausztrália
 
 Az ausztráliai régiókban való közzétételéhez, LUIS alkalmazások létrehozása, https://au.luis.ai csak. Ha közzé bárhol ellenkező esetben az ausztráliai régióban a kulcs használatával kísérli meg, LUIS figyelmeztető üzenetet jeleníti meg. Ehelyett használjon https://au.luis.ai. Hozza létre a LUIS-alkalmazások [ https://au.luis.ai ] [ au.luis.ai] nem automatikusan át más régiókban. Exportálja és importálja a LUIS-alkalmazásokon ahhoz, hogy telepítse át.
+
+## <a name="endpoints"></a>Végpontok
+
+A LUIS jelenleg rendelkezik 2 végpontok: egyet az szerzői és egyet a szövegelemzés.
+
+|Cél|URL-cím|
+|--|--|
+|Szerzői műveletek|`https://{region}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|Szövegelemzés (lekérdezés előrejelzés)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+
+A következő táblázat ismerteti a paraméterek, a kapcsos zárójelek szintben `{}`, az előző táblázatban.
+
+|Paraméter|Cél|
+|--|--|
+|régió|Azure-régió - létrehozási és közzétételi rendelkezik különböző régiókban|
+|appID|A LUIS alkalmazás azonosító URL-CÍMÉT az útvonalban használt és az alkalmazás irányítópulton található|
+|válaszok|például csevegőrobot ügyfélalkalmazástól utterance (kifejezés) szövegét|
+
 
 ## <a name="next-steps"></a>További lépések
 

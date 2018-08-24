@@ -3,7 +3,7 @@ title: Az Azure Functions – alkalmazásbeállítási referencia
 description: Az Azure Functions-alkalmazás beállításai vagy a környezeti változók dokumentációja.
 services: functions
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -12,18 +12,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 08/22/2018
 ms.author: glenga
-ms.openlocfilehash: b5f4ce786371608b276e41f6881dcb1e0a91e303
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 46c1cb0a0cb3104e3705e4a7d4ef0dd894a7c2d7
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345055"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42819046"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
 Alkalmazásbeállításokat a függvényalkalmazáshoz, amelyek befolyásolják, hogy a függvényalkalmazás a függvények globális konfigurációs beállításokat tartalmaznak. Ha helyileg futtatja, ezeket a beállításokat a környezeti változók találhatók. Ez a cikk az alkalmazásbeállításokat a függvényalkalmazások sorolja fel.
+
+[! BELEFOGLALÁS [Függvényalkalmazás-beállításokat] (.. /.. /includes/Functions-App-Settings.md]
 
 Egyéb globális konfigurációs lehetőségek a [host.json](functions-host-json.md) fájl és a [local.settings.json](functions-run-local.md#local-settings-file) fájlt.
 
@@ -127,7 +129,7 @@ A használatalapú csomagok csak. A függvény kódját és konfigurációs tár
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [name]; AccountKey = [kulcs]|
 
-## <a name="websitecontentshare"></a>WEBSITE_CONTENTSHARE
+## <a name="websitecontentshare"></a>WEBHELY\_CONTENTSHARE
 
 A használatalapú csomagok csak. A fájl elérési útja a függvény kódját és a konfiguráció. Az WEBSITE_CONTENTAZUREFILECONNECTIONSTRING használni. Alapértelmezés szerint egy egyedi karakterlánccá, amely a függvényalkalmazás neve kezdődik. Lásd: [hozzon létre egy függvényalkalmazást](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -153,6 +155,19 @@ Az alapértelmezett érték "6.5.0".
 |Kulcs|Mintaérték|
 |---|------------|
 |WEBHELY\_CSOMÓPONT\_DEFAULT_VERSION|6.5.0|
+
+## <a name="websiterunfromzip"></a>WEBHELY\_FUTTATÁSA\_FROM\_ZIP
+
+A függvényalkalmazás egy csatlakoztatott alkalmazáscsomag-fájl futtatását engedélyezi.
+
+> [!NOTE]
+> Ez a beállítás olyan előzetes verziójú funkció.
+
+|Kulcs|Mintaérték|
+|---|------------|
+|WEBHELY\_FUTTATÁSA\_FROM\_ZIP|1|
+
+Érvényes értékek a következők vagy egy URL-címet, amelyet a központi telepítési csomag fájl helyét, vagy `1`. Ha beállítása `1`, a csomagot kell lennie a `d:\home\data\SitePackages` mappát. Ezzel a beállítással telepítési zip használatakor a csomag automatikusan fel a rendszer ezen a helyen.  További információkért lásd: [a functions futtatása egy csomagfájlt](run-functions-from-deployment-package.md).
 
 ## <a name="next-steps"></a>További lépések
 

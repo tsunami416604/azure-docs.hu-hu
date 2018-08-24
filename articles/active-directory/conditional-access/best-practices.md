@@ -2,7 +2,7 @@
 title: Ajánlott eljárások az Azure Active Directory feltételes hozzáférés |} A Microsoft Docs
 description: Tudnivalók ismertetése, és mi ennek során kerülje a feltételes hozzáférési szabályzatok konfigurálásakor.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, az Azure AD feltételes hozzáférés, biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
+keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 08/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: d21a6dc7a460e07fe7530b58bef887241a694b25
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4e9f5a9318db813b1a0f16d3599f74fd98e53ffc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628086"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818057"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások az Azure Active Directory feltételes hozzáférés
 
@@ -85,7 +85,7 @@ Mindkét házirendeket tartat be az Azure Active Directory és a felhasználó h
 
 ### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Mi történik, ha van konfigurálva ugyanaz a felhasználó számára több házirend?  
 
-Minden bejelentkezéshez az Azure Active Directory kiértékeli az összes szabályzat, és biztosítja, hogy a szükséges összes követelmény teljesül-e előtt a felhasználónak hozzáférése engedélyezett.
+Minden bejelentkezéshez az Azure Active Directory kiértékeli az összes szabályzat, és biztosítja, hogy a szükséges összes követelmény teljesül-e előtt a felhasználónak hozzáférése engedélyezett. Hozzáférés letiltása trumps minden egyéb olyan konfigurációs beállításoknak. 
 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Feltételes hozzáférés az Exchange ActiveSync szolgáltatással működik?

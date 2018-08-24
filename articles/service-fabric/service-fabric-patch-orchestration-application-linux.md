@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 00e5f5a73973a34a8611143719c91a2b1ad0c8eb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971266"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746717"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>A Linux operációs rendszer a Service Fabric-fürtben
 
@@ -121,7 +121,7 @@ Az Ubuntu [felügyelet nélküli frissítéseket](https://help.ubuntu.com/commun
 
 Telepítési parancsfájlok mellett alkalmazást is letölthető [archív hivatkozás](https://go.microsoft.com/fwlink/?linkid=867984).
 
-Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg). Ez hasznos tartalmaz [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
+Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://aka.ms/POA/POA_v2.0.2.sfpkg). Ez hasznos tartalmaz [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Az alkalmazás konfigurálása
 
@@ -271,7 +271,7 @@ Figyelmeztetési szintű állapotjelentése az koordinátora szolgáltatás gene
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-VÁLASZOK. **Miért látok a fürt hibás állapotú, a patch orchestration alkalmazás futása során?**
+K. **Miért látok a fürt hibás állapotú, a patch orchestration alkalmazás futása során?**
 
 A. A telepítés során a patch orchestration app letiltja, vagy újraindítja a csomópontot. Ez a művelet átmenetileg leáll a fürt állapotának eredményezhet.
 
@@ -285,15 +285,15 @@ A következő példában a fürt hiba történt a hibás állapotú ideiglenesen
 
 Ha a probléma nem szűnik meg, tekintse meg a hibaelhárítási szakaszt.
 
-VÁLASZOK. **Patch orchestration alkalmazás figyelmeztetési állapotban van.**
+K. **Patch orchestration alkalmazás figyelmeztetési állapotban van.**
 
 A. Ellenőrizze, hogy ha egy jelentés tesznek közzé az alkalmazáshoz képest-e a hiba okát. Általában a figyelmeztetés a probléma részleteit tartalmazza. Ha a probléma átmeneti, az alkalmazás az automatikus helyreállítás ebből az állapotból kellene szerepelnie.
 
-VÁLASZOK. **Mi a teendő, ha a fürt nem kifogástalan, és egy sürgős operációsrendszer-frissítés van szükség?**
+K. **Mi a teendő, ha a fürt nem kifogástalan, és egy sürgős operációsrendszer-frissítés van szükség?**
 
 A. A patch orchestration app nem frissítések telepítése, míg a fürt állapota nem kifogástalan. A patch orchestration munkafolyamat feloldásához hozza a fürt állapota kifogástalan.
 
-VÁLASZOK. **Miért nem különböző fürtökben üzemelő javítás tart sokáig futtatásához?**
+K. **Miért nem különböző fürtökben üzemelő javítás tart sokáig futtatásához?**
 
 A. A patch orchestration alkalmazás számára szükséges idő nagyrészt a következő tényezőktől függ:
 
@@ -303,26 +303,26 @@ A. A patch orchestration alkalmazás számára szükséges idő nagyrészt a kö
 - Az átlagos idő szükséges töltse le és telepítse a frissítést, amely nem lehet hosszabb néhány óra múlva.
 - A teljesítmény, a virtuális gép és a hálózati sávszélességet.
 
-VÁLASZOK. **Hogyan segített patch orchestration alkalmazás úgy dönt, hogy mely frissítések a biztonsági frissítéseket.**
+K. **Hogyan segített patch orchestration alkalmazás úgy dönt, hogy mely frissítések a biztonsági frissítéseket.**
 
 A. Patch orchestration alkalmazás meghatározására szolgál, hogy mely frissítések között az elérhető frissítések állnak biztonsági frissítések disztribúció-specifikus logika használ. Például: az ubuntu-archívumok $RELEASE frissítéseket keres az app-biztonság, $RELEASE-frissítések ($RELEASE = xenial vagy a linux standard alap végleges verziót). 
 
  
-VÁLASZOK. **Hogyan zárolhat be a csomag egy adott verzióját?**
+K. **Hogyan zárolhat be a csomag egy adott verzióját?**
 
 A. A ApprovedPatches beállítások segítségével a csomagok egy adott verzió zárolása. 
 
 
-VÁLASZOK. **Mi történik, az automatikus frissítések engedélyezve van, az Ubuntu?**
+K. **Mi történik, az automatikus frissítések engedélyezve van, az Ubuntu?**
 
 A. Amint a fürt patch orchestration alkalmazást telepít, a felügyelet nélküli frissítéseket a fürtcsomóponton bővítés le lesz tiltva. A rendszeres frissítés minden munkafolyamat a patch orchestration alkalmazás által lenne meghatározni.
 Ahhoz, hogy a környezet konzisztencia fürtszinten, javasoljuk, telepíti a frissítéseket csak a patch orchestration alkalmazás keresztül. 
  
-VÁLASZOK. **Frissítés utáni vezénylési alkalmazás tegye fel nem használt csomagokat a karbantartás nem javítására?**
+K. **Frissítés utáni vezénylési alkalmazás tegye fel nem használt csomagokat a karbantartás nem javítására?**
 
 A. Igen, a karbantartása telepítés utáni lépések részeként történik. 
 
-VÁLASZOK. **Patch Orchestration alkalmazás használható fejlesztési fürt (egycsomópontos fürt) javítására?**
+K. **Patch Orchestration alkalmazás használható fejlesztési fürt (egycsomópontos fürt) javítására?**
 
 A. Nem, Patch orchestration alkalmazás javítás egycsomópontos fürt nem használható. Ezt a korlátozást a rendszer kialakításából fakad, [service fabric-rendszerszolgáltatások](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) vagy vevő alkalmazások leállhatnak, és ezért bármely javítás a javítási feladat lenne soha nem get jóvá manager javítást igényel.
 
@@ -370,5 +370,8 @@ A patch orchestration alkalmazás használatának és teljesítményének nyomon
 ### <a name="version-200"></a>2.0.0-s verzió
 - Nyilvános kiadása
 
-### <a name="version-201-latest"></a>2.0.1-es verziója (legújabb)
+### <a name="version-201"></a>2.0.1-es verziója
 - Újrafordítani az alkalmazást a legújabb Service Fabric SDK használatával
+
+### <a name="version-202-latest"></a>2.0.2-es verzió (legújabb)
+- Kijavítva állapotfigyelési figyelmeztetése első magányos újraindítás közben.

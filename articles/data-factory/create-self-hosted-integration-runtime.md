@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 705f2ce674a31d7dda4d87d893078a2ade26e327
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 863cda349ca951bee1c43f09eefd364645de9dbd
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443390"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746801"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
@@ -182,6 +182,8 @@ létrehozott implicit módon, azonban az Azure Resource Manager (ARM) sablon vag
 5. Az ADF .net SDK, amely támogatja ezt a funkciót az verziója > = 1.1.0-s
 
 6. Az Azure PowerShell, amely támogatja ezt a funkciót az verziója > = 6.6.0 (AzureRM.DataFactoryV2 > = 0.5.7)
+
+7. Engedélyt adni a felhasználó "Owner" vagy az adat-előállítót, ahol a megosztott integrációs modul létezik-e a "Tulajdonos" örökölt szerepkör szükséges. 
 
   > [!NOTE]
   > Ez a funkció csak érhető el az Azure Data Factory 2-es verzió 

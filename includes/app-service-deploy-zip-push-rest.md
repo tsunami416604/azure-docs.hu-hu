@@ -1,18 +1,18 @@
-## <a name="rest"></a>A REST API-k ZIP-fájl központi telepítése 
+## <a name="rest"></a>A REST API-kkal ZIP-fájl telepítése 
 
-Használhatja a [telepítési szolgáltatás REST API-k](https://github.com/projectkudu/kudu/wiki/REST-API) központi telepítése a .zip-fájlt az alkalmazás az Azure-ban. Központi telepítéséhez https://<app_name>.scm.azurewebsites.net/api/zipdeploy egy POST kérést küld. A POST-kérelmet tartalmaznia kell a .zip-fájlt, az üzenet törzsében. Az üzembe helyezési hitelesítő adatok beállítása az alkalmazáshoz szerepelnek a kérelem HTTP BASIC hitelesítés használatával. További információkért lásd: a [.zip leküldéses telepítési útmutató](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
+Használhatja a [telepítési szolgáltatás REST API-k](https://github.com/projectkudu/kudu/wiki/REST-API) központi telepítése a .zip-fájlt az alkalmazás az Azure-ban. Üzembe helyezéséhez https://<app_name>.scm.azurewebsites.net/api/zipdeploy egy POST kérést küld. A POST-kérés tartalmaznia kell a .zip-fájlt, az üzenet törzsében. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva. További információkért lásd: a [.zip leküldéses telepítési útmutató](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file). 
 
-A HTTP BASIC hitelesítés van szüksége az App Service üzembe helyezési hitelesítő adatokat. Az üzembe helyezési hitelesítő adatok beállításával kapcsolatos információk: [beállítása és a felhasználói szintű hitelesítő adatok alaphelyzetbe állítása](../articles/app-service/app-service-deployment-credentials.md#userscope).
+Az ALAPSZINTŰ HTTP-hitelesítést az App Service-üzembehelyezési hitelesítő adatokat kell. Az üzembe helyezési hitelesítő adatok beállítása, olvassa el [beállítása és a felhasználói szintű hitelesítő adatok alaphelyzetbe állítása](../articles/app-service/app-service-deployment-credentials.md#userscope).
 
-### <a name="with-curl"></a>A cURL
+### <a name="with-curl"></a>A curl használatával
 
-Az alábbi példában a cURL eszköz egy .zip fájl központi telepítése. Cserélje le a helyőrzőket `<username>`, `<password>`, `<zip_file_path>`, és `<app_name>`. Amikor a cURL kéri, írja be a jelszót.
+Az alábbi példában a cURL eszköz üzembe helyezése egy .zip-fájlban. Cserélje le a zárójelben `<username>`, `<password>`, `<zip_file_path>`, és `<app_name>`. Amikor a cURL kéri, írja be a jelszót.
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
-A kérelem elindítja a leküldéses telepítési feltöltött .zip fájlból. Az aktuális és korábbi telepítések https://<app_name>.scm.azurewebsites.net/api/deployments végpont használatával tekintheti meg a következő cURL-példában látható módon. Ebben az esetben cserélje le `<app_name>` az alkalmazás nevével és `<deployment_user>` az üzembe helyezési hitelesítő adatok a felhasználónévvel.
+A kérés aktiválása leküldéses telepítését a feltöltött zip-fájlt. Áttekintheti az aktuális és korábbi központi telepítések segítségével a `https://<app_name>.scm.azurewebsites.net/api/deployments` végpont, a következő cURL-példában látható módon. Ezúttal is helyettesítse be `<app_name>` az alkalmazás nevével és `<deployment_user>` , amelynek az üzembehelyezési hitelesítő adatokat.
 
 ```bash
 curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deployments
@@ -20,7 +20,7 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>A PowerShell-lel
 
-Az alábbi példában [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) a .zip-fájlt tartalmazó kérést küldeni. Cserélje le a helyőrzőket `<deployment_user>`, `<deployment_password>`, `<zip_file_path>`, és `<app_name>`.
+Az alábbi példában [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) küldeni egy kérelmet, amely tartalmazza a .zip-fájlt. Cserélje le a zárójelben `<deployment_user>`, `<deployment_password>`, `<zip_file_path>`, és `<app_name>`.
 
 ```PowerShell
 #PowerShell
@@ -33,7 +33,7 @@ $userAgent = "powershell/1.0"
 Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method POST -InFile $filePath -ContentType "multipart/form-data"
 ```
 
-A kérelem elindítja a leküldéses telepítési feltöltött .zip fájlból. Az aktuális és korábbi központi telepítésének ellenőrzéséhez futtassa a következő parancsokat. Ebben az esetben cserélje le a `<app_name>` helyőrző.
+A kérés aktiválása leküldéses telepítését a feltöltött zip-fájlt. Tekintse át a jelenlegi és korábbi központi telepítéseket, futtassa a következő parancsokat. Ezúttal is helyettesítse be a `<app_name>` helyőrző.
 
 ```bash
 $apiUrl = "https://<app_name>.scm.azurewebsites.net/api/deployments"

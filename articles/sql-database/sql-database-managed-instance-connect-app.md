@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: c9d656908d265aeb6143e857b0ea4f635203bdd9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 82e8836892b033ccbb3c3ad9806257348afe3702
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258728"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818402"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakoztassa az alkalmazását az Azure SQL Database felügyelt példányához
 
@@ -75,9 +75,23 @@ Ebben a forgatókönyvben a következő ábra mutatja be:
 
 A felügyelt példánynak keresztül érhetők el csak magánhálózati IP-cím így a fejlesztői boxból eléréséhez, először létre kell a fejlesztői box és a felügyelt példány virtuális hálózatok közötti kapcsolat létrehozása.  
  
-Azure natív Tanúsítványalapú hitelesítés cikkek virtuális hálózat pont – hely kapcsolat konfigurálása ([az Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md), [Azure CLI-vel](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) részletesen bemutatja, hogyan sikerült elvégezni.  
+Azure natív Tanúsítványalapú hitelesítés cikkek virtuális hálózat pont – hely kapcsolat konfigurálása ([az Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md), [Azure CLI-vel](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) részletesen bemutatja, hogyan sikerült elvégezni. 
+
+## <a name="required-versions-of-drivers-and-tools"></a>Az illesztőprogramok és eszközök szükséges verzióinak
+
+Az alábbi minimális verziók az eszközökkel és illesztőprogramokkal használata javasolt, ha azt szeretné, felügyelt példányhoz való csatlakozáshoz:
+
+| Illesztőprogram vagy eszköz | Verzió |
+| --- | --- |
+|.NET-keretrendszer | 4.6.1 (vagy a .NET Core) | 
+|ODBC-illesztő    | v17 |
+|PHP-illesztőprogram | 5.2.0 |
+|JDBC-illesztőprogram    | 6.4.0 |
+|NODE.js-illesztőprogram | 2.1.1 |
+|OLEDB illesztőprogram   | 18.0.2.0 |
+|SSMS   | 17.8.1 vagy [magasabb](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
 
 ## <a name="next-steps"></a>További lépések
 
 - Felügyelt példánnyal kapcsolatos további információkért lásd: [mit jelent a felügyelt példány](sql-database-managed-instance.md).
-- Bemutatja, hogyan hozzon létre egy új felügyelt példány oktatóanyagért lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md).
+- Bemutatja, hogyan hozzon létre egy új felügyelt példány oktatóanyagért lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md).

@@ -1,30 +1,30 @@
 ---
-title: Frissítés az Azure SQL Data Warehouse legújabb generációját |} Microsoft Docs
-description: Azure SQL Data Warehouse frissítsen az Azure hardver- és tároló-architektúra legújabb generációját.
+title: Frissítés a legújabb generációja, az Azure SQL Data Warehouse |} A Microsoft Docs
+description: Azure SQL Data Warehouse frissítsen a legújabb generációja, az Azure hardver- és tárolási architektúrát.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/17/2018
+ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 58d65ef05ed872bb357070de9866253baea5dc70
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e2993e1f4d28fd5d281ea510121686d3bc37a8c
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777807"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746962"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
-Azure SQL Data Warehouse frissítsen az Azure hardver- és tároló-architektúra legújabb generációját.
+Azure SQL Data Warehouse frissítsen a legújabb generációja, az Azure hardver- és tárolási architektúrát.
 
-## <a name="why-upgrade"></a>Miért frissíteni?
-Mostantól zökkenőmentesen frissítheti az SQL Data Warehouse Gen2 az Azure portálon. Ha egy Gen1 adatraktár, ajánlott frissítése. Frissítse, használhatja a legújabb generációját Azure hardver, és a bővített tároló-architektúra. Kihasználhatja a gyorsabb teljesítményt, a méretezhetőség és a korlátlan oszlopos tárolás. 
+## <a name="why-upgrade"></a>Miért érdemes frissíteni?
+Most már zökkenőmentesen frissítheti az SQL Data Warehouse számítási optimalizált Gen2 szintre az Azure Portalon. Ha egy optimalizált Gen1 számítási réteg data warehouse-ba, a frissítés javasolt. Frissítse, használhatja az Azure-beli hardveres legújabb generációja, és továbbfejlesztett tárolási architektúrát. Használja ki a gyorsabb teljesítmény, méretezhetőség és korlátlan Oszlopalapú tárolást is igénybe vehet. 
 
 ## <a name="applies-to"></a>A következőkre vonatkozik
-Ez a frissítés Gen1 adatraktárak vonatkozik.
+Ez a frissítés optimalizált Gen1 számítási réteg data warehouse-adattárházak vonatkozik.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -32,52 +32,45 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 > [!NOTE]
-> Ha a meglévő Gen1 adatraktár nincs olyan régióban, ahol Gen2 lehetőség, akkor [georedundáns helyreállítás való Gen2](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) egy támogatott régióban a Powershellen keresztül.
+> Ha a meglévő optimalizált Gen1 Compute csomag adatraktár nem szerepel egy régióban, ahol az optimalizált Gen2 számítási szinten érhető el, akkor az [geo-visszaállítás](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) egy támogatott régióban Powershellen keresztül.
 > 
 >
 
-1. Ha a frissítendő Gen1 adatraktár fel van függesztve, [folytathatja az adatraktár](pause-and-resume-compute-portal.md).
-2. Néhány perc leállás mellett készíteni. 
+1. Ha a frissítendő optimalizált Gen1 számítási réteg adattárház szüneteltetve van, [folytathatja az adattárház](pause-and-resume-compute-portal.md).
+2. Néhány perc alatt állásidő készíteni. 
 
 
 
 ## <a name="start-the-upgrade"></a>A frissítés megkezdése
 
-1. Keresse fel a Gen1 adatraktárát az Azure portálon, és kattintson a **Gen2 frissítsen**: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. Nyissa meg a számítási optimalizált Gen1 szintű adatforgalom adatraktár-az Azure Portalon, majd kattintson a **frissítés Gen2-re**: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
 
-2. Alapértelmezés szerint **válassza ki a javasolt teljesítményszintje** az adatraktár alapján a jelenlegi teljesítményszintje Gen1 az alábbi leképezés használatával:
+2. Alapértelmezés szerint **a javasolt teljesítményszintet választ a** az adatraktár alapján a jelenlegi teljesítményszint optimalizált Gen1 számítási rétegben az alábbi leképezés használatával:
     
-| Gen1 | Gen2 |
-| :----------------------: | :-------------------: |
-|      DW100 – DW1000      |        DW1000c        |
-|          DW1200          |        DW1500c        |
-|          DW1500          |        DW1500c        |
-|          DW2000          |        DW2000c        |
-|          DW3000          |        DW3000c        |
-|          DW6000          |        DW6000c        |
+   | COMPUTE-optimalizált Gen1 kapacitás | COMPUTE-optimalizált Gen2-kapacitás |
+   | :----------------------: | :-------------------: |
+   |      DW100 – DW1000      |        DW1000c        |
+   |          DW1200          |        DW1500c        |
+   |          DW1500          |        DW1500c        |
+   |          DW2000          |        DW2000c        |
+   |          DW3000          |        DW3000c        |
+   |          DW6000          |        DW6000c        |
 
-
-3. Győződjön meg arról, a munkaterhelés befejeződött fut, valamint leépítésére frissítése előtt. Néhány percig, mielőtt az adatraktár újra online állapotba, mint egy Gen2 adatraktár leállásra lesz. **Kattintson a frissítés**. A Gen2 teljesítményszinttel ára le tiltva jelenleg félig-a próbaidőszak alatt:
+3. Győződjön meg arról, a számítási feladat befejeződött fut, és zajlanak a frissítés előtt. Néhány percet, mielőtt újra online állapotba, az optimalizált Gen2 számítási réteg adattárházak kerül az adattárház tapasztalható üzemszünet. **Kattintson a frissítés**. A Compute optimalizált Gen2 szintű teljesítmény szintjének ára jelenleg félig-kapcsolva az előzetes verzió ideje alatt:
     
-    ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
+   ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
 
-4. **A frissítés figyelése** által az Azure portálon állapotának ellenőrzése:
+4. **A frissítés figyelése** által az Azure Portalon az állapot ellenőrzése:
 
    ![Upgrade3](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_3.png)
    
-   Az első lépés a frissítési folyamat végighalad a méretezési művelet ("a frissítés - kapcsolat nélküli"), ahol az összes munkamenetek meg lesznek szakítva és kapcsolatok törlődnek. 
+   Az első lépés a frissítési folyamat halad végig a skálázási művelet ("Upgrading - kapcsolat nélküli"), ahol az összes munkamenetek meg lesznek szakítva és kapcsolatokat a rendszer eldobja. 
    
-   A frissítési folyamat második lépése az adatáttelepítés ("a frissítés - Online"). Adatok áttelepítése egy online trickle háttérfolyamatként, amely lassan a régi tároló-architektúra oszlopos adatokat az új tároló-architektúra, ami a helyi SSD-gyorsítótárba helyezi. Ebben az időszakban az adatraktár lekérdezésére és betöltése online lesz. Az adatok lekérdezése, függetlenül attól, hogy az áttelepítés vagy nem lesz. Az adatáttelepítés attól függően, hogy az adatok mérete, a teljesítményszintet és a oszlopcentrikus szegmensek száma különböző ütemben történik. 
+   A frissítési folyamat második lépése adatok migrálása ("frissítés – Online"). Adatok migrálása egy online trickle háttérben futó folyamat, amely lassan áthelyezi Oszlopalapú a régi tároló-architektúra az új tároló-architektúra, kihasználva a helyi SSD-gyorsítótárat. Ebben az időszakban az adattárház lekérdezésére és betöltése elérhető lesz. Minden adatát lekérdezhetők, függetlenül attól, hogy azt migrálták, vagy nem lesz. Az adatáttelepítés függően az adatok mérete, a teljesítményszintet és az oszlopcentrikus szegmensek száma különböző ütemben történik. 
 
-5. **A Gen2 adatraktár található** az SQL-adatbázis Tallózás paneljének használatával. 
+5. **Nem kötelező javaslat:** gyorsíthatja fel az adatok áttelepítési háttérfolyamatként, azonnal kényszerítheti az adatmozgatás futtatásával [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) kellene lekérdezési nagyobb slo-t, az összes elsődleges oszlopcentrikus táblák és erőforrásosztályhoz. Ez a művelet **offline** képest a trickle rétegzést, amely függően számát és méretét a táblák órát is igénybe vehet; azonban adatáttelepítés fog sokkal gyorsabb, ahol, majd teljes mértékben kihasználhatják az új továbbfejlesztett tárolási architektúrát, a folyamat végén a magas színvonalú naplóbájtot. 
 
-> [!NOTE]
-> Probléma van a jelenleg hol keresse meg a Gen2 adatok során nem jelenik meg az SQL data warehouse a panelen. Az SQL-adatbázis Tallózás panel segítségével az újonnan frissített Gen2 data warehouse található. Folyamatosan dolgozunk a javítás.
-> 
-
-6. **Nem kötelező javaslat:** az adatok áttelepítési háttér folyamat lebonyolításához, javasoljuk, hogy azonnal kényszerítheti az adatmozgás futtatásával [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) összes oszlopcentrikus táblán egy nagyobb slo-t és az erőforrás az osztály. Ezt a műveletet offline állapotban a trickle háttérfolyamatként; képest azonban adatáttelepítés lesz sokkal gyorsabb, ahol, majd teljes mértékben kihasználhassa az új egyszer kész, de jó minőségű rowgroups emelt szintű tároló-architektúra. 
-
-A következő lekérdezés állít elő, az áttelepítési folyamat lebonyolításához szükséges az Alter Index Rebuild parancsokat:
+A következő lekérdezést hoz létre a szükséges az Alter Index Rebuild parancsokat gyorsíthatja fel az áttelepítési folyamat:
 
 ```sql
 SELECT 'ALTER INDEX [' + idx.NAME + '] ON [' 
@@ -125,5 +118,5 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 
 ## <a name="next-steps"></a>További lépések
-A frissített adatraktár online állapotban. A továbbfejlesztett architektúra előnyeit, lásd: [erőforrás-osztályok a munkaterhelés felügyeleti](resource-classes-for-workload-management.md).
+A frissített adattárház online állapotú. A továbbfejlesztett architektúra előnyeit, lásd: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
  

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 15db2d9b872c76d70fd531af07fb55c701e86494
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 24fa3882a65bf6605444a139ad5d4ee42800a8ef
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39331438"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744929"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>A beszédfelismerést a REST API-val
 
@@ -22,9 +22,8 @@ ms.locfileid: "39331438"
 
 A REST API használatával a HTTP POST-kérelmet rövid utterances felismerni használható.
 
-A REST API egy a legegyszerűbb módszer beszédfelismerő ismeri fel, ha nem használja az SDK támogatja.
-Választja ki egy HTTP POST-kérelmet a szolgáltatásvégpont átadja a kérelem törzsében lévő teljes utterance (kifejezés).
-A felismert szöveget tartalmazó választ kap.
+A REST API-t a legegyszerűbb módja a beszédfelismerést használatakor nem támogatja a [SDK](speech-sdk.md).
+Meghatározhat egy HTTP POST kérelmet a szolgáltatásvégpont, adja át a kérelem; törzsében lévő teljes utterance (kifejezés) és a egy választ, amely tartalmazza a felismert szöveget kap.
 
 > [!NOTE]
 > Kimondott szöveg, legfeljebb 15 másodperc vagy annál kisebb, a REST API használatakor.

@@ -1,47 +1,58 @@
 ---
-title: Az Azure Logic Apps Outlook.com-os összekötő |} Microsoft Docs
-description: Az Azure App service Logic Apps alkalmazások létrehozása Outlook.com-os összekötő lehetővé teszi a levelezés, a naptárak és a partnerek kezelését. Például a levél küldése különféle műveleteket hajtson végre, értekezletek ütemezését, adja hozzá az ügyfelek, stb.
+title: Csatlakozás az Outlook.com-ra – Azure Logic Apps |} A Microsoft Docs
+description: E-mailt, naptárak és az Outlook.com-os REST API-k és az Azure Logic Apps névjegyek kezelése
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 1338b7ce8f72a57cb65f9389e630fd7ebd0417b1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 8030ab9d317c1deefaf441008b9022c4a26bb17c
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295584"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746162"
 ---
-# <a name="get-started-with-the-outlookcom-connector"></a>Az Outlook.com-összekötő az első lépései
-Outlook.com-os összekötő lehetővé teszi a levelezés, a naptárak és a partnerek kezelését. Például a levél küldése különféle műveleteket hajtson végre, értekezletek ütemezését, adja hozzá az ügyfelek, stb.
+# <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>E-mailt, naptárak és névjegyeit, állítsa be az Azure Logic Apps Outlook.com-os kezelése
 
-Most hozzon létre egy Logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Ez a cikk bemutatja, hogyan hozzon létre és kezelheti az Outlook.com-fiókjából belül egy logikai alkalmazást, a Box-összekötővel. Ezzel a módszerrel hozhat létre a logic apps, feladatok és automatizáló munkafolyamatokat az Outlook.com-fiókjából, például:
 
-## <a name="create-a-connection-to-outlookcom"></a>Kapcsolatot létesíthet Outlook.com-os
-A Logic apps az Outlook.com-on, akkor először hozzon létre egy **kapcsolat** adja meg a részleteket a következő tulajdonságokkal:
+* E-mail küldése. 
+* Értekezletek ütemezését.
+* Adja hozzá a névjegyekhez. 
 
-| Tulajdonság | Szükséges | Leírás |
-| --- | --- | --- |
-| Jogkivonat |Igen |Outlook.com-os hitelesítő adatok megadása |
+Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
-Miután létrehozta a kapcsolatot, használhatja a műveletek végrehajtása és a jelen cikkben ismertetett eseményindítók figyelni.
+## <a name="prerequisites"></a>Előfeltételek
 
-> [!INCLUDE [Steps to create a connection to Outlook.com](../../includes/connectors-create-api-outlook.md)]
->
+* Egy [Outlook.com-fiókjából](https://outlook.live.com/owa/)
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
 
-Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/outlook/).
+* A logikai alkalmazás, ahol szeretné elérni az Outlook.com-fiókjából. A logikai alkalmazás elindításához egy Outlook-eseményindítóval kell egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
-## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k lista](apis-list.md).
+* Alapvető ismeretek szerezhetők [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+## <a name="connect-to-outlookcom"></a>Csatlakozás az Outlook.com-ra
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+[!INCLUDE [Connect to Outlook.com](../../includes/connectors-create-api-outlook.md)]
+
+## <a name="connector-reference"></a>Összekötő-referencia
+
+További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/outlook/). 
+
+## <a name="get-support"></a>Támogatás kérése
+
+* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>További lépések
+
+* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)

@@ -1,136 +1,136 @@
 ---
-title: Működés közbeni alkalmazás frissítés - Azure SQL Database |} Microsoft Docs
-description: 'Útmutató: Azure SQL Database georeplikációja használatát a felhőalapú alkalmazások online frissítések támogatásához.'
+title: Működés közbeni alkalmazásfrissítések – Azure SQL Database |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure SQL Database georeplikációja támogatási online frissítéseket a felhőalapú alkalmazások.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 08/23/2018
 ms.author: sashan
-ms.openlocfilehash: a73284d679b4be1fbae6d5e1688915c98cbf2392
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 37960995c89c2b30d90ac45dcd8cc44d80088398
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649499"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818616"
 ---
-# <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Az SQL-adatbázis aktív georeplikáció használatával a felhőalapú alkalmazásokhoz működés közbeni frissítések kezelése
+# <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>SQL-adatbázis aktív georeplikációt használ, a felhőalapú alkalmazások működés közbeni frissítések kezelése
 > [!NOTE]
-> [Aktív georeplikáció](sql-database-geo-replication-overview.md) érhető el az összes olyan adatbázis az összes rétege.
+> [Aktív georeplikáció](sql-database-geo-replication-overview.md) már elérhető az összes adatbázis minden szinten.
 > 
 
-Ismerje meg, hogyan használható [georeplikáció](sql-database-geo-replication-overview.md) az SQL-adatbázis ahhoz, hogy a felhő alkalmazás működés közbeni frissítések. Mivel a frissítés egy zavaró művelet, azt az üzleti folytonossági tervezési és kialakítási részének kell lennie. Ebben a cikkben azt koordinálása a frissítési folyamat két különböző módszer tekintse meg, és az előnyöket és kompromisszumot alakítson ki az egyes lehetőségek ismertetik. Ez a cikk céljából használjuk egy egyszerű alkalmazást, amely a webhely, az adatok rétegként egy adatbázishoz kapcsolódó áll. A cél, hogy a 2-es nélkül a végfelhasználói élmény jelentős hatással az alkalmazás 1 verziójának frissítése. 
+Ismerje meg, hogyan használható [georeplikációs](sql-database-geo-replication-overview.md) ahhoz, hogy a felhőalapú alkalmazások működés közbeni frissítése SQL Database-ben. Mivel a frissítés zavart okozó műveletet, akkor az üzletmenet folytonosságának megtervezése és kialakítása részének kell lennie. Ebben a cikkben azt tekintse meg a frissítési folyamat replikálásával segít a vállalatnak két eltérő módszert, és előnyeit és hátrányait feláldozását tárgyalják. Ez a cikk az alkalmazásában használjuk egy egyszerű alkalmazás, amely egy webhely, az adatok rétegként egyetlen adatbázishoz kapcsolódó áll. Az a célunk, hogy a 2-es verzió anélkül, hogy a végfelhasználói élmény jelentős hatással az alkalmazás 1 verziójának frissítése. 
 
-A frissítési beállításokban kiértékelése során a következő tényezőket kell figyelembe vennie:
+A frissítési beállításokban kiértékelése során fontolja meg a következő tényezőket:
 
-* Érintő forgalomkiesés alkalmazás frissítéskor. Mennyi ideig a kérelem függvény korlátozható vagy csökkentett teljesítményű.
-* A visszaállítás sikertelen frissítése esetén lehetősége.
-* A biztonsági rés az alkalmazás, ha egy független végzetes hiba akkor fordul elő, a frissítés során.
-* Amerikai dollár teljes költsége.  Ez magában foglalja a további redundancia és a frissítési folyamat által használt ideiglenes összetevőket többletköltségei. 
+* A művelet hatása rendelkezésre állásának frissítések során. Mennyi ideig a kérelem függvény korlátozható vagy csökkentett teljesítményű.
+* Lehetővé teszi egy frissítési hiba esetén visszaállítása.
+* Biztonsági rés az alkalmazás egy független Katasztrofális hiba esetén a frissítés során.
+* Teljes dollár költsége.  Ez magában foglalja a további redundancia jelentkezhet és a frissítési folyamat által használt ideiglenes összetevőket a növekményes költségekkel. 
 
-## <a name="upgrading-applications-that-rely-on-database-backups-for-disaster-recovery"></a>A vész-helyreállítási mentéseket használó alkalmazások frissítése
-Ha az alkalmazás automatikus mentését alapul, és vész-helyreállítási georedundáns helyreállítás használ, azt általában a rendszer egyetlen Azure-régiót. Ebben az esetben a frissítés magában foglalja a biztonsági mentési központi telepítés összes alkalmazás-összetevő részt vesz a frissítés. A végfelhasználói megszűnésének minimalizálása érdekében a feladatátvételi profillal Azure Traffic Manager (WATM) fogja használni.  A következő ábra szemlélteti a működési környezetben a verziófrissítés előtt. A végpont <i>contoso-1.azurewebsites.net</i> frissíteni alkalmazás éles helyét jelöli. Ahhoz, hogy a visszaállítás lehetősége a frissítést, meg kell szakasz tárhely létrehozása az alkalmazás teljesen szinkronizált másolatát. A következő lépések szükségesek a frissítés az alkalmazás előkészítése:
+## <a name="upgrading-applications-that-rely-on-database-backups-for-disaster-recovery"></a>A vész-helyreállítási adatbázis biztonsági mentését használó alkalmazások frissítése
+Ha az alkalmazás az adatbázis automatikus biztonsági mentések támaszkodik, és a vész-helyreállítási geo-visszaállítás használ, azt általában telepítve van a egyetlen Azure-régióban. Ebben az esetben a frissítési folyamat magában foglalja a biztonsági mentés üzembe helyezése az összes alkalmazás-összetevők részt vesz a frissítés létrehozása. A végfelhasználói leskálázáskor, használja az Azure Traffic Manager (ATM) feladatátvételi profillal.  A következő ábra szemlélteti a működési környezetben a frissítés előtt. A végpont <i>contoso-1.azurewebsites.net</i> jelöli az alkalmazást, amelyet frissíteni kell az éles tárhely. Ahhoz, hogy vissza tudja a frissítés, kell fázis tárhely létrehozása az alkalmazás teljesen szinkronizált másolatával. Készítse elő az alkalmazást a frissítéshez a következő lépések szükségesek:
 
-1. A verziófrissítés szakasz tárhely létrehozása. Az ehhez a másodlagos adatbázist (1) létrehozása és központi telepítése egy azonos webhely azonos Azure-régióban. A másodlagos megjelenítéséhez, ha az index-összehangolási folyamat befejeződött-e figyelni.
-2. Hozzon létre egy feladatátvevő profilt az WATM a <i>contoso-1.azurewebsites.net</i> online végpontként és <i>contoso-2.azurewebsites.net</i> offline állapotúként. 
+1. A verziófrissítés szakasz tárhely létrehozása. A nincs, hozzon létre egy másodlagos adatbázist (1) és a egy azonos webhely ugyanazon Azure-régióban. Figyelheti a másodlagos megtekintheti, ha a kiindulási befejeződött.
+2. Hozzon létre egy feladatátvételi profilt az ATM- <i>contoso-1.azurewebsites.net</i> online végpontként és <i>contoso-2.azurewebsites.net</i> offline állapotúként. 
 
 > [!NOTE]
-> Vegye figyelembe a előkészítő lépések nem befolyásolja az alkalmazás az éles ponton, és teljes hozzáférési módban működéséhez.
+> Megjegyzés: az előkészítő lépések nem lesz hatással az alkalmazás az üzemelési és teljes hozzáférési módban működhetnek.
 >  
 
-![SQL adatbázis Ugrás-replikációs konfiguráció. Felhőalapú vészhelyreállítás.](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
+![SQL-adatbázis-Go-replikáció konfigurálása. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
 
-Ha megadta az előkészítő lépések a tényleges frissítés készen áll az alkalmazást. A következő ábra szemlélteti a frissítési folyamat lépéseit. 
+Miután elvégezte a adatelőkészítési lépéseket a tényleges frissítés készen áll az alkalmazás. A következő ábra szemlélteti a frissítési folyamat lépéseit. 
 
-1. Állítsa be az elsődleges adatbázis csak olvasható módra (3) az éles ponton. Ez garantálja, hogy az alkalmazás (V1) éles példánya marad írásvédett megelőzve a adateltérésekkel között a V1 és V2 adatbázis-példány frissítése során.  
-2. Válassza le a másodlagos adatbázist, a tervezett lezárást módban (4). Az elsődleges adatbázis teljesen szinkronizált független másolatot hoz létre. Ez az adatbázis lesz frissítve.
-3. Kapcsolja be az elsődleges adatbázis írható-olvasható módba, és a frissítési parancsprogrammal szakasz tárolóhelye (5).     
+1. Az elsődleges adatbázis csak olvasható módra (3) az éles tárolóhelyre állítja be. Ez garantálja, hogy az alkalmazás (V1) az éles üzemelő példányok marad csak olvasható megelőzve a adateltérésekkel a V1 és v2-es adatbázis-példányok között a frissítés során.  
+2. Válassza le a másodlagos adatbázis, a tervezett lezárást mód (4). Az elsődleges adatbázis teljesen szinkronizált független másolatot hoz létre. Ez az adatbázis lesz frissítve.
+3. Kapcsolja be az elsődleges adatbázis írható-olvasható módba, és futtassa a frissítési parancsfájlt a fázis tárolóhely (5).     
 
-![SQL-adatbázis georeplikáció konfigurációs. Felhőalapú vészhelyreállítás.](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
+![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
 
-Ha a frissítés sikeresen befejeződött most már készen áll a végfelhasználók váltson át az előkészített másolatát az alkalmazást. Ez lesz az alkalmazás az éles webalkalmazásra.  Ez néhány további lépést meg az alábbi ábrán szemléltetett foglal magában.
+Ha a frissítés sikeresen befejeződött most már készen áll a végfelhasználók váltson át a szakaszos másolás az alkalmazást. Most már válik az alkalmazás az éles webalkalmazásra.  Ebbe beletartozik az néhány további lépést az az alábbi ábrán szemléltetett módon.
 
-1. Váltás az online végpont a WATM profil <i>contoso-2.azurewebsites.net</i>, amely mutat, a V2 verziójú a webhely (6). Az éles webalkalmazásra, a V2 alkalmazással most válik, és a végfelhasználói forgalom van átirányítva.  
-2. Ha már nincs szüksége a V1-es alkalmazás-összetevők, nyugodtan távolítsa el őket (7).   
+1. Az online végpont váltson a ATM profil <i>contoso-2.azurewebsites.net</i>, amely a V2 verzióját a webhely (6) mutat. Mostantól a V2-alkalmazás az éles webalkalmazásra, és a végfelhasználói átirányítja a forgalmat.  
+2. Ha már nincs szüksége a V1 alkalmazás-összetevők így biztonságosan eltávolíthatja őket (7).   
 
-![SQL-adatbázis georeplikáció konfigurációs. Felhőalapú vészhelyreállítás.](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
+![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
 
-Ha a frissítési folyamat sikertelen, például a frissítési parancsfájl hiba miatt a szakasz tárolóhely tekintendő sérült. Szeretné visszaállítani a frissítés előtti állapotot az alkalmazás az alkalmazás teljes körű hozzáférés az éles ponton egyszerűen vissza. Lépéseit a következő diagramon láthatók.    
+Ha a frissítési folyamat sikertelen, például a frissítési parancsfájl hibája miatt a fázis tárolóhely kell alkalmazni az sérült a biztonsága. Állítsa vissza az alkalmazást a frissítés előtti állapotot, az alkalmazás teljes körű hozzáféréssel az üzemelési egyszerűen vissza. A folyamat lépéseit a következő diagramon láthatók.    
 
-1. Az adatbázis-példány beállítása a írható-olvasható módba (8). A művelettel visszaállítja a teljes V1 funkcionálisan a az éles webalkalmazásra.
-2. Hajtsa végre a legfelső szintű okát, és távolítsa el a sérült biztonságú összetevők szakasz tárolóhelye (9). 
+1. Az adatbázis-másolat állítsa írható-olvasható módban (8). A művelettel visszaállítja a teljes V1 funkcionálisan az üzemelési.
+2. Hajtsa végre a kiváltó okok elemzése, és távolítsa el a feltört összetevők a a fázis [9] bővítőhelyen. 
 
-Ezen a ponton az alkalmazás teljesen működőképes, és a frissítési lépéseket is megismételhető.
+Ezen a ponton az alkalmazás teljesen működőképes, és a frissítési lépéseket lehessen ismételni.
 
 > [!NOTE]
-> A visszaállítás nem módosítások szükségesek az WATM profil már mutat, <i>contoso-1.azurewebsites.net</i> aktív végpontjának.
+> A visszaállítás nem igényel módosításokat az ATM-profilban, már mutat <i>contoso-1.azurewebsites.net</i> aktív végpontjaként.
 > 
 > 
 
-![SQL-adatbázis georeplikáció konfigurációs. Felhőalapú vészhelyreállítás.](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
+![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
 
-A kulcs **előny** ezt a beállítást az, hogy egy alkalmazás egyszerű ismertetett lépések segítségével egy régió frissítheti. A frissítési dollár költsége viszonylag alacsony. A fő **kompromisszumot** , hogy a frissítés során végzetes hiba esetén a helyreállítás a frissítés előtti állapotába magában foglalja az alkalmazás egy másik régióban található, és az adatbázis visszaállítása biztonsági másolatból georedundáns helyreállítás használatával újbóli telepítését. Ez a folyamat jelentős állásidőt eredményez.   
+A kulcs **advantage** ezt a beállítást az, hogy egy alkalmazás egy adott régióban használatával egy egyszerű lépés végrehajtásával frissítheti. A frissítés dollár költségei viszonylag kis. A fő **kompromisszum** , hogy a frissítés során végzetes hiba történik a helyreállítás a frissítés előtti állapotba magában foglalja egy másik régióban, és az adatbázis visszaállítása a biztonsági mentés az alkalmazás újbóli üzembe helyezés a GEO-visszaállítás. Ez a folyamat jelentős állásidőt eredményez.   
 
 ## <a name="upgrading-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>A database georeplikációja a vész-helyreállítási használó alkalmazások frissítése
-Ha az alkalmazás kihasználja az üzletmenet folytonossága érdekében georeplikáció, a rendszer telepíti az elsődleges régióban egy aktív központi telepítés és a készenléti biztonsági mentés régióban legalább két különböző régiókban. A korábban említett tényezőket, mellett a frissítési folyamat garantálnia kell, hogy:
+Ha az alkalmazás kihasználja az üzletmenet folytonosságának georeplikáció, az elsődleges régióban egy aktív központi telepítés és a egy biztonsági mentési régióban készenléti telepítési legalább két különböző régióban van telepítve. Mellett a tényezőket, korábban említettük a frissítési folyamat garantálnia kell, hogy:
 
-* Az alkalmazás védve marad az végzetes hibák mindig a frissítési folyamat során
-* Az alkalmazás a georedundáns összetevő frissítésének párhuzamosan aktív összetevői
+* Az alkalmazás a katasztrofális hibák védett marad a frissítési folyamat során mindig
+* A georedundáns összetevő az alkalmazás frissítésének párhuzamos aktív összetevői
 
-Ezen célok eléréséhez a feladatátvételi profilt használ egy aktív és három biztonsági mentés végpontok Azure Traffic Manager (WATM) fogja használni.  A következő ábra szemlélteti a működési környezetben a verziófrissítés előtt. A webhelyek <i>contoso-1.azurewebsites.net</i> és <i>contoso-dr.azurewebsites.net</i> teljes földrajzi redundanciával határoz meg az alkalmazás egy éles tárolóhelyre. Ahhoz, hogy a visszaállítás lehetősége a frissítést, meg kell szakasz tárhely létrehozása az alkalmazás teljesen szinkronizált másolatát. Győződjön meg arról, hogy az alkalmazás gyorsan helyreállíthatja, ha a frissítési folyamat során végzetes hiba bekövetkezése van szüksége, mert a szakasz tárolóhely kell lennie georedundáns is. A következő lépések szükségesek a frissítés az alkalmazás előkészítése:
+Ezen célok eléréséhez használja a Feladatátvevőfürt-profil használata egy aktív és három biztonsági mentés végpontok Azure Traffic Manager (ATM).  A következő ábra szemlélteti a működési környezetben a frissítés előtt. A webhelyek <i>contoso-1.azurewebsites.net</i> és <i>contoso-dr.azurewebsites.net</i> jelölik az alkalmazás éles tárhely a teljes földrajzi redundancia céljából. Ahhoz, hogy vissza tudja a frissítés, kell fázis tárhely létrehozása az alkalmazás teljesen szinkronizált másolatával. Győződjön meg arról, hogy az alkalmazás képes gyorsan helyreállíthatja az adatokat a frissítési folyamat során végzetes hiba bekövetkezése van szüksége, mivel a fázis tárolóhely kell lennie, valamint a georedundáns. Készítse elő az alkalmazást a frissítéshez a következő lépések szükségesek:
 
-1. A verziófrissítés szakasz tárhely létrehozása. A nincs, hozzon létre egy másodlagos adatbázist (1), és a webhely azonos Azure-régióban azonos példányának telepítését. A másodlagos megjelenítéséhez, ha az index-összehangolási folyamat befejeződött-e figyelni.
-2. Hozzon létre georedundáns másodlagos adatbázist szakasz tárolóhelye földrajzi replikálni a másodlagos adatbázis a biztonsági mentési régióban (Ez a lehetőség "kapcsolt georeplikáció"). Figyelje meg, ha az index-összehangolási folyamat befejeződött (3) másodlagos biztonsági mentés.
-3. A biztonsági mentési régióban a webhely készenléti másolatának létrehozása hozzákapcsolja azt a georedundáns másodlagos (4).  
-4. A további végpontok hozzáadása <i>contoso-2.azurewebsites.net</i> és <i>contoso-3.azurewebsites.net</i> offline végpontként (5) a WATM feladatátvételi profilt. 
-
-> [!NOTE]
-> Vegye figyelembe a előkészítő lépések nem befolyásolja az alkalmazás az éles ponton, és teljes hozzáférési módban működéséhez.
-> 
-> 
-
-![SQL-adatbázis georeplikáció konfigurációs. Felhőalapú vészhelyreállítás.](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
-
-Előkészítő lépések elvégzése után a szakasz tárolóhely készen áll a frissítésre. A következő ábra szemlélteti a frissítési lépéseket.
-
-1. Állítsa be az elsődleges adatbázis az éles ponton csak olvasható módra (6). Ez garantálja, hogy az alkalmazás (V1) éles példánya marad írásvédett megelőzve a adateltérésekkel között a V1 és V2 adatbázis-példány frissítése során.  
-2. Válassza le a másodlagos adatbázis ugyanabban a régióban a tervezett lezárást módban (7). Az elsődleges adatbázis, amelyhez elsődleges automatikusan válik leállása után teljesen szinkronizált független másolatot hoz létre. Ez az adatbázis lesz frissítve.
-3. Kapcsolja be az elsődleges adatbázis írható-olvasható módba szakasz tárolóhelye, és futtassa a frissítési parancsfájlt (8).    
-
-![SQL-adatbázis georeplikáció konfigurációs. Felhőalapú vészhelyreállítás.](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
-
-Ha a frissítés sikeresen befejeződött, most már készen áll a végfelhasználók váltson át a V2 alkalmazásverziónként. A következő ábra szemlélteti a lépéseit.
-
-1. Az aktív végpontot a WATM profil kapcsoló <i>contoso-2.azurewebsites.net</i>, mely most mutat, a V2 verziójú, a webhely (9). Most válik, a V2 alkalmazással éles tárhely és végfelhasználói forgalom van átirányítva. 
-2. Ha már nincs szüksége a V1-es alkalmazás így biztonságosan eltávolíthatja azt (10-es és 11).  
-
-![SQL-adatbázis georeplikáció konfigurációs. Felhőalapú vészhelyreállítás.](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
-
-Ha a frissítési folyamat sikertelen, például a frissítési parancsfájl hiba miatt a szakasz tárolóhely tekintendő sérült. A frissítés előtti állapotba, akkor egyszerűen vissza az alkalmazás az éles ponton teljes hozzáféréssel rendelkező alkalmazás visszavonásához. Lépéseit a következő diagramon láthatók.    
-
-1. Állítsa be az elsődleges adatbázis másolatát az éles ponton írható-olvasható módba (12). A művelettel visszaállítja a teljes V1 funkcionálisan a az éles webalkalmazásra.
-2. Hajtsa végre a legfelső szintű okát, és távolítsa el a sérült biztonságú összetevők (13 és 14) szakaszban tárolóhelye. 
-
-Ezen a ponton az alkalmazás teljesen működőképes, és a frissítési lépéseket is megismételhető.
+1. A verziófrissítés szakasz tárhely létrehozása. A nincs, hozzon létre egy másodlagos adatbázist (1) és a egy azonos másolatot készít a webhely ugyanazon Azure-régióban. Figyelheti a másodlagos megtekintheti, ha a kiindulási befejeződött.
+2. Hozzon létre egy georedundáns adatbázisőrzés fázis nyílásba georeplikálásával a másodlagos adatbázis (ezt nevezik "kapcsolt georeplikációs") a biztonsági mentési régióba. A biztonsági mentés másodlagos, ha a kiindulási folyamat befejeződött (3)-e figyelni.
+3. A webhely készenléti másolatának létrehozása a biztonsági mentési régióban, és a georedundáns másodlagos (4) hivatkozás.  
+4. Adja hozzá a további végpontokat <i>contoso-2.azurewebsites.net</i> és <i>contoso-3.azurewebsites.net</i> a feladatátvételi profilhoz ATM offline végpontként (5). 
 
 > [!NOTE]
-> A visszaállítás nem módosítások szükségesek az WATM profil már mutat, <i>contoso-1.azurewebsites.net</i> aktív végpontjának.
+> Megjegyzés: az előkészítő lépések nem lesz hatással az alkalmazás az üzemelési és teljes hozzáférési módban működhetnek.
 > 
 > 
 
-![SQL-adatbázis georeplikáció konfigurációs. Felhőalapú vészhelyreállítás.](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
+![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
 
-A kulcs **előny** ezt a beállítást az, hogy frissítheti az alkalmazás és a párhuzamos a georedundáns Másolás a frissítés során az üzletmenet folytonossága veszélyeztetése nélkül. A fő **kompromisszumot** igényel minden egyes alkalmazás-összetevő dupla redundanciát, így ezért költséget az magasabb dollár áll. A bonyolultabb munkafolyamat is magában foglalja. 
+Után az előkészítő lépéseket, a frissítés készen áll a fázis tárolóhely. A következő ábra szemlélteti a frissítési lépéseket.
+
+1. Az elsődleges adatbázis csak olvasható módra (6) az éles tárolóhelyre állítja be. Ez garantálja, hogy az alkalmazás (V1) az éles üzemelő példányok marad csak olvasható megelőzve a adateltérésekkel a V1 és v2-es adatbázis-példányok között a frissítés során.  
+2. Válassza le a másodlagos adatbázis ugyanabban a régióban a tervezett lezárást mód (7). Az elsődleges adatbázis a megszüntetése után automatikusan válnak elsődleges teljesen szinkronizált független másolatát hoz létre. Ez az adatbázis lesz frissítve.
+3. Kapcsolja be az elsődleges adatbázis írható-olvasható módba fázis nyílásba, majd futtassa a frissítési parancsfájl (8).    
+
+![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
+
+Ha a frissítés sikeresen befejeződött, most már készen áll a végfelhasználók váltson át az alkalmazás V2 verziója. A következő ábra szemlélteti a folyamat lépéseit.
+
+1. Az aktív végpontja. Váltson a ATM profil <i>contoso-2.azurewebsites.net</i>, így a V2 verzióját a webhely (9) mutat. Mostantól a V2-alkalmazás az éles tárhely és a végfelhasználói átirányítja a forgalmat. 
+2. Ha már nincs szüksége a V1 alkalmazás így biztonságosan eltávolíthatja azt (10-es és 11).  
+
+![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
+
+Ha a frissítési folyamat sikertelen, például a frissítési parancsfájl hibája miatt a fázis tárolóhely kell alkalmazni az sérült a biztonsága. Szeretné visszaállítani az alkalmazást a frissítés előtti állapotot, egyszerűen csak visszatér az üzemelési teljes körű hozzáféréssel az alkalmazás használatával. A folyamat lépéseit a következő diagramon láthatók.    
+
+1. Állítsa be az elsődleges adatbázis-másolat az üzemelési írható-olvasható módba (12). A művelettel visszaállítja a teljes V1 funkcionálisan az üzemelési.
+2. Hajtsa végre a kiváltó okok elemzése, és távolítsa el a feltört összetevők a fázis tárolóhely (13 és 14). 
+
+Ezen a ponton az alkalmazás teljesen működőképes, és a frissítési lépéseket lehessen ismételni.
+
+> [!NOTE]
+> A visszaállítás nem igényel módosításokat az ATM-profilban, már mutat <i>contoso-1.azurewebsites.net</i> aktív végpontjaként.
+> 
+> 
+
+![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
+
+A kulcs **advantage** ezt a beállítást az, hogy frissítheti az alkalmazás és a párhuzamos georedundáns példányát a frissítés során az üzletmenet-folytonossági veszélyeztetése nélkül. A fő **kompromisszum** , hogy minden egyes alkalmazás-összetevő kettős redundancia igényel, és ezért tekintetében költségesebb dollár. Egy összetettebb munkafolyamat is magában foglalja. 
 
 ## <a name="summary"></a>Összegzés
-A cikkben ismertetett a két frissítési módszer nem egyezik a összetettsége pedig a költségeket, dollár, de mindkét a kis méretre az időpontot, amikor a végfelhasználó csak olvasási műveletek. A frissítési parancsfájl időtartama közvetlenül határozza meg, az időpont. Nem függ a az adatbázis mérete, a kiválasztott szolgáltatási rétegben, a webhely konfigurációs és egyéb tényezőkkel, amelyek könnyen nem tudja beállítani. Ennek az oka, hogy az előkészítő lépések vannak különválik a frissítési lépéseket, és a termelési alkalmazások befolyásolása nélkül végezheti. A frissítési parancsfájl hatékonyságának a kulcsfontosságú tényező, amely meghatározza, hogy a végfelhasználói élmény frissítéskor. Így a legjobb módja, fejlesztheti azt, a próbálkozások összpontosító és a frissítési parancsfájl felhasználását.  
+A két frissítési módszer a cikkben ismertetett különböznek az összetettséget és a költségek dollár, de ezek is koncentrálhat minimálisra csökkentik az idő, amikor a végfelhasználó korlátozódik, csak olvasható műveletekhez. A frissítési parancsfájl időtartama közvetlenül határozza meg, hogy időt. Nem függ a az adatbázis méretétől, a kiválasztott szolgáltatási rétegben, a webhely konfigurációja és egyéb tényezőket, amelyek egyszerűen nem szabályozhatja. Ez azért, mert az előkészítő lépések vannak választva a a frissítési lépéseket, és a termelési alkalmazások befolyásolása nélkül teheti meg. A frissítési parancsfájl hatékonyságát a kulcsfontosságú tényező, amely meghatározza, hogy a végfelhasználói élmény frissítés alatt. Így a legjobb módszer, növelheti a átállásig a lehető leghatékonyabb gondoskodik a frissítési parancsfájl.  
 
 ## <a name="next-steps"></a>További lépések
 * Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
-* További tudnivalók az Azure SQL adatbázis automatikus biztonsági mentés című [SQL-adatbázis biztonsági mentések automatikus](sql-database-automated-backups.md).
-* A helyreállítás automatikus biztonsági mentés használatával kapcsolatos további tudnivalókért lásd: [adatbázis visszaállítása biztonsági másolatból automatizált](sql-database-recovery-using-backups.md).
-* Gyorsabb helyreállítási beállításokkal kapcsolatos további tudnivalókért lásd: [aktív georeplikáció](sql-database-geo-replication-overview.md).
+* További információ az Azure SQL Database automatikus biztonsági mentések, lásd: [SQL-adatbázis automatikus biztonsági mentések](sql-database-automated-backups.md).
+* Az automatikus biztonsági másolatokból helyreállítási kapcsolatos további információkért lásd: [adatbázis visszaállítása az adatokat automatikus biztonsági mentésekből](sql-database-recovery-using-backups.md).
+* Gyorsabb helyreállítási beállítások kapcsolatos további információkért lásd: [aktív georeplikáció](sql-database-geo-replication-overview.md).
 
 

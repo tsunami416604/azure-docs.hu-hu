@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: f43715b9c419aab1f5b95e140eac72642ef74198
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057284"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746897"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
@@ -139,7 +139,7 @@ Windows automatikus frissítések rendelkezésre állás elvesztése vezethet, m
 
 Telepítési parancsfájlok mellett alkalmazást is letölthető [archív hivatkozás](https://go.microsoft.com/fwlink/?linkid=869566).
 
-Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://go.microsoft.com/fwlink/?linkid=869567). Ez hasznos tartalmaz [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
+Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://aka.ms/POA/POA_v1.2.2.sfpkg). Ez hasznos tartalmaz [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Az alkalmazás konfigurálása
 
@@ -398,3 +398,5 @@ A rendszergazdák beavatkozhat kell, és határozza meg, miért érdemes az alka
 ### <a name="version-122-latest"></a>Verzió 1.2.2 (legújabb)
 
 - Vegyes hibajavításokat tartalmaz.
+- Bináris fájlok most már van bejelentkezve.
+- egy adott verzió most már mutat sfpkg letöltésére szolgáló hivatkozásra.

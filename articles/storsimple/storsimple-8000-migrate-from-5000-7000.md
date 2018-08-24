@@ -4,25 +4,26 @@ description: Áttekintés és az előfeltételeket a Migrálási szolgáltatás 
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: jeconnoc
+manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/11/2017
+ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 378eaea4c0cf19c48f47067e4f548f2d7f530377
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 23fde5fab8f223ff1d958a8fac6a31818f1fdd7c
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856688"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818916"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Telepítse át az adatokat a StorSimple 5000-7000-es sorozat 8000-es sorozatú eszköz
 
 > [!IMPORTANT]
+> - A 2019. július 31-ig. a StorSimple 5000/7000 sorozat megszűnik a támogatás (EOS) állapotát. Azt javasoljuk, hogy a StorSimple 5000/7000 sorozat ügyfelek áttelepítése a a dokumentumban ismertetett alternatív megoldások egyikét.
 > - Migrálás jelenleg egy támogatott művelet. Ha azt tervezi, telepítheti át adatait a StorSimple 5000-7000-es sorozatú eszközt 8000-es sorozatú eszközre, kell a Microsoft Support áttelepítési ütemezése. Microsoft Support majd engedélyezi az előfizetés az áttelepítéshez. További információkért lásd: hogyan [hozzon létre egy támogatási jegyet](storsimple-8000-contact-microsoft-support.md).
 > - A szolgáltatáskérés fájlban után is igénybe vehet néhány héten belül hajtsa végre a migrálási tervet, és ténylegesen megkezdi az áttelepítést.
 > - Forduljon a Microsoft Support, mielőtt lehet arra, hogy áttekintése és teljes körű a [áttelepítési Előfeltételek](#migration-prerequisites) szerepelnek a cikkben.

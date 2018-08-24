@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: c2e066ddf444cb81d7f0033641a300d18b266f62
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ce520c5972bf27c30ecb175d58b6b6071bf804db
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397847"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818292"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-címek az Azure Functions szolgáltatásban
 
@@ -39,7 +39,7 @@ Minden függvényalkalmazáshoz egyetlen bejövő IP-címmel rendelkezik. Az IP-
 3. Válassza ki **platformfunkciók**.
 4. Válassza ki **tulajdonságok**, és a bejövő IP-cím alatt jelenik meg **virtuális IP-cím**.
 
-## <a name="function-app-outbound-ip-addresses"></a>Függvény alkalmazás kimenő IP-címek
+## <a name="find-outbound-ip-addresses"></a>Függvény alkalmazás kimenő IP-címek
 
 Minden függvényalkalmazáshoz egy elérhető kimenő IP-címekkel rendelkezik. Minden kimenő adatforgalmat egy függvényt, például egy háttér-adatbázist a rendelkezésre álló kimenő IP-címek valamelyikét használja, mint a forrás IP-cím. Nem tudja, hogy korábban melyik IP-címet egy adott kapcsolathoz fogja használni. Ebből kifolyólag a háttérszolgáltatás meg kell nyitnia a tűzfalat, hogy az összes kimenő IP-címeket a függvényalkalmazás.
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ba8778bad9ed1b8ec095da084ffcec79658bdea8
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: db60aaacfb2ba60dbe73663cb415e2a3baea5400
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060614"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745799"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Az Azure Stackben API-verzióprofilok kezelése
 
@@ -67,7 +67,7 @@ Inkább, mint a minden erőforrás-szolgáltató és az Azure Stack által támo
 
 API-profilok, amelyek használják az Azure Resource Managerrel, például a PowerShell, az Azure CLI, az SDK-t mind a Microsoft Visual Studio code tools együttműködve. Eszközök és SDK-k segítségével profilok olvassa el a modulok és a egy application készítése során alkalmazandó kódtárak melyik verzióját.
 
-Például, ha a PowerShell segítségével hozzon létre egy tárfiókot használja a fiók a **Microsoft.Storage** erőforrás-szolgáltató, amely támogatja a 2016-03-30 api-verzió és a egy virtuális Gépet a Microsoft.Compute erőforrás-szolgáltató használatával a 2015-12-01-es api-verzióval rendelkező , keresse ki az PowerShell-modul támogatja a 2016-03-30 Storage kell, és mely modul támogatja a 2015-02-01-es számítási és telepítheti azokat. Ehelyett egy profil is használhatja. A parancsmag ** telepítés-profil * profilename x és PowerShell betölti a modulokat megfelelő verzióját.
+Például, ha a PowerShell használatával hozzon létre egy tárolási fiókot a **Microsoft.Storage** erőforrás-szolgáltató, amely támogatja az api-verzió 2016-03-30 és a egy virtuális Gépet a Microsoft.Compute erőforrás-szolgáltató használatával az api-verzió 2015-12-01, keresse ki az PowerShell-modul támogatja a 2016-03-30 Storage kell, és mely modul támogatja a 2015-02-01-es számítási és telepítheti azokat. Ehelyett egy profil is használhatja. A parancsmag ** telepítés-profil * profilename x és PowerShell betölti a modulokat megfelelő verzióját.
 
 Ehhez hasonlóan ha Python-alapú alkalmazás készítése a Python SDK-t használja, megadhatja a profil. Az SDK-t a parancsfájlban megadott erőforrás-szolgáltatókat betölti a megfelelő modulokat.
 

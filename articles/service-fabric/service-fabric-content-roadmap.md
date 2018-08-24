@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 9f37a7665521b69634329078258b00cb9f53c407
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 644089cea4dccc79e67b9117187b553eb4616d9f
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358718"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818214"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
@@ -146,7 +146,7 @@ Van néhány funkció, amely Windows, de linuxon nem támogatottak. További tud
 ### <a name="standalone-clusters"></a>Önálló fürtök
 A Service Fabric egy telepítőcsomagot biztosít, hozhat létre önálló Service Fabric fürtök a helyszíni vagy bármely más szolgáltatónál. Önálló fürtök teszik lehetővé a fürt üzemeltetéséhez, bárhol szabadon. Ha az adatok megfelelőségi vagy jogszabályi megkötések vonatkoznak, vagy meg szeretné tartani az adatok helyi, a saját fürt és az alkalmazásokat is üzemeltethet. Service Fabric-alkalmazásokat futtathat több üzemeltetési környezetek módosítása nélkül, így az alkalmazások ismerete végrehajtott módosítások megjelennek üzemeltetési egyik környezetből a másikba. 
 
-[Az első Service Fabric önálló fürt létrehozása](service-fabric-get-started-standalone-cluster.md)
+[Az első Service Fabric önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
 
 Önálló fürtök Linux még nem támogatott.
 

@@ -1,4 +1,17 @@
-1. Az a **app** projektre, nyissa meg a fájlt `AndroidManifest.xml`. Az alábbi kód után adja hozzá a `application` nyitó:
+---
+author: conceptdev
+ms.author: crdun
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.openlocfilehash: 654bc3745768fccea41d7c3991142bf7183b54be
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42811618"
+---
+1. Az a **alkalmazás** projekt, nyissa meg a fájlt `AndroidManifest.xml`. Az alábbi kód után adja hozzá a `application` nyitó kódcímkét:
 
     ```xml
     <service android:name=".ToDoMessagingService">
@@ -13,7 +26,7 @@
     </service>
     ```
 
-2. Nyissa meg a fájlt `ToDoActivity.java`, és ellenőrizze a következő módosításokat:
+2. Nyissa meg a fájlt `ToDoActivity.java`, és adja meg a következő módosításokat:
 
     - Adja hozzá az importálási utasítást:
 
@@ -21,13 +34,13 @@
         import com.google.firebase.iid.FirebaseInstanceId;
         ```
 
-    - Módosítsa a definíciója `MobileServiceClient` a **titkos** való **magánhálózati statikus**, így most néz ki:
+    - Definíciójának módosítása `MobileServiceClient` a **privát** való **magánhálózati statikus**, így mostantól néz ki:
 
         ```java
         private static MobileServiceClient mClient;
         ```
 
-    - Adja hozzá `registerPush` módszert:
+    - Adjon hozzá `registerPush` módszer:
 
         ```java
         public static void registerPush() {
@@ -43,13 +56,13 @@
         }
         ```
 
-    - Frissítés a **onCreate** metódusában a `ToDoActivity` osztály. Ügyeljen arra, hogy ez a kód után adja hozzá a `MobileServiceClient` létrejön.
+    - Frissítés a **onCreate** módszere a `ToDoActivity` osztály. Ügyeljen arra, hogy ez a kód után adja hozzá a `MobileServiceClient` példányosítása.
 
         ```java
         registerPush();
         ```
 
-3. Adjon hozzá egy új osztályt értesítések kezelésére. A Project Explorer nyissa meg a **app** > **java** > **a projekt névtér** csomópontokat, és kattintson a jobb gombbal a csomag nevét csomópont. Kattintson a **új**, és kattintson a **Java-osztály**. A név, írja be a `ToDoMessagingService`, majd kattintson az OK gombra. Ezután cserélje le a osztály meghatározó deklarációban:
+3. Adjon hozzá egy új osztályt, értesítések kezeléséhez. A Project Explorer, nyissa meg a **alkalmazás** > **java** > **your project névtér** csomópontokat, és kattintson a jobb gombbal a csomag neve csomópont. Kattintson a **új**, és kattintson a **Java-osztály**. A név, írja be a `ToDoMessagingService`, majd kattintson az OK gombra. Ezután cserélje le az osztálydeklaráció együtt:
 
     ```java
     import android.app.Notification;
@@ -88,7 +101,7 @@
     }
     ```
 
-4. Adjon hozzá egy másik osztály kezeli a token frissítéseket. Hozzon létre `ToDoInstanceIdService` java osztály, és cserélje le a osztály meghatározó deklarációban:
+4. Adjon hozzá egy másik osztály token frissítések kezelésére. Hozzon létre `ToDoInstanceIdService` java osztályt, és cserélje le az osztálydeklaráció együtt:
 
     ```java
     import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -102,4 +115,4 @@
     }
     ```
 
-Az alkalmazás most frissíteni leküldéses értesítések támogatásához használható.
+Az alkalmazás most már frissül, és támogatja a leküldéses értesítéseket.

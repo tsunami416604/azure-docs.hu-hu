@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b05eef79e94cff74b1e02243cd7c8d94e5acbb3c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c9cebd16d34758550144a50b6ff26da84924a964
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493970"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745668"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,6 +58,11 @@ Ha a felhőbeli adattárban támogatja a HTTPS vagy a TLS, adat-előállítóban
 
 > [!NOTE]
 > Azure SQL Database és az Azure SQL Data warehouse-ba irányuló összes kapcsolatot igényelnek a titkosítás (SSL/TLS), miközben az átvitel során, illetve onnan az adatbázis az adatokat. Ha egy folyamat JSON használatával Ön szerzői, a titkosítási tulajdonság hozzáadása, illetve beállíthatja **igaz** a kapcsolati karakterláncban. Az Azure Storage esetében használható **HTTPS** a kapcsolati karakterláncban.
+
+> [!NOTE]
+> Engedélyezése közben, amely adatokat helyez át az Oracle titkosítás az átvitel során kövesse az az alábbi beállításokat:
+> 1. Az Oracle-kiszolgálón nyissa meg az Oracle speciális biztonsági (OAS), és adja meg a titkosítási beállításokat, mely támogatja a háromszoros DES-titkosítás (3DES) és Advanced Encryption Standard (AES), tekintse meg [Itt](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759) részleteiről. Az ADF automatikusan egyezteti OAS Oracle-kapcsolat létesítéséhez konfigurálja egy használandó titkosítási módszer.
+> 2. Az ADF, adhat hozzá, EncryptionMethod = 1 (a társított szolgáltatás), a kapcsolati karakterláncban. Ez a beállítás használja az SSL/TLS titkosítási módszert. Ennek kell az SSL titkosítási beállításainak letiltása OAS Oracle kiszolgálóoldali titkosítás ütközés elkerülése érdekében.
 
 > [!NOTE]
 > Használt verzió a TLS 1.2-es.

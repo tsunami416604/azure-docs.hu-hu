@@ -8,15 +8,15 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: c7c06fc2f33baa7357fd5f945414daf2bc6e4858
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 93fec1ea78263798588a43b2314ffdea736cdbbc
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284938"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745351"
 ---
 # <a name="enable-custom-pronunciation"></a>Engedélyezze az egyéni kiejtése
-Egyéni írásmódja lehetővé teszi a felhasználóknak adható meg fonetikus űrlap és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. Szüksége egy írásmódja fájlt (egy egyszerű .txt fájlt).
+Egyéni írásmódja használatával meghatározhatja a fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. Szüksége egy írásmódja fájlt (egy egyszerű .txt fájlt).
 
 Itt látható, hogyan működik. Egy egyetlen .txt fájlban a több egyéni írásmódja bejegyzést is megadhatja. A struktúra a következőképpen történik:
 
@@ -24,7 +24,7 @@ Itt látható, hogyan működik. Egy egyetlen .txt fájlban a több egyéni ír�
 Display form <Tab> Spoken form <Newline>
 ```
 
-*Példák*:
+Az alábbi táblázatban néhány példa látható:
 
 | Megjelenítési űrlap | Használja a beszélt űrlap |
 |----------|-------|
@@ -33,16 +33,16 @@ Display form <Tab> Spoken form <Newline>
 | CNTK | Lásd: n tea k|
 
 ## <a name="requirements-for-the-spoken-form"></a>A beszédből kinyert képernyő követelményei
-A beszédből kinyert képernyő kisbetűnek kell lennie, az importálás során kényszeríthető. Emellett meg kell adnia az adatok programu Pro import ellenőrzései. Nincs lapján vagy a kimondott képernyő, vagy a megjelenítési űrlap számára engedélyezett. Lehetséges, azonban, több lehet tiltott karakter a megjelenítési űrlap (például ~ és ^).
+A beszédből kinyert képernyő kisbetűnek kell lennie, amely kényszerítheti, hogy az importálás során. Emellett meg kell adnia az adatok programu Pro import ellenőrzései. Nincs lapján vagy a kimondott képernyő, vagy a megjelenítési űrlap számára engedélyezett. Azonban van Előfordulhat, hogy lehet több tiltott karaktereket a megjelenítési űrlap (például ~ és ^).
 
-Minden egyes .txt fájl több bejegyzés is rendelkezhet. Például tekintse meg az alábbi képernyőfelvételen látható:
+Minden egyes .txt fájl rendelkezhet több bejegyzés a következő képen látható módon:
 
-![Képernyőkép a Jegyzettömb betűszó írásmódja számos bejegyzést a](media/stt/custom-speech-pronunciation-file.png)
+![Példák a betűszó kiejtése](media/stt/custom-speech-pronunciation-file.png)
 
 A beszédből kinyert képernyő az fonetikus sorrendje a megjelenített képernyő. Betűket, szavakat vagy szótagokat határoznak áll. Jelenleg nincs további útmutatást vagy szabványgyűjtemény állítson össze a kimondott űrlap segítségével. 
 
 ## <a name="supported-pronunciation-characters"></a>Támogatott írásmódja karakter
-Egyéni írásmódja jelenleg támogatott (en-US) angol és német (de-de). A karakterkészlet, amely egy kifejezés (az egyéni írásmódja fájlban) használja a beszélt formájában express segítségével az alábbi táblázatban látható: 
+Egyéni írásmódja jelenleg támogatott (en-US) angol és német (de-de). A karakterkészlet, amellyel a kimondott képernyőt a kifejezés (az egyéni írásmódja fájlt) expressz az alábbi táblázatban láthatók: 
 
 | Nyelv | Karakterek |
 |---------- |----------|
@@ -53,14 +53,15 @@ Egyéni írásmódja jelenleg támogatott (en-US) angol és német (de-de). A ka
 > Egy kifejezés megjelenítési űrlap (fájlban írásmódja) nyelven kell megírni ugyanúgy nyelvi betanítás adatkészlet.
 
 ## <a name="requirements-for-the-display-form"></a>A megjelenítési űrlap követelményei
-Megjelenítési űrlap csak lehet egy egyedi szót, kifejezést, betűszó vagy összetett szavak, amelyek meglévő szavak. A gyakori szavakat egyéb kiejtés is megadhat. 
+Megjelenítési űrlap csak egy egyéni szó, kifejezés, egy betűszó vagy összetett szavak, amelyek meglévő szavak is lehet. A gyakori szavakat egyéb kiejtés is megadhat. 
 
 >[!NOTE]
->Ezzel a funkcióval újraszövegezése gyakori szavakat vagy a kimondott képernyő módosítása nem ajánlott. Célszerűbb a dekóder megtekintheti, ha egyes ritka szavakat (például rövidítéseket, műszaki szakkifejezéseket és külső szavak) vannak se megfelelően dekódovat futtassa. Ha igen, adja hozzá azokat az egyéni kiejtés fájlhoz. A nyelvi modell csak és mindig használjon a megjelenítési űrlap szó. 
+>Ezzel a funkcióval újraszövegezése gyakori szavakat vagy a kimondott képernyő módosítása nem ajánlott. Célszerűbb a dekóder megtekintéséhez, hogy egyes ritka szavakat (például rövidítéseket, műszaki szakkifejezéseket vagy külső szavak) helytelenül dekódovat futtassa. Ha igen, adja hozzá azokat az egyéni kiejtés fájlhoz. A nyelvi modell csak és mindig használjon a megjelenítési űrlap szó. 
 
 ## <a name="requirements-for-the-file-size"></a>A fájl mérete követelményei
-Írásmódja bejegyzéseket tartalmazó .txt fájl mérete legfeljebb 1 MB. Általában nem kell a nagy mennyiségű adat feltöltése keresztül ezt a fájlt. Egyéni írásmódja fájlok a legtöbb esetben valószínűleg néhány Tudásbázis méretű lehet. Az összes területi beállításhoz tartozó .txt fájl kódolása az UTF-8 AJ kell lennie. Az angol területi beállítás, az ANSI is fogadható el.
+A .txt fájlt, amely tartalmazza a írásmódja bejegyzések mérete legfeljebb 1 megabájt (MB). Általában nem szükséges a nagy mennyiségű adat feltöltése keresztül ezt a fájlt. A legtöbb egyéni írásmódja fájlok mérete valószínűleg csak néhány kilobájtban (KB). Az összes területi beállításhoz tartozó .txt fájl kódolása az UTF-8 AJ kell lennie. Az angol területi beállítás, az ANSI is fogadható el.
 
 ## <a name="next-steps"></a>További lépések
-* Pontosságának javítása hozzon létre egy [importálni akusztikai modell](how-to-customize-acoustic-models.md)
-* Pontosságának javítása hozzon létre egy [egyéni nyelvi modell](how-to-customize-language-model.md)
+* Pontosságának javítása hozzon létre egy [importálni akusztikai modell](how-to-customize-acoustic-models.md).
+* Pontosságának javítása hozzon létre egy [egyéni nyelvi modell](how-to-customize-language-model.md).
+ 

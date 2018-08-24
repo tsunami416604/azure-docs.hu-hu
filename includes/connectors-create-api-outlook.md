@@ -1,17 +1,14 @@
-## <a name="connect-to-outlookcom"></a>Outlook.com-os csatlakozás
-### <a name="prerequisites"></a>Előfeltételek
-* Egy Outlook.com-fiók
+1. A keresőmezőbe írja be szűrőként "Outlook.com-os". Ebben a példában válassza ki a következő eseményindítót: **új e-mail érkezésekor**
 
-Outlook.com-os fiókját a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás Outlook.com-os fiókjához. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
+   ![Keresse meg az Outlook.com-os eseményindítók és műveletek](./media/connectors-create-api-outlook/select-outlook.png)
 
-A Logic Apps alkalmazást Outlook.com-os fiókjához történő engedélyezéséhez lépései a következők:
+1. Miután kiválasztotta a trigger (vagy a művelet), kéri, hogy jelentkezzen be az Outlook.com-fiókjából, ha már nem jelentkezik be. Válasszon **jelentkezzen be a**.
 
-1. Logic Apps-alkalmazások összes el kell indítani egy eseményindító által, miután hoz létre a Logic Apps alkalmazást, a Tervező megnyílik, és megjeleníti váltja ki, amely segítségével indítsa el a logikai alkalmazás:
-   
-   ![](./media/connectors-create-api-outlook/office365-outlook-0.png)
-2. A keresőmezőbe írja be a "outlook". Figyelje meg, a szűrt "Outlook" az eseményindítók listát a nevében a lista:![](./media/connectors-create-api-outlook/office365-outlook-0-5.png)
-3. Válassza ki **Office 365 Outlook - az új e-mailek**.   
-   Ha még nem hozott létre a kapcsolatokat, az Outlook programot, a rendszer az Outlook.com-os hitelesítő fog kérni. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használt, és elérni az Outlook.com-os fiók adatait:![](./media/connectors-create-api-outlook/office365-outlook-1.png)
-4. Adja meg a hitelesítő adatait az Outlook, és jelentkezzen be:![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
-   Ennyi az egész. Most létrehozott egy kapcsolatot Outlook. Ez a kapcsolat bármely más logikai alkalmazás az Ön által létrehozott használható lesz.
+   ![Jelentkezzen be az Outlook.com-fiókjából](./media/connectors-create-api-outlook/sign-in-outlook.png)  
 
+3. Válassza ki az Outlook.com-fiókja hitelesítő adataival.
+
+   ![Válassza ki a bejelentkezési fiók](./media/connectors-create-api-outlook/outlook-sign-in.png)  
+
+   Csatlakozás és az Outlook.com-fiókjából adatok elérése a hitelesítő adatok használhatók.
+   A kapcsolat bármely más logic app használatával újból felhasználhatja az Azure-előfizetésében. 

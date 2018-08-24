@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 6b310daec67f41ba589ce279e4a2dad427adb734
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058132"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818892"
 ---
 # <a name="getting-compliance-data"></a>Megfelelőségi adatok beolvasása
 
@@ -23,7 +23,7 @@ Egyik legnagyobb előnye az Azure Policy egy insight- és vezérlőket biztosít
 Többféleképpen is lehet a megfelelőségi adatokat a szabályzat és a kezdeményezési hozzárendelések által generált eléréséhez:
 
 - Használatával a [Azure Portalon](#portal)
-- Keresztül [parancssori](#command_line) scripting
+- Keresztül [parancssori](#command-line) scripting
 
 Mielőtt megnézzük a jelentés a megfelelőségi módszereket, tekintsük át megfelelőségi adatok frissítésekor és a gyakoriság és a egy kiértékelési ciklusa kiváltó események.
 

@@ -1,6 +1,6 @@
 ---
-title: Események ütemezett Linux virtuális gépek Azure-ban |} Microsoft Docs
-description: Események ütemezése a Linux virtuális gépek Azure metaadat-szolgáltatás használatával.
+title: Ütemezett események az Azure-ban Linux rendszerű virtuális gépekhez |} A Microsoft Docs
+description: Ütemezett események a Linux rendszerű virtuális gépek az Azure Metadata Service használatával.
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
 author: ericrad
@@ -15,97 +15,97 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: db4a0d1f288394276cd400e7a060cfb3662b34f0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f18892d32a385b41f3325623e21da1dd25af7253
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911998"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744707"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure metaadat-szolgáltatás: Linux virtuális gépek ütemezett eseménye
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Az Azure Metadata szolgáltatás: Ütemezett események a Linux rendszerű virtuális gépekhez
 
-Ütemezett események egy Azure metaadat-szolgáltatás, amely az alkalmazás időpontot készíti elő a virtuális gép (VM) karbantartás. Információt ad a közelgő karbantartásokról események (például újraindítás), hogy az alkalmazás előkészítése őket, és korlátozza megszakítása. Érhető el az összes Azure virtuális gépek esetében, beleértve a PaaS és a Windows és Linux IaaS. 
+Az ütemezett események az Azure Metadata szolgáltatás, amely révén az alkalmazás előkészítése a virtuális gép (VM) karbantartási idő. Információt ad a közelgő karbantartásokról események (például az újraindítás), hogy az alkalmazás előkészítése őket, és korlátozza megszakítása. Érhető el minden Azure virtuális gépek esetében, beleértve a PaaS és IaaS Windows és Linux rendszereken egyaránt. 
 
-További információk a Windows az ütemezett eseményekről: [ütemezett eseményeket a Windows virtuális gépek](../windows/scheduled-events.md).
+További információ a Windows az ütemezett eseményekről: [ütemezett események a Windows virtuális gépek](../windows/scheduled-events.md).
 
 > [!Note] 
-> Általában ütemezett események érhető el az összes Azure-régió. Lásd: [verzióját és régiónkénti elérhetőség](#version-and-region-availability) legújabb kiadás információt.
+> Az ütemezett események szolgáltatás általánosan elérhető az összes Azure-régióban. Lásd: [verzió és -régiók rendelkezésre állása](#version-and-region-availability) a legújabb kibocsátási információi.
 
-## <a name="why-use-scheduled-events"></a>Ütemezett események miért érdemes használni?
+## <a name="why-use-scheduled-events"></a>Miért érdemes használni az ütemezett eseményekről?
 
-Számos alkalmazás is kihasználhatja a le készíti elő a virtuális gép karbantartási idő. Az idő, amelyek javítják a rendelkezésre állási, megbízhatóságát és szervizelhetőségét, az alkalmazás-specifikus feladatok végrehajtására használható többek között: 
+Számos alkalmazás fel a virtuális gép karbantartási idő is kihasználhatják. Az idő, amelyek javítják a rendelkezésre állás, megbízhatóság és szervizelhetőségét, alkalmazás-specifikus feladatok végrehajtására használható többek között: 
 
-- Ellenőrzőpont- és visszaállítás.
-- A kapcsolat kiürítését.
-- Elsődleges replikák közötti feladatátvétel.
-- Az Eltávolítás load balancer készletből.
+- Ellenőrzőpont és a visszaállítás.
+- -Kapcsolatának kiürítéséhez.
+- Elsődleges replika feladatátvétel.
+- Eltávolítás a load balancer készletből.
 - Események naplózása.
 - Szabályos leállítást.
 
-Az ütemezett esemény az alkalmazás felderíthetők arról, hogy a karbantartási mikor fog fordulhat elő, és korlátozza a hatását feladatot indít.  
+Az ütemezett eseményekről az alkalmazás képes felderíteni, amikor karbantartási fog fordulhat elő, és korlátozhatja a hatása feladatok aktiválása.  
 
-Ütemezett események biztosítja az események a következő esetekben használja:
+Az ütemezett események biztosítja az események a következő esetekben használja:
 
-- Platform által kezdeményezett karbantartási (például a gazda operációs rendszer frissítése)
-- A felhasználó által kezdeményezett karbantartási (például a felhasználó újraindítja vagy a virtuális gépek redeploys)
+- Platform által kezdeményezett karbantartás (például a gazda operációs rendszer frissítése)
+- Felhasználó által kezdeményezett karbantartás (például egy felhasználó újraindítása vagy újbóli üzembe helyezése egy virtuális gép)
 
-## <a name="the-basics"></a>Az alapok  
+## <a name="the-basics"></a>Alapismeretek  
 
-  Metaadat-szolgáltatás közzétesz egy REST-végpontot, amelyhez a virtuális Gépen belülről érhetők el a virtuális gépek futtatásával kapcsolatos információkat. Az információ áll rendelkezésre egy útválasztást IP-cím használatával, úgy, hogy a virtuális gép kívül nincs felfedve.
+  Metaadat-szolgáltatás egy REST-végpont, amely elérhető a virtuális gépen futó virtuális gépek információt tesz elérhetővé. Az adatokat egy útválasztást IP-címen keresztül érhető el, így azt nem érhető el a virtuális gép kívül.
 
 ### <a name="scope"></a>Hatókör
 Ütemezett kézbesíti az eseményeket:
 
-- A virtuális gépeinek egy felhőalapú szolgáltatás.
-- Minden a virtuális gépek rendelkezésre állási csoportba.
-- A virtuális gépeinek a skála elhelyezési csoport beállítása. 
+- Összes virtuális gép egy cloud service-ben.
+- Összes virtuális gép egy rendelkezésre állási csoportban.
+- Egy méretezési csoportban lévő összes virtuális gép elhelyezési csoport megadása 
 
-Ennek eredményeképpen, ellenőrizze a `Resources` mező mellett az esemény azonosításához, mely virtuális gépek vannak hatással.
+Emiatt ellenőrizze a `Resources` az esemény azonosításához az érintett virtuális gépek mely mezőbe.
 
 ### <a name="endpoint-discovery"></a>Végpont felderítése
-A virtuális hálózat virtuális gépek engedélyezve van, metaadat-szolgáltatás érhető el a statikus útválasztást IP-címről `169.254.169.254`. A teljes végpont ütemezett események legújabb verziója van: 
+A virtuális Hálózatot használó virtuális gépekről, Metadata szolgáltatás érhető el a statikus útválasztást IP-cím `169.254.169.254`. A teljes végpont az ütemezett eseményekről legújabb verzióját a következő: 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
-Ha a virtuális gép nem hozza létre a virtuális hálózatról, az alapértelmezett eset felhőalapú szolgáltatásokhoz és a klasszikus virtuális gépeket, további logikát kell Fedezze fel az IP-cím használatára. Megtudhatja, hogyan [a gazdagép-végpont felderítése](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm), tekintse meg ezt a mintát.
+Ha a virtuális gép nem jön létre egy virtuális hálózatban, az alapértelmezett esetben a felhőszolgáltatásokat és a klasszikus virtuális gépeket, további logikát Fedezze fel az IP-cím használata szükséges. Megtudhatja, hogyan [a gazdagép-végpont felderítése](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm), tekintse meg ezt a mintát.
 
-### <a name="version-and-region-availability"></a>Verzió és régiónkénti elérhetőség
-Az ütemezett események szolgáltatás nem rendszerverzióval ellátott. Verziók az alábbiak kötelező; a jelenlegi verzió: `2017-08-01`.
+### <a name="version-and-region-availability"></a>Verzió és -régiók rendelkezésre állása
+Az ütemezett eseményekről szolgáltatás nem rendszerverzióval ellátott. Verziók a következők kötelező; a jelenlegi verzió `2017-08-01`.
 
 | Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - | 
-| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> $A aláhúzás távolítva erőforrásnevek Iaas virtuális gépekhez<br><li>Az összes kérelem érvényes metaadatok fejléc követelmény | 
+| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek Iaas virtuális gépekhez<br><li>Metaadatok fejléc követelmény irányuló kérések kényszerítése | 
 | 2017-03-01 | Előzetes verzió | Összes | <li>Kezdeti kiadás
 
 
 > [!NOTE] 
-> Előző előzetes kiadásaiban ütemezett események {legújabb} támogatott api-verzióval. Ez a formátum már nem támogatott, és a jövőben elavulttá válik.
+> {Legújabb} api-verzió is támogatott, az ütemezett eseményekről korábbi előzetes kiadásokat. Ez a formátum már nem támogatott, és később elavulttá válik.
 
-### <a name="enabling-and-disabling-scheduled-events"></a>Engedélyezése és letiltása ütemezett események
-Ütemezett események engedélyezve van a szolgáltatás az első ideje eseményeket kérelmet használhat. Akár két perc alatt az első hívásában számíthat késleltetett választ.
+### <a name="enabling-and-disabling-scheduled-events"></a>Engedélyezése és letiltása az ütemezett események
+Az ütemezett események a szolgáltatás az első alkalommal események kérelmet győződjön meg arról, engedélyezve van. Az első hívás akár két perc alatt számíthat késleltetett választ.
 
-Ütemezett események le van tiltva a szolgáltatás Ha nem tesz egy kérelmet 24 órán át.
+Az ütemezett események a szolgáltatás tiltva van, ha nem derül kérelem 24 órán keresztül.
 
-### <a name="user-initiated-maintenance"></a>A felhasználó által kezdeményezett karbantartás
-A felhasználó által kezdeményezett VM karbantartási az Azure-portálon, az API, a parancssori felület vagy a PowerShell ütemezett esemény eredményez. Majd tesztelheti a karbantartási előkészítése logika az alkalmazásban, és az alkalmazás előkészíti a felhasználó által kezdeményezett karbantartás.
+### <a name="user-initiated-maintenance"></a>Felhasználó által kezdeményezett karbantartás
+Felhasználó által kezdeményezett virtuális Gépet karbantartás az Azure Portalon, az API-t, a parancssori felület vagy a Powershellen keresztül ütemezett esemény eredményez. Ezután tesztelheti a karbantartási előkészítési logikát az alkalmazásban, és a felhasználó által kezdeményezett karbantartás céljából készítheti elő az alkalmazás.
 
-Ha újraindítja a virtuális gép, egy eseményt, azzal a típussal `Reboot` van ütemezve. Ha egy virtuális Gépet, azzal a típussal esemény újbóli `Redeploy` van ütemezve.
+Ha a virtuális gép, egy esemény típusú újraindítása `Reboot` van ütemezve. Ha egy virtuális gép, egy esemény típusa és ismételt üzembe `Redeploy` van ütemezve.
 
 ## <a name="use-the-api"></a>Az API-val
 
 ### <a name="headers"></a>Fejlécek
-Ha metaadat-szolgáltatás, meg kell adnia a fejléc `Metadata:true` annak érdekében, hogy a kérelem nem volt szándékos átirányítva. A `Metadata:true` fejléc szükség minden ütemezett események olyan kérelem esetében. Nem sikerült a fejlécet tartalmaz a kérelem a metaadat-szolgáltatás "Hibás kérelem" válaszára eredményez.
+Előfordulhat, hogy metaadat-szolgáltatás, meg kell adnia a fejléc `Metadata:true` annak érdekében, hogy a kérelem nem volt szándékos átirányítva. A `Metadata:true` fejlécet meg kell adni az ütemezett események irányuló kérések. Nem sikerült a fejlécet tartalmazza a kérés egy "Hibás kérés" Metadata szolgáltatás válasza eredményez.
 
-### <a name="query-for-events"></a>Lekérdezést eseményekhez.
-A következő hívással is kereshet ütemezett eseményeket:
+### <a name="query-for-events"></a>Lekérdezés-események
+Ütemezett események azáltal, hogy a következő hívást lekérdezés:
 
 #### <a name="bash"></a>Bash
 ```
 curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
 ```
 
-A válasz ütemezett események tömbjét tartalmazza. Üres tömb azt jelenti, hogy jelenleg események nem ütemezett.
-Abban az esetben, ahol ütemezett események, a válasz események tömbjét tartalmazza. 
+A válasz az ütemezett események tömbjét tartalmazza. Üres tömb, az azt jelenti, hogy jelenleg nincsenek események ütemezve vannak.
+Abban az esetben, ahol az ütemezett események, a válasz események tömbjét tartalmazza. 
 ```
 {
     "DocumentIncarnation": {IncarnationID},
@@ -125,12 +125,12 @@ Abban az esetben, ahol ütemezett események, a válasz események tömbjét tar
 ### <a name="event-properties"></a>Esemény tulajdonságai
 |Tulajdonság  |  Leírás |
 | - | - |
-| EventId | Ez az esemény globálisan egyedi azonosítóját. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Ez az esemény hatására hatása. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép felfüggesztése néhány másodpercig van ütemezve. A Processzor fel van függesztve, de nincs hatással a memória, a megnyitott fájlokat vagy a hálózati kapcsolat van. <li>`Reboot`: A virtuális gép ütemezett újraindítás. (Nem állandó memória elvész.) <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve. (A rövid élettartamú lemezeket is elvesznek.) |
+| EventId | Globálisan egyedi azonosítóját az eseményhez. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| EventType | Ez az esemény hatására a hatás. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép úgy van ütemezve, szüneteltetésére néhány másodpercig. A Processzor fel van függesztve, de nem érintik a memória, a megnyitott fájlokat vagy a hálózati kapcsolatok. <li>`Reboot`: A virtuális gép újraindításra van ütemezve. (Nonpersistent memória elvész.) <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve. (A rövid élettartamú lemezeket is elvesznek.) |
 | ResourceType | Ez az esemény érinti erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
-| További források| Ez az esemény érinti erőforrások listáját. A listában legalább egy gépeket tartalmazhat garantáltan [frissítési tartomány](manage-availability.md), de nem tartalmaz a UD összes gép. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| EventStatus | Ez az esemény állapotát. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény után a megadott ideig történő futásra van ütemezve a `NotBefore` tulajdonság.<li>`Started`: Ez az esemény elindult.</ul> Nem `Completed` vagy hasonló állapot valaha is biztosítja. Az esemény már nem ad vissza, amikor befejeződött az esemény.
-| NotBefore| Idő elteltével ezt az eseményt elindíthatja. <br><br> Példa: <br><ul><li> F, 19 szeptember 2016 18:29:47 GMT  |
+| További források| Ez az esemény érinti erőforrások listája. A lista tartalmaz gépeket legfeljebb egy garantáltan [frissítési tartományt](manage-availability.md), azonban nem tartalmaz a UD minden gépek. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| EventStatus | Ez az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény után a megadott ideig történő futásra van ütemezve a `NotBefore` tulajdonság.<li>`Started`: Ez az esemény feldolgozása megkezdődött.</ul> Nem `Completed` vagy hasonló állapota minden eddiginél biztosítja. Az esemény már nem ad vissza az esemény befejezése.
+| NotBefore| Az idő elteltével megkezdheti a ezt az eseményt. <br><br> Példa: <br><ul><li> 19 Sep 2016 hétfő, 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>Esemény ütemezése
 Minden esemény van ütemezve egy jövőbeli időpontot minimális mennyiségű esemény típusa alapján. Most megjelenik egy esemény `NotBefore` tulajdonság. 
@@ -143,9 +143,9 @@ Minden esemény van ütemezve egy jövőbeli időpontot minimális mennyiségű 
 
 ### <a name="start-an-event"></a>Egy esemény indítása 
 
-Miután egy jövőbeli esemény ismerje meg, és a biztonságos leállításának logikát Befejezés, a függőben lévő esemény jóváhagyhatja azáltal, hogy egy `POST` metaadat-ba irányuló hívás `EventId`. A hívás jelzi az Azure-ba, hogy azt a minimális értesítési lerövidíthető (amikor csak lehetséges). 
+Miután egy közelgő esemény kapcsolatos további információért, és fejezze be a szabályos leállítást logika, a szálankénti függőben lévő eseményt jóváhagyhatja azáltal, hogy egy `POST` metaadat szolgáltatás hívása `EventId`. Ez a hívás azt jelzi, hogy az Azure-ba, lerövidítheti a minimális értesítési idő (ha lehet). 
 
-A következő JSON-mintát vár a `POST` kérelem törzse. A kérelemnek tartalmaznia kell a listája `StartRequests`. Minden egyes `StartRequest` tartalmaz `EventId` gyorsítása szeretné az esemény:
+A következő JSON-mintát vár a `POST` kérelem törzse. A kérés tartalmazhat listáját `StartRequests`. Minden egyes `StartRequest` tartalmaz `EventId` számára a kívánt esemény:
 ```
 {
     "StartRequests" : [
@@ -156,17 +156,17 @@ A következő JSON-mintát vár a `POST` kérelem törzse. A kérelemnek tartalm
 }
 ```
 
-#### <a name="bash-sample"></a>Bash minta
+#### <a name="bash-sample"></a>Bash-minta
 ```
-curl -H Metadata:true -X POST -d '{"DocumentIncarnation":"5", "StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
 ```
 
 > [!NOTE] 
-> Egy esemény igazolása lehetővé teszi, hogy folytatja az összes esemény `Resources` abban az esetben, nem csak a virtuális Gépet, amely elismeri az esemény. Ezért, dönthet úgy, koordinálhatja a nyugtázási, elképzelhető, hogy más dolga, mint az első machine vezető vállalat kiválasztják a `Resources` mező.
+> Egy esemény bosszankodnak lehetővé teszi, hogy az összes folytatja az esemény `Resources` abban az esetben, nem csak a virtuális gép, amely elismeri az eseményt. Választhat, ezért a nyugtázás, amely lehet egyszerű: az első gép koordinálására vezető a `Resources` mező.
 
 ## <a name="python-sample"></a>Python-minta 
 
-Az alábbi minta metaadat-szolgáltatás lekérdezi a ütemezett események, és hagyja jóvá a függőben lévő események:
+Az alábbi minta Metadata szolgáltatás lekérdezi az ütemezett események, és hagyja jóvá az egyes szálankénti függőben lévő események:
 
 ```python
 #!/usr/bin/python
@@ -210,7 +210,7 @@ if __name__ == '__main__':
 ```
 
 ## <a name="next-steps"></a>További lépések 
-- A Watch [Azure Friday események ütemezett](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) egy bemutató megjelenítéséhez. 
-- Tekintse át az ütemezett események mintakódok a [Azure példány metaadatok ütemezett események Github-tárházban](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
-- További információk az API-k által biztosított a [példány metaadat-szolgáltatás](instance-metadata-service.md).
-- További tudnivalók [a tervezett karbantartások Linux virtuális gépek Azure-ban](planned-maintenance.md).
+- Tekintse meg [ütemezett események az Azure Friday](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) bemutató megtekintéséhez. 
+- Tekintse át az ütemezett eseményekről Kódminták a [Azure példány metaadatok ütemezett események Github-adattár](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
+- További információ az elérhető API-k a [Instance Metadata szolgáltatás](instance-metadata-service.md).
+- Ismerje meg [tervezett karbantartás az Azure-ban Linux rendszerű virtuális gépek](planned-maintenance.md).

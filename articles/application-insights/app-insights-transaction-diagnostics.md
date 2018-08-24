@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights tranzakció diagnosztika |} Microsoft Docs
-description: Application Insights-végpontok közötti tranzakció diagnosztika
+title: Az Azure Application Insights tranzakció diagnosztikája |} A Microsoft Docs
+description: Application Insights végpontok közötti tranzakció diagnosztikája
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,119 +9,98 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: mbullwin;sdash
-ms.openlocfilehash: 7a4e4f74c02358fc117e0a66977ee3f0aef5b1dd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sdash
+ms.author: mbullwin
+ms.openlocfilehash: df88e9025da305701dc7168f663cad2e8f5ac738
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42819916"
 ---
-# <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített kereszt-összetevő tranzakció diagnosztika
+# <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített összetevőt tranzakció diagnosztikája
 
-*Ez a felület jelenleg előzetes verzióban érhetők, és lecseréli a meglévő diagnosztikai paneleken kiszolgálóoldali kérelmeket, függőségeit és kivételeket.*
+Az egyesített diagnosztika terén automatikusan kiszolgálóoldali telemetria utal. az összes figyelt az Application Insights-összetevő egyetlen nézetben. Nem számít, ha a különböző kialakítási kulcs több erőforrást. Application Insights az alapul szolgáló kapcsolatot észlel, és lehetővé teszi, hogy könnyedén diagnosztizálhatja az alkalmazás-összetevőt, függőséget vagy egy tranzakció lassulás vagy hibát okozó.
 
-Az előzetes egy új, egyesített diagnosztika kezelőfelülettel automatikusan hibához kiszolgálóoldali telemetriai az összes figyelt Application Insights összetevő egyetlen nézetben. Nem számít, ha külön instrumentation kulccsal rendelkező több erőforrást. Az Application Insights az alapul szolgáló kapcsolatot észlel, és lehetővé teszi a könnyen diagnosztizálhatja az alkalmazás-összetevő, a függőségekkel vagy az egy tranzakció lassulást vagy sikertelenségét okozó kivétel.
+## <a name="what-is-a-component"></a>Mi az összetevő?
 
-## <a name="what-is-a-component"></a>Mi az, hogy egy összetevő?
+Összetevők egymástól függetlenül üzembe helyezhető az elosztott és mikroszolgáltatás-alkalmazások tartoznak. A fejlesztők és műveleti csapatok kód szintű láthatóság vagy a ezeket alkalmazás-összetevők által létrehozott telemetriát hozzáféréssel rendelkezik.
 
-Összetevők az elosztott/mikroszolgáltatások alkalmazás egymástól függetlenül telepíthető részét képezik. A fejlesztők és a műveletek csapat kód szintű láthatóságot, vagy próbáljon elérni ezeket alkalmazás-összetevők által létrehozott telemetriai rendelkezik.
-
-* Összetevők eltérnek "megfigyelt" külső függőségei, például az SQL, EventHub stb., amelyek a csoport/szervezeti nem lehet hozzáférni a (kód vagy telemetria).
-* Összetevők tetszőleges server/szerepkör/tároló példányát futtatni.
-* Összetevők külön Application Insights instrumentation kulcsok (akkor is, ha előfizetések különböző) vagy egy Application Insights instrumentation kulcs jelentéskészítés külön szerepköröket is. Az új felület részletes adatainak megjelenítése termékcsalád összes tagjára, függetlenül attól, hogy azok be van állítva.
+* Összetevők eltérnek "a megfigyelt" külső függőségei, például az SQL-EventHub stb., amelyek nem lehet a csapat vagy szervezet (kód vagy telemetria) eléréséhez.
+* Összetevők futtassa bármely server-szerepkör-tárolót példányok száma.
+* Összetevők külön Application Insights-kialakítási kulcs (akkor is, ha az előfizetések különböző) vagy egy egyetlen az Application Insights-kialakítási kulcsot a jelentéskészítés különböző szerepköröket is. Az új felület részleteket jeleníti meg termékcsalád összes tagjára, függetlenül attól, hogy azok be van állítva.
 
 > [!NOTE]
-> * **Hiányzik a kapcsolódó elem hivatkozások?** Minden kapcsolódó kiszolgálóoldali kérelem, függőség és kivételekkel kapcsolatos telemetriai adatok van a [felső](#cross-component-transaction-chart) és [alsó](#all-telemetry-related-to-the-selected-component-operation) bal oldalán szakaszait. 
-> * A [felső](#cross-component-transaction-chart) szakasz termékcsalád összes tagjára ad eredményül a tranzakciót. A legjobb eredmények érdekében győződjön meg arról, az összes összetevő és a legújabb stabil Application Insights SDK vannak tagolva. Ha másik Application Insights-erőforrások, ellenőrizze, hogy a telemetriai adatok megtekintéséhez szükséges engedélyekkel.
-> * A [alsó](#all-telemetry-related-to-the-selected-component-operation) az bal oldalán látható szakasza **összes** a kérelem kapcsolódó telemetriai adatokat, beleértve a nyomkövetési adatokat és eseményeket a kiválasztott összetevőhöz.
+> * **Hiányzik a kapcsolódó elem hivatkozásokat?** Az összes kapcsolódó telemetria a [felső](#cross-component-transaction-chart) és [alsó](#all-telemetry-with-this-Operation-Id) a bal oldali szakaszát. 
 
-## <a name="enable-transaction-diagnostics-experience"></a>Tranzakció diagnosztika élmény engedélyezése
-Engedélyezze "egyesített részletek: E2E tranzakció diagnosztika" a a [az előzetes verziójú funkciók listáját](app-insights-previews.md)
+## <a name="transaction-diagnostics-experience"></a>Tranzakció diagnosztikája élmény
+Ez a nézet részből négy fő: eredmények listája, összetevőt tranzakció diagramot, ezt a műveletet, és bármely kiválasztott telemetriai elem a bal oldali ablaktáblában kapcsolódó összes telemetriai adat idő – feladatütemezési listáját.
 
-![Minta engedélyezése](media/app-insights-e2eTxn-diagnostics/previews.png)
+![Főrész](media/app-insights-e2eTxn-diagnostics/4partsCrossComponent.png)
 
-Ebben az előzetes verzióban érhető el jelenleg a kiszolgálóoldali kérelmeket, függőségeket és kivételeket. Érheti el az új felület a **keresési eredmények**, **teljesítmény**, vagy **hiba** osztályozhatja a feladatait. Az előzetes a felváltja a megfelelő klasszikus részletei panelen.
+## <a name="cross-component-transaction-chart"></a>Összetevőt tranzakció diagram
 
-![Teljesítmény – minták](media/app-insights-e2eTxn-diagnostics/performanceSamplesClickThrough.png)
+A diagram vízszintes sávokkal ütemterv és -függőségek időtartamára különböző összetevők biztosít. Gyűjtött kivételeket is vannak megjelölve az eseményeket egy idővonalon megjelenítve.
 
-## <a name="transaction-diagnostics-experience"></a>Tranzakció diagnosztika élmény
-Ez a nézet három részből kulcs: kereszt-összetevő tranzakció diagram, egy adott összetevő művelet, és bármely kiválasztott telemetriai elem a bal oldali ablaktáblában az összes telemetriai adat idő szekvenciális listáját.
-
-![Legfontosabb elemei](media/app-insights-e2eTxn-diagnostics/3partsCrossComponent.png)
-
-## <a name="cross-component-transaction-chart"></a>Kereszt-összetevő tranzakció diagram
-
-Ez a diagram vízszintes sávokkal ütemterv biztosít kérések és a függőségek időtartama összetevői között. Az idősor szintén inaktívra összegyűjtött kivételek.
-
-* Ez a diagram felső sora jelenti. a belépési pont a bejövő kérelem első összetevőnek hívása a következő tranzakcióban. Az időtartam a tranzakció elvégzéséhez szükséges teljes idő.
-* Bármely külső függőségek hívásainak rendelkező függőségi típusát jelző ikonok egyszerű nem összecsukható sor.
-* Egyéb összetevők hívásainak összecsukható sorok. Minden egyes sorára felel meg az összetevő a meghívott adott művelethez.
-* Alapértelmezés szerint a kérelmet, a függőségekkel vagy a kivétellel, hogy kezdetben kiválasztott jelenik meg a diagramot.
-* Válassza ki az összes sort, hogy a [részleteit a jobb oldali](#details-of-the-selected-telemetry). 
+* A diagram felső sorában jelöli a belépési pont, a bejövő kéréseket az első összetevő neve, az ezt a tranzakciót. Az időtartam a tranzakció teljes ideje.
+* Bármilyen külső függőségekhez intézett hívások függőségi típusát jelző ikonok rendelkező egyszerű nem összecsukható sor.
+* Egyéb összetevők hívásainak összecsukható sorok. Minden sor megfelel egy adott művelethez az összetevő vyvolat.
+* Alapértelmezett, a kérelem, függőséget vagy kivételt a kijelölt jelenik meg, a jobb oldalon.
+* Válassza ki az összes sort, hogy a [részletei a jobb oldali](#details-of-the-selected-telemetry). 
 
 > [!NOTE]
-Egyéb összetevők hívásainak két sort rendelkezik: egy sor jelenti a kimenő hívás (függőség) a hívó összetevő, és a többi sor felel meg a bejövő kérelem, a hívott összetevő. A kezdő Ikonos, mind a duration sávok különböző stílusbeállításokat segítségével különböztetheti.
+Az összetevőinek hívásaihoz két sor: egy sort képvisel a kimenő hívás (függőségek) a hívó összetevőtől, és a többi sor felel meg a bejövő kérelem, a hívott összetevő. A vezető ikon és a időtartama sávok különböző stílusának segít megkülönböztetni őket.
 
-## <a name="all-telemetry-related-to-the-selected-component-operation"></a>A kijelölt összetevő-művelethez kapcsolódó összes telemetriai adat
+## <a name="all-telemetry-with-this-operation-id"></a>Ez a művelet az azonosító az összes telemetriai adat
 
-A kereszt-összetevő tranzakció diagram kijelölt minden sor egy adott összetevő a meghívott művelet kapcsolódik. A kiválasztott összetevő művelet címe alján megjelenik. Nyissa meg az ebben a szakaszban tekintheti meg, hogy adott művelethez kapcsolódó összes telemetriai adat strukturálatlan idő sorozata. Megfelelő megjelenítéséhez a listában szereplő bármely telemetriai elem kiválaszthatja [részleteit a jobb oldali](#details-of-the-selected-telemetry).
+Ez a szakasz a tranzakció kapcsolatos összes telemetriai adat idő sorozatát időrendi listanézet mutatja. Az egyéni eseményeket és a nyomkövetési adatok nem jelennek meg, a tranzakciós diagram is mutatja. Szűrheti a listát egy adott összetevő hívás által létrehozott telemetriát. Ebben a listában, hogy megfelelő kiválaszthatja az összes telemetriai elem [részletei a jobb oldali](#details-of-the-selected-telemetry).
 
-![Idő sorozatát összes telemetriai adat](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
+![Minden telemetriai adat idő sorrendje](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
 
-## <a name="details-of-the-selected-telemetry"></a>A kijelölt telemetriai adatait
+## <a name="details-of-the-selected-telemetry"></a>A kiválasztott telemetriai adatait
 
-Ezen az ablaktáblán látható a bal oldali vagy a két szakasz a kiválasztott elemek részletei. "Minden látszik" felsorolja az összes összegyűjtött szabványos attribútumait. Egyéni attribútumokat külön-külön az alábbiak a szabványos készletét. Kattintson a "Megnyitás szolgáltatásprofil-elemzői adat" vagy "Megnyitás hibakeresési snapshot" kód szintű diagnosztikai megfelelő részletek ablaktáblán.
+Az összecsukható ablaktábla bármely a tranzakció diagramot, vagy a listából kiválasztott elem részleteinek megtekintéséből jeleníti meg. "Az összes megjelenítése" felsorolja az összes gyűjtött szabványos attribútumát. Egyéni attribútumokat külön-külön az alábbiak a szabványos készlet. Kattintson a "..." alatt a stack nyomkövetési ablakban másolja a nyomkövetés beolvasásához. "Nyílt profiler hívásláncai" vagy "hibakeresési pillanatfelvétel megnyitása" látható kód kódszintű diagnosztika megfelelő részletei ablaktábla.
 
 ![Kivételek részletei](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
 
-## <a name="profiler-and-snapshot-debugger"></a>Profilkészítő és a pillanatfelvételek hibakereső
+## <a name="search-results"></a>Keresési eredmények
 
-[Application Insights Profilkészítő](app-insights-profiler.md) vagy [pillanatkép hibakereső](app-insights-snapshot-debugger.md) súgó a kód szintű diagnosztika a teljesítmény és meghibásodási problémákra. Ez a felület a szolgáltatásprofil-elemzői adat megjelenik, vagy kattintson a egyetlen összetevők közül bármelyik pillanatképeinek.
+Az összecsukható panel megjeleníti az eredményeket, a szűrési feltételeknek. Kattintson a frissíteni a saját adatait a fenti 3 szakaszok minden eredményt. Próbálja ki, amelyek a legnagyobb valószínűséggel, így az összes összetevő elérhető adatok akkor is, ha a mintavétel van alkalmazva. Ezek közül bármelyik a minták keresése. Ezek láthatók, mint a "ajánlott" mintát.
 
-Ha nem sikerült a Profilkészítő működik-e, lépjen kapcsolatba **serviceprofilerhelp@microsoft.com**
+![Keresési eredmények](media/app-insights-e2eTxn-diagnostics/searchResults.png)
 
-Ha nem sikerült a pillanatkép-hibakereső működik-e, lépjen kapcsolatba **snapshothelp@microsoft.com**
+## <a name="profiler-and-snapshot-debugger"></a>Profiler és a pillanatkép-hibakereső
 
-![Integráció a hibakereső](media/app-insights-e2eTxn-diagnostics/debugSnapshot.png)
+[Az Application Insights profiler](app-insights-profiler.md) vagy [pillanatkép-hibakereső](app-insights-snapshot-debugger.md) súgó a kód szintű diagnosztikáról, teljesítmény és meghibásodási problémákra. A felhasználói élményét láthatja a profiler hívásláncai, vagy kattintson az egyes összetevőkre egyetlen pillanatképeket.
+
+Ha nem sikerült a Profiler működik, lépjen kapcsolatba **serviceprofilerhelp@microsoft.com**
+
+Ha nem sikerült a pillanatkép-hibakereső működik, lépjen kapcsolatba **snapshothelp@microsoft.com**
+
+![Profiler-integráció](media/app-insights-e2eTxn-diagnostics/profilerTraces.png)
 
 ## <a name="faq"></a>GYIK
 
-*A diagramon látható adott összetevőt, és a többi csak jelennek meg a külső függőségekkel anélkül, hogy mi történt az összetevők belül minden részletét.*
+*Egy adott összetevőt a diagramon láthatók, és a többi csak jelennek meg a külső függőségek nélkül bármilyen részletes belül összetevőket kimenetelét.*
 
-Lehetséges okok:
+A lehetséges okok:
 
-* A többi összetevő az Application insights szolgáltatással vannak tagolva?
-* Akkor használja a legújabb stabil Application Insights SDK?
-* Ha ezeket az összetevőket külön Application Insights-erőforrások, rendelkezik megfelelő hozzáféréssel a telemetriai adatokat?
+* A többi összetevő Application Insights révén utasított vannak?
+* Akkor használja a legújabb stabil Application Insights SDK-t?
+* Ha ezeket az összetevőket külön Application Insights-erőforrások, rendelkezik megfelelő hozzáféréssel a telemetriát?
 
-Ha Ön rendelkezik hozzáféréssel, és az összetevők és a legújabb Application Insights SDK-k vannak tagolva, ossza meg velünk a jobb felső visszajelzés csatornán keresztül.
-
-*Csak kell külső függőségeit. Kell I érdeklik ebben az előzetes verzióban?*
-
-Igen. Az új felület a szolgáltatás minden kapcsolódó kiszolgálóoldali telemetriai adatokat egyetlen nézetben. A régebbi részletei panel cseréli a forgatókönyvben a jövőben, így próbálja ki és küldje el visszajelzését. Néz ki egy adott összetevőt tranzakció itt található:
-
-![Egyetlen összetevőt élmény](media/app-insights-e2eTxn-diagnostics/singleComponent.png)
+Ha rendelkezik hozzáféréssel, és az összetevőket a legújabb Application Insights SDK-k olyan vannak felszerelve, tudassa velünk, a jobb felső visszajelzés csatornán keresztül.
 
 *A függőségek ismétlődő sorok láthatók. Ez várható?*
 
-Ilyenkor azt láthatók a kimenő függőségi hívás a bejövő kérelem elkülönül. Általában a két hívások hely csak a duration érték miatt a hálózati különböző üzenetváltási azonos. A kezdő Ikonos, mind a duration sávok különböző stílusbeállításokat segítségével különböztetheti. Az adatok a bemutató egyértelmű? Küldje el visszajelzését!
+Jelenleg hogy láthatók a kimenő függőségi hívás külön, a bejövő kérelem. Általában a két hívások hely csak az üzenetváltási különböző hálózati miatt folyamatban időtartam értéke azonos. A vezető ikon és a időtartama sávok különböző stílusának segít megkülönböztetni őket. Ez a bemutató, az adatok az zavaró? Küldje el visszajelzését!
 
-*Mi a helyzet óra között különböző összetevő példányok megdönti?*
+*Mi a helyzet óra megdönti különböző összetevő-példányok között?*
 
-Ütemtervek módosítva óra dönt a tranzakció diagram van. A pontos időbélyegeket a részleteket tartalmazó ablaktáblán vagy Analytics segítségével tekintheti meg.
+Ütemtervek módosítva eltérései a tranzakció-diagram van. A részleteket tartalmazó ablaktáblán, vagy az Analytics használatával pontos időbélyegei látható.
 
 *Az új felület hiányzik kapcsolódó elemek lekérdezések nagy részénél?*
 
-Ez az elvárt működés. A kapcsolódó elem termékcsalád összes tagjára már rendelkezésre állnak a bal oldalon (felső és alsó szakaszok). Az új felület rendelkezik, amely nem fedi le a bal oldalon két kapcsolódó elemek: 5 perc előtt és után ezt az eseményt a felhasználó ütemterv összes telemetriai adat.
-
-*Miért az új felület nincs telepítve a szolgáltatás, amely a régebbi paneleket az I loved?*
-
-Küldjön visszajelzést! Szeretnénk cím számára fontos szempont, mielőtt a szolgáltatás általánosan elérhető, hogy mely a régebbi nézetek elavulttá válik. A lépést Ha vissza kíván térni a régebbi paneleket az előzetes letilthatja.
-
-## <a name="known-issues"></a>Ismert problémák
-
-* A hiba-mintákat, az alkalmazás-hozzárendelés csatolja a régebbi részletei panelen.
-* A keresési eredmények autocluster alapú feltárása a régebbi részletei panel kapcsolódik.
-* Az új felület a munkalem-integrációt nem érhető el.
+Ez az elvárt működés. A kapcsolódó elemek termékcsalád összes tagjára mindegyike már elérhető a bal oldali (felső és alsó szakaszt). Az új felület rendelkezik, amely nem fedi le a bal oldalon két kapcsolódó elemek: előtt és után ezt az eseményt, és a felhasználó idővonalán öt perc alatt az összes telemetriai adat.

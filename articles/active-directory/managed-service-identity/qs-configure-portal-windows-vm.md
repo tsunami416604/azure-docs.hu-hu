@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 6ba090065b18a44cc1f01a62eefb5dcf52bcf356
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 7ac4dd41c8a1adb422539e0832715d59ec385694
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213265"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745559"
 ---
 # <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás az Azure portal használatával
 
@@ -27,10 +27,7 @@ ms.locfileid: "39213265"
 
 Felügyeltszolgáltatás-identitás az Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
 
-Ebben a cikkben, megtudhatja, hogyan engedélyezheti és tilthatja le a rendszer hozzárendelt identitás egy Azure virtuális gép, az Azure portal használatával. Hozzárendelése és eltávolítása, felhasználó által hozzárendelt identitások az Azure virtuális gépekről jelenleg nem támogatott az Azure Portalon keresztül.
-
-> [!NOTE]
-> A felhasználóhoz hozzárendelt identitás műveletek jelenleg nem támogatottak az Azure Portalon keresztül. Térjen vissza frissítésekért. 
+Ebből a cikkből megismerheti, hogyan engedélyezheti és tilthatja le a rendszer és a felhasználóhoz hozzárendelt identitás számára egy Azure virtuális gép (VM), az Azure portal használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,16 +36,18 @@ Ebben a cikkben, megtudhatja, hogyan engedélyezheti és tilthatja le a rendszer
 - Ebben a cikkben a kezelési műveletek végrehajtásához a fióknak rendelkeznie kell a következő szerepkör-hozzárendelés:
     - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) engedélyezéséhez, és távolítsa el a rendszer által hozzárendelt identitással Azure virtuális gépből.
 
-## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Felügyeltszolgáltatás-identitás az Azure-beli virtuális gép létrehozása során
+## <a name="system-assigned-identity"></a>Rendszerhez rendelt identitáshoz
 
-A virtuális gép létrehozása az Azure Portalon keresztül jelenleg nem támogatja a Felügyeltszolgáltatás-identitás műveletek. Ehelyett olvassa el a következő virtuális gép létrehozása a rövid útmutató cikkek, először hozzon létre egy virtuális gép közül:
+Ebben a szakaszban megismerheti, hogyan engedélyezheti és tilthatja le a rendszer-azonosító hozzárendelve virtuális géphez az Azure portal használatával.
+
+### <a name="enable-system-assigned-identity-during-creation-of-a-vm"></a>Engedélyezze a rendszerhez rendelt identitáshoz egy virtuális gép létrehozása során
+
+Jelenleg az Azure portal nem támogatja a virtuális gépek létrehozása során lehetővé teszi a rendszer által hozzárendelt identitással. Ehelyett a következő virtuális gép létrehozása a rövid útmutató cikkek, először hozzon létre egy virtuális Géphez történő, és folytathatja a következő szakaszban engedélyezése a virtuális gépen a rendszer által hozzárendelt identitással kapcsolatos részletekért:
 
 - [Windows virtuális gép létrehozása az Azure portal használatával](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [Linux rendszerű virtuális gép létrehozása az Azure portal használatával](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
 
-Majd folytassa a következő szakaszban részleteiért engedélyezi a Felügyeltszolgáltatás-identitást a virtuális gépen.
-
-## <a name="enable-managed-service-identity-on-an-existing-azure-vm"></a>Engedélyezi a Felügyeltszolgáltatás-identitását egy meglévő Azure virtuális gépen
+### <a name="enable-system-assigned-identity-on-an-existing-vm"></a>Engedélyezze a rendszerhez rendelt identitáshoz egy meglévő virtuális gépen
 
 Ahhoz, hogy a rendszer hozzárendelt identitás eredetileg anélkül, hogy üzembe helyezett virtuális gépen:
 
@@ -58,12 +57,9 @@ Ahhoz, hogy a rendszer hozzárendelt identitás eredetileg anélkül, hogy üzem
 
 3. A virtuális gépen a rendszer által hozzárendelt identitással engedélyezése "Igen" kiválasztásával "Managed service identity" alatt, és kattintson a **mentése**. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
 
-   > [!NOTE]
-   > Egy felhasználóhoz hozzárendelt identitás hozzáadása egy virtuális gép jelenleg nem támogatott az Azure Portalon keresztül.
-
    ![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
-## <a name="remove-managed-service-identity-from-an-azure-vm"></a>Távolítsa el a Felügyeltszolgáltatás-identitás az Azure virtuális gépből
+### <a name="remove-system-assigned-identity-from-a-vm"></a>Távolítsa el a rendszerhez rendelt identitáshoz egy virtuális gépről
 
 Ha egy virtuális gépet, amely már nincs szüksége a rendszer által hozzárendelt identitással rendelkezik:
 
@@ -73,10 +69,36 @@ Ha egy virtuális gépet, amely már nincs szüksége a rendszer által hozzáre
 
 3. Tiltsa le a rendszer, ha a "Nem", "Managed service identity" alatt a virtuális gép identitásának hozzárendelte, majd kattintson a Mentés gombra. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
 
-    > [!NOTE]
-    > Egy felhasználóhoz hozzárendelt identitás hozzáadása egy virtuális gép jelenleg nem támogatott az Azure Portalon keresztül.
+   ![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)
 
-   ![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
+## <a name="user-assigned-identity"></a>A felhasználóhoz hozzárendelt identitás
+
+ Ebben a szakaszban megismerheti, hogyan adhat hozzá és távolíthat el egy felhasználót hozzárendelt identitás egy virtuális gépről az Azure portal használatával.
+
+### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-vm"></a>Rendelje hozzá egy a felhasználóhoz hozzárendelt identitás egy virtuális gép létrehozása során
+
+Jelenleg az Azure portal nem támogatja hozzárendelése egy a felhasználóhoz hozzárendelt identitás egy virtuális gép létrehozása során. Ehelyett tekintse meg a következő virtuális gép létrehozása a rövid útmutató cikkek, először hozzon létre egy virtuális gép közül, és folytathatja a következő szakasz egy a felhasználóhoz hozzárendelt identitás a virtuális géphez való hozzárendelésével kapcsolatos részletek:
+
+- [Windows virtuális gép létrehozása az Azure portal használatával](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Linux rendszerű virtuális gép létrehozása az Azure portal használatával](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+
+### <a name="assign-a-user-assigned-identity-to-an-existing-vm"></a>Rendelje hozzá egy a felhasználóhoz hozzárendelt identitás meglévő virtuális géphez
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely tartalmazza a virtuális gép Azure-előfizetés társítva.
+2. Keresse meg a kívánt virtuális Gépet, majd kattintson a **identitás**, **felhasználóhoz hozzárendelt** , majd  **\+Hozzáadás**.
+
+   ![A felhasználóhoz hozzárendelt identitás hozzáadása virtuális Géphez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
+
+3. Kattintson a felhasználóhoz hozzárendelt identitás hozzáadása a virtuális Géphez, és kattintson a kívánt **Hozzáadás**.
+
+    ![A felhasználóhoz hozzárendelt identitás hozzáadása virtuális Géphez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
+
+### <a name="remove-a-user-assigned-identity-from-a-vm"></a>Távolítsa el a a felhasználóhoz hozzárendelt identitás egy virtuális gépről
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely tartalmazza a virtuális gép Azure-előfizetés társítva.
+2. Keresse meg a kívánt virtuális Gépet, majd kattintson a **identitás**, **felhasználóhoz hozzárendelt**, a felhasználóhoz hozzárendelt identitás törlése, és kattintson a kívánt nevére **eltávolítása** ( kattintson**Igen** a megerősítési panelen).
+
+   ![Távolítsa el a felhasználóhoz hozzárendelt identitás egy virtuális gépről](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vm-screenshot.png)
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
