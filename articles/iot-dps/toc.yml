@@ -1,199 +1,218 @@
+items:
 - name: Azure IoT – alapok
   href: ../iot-fundamentals/index.yml
-- name: Az Azure IoT Hub eszközkiépítési szolgáltatás dokumentációja
+- name: Az Azure IoT Hub Device Provisioning dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Információk az IoT eszközkiépítésről
-      href: about-iot-dps.md
+  - name: Információk az IoT Device Provisioning szolgáltatásról
+    href: about-iot-dps.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Automatikus kiépítés beállítása – Azure CLI
-      href: quick-setup-auto-provision-cli.md
-    - name: Automatikus kiépítés beállítása – Portál
-      href: quick-setup-auto-provision.md
-    - name: Automatikus kiépítés beállítása – Sablon
-      href: quick-setup-auto-provision-rm.md
-    - name: Szimulált eszköz automatikus üzembe helyezése
+  - name: Automatikus kiépítés beállítása – Azure CLI
+    href: quick-setup-auto-provision-cli.md
+  - name: Automatikus kiépítés beállítása – Portál
+    href: quick-setup-auto-provision.md
+  - name: Automatikus kiépítés beállítása – Sablon
+    href: quick-setup-auto-provision-rm.md
+  - name: Szimulált eszköz automatikus üzembe helyezése
+    items:
+    - name: TPM-igazolás
       items:
-        - name: TPM-igazolás
-          items:
-            - name: 'C#'
-              href: quick-create-simulated-device.md
-            - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: 'C#'
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
-        - name: X.509-igazolás
-          items:
-            - name: 'C#'
-              href: quick-create-simulated-device-x509.md
-            - name: Java
-              href: quick-create-simulated-device-x509-java.md
-            - name: 'C#'
-              href: quick-create-simulated-device-x509-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-x509-node.md
-            - name: Python
-              href: quick-create-simulated-device-x509-python.md
-    - name: Eszközök regisztrációja a regisztrációs szolgáltatás API-jai segítségével
+      - name: C#
+        href: quick-create-simulated-device.md
+      - name: Java
+        href: quick-create-simulated-device-tpm-java.md
+      - name: C#
+        href: quick-create-simulated-device-tpm-csharp.md
+      - name: Node.js
+        href: quick-create-simulated-device-tpm-node.md
+      - name: Python
+        href: quick-create-simulated-device-tpm-python.md
+    - name: X.509-igazolás
       items:
-        - name: TPM-igazolás
-          items:
-            - name: Java
-              href: quick-enroll-device-tpm-java.md
-            - name: 'C#'
-              href: quick-enroll-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-enroll-device-tpm-node.md
-            - name: Python
-              href: quick-enroll-device-tpm-python.md
-        - name: X.509-igazolás
-          items:
-            - name: Java
-              href: quick-enroll-device-x509-java.md
-            - name: 'C#'
-              href: quick-enroll-device-x509-csharp.md
-            - name: Node.js
-              href: quick-enroll-device-x509-node.md
-            - name: Python
-              href: quick-enroll-device-x509-python.md
+      - name: C#
+        href: quick-create-simulated-device-x509.md
+      - name: Java
+        href: quick-create-simulated-device-x509-java.md
+      - name: C#
+        href: quick-create-simulated-device-x509-csharp.md
+      - name: Node.js
+        href: quick-create-simulated-device-x509-node.md
+      - name: Python
+        href: quick-create-simulated-device-x509-python.md
+  - name: Eszközök regisztrációja a regisztrációs szolgáltatás API-jai segítségével
+    items:
+    - name: TPM-igazolás
+      items:
+      - name: Java
+        href: quick-enroll-device-tpm-java.md
+      - name: C#
+        href: quick-enroll-device-tpm-csharp.md
+      - name: Node.js
+        href: quick-enroll-device-tpm-node.md
+      - name: Python
+        href: quick-enroll-device-tpm-python.md
+    - name: X.509-igazolás
+      items:
+      - name: Java
+        href: quick-enroll-device-x509-java.md
+      - name: C#
+        href: quick-enroll-device-x509-csharp.md
+      - name: Node.js
+        href: quick-enroll-device-x509-node.md
+      - name: Python
+        href: quick-enroll-device-x509-python.md
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: 1 – Felhőerőforrások beállítása
-      href: tutorial-set-up-cloud.md
-    - name: 2 – Eszköz beállítása
-      href: tutorial-set-up-device.md
-    - name: 3 – Eszköz kiépítése egy IoT hubon
-      items:
-        - name: 'C#'
-          href: tutorial-provision-device-to-hub.md
-        - name: 'C#'
-          href: tutorial-net-provision-device-to-hub.md
-    - name: 4 – Eszközök kiépítése több hubon
-      href: tutorial-provision-multiple-hubs.md
-    - name: 5 – Csoportos beléptetések létrehozása
-      href: tutorial-group-enrollments.md
+  - name: 1 – Felhőerőforrások beállítása
+    href: tutorial-set-up-cloud.md
+  - name: 2 – Eszköz beállítása
+    href: tutorial-set-up-device.md
+  - name: 3 – Eszköz kiépítése egy IoT hubon
+    items:
+    - name: C#
+      href: tutorial-provision-device-to-hub.md
+    - name: C#
+      href: tutorial-net-provision-device-to-hub.md
+  - name: 4 – Eszközök kiépítése több hubon
+    href: tutorial-provision-multiple-hubs.md
+  - name: 5 – Csoportos beléptetések létrehozása
+    href: tutorial-group-enrollments.md
 - name: Alapelvek
   items:
-    - name: Automatikus üzembe helyezés
-      href: concepts-auto-provisioning.md
-    - name: Eszközök
-      href: concepts-device.md
-    - name: Biztonság
-      href: concepts-security.md
-    - name: Szolgáltatás
-      href: concepts-service.md
-    - name: TPM-igazolás
-      href: concepts-tpm-attestation.md
+  - name: Automatikus üzembe helyezés
+    href: concepts-auto-provisioning.md
+  - name: Eszközök
+    href: concepts-device.md
+  - name: Biztonság
+    href: concepts-security.md
+  - name: Szolgáltatás
+    href: concepts-service.md
+  - name: TPM-igazolás
+    href: concepts-tpm-attestation.md
 - name: Útmutatók
   items:
-    - name: Az MXChip IoT fejlesztői készlet csatlakoztatása az IoT Hubhoz
-      href: how-to-connect-mxchip-iot-devkit.md
-    - name: Eszközregisztrációs konfigurációk kezelése
-      items:
-        - name: Ellenőrzött hitelesítésszolgáltatói tanúsítványok konfigurálása
-          href: how-to-verify-certificates.md
-        - name: Megszüntetés kezelése
-          href: how-to-unprovision-devices.md
-        - name: Regisztráció megszüntetésének kezelése
-          href: how-to-revoke-device-access-portal.md
-        - name: Regisztrációk kezelése – portál
-          href: how-to-manage-enrollments.md
-        - name: Regisztrációk kezelése – szolgáltatási SDK-k
-          href: how-to-manage-enrollments-sdks.md
-    - name: Eszközregisztrációs szolgáltatás kezelése
-      items:
-        - name: Eszközregisztrációs szolgáltatás konfigurálása az Azure CLI-vel
-          href: how-to-manage-dps-with-cli.md
-        - name: Regisztrációs szolgáltatási API-k hozzáférésének vezérlése
-          href: how-to-control-access.md
-    - name: IoT Edge-eszközök regisztrálása
-      items:
-        - name: Linux
-          href: ../iot-edge/how-to-auto-provision-simulated-device-linux.md
-          maintainContext: true
-        - name: Windows
-          href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
-          maintainContext: true
-    - name: Igazolási mechanizmusok használata SDK-val
-      href: use-hsm-with-sdk.md
-    - name: Fejlesztés SDK-eszközökkel
-      href: how-to-use-sdk-tools.md
+  - name: Az MXChip IoT fejlesztői készlet csatlakoztatása az IoT Hubhoz
+    href: how-to-connect-mxchip-iot-devkit.md
+  - name: Device Provisioning Service konfigurációjának kezelése
+    items:
+    - name: Regisztrációk kezelése – portál
+      href: how-to-manage-enrollments.md
+    - name: Regisztrációk kezelése – szolgáltatási SDK-k
+      href: how-to-manage-enrollments-sdks.md
+    - name: Ellenőrzött hitelesítésszolgáltatói tanúsítványok konfigurálása
+      href: how-to-verify-certificates.md
+    - name: Eszköztanúsítványok regisztrálása
+      href: how-to-roll-certificates.md
+    - name: Regisztráció megszüntetésének kezelése
+      href: how-to-revoke-device-access-portal.md
+    - name: Megszüntetés kezelése
+      href: how-to-unprovision-devices.md
+  - name: Device Provisioning Service kezelése
+    items:
+    - name: Device Provisioning Service konfigurálása az Azure CLI-vel
+      href: how-to-manage-dps-with-cli.md
+    - name: Regisztrációs szolgáltatási API-k hozzáférésének vezérlése
+      href: how-to-control-access.md
+  - name: IoT Edge-eszközök regisztrálása
+    items:
+    - name: Linux
+      href: ../iot-edge/how-to-auto-provision-simulated-device-linux.md
+      maintainContext: true
+    - name: Windows
+      href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
+      maintainContext: true
+  - name: Igazolási mechanizmusok használata SDK-val
+    href: use-hsm-with-sdk.md
+  - name: Fejlesztés SDK-eszközökkel
+    href: how-to-use-sdk-tools.md
 - name: Referencia
   items:
-    - name: REST
-      href: /rest/api/iot-dps
+  - name: REST API
+    href: /rest/api/iot-dps
+  - name: C nyelvhez készült Azure IoT SDK
+    href: https://github.com/Azure/azure-iot-sdk-c
+  - name: Pythonhoz készült Azure IoT SDK
+    href: https://github.com/Azure/azure-iot-sdk-python
+  - name: Node.js-hez készült Azure IoT SDK
+    href: https://github.com/Azure/azure-iot-sdk-node
+  - name: Javához készült Azure IoT SDK
+    href: https://github.com/Azure/azure-iot-sdk-java
+  - name: .NET-hez készült Azure IoT SDK
+    href: https://github.com/Azure/azure-iot-sdk-csharp
 - name: Kapcsolódó témakörök
   items:
-    - name: Megoldások
-      items:
-        - name: IoT-megoldásgyorsítók
-          href: /azure/iot-suite
-        - name: IoT-központ
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Platformszolgáltatások
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Szolgáltatási SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+  - name: Megoldások
+    items:
+    - name: IoT-megoldásgyorsítók
+      href: /azure/iot-suite
+    - name: IoT-központ
+      href: https://docs.microsoft.com/microsoft-iot-central/
+  - name: Platformszolgáltatások
+    items:
+    - name: IoT Hub
+      href: /azure/iot-hub
+    - name: IoT Hub Device Provisioning Service
+      href: /azure/iot-dps
+    - name: Maps
+      href: /azure/azure-maps
+    - name: Szolgáltatási SDK-k
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+    - name: Time Series Insights
+      href: /azure/time-series-insights
+  - name: Edge
+    items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: IoT eszközoldali SDK-k
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
 - name: További források
   items:
-    - name: 'Azure IoT-minták C#-hoz (.NET)'
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
-    - name: Azure IoT-minták Node.js-hez
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
-    - name: Azure IoT-minták Javához
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
-    - name: Azure IoT-minták Pythonhoz
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
-    - name: Azure IoT-minták iOS platformhoz
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
-    - name: Azure IoT Hub
-      href: 'https://azure.microsoft.com/services/iot-hub/'
-    - name: Azure Certified for IoT eszközkatalógus
-      href: 'https://catalog.azureiotsuite.com/'
-    - name: Azure IoT fejlesztői központ
-      href: 'https://azure.microsoft.com/develop/iot/'
-    - name: Ügyfelek adatkérései
-      href: iot-dps-customer-data-requests.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: Device Explorer eszköz
-      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
-    - name: iothub-diagnostics eszköz
-      href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: Képzési terv
-      href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-iot-hub'
-    - name: Műszaki esettanulmányok
-      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
-    - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'
+  - name: Azure IoT-minták C#-hoz (.NET)
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/
+  - name: Azure IoT-minták Node.js-hez
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-node/
+  - name: Azure IoT-minták Javához
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-java/
+  - name: Azure IoT-minták Pythonhoz
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-python/
+  - name: Azure IoT-minták iOS platformhoz
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/
+  - name: Azure IoT Hub
+    href: https://azure.microsoft.com/services/iot-hub/
+  - name: Azure Certified for IoT eszközkatalógus
+    href: https://catalog.azureiotsuite.com/
+  - name: Azure IoT fejlesztői központ
+    href: https://azure.microsoft.com/develop/iot/
+  - name: Ügyfelek adatkérései
+    href: iot-dps-customer-data-requests.md
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=iot
+  - name: Device Explorer eszköz
+    href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
+  - name: iothub-diagnostics eszköz
+    href: https://github.com/Azure/iothub-diagnostics
+  - name: Képzési terv
+    href: https://azure.microsoft.com/documentation/learning-paths/iot-hub/
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/iot-hub/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=iot-hub
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-iot-hub
+  - name: Műszaki esettanulmányok
+    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
+ms.openlocfilehash: 0a4369214f26622c2a30136a814b8e788e187144
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41926936"

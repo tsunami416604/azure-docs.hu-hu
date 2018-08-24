@@ -74,9 +74,9 @@
 #### [Kliens- és szerveroldali verziószámozás](app-service-mobile-client-and-server-versioning.md)
 
 ### App Service-környezet
-#### [Webalkalmazás létrehozása App Service Environment-környezetben](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [ILB ASE létrehozása Azure Resource Manager-sablonokkal](../app-service/environment/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Belső terheléselosztó használata](../app-service/environment/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Webalkalmazás létrehozása App Service Environment-környezetben](../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Belső terheléselosztó létrehozása és használata](../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [ASE létrehozása sablon használatával](../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Üzembe helyezés
 ### [Felhőalapú szinkronizálás üzembe helyezése](../app-service/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)

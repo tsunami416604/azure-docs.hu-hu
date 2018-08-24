@@ -1,165 +1,176 @@
+items:
 - name: Az Azure-számlázás és -költségkezelés dokumentációja
   href: index.md
 - name: Az Azure számlázásának ismertetése
-  expanded: true
   items:
-    - name: A számla értelmezése
-      href: billing-understand-your-bill.md
-    - name: Számla- és használati adatok beszerzése
-      href: billing-download-azure-invoice-daily-usage-date.md
-    - name: Külső szolgáltatási díjak
-      href: billing-understand-your-azure-marketplace-charges.md
-    - name: A használattal kapcsolatos kifejezések értelmezése
-      href: billing-understand-your-usage.md
-    - name: A számlában használatos kifejezések értelmezése
-      href: billing-understand-your-invoice.md
+  - name: A számla értelmezése
+    href: billing-understand-your-bill.md
+  - name: Számla- és használati adatok beszerzése
+    href: billing-download-azure-invoice-daily-usage-date.md
+  - name: Külső szolgáltatási díjak
+    href: billing-understand-your-azure-marketplace-charges.md
+  - name: A használattal kapcsolatos kifejezések értelmezése
+    href: billing-understand-your-usage.md
+  - name: A számlában használatos kifejezések értelmezése
+    href: billing-understand-your-invoice.md
+  expanded: true
 - name: Költségek kezelése
   items:
-    - name: Váratlan költségek megelőzése
-      href: billing-getting-started.md
-    - name: Számlázási értesítések beállítása
-      href: billing-set-up-alerts.md
-    - name: Díjszabás kiszámítása
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Erőforráscímkék használata
-      href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
-    - name: A költségkeret ismertetése
-      href: billing-spending-limit.md
-    - name: Mentés az Azure Reservations segítségével
+  - name: Váratlan költségek megelőzése
+    href: billing-getting-started.md
+  - name: Számlázási értesítések beállítása
+    href: billing-set-up-alerts.md
+  - name: Díjszabás kiszámítása
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Erőforráscímkék használata
+    href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
+  - name: A költségkeret ismertetése
+    href: billing-spending-limit.md
+  - name: Költségelemzés
+    href: billing-cost-analysis.md
+  - name: Mentés az Azure Reservations segítségével
+    items:
+    - name: Mi az az Azure Reservations?
+      href: billing-save-compute-costs-reservations.md
+    - name: Foglalás vásárlása
       items:
-        - name: Mi az az Azure Reservations?
-          href: billing-save-compute-costs-reservations.md
-        - name: Foglalás vásárlása
-          items:
-            - name: Virtuális gép
-              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
-            - name: SQL Database
-              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
-        - name: A kedvezmény alkalmazásának módja
-          items:
-            - name: Reserved VM Instances
-              href: billing-understand-vm-reservation-charges.md
-            - name: Fenntartott SQL Database-kapacitás
-              href: billing-understand-reservation-charges.md
-        - name: A szoftverköltségeket nem tartalmazza
-          href: billing-reserved-instance-windows-software-costs.md
-        - name: Használatalapú fizetés használata
-          href: billing-understand-reserved-instance-usage.md
-        - name: Vállalati használat
-          href: billing-understand-reserved-instance-usage-ea.md
-        - name: Az Azure Reservations kezelése
-          href: billing-manage-reserved-vm-instance.md
+      - name: Virtuális gép
+        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+      - name: SQL Database
+        href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+    - name: A kedvezmény alkalmazásának módja
+      items:
+      - name: Reserved VM Instances
+        href: billing-understand-vm-reservation-charges.md
+      - name: Fenntartott SQL Database-kapacitás
+        href: billing-understand-reservation-charges.md
+    - name: A szoftverköltségeket nem tartalmazza
+      href: billing-reserved-instance-windows-software-costs.md
+    - name: Használatalapú fizetés használata
+      href: billing-understand-reserved-instance-usage.md
+    - name: Vállalati használat
+      href: billing-understand-reserved-instance-usage-ea.md
+    - name: Az Azure Reservations kezelése
+      href: billing-manage-reserved-vm-instance.md
 - name: Fiók kezelése
   items:
-    - name: Ingyenes fiók
-      items:
-        - name: Ingyenes szolgáltatások létrehozása
-          href: billing-create-free-services-included-free-account.md
-        - name: Díjak elkerülése
-          href: billing-avoid-charges-free-account.md
-        - name: Használat ellenőrzése
-          href: billing-check-free-service-usage.md
-        - name: Váltás magasabb szintű előfizetésre
-          href: billing-upgrade-azure-subscription.md
-        - name: A mérőtársítások ismertetése
-          href: billing-understand-free-service-meter-mapping.md
-    - name: Profil szerkesztése
-      href: billing-how-to-change-azure-account-profile.md
-    - name: Hozzáférés biztosítása a számlázáshoz
-      href: billing-manage-access.md
-    - name: Hivatkozás partnerazonosítóra
-      href: billing-partner-admin-link-started.md
-    - name: Számlázási fiókok megtekintése
-      href: billing-view-all-accounts.md
-    - name: Késedelmes egyenleg kezelése
-      href: billing-azure-subscription-past-due-balance.md
-    - name: Regisztráció Office 365-fiókkal
-      href: billing-use-existing-office-365-account-azure-subscription.md
-    - name: Regisztrálás az Office 365-be Azure-fiókkal
-      href: billing-use-existing-azure-account-for-office-365-subscription.md
+  - name: Ingyenes fiók
+    items:
+    - name: Ingyenes szolgáltatások létrehozása
+      href: billing-create-free-services-included-free-account.md
+    - name: Díjak elkerülése
+      href: billing-avoid-charges-free-account.md
+    - name: Használat ellenőrzése
+      href: billing-check-free-service-usage.md
+    - name: Váltás magasabb szintű előfizetésre
+      href: billing-upgrade-azure-subscription.md
+    - name: A mérőtársítások ismertetése
+      href: billing-understand-free-service-meter-mapping.md
+  - name: Profil szerkesztése
+    href: billing-how-to-change-azure-account-profile.md
+  - name: Hozzáférés biztosítása a számlázáshoz
+    href: billing-manage-access.md
+  - name: Hivatkozás partnerazonosítóra
+    href: billing-partner-admin-link-started.md
+  - name: Számlázási fiókok megtekintése
+    href: billing-view-all-accounts.md
+  - name: Késedelmes egyenleg kezelése
+    href: billing-azure-subscription-past-due-balance.md
+  - name: Regisztráció Office 365-fiókkal
+    href: billing-use-existing-office-365-account-azure-subscription.md
+  - name: Regisztrálás az Office 365-be Azure-fiókkal
+    href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: Előfizetés kezelése
   items:
-    - name: Előfizetés újraaktiválása
-      href: billing-subscription-become-disable.md
-    - name: Tulajdonjogok átadása
-      href: billing-subscription-transfer.md
-    - name: Előfizetés lemondása
-      href: billing-how-to-cancel-azure-subscription.md
-    - name: Hitelkártya módosítása
-      href: billing-how-to-change-credit-card.md
-    - name: Rendszergazda módosítása
-      href: billing-add-change-azure-subscription-administrator.md
-    - name: Váltás előfizetési ajánlatok között
-      href: billing-how-to-switch-azure-offer.md
-    - name: Számlás fizetés
-      href: billing-how-to-pay-by-invoice.md
-    - name: Felügyeleti csoportok létrehozása
-      href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
-    - name: Azure-erőforrások áthelyezése
-      href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
-    - name: Vállalati előfizetés létrehozása
-      href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
-    - name: Előfizetési adatok exportálása
-      href: billing-export-subscriptions.md
-    - name: Azure AD-bérlő kapcsolása
-      href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
-    - name: Korlátok és kvóták
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+  - name: Előfizetés újraaktiválása
+    href: billing-subscription-become-disable.md
+  - name: Tulajdonjogok átadása
+    href: billing-subscription-transfer.md
+  - name: Előfizetés lemondása
+    href: billing-how-to-cancel-azure-subscription.md
+  - name: Hitelkártya módosítása
+    href: billing-how-to-change-credit-card.md
+  - name: Rendszergazda módosítása
+    href: billing-add-change-azure-subscription-administrator.md
+  - name: Váltás előfizetési ajánlatok között
+    href: billing-how-to-switch-azure-offer.md
+  - name: Számlás fizetés
+    href: billing-how-to-pay-by-invoice.md
+  - name: Felügyeleti csoportok létrehozása
+    href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
+  - name: Azure-erőforrások áthelyezése
+    href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
+  - name: Vállalati előfizetés létrehozása
+    href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
+  - name: Előfizetési adatok exportálása
+    href: billing-export-subscriptions.md
+  - name: Azure AD-bérlő kapcsolása
+    href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
+  - name: Korlátok és kvóták
+    href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Hibaelhárítás
   items:
-    - name: Nem található előfizetés
-      href: billing-no-subscriptions-found.md
-    - name: Elutasított kártya
-      href: 'https://support.microsoft.com/en-us/help/4042960'
-    - name: Regisztrációs problémák
-      href: 'https://support.microsoft.com/en-us/help/4042959'
-    - name: Bejelentkezési problémák
-      href: 'https://support.microsoft.com/en-us/help/4042961'
-    - name: Vállalati költségek nézet letiltva
-      href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
-    - name: Kapcsolatfelvétel a támogatási szolgáltatással
-      href: ../azure-supportability/how-to-create-azure-support-request.md
+  - name: Nem található előfizetés
+    href: billing-no-subscriptions-found.md
+  - name: Elutasított kártya
+    href: https://support.microsoft.com/en-us/help/4042960
+  - name: Regisztrációs problémák
+    href: https://support.microsoft.com/en-us/help/4042959
+  - name: Bejelentkezési problémák
+    href: https://support.microsoft.com/en-us/help/4042961
+  - name: Vállalati költségek nézet letiltva
+    href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
+  - name: Kapcsolatfelvétel a támogatási szolgáltatással
+    href: ../azure-supportability/how-to-create-azure-support-request.md
 - name: Példák
   items:
-    - name: REST API
-      items:
-        - name: A vállalati költségek áttekintése
-          href: billing-review-enterprise-billing.md
-        - name: Az előfizetés használatának áttekintése
-          href: billing-review-subscription-billing.md
-    - name: .NET-minták
-      items:
-        - name: Számlázási API kódmintája
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: Használati API kódmintája
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: RateCard API kódmintája
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+  - name: REST API
+    items:
+    - name: A vállalati költségek áttekintése
+      href: billing-review-enterprise-billing.md
+    - name: Az előfizetés használatának áttekintése
+      href: billing-review-subscription-billing.md
+    - name: Az erőforrás-használat áttekintése
+      href: billing-review-service-usage-api.md
+  - name: .NET-minták
+    items:
+    - name: Számlázási API kódmintája
+      href: https://github.com/Azure-Samples/billing-dotnet-core-invoice-download
+    - name: Használati API kódmintája
+      href: https://github.com/Azure-Samples/billing-dotnet-usage-api
+    - name: RateCard API kódmintája
+      href: https://github.com/Azure-Samples/billing-dotnet-ratecard-api
 - name: Referencia
   items:
-    - name: Számlázásautomatizálási forgatókönyvek
-      href: billing-cost-management-automation-scenarios.md
-      items:
-        - name: Költségek kezelése az Azure Budgetsszel
-          href: billing-cost-management-budget-scenario.md
-    - name: Az Azure számlázási API áttekintése
-      href: billing-usage-rate-card-overview.md
-      items:
-        - name: Azure számlázási REST API
-          href: 'https://docs.microsoft.com/rest/api/billing'
-        - name: Partnermegoldás – Cloud Cruiser
-          href: billing-usage-rate-card-partner-solution-cloudcruiser.md
-    - name: Azure használati API áttekintése
-      href: billing-consumption-api-overview.md
-      items:
-        - name: Azure használati REST API
-          href: 'https://docs.microsoft.com/rest/api/consumption'
-        - name: RateCard REST API
-          href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
-        - name: Használati REST API
-          href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
-    - name: A vállalati jelentéskészítés áttekintése
-      href: billing-enterprise-api.md
-      items:
-        - name: Vállalati jelentéskészítési REST API
-          href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
+  - name: Számlázásautomatizálási forgatókönyvek
+    href: billing-cost-management-automation-scenarios.md
+    items:
+    - name: Költségek kezelése az Azure Budgetsszel
+      href: billing-cost-management-budget-scenario.md
+  - name: Az Azure számlázási API áttekintése
+    href: billing-usage-rate-card-overview.md
+    items:
+    - name: Azure számlázási REST API
+      href: https://docs.microsoft.com/rest/api/billing
+    - name: Partnermegoldás – Cloud Cruiser
+      href: billing-usage-rate-card-partner-solution-cloudcruiser.md
+  - name: Azure használati API áttekintése
+    href: billing-consumption-api-overview.md
+    items:
+    - name: Azure használati REST API
+      href: https://docs.microsoft.com/rest/api/consumption
+    - name: RateCard REST API
+      href: https://msdn.microsoft.com/library/azure/mt219005.aspx
+    - name: Használati REST API
+      href: https://msdn.microsoft.com/library/azure/mt219003.aspx
+  - name: A vállalati jelentéskészítés áttekintése
+    href: billing-enterprise-api.md
+    items:
+    - name: Vállalati jelentéskészítési REST API
+      href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
+ms.openlocfilehash: 5d7d56325201cbf3c851a843ea4d4393dea4bb40
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41928053"

@@ -10,12 +10,12 @@ ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 00232a24310b13658fbfa04d2d410e7039c42bfe
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 3ee8834a2ff8b9126fea38b19df115474c36a9e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358400"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41929658"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez
 
@@ -87,7 +87,6 @@ Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a bizton
                         <h3>A Microsoft Authenticator alkalmazás súgója</h3>
                         <p>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Első lépések</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">Telefonos bejelentkezés – gyakori kérdések</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">A fiók hitelesítő adatainak biztonsági mentése és helyreállítása</a>
                         </p>
                     </div>
@@ -117,8 +116,8 @@ Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a bizton
                     <div class="cardText">
                         <h3>Eszközkezelés súgója</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">Az eszközök csatlakoztatása</a><br/>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">A Windows 10-es eszközök regisztrálása</a>
+                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Munkahelyi eszköz csatlakoztatása</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-register-device-on-network">Személyes eszköz regisztrálása munkavégzéshez</a>
                         </p>
                     </div>
                 </div>

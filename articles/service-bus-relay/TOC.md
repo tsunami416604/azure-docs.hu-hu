@@ -5,14 +5,12 @@
 ## [GYIK](relay-faq.md)
 
 # Gyors útmutatók
-## [Névtér létrehozása](relay-create-namespace-portal.md)
 ## [Hibrid helyszíni/felhőbeli alkalmazás létrehozása](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Hibrid kapcsolatok
 ### [.NET WebSocketek](relay-hybrid-connections-dotnet-get-started.md)
 ### [.NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 ### [Node.js WebSocketek](relay-hybrid-connections-node-get-started.md)
 ### [Node.js HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
-## [WCF-továbbító](relay-wcf-dotnet-get-started.md)
 ## [Útmutató a WCF-továbbítóhoz](service-bus-relay-tutorial.md)
 ## [WCF Relay REST oktatóanyag](service-bus-relay-rest-tutorial.md)
 
@@ -22,6 +20,8 @@
 #### [Migrálás ACS-ről SAS rendszerre](relay-migrate-acs-sas.md)
 ### [Hibrid kapcsolatok protokollja](relay-hybrid-connections-protocol.md)
 ## Fejlesztés
+### [Névtér létrehozása](relay-create-namespace-portal.md)
+### [A WCF Relay használata annak biztosításához, hogy a WCF-szolgáltatásokat külső ügyfelek is el tudják érni](relay-wcf-dotnet-get-started.md)
 ### [Elérhető API-k](relay-api-overview.md)
 #### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
 #### [Node](relay-hybrid-connections-node-ws-api-overview.md)

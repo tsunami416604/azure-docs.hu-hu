@@ -1,309 +1,346 @@
+items:
 - name: Az Azure Log Analytics dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az a Log Analytics?
-      href: log-analytics-overview.md
+  - name: Mi az a Log Analytics?
+    href: log-analytics-overview.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Gyűjtés – Azure-beli virtuális gépek
-      href: log-analytics-quick-collect-azurevm.md
-    - name: Gyűjtés – Linux rendszerű hibrid számítógép
-      href: log-analytics-quick-collect-linux-computer.md
-    - name: Gyűjtés – Windows rendszerű hibrid számítógép
-      href: log-analytics-quick-collect-windows-computer.md
+  - name: Gyűjtés – Azure-beli virtuális gépek
+    href: log-analytics-quick-collect-azurevm.md
+  - name: Gyűjtés – Linux rendszerű hibrid számítógép
+    href: log-analytics-quick-collect-linux-computer.md
+  - name: Gyűjtés – Windows rendszerű hibrid számítógép
+    href: log-analytics-quick-collect-windows-computer.md
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: 1 – Adatok elemzése
-      href: log-analytics-tutorial-viewdata.md
-    - name: 2 – Adatok vizualizációja
-      href: log-analytics-tutorial-dashboards.md
-    - name: 3 – Riasztás adatok alapján
-      href: log-analytics-tutorial-response.md
+  - name: 1 – Adatok elemzése
+    href: log-analytics-tutorial-viewdata.md
+  - name: 2 – Adatok vizualizációja
+    href: log-analytics-tutorial-dashboards.md
+  - name: 3 – Riasztás adatok alapján
+    href: log-analytics-tutorial-response.md
 - name: Példák
   items:
-    - name: Azure PowerShell
-      href: powershell-samples.md
+  - name: Azure PowerShell
+    href: powershell-samples.md
 - name: Alapelvek
   items:
-    - name: OMS-portálváltás
-      items:
-        - name: Áttekintés
-          href: log-analytics-oms-portal-transition.md
-        - name: Gyakori kérdések
-          href: log-analytics-oms-portal-faq.md
-    - name: Log Analytics – gyakori kérdések
-      href: log-analytics-faq.md
-    - name: Adatfeldolgozási idő
-      href: log-analytics-data-ingestion-time.md
-    - name: Adatbiztonság
-      href: log-analytics-data-security.md
-    - name: Hozzáférés kezelése
-      href: log-analytics-manage-access.md
-    - name: Ügynökök áttekintése
-      href: ../monitoring/monitoring-overview-azure-agents.md
-    - name: Hibrid környezek figyelése
-      href: log-analytics-concept-hybrid.md
-    - name: Funkciók a szolgáltatók számára
-      href: log-analytics-service-providers.md
-    - name: Naplók keresése
-      items:
-        - name: A naplókeresések áttekintése
-          href: log-analytics-log-search.md
-        - name: Naplókeresési portálok
-          href: log-analytics-log-search-portals.md
+  - name: OMS-portálváltás
+    items:
+    - name: Áttekintés
+      href: log-analytics-oms-portal-transition.md
+    - name: Gyakori kérdések
+      href: log-analytics-oms-portal-faq.md
+  - name: Log Analytics – gyakori kérdések
+    href: log-analytics-faq.md
+  - name: Adatfeldolgozási idő
+    href: log-analytics-data-ingestion-time.md
+  - name: Adatbiztonság
+    href: log-analytics-data-security.md
+  - name: Hozzáférés kezelése
+    href: log-analytics-manage-access.md
+  - name: Ügynökök áttekintése
+    href: ../monitoring/monitoring-overview-azure-agents.md
+  - name: Hibrid környezek figyelése
+    href: log-analytics-concept-hybrid.md
+  - name: Funkciók a szolgáltatók számára
+    href: log-analytics-service-providers.md
+  - name: Naplók keresése
+    items:
+    - name: A naplókeresések áttekintése
+      href: log-analytics-log-search.md
+    - name: Naplókeresési portálok
+      href: log-analytics-log-search-portals.md
 - name: Útmutatók
   items:
-    - name: Munkaterület létrehozása
+  - name: Munkaterület létrehozása
+    items:
+    - name: Az Azure Portal használata
+      href: log-analytics-quick-create-workspace.md
+  - name: Adatok gyűjtése
+    items:
+    - name: Összekapcsolt források
       items:
-        - name: Az Azure Portal használata
-          href: log-analytics-quick-create-workspace.md
-    - name: Adatok gyűjtése
+      - name: Windows-ügynökök
+        href: log-analytics-agent-windows.md
+      - name: Virtuálisgép-bővítmény Windowshoz
+        href: ../virtual-machines/windows/extensions-oms.md
+      - name: Virtuálisgép-bővítmény Linuxhoz
+        href: ../virtual-machines/linux/extensions-oms.md
+      - name: Azure-erőforrások
+        href: log-analytics-azure-storage.md
+      - name: Azure PaaS-erőforrások
+        href: log-analytics-collect-azurepass-posh.md
+      - name: Diagnosztikai vagy naplóadatok az Azure Storage-ból
+        href: log-analytics-azure-storage-iis-table.md
+      - name: Operations Manager
+        href: log-analytics-om-agents.md
+      - name: Configuration Manager
+        href: log-analytics-sccm.md
+      - name: OMS-átjáró
+        href: log-analytics-oms-gateway.md
+    - name: Adatforrások
       items:
-        - name: Összekapcsolt források
-          items:
-            - name: Windows-ügynökök
-              href: log-analytics-agent-windows.md
-            - name: Virtuálisgép-bővítmény Windowshoz
-              href: ../virtual-machines/windows/extensions-oms.md
-            - name: Virtuálisgép-bővítmény Linuxhoz
-              href: ../virtual-machines/linux/extensions-oms.md
-            - name: Azure-erőforrások
-              href: log-analytics-azure-storage.md
-            - name: Azure PaaS-erőforrások
-              href: log-analytics-collect-azurepass-posh.md
-            - name: Diagnosztikai vagy naplóadatok az Azure Storage-ból
-              href: log-analytics-azure-storage-iis-table.md
-            - name: Operations Manager
-              href: log-analytics-om-agents.md
-            - name: Configuration Manager
-              href: log-analytics-sccm.md
-            - name: OMS-átjáró
-              href: log-analytics-oms-gateway.md
-        - name: Adatforrások
-          items:
-            - name: Az adatforrások áttekintése
-              href: log-analytics-data-sources.md
-            - name: Windows-események
-              href: log-analytics-data-sources-windows-events.md
-            - name: Egyéni JSON-adatok
-              href: log-analytics-data-sources-json.md
-            - name: Összegyűjtött teljesítményadatok
-              href: log-analytics-data-sources-collectd.md
-            - name: Nagios- és Zabbix-riasztások
-              href: log-analytics-data-sources-alerts-nagios-zabbix.md
-            - name: Rendszernapló
-              href: log-analytics-data-sources-syslog.md
-            - name: Teljesítményszámlálók
-              href: log-analytics-data-sources-performance-counters.md
-            - name: Linux-alkalmazások teljesítménye
-              href: log-analytics-data-sources-linux-applications.md
-            - name: IIS-naplók
-              href: log-analytics-data-sources-iis-logs.md
-            - name: Egyéni naplók
-              href: log-analytics-data-sources-custom-logs.md
-            - name: Egyéni mezők
-              href: log-analytics-custom-fields.md
-            - name: Data collector API
-              href: log-analytics-data-collector-api.md
-    - name: Adatok lekérdezése
+      - name: Az adatforrások áttekintése
+        href: log-analytics-data-sources.md
+      - name: Windows-események
+        href: log-analytics-data-sources-windows-events.md
+      - name: Egyéni JSON-adatok
+        href: log-analytics-data-sources-json.md
+      - name: Összegyűjtött teljesítményadatok
+        href: log-analytics-data-sources-collectd.md
+      - name: Nagios- és Zabbix-riasztások
+        href: log-analytics-data-sources-alerts-nagios-zabbix.md
+      - name: Rendszernapló
+        href: log-analytics-data-sources-syslog.md
+      - name: Teljesítményszámlálók
+        href: log-analytics-data-sources-performance-counters.md
+      - name: Linux-alkalmazások teljesítménye
+        href: log-analytics-data-sources-linux-applications.md
+      - name: IIS-naplók
+        href: log-analytics-data-sources-iis-logs.md
+      - name: Egyéni naplók
+        href: log-analytics-data-sources-custom-logs.md
+      - name: Egyéni mezők
+        href: log-analytics-custom-fields.md
+      - name: Data collector API
+        href: log-analytics-data-collector-api.md
+      - name: Példa Data Collector API-folyamatra
+        href: log-analytics-create-pipeline-datacollector-api.md
+  - name: Adatok lekérdezése
+    items:
+    - name: Nyelvi dokumentáció
       items:
-        - name: Nyelvi dokumentáció
-          items:
-            - name: Váltás az örökölt nyelvről
-              href: log-analytics-log-search-transition.md
-            - name: Ismerkedés az Analytics-portál használatával
-              href: query-language/get-started-analytics-portal.md
-            - name: Ismerkedés a lekérdezések használatával
-              href: query-language/get-started-queries.md
-            - name: Keresési lekérdezések
-              href: query-language/search-queries.md
-            - name: Nyelvi referencia
-              href: 'https://docs.loganalytics.io'
-        - name: Keresés több erőforrásban
-          href: log-analytics-cross-workspace-search.md
-        - name: Műveletek végrehajtása a keresési eredményekből
-          href: log-analytics-log-search-takeaction.md
-        - name: Számítógépcsoportok használata
-          href: log-analytics-computer-groups.md
-        - name: Folyamat-összekötő
-          href: log-analytics-flow-tutorial.md
-        - name: Log Search API
-          href: 'https://dev.loganalytics.io/'
-    - name: Adatok elemzése
+      - name: Váltás az örökölt nyelvről
+        href: log-analytics-log-search-transition.md
+      - name: Nyelvi referencia
+        href: https://docs.loganalytics.io
+      - name: Bevezetés
+        items:
+        - name: Ismerkedés az Analytics-portál használatával
+          href: query-language/get-started-analytics-portal.md
+        - name: Ismerkedés a lekérdezések használatával
+          href: query-language/get-started-queries.md
+        - name: Keresési lekérdezések
+          href: query-language/search-queries.md
+        - name: Hasznos operátorok
+          href: query-language/useful-operators.md
+      - name: Leckék
+        items:
+        - name: Sztringműveletek
+          href: query-language/string-operations.md
+        - name: Dátum és idő típusú adatokkal végzett műveletek
+          href: query-language/datetime-operations.md
+        - name: Aggregátumfüggvények
+          href: query-language/aggregations.md
+        - name: Speciális aggregátumok
+          href: query-language/advanced-aggregations.md
+        - name: Illesztések
+          href: query-language/joins.md
+        - name: JSON és adatstruktúrák
+          href: query-language/json-data-structures.md
+        - name: Továbbfejlesztett lekérdezésírás
+          href: query-language/advanced-query-writing.md
+        - name: Diagramok
+          href: query-language/charts.md
+      - name: Hasznos tanácsok
+        items:
+        - name: SQL
+          href: query-language/sql-cheatsheet.md
+        - name: Splunk
+          href: query-language/splunk-cheatsheet.md
+    - name: Keresés több erőforrásban
+      href: log-analytics-cross-workspace-search.md
+    - name: Műveletek végrehajtása a keresési eredményekből
+      href: log-analytics-log-search-takeaction.md
+    - name: Számítógépcsoportok használata
+      href: log-analytics-computer-groups.md
+    - name: Folyamat-összekötő
+      href: log-analytics-flow-tutorial.md
+    - name: Log Search API
+      href: https://dev.loganalytics.io/
+  - name: Adatok elemzése
+    items:
+    - name: Irányítópultok
+      href: log-analytics-dashboards.md
+    - name: Nézettervező
       items:
-        - name: Irányítópultok
-          href: log-analytics-dashboards.md
-        - name: Nézettervező
-          items:
-            - name: Áttekintés
-              href: log-analytics-view-designer.md
-            - name: Csempe referenciája
-              href: log-analytics-view-designer-tiles.md
-            - name: Vizualizációs rész referenciája
-              href: log-analytics-view-designer-parts.md
-            - name: Szűrők
-              href: log-analytics-view-designer-filters.md
-        - name: Power BI
-          href: log-analytics-powerbi.md
-    - name: Riasztások létrehozása
+      - name: Áttekintés
+        href: log-analytics-view-designer.md
+      - name: Csempe referenciája
+        href: log-analytics-view-designer-tiles.md
+      - name: Vizualizációs rész referenciája
+        href: log-analytics-view-designer-parts.md
+      - name: Szűrők
+        href: log-analytics-view-designer-filters.md
+    - name: Power BI
+      href: log-analytics-powerbi.md
+  - name: Riasztások létrehozása
+    items:
+    - name: A naplóriasztások ismertetése
+      href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md
+    - name: Naplóriasztás létrehozása
+      href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md
+    - name: Naplóriasztásokra vonatkozó webhook-műveletek
+      href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md
+    - name: Naplóriasztás létrehozása Resource Manager-sablonnal
+      href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-template.md
+    - name: Riasztások másolása a Log Analyticsből az Azure-riasztásokba
+      href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md
+  - name: Kezelés
+    items:
+    - name: Személyes adatok kezelése
+      href: log-analytics-personal-data-mgmt.md
+    - name: Ügynökkezelés
+      href: log-analytics-agent-manage.md
+    - name: Munkaterületek kezelésének költségei
       items:
-        - name: A naplóriasztások ismertetése
-          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md
-        - name: Naplóriasztás létrehozása
-          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md
-        - name: Naplóriasztásokra vonatkozó webhook-műveletek
-          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md
-        - name: Naplóriasztás létrehozása Resource Manager-sablonnal
-          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-template.md
-        - name: Riasztások másolása a Log Analyticsből az Azure-riasztásokba
-          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md
-    - name: Kezelés
+      - name: Adatmennyiség és megőrzés
+        href: log-analytics-manage-cost-storage.md
+      - name: Használat monitorozása
+        href: log-analytics-usage.md
+    - name: Munkaterület törlése
+      href: log-analytics-manage-del-workspace.md
+  - name: Hibaelhárítás
+    items:
+    - name: Virtuálisgép-bővítmény hibaelhárítása
+      href: log-analytics-azure-vmext-troubleshoot.md
+    - name: Linux-ügynök hibaelhárítása
+      href: log-analytics-agent-linux-support.md
+  - name: Megoldások használata
+    items:
+    - name: Megoldások telepítése
+      href: ../monitoring/monitoring-solutions.md?toc=%2fazure%2flog-analytics%2ftoc.json
+    - name: Megoldásleltár
+      href: ../monitoring/monitoring-solutions-inventory.md?toc=%2fazure%2flog-analytics%2ftoc.json
+    - name: Célmegoldások
+      href: ../monitoring/monitoring-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
+    - name: Megoldási útmutatók
       items:
-        - name: Személyes adatok kezelése
-          href: log-analytics-personal-data-mgmt.md
-        - name: Ügynökkezelés
-          href: log-analytics-agent-manage.md
-        - name: Munkaterületek kezelésének költségei
-          items:
-            - name: Adatmennyiség és megőrzés
-              href: log-analytics-manage-cost-storage.md
-            - name: Használat monitorozása
-              href: log-analytics-usage.md
-        - name: Munkaterület törlése
-          href: log-analytics-manage-del-workspace.md
-    - name: Hibaelhárítás
-      items:
-        - name: Virtuálisgép-bővítmény hibaelhárítása
-          href: log-analytics-azure-vmext-troubleshoot.md
-        - name: Linux-ügynök hibaelhárítása
-          href: log-analytics-agent-linux-support.md
-    - name: Megoldások használata
-      items:
-        - name: Megoldások telepítése
-          href: ../monitoring/monitoring-solutions.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Megoldásleltár
-          href: ../monitoring/monitoring-solutions-inventory.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Célmegoldások
-          href: ../monitoring/monitoring-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Megoldási útmutatók
-          items:
-            - name: Azure-tevékenységnaplók
-              items:
-                - name: Elemzés
-                  href: log-analytics-activity.md
-                - name: Gyűjtés több előfizetésben
-                  href: log-analytics-activity-logs-subscriptions.md
-            - name: AD Assessment
-              href: log-analytics-ad-assessment.md
-            - name: AD Replication Status
-              href: log-analytics-ad-replication-status.md
-            - name: Az ügynök állapota
-              href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
-            - name: Riasztáskezelés
-              href: log-analytics-solution-alert-management.md
-            - name: Application Insights Connector
-              href: log-analytics-app-insights-connector.md
-            - name: Azure SQL Analytics
-              href: log-analytics-azure-sql.md
-            - name: Azure Web Apps Analytics
-              href: log-analytics-azure-web-apps-analytics.md
-            - name: Kapacitás és teljesítmény
-              href: log-analytics-capacity.md
-            - name: Változások követése
-              href: log-analytics-change-tracking.md
-            - name: Containers
-              href: log-analytics-containers.md
-            - name: DNS-elemzés
-              href: log-analytics-dns.md
-            - name: Informatikai szolgáltatásfelügyeleti összekötő
-              href: log-analytics-itsmc-overview.md
-              items:
-                - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
-                  href: log-analytics-itsmc-connections.md
-            - name: Key Vault
-              href: log-analytics-azure-key-vault.md
-            - name: Logic Apps B2B-üzenetek
-              items:
-                - name: Logic Apps B2B-üzeneteken alapuló megoldás
-                  href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
-                - name: Logic Apps B2B egyéni követési séma
-                  href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-            - name: Hálózatelemzés
-              href: log-analytics-azure-networking-analytics.md
-            - name: Hálózati teljesítményfigyelő
-              items:
-                - name: Megoldás áttekintése
-                  href: log-analytics-network-performance-monitor.md
-                - name: Teljesítménymonitorozás
-                  href: log-analytics-network-performance-monitor-performance-monitor.md
-                - name: Szolgáltatásvégpont
-                  href: log-analytics-network-performance-monitor-service-endpoint.md
-                - name: ExpressRoute
-                  href: log-analytics-network-performance-monitor-expressroute.md
-                - name: Díjszabás
-                  href: log-analytics-network-performance-monitor-pricing-faq.md
-            - name: Office 365
-              href: ../monitoring/monitoring-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
-            - name: SCOM állapotának ellenőrzése
-              href: log-analytics-scom-assessment.md
-            - name: Biztonsági naplózás
-              href: ../security-center/security-center-intro.md
-            - name: Service Fabric és Azure PowerShell
-              href: log-analytics-service-fabric.md
-              items:
-                - name: Service Fabric és Azure Resource Manager
-                  href: log-analytics-service-fabric-azure-resource-manager.md
-            - name: Szolgáltatástérkép
-              items:
-                - name: Használat
-                  href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
-                - name: Konfigurálás
-                  href: ../monitoring/monitoring-service-map-configure.md?toc=%2fazure%2flog-analytics%2ftoc.json
-                - name: Integrálás az Operations Managerrel
-                  href: ../monitoring/monitoring-service-map-scom.md?toc=%2fazure%2flog-analytics%2ftoc.json
-            - name: SQL állapotának ellenőrzése
-              href: log-analytics-sql-assessment.md
-            - name: Surface Hub
-              href: log-analytics-surface-hubs.md
-            - name: Frissítéskezelés
-              href: ../automation/automation-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
-            - name: VMware
-              href: log-analytics-vmware.md
-            - name: Windows Analytics
-              items:
-                - name: A frissítések megfelelősége
-                  href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
-                - name: Frissítési készültség
-                  href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
-            - name: Átviteli adatok
-              href: log-analytics-wire-data.md
-    - name: Fejlesztés
-      items:
-        - name: PowerShell-parancsmagok
-          href: log-analytics-powershell-workspace-configuration.md
-        - name: Resource Manager-sablonok
-          href: log-analytics-template-workspace-configuration.md
-        - name: Alert API
-          href: log-analytics-api-alerts.md
+      - name: Azure-tevékenységnaplók
+        items:
+        - name: Elemzés
+          href: log-analytics-activity.md
+        - name: Gyűjtés több előfizetésben
+          href: log-analytics-activity-logs-subscriptions.md
+      - name: AD Assessment
+        href: log-analytics-ad-assessment.md
+      - name: AD Replication Status
+        href: log-analytics-ad-replication-status.md
+      - name: Az ügynök állapota
+        href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
+      - name: Riasztáskezelés
+        href: log-analytics-solution-alert-management.md
+      - name: Application Insights Connector
+        href: log-analytics-app-insights-connector.md
+      - name: Azure SQL Analytics
+        href: log-analytics-azure-sql.md
+      - name: Azure Web Apps Analytics
+        href: log-analytics-azure-web-apps-analytics.md
+      - name: Kapacitás és teljesítmény
+        href: log-analytics-capacity.md
+      - name: Változások követése
+        href: log-analytics-change-tracking.md
+      - name: Containers
+        href: log-analytics-containers.md
+      - name: DNS-elemzés
+        href: log-analytics-dns.md
+      - name: Informatikai szolgáltatásfelügyeleti összekötő
+        href: log-analytics-itsmc-overview.md
+        items:
+        - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
+          href: log-analytics-itsmc-connections.md
+      - name: Key Vault
+        href: log-analytics-azure-key-vault.md
+      - name: Logic Apps B2B-üzenetek
+        items:
+        - name: Logic Apps B2B-üzeneteken alapuló megoldás
+          href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Logic Apps B2B egyéni követési séma
+          href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
+      - name: Hálózatelemzés
+        href: log-analytics-azure-networking-analytics.md
+      - name: Hálózati teljesítményfigyelő
+        items:
+        - name: Megoldás áttekintése
+          href: log-analytics-network-performance-monitor.md
+        - name: Teljesítménymonitorozás
+          href: log-analytics-network-performance-monitor-performance-monitor.md
+        - name: Szolgáltatásvégpont
+          href: log-analytics-network-performance-monitor-service-endpoint.md
+        - name: ExpressRoute
+          href: log-analytics-network-performance-monitor-expressroute.md
+        - name: Díjszabás
+          href: log-analytics-network-performance-monitor-pricing-faq.md
+      - name: Office 365
+        href: ../monitoring/monitoring-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
+      - name: SCOM állapotának ellenőrzése
+        href: log-analytics-scom-assessment.md
+      - name: Biztonsági naplózás
+        href: ../security-center/security-center-intro.md
+      - name: Service Fabric és Azure PowerShell
+        href: log-analytics-service-fabric.md
+        items:
+        - name: Service Fabric és Azure Resource Manager
+          href: log-analytics-service-fabric-azure-resource-manager.md
+      - name: Szolgáltatástérkép
+        items:
+        - name: Használat
+          href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Konfigurálás
+          href: ../monitoring/monitoring-service-map-configure.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Integrálás az Operations Managerrel
+          href: ../monitoring/monitoring-service-map-scom.md?toc=%2fazure%2flog-analytics%2ftoc.json
+      - name: SQL állapotának ellenőrzése
+        href: log-analytics-sql-assessment.md
+      - name: Surface Hub
+        href: log-analytics-surface-hubs.md
+      - name: Frissítéskezelés
+        href: ../automation/automation-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
+      - name: VMware
+        href: log-analytics-vmware.md
+      - name: Windows Analytics
+        items:
+        - name: A frissítések megfelelősége
+          href: https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started
+        - name: Frissítési készültség
+          href: https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started
+      - name: Átviteli adatok
+        href: log-analytics-wire-data.md
+  - name: Fejlesztés
+    items:
+    - name: PowerShell-parancsmagok
+      href: log-analytics-powershell-workspace-configuration.md
+    - name: Resource Manager-sablonok
+      href: log-analytics-template-workspace-configuration.md
+    - name: Alert API
+      href: log-analytics-api-alerts.md
 - name: Referencia
   items:
-    - name: Nyelvi referencia
-      href: 'https://docs.loganalytics.io/docs/Language-Reference'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.operationalinsights
-    - name: REST
-      href: /rest/api/loganalytics
+  - name: Nyelvi referencia
+    href: https://docs.loganalytics.io/docs/Language-Reference
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.operationalinsights
+  - name: REST
+    href: /rest/api/loganalytics
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=log-analytics'
-    - name: Windows Analytics
-      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/log-analytics/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=log-analytics
+  - name: Windows Analytics
+    href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
+ms.openlocfilehash: 7f3e05c3eda4cdbfd7e0edcf61a7f1f6934be8e6
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42110161"

@@ -1,447 +1,453 @@
+items:
 - name: Data Factory – dokumentáció
   href: index.yml
 - name: Váltás az 1. verzió dokumentációjára
   href: v1/data-factory-introduction.md
 - name: Áttekintés
   items:
-    - name: A Data Factory bemutatása
-      href: introduction.md
-    - name: Az aktuális verzió összehasonlítása az 1.-vel
-      href: compare-versions.md
+  - name: A Data Factory bemutatása
+    href: introduction.md
+  - name: Az aktuális verzió összehasonlítása az 1.-vel
+    href: compare-versions.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Adat-előállító létrehozása – felhasználói felület (UI)
-      href: quickstart-create-data-factory-portal.md
-    - name: Adat-előállító létrehozása – Adatok másolása eszköz
-      href: quickstart-create-data-factory-copy-data-tool.md
-    - name: Adat-előállító létrehozása – Azure PowerShell
-      href: quickstart-create-data-factory-powershell.md
-    - name: Adat-előállító létrehozása – .NET
-      href: quickstart-create-data-factory-dot-net.md
-    - name: Adat-előállító létrehozása – Python
-      href: quickstart-create-data-factory-python.md
-    - name: Adat-előállító létrehozása – REST
-      href: quickstart-create-data-factory-rest-api.md
-    - name: Adat-előállító létrehozása – Resource Manager-sablon
-      href: quickstart-create-data-factory-resource-manager-template.md
+  - name: Adat-előállító létrehozása – felhasználói felület (UI)
+    href: quickstart-create-data-factory-portal.md
+  - name: Adat-előállító létrehozása – Adatok másolása eszköz
+    href: quickstart-create-data-factory-copy-data-tool.md
+  - name: Adat-előállító létrehozása – Azure PowerShell
+    href: quickstart-create-data-factory-powershell.md
+  - name: Adat-előállító létrehozása – .NET
+    href: quickstart-create-data-factory-dot-net.md
+  - name: Adat-előállító létrehozása – Python
+    href: quickstart-create-data-factory-python.md
+  - name: Adat-előállító létrehozása – REST
+    href: quickstart-create-data-factory-rest-api.md
+  - name: Adat-előállító létrehozása – Resource Manager-sablon
+    href: quickstart-create-data-factory-resource-manager-template.md
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: Adatok másolása a felhőben
+  - name: Adatok másolása a felhőben
+    items:
+    - name: Adatok másolása eszköz
+      href: tutorial-copy-data-tool.md
+    - name: Felhasználói felület (UI)
+      href: tutorial-copy-data-portal.md
+    - name: .NET
+      href: tutorial-copy-data-dot-net.md
+  - name: Helyszíni adatok másolása a felhőbe
+    items:
+    - name: Adatok másolása eszköz
+      href: tutorial-hybrid-copy-data-tool.md
+    - name: Felhasználói felület (UI)
+      href: tutorial-hybrid-copy-portal.md
+    - name: Azure PowerShell
+      href: tutorial-hybrid-copy-powershell.md
+  - name: Adatok tömeges másolása
+    items:
+    - name: Felhasználói felület (UI)
+      href: tutorial-bulk-copy-portal.md
+    - name: Azure PowerShell
+      href: tutorial-bulk-copy.md
+  - name: Adatok fokozatos másolása
+    href: tutorial-incremental-copy-overview.md
+    items:
+    - name: 1 – Másolás egy táblából
       items:
-        - name: Adatok másolása eszköz
-          href: tutorial-copy-data-tool.md
-        - name: Felhasználói felület (UI)
-          href: tutorial-copy-data-portal.md
-        - name: .NET
-          href: tutorial-copy-data-dot-net.md
-    - name: Helyszíni adatok másolása a felhőbe
+      - name: Felhasználói felület (UI)
+        href: tutorial-incremental-copy-portal.md
+      - name: Azure PowerShell
+        href: tutorial-incremental-copy-powershell.md
+    - name: 2 – Másolás több táblából
       items:
-        - name: Adatok másolása eszköz
-          href: tutorial-hybrid-copy-data-tool.md
-        - name: Felhasználói felület (UI)
-          href: tutorial-hybrid-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-hybrid-copy-powershell.md
-    - name: Adatok tömeges másolása
+      - name: Felhasználói felület (UI)
+        href: tutorial-incremental-copy-multiple-tables-portal.md
+      - name: Azure PowerShell
+        href: tutorial-incremental-copy-multiple-tables-powershell.md
+    - name: 3 – Változáskövetési funkció használata
       items:
-        - name: Felhasználói felület (UI)
-          href: tutorial-bulk-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-bulk-copy.md
-    - name: Adatok fokozatos másolása
-      href: tutorial-incremental-copy-overview.md
+      - name: Felhasználói felület (UI)
+        href: tutorial-incremental-copy-change-tracking-feature-portal.md
+      - name: Azure PowerShell
+        href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+  - name: Adatok átalakítása a felhőben
+    items:
+    - name: HDInsight Spark
       items:
-        - name: 1 – Másolás egy táblából
-          items:
-            - name: Felhasználói felület (UI)
-              href: tutorial-incremental-copy-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-powershell.md
-        - name: 2 – Másolás több táblából
-          items:
-            - name: Felhasználói felület (UI)
-              href: tutorial-incremental-copy-multiple-tables-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-multiple-tables-powershell.md
-        - name: 3 – Változáskövetési funkció használata
-          items:
-            - name: Felhasználói felület (UI)
-              href: tutorial-incremental-copy-change-tracking-feature-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-change-tracking-feature-powershell.md
-    - name: Adatok átalakítása a felhőben
+      - name: Felhasználói felület (UI)
+        href: tutorial-transform-data-spark-portal.md
+      - name: Azure PowerShell
+        href: tutorial-transform-data-spark-powershell.md
+    - name: Databricks-jegyzetfüzet
       items:
-        - name: HDInsight Spark
-          items:
-            - name: Felhasználói felület (UI)
-              href: tutorial-transform-data-spark-portal.md
-            - name: Azure PowerShell
-              href: tutorial-transform-data-spark-powershell.md
-        - name: Databricks-jegyzetfüzet
-          items:
-            - name: Felhasználói felület (UI)
-              href: transform-data-using-databricks-notebook.md
-    - name: Adatok átalakítása virtuális hálózatban
-      items:
-        - name: Felhasználói felület (UI)
-          href: tutorial-transform-data-hive-virtual-network-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-hive-virtual-network.md
-    - name: Elágaztatás és láncolás hozzáadása
-      items:
-        - name: Felhasználói felület (UI)
-          href: tutorial-control-flow-portal.md
-        - name: .NET
-          href: tutorial-control-flow.md
-    - name: SSIS-csomagok futtatása az Azure-ban
-      items:
-        - name: Felhasználói felület (UI)
-          href: tutorial-deploy-ssis-packages-azure.md
-        - name: Azure PowerShell
-          href: tutorial-deploy-ssis-packages-azure-powershell.md
+      - name: Felhasználói felület (UI)
+        href: transform-data-using-databricks-notebook.md
+  - name: Adatok átalakítása virtuális hálózatban
+    items:
+    - name: Felhasználói felület (UI)
+      href: tutorial-transform-data-hive-virtual-network-portal.md
+    - name: Azure PowerShell
+      href: tutorial-transform-data-hive-virtual-network.md
+  - name: Elágaztatás és láncolás hozzáadása
+    items:
+    - name: Felhasználói felület (UI)
+      href: tutorial-control-flow-portal.md
+    - name: .NET
+      href: tutorial-control-flow.md
+  - name: SSIS-csomagok futtatása az Azure-ban
+    items:
+    - name: Felhasználói felület (UI)
+      href: tutorial-deploy-ssis-packages-azure.md
+    - name: Azure PowerShell
+      href: tutorial-deploy-ssis-packages-azure-powershell.md
 - name: Példák
   items:
-    - name: Kódminták
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=data-factory'
-    - name: Azure PowerShell
-      href: samples-powershell.md
+  - name: Kódminták
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=data-factory
+  - name: Azure PowerShell
+    href: samples-powershell.md
 - name: Alapelvek
   items:
-    - name: Folyamatok és tevékenységek
-      href: concepts-pipelines-activities.md
-    - name: Adatkészletek és társított szolgáltatások
-      href: concepts-datasets-linked-services.md
-    - name: Folyamat futtatása és eseményindítók
-      href: concepts-pipeline-execution-triggers.md
-    - name: Integrációs modul
-      href: concepts-integration-runtime.md
-    - name: Elnevezési szabályok
-      href: naming-rules.md
+  - name: Folyamatok és tevékenységek
+    href: concepts-pipelines-activities.md
+  - name: Adatkészletek és társított szolgáltatások
+    href: concepts-datasets-linked-services.md
+  - name: Folyamat futtatása és eseményindítók
+    href: concepts-pipeline-execution-triggers.md
+  - name: Integrációs modul
+    href: concepts-integration-runtime.md
+  - name: Elnevezési szabályok
+    href: naming-rules.md
 - name: Útmutatók
   items:
-    - name: Szerző
+  - name: Szerző
+    items:
+    - name: Adat-előállítók vizuális létrehozása
+      href: author-visually.md
+    - name: Folyamatos integráció és üzembe helyezés
+      href: continuous-integration-deployment.md
+    - name: Iteratív fejlesztés és hibakeresés
+      href: iterative-development-debugging.md
+  - name: Összekötők
+    items:
+    - name: Amazon Marketplace Web Service
+      href: connector-amazon-marketplace-web-service.md
+    - name: Amazon Redshift
+      href: connector-amazon-redshift.md
+    - name: Amazon S3
+      href: connector-amazon-simple-storage-service.md
+    - name: Azure Blob Storage
+      href: connector-azure-blob-storage.md
+    - name: Azure Cosmos DB
+      href: connector-azure-cosmos-db.md
+    - name: 1. generációs Azure Data Lake Storage
+      href: connector-azure-data-lake-store.md
+    - name: 2. generációs Azure Data Lake Storage
+      href: connector-azure-data-lake-storage.md
+    - name: Azure Database for MySQL
+      href: connector-azure-database-for-mysql.md
+    - name: Azure Database for PostgreSQL
+      href: connector-azure-database-for-postgresql.md
+    - name: Azure File Storage
+      href: connector-azure-file-storage.md
+    - name: Azure Search
+      href: connector-azure-search.md
+    - name: Azure SQL Database
+      href: connector-azure-sql-database.md
+    - name: Azure SQL Data Warehouse
+      href: connector-azure-sql-data-warehouse.md
+    - name: Azure Table Storage
+      href: connector-azure-table-storage.md
+    - name: Cassandra
+      href: connector-cassandra.md
+    - name: Common Data Service for Apps
+      href: connector-dynamics-crm-office-365.md
+    - name: Concur
+      href: connector-concur.md
+    - name: Couchbase
+      href: connector-couchbase.md
+    - name: DB2
+      href: connector-db2.md
+    - name: Drill
+      href: connector-drill.md
+    - name: Dynamics 365
+      href: connector-dynamics-crm-office-365.md
+    - name: Dynamics CRM
+      href: connector-dynamics-crm-office-365.md
+    - name: Fájlrendszer
+      href: connector-file-system.md
+    - name: FTP
+      href: connector-ftp.md
+    - name: GE Historian
+      href: connector-odbc.md#ge-historian-source
+    - name: Google BigQuery
+      href: connector-google-bigquery.md
+    - name: Greenplum
+      href: connector-greenplum.md
+    - name: HBase
+      href: connector-hbase.md
+    - name: HDFS
+      href: connector-hdfs.md
+    - name: Hive
+      href: connector-hive.md
+    - name: HTTP
+      href: connector-http.md
+    - name: HubSpot
+      href: connector-hubspot.md
+    - name: Impala
+      href: connector-impala.md
+    - name: Informix
+      href: connector-odbc.md#ibm-informix-source
+    - name: Jira
+      href: connector-jira.md
+    - name: Magento
+      href: connector-magento.md
+    - name: MariaDB
+      href: connector-mariadb.md
+    - name: Marketo
+      href: connector-marketo.md
+    - name: Microsoft Access
+      href: connector-odbc.md#microsoft-access-source
+    - name: MongoDB
+      href: connector-mongodb.md
+    - name: MySQL
+      href: connector-mysql.md
+    - name: Netezza
+      href: connector-netezza.md
+    - name: OData
+      href: connector-odata.md
+    - name: ODBC
+      href: connector-odbc.md
+    - name: Oracle
+      href: connector-oracle.md
+    - name: Oracle Eloqua
+      href: connector-oracle-eloqua.md
+    - name: Oracle Responsys
+      href: connector-oracle-responsys.md
+    - name: Paypal
+      href: connector-paypal.md
+    - name: Phoenix
+      href: connector-phoenix.md
+    - name: PostgreSQL
+      href: connector-postgresql.md
+    - name: Presto
+      href: connector-presto.md
+    - name: QuickBooks
+      href: connector-quickbooks.md
+    - name: Salesforce
+      href: connector-salesforce.md
+    - name: Salesforce Service Cloud
+      href: connector-salesforce.md
+    - name: Salesforce Marketing Cloud
+      href: connector-salesforce-marketing-cloud.md
+    - name: SAP Business Warehouse
+      href: connector-sap-business-warehouse.md
+    - name: SAP Cloud for Customer
+      href: connector-sap-cloud-for-customer.md
+    - name: SAP ECC
+      href: connector-sap-ecc.md
+    - name: SAP HANA
+      href: connector-sap-hana.md
+    - name: ServiceNow
+      href: connector-servicenow.md
+    - name: SFTP
+      href: connector-sftp.md
+    - name: Shopify
+      href: connector-shopify.md
+    - name: Spark
+      href: connector-spark.md
+    - name: SQL Server
+      href: connector-sql-server.md
+    - name: Square
+      href: connector-square.md
+    - name: Sybase
+      href: connector-sybase.md
+    - name: Teradata
+      href: connector-teradata.md
+    - name: Vertica
+      href: connector-vertica.md
+    - name: Webtábla
+      href: connector-web-table.md
+    - name: Xero
+      href: connector-xero.md
+    - name: Zoho
+      href: connector-zoho.md
+  - name: Adatok másolása
+    items:
+    - name: Adatok másolása Másolási tevékenységgel
+      href: copy-activity-overview.md
+    - name: Adatok másolása eszköz
+      href: copy-data-tool.md
+    - name: 2. generációs Data Lake Storage betöltése
+      href: load-azure-data-lake-storage-gen2.md
       items:
-        - name: Adat-előállítók vizuális létrehozása
-          href: author-visually.md
-        - name: Folyamatos integráció és üzembe helyezés
-          href: continuous-integration-deployment.md
-        - name: Iteratív fejlesztés és hibakeresés
-          href: iterative-development-debugging.md
-    - name: Összekötők
-      items:
-        - name: Amazon Marketplace Web Service
-          href: connector-amazon-marketplace-web-service.md
-        - name: Amazon Redshift
-          href: connector-amazon-redshift.md
-        - name: Amazon S3
-          href: connector-amazon-simple-storage-service.md
-        - name: Azure Blob Storage
-          href: connector-azure-blob-storage.md
-        - name: Azure Cosmos DB
-          href: connector-azure-cosmos-db.md
-        - name: 1. generációs Azure Data Lake Storage
-          href: connector-azure-data-lake-store.md
-        - name: 2. generációs Azure Data Lake Storage
-          href: connector-azure-data-lake-storage.md
-        - name: Azure Database for MySQL
-          href: connector-azure-database-for-mysql.md
-        - name: Azure Database for PostgreSQL
-          href: connector-azure-database-for-postgresql.md
-        - name: Azure File Storage
-          href: connector-azure-file-storage.md
-        - name: Azure Search
-          href: connector-azure-search.md
-        - name: Azure SQL Database
-          href: connector-azure-sql-database.md
-        - name: Azure SQL Data Warehouse
-          href: connector-azure-sql-data-warehouse.md
-        - name: Azure Table Storage
-          href: connector-azure-table-storage.md
-        - name: Cassandra
-          href: connector-cassandra.md
-        - name: Common Data Service for Apps
-          href: connector-dynamics-crm-office-365.md
-        - name: Concur
-          href: connector-concur.md
-        - name: Couchbase
-          href: connector-couchbase.md
-        - name: DB2
-          href: connector-db2.md
-        - name: Drill
-          href: connector-drill.md
-        - name: Dynamics 365
-          href: connector-dynamics-crm-office-365.md
-        - name: Dynamics CRM
-          href: connector-dynamics-crm-office-365.md
-        - name: Fájlrendszer
-          href: connector-file-system.md
-        - name: FTP
-          href: connector-ftp.md
-        - name: GE Historian
-          href: 'connector-odbc.md#ge-historian-source'
-        - name: Google BigQuery
-          href: connector-google-bigquery.md
-        - name: Greenplum
-          href: connector-greenplum.md
-        - name: HBase
-          href: connector-hbase.md
-        - name: HDFS
-          href: connector-hdfs.md
-        - name: Hive
-          href: connector-hive.md
-        - name: HTTP
-          href: connector-http.md
-        - name: HubSpot
-          href: connector-hubspot.md
-        - name: Impala
-          href: connector-impala.md
-        - name: Informix
-          href: 'connector-odbc.md#ibm-informix-source'
-        - name: Jira
-          href: connector-jira.md
-        - name: Magento
-          href: connector-magento.md
-        - name: MariaDB
-          href: connector-mariadb.md
-        - name: Marketo
-          href: connector-marketo.md
-        - name: Microsoft Access
-          href: 'connector-odbc.md#microsoft-access-source'
-        - name: MongoDB
-          href: connector-mongodb.md
-        - name: MySQL
-          href: connector-mysql.md
-        - name: Netezza
-          href: connector-netezza.md
-        - name: OData
-          href: connector-odata.md
-        - name: ODBC
-          href: connector-odbc.md
-        - name: Oracle
-          href: connector-oracle.md
-        - name: Oracle Eloqua
-          href: connector-oracle-eloqua.md
-        - name: Oracle Responsys
-          href: connector-oracle-responsys.md
-        - name: Paypal
-          href: connector-paypal.md
-        - name: Phoenix
-          href: connector-phoenix.md
-        - name: PostgreSQL
-          href: connector-postgresql.md
-        - name: Presto
-          href: connector-presto.md
-        - name: QuickBooks
-          href: connector-quickbooks.md
-        - name: Salesforce
-          href: connector-salesforce.md
-        - name: Salesforce Service Cloud
-          href: connector-salesforce.md
-        - name: Salesforce Marketing Cloud
-          href: connector-salesforce-marketing-cloud.md
-        - name: SAP Business Warehouse
-          href: connector-sap-business-warehouse.md
-        - name: SAP Cloud for Customer
-          href: connector-sap-cloud-for-customer.md
-        - name: SAP ECC
-          href: connector-sap-ecc.md
-        - name: SAP HANA
-          href: connector-sap-hana.md
-        - name: ServiceNow
-          href: connector-servicenow.md
-        - name: SFTP
-          href: connector-sftp.md
-        - name: Shopify
-          href: connector-shopify.md
-        - name: Spark
-          href: connector-spark.md
-        - name: SQL Server
-          href: connector-sql-server.md
-        - name: Square
-          href: connector-square.md
-        - name: Sybase
-          href: connector-sybase.md
-        - name: Teradata
-          href: connector-teradata.md
-        - name: Vertica
-          href: connector-vertica.md
-        - name: Webtábla
-          href: connector-web-table.md
-        - name: Xero
-          href: connector-xero.md
-        - name: Zoho
-          href: connector-zoho.md
-    - name: Adatok másolása
-      items:
-        - name: Adatok másolása Másolási tevékenységgel
-          href: copy-activity-overview.md
-        - name: Adatok másolása eszköz
-          href: copy-data-tool.md
-          items: null
-        - name: 2. generációs Data Lake Storage betöltése
-          href: load-azure-data-lake-storage-gen2.md
-          items:
-            - name: Másolás az 1. generációs Data Lake Storage-ből
-              href: load-azure-data-lake-storage-gen2-from-gen1.md
-        - name: Az SQL Data Warehouse betöltése
-          href: load-azure-sql-data-warehouse.md
-        - name: 1. generációs Data Lake Storage betöltése
-          href: load-azure-data-lake-store.md
-        - name: Particionált adatok olvasása vagy írása
-          href: how-to-read-write-partitioned-data.md
-        - name: Formátum- és tömörítéstámogatás
-          href: supported-file-formats-and-compression-codecs.md
-        - name: Séma- és típusleképezés
-          href: copy-activity-schema-and-type-mapping.md
-        - name: Hibatűrés
-          href: copy-activity-fault-tolerance.md
-        - name: Teljesítmény és finomhangolás
-          href: copy-activity-performance.md
-    - name: Adatok átalakítása
-      href: transform-data.md
-      items:
-        - name: HDInsight Hive-tevékenység
-          href: transform-data-using-hadoop-hive.md
-        - name: HDInsight Pig-tevékenység
-          href: transform-data-using-hadoop-pig.md
-        - name: HDInsight MapReduce-tevékenység
-          href: transform-data-using-hadoop-map-reduce.md
-        - name: HDInsight Streaming-tevékenység
-          href: transform-data-using-hadoop-streaming.md
-        - name: HDInsight Spark-tevékenység
-          href: transform-data-using-spark.md
-        - name: ML kötegelt végrehajtási tevékenység
-          href: transform-data-using-machine-learning.md
-        - name: ML Update-erőforrástevékenység
-          href: update-machine-learning-models.md
-        - name: Tárolt eljárási tevékenység
-          href: transform-data-using-stored-procedure.md
-        - name: Data Lake U-SQL-tevékenység
-          href: transform-data-using-data-lake-analytics.md
-        - name: Databricks-jegyzetfüzetek tevékenységei
-          href: transform-data-databricks-notebook.md
-        - name: Databricks Jar-tevékenysége
-          href: transform-data-databricks-jar.md
-        - name: Databricks Python-tevékenységei
-          href: transform-data-databricks-python.md
-        - name: Egyéni tevékenység
-          href: transform-data-using-dotnet-custom-activity.md
-        - name: Társított szolgáltatások számítása
-          href: compute-linked-services.md
-    - name: Átvitelvezérlés
-      items:
-        - name: Folyamat végrehajtása tevékenység
-          href: control-flow-execute-pipeline-activity.md
-        - name: Tevékenységszűrés
-          href: control-flow-filter-activity.md
-        - name: Minden egyes tevékenységhez
-          href: control-flow-for-each-activity.md
-        - name: Metaadatok beolvasása tevékenység
-          href: control-flow-get-metadata-activity.md
-        - name: If Condition tevékenység
-          href: control-flow-if-condition-activity.md
-        - name: Keresési tevékenység
-          href: control-flow-lookup-activity.md
-        - name: Until tevékenység
-          href: control-flow-until-activity.md
-        - name: Wait tevékenység
-          href: control-flow-wait-activity.md
-        - name: Webes tevékenység
-          href: control-flow-web-activity.md
-        - name: Kifejezés nyelve
-          href: control-flow-expression-language-functions.md
-        - name: Rendszerváltozók
-          href: control-flow-system-variables.md
-    - name: Biztonság
-      items:
-        - name: Az adatáthelyezés biztonsági szempontjai
-          href: data-movement-security-considerations.md
-        - name: Hitelesítő adatok tárolása az Azure Key Vaultban
-          href: store-credentials-in-key-vault.md
-        - name: Hitelesítő adatok titkosítása helyi integrációs modul számára
-          href: encrypt-credentials-self-hosted-integration-runtime.md
-        - name: Data Factory-szolgáltatásidentitás
-          href: data-factory-service-identity.md
-    - name: Monitorozás és kezelés
-      items:
-        - name: Vizuális megfigyelés
-          href: monitor-visually.md
-        - name: Monitorozás az Azure Monitorral
-          href: monitor-using-azure-monitor.md
-        - name: Monitorozás az OMS-szel
-          href: data-factory-monitor-oms.md
-        - name: Monitorozás SDK-kkal
-          href: monitor-programmatically.md
-        - name: Integrációs modul monitorozása
-          href: monitor-integration-runtime.md
-        - name: Az Azure SSIS integrációs modul monitorozása
-          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
-        - name: Az Azure SSIS integrációs modul újrakonfigurálása
-          href: manage-azure-ssis-integration-runtime.md
-    - name: Integrációs modul létrehozása
-      items:
-        - name: Azure-beli integrációs modul
-          href: create-azure-integration-runtime.md
-        - name: Helyi integrációs modul
-          href: create-self-hosted-integration-runtime.md
-        - name: Azure SSIS integrációs modul
-          href: create-azure-ssis-integration-runtime.md
-    - name: SSIS-csomagok futtatása az Azure-ban
-      items:
-        - name: SSIS-csomagok futtatása az SSIS-csomagok végrehajtása tevékenységgel
-          href: how-to-invoke-ssis-package-ssis-activity.md
-        - name: SSIS-csomagok futtatása tárolt eljárási tevékenységgel
-          href: how-to-invoke-ssis-package-stored-procedure-activity.md
-        - name: Azure-SSIS integrációs modul ütemezése
-          href: how-to-schedule-azure-ssis-integration-runtime.md
-        - name: Az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
-          href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS IR-hez
-          href: enable-aad-authentication-azure-ssis-ir.md
-        - name: Az Azure SSIS IR Enterprise Edition kiadásának üzembe helyezése
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
-        - name: Az Azure SSIS IR telepítésének testreszabása
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Az Azure SSIS IR licencelt összetevőinek telepítése
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
-        - name: Az Azure SSIS IR konfigurálása nagy teljesítményre
-          href: configure-azure-ssis-integration-runtime-performance.md
-        - name: Az Azure SSIS IR vészhelyreállításának konfigurálása
-          href: configure-bcdr-azure-ssis-integration-runtime.md
-    - name: Eseményindítók létrehozása
-      items:
-        - name: Ütemezési eseményindító létrehozása
-          href: how-to-create-schedule-trigger.md
-        - name: Átfedésmentes ablak eseményindítójának létrehozása
-          href: how-to-create-tumbling-window-trigger.md
-        - name: Eseményalapú trigger létrehozása
-          href: how-to-create-event-trigger.md
+      - name: Másolás az 1. generációs Data Lake Storage-ből
+        href: load-azure-data-lake-storage-gen2-from-gen1.md
+    - name: Az SQL Data Warehouse betöltése
+      href: load-azure-sql-data-warehouse.md
+    - name: 1. generációs Data Lake Storage betöltése
+      href: load-azure-data-lake-store.md
+    - name: Particionált adatok olvasása vagy írása
+      href: how-to-read-write-partitioned-data.md
+    - name: Formátum- és tömörítéstámogatás
+      href: supported-file-formats-and-compression-codecs.md
+    - name: Séma- és típusleképezés
+      href: copy-activity-schema-and-type-mapping.md
+    - name: Hibatűrés
+      href: copy-activity-fault-tolerance.md
+    - name: Teljesítmény és finomhangolás
+      href: copy-activity-performance.md
+  - name: Adatok átalakítása
+    href: transform-data.md
+    items:
+    - name: HDInsight Hive-tevékenység
+      href: transform-data-using-hadoop-hive.md
+    - name: HDInsight Pig-tevékenység
+      href: transform-data-using-hadoop-pig.md
+    - name: HDInsight MapReduce-tevékenység
+      href: transform-data-using-hadoop-map-reduce.md
+    - name: HDInsight Streaming-tevékenység
+      href: transform-data-using-hadoop-streaming.md
+    - name: HDInsight Spark-tevékenység
+      href: transform-data-using-spark.md
+    - name: ML kötegelt végrehajtási tevékenység
+      href: transform-data-using-machine-learning.md
+    - name: ML Update-erőforrástevékenység
+      href: update-machine-learning-models.md
+    - name: Tárolt eljárási tevékenység
+      href: transform-data-using-stored-procedure.md
+    - name: Data Lake U-SQL-tevékenység
+      href: transform-data-using-data-lake-analytics.md
+    - name: Databricks-jegyzetfüzetek tevékenységei
+      href: transform-data-databricks-notebook.md
+    - name: Databricks Jar-tevékenysége
+      href: transform-data-databricks-jar.md
+    - name: Databricks Python-tevékenységei
+      href: transform-data-databricks-python.md
+    - name: Egyéni tevékenység
+      href: transform-data-using-dotnet-custom-activity.md
+    - name: Társított szolgáltatások számítása
+      href: compute-linked-services.md
+  - name: Átvitelvezérlés
+    items:
+    - name: Folyamat végrehajtása tevékenység
+      href: control-flow-execute-pipeline-activity.md
+    - name: Tevékenységszűrés
+      href: control-flow-filter-activity.md
+    - name: Minden egyes tevékenységhez
+      href: control-flow-for-each-activity.md
+    - name: Metaadatok beolvasása tevékenység
+      href: control-flow-get-metadata-activity.md
+    - name: If Condition tevékenység
+      href: control-flow-if-condition-activity.md
+    - name: Keresési tevékenység
+      href: control-flow-lookup-activity.md
+    - name: Until tevékenység
+      href: control-flow-until-activity.md
+    - name: Wait tevékenység
+      href: control-flow-wait-activity.md
+    - name: Webes tevékenység
+      href: control-flow-web-activity.md
+    - name: Kifejezés nyelve
+      href: control-flow-expression-language-functions.md
+    - name: Rendszerváltozók
+      href: control-flow-system-variables.md
+  - name: Biztonság
+    items:
+    - name: Az adatáthelyezés biztonsági szempontjai
+      href: data-movement-security-considerations.md
+    - name: Hitelesítő adatok tárolása az Azure Key Vaultban
+      href: store-credentials-in-key-vault.md
+    - name: Hitelesítő adatok titkosítása helyi integrációs modul számára
+      href: encrypt-credentials-self-hosted-integration-runtime.md
+    - name: Data Factory-szolgáltatásidentitás
+      href: data-factory-service-identity.md
+  - name: Monitorozás és kezelés
+    items:
+    - name: Vizuális megfigyelés
+      href: monitor-visually.md
+    - name: Monitorozás az Azure Monitorral
+      href: monitor-using-azure-monitor.md
+    - name: Monitorozás SDK-kkal
+      href: monitor-programmatically.md
+    - name: Integrációs modul monitorozása
+      href: monitor-integration-runtime.md
+    - name: Az Azure SSIS integrációs modul monitorozása
+      href: monitor-integration-runtime.md#azure-ssis-integration-runtime
+    - name: Az Azure SSIS integrációs modul újrakonfigurálása
+      href: manage-azure-ssis-integration-runtime.md
+  - name: Integrációs modul létrehozása
+    items:
+    - name: Azure-beli integrációs modul
+      href: create-azure-integration-runtime.md
+    - name: Helyi integrációs modul
+      href: create-self-hosted-integration-runtime.md
+    - name: Azure SSIS integrációs modul
+      href: create-azure-ssis-integration-runtime.md
+  - name: SSIS-csomagok futtatása az Azure-ban
+    items:
+    - name: SSIS-csomagok futtatása az SSIS-csomagok végrehajtása tevékenységgel
+      href: how-to-invoke-ssis-package-ssis-activity.md
+    - name: SSIS-csomagok futtatása tárolt eljárási tevékenységgel
+      href: how-to-invoke-ssis-package-stored-procedure-activity.md
+    - name: Azure-SSIS integrációs modul ütemezése
+      href: how-to-schedule-azure-ssis-integration-runtime.md
+    - name: Az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
+      href: join-azure-ssis-integration-runtime-virtual-network.md
+    - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS IR-hez
+      href: enable-aad-authentication-azure-ssis-ir.md
+    - name: Az Azure SSIS IR Enterprise Edition kiadásának üzembe helyezése
+      href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+    - name: Az Azure SSIS IR telepítésének testreszabása
+      href: how-to-configure-azure-ssis-ir-custom-setup.md
+    - name: Az Azure SSIS IR licencelt összetevőinek telepítése
+      href: how-to-develop-azure-ssis-ir-licensed-components.md
+    - name: Az Azure SSIS IR konfigurálása nagy teljesítményre
+      href: configure-azure-ssis-integration-runtime-performance.md
+    - name: Az Azure SSIS IR vészhelyreállításának konfigurálása
+      href: configure-bcdr-azure-ssis-integration-runtime.md
+    - name: SSISDB-naplók törlése rugalmas adatbázis-feladatokkal
+      href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+  - name: Eseményindítók létrehozása
+    items:
+    - name: Ütemezési eseményindító létrehozása
+      href: how-to-create-schedule-trigger.md
+    - name: Átfedésmentes ablak eseményindítójának létrehozása
+      href: how-to-create-tumbling-window-trigger.md
+    - name: Eseményalapú trigger létrehozása
+      href: how-to-create-event-trigger.md
 - name: Referencia
   items:
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.datafactory
-    - name: PowerShell
-      href: /powershell/module/azurerm.datafactoryv2/
-    - name: REST API
-      href: /rest/api/datafactory
-    - name: Python
-      href: /python/api/overview/azure/datafactory?view=azure-python
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.datafactory
+  - name: PowerShell
+    href: /powershell/module/azurerm.datafactoryv2/
+  - name: REST API
+    href: /rest/api/datafactory
+  - name: Python
+    href: /python/api/overview/azure/datafactory?view=azure-python
 - name: További források
   items:
-    - name: Kérdés feltevése – MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
-    - name: Kérdés feltevése – Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
-    - name: Szolgáltatás igénylése
-      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: GYIK
-      href: frequently-asked-questions.md
-    - name: Ütemterv
-      href: 'https://azure.microsoft.com/en-us/roadmap/?tag=data-factory'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
-    - name: Rendelkezésre állás régiónként
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Támogatási lehetőségek
-      href: 'https://azure.microsoft.com/support/options/'
+  - name: Kérdés feltevése – MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc
+  - name: Kérdés feltevése – Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-data-factory
+  - name: Szolgáltatás igénylése
+    href: https://feedback.azure.com/forums/270578-azure-data-factory
+  - name: GYIK
+    href: frequently-asked-questions.md
+  - name: Ütemterv
+    href: https://azure.microsoft.com/en-us/roadmap/?tag=data-factory
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/data-factory/
+  - name: Rendelkezésre állás régiónként
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Támogatási lehetőségek
+    href: https://azure.microsoft.com/support/options/
+ms.openlocfilehash: 78285fe91ab5a05085df051931b06f3deceff7ec
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616649"

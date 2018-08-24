@@ -180,7 +180,9 @@
 
 ### Migrate (Áttelepítés)
 #### [Előfizetések és tárfiókok](storsimple-8000-migrate-classic-azure-portal.md)
-#### [Az 5000/7000 sorozat eszközeiről](storsimple-8000-migrate-from-5000-7000.md)
+#### [Az 5000/7000 sorozat eszközeiről](storsimple-8000-migration-options.md)
+##### [A StorSimple 8000 sorozat eszközeire](storsimple-8000-migrate-from-5000-7000.md)
+##### [Az Azure File Syncre](storsimple-5000-7000-afs-migration.md)
 #### [Egyéb tárolóeszközökből](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Frissítés

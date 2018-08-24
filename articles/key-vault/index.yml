@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cfa1c2358926970f33827706480a53f42bed8339
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: b797090b98d7ab552c3c342eeea341fd86c331c3
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411658"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41927985"
 documentType: LandingData
 title: Key Vault – dokumentáció
 metadata:
@@ -22,8 +22,19 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Ismerje meg, hogyan védheti és felügyelheti a Key Vault használatával a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkos kulcsokat. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhatja létre és tarthatja karban a kulcsokat, amelyekkel elérheti és titkosíthatja erőforrásait és megoldásait.
+  description: Ismerje meg, hogyan védheti és felügyelheti a Key Vault használatával a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkos kulcsokat. Az oktatóanyagok, API-referenciák és egyéb dokumentumok bemutatják, hogyan hozhatja létre, illetve tarthatja karban a kulcsokat és a titkos kulcsokat, amelyekkel elérheti és titkosíthatja erőforrásait és megoldásait.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/key-vault/key-vault-whatis
+      html: <p>Megismerkedhet az Azure Key Vaulthoz kapcsolódó alapvető fogalmakkal.</p>
+      image:
+        src: https://docs.microsoft.com/en-us/media/common/i_article.svg
+      title: Alapelvek
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -62,11 +73,6 @@ sections:
       image:
         src: media/index/get-started.svg
         href: /azure/key-vault/key-vault-use-from-web-application
-    - title: Az Azure Key Vault beállítása végpontok közötti kulcsforgatással és auditálással
-      href: /azure/key-vault/key-vault-key-rotation-log-monitoring
-      image:
-        src: media/index/tutorial.svg
-        href: /azure/key-vault/key-vault-key-rotation-log-monitoring
 - title: Referencia
   items:
   - type: list

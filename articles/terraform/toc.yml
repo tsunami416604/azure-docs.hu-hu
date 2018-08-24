@@ -1,51 +1,60 @@
+items:
 - name: Terraform az Azure-on – Dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure-on futtatott Terraform ismertetése
-      href: terraform-overview.md
+  - name: Az Azure-on futtatott Terraform ismertetése
+    href: terraform-overview.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: A Terraform telepítése és konfigurálása
-      href: /azure/virtual-machines/linux/terraform-install-configure
-      maintainContext: true
-    - name: Linux rendszerű virtuális gép létrehozása
-      href: /azure/virtual-machines/linux/terraform-create-complete-vm
-      maintainContext: true
+  - name: A Terraform telepítése és konfigurálása
+    href: /azure/virtual-machines/linux/terraform-install-configure
+    maintainContext: true
+  - name: Linux rendszerű virtuális gép létrehozása
+    href: /azure/virtual-machines/linux/terraform-create-complete-vm
+    maintainContext: true
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: Kubernetes-fürt létrehozása az AKS és a Terraform használatával
-      href: terraform-create-k8s-cluster-with-tf-and-aks.md
-    - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
-      href: terraform-slot-walkthru.md
-    - name: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása
-      href: terraform-vm-msi.md
-    - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
-      href: terraform-create-vm-cluster-module.md
-    - name: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
-      href: terraform-create-vm-cluster-with-infrastructure.md
-    - name: VM-méretezési készlet kiépítése infrastruktúrával
-      href: terraform-create-vm-scaleset-network-disks-hcl.md
-    - name: VM-méretezési készlet kiépítése Packer egyéni rendszerképpel
-      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: Kubernetes-fürt létrehozása az AKS és a Terraform használatával
+    href: terraform-create-k8s-cluster-with-tf-and-aks.md
+  - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
+    href: terraform-slot-walkthru.md
+  - name: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása
+    href: terraform-vm-msi.md
+  - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
+    href: terraform-create-vm-cluster-module.md
+  - name: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
+    href: terraform-create-vm-cluster-with-infrastructure.md
+  - name: VM-méretezési készlet kiépítése infrastruktúrával
+    href: terraform-create-vm-scaleset-network-disks-hcl.md
+  - name: VM-méretezési készlet kiépítése Packer egyéni rendszerképpel
+    href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
 - name: Alapelvek
   items:
-    - name: Cloud Shell-integráció
-      href: terraform-cloud-shell.md
+  - name: Cloud Shell-integráció
+    href: terraform-cloud-shell.md
 - name: Példák
   items:
-    - name: Konfigurációs sablonok
-      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
+  - name: Konfigurációs sablonok
+    href: https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples
 - name: Referencia
   items:
-    - name: Azure-modulok beállításjegyzéke
-      href: 'https://registry.terraform.io/modules/Azure'
-    - name: Terraform-referencia
-      href: 'http://aka.ms/terraform'
+  - name: Azure-modulok beállításjegyzéke
+    href: https://registry.terraform.io/modules/Azure
+  - name: Terraform-referencia
+    href: http://aka.ms/terraform
+  - name: Azure Terraform VS Code-bővítmény
+    href: terraform-vscode-extension.md
 - name: További források
   items:
-    - name: Azure és Terraform
-      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
+  - name: Azure és Terraform
+    href: https://azure.microsoft.com/solutions/devops/terraform/
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 349348f2230005831c1ad68eb7f48dfaa8f4b78c
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41927677"

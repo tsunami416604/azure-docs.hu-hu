@@ -9,7 +9,8 @@
 ## [SQL Server migrálása az Azure SQL DB felügyelt példányába](tutorial-sql-server-to-managed-instance.md)
 
 # Útmutatók
-## [SQL Server migrálása a PowerShell használatával](howto-sql-server-to-azure-sql-powershell.md)
+## [A PowerShell használata SQL Server migrálásához az Azure SQL DB-be](howto-sql-server-to-azure-sql-powershell.md)
+## [A PowerShell használata SQL Server migrálásához az Azure SQL DB MI-be](howto-sql-server-to-azure-sql-mi-powershell.md)
 
 # További források
 ## [Felhasználói visszajelzések](https://feedback.azure.com/forums/906100-azure-database-migration-service)

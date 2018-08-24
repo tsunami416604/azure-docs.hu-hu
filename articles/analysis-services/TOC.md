@@ -34,6 +34,7 @@
 ### [Kiszolgálónév aliasának konfigurálása](analysis-services-server-alias.md)
 ### [Horizontális felskálázás konfigurálása](analysis-services-scale-out.md)
 ### [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)
+### [Átjáró használata az adatforrásokhoz egy Azure-beli virtuális hálózaton](analysis-services-vnet-gateway.md)
 ### [Kiszolgáló kezelése](analysis-services-manage.md)
 ### [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)
 ### [Diagnosztikai naplózás beállítása](analysis-services-logging.md)

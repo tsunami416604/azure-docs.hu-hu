@@ -1,189 +1,200 @@
+items:
 - name: Lab Services – dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-    - name: A Lab Services ismertetése
-      href: lab-services-overview.md
-    - name: Tesztkörnyezet-típusok összehasonlítása
-      href: compare-lab-types.md
+  - name: A Lab Services ismertetése
+    href: lab-services-overview.md
+  - name: Tesztkörnyezet-típusok összehasonlítása
+    href: compare-lab-types.md
 - name: Oktatóanyagok
   items:
-    - name: DevTest Labs
-      items:
-        - name: 1. Tesztkörnyezet beállítása
-          href: tutorial-create-custom-lab.md
-        - name: 2. Tesztkörnyezet elérése
-          href: tutorial-use-custom-lab.md
-    - name: Osztályterem-tesztkörnyezetek
-      items:
-        - name: 1. Tesztkörnyezetfiók beállítása
-          href: classroom-labs/tutorial-setup-lab-account.md
-        - name: 2. Osztályterem-tesztkörnyezet beállítása
-          href: classroom-labs/tutorial-setup-classroom-lab.md
-        - name: 3. Osztályterem-tesztkörnyezet elérése
-          href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
+  - name: DevTest Labs
+    items:
+    - name: 1. Tesztkörnyezet beállítása
+      href: tutorial-create-custom-lab.md
+    - name: 2. Tesztkörnyezet elérése
+      href: tutorial-use-custom-lab.md
+  - name: Osztályterem-tesztkörnyezetek
+    items:
+    - name: 1. Tesztkörnyezetfiók beállítása
+      href: classroom-labs/tutorial-setup-lab-account.md
+    - name: 2. Osztályterem-tesztkörnyezet beállítása
+      href: classroom-labs/tutorial-setup-classroom-lab.md
+    - name: 3. Osztályterem-tesztkörnyezet elérése
+      href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
+    - name: 4. Osztályterem-tesztkörnyezet használatának követése
+      href: classroom-labs/tutorial-track-usage.md
 - name: Példák
   items:
-    - name: DevTest Labs
-      items:
-        - name: Resource Manager-sablonok
-          href: 'https://github.com/Azure/azure-devtestlab/tree/master/Samples'
-        - name: Azure PowerShell
-          href: samples-powershell.md
-        - name: Azure CLI
-          href: samples-cli.md
+  - name: DevTest Labs
+    items:
+    - name: Resource Manager-sablonok
+      href: https://github.com/Azure/azure-devtestlab/tree/master/Samples
+    - name: Azure PowerShell
+      href: samples-powershell.md
+    - name: Azure CLI
+      href: samples-cli.md
 - name: Alapelvek
   items:
+  - name: DevTest Labs
+    href: devtest-lab-concepts.md
+    items:
+    - name: Tesztkörnyezetek használata fejlesztőknek
+      href: devtest-lab-developer-lab.md
+    - name: Tesztkörnyezetek használata
+      href: devtest-lab-test-env.md
+    - name: Tesztkörnyezetek használata képzéshez
+      href: devtest-lab-training-lab.md
     - name: DevTest Labs
-      href: devtest-lab-concepts.md
-      items:
-        - name: Tesztkörnyezetek használata fejlesztőknek
-          href: devtest-lab-developer-lab.md
-        - name: Tesztkörnyezetek használata
-          href: devtest-lab-test-env.md
-        - name: Tesztkörnyezetek használata képzéshez
-          href: devtest-lab-training-lab.md
-        - name: DevTest Labs
-          href: devtest-lab-overview.md
+      href: devtest-lab-overview.md
 - name: Útmutatók
   items:
-    - name: Osztályterem-tesztkörnyezetek
+  - name: Osztályterem-tesztkörnyezetek
+    items:
+    - name: Tesztkörnyezetfiókok kezelése
+      href: classroom-labs/how-to-manage-lab-accounts.md
+    - name: Osztályterem-tesztkörnyezetek kezelése
+      href: classroom-labs/how-to-manage-classroom-labs.md
+    - name: Osztályterem-tesztkörnyezetek elérése
+      href: classroom-labs/how-to-use-classroom-lab.md
+  - name: DevTest Labs
+    items:
+    - name: Labor létrehozása
+      href: devtest-lab-create-lab.md
+    - name: Virtuális gép létrehozása a tesztkörnyezetben
+      href: devtest-lab-create-first-vm.md
+    - name: Tesztkörnyezet vagy tesztkörnyezetben lévő virtuális gép törlése
+      href: devtest-lab-delete-lab-vm.md
+    - name: Tesztkörnyezetre vonatkozó szabályzatok létrehozása
+      href: devtest-lab-get-started-with-lab-policies.md
+    - name: Titkos kulcsok tárolása az Azure Key Vaultban
+      href: devtest-lab-store-secrets-in-key-vault.md
+    - name: Virtuális gépek használata tesztkörnyezetben
       items:
-        - name: Tesztkörnyezetfiókok kezelése
-          href: classroom-labs/how-to-manage-lab-accounts.md
-        - name: Osztályterem-tesztkörnyezetek kezelése
-          href: classroom-labs/how-to-manage-classroom-labs.md
-        - name: Osztályterem-tesztkörnyezetek elérése
-          href: classroom-labs/how-to-use-classroom-lab.md
-    - name: DevTest Labs
+      - name: Virtuális gépek létrehozása
+        href: devtest-lab-add-vm.md
+      - name: Igényelhető virtuális gépek létrehozása és felügyelete
+        href: devtest-lab-add-claimable-vm.md
+      - name: Virtuális gépek létrehozása és kezelése az Azure parancssori felülettel
+        href: devtest-lab-vmcli.md
+      - name: Virtuális gép létrehozása Resource Manager-sablonból
+        href: devtest-lab-use-resource-manager-template.md
+      - name: Virtuális gép újraindítása
+        href: devtest-lab-restart-vm.md
+      - name: Virtuális gép átméretezése
+        href: devtest-lab-resize-vm.md
+      - name: Virtuális gép ismételt üzembe helyezése
+        href: devtest-lab-redeploy-vm.md
+      - name: Virtuális gép importálása
+        href: devtest-lab-import-vm.md
+    - name: Környezetek használata tesztkörnyezetben
       items:
-        - name: Labor létrehozása
-          href: devtest-lab-create-lab.md
-        - name: Virtuális gép létrehozása a tesztkörnyezetben
-          href: devtest-lab-create-first-vm.md
-        - name: Tesztkörnyezet vagy tesztkörnyezetben lévő virtuális gép törlése
-          href: devtest-lab-delete-lab-vm.md
-        - name: Tesztkörnyezetre vonatkozó szabályzatok létrehozása
-          href: devtest-lab-get-started-with-lab-policies.md
-        - name: Titkos kulcsok tárolása az Azure Key Vaultban
-          href: devtest-lab-store-secrets-in-key-vault.md
-        - name: Virtuális gépek használata tesztkörnyezetben
-          items:
-            - name: Virtuális gépek létrehozása
-              href: devtest-lab-add-vm.md
-            - name: Igényelhető virtuális gépek létrehozása és felügyelete
-              href: devtest-lab-add-claimable-vm.md
-            - name: Virtuális gépek létrehozása és kezelése az Azure parancssori felülettel
-              href: devtest-lab-vmcli.md
-            - name: Virtuális gép létrehozása Resource Manager-sablonból
-              href: devtest-lab-use-resource-manager-template.md
-            - name: Virtuális gép újraindítása
-              href: devtest-lab-restart-vm.md
-            - name: Virtuális gép átméretezése
-              href: devtest-lab-resize-vm.md
-            - name: Virtuális gép ismételt üzembe helyezése
-              href: devtest-lab-redeploy-vm.md
-            - name: Virtuális gép importálása
-              href: devtest-lab-import-vm.md
-        - name: Környezetek használata tesztkörnyezetben
-          items:
-            - name: Környezet létrehozása
-              href: devtest-lab-create-environment-from-arm.md
-        - name: Biztonságos hozzáférés a tesztkörnyezetekhez
-          items:
-            - name: Labortulajdonosok és -felhasználók hozzáadása
-              href: devtest-lab-add-devtest-user.md
-            - name: Engedélyek testreszabása egyéni szerepkörökkel
-              href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
-        - name: Tesztkörnyezet konfigurálása
-          items:
-            - name: Szabályzatok és ütemezések beállítása
-              href: devtest-lab-set-lab-policy.md
-            - name: Költségkezelés konfigurálása
-              href: devtest-lab-configure-cost-management.md
-            - name: Azure Marketplace-rendszerképek konfigurálása
-              href: devtest-lab-configure-marketplace-images.md
-            - name: Licencelt kép engedélyezése
-              href: devtest-lab-enable-licensed-images.md
-            - name: Címkék hozzáadása tesztkörnyezethez
-              href: devtest-lab-add-tag.md
-            - name: Értesítés közzététele tesztkörnyezetben
-              href: devtest-lab-announcements.md
-            - name: Támogatási információ hozzáadása tesztkörnyezethez
-              href: devtest-lab-internal-support-message.md
-        - name: Egyéni rendszerkép vagy képlet kiválasztása
-          href: devtest-lab-comparing-vm-base-image-types.md
-        - name: Egyéni rendszerképek kezelése
-          items:
-            - name: Egyéni lemezkép készítése egy virtuális gépről
-              href: devtest-lab-create-custom-image-from-vm-using-portal.md
-            - name: 'Egyéni lemezkép készítése VHD-fájlból, az Azure Portal használatával'
-              href: devtest-lab-create-template.md
-            - name: 'Egyéni lemezkép készítése VHD-fájlból, a PowerShell használatával'
-              href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
-            - name: VHD-fájl feltöltése AzCopy használatával
-              href: devtest-lab-upload-vhd-using-azcopy.md
-            - name: VHD-fájl feltöltése PowerShell használatával
-              href: devtest-lab-upload-vhd-using-powershell.md
-            - name: VHD-fájl feltöltése Storage Explorer használatával
-              href: devtest-lab-upload-vhd-using-storage-explorer.md
-        - name: Újrahasznosítható sablonok kezelése
-          items:
-            - name: Git-adattár hozzáadása összetevők és sablonok tárolásához
-              href: devtest-lab-add-artifact-repo.md
-            - name: Képletek kezelése
-              href: devtest-lab-manage-formulas.md
-        - name: Összetevők kezelése
-          items:
-            - name: Kötelező összetevők megadása
-              href: devtest-lab-mandatory-artifacts.md
-            - name: Egyéni összetevők létrehozása
-              href: devtest-lab-artifact-author.md
-            - name: Az összetevők hibáinak diagnosztizálása
-              href: devtest-lab-troubleshoot-artifact-failure.md
-        - name: Virtuális hálózatok kezelése
-          items:
-            - name: Virtuális hálózatok konfigurálása
-              href: devtest-lab-configure-vnet.md
-            - name: IP-konfigurációs beállítás kiválasztása
-              href: devtest-lab-shared-ip.md
-        - name: Adatlemezek felügyelete
-          items:
-            - name: Adatlemezek csatolása és leválasztása
-              href: devtest-lab-attach-detach-data-disk.md
-        - name: A tesztkörnyezet skálázása
-          href: devtest-lab-scale-lab.md
-        - name: Integrálás a CI/CD-vel
-          items:
-            - name: Tesztkörnyezetek integrálása VSTS CI/CD-folyamatába
-              href: devtest-lab-integrate-ci-cd-vsts.md
-        - name: Tesztkörnyezetek létrehozása és módosítása Resource Manager-sablonok használata
-          href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
+      - name: Környezet létrehozása
+        href: devtest-lab-create-environment-from-arm.md
+      - name: Nyilvános környezetek konfigurálása és használata
+        href: devtest-lab-configure-use-public-environments.md
+    - name: Biztonságos hozzáférés a tesztkörnyezetekhez
+      items:
+      - name: Labortulajdonosok és -felhasználók hozzáadása
+        href: devtest-lab-add-devtest-user.md
+      - name: Engedélyek testreszabása egyéni szerepkörökkel
+        href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
+    - name: Tesztkörnyezet konfigurálása
+      items:
+      - name: Szabályzatok és ütemezések beállítása
+        href: devtest-lab-set-lab-policy.md
+      - name: Költségkezelés konfigurálása
+        href: devtest-lab-configure-cost-management.md
+      - name: Azure Marketplace-rendszerképek konfigurálása
+        href: devtest-lab-configure-marketplace-images.md
+      - name: Licencelt kép engedélyezése
+        href: devtest-lab-enable-licensed-images.md
+      - name: Címkék hozzáadása tesztkörnyezethez
+        href: devtest-lab-add-tag.md
+      - name: Értesítés közzététele tesztkörnyezetben
+        href: devtest-lab-announcements.md
+      - name: Támogatási információ hozzáadása tesztkörnyezethez
+        href: devtest-lab-internal-support-message.md
+    - name: Egyéni rendszerkép vagy képlet kiválasztása
+      href: devtest-lab-comparing-vm-base-image-types.md
+    - name: Egyéni rendszerképek kezelése
+      items:
+      - name: Egyéni lemezkép készítése egy virtuális gépről
+        href: devtest-lab-create-custom-image-from-vm-using-portal.md
+      - name: Egyéni lemezkép készítése VHD-fájlból, az Azure Portal használatával
+        href: devtest-lab-create-template.md
+      - name: Egyéni lemezkép készítése VHD-fájlból, a PowerShell használatával
+        href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
+      - name: VHD-fájl feltöltése AzCopy használatával
+        href: devtest-lab-upload-vhd-using-azcopy.md
+      - name: VHD-fájl feltöltése PowerShell használatával
+        href: devtest-lab-upload-vhd-using-powershell.md
+      - name: VHD-fájl feltöltése Storage Explorer használatával
+        href: devtest-lab-upload-vhd-using-storage-explorer.md
+    - name: Újrahasznosítható sablonok kezelése
+      items:
+      - name: Git-adattár hozzáadása összetevők és sablonok tárolásához
+        href: devtest-lab-add-artifact-repo.md
+      - name: Képletek kezelése
+        href: devtest-lab-manage-formulas.md
+    - name: Összetevők kezelése
+      items:
+      - name: Kötelező összetevők megadása
+        href: devtest-lab-mandatory-artifacts.md
+      - name: Egyéni összetevők létrehozása
+        href: devtest-lab-artifact-author.md
+      - name: Az összetevők hibáinak diagnosztizálása
+        href: devtest-lab-troubleshoot-artifact-failure.md
+    - name: Virtuális hálózatok kezelése
+      items:
+      - name: Virtuális hálózatok konfigurálása
+        href: devtest-lab-configure-vnet.md
+      - name: IP-konfigurációs beállítás kiválasztása
+        href: devtest-lab-shared-ip.md
+    - name: Adatlemezek felügyelete
+      items:
+      - name: Adatlemezek csatolása és leválasztása
+        href: devtest-lab-attach-detach-data-disk.md
+    - name: A tesztkörnyezet skálázása
+      href: devtest-lab-scale-lab.md
+    - name: Integrálás a CI/CD-vel
+      items:
+      - name: Tesztkörnyezetek integrálása VSTS CI/CD-folyamatába
+        href: devtest-lab-integrate-ci-cd-vsts.md
+    - name: Tesztkörnyezetek létrehozása és módosítása Resource Manager-sablonok használata
+      href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
 - name: Referencia
   items:
-    - name: CLI 2.0
-      href: /cli/azure/lab
-    - name: PowerShell
-      href: '/powershell/module/azurerm.devtestlabs/#devtest_labs'
-    - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/dtl/'
+  - name: CLI 2.0
+    href: /cli/azure/lab
+  - name: PowerShell
+    href: /powershell/module/azurerm.devtestlabs/#devtest_labs
+  - name: REST API
+    href: https://docs.microsoft.com/rest/api/dtl/
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=developer-tools'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: DevTest Labs – gyakori kérdések
-      href: devtest-lab-faq.md
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
-    - name: MSDN fórum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs'
-    - name: Csapatblog
-      href: 'https://blogs.msdn.microsoft.com/devtestlab/'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-devtest-labs'
-    - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=developer-tools
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: DevTest Labs – gyakori kérdések
+    href: devtest-lab-faq.md
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=devtest-lab
+  - name: MSDN fórum
+    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs
+  - name: Csapatblog
+    href: https://blogs.msdn.microsoft.com/devtestlab/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-devtest-labs
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/devtest-lab/
+ms.openlocfilehash: f6a260970e176c9ac4871da716162dca29aebaa8
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41927321"

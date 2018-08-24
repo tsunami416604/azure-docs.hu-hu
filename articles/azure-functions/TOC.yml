@@ -1,277 +1,286 @@
+items:
 - name: Functions – dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-    - name: A Functions ismertetése
-      href: functions-overview.md
-    - name: Kiszolgáló nélküli összehasonlítás
-      href: functions-compare-logic-apps-ms-flow-webjobs.md
+  - name: A Functions ismertetése
+    href: functions-overview.md
+  - name: Kiszolgáló nélküli összehasonlítás
+    href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Függvény létrehozása – portál
-      href: functions-create-first-azure-function.md
-    - name: Függvény létrehozása – Visual Studio
-      href: functions-create-your-first-function-visual-studio.md
-    - name: Függvény létrehozása – Java/Maven
-      href: functions-create-first-java-maven.md
-    - name: Függvény létrehozása – Azure CLI
-      href: functions-create-first-azure-function-azure-cli.md
-    - name: Függvény létrehozása – Linux
-      href: functions-create-first-azure-function-azure-cli-linux.md
-    - name: Eseményindítók
-      items:
-        - name: Blob Storage
-          href: functions-create-storage-blob-triggered-function.md
-        - name: Azure Cosmos DB
-          href: functions-create-cosmos-db-triggered-function.md
-        - name: Időzítő
-          href: functions-create-scheduled-function.md
-        - name: Általános webhook
-          href: functions-create-generic-webhook-triggered-function.md
-        - name: GitHub-webhook
-          href: functions-create-github-webhook-triggered-function.md
-        - name: Queue Storage
-          href: functions-create-storage-queue-triggered-function.md
-    - name: Integrálás
-      items:
-        - name: Storage
-          href: functions-integrate-storage-queue-output-binding.md
-        - name: Azure Cosmos DB
-          href: functions-integrate-store-unstructured-data-cosmosdb.md
+  - name: Függvény létrehozása – portál
+    href: functions-create-first-azure-function.md
+  - name: Függvény létrehozása – Visual Studio
+    href: functions-create-your-first-function-visual-studio.md
+  - name: Függvény létrehozása – Java/Maven
+    href: functions-create-first-java-maven.md
+  - name: Függvény létrehozása – Azure CLI
+    href: functions-create-first-azure-function-azure-cli.md
+  - name: Függvény létrehozása – Linux
+    href: functions-create-first-azure-function-azure-cli-linux.md
+  - name: Eseményindítók
+    items:
+    - name: Blob Storage
+      href: functions-create-storage-blob-triggered-function.md
+    - name: Azure Cosmos DB
+      href: functions-create-cosmos-db-triggered-function.md
+    - name: Időzítő
+      href: functions-create-scheduled-function.md
+    - name: Általános webhook
+      href: functions-create-generic-webhook-triggered-function.md
+    - name: GitHub-webhook
+      href: functions-create-github-webhook-triggered-function.md
+    - name: Queue Storage
+      href: functions-create-storage-queue-triggered-function.md
+  - name: Integrálás
+    items:
+    - name: Storage
+      href: functions-integrate-storage-queue-output-binding.md
+    - name: Azure Cosmos DB
+      href: functions-integrate-store-unstructured-data-cosmosdb.md
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: A Functions és a Logic Apps
-      href: functions-twitter-email.md
-    - name: Kiszolgáló nélküli API létrehozása
-      href: functions-create-serverless-api.md
-    - name: OpenAPI definíció létrehozása
-      href: functions-openapi-definition.md
-    - name: Rendszerképek átméretezése az Event Grid használatával
-      href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Kiszolgáló nélküli webalkalmazás létrehozása
-      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
-    - name: A Functions Linux rendszeren
-      items:
-        - name: Egyéni rendszerkép
-          href: functions-create-function-linux-custom-image.md
-        - name: IoT Edge-eszköz
-          href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - name: A Functions és a Logic Apps
+    href: functions-twitter-email.md
+  - name: Kiszolgáló nélküli API létrehozása
+    href: functions-create-serverless-api.md
+  - name: OpenAPI definíció létrehozása
+    href: functions-openapi-definition.md
+  - name: Rendszerképek átméretezése az Event Grid használatával
+    href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - name: Kiszolgáló nélküli webalkalmazás létrehozása
+    href: https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database
+  - name: A Functions Linux rendszeren
+    items:
+    - name: Egyéni rendszerkép
+      href: functions-create-function-linux-custom-image.md
+    - name: IoT Edge-eszköz
+      href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
 - name: Példák
   items:
-    - name: Kódminták
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=functions'
-    - name: Azure CLI
-      href: functions-cli-samples.md
+  - name: Kódminták
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=functions
+  - name: Azure CLI
+    href: functions-cli-samples.md
+  - name: Azure Functions-receptek
+    href: https://docs.microsoft.com/sandbox/functions-recipes/
 - name: Alapelvek
   items:
-    - name: Az 1.x és a 2.x összehasonlítása
-      href: functions-versions.md
-    - name: Méretezés és üzemeltetés
-      href: functions-scale.md
-    - name: Eseményindítók és kötések
-      href: functions-triggers-bindings.md
-    - name: Nyelvek
-      items:
-        - name: Támogatott nyelvek
-          href: supported-languages.md
-        - name: 'C# (osztálytár)'
-          href: functions-dotnet-class-library.md
-        - name: 'C#-szkript (.csx)'
-          href: functions-reference-csharp.md
-        - name: 'F#'
-          href: functions-reference-fsharp.md
-        - name: JavaScript
-          href: functions-reference-node.md
-        - name: Java
-          href: functions-reference-java.md
+  - name: Az 1.x és a 2.x összehasonlítása
+    href: functions-versions.md
+  - name: Méretezés és üzemeltetés
+    href: functions-scale.md
+  - name: Eseményindítók és kötések
+    href: functions-triggers-bindings.md
+  - name: Nyelvek
+    items:
+    - name: Támogatott nyelvek
+      href: supported-languages.md
+    - name: C# (osztálytár)
+      href: functions-dotnet-class-library.md
+    - name: C#-szkript (.csx)
+      href: functions-reference-csharp.md
+    - name: F#
+      href: functions-reference-fsharp.md
+    - name: JavaScript
+      href: functions-reference-node.md
+    - name: Java
+      href: functions-reference-java.md
+  - name: Diagnosztika
+    href: ../app-service/app-service-diagnostics.md
+  - name: A teljesítménnyel kapcsolatos megfontolások
+    href: functions-best-practices.md
+  - name: Functions-proxyk
+    href: functions-proxies.md
+  - name: IP-címek
+    href: ip-addresses.md
+  - name: Helyszíni függvények
+    href: functions-runtime-overview.md
+  - name: Tartós függvények
+    items:
+    - name: Áttekintés
+      href: durable-functions-overview.md
+    - name: Függvények típusai és funkciói
+      href: durable-functions-types-features-overview.md
+    - name: Kötések
+      href: durable-functions-bindings.md
+    - name: Ellenőrzőpont és visszajátszás
+      href: durable-functions-checkpointing-and-replay.md
+    - name: Egyéni vezénylési állapot
+      href: durable-functions-custom-orchestration-status.md
+    - name: Példányfelügyelet
+      href: durable-functions-instance-management.md
+    - name: HTTP API
+      href: durable-functions-http-api.md
+    - name: Hibakezelés
+      href: durable-functions-error-handling.md
     - name: Diagnosztika
-      href: ../app-service/app-service-diagnostics.md
-    - name: A teljesítménnyel kapcsolatos megfontolások
-      href: functions-best-practices.md
-    - name: Functions-proxyk
-      href: functions-proxies.md
-    - name: IP-címek
-      href: ip-addresses.md
-    - name: Helyszíni függvények
-      href: functions-runtime-overview.md
-    - name: Tartós függvények
-      items:
-        - name: Áttekintés
-          href: durable-functions-overview.md
-        - name: Függvények típusai és funkciói
-          href: durable-functions-types-features-overview.md
-        - name: Kötések
-          href: durable-functions-bindings.md
-        - name: Ellenőrzőpont és visszajátszás
-          href: durable-functions-checkpointing-and-replay.md
-        - name: Egyéni vezénylési állapot
-          href: durable-functions-custom-orchestration-status.md
-        - name: Példányfelügyelet
-          href: durable-functions-instance-management.md
-        - name: HTTP API
-          href: durable-functions-http-api.md
-        - name: Hibakezelés
-          href: durable-functions-error-handling.md
-        - name: Diagnosztika
-          href: durable-functions-diagnostics.md
-        - name: Időzítők
-          href: durable-functions-timers.md
-        - name: Külső események
-          href: durable-functions-external-events.md
-        - name: Külső vezénylések
-          href: durable-functions-eternal-orchestrations.md
-        - name: Egyszeres vezénylések
-          href: durable-functions-singletons.md
-        - name: Alvezénylések
-          href: durable-functions-sub-orchestrations.md
-        - name: Feladatközpontok
-          href: durable-functions-task-hubs.md
-        - name: Verziókezelés
-          href: durable-functions-versioning.md
-        - name: Teljesítmény és méret
-          href: durable-functions-perf-and-scale.md
-        - name: Vészhelyreállítás és földrajzi elosztás
-          href: durable-functions-disaster-recovery-geo-distribution.md
+      href: durable-functions-diagnostics.md
+    - name: Időzítők
+      href: durable-functions-timers.md
+    - name: Külső események
+      href: durable-functions-external-events.md
+    - name: Külső vezénylések
+      href: durable-functions-eternal-orchestrations.md
+    - name: Egyszeres vezénylések
+      href: durable-functions-singletons.md
+    - name: Alvezénylések
+      href: durable-functions-sub-orchestrations.md
+    - name: Feladatközpontok
+      href: durable-functions-task-hubs.md
+    - name: Verziókezelés
+      href: durable-functions-versioning.md
+    - name: Teljesítmény és méret
+      href: durable-functions-perf-and-scale.md
+    - name: Vészhelyreállítás és földrajzi elosztás
+      href: durable-functions-disaster-recovery-geo-distribution.md
 - name: Útmutatók
   items:
-    - name: Fejlesztés
-      items:
-        - name: Fejlesztői útmutató
-          href: functions-reference.md
-        - name: Függvények tesztelése
-          href: functions-test-a-function.md
-        - name: Helyi fejlesztés és hibakeresés
-          href: functions-develop-local.md
-        - name: A Visual Studio fejlesztése
-          href: functions-develop-vs.md
-        - name: A Core Tools fejlesztése
-          href: functions-run-local.md
-        - name: IntelliJ IDEA fejlesztése
-          href: functions-create-maven-intellij.md
-        - name: Eclipse-fejlesztés
-          href: functions-create-maven-eclipse.md
-        - name: Kapcsolatok kezelése
-          href: manage-connections.md
-        - name: Hibakezelés
-          href: functions-bindings-error-pages.md
-    - name: Üzembe helyezés
-      items:
-        - name: Folyamatos üzembe helyezés
-          href: functions-continuous-deployment.md
-        - name: Üzembe helyezés zip-fájlok küldésével
-          href: deployment-zip-push.md
-        - name: Erőforrások üzembe helyezésének automatizálása
-          href: functions-infrastructure-as-code.md
-        - name: Helyszíni függvények
-          href: functions-runtime-install.md
-    - name: Konfigurálás
-      items:
-        - name: Függvényalkalmazás kezelése
-          href: functions-how-to-use-azure-function-app-settings.md
-        - name: Futtatókörnyezet verziójának beállítása
-          href: set-runtime-version.md
-        - name: Függvény letiltása
-          href: disable-function.md
-    - name: Figyelés
-      href: functions-monitoring.md
-    - name: Integrálás
-      items:
-        - name: Csatlakozás SQL Database-adatbázishoz
-          href: functions-scenario-database-table-cleanup.md
-        - name: Open API 2.0-definíció létrehozása
-          href: functions-api-definition-getting-started.md
-        - name: Exportálás a PowerAppsbe és a Microsoft Flow-ba
-          href: app-service-export-api-to-powerapps-and-flow.md
-        - name: Függvény hívása a PowerAppsből
-          href: functions-powerapps-scenario.md
-        - name: Függvény meghívása a Microsoft Flow-ból
-          href: functions-flow-scenario.md
-        - name: Felügyeltszolgáltatás-identitás használata
-          href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Tartós függvények
-      items:
-        - name: Telepítés
-          href: durable-functions-install.md
-        - name: Láncolás
-          href: durable-functions-sequence.md
-        - name: Elosztás/összevonás
-          href: durable-functions-cloud-backup.md
-        - name: Monitorozások
-          href: durable-functions-monitor.md
-        - name: Emberi beavatkozás
-          href: durable-functions-phone-verification.md
-        - name: Egységtesztelés
-          href: durable-functions-unit-testing.md
-        - name: Események közzététele
-          href: durable-functions-event-publishing.md
-        - name: A WebJobs SDK használata
-          href: durable-functions-webjobs-sdk.md
+  - name: Fejlesztés
+    items:
+    - name: Fejlesztői útmutató
+      href: functions-reference.md
+    - name: Függvények tesztelése
+      href: functions-test-a-function.md
+    - name: Helyi fejlesztés és hibakeresés
+      href: functions-develop-local.md
+    - name: A Visual Studio fejlesztése
+      href: functions-develop-vs.md
+    - name: A Core Tools fejlesztése
+      href: functions-run-local.md
+    - name: IntelliJ IDEA fejlesztése
+      href: functions-create-maven-intellij.md
+    - name: Eclipse-fejlesztés
+      href: functions-create-maven-eclipse.md
+    - name: Kapcsolatok kezelése
+      href: manage-connections.md
+    - name: Hibakezelés
+      href: functions-bindings-error-pages.md
+  - name: Üzembe helyezés
+    items:
+    - name: Folyamatos üzembe helyezés
+      href: functions-continuous-deployment.md
+    - name: Üzembe helyezés zip-fájlok küldésével
+      href: deployment-zip-push.md
+    - name: Erőforrások üzembe helyezésének automatizálása
+      href: functions-infrastructure-as-code.md
+    - name: Helyszíni függvények
+      href: functions-runtime-install.md
+  - name: Konfigurálás
+    items:
+    - name: Függvényalkalmazás kezelése
+      href: functions-how-to-use-azure-function-app-settings.md
+    - name: Futtatókörnyezet verziójának beállítása
+      href: set-runtime-version.md
+    - name: Függvény letiltása
+      href: disable-function.md
+  - name: Figyelés
+    href: functions-monitoring.md
+  - name: Integrálás
+    items:
+    - name: Csatlakozás SQL Database-adatbázishoz
+      href: functions-scenario-database-table-cleanup.md
+    - name: Open API 2.0-definíció létrehozása
+      href: functions-api-definition-getting-started.md
+    - name: Exportálás a PowerAppsbe és a Microsoft Flow-ba
+      href: app-service-export-api-to-powerapps-and-flow.md
+    - name: Függvény hívása a PowerAppsből
+      href: functions-powerapps-scenario.md
+    - name: Függvény meghívása a Microsoft Flow-ból
+      href: functions-flow-scenario.md
+    - name: Felügyeltszolgáltatás-identitás használata
+      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - name: Tartós függvények
+    items:
+    - name: Telepítés
+      href: durable-functions-install.md
+    - name: Láncolás
+      href: durable-functions-sequence.md
+    - name: Elosztás/összevonás
+      href: durable-functions-cloud-backup.md
+    - name: Monitorozások
+      href: durable-functions-monitor.md
+    - name: Emberi beavatkozás
+      href: durable-functions-phone-verification.md
+    - name: Egységtesztelés
+      href: durable-functions-unit-testing.md
+    - name: Események közzététele
+      href: durable-functions-event-publishing.md
+    - name: A WebJobs SDK használata
+      href: durable-functions-webjobs-sdk.md
 - name: Referencia
   items:
-    - name: Kötések
+  - name: Kötések
+    items:
+    - name: Blob Storage
+      href: functions-bindings-storage-blob.md
+    - name: Azure Cosmos DB
       items:
-        - name: Blob Storage
-          href: functions-bindings-storage-blob.md
-        - name: Azure Cosmos DB
-          items:
-            - name: Functions 1.x
-              href: functions-bindings-cosmosdb.md
-            - name: Functions 2.x
-              href: functions-bindings-cosmosdb-v2.md
-        - name: Event Grid
-          href: functions-bindings-event-grid.md
-        - name: Event Hubs
-          href: functions-bindings-event-hubs.md
-        - name: Külső fájl
-          href: functions-bindings-external-file.md
-        - name: Külső tábla
-          href: functions-bindings-external-table.md
-        - name: HTTP és webhookok
-          href: functions-bindings-http-webhook.md
-        - name: Microsoft Graph
-          href: functions-bindings-microsoft-graph.md
-        - name: Mobile Apps
-          href: functions-bindings-mobile-apps.md
-        - name: Notification Hubs
-          href: functions-bindings-notification-hubs.md
-        - name: Queue Storage
-          href: functions-bindings-storage-queue.md
-        - name: SendGrid
-          href: functions-bindings-sendgrid.md
-        - name: Service Bus
-          href: functions-bindings-service-bus.md
-        - name: Table Storage
-          href: functions-bindings-storage-table.md
-        - name: Időzítő
-          href: functions-bindings-timer.md
-        - name: Twilio
-          href: functions-bindings-twilio.md
-    - name: host.json-referencia
-      href: functions-host-json.md
-    - name: Alkalmazásbeállítási referencia
-      href: functions-app-settings.md
-    - name: OpenAPI-referencia
-      href: functions-api-definition.md
+      - name: Functions 1.x
+        href: functions-bindings-cosmosdb.md
+      - name: Functions 2.x
+        href: functions-bindings-cosmosdb-v2.md
+    - name: Event Grid
+      href: functions-bindings-event-grid.md
+    - name: Event Hubs
+      href: functions-bindings-event-hubs.md
+    - name: Külső fájl
+      href: functions-bindings-external-file.md
+    - name: Külső tábla
+      href: functions-bindings-external-table.md
+    - name: HTTP és webhookok
+      href: functions-bindings-http-webhook.md
+    - name: Microsoft Graph
+      href: functions-bindings-microsoft-graph.md
+    - name: Mobile Apps
+      href: functions-bindings-mobile-apps.md
+    - name: Notification Hubs
+      href: functions-bindings-notification-hubs.md
+    - name: Queue Storage
+      href: functions-bindings-storage-queue.md
+    - name: SendGrid
+      href: functions-bindings-sendgrid.md
+    - name: Service Bus
+      href: functions-bindings-service-bus.md
+    - name: Table Storage
+      href: functions-bindings-storage-table.md
+    - name: Időzítő
+      href: functions-bindings-timer.md
+    - name: Twilio
+      href: functions-bindings-twilio.md
+  - name: host.json-referencia
+    href: functions-host-json.md
+  - name: Alkalmazásbeállítási referencia
+    href: functions-app-settings.md
+  - name: OpenAPI-referencia
+    href: functions-api-definition.md
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/functions/'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Régiónkénti rendelkezésre állás
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Videók
-      href: 'https://www.youtube.com/c/AzureFunctions'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-functions'
-    - name: Twitter
-      href: 'https://twitter.com/azurefunctions'
-    - name: Az Azure Functions GitHub-adattára
-      href: 'https://github.com/Azure/Azure-Functions/'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform='
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/functions/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Régiónkénti rendelkezésre állás
+    href: https://azure.microsoft.com/regions/services/
+  - name: Videók
+    href: https://www.youtube.com/c/AzureFunctions
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-functions
+  - name: Twitter
+    href: https://twitter.com/azurefunctions
+  - name: Az Azure Functions GitHub-adattára
+    href: https://github.com/Azure/Azure-Functions/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=
+ms.openlocfilehash: 3eb52c481185c50d935991b5163d130925bd6eeb
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41929380"

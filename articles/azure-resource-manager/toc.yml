@@ -1,218 +1,227 @@
+items:
 - name: Azure Resource Manager – dokumentáció
   href: index.md
 - name: Áttekintés
   items:
-    - name: Mi az a Resource Manager?
-      href: resource-group-overview.md
-    - name: A Resource Manager-alapú és a klasszikus üzemi modell
-      href: resource-manager-deployment-model.md
+  - name: Mi az a Resource Manager?
+    href: resource-group-overview.md
+  - name: A Resource Manager-alapú és a klasszikus üzemi modell
+    href: resource-manager-deployment-model.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Sablonok létrehozása – portál
-      href: resource-manager-quickstart-create-templates-use-the-portal.md
-    - name: Sablonok létrehozása – VS Code
-      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - name: Sablonok létrehozása – Visual Studio
-      href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+  - name: Sablonok létrehozása – portál
+    href: resource-manager-quickstart-create-templates-use-the-portal.md
+  - name: Sablonok létrehozása – VS Code
+    href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+  - name: Sablonok létrehozása – Visual Studio
+    href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: Titkosított tárfiók létrehozása
-      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-    - name: Több erőforrás létrehozása
-      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
+  - name: Titkosított tárfiók létrehozása
+    href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+  - name: Több erőforrás létrehozása
+    href: resource-manager-tutorial-create-templates-with-dependent-resources.md
 - name: Alapelvek
   items:
-    - name: Erőforrás-szolgáltatók és típusaik
-      href: resource-manager-supported-services.md
-    - name: Felügyeleti csoportok
-      href: management-groups-overview.md
-    - name: Előfizetés-irányítás
-      href: /azure/architecture/cloud-adoption-guide/subscription-governance
-      maintainContext: true
-    - name: Felhőkonzisztencia-sablonok
-      href: templates-cloud-consistency.md
-    - name: Üzembehelyezési módok
-      href: deployment-modes.md
+  - name: Erőforrás-szolgáltatók és típusaik
+    href: resource-manager-supported-services.md
+  - name: Felügyeleti csoportok
+    href: management-groups-overview.md
+  - name: Előfizetés-irányítás
+    href: /azure/architecture/cloud-adoption-guide/subscription-governance
+    maintainContext: true
+  - name: Felhőkonzisztencia-sablonok
+    href: templates-cloud-consistency.md
+  - name: Üzembehelyezési módok
+    href: deployment-modes.md
 - name: Útmutató
   items:
-    - name: Sablonok létrehozása
+  - name: Sablonok létrehozása
+    items:
+    - name: Sablon szakaszai
+      href: resource-group-authoring-templates.md
       items:
-        - name: Sablon szakaszai
-          href: resource-group-authoring-templates.md
-          items:
-            - name: Paraméterek
-              href: resource-manager-templates-parameters.md
-            - name: Változók
-              href: resource-manager-templates-variables.md
-            - name: Functions
-              href: 'resource-group-authoring-templates.md#functions'
-            - name: További források
-              href: resource-manager-templates-resources.md
-            - name: Kimenetek
-              href: resource-manager-templates-outputs.md
-        - name: Kapcsolt és beágyazott sablonok
-          href: resource-group-linked-templates.md
-        - name: Erőforrás-függőségek
-          href: resource-group-define-dependencies.md
-        - name: Több példány létrehozása
-          href: resource-group-create-multiple.md
-        - name: Erőforráscsoport létrehozása sablonban
-          href: create-resource-group-in-template.md
-        - name: Erőforrás frissítése
-          href: /azure/architecture/building-blocks/extending-templates/update-resource
-    - name: Üzembe helyezés
+      - name: Paraméterek
+        href: resource-manager-templates-parameters.md
+      - name: Változók
+        href: resource-manager-templates-variables.md
+      - name: Functions
+        href: resource-group-authoring-templates.md#functions
+      - name: További források
+        href: resource-manager-templates-resources.md
+      - name: Kimenetek
+        href: resource-manager-templates-outputs.md
+    - name: Kapcsolt és beágyazott sablonok
+      href: resource-group-linked-templates.md
+    - name: Erőforrás-függőségek
+      href: resource-group-define-dependencies.md
+    - name: Több példány létrehozása
+      href: resource-group-create-multiple.md
+    - name: Erőforráscsoport létrehozása sablonban
+      href: create-resource-group-in-template.md
+    - name: Erőforrások létrehozása az előfizetésben
+      href: deploy-to-subscription.md
+    - name: Erőforrás frissítése
+      href: /azure/architecture/building-blocks/extending-templates/update-resource
+  - name: Üzembe helyezés
+    items:
+    - name: Azure PowerShell
       items:
-        - name: Azure PowerShell
-          items:
-            - name: Sablon üzembe helyezése
-              href: resource-group-template-deploy.md
-            - name: Sablon üzembe helyezése SAS-token használatával
-              href: resource-manager-powershell-sas-token.md
-            - name: Sablon exportálása és újbóli üzembe helyezése
-              href: resource-manager-export-template-powershell.md
-        - name: Azure CLI
-          items:
-            - name: Sablon üzembe helyezése
-              href: resource-group-template-deploy-cli.md
-            - name: Sablon üzembe helyezése SAS-token használatával
-              href: resource-manager-cli-sas-token.md
-            - name: Sablon exportálása és újbóli üzembe helyezése
-              href: resource-manager-export-template-cli.md
-        - name: Azure Portal
-          items:
-            - name: Erőforrások üzembe helyezése
-              href: resource-group-template-deploy-portal.md
-            - name: Sablon exportálása
-              href: resource-manager-export-template.md
-        - name: REST API
-          href: resource-group-template-deploy-rest.md
-        - name: Több erőforráscsoport vagy előfizetés
-          href: resource-manager-cross-resource-group-deployment.md
-        - name: Folyamatos integráció a Visual Studio Team Services szolgáltatással
-          href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
-          maintainContext: true
-        - name: Biztonságos értékek továbbítása üzembe helyezés során
-          href: resource-manager-keyvault-parameter.md
-    - name: Kezelés
+      - name: Sablon üzembe helyezése
+        href: resource-group-template-deploy.md
+      - name: Sablon üzembe helyezése SAS-token használatával
+        href: resource-manager-powershell-sas-token.md
+      - name: Sablon exportálása és újbóli üzembe helyezése
+        href: resource-manager-export-template-powershell.md
+    - name: Azure CLI
       items:
-        - name: Azure PowerShell
-          href: powershell-azure-resource-manager.md
-        - name: Azure CLI
-          href: cli-azure-resource-manager.md
-        - name: Azure Portal
-          href: resource-group-portal.md
-        - name: Címkék használata az erőforrások rendszerezéséhez
-          href: resource-group-using-tags.md
-        - name: Erőforrások áthelyezése új csoportba vagy előfizetésbe
-          href: resource-group-move-resources.md
-        - name: EA-előfizetések létrehozása
-          href: programmatically-create-subscription.md
-        - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
-          href: grant-access-to-create-subscription.md
-        - name: Felügyeleti csoportok létrehozása
-          href: management-groups-create.md
-        - name: Felügyeleti csoportok kezelése
-          href: management-groups-manage.md
-    - name: Vezérlési hozzáférés
+      - name: Sablon üzembe helyezése
+        href: resource-group-template-deploy-cli.md
+      - name: Sablon üzembe helyezése SAS-token használatával
+        href: resource-manager-cli-sas-token.md
+      - name: Sablon exportálása és újbóli üzembe helyezése
+        href: resource-manager-export-template-cli.md
+    - name: Azure Portal
       items:
-        - name: Egyszerű szolgáltatás létrehozása
-          items:
-            - name: Azure PowerShell
-              href: resource-group-authenticate-service-principal.md
-            - name: Azure CLI
-              href: /cli/azure/create-an-azure-service-principal-azure-cli
-              maintainContext: true
-            - name: Azure Portal
-              href: resource-group-create-service-principal-portal.md
-        - name: Hitelesítési API az előfizetések hozzáféréséhez
-          href: resource-manager-api-authentication.md
-        - name: Erőforrások zárolása
-          href: resource-group-lock-resources.md
-    - name: Naplózás
+      - name: Erőforrások üzembe helyezése
+        href: resource-group-template-deploy-portal.md
+      - name: Sablon exportálása
+        href: resource-manager-export-template.md
+    - name: REST API
+      href: resource-group-template-deploy-rest.md
+    - name: Több erőforráscsoport vagy előfizetés
+      href: resource-manager-cross-resource-group-deployment.md
+    - name: Folyamatos integráció a Visual Studio Team Services szolgáltatással
+      href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
+      maintainContext: true
+    - name: Biztonságos értékek továbbítása üzembe helyezés során
+      href: resource-manager-keyvault-parameter.md
+  - name: Kezelés
+    items:
+    - name: Azure PowerShell
+      href: powershell-azure-resource-manager.md
+    - name: Azure CLI
+      href: cli-azure-resource-manager.md
+    - name: Azure Portal
+      href: resource-group-portal.md
+    - name: Címkék használata az erőforrások rendszerezéséhez
+      href: resource-group-using-tags.md
+    - name: Erőforrások áthelyezése új csoportba vagy előfizetésbe
+      href: resource-group-move-resources.md
+    - name: EA-előfizetések létrehozása
+      href: programmatically-create-subscription.md
+    - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
+      href: grant-access-to-create-subscription.md
+    - name: Felügyeleti csoportok létrehozása
+      href: management-groups-create.md
+    - name: Felügyeleti csoportok kezelése
+      href: management-groups-manage.md
+  - name: Vezérlési hozzáférés
+    items:
+    - name: Egyszerű szolgáltatás létrehozása
       items:
-        - name: Tevékenységnaplók megtekintése
-          href: resource-group-audit.md
-        - name: Üzembehelyezési műveletek megtekintése
-          href: resource-manager-deployment-operations.md
-    - name: Hibaelhárítás
-      items:
-        - name: Üzembehelyezési hibák elhárítása
-          href: resource-manager-common-deployment-errors.md
-        - name: AccountNameInvalid
-          href: resource-manager-storage-account-name-errors.md
-        - name: InvalidTemplate
-          href: resource-manager-invalid-template-errors.md
-        - name: Üzembehelyezési problémák Linux rendszerben
-          href: ../virtual-machines/linux/troubleshoot-deploy-vm.md
-        - name: NoRegisteredProviderFound
-          href: resource-manager-register-provider-errors.md
-        - name: NotFound
-          href: resource-manager-not-found-errors.md
-        - name: ParentResourceNotFound
-          href: resource-manager-parent-resource-errors.md
-        - name: Kiépítéssel és foglalással kapcsolatos problémák Linux rendszerben
-          href: ../virtual-machines/linux/troubleshoot-deployment-new-vm.md
-        - name: Kiépítéssel és foglalással kapcsolatos problémák Windows rendszerben
-          href: ../virtual-machines/windows/troubleshoot-deployment-new-vm.md
-        - name: RequestDisallowedByPolicy
-          href: resource-manager-policy-requestdisallowedbypolicy-error.md
-        - name: ReservedResourceName
-          href: resource-manager-reserved-resource-name.md
-        - name: ResourceQuotaExceeded
-          href: resource-manager-quota-errors.md
-        - name: SkuNotAvailable
-          href: resource-manager-sku-not-available-errors.md
-        - name: Üzembehelyezési problémák Windows rendszerben
-          href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+      - name: Azure PowerShell
+        href: resource-group-authenticate-service-principal.md
+      - name: Azure CLI
+        href: /cli/azure/create-an-azure-service-principal-azure-cli
+        maintainContext: true
+      - name: Azure Portal
+        href: resource-group-create-service-principal-portal.md
+    - name: Hitelesítési API az előfizetések hozzáféréséhez
+      href: resource-manager-api-authentication.md
+    - name: Erőforrások zárolása
+      href: resource-group-lock-resources.md
+  - name: Naplózás
+    items:
+    - name: Tevékenységnaplók megtekintése
+      href: resource-group-audit.md
+    - name: Üzembehelyezési műveletek megtekintése
+      href: resource-manager-deployment-operations.md
+  - name: Hibaelhárítás
+    items:
+    - name: Üzembehelyezési hibák elhárítása
+      href: resource-manager-common-deployment-errors.md
+    - name: AccountNameInvalid
+      href: resource-manager-storage-account-name-errors.md
+    - name: InvalidTemplate
+      href: resource-manager-invalid-template-errors.md
+    - name: Üzembehelyezési problémák Linux rendszerben
+      href: ../virtual-machines/linux/troubleshoot-deploy-vm.md
+    - name: NoRegisteredProviderFound
+      href: resource-manager-register-provider-errors.md
+    - name: NotFound
+      href: resource-manager-not-found-errors.md
+    - name: ParentResourceNotFound
+      href: resource-manager-parent-resource-errors.md
+    - name: Kiépítéssel és foglalással kapcsolatos problémák Linux rendszerben
+      href: ../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+    - name: Kiépítéssel és foglalással kapcsolatos problémák Windows rendszerben
+      href: ../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+    - name: RequestDisallowedByPolicy
+      href: resource-manager-policy-requestdisallowedbypolicy-error.md
+    - name: ReservedResourceName
+      href: resource-manager-reserved-resource-name.md
+    - name: ResourceQuotaExceeded
+      href: resource-manager-quota-errors.md
+    - name: SkuNotAvailable
+      href: resource-manager-sku-not-available-errors.md
+    - name: Üzembehelyezési problémák Windows rendszerben
+      href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+  - name: Kérelmek szabályozása
+    href: resource-manager-request-limits.md
+  - name: Aszinkron műveletek követése
+    href: resource-manager-async-operations.md
 - name: Referencia
   items:
-    - name: Sablonreferencia
-      href: subtoc/toc.yml
-    - name: Sablonfüggvények
-      href: resource-group-template-functions.md
-      items:
-        - name: Tömb- és objektumfüggvények
-          href: resource-group-template-functions-array.md
-        - name: Összehasonlító függvények
-          href: resource-group-template-functions-comparison.md
-        - name: Üzembehelyezési függvények
-          href: resource-group-template-functions-deployment.md
-        - name: Logikai függvények
-          href: resource-group-template-functions-logical.md
-        - name: Numerikus függvények
-          href: resource-group-template-functions-numeric.md
-        - name: Erőforrásfüggvények
-          href: resource-group-template-functions-resource.md
-        - name: Sztringfüggvények
-          href: resource-group-template-functions-string.md
-    - name: PowerShell
-      href: /powershell/module/azurerm.resources
-    - name: Azure CLI
-      href: /cli/azure/resource
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.resourcemanager
-    - name: Java
-      href: /java/api/com.microsoft.azure.management.resources
-    - name: Python
-      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html'
-    - name: REST
-      href: /rest/api/resources/
+  - name: Sablonreferencia
+    href: subtoc/toc.yml
+  - name: Sablonfüggvények
+    href: resource-group-template-functions.md
+    items:
+    - name: Tömb- és objektumfüggvények
+      href: resource-group-template-functions-array.md
+    - name: Összehasonlító függvények
+      href: resource-group-template-functions-comparison.md
+    - name: Üzembehelyezési függvények
+      href: resource-group-template-functions-deployment.md
+    - name: Logikai függvények
+      href: resource-group-template-functions-logical.md
+    - name: Numerikus függvények
+      href: resource-group-template-functions-numeric.md
+    - name: Erőforrásfüggvények
+      href: resource-group-template-functions-resource.md
+    - name: Sztringfüggvények
+      href: resource-group-template-functions-string.md
+  - name: PowerShell
+    href: /powershell/module/azurerm.resources
+  - name: Azure CLI
+    href: /cli/azure/resource
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.resourcemanager
+  - name: Java
+    href: /java/api/com.microsoft.azure.management.resources
+  - name: Python
+    href: http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html
+  - name: REST
+    href: /rest/api/resources/
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-resource-manager'
-    - name: Személyes adatok kezelése
-      href: resource-manager-personal-data.md
-    - name: Kérelmek szabályozása
-      href: resource-manager-request-limits.md
-    - name: Aszinkron műveletek követése
-      href: resource-manager-async-operations.md
-    - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=azure-resource-manager
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-resource-manager
+  - name: Személyes adatok kezelése
+    href: resource-manager-personal-data.md
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
+ms.openlocfilehash: 5fa8d844b62554331c2feb66aea3826c05f353e2
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41928427"

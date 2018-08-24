@@ -1,30 +1,34 @@
-# Bevezetés az Azure használatába
-## [A felhőalapú számítógép-használat áttekintése](azure-operations-guide.md#cloud-computing-overview)
-### [Azure-régiók](https://azure.microsoft.com/regions/)
-## [Szolgáltatások](azure-operations-guide.md#azure-services)
-### [Az Azure szolgáltatás dokumentációja](https://docs.microsoft.com/azure)
-## [Fő fogalmak](azure-operations-guide.md#azure-key-concepts)
-### [A Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) 
-### [Azure-erőforrások kezelése a portálon keresztül](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)
-### [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/install-azurerm-ps)
-### [Telepítse az Azure CLI-t](/cli/azure/install-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure REST SDK-referencia](https://docs.microsoft.com/rest/api/index)
+# Azure informatikai dolgozóknak
+## [Bevezetés az Azure használatába](azure-operations-guide.md) 
+## Gyors útmutatók
+### Virtuális gépek
+#### [Windows rendszerű virtuális gépek](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Linux rendszerű virtuális gépek](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+### Virtuális hálózatok
+#### [Virtuális hálózat létrehozása az Azure Portallal](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Storage](https://docs.microsoft.com/azure/storage/)
+### Biztonság
+#### [Erőforrások kezelése szerepkör-hozzárendelésekkel](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
-## [Előfizetések](azure-operations-guide.md#azure-subscriptions)
+## Oktatóanyagok
+### Virtuális gépek
+#### [Windows rendszerű virtuális gépek létrehozása és kezelése](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Linux rendszerű virtuális gépek létrehozása és kezelése](../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Jenkins CI-/CD-folyamat](../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Virtuális gépek terheléselosztása](../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+## Útmutatók
 ### [Az Azure számlázási és napi használati adatainak letöltése](../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Az erőforrás-fogyasztás adatai és elemzései](../../billing/billing-usage-rate-card-overview.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Online díjkalkulátor](http://azure.microsoft.com/pricing/calculator)
-### [Elszámolási értesítések beállítása](../../billing/billing-set-up-alerts.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Azure Resource Manager](azure-operations-guide.md#azure-resource-manager)
 
 ### [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Sablonok üzembe helyezése az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Sablonok üzembe helyezése az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Sablonok üzembe helyezése az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Sablonok üzembe helyezése az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Sablonok üzembe helyezése az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Sablonok üzembe helyezése az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Biztonság (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[Erőforrások kezelése szerepkör-hozzárendelésekkel](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Erőforrások kezelése szerepkör-hozzárendelésekkel](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Virtuális gépek](azure-operations-guide.md#azure-virtual-machines)
 ### [Windows rendszerű virtuális gépek méretei](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
@@ -38,7 +42,7 @@
 ### Virtuális gépekre vonatkozó oktatóanyagok Windowshoz
 #### [Virtuális gépek létrehozása és kezelése](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Lemezek létrehozása és kezelése](../../virtual-machines/windows/tutorial-manage-data-disk.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Konfiguráció automatizálása](../../virtual-machines/windows/tutorial-automate-vm-deployment.md
+#### [Automatikus konfigurálás](../../virtual-machines/windows/tutorial-automate-vm-deployment.md)
 #### [Virtuálisgép-rendszerképek létrehozása](../../virtual-machines/windows/tutorial-custom-images.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Magas rendelkezésre állású virtuális gépek](../../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Virtuálisgép-méretezési csoport létrehozása](../../virtual-machines/windows/tutorial-create-vmss.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
