@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 091a097fc9fafd5bdc6a2521f4fa2a1b6b77ba4c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 998f35c8957b63d73d7a3d15be76711198fa4833
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422553"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745707"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -65,11 +65,11 @@ Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatár�
 
 <dt>e-mailben</dt>
 <dd>E-mailt küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mailek szűrése megfelelően vannak konfigurálva
-
-    - azure-noreply@microsoft.com
-    - azureemail-noreply@microsoft.com
-    - alerts-noreply@mail.windowsazure.com
-    
+<ul>
+    <li>azure-noreply@microsoft.com</li>
+    <li>azureemail-noreply@microsoft.com</li>
+    <li>alerts-noreply@mail.windowsazure.com</li>
+</ul>
 </dd>
 <dd>Előfordulhat, hogy e-mailes műveletek legfeljebb 1000 tartalmaz műveletcsoportot</dd>
 <dd>Tekintse meg a [sebessége korlátozza az információk](./monitoring-alerts-rate-limiting.md) cikk</dd>
