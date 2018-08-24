@@ -6,14 +6,14 @@ author: meladie
 ms.assetid: 708aa129-b226-4e02-85c6-1f86e54564e4
 ms.service: security
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: a8d2eca785ad166aa4cff26bce876e41770a3427
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7d200cfa6a529c33555a18cd6598183fedbfd2fc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246138"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818273"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure biztonsági és megfelelőségi terv – PaaS-webalkalmazás Ausztráliában védett
 
@@ -36,7 +36,7 @@ Az Azure Active Directory összevonási használandó, így a felhasználók hit
 
 A megoldás az Azure Storage-fiókok, amelyek a felhasználók beállíthatják az inaktív adatok bizalmas mivoltát a Storage Service Encryption segítségével. Az Azure rugalmasságot a felhasználó a kiválasztott régióban lévő adatok három példányban tárolja. Rugalmas régiópárok helyezik üzembe az Azure-régiók és földrajzi georedundáns tárolás biztosítja, hogy a második régióban három másolat, valamint az adatok replikálja. Ez megakadályozza a kedvezőtlen esemény adatvesztést eredményez az ügyfél elsődleges helyen.
 
-A fokozott biztonság érdekében ebben a megoldásban az összes Azure-erőforrások kezelése egy erőforráscsoportot az Azure Resource Manageren keresztül. Az Azure Active Directory szerepköralapú hozzáférés-vezérlés szabályozására szolgál az üzembe helyezett erőforrások és a kulcsok Azure Key vaultban. A fájlrendszer állapotának az Azure Security Center és az Azure Monitor használatával felügyelik. Ügyfelek konfigurálása mindkét figyelési szolgáltatásokat naplók rögzítése és a fájlrendszer állapotának megjelenítése egyetlen, könnyen navigálható-irányítópulton. Az Azure Application Gateway van konfigurálva, a tűzfal megelőzés üzemmódban, és tiltja a forgalmat, amely nem TLSv1.2 vagy újabb. A megoldás révén az Azure Application Service Environment v2-környezetet elkülöníteni a webes szint nem több-bérlős környezetben.
+A fokozott biztonság érdekében ebben a megoldásban az összes Azure-erőforrások kezelése egy erőforráscsoportot az Azure Resource Manageren keresztül. Az Azure Active Directory szerepköralapú hozzáférés-vezérlés szabályozására szolgál az üzembe helyezett erőforrások és a kulcsok Azure Key vaultban. A fájlrendszer állapotának az Azure Security Center és az Azure Monitor használatával felügyelik. Ügyfelek konfigurálása mindkét figyelési szolgáltatásokat naplók rögzítése és a fájlrendszer állapotának megjelenítése egyetlen, könnyen navigálható-irányítópulton. Az Azure Application Gateway van konfigurálva, a tűzfal megelőzés üzemmódban, és tiltja a forgalmat, amely nem a TLS 1.2-es verzió vagy újabb. A megoldás révén az Azure Application Service Environment v2-környezetet elkülöníteni a webes szint nem több-bérlős környezetben.
 
 ![PaaS Web Application AU-védelemmel ellátott referenciaarchitektúra](images/au-protected-paaswa-architecture.png?raw=true "PaaS webalkalmazás AU-védelemmel ellátott architekturális diagramja")
 
@@ -95,7 +95,7 @@ Ez az architektúra App Service Environment-környezetek használatának engedé
 - Egy biztonságos Azure virtuális hálózaton belüli üzemeltethet, és a hálózati biztonsági szabály
 - App Service Environment egy önaláírt belső load balancer tanúsítványt a HTTPS-kommunikációra konfigurálva. Ajánlott eljárásként a Microsoft a fokozott biztonság egy megbízható hitelesítésszolgáltatótól használatát javasolja.
 - [Belső terheléselosztási üzemmód](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer) (3 mód)
-- Tiltsa le [TLS 1.0-s](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
+- Tiltsa le [a TLS 1.0 és 1.1 verzió](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - Változás [TLS-titkosítás](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - Vezérlő [bejövő forgalom N írási/olvasási portok](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)
 - [Webalkalmazási tűzfal – korlátozzák az adatokat](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
@@ -128,11 +128,9 @@ Az Azure alapértelmezés szerint minden kommunikáció és az Azure datacentres
 
 Védett adatok továbbításához a vásárlói kezelésű hálózatok az architektúra az Azure az interneten vagy az ExpressRoute egy konfigurált IPSEC VPN-átjáróval.
 
-Emellett minden tranzakció az Azure-bA az Azure felügyeleti portálján keresztül felhasználásával a TLS 1.2-es HTTPS-kapcsolaton keresztül történik.
-Inaktív adat
+Emellett minden tranzakció az Azure-bA az Azure felügyeleti portálján keresztül HTTPS felhasználásával a TLS 1.2-es verzió történik.
 
 ### <a name="data-at-rest"></a>Inaktív adat
-
 Az architektúra a titkosítás, az adatbázis naplózási és más intézkedéseket az inaktív adatok védi.
 
 **Az Azure Storage**: rest-követelményeket, a titkosított adatok kielégítése érdekében minden [Azure Storage](https://azure.microsoft.com/services/storage/) használ [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ez segít a szervezeti biztonsági kötelezettségeit és megfelelőségi követelmények ausztrál kormányzati ISM által meghatározott adatok biztonságos megőrzésében.

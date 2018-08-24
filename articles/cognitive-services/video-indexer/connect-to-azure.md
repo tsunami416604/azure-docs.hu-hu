@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 66ba79926a949371cb2280de408835862dd1a099
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41987969"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744751"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Hozzon létre egy kapcsolódik az Azure Video Indexer-fiókot
 
@@ -46,7 +46,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéséhez kapcsolód
 
 * Az Azure portal használatával EventGrid erőforrás-szolgáltató regisztrálása.
 
-    Az Azure Portalon lépjen a **előfizetések** > [. előfizetés] > **ResourceProviders** > **Microsoft.EventGrid**. Ha nem a "Regisztrálva" állapotban lévő, kattintson a **regisztrálása**. Néhány perc alatt regisztrálni vesz igénybe. 
+    Az a [az Azure portal](https://portal.azure.com/), lépjen a **előfizetések** > [. előfizetés] > **ResourceProviders** > **Microsoft.EventGrid**. Ha nem a "Regisztrálva" állapotban lévő, kattintson a **regisztrálása**. Néhány perc alatt regisztrálni vesz igénybe. 
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -96,19 +96,16 @@ A következő Azure Media Services kapcsolódó szempontokat kell figyelembe ven
 
     Médiák száma és típusa beállításához szüksége lehet **szolgáltatás számára fenntartott egységek**, a tervezett terhelés alapján. Ne feledje, hogy ha a terhelés túl magas, és nem rendelkezik elegendő egységek vagy a sebességét, videók feldolgozása eredményezhet időtúllépési hibákat.
 
-* Ha csatlakozott egy új Media Services-fiók, a Video Indexer automatikusan elindul egy **folyamatos átviteli végponton** benne:
+* Ha csatlakozott egy új Media Services-fiók, a Video Indexer automatikusan elindítja az alapértelmezett **folyamatos átviteli végponton** benne:
 
     ![A Media Services-streamvégpont](./media/create-account/ams-streaming-endpoint.png)
 
-* Ha csatlakozik a meglévő Media Services-fiókja, a Video Indexer nem változik a streamelési végpontok konfigurálása. Ha ott nem fut. **folyamatos átviteli végponton**, nem lesz a Media Services-fiók vagy a Video Indexer-videók.
+* Ha csatlakozik a meglévő Media Services-fiókja, a Video Indexer nem módosítja az alapértelmezett Streamvégpont konfiguráció. Ha ott nem fut. **folyamatos átviteli végponton**, nem lesz a Media Services-fiók vagy a Video Indexer-videók.
 
-## <a name="use-video-indexer-apis-v2"></a>Használja a Video Indexer API-k v2
+## <a name="next-steps"></a>További lépések
 
 Programozott módon kezelheti a próbaverziós fiókjához és/vagy a Video Indexer-fiókokkal, amelyek köti össze az Azure-ban utasításait követve: [használható API-khoz](video-indexer-use-apis.md).
 
 Az azonos Azure AD-felhasználót az Azure-ba való kapcsolódáskor használt kell használnia.
 
-## <a name="next-steps"></a>További lépések
-
-[Vizsgálja meg a részleteket a kimenet JSON](video-indexer-output-json-v2.md).
 
