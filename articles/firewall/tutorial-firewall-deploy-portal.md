@@ -194,7 +194,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 12. Az **Alhálózat** mezőben válassza a **Workload-SN** elemet.
 13. Kattintson az **OK** gombra.
 14. Kattintson az **Útvonalak**, majd a **Hozzáadás** elemre.
-15. Az **Útvonal neve**mezőbe írja be következőt:** FW-DG**.
+15. Az **Útvonal neve** mezőbe írja be következőt: **FW-DG**.
 16. A **Címelőtag** mezőbe írja be a következőt: **0.0.0.0/0**.
 17. A **Következő ugrás típusa** beállításnál válassza a **Virtuális berendezés** lehetőséget.
 
