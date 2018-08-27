@@ -1,5 +1,5 @@
 ---
-title: A Bing Web Search API az Azure-ban támogatott nyelvek és országok/régiók |} A Microsoft Docs
+title: Országok, régiók és a Bing Web Search API által támogatott nyelvek
 description: Ismerje meg, hogy mely országok/régiók és nyelvek a Bing Web Search API által támogatott.
 services: cognitive-services
 author: v-jerkin
@@ -7,24 +7,24 @@ manager: jhubbard
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: e1994ddf3bf71d01adeac4ff8688bdd1e6eac660
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 87384a8aeabfe0c4a178344235debcc586cdf3de
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001718"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888471"
 ---
-# <a name="bing-web-search-countriesregions-and-languages"></a>Bing – internetes keresés országok/régiók és nyelvek
+# <a name="countries-regions-and-languages-supported-by-the-bing-web-search-api"></a>Országok, régiók és a Bing Web Search API által támogatott nyelvek
 
-A Bing Web Search API több mint három tucat országok/régiók, számos, az egynél több nyelvet támogat. Adjon meg egy adott ország/régió lekérdezéssel elsősorban az ország/régió kimutatott érdeklődések alapján találatok szűkítése szolgálja ki. Ezenkívül az eredmények Bing mutató hivatkozásokat is tartalmazhat, és ezeket a hivatkozásokat is honosítani a Bing felhasználói élmény az adott ország/régió vagy nyelv szerint.
+A Bing Web Search API több mint három tucat országokban vagy régiókban, számos, az egynél több nyelvet támogat. Adjon meg egy ország vagy régió lekérdezéssel adott ország vagy régió kimutatott érdeklődések alapján találatok szűkítése segítségével. Az eredmények tartalmazhatják a Bing mutató hivatkozásokat, és ezeket a hivatkozásokat is honosítani a Bing felhasználói élmény az adott ország/régió vagy nyelv szerint.
 
-Megadhatja, hogy egy ország/régió használata a `cc` lekérdezési paraméter. Ha megad egy adott ország/régió, meg kell adnia egy vagy több nyelvi kódot használ a `Accept-Language` HTTP-fejléc. Ország/régió; szerint változik a támogatott nyelvek minden ország/régió, a piacot táblázatban azok jellegűek.
+Ország vagy régió használatával megadhatja a `cc` lekérdezési paraméter. Ha egy ország vagy régió van megadva, meg kell adnia egy vagy több, a nyelvi kódot a [ `Accept-Language` fejléc](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Használja a [piacok tábla](#Markets) az adott piacon támogatott nyelvek listáját.
 
-Másik lehetőségként megadhatja azt a piaci használatával a `mkt` lekérdezési paraméter és a egy kódot a a **piacok** tábla. Egy adott ország/régió és a egy előnyben részesített nyelvi egyidejűleg adja meg a piacon adja meg. A `setLang` lekérdezési paraméter ebben az esetben előfordulhat, hogy állítható be olyan nyelvi kód; általában ez a megadott nyelvre `mkt` , kivéve, ha a felhasználó, tekintse meg a Bing más nyelvet részesíti előnyben.
+Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és a egy kódot a **piacok** tábla. Adja meg a piacon egyidejűleg megadja egy ország vagy régió és a egy előnyben részesített nyelvi. Explicit módon beállíthat a nyelvet, de a `setLang` lekérdezési paraméter.
 
-## <a name="countries"></a>Országok
+## <a name="countriesregions"></a>Országok/régiók
 
 |Ország/régió|Kód|
 |-------|----|
@@ -64,7 +64,6 @@ Másik lehetőségként megadhatja azt a piaci használatával a `mkt` lekérdez
 |Törökország|TR|
 |Egyesült Királyság|GB|
 |Egyesült Államok|USA|
-
 
 ## <a name="markets"></a>Piacok
 

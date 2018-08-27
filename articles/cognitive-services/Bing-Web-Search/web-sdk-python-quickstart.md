@@ -1,6 +1,6 @@
 ---
-title: Webes keresés SDK Python gyors üzembe helyezés |} Microsoft Docs
-description: A telepítő a webes keresés SDK konzolalkalmazást.
+title: 'Gyors útmutató: A Bing Web Search SDK Pythonhoz készült használja.'
+description: A telepítő a Web Search SDK konzolalkalmazást.
 titleSuffix: Azure Cognitive Services Web search SDK Python quickstart
 services: cognitive-services
 author: mikedodaro
@@ -8,35 +8,37 @@ manager: rosh
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 02/14/2018
-ms.author: v-gedod
-ms.openlocfilehash: 2a5fed58be863b882b827dbed73862bc690bab1e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 08/16/2018
+ms.author: v-gedod, erhopf
+ms.openlocfilehash: faf43d84724cdbf799219c120f87dfc333c5026f
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349482"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888526"
 ---
-# <a name="web-search-sdk-python-quickstart"></a>Webes keresés SDK Python gyors üzembe helyezés
+# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Gyors útmutató: A Bing Web Search SDK Pythonhoz készült használja.
 
-A Bing webes keresés SDK tartalmazza a REST API webkiszolgáló lekérdezések és elemzési eredmények funkcióit. 
+A Bing Web Search SDK tartalmazza a REST API, webes lekérdezések és az elemzési eredmények funkcióit.
 
-A [forráskód Python Bing webes keresés SDK minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/web_search_samples.py) érhető el a Git központ.
+A [forráskódját Python a Bing Web Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/web_search_samples.py) elérhető a Githubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-Ha az még nincs, telepítse a Python. Az SDK nem kompatibilis a Python 2.7, 3.3-as, illetve 3.4, 3.5-ös és 3.6.
+Ha ez már nincs, telepítse a Pythont. Az SDK-t, a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziója kompatibilis.
 
-A Python fejlesztési általános javaslat, hogy használja a [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse, és a virtuális környezet inicializálása a [venv modul](https://pypi.python.org/pypi/virtualenv). Python 2.7 virtualenv kell telepítenie.
+A Python fejlesztési általános javaslat, hogy használja a [virtuális környezet](https://docs.python.org/3/tutorial/venv.html).
+Telepítse, és a virtuális környezet inicializálása a [venv modul](https://pypi.python.org/pypi/virtualenv). Python 2.7-es virtualenv gépre kell telepítenie.
 ```
 python -m venv mytestenv
 ```
-Bing webes keresés SDK-függőség telepítése:
+A Bing webes keresési SDK-függőség telepítése:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-websearch
 ```
-## <a name="web-search-client"></a>Keresési webügyfél
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Adja hozzá a importálja, és hozzon létre egy példányát a `CognitiveServicesCredentials`:
+## <a name="web-search-client"></a>Webes keresés ügyfél
+Get- [Cognitive Services előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*.
+Adjon hozzá importálja, és hozzon létre egy példányt a `CognitiveServicesCredentials`:
 ```
 from azure.cognitiveservices.search.websearch import WebSearchAPI
 from azure.cognitiveservices.search.websearch.models import SafeSearch
@@ -44,11 +46,11 @@ from msrest.authentication import CognitiveServicesCredentials
 
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Az ügyfél ezután példányosítható:
+Ezután hozza létre az ügyfél:
 ```
 client = WebSearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Keresse meg az eredményeket, és nyomtassa ki az első weblap eredmény:
+Keresse meg az eredményeket, és nyomtassa ki az első weblap eredményt:
 ```
 web_data = client.web.search(query="Yosemite")
 print("\r\nSearched for Query# \" Yosemite \"")
@@ -65,7 +67,7 @@ if web_data.web_pages.value:
 else:
     print("Didn't see any Web data..")
 ```
-Nyomtassa ki más eredménytípusai, beleértve a képeket, híreket és videókat:
+Nyomtatási más eredménytípusú lekérdezéseknél, beleértve a képeket, híreket és videókat:
 ```
 # Images
 if web_data.images.value:
@@ -78,7 +80,7 @@ if web_data.images.value:
 
 else:
     print("Didn't see any Image..")
-        
+
 # News
 if web_data.news.value:
 
@@ -90,7 +92,7 @@ if web_data.news.value:
 
 else:
     print("Didn't see any News..")
-            
+
 # Videos
 if web_data.videos.value:
 
@@ -104,7 +106,7 @@ else:
     print("Didn't see any Videos..")
 
 ```
-Keresse meg a (Budapesten legjobb éttermekben), ellenőrizze a találatok száma, és nyomtassa ki `name` és `URL` az első találatra.
+Keresse meg a (Budapesten található ajánlott éttermek), ellenőrizze a eredmények számát, és nyomtassa ki az `name` és `URL` az első eredmény.
 ```
 def web_results_with_count_and_offset(subscription_key):
 
@@ -129,7 +131,7 @@ def web_results_with_count_and_offset(subscription_key):
         print("Encountered exception. {}".format(err))```
 
 ```
-"Xbox" keres `response_filter` rendelt `News`.  Nyomtatás hírek eredmények részleteit.
+A "Xbox" Keresés `response_filter` rendelt `News`.  Nyomtatási hírkeresési eredmények részletei.
 ```
 def web_search_with_response_filter(subscription_key):
 
@@ -155,7 +157,7 @@ def web_search_with_response_filter(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-A Keresés a lekérdezés "Niagara esik", használatával `answerCount` és `promote` paraméterek. Az eredmények nyomtatási adatokat.
+Lekérdezés "Niagara esik", a keresés használatával `answerCount` és `promote` paramétereket. Nyomtassa ki a részletes eredmények.
 ```
 def web_search_with_answer_count_promote_and_safe_search(subscription_key):
 
@@ -187,6 +189,4 @@ def web_search_with_answer_count_promote_and_safe_search(subscription_key):
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
-
-
+[Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)

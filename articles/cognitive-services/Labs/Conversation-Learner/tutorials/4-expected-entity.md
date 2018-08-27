@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9e013e237a996d722d958920a1310e3aaea36c52
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: fb9193066c9501341efb779b9f9e2ccace02cccf
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170908"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888204"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>A "Várt entitás" tulajdonság a műveletek használata
 
@@ -59,14 +59,14 @@ Konkrétan Ha egy művelet a "várt entitás" mező értéke $entity, majd meg a
 
 ### <a name="create-two-actions"></a>Hozzon létre két műveletet
 
-1. Kattintson a műveletek, majd az új művelet
+1. Kattintson a műveletek, majd az új művelet.
 2. A válasz írja be a "Mi a neve?".
 3. Adja meg a várt entitásokat, $name. Kattintson a Mentés gombra.
     - Ez az érték azt jelenti, hogy meg kell adnia ezt a kérdést, és a felhasználói válaszra nem rendelkezik a entitások észlelt, a bot kell feltételezik, hogy az egész a felhasználói válaszra ehhez az entitáshoz.
 2. Kattintson a műveletek, majd új műveletet egy másik művelet létrehozása.
 3. A válasz írja be a "Hello $name".
-    - Disqualifying entitásként a rendszer automatikusan hozzáadja az entitást. 
-4. Kattintson a Save (Mentés) gombra.
+    - Szükséges entitásként a rendszer automatikusan hozzáadja az entitást. 
+4. Kattintson a Mentés gombra.
 
 Most már két műveletet.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 7ac4dd41c8a1adb422539e0832715d59ec385694
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 552fce2ffd8b6bd786010da82e702ee98c3f8647
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745559"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888556"
 ---
 # <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>Konfigurálja a virtuális gépek Felügyeltszolgáltatás-identitás az Azure portal használatával
 
@@ -53,9 +53,9 @@ Ahhoz, hogy a rendszer hozzárendelt identitás eredetileg anélkül, hogy üzem
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely tartalmazza a virtuális gép Azure-előfizetés társítva.
 
-2. Keresse meg a használni kívánt virtuális gépet, és válassza a "Konfiguráció" lapot.
+2. Keresse meg a használni kívánt virtuális gépet, és válassza ki **identitás**.
 
-3. A virtuális gépen a rendszer által hozzárendelt identitással engedélyezése "Igen" kiválasztásával "Managed service identity" alatt, és kattintson a **mentése**. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
+3. Alatt **rendszerhez rendelt**, **állapot**, jelölje be **a** majd **mentése**:
 
    ![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
@@ -65,9 +65,9 @@ Ha egy virtuális gépet, amely már nincs szüksége a rendszer által hozzáre
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely tartalmazza a virtuális gép Azure-előfizetés társítva. 
 
-2. Keresse meg a használni kívánt virtuális gépet, és válassza a "Konfiguráció" lapot.
+2. Keresse meg a használni kívánt virtuális gépet, és válassza ki **identitás**.
 
-3. Tiltsa le a rendszer, ha a "Nem", "Managed service identity" alatt a virtuális gép identitásának hozzárendelte, majd kattintson a Mentés gombra. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
+3. Alatt **rendszerhez rendelt**, **állapot**, jelölje be **ki** majd **mentése**:
 
    ![Konfiguráció lap képernyőképe](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)
 

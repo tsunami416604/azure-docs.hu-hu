@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 543f581659d54bd14ccb2a818fd74e379bcc8cfe
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054086"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888083"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure storage emulator használata a fejlesztési és tesztelési célra
 
@@ -26,9 +26,8 @@ A storage emulator jelenleg kizárólag Windows futtatja. Azok számára, a stor
 
 > [!NOTE]
 > A storage emulator egy verziójában létrehozott adatok elérhetők legyenek egy másik verzió használata esetén nem garantált. Ha szeretné megőrizni az adatokat a hosszú távú, javasoljuk, tárolja az adatokat egy Azure storage-fiókban, nem pedig a storage emulator a.
-> <p/>
+> 
 > A storage emulator attól függ, hogy az OData-kódtárak verzióját. Az OData dll-EK, a storage emulator az egyéb verziói által használt cseréje nem támogatott, és nem várt viselkedést okozhat. Azonban bármelyik verziója, a storage szolgáltatás által támogatott OData-kérelmeket küldjön az emulátorban való használhatók.
->
 
 ## <a name="how-the-storage-emulator-works"></a>A storage emulator működése
 A storage emulator emulálása érdekében az Azure storage-szolgáltatások a helyi fájlrendszerben és a egy Microsoft SQL Server helyi példányát használja. Alapértelmezés szerint a storage emulator a Microsoft SQL Server 2012 Express LocalDB adatbázist használ. Ha szeretné, konfigurálja a storage emulator eléréséhez helyett a LocalDB-példányt az SQL Server helyi példányát. További információkért lásd: a [kezdő és a storage emulator inicializálása](#start-and-initialize-the-storage-emulator) Ez a cikk későbbi szakaszában talál.
@@ -187,6 +186,7 @@ Mivel a storage emulator egy helyi SQL-példányban fut egy emulált környezete
 Blob storage-ban az emulátorban alkalmazása a következő eltérésekkel:
 
 * A storage emulator csak támogatja a blob mérete legfeljebb 2 GB.
+* A a storage emulator egy blob név legfeljebb 256 karakter közben az Azure Storage-blob név hossza legfeljebb 1024 karakter.
 * A növekményes másolási lehetővé teszi, hogy másolandó, felülírt blobok pillanatképeinek, amely a szolgáltatás hibát ad vissza.
 * Másolja a növekményes másolási Blob használatával-pillanatképek közötti laptartomány-beolvasási Diff nem működik.
 * Egy Put Blob művelet sikerülhet ellen, hogy a rendszer aktív bérletet, a storage emulator megtalálható a blob, akkor is, ha a kérés nem lett megadva a bérlet Azonosítóját.

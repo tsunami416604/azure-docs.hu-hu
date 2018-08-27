@@ -1,6 +1,6 @@
 ---
-title: Az Azure-beli SQL Server ajánlott eljárásai teljesítmény |} A Microsoft Docs
-description: A Microsoft Azure virtuális gépeken futó SQL Server teljesítményének optimalizálásához bemutatja a bevált eljárásokat.
+title: Teljesítmény-irányelvek az SQL Server az Azure-ban |} A Microsoft Docs
+description: Útmutatást nyújt a Microsoft Azure virtuális gépeken futó SQL Server teljesítményének optimalizálása.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/19/2018
+ms.date: 08/24/2018
 ms.author: jroth
-ms.openlocfilehash: a7a24bde6cc34befee7de3bcbf13b96c8b641af2
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 3a61c20b922b60e3135d9f9e53928462887a602e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888908"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886185"
 ---
-# <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Ajánlott eljárások az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növeléséhez
+# <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Teljesítmény-irányelvek az SQL Server Azure Virtual Machines szolgáltatásban
 
 ## <a name="overview"></a>Áttekintés
 

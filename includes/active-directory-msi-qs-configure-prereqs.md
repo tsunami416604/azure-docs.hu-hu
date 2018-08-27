@@ -1,1 +1,1 @@
-Ha még nem ismeri a felügyeltszolgáltatás-identitás szolgáltatást, tekintse meg ezt az [áttekintést](../articles/active-directory/msi-overview.md). Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
+- Ha még nem ismeri a felügyeltszolgáltatás-identitás szolgáltatást, tekintse meg ezt az [áttekintést](../articles/active-directory/msi-overview.md). Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).

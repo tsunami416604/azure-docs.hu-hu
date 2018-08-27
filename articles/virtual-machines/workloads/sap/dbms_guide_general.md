@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdf5685ad8072175bdabf8938ef293bed6f5cc13
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: e7ad93cbfd096cacadaef8666b0ea5b31d7fd992
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076150"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918801"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -263,7 +263,7 @@ Azure rendelkezésre állási csoportok beállításához módon mutatják be, e
 
 
 ## <a name="azure-network-considerations"></a>Az Azure a hálózatokkal kapcsolatos szempontok 
-A nagyméretű SAP üzemelő példánya esetében javasoljuk, hogy használja a tervezet-, [Azure Virtual Datacenter](https://docs.microsoft.com/azure/networking/networking-virtual-datacenter) virtuális hálózatok közötti konfigurációs és az engedélyek és a szerepkör a hozzárendelések a szervezet különböző részeit.
+A nagyméretű SAP üzemelő példánya esetében javasoljuk, hogy használja a tervezet-, [Azure Virtual Datacenter](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) virtuális hálózatok közötti konfigurációs és az engedélyek és a szerepkör a hozzárendelések a szervezet különböző részeit.
 
 Nincsenek kívül rendszereit több száz szabványosította többféle ajánlott:
 
@@ -325,10 +325,10 @@ Az éles használathoz az SAP alkalmazások az Azure Virtual machines szolgálta
 ## <a name="next-steps"></a>További lépések
 Az adott DBMS-dokumentáció tekintse meg a következő cikkeket:
 
-- [Az SQL Server Azure virtuális gépek DBMS üzembe helyezési SAP számítási feladatokhoz](dbms_guide_sqlserver.md)
-- [Oracle az Azure Virtual Machines DBMS üzembe helyezési SAP számítási feladatokhoz](dbms_guide_oracle.md)
-- [IBM DB2 Azure virtuális gépek DBMS üzembe helyezési SAP számítási feladatokhoz](dbms_guide_ibm.md)
-- [SAP ASE az Azure Virtual Machines DBMS üzembe helyezési SAP számítási feladatokhoz](dbms_guide_sapase.md)
+- [SQL Server Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sqlserver.md)
+- [Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_oracle.md)
+- [IBM DB2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_ibm.md)
+- [SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sapase.md)
 - [SAP maxDB, a gyorsítótár Live és a webtartalom-kiszolgáló üzembe helyezés az Azure-ban](dbms_guide_maxdb.md)
 - [SAP HANA az Azure-műveletek útmutatójában](hana-vm-operations.md)
 - [SAP HANA magas rendelkezésre állás az Azure-beli virtuális gépek](sap-hana-availability-overview.md)

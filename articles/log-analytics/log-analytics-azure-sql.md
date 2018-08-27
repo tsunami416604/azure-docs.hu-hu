@@ -3,9 +3,9 @@ title: Az Azure SQL Analytics megoldás a Log Analytics Rendszereben |} A Micros
 description: Az Azure SQL Analytics megoldás segítségével az Azure SQL-adatbázisok kezelése
 services: log-analytics
 documentationcenter: ''
-author: mgoedtel
+author: danimir
 manager: carmonm
-editor: ''
+ms.reviewer: carlrab
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
 ms.service: log-analytics
 ms.workload: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: magoedte
+ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 440e16416b8567178c61c3d6ce2155e0e331521c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216325"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886560"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>A figyelő Azure SQL Database-adatbázisok Azure SQL Analytics (előzetes verzió) használatával
 
@@ -39,14 +39,14 @@ A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és 
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-Az Azure SQL Analytics megoldás támogató streamelési diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok és rugalmas készletek figyelése felhő. Azt nem használ ügynökök a Log Analytics szolgáltatáshoz való csatlakozáshoz, a megoldás nem támogatja a Windows, Linux-csatlakozási vagy az SCOM-erőforrásokat, tekintse meg az alábbi táblázat a kompatibilitási.
+Az Azure SQL Analytics megoldás támogató streamelési diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok és rugalmas készletek figyelése felhő. A Log Analytics szolgáltatáshoz való csatlakozáshoz ügynökök nem használ, a megoldás nem támogatja a Windows, Linux-csatlakozási vagy az SCOM-erőforrásokat, tekintse meg az alábbi táblázat a kompatibilitási.
 
 | Összekapcsolt forrás | Támogatás | Leírás |
 | --- | --- | --- |
 | **[Az Azure Diagnostics](log-analytics-azure-storage.md)** | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
-| [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A log Analytics nem beolvashatja az adatokat a tárfiókból. |
-| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | A közvetlen Windows-ügynökök nem használ a megoldással. |
-| [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | Közvetlen Linux-ügynökök nem használ a megoldással. |
+| [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |
+| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
+| [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
 | [Az SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás nem használja az SCOM-ügynöktől a Log Analyticshez való közvetlen kapcsolatot. |
 
 ## <a name="configuration"></a>Konfiguráció
@@ -103,12 +103,12 @@ Minden egyes perspektíva összegzéseket előfizetés, a kiszolgáló, a rugalm
 | Perspektíva | Leírás |
 | --- | --- |
 | Erőforrás típusa szerint | Adott összes, a figyelt erőforrások szempontjából. Részletezés a dtu-k és GB-os metrikák összegzést tartalmaz. |
-| Megállapítások | Hierarchikus Lehatolás biztosít intelligens elemzésekké. További információ az intelligent insights. |
+| Insights | Hierarchikus Lehatolás biztosít intelligens elemzésekké. További információ az intelligent insights. |
 | Hibák | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL hibákká. |
 | Időtúllépések | Hierarchikus Lehatolás biztosít az SQL-időtúllépések, az adatbázisok történt. |
-| Blockings | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL blockings be. |
+| Letiltások | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL blockings be. |
 | Adatbázis-várakozások | SQL várakozási statisztikák adatbázisszintű hierarchikus Lehatolás szolgál kapcsolatban. Teljes várakozási idő és a várakozási idő várakozási típusonként összegzéseket tartalmaz. |
-| Lekérdezések időtartama | Hierarchikus Lehatolás biztosít, például a lekérdezések időtartama, CPU-használat, adat IO kihasználtsága, naplózási IO kihasználtsága lekérdezés végrehajtási statisztikák. |
+| Lekérdezés időtartama | Hierarchikus Lehatolás biztosít, például a lekérdezések időtartama, CPU-használat, adat IO kihasználtsága, naplózási IO kihasználtsága lekérdezés végrehajtási statisztikák. |
 | Lekérdezési várakozások | Hierarchikus Lehatolás biztosít, a lekérdezés várakozási statisztikák várakozási kategória szerint. |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights jelentés
@@ -119,7 +119,7 @@ Az Azure SQL Database [Intelligent Insights](../sql-database/sql-database-intell
 
 ### <a name="elastic-pool-and-database-reports"></a>Rugalmas készlet és az adatbázis-jelentések
 
-Rugalmas készletek és adatbázisok is rendelkezik saját adott jelentéseket, amelyeket az erőforrás a megadott időtartam alatt gyűjtött összes adat megjelenítéséhez.
+Rugalmas készletek és adatbázisok is rendelkezik a saját konkrét jelentések megjelenítése az erőforrás a megadott időtartam alatt gyűjtött összes adat.
 
 ![Az Azure SQL Analytics adatbázis](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
@@ -135,27 +135,77 @@ A lekérdezés időtartama és a lekérdezés vár perspektívák összehasonlí
 
 Könnyen [riasztásokat hozhat létre](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [naplóbeli keresés](log-analytics-log-searches.md) lekérdezéseket, amelyek egy riasztás használhatja:
 
-
-
-*Az Azure SQL Database magas DTU*
+*Az Azure SQL Database magas CPU*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/DATABASES/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
-*Az Azure SQL Database rugalmas készlet magas DTU*
+> [!NOTE]
+> - Ez a riasztás létrehozása előtti követelmény, a figyelt adatbázisok stream diagnosztikai metrikák ("Összes metrikák" lehetőség) a megoldáshoz.
+> - Cserélje le a MetricName érték cpu_percent dtu_consumption_percent inkább juthat magas DTU-eredményeket.
+
+*Az Azure SQL Database rugalmas készletei a magas CPU*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/ELASTICPOOLS/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
+> [!NOTE]
+> - Ez a riasztás létrehozása előtti követelmény, a figyelt adatbázisok stream diagnosztikai metrikák ("Összes metrikák" lehetőség) a megoldáshoz.
+> - Cserélje le a MetricName érték cpu_percent dtu_consumption_percent inkább juthat magas DTU-eredményeket.
 
+*Az Azure SQL Database storage átlag felett 95 %-ot az elmúlt 1 óra*
+
+```
+let time_range = 1h;
+let storage_threshold = 95;
+AzureMetrics
+| where ResourceId contains "/DATABASES/"
+| where MetricName == "storage_percent"
+| summarize max_storage = max(Average) by ResourceId, bin(TimeGenerated, time_range)
+| where max_storage > storage_threshold
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - Ez a riasztás létrehozása előtti követelmény, a figyelt adatbázisok stream diagnosztikai metrikák ("Összes metrikák" lehetőség) a megoldáshoz.
+> - Ez a lekérdezés szükséges egy riasztási szabályt úgy, hogy eltávolítja a lekérdezésből, így jelölve az, hogy létezik-e a feltétel az egyes adatbázisokon Ha léteznek az eredmények (> 0 eredmény) ki a riasztás aktiválódik. A kimenet az adatbázis-erőforrások, amely meghaladja a meghatározott time_range belül a storage_threshold listája.
+> - A kimenet az adatbázis-erőforrások, amely meghaladja a meghatározott time_range belül a storage_threshold listája.
+
+*Az Intelligent insights riasztás*
+
+```
+let alert_run_interval = 1h;
+let insights_string = "hitting its CPU limits";
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| where TimeGenerated > ago(alert_run_interval)
+| where rootCauseAnalysis_s contains insights_string
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - Ez a riasztás létrehozása előtti követelmény, a figyelt adatbázisok stream SQLInsights diagnosztikai napló a megoldáshoz.
+> - Ez a lekérdezés egy riasztási szabályt úgy, hogy a Futtatás alert_run_interval gyakorisággal ismétlődő eredmények elkerülése érdekében van szükség. A szabály tűznek ki a riasztást, ha léteznek az eredmények (> 0 eredmény) a lekérdezés kell beállítani.
+> - Testre szabhatja a alert_run_interval, megadhatja az időtartományt, ellenőrizze, hogy ha a körülmény stream SQLInsights naplóba a megoldás konfigurált adatbázisok.
+> - Testre szabhatja a insights_string rögzítheti a kimenet a Insights alapvető ok elemzési szöveg. Ez a megoldás, amely a meglévő insightsból is használhatja a felhasználói felületen megjelenített ugyanazt a szöveget. Az alábbi lekérdezés segítségével azt is megteheti, tekintse meg az előfizetéshez létrehozott összes Insights szövegét. A lekérdezés kimenetének használatával gyűjtsön a distinct karakterláncok Insights riasztások beállításához.
+
+```
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| distinct rootCauseAnalysis_s
+```
 
 ## <a name="next-steps"></a>További lépések
 

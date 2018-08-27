@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 88a4bcf018387ac83b485ec9e2efac11f85ba97c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f825a2a343d9b5ad8f9802042b7aca2ba1544dfb
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42432289"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917402"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service-ben az Azure Stack 3-as frissítés – kibocsátási megjegyzések
 
@@ -178,6 +178,21 @@ A tartalmazott adatbázis áttelepítése az Azure Stack üzemelő példányok a
     ```sql
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
+
+### <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
+
+- Feldolgozók nem érhető el a fájlkiszolgálót, amikor az App Service-ben meglévő virtuális hálózaton van üzembe helyezve, és a fájlkiszolgáló csak érhető el a magánhálózaton.  Ez is feltüntettük az Azure App Service az Azure Stack központi telepítési dokumentációjában az.
+
+Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
+ * Forrás: összes
+ * Forrás porttartomány: *
+ * Cél: IP-címek
+ * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
+ * Cél porttartomány: 445-ös
+ * Protokoll: TCP
+ * Művelet: engedélyezése
+ * Prioritás: 700
+ * Name: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Ismert problémák működtetése az Azure App Service az Azure Stack felhő-rendszergazdák számára
 

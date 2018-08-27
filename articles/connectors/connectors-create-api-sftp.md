@@ -1,66 +1,97 @@
 ---
-title: A logic Apps alkalmazásait az SFTP-összekötő használata |} Microsoft Docs
-description: Az Azure App service logic Apps alkalmazások létrehozása Csatlakozás küldeni és fogadni fájlok SFTP API. Például hozzon létre, update, get vagy fájltörléssel különböző műveleteket hajthat végre.
+title: Csatlakozhat SFTP-fiókjához, az Azure Logic Apps |} A Microsoft Docs
+description: Automatizálhatja a feladatokat és a munkafolyamatok, amelyek figyelése, létrehozása, kezelése, küldése és fogadása fájlok SFTP-kiszolgálóra az Azure Logic Apps használatával
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 07/20/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 28ea02082903f71f619a52672ba41ce65557b0c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: 9714a00d070caab9d3a3338329295192e1eb9997
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296002"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887587"
 ---
-# <a name="get-started-with-the-sftp-connector"></a>Az SFTP-összekötő az első lépései
-Használja az SFTP összekötő küldeni és fogadni fájlok SFTP fiók eléréséhez. Például hozzon létre, update, get vagy fájltörléssel különböző műveleteket hajthat végre.  
+# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Figyelése, létrehozása és kezelése az SFTP-fájlok Azure Logic Apps használatával
 
-Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Az Azure Logic Apps és az SFTP-összekötővel, automatizált feladatokat és figyelése, létrehozása, küldése és fájlokat a fiókján keresztül fogad a munkafolyamatokat hozhat létre egy [SFTP](https://www.ssh.com/ssh/sftp/) kiszolgáló, valamint más műveletek, például:
 
-## <a name="connect-to-sftp"></a>SFTP kapcsolódni
-A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon létre egy *kapcsolat* a szolgáltatáshoz. A [kapcsolat](connectors-overview.md) biztosít a logikai alkalmazás és egy másik szolgáltatás közötti kapcsolat.  
+* Ez a figyelő fájlok hozzáadásakor vagy módosítani.
+* Beolvasása, létrehozása, másolja, frissítse a listát, és törölje a fájlokat.
+* Fájl tartalom és metaadatok beolvasása.
+* Mappák archívumok kibontása.
 
-### <a name="create-a-connection-to-sftp"></a>SFTP kapcsolat létrehozása
-> [!INCLUDE [Steps to create a connection to SFTP](../../includes/connectors-create-api-sftp.md)]
-> 
-> 
+Használhatja az eseményindítókat, amelyek választ kaphat az SFTP-kiszolgáló és a kimenetet más műveletek számára elérhetővé tenni. Műveletek a logic Apps segítségével az SFTP-kiszolgálón lévő fájlok feladatokat. Az SFTP-műveletek kimenetét használják más műveleteket is rendelkezhet. Például ha rendszeresen kérnek le fájlok az SFTP-kiszolgálóról, elküldheti e-mailek ezeket a fájlokat és a tartalom az Office 365 Outlook-összekötőt vagy Outlook.com-összekötő használatával.
+Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="use-an-sftp-trigger"></a>Használja az SFTP eseményindító
-Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a példában a **SFTP - amikor egy fájl hozzáadása vagy módosítása** eseményindító kezdeményezhető a logic app munkafolyamat, amikor egy fájlt ad hozzá, vagy módosult, az SFTP-kiszolgáló. Is hozzáadhat olyan feltétel, amely ellenőrzi az új vagy módosított fájl tartalmát, és lehetővé teszi egy elsődleges bontsa ki a fájlt, ha a tartalma jelzi, hogy azt ki kell nyerni a tartalmak használata előtt. Végül fájl tartalmának kibontása művelet hozzáadása, és helyezze el a kibontott tartalma az SFTP kiszolgáló egyik mappájába. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
 
-A vállalati például ehhez az eseményindítóhoz segítségével egy SFTP mappát, amelyben megrendelések egy új fájlok figyelése.  SFTP-összekötő intézkedésre aztán használhatja például a **fájl tartalmának lekérdezése**, a ahhoz, hogy további feldolgozás és a tároló tartalmának beolvasása a rendelések adatbázist.
+* Az SFTP gazdagép címét és a fiók hitelesítő adatait
 
-> [!INCLUDE [Steps to create an SFTP trigger](../../includes/connectors-create-api-sftp-trigger.md)]
-> 
-> 
+   A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot, és az SFTP-fiók eléréséhez.
 
-## <a name="add-a-condition"></a>Feltétel hozzáadása
-> [!INCLUDE [Steps to add a condition](../../includes/connectors-create-api-sftp-condition.md)]
-> 
-> 
+* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-## <a name="use-an-sftp-action"></a>SFTP-művelet használata
-Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+* A logikai alkalmazás, ahol szeretné elérni az SFTP-fiókjához. Szeretne kezdeni egy SFTP-triggert [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). SFTP-művelet használatához indítsa el a logikai alkalmazás egy másik eseményindítóval, például a **ismétlődési** eseményindító.
 
-> [!INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
-> 
-> 
+## <a name="connect-to-sftp"></a>Csatlakozhat SFTP
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/sftpconnector/).
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
 
-## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k lista](apis-list.md).
+1. Válassza ki az elérési utat: 
+
+   * Üres logic Apps a keresőmezőbe, írja be szűrőként "salesforce". 
+   Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
+
+     – vagy –
+
+   * A meglévő logic apps: 
+   
+     * Válassza ki az utolsó lépésnél, ahová a művelet hozzáadása, **új lépés**. 
+
+       – vagy –
+
+     * A lépéseket, ahol szeretné művelet hozzáadása, között helyezze az egérmutatót a nyíl lépések között. 
+     Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+     
+        A Keresés mezőbe írja be szűrőként "sftp". 
+        Műveletek listája alatt válassza ki a kívánt művelet.
+
+1. Adja meg a szükséges adatokat a kapcsolatot, és válassza a **létrehozás**.
+
+1. Adja meg a szükséges adatokat a kijelölt eseményindítót vagy műveletet, és továbbra is használhatja a logic app-munkafolyamatot.
+
+## <a name="examples"></a>Példák
+
+### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>Az SFTP-eseményindító: amikor felvesznek vagy módosítanak egy fájlt
+
+Ez az eseményindító egy logikai alkalmazás munkafolyamatának kezdődik meg az eseményindító észleli, ha egy fájl hozzáadásakor vagy módosítja a SFTP-kiszolgálóra. Így például hozzáadhat egy feltételt, amely ellenőrzi a fájl tartalmát, és úgy dönt, hogy kapják meg a tartalmat a e tartalom megfelel-e a megadott feltétel alapján. Végül adjon hozzá egy műveletet, amely a fájl tartalmának beolvasása, és helyezi a tartalmat egy mappába az SFTP-kiszolgáló. 
+
+**Példa vállalati**: a trigger használatával figyelheti a egy új megrendelések képviselő fájlok SFTP-mappába. Ezután használhatja az SFTP-művelet például **fájl tartalmának beolvasása**, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, valamint egy rendelési adatbázisba sorrendben tárolja.
+
+### <a name="sftp-action-get-content"></a>SFTP-művelet: tartalom lekérése
+
+Ez a művelet a tartalom olvas be egy fájl az SFTP-kiszolgálóra. Így például az előző példában és a egy feltételt, amely a fájl tartalmának meg kell felelnie az eseményindító is hozzáadhat. Ha a feltétel teljesül, a műveletet, amely lekérdezi a tartalmat futtathatja. 
+
+## <a name="connector-reference"></a>Összekötő-referencia
+
+További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/sftpconnector/).
+
+## <a name="get-support"></a>Támogatás kérése
+
+* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>További lépések
+
+* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)

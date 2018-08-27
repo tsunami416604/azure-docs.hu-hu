@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a98c8ac65de930eabcedea2a009769ed6d245216
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 1f75317882e803a40df065377ef75f8b6b753898
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617192"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918379"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -67,18 +67,25 @@ Felhőbeli rétegezés választható szolgáltatás az Azure File Sync, amelyben
 > [!Important]  
 > Felhőbeli rétegezés esetén nem támogatott a Windows rendszer köteteken kiszolgálói végpontot.
 
-## <a name="azure-file-sync-interoperability"></a>Az Azure File Sync-együttműködés 
-Ez a szakasz ismerteti az Azure File Sync együttműködés a Windows Server szolgáltatásaival és a szerepkörök és a külső felek megoldásaival.
+## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Az Azure File Sync Rendszerkövetelmények és együttműködés 
+Ez a szakasz ismerteti az Azure File Sync ügynök Rendszerkövetelmények és a Windows Server szolgáltatásaival és a szerepkörök és a külső felek megoldásaival való együttműködés.
 
-### <a name="supported-versions-of-windows-server"></a>A Windows Server támogatott verziói
-Jelenleg a Windows Server az Azure File Sync verziók a következők:
+### <a name="system-requirements"></a>Rendszerkövetelmények
+- A Windows Server 2012 R2 vagy Windows Server 2016 rendszert futtató kiszolgáló 
 
-| Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
-|---------|----------------|------------------------------|
-| Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
-| Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
+    | Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
+    |---------|----------------|------------------------------|
+    | Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
+    | Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
 
-A Windows Server későbbi verzióiban bekerül vannak. Windows korábbi verzióiban előfordulhat, hogy a felhasználói visszajelzések alapján adható hozzá.
+    A Windows Server későbbi verzióiban bekerül vannak. Windows korábbi verzióiban előfordulhat, hogy a felhasználói visszajelzések alapján adható hozzá.
+
+- A kiszolgáló, egy legalább 2GB memória
+
+    > [!Important]  
+    > Ha a kiszolgáló a dinamikus memória engedélyezve van a virtuális gépen fut, a virtuális gép legalább 2048MB memória található kell konfigurálni.
+    
+- Az NTFS fájlrendszerrel formázott helyileg csatlakoztatott köteten
 
 > [!Important]  
 > Azt javasoljuk, hogy minden kiszolgáló, amelyet az Azure File Sync mindig naprakészek lehetnek az a legújabb frissítéseket a Windows Update gondoskodik. 

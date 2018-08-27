@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 08/23/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: a1ff4364e394b3807cf767722ee934ae024399b0
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: bac728f286c90550107b27da76a070623577ed82
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114344"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918900"
 ---
 # <a name="configure-virtual-wan-automation---for-virtual-wan-partners-preview"></a>Virtuális WAN automation – a virtuális WAN-partnerek számára (előzetes verzió) konfigurálása
 
@@ -23,7 +23,7 @@ Szoftver-meghatározott csatlakozási megoldásokat általában egy vezérlőt, 
 
 ##  <a name="access"></a>Hozzáférés-vezérlés
 
-Ügyfelek való megfelelő hozzáférés-vezérlés virtuális WAN az eszköz felhasználói Felületéhez a képesnek kell lennie. Ez egy egyszerű Azure-szolgáltatás használata javasolt. Szolgáltatás egyszerű-alapú hozzáférés biztosít a tartományvezérlő megfelelő eszközhitelesítés ág adatok feltöltéséhez.
+Ügyfelek való megfelelő hozzáférés-vezérlés virtuális WAN az eszköz felhasználói Felületéhez a képesnek kell lennie. Ez egy egyszerű Azure-szolgáltatás használata javasolt. Szolgáltatás egyszerű-alapú hozzáférés biztosít a tartományvezérlő megfelelő eszközhitelesítés ág adatok feltöltéséhez. További információkért lásd: [egyszerű szolgáltatás létrehozása](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application).
 
 ##  <a name="site"></a>Fiókiroda-adatok feltöltése
 
@@ -44,10 +44,10 @@ Ebben a lépésben, amelyet nem használ egy szolgáltatót manuálisan töltse 
 
 ### <a name="understanding-the-device-configuration-file"></a>Az eszköz konfigurációs fájl ismertetése
 
-Az eszköz konfigurációs fájl használata a helyszíni VPN-eszköz konfigurálásakor beállításait tartalmazza. Ez a fájl megtekintésekor vegye figyelembe a következő információkat:
+Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során használandó beállításokat tartalmazza. A fájl áttekintésekor a következő információkat láthatja:
 
-* **vpnSiteConfiguration -** Ez a szakasz azt jelzi, hogy az eszköz részleteinek csatlakozik a virtuális WAN helyként beállítása. A név és az ág eszköz nyilvános ip-címet tartalmazza.
-* **vpnSiteConnections -** ebben a szakaszban a következő információkat biztosítja:
+* **vpnSiteConfiguration** – Ez a szakasz az eszköz a virtuális WAN-ra csatlakozó helyként való telepítésére vonatkozó adatait tartalmazza. Az ágeszköz nevét és nyilvános IP-címét tartalmazza.
+* **vpnSiteConnections** – Ez a szakasz a következőkről nyújt információkat:
 
     * **Címtér** , a virtuális hálózat virtuális példáink.<br>Példa:
  
@@ -59,15 +59,15 @@ Az eszköz konfigurációs fájl használata a helyszíni VPN-eszköz konfigurá
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * **IP-címek** , a virtuális központ VPN-átjáróban. Mivel a VPN-átjáró aktív-aktív konfigurációban 2 alagutat, minden kapcsolat alkotó, látni fogja a fájlban szereplő IP-címe. Ebben a példában láthatja "Instance0" és "Instance1" a helyekhez.<br>Példa:
+    * A virtuális hálózat VPN-átjárójának **IP-címei** Mivel a VPN-átjáró mindegyik kapcsolata 2 alagutat tartalmaz aktív-aktív konfigurációban, a fájlban mindkét IP-cím szerepel. Ebben a példában mindegyik helyhez az „Instance0” és az „Instance1” van feltüntetve.<br>Példa:
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **VPN-átjáró kapcsolat konfigurációs adatait** BGP, például az előre megosztott kulcs stb. Az előmegosztott Kulccsal az előmegosztott kulcsot, akkor az automatikusan létrehozott. Minden esetben szerkesztheti a kapcsolatot egy egyéni előmegosztott Kulccsal az Áttekintés lapon.
+    * A **VPN-átjáró kapcsolati konfigurációjának részletei**, például BGP, előre megosztott kulcs stb. A rendszer által automatikusan létrehozott előre megosztott kulcs a PSK. A kapcsolatot az egyéni PSK Áttekintés lapján bármikor szerkesztheti.
   
-### <a name="example-device-configuration-file"></a>Példa eszköz konfigurációs fájl
+### <a name="example-device-configuration-file"></a>Eszközkonfigurációs példafájl
 
   ```
   { 
@@ -250,9 +250,9 @@ A helyszíni SDWAN/VPN-eszközt vagy az SD-WAN konfiguráció felel meg, vagy ta
 * IPsec integritási algoritmus
 * PFS-csoport
 
-## <a name="feedback"></a>Előzetes verzióval kapcsolatos visszajelzések
+## <a name="feedback"></a>Az előzetes verzióval kapcsolatos visszajelzés
 
-Örömmel visszajelzését. Küldjön egy e-mailek <azurevirtualwan@microsoft.com> problémát szeretne bejelenteni, vagy visszajelzést (pozitív vagy negatív) a virtuális WAN. A cég nevét, a "[]" Felvétel a tárgysorban. Az előfizetés-Azonosítóját is tartalmazhatnak, ha problémát jelent.
+Nagya értékeljük a visszajelzését. Amennyiben a Virtual WAN-nal kapcsolatos problémát szeretne bejelenteni, vagy (pozitív vagy negatív) visszajelzést küldene, küldjön egy e-mailt az <azurevirtualwan@microsoft.com> címre. Adja meg a vállalat nevét szögletes zárójelek ([]) között az e-mail tárgymezőjében. Emellett, amennyiben hibát jelent be, adja meg az előfizetése azonosítóját is.
 
 ## <a name="next-steps"></a>További lépések
 

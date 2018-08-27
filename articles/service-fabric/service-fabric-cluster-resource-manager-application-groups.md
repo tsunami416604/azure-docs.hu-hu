@@ -1,6 +1,6 @@
 ---
-title: Service Fabric fürt erőforrás-kezelő - alkalmazáscsoportok |} Microsoft Docs
-description: A Service Fabric fürt erőforrás-kezelőben alkalmazáscsoport funkcióinak áttekintése
+title: Service Fabric a fürterőforrás-kezelő – alkalmazáscsoportok |} A Microsoft Docs
+description: Az alkalmazáscsoport funkciókat az a Service Fabric fürterőforrás-kezelő áttekintése
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 215efc1f0597f5199dd37baf4b109d7e76040aae
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2c641703547c391618d75fabfa181dff0b98f74f
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212993"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918770"
 ---
 # <a name="introduction-to-application-groups"></a>Alkalmazáscsoportok bemutatása
-A Service Fabric-fürt erőforrás-kezelő általában kezeli a fürterőforrások úgy, hogy a terhelés terjednek (keresztül képviselt [metrikák](service-fabric-cluster-resource-manager-metrics.md)) egyenletesen oszlanak meg a fürtön. A fürt és a fürt csomópontjai keresztül egy teljes kapacitásának kezeli a Service Fabric [kapacitás](service-fabric-cluster-resource-manager-cluster-description.md). Metrikák és a kapacitás működik nagy számos különféle munkaterheléshez azonban néha további követelmények is betöltheti különböző háló alkalmazáspéldányok használó mintákat. Például előfordulhat, hogy szeretné:
+A Service Fabric a fürterőforrás-kezelő általában fürterőforrások kezeli a terhelés elosztható (keresztül jelölt [metrikák](service-fabric-cluster-resource-manager-metrics.md)) egyenletesen oszlanak meg a fürtön. A Service Fabric kezeli a fürt és a fürt csomópontjainak keresztül teljes kapacitásának [kapacitás](service-fabric-cluster-resource-manager-cluster-description.md). Metrikák és a kapacitás működik kiválóan alkalmas a számos számítási feladatokhoz, de néha további követelmények is betöltheti a Service Fabric alkalmazás különböző példányait használó mintákat. Például előfordulhat, hogy szeretné:
 
-- Tartalékkapacitás néhány a fürt csomópontjain a szolgáltatások néhány elnevezett alkalmazáspéldány belül
-- A csomópontokra, amelyeket a szolgáltatások egy elnevezett alkalmazáspéldány belül (helyett ezzel azokat a teljes fürt keresztül) futtassa a teljes számának korlátozása
-- Adja meg az elnevezett alkalmazáspéldány magát a szolgáltatások vagy a teljes erőforrás-felhasználás, azon belül a szolgáltatások száma korlátozható az kapacitások
+- Tartalékkapacitás néhány a csomóponton a fürtben az egyes névvel ellátott alkalmazáspéldány szolgáltatásai
+- Korlátozza a csomópontok egy elnevezett alkalmazáspéldány szolgáltatásai rendszeren futó (nem terjedhetnek őket az egész fürt keresztül) teljes száma
+- Kapacitások meghatározni az elnevezett alkalmazáspéldány magát a szolgáltatások vagy a szolgáltatások, teljes erőforrás-felhasználásának számának korlátozása
 
-Ezek a követelmények teljesítéséhez, a Service Fabric fürt erőforrás-kezelő alkalmazáscsoportok nevezett szolgáltatással támogatja.
+Mindezen követelmények teljesítése érdekében a Service Fabric-fürt Resource Manager támogatja a szolgáltatás alkalmazásbiztonsági csoportokból.
 
-## <a name="limiting-the-maximum-number-of-nodes"></a>Csomópontok maximális számának korlátozása
-Az alkalmazás kapacitásának legegyszerűbb használata esetében akkor, ha egy alkalmazáspéldányt kell lennie, csak a csomópontok egy bizonyos maximális számát. Ez összesíti az adott alkalmazáspéldány alakzatot gépek meghatározott számú belül minden szolgáltatás. Összevonás akkor hasznos, ha a megszüntetni kívánt előrejelzése vagy fizikai erőforrások felhasználását cap által a szolgáltatások adott elnevezett alkalmazáspéldány belül. 
+## <a name="limiting-the-maximum-number-of-nodes"></a>Korlátozza a csomópontok maximális száma
+A legegyszerűbb megmaradjon az alkalmazás kapacitásának akkor, ha a alkalmazáspéldány kell lennie a csomópontok egy bizonyos maximális száma korlátozott. Ez összesíti a minden szolgáltatás beállítása a gépek száma az alakzatot a alkalmazáspéldány belül. Összevonás akkor hasznos, ha szeretne előrejelzése vagy elnevezett alkalmazás példányhoz tartozó szolgáltatások által költségplafont, fizikai erőforrások felhasználása. 
 
-Az alábbi ábrán egy alkalmazáspéldány rendelkező és anélküli egy meghatározott csomópontok maximális száma:
+Az alábbi képen egy alkalmazáspéldány rendelkező és anélküli egy meghatározott csomópontok maximális száma:
 
 <center>
-![Az alkalmazáspéldány meghatározása csomópontok maximális száma][Image1]
+![Alkalmazás-példány meghatározása a csomópontok maximális száma][Image1]
 </center>
 
-A bal oldali példában az alkalmazás nem rendelkezik egy definiált csomópontok maximális száma, és nem rendelkezik, mindhárom szolgáltatást. A fürt erőforrás-kezelő van elosztva el az összes replika hat elérhető csomópontok a legjobb egyensúlyt a fürtben (alapértelmezés) eléréséhez. A megfelelő példa látható legfeljebb három csomópont ugyanazt az alkalmazást.
+A bal oldali példában az alkalmazás nem rendelkezik egy meghatározott csomópontok maximális számát, és rendelkezik mindhárom szolgáltatást. A fürterőforrás-kezelő van elosztva ki az összes replika hat elérhető csomópontok a fürtben (alapértelmezés) a legjobb egyenleg elérése érdekében. A jobb oldali példában ugyanannak az alkalmazásnak legfeljebb három csomópont látható.
 
-A paraméter, amely meghatározza, ez a viselkedés MaximumNodes nevezik. Ez a paraméter alkalmazás létrehozása során be, vagy egy alkalmazáspéldányt, amelyen már futott frissítve.
+A paraméter, ezt a viselkedést vezérlő MaximumNodes nevezzük. Ez a paraméter alkalmazás létrehozása során, vagy frissíteni egy alkalmazás-példányhoz, amelyen már futott.
 
 PowerShell
 
@@ -66,15 +66,15 @@ await fc.ApplicationManager.UpdateApplicationAsync(adUpdate);
 
 ```
 
-A csomóponton belül a fürt erőforrás-kezelő nem garantálható, hogy mely szolgáltatás objektumok együtt elhelyezett vagy csomópontok használt beolvasása.
+Belüli csomópontok készletét a fürterőforrás-kezelő nem garantálja, mely szolgáltatás objektumok együtt elhelyezett, vagy melyik csomópontokon használt beolvasása.
 
-## <a name="application-metrics-load-and-capacity"></a>Alkalmazás metrikákat, a betöltés és a kapacitás
-Alkalmazáscsoportok is engedélyezi, hogy egy adott nevű alkalmazáspéldány és az adott alkalmazáspéldány kapacitás e metrikáihoz társított metrikáinak definiálása. Alkalmazás metrikák engedélyezése nyomon követhető, lefoglalni, és korlátozza az erőforrás-felhasználás a szolgáltatások adott alkalmazáspéldány belül.
+## <a name="application-metrics-load-and-capacity"></a>Alkalmazásmetrikák, betöltési és kapacitás
+Alkalmazáscsoportok is lehetővé teszi, hogy egy adott nevű alkalmazás-példányt és az adott alkalmazáspéldány kapacitás követhesse a társított-metrikáinak definiálása. Alkalmazásmetrikák nyomon követésére, foglaljon le, és korlátozza az erőforrás-használat az adott alkalmazáspéldány belüli szolgáltatások teszi lehetővé.
 
-Minden egyes alkalmazásmetrika vonatkoznak-e két érték beállítható:
+Minden alkalmazás metrika van két érték beállítható:
 
-- **Összes alkalmazás kapacitás** – ezt a beállítást egy adott mérőszám az alkalmazás teljes kapacitását mutatja. A fürt erőforrás-kezelő nem engedélyezi a új szolgáltatások, amelyek teljes terhelés meghaladja ezt az értéket az alkalmazáspéldány belül létrehozását. Például tegyük fel, az alkalmazáspéldány 10 kapacitású kellett, és már a terheléselosztási öt. A szolgáltatás létrehozásának 10 teljes alapértelmezett terhelésű volna le van tiltva.
-- **Maximális csomópont-kapacitás** – ezzel a beállítással az alkalmazás maximális teljes terhelés egyetlen csomópontján. Ha terhelés kerül át ezeket a feladatokat, a fürt erőforrás-kezelő áthelyezése replikák más csomópontok, hogy a terhelés csökkenése.
+- **Teljes kapacitás alkalmazás** – ezt a beállítást jelöli az alkalmazást egy adott mérőszám a teljes kapacitását. A fürterőforrás-kezelő lehetetlenné teszi, hogy ez az érték meghaladja a teljes terhelés miatt az alkalmazáspéldány belül minden olyan új szolgáltatás létrehozása. Például tegyük fel, az alkalmazáspéldány kellett 10 kapacitását, és már volt az öt betöltése. Szolgáltatás létrehozása egy teljes alapértelmezett terheléssel 10 lenne kell nem engedélyezett.
+- **Maximális csomópont-kapacitás** – ezzel a beállítással megadhatja az alkalmazás maximális összesített terhelés egyetlen csomóponton. Ha a terhelést a kapacitások keresztül haladnak, a fürterőforrás-kezelő áthelyezi replikák más csomópontokon, hogy a terhelés csökkenése.
 
 
 PowerShell:
@@ -99,33 +99,33 @@ ad.Metrics.Add(appMetric);
 await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
-## <a name="reserving-capacity"></a>Lefoglal kapacitást
-Alkalmazáscsoportok egy másik gyakori felhasználási annak érdekében, hogy egy adott alkalmazáspéldány fenntartott erőforrások a fürtön belül. A terület mindig van fenntartva, amikor az alkalmazáspéldány jön létre.
+## <a name="reserving-capacity"></a>Kapacitás foglalása
+Egy másik gyakori alkalmazási alkalmazáscsoportok számára, hogy győződjön meg arról, hogy a fürtön belüli erőforrások egy adott alkalmazáspéldány számára vannak fenntartva. A hely mindig van fenntartva, ha az alkalmazáspéldány jön létre.
 
-A fürt terület foglalása az azonnal történik, az alkalmazás akkor is, ha:
-- Az alkalmazáspéldány létrejött, de még nem rendelkezik hozzá tartozó szolgáltatások
-- Az alkalmazáspéldány belül szolgáltatások száma minden egyes változik 
-- a szolgáltatások léteznek, de az erőforrást nem kötött. 
+A fürtben lévő terület lefoglalása esetében azonnal történik, az alkalmazás akkor is, ha:
+- Az alkalmazáspéldány hoz létre, de még nem rendelkezik minden benne lévő szolgáltatások
+- az alkalmazás példány módosítások minden egyes szolgáltatásai száma 
+- a szolgáltatások létezik, de nem használ az erőforrások 
 
-Erőforrások lefoglalása egy alkalmazáspéldányt megadása szükséges, két további paraméterek megadása: *MinimumNodes* és *NodeReservationCapacity*
+Erőforrások lefoglalását a alkalmazáspéldány meg kell adni a két további paraméterek: *MinimumNodes* és *NodeReservationCapacity*
 
-- **MinimumNodes** -csomóponton, amelyeket az alkalmazáspéldány futtasson-e a minimális számát határozza meg.  
-- **NodeReservationCapacity** -metrikáját, az alkalmazás működik ez a beállítás. Az érték azt mutatja, hogy az alkalmazás minden csomópont számára mérőszám ahol, amelyek az adott alkalmazásban a szolgáltatások futnak.
+- **MinimumNodes** – határozza meg, hogy az alkalmazáspéldány futhat a csomópontok minimális száma.  
+- **NodeReservationCapacity** – Ez a beállítás nem az alkalmazás metrikánként. Az érték azt mutatja, hogy az alkalmazás bármely csomópontján fenntartott mérőszám ahol, amelyek az adott alkalmazásban a szolgáltatások futnak.
 
-Kombinálásával **MinimumNodes** és **NodeReservationCapacity** biztosítja, hogy az alkalmazás a fürtön belüli minimális terhelés foglalást. Ha nincs kevesebb a fürtben, mint a teljes foglalás fennmaradó kapacitás szükséges, az alkalmazás létrehozása sikertelen lesz. 
+Kombinálva **MinimumNodes** és **NodeReservationCapacity** garantálja az alkalmazást a fürtön belüli minimális terhelés foglalás. Ha nincs kevesebb a fürtben, mint a teljes foglalás fennmaradó kapacitás szükséges, az alkalmazás létrehozása meghiúsul. 
 
-Nézzük kapacitásfoglalás példát:
+Lássunk erre egy példát kapacitás Foglalás:
 
 <center>
 ![Az alkalmazáspéldányok lefoglalt kapacitás meghatározása][Image2]
 </center>
 
-A bal oldali Példa alkalmazások nem rendelkeznek egyetlen meghatározott alkalmazás kapacitás. A fürt erőforrás-kezelő normál szabályoknak megfelelően minden egyensúlyba kerüljön.
+A bal oldali példában alkalmazások nem kell minden olyan alkalmazás kapacitásának meghatározott. A fürterőforrás-kezelő elosztja minden normál szabályok szerint.
 
-A jobb oldali példában tegyük fel, hogy a Alkalmaz1 létrejött-e a következő beállításokkal:
+A példában a jobb oldali tegyük fel, hogy Alkalmaz1 létrejött-e a következő beállításokkal:
 
-- Két MinimumNodes értéke
-- Egy alkalmazás definiálva mértéket
+- Két MinimumNodes beállítása
+- Egy alkalmazás meghatározott metrika
   - 20 NodeReservationCapacity
 
 PowerShell
@@ -152,15 +152,15 @@ ad.Metrics.Add(appMetric);
 await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
-A Service Fabric két csomópont kapacitást foglal a Alkalmaz1, és nem engedélyezi a szolgáltatások felhasználásához, hogy a kapacitás, akkor sem, ha nem a belső Alkalmaz1 szolgáltatások használnak, időpontjában Alkalmaz2 nevű almappát a. Ez a fenntartott alkalmazás kapacitás tekinthető fel, és csökkenti a kapacitása a csomóponton, és a fürtön belül.  A Foglalás kell vonni a fennmaradó fürt kapacitás azonnal, azonban a fenntartott fogyasztás kell vonni a kapacitás egy adott csomópont csak akkor, ha legalább egy objektum el van helyezve az. A későbbi foglalás lehetővé teszi, hogy a rugalmasság és erőforrás-kihasználást óta erőforrások csak szükség esetén csomópontján vannak lefoglalva.
+A Service Fabric foglal le a két csomópont kapacitását a Alkalmaz1, és nem engedélyezi a szolgáltatások felhasználásához a kapacitást, akkor sem, ha nincs terhelés vett Alkalmaz1 belül a szolgáltatások által egyidejűleg Alkalmaz2 nevű almappát a. A fenntartott alkalmazás kapacitásának számít a felhasznált és beleszámít a fennmaradó kapacitás ezen a csomóponton, és a fürtön belül.  A Foglalás vonni a fennmaradó fürtkapacitás azonnal, azonban a fenntartott használatalapú vonjuk le az egy adott csomópont kapacitását, csak akkor, ha legalább egy szolgáltatási objektumot el van helyezve azt. A későbbi foglalás rugalmasságot és erőforrás-kihasználást lehetővé teszi, mivel az erőforrások csak szükség esetén csomópontokon vannak lefoglalva.
 
-## <a name="obtaining-the-application-load-information"></a>Az alkalmazás betöltése adatainak lekérése
-Minden egyes alkalmazás esetében, amely rendelkezik egy alkalmazás ezt úgy szerezheti be a összesített terhelést, a hozzá tartozó szolgáltatások replikái által jelentett információ egy vagy több metrikák meghatározott kapacitás.
+## <a name="obtaining-the-application-load-information"></a>Az alkalmazás betöltése adatainak beszerzése
+Minden alkalmazáshoz, amely rendelkezik az alkalmazás kapacitásának meghatározott egy vagy több metrikát a replikákat a szolgáltatások által jelentett összesített terhelési vonatkozó információkat is kaphat.
 
 PowerShell:
 
 ``` posh
-Get-ServiceFabricApplicationLoad –ApplicationName fabric:/MyApplication1
+Get-ServiceFabricApplicationLoadInformation –ApplicationName fabric:/MyApplication1
 ```
 
 C#
@@ -176,44 +176,44 @@ foreach (ApplicationLoadMetricInformation metric in metrics)
 }
 ```
 
-A ApplicationLoad lekérdezés alkalmazás kapacitás az alkalmazáshoz megadott alapvető információt ad vissza. Ezen információk közé tartozik, a minimális csomópontok és a maximális csomópontszám adatait, és a szám, amelyet az alkalmazás jelenleg elfoglaló van. Minden alkalmazás terhelési metrika kapcsolatos adatokat is tartalmaz többek között:
+A ApplicationLoad lekérdezés visszaadja az alapvető információkat szeretne az alkalmazáshoz megadott alkalmazás kapacitásának. Ezen információk közé tartozik a minimális és maximális csomópontok adatait, és a számát, amelyet az alkalmazás jelenleg kötnek van. Minden egyes alkalmazásmetrika terhelés vonatkozó információkat is tartalmaz többek között:
 
-* Metrika neve: A mérték neve.
-* Foglalási kapacitás: Fürt foglalt kapacitást, a fürt ehhez az alkalmazáshoz.
-* Alkalmazásterhelés: Az alkalmazás gyermek replikák teljes terhelése.
-* Alkalmazás kapacitás: Maximálisan engedélyezett alkalmazás terhelés érték.
+* Metrika neve: A metrika neve.
+* Foglalás kapacitás: Fürtkapacitás tart fenn a fürtben található ehhez az alkalmazáshoz.
+* Alkalmazásterhelés: Az alkalmazás gyermek replikák teljes terhelés.
+* Alkalmazás kapacitásának: A legnagyobb megengedett Alkalmazásterhelés értékét.
 
-## <a name="removing-application-capacity"></a>Alkalmazás kapacitás eltávolítása
-Az alkalmazás kapacitásának paraméterei vannak beállítva, a kérelmet, ha azok távolíthatja el frissítés alkalmazás API-k vagy PowerShell-parancsmagok használatával. Példa:
+## <a name="removing-application-capacity"></a>Alkalmazás kapacitásának eltávolítása
+Miután beállította az alkalmazás kapacitásának paramétereket az alkalmazáshoz, eltávolíthatók frissítés alkalmazás API-k vagy a PowerShell-parancsmagok használatával. Példa:
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity
 
 ```
 
-Ez a parancs eltávolítja az összes alkalmazás kapacitás paraméterek az alkalmazáspéldány. Ez magában foglalja MinimumNodes, maximumnodes értéke és az alkalmazás metrikákat, ha van ilyen. A parancs a hatása az azonnali. Ez a parancs befejezése után a a fürt erőforrás-kezelő az alkalmazások kezelésére az alapértelmezett viselkedést alkalmazza. Alkalmazás kapacitás paraméter adható újra keresztül `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
+Ezzel a paranccsal eltávolítható az összes alkalmazás kapacitás felügyeleti paraméterei az alkalmazáspéldány. Ez magában foglalja MinimumNodes MaximumNodes és az alkalmazásmetrikák, ha van ilyen. A parancs a hatása az azonnali. Ez a parancs befejeződése után a fürterőforrás-kezelő alkalmazások kezelése az alapértelmezett viselkedés használ. Alkalmazás kapacitásának paraméter adható meg újra keresztül `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
 
-### <a name="restrictions-on-application-capacity"></a>Az alkalmazás kapacitás korlátozások
-Nincsenek több korlátozások figyelembe kell venni a alkalmazás kapacitás paramétereket. Érvényesítési hiba esetén nem kerül sor.
+### <a name="restrictions-on-application-capacity"></a>Alkalmazás kapacitásának korlátozásai
+Alkalmazás kapacitásának paraméterekkel, hogy figyelembe kell venni néhány korlátozások vonatkoznak. Ha érvényesítési hibák léptek fel a módosítások nem kerül sor.
 
-- Minden egész paraméterek nem negatív számnak kell lennie.
-- MinimumNodes soha nem lehet nagyobb, mint a maximumnodes értéke.
-- Ha a terhelési metrika kapacitások vannak meghatározva, majd kell követniük ezeket a szabályokat:
-  - Csomópont foglalási kapacitás nem lehet nagyobb, mint a maximális csomópont-kapacitás. Például nem korlátozza a metrika "CPU" két egységhez a csomóponton a kapacitás, és próbáljon meg minden egyes csomóponton három egység.
-  - Ha maximumnodes értéke meg van adva, majd a termék MaximumNodes és a maximális csomópont-kapacitás nem lehet nagyobb, mint a teljes alkalmazás kapacitás. Ha tegyük fel például, "CPU" értéke 8 terhelési metrika csomópont maximális kapacitását. Tételezzük is fel, a csomópontok maximális száma 10-re. Teljes alkalmazás kapacitás ebben az esetben a terhelési metrika 80-as nagyobbnak kell lennie.
+- Az összes egész szám paramétert nem negatív számnak kell lennie.
+- MinimumNodes soha nem MaximumNodes nagyobbnak kell lennie.
+- Ha a terhelés metrika kapacitások vannak megadva, majd kell követniük ezeket a szabályokat:
+  - Csomópont foglalás kapacitása nem lehet nagyobb, mint a maximális csomópont kapacitását. Például nem korlátozza a kapacitás, a metrika "Processzor" a csomóponton két egységre, és megpróbálja lefoglalni minden csomóponton három egységet.
+  - Ha MaximumNodes van megadva, majd a termék MaximumNodes és maximális csomópont-kapacitás nem lehet nagyobb, mint a teljes alkalmazás kapacitásának. Például tegyük fel, load metrika "Processzor" értéke 8 csomópont maximális kapacitását. Is tegyük fel, a csomópontok maximális száma 10-es értékre. Alkalmazás teljes kapacitás ebben az esetben a terhelés mérőszám 80-nál nagyobbnak kell lennie.
 
-A korlátozások érvényesek lesznek, mind az alkalmazás létrehozása és a frissítések során.
+A korlátozások érvényben vannak, mind az alkalmazás létrehozása és a frissítések során.
 
-## <a name="how-not-to-use-application-capacity"></a>Hogyan nem használható az alkalmazás kapacitása
-- Ne próbálja meg az alkalmazáscsoport szolgáltatásainak használatával korlátozhatja az alkalmazás egy _adott_ csomópontok részhalmaza. Más szóval megadhatja, hogy az alkalmazás fut, legfeljebb öt csomópont, de a fürt nem adott öt csomópontok. Egy adott csomópont alkalmazást korlátozási elérhető placement Constraints korlátozásokat szolgáltatások használatával.
-- Ne próbálja meg az alkalmazás kapacitásának segítségével győződjön meg arról, hogy ugyanazt az alkalmazást a két szolgáltatás ugyanazon a csomóponton kerülnek. Ehelyett használja [affinitás](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) vagy [placement Constraints korlátozásokat](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
+## <a name="how-not-to-use-application-capacity"></a>Alkalmazás kapacitásának nem használatával
+- Ne próbálja meg az alkalmazáscsoport funkciók használatával korlátozhatja az alkalmazás egy _adott_ csomópontok részhalmazát. Más szóval megadhatja, hogy az alkalmazás legfeljebb öt csomóponton fut, de nem mely adott öt csomópont van a fürtben. Egy alkalmazás bizonyos csomópontjaihoz korlátozásra szolgáltatások elhelyezési korlátozások használatával lehet elérni.
+- Ne próbálkozzon az alkalmazás kapacitásának használatával győződjön meg arról, hogy ugyanazt az alkalmazást a két szolgáltatás kerüljenek-e az azonos csomópontokon. Helyette használjon [affinitás](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) vagy [elhelyezési korlátozások](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
 ## <a name="next-steps"></a>További lépések
-- A szolgáltatások konfigurálásáról [további információ a szolgáltatások konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
-- Hogyan kezeli a fürt erőforrás-kezelő, és elosztja a terhelést a fürt kapcsolatos további tudnivalókért tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)
-- Indítsa el az elejétől és [Bevezetés a Service Fabric fürt Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
-- További tájékoztatást a metrikák működése általában olvassa a [Service Fabric terheléselosztási metrikák](service-fabric-cluster-resource-manager-metrics.md)
-- A fürt erőforrás-kezelő rendelkezik a fürt leíró számos lehetőséget. További információkért róluk, tekintse meg a cikk a [leíró a Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)
+- További információt a szolgáltatások konfigurálása [megismerheti a szolgáltatások konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
+- Ismerje meg hogyan a fürterőforrás-kezelő felügyeli, és elosztja a terhelést a fürtben, tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)
+- Elölről kezdődik, és [, a Service Fabric fürterőforrás-kezelő bemutatása](service-fabric-cluster-resource-manager-introduction.md)
+- Metrikák működése általában a további információkért olvassa a [Service Fabric terhelési mérőszámok](service-fabric-cluster-resource-manager-metrics.md)
+- A fürterőforrás-kezelő leíró a fürt számos lehetőség áll. A velük kapcsolatos további információért tekintse meg a cikk a [leíró, Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png

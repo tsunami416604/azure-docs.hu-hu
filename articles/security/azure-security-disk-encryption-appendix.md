@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: cf3e9ce055219bccb44c19fd8e77fe39c938c968
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9efd8730af292e6f720c3bacd5707c48f0eab7ac
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391759"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887933"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
 Ez a cikk a mellékletet [IaaS virtuális gépekhez az Azure Disk Encryption](azure-security-disk-encryption-overview.md). Ellenőrizze, hogy az Azure Disk Encryption, IaaS virtuális gépek cikkek előbb a környezetet tudni elolvasni. Ez a cikk ismerteti, hogyan készíti elő az előzetes titkosítással VHD-k és egyéb feladatokhoz.
 
 ## <a name="connect-to-your-subscription"></a>Csatlakozás az előfizetéshez
-Mielőtt folytatná, tekintse át a [Előfeltételek](azure-security-disk-encryption-prerequisites.md) cikk. Miután meggyőződött arról, hogy minden előfeltétel teljesül-e, csatlakozzon az előfizetéséhez a következő parancsmag futtatásával:
+A Kezdés előtt tekintse át a [Előfeltételek](azure-security-disk-encryption-prerequisites.md) cikk. Miután az összes előfeltétel teljesül-e, csatlakozzon az előfizetéséhez a következő parancsmag futtatásával:
 
 ### <a name="bkmk_ConnectPSH"></a> Csatlakozzon az előfizetéséhez, a PowerShell-lel
 
@@ -63,13 +63,13 @@ Mielőtt folytatná, tekintse át a [Előfeltételek](azure-security-disk-encryp
 
 ### <a name="bkmk_ConnectCLI"></a> Csatlakozás az előfizetéshez az Azure CLI-vel
 
-1. Jelentkezzen be az Azure-bA [az bejelentkezési](/cli/azure/authenticate-azure-cli#interactive-log-in). 
+1. Jelentkezzen be Azure-ban [az bejelentkezési](/cli/azure/authenticate-azure-cli#interactive-log-in). 
      
      ```azurecli
      az login
      ```
 
-2. Ha szeretne bejelentkezni, használja a bérlő kiválasztása:
+2. Ha szeretne, válassza ki a bejelentkezéshez, használja a bérlő:
     
      ```azurecli
      az login --tenant <tenant>
@@ -106,33 +106,77 @@ Mielőtt folytatná, tekintse át a [Előfeltételek](azure-security-disk-encryp
      Get-AzureKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
      ```
 
+### <a name="bkmk_prereq-script"></a> Az Azure Disk Encryption előfeltétel PowerShell-parancsfájl használatával
+Ha már ismeri az Azure Disk Encryption előfeltételeinek, használhatja a [az Azure Disk Encryption előfeltétel PowerShell-parancsprogram](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). A PowerShell-parancsfájl egy példát, tekintse meg a [titkosítani a virtuális gépek gyors üzembe helyezés](quick-encrypt-vm-powershell.md). Eltávolíthatja a megjegyzéseket a parancsfájl egy szakaszában sor 211, az összes lemez titkosítása egy meglévő erőforráscsoportot a meglévő virtuális gépek indítása. 
+
+Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerShell-parancsfájlt: 
+
+
+|Paraméter|Leírás|Kötelező megadni|
+|------|------|------|
+|$resourceGroupName| Az erőforrás nevét, amelyhez a KeyVault tartozik.  Ezen a néven egy új erőforráscsoport létrejön, ha egy nem létezik.| True (Igaz)|
+|$keyVaultName|A KeyVault a melyik titkosítási kulcsai elhelyezni kívánt nevét. Ezen a néven egy új tároló létrejön, ha egy nem létezik.| True (Igaz)|
+|$location|A KeyVault helye. Győződjön meg arról a KeyVault és a virtuális gépek titkosítását ugyanazon a helyen. A hely listáját `Get-AzureRMLocation`.|True (Igaz)|
+|$subscriptionId|Használható az Azure-előfizetés azonosítója.  Megtekintheti az előfizetés-Azonosítóját az `Get-AzureRMSubscription`.|True (Igaz)|
+|$aadAppName|Neve az Azure AD-alkalmazást, amely a KeyVault titkos kódok írása történik. Ha a megadott néven még nem létezik alkalmazás, a rendszer létrehoz egyet a beírt néven. Ha az alkalmazás már létezik, aadClientSecret a paramétert átadhatja a parancsfájlt.|False (Hamis)|
+|$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás titkos ügyfélkódja.|False (Hamis)|
+|$keyEncryptionKeyName|A KeyVault választható kulcstitkosítási kulcs neve. Ezen a néven egy új kulcsot létrejön, ha egy nem létezik.|False (Hamis)|
+
+
 ## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
-- [Kulcstartó létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) 
+<!--   - [Create a key vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) -->
+
+### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Titkosítása és visszafejtése a virtuális gépek az Azure AD-alkalmazás nélkül
+
+
+- [A meglévő vagy IaaS Windows rendszerű virtuális gépek futtatása a lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)
+- [Letiltja a lemeztitkosítást a meglévő vagy IaaS Windows rendszerű virtuális gépek futtatása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)
+- [Lemeztitkosítás IaaS virtuális gépen meglévő vagy futó Linux engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
+ -  [Egy futó Linux rendszerű virtuális gép titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
+    - Letiltja a titkosítást csak engedélyezett megváltoztatását az adatköteteken Linux rendszerű virtuális gépekhez.  
+
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Titkosítása és visszafejtése a virtuális gépek az Azure AD-alkalmazás (előző kiadás) 
  
-- [Új IaaS Windows virtuális Gépen a Marketplace-ről a lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)
-    - Ez a sablon létrehoz egy új titkosított Windows virtuális Gépet, amely a Windows Server 2012 image z galerie használja.
-
-- [Az RHEL 7.2 üzembe helyezés, a teljes lemeztitkosítás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
-    - Ez a sablon létrehoz egy teljes mértékben titkosított RHEL 7.2 rendszerű virtuális Gépet az Azure-ban egy titkosított 30 GB operációs rendszer meghajtóját és a egy 200 GB-os RAID-0 tömb /mnt/raidencrypted felcsatolva. Tekintse meg a [– gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) támogatott Linux-kiszolgáló disztribúciókra vonatkozó cikket. 
-
-- [Egy előre titkosított virtuális merevlemez a Windows vagy Linux rendszeren a lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
-
 - [A meglévő vagy IaaS Windows rendszerű virtuális gépek futtatása a lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
 
-- [Lemeztitkosítás IaaS virtuális gépen meglévő vagy futó Linux engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrt-running-linux-vm)    
+- [Lemeztitkosítás IaaS virtuális gépen meglévő vagy futó Linux engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
 - [Disk encryption szolgáltatást futtató Windows IaaS letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
 
--  [Egy futó Linux rendszerű virtuális gép titkosításának letiltása](https://aka.ms/decrypt-linuxvm) 
+-  [Egy futó Linux rendszerű virtuális gép titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
     - Letiltja a titkosítást csak engedélyezett megváltoztatását az adatköteteken Linux rendszerű virtuális gépekhez. 
 
-- [Hozzon létre egy új titkosított felügyelt lemezt egy előzetes titkosítással VHD/storage-blobból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
-    - Egy új titkosított felügyelt lemezt hoz létre, a megadott előre titkosított virtuális Merevlemezt, és a megfelelő titkosítási beállítások
+- [Új IaaS Windows virtuális Gépen a Marketplace-ről a lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)
+    - Ez a sablon létrehoz egy új titkosított Windows virtuális Gépet, amely a Windows Server 2012 image z galerie használja.
 
 - [Új titkosított Windows IaaS felügyelt lemez virtuális gép létrehozása katalógus-lemezkép](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
     - Ez a sablon a Windows Server 2012 katalóguslemezt használó felügyelt lemezeket hoz létre egy új titkosított Windows virtuális gép.
+
+- [A teljes lemeztitkosítás felügyelt lemezekkel rendelkező RHEL 7.2 üzembe](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
+    - Ez a sablon létrehoz egy teljes mértékben titkosított RHEL 7.2 rendszerű virtuális Gépet az Azure-ban felügyelt lemezeket használ. Tartalmazza a titkosított meghajtókról 30-GB OS és a csatlakoztatásának helye /mnt/raidencrypted titkosított 200 GB-os tömb (RAID-0). Tekintse meg a [– gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) támogatott Linux-kiszolgáló disztribúciókra vonatkozó cikket. 
+
+- [A teljes lemeztitkosítás, nem felügyelt lemezekkel rendelkező RHEL 7.2 üzembe](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel-unmanaged)
+    - Ez a sablon létrehoz egy teljes mértékben titkosított RHEL 7.2 rendszerű virtuális Gépet az Azure-ban egy titkosított 30 GB-os operációs rendszer meghajtóját és a egy titkosított 200 GB-os tömb (RAID-0) /mnt/raidencrypted felcsatolva. Tekintse meg a [– gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) támogatott Linux-kiszolgáló disztribúciókra vonatkozó cikket. 
+
+- [Egy előre titkosított virtuális merevlemez a Windows vagy Linux rendszeren a lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
+
+- [Hozzon létre egy új titkosított felügyelt lemezt egy előzetes titkosítással VHD/storage-blobból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+    - Létrehoz egy új titkosított felügyelt lemezt előre titkosított virtuális merevlemez és a megfelelő titkosítási beállítások
+
+- [Egy futó Windows virtuális gép az Azure AD-ügyfél tanúsítványának ujjlenyomata lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert)
     
+- [A futó Linux rendszerű virtuális gép méretezési lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+
+- [Egy futó Windows virtuális gép méretezési csoporthoz lemeztitkosítással engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+
+ - [Egy virtuális gép méretezési állítsa be a Linux rendszerű virtuális gépek üzembe helyezése Linux VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+
+ - [A virtuális gép méretezési állítsa be a Windows virtuális gépek üzembe helyezése Windows VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+
+- [Tiltsa le a futó Linux rendszerű virtuális gép méretezési lemeztitkosítás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+- [Tiltsa le a futó Windows virtuális gép méretezési csoporthoz lemeztitkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
 ## <a name="bkmk_preWin"></a> Előzetes titkosítással Windows virtuális merevlemez előkészítése
 A következő szakaszok szükség annak előre titkosított Windows virtuális merevlemez előkészítése az Azure IaaS-titkosított merevlemezként üzembe helyezéshez. Az információk segítségével készítheti elő, és indítsa el az Azure Site Recovery vagy az Azure friss Windows virtuális gép (VHD). VHD feltöltése és készítse elő a további információkért lásd: [általános VHD feltöltése és ezzel hozzon létre új virtuális gépeket az Azure-ban](../virtual-machines/windows/upload-generalized-managed.md).
@@ -247,13 +291,13 @@ Az operációs rendszer titkosítási folyamat három módon figyelheti:
 
     /var/log/azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
 
- Azt javasoljuk, hogy nem jelentkezik be a virtuális gép amíg folyamatban van az operációs rendszer titkosítási. Másolja a naplókat, csak akkor, ha a két módszer nem sikerült.
+ Azt javasoljuk, hogy nem jelentkezik be a virtuális gép, amíg folyamatban van az operációs rendszer titkosítási. Másolja a naplókat, csak akkor, ha a két módszer nem sikerült.
 
 ## <a name="bkmk_preLinux"></a> Előzetes titkosítással Linux rendszerű virtuális merevlemez előkészítése
 Előre titkosított virtuális merevlemezek előkészítéséhez a terjesztési függően változhat. Példák a előkészítése [Ubuntu 16](#bkmk_Ubuntu), [openSUSE, 13.2](#bkmk_openSUSE), és [CentOS 7](#bkmk_CentOS) érhetők el. 
 
 ### <a name="bkmk_Ubuntu"></a> Ubuntu 16
-A terjesztési telepítése közben titkosítás beállítása az alábbiak szerint:
+A terjesztési telepítése közben titkosítás konfigurálása a következő lépések végrehajtásával:
 
 1. Válassza ki **titkosított kötetek konfigurálni** mikor particionálni a lemezeket.
 
@@ -345,7 +389,7 @@ Adja meg a titkosítás működéséhez az Azure-ral a következő lépések vé
 
 ### <a name="bkmk_openSUSE"></a>  openSUSE, 13.2
 Konfigurálja a titkosítást a terjesztési telepítése során, tegye a következőket:
-1. Amikor particionálni a lemezeket, válassza ki a **Kötetcsoport titkosítása**, majd írja be a jelszót. Ez az a jelszó, amely feltölti a kulcstartóba.
+1. Amikor particionálni a lemezeket, válassza ki a **Kötetcsoport titkosítása**, majd írja be a jelszót. Ez az a jelszó a key vault feltöltött lesz.
 
  ![openSUSE, 13.2 beállítása](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
@@ -465,7 +509,7 @@ erre:
 ```
     if [ 1 ]; then
 ```
-4. Szerkesztés /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh, és a hozzáfűző ez után a "# nyitott LUKS eszköz":
+4. /Usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh szerkesztése, és fűzze hozzá a "# nyitott LUKS eszköz" után a következőket:
     ```
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -496,7 +540,7 @@ BitLocker-titkosítást vagy DM-Crypt titkosítás engedélyezése után a helyi
     Add-AzureRmVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 ## <a name="bkmk_UploadSecret"></a> Töltse fel a titkos kulcsot a key vault előzetes titkosított virtuális gép
-A lemeztitkosítási titok beszerzett korábban fel kell tölteni, egy titkos kulcsot tárol a kulcstárolóban. A key vaultban kell rendelkeznie a lemeztitkosítás és az Azure AD-ügyfél engedélyezve.
+Titkosításához az Azure AD-alkalmazás (előző kiadás) használatával, a a korábban beszerzett-lemeztitkosítás titkos kulcsot a kulcstartóban titkos blobnévvel legyen feltöltve. A key vaultban kell rendelkeznie a lemeztitkosítás és az Azure AD-ügyfél engedélyezve.
 
 ```powershell 
  $AadClientId = "My-AAD-Client-Id"
@@ -624,7 +668,7 @@ Használat `$KeyEncryptionKey` és `$secretUrl` esetében a következő lépésb
 ##  <a name="bkmk_SecretURL"></a> Adja meg titkos URL-cím, egy operációsrendszer-lemez csatolása
 
 ###  <a name="bkmk_URLnoKEK"></a>Egy KEK használata nélkül
-Amíg az operációsrendszer-lemez való csatlakoztatás, teljesítenie kell a `$secretUrl`. Az URL-címet az "a-lemeztitkosítás titkos kulcs egy KEK nem titkosított" szakaszban jött létre.
+Amíg az operációsrendszer-lemez csatol, teljesítenie kell a `$secretUrl`. Az URL-címet az "a-lemeztitkosítás titkos kulcs egy KEK nem titkosított" szakaszban jött létre.
 ```powershell
     Set-AzureRmVMOSDisk `
             -VM $VirtualMachine `

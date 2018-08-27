@@ -1,6 +1,6 @@
 ---
-title: Service Fabric fürt erőforrás-kezelő - felügyelet integrálását |} Microsoft Docs
-description: Az integrációs pontjainak között a fürt erőforrás-kezelő és a Service Fabric Management áttekintése.
+title: Service Fabric fürt Resource Manager - kezelésének integrációja |} A Microsoft Docs
+description: A fürterőforrás-kezelő és a Service Fabric Management között az integrációs pontokat áttekintése.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3f93ca94d5aa3e95637a53a4c8fe3d9d264dd58c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7a1bab75521730f7e80e5b86112bbb0aed129f88
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208284"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917874"
 ---
-# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Fürt resource manager integrálása a Service Fabric-fürt felügyeleti
-A Service Fabric fürt erőforrás-kezelő nem meghajtója frissítések Service Fabric azonban részt vesz. Az első, amelyek a fürt erőforrás-kezelő segítségével felügyeleti módja a kívánt állapot, a fürt és a benne lévő szolgáltatások nyomon követése révén. A fürt erőforrás-kezelő elküldi állapotjelentések száma, amikor azt a fürt nem állítható be a kívánt konfigurációs. Például ha nincs elég kapacitás a fürt erőforrás-kezelő elküldi állapotfigyelő figyelmeztetésekről és hibákról, amely jelzi, a probléma. Integráció más adat frissítések működése az rendelkezik. A fürt erőforrás-kezelő működése némileg megváltoztatja frissítéskor.  
+# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Fürt resource manager-integráció Service Fabric-fürt kezelése
+A Service Fabric fürterőforrás-kezelő nem meghajtó frissítése a Service Fabric, de részt vesz. Az első, amely segít a fürterőforrás-kezelő felügyeleti módja a fürt és a benne lévő szolgáltatások állapotának nyomon követése révén. A fürterőforrás-kezelő rendszerállapot-jelentések küldése során, a fürt nem állítható be a szükséges konfiguráció. Például ha nincs elegendő kapacitás a fürterőforrás-kezelő küld ki állapotával kapcsolatos figyelmeztetések és a probléma jelzik. Integráció egy másik részét rendelkezik, a frissítések működését. A fürterőforrás-kezelő működését kis mértékben változtatja frissítések során.  
 
-## <a name="health-integration"></a>Rendszerállapot-integráció
-A fürt erőforrás-kezelő folyamatosan nyomon követi a szolgáltatások elhelyezéséhez megadott szabályok. Azt is nyomon követi az egyes mérőszám kapacitása a csomópontokon és a fürt és a fürt egész. Ha azt nem elégíti ki ezeket a szabályokat, vagy ha nincs elég kapacitás, az egészségügyi figyelmeztetések és hibák kibocsátott. Ha például egy csomópont kapacitás és a fürt erőforrás-kezelő megpróbálja kijavítani a problémát szolgáltatások áthelyezésével. Ha nem, akkor a hierarchiakezelő elhárította állapotfigyelő figyelmeztetés azt jelzi, hogy melyik csomópont kapacitás, és melyik metrikáihoz bocsát ki.
+## <a name="health-integration"></a>Állapot-integráció
+A fürterőforrás-kezelő folyamatosan nyomon követi a szolgáltatásokat helyezi el a megadott szabályok. Azt is nyomon követi a fennmaradó kapacitás mindegyik metrikát a csomópontokon, és a fürt és a fürt teljes. Ha ezt nem tudja teljesíteni ezeket a szabályokat, vagy ha nincs elegendő kapacitás, rendelkezésre állapotával kapcsolatos figyelmeztetések és hibák. Például ha egy csomópont feletti kapacitás van, és a fürterőforrás-kezelő megpróbálja kijavítani az a helyzet szolgáltatásokat helyezi. Ha ezt nem tudja kijavítani a helyzet egy állapotfigyelési figyelmeztetése, jelezve, hogy melyik csomópont van, mint a kapacitást, és mely metrikák bocsát ki.
 
-Az erőforrás-kezelő állapotának figyelmeztetések egy másik példája egy elhelyezési korlátozás megsértése. Például, ha meg van adva egy elhelyezési korlátozás (például `“NodeColor == Blue”`) és az erőforrás-kezelő észleli, hogy a korlátozás megsértését, azt egy állapotfigyelési figyelmeztetése bocsát ki. Ez az egyéni típusmegkötéseket és az alapértelmezett korlátozásokban (például a tartalék tartomány és a frissítési tartomány korlátozások).
+Az erőforrás-kezelő állapotával kapcsolatos figyelmeztetések egy másik példa, az elhelyezési korlátozások megsértésének. Ha például, ha meg van adva egy elhelyezési korlátozás (például `“NodeColor == Blue”`) és az erőforrás-kezelő észleli, hogy a korlátozás megsértését, azt bocsát ki egy állapotfigyelési figyelmeztetése. Ez a egyéni korlátozások és az alapértelmezett korlátozásokban (például a tartalék és frissítési tartomány korlátozásokkal).
 
-Íme egy példa egy ilyen állapotjelentése. Ebben az esetben az állapotjelentést van egy, a rendszer szolgáltatás a partíciók száma. A health az üzenet azt jelzi, az adott partíció a replikák ideiglenesen vannak csomagolt túl kevés frissítés tartományokra.
+Íme egy példa egy ilyen jelentés. Az állapotjelentés ebben az esetben a rendszer szolgáltatáspartíciók egyik van. Az egészségügyi üzenet azt jelzi, hogy az adott partíció a replikák átmenetileg túl kevés frissítési tartományok vannak elhelyezve.
 
 ```posh
-PS C:\Users\User > Get-WindowsFabricPartitionHealth -PartitionId '00000000-0000-0000-0000-000000000001'
+PS C:\Users\User > Get-ServiceFabricPartitionHealth -PartitionId '00000000-0000-0000-0000-000000000001'
 
 
 PartitionId           : 00000000-0000-0000-0000-000000000001
@@ -71,65 +71,65 @@ HealthEvents          :
                         Transitions           : Ok->Warning = 8/10/2015 7:13:02 PM, LastError = 1/1/0001 12:00:00 AM
 ```
 
-Mi az egészségügyi üzenet ezzel azt jelzi, az itt található:
+Íme, mi az egészségügyi üzenet eredménytelen van:
 
-1. Magukat minden replika megfelelő: mindegyik rendelkezik-e AggregatedHealthState: Ok
-2. A frissítési tartomány terjesztési megkötés jelenleg éppen sérül. Ez azt jelenti, hogy egy adott frissítés tartomány rendelkezik további replikák ehhez a partícióhoz a kelleténél.
-3. Melyik csomópont tartalmazza a hiba, amely a replika. Ebben az esetben a csomópont "Node.8" nevű
-4. Frissítés e jelenleg folyik a ez partícióazonosító ("jelenleg frissítése – false")
-5. A szoftverterjesztési házirendben, ezt a szolgáltatást: "Terjesztési házirend--csomagolási". Ez vonatkozik a `RequireDomainDistribution` [elhelyezési házirend](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Csomagolási" azt jelzi, hogy ebben az esetben DomainDistribution _nem_ szükséges, hogy tudjuk, hogy elhelyezési házirend nincs megadva ehhez a szolgáltatáshoz. 
-6. Ha a jelentés történt – 8/10/2015 7 13:02 du.:
+1. Magukat minden replika megfelelő: mindegyik rendelkezik AggregatedHealthState: Ok
+2. A frissítési tartomány terjesztési korlátozást jelenleg éppen sérül. Ez azt jelenti, hogy az adott frissítési tartományban van több replika ehhez a partícióhoz a kelleténél.
+3. Melyik csomópont tartalmazza a replikát a megsértést okoz. Ebben az esetben a "Node.8" nevű csomópont legyen.
+4. E frissítés pillanatnyilag folyamatban levő esetében ezt a particionálása ("jelenleg frissítése – a hamis")
+5. Ezt a szolgáltatást a terjesztési házirend: "A terjesztési házirend--balí se". Ez vonatkozik a `RequireDomainDistribution` [elhelyezési házirend](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Csomagolási" azt jelzi, hogy ebben az esetben DomainDistribution _nem_ szükséges, hogy tudjuk, hogy elhelyezési szabályzat nincs megadva ehhez a szolgáltatáshoz. 
+6. Ha a jelentés történt – 8/10/2015 7:13:02-kor
 
-Információkat, például a powers riasztásokat, amelyek érvényesítést, hogy valami nem megfelelő állapotba került, és ismeri fel és rossz frissítések halt is tudja éles környezetben. Ebben az esetben tekintse meg, ha azt kitalálja, hogy miért az erőforrás-kezelő a replikák csomag frissítése tartományába kellett volna szeretnénk. Általában csomagolási nem átmeneti, mert a csomópontok a más frissítési tartományok lettek, például.
+További információkat, például a powers riasztások olyan esetekre, hogy tudja hiba merült fel, és észlelheti és halt rossz frissítés is használható éles környezetben. Ebben az esetben tekintse meg, ha azt is döntse el, miért érdemes az erőforrás-kezelő a replikákat a frissítési tartományba, hogy kellett volna szeretnénk. A csomópontok a más frissítési tartományok volt, például általában csomagolási azért átmeneti.
 
-Tegyük fel, a fürt erőforrás-kezelő megpróbálja helyezze el az egyes szolgáltatások, de nincs bármely megoldások, amelyek működnek. Szolgáltatások nem helyezhető el, esetén általában a következő okok valamelyike:
+Tegyük fel, a fürterőforrás-kezelő megpróbálja helyezze el az egyes szolgáltatások, de nincs a hozzáadott megoldások, amelyek működnek. Szolgáltatások nem helyezhető el, esetén általában a következő okok valamelyike:
 
-1. Néhány átmeneti állapotról van lehetetlenné helyezze el a szolgáltatáspéldány, vagy a replika megfelelően
-2. A szolgáltatás elhelyezésének vonatkozó követelmények nincsenek unsatisfiable.
+1. Bizonyos átmeneti feltétel tette, hogy a szolgáltatás példányát és a replika megfelelően helyezze lehetetlen
+2. A szolgáltatás-elhelyezési követelmények unsatisfiable.
 
-Ebben az esetben a fürt erőforráskezelő állapotjelentések segítségével meghatározhatja, hogy miért a szolgáltatás nem helyezhető el. Ez a folyamat a korlátozás eltávolítási feladatütemezési hívása. Során, a rendszer végigvezeti a szolgáltatás és a rekordok azok kiküszöbölik érintő konfigurált korlátozásait. Ha szolgáltatások nem tudja elhelyezni, így látható csomópontok szüntetni volt, és miért.
+Ebben az esetben a rendszerállapot-jelentések a fürt Resource Manager segítségével eldöntheti, hogy miért a szolgáltatás nem helyezhető el. Ez a folyamat a megkötés eltávolítási feladatütemezési nevezzük. Során, a rendszer végigvezeti a szolgáltatás és a rekordokat érintő, azok számára beállított korlátozó. Amikor a szolgáltatások nem tudják helyezni, így láthatja melyik csomópontokon is számolni, és miért.
 
-## <a name="constraint-types"></a>Korlátozás típusok
-Most szolgáltatással kapcsolatban egyes állapotfigyelő jelentésekben megjelenő különböző korlátozásait. Replikák nem helyezhető el a megkötéseket kapcsolatos egészségügyi üzenetek jelenik meg.
+## <a name="constraint-types"></a>Korlátozás típusa
+Vegyük egyes ezeket a rendszerállapot-jelentések az másik korlátozások. Látni fogja a során a replika nem helyezhető el ezek a korlátozások kapcsolatos egészségügyi üzeneteket.
 
-* **ReplicaExclusionStatic** és **ReplicaExclusionDynamic**: ezek a megkötések azt jelzi, hogy a megoldás vissza lett utasítva, mert két szolgáltatás objektumokat tartalmazó partícióra kell ugyanazon a csomóponton elhelyezni. Ez nem engedélyezett, mert, majd az adott csomópont hibát túlságosan befolyásolná a adott partíció. ReplicaExclusionStatic és ReplicaExclusionDynamic szinte ugyanaz a szabály és a különbségek valóban nem számít. Ha Ön egy korlátozás eltávolítási sorozatot tartalmazó ReplicaExclusionStatic vagy ReplicaExclusionDynamic megkötés, a fürt erőforrás-kezelő úgy értelmezi, hogy nincs-e elég csomópont. Ehhez a többi megoldások használatára ezek érvénytelen adatközpontokon, amelyek nem engedélyezettek. Az egyéb korlátozások a feladatütemezési fog általában adja meg, miért csomópont alatt kiküszöbölhetők az elsőként.
-* **PlacementConstraint**: Ez az üzenet jelenik meg, ha azt jelenti, egyes csomópontok azt szüntetni, mert azok nem felel meg a szolgáltatás egy elhelyezési korlátozás. Azt nyomkövetés a jelenleg konfigurált placement Constraints korlátozásokat ki, ez az üzenet részeként. Ez nem rendellenes, ha egy elhelyezési korlátozás definiálva van. Azonban ha elhelyezési korlátozás helytelenül hatására túl sok csomópontot meg kell szüntetni azt, hogyan szeretné észlel.
-* **NodeCapacity**: ezt a korlátot, az azt jelenti, hogy a fürt erőforrás-kezelő nem sikerült elhelyezni a replikákat a jelzett csomópontokon mert, célszerű keresztül kapacitás helyezni.
-* **Kapcsolat**: Ez a korlát, hogy azt nem sikerült helyezze a replikát az érintett csomópontok, mert a kapcsolat korlátozás megsértését okozna. További információk a kapcsolat [Ez a cikk](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-* **FaultDomain** és **UpgradeDomain**: ennél a határértéknél megszünteti a csomópont, ha egy adott hiba vagy a frissítési tartomány csomagolási helyezi el a replika a jelzett csomópontokon okozna. Néhány példa ennél a határértéknél megvitatása jelenjenek meg a témakör a [hiba és a frissítés tartomány típusmegkötéseket és az eredményül kapott viselkedéstől](service-fabric-cluster-resource-manager-cluster-description.md)
-* **PreferredLocation**: általában nem szabad lásd a csomópontok eltávolítása a megoldás, mert alapértelmezés szerint az optimalizálás fut ennél a határértéknél. Az előnyben részesített földrajzi megszorítás is megtalálható frissítéskor. A frissítés során azt történő áthelyezéséhez használja szolgáltatások vissza az adott voltak a frissítés indításakor.
+* **ReplicaExclusionStatic** és **ReplicaExclusionDynamic**: ezek a korlátozások azt jelzi, hogy a megoldás el lett utasítva, mivel ugyanazon a partíción két szolgáltatás objektumait kell elhelyezni, ugyanazon a csomóponton. Ez nem engedélyezett, mert, majd az adott csomóponton hiba túlságosan hatással van a partíción. ReplicaExclusionStatic és ReplicaExclusionDynamic szinte ugyanaz a szabály, és nem igazán számít, a különbségeket. Ha egy korlátozást eltávolítási feladatütemezési ReplicaExclusionStatic vagy ReplicaExclusionDynamic korlátozást tartalmazó jelennek meg, a fürterőforrás-kezelő fenyegetésként észlel, hogy nincsenek-e elegendő csomópontok. Ehhez a fennmaradó megoldások használata ezen érvénytelen gyakorlatok, amelyek nem engedélyezettek. Az egyéb korlátozások a feladatütemezési fog általában mondja el, miért csomópont alatt kiküszöbölhetők az elsőként.
+* **PlacementConstraint**: Ha ezt az üzenetet látja, az azt jelenti, hogy egyes csomópontok azt nem szükséges, mert a szolgáltatás-elhelyezési korlátozások nem egyeznek. A Microsoft nyomkövetési ki a jelenleg konfigurált elhelyezési korlátozások, ez az üzenet részeként. Ez a normál, ha egy elhelyezési korlátozás definiálva van. Azonban ha elhelyezési korlátozás helytelenül okozza-e túl sok csomópontot kell számolni, hogyan szeretné láthatja, hogy azt.
+* **NodeCapacity**: ezt a korlátot, az azt jelenti, hogy a fürterőforrás-kezelő nem tudta elhelyezni, a replikákat a jelzett csomópontokon mert, amely lenne kapacitás fölé helyezi.
+* **Affinitás**: Ez a korlát, hogy azt nem sikerült elhelyezni a replikát az érintett csomópontok óta a kapcsolat korlátozás megsértését okozna. További információk a kapcsolat [Ez a cikk](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+* **FaultDomain** és **UpgradeDomain**: ezt a korlátozást kiküszöböli a csomópontok, ha adott tartalék és frissítési tartományokban lévő csomagolási helyezi el a replika a jelzett csomópontokon okozna. Néhány példa témák megvitatásához ennél a határértéknél jelennek meg a témakör a [hibatűrési és frissítési tartomány korlátozások és az eredményül kapott viselkedés](service-fabric-cluster-resource-manager-cluster-description.md)
+* **PreferredLocation**: ne általában látja ezt a korlátozást csomópontot távolíthat a megoldás, mivel azt futtatja az optimalizálás alapértelmezés szerint. Az előnyben részesített földrajzi megszorítás is megtalálható frissítések során. A frissítés során használatos szolgáltatások áthelyezése vissza, ahol voltak a frissítés indításakor.
 
 ## <a name="blocklisting-nodes"></a>Blocklisting csomópontok
-Egy másik állapotfigyelő üzenet az erőforrás-kezelő fürt jelentések akkor, ha csomópontok blocklisted. Az eltolásokat tekintheti blocklisting meg automatikusan alkalmazott ideiglenes korlátozásként. Csomópontok blocklisted jelenik meg, ha az adott szolgáltatás típusú példányok elindításakor az ismétlődő sikertelen ügyfeleken. Csomópontok blocklisted /-szolgáltatás típusa alapján. Egy csomópont lehet egy service Type blocklisted, de nem egy másik. 
+Egy másik egészségügyi üzenet a fürterőforrás-kezelő jelentések akkor, ha csomópontok blocklisted. Ideiglenes korlátozásként, hogy a rendszer automatikusan alkalmazza az Ön számára blocklisting is felfoghatók. Csomópontok blocklisted kaphat, ha a példányok adott típusú szolgáltatás indításakor ismétlődő kudarcát tapasztalható. Csomópontok száma – szolgáltatástípus alapon blocklisted. Egy csomópont lehet, hogy egy szolgáltatás típus blocklisted, de nem egy másik. 
 
-Látni fogja, fejlesztés során gyakran indítsa blocklisting: néhány hiba hatására a szolgáltatás az indításkor összeomolhat. A szolgáltatásgazda létrehozása néhány alkalommal megkísérli a Service Fabric, és a probléma tartja lépett fel. Több próbálkozás után a csomópont lekérdezi blocklisted, és a fürt erőforrás-kezelő megpróbálja létrehozni a szolgáltatást a rendszerben található. A hiba több csomóponton tartja történik, akkor lehetséges, hogy minden érvényes fel a fürtben lévő csomópont tiltsa le. Blocklisting is, hogy nincs elegendő sikeresen indíthatja el a szolgáltatást, hogy megfeleljenek a kívánt méretezési sok csomópontok mindegyikének eltávolítását. Általában további hibákat vagy figyelmeztetéseket a az erőforrás-kezelőből jelzi, hogy a szolgáltatás nem éri el a kívánt replika vagy a példányok száma, valamint állapotfigyelő üzenetek azt jelzi, hogy mi a hiba, amely kialakulásához vezet a blocklisting az elsőként megjelenik.
+Látni fogja a fejlesztés során gyakran pillanattal blocklisting: néhány programhibája miatt a szolgáltatás indításkor összeomlik gazdagépet. A Service Fabric próbál hozza létre a szolgáltatás néhány alkalommal, és a hiba követi lépett fel. Néhány kísérlet után a csomópont lekéri blocklisted, és a fürterőforrás-kezelő megpróbálja máshol szolgáltatás létrehozásához. Ha a hiba több csomóponton tartja történik, lehetséges, hogy az összes érvényes mentése a fürtben lévő csomópontok blokkolva. Blocklisting, törölheti, hogy nincs elég sikeresen indíthatja el a szolgáltatást, hogy megfeleljen a kívánt méret sok csomópontok. Látni fogja, általában további hibaüzenetek vagy figyelmeztetések a fürterőforrás-kezelő, amely azt jelzi, hogy a szolgáltatás nem éri el a kívánt replika vagy a példányok száma, valamint jelezve, hogy mi a hiba, amely létrejöttéhez vezet, az első a blocklisting egészségügyi üzenetek Helyezze el.
 
-Blocklisting nincs állandó feltétel. Néhány perc múlva a csomópont eltávolítják a blocklist, és a Service Fabric újra aktiválhatja a szolgáltatások ezen a csomóponton. Ha szolgáltatások továbbra is sikertelen, a csomópont nem az adott szolgáltatás blocklisted ismét. 
+Blocklisting nem állandó feltétel. Néhány perc múlva a csomópont a tiltólista törlődik, és a Service Fabric újra aktiválhatja a szolgáltatások a csomóponton. Szolgáltatások továbbra is sikertelen, ha a csomópont a service Type blocklisted újra. 
 
-### <a name="constraint-priorities"></a>Korlátozás prioritások
+### <a name="constraint-priorities"></a>Megkötés prioritások
 
 > [!WARNING]
-> Korlátozás prioritások módosítása nem ajánlott, és jelentős hátrányosan befolyásolhatja a fürtön. Az alábbi információkat esetén van megadva az alapértelmezett megkötés prioritások és azok viselkedését hivatkozását. 
+> Megkötés prioritások módosítása nem ajánlott, és jelentős hátrányosan befolyásolhatja a fürtön. Az alábbi információkat az alapértelmezett megkötés prioritások és azok viselkedésének hivatkozás lett megadva. 
 >
 
-Az összes megkötés akkor előfordulhat, hogy rendelkezik lett végezni "Hey – úgy vélem, hogy tartalék tartomány korlátozások-e a legfontosabb dolog, a rendszer. A tartalék tartomány megkötés megsértve nem biztosítására szeretnék egyéb megkötések megsértő."
+Az összes megkötés előfordulhat, hogy rendelkezik lett gondol "Hey – azt hiszem, hogy a tartalék tartomány korlátozások a legfontosabb, amit a rendszeren. Annak érdekében, hogy a tartalék tartomány megkötés megsértve nem, szeretnék egyéb megszorítások megsértő."
 
-Megkötések konfigurálható különböző prioritási szintet. Ezek a következők:
+Korlátozások a különböző prioritási szintű konfigurálható. Ezek a következők:
 
    - "rögzített" (0)
    - "soft" (1)
    - "optimalizálási" (2)
    - "off" (-1). 
    
-A megkötések többsége alapértelmezés szerint rögzített korlátozások van konfigurálva.
+A korlátozó többsége alapértelmezés szerint szigorú korlátok van konfigurálva.
 
-A megkötések prioritásának módosítása ritka. Nem történt alkalommal ahol megkötés prioritások szükséges módosításához általában kerülő néhány más hiba vagy a környezet befolyásolta működésére. A korlátozás prioritás infrastruktúra a rugalmasságot általában a jól működött, de gyakran nem szükséges. Az esetek többségében mindent helyezkedik el, a alapértelmezett prioritásait. 
+A korlátozások prioritásának módosítása használata nem szokványos. Eddig alkalommal ahol megkötés prioritások szükség módosításához, általában néhány egyéb programhiba vagy viselkedés, amely a környezet alapállapota megkerüléséhez. A korlátozás prioritását infrastruktúra a rugalmasságot általában a rendkívül jól működött, de gyakran nem szükséges. A legtöbbször minden, az alapértelmezett prioritásokat helyezkedik el. 
 
-A prioritási szintet nem jelenti azt, hogy egy adott korlátozás _fog_ sikeres, és nem lesz mindig kell megfelelnie. Korlátozás prioritások megadása egy sorrendet, amelyben megkötések lépnek érvénybe. Prioritások a mellékhatásokkal határozza meg, amikor nem elégíti ki az összes megkötések. A megkötések általában kielégíthetők, kivéve, ha valami más továbblép a környezetben. Néhány példa a forgatókönyvek, amelyek korlátozások megsértésének olyan ütköző tartoznak, illetve nagyszámú egyidejű hibák.
+A prioritási szintet nem jelenti azt, amely egy adott korlátozás _fog_ megsértette, sem, amely azt mindig teljesülnek. Megkötés prioritások megadása egy rendelést, amelyben korlátozások érvényben vannak. Prioritások a kompromisszumot kínál a határozza meg, amikor nem felel meg az összes korlátozó lehet. A vonatkozó korlátozások lehet teljesíteni általában, kivéve, ha valami más környezetben történik. Néhány példa a megkötés megsértésének eredményezi a forgatókönyvek olyan ütköző tartoznak, illetve nagyszámú egyidejű hibák.
 
-A speciális esetben megkötés prioritásokra módosíthatja. Tegyük fel, hogy szeretné, győződjön meg arról, hogy affinitás volna mindig sérti-amikor erre szükség van a csomópont-kapacitás problémák megoldásában. Ennek érdekében sikerült prioritást kapjon a kapcsolat korlátozást a "soft" (1), és hagyja, a kapacitás megkötés beállítása "rögzített" (0).
+Speciális helyzetekben a megkötés prioritások módosíthatja. Tegyük fel például, hogy szeretne, győződjön meg arról, hogy kapcsolat mindig sérülnének csomópont kapacitás előforduló problémák megoldására szükség esetén. Ennek érdekében sikerült állítsa be a "soft" (1) kapcsolat korlátozás prioritását, és hagyja, a kapacitás megkötés beállítása "rögzített" (0).
 
-Az alapértelmezett prioritás értékeit a különböző megkötések vannak megadva a következő config:
+Az alapértelmezett prioritás értékeit a különböző korlátozások vannak megadva a következő konfigurációt:
 
 ClusterManifest.xml
 
@@ -144,7 +144,7 @@ ClusterManifest.xml
         </Section>
 ```
 
-az önálló verziója telepítéseinek művelet vagy az Azure-Template.json üzemeltetett fürtök:
+az önálló verziója telepítéseinek ClusterConfig.json vagy Template.json az Azure-ban futó fürtök:
 
 ```json
 "fabricSettings": [
@@ -180,33 +180,33 @@ az önálló verziója telepítéseinek művelet vagy az Azure-Template.json üz
 ]
 ```
 
-## <a name="fault-domain-and-upgrade-domain-constraints"></a>Tartalék tartomány és a frissítési tartomány megkötések
-A fürt erőforrás-kezelő szeretné tartani hiba és a frissítési tartományok között felülbírálásokkal szolgáltatások. Ez a fürt Resource Manager motor belül korlátozásként modellek el. További információt talál azok használata és az adott viselkedést, tekintse meg a cikk a [fürtkonfiguráció](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior).
+## <a name="fault-domain-and-upgrade-domain-constraints"></a>Tartalék tartomány és frissítési tartomány megkötései
+A fürterőforrás-kezelő szeretné megtartani a szolgáltatások terjednek hibatűrési és frissítési tartományok között. Ez a fürt Resource Manager motorjában korlátozásként, modellek. További információ a használatukat, és adott viselkedését, tekintse meg a cikk a [fürtkonfiguráció](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior).
 
-A fürt erőforrás-kezelő szükség lehet néhány replikák csomag egy frissítési tartományba frissítéseket, vagy a más korlátozások megsértésének kezelése érdekében. Csak akkor, ha nincsenek több hibákat vagy olyan más forgalom a rendszerrel, amely megakadályozza a megfelelő elhelyezési csomagolási hiba vagy a frissítési tartományok a szokásos módon történik. Ha ezekben a helyzetekben esetén csomagolási megakadályozása, használhatja a `RequireDomainDistribution` [elhelyezési házirend](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). Vegye figyelembe, hogy ez lehetséges, hogy hatással a szolgáltatás rendelkezésre állása és megbízhatósága, egyik mellékhatása, ezért fontolja meg alaposan.
+A fürterőforrás-kezelő előfordulhat, hogy néhány replikákat a frissítési tartomány, annak érdekében, hogy a frissítések, a hibák vagy más megkötés megsértésének foglalkozik. Tartalék vagy frissítési tartományokra csomagolási általában akkor fordul elő, csak ha több hibák vagy egyéb adatforgalom található, a rendszer megakadályozza, hogy a megfelelő elhelyezési. Ha szeretné, hogy az ezekben a helyzetekben során is csomagolási, használhat a `RequireDomainDistribution` [elhelyezési házirend](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). Vegye figyelembe, hogy ez lehetséges, hogy hatással a szolgáltatás rendelkezésre állása és megbízhatósága eltérő lehet mellékhatása, ezért fontolja meg alaposan.
 
-Ha a környezet megfelelően van konfigurálva, minden korlátozó teljesen betartását, még a frissítés alatt. A kulcs dolog, hogy a fürt erőforrás-kezelő van figyeli a megkötések. Amikor azt észleli, hogy megsértése azonnal azt jelenti, és próbálja meg a probléma elhárításához.
+Ha a környezet megfelelően van konfigurálva, minden korlátozó teljes tiszteletben tartják, még a frissítések során. A lényeg az, hogy a fürterőforrás-kezelő van megtekintését a megkötések. Ha azt észleli, hogy megsértést azonnal azt jelenti, és próbálja meg a probléma.
 
 ## <a name="the-preferred-location-constraint"></a>Az előnyben részesített földrajzi megszorítás
-A PreferredLocation pedig az kissé eltérő, mert már van két különböző használ. Egy ennél a határértéknél használata alkalmazás frissítéskor. A fürt erőforrás-kezelő automatikusan kezeli ennél a határértéknél frissítéskor. Annak érdekében, hogy ha a frissítés be nem fejeződik, hogy a replikákat vissza az eredeti helyükre szolgál. A más a PreferredLocation megkötés használatos a [ `PreferredPrimaryDomain` elhelyezési házirend](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md). Mindkét esetben optimalizálás, és ezért a PreferredLocation pedig a egyetlen megkötés alapértelmezés szerint "Optimalizálási" értékűre állítva.
+A PreferredLocation pedig kissé eltérő, mivel annak két különböző használja. Egy ennél a határértéknél használata alkalmazásfrissítések során. A fürterőforrás-kezelő automatikusan kezeli ezt a korlátozást a frissítések során. Annak érdekében, hogy a frissítés befejeződött, hogy replikák térjen vissza az eredeti helyükre esetén használatos. Más a PreferredLocation korlátozás használata esetében a [ `PreferredPrimaryDomain` elhelyezési házirend](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md). Mindkét optimalizálást, és ezért a PreferredLocation pedig az egyetlen korlátozás alapértelmezés szerint a "Optimalizálási" értékre.
 
 ## <a name="upgrades"></a>Frissítések
-A fürt erőforrás-kezelő is segít alkalmazás és a fürt frissítése során, amely rendelkezik a két feladat során:
+A fürterőforrás-kezelő is segít során az alkalmazás és fürt frissítését, mely során két feladatot rendelkezik:
 
-* Győződjön meg arról, hogy a fürt szabályok ne legyenek veszélyben
-* a frissítés zökkenőmentesek segítségével próbálja
+* Győződjön meg arról, hogy a szabályok a fürt ne legyenek veszélyben
+* Próbálja ki a zökkenőmentességét frissítése érdekében
 
-### <a name="keep-enforcing-the-rules"></a>A szabályok tartsa kényszerítése
-Vegye figyelembe a fő lépés, hogy a szabályok – például egy elhelyezési korlátozás és a kapacitások a szigorú korlátozásokat - továbbra is érvényesek frissítéskor. Egy elhelyezési korlátozás győződjön meg arról, hogy a munkaterhelések csak futni, ahol azok csatlakozhatnának a, akár a frissítések során. Ha a Szolgáltatások erősen korlátozott, frissítések több időt vesz igénybe. Amikor a szolgáltatás vagy a csomópont futó állapotba kerül frissítési néhány lehetőség, ahol folytathatja a lehet.
+### <a name="keep-enforcing-the-rules"></a>A szabályok folyamatosan kényszerítése
+Érdemes figyelembe vennie a főbb dolog, hogy a szabályok – a szigorú korlátok például elhelyezési korlátozások és a kapacitás - továbbra is érvényben vannak frissítések során. Elhelyezési korlátozások győződjön meg arról, hogy a számítási feladatok csak futnak, számukra engedélyezett, még akkor is a frissítések során. Amikor a Szolgáltatások erősen korlátozott, frissítések több időt vesz igénybe. Ha a szolgáltatás vagy a csomóponton futó állapotba kerül egy frissítés előfordulhat néhány lehetőség ahol folytathatja.
 
-### <a name="smart-replacements"></a>Intelligens cserékhez
-Ha a frissítés elindul, az erőforrás-kezelő pillanatképet készít a a fürt aktuális elrendezésének. Minden frissítési tartomány befejezése megkísérli térjen vissza az eredeti megállapodás frissítési tartományban lévő szolgáltatások. Ezzel a módszerrel nincsenek legfeljebb két átmenetek szolgáltatás a frissítés során. Az érintett csomópont egy kilép, és egy helyezze vissza. Állítja azt vissza a fürt vagy a szolgáltatás hogyan lett a frissítés előtt is biztosítja a frissítés nem befolyásolja a fürt elrendezését. 
+### <a name="smart-replacements"></a>Az intelligens csere
+Ha a frissítés elindul, a Resource Manager egy pillanatképet készít a fürt jelenlegi elrendezésének. Minden frissítési tartomány befejeződött, mert megpróbálja adja vissza a szolgáltatások, amelyek az adott frissítési tartományban, azok eredeti elrendezése. Ezzel a módszerrel nincsenek legfeljebb két átmenetek egy szolgáltatás a frissítés során. Van egy áthelyezés meg az érintett csomópont, és egy helyezze vissza. Térjen vissza a fürt vagy a szolgáltatás hogyan lett a frissítés előtt is biztosítja, hogy a frissítés nem érinti a fürt elrendezését. 
 
 ### <a name="reduced-churn"></a>Csökkentett forgalom
-Egy másik olyan dolog, ami a frissítések során történik, hogy a fürt erőforrás-kezelő kikapcsolja a terheléselosztás. Megakadályozza a terheléselosztás megakadályozza, hogy a szükségtelen reakciók, a frissítési szolgáltatások áthelyezése is szerepelnek, a frissítés csomópontokból hasonlóan. Ha a szóban forgó frissítés a fürt frissítése, majd a teljes fürt nem eloszlik a frissítés során. Korlátozás ellenőrzések addig maradnak aktívak, csak a mozgás metrikák proaktív terheléselosztás alapján le van tiltva.
+Még egy dolog, hogy a frissítések során történik, hogy a fürterőforrás-kezelő kikapcsolja a terheléselosztást. Megakadályozza a terheléselosztás megakadályozza, hogy a szükségtelen reakciók, a frissítési szolgáltatások megéri voltak a frissítés üríteni csomópontok például. Ha a frissítés a kérdéses fürt frissítése, majd az egész fürt nem kiegyensúlyozott a frissítés során. Megkötés ellenőrzések addig maradnak aktívak, proaktív terheléselosztási mérőszámok alapján csak adatátviteli le van tiltva.
 
-### <a name="buffered-capacity--upgrade"></a>A pufferelt kapacitás & frissítése
-Általában érdemes a frissítés, még akkor is, ha a fürt korlátozza vagy megközelíti a teljes befejezéséhez. A kapacitás, a fürt kezelése fontos még több frissítéskor megy végbe. Attól függően, hogy a frissítési tartományok száma 5 és 20 százalékát kapacitás között kell áttelepíteni, a frissítés a fürt áthalad. Munka valahol lépjen ki. Ez akkor, ha a fogalmát [kapacitások pufferelt](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) hasznos. A pufferelt kapacitás tiszteletben tartják normál működés során. A fürt erőforrás-kezelő előfordulhat, hogy töltse ki csomópont, akár a teljes kapacitásának (a puffer fel) frissítéskor szükség esetén.
+### <a name="buffered-capacity--upgrade"></a>Pufferelt kapacitás & frissítése
+Általában érdemes a frissítés befejezéséhez még akkor is, ha a fürt szabványú vagy közel teljes. A fürt kapacitásának kezelése még ennél is fontosabbak frissítések során a szokásosnál. Frissítési tartományok számától függően 5 és 20 százalékkal kapacitás között kell migrálni a frissítés révén a fürt összesíti. A munka go valahol rendelkezik. Ekkor nyernek a hibabeszúrás fogalmát [kapacitások pufferelt](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) lehet hasznos. Normál működés során pufferelt kapacitás tiszteletben tartását. A fürterőforrás-kezelő előfordulhat, hogy töltse ki csomópontokat akár a teljes kapacitás (felhasználása a puffer) frissítések során szükség esetén.
 
 ## <a name="next-steps"></a>További lépések
-* Indítsa el az elejétől és [Bevezetés a Service Fabric fürt Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
+* Elölről kezdődik, és [, a Service Fabric fürterőforrás-kezelő bemutatása](service-fabric-cluster-resource-manager-introduction.md)

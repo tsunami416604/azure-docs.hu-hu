@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Translator API támogatott nyelv |} Microsoft Docs
-description: A Microsoft Translator szöveg API által támogatott nyelvek megtekintése.
+title: Támogatott nyelvek a Microsoft Translator API |} A Microsoft Docs
+description: Tekintse meg a Microsoft Translator Text API által támogatott nyelveket.
 services: cognitive-services
 author: Jann-Skotdal
 manager: chriswendt1
@@ -9,18 +9,18 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5542c1c0eee5e4c7c85c566908dc8999b118f06e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f5b916ba3b6b044f12b84958b2eb69f44e2f8136
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032451"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888141"
 ---
-# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>A Microsoft Translator szöveg API támogatott nyelvek
+# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>A Microsoft Translator Text API a támogatott nyelvek
 
-A Microsoft Translator szöveg API a következő nyelveket támogatja szöveg a fordításhoz. Neurális gépi fordítás (NMT) kiváló minőségű AI táplált gép fordítások új szabványa, és az alapértelmezett V3 a fordító szöveg API használatával elérhető a Neurális rendszer esetén érhető el. Neurális gépi fordítás érhető el a V2 a "generalnn" kategóriája használatával.
+A Microsoft Translator Text API a következő nyelveket támogatja a szöveg a fordítás. Neurális gépi fordítás (NMT) magas színvonalú mesterséges Intelligenciával rendelkező gép fordítások új szabványa, és használja, a Translator Text API v3-as, akkor egy Neurális rendszeren érhető el az alapértelmezett érhető el. Neurális gépi fordítás érhető el a v2-ben a "generalnn" kategóriája használatával.
 
-[További információ a gépi fordítás működése](https://www.microsoft.com/translator/mt.aspx)
+[További információ arról, hogyan működik a gépi fordítás](https://www.microsoft.com/translator/mt.aspx)
 
 | Nyelv    | Fordítási típusa |Nyelvkód |
 |:----------- |:-------:|:-------------:|
@@ -87,13 +87,13 @@ A Microsoft Translator szöveg API a következő nyelveket támogatja szöveg a 
 | urdu      | Statisztikai |`ur`          |
 | vietnami      | Neurális |`vi`          |
 | walesi      | Neurális |`cy`          |
-| Yucatec Maya      | Statisztikai |`yua`          |
+| A Maya alkalmazáshoz Yucatec      | Statisztikai |`yua`          |
 
-## <a name="transliteration"></a>Transliteration
+## <a name="transliteration"></a>Átbetűzésű
 
-A Transliterate metódus a következő nyelveket támogatja. A "/", a "<>--" azt jelenti, hogy a nyelvi átírt, a vagy valamelyik felsorolt parancsfájlok. A "-->" azt jelzi, hogy a nyelvi is csak át kell írni egy parancsfájlt a a másikra.
+A Transliterate módszer a következő nyelveket támogatja. A "/", a "<> –" azt jelzi, hogy a nyelvi átírt, vagy az a felsorolt parancsfájlok közül választhat. A "-->" azt jelzi, hogy a nyelvi is csak át kell írni egy parancsfájlból származó a másikba.
 
-| Nyelv    | Nyelvkód | Szkript | És a | Szkript|
+| Nyelv    | Nyelvkód | Szkript | És-tárolókról | Szkript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | arab | ar | arab | <--> | Latin |
 |Bengáli  | BN | bengáli | <--> | Latin |
@@ -102,23 +102,23 @@ A Transliterate metódus a következő nyelveket támogatja. A "/", a "<>--" azt
 | kínai (hagyományos) | zh-Hant | kínai (hagyományos) | <--> | Latin |
 | kínai (hagyományos) | zh-Hant | kínai (hagyományos) | <--> | kínai (egyszerűsített) |
 | gudzsaráti | Gu  | gudzsaráti | --> | Latin |
-| héber | Ezután | héber | <--> | Latin |
-| hindi | szia | Dévanágari | <--> | Latin |
+| héber | Phil | héber | <--> | Latin |
+| hindi | szia | Devanagári | <--> | Latin |
 | japán | ja | japán | <--> | Latin |
 | kannada | KN | kannada | --> | Latin |
 | Malasian | ml | malajálam | --> | Latin |
-| maráthi | MR | Dévanágari | --> | Latin |
+| maráthi | MR | Devanagári | --> | Latin |
 | orija | vagy | orija | <--> | Latin |
-| pandzsábi | szolgáltatói | Gurmukhi | <--> | Latin  |
-| szerb (cirill betűs) | az SR-Cyrl | Cirill  | --> | Latin |
-| szerb (latin betűs) | az SR-Latn | Latin | --> | Cirill |
+| pandzsábi | Pa | Gurmukhi | <--> | Latin  |
+| szerb (cirill betűs) | az SR-Cyrl | Cyrilice  | --> | Latin |
+| szerb (latin betűs) | az SR-Latn | Latin | --> | Cyrilice |
 | tamil | TA | tamil | --> | Latin |
 | telugu | Te | telugu | --> | Latin |
 | thai | . | thai | <--> | Latin |
 
-## <a name="dictionary"></a>Könyvtár
+## <a name="dictionary"></a>Szótár
 
-A szótár vagy a Keresés és példákat módszerekkel angol arról a következő nyelveket támogatja.
+A szótár, vagy a Keresés és a példák módszerekkel angol a következő nyelveket támogatja.
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
@@ -173,9 +173,9 @@ A szótár vagy a Keresés és példákat módszerekkel angol arról a következ
 | vietnami      | `vi`          |
 | walesi      | `cy`          |
 
-## <a name="languages-detected-by-the-detect-method"></a>A hibakeresés metódus által észlelt nyelvek
+## <a name="languages-detected-by-the-detect-method"></a>Az észlelési módszer által észlelt nyelvek
 
-A következő nyelvek észlelik a hibakeresés metódust. Előfordulhat, hogy észlelni észleli a nyelveket, amelyek a Microsoft Translator nem fordítható le.
+Az alábbi nyelveken észlelik az észlelési módszer. Május észleli, hogy a Microsoft Translator nem fordítható le nyelvfelismerés.
 
 | Nyelv    |
 |:----------- |
@@ -187,8 +187,8 @@ A következő nyelvek észlelik a hibakeresés metódust. Előfordulhat, hogy é
 | bolgár |
 | katalán |
 | kínai |
-| Chinese_Simplified |
-| Chinese_Traditional |
+| kínai (egyszerűsített) |
+| kínai (hagyományos) |
 | horvát |
 | cseh |
 | dán |
@@ -201,7 +201,7 @@ A következő nyelvek észlelik a hibakeresés metódust. Előfordulhat, hogy é
 | galíciai |
 | német |
 | görög |
-| Haitian_Creole |
+| Haitian Creole |
 | héber |
 | hindi |
 | magyar |
@@ -211,8 +211,8 @@ A következő nyelvek észlelik a hibakeresés metódust. Előfordulhat, hogy é
 | olasz |
 | japán |
 | koreai |
-| Kurdish_Arabic |
-| Kurdish_Latin |
+| Ázsiai Kurd (arab) |
+| Ázsiai Kurd (latin betűs) |
 | Latin |
 | lett |
 | litván |
@@ -220,15 +220,15 @@ A következő nyelvek észlelik a hibakeresés metódust. Előfordulhat, hogy é
 | maláj |
 | máltai |
 | norvég |
-| Norwegian_Nynorsk |
+| norvég (nynorsk) |
 | pasto |
 | perzsa |
 | lengyel |
 | portugál |
 | román |
 | orosz |
-| Serbian_Cyrillic |
-| Serbian_Latin |
+| szerb (cirill betűs) |
+| szerb (latin betűs) |
 | szlovák |
 | szlovén |
 | Szomáli |
@@ -240,20 +240,20 @@ A következő nyelvek észlelik a hibakeresés metódust. Előfordulhat, hogy é
 | török |
 | ukrán |
 | urdu |
-| Uzbek_Cyrillic |
-| Uzbek_Latin |
+| üzbég (cirill betűs) |
+| özbeg (latin betűs) |
 | vietnami |
 | walesi |
-| Yiddish |
+| Jiddis |
 
-## <a name="access-the-list-programmatically"></a>Programozott hozzáférés a lista
+## <a name="access-the-list-programmatically"></a>A lista programozott elérése
 
-Elérheti V3.0 szöveg API a nyelvek művelet programozott módon támogatott nyelvek listáját. Angol, vagy bármely más támogatott nyelvi szolgáltatás, a nyelvi kódot, valamint a nyelv nevének a listában tekintheti meg. Amint elérhetővé válnak az új nyelvek a lista automatikusan frissíti a Microsoft Translator szolgáltatás.
+Programozott módon használja a 3.0-s verzió API nyelvek működésének támogatott nyelvek listáját is elérheti. A lista funkció, nyelvi kódját, valamint a nyelv neve szerint angolul vagy bármely más támogatott nyelv tekintheti meg. Ez a lista automatikusan frissül a Microsoft Translator szolgáltatás, amint elérhetővé válnak az új nyelvek.
 
-[Nyelvek művelet referenciadokumentációt megtekintése](reference/v3-0-languages.md)
+[Nyelvek művelet segédanyagok megtekintése](reference/v3-0-languages.md)
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>Hozzáférés a Microsoft Translator webhelyen listája
+## <a name="access-the-list-on-the-microsoft-translator-website"></a>Hozzáférés a listában, a Microsoft Translator webhelyen
 
-A Microsoft Translator webhely nyelvek gyorsan át, a fordító szöveg és Diktálásfelismerési API-k által támogatott összes nyelvet jeleníti meg. Ez a lista nem tartalmazza a nyelvkódjait például developer-specifikus adatait.
+A Microsoft Translator webhely a nyelvek egy gyors pillantást mutatja be, a Translator Text és a Speech API-k által támogatott összes nyelv. Ez a lista nem tartalmazza a fejlesztői jellemző információkat, például nyelvi kódot.
 
 [Nyelvek listáját lásd:](https://www.microsoft.com/translator/languages.aspx)

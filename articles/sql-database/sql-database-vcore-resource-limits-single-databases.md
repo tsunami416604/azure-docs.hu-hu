@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 603a6e2f3ce744d792ad9c9be20622c65a37dda3
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 8e7af24133b7e034bb7bc1898609cebbb860b738
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414606"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919078"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -43,8 +43,8 @@ Az önálló adatbázisok számára az alábbi táblázatok bemutatják az egyes
 |Tárolási típus|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Maximális adatméret (GB)|1024|1024|1536|3072|4096|4096|
-|Max. napló mérete|307|307|461|922|1229|1229|
-|A TempDB size(GB)|32|64|128|256|384|384|
+|Max. napló mérete (GB)|307|307|461|922|1229|1229|
+|A TempDB mérete (GB)|32|64|128|256|384|384|
 |Cél IOPS (64 KB)|500|1000|2000|4000|7000|7000|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|800|1600|3200|4800|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
@@ -65,8 +65,8 @@ Az önálló adatbázisok számára az alábbi táblázatok bemutatják az egyes
 |Tárolási típus|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|(Távoli) prémium szintű Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Maximális adatméret (GB)|1024|1024|1536|3072|4096|4096|4096|4096|
-|Max. napló mérete|307|307|461|614|1229|1229|1229|1229|
-|A TempDB size(GB)|64|128|256|384|384|384|384|384|
+|Max. napló mérete (GB)|307|307|461|614|1229|1229|1229|1229|
+|A TempDB mérete (GB)|64|128|256|384|384|384|384|384|
 |Cél IOPS (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|800|1600|2400|3200|4000|8000|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -88,8 +88,8 @@ Az önálló adatbázisok számára az alábbi táblázatok bemutatják az egyes
 |Memóriabeli OLTP storage (GB)|1|2|4|8|20|36|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Maximális adatméret (GB)|1024|1024|1024|1024|1024|1024|
-|Max. napló mérete|307|307|307|307|307|307|
-|A TempDB size(GB)|32|64|128|256|384|384|
+|Max. napló mérete (GB)|307|307|307|307|307|307|
+|A TempDB mérete (GB)|32|64|128|256|384|384|
 |Cél IOPS (64 KB)|5000|10000|20000|40000|80000|120000|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|800|1600|3200|4800|
@@ -111,8 +111,8 @@ Az önálló adatbázisok számára az alábbi táblázatok bemutatják az egyes
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Maximális adatméret (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
-|Max. napló mérete|307|307|307|307|614|1229|1229|1229|
-|A TempDB size(GB)|64|128|256|384|384|384|384|384|
+|Max. napló mérete (GB)|307|307|307|307|614|1229|1229|1229|
+|A TempDB mérete (GB)|64|128|256|384|384|384|384|384|
 |Cél IOPS (64 KB)|5000|10000|20000|40000|60000|80000|100000|200000
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|800|1600|2400|3200|4000|8000|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|30000|

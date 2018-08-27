@@ -1,7 +1,7 @@
 ---
-title: Töltse le a számla és a napi használati adatok számlázási Azure |} Microsoft Docs
-description: Ismerteti az Azure számlázási számla és a napi használati adatok megtekintése és letöltése.
-keywords: számlázási számla, számla letöltési, azure számla, azure kihasználtsága
+title: Az Azure számlázási és napi használati adatok letöltése |} A Microsoft Docs
+description: Útmutató letöltéséhez vagy az Azure számlázási és napi használati adatok megtekintéséhez.
+keywords: Hitelkártyás, számla letöltése, azure-számlát, azure-használat
 services: billing
 documentationcenter: ''
 author: genlin
@@ -15,98 +15,101 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 59ee992518b5e529f486415f962c6f26881875f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e2985882b2e72b6e2f23945aa54c7a282137ce4e
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607412"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918982"
 ---
-# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Az Azure számlázási számla és a napi használati adatok megtekintése és letöltése
-A számla a programot letöltheti a [Azure-portálon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy annak az e-mailben küldött. A napi használat letöltéséhez keresse fel a [Azure Account Center](https://account.azure.com/Subscriptions). Csak egyes szerepkörök engedélye számlázási számla és használati adatokat, például a fiók rendszergazdájához. Első számlázási információhoz való hozzáféréssel kapcsolatos további információkért lásd: [Azure számlázási szerepkörök használatával való hozzáférés kezelése](billing-manage-access.md).
+# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Töltse le, vagy az Azure számlázási számlázási és napi használati adatok megtekintése
+Letöltheti a számlát a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy e-mailben küldött nincs. A napi használati adatok letöltése, lépjen a [Azure Account Center](https://account.azure.com/Subscriptions). Csak egyes szerepkörök hitelkártyás és használati adatokat, például a fiók rendszergazdája engedélye. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
 
-Ez a cikk nem alkalmazza a nagyvállalati szerződés (EA) vonatkozik. Ha az ügyfél egy EA, a számlák közvetlenül a beléptetési rendszergazdák kerülnek.
+Ez a cikk nem vonatkozik az ügyfelek a nagyvállalati szerződés (EA) számára. Ha Ön nagyvállalati szerződéssel rendelkező ügyfelek, a számlákat közvetlenül a regisztrációs rendszergazdák érkeznek.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="get-your-invoice-in-email-pdf"></a>A számla beolvasni e-mailben (.pdf)
-Részt, és konfigurálja az Azure fogadásához további címzetteket számla e-mailben. Ez a szolgáltatás nem az egyes előfizetések például támogatási ajánlatokat, kötött nagyvállalati szerződése vagy Azure in Open licencprogram érhetők el.
+> [!div class="nextstepaction"]
+> [Segítheti az Azure számlázási docs](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
-1. Válassza ki az előfizetést a [előfizetések oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Részvétel az egyes előfizetésekhez Ön a tulajdonosa. Kattintson a **számlák** majd **E-mail-a számla**. 
+## <a name="get-your-invoice-in-email-pdf"></a>A számla kapni e-mailben (.pdf)
+Is engedélyezve van a hibajelentések, valamint fogadni az Azure további címzettek egy e-mailben számla. Ez a funkció nem lehet például a támogatási ajánlatok, a nagyvállalati szerződés keretében vagy az Azure in Open licencprogram bizonyos előfizetésekhez érhető el.
 
-    ![Képernyőkép a szemlélteti a szolgáltatás aktiválása](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
+1. Válassza ki az előfizetését a [előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Feliratkozás az egyes saját előfizetését. Kattintson a **számlákat** majd **E-mail-a számla**. 
+
+    ![A szolgáltatás aktiválása folyamatot bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
     
-2. Kattintson a **részt vevő** és fogadja el a feltételeket.
+2. Kattintson a **engedélyezve van a hibajelentések** és fogadja el a feltételeket.
 
-    ![Képernyőkép a szolgáltatás aktiválása folyamat 2. lépés](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
+    ![Képernyőkép a választható flow 2. lépés](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
  
-3. A szerződés elfogadása után további címzetteket is konfigurálhat. Előfizető eltávolítása az e-mail cím már nem tárolja. Ha meggondolja magát, kell újra vegye fel őket.
+3. Ha Ön már elfogadta a szerződést, további címzetteket is beállíthatja. Amikor eltávolít egy címzettet, az e-mail-cím már nem tárolja. Ha meggondolja magát, újra hozzá kell őket.
 
-    ![Képernyőkép a szolgáltatás aktiválása folyamat 3. lépés](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
+    ![Képernyőkép a választható folyamat 3. lépés](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
     
-Ha lépések végrehajtása után nem kap egy e-mailt, győződjön meg arról, hogy az e-mail cím helyes-e a [kapcsolattartási beállítások a profil](https://account.windowsazure.com/profile).
+Ha a lépések végrehajtása után nem kap egy e-mailt, győződjön meg arról, az e-mail-címét a megfelelő a [profilját a kommunikációs beállítások](https://account.windowsazure.com/profile).
 
-### <a name="opt-out-from-getting-your-invoice-in-email"></a>Nem vesznek részt a számla fog e-mailben
-Ha nem szeretne a számla e-mailben, kattintson a kimenő e-mailben elküldött számlák letiltására. Ezzel eltávolítja az e-mail címekhez számlák fogadásra e-mailben. Ha úgy dönt, a biztonsági kell konfigurálja újra a címzetteket.
+### <a name="opt-out-from-getting-your-invoice-in-email"></a>Kikapcsolhatja az e-mailben a számla ki
+Ha nem szeretne kapni a számla e-mailben, kattintson a választható ki a számlákat e-mailben. Ez eltávolítja az összes e-mail-címeket úgy, hogy fogadják a számlákat e-mailben. Ha úgy dönt, a biztonsági kell konfigurálja újra a címzetteket.
 
- ![A letiltási folyamat képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
+ ![A letiltási folyamat bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
-## <a name="download-invoice-from-azure-portal-pdf"></a>Töltse le a számla az Azure portál (.pdf)
+## <a name="download-invoice-from-azure-portal-pdf"></a>Számla letöltése az Azure Portal használatával (.pdf)
 
-1. Válassza ki az előfizetést a [előfizetések oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) , Azure-portálon [számlák hozzáféréssel rendelkező felhasználó](billing-manage-access.md).
+1. Válassza ki az előfizetését a [előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) az Azure Portalon, [számlákat hozzáféréssel rendelkező felhasználó](billing-manage-access.md).
 
-2. Válassza ki **számlák**. 
+2. Válassza ki **számlákat**. 
 
-    ![Képernyőkép a számlázási és használati beállítás](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png) 
+    ![A számlázás- és használati beállítás bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png) 
 
-3. Kattintson a **töltse le a számla** a PDF számla megtekintéséhez. Ha a felirat látható **nem érhető el**, lásd: [miért nem látom számla a legutóbbi számlázási időszakban?](#noinvoice)
+3. Kattintson a **számla letöltése** megtekintéséhez a PDF formátumú számlákat másolatát. Ugyanakkor **nem érhető el**, lásd: [miért nem látom számla alapján az előző elszámolási időszakban?](#noinvoice)
 
-    ![Képernyőkép a számlázási időszak letöltése beállítás, és az összes díj minden számlázási időszakban](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
+    ![Képernyőkép a elszámolási időszakok, a letöltési lehetőséget és a teljes díj minden elszámolási időszakban](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
 
-4. A napi használat a számlázott időszak kattintva is megtekintheti. 
+4. A napi használat a számlázási időszak kattintva is megtekintheti. 
 
-A számla kapcsolatos további információkért lásd: [a számlázási megérteni a Microsoft Azure](billing-understand-your-bill.md). Költségek kezelésére, lásd: [Azure számlázás és költség felügyeleti váratlan költségek megakadályozása](billing-getting-started.md).
+A számla kapcsolatos további információkért lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md). Költségek kezelése kapcsolatos útmutatásért lásd: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md).
 
-## <a name="download-usage-from-the-account-center-csv"></a>Használati letöltését az Account Center (.csv)
+## <a name="download-usage-from-the-account-center-csv"></a>Az Account Center webhelyen (.csv) a használati adatok letöltése
 
 1. Jelentkezzen be a [Azure Account Center](https://account.windowsazure.com/subscriptions) fiók rendszergazdaként.
 
-2. Válassza ki az előfizetést, legyen a számla és használati adatokat.
+2. Válassza ki az előfizetést, amelyek esetében szeretne a számlák és használati adatokat.
 
-3. Válassza ki **számlázási előzmények**. 
+3. Válassza ki **BILLING HISTORY**. 
 
-    ![Képernyőkép a Számlázási előzmények beállítás](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
+    ![Képernyőkép a Számlázási előzmények lehetőséget](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
 
-4. Az utasítás a legutóbbi hat számlázási időszak és az aktuális teljesüléséig időszak tekintheti meg. 
+4. Láthatja az utasítások az előző hat elszámolási időszakok és a jelenlegi elszámolási időszak díjadatai. 
 
-    ![Képernyőkép a számlázási időszak, töltse le a számla és a napi használat és a teljes költségek minden számlázási időszak lehetőségek](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
+    ![Elszámolási időszakok, töltse le a számla és a napi használat és a teljes díj minden elszámolási időszakban lehetőségeket bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
 
-5. Válassza ki **aktuális nyilatkozat megtekintése** becsült készítésének időpontjában a díjak becsült megjelenítéséhez. Ezek az adatok naponta csak frissül, és nem tartalmazhatják a használati. A havi számla Ez a becslés eltérhet.
+5. Válassza az **Aktuális számla megtekintése** lehetőséget a költségek azon becslésének megtekintéséhez, amely a becslés létrehozásakor jött létre. Ez az információ csak naponta frissíti, és minden használata nem feltétlenül tartalmazzák. A havi számla eltérhet ettől a becsléstől.
 
-    ![A nézet jelenlegi utasítást beállítás képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
+    ![A nézet jelenlegi utasítást beállítás bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
 
-    ![A jelenlegi díjak becsült képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
+    ![A becsült esedékes díjak bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
 
-6. Válassza ki **letöltése használati** CSV-fájlként a napi használati adatok letöltése. Ha elérhető két verzióját látja, töltse le a 2-es verzióját.
+6. Válassza a **Használati adatok letöltése** lehetőséget a napi használati adatok letöltéséhez CSV-fájlként. Ha két elérhető verziót lát, a 2. verziót töltse le.
 
-    ![A használati letöltése beállítás képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
+    ![A használati adatok letöltése lehetőséget bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
-Csak a Fiókadminisztrátor az Azure Account Center férhetnek hozzá. Más számlázási adminisztrátorok, például egy olyan tulajdonost, a használati adatokat a beszerezheti a [számlázási API-k](billing-usage-rate-card-overview.md).
+Csak a fiók rendszergazdája hozzáférhet az Azure fiókkezelési központjába. Egyéb számlázási adminisztrátorok, tulajdonosa, például a használati információk használatával lekérheti a [számlázási API-k](billing-usage-rate-card-overview.md).
 
-A napi használatával kapcsolatos további információkért lásd: [a számlázási megérteni a Microsoft Azure](billing-understand-your-bill.md). Költségek kezelésére, lásd: [Azure számlázás és költség felügyeleti váratlan költségek megakadályozása](billing-getting-started.md).
+A napi használati adatokra vonatkozó további információért lásd: [Microsoft Azure számlájának megértése](billing-understand-your-bill.md). Költségek kezelése kapcsolatos útmutatásért lásd: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md).
 
-## <a name="noinvoice"></a> Miért nem látja a legutóbbi számlázási időszakban számla?
+## <a name="noinvoice"></a> Miért nem látom számla alapján az előző elszámolási időszakban?
 
 Számla nem látható több oka lehet:
 
-- Ingyenes próbaverzió vagy havi összege van, amely nem túllépi az előfizetéshez. Számla csak akkor keletkezik, amikor pénz akikkel.
+- Az előfizetés, amely nem lehet szükség van egy havi kreditösszeg erejéig, vagy ha egy ingyenes próbaverzióra. Számla csak akkor hozza létre, amikor akikkel költséget takaríthat meg.
 
-- Azure előfizetett napjától számított 30 napon belül.
+- Az Azure-ra előfizetett nap 30 napon belül.
 
-- A számla még a nem jönnek létre. Várjon, amíg a számlázott időszak végén.
+- A számla még nincs létrehozva. Várjon, amíg a számlázási időszak végéig.
 
-- Ha nem a fiók rendszergazdájához, a korábbi számlák nem lehet elérhető.
+- Ha Ön nem a fiók rendszergazdája, a régebbi számlák nem lehet elérhető.
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
-Ha további kérdései további, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.
+## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
+Ha további kérdése van, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 

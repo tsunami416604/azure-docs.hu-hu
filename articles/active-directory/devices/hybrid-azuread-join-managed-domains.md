@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 55818bf3c6997925fbac32f913d573d630bc20f4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 36537aacce0180f9b37fb8b49f301fb1f5954d1c
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004378"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918429"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
 
@@ -54,7 +54,8 @@ Ez az oktatóanyag feltételezi, hogy Ön ismeri a:
   
 
 Ez a cikk a forgatókönyv konfigurálásához lesz szüksége a [az Azure AD Connect legújabb verziójának](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 vagy újabb) kell telepíteni. 
- 
+
+Győződjön meg arról, hogy az Azure AD Connect szinkronizálja a számítógép-objektumokat szeretné a hibrid Azure AD-hez az Azure AD-eszközök. Csatlakozás az is, ha a számítógép-objektumok tartoznak adott szervezeti egység (OU), akkor ezeket a szervezeti egységek szinkronizálása az Azure ad-ben konfigurálni kell.
 
 1.1.819.0 verzióval kezdve az Azure AD Connect biztosít a hibrid Azure AD-csatlakozás konfigurálása varázsló segítségével. A varázsló lehetővé teszi a jelentősen megkönnyíti a konfigurációs folyamat. A kapcsolódó varázsló konfigurálja a szolgáltatás kapcsolódási pontok (SCP) az eszközök regisztrációjával kapcsolatos.
 
@@ -165,7 +166,7 @@ Ezenkívül engedélyeznie kell **lehetővé teszik a frissítések állapotsor 
 
 ## <a name="verify-the-registration"></a>A regisztráció-ellenőrzés
 
-Az Azure-bérlőhöz, az eszköz regisztrációs állapotának ellenőrzéséhez használhatja a ** [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) ** parancsmagot a ** [Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Az Azure-bérlőhöz, az eszköz regisztrációs állapotának ellenőrzéséhez használhatja a **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** parancsmagot a  **[Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
 
 Használatakor a **Get-MSolDevice** parancsmaggal ellenőrizheti a szolgáltatás részletei:
 

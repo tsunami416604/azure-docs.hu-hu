@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a6f6beedfc6c23be70693428388f6d0e585260bc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 143d0d4b66fc8e6e62364090e3d3187c4aa7bb51
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433170"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919006"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal
 
@@ -37,10 +37,11 @@ További információ a több [Resource Manager-sablonok használatának előnye
 > [!NOTE]
 > Resource Manager-sablon alapjául való használatakor további labor virtuális gépek létrehozása, néhány különbségek vannak, ne feledje, hogy Multi- vagy egyetlen – virtuális gép létrehozásakor. [A virtuális gépek az Azure Resource Manager-sablonnal](devtest-lab-use-resource-manager-template.md) nagyobb részletesen ismertetjük a különbségeket ismerteti.
 >
->
 
-## <a name="configure-azure-resource-manager-template-repositories"></a>Azure Resource Manager-sablon tárházak konfigurálása
+## <a name="devtest-labs-public-environments"></a>DevTest Labs nyilvános környezetben
+Az Azure DevTest Labs rendelkezik egy [nyilvános tárházban az Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Environments) , amelyek segítségével való csatlakozáshoz külső GitHub forrás saját magának nélkül hozhat létre környezeteket. Ez a tárház például az Azure Web Apps, a Service Fabric-fürt és a fejlesztési környezet SharePoint-Farm gyakran használt sablont tartalmaz. Ez a funkció az összetevők a nyilvános tárház, amely tartalmaz minden Ön által létrehozott laborban hasonlít. A környezet tárház használatának gyors megkezdése minimális bemeneti paraméterei, zökkenőmentes első lépések felhasználói élményt biztosíthat a PaaS-erőforrásokhoz labs belül az előre létrehozott környezeti sablonokkal teszi lehetővé. További információkért lásd: [konfigurálása és használata a nyilvános környezetben a DevTest Labs szolgáltatásban](devtest-lab-configure-use-public-environments.md).
 
+## <a name="configure-your-own-template-repositories"></a>Saját sablon tárházak konfigurálása
 Az ajánlott eljárásokat az infrastruktúra mint kód és konfigurációs a kódot, egyik környezeti sablonokkal verziókövetési rendszerben kell kezelni. Az Azure DevTest Labs ezzel a gyakorlattal követi, és az összes Azure Resource Manager-sablonok közvetlenül tölt be a GitHub vagy a VSTS Git-tárházak. Ennek eredményeképpen a Resource Manager-sablonok között a teljes kiadási ciklus a tesztkörnyezetből az éles környezetbe használható.
 
 Tekintse meg a DevTest Labs csapat által létrehozott sablonok az [nyilvános GitHub-adattárból](https://github.com/Azure/azure-devtestlab/tree/master/Environments). A nyilvános tárházban megtekintheti, hogy közvetlenül használni, vagy testre is szabhatja őket, hogy illeszkedjen az igényeihez mások által megosztott sablonok. Miután létrehozta a sablont, tárolja a tárházban, ossza meg másokkal. A saját Git-tárház környezeteket a felhőben használható sablonokkal is állíthatja. 
@@ -56,12 +57,9 @@ Van néhány a szabályok egy adattárból az Azure Resource Manager-sablonok re
 - Metaadatok, adja meg a sablon megjelenítendő neve és leírása lehet definiálni. A metaadatok nevű fájlba kell `metadata.json`. A következő példa metaadatfájl mutatja be a megjelenítendő név és leírás megadása: 
 
     ```json
-    {
- 
-        "itemDisplayName": "<your template name>",
- 
-        "description": "<description of the template>"
- 
+    { 
+        "itemDisplayName": "<your template name>", 
+        "description": "<description of the template>" 
     }
     ```
 

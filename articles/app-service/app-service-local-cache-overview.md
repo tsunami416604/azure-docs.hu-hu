@@ -16,17 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 59fe70e4d2a710160751ab8e7a83c9f86310dc24
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597730"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918016"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Az Azure App Service helyi gyorsítótár – áttekintés
 
 > [!NOTE]
-> Helyi gyorsítótár nem támogatott a tárolóalapú App Service-alkalmazások, mint például a [Linuxon futó App Service](containers/app-service-linux-intro.md).
+> Helyi gyorsítótár nem támogatott a Function apps vagy a tárolóalapú App Service-alkalmazások, mint például a [Linuxon futó App Service](containers/app-service-linux-intro.md).
+
 
 Az Azure web app tartalom az Azure Storage tárolja, és az illesztett be, a tartalommegosztás tartósan. Ez a kialakítás célja, hogy együttműködést a különböző alkalmazások és az alábbi attribútumok tartoznak:  
 

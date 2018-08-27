@@ -1,6 +1,6 @@
 ---
-title: Webes keresés gyors üzembe helyezési SDK C# |} Microsoft Docs
-description: A webes keresés SDK C# Konzolalkalmazás telepítője.
+title: 'Gyors útmutató: A Bing Web Search SDK használata a C#'
+description: A telepítő a webes keresés SDK C# konzolalkalmazást.
 titleSuffix: Azure cognitive services Web search SDK C# quickstart
 services: cognitive-services
 author: mikedodaro
@@ -8,51 +8,51 @@ manager: rosh
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 01/29/2018
-ms.author: v-gedod
-ms.openlocfilehash: 6d87b292475edff04e930ec4aa2f8e077a0fb82c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 08/16/2018
+ms.author: v-gedod, erhopf
+ms.openlocfilehash: ef54487a1df7303fa92a78e4f3219f40f558da2b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349486"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887319"
 ---
-# <a name="web-search-sdk-c-quickstart"></a>Webes keresés SDK C# gyors üzembe helyezés
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Gyors útmutató: A Bing Web Search SDK használata a C#
 
-A Bing webes keresés SDK tartalmazza a REST API-t a webes kérelmek és elemzési eredmények funkcióit.
+A Bing Web Search SDK tartalmazza a REST API, webes kéréseket és az elemzési eredmények funkcióit.
 
-A [forráskód C# Bing webes keresés SDK minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/BingSearchv7/BingWebSearch/WebSearchSamples.cs) érhető el a Git központ.
+A [forráskódját a C# a Bing Web Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/BingSearchv7/BingWebSearch/WebSearchSamples.cs) elérhető a Githubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Állítsa be a Konzolalkalmazás, a Bing webes keresés SDK használatával, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studio megoldáskezelőjében.  Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.WebSearch` csomag.
+Szeretne beállítani egy konzolalkalmazást, a Bing Web Search SDK használatával, keresse meg a `Manage NuGet Packages` lehetőség a Visual Studio Megoldáskezelőjében.  Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.WebSearch` csomagot.
 
-Telepíti a [NuGet webes keresés SDK csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) is telepíti a függőségek, beleértve:
+Telepíti a [NuGet Web Search SDK csomagot](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) is telepíti a függőségeket, többek között:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="web-search-client"></a>Keresési webügyfél
-Egy példányának létrehozása a `WebSearchAPI` ügyfelet, adja hozzá az irányelvek segítségével:
+## <a name="web-search-client"></a>Webes keresés ügyfél
+Hozzon létre egy példányt, a `WebSearchAPI` ügyfél, Hozzáadás irányelvekkel:
 ```
 using Microsoft.Azure.CognitiveServices.Search.WebSearch;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch.Models;
 
 ```
-Az ügyfél ezután példányosítható:
+Ezután hozza létre az ügyfél:
 ```
 var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
-Az ügyfél segítségével keresést a lekérdezés szövegének:
+Az ügyfél használja a keresést a lekérdezés szövege:
 ```
 // Search for "Yosemite National Park"
 var webData = client.Web.Search(query: "Yosemite National Park");
 Console.WriteLine("Searched for Query# \" Yosemite National Park \"");
 
 ```
-Az előző lekérdezés eredményeiben weblapok elemezni:
+Elemezni a weblapok, az előző lekérdezés eredményét adja vissza:
 ```
 //WebPages
 if (webData?.WebPages?.Value?.Count > 0)
@@ -79,7 +79,7 @@ else
 ```
 ## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
 
-A következő Konzolalkalmazás végrehajtja a korábban meghatározott lekérdezést, és elemez a weblapok, képeket, híreket és videók szerepel az eredmények:
+A következő Konzolalkalmazás végrehajtja a korábban meghatározott lekérdezést, és elemzi a weblapok, képeket, híreket és az eredmények lévő videók:
 ```
 using System;
 using System.Collections.Generic;
@@ -213,11 +213,11 @@ namespace WebSrchSDK
 
 ```
 
-Az SDK különböző funkciókat fogunk bemutatni, a Bing keresési minták.  A következő funkciók hozzáadása a korábban meghatározott `WebSrchSDK` osztály.
+A Bing search-minták az SDK különböző funkcióit mutatják be.  A következő funkciók hozzáadása a korábban meghatározott `WebSrchSDK` osztály.
 
-## <a name="count-and-offset-parameters"></a>Száma és az eltolás paraméterek
+## <a name="count-and-offset-parameters"></a>Paraméterek száma és az eltolás
 
-A következő kódot "Budapesti legjobb éttermekben" keres, ellenőrzi a találatok száma és kinyomtatja nevét és URL-t az első találatra.
+A következő kódot keresi a "Budapesti ajánlott éttermek", ellenőrzi a eredmények számát, és kiírja a nevét és URL-címét az első eredményt.
 
 ```
        public static void WebResultsWithCountAndOffset(WebSearchAPI client)
@@ -255,9 +255,9 @@ A következő kódot "Budapesti legjobb éttermekben" keres, ellenőrzi a talál
         }
 
 ```
-## <a name="response-filter"></a>A válasz szűrője
+## <a name="response-filter"></a>Eredményszűrő
 
-A következő lekérdezés beállítása válasz szűrő használata a "Microsoft" kifejezést keresi `news` és az eredmények részletei nyomtatását.
+A következő lekérdezést egy szűrővel válasz állítsa a "Microsoft" kifejezést keresi `news` , majd megjeleníti az eredményeket részleteit.
 ```
         public static void WebSearchWithResponseFilter(WebSearchAPI client)
         {
@@ -299,9 +299,9 @@ A következő lekérdezés beállítása válasz szűrő használata a "Microsof
         }
 
 ```
-## <a name="query-parameters---count-promotion-safe-search"></a>Lekérdezési paramétert - száma, az előléptetés, biztonságos keresés
+## <a name="query-parameters---count-promotion-safe-search"></a>Lekérdezési paraméterek - száma, az előléptetés, a biztonságos keresés
 
-Ez a lekérdezés, "Lady Gaga" keresések használatával `answerCount` és `promote` paramétereket, majd megjeleníti az eredményeket részleteit.
+Ez a lekérdezés "Lady Gaga" keresések használatával `answerCount` és `promote` paramétereket, majd megjeleníti az eredményeket részleteit.
 
 ```
         public static void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchAPI client)
@@ -344,4 +344,4 @@ Ez a lekérdezés, "Lady Gaga" keresések használatával `answerCount` és `pro
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+[A cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).

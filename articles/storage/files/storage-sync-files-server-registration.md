@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 468bd70682b1b36e906d32cd7bde58c78bdbb376
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 1aa1bd085a312e379dc996a860c7f97b2e0dfe73
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521999"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918876"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Az Azure File Sync használatával regisztrált kiszolgálók kezelése
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt nem átalakításával keletkező a Windows-kiszolgálók az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -26,7 +26,7 @@ A kiszolgáló regisztrálása az Azure File Sync használatával hoz létre a W
 ### <a name="prerequisites"></a>Előfeltételek
 A Társzinkronizálási szolgáltatás regisztrálja a kiszolgálót, elő kell készítenie a kiszolgáló és az a szükséges előfeltételek:
 
-* A kiszolgáló Windows Server támogatott verziójának kell futnia. További információkért lásd: [a Windows Server támogatott verziója](storage-sync-files-planning.md#supported-versions-of-windows-server).
+* A kiszolgáló Windows Server támogatott verziójának kell futnia. További információkért lásd: [Azure File Sync Rendszerkövetelmények és együttműködési](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
 * Győződjön meg arról, hogy a Társzinkronizálási szolgáltatás van telepítve. A Storage Sync Service telepítésének módjáról további információkért lásd: [üzembe helyezése az Azure File Sync](storage-sync-files-deployment-guide.md).
 * Győződjön meg arról, hogy a kiszolgáló csatlakozik-e az internethez, hogy az Azure érhető el.
 * Tiltsa le az Internet Explorer – fokozott biztonsági beállításai a rendszergazdák számára a Server Manager felhasználói felületén.

@@ -12,19 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/21/2018
+ms.date: 08/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: cad3723f3109fa2fa7e6a1a7ab61d5c7eaca2674
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 8e1c194ea2ebc0e06918c8389c9ee6f72afb3e86
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623276"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887788"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Egy virtuálisgép-méretezési csoportban hozzáadásával ki a Service Fabric-fürt méretezése
 Ez a cikk ismerteti az Azure Service Fabric-fürt méretezése egy új virtuálisgép-méretezési csoportot egy meglévő fürthöz hozzáadásával. Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek gyűjteményét készletként használt. Minden csomópont-típus egy Azure-fürtön definiált [külön méretezési csoportként](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus kezelhetők külön-külön. Egy Service Fabric-fürt létrehozását követően méretezhetők egy fürtcsomóponttípus függőlegesen (módosíthatja a csomópontok az erőforrások), frissítse az operációs rendszer a csomópont típusú virtuális gépeket, vagy adjon hozzá egy új virtuálisgép-méretezési csoportot egy meglévő fürthöz.  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
 
 > [!WARNING]
+> Nem indulnak el módosítani az elsődleges NodeType csomóponttípus Virtuálisgép-Termékváltozatra, ha a fürt állapota nem kifogástalan. A fürt állapota nem kifogástalan, ha meg fogja csak történő leállítása instabillá a fürt további, ha megpróbálja módosítani a virtuális gép Termékváltozata.
+>
 > Azt javasoljuk, hogy nem módosítja a virtuális gép Termékváltozata méretezési készlet vagy csomópont típusa, ha fut a következőn: [Silver szintű tartósságot vagy nagyobb](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Virtuális gép SKU-méret módosítása egy olyan adatok felülíró helyszíni infrastruktúra művelet. Késleltetés, vagy figyelheti a módosítás néhány képessége nélkül is lehet, hogy a művelet az állapotalapú szolgáltatások esetében adatvesztést is okozhat, vagy akár állapot nélküli számítási feladatok esetében más előre nem látható operatív problémákat okozhat. Ez azt jelenti, hogy az elsődleges csomópont típusa, ami állapotalapú service fabric rendszer-szolgáltatásokat futtató, vagy minden csomópont típusa, amelyen fut az állapotalapú alkalmazások munkahelyi tölti be.
 >
 

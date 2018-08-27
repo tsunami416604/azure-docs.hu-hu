@@ -1,18 +1,18 @@
-Adjuk hozzá egy eseményindító.
+Adjunk hozzá egy eseményindító.
 
-1. Adja meg *sftp* be a keresőmezőbe a logic apps designer válassza ki a **SFTP - amikor egy fájl hozzáadása vagy módosítása** eseményindító   
-   ![SFTP eseményindító kép 1](./media/connectors-create-api-sftp/trigger-1.png)  
-2. A **amikor egy fájl hozzáadása vagy módosítása esetén** vezérlő megnyílik.  
-   ![SFTP eseményindító kép 2](./media/connectors-create-api-sftp/trigger-2.png)  
-3. Válassza ki a **...**  a vezérlő jobb oldalán található. Ekkor megnyílik a mappa példányválasztó vezérlő  
-   ![SFTP eseményindító kép 3](./media/connectors-create-api-sftp/action-1.png)  
-4. Válassza ki a **SFTP** jelölje ki a gyökérmappában található új vagy módosított fájlokat a figyelendő mappát. A legfelső szintű mappa megjelenik a figyelmeztetés a **mappa** vezérlő.  
-   ![SFTP eseményindító kép 4](./media/connectors-create-api-sftp/action-2.png)   
+1. Adja meg *sftp* a keresőmezőbe írja be a logic apps Designerben kattintson a **SFTP - amikor egy fájl hozzáadásakor és módosításakor** eseményindító   
+   ![Az SFTP-eseményindító lemezkép 1](./media/connectors-create-api-sftp/trigger-1.png)  
+2. A **amikor felvesznek vagy módosítanak egy fájlt** vezérlő nyit meg  
+   ![Az SFTP-eseményindító kép 2](./media/connectors-create-api-sftp/trigger-2.png)  
+3. Válassza ki a **...**  a vezérlő jobb oldalán található. Ekkor megnyílik a mappa Dátumválasztó vezérlőelem  
+   ![Az SFTP-eseményindító kép 3](./media/connectors-create-api-sftp/action-1.png)  
+4. Válassza ki a **SFTP** jelölje ki a mappa figyelése új vagy módosított fájl a gyökérmappában található. A legfelső szintű mappa megjelenik a figyelmeztetés a **mappa** vezérlő.  
+   ![Az SFTP-eseményindító lemezkép 4](./media/connectors-create-api-sftp/action-2.png)   
 
-A Logic Apps alkalmazást ezen a ponton úgy van konfigurálva, az eseményindítók és műveletek a munkafolyamat futtató akkor kezdődik, amikor egy fájl módosított, vagy az adott SFTP mappában létrehozott eseményindítót. 
+Ezen a ponton a logikai alkalmazás egy eseményindítóval, amely más eseményindítók és műveletek a munkafolyamat futtatását akkor kezdődik, amikor egy fájlt módosító vagy az adott SFTP-mappába van konfigurálva. 
 
 > [!NOTE]
-> A logikai alkalmazás működéséhez legalább egy eseményindító és egy műveletet kell tartalmaznia. Kövesse a következő szakaszban művelet hozzáadása.  
+> A logikai alkalmazás megfelelő működéséhez tartalmaznia kell legalább egy triggert és a egy műveletet. Kövesse a következő szakaszban vegyen fel egy műveletet.  
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: A Microsoft kognitív szolgáltatásokban projekt válasz keresése gyorsindítási C# |} Microsoft Docs
-description: A projekt válasz keresése, Microsoft Azure kognitív szolgáltatások használatának megkezdéséhez kódminta.
+title: A Microsoft Cognitive Services, Project válaszkeresés rövid útmutatóban a C# |} A Microsoft Docs
+description: A kódminta a projekt válaszkeresés, a Microsoft Cognitive Services, Azure-beli használatának megkezdéséhez.
 services: cognitive-services
 author: mikedodaro
 ms.service: cognitive-services
@@ -8,34 +8,34 @@ ms.technology: project-answer-search
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: b05b7745bdb5020a4a0912635e040256415b2626
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c8e2a6a7fc3609932a7a1139d7b34553e5f9c291
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348579"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888323"
 ---
-# <a name="project-answer-search-query-in-c"></a>A C# projekt-válasz keresési lekérdezés
+# <a name="project-answer-search-query-in-c"></a>Projekt válasz keresési lekérdezés C#-ban
 
-Az alábbi C# példa hoz létre, és további információ a harmadik jog calculus egy lekérdezést küld.
+Az alábbi C#-példa hoz létre, és további információ a harmadik jogszabályok calculus egy lekérdezést küld.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes közösségi Edition fog működni.)
+Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes Community Edition is elegendő.)
 
-Az ingyenes próbaidőszakra hozzáférési kulcs beszerzése [kognitív szolgáltatások Labs](https://aka.ms/answersearchsubscription)
+Az ingyenes próbaverzióra hívóbetű lekérése [Cognitive Services Labs tevékenységét](https://aka.ms/answersearchsubscription)
 
 ## <a name="code-scenario"></a>Kód forgatókönyv
 
-A következő C#-kódban hoz létre, és elküldi a lekérdezést. 
+Az alábbi C#-kódot hoz létre, és elküldi a lekérdezést. 
 
 Az alábbi lépéseket a megvalósított:
-1. Deklarálja a változókat, adja meg a végpont és az előzetes lekérdezési URL.  
-2. Hozzon létre a kérelmet.
-3. Adja hozzá a *Ocp-Apim-előfizetés-kulcs* fejléc. 
-4. A webes kérelem aszinkron módon futnak. 
-5. A válasz olvasása.
-6. A fejlécek és a JSON-eredmények a konzol nyomtatása.
+1. Deklarálja a változókat, adja meg a végpont és a egy lekérdezési URL-címet az előzetes verzióra.  
+2. A kérelem létrehozásához.
+3. Adja hozzá a *Ocp-Apim-Subscription-Key* fejléc. 
+4. A webes kérelem aszinkron módon fut. 
+5. Olvassa el a választ.
+6. Nyomtassa ki a fejlécek és JSON-eredményeket a konzolon.
 
 **Forráskód**
 
@@ -53,7 +53,7 @@ namespace Answers_csharp
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "YOUR-SUBSCRIPTION-KEY";
 
-        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search "; 
+        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search"; 
 
         const string searchTerm = "third law of calculus"; 
 
@@ -187,10 +187,10 @@ namespace Answers_csharp
 
 Az alkalmazás futtatásához:
 
-1. Új konzol megoldás létrehozása a Visual Studióban.
-2. Cserélje le `Program.cs` a megadott kód.
-3. Cserélje le a `YOUR-ACCESS-KEY` egy érvényes elérési kulcsot az előfizetéshez tartozó értéket.
+1. Hozzon létre egy új konzol megoldást a Visual Studióban.
+2. Cserélje le `Program.cs` a megadott kóddal.
+3. Cserélje le a `YOUR-ACCESS-KEY` értéket az előfizetéshez tartozó érvényes elérési kulcsot.
 4. Futtassa a programot.
 
 ## <a name="next-steps"></a>További lépések
-[Java gyors üzembe helyezés](java-quickstart.md)
+[Java a rövid útmutató](java-quickstart.md)

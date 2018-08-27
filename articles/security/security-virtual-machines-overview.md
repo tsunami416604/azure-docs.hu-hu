@@ -1,6 +1,6 @@
 ---
-title: Az Azure virtuális gépekkel használt Azure biztonsági funkciók |} Microsoft Docs
-description: Ez a cikk a core áttekintést nyújt az Azure biztonsági funkciók használható Azure virtuális gépekkel.
+title: Az Azure-beli virtuális gépek használt Azure biztonsági szolgáltatásait |} A Microsoft Docs
+description: Ez a cikk az alapvető áttekintést nyújt az Azure biztonsági funkciókat, amelyeket az Azure Virtual Machines segítségével.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,80 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 5ffba386ae6b1e1e5d18f92803bc8cb74b2ff89e
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: fb6a984ff838305b4ce411538465c0b9b5c152da
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061299"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886914"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure virtuális gépek biztonsági áttekintése
-Azure virtuális gépek segítségével számos különféle számítógépes megoldások üzembe egy gyors módja. A szolgáltatás támogatja a Microsoft Windows, Linux, a Microsoft SQL Server, Oracle, IBM, SAP, és Azure BizTalk szolgáltatások. Ezért bármilyen munkaterhelést és szinte bármilyen operációs rendszeren bármilyen nyelvet is telepíthet.
+Azure Virtual Machines használatával a legkülönbözőbb számítástechnikai megoldások széles üzembe. A szolgáltatás támogatja a Microsoft Windows, Linux, a Microsoft SQL Server, Oracle, IBM, SAP és az Azure BizTalk Services. Telepíthet tehát bármilyen számítási feladatot és programnyelvtől függetlenül, szinte bármely operációs rendszeren.
 
-Az Azure virtuális gépek anélkül biztosítják a virtualizálás rugalmasságát, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. Hozza létre, és az alkalmazásokat, hogy az adatok védett és biztonságos rendkívül biztonságos adatközpontokban-e benne.
+Az Azure virtuális gépek anélkül biztosítják a virtualizálás rugalmasságát, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. Hozhat létre, és üzembe helyezett az adatok nem védett és biztonságos a rendkívül biztonságos adatközpontjainkban.
 
-Az Azure-hozhat létre biztonságos, megfelelő megoldás, amely:
+Az Azure-ral hozhat létre biztonságos, előírásoknak megfelelő megoldások, amelyek:
 
-* A virtuális gépek védelmére a vírusok és kártevő vonatkozásában.
-* A bizalmas adatok titkosítására.
+* A virtuális gépek védelme a vírusokkal és kártevőkkel szemben.
+* Bizalmas adatok titkosítása.
 * Hálózati forgalmának biztonságossá tétele.
-* Határozza meg és észleli a veszélyeket.
-* A megfelelőségi követelményeknek.
+* Fenyegetések azonosítása és felderítése.
+* Megfelelőségi követelmények teljesítése érdekében.
 
-Ez a cikk célja az alapvető áttekintést nyújtanak a virtuális gépekkel használható az Azure biztonsági funkciók. Így további cikkek hivatkozásainak adja meg az egyes szolgáltatások adatait.  
+Ez a cikk célja az alapvető áttekintést biztosít az Azure biztonsági szolgáltatások virtuális gépekkel is használható. Cikkek hivatkozásainak egyes szolgáltatások részletei adjon meg, hogy többet is megtudhat.  
 
 ## <a name="antimalware"></a>Kártevőirtó
-Az Azure-ral például Microsoft Symantec, Trend Micro vagy Kaspersky biztonsági szállítóktól származó kártevőirtó szoftverek is használhatja. Ez a szoftver megvédi a virtuális gépek a rosszindulatú fájlok, hirdetéseket és más fenyegetésekkel szemben.
+Az Azure-ral biztonsági megoldásokkal foglalkozó forgalmazó, például a Microsoft, a Symantec, a Trend Micro és a Kaspersky kártevőirtó szoftvert is használhatja. Ez a szoftver segítségével, a virtuális gépek kártékony fájlokkal, hirdetőprogramokkal és egyéb fenyegetések védelme.
 
-Azure Cloud Services és a virtuális gépek Microsoft Antimalware a valós idejű védelem képessége, amelyik segít azonosításához és eltávolításához a vírusok, kémprogramok és más, kártevő szoftverek.  A Microsoft Antimalware az Azure biztosít konfigurálható riasztást küld, ha ismert kártevő vagy nemkívánatos szoftverek próbálják telepíteni magukat az Azure rendszeren.
+A Microsoft Antimalware az Azure Cloud Services és Virtual Machines a vírusok, kémprogramok és más kártevők azonosításában és segít a valós idejű védelem funkcióval.  A Microsoft Antimalware az Azure biztosít konfigurálható riasztást, ha ismert kártevő vagy nemkívánatos szoftver megkísérli a telepítést, vagy futtassa az Azure rendszeren.
 
-Az Azure-hoz a Microsoft Antimalware egy olyan single-ügynök megoldás az alkalmazások és a bérlői környezetekben. Célja az, hogy fut a háttérben, emberi beavatkozás nélkül. Telepítheti a védelmi alapú az alkalmazások és szolgáltatások, vagy alapvető biztonságos--alapértelmezés szerint a rendszer igényeinek megfelelően, vagy speciális egyéni konfiguráció – beleértve a kártevőirtó-figyelés.
+A Microsoft Antimalware az Azure az alkalmazások és a bérlői környezetek single-ügynök megoldás is. Feladata, hogy fut a háttérben, emberi beavatkozás nélkül. Az alkalmazás-munkaterhelések, vagy alapszintű biztonságos alapértelmezés szerint az igényeinek megfelelően, vagy egyéni konfigurálására, beleértve a kártevőirtó-figyelés speciális védelem is telepítheti.
 
-Ha központilag telepíti, és engedélyezze a Microsoft Antimalware az Azure-ba, a következő alapvető funkciók érhetők el:
+Amikor telepíti és engedélyezi a Microsoft Antimalware az Azure-hoz, a következő alapvető funkciók érhetők el:
 
-* **A valós idejű védelem**: a Felhőszolgáltatások és virtuális gépeken történő észleli és blokkolja a kártevő szoftverek végrehajtási tevékenység figyeli.
-* **Ütemezett ellenőrzés**: rendszeres időközönként a kártevő szoftverek, beleértve, aktívan futó programok észlelését célzott vizsgálatát.
-* **Kártevő szoftver eltávolításának**: automatikusan hajt végre műveletet a kártevő, például törlése vagy a karanténba helyezés kártevő fájlok és a rosszindulatú beállításjegyzék-bejegyzések törlése.
-* **Aláírás frissítések**: automatikusan telepíti a legújabb definíciók (vírus-definíciók) védelem naprakész egy előre meghatározott gyakoriságáról biztosítása érdekében.
-* **Kártevőirtó motor frissítéseit**: automatikusan frissíti a Microsoft Antimalware Azure motor.
-* **Kártevőirtó platform frissítések**: automatikusan frissíti a Microsoft Antimalware Azure platform.
-* **Aktív védelem**: jelentések telemetriai metaadatainak Azure gyors válasz fenyegetésről és gyanús erőforrásokat. Lehetővé teszi a valós idejű szinkron aláírás használatával a Microsoft Active Protection rendszer (MAPS).
-* **– A jelentési minták**: biztosít, és jelenti a mintákat a Microsoft Antimalware Azure Service finomíthatja a szolgáltatást, és engedélyezze a hibaelhárítás érdekében.
-* **Kizárások**: lehetővé teszi az alkalmazás és szolgáltatás-rendszergazdák konfigurálása bizonyos fájlokat, a folyamatokat, és fokozza a kizárása védelmi és a teljesítmény- és más okok miatt vizsgálatát.
-* **Kártevőirtó eseménygyűjtés**: kártevőirtó szolgáltatás állapotát, a gyanús tevékenységek és elvégzett szervizelési műveleteket hajtja végre operációs rendszer-eseménynaplójában rögzíti és gyűjti azokat az Azure-tárfiókot.
+* **Valós idejű védelem**: figyeli a tevékenységet, a Cloud Services és észleli és blokkolja a kártevő szoftver futtatása virtuális gépeken.
+* **Keresés ütemezett**: a Microsoft rendszeresen végez célzott vizsgálatának például aktívan futó programok észlelését.
+* **Kártevő szoftver eltávolításának**: automatikusan hajt végre műveletet a észlelt kártevőket, például törlése vagy rosszindulatú fájlok karanténba és rosszindulatú beállításjegyzék-bejegyzések törlése.
+* **Aláírás-frissítések**: automatikusan telepíti a legújabb aláírások (vírus-definíciók), hogy protection naprakész-e az előre meghatározott gyakoriságát.
+* **A kártevőirtó motor frissítéseit**: automatikusan frissíti a Microsoft Antimalware az Azure-motor.
+* **A kártevőirtó platform frissítések**: a Microsoft Antimalware az Azure platform automatikusan frissíti.
+* **Aktív védelem**: jelentések telemetriai metaadatait, az Azure-bA az észlelt fenyegetések és a gyanús erőforrások arról, hogy gyors választ. Lehetővé teszi a valós idejű szinkron aláírás kézbesítési keresztül a Microsoft Active Protection System (MAPS).
+* **Jelentéskészítés – minták**: biztosít, és a minták a jelentéseket a Microsoft Antimalware az Azure-szolgáltatás, pontosítsa a szolgáltatást, és hibaelhárítást.
+* **A kizárások**: lehetővé teszi az alkalmazás és szolgáltatás-rendszergazdák konfigurálása bizonyos fájlokat, a folyamatokat, és a kizárása védelmi és a teljesítmény és más okok miatt vizsgálatát meghajtókat.
+* **Kártevőirtó eseménygyűjtés**: kártevőirtó szolgáltatás állapotát, a gyanús tevékenységeket és a szervizelési műveletek venni az operációs rendszer-eseménynaplóban rögzíti, és gyűjti azokat az Azure storage-fiókban.
 
-Ismerje meg a kártevőirtó szoftver, a virtuális gépek védelme érdekében:
+További információ a kártevőirtó szoftver, a virtuális gépek védelme érdekében:
 
-* [A Microsoft Antimalware Azure Felhőszolgáltatások és virtuális gépek](azure-security-antimalware.md)
+* [A Microsoft Antimalware az Azure Cloud Services és Virtual Machines](azure-security-antimalware.md)
 * [Kártevőirtó megoldások telepítése Azure-beli virtuális gépeken](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Hogyan kell telepíteni, és a Trend Micro mély biztonságának konfigurálása a Windows virtuális gép szolgáltatásként](../virtual-machines/windows/classic/install-trend.md)
-* [Hogyan kell telepíteni, és a Symantec Endpoint Protection konfigurálása a Windows virtuális gép](../virtual-machines/windows/classic/install-symantec.md)
-* [Biztonsági megoldásokat az Azure piactéren](https://azure.microsoft.com/marketplace/?term=security)
+* [Telepítése és konfigurálása a Trend Micro Deep Security szolgáltatásként, a Windows virtuális gép](../virtual-machines/windows/classic/install-trend.md)
+* [Telepítése és a Symantec Endpoint Protection konfigurálása a Windows virtuális gép](../virtual-machines/windows/classic/install-symantec.md)
+* [Biztonsági megoldások az Azure Marketplace-en](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>Hardveres biztonsági modul
-Kulcs biztonságának növelése javíthatja a titkosítás és hitelesítés védelmet. A felügyeleti és a kritikus titkos kulcsok és a kulcsok biztonsági tárolja őket az Azure Key Vault egyszerűbbé teheti. 
+Kulcs biztonságának növelése javíthatja a titkosítási és hitelesítési védelmet. A kezelését és a létfontosságú kulcsok és titkok biztonságos tárolása az Azure Key Vault egyszerűsítheti. 
 
-A Key Vault segítségével a kulcsokat a 2-es szintű FIPS 140-2 szabványnak megfelelő hardveres biztonsági modulokban (HSM) őrizheti. Az SQL Server titkosítási kulcsok biztonsági mentésre vagy [átlátható adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx) összes tárolhatja Key Vault kulcsok és titkos kulcsokat a alkalmazásokból. Engedélyek és a következő védett elemeknek használatával kezelhető [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+A Key Vault segítségével a kulcsokat a 2-es szintű FIPS 140-2 szabványnak megfelelő hardveres biztonsági modulokban (HSM) őrizheti. Az SQL Server titkosítási kulcsok biztonsági mentése vagy [transzparens adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx) összes tárolható a Key Vault- és az alkalmazások titkos. Engedélyek és a hozzáférést ezekhez a védett elemekhez kezelhető [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 További információ:
 
 * [Mi az Azure Key Vault?](../key-vault/key-vault-whatis.md)
 * [Ismerkedés az Azure Key Vault](../key-vault/key-vault-get-started.md)
-* [Az Azure Key Vault blog](https://blogs.technet.microsoft.com/kv/)
+* [Az Azure Key Vault-blog](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Virtuális gép lemeztitkosítás
-Az Azure Disk Encryption egy új funkció a Windows és Linux rendszerű virtuális gépek lemezeit titkosítására. Az Azure Disk Encryption használja a szabványos [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) Windows-szolgáltatás és a [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkció a Linux operációs rendszer és az adatlemezek kötettitkosítást biztosít.
+Az Azure Disk Encryption egy új funkció a Windows és Linux rendszerű virtuális gépek lemezeinek titkosításához. Az Azure Disk Encryption használja az iparági szabványnak megfelelő [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) Windows szolgáltatása és a [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) biztosít az operációs rendszer és az adatlemezek kötettitkosítását Linux funkcióját.
 
-A megoldás integrálva van az Azure Key Vault segítségével szabályozhatja, és a lemez titkosítási kulcsok és titkos kulcsainak kulcstároló-előfizetése kezeléséhez. Ez biztosítja, hogy a virtuális gépek lemezeit az összes adat titkosítva legyenek az Azure tárolás közben.
+A megoldás integrálva van az Azure Key Vault segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés. Biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatot is titkosítása az Azure Storage-ban.
 
 További információ:
 
-* [Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
-* [A Linux és a Windows virtuális gépek az Azure Disk Encryption](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview-now-available/)
-* [A virtuális gép titkosítása](../security-center/security-center-disk-encryption.md)
+* [Az Azure Disk Encryption IaaS virtuális gépekhez](../security/azure-security-disk-encryption-overview.md)
+* [Gyors útmutató: Az Azure PowerShell használatával Windows IaaS virtuális gép titkosítása](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>Virtuális gép biztonsági mentése
-Az Azure biztonsági mentés méretezhető megoldás, amely segít megvédeni az alkalmazás adatait a tőkebefektetés szükségessége nélkül és minimális üzemeltetési költségek. Az alkalmazáshibák adatai sérülését okozhatják, az emberi hibák pedig az alkalmazások meghibásodásához vezethetnek. Az Azure Backup szolgáltatással a Windows és Linux rendszerű virtuális gépek védelmének.
+Az Azure Backup egy méretezhető megoldás, amely segít megvédeni a nulla tőkebefektetés és minimális működési költségek mellett megőrizheti alkalmazásadatait. Az alkalmazáshibák adatai sérülését okozhatják, az emberi hibák pedig az alkalmazások meghibásodásához vezethetnek. Az Azure Backup szolgáltatással a Windows és Linux rendszerű virtuális gépek védett.
 
 További információ:
 
@@ -96,15 +95,15 @@ További információ:
 * [Az Azure Backup szolgáltatás – gyakori kérdések](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
-A szervezete BCDR-stratégia egyik fontos része az tudja, hogyan kell fenntartani a vállalati számítási feladatok és futó tervezett alkalmazások és a nem tervezett leállások történik. Az Azure Site Recovery segítségével levezényelni a replikáció, feladatátvétel és helyreállítás munkaterhelések és alkalmazások úgy, hogy azok elérhetők a másodlagos helyről, ha az elsődleges hely leáll.
+Fontos része annak a szervezete BCDR-stratégia van foglalkozhatunk azzal, hogyan kell fenntartani a vállalati számítási feladatok és alkalmazások futására tervezett és nem tervezett leállások. Az Azure Site Recovery segítségével előkészíthető a replikáció, feladatátvétel és helyreállítás munkaterhelések és alkalmazások úgy, hogy a megjelenésük egy másodlagos helyre, ha az elsődleges hely leáll.
 
-Helyreállítás:
+A Site Recovery:
 
-* **Egyszerűbbé teszi a BCDR-stratégia**: a Site Recovery megkönnyíti, hogy a replikáció, feladatátvétel és helyreállítási több üzleti számítási feladatok és alkalmazások egyetlen helyről. A Site Recovery koordinálja a replikációt és feladatátvételt, de nem az alkalmazásadatok intercept vagy nem rendelkezik semmilyen információval.
-* **Rugalmas replikáció biztosít**: a Site Recovery segítségével replikálhatja a Hyper-V virtuális gépek, a VMware virtuális gépek és a windowsos/Linuxos fizikai kiszolgálókon futó számítási feladatok.
-* **Támogatja a feladatátvételi és helyreállítási**: a Site Recovery vészhelyreállítások részletezésének támogatásához anélkül, hogy befolyásolná a termelési környezetben feladatátvételi teszteket biztosít. Nulla adatvesztéssel járó tervezett feladatátvételeket is futtathat várt leállások esetére, illetve (a replikáció gyakoriságától függően) minimális adatvesztéssel járó nem tervezett feladatátvételeket a váratlan vészhelyzetek esetére. A feladatátvétel után is sikertelen vissza az elsődleges helyeken a. A Site Recovery olyan helyreállítási terveket biztosít, amelyek parancsfájlokat és Azure Automation-munkafüzeteket tartalmazhatnak, így testre szabhatja a többrétegű alkalmazások feladatátvételét és helyreállítását.
-* **Másodlagos adatközpont kiküszöböli**: egy másodlagos helyszíni helyre, vagy az Azure-bA replikálhatja. Az Azure célhelye vész-helyreállítási megszünteti a költségek és a másodlagos hely karbantartásának. A replikált adatok Azure Storage tárolja.
-* **Integrálható a meglévő BCDR-technológiákkal**: Site Recovery együttműködik az egyéb alkalmazások BCDR-funkcióival. A Site Recovery segítségével például az SQL Server háttéralkalmazását vállalati munkaterhelések védelme érdekében. Ez magában foglalja a natív támogatást az SQL Server Always On rendelkezésre állási csoportok feladatátvételének kezelésében.
+* **Egyszerűbbé teszi a BCDR-stratégia**: a Site Recovery megkönnyíti a replikáció, feladatátvétel és helyreállítás több üzleti számítási feladatok és alkalmazások egyetlen helyről kezelésére. A Site Recovery koordinálja a replikációt és a feladatátvételt, de nem az alkalmazásadatok intercept vagy nem rendelkezik semmilyen információval.
+* **Rugalmas replikáció biztosít**: a Site Recovery segítségével replikálhatja a Hyper-V virtuális gépek, VMware virtuális gépek és fizikai Windows/Linux-kiszolgálókon futó számítási feladatokat.
+* **Támogatja a feladatátvétel és helyreállítás**: a Site Recovery feladatátvételi teszteket a vészhelyreállítási próbák támogatására anélkül, hogy ez hatással lenne az éles környezetet biztosít. Nulla adatvesztéssel járó tervezett feladatátvételeket is futtathat várt leállások esetére, illetve (a replikáció gyakoriságától függően) minimális adatvesztéssel járó nem tervezett feladatátvételeket a váratlan vészhelyzetek esetére. A feladatátvételt követően is visszaadja a feladatokat az elsődleges helyeken. A Site Recovery olyan helyreállítási terveket biztosít, amelyek parancsfájlokat és Azure Automation-munkafüzeteket tartalmazhatnak, így testre szabhatja a többrétegű alkalmazások feladatátvételét és helyreállítását.
+* **Kiküszöböli a másodlagos adatközpontok**: egy másodlagos helyszíni helyre, vagy az Azure-bA replikálhatja. Az Azure-t egy cél vész-helyreállítási kiküszöböli a járó bonyodalmak és költségek fenntartása másodlagos helyre. A replikált adatokat az Azure Storage szolgáltatásban tárolt.
+* **A meglévő BCDR-technológiákkal integrálható**: Site Recovery együttműködik az egyéb alkalmazások általi BCDR-funkciókkal. A Site Recovery használatával például az SQL Server háttéralkalmazását vállalati számítási feladatok védelme érdekében. Ez magában foglalja a natív módon támogatja a SQL Server Always On rendelkezésre állási csoportok feladatátvételének kezelésében.
 
 További információ:
 
@@ -113,34 +112,34 @@ További információ:
 * [Milyen számítási feladatokat az Azure Site Recovery által védett?](../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuális hálózat
-Virtuális gépek hálózati kapcsolattal kell. Ez a követelmény kielégítése érdekében az Azure-nak egy Azure virtuális hálózatra kell csatlakoztatni a virtuális gépek. 
+Virtuális gépek hálózati kapcsolat szükséges. Ezt a követelményt támogatása érdekében az Azure-beli virtuális hálózathoz csatlakoztatni kívánt virtuális gépek van szüksége. 
 
-Egy Azure virtuális hálózatra egy logikai szerkezet, a fizikai Azure hálózati háló platformra épül. Minden logikai Azure virtuális hálózat összes többi Azure virtuális hálózat elkülönül. Elkülönítés segítségével biztosítja, hogy a hálózati forgalmat a központi telepítés nem érhető el más Microsoft Azure-ügyfelek.
+Azure-beli virtuális hálózathoz egy logikai szerkezet, a fizikai az Azure hálózati háló épülnek. Minden logikai Azure virtuális hálózat el különítve a minden más Azure virtuális hálózatokkal. Elkülönítés segítségével biztosítja, hogy a központi telepítések a hálózati forgalom nem érhető el a más Microsoft Azure-ügyfelek.
 
 További információ:
 
-* [Az Azure biztonsági áttekintése](security-network-overview.md)
+* [Azure-hálózat biztonsági áttekintése](security-network-overview.md)
 * [A Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md)
-* [Hálózati szolgáltatásait és partnerségei vállalati forgatókönyvek esetén](https://azure.microsoft.com/blog/networking-enterprise/)
+* [A hálózati szolgáltatásokkal és partneri kapcsolatoknak vonatkozó vállalati forgatókönyvek](https://azure.microsoft.com/blog/networking-enterprise/)
 
-## <a name="security-policy-management-and-reporting"></a>Biztonsági házirendek kezelése és jelentéskészítés
-Az Azure Security Center segítséget nyújt a megakadályozása, észlelésében és kezelésében fenyegetések ellen. A Security Center által biztosított, láthatósága nőtt és felett, Azure-erőforrások biztonsági ellenőrzést. Biztosít integrált biztonsági monitorozást és az Azure-előfizetések. Ez segítséget nyújt az szolgáló szabályzatkezelést, és számos biztonsági megoldással együttműködik.
+## <a name="security-policy-management-and-reporting"></a>Biztonsági házirend kezelése és jelentéskészítés
+Az Azure Security Center segít megelőzését, észlelését és háríthatja el a fenyegetéseket. A Security Center lehetővé teszi, nagyobb betekintést és szabályozhatóbbá, az Azure-erőforrások biztonságát. Integrált biztonsági monitorozást és felügyeletet biztosít az Azure-előfizetések között. Segít a fenyegetések szabályzatkezelést, és a biztonsági megoldások széles ökoszisztémájával képes együttműködni.
 
-A Security Center segítségével optimalizálása, és figyelheti a virtuális gépek által a biztonsági:
+A Security Center segítségével optimalizálásához, figyeléséhez, a virtuális gépek biztonságát:
 
-* Így [biztonsági javaslatok](../security-center/security-center-recommendations.md) a virtuális gépekhez. Példa ajánlások a következők: rendszer frissítéseinek alkalmazása, hozzáférés-vezérlési listák végpontok konfigurálása, kártevőirtó engedélyezése, engedélyezze a hálózati biztonsági csoportok és lemeztitkosítás alkalmazni.
+* Így [biztonsági javaslatok](../security-center/security-center-recommendations.md) a virtuális gépek. Példa javaslatok: rendszerfrissítések alkalmazása, hozzáférés-vezérlési listák végpontok konfigurálása, kártevőirtó engedélyezéséhez, a hálózati biztonsági csoportok engedélyezése és a lemeztitkosítás alkalmazása.
 * A virtuális gépek állapotának figyelését.
 
 További információ:
 
 * [Az Azure Security Center bemutatása](../security-center/security-center-intro.md)
-* [Az Azure Security Center gyakran ismételt kérdések](../security-center/security-center-faq.md)
-* [Azure Security Center tervezéséhez és műveletek](../security-center/security-center-planning-and-operations-guide.md)
+* [Az Azure Security Center – gyakori kérdések](../security-center/security-center-faq.md)
+* [Az Azure Security Center tervezéséhez és](../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Megfelelőség
-Az Azure virtuális gépek FISMA, a FedRAMP, a HIPAA, a PCI DSS szintjét 1 és az egyéb kulcs megfelelőségi alkalmazásokhoz minősítéssel. A hitelesítésszolgáltató megkönnyíti a saját Azure-alkalmazások a megfelelőségi követelményeknek és az üzleti számos különböző hazai és nemzetközi szabályozási követelmények teljesítésére.
+Az Azure Virtual Machines a FISMA, a FedRAMP, a HIPAA, a PCI DSS Level 1 és más programok minősítésével megkapta a minősítést. A minősítési megkönnyíti a saját Azure-megfelelőségi követelmények teljesítése érdekében az alkalmazások és a cége számára hazai és nemzetközi szabályozások széles skáláját.
 
 További információ:
 
-* [A Microsoft biztonsági és adatkezelési központ: megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance)
-* [Megbízható felhő: Microsoft Azure biztonsági, adatvédelmi és megfelelőségi](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+* [A Microsoft adatvédelmi központ: megfelelőség](https://www.microsoft.com/en-us/trustcenter/compliance)
+* [A megbízható felhő: Microsoft Azure biztonsági, adatvédelmi és megfelelőségi](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)

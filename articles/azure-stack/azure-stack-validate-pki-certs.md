@@ -1,6 +1,6 @@
 ---
-title: Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványok integrált Azure verem rendszerek telepítés ellenőrzéséhez |} Microsoft Docs
-description: Az Azure verem PKI-tanúsítványok integrált Azure verem rendszerekhez ellenőrzését ismerteti. Ismerteti az Azure verem tanúsítvány ellenőrző eszközének használatával.
+title: Azure Stackkel integrált rendszerek üzembe helyezés az Azure Stack a nyilvános kulcsú infrastruktúra tanúsítványainak ellenőrzése |} A Microsoft Docs
+description: Az Azure Stack PKI-tanúsítványokat az Azure Stack integrált rendszerek ellenőrzését ismerteti. Ismerteti az Azure Stack tanúsítvány ellenőrző eszközt.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,62 +15,62 @@ ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.openlocfilehash: e381d2ed3c6a972d776dd31f311fcebe2e35823a
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605610"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917083"
 ---
-# <a name="validate-azure-stack-pki-certificates"></a>Azure verem PKI-tanúsítványok ellenőrzése
+# <a name="validate-azure-stack-pki-certificates"></a>Az Azure Stack PKI-tanúsítványok ellenőrzése
 
-A jelen cikkben ismertetett Azure verem készültségi ellenőrző eszköz [a PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az eszköz segítségével ellenőrizze, hogy a [generált PKI-tanúsítványok](azure-stack-get-pki-certs.md) alkalmasak a központi telepítés előtti. Tesztelje, majd újból kiadja azokat tanúsítványokat, szükség esetén elegendő időt távozó ellenőriznie kell a tanúsítványokat.
+A jelen cikkben ismertetett Azure Stack készültségi ellenőrző eszköz [a PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az eszköz segítségével ellenőrizze, hogy a [generált PKI-tanúsítványokat](azure-stack-get-pki-certs.md) központi telepítés előtti kiválóan alkalmasak. Ha elegendő időt, tesztelheti és szükség esetén a tanúsítványok, adja ki újból ellenőriznie kell a tanúsítványokat.
 
-A készenléti-ellenőrző eszközt hajtja végre a következő tanúsítvány ellenőrzések:
+A készenléti-ellenőrző eszköz tanúsítványt hoz létre hajtja végre:
 
 - **Olvassa el a PFX**  
-    Érvényes PFX-fájl helyes jelszót keres, és figyelmeztet, ha nyilvános információ nem védi jelszó. 
+    Ellenőrzi, hogy érvényes PFX-fájl helyes jelszót, és figyelmezteti, ha nyilvános információt nem védi a jelszót. 
 - **Aláírási algoritmus**  
     Ellenőrzi, hogy az aláírási algoritmus nem SHA1.
 - **Titkos kulcs**  
-    Ellenőrzi, hogy a titkos kulcs létezik-e, és exportálja a helyi számítógép attribútummal. 
+    Ellenőrzi, hogy a titkos kulcs található, és a helyi gép attribútummal van exportálva. 
 - **Tanúsítványlánc**  
-    Ellenőrzések tanúsítványlánc érintetlen is, hogy önaláírt tanúsítványokat.
+    Ellenőrzések tanúsítványlánc sértetlenek is, hogy önaláírt tanúsítványokat.
 - **DNS-nevek**  
-    A SAN tartalmaz minden végpontra vonatkozó DNS-neveit, vagy egy támogatása jelen-e helyettesítő ellenőrzi.
+    A SAN tartalmaz minden végpont megfelelő DNS-neveit, vagy egy támogatása jelen-e helyettesítő ellenőrzi.
 - **Kulcshasználat**  
-    Ellenőrzi, ha a kulcshasználat a digitális aláírás és kulcstitkosítás tartalmaz, és a kibővített kulcshasználathoz tartalmazza a kiszolgáló hitelesítése és ügyfél-hitelesítéshez.
-- **Kulcs mérete**  
+    Ellenőrzi, ha a kulcshasználat tartalmazza a digitális aláírás és kulcstitkosítás és a kibővített kulcshasználat tartalmazza a kiszolgáló hitelesítése és ügyfél-hitelesítéshez.
+- **Kulcsméret**  
     Ellenőrzi, hogy a kulcs mérete 2048 vagy nagyobb.
-- **Lánc sorrendje**  
-    Ellenőrzi az ellenőrzése, hogy helyes-e a sorrendet, az egyéb tanúsítványok sorrendjét.
+- **Lánc sorrendjében**  
+    Ellenőrzi, hogy helyesen szerepel-e a rendelés érvényesítése többi tanúsítvány sorrendjét.
 - **Más tanúsítványok**  
-    Gondoskodjon arról, hogy nincs más tanúsítványok van csomagolva, PFX nem a megfelelő levéltanúsítvány vagy láncában.
-- **Nincs profil**  
-    Ellenőrzi, hogy egy új felhasználó tudja betölteni a PFX-adatainak nélkül a felhasználói profil betöltése, a csoportosan felügyelt szolgáltatásfiók fiókok viselkedését mimicking tanúsítvány karbantartás során.
+    Győződjön meg arról, nincsenek egyéb tanúsítványok van csomagolva a PFX nem megfelelő levéltanúsítványt vagy láncában.
+- **Profil**  
+    Ellenőrzi, hogy egy új felhasználót betöltheti a PFX-adatainak nélkül betöltődtek, a felhasználói profil mimicking csoportosan felügyelt szolgáltatásfiók fiókok viselkedését a tanúsítványt a karbantartás során.
 
 > [!IMPORTANT]  
-> A PKI-tanúsítványt egy PFX-fájlt, és jelszót kell tekinteni a bizalmas adatokat.
+> A PKI-tanúsítványt egy PFX-fájlt és jelszót kell tekinteni a bizalmas adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rendszer meg kell felelnie a következő előfeltételek PKI-tanúsítványok telepítését bemutató Azure verem érvényesítése előtt:
+A rendszer meg kell felelnie az alábbi előfeltételek PKI-tanúsítványokat az Azure Stack üzembe helyezésének ellenőrzése előtt:
 
-- A Microsoft Azure verem készültségének ellenőrzése
-- A következő exportált SSL tanúsítvány(ok) a [utasítások előkészítése](azure-stack-prepare-pki-certs.md)
+- A Microsoft Azure Stack készültség ellenőrzése
+- A következő exportált SSL tanúsítvány(ok) a [előkészületi útmutatás](azure-stack-prepare-pki-certs.md)
 - DeploymentData.json
 - Windows 10 vagy Windows Server 2016
 
-## <a name="perform-core-services-certificate-validation"></a>Hajtsa végre az alapvető szolgáltatások tanúsítvány érvényesítése
+## <a name="perform-core-services-certificate-validation"></a>Alapvető szolgáltatások tanúsítvány-ellenőrzés végrehajtása
 
-Előkészítéséhez és az Azure verem PKI-tanúsítványok telepítésének és a titkos Elforgatás érvényesítéséhez, tegye a következőket:
+Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tanúsítványok üzembe helyezéséhez és a titkos Elforgatás ellenőrzése:
 
-1. Telepítés **AzsReadinessChecker** egy PowerShell parancssorból (5.1-es vagy újabb), a következő parancsmagot:
+1. Telepítés **AzsReadinessChecker** PowerShell parancssorból (5.1-es vagy újabb), a következő parancsmagot:
 
     ````PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ````
 
-2. A tanúsítvány könyvtárstruktúrát létrehozása. Az alábbi példában a módosíthatja `<c:\certificates>` számára az Ön által választott az új elérési utat.
+2. A tanúsítvány könyvtárstruktúrát létrehozása. Az alábbi példában módosíthatja `<c:\certificates>` , az új elérési utat a választott.
 
     ````PowerShell  
     New-Item C:\Certificates -ItemType Directory
@@ -83,14 +83,14 @@ Előkészítéséhez és az Azure verem PKI-tanúsítványok telepítésének é
     ````
     
     > [!Note]  
-    > Az AD FS és a Graph szükségesek, ha az azonosítási rendszer AD FS használ.
+    > Az AD FS- és Graph szükségesek, ha az AD FS használja, a identitáskezelő rendszerbe.
     
-     - A megfelelő könyvtár az előző lépésben létrehozott helyezze el az (oka) t. Példa:  
+     - A tanúsítvány(ok) jelölje be a megfelelő könyvtárakat az előző lépésben létrehozott. Példa:  
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
         - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
         - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
 
-3. A PowerShell-ablakot, módosítsa az értékeket **RegionName** és **FQDN** az Azure-verem környezetben megfelelő, és futtassa a következő parancsot:
+3. A PowerShell-ablakban módosítsa az értékét **RegionName** és **FQDN** az Azure Stack környezettel való megfelelő, és futtassa a következő:
 
     ````PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
@@ -99,7 +99,7 @@ Előkészítéséhez és az Azure verem PKI-tanúsítványok telepítésének é
 
     ````
 
-4. Ellenőrizze, hogy a kimeneti és az összes tanúsítvány összes tesztjét. Példa:
+4. Ellenőrizze, hogy a kimenet és az összes tanúsítvány adja át az összes teszt. Példa:
 
     ````PowerShell
     AzsReadinessChecker v1.1803.405.3 started
@@ -138,11 +138,11 @@ Előkészítéséhez és az Azure verem PKI-tanúsítványok telepítésének é
 
 ### <a name="known-issues"></a>Ismert problémák
 
-**Jelenség**: kimarad a tesztek
+**Jelenség**: a rendszer kihagyja tesztek
 
 **OK**: AzsReadinessChecker kihagyja bizonyos teszteket, ha egy függőség nem teljesül:
 
- - Más tanúsítványok kimarad a tanúsítványlánc meghibásodásakor.
+ - Ha a tanúsítványlánc nem sikerül, a rendszer kihagyja többi tanúsítvány.
 
     ````PowerShell  
     Testing: ACSBlob\singlewildcard.pfx
@@ -167,19 +167,19 @@ Előkészítéséhez és az Azure verem PKI-tanúsítványok telepítésének é
     AzsReadinessChecker Completed
     ````
 
-**Megoldási**: kövesse az eszköz útmutató alapján minden egyes tanúsítvány teszteket hajtson végre a Részletek területen.
+**Feloldási**: minden egyes tanúsítvány tesztek minden készlete a részletek szakaszában az eszköz útmutatót követve.
 
-## <a name="perform-platform-as-a-service-certificate-validation"></a>Egy szolgáltatás tanúsítvány érvényességi végrehajtásához platform
+## <a name="perform-platform-as-a-service-certificate-validation"></a>Platform végrehajtott egy szolgáltatási tanúsítvány érvényesítése
 
-Használja ezeket a lépéseket az Azure verem PKI-tanúsítványok platform ellenőrzése egy platformszolgáltatási tanúsítványokként Ha SQL/MySQL vagy alkalmazásszolgáltatások telepítések tervbe van véve.
+Segítségével ezeket a lépéseket előkészítése, és ellenőrizze a platform az Azure Stack PKI-tanúsítványokat, a platformszolgáltatás (PaaS) tanúsítványok, ha az SQL vagy MySQL vagy az App Services üzemelő példány tervezett.
 
-1.  Telepítés **AzsReadinessChecker** egy PowerShell parancssorból (5.1-es vagy újabb), a következő parancsmagot:
+1.  Telepítés **AzsReadinessChecker** PowerShell parancssorból (5.1-es vagy újabb), a következő parancsmagot:
 
     ````PowerShell  
       Install-Module Microsoft.AzureStack.ReadinessChecker -force
     ````
 
-2.  Hozzon létre egy beágyazott kivonattáblát tartalmazó elérési útja és a jelszó érvényesítése kellene PaaS tanúsítványokra. A PowerShell-ablakban futtassa:
+2.  Hozzon létre egy beágyazott kivonattáblát tartalmazó elérési út és a jelszót, hogy minden egyes PaaS tanúsítvány érvényességi kellene. A PowerShell-ablakban futtassa:
 
     ```PowerShell
         $PaaSCertificates = @{
@@ -191,12 +191,12 @@ Használja ezeket a lépéseket az Azure verem PKI-tanúsítványok platform ell
         }
     ```
 
-3.  Értékeit **RegionName** és **FQDN** Azure verem környezetét az érvényesítés megkezdéséhez kereséséhez. Ezután futtassa:
+3.  Módosítsa az értékeket a **RegionName** és **FQDN** megfelelően az Azure Stack-környezet indítsa el az ellenőrzést. Majd futtassa ezt:
 
     ```PowerShell
     Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
     ```
-4.  Ellenőrizze, hogy a kimenet, és hogy összes tanúsítvány összes tesztjét.
+4.  Ellenőrizze, hogy a kimenetet, és hogy minden tanúsítvány adja át az összes teszt.
 
     ```PowerShell
     AzsReadinessChecker v1.1805.425.2 started
@@ -245,12 +245,12 @@ Használja ezeket a lépéseket az Azure verem PKI-tanúsítványok platform ell
 
 ## <a name="using-validated-certificates"></a>Ellenőrzött tanúsítványok használatával
 
-Ha a tanúsítványok érvényesítése a AzsReadinessChecker által készen áll is használhatja őket az Azure Alkalmazásveremben üzembe, vagy Azure verem titkos elforgatási. 
+A tanúsítványok ellenőrzése a AzsReadinessChecker szerint, ha készen áll használhatja őket az Azure Stack üzemelő példányban, vagy az Azure Stack titkos elforgatás. 
 
- - Üzembe helyezés esetén biztonságos átvitelére a tanúsítványok a központi telepítés szakértőnek, hogy a megadott központi telepítési gazdagép-kiszolgálóra átmásolhatók a [Azure verem nyilvános kulcsokra épülő infrastruktúra követelményei dokumentáció](azure-stack-pki-certs.md).
- - Titkos elforgatás, használhatja a tanúsítványok következő Azure verem környezetét nyilvános infrastruktúra végpontok régi tanúsítványok frissítése a [Azure verem titkos Elforgatás dokumentáció](azure-stack-rotate-secrets.md).
- - A PaaS-szolgáltatásokra, SQL, a MySQL és az App Services erőforrás-szolgáltatók telepítéséhez Azure verem követve a tanúsítványokat is használhat a [áttekintése Azure verem dokumentációjának szolgáltatásokat kínáló](azure-stack-offer-services-overview.md).
+ - Üzembe helyezés biztonságos módon továbbítja a tanúsítványokat a központi telepítési szakértőhöz, hogy a megadott üzembe helyezési gazdagép alakzatot átmásolhassák az [Azure Stack nyilvános kulcsokra épülő infrastruktúra követelményei dokumentáció](azure-stack-pki-certs.md).
+ - Titkos kód forgatását, használhatja a tanúsítványok frissítése az Azure Stack környezettel nyilvános infrastruktúra-végpontokra régi tanúsítványai a következő a [dokumentáció az Azure Stack titkos Elforgatás](azure-stack-rotate-secrets.md).
+ - PaaS-szolgáltatások, használhatja a tanúsítványok telepítése SQL, a MySQL és az App Services erőforrás-szolgáltatók az Azure Stack a következő a [az Azure Stack-dokumentáció szolgáltatásajánlások áttekintése](azure-stack-offer-services-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-[Datacenter identitásintegráció](azure-stack-integrate-identity.md)
+[Adatközpont-identitásintegráció](azure-stack-integrate-identity.md)

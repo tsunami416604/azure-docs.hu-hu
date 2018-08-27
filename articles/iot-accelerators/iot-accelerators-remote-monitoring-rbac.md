@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8886c08e88c1dd46d2b325b9ba8e9e0b8ae104f9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006501"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886310"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító a szerepköralapú hozzáférés-vezérlés konfigurálása
 
@@ -51,7 +51,7 @@ Az Azure portal használatával adja hozzá, vagy távolítsa el a felhasználó
 
 1. Ellenőrizze a [felhasználó szerepel a könyvtár](../active-directory/fundamentals/add-users-azure-active-directory.md) használ. Döntött, hogy bejelentkezett a könyvtárat a [a Microsoft Azure IoT-Megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators) hely. A könyvtár neve jelenik meg a jobb felső sarkában a [oldal](https://www.azureiotsolutions.com/Accelerators).
 
-1. Keresse meg a **vállalati alkalmazás** a megoldás az Azure Portalon. Az alkalmazás nevét a távoli figyelési megoldás neve. Az alábbi képernyőképen a megoldást és az alkalmazás megjelenített nevek a következők **contoso-rm4**.
+1. Keresse meg a **vállalati alkalmazás** a megoldás az Azure Portalon. Egyszer, a lista szűréséhez beállításával **alkalmazástípus** való **minden alkalmazás**. Keresse meg az alkalmazás által alkalmazás nevére. Az alkalmazás nevét a távoli figyelési megoldás neve. Az alábbi képernyőképen a megoldást és az alkalmazás megjelenített nevek a következők **contoso-rm4**.
 
     ![Vállalati alkalmazás](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 

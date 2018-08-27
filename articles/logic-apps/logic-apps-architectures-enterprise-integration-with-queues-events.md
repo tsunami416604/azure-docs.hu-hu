@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9eef382ea264bcf9e59dcc408d14a59355b0369b
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: ffa61ebfaa58425cd2bf70d9bf78a2e71b672369
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445677"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918483"
 ---
 # <a name="reference-architecture-enterprise-integration-with-queues-and-events"></a>Referenciaarchitektúra: üzenetsorokat és események vállalati integráció
 
@@ -28,6 +28,7 @@ A következő referencia-architektúra, amely egy adatintegrációs alkalmazás 
 ![Architektúradiagram - üzenetsorok és események vállalati integráció](media/logic-apps-architectures-enterprise-integration-with-queues-events/integr_queues_events_arch_diagram.png)
 
 *Az integrációs technológiával számos lehetséges alkalmazások is vannak. Ezek között egy egyszerű, pont-pont típusú alkalmazást a teljes nagyvállalati Azure Service Bus-alkalmazás. Az architektúra sorozat azt írja le, az újrafelhasználható összetevőit, előfordulhat, hogy egy általános integrációs alkalmazások összeállítására vonatkoznak. Architects figyelembe kell venni, hogy melyik azok alkalmazása és az infrastruktúra megvalósításához szükséges összetevőket.*
+<!-- Should previous line be in Italic or asterisks must be escaped? -->
 
 ## <a name="architecture"></a>Architektúra
 

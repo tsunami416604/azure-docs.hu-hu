@@ -1,7 +1,7 @@
 # Áttekintés
 ## [Az Azure-hálózat bemutatása](networking-overview.md)
 ## Architektúra
-### [Virtuális adatközpontok](networking-virtual-datacenter.md)
+### [Virtuális adatközpontok](/azure/architecture/vdc/networking-virtual-datacenter)
 ### [Aszimmetrikus útválasztás több hálózati útvonallal](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Biztonságos hálózatkialakítások](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Küllős topológia](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)

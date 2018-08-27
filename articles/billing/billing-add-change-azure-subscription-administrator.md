@@ -15,16 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: genli
-ms.openlocfilehash: 97210c0d9dba9c4130b1da9ad17a257ff1d81b42
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b0e24e498acd823242b3613abb62df978466d56d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449893"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918312"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Adja hozzá, vagy az Azure-előfizetések rendszergazdáinak módosításáról
 
-Azure-erőforrásokhoz való hozzáférés kezelése, a megfelelő rendszergazdai szerepkörrel kell rendelkeznie. Ez a cikk bemutatja, hogyan hozzáadásához vagy módosításához a rendszergazda szerepkör egy felhasználó az előfizetés szintjén.
+Az Azure-erőforrások hozzáférésének kezeléséhez megfelelő rendszergazdai szerepkörrel kell rendelkeznie. Ez a cikk bemutatja, hogyan hozzáadásához vagy módosításához a rendszergazda szerepkör egy felhasználó az előfizetés szintjén.
+
+> [!div class="nextstepaction"]
+> [Segítheti az Azure számlázási docs](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="what-administrator-role-do-i-use"></a>Milyen rendszergazdai szerepkör használni?
 
@@ -34,16 +37,16 @@ Az Azure számos különböző szerepkörrel rendelkezik. Erőforrásokhoz való
 
 ## <a name="add-an-rbac-owner-for-a-subscription-in-azure-portal"></a>Az RBAC tulajdonosi egy előfizetés hozzáadása az Azure Portalon 
 
-Valaki hozzáadásához az Azure-előfizetésre rendszergazdaként hozzárendelheti azokat a [tulajdonosa](../role-based-access-control/built-in-roles.md#owner) szerepkör (RBAC szerepkör) az előfizetések szintjén. A tulajdonosi szerepkör segítségével felügyelheti az erőforrásokat az előfizetéshez hozzárendelt, és a nem rendelkezik hozzáférési jogosultsággal a más előfizetések.
+Ha valakit egy Azure-előfizetés rendszergazdájaként szeretne hozzáadni, rendelje hozzá a [Tulajdonos](../role-based-access-control/built-in-roles.md#owner) szerepkört (RBAC-szerepkör) az előfizetés hatókörében. A tulajdonosi szerepkör kezelni tudja a hozzárendelt előfizetésben lévő erőforrásokat, és nem rendelkezik hozzáférési jogosultságokkal más előfizetésekhez.
 
 1. Látogasson el [ **előfizetések** az Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-2. Válassza ki az előfizetést, amelyhez hozzáférést szeretne.
+2. Válassza ki azt az előfizetést, amelynek hozzáférést szeretne adni.
 3. Válassza a **Hozzáadás** lehetőséget.
-   (Hiányzik a Hozzáadás gombra, hogy nincs engedélye engedélyek hozzáadásához.)
-4. Válassza ki **hozzáférés-vezérlés (IAM)** a listában.
-5. Az a **szerepkör** jelölje ki **tulajdonosa**. 
-6. Az a **rendelhet hozzáféréseket** jelölje ki **az Azure AD-felhasználó, csoport vagy alkalmazás**. 
-7. Az a **kiválasztása** mezőbe írja be a tulajdonosként hozzáadni kívánt felhasználó e-mail-címét. Válassza ki a felhasználót, és válassza **mentése**.
+   (Ha hiányzik a Hozzáadás gomb, nincs engedélye engedélyek hozzáadására.)
+4. Válassza a listában a **Hozzáférés-vezérlés (IAM)** elemet.
+5. A **Szerepkör** mezőben válassza a **Tulajdonos** elemet. 
+6. A **Hozzáférés hozzárendelése** mezőben válassza az **Azure AD, felhasználó, csoport vagy alkalmazás** elemet. 
+7. A **Kiválasztás** mezőbe írja be annak a felhasználónak az e-mail-címét, amelyet tulajdonosként szeretne hozzáadni. Válassza ki a felhasználót, majd válassza a **Mentés** lehetőséget.
 
     ![A tulajdonosi szerepkörrel, kijelölt bemutató képernyőkép](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
@@ -51,7 +54,7 @@ Ez hozzáférést biztosít a felhasználó teljes az összes olyan erőforráso
 
 ## <a name="add-or-change-co-administrator"></a>Adja hozzá, vagy módosítsa a társ-rendszergazdaként
 
-Csak egy [tulajdonosa](../role-based-access-control/built-in-roles.md#owner) társadminisztrátorként felveheti. A szerepkörökben, például más felhasználók [közreműködői](../role-based-access-control/built-in-roles.md#contributor) és [olvasó](../role-based-access-control/built-in-roles.md#reader) nem vehető fel társadminisztrátorként.
+Csak [Tulajdonos](../role-based-access-control/built-in-roles.md#owner) adható hozzá társadminisztrátorként. A más, például [közreműködői](../role-based-access-control/built-in-roles.md#contributor) és [olvasói](../role-based-access-control/built-in-roles.md#reader) szerepkörrel rendelkező felhasználók nem adhatók hozzá társadminisztrátorokként.
 
 > [!TIP]
 > Csak ki kell a tulajdonos hozzáadása társadminisztrátorként, ha a felhasználónak van szüksége az Azure klasszikus üzembe helyezés kezelése. Azt javasoljuk, hogy az RBAC használatával más célokra.

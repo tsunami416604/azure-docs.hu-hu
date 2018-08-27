@@ -1,16 +1,16 @@
 ### <a name="prerequisites"></a>Előfeltételek
-* A [ProjectOnline](https://products.office.com/Project/project-online-with-project-for-office-365) fiók 
+* A [Project Online](https://products.office.com/Project/project-online-with-project-for-office-365) fiók 
 
-A ProjectOnline fiókját a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás ProjectOnline fiókjához. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
+A Project online-fiók, a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás a Project Online-fiókhoz való csatlakozáshoz. Szerencsére a ehhez egyszerűen, a logikai alkalmazás az Azure Portal webhelyen belül. 
 
-A Logic Apps alkalmazást ProjectOnline fiókjához történő engedélyezéséhez lépései a következők:
+A logikai alkalmazás a Project Online-fiókhoz való csatlakozás engedélyezése lépései a következők:
 
-1. A Logic app designer ProjectOnline, kapcsolat létrehozásához válassza **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *ProjectOnline* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
-   ![1. lépés ProjectOnline](./media/connectors-create-api-projectonline/projectonline-1.png)
-2. Ha még nem hozott létre előtt ProjectOnline fennálló kapcsolatokat, a rendszer ProjectOnline hitelesítő adatok megadása fog kérni. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használandó, és ProjectOnline fiókja adatok eléréséhez:  
-   ![2. lépés ProjectOnline](./media/connectors-create-api-projectonline/projectonline-2.png)
-3. A ProjectOnline felhasználónevet és jelszót kell megadniuk a Logic Apps alkalmazást engedélyezése:  
-   ![3. lépés ProjectOnline](./media/connectors-create-api-projectonline/projectonline-3.png)   
-4. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
-   ![4. lépés ProjectOnline](./media/connectors-create-api-projectonline/projectonline-4.png)   
+1. Hozzon létre egy kapcsolatot a Project Online, a Logic app Designerben, jelölje be **megjelenítése a Microsoft által felügyelt API-k** a legördülő listában adja meg *Project Online* kifejezést a keresőmezőbe. Válassza ki az eseményindítót vagy műveletet fogja kíván használni:  
+   ![Project Online 1. lépés.](./media/connectors-create-api-projectonline/projectonline-1.png)
+2. Ha még nem hozott létre a Project Online előtt kapcsolatokat, első kéri a Project online hitelesítő adatokat. Ezekkel a hitelesítő adatokkal kapcsolódni a logikai alkalmazás hitelesítéséhez használható, és a Project Online-fiókhoz tartozó adatok eléréséhez:  
+   ![Project Online 2. lépés.](./media/connectors-create-api-projectonline/projectonline-2.png)
+3. Adja meg a Project Online felhasználónevet és jelszót, hogy a logikai alkalmazás engedélyezése:  
+   ![Project Online 3. lépés.](./media/connectors-create-api-projectonline/projectonline-3.png)   
+4. Figyelje meg, hogy a kapcsolat létrejött, és most már szabadon folytassa a további lépésekkel, a logikai alkalmazásban:  
+   ![Project Online 4. lépés.](./media/connectors-create-api-projectonline/projectonline-4.png)   
 

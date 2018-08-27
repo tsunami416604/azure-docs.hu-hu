@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Előfeltételek
 * Egy [RSS](https://wikipedia.org/wiki/RSS) fiók  
 
-RSS-fiókját a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazást az RSS-fiókjához. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon.  
+Az RSS-fiókja, a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás az RSS-fiókhoz való csatlakozáshoz. Szerencsére a ehhez egyszerűen, a logikai alkalmazás az Azure Portal webhelyen belül.  
 
-A Logic Apps alkalmazást RSS fiókjához történő engedélyezéséhez lépései a következők:  
+A logikai alkalmazás az RSS-fiókhoz való csatlakozás engedélyezése lépései a következők:  
 
-1. RSS-, VPN-kapcsolat létrehozásához a Logic app tervezőben, válassza ki a **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *RSS* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
-   ![RSS kapcsolat létrehozását lépést](./media/connectors-create-api-rss/rss-1.png)  
-2. Válassza ki **hozható létre kapcsolat** :  
-   ![RSS kapcsolat létrehozását lépést](./media/connectors-create-api-rss/rss-2.png)  
-3. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
-   ![RSS kapcsolat létrehozását lépést](./media/connectors-create-api-rss/rss-3.png)  
+1. A Logic app Designerben az RSS-hez, a kapcsolat létrehozásához válassza **megjelenítése a Microsoft által felügyelt API-k** a legördülő listában adja meg *RSS* kifejezést a keresőmezőbe. Válassza ki az eseményindítót vagy műveletet fogja kíván használni:  
+   ![Az RSS-kapcsolat létrehozási lépés](./media/connectors-create-api-rss/rss-1.png)  
+2. Válassza ki **hozzon létre kapcsolatot** :  
+   ![Az RSS-kapcsolat létrehozási lépés](./media/connectors-create-api-rss/rss-2.png)  
+3. Figyelje meg, hogy a kapcsolat létrejött, és most már szabadon folytassa a további lépésekkel, a logikai alkalmazásban:  
+   ![Az RSS-kapcsolat létrehozási lépés](./media/connectors-create-api-rss/rss-3.png)  
 

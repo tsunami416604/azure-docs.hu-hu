@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 20bd2d61671d89a5c2a13525ea119595cf0b7c93
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 0951b0ee8a1b92f94dd06bfad831b3dd9a9e967c
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42058758"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918217"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gépek soros konzolja (előzetes verzió) 
 
@@ -35,9 +35,10 @@ A soros konzol dokumentációja a Windows virtuális gépek esetében [ide](../w
 ## <a name="prerequisites"></a>Előfeltételek 
 
 * A resource management üzemi modellhez kell használnia. Klasszikus üzemi modellben nem támogatottak. 
-* A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve 
+* A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 * A soros konzol használatával a fióknak rendelkeznie kell [közreműködői szerepkört](../../role-based-access-control/built-in-roles.md) virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiókot. 
 * Linux-disztribúciók jellemző beállításait, lásd: [a soros konzol eléréséhez linuxhoz](#access-serial-console-for-linux)
+
 
 
 ## <a name="open-the-serial-console"></a>A soros konzol megnyitása
@@ -65,7 +66,7 @@ Soros konzolon keresztül szerint az egész előfizetésre letiltható a [tiltsa
 Azt is megteheti, előfordulhat, hogy használja az alábbi parancsokat készletét a Cloud Shellben (bash-parancsok látható) letiltása, engedélyezése és egy előfizetést a soros konzol biztonságtiltott állapotának megtekintése. 
 
 * Előfizetés a soros konzol letiltott állapotának lekéréséhez:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -73,7 +74,7 @@ Azt is megteheti, előfordulhat, hogy használja az alábbi parancsokat készlet
     $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
     ```
 * Soros konzol egy előfizetés letiltása:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -81,7 +82,7 @@ Azt is megteheti, előfordulhat, hogy használja az alábbi parancsokat készlet
     $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
     ```
 * Soros konzol egy előfizetés engedélyezése:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -139,7 +140,7 @@ Oracle Linux        | Az Azure-ban elérhető Oracle Linux-rendszerképeket hozz
 Egyéni Linux-rendszerképek     | A Linux rendszerű virtuális gép egyéni rendszerkép soros konzol engedélyezéséhez a parancsot egy terminálban a futtathatók ttyS0 /etc/inittab hozzáféréséhez a konzolhoz. Íme egy példa hozzáadja a a inittab fájlban: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Megfelelően az egyéni lemezképek létrehozásával kapcsolatos további információkért lásd: [létrehozása és feltöltése az Azure-ban Linux rendszerű virtuális merevlemez](https://aka.ms/createuploadvhd).
 
 ## <a name="errors"></a>Hibák
-A legtöbb hiba átmeneti jellegű, és ezek gyakran a soros konzol kapcsolat újrapróbálkozás címek. Táblázat alatti hibák és kockázatcsökkentési listája látható. 
+A legtöbb hiba átmeneti jellegű, és ezek gyakran a soros konzol kapcsolat újrapróbálkozás címek. Az alábbi táblázat azon hibákat és kezelési lehetőségeiket listáját
 
 Hiba                            |   Kezelés 
 :---------------------------------|:--------------------------------------------|
@@ -154,7 +155,7 @@ Sok továbbra is szakaszaiban az előzetes verzió a soros hozzáféréshez, dol
 Probléma                           |   Kezelés 
 :---------------------------------|:--------------------------------------------|
 A virtual machine scale set példány soros konzol nem választható |  Előzetes verzió idején a virtuális gép méretezési csoport példányaihoz a soros konzoljához való hozzáférés nem támogatott.
-Szerezze meg, miután a kapcsolaton transzparens nem jeleníti meg a napló-parancssorban | [Szerezze meg a adja meg, nincs semmi hatása.](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)
+Szerezze meg, miután a kapcsolaton transzparens nem jeleníti meg a napló-parancssorban | Tekintse át ezt oldal: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez akkor fordulhat elő, ha egy egyéni virtuális Gépet, megerősített készülék vagy megfelelően csatlakozni a soros port sikertelen Linux okozó GRUB konfigurációs futtatja.
 Egy "Tiltott" válasz fordult elő a virtuális gép rendszerindítás-diagnosztikai tárfiók elérésekor. | Győződjön meg arról, hogy a rendszerindítási diagnosztika nincs egy fiók tűzfal. Egy elérhető rendszerindítás-diagnosztikai tárfiók a soros konzol működéséhez szükséges.
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: fd1e10239d63417a21eb6f76017539ec0d447258
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 44b4da7c293da0643fb88cc2de21433c6ea72c5c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224802"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886404"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A biztonsági mentési és visszaállítási funkciójának [Azure App Service](app-service-web-overview.md) könnyedén hozhat létre alkalmazást biztonsági mentések manuális vagy ütemezett teszi lehetővé. Az alkalmazás írja felül a meglévő alkalmazás vagy egy másik alkalmazásba való visszaállítása visszaállíthatja egy korábbi állapotáról pillanatképet. 
@@ -55,6 +55,7 @@ A következő adatbázis-megoldások biztonsági mentési szolgáltatás támoga
 * Biztonsági másolatok az alkalmazás- és tartalom legfeljebb 10 GB is lehet. Ha a biztonsági másolat mérete túllépi ezt a korlátot, hibaüzenetet kap.
 * Az SSL biztonsági mentések engedélyezve Azure Database MySQL nem támogatott. Ha egy biztonsági mentés van beállítva, a sikertelen biztonsági mentések kap.
 * SSL biztonsági másolatait engedélyezve az Azure-adatbázis PostgreSQL nem támogatott. Ha egy biztonsági mentés van beállítva, a sikertelen biztonsági mentések kap.
+* Alkalmazáson belüli MySQL-adatbázisok készül automatikusan biztonsági másolat konfigurálása nélkül. Ha manuálisan beállításait az alkalmazáson belüli MySQL-adatbázisok, például a kapcsolati karakterláncokhoz, előfordulhat, hogy a biztonsági mentések nem működik megfelelően.
 * Tárfiók tűzfal használata engedélyezve van, a biztonsági másolatok a cél nem támogatott. Ha egy biztonsági mentés van beállítva, a sikertelen biztonsági mentések kap.
 
 
@@ -85,7 +86,9 @@ A következő adatbázis-megoldások biztonsági mentési szolgáltatás támoga
     ![Tárfiók kiválasztása](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
-   > Egy adatbázis megjelenik a listában, a kapcsolati karakterlánc szerepelniük kell a **kapcsolati karakterláncok** szakaszában a **Alkalmazásbeállítások** az alkalmazás lapját.
+   > Egy adatbázis megjelenik a listában, a kapcsolati karakterlánc szerepelniük kell a **kapcsolati karakterláncok** szakaszában a **Alkalmazásbeállítások** az alkalmazás lapját. 
+   >
+   > Alkalmazáson belüli MySQL-adatbázisok készül automatikusan biztonsági másolat konfigurálása nélkül. Ha manuálisan beállításait az alkalmazáson belüli MySQL-adatbázisok, például a kapcsolati karakterláncokhoz, előfordulhat, hogy a biztonsági mentések nem működik megfelelően.
    > 
    > 
 6. Az a **biztonsági mentés konfigurációja** kattintson **mentése**.    

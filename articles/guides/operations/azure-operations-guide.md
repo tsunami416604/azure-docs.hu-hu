@@ -13,14 +13,14 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 08/21/2018
+ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 286b9b133bfbe633ad1fe69f66aa11b9e4c4fc1d
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 8c799ad90057c53d648ba1e103c251a0e6d6cf88
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059645"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918719"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
@@ -467,44 +467,29 @@ Ha szeretne engedélyezése a felhasználók számára, hogy rendelkezik a táro
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
-
-Virtuális hálózatok olyan virtuális gépek közötti kommunikáció támogatásához szükséges. Határozza meg, alhálózatok, a egyéni IP-címet, a DNS-beállítások, a biztonsági szűrést, és a terheléselosztás. VPN-átjáró vagy ExpressRoute-kapcsolatcsoport használatával kapcsolódhat az Azure virtuális hálózatok a helyszíni hálózatok.
-
-### <a name="use-cases"></a>Használati esetek
-
-Nincsenek Azure-hálózatok számára a különböző használati helyzetekhez.
+Virtuális hálózatok olyan virtuális gépek közötti kommunikáció támogatásához szükséges. Határozza meg, alhálózatok, a egyéni IP-címet, a DNS-beállítások, a biztonsági szűrést, és a terheléselosztás. Az Azure támogatja különböző használati esetek: hálózatok csak felhőalapú vagy hibrid virtuális hálózatok. 
 
 **Kizárólag felhőalapú virtuális hálózatok**
 
 Egy Azure virtuális hálózatra, alapértelmezés szerint csak az Azure-ban tárolt erőforrások érhető el. Az azonos virtuális hálózathoz csatlakozó erőforrás kommunikálhatnak egymással. Társítsa a virtuális géphez tartozó hálózati adapter és a egy nyilvános IP-címet a virtuális gép az interneten keresztül elérhető legyen a terheléselosztók. A nyilvánosan elérhető erőforrásokhoz való biztonságos hozzáférést segíthet a hálózati biztonsági csoport használatával.
 
-**Létesítmények közötti virtuális hálózatok**
+![Az Azure Virtual Network 2 szintű webalkalmazás számára](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+
+**Hibrid virtuális hálózatok**
 
 Egy helyszíni hálózat csatlakozhat egy Azure virtuális hálózaton, ExpressRoute és a egy helyek közötti VPN-kapcsolat használatával. Ebben a konfigurációban az Azure virtuális hálózat lényegében egy felhőalapú bővítmény a helyszíni hálózat.
+![Hibrid virtuális hálózati VPN használatával](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
 Az Azure virtuális hálózat a helyszíni hálózathoz csatlakozik, mert a létesítmények közötti virtuális hálózatok kell használnia a címtér a szervezet által használt egyedi részéhez. Azonos módon, amely a különböző vállalati helyek vannak hozzárendelve egy adott IP-alhálózatot Azure, a hálózat kiterjesztésére válik egy másik helyre.
-
-### <a name="deploying-a-virtual-network"></a>Virtuális hálózat üzembe helyezése
-
 Többféle módon is üzembe helyezése egy virtuális hálózatot.
+- [Portál](../..//virtual-network/quick-create-portal.md)
+- [PowerShell](../../virtual-network/quick-create-powershell.md)
+- [Parancssori felület (CLI)](../../virtual-network/quick-create-cli.md)
+- Az Azure Resource Manager-sablonok
 
-**Portál**
+>**Mikor érdemes használni**: dolgozik, az Azure-beli virtuális gépekkel, bármikor, virtuális hálózatokkal működnek. Ez lehetővé teszi a nyilvános és privát alhálózat hasonló a helyszíni adatközpontjaik között, a virtuális gépek szegmentálja. 
 
-Azure-beli virtuális hálózathoz az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférés. Új virtuális hálózat üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Új virtuális gép létrehozásakor a portálon válassza ki a meglévő virtuális hálózattal, vagy hozzon létre egy újat. További információkért lásd: [hozzon létre egy virtuális hálózatot az Azure portal használatával](../../virtual-network/quick-create-portal.md).
-
-Mellett üzembe helyezése az Azure Portalról az Azure virtuális hálózat, telepíthet egy Azure Resource Manager-sablon a portálon. Ez telepítését és konfigurálását összes erőforrást, mert definiálva a sablonban, beleértve az összes virtuális hálózati erőforrások. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
-
-**PowerShell**
-
-Üzembe helyezése Azure-beli virtuális hálózathoz a PowerShell használatával lehetővé teszi a teljes üzembe helyezés automatizálása a storage-fiókot. További információkért lásd: [virtuális hálózat létrehozása a PowerShell-lel](../../virtual-network/quick-create-powershell.md).
-
-Külön-külön telepítése az Azure-erőforrások, mellett az Azure PowerShell-modul segítségével egy Azure Resource Manager-sablon üzembe helyezése. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md).
-
-**Parancssori felület (CLI)**
-
-Csakúgy, mint a PowerShell-modult az Azure parancssori felületének biztosít az üzembe helyezési automatizálást, és a Windows, OS X vagy Linux rendszerek is használhatók. Használhatja az Azure CLI **hálózati virtuális hálózat létrehozása** paranccsal hozzon létre egy virtuális hálózatot. További információkért lásd: [virtuális hálózat létrehozása az Azure CLI-vel](../../virtual-network/quick-create-cli.md).
-
-Hasonlóképpen az Azure CLI használatával egy Azure Resource Manager-sablon üzembe helyezése. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md).
+>**Első lépések**: Azure-beli virtuális hálózathoz az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférés. Új virtuális hálózat üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Új virtuális gép létrehozásakor a portálon válassza ki a meglévő virtuális hálózattal, vagy hozzon létre egy újat. Első lépések és [hozzon létre egy virtuális hálózatot az Azure portal használatával](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Hozzáférés és biztonság a virtuális hálózatokban
 

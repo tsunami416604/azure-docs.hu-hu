@@ -1,90 +1,91 @@
 ---
-title: IPv6-alapú, az Azure Load Balancer áttekintése |} Microsoft Docs
-description: IPv6-támogatás az Azure terheléselosztó és a virtuális gépek elosztott terhelésű ismertetése.
+title: IPv6 és az Azure Load Balancer – áttekintés |} A Microsoft Docs
+description: IPv6-támogatás az Azure Load Balancer és az elosztott terhelésű virtuális gépek ismertetése.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
-keywords: IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
+keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.assetid: 6a1d583f-a305-40fd-a94b-fa42e1943bbb
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 08/24/2018
 ms.author: kumud
-ms.openlocfilehash: 9622ad4922aa98efe093e7f809a490a8797eb1fd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc7cda30beaea8a9e15794c9330832e9ca651eb7
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30189664"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918688"
 ---
-# <a name="overview-of-ipv6-for-azure-load-balancer"></a>IPv6-alapú, az Azure Load Balancer áttekintése
+# <a name="overview-of-ipv6-for-azure-load-balancer"></a>IPv6 és az Azure Load Balancer áttekintése
 
 
 >[!NOTE] 
->Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. Standard terheléselosztó kapcsolatos további információkért lásd: [szabványos Load Balancer áttekintése](load-balancer-standard-overview.md).
+>Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. A Standard Load Balancer kapcsolatos további információkért lásd: [Standard Load Balancer áttekintése](load-balancer-standard-overview.md).
 
-Az Internet felé néző terheléselosztók üzembe helyezhetők IPv6-címet. IPv4-kapcsolatot, valamint lehetővé teszi a következő lehetőségeket:
+Internetkapcsolattal rendelkező load Balancer terheléselosztók is üzembe helyezhetők az IPv6-címet. IPv4-kapcsolatot, felül lehetővé teszi a következő képességekkel:
 
-* Natív végpont IPv6-kapcsolatot nyilvános internetes ügyfelek és az Azure virtuális gépek (VM) között a terheléselosztó keresztül.
-* Natív végpont IPv6-alapú kimenő kapcsolatok virtuális gépek és a nyilvános Internet IPv6-kompatibilis ügyfelek között.
+* Natív teljes körű IPv6-kapcsolatot nyilvános internetes ügyfelek és az Azure Virtual Machines (VM-EK) között a terheléselosztón keresztül.
+* Natív teljes körű IPv6 kimenő kapcsolat virtuális gépek és a nyilvános interneten IPv6-kompatibilis ügyfelek között.
 
-A következő kép bemutatja, az IPv6 működése az Azure Load Balancer.
+A következő képen látható az IPv6 működése az Azure Load Balancerhez mutatja be.
 
-![Azure Load Balancer IPv6](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
+![Az Azure Load Balancer konfigurálása IPv6-tal](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
 
-Amennyiben telepített, egy IPv4- vagy IPv6-kompatibilis internetes ügyfél tud kommunikálni a nyilvános IPv4- vagy IPv6-címek (vagy állomásnevek) Azure Internet felé néző terheléselosztó. A terheléselosztó az IPv6-csomagokat a saját IPv6-címek a virtuális gépek használata a hálózati címfordítás (NAT) továbbítja. Az IPv6-alapú internetes ügyfél nem tud közvetlenül kommunikálni az IPv6-címet a virtuális gépek.
+Miután üzembe helyezte egy IPv4- vagy IPv6-kompatibilis internetes ügyfél kommunikálhat a nyilvános IPv4 vagy IPv6-cím (vagy a gazdanév) az Azure internetkapcsolattal rendelkező Load Balancer. A load balancer továbbítja az IPv6-csomagokat a magánhálózati IPv6-címek a virtuális gépek hálózati címfordítás (NAT) használatával. Az IPv6-alapú internetes ügyfél nem tud közvetlenül kommunikálni az IPv6-címet a virtuális gépek.
 
 ## <a name="features"></a>Szolgáltatások
 
-Azure Resource Manager használatával telepített virtuális gépek natív IPv6-támogatást biztosít:
+Az Azure Resource Manageren keresztül üzembe helyezett virtuális gépek natív IPv6 protokoll támogatását biztosítja:
 
-1. IPv6-alapú szolgáltatások terhelésű az IPv6-ügyfelek az interneten
-2. Natív IPv6 és IPv4-alapú végpontok ("kettős halmozott") virtuális gépeken
+1. Elosztott terhelésű IPv6-alapú szolgáltatások az IPv6-ügyfelek az interneten
+2. ("Kettős-ig halmozott") virtuális gépek natív IPv6 és IPv4 végpontok
 3. Bejövő és kimenő által kezdeményezett natív IPv6-kapcsolatok
-4. Támogatott protokollok-pl.: TCP, UDP és HTTP (S) engedélyezése számos különféle szolgáltatás architektúrák
+4. Támogatott protokollok, mint például a TCP, UDP és HTTP (S) engedélyezése a szolgáltatásarchitektúrák széles köre
 
 ## <a name="benefits"></a>Előnyök
 
 Ez a funkció lehetővé teszi, hogy a fő előnyei a következők:
 
-* Felel meg, hogy új alkalmazások számára elérhető, hogy csak IPv6-alapú ügyfelek igénylő kormányzati szabályzat
-* Enable mobil és az eszközök internetes hálózata (IOT) fejlesztők kettős halmozott (IPv4 + IPv6) Azure virtuális gépek használata a növekvő mobile & IOT piacok megoldására
+* Felel meg, hogy új alkalmazások elérhetők lesznek a csak IPv6-alapú ügyfelek igénylő hatósági szabályozás alá eső
+* Enable mobil- és Internet of things (IOT) fejlesztők számára, hogy kettős-ig halmozott (IPv4 + IPv6) az Azure Virtual Machines használatával oldja meg az egyre bővülő mobil- és IOT-piacokon
 
 ## <a name="details-and-limitations"></a>Részletek és korlátozások
 
 Részletek
 
-* Az Azure DNS szolgáltatást tartalmaz, mind az IPv4 és IPv6 AAAA neve rekordok, és válaszol, a terheléselosztóhoz tartozó bejegyzéseket. Az ügyfél úgy dönt, hogy mely címet (IPv4 vagy IPv6) való kommunikációhoz.
-* Ha egy virtuális Gépet egy nyilvános Internet IPv6-csatlakozóval csatlakoztatott eszközök kapcsolatot kezdeményez, a virtuális gép forrás IPv6-cím, hálózati cím lefordított (NAT) a terheléselosztó a nyilvános IPv6-címére.
-* A Linux operációs rendszert futtató virtuális gépek kell állítani a DHCP IPv6-alapú IP-címét. A Linux-lemezképek, az Azure katalógusában számos már konfigurált IPv6-alapú módosítás nélkül támogatja. További információkért lásd: [DHCPv6 konfigurálása Linux virtuális gépekhez](load-balancer-ipv6-for-linux.md)
-* Ha egy állapotmintáihoz használni a terheléselosztóhoz, egy IPv4-alapú mintavétel létrehozása, és az IPv4 és IPv6-végpontok együtt használja azt. Ha a virtuális gépre a szolgáltatás leáll, az IPv4 és IPv6-végpontok kiveszik elforgatás.
+* Az Azure DNS szolgáltatással mind az IPv4 és IPv6-alapú AAAA típusú neve rekordokat tartalmaz, és mindkét rögzíti a terheléselosztó fűzi hozzá. Az ügyfél úgy dönt, hogy mely címet (IPv4 vagy IPv6) való kommunikációhoz.
+* Amikor egy virtuális Gépet egy nyilvános internetes IPv6-csatlakoztatott eszközök-kapcsolatot kezdeményez, a virtuális gép forrás IPv6-cím az hálózati cím lefordított (NAT) a terheléselosztó a nyilvános IPv6-címére.
+* DHCP IPv6-alapú IP-címet kapnak a Linux operációs rendszert futtató virtuális gépeket kell konfigurálni. A Linux-rendszerképeket az Azure katalógusában számos már konfigurálva vannak az IPv6 támogatása módosítás nélkül. További információkért lásd: [DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez](load-balancer-ipv6-for-linux.md)
+* Ha a terheléselosztó egy állapotminta használata mellett dönt, egy IPv4-mintavételt hozzon létre, és vele az IPv4- és IPv6-végponttal rendelkező. Ha a virtuális Gépen a szolgáltatás leáll, az IPv4- és IPv6-végpontok vannak a rotációból.
 
 Korlátozások
 
-* Nem adható hozzá az IPv6 terheléselosztási szabályok az Azure portálon. A szabályok csak a sablon, CLI-t, a PowerShell segítségével hozhatók létre.
-* Előfordulhat, hogy nem frissít meglévő virtuális gépek IPv6-címek használatát. Új virtuális gépeket kell telepítenie.
-* Minden virtuális gép egyetlen hálózati adapter egy IPv6-cím is hozzárendelhető.
-* A nyilvános IPv6-címek egy virtuális Gépet nem lehet hozzárendelni. Is csak rendelni egy terheléselosztót.
-* A DNS-címkeresés a nyilvános IPv6-címek nem konfigurálható.
-* Az IPv6-címeket a virtuális gépek nem lehetnek tagjai az Azure-Felhőszolgáltatásban. Akkor lehet csatlakoztatni az Azure Virtual Network (VNet), és az IPv4-címét keresztül kommunikálnak egymással.
-* Saját IPv6-címek egy erőforráscsoportot az egyes virtuális gépek telepíthetők, de nem telepíthető az egy erőforráscsoport keresztül méretezési készlet.
-* Azure virtuális gépek más virtuális gépek, más Azure-szolgáltatások vagy a helyszíni eszközök IPv6-kapcsolaton keresztül nem tud csatlakozni. Csak kommunikálhatnak az Azure load balancer IPv6-kapcsolaton keresztül. Azonban amelyekkel kommunikálhatnak IPv4 használatával ezek más erőforrások.
-* Hálózati biztonsági csoport (NSG) a védelem IPv4 protokoll kettős verem (IPv4 + IPv6) telepítések esetén támogatott. Az NSG-k nem vonatkoznak az IPv6-végpontot.
-* Az IPv6-végpont a virtuális gép nincs kitéve közvetlenül az interneten. Egy terheléselosztó mögött van. Csak azokat a portokat a terheléselosztási szabály megadott IPv6-kapcsolaton keresztül érhetők el.
-* Az IPv6 az megváltoztatása a IdleTimeout paraméter **jelenleg nem támogatott**. Az alapértelmezett érték négy perc.
-* Az IPv6 az megváltoztatása a loadDistributionMethod paraméter **jelenleg nem támogatott**.
-* IPv6-alapú IP-címek fenntartott (ahol IP = static) vannak **jelenleg nem támogatott**.
+* IPv6-alapú terheléselosztási szabályok nem adhat hozzá az Azure Portalon. A szabályok csak a sablon, CLI, a PowerShell segítségével lehet létrehozni.
+* Előfordulhat, hogy nem frissít a meglévő virtuális gép IPv6-címek használata. Új virtuális gépeket kell telepítenie.
+* Egyetlen IPv6-címet minden virtuális gép egyetlen hálózati adapter is hozzárendelhető.
+* Nyilvános IPv6-címek nem rendelhetők a virtuális géphez. Is csak rendelni egy terheléselosztó.
+* A fordított irányú DNS-címkeresés nem konfigurálhatja a nyilvános IPv6-címek esetén.
+* Az IPv6-címekkel rendelkező virtuális gépek nem lehetnek tagjai az Azure-Felhőszolgáltatásban. Akkor csatlakozhat egy Azure virtuális hálózaton (VNet), és IPv4-címeik keresztül kommunikálnak egymással.
+* Magánhálózati IPv6-címekhez egy erőforráscsoportba tartozó egyes virtuális gépekhez is telepíthetők, de nem helyezhető üzembe helyezzen egy erőforráscsoportban méretezési csoportok segítségével.
+* Az Azure virtuális gépek más virtuális gépeket, más Azure-szolgáltatások vagy a helyszíni eszközök IPv6 protokollon keresztül nem tud kapcsolódni. Ezek csak kommunikálhat az Azure load balancer IPv6 protokollon keresztül. Azonban, amellyel kommunikálhat a IPv4 használata a többi erőforrás.
+* Kettős vermű (IPv4 + IPv6) központi telepítések IPv4 védelmét a hálózati biztonsági csoport (NSG) használata támogatott. Az NSG-k nem vonatkoznak az IPv6-os végpontjaiig.
+* A virtuális gépen az IPv6 végpont nem érintkező közvetlenül az interneten. Egy terheléselosztó mögött van. Csak azokat a portokat, a load balancer-szabályok megadott IPv6 protokollon keresztül érhetők el.
+* IPv6-os protokoll az IdleTimeout paraméter módosítása **jelenleg nem támogatott**. Az alapértelmezett érték négy percet.
+* IPv6-os protokoll loadDistributionMethod paraméter módosítása **jelenleg nem támogatott**.
+* IPv6-alapú IP-címek fenntartott (ahol címekre statikus =) vannak **jelenleg nem támogatott**.
+* NAT64 (fordítás, IPv4, IPv6) nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 
-A terheléselosztó IPv6 telepítésének megismerése.
+Ismerje meg, hogyan helyezhet üzembe egy terheléselosztó konfigurálása IPv6-tal.
 
-* [IPv6 régiónként rendelkezésre állása](https://go.microsoft.com/fwlink/?linkid=828357)
-* [Központi telepítése egy terheléselosztó IPv6-sablon használatával](load-balancer-ipv6-internet-template.md)
-* [A terheléselosztó és az IPv6 az Azure PowerShell telepítése](load-balancer-ipv6-internet-ps.md)
-* [Egy Azure CLI-vel rendelkező IPv6-alapú terheléselosztó telepítése](load-balancer-ipv6-internet-cli.md)
+* [IPv6-alapú régiónkénti elérhetőségét](https://go.microsoft.com/fwlink/?linkid=828357)
+* [A terheléselosztó üzembe helyezéséhez és az IPv6-sablon használatával](load-balancer-ipv6-internet-template.md)
+* [A terheléselosztó üzembe helyezéséhez és az IPv6 Azure PowerShell-lel](load-balancer-ipv6-internet-ps.md)
+* [A terheléselosztó üzembe helyezéséhez és az IPv6 Azure CLI használatával](load-balancer-ipv6-internet-cli.md)
