@@ -14,18 +14,18 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 9301291381450d20b387db42fbfc715988b6a149
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: d19fc4290f32359d3af66d96512f65abb17f5d34
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42055719"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918623"
 ---
 # <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Oktatóanyag: Honosított leküldéses értesítések küldése iOS-eszközök Azure Notification Hubs használatával 
+
 > [!div class="op_single_selector"]
 > * [Windows Áruház C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
-> 
 
 Az oktatóanyag bemutatja, hogyan használható a [sablonok](notification-hubs-templates-cross-platform-push-messages.md) honosított nyelvét és az eszköz által legfrissebb hírekről szóló értesítések küldhetők az Azure Notification hubs szolgáltatás. Ebben az oktatóanyagban először az iOS-alkalmazás létrehozott [A legfrissebb hírek elküldése a Notification Hubs használatával]. Amikor végzett, regisztráljon az Önt érdeklő kategóriák, adja meg a nyelvet, amelyen az értesítések fogadásához és a kiválasztott kategóriákra csak leküldéses értesítések fogadása az adott nyelveken.
 
@@ -42,8 +42,8 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 > * A sablon honosított értesítések küldése a .NET-Konzolalkalmazás
 > * A sablon honosított értesítések küldése az eszközről
 
-
 ## <a name="overview"></a>Áttekintés
+
 A [A legfrissebb hírek elküldése a Notification Hubs használatával], egy alkalmazást, amelyet használni létrehozott **címkék** előfizetés az értesítésekre, a másik hírkategóriák. Számos alkalmazás, azonban több piacok cél és honosítási igényelnek. Ez azt jelenti, hogy a tartalom értesítést maguknak kell honosított és az eszközök a megfelelő csoporthoz-i. Az oktatóanyag bemutatja, hogyan használható a **sablon** könnyen biztosításához honosított legfrissebb hírekről szóló értesítések a Notification hubs szolgáltatás.
 
 > [!NOTE]
@@ -51,204 +51,216 @@ A [A legfrissebb hírek elküldése a Notification Hubs használatával], egy al
 
 Magas szinten sablonok, amelyek egy adja meg, hogy egy adott eszközhöz egy értesítést kell kapnia. A sablon meghatározza a hasznos adatok pontos formátumát a háttéralkalmazás által küldött üzenet részét képező tulajdonságokra hivatkozva. Abban az esetben amely tartalmazza az összes támogatott nyelvet területibeállítás-agnosztikus üzenet küldése:
 
-    {
-        "News_English": "...",
-        "News_French": "...",
-        "News_Mandarin": "..."
-    }
+```json
+{
+    "News_English": "...",
+    "News_French": "...",
+    "News_Mandarin": "..."
+}
+```
 
 Ezután, győződjön meg arról, hogy az eszközök regisztrálás egy sablont, amely a megfelelő tulajdonságra hivatkozik. Például az iOS-alkalmazás, amely regisztrálni szeretne a francia hírek regisztrálja a következő szintaxis használatával:
 
-    {
-        aps:{
-            alert: "$(News_French)"
-        }
+```json
+{
+    aps:{
+        alert: "$(News_French)"
     }
+}
+```
 
 A sablonok további információkért lásd: [sablonok](notification-hubs-templates-cross-platform-push-messages.md) cikk.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Végezze el a [leküldéses értesítések küldése az adott iOS-eszközök](notification-hubs-ios-xplat-segmented-apns-push-notification.md) oktatóanyag és van elérhető, a kódot, mert ebben az oktatóanyagban közvetlenül épít, hogy a kódot.
-- A Visual Studio 2012 vagy újabb nem kötelező.
+- A Visual Studio 2017 nem kötelező.
 
 ## <a name="update-the-app-user-interface"></a>Az alkalmazás felhasználói felület frissítéséhez
+
 Ebben a szakaszban módosítsa a témakörben létrehozott híreket használhatatlanná tévő alkalmazást [A legfrissebb hírek elküldése a Notification Hubs használatával] honosított sablonok használatával a legfrissebb hírek elküldése.
 
-A három nyelvekkel szegmentált vezérlőt hozzá a MainStoryboard_iPhone.storyboard: angol, francia és Mandarin.
+Az a **MainStoryboard_iPhone.storyboard**, a három nyelvekkel szegmentált vezérlőelem felvétele: angol, francia és Mandarin.
 
-![][13]
+![Az iOS felhasználói felület storyboard létrehozása][13]
 
 Végezze el a ViewController.h adjon hozzá egy IBOutlet, az alábbi képen látható módon:
 
-![][14]
+![Értékesítési lehetőségek, a kapcsolók létrehozása][14]
 
 ## <a name="build-the-ios-app"></a>Az iOS-alkalmazás készítése
+
 1. A Notification.h adja hozzá a *retrieveLocale* metódust, és a tároló módosítása, és feliratkozhat a módszereket, az alábbi kódban látható módon:
-   
-    ```obj-c
-        - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
-   
-        - (void) subscribeWithLocale:(int) locale categories:(NSSet*) categories completion:(void (^)(NSError *))completion;
-   
-        - (NSSet*) retrieveCategories;
-   
-        - (int) retrieveLocale;
-   
+
+    ```objc
+    - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
+
+    - (void) subscribeWithLocale:(int) locale categories:(NSSet*) categories completion:(void (^)(NSError *))completion;
+
+    - (NSSet*) retrieveCategories;
+
+    - (int) retrieveLocale;
     ```
     A Notification.m, módosítsa a *storeCategoriesAndSubscribe* metódus, a nyelv paraméter hozzáadásával, és tárolja őket a felhasználók alapértelmezett beállításait:
-   
-    ```obj-c
-        - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
-            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setValue:[categories allObjects] forKey:@"BreakingNewsCategories"];
-            [defaults setInteger:locale forKey:@"BreakingNewsLocale"];
-            [defaults synchronize];
-   
-            [self subscribeWithLocale: locale categories:categories completion:completion];
-        }
+
+    ```objc
+    - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:[categories allObjects] forKey:@"BreakingNewsCategories"];
+        [defaults setInteger:locale forKey:@"BreakingNewsLocale"];
+        [defaults synchronize];
+
+        [self subscribeWithLocale: locale categories:categories completion:completion];
+    }
     ````
+
     Majd módosíthatja a *előfizetés* metódus a területi kódot tartalmazza:
-   
-    ```obj-c
-        - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
-            SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
-   
-            NSString* localeString;
-            switch (locale) {
-                case 0:
-                    localeString = @"English";
-                    break;
-                case 1:
-                    localeString = @"French";
-                    break;
-                case 2:
-                    localeString = @"Mandarin";
-                    break;
-            }
-   
-            NSString* template = [NSString stringWithFormat:@"{\"aps\":{\"alert\":\"$(News_%@)\"},\"inAppMessage\":\"$(News_%@)\"}", localeString, localeString];
-   
-            [hub registerTemplateWithDeviceToken:self.deviceToken name:@"localizednewsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
+
+    ```objc
+    - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
+        SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
+
+        NSString* localeString;
+        switch (locale) {
+            case 0:
+                localeString = @"English";
+                break;
+            case 1:
+                localeString = @"French";
+                break;
+            case 2:
+                localeString = @"Mandarin";
+                break;
         }
-       ```
-    You use the method *registerTemplateWithDeviceToken*, instead of *registerNativeWithDeviceToken*. When you register for a template, you have to provide the json template and also a name for the template (as the app might want to register different templates). Make sure to register your categories as tags, as you want to make sure to receive the notifciations for those news.
-   
-    Add a method to retrieve the locale from the user default settings:
-   
-    ```obj-c
-        - (int) retrieveLocale {
-            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-   
-            int locale = [defaults integerForKey:@"BreakingNewsLocale"];
-   
-            return locale < 0?0:locale;
-        }
+
+        NSString* template = [NSString stringWithFormat:@"{\"aps\":{\"alert\":\"$(News_%@)\"},\"inAppMessage\":\"$(News_%@)\"}", localeString, localeString];
+
+        [hub registerTemplateWithDeviceToken:self.deviceToken name:@"localizednewsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
+    }
     ```
+
+    A módszer használatát *registerTemplateWithDeviceToken*, hanem *registerNativeWithDeviceToken*. Amikor regisztrál egy sablont, meg kell adnia a json-sablont, és a sablon nevét (Előfordulhat, hogy az alkalmazás szeretne regisztrálni, eltérő sablonokban). Ügyeljen arra, hogy regisztrálja a kategóriák címkék, ügyeljen arra, hogy ezeket hírek a notifciations kapni szeretne.
+
+    Adjon meg egy metódust a területi beállítások lekérése a felhasználói alapértelmezett beállításokat:
+
+    ```objc
+    - (int) retrieveLocale {
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+
+        int locale = [defaults integerForKey:@"BreakingNewsLocale"];
+
+        return locale < 0?0:locale;
+    }
+    ```
+
 2. Most, hogy az értesítések osztály módosított, akkor győződjön meg arról, hogy a ViewController felhasznál az új UISegmentControl. Adja hozzá a következő sort a a *viewDidLoad* metódust, hogy a jelenleg kiválasztott területi beállítás megjelenítéséhez:
-   
-    ```obj-c
-        self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
-     ```  
-    Ezt követően a a *előfizetés* metódus, a hívás a módosítása a *storeCategoriesAndSubscribe* a következő kódot:
-   
-    ```obj-c
-        [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
-            if (!error) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:
-                                      @"Subscribed!" delegate:nil cancelButtonTitle:
-                                      @"OK" otherButtonTitles:nil, nil];
-                [alert show];
-            } else {
-                NSLog(@"Error subscribing: %@", error);
-            }
-        }];
+
+    ```objc
+    self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
+
+    Ezt követően a a *előfizetés* metódus, a hívás a módosítása a *storeCategoriesAndSubscribe* a következő kódot:
+
+    ```objc
+    [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
+        if (!error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:
+                                    @"Subscribed!" delegate:nil cancelButtonTitle:
+                                    @"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        } else {
+            NSLog(@"Error subscribing: %@", error);
+        }
+    }];
+    ```
+
 3. Végül, frissítenie kell a *didRegisterForRemoteNotificationsWithDeviceToken* metódus az AppDelegate.m az, hogy megfelelően frissítse a regisztrációt az alkalmazás indításakor. A hívás a módosítása a *előfizetés* metódus az értesítések a következő kóddal:
-   
+
     ```obj-c
-        NSSet* categories = [self.notifications retrieveCategories];
-        int locale = [self.notifications retrieveLocale];
-        [self.notifications subscribeWithLocale: locale categories:categories completion:^(NSError* error) {
-            if (error != nil) {
-                NSLog(@"Error registering for notifications: %@", error);
-            }
-        }];
+    NSSet* categories = [self.notifications retrieveCategories];
+    int locale = [self.notifications retrieveLocale];
+    [self.notifications subscribeWithLocale: locale categories:categories completion:^(NSError* error) {
+        if (error != nil) {
+            NSLog(@"Error registering for notifications: %@", error);
+        }
+    }];
     ```
 
 ## <a name="optional-send-localized-template-notifications-from-net-console-app"></a>(nem kötelező) A sablon honosított értesítések küldése a .NET-Konzolalkalmazás
+
 [!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
 
 ## <a name="optional-send-localized-template-notifications-from-the-device"></a>(nem kötelező) A sablon honosított értesítések küldése az eszközről
+
 Ha nem fér hozzá a Visual Studióban, vagy csak szeretné tesztelni a sablon honosított értesítések küldése közvetlenül az alkalmazásból az eszközön. A honosított sablon paramétereihez is hozzáadhat a `SendNotificationRESTAPI` metódus az előző oktatóanyagban meghatározott.
 
-    ```obj-c
-        - (void)SendNotificationRESTAPI:(NSString*)categoryTag
+```objc
+- (void)SendNotificationRESTAPI:(NSString*)categoryTag
+{
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration
+                                defaultSessionConfiguration] delegate:nil delegateQueue:nil];
+
+    NSString *json;
+
+    // Construct the messages REST endpoint
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
+                                        HUBNAME, API_VERSION]];
+
+    // Generated the token to be used in the authorization header.
+    NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
+
+    //Create the request to add the template notification message to the hub
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+
+    // Add the category as a tag
+    [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
+
+    // Template notification
+    json = [NSString stringWithFormat:@"{\"messageParam\":\"Breaking %@ News : %@\","
+            \"News_English\":\"Breaking %@ News in English : %@\","
+            \"News_French\":\"Breaking %@ News in French : %@\","
+            \"News_Mandarin\":\"Breaking %@ News in Mandarin : %@\","
+            categoryTag, self.notificationMessage.text,
+            categoryTag, self.notificationMessage.text,  // insert English localized news here
+            categoryTag, self.notificationMessage.text,  // insert French localized news here
+            categoryTag, self.notificationMessage.text]; // insert Mandarin localized news here
+
+    // Signify template notification format
+    [request setValue:@"template" forHTTPHeaderField:@"ServiceBusNotification-Format"];
+
+    // JSON Content-Type
+    [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+
+    //Authenticate the notification message POST request with the SaS token
+    [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
+
+    //Add the notification message body
+    [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
+
+    // Send the REST request
+    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
+                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
         {
-            NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration
-                                     defaultSessionConfiguration] delegate:nil delegateQueue:nil];
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
+            if (error || httpResponse.statusCode != 200)
+            {
+                NSLog(@"\nError status: %d\nError: %@", httpResponse.statusCode, error);
+            }
+            if (data != NULL)
+            {
+                //xmlParser = [[NSXMLParser alloc] initWithData:data];
+                //[xmlParser setDelegate:self];
+                //[xmlParser parse];
+            }
+        }];
 
-            NSString *json;
-
-            // Construct the messages REST endpoint
-            NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
-                                               HUBNAME, API_VERSION]];
-
-            // Generated the token to be used in the authorization header.
-            NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
-
-            //Create the request to add the template notification message to the hub
-            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-            [request setHTTPMethod:@"POST"];
-
-            // Add the category as a tag
-            [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
-
-            // Template notification
-            json = [NSString stringWithFormat:@"{\"messageParam\":\"Breaking %@ News : %@\","
-                    \"News_English\":\"Breaking %@ News in English : %@\","
-                    \"News_French\":\"Breaking %@ News in French : %@\","
-                    \"News_Mandarin\":\"Breaking %@ News in Mandarin : %@\","
-                    categoryTag, self.notificationMessage.text,
-                    categoryTag, self.notificationMessage.text,  // insert English localized news here
-                    categoryTag, self.notificationMessage.text,  // insert French localized news here
-                    categoryTag, self.notificationMessage.text]; // insert Mandarin localized news here
-
-            // Signify template notification format
-            [request setValue:@"template" forHTTPHeaderField:@"ServiceBusNotification-Format"];
-
-            // JSON Content-Type
-            [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-
-            //Authenticate the notification message POST request with the SaS token
-            [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
-
-            //Add the notification message body
-            [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
-
-            // Send the REST request
-            NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
-                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-               {
-               NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
-                   if (error || httpResponse.statusCode != 200)
-                   {
-                       NSLog(@"\nError status: %d\nError: %@", httpResponse.statusCode, error);
-                   }
-                   if (data != NULL)
-                   {
-                       //xmlParser = [[NSXMLParser alloc] initWithData:data];
-                       //[xmlParser setDelegate:self];
-                       //[xmlParser parse];
-                   }
-               }];
-
-            [dataTask resume];
-        }
-    ```
-
+    [dataTask resume];
+}
+```
 
 ## <a name="next-steps"></a>További lépések
+
 Ebben az oktatóanyagban elküldött honosított értesítések iOS-eszközökön. Megtudhatja, hogyan küldhet leküldéses értesítéseket az iOS-alkalmazások meghatározott felhasználókra, folytassa a következő oktatóanyaggal: 
 
 > [!div class="nextstepaction"]

@@ -54,6 +54,7 @@
 #### [B2B-felhasználók rendszergazdák általi hozzáadása](b2b/add-users-administrator.md)
 #### [B2B-felhasználók infomunkások általi hozzáadása](b2b/add-users-information-worker.md)
 #### [API és testreszabás](b2b/customize-invitation-api.md)
+#### [Google-összevonás](b2b/google-federation.md)
 #### [Kód- és Azure PowerShell-minták](b2b/code-samples.md)
 #### [Minta önkiszolgáló bejelentkezési portálhoz](b2b/self-service-portal.md)
 #### [Meghívó e-mail](b2b/invitation-email-elements.md)
