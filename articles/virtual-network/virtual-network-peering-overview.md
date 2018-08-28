@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2018
+ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257871"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41917746"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -77,6 +77,11 @@ A virtuális társhálózatokban lévő virtuális gépek kapcsolatának hibaelh
 
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 
+A virtuális hálózatok globális társviszonyaira a következő korlátozások érvényesek:
+- A virtuális hálózatok az Azure nyilvános felhő bármelyik régiójában lehetnek, az országos Azure-felhőkben azonban nem.
+- Az egyes virtuális hálózatok erőforrásai nem kommunikálhatnak a globálisan társított virtuális hálózat belső, Azure-beli terheléselosztóinak előtérbeli IP-címével. A terheléselosztónak és a vele kommunikáló erőforrásoknak ugyanabban a régióban kell lenniük.
+- Nem használhat távoli átjárókat, és nem engedélyezheti az átjárói átvitelt. A távoli átjárók használatához vagy az átjárói átvitel engedélyezéséhez a társított virtuális hálózatoknak ugyanabban a régióban kell lenniük.
+
 További információ a követelményekről és a korlátozásokról: [A virtuális hálózatok közötti társviszony követelményei és korlátozásai](virtual-network-manage-peering.md#requirements-and-constraints). A virtuális hálózatok közötti társviszonyok számának korlátozásairól az [Azure hálózati korlátait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető szakaszban talál további információt. 
 
 ## <a name="permissions"></a>Engedélyek
@@ -102,3 +107,4 @@ Az átjáróval történő átvitel olyan társviszony-létesítési tulajdonsá
 
 * További információ a [küllős hálózati topológiák létrehozásáról](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * További tudnivalók a [virtuális társhálózatok beállításairól és azok megváltoztatásáról](virtual-network-manage-peering.md).
+* A virtuális társhálózatokkal és a globális virtuális társhálózatokkal kapcsolatos kérdéseire a [virtuális hálózatok társviszonyaival kapcsolatos gyakori kérdésekben](virtual-networks-faq.md#vnet-peering) kaphat választ.

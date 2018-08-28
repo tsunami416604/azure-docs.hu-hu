@@ -1,6 +1,6 @@
 ---
-title: Azure rövid útmutató – Eseménystreamek feldolgozása az Azure CLI használatával | Microsoft Docs
-description: Ezen rövid útmutató segítségével megismerheti, hogyan dolgozhatók fel az eseménystreamek az Azure CLI használatával.
+title: Rövid Azure-útmutató – Eseményközpont létrehozása az Azure CLI-vel | Microsoft Docs
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eseményközpontot az Azure CLI-vel, majd hogyan küldhet és fogadhat eseményeket a Java használatával.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
 ms.author: shvija
-ms.openlocfilehash: 7a15b252727589194da90af729a74e1baad7094f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0607c9a65febdb5890eb49808a0fcef582deb37e
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004565"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42024280"
 ---
-# <a name="quickstart-process-event-streams-using-azure-cli-and-java"></a>Rövid útmutató: Eseménystreamek feldolgozása az Azure CLI és a Java használatával
+# <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Rövid útmutató: Eseményközpont létrehozása az Azure CLI-vel
 
 Az Azure Event Hubs egy kiválóan méretezhető adatstreamelési platform és feldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Ez a rövid útmutató bemutatja, hogyan hozhatók létre Event Hubs-erőforrások az Azure CLI használatával, majd hogyan küldhetők, illetve fogadhatók eseménystreamek egy eseményközpontból Java-kód használatával.
 

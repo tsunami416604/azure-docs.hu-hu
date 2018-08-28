@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
-ms.date: 03/14/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: d0c587b3d43f7511775a4a114bead96348372bc5
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: c084a08ffef868af751d065c5857a9b67a12485f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959967"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41921064"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API a .NET-tel való használatába
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -36,10 +36,10 @@ Ez a minta a [.NET-hez készült Microsoft Azure Cosmos DB Table Library](https:
 A minta sikeres teljesítéséhez a következőkre lesz szüksége:
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Az Azure Storage .NET-hez készült közös kódtára (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). Ez egy szükséges előzetes verziójú csomag, amelyet az éles környezetek támogatnak. 
-* [A Microsoft Azure Cosmos DB táblakódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)
+* [Az Azure Storage .NET-hez készült közös kódtára (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). - Ez egy szükséges előzetes verziójú csomag, amelyet az éles környezetek támogatnak. 
+* [A Microsoft Azure Cosmos DB táblakódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) - Ez a kódtár jelenleg csak .NET Standardhoz érhető el, .NET Core-hoz egyelőre nem.
 * [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-* [Azure Storage-fiók](../storage/common/storage-create-storage-account.md#create-a-storage-account)
+* [Azure Storage-fiók](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -50,17 +50,14 @@ További példák a Table Storage használatára: [Getting Started with Azure Ta
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
-Legegyszerűbben az [Azure Portal](https://portal.azure.com) segítségével hozhatja létre első Azure Storage-fiókját. További tudnivalókért lásd: [Create a storage account](../storage/common/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása).
+* Legegyszerűbben az [Azure Portal](https://portal.azure.com) segítségével hozhatja létre első Azure Storage-fiókját. További tudnivalókért lásd: [Create a storage account](../storage/common/storage-quickstart-create-account.md) (Tárfiók létrehozása).
 
-Ezenkívül az [Azure PowerShell](../storage/common/storage-powershell-guide-full.md), az [Azure CLI](../storage/common/storage-azure-cli.md), illetve a [.NET-keretrendszerhez készült Storage erőforrás-szolgáltató ügyfél](/dotnet/api/microsoft.azure.management.storage) használatával is létrehozhat egy Azure Storage-fiókot.
+* Ezenkívül az [Azure PowerShell](../storage/common/storage-powershell-guide-full.md), az [Azure CLI](../storage/common/storage-azure-cli.md), illetve a [.NET-keretrendszerhez készült Storage erőforrás-szolgáltató ügyfél](/dotnet/api/microsoft.azure.management.storage) használatával is létrehozhat egy Azure Storage-fiókot.
 
-Ha most nem kíván tárfiókot létrehozni, az Azure Storage Emulatorral helyi környezetben futtathatja és tesztelheti a kódját. További információkért lásd: [Use the Azure Storage Emulator for Development and Testing](../storage/common/storage-use-emulator.md) (Fejlesztés és tesztelés az Azure Storage Emulatorral).
+* Ha most nem kíván tárfiókot létrehozni, az Azure Storage Emulatorral helyi környezetben futtathatja és tesztelheti a kódját. További információkért lásd: [Use the Azure Storage Emulator for Development and Testing](../storage/common/storage-use-emulator.md) (Fejlesztés és tesztelés az Azure Storage Emulatorral).
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API-fiók létrehozása
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
-
-## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
-A következő lépésként állítsa be a fejlesztési környezetet a Visual Studióban, hogy kipróbálhassa az útmutatóban megadott példákat.
 
 ### <a name="create-a-windows-console-application-project"></a>Windows-konzolalkalmazás projekt létrehozása
 Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések azt mutatják be, hogyan hozhat létre konzolalkalmazást a Visual Studio 2017-ben. A lépések a Visual Studio más verziói esetén is hasonlók.
@@ -75,17 +72,19 @@ A mintában szereplő példák hozzáadhatók a konzolalkalmazás `Program.cs` f
 
 Az Azure Cosmos DB táblakódtárat bármilyen típusú .NET-alkalmazásban használhatja, ideértve az Azure-felhőszolgáltatásokat vagy -webappokat és az asztali és mobilalkalmazásokat is. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
 
-### <a name="use-nuget-to-install-the-required-packages"></a>A szükséges csomagok telepítése a NuGettel
+### <a name="install-the-required-nuget-packages"></a>A szükséges NuGet-csomagok telepítése
 Három javasolt csomagra kell hivatkoznia a projektben a minta teljesítéséhez:
 
-* [Az Azure Storage .NET-hez készült közös kódtára (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common). 
-* [A Microsoft Azure Cosmos DB táblakódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) Ez a csomag programozott hozzáférést biztosít az Azure Table Storage-fiókjában vagy az Azure Cosmos DB Table API-fiókjában található adaterőforrásokhoz.
+* [Az Azure Storage .NET-hez készült közös kódtára (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common). - A 9.0.0.1-es, vagy annál korábbi verziót használjon (<= 9.0.0.1).
+
+* [A Microsoft Azure Cosmos DB táblakódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) Ez a csomag programozott hozzáférést biztosít az Azure Table Storage-fiókjában vagy az Azure Cosmos DB Table API-fiókjában található adaterőforrásokhoz. Ez a kódtár jelenleg csak .NET Standardhoz érhető el, .NET Core-hoz egyelőre nem.
+
 * [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati sztring elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
 
-A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
+A NuGet-csomagok beszerzéséhez kövesse az alábbi lépéseket:
 
 1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. Keressen rá az interneten a „Microsoft.Azure.Storage.Common” kifejezésre, és válassza az **Install** (Telepítés) gombot az Azure Storage .NET-hez készült közös kódtárának és annak függőségeinek telepítéséhez. Ügyeljen arra, hogy bejelölje az **Include prerelease** (Előzetes verzió is) négyzetet, mivel ez egy előzetes verziójú csomag.
+2. Keressen rá az interneten a „Microsoft.Azure.Storage.Common” kifejezésre, válasszon egy, a 9.0.0.1-nél nem újabb verziót, és válassza az **Install** (Telepítés) gombot az Azure Storage .NET-hez készült közös kódtárának és annak függőségeinek telepítéséhez. Ügyeljen arra, hogy bejelölje az **Include prerelease** (Előzetes verzió is) négyzetet, mivel ez egy előzetes verziójú csomag.
 3. Keressen rá az interneten a „Microsoft.Azure.CosmosDB.Table” kifejezésre, és válassza az **Install** (Telepítés) gombot a Microsoft Azure CosmosDB táblakódtárának telepítéséhez.
 4. Keressen rá az interneten a „WindowsAzure.ConfigurationManager” kifejezésre, és válassza az **Install** (Telepítés) gombot a Microsoft Azure Configuration Manager kódtárának telepítéséhez.
 

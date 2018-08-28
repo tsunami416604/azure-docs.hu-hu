@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 92258ce7ea39a06f2af85efd9174b1b200710566
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216966"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41919150"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Windows-frissítések kezelése az Azure Automationnel
 
@@ -126,9 +126,6 @@ A riasztási e-mail tárgyának testreszabásához kattintson az **E-mail tárgy
 
 Következő lépésként ütemezzen egy olyan telepítést a frissítésekhez, amely megfelel a kiadási ütemtervnek és a szolgáltatási időkeretnek. Kiválaszthatja, hogy a telepítés milyen típusú frissítéseket tartalmazzon. Például hozzáadhatja a kritikus vagy a biztonsági frissítéseket, és kizárhatja a kumulatív frissítéseket.
 
-> [!WARNING]
-> Ha a frissítésekhez újraindításra van szükség, a rendszer automatikusan újraindítja a virtuális gépet.
-
 Ütemezzen egy új frissítéstelepítést a virtuális géphez. Ehhez válassza a **Frissítéskezelés**, majd a **Frissítések központi telepítésének ütemezése** elemet.
 
 Az **Új frissítéstelepítés** képernyőn adja meg a következő információkat:
@@ -136,6 +133,8 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 * **Név**: Adjon egyedi nevet a frissítéstelepítésnek.
 
 * **Operációs rendszer**: Válassza ki azt az operációs rendszert, amelyre a frissítéstelepítés vonatkozni fog.
+
+* **Frissítendő gépek**: Válasszon ki egy Mentett keresést vagy Importált csoportot, vagy válassza a legördülő listában a Gép lehetőséget, és válasszon ki egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A számítógépcsoportok a Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt.
 
 * **Frissítési besorolás**: Válassza ki azokat a szoftvertípusokat, amelyeket a frissítéstelepítés belefoglal a telepítésbe. Ebben az oktatóanyagban hagyjon minden típust kiválasztva.
 
@@ -154,9 +153,17 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 * **Karbantartási időszak (perc)**: Fogadja el az alapértelmezett értéket. Megadhatja azt az időtartamot, amelyen belül szeretne sort keríteni a frissítés telepítésére. Ez a beállítás biztosítja, hogy a módosítások a megadott szolgáltatási időkereten belül menjenek végbe.
 
+* **Újraindítási beállítások**: Ez a beállítás határozza meg az újraindítások kezelésének módját. Az elérhető lehetőségek:
+  * Újraindítás szükség esetén (alapértelmezett beállítás)
+  * Mindig induljon újra
+  * Soha ne induljon újra
+  * Csak újraindítás – frissítések nem lesznek telepítve
+
+Ha végzett az ütemezés beállításával, kattintson a **Létrehozás** gombra.
+
 ![A frissítés ütemezési beállításai ablaktábla](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-Ha végzett az ütemezés beállításával, kattintson a **Létrehozás** gombra. Ekkor visszalép az állapot-irányítópultra. Kattintson az **Ütemezett frissítéstelepítések** lehetőségre a létrehozott telepítési ütemezés megjelenítéséhez.
+Ekkor visszalép az állapot-irányítópultra. Kattintson az **Ütemezett frissítéstelepítések** lehetőségre a létrehozott telepítési ütemezés megjelenítéséhez.
 
 ## <a name="view-results-of-an-update-deployment"></a>Frissítéstelepítés eredményeinek megtekintése
 

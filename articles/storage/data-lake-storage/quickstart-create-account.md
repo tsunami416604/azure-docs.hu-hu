@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 9d60b85051ff6e24c64f074ccd4fad055ba47ae8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 18f4d2656ec7f027557d73959531b781be1d8d44
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523580"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42023416"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rövid útmutató: Előzetes verziójú, 2. generációs Azure Data Lake Storage-tárfiók létrehozása
 
@@ -114,15 +114,6 @@ Erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő **Továbbiak** gombra (**...**).
 3. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
 
-
-## <a name="upgrade-your-powershell-module"></a>A PowerShell-modul frissítése
-
-A 2. generációs Data Lake Storage PowerShell-lel történő használatához frissítenie kell a modult az előzetes verzióra.
-
-Ehhez nyisson meg egy emelt szintű PowerShell-munkamenetet, és írja be a következő parancsot: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
-
-Ezután indítsa újra a felületet.
-
 ## <a name="create-an-account-using-powershell"></a>Fiók létrehozása a PowerShell használatával
 
 Jelentkezzen be az Azure-előfizetésbe a `Login-AzureRmAccount` paranccsal, és a hitelesítéshez kövesse a képernyőn megjelenő utasításokat.
@@ -130,6 +121,14 @@ Jelentkezzen be az Azure-előfizetésbe a `Login-AzureRmAccount` paranccsal, és
 ```powershell
 Login-AzureRmAccount
 ```
+
+### <a name="upgrade-your-powershell-module"></a>A PowerShell-modul frissítése
+
+A 2. generációs Data Lake Storage PowerShell-lel történő használatához frissítenie kell a modult az előzetes verzióra.
+
+Ehhez nyisson meg egy emelt szintű PowerShell-munkamenetet, és írja be a következő parancsot: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
+
+Ezután indítsa újra a felületet.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -170,13 +169,7 @@ A [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azur
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="upgrade-your-cli-module"></a>A CLI-modul frissítése
-
-A 2. generációs Data Lake Storage CLI-vel történő használatához hozzá kell adnia a bővítményt a felülethez.
-
-Ehhez a Cloud Shell vagy a helyi felület használatával írja be a következő parancsot: `az extension add --name storage-preview`
-
-## <a name="create-an-account-using-azure-cli"></a>Fiók létrehozása az Azure CLI használatával 
+## <a name="create-an-account-using-azure-cli"></a>Fiók létrehozása az Azure CLI használatával
 
 Az Azure Cloud Shell indításához jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -186,9 +179,15 @@ A parancssori felület helyileg telepített példányára történő bejelentkez
 az login
 ```
 
+### <a name="upgrade-your-cli-module"></a>A CLI-modul frissítése
+
+A 2. generációs Data Lake Storage CLI-vel történő használatához hozzá kell adnia a bővítményt a felülethez.
+
+Ehhez a Cloud Shell vagy a helyi felület használatával írja be a következő parancsot: `az extension add --name storage-preview`
+
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Ha az Azure CLI használatával kíván új erőforráscsoportot létrehozni, használja az [az group create](/cli/azure/group#az_group_create) parancsot. 
+Ha az Azure CLI használatával kíván új erőforráscsoportot létrehozni, használja az [az group create](/cli/azure/group#az_group_create) parancsot.
 
 ```azurecli-interactive
 az group create \

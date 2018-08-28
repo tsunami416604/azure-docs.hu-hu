@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/17/2018
+ms.date: 08/22/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: d5bb5ed45363216bb1bcd39f85157a3eed68c2f9
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: fcae6d656f6e309b0fdcd60db743d3bebf3cd5a9
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126850"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617038"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rövid útmutató: Azure Resource Manager-sablon létrehozása és üzembe helyezése az Azure Portalon
 
@@ -78,7 +78,9 @@ Ebben a szakaszban tárfiókot fog létrehozni az Azure Portal használatával. 
 
 ## <a name="edit-and-deploy-the-template"></a>Sablon szerkesztése és üzembe helyezése
 
-Ebben a szakaszban a sablon-dokumentumtárból megnyitjuk a mentett sablont, a Portalon szerkesztjük, majd a módosított sablont üzembe is helyezzük. Ha összetettebb sablont szeretne szerkeszteni, érdemes használni a Visual Studio Code-ot, amely kiterjedtebb szerkesztési funkciókat kínál.
+Ebben a szakaszban a sablon-dokumentumtárból megnyitjuk a mentett sablont, a Portalon szerkesztjük, majd a módosított sablont üzembe is helyezzük. Ha összetettebb sablont szeretne szerkeszteni, érdemes a [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)-ot használni, amely kiterjedtebb szerkesztési funkciókat kínál.
+
+Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkezzen. Az üzembe helyezés meghiúsul, ha olyan tárfióknevet ad meg, amely már létezik. A hiba elkerülése érdekében a uniquestring() sablonfüggvényhívással egyedi tárfiókneveket hozhat létre.
 
 1. Az Azure Portalon a bal oldali menüben válassza a **Minden szolgáltatás** elemet, a szűrő mezőbe írja be a **template** (sablon) szót, majd válassza a **Template (PREVIEW)** (Sablon - előzetes verzió) lehetőséget.
 
@@ -162,7 +164,7 @@ Ebben a szakaszban a sablon-dokumentumtárból megnyitjuk a mentett sablont, a P
 8. Válassza az **Üzembe helyezés** lehetőséget.
 9. Írja be a következő értékeket:
 
-    - **Előfizetés**: válassza ki az Azure-előfizetését.
+    - **Előfizetés**: válassza ki az Azure-előfizetést.
     - **Erőforráscsoport**: adjon egy egyedi nevet az erőforráscsoportnak.
     - **Hely**: válasszon egy helyet az erőforráscsoportnak.
     - **Hely**: válasszon egy helyet a tárfióknak.  Választhatja ugyanazt a helyet is, amelyet az erőforráscsoportnál megadott.
@@ -177,6 +179,14 @@ Ebben a szakaszban a sablon-dokumentumtárból megnyitjuk a mentett sablont, a P
 
 10. Válassza a **Beszerzés** lehetőséget.
 11. Az üzembe helyezés állapotát úgy nézheti meg, ha a képernyő felső részén kiválasztja a harang (értesítések) ikont.
+
+    ![Azure Resource Manager-sablonok üzembehelyezési értesítése](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
+
+12. Válassza az **Ugrás az erőforráscsoportra** lehetőséget az értesítési panelen. A következőhöz hasonló képernyő jelenik meg:
+
+    ![Azure Resource Manager-sablonok üzembehelyezési erőforráscsoportja](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
+
+    Láthatja, hogy az üzembe helyezés állapota sikeres, és csak egyetlen tárfiók található az erőforráscsoportban. A tárfiók neve egy, a sablon által létrehozott egyedi sztring. Az Azure-tárfiókokkal kapcsolatos további információkért lásd: [Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

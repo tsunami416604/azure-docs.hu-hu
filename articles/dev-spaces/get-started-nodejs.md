@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: bf9b0262e52c4f956082b00faae1b6bb1c31d8d9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bb8914b524846b1df5d8955bb4717873004ca4a5
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526249"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920851"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Bevezetés az Azure Dev Spaces Node.js segítségével történő használatába
 
@@ -34,7 +34,7 @@ Az Azure Dev Spaces használatához minimális helyi gépbeállítás szüksége
 Első lépésként töltse le és futtassa az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet. 
 
 > [!IMPORTANT]
-> Ha az Azure CLI már telepítve van, győződjön meg arról, hogy a 2.0.38-as vagy újabb verziót használja.
+> Ha az Azure CLI már telepítve van, győződjön meg arról, hogy a 2.0.43-as vagy újabb verziót használja.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 

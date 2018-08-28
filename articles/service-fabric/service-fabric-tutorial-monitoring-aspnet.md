@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8a98b12a42dff186c9226df39ce02c71cbc40c7e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 30dd3f4a467f19efd2edc7ca26305ee2e7ff05a5
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113323"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41917632"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Oktatóanyag: ASP.NET Core-alkalmazások monitorozása és diagnosztikája a Service Fabricben az Application Insights használatával
 
@@ -113,7 +113,8 @@ A következő lépéseket kell végrehajtani a NuGet beállításához:
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
 
-    2. A *CreateServiceInstanceListeners()* vagy a *CreateServiceReplicaListeners()* beágyazott *return* utasításában, a *ConfigureServices* > *services* alatt a két meghatározott Singleton szolgáltatás között adja hozzá a következőt: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`. Ez hozzáadja a *szolgáltatáskörnyezetet* a telemetriához, így jobban megértheti a telemetria forrását az Application Insightsban. A *VotingWeb.cs* fájlban lévő beágyazott *return* utasításnak így kell kinéznie:
+    2. A *CreateServiceInstanceListeners()* vagy a *CreateServiceReplicaListeners()* beágyazott *return* utasításában, a *ConfigureServices* > *services* alatt a két meghatározott Singleton szolgáltatás közé adja hozzá a következőt: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`
+    Ez hozzáadja a *szolgáltatáskörnyezetet* a telemetriához, így jobban megértheti a telemetria forrását az Application Insightsban. A *VotingWeb.cs* fájlban lévő beágyazott *return* utasításnak így kell kinéznie:
 
     ```csharp
     return new WebHostBuilder()

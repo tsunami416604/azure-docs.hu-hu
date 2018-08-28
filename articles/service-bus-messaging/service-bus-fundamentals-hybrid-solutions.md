@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: get-started-article
 ms.date: 05/23/2018
 ms.author: sethm
-ms.openlocfilehash: 994510b415e21288fd38a116f7e77a59ba79af59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bef88f09f182b1bb450ee0e045985ed59d5b5648
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641322"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41917749"
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
@@ -36,7 +36,12 @@ Egy adott névtéren belül a négy különböző kommunikációs mechanizmus eg
 * *Témakörök*, amelyek egyirányú kommunikációt tesznek lehetővé *előfizetések* segítségével. Egy témakör több előfizetéssel is rendelkezhet. Az üzenetsorokhoz hasonlóan a témakörök is közvetítőként szolgálnak, azonban az egyes előfizetések szűrőt használhatnak, amelynek révén csak az adott feltételeknek megfelelő üzenetek fogadása történik meg.
 * *Továbbítók*, amelyek kétirányú kommunikációt tesznek lehetővé. Az üzenetsoroktól és témaköröktől eltérően a továbbító nem tárolja átvitel közben az üzeneteket, azaz nem működik közvetítőként. Ehelyett egyszerűen továbbítja azokat a célalkalmazás számára.
 
-Amikor létrehoz egy üzenetsort, témakört vagy továbbítót, el kell neveznie azt. A névtér nevével kombinálva így egyedi azonosítót hoz létre az objektum számára. Az alkalmazások megadhatják ezt a nevet a Service Bus számára, majd az adott üzenetsor, témakör vagy továbbító használatával kommunikálhatnak egymással. 
+Amikor létrehoz egy üzenetsort, témakört vagy továbbítót, el kell neveznie azt. A névtér nevével kombinálva így egyedi azonosítót hoz létre az objektum számára. Az alkalmazások megadhatják ezt a nevet a Service Bus számára, majd az adott üzenetsor, témakör vagy továbbító használatával kommunikálhatnak egymással.
+
+ >**Példa:**   
+     *https://&lt;servicebus-névtér-neve&gt;.servicebus.windows.net/&lt;üzenetsor-neve&gt;*  
+     *https://&lt;servicebus-névtér-neve&gt;.servicebus.windows.net/&lt;témakör-neve&gt;*  
+     *https://&lt;servicebus-névtér-neve&gt;.servicebus.windows.net/&lt;relay-neve&gt;*  
 
 Ezen objektumok valamelyikének a Relay forgatókönyvben történő használatához a Windows-alkalmazások a Windows Communication Foundation (WCF) szolgáltatást használhatják. Ez a szolgáltatás a [WCF Relay](../service-bus-relay/relay-what-is-it.md). Az üzenetsorok és a témakörök esetében a Windows-alkalmazások a Service Bus által definiált üzenettovábbítási API-kat használhatják. Az objektumok nem Windows-alkalmazásokból való használatának egyszerűbbé tétele érdekében a Microsoft SDK-kat biztosít a Java, Node.js és egyéb nyelvekhez. Az üzenetsorokat és a témaköröket [REST API-k](/rest/api/servicebus/) használatával is elérheti HTTP(s)-en keresztül. 
 

@@ -9,12 +9,12 @@ ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 991113b4e3e501d6d058a83baa795a5d7cbaa585
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8a3cc9793af39deeb24fa725da5cf0dc536f4465
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439679"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41919406"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: C#-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -66,8 +66,14 @@ Ehhez az oktatóanyaghoz bármilyen Docker-kompatibilis beállításjegyzéket h
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge-modulprojekt létrehozása
 A következő lépések egy .NET core 2.0 SDK-n alapuló IoT Edge-modulprojektet hoznak létre a Visual Studio Code és az Azure IoT Edge bővítmény használatával.
 
+### <a name="create-a-new-solution"></a>Új megoldás létrehozása
+
+Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat. 
+
 1. A Visual Studio Code-ban a VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
+
 2. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
+
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
 
    1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni. 
@@ -76,7 +82,25 @@ A következő lépések egy .NET core 2.0 SDK-n alapuló IoT Edge-modulprojektet
    4. Cserélje le az alapértelmezett modulnevet a **CSharpModule** névre. 
    5. Adja meg az előző szakaszban létrehozott Azure Container Registry-adatbázist az első modul rendszerképadattáraként. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére. A sztring végső változata a következőképpen néz ki: \<regisztrációs adatbázis neve\>.azurecr.io/csharpmodule.
 
-4.  A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét: a modules mappát, egy \.vscode mappát, egy üzembehelyezési jegyzéksablonfájlt és egy \.env fájlt. A VS Code Explorerben nyissa meg a **modules** > **CSharpModule** > **Program.cs** modult.
+   ![Docker-rendszerkép adattárának megadása](./media/tutorial-csharp-module/repository.png)
+
+A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz. Ebben az oktatóanyagban nem fogja szerkeszteni a **\.vscode** mappát vagy a **\.gitignore** fájlt. A **modules** mappa a modul C#-kódját, valamint a modul tárolórendszerképként való összeállítására szolgáló Docker-fájlokat tartalmazza. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. 
+
+Ha nem adott meg tárolóregisztrációs adatbázist a megoldás létrehozásakor, de elfogadta az alapértelmezett localhost:5000 értéket, akkor nem lesz \.env fájlja. 
+
+   ![C# megoldás munkaterülete](./media/tutorial-csharp-module/workspace.png)
+
+### <a name="add-your-registry-credentials"></a>A regisztrációs adatbázis hitelesítő adatainak hozzáadása
+
+A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő adatait, és megosztja őket az IoT-Edge futtatókörnyezettel. A futtatókörnyezetnek szüksége van ezekre a hitelesítő adatokra a privát rendszerképek letöltéséhez az IoT Edge-eszközre. 
+
+1. A VS Code Explorerben nyissa meg a .env fájlt. 
+2. Adja meg az Azure Container Registryből kimásolt **felhasználónevet** és **jelszót** a megfelelő mezőkben. 
+3. Mentse el ezt a fájlt. 
+
+### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
+
+1. A VS Code Explorerben nyissa meg a **modules** > **CSharpModule** > **Program.cs** modult.
 
 5. A **CSharpModule** névtér tetején adjon hozzá három **using** utasítást a későbbiekben használt típusokhoz:
 
@@ -253,7 +277,7 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy 
 
 4. Mentse el ezt a fájlt.
 
-5. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build IoT Edge solution** (IoT Edge-megoldás összeállítása) lehetőséget. 
+5. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
 
 Amikor a megoldás összeállítására utasítja a Visual Studio Code-ot, az elsőként lekéri az adatokat az üzembehelyezési sablonból, és létrehoz egy deployment.json nevű fájlt egy új **config** nevű mappában. Ezután futtatja a következő két parancsot az integrált terminálon: `docker build` és `docker push`. A két parancs létrehozza a kódot, tárolóba helyezi a CSharpModule.dll fájlt, majd leküldi a kódot a megoldás inicializálásakor megadott tárolóregisztrációs adatbázisba. 
 
@@ -261,18 +285,21 @@ A VS Code integrált termináljában láthatja a teljes tárolórendszerképet c
 
 ## <a name="deploy-and-run-the-solution"></a>A megoldás üzembe helyezése és futtatása
 
-1. Az Azure IoT-eszközkészlet bővítmény konfigurálása az IoT Hub-központ kapcsolati sztringjével: 
+Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult helyezett üzembe az Azure Portal segítségével. A Visual Studio Code Azure IoT-eszközkészlet bővítményével is üzembe helyezhet modulokat. Már elő van készítve egy üzembehelyezési jegyzék a forgatókönyvhöz, a **deployment.json** fájl. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
 
-    1. Nyissa meg a VS Code Explorert a **View** > **Explorer** (Nézet, Explorer) elem kiválasztásával.
+1. A VS Code parancskatalógusában futtassa az **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub kiválasztása) parancsot. 
 
-    1. Az Explorerben kattintson az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök), majd a három pont (**...**) elemre, és válassza a **Select IoT Hub** (IoT Hub-központ kiválasztása) lehetőséget. Az utasítások szerint jelentkezzen be az Azure-fiókjába, és válassza ki az IoT Hub-központot. 
+2. Válassza ki a konfigurálni kívánt IoT Edge-eszközt tartalmazó előfizetést és IoT Hubot. 
 
-       > [!Note]
-       > A telepítést elvégezheti a **Set IoT Hub Connection String** (IoT Hub kapcsolati sztring beállítása) elemre kattintva is. A felugró ablakban adja meg annak az IoT-központnak a kapcsolati sztringjét, amelyhez az IoT Edge-eszköz csatlakozik.
+3. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
 
-2. Az Azure Iot Hub Devices Explorerben kattintson a jobb gombbal az IoT Edge-eszközre, és válassza a **Create Deployment for IoT Edge device** (Üzembe helyezés létrehozása Edge-eszközhöz) elemet. Válassza ki a deployment.json fájlt a config mappában, majd válassza a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemet.
+4. Kattintson a jobb gombbal az IoT Edge-eszköz nevére, majd válassza a **Create Deployment for Single Device** (Üzembe helyezés létrehozása egyetlen eszközhöz) parancsot. 
 
-3. Frissítse az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. Látható, hogy az új **CSharpModule** fut a **TempSensor** modul, valamint a **$edgeAgent** és a **$edgeHub** mellett. 
+   ![Üzemelő példány létrehozása egyetlen eszközhöz](./media/tutorial-csharp-module/create-deployment.png)
+
+5. Válassza ki a **deployment.json** fájlt a **config** mappában, majd kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. Ne használja a deployment.template.json fájlt. 
+
+6. Kattintson a frissítés gombra. Látható, hogy az új **CSharpModule** fut a **TempSensor** modul, valamint a **$edgeAgent** és a **$edgeHub** mellett.  
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
@@ -284,33 +311,13 @@ A VS Code integrált termináljában láthatja a teljes tárolórendszerképet c
  
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
-<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
-
-Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat.
+Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként. 
 
 Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben létrehozott helyi konfigurációkat és Azure-erőforrásokat. 
 
-> [!IMPORTANT]
-> Az Azure-erőforrások és -erőforráscsoportok törlése nem vonható vissza. Ezeknek az elemeknek a törlésével az erőforráscsoport és a benne foglalt erőforrások véglegesen törölve lesznek. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha az IoT Hub-központot egy megtartani kívánt erőforrásokat tartalmazó meglévő erőforráscsoportban hozta létre, az erőforráscsoport törlése helyett csak magát az IoT Hub-erőforrást törölje.
->
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Ha csak az IoT Hub-központot szeretné törölni, hajtsa végre az alábbi parancsot a saját központja és a saját erőforráscsoportja nevével:
-
-```azurecli-interactive
-az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
-```
-
-
-A teljes erőforráscsoport név alapján való törléséhez:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
-
-2. A **Szűrés név alapján** mezőbe írja be az IoT Hub-központot tartalmazó erőforráscsoport nevét. 
-
-3. Az erőforráscsoporttól jobbra, az eredménylistában válassza a három pont (**...**), majd az **Erőforráscsoport törlése** lehetőséget.
-
-4. A rendszer az erőforráscsoport törlésének megerősítését kéri. A megerősítéshez írja be újra az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
-
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
 ## <a name="next-steps"></a>További lépések

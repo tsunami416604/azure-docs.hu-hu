@@ -6,17 +6,22 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 07/09/2018
+ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 4874e42139e277400c866a7fc4c7094faeae136d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e4d01fdb4c11277af68127e4671a36ad7e2c74d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002204"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42022997"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
-Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz.
+Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz. A lekérdezések végrehajtása felhasználó által meghatározott indexen keresztül történik.
+
++ Többféle tartalomtípusba tartozó és többféle platformról származó adatokból létrehozhat egy olyan keresési gyűjteményt, amely csak a saját adatait tartalmazza. 
++ A mesterséges intelligencia által vezérelt indexelés segítségével képfájlokból szöveget és jellegzetességeket, nyers szövegből pedig entitásokat és kulcskifejezéseket nyerhet ki.
++ Intuitív kereséseket hozhat létre jellemzőalapú navigáció, valamint szűrők, szinonimák, automatikus kitöltés és szövegelemzés használatával az „úgy értette, hogy…?” típusú, automatikusan javított keresőkifejezésekhez.
++ Hozzáadhat földrajzi keresést a „keresés a közelben” használatához, nyelvi elemzőket a nem angol nyelvű szöveges keresésekhez, illetve pontozási logikát a keresések rangsorolásához.
 
 A funkciókat egy egyszerű [REST API-n](/rest/api/searchservice/) vagy [.NET SDK-n](search-howto-dotnet-sdk.md) keresztül tudja elérni, mely elfedi az információk kiolvasásának mögöttes komplexitását. Az API-k mellett az Azure Portal is nyújt támogatást a felügyelethez és a tartalomkezeléshez, például eszközöket kínál prototípus-készítéshez és az indexek lekérdezéséhez. Mivel a szolgáltatás a felhőben fut, az infrastruktúrát és a rendelkezésre állást a Microsoft felügyeli.
 
@@ -51,7 +56,7 @@ A kereshető tartalmak feltöltése előtt definiálnia kell egy Azure Search-in
 
 Hozhat létre sémát az Azure Portalon, illetve programozottan is a [.NET SDK](search-howto-dotnet-sdk.md) vagy a [REST API](/rest/api/searchservice/) használatával.
 
-### <a name="step-3-index-data"></a>3. lépés: Adatok indexelése
+### <a name="step-3-load-data"></a>3. lépés: Adatok betöltése
 Az index definiálása után készen áll a tartalmak feltöltésére. Választhat a küldéses és a lekéréses modell között.
 
 A lekéréses modell beszerzi az adatokat a külső adatforrásokból. Ezt olyan *indexelők* segítségével végzi, amelyek leegyszerűsítik és automatizálják az adatbetöltés bizonyos részleteit, például az adatokhoz való kapcsolódást, illetve az adatok olvasását vagy szerializálását. Érhetők el [indexelők](/rest/api/searchservice/Indexer-operations) az Azure Cosmos DB, az Azure SQL Database és az Azure Blob Storage szolgáltatáshoz, valamint az Azure virtuális gépeken futó SQL Server-kiszolgálókhoz. Az indexelőket konfigurálhatja igény szerinti vagy ütemezett adatfrissítésre.
@@ -61,7 +66,7 @@ A küldéses modell az SDK-n vagy a REST API-kon keresztül vehető igénybe úg
 ### <a name="step-4-search"></a>4. lépés: Keresés
 Az index feltöltése után [bocsáthat ki keresési lekérdezéseket](/rest/api/searchservice/Search-Documents) a szolgáltatásvégpontjának egyszerű HTTP-kérések REST API-n vagy .NET SDK-n keresztüli küldésével.
 
-## <a name="how-azure-search-compares"></a>Az Azure Search összehasonlítása más szolgáltatásokkal
+## <a name="how-it-compares"></a>Összehasonlítás más keresési megoldásokkal
 
 Ügyfeleink gyakran kérdezik, hogy az Azure Search miben tér el a többi keresési megoldástól. Az alábbi táblázat összefoglalja a fő eltéréseket.
 
@@ -104,13 +109,16 @@ Másik lehetőségként [kihasználhatja MSDN-előfizetői előnyeit](https://az
 
 ## <a name="how-to-get-started"></a>Első lépések
 
-1. Hozzon létre egy [ingyenes szintű](search-create-service-portal.md) szolgáltatást.
+1. Hozzon létre egy [ingyenes szolgáltatást](search-create-service-portal.md). Az ingyenes szolgáltatás az összes rövid útmutató és oktatóanyag elvégzését lehetővé teszi.
 
-2. Végezzen el egyet vagy többet az alábbi oktatóanyagok közül. 
+2. Végezze el a [beépített eszközök indexelésre és lekérdezésre történő használatát ismertető oktatóanyagot](search-get-started-portal.md). Ennek keretében fontos fogalmakat sajátíthat el, és megismerkedhet a portál által szolgáltatott információkkal.
 
-  + [A .NET SDK használata](search-howto-dotnet-sdk.md) – Bemutatja a felügyelt kódú megoldások fejlesztésének fő lépéseit.  
-  + [A REST API használata](https://github.com/Azure-Samples/search-rest-api-getting-started) – Ismerteti ugyanezeket a lépéseket a REST API használatával.  
-  + [Első index létrehozása a portálon](search-get-started-portal.md) – Bemutatja a beépített indexelési és prototípus-készítési funkciók használatát.   
+3. A .NET vagy a REST API használatával folytathatja a kódolást:
+
+  + [A .NET SDK használata](search-howto-dotnet-sdk.md) – Bemutatja a felügyelt kódú megoldások fejlesztésének fő munkafolyamatát.  
+  + [A REST API használata](https://github.com/Azure-Samples/search-rest-api-getting-started) – Ismerteti ugyanezeket a lépéseket a REST API használatával. Ez az útmutató azt is lehetővé teszi, hogy REST API-kat hívjon meg a Postmanből vagy a Fiddlerből: [Azure Search REST API-k vizsgálata](search-fiddler.md).
+
+## <a name="watch-this-video"></a>Videó megtekintése
 
 A keresőmotor az a technológia, amelyet a mobilalkalmazások, a webhelyek és a vállalati adattárak általában használnak az információk lekéréséhez. Az Azure Search olyan eszközöket nyújt, amelyekkel a nagyméretű kereskedelmi webhelyek keresési szolgáltatásaihoz hasonló funkcionalitást tud létrehozni.
 
@@ -122,5 +130,3 @@ Ebben a 9 perces videóban megtudhatja Liam Cavanagh programmenedzsertől, hogy 
 + A 3–4. percben megismerheti a szolgáltatás üzembe helyezését. 
 + A 4–6. percben megismerheti az indexek Adatok importálása varázslóval való létrehozását a beépített adatkészlet használatával.
 + A 6–9. percben megismerheti a Keresési ablakot és a lekérdezések végrehajtását.
-
-

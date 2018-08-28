@@ -10,12 +10,12 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 1436ad54eb13052aa87ccfd5adc371c8d7d5a100
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4387e1c935ada99e1f9c335fb7e1b67905c01188
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403790"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42023512"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
 
@@ -57,7 +57,9 @@ A felhasználóknak telepíteniük kell a Pythont, valamint a Microsoft Genomics
 
 ### <a name="install-python"></a>Telepítse a Pythont
 
-A Microsoft Genomics Python-kliens a Python 2.7-es verziójával kompatibilis. Javasoljuk a 2.7.12-es vagy újabb verzió használatát. Ajánlott verzió: 2.7.14. A letöltés [itt](https://www.python.org/downloads/) található. 
+A Microsoft Genomics Python-kliens a Python 2.7-es verziójával kompatibilis. 2.7.12-es vagy újabb verzió. A szöveg megírásának pillanatában a 2.7.15-ös a legújabb verzió. Javasoljuk a 2.7.14-es verzió használatát. A letöltés [itt](https://www.python.org/downloads/) található. 
+
+MEGJEGYZÉS: A Python 3.x nem kompatibilis a Python 2.7.xx-es verziókkal.  Az MSGen egy Python 2.7-alkalmazás. Ha az MSGen alkalmazást futtatja, ügyeljen arra, hogy az aktív Python-környezete 2.7.xx-es Python-verziót használjon. Ha az MSGen alkalmazást egy 3.x-es Python-verzióval használja, előfordulhat, hogy hibák jelentkeznek.
 
 
 ### <a name="install-the-microsoft-genomics-client"></a>A Microsoft Genomics-kliens telepítése

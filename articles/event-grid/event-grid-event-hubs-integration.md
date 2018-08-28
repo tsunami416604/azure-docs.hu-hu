@@ -6,18 +6,18 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 05/04/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 41cd2f1081cbe8d8fca9d6afa77b87f9aa1017d3
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 432436ee13519cf342313ad369c168ba764f9264
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302939"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616515"
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>Big Data típusú adatok streamelése adattárházba
 
-Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztó szolgáltatás, amellyel reagálhat az alkalmazásokból és szolgáltatásokból érkező értesítésekre. Az [Event Hubs Capture- és Event Grid-minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) bemutatja, hogy az Azure Event Hubs és az Azure Event Grid használatával hogyan lehet zökkenőmentesen migrálni egy eseményközpont adatait egy SQL Data Warehouse-adattárházba.
+Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztó szolgáltatás, amellyel reagálhat az alkalmazásokból és szolgáltatásokból érkező értesítésekre. Például aktiválhat egy Azure Functions-függvényt, amely egy Azure Blob Storage-ben vagy Data Lake Store-ban rögzített Event Hubs-adatokat dolgoz fel, majd migrálja az adatokat más adattárakba. Ez az [Event Hubs Capture- és Event Grid-minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) bemutatja, hogy az Event Hubs Capture és az Event Grid használatával hogyan lehet zökkenőmentesen migrálni az Event Hubs-adatokat a Blob Storage-ből egy SQL Data Warehouse-adattárházba.
 
 ![Az alkalmazás áttekintése](media/event-grid-event-hubs-integration/overview.png)
 
@@ -75,7 +75,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 ## <a name="deploy-the-infrastructure"></a>Az infrastruktúra üzembe helyezése
 
-Ebben a cikkben az egyszerűség kedvéért egy Resource Manager-sablonnal helyezzük üzembe a szükséges infrastruktúrát. Az üzembe helyezett erőforrások megtekintéséhez lásd a [sablont](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). Használja az erőforráscsoport helye szerint [támogatott régiók](overview.md) egyikét.
+Ebben a cikkben az egyszerűség kedvéért egy Resource Manager-sablonnal helyezzük üzembe a szükséges infrastruktúrát. Az üzembe helyezett erőforrások megtekintéséhez lásd a [sablont](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json).
 
 Azure CLI esetén használja az alábbi parancsot:
 

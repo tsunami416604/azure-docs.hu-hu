@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aaed3dd5a2a7b32d24aa8b19dab870c28e6f58ec
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216182"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42154781"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
@@ -114,8 +114,9 @@ További információ az [Azure beépített RBAC-szerepköreivel](../role-based-
 2. A **Forrás** beállításnál válassza az **Azure** értéket.
 3. A **Forrás helye** értékeként válassza ki azt az Azure-régiót, ahol az adott virtuális gépek éppen futnak.
 4. Válassza ki **az Azure-beli virtuális gép üzembe helyezési modelljét** a virtuális gépek számára: **Resource Manager-alapú** vagy **Klasszikus**.
-5. A Resource Managert használó virtuális gépek esetében válassza ki **a forrásként szolgáló erőforráscsoportot**, a klasszikus virtuális gépek esetében pedig a **felhőszolgáltatást**.
-6. Kattintson az **OK** gombra a beállítások mentéséhez.
+5. Válassza ki azt a **Forrás-előfizetést**, ahol a virtuális gépek futnak. Ez bármelyik előfizetés lehet azon Azure Active Directory-bérlőn belül, ahol a már meglévő Recovery Services-tárolója van.
+6. A Resource Managert használó virtuális gépek esetében válassza ki **a forrásként szolgáló erőforráscsoportot**, a klasszikus virtuális gépek esetében pedig a **felhőszolgáltatást**.
+7. Kattintson az **OK** gombra a beállítások mentéséhez.
 
 ### <a name="select-the-vms"></a>A virtuális gépek kiválasztása
 
@@ -134,9 +135,11 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
   ![Beállítások konfigurálása](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
+- **Célelőfizetés**: A vészhelyreállításhoz használt célelőfizetés. Alapértelmezés szerint a célelőfizetés megegyezik a forrás-előfizetéssel. Ha egy másik előfizetést szeretne választani ugyanazon az Azure Active Directory-bérlőn belül, kattintson a „Testreszabásra” lehetőségre.
+
 - **Célhely**: A vészhelyreállításhoz használt célrégió. Javasoljuk, hogy a célhely és a Site Recovery-tároló helye ugyanaz legyen.
 
-- **Cél erőforráscsoport**: A célrégió azon erőforráscsoportja, ahol a feladatátvételt követően az Azure-beli virtuális gépek találhatók. Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új erőforráscsoportot a célrégióban. A cél erőforráscsoport helye bármelyik régió lehet, kivéve azt a régiót, amelyben a forrás virtuális gépeket üzemeltetik. 
+- **Cél erőforráscsoport**: A célrégió azon erőforráscsoportja, ahol a feladatátvételt követően az Azure-beli virtuális gépek találhatók. Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új erőforráscsoportot a célrégióban. A cél erőforráscsoport helye bármelyik régió lehet, kivéve azt a régiót, amelyben a forrás virtuális gépeket üzemeltetik.
 
 - **Cél virtuális hálózat**: Az a hálózat a célrégióban, ahol a virtuális gépek találhatók a feladatátvétel után.
   Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új virtuális hálózatot (és alhálózatokat) a célrégióban.

@@ -7,15 +7,15 @@ manager: shivamg
 keywords: windows server biztonsági másolat; windows server biztonsági mentése; biztonsági mentés és vészhelyreállítás
 ms.service: backup
 ms.topic: tutorial
-ms.date: 2/14/2018
+ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: d52866a4f441a74bbc4b63f6dc362989865151b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609018"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616189"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server biztonsági mentése az Azure-ba
 
@@ -29,9 +29,9 @@ Az Azure Backuppal megvédheti a Windows Servert a sérülésektől, támadások
 > * Igény szerinti biztonsági mentés
 
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -41,11 +41,11 @@ Mielőtt biztonsági másolatot készíthetne a Windows Serverről, létre kell 
 
    ![Helyreállítási tár megnyitása](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2.  A **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** elemre.
+2. A **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** elemre.
 
    ![a tár információinak megadása](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
-3.  A **Helyreállítási tár** menüben:
+3. A **Helyreállítási tár** menüben:
 
     - Írja be a *myRecoveryServicesVault* értéket a **Név** mezőbe.
     - Megjelenik az aktuális előfizetési azonosító az **Előfizetés** mezőben.
@@ -59,27 +59,28 @@ Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listáj
 
 A Microsoft Azure Recovery Services- (MARS-) ügynök egy társítást hoz létre a Windows Server és a helyreállítási tár között. Az alábbi eljárás azt ismerteti, hogyan töltheti le az ügynököt a kiszolgálóra.
 
-1.  A helyreállítási tárak listájából válassza a **myRecoveryServicesVault** tárolót az irányítópult megnyitásához.
+1. A helyreállítási tárak listájából válassza a **myRecoveryServicesVault** tárolót az irányítópult megnyitásához.
 
    ![a tár információinak megadása](./media/tutorial-backup-windows-server-to-azure/open-vault-from-list.png)
 
-2.  A tároló irányítópultjának menüjében kattintson a **Biztonsági mentés** elemre.
+2. A tároló irányítópultjának menüjében kattintson a **Biztonsági mentés** elemre.
 
-3.  A **Biztonsági mentés célja** menüben:
+3. A **Biztonsági mentés célja** menüben:
 
-    - a **Hol futnak az alkalmazások és szolgáltatások?** pontnál válassza a **Helyszíni** lehetőséget, 
-    - a **Miről szeretne biztonsági másolatot készíteni?** pontnál válassza a **Fájlok és mappák** és a **Rendszerállapot** elemet 
+   * a **Hol futnak az alkalmazások és szolgáltatások?** pontnál válassza a **Helyszíni** lehetőséget, 
+   * a **Miről szeretne biztonsági másolatot készíteni?** pontnál válassza a **Fájlok és mappák** és a **Rendszerállapot** elemet
 
-    ![a tár információinak megadása](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
-    
-4.  Kattintson az **Infrastruktúra előkészítése** elemre az **Infrastruktúra előkészítése** menü megnyitásához.
-5.  Az **Infrastruktúra előkészítése** menüben kattintson **A Windows Server- vagy a Windows-ügyfél ügynökének letöltése** elemre a *MARSAgentInstaller.exe* letöltéséhez. 
+   ![a tár információinak megadása](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
+
+4. Kattintson az **Infrastruktúra előkészítése** elemre az **Infrastruktúra előkészítése** menü megnyitásához.
+
+5. Az **Infrastruktúra előkészítése** menüben kattintson **A Windows Server- vagy a Windows-ügyfél ügynökének letöltése** elemre a *MARSAgentInstaller.exe* letöltéséhez. 
 
     ![infrastruktúra előkészítése](./media/tutorial-backup-windows-server-to-azure/prepare-infrastructure.png)
 
     A telepítő megnyit egy külön böngészőablakot, és letölti a **MARSAgentInstaller.exe** fájlt.
  
-6.  A letöltött fájl futtatása előtt kattintson az Infrastruktúra előkészítése panel **Letöltés** gombjára, és mentse a **Tár hitelesítő adatai** fájlt. Ez a fájl szükséges a MARS-ügynök helyreállítási tárhoz való csatlakozásához.
+6. A letöltött fájl futtatása előtt kattintson az Infrastruktúra előkészítése menü **Letöltés** elemére, és mentse a **Tároló hitelesítő adatai** fájlt. A tároló hitelesítő adataira szükség van a MARS Agent Recovery Services-tárolóhoz való csatlakoztatásához.
 
     ![infrastruktúra előkészítése](./media/tutorial-backup-windows-server-to-azure/download-vault-credentials.png)
  
@@ -115,13 +116,17 @@ A Microsoft Azure Recovery Services-ügynökkel ütemezheti a Windows Server Azu
 
 5. Kattintson a **Tovább** gombra.
 
-6. A **Biztonsági mentési ütemezés megadása (Rendszerállapot)** lapon adja meg a nap vagy a hét azon időpontját, amikor aktiválni kívánja a Rendszerállapot biztonsági mentését, majd kattintson a **Tovább** gombra 
+6. A **Biztonsági mentési ütemezés megadása (Rendszerállapot)** lapon adja meg a nap vagy a hét azon időpontját, amikor aktiválni kívánja a Rendszerállapot biztonsági mentését, majd kattintson a **Tovább** gombra.
 
-7.  Az **Adatmegőrzési szabályzat kijelölése (Rendszerállapot)** lapon válassza ki a rendszerállapot biztonsági mentésére vonatkozó megőrzési szabályzatot, majd kattintson a **Tovább** gombra
+7. Az **Adatmegőrzési szabályzat kijelölése (Rendszerállapot)** lapon válassza ki a rendszerállapot biztonsági mentésére vonatkozó megőrzési szabályzatot, majd kattintson a **Tovább** gombra.
+
 8. Hasonló módon válassza ki a kijelölt fájlok és mappák biztonsági mentési ütemezését és megőrzési szabályzatát. 
-8.  A **Kezdeti biztonsági mentési típus kiválasztása** lapon hagyja bejelölve az **Automatikusan a hálózaton keresztül** beállítást, majd kattintson a **Tovább** gombra.
-9.  A **Jóváhagyás** lapon ellenőrizze az információkat, majd kattintson a **Befejezés** gombra.
-10. Miután a varázsló befejezte a biztonsági mentési ütemezés létrehozását, kattintson a **Bezárás** gombra.
+
+9. A **Kezdeti biztonsági mentési típus kiválasztása** lapon válassza az **Automatikusan a hálózaton keresztül** beállítást, majd kattintson a **Tovább** gombra.
+
+10. A **Jóváhagyás** lapon ellenőrizze az információkat, majd kattintson a **Befejezés** gombra.
+
+11. Miután a varázsló befejezte a biztonsági mentési ütemezés létrehozását, kattintson a **Bezárás** gombra.
 
 ## <a name="perform-an-ad-hoc-back-up"></a>Igény szerinti biztonsági mentés
 

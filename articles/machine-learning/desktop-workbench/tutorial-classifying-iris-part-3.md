@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 2270080f8612c69a69955202ececab44136f335c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445536"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41919597"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>3. oktatóanyag: Írisz osztályozása: Modellek üzembe helyezése
 Az Azure Machine Learning (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
@@ -247,7 +247,7 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
    >[!IMPORTANT]
    >A szolgáltatásnév, amely az új Docker-rendszerkép neve is, csak kisbetűkből állhat. Ellenkező esetben a rendszer hibaüzenetet küld. 
 
-1. A parancs futtatásakor a modellt és a pontozófájlt a rendszer feltölti a környezet beállítása során létrehozott tárfiókba. A telepítési folyamat összeállít egy Docker-rendszerképet, amely tartalmazza a modellt, a sémát és a pontozófájlt, majd leküldi azt az Azure Container Registrybe: **\<ACR_név\>.azureacr.io/\<rendszerképnév\>:\<verzió\>**. 
+1. A parancs futtatásakor a modellt és a pontozófájlt a rendszer feltölti a környezet beállítása során létrehozott tárfiókba. A telepítési folyamat összeállít egy Docker-rendszerképet, amely tartalmazza a modellt, a sémát és a pontozófájlt, majd leküldi azt az Azure Container Registrybe: **\<ACR_név\>.azurecr.io/\<rendszerképnév\>:\<verzió\>**. 
 
    A parancs lekéri a rendszerképet a helyi számítógépre, és a rendszerkép alapján elindít egy Docker-tárolót. Ha a környezet fürt üzemmódban lett konfigurálva, a Docker-tároló az Azure Cloud Services Kubernetes-fürtön lesz üzembe helyezve.
 
@@ -313,7 +313,7 @@ A futó **irisapp** webszolgáltatás teszteléséhez használjon egy JSON kódo
 1. A szolgáltatás teszteléséhez hajtsa végre a visszaadott szolgáltatásfuttatási parancsot:
     
    ```azurecli
-   az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
+   az ml service run realtime -i <web service ID> -d '{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}'
    ```
 
    A kimenet **„Iris-setosa”**, amely az előrejelzett osztály. (Az Ön eredménye ettől eltérő lehet.) 

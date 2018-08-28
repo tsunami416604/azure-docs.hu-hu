@@ -6,47 +6,35 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 06/01/2018
+ms.date: 08/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 90e8d6a3ef093046c5ee6324f6e6590e59124da7
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725241"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023830"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Az Azure Event Grid bemutatása
 
-Az Azure Event Griddel könnyen létrehozhat eseményalapú architektúrával rendelkező alkalmazásokat. Kiválaszthatja azt az Azure-erőforrást, amelyre elő kíván fizetni, és megadhatja azt az eseménykezelőt vagy webhookvégpontot, amelyre el kívánja küldeni az eseményt. Az Event Grid beépített támogatást nyújt az Azure-szolgáltatásokból, például a tárolóblobokból és erőforráscsoportokból érkező eseményekhez. Ezenkívül az Event Grid egyéni témakörök és webhookok használatával egyéni támogatást nyújt az alkalmazásokhoz és külső eseményekhez. 
+Az Azure Event Griddel könnyen létrehozhat eseményalapú architektúrával rendelkező alkalmazásokat. Először kiválaszthatja azt az Azure-erőforrást, amelyre elő kíván fizetni, és megadhatja azt az eseménykezelőt vagy webhook-végpontot, amelyre el kívánja küldeni az eseményt. Az Event Grid beépített támogatást nyújt az Azure-szolgáltatásokból, például a tárolóblobokból és erőforráscsoportokból érkező eseményekhez. Az Event Grid egyéni témakörök használatával a saját események használatát is támogatja. 
 
-Szűrők segítségével adott eseményeket irányíthat át különböző végpontokra, csoportos küldést végezhet több végpontra, és meggyőződhet róla, hogy az események megbízhatóan célba érnek. Az Event Grid beépített támogatást nyújt az egyéni és külső eseményekhez.
+Szűrők segítségével adott eseményeket irányíthat át különböző végpontokra, csoportos küldést végezhet több végpontra, és meggyőződhet róla, hogy az események megbízhatóan célba érnek.
 
-Az Event Grid jelenleg az alábbi régiókat támogatja:
+Az Azure Event Grid jelenleg minden nyilvános régióban elérhető. Jelenleg nem érhető el az Azure Germany, az Azure China és az Azure Government felhőben.
 
-* Délkelet-Ázsia
-* Kelet-Ázsia
-* Kelet-Ausztrália
-* Délkelet-Ausztrália
-* USA középső régiója
-*   USA keleti régiója
-*   USA 2. keleti régiója
-* Nyugat-Európa
-* Észak-Európa
-* Kelet-Japán
-* Nyugat-Japán
-*   USA nyugati középső régiója
-*   USA nyugati régiója
-*   USA nyugati régiója, 2.
-
-Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md). Az alábbi kép bemutatja, hogyan csatlakoztatja az Event Grid a forrásokat és a kezelőket, de a támogatott lehetőségek átfogó listáját nem tartalmazza.
+Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md). 
 
 ![Az Event Grid funkcionális modellje](./media/overview/functional-model.png)
 
+Vegye figyelembe, hogy ez az ábra azt mutatja be, hogyan csatlakoztat az Event Grid forrásokat és kezelőket, és nem a támogatott integrációk átfogó listáját ábrázolja.
+
 ## <a name="event-sources"></a>Eseményforrások
 
-Jelenleg az alábbi Azure-szolgáltatások támogatják az események Event Gridbe való küldését:
+Az egyes források képességeire és a kapcsolódó cikkekre vonatkozó részletekért tekintse meg az [eseményforrásokat](event-sources.md). Jelenleg az alábbi Azure-szolgáltatások támogatják az események Event Gridbe való küldését:
 
 * Azure-előfizetések (kezelési műveletek)
+* Container Registry
 * Egyéni témakörök
 * Event Hubs
 * IoT Hub
@@ -56,11 +44,9 @@ Jelenleg az alábbi Azure-szolgáltatások támogatják az események Event Grid
 * Storage Blob
 * Általános célú v2- (GPv2-) tároló
 
-Az egyes eseményforrások használatát bemutató cikkekre mutató hivatkozásokat itt találja: [Eseményforrások az Azure Event Gridben](event-sources.md).
-
 ## <a name="event-handlers"></a>Eseménykezelők
 
-Jelenleg az alábbi Azure-szolgáltatások támogatják az Event Gridből származó események kezelését: 
+Az egyes kezelők képességeire és a kapcsolódó cikkekre vonatkozó részletekért tekintse meg az [eseménykezelőket](event-handlers.md). Jelenleg az alábbi Azure-szolgáltatások támogatják az Event Gridből származó események kezelését: 
 
 * Azure Automation
 * Azure Functions
@@ -70,8 +56,6 @@ Jelenleg az alábbi Azure-szolgáltatások támogatják az Event Gridből szárm
 * Microsoft Flow
 * Queue Storage
 * Webhookok
-
-Az egyes eseménykezelők használatát bemutató cikkekre mutató hivatkozásokat itt találja: [Eseménykezelők az Azure Event Gridben](event-handlers.md).
 
 ## <a name="concepts"></a>Alapelvek
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 77dcad0f3e49b601110f8700245aaf479bde1c4e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4f9b14762332bd11fd69a855d8fabdb206e34919
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722779"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41917569"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>2. oktatóanyag – Írisz osztályozása: Modell létrehozása
 Az (előzetes verziójú) Azure Machine Learning-szolgáltatások az adatszakértők számára készült, az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott integrált és fejlett adatelemzési megoldások.
@@ -442,7 +442,7 @@ Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkript
    >Az IP-cím lehet nyilvánosan címezhető teljes tartománynév (FQDN) is, például: `vm-name.southcentralus.cloudapp.azure.com`. Érdemes hozzáadni az FQDN-t a DSVM-hez, és azt használni IP-cím helyett. Ezt azért érdemes megtenni, mert lehet, hogy később költséghatékonyság miatt kikapcsolja a virtuális gépet. Amikor legközelebb elindítja a virtuális gépet, előfordulhat, hogy más lesz az IP-címe.
 
    >[!NOTE]
-   >Felhasználónév- és jelszóalapú hitelesítésen felül megadhat egy titkos kulcsot és a megfelelő jelszót (ha van ilyen) a `--private-key-file` és (opcionálisan) a `--private-key-passphrase` beállítások segítségével.
+   >Felhasználónév- és jelszóalapú hitelesítésen felül megadhat egy titkos kulcsot és a megfelelő jelszót (ha van ilyen) a `--private-key-file` és (opcionálisan) a `--private-key-passphrase` beállítások segítségével. Amennyiben a DSVM létrehozásakor használt privát kulcsot szeretné használni, a `--use-azureml-ssh-key` beállítást kell megadnia.
 
    Ezután ezen parancs futtatásával készítse elő a **myvm** számítási célt.
    

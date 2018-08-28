@@ -9,14 +9,14 @@ ms.component: cosmosdb-table
 ms.custom: quickstart connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/10/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: e70501be61455e9707fcf57d1996729097a0641f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 020345f5f5de3235a0fb34f1efc27efd771a842d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582383"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022474"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>Rövid útmutató: Table API-alkalmazás létrehozása a .NET és az Azure Cosmos DB használatával 
 
@@ -117,7 +117,7 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 1. A Visual Studióban kattintson a jobb gombbal a **TableStorage** projektre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre. 
 
    ![NuGet-csomagok kezelése](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
-2. A NuGet **Tallózás** mezőjébe írja be a következőt: *Microsoft.Azure.CosmosDB.Table*. Ezzel a Cosmos DB Table API-ügyfélkódtárát keresi meg.
+2. A NuGet **Tallózás** mezőjébe írja be a következőt: *Microsoft.Azure.CosmosDB.Table*. Ezzel a Cosmos DB Table API-ügyfélkódtárát keresi meg. Vegye figyelembe, hogy ez a kódtár jelenleg csak a .NET Standardhoz érhető el, a .NET Core-hoz nem.
    
    ![A NuGet Tallózás lapja](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 

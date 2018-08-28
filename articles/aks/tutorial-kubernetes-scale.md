@@ -1,49 +1,47 @@
 ---
 title: Azure-on futó Kubernetes oktatóanyag – Alkalmazások skálázása
-description: AKS-oktatóanyag – Alkalmazások skálázása
+description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan skálázhat csomópontokat és podokat a Kubernetesben, és hogyan valósíthatja meg a podok horizontális felskálázását.
 services: container-service
-author: dlepow
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 02/22/2018
-ms.author: danlep
+ms.date: 08/14/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 61654ae972965800909544554cc93dae511e1ff1
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 5ffe7b4c7830500e5eeeeb61c57730d9a0d9df47
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480272"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918950"
 ---
-# <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes Service-ben (AKS)
+# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service-ben (AKS)
 
-Ha eddig követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel az AKS-ben, és üzembe helyezte az Azure-szavazóalkalmazást.
-
-Ebben az oktatóanyagban, amely egy hétrészes sorozat ötödik része, horizontálisan felskálázzuk az alkalmazás podjait, továbbá kipróbáljuk a podok automatikus méretezését. Emellett megismerjük, hogyan skálázható az Azure-beli virtuális gépek csomópontjainak száma a fürt kapacitásának beállításához a számítási feladatok futtatása érdekében. Az eddig végrehajtott feladatok a következők:
+Ha eddig követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel az AKS-ben, és üzembe helyezte az Azure-szavazóalkalmazást. Ebben az oktatóanyagban, amely egy hétrészes sorozat ötödik része, horizontálisan felskálázzuk az alkalmazás podjait, továbbá kipróbáljuk a podok automatikus méretezését. Emellett megismerjük, hogyan skálázható az Azure-beli virtuális gépek csomópontjainak száma a fürt kapacitásának beállításához a számítási feladatok futtatása érdekében. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * A Kubernetes Azure-csomópontok skálázása
-> * Kubernetes-podok manuális méretezése
-> * Az alkalmazás előtérrendszerét futtató podok automatikus méretezésének konfigurálása
+> * A Kubernetes-csomópontok skálázása
+> * Az alkalmazást futtató Kubernetes-podok manuális skálázása
+> * Az alkalmazás kezelőfelületét futtató automatikus skálázású podok konfigurálása
 
 Az ezt követő oktatóanyagokban az Azure Vote alkalmazást egy új verzióra frissítjük.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. Az alkalmazást ezután a Kubernetes-fürtön futtattuk.
+Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. Az alkalmazást ezután a Kubernetes-fürtön futtattuk. Ha ezeket a lépéseket még nem hajtotta végre, de szeretne velünk tartani, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása][aks-tutorial-prepare-app] részhez.
 
-Ha ezeket a lépéseket még nem hajtotta végre, de szeretne velünk tartani, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása][aks-tutorial-prepare-app] részhez.
+Az oktatóanyag elvégzéséhez az Azure CLI 2.0.38-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="manually-scale-pods"></a>Podok manuális méretezése
 
-Eddig már telepítettük az Azure Vote előtérrendszerét és a Redis-példányokat, mindegyiket egyetlen replikával. Ennek ellenőrzéséhez futtassa a [kubectl get][kubectl-get] parancsot.
+Az előző oktatóanyagokban az Azure Vote előtérrendszerének és a Redis-példánynak a telepítésekor egyetlen replika jött létre. A fürtben lévő podok számának és állapotának megtekintéséhez használja a [kubectl get][kubectl-get] parancsot a következőképpen:
 
-```azurecli
+```console
 kubectl get pods
 ```
 
-Kimenet:
+A következő példa egy előtérbeli podot és egy háttérbeli podot mutat be:
 
 ```
 NAME                               READY     STATUS    RESTARTS   AGE
@@ -51,22 +49,18 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Manuálisan módosítsa az `azure-vote-front` üzemelő példány podjainak számát a [kubectl scale][kubectl-scale] paranccsal. Példánkban 5-re növeljük a számot.
+Ha manuálisan szeretné módosítani az *azure-vote-front* üzemelő példány podjainak számát, használja a [kubectl scale][kubectl-scale] parancsot. A következő példa *5*-re növeli az előtérbeli podok számát:
 
-```azurecli
+```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Futtassa a [kubectl get pods][kubectl-get] parancsot annak ellenőrzéséhez, hogy a Kubernetes létrehozza-e a podokat. Hozzávetőleg egy perc elteltével az újabb podok is futnak:
+Futtassa ismét a [kubectl get pods][kubectl-get] parancsot annak ellenőrzéséhez, hogy a Kubernetes létrehozza-e a további podokat. Hozzávetőleg egy perc elteltével az újabb podok elérhetők a fürtön:
 
-```azurecli
-kubectl get pods
-```
+```console
+$ kubectl get pods
 
-Kimenet:
-
-```
-NAME                                READY     STATUS    RESTARTS   AGE
+                                    READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
 azure-vote-front-3309479140-2hfh0   1/1       Running   0          3m
 azure-vote-front-3309479140-bzt05   1/1       Running   0          3m
@@ -86,7 +80,7 @@ kubectl create -f metrics-server/deploy/1.8+/
 
 Az automatikus méretező használatához definiálni kell a podok processzorigényét és korlátait. Az `azure-vote-front` üzemi környezetben az előtértároló processzorigénye 0,25, a felső korlát pedig 0,5. A beállítások a következőhöz hasonlóak:
 
-```YAML
+```yaml
 resources:
   requests:
      cpu: 250m
@@ -94,26 +88,22 @@ resources:
      cpu: 500m
 ```
 
-Az alábbi példában a [kubectl autoscale][kubectl-autoscale] paranccsal automatikusan skálázzuk a podok számát az `azure-vote-front` környezetben. Amennyiben a processzorhasználat itt meghaladja az 50%-ot, az automatikus méretező legfeljebb 10-ig növeli a podok számát.
+Az alábbi példa a [kubectl autoscale][kubectl-autoscale] paranccsal automatikusan skálázza a podok számát az *azure-vote-front* üzemelő példányban. Amennyiben a processzorhasználat meghaladja az 50%-ot, az automatikus skálázó legfeljebb 10 példányszámig növeli a podok számát:
 
-```azurecli
+```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Az automatikus méretező állapotának megtekintéséhez futtassa az alábbi parancsot:
-
-```azurecli
-kubectl get hpa
-```
-
-Kimenet:
+Az automatikus skálázó állapotának megtekintéséhez használja a `kubectl get hpa` parancsot a következőképpen:
 
 ```
+$ kubectl get hpa
+
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
 ```
 
-Néhány perc elteltével az Azure Vote alkalmazás minimális terhelése mellett a podreplikák száma automatikusan 3-ra csökken.
+Néhány perc elteltével az Azure Vote alkalmazás minimális terhelése mellett a podreplikák száma automatikusan háromra csökken. Ismét használhatja a `kubectl get pods` parancsot a szükségtelen podok eltávolításának megtekintéséhez.
 
 ## <a name="manually-scale-aks-nodes"></a>AKS-csomópontok manuális méretezése
 
@@ -145,14 +135,14 @@ Az eredmény az alábbihoz hasonlóan fog kinézni:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban különböző méretezési funkciókat használtunk a Kubernetes-fürtben. A következők feladatokat hajtottuk végre:
+Ebben az oktatóanyagban különböző méretezési funkciókat használtunk a Kubernetes-fürtben. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Kubernetes-podok manuális méretezése
-> * Az alkalmazás előtérrendszerét futtató podok automatikus méretezésének konfigurálása
-> * A Kubernetes Azure-csomópontok skálázása
+> * A Kubernetes-csomópontok skálázása
+> * Az alkalmazást futtató Kubernetes-podok manuális skálázása
+> * Az alkalmazás kezelőfelületét futtató automatikus skálázású podok konfigurálása
 
-Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan frissíthetők az alkalmazások a Kubernetesben.
+A következő oktatóanyag azt mutatja be, hogyan frissítheti az alkalmazásokat a Kubernetesben.
 
 > [!div class="nextstepaction"]
 > [Alkalmazások frissítése a Kubernetesben][aks-tutorial-update-app]
@@ -168,3 +158,5 @@ Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan frissíthet
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-update-app]: ./tutorial-kubernetes-app-update.md
+[az-aks-scale]: /cli/azure/aks#az-aks-scale
+[azure-cli-install]: /cli/azure/install-azure-cli

@@ -1,6 +1,6 @@
 ---
-title: ASP.NET Core-webalkalmazás létrehozása az Azure-ban | Microsoft Docs
-description: Az alapértelmezett ASP.NET-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben.
+title: C# ASP.NET Core-webalkalmazás létrehozása az Azure-ban | Microsoft Docs
+description: Az alapértelmezett C# ASP.NET-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,14 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/14/2017
+ms.date: 06/11/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 91f6fd077146e94833a5527f03ac710352e4fd9c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.custom: mvc, devcenter, vs-azure
+ms.openlocfilehash: 811f4df807292b9d539084a049cc643dbee07a7e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42432055"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>ASP.NET Core-webalkalmazás létrehozása az Azure-ban
 
@@ -39,13 +40,9 @@ Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, 
 
 Az oktatóanyag elvégzéséhez:
 
-* Telepítse a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> szoftvert a következő számítási feladatokkal:
-    - **ASP.NET és webfejlesztés**
-    - **Azure-fejlesztés**
+<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> telepítése **ASP.NET és webfejlesztési** számítási feladattal.
 
-    ![ASP.NET és webfejlesztés és Azure-fejlesztés (Web és felhőszolgáltatások alatt)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
-
-Ha már telepítette a Visual Studiót, adja hozzá a számítási feladatokat a Visual Studióban a **Tools** (Eszközök)  >  **Get Tools and Features** (Eszközök és funkciók beszerzése) elemre kattintva.
+Ha már telepítette a Visual Studiót, adja hozzá a számítási feladatot a Visual Studióban a **Tools** (Eszközök)  >  **Get Tools and Features** (Eszközök és funkciók beszerzése) elemre kattintva.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
@@ -62,10 +59,6 @@ Bármilyen típusú ASP.NET Core-webalkalmazást üzembe helyezhet az Azure-ban.
 Kattintson az **OK** gombra.
 
 ![A New ASP.NET Project (Új ASP.NET-projekt) párbeszédpanel](./media/app-service-web-get-started-dotnet/razor-pages-aspnet-dialog.png)
-
-Az ASP.NET Core-projekt létrehozása után megjelenik az ASP.NET Core kezdőlapja. Itt számos olyan erőforrásra mutató hivatkozást találhat, amelyek segítenek a munka megkezdésében. 
-
-![Kezdőlap](./media/app-service-web-get-started-dotnet/aspnet-core-welcome-page.png)
 
 A menüből válassza a **Debug > Start without Debugging** (Hibakeresés > Indítás hibakeresés nélkül) lehetőséget a webalkalmazás helyi futtatásához.
 
@@ -85,11 +78,10 @@ Ez megnyitja a **Create App Service** (App Service létrehozása) párbeszédpan
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson az **Add an account** (Fiók hozzáadása) gombra, majd jelentkezzen be az Azure-előfizetésébe. Ha már bejelentkezett, válassza ki a kívánt előfizetést tartalmazó fiókot a legördülő listából.
+A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson az **Add an account** (Fiók hozzáadása) parancsra, majd jelentkezzen be az Azure-előfizetésébe. Ha már bejelentkezett, válassza ki a kívánt előfizetést tartalmazó fiókot a legördülő listából.
 
 > [!NOTE]
 > Ha már be van jelentkezve, akkor még ne válassza a **Create** (Létrehozás) lehetőséget.
->
 >
    
 ![Bejelentkezés az Azure-ba](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
@@ -151,7 +143,8 @@ Keresse meg a `<div id="myCarousel" class="carousel slide" data-ride="carousel" 
 
 Az Azure-beli ismételt üzembe helyezéshez kattintson a jobb gombbal a **myFirstAzureWebApp** projektre a **Solution Explorer** (Megoldáskezelő) lapon, és válassza a **Publish** (Közzététel) elemet.
 
-A közzétételi oldalon válassza a **Publish** (Közzététel) elemet.
+Az összefoglaló közzétételi oldalon válassza a **Publish** (Közzététel) elemet.
+![A Visual Studio összefoglaló közzétételi oldala](./media/app-service-web-get-started-dotnet/publish-summary-page.png)
 
 Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmazás URL-címét.
 

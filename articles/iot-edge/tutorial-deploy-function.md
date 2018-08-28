@@ -4,17 +4,17 @@ description: Az oktatóanyagban Azure-függvényeket helyezünk üzembe modulké
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 08/10/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d37e08f58986a1318e6b379d2efeb71bc58d4583
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 426d9fd81a0cd856378be3bb4f430f310bee53eb
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413738"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41921028"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Oktatóanyag: Azure-függvény üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -26,8 +26,12 @@ Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvet
 > * A modul üzembe helyezése egy tárolóregisztrációs adatbázisból az IoT Edge-eszközön.
 > * Szűrt adatok megtekintése.
 
+<center>
+![Az oktatóanyag architektúradiagramja](./media/tutorial-deploy-function/FunctionsTutDiagram.png)
+</center>
+
 >[!NOTE]
->Az Azure Functions moduljai [nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érhetők el az Azure IoT Edge szolgáltatásban. 
+>Az Azure Function moduljai [nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érhetők el az Azure IoT Edge szolgáltatásban. 
 
 Az ebben az oktatóanyagban létrehozott Azure-függvény szűri az eszköze által létrehozott hőmérsékletadatokat. A függvény csak akkor küld felfelé irányuló üzeneteket az Azure IoT Hubra, amikor a hőmérséklet egy megadott küszöbérték felett van. 
 
@@ -52,6 +56,7 @@ Fejlesztési erőforrások:
 * [Docker CE](https://docs.docker.com/install/). 
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
+
 Ebben az oktatóanyagban a VS Code-hoz készült Azure IoT Edge bővítménnyel épít fel egy modult és hoz létre egy **tárolórendszerképet** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
 
 Ehhez az oktatóanyaghoz bármilyen Docker-kompatibilis beállításjegyzéket használhat. A Dockerhez a felhőben elérhető két népszerű regisztrációsadatbázis-szolgáltatás az [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és a [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja. 
@@ -60,21 +65,34 @@ Ehhez az oktatóanyaghoz bármilyen Docker-kompatibilis beállításjegyzéket h
 
     ![Tároló-beállításjegyzék létrehozása](./media/tutorial-deploy-function/create-container-registry.png)
 
-2. Adja meg a regisztrációs adatbázis nevét, és válasszon ki egy előfizetést.
-3. Azt javasoljuk, hogy az erőforráscsoport esetében használja az IoT Hub-központot tartalmazó erőforráscsoport nevét. Ha az összes erőforrást egy csoportban tartja, együtt kezelheti őket. A teszteléshez használt erőforráscsoport törlésekor például a csoportban található összes teszterőforrás is törölve lesz. 
-4. A termékváltozat beállítása legyen **Alapszintű**, a **Rendszergazdai felhasználó** beállítást pedig állítsa **Engedélyezés** értékre. 
+2. Adja meg a következő értékeket a tárolóregisztrációs adatbázis létrehozásához:
+
+   | Mező | Érték | 
+   | ----- | ----- |
+   | Beállításjegyzék neve | Egyedi nevet adjon meg. |
+   | Előfizetés | A legördülő listából válasszon egy előfizetést. |
+   | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
+   | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
+   | Rendszergazdai felhasználó | Állítsa **Engedélyezés** értékre. |
+   | SKU | Válassza az **Alapszintű** lehetőséget. | 
+
 5. Kattintson a **Létrehozás** gombra.
+
 6. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, majd válassza a **Hozzáférési kulcsok** elemet. 
+
 7. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. Ezeket az értékeket az oktatóanyag későbbi részében fogja használni. 
 
 ## <a name="create-a-function-project"></a>Függvényprojekt létrehozása
-A következő lépésekben létrehozunk egy IoT Edge-függvényt a Visual Studio Code és az Azure IoT Edge bővítmény használatával.
 
-1. Nyissa meg a Visual Studio Code-ot.
-2. A VS Code integrált termináljának megnyitásához válassza a **View** (Nézet)  > **Integrated Terminal** (Integrált terminál) elemet. 
+Az előfeltételként feltelepített Visual Studio Code-hoz készült Azure IoT Edge-bővítmény felügyeleti funkciókat és sablonkódokat is tartalmaz. Ebben a szakaszban a Visual Studio Code használatával készíthet Azure-függvényt tartalmazó IoT Edge-megoldást. 
+
+1. Nyissa meg a Visual Studio Code-ot a fejlesztői gépen.
+
 2. A **View (Nézet)** > **Command Palette (Parancskatalógus)** elem kiválasztásával nyissa meg a VS Code parancskatalógusát.
-3. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot. Az utasításokat követve jelentkezzen be Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
-3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
+
+3. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot. Az utasításokat követve jelentkezzen be Azure-fiókjába.
+
+4. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
    1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni. 
    2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
@@ -82,9 +100,11 @@ A következő lépésekben létrehozunk egy IoT Edge-függvényt a Visual Studio
    4. A modulnak adja a **CSharpFunction** nevet. 
    5. Adja meg az előző szakaszban létrehozott Azure Container Registry-adatbázist az első modul rendszerképadattáraként. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére. A sztring végső változata a következőképpen néz ki: \<registry name\>.azurecr.io/csharpfunction.
 
+   ![Docker-rendszerkép adattárának megadása](./media/tutorial-deploy-function/repository.png)
+
 4. A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét: egy \.vscode mappát, egy modules mappát, egy üzembe helyezési jegyzéksablonfájlt. és egy \.env fájlt. A VS Code Explorerben nyissa meg a **modules** > **CSharpFunction** > **EdgeHubTrigger-Csharp** > **run.csx** modult.
 
-5. Cserélje le a fájl tartalmát a következő kódra:
+5. Cserélje le a **run.csx** fájl tartalmát a következő kódra:
 
    ```csharp
    #r "Microsoft.Azure.Devices.Client"
@@ -148,25 +168,31 @@ A következő lépésekben létrehozunk egy IoT Edge-függvényt a Visual Studio
 
 Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy kódot a **CSharpFunction** függvényhez, amely kiszűri az olyan üzeneteket, ahol a jelentett géphőmérséklet alacsonyabb az elfogadható határértéknél. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
 
-1. A Visual Studio Code integrált termináljában az alábbi paranccsal jelentkezzen be a Dockerbe. Ezután küldje le a modul rendszerképét az Azure Container Registry-adatbázisba: 
+Ebben a szakaszban kétszer meg kell adnia a tárolóregisztrációs adatbázis hitelesítő adatait. Egyszer azért, hogy helyileg bejelentkezzen a fejlesztői gépről, hogy a Visual Studio Code le tudja küldeni a rendszerképeket a regisztrációs adatbázisba. Másodszor pedig az IoT Edge-megoldás **.env** kiterjesztésű fájlja miatt, ami engedélyezi a rendszerképek lekérését az IoT Edge-eszköz számára a beállításjegyzékből. 
+
+1. A VS Code integrált termináljának megnyitásához válassza a **View** (Nézet)  > **Integrated Terminal** (Integrált terminál) elemet. 
+
+1. Az integrált terminálban az alábbi paranccsal jelentkezzen be a tárolóregisztrációs adatbázisba. Ezután küldje le a modul rendszerképét az Azure Container Registry-adatbázisba: 
      
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
-    Használja azt a felhasználónevet és bejelentkezési kiszolgálót, amelyet az Azure Container Registry-adatbázisból másolt ki korábban. A rendszer kéri a jelszót. Illessze be a jelszót a parancssorba, majd nyomja le az **Enter** billentyűt.
+    Használja azt a felhasználónevet és bejelentkezési kiszolgálót, amelyet az Azure Container Registry-adatbázisból másolt ki korábban. Amikor a rendszer kéri a jelszót, másolja be a tárolóregisztrációs adatbázis jelszavát, majd nyomja le az **Enter** billentyűt.
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>
     Login Succeeded
     ```
 
-2. A VS Code Explorerben az IoT Edge-megoldás munkaterületén nyissa meg a deployment.template.json fájlt. Ebből a fájlból tudja meg az IoT Edge-futtatókörnyezet, hogy mely modulokat kell üzembe helyezni egy eszközön. További információt az üzembehelyezési jegyzékekről az [IoT Edge-modulok használatát, konfigurálását és újrahasznosítását](module-composition.md) ismertető cikkben olvashat.
+2. A VS Code Explorerben az IoT Edge-megoldás munkaterületén nyissa meg a **deployment.template.json** fájlt. Ebből a fájlból tudja meg az IoT Edge-futtatókörnyezet, hogy mely modulokat kell üzembe helyezni egy eszközön. Figyelje meg, hogy a **CSharpFunction** függvénymodul együtt szerepel a **tempSensor** modullal, amely a teszt adatait biztosítja. További információt az üzembehelyezési jegyzékekről az [IoT Edge-modulok használatát, konfigurálását és újrahasznosítását](module-composition.md) ismertető cikkben olvashat.
 
-3. Keresse meg az üzembehelyezési jegyzék **registryCredentials** szakaszát. Frissítse a **felhasználónév**, **jelszó** és **cím** értékeket a tárolóregisztrációs adatbázisban szereplő hitelesítő adatokra. Ez a szakasz engedélyezi az eszközön lévő IoT Edge-futtatókörnyezetnek, hogy lekérje a privát regisztrációs adatbázisban tárolt tárolórendszerképeket. A tényleges felhasználónév–jelszó párokat az .env fájl tárolja, amelyet a Git figyelmen kívül hagy.
+   ![Az üzembehelyezési jegyzék megkeresése a modulban](./media/tutorial-deploy-function/deployment-template.png)
+
+3. Nyissa meg az **.env** kiterjesztésű fájlt az IoT Edge-megoldás munkaterületén. A tárolóregisztrációs adatbázis hitelesítő adatait nem kell az üzembe helyezési jegyzéksablonhoz adnia, hiszen ez a git által figyelmen kívül hagyott fájl tárolja őket. Adja meg a tárolóregisztrációs adatbázis **felhasználónevét** és **jelszavát**. 
 
 5. Mentse el ezt a fájlt.
 
-6. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build IoT Edge solution** (IoT Edge-megoldás összeállítása) lehetőséget. 
+6. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
 
 Amikor a megoldás összeállítására utasítja a Visual Studio Code-ot, az elsőként lekéri az adatokat az üzembehelyezési sablonból, és létrehoz egy deployment.json nevű fájlt egy új **config** nevű mappában. Ezután futtatja a következő két parancsot az integrált terminálon: `docker build` és `docker push`. A két parancs létrehozza a kódot, tárolóba helyezi a függvényeket, majd leküldi a kódot a megoldás inicializálásakor megadott tárolóregisztrációs adatbázisba. 
 
@@ -212,46 +238,13 @@ Az üzenetek monitorozásának leállításához futtassa a parancskatalógus **
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)]
+Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként. 
 
-Távolítsa el az IoT Edge-szolgáltatás IoT-eszköz platformján (Linux vagy Windows) alapuló futtatókörnyezetét.
+Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben létrehozott helyi konfigurációkat és Azure-erőforrásokat. 
 
-#### <a name="windows"></a>Windows
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Távolítsa el az IoT Edge-futtatókörnyezetet.
-
-```Powershell
-stop-service iotedge -NoWait
-sleep 5
-sc.exe delete iotedge
-```
-
-Törölje az eszközön létrehozott tárolókat. 
-
-```Powershell
-docker rm -f $(docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor" --filter "name=CSharpFunction")
-```
-
-#### <a name="linux"></a>Linux
-
-Távolítsa el az IoT Edge-futtatókörnyezetet.
-
-```bash
-sudo apt-get remove --purge iotedge
-```
-
-Törölje az eszközön létrehozott tárolókat. 
-
-```bash
-sudo docker rm -f $(sudo docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor" --filter "name=CSharpFunction")
-```
-
-Távolítsa el a tároló-futtatókörnyezetet.
-
-```bash
-sudo apt-get remove --purge moby
-```
-
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
 ## <a name="next-steps"></a>További lépések

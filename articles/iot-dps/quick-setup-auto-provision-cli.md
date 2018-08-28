@@ -1,5 +1,5 @@
 ---
-title: A Device Provisioning Service üzembe helyezése Azure CLI használatával | Microsoft Docs
+title: A Device Provisioning Service beállítása az Azure CLI használatával | Microsoft Docs
 description: Azure rövid útmutató – Az Azure IoT Hub Device Provisioning Service üzembe helyezése az Azure CLI használatával
 author: wesmc7777
 ms.author: wesmc
@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cf2e108aa7cab6be2996cb535d27d597e462617c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c9e3bbbc4fbe8a9aade3364d6cbe9e93b5798595
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626539"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022609"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Az IoT Hub Device Provisioning szolgáltatás beállítása az Azure CLI használatával
 
-Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató egy IoT Hub és IoT Hub Device Provisioning szolgáltatás Azure CLI használatával végzett létrehozását, valamint a két szolgáltatás csatolását ismerteti. 
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató egy IoT Hub és egy IoT Hub Device Provisioning-szolgáltatás Azure CLI használatával végzett létrehozását, valamint a két szolgáltatás csatolását ismerteti. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -72,7 +72,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>Az IoT Hub kapcsolati sztringjének lekérése
 
-Az IoT Hub kapcsolati sztringjére az eszközkiépítési szolgáltatással való összekapcsoláshoz van szükség. Az [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) használatával kérje le a kapcsolati sztringet, majd használja a kimenetét egy olyan változó megadásához, amelyet a két erőforrás összekötésére fog használni. 
+Szükség van az IoT Hub kapcsolati sztringjére a Device Provisioning Service-szel való összekapcsoláshoz. Az [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) használatával kérje le a kapcsolati sztringet, majd használja a kimenetét egy olyan változó megadásához, amelyet a két erőforrás összekötésére fog használni. 
 
 Az alábbi példa a *hubConnectionString* változót a hub *iothubowner* szabályzatának elsődleges kulcsához tartozó kapcsolati sztring értékére állítja. Megadhat egy másik szabályzatot is a `--policy-name` paraméterrel. A parancs az Azure CLI [lekérdezés](/cli/azure/query-azure-cli) és [kimenet](/cli/azure/format-output-azure-cli#tsv-output-format) lehetőségeinek használatával nyeri ki a kapcsolati sztringet a parancskimenetből.
 
@@ -94,7 +94,7 @@ echo $hubConnectionString
 
 Az IoT Hub és az eszközkiépítési szolgáltatás csatolása az [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create) paranccsal. 
 
-A következő példában egy, a *westus* helyen található, *my-sample-hub* nevű IoT Hubot csatolunk egy *my-sample-dps* nevű eszközkiépítési szolgáltatáshoz. A *my-sample-hub* kapcsolati sztringjét használja, amelyet az előző lépésben szereplő *hubConnectionString* változó tárol.
+A következő példában egy, a *westus* helyen található, *my-sample-hub* nevű IoT Hubot csatolunk egy *my-sample-dps* nevű Device Provisioning-szolgáltatáshoz. A *my-sample-hub* kapcsolati sztringjét használja, amelyet az előző lépésben szereplő *hubConnectionString* változó tárol.
 
 ```azurecli-interactive 
 az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample-resource-group --connection-string $hubConnectionString --location westus

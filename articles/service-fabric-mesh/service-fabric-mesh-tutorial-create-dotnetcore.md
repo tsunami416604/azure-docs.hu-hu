@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d48d7625221dfb96e0119ef0d42b3b0a8d04baba
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185669"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41919948"
 ---
 # <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>Oktatóanyag: Többszolgáltatású webalkalmazás létrehozása, hibaelhárítása és üzembe helyezése a Service Fabric meshben
 
@@ -227,7 +227,7 @@ Ez a minimális adatkörnyezet feltölt néhány minta feladatlista-elemet, és 
 
 ### <a name="add-a-controller"></a>Vezérlő hozzáadása
 
-A **ToDoService** projekt létrehozásakor a sablon megadott egy alapértelmezett vezérlőt, amely a HTTP-kérelmeket kezeli, és HTTP-válaszokat hoz létre. A **Solution Explorer** (Megoldáskezelő) **ToDoService** területén nyissa meg a **Controllers** (Vezérlők) mappát, amelyben megjelenik a **ValuesController.cs** fájl. 
+A **ToDoService** projekt létrehozásakor a sablon megadott egy alapértelmezett vezérlőt, amely a HTTP-kérelmeket kezeli, és a HTTP-válaszokat létrehozza. A **Solution Explorer** (Megoldáskezelő) **ToDoService** területén nyissa meg a **Controllers** (Vezérlők) mappát, amelyben megjelenik a **ValuesController.cs** fájl. 
 
 Kattintson a jobb gombbal **ValuesController.cs** elemre, majd a **Rename** (Átnevezés) lehetőségre. Nevezze át a fájlt a következőre: `ToDoController.cs`. Ha egy felugró üzenet megkérdezi, hogy minden referenciát át szeretne-e nevezni, válassza a **Yes** (Igen) lehetőséget.
 
@@ -314,7 +314,8 @@ Cserélje le a teljes fájl tartalmát a következő HTML-re, amely egy egyszer�
 </div>
 ```
 
-Nyissa meg az indexlap kódját a **Solution Explorerben**. Ehhez nyissa meg az **Index.cshtml** fájlt, majd az **Index.cshtml.cs** fájlt. Az **Index.cshtml.cs** tetején adja hozzá a következőt: `using System.Net.Http;`
+Nyissa meg az indexlap kódját a **Solution Explorerben**. Ehhez nyissa meg az **Index.cshtml** fájlt, majd az **Index.cshtml.cs** fájlt.
+Az **Index.cshtml.cs** tetején adja hozzá a következőt: `using System.Net.Http;`
 
 A(z) `public class IndexModel` tartalmát cserélje a következőre:
 
@@ -336,7 +337,7 @@ public class IndexModel : PageModel
         }
     }
 
-    private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ServiceName")}";
+    private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ToDoServiceName")}";
     private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.GetEnvironmentVariable("ApiHostPort")}/api/todo");
 }
 ```
@@ -346,7 +347,7 @@ public class IndexModel : PageModel
 A háttérszolgáltatás URL-címére szükség van a szolgáltatással való kommunikációhoz. A jelen oktatóanyag esetében a következő kódrészlet (amely fent az IndexModel részeként lett definiálva) a környezeti változókat beolvasva állítja elő az URL-t:
 
 ```csharp
-private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ServiceName")}";
+private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ToDoServiceName")}";
 private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.GetEnvironmentVariable("ApiHostPort")}/api/todo");
 ```
 

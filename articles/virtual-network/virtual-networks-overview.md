@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 8/8/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 851c8c1eb13497355038ef4a8d5f1f9326c8c3bc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 179db61777fe60ae53d7fee553c8124d7a9f7abf
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781180"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42022914"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
@@ -37,7 +37,10 @@ Több virtuális hálózatot is megvalósíthat az egyes Azure-[előfizetéseken
 
 ## <a name="communicate-with-the-internet"></a>Kommunikáció az internettel
 
-A virtuális hálózatok összes erőforrása alapértelmezés szerint képes kimenő kommunikációra az internettel. Bejövő kommunikációt létesíthet egy erőforrással egy nyilvános IP-cím hozzárendelésével. További információ: [Nyilvános IP-címek](virtual-network-public-ip-address.md).
+A virtuális hálózatok összes erőforrása alapértelmezés szerint képes kimenő kommunikációra az internettel. Bejövő kommunikációt létesíthet egy erőforrással egy nyilvános IP-cím vagy Load Balancer hozzárendelésével. A kimenő kapcsolatok kezeléséhez is használhat nyilvános IP-címet vagy Load Balancert.  Az Azure kimenő kapcsolataira vonatkozó további információkat a [kimenő kapcsolatokat](../load-balancer/load-balancer-outbound-connections.md), a [nyilvános IP-címeket](virtual-network-public-ip-address.md) vagy a [Load Balancert](../load-balancer/load-balancer-overview.md) ismertető cikkekben talál.
+
+>[!NOTE]
+>Ha csak belső [Standard Load Balancert](../load-balancer/load-balancer-standard-overview.md) használ, akkor a kimenő kapcsolat mindaddig nem lesz elérhető, amíg meg nem határozza, hogyan működjenek együtt a [kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md) egy példányszintű nyilvános IP-vel vagy egy nyilvános Load Balancerrel.
 
 ## <a name="communicate-between-azure-resources"></a>Azure-erőforrások közötti kommunikáció
 

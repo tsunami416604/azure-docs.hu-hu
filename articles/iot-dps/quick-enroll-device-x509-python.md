@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: c98de2d2c59ae625d274c3d6cf914e4c8c37b13f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: f6c6c4abf80a67c654b17771787ae530461ca3b4
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205714"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42022464"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Python használatával
 
@@ -117,7 +117,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá az X.509-eszköz kiépítési adat
 
 ## <a name="run-the-sample-group-enrollment"></a>A mintául szolgáló csoportos regisztráció futtatása
 
-1. Nyisson meg egy parancssort, és futtassa a következő parancsot az [azure-iot-provisioning-device-client](https://pypi.org/project/azure-iot-provisioning-device-client.) telepítéséhez.
+1. Nyisson meg egy parancssort, és futtassa a következő parancsot az [azure-iot-provisioning-device-client](https://pypi.org/project/azure-iot-provisioning-device-client) telepítéséhez.
 
     ```cmd/sh
     pip install azure-iothub-provisioningserviceclient    

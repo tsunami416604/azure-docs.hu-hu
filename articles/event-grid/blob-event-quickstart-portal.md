@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 08/13/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 423995aecc6e5f29464ad140349ba27f89c75b5d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 141e8f2a01c057f613b7668e64a0ec9503fcfb39
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068743"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42024271"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Blob Storage-események létrehozása és átirányítása az Azure Portal és az Event Grid segítségével
 
@@ -27,8 +27,6 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-A Blob Storage-események használatához szüksége lesz vagy egy [Blob Storage-fiókra](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), vagy egy [General Purpose v2-tárfiókra](../storage/common/storage-account-options.md#general-purpose-v2-accounts). Az általános célú **General Purpose v2- (GPv2-)** fiókok olyan tárfiókok, amelyek a Storage-szolgáltatások összes funkcióját támogatják, beleértve a blobokat, a fájlokat, az üzenetsorokat és a táblákat is. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát. 
-
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. Blob Storage létrehozásához kattintson az **Erőforrás létrehozása** elemre. 
@@ -39,7 +37,7 @@ A Blob Storage-események használatához szüksége lesz vagy egy [Blob Storage
 
    ![Tárhely kiválasztása](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Adja meg a Blob Storage értékeit, beleértve a fiók egyedi nevét. Fióktípusként válassza a **Blob Storage** lehetőséget. Helyként válassza az egyik Event Gridet támogató [helyet](overview.md). Miután végzett az értékek megadásával, válassza a **Létrehozás** lehetőséget.
+1. Az események esetén szüksége lesz vagy egy [Blob Storage-fiókra](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), vagy egy [General Purpose v2-tárfiókra](../storage/common/storage-account-options.md#general-purpose-v2-accounts). A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát. Adjon meg értékeket a Blob Storage- vagy a StorageV2-fiókhoz. Adjon egy egyedi nevet a fióknak. Miután végzett az értékek megadásával, válassza a **Létrehozás** lehetőséget.
 
    ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

@@ -4,17 +4,17 @@ description: Ez az útmutató a Stream Analytics-feladatok létrehozásának els
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 05/11/2018
+ms.date: 08/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1e466b2945793f866aad4e6f0ace3d7379226830
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902904"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023979"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával
 
@@ -34,7 +34,7 @@ A Stream Analytics-feladat létrehozása előtt érdemes beállítani azokat az 
 
    ```json
    {
-     "time": "2018-01-26T21:18:52.0000000",
+     "time": "2018-08-19T21:18:52.0000000",
      "dspl": "sensorC",
      "temp": 87,
      "hmdt": 44
@@ -146,6 +146,16 @@ Ebben a szakaszban beállítjuk a blobtárolót a Stream Analytics-feladat bemen
 3. Ebben a példában a lekérdezés adatokat fog beolvasni a blobból, és azokat egy új fájlba másolja a blobon belül. Válassza a **Mentés** lehetőséget.  
 
    ![A transzformáció konfigurálása](./media/stream-analytics-quick-create-portal/configure-job-transformation.png)
+
+## <a name="configure-late-arrival-policy"></a>Későn érkezési szabályzat konfigurálása
+
+1. Keresse meg a korábban létrehozott Stream Analytics-feladatot.
+
+2. A **Konfigurálás** alatt válassza az **Események rendezése** lehetőséget.
+
+3. A **Későn érkező események** beállításnál adja meg a 20 nap értéket, és válassza a **Mentést**.
+
+   ![Későn érkezési szabályzat konfigurálása](./media/stream-analytics-quick-create-portal/configure-late-policy.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 

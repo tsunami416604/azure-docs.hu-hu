@@ -1,39 +1,46 @@
 ---
-title: Létrehozása és konfigurálása az Azure Kubernetes Service-fürtök az Azure-ban az Ansible-lel
-description: Ismerje meg, az Ansible használatával hozhat létre és kezelhet az Azure Kubernetes Service-fürt az Azure-ban
+title: Azure Kubernetes Service-fürtök létrehozása és konfigurálása az Azure-ban az Ansible használatával
+description: Megtudhatja, hogyan hozhat létre és felügyelhet Azure Kubernetes Service-fürtöket az Azure-ban az Ansible segítségével.
 ms.service: ansible
-keywords: az ansible, azure, devops, bash, cloud Shell, forgatókönyv, az aks, tároló, Kubernetes
+keywords: ansible, azure, devops, bash, cloudshell, forgatókönyv, aks, tároló, Kubernetes
 author: tomarcher
-manager: jpconnock
-editor: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.date: 07/11/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 6d7c5f961256e0ae1831bd76353cadd761f4b8ac
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 08/21/2018
+ms.openlocfilehash: de692b29902145e44a055680d662c16ed90c56c2
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009202"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617175"
 ---
-# <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Létrehozása és konfigurálása az Azure Kubernetes Service-fürtök az Azure-ban az Ansible-lel
-Az Ansible segítségével automatizálhatja a telepítését és konfigurálását az erőforrásoknak a környezetben. Az Ansible segítségével kezelheti az Azure Kubernetes Service (AKS). Ez a cikk bemutatja, hogyan Ansible használatával létrehozása és konfigurálása az Azure Kubernetes Service-fürt.
+# <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Azure Kubernetes Service-fürtök létrehozása és konfigurálása az Azure-ban az Ansible használatával
+Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible-lel felügyelheti az Azure Kubernetes Service-t (AKS-t). Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat Azure Kubernetes Service-fürtöket az Ansible használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) megkezdése előtt.
-- **Az Ansible konfigurálása** - [létrehozása Azure hitelesítő adatait, és az Ansible konfigurálása](../virtual-machines/linux/ansible-install-configure.md#create-azure-credentials)
-- **Az Ansible és az Azure Python SDK-modulok** 
-  - [7.4 centOS](../virtual-machines/linux/ansible-install-configure.md#centos-74)
-  - [Ubuntu 16.04 LTS](../virtual-machines/linux/ansible-install-configure.md#ubuntu-1604-lts)
-  - [SLES 12 SP2](../virtual-machines/linux/ansible-install-configure.md#sles-12-sp2)
-- **Az Azure szolgáltatás egyszerű** – [az egyszerű szolgáltatás létrehozása](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal), vegye figyelembe a következő értékeket: **appId**, **displayName**, **jelszó** , és **bérlői**.
+- **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, első lépésként hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- **Azure-szolgáltatásnév** – A [szolgáltatásnév létrehozásakor](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal) jegyezze fel a következő értékeket: **appId**, **displayName**, **password** és **tenant**.
+
+- **Az Azure Cloud Shell konfigurálása** vagy **az Ansible telepítése és konfigurálása Linux rendszerű virtuális gépen**
+
+  **Az Azure Cloud Shell konfigurálása**
+
+  1. **Az Azure Cloud Shell konfigurálása** – Ha még csak most ismerkedik az Azure Cloud Shell használatával, [a Bash az Azure Cloud Shellben való használatát ismertető rövid útmutatóból](/azure/cloud-shell/quickstart) megtudhatja, hogy indíthatja el és konfigurálhatja a Cloud Shellt. 
+
+  **– VAGY –**
+
+  **Az Ansible telepítése és konfigurálása Linux rendszerű virtuális gépen**
+
+  1. **Az Ansible telepítése** – Telepítse az Ansible-t egy [támogatott Linux-platformon](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine).
+
+  1. **Az Ansible konfigurálása** - [Azure-beli hitelesítő adatok létrehozása és az Ansible konfigurálása](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
 > [!Note]
-> Az Ansible 2.6 futtassa a következő szükséges ebben az oktatóanyagban a mintául szolgáló forgatókönyvek. 
+> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.6-os verziója szükséges. 
 
-## <a name="create-a-managed-aks-cluster"></a>Egy felügyelt AKS-fürt létrehozása
-A következő minta Ansible-forgatókönyvek hoz létre egy erőforráscsoportot, és a egy AKS-fürtöt az erőforráscsoportban található:
+## <a name="create-a-managed-aks-cluster"></a>Felügyelt AKS-fürt létrehozása
+A következő Ansible-mintaforgatókönyv egy erőforráscsoportot és abban egy AKS-fürtöt hoz létre:
 
   ```yaml
   - name: Create Azure Kubernetes Service
@@ -72,17 +79,17 @@ A következő minta Ansible-forgatókönyvek hoz létre egy erőforráscsoportot
           Environment: Production
   ```
 
-A következő felsorolás segíti a fenti Ansible-forgatókönyvek kód ismertetik:
-- Az első szakaszban belül **feladatok** nevű erőforráscsoport meghatározása **myResourceGroup** belül a **eastus** helyét. 
-- A második szakasz belül **feladatok** határozza meg az AKS-fürt nevű **myAKSCluster** belül a **myResourceGroup** erőforráscsoportot. 
+Az alábbiak segítenek az előző Ansible-forgatókönyvkód megértésében:
+- A **tasks** első szakasza egy **myResourceGroup** nevű erőforráscsoportot definiál az **eastus** helyen. 
+- A **tasks** második szakasza egy **myAKSCluster** nevű AKS-fürtöt definiál a **myResourceGroup** erőforráscsoportban. 
 
-Az AKS-fürt létrehozásához az ansible segítségével mentse az előző példa forgatókönyv, `azure_create_aks.yml`, és a forgatókönyv futtatása a következő paranccsal:
+Az AKS-fürt Ansible-lel való létrehozásához mentse az előző mintaforgatókönyvet `azure_create_aks.yml` néven, majd futtassa azt a következő paranccsal:
 
   ```bash
   ansible-playbook azure_create_aks.yml
   ```
 
-A kimenete a **ansible-forgatókönyvek* parancs a következő megjelenítése, hogy az AKS-fürtöt sikeresen létrejött-e hasonlóan néz ki:
+Az **ansible-playbook* parancs kimenete a következőhöz hasonló, és azt mutatja, hogy az AKS-fürt sikeresen létrejött:
 
   ```bash
   PLAY [Create AKS] ****************************************************************************************
@@ -102,9 +109,9 @@ A kimenete a **ansible-forgatókönyvek* parancs a következő megjelenítése, 
 
 ## <a name="scale-aks-nodes"></a>AKS-csomópontok skálázása
 
-A minta-forgatókönyvet az előző szakaszban két csomópont határozza meg. Ha a fürtön kevesebb vagy több tárolók számítási feladatait van szüksége, bármikor módosíthatja a csomópontok számát. Ebben a szakaszban a minta forgatókönyv három két csomópontból csomópontok száma növekszik. Módosítsa úgy a csomópontok száma módosítása történik az **száma** értékét a **agent_pool_profiles** letiltása. 
+Az előző szakaszban lévő mintaforgatókönyv két csomópontot definiál. Ha ennél több vagy kevesebb tárolókhoz kapcsolódó számítási feladatra van szükség a fürtön, a csomópontok számát könnyedén módosíthatja. Az ebben a szakaszban szereplő mintaforgatókönyv kettőről háromra növeli a csomópontok számát. A csomópontok számának módosításához módosítsa a **count** értéket az **agent_pool_profiles** blokkban. 
 
-Adja meg a saját `ssh_key`, `client_id`, és `client_secret` a a **service_principal** letiltása:
+Adjon meg saját `ssh_key`, `client_id` és `client_secret` értékeket a **service_principal** blokkban:
 
 ```yaml
 - name: Scale AKS cluster
@@ -137,13 +144,13 @@ Adja meg a saját `ssh_key`, `client_id`, és `client_secret` a a **service_prin
             vm_size: Standard_D2_v2
 ```
 
-Az ansible segítségével az Azure Kubernetes Service-fürtök skálázásának, mint a fenti forgatókönyv mentése *azure_configure_aks.yml*, és futtassa a forgatókönyv az alábbiak szerint:
+Az Azure Kubernetes Service-fürt Ansible használatával való skálázásához mentse az előző forgatókönyvet *azure_configure_aks.yml* néven, majd futtassa az alábbiak szerint:
 
   ```bash
   ansible-playbook azure_configure_aks.yml
   ```
 
-A következő kimenet látható, hogy az AKS-fürt létrehozása sikerült:
+Az alábbi kimenet azt mutatja, hogy az AKS-fürt sikeresen létrejött:
 
   ```bash
   PLAY [Scale AKS cluster] ***************************************************************
@@ -157,7 +164,44 @@ A következő kimenet látható, hogy az AKS-fürt létrehozása sikerült:
   PLAY RECAP ******************************************************************************
   localhost                  : ok=2    changed=1    unreachable=0    failed=0
   ```
+## <a name="delete-a-managed-aks-cluster"></a>Felügyelt AKS-fürt törlése
 
+A következő Ansible-mintaforgatókönyv részlet az AKS-fürtök törlését mutatja be:
+
+  ```yaml
+  - name: Delete a managed Azure Container Services (AKS) cluster
+    hosts: localhost
+    connection: local
+    vars:
+      resource_group: myResourceGroup
+      aks_name: myAKSCluster
+    tasks:
+    - name: 
+      azure_rm_aks:
+        name: "{{ aks_name }}"
+        resource_group: "{{ resource_group }}"
+        state: absent
+   ```
+
+Az Azure Kubernetes Service-fürt az Ansible használatával való törléséhez mentse az előző forgatókönyvet *azure_delete_aks.yml* néven, majd futtassa az alábbiak szerint:
+
+  ```bash
+  ansible-playbook azure_delete_aks.yml
+  ```
+
+Az alábbi kimenet azt mutatja, hogy az AKS-fürt sikeresen törölve lett:
+  ```bash
+PLAY [Delete a managed Azure Container Services (AKS) cluster] ****************************
+
+TASK [Gathering Facts] ********************************************************************
+ok: [localhost]
+
+TASK [azure_rm_aks] *********************************************************************
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0
+  ```
+  
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-scale)
+> [Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes Service-ben (AKS)](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-scale)

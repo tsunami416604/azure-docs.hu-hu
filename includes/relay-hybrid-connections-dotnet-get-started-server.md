@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: service-bus-relay
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 08/16/2018
+ms.author: clemensv
+ms.custom: include file
+ms.openlocfilehash: fbc5bbff62a13d9b4301271031105ecd7d17fa86
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40183247"
+---
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
 Hozzon létre egy új **Konzolalkalmazás- (.NET-keretrendszer-)** projektet a Visual Studióban.
@@ -5,8 +22,10 @@ Hozzon létre egy új **Konzolalkalmazás- (.NET-keretrendszer-)** projektet a V
 ### <a name="add-the-relay-nuget-package"></a>A Relay NuGet-csomag hozzáadása
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
-2. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. Válassza ki a **Microsoft Azure Relay** elemet a keresési eredmények közül. 
-3. Kattintson a **Telepítés** gombra a telepítés befejezéséhez. Zárja be a párbeszédpanelt.
+2. Válassza az **Előzetes verzió belefoglalása** lehetőséget. 
+3. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. Válassza ki a **Microsoft Azure Relay** elemet a keresési eredmények közül.
+4. Válassza a **2.0.0-preview1-20180523** lehetőséget a verzió megadásakor. 
+5. Kattintson a **Telepítés** gombra a telepítés befejezéséhez. Zárja be a párbeszédpanelt.
 
 ### <a name="write-code-to-receive-messages"></a>Kód írása az üzenetek fogadásához
 
@@ -17,6 +36,7 @@ Hozzon létre egy új **Konzolalkalmazás- (.NET-keretrendszer-)** projektet a V
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Net;
     using Microsoft.Azure.Relay;
     ```
 2. Adjon állandókat a `Program` osztályhoz a hibrid kapcsolat részleteivel. Cserélje le a zárójelben lévő helyőrzőket a hibrid kapcsolat létrehozásakor beszerzett megfelelő értékekre. Ügyeljen arra, hogy a teljes névtérnevet használja.

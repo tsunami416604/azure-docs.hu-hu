@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fa01d2d3f4ab3923129ab1690477d5a8af82d4df
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1bd6f048682b93e3dfa1e19f6b3c50bff2ed232e
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448909"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41919926"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
 
@@ -36,8 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Egy Azure IoT Edge-eszköz:
 
-* Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [linuxos](quickstart-linux.md) rövid útmutató lépéseit követve.
-* Az IoT Edge-hez elérhető Python-modulok nem támogatják az ARM-processzorokat és a Windows-eszközöket.
+* Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [Linux-](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md) rövid útmutatójának lépéseit követve.
 
 Felhőerőforrások:
 
@@ -341,45 +340,13 @@ Futtassa a következő parancsot az SQL-parancssori eszközből a formázott tá
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)]
+Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként. 
 
-Távolítsa el az IoT Edge-szolgáltatás futtatókörnyezetét az IoT-eszköz platformjáról (Linux vagy Windows).
+Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben létrehozott helyi konfigurációkat és Azure-erőforrásokat. 
 
-#### <a name="windows"></a>Windows
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Távolítsa el az IoT Edge-futtatókörnyezetet.
-
-```Powershell
-stop-service iotedge -NoWait
-sleep 5
-sc.exe delete iotedge
-```
-
-Törölje az eszközön létrehozott tárolókat. 
-
-```Powershell
-docker rm -f $(docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor")
-```
-
-#### <a name="linux"></a>Linux
-
-Távolítsa el az IoT Edge-futtatókörnyezetet.
-
-```bash
-sudo apt-get remove --purge iotedge
-```
-
-Törölje az eszközön létrehozott tárolókat. 
-
-```bash
-sudo docker rm -f $(sudo docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor")
-```
-
-Távolítsa el a tároló-futtatókörnyezetet.
-
-```bash
-sudo apt-get remove --purge moby
-```
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
 

@@ -9,13 +9,13 @@ manager: kfile
 editor: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.date: 05/02/2018
-ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 08/13/2018
+ms.openlocfilehash: 852840fc29589292e7a74390026b78b15f81e721
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735793"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41919784"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -52,16 +52,20 @@ Ehhez az oktatóanyaghoz feltétel, hogy telepítve legyen a Data Lake Tools for
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Csatlakozás Azure Data Lake Data Lake Analytics-fiókhoz
 
 1. Nyissa meg a Visual Studiót.
-2. Nyissa meg a Kiszolgálókezelőt a **Nézet** > **Kiszolgálókezelő** kiválasztásával.
-3. Kattintson a jobb gombbal az **Azure** elemre. Ezután kattintson a **Connect to Microsoft Azure Subscription** (Csatlakozás egy Microsoft Azure-előfizetéshez) lehetőségre, és kövesse a megjelenő utasításokat.
-4. A Kiszolgálókezelőben válassza az **Azure** > **Data Lake Analytics** elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája.
 
+2. Nyissa meg a Kiszolgálókezelőt a **Nézet** > **Kiszolgálókezelő** kiválasztásával.
+
+3. Kattintson a jobb gombbal az **Azure** elemre. Ezután kattintson a **Connect to Microsoft Azure Subscription** (Csatlakozás egy Microsoft Azure-előfizetéshez) lehetőségre, és kövesse a megjelenő utasításokat.
+
+4. A Kiszolgálókezelőben válassza az **Azure** > **Data Lake Analytics** elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája.
 
 ## <a name="write-your-first-u-sql-script"></a>Az első U-SQL parancsfájl megírása
 
 A következő szöveg egy igen egyszerű U-SQL parancsfájl. Definiál egy kisebb adatkészletet, és az alapértelmezett Data Lake Store-ba írja az adatkészletet, amely a `/data.csv` nevű fájl.
 
 ```
+USE DATABASE master;
+USE SCHEMA dbo;
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -74,7 +78,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-### <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics-feladat küldése
+## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics-feladat küldése
 
 1. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
 
@@ -87,31 +91,35 @@ OUTPUT @a
     ![U-SQL Visual Studio-projekt elküldése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job.png)
 
 5. A **Script.usql** ablak bal felső sarkában válassza a **Submit** (Küldés) elemet.
-6. Ellenőrizze a **Analytics-fiókot**, majd válassza a **Submit** (Küldés) lehetőséget. Az elküldés után az eredmény megjelenik a Data Lake Tools for Visual Studio Eredmények ablakában.
 
-    ![U-SQL Visual Studio-projekt elküldése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-advanced.png)
-7. Kattintson a **Refresh** (Frissítés) gombra a feladat legfrissebb állapotának megtekintéséhez. Ha a feladat sikeresen lezajlott, megjelenik a **Job Graph** (Feladat grafikonja), a **Meta Data Operations** (Metaadat-műveletek), a **State History** (Állapotelőzmények) és a **Diagnostics** (Diagnosztika):
+6. A feladat beküldése után megnyílik a **Feladat nézet** lap, amelyen megtekinthető a feladat előrehaladása. Kattintson a **Refresh** (Frissítés) gombra a feladat legfrissebb állapotának megtekintéséhez.
 
     ![U-SQL Visual Studio Data Lake Analytics-feladat teljesítménygrafikonja](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
    * A **Feladat összegzése** a feladat összegzését jeleníti meg.   
-   * A **Feladat részletei** konkrétabb információkat jeleníti meg a feladatról, beleértve a parancsfájlt, az erőforrásokat és a csúcspontokat.
    * A **Feladatgrafikon** a feladat előrehaladását jeleníti meg képi formában.
    * A **Metaadat-műveletek** bemutatja a U-SQL-katalóguson végrehajtott összes műveletet.
    * Az **Adatok** az összes bemenetet és kimenetet jeleníti meg.
+   * Az **Állapotelőzmények** az idővonallal és az állapottal kapcsolatos adatokat jeleníti meg.
+   * Az **AU-elemzés** a feladatban használt felügyeleti egységek számát jeleníti meg, és különféle szimulációkat végez a különféle felügyeletiegység-kiosztási stratégiák felderítésére.
    * A **Diagnosztika** részletes elemzést nyújt a feladat végrehajtásához és a teljesítmény optimalizálásához.
 
-### <a name="to-check-job-state"></a>Feladat állapotának ellenőrzése
+## <a name="check-job-status"></a>Feladat állapotának ellenőrzése
 
-1. A Kiszolgálókezelőben válassza az **Azure** > **Data Lake Analytics** elemet. 
+1. A Kiszolgálókezelőben válassza az **Azure** > **Data Lake Analytics** elemet.
+
 2. Bontsa ki a Data Lake Analytics-fiók nevét.
+
 3. Kattintson duplán a **Feladatok** elemre.
+
 4. Válassza ki a korábban elküldött feladatot.
 
-### <a name="to-see-the-output-of-a-job"></a>A feladat eredményének megtekintése
+## <a name="see-the-job-output"></a>Feladat kimenetének megtekintése
 
 1. A Kiszolgálókezelőben keresse meg az elküldött feladatot.
+
 2. Kattintson az **Adatok** lapra.
+
 3. A **Feladatkimenetek** lapon jelölje be a `"/data.csv"` fájlt.
 
 ## <a name="next-steps"></a>További lépések

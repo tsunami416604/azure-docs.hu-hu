@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 5359920ab32fab65df0466474aec2d305bcf633c
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: a740672ea948bd86efce92c534e0f95f65563438
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091050"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42022746"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rövid útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
 
@@ -57,7 +57,7 @@ A parancs néhány percen belül visszaadja a következőt:
 `helloWorldApp has been deployed successfully on helloWorldNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>Az alkalmazás megnyitása
-Az alkalmazás sikeres üzembe helyezése után másolja a szolgáltatásvégpont nyilvános IP-címét a parancssori felület kimenetéből.  Nyissa meg az IP-címet egy webböngészőben. Megjelenik egy weboldal az Azure Service Fabric Mesh logójával.
+Az alkalmazás sikeres üzembe helyezése után másolja a szolgáltatásvégpont nyilvános IP-címét a parancssori felület kimenetéből. Nyissa meg az IP-címet egy webböngészőben. Megjelenik egy weboldal az Azure Service Fabric Mesh logójával.
 
 ## <a name="check-the-application-details"></a>Az alkalmazás részleteinek ellenőrzése
 Az alkalmazás állapotát az `az mesh app show` paranccsal ellenőrizheti. Ez a parancs hasznos információkat biztosít, amelyeket nyomon követhet.

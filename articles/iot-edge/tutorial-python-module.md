@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5766f9708d2439f42f9ad77169fd1fe7f7dc451e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6cf3a721dfd601fc4d4beb122f56b4a4de5fe426
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439112"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918214"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -37,7 +37,7 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 Egy Azure IoT Edge-eszköz:
 
 * Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [linuxos](quickstart-linux.md) rövid útmutató lépéseit követve.
-* Az IoT Edge-hez elérhető Python-modulok nem támogatják az ARM-processzorokat és a Windows-eszközöket.
+* Az IoT Edge-hez elérhető Python-modulok nem támogatják a Windows-eszközöket.
 
 Felhőerőforrások:
 
@@ -51,6 +51,9 @@ Fejlesztési erőforrások:
 * [Docker CE](https://docs.docker.com/engine/installation/). 
 * [Python](https://www.python.org/downloads/).
 * [Pip](https://pip.pypa.io/en/stable/installing/#installation) a Python-csomagok telepítéséhez (általában a Python-telepítés részét képezi).
+
+>[!Note]
+>Ügyeljen arra, hogy a `bin` mappa van a platform elérési útján legyen. Ez általában a `~/.local/` út a UNIX és macOS rendszeren, és `%APPDATA%\Python` a Windows rendszeren.
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 Ebben az oktatóanyagban a VS Code-hoz készült Azure IoT Edge bővítménnyel épít fel egy modult és hoz létre egy **tárolórendszerképet** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
@@ -78,6 +81,8 @@ A **cookiecutter** Python-csomag használatával létrehozhat egy Python-megold�
     ```cmd/sh
     pip install --upgrade --user cookiecutter
     ```
+   >[!Note]
+   >Győződjön meg, hogy a cookiecutter telepítési könyvtára a környezet `Path` útvonalán legyen, hogy egy parancssorból meg lehessen hívni.
 
 3. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
 
@@ -91,7 +96,13 @@ A **cookiecutter** Python-csomag használatával létrehozhat egy Python-megold�
    4. A modulnak adja a **PythonModule** nevet. 
    5. Adja meg az előző szakaszban létrehozott Azure Container Registry-adatbázist az első modul rendszerképadattáraként. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére. A sztring végső változata a következőképp néz ki: \<regisztrációs adatbázis neve\>.azurecr.io/pythonmodule.
  
-A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét: a modules mappát, egy üzembe helyezési jegyzéksablonfájlt és egy \.env fájlt. 
+   ![Docker-rendszerkép adattárának megadása](./media/tutorial-python-module/repository.png)
+
+A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz. Ebben az oktatóanyagban nem szerkeszti a **\.gitignore** fájlt. A **modules** mappa a modul Python-kódját, valamint a modul tárolórendszerképként való összeállítására szolgáló Docker-fájlokat tartalmazza. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. 
+
+Ha nem adott meg tárolóregisztrációs adatbázist a megoldás létrehozásakor, de elfogadta az alapértelmezett localhost:5000 értéket, akkor nem lesz \.env fájlja. 
+
+   ![Python-megoldás munkaterülete](./media/tutorial-python-module/workspace.png)
 
 ### <a name="add-your-registry-credentials"></a>A regisztrációs adatbázis hitelesítő adatainak hozzáadása
 
@@ -200,7 +211,7 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy 
 
 4. Mentse el ezt a fájlt.
 
-5. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build IoT Edge solution** (IoT Edge-megoldás összeállítása) lehetőséget. 
+5. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
 
 Amikor a megoldás összeállítására utasítja a Visual Studio Code-ot, az elsőként lekéri az adatokat az üzembehelyezési sablonból, és létrehoz egy deployment.json nevű fájlt egy új **config** nevű mappában. Ezután futtatja a következő két parancsot az integrált terminálon: `docker build` és `docker push`. A két parancs létrehozza a kódot, tárolóba helyezi a Python-kódot, majd leküldi a kódot a megoldás inicializálásakor megadott tárolóregisztrációs adatbázisba. 
 
@@ -208,23 +219,21 @@ A tárolórendszerkép teljes címét a címkével a VS Code integrált terminá
 
 ## <a name="deploy-and-run-the-solution"></a>A megoldás üzembe helyezése és futtatása
 
-A Python-modult az Azure Portal segítségével helyezheti üzembe az IoT Edge-eszközökön a rövid útmutatókban bemutatott módon. A modulokat emellett a Visual Studio Code használatával is üzembe helyezheti és monitorozhatja. A következő szakaszokban az előfeltételek között felsorolt, VS Code-hoz készült Azure IoT Edge-bővítményt használjuk. Ha még nem tette meg, telepítse most a bővítményt. 
+Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult helyezett üzembe az Azure Portal segítségével. A Visual Studio Code Azure IoT-eszközkészlet bővítményével is üzembe helyezhet modulokat. Már elő van készítve egy üzembehelyezési jegyzék a forgatókönyvhöz, a **deployment.json** fájl. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
 
-1. A **View (Nézet)** > **Command Palette (Parancskatalógus)** elem kiválasztásával nyissa meg a VS Code parancskatalógusát.
+1. A VS Code parancskatalógusában futtassa az **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub kiválasztása) parancsot. 
 
-2. Keresse meg, majd futtassa az **Azure: Sign in** (Azure: bejelentkezés) parancsot. Az utasításokat követve jelentkezzen be Azure-fiókjába. 
+2. Válassza ki a konfigurálni kívánt IoT Edge-eszközt tartalmazó előfizetést és IoT Hubot. 
 
-3. A parancskatalógusban keresse meg és futtassa az **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub kiválasztása) parancsot. 
+3. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
 
-4. Keresse meg az IoT Hub-központját tartalmazó előfizetést, majd válassza ki az IoT Hub-központot, amelyhez hozzá kíván férni.
+4. Kattintson a jobb gombbal az IoT Edge-eszköz nevére, majd válassza a **Create Deployment for Single Device** (Üzembe helyezés létrehozása egyetlen eszközhöz) parancsot. 
 
-5. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
+   ![Üzemelő példány létrehozása egyetlen eszközhöz](./media/tutorial-python-module/create-deployment.png)
 
-6. Kattintson jobb gombbal az IoT Edge-eszköze nevére, majd válassza a **Create Deployment for IoT Edge device** (Üzembe helyezés létrehozása IoT Edge-eszközhöz) parancsot. 
+5. Válassza ki a **deployment.json** fájlt a **config** mappában, majd kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. Ne használja a deployment.template.json fájlt. 
 
-7. Lépjen a **PythonModule** modult tartalmazó megoldásmappához. Nyissa meg a config mappát, válassza ki a **deployment.json** fájlt, majd válassza a Select Edge Deployment Manifest (Edge üzembehelyezési jegyzék kiválasztása) elemet.
-
-8. Frissítse az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. Látható, hogy az új **PythonModule** fut a **TempSensor** modul, valamint az **$edgeAgent** és az **$edgeHub** mellett. 
+6. Kattintson a frissítés gombra. Látható, hogy az új **PythonModule** fut a **TempSensor** modul, valamint az **$edgeAgent** és az **$edgeHub** mellett. 
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
@@ -236,32 +245,42 @@ A Python-modult az Azure Portal segítségével helyezheti üzembe az IoT Edge-e
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
-<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
-
-Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat.
+Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként. 
 
 Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben létrehozott helyi konfigurációkat és Azure-erőforrásokat. 
 
-> [!IMPORTANT]
-> Az Azure-erőforrások és -erőforráscsoportok törlése nem vonható vissza. Ezeknek az elemeknek a törlésével az erőforráscsoport és a benne foglalt erőforrások véglegesen törölve lesznek. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha az IoT Hub-központot egy megtartani kívánt erőforrásokat tartalmazó meglévő erőforráscsoportban hozta létre, az erőforráscsoport törlése helyett csak magát az IoT Hub-erőforrást törölje.
->
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Ha csak az IoT Hub-központot szeretné törölni, hajtsa végre az alábbi parancsot a saját központja és a saját erőforráscsoportja nevével:
+### <a name="delete-local-resources"></a>Helyi erőforrások törlése
 
-```azurecli-interactive
-az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
-```
+Ha el szeretné távolítani IoT Edge-futtatókörnyezetet és az ahhoz tartozó erőforrásokat az eszközről, használja a következő parancsokat. 
 
+Távolítsa el az IoT Edge-futtatókörnyezetet.
 
-A teljes erőforráscsoport név alapján való törléséhez:
+   ```bash
+   sudo apt-get remove --purge iotedge
+   ```
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
+Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tárolók leállnak, de továbbra is ott lesznek az eszközön. Tekintse meg az összes tárolót.
 
-2. A **Szűrés név alapján** mezőbe írja be az IoT Hub-központot tartalmazó erőforráscsoport nevét. 
+   ```bash
+   sudo docker ps -a
+   ```
 
-3. Az erőforráscsoporttól jobbra, az eredménylistában válassza a három pont (**...**), majd az **Erőforráscsoport törlése** lehetőséget.
+Törölje az eszközön létrehozott futtatókörnyezeti tárolókat.
 
-4. A rendszer az erőforráscsoport törlésének megerősítését kéri. A megerősítéshez írja be újra az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
+   ```bash
+   docker rm -f edgeHub
+   docker rm -f edgeAgent
+   ```
+
+Töröljön minden további tárolót, amely a `docker ps` kimenetében listázva volt – ezt a tárolók nevére való hivatkozással teheti meg. 
+
+Távolítsa el a tároló-futtatókörnyezetet.
+
+   ```bash
+   sudo apt-get remove --purge moby
+   ```
 
 ## <a name="next-steps"></a>További lépések
 

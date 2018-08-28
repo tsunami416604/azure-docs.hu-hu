@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 42910d616bdbf38c847b48a4a44e6ff9593fa17b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 30db5dc373dd0fae24760bdad669fd872cba4b4d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952725"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920866"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 Ez a dokumentum végigvezeti az Azure AD Connect Health-ügynökök telepítésének és konfigurálásának folyamatán. Az ügynököt [innen](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent) töltheti le.
@@ -33,11 +33,11 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
 | Az Azure AD Connect Health szolgáltatás indításához az Azure AD szolgáltatásban globális rendszergazdának kell lennie |Alapértelmezés szerint kizárólag a globális rendszergazdák telepíthetik és konfigurálhatják az állapotügynököket, hogy azok elinduljanak, a portálhoz hozzáférjenek, és műveleteket hajtsanak végre az Azure AD Connect Health szolgáltatásban. További információkért lásd: [Az Azure AD-címtár felügyelete](../fundamentals/active-directory-administer.md). <br><br> A szerepköralapú hozzáférés-vezérlés használatával hozzáférést engedhet az Azure AD Connect Health szolgáltatáshoz más felhasználók számára is a szervezetben. További információkért lásd: [Role Based Access Control for Azure AD Connect Health](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control) (Szerepköralapú hozzáférés-vezérlés az Azure AD Connect Health-hez) </br></br>**Fontos:** Az ügynökök telepítésekor használt fióknak munkahelyi vagy iskolai fióknak kell lennie. Nem lehet Microsoft-fiók. További információkért lásd: [Regisztráció az Azure-ba szervezetként](../fundamentals/sign-up-organization.md) |
 | Az Azure AD Connect Health-ügynököt az összes célkiszolgálóra telepíteni kell | Az Azure AD Connect Health használatához Health-ügynököket kell telepítenie és konfigurálnia a célkiszolgálókon az adatok fogadásához, valamint a monitorozási és elemzési funkciók biztosításához. </br></br>Ha például az AD FS-infrastruktúrájával kapcsolatos adatokat kíván gyűjteni, az ügynököt telepíteni kell az AD FS- és a webalkalmazásproxy-kiszolgálókra. Szintén telepíteni kell az ügynököt a tartományvezérlőkre, ha a helyszíni AD DS-infrastruktúrával kapcsolatos adatokat kíván gyűjteni. </br></br> |
 | Kimenő kapcsolódás az Azure szolgáltatásvégpontokra | A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Ha tűzfalakkal blokkolta a kimenő kapcsolatot, győződjön meg róla, hogy az alábbi végpontok fel vannak véve az engedélyezett listára. Lásd: [Kimenő kapcsolati végpontok](active-directory-aadconnect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) | 
-|IP-címeken alapuló kimenő kapcsolatok | További információ az IP-cím-alapú tűzfalas szűrésről: [Azure-beli IP-tartományok](https://www.microsoft.com/en-us/download/details.aspx?id=41653).|
+|IP-címeken alapuló kimenő kapcsolatok | További információ az IP-cím-alapú tűzfalas szűrésről: [Azure-beli IP-tartományok](https://www.microsoft.com/download/details.aspx?id=41653).|
 | A kimenő forgalom SSL-vizsgálata le van tiltva, illetve a rendszer szűri | Az ügynök regisztrációja vagy adatfeltöltési műveletei meghiúsulhatnak, ha a hálózati rétegen SSL-ellenőrzés vagy megszakítás van érvényben a kimenő forgalomra. További információkat olvashat [az SSL-vizsgálat beállításáról](https://technet.microsoft.com/library/ee796230.aspx) |
 | Az ügynököt futtató kiszolgáló tűzfalportjai |Az ügynök a következőt tűzfalportok megnyitását igényli, hogy kommunikálhasson az Azure AD Health szolgáltatásvégpontjaival.</br></br><li>443-as TCP-port</li><li>5671-es TCP-port</li> </br>További információ a [tűzfalportok engedélyezéséről](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 | Az alábbi webhelyek engedélyezése, amennyiben az Internet Explorer - Fokozott biztonsági beállítások be van kapcsolva |Amennyiben az Internet Explorer – Fokozott biztonsági beállítások be van kapcsolva, az alábbi webhelyeket engedélyezni kell azon a kiszolgálón, amelyiken az ügynök telepítve lesz.</br></br><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>A szervezet Azure Active Directory által megbízhatóként megjelölt összevonási kiszolgálója. Például: https:\//sts.contoso.com</li> Itt további információkat olvashat [az IE konfigurálásáról](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
-| Gondoskodjon arról, hogy a gépen a PowerShell 4.0-s vagy újabb verziója legyen telepítve | <li>A Windows Server 2008 R2 a PowerShell 2.0-t tartalmazza, amely nem megfelelő az ügynök számára.  Információk a PowerShell frissítéséről: [Ügynökök telepítése Windows Server 2008 R2 kiszolgálókon](#agent-installation-on-windows-server-2008-r2-servers).</li><li>A Windows Server 2012 a PowerShell 3.0-t tartalmazza, amely nem megfelelő az ügynök számára.  [Frissítse](http://www.microsoft.com/en-us/download/details.aspx?id=40855) a Windows Management Framework keretrendszert.</li><li>A Windows Server 2012 R2 és az annál újabb változatok már a PowerShell megfelelően új verzióját tartalmazzák.</li>|
+| Gondoskodjon arról, hogy a gépen a PowerShell 4.0-s vagy újabb verziója legyen telepítve | <li>A Windows Server 2008 R2 a PowerShell 2.0-t tartalmazza, amely nem megfelelő az ügynök számára.  Információk a PowerShell frissítéséről: [Ügynökök telepítése Windows Server 2008 R2 kiszolgálókon](#agent-installation-on-windows-server-2008-r2-servers).</li><li>A Windows Server 2012 a PowerShell 3.0-t tartalmazza, amely nem megfelelő az ügynök számára.  [Frissítse](http://www.microsoft.com/download/details.aspx?id=40855) a Windows Management Framework keretrendszert.</li><li>A Windows Server 2012 R2 és az annál újabb változatok már a PowerShell megfelelően új verzióját tartalmazzák.</li>|
 |A FIPS letiltása|Az Azure AD Connect Health-ügynökök nem támogatják a FIPS-t.|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Kimenő kapcsolódás az Azure szolgáltatásvégpontokra
@@ -62,6 +62,11 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
     * [Tekintse meg a telepítési utasításokat](#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Az Azure AD Connect Health-ügynök telepítése az AD FS szolgáltatáshoz
+> [!NOTE]
+> Az AD FS-kiszolgáló és a szinkronizálási kiszolgáló nem lehet ugyanaz. Ne telepítse az AD FS-ügynököt a szinkronizálási kiszolgálóra.
+>
+  
+A telepítés előtt ellenőrizze, hogy az AD FS-kiszolgáló gazdagépneve egyedi, és nem található meg az AD FS-kiszolgálóban.   
 Az ügynök telepítésének indításához kattintson duplán a letöltött .exe-fájlra. Az első képernyőn kattintson az Install (Telepítés) elemre.
 
 ![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health-requirements/install1.png)
@@ -166,6 +171,10 @@ Vegye figyelembe, hogy alapértelmezés szerint az „alapszintű” naplózási
 
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-sync"></a>Az Azure AD Connect Health-ügynök telepítése szinkronizáláshoz
+> [!NOTE]
+> A szinkronizálási kiszolgáló és az AD FS-kiszolgáló nem lehet ugyanaz. Ne telepítse a szinkronizálási ügynököt az AD FS-kiszolgálóra.
+>
+
 Az Azure AD Connect Health szinkronizálási ügynöke automatikusan települ az Azure AD Connect legújabb buildjével. Az Azure AD Connect szinkronizáláshoz való használatához le kell töltenie és telepítenie kell annak legújabb verzióját. A legújabb verziót [innen](http://www.microsoft.com/download/details.aspx?id=47594) töltheti le.
 
 Az ügynök telepítésének ellenőrzéséhez keresse meg a következő szolgáltatásokat a kiszolgálón. Ha a konfigurációt elvégezte, a szolgáltatásoknak már futniuk kell. Ellenkező esetben le lesznek állítva mindaddig, amíg a konfigurálás be nem fejeződött.

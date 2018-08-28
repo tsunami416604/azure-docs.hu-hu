@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 1ebf244aeb00b1eb87b846a5bb1db6bd4f954e26
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: a6ac954caa8341d6d949811f0bb9d7e68c0b5aac
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798168"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022757"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Fejlesztés az Azure Cosmos DB Table API és az Azure Table Storage használatával
 
@@ -26,7 +26,7 @@ Az Azure Cosmos DB Table API és az Azure Table Storage ugyanazt a táblaadatmod
 ## <a name="developing-with-the-azure-cosmos-db-table-api"></a>Fejlesztés az Azure Cosmos DB Table API-val
 
 Az [Azure Cosmos DB Table API](table-introduction.md) jelenleg négy SDK-t biztosít a fejlesztéshez: 
-- [Microsoft.Azure.CosmosDB.Table](https://aka.ms/tableapinuget) .NET SDK. Ez a kódtár ugyanazokkal az osztályokkal és metódus-aláírásokkal rendelkezik, mint a nyilvános [Microsoft Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage), de képes Azure Cosmos DB-fiókokhoz is csatlakozni a Table API használatával. 
+- [Microsoft.Azure.CosmosDB.Table](https://aka.ms/tableapinuget) .NET SDK. Ez a kódtár ugyanazokkal az osztályokkal és metódus-aláírásokkal rendelkezik, mint a nyilvános [Microsoft Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage), de képes Azure Cosmos DB-fiókokhoz is csatlakozni a Table API használatával. Vegye figyelembe, hogy a `Microsoft.Azure.CosmosDB.Table` kódtár jelenleg csak a .NET Standardhoz érhető el, a .NET Core-hoz nem.
 - [Python SDK](table-sdk-python.md). Az új Azure Cosmos DB Python SDK az egyetlen SDK, amely támogatja az Azure Table Storage-ot a Pythonban. Ez az SDK az Azure Table Storage-hoz és az Azure Cosmos DB Table API-hoz is csatlakozik.
 - [Java SDK](table-sdk-java.md). Ez az Azure Storage SDK képes Azure Cosmos DB-fiókokhoz csatlakozni a Table API használatával.
 - [Node.js SDK](table-sdk-nodejs.md). Ez az Azure Storage SDK képes Azure Cosmos DB-fiókokhoz csatlakozni a Table API használatával.

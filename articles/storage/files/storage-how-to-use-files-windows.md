@@ -2,24 +2,18 @@
 title: Azure-fájlmegosztás használata Windowson | Microsoft Docs
 description: Az Azure-fájlmegosztások használata Windowson és Windows Serveren.
 services: storage
-documentationcenter: na
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
-ms.openlocfilehash: 54e084e6480c872ff6dd4625b8c87d5a60a181ba
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.component: files
+ms.openlocfilehash: 96ad812aff8f6ea4f47035188940730e5dc2992c
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39392267"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41917717"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -52,20 +46,11 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 
 * **Tárfiók kulcsa**: Az Azure-fájlmegosztások csatlakoztatásához szüksége lesz az elsődleges (vagy másodlagos) tárkulcsra. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
 
-* **Győződjön meg arról, hogy a 445-ös port nyitva van**: Az SMB protokollhoz szükséges, hogy a 445-ös TCP port nyitva legyen; a csatlakozás nem sikerül, ha a 445-ös port blokkolva van. Ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös portot a `Test-NetConnection` parancsmaggal. A következő PowerShell-kód feltételezi, hogy az AzureRM PowerShell-modul telepítve van, további információért tekintse meg az [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resoure-group-name>` elemet a tárfiók vonatkozó neveivel.
+* **Győződjön meg arról, hogy a 445-ös port nyitva van**: Az SMB protokollhoz szükséges, hogy a 445-ös TCP port nyitva legyen; a csatlakozás nem sikerül, ha a 445-ös port blokkolva van. Ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös portot a `Test-NetConnection` parancsmaggal. Ne felejtse el kicserélni a `your-storage-account-name` elemet a tárfiók vonatkozó nevével.
 
     ```PowerShell
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
-
-    # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as soverign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+    Test-NetConnection -ComputerName <your-storage-account-name>.core.windows.net -Port 445
+    
     ```
 
     Sikeres csatlakozás esetén a következő kimenetet kell látnia:
@@ -208,6 +193,26 @@ Remove-PSDrive -Name <desired-drive-letter>
     ![Az Azure-fájlmegosztás most már csatlakoztatva van](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
 7. Amikor készen áll az Azure-fájlmegosztás leválasztására, kattintson a jobb gombbal a megosztás bejegyzésére a Fájlkezelő **Hálózati helyek** területén, és válassza a **Leválasztás** parancsot.
+
+### <a name="accessing-share-snapshots-from-windows"></a>Megosztási pillanatképek elérése a Windowsban
+A valamely szkript vagy szolgáltatás, például az Azure Backup használatával manuálisan vagy automatikusan létrehozott megosztási pillanatképek segítségével megtekintheti a megosztások, a könyvtárak, illetve a fájlmegosztásokban vagy a Windows rendszeren lévő adott fájlok korábbi verzióit. Megosztási pillanatképeket az [Azure Portal](storage-how-to-use-files-portal.md), az [Azure PowerShell](storage-how-to-use-files-powershell.md) és az [Azure CLI](storage-how-to-use-files-cli.md) használatával készíthet.
+
+#### <a name="list-previous-versions"></a>Előző verziók listázása
+Tallózással keresse meg a visszaállítani kívánt elemet vagy szülőelemet. Duplán rákattintva lépjen a kívánt könyvtárra. Kattintson a jobb gombbal, majd válassza a menü **Tulajdonságok** elemét.
+
+![Kijelölt könyvtár helyi menüje](./media/storage-how-to-use-files-windows/snapshot-windows-previous-versions.png)
+
+Válassza az **Előző verziók** lehetőséget a könyvtár megosztási pillanatképeinek listázásához. A lista betöltése a hálózat sebességétől és a könyvtárban lévő megosztási pillanatképek számától függően néhány másodpercet is igénybe vehet.
+
+![Előző verziók lap](./media/storage-how-to-use-files-windows/snapshot-windows-list.png)
+
+A **Megnyitás** elemre kattintva nyithatja meg az egyes pillanatképeket. 
+
+![Megnyitott pillanatkép](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
+
+#### <a name="restore-from-a-previous-version"></a>Visszaállítás korábbi verzióról
+A **Visszaállítás** elemre kattintva visszaállíthatja a teljes könyvtár tartalmát az eredeti helyre a megosztási pillanatkép készítésének időpontjában érvényes állapotra.
+ ![Visszaállítás gomb a figyelmeztető üzenetben](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>A Windows/Windows Server védelme
 Az Azure-fájlmegosztás Windowson való csatlakoztatásához a 445-ös portnak elérhetőnek kell lennie. Számos szervezet blokkolja a 445-ös portot az SMB 1 eredendő biztonsági kockázatai miatt. Az SMB-1, más néven CIFS (Common Internet File System), egy korábbi fájlrendszerprotokoll, amelyet a Windows és a Windows Server tartalmaz. Az SMB-1 egy elavult, nem hatékony és legfőképpen nem biztonságos protokoll. A jó hír az, hogy az Azure Files nem támogatja az SMB 1-et, és a Windows és Windows Server összes támogatott verziója lehetővé teszi az SMB 1 eltávolítását vagy letiltását. Mindig [erősen ajánlott](https://aka.ms/stopusingsmb1) az SMB 1 ügyfél és kiszolgáló eltávolítása vagy letiltása a Windowsban az Azure-fájlmegosztások használata előtt.

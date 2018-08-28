@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2e3852ffc01312f01843a90de5f5565784b1c0b5
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ed5da0afe67deaa7000c1bf3b8d75bdea14f2ecd
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114251"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616326"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Rövid útmutató: Java Reliable Services-alkalmazás üzembe helyezése a Service Fabricben
 
@@ -66,8 +66,8 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ![A helyi fürt kifogástalan](./media/service-fabric-quickstart-java/localclusterup.png)
 
 2. Nyissa meg az Eclipse környezetet.
-3. Kattintson a File -> Open Projects from File System... (Fájl -> Projekt megnyitása fájlrendszerből) lehetőségre.
-4. Kattintson a Directory (Címtár) elemre, és válassza ki a `Voting` könyvtárat abból a `service-fabric-java-quickstart` mappából, amelyet a GitHubról klónozott. Kattintson a Befejezés gombra.
+3. Kattintson a File (Fájl) -> Import (Importálás) -> Gradle -> Existing Gradle Project (Meglévő Gradle-projekt) elemre, és kövesse a varázsló utasításait.
+4. Kattintson a Directory (Címtár) elemre, és válassza ki a `Voting` könyvtárat abból a `service-fabric-java-quickstart` mappából, amelyet a GitHubról klónozott. Kattintson a Befejezés gombra. 
 
     ![Az Eclipse importálási párbeszédablaka](./media/service-fabric-quickstart-java/eclipseimport.png)
 

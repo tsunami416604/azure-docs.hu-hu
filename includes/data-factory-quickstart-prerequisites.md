@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: data-factory
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 08/20/2018
+ms.author: jingwang
+ms.custom: include file
+ms.openlocfilehash: ac6b53926ca6c44c8ec1e71db67321366aacb00e
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617597"
+---
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="azure-subscription"></a>Azure-előfizetés
@@ -6,8 +23,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ### <a name="azure-roles"></a>Azure-szerepkörök
 Data Factory-példányok létrehozásához az Azure-ba történő bejelentkezéshez használt felhasználói fióknak a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie. Az Azure Portalon kattintson a felhasználónevére a jobb felső sarokban, majd válassza az **Engedélyek** elemet az előfizetésben található engedélyek megtekintéséhez. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Szerepkörök hozzáadása](../articles/billing/billing-add-change-azure-subscription-administrator.md) című cikket.
 
+A Data Factory gyermekerőforrásainak (beleértve az adatkészleteket, a társított szolgáltatásokat, a folyamatokat, a triggereket és az integrációs modulokat) az Azure Portal tartalomkészítési és monitorozási felületén való létrehozásához és kezeléséhez a **Data Factory közreműködője** szerepkör tagjának kell lennie. A gyermekerőforrások a PowerShell-lel vagy az SDK-val való létrehozásához és kezeléséhez a **közreműködő** szerepkör is elegendő.
+
 ### <a name="azure-storage-account"></a>Azure Storage-fiók
-Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk *forrás-* és *céladattárként*. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, a létrehozáshoz tekintse meg a [tárfiók létrehozását](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket. 
+Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk *forrás-* és *céladattárként*. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, a létrehozáshoz tekintse meg a [tárfiók létrehozását](../articles/storage/common/storage-quickstart-create-account.md) ismertető cikket. 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
 Ebben a rövid útmutatóban az Azure Storage-fiók nevét és kulcsát használjuk. Az alábbi feladat bemutatja a tárfióknév és -kulcs beszerzéséhez szükséges lépéseket: 

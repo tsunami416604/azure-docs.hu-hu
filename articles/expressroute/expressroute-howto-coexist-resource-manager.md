@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/05/2018
+ms.date: 08/17/2018
 ms.author: charwen,cherylmc,rambala
-ms.openlocfilehash: 80d2f65f516d7f1190f276fa9f2c62206bd31e67
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 0e69a85f320a0a8d77bd07fc0dedb77eb99efb36
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262872"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41919415"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
@@ -183,14 +183,7 @@ Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és
   ```
 
 ## <a name="add"></a>Egyidejű kapcsolatok konfigurálása meglévő VNet számára
-Ha már rendelkezik meglévő virtuális hálózattal, ellenőrizze az átjáró-alhálózat méretét. Ha az átjáró-alhálózat /28 vagy /29, először törölnie kell a virtuális hálózati átjárót, és növelnie kell az átjáró-alhálózat méretét. A jelen szakaszban ismertetett lépések bemutatják, mindez hogyan valósítható meg.
-
-Ha az átjáró-alhálózat /27 vagy nagyobb, és a virtuális hálózat ExpressRoute-on keresztül csatlakozik, kihagyhatja az alábbi lépéseket, és továbbléphet a [„4. lépés – Helyek közötti VPN-átjáró létrehozása”](#vpngw) lépésre az előző szakaszban. 
-
-> [!NOTE]
-> Amikor törli a meglévő átjárót, megszakad a helyi helyszínek kapcsolata a virtuális hálózattal, amíg ezen a konfiguráción dolgozik. 
-> 
-> 
+Ha a virtuális hálózat egyetlen virtuális hálózati átjáróval (például helyek közötti VPN-átjáróval) rendelkezik, és egy másik, eltérő típusú átjárót (például egy ExpressRoute-átjárót) szeretne hozzáadni, ellenőrizze az átjáró-alhálózat méretét. Ha az átjáró-alhálózat /27 vagy nagyobb, kihagyhatja az alábbi lépéseket, és az előző szakaszban ismertetett lépéseket követve hozzáadhat egy helyek közötti VPN-átjárót vagy egy ExpressRoute-átjárót. Ha az átjáró-alhálózat /28 vagy /29, először törölnie kell a virtuális hálózati átjárót, és növelnie kell az átjáró-alhálózat méretét. A jelen szakaszban ismertetett lépések bemutatják, mindez hogyan valósítható meg.
 
 1. Az Azure PowerShell-parancsmagok legújabb verzióit kell telepítenie. A parancsmagok telepítésével kapcsolatos további információkért lásd: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja. 
 2. Törölje a meglévő ExpressRoute- vagy helyek közötti VPN-átjárót.
@@ -220,7 +213,7 @@ Ha az átjáró-alhálózat /27 vagy nagyobb, és a virtuális hálózat Express
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-5. Ezen a ponton egy átjáró nélküli VNettel rendelkezik. Új átjárók létrehozásához és a kapcsolatok véglegesítéséhez folytathatja az előző lépéssorban foglalt [4. lépés – Helyek közötti VPN-átjárókapcsolat létrehozása](#vpngw) lépéssel.
+5. Ezen a ponton egy átjáró nélküli virtuális hálózattal rendelkezik. Új átjárók létrehozásához és a kapcsolatok beállításához kövesse az előző szakasz lépéseit.
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Pont-hely konfiguráció hozzáadása a VPN-átjáróhoz
 Az alábbi lépések végrehajtásával pont–hely konfigurációt adhat hozzá a VPN-átjáróhoz egyidejű jelenléttel rendelkező beállításokban.

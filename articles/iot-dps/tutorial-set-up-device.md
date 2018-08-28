@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e90d20053a8ccfcafc7648d81c61e9313ec57ab
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 998bc7cb7e3289a85a9ffc315f7c1f5e568a75cb
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523359"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41917978"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszközregisztráció beállítása az Azure IoT Hub Device Provisioning Service használatával
 
@@ -149,7 +149,7 @@ Végső lépésként egy olyan regisztrációs alkalmazást kell megírni, amely
 
 1. Az Azure Portalon válassza ki az eszközregisztrációs szolgáltatás **Áttekintés** panelét, és másolja ki az **_Azonosító hatóköre_** értéket. A minden esetben egyedi *Azonosító hatóköre* értéket a szolgáltatás hozza létre. Az érték nem módosítható, és a regisztrációazonosítók egyedi azonosítására szolgál.
 
-    ![DPS végpontinformációk kinyerése a portál paneljéről](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
+    ![Az eszközkiépítési szolgáltatás végpontadatainak kinyerése a portál paneljéről](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
 1. A számítógépén a Visual Studio *Solution Explorer* (Megoldáskezelő) panelén lépjen a **Provision\_Samples** mappára. Válassza ki a **prov\_dev\_client\_sample** nevű mintaprojektet, és nyissa meg a **prov\_dev\_client\_sample.c** nevű forrásfájlt.
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: f3cc4f518278cca915e40bd691c6a7674219916e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 2122b6d9c385e1137d0fc6df5229975359fa20d5
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109392"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920537"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
@@ -50,7 +50,7 @@ Az oktatóanyag elkezdése előtt:
 * [Telepítse a Visual Studio 2017-et](https://www.visualstudio.com/) az **Azure-fejlesztési**, valamint az **ASP.NET- és webfejlesztési** számítási feladatokkal.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 * Hozzon létre egy Service Fabric-fürtöt az Azure-ban, például [ennek az útmutatónak a segítségével](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* Hozzon létre egy [Team Services-fiókot](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
+* Hozzon létre egy [Team Services-fiókot](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
 
@@ -94,7 +94,13 @@ A Team Services kiadási definíciója olyan munkafolyamatot ír le, amely egy a
 
 Nyisson meg egy webböngészőt, és keresse meg az új csoportprojektet a következő helyen: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Válassza ki a **Build & Release** (Build és kiadás) lapot, majd a **Builds** (Buildek) és a **+ New definition** (+ Új definíció) lehetőséget.  A **Select a template** (Sablon kiválasztása) területen válassza az **Azure Service Fabric Application** (Azure Service Fabric-alkalmazás) sablont, majd kattintson az **Apply** (Alkalmaz) gombra.
+Válassza a **Build and release** (Build és kiadás) lapot, majd a **Builds** (Buildek) és a **New pipeline** (Új folyamat) lehetőséget.
+
+![Új folyamat][new-pipeline]
+
+Válassza ki forrásként a **VSTS Git** lehetőséget, a **Voting** (Szavazás) csapatprojektet, a **Voting** (Szavazás) adattárat és a **master** alapértelmezett ágat vagy a manuális és ütemezett buildeket.  Ezután kattintson a **Continue** (Folytatás) gombra.
+
+A **Select a template** (Sablon kiválasztása) területen válassza az **Azure Service Fabric application** (Azure Service Fabric-alkalmazás) sablont, majd kattintson az **Apply** (Alkalmaz) gombra.
 
 ![Buildsablon kiválasztása][select-build-template]
 
@@ -102,7 +108,9 @@ A **Tasks** (Feladatok) között az **Agent queue** (Ügynöküzenetsor) megfele
 
 ![Feladatok kiválasztása][save-and-queue]
 
-A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt a **Trigger status** (Eseményindító állapota) beállításával.  Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához.
+A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt az **Enable continuous integration** (Folyamatos integráció engedélyezése) bejelölésével. A **Branch filters** (Ágszűrők) területen kattintson az **+ Add** (+ Hozzáadás) elemre, és az alapértelmezés szerint a **Branch specification** (Ágspecifikáció) **master** lesz. Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához.
+
+A **Save build pipeline and queue dialog** (A buildfolyamat és az üzenetsor párbeszédpanelének mentése) menüben kattintson a **Save & queue** (Mentés és üzenetsorba helyezés) elemre.
 
 ![Eseményindítók kiválasztása][save-and-queue2]
 
@@ -110,7 +118,7 @@ A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build f
 
 ### <a name="create-a-release-definition"></a>Kiadási definíció létrehozása
 
-Válassza ki a **Build & Release** (Build és kiadás) lapot, majd a **Releases** (Kiadások) és a **+ New definition** (+ Új definíció) lehetőséget.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
+Válassza ki a **Build & Release** (Build és kiadás) lapot, majd a **Releases** (Kiadások) és a **+ New pipeline** (+ Új folyamat) lehetőséget.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
 
 ![Kiadási sablon kiválasztása][select-release-template]
 
@@ -134,7 +142,9 @@ Engedélyezze a folyamatos üzembe helyezés eseményindítóját, hogy a kiadá
 
 ![Eseményindító engedélyezése][enable-trigger]
 
-Válassza a **+Release** -> **Create Release** -> **Create** (+Kiadás > Kiadás létrehozása > Létrehozás) lehetőséget a kiadás manuális létrehozásához.  Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”.
+Válassza a **+ Release** -> **Create a Release** -> **Create** (+Kiadás > Kiadás létrehozása > Létrehozás) lehetőséget a kiadás manuális létrehozásához. A kiadási folyamatot a **Releases** (Kiadások) lapon követheti nyomon.
+
+Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Módosítások véglegesítse és leküldése, kiadás indítása
 
@@ -188,6 +198,7 @@ Folytassa a következő oktatóanyaggal:
 [publish-app-profile]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishAppProfile.png
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
+[new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png

@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan hozhat létre Azure Automation-fiókot, és hog
 services: automation
 author: csand-msft
 ms.author: csand
-ms.date: 12/13/2017
+ms.date: 08/22/2018
 ms.topic: quickstart
 ms.service: automation
 ms.component: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 3accd62415cd7d3a8210b7a05aa1edfd7a380edc
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 81dbcb4f77708f9f679d146b1db83ddecc30629d
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055154"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616596"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Automation-fiók létrehozása
 
@@ -22,21 +22,21 @@ Az Azure Automation-fiókok az Azure-on keresztül hozhatók létre. Ez a módsz
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-ba a https://portal.azure.com címen
+Jelentkezzen be az Azure-ba a https://portal.azure.com címen.
 
 ## <a name="create-automation-account"></a>Automation-fiók létrehozása
 
 1. Kattintson az Azure bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-1. Válassza a **Monitoring és felügyelet** lehetőséget, majd válassza az **Automation** lehetőséget.
+1. Válassza a **Felügyeleti eszközök**, majd az **Automation** lehetőséget.
 
-1. Adja meg a fiókinformációkat. Az **Azure-beli futtató fiók létrehozása** területen válassza az **Igen** lehetőséget az Azure-beli hitelesítést leegyszerűsítő összetevők automatikus engedélyezéséhez. Amikor végzett, kattintson a **Létrehozás** gombra az Automation-fiók üzembe helyezésének megkezdéséhez.
+1. Adja meg a fiókinformációkat. Az **Azure-beli futtató fiók létrehozása** területen válassza az **Igen** lehetőséget az Azure-beli hitelesítést leegyszerűsítő összetevők automatikus engedélyezéséhez. Fontos tudni, hogy Automation-fiókok létrehozásakor a választott nevet utólag nem lehet módosítani. Amikor végzett, kattintson a **Létrehozás** gombra az Automation-fiók üzembe helyezésének megkezdéséhez.
 
     ![Adja meg az Automation-fiók információit az oldalon](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
-1. Az Automation-fiók az Azure-irányítópultra van rögzítve. Az üzembe helyezés befejeztével automatikusan megnyílik az Automation-fiók áttekintése.
+1. Az üzembe helyezés befejezése után kattintson ** a **Minden szolgáltatás** elemre, válassza az **Automation-fiókok** lehetőséget, majd válassza ki a létrehozott Automation-fiókot.
 
     ![Az Automation-fiókok áttekintése](./media/automation-quickstart-create-account/automation-account-overview.png)
 

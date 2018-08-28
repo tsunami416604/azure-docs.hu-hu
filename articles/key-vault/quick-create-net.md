@@ -1,6 +1,6 @@
 ---
-title: Rövid Azure-útmutató – Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak beállítására és lekérésére | Microsoft Docs
-description: Rövid útmutató, amely bemutatja, hogyan konfigurálhat ASP.NET Core-alkalmazásokat a Key Vault titkos kulcsainak beállítására és lekérésére
+title: Rövid útmutató – Titkos kulcs beállítása és lekérése az Azure Key Vaultból Node-webalkalmazás használatával | Microsoft Docs
+description: Rövid útmutató – Titkos kulcs beállítása és lekérése az Azure Key Vaultból Node-webalkalmazás használatával
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 0188d06e5c58287e1040f6a15456d3ffe291b04a
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480202"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42022694"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból .NET-webalkalmazások használatával
 
@@ -28,7 +28,10 @@ Ebben a rövid útmutatóban azokat a lépéseket ismerheti meg, amelyekkel Azur
 > * [Felügyeltszolgáltatás-identitások engedélyezése](../active-directory/managed-service-identity/overview.md).
 > * A szükséges engedélyek megadása a webalkalmazás számára az adatoknak a Key Vaultból való olvasásához.
 
-A folytatás előtt olvassa el az [alapvető fogalmakat](key-vault-whatis.md#basic-concepts), különös tekintettel a [felügyeltszolgáltatás-identitásról](../active-directory/managed-service-identity/overview.md) szóló részre
+A folytatás előtt tekintse át az [alapvető fogalmakat](key-vault-whatis.md#basic-concepts).
+
+>[!NOTE]
+Ahhoz, hogy megérthesse, miért az alábbi oktatóanyagban ismertetett folyamat az ajánlott eljárás, néhány fogalommal tisztában kell lennie. A Key Vault egy központi adattár a titkos kulcsok programozott módon való tárolásához. A használatához azonban az alkalmazásoknak/felhasználóknak először hitelesíteniük kell magukat a Key Vaultban, azaz be kell mutatniuk egy titkos kulcsot. Az ajánlott biztonsági eljárások betartása érdekében ezt az első titkos kulcsot rendszeres időközönként le kell váltani. Az Azure-ban futó [Managed Service Identity](../active-directory/managed-service-identity/overview.md)-alkalmazásokhoz jár egy olyan identitás, amelyet az Azure automatikusan felügyel. Ez segít megoldani a **titkos kulcsok bemutatásának problémáját**, mivel a felhasználók/alkalmazások követhetik az ajánlott eljárásokat, és nem kell aggódniuk az első titkos kulcs leváltása miatt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -165,6 +168,8 @@ Ezután futtassa ezt a parancsot a kulcstárolója nevének és a fentről máso
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
 
 ```
+
+**Mostantól az alkalmazás futtatásakor meg kell jelennie a titkos kulcs lekért értékének**
 
 ## <a name="next-steps"></a>További lépések
 

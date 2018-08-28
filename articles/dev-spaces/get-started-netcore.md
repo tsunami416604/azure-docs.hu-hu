@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 93a63c39b2ba30d0b70607671262428d93392ad4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: fdaba2afecd453794dbee3b47ef5202700d005d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522152"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41919941"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Bevezetés az Azure Dev Spaces .NET Core segítségével történő használatába
 
@@ -34,7 +34,7 @@ Az Azure Dev Spaces használatához minimális helyi gépbeállítás szüksége
 Első lépésként töltse le és futtassa az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet. 
 
 > [!IMPORTANT]
-> Ha az Azure CLI már telepítve van, győződjön meg arról, hogy a 2.0.38-as vagy újabb verziót használja.
+> Ha az Azure CLI már telepítve van, győződjön meg arról, hogy a 2.0.43-as vagy újabb verziót használja.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 

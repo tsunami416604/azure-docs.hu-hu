@@ -11,21 +11,21 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 933cc0f18214cf40741f6f65006231e0cd5a17e6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 7a4716be201b1923b54f09fa68f5769521b29168
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347265"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023446"
 ---
 # <a name="manage-my-devices-overview"></a>Eszközkezelés áttekintése
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/en-us/azure/active-directory) talál.
+>Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 
-Győződjön meg arról, hogy a vállalat erőforrásaihoz olyan eszközökről fér hozzá, amelyek megfelelnek a biztonsági és megfelelőségi szabványoknak.
+Győződjön meg arról, hogy a szervezete összes potenciálisan korlátozott erőforrásához hozzáfér a munkahelyi tulajdonban lévő és a személyes eszközeiről is.
 
 |Cikk |Leírás |
 |------|------------|
-|[Eszközök csatlakoztatása](device-management-azuread-joined-devices-setup.md)|Ismerteti, hogyan csatlakoztathatja munkahelyi eszközét a vállalati hálózathoz.|
-|[Windows 10-es eszközök regisztrálása](device-management-azuread-registered-devices-windows10-setup.md)|Ismerteti, hogyan regisztrálhatja a Windows 10-es eszközét a vállalati hálózaton.| 
+|[Munkaeszköz csatlakoztatása](user-help-join-device-on-network.md)|Ez a szakasz azt ismerteti, hogyan csatlakoztathatja munkahelyi eszközét a vállalati hálózathoz.|
+|[Személyes eszköz regisztrálása](user-help-register-device-on-network.md)|Megtudhatja, hogyan regisztrálhatja személyes eszközeit a vállalati hálózaton.|

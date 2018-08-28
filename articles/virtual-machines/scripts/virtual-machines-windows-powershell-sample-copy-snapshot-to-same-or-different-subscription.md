@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-parancsfájl minta - ugyanazon vagy másik előfizetésbe felügyelt lemezes pillanatképet másolása (áthelyezése) |} Microsoft Docs
-description: Az Azure PowerShell-parancsfájl minta - ugyanazon vagy másik előfizetésbe felügyelt lemezes pillanatképet másolása (áthelyezése)
+title: Azure PowerShell-példaszkript – Felügyelt lemez pillanatképének másolása (áthelyezése) előfizetésen belül vagy előfizetések között | Microsoft Docs
+description: Azure PowerShell-példaszkript – Felügyelt lemez pillanatképének másolása (áthelyezése) előfizetésen belül vagy előfizetések között
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: 064b5355da10fe683563fa078cfafc65080f7ea2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2905747b6ece93f018bd6ef67fae1b23ec9c9d5d
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23879658"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41918092"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Másolja át a felügyelt lemezes pillanatképet ugyanahhoz az előfizetéshez vagy másik előfizetést, a PowerShell használatával
+# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Felügyelt lemez pillanatképének másolása előfizetésen belül vagy előfizetések között a PowerShell használatával
 
-Ez a parancsfájl pillanatkép másolatot készít a azonos ugyanahhoz az előfizetéshez vagy másik előfizetést. Ezen parancsfájl segítségével pillanatkép áthelyezése az adatok megőrzésének másik előfizetést. Tárolni pillanatképek másik előfizetésben található a pillanatképek a fő előfizetésben véletlen törlés elleni védelme. 
+A szkript másolatot készít egy pillanatképről az előfizetésen belül vagy egy másik előfizetésben. A szkript használatával a pillanatképet áthelyezheti egy másik előfizetésbe adatmegőrzés céljából. A pillanatképek eltérő előfizetésekben való tárolásával megelőzheti a fő előfizetésben lévő pillanatképek véletlen törlését. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.ps1 "Copy snapshot")]
 
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat a célként megadott előfizetés, a forrás pillanatkép azonosítóját használja a pillanatkép létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja egy, a forráspillanatkép azonosítóját használó pillanatkép a célelőfizetésben történő létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új AzureRmSnapshotConfig](/powershell/module/azurerm.compute/New-AzureRmSnapshotConfig) | A pillanatkép létrehozásához használt pillanatkép-konfiguráció létrehozása Ez magában foglalja az erőforrás-azonosítót a szülő pillanatkép és a helyre, amely ugyanaz, mint a szülő pillanatkép.  |
-| [Új AzureRmSnapshot](/powershell/module/azurerm.compute/New-AzureRmDisk) | Pillanatkép készítése a pillanatkép-beállítása, pillanatfelvétel neve és paraméterként erőforráscsoport-név használatával. |
+| [New-AzureRmSnapshotConfig](/powershell/module/azurerm.compute/New-AzureRmSnapshotConfig) | Egy, a pillanatképek létrehozásához használt pillanatkép-konfigurációt hoz létre. Tartalmazza a szülőpillanatkép erőforrás-azonosítóját, valamint a helyet, amely azonos a szülőpillanatkép helyével.  |
+| [New-AzureRmSnapshot](/powershell/module/azurerm.compute/New-AzureRmDisk) | Létrehoz egy pillanatképet a pillanatkép-konfiguráció, a pillanatkép neve és az erőforráscsoport neve alapján, amelyek paraméterként vannak megadva. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Hozzon létre egy virtuális gépet egy pillanatképből](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Virtuális gép létrehozása pillanatképből](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Az Azure PowerShell modul további információkért lásd: [Azure PowerShell dokumentációs](/powershell/azure/overview).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
-További virtuális gép PowerShell-parancsfájl példák találhatók a [Azure Windows virtuális dokumentációját](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A virtuális gépekhez kapcsolódó további PowerShell-példaszkripteket az [Azure Windows rendszerű virtuális gépekre vonatkozó dokumentációjában](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) találhat.

@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: de30085ae5ff95e7067684ff3af9ccb0d45357de
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: abba75e731d2550b4719eec70d475884bd7f3c8e
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990863"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42022398"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Azure-beli virtuális gép replikálása másik Azure-régióba
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás működőképes állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
 
-Ez a rövid útmutató egy Azure-beli virtuális gép másik Azure-régióba való replikálását ismerteti. 
+Ez a rövid útmutató egy Azure-beli virtuális gép másik Azure-régióba való replikálását ismerteti.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -62,8 +62,7 @@ Az elsődleges régióban lévő virtuális gép replikálása leáll, ha letilt
 Állítsa le a replikálást a következő módon:
 
 1. Válassza ki a virtuális gépet.
-2. A **Vészhelyreállítás** területen kattintson a **Továbbiak** elemre.
-3. Kattintson a **Replikálás letiltása** lehetőségre.
+2. A **Vészhelyreállítás** területen kattintson **A replikálás letiltása** elemre.
 
    ![A replikálás letiltása](media/azure-to-azure-quickstart/disable2-replication.png)
 

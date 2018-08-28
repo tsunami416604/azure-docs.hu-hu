@@ -1,6 +1,6 @@
 ---
-title: Azure rövid útmutató – Eseménystreamek feldolgozása az Azure Portal használatával | Microsoft Docs
-description: Ezen rövid útmutató segítségével megismerheti, hogyan dolgozgatók fel az eseménystreamek az Azure Portal használatával.
+title: Rövid Azure-útmutató – Eseményközpont létrehozása az Azure Portallal | Microsoft Docs
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure-eseményközpontot az Azure Portallal, majd hogyan küldhet és fogadhat eseményeket a .NET Standard SDK használatával.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
 ms.author: shvija
-ms.openlocfilehash: 1938f7a8400587f8f0405cb576bfbdfe8bf1dddd
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2c2c02d7f06fdca2f92dd9e2324b10b2a712b81f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004310"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42024068"
 ---
-# <a name="quickstart-process-event-streams-using-the-azure-portal-and-net"></a>Rövid útmutató – Eseménystreamek feldolgozása az Azure Portal és a .NET használatával
+# <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rövid útmutató: Eseményközpont létrehozása az Azure Portallal
 
 Az Azure Event Hubs egy kiválóan méretezhető adatstreamelési platform és feldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eseményközpontot az [Azure Portallal](https://portal.azure.com), majd hogyan küldhet, illetve fogadhat adatokat egy eseményközpontból a .NET Standard SDK használatával.
 

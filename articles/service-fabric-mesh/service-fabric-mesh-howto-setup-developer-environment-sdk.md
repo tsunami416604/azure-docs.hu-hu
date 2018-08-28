@@ -1,24 +1,24 @@
 ---
-title: Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalmazásokhoz | Microsoft Docs
+title: Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalmazások létrehozásához | Microsoft Docs
 description: Kialakíthatja úgy a Windows fejlesztési környezetet, hogy Service Fabric Mesh-alkalmazást hozhasson létre, és üzembe helyezhesse azt az Azure Service Fabric Mesh-ben.
 services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 589bef1894a3bee1e6974a0ea2516200fae2891f
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+manager: jeconnoc
+ms.openlocfilehash: e95c0ad90503410601cc0764fdc559579a1dd13d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185543"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920726"
 ---
-# <a name="set-up-your-windows-development-environment-to-build-service-fabric-applications"></a>A Windows fejlesztési környezet kialakítása Service Fabric-alkalmazások létrehozásához
+# <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>A Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalmazások létrehozásához
 
-Az Azure Service Fabric-alkalmazásoknak a Windows rendszerű fejlesztői gépen való létrehozásához és futtatásához telepítse a Service Fabric-futtatókörnyezetet, az SDK-t és az eszközöket.
+Az Azure Service Fabric Mesh-alkalmazások Windows rendszerű fejlesztői gépen való létrehozásához és futtatásához telepítse a Service Fabric Mesh-futtatókörnyezetet, az SDK-t és az eszközöket.
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -31,28 +31,30 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 ## <a name="visual-studio"></a>Visual Studio
 
-A Service Fabric-alkalmazások üzembe helyezéséhez a Visual Studio 2017 szükséges. [Telepítse a 15.6.0-s][download-visual-studio] vagy újabb verziót, és engedélyezze a következő számítási feladatokat:
+A Service Fabric Mesh-alkalmazások üzembe helyezéséhez a Visual Studio 2017 szükséges. [Telepítse a 15.6.0-s][download-visual-studio] vagy újabb verziót, és engedélyezze a következő számítási feladatokat:
 
-- ASP.NET és webfejlesztés
-- Azure-fejlesztés
- 
-## <a name="windows-10---install-docker"></a>Windows 10 – A Docker telepítése
+* ASP.NET és webfejlesztés
+* Azure-fejlesztés
+
+## <a name="install-docker"></a>A Docker telepítése
+
+#### <a name="windows-10"></a>Windows 10
 
 Töltse le, majd telepítse a [Docker Community Edition for Windows][download-docker] legújabb verzióját a Service Fabric Mesh által használt tárolóalapú Service Fabric-alkalmazások támogatásához.
 
-Amikor a telepítés során a rendszer kéri, válassza a **Windows-tárolók használatát Linux-tárolók helyett**. Ha Hyper-V nincs engedélyezve a számítógépen, a Docker telepítője fel fogja ajánlani az engedélyezését. Ehhez kattintson az **OK** gombra, ha a rendszer arra kéri.
+Amikor a telepítés során a rendszer kéri, válassza a **Windows-tárolók használatát Linux-tárolók helyett**.
 
-## <a name="windows-server-2016---install-hyper-v-and-docker"></a>Windows Server 2016 – A Hyper-V és a Docker telepítése
+Ha a Hyper-V nincs engedélyezve a számítógépen, a Docker telepítője fel fogja ajánlani az engedélyezését. Ehhez kattintson az **OK** gombra, ha a rendszer arra kéri.
 
-**A Hyper-V telepítése**
+#### <a name="windows-server-2016"></a>Windows Server 2016
 
-Először nyissa meg a PowerShellt rendszergazdaként, majd futtassa a következő parancsot a Hyper-V telepítéséhez és a számítógép újraindításához. További információt a [Docker Enterprise Edition for Windows Server][download-docker-server] kiadást ismertető szakaszban talál.
+Ha nincs engedélyezve a Hyper-V szerepkör, nyissa meg a PowerShellt rendszergazdaként, futtassa a következő parancsot a Hyper-V engedélyezéséhez, majd indítsa újra a számítógépet. További információt a [Docker Enterprise Edition for Windows Server][download-docker-server] kiadást ismertető szakaszban talál.
 
 ```powershell
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
 ```
 
-**A Docker telepítése**
+Indítsa újra a gépet.
 
 Nyissa meg a PowerShellt rendszergazdaként, majd futtassa a következő parancsokat a Docker telepítéséhez:
 
@@ -61,8 +63,6 @@ Install-Module DockerMsftProvider -Force
 Install-Package Docker -ProviderName DockerMsftProvider -Force
 Install-WindowsFeature Containers
 ```
-
-Indítsa újra a gépet.
 
 ## <a name="sdk-and-tools"></a>SDK és eszközök
 

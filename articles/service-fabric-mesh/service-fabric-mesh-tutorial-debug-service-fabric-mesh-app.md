@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ad6812f25ee33bf723ed86d4ec32ca6898d01774
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186738"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920557"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Oktatóanyag: Hibakeresés a Service Fabric mesh-webalkalmazásokban
 
@@ -74,9 +74,17 @@ Miután a helyi üzembe helyezés befejeződött, és a Visual Studio elindítot
 
 **Hibakeresési tippek**
 
-* Ha **Nem fut helyi Service Fabric-fürt** tartalmú hibaüzenetet kap, győződjön meg arról, hogy fut a Service Local Cluster Manager (SLCM), majd kattintson a tálca SLCM ikonjára a jobb gombbal, és kattintson a **Helyi fürt indítása** elemre. A fürt elindítása után térjen vissza a Visual Studióba, és nyomja meg az **F5** billentyűt.
-* Ha **404-es** hibát kap az alkalmazás indításakor, elképzelhető, hogy helytelenek a **service.yaml** környezeti változói. Győződjön meg arról, hogy az `ApiHostPort` és a `ServiceName` megfelelően, a [környezeti változók létrehozását](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) ismertető részben leírtak szerint van beállítva.
-* Ha felépítési hibákat kap a **service.yaml** fájlban, ellenőrizze, hogy tabulátorok helyett szóközöket használ-e a sorok behúzására. Ezenkívül ebben az esetben angol területi beállításokkal kell létrehoznia az alkalmazást.
+Jelenleg egy probléma áll fenn, amely megakadályozza, hogy a `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` meghívása csatlakozzon a szolgáltatáshoz. Ez ekkor fordulhat elő, ha a gazdagép IP-címe megváltozik. A probléma megoldása:
+
+1. Távolítsa el az alkalmazást a helyi fürtből (a Visual Studio esetében: **Build** > **Clean Solution** [Build > Megoldás eltávolítása]).
+2. A Service Fabric Local Cluster Manager alkalmazásban válassza a **Stop Local Cluster** (Helyi fürt leállítása), majd a **Start Local Cluster** (Helyi fürt indítása) elemet.
+3. Helyezze ismét üzembe az alkalmazást (a Visual Studióban nyomja le az **F5** gombot).
+
+Ha **Nem fut helyi Service Fabric-fürt** tartalmú hibaüzenetet kap, győződjön meg arról, hogy fut a Service Fabric Local Cluster Manager (LCM), majd kattintson a tálca LCM ikonjára a jobb gombbal, és kattintson a **Start Local Cluster** (Helyi fürt indítása) elemre. A fürt elindítása után térjen vissza a Visual Studióba, és nyomja meg az **F5** billentyűt.
+
+Ha **404-es** hibát kap az alkalmazás indításakor, elképzelhető, hogy helytelenek a **service.yaml** környezeti változói. Győződjön meg arról, hogy az `ApiHostPort` és a `ToDoServiceName` megfelelően, a [környezeti változók létrehozását](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) ismertető részben leírtak szerint van beállítva.
+
+Ha felépítési hibákat kap a **service.yaml** fájlban, ellenőrizze, hogy tabulátorok helyett szóközöket használ-e a sorok behúzására. Ezenkívül ebben az esetben angol területi beállításokkal kell létrehoznia az alkalmazást.
 
 ### <a name="debug-in-visual-studio"></a>Hibakeresés a Visual Studióban
 

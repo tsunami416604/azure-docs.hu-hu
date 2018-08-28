@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a019b21c130bebfe27925e90d7f7843d92654e01
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850610"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918808"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Felügyelt Azure SQL Database-példány létrehozása az Azure Portalon
 
@@ -33,15 +33,17 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre felügyelt (előzet
 > * Csatlakozás virtuális géphez
 > * Az SSMS telepítése és csatlakozás a felügyelt példányhoz
 
+> [!Note]
+> Ez az oktatóanyag azt ismerteti, hogyan konfigurálható hálózat, alhálózatok, példány és virtuális gép Azure Portallal, ami hosszabb folyamat is lehet. Ha rövidebb, gyors útmutatóra van szüksége, ahol a példány eléréséhez használt hálózat és virtuális gép az „Üzembe helyezés az Azure-ban” gombra kattintva hozható létre, érdemes megtekintenie az [első lépéseket ismertető oktatóanyagot](sql-database-managed-instance-get-started.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 > [!IMPORTANT]
 > Azon régiók listájáért, amelyekben a felügyelt példány jelenleg elérhető, lásd a cikket, amely [az adatbázisok migrálásával foglalkozik egy teljes mértékben felügyelt szolgáltatásba az Azure SQL Database felügyelt példányával](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
  
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
 
 ## <a name="whitelist-your-subscription"></a>Az előfizetés felvétele az engedélyezési listára
 
@@ -302,7 +304,7 @@ A következő lépések azt mutatják be, hogyan töltheti le és telepítheti a
 8. Amikor a rendszer kéri, a kezdéshez kattintson a **Telepítés** gombra.
 9. A telepítés befejezése után kattintson a **Bezárás** gombra.
 10. Nyissa meg az SSMS-t.
-11. A **Connect to Server** (Kapcsolódás kiszolgálóhoz) párbeszédpanelen írja be a felügyelt példány **gazdagépnevét* a **Server name** (Kiszolgáló neve) mezőbe, válassza az **SQL Server Authentication** (SQL Server-hitelesítés) lehetőséget, adja meg felhasználónevét és jelszavát, majd kattintson a **Connect** (Csatlakozás) gombra.
+11. A **Connect to Server** (Kapcsolódás kiszolgálóhoz) párbeszédpanelen írja be a felügyelt példány **gazdagépnevét** a **Server name** (Kiszolgáló neve) mezőbe, válassza az **SQL Server Authentication** (SQL Server-hitelesítés) lehetőséget, adja meg felhasználónevét és jelszavát, majd kattintson a **Connect** (Csatlakozás) gombra.
 
     ![ssms connect](./media/sql-database-managed-instance-tutorial/ssms-connect.png)  
 

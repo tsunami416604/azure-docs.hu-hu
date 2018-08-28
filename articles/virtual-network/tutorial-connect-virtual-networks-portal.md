@@ -14,19 +14,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: d702253c7b58b0a29c03e6563238b56ae75fa0d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8b1290c2030835af1435e9a21602d3d2334a6737
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841788"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41919143"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Oktatóanyag: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Azure Portal használatával történő létesítésével
 
-A virtuális hálózatok közötti társviszony létesítésével virtuális hálózatokat kapcsolhat össze egymással. Ha a társviszony létrejött, a két virtuális hálózaton található erőforrások ugyanolyan késés és sávszélesség mellett kommunikálhatnak egymással, mintha ugyanazon a virtuális hálózaton lennének. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+A virtuális hálózatok közötti társviszony létesítésével virtuális hálózatokat kapcsolhat össze egymással. Ezek a virtuális hálózatok lehetnek azonos vagy eltérő régiókban (más néven globális virtuális társhálózatok létesítése). Ha a társviszony létrejött, a két virtuális hálózaton található erőforrások ugyanolyan késés és sávszélesség mellett kommunikálhatnak egymással, mintha ugyanazon a virtuális hálózaton lennének. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Két virtuális gép létrehozása
@@ -82,7 +82,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
     |---|---|
     |Name (Név)|myVirtualNetwork1-myVirtualNetwork2|
     |Előfizetés| Válassza ki előfizetését.|
-    |Virtuális hálózat|myVirtualNetwork2 – A *myVirtualNetwork2* virtuális hálózat kiválasztásához válassza a **Virtuális hálózat**, majd a **myVirtualNetwork2** elemet.|
+    |Virtuális hálózat|myVirtualNetwork2 – A *myVirtualNetwork2* virtuális hálózat kiválasztásához válassza a **Virtuális hálózat**, majd a **myVirtualNetwork2** elemet. Választhat egy az adott régióban vagy egy másik régióban lévő virtuális hálózatot is.|
 
     ![Társviszony beállításai](./media/tutorial-connect-virtual-networks-portal/peering-settings.png)
 

@@ -1,6 +1,6 @@
 ---
-title: HTTPS-végpont hozzáadása Service Fabric-alkalmazáshoz az Azure-ban | Microsoft Docs
-description: Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá HTTPS-végpontot egy ASP.NET Core előtér-webszolgáltatáshoz, és hogyan helyezheti üzembe az alkalmazást egy fürtön.
+title: HTTPS-végpont hozzáadása a Kestrel használatával egy Service Fabric-alkalmazáshoz az Azure-ban | Microsoft Docs
+description: Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá HTTPS-végpontot egy ASP.NET Core előtér-webszolgáltatáshoz a Kestrel használatával, és hogyan helyezheti üzembe az alkalmazást egy fürtön.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 309a43d3383658029f4fe7f90f869888bac67bb1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 70bbeabe2c2b14e8e0dcccac9ffa63f2e19230a2
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130050"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41919938"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
 
 Ez az oktatóanyag egy sorozat harmadik része.  Az oktatóanyag során el fogja sajátítani a HTTPS engedélyezését a Service Fabricen futó ASP.NET Core-szolgáltatásban. Ha ezzel végzett, rendelkezni fog egy HTTPS-kompatibilis ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely a 443-as porton figyel. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást a [NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-deploy-app-to-party-cluster.md) szakaszban, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 07/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: bb0e3ee685d5a52a9f372e99d97f3608f67c17c0
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d50b84ac61210fc89665341ae0c2de3fc4ce0c11
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185397"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022473"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 - [Visual Studio Code](https://code.visualstudio.com/).
-- A Resource Manager Tools bővítmény. A telepítéshez kövesse az alábbi lépéseket:
+- Resource Manager Tools bővítmény. A telepítéshez kövesse az alábbi lépéseket:
 
     1. Nyissa meg a Visual Studio Code-ot.
     2. A **CTRL+SHIFT+X** billentyűkombinációval nyissa meg a Bővítmények ablaktáblát
@@ -44,14 +44,14 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 
 Az ebben a rövid útmutatóban használt sablon neve a következő: [Standard szintű tárfiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/). A sablon egy Azure Storage-fiókhoz tartozó erőforrást határoz meg.
 
-1. A Visual Studio Code-ban válassza a **Fájl**>**Fájl megnyitása** elemet.
-2. A **Fájlnév** mezőbe illessze be a következő URL-t:
+1. A Visual Studio Code-ban válassza a **File** (Fájl) > **Open File** (Fájl megnyitása) elemet.
+2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
-3. A **Megnyitás** elem kiválasztásával nyissa meg a fájlt.
-4. A **Fájl**>**Mentés másként** elem kiválasztásával mentse a fájlt a helyi számítógépre **azuredeploy.json** néven.
+3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
+4. A **File** (Fájl) > **Save as** (Mentés másként) lehetőség kiválasztásával mentheti a fájlt a helyi számítógépre, **azuredeploy.json** néven.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
@@ -89,9 +89,9 @@ A Visual Studio Code-dal történő sablonszerkesztés megismeréséhez egy tov�
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablonok üzembe helyezésének számos módszere van.  Ebben a rövid útmutatóban az Azure Portal Cloud Shell szolgáltatását használja. A Cloud Shell az Azure CLI és az Azure PowerShell szolgáltatást is támogatja. Az itt található utasítások a CLI használatára vonatkoznak.
+A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid útmutatóban az Azure Portal Cloud Shell szolgáltatását használja. A Cloud Shell az Azure CLI és az Azure PowerShell szolgáltatást is támogatja. Az itt található utasítások a CLI használata esetén érvényesek.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) webhelyre
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 2. Válassza ki a jobb felső sarokban a **Cloud Shell** elemet az alábbi képen látható módon:
 
     ![Az Azure Portal Cloud Shell szolgáltatása](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
@@ -99,14 +99,14 @@ A sablonok üzembe helyezésének számos módszere van.  Ebben a rövid útmuta
 3. Válassza a lefelé mutató nyilat, majd a **Bash** elem kiválasztásával váltson át a PowerShellből a parancssori felületre.
 
     ![Az Azure Portal Cloud Shell CLI szolgáltatása](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-4. Az **Újraindítás** elem kiválasztásával indítsa újra a felületet.
-5. Válassza a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemet.
+4. Kattintson az **Újraindítás** lehetőségre a felület újraindításához.
+5. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre.
 
     ![Fájl feltöltése az Azure Portal Cloud Shell szolgáltatásával](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 4. Válassza az e rövid útmutatóban korábban mentett fájlt. Alapértelmezés szerint a fájl neve a következő: **azuredeploy.json**.
-5. A Cloud Shell szolgáltatásban az **ls** parancs futtatásával ellenőrizheti, hogy a fájl feltöltése sikeresen megtörtént-e. A **cat** paranccsal pedig a sablon tartalmát ellenőrizheti.
+5. A fájl sikeres feltöltésének ellenőrzéséhez futtassa az **ls** parancsot a Cloud Shellben. A **cat** paranccsal a sablon tartalmát is ellenőrizheti.
 
-    ![Fájl listázása az Azure Portal Cloud Shell szolgáltatásával](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
+    ![Azure Portal – Cloud Shell – Fájlok listázása](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 6. Futtassa az alábbi parancsokat a Cloud Shellben:
 
     ```cli
@@ -114,20 +114,20 @@ A sablonok üzembe helyezésének számos módszere van.  Ebben a rövid útmuta
 
     az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file <TemplateFileName>
     ```
-    Az alábbi képernyőképen egy üzembe helyezési minta látható:
+    Az alábbi képernyőképen egy üzembehelyezési minta látható:
 
-    ![Sablon üzembe helyezése az Azure Portal Cloud Shell szolgáltatásával](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
+    ![Azure Portal – Cloud Shell – Sablon üzembe helyezése](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
     A képernyőképen az alábbi értékek láthatók:
 
-    - **&lt;ResourceGroupName>**: myresourcegroup0709. A paraméter két helyen jelenik meg.  Ellenőrizze, hogy ugyanezt az értéket használja-e.
+    - **&lt;ResourceGroupName>**: myresourcegroup0709. A paraméter két helyen jelenik meg.  Győződjön meg arról, hogy ugyanazt az értéket használja mindkét helyen.
     - **&lt;AzureLocation>**: eastus2
     - **&lt;DeployName>**: mydeployment0709
     - **&lt;TemplateFile>**: azuredeploy.json
 
     A képernyőképen a tárfiók neve a következő: *3tqebj3slyfyestandardsa*. 
 
-7. Az alábbi PowerShell-parancs futtatásával listázhatja az újonnan létrehozott tárfiókot:
+7. Az alábbi parancssori felületi parancs futtatásával megjelenítheti az újonnan létrehozott tárfiókot:
 
     ```cli
     az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
@@ -139,7 +139,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
-3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell megjelennie az erőforráscsoportban.
+3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/18
+ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 07700ecb8a31e6ee724f27e247f377eb869e6c39
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2197ab230341fb2945e7b1acd9a010ef3d3f8c22
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305140"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42702406"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rövid útmutató: Standard terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure Portalon
 
@@ -30,24 +30,29 @@ A terheléselosztás magasabb szintű rendelkezésre állást és méretezést b
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) címen.
+Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
 
 ## <a name="create-a-public-load-balancer"></a>Nyilvános Load Balancer létrehozása
 
 Ebben a szakaszban egy nyilvános Load Balancert fog létrehozni, amely segít a virtuális gépek terhelésének elosztásában. A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Amikor létrehoz egy Standard Load Balancert, létre kell hoznia egy új standard nyilvános IP-címet is, amely a Standard Load Balancer előtereként van konfigurálva (alapértelmezés szerint *LoadBalancerFrontend* néven). 
 
 1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
-2. A **Terheléselosztó létrehozása** lapon adja meg az alábbi értékeket a terheléselosztó számára:
-    - A terheléselosztó neve: *myLoadBalancer*.
-    - A terheléselosztó típusa: **Nyilvános**.
-     - A létrehozandó **új** nyilvános IP-cím: *myPublicIP*.
-    - A létrehozáshoz kiválasztott **Új** erőforráscsoport neve: *myResourceGroupSLB*.
-    - A hely: **westeurope**.
-3. A terheléselosztó létrehozásához kattintson a **Létrehozás** elemre.
-   
-    ![Load Balancer létrehozása](./media/load-balancer-standard-public-portal/1a-load-balancer.png)
+2. A **Terheléselosztó létrehozása** lapon adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza a **Létrehozás** elemet:
+
+    | Beállítás                 | Érték                                              |
+    | ---                     | ---                                                |
+    | Name (Név)                   | *myLoadBalancer*                                   |
+    | Típus          | Nyilvános                                        |
+    | SKU           | Standard                          |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget, és adja meg a *myPublicIP* nevet a szövegmezőben. A nyilvános IP-címnél a rendszer alapértelmezés szerint a standard termékváltozatot választja ki. A **Rendelkezésre állási zóna** kiválasztásánál válassza a **Zónaredundáns** lehetőséget. |
+    | Előfizetés               | Válassza ki előfizetését.    |
+    |Erőforráscsoport | Válassza az **Új létrehozása** lehetőséget, majd írja be a *myResourceGroupSLB* nevet.    |
+    | Hely           | Válassza a **Nyugat-Európa** régiót.                          |
+    
+
+![Load Balancer létrehozása](./media/load-balancer-standard-public-portal/create-load-balancer.png)
 
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
@@ -67,22 +72,22 @@ Eben a szakaszban egy virtuális hálózatot fog létrehozni, valamint két virt
 
 1. A képernyő bal felső részén kattintson az **Új** > **Számítás** > **Windows Server 2016 Datacenter** elemre, és adja meg az alábbi értékeket a virtuális gép számára:
     - A virtuális gép neve: *myVM1*.        
-    - A rendszergazda felhasználóneve: *azureuser*.    
     - *myResourceGroupSLB*: az **Erőforráscsoport** mezőben válassza a **Meglévő használata** lehetőséget, majd válassza ki a *myResourceGroupSLB* erőforráscsoportot.
 2. Kattintson az **OK** gombra.
 3. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget, majd kattintson a **Kiválasztás** gombra.
 4. Adja meg az alábbi értékeket a virtuális gép beállításainál:
-    - A létrehozandó új rendelkezésre állási csoport neve: *myAvailabilitySet*.
-    -  Győződjön meg róla, hogy a következő virtuális hálózat van kiválasztva: *myVNet*.
-    - Győződjön meg róla, hogy a következő alhálózat van kiválasztva: *myBackendSubnet*.
-    - A kötelezően létrehozandó új hálózati biztonsági csoport (tűzfal) neve: *myNetworkSecurityGroup*.
+    1. Győződjön meg arról, hogy virtuális hálózatként a *myVNet*, alhálózatként pedig a *myBackendSubnet* van kiválasztva.
+    2. A **Nyilvános IP-cím létrehozása** panel **Nyilvános IP-cím** mezőjében válassza a **Standard** lehetőséget, majd kattintson az **OK** gombra.
+    3. A **Hálózati biztonsági csoport** mezőben válassza a **Speciális** lehetőséget, majd tegye a következőket:
+        1. Válassza a *Hálózati biztonsági csoport (tűzfal) lehetőséget, majd a **Hálózati biztonsági csoport kiválasztása** lapon az **Új létrehozása** lehetőséget. 
+        2. A **Hálózati biztonsági csoport létrehozása** lapon a **Név** mezőben adja meg a *myNetworkSecurityGroup* nevet, majd kattintson az **OK** gombra.
 5. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
 6. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
-7. Az 1–6. lépések használatával hozzon létre egy második virtuális gépet *VM2* néven a *myAvailabilityset* rendelkezésre állási csoporttal, a *myVnet* virtuális hálózattal, a *myBackendSubnet* alhálózattal és a *myNetworkSecurityGroup* hálózati biztonsági csoporttal. 
+7. Az 1–6. lépésekkel hozzon létre egy második virtuális gépet *VM2* néven a *myAvailibilityset* rendelkezésre állási csoporttal, a *myVnet* virtuális hálózattal, a *myBackendSubnet* alhálózattal és a **myNetworkSecurityGroup* hálózati biztonsági csoporttal. 
 
-### <a name="create-nsg-rules"></a>NSG-szabályok létrehozása
+### <a name="create-nsg-rule"></a>NSG-szabály létrehozása
 
-Ebben a szakaszban NSG-szabályokat fog létrehozni a HTTP-t és RDP-t használó bejövő kapcsolatok engedélyezése érdekében.
+Ebben a szakaszban egy NSG-szabályt fogunk létrehozni a HTTP-t használó bejövő kapcsolatok engedélyezéséhez.
 
 1. Kattintson az **Összes erőforrás** elemre a bal oldali menüben, majd az erőforrások listájában kattintson a **myResourceGroupSLB** erőforráscsoportban található **myNetworkSecurityGroup** elemre.
 2. A **Beállítások** területen kattintson a **Bejövő biztonsági szabályok** lehetőségre, majd a **Hozzáadás** gombra.
@@ -97,17 +102,6 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni a HTTP-t és RDP-t használ�
     - Leírás: *HTTP engedélyezése*
 4. Kattintson az **OK** gombra.
  
- ![Virtuális hálózat létrehozása](./media/load-balancer-standard-public-portal/8-load-balancer-nsg-rules.png)
-5. Ismételje meg a 2–4. lépéseket egy másik, *myRDPRule* nevű szabály létrehozásához, amely engedélyezi a 3389-es portot használó, bejövő RDP-kapcsolatokat. Ehhez adja meg az alábbi értékeket:
-    - **Forrás**: *Szolgáltatáscímke*.
-    - **Forrás szolgáltatáscímkéje**: *Internet*
-    - **Célporttartomány**: *3389*
-    - **Protokoll**: *TCP*
-    - **Művelet**: *Engedélyezés*
-    - **Prioritás**: *200*
-    - Név: *myRDPRule*
-    - Leírás: *RDP engedélyezése*
-
 ### <a name="install-iis"></a>Az IIS telepítése
 
 1. Kattintson az **Összes erőforrás** elemre a bal oldali menüben, majd az erőforrások listájában kattintson a *myResourceGroupLB* erőforráscsoportban található **myVM1** elemre.
@@ -124,7 +118,7 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni a HTTP-t és RDP-t használ�
 
 ## <a name="create-load-balancer-resources"></a>Terheléselosztó erőforrásainak létrehozása
 
-Ebben a szakaszban a terheléselosztó beállításait fogja konfigurálni egy háttércímkészlet és egy állapotminta számára, illetve terheléselosztási és NAT-szabályokat fog megadni.
+Ebben a szakaszban a terheléselosztó beállításait fogja konfigurálni egy háttércímkészlet és egy állapotminta számára, illetve egy terheléselosztási szabályt fog megadni.
 
 
 ### <a name="create-a-backend-address-pool"></a>Hátércímkészlet létrehozása
@@ -134,13 +128,10 @@ Annak érdekében, hogy a forgalmat el lehessen osztani a virtuális gépek köz
 1. Kattintson az **Összes erőforrás** elemre a bal oldali menüben, majd kattintson a **myLoadBalancer** lehetőségre az erőforráslistában.
 2. A **Beállítások** területen kattintson a **Háttérkészletek** lehetőségre, majd a **Hozzáadás** gombra.
 3. A **Háttérkészlet hozzáadása** oldalon tegye a következőket:
-    - Adja a következő nevet a háttérkészletnek: *myBackEndPool.
-    - A **Társítva ehhez** terület legördülő menüjében kattintson a **Rendelkezésre állási csoport** lehetőségre.
-    - A **Rendelkezésre állási csoport** mezőben válassza ki a **myAvailabilitySet** elemet.
-    - Kattintson a **Célhálózati IP-konfiguráció hozzáadása** elemre az összes létrehozott virtuális gép (*myVM1* & *myVM2*) hozzáadásához a háttérkészlethez.
+   - Adja a következő nevet a háttérkészletnek: *myBackendPool*.
+   - A **Virtuális hálózat** mezőben válassza a *myVNet* lehetőséget.
+   - Adja hozzá a *myVM1* és a *myVM2* virtuális gépeket a megfelelő IP-címekkel a **Virtuális gép** területen, majd kattintson a **Hozzáadás** gombra.
     - Kattintson az **OK** gombra.
-
-    ![Hozzáadás a háttércímkészlethez – ](./media/load-balancer-standard-public-portal/3-load-balancer-backend-02.png)
 
 3. Ellenőrizze, hogy a terheléselosztó háttérkészlet beállítása mindkét virtuális gépet megjeleníti-e (**VM1** és **VM2**).
 

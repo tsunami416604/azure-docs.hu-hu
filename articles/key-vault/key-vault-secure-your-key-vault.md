@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: df577222fb8f9d13bd33c5705e6234362519d351
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576967"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41920554"
 ---
 # <a name="secure-your-key-vault"></a>Kulcstartó védelme
 Az Azure Key Vault egy felhőszolgáltatás, mely a titkosítási kulcsokat és titkos kulcsokat (pl. tanúsítványok, kapcsolati sztringek, jelszavak) védi az Ön felhőalkalmazásainál. Mivel ezek érzékeny és üzleti szempontból kritikus jellegű adatok, fontos, hogy Ön csak jogosult alkalmazások és felhasználók számára engedélyezzen kulcstartó-hozzáférést. Ez a cikk áttekintést ad a kulcstartó-hozzáférési modellről, elmagyarázza, mi a hitelesítés és az engedélyezés, és egy példával szemlélteti, hogyan biztosíthat kulcstartó-hozzáférést felhőalkalmazásai számára.
@@ -87,7 +87,7 @@ Megfelelő RBAC-szerepek kiosztásával meghatározott hatáskörrel rendelkező
 ## <a name="data-plane-access-control"></a>Adatsík-hozzáférés vezérlése
 A kulcstartó adatsíkja olyan műveletekből épül fel, melyek a kulcstartó objektumaira (például kulcsok, titkos kulcsok és tanúsítványok) vannak hatással.  Olyan, kulcsokkal kapcsolatos műveleteket foglal magába, mint a kulcsok létrehozása, importálása, frissítése, listázása, biztonsági mentése és visszaállítása, valamint kriptográfiai műveleteket, mint például a kulcsok aláírása, ellenőrzése, titkosítása, visszafejtése, be- és kicsomagolása, a kulcsok címkéinek és egyéb attribútumainak beállítása. Hasonlóképpen, titkos kulcsok esetén magába foglalja a beolvasást, beállítást, listázást és törlést.
 
-Az adatsík-hozzáférés a kulcstartó hozzáférési házirendjeinek beállításán keresztül biztosítható. Ahhoz, hogy egy felhasználó, csoport vagy alkalmazás hozzáférési házirendet tudjon beállítani egy adott kulcstartóhoz, rendelkeznie kell a kulcstartó felügyeleti síkjának közreműködői engedélyeivel (RBAC). A felhasználók, csoportok és alkalmazások számára hozzáférés engedélyezhető egy adott kulcstartó kulcsaihoz vagy titkos kulcsaihoz kapcsolódó, meghatározott műveletek elvégzéséhez. Akár 16 hozzáférésiházirend-bejegyzés támogatása kulcstartók esetében. Azure Active Directory biztonsági csoport létrehozásával és felhasználók felvételével a csoportba több felhasználó számára biztosíthat adatsíkszintű kulcstartó-hozzáférést.
+Az adatsík-hozzáférés a kulcstartó hozzáférési házirendjeinek beállításán keresztül biztosítható. Ahhoz, hogy egy felhasználó, csoport vagy alkalmazás hozzáférési házirendet tudjon beállítani egy adott kulcstartóhoz, rendelkeznie kell a kulcstartó felügyeleti síkjának közreműködői engedélyeivel (RBAC). A felhasználók, csoportok és alkalmazások számára hozzáférés engedélyezhető egy adott kulcstartó kulcsaihoz vagy titkos kulcsaihoz kapcsolódó, meghatározott műveletek elvégzéséhez. Akár 1024 hozzáférésiszabályzat-bejegyzés támogatása kulcstartók esetében. Azure Active Directory biztonsági csoport létrehozásával és felhasználók felvételével a csoportba több felhasználó számára biztosíthat adatsíkszintű kulcstartó-hozzáférést.
 
 ### <a name="key-vault-access-policies"></a>Kulcstartó-hozzáférési házirendek
 A kulcstartó-hozzáférési házirendekkel külön-külön engedélyezheti a kulcsok, titkos kulcsok és tanúsítványok elérését. Egy adott felhasználó számára hozzáférést engedélyezhet például kizárólag a kulcsokhoz, de a titkos kulcsokhoz nem. A kulcsok, titkos kulcsok és tanúsítványok hozzáférése ugyanakkor tárolószinten engedélyezett. Másként megfogalmazva, a kulcstartó-hozzáférési házirend nem támogatja az objektumszintű engedélyeket. Kulcstartó-hozzáférési házirendeket az [Azure portal](https://portal.azure.com/), az [Azure parancssorifelület-eszközök](../cli-install-nodejs.md), a [PowerShell](/powershell/azureps-cmdlets-docs) vagy a [Kulcstartókezelési REST API-k](https://msdn.microsoft.com/library/azure/mt620024.aspx) használatával állíthat be.
