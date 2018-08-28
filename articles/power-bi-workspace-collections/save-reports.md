@@ -1,57 +1,51 @@
 ---
-title: A Power BI munkaterület gyűjtemények jelentések menthetők |} Microsoft Docs
-description: Tudnivalók a Power BI munkaterület gyűjtemények belül jelentések menthetők. Ehhez szükséges, hogy megfelelő engedélyekkel ahhoz, hogy sikeresen működjön.
+title: Jelentések mentése a Power BI-Munkaterületcsoportok |} A Microsoft Docs
+description: Megtudhatja, hogyan menteni a Power BI-Munkaterületcsoportok jelentéseihez. Ehhez a megfelelő engedélyekkel ahhoz, hogy sikeresen működik.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: c5512584531c9f5c8a13e9a50161eb6b5a1f8a7b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 277667bb3b4e39acbb935285e984660a3b44993d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411216"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047956"
 ---
-# <a name="save-reports-in-power-bi-workspace-collections"></a>Mentse a jelentéseket a Power BI munkaterület gyűjtemények
+# <a name="save-reports-in-power-bi-workspace-collections"></a>Jelentések mentése a Power BI munkaterületi gyűjteményekkel
 
-Tudnivalók a Power BI munkaterület gyűjtemények belül jelentések menthetők. Jelentés mentése sikeres működéshez megfelelő engedély szükséges.
+Megtudhatja, hogyan menteni a Power BI-Munkaterületcsoportok jelentéseihez. Jelentések mentése van szükség a megfelelő engedélyekkel ahhoz, hogy sikeresen működik.
 
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-A Power BI munkaterület gyűjtemények belül szerkesztheti a meglévő jelentéseket, és mentheti azokat. Is új jelentés létrehozása és mentése új jelentésként kattintva létrehozhat egyet.
+Belül a Power BI-Munkaterületcsoportok szerkesztheti a meglévő jelentések, és menti azokat. Is új jelentés létrehozása és mentése új jelentésként hozhat létre egyet.
 
-Ahhoz, hogy a jelentés mentése, először kell a megfelelő hatókörként az adott jelentés jogkivonat létrehozásához:
+Ahhoz, hogy a jelentést, először az adott jelentéshez token létrehozása a megfelelő hatókörökkel:
 
-* Engedélyezi a Mentés Report.ReadWrite hatókörben szükség
-* Ha engedélyezi a Mentés másként, Report.Read és Workspace.Report.Copy hatókörben szükség
-* Ha engedélyezi a Mentés másként, Report.ReadWrite és Workspace.Report.Copy szükség
+* Ahhoz, hogy mentse Report.ReadWrite hatókörét kötelező megadni.
+* Engedélyezi a Mentés másként, Report.Read és Workspace.Report.Copy hatókörök szükségesek
+* Mentés másként engedélyezéséhez Report.ReadWrite és Workspace.Report.Copy szükség
 
-Illetve ahhoz, hogy a jobb oldali gombok fájl menü meg kell adnia a beágyazási konfigurációjában a megfelelő engedélye a jelentés beágyazása a save/mentés:
+Jelölik, és engedélyezze a jobb save/save gombként meg kell adnia a beágyazás konfigurációjában a megfelelő engedéllyel a jelentés beágyazása a Fájl menüben:
 
 * modellek. Permissions.ReadWrite
 * modellek. Permissions.Copy
 * modellek. Permissions.All
 
 > [!NOTE]
-> A hozzáférési token is kell a megfelelő hatókörök. További információkért lásd: [hatókörök](app-token-flow.md#scopes).
+> A hozzáférési jogkivonatot kell a megfelelő hatókörök is. További információkért lásd: [hatókörök](app-token-flow.md#scopes).
 
 ## <a name="embed-report-in-edit-mode"></a>Jelentés beágyazása a szerkesztési módban
 
-Tegyük fel, jelentés beágyazása szerkesztési módban az alkalmazásban, csak adja át a megfelelő tulajdonságok beágyazási konfigurációban, és hívja meg powerbi.embed() belül kívánja. Adja meg engedélyeket és a viewMode érdekében tekintse meg a Mentés és a Mentés másként gombok szerkesztési módban. További információkért lásd: [konfigurációs részletek beágyazása](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Tegyük fel, szeretne jelentést beágyazni az alkalmazásban, csak adja át a megfelelő tulajdonságok beágyazási konfiguráció, és hívja powerbi.embed() szerkesztési módban. Adja meg az engedélyeket és a egy viewMode annak érdekében, hogy tekintse meg a mentési és a Mentés másként gombok szerkesztési módban. További információkért lásd: [beágyazási konfiguráció részletei](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
-Például a JavaScript:
+Ha például a JavaScript:
 
 ```
    <div id="reportContainer"></div>
@@ -83,11 +77,11 @@ Például a JavaScript:
     var report = powerbi.embed(reportContainer, config);
 ```
 
-Most egy jelentést az alkalmazás szerkesztési módban van beágyazva.
+Mostantól egy jelentés beágyazott szerkesztési módban az alkalmazásban.
 
 ## <a name="save-report"></a>Jelentés mentése
 
-A jelentés beágyazása szerkesztési módban a jobb oldali token és engedélyeket, miután mentheti a jelentést a Fájl menüből, vagy JavaScript:
+Szerkesztési mód a megfelelő jogkivonattal és engedélyekkel a jelentés beágyazása, miután a Fájl menüből vagy a JavaScript-alapú mentheti a jelentést:
 
 ```
  // Get a reference to the embedded report.
@@ -112,9 +106,9 @@ A jelentés beágyazása szerkesztési módban a jobb oldali token és engedély
 ```
 
 > [!IMPORTANT]
-> Csak azután *Mentés másként* egy új jelentés létrehozása. A mentés után a vászon továbbra is azt a régi jelentés szerkesztési módban, és nem az új jelentést. A létrehozott új jelentés beágyazása. Az új jelentés beágyazása van szükség egy új hozzáférési jogkivonat jelentésenként hozza létre őket.
+> Csak azután *Mentés másként* egy új jelentés létrehozása. A mentés után a vászon van továbbra is látható a régi jelentést a szerkesztési mód és az új jelentést. A létrehozott új jelentést beágyazni. Új hozzáférési jogkivonatot az új jelentés beágyazásához szükséges, jelentésenként létrehozott.
 
-Majd szüksége lesz a betöltése után az új jelentést a *Mentés másként*. Az új jelentés betöltése hasonlít bármely jelentés beágyazása.
+Kell betölteni az új jelentés után egy *Mentés másként*. Az új jelentés betöltése hasonlít bármilyen jelentés beágyazásához.
 
 ```
 <div id="reportContainer"></div>

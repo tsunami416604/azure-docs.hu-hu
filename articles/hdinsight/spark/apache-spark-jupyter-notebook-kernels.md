@@ -4,18 +4,18 @@ description: További információ a PySpark PySpark3 és Spark kernelek Jupyter
 keywords: a spark, jupyter spark a jupyter notebook
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jasonh
-ms.openlocfilehash: 76ad70c35fc790d06b12812151346fef485e48e6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 589c02a78c78f415fe59d911f9f6339bfa3fb293
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619501"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051543"
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>-Kernelek Jupyter notebook az Azure HDInsight Spark-fürtökön 
 

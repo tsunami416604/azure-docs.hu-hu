@@ -3,18 +3,18 @@ title: HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 description: Ismerje meg, hogyan lehet HBase-replikálás beállítása egy HDInsight-verzióról a másikra a terheléselosztást, magas rendelkezésre állású, üzemszünet nélküli áttelepítés és a frissítések és vész-helyreállítási.
 services: hdinsight,virtual-network
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: jasonh
-ms.openlocfilehash: 535b5dcc62020119cda3db36bfdbd707badfe549
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 624165f5ee1140ade9b9ce03c5249d297c8d83f1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600305"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047483"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 

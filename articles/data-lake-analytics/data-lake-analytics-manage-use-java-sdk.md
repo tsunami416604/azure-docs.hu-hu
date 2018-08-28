@@ -1,38 +1,37 @@
 ---
-title: Azure Data Lake Analytics Azure Java SDK használatával kezelése
-description: Ez a cikk ismerteti az Azure Java SDK használata Data Lake Analytics-feladatok, a adatforrások és a felhasználók felügyelt alkalmazások írásához.
+title: Azure Java SDK-t Azure Data Lake Analytics kezelése
+description: Ez a cikk ismerteti, hogyan írhat alkalmazásokat, amelyeket a Data Lake Analytics-feladatok, a adatforrások és a felhasználók kezelése az Azure Java SDK használatával.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 4cf8390f55beeb65c1bd99594e885ed9db551d9e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 938b3776f320b7556394fff9aa070eee0c44ee88
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624233"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047086"
 ---
-# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics segítségével a Java-alkalmazások kezelése
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics segítségével egy Java-alkalmazás kezelése
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Ez a cikk ismerteti az Azure Data Lake Analytics fiókok, adatforrások, felhasználók és az Azure Java SDK használatával írt alkalmazások használó feladatok kezelése. 
+Ez a cikk ismerteti, hogyan kezelheti az Azure Data Lake Analytics fiókok, adatforrások, felhasználók és feladatok az Azure Java SDK használatával írt alkalmazás használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Java fejlesztői készlet (JDK) 8** (a Java 1.8-as verzióját).
-* **Az IntelliJ** vagy egy másik megfelelő Java fejlesztőkörnyezet. Ebben a dokumentumban utasítások az intellij-t használják.
-* Hozzon létre egy Azure Active Directory- (AAD-) alkalmazást, és kérje le az **ügyfél-azonosítóját**, a **bérlőazonosítóját** és a **kulcsát**. További információ az AAD-alkalmazásokról és útmutató az ügyfél-azonosító lekéréséhez: [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) (Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával). A Reply URI és kulcs érhető el a portálról a létrehozott alkalmazás és a kulcs jön létre.
+* **Java fejlesztői készlet (JDK) 8** (Java 1.8-as verzió használatával).
+* **Intellij-vel** vagy egy másik megfelelő Java fejlesztőkörnyezet. Ez a dokumentum utasításait az intellij-t használják.
+* Hozzon létre egy Azure Active Directory- (AAD-) alkalmazást, és kérje le az **ügyfél-azonosítóját**, a **bérlőazonosítóját** és a **kulcsát**. További információ az AAD-alkalmazásokról és útmutató az ügyfél-azonosító lekéréséhez: [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) (Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával). A válasz URI és kulcs érhető el a portálról az alkalmazás és a létrehozott kulcs után.
 
-## <a name="authenticating-using-azure-active-directory"></a>Hitelesítés az Azure Active Directoryval
+## <a name="authenticating-using-azure-active-directory"></a>Hitelesítés az Azure Active Directory használatával
 
-A következő kódrészletben biztosít kódot a kód **nem interaktív** hitelesítési, ahol az alkalmazás maga biztosítja saját hitelesítő adatait.
+A következő kódrészlet biztosít kódot kód **nem interaktív** hitelesítést, ahol az alkalmazás maga biztosítja saját hitelesítő adatait.
 
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
-1. Nyissa meg az intellij-t, és hozzon létre egy Java projektet a a **parancssori alkalmazás** sablont.
+1. Nyissa meg az intellij-vel, és hozzon létre egy Java projektet a **parancssori alkalmazás** sablont.
 2. Kattintson a jobb gombbal a képernyő bal oldalán található projektre, majd kattintson az **Add Framework Support** (Keretrendszer-támogatás felvétele) elemre. Válassza a **Maven** lehetőséget, majd kattintson az **OK** gombra.
 3. Nyissa meg az újonnan létrehozott **„pom.xml”** fájlt, majd illessze be a következő szövegrészletet a **\</version>** és a **\</project>** címkék közé:
 
@@ -87,9 +86,9 @@ A következő kódrészletben biztosít kódot a kód **nem interaktív** hitele
 </dependencies>
 ```
 
-Nyissa meg a **fájl > Beállítások > Build > végrehajtási > telepítési**. Válassza ki **buildet > Maven > importálása**. Ezután ellenőrizze **Import Maven projektek automatikusan**.
+Lépjen a **fájl > Beállítások > hozhat létre > végrehajtási > üzembe helyezési**. Válassza ki **eszközöket > Maven > Importálás**. Ezután ellenőrizze **Import Maven-projektek automatikus**.
 
-Nyissa meg `Main.java` és a meglévő kódblokkot cserélje le a következő kódrészletet:
+Nyissa meg `Main.java` , és cserélje le a meglévő kódblokkot az alábbi kódrészlet:
 
 ```
 package com.company;
@@ -199,7 +198,7 @@ string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extrac
 }
 ```
 
-Adja meg a paraméterek a kódrészletet:
+Adja meg a kódrészletben paraméterek:
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`
@@ -211,7 +210,7 @@ A helyőrzőket cserélje le:
 * `TENANT-ID`
 * `SUBSCRIPTION-ID`
 
-## <a name="helper-functions"></a>Segédfüggvények találhatók
+## <a name="helper-functions"></a>Segédfüggvények
 
 ### <a name="setup-clients"></a>A telepítő ügyfelek
 
@@ -229,7 +228,7 @@ public static void SetupClients(ServiceClientCredentials creds)
 ```
 
 
-### <a name="wait-for-input"></a>Várjon, amíg a bevitelhez
+### <a name="wait-for-input"></a>Várjon, amíg a bemenet
 
 ```
 public static void WaitForNewline(String reason, String nextAction)

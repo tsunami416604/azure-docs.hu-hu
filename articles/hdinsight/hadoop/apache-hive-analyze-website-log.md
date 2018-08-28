@@ -3,18 +3,18 @@ title: Webhelynapló elemzése – Azure HDInsight a Hadoop Hive használata
 description: Ismerje meg, hogyan használható a Hive a HDInsight a webhelyek naplóinak elemzése. Naplófájl használata egy HDInsight-táblához bemenetként fog, és az adatok lekérdezése a HiveQL használatával.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: a40aef8d0231fcfc0ae0f399440b1fb98367dd2d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 47175ed4bc01a43d1f21cbfc84b8a788f11b7338
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595715"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048024"
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>A Hive használata a HDInsight Windows-alapú webhelyek naplóinak elemzése
 Útmutató a HDInsight HiveQL használva webhelyek naplóinak elemzése. A webhelynapló elemzése használható hasonló tevékenységek alapján közönségét szegmentálhatja, kategorizálhatja a webhely látogatói demográfiai által, és tudja meg a tartalmat, megtekintése, a websites származnak, és így tovább.

@@ -3,18 +3,18 @@ title: A HDInsight - Azure Hadoop-keretrendszerrel repülőjáratok késési ada
 description: Ismerje meg, hogyan hozzon létre egy HDInsight-fürtöt, egy Hive-feladat futtatása, a Sqoop-feladat futtatása és a fürt törlése egy Windows PowerShell-parancsfájl használatával.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7d1ab85f3efeaa17abbe1cc93157e63bbca1a0b9
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 1d39fd1cf40834781375b2c7bd6cb801ccd3cb97
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592254"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091898"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Repülőjáratok késési adatainak elemzése a Hive a HDInsight használatával
 Hive futó Hadoop MapReduce feladatok egy SQL-szerű nevű programozási nyelv révén módszert biztosít az  *[HiveQL][hadoop-hiveql]*, amelyek alkalmazhatók azokra az összesítés, kérdez le, és nagy mennyiségű adat elemzésére.

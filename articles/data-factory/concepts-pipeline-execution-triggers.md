@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 0af6ea05b663f0954785ce966440e3f698ad14a8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
-ms.translationtype: HT
+ms.openlocfilehash: 4ac0f27480bbddf28b83af05e4b7b89ca6766871
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867086"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093778"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -276,7 +276,7 @@ Az alábbi táblázat nagy vonalakban áttekintést nyújt az eseményindítóva
 
 ### <a name="schema-defaults-limits-and-examples"></a>Séma alapértékei, korlátai és példái
 
-| JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
+| JSON-tulajdonság | Típus | Szükséges | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | sztring | Igen | None | ISO 8601 dátum-idő értékek | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | objektum | Igen | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |

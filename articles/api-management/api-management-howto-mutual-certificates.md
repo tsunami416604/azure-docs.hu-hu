@@ -1,9 +1,9 @@
 ---
-title: Háttér-szolgáltatásaihoz ügyfél használatával biztonságos tanúsítványhitelesítés - Azure API Management |} Microsoft Docs
-description: Megtudhatja, mennyire biztonságos a háttér-szolgáltatásaihoz ügyféltanúsítvány-alapú hitelesítés használata az Azure API Management.
+title: Ügyfél háttérszolgáltatások biztonságossá Tanúsítványalapú hitelesítés – az Azure API Management |} A Microsoft Docs
+description: Ügyféltanúsítvány-alapú hitelesítés használata az Azure API Management háttérszolgáltatások biztonságossá tételének ismertetése.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,75 +13,75 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 844a7ea1c2dd8f7dbb4984fc148575529ac154db
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 2b0db6f9a1e9cd660ce1b1e7af3e7e1c85815c16
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292857"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045248"
 ---
-# <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Az Azure API Management tanúsítványhitelesítés biztonságossá tétele a háttér-szolgáltatásaihoz ügyfél használatával
+# <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Hogyan teheti biztonságossá a háttérszolgáltatások ügyfél Tanúsítványalapú hitelesítés az Azure API Management
 
-API-kezelés lehetővé teszi az API-k a háttérszolgáltatáshoz való hozzáférés az ügyféltanúsítványok. Ez az útmutató bemutatja, hogyan kezelheti az Azure-portálon az Azure API Management szolgáltatáspéldány tanúsítványokat. Azt is bemutatja egy API-t egy háttér-szolgáltatás eléréséhez használható tanúsítvány konfigurálása.
+Az API Management lehetővé teszi, hogy a biztonságos hozzáférés az API-háttérszolgáltatás ügyféltanúsítványok használatát. Ez az útmutató bemutatja, hogyan kezelheti a tanúsítványokat az Azure API Management szolgáltatáspéldányt, az Azure Portalon. Emellett ismerteti, hogyan konfigurálhatja az API-t használja egy tanúsítványt egy háttér-szolgáltatás eléréséhez.
 
-Tanúsítványok, az API Management REST API használatával történő kezelésével kapcsolatos információkért lásd: <a href="https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API tanúsítvány entitás</a>.
+Az API Management REST API használatával tanúsítványok kezelésével kapcsolatos információkért lásd: <a href="https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API-tanúsítvány entitás</a>.
 
 ## <a name="prerequisites"> </a>Előfeltételek
 
-Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgáltatáspéldány ügyféltanúsítvány-alapú hitelesítés használatát a háttér-szolgáltatás számára az API-k eléréséhez. Ebben a cikkben szereplő lépések végrehajtása előtt rendelkeznie kell a háttér-szolgáltatás ügyféltanúsítvány-alapú hitelesítés beállítása ([konfigurálása az Azure Websitesra tanúsítványhitelesítés tekintse meg a cikk] [ to configure certificate authentication in Azure WebSites refer to this article]). Feltölti az API Management szolgáltatás van szüksége a tanúsítvány és a jelszó a hozzáférést.
+Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgáltatáspéldányhoz ügyféltanúsítvány-alapú hitelesítés használatát a háttér-szolgáltatás API-k eléréséhez. Ebben a cikkben található lépések elvégzése előtt rendelkeznie kell az ügyféltanúsítvány-alapú hitelesítés konfigurált háttérszolgáltatás ([konfigurálása az Azure-webhelyeken tanúsítványhitelesítés tekintse meg ebben a cikkben] [ to configure certificate authentication in Azure WebSites refer to this article]). Feltölteni az API Management szolgáltatás a hozzáférést a tanúsítvány és a jelszó szükséges.
 
-## <a name="step1"> </a>Egy ügyfél-tanúsítvány feltöltése
+## <a name="step1"> </a>Ügyfél-tanúsítvány feltöltése
 
-![Ügyféltanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert.png)
+![Ügyfél-tanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert.png)
 
-Kövesse az alábbi lépéseket egy új ügyfél-tanúsítvány feltöltése. Ha az API Management szolgáltatáspéldány még nem létrehozott, tekintse meg az [hozzon létre egy API-kezelés szolgáltatás példányt][Create an API Management service instance].
+Kövesse az alábbi lépéseket egy új ügyfél-tanúsítvány feltöltéséhez. Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg az oktatóanyag [az API Management szolgáltatáspéldány létrehozása][Create an API Management service instance].
 
-1. Nyissa meg az Azure API Management szolgáltatáspéldány, az Azure portálon.
+1. Keresse meg az Azure API Management szolgáltatáspéldányt, az Azure Portalon.
 2. Válassza ki **ügyféltanúsítványok** a menüből.
 3. Kattintson a **+ Hozzáadás** gombra.  
-    ![Ügyféltanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
-4. Tallózással keresse meg a tanúsítványt, adja meg az Azonosítót és jelszót.  
+    ![Ügyfél-tanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
+4. Keresse meg a tanúsítványt, adja meg az Azonosítót és jelszót.  
 5. Kattintson a **Create** (Létrehozás) gombra.
 
 > [!NOTE]
-> A tanúsítványnak kell lennie a **.pfx** formátumban. Önaláírt tanúsítványok használata engedélyezett.
+> A tanúsítványnak kell lennie a **.pfx** formátumban. Önaláírt tanúsítvány adható meg.
 
-A tanúsítvány a feltöltést követően a mutatja a **ügyféltanúsítványok**.  Ha sok tanúsítvány, jegyezze fel annak érdekében, hogy a kívánt tanúsítvány ujjlenyomatának [átjáró hitelesítéshez használandó ügyféltanúsítványt API konfigurálása][Configure an API to use a client certificate for gateway authentication].
+Miután feltöltötte a tanúsítványt, a mutatja a **ügyféltanúsítványok**.  Ha sok tanúsítvány, jegyezze fel annak érdekében, hogy a kívánt tanúsítvány ujjlenyomatát [átjáró hitelesítéshez használandó ügyféltanúsítványt API konfigurálása][Configure an API to use a client certificate for gateway authentication].
 
 > [!NOTE]
-> Kapcsolja ki a tanúsítványlánc érvényesítése használata esetén például egy önaláírt tanúsítványt, kövesse a lépéseket, ez a GYIK ismertetett [elem](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end).
+> Ki szeretné kapcsolni a tanúsítványláncok érvényesítése használatakor, például egy önaláírt tanúsítványt, ez a GYIK a ismertetett lépéseket követve [elem](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end).
 
-## <a name="step1a"> </a>Egy ügyfél-tanúsítvány törlése
+## <a name="step1a"> </a>Ügyfél-tanúsítvány törlése
 
-Törli a tanúsítványt, kattintson a helyi menü **...**  válassza **törlése** mellett a tanúsítványt.
+A tanúsítvány törléséhez kattintson a helyi menü **...**  válassza **törlése** mellett a tanúsítványt.
 
-![Ügyféltanúsítványok törlése](media/api-management-howto-mutual-certificates/apim-client-cert-delete.png)
+![Ügyfél-tanúsítványok törlése](media/api-management-howto-mutual-certificates/apim-client-cert-delete.png)
 
-Ha a tanúsítvány egy API-t használja, majd egy figyelmeztetés képernyő jelenik meg. Törli a tanúsítványt, el kell távolítani a tanúsítványt bármely olyan API-, a használatára konfigurált.
+Ha a tanúsítvány egy API-t használja, akkor a figyelmeztetési képernyő jelenik meg. A tanúsítvány törléséhez először távolítsa el a tanúsítványt bármely API-kon keresztül a használatára konfigurált.
 
 ![Ügyfél-tanúsítványok hiba törlése](media/api-management-howto-mutual-certificates/apim-client-cert-delete-failure.png)
 
-## <a name="step2"> </a>Átjáró hitelesítéshez használandó ügyféltanúsítványt API konfigurálása
+## <a name="step2"> </a>Átjáró-hitelesítéshez használandó ügyféltanúsítványt API konfigurálása
 
-1. Kattintson a **API-k** a a **API Management** a bal oldali menüben, és keresse meg az API-t.  
-    ![Engedélyezze az ügyféltanúsítványok](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
+1. Kattintson a **API-k** származó a **az API Management** a bal oldali menüben, és keresse meg az API-t.  
+    ![Engedélyezze az ügyféltanúsítványok használatát](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. Az a **tervezési** fülre, kattintson a ceruza ikonra a a **háttér** szakasz. 
-3. Módosítsa a **átjáró hitelesítő adatok** való **ügyféltanúsítványt** és a legördülő listából válassza ki a tanúsítványt.  
-    ![Engedélyezze az ügyféltanúsítványok](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
+2. Az a **tervezési** fülre, kattintson a ceruza ikonra, az a **háttérrendszer** szakaszban. 
+3. Módosítsa a **átjáró hitelesítő adatok** való **ügyféltanúsítvány** és a legördülő listából válassza ki a tanúsítványt.  
+    ![Engedélyezze az ügyféltanúsítványok használatát](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
 4. Kattintson a **Save** (Mentés) gombra. 
 
 > [!WARNING]
-> Ez a változás a következő időponttól érvényes azonnal, és az adott API műveletek hívások a tanúsítványt használni kívánt telefonszámot a háttér-kiszolgálón.
+> Ez a változás azonnal érvényben, és a műveletek az API-hívások a tanúsítvány hitelesítéséhez használandó a háttér-kiszolgálón.
 
 
 > [!TIP]
-> Egy tanúsítványt egy API-t az átjáró a háttér-szolgáltatás hitelesítéséhez megadása esetén a szabályzat részévé válik, hogy az API-hoz, és tekintheti meg a Helyicsoportházirend-szerkesztő.
+> Átjáró-hitelesítési a háttér-szolgáltatás API-tanúsítvány megadása esetén a szabályzat részévé válik, hogy API-hoz, és a házirendszerkesztőben lehet megtekinteni.
 
 ## <a name="self-signed-certificates"></a>Önaláírt tanúsítványok
 
-Ha önaláírt tanúsítványokat használ, akkor ahhoz, hogy az API Management kommunikálni a háttérrendszer tanúsítványlánc érvényesítésének letiltása. Ellenkező esetben egy 500 hibakódot ad vissza. Ennek beállításához használhatja a [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (az új háttér) vagy [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (a meglévő háttér) PowerShell-parancsmagok és állítsa be a `-SkipCertificateChainValidation` paramétert `True`.
+Ha önaláírt tanúsítványokat használ, szüksége lesz ahhoz, hogy a háttérrendszer kommunikálni az API Management tanúsítványlánc érvényesítésének letiltása. Ellenkező esetben egy 500 hibakódot ad vissza. Ennek konfigurálásához használhatja a [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (az új háttér-) vagy [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (a meglévő háttér) PowerShell-parancsmagok és állítsa be a `-SkipCertificateChainValidation` paramétert `True`.
 
 ```
 $context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

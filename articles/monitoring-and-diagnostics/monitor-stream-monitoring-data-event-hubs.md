@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/31/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 2990ba290dfdaf45d8a341138ea515bad16d5b30
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e4bbf86c6cb7e827672fe279e86c8d3fd76e8e8b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628171"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049124"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -48,26 +48,26 @@ Mielőtt elkezdené, kell [hozzon létre egy Event Hubs-névtér és az esemény
 
 Emellett tekintse át a [Azure Event Hubs – gyakori kérdések](../event-hubs/event-hubs-faq.md).
 
-## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatok be az Azure-bérlő figyelési adatokat egy eseményközpontba is streamelhetők?
+## <a name="azure-tenant-monitoring-data"></a>Figyelési adatok az Azure-bérlő
 
 Az Azure-bérlő monitorozási adatok jelenleg csak az Azure Active Directory érhető el. Származó adatokat is használhatja [jelentéskészítés az Azure Active Directory](../active-directory/reports-monitoring/overview-reports.md), amely bejelentkezési tevékenység és a naplózási beállításainak egy adott bérlőn belül végrehajtott módosítások előzményeit tartalmazza.
 
-### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Az Azure Active Directory-adatok Stream egy eseményközpontba
+### <a name="azure-active-directory-data"></a>Az Azure Active Directory-adatok
 
 Az Azure Active Directory-naplóból származó adatokat küldeni az Event Hubs-névtér, beállíthatja egy bérlő diagnosztikai beállítás az AAD-bérlőre. [Ezt az útmutatót](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md) állíthatja be a bérlő diagnosztikai beállítást.
 
-## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatok be Azure-előfizetés monitorozási adatai is streamelhetők az eseményközpontok felé?
+## <a name="azure-subscription-monitoring-data"></a>Azure-előfizetés monitorozási adatai
 
 Azure-előfizetés monitorozási adatok érhető el a [Azure tevékenységnapló](./monitoring-overview-activity-logs.md). Ez tartalmazza a létrehozása, frissítése és törlési műveletek a Resource Manager, a változások [az Azure service health](../service-health/service-health-overview.md) , amely befolyásolhatja az erőforrást az előfizetésében, a [a resource health](../service-health/resource-health-overview.md) állapota átmenetekkel és számos egyéb típusú előfizetés-szintű eseményeit. [Ez a cikk részletesen jelennek meg az Azure-tevékenységnapló eseményeket az összes kategória](./monitoring-activity-log-schema.md).
 
-### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>Stream Azure tevékenységnapló adatainak eseményközpontba
+### <a name="activity-log-data"></a>Tevékenységnapló adatainak
 
 Az Azure-tevékenységnapló adatok küldése az Event Hubs-névtér, beállíthatja a Naplóprofil az előfizetésén. [Ezt az útmutatót](./monitoring-stream-activity-logs-event-hubs.md) állíthat be egy Naplóprofil-előfizetésében. Ezt követően előfizetésenként figyelni szeretné.
 
 > [!TIP]
 > Egy Naplóprofil jelenleg csak lehetővé teszi, hogy válassza ki az Event Hubs-névtér, amelyben egy eseményközpont a neve "insights-operational-logs." jön létre Ez még nem adható meg a saját eseményközpontnév Log-profilban.
 
-## <a name="how-do-i-set-up-azure-resource-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatok be Azure-erőforrás monitorozási adatai is streamelhetők az eseményközpontok felé?
+## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Azure-erőforrás-metrikák és diagnosztikai naplók
 
 Azure-erőforrás szolgáltat két típusú monitorozási adatait:
 1. [Erőforrás-diagnosztikai naplók](./monitoring-overview-of-diagnostic-logs.md)
@@ -78,25 +78,25 @@ Mindkét típusú adatokat egy eseményközpontba egy erőforrás diagnosztikai 
 > [!TIP]
 > Az Azure Policy segítségével győződjön meg arról, hogy egy adott hatókörön belül minden erőforrás mindig be van állítva a diagnosztikai beállítást [a DeployIfNotExists hatást a szabályzatbeli szabályban használatával](../azure-policy/policy-definition.md#policy-rule). Ma DeployIfNotExists csak támogatott beépített szabályzatokat.
 
-## <a name="how-do-i-set-up-guest-os-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatok be vendég operációs rendszer figyelési adatokat egy eseményközpontba is streamelhetők?
+## <a name="guest-os-data"></a>A vendég operációs rendszer adatait
 
 Vendég operációs rendszer monitorozási adatok küldése eseményközpontba ügynököt telepíteni kell. Windows vagy Linux esetén adja meg az event hubs, valamint az event hubs, amelyhez az adatokat a konfigurációs fájlban kell küldeni, és adja át a konfigurációs fájlt az ügynököt a virtuális gépen futó küldendő kívánt adatokat.
 
-### <a name="stream-linux-data-to-an-event-hub"></a>Stream Linux adatokat egy eseményközpontba
+### <a name="linux-data"></a>Linux-adatok
 
 A [Linux Azure diagnosztikai ügynök](../virtual-machines/extensions/diagnostics-linux.md) küldéséhez használható monitorozási adatai egy Linux-gép az eseményközpontba. Ehhez adja hozzá az event hubs a LAD a fogadóként JSON védett fájl beállításait. [Ebben a cikkben további információt az event hub fogadó ad hozzá a Linux Azure diagnosztikai ügynök](../virtual-machines/extensions/diagnostics-linux.md#protected-settings).
 
 > [!NOTE]
 > Nem tudja beállítani streamelési vendég operációs rendszer monitorozási adatok a portálon egy eseményközpontba. Ehelyett manuálisan kell szerkeszteni a konfigurációs fájlban.
 
-### <a name="stream-windows-data-to-an-event-hub"></a>Stream Windows adatokat egy eseményközpontba
+### <a name="windows-data"></a>Windows-adatok
 
 A [Windows Azure diagnosztikai ügynök](./azure-diagnostics.md) küldéséhez használható monitorozási adatok egy Windows-gépről egy eseményközpontba. Ehhez adja hozzá az event hubs a WAD-konfigurációs fájl a privateConfig szakaszában fogadóként. [Ebben a cikkben további információt az event hub fogadó ad hozzá a Windows Azure diagnosztikai ügynök](./azure-diagnostics-streaming-event-hubs.md).
 
 > [!NOTE]
 > Nem tudja beállítani streamelési vendég operációs rendszer monitorozási adatok a portálon egy eseményközpontba. Ehelyett manuálisan kell szerkeszteni a konfigurációs fájlban.
 
-## <a name="how-do-i-set-up-application-monitoring-data-to-be-streamed-to-event-hub"></a>Hogyan alkalmazás figyelési adatok is streamelhetők eseményközpontba beállítása?
+## <a name="application-monitoring-data"></a>Alkalmazás figyelési adatok
 
 Alkalmazásfigyelési adatokat igényel, hogy a kód kialakítva az SDK-t, ezért nincs útválasztási alkalmazásfigyelési adatokat egy eseményközpontba, az Azure-beli általános célú megoldást. Azonban [Azure Application Insights](../application-insights/app-insights-overview.md) egy olyan szolgáltatás, amely használható az Azure alkalmazásszintű adatok gyűjtésére. Ha az Application Insights használatával figyelési adatokat egy eseményközpontba streamelheti az alábbiak szerint:
 

@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 45a2747a60df4d91c2fe1c5247e1d4ac82ff819f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2a5c192f231bdc75d04c78cd94838a3f341dc925
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617149"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43111058"
 ---
 # <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások szerepkörök aktiválása a Privileged Identity Management használatával
 Privileged Identity Management (PIM) az Azure-erőforrások szerepkörök aktiválása az új felhasználói élményt vezet be. Jogosult szerepkör tagjai egy jövőbeli dátumot és időpontot az aktiválási ütemezheti. Ezek is kiválaszthatja, hogy egy adott aktiválási időtartamát, a maximális (a rendszergazdák által konfigurált) belül. További információkért lásd: [aktiválása vagy inaktiválása az Azure AD Privileged Identity Management szerepkörök](pim-how-to-activate-role.md).
 
-## <a name="activate-roles"></a>Szerepkörök aktiválása
+## <a name="activate-a-role"></a>A szerepkör aktiválása
 Keresse meg a **saját szerepkörök** szakaszban a bal oldali panelen. Válassza ki **aktiválás** az aktiválni kívánt szerepkör esetében.
 
 !["Jogosult szerepkörök" lapon a "Saját szerepkör" panelen.](media/azure-pim-resource-rbac/rbac-roles.png)
@@ -39,6 +39,19 @@ Az aktiválás egy jövőbeli dátum és idő van ütemezve, akkor a függőben 
 
 ![Függőben lévő kérelmek "Mégse" gombot listáját](media/azure-pim-resource-rbac/rbac-activate-pending.png)
 
+## <a name="use-a-role-immediately-after-activation"></a>Olyan szerepkört használjon az aktiválás után azonnal
+
+Gyorsítótárazás miatt aktiválások nem történik meg azonnal a frissítés nélkül az Azure Portalon. Ha az késleltetések lehetőségét csökkentheti a szerepkör aktiválása után van szüksége, használhatja a **alkalmazás-hozzáférés** lapot a portálon. Ezen a lapon elérhető alkalmazások azonnal ellenőrizze az új szerepkör-hozzárendeléseket.
+
+1. Nyissa meg az Azure AD Privileged Identity Management.
+
+1. Kattintson a **alkalmazás-hozzáférés** lapot.
+
+    ![A PIM-alkalmazás-hozzáférés – képernyőkép](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+
+1. Kattintson a **Azure-erőforrások** , nyissa meg újra a portálon a a **összes erőforrás** lapot.
+
+    Ha erre a hivatkozásra kattint, frissítésének kényszerítése, és a egy új Azure-erőforrás szerepkör-hozzárendelések keresése van.
 
 ## <a name="apply-just-enough-administration-practices"></a>Just Enough Administration eljárások alkalmazása
 

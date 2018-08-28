@@ -3,18 +3,18 @@ title: Egy HDInsight-fürt – Azure törlése
 description: Információk a különböző módszereket, hogy egy HDInsight-fürtöt is törli.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 1d376b365d8755cfea8718d6d0a50cfa6008fdc3
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 737cc120877a9d0f06a1f6d209bcf9a233aa7d19
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596018"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091309"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>A böngészőben, PowerShell vagy az Azure CLI használatával egy HDInsight-fürt törlése
 

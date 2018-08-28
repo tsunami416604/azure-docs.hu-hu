@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 892dd050829dce242035e2b875ea43ed13910d4a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 8aa4695ea1175fe9d558e02bae661c9610123299
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246074"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43087111"
 ---
 ## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Társítsa Azure Storage-fiókot, az IoT hubhoz
 
@@ -21,4 +21,4 @@ Mivel a szimulált eszközalkalmazás feltölt egy fájlt egy blobba, rendelkezn
 
 Kövesse a [fájlfeltöltések konfigurálása az Azure portal használatával](../articles/iot-hub/iot-hub-configure-file-upload.md) rendelni az Azure Storage-fiókot, az IoT hubnak. Győződjön meg arról, hogy az IoT hub társítva-e a blobtárolót és, hogy a fájl értesítések engedélyezve vannak-e.
 
-![Fájl értesítések engedélyezése a portálon](media/iot-hub-associate-storage/enable-file-notifications.png)
+![Fájl értesítések engedélyezése a portálon](./media/iot-hub-associate-storage/enable-file-notifications.png)

@@ -3,19 +3,19 @@ title: Az Apache Storm például Java-topológia – Azure HDInsight
 description: Ismerje meg az Apache Storm-topológiák létrehozása a Java-példában szószámláló topológia létrehozásával.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 keywords: az Apache storm, az apache storm-példa, a storm java, a storm-topológia példa
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 9376d80e3c856df570f3709ca52c353b81579100
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 10ea0eb3907abc0a90e589e57970c0e4622a4d56
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619005"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043929"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Az Apache Storm-topológia létrehozása Java nyelven
 

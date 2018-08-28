@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan használja VPN-kapcsolaton keresztül HDInsight
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: d71186dcfd5528de48151804492d8ae51e808a07
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: bc1f1dd577231f5b22474f6cd3dc622480209dd9
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618920"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042918"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>A VPN-kapcsolaton keresztül a HDInsight Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata
 

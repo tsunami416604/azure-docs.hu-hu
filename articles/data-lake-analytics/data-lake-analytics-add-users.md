@@ -1,53 +1,52 @@
 ---
 title: Felhasználók hozzáadása az Azure Data Lake Analytics-fiókkal
-description: Megtudhatja, hogyan megfelelően adhat hozzá felhasználókat a Data Lake Analytics-fiók
+description: Ismerje meg, hogyan megfelelően a Data Lake Analytics-fiók a felhasználók hozzáadása
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: 58b78c7d9769069f36c9f01c2a7650878a6c5ec9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0386406f5fc81a007d55bd5358e7a6b333f63b04
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34717229"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048333"
 ---
-# <a name="adding-a-user-in-the-azure-portal"></a>A felhasználó hozzáadása az Azure-portálon
+# <a name="adding-a-user-in-the-azure-portal"></a>Felhasználók hozzáadása az Azure Portalon
 
 ## <a name="start-the-add-user-wizard"></a>Indítsa el a felhasználó hozzáadása varázsló
-1. Nyissa meg az Azure Data Lake Analytics keresztül https://portal.azure.com.
+1. Nyissa meg az Azure Data Lake Analytics-n keresztül https://portal.azure.com.
 2. Kattintson a **felhasználó hozzáadása varázsló**.
-3. Az a **felhasználó kijelölése** . lépés:, keresse meg a hozzáadni kívánt felhasználó. Kattintson a **Kiválasztás** gombra.
-4. a **válassza szerepkör** . lépés:, válasszon **Data Lake Analytics fejlesztői**. Ez a szerepkör be van állítva a minimális U-SQL feladatok küldje el figyelő/felügyeletéhez szükséges engedélyeket. Ha a csoport nem az Azure szolgáltatások kezelésére szolgáló hozzárendelése ehhez a szerepkörhöz.
-5. Az a **katalógus engedélyként válassza** . lépés:, válassza ki a további adatbázisokat a felhasználónak kell hozzáférést. Olvasási és írási hozzáférést a fő adatbázishoz szükséges feladatok küldéséhez. Ha elkészült, kattintson az **OK** gombra.
-6. Az utolsó lépésben nevű **rendelje hozzá a kijelölt engedélyeket** áttekintheti a változtatásokat, a varázsló elvégzi. Kattintson az **OK** gombra.
+3. Az a **felhasználó kiválasztása** lépést, a hozzáadni kívánt felhasználó található. Kattintson a **Kiválasztás** gombra.
+4. a **szerepkör kiválasztása** lépést, válasszon **Data Lake Analytics-fejlesztő**. Ez a szerepkör rendelkezik a minimális U-SQL-feladatok elküldése és felügyelet/kezelés szükséges engedélyeket. Rendelje hozzá ehhez a szerepkörhöz, ha a csoport nem alkalmas az Azure-szolgáltatások kezeléséhez.
+5. Az a **katalógusengedélyek kiválasztása** lépést, minden további adatbázisok válassza ki, hogy a felhasználó hozzá kell férniük. Olvasási és írási hozzáférés a master adatbázishoz szükséges feladatok elküldéséhez. Ha elkészült, kattintson az **OK** gombra.
+6. Az utolsó lépésben nevű **kijelölt engedélyek hozzárendelése** tekintse át a varázsló elvégzi a módosításokat. Kattintson az **OK** gombra.
 
 
-## <a name="configure-acls-for-data-folders"></a>Hozzáférés-vezérlési listák beállítása adatmappáinak
-Adja meg "R-X" vagy "RWX" igény szerint a bemeneti adatokat tartalmazó mappák és a kimeneti adatai.
+## <a name="configure-acls-for-data-folders"></a>Adatok mappákra vonatkozó hozzáférés-vezérlési listák konfigurálása
+"Az R-X" vagy "RWX", adja meg a bemeneti adatokat tartalmazó mappák igény szerint, és a kimeneti adatokat.
 
 
-## <a name="optionally-add-the-user-to-the-azure-data-lake-store-role-reader-role"></a>Szükség esetén vegye fel a felhasználót az Azure Data Lake Store szerepkör **olvasó** szerepkör.
+## <a name="optionally-add-the-user-to-the-azure-data-lake-store-role-reader-role"></a>Opcionálisan adja hozzá a felhasználót az Azure Data Lake Store szerepkör **olvasó** szerepkör.
 1.  Az Azure Data Lake Store-fiók található.
 2.  Kattintson a **felhasználók**.
 3. Kattintson a **Hozzáadás** parancsra.
-4.  Válassza ki az Azure RBAC szerepkört ehhez a csoporthoz hozzárendelni.
-5.  Olvasó szerepkört rendelni. Ez a szerepkör be van állítva a minimális ADLS tárolt adatok Tallózás/felügyeletéhez szükséges engedélyeket. Ha a csoport nem az Azure szolgáltatások kezelésére szolgáló hozzárendelése ehhez a szerepkörhöz.
+4.  Válassza ki az Azure RBAC szerepkör hozzárendelése ehhez a csoporthoz.
+5.  Olvasó szerepkört rendelni. Ez a szerepkör rendelkezik a minimális ADLS-ban tárolt adatok tallózással keresse meg és kezeléséhez szükséges engedélyeket. Rendelje hozzá ehhez a szerepkörhöz, ha a csoport nem alkalmas az Azure-szolgáltatások kezeléséhez.
 6.  Írja be a csoport nevét.
 7.  Kattintson az **OK** gombra.
 
-## <a name="adding-a-user-using-powershell"></a>A PowerShell használatával felhasználó hozzáadása
+## <a name="adding-a-user-using-powershell"></a>Hozzáadja a PowerShell használatával
 
-1. Kövesse az utasításokat az útmutató: [telepítése és konfigurálása az Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+1. Kövesse a jelen útmutató: [telepítése és konfigurálása az Azure PowerShell-lel](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
 2. Töltse le a [Add-AdlaJobUser.ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) PowerShell-parancsfájlt.
-3. A PowerShell-parancsprogrammal. 
+3. PowerShell-szkript futtatásához. 
 
-A felhasználói hozzáférésének elküldeni a feladatokat, a minta parancs új feladat metaadatok és a régi metaadat-nézet megjelenítése:
+A mintául szolgáló parancs felhasználói hozzáférésének küldhetők be feladatok, új feladat-metaadatok és a régi metaadatai nézet megtekintéséhez:
 
 `Add-AdlaJobUser.ps1 -Account myadlsaccount -EntityToAdd 546e153e-0ecf-417b-ab7f-aa01ce4a7bff -EntityType User -FullReplication`
 
@@ -55,6 +54,6 @@ A felhasználói hozzáférésének elküldeni a feladatokat, a minta parancs ú
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
-* [Ismerkedés a Data Lake Analytics az Azure portál használatával](data-lake-analytics-get-started-portal.md)
-* [Azure Data Lake Analytics kezelése az Azure PowerShell használatával](data-lake-analytics-manage-use-powershell.md)
+* [Data Lake Analytics használatának első lépései az Azure portal használatával](data-lake-analytics-get-started-portal.md)
+* [Az Azure Data Lake Analytics kezelése az Azure PowerShell használatával](data-lake-analytics-manage-use-powershell.md)
 

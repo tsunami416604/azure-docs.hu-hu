@@ -1,124 +1,93 @@
 ---
-title: Létrehoz egy IoT-központot Azure CLI-vel (az.py) |} Microsoft Docs
-description: Tudnivalók az Azure IoT-központ a platformok közötti Azure CLI 2.0 (az.py) használatával.
-author: dominicbetts
-manager: timlt
+title: Hozzon létre egy IoT hubra az Azure CLI-vel |} A Microsoft Docs
+description: Tudnivalók az Azure CLI-vel az Azure IoT hub létrehozása.
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/16/2017
-ms.author: dobett
-ms.openlocfilehash: 9f97775a5a49077a340efb0e3de14b7064db5fe4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/23/2018
+ms.author: robinsh
+ms.openlocfilehash: 95741b1a00c47468c7189e0103608c1dd7fa1d90
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632764"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046170"
 ---
-# <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Létrehoz egy IoT-központot, az Azure CLI 2.0 használatával
+# <a name="create-an-iot-hub-using-azure-cli"></a>Azure CLI-vel IoT hub létrehozása
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-## <a name="introduction"></a>Bevezetés
+Ez a cikk bemutatja, hogyan hozhat létre egy IoT hubra az Azure CLI használatával.
 
-Azure CLI 2.0 (az.py) hozhat létre és kezelhet programozott módon Azure IoT-központok. Ez a cikk bemutatja, hogyan használható az Azure CLI 2.0 (az.py) létrehoz egy IoT-központot.
+## <a name="prerequisites"></a>Előfeltételek
 
-A következő CLI-verziók egyikével elvégezheti a feladatot:
+Ez az útmutató végrehajtásához Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* [Az Azure CLI (azure.js)](iot-hub-create-using-cli-nodejs.md) – a parancssori felületen a klasszikus és resource management üzembe helyezési modellek.
-* Az Azure CLI 2.0 (az.py) - CLI következő generációs erőforrás felügyeleti telepítési modell ebben a cikkben leírtak szerint.
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be az Azure-fiókkal
 
-* Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy [ingyenes fiókot][lnk-free-trial].
-* [Az Azure CLI 2.0][lnk-CLI-install].
+Ha futtatja az Azure CLI helyileg a Cloud Shell használata helyett, jelentkezzen be az Azure-fiókjával szeretné.
 
-## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be az Azure-fiókjával
+A parancssorban futtassa a [login paranccsal](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli):
 
-Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
-
-1. A parancssorban futtassa a [login parancsot][lnk-login-command]:
-    
     ```azurecli
     az login
     ```
 
-    Kövesse az utasításokat a kóddal történő hitelesítéshez, és jelentkezzen be az Azure-fiókjába webböngészőből.
-
-2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Az alábbi [paranccsal jelenítheti meg az elérhető Azure-fiókokat][lnk-az-account-command]:
-    
-    ```azurecli
-    az account list 
-    ```
-
-    Az alábbi parancs segítségével válassza ki azt az előfizetést, amelyet az IoT Hub létrehozásához szükséges parancsok futtatásához kíván használni. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
-
-    ```azurecli
-    az account set --subscription {your subscription name or id}
-    ```
+Kövesse az utasításokat a kóddal történő hitelesítéshez, és jelentkezzen be az Azure-fiókjába webböngészőből.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Az Azure parancssori felület használatával hozzon létre egy erőforráscsoportot, és vegye fel az IoT-központ.
+Az Azure CLI használatával hozzon létre egy erőforráscsoportot, és vegye fel az IoT hubra.
 
-1. Amikor létrehoz egy IoT-központot, erőforráscsoportban kell létrehoznia. Használhat meglévő erőforráscsoportot, vagy futtathatja a következő [parancsot erőforráscsoport létrehozásához][lnk-az-resource-command]:
+1. Amikor létrehoz egy IoT hubot, egy erőforráscsoportban kell létrehoznia. Használjon egy meglévő erőforráscsoportot, vagy futtassa a következő [parancs használatával hozzon létre egy erőforráscsoportot](https://docs.microsoft.com/cli/azure/resource):
     
-    ```azurecli
-     az group create --name {your resource group name} --location westus
-    ```
+   ```azurecli
+   az group create --name {your resource group name} --location westus
+   ```
 
-    > [!TIP]
-    > Az előző példában az erőforráscsoport az USA nyugati régiójában jön létre. Az `az account list-locations -o table` parancs futtatásával megtekintheti az elérhető helyek listáját.
-    >
-    >
+   > [!TIP]
+   > Az előző példában az erőforráscsoport az USA nyugati régiójában jön létre. Az elérhető helyek listáját a következő parancs futtatásával tekintheti meg: 
+   >
+   >``` bash
+   >az account list-locations -o table
+   >```
+   >
 
-2. Futtassa a következő [parancs létrehoz egy IoT-központot] [ lnk-az-iot-command] az erőforráscsoportban, globálisan egyedi névvel az IoT hub:
+2. Futtassa a következő [paranccsal hozzon létre egy IoT hubot](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) az erőforráscsoportban, globálisan egyedi név az IoT hub használatával:
     
-    ```azurecli
-    az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
-    ```
+   ```azurecli
+   az iot hub create --name {your iot hub name} \
+      --resource-group {your resource group name} --sku S1
+   ```
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 
-> [!NOTE]
-> Az előző parancs létrehozza az IoT-központ az S1 az IP-címek, amelynek kell fizetni. További információkért lásd: [Azure IoT Hub árképzési][lnk-iot-pricing].
->
+Az előző parancs létrehoz egy IoT hubot az S1 tarifacsomagot, amelynek számítunk fel díjat. További információkért lásd: [Azure IoT Hub díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-## <a name="remove-an-iot-hub"></a>Távolítsa el az IoT-központ
+## <a name="remove-an-iot-hub"></a>Távolítsa el az IoT Hub
 
-Használhatja az Azure parancssori felület a [egyedi erőforrás törlése][lnk-az-resource-command], például egy IoT-központ, vagy törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást, beleértve az IoT-központok.
+Használhatja az Azure CLI-vel [törölhet egyedi erőforrásokat](https://docs.microsoft.com/cli/azure/resource), például egy IoT hubot, vagy a delete egy erőforráscsoportot és az ahhoz tartozó összes erőforrást, beleértve a bármely IoT-központok.
 
-IoT Hub törléséhez futtassa a következő parancsot:
+A [egy IoT hubot törli](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete), futtassa a következő parancsot:
 
 ```azurecli
-az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
+az iot hub delete --name {your iot hub name} -\
+  -resource-group {your resource group name}
 ```
 
-Erőforráscsoport és az ahhoz tartozó összes erőforrás törléséhez futtassa a következő parancsot:
+A [egy erőforráscsoport törlése](https://docs.microsoft.com/cli/azure/group#az-group-delete) és az ahhoz tartozó összes erőforrást, futtassa a következő parancsot:
 
 ```azurecli
 az group delete --name {your resource group name}
 ```
 
 ## <a name="next-steps"></a>További lépések
-Az IoT-központ fejlesztésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* [IoT Hub fejlesztői útmutató][lnk-devguide]
+Az IoT hub használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-Az IoT-központ képességeit további megismeréséhez lásd:
-
-* [Az IoT-központ kezelése az Azure portál használatával][lnk-portal]
-
-<!-- Links -->
-[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-CLI-install]: https://docs.microsoft.com/cli/azure/install-az-cli2
-[lnk-login-command]: https://docs.microsoft.com/cli/azure/get-started-with-az-cli2
-[lnk-az-account-command]: https://docs.microsoft.com/cli/azure/account
-[lnk-az-register-command]: https://docs.microsoft.com/cli/azure/provider
-[lnk-az-addcomponent-command]: https://docs.microsoft.com/cli/azure/component
-[lnk-az-resource-command]: https://docs.microsoft.com/cli/azure/resource
-[lnk-az-iot-command]: https://docs.microsoft.com/cli/azure/iot
-[lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-portal]: iot-hub-create-through-portal.md 
+* [Az IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
+* [Az IoT Hub kezelése az Azure portal használatával](iot-hub-create-through-portal.md)

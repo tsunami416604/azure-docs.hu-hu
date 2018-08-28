@@ -5,17 +5,16 @@ services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 06/22/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 427964a6651dd4ab71d0029f89e40afdd34d162a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.topic: reference
+ms.date: 06/22/2018
+ms.openlocfilehash: 8adfd0b3d6d87834441ab87af194de141b77af34
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390704"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093618"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv eseményindító és művelet típusok referenciája
 
@@ -158,6 +157,7 @@ A trigger ellenőriz vagy *polls* végpont használatával [a Microsoft által f
 |---------|------|-------------| 
 | fejlécek | JSON-objektum | A válaszból a fejlécek | 
 | törzs | JSON-objektum | A szervezetnek a válaszból | 
+| Állapotkód | Egész szám | A válaszból állapotkód | 
 |||| 
 
 *Példa*
@@ -330,6 +330,7 @@ A trigger ellenőrzi vagy lekérdezi a megadott végponton, a megadott ismétlő
 |---------|------|-------------| 
 | fejlécek | JSON-objektum | A válaszból a fejlécek | 
 | törzs | JSON-objektum | A szervezetnek a válaszból | 
+| Állapotkód | Egész szám | A válaszból állapotkód | 
 |||| 
 
 *A bejövő kéréseket követelmények*
@@ -337,7 +338,7 @@ A trigger ellenőrzi vagy lekérdezi a megadott végponton, a megadott ismétlő
 Jól működnek a logikai alkalmazást, a végpontot kell egy adott eseményindító minta vagy a szerződés felel meg, és ismeri fel ezeket a tulajdonságokat:  
   
 | Válasz | Szükséges | Leírás | 
-|----------|----------|-------------|  
+|----------|----------|-------------| 
 | Állapotkód | Igen | A "200 OK" állapotkód: elindít egy Futtatás. Minden más állapotkód nem indul el egy Futtatás. | 
 | Retry-after fejléccel | Nem | Mindaddig, amíg a logikai alkalmazás lekérdezi a végpont újra másodpercben | 
 | Location fejlécet | Nem | A következő lekérdezési időköz hívják meg az URL-címe. Ha nincs megadva, az eredeti URL-címet használja. | 
@@ -424,6 +425,7 @@ Egyes értékek, mint például <*-eljárástípus*>, is a `"subscribe"` és `"u
 |---------|------|-------------| 
 | fejlécek | JSON-objektum | A válaszból a fejlécek | 
 | törzs | JSON-objektum | A szervezetnek a válaszból | 
+| Állapotkód | Egész szám | A válaszból állapotkód | 
 |||| 
 
 *Példa*
@@ -1957,7 +1959,7 @@ Ez a művelet, amely egy *feltételes utasítás*, Kiértékel egy kifejezést, 
 
 | Érték | Típus | Leírás | 
 |-------|------|-------------| 
-| <*A feltétel*> | JSON-objektum | A feltétel, amely lehet egy kifejezés kiértékelése | 
+| <*a feltétel*> | JSON-objektum | A feltétel, amely lehet egy kifejezés kiértékelése | 
 | <*művelet – 1*> | JSON-objektum | A műveletet úgy, hogy futtatható, ha <*feltétel*> igaz értéket ad vissza | 
 | <*a művelet-definíció*> | JSON-objektum | A művelet definíciója | 
 | <*művelet – 2*> | JSON-objektum | A műveletet úgy, hogy futtatható, ha <*feltétel*> kifejezés hamis | 
@@ -2217,7 +2219,7 @@ A hurok művelet futni, amíg a megadott feltétel teljesül műveleteket tartal
 | <*művelet neve*> | Sztring | A hurok belül futó kívánt művelet neve | 
 | <*Művelettípus*> | Sztring | A futtatni kívánt művelet típusa | 
 | <*művelet – bemenetek*> | Különböző | A bemenetek a futtatni kívánt műveletet | 
-| <*A feltétel*> | Sztring | A feltétel, vagy ha minden kiértékelendő kifejezés a műveletek a hurok futása befejeződik | 
+| <*a feltétel*> | Sztring | A feltétel, vagy ha minden kiértékelendő kifejezés a műveletek a hurok futása befejeződik | 
 | <*hurok-száma*> | Egész szám | A hurkok, amelyek futtathatók a művelet a legtöbb számára vonatkozó határértéket. Az alapértelmezett `count` értéke 60. | 
 | <*hurok-időtúllépés*> | Sztring | A leghosszabb idő, a hurok futtatható a határértéket. Az alapértelmezett `timeout` érték `PT1H`, azaz a szükséges [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
@@ -2552,6 +2554,159 @@ Egyetlen logikai alkalmazás futtatásának, 5 percenként végrehajtott művele
    "runAfter": {}
 }
 ```
+
+<a name="connector-authentication"></a>
+
+## <a name="authenticate-triggers-or-actions"></a>Eseményindítók és műveletek hitelesítése
+
+HTTP-végpontokat különböző hitelesítési támogatja. Beállíthatja a hitelesítést ezekhez a HTTP-eseményindítók és műveletek:
+
+* [HTTP](../connectors/connectors-native-http.md)
+* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
+* [HTTP Webhook](../connectors/connectors-native-webhook.md)
+
+Az alábbiakban a bármilyen típusú hitelesítés állíthatja be:
+
+* [Alapszintű hitelesítés](#basic-authentication)
+* [Ügyféltanúsítvány-alapú hitelesítés](#client-certificate-authentication)
+* [Az Azure Active Directory (Azure AD) OAuth-hitelesítés](#azure-active-directory-oauth-authentication)
+
+<a name="basic-authentication"></a>
+
+### <a name="basic-authentication"></a>Alapszintű hitelesítés
+
+A hitelesítési típus az eseményindítót vagy műveletet definíciót tartalmazhat egy `authentication` ezeket a tulajdonságokat tartalmazó JSON-objektum:
+
+| Tulajdonság | Szükséges | Érték | Leírás | 
+|----------|----------|-------|-------------| 
+| **type** | Igen | "Alapszintű" | A hitelesítési típus szeretne használni, amely itt az "Alapszintű" | 
+| **felhasználónév** | Igen | "@parameters(userNameParam)" | Egy paraméter, amely átadja a felhasználó nevét a célként megadott szolgáltatás végpontjának eléréséhez szükséges hitelesítéséhez |
+| **jelszó** | Igen | "@parameters(passwordParam)" | Egy paraméter, amely továbbítja a jelszót a hitelesítéshez a célként megadott szolgáltatás végpontjának eléréséhez |
+||||| 
+
+Például a következő formátumát a `authentication` objektum az eseményindítót vagy műveletet definíciójában. Paraméterek védelmével kapcsolatos további információkért lásd: [bizalmas adatok biztonságos](#secure-info). 
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+<a name="client-certificate-authentication"></a>
+
+### <a name="client-certificate-authentication"></a>Ügyféltanúsítvány-alapú hitelesítés
+
+A hitelesítési típus az eseményindítót vagy műveletet definíciót tartalmazhat egy `authentication` ezeket a tulajdonságokat tartalmazó JSON-objektum:
+
+| Tulajdonság | Szükséges | Érték | Leírás | 
+|----------|----------|-------|-------------| 
+| **type** | Igen | "ClientCertificate" | A Secure Sockets Layer (SSL) ügyféltanúsítványok használandó hitelesítési típus | 
+| **PFX** | Igen | <*Base64-kódolású-pfx-fájl*> | A base64-kódolású tartalmak személyes információcsere (PFX) fájlból |
+| **jelszó** | Igen | "@parameters(passwordParam)" | Egy paraméter fér hozzá a PFX-fájl jelszava |
+||||| 
+
+Például a következő formátumát a `authentication` objektum az eseményindítót vagy műveletet definíciójában. Paraméterek védelmével kapcsolatos további információkért lásd: [bizalmas adatok biztonságos](#secure-info). 
+
+```javascript
+"authentication": {
+   "password": "@parameters('passwordParam')",
+   "pfx": "aGVsbG8g...d29ybGQ=",
+   "type": "ClientCertificate"
+}
+```
+
+<a name="azure-active-directory-oauth-authentication"></a>
+
+### <a name="azure-active-directory-ad-oauth-authentication"></a>Az Azure Active Directory (AD) OAuth-hitelesítés
+
+A hitelesítési típus az eseményindítót vagy műveletet definíciót tartalmazhat egy `authentication` ezeket a tulajdonságokat tartalmazó JSON-objektum:
+
+| Tulajdonság | Szükséges | Érték | Leírás | 
+|----------|----------|-------|-------------| 
+| **type** | Igen | `ActiveDirectoryOAuth` | A hitelesítési típus szeretne használni, amely az Azure AD OAuth "ActiveDirectoryOAuth" | 
+| **szolgáltató** | Nem | <*URL-cím-az-szolgáltató-jogkivonat-kibocsátó*> | A szolgáltató által biztosított a hitelesítési jogkivonat URL-címe |  
+| **bérlő** | Igen | <*Bérlőazonosító*> | A bérlő Azonosítóját az Azure AD-bérlő számára | 
+| **Célközönség** | Igen | <*erőforrás-engedélyezés*> | Az erőforrást, amelyeket szeretne használni, például engedélyezési `https://management.core.windows.net/` | 
+| **ClientId** | Igen | <*ügyfél-azonosító*> | Engedély kérése az alkalmazás ügyfél-azonosítója | 
+| **credentialType** | Igen | "Secret" vagy "Tanúsítványok" | A hitelesítőadat-típus az ügyfél engedélyezési kérése használ. Ez a tulajdonság és érték nem jelennek meg az alapul szolgáló definíciójának, de a hitelesítőadat-típus szükséges paraméterek határozza meg. | 
+| **jelszó** | Igen, csak a "Tanúsítványok" hitelesítő adatok típusa | "@parameters(passwordParam)" | Egy paraméter fér hozzá a PFX-fájl jelszava | 
+| **PFX** | Igen, csak a "Tanúsítványok" hitelesítő adatok típusa | <*Base64-kódolású-pfx-fájl*> | A base64-kódolású tartalmak személyes információcsere (PFX) fájlból |
+| **Titkos kulcs** | Igen, csak a "Secret" hitelesítőadat-típus esetében | <*titkos kulcs-az-hitelesítés*> | Az ügyfél használja kérő engedélyezési base64-kódolású titkos kulcs |
+||||| 
+
+Például a következő formátumát a `authentication` objektumot, amikor az eseményindítót vagy műveletet definíciója használja a "Secret" hitelesítőadat-típus: paraméterek védelmével kapcsolatos további információkért lásd: [bizalmas adatok biztonságos](#secure-info). 
+
+```javascript
+"authentication": {
+   "audience": "https://management.core.windows.net/",
+   "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+   "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
+   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+   "type": "ActiveDirectoryOAuth"
+}
+```
+
+<a name="secure-info"></a>
+
+## <a name="secure-sensitive-information"></a>Bizalmas adatok védelme
+
+Használhat olyan hitelesítést, például felhasználóneveket és jelszavakat, az eseményindító és művelet definíciókat, az érzékeny információk védelmére használható paramétereket, és a `@parameters()` kifejezés úgy, hogy ezt az információt nem látható, a logikai mentése után alkalmazás. 
+
+Tegyük fel például, "Alapszintű" hitelesítési használ az eseményindítót vagy műveletet definíciójában. Íme egy példa `authentication` objektum, amely megadja a felhasználónevet és jelszót:
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+Az a `parameters` című szakaszt a logikai alkalmazás definíciójának, akkor az eseményindítót vagy műveletet definíciójában használt paraméterek megadásához:
+
+```javascript
+"definition": {
+   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+   "actions": {
+      "HTTP": {
+      }
+   },
+   "parameters": {
+      "passwordParam": {
+         "type": "securestring"
+      },
+      "userNameParam": {
+         "type": "securestring"
+      }
+   },
+   "triggers": {
+      "HTTP": {
+      }
+   },
+   "contentVersion": "1.0.0.0",
+   "outputs": {}
+},
+```
+
+Ha létrehozásakor, és egy Azure Resource Manager üzembe helyezési sablon használatával is be kell felvenni egy külső `parameters` a Sablondefiníció a következő szakaszban. Paraméterek védelmével kapcsolatos további információkért lásd: [biztonságos hozzáférés a logic apps a](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow). 
 
 ## <a name="next-steps"></a>További lépések
 

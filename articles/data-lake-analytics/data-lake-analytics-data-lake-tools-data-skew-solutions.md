@@ -1,70 +1,69 @@
 ---
-title: Adatok-döntés teljesítése Azure Data Lake Tools for Visual Studio használatával
-description: Hibaelhárítás az adatok-döntés problémák lehetséges megoldások Azure Data Lake Tools for Visual Studio használatával.
+title: Azure Data Lake Tools for Visual Studio használatával – Adateltérés problémák megoldásához
+description: A lehetséges megoldások Adateltérés problémák hibaelhárítása Azure Data Lake Tools for Visual Studio használatával.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: 43a050251a6945d6886930a2a76fcb9f833b78f0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b3079a7f2e71e26164d96cf167b67f1a60f7a23b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623383"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046473"
 ---
-# <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Adatok-döntés teljesítése Azure Data Lake Tools for Visual Studio használatával
+# <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio használatával – Adateltérés problémák megoldásához
 
-## <a name="what-is-data-skew"></a>Mi az az adatok döntés?
+## <a name="what-is-data-skew"></a>Mi az adatok tevékenységdiagramon?
 
-Rövid időre is hangsúlyoztuk, adatok döntés érték túlzott kezeli őket. Tegyük fel, hogy 50 adó elméleti adó értéket ad vissza, az egyes USA állapotához egy vizsgáztatónak naplózandó rendelt-e. A Wyoming vizsgáztatónak az nincs a feltöltési kicsi, mert rendelkezik kevés elvégzéséhez. Kaliforniai azonban a vizsgáztatónak tartják túlzottan megnő a szerinti nagy feltöltési miatt.
-    ![Adatok-döntés probléma – példa](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
+Röviden hangsúlyoztuk, Adateltérés érték túlterhelt kezeli őket. Tegyük fel, hogy rendelt-e az 50 adó elbírálók adó értéket ad vissza, az egyes amerikai állami egy vizsgálónak naplózását. A Wyoming vizsgálónak az ott a lakosság kicsi, mert rendelkezik ehhez kevés. California azonban az elbírálók marad túlzottan nagy államnépesség miatt.
+    ![Probléma Adateltérés – példa](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
 
-A mi esetünkben az adatok nem egyenlően oszlik el minden adó elméleti, ami azt jelenti, hogy néhány elméleti több, mint a többire kell-e működni. Saját feladat olyan helyzetekben, például a adó-vizsgáztatónak példa itt gyakran előfordul. További technikai értelemben egy-egy csúcsának lekérdezi a társaknak mint sokkal több adatot, olyan helyzet, amely lehetővé teszi a több, mint a többi és, hogy végül működik csúcspont lelassítja az egy teljes feladat. Mi az rosszabb, a feladat lehet, hogy sikertelen lesz, mert csúcsban lehet, például egy 5 órás futásidejű korlátozás és a memória 6 GB-os korlátozását.
+Ebben az esetben az adatok egyenetlenül oszlanak el között minden adózási elbírálók, ami azt jelenti, hogy néhány elbírálók több, mint a többi kell-e működni. Saját feladat Itt a adó-vizsgálónak példához hasonló helyzeteket gyakran előfordul. További műszaki feltételeket egy-egy csúcsának lekérdezi a társaknak sokkal több adatot, és olyan helyzet, amely lehetővé teszi több, mint a többi és a munka, végül a csúcspont lelassítja a teljes feladat. Mi az rosszabb, a feladat lehet, hogy sikertelen lesz, mert csúcspontok lehet, például egy 5 órás futásidejű korlátozás és a egy 6 GB memória korlátozás.
 
-## <a name="resolving-data-skew-problems"></a>Adatok-döntés problémák megoldásához
+## <a name="resolving-data-skew-problems"></a>Adateltérés problémák megoldásához
 
-Az Azure Data Lake Tools for Visual Studio segítségével észleli, hogy a feladat rendelkezik-e az adatok-döntés probléma. Ha a probléma fennáll, hogyan oldható meg úgy a megoldások ebben a szakaszban.
+Az Azure Data Lake Tools for Visual Studio segítségével, hogy a feladat rendelkezik-e Adateltérés probléma észlelése. Ha a probléma fennáll, feloldhatja úgy, ebben a szakaszban a megoldások.
 
-## <a name="solution-1-improve-table-partitioning"></a>1. megoldás: A táblaparticionálást javítása
+## <a name="solution-1-improve-table-partitioning"></a>1. megoldás: A tábla particionálásával javítása
 
-### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>1. lehetőség: A kihasználtságot kulcsérték előre szűrése
+### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>1. lehetőség: Előre szűrni az egyenetlen kulcs értéke
 
-Nincs hatással az üzleti logikát, a nagyobb gyakoriságot értékek előre végezhet. Például ha nagy mennyiségű 000 000-000 oszlopban GUID, előfordulhat, hogy nem kívánt ezt az értéket összesítő. Mielőtt összesített, írhat "WHERE GUID! ="000 000-000"" szűrése nagyon gyakori értékét.
+Nincs hatással az üzleti logikát, ha előre szűrheti a nagyobb gyakoriságot értékeket. Például ha nagy mennyiségű 000 000-000 GUID azonosító oszlop, nem érdemes ezt az értéket összesíteni. Mielőtt összesített, írhat "WHERE GUID! ="000 000-000"" szűrése a nagy gyakoriságú érték.
 
 ### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>2. lehetőség: Válasszon egy másik partíció vagy terjesztési kulcs
 
-Az előző példában ha csak ellenőrizni kívánja az ország, amelynek a adó-naplózási munkaterhelés javíthatja az adatok terjesztési azonosítója számára kattintva a kulcsként. Egy másik partíció vagy a terjesztési kulcs kiadási is néha az adatok több egyenletes elosztása, de meg kell győződnie arról, hogy ez a beállítás nincs hatással az üzleti logikát. Például az egyes adó összeg kiszámításához, érdemes kijelölni _állapot_ partíciókulcsnak. Ha továbbra is ebbe a problémába ütközik, próbálja meg a beállítás 3.
+Az előző példában ha azt szeretné, csak a adó-naplózási munkaterhelés bármely országban, ellenőrizze, növelheti az adatok terjesztési a kulcsként a azonosítószámát kiválasztásával. Egy másik partíció vagy terjesztési kulcs kiadási is egyes esetekben az adatokat egyenletesebben osszák, de győződjön meg arról, hogy ez a választás nem érinti az üzleti logikát kell. Például az adó összege az egyes állapotokhoz kiszámításához, érdemes kijelölni _állapot_ partíciókulcsként. Ha a probléma továbbra is, próbálja meg a beállítást 3.
 
-### <a name="option-3-add-more-partition-or-distribution-keys"></a>3. lehetőség: Több partíció vagy terjesztési kulcsainak hozzáadása
+### <a name="option-3-add-more-partition-or-distribution-keys"></a>3. lehetőség: A több partícióra vagy terjesztési kulcsainak hozzáadása
 
-Csak helyett _állapot_ partíciókulcsként, használhat több kulcs particionálást. Például, vegyen fel _irányítószám_ csökkentése adatok-partíció méretét, és az adatok több egyenletes elosztása további partíció kulcsként.
+Csak helyett _állapot_ partíciókulcsként, particionálási egynél több kulcs is használja. Például érdemes lehet hozzáadni _irányítószám_ , egy további partíciókulcsot az adatok partícióméretei csökkentéséhez, és az adatokat egyenletesebben osszák.
 
 ### <a name="option-4-use-round-robin-distribution"></a>4. lehetőség: Ciklikus multiplexelés használata
 
-Ha nem találja a megfelelő kulcs partíció és terjesztési, megpróbálhatja ciklikus multiplexelés használandó. Ciklikus multiplexelés egyaránt kezeli az összes sort, és véletlenszerűen megfelelő gyűjtők elhelyezi azokat. Az adatok beolvasása egyenletesen, de helység információ, amely az egyes műveletek esetében a feladat teljesítmény is csökkentheti visszatérítési elveszíti. Emellett akkor használatos, ha a kihasználtságot kulcs összesítési ennek ellenére is, az adatok-döntés probléma áll fenn. Ciklikus multiplexelés kapcsolatos további tudnivalókért tekintse meg a U-SQL táblázat azokat a Terjesztéseket részt [CREATE TABLE (U-SQL): a táblázatok létrehozásáról az a séma](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch).
+Ha nem találja a megfelelő kulcs partíciót és-terjesztési, megpróbálhatja ciklikus multiplexelés használja. Ciklikus multiplexelés egyaránt kezeli az összes sort, és véletlenszerűen visszaállítja azokat megfelelő gyűjtőkbe. Az adatok egyenletesen lekérdezi, de helye információ egy hátránya, hogy bizonyos műveletek teljesítményének feladat is csökkentheti az elveszíti. Emellett ha mégis végez összesítést az egyenetlen kulcs, a Adateltérés probléma addig megmarad. Ciklikus multiplexelés kapcsolatos további információkért lásd: a U-SQL-tábla Disztribúciók szakaszában [CREATE TABLE (U-SQL): egy tábla létrehozása sémával](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch).
 
 ## <a name="solution-2-improve-the-query-plan"></a>2. megoldás: A lekérdezésterv javítása
 
-### <a name="option-1-use-the-create-statistics-statement"></a>1. lehetőség: A CREATE statistics UTASÍTÁSHOZ utasítás használható.
+### <a name="option-1-use-the-create-statistics-statement"></a>1. lehetőség: A CREATE STATISTICS utasítás használható.
 
-U-SQL-táblák a CREATE statistics UTASÍTÁSHOZ utasítás biztosít. A jelen nyilatkozat ad a lekérdezésoptimalizáló a adatjellemzők, többek között a terjesztési érték, a táblában tárolt kapcsolatos további információt. A legtöbb lekérdezésnél a lekérdezésoptimalizáló már jó minőségű lekérdezéstervet szükséges statisztikai adatait állít elő. Alkalmanként szükség lehet további statisztikák létrehozása a CREATE statistics UTASÍTÁSHOZ vagy a lekérdezés tervezési módosításával javíthatja a lekérdezések teljesítményét. További információkért lásd: a [CREATE statistics UTASÍTÁSHOZ (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx) lap.
+U-SQL-táblák a CREATE STATISTICS utasítás nyújt. A jelen nyilatkozat a lekérdezésoptimalizáló az adatjellemzők, értékeloszlásának, például egy táblában tárolt kapcsolatos további információkat biztosít. A legtöbb lekérdezések esetén a lekérdezésoptimalizáló már magas színvonalú lekérdezésterv szükséges statisztikái állít elő. Bizonyos esetekben szüksége lehet javíthatja a lekérdezések teljesítményét, a CREATE STATISTICS statisztikák létrehozása vagy a lekérdezés tervezési módosításával. További információkért lásd: a [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx) lapot.
 
 Példa:
 
     CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
 
 >[!NOTE]
->Statisztikai adatok nem frissülnek automatikusan. Ha frissíti a táblákban tárolt adatokat nélkül hozza létre újra a statisztikai adatokat, a lekérdezési teljesítmény előfordulhat, hogy elutasítja.
+>Statisztikai adatok nem frissül automatikusan. Ha frissíti a táblában lévő adatokat a statisztikai adatok újbóli létrehozása nélkül, a lekérdezési teljesítmény előfordulhat, hogy elutasítja.
 
 ### <a name="option-2-use-skewfactor"></a>2. lehetőség: SKEWFACTOR használata
 
-Ha szeretné az egyes adó sum, a GROUP BY állapot, egy módszer, amely nem az adat-döntés probléma elkerülése érdekében kell használnia. Adatok javaslat azonban biztosíthat adatok döntés kulcsok azonosítására, hogy a optimalizáló előkészíti végrehajtási tervének meg a lekérdezésben.
+Ha szeretné az egyes állapotokhoz adó sum, GROUP BY állapotban, amely nem a Adateltérés probléma elkerülése érdekében kell használnia. Azonban a lekérdezési kulcsok Adateltérés azonosításához, hogy az optimalizáló készítheti elő az Ön számára egy végrehajtási terv adatok tippként is biztosít.
 
-A paraméter állítja általában 0,5-1, tehát nem kap nagy eltérésére és 1 jelentése nagy döntés 0,5. Mivel a mutató hatással van az aktuális utasítás és az összes alárendelt utasítást végrehajtási terv optimalizálást, ügyeljen arra, hogy a mutató hozzáadása előtt a lehetséges válik egyenetlenné key-wise összesítési.
+A paraméter állítja általában 0,5-1, azaz nem sok torzulása és 1 jelentése nagy döntés 0,5. A mutató végrehajtási terv optimalizálása az aktuális utasítás és az összes alárendelt utasítást érinti, mert mindenképpen adja hozzá a mutatót a lehetséges torzítja key-wise összesítés előtt.
 
     SKEWFACTOR (columns) = x
 
@@ -98,8 +97,8 @@ Példa:
                 ON @Sessions.Query == @Campaigns.Query
         ;   
 
-### <a name="option-3-use-rowcount"></a>3. lehetőség: ROWCOUNT használata  
-Mellett SKEWFACTOR az adott válik egyenetlenné kulcs illesztési esetben, hogy a többi összekapcsolt sorkészlet kicsi, ha megadható, hogy a optimalizáló ROWCOUNT mutató hozzáadásával a ILLESZTÉS előtt U-SQL-utasításban. Ezzel a módszerrel optimalizáló választható szórási illesztés stratégiáról a teljesítmény növelése érdekében. Ne feledje, hogy sorszám nem oldja meg az adatok-döntés problémát, de néhány további segítséget kínál.
+### <a name="option-3-use-rowcount"></a>3. lehetőség: Használja a sorok száma  
+Mellett SKEWFACTOR olyan esetekben, adott torzítja kulcs való csatlakozás, ha tudja, hogy a többi csatlakoztatott sor rendkívül kicsi, beállíthatja, hogy az optimalizáló hozzáadásával egy sorszám érhető el a U-SQL-utasítással való csatlakozás előtt. Ezzel a módszerrel optimalizáló választhat egy szórási illesztési stratégiát a teljesítmény javítása érdekében. Vegye figyelembe, hogy a sorok száma nem oldja meg a Adateltérés probléma, de néhány további segítségért kínál.
 
     OPTION(ROWCOUNT = n)
 
@@ -125,17 +124,17 @@ Példa:
 
 ## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>3. megoldás: A felhasználó által definiált nyomáscsökkentő és egyesítő javítása
 
-Néha írhat egy operátor felhasználó által definiált összetett folyamat logika kezelésére, és egy jól megírt nyomáscsökkentő és egyesítő adatok-döntés probléma bizonyos esetekben előfordulhat, hogy mérsékelni.
+Néha írhat egy felhasználó által definiált operátor összetett logikát foglalkozni, és a egy jól megírt nyomáscsökkentő és egyesítő Adateltérés probléma bizonyos esetekben előfordulhat, hogy csökkentése.
 
-### <a name="option-1-use-a-recursive-reducer-if-possible"></a>1. lehetőség: Egy rekurzív nyomáscsökkentő, ha lehetséges használata
+### <a name="option-1-use-a-recursive-reducer-if-possible"></a>1. lehetőség: Egy rekurzív nyomáscsökkentő lehetőség használata
 
-Alapértelmezés szerint a felhasználó által definiált nyomáscsökkentő fut nem rekurzív módban, ami azt jelenti, amelyekkel csökkenthető a kulcsok munkahelyi egyetlen csúcspont van elosztva. Azonban az adatok válik egyenetlenné, ha nagyon nagy adatkészletek egyetlen csúcspont feldolgozása előfordulhat, hogy, és hosszú ideig fussanak.
+Alapértelmezés szerint a felhasználó által definiált nyomáscsökkentő futtatja, ez azt jelenti, csökkentheti a munkahelyi kulcs egyetlen csúcs van elosztva a nem rekurzív módban. Azonban ha az adatok torzítja van, a hatalmas adatkészletek feldolgozása egyetlen csúcs előfordulhat, hogy, és hosszú ideig fussanak.
 
-A teljesítmény javítása érdekében a kódot, amely meghatározza a rekurzív módban való futásra nyomáscsökkentő attribútum adhat hozzá. Ezt követően a nagyon nagy adatkészletek több csúcsban terjesztése is, és felgyorsítja a feladat párhuzamosan futnak.
+A teljesítmény javítása érdekében hozzáadhat egy attribútum meghatározásához nyomáscsökkentő rekurzív módban fusson a kódban. Ezután a hatalmas adatkészletek ossza el több csúcspontok is, és felgyorsítja a feladatok párhuzamosan futtathatók.
 
-Módosítsa a nem rekurzív nyomáscsökkentő rekurzív, győződjön meg arról, hogy a algoritmus társuló kell. Például a sum társuló, pedig a középérték nem. Szükség győződjön meg arról, hogy a bemeneti és kimeneti nyomáscsökkentő megtartja-e az azonos sémából.
+A nem rekurzív nyomáscsökkentő rekurzív módosításához győződjön meg arról, hogy az algoritmus társuló kell. Például a sum társuló, pedig a középérték nem. Szükség is győződjön meg arról, hogy a bemeneti és kimeneti nyomáscsökkentő a tartsa ugyanazzal a sémával.
 
-A rekurzív nyomáscsökkentő attribútum:
+A rekurzív nyomáscsökkentő attribútuma:
 
     [SqlUserDefinedReducer(IsRecursive = true)]
 
@@ -153,26 +152,26 @@ Példa:
 
 ### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>2. lehetőség: Használja a sorszintű egyesítő módot, ha lehetséges
 
-A sorszám mutatót adott válik egyenetlenné kulcs illesztési adódó hasonló, egyesítő mód megpróbálja terjesztheti a több csúcsban hatalmas válik egyenetlenné kulcs-érték beállítása, hogy a munka párhuzamosan futtatható. Egyesítő mód nem oldható fel az adatok-döntés problémákat, de felajánlhat hatalmas válik egyenetlenné kulcs-érték beállítása további segítséget.
+A ROWCOUNT mutató adott torzítja kulcs illesztési esetek hasonlóan egyesítő mód megpróbálja terjeszteni több csúcspontok hatalmas torzítja-kulcs-érték beállítása, hogy a munka párhuzamosan futtatható. Egyesítő mód nem oldható fel Adateltérés problémák, de hatalmas torzítja-kulcs-érték csoportokkal kapcsolatos további segítség kínál.
 
-Alapértelmezés szerint a egyesítő módja teljes, ami azt jelenti, hogy a sor bal és jobb oldali sor készlet nem kell elválasztani. A mód beállítása balra vagy jobbra vagy belső, lehetővé teszi, hogy a sorszintű illesztési. A rendszer a megfelelő sor készletek elválasztja, és továbbítja őket a párhuzamosan futó több csúcsban. Azonban a egyesítő mód konfigurálása előtt ügyeljen arra, hogy győződjön meg arról, hogy a megfelelő sor készletek választhatók el egymástól.
+Alapértelmezés szerint a egyesítő mód a teljes, ami azt jelenti, hogy a sor bal és jobb oldali sor nem kell elválasztani. Sorszintű illesztés bal és jobb/belső, az mód beállítása lehetővé teszi. A rendszer osztja szét a megfelelő sor készletek, és be több, párhuzamosan futó csúcspontok osztja el azokat. Azonban mielőtt konfigurálná a egyesítő módot, ügyeljen arra, hogy győződjön meg arról, hogy a megfelelő sor készletek választhatók el egymástól.
 
-Az alábbi példában elkülönített bal sorkészlet. Minden kimeneti sor bal oldali bemeneti egyetlen sor függ, és potenciálisan attól függ, a jobb oldali azonos kulcsértékkel rendelkező összes sorát. Ha balra egyesítő módja annak beállítása, a rendszer elválasztja a hatalmas balra soron kívüli kis megfelelően beállítani, és hozzárendeli több csúcsban.
+A következő példában mutat be elválasztott bal oldali sor. Minden kimeneti sor bal egyetlen bemeneti sor függ, és potenciálisan függ a közvetlenül az egyazon értékkel rendelkező összes sorát. Balra lehet beállítani a egyesítő mód, ha a rendszer történő kis a eszközök hatalmas bal sor osztja szét, és hozzárendeli azokat több csúcsokat.
 
 ![Egyesítő mód ábra](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/combiner-mode-illustration.png)
 
 >[!NOTE]
->Ha rossz egyesítő módja annak beállítása, a kombinált kevésbé hatékony, és lehet, hogy az eredmények még.
+>Ha a nem megfelelő egyesítő módot, együttes használata kevésbé hatékony, és az eredmények hiba lehet.
 
-A egyesítő mód attribútumok:
+Attribútumok egyesítő mód:
 
 - [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Left): Minden kimeneti sor egyetlen bemeneti sor balra (és a jobb oldali kulcs azonos értékű potenciálisan összes sorát) függ.
+- SqlUserDefinedCombiner(Mode=CombinerMode.Left): Minden kimeneti sor a bal oldalon (és ugyanazt a kulcsérték-jobb oldalról potenciálisan minden sort) egyetlen bemeneti sor függ.
 
-- qlUserDefinedCombiner(Mode=CombinerMode.Right): minden kimeneti sor egyetlen bemeneti sor jobb (és a bal oldali kulcs azonos értékű potenciálisan összes sorát) függ.
+- qlUserDefinedCombiner(Mode=CombinerMode.Right): minden kimeneti sor függ a jobb oldalon (és ugyanazt a kulcsérték a bal oldali potenciálisan minden sort) egyetlen bemeneti sor.
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Inner): Minden kimeneti sor a bal és jobb azonos értékű egyetlen bemeneti sor függ.
+- SqlUserDefinedCombiner(Mode=CombinerMode.Inner): Minden kimeneti sor bal és jobb ugyanazzal az értékkel egyetlen bemeneti sor függ.
 
 Példa:
 

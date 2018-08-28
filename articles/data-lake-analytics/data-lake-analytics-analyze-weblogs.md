@@ -1,57 +1,56 @@
 ---
 title: Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával
-description: Megtudhatja, hogyan használja a Data Lake Analytics webhelyek naplóinak elemzése.
+description: Ismerje meg, hogyan használja a Data Lake Analytics webhelyek naplóinak elemzése.
 services: data-lake-analytics
 author: saveenr
-manager: saveenr
-editor: jasonwhowell
+ms.author: saveenr
+ms.reviewer: jasonwhowell
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.author: saveenr
-ms.openlocfilehash: 8cb8e0f683c2790d7aebb87a684798ea0a36417f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d25aed196dd6b4ce92ae1cf18e556d1c32295d3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623366"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051967"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával
-Megtudhatja, hogyan használja a Data Lake Analytics, különösen akkor tudni, melyik hivatkozó kérelmei hibába ütközött a webhelyen való webhelyek naplóinak elemzése.
+Ismerje meg, hogyan használja a Data Lake Analytics különösen tudni, mely hivatkozók hibába ütközött a hibákat, a webhelyén való hozzáféréskor webhelynaplók elemzése.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Visual Studio 2015-öt vagy a Visual Studio 2013**.
+* **Visual Studio 2015 vagy Visual Studio 2013**.
 * **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**.
 
-    A Data Lake Tools for Visual Studio telepítése után megjelenik egy **Data Lake** elemnek a **eszközök** elemét a Visual Studióban:
+    A Data Lake Tools for Visual Studio telepítése után megjelenik egy **Data Lake** elemnek, a **eszközök** elemét a Visual Studióban:
 
-    ![U-SQL Visual Studio menü](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
-* **A Data Lake Analytics és a Data Lake Tools for Visual Studio vonatkozó általános ismeretekre**. Első lépések, olvassa el:
+    ![U-SQL Visual Studio menüjében](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
+* **A Data Lake Analytics és a Data Lake Tools for Visual Studio alapszintű ismerete**. Első lépésként lásd:
 
-  * [Fejlesztése a Data Lake tools for Visual Studio használatával U-SQL parancsfájl](data-lake-analytics-data-lake-tools-get-started.md).
-* **Data Lake Analytics-fiók.**  Lásd: [Azure Data Lake Analytics-fiók létrehozása](data-lake-analytics-get-started-portal.md).
-* **A mintaadatok telepítéséhez.** Az Azure portálon, nyissa meg, Data Lake Analytics-fiók, és kattintson a **mintaparancsfájlok** a bal oldali menüben kattintson a **mintaadatok másolása**. 
+  * [A Data Lake tools for Visual Studio használatával U-SQL-parancsfájlok fejlesztése](data-lake-analytics-data-lake-tools-get-started.md).
+* **Data Lake Analytics-fiók.**  Lásd: [hozzon létre egy Azure Data Lake Analytics-fiók](data-lake-analytics-get-started-portal.md).
+* **Telepítse a mintaadatokat.** Az Azure Portalon nyissa meg azt a Data Lake Analytics-fiók, és kattintson a **Mintaszkriptek** a bal oldali menüben, majd kattintson **mintaadatok másolása**. 
 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
-Előtt létrehozhatja és a U-SQL-parancsfájlok tesztelése, először csatlakoztatnia kell az Azure-bA.
+Mielőtt hozhat létre, és tesztelje a U-SQL-szkripteket, akkor először csatlakoznia kell az Azure-bA.
 
 **A Data Lake Analytics szolgáltatáshoz való kapcsolódás**
 
 1. Nyissa meg a Visual Studiót.
 2. Kattintson a **a Data Lake > lehetőségek és beállítások**.
-3. Kattintson a **bejelentkezés**, vagy **felhasználói módosítása** Ha valaki bejelentkezett-e, és kövesse az utasításokat.
-4. Kattintson a **OK** lehetőségek és beállítások párbeszédpanel bezárásához.
+3. Kattintson a **bejelentkezés**, vagy **felhasználó váltása** Ha valaki jelentkezett be, és kövesse az utasításokat.
+4. Kattintson a **OK** a lehetőségek és beállítások párbeszédpanel bezárásához.
 
-**A Data Lake Analytics-fiókok tallózással**
+**A Tallózás gombra a Data Lake Analytics-fiókok**
 
-1. Nyissa meg a Visual Studio eszközből **Server Explorer** press által **CTRL + ALT + S**.
-2. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája, ha vannak ilyenek. A Studio Data Lake Analytics-fiókok nem hozható létre. A fiókok létrehozásával kapcsolatos információkért lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure portállal](data-lake-analytics-get-started-portal.md) vagy [Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md).
+1. Nyissa meg a Visual Studióban a **Server Explorer** Press **CTRL + ALT + S**.
+2. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája, ha vannak ilyenek. Data Lake Analytics-fiókok a studióból nem hozható létre. A fiókok létrehozásával kapcsolatos információkért lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure portállal](data-lake-analytics-get-started-portal.md) vagy [Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md).
 
-## <a name="develop-u-sql-application"></a>U-SQL-alkalmazások fejlesztése
-A U-SQL-alkalmazások többnyire U-SQL parancsfájl. További információk a U-SQL, [Ismerkedés a U-SQL](data-lake-analytics-u-sql-get-started.md).
+## <a name="develop-u-sql-application"></a>U-SQL-alkalmazás fejlesztése
+A U-SQL-alkalmazások többnyire egy U-SQL parancsfájl. U-SQL kapcsolatos további információkért lásd: [Ismerkedés a U-SQL](data-lake-analytics-u-sql-get-started.md).
 
-Az alkalmazás hozzáadása felhasználói operátorok adhat hozzá.  További információkért lásd: [fejlesztése U-SQL-felhasználó által definiált Data Lake Analytics-feladatok operátorok](data-lake-analytics-u-sql-develop-user-defined-operators.md).
+Emellett a felhasználó által definiált operátorok adhat hozzá az alkalmazást.  További információkért lásd: [fejlesztése U-SQL-felhasználó által definiált operátorok a Data Lake Analytics-feladatok](data-lake-analytics-u-sql-develop-user-defined-operators.md).
 
 **Data Lake Analytics-feladat létrehozása és elküldése**
 
@@ -59,8 +58,8 @@ Az alkalmazás hozzáadása felhasználói operátorok adhat hozzá.  További i
 2. Válassza ki a U-SQL projekt.
 
     ![új U-SQL Visual Studio-projekt](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. Kattintson az **OK** gombra. A Visual studio létrehoz egy megoldást Script.usql fájllal.
-4. A Script.usql fájlba írja be a következő parancsfájlt:
+3. Kattintson az **OK** gombra. A Visual studio létrehoz egy megoldást egy Script.usql fájllal.
+4. Adja meg a következő szkriptet a Script.usql fájlba:
 
         // Create a database for easy reuse, so you don't need to read from a file every time.
         CREATE DATABASE IF NOT EXISTS SampleDBTutorials;
@@ -139,8 +138,8 @@ Az alkalmazás hozzáadása felhasználói operátorok adhat hozzá.  További i
                 cs_referer,
                 sc_status;
 
-    A U-SQL ismertetése: [Ismerkedés a Data Lake Analytics U-SQL nyelv](data-lake-analytics-u-sql-get-started.md).    
-5. Új U-SQL parancsfájl hozzáadása a projekthez, és írja be a következőt:
+    A U-SQL ismertetése: [Data Lake Analytics U-SQL nyelv – első lépések](data-lake-analytics-u-sql-get-started.md).    
+5. Új U-SQL parancsfájl hozzáadása a projekthez, és adja meg a következőket:
 
         // Query the referrers that ran into errors
         @content =
@@ -151,23 +150,23 @@ Az alkalmazás hozzáadása felhasználói operátorok adhat hozzá.  További i
         OUTPUT @content
         TO @"/Samples/Outputs/UnsuccessfulResponses.log"
         USING Outputters.Tsv();
-6. Váltson vissza az első U-SQL-parancsfájlt, és mellett a **Submit** gombra, adja meg az Analytics-fiókja.
+6. Váltson vissza az első U-SQL-szkriptet, és mellett a **küldés** gombra, adja meg az Analytics-fiók.
 7. A **Solution Explorer** eszközben kattintson a jobb gombbal a **Script.usql** fájlra, majd kattintson a **Build Script** (Parancsfájl létrehozása) elemre. Ellenőrizze az eredményeket a Tesztkimenet ablaktáblán.
 8. A **Solution Explorer** eszközben kattintson a jobb gombbal a **Script.usql** fájlra, majd kattintson a **Submit Script** (Parancsfájl elküldése) lehetőségre.
-9. Ellenőrizze a **Analytics-fiók** , a egy, ahol szeretné futtatni a feladatot, és kattintson a **Submit**. Az elküldés után az eredmények és a feladatra mutató hivatkozás megjelenik a Data Lake Tools for Visual Studio Eredmények ablakában.
-10. Várjon, amíg a feladat sikeresen befejeződött.  A feladat meghiúsult, valószínűleg hiányzik a forrásfájl.  Lásd: a jelen oktatóanyag című cikk Előfeltételek szakaszát. További hibaelhárítási információért lásd: [figyelése és hibaelhárítása az Azure Data Lake Analytics-feladatok](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
+9. Ellenőrizze a **Analytics-fiók** kívánja futtatni a feladatot, és kattintson a rendszer **küldés**. Az elküldés után az eredmények és a feladatra mutató hivatkozás megjelenik a Data Lake Tools for Visual Studio Eredmények ablakában.
+10. Várjon, amíg a feladat sikeresen befejeződött.  Ha a feladat sikertelen volt, valószínűleg hiányzik a forrásfájl.  Tekintse meg az ebben az oktatóanyagban Előfeltételek szakaszát. További hibaelhárítási információkért lásd: [figyelése és hibaelhárítása az Azure Data Lake Analytics-feladatok](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
 
-    A feladat befejezése után kell jelenik meg a következő képernyő:
+    A feladat befejezése után meg kell a következő képernyő jelenik meg:
 
-    ![a Data lake analytics webes naplók webhelyek naplóinak elemzése](./media/data-lake-analytics-analyze-weblogs/data-lake-analytics-analyze-weblogs-job-completed.png)
-11. Most ismételje meg a 7 – 10 a **Script1.usql**.
+    ![a Data lake analytics webes naplók webhelynaplók elemzése](./media/data-lake-analytics-analyze-weblogs/data-lake-analytics-analyze-weblogs-job-completed.png)
+11. A 7 – 10 lépést megismételve **Script1.usql**.
 
 **Feladat kimenetének megtekintése**
 
 1. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet, bontsa ki a saját Data Lake Analytics-fiókjait, bontsa ki a **Storage Accounts** (Tárfiókok) elemet, kattintson a jobb gombbal az alapértelmezett Data Lake-tárfiókra, majd kattintson az **Explorer** elemre.
-2. Kattintson duplán a **minták** nyissa meg a mappát, és kattintson duplán a **kimenetek**.
+2. Kattintson duplán a **minták** nyissa meg a mappát, majd kattintson duplán a **kimenetek**.
 3. Kattintson duplán a **UnsuccessfulResponsees.log**.
-4. Ahhoz, hogy közvetlenül a kimeneti keresse meg a kimeneti fájl belül a diagram nézet, a feladat is duplán.
+4. Annak érdekében, hogy közvetlenül a kimenetben keresse meg a kimeneti fájlt a diagram nézet a feladat is duplán.
 
 ## <a name="see-also"></a>Lásd még
 A Data Lake Analytics különböző eszközökkel való használatának megismeréséhez lásd:

@@ -10,18 +10,18 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/24/2018
-ms.openlocfilehash: e2ed45d9b87945247a3a4a4cfc58b4beb2353b10
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 08/27/2018
+ms.openlocfilehash: 78ad7a503cb2c99b9dac19a5500a01c8f7b7bfc3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889565"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045398"
 ---
-# <a name="monitoring-migration-activity"></a>Az áttelepítési tevékenység figyelése
+# <a name="monitor-migration-activity"></a>Áttelepítési tevékenység figyelése
 Ebből a cikkből elsajátíthatja egy adatbázisszintű és a egy tábla szintjén egyaránt áttelepítés előrehaladásának figyeléséhez.
 
-## <a name="monitoring-activity-at-the-database-level"></a>Az adatbázis szintjén tevékenységek figyelése
+## <a name="monitor-at-the-database-level"></a>Az adatbázis szintjén figyelése
 Az adatbázis szintjén figyelése, tekintse meg az adatbázisszintű panelen:
 
 ![Adatbázisszintű panel](media\how-to-monitor-migration-activity\dms-database-level-blade.png)
@@ -41,7 +41,7 @@ Az alábbi táblázat az adatbázisszintű panelen lévő mezők listája, és i
   </thead>
   <tbody>
     <tr>
-      <td rowspan="3" class="ActivityStatus">A tevékenység állapota</td>
+      <td rowspan="3" class="ActivityStatus"><strong>A tevékenység állapota</strong></td>
       <td>Fut</td>
       <td>Az áttelepítési tevékenység fut.</td>
     </tr>
@@ -54,7 +54,7 @@ Az alábbi táblázat az adatbázisszintű panelen lévő mezők listája, és i
       <td>Az áttelepítés sikertelen volt. A "Lásd a hiba részletei" hivatkozásra a teljes hibaüzenetet a migrálás részletei alapján.</td>
     </tr>
     <tr>
-      <td rowspan="4" class="Status">status</td>
+      <td rowspan="4" class="Status"><strong>Állapot</strong></td>
       <td>Inicializálás</td>
       <td>A DMS a migrálási folyamat beállítását.</td>
     </tr>
@@ -71,7 +71,7 @@ Az alábbi táblázat az adatbázisszintű panelen lévő mezők listája, és i
       <td>Az áttelepítés sikertelen volt. Kattintson a migrálás részleteit megtekintheti, migrálási hibák.</td>
     </tr>
     <tr>
-      <td rowspan="5" class="migration-details">Migrálás részletei</td>
+      <td rowspan="5" class="migration-details"><strong>Migrálás részletei</strong></td>
       <td>A migrálási folyamat inicializálása</td>
       <td>A DMS a migrálási folyamat beállítását.</td>
     </tr>
@@ -92,14 +92,14 @@ Az alábbi táblázat az adatbázisszintű panelen lévő mezők listája, és i
       <td>Kattintson a hivatkozásra a hiba részleteinek megjelenítése.</td>
     </tr>
     <tr>
-      <td rowspan="1" class="duration">Időtartam</td>
+      <td rowspan="1" class="duration"><strong>Időtartam</strong></td>
       <td>–</td>
       <td>Teljes idő a migrálási tevékenység inicializálása közben az áttelepítés befejeződött, vagy áttelepítés hibát jelzett.</td>
     </tr>
      </tbody>
 </table>
 
-## <a name="monitoring-migration-activity-at-table-level--quick-summary"></a>Tábla szintjén – rövid összefoglalás az áttelepítési tevékenység figyelése
+## <a name="monitor-at-table-level--quick-summary"></a>Tábla szintjén – rövid összefoglalás figyelése
 A tábla szintjén figyelése, tekintse meg a táblaszintű panel. A panel felső részén látható a teljes terhelés és a növekményes frissítéseket át a részletes sorok száma. 
 
 A panel alsó részén felsorolja a táblákat, és az áttelepítési folyamat gyors összegzését jeleníti meg.
@@ -110,17 +110,17 @@ A következő táblázat ismerteti a mezőket a táblaszintű részletei közöt
 
 | Mező neve        | Leírás       |
 | ------------- | ------------- |
-| A teljes terhelés befejeződött      | Táblák száma az adatok teljes betöltése befejeződött. |
-| Teljes terhelés várólistán van      | A teljes terhelés céljából várólistára helyezett táblák száma.      |
-| Teljes terhelés betöltése folyamatban van | Nem sikerült a táblák száma.      |
-| Növekményes bővítések      | Adatváltozások száma rögzítése (CDC) frissítések a alkalmazni a cél sorok. |
-| Növekményes beszúrások      | CDC száma a alkalmazni a cél sorok beszúrása.      |
-| Növekményes törlések | CDC száma a alkalmazni a cél sorok törlése.      |
-| Függőben lévő módosítások      | CDC váró továbbra is érvényben sorok számát a cél. |
-| Alkalmazott módosítások      | CDC összesen frissíti, a beszúrások, és a alkalmazni a cél sorok törlése.      |
-| Hibás állapotú táblák | "Hiba" állapotban van, a migrálás során táblák számát. Néhány példa, amelyek táblákat is hibás állapotú akkor, ha a cél az azonosított ismétlődések vannak, vagy az adatok nem kompatibilis a céloldali tábla betöltése.      |
+| **A teljes terhelés befejeződött**      | Táblák száma az adatok teljes betöltése befejeződött. |
+| **Teljes terhelés várólistán van**      | A teljes terhelés céljából várólistára helyezett táblák száma.      |
+| **Teljes terhelés betöltése folyamatban van** | Nem sikerült a táblák száma.      |
+| **Növekményes frissítések**      | Adatváltozások száma rögzítése (CDC) frissítések a alkalmazni a cél sorok. |
+| **Növekményes Beszúrások**      | CDC száma a alkalmazni a cél sorok beszúrása.      |
+| **Növekményes törlése** | CDC száma a alkalmazni a cél sorok törlése.      |
+| **Függőben lévő változások**      | CDC váró továbbra is érvényben sorok számát a cél. |
+| **Alkalmazott módosítások**      | CDC összesen frissíti, a beszúrások, és a alkalmazni a cél sorok törlése.      |
+| **A hibás állapotú táblák** | "Hiba" állapotban van, a migrálás során táblák számát. Néhány példa, amelyek táblákat is hibás állapotú akkor, ha a cél az azonosított ismétlődések vannak, vagy az adatok nem kompatibilis a céloldali tábla betöltése.      |
 
-## <a name="monitoring-migration-activity-at-table-level--detailed-summary"></a>Tábla szintjén – részletes összegzése az áttelepítési tevékenység figyelése
+## <a name="monitor-at-table-level--detailed-summary"></a>Tábla szintjén – részletes összegzése figyelése
 Nincsenek azt mutatják be, a teljes terhelés és az adatok növekményes szinkronizálása az áttelepítési folyamat két lap található.
     
 ![A teljes terhelés lap](media\how-to-monitor-migration-activity\dms-full-load-tab.png)
@@ -131,12 +131,12 @@ A következő táblázat ismerteti a táblázat szintű áttelepítési folyamat
 
 | Mező neve        | Leírás       |
 | ------------- | ------------- |
-| Állapot – szinkronizálása      | A folyamatos szinkronizálás fut. |
-| Beszúrás      | CDC száma a alkalmazni a cél sorok beszúrása.      |
-| Frissítés | CDC-frissítések a alkalmazni a cél sorok száma.      |
-| Törlés      | CDC száma a alkalmazni a cél sorok törlése. |
-| Alkalmazva összesen      | CDC összesen frissíti, a beszúrások, és a alkalmazni a cél sorok törlése. |
-| Adathibák | Az adatok hibák száma ebben a táblában történt. Néhány példa a hibák *511: %d Ez meghaladja a megengedett maximális sorméretet % d, 8114 méretű sor nem hozható létre: Hiba történt a(z) %ls adattípus %ls.*  Ügyfél kérdezze le a hiba részleteinek megtekintéséhez az Azure cél attms_apply_exceptions táblából.    |
+| **Állapot – szinkronizálása**      | A folyamatos szinkronizálás fut. |
+| **Beszúrása**      | CDC száma a alkalmazni a cél sorok beszúrása.      |
+| **Update** | CDC-frissítések a alkalmazni a cél sorok száma.      |
+| **Törlés**      | CDC száma a alkalmazni a cél sorok törlése. |
+| **Alkalmazva összesen**      | CDC összesen frissíti, a beszúrások, és a alkalmazni a cél sorok törlése. |
+| **Adathibák** | Az adatok hibák száma ebben a táblában történt. Néhány példa a hibák *511: %d Ez meghaladja a megengedett maximális sorméretet % d, 8114 méretű sor nem hozható létre: Hiba történt a(z) %ls adattípus %ls.*  Ügyfél kérdezze le a hiba részleteinek megtekintéséhez az Azure cél attms_apply_exceptions táblából.    |
 
 > [!NOTE]
 > CDC-értékek az Insert, Update és Delete és a teljes alkalmazott lecsökkenhet adatbázis átállás vagy áttelepítés újraindul.

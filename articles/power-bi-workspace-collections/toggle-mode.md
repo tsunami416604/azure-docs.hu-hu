@@ -1,41 +1,34 @@
 ---
-title: Váltás a nézet és szerkesztési módban a jelentésekhez a Power BI munkaterület gyűjtemények |} Microsoft Docs
-description: Megtudhatja, hogyan nézet közötti váltáshoz és szerkesztési módban a jelentésekhez a Power BI munkaterület gyűjtemények belül.
+title: Nézet közötti váltás és a szerkesztési mód a jelentések a Power BI-Munkaterületcsoportok |} A Microsoft Docs
+description: Ismerje meg, hogyan nézet közötti váltás és a szerkesztési mód a jelentések a Power BI-Munkaterületcsoportok belül.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
-ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 23a8c4f0dd626a623df56de9546258a23d549d1a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 19a576440742684849ffc74092162be7008621ba
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409951"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045018"
 ---
-# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Váltás a nézet és szerkesztési módban a jelentésekhez a Power BI munkaterület gyűjtemények
+# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Nézet közötti váltás és a szerkesztési mód a jelentések a Power BI-Munkaterületcsoportok
 
-Megtudhatja, hogyan nézet közötti váltáshoz és szerkesztési módban a jelentésekhez a Power BI munkaterület gyűjtemények belül.
+Ismerje meg, hogyan nézet közötti váltás és a szerkesztési mód a jelentések a Power BI-Munkaterületcsoportok belül.
 
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-## <a name="creating-an-access-token"></a>Egy hozzáférési jogkivonat létrehozása
+## <a name="creating-an-access-token"></a>Hozzáférési jogkivonat létrehozása
 
-Olyan hozzáférési jogkivonatot, amely lehetővé teszi a megtekintése és-jelentés szerkesztése létrehozásához szükséges. Szerkesztheti, és mentse a jelentést, van szüksége a **Report.ReadWrite** token engedéllyel. További információkért lásd: [Authenticating és engedélyezése a Power BI munkaterület gyűjteményekben](app-token-flow.md).
+Szeretne létrehozni, amely megtekintéséhez és a egy jelentés szerkesztése is lehetővé teszi hozzáférési jogkivonatot. Szerkesztése és a egy jelentés mentése kell a **Report.ReadWrite** jogkivonat-engedélyt. További információkért lásd: [történő hitelesítést és az engedélyezés a Power BI-Munkaterületcsoportok](app-token-flow.md).
 
 > [!NOTE]
-> Ez lehetővé teszi szerkesztése és a meglévő jelentés módosításainak mentéséhez. Ha azt is szeretné funkciót támogató **Mentés másként**, akkor meg kell adnia a további engedélyek. További információkért lásd: [hatókörök](app-token-flow.md#scopes).
+> Ez lehetővé teszi, hogy szerkesztheti, és mentse a módosításokat a meglévő jelentés. Ha szeretné is, a függvény az igazoló **Mentés másként**, meg kell adnia a további engedélyeket. További információkért lásd: [hatókörök](app-token-flow.md#scopes).
 
 ```
 using Microsoft.PowerBI.Security;
@@ -47,11 +40,11 @@ PowerBIToken embedToken = PowerBIToken.CreateReportEmbedTokenForCreation(workspa
 var token = embedToken.Generate("{access key}");
 ```
 
-## <a name="embed-configuration"></a>Konfigurációs beágyazása
+## <a name="embed-configuration"></a>A beágyazási konfiguráció
 
-Kell megadnia az engedélyek és a viewMode láthatók a Mentés gombra kattint, szerkesztési módban. További információkért lásd: [konfigurációs részletek beágyazása](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Meg kell adnia a engedélyeket és a egy viewMode megtekintve láthatja a Mentés gombra a szerkesztési módban. További információkért lásd: [beágyazási konfiguráció részletei](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
-Például a JavaScript:
+Ha például a JavaScript:
 
 ```
    <div id="reportContainer"></div>
@@ -83,11 +76,11 @@ Például a JavaScript:
     var report = powerbi.embed(reportContainer, config);
 ```
 
-Ez a jelentés beágyazása a megjelenítési mód alapján jelzi **viewMode** állítják be **modellek. ViewMode.View**.
+Ez azt jelzi, hogy a jelentés beágyazása a megtekintési üzemmódba alapján **viewMode** beállítása **modellek. ViewMode.View**.
 
 ## <a name="view-mode"></a>Megjelenítési mód
 
-A következő JavaScript használatával nézet módba kapcsolni, ha Ön a szerkesztési módban.
+A következő JavaScript használatával válthat a megtekintési üzemmódba, ha a szerkesztési módból.
 
 ```
 // Get a reference to the embedded report HTML element
@@ -103,7 +96,7 @@ report.switchMode("view");
 
 ## <a name="edit-mode"></a>Szerkesztőmód
 
-A következő JavaScript segítségével átváltani a szerkesztési módot, ha megtekintési módban.
+A következő JavaScript segítségével váltson szerkesztőmódra, ha a megtekintési módban.
 
 ```
 // Get a reference to the embedded report HTML element
@@ -124,7 +117,7 @@ report.switchMode("edit");
 [Hitelesítés és engedélyezés a Power BI-munkaterületcsoportok használatával](app-token-flow.md)  
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
 [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[A csharp nyelvű Power bi Git-tárház](https://github.com/Microsoft/PowerBI-CSharp)  
-[Power bi-csomópont Git-tárház](https://github.com/Microsoft/PowerBI-Node)  
+[A Power bi-CSharp Git-adattár](https://github.com/Microsoft/PowerBI-CSharp)  
+[A Power bi-csomópont Git-adattár](https://github.com/Microsoft/PowerBI-Node)  
 
 További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)

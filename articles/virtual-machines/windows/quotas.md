@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 991deed871594efd310cfd24c5e9fc6a369b1a75
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c766303920913a3ed6e654b3f9b29a0b99bb012a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628698"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041275"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Virtuális gép vCPU-kvóták
 
@@ -79,7 +79,7 @@ Premium Storage Managed Disks                1 10000 Count
 
 
 ## <a name="reserved-vm-instances"></a>Reserved VM Instances
-Fenntartott VM-példányok, amelyek hatóköre egy előfizetés, egy új aspektus adnak hozzá a vCPU-kvóták. Ezeket az értékeket a kell lennie az előfizetésben üzembe helyezhető, rögzített méretű példányok ismertetik. A kvóta rendszert, a kvóta annak biztosítása érdekében, fenntartott VM-példányok üzembe helyezhető az előfizetésben foglalt dolgoznak helyettesíti. Például ha egy adott előfizetésben 10 Standard_D1 fenntartott VM-példánya a tanúsítványalgoritmusok maximális Standard_D1 fenntartott Virtuálisgép-példányok 10 lesz. Ez azt eredményezi, hogy mindig is elérhető a teljes regionális Vcpu-kvóta Standard_D1-példányokhoz használandó legalább 10 vcpu-k, és legalább 10 vcpu-k nincsenek elérhető, a Standard D család vCPU-kvóta Standard_D1-példányokhoz használandó Azure.
+Fenntartott VM-példányok, amelyek hatóköre egy előfizetés nélkül a virtuális gép mérete rugalmasan, egy új aspektus adnak hozzá a vCPU-kvóták. Ezeket az értékeket a kell lennie az előfizetésben üzembe helyezhető, rögzített méretű példányok ismertetik. A kvóta rendszert, a kvóta annak biztosítása érdekében, fenntartott VM-példányok üzembe helyezhető az előfizetésben foglalt dolgoznak helyettesíti. Például ha egy adott előfizetésben 10 Standard_D1 fenntartott VM-példánya a tanúsítványalgoritmusok maximális Standard_D1 fenntartott Virtuálisgép-példányok 10 lesz. Ez azt eredményezi, hogy mindig is elérhető a teljes regionális Vcpu-kvóta Standard_D1-példányokhoz használandó legalább 10 vcpu-k, és legalább 10 vcpu-k nincsenek elérhető, a Standard D család vCPU-kvóta Standard_D1-példányokhoz használandó Azure.
 
 Ha egy egyetlen előfizetés fenntartott példányok vásárlása szükséges egy kvótájának növelését, [a kvóta növelésére](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) az előfizetésén.
 

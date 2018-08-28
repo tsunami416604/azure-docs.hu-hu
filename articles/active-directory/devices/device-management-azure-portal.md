@@ -1,5 +1,5 @@
 ---
-title: Az Eszközfelügyelet az Azure portal használatával |} A Microsoft Docs
+title: Eszközkezelés az Azure portal használatával |} A Microsoft Docs
 description: Ismerje meg, hogyan használja az Azure portal-eszközök kezeléséhez.
 services: active-directory
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: bc29fbd0946f0abfe692e2270d145cd2cb292356
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: ff1d51021038909c132bef4cb680589b9951f218
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054096"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041425"
 ---
-# <a name="managing-devices-using-the-azure-portal"></a>Az Eszközfelügyelet az Azure portal használatával
+# <a name="how-to-manage-devices-using-the-azure-portal"></a>Eszközkezelés az Azure portal használatával
 
 
 Az Eszközfelügyelet az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók az erőforrásokhoz hozzáférő eszközei megfeleljenek a biztonsági és megfelelőségi szabványoknak. 
@@ -42,11 +42,11 @@ Az Azure portal egy központi helyen kezelheti az eszközöket biztosít. Ennek 
 
 2. A bal oldali navigációs sávon kattintson **Active Directory**.
 
-    ![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/01.png)
+    ![Eszközbeállítások megadása](./media/device-management-azure-portal/01.png)
 
 3. Az a **kezelés** területén kattintson **eszközök**.
 
-    ![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/74.png)
+    ![Eszközbeállítások megadása](./media/device-management-azure-portal/74.png)
  
 A **eszközök** lap lehetővé teszi, hogy:
 
@@ -59,11 +59,11 @@ A **eszközök** lap lehetővé teszi, hogy:
 - Tekintse át az eszközfelügyeleti kapcsolódó naplók  
   
 
-## <a name="configure-device-settings"></a>Eszközbeállítások konfigurálása
+## <a name="configure-device-settings"></a>Eszközbeállítások megadása
 
 Az eszközök kezeléséhez az eszközöket az Azure portal segítségével, kell lennie [regisztrált vagy azzal összekapcsolt](overview.md#getting-devices-under-the-control-of-azure-ad) az Azure ad-hez. A rendszergazdák finomhangolhatja regisztrálása és az eszközök csatlakoztatása az eszköz beállításait konfigurálja. 
 
-![Eszközbeállítások konfigurálása](./media/device-management-azure-portal/22.png)
+![Eszközbeállítások megadása](./media/device-management-azure-portal/22.png)
 
 Az eszköz beállításai lapon konfigurálását teszi lehetővé:
 
@@ -243,7 +243,7 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 - Tevékenység
 - Dátumtartomány
 - Cél
-- Kezdeményező (szereplő)
+- Kezdeményező (Szereplő)
 
 A szűrők mellett bejegyzéseit konkrét bejegyzések kereshet.
 

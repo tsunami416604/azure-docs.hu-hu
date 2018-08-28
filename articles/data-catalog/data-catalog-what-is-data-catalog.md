@@ -1,25 +1,19 @@
 ---
-title: "Bevezetés az Azure Data Catalog használatába | Microsoft Docs"
-description: "Ez a cikk a Microsoft Azure Data Catalog áttekintését tartalmazza, beleértve a szolgáltatás funkcióit, és azokat a problémákat, amelyeket a szolgáltatás segítségével áthidalhat. A Data Catalog minden felhasználó számára lehetővé teszi adatforrások regisztrálását, felfedezését, értelmezését és felhasználását."
+title: Az Azure Data Catalog bemutatása
+description: Ez a cikk a Microsoft Azure Data Catalog áttekintését tartalmazza, beleértve a szolgáltatás funkcióit, és azokat a problémákat, amelyeket a szolgáltatás segítségével áthidalhat. A Data Catalog minden felhasználó számára lehetővé teszi adatforrások regisztrálását, felfedezését, értelmezését és felhasználását.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: cc733907-17ec-4153-9f0c-5b3754b2db19
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: edf6e1d8b86d9773b54353bb70f000bcdf40e5ec
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: HT
+ms.openlocfilehash: ba9cce1c63145bea25e657cb690287e1cbf5a4e4
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053703"
 ---
 # <a name="what-is-azure-data-catalog"></a>Mi az az Azure Data Catalog?
 Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely segít a felhasználóknak megtalálni a keresett adatforrásokat és értelmezni őket. Eközben a Data Catalog a vállalatoknak is segít még több értéket kinyerni a meglévő befektetésekből. 
@@ -30,7 +24,7 @@ A Data Catalog segítségével bármely felhasználó (elemző, adattudós, vagy
 A vállalati adatforrások felfedezése hosszú ideje egy organikus, kollektív tudáson alapú folyamat. Ez számos kihívást gördít azon vállalatok elé, akik az információs adategységeiket a lehető leghatékonyabban szeretnék kihasználni:
 
 * A felhasználók lehet, hogy csak akkor szereznek tudomást egy adatforrás létezéséről, amikor egy másik munkafolyamat során kapcsolatba kerülnek vele. Nincs egyetlen központi hely az adatforrások nyilvántartására.
-* A felhasználók ügyfélalkalmazásaikkal csak akkor tudják elérni az adott adatforrást, ha tudják annak pontos helyét. A hagyományos adatfelhasználási folyamatok során a felhasználóknak tudniuk kell a megfelelő kapcsolati karakterláncot, vagy az elérési utat.
+* A felhasználók ügyfélalkalmazásaikkal csak akkor tudják elérni az adott adatforrást, ha tudják annak pontos helyét. A hagyományos adatfelhasználási folyamatok során a felhasználóknak tudniuk kell a megfelelő kapcsolati sztringet, vagy az elérési utat.
 * Hacsak nem tudják a felhasználók az adott adatforráshoz tartozó dokumentáció helyét, nem fogják tudni pontosan, hogyan is kell az adatokat felhasználni. Lehet, hogy az adatforrások és dokumentáció csak különböző helyeken és különböző módokon érhetőek el.
 * Ha a felhasználóknak kérdése van egy adott információval kapcsolatban, személyesen kell megkeresniük az adatokért felelős szakembert vagy csapatot. Nincs explicit kapcsolat az adatok és az azok felhasználására szakértői módon rálátó emberek között.
 * Hacsak egy felhasználó nincs tisztában az adatforráshoz való hozzáférés kérelmezésének menetével, az adatforrás és a hozzá tartozó dokumentáció felfedezésével még mindig nem fér hozzá a szükséges adatokhoz.

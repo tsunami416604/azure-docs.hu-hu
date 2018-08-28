@@ -3,18 +3,18 @@ title: Az Apache Hive – Azure HDInsight Twitter-adatok elemzése
 description: Megtudhatja, hogyan használható a Hive és a Hadoop HDInsight, nyers TWitter-adatok átalakítása a kereshető Hive-táblába.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: e48dacd77b807f5a982ac4be2dcfa4b970b342ef
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a20f9ef6e42027cf3f499654ac8a43eee7b41854
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596103"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104078"
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>A HDInsight Hive és a Hadoop használatával Twitter-adatok elemzése
 

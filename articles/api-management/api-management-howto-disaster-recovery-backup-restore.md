@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ce3208fed119452ef9383fcb5b5eefb1aac6e224
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: ed8c34a7e1e11d431d9a3b416067736da0d1612c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061392"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046379"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás szolgáltatás biztonsági mentése és visszaállítása az Azure API Management szolgáltatásban
 
@@ -179,7 +179,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 Ahol:
 
 * `subscriptionId` -a visszaállítani kívánt biztonsági másolat az API Management szolgáltatást tartalmazó előfizetés azonosítója
-* `resourceGroupName` – egy karakterlánc formájában "Api - alapértelmezett: {szolgáltatás-régió}", ahol `service-region` azonosít, amelyen a visszaállítani kívánt biztonsági másolat az API Management-szolgáltatás található, például az Azure-régió `North-Central-US`
+* `resourceGroupName` -az erőforráscsoport, amely tartalmazza a visszaállítani kívánt biztonsági másolat az Azure API Management-szolgáltatás neve
 * `serviceName` – az API Management szolgáltatás visszaállított be a létrehozása idején már megadott neve
 * `api-version` -lecserélése `2018-06-01-preview`
 

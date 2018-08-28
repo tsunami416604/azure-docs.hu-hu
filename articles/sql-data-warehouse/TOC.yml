@@ -5,8 +5,18 @@ items:
   items:
   - name: Az SQL Data Warehouse bemutatása
     href: sql-data-warehouse-overview-what-is.md
+  - name: Az SQL Data Warehouse architektúrája
+    href: massively-parallel-processing-mpp-architecture.md
+  - name: Adattárházegységek
+    href: what-is-a-data-warehouse-unit-dwu-cdwu.md
   - name: Hasznos tanácsok
     href: cheat-sheet.md
+  - name: Ajánlott eljárások
+    href: sql-data-warehouse-best-practices.md
+  - name: Kapacitási korlátok
+    href: sql-data-warehouse-service-capacity-limits.md
+  - name: GYIK
+    href: sql-data-warehouse-overview-faq.md
 - name: Kibocsátási megjegyzések
   items:
   - name: 2018. augusztus
@@ -33,7 +43,7 @@ items:
       href: pause-and-resume-compute-portal.md
     - name: PowerShell
       href: pause-and-resume-compute-powershell.md
-  - name: Méretnövelés és -csökkentés
+  - name: Méretezés
     items:
     - name: Portál
       href: quickstart-scale-compute-portal.md
@@ -78,18 +88,6 @@ items:
     items:
     - name: Áttekintés
       href: sql-data-warehouse-overview-develop.md
-    - name: Adattárház-összetevők
-      href: sql-data-warehouse-overview-workload.md
-    - name: Ajánlott eljárások
-      href: sql-data-warehouse-best-practices.md
-    - name: MPP-architektúra
-      href: massively-parallel-processing-mpp-architecture.md
-    - name: Adattárházegységek
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
-    - name: Kapacitási korlátok
-      href: sql-data-warehouse-service-capacity-limits.md
-    - name: GYIK
-      href: sql-data-warehouse-overview-faq.md
     - name: Táblák
       items:
       - name: Áttekintés
@@ -112,14 +110,6 @@ items:
         href: sql-data-warehouse-tables-statistics.md
       - name: Ideiglenes
         href: sql-data-warehouse-tables-temporary.md
-    - name: Lekérdezések
-      items:
-      - name: Dinamikus SQL
-        href: sql-data-warehouse-develop-dynamic-sql.md
-      - name: Csoportosítás beállítások szerint
-        href: sql-data-warehouse-develop-group-by-options.md
-      - name: Címkék
-        href: sql-data-warehouse-develop-label.md
     - name: A T-SQL nyelvi elemei
       items:
       - name: Hurkok
@@ -136,6 +126,14 @@ items:
         href: sql-data-warehouse-develop-variable-assignment.md
       - name: Nézetek
         href: sql-data-warehouse-develop-views.md
+  - name: Lekérdezés
+    items:
+    - name: Dinamikus SQL
+      href: sql-data-warehouse-develop-dynamic-sql.md
+    - name: Csoportosítás beállítások szerint
+      href: sql-data-warehouse-develop-group-by-options.md
+    - name: Címkék
+      href: sql-data-warehouse-develop-label.md
   - name: Számítási feladatok kezelése
     items:
     - name: Erőforrásosztályok és számítási feladatok kezelése
@@ -278,9 +276,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Adatkezelés
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: e9148d92614cf0c383ab1e915cce3e16bb9ff7c0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: bdda7231ea4703b33c8547e493cbd47b68cf9aab
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745214"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42915125"

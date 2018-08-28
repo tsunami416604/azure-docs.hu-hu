@@ -8,16 +8,16 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ad0366d333266af0b16a7acaaa4519f20a951a80
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: f42d3fb709807d77fb0f390b6da76efc4a60dced
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342708"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090570"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-szkriptek futtatása a Windows virtuális gép futtatása paranccsal
 
-Futtassa a parancsot használja a Virtuálisgép-ügynök Windows Azure virtuális Gépeken belül rendszerhéj PowerShell-parancsfájlok futtatásához. Ezek a parancsfájlok vagy általános számítógép-felügyelet is használható, és segítségével gyorsan diagnosztizálhatja és a virtuális gép hozzáférés és a hálózati problémák elhárítására és a egy jó állapotba a virtuális gép lekérése.
+Futtassa a parancsot használja a Virtuálisgép-ügynök Windows Azure virtuális Gépen belül a PowerShell-parancsfájlok futtatását. Ezek a parancsfájlok vagy általános számítógép-felügyelet is használható, és segítségével gyorsan diagnosztizálhatja és a virtuális gép hozzáférés és a hálózati problémák elhárítására és a egy jó állapotba a virtuális gép lekérése.
 
 ## <a name="benefits"></a>Előnyök
 

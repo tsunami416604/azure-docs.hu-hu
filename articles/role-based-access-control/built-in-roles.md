@@ -15,12 +15,12 @@ ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 537777d2e379959d427c025036652a87ecc4a1fe
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: e03b2ab45edd57a124dcc960ff518ece4902d2fa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617158"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048368"
 ---
 # <a name="built-in-roles-in-azure"></a>Beépített szerepkörök az Azure-ban
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -43,7 +43,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [API Management szolgáltatás operátori szerepköre](#api-management-service-operator-role) | Szolgáltatásokat kezelhet, de API-kat nem |
 | [API Management szolgáltatás olvasói szerepköre](#api-management-service-reader-role) | Írásvédett hozzáférés a szolgáltatáshoz és az API-khoz |
 | [Application Insights-összetevők Közreműködője](#application-insights-component-contributor) | Kezelhet Application Insights-összetevőket |
-| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Engedélyt ad a felhasználónak az Application Insights Snapshot Debugger szolgáltatásainak használatára |
+| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Engedélyt ad a felhasználónak megtekintése és letöltése az Application Insights Snapshot Debugger az gyűjtött hibakeresési pillanatképek. Vegye figyelembe, hogy ezt a szerepkört a sem tartalmazza a [tulajdonosa](#owner) sem [közreműködői](#contributor) szerepköröket. |
 | [Automation-feladat operátora](#automation-job-operator) | Feladatok létrehozása és kezelése Automation-runbookok használatával. |
 | [Automation-operátor](#automation-operator) | Az Automation-operátorok elindíthatnak, leállíthatnak, felfüggeszthetnek és folytathatnak feladatokat |
 | [Automation-Runbook operátora](#automation-runbook-operator) | Runbook-tulajdonságok olvasása – a runbook-feladatok létrehozásához. |

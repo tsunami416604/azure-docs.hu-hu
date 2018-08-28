@@ -1,64 +1,58 @@
 ---
 title: Ismerkedés egy minta segítségével
-description: Ebben a cikkben azt fogja megismerteti a Power BI munkaterület gyűjtemények get elindított minta.
+description: Ebben a cikkben a Power BI-Munkaterületcsoportok get elindított mintához nyomán meg.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 4daa675092bed1788025e7e3f7e7e11d02ef1671
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cd7da8d2bbd684df29432bb924bdae3cd9ac7e64
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31414881"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044437"
 ---
-# <a name="get-started-with-power-bi-workspace-collections-sample"></a>Bevezetés a Power BI munkaterület gyűjtemények minta használatába
+# <a name="get-started-with-power-bi-workspace-collections-sample"></a>Ismerkedés a Power BI-Munkaterületcsoportok minta
 
-A **Microsoft Power BI munkaterület gyűjtemények**, akkor integrálható a Power BI-jelentéseket jobbra a webhelyen vagy az alkalmazásokat. Ebben a cikkben bemutatása után, hogy a **Power BI munkaterület gyűjtemények** get elindított minta.
+A **a Microsoft Power BI-Munkaterületcsoportok**, integrálható a Power BI-jelentéseket közvetlenül a webes vagy mobilalkalmazásaiba. Ebben a cikkben azt vezeti be, hogy a **Power BI-Munkaterületcsoportok** get elindított minta.
 
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-Ahhoz, hogy nyissa meg a további, szeretné-e menteni a következőket: ezek segítséget a Power BI-jelentéseket integrációja a mintaalkalmazás és a saját alkalmazásai túl.
+Mielőtt továbbmennénk, ahova menteni szeretné az alábbi forrásanyagokat: biztosítják, amikor a Power BI-jelentések integrálása a mintaalkalmazást, és a saját alkalmazások túl.
 
 * [Munkaterület webes mintaalkalmazás](http://go.microsoft.com/fwlink/?LinkId=761493)
-* [A Power BI munkaterület gyűjtemények API-referencia](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [A Power BI .NET SDK ](http://go.microsoft.com/fwlink/?LinkId=746472) (NuGet keresztül érhető el)
-* [JavaScript-jelentés beágyazása minta](https://microsoft.github.io/PowerBI-JavaScript/demo)
+* [A Power BI munkaterületi gyűjtemények API-referencia](https://msdn.microsoft.com/library/azure/mt711507.aspx)
+* [A Power BI .NET SDK-val ](http://go.microsoft.com/fwlink/?LinkId=746472) (NuGet-n keresztül érhető el)
+* [A jelentés JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
-> Mielőtt is beállíthat, és futtassa a Power BI munkaterület gyűjtemények első lépések minta, legalább egy létrehozásához szükséges **munkaterület-csoport** az Azure-előfizetésben. Hogyan hozzon létre egy **munkaterület-csoportok** az Azure portálon, lásd: [első lépések a Power BI munkaterület gyűjtemények](get-started.md).
+> Konfigurálhatja, és futtassa a Power BI-Munkaterületcsoportok első lépések minta, meg kell hoznia legalább egy **munkaterület-csoport** az Azure-előfizetésében. Megtudhatja, hogyan hozhat létre egy **munkaterület-csoport** tekintse meg az Azure Portalon [– első lépések a Power BI-Munkaterületcsoportok](get-started.md).
 
 ## <a name="configure-the-sample-app"></a>A mintaalkalmazás konfigurálása
 
-Bemutatjuk, keresztül érik el a mintaalkalmazás futtatásához szükséges összetevőket a Visual Studio fejlesztési környezet beállítása.
+Vegyük végig a Visual Studio fejlesztési környezet beállítása a mintaalkalmazás futtatásához szükséges összetevőinek eléréséhez.
 
-1. Töltse le és csomagolja ki a [Power BI munkaterület gyűjtemények - jelentés integrálásához webalkalmazás](http://go.microsoft.com/fwlink/?LinkId=761493) mintát a Githubon.
-2. Nyissa meg **Power bi-embedded.sln** a Visual Studióban. Szükség lehet végrehajtani a **-csomag** a NuGet-Csomagkezelő konzol frissítéséhez a csomagokat a megoldásban használt parancsot.
+1. Töltse le és csomagolja ki a [Power BI-Munkaterületcsoportok - jelentés integrálása egy webalkalmazásba](http://go.microsoft.com/fwlink/?LinkId=761493) mintát a Githubon.
+2. Nyissa meg **Power bi-embedded.sln** a Visual Studióban. Szükség lehet végrehajtani a **-csomag** a NuGet Package Manager konzol frissítéséhez a csomagokat a megoldásban használt parancsot.
 3. Hozza létre a megoldást.
-4. Futtassa a **ProvisionSample** konzolalkalmazást. A minta-Konzolalkalmazás munkaterület kiépíteni, és PBIX-fájl importálása.
-5. Kiépítéséhez egy új **munkaterület**, válassza az 1. lehetőség – **gyűjtési felügyeleti**, és választhatja meg a 6., **új munkaterület kiépítése**
-6. Importálhatja egy új **jelentés**, válassza ki a 2. lehetőség – **jelentést a felügyeleti**, majd válassza ki a 3. lehetőség – **pbix-fájlt asztali importálása fájlból egy munkaterület**.
+4. Futtassa a **ProvisionSample** konzolalkalmazást. A mintaalkalmazás konzol egy munkaterület kiépítése és a PBIX-fájl importálása.
+5. Kiépítéséhez egy új **munkaterület**, válassza ki az 1. lehetőség – **gyűjtési felügyeleti**, és válassza ki a lehetőséget 6, **új munkaterület kiépítése**
+6. Egy új importálása **jelentés**, válassza ki a 2. lehetőség **jelentse a felügyeleti**, majd válassza ki a 3. lehetőség – **importálja. PBIX asztali fájl a munkaterületre**.
 
-7. Adja meg a **munkaterület-csoportok** nevét, és **hozzáférési kulcs**. Ezek kaphat a **Azure-portálon**. További információt az beszerzése a **a hozzáférési kulcsot**, lásd: [Power BI API elérési kulcsainak megtekintése](get-started.md#view-power-bi-api-access-keys) a Ismerkedés a Microsoft Power BI Embedded.
+7. Adja meg a **munkaterület-csoport** nevét, és **hívóbetű**. Olvashatók be ezeket a **az Azure portal**. További információk beszerzése a **hozzáférési kulcs**, lásd: [Power BI API elérési kulcsainak megtekintése](get-started.md#view-power-bi-api-access-keys) a használatának első lépései a Microsoft Power BI Embedded.
 
-    ![Tárelérési kulcsok az Azure portálon](media/get-started-sample/azure-portal.png)
-8. Másolja ki és mentse az újonnan létrehozott **munkaterület azonosítója** használatára a cikk későbbi részében. Után a **munkaterület azonosítója** van létrehozva, megtalálja a **Azure-portálon**.
+    ![Hozzáférési kulcsok Azure Portalon](media/get-started-sample/azure-portal.png)
+8. Másolja ki és mentse az újonnan létrehozott **munkaterület-Azonosítót** a cikk későbbi részében használni. Után a **munkaterület-Azonosítót** van létrehozva, akkor is megtalálhatják azt a **az Azure portal**.
 
-    ![Munkaterületének Azonosítóját az Azure portálon](media/get-started-sample/workspace-id.png)
-9. A PBIX-fájl importálása a **munkaterület**, a beállításnak a **6. Egy meglévő munkaterületre pbix-fájlt asztali importfájl**. Ha még nem rendelkezik a PBIX-fájl lesz szüksége, letöltheti a [kiskereskedelmi elemzési minta pbix-fájlt](http://go.microsoft.com/fwlink/?LinkID=780547).
-10. Ha a rendszer kéri, adjon meg egy rövid nevet a **Dataset**.
+    ![Munkaterület-Azonosítót az Azure Portalon](media/get-started-sample/workspace-id.png)
+9. Azokat a PBIX-fájl importálása az **munkaterület**, lehetőséggel **6. Import PBIX Desktop-fájlt egy meglévő munkaterületet,**. Ha nem rendelkezik egy PBIX-fájl hasznos, letöltheti a [kiskereskedelmi elemzési minta pbix-fájlt](http://go.microsoft.com/fwlink/?LinkID=780547).
+10. Ha a rendszer kéri, adjon meg egy rövid nevet a **adatkészlet**.
 
 A következőhöz hasonló választ kell megjelennie:
 
@@ -68,16 +62,16 @@ Checking import state... Succeeded
 ```
 
 > [!NOTE]
-> A PBIX-fájl tartalmazza a közvetlen lekérdezés kapcsolatokat, ha futtatja a kapcsolót 7 a kapcsolati karakterláncok frissítésére.
+> Ha a PBIX-fájlt tartalmaz a közvetlen lekérdezés kapcsolatokat, futtassa a 7 lehetőséget, ha a kapcsolati karakterláncokat.
 
-Ezen a ponton rendelkezik egy Power BI pbix-fájlt a jelentés importálni a **munkaterület**. Most hogyan futtathat vizsgáljuk meg a **Power BI munkaterület gyűjtemények** elindított minta webalkalmazás beolvasása.
+Importálja a Power BI PBIX jelentés van ezen a ponton a **munkaterület**. Most nézzük, hogyan futtathat a **Power BI-Munkaterületcsoportok** első lépésekhez mintául szolgáló webalkalmazást.
 
 ## <a name="run-the-sample-web-app"></a>A mintául szolgáló webalkalmazás futtatása
 
-A webes alkalmazás minta egy jeleníti meg az importált jelentések mintaalkalmazás a **munkaterület**. Ez a webes alkalmazás minta konfigurálása.
+A web app minta egy mintaalkalmazás jeleníti meg az importált jelentések a **munkaterület**. Íme a webes alkalmazás minta konfigurálása.
 
-1. Az a **Power bi embedded** Visual Studio megoldás, kattintson a jobb gombbal a **EmbedSample** webalkalmazást, és válassza a **beállítás kezdőprojektként**.
-2. A **web.config**, a a **EmbedSample** webalkalmazást, módosítsa a **appSettings**: **AccessKey**,  **WorkspaceCollection** nevét, és **WorkspaceId**.
+1. Az a **Power bi embedded** Visual Studio-megoldás, kattintson a jobb gombbal a **EmbedSample** webalkalmazást, és válassza a **beállítás kezdőprojektként**.
+2. A **web.config**, a a **EmbedSample** webalkalmazást, módosítsa a **appSettings**: **AccessKey**,  **WorkspaceCollection** nevét, és **munkaterület azonosítója**.
 
     ```
     <appSettings>
@@ -87,37 +81,37 @@ A webes alkalmazás minta egy jeleníti meg az importált jelentések mintaalkal
         <add key="powerbi:WorkspaceId" value="" />
     </appSettings>
     ```
-3. Futtassa a **EmbedSample** webalkalmazást.
+3. Futtassa a **EmbedSample** webes alkalmazás.
 
-Miután lefuttatta a **EmbedSample** webalkalmazás, a bal oldali navigációs panelen tartalmaznia kell egy **jelentések** menü. Az importált jelentés megtekintéséhez bontsa ki a **jelentések**, és kattintson a jelentés. Ha importálta a [kiskereskedelmi elemzési minta pbix-fájlt](http://go.microsoft.com/fwlink/?LinkID=780547), a minta webalkalmazás néz ki:
+Futtatása után a **EmbedSample** webalkalmazást, a bal oldali navigációs panelen tartalmaznia kell egy **jelentések** menü. Az importált jelentés megtekintéséhez bontsa ki a **jelentések**, és kattintson a jelentés. Ha importálta a [kiskereskedelmi elemzési minta pbix-fájlt](http://go.microsoft.com/fwlink/?LinkID=780547), mintául szolgáló webalkalmazást a következő lenne:
 
-![A minta bal oldali navigációs belül mintaalkalmazás](media/get-started-sample/sample-left-nav.png)
+![Minta bal oldali navigációs belül mintaalkalmazás](media/get-started-sample/sample-left-nav.png)
 
-Miután rákattintott egy jelentést, a **EmbedSample** webalkalmazás kell kinéznie ezt:
+Miután rákattintott egy jelentés, a **EmbedSample** webalkalmazás kell kinéznie ezt:
 
-![A mintajelentés alkalmazáson belül megjelenítése](media/get-started-sample/sample-web-app.png)
+![Mintajelentés megjelenítése az alkalmazásban](media/get-started-sample/sample-web-app.png)
 
-## <a name="explore-the-sample-code"></a>A mintakód felfedezés
+## <a name="explore-the-sample-code"></a>Áttekintjük a mintakódot
 
-A **Microsoft Power BI munkaterület gyűjtemények** minta egy példa-webalkalmazást, amely bemutatja, hogyan integrálható **Power BI** jelentések az alkalmazásba. Egy Model-View-Controller (MVC) tervezési mintát használ, ajánlott eljárások bemutatásához. Ez a szakasz a mintakódot, amely belül részei kiemeli a **Power bi embedded** web app megoldás. A Model-View-Controller (MVC) mintát elválasztja a tartományhoz, a megjelenítési és a műveletek a felhasználói bevitel három különálló osztályokba alapján modellezési: modell, megtekintése és vezérlő. MVC kapcsolatos további információkért lásd: [ismerje meg, az ASP.NET kapcsolatos](http://www.asp.net/mvc).
+A **a Microsoft Power BI-Munkaterületcsoportok** minta egy példa-webalkalmazást, amely bemutatja, hogyan integrálható a **Power BI** jelentéseket az alkalmazásba. A Model-View-Controller (MVC) tervezési minta használatával ajánlott eljárásokat mutatnak be. Ez a szakasz kiemeli a mintakód belül tárgyaljuk is részei a **Power bi embedded** webes alkalmazás megoldás. A Model-View-Controller (MVC) minta elkülöníti a tartományhoz, a bemutató és a felhasználói bevitel három különálló osztályokba alapján műveleteket modellezés: modell, a nézet és a vezérlő. MVC kapcsolatos további információkért lásd: [megismerheti az ASP.NET kapcsolatos](http://www.asp.net/mvc).
 
-A **Microsoft Power BI munkaterület gyűjtemények** mintakód választja el az alábbiak szerint. Az egyes szakaszokon a fájl nevét, hogy könnyedén megtalálhatja a kód a minta a Power bi-embedded.sln megoldás tartalmazza.
+A **a Microsoft Power BI-Munkaterületcsoportok** mintakód a következő választja el. Minden szakasz a fájl nevét, hogy könnyen találhatja meg a kód a minta a Power bi-embedded.sln megoldás tartalmazza.
 
 > [!NOTE]
-> Ez a szakasz a mintakód bemutatja, hogyan bejegyzésre kerültek-e a kód összegzését. A teljes minta megtekintéséhez töltse be a Power bi-embedded.sln megoldást a Visual Studióban.
+> Ebben a szakaszban található egy összefoglaló, amely bemutatja, hogyan a kód írásának mintakódot. A teljes minta megtekintéséhez töltse be a Power bi-embedded.sln megoldást a Visual Studióban.
 
 ### <a name="model"></a>Modell
 
 A minta egy **ReportsViewModel** és **ReportViewModel**.
 
-**ReportsViewModel.cs**: jelenti. a Power BI-jelentéseket.
+**ReportsViewModel.cs**: Power BI-jelentések jelöli.
 
     public class ReportsViewModel
     {
         public List<Report> Reports { get; set; }
     }
 
-**ReportViewModel.cs**: a Power BI-jelentés jelöli.
+**ReportViewModel.cs**: Power BI-jelentés jelöli.
 
     public classReportViewModel
     {
@@ -126,26 +120,26 @@ A minta egy **ReportsViewModel** és **ReportViewModel**.
         public string AccessToken { get; set; }
     }
 
-### <a name="connection-string"></a>Kapcsolati karakterlánc
+### <a name="connection-string"></a>Kapcsolati sztring
 
-A kapcsolati karakterláncnak a következő formátumúnak kell lennie:
+A kapcsolati karakterláncot a következő formátumban kell lennie:
 
 ```
 Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 ```
 
-Közös server és adatbázis attribútumok sikertelen lesz. Például: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
+Kiszolgáló és az adatbázis közös használatával attribútumok sikertelen. Például: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
 
 ### <a name="view"></a>Nézet
 
-A **nézet** kezeli a képernyőt a Power bi **jelentések** és a Power BI **jelentés**.
+A **nézet** kezeli a Power BI megjelenítésének **jelentések** és a egy Power BI **jelentés**.
 
-**Reports.cshtml**: ismétlés **Model.Reports** létrehozásához egy **ActionLink**. A **ActionLink** össze a következőképpen történik:
+**Reports.cshtml**: Ciklustevékenység **Model.Reports** hozhat létre egy **ActionLink**. A **ActionLink** tevődik össze a következőképpen történik:
 
 | Rész | Leírás |
 | --- | --- |
-| Beosztás |A jelentés nevét. |
-| Lekérdezési karakterlánc |A jelentés azonosítója mutató hivatkozás |
+| Beosztás |A jelentés neve. |
+| A lekérdezési karakterlánc |A jelentés azonosítója mutató hivatkozás |
 
     <div id="reports-nav" class="panel-collapse collapse">
         <div class="panel-body">
@@ -161,7 +155,7 @@ A **nézet** kezeli a képernyőt a Power bi **jelentések** és a Power BI **je
         </div>
     </div>
 
-Report.cshtml: Állítsa be a **Model.AccessToken**, és a Lambda kifejezést **PowerBIReportFor**.
+Report.cshtml: Állítsa be a **Model.AccessToken**, és a Lambda kifejezésnek a **PowerBIReportFor**.
 
     @model ReportViewModel
 
@@ -174,7 +168,7 @@ Report.cshtml: Állítsa be a **Model.AccessToken**, és a Lambda kifejezést **
 
 ### <a name="controller"></a>Vezérlő
 
-**DashboardController.cs**: egy PowerBIClient sikeres létrehoz egy **alkalmazási jogkivonatának**. A JSON webes jogkivonat (JWT) jön létre a **aláírási kulcs** lekérni a **hitelesítő adatok**. A **hitelesítő adatok** példányának létrehozásához használt **PowerBIClient**. Ha egy példánya már **PowerBIClient**, GetReports() és GetReportsAsync() hívása.
+**DashboardController.cs**: egy PowerBIClient megadásának létrehoz egy **alkalmazás-jogkivonatára**. Egy JSON webes jogkivonat (JWT) hoz létre a **aláíró kulcs** beolvasni a **hitelesítő adatok**. A **hitelesítő adatok** segítségével hozzon létre egy példányt **PowerBIClient**. Ha már van egy példányát **PowerBIClient**, GetReports() és GetReportsAsync() hívása.
 
 CreatePowerBIClient()
 
@@ -207,7 +201,7 @@ ActionResult Reports()
     }
 
 
-A feladat<ActionResult> jelentés (karakterlánc reportId)
+A feladat<ActionResult> jelentés (karakterlánc Jelentésazonosító)
 
     public async Task<ActionResult> Report(string reportId)
     {
@@ -227,9 +221,9 @@ A feladat<ActionResult> jelentés (karakterlánc reportId)
         }
     }
 
-### <a name="integrate-a-report-into-your-app"></a>A jelentések integrálásához az alkalmazásba
+### <a name="integrate-a-report-into-your-app"></a>Jelentés integrálása egy alkalmazásba
 
-Ha már van egy **jelentés**, használhat egy **IFrame** beágyazása a Power BI **jelentés**. Íme egy kódrészletet a a powerbi.js a **Microsoft Power BI munkaterület gyűjtemények** minta.
+Miután egy **jelentés**, használhatja egy **IFrame** beágyazni a Power BI **jelentés**. Íme a powerbi.js a kódtöredék a **a Microsoft Power BI-Munkaterületcsoportok** minta.
 
 ```
 init: function() {
@@ -242,9 +236,9 @@ init: function() {
 }
 ```
 
-## <a name="filter-reports-embedded-in-your-application"></a>Az alkalmazásba beágyazandó szűrő jelentések
+## <a name="filter-reports-embedded-in-your-application"></a>Az alkalmazás a beágyazott szűrő jelentések
 
-A beágyazott jelentések szűrését elvégezheti egy URL-cím szintaxisával. Ehhez az szükséges, hozzáadhat egy **$filter** lekérdezési karakterlánc paraméter egy **eq** az iFrame src URL-cím meghatározott szűrőt tartalmazó operátort. A szűrő lekérdezés szintaxisa a következő:
+A beágyazott jelentések szűrését elvégezheti egy URL-cím szintaxisával. Ehhez adja hozzá a **$filter** lekérdezési karakterlánc paraméterrel egy **eq** az iFrame src URL-címre, meghatározott szűrőt tartalmazó operátor. A szűrő-lekérdezés szintaxisa a következő:
 
 ```
 https://app.powerbi.com/reportEmbed
@@ -257,7 +251,7 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 
 ## <a name="see-also"></a>Lásd még
 
-[Microsoft Power BI-Munkaterületcsoport gyakori helyzetek](scenarios.md)  
+[A Microsoft Power BI-Munkaterületcsoport gyakori helyzetek](scenarios.md)  
 [Hitelesítés és engedélyezés a Power BI-munkaterületcsoportok használatával](app-token-flow.md)  
 [Jelentés beágyazása](embed-report.md)  
 [Új jelentés létrehozása adatkészletből](create-report-from-dataset.md)  

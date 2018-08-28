@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2018
-ms.openlocfilehash: 8579c3c13ace1f97d2400a4fc6e2e9a63c2c4d26
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 55abb5331da24c3914075c21579e5082853b3c1f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599690"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042080"
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>A tartományhoz csatlakoztatott HDInsight Hive-házirendek konfigurálása
 Útmutató ahhoz, hogyan lehet az Apache Ranger-házirendeket a Hive számára konfigurálni. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.

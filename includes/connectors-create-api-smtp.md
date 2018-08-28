@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Előfeltételek
 * A [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol) fiók  
 
-Az SMTP-fiók a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás csatlakozni az SMTP-fiók. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon.  
+Az SMTP-fiókja, a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás az SMTP-fiókhoz való csatlakozáshoz. Szerencsére a ehhez egyszerűen, a logikai alkalmazás az Azure Portal webhelyen belül.  
 
-A Logic Apps alkalmazást csatlakozni az SMTP-fiók engedélyezése lépései a következők:  
+A logikai alkalmazás az SMTP-fiókhoz való csatlakozás engedélyezése lépései a következők:  
 
-1. Az SMTP-, VPN-kapcsolat létrehozásához a logic app tervezőben, válassza ki a **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *SMTP* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
+1. A logic app Designerben az SMTP-kapcsolat létrehozásához jelölje ki a **megjelenítése a Microsoft által felügyelt API-k** a legördülő listában adja meg *SMTP* kifejezést a keresőmezőbe. Válassza ki az eseményindítót vagy műveletet fogja kíván használni:  
    ![](./media/connectors-create-api-smtp/smtp-1.png)  
-2. Ha még nem hozott létre előtt SMTP fennálló kapcsolatokat, a rendszer SMTP hitelesítő adatok megadása fog kérni. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használt, és az SMTP-fiókja adatainak eléréséhez:  
+2. Ha még nem hozott létre, mielőtt SMTP kapcsolatokat, első kéri az SMTP hitelesítő adatait. Ezekkel a hitelesítő adatokkal kapcsolódni a logikai alkalmazás hitelesítéséhez használható, és az SMTP-fiókja adatainak eléréséhez:  
    ![](./media/connectors-create-api-smtp/smtp-2.png)  
-3. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
+3. Figyelje meg, hogy a kapcsolat létrejött, és most már szabadon folytassa a további lépésekkel, a logikai alkalmazásban:  
    ![](./media/connectors-create-api-smtp/smtp-3.png)  
 

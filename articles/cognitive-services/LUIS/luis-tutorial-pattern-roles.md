@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 633bf16790437ba83e9a2a99f33a23fef9255364
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524144"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090526"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>Oktatóanyag: A minta szerepkörökkel alkalmazás fejlesztéséhez
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban az emberi erőforrások alkalmazáson észleli az új a
 |[Hierarchikus (nincsenek szerepkörök)](luis-quickstart-intent-and-hier-entity.md)|mV Jill Jones a **a-2349** való **b-1298**|a-2349 b-1298|
 |Ez az oktatóanyag (a szerepkörök)|Helyezze át a Billy Patterson **Yuma** való **Denver**.|Yuma, Denver|
 
-A mintában a hierarchikus entitás nem használható, mert csak a hierarchikus szülők szülők használatban vannak. Annak érdekében, hogy a forrás és cél nevesített helyek visszatér, muse használatát egy minta.
+A mintában a hierarchikus entitás nem használható, mert csak a hierarchikus szülők minták használatban vannak. Annak érdekében, hogy a forrás és cél nevesített helyek visszatér, muse használatát egy minta.
 
 ### <a name="simple-entity-for-new-employee-name"></a>Új alkalmazottak neveként az egyszerű entitás
 Az új alkalmazott Billy Patterson, neve nem szerepel a lista entitás **alkalmazott** még. Az új alkalmazottak neve ki kell olvasni, annak érdekében, hogy a név küldeni egy külső rendszer a vállalati hitelesítő adatok létrehozásához. A vállalati hitelesítő adatok létrehozása után az alkalmazott hitelesítő adatok kerülnek a lista entitás **alkalmazott**.

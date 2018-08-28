@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 08/27/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: f6a2b3f242e5989d0c72083eef4faad9c4798cfe
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 67e82a4809253123e15305b5f2ecd8cc5f7ee4ed
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058386"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046850"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Kubernetes-fürt üzembe helyezése az Azure Stackhez
 
@@ -88,9 +88,9 @@ Első lépésként ellenőrizze, hogy a megfelelő engedélyekkel rendelkezik, �
 
 A szolgáltatás egyszerű hozzáférést biztosít az előfizetéshez, hogy a rendszerbiztonsági tag erőforrásokat hozhat létre.
 
-1.  Jelentkezzen be a [felügyeleti portálján](https://adminportal.local.azurestack.external).
+1.  Jelentkezzen be a [Azure Stack portálon](https://portal.local.azurestack.external/).
 
-1. Válassza ki **további szolgáltatások** > **felhasználói előfizetések** > **+ Hozzáadás**.
+1. Válassza ki **további szolgáltatások** > **előfizetések**.
 
 1. Válassza ki az előfizetést, amelyhez a létrehozott.
 

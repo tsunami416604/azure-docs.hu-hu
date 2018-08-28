@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 884edbf56fbf67e4ee71e0832f8924a3747994c9
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 049f5211e800dace4b8968cd9e3db9ad968f8813
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42054284"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050746"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Létrehozhatja és üzembe helyezheti a mikroszolgáltatások kiszámítható módon az Azure-ban
 Ez az oktatóanyag bemutatja, hogyan létrehozása és üzembe helyezése egy alkalmazás összetevői [mikroszolgáltatások](https://en.wikipedia.org/wiki/Microservices) a [Azure App Service](https://azure.microsoft.com/services/app-service/) egyetlen egységként, és a egy erőforráscsoport-sablonok JSON használatával kiszámítható módon és PowerShell-parancsprogramok. 
@@ -40,7 +40,7 @@ Az oktatóanyagban, amely tartalmazza az alkalmazás telepíti:
 Ebben az oktatóanyagban a következő eszközöket fogja használni. Nem érhető el az eszközök átfogó leírást, mivel fogom elgondolkodni a teljes körű forgatókönyvre, és csak adhat meg egy rövid bevezető, és ha talál további tájékoztatást. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Az Azure Resource Manager-sablonokat (JSON)
-Minden alkalommal, amikor az Azure App Service egy webalkalmazást hoz létre, például az Azure Resource Manager használja egy JSON-sablon létrehozásához teljes erőforráscsoportot összetevő erőforrásokat. A komplex sablonjának a [Azure Marketplace-en](/marketplace) hasonlóan a [méretezhető WordPress](/marketplace/partners/wordpress/scalablewordpress/) alkalmazása magába foglalhatja a MySQL-adatbázishoz, tárfiókok, az App Service-csomag, a webes alkalmazás saját maga, riasztási szabályok, Alkalmazásbeállítások, az automatikus méretezési beállítások, és további, és minden ezek a sablonok Powershellen keresztül, rendelkezésére állnak. Töltse le és használja ezeket a sablonokat a további információkért lásd: [az Azure PowerShell az Azure Resource Manager](../powershell-azure-resource-manager.md).
+Minden alkalommal, amikor az Azure App Service egy webalkalmazást hoz létre, például az Azure Resource Manager használja egy JSON-sablon létrehozásához teljes erőforráscsoportot összetevő erőforrásokat. A komplex sablonjának a [Azure Marketplace-en](/azure/marketplace) lehetnek az adatbázis, tárfiókok, az App Service-csomag, magát a webalkalmazást, riasztási szabályok, beállítások, az automatikus méretezési beállítások, és több, és ezek a sablonok érhetők el, a PowerShell. Töltse le és használja ezeket a sablonokat a további információkért lásd: [az Azure PowerShell az Azure Resource Manager](../powershell-azure-resource-manager.md).
 
 Az Azure Resource Manager-sablonokat a további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
 

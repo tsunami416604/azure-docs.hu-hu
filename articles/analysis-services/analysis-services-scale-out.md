@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4cb7b165311f57fadd63770646907ddfc0378844
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f89a6bdbe906d490231725cf528396928faebe47
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445020"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092094"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
 
@@ -37,19 +37,7 @@ Feldolgozási műveletek befejezése után a feldolgozó kiszolgáló és a lek�
 
 ## <a name="region-limits"></a>Régió korlátok
 
-Az a régió, a kiszolgáló konfigurálható lekérdezési replikák száma korlátozott. Az alábbi korlátozások érvényesek:
-
-|Régió  |Replikák maximális száma  |
-|---------|---------|
-|USA 2. keleti régiója    |    7     |
-|USA nyugati középső régiója     |    7     |
-|Nyugat-Európa     |    7     |
-|USA nyugati régiója     |     7    |
-|USA középső régiója     |     3    |
-|Délkelet-Ázsia    |     3    |
-|Minden más régiókban  |   1    |
-
-
+Az a régió, a kiszolgáló konfigurálható lekérdezési replikák száma korlátozott. További tudnivalókért lásd: [rendelkezésre állása régiónként](analysis-services-overview.md#availability-by-region).
 
 ## <a name="monitor-qpu-usage"></a>QPU-használat monitorozása
 

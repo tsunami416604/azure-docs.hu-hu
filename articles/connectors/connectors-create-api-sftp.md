@@ -11,12 +11,12 @@ ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 9714a00d070caab9d3a3338329295192e1eb9997
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8f430477883543aa8f87eb3fb0fb49ab31e2d723
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887587"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042038"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Figyelése, létrehozása és kezelése az SFTP-fájlok Azure Logic Apps használatával
 
@@ -48,24 +48,16 @@ Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
 
-1. Válassza ki az elérési utat: 
+1. Üres logic Apps a keresőmezőbe írja be szűrőként "sftp". Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
 
-   * Üres logic Apps a keresőmezőbe, írja be szűrőként "salesforce". 
-   Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
+   – vagy –
 
-     – vagy –
+   Meglévő logic Apps alkalmazások, az utolsó lépés, adjon hozzá egy műveletet, amelyre a válasszon **új lépés**. 
+   A Keresés mezőbe írja be szűrőként "sftp". 
+   Műveletek listája alatt válassza ki a kívánt művelet.
 
-   * A meglévő logic apps: 
-   
-     * Válassza ki az utolsó lépésnél, ahová a művelet hozzáadása, **új lépés**. 
-
-       – vagy –
-
-     * A lépéseket, ahol szeretné művelet hozzáadása, között helyezze az egérmutatót a nyíl lépések között. 
-     Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
-     
-        A Keresés mezőbe írja be szűrőként "sftp". 
-        Műveletek listája alatt válassza ki a kívánt művelet.
+   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
+   Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
 
 1. Adja meg a szükséges adatokat a kapcsolatot, és válassza a **létrehozás**.
 

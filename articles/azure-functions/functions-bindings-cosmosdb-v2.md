@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 1237d6a35d279a1036bb8139dd0b0ceaa34edb7b
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3fc00400590582d21590aadc9741cf0eaf048240
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746842"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047214"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x (előzetes verzió)
 
@@ -36,6 +36,10 @@ Ez a cikk azt ismerteti, hogyan használható a [Azure Cosmos DB](..\cosmos-db\s
 > Ennek a kötésnek a DocumentDB eredetileg neve. A Functions verzió 2.x, az eseményindító, a kötések és a csomag összes neve Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="supported-apis"></a>Támogatott API-k
+
+[!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
@@ -254,10 +258,7 @@ Az eseményindító egy dokumentumot frissítve lett, vagy beszúrva, azt csak b
 
 ## <a name="input"></a>Input (Bemenet)
 
-Az Azure Cosmos DB bemeneti kötéssel kéri le egy vagy több Azure Cosmos DB-dokumentumot, és átadja azokat a függvény a bemeneti paraméter. A dokumentum azonosítója vagy lekérdezési paramétereket az eseményindítót, amely meghívja a függvényt alapján lehet meghatározni. 
-
->[!NOTE]
-> Ne használja az Azure Cosmos DB bemeneti vagy kimeneti kötés, ha a Cosmos DB-fiók MongoDB API-t használ. Adatsérülés lehetőség.
+Az Azure Cosmos DB bemeneti kötéssel legalább egy Azure Cosmos DB-dokumentumok lekérdezésének az SQL API-t használja, és továbbítja őket a függvény a bemeneti paraméter. A dokumentum azonosítója vagy lekérdezési paramétereket az eseményindítót, amely meghívja a függvényt alapján lehet meghatározni. 
 
 ## <a name="input---examples"></a>Bemenet - példák
 
@@ -1253,10 +1254,7 @@ JavaScript-függvények, a frissítések nem automatikusan történik függvény
 
 ## <a name="output"></a>Kimenet
 
-Az Azure Cosmos DB kimeneti kötés lehetővé teszi, hogy írni egy új dokumentumot egy Azure Cosmos DB-adatbázisba. 
-
->[!NOTE]
-> Ne használja az Azure Cosmos DB bemeneti vagy kimeneti kötés, ha a Cosmos DB-fiók MongoDB API-t használ. Adatsérülés lehetőség.
+Az Azure Cosmos DB kimeneti kötés lehetővé teszi, hogy egy Azure Cosmos DB-adatbázishoz az SQL API használatával írhat egy új dokumentumot. 
 
 ## <a name="output---examples"></a>Kimenet – példa
 

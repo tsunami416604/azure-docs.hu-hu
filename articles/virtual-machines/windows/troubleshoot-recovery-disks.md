@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 9845476e23396eecc4149f3e856c40b0f80f13cb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: f099eefbc6d196f25c2b09669cdc1c3cdec68a12
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004766"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050014"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Hibaelhárítás Windows virtuális gépek az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure PowerShell használatával történő csatlakoztatásával
 Ha a Windows virtuális gép (VM) az Azure-ban egy indítási vagy hibát észlel, szükség lehet a hibaelhárítási lépésekkel magán a lemezen. Ilyenek például egy sikertelen alkalmazásfrissítés megakadályozza, hogy a virtuális gép képes arra, hogy sikeresen lenne. Ez a cikk részletesen bemutatja az Azure PowerShell használatával csatlakoztassa a lemezt egy másik Windows virtuális géphez, javítsa ki a hibákat, majd javítsa ki az eredeti virtuális Gépet. 
@@ -39,6 +39,8 @@ A hibaelhárítási folyamat a következő:
 5. Csatlakozzon a helyreállítási virtuális Gépet. Szerkesztheti a fájlokat, vagy futtassa az eszközöket az hibák javítása a másolt rendszerlemezt.
 6. Válassza le a lemezképet, és leválasztani a lemezt a helyreállítási virtuális Gépet.
 7. Az érintett virtuális gépek az operációsrendszer-lemez módosítása
+
+A virtuális gép helyreállítási parancsfájlok segítségével automatizálhatja a lépéseket, 1, 2, 3, 4, 6 és 7. További dokumentáció és útmutatás: [szkripteket a Resource Manager-alapú virtuális gép](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager).
 
 Győződjön meg arról, hogy rendelkezik-e [az Azure PowerShell legújabb verzióját](/powershell/azure/overview) telepítve, és naplózza előfizetéséhez:
 

@@ -3,18 +3,18 @@ title: HDInsight – Azure Hadoop-szolgáltatások által használt portok
 description: HDInsight futó Hadoop-szolgáltatások által használt portok listája.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jasonh
-ms.openlocfilehash: 78aed9d74325dfae0a02a4b95082baf60f6af603
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 3dea97d674c2027307ac7eb7cae34b6664e40b0b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599248"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108120"
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight Hadoop-szolgáltatások által használt portok
 
@@ -166,7 +166,7 @@ Példák:
 | --- | --- | --- | --- | --- | --- |
 | A Spark Thrift-kiszolgáló |Átjárócsomópontok |10002 |Thrift | &nbsp; | Spark SQL (Thrift/JDBC) való kapcsolódáshoz szolgáltatás |
 | Livy-kiszolgáló | Átjárócsomópontok | 8998 | HTTP | &nbsp; | Szolgáltatás utasítások, feladatok és alkalmazások futtatásához |
-| Jupyter notebook | Átjárócsomópontok | 8001 | HTTP | &nbsp; | Jupyter notebook webhely |
+| Jupyter Notebook | Átjárócsomópontok | 8001 | HTTP | &nbsp; | Jupyter notebook webhely |
 
 Példák:
 

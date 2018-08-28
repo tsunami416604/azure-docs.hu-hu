@@ -1,96 +1,90 @@
 ---
-title: Mik azok a Power BI munkaterület gyűjtemények?
-description: A Power BI Embedded lehetővé teszi vagy való integrálására Power BI-jelentések a webes alkalmazásokat, nem kell egyéni megoldások.
+title: Mik azok a Power BI munkaterületi gyűjtemények?
+description: Power BI Embedded lehetővé teszi a Power BI-jelentések integrálása a webes vagy mobilalkalmazásaiba, így nem kell egyéni megoldásokat hozhat létre.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 03649b72-b7d7-40ca-b077-12356d72d4f3
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 0bd6ba74d176ed1db1e8f1f1b38646182da2c379
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 73b13dcea84ba322072217c3feacebdefb3bf1e6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412577"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052039"
 ---
-# <a name="what-are-power-bi-workspace-collections"></a>Mik azok a Power BI munkaterület gyűjtemények?
+# <a name="what-are-power-bi-workspace-collections"></a>Mik azok a Power BI munkaterületi gyűjtemények?
 
-A **Power BI munkaterület gyűjtemények**, akkor integrálható a Power BI-jelentéseket jobbra a webhelyen vagy az alkalmazásokat.
+A **Power BI-Munkaterületcsoportok**, integrálható a Power BI-jelentéseket közvetlenül a webes vagy mobilalkalmazásaiba.
 
 ![Alkalmazásdiagram](media/what-are-power-bi-workspace-collections/what-is.png)
 
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-A Power BI munkaterület gyűjtemények egy **Azure szolgáltatás** , amely lehetővé teszi, hogy ISV-k és az alkalmazás fejlesztők felület Power BI adatok élmények az alkalmazásokban. Fejlesztőként alkalmazások létrehozott, és ezeket az alkalmazásokat a saját felhasználók és a szolgáltatások meghatározott készletét rendelkezik. Ezek az alkalmazások is fordulhat elő a rendelkezik néhány beépített elemek, például diagramokat és jelentéseket, hogy most már a Microsoft Power BI munkaterület gyűjtemények alapján kell kapcsolni. A Power BI-fiókkal, az alkalmazás használatához nincs szükség. Továbbra is jelentkezzen be a korábbiakhoz hasonlóan, az alkalmazás és a programtelepítés megtekintésének és módosításának a Power BI reporting élmény anélkül, hogy további licencelést.
+A Power BI-Munkaterületcsoportok vannak egy **Azure-szolgáltatás** , amely lehetővé teszi a független szoftverszállítók és fejlesztők a Power BI alkalmazásokba surface adatkezelési élményt. A fejlesztők létrehozott alkalmazásokat, és ezeket az alkalmazásokat a saját felhasználók és szolgáltatások külön készlete rendelkezik. Ezeknek az alkalmazásoknak akkor is szeretné, hogy bizonyos beépített elemek, például diagramokat és jelentéseket, most is működteti a Microsoft Power BI munkaterületi gyűjtemények. Nem kell az alkalmazás használatához a Power BI-fiókra. Jelentkezzen be az alkalmazás, csakúgy, mint korábban, és a programtelepítés megtekintésének és módosításának a Power BI jelentéskészítési funkciók anélkül, hogy bármilyen további licencelési folytathatja.
 
-## <a name="licensing-for-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI munkaterület gyűjtemények a licencelés
+## <a name="licensing-for-microsoft-power-bi-workspace-collections"></a>A Microsoft Power BI-Munkaterületcsoportok licencelése
 
-Az a **Microsoft Power BI munkaterület gyűjtemények** használati modell licencelési a Power bi-ban érték a felhasználó felelőssége.  Ehelyett **munkamenetek** , amely nem használ-e a látványelemek az alkalmazás fejlesztője által beszerzett, és az előfizetéséhez ezeket az erőforrásokat birtokló van szó. 
+Az a **a Microsoft Power BI-Munkaterületcsoportok** használati modell licencelés, a Power BI jelenleg nem a felhasználó felelőssége.  Ehelyett **munkamenetek** szerzi be a fejlesztő az alkalmazás, amely a vizualizációkat, és az előfizetés, amely ezeket az erőforrásokat tulajdonosa terhelik. 
 
-## <a name="microsoft-power-bi-workspace-collections-conceptual-model"></a>Microsoft Power BI munkaterület gyűjtemények fogalmi modellt
+## <a name="microsoft-power-bi-workspace-collections-conceptual-model"></a>A Microsoft Power BI-Munkaterületcsoportok fogalmi modellhez
 
-![A munkaterület gyűjtemények alkalmazási folyamatot](media/what-are-power-bi-workspace-collections/model.png)
+![Alkalmazás-munkaterület-csoportok folyamat](media/what-are-power-bi-workspace-collections/model.png)
 
-Mint minden más szolgáltatáshoz, az Azure-ban, a Power BI munkaterület gyűjtemények erőforrások törlődnek, az a [Azure Resource Manager API-k](https://msdn.microsoft.com/library/mt712306.aspx). Ebben az esetben az erőforrást, amely kiépítése van egy **Power BI-Munkaterületcsoport**.
+Mint bármely más szolgáltatást az Azure-ban, a Power BI munkaterületi gyűjtemények erőforrások használatával hozhatók létre a [Azure Resource Manager API-k](https://msdn.microsoft.com/library/mt712306.aspx). Ebben az esetben az erőforrás üzembe van egy **Power BI-Munkaterületcsoport**.
 
 ## <a name="workspace-collection"></a>Munkaterület-csoport
 
-A **munkaterület-csoportok** a legfelső szintű Azure tárolók erőforrásokat tartalmazó, 0 vagy több **munkaterületek**.  A **munkaterület** **gyűjtemény** rendelkezik az összes Azure standard tulajdonságait, valamint a következőket:
+A **munkaterület-csoport** a legfelső szintű Azure tároló-erőforrások, amely tartalmaz 0 vagy több **munkaterületek**.  A **munkaterület** **gyűjtemény** összes, a standard szintű Azure-tulajdonság, valamint a következő:
 
-* **Hívóbetűk** – a Power BI API-k (ezt egy későbbi szakasz ismerteti) biztonságosan meghívásakor használt kulcsokat.
-* **Felhasználók** – kezelheti a Power BI-Munkaterületcsoport az Azure portálon keresztül vagy Azure Resource Manager API-t rendszergazdai jogosultsággal rendelkező felhasználók Azure Active Directory (AAD).
-* **Régió** – létesítési részeként egy **munkaterület-csoportok**, egy a régiót építhető ki. További információkért lásd: [Azure-régiókat](https://azure.microsoft.com/regions/).
+* **Hozzáférési kulcsok** – biztonságos hívása a Power BI API-k (egy későbbi szakaszban leírtak szerint) során használt kulcsokat.
+* **Felhasználók** – a Power BI-munkaterület-csoport az Azure Portalon keresztül vagy az Azure Resource Manager API-val kezelheti a rendszergazdai jogokkal rendelkező felhasználók Azure Active Directory (AAD).
+* **Régió** – üzembe helyezésének részeként egy **munkaterület-csoport**, kiválaszthatja a kiépítendő terület. További információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
 
 ## <a name="workspace"></a>Munkaterület
 
-A **munkaterület** egy olyan tároló, a Power BI tartalom, ilyenek például adatkészleteket és jelentéseket. A **munkaterület** üres létrehozásakor. Meg fogja írni a tartalom a Power BI Desktop segítségével, és fogja programozott módon telepítheti a pbix-fájlt a munkaterület használatával történő a [Power BI importálási API](https://msdn.microsoft.com/library/mt711504.aspx). A dataset programozott módon is létrehozhat és majd hozza létre a jelentéseket a Power BI Desktop használata helyett az alkalmazáson belül.
+A **munkaterület** egy olyan tároló, a Power BI tartalom, ilyenek például adatkészleteket és jelentéseket. A **munkaterület** üres első létrehozásakor. Tartalmak a Power BI Desktop használatával fogjuk hoz létre, és be a munkaterület használatával programozott módon fogja telepíteni a pbix-fájlt a [Power BI importálási API](https://msdn.microsoft.com/library/mt711504.aspx). Szoftveresen is létrehozhat az adatkészlet és majd hozza létre a jelentéseket a Power BI Desktop használata helyett az alkalmazáson belül.
 
-## <a name="using-workspace-collections-and-workspaces"></a>Munkaterület gyűjtemények és munkaterületek
+## <a name="using-workspace-collections-and-workspaces"></a>Munkaterület-csoportok és a-munkaterületek használatával
 
-**Munkaterület gyűjtemények** és **munkaterületek** olyan tárolók, amely használja, és bármelyik legjobb módja megfelel az Ön által létrehozott alkalmazás tervét rendezve tartalom. Számos különböző módja, hogy sikerült-e elrendezése a tartalmakra lesz. Dönthet egy munkaterület belül összes tartalmat helyezze, majd később alkalmazási jogkivonatok további megkönnyíti a tartalom az ügyfelek között. Dönthet úgy is, külön munkaterületek helyezése összes ügyfeleinek, hogy néhány elkülönítése. Vagy régiónként, nem pedig vevő felhasználók rendszerezéséhez dönthet. Ez a rugalmas kialakítás lehetővé teszi annak meghatározását a legjobb módon nem rendszerezhetik a tartalmat.
+**Munkaterület-csoportok** és **munkaterületek** használt és vannak rendezve, bármelyik legjobb módja megfelel a kialakítás hoz létre az alkalmazás tartalmának tárolói. Számos különböző módon, hogy a bennük található tartalom sikerült rendezze el lesz. Dönthet úgy összes tartalmat helyezze belül egy munkaterületet, majd később alkalmazási jogkivonatok többek között az ügyfelek a tartalom vertikálisan tovább particionálhatja. Dönthet úgy, hogy néhány elkülönülését Helyezzen minden, az ügyfelek külön munkaterületre is. Vagy dönthet úgy rendezheti a felhasználókat, régiónként, nem pedig ügyfél által. Ez a rugalmas kialakítás lehetővé teszi, hogy kiválaszthatja a legjobb módszer rendezze a tartalmat.
 
 ## <a name="cached-datasets"></a>Gyorsítótárazott adatkészletek
 
-Gyorsítótárazott adatkészlet is használható.  Azonban nem lehet frissíteni a gyorsítótárazott adatokat, ha rendelkezik lett betöltve a **Microsoft Power BI munkaterület gyűjtemények**. A gyorsítótárazott dataset azt jelenti, hogy importálta az adatokat a Power BI Desktop DirectQuery használata helyett.
+Gyorsítótárazott adatkészletek is használható.  Azonban nem lehet frissíteni a gyorsítótárazott adatok, miután betöltötte az **a Microsoft Power BI-Munkaterületcsoportok**. Gyorsítótárazott adatkészlet azt jelenti, hogy importálta az adatokat a Power BI Desktop DirectQuery használata helyett.
 
-## <a name="authentication-and-authorization-with-app-tokens"></a>Hitelesítési és engedélyezési az alkalmazási jogkivonatok
+## <a name="authentication-and-authorization-with-app-tokens"></a>Hitelesítés és engedélyezés az alkalmazás-jogkivonatokról
 
-**Microsoft Power BI munkaterület gyűjtemények** megfelel a az alkalmazás a szükséges felhasználói hitelesítési és engedélyezési végrehajtásához. Nincs olyan explicit követelmény, hogy a végfelhasználók számára legyen-e a felhasználók az Azure Active Directory (Azure AD).  Ehelyett az alkalmazás fejezi ki, hogy **Microsoft Power BI munkaterület gyűjtemények** engedélyezés a Power BI-jelentés megjelenítéséhez **alkalmazás a hitelesítési tokenek (alkalmazási jogkivonatok)**.  Ezek **alkalmazási jogkivonatok** jönnek létre, amikor az alkalmazás szeretne jelentést készít igény szerint.
+**A Microsoft Power BI-Munkaterületcsoportok** megfelel az alkalmazásnak, hogy az összes szükséges felhasználói hitelesítés és engedélyezés a. Esetében nem explicit követelmény, hogy a végfelhasználók számára legyen-e az ügyfelek az Azure Active Directory (Azure AD).  Ehelyett az alkalmazás fejezi ki, hogy **a Microsoft Power BI-Munkaterületcsoportok** megjelenítése a Power BI-jelentések használatával engedélyezési **alkalmazás hitelesítési jogkivonatok (alkalmazás-Jogkivonatokról)**.  Ezek **alkalmazási jogkivonatok** jönnek létre, akkor az alkalmazás szeretne megjeleníteni a jelentést.
 
-![Alkalmazás token használati diagramja](media/what-are-power-bi-workspace-collections/app-tokens.png)
+![Alkalmazás tokenek használatát a diagram](media/what-are-power-bi-workspace-collections/app-tokens.png)
 
-**Alkalmazás a hitelesítési tokenek (alkalmazási jogkivonatok)** hitelesítése használt **Microsoft Power BI munkaterület gyűjtemények**.  Három típusú **alkalmazási jogkivonatok**:
+**Alkalmazás hitelesítési jogkivonatok (alkalmazás-Jogkivonatokról)** elleni hitelesítéséhez **a Microsoft Power BI-Munkaterületcsoportok**.  Három típusú **alkalmazási jogkivonatok**:
 
-1. Jogkivonatok - felhasznált létesítésekor egy új létesítési **munkaterület** be egy **munkaterület-csoport**
-2. Fejlesztői jogkivonatokat - használni, amikor közvetlenül a **Power BI REST API-k**
-3. Jogkivonatok -, amikor a beágyazott iframe a jelentés megjelenítéséhez használt beágyazás
+1. Jogkivonatok – egy új üzembe helyezésekor használt kiépítési **munkaterület** be egy **munkaterület-csoport**
+2. Fejlesztési jogkivonatok - hívások közvetlenül az használniuk, amikor a **Power BI REST API-k**
+3. Beágyazási tokenek - használja, amikor a beágyazott IFRAME eleme a jelentés megjelenítése
 
-Ezeket a jogkivonatokat használják a különböző fázisait ügyfélkapcsolati **Microsoft Power BI munkaterület gyűjtemények**.  A jogkivonatok tervezték, hogy delegálhatóak engedélyek az alkalmazásból a Power bi-bA. További információkért lásd: [App Token Flow](app-token-flow.md).
+Ezek a jogkivonatok használhatók a különböző fázisait az interakciók **a Microsoft Power BI-Munkaterületcsoportok**.  A jogkivonatok úgy tervezték, hogy delegálhatóak engedélyek az alkalmazásból a Power bi-bA. További információkért lásd: [alkalmazás Token Flow](app-token-flow.md).
 
 ## <a name="create-or-edit-reports-within-your-application"></a>Hozzon létre vagy szerkeszt jelentéseket az alkalmazáson belül
 
-Most szerkesztheti a meglévő jelentéseket, vagy hozzon létre új jelentéseket közvetlenül az alkalmazás a Power BI Desktop használata nélkül. Ehhez szükséges, hogy létezik-e a DataSet adatkészlet belül a munkaterületen.
+Most már szerkesztheti a meglévő jelentéseket, vagy hozzon létre új jelentéseket az alkalmazás közvetlenül a Power BI Desktop használata nélkül. Ehhez az szükséges, hogy létezik-e egy adatkészlet belül a munkaterülethez.
 
 ## <a name="see-also"></a>Lásd még
 
-[Microsoft Power BI munkaterület gyűjtemények gyakori helyzetek](scenarios.md)  
-[Ismerkedés a Microsoft Power BI munkaterület gyűjtemények](get-started.md)  
+[A Microsoft Power BI-Munkaterületcsoportok gyakori helyzetek](scenarios.md)  
+[Ismerkedés a Microsoft Power BI munkaterületi gyűjteményekkel](get-started.md)  
 [Bevezetés a minta használatába](get-started-sample.md)  
 [Jelentés beágyazása](embed-report.md)  
 [Hitelesítés és engedélyezés a Power BI-munkaterületcsoportok használatával](app-token-flow.md)  
 [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[A csharp nyelvű Power bi Git-tárház](https://github.com/Microsoft/PowerBI-CSharp)  
-[Power bi-csomópont Git-tárház](https://github.com/Microsoft/PowerBI-Node)  
+[A Power bi-CSharp Git-adattár](https://github.com/Microsoft/PowerBI-CSharp)  
+[A Power bi-csomópont Git-adattár](https://github.com/Microsoft/PowerBI-Node)  
 
 További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)

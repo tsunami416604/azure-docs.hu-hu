@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5c133c61c989bf19be3e84287cb76a7d110dccc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6bfe6f9b76693ded79aa9b9d21ddcac4e1a0733e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440473"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43110304"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Az Azure Kubernetes Service (AKS)-fürt létrehozása
 
@@ -48,7 +48,7 @@ Az alábbi lehetőségek érhetők el a `az aks create` parancsot. Tekintse meg 
 | `--enable-rbac` `-r` | Kubernetes szerepköralapú hozzáférés-vezérlésének engedélyezése. | nem |
 | `--generate-ssh-keys` | Hozzon létre SSH nyilvános és titkos kulcs fájljai, ha hiányzik. | nem |
 | `--kubernetes-version` `-k` | A Kubernetes, például: 1.7.9"vagy"1.9.6"a fürt létrehozásához használt verzióját. | nem |
-| `--locaton` `-l` | Az automatikusan létrehozott erőforráscsoport helye | nem |
+| `--location` `-l` | Az automatikusan létrehozott erőforráscsoport helye | nem |
 | `--max-pods` `-m` | A podok üzembe helyezhető egy csomóponthoz maximális számát. | nem |
 | `--network-plugin` | A Kubernetes hálózati beépülő modult. | nem |
 | `--no-ssh-key` `-x` | Ne használjon, vagy hozzon létre egy helyi SSH-kulcsot. | nem |

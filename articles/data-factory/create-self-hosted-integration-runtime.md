@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 863cda349ca951bee1c43f09eefd364645de9dbd
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: e708ae741c6835395e8eb35f6835c2d8c7002780
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746801"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044730"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
@@ -156,6 +156,8 @@ A megosztását a saját üzemeltetésű integrációs modul
 
    ![](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
 
+   ![](media\create-self-hosted-integration-runtime\3_rbac_permissions.png)
+
 2. Megjegyzés: a **erőforrás-azonosító** a megosztását a saját üzemeltetésű integrációs modul.
 
    ![](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
@@ -167,6 +169,20 @@ Az adat-Előállítóban, amelyhez az engedélyeket megadta,
    ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
 
    ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+
+#### <a name="monitoring"></a>Figyelés 
+
+- **Megosztott integrációs modul**
+
+  ![](media\create-self-hosted-integration-runtime\Contoso-shared-IR.png)
+
+  ![](media\create-self-hosted-integration-runtime\contoso-shared-ir-monitoring.png)
+
+- **Társított integrációs modul**
+
+  ![](media\create-self-hosted-integration-runtime\Contoso-linked-ir.png)
+
+  ![](media\create-self-hosted-integration-runtime\Contoso-linked-ir-monitoring.png)
 
 #### <a name="known-limitations-of-self-hosted-ir-sharing"></a>A saját üzemeltetésű integrációs modul megosztási ismert korlátozások
 

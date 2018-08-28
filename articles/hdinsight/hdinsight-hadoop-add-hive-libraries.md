@@ -3,18 +3,18 @@ title: Hive-kódtárak hozzáadása során a HDInsight-fürt létrehozása – A
 description: Ismerje meg, hogyan adja hozzá a Hive-kódtárak (jar fájlok) HDInsight-fürthöz a fürt létrehozásakor.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: fe7cb2c3990a5aa161665519490ede90be04e1ee
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 40650c813efc8fe7389b0445c72007dbd97e3ce8
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594607"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108686"
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>A HDInsight-fürt létrehozásakor egyéni Hive-kódtárak hozzáadása
 

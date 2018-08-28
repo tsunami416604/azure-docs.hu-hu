@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054719"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050649"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API-ja verziókat támogatja az Azure Stackben profilok
 
@@ -197,26 +197,26 @@ Az Azure Resource Manager üzembe helyezése és kezelése az Azure-megoldások 
 | Delegált szolgáltatók | 2015-01-01 |
 | Delegált szolgáltatók és ajánlatokkal. | 2015-01-01 |
 | DelegatedProviders/offers/estimatePrice | 2015-01-01 |
-| Központi telepítés | 2016-0209-01 |
-| Az operations központi telepítések | 2016-0209-01 |
+| Központi telepítés | 2016-09-01 |
+| Az operations központi telepítések | 2016-09-01 |
 | Bővítmény-metaadatok | 2015-01-01 |
 | Hivatkozások | 2016-09-01 |
 | Helyek | 2015-01-01 |
 | Ajánlatok | 2015-01-01 |
 | Műveletek | 2015-01-01 |
-| Szolgáltatók | 2015-012017-08-01 |
+| Szolgáltatók | 2017-08-01 |
 | Erőforráscsoportok | 2016-09-01 |
 | További források | 2016-09-01 |
 | Előfizetések | 2016-09-01 |
 | Előfizetések/hely | 2016-09-01 |
 | Előfizetések/műveleti eredmények | 2016-09-01 |
-| Az előfizetések és szolgáltatók | 2015-012017-08-01 |
+| Az előfizetések és szolgáltatók | 2017-08-01 |
 | Előfizetések vagy erőforráscsoportok | 2016-09-01 |
 | Előfizetés/resourceGroups/erőforrások | 2016-09-01 |
 | Az előfizetések és erőforrások | 2016-09-01 |
-| Előfizetések/tagNames | 2016-0609-01 |
-| Subscriptions/tagNames/tagValues | 2016-0609-01 |
-| Bérlők | 2015-012017-08-01 |
+| Előfizetések/tagNames | 2016-09-01 |
+| Subscriptions/tagNames/tagValues | 2016-09-01 |
+| Bérlők | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 

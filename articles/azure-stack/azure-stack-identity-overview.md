@@ -1,6 +1,6 @@
 ---
-title: Azure verem identitás áttekintése |} Microsoft Docs
-description: További tudnivalók az Azure-verem használható identitáskezelő rendszerekkel.
+title: Az Azure stack-identitás – áttekintés |} A Microsoft Docs
+description: Ismerje meg az identitáskezelési rendszerek is használhatja az Azure Stack használatával.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -15,176 +15,176 @@ ms.topic: get-started-article
 ms.date: 2/22/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 607c7938a789b3504a425057645b291bd4c8235b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a5390b51b3b901b159f99e757ca4db1aaf8258e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31399031"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050967"
 ---
-# <a name="overview-of-identity-for-azure-stack"></a>Azure verem identitás áttekintése
+# <a name="overview-of-identity-for-azure-stack"></a>Az Azure stack-identitás – áttekintés
 
-Az Azure verem Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS), identitás-szolgáltatóként Active Directory által támogatott van szükség. A választott szolgáltató nem egy egyszeri döntés, amikor először telepít Azure verem. A fogalmakat és engedélyezési részletek ebben a cikkben segítségével válasszon az identitás-szolgáltatóktól. 
+Az Azure Stack az Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) identitás-szolgáltatóként az Active Directory által támogatott igényel. A szolgáltató, amely egy egyszeri döntés, hogy az első Azure Stack üzembe. A fogalmakat és engedélyezési részleteket ebben a cikkben segíthet a Identitásszolgáltatók közül választhat. 
 
-A választott vagy Azure AD vagy AD FS határozza meg, a Azure verem üzembe helyezésének módja: 
-- Amikor telepít egy csatlakoztatott módban, vagy Azure AD vagy AD FS is használhatja. 
-- Kapcsolat nélküli módban, az internetkapcsolat nélkül telepítésekor csak Active Directory összevonási szolgáltatások esetén támogatott.
+A kiválasztott Azure AD vagy az AD FS határozza meg, az Azure Stack üzembe mód: 
+- Amikor telepít egy csatlakoztatott módban, vagy az Azure AD vagy AD FS is használhatja. 
+- Kapcsolat nélküli módban, az internethez, kapcsolat nélkül telepítésekor csak az AD FS használata támogatott.
 
-További információ a beállításokat, amelyek Azure verem környezettől függ, tekintse meg a következő cikkeket:
-- Az Azure verem központi telepítési csomag: [identitás szempontok](azure-stack-datacenter-integration.md#identity-considerations).
-- Az Azure verem rendszerek integrált: [telepítési tervének kidolgozásához Azure verem integrált rendszerek](azure-stack-deployment-decisions.md).
+További információ a lehetőségeket, amelyek függnek az Azure Stack környezettel, tekintse meg a következő cikkeket:
+- Az Azure Stack and deployment kit: [identitás szempontok](azure-stack-datacenter-integration.md#identity-considerations).
+- Az Azure Stack integrált rendszerek: [üzembe helyezési, tervezési megfontolások az Azure Stack integrált rendszerek](azure-stack-deployment-decisions.md).
 
  
-## <a name="common-concepts-for-identity"></a>Az azonosító általánosan használt fogalmak
-A következő szakaszok tárgyalják általánosan használt fogalmakat ismertető identitás-szolgáltatóktól és azok Azure verem használható.
+## <a name="common-concepts-for-identity"></a>Közös fogalmait identitás
+A következő szakaszok tárgyalják általánosan használt fogalmat identitás-szolgáltatóktól és azok használatáról, az Azure Stackben.
 
-![Az identitás-szolgáltatóktól terminológiája](media/azure-stack-identity-overview/terminology.png)
+![Identitás-szolgáltatóktól terminológiája](media/azure-stack-identity-overview/terminology.png)
 
-### <a name="directory-tenants-and-organizations"></a>Directory bérlők és a szervezetek
-A könyvtár olyan tároló, amely adatait tárolja *felhasználók*, *alkalmazások*, *csoportok*, és *szolgáltatás rendszerbiztonsági tagok*.
+### <a name="directory-tenants-and-organizations"></a>Directory-bérlők és a szervezetek számára
+Egy könyvtár egy olyan tároló, kapcsolatos információkat tartalmazó *felhasználók*, *alkalmazások*, *csoportok*, és *egyszerű szolgáltatások*.
  
-A directory-bérlő egy *szervezet*, például a Microsoft vagy a saját vállalati. 
-- Az Azure AD támogatja több bérlő, és mindegyiket a saját könyvtár, több szervezet tudja támogatni. Ha az Azure AD használ, és több bérlő rendelkezik, meg lehet adni, alkalmazások és a felhasználók egy bérlő hozzáférés más ugyanazt a címtárat a bérlők számára.
-- Az AD FS támogatja a csak egy egybérlős, ezért csak egyetlen szervezet. 
+Címtárbérlő van egy *szervezet*, például a Microsoft vagy a saját vállalat. 
+- Az Azure AD támogatja több bérlő számára, és mindegyik a saját könyvtár több szervezet is támogatja. Ha használja az Azure ad-ben, és több bérlővel rendelkezik, meg lehet adni, alkalmazások és a egy bérlő hozzáférés felhasználók más bérlők is ugyanazt a címtárat.
+- Az AD FS támogatja a csak egyetlen új bérlő, ezért csak egyetlen szervezet. 
 
 ### <a name="users-and-groups"></a>Felhasználók és csoportok
-Felhasználói fiókok (azonosítók) olyan szabványos fiókok, hitelesítéshez egyéni felhasználók számára egy felhasználói Azonosítót és jelszót használja. Csoportok tartalmazhatják, felhasználók vagy egyéb csoportok. 
+Felhasználói fiókok (azonosítók) lesznek a standard szintű fiók, amely a felhasználók hitelesítése egy felhasználói azonosító és jelszó használatával. Csoportok tartalmazhatják, felhasználókat vagy további csoportokat. 
 
-Hozzon létre, és hogyan a felhasználók és csoportok kezelése attól függ, az identitás-megoldás használata. 
+Az identitáskezelési megoldás használata függ, hogyan hozzon létre és kezelheti a felhasználókat és csoportokat. 
 
-Azure-készletben, felhasználói fiókok: 
-- Az hozott létre a *username@domain* formátumban. Bár az AD FS felhasználói fiókok leképezve az Active Directory-példányban, az AD FS nem használható a  *\<tartományi >\<alias >* formátumban. 
-- Beállítható a multi-factor authentication használatával. 
-- A könyvtárba, amennyiben először regisztrálják, amely a szervezet címtárához korlátozva.
-- A helyszíni címtárakban lehet importálni. További információkért lásd: [integrálása a helyszíni címtárakat az Azure Active Directoryval](/azure/active-directory/connect/active-directory-aadconnect). 
+Az Azure Stackben, felhasználói fiókok: 
+- Hozza létre a rendszer a *username@domain* formátumban. Bár az AD FS felhasználói fiókok képez le egy Active Directory-példányból, az AD FS használatát nem támogatja a  *\<tartomány >\<alias >* formátumban. 
+- Beállíthatja a multi-factor authentication használatára. 
+- Korlátozva arra a könyvtárra, ahol azok először regisztrálnia, amely a szervezet címtárában.
+- A helyszíni címtárakban importálhatók. További információkért lásd: [a helyszíni címtárak integrálása az Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect). 
 
-Amikor bejelentkezik a szervezet bérlői portál, használhatja a *https://portal.local.azurestack.external* URL-CÍMÉT. 
+Ha a szervezet bérlői portál jelentkezik be, használhatja a *https://portal.local.azurestack.external* URL-CÍMÉT. 
 
 ### <a name="guest-users"></a>Vendégfelhasználók
-Vendégfelhasználók számára, hogy a címtárban található erőforrások hozzáférés rendelkezik directory bérlőktől lévő felhasználói fiókok. Vendég felhasználók támogatására, használhatja az Azure Active Directory és a több-bérlős támogatásának engedélyezéséhez. Ha támogatása engedélyezve van, felajánlhatja a vendégfelhasználók a directory-bérlőjéhez, amely a következő funkciókat engedélyezi az együttműködés külső szervezetekkel erőforrásaihoz. 
+Más címtárbérlők, hogy kapott hozzáférést az erőforrásokhoz a címtárban lévő felhasználói fiókok, a vendég felhasználók. Vendég felhasználók támogatására, használja az Azure ad-ben, és több-bérlős támogatásának engedélyezése. Ha támogatási engedélyezve van, meghívhatja a vendégfelhasználók a directory-bérlőjéhez, amely lehetővé teszi az együttműködés külső szervezetekkel erőforrásaihoz. 
 
-A vendégfelhasználók meghívott, a felhő üzemeltetőinek és a felhasználók használható [Azure AD B2B együttműködés](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). A meghívott felhasználók férhetnek hozzá a dokumentumokhoz, erőforrások és alkalmazások a könyvtárból, és szabályozhatják a saját erőforrások és az adatok megmaradjanak. 
+A vendégfelhasználók meghívása a felhő üzemeltetői és a felhasználók használható [Azure AD B2B együttműködés](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Meghívott felhasználók hozzáférhetnek a dokumentumok, erőforrások és alkalmazások a címtárból, és Ön szabályozhatja a saját erőforrások és adatok. 
 
-A Vendég felhasználó bejelentkezhet egy másik szervezet directory-bérlő. Ehhez a szervezet könyvtárnév hozzáfűzése a portál URL-CÍMÉT. Például, ha a Contoso szervezet tartozik, és jelentkezzen be a Fabrikam directory szeretne, használja https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+Meg vendégként bejelentkezhet egy másik szervezet directory-bérlőhöz. Ehhez a szervezet könyvtárnév hozzáfűzése a portál URL-CÍMÉT. Például, ha a Contoso szervezetben tartozik, és jelentkezzen be a Fabrikam könyvtárat szeretne, használja https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### <a name="applications"></a>Alkalmazások
-Alkalmazások az Azure AD vagy AD FS regisztrálhatja, és majd fogadja el az alkalmazásokat a felhasználók a szervezetben. 
+Az Azure AD vagy AD FS-alkalmazások regisztrálását, és ezután kínálnak az alkalmazásokat a felhasználók a szervezetben. 
 
-Alkalmazás a következőket tartalmazza:
-- **Webes alkalmazás**: például az Azure-portál és az Azure Resource Manager. Webes API-hívások támogatják. 
-- **Natív ügyfél**: például az Azure PowerShell, a Visual Studio és az Azure parancssori felület.
+Alkalmazások a következők:
+- **Webes alkalmazás**: ilyenek például az Azure portal és az Azure Resource Manager. Támogatják a webes API-hívások. 
+- **Natív ügyfél**: ilyenek például az Azure PowerShell, a Visual Studio és az Azure parancssori felület.
 
-Alkalmazások bérlős, két típusát tudja támogatni: 
-- **Single-bérlő**: támogatja a felhasználók és szolgáltatások csak az ugyanabban a könyvtárban, ahol az alkalmazás regisztrálva van. 
+Alkalmazások bérlős két típusú támogatják: 
+- **Egybérlős**: támogatja a felhasználók és a szolgáltatások csak az ugyanabban a könyvtárban, ahol az alkalmazás regisztrálva van-e. 
 
   > [!NOTE]    
-  > Mivel az AD FS támogatja a csak egy könyvtár, létrehoz egy AD FS topológia az alkalmazások van, úgy lett kialakítva, egyetlen bérlői alkalmazások.
+  > Mivel az AD FS támogatja a csak egyetlen címtárban, alkalmazások hoz létre egy AD FS-topológia olyan, a kialakításból fakadóan egybérlős alkalmazások.
 
-- **Több-bérlős**: felhasználók és a könyvtárban, ahol az alkalmazás regisztrálva van-e és a további bérlői könyvtárak szolgáltatások használatát támogatja. A több-bérlős alkalmazásokhoz a bérlő címtár (egy másik Azure AD-bérlő) egy másik is jelentkeznek be az alkalmazást. 
+- **Több-bérlős**: felhasználók és a könyvtárban, ahol az alkalmazás regisztrálva van-e és a bérlői további címtárak szolgáltatásai által használatát támogatja. Több-bérlős alkalmazások, a felhasználók egy másik bérlőben (egy másik Azure AD-bérlő) könyvtárat is, jelentkezzen be az alkalmazást. 
 
-  További információ a több-bérlős: [engedélyezze a több-bérlős](azure-stack-enable-multitenancy.md). 
+  Több-bérlős kapcsolatos további információkért lásd: [több bérlős üzemmód engedélyezése](azure-stack-enable-multitenancy.md). 
 
-  A több-bérlős alkalmazások fejlesztésével kapcsolatos további információkért lásd: [több-bérlős alkalmazásokhoz](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+  Egy több-bérlős alkalmazás fejlesztésével kapcsolatos további információkért lásd: [több-bérlős alkalmazások](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
 Amikor regisztrál egy alkalmazás, hozzon létre két objektum:
 
-- **Alkalmazás objektumának**: az alkalmazás közötti minden bérlők globális ábrázolását. Ez a kapcsolat egy az egyhez típusú szoftverek alkalmazásával, és csak szerepel a könyvtár, amelyben az alkalmazás már regisztrálva van.
+- **Alkalmazásobjektum**: az alkalmazás az összes bérlőre kiterjedő globális ábrázolása. Ezt a kapcsolatot egy az egyhez típusú szoftverek alkalmazásával és létezik csak a könyvtárban, ahol az alkalmazás regisztrálva van.
 
-- **Szolgáltatás egyszerű objektum**: a könyvtárban, ahol az alkalmazás már regisztrálva van az alkalmazáshoz létrehozott hitelesítő adatokat. Egy egyszerű szolgáltatást minden további bérlő hol használják az alkalmazást a címtárban is létrejön. Ez a kapcsolat egy-a-többhöz a szoftver alkalmazással lehet. 
+- **Szolgáltatásnév-objektum**: a könyvtárban, ahol az alkalmazás regisztrálva van egy alkalmazás számára létrehozott hitelesítő adatokat. Egy egyszerű szolgáltatást is jön létre a címtárban, az egyes további bérlők, ahol az alkalmazás szolgál. Ez a kapcsolat egy-a-többhöz rendelkező a szoftver alkalmazás lehet. 
 
-Alkalmazás és szolgáltatás egyszerű objektumok kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure Active Directoryban](/azure/active-directory/develop/active-directory-application-objects). 
+Alkalmazás és egyszerű szolgáltatási objektumok kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](/azure/active-directory/develop/active-directory-application-objects). 
 
-### <a name="service-principals"></a>Szolgáltatás rendszerbiztonsági tagok 
-Egy egyszerű szolgáltatást egy olyan *hitelesítő adatok* adott alkalmazás vagy szolgáltatás, amely Azure verem erőforrásokhoz való hozzáférést. Egy egyszerű szolgáltatás használatát választja el az alkalmazás alkalmazás a felhasználó engedélyeit.
+### <a name="service-principals"></a>Szolgáltatásnevek 
+Egyszerű szolgáltatás olyan készlete, *hitelesítő adatok* adott alkalmazás vagy szolgáltatás, amely az Azure Stackben erőforrásokhoz való hozzáférést. Egyszerű szolgáltatás használata elkülöníti az alkalmazás a felhasználó alkalmazás engedélyeit.
 
-Egy egyszerű szolgáltatást az egyes bérlők, ahol az alkalmazás használata jön létre. A szolgáltatás egyszerű hoz létre egy identitás-bejelentkezés és, hogy a bérlő által védett erőforrások (például a felhasználók) elérésére. 
+Egyszerű szolgáltatás jön létre az egyes bérlők, ahol az alkalmazás használata. Az egyszerű szolgáltatás be- és hozzáférés a bérlő által védett erőforrások (például a felhasználók számára) egy identitást hoz létre. 
 
-- A single-bérlő alkalmazásnak csak egy egyszerű, a könyvtárban, ahol az első létrehozása. A szolgáltatás egyszerű jön létre, és hozzájárul az alkalmazás regisztrálása során használt. 
-- Több-bérlős webalkalmazás vagy API rendelkezik, amely az egyes bérlők jön létre egy egyszerű ahol a felhasználó a bérlőre járul hozzá az alkalmazás használatát. 
+- Egy egybérlős alkalmazást csak egy szolgáltatásnevet, a könyvtárban, ahol azt először létre rendelkezik. Egyszerű szolgáltatás jön létre, és hozzájárul az alkalmazás regisztrációja során használt. 
+- Egy webalkalmazás több-bérlős vagy API már minden bérlő létrehozott egyszerű szolgáltatás ahol a bérlőt a felhasználó jóváhagy az alkalmazás használatát. 
 
-Szolgáltatásnevekről tartozó hitelesítő adatokat vagy kell a kulcsot az Azure-portálon létrehozott tanúsítványt. Tanúsítvány használatát automatizálásra van alkalmas, mert a tanúsítványok nagyobb biztonságot nyújt, mint a kulcsok minősülnek. 
+Az egyszerű szolgáltatások hitelesítő adatait az Azure Portalon létrehozott kulcs, vagy a tanúsítvány lehet. Egy tanúsítvány használatát az automation esetén használhatók, mert tanúsítványok biztonságosabb, mint a kulcsok számítanak. 
 
 
 > [!NOTE]    
-> Active Directory összevonási szolgáltatások használatakor egy Azure verem csak a rendszergazda szolgáltatásnevekről hozhat létre. Az AD FS szolgáltatás rendszerbiztonsági tagok tanúsítványt igényel, és a kiemelt végpont (EGP) keresztül jönnek létre. További információkért lásd: [alkalmazások elérést biztosíthat az Azure-verem](azure-stack-create-service-principals.md).
+> Az AD FS az Azure Stack használatakor csak a rendszergazdák egyszerű szolgáltatásokat hozhat létre. Az AD FS-sel az egyszerű szolgáltatásnevekről tanúsítványokra van szükségük, és jönnek létre a kiemelt végponthoz (EGP) keresztül. További információkért lásd: [alkalmazások elérést biztosíthat az Azure Stack](azure-stack-create-service-principals.md).
 
-Azure verem szolgáltatásnevekről kapcsolatos további tudnivalókért lásd: [szolgáltatásnevekről létrehozása](azure-stack-create-service-principals.md).
+Az Azure Stack szolgáltatásnevekkel kapcsolatos tudnivalókért lásd: [szolgáltatásnevek létrehozása](azure-stack-create-service-principals.md).
 
 
 ### <a name="services"></a>Szolgáltatások
-Az identitásszolgáltató együttműködő szolgáltatások Azure verem a identitásszolgáltatóval alkalmazásokként van regisztrálva. Alkalmazások, például a regisztrációs engedélyezi a szolgáltatás számára az azonosítási rendszer a hitelesítést. 
+Azure Stack szolgáltatásban, hogy az identitásszolgáltató együttműködő identitásszolgáltató-alkalmazásokként vannak regisztrálva. Alkalmazások, például a regisztráció lehetővé teszi, hogy egy szolgáltatást, hogy az identitás-rendszer a hitelesítéshez. 
 
-Az összes Azure-szolgáltatások használata [OpenID Connect](/azure/active-directory/develop/active-directory-protocols-openid-connect-code) protokollok és [JSON webes jogkivonatainak](/azure/active-directory/develop/active-directory-token-and-claims) a személyazonosságukat. Mivel Azure AD és az AD FS protokollok következetesen, képes használni [Azure Active Directory Authentication Library](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) végeznek helyszíni hitelesítést vagy az Azure-ba (a csatlakoztatott forgatókönyvek). Az ADAL is használhatja eszközök, például az Azure PowerShell és az Azure parancssori felület a kereszt-felhőalapú és helyszíni erőforrás-kezelés. 
+Azure-szolgáltatásokhoz használatához [OpenID Connect](/azure/active-directory/develop/active-directory-protocols-openid-connect-code) protokollok és [JSON webes jogkivonatainak](/azure/active-directory/develop/active-directory-token-and-claims) a személyazonosságukat. Mivel az Azure AD és az AD FS-protokollokra egységesen, akkor használhatja [Azure Active Directory Authentication Library](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) végeznek helyszíni hitelesítést vagy az Azure-ba (a csatlakoztatott forgatókönyv). Az adal-KÓDTÁRRAL is használhatja eszközök, például az Azure PowerShell és az Azure CLI-vel a több felhőre kiterjedő és a helyszíni erőforrás-kezelést. 
 
 
-### <a name="identities-and-your-identity-system"></a>Identitások és az azonosítási rendszer 
-Azure verem identitásainak közé tartozik a felhasználói fiókok, csoportok és szolgáltatásnevekről. 
+### <a name="identities-and-your-identity-system"></a>Az identitások és a identitásrendszer 
+Azure stack-identitások felhasználói fiókok, csoportok és az egyszerű szolgáltatások közé tartozik. 
 
-Azure-vermet, számos beépített alkalmazások és szolgáltatások telepítésekor automatikusan regisztrálja az identitásszolgáltató a directory-bérlőben. Egyes szolgáltatások, amelyeket regisztrálni az adminisztrációs használnak. Más szolgáltatásokkal a felhasználók számára érhetők el. Az alapértelmezett regisztrációk adjon alapvető szolgáltatások identitásokat tartalmaz, amelyek léphetnek kapcsolatba egymással, mind az identitásokat tartalmaz, amelyek később fel.
+Azure Stack, a számos beépített alkalmazások és szolgáltatások telepítésekor automatikusan regisztrálja az identitásszolgáltató a directory-bérlőben. Egyes szolgáltatások, amelyeket regisztrálni felügyeleti célokra szolgálnak. Egyéb szolgáltatások érhetők el a felhasználók számára. Az alapértelmezett regisztrációk alapvető szolgáltatások identitások, amelyek képesek interakciót is egymással, és később hozzáadott identitásokkal biztosítanak.
 
-Ha úgy konfigurálja az Azure AD a több-bérlős, egyes alkalmazások propagálódik az új könyvtárakat. 
+Ha beállította az Azure AD a több-bérlős, egyes alkalmazások az új címtárakhoz propagálása. 
 
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
  
 
 ### <a name="authentication-by-applications-and-users"></a>Alkalmazások és a felhasználók hitelesítése
   
-![Azure verem rétegek közötti identitás](media/azure-stack-identity-overview/identity-layers.png)
+![Az Azure Stack rétegek között identitás](media/azure-stack-identity-overview/identity-layers.png)
 
-Az alkalmazások és a felhasználók az Azure-verem architektúrája négy réteget írja le. Ezek a rétegek közötti interakció különböző hitelesítési használhatja.
+Alkalmazások és felhasználók számára az Azure Stack-architektúra négy réteget írja le. Ezek a rétegek közötti interakciók használható hitelesítési típust.
 
 
 |Réteg    |Rétegek közötti hitelesítés  |
 |---------|---------|
-|Eszközök és ügyfelek, például a felügyeleti portálon     | Eléréséhez, vagy módosítani az Azure-készletben, erőforrást eszközökhöz, és az ügyfelek használják a [JSON Web Token](/azure/active-directory/develop/active-directory-token-and-claims) hívás az Azure Resource Manager. <br>Az Azure Resource Manager ellenőrzi a JSON Web Token és betekintés az *jogcímek* a kibocsátott jogkivonat becsléséhez engedélyezési szinten, hogy a felhasználó vagy szolgáltatás egyszerű tartozik az Azure-készletben. |
-|Az Azure Resource Manager és a hozzá tartozó alapvető szolgáltatások     |Az Azure Resource Manager szolgáltatók kommunikációs átvitele felhasználók kommunikál. <br> Használjon átviszi *közvetlen imperatív* hívások vagy *deklaratív* keresztül meghívja [Azure Resource Manager-sablonok](/azure/azure-stack/user/azure-stack-arm-templates.md).|
-|Erőforrás-szolgáltatók     |Erőforrás-szolgáltatók számára továbbított hívások biztosított tanúsítványalapú hitelesítéssel. <br>Az Azure Resource Manager és az erőforrás-szolgáltató majd maradnak a kommunikáció egy API-n keresztül. Minden hívás, amely az Azure Resource Manager érkezik az erőforrás-szolgáltató érvényesíti a hívás a tanúsítvánnyal.|
-|Infrastruktúra és az üzleti logika     |Erőforrás-szolgáltató üzleti logika és infrastruktúra való kommunikációhoz az általuk választott hitelesítési módot használ. Az alapértelmezett erőforrás-szolgáltató Azure verem rendszerrel szállított Windows-hitelesítés használatára a kommunikáció védelméhez.|
+|Eszközök és ügyfelek, például a felügyeleti portálon     | Eszközök eléréséhez, vagy módosítani az erőforrást az Azure Stackben, és az ügyfelek használják a [JSON Web Token](/azure/active-directory/develop/active-directory-token-and-claims) egy hívás az Azure Resource Manager. <br>Az Azure Resource Manager ellenőrzi a JSON Web Token, és betekintés a *jogcímek* engedélyezési szinten becslése érdekében a kiállított jogkivonat a felhasználó vagy szolgáltatás rendelkezik az Azure Stackben. |
+|Az Azure Resource Manager és az alapvető szolgáltatások     |Az Azure Resource Manager kommunikál a kommunikáció átviteléhez a felhasználók erőforrás-szolgáltatók. <br> Használat továbbítja *közvetlen imperatív* hívások vagy *deklaratív* keresztül meghívja [Azure Resource Manager-sablonok](/azure/azure-stack/user/azure-stack-arm-templates).|
+|Erőforrás-szolgáltatók     |Erőforrás-szolgáltatók számára továbbított hívások tanúsítványalapú hitelesítéssel biztonságosak. <br>Az Azure Resource Manager és az erőforrás-szolgáltató egy API-n keresztüli kommunikáció majd maradjon. Minden hívás, amely az Azure Resource Manager érkezik az erőforrás-szolgáltató érvényesíti a hívást a tanúsítvánnyal.|
+|Infrastruktúra és az üzleti logika     |Erőforrás-szolgáltatók tetszés szerinti hitelesítési mód használatával kommunikálnak az üzleti logikát és infrastruktúra. Az alapértelmezés szerinti erőforrás-szolgáltatók, amely az Azure Stack használatával, hogy a Windows-hitelesítés a kommunikáció védelméhez.|
 
-![A hitelesítéshez szükséges adatokat](media/azure-stack-identity-overview/authentication.png)
+![A hitelesítéshez szükséges információk](media/azure-stack-identity-overview/authentication.png)
 
 
-### <a name="authenticate-to-azure-resource-manager"></a>Az Azure Resource Manager való hitelesítéséhez
-Az identitásszolgáltató a hitelesítést, és megjelenik egy JSON Web Token, a következő információkat kell rendelkeznie: 
-1.  **Az azonosítási rendszer (szolgáltató) URL-címe**: az URL-cím, ahol az identitásszolgáltató érhető el. Például *https://login.windows.net*. 
-2.  **App ID URI az Azure Resource Manager**: az Azure Resource Manager az identitásszolgáltató által regisztrált egyedi azonosítója. Azt is egyedi érték minden egyes Azure verem telepítés.
-3.  **Hitelesítő adatok**: A hitelesítő adatok segítségével hitelesíti a identitásszolgáltatóval. 
-4.  **URL-CÍMÉT az Azure Resource Manager**: az URL-cím az Azure erőforrás-kezelő szolgáltatás helyét. Például *https://management.azure.com* vagy *https://management.local.azurestack.external*.
+### <a name="authenticate-to-azure-resource-manager"></a>Hitelesítés az Azure Resource Manager
+Az identitásszolgáltató a hitelesítéshez, és megjelenik egy JSON Web Token, a következő információkat kell rendelkeznie: 
+1.  **Az identitás rendszerhez (szolgáltató) URL-cím**: az URL-cím, amelyen az identitásszolgáltató érhető el. Például: *https://login.windows.net*. 
+2.  **Alkalmazásazonosító URI-t az Azure Resource Manager**: az Azure Resource Manager, amely regisztrálva van az identitásszolgáltató az egyedi azonosítója. Emellett akkor is csak az egyes Azure Stack-telepítés.
+3.  **Hitelesítő adatok**: A hitelesítő adatokat az identitásszolgáltatónál történő hitelesítésre használható. 
+4.  **URL-cím az Azure Resource Manager**: az URL-címet az a hely, az Azure Resource Manager-szolgáltatás. Ha például *https://management.azure.com* vagy *https://management.local.azurestack.external*.
 
-Ha egy rendszerbiztonsági tag (egy ügyfél, alkalmazás vagy felhasználó) hajt végre a hitelesítési kérelem elért egy erőforrást, a kérelem tartalmaznia kell:
+Amikor egy egyszerű (egy ügyfél, alkalmazás vagy felhasználó) hitelesítési kérelmet egy erőforráshoz való hozzáféréshez, a kérésnek tartalmaznia kell:
 - Az egyszerű hitelesítő adatokat.
-- Az app ID URI, amely a tag hozzá kíván férni az erőforrás. 
+- Az alkalmazás Alkalmazásazonosító URI-ja az erőforrás, amely az egyszerű szeretne hozzáférni. 
 
-A hitelesítő adatok az identitásszolgáltató által ellenőrzését. Az identitásszolgáltató is ellenőrzi, hogy az alkalmazás URI azonosítója a regisztrált alkalmazáshoz, és, hogy a rendszerbiztonsági tag az adott erőforrás jogkivonat beszerzése a megfelelő jogosultságokkal rendelkezik-e. Ha a kérelem érvényes, egy JSON webes jogkivonatot kap. 
+Az identitásszolgáltató által a hitelesítő adatok ellenőrzése megtörtént. Az identitásszolgáltató is ellenőrzi, hogy az alkalmazás Alkalmazásazonosító URI-ja regisztrált alkalmazásra, és, hogy a rendszerbiztonsági tag egy adott erőforrás-jogkivonat beszerzése a megfelelő jogosultságokkal rendelkezik-e. Ha a kérés érvényes, a JSON Web Token kapnak. 
 
-A jogkivonat az Azure Resource Manager majd a kérelem fejlécében kell átadni. Az Azure Resource Manager hajtja végre a következő nem meghatározott sorrendben:
-- Ellenőrzi a *kibocsátó* annak ellenőrzéséhez, hogy a jogkivonat a megfelelő identitásszolgáltató jogcím (iss). 
-- Ellenőrzi a *célközönség* (és) jogcímet annak ellenőrzéséhez, hogy a jogkivonat az Azure Resource Manager ki. 
-- Ellenőrzi, hogy a JSON Web Token van a tanúsítvánnyal aláírt OpenID keresztül konfigurált ismert az Azure Resource Manager. 
-- Tekintse át a *kiállított* (iat) és *lejárati* (exp) annak ellenőrzéséhez, hogy a jogkivonat aktív jogcímek és az elfogadható. 
+A jogkivonatot az Azure Resource Manager ezután a kérelem fejlécében meg kell felelnie. Az Azure Resource Manager a következő nem meghatározott sorrendben hajtja végre:
+- Ellenőrzi a *kibocsátó* (iss) jogcím meggyőződni arról, hogy a jogkivonat a megfelelő identitásszolgáltatótól. 
+- Ellenőrzi a *célközönség* (aud) jogcím annak ellenőrzéséhez, hogy a jogkivonat kiállított Azure Resource Manager. 
+- Ellenőrzi, hogy a JSON Web Token van a tanúsítvánnyal aláírt OpenID keresztül konfigurált az Azure Resource Manager ismert. 
+- Tekintse át a *kiállított* (iat) és *lejárati* (exp), győződjön meg arról, hogy a jogkivonat aktív jogcímek és az elfogadható. 
 
-Ha minden ellenőrzés be nem fejeződik, Azure Resource Manager használ a *kifogásolt* (oid) és a *csoportok* jogcímeket a résztvevő által elérhető erőforrások listáját. 
+Ha minden ellenőrzés befejeződött, az Azure Resource Manager használ a *hozzáadást* (oid) és a *csoportok* jogcímeket, hogy a rendszerbiztonsági tag által elérhető erőforrások listáját. 
 
-![A token exchange protokoll ábrája](media/azure-stack-identity-overview/token-exchange.png)
-
-
-### <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés használata  
-A Microsoft Azure-megvalósítást összhangban a szerepköralapú hozzáférés-vezérlés (RBAC) Azure-készletben. Kezelheti az erőforrásokhoz való hozzáférést, ha a megfelelő RBAC szerepkör hozzárendelése a felhasználók, csoportok és alkalmazások. Az RBAC használata Azure verem kapcsolatos információkért lásd: a következő cikkeket:
-- [Ismerkedés a szerepköralapú hozzáférés-vezérlés az Azure portálon](/azure/role-based-access-control/overview).
-- [Az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés segítségével](/azure/role-based-access-control/role-assignments-portal).
-- [Hozzon létre egyéni szerepkörök átruházásához hozzáférés-vezérlési](/azure/role-based-access-control/custom-roles).
-- [Szerepköralapú hozzáférés-vezérlés kezelése](azure-stack-manage-permissions.md) Azure navigációs veremben.
+![A jogkivonatcsere protokoll ábrája](media/azure-stack-identity-overview/token-exchange.png)
 
 
-### <a name="authenticate-with-azure-powershell"></a>A hitelesítést az Azure PowerShell  
-Azure PowerShell használatával való hitelesítéshez szükséges Azure verem részleteit található [konfigurálása az Azure-verem felhasználói PowerShell környezet](azure-stack-powershell-configure-user.md).
+### <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés  
+Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Stackben a Microsoft Azure-ban megvalósítás adatok konzisztensek legyenek. A megfelelő RBAC-szerepkörök hozzárendelése a felhasználók, csoportok és alkalmazások erőforrásokhoz való hozzáférést kezelheti. RBAC használata az Azure Stack használatával kapcsolatos információkért tekintse meg a következő cikkeket:
+- [Ismerkedés a szerepköralapú hozzáférés-vezérlés az Azure Portalon](/azure/role-based-access-control/overview).
+- [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](/azure/role-based-access-control/role-assignments-portal).
+- [Egyéni szerepkörök létrehozása az Azure szerepköralapú hozzáférés-vezérlés](/azure/role-based-access-control/custom-roles).
+- [Szerepköralapú hozzáférés-vezérlés kezelése](azure-stack-manage-permissions.md) az Azure Stackben.
 
-### <a name="authenticate-with-azure-cli"></a>A hitelesítést az Azure parancssori felület
-Az Azure-verem való hitelesítéshez szükséges Azure PowerShell használatával kapcsolatos információkért lásd: [telepítése és konfigurálása az Azure CLI Azure verem való használatra](/azure/azure-stack/user/azure-stack-connect-cli.md).
+
+### <a name="authenticate-with-azure-powershell"></a>Hitelesítés az Azure PowerShell használatával  
+Azure PowerShell használatával történő hitelesítéséhez az Azure Stack használatával kapcsolatos részleteket tekinthet meg [konfigurálása a PowerShell-környezet az Azure Stack felhasználói](azure-stack-powershell-configure-user.md).
+
+### <a name="authenticate-with-azure-cli"></a>Hitelesítés az Azure CLI-vel
+Azure PowerShell használatával történő hitelesítéséhez az Azure Stack használatával kapcsolatos információkért lásd: [telepítése és konfigurálása az Azure CLI az Azure Stackkel való használathoz](/azure/azure-stack/user/azure-stack-connect-cli).
 
 ## <a name="next-steps"></a>További lépések
 - [Identitás-architektúra](azure-stack-identity-architecture.md)   
-- [Adatközpont-integráció - identitás](azure-stack-integrate-identity.md)
+- [Adatközpont integrációja - identitás](azure-stack-integrate-identity.md)
 
 
 

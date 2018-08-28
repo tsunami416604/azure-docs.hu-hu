@@ -3,18 +3,18 @@ title: Parancsfájlműveletekkel – Azure HDInsight-fürtök testre szabása
 description: Ismerje meg, hogyan Szkriptműveletek használatával HDInsight-fürtök testre szabása.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0f49284782ab5ab17476f37ae5ae40a753ee107b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 6c4652e65f0f320063d989f97a5428510913005b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597415"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105924"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Szkriptműveletek használatával Windows-alapú HDInsight-fürtök testre szabása
 **Parancsfájl-művelet** hívja használhatók [egyéni parancsfájlok](hdinsight-hadoop-script-actions.md) a további szoftverek telepítése egy fürtre a fürt létrehozása során.

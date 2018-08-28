@@ -3,18 +3,18 @@ title: Parancsfájlművelet-alapú fejlesztés a Linux-alapú HDInsight – Azur
 description: 'Útmutató: Linux-alapú HDInsight-fürtök testre szabása a Bash-szkriptek használatával. HDInsight parancsfájl műveletet jellemzője lehetővé teszi, hogy a parancsfájlok futtatása közben, vagy a fürt létrehozása után. Parancsprogramok segítségével fürt konfigurációs beállításokat módosítaná, vagy további szoftverek telepíthetők.'
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: jasonh
-ms.openlocfilehash: 35d54970e41a7e1533f3d5adc09fc60dc1bbd68d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 0225115fb6c74f736e6a5fba09414dc2ebafd84e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600489"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104823"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájlművelet-alapú fejlesztés a HDInsight
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 0951b0ee8a1b92f94dd06bfad831b3dd9a9e967c
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 1fcac972e7404c2e0549b9bb9f2e03861977bfad
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918217"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094771"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gépek soros konzolja (előzetes verzió) 
 
@@ -35,13 +35,16 @@ A soros konzol dokumentációja a Windows virtuális gépek esetében [ide](../w
 ## <a name="prerequisites"></a>Előfeltételek 
 
 * A resource management üzemi modellhez kell használnia. Klasszikus üzemi modellben nem támogatottak. 
-* A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-* A soros konzol használatával a fióknak rendelkeznie kell [közreműködői szerepkört](../../role-based-access-control/built-in-roles.md) virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiókot. 
+* A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve – lásd az alábbi képernyőképet.
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+* A soros konzol használata Azure-fiókkal kell rendelkeznie [közreműködői szerepkört](../../role-based-access-control/built-in-roles.md) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiókot. 
+* A virtuális gép, amelyekhez le a soros konzol acessing is jelszóalapú fiókkal kell rendelkeznie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény - funkciójának lásd az alábbi képernyőképet.
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 * Linux-disztribúciók jellemző beállításait, lásd: [a soros konzol eléréséhez linuxhoz](#access-serial-console-for-linux)
 
 
 
-## <a name="open-the-serial-console"></a>A soros konzol megnyitása
+## <a name="get-started-with-serial-console"></a>Soros konzol használatának első lépései
 A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal](https://portal.azure.com). A portálon keresztül a virtuális gépek soros konzol eléréséhez a lépéseket az alábbiakban 
 
   1. Nyissa meg az Azure Portalon

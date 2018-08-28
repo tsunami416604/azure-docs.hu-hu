@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 4cf62e609505487961dbfbab3f46c37d54e8f50b
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
-ms.translationtype: HT
+ms.openlocfilehash: ca64c87a0211ae00218493fe7bfddcbbb81a032a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259054"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43109439"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -95,7 +95,7 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 }
 ```
 
-Címke | Leírás | Típus | Kötelező
+Címke | Leírás | Típus | Szükséges
 --- | ----------- | ---- | --------
 név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\”</li></ul> | Sztring | Igen
 leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | Nem
@@ -128,7 +128,7 @@ A végrehajtási tevékenységek közé az [adatáthelyezési](#data-movement-ac
 
 Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonságok szerepelnek:
 
-Címke | Leírás | Kötelező
+Címke | Leírás | Szükséges
 --- | ----------- | ---------
 név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li></ul>
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
@@ -168,7 +168,7 @@ A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolj�
     }
 }
 ```
-JSON-név | Leírás | Megengedett értékek | Kötelező
+JSON-név | Leírás | Megengedett értékek | Szükséges
 --------- | ----------- | -------------- | --------
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. | Időtartomány | Nem. Az alapértelmezett időtúllépés 7 nap.
 retry | Újrapróbálkozási kísérletek maximális száma | Egész szám | Nem. Az alapértelmezett érték: 0
@@ -192,7 +192,7 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 }
 ```
 
-Címke | Leírás | Kötelező
+Címke | Leírás | Szükséges
 --- | ----------- | --------
 név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul>
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen

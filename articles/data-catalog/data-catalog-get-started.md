@@ -1,25 +1,19 @@
 ---
-title: "Bevezetés a Data Catalog használatába | Microsoft Docs"
-description: "Átfogó oktatóanyag az Azure Data Catalog forgatókönyveiről és képességeiről."
-documentationcenter: 
+title: Ismerkedés az Azure Data Catalog szolgáltatással
+description: Átfogó oktatóanyag az Azure Data Catalog forgatókönyveiről és képességeiről.
 services: data-catalog
 author: steelanddata
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: d67f8871bbdd87e8a67057e6e8c5d4d770e5cad6
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: HT
+ms.openlocfilehash: c65f5c2ca3f162c17d036198c4285f9c965bbd53
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053815"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Ismerkedés az Azure Data Catalog szolgáltatással
 Az Azure Data Catalog teljes körűen felügyelt felhőszolgáltatás, amely vállalati adategységek regisztrációs és felderítőrendszereként szolgál. A szolgáltatás részletes bemutatásáért olvassa el a [Mi az az Azure Data Catalog?](data-catalog-what-is-data-catalog.md) című cikket.
@@ -40,14 +34,14 @@ Ez az oktatóanyag az Azure Data Catalog használatának megkezdésébe vezeti b
 ### <a name="azure-subscription"></a>Azure-előfizetés
 Az Azure Data Catalog szolgáltatás beállítását kizárólag Azure-előfizetések tulajdonosai vagy társtulajdonosai végezhetik el.
 
-Az Azure-előfizetés segít rendszerezni a felhőszolgáltatás-erőforrások, például az Azure Data Catalog elérését. Ezenfelül az előfizetés révén azt is megszabhatja, hogy hogyan szeretne jelentést készíteni az erőforrások használatáról, hogy hogyan számlázzák ki azt Önnek, illetve, hogy hogyan szeretne fizetni érte. Az egyes előfizetésekhez eltérő számlázási és fizetési beállítások tartozhatnak, így osztályonként, projektenként, területi képviseletenként stb. különböző előfizetési és fizetési megoldásokat használhat. A felhőszolgáltatásokat mindig egy előfizetéshez kell rendelni, ezért ahhoz, hogy beállítsa az Azure Data Catalog szolgáltatást, rendelkeznie kell előfizetéssel. További információkat a [fiókok, előfizetések és rendszergazdai szerepkörök kezeléséről](../active-directory/active-directory-how-subscriptions-associated-directory.md) szóló cikkben talál.
+Az Azure-előfizetés segít rendszerezni a felhőszolgáltatás-erőforrások, például az Azure Data Catalog elérését. Ezenfelül az előfizetés révén azt is megszabhatja, hogy hogyan szeretne jelentést készíteni az erőforrások használatáról, hogy hogyan számlázzák ki azt Önnek, illetve, hogy hogyan szeretne fizetni érte. Az egyes előfizetésekhez eltérő számlázási és fizetési beállítások tartozhatnak, így osztályonként, projektenként, területi képviseletenként stb. különböző előfizetési és fizetési megoldásokat használhat. A felhőszolgáltatásokat mindig egy előfizetéshez kell rendelni, ezért ahhoz, hogy beállítsa az Azure Data Catalog szolgáltatást, rendelkeznie kell előfizetéssel. További információkat a [fiókok, előfizetések és rendszergazdai szerepkörök kezeléséről](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) szóló cikkben talál.
 
 Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. A részletekért lásd: [Ingyenes próbafiók](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 Az Azure Data Catalog beállításához be kell jelentkeznie egy Azure Active Directory (Azure AD) felhasználói fiókkal. Önnek egy Azure-előfizetés tulajdonosának vagy társtulajdonosának kell lennie.  
 
-Az Azure AD egyszerű módot kínál vállalkozásának az identitás és a hozzáférés kezelésére, mind a felhőben, mind a helyszínen. Ön egyetlen munkahelyi vagy iskolai fiók segítségével bejelentkezhet bármely felhőben futó vagy helyszíni webalkalmazásba. Az Azure Data Catalog az Azure AD segítségével hitelesíti a bejelentkező felhasználókat. További információk: [Mi az az Azure Active Directory?](../active-directory/active-directory-whatis.md)
+Az Azure AD egyszerű módot kínál vállalkozásának az identitás és a hozzáférés kezelésére, mind a felhőben, mind a helyszínen. Ön egyetlen munkahelyi vagy iskolai fiók segítségével bejelentkezhet bármely felhőben futó vagy helyszíni webalkalmazásba. Az Azure Data Catalog az Azure AD segítségével hitelesíti a bejelentkező felhasználókat. További információk: [Mi az az Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md)
 
 ### <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory-szabályzat konfigurálása
 Előfordulhat, hogy ugyan be tud lépni az Azure Data Catalog portálra, de amikor megpróbál bejelentkezni az adatforrás-regisztrációs eszközbe, hibaüzenet jelenik meg, amely meggátolja a belépést. Ez a hiba a céges hálózatról, illetve a céges hálózaton kívülről történő csatlakozás esetében egyaránt előfordulhat.
@@ -305,7 +299,7 @@ Ebben a gyakorlatban az Azure Data Catalog segítségével felderített adategys
    
     ![Azure Data Catalog – hozzáférés kérése](media/data-catalog-get-started/data-catalog-request-access.png)
 
-Kattintson a **Kapcsolati karakterláncok megtekintése** elemre, tekintse meg, majd másolja a vágólapra az ADF.NET, ODBC és OLEDB kapcsolati karakterláncokat, amelyekre az alkalmazásban szükség lesz.
+Kattintson a **Kapcsolati sztringek megtekintése** elemre, tekintse meg, majd másolja a vágólapra az ADF.NET, ODBC és OLEDB kapcsolati sztringekat, amelyekre az alkalmazásban szükség lesz.
 
 ## <a name="manage-data-assets"></a>Adategységek felügyelete
 Ebben a lépésben bemutatjuk, hogyan állítható be az adategységek biztonsága. A Data Catalog nem ad hozzáférést a felhasználóknak magukhoz az adatokhoz. Az adatok elérését az adatforrás tulajdonosa szabályozza.

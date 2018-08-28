@@ -1,85 +1,79 @@
 ---
-title: "Állítsa be az üzleti szószedet, az Azure Data Catalog szerinti címkézését szabályozott |} Microsoft Docs"
-description: "Az üzleti szószedet az Azure Data Catalog kiemelés meghatározása és a segítségével egy közös üzleti szószedet címkéhez útmutató cikk regisztrált adategységek keresése."
+title: Az Azure Data Catalog szabályozottabbá címkézésre az üzleti szószedet összeállítása
+description: Útmutató a cikk az Azure Data Catalog az üzleti szószedet kiemelése meghatározására és a egy közös üzleti szószedet címkéhez használatával regisztrált adategységeket.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: b3d63dbe-1ae7-499f-bc46-42124e950cd6
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: a80b7fd0c21851a6670431e9b8647ca5cf5f51ec
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b4586133a6d3b7514d6b47e2e0c93b0e79988f09
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053696"
 ---
-# <a name="set-up-the-business-glossary-for-governed-tagging"></a>A címkézés szabályozott az üzleti szószedet beállítása
+# <a name="set-up-the-business-glossary-for-governed-tagging"></a>A címkézés szabályozott állítsa be az üzleti szószedet összeállítása
 ## <a name="introduction"></a>Bevezetés
-Az Azure Data Catalog lehetővé teszi, hogy az adatforrás felderítés, így könnyen felderítése és értelmezni azon adatforrásokat, amelyek elemzést és döntéseket kell. Ezeket a képességeket a legnagyobb mértékben ellenőrizze, ha található, és elérhető adatforrások legszélesebb skáláját ismertetése.
+Az Azure Data Catalog adatforrás-felderítés, lehetővé teszi, így könnyen felderítése és értelmezni azon adatforrásokat, amelyek elemzéseket végezhet, és döntéseket kell. Ezek a képességek a lehető leghatékonyabb felhasználásához végrehajtja, amikor a megkeresheti és az elérhető adatforrások széles ismertetése.
 
-Egy Data Catalog szolgáltatás, amely elősegíti a eszközök adatok megértése címkézés van. Címkézés használatával is társíthat kulcsszavak egy eszköz vagy egy oszlop, amely viszont megkönnyíti a keresést, vagy keresse meg az eszköz felderítése. Címkézés is segítségével megismerheti, további egyszerűen a környezet és az eszköz leképezés.
+Egy Data Catalog szolgáltatást, amely elősegíti a nagyobb ismeretekkel eszközök adatok címkézése van. Címkézés használatával társíthatja a kulcsszavak egy eszköz vagy egy oszlopot, amely viszont megkönnyíti a keresést, vagy keresse az eszköz felderítése. Címkézés is segít több könnyen megérthetik, a környezet és az eszköz szándékot.
 
-Azonban címkézés néha problémákat okozhat saját. Néhány példa a problémák, amelyek címkézése a következők:
+Azonban címkézés néha problémát okozhat saját. Néhány példa a problémákat, amelyek címkézése a következők:
 
-* Egyes eszközök rövidítések és mások bővített szöveg használatát. Ez inkonzisztenciája miatt az eszközök, a felderítés akadályozza meg, annak ellenére, hogy a célt az volt, hogy az eszközök címkét a azonos címkével.
-* Ez azt jelenti, attól függően, hogy a környezetben esetleges változásait. Például a címke neve *bevétel* az ügyfél az adatkészlet jelentheti ügyfél bevétel, de a negyedéves értékesítési dataset azonos címkével negyedéves bevétel jelentheti a vállalat számára.  
+* Bizonyos eszközök rövidítések és mások kibontott szöveg használatát. A program inkonzisztenciát a felderítés az eszközök, akadályozza meg, annak ellenére, hogy az azonos címkével ellátott adategységek címkézése volt a leképezés.
+* Ez azt jelenti, környezettől függően lehetséges változásait. Például a címke neve *bevétel* egy ügyfél az adatkészlet bevétel szerint ügyfél arra utalhat, de ugyanazt a címkét a negyedéves értékesítési adatkészleteken negyedéves bevétel jelentheti a vállalat számára.  
 
-Ezeket és más hasonló kihívást érdekében a Data Catalog egy üzleti szószedetet tartalmaz.
+Ezeket és más hasonló kihívások megoldása érdekében a Data Catalog egy üzleti szószedetet tartalmaz.
 
-A Data Catalog üzleti szószedet segítségével egy szervezet üzleti kifejezések és meghatározások létrehozása egy közös üzleti szószedet is dokumentum. A cégirányítási lehetővé teszi, hogy következetes használati adatok a teljes szervezetben. Miután az üzleti szószedet definiálva van egy kifejezés, hozzárendelhető egy adategységhez a katalógusban. Ez a megközelítés *szabályozott címkézés*, ugyanezt a megközelítést, mint a címkézés van.
+A Data Catalog üzleti szószedet használatával egy szervezet legfontosabb üzleti kifejezéseket és azok meghatározásait hozzon létre egy közös üzleti szószedet lehet dokumentálni. Ez a cégirányítási lehetővé teszi, hogy konzisztencia az adathasználatot a szervezeten belül. Miután egy kifejezést az üzleti szószedet van definiálva, hozzárendelhető egy adategységhez a katalógusban. Ez a megközelítés *címkézés szabályozott*, ugyanezzel a módszerrel címkézés másként van.
 
-## <a name="glossary-availability-and-privileges"></a>Szószedet rendelkezésre állás és a jogosultságokat
-Az üzleti szószedet csak a Standard Edition Azure Data Catalog érhető el. A Data Catalog szabad Edition nem tartalmazza a termékben, és nem biztosít képességek az irányadó címkézésre.
+## <a name="glossary-availability-and-privileges"></a>Szószedet rendelkezésre állás és a jogosultságok
+Az üzleti szószedet csak a az Azure Data Catalog Standard kiadásában érhető el. A Data Catalog ingyenes kiadása nem tartalmaz egy szószedet, és nem tartozik képességek szabályozottabbá címkézésre.
 
-Az üzleti szószedet keresztül érheti el a **szószedet** lehetőséget a Data Catalog-portál navigációs menüjében.  
+Az üzleti szószedet keresztül érheti el a **szószedet** lehetőséget a Data Catalog-portál navigációs menü.  
 
-![Az üzleti szószedet elérése](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![Hozzáférés az üzleti szószedet](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
-Katalógus-rendszergazdák és a szószedet-Rendszergazdák szerepkör tagjai létrehozása, szerkesztése és törlése az üzleti szószedet szószedet feltételeit. A Data Catalog senki kifejezés definíciókat és címke eszközök szószedet kifejezéseivel jelölhetik megtekintheti.
+Data Catalog-rendszergazdák és a szószedet-Rendszergazdák szerepkör tagjai létrehozása, szerkesztése és törlése az üzleti szószedet az szószedet kifejezései. A Data Catalog minden felhasználó megtekintheti a kifejezés-definíciók és a szószedet kifejezéseivel jelölhetik címke eszközök.
 
-![Egy új szószedetben hozzáadása](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![A szószedet új kifejezésének hozzáadása](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
-## <a name="creating-glossary-terms"></a>SZÓJEGYZÉK létrehozása
-Katalógus-rendszergazdák és rendszergazdák szószedet kattintva hozhat létre Szójegyzék a **új kifejezés** gombra. Minden egyes szószedetben a következő mezőket tartalmazza:
+## <a name="creating-glossary-terms"></a>Szószedet kifejezései létrehozása
+Data Catalog-rendszergazdák és a szószedet-rendszergazdák kattintva hozhatja létre a szószedet kifejezései a **új kifejezés** gombra. Minden egyes szószedet kifejezésének a következő mezőket tartalmazzák:
 
 * A kifejezés egy üzleti definíciója.
-* Egy leírást, amely rögzíti a tervezett használattól vagy az eszköz vagy az oszlop üzleti szabályok
-* Az érdekelt felek, akik a legtöbb tudni kifejezés listáját
-* A szülő kifejezés, amely meghatározza a hierarchia kifejezés vannak rendezve
+* Egy leírást, amely rögzíti a használatra, vagy az eszköz vagy az oszlop az üzleti szabályok
+* Érintettek, akik a legtöbb ismert kifejezés listája
+* Szülőkifejezés, amely meghatározza a hierarchiában, amelyben az előfizetési időszak van rendezve
 
 ## <a name="glossary-term-hierarchies"></a>Szószedet kifejezés hierarchiák
-A Data Catalog üzleti szószedet segítségével egy szervezet az üzleti szószedet leírhatja kifejezések hierarchikus, és létrehozhat egy besorolási feltételek az üzleti elnevezési rendszert jobban jelölő.
+A Data Catalog üzleti szószedet használatával egy szervezet az üzleti szószedet tud adni a feltételek hierarchiaként, és létrehozható egy besorolási feltételek, amely jobban az üzleti elnevezési rendszert.
 
-Egy kifejezés egyedinek kell lennie a hierarchiában megadott mértékét. Duplikált nevek használata nem engedélyezett. A hierarchia szintjének száma nincs korlátozva, de a hierarchiában van gyakran több könnyen érthető amikor három szintje vagy kevesebb.
+A kifejezés egy megadott hierarchia szintjén egyedinek kell lennie. Ismétlődő nevek nem engedélyezettek. Nem a hierarchia szintek száma korlátozott, de egy hierarchia több könnyen gyakran megérthető amikor három szinten vagy kevesebb.
 
-Az üzleti szószedet hierarchiái használata nem kötelező. SZÓJEGYZÉK a szülő kifejezés mező üresen hagyja listát hoz létre (nem hierarchikus) simán kifejezések a szószedet a.  
+Az üzleti szószedet hierarchiái használata nem kötelező. Szószedet kifejezései a szülő kifejezés mezőt üresen hagyja a szószedet kifejezések átalánydíjjal (nem hierarchikus) listájának létrehoz.  
 
-## <a name="tagging-assets-with-glossary-terms"></a>Szószedet kifejezéseivel jelölhetik eszközök címkézése
-Után Szójegyzék a katalógus belül, a címkézés eszközök élménye megfelelően lett optimalizálva a felhasználó beír egy címkét a szószedet keresési. A Data Catalog-portál választhat egyező szószedetben listáját jeleníti meg. Ha a felhasználó kijelöli a szószedetben a listából, kifejezés hozzáadódik az eszköz (más néven a szószedet címkével) címkeként. A felhasználó is választhat egy új címke létrehozásához írja be a keresőkifejezést, amely nem szerepel a szószedet (más néven a felhasználói kód).
+## <a name="tagging-assets-with-glossary-terms"></a>A szószedet kifejezéseivel jelölhetik eszközök címkézése
+Szószedet kifejezései definiálva van átveheti a katalógusban, miután az adategységek címkézése élménye van optimalizálva keresse a gyűjteményt, ahogy a felhasználó beír egy címkét. A Data Catalog-portálon választhat egyező szószedet kifejezései listáját jeleníti meg. Ha a felhasználó a szószedet kifejezésének a listából, az előfizetési időszak hozzáadódik az eszköz (más néven szószedetcímke) címkeként. A felhasználó új címke létrehozásához, amely nem szerepel a szószedet kifejezés beírásával is választhat (más néven felhasználói címkét).
 
-![Egy felhasználó címkével és két szószedet címkék címkézett adategységet](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
+![Egy felhasználói címkét és két szószedet címkét címkézett adategységhez](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
 
 > [!NOTE]
-> Felhasználói címke található a Data Catalog szabad Edition támogatott címke csak ilyen típusú.
+> A felhasználói címkék a Data Catalog ingyenes kiadása támogatja a címke csak ilyen típusú.
 >
 >
 
-### <a name="hover-behavior-on-tags"></a>Vigye a címkék viselkedése
-A Data Catalog-portálon a címkék kétféle vizuálisan önálló, és jelen különböző rámutatáskor viselkedések. Ha egy felhasználó címke mutat, láthatja a címke szövegét és a felhasználó vagy felhasználók, akik jelentek meg a címke. Ha egy szószedet címke mutat, is látja a szószedetben és a hivatkozások megnyithassanak az üzleti szószedet a teljes definíciójának megtekintése.
+### <a name="hover-behavior-on-tags"></a>Címkék viselkedése rámutatáskor
+A Data Catalog-portálon a címkék kétféle és vizuális megjelenítés segítségével különböző található különböző rámutatáskor viselkedéseket. Ha az egérmutatót egy felhasználói címkét, láthatja a címke szöveg és a felhasználó vagy felhasználók, akik a címkék hozzáadását. Ha az egérmutatót szószedetcímke, meghatározása a szószedet kifejezésének és nyissa meg a teljes definíciójának megtekintése az üzleti szószedet mutató hivatkozás is megjelenik.
 
-### <a name="search-filters-for-tags"></a>A címkék keresési szűrők
-Szószedet címkék és a felhasználói címkék nem kereshető is, és alkalmazhatja azokat a keresési szűrőként.
+### <a name="search-filters-for-tags"></a>A címkék keresési szűrői
+Szószedet-címkék és a felhasználói címkék is kereshető, és alkalmazhatja azokat a keresés szűrőként.
 
 ## <a name="summary"></a>Összegzés
-Az üzleti szószedet az Azure Data Catalog, és lehetővé teszi, hogy az irányadó címkézést használva, azonosítására, kezelése és egységes módon adategységeket. Az üzleti szószedet előléptetheti az üzleti szószedet szervezet tagjai tudomást. A szószedet is támogatja a rögzítés jelentéssel bíró metaadatok, amely egyszerűbbé teszi az eszköz felderítése és értelmezését.
+Az üzleti szószedet lehetővé teszi a szabályozott címkézés, és az Azure Data Catalog használatával azonosítsa, kezelheti és egységes módon adategységeket. Az üzleti szószedet learning, az üzleti szószedet a szervezet tagjai léptetheti elő. A szószedet is támogatja az értelmezhető metaadatokat, ami megkönnyíti az adatvagyon felderítését és megértése rögzítése.
 
 ## <a name="next-steps"></a>További lépések
-* [Üzleti szószedet műveletek REST API dokumentációja](https://msdn.microsoft.com/library/mt708855.aspx)
+* [Az üzleti szószedet tevékenységekhez REST API dokumentációja](https://msdn.microsoft.com/library/mt708855.aspx)

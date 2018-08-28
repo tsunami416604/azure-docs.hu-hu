@@ -1,26 +1,26 @@
 ### <a name="prerequisites"></a>Előfeltételek
-* A Twilio-fiókja
-* Ellenőrzött Twilio-telefonszámot, amelyet a SMS fogadására
-* Az SMS küldő ellenőrzött Twilio telefonszám rendelve
+* Twilio-fiókja
+* Egy ellenőrzött Twilio telefonszám, amely fogadhatnak SMS
+* Egy ellenőrzött Twilio telefonszám, amely lehet SMS küldése
 
 > [!NOTE]
-> Ha a Twilio-próbafiókra használ, az SMS csak elküldheti **ellenőrzése** telefonszámokat.  
+> Próbaverziós Twilio-fiók használatakor, elküldheti az SMS-t csak **ellenőrzött** ügyfélszolgálatának telefonszámai.  
 > 
 > 
 
-A Twilio-fiókját a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás Twilio-fiókjához. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
+A Twilio-fiók, a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás a Twilio-fiókhoz való csatlakozáshoz. Szerencsére a ehhez egyszerűen, a logikai alkalmazás az Azure Portal webhelyen belül. 
 
-A Logic Apps alkalmazást Twilio-fiókja való csatlakozáshoz engedélyezni lépései a következők:
+A Twilio-fiók kapcsolódni a logikai alkalmazás engedélyezése lépései a következők:
 
-1. Válassza ki a Twilio-, VPN-kapcsolat létrehozásához a Logic app tervezőben, **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *Twilio* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
+1. Hozzon létre egy kapcsolatot a Twilio, a Logic app Designerben, jelölje be **megjelenítése a Microsoft által felügyelt API-k** a legördülő listában adja meg *Twilio* kifejezést a keresőmezőbe. Válassza ki az eseményindítót vagy műveletet fogja kíván használni:  
    ![](./media/connectors-create-api-twilio/twilio-0.png)
-2. Ha még nem hozott létre a kapcsolatokat a Twilio előtt, meg fogja kérni a Twilio-hitelesítő adatainak megadását. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használandó, és hozzáférni a Twilio-fiókja adatai:  
+2. Ha még nem hozott létre a Twilióhoz előtt kapcsolatokat, első kéri a Twilio hitelesítő adatokat. Ezeket a hitelesítő adatokat szeretne csatlakozni a logikai alkalmazás hitelesítéséhez használható, és a Twilio-fiók adatok elérésére:  
    ![](./media/connectors-create-api-twilio/twilio-1.png)  
-3. Szüksége lesz a **Twilio fiókazonosító** és **Twilio hozzáférési jogkivonat** Twilio az irányítópultról, jelentkezzen be a Twilio-fiókja most két adatot bejelentkezési:  
+3. Szüksége lesz a **Twilio-fiókazonosító** és **Twilio hozzáférési jogkivonat** Twilio az irányítópultról, jelentkezzen be a Twilio-fiók most ezeket kétféle információra megnyitása:  
    ![](./media/connectors-create-api-twilio/twilio-2.png)  
-4. Twilio és a Logic apps segítségével, hogy két adatot azonosíthatja a különböző neveket. Itt látható, hogyan kell társítani őket a Logic apps párbeszédpanel: ![](./media/connectors-create-api-twilio/twilio-3.png)  
-5. Válassza ki a **hozható létre kapcsolat** gombra:  
+4. Twilio és a Logic apps különböző neveket használatával azonosíthatja ezeket kétféle információra. Itt látható, hogyan kell társítani őket, a Logic apps párbeszédpanel: ![](./media/connectors-create-api-twilio/twilio-3.png)  
+5. Válassza ki a **hozzon létre kapcsolatot** gombra:  
    ![](./media/connectors-create-api-twilio/twilio-4.png)
-6. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
+6. Figyelje meg, hogy a kapcsolat létrejött, és most már szabadon folytassa a további lépésekkel, a logikai alkalmazásban:  
    ![](./media/connectors-create-api-twilio/twilio-5.png)
 

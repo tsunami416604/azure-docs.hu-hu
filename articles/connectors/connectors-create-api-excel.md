@@ -10,22 +10,22 @@ ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 94960b95e6de30159ec34b3f97bb5119cac42c35
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ceef6c5f32372bb69f6ce789e755bc540cb12ba1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818099"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051949"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Az Azure Logic Apps Excel Online-adatok kezelése
 
-Az Azure Logic Apps és az Excel Online-összekötő automatikus feladatokkal és munkafolyamatokkal, vagy a onedrive-on az Excel online-ban adatai alapján is létrehozhat. A munkafolyamatok hajthatja végre ezeket a műveleteket és más adatait, például:
+Az Azure Logic Apps és az Excel Online-összekötő automatikus feladatokkal és munkafolyamatokkal, vagy a onedrive-on az Excel online-ban adatai alapján is létrehozhat. Ez az összekötő biztosít műveletek, amelyek segítenek az adatok és a táblázatok, például kezelheti: 
 
 * Hozzon létre új munkalapokat és táblákat.
 * GET, és kezelheti a munkalapok, táblák és sorok.
 * Egyetlen sorok hozzáadása és kulcsoszlopot.
 
-A logic Apps, az Excel Online műveletek kimenete használó műveleteket is felvehet. Ez az összekötő biztosít csak műveletek, így a logikai alkalmazás indítására használjon egy külön eseményindító, például egy **ismétlődési** eseményindító. Például ha munkalapok létre minden héten, elküldheti ezen új munkalapok az Office 365 Outlook-összekötővel e-mailt.
+Ezután használhatja ezeket a műveleteket kimenetei műveletekhez más szolgáltatásokhoz. Például ha egy műveletet, amely létrehozza a munkalapok minden héten használja, használhatja egy másik művelet, amely megerősítő e-mailt küld az Office 365 Outlook-összekötő használatával.
 
 Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 

@@ -3,18 +3,18 @@ title: Egyéni MapReduce programok – Azure HDInsight futtatása
 description: Mikor és hogyan lehet egyéni MapReduce programok futtatása a HDInsight.
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 87eb4c8380c0a542d52ffb4a77bcc317407ea545
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 80f58157e69ff5a6e707408d795889b5bcd677b7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594474"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045571"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Egyéni MapReduce programok futtatása
 

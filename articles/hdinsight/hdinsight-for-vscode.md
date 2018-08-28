@@ -5,16 +5,16 @@ keywords: A VS Code, az Azure HDInsight-eszközök, Hive, Python, PySpark, Spark
 services: hdinsight
 author: jejiang
 ms.author: jejiang
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 255f1ecb3c55ef94b6f4f3393257b3054ff1b725
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b66658bde818e2b4cce2cbc0dc5b419ba33dc737
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057541"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108828"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
 
@@ -25,7 +25,7 @@ Ismerje meg, hogyan használhatja az Azure HDInsight Tools for Visual Studio Cod
 
 A következő elemekre szükség, az ebben a cikkben ismertetett lépéseket követve:
 
-- A HDInsight-fürt. Hozzon létre egy fürtöt, tekintse meg [HDInsight – első lépések]( hdinsight-hadoop-linux-tutorial-get-started.md).
+- A HDInsight-fürt. Hozzon létre egy fürtöt, tekintse meg [HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
 - [Mono](http://www.mono-project.com/docs/getting-started/install/). Mono csak akkor szükséges, Linux és MacOS rendszeren.
 

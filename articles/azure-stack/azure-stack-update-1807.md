@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/27/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 5e5ebac221060058a44f7605f77d33a133f5e72c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: afbe3ff2e6be4e03f8de8ac2490922c3ec788733
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887223"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091380"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 frissítése
 
@@ -168,6 +168,8 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 ### <a name="portal"></a>Portál
+- <!-- 2931230 – IS  ASDK --> Nem lehet törölni a felhasználói előfizetés, mint egy kiegészítő csomag hozzáadott tervek, akkor is, ha a csomag eltávolítása a felhasználói előfizetés. A terv marad mindaddig, amíg az előfizetéseket, hogy a kiegészítő csomagot is törlődik. 
+
 - <!--2760466 – IS  ASDK --> Amikor telepít egy új Azure Stack-környezet, amely ebben a verzióban fut, a riasztás azt jelzi, *aktiválás szükséges* nem jelenítik meg. [Az aktiválás](azure-stack-registration.md) marketplace szindikálási használatához szükség.  
 
 - <!-- TBD - IS ASDK --> A két felügyeleti előfizetés adattípusokat [verziójú 1804-es verzióban bevezetett](azure-stack-update-1804.md#new-features) nem használható. Az előfizetés-típusok a következők **előfizetés mérési**, és **Használatalapú előfizetés**. Ezek a típusok előfizetés új Azure Stack-környezetek verziójától kezdve az 1804 láthatók, de még nem használatra kész. Ön továbbra is használja a **alapértelmezett szolgáltató** előfizetés-típus.

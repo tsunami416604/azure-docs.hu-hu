@@ -5,16 +5,15 @@ ms.service: data-lake-analytics
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
-ms.topic: get-started-article
+ms.reviewer: jasonwhowell
+ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 3095c3281e1797c8103e0c229c62aca1aae3444f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: db20188244ba12afa97c96400e095d06a0dffce5
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625101"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043747"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felületének 2.0-s verziójával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -130,7 +129,7 @@ Ez a U-SQL-parancsfájl beolvassa a forrásadatfájlt az **Extractors.Tsv()** se
 
 Ne módosítsa az elérési utat, kivéve, ha átmásolja a forrásfájlt egy másik helyre.  A Data Lake Analytics létrehozza a kimeneti mappát, ha az még nem létezik.
 
-Egyszerűbb relatív útvonalakat használni az alapértelmezett Data Lake Store-fiókokban tárolt fájlokhoz. De használhat abszolút elérési utakat is.  Például:
+Egyszerűbb relatív útvonalakat használni az alapértelmezett Data Lake Store-fiókokban tárolt fájlokhoz. De használhat abszolút elérési utakat is.  Példa:
 
 ```
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
@@ -155,7 +154,7 @@ Feladatok elküldéséhez használja a következő szintaxist.
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
-Például:
+Példa:
 
 ```
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
@@ -186,7 +185,7 @@ az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/Sea
 az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "<Destination Path and File Name>"
 ```
 
-Például:
+Példa:
 
 ```
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"

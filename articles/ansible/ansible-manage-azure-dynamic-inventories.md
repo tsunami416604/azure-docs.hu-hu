@@ -4,23 +4,23 @@ description: Ismerje meg, hogyan használhatja az Ansible az Azure dinamikus lel
 ms.service: ansible
 keywords: az ansible, azure, devops, bash, cloud Shell, dinamikus készlet
 author: tomarcher
-manager: routlaw
+manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 5f4793759bfba68c8a01d682b6b13de5cb96a8f6
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2757dea5e73f226efc13b7788ce1ab0702aa2e61
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058704"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104697"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Ansible segítségével az Azure dinamikus leltárak kezelése
 Az Ansible segítségével Hardverleltár-információk lekérése a különböző forrásokból (például az Azure felhőalapú forrásokból is beleértve) egy *dinamikus készlet*. Ebben a cikkben fogja használni a [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) konfigurálása az Ansible az Azure dinamikus készlet két virtuális gépet hoz létre, ezeket a virtuális gépeket egyik címkét, és az Nginx telepítése a címkézett virtuális gépen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) megkezdése előtt.
+- **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, első lépésként hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 - **Azure-beli hitelesítő** - [létrehozása Azure hitelesítő adatait, és az Ansible konfigurálása](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
@@ -28,7 +28,7 @@ Az Ansible segítségével Hardverleltár-információk lekérése a különböz
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Nyissa meg [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+1. Nyissa meg a [Cloud Shellt](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 1. Hozzon létre egy Azure-erőforráscsoportot, amely tárolja a virtuális gépek ehhez az oktatóanyaghoz.
 

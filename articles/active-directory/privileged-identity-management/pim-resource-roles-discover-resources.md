@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: c5b26c01028e2a5746132939a2058cacdcad859f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: f4b6fafe40fe00492bac7bd6c28268321d4516db
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622102"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104354"
 ---
 # <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Fedezze fel, és Azure-erőforrások kezelése a Privileged Identity Management használatával
 
@@ -27,7 +27,7 @@ Ismerje meg, hogyan derítheti fel és kezelheti az Azure-erőforrásokat az Azu
 Amikor először állítsa be a PIM az Azure-erőforrásokhoz, kell felderíteni, és válassza ki a PIM használatával védeni kívánt erőforrások. A PIM felügyelt erőforrások száma nincs korlátozva van. Azonban javasoljuk, hogy a kritikus fontosságú (éles) erőforrásokkal.
 
 > [!NOTE]
-> Csak keresése és kiválasztása az előfizetési erőforrások kezelése a PIM használatával. Ha Ön kezeli a PIM az előfizetéshez, az előfizetés gyermekerőforrásait is kezelheti.
+> Csak keresse meg és válassza a felügyeleti csoportba vagy előfizetésbe erőforrások a PIM használata kezelheti. Ha Ön kezeli a felügyeleti csoport vagy egy előfizetés az PIM-ben, a gyermekerőforrásait is kezelheti.
 
 ## <a name="discover-resources"></a>Erőforrások észlelése
 

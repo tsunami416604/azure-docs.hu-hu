@@ -1,68 +1,62 @@
 ---
-title: "Az Azure Data Catalog adatforrások felfedezése |} Microsoft Docs"
-description: "Ez a cikk emel ki, hogyan találhat meg regisztrált adategységeket az Azure Data Catalog, beleértve a Keresés és szűrés és az Azure Data Catalog-portál a találati kijelölő képességeivel."
+title: Az Azure Data Catalog az adatforrások felderítése
+description: Ebben a cikkben korábban regisztrált adategységeket az Azure Data Cataloggal, beleértve a Keresés és szűrés és az Azure Data Catalog-portál a találatok kiemelését funkciói segítségével hogyan emeli ki.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: f72ae3a3-6573-4710-89a7-f13555e1968c
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: e2db429860e6e3a60211c993bebfecbca98d67fd
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f8e722073db967752747511e47921aec3c4a281a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053706"
 ---
-# <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog adatforrások felfedezése
+# <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog az adatforrások felderítése
 ## <a name="introduction"></a>Bevezetés
-Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely a regisztráció és a vállalati adatforrások felderítését a rendszer funkcionál. Más szóval a Data Catalog segít személyek felderítése, megismeréséhez és használatához adatforrások, és segít a szervezeteknek több érték lekérése a meglévő adatokat. A Data Catalog egy adatforrás regisztrálása után a metaadatait indexelik a szolgáltatást, így könnyen kereshet felderítéséhez szükséges adatok.
+Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely a regisztráció és a vállalati adatforrások rendszerként. Más szóval a Data Catalog lehetővé teszi a felderítési megértésében, valamint használhatják az adatforrásokat, és segít a szervezeteknek a meglévő adatok kihasználása. A Data Catalog adatforrás regisztrálása után a indexeli metaadatait, a szolgáltatást, így könnyen kereshet felderítéséhez szükséges adatokat.
 
 ## <a name="searching-and-filtering"></a>A Keresés és szűrés
-A Data Catalog felderítési két elsődleges mechanizmus használja: a Keresés és szűrés.
+A Data Catalog felderítési elsődlegesen két mechanizmust használ: keresés és szűrés.
 
 A keresés nem csupán magától értetődő, de rendkívül hatékony is. Alapértelmezés szerint a keresőkifejezéseket a rendszer összeveti a katalógusban szereplő összes tulajdonsággal, még a felhasználók által beírt dekorációkkal is.
 
-A szűrés a keresést hivatott kiegészíteni. Kiválaszthatja, hogy adott jellemzőiket, például a szakértők, adatforrástípust, objektumtípus és címkék. Csak megfelelő adategységeket megtekintheti, és korlátozhatja a keresési eredményeket annak megfelelő eszközökkel.
+A szűrés a keresést hivatott kiegészíteni. Kiválaszthatja az adott jellemzőkkel, például szakértők, adatforrás típusa, objektumtípus és címkék. Megtekintheti a csak egyező adategységeket, és korlátozhatja a keresési eredmények megfelelő eszközökkel.
 
-A Keresés és szűrés együttes használatával a Data Catalog kell adatforrások felfedezése regisztrált adatforrások gyorsan lépjen.
+A Keresés és szűrés együttes használatával, gyorsan válthat van szüksége az adatforrások felfedezése a Data catalogban regisztrált adatforrások.
 
 ## <a name="search-syntax"></a>Keresési szintaxis
-Bár az alapértelmezett szabad szöveges keresés egyszerű és intuitív, is használható a Data Catalog keresési szintaxisának nagyobb mértékben vezérelheti a keresési eredmények között. Data Catalog keresési a következő módszereket támogatja:
+Bár az alapértelmezett szabad szöveges keresés egyszerű, intuitív, a nagyobb mértékben vezérelheti a keresési eredmények között is használhatja a Data Catalog keresési szintaxis. Keresés az adatkatalógusban támogatja az alábbi technikák segítségével:
 
 | Módszer | Használat | Példa |
 | --- | --- | --- |
-| Az egyszerű keresés |Az egyszerű keresés által használt egy vagy több keresési feltételeket. A eredményei bármely eszközök, amelyek megfelelnek egy vagy több meghatározott egyik tulajdonságnak sem. |`sales data` |
-| Tulajdonság keresése |Csak az adatforrások, ahol a keresési kifejezés egyeztetve van-e a megadott tulajdonság visszaadása. |`name:finance` |
-| Logikai operátorok |Bővíthetők, vagy a megadásával szűkíthető, a Keresés logikai műveletekkel. |`finance NOT corporate` |
-| Csoportosítás zárójelekkel |A lekérdezés csoport részei zárójelekkel segítségével logikai elkülönítés érdekében, különösen a logikai operátorokkal együtt használva. |`name:finance AND (tags:Q1 OR tags:Q2)` |
-| Összehasonlító operátorok |Nem egyenlő összehasonlítások is használni azokhoz a tulajdonságokhoz, szám és adat adattípusúak. |`modifiedTime > "11/05/2014"` |
+| Az egyszerű keresés |Az egyszerű keresés által használt egy vagy több keresőkifejezést. Eredmények minden olyan eszközök, amelyek megfelelnek egy vagy több megadott kifejezéssel tulajdonságai. |`sales data` |
+| Tulajdonság keresése |Csak olyan adatforrásokat ad vissza, a keresési kifejezés egyeztetve van-e a megadott tulajdonságot. |`name:finance` |
+| Logikai operátorok |Bővítheti vagy szűkítheti a keresést logikai műveletekkel által. |`finance NOT corporate` |
+| Csoportosítás zárójelekkel |A lekérdezés csoport részei zárójelekkel logikai elkülönítés érdekében, különösen a logikai operátorokkal együtt használva az. |`name:finance AND (tags:Q1 OR tags:Q2)` |
+| Összehasonlító operátorok |Nem egyenlő összehasonlítások használja a szám és adat adattípusú tulajdonságok esetében. |`modifiedTime > "11/05/2014"` |
 
-A Data Catalog keresési kapcsolatos további információkért tekintse meg a [Azure Data Catalog](https://msdn.microsoft.com/library/azure/mt267594.aspx) cikk.
+A Data Catalog search kapcsolatos további információkért lásd: a [Azure Data Catalog](https://msdn.microsoft.com/library/azure/mt267594.aspx) cikk.
 
 ## <a name="hit-highlighting"></a>Találatok kiemelése
-Amikor megtekinti a keresési eredmények között, minden megjelenített tulajdonságok (például az adatok eszköz neve, leírása és címkék) a megadott keresési feltételeknek megfelelő vannak kiemelve abba, hogy könnyebben azonosíthatja, ezért a megadott eszköz által visszaadott egy adott keresési.
+Megtekintheti a keresési eredmények között, minden megjelenített tulajdonságok, amelyek megfelelnek a megadott keresési feltételeket (például az adatok objektum nevét, leírását és címkék) emel ki, hogy könnyebben azonosítható, hogy a megadott eszköz Miért adta vissza egy adott keresési.
 
 > [!NOTE]
-> A találatok kiemelése kikapcsolásához használja a **kiemelése** kapcsoló számára a Data Catalog-portált.
+> Kapcsolja ki a találatok kiemelése, használja a **kiemelése** váltson a Data Catalog-portálon.
 >
 >
 
-Amikor a keresési eredmények között, nem mindig lehet nyilvánvaló ezért egy adategységet megtalálható, még akkor is kiemeléssel találati engedélyezve van. Az összes tulajdonság figyelembe veszi a keresésnél alapértelmezés szerint, mert egy adategységet esetleg visszaadott egyezés miatt az oszlopszintű tulajdonság. És több felhasználó megjegyzéseket fűzhet regisztrált adategységeket saját címkéket és leírásokat, mert nem minden metaadat előfordulhat jelenik meg a keresési eredmények listájában.
+Amikor a keresési eredmények, azt mindig nem nyilvánvaló miért adategység megtalálható, még akkor is, a találatok kiemelése engedélyezve van. A Keresés az összes tulajdonság alapértelmezés szerint történik, mert egy adategységet előfordulhat, hogy vissza egyezést miatt oszlopszintű tulajdonság alapján. És mivel több felhasználó is adategységek ellátása dekorációkkal regisztrált a saját címkéket és a leírások, nem minden metaadat előfordulhat, hogy nem megjelennek a keresési eredmények listájában.
 
-Az alapértelmezett mozaik elrendezés nézet, minden egyes csempe jelenik meg a keresési eredmények tartalmaz egy **nézet keresési kifejezés megegyezik** ikonra, így gyorsan megtekintheti a találatok és a helyét, valamint ugrani rájuk, ha azt szeretné.
+Az alapértelmezett csempe nézetben, a keresési eredmények között megjelenik minden csempe tartalmaz egy **nézet keresési kifejezés megfelel** ikonra, így gyorsan megtekintheti a száma, egyezések és helyét, és hozzájuk ugorhat, ha azt szeretné.
 
- ![Találati kiemelve, és megkeresi a megadott Azure Data Catalog-portálon](./media/data-catalog-how-to-discover/search-matches.png)
+ ![Találatok kiemelése és az Azure Data Catalog-portálon megfelel a keresésnek](./media/data-catalog-how-to-discover/search-matches.png)
 
 ## <a name="summary"></a>Összegzés
-Mivel a Data Catalog egy adatforrás regisztrálása másolja szerkezeti és leíró metaadatok az adatforrásból a katalógus szolgáltatáshoz, az adatforrás könnyebben megtalálhatóvá és értelmezhetővé válik. Egy adatforrás regisztrálása után tudja azt deríteni szűrés használatával, és a keresni a Data Catalog-portált.
+Mivel a Data Catalog adatforrás regisztrálása másolja szerkezeti és leíró metaadatokat az adatforrásból a katalógus-szolgáltatáshoz, az adatforrás könnyebben megtalálhatóvá és értelmezhetővé válnak. Egy adatforrás regisztrálása után szűrés segítségével könnyűszerrel megkeresheti, és a Data Catalog-portál a keresni.
 
 ## <a name="next-steps"></a>További lépések
-* További adatforrások felfedezése kapcsolatos részletes információkért lásd: [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md).
+* Adatforrások felfedezése részletes ismertetését lásd: [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md).

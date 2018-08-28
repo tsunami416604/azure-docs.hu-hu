@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 91c917687edbdfb49fc7a390187a860d9474623a
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8d786a337710ed53d58c5fde8e40d5347cd6cfc8
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918924"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108378"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gépek soros konzolja (előzetes verzió) 
 
@@ -38,8 +38,10 @@ A soros konzol dokumentáció Linux rendszerű virtuális gépekhez [ide](../lin
 * A resource management üzemi modellhez kell használnia. Klasszikus üzemi modellben nem támogatottak. 
 * A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 * A soros konzol használatával a fióknak rendelkeznie kell [közreműködői szerepkört](../../role-based-access-control/built-in-roles.md) virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiókot. 
+* A virtuális gép, amelyekhez le a soros konzol acessing is jelszóalapú fiókkal kell rendelkeznie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény - funkciójának lásd az alábbi képernyőképet.
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-## <a name="open-the-serial-console"></a>A soros konzol megnyitása
+## <a name="get-started-with-serial-console"></a>Soros konzol használatának első lépései
 A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal](https://portal.azure.com). A virtuális gépekhez a portálon keresztül a soros konzol eléréséhez a lépéseket az alábbiakban 
 
   1. Nyissa meg az Azure Portalon
@@ -49,7 +51,7 @@ A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal]
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-## <a name="access-serial-console-for-windows"></a>A Windows hozzáférés a soros konzol 
+## <a name="configure-serial-console-for-windows"></a>Soros konzol Windows konfigurálása 
 Újabb Windows Server-rendszerképeket az Azure-ban kell [speciális felügyeleti konzol](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) alapértelmezés szerint engedélyezve van. SAC a Windows server-verziók esetében támogatott, de nem áll rendelkezésre az ügyfél-verziók (például a Windows 10, Windows 8 vagy Windows 7). Soros konzol használatával létrehozott Windows virtuális gépek engedélyezése Feb2018 vagy alacsonyabb képek használja az alábbi lépéseket: 
 
 1. Csatlakozás a Windows virtuális géphez a távoli asztalon keresztül

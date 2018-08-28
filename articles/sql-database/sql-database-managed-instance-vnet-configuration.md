@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: f634167f24c221e702696174ea86a212c535695b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: b17749999f7903746651403c5948933332dbee5d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055136"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047932"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Virtuális hálózat konfigurálása az Azure SQL Database felügyelt példány
 
@@ -39,21 +39,39 @@ Tervezze meg, hogyan kívánja üzembe helyezni egy virtuális hálózat, az al�
 ## <a name="requirements"></a>Követelmények
 
 A felügyelt példány létrehozásához kell rendelnie egy alhálózaton belül a virtuális hálózat, amely megfelel az alábbi követelményeknek:
-- **Üres**: az alhálózat nem tartalmazhat más felhőalapú szolgáltatás társítva van hozzá, és nem lehet átjáró-alhálózatot. Nem felügyelt példány létrehozása felügyelt példány naplóátvitelen kívüli egyéb erőforrásokra tartalmazó alhálózathoz, vagy később az alhálózaton belüli más erőforrások hozzáadásához.
-- **Nincs hálózati biztonsági csoport**: az alhálózathoz társított hálózati biztonsági csoport nem lehet.
+- **Alhálózat dedikált**: az alhálózat nem tartalmazhat más felhőalapú szolgáltatás társítva van hozzá, és nem lehet átjáró-alhálózatot. Nem felügyelt példány létrehozása felügyelt példány naplóátvitelen kívüli egyéb erőforrásokra tartalmazó alhálózathoz, vagy később az alhálózaton belüli más erőforrások hozzáadásához.
+- **Nincs hálózati biztonsági csoport**: az alhálózathoz társított hálózati biztonsági csoport nem lehet. 
 - **Rendelkezik az adott útválasztási táblázat**: az alhálózat rendelkeznie kell egy felhasználó útválasztási tábla (UDR) 0.0.0.0/0 következő ugrási típusú internettel, az egyetlen útvonal rendelve. További információkért lásd: [hozzon létre a szükséges útválasztási táblázatot, és társítsa azt](#create-the-required-route-table-and-associate-it)
 3. **Nem kötelező egyéni DNS**: Ha egyéni DNS a virtuális hálózaton van megadva, az Azure rekurzív feloldók IP-címet (például a 168.63.129.16) hozzá kell adni a listához. További információkért lásd: [egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md).
-4. **Nincs szolgáltatásvégpont**: az alhálózat nem rendelkeznie kell egy végpontot (Storage- vagy Sql) társítva van hozzá. Győződjön meg arról, hogy a Szolgáltatásvégpontok lehetőség nem érhető el virtuális hálózat létrehozásakor.
-5. **Elegendő IP-címek**: az alhálózatnak rendelkeznie kell legalább 16 IP-címet. További információkért lásd: [alhálózat méretét határozza meg a felügyelt példány](#determine-the-size-of-subnet-for-managed-instances)
+4. **Nincsenek Szolgáltatásvégpontok**: az alhálózat nem rendelkeznie kell egy hozzá társított végpontot. Győződjön meg arról, hogy szolgáltatás végpontok lehetőség nem érhető el virtuális hálózat létrehozásakor.
+5. **Elegendő IP-címek**: az alhálózaton kell rendelkeznie a legalább 16 IP-címek (javasolt a minimális érték 32 IP-címek). További információkért lásd: [alhálózat méretét határozza meg a felügyelt példány](#determine-the-size-of-subnet-for-managed-instances)
 
 > [!IMPORTANT]
 > Meg nem fog tudni új felügyelt példány üzembe helyezése, ha a cél alhálózat nem kompatibilis az összes fenti követelményt. A cél virtuális hálózat és az alhálózathoz kell tartani a felügyelt példány követelményeknek megfelelően (előtt és üzembe helyezés után), bármilyen megsértése oka lehet, hogy a példány hibás állapotba, és már nem érhető el. Utáni helyreállítás állapot megköveteli, hogy hozzon létre új példányt a megfelelő hálózati szabályzatok rendelkező virtuális hálózaton, hozza létre újra a példányok szintű adatait, és az adatbázisok visszaállítása. Ez vezet be, jelentős állásidő alkalmazásai számára.
 
+A bevezetése _hálózati házirend-leképezés_, egy hálózati biztonsági csoport (NSG) adhat hozzá egy felügyelt példány alhálózatán, a felügyelt példány létrehozása után.
+
+Mostantól használhatja az NSG-KET az IP-címtartományok, amelyről alkalmazások és felhasználók is lekérdezését és kezelését az adatok szűrésével a hálózati forgalom, 1433-as portra szűkítéséhez. 
+
+> [!IMPORTANT]
+> Az 1433-as port elérését fog évében NSG-szabályokat konfigurál, amikor is a legmagasabb prioritású bejövő szabályok jelenik meg az alábbi táblázat beillesztése kell. Egyéb hálózati szándékot szabályzat letiltja a módosítás nem megfelelő.
+
+| NÉV       |PORT                        |PROTOKOLL|FORRÁS           |CÉL|A MŰVELET|
+|------------|----------------------------|--------|-----------------|-----------|------|
+|felügyelet  |9000, 9003, 1438, 1440, 1452|Bármelyik     |Bármelyik              |Bármelyik        |Engedélyezés |
+|mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |Bármelyik        |Engedélyezés |
+|health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|Bármelyik        |Engedélyezés |
+
+Az útválasztási élmény is úgy lett továbbfejlesztve, hogy mellett a 0.0.0.0/0 következő ugrási típus internetes útvonal, most adja hozzá a udr-t, irányíthatja a forgalmat a helyszíni privát IP-címtartományai virtuális hálózati átjáró vagy virtuális hálózati berendezésre (NVA) keresztül felé.
+
 ##  <a name="determine-the-size-of-subnet-for-managed-instances"></a>Alhálózat méretét határozza meg a felügyelt példány
 
-Felügyelt példány létrehozásakor az Azure virtuális gépek kiépítése során választott szint méretétől függően több foglal le. Mivel ezek a virtuális gépek társítva az alhálózat, IP-címek igényelnek. Magas rendelkezésre állásának biztosításához a normál működést és a szolgáltatás karbantartás alatt, az Azure további virtuális gépeket is kioszthat. Ennek eredményeképpen az alhálózat szükséges IP-címek száma, az alhálózat által felügyelt példányok száma nagyobb. 
+Felügyelt példány létrehozásakor az Azure virtuális gépek kiépítésekor kiválasztott csomagtól függően számos foglal le. Mivel ezek a virtuális gépek társítva az alhálózat, IP-címek igényelnek. Magas rendelkezésre állásának biztosításához a normál működést és a szolgáltatás karbantartás alatt, az Azure további virtuális gépeket is kioszthat. Ennek eredményeképpen az alhálózat szükséges IP-címek száma, az alhálózat által felügyelt példányok száma nagyobb. 
 
 A kialakításból fakadóan felügyelt példány legalább 16, az alhálózat IP-címet kell, és előfordulhat, hogy legfeljebb 256 IP-cím használata. Ennek eredményeképpen alhálózati maszkok/28-as, /24 használja, az alhálózati IP-címtartományok meghatározásakor. 
+
+> [!IMPORTANT]
+> Alhálózat 16 IP-címekkel rendelkező mérete korlátozott lehetséges a további felügyelt példány horizontális felskálázás az operációs rendszer nélküli helyreállításra minimális. Erősen ajánlott lehetőséget választva alhálózati előtagot/27-eset vagy alá. 
 
 Ha azt tervezi, az alhálózaton belül több felügyelt példány üzembe helyezése és az alhálózat méretét optimalizálására, a számítás használni ezeket a paramétereket: 
 
@@ -62,6 +80,9 @@ Ha azt tervezi, az alhálózaton belül több felügyelt példány üzembe helye
 - Egyes üzletileg kritikus példányok kell négy címét
 
 **Példa**: tervezett három általános célú és két üzleti az kritikus fontosságú felügyelt példányok. Hogy azt jelenti, hogy 5 + 3 * 2 + 2 * 4 = 19 kell IP-címek. IP-címtartományok 2 hatványa határozzák meg, mint az IP-címtartományt 32 kell (2 ^ 5) IP-címeket. Ezért kell lefoglalni az alhálózat/27-eset a alhálózati maszkkal. 
+
+> [!IMPORTANT]
+> További fejlesztések fog elavulnak számítási fent látható. 
 
 ## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>A felügyelt példányhoz az Azure Resource Manager üzembe helyezése egy új virtuális hálózat létrehozása
 
@@ -84,59 +105,6 @@ A létrehozása és konfigurálása virtuális hálózat legegyszerűbben az Azu
 
 Előfordulhat, hogy módosítsa a virtuális hálózatok és alhálózatok nevét, és állítsa be a hálózati erőforrásokhoz tartozó IP-címtartományok. Után a "Vásárlás" gombra az űrlap létrehozása, és konfigurálja a környezetet. Ha már nincs szüksége a két alhálózat törölheti az alapértelmezettet. 
 
-## <a name="create-a-new-virtual-network-for-managed-instances-using-portal"></a>Új virtuális hálózat létrehozása a portál használatával felügyelt példányok
-
-Az Azure virtuális hálózat létrehozása előfeltétele a felügyelt példány létrehozása. Használhatja az Azure Portalon [PowerShell](../virtual-network/quick-create-powershell.md), vagy [Azure CLI-vel](../virtual-network/quick-create-cli.md). A következő szakasz bemutatja a lépéseket az Azure portal használatával. Mindkét módszerhez a részleteit az itt tárgyalt vonatkoznak.
-
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-2. Keresse meg és kattintson a **Virtuális hálózat** elemre. Ellenőrizze, hogy a **Resource Manager** üzembehelyezési mód van-e kiválasztva, majd kattintson a **Létrehozás** lehetőségre.
-
-   ![virtuális hálózat létrehozása](./media/sql-database-managed-instance-tutorial/virtual-network-create.png)
-
-3. Adja meg a virtuális hálózat űrlapján a szükséges információkat, például az alábbi képernyőfelvételen látható módon:
-
-   ![virtuális hálózat létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
-
-4. Kattintson a **Create** (Létrehozás) gombra.
-
-   A címtér és alhálózati meg van adva, a CIDR-jelölésrendszerben. 
-
-   > [!IMPORTANT]
-   > Az alapértelmezett értékeket, amely a virtuális hálózat címtere alhálózat létrehozása. Ha ezt a lehetőséget választja, nem lehet létrehozni a felügyelt példány nem virtuális hálózatban lévő összes többi erőforrást. 
-
-   Az ajánlott módszer a következő lenne: 
-   - Alhálózat méretének kiszámítása a következő [alhálózat méretét határozza meg a felügyelt példány](#determine-the-size-of-subnet-for-managed-instances) szakasz  
-   - A virtuális hálózat a többi igények felmérése 
-   - Ennek megfelelően adja meg a virtuális hálózat és alhálózat-címtartományok 
-
-   Győződjön meg arról, hogy a Szolgáltatásvégpontok marad lehetőséget **letiltott**. 
-
-   ![virtuális hálózat létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
-
-### <a name="create-the-required-route-table-and-associate-it"></a>Hozzon létre a szükséges útválasztási táblázatot, és társítsa azt
-
-1. Jelentkezzen be az Azure Portalra  
-2. Keresse meg az **Útvonaltábla** elemet, kattintson rá, majd az Útvonaltábla lapon kattintson a **Létrehozás** gombra.
-
-   ![útvonaltábla létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
-
-3. Hozzon létre egy 0.0.0.0/0 Internet következő ugrási típusú útvonalat az alábbi képernyőfelvételnek megfelelően hasonló módon:
-
-   ![útvonaltábla hozzáadása](./media/sql-database-managed-instance-tutorial/route-table-add.png)
-
-   ![útvonal](./media/sql-database-managed-instance-tutorial/route.png)
-
-4. Ez az útvonal társítása az alhálózat a felügyelt példány oly módon, például az alábbi képernyőfelvételnek megfelelően:
-
-    ![alhálózat](./media/sql-database-managed-instance-tutorial/subnet.png)
-
-    ![útvonaltábla beállítása](./media/sql-database-managed-instance-tutorial/set-route-table.png)
-
-    ![útvonaltábla beállítása – mentés](./media/sql-database-managed-instance-tutorial/set-route-table-save.png)
-
-
-A virtuális hálózat létrehozása után készen áll a felügyelt példány létrehozása.  
-
 ## <a name="modify-an-existing-virtual-network-for-managed-instances"></a>Felügyelt példányok egy meglévő virtuális hálózat módosítása 
 
 Kérdések és válaszok ebben a szakaszban bemutatják, hogyan felügyelt példány hozzáadása meglévő virtuális hálózattal. 
@@ -150,14 +118,27 @@ Felügyelt példány csak a Resource Manager virtuális hálózatot hozhat létr
 Ha szeretne, hozzon létre újat: 
 
 - Az alábbi az irányelveket, az alhálózat méretének kiszámítása a [alhálózat méretét határozza meg a felügyelt példányok](#determine-the-size-of-subnet-for-managed-instances) szakaszban.
-- Kövesse lépéseket [hozzáadása, módosítása vagy törlése egy virtuális hálózat alhálózatához](../virtual-network/virtual-network-manage-subnet.md). 
+- Kövesse a [hozzáadása, módosítása vagy törlése egy virtuális hálózat alhálózatához](../virtual-network/virtual-network-manage-subnet.md). 
 - Hozzon létre egy útválasztási táblázatot, amely tartalmaz egy bejegyzést, **0.0.0.0/0**, ahogy a következő Ugrás az interneten, és társíthatja azt az alhálózatot a felügyelt példány esetében.  
 
-Abban az esetben, ha szeretne egy meglévő alhálózaton belül a felügyelt példány létrehozása: 
-- Ellenőrizze, hogy ha az alhálózat üres – felügyelt példány nem hozható létre más erőforrások, például az átjáró-alhálózat tartalmazó alhálózathoz 
-- Az alábbi az irányelveket, az alhálózat méretének kiszámítása a [alhálózat méretét határozza meg a felügyelt példányok](#determine-the-size-of-subnet-for-managed-instances) szakaszt, és győződjön meg arról, hogy megfelelően van-e méretezve. 
-- Ellenőrizze, hogy a Szolgáltatásvégpontok az alhálózaton nincsenek engedélyezve.
-- Győződjön meg arról, hogy nincsenek-e az alhálózathoz társított hálózati biztonsági csoportok 
+Ha szeretne létrehozni egy meglévő alhálózaton belül a felügyelt példány, a következő PowerShell-parancsfájlt az alhálózat előkészítése javasoljuk.
+```powershell
+$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
+
+$parameters = @{
+    subscriptionId = '<subscriptionId>'
+    resourceGroupName = '<resourceGroupName>'
+    virtualNetworkName = '<virtualNetworkName>'
+    subnetName = '<subnetName>'
+    }
+
+Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
+```
+Alhálózat előkészítési három egyszerű lépésben történik:
+
+- Ellenőrzése – a kiválasztott virtuális: nincs és az alhálózat hálózati követelményeiben felügyelt példány érvényesítése
+- Megerősítése – felhasználó látható, amely kell végzett készíti elő az alhálózat a felügyelt példány üzembe helyezési és beleegyezését kéri módosításainak egy halmazát
+- Készítse elő – virtuális hálózat és alhálózat megfelelően van beállítva
 
 **Egyéni DNS-kiszolgáló konfigurálva van?** 
 

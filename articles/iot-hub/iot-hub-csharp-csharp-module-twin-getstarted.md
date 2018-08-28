@@ -2,19 +2,18 @@
 title: Ismerkedés az Azure IoT Hub-modulidentitással és -modulikerrel (.NET) | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre modulidentitást és frissíthet modulikert a .NET-hez készült IoT SDK-k használatával.
 author: chrissie926
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 8d5d4ab85d8441998fd384e01f85d1d427d68cc2
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 7ff867bc29e81e47a4bf66173ce3056792f2f445
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42060821"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091632"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>Ismerkedés az IoT Hub identitás- és modul ikermodul .NET-háttérrendszer és a .NET-eszköz használata
 
@@ -24,15 +23,17 @@ ms.locfileid: "42060821"
 Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 * A **CreateIdentities** egy eszközidentitást, egy modulidentitást valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat az eszközhöz és a modulügyfelekhez.
+
 * Az **UpdateModuleTwinReportedProperties** a moduliker jelentett tulajdonságainak frissítését továbbítja az IoT Hub részére.
 
 > [!NOTE]
-> Az Azure IoT SDK-kat használhatja az eszközökön és a megoldás háttérrendszerén futó alkalmazások összeállításához egyaránt. Ezekről az [Azure IoT SDK-k][lnk-hub-sdks] című témakörben talál további információt.
+> Az Azure IoT SDK-kat használhatja az eszközökön és a megoldás háttérrendszerén futó alkalmazások összeállításához, kapcsolatos információkért lásd: [Azure IoT SDK-k](iot-hub-devguide-sdks.md).
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Visual Studio 2015 vagy Visual Studio 2017.
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
+* Visual Studio 2017.
+
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -45,19 +46,21 @@ Létrehozta az IoT Hubot, és rendelkezik az oktatóanyag további részeinek te
 
 Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközön a moduliker jelentett tulajdonságainak frissítéséhez.
 
-1. **Visual Studio-projekt létrehozása** – A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet a meglévő megoldáshoz a **Console App (.NET Framework)** (Konzolalkalmazás (.NET-keretrendszer)) projektsablonnal. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja. Adja a projektnek az **UpdateModuleTwinReportedProperties** nevet.
+1. **A Visual Studio-projekt létrehozása:** a Visual Studióban adjon hozzá egy Visual C# Windows klasszikus Asztalialkalmazás-projektet a meglévő megoldáshoz használatával a **Console App (.NET Framework)** projektsablonnal. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja. Adja a projektnek az **UpdateModuleTwinReportedProperties** nevet.
 
-    ![Hozzon létre egy Visual Studio-projektet.][13]
+    ![Hozzon létre egy Visual Studio-projektet.](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.JPG)
 
-2. **Telepítse a legújabb Azure IoT hubhoz .NET eszközoldali SDK** – identitás- és modul ikermodul jelenleg nyilvános előzetes verzióban. Ez csak az IoT Hub előzetes verziójú eszközoldali SDK-iban érhető el. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices.Client csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki a legújabb verziót, és telepítse. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
+2. **Telepítse a legújabb Azure IoT hubhoz .NET eszközoldali SDK:** identitás- és modul ikermodul jelenleg nyilvános előzetes verzióban. Ez csak az IoT Hub előzetes verziójú eszközoldali SDK-iban érhető el. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices.Client csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki a legújabb verziót, és telepítse. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
 
-    ![Az Azure IoT Hub .NET szolgáltatási SDK 1.16.0-preview-005-ös verziójának telepítése][14]
+    ![Az Azure IoT Hub .NET szolgáltatási SDK 1.16.0-preview-005-ös verziójának telepítése](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
-3. **Szerezze be a modul kapcsolati sztringjét** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
+3. **A modul kapcsolati sztring lekérése** – Ha bejelentkezik az [az Azure portal](https://portal.azure.com/). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
-    ![Az Azure Portal moduladatai][15]
+    ![Az Azure Portal moduladatai](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG)
 
-4. **Hozza létre az UpdateModuleTwinReportedProperties konzolalkalmazást.** Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+4. **UpdateModuleTwinReportedProperties Konzolalkalmazás létrehozása**
+
+    Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -69,18 +72,22 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
     Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át a modul kapcsolati sztringjére.
 
     ```csharp
-    private const string ModuleConnectionString = "<Your module connection string>";
+    private const string ModuleConnectionString = 
+      "<Your module connection string>";
     private static ModuleClient Client = null;
-    static void ConnectionStatusChangeHandler(ConnectionStatus status, ConnectionStatusChangeReason reason)
+    static void ConnectionStatusChangeHandler(ConnectionStatus status, 
+      ConnectionStatusChangeReason reason)
     {
-        Console.WriteLine("Connection Status Changed to {0}; the reason is {1}", status, reason);
+        Console.WriteLine("Connection Status Changed to {0}; the reason is {1}", 
+          status, reason);
     }
     ```
 
     Adja hozzá a **Program** osztályhoz a következő, **OnDesiredPropertyChanged** metódust:
 
     ```csharp
-    private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
+    private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, 
+      object userContext)
         {
             Console.WriteLine("desired property change:");
             Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
@@ -99,11 +106,13 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
     ```csharp
     static void Main(string[] args)
     {
-        Microsoft.Azure.Devices.Client.TransportType transport = Microsoft.Azure.Devices.Client.TransportType.Amqp;
+        Microsoft.Azure.Devices.Client.TransportType transport = 
+          Microsoft.Azure.Devices.Client.TransportType.Amqp;
 
         try
         {
-            Client = ModuleClient.CreateFromConnectionString(ModuleConnectionString, transport);
+            Client = 
+              ModuleClient.CreateFromConnectionString(ModuleConnectionString, transport);
             Client.SetConnectionStatusChangesHandler(ConnectionStatusChangeHandler);
             Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, null).Wait();
 
@@ -133,6 +142,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
     A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. A nyilvános előzetes verzióban az AMQP csak a moduliker-műveletek esetében támogatott.
 
 5. A fentiek mellett **fő** módszerrel adhat hozzá alábbi kódblokkot, amellyel esemény küldése az IoT hubhoz a modulból:
+
     ```csharp
     Byte[] bytes = new Byte[2];
     bytes[0] = 0;
@@ -150,18 +160,5 @@ Most már készen áll az alkalmazások futtatására. A Visual Studióban a Sol
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 
-* [Eszközfelügyelet – első lépések][lnk-device-management]
-* [Ismerkedés az IoT Edge szolgáltatással][lnk-iot-edge]
-
-
-<!-- Images. -->
-[13]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.JPG
-[14]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
-<!-- Links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-portal]: https://portal.azure.com/
-
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
+* [Ismerkedés az eszközfelügyelettel](iot-hub-node-node-device-management-get-started.md)
+* [Ismerkedés az IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)

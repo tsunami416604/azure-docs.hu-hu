@@ -3,18 +3,18 @@ title: Python-kódtárakat a Spark - az Azure webhelyek naplóinak elemzése
 description: Ez a jegyzetfüzet bemutatja, hogyan elemezheti a naplófájlok adatait a Spark on Azure HDInsight egy egyéni kódtár használatával.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: jasonh
-ms.openlocfilehash: bb176c9c188aff5d3ec583216ade187decddbe2c
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a22e1f90c01b6b0e871516816815286a4f6671a2
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620518"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045716"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>Egy egyéni Python-kódtár használata a HDInsight Spark-fürt webhelynaplók elemzése
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2018
+ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 3586804a8384273e5c0589bef9c586cee162939e
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 179d5c71a309fd79c23519544d1da6bcc07cda0c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056678"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045000"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>A Log Analytics és az adatmennyiség szabályozásával költségek kezelése
 
@@ -29,7 +29,7 @@ ms.locfileid: "42056678"
 > - [Adathasználat elemzése a Log Analytics](log-analytics-manage-cost-storage.md) azt ismerteti, hogyan elemezheti, és riasztást küldjön az adathasználatot.
 > - [Használat és becsült költségek figyelése](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) ismerteti, hogyan lehet megtekinteni a használati és becsült költségek figyelési funkciók eltérő díjszabási modelleket a több Azure-ban. Emellett bemutatja, hogyan lehet módosítani a díjszabási modellt.
 
-A log Analytics méretezési és támogatási gyűjtése, az indexelés és a vállalati adatok naponta bármilyen forrásból származó nagy mennyiségű tárolására tervezték vagy üzembe helyezve az Azure-ban.  Ez lehet egy elsődleges illesztőprogram, a szervezet számára, miközben költséghatékonyságot végső soron az alapul szolgáló illesztőprogram. Ebből a célból, fontos ismerni a nem a napló Analytisc munkaterület költségét csak alapján összegyűjtött adatok mennyisége is a kiválasztott csomag függ, és mennyi ideig úgy döntött, hogy a csatlakoztatott források által létrehozott adatokat tárolni.  
+A log Analytics méretezési és támogatási gyűjtése, az indexelés és a vállalati adatok naponta bármilyen forrásból származó nagy mennyiségű tárolására tervezték vagy üzembe helyezve az Azure-ban.  Ez lehet egy elsődleges illesztőprogram, a szervezet számára, miközben költséghatékonyságot végső soron az alapul szolgáló illesztőprogram. Ebből a célból, fontos ismerni a nem a Log Analytics-munkaterület költségét csak alapján összegyűjtött adatok mennyisége is a kiválasztott csomag függ, és mennyi ideig úgy döntött, hogy a csatlakoztatott források által létrehozott adatokat tárolni.  
 
 Ez a cikk áttekintettük, hogyan proaktívan figyelheti adatok mennyisége és a storage növekedési, és azok a kapcsolódó költségek szabályozására vonatkozó korlátok beállításához. 
 

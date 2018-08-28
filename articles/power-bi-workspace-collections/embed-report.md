@@ -1,50 +1,44 @@
 ---
-title: A jelentés beágyazása a Azure Power BI munkaterület gyűjtemények |} Microsoft Docs
-description: Útmutató egy jelentést, amely a Power BI munkaterület gyűjtemények az alkalmazásba beágyazandó.
+title: Az Azure Power BI-Munkaterületcsoportok-jelentés beágyazása |} A Microsoft Docs
+description: Ismerje meg, hogyan ágyazhat be egy jelentést, amely a Power BI munkaterületi gyűjtemények az alkalmazásba.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: b6fa46b1cf3a251d6116e7de6ef41a9e6d265c29
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 94476486ed87662f3d6b989b8d5360dd792f8824
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410352"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041180"
 ---
-# <a name="embed-a-report-in-power-bi-workspace-collections"></a>A jelentés beágyazása a Power BI munkaterület gyűjtemények
+# <a name="embed-a-report-in-power-bi-workspace-collections"></a>Jelentés beágyazása Power BI munkaterületi gyűjteményekkel
 
-Útmutató egy jelentést, amely a Power BI munkaterület gyűjtemények az alkalmazásba beágyazandó.
+Ismerje meg, hogyan ágyazhat be egy jelentést, amely a Power BI munkaterületi gyűjtemények az alkalmazásba.
 
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-How to ténylegesen jelentés beágyazása az alkalmazásba fog keresni. Ennek feltétele, hogy már rendelkezik egy jelentést, amely létezik egy munkaterület belül a munkaterület-csoportot. Ha a lépés még nem végzett, lásd: [Ismerkedés a Power BI munkaterület gyűjtemények](get-started.md).
+Áttekintjük, hogyan lehet valójában egy jelentés beágyazása az alkalmazásba. Ennek feltétele, hogy már rendelkezik egy jelentést, amely létezik a munkaterületen belül a munkaterület-csoport. Ha még nem tette ezt a lépést, [Ismerkedés a Power BI-Munkaterületcsoportok](get-started.md).
 
-A .NET (C#) vagy a Node.js SDK, JavaScript, valamint segítségével egyszerűen hozhatók létre az alkalmazás a Power BI munkaterület gyűjteményéhez.
+Használhatja a .NET (C#) vagy a Node.js SDK-val, és a JavaScript, hogy építsenek a Power BI-Munkaterületcsoportok segítségével.
 
-## <a name="using-the-access-keys-to-use-rest-apis"></a>A tárelérési kulcsok segítségével REST API-k
+## <a name="using-the-access-keys-to-use-rest-apis"></a>A hozzáférési kulcsok használatával REST API-k
 
-Ahhoz, hogy a REST API hívása, adja át az elérési kulcsot, amely letölthető az Azure-portál a megadott munkaterület-csoport. További információkért lásd: [Ismerkedés a Power BI munkaterület gyűjtemények](get-started.md).
+Annak érdekében, hogy a hívás a REST API-t, adja át a hozzáférési kulcsot, amely el egy adott munkaterület-csoport az Azure Portalon. További információkért lásd: [Ismerkedés a Power BI-Munkaterületcsoportok](get-started.md).
 
 ## <a name="get-a-report-id"></a>A jelentés azonosító beszerzése
 
-Minden hozzáférési jogkivonat jelentés alapul. Szüksége lesz az adott jelentés azonosító beszerzése a jelentés beágyazása kívánt. Ezt megteheti a hívások a [jelentések lekérése](https://msdn.microsoft.com/library/azure/mt711510.aspx) REST API-t. Ezzel visszatér a azonosítója és a beágyazási URL-címet. Ez a Power BI .NET SDK használatával, vagy hívja közvetlenül a REST API-t is végezhető.
+Minden hozzáférési jogkivonatot a jelentés alapul. Az adott jelentés azonosító beszerzése a jelentés, amely a beágyazni kívánt kell. Ez alapján hívásainak végezhető a [jelentések lekérése](https://msdn.microsoft.com/library/azure/mt711510.aspx) REST API-t. Ez a jelentés azonosítója és a beágyazási URL-címet adja vissza. Ezt megteheti, a Power BI .NET SDK használatával, vagy közvetlenül a REST API-t hívná.
 
 ### <a name="using-the-power-bi-net-sdk"></a>A Power BI .NET SDK használatával
 
-Ha a .NET SDK használatával kell jogkivonat-hitelesítő adat, amely az elérési kulcsot kap az Azure-portálon alapul létrehozása. Ehhez szükséges, hogy telepítse a [Power BI API NuGet-csomag](https://www.nuget.org/profiles/powerbi).
+A .NET SDK használatával, ha szeretne létrehozni egy token hitelesítő adatot, amely az elérési kulcsot kap az Azure Portalról alapul. Ehhez az szükséges, hogy telepítse a [Power BI API NuGet-csomag](https://www.nuget.org/profiles/powerbi).
 
 **NuGet-csomag telepítése**
 
@@ -52,7 +46,7 @@ Ha a .NET SDK használatával kell jogkivonat-hitelesítő adat, amely az elér�
 Install-Package Microsoft.PowerBI.Api
 ```
 
-**C#-kódban**
+**C#-kód**
 
 ```
 using Microsoft.PowerBI.Api.V1;
@@ -67,7 +61,7 @@ var reports = (IList<Report>)client.Reports.GetReports(workspaceCollectionName, 
 // Select the report that you want to work with from the collection of reports.
 ```
 
-### <a name="calling-the-rest-api-directly"></a>Közvetlenül a REST API felület meghívásakor
+### <a name="calling-the-rest-api-directly"></a>A REST API közvetlen hívása
 
 ```
 System.Net.WebRequest request = System.Net.WebRequest.Create("https://api.powerbi.com/v1.0/collections/{collectionName}/workspaces/{workspaceId}/Reports") as System.Net.HttpWebRequest;
@@ -86,13 +80,13 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 }
 ```
 
-## <a name="create-an-access-token"></a>Hozzon létre egy hozzáférési jogkivonatot:
+## <a name="create-an-access-token"></a>Hozzáférési jogkivonat létrehozása
 
-A Power BI munkaterület gyűjtemények használata beágyazása jogkivonatok, amelyek HMAC aláírt JSON webes jogkivonatainak. A jogkivonatok az access-kulcsot a Power BI-Munkaterületcsoport vannak aláírva. Beágyazása a jogkivonatokat, alapértelmezés szerint, egy jelentés beágyazása egy alkalmazásba, csak olvasható hozzáférést biztosítja. Beágyazása jogkivonatok egy adott jelentés ki, és lehet társítva egy beágyazási URL-CÍMÉT.
+A Power BI-Munkaterületcsoportok használható beágyazási tokenek, amely HMAC-val aláírt JSON webes jogkivonatainak. A jogkivonatok van bejelentkezve a Power BI-Munkaterületcsoport a hozzáférési kulcsára. Beágyazási tokenek, alapértelmezés szerint, egy jelentés beágyazása egy alkalmazásba való csak olvasási hozzáférést biztosítanak. Beágyazási tokenek egy adott jelentéshez kibocsátott, és egy beágyazási URL-címet társítva kell lennie.
 
-Hozzáférési jogkivonatok a kiszolgálón kell létrehozni a tárelérési kulcsokat a jogkivonatok bejelentkezési/titkosítására használja. Olyan hozzáférési jogkivonatot létrehozásával kapcsolatos további információkért lásd: [Authenticating és engedélyezése a Power BI-munkaterület gyűjteményekkel](app-token-flow.md). Emellett áttekintheti a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metódust. Íme egy példa Mi ez alábbihoz hasonlóan fog kinézni a .NET SDK használatával a Power BI.
+Hozzáférési jogkivonatokat a kiszolgálón kell létrehozni a hozzáférési kulcsokat használ a tokenek bejelentkezési/titkosításához. A hozzáférési jogkivonat létrehozása információkért lásd: [Authenticating and authorizing with és a Power BI-Munkaterületcsoportok](app-token-flow.md). Emellett áttekintheti a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metódust. Íme egy példa, Mi ez módon jelenik meg a Power bi-ban a .NET SDK használatával.
 
-A jelentés Azonosítóját, amely korábban kapott használnia. A beágyazási jogkivonatot létrehozása után, majd használja a hozzáférési kulcs létrehozásához a jogkivonatot, melyekkel javascript szempontjából. A *PowerBIToken osztály* kell telepíteni a [Power BI Core NuGut csomag](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+A jelentés azonosítója, amely a korábban kapott használhatja. A beágyazási token létrehozása után a hozzáférési kulcsot használ majd fog hozza létre a jogkivonatot, amelyekkel javascript szempontjából. A *PowerBIToken osztály* kell telepíteni a [Power BI fő NuGut csomagot](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **NuGet-csomag telepítése**
 
@@ -100,7 +94,7 @@ A jelentés Azonosítóját, amely korábban kapott használnia. A beágyazási 
 Install-Package Microsoft.PowerBI.Core
 ```
 
-**C#-kódban**
+**C#-kód**
 
 ```
 using Microsoft.PowerBI.Security;
@@ -111,16 +105,16 @@ embedToken = PowerBIToken.CreateReportEmbedToken(workspaceCollectionName, worksp
 var token = embedToken.Generate("{access key}");
 ```
 
-### <a name="adding-permission-scopes-to-embed-tokens"></a>Jogkivonatok beágyazható engedélyhatókörök hozzáadása
+### <a name="adding-permission-scopes-to-embed-tokens"></a>Engedélyek hatókörei a beágyazási tokenek hozzáadása
 
-Beágyazási jogkivonatok használata esetén előfordulhat, hogy korlátozni szeretné a hozzáférést az erőforrások felhasználásának. Emiatt a hatókörbe tartozó engedélyek jogkivonatot is létrehozhat. További információkért lásd: [hatókörök](app-token-flow.md#scopes)
+Beágyazási token használatakor előfordulhat, hogy korlátozni szeretné a erőforrások hozzáférést biztosít. Ebből kifolyólag a jogkivonatot az hatókörbe tartozó engedélyeket is létrehozhat. További információkért lásd: [hatókörök](app-token-flow.md#scopes)
 
-## <a name="embed-using-javascript"></a>Beágyazása a JavaScript használatával
+## <a name="embed-using-javascript"></a>Beágyazás a JavaScript használatával
 
-A hozzáférési jogkivonat és az után az azonosítója, azt is be a jelentést, JavaScript használatával. Ehhez szükséges, hogy telepítse a NuGet [Power BI JavaScript csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). A embedUrl fog majd https://embedded.powerbi.com/appTokenReportEmbed.
+Megvan a hozzáférési jogkivonatot, és a jelentés azonosítója, hogy a jelentés JavaScript használatával ágyazhatók be. Ehhez az szükséges, hogy telepítse a NuGet [Power BI JavaScript csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). A embedUrl lesz, https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
-> Használhatja a [JavaScript-jelentés beágyazása minta](https://microsoft.github.io/PowerBI-JavaScript/demo/) funkciók tesztelésére. A különböző műveletek elérhető kódpéldák is biztosít.
+> Használhatja a [JavaScript Jelentésbeágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/) funkció teszteléséhez. Hitelesítésikód-példák a különböző műveletek elérhető is biztosít.
 
 **NuGet-csomag telepítése**
 
@@ -128,7 +122,7 @@ A hozzáférési jogkivonat és az után az azonosítója, azt is be a jelentés
 Install-Package Microsoft.PowerBI.JavaScript
 ```
 
-**JavaScript-kód**
+**JavaScript-kódot**
 
 ```
 <script src="/scripts/powerbi.js"></script>
@@ -145,9 +139,9 @@ var $reportContainer = $('#reportContainer');
 var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 ```
 
-### <a name="set-the-size-of-embedded-elements"></a>A beágyazott elemek méretének beállítása
+### <a name="set-the-size-of-embedded-elements"></a>Beágyazott elemek méretének beállítása
 
-A jelentés automatikusan beágyazni kívánt tárolója mérete alapján. Bírálja felül a beágyazott elem alapértelmezett méretét, egyszerűen adja hozzá egy CSS osztály attribútuma vagy beágyazott stílusok szélességét és magasságát.
+A jelentést a rendszer automatikusan beágyazza a tároló mérete alapján. Felülbírálja az alapértelmezett méret beágyazott elem, egyszerűen adjon hozzá egy CSS osztály attribútumot, vagy a beágyazott stílusai szélességét és magasságát.
 
 ## <a name="see-also"></a>Lásd még
 
@@ -157,8 +151,8 @@ A jelentés automatikusan beágyazni kívánt tárolója mérete alapján. Bír�
 [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [A Power BI JavaScript-csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 [A Power BI API NuGet-csomag](https://www.nuget.org/profiles/powerbi)
-[Power BI Core NuGut csomag](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
-[A csharp nyelvű Power bi Git-tárház](https://github.com/Microsoft/PowerBI-CSharp)  
-[Power bi-csomópont Git-tárház](https://github.com/Microsoft/PowerBI-Node)  
+[Power BI alapvető NuGut csomag](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
+[A Power bi-CSharp Git-adattár](https://github.com/Microsoft/PowerBI-CSharp)  
+[A Power bi-csomópont Git-adattár](https://github.com/Microsoft/PowerBI-Node)  
 
 További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)

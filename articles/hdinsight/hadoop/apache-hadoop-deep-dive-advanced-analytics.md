@@ -3,18 +3,18 @@ title: Deep dive - advanced analytics – Azure HDInsight
 description: Ismerje meg, hogyan fejlett analitikai algoritmusokat használ a big Data típusú adatok feldolgozásához.
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ad1c96d1d1578489ae16b61e67a73f02cd461e0e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 40536aae15f2ae9fa5e186cdbea1f75f7d264437
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591907"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047140"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Részletes bemutatása – speciális elemzés
 
@@ -24,7 +24,7 @@ HDInsight lehetővé teszi a nagy mennyiségű strukturált és strukturálatlan
 
 ## <a name="advanced-analytics-process"></a>Fejlett analitikai folyamat
 
-![Feldolgozás](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Folyamat](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
 Után, az üzleti probléma azonosítása és gyűjtése elindította, és az adatok feldolgozása, létrehoz egy modellt, amely a kérdést kell előre jelezni kívánt. A modell egy vagy több gépi tanulási algoritmusok használatával győződjön meg a legjobban az Ön üzleti igényeinek előrejelzése típusát.  A legtöbb az adatokat a modell betanításához teszteléséhez vagy kiértékeléséhez, a többi használandó. 
 

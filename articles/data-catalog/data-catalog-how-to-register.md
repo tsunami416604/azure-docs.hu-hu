@@ -1,89 +1,83 @@
 ---
-title: "Adatforrások regisztrálása az Azure Data Catalog |} Microsoft Docs"
-description: "Ez a cikk adatforrások regisztrálása az Azure Data Catalog, beleértve a regisztráció során kibontott metaadatmezőket mutatja be."
+title: Az Azure Data Catalog az adatforrások regisztrálása
+description: Ez a cikk az adatforrások regisztrálása az Azure Data Catalog, beleértve a regisztrálás során kinyert metaadatokat tartalmazó mezőket emeli ki.
 services: data-catalog
-documentationcenter: 
 author: steelanddata
-manager: NA
-editor: 
-tags: 
+ms.author: maroche
 ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: 48b13eef0960afb4aab68923fb97b5b9c14a3d9f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4688b58b40df110a33f9310226db9a6412f43054
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053554"
 ---
-# <a name="register-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog adatforrások regisztrálása
+# <a name="register-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog az adatforrások regisztrálása
 ## <a name="introduction"></a>Bevezetés
-Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely a regisztráció és a vállalati adatforrások felderítését a rendszer funkcionál. Más szóval a Data Catalog segít személyek felderítése, megismeréséhez és használatához adatforrások, és segít a szervezeteknek több érték lekérése a meglévő adatokat. Az első lépés, hogy a Data Catalog által felfedezhetők adatforrás-hoz, hogy az adatforrás regisztrálása.
+Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely a regisztráció és a vállalati adatforrások rendszerként. Más szóval a Data Catalog lehetővé teszi a felderítési megértésében, valamint használhatják az adatforrásokat, és segít a szervezeteknek a meglévő adatok kihasználása. Az első lépés az adatforrás a Data Catalog által felfedezhetők, hogy regisztrálja, hogy az adatforrás.
 
 ## <a name="register-data-sources"></a>Adatforrások regisztrálása
-Regisztráció az a folyamat a metaadatok beolvasása az adatforrás adatainak és másolása, hogy a Data Catalog szolgáltatásba. Az adatok helye nem változik, ahogy az sem, hogy mely rendszergazdák felügyelik az adatokat, és milyen szabályzatok érvényesek rájuk.
+Regisztráció az a folyamat metaadatok beolvasása az adatforrásból, és az adatok másolása a Data Catalog szolgáltatásba. Az adatok helye nem változik, ahogy az sem, hogy mely rendszergazdák felügyelik az adatokat, és milyen szabályzatok érvényesek rájuk.
 
 Egy adatforrás regisztrálása, tegye a következőket:
-1. Az Azure Data Catalog-portálon indítsa el a Data Catalog adatforrás-regisztráló eszköz. 
-2. Jelentkezzen be a munkahelyi vagy iskolai fiókjával jelentkezzen be a portálra használó azonos Azure Active Directory hitelesítő adatokkal.
-3. Jelölje ki a regisztrálni kívánt adatforrást.
+1. Az Azure Data Catalog-portálon a Data Catalog adatforrás-regisztráló eszköz elindításához. 
+2. Jelentkezzen be a munkahelyi vagy iskolai fiókkal az Azure Active Directory hitelesítő adatokkal, használhatja a bejelentkezni a portálra.
+3. Válassza ki a regisztrálni kívánt adatforrás.
 
 További részletes információkért tekintse meg a [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md) oktatóanyag.
 
-Az adatforrás regisztrálása után a katalógust nyomon követi az helyére, és indexeli a metaadatait. Felhasználók keresésében, böngészésében, és Fedezze fel az adatforrást, és az helyére segítségével az alkalmazás vagy az általuk választott eszköz használatával kapcsolódni hozzá.
+Miután regisztrálta az adatforrás, a katalógus nyomon követi a helyét, és indexeli metaadatait. Felhasználók keresés, Tallózás, és felderíteni az adatforrásban, és a hely használatával csatlakozzon hozzá az alkalmazást vagy az általuk választott eszköz használatával.
 
 ## <a name="supported-data-sources"></a>Támogatott adatforrások
 A jelenleg támogatott adatforrások listájáért lásd: [Data Catalog DSR](data-catalog-dsr.md).
 
 ## <a name="structural-metadata"></a>Szerkezeti metaadatok
-Egy adatforrás regisztrálásakor a frissítésregisztráló eszköz kibontja az objektumokhoz szerkezete kapcsolatos információkat. Ez az információ szerkezeti metaadatok nevezzük.
+Ha adatforrásként regisztrálja, a regisztrációs eszköz kinyeri a kiválasztott objektumok struktúrája kapcsolatos információkat. Ezt az információt nevezzük szerkezeti metaadatokat.
 
-Minden objektum a szerkezeti metaadatok magában foglalja az objektum tárfiókbeli helyének, hogy a felhasználók számára az adatok felderítése használhatja ezt az információt az ügyféleszközökben az általuk választott objektum való kapcsolódáshoz. Egyéb szerkezeti metaadatokat objektum neve és típusa, és attribútum-vagy nevét és az adatok írja be.
+Minden objektum a szerkezeti metaadatokat, hogy a felhasználók számára az adatok használhatja ezt az információt szeretne csatlakozni az objektumot az ügyféleszközök elől az általuk választott tartalmazza az objektum tárfiókbeli helyének. Más szerkezeti metaadatokat tartalmazza az objektum neve és típusa, és attribútum vagy az oszlop neve és az adatok írja.
 
-## <a name="descriptive-metadata"></a>Leíró metaadatok
-A fő szerkezeti metaadatokat, amelyek az adatforrás ki kell olvasni, mellett az adatforrás-regisztráló eszköz leíró metaadatok bontja ki. Az SQL Server Analysis Services és az SQL Server Reporting Services a metaadatok jelennek meg, ha ezek a szolgáltatások leírása tulajdonságai lesz végrehajtva. Az SQL Server használatával a ms megadott értékek\_bővített tulajdonság leírás ki kell olvasni. Az Oracle-adatbázishoz, az adatforrás regisztráló eszköz kibontja a Megjegyzés oszlopban az összes\_lapon\_megjegyzések megtekintése.
+## <a name="descriptive-metadata"></a>A leíró metaadatok
+Az adatforrás-regisztráló eszköz mellett az alapvető szerkezeti metaadatokat, amelyek ki kell olvasni az adatforrásból, kinyeri a leíró metaadatok. Az SQL Server Analysis Services és az SQL Server Reporting Services a metaadatok a leírás tulajdonságai, ezek a szolgáltatások által elérhetővé tett származik. Az SQL Server használatával a ms megadott értékek\_kiterjesztett tulajdonság leírása ki kell olvasni. Oracle Database, az adatforrás-regisztrációs eszköz kinyeri a megjegyzések oszlop az összes\_lapon\_MEGJEGYZÉSEKET nézet.
 
-Ki kell olvasni az adatforrásból leíró metaadatok, mellett felhasználók adhat meg a leíró metaadatok az adatforrás-regisztráló eszköz használatával. Címkék a felhasználók hozzáadhatnak, és azonosítani tudják a regisztrálandó objektumok szakértői. A leíró metaadatok a Data Catalog szolgáltatás együtt a szerkezeti metaadatokat másolja.
+Mellett a leíró metaadatok, ki kell olvasni az adatforrásból felhasználókat adhat meg a leíró metaadatok az adatforrás-regisztráló eszköz használatával. A címkék a felhasználók hozzáadhatnak, és azonosítani tudja a regisztrálandó objektumok szakértői. A leíró metaadatok a Data Catalog szolgáltatást, és az szerkezeti metaadatokat másolja.
 
-## <a name="include-previews"></a>Tartalmazza az előzetes verziójú funkciók
-Alapértelmezés szerint csak a metaadatok adatforrások kinyert, és másolja a Data Catalog szolgáltatást, de az adatforrás gyakran könnyebbé egy minta a benne található adatok megtekintésekor ismertetése.
+## <a name="include-previews"></a>Tartalmazza az előzetes verziók
+Alapértelmezés szerint csak metaadatokat adatforrások kinyert, és másolja a Data Catalog szolgáltatást, de egy adatforrás gyakran könnyebbé vált a benne található adatok mintát is megtekintheti ismertetése.
 
-Az adatkatalógus-adatforrás regisztráló eszköz használatával az adatok pillanatkép előnézete foglalandó minden tábla és nézet, amely regisztrálva van-e. Ha azt választja előzetes regisztráció során, akkor a frissítésregisztráló eszköz minden tábla és nézet legfeljebb 20 rekordokat tartalmazza. A pillanatkép majd át lesznek másolva a katalógust a szerkezeti és leíró metaadatok együtt.
-
-> [!NOTE]
-> Széles táblákon, amelyekhez nagy számú oszlopot a 20-nál kevesebb bejegyzés szerepel az előzetes tartozhat.
->
->
-
-## <a name="include-data-profiles"></a>Adatok kísérhetők
-Többek között a következőket az előzetes verziójú funkciók értékes környezetet biztosíthat a felhasználók számára a Data Catalog tárolt adatforrások keresésére, mint például az adatok profil teheti megérteni a felderített adatforrások.
-
-Az adatkatalógus-adatforrás regisztráló eszköz használatával minden tábla és nézet, amellyel regisztrálva van-e az adatok profilt is megadhat. Ha tartalmazza a adatok profilt a regisztráció során, a frissítésregisztráló eszköz tartalmazza az adatokat összesített statisztikája minden tábla és nézet, beleértve:
-
-* Sorok és az objektum az adatok méretét száma.
-* A legújabb frissítés az adatok és a séma a dátuma.
-* Null rekordok és a különböző értékeket az oszlopok száma.
-* Oszlopok minimum, maximum, átlagos és szórás értékeit.
-
-A statisztikai információk majd kerülnek a katalógust a szerkezeti és leíró metaadatok együtt.
+A Data Catalog adatforrás-regisztrációs eszköze segítségével megadhatja az adatok pillanatképes előnézetet mindegyik táblát és nézetet, amely regisztrálva van. Ha előzetes verziók tartalmazzák a regisztráció során, a regisztrációs eszköz legfeljebb 20 bejegyzést tartalmazhat az egyes tábla és nézet is tartalmaz. A pillanatkép majd át lesznek másolva a katalógust a szerkezeti és leíró metaadatok együtt.
 
 > [!NOTE]
-> Szöveg és a dátum oszlop nem tartalmaz átlagos vagy a szórás statisztika a adatok profilban.
+> Előfordulhat, hogy nagy számú oszlopot a széles táblák 20-nál kevesebb rekordokat tartalmazza az előzetes verzióban érhető el.
 >
 >
 
-## <a name="update-registrations"></a>Regisztráció frissítése
-Egy adatforrás regisztrálása segítségével felderíthetők a Data Catalog a metaadatok és regisztráció során kibontott választható preview használatakor. Az adatforrás a katalógusban (például ha egy objektum a séma megváltozott, eredetileg kizárt táblák kell figyelembe venni, vagy frissíti az adatokat, amely megtalálható a előzetes) frissíteni kell, ha az adatforrás-regisztráló eszköz futtatható újra.
+## <a name="include-data-profiles"></a>Adatok profilok belefoglalása
+Ugyanúgy, mint például előzetes verziók is kontextusba értékes felhasználók számára, akik keresse meg a Data Catalog az adatforrásokat, beleértve egy adatprofil még könnyebbé teheti a felderített az adatforrásokkal kapcsolatos tudnivalók.
 
-Egy már regisztrált adatforrás újraregisztrálása egyesítési "upsert" műveletet hajt végre: meglévő objektumok frissülnek, és új objektumok létrehozásakor. Minden metaadatot, felhasználókon a Data Catalog-portál által biztosított megmaradnak.
+A Data Catalog adatforrás-regisztrációs eszköze segítségével megadhatja egy adatprofil minden táblát és nézetet, amely regisztrálva van. Ha egy adatprofil belefoglalása a regisztráció során, a frissítésregisztráló eszköz adatokra vonatkozó összesített statisztikák tartalmaz, mindegyik tábla és nézet, többek között:
+
+* Sorok és az adatok az objektum méretének száma.
+* Az adatok és az objektum-sémát a legutóbbi frissítés dátuma.
+* Null-rekordok és -oszlopok különböző értékek száma.
+* Oszlopok minimális, maximális, átlagos és a szórást értékeit.
+
+A statisztikai majd kerülnek át a katalógust a szerkezeti és leíró metaadatok együtt.
+
+> [!NOTE]
+> Szöveg és a dátum oszlop nem tartalmaznak átlagos vagy a szórás statisztikák az adat-profilt.
+>
+>
+
+## <a name="update-registrations"></a>Regisztrációk frissítése
+Adatforrás regisztrálása lehetővé teszi a Data Catalog észlelhető a metaadatok és a regisztrálás során kinyert választható előzetes verzió használata esetén. A katalógusban (például ha egy objektum sémája megváltozott, eredetileg kizárt táblák tartalmaznia kell, vagy frissíti az adatokat, amely tartalmazza az előzetes verziók) frissíteni kell az adatforrást, ha az adatforrás-regisztráló eszköz újból futtatható.
+
+Egy már regisztrált adatforrás regisztrálása merge "upsert" műveletet hajt végre: meglévő objektumok frissülnek, és új objektumokat hoz létre. A Data Catalog-portálon keresztül a felhasználó által megadott összes metaadat megmaradnak.
 
 ## <a name="summary"></a>Összegzés
-Az alkalmazáskatalógus webszolgáltatás adatforrás szerkezeti és leíró metaadatok másolja át, mert az adatforrás regisztrálása a Data Catalog, könnyebben megtalálhatóvá és értelmezhetővé. Az adatforrás regisztráció után megjegyzésekkel, kezeléséhez, és felderíti a Data Catalog-portál használatával.
+Mert szerkezeti és leíró metaadatokat egy adatforrásból a katalógus szolgáltatás másolja, a Data Catalog az adatforrás regisztrálása, könnyebben megtalálhatóvá és értelmezhetővé. Miután regisztrálta az adatforrás, jegyzettel láthatja el, kezelheti és Fedezze fel, a Data Catalog-portál használatával.
 
 ## <a name="next-steps"></a>További lépések
-Adatforrások nyilvántartására vonatkozó további információkért lásd: a [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md) oktatóanyag.
+Az adatforrások nyilvántartására vonatkozó további információkért tekintse meg a [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md) oktatóanyag.

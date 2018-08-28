@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7965a91efe58102268f4d54275e7fa3fc4ff74d3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: HT
+ms.openlocfilehash: 7b3d2d47db733d1290bccca0e44958098451324e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617785"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046412"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Az ML-szolgáltatások használatának első lépései az Azure HDInsightban
 
@@ -178,7 +178,7 @@ A fürthöz tartozó SSH-parancs megkereséséhez az Azure Portalon kattintson a
 
 ![Az élcsomópont SSH végpontjának képe](./media/r-server-get-started/sshendpoint.png)
 
-Ha az SSH-felhasználói fiókhoz jelszót használt, a rendszer felkéri annak megadására. Nyilvános kulcs használatakor lehetséges, hogy az `-i` paraméter használatára van szükség a megfelelő titkos kulcs megadásához. Például:
+Ha az SSH-felhasználói fiókhoz jelszót használt, a rendszer felkéri annak megadására. Nyilvános kulcs használatakor lehetséges, hogy az `-i` paraméter használatára van szükség a megfelelő titkos kulcs megadásához. Példa:
 
     ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 

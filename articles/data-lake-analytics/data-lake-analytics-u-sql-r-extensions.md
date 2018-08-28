@@ -1,33 +1,32 @@
 ---
-title: R az Azure Data Lake Analytics U-SQL-parancsfájlok kiterjesztése
-description: Megtudhatja, hogyan R-kód használata az Azure Data Lake Analytics U-SQL-parancsfájlok futtatása
+title: Az r nyelv, az Azure Data Lake Analytics U-SQL-szkriptek kiterjesztése
+description: Ismerje meg az R-kód használata Azure Data Lake Analytics U-SQL-parancsfájlok futtatása
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 8b22b4238b20f56727d1c7858094328ab8817dad
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b7e6c4911081d3b83ed99ab7316cb6fd810a0d60
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624924"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048725"
 ---
-# <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Az R-kód az Azure Data Lake Analytics U-SQL-parancsfájlok kiterjesztése
+# <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Az R-kód az Azure Data Lake Analytics U-SQL-szkriptek kiterjesztése
 
-A következő példa az R-kód telepítésének lépéseit mutatja be:
-* Használja a `REFERENCE ASSEMBLY` R bővítmények engedélyezése a U-SQL parancsfájl utasítást.
-* Használja a` REDUCE` művelet a bemeneti adatok a kulcs particionálásához.
-* A U-SQL-R bővítmények közé tartozik egy beépített nyomáscsökkentő (`Extension.R.Reducer`) mindegyik csomópontra a nyomáscsökkentő rendelt futó R-kód. 
-* Dedikált használatát nevű nevű adatkeretek `inputFromUSQL` és `outputToUSQL `rendre mechanizmusok adatok átadására közötti U-SQL és a R. bemeneti és kimeneti típusú azonosító neveket fix DataFrame számára (Ez azt jelenti, hogy felhasználók nem módosítható ezen előre meghatározott bemeneti neve és kimeneti DataFrame azonosítók).
+Az alábbi példa az R-kód telepítésének alapvető lépéseit mutatja be:
+* Használja a `REFERENCE ASSEMBLY` R-bővítmények engedélyezéséhez a U-SQL parancsfájl-utasítást.
+* Használja a` REDUCE` művelet egy kulcsot a bemeneti adatok particionálásához.
+* A U-SQL R-bővítmények közé tartozik egy beépített nyomáscsökkentő (`Extension.R.Reducer`) futó R-kód minden csúcspont a nyomáscsökkentő rendelve. 
+* Dedikált használatának nevű nevű adatkeretek `inputFromUSQL` és `outputToUSQL `jelölik, U-SQL, r-bemenet közötti átadni az adatokat, és azonosító nevek rögzítettek DataFrame kimeneti (azt jelenti, felhasználókat nem lehet módosítani ezeket előre definiált nevek a bemeneti és kimeneti DataFrame azonosítók).
 
-## <a name="embedding-r-code-in-the-u-sql-script"></a>R-kód beágyazása a U-SQL-parancsfájl
+## <a name="embedding-r-code-in-the-u-sql-script"></a>A U-SQL-szkript R-kód beágyazása
 
-Az R-kód a U-SQL parancsfájl parancs paraméterének használatával beágyazott is a `Extension.R.Reducer`. Például az R-parancsfájl, mint egy karakterlánc-változó deklarálható, és adja át paraméterként a nyomáscsökkentő.
+Az R-kód a U-SQL parancsfájl, a parancs paraméter használatával beágyazott is a `Extension.R.Reducer`. Például deklaráljon egy karakterlánc-változóhoz, az R-szkript, és a egy paraméterként átadni a nyomáscsökkentő.
 
 
     REFERENCE ASSEMBLY [ExtR];
@@ -43,16 +42,16 @@ Az R-kód a U-SQL parancsfájl parancs paraméterének használatával beágyazo
     
     @RScriptOutput = REDUCE … USING new Extension.R.Reducer(command:@myRScript, rReturnType:"dataframe");
 
-## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>Az R-kód tartsa külön fájlt, és hivatkozzon a U-SQL-parancsfájl
+## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>Az R-kód tartsa egy különálló fájlban, és hivatkozzon arra a U-SQL parancsfájl
 
-Az alábbi példában látható egy összetettebb használat. Ebben az esetben az R-kód, amely a U-SQL parancsfájl erőforrásként van telepítve.
+A következő példa bemutatja egy összetettebb használatára. Ebben az esetben az R-kód, amely a U-SQL parancsfájl erőforrásként van telepítve.
 
-Az R-kód külön fájlt mentse.
+Mentse az R-kód egy különálló fájlban.
 
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence")) 
 
-U-SQL parancsfájl segítségével, hogy az erőforrás telepítése utasítással R-parancsfájl telepítése.
+A U-SQL parancsfájl használatával, hogy az erőforrás üzembe helyezése utasítással R-szkript üzembe helyezése.
 
     REFERENCE ASSEMBLY [ExtR];
 
@@ -89,28 +88,28 @@ U-SQL parancsfájl segítségével, hogy az erőforrás telepítése utasításs
         USING new Extension.R.Reducer(scriptFile:"RinUSQL_PredictUsingLinearModelasDF.R", rReturnType:"dataframe", stringsAsFactors:false);
         OUTPUT @RScriptOutput TO @OutputFilePredictions USING Outputters.Tsv();
 
-## <a name="how-r-integrates-with-u-sql"></a>Hogyan integrálható az R U-SQL
+## <a name="how-r-integrates-with-u-sql"></a>Hogy az R hogyan integrálható a U-SQL
 
 ### <a name="datatypes"></a>Adattípusok
-* Konvertálja a karakterláncot és a numerikus oszlopot a U-SQL-R DataFrame és a U-SQL közötti [támogatott típusok: `double`, `string`, `bool`, `integer`, `byte`].
-* A `Factor` adattípus nem támogatott a U-SQL.
-* `byte[]` a base64-kódolású kell szerializálhatók `string`.
-* U-SQL-karakterláncok konvertálhatók tényezők az R-kód, amennyiben az U-SQL R bemeneti dataframe létrehozása vagy nyomáscsökkentő paramétert `stringsAsFactors: true`.
+* Konvertálja a karakterlánc és a numerikus oszlopok a U-SQL-R DataFrame és a U-SQL közötti [támogatott típusok: `double`, `string`, `bool`, `integer`, `byte`].
+* A `Factor` U-SQL-adattípus nem támogatott.
+* `byte[]` kézjegyként base64-kódolású `string`.
+* U-SQL-karakterláncok tényezők az R-kódot, miután a U-SQL R bemeneti dataframe hozzon létre vagy nyomáscsökkentő paraméterének beállításával lehet alakítani `stringsAsFactors: true`.
 
 ### <a name="schemas"></a>Sémák
-* U-SQL adatkészletek nem lehet ismétlődő oszlopneveket tartalmaz.
-* U-SQL adatkészletek oszlopnevek karakterláncoknak kell lenniük.
-* Oszlopnév a U-SQL és az R parancsfájlok azonosnak kell lennie.
-* Csak olvasható oszlop nem lehet a kimeneti dataframe része. Mivel a csak olvasható oszlop automatikusan beszúrta vissza a U-SQL táblázatban, ha UDO kimeneti sémája része.
+* U-SQL-adatkészletek nem lehet ismétlődő oszlopneveket tartalmaz.
+* U-SQL-adatkészletek oszlopnevek karakterláncokat kell lennie.
+* Oszlopnevek a U-SQL, R-szkriptek azonosnak kell lennie.
+* Csak olvasható oszlopot nem lehet a kimeneti dataframe része. Mivel a csak olvasható oszlopot a rendszer automatikusan alkalmazza újra az U-SQL-táblát Ha UDO kimeneti sémája része.
 
 ### <a name="functional-limitations"></a>Működési korlátai
-* Az R-motor kétszer ugyanazt a folyamatot a példánya nem hozható létre. 
-* Jelenleg U-SQL nem támogatja nyomáscsökkentő udo-k segítségével generált particionált modellek segítségével előrejelzés egyesítő udo-k. Felhasználók deklarálja a particionált modellek erőforrásként és azok az R-parancsfájl használatát (lásd: mintakód `ExtR_PredictUsingLMRawStringReducer.usql`)
+* Az R-motort kétszer ugyanazt a folyamatot a nem hozható létre. 
+* Jelenleg U-SQL nem támogatja a particionált, nyomáscsökkentő udo-k használatával létrehozott modellek segítségével előrejelzési egyesítő udo-k. A felhasználók a particionált modellek deklarálja erőforrásként és használja azokat saját R-szkript (lásd: mintakód `ExtR_PredictUsingLMRawStringReducer.usql`)
 
 ### <a name="r-versions"></a>R-verziók
-Csak R 3.2.2 esetén támogatott.
+Csak R 3.2.2 támogatott.
 
-### <a name="standard-r-modules"></a>Standard R modul
+### <a name="standard-r-modules"></a>Standard szintű R-modulok
 
     base
     boot
@@ -160,15 +159,15 @@ Csak R 3.2.2 esetén támogatott.
     utils
     XML
 
-### <a name="input-and-output-size-limitations"></a>Bemeneti és kimeneti méretkorlátai
-Minden csomópont csak korlátozott mennyiségű memória rendelve van. A bemeneti és kimeneti DataFrames már léteznie kell az R-kód memóriája, mert a bemeneti és kimeneti teljes mérete legfeljebb 500 MB.
+### <a name="input-and-output-size-limitations"></a>Bemeneti és kimeneti fájlméretre vonatkozó korlátozások
+Minden csúcspont korlátozott mennyiségű memória rendelve van. A bemeneti és kimeneti DataFrames szerepelniük kell az R-kód a memória, mert a bemeneti és kimeneti teljes mérete legfeljebb 500 MB.
 
 ### <a name="sample-code"></a>Mintakód
-További mintakód áll rendelkezésre a Data Lake Store-fiókot, a U-SQL Advanced Analytics extensions telepítését követően. További mintakód elérési útja: `<your_account_address>/usqlext/samples/R`. 
+További mintakód a Data Lake Store-fiókban érhető el, a U-SQL Advanced Analytics extensions telepítését követően. További mintakód elérési útja: `<your_account_address>/usqlext/samples/R`. 
 
-## <a name="deploying-custom-r-modules-with-u-sql"></a>A U-SQL egyéni R modul telepítése
+## <a name="deploying-custom-r-modules-with-u-sql"></a>Az U-SQL egyéni R-modulok telepítése
 
-Először hozzon létre egy egyéni R modult, és azt a zip-, majd töltse fel az R egyéni modul zip fájlt az ADL áruházba. A példában magittr_1.5.zip feltölti azt használjuk ADLA fiók alapértelmezett ADLS-fiók gyökérkönyvtárában. Ha a modul ADL tárolójába feltöltött, deklarálja azt, tegye elérhetővé a U-SQL parancsfájl és hívás erőforrás központi telepítése segítségével `install.packages` a telepítéshez.
+Először hozzon létre egy egyéni R modult és azt a zip, és majd töltse fel a tömörített R modul egyéni fájlt az ADL-tároló. A példában azt magittr_1.5.zip feltölti az ADLA fiókhoz fogjuk használni az alapértelmezett ADLS-fiók gyökérmappájában. Miután feltölti a modul az ADL-tároló, deklarujte ho használati üzembe helyezése erőforrás elérhető legyen a U-SQL-szkript és a hívás `install.packages` telepítheti.
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -210,4 +209,4 @@ Először hozzon létre egy egyéni R modult, és azt a zip-, majd töltse fel a
 ## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
-* [U-SQL ablak függvények használata az Azure Data Lake Analytics-feladatok](data-lake-analytics-use-window-functions.md)
+* [U-SQL-ablakfunkciók használata Azure Data Lake Analytics-feladatok](data-lake-analytics-use-window-functions.md)

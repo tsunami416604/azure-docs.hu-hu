@@ -3,36 +3,33 @@ title: Az Azure Maps a keresési eredmények megjelenítése |} A Microsoft Docs
 description: Hogyan hajthat végre keresést az Azure Maps-kérést, majd az eredményeket megjeleníteni a Javascrip térképen
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 08/26/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b0ab271eab45a6f4b05d01713e2e2ddd22a22ea3
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 540faa04573f7fa66b574f6743d42adfe855c571
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746603"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43095255"
 ---
 # <a name="show-search-results-on-the-map"></a>A térképen a keresési eredmények megjelenítése
 
-Ez a cikk bemutatja, hogyan készítheti el egy keresési kérelmet, és a keresési eredmények megjelenítése a térképen. 
+Ez a cikk bemutatja, hogyan keresse meg a lényeges helyét, és a keresési eredmények megjelenítése a térképen. 
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-<iframe height='500' scrolling='no' title='Keresési eredmény megjelenítése térképen' src='//codepen.io/azuremaps/embed/KQbaeM/?height=519&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Show keresési eredmények a térképen</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='305' scrolling='no' title='Keresési eredmény megjelenítése térképen (szolgáltatás modul)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>találatok megjelenítése a térképen (Szolgáltatásmodul)</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
+A fenti kódrészletben az első kódblokkot egy térkép-objektumot hoz létre, és a egy ügyfél szolgáltatást példányosítja. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot hoz létre, és hozzáadja a keresési réteget rögzíti a térképen. Látható [PIN-kód hozzáadása a térképen](./map-add-pin.md) útmutatást.
+A második kódblokkot használ az intelligens keresés [Azure Maps intelligens keresési API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) hasznos helyekre vezető útvonalak keresése. Intelligens keresést API intelligens bemenetek bármilyen kombinációját képes kezelni. Az intelligens keresés szolgáltatástól kapott válasz majd szűrőtulajdonság GeoJSON formátumú, és a PIN-kód hozzáadja a hasznos helyekhez a térképen megjeleníthető leképezés. 
 
-A harmadik kódblokkot küld egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) való [Azure Maps intelligens keresési API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
-
-A legutóbbi kódblokkot elemzi a bejövő válasz. A sikeres válasz gyűjti a szélességi és hosszúsági adatokat az egyes visszaadott helyek. Ez a helypont hozzáadja a térkép gombostűk formájában, és beállítja a térkép összes a PIN-kódok előállítására határain.
-
+A legutóbbi kódblokkot kamera esik a térkép hozzáadja a térkép segítségével [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) tulajdonság.
 
 ## <a name="next-steps"></a>További lépések
 

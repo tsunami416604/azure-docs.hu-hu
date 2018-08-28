@@ -3,18 +3,18 @@ title: Lekérdezés Hive, a JDBC-illesztőprogram – Azure HDInsight segítség
 description: A Java-alkalmazás JDBC-illesztőprogram segítségével a HDInsight hadoop Hive-lekérdezések elküldéséhez. Programozott módon, és az SQuirrel SQL-ügyfél csatlakoztatása.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: jasonh
-ms.openlocfilehash: 9c7881d0cc4f0c2c13f34fa8909d15dec1bf121a
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: da2b3484f80f7116664cf5a25c7de99da723f202
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591669"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041692"
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Hive a HDInsight a JDBC-illesztőprogram segítségével
 

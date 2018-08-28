@@ -1,19 +1,19 @@
 
 
-Használata esetén csatlakozhassanak az **SharePoint Online**, meg kell adnia az identitás (felhasználónév és jelszó, intelligens kártyához tartozó hitelesítő adatok, stb.) a SharePoint online. Amennyiben Ön már hitelesítve, a SharePoint Online-összekötő használatához a logic App lépne. 
+Használata esetén csatlakozhassanak az **SharePoint online-hoz**, meg kell adnia az identitás (felhasználónév és jelszó, intelligens kártya hitelesítő adatait, stb.) a SharePoint online-hoz. Ön már megtörtént a hitelesítést követően folytathatja a SharePoint Online-összekötő használatára a logikai alkalmazásban. 
 
-A Logic Apps alkalmazást designer, a következő lépések segítségével létrehozásához jelentkezzen be a SharePoint a **kapcsolat** használható a Logic Apps alkalmazást:
+A tervezőben a logikai alkalmazás létrehozásához jelentkezzen be a SharePoint alábbi lépéseket követve a **kapcsolat** a logikai alkalmazásban használható:
 
-1. A keresőmezőbe írja be a SharePoint, és várja meg, a keresés vissza eseményindítók és a SharePoint online-hoz kapcsolódó műveletek:   
+1. A keresőmezőbe írja be a SharePoint, és várjon, amíg az összes eseményindítók és a SharePoint online-hoz kapcsolódó művelet keresése:   
    ![A SharePoint konfigurálása][1]  
-2. Válassza ki a **SharePoint online-hoz - fájl jön létre** eseményindító  
-3. Válassza ki **jelentkezzen be a SharePoint Online**:   
+2. Válassza ki a **a SharePoint online-ban – amikor létrejön egy fájl** eseményindító  
+3. Válassza ki **bejelentkezés a SharePoint online-bA**:   
    ![A SharePoint konfigurálása][2]    
-4. Jelentkezzen be a SharePoint való hitelesítéshez szükséges a SharePoint hitelesítő adatok megadása   
+4. Jelentkezzen be a hitelesítést és a SharePoint, a SharePoint hitelesítő adatok megadása   
    ![A SharePoint konfigurálása][3]     
-5. A hitelesítés befejezése után a lesz átirányítva, a logikai alkalmazáshoz. Ennyi az egész, a kapcsolat létrejött. Figyelje meg, az üzenet azt jelzi, hogy most már csatlakozott SharePoint alján.  
+5. A hitelesítés befejezése után átirányítjuk a logikai alkalmazáshoz. Ennyi az egész, a kapcsolat létrejött. Figyelje meg, amely azt jelzi, hogy most már csatlakozott a SharePoint alján az üzenet.  
    ![A SharePoint konfigurálása][4]  
-6. Más eseményindítók és műveletek végre kell hajtania a Logic Apps alkalmazást, majd adja hozzá.   
+6. Ezután hozzáadhatja a más eseményindítókat és műveleteket, amelyeket a logikai alkalmazás végrehajtásához szükséges.   
 
 [1]: ./media/connectors-create-api-sharepointonline/connectionconfig1.png
 [2]: ./media/connectors-create-api-sharepointonline/connectionconfig2.png 

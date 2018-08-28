@@ -3,18 +3,18 @@ title: Áttelepítés a Windows-alapú HDInsight a Linux-alapú HDInsight – Az
 description: Ismerje meg, hogyan át egy Windows-alapú HDInsight-fürtöt Linux-alapú HDInsight-fürthöz.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: jasonh
-ms.openlocfilehash: f77ffd576c1470c3e5ade0fd6718e1bf3c3074fe
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: cb2ca9ac3be0034f5a90add58249a2c2043975d0
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598881"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094084"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows-alapú HDInsight-fürtök áttelepítése Linux-alapú fürtre
 

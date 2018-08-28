@@ -3,18 +3,18 @@ title: MapReduce használata a és a Curl a HDInsight - Azure Hadoop-keretrendsz
 description: Ismerje meg, hogyan lehet távolról futtatni a Curl használatával HDInsight és a Hadoop MapReduce-feladatok.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: f6b72a464bfd5eee2bedc52fd9f7163f2c970c13
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f497184b05432d6e32883bb3470f7e4da5fe550f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590717"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047185"
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>És a Hadoop MapReduce-feladatok futtatása HDInsight REST használatával
 

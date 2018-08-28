@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: fbc40d0768a7cf1cb83a3e78dd524fac26254bea
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 808914dddcaefa4795264d3904e26ef6200f483e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060621"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43087310"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>A hibrid Azure Active Directory join megvalósítás tervezése
 
@@ -131,6 +131,7 @@ Ha a környezet rendelkezik felügyelt tartományok, a hibrid Azure AD-csatlakoz
 1.1.819.0 verzióval kezdve az Azure AD Connect biztosít a hibrid Azure AD-csatlakozás konfigurálása varázsló segítségével. A varázsló lehetővé teszi a jelentősen megkönnyíti a konfigurációs folyamat. További információkért lásd:
 
 - [A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz](hybrid-azuread-join-federated-domains.md)
+
 
 - [A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz](hybrid-azuread-join-managed-domains.md)
 

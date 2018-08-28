@@ -9,20 +9,22 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 4607c997f6c274f6b367fe3e99bf8d21deceef0d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 97a5d00d43ac6a9d4b28ba23ca69d9b67e1bdf6f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285493"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049799"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>A beszéd-eszközökről SDK-t (előzetes verzió)
 
-Saját a Microsoft Speech service együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val egy előre beállított erőforrástár adott mikrofon-kompatibilis hardveres párosítva. Az SDK-t egyszerűen integrálhatja az eszköz a felhőalapú Microsoft Speech szolgáltatással, és hozzon létre egy kivételes felhasználói élmény az ügyfelek számára.
+A [Microsoft Speech service](overview.md) együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val párosítva célú előre beállított kódtár beépített mikrofon tömb szoftverfejlesztői készletekkel. Így gyorsan tesztelheti az új hangalapú forgatókönyvek segítségével, a beszéd Devices SDK-val megkönnyíti a felhőalapú Microsoft beszédfelismerési szolgáltatás integrálása az eszközt, és hozzon létre egy kivételes felhasználói élmény az ügyfelek számára. 
 
-Az SDK lehetővé teszi, hogy hozhat létre a saját testre szabott ébresztési szó környezeti eszközök – így a köteg kezdeményező felhasználói interakció a márka egyedi. Adjon meg pontosabb beszédfelismerést zaj tiltási, echo törlését, távolságban mező beszédfelismerési és beamforming Többcsatornás hang használ.
+A beszédfelismerési eszköz SDK-t használ a [beszéd SDK](speech-sdk.md), és a Speech SDK segítségével dolgozza fel az eszköz mikrofonját tömbből, a speciális hang feldolgozási algoritmus a hanganyag küldése a [Microsoft Speech Service](overview.md).  Többcsatornás hang pontosabb távolságban mező biztosításához használt [beszédfelismerés](speech-to-text.md) zaj tiltási, echo törlését, beamforming és való reverberation keresztül.
 
-Az SDK-val segíti az voice-kompatibilis forgatókönyvek, például a meghajtó érvényes sorbarendezésre rendszerek, az autó vagy in-home asszisztensek és intelligens előadói különböző. Szöveg-, a felhasználók válaszolhat vissza őket egy alapértelmezett vagy egyéni beszédfelismerési a beszéd, adja meg a keresési eredmények, fordítása más nyelvekre, és egyéb. 
+A beszédfelismerés Devices SDK-val is lehetővé teszi a saját környezeti eszközöket hozhat létre [testre szabott ébresztési word](speech-devices-sdk-create-kws.md)– így a köteg kezdeményező felhasználói interakció a márka egyedi. 
+
+Az SDK-val segíti az voice-kompatibilis forgatókönyvek, például a meghajtó érvényes sorbarendezésre rendszerek, az áruházon belüli vagy in-home asszisztensek és intelligens előadói különböző. Szöveg-, a felhasználók válaszolhat egy rendszergazdára vissza őket egy alapértelmezett vagy [egyéni beszédfelismerési](how-to-customize-voice-font.md), adja meg a keresési eredmények között, [fordítása](speech-translation.md) az más nyelvekre, és egyéb. Kíváncsian várjuk, mit hoz létre!
 
 
 

@@ -2,7 +2,7 @@
 title: Magas rendelkezésre állás a Hadoop – Azure HDInsight
 description: Ismerje meg, hogyan HDInsight-fürtök megbízhatóságot és rendelkezésre állás javítása egy további fő csomópontjának használatával. Ismerje meg, hogyan csatlakozni külön-külön mindegyik átjárócsomóponthoz, SSH-val és az Ambari és a Hive, például Hadoop-szolgáltatásokhoz ez befolyásolja.
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: jasonwhowell
 keywords: hadoop magas rendelkezésre állás
 ms.service: hdinsight
@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
-ms.openlocfilehash: ad42c1acd795d15bbbe951d90ec9b6b09695cd0a
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: c10ff022d54510c4fb81bf1f922aeaaf4e9036bb
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592583"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104854"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>A HDInsight-beli Hadoop-fürtök rendelkezésre állása és megbízhatósága
 

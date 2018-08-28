@@ -1,25 +1,21 @@
 ---
-title: A CI/CD-folyamat beállítása az Azure Data Lake Analytics |} A Microsoft Docs
+title: Az Azure Data Lake Analytics egy CI/CD-folyamat beállítása
 description: Megtudhatja, hogyan állíthat be folyamatos integrációt és folyamatos üzembe helyezés az Azure Data Lake Analytics.
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: ''
-editor: ''
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.author: yanacai
-ms.openlocfilehash: c114f190ae05f5ea4788c3785a713a6365938ded
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 49ac9f9603a1b8043b19c327d5a66015959b9dd1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630704"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045874"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics egy CI/CD-folyamat beállítása  
 
@@ -440,16 +436,16 @@ Az alábbi lépéseket egy adatbázis-telepítési feladat a Visual Studio Team 
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -AzureSDKPath <azure sdk path> -Interactive
         ```
 
-    * Használat **titkos** U-SQL-adatbázis üzembe helyezése egy Azure Data Lake Analytics-fiókhoz való hitelesítés:
+    * Használat **secrete** U-SQL-adatbázis üzembe helyezése egy Azure Data Lake Analytics-fiókhoz való hitelesítés:
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
         ```
 
     * Használat **tanúsítványfájl** U-SQL-adatbázis üzembe helyezése egy Azure Data Lake Analytics-fiókhoz való hitelesítés:
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret> -CertFile <certFile>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>
         ```
 
 ### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>PackageDeploymentTool.exe paraméter leírása
@@ -480,9 +476,9 @@ Az alábbi lépéseket egy adatbázis-telepítési feladat a Visual Studio Team 
 |AzureSDKPath|Függő szerelvényei keresése az Azure SDK elérési útja.|NULL|true|
 |Interaktív|E interaktív módban használja a hitelesítéshez.|false|false|
 |ClientId|Az Azure AD-alkalmazás azonosítója nem interaktív hitelesítés szükséges.|NULL|Nem interaktív hitelesítés szükséges.|
-|Titkos|A titkos kulcs vagy jelszó nem interaktív hitelesítés. Csak a megbízható és biztonságos környezetben használandó.|NULL|Nem interaktív hitelesítéssel, vagy pedig SecretFile használata szükséges.|
-|SecretFile|A fájl mentésekor a titkos kulcs vagy jelszó nem interaktív hitelesítés. Győződjön meg arról, hogy csak az aktuális felhasználó által olvasható legyen.|NULL|Nem interaktív hitelesítéssel, vagy más titkos kulcs használata szükséges.|
-|Tanúsítványfájl|A fájl mentésekor X.509 tanúsítvány, nem interaktív hitelesítés. Az alapértelmezett érték a titkos ügyfél-hitelesítés használatára.|NULL|false|
+|Secrete|A secrete vagy a jelszó nem interaktív hitelesítés. Csak a megbízható és biztonságos környezetben használandó.|NULL|Nem interaktív hitelesítéssel, vagy pedig SecreteFile használata szükséges.|
+|SecreteFile|A fájl mentésekor a secrete vagy a jelszó nem interaktív hitelesítés. Győződjön meg arról, hogy csak az aktuális felhasználó által olvasható legyen.|NULL|Nem interaktív hitelesítéssel, vagy pedig Secrete használata szükséges.|
+|Tanúsítványfájl|A fájl mentésekor X.509 tanúsítvány, nem interaktív hitelesítés. Az alapértelmezett érték használatához az ügyfél hitelesítési secrete.|NULL|false|
 | JobPrefix | Az előtag, az adatbázis DDL U-SQL feladatok üzembe helyezéséhez. | Deploy_ + DateTime.Now | false |
 
 ## <a name="next-steps"></a>További lépések

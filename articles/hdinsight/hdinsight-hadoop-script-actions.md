@@ -3,18 +3,18 @@ title: Parancsfájlművelet-alapú HDInsight - Azure-fejlesztés
 description: Ismerje meg, hogyan szabhatja testre a Script Action Hadoop-fürtöket. Parancsfájlművelet használható egy fürtöt a telepített alkalmazások konfigurációjának módosítása vagy a Hadoop-fürtön futó további szoftverek telepíthetők.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: f26a11e623148eecc8096b45c6ac9df68b8e102a
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e14f106c9cd2d2d2f65fb72ad8890c4a9042cb47
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599156"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104100"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>A HDInsight Windows-alapú fürtök Parancsfájlműveletekkel-parancsfájlok fejlesztése
 Útmutató a HDInsight Script Action parancsfájlokat írhat. A Script Action parancsfájlok segítségével további információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster.md). Ugyanahhoz a cikkhez írt Linux-alapú HDInsight-fürtök esetén, lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok](hdinsight-hadoop-script-actions-linux.md).

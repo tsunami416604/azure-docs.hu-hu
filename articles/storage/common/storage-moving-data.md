@@ -2,18 +2,18 @@
 title: Nagy mennyiségű adat áthelyezését és- tárolókról az Azure-beli felhőalapú tárolás |} A Microsoft Docs
 description: Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan a különböző módszerek áttekintése.
 services: storage
-author: JarrettRenshaw
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: jarrettr
+ms.date: 08/26/2018
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 81d7b5cf03e56ecc54db71b09af335d6cb794806
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525535"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049610"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan máshová
 Ha meg szeretné áthelyezni a helyszíni adatok Azure Storage (vagy fordítva), nincsenek ehhez többféleképpen. Az Önnek leginkább megfelelő megoldást, amelyen a forgatókönyvtől függ. Ez a cikk gyors áttekintést és különféle forgatókönyvekre és minden egyes megfelelő ajánlatokat nyújtanak.
@@ -21,7 +21,7 @@ Ha meg szeretné áthelyezni a helyszíni adatok Azure Storage (vagy fordítva),
 ## <a name="building-applications"></a>Alkalmazások létrehozása
 Ha egy alkalmazást fejleszt, a REST API vagy egy a sok klienskódtárak fejlesztését kiválóan alkalmas adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan.
 
-Az Azure Storage klienskódtárakat biztosít az .NET, iOS, Java, Android, univerzális Windows Platform (UWP), Xamarin, C++, Node.JS, PHP, Ruby és Python. Az ügyfélkódtárak olyan fejlett képességeket biztosítanak, mint az újrapróbálkozási logika, a naplózás vagy a párhuzamos feltöltések. Fejleszthet közvetlenül a REST API-n is, amely minden, HTTP-/HTTPS-kérelmek létrehozására alkalmas nyelven meghívható.
+Az Azure Storage klienskódtárakat biztosít számos népszerű nyelvhez, beleértve a .NET, Java, Android, Go, a Xamarin, C++, Node.JS, PHP, Ruby, Python és IOS-es. Az ügyfélkódtárak olyan fejlett képességeket biztosítanak, mint az újrapróbálkozási logika, a naplózás vagy a párhuzamos feltöltések. Fejleszthet közvetlenül a REST API-n is, amely minden, HTTP-/HTTPS-kérelmek létrehozására alkalmas nyelven meghívható.
 
 Lásd: [Azure Blob Storage használatának első lépései](../blobs/storage-dotnet-how-to-use-blobs.md) további.
 

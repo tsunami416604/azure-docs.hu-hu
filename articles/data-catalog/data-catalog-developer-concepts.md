@@ -1,295 +1,289 @@
 ---
-title: "Data Catalog fejlesztői fogalmak |} Microsoft Docs"
-description: "Bevezetés az Azure Data Catalog fogalmi modellben, mint a katalógus REST API-n keresztül elérhetővé az alapvető fogalmakat."
+title: Az Azure Data Catalog fejlesztői fogalmak
+description: A fogalmi modellben az Azure Data Catalog, mint a katalógus REST API-n keresztül elérhetővé tett kapcsolatos főbb fogalmakat bemutatása.
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 48d4a33f7667786f2eb8851ed69dedc206e777ae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 753b4660c8ca47f12aace87a254b93a88db8aaa7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053476"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Az Azure Data Catalog fejlesztői fogalmak
-Microsoft **Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely az adatforrás-felderítés és a közösségi adatforrások metaadatainak képességeket biztosít. A fejlesztők a a szolgáltatás a REST API-kon keresztül. A fejlesztők számára sikeresen integrálható a fontos modul a szolgáltatás ismertetése **Azure Data Catalog**.
+A Microsoft **Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely lehetőségeket kínál az adatforrások felderítését és a közösségi adatforrás-metaadatokat. A fejlesztők a a szolgáltatás a REST API-kon keresztül. A fejlesztők számára, hogy sikeresen integrálása a service-ben megvalósított fogalmak értelmezéséhez fontos **Azure Data Catalog**.
 
 ## <a name="key-concepts"></a>Fő fogalmak
-A **Azure Data Catalog** fogalmi modell négy alapvető fogalmakat alapul: A **katalógus**, **felhasználók**, **eszközök**, és **jegyzetek**.
+A **Azure Data Catalog** fogalmi modell a négy fő fogalmak alapul: A **katalógus**, **felhasználók**, **eszközök**, és  **Jegyzetek**.
 
-![A koncepció][1]
+![Koncepció][1]
 
-*1. ábra – az Azure Data Catalog egyszerűsített fogalmi modellt*
+*1. ábra – az Azure Data Catalog egyszerűsített fogalmi modellhez*
 
 ### <a name="catalog"></a>Katalógus
-A **katalógus** szervezet tárolja az összes metaadat a legfelső szintű tárolója. Van egy **katalógus** egy Azure-fiók lehet. Azure-előfizetéssel, de csak egy katalógusok vannak társítva **katalógus** hozható létre a megadott Azure-fiókra, annak ellenére, hogy a fiók több előfizetéssel is rendelkezhet.
+A **katalógus** szervezet tárolja az összes metaadat legfelső szintű tárolója. Van egy **katalógus** egy Azure-fiók lehet. Katalógusok vannak kötve egy Azure-előfizetéshez, de csak az egyiket **katalógus** hozható létre bármelyik megadott Azure-fiókra, annak ellenére, hogy egy fiók több előfizetéssel is rendelkezhet.
 
-A katalógus tartalmaz **felhasználók** és **eszközök**.
+A katalógus tartalmazza a **felhasználók** és **eszközök**.
 
 ### <a name="users"></a>Felhasználók
-Felhasználók, amely rendelkezik jogosultságokkal műveletek végrehajtásához rendszerbiztonsági (a katalógusban, hozzáadásához, szerkesztéséhez vagy távolítsa el az elemeket, stb.) a katalógusban.
+Felhasználók, amely rendelkezik jogosultságokkal műveletek végrehajtásához rendszerbiztonsági tagok (a katalógusban, hozzáadása, szerkesztése vagy eltávolítása a cikkeket, stb.) a katalógusban.
 
-Egy felhasználó rendelkezhet több különböző szerepkör is létezik. A szerepkörök további információkért lásd: a szakasz szerepköröket és engedélyezési.
+A felhasználók még több különböző szerepkörök tartoznak. Szerepkörökkel kapcsolatos további információkért lásd: a szakasz szerepköröket és engedélyezési.
 
-Az egyes felhasználók és biztonsági csoportok is hozzáadhatók.
+Az egyes felhasználók és biztonsági csoportokat is hozzáadhatók.
 
-Az Azure Data Catalog az Azure Active Directory az identitások és hozzáférések felügyeletéhez. Minden egyes Alkalmazáskatalógus felhasználói az Active Directory, a fiók tagjának kell lennie.
+Az Azure Data Catalog az identitás és hozzáférés-kezelés az Azure Active Directory. Minden egyes Alkalmazáskatalógus felhasználói az Active Directory, a fiók tagja kell lennie.
 
 ### <a name="assets"></a>Objektumok
-A **katalógus** adategységeket tartalmazza. **Eszközök** kezeli a katalógus granularitási egység vannak.
+A **katalógus** adategységek tartalmazza. **Eszközök** vannak a katalógus által kezelt granularitási egysége.
 
-Egy eszköz granularitása adatforrás függ. Az SQL Server vagy Oracle-adatbázishoz az eszköz lehet egy táblát vagy nézetet. Az SQL Server Analysis Services az eszköz lehet egy mérték, a dimenzió vagy egy fő teljesítménymutató (KPI). SQL Server Reporting Services egy jelentést.
+Egy eszköz részletességét eltérő adatforrás. Az SQL Server vagy az Oracle Database az eszköz lehet egy tábla vagy nézet. Az SQL Server Analysis Services esetén az eszköz lehet egy mérték, egy dimenzió vagy egy fő teljesítménymutató (KPI). Az SQL Server Reporting Services az eszköz egy olyan jelentés.
 
-Egy **eszköz** hozzáadása vagy eltávolítása a katalógust a jelenti. Vissza az eredmény egység **keresési**.
+Egy **eszköz** a dolog, adja hozzá, vagy távolítsa el a katalógusból. Vissza az eredményt egysége **keresési**.
 
-Egy **eszköz** a nevét, helyét, és típusa, és további leíró jegyzetek épül fel.
+Egy **eszköz** a nevét, helyét, és írja be, és jegyzetek, további leíró épül fel.
 
-### <a name="annotations"></a>Jegyzetek
-Jegyzetek olyan elemek, amelyek megfelelnek az eszközökre vonatkozó metaadatok.
+### <a name="annotations"></a>jegyzetek
+Jegyzetek olyan elemek, amelyek az eszközök metaadatait.
 
-Jegyzetek többek között a leírás, a címkék, a séma, a dokumentáció, a stb. Az eszköz és a jegyzet típusainak teljes listáját az eszköz objektum modell szakaszban szerepelnek.
+Jegyzetek példák leírása, címkék, séma, dokumentáció, stb. Az eszköz és jegyzet típusainak teljes listáját az eszköz objektum modell szakaszban találhatók.
 
-## <a name="crowdsourcing-annotations-and-user-perspective-multiplicity-of-opinion"></a>Közösségi jegyzeteket és a felhasználó szempontból (véleményével multiplicitása)
-A rendszer kulcsfontosságú az Azure Data Catalog hogyan támogatja a metaadatok közösségi hozzáadása a rendszerben. Egy wiki megközelítésre – ahol csak egy véleményével és a legutolsó író wins – az Azure Data Catalog modell lehetővé teszi, hogy az élő egymás mellett, a rendszer több vélemények adatkötetekkel.
+## <a name="crowdsourcing-annotations-and-user-perspective-multiplicity-of-opinion"></a>Közösségi jegyzetek és a felhasználó szemszögéből (véleményével kapcsolatban)
+A rendszer kulcsfontosságú az Azure Data Catalog hogyan támogatja a metaadatok közösségi hozzáadása a rendszerben. És ne a wiki megközelítést – ahol csak egy vélemény és a legutolsó író wins – az Azure Data Catalog modell lehetővé teszi, hogy az élő egymás mellett a rendszer több véleményeket.
 
-Ez a megközelítés által adott jelentéseket tükrözik a valós életben a ahol más felhasználók is rendelkezik különböző szempontok szerint egy adott eszköz a vállalati adatok:
+Ez a megközelítés tükrözi a való világból a ahol különböző felhasználók rendelkezhetnek programban különböző szempontok szerint egy adott eszköz a vállalati adatok:
 
-* Adatbázis-rendszergazda rendelkezhetnek információk a szolgáltatásszint-szerződések, és a rendelkezésre álló feldolgozási időszakában tömeges ETL műveletek
-* Egy adatok steward által biztosított információk az üzleti folyamatok, amely az eszköz vonatkozik, és a besorolásokat, az üzleti telepített rá
-* Egy pénzügyi elemző is ismertetik, hogyan használja fel az adatok időszak vége jelentéskészítési műveletek során
+* Adatbázis-rendszergazda rendelkezhetnek szolgáltatásiszint-szerződések, vagy a rendelkezésre álló feldolgozási időszakának adatainak tömeges ETL-műveletek
+* Egy az adatgazdai nyújthat az információk az üzleti folyamatok, amelyekre az eszköz vonatkozik, és a besorolásokat, amelyek az üzleti van alkalmazva
+* A pénzügyi elemző nyújthat az időszak vége jelentéskészítési feladatok során az adatok felhasználásának információ
 
-Ebben a példában támogatása érdekében minden felhasználó – a DBA, az adatok steward és az elemző – olyan leírást adhat hozzá a katalógusban regisztrált egyetlen tábla. A rendszer minden leírás karbantartása, és az Azure Data Catalog portálon jelennek meg minden leírás.
+Ebben a példában támogatása érdekében minden felhasználónak – az adatbázis, az adatgazdai és az elemzői – egy leírást adhat hozzá a katalógusban regisztrált egy táblát. A rendszer minden leírás karbantartása, és az Azure Data Catalog portál összes leírása jelennek meg.
 
-Ezt a mintát úgy, hogy a JSON-adattartalmat az Objektumtípusok gyakran azokhoz a tulajdonságokhoz tömbök egypéldányos várt előfordulhat, hogy érvényes hálózatiobjektum-modellje elemeinek többsége.
+Így a JSON-adattartalom objektumtípusok gyakran tulajdonságok tömbök egypéldányos várt lehet, hogy ezt a mintát a hálózatiobjektum-modellje, az elemeinek többsége alkalmazható.
 
-Például az eszköz a legfelső szintű leírás objektumokból álló tömb. A tömb tulajdonság neve "leírások". A leírás objektumnak egy tulajdonság - leírás. A minta nem minden felhasználónak, aki típusok leírást a leírás objektum lekérdezi a felhasználó által megadott érték létrehozott.
+Az eszköz alatt például a legfelső szintű, leírás objektumokból álló tömb. A tömb tulajdonság neve "leírások". A leírás objektumnak egy tulajdonság - leírás. Az egyik, hogy minden felhasználónak, aki típusok leírását lekérdezi egy leírás létre a felhasználó által megadott érték.
 
-A UX kiválaszthatja a kombinációja megjelenítése. Nincsenek megjelenítendő három különböző kombinációját.
+A UX kiválaszthatja a kombináció megjelenítése. Nincsenek megjeleníthető három különböző minták.
 
-* A legegyszerűbb minta nem "Minden látszik". Ebben a mintában az összes objektum lista nézetben láthatók. Az Azure Data Catalog-portál UX leírás ezt a mintát használ.
-* Egy másik a mintája, "Merge". Ebben a mintában a különböző felhasználók számára az összes érték egyesítve lesznek együtt, az ismétlődő eltávolítva. Ebben a mintában az Azure Data Catalog portálon UX többek között a címkéket és szakértők tulajdonságait.
-* A harmadik minta "utolsó író wins". Ebben a mintában csak a legutóbbi értéke adta-e a megjelenik-e. rövid név ebben a mintában példája.
+* A legegyszerűbb minta a "Show All". Ebben a mintában lévő összes objektum lista nézetben jelennek meg. Az Azure Data Catalog portál UX leírás ezt a mintát használja.
+* Egy másik egyik "Merge". Ebben a mintában a különböző felhasználók az összes értéket egyesülnek együtt, ismétlődő eltávolítva. Ezt a mintát az Azure Data Catalog-portálon UX példák a címkék és a szakértők tulajdonság.
+* Egy harmadik egyik "legutolsó író wins". Ez a minta csak a legutóbbi beírt érték jelenik meg. rövid név, amelyek a mintáról.
 
-## <a name="asset-object-model"></a>Eszköz hálózatiobjektum-modellje
-Alapfogalmak területen jelent a **Azure Data Catalog** hálózatiobjektum-modellt tartalmaz elemeket, amely eszközök vagy széljegyzeteket. Elemek tulajdonság tartozik, amely választható vagy szükséges lehet. Minden elemre érvényes néhány tulajdonságát. Egyes tulajdonságok alkalmazása az összes eszköz. Néhány tulajdonság csak az adott eszköz típusok vonatkoznak.
+## <a name="asset-object-model"></a>Az eszközintelligencia hálózatiobjektum-modellje
+Megjelent az alapfogalmak szakasz a **Azure Data Catalog** hálózatiobjektum-modellt tartalmaz cikkek, amelyek eszközök vagy széljegyzeteket lehet. Elemek tulajdonság tartozik, ez nem kötelező vagy szükséges lehet. Egyes tulajdonságok minden elemre vonatkozik. Egyes tulajdonságok vonatkoznak az összes eszköz. Egyes tulajdonságok vonatkoznak, csak a konkrét eszköz.
 
 ### <a name="system-properties"></a>Rendszertulajdonságok
-<table><tr><td><b>Tulajdonság neve</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr><tr><td>időbélyeg</td><td>DateTime</td><td>A legutóbbi elem módosítva lett. Ez a mező a kiszolgáló által létrehozott, ha egy elem szerepel, és minden alkalommal, amikor frissül egy elemet. Ez a tulajdonság értékét a rendszer figyelmen kívül hagyja a bemeneti műveletek közzététele.</td></tr><tr><td>id</td><td>URI</td><td>Az elem (csak olvasható) abszolút URL-címe Az elem egyedi címmel rendelkező URI-JÁNAK.  Ez a tulajdonság értékét a rendszer figyelmen kívül hagyja a bemeneti műveletek közzététele.</td></tr><tr><td>type</td><td>Karakterlánc</td><td>(Csak olvasható) az eszköz típusa.</td></tr><tr><td>ETag</td><td>Karakterlánc</td><td>Egy olyan karakterlánc, amely a katalógus elemeinek frissítő műveletek végrehajtása során az egyidejű hozzáférések optimista vezérlését használt verzió. "*" értékek egyeztetéséhez használható.</td></tr></table>
+<table><tr><td><b>Tulajdonság neve</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr><tr><td>időbélyeg</td><td>DateTime</td><td>Az elem módosította utoljára. Ez a mező a kiszolgáló jön létre, ha egy elem szerepel, és minden alkalommal, amikor frissül egy elemet. Ez a tulajdonság értékét a rendszer figyelmen kívül hagyja bevitele a közzétételi műveletek.</td></tr><tr><td>id</td><td>URI</td><td>Az elem (írásvédett) abszolút URL-címe Az elem egyedi címezhető URI.  Ez a tulajdonság értékét a rendszer figyelmen kívül hagyja bevitele a közzétételi műveletek.</td></tr><tr><td>type</td><td>Sztring</td><td>(Írásvédett) az eszköz típusa.</td></tr><tr><td>Az ETag</td><td>Sztring</td><td>Az elem, amely a katalógus elemeinek frissítő műveletek végrehajtásakor az optimista egyidejűség-vezérlés használható verziójának megfelelő karakterlánc. "*" értékek egyeztetéséhez használható.</td></tr></table>
 
-### <a name="common-properties"></a>Általános tulajdonságai
-Minden legfelső szintű eszköz és az összes jegyzetet típusainak alkalmazni ezeket a tulajdonságokat.
+### <a name="common-properties"></a>Közös tulajdonságok
+Minden legfelső szintű eszköz és az összes jegyzet típusainak alkalmazni ezeket a tulajdonságokat.
 
 <table>
 <tr><td><b>Tulajdonság neve</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr>
-<tr><td>fromSourceSystem</td><td>Logikai</td><td>Azt jelzi, hogy elem adatait (például az Sql Server-adatbázis, Oracle-adatbázishoz) a forrásrendszerben származó vagy felhasználó által létrehozott.</td></tr>
+<tr><td>fromSourceSystem</td><td>Logikai</td><td>Azt jelzi, hogy elem adatait a forrásrendszerben (például Sql Server-adatbázis, Oracle-adatbázis) származó vagy felhasználó által készített.</td></tr>
 </table>
 
-### <a name="common-root-properties"></a>A gyökérszintű általános tulajdonságai
+### <a name="common-root-properties"></a>Gyakori legfelső szintű tulajdonságai
 <p>
-Minden legfelső szintű eszköz esetében alkalmazni ezeket a tulajdonságokat.
+Ezek a tulajdonságok minden legfelső szintű eszköz esetében alkalmazni.
 
-<table><tr><td><b>Tulajdonság neve</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr><tr><td>név</td><td>Karakterlánc</td><td>Az adatforrás hely adatait származó nevét</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>Egyedi írja le az adatforrás, és az eszköz azonosítók egyike. (Lásd a kettős identitási szakaszban).  A dsl szerkezete a protokoll és a forrás típusa platformonként változó.</td></tr><tr><td>Adatforrás</td><td>DataSourceInfo</td><td>További információkhoz juthat az eszköz típusától.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Ez az eszköz legutóbb regisztrált felhasználó ismerteti.  Mindkét az egyedi azonosítót (Keresztnév és Vezetéknév) egy megjelenítési nevet és a felhasználót (upn) tartalmazza.</td></tr><tr><td>containerId</td><td>Karakterlánc</td><td>A tároló eszköz az adatforrás-azonosítója. Ez a tulajdonság nem támogatott a tároló típushoz.</td></tr></table>
+<table><tr><td><b>Tulajdonság neve</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr><tr><td>név</td><td>Sztring</td><td>Az adatforrás helye adatait származó nevét</td></tr><tr><td>DSL</td><td>DataSourceLocation</td><td>Egyedileg írja le az adatforrás és az eszköz az azonosítók közül. (Lásd a kettős identitás szakaszt).  A dsl szerkezete a protokoll és a forrás típusa szerint változó.</td></tr><tr><td>Adatforrás</td><td>DataSourceInfo</td><td>További részleteket az eszköz típusától.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Ez az eszköz legutóbb regisztráló felhasználó ismerteti.  Mindkét egyedi azonosítója. a felhasználó (egyszerű felhasználónév) és a egy megjelenített nevet (Vezetéknév és utónév) tartalmazza.</td></tr><tr><td>containerId</td><td>Sztring</td><td>A tároló eszköz az adatforrás-azonosítója. Ez a tulajdonság nem támogatott a tároló típusa.</td></tr></table>
 
-### <a name="common-non-singleton-annotation-properties"></a>Közös nem egypéldányos jegyzet tulajdonságai
-Ezeket a tulajdonságokat mindenfajta nem egypéldányos megjegyzés vonatkozik (jegyzeteket, amely lehet több eszközönként).
+### <a name="common-non-singleton-annotation-properties"></a>Gyakori egyetlen jegyzet tulajdonságai
+Ezek a tulajdonságok vonatkoznak az összes nem egypéldányos jegyzet a (jegyzetek, amely több lehet eszközönként).
 
 <table>
 <tr><td><b>Tulajdonság neve</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr>
-<tr><td>kulcs</td><td>Karakterlánc</td><td>A felhasználó által megadott kulcs, amely egyedileg azonosítja a Megjegyzés a jelenlegi gyűjteményben. A kulcs hossza nem lehet hosszabb 256 karakternél.</td></tr>
+<tr><td>kulcs</td><td>Sztring</td><td>Egy felhasználó által megadott kulcs, amely egyedileg azonosítja az aktuális gyűjtemény a jegyzet. A kulcs hosszúsága nem lehet hosszabb 256 karakternél.</td></tr>
 </table>
 
 ### <a name="root-asset-types"></a>Legfelső szintű eszköz típusa
-Legfelső szintű eszköz azokat a különféle is a katalógusban regisztrált adategységeket képviselő típusok. Minden legfelső szintű típushoz nincs nézet, amely ismerteti az eszköz és a jegyzetek a nézetben. Nézet neve a megfelelő {view_name} URL-szegmenseket REST API-n keresztül közzétételekor használandó.
+Legfelső szintű eszközintelligencia ezeket a feldolgozástípusokat, amelyek különböző fájltípusok közül a katalógusban regisztrált adategységek. Minden legfelső szintű típus egy nézet, amely az eszközintelligencia és jegyzetek az nézetben van. Nézet neve kell használni a megfelelő {view_name} URL-szegmens az, amikor REST API-val adategység közzététele.
 
-<table><tr><td><b>Eszköz típusa (nézet neve)</b></td><td><b>További tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Engedélyezett jegyzetek</b></td><td><b>Megjegyzések</b></td></tr><tr><td>A tábla ("tábla")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Séma<p>ColumnDescription<p>ColumnTag<p> Szakértő<p>Előzetes verzió<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentáció<p></td><td>Egy tábla táblázatos adatokat jelöli.  Például: SQL-tábla, az SQL-nézet, Analysis Services táblázatos tábla, Analysis Services többdimenziós dimenzió, Oracle-tábla stb.   </td></tr><tr><td>A mérték ("intézkedések")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus jelképezi egy Analysis Services-mértéket.</td></tr><tr><td></td><td>mérték</td><td>Oszlop</td><td></td><td>A mérték leíró metaadatok</td></tr><tr><td></td><td>isCalculated </td><td>Logikai</td><td></td><td>Itt adhatja meg, ha a mérték kiszámítása vagy sem.</td></tr><tr><td></td><td>MeasureGroup</td><td>Karakterlánc</td><td></td><td>A mérték fizikai tároló</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció</td><td></td></tr><tr><td></td><td>MeasureGroup</td><td>Karakterlánc</td><td></td><td>A mérték fizikai tároló</td></tr><tr><td></td><td>goalExpression</td><td>Karakterlánc</td><td></td><td>Numerikus MDX-kifejezés vagy a számítás, amely a KPI cél értékét adja vissza.</td></tr><tr><td></td><td>valueExpression</td><td>Karakterlánc</td><td></td><td>MDX numerikus kifejezés a KPI tényleges értékét adja vissza.</td></tr><tr><td></td><td>statusExpression</td><td>Karakterlánc</td><td></td><td>MDX-kifejezés, amely egy megadott időpontban KPI állapotát jeleníti meg időben.</td></tr><tr><td></td><td>trendExpression</td><td>Karakterlánc</td><td></td><td>MDX-kifejezés, amely kiértékeli a KPI értékének adott idő alatt. A trend minden időalapú nézeteket, amelyek egy adott üzleti környezetben hasznos lehet.</td>
-<tr><td>A jelentés ("jelentés")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus jelképezi egy SQL Server Reporting Services jelentés </td></tr><tr><td></td><td>assetCreatedDate</td><td>Karakterlánc</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Karakterlánc</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Karakterlánc</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Karakterlánc</td><td></td><td></td></tr><tr><td>A tároló ("tárolók")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus jelképezi más eszközök, például az SQL-adatbázis, az Azure BLOB-tároló vagy egy Analysis Services-modell tárolója.</td></tr></table>
+<table><tr><td><b>Eszköz típusa (nézet neve)</b></td><td><b>További tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Engedélyezett jegyzetek</b></td><td><b>Megjegyzések</b></td></tr><tr><td>Tábla ("táblák")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Séma<p>ColumnDescription<p>ColumnTag<p> Szakértő<p>Előzetes verzió<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentáció<p></td><td>Egy tábla táblázatos adatokat jelöli.  Példa: SQL-táblára, az SQL-nézet, Analysis Services-táblázatos tábla, Analysis Services többdimenziós dimenzió, Oracle-tábla, és így tovább.   </td></tr><tr><td>Mérték ("mértékek")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus jelképezi egy Analysis Services-mérték.</td></tr><tr><td></td><td>mérték</td><td>Oszlop</td><td></td><td>A mérték leíró metaadatok</td></tr><tr><td></td><td>isCalculated </td><td>Logikai</td><td></td><td>Itt adhatja meg, ha a mérték, vagy nem számítja ki.</td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>Mérték fizikai tároló</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>Mérték fizikai tároló</td></tr><tr><td></td><td>goalExpression</td><td>Sztring</td><td></td><td>Numerikus MDX-kifejezés vagy egy számítás, amely a KPI cél értékét adja vissza.</td></tr><tr><td></td><td>valueExpression</td><td>Sztring</td><td></td><td>Egy MDX numerikus kifejezés, amely a KPI tényleges értékét adja vissza.</td></tr><tr><td></td><td>statusExpression</td><td>Sztring</td><td></td><td>MDX-kifejezés, amely egy meghatározott időpontban a KPI állapotát jeleníti meg időben.</td></tr><tr><td></td><td>trendExpression</td><td>Sztring</td><td></td><td>MDX-kifejezés, amely kiértékeli a KPI értékének idővel. A trend bármely időalapú feltételt, amely egy adott üzleti környezetben hasznos lehet.</td>
+<tr><td>A jelentés ("jelentés")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus jelképezi egy SQL Server Reporting Services jelentés </td></tr><tr><td></td><td>assetCreatedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td>Tároló ("tárolók")</td><td></td><td></td><td>Leírás<p>Rövid név<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus jelképezi egy tároló más tartalmaktól, például egy SQL database, egy Azure BLOB-tároló vagy egy Analysis Services-modellben.</td></tr></table>
 
 ### <a name="annotation-types"></a>Jegyzet típusok
-Jegyzet típusok típusú belül a katalógus más típusúra rendelt metaadatok jelölik.
+Jegyzet típusú metaadatokat, amelyek a többi átveheti a katalógusban rendelhető típusú képviseli.
 
 <table>
-<tr><td><b>Jegyzet típusát (beágyazott nézet neve)</b></td><td><b>További tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr>
+<tr><td><b>Jegyzet típusának (beágyazott nézet neve)</b></td><td><b>További tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr>
 
-<tr><td>Leírás ("leírások")</td><td></td><td></td><td>Ez a tulajdonság az adott eszköz számára leírását tartalmazza. A rendszer minden felhasználó saját leírást adhat hozzá.  Csak a felhasználó módosíthatja a leírást.  (A rendszergazdák és az eszköz tulajdonosait a leírás objektum törlését, azonban nem szerkeszthető). A rendszer külön-külön fenntartja a felhasználói leírása.  Így nincs minden eszköz (egy mindegyik felhasználó hozzájárult, valószínűleg egy, az adatforrásból származó adatokat tartalmazó mellett az eszköz a ismerete) leírások tömbjét.</td></tr>
-<tr><td></td><td>leírás</td><td>karakterlánc</td><td>Az eszköz rövid leírása (sorok 2-3)</td></tr>
+<tr><td>Leírás ("leírások")</td><td></td><td></td><td>Ez a tulajdonság egy eszköz leírását tartalmazza. A rendszer minden felhasználó saját leírást adhat hozzá.  Csak az adott felhasználó módosíthatja a leírást.  (A rendszergazdák és az adatforrások tulajdonosai a leírás objektum törlése, de nem szerkeszthetik). A rendszer külön-külön kezeli a felhasználók leírása.  Így nincs minden eszköz (egy minden felhasználónak, aki hozzájárult az adategységhez, valószínűleg egy, az adatforrásból származó adatokat tartalmazó mellett kapcsolatos tudásukat) a leírások tömbjét.</td></tr>
+<tr><td></td><td>leírás</td><td>sztring</td><td>Az eszköz rövid leírása (2-3 vonalak)</td></tr>
 
-<tr><td>Címke ("címkék")</td><td></td><td></td><td>Ez a tulajdonság határozza meg egy címkét az adott eszköz számára. A rendszer minden felhasználóhoz az adott eszköz számára több címke adhat hozzá.  Csak a címke objektumok létrehozó felhasználó szerkesztheti azokat.  (A rendszergazdák és az eszköz tulajdonosait a címke objektum törlését, azonban nem szerkeszthető). A rendszer fenntartja a felhasználói címkék külön-külön.  Így nincs minden eszköz a kód objektumokból álló tömb.</td></tr>
-<tr><td></td><td>címke</td><td>karakterlánc</td><td>Az eszköz leíró címkét.</td></tr>
+<tr><td>Tag ("címke")</td><td></td><td></td><td>Ez a tulajdonság határozza meg egy címkét, az adott eszköz számára. A rendszer minden felhasználó egy eszköz több címkét is hozzáadhat.  Csak a címkeobjektumok létrehozó felhasználó szerkesztheti őket.  (A rendszergazdák és az adatforrások tulajdonosai a címke-objektum törlése, de nem szerkeszthetik). A rendszer külön-külön kezeli a felhasználói címkék.  Így nincs minden egyes objektum címke objektumokból álló tömb.</td></tr>
+<tr><td></td><td>címke</td><td>sztring</td><td>Egy címkét, amely leírja az eszköz.</td></tr>
 
-<tr><td>Rövid név ("friendlyName")</td><td></td><td></td><td>Ez a tulajdonság egy eszköz rövid nevét tartalmazza. FriendlyName egy egypéldányos Megjegyzés – az eszköz csak egy rövid név is hozzáadhatók.  Csak a rövid név objektumot létrehozó felhasználó szerkeszthető. (A rendszergazdák és az eszköz tulajdonosait a rövid név objektum törlését, azonban nem szerkeszthető). A rendszer külön-külön kezeli a felhasználó rövid neve.</td></tr>
-<tr><td></td><td>Rövid név</td><td>karakterlánc</td><td>Az eszköz rövid neve.</td></tr>
+<tr><td>Rövid név ("friendlyName")</td><td></td><td></td><td>Ez a tulajdonság az eszköz rövid nevét tartalmazza. Rövid név a singleton jegyzet – csak egy rövid név lehet hozzáadni adategység is.  Csak a FriendlyName objektumot létrehozó felhasználó szerkesztheti azt. (A rendszergazdák és az adatforrások tulajdonosai a FriendlyName objektum törlése, de nem szerkeszthetik). A rendszer külön-külön megtartja a felhasználó rövid neve.</td></tr>
+<tr><td></td><td>rövid név</td><td>sztring</td><td>Az eszköz rövid neve.</td></tr>
 
-<tr><td>A séma ("schema")</td><td></td><td></td><td>A séma ismerteti az adatok szerkezete.  Az attribútum (oszlop, attribútum, mező, stb.) neve, meg kell adnia, valamint egyéb metaadatokat.  Ezeket az adatokat az adatforrásból származik.  Séma egy egypéldányos megjegyzés – csak egy séma felveheti az adott eszköz számára.</td></tr>
-<tr><td></td><td>oszlopok</td><td>[Oszlop]</td><td>Egy oszlop objektumokból álló tömb. Az oszlop leírják az adatforrásból származó információkkal.</td></tr>
+<tr><td>Meghatározott sémához ("")</td><td></td><td></td><td>A séma ismerteti az adatok struktúráját.  Felsorolja a attribútum (oszlop, attribútum, a mező, stb.), a típusait, valamint más metaadatokat.  Ezeket az adatokat az adatforrásból származik.  Séma egy egypéldányos jegyzet – csak egy séma is hozzáadhatók az adott eszköz számára.</td></tr>
+<tr><td></td><td>Oszlopok</td><td>[Oszlop]</td><td>Oszlop objektumok egy tömbjét. Az oszlop bemutatják az adatforrásból származó adatokkal.</td></tr>
 
-<tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>Ez a tulajdonság egy oszlop leírását tartalmazza.  A rendszer minden felhasználó saját leírása több oszlop (legfeljebb egyetlen oszloponként) adhat hozzá. Csak a ColumnDescription objektumok létrehozó felhasználó szerkesztheti azokat.  (A rendszergazdák és az eszköz tulajdonosait a ColumnDescription objektum törlését, azonban nem szerkeszthető). A rendszer külön kezeli a felhasználó az oszlopok leírása.  Így nincs minden eszköz (szövegmezőnként egy oszlop összes felhasználója számára azok mellett valószínűleg egy, az adatforrásból származó adatokat tartalmazó oszlop ismerete hozzájárult) ColumnDescription objektumokból álló tömb.  A ColumnDescription lazán van kötve a séma, így szinkronban kérheti le. Egy oszlop, amely már nem létezik a sémában a ColumnDescription ír le.  Az író leírását és séma szinkronban tartásához esetén.  Az adatforrás is oszlopok leírása információk és további ColumnDescription objektumokat, amely az eszköz futtatásakor létrejön.</td></tr>
-<tr><td></td><td>Oszlopnév</td><td>Karakterlánc</td><td>A leírást hivatkozik az oszlop neve.</td></tr>
-<tr><td></td><td>leírás</td><td>Karakterlánc</td><td>egy rövid (sorok 2-3) az oszlop leírása.</td></tr>
+<tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>Ez a tulajdonság oszlop leírását tartalmazza.  A rendszer minden egyes felhasználója hozzáadhatja saját leírása (legfeljebb egy oszloponként) több oszlop. Csak a ColumnDescription objektumot létrehozó felhasználó szerkesztheti őket.  (A rendszergazdák és az adatforrások tulajdonosai a ColumnDescription objektum törlése, de nem szerkeszthetik). A rendszer külön-külön megtartja ezeket felhasználói oszlop leírása.  Így nincs minden eszköz (egy mindegyik felhasználóhoz, aki hozzájárult az oszlop mellett valószínűleg egy, az adatforrásból származó adatokat tartalmazó kapcsolatos tudásukat oszloponként) ColumnDescription objektumokból álló tömb.  A ColumnDescription lazán van kötve a sémát, így azt szinkronban. A ColumnDescription ír egy oszlopot, amely a séma már nem létezik.  Leírás és séma szinkronban tartani az író esetén.  Az adatforrás is rendelkezhetnek oszlopok leírása információk és további ColumnDescription objektumokat, amely az eszköz futtatásakor létrejön.</td></tr>
+<tr><td></td><td>Oszlopnév</td><td>Sztring</td><td>A leírás hivatkozik az oszlop neve.</td></tr>
+<tr><td></td><td>leírás</td><td>Sztring</td><td>rövid leírása (2-3 sor) oszlop.</td></tr>
 
-<tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>Ez a tulajdonság egy oszlop címkét tartalmaz. A rendszer minden felhasználó adhat hozzá az adott oszlop több címke, és több oszlop címkéket adhat hozzá. Csak a ColumnTag objektumok létrehozó felhasználó szerkesztheti azokat. (A rendszergazdák és az eszköz tulajdonosait a ColumnTag objektum törlését, azonban nem szerkeszthető). A rendszer fenntartja a felhasználók oszlop címkék külön-külön.  Így nincs minden eszköz ColumnTag objektumokból álló tömb.  A ColumnTag lazán van kötve a séma, így szinkronban kérheti le. Egy oszlop, amely már nem létezik a sémában a ColumnTag ír le.  Az író szinkronban tartsa az oszlop címke és séma esetén.</td></tr>
-<tr><td></td><td>Oszlopnév</td><td>Karakterlánc</td><td>A címke hivatkozik az oszlop neve.</td></tr>
-<tr><td></td><td>címke</td><td>Karakterlánc</td><td>Az oszlop leíró címkét.</td></tr>
+<tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>Ez a tulajdonság tartalmazza egy címkét egy oszlophoz. A rendszer minden egyes felhasználó adhat hozzá az adott oszlop több címkét, és több oszlop címkéket adhat hozzá. Csak a ColumnTag objektumot létrehozó felhasználó szerkesztheti őket. (A rendszergazdák és az adatforrások tulajdonosai a ColumnTag objektum törlése, de nem szerkeszthetik). A rendszer e felhasználók oszlop címkék külön-külön kezeli.  Így nincs minden egyes objektum ColumnTag objektumokból álló tömb.  A ColumnTag lazán van kötve a sémát, így azt szinkronban. A ColumnTag ír egy oszlopot, amely a séma már nem létezik.  Oszlop címke és a séma szinkronban tartani az író esetén.</td></tr>
+<tr><td></td><td>Oszlopnév</td><td>Sztring</td><td>Ez a címke hivatkozik az oszlop neve.</td></tr>
+<tr><td></td><td>címke</td><td>Sztring</td><td>Az oszlop leíró címkét.</td></tr>
 
-<tr><td>A szakértő ("szakértők")</td><td></td><td></td><td>Ez a tulajdonság egy felhasználót, aki a következő adatkészletben szakértő tekinthető tartalmazza. A szakértői opinions(descriptions) buborék a UX leírások listázásakor tetején. Minden felhasználó megadhatja a saját szakértői. Csak a felhasználó módosíthatja a szakértői. (A rendszergazdák és az eszköz tulajdonosait a szakértői objektumok törlése, de nem szerkeszthető).</td></tr>
+<tr><td>Szakértő ("szakértői")</td><td></td><td></td><td>Ez a tulajdonság tartalmazza a felhasználó, aki az adatkészlet szakértőnek számít. A szakértői opinions(descriptions) buborék leírások listázásakor felhasználói elejéhez. Minden felhasználó a saját szakértőket adhat meg. Csak az adott felhasználó szerkesztheti a szakértők objektum. (A rendszergazdák és az adatforrások tulajdonosai a szakértői objektumok törlése, de nem szerkeszthetik).</td></tr>
 <tr><td></td><td>szakértő</td><td>SecurityPrincipal</td><td></td></tr>
 
-<tr><td>Előzetes verzió ("előzetes verziójú funkciók")</td><td></td><td></td><td>Az előzetes kiadásban az adatok az eszköz az első 20 sorok pillanatkép tartalmazza. Előzetes verzió csak a célszerű bizonyos típusú eszközöket (érdemes táblához, de a mérték nem).</td></tr>
-<tr><td></td><td>előzetes verzió</td><td>[objektum]</td><td>Egy oszlop képviselő objektumok tömbje.  Minden objektum rendelkezik egy tulajdonság a leképezés csak a sor az adott oszlop értékét tartalmazó oszlop.</td></tr>
+<tr><td>Előzetes verzió ("előzetes verziók")</td><td></td><td></td><td>Az előzetes verzió tartalmazza az adatok az eszköz az első 20 sorok pillanatképet. Előzetes verzió csak bizonyos típusú eszközök (logikus táblában, de nem a mérték) jelentéssel bírnak.</td></tr>
+<tr><td></td><td>előzetes verzióban</td><td>[objektum]</td><td>Egy oszlopot jelölő objektumok tömbje.  Minden objektum rendelkezik egy tulajdonság megfeleltetése a sorhoz adott oszlop értékét tartalmazó oszlop.</td></tr>
 
 <tr><td>AccessInstruction ("accessInstructions")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>mimeType</td><td>karakterlánc</td><td>A mime-típusát a tartalmat.</td></tr>
-<tr><td></td><td>Tartalom</td><td>karakterlánc</td><td>Hogyan férhetnek hozzá az adatok eszközre vonatkozó utasításokat. A tartalom URL-címet, az e-mail címet vagy utasítások lehet.</td></tr>
+<tr><td></td><td>mimeType</td><td>sztring</td><td>A tartalom mime-típusát.</td></tr>
+<tr><td></td><td>content</td><td>sztring</td><td>Az utasításokat, hogy hogyan érheti el, ezt az adategységet. A tartalom lehet egy URL-CÍMÉT, e-mail-címmel vagy utasítások.</td></tr>
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>numberOfRows</td></td><td>int</td><td>A következő adatkészletben sorok száma</td></tr>
-<tr><td></td><td>méret</td><td>hosszú</td><td>Az adatkészlet bájtban mérete.  </td></tr>
-<tr><td></td><td>schemaModifiedTime</td><td>karakterlánc</td><td>A séma módosításának időpontja</td></tr>
-<tr><td></td><td>dataModifiedTime</td><td>karakterlánc</td><td>Az adatkészlet módosításának időpontja (adatok lett hozzáadva, módosított vagy törlése)</td></tr>
+<tr><td></td><td>numberOfRows</td></td><td>int</td><td>Az adatkészlet sorainak száma</td></tr>
+<tr><td></td><td>méret</td><td>hossz</td><td>A mérete (bájt) az adatkészlet.  </td></tr>
+<tr><td></td><td>schemaModifiedTime</td><td>sztring</td><td>A séma módosításának utolsó idejét</td></tr>
+<tr><td></td><td>dataModifiedTime</td><td>sztring</td><td>Az utolsó időpont, az adatkészlet módosítva lett (adatok lett hozzáadva, módosítása vagy törlése)</td></tr>
 
 <tr><td>ColumnsDataProfile ("columnsDataProfiles")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>oszlopok</td></td><td>ColumnDataProfile]</td><td>Egy oszlop adatainak profilok tömbjét.</td></tr>
+<tr><td></td><td>Oszlopok</td></td><td>ColumnDataProfile]</td><td>Egy oszlop adatainak profilok tömbje.</td></tr>
 
 <tr><td>ColumnDataClassification ("columnDataClassifications")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>Oszlopnév</td><td>Karakterlánc</td><td>Ez a besorolás hivatkozik az oszlop neve.</td></tr>
-<tr><td></td><td>Besorolás</td><td>Karakterlánc</td><td>Az ebben az oszlopban az adatok besorolását.</td></tr>
+<tr><td></td><td>Oszlopnév</td><td>Sztring</td><td>Ez a besorolás hivatkozik az oszlop neve.</td></tr>
+<tr><td></td><td>osztályozás</td><td>Sztring</td><td>Ebben az oszlopban levő adatok besorolását.</td></tr>
 
-<tr><td>A dokumentáció ("dokumentáció")</td><td></td><td></td><td>Egy adott eszköz lehet társítva csak egy dokumentációját.</td></tr>
-<tr><td></td><td>mimeType</td><td>karakterlánc</td><td>A mime-típusát a tartalmat.</td></tr>
-<tr><td></td><td>Tartalom</td><td>karakterlánc</td><td>A dokumentáció tartalmat.</td></tr>
+<tr><td>Dokumentáció ("dokumentáció")</td><td></td><td></td><td>Egy adott eszköz társítva, csak egy dokumentáció is rendelkezhet.</td></tr>
+<tr><td></td><td>mimeType</td><td>sztring</td><td>A tartalom mime-típusát.</td></tr>
+<tr><td></td><td>content</td><td>sztring</td><td>A dokumentáció tartalmát.</td></tr>
 
 </table>
 
-### <a name="common-types"></a>Általános típusok
-Általános tulajdonságok a típusokkal használható, de nincsenek elemek.
+### <a name="common-types"></a>Általános típus
+Általános típusú tulajdonságok esetében a típus használható, de nem elemek.
 
 <table>
-<tr><td><b>Közös típusa</b></td><td><b>Tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr>
+<tr><td><b>Általános típus</b></td><td><b>Tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>sourceType</td><td>karakterlánc</td><td>Az adatforrás típusát.  Például: SQL Server, az Oracle-adatbázishoz, stb.  </td></tr>
-<tr><td></td><td>objectType</td><td>karakterlánc</td><td>Az adatforrás-objektum típusának leírása. Például: Table, és tekintse meg az SQL Server.</td></tr>
+<tr><td></td><td>sourceType</td><td>sztring</td><td>Az adatforrás típusát írja le.  Példa: SQL Server, Oracle Database, stb.  </td></tr>
+<tr><td></td><td>objectType</td><td>sztring</td><td>Az adatforrás-objektum típusának leírása. Például: Table, az SQL Server megtekintéséhez.</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>protokoll</td><td>karakterlánc</td><td>Kötelező. Ismerteti az adatforráshoz való kommunikációhoz használt protokoll. Például: "tds" SQl-kiszolgáló, "oracle" Oracle, stb. Tekintse meg [adatforrás-hivatkozás megadását - DSL struktúra](data-catalog-dsr.md) a jelenleg támogatott protokollok listáját.</td></tr>
-<tr><td></td><td>Cím</td><td>Könyvtár<string, object></td><td>Kötelező. A protokoll, amely azonosítja a hivatkozott adatforrás jellemző adatok-cím tartozik. A cím hatókörét egy adott protokoll, ami azt jelenti, hogy adata értelmetlen a protokoll ismerete nélkül.</td></tr>
-<tr><td></td><td>hitelesítés</td><td>karakterlánc</td><td>Választható. Az adatforráshoz való kommunikációhoz használt hitelesítési séma. Például: windows, az oauth, stb.</td></tr>
-<tr><td></td><td>connectionProperties</td><td>Könyvtár<string, object></td><td>Választható. További tájékoztatást az adatforráshoz való kapcsolódás.</td></tr>
+<tr><td></td><td>protokoll</td><td>sztring</td><td>Kötelező. Azt ismerteti, hogy az adatforrás folytatott kommunikációhoz használt protokoll. Például: "tds" az SQl Server, az "oracle" Oracle stb. Tekintse meg [adatforrás-hivatkozás megadása - DSL struktúra](data-catalog-dsr.md) jelenleg támogatott protokollok listáját.</td></tr>
+<tr><td></td><td>Cím</td><td>Szótár<string, object></td><td>Kötelező. Cím olyan készlete, a protokoll, amely azonosítja az adatforrás hivatkozik rá jellemző adatok. A cím egy adott protokollhoz kötődő, ami azt jelenti, hogy adata összegnek nincs valós jelentése a protokoll ismerete nélkül.</td></tr>
+<tr><td></td><td>hitelesítés</td><td>sztring</td><td>Választható. A hitelesítési sémát az adatforrás folytatott kommunikáció során használt. Például: windows, oauth, stb.</td></tr>
+<tr><td></td><td>connectionProperties</td><td>Szótár<string, object></td><td>Választható. További információk hogyan csatlakozhat egy adatforráshoz.</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>A háttérrendszer adatellenőrzése nem bármely elleni aad-ben megadott tulajdonságok közzététele során.</td></tr>
-<tr><td></td><td>egyszerű felhasználónév</td><td>karakterlánc</td><td>Felhasználó egyedi e-mail címét. Meg kell adni, ha objectId nem áll rendelkezésre, vagy a "lastRegisteredBy" tulajdonság, ellenkező esetben nem kötelező a környezetében.</td></tr>
-<tr><td></td><td>objectId</td><td>GUID</td><td>Felhasználó vagy biztonsági csoport AAD-identitása. Választható. Kötelező megadni, ha egyszerű felhasználónév nincs megadva, ellenkező esetben nem kötelező.</td></tr>
-<tr><td></td><td>Utónév</td><td>karakterlánc</td><td>Utónév felhasználó (megjelenítési célokra). Választható. Csak a "lastRegisteredBy" tulajdonság a környezetben érvényes. Nem lehet megadni, ha a rendszerbiztonsági tag megadása "szerepkörök", "engedélyek" és "szakértők".</td></tr>
-<tr><td></td><td>Vezetéknév</td><td>karakterlánc</td><td>Utolsó felhasználó neve (megjelenítési célokra). Választható. Csak a "lastRegisteredBy" tulajdonság a környezetben érvényes. Nem lehet megadni, ha a rendszerbiztonsági tag megadása "szerepkörök", "engedélyek" és "szakértők".</td></tr>
+<tr><td></td><td>egyszerű felhasználónév</td><td>sztring</td><td>Felhasználó egyedi e-mail címe. Meg kell adni, ha nincs megadva az objectId, vagy a "lastregisteredby nem azonos" tulajdonságot, ellenkező esetben kötelező kontextusában.</td></tr>
+<tr><td></td><td>objectId</td><td>GUID</td><td>Felhasználó vagy biztonsági csoport AAD-identitását. Választható. Kötelező megadni, ha egyszerű felhasználónév nem áll rendelkezésre, ellenkező esetben nem kötelező.</td></tr>
+<tr><td></td><td>Keresztnév</td><td>sztring</td><td>(Megjelenítési célokból) a felhasználó utóneve. Választható. Csak érvényes "lastregisteredby nem azonos" tulajdonság kontextusában. Nem adható meg, a "szerepkör", "engedélyek" és "szakértők" rendszerbiztonsági tag megadásakor.</td></tr>
+<tr><td></td><td>Vezetéknév</td><td>sztring</td><td>Utolsó felhasználó neve (megjelenítési célokra). Választható. Csak érvényes "lastregisteredby nem azonos" tulajdonság kontextusában. Nem adható meg, a "szerepkör", "engedélyek" és "szakértők" rendszerbiztonsági tag megadásakor.</td></tr>
 
 <tr><td>Oszlop</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>név</td><td>karakterlánc</td><td>Az oszlop vagy az attribútum nevét.</td></tr>
-<tr><td></td><td>type</td><td>karakterlánc</td><td>az oszlop vagy az attribútum adattípusa. Az engedélyezett típusok adatok forrástípus az eszköz függ.  A támogatott típusok csak egy részét.</td></tr>
-<tr><td></td><td>maxLength</td><td>int</td><td>Az oszlop vagy attribútum megengedett maximális hosszúságot. Az adatforrás származik. Néhány adatforrás típusok csak érvényes.</td></tr>
-<tr><td></td><td>pontosság</td><td>bájt</td><td>Az oszlop vagy az attribútum a pontosság. Az adatforrás származik. Néhány adatforrás típusok csak érvényes.</td></tr>
-<tr><td></td><td>isNullable</td><td>Logikai</td><td>Az oszlopban engedélyezett-e null értékűnek lennie, vagy nem. Az adatforrás származik. Néhány adatforrás típusok csak érvényes.</td></tr>
-<tr><td></td><td>kifejezés</td><td>karakterlánc</td><td>Ha az érték egy számított oszlop, ebben a mezőben a kifejezést tartalmaz, amely kifejezze az értéket. Az adatforrás származik. Néhány adatforrás típusok csak érvényes.</td></tr>
+<tr><td></td><td>név</td><td>sztring</td><td>Az oszlop vagy az attribútum neve.</td></tr>
+<tr><td></td><td>type</td><td>sztring</td><td>az oszlop vagy az attribútum adattípusa. Az engedélyezett típusok adatok forrás típusa, az eszköz függ.  A támogatott típusok csak egy részhalmazát.</td></tr>
+<tr><td></td><td>maxLength</td><td>int</td><td>Az az oszlop vagy attribútum engedélyezett maximális hosszt. Az adatforrás származik. Néhány adatforrás típusa csak érvényes.</td></tr>
+<tr><td></td><td>pontosság</td><td>bájt</td><td>Az oszlop vagy az attribútum a pontosságot. Az adatforrás származik. Néhány adatforrás típusa csak érvényes.</td></tr>
+<tr><td></td><td>IsNullable értéke</td><td>Logikai</td><td>Az oszlop engedélyezett-e, vagy nem null érték tartozik. Az adatforrás származik. Néhány adatforrás típusa csak érvényes.</td></tr>
+<tr><td></td><td>kifejezés</td><td>sztring</td><td>Ha az érték egy számított oszlopot, ezt a mezőt tartalmazza a kifejezés, amely kifejezi az értéket. Az adatforrás származik. Néhány adatforrás típusa csak érvényes.</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>Oszlopnév </td><td>karakterlánc</td><td>Az oszlop neve</td></tr>
-<tr><td></td><td>type </td><td>karakterlánc</td><td>Az oszlop típusa</td></tr>
-<tr><td></td><td>perc </td><td>karakterlánc</td><td>A minimális érték a következő adatkészletben</td></tr>
-<tr><td></td><td>max. </td><td>karakterlánc</td><td>A maximális érték a következő adatkészletben</td></tr>
-<tr><td></td><td>átlag </td><td>duplaszó</td><td>A következő adatkészletben átlagos érték</td></tr>
-<tr><td></td><td>szórás </td><td>duplaszó</td><td>A következő adatkészletnél a szórás</td></tr>
-<tr><td></td><td>nullCount </td><td>int</td><td>A következő adatkészletben null értékek száma</td></tr>
-<tr><td></td><td>distinctCount  </td><td>int</td><td>A különböző értékeket a következő adatkészletben száma</td></tr>
+<tr><td></td><td>Oszlopnév </td><td>sztring</td><td>Az oszlop neve</td></tr>
+<tr><td></td><td>type </td><td>sztring</td><td>Az oszlop típusa</td></tr>
+<tr><td></td><td>perc </td><td>sztring</td><td>Az adatkészlet a minimális érték</td></tr>
+<tr><td></td><td>max. </td><td>sztring</td><td>Az adatkészlet a maximális érték</td></tr>
+<tr><td></td><td>átlag </td><td>double</td><td>Az adatkészlet az átlagos érték</td></tr>
+<tr><td></td><td>szórás </td><td>double</td><td>Az adatkészlet értékét</td></tr>
+<tr><td></td><td>nullCount </td><td>int</td><td>Az adatkészlet null értékek száma</td></tr>
+<tr><td></td><td>distinctCount  </td><td>int</td><td>Az adatkészlet különböző értékek száma</td></tr>
 
 
 </table>
 
-## <a name="asset-identity"></a>Eszköz identitása
-Az Azure Data Catalog "protokoll" és azonosító tulajdonságot használják az "address" tulajdonságcsomag DataSourceLocation "dsl" tulajdonságának az identitás, az eszköz, amely az eszköz a katalógus belül használja létrehozásához.
-Például a "tds" protokoll identitása Tulajdonságok "kiszolgáló", "adatbázis", "schema" és "objektum" rendelkezik. A protokoll és a Tulajdonságok kombinációi az identitás, az SQL Server tábla eszköz létrehozásához használt.
-Az Azure Data Catalog biztosít több beépített forrás protokollok, amelyek leírása megtalálható a [adatforrás-hivatkozás megadását - DSL struktúra](data-catalog-dsr.md).
-A támogatott protokollok készletét programozott módon is terjeszthető (tekintse meg a Data Catalog REST API-referencia). A katalógus rendszergazdák regisztrálhatja az egyéni forrás protokollokat. A következő táblázat ismerteti az egyéni protokoll regisztrációjához szükséges tulajdonságait.
+## <a name="asset-identity"></a>Az eszközintelligencia-identitás
+Az Azure Data Catalog DataSourceLocation "dsl" tulajdonság a "cím" tulajdonságcsomagban szereplő identitás és a "protocol" tulajdonság használatával az eszköz, amely az objektum a katalógus belső cím használható identitás létrehozása.
+Például a "tds" protokoll identitás Tulajdonságok "kiszolgáló", "database", "schema" és "object" rendelkezik. A protokoll és a Tulajdonságok kombinációja az identitás, az SQL Server táblázat eszköz létrehozásához használt.
+Az Azure Data Catalog számos beépített adatforrás-protokollokhoz, amelyek megtalálhatók itt [adatforrás-hivatkozás megadása - DSL struktúra](data-catalog-dsr.md).
+Támogatott protokollok csoportját programozott módon is kiterjeszthető (lásd a Data Catalog REST API-referencia). A katalógus rendszergazdái regisztrálhatja egyéni adatforrás-protokollokhoz. A következő táblázat ismerteti a tulajdonságot, ami szükséges regisztrálni az egyéni protokollokat.
 
-### <a name="custom-data-source-protocol-specification"></a>Egyéni adatok forrás protokoll specifikációja
+### <a name="custom-data-source-protocol-specification"></a>Egyéni adatforrás protokoll megadása
 <table>
 <tr><td><b>Típus</b></td><td><b>Tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>Namespace</td><td>karakterlánc</td><td>A protokoll névtere. Namespace lehet 1-255 karakter hosszú, tartalmaz legalább egy nem üres pontot (.) elválasztva. Minden egyes részben 1-255 karakter hosszú lehet, betűvel kezdődhet és csak betűket és számokat tartalmazhat.</td></tr>
-<tr><td></td><td>név</td><td>karakterlánc</td><td>A protokoll neve. Neve 1-255 karakter hosszú lehet, betűvel kezdődhet és csak betűket, számokat és kötőjel (-) karaktert tartalmazhat.</td></tr>
-<tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>Azonosító tulajdonságainak listája, tartalmaznia kell legalább egy, de nem több mint 20 tulajdonságait. Például: "kiszolgáló", "database", "schema", "object" a "tds" protokoll identitása tulajdonságainak.</td></tr>
-<tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>Beállítja a identitás listája. Meghatározza a határoz meg érvényes eszköznév identitás identitás tulajdonságainak beállítása. Tartalmaznia kell legalább egy, de nem több mint 20 beállítása. Például: {"kiszolgáló", "adatbázis", "schema" és "objektum"} "tds" protokoll, amely határozza meg az Sql Server tábla eszköz identitásának beállítása identitást.</td></tr>
+<tr><td></td><td>névtér</td><td>sztring</td><td>A protocol névtere. Namespace 1 kell 255 karakter hosszú, legalább egy pontot (.) elválasztott nem üres részt tartalmaz. Egyes részek 1 – 255 karakter hosszú lennie, betűvel kezdődhet és csak betűket és számokat tartalmazhat.</td></tr>
+<tr><td></td><td>név</td><td>sztring</td><td>A protokoll nevét. Neve 1 – 255 karakter hosszú lennie, betűvel kezdődhet, és tartalmazhat csak betűket, számokat és kötőjelet (-) tartalmazhat.</td></tr>
+<tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>Identitás-tulajdonságok listáját, tartalmaznia kell legalább egy, de nem több mint 20 tulajdonságai. Például: "kiszolgáló", "database", "séma", "object" a "tds" protokoll azonosítótulajdonságokat.</td></tr>
+<tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet]</td><td>Identitás-csoportok listája. Határozza meg az érvényes eszköznév identitás képviselő azonosítótulajdonságokat részhalmazához. Tartalmaznia kell legalább egy, de nem több mint 20 csoportok. Például: {"kiszolgáló", "database", "schema" és "objektum"} "tds" protokoll, amely meghatározza az Sql Server-táblát eszköz identitását a beállított identitás.</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>név</td><td>karakterlánc</td><td>A tulajdonság nevét. Neve 1 és 100 karakter hosszú, betűvel kezdődik kell, és csak betűket és számokat tartalmazhat.</td></tr>
-<tr><td></td><td>type</td><td>karakterlánc</td><td>A tulajdonság típusát. Támogatott értékek: "logikai" boolean ","bájt","guid","int","integer","hosszú","string","url"</td></tr>
-<tr><td></td><td>az ignoreCase</td><td>logikai érték</td><td>Azt jelzi, hogy esetben figyelmen kívül kell tulajdonság értékét használja. Csak adható meg a "string" típusú tulajdonságokhoz. Alapértelmezett értéke hamis.</td></tr>
-<tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>logikai]</td><td>Azt jelzi, hogy esetben figyelmen kívül hagyja az egyes szegmens az URL-cím elérési út. Csak adható meg "url" típusú tulajdonságokhoz. Alapértelmezett érték: [false].</td></tr>
+<tr><td></td><td>név</td><td>sztring</td><td>A tulajdonság nevét. Neve 1 – 100 karakter hosszúságú, betűvel kezdődhet kell lennie, és csak betűket és számokat tartalmazhat.</td></tr>
+<tr><td></td><td>type</td><td>sztring</td><td>A tulajdonság típusa. Támogatott értékek: "logikai" logikai ","bájtos","guid","int","egész szám","hosszú","string","url"</td></tr>
+<tr><td></td><td>ignoreCase</td><td>Logikai</td><td>Azt jelzi, hogy esetben figyelmen kívül lehet hagyni tulajdonság értékét használatakor. Csak akkor adható "string" típusú tulajdonságok esetében. Alapértelmezett értéke FALSE (hamis).</td></tr>
+<tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>logikai]</td><td>Azt jelzi, hogy esetben figyelmen kívül lehet hagyni minden egyes szegmens az URL-cím elérési út. Csak akkor adható "url" típusú tulajdonságok esetében. Alapértelmezett érték: [false].</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>név</td><td>karakterlánc</td><td>Az identitás-készlet nevét.</td></tr>
-<tr><td></td><td>properties</td><td>String]</td><td>Ezzel az identitással bekerült azonosító tulajdonságainak listája meg. Nem tartalmazhat ismétlődéseket. Minden egyes tulajdonsága identitás készlet által hivatkozott "identityProperties" protokoll listájának definiálni kell.</td></tr>
+<tr><td></td><td>név</td><td>sztring</td><td>Az identitáskészlet neve.</td></tr>
+<tr><td></td><td>properties</td><td>String]</td><td>Állítsa be ezt az identitást programname identitás tulajdonságok listája. Nem tartalmazhat ismétlődéseket. Minden egyes tulajdonság identitáskészlet által hivatkozott definiálni kell a protokoll "identityProperties" listájában.</td></tr>
 
 </table>
 
-## <a name="roles-and-authorization"></a>Szerepkörök és engedélyezés
-Microsoft Azure Data Catalog eszközökre és a jegyzetek CRUD műveleteihez engedélyezési képességeket biztosít.
+## <a name="roles-and-authorization"></a>Szerepkörök és -engedélyezés
+A Microsoft Azure Data Catalog eszközök és jegyzetek CRUD-műveletek engedélyezési képességeket biztosít.
 
 ## <a name="key-concepts"></a>Fő fogalmak
-Az Azure Data Catalog kétféle hitelesítési módszer használ:
+Az Azure Data Catalog két hitelesítési mechanizmust használ:
 
-* Szerepköralapú hitelesítés
-* Engedély-alapú engedélyezési
+* Szerepkör-alapú hitelesítést
+* Engedély-alapú hitelesítést
 
 ### <a name="roles"></a>Szerepkörök
-Három szerepkör: **rendszergazda**, **tulajdonos**, és **közreműködő**.  Minden szerepkörhöz, a hatókör és a jogok, amely a következő táblázat tartalmazza.
+Három szerepkörök állnak rendelkezésre: **rendszergazda**, **tulajdonosa**, és **közreműködői**.  Minden egyes szerepkörhöz, a hatókör és a jogok, amely az alábbi táblázat foglalja össze.
 
-<table><tr><td><b>Szerepkör</b></td><td><b>Hatókör</b></td><td><b>Jogok</b></td></tr><tr><td>Rendszergazda</td><td>Katalógus (eszközök/szereplő összes megjegyzést a katalógus)</td><td>Olvasási Delete ViewRoles
+<table><tr><td><b>Szerepkör</b></td><td><b>Hatókör</b></td><td><b>Jogok</b></td></tr><tr><td>Rendszergazda</td><td>Katalógus (az összes eszközök/jegyzet a katalógusban)</td><td>Olvasási Delete ViewRoles
 
-ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Tulajdonos</td><td>Minden eszköz (legfelső szintű elem)</td><td>Olvasási Delete ViewRoles
+ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Tulajdonos</td><td>Minden eszköz (legfelső cikk)</td><td>Olvasási Delete ViewRoles
 
-ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Közreműködő</td><td>Minden egyes eszköz és a jegyzet</td><td>Olvasási frissítés törlési ViewRoles Megjegyzés: a jogok vissza lenne vonva, ha a olvasási jogosultsággal a cikk a visszavonja a közreműködői a</td></tr></table>
+ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Közreműködő</td><td>Minden egyes eszköz és a jegyzet</td><td>Olvasási frissítés törlési ViewRoles Megjegyzés: az összes rights visszavonódnak, ha az olvasási jogosultsággal a cikk a közreműködői van visszavonva</td></tr></table>
 
 > [!NOTE]
-> **Olvasási**, **frissítés**, **törlése**, **ViewRoles** jogok a következők tetszőleges elemre (eszköz vagy jegyzet) során alkalmazandó **TakeOwnership**, **ChangeOwnership**, **ChangeVisibility**, **ViewPermissions** esetében csak a legfelső szintű eszköz alkalmazhatók.
+> **Olvasási**, **frissítés**, **törlése**, **ViewRoles** jogok vonatkoznak minden olyan elem (eszköz vagy jegyzet) közben **TakeOwnership**, **ChangeOwnership**, **ChangeVisibility**, **ViewPermissions** csak a legfelső szintű eszköz vonatkoznak.
 > 
-> **Törlés** jobb és bármely alelemeket vagy alatta egyetlen cikkre vonatkozik. Például egy eszköz is törlésekor a jegyzeteket az adott eszköz számára.
+> **Törlés** jobb és minden olyan Szoftverbeállítások vagy alatta egyetlen cikkre vonatkozik. Például egy objektumot is törlésekor bármely adott eszközhöz tartozó jegyzetek.
 > 
 > 
 
 ### <a name="permissions"></a>Engedélyek
-Engedély van, mint a hozzáférés-vezérlő bejegyzések listája. Minden egyes hozzáférés-vezérlési bejegyzés jogosultsága ahhoz, hogy a rendszerbiztonsági tagok készletét rendeli hozzá. Engedélyeket csak az eszköz (Ez azt jelenti, hogy a gyökérelem) adható meg, és az eszköz és bármely alelemeket vonatkoznak.
+Engedély van, mint a hozzáférés-vezérlő bejegyzések listája. Minden egyes hozzáférés-vezérlési bejegyzés egy rendszerbiztonsági jogosultságokkal rendeli hozzá. Engedélyek csak akkor adható meg az eszköz (vagyis a legfelső szintű elem), és az eszköz és bármely elem vonatkoznak.
 
-Során a **Azure Data Catalog** csak előzetes **olvasási** jobbra látható-e az eszköz korlátozása terület engedélyezéséhez az engedélyek listájában támogatott.
+Során a **Azure Data Catalog** előzetes verzió csak **olvasási** jobb támogatott az adategység láthatóságának korlátozása forgatókönyv engedélyezéséhez engedélyek listájában.
 
-Alapértelmezés szerint minden hitelesített felhasználó rendelkezik **olvasási** a katalógus valamely elemére a jobb gombbal, kivéve, ha látható a rendszer az engedélyek rendszerbiztonsági tagok készletét.
+Alapértelmezés szerint a hitelesített felhasználók rendelkezik **olvasási** jobb gombbal a katalógusban szereplő bármely elem, kivéve, ha a láthatósági korlátozódik, az engedélyek a rendszerbiztonsági tagok közül.
 
 ## <a name="rest-api"></a>REST API
-**PUT** és **POST** eleme kérelmek segítségével szabályozhatja a szerepkörökről és engedélyekről: mellett elem adattartalom a két rendszer tulajdonságok is megadhatók **szerepkörök** és **engedélyek**.
+**PUT** és **POST** nézetelem kérelmek segítségével szabályozhatja a szerepkörök és engedélyek: mellett elem adattartalom a két rendszer tulajdonságok adhatók meg **szerepkörök** és  **engedélyek**.
 
 > [!NOTE]
-> **engedélyek** csak a legfelső szintű elem érvényes.
+> **engedélyek** egy legfelső szintű elem csak érvényes.
 > 
-> **Tulajdonos** szerepkör csak a legfelső szintű elem érvényes.
+> **Tulajdonos** szerepkör egy legfelső szintű elem csak érvényes.
 > 
-> Egy elem a katalógus létrehozásakor alapértelmezés szerint a **közreműködő** jelenleg hitelesített felhasználó értékre van állítva. Ha kell, hogy a cikk frissíthető mindenki számára, **közreműködő** meg &lt;mindenki&gt; különleges rendszerbiztonsági tag a a **szerepkörök** tulajdonságot, ha az első elem közzétéve (lásd az alábbi példában). **Közreműködő** nem módosítható, és az elem élettartama során változatlan marad (még akkor is **rendszergazda** vagy **tulajdonos** módosításához nem rendelkezik a **közreműködő**). Csak a következő érték támogatott explicit beállításának a **közreműködő** van &lt;mindenki&gt;: **közreműködő** csak egy elemet létrehozó felhasználó lehet vagy &lt;mindenki&gt;.
+> Amikor létrehoznak egy elemet a katalógusban alapértelmezés szerint a **közreműködői** az aktuális hitelesített felhasználó értékre van állítva. Elem lehet frissíthető mindenki számára, ha **közreműködői** értékre kell állítani &lt;mindenki&gt; egyszerű, a speciális biztonsági a **szerepkörök** közzétenni tulajdonság első elem esetén (lásd: az alábbi példához). **Közreműködői** nem módosítható, és ugyanaz marad egy elem élettartama során (még **rendszergazda** vagy **tulajdonosa** nem rendelkezik a jogot arra, hogy módosítsa a **közreműködő**). Az egyetlen érték az explicit beállítást, amely támogatja a **közreműködői** van &lt;mindenki&gt;: **közreműködői** csak egy felhasználó, aki létrehozta egy elemet lehet vagy &lt;mindenki számára &gt;.
 > 
 > 
 
 ### <a name="examples"></a>Példák
-**Közreműködő beállítása &lt;mindenki&gt; cikk közzétételekor.**
-Különleges rendszerbiztonsági tag &lt;mindenki&gt; objectId "00000000-0000-0000-0000-000000000201" rendelkezik.
+**Közreműködői beállítása &lt;mindenki&gt; egy cikk közzétételekor.**
+A speciális biztonsági egyszerű &lt;mindenki&gt; objectId "00000000-0000-0000-0000-000000000201" rendelkezik.
   **POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
 
 > [!NOTE]
-> Bizonyos ügyfélmegvalósítások esetén HTTP előfordulhat, hogy automatikusan újból kiadja azokat a kérelmeket a kiszolgálóról a 302 válaszként, de általában sáv engedélyezési fejléceket a kérelemből. Mivel hitelesítési fejlécéhez szükséges a kérelmeket az Azure Data Cataloghoz, úgy kell beállítania, hitelesítési fejlécéhez újra kibocsátani egy Azure Data Catalog átirányítási helyére vonatkozó kérelmet továbbra is biztosított. Az alábbi példakód mutatja be, a .NET HttpWebRequest objektum használatával.
+> Bizonyos ügyfélmegvalósítások esetén HTTP előfordulhat, hogy automatikusan adja ki újból a kiszolgáló válasza egy 302, a kérelmek, de általában sáv engedélyezési fejléceket a kérelemből. Mivel az engedélyezési fejléc szükséges, hogy a kéréseket az Azure Data Cataloghoz, biztosítania kell az engedélyezési fejléc továbbra is biztosított, ha kialakít egy Azure Data Catalog által megadott átirányítási helyet kérelmet. Az alábbi mintakód bemutatja a .NET HttpWebRequest objektum használatával.
 > 
 > 
 
@@ -308,7 +302,7 @@ Különleges rendszerbiztonsági tag &lt;mindenki&gt; objectId "00000000-0000-00
         ]
     }
 
-  **Rendelje hozzá a tulajdonosok és korlátozható a láthatóságuk egy meglévő legfelső szintű elem**: **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
+  **Tulajdonosok hozzárendelése és a egy meglévő legfelső szintű elem láthatóságának korlátozása**: **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
     {
         "roles": [
@@ -353,7 +347,7 @@ Különleges rendszerbiztonsági tag &lt;mindenki&gt; objectId "00000000-0000-00
     }
 
 > [!NOTE]
-> A PUT nem kötelező elem payloadot meg a törzsben szereplő: PUT csak szerepkörök és/vagy frissítésére is használható.
+> A PUT ez nem szükséges, adja meg egy elem hasznos a szervezetnek: PUT csak az olyan szerepkörök és/vagy engedélyeit frissítésére is használható.
 > 
 > 
 

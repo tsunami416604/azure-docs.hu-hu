@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 8ac0703fa0ec5f9a9e3f994ccaac61c3748bb8f0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: daf9efb2f9044ed1395b0f2aa3663c2471406e2f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058390"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045464"
 ---
 # <a name="scp-programming-guide"></a>Szolgáltatáskapcsolódási pont programozási útmutató
 Szolgáltatáskapcsolódási pont platformot hozhat létre valós idejű, megbízható és konzisztens, és nagy teljesítményű adatokat feldolgozó alkalmazást. Be van építve a [Apache Storm](http://storm.incubator.apache.org/) – egy streamfeldolgozó rendszer, a nyílt Forráskódú Közösségek által tervezték. A Storm Nathan Marz által készült, és a nyílt forráskódú lett a Twitteren. A modul [Apache ZooKeeper](http://zookeeper.apache.org/), magas megbízhatóságú engedélyezése egy másik Apache-projecttel elosztott koordinálása és állapot-kezelés. 
