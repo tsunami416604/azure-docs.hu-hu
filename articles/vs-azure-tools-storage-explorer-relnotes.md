@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 94ade24f1761700b93ab79d497e273c64c51bddf
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: MT
+ms.openlocfilehash: ac2787f69651e950ffb6b786280ba7f11f4fa8e0
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990897"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127960"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
@@ -27,31 +27,37 @@ Ez a cikk az Azure Storage Explorer 1.2.0-s vagy annál újabb kiadás kibocsát
 
 [A Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
-## <a name="version-130"></a>Verzió 1.3.0
-07/09/2018.
+## <a name="version-141"></a>1.4.1 verzió
+08/28/2018.
 
 ### <a name="download-azure-storage-explorer-130"></a>Az Azure Storage Explorer 1.3.0 letöltése
 - [Az Azure Storage Explorer 1.3.0 Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
 - [Az Azure Storage Explorer 1.3.0 Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [Az Azure Storage Explorer 1.3.0 linuxhoz](https://go.microsoft.com/fwlink/?LinkId=722418)
 
+### <a name="hotfixes"></a>Gyorsjavítások
+* Az alkalmazás első indításakor a Storage Explorer nem tudta létrehozni a bizalmas adatok titkosításához használt kulcs. Emiatt problémák gyors hozzáférés használata esetén és a kapcsolódó erőforrásokat. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
+* Ha a fiók nem volt szükség az MFA az otthoni bérlő számára, de néhány más bérlők esetében tette, a Storage Explorer az előfizetések listája nem lehet lenne. Most az ilyen egy fiókkal történő bejelentkezés után a Tártallózó ekkor megkérdezi, írja be újra a hitelesítő adatait, és végezze el az MFA. [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
+* Storage Explorer nem tudta csatolni az erőforrásokat az Azure Germany és Azure US Government. [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
+* Ha bejelentkezett, két fiókot, amely ugyanazt az e-mail címet rendelkezett, Storage Explorer időnként meghiúsul a fanézetben megtekintheti az erőforrások megjelenítéséhez. [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
+* Lassabb Windows-gépeken a kezdőképernyőjén néha igénybe jelentős mennyiségű időt jelennek meg. [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
+* A Csatlakozás párbeszédpanel tűnik, még akkor is, ha voltak a csatolt fiókhoz vagy szolgáltatáshoz. [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
+
 ### <a name="new"></a>Új
-* Mostantól támogatott a statikus webhelyek által használt $web tárolók elérése. Ez lehetővé teszi, hogy könnyedén töltheti fel és kezelheti a fájlok és mappák, a webhely által használt. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
-* MacOS rendszeren alkalmazássávon az átszervezett már rendelkezik. A változások a következők: a Fájl menü, helyi legfontosabb változások és számos új parancsokat az alkalmazás menüjében. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* A szolgáltató végpont Azure US Government való bejelentkezéshez értékre változott. https://login.microsoftonline.us/
-* Kisegítő lehetőségek: Ha egy képernyőolvasó aktív, most már a billentyűzetnavigációt együttműködik elemek megjelenítéséhez a jobb oldali használt táblák. Használhatja a nyílbillentyűkkel navigálhat a sorok és oszlopok, adjon meg alapértelmezett műveletek, a helyi menü kulcs egy elem, a helyi menü megnyitásához és a Shift vagy a többszörös kijelölés vezérlőelem meghívásához. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* Külső erőforrás-mellékleteket, például a SAS-kapcsolatok és emulátorok, jelentősen javult. Most a következőket teheti:
+   * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31.](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
+   * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
+   * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
+   * Helyreállíthatóan törölt BLOB törlésének visszavonása.
 
 ### <a name="fixes"></a>Javítások
-*  Az egyes gépek alárendelt indítása hosszú ideig is tart. Ez akkor fordulhat elő, amikor egy "gyermek folyamata nem tudott időben elindítani" hibát jelent. Indítsa el a gyermek a folyamat a várt időn most 20-ról értékre nőtt 90 másodperc alatt. Ha a probléma továbbra is érint, adjon fűzni a csatolt GitHub-problémát. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
-* Amely az adott nem rendelkezik olvasási engedéllyel a SAS használatával, amikor nem lehetett feltölteni a nagyméretű blobok. A feltöltés logika csapatmunkában vesz részt ebben a forgatókönyvben módosították. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
-* A nyilvános hozzáférés szintje beállítása egy tároló el kell távolítani az összes hozzáférési házirendeket, és ez fordítva is igaz. Nyilvános hozzáférés szintje és a hozzáférési szabályzatok megmaradnak, vagy a kettő beállításakor. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
-* A Tulajdonságok párbeszédpanelen "AccessTierChangeTime" byl zkrácen. Ez megoldottuk. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
-* A "Microsoft Azure Storage Explorer –" előtag hiányzott az új könyvtár létrehozása párbeszédpanel. Ez megoldottuk. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* Kisegítő lehetőségek: Az entitás hozzáadása párbeszédpanelen keresse meg a VoiceOver használatakor bonyolult volt. Fejlesztések történtek-e. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* Kisegítő lehetőségek: A háttérszíne, a műveletek és a Tulajdonságok ablak összecsukása és bontsa ki a gombjára a Kontrasztos fekete témában hasonló felhasználói felületi vezérlők inkonzisztens volt. A szín megváltozott. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* Kisegítő lehetőségek: Kontrasztos fekete témában a fókuszt, ha az "X" gomb a Tulajdonságok párbeszédpanelen nem volt látható. Ez megoldottuk. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* Kisegítő lehetőségek: A műveletek és a Tulajdonságok lapon lett(ek) subpar képernyő olvasó élmény szabványosította számos aria-értékét. A hiányzó aria-értékek hozzáadása megtörtént. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Kisegítő lehetőségek: Összecsukott fa csomópontjait a bal oldali nem folyamatban van a kapott egy aria-kibontva értéke hamis. Ez megoldottuk. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* A "Konfigurálja a CORS-beállítások" művelet már nem elérhető a Premium Storage-fiókok, mert a prémium szintű Storage-fiókok nem támogatják a CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Most már rendelkezésre áll egy SAS-hez csatolt szolgáltatások közös hozzáférésű Jogosultságkód tulajdonsága. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Az "Alapértelmezett hozzáférési szint beállítása" művelet már elérhető a Blob és a GPV2 Storage-fiókok, amely gyors hozzáférést van rögzítve. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* Egyes esetekben a Storage Explorer megjelenítéséhez a klasszikus tárfiókok meghiúsul. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Ismert problémák
 * Emulátory systému, például az Azure Storage Emulator vagy Azurite, használatakor kell figyelni a kapcsolatokat, az alapértelmezett porton őket. Ellenkező esetben Storage Explorer nem képes csatlakozni hozzájuk.
@@ -88,6 +94,7 @@ Ez a cikk az Azure Storage Explorer 1.2.0-s vagy annál újabb kiadás kibocsát
 
 ## <a name="previous-releases"></a>Korábbi kiadások
 
+* [Verzió 1.3.0](#version-130)
 * [1.2.0-s vagy annál újabb verzió](#version-120)
 * [1.1.0-s verzió](#version-110)
 * [1.0.0-s verziójának](#version-100)
@@ -113,6 +120,63 @@ Ez a cikk az Azure Storage Explorer 1.2.0-s vagy annál újabb kiadás kibocsát
 * [Verzió 0.7.20160129.1](#version-07201601291)
 * [Verzió 0.7.20160105.0](#version-07201601050)
 * [Verzió 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-130"></a>Verzió 1.3.0
+07/09/2018.
+
+### <a name="new"></a>Új
+* Mostantól támogatott a statikus webhelyek által használt $web tárolók elérése. Ez lehetővé teszi, hogy könnyedén töltheti fel és kezelheti a fájlok és mappák, a webhely által használt. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
+* MacOS rendszeren alkalmazássávon az átszervezett már rendelkezik. A változások a következők: a Fájl menü, helyi legfontosabb változások és számos új parancsokat az alkalmazás menüjében. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
+* A szolgáltató végpont Azure US Government való bejelentkezéshez értékre változott. https://login.microsoftonline.us/
+* Kisegítő lehetőségek: Ha egy képernyőolvasó aktív, most már a billentyűzetnavigációt együttműködik elemek megjelenítéséhez a jobb oldali használt táblák. Használhatja a nyílbillentyűkkel navigálhat a sorok és oszlopok, adjon meg alapértelmezett műveletek, a helyi menü kulcs egy elem, a helyi menü megnyitásához és a Shift vagy a többszörös kijelölés vezérlőelem meghívásához. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+
+### <a name="fixes"></a>Javítások
+*  Az egyes gépek alárendelt indítása hosszú ideig is tart. Ez akkor fordulhat elő, amikor egy "gyermek folyamata nem tudott időben elindítani" hibát jelent. Indítsa el a gyermek a folyamat a várt időn most 20-ról értékre nőtt 90 másodperc alatt. Ha a probléma továbbra is érint, adjon fűzni a csatolt GitHub-problémát. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
+* Amely az adott nem rendelkezik olvasási engedéllyel a SAS használatával, amikor nem lehetett feltölteni a nagyméretű blobok. A feltöltés logika csapatmunkában vesz részt ebben a forgatókönyvben módosították. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
+* A nyilvános hozzáférés szintje beállítása egy tároló el kell távolítani az összes hozzáférési házirendeket, és ez fordítva is igaz. Nyilvános hozzáférés szintje és a hozzáférési szabályzatok megmaradnak, vagy a kettő beállításakor. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
+* A Tulajdonságok párbeszédpanelen "AccessTierChangeTime" byl zkrácen. Ez megoldottuk. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
+* A "Microsoft Azure Storage Explorer –" előtag hiányzott az új könyvtár létrehozása párbeszédpanel. Ez megoldottuk. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
+* Kisegítő lehetőségek: Az entitás hozzáadása párbeszédpanelen keresse meg a VoiceOver használatakor bonyolult volt. Fejlesztések történtek-e. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* Kisegítő lehetőségek: A háttérszíne, a műveletek és a Tulajdonságok ablak összecsukása és bontsa ki a gombjára a Kontrasztos fekete témában hasonló felhasználói felületi vezérlők inkonzisztens volt. A szín megváltozott. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* Kisegítő lehetőségek: Kontrasztos fekete témában a fókuszt, ha az "X" gomb a Tulajdonságok párbeszédpanelen nem volt látható. Ez megoldottuk. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* Kisegítő lehetőségek: A műveletek és a Tulajdonságok lapon lett(ek) subpar képernyő olvasó élmény szabványosította számos aria-értékét. A hiányzó aria-értékek hozzáadása megtörtént. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* Kisegítő lehetőségek: Összecsukott fa csomópontjait a bal oldali nem folyamatban van a kapott egy aria-kibontva értéke hamis. Ez megoldottuk. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+
+### <a name="known-issues"></a>Ismert problémák
+* Egy erőforráshoz, például egy blob-tároló SAS URI-t, összekapcsolnia leválasztása a hibát, amely megakadályozza, hogy a többi megfelelően jelenik meg a mellékleteket okozhat. A probléma megkerüléséhez frissítse a a csoport csomópontot. Lásd: [probléma](https://github.com/Microsoft/AzureStorageExplorer/issues/537) további információt.
+* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ezt nem zárolásának feloldásához, kérjük fűzni [probléma](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
+* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
+* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva.
+* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
+* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az az oka leírt Mégse szűrő megoldást használjuk [Itt](https://github.com/Azure/azure-storage-node/issues/317).
+* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
+* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
+* Az Azure Stack nem támogatja a következő funkciókat, és a váratlan hibákat eredményezhet próbál használni őket az Azure Stack használata során:
+   * Fájlmegosztások
+   * Hozzáférési szintek
+   * Helyreállítható törlés
+* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-120"></a>1.2.0-s vagy annál újabb verzió
 06/12/2018.
@@ -172,7 +236,7 @@ Ez a cikk az Azure Storage Explorer 1.2.0-s vagy annál újabb kiadás kibocsát
     ```
 
 ## <a name="version-110"></a>1.1.0-s verzió
-2018. 05/09 /.
+2018/05/09
 
 ### <a name="new"></a>Új
 * Storage Explorer mostantól támogatja a Azurite. Megjegyzés: az alapértelmezett fejlesztési végpontjaira szoftveresen kötött áll a kapcsolat Azurite.
@@ -328,7 +392,7 @@ Ez a cikk az Azure Storage Explorer 1.2.0-s vagy annál újabb kiadás kibocsát
     ```
 
 ## <a name="version-095"></a>Verzió 0.9.5
-2018. 02/06 /.
+2018/02/06
 
 ### <a name="new"></a>Új
 
