@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: bbf10d9bd0912dab22c81e2bb850ede52a3bd9e3
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9f761fed46f0730a64a984111da1bae1229cc93d
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41987483"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127071"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést Java nyelven a Speech SDK használatával Android rendszeren
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ebben a cikkben megismerheti, hogyan hozhat létre egy Java-alkalmazást az Android a Cognitive Services beszédfelismerő SDK a beszédfelismerés lefényképezze lesz.
 Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK Maven csomag, a verzió 0.6.0 és az Android Studio 3.1 alapul.
@@ -61,7 +61,7 @@ Futtatás ideje után kell az újonnan létrehozott Android Studio project merü
 
 ## <a name="configure-your-project-for-the-speech-sdk"></a>A beszédfelismerés SDK projekt konfigurálásához
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 A Cognitive Services beszédfelismerő SDK jelenlegi verziója `0.6.0`.
 
@@ -154,7 +154,7 @@ A szöveg és a felhasználói felületének grafikus verziója kell kinéznie e
 
 Ezen a képernyőfelvételen látható az Android a rövid útmutató azt állapítja meg. A teljes projekt mintakód a minta tárház letölthető.
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Keresse meg az ehhez a mintához a `quickstart/java-android` mappát.
 
 ## <a name="next-steps"></a>További lépések
