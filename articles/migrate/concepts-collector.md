@@ -4,15 +4,15 @@ description: A gyűjtőberendezés és konfigurálásának áttekintése.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/25/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: c99d0f74dbb8cc28cabebae60fe10645f4bdb3b6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 551276f88f5c27cd860a400a5769c95f4d94cbbb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308459"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122887"
 ---
 # <a name="collector-appliance"></a>Gyűjtőberendezés
 
@@ -58,6 +58,30 @@ A gyűjtőberendezés csatlakoztatva kell lennie az internethez, hogy küldje el
 
 > [!NOTE]
 > A gyűjtő által a HTTPS-alapú proxykiszolgálók nem támogatottak.
+
+#### <a name="internet-connectivity-with-intercepting-proxy"></a>Internetkapcsolattal rendelkező lehallgató proxy
+
+Ha az internethez való kapcsolódáshoz használja a proxykiszolgálót egy lehallgató proxy, szükségesek a proxy tanúsítvány importálása a gyűjtő virtuális Gépen. Az alábbiakban bemutatjuk, hogyan importálhatja a tanúsítványt a gyűjtő virtuális Gépen.
+
+1. A gyűjtő virtuális gép, lépjen a **Start menü** , és keresse meg és nyissa meg a **számítógép-tanúsítványok kezelése**.
+2. A tanúsítványok eszközben, a bal oldali panelen a **tanúsítványok – helyi számítógép**, található **megbízható közzétevők**. A **megbízható közzétevők**, kattintson a **tanúsítványok** a panelen a tanúsítványok listájának megtekintéséhez a jobb oldalon.
+
+    ![Tanúsítványok eszköz](./media/concepts-intercepting-proxy/certificates-tool.png)
+
+3. Másolja be a gyűjtő virtuális Gépnek a proxy tanúsítvány. Előfordulhat, hogy ez a tanúsítvány beszerzése a szervezet a felügyeleti csoport bizalommal.
+4. Kattintson duplán a tanúsítványra vonatkozóan, nyissa meg. Kattintson a **tanúsítvány telepítése**. Ekkor a Tanúsítványimportáló varázsló.
+5. A Tanúsítványimportáló varázslóban Store helyen válassza **helyi gép**. **Kattintson a Tovább gombra**.
+
+    ![Tanúsítványtár helye](./media/concepts-intercepting-proxy/certificate-store-location.png)
+
+6. Válassza ki a lehetőséget, hogy **minden tanúsítvány tárolása ebben a tárolóban**. Kattintson a **Tallózás** válassza **megbízható közzétevők** merülnek fel a tanúsítványok listájából. Kattintson a **Tovább** gombra.
+
+    ![Tanúsítványok tárolójában](./media/concepts-intercepting-proxy/certificate-store.png)
+    
+7. Kattintson a **Befejezés** gombra. Ezzel importálja a tanúsítványt. 
+8. Szükség esetén ellenőrizheti a tanúsítvány importálása nyissa meg a tanúsítványok eszközzel, mint 1. és 2. lépés.
+9. Az Azure Migrate collector alkalmazást ellenőrizze az internetes kapcsolat Előfeltételek ellenőrzése befejeződött.
+
 
 #### <a name="whitelisting-urls-for-internet-connection"></a>Engedélyezési URL-címek internetkapcsolat
 

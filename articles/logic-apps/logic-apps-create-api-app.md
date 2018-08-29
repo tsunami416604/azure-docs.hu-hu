@@ -1,28 +1,23 @@
 ---
 title: Webes API-k és REST API-k létrehozása az Azure Logic Apps |} A Microsoft Docs
-description: Webes API-k és REST API-kat hívni az API-kat, szolgáltatásokat vagy rendszerek logikai alkalmazások munkafolyamataiból rendszer Integrációk
-keywords: webes API-kat, REST API-k, munkafolyamatok, rendszer-integráció
+description: Webes API-k és REST API-kat hívni az API-kat, szolgáltatásokat vagy rendszereket az Azure Logic Appsben rendszert Integrációk
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
-ms.date: 5/26/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 748070d43c34b501af3455d03429be1f44178b7f
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
+ms.date: 05/26/2017
+ms.openlocfilehash: a761e384a356a0cbf5531eee7340ddbbd1526909
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172017"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122246"
 ---
-# <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>Egyéni API-k, amelyeket meghívhat a logikai alkalmazás munkafolyamatok létrehozása
+# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Az Azure Logic Apps segítségével meghívhatja, egyéni API-k létrehozása
 
 Bár az Azure Logic Apps biztosít [100 + beépített összekötők](../connectors/apis-list.md) , hogy a logikai alkalmazások munkafolyamataiba is használhatja, érdemes lehet hívni az API-k, rendszerek és szolgáltatások, amelyek nem érhetők el beépített összekötőkként. Létrehozhat saját API-k által biztosított műveleteket és eseményindítókat, a logic apps használatára. Az alábbiakban a valamilyen más okból, miért érdemes a saját API-k, amelyeket meghívhat a logikai alkalmazás munkafolyamatok létrehozása:
 

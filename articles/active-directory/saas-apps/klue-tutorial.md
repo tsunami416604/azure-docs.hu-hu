@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 6b42098786396cf8bb4a27d688b086a49558e7d1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4afe11d6d241e86b57ebb40d54e4c2dceb63a46c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445150"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>Oktatóanyag: Azure Active Directory-integráció az Klue
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Klue az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Klue egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -49,37 +49,40 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 - Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
+
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Klue hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-klue-from-the-gallery"></a>Klue hozzáadása a katalógusból
+
 Az Azure AD integrálása a Klue konfigurálásához hozzá kell Klue a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 **Klue hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-1. A Keresés mezőbe írja be a **Klue**.
+4. A Keresés mezőbe írja be a **Klue**.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/klue-tutorial/tutorial_klue_search.png)
 
-1. Az eredmények panelen válassza ki a **Klue**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+5. Az eredmények panelen válassza ki a **Klue**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/klue-tutorial/tutorial_klue_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+
 Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Klue a teszt "Britta Simon" nevű felhasználó.
 
 Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Klue mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Klue hivatkozás kapcsolata kell létrehozni.
@@ -89,10 +92,10 @@ Klue, rendelje hozzá az értékét a **felhasználónév** értékeként az Azu
 Az Azure AD egyszeri bejelentkezés az Klue tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Klue tesztfelhasználó létrehozása](#creating-a-klue-test-user)**  – egy megfelelője a Britta Simon Klue, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Klue tesztfelhasználó létrehozása](#creating-a-klue-test-user)**  – egy megfelelője a Britta Simon Klue, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -104,11 +107,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+
     ![Egyszeri bejelentkezés konfigurálása](./media/klue-tutorial/tutorial_klue_samlbase.png)
 
-1. Az a **Klue tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+3. Az a **Klue tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/klue-tutorial/tutorial_klue_url1.png)
 
@@ -116,27 +119,27 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://app.klue.com/account/auth/saml/<Customer UUID>/callback`
 
-1. Ellenőrizze **speciális URL-beállítások megjelenítése**. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+4. Ellenőrizze **speciális URL-beállítások megjelenítése**. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/klue-tutorial/tutorial_klue_url2.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://app.klue.com/account/auth/saml/<Customer UUID>/`
-     
-    > [!NOTE] 
+
+    > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím, azonosítókat és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Klue ügyfél-támogatási csapatának](mailto:support@klue.com) beolvasni ezeket az értékeket.
 
-1. A Klue alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Ezek az attribútumok értékeinek kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. 
+5. A Klue alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Ezek az attribútumok értékeinek kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/klue-tutorial/attribute.png)
 
-1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az előző képen látható módon, és hajtsa végre az alábbi lépéseket:
-    
+6. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az előző képen látható módon, és hajtsa végre az alábbi lépéseket:
+
     | Attribútum neve      | Attribútum értéke      |
     | ------------------- | -------------------- |
     | first_name          | User.givenName |
     | last_name           | User.surname |
     | e-mailben               | User.userPrincipalName|
-    
+
     a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/klue-tutorial/tutorial_attribute_04.png)
@@ -146,27 +149,28 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
     c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
-    
+
     d. Kattintson az **OK** gombra.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+    > [!NOTE]
+    > Hagyja a **Namespace** érték üres.
+
+7. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/klue-tutorial/tutorial_klue_certificate.png) 
 
-1. Kattintson a **mentése** gombra.
+8. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/klue-tutorial/tutorial_general_400.png)
-    
-1. Az a **Klue konfigurációs** területén kattintson **konfigurálása Klue** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+
+9. Az a **Klue konfigurációs** területén kattintson **konfigurálása Klue** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/klue-tutorial/tutorial_klue_configure.png) 
 
-1. Az egyszeri bejelentkezés konfigurálása **Klue** oldalon kell küldenie a letöltött **Certificate(Base64) SAML egyszeri bejelentkezési szolgáltatás URL-cím és az SAML-Entitásazonosító** való [Klue támogatási csapatának](mailto:support@klue.com).
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+10. Az egyszeri bejelentkezés konfigurálása **Klue** oldalon kell küldenie a letöltött **Certificate(Base64) SAML egyszeri bejelentkezési szolgáltatás URL-cím és az SAML-Entitásazonosító** való [Klue támogatási csapatának](mailto:support@klue.com).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
@@ -175,18 +179,18 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/klue-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/klue-tutorial/create_aaduser_01.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/klue-tutorial/create_aaduser_02.png) 
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/klue-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/klue-tutorial/create_aaduser_02.png)
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/klue-tutorial/create_aaduser_03.png)
+
+4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/klue-tutorial/create_aaduser_04.png) 
 
     a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
@@ -196,13 +200,13 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
     c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="creating-a-klue-test-user"></a>Klue tesztfelhasználó létrehozása
 
 Ez a szakasz célja Klue Britta Simon nevű felhasználó létrehozásához. Klue támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Klue elérésére, ha még nem létezik tett kísérlet során.
 
->[!Note]
->Ha manuálisan hozzon létre egy felhasználót, lépjen kapcsolatba kell [Klue támogatási csapatának](mailto:support@klue.com).
+> [!Note]
+> Ha manuálisan hozzon létre egy felhasználót, lépjen kapcsolatba kell [Klue támogatási csapatának](mailto:support@klue.com).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -216,24 +220,24 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][201] 
 
-1. Az alkalmazások listájában jelölje ki a **Klue**.
+2. Az alkalmazások listájában jelölje ki a **Klue**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/klue-tutorial/tutorial_klue_app.png) 
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![Felhasználó hozzárendelése][202]
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
@@ -245,8 +249,6 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -261,4 +263,3 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 [201]: ./media/klue-tutorial/tutorial_general_201.png
 [202]: ./media/klue-tutorial/tutorial_general_202.png
 [203]: ./media/klue-tutorial/tutorial_general_203.png
-

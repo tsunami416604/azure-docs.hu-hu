@@ -1,24 +1,22 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 97bdd968297b301218891ce9ff1c98e5e894d5e9
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108475"
 documentType: LandingData
 title: Chef szoftver az Azure-ban – Dokumentáció
 metadata:
   title: Chef szoftver az Azure-ban – Dokumentáció – Oktatóanyagok, minták, referenciák és forrásanyagok
-  meta.description: Chef Software provides a DevOps automation platform for Linux and Windows that enables the management of both physical and virtual server configurations. Learn how to use Chef Software products to automate infrastructure as code (IaC) recipes and manage and deploy virtual machines on Azure with quickstarts and tutorials.
-  services: chef
+  description: A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A rövid útmutatók és oktatóanyagok segítségével megismerheti, hogyan használhatók a Chef szoftvertermékek az infrastruktúra kódként való használatára vonatkozó receptek automatizálására, illetve a virtuális gépek kezelésére és üzembe helyezésére az Azure-ban.
+  ms.service: chef
+  keywords: chef, azure, devops, oktatóanyagok, minták, referencia
   author: tomarcher
   manager: jeconnoc
-  ms.service: chef
-  ms.tgt_pltfrm: na
-  ms.devlang: devops
-  ms.topic: landing page
-  ms.date: 05/15/2018
   ms.author: tarcher
-  ms.openlocfilehash: 644b50455ac4e7e7aba818ae31f95c736ae5d632
-  ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/17/2018
-  ms.locfileid: "34259175"
+  ms.topic: landing page
+  ms.date: 08/27/2018
 abstract:
   description: A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A rövid útmutatók és oktatóanyagok segítségével megismerheti, hogyan használhatók a Chef szoftvertermékek az infrastruktúra kódként való használatára vonatkozó receptek automatizálására, illetve a virtuális gépek kezelésére és üzembe helyezésére az Azure-ban.
   aside:

@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: b2b5abf3b3b170e60df3aa2d6ec5ce471db74f80
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 6d161a49b35bbdfedcb27dd91f9f09dcf7ba4133
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058115"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122026"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET-hez készült Application Insights konzolon alkalmazások
 [Az Application Insights](app-insights-overview.md) figyelni, webalkalmazása rendelkezésre állását, teljesítményét és használatát.
@@ -44,7 +44,7 @@ telemetryClient.TrackTrace("Hello World!");
 Előfordulhat, hogy inicializálni és az Application Insights beállítása a kódból vagy `ApplicationInsights.config` fájlt. Ellenőrizze, hogy az inicializálás történik, amilyen hamar csak lehet. 
 
 > [!NOTE]
-> Hivatkozó utasításokat **ApplicationInsights.config** csak alkalmazásokat a .NET Standard céloz meg, és nem vonatkoznak a .NET Core-alkalmazások vonatkoznak. 
+> Hivatkozó utasításokat **ApplicationInsights.config** csak a .NET-keretrendszer célozza, és nem vonatkoznak a .NET Core-alkalmazások alkalmazások vonatkoznak.
 
 ### <a name="using-config-file"></a>A konfigurációs fájl használatával
 

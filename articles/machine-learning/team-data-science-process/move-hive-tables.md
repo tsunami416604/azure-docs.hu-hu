@@ -1,6 +1,6 @@
 ---
-title: Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage |} Microsoft Docs
-description: Hive táblák létrehozása és a hive táblák blob adatainak betöltése
+title: Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból |} A Microsoft Docs
+description: Hive táblákat hozhat létre és tölt be adatokat a hive-táblákban blob
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -15,119 +15,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 474eb7122de59d12c69b7c1021cfdff8548c5a25
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ccfa3f8681b220d01f8347abd58140e2621f4282
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837956"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122285"
 ---
-# <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage
-Ebből a témakörből megismerheti, hogy a Hive táblák létrehozása és az adatok betöltése az Azure blob storage általános Hive-lekérdezéseket. Néhány is útmutatást a Hive Táblák particionálása és az optimalizált sor oszlopos (ORC) lekérdezés teljesítmény javítása érdekében formázás használatával.
+# <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból
+Ez a témakör bemutatja az általános Hive-lekérdezések, amelyek Hive táblákat hozhat létre, és az adatok betöltése az Azure blob storage-ból. Hive Táblák particionálása és az optimalizált sor Oszlopalapú (ORC) lekérdezési teljesítmény javításához formázás használatával útmutatást is tartalmaz.
 
-Ez **menü** betöltik az adatokat tároló környezetekben, ahol az adatok is tárolhatók és feldolgozhatók, a csapat adatok tudományos folyamat (TDSP) során módját leíró témakörök hivatkozásait.
+Ez **menü** mutató hivatkozásokat talál, amelyek bemutatják, hogyan gyűjthet adatokat a cél környezetekben, ahol az adatok tárolásának és feldolgozása során a csoportos adatelemzési folyamat (TDSP).
 
 [!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy rendelkezik:
 
-* Egy Azure storage-fiók létrehozása. Ha módosítania kell az utasításokat, lásd: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
-* A HDInsight szolgáltatásban egy testreszabott Hadoop-fürt üzembe helyezve.  Ha módosítania kell az utasításokat, lásd: [testreszabása az Azure HDInsight Hadoop-fürtök Speciális elemzésekre](customize-hadoop-cluster.md).
-* A fürthöz engedélyezett távelérési jelentkezett be, és a Hadoop parancssori konzol megnyitása. Ha módosítania kell az utasításokat, lásd: [a Head csomópont a Hadoop-fürt eléréséhez](customize-hadoop-cluster.md).
+* Létrehozott egy Azure storage-fiókot. Ha utasításokat van szüksége, tekintse meg [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
+* A HDInsight szolgáltatással egyéni Hadoop-fürt kiépítése.  Ha utasításokat van szüksége, tekintse meg [testreszabása az Azure HDInsight Hadoop-fürtök fejlett analitikai](customize-hadoop-cluster.md).
+* A fürthöz engedélyezett távelérési jelentkezett be, és a Hadoop parancssori konzolt megnyitva. Ha utasításokat van szüksége, tekintse meg [a fő csomópont, Hadoop-fürt eléréséhez](customize-hadoop-cluster.md).
 
-## <a name="upload-data-to-azure-blob-storage"></a>Adatok feltöltése az Azure blob storage
-Ha a megjelenő utasításokat követve létrehozott Azure virtuális gép [állítson be egy Azure virtuális gép speciális elemzésekre](../data-science-virtual-machine/setup-virtual-machine.md), a parancsfájl kell lettek töltve az *C:\\felhasználók \\ \<felhasználónév\>\\dokumentumok\\adatok tudományos parancsfájlok* könyvtárhoz, a virtuális gépen. A következő Hive-lekérdezések csak szükséges, csatlakoztassa a saját adatok séma és az Azure blob storage konfiguráció készen áll arra, hogy elküldhesse a megfelelő mezőket.
+## <a name="upload-data-to-azure-blob-storage"></a>Adatfeltöltés az Azure blob storage-bA
+Ha létrehozott egy Azure virtuális gépen található utasításokat követve [állítsa be az Azure virtuális gép fejlett analitikai](../data-science-virtual-machine/setup-virtual-machine.md), a parancsfájl kell letöltötte a *C:\\felhasználók \\ \<felhasználónév\>\\dokumentumok\\Data Science parancsfájlok* könyvtárban a virtuális gépen. A Hive-lekérdezések csak akkor van szükség, hogy csatlakoztassa a saját adatok séma és az Azure blob storage konfigurációs beküldésre kell a megfelelő mezőkbe.
 
-Feltételezzük, hogy a Hive táblák adatai van egy **tömörítetlen** táblázatos formátumban, és, hogy az adatok az alapértelmezett (vagy egy további) feltöltötte-e a tárfiók a Hadoop-fürt által használt tároló.
+Feltételezzük, hogy az adatokat a Hive-táblákat szerepel egy **tömörítetlen** táblázatos formátumú, és az, hogy az adatokat fel lett töltve az alapértelmezett (vagy egy további) a tárfiók a Hadoop-fürt által használt tároló.
 
-Ha meg szeretné gyakorlat a **NYC Taxi út adatok**, kell:
+Ha meg szeretné gyakorlat a **NYC Taxi Útadatok**, kell tennie:
 
-* **Töltse le** a 24 [NYC Taxi út adatok](http://www.andresmh.com/nyctaxitrips) (12 út fájlok és 12 jegy ára fájlok),
-* **Csomagolja ki** .csv fájlokat, az összes fájl, majd
-* **Töltse fel** őket az Azure storage-fiók ismertetett eljárással létrehozott alapértelmezett (vagy megfelelő tárolót) a [testreszabása az Azure HDInsight Hadoop-fürtök Advanced Analytics folyamat és a technológia](customize-hadoop-cluster.md)témakör. A folyamat a .csv fájlok feltöltése az alapértelmezett tároló a tárfiók itt található [lap](hive-walkthrough.md#upload).
+* **Töltse le** az 24 [NYC Taxi Útadatok](http://www.andresmh.com/nyctaxitrips) (12 Útadatokat tartalmazó fájlt, és 12 diszkont fájlok),
+* **Csomagolja ki** tartalmazó .csv fájlt, az összes fájlt, majd
+* **Töltse fel** őket az Azure storage-fiók leírt eljárást által létrehozott alapértelmezett (vagy megfelelő tárolót) a [testreszabása az Azure HDInsight Hadoop-fürtök fejlett analitikai folyamat és technológia](customize-hadoop-cluster.md)témakör. A folyamat a .csv-fájlok feltöltése az alapértelmezett tároló a tárfiókban található ezen [oldal](hive-walkthrough.md#upload).
 
 ## <a name="submit"></a>Hogyan lehet elküldeni a Hive-lekérdezések
-Hive-lekérdezések segítségével küldheti el:
+Hive-lekérdezések használatával küldheti:
 
-1. [A Hadoop-fürt headnode keresztül Hadoop parancssori Hive-lekérdezések elküldése](#headnode)
-2. [A Hive szerkesztő Hive-lekérdezések elküldése](#hive-editor)
-3. [Küldje el az Azure PowerShell-parancsokkal Hive-lekérdezések](#ps)
+1. [A Hadoop-fürt átjárócsomópontjával Hadoop parancssor használatával Hive-lekérdezések elküldéséhez](#headnode)
+2. [A Hive szerkesztőben a Hive-lekérdezések elküldéséhez](#hive-editor)
+3. [Azure PowerShell-parancsokkal Hive-lekérdezések elküldéséhez](#ps)
 
-Hive-lekérdezések SQL-szerű. Ha ismeri az SQL, azt tapasztalhatja a [SQL felhasználók Cheat lap Hive](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) hasznos.
+Hive-lekérdezések a következő SQL-szerű. Ha ismeri az SQL, hasznosnak találhatja a [Hive SQL-felhasználók Adatlap lap](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) hasznos.
 
-A Hive-lekérdezés elküldésekor azt is meghatározhatja, és Hive-lekérdezések eredményének a képernyőn vagy az átjárócsomópont helyi fájlba vagy egy Azure-blobba legyen.
+Hive-lekérdezés elküldésekor is szabályozhatja és Hive-lekérdezések eredményének legyen szó a képernyőn, vagy egy helyi fájlt a fő csomópontot vagy az Azure-blobba.
 
-### <a name="headnode"></a> 1. A Hadoop-fürt headnode keresztül Hadoop parancssori Hive-lekérdezések elküldése
-A Hive lekérdezés túl összetett, ha közvetlenül a Hadoop átjárócsomópontjához a továbbítás fürt általában vezet, mint a Hive szerkesztő vagy az Azure PowerShell parancsfájlok továbbítás gyorsabban kapcsolja.
+### <a name="headnode"></a> 1. A Hadoop-fürt átjárócsomópontjával Hadoop parancssor használatával Hive-lekérdezések elküldéséhez
+Ha a Hive-lekérdezés túl összetett, elküldené azokat közvetlenül a fő csomópont a Hadoop a fürt általában vezet gyorsabban kapcsolja, mint a Hive szerkesztőben, vagy az Azure PowerShell-szkriptekkel elküldené azokat.
 
-Jelentkezzen be a Hadoop-fürt átjárócsomópontjához, nyissa meg a Hadoop parancssort az átjárócsomópont asztalán, és írja be a parancs `cd %hive_home%\bin`.
+Jelentkezzen be a Hadoop-fürt fő csomópontjának, nyissa meg a Hadoop parancssor az asztalon, a fő csomópontot, és adja meg a parancs `cd %hive_home%\bin`.
 
-Háromféleképpen elküldeni a Hive-lekérdezéseket a Hadoop parancssorban:
+Küldje el a Hive-lekérdezések a Hadoop parancssor három módja van:
 
 * közvetlenül
 * .hql fájlok használata
-* a Hive parancs konzol
+* a Hive-parancs konzollal
 
-#### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Küldje el közvetlenül a Hadoop parancssori Hive-lekérdezéseket.
-Például a parancs futtatása `hive -e "<your hive query>;` egyszerű Hive-lekérdezéseket közvetlenül a Hadoop parancssori elküldeni. Íme egy példa, ahol a vörös téglalappal ismerteti a parancs, amellyel a Hive-lekérdezést, és a zöld lista ismerteti a Hive-lekérdezések eredményének.
+#### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Közvetlenül a Hadoop parancssor Hive-lekérdezések elküldéséhez.
+Például a parancs futtatásával `hive -e "<your hive query>;` egyszerű Hive-lekérdezéseket közvetlenül a Hadoop parancssor elküldéséhez. Íme egy példa, ahol a vörös ismerteti, amelyek a Hive-lekérdezést küldi el a parancsot, és a zöld mezőt felvázolja a Hive-lekérdezés kimenete.
 
 ![Munkaterület létrehozása](./media/move-hive-tables/run-hive-queries-1.png)
 
-#### <a name="submit-hive-queries-in-hql-files"></a>Küldje el a Hive-lekérdezéseket a .hql fájlok
-A Hive-lekérdezések bonyolultabb, és több vonal van, a parancssor vagy a Hive parancskonzolról lekérdezések szerkesztése esetén nem gyakorlati. A másik lehetőség a Hadoop-fürt átjárócsomópontjához egy szövegszerkesztő segítségével egy helyi könyvtárban, az átjárócsomópont .hql fájlba mentése a Hive-lekérdezéseket. A Hive-lekérdezést a .hql fájl segítségével küldheti el, majd a `-f` argumentum az alábbiak szerint:
+#### <a name="submit-hive-queries-in-hql-files"></a>.Hql fájlokat a Hive-lekérdezések elküldéséhez
+Ha a Hive-lekérdezés bonyolultabb, és több sor tartozik, a parancssor vagy a Hive parancskonzol lekérdezések szerkesztése nem célszerű. Alternatív, hogy a Hadoop-fürt fő csomópontjának egy szövegszerkesztő segítségével egy helyi könyvtárban, az átjárócsomópont .hql fájlba mentése a Hive-lekérdezéseket. A Hive-lekérdezést a .hql fájlban beküldhető használatával, majd a `-f` argumentum az alábbiak szerint:
 
     hive -f "<path to the .hql file>"
 
 ![Munkaterület létrehozása](./media/move-hive-tables/run-hive-queries-3.png)
 
-**Ne jelenjen meg többé folyamat állapota képernyőn nyomtatás Hive-lekérdezések**
+**Folyamat állapota képernyő nyomtatása Hive-lekérdezések elrejtése**
 
-Alapértelmezés szerint a Hadoop parancssorban Hive-lekérdezés elküldése után a térkép vagy csökkentse a feladat előrehaladását nyomtatása a képernyőn. A képernyő Nyomtatás a térkép vagy csökkentse a feladat előrehaladását a mellőzése, argumentumot is használhat `-S` ("S" nagybetűvel) a parancsban sor az alábbiak szerint:
+Alapértelmezés szerint a Hadoop parancssor, Hive-lekérdezés elküldése után a Map/Reduce feladat előrehaladását a kinyomtatni a képernyőn. Le a képernyő nyomtatása a Map/Reduce-feladatok előrehaladásának, használhatja a argumentumként `-S` ("S" nagybetűvel) a parancs a sor a következő:
 
     hive -S -f "<path to the .hql file>"
-.    Hive -S -e "<Hive queries>"
+    hive -S -e "<Hive queries>"
 
-#### <a name="submit-hive-queries-in-hive-command-console"></a>Küldje el a Hive parancskonzolról Hive-lekérdezéseket.
-Először is megadhat a Hive parancskonzolról parancs futtatásával `hive` a Hadoop parancssor, és küldje el a Hive parancskonzolról Hive-lekérdezéseket. Íme egy példa. Ebben a példában a két piros mezőkbe írja be a Hive parancskonzolról használt parancsok, és a Hive-lekérdezés Hive parancskonzolról, illetve benyújtott jelöljön ki. A zöld mező a Hive-lekérdezések eredményének mutatja be.
+#### <a name="submit-hive-queries-in-hive-command-console"></a>Hive-parancs konzolon Hive-lekérdezések elküldéséhez.
+Először is adhatja meg a Hive parancskonzolról parancs futtatásával `hive` a Hadoop parancssor, majd küldje el a Hive-lekérdezések Hive parancs konzolon. Íme egy példa. Ebben a példában a két piros mezőkben adja meg a Hive parancskonzolról használt parancsok és a Hive-lekérdezés Hive parancskonzolról, illetve elküldött jelöljön ki. A zöld mezőt a Hive-lekérdezés kimenete emeli ki.
 
 ![Munkaterület létrehozása](./media/move-hive-tables/run-hive-queries-2.png)
 
-Az előző példákban közvetlenül kimeneti a Hive-lekérdezések eredményeit a képernyőn. Is kiírhatja a kimenetet egy helyi fájlba az átjárócsomóponthoz, vagy egy Azure-blobba. Más eszközök segítségével, majd további a Hive-lekérdezések kimenetének elemzése.
+Az előző példák közvetlenül kimeneti a Hive-lekérdezés eredményeit a képernyőn. Is kiírhatja a kimenetet egy helyi fájlba a fő csomópont, vagy Azure-blobba. Más eszközök segítségével, majd tovább a Hive-lekérdezések kimenetének elemzése.
 
-**A kimeneti Hive lekérdezés eredményei egy helyi fájlba.**
-Kimeneti Hive lekérdezés eredményei az átjárócsomópont helyi könyvtárába, van a következőképpen elküldeni a Hive-lekérdezést a Hadoop parancssorban:
+**A kimeneti Hive-lekérdezés eredményeit egy helyi fájlba.**
+A kimenet egy helyi könyvtárba, a fő csomópontot a Hive-lekérdezés eredményeit, küldje el a Hive-lekérdezést a Hadoop parancssor a következőképpen kell:
 
     hive -e "<hive query>" > <local path in the head node>
 
-A következő példa a Hive-lekérdezések eredményének egy fájlba írása `hivequeryoutput.txt` könyvtárban `C:\apps\temp`.
+A következő példa a Hive-lekérdezés kimenete egy fájlba írt `hivequeryoutput.txt` címtárban `C:\apps\temp`.
 
 ![Munkaterület létrehozása](./media/move-hive-tables/output-hive-results-1.png)
 
-**Kimeneti Hive lekérdezés eredményei egy Azure-blobba**
+**Azure-blobba kimeneti Hive-lekérdezés eredményei**
 
-A Hive lekérdezés eredményeit az Azure-blobba, az alapértelmezett tároló, a Hadoop-fürt belül is készíthető. A Hive-lekérdezést a következőképpen történik:
+A Hive-lekérdezés eredményeit az Azure-blobba, az alapértelmezett tároló, a Hadoop-fürtön belül is készíthető. A Hive-lekérdezés a következőképpen történik:
 
     insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
 
-A következő példában a Hive-lekérdezések eredményének beíródik egy blob könyvtár `queryoutputdir` a Hadoop-fürt alapértelmezett tárolóban. Itt csak szüksége arra, hogy a könyvtár nevét, a blob neve nélkül. Hiba történt kívánja megadni a címtár és a blob neve, mint például `wasb:///queryoutputdir/queryoutput.txt`.
+A következő példa a Hive-lekérdezés kimenete egy blob könyvtár írt `queryoutputdir` belül a a Hadoop-fürt alapértelmezett tárolója. Itt csak kell a címtár nevét, a blob neve nélkül. Hiba lépett fel, ha könyvtárat és a blob nevét is, mint például biztosít `wasb:///queryoutputdir/queryoutput.txt`.
 
 ![Munkaterület létrehozása](./media/move-hive-tables/output-hive-results-2.png)
 
-Ha az alapértelmezett tároló, a Hadoop-fürt használata Azure Tártallózó megnyitni, láthatja az alábbi ábrán látható módon a Hive-lekérdezések eredményének. Csak a nevek a megadott meghajtóbetűjellel rendelkező blob beolvasása a szűrő (vörös téglalappal által kiemelt) is alkalmazhat.
+A Hadoop-fürt Azure Storage Explorer használatával az alapértelmezett tároló megnyitása után megjelenik az alábbi ábrán látható módon a Hive-lekérdezés kimenete. A szűrő (vörös kiemelt) és lekérdezheti csak a megadott nevében szereplő betűket a blob alkalmazhat.
 
 ![Munkaterület létrehozása](./media/move-hive-tables/output-hive-results-3.png)
 
-### <a name="hive-editor"></a> 2. A Hive szerkesztő Hive-lekérdezések elküldése
-A lekérdezés konzol (Hive szerkesztő) írja be egy URL-cím is használható *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* egy webböngészőbe. Végezhetik el a további részletekért lásd a konzol bejelentkezett, és így a Hadoop fürthöz hitelesítő adatait itt kell.
+### <a name="hive-editor"></a> 2. A Hive szerkesztőben a Hive-lekérdezések elküldéséhez
+A Lekérdezéskonzol (Hive szerkesztő) is használhatja az űrlap egy URL-cím megadásával *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* kifejezés webböngészőbe. Kell lennie a lásd: Ez a konzol bejelentkezett, és ezért szüksége a Hadoop fürt hitelesítő adatait.
 
-### <a name="ps"></a> 3. Küldje el az Azure PowerShell-parancsokkal Hive-lekérdezések
-PowerShell elküldeni a Hive-lekérdezéseket is használható. Útmutatásért lásd: [elküldeni a Hive feladatok PowerShell-lel](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
+### <a name="ps"></a> 3. Azure PowerShell-parancsokkal Hive-lekérdezések elküldéséhez
+PowerShell használatával Hive-lekérdezések elküldéséhez. Útmutatásért lásd: [elküldése Hive-feladatok PowerShell-lel](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
 
 ## <a name="create-tables"></a>Hive-adatbázis és tábla létrehozása
-A Hive-lekérdezéseket is meg van osztva a [GitHub-tárházban](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) , és innen tölthető le.
+A Hive-lekérdezések található meg vannak osztva a [GitHub-adattár](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) és letölthető innen.
 
-Ez a Hive lekérdezés, amely egy Hive táblát hoz létre.
+Itt van a Hive-lekérdezést, amely létrehoz egy Hive-táblába.
 
     create database if not exists <database name>;
     CREATE EXTERNAL TABLE if not exists <database name>.<table name>
@@ -142,34 +142,34 @@ Ez a Hive lekérdezés, amely egy Hive táblát hoz létre.
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
     STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
 
-Az alábbiakban a mezőket, amelyeknek kell csatlakoztatni és egyéb beállításokra leírása:
+Az alábbiakban a leírásokat a mezőket, amelyek kell csatlakoztatni és más konfigurációkat:
 
-* **<database name>**: a létrehozni kívánt adatbázis nevét. Ha szeretné használni az alapértelmezett adatbázis, a lekérdezés *adatbázis létrehozása...*  kihagyható.
-* **<table name>**: a táblázat, amely szeretne létrehozni a megadott adatbázis nevét. Ha szeretné használni az alapértelmezett adatbázis, a tábla is közvetlenül elé *<table name>* nélkül <database name>.
-* **<field separator>**: az elválasztó, amely az adatfájlban a Hive tábla feltölteni kívánt mezőket.
+* **<database name>**: a létrehozni kívánt adatbázis nevét. Ha csak át szeretné használni az alapértelmezett adatbázis, a lekérdezés *adatbázis létrehozása...*  elhagyható.
+* **<table name>**: a tábla, amely a megadott adatbázison belül létrehozni kívánt nevét. Ha szeretné használni az alapértelmezett adatbázis, a tábla lehet közvetlenül hivatkozni által *<table name>* nélkül <database name>.
+* **<field separator>**: az elválasztó, amely az adatfájlban, fel kell tölteni a Hive-táblában a mezők.
 * **<line separator>**: az elválasztó, amely az adatfájl sorainak.
-* **<storage location>**: az Azure storage-helyre menteni az adatokat a Hive táblák. Ha nincs megadva *hely <storage location>* , az adatbázis és a táblázatok tárolja *hive/adatraktár/* könyvtárban lévő az alapértelmezett tároló alapértelmezés szerint a Hive-fürt. Ha meg szeretné határozni a tárolási helye, a tárolási hely nem lehet az adatbázis és a táblák alapértelmezett tárolóban. Ezen a helyen van, a fürt formátumban viszonyítva az alapértelmezett tároló helye elé *"wasb: / / / < 1 könyvtár > /"* vagy *"wasb: / / / < 1 könyvtár > / < directory 2 > /"* stb. A lekérdezés végrehajtása után a relatív könyvtárak alapértelmezett tárolóban jönnek létre.
-* **TBLPROPERTIES("Skip.Header.line.Count"="1")**: Ha az adatfájl fejléc, fel kell vennie a tulajdonság **végén** , a *tábla létrehozása* lekérdezés. Ellenkező esetben a fejlécsort a táblázathoz rekordként be van töltve. Ha az adatok fájlban nincs fejléc, ez a konfiguráció elhagyható a lekérdezésben.
+* **<storage location>**: az Azure tárolási hely menteni az adatokat a Hive-táblákat. Ha nincs megadva *hely <storage location>* , az adatbázis és a táblák *hive/adatraktár/* könyvtárat a az alapértelmezett tároló alapértelmezés szerint a Hive-fürt. Ha azt szeretné, adja meg a tárolási helyét, a tárolási hely nem lehet belül az adatbázis és a táblák az alapértelmezett tároló. Ezen a helyen van, a fürt formátumban az alapértelmezett tároló viszonyított helyét kell nevezett *"wasb: / / / < 1 könyvtár > /"* vagy *"wasb: / / / < 1 könyvtár > / < 2. könyvtár > /"* stb. A lekérdezés végrehajtása, miután a relatív könyvtárak hoz létre a rendszer az alapértelmezett tároló.
+* **TBLPROPERTIES("Skip.Header.line.Count"="1")**: Ha a fájlt egy fejlécsort, fel kell vennie, ez a tulajdonság **végén** , a *tábla létrehozása* lekérdezés. Ellenkező esetben a fejlécsort betöltése a táblába egy rekord formájában. Az adatfájl nem rendelkezik egy fejlécsort, ha ezt a konfigurációt a lekérdezésben elhagyható.
 
-## <a name="load-data"></a>Adatok betöltése a Hive táblák
-Ez a Hive-lekérdezés, amely adatokat tölt be egy Hive tábla.
+## <a name="load-data"></a>Adatok betöltése a Hive-táblák
+Itt van a Hive-lekérdezést, amely adatokat tölt be egy Hive-táblába.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **<path to blob data>**: Ha a blob-fájlt fel kell tölteni a Hive táblát a HDInsight Hadoop-fürt, az alapértelmezett tároló a *<path to blob data>* formátumban kell megadni *"wasb: / / /<directory in this container> / <blob file name>'*. A blob fájl is lehet egy további tárolót a HDInsight Hadoop-fürt. Ebben az esetben *<path to blob data>* formátumban kell megadni *"wasb: / /<container name><storage account name>.blob.core.windows.net/<blob file name>"*.
+* **<path to blob data>**: Ha a blob fájl a Hive-táblában való feltöltésre az alapértelmezett tárolóban a HDInsight Hadoop-fürt a *<path to blob data>* formátumúnak kell lennie *"wasb: / / /<directory in this container> / <blob file name>'*. A blob-fájlt egy további tárolóban a HDInsight Hadoop-fürt is lehet. Ebben az esetben *<path to blob data>* formátumúnak kell lennie *"wasb: / /<container name><storage account name>.blob.core.windows.net/<blob file name>"*.
 
   > [!NOTE]
-  > A blobadatokat feltöltendő Hive táblát nem lehet az alapértelmezett vagy a tárfiók a Hadoop-fürt további tárolóban. Ellenkező esetben a *adatok betöltése* lekérdezés nem sikerült panaszos, hogy az adatok nem férhet hozzá.
+  > A Hive-táblába való feltöltésre Blobadatok nem az alapértelmezett vagy a storage-fiók, a Hadoop-fürt kiegészítő tároló lehet. Ellenkező esetben a *adatok betöltése* lekérdezés nem sikerült panaszkodik, hogy az adatok nem férhet hozzá.
   >
   >
 
-## <a name="partition-orc"></a>Speciális témakörök: particionált tábla és a tároló Hive adatok ORC formátumban
-Az adatok nagy, a tábla particionáló akkor hasznos, amelyeket csak a táblázat néhány partíciók vizsgálata lekérdezések. Például akkor ésszerű a naplózási adatokat egy webhely particionálásához dátuma alapján.
+## <a name="partition-orc"></a>Speciális témakörök: particionált tábla- és tároló Hive adatok ORC formátumban
+Az adatok mérete nagy, ha a tábla particionálása akkor előnyös, a lekérdezések csak a táblázat néhány partíciók vizsgálata. Például célszerű, a webhely a naplóadatok particionálásához dátuma alapján.
 
-Hive Táblák particionálása mellett célszerű is a Hive adatokat tároló optimalizált sor oszlopos (ORC) formátumban. A formázás ORC további információkért lásd: <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">használatával ORC fájlokat javítja a teljesítményt, ha Hive olvasása, írása, és adatfeldolgozás</a>.
+Hive Táblák particionálása, mellett emellett akkor is előnyös, ha a Hive-adatok tárolására a optimalizált sor Oszlopalapú (ORC) formátumban. További információ a ORC formázásáról lásd <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">használatával ORC-fájlokat javítja a teljesítményt, ha Hive olvasása, írása, és adatokat feldolgozó</a>.
 
 ### <a name="partitioned-table"></a>Particionált tábla
-Ez a Hive-lekérdezés, amely létrehoz egy particionált táblához, és adatokat tölt be.
+Itt van a Hive-lekérdezést, amely létrehoz egy particionált táblához, és adatokat tölt be azt.
 
     CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
     (field1 string,
@@ -181,17 +181,17 @@ Ez a Hive-lekérdezés, amely létrehoz egy particionált táblához, és adatok
     LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
         PARTITION (<partitionfieldname>=<partitionfieldvalue>);
 
-Particionált táblák lekérdezésekor javasoljuk, hogy a partíció feltétel hozzáadása a **kezdete** , a `where` záradék, ez növeli a jelentősen keresés hatékonyságát.
+A particionált táblákat kérdezi le, amikor javasoljuk, hogy a partíció feltétel hozzáadása a **kezdete** , a `where` záradék, ez növeli a jelentősen keresés hatékonyságát.
 
     select
         field1, field2, ..., fieldN
     from <database name>.<partitioned table name>
     where <partitionfieldname>=<partitionfieldvalue> and ...;
 
-### <a name="orc"></a>Hive adattárolásra ORC formátumban
-Ön nem közvetlenül adatok betöltése az blob-tároló az ORC formátumban tárolt Hive táblákat. Az alábbiakban a lépéseket, amelyek a kell venni a betöltése az Azure-ból adatokat blobok Hive táblákat ORC formátumban tárolja.
+### <a name="orc"></a>Hive-adatok Store ORC formátumban
+Nem lehet közvetlenül betöltse a blob storage-ból a ORC formátumban tárolt Hive-táblákat. A következő lépéseket, amelyek a kell tennie betölteni adatokat Azure-blobok Hive-tábláihoz ORC formátumban tárolja.
 
-Létrehoz egy külső táblát **tárolt AS TEXTFILE** és az adatok betöltése az blob storage a táblába.
+Külső tábla létrehozása **tárolt AS TEXTFILE** , és betöltheti az adatokat blob storage-ból a táblába.
 
         CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
         (
@@ -206,7 +206,7 @@ Létrehoz egy külső táblát **tárolt AS TEXTFILE** és az adatok betöltése
 
         LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
 
-Hozzon létre egy belső tábla, mint a külső tábla 1. lépésben az azonos a mezőhatárolóval ugyanazon séma, és a Hive adatokat tároló ORC formátumban.
+Egy belső tábla ugyanazzal a sémával, mint az azonos a mezőhatárolóval 1. lépésben a külső tábla létrehozása, és a Hive-adatok tárolása az ORC formátum.
 
         CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
         (
@@ -217,13 +217,13 @@ Hozzon létre egy belső tábla, mint a külső tábla 1. lépésben az azonos a
         )
         ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
 
-Válassza az 1. lépésben a külső tábla az adatok és az ORC táblázat beszúrása
+Válassza az 1. lépésben a külső tábla az adatok és az ORC-táblába beszúrandó
 
         INSERT OVERWRITE TABLE <database name>.<ORC table name>
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Ha a TEXTFILE tábla  *<database name>.<external textfile table name>* -partíciókkal rendelkezik, a 3. LÉPÉSBEN, a `SELECT * FROM <database name>.<external textfile table name>` parancsot választja a partíció változó a visszaadott adatkészlet mező. A Beszúrás a  *<database name>.<ORC table name>* nem sikerül óta  *<database name>.<ORC table name>* a partíció változó nem lehet a következő tábla sémáját mező. Ebben az esetben kell kifejezetten válassza ki a mezőket a beszúrni  *<database name>.<ORC table name>* az alábbiak szerint:
+> Ha a TEXTFILE tábla  *<database name>.<external textfile table name>* rendelkezik a partíciókat, a 3. LÉPÉSBEN a `SELECT * FROM <database name>.<external textfile table name>` parancs kiválasztja a partíció változó a visszaadott adatkészlet mezőként. Szúr be őket a  *<database name>.<ORC table name>* nem sikerül óta  *<database name>.<ORC table name>* a partíció változó nem rendelkezik a következő tábla sémáját mezőként. Ebben az esetben kell kifejezetten válassza ki a mezőket a beszúrásával  *<database name>.<ORC table name>* az alábbiak szerint:
 >
 >
 
@@ -232,8 +232,8 @@ Válassza az 1. lépésben a külső tábla az adatok és az ORC táblázat besz
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Biztonságos dobja el a *<external textfile table name>* amikor után minden adat a következő lekérdezéssel e behelyezve *<database name>.<ORC table name>*:
+Biztonságos dobja el a *<external textfile table name>* Ha használja a következő lekérdezést az összes adat után már be van szúrva *<database name>.<ORC table name>*:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
-A következő eljárással, után készen áll a használatra ORC formátumú adatokat tartalmazó táblát kell rendelkeznie.  
+Jelen eljárás után készen áll a használatra ORC formátumban-adatokat tartalmazó táblát kell rendelkeznie.  

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 3ae912eb88972246577954cb2ff103ba607f18bf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2934c2323b056bfb5e556e7d688704ed20882bca
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110497"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124450"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
@@ -181,7 +181,7 @@ Azure REST API-k, amelyek támogatják az Azure portal felhasználói felületé
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-Rendszergazdák hozzáférhetnek az Azure PowerShell és az Azure CLI a böngésző-akadálymentes használatot biztosít az Azure Cloud Shell nevű keresztül. Az interaktív felület a választott, vagy a Bash vagy a PowerShell parancssori felület használata a Linux és Windows rendszergazdák rugalmas eszköz biztosít. Az Azure Cloud Shell a portálon keresztül érhetők el, egy különálló webes felület, [shell.azure.com](https://shell.azure.com), vagy egy másik hozzáférési pontok számát. További információkért lásd: [áttekintése az Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+Rendszergazdák hozzáférhetnek az Azure PowerShell és az Azure CLI a böngésző-akadálymentes használatot biztosít az Azure Cloud Shell nevű keresztül. Az interaktív felület a választott, vagy a Bash vagy a PowerShell parancssori felület használata a Linux és Windows rendszergazdák rugalmas eszköz biztosít. Az Azure Cloud Shell a portálon keresztül érhetők el, egy különálló webes felület, [shell.azure.com](https://shell.azure.com), vagy egy másik hozzáférési pontok számát. További információkért lásd: [áttekintése az Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ## <a name="azure-subscriptions"></a>Azure-előfizetések
 
@@ -191,17 +191,17 @@ Egy előfizetés az Azure-szolgáltatások logikai csoportosítása, amely egy A
 
 Használhatja az Azure-szolgáltatásokkal, mielőtt egy előfizetés szükséges. Több előfizetés-típus érhető el.
 
-#### <a name="free-accounts-the-link-to-sign-up-for-a-free-account-is-on-the-azure-websitehttpsazuremicrosoftcom-this-gives-you-a-credit-over-the-course-of-30-days-to-try-any-combination-of-resources-in-azure-if-you-exceed-your-credit-amount-your-account-is-suspended-at-the-end-of-the-trial-your-services-are-decommissioned-and-will-no-longer-work-you-can-upgrade-to-a-pay-as-you-go-subscription-at-any-time"></a>Az ingyenes fiókok: A hivatkozásra kattintva regisztrálhat egy ingyenes fiók van a [Azure-webhelyen](https://azure.microsoft.com/). Ez lehetővé teszi a kredit szeretné kipróbálni az Azure-erőforrások tetszőleges kombinációját 30 nap folyamán. Ha túllépi a hitel összegét, a fiók fel van függesztve. A próbaidőszak végén a szolgáltatások leselejtezésekor, és nem fog működni. Használatalapú fizetéses előfizetésre, bármikor frissítheti.
+**Az ingyenes fiókok**: A hivatkozásra kattintva regisztrálhat egy ingyenes fiók van a [Azure-webhelyen](https://azure.microsoft.com/). Ez lehetővé teszi a kredit szeretné kipróbálni az Azure-erőforrások tetszőleges kombinációját 30 nap folyamán. Ha túllépi a hitel összegét, a fiók fel van függesztve. A próbaidőszak végén a szolgáltatások leselejtezésekor, és nem fog működni. Használatalapú fizetéses előfizetésre, bármikor frissítheti.
 
-#### <a name="msdn-subscriptions-if-you-have-an-msdn-subscription-you-get-a-specific-amount-in-azure-credit-each-month-for-example-if-you-have-a-microsoft-visual-studio-enterprise-with-msdn-subscription-you-get-150-per-month-in-azure-credit"></a>Az MSDN-előfizetéseket: Ha rendelkezik MSDN-előfizetéssel, kap egy adott mennyiség az Azure-kredit minden hónapban. Például, ha a Microsoft Visual Studio Enterprise with MSDN előfizetéssel rendelkezik, kap \$Azure-kredit havi 150.
+**Az MSDN-előfizetéseket**: Ha rendelkezik MSDN-előfizetéssel, kap egy adott mennyiség az Azure-kredit minden hónapban. Például, ha a Microsoft Visual Studio Enterprise with MSDN előfizetéssel rendelkezik, kap \$Azure-kredit havi 150.
 
 Ha túllépi a kreditösszeg erejéig, a szolgáltatás le vannak tiltva, amíg el nem kezdi a következő hónapra. Kikapcsolja a költségkeretet, és adja hozzá a további költségek használandó hitelkártya. MSDN-fiókok néhány költségekhez képest. Például hogy kezdem meg Linux virtuális gépek Windows Server rendszert futtató, és semmilyen további díjat nem Microsoft-kiszolgálók, például a Microsoft SQL Server. Ez lehetővé teszi az MSDN-fiókok ideális fejlesztési és tesztelési forgatókönyvekhez.
 
-#### <a name="bizspark-accounts-the-microsoft-bizspark-program-provides-many-benefits-to-startups-one-of-those-benefits-is-access-to-all-the-microsoft-software-for-development-and-test-environments-for-up-to-five-msdn-accounts-you-get-150-in-azure-credit-for-each-of-those-five-msdn-accounts-and-you-pay-reduced-rates-for-several-of-the-azure-services-such-as-virtual-machines"></a>BizSpark-fiókok: A Microsoft BizSpark programról üzenetcsere számos előnnyel jár, a startupok számára. Ezek az előnyök egyik hozzáférés minden Microsoft-szoftverek fejlesztési és tesztelési környezetek legfeljebb öt MSDN-fiókok. 150 USD első öt MSDN fiók minden egyes Azure-kredit, és kedvezményes fizet az Azure-szolgáltatások, például a virtuális gépek közül.
+**BizSpark-fiókok**: A Microsoft BizSpark programról üzenetcsere számos előnnyel jár, a startupok számára. Ezek az előnyök egyik hozzáférés minden Microsoft-szoftverek fejlesztési és tesztelési környezetek legfeljebb öt MSDN-fiókok. 150 USD első öt MSDN fiók minden egyes Azure-kredit, és kedvezményes fizet az Azure-szolgáltatások, például a virtuális gépek közül.
 
-#### <a name="pay-as-you-go-with-this-subscription-you-pay-for-what-you-use-by-attaching-a-credit-card-or-debit-card-to-the-account-if-you-are-an-organization-you-can-also-be-approved-for-invoicing"></a>Utólagos elszámolás: Az ehhez az előfizetéshez meg kell fizetnie csatlakoztatásával hitelkártya vagy bankkártya a fiókot használja. Ha egy szervezet, akkor is lehet jóváhagyni számlázása.
+**Használatalapú fizetés**: az ezzel az előfizetéssel használt hitelkártya vagy bankkártya csatlakoztatásával a fiók fizet. Ha egy szervezet, akkor is lehet jóváhagyni számlázása.
 
-#### <a name="enterprise-agreements-with-an-enterprise-agreement-you-commit-to-using-a-certain-number-of-services-in-azure-over-the-next-year-and-you-pay-that-amount-ahead-of-time-the-commitment-that-you-make-is-consumed-throughout-the-year-if-you-exceed-the-commitment-amount-you-can-pay-the-overage-in-arrears-depending-on-the-amount-of-the-commitment-you-get-a-discount-on-the-services-in-azure"></a>Nagyvállalati szerződések: nagyvállalati szerződéssel, bizonyos számú services használata az Azure-ban a következő évben véglegesítés, és időben összeg után kell fizetni. Az előzetes kötelezettségvállalást, hogy az az év folyamán felhasznált. Ha túllépi a kötelezettségvállalás összege, a kerettúllépést utólag fizethet. Az előzetes kötelezettségvállalást mennyiségétől függően a kedvezményes a szolgáltatások az Azure-ban kap.
+**Nagyvállalati szerződések**: nagyvállalati szerződéssel, bizonyos számú services használata az Azure-ban a következő évben véglegesítés, és időben összeg után kell fizetni. Az előzetes kötelezettségvállalást, hogy az az év folyamán felhasznált. Ha túllépi a kötelezettségvállalás összege, a kerettúllépést utólag fizethet. Az előzetes kötelezettségvállalást mennyiségétől függően a kedvezményes a szolgáltatások az Azure-ban kap.
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Rendszergazdai hozzáférés engedélyezése az Azure-előfizetés
 
@@ -465,7 +465,7 @@ Ha szeretne engedélyezése a felhasználók számára, hogy rendelkezik a táro
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
-Virtuális hálózatok olyan virtuális gépek közötti kommunikáció támogatásához szükséges. Határozza meg, alhálózatok, a egyéni IP-címet, a DNS-beállítások, a biztonsági szűrést, és a terheléselosztás. Az Azure támogatja különböző használati esetek: hálózatok csak felhőalapú vagy hibrid virtuális hálózatok. 
+Virtuális hálózatok olyan virtuális gépek közötti kommunikáció támogatásához szükséges. Határozza meg, alhálózatok, a egyéni IP-címet, a DNS-beállítások, a biztonsági szűrést, és a terheléselosztás. Az Azure támogatja különböző használati esetek: hálózatok csak felhőalapú vagy hibrid virtuális hálózatok.
 
 ### <a name="cloud-only-virtual-networks"></a>Kizárólag felhőalapú virtuális hálózatok
 
@@ -489,7 +489,7 @@ Többféle módon is üzembe helyezése egy virtuális hálózatot.
 
 - Az Azure Resource Manager-sablonok
 
->**Mikor érdemes használni**: dolgozik, az Azure-beli virtuális gépekkel, bármikor, virtuális hálózatokkal működnek. Ez lehetővé teszi a nyilvános és privát alhálózat hasonló a helyszíni adatközpontjaik között, a virtuális gépek szegmentálja. 
+>**Mikor érdemes használni**: dolgozik, az Azure-beli virtuális gépekkel, bármikor, virtuális hálózatokkal működnek. Ez lehetővé teszi a nyilvános és privát alhálózat hasonló a helyszíni adatközpontjaik között, a virtuális gépek szegmentálja.
 
 >**Első lépések**: Azure-beli virtuális hálózathoz az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférés. Új virtuális hálózat üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Új virtuális gép létrehozásakor a portálon válassza ki a meglévő virtuális hálózattal, vagy hozzon létre egy újat. Első lépések és [hozzon létre egy virtuális hálózatot az Azure portal használatával](../../virtual-network/quick-create-portal.md).
 

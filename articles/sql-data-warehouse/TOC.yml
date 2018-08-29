@@ -142,16 +142,16 @@ items:
       href: memory-and-concurrency-limits.md
   - name: Kezelhetőség és monitorozás
     items:
-    - name: Tevékenység lekérdezése és erőforrás-használat
-      href: sql-data-warehouse-manage-monitor.md
+    - name: Méretezés, szüneteltetés, folytatás
+      href: sql-data-warehouse-manage-compute-overview.md
+    - name: Erőforrás-használat és lekérdezési tevékenységek
+      href: sql-data-warehouse-concept-resource-utilization-query-activity.md
     - name: Adatvédelem
       href: backup-and-restore.md
-    - name: Horizontális felskálázás, szüneteltetés, folytatás
-      href: sql-data-warehouse-manage-compute-overview.md
-    - name: Karbantartási ütemezés
-      href: service-maintenance.md
     - name: Javaslatok
       href: sql-data-warehouse-concept-recommendations.md
+    - name: Karbantartási ütemezés
+      href: service-maintenance.md
     - name: Hibaelhárítás
       href: sql-data-warehouse-troubleshoot.md
   - name: Integráció
@@ -212,13 +212,15 @@ items:
       href: analyze-your-workload.md
   - name: Figyelés és hangolás
     items:
+    - name: A számítási feladatok monitorozása
+      href: sql-data-warehouse-manage-monitor.md
     - name: Visszaállítás – portál
       href: sql-data-warehouse-restore-database-portal.md
     - name: Visszaállítás – PowerShell
       href: sql-data-warehouse-restore-database-powershell.md
     - name: Visszaállítás – REST API
       href: sql-data-warehouse-restore-database-rest-api.md
-    - name: Frissítés 2. generációs verzióra
+    - name: Gen1 adattárház frissítése magasabb verzióra
       href: upgrade-to-latest-generation.md
     - name: Teljesítményszintek automatizálása
       href: manage-compute-with-azure-functions.md
@@ -276,9 +278,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Adatkezelés
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: bdda7231ea4703b33c8547e493cbd47b68cf9aab
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 690faddea704b45f5fcba8079b03a8105b83a649
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915125"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106745"

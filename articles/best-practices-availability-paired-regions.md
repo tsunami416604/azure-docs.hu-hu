@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 4084a5bd8cb82442eb37844f88f2ff6dd166b5ee
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6eb28ad918f9d95c26d91c05d8ee9556ef768bd3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42446064"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125852"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzleti folytonosság és vészhelyreállítás helyreállítási (BCDR): Azure párosított régiói
 
@@ -19,7 +19,7 @@ ms.locfileid: "42446064"
 
 Az Azure világszerte több földrajzi területeken működik. Egy Azure földrajzi területet adtunk a világ, amely tartalmaz legalább egy Azure-régióban. Egy Azure-régióban egy olyan terület, a földrajzi helyen tartalmazó egy vagy több adatközpont tartozhat.
 
-Minden egyes Azure-régió párban áll egy regionális párokból érdemes együtt így azonos földrajzi helyen belül egy másik régióban. A kivétel, Dél-Brazília, amely kívül a földrajzi régió párban áll. A régiópárok Azure fog szerializálni között platform (tervezett karbantartás) frissíti, így egyszerre csak egy párosított régió frissülni fog. Ezenkívül ez az esemény szolgáltatáskimaradások hatással lenne a több régióban lévő minden párból legalább egy régió prioritása lehet a helyreállítás.
+Minden egyes Azure-régió párban áll egy regionális párokból érdemes együtt így azonos földrajzi helyen belül egy másik régióban. A kivétel, Dél-Brazília, amely kívül a földrajzi régió párban áll. A régiópárok Azure fog szerializálni között platform (tervezett karbantartás) frissíti, így egyszerre csak egy párosított régió frissülni fog. Emellett több régiót érintő leállás minden párból legalább egy régió rangsorolását, a helyreállításhoz.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 

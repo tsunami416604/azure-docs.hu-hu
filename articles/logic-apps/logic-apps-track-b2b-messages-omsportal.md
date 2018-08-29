@@ -1,239 +1,235 @@
 ---
-title: Az Azure Log Analytics - Azure Logic Apps B2B üzenetek nyomon követése |} Microsoft Docs
-description: Az integráció fiók és a logikai alkalmazások az Azure Naplóelemzés B2B kommunikációs nyomon követése
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: Az Azure Log Analytics – Azure Logic Apps B2B-üzenetek nyomon követése |} A Microsoft Docs
+description: Integrációs fiókok és az Azure Log Analytics az Azure Logic Apps B2B kommunikációs nyomon követése
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 06/19/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 82d1fbc4167d1df4cb2c976395c181e4abd1ba3c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 5bf5385824eb9b711a2fee547c29d24d7ef5a01d
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293204"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125768"
 ---
-# <a name="track-b2b-communication-with-azure-log-analytics"></a>Nyomon követheti az Azure Naplóelemzés B2B kommunikáció
+# <a name="track-b2b-communication-with-azure-log-analytics"></a>Nyomon követheti az Azure Log Analytics B2B-kommunikáció
 
-Miután beállította a B2B kommunikációját két üzleti folyamatok vagy a integrációs fiókon keresztül alkalmazásokat futtató entitásokból tudjon cserélni egymással üzeneteket. Ellenőrizze, hogy ezek az üzenetek feldolgozása helyesen, AS2, X12, nyomon követheti és EDIFACT az üzeneteket a [Azure Naplóelemzés](../log-analytics/log-analytics-overview.md). Például a web-alapú nyomkövetési lehetőségeket biztosítanak is használhatja az üzenetek nyomon követése:
+Miután beállította a B2B-kommunikáció két közötti üzleti folyamatokkal vagy az integrációs fiók használatával fut ezeket az entitásokat is tudjon cserélni egymással üzeneteket. Ellenőrizze, hogy megfelelően dolgozzák fel ezeket az üzeneteket, AS2, X12, nyomon követheti és EDIFACT üzenetek [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Például üzenetek nyomon követése a webes követési képességek is használhatja:
 
-* Üzenet számán és állapota
-* Nyugták állapota
-* A nyugtázások összefüggésbe üzenetek
-* Hibák részletes hiba leírása
-* Keresési képességek
+* Üzenetek száma és állapota
+* Visszaigazolás állapota
+* A visszaigazolások összevetését üzenetek
+* Hibák részletes leírását
+* Keresési funkciókkal
 
 ## <a name="requirements"></a>Követelmények
 
-* Egy logikai alkalmazást a diagnosztikai naplózás be van állítva. Ismerje meg, [logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md) és [adott logikai alkalmazás naplózásának beállítása](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+* Egy logikai alkalmazást, amely a diagnosztikai naplózás be van állítva. Ismerje meg, [Logic Apps-alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md) és [a logikai alkalmazás naplózásának beállítása](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Integráció fiók be van állítva a figyelés és naplózás. Ismerje meg, [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és [figyelés és naplózás fiók beállításával](../logic-apps/logic-apps-monitor-b2b-message.md).
+* Egy integrációs fiók, amely a figyelés és naplózás be van állítva. Ismerje meg, [egy integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és [monitorozási és naplózási fiók beállítása](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Ha még nem tette, [diagnosztikai adatok közzétételére Naplóelemzési](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Ha még nem tette, [diagnosztikai adatok közzététele a Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 > [!NOTE]
-> Miután teljesítette az előző követelményeknek, rendelkeznie kell a Naplóelemzési munkaterület. A Naplóelemzési B2B kommunikáció követési ugyanazon a munkaterületen kell használnia. 
+> Miután teljesítette az előbbi követelményeknek, rendelkeznie kell egy Log Analytics-munkaterületnek. A B2B-kommunikáció a Log Analytics követési használjon ugyanazon a munkaterületen. 
 >  
-> Ha még nem rendelkezik a Naplóelemzési munkaterület, [a Naplóelemzési munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
+> Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>A Logic Apps B2B megoldás hozzáadni a Naplóelemzési
+## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Adja hozzá a Logic Apps B2B-megoldás a Log Analyticsbe
 
-Ahhoz, hogy nyomon követheti a Logic Apps alkalmazást B2B messages Naplóelemzési, hozzá kell adnia a **Logic Apps B2B** megoldást jelent az OMS-portálon. További információ [megoldások hozzáadása Naplóelemzési](../log-analytics/log-analytics-quick-create-workspace.md).
+Ahhoz, hogy a logikai alkalmazás B2B üzenetek nyomon követése a Log Analytics, hozzá kell adnia a **Logic Apps B2B** megoldás az OMS-portálra. Tudjon meg többet [megoldások hozzáadása a Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-1. Az a [Azure-portálon](https://portal.azure.com), válassza a **minden szolgáltatás**. Keresse meg a "naplóelemzési", és válassza a **Naplóelemzési** itt látható módon:
+1. Az a [az Azure portal](https://portal.azure.com), válassza a **minden szolgáltatás**. Keresse meg a "log analytics", és válassza a **Log Analytics** itt látható módon:
 
-   ![A Naplóelemzési keresése](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
+   ![Keresse meg a Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
-2. A **Naplóelemzési**, található, és válassza ki a Naplóelemzési munkaterület. 
+2. A **Log Analytics**, keresse meg és válassza ki a Log Analytics-munkaterületre. 
 
-   ![A Naplóelemzési munkaterület kiválasztása](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Válassza ki a Log Analytics-munkaterület](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
 3. A **felügyeleti**, válassza a **áttekintése**.
 
-   ![Válassza ki a Log Analytics-portálról](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![Válassza ki a Log Analytics-portál](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. Miután a kezdőlap nyílik meg, válassza ki azt **Hozzáadás** Logic Apps B2B megoldás telepítéséhez.    
-   ![Válassza ki a megoldások gyűjteménye](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
+4. Válassza a kezdőlap nyílik meg, miután **Hozzáadás** Logic Apps B2B-megoldás telepítéséhez.    
+   ![Válassza ki a Megoldástárából](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-5. A **megoldások**, található, és hozzon létre **Logic Apps B2B** megoldás.     
+5. A **felügyeleti megoldások**, keresése és létrehozása **Logic Apps B2B** megoldás.     
    ![Válassza ki a Logic Apps B2B](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
 
-   A kezdőlapon, a csempe **Logic Apps B2B üzenetek** csomópontként jelenik meg. 
-   Ez a csempe frissíti az üzenetek száma, amikor a B2B üzenetek feldolgozása.
+   A kezdőlapon, csempéje **Logic Apps B2B-üzenetek** jelenik meg. 
+   Ez a csempe frissíti az üzenetek száma, amikor a rendszer a B2B-üzenetek feldolgozása.
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-log-analytics"></a>Messaging-állapot és a részletek a Naplóelemzési nyomon követése
+## <a name="track-message-status-and-details-in-log-analytics"></a>Üzenet állapotával és részleteivel kapcsolatban a Log Analytics nyomon követése
 
-1. Után a B2B üzenetek feldolgozása, megtekintheti az állapot és az üzenetek adatait. A – Áttekintés lapon válassza ki a **Logic Apps B2B üzenetek** csempére.
+1. Után B2B-üzenetek feldolgozása, megtekintheti a állapotának és részleteinek ezeket az üzeneteket. Az Áttekintés oldalon válassza ki a **Logic Apps B2B-üzenetek** csempére.
 
    ![Frissített üzenetek száma](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > Alapértelmezés szerint a **Logic Apps B2B üzenetek** csempe megjeleníti az adatokat egy nap alapján. Az adatok hatókör egy másik időköz módosításához válassza ki a hatókör vezérlő az oldal tetején:
+   > Alapértelmezés szerint a **Logic Apps B2B-üzenetek** csempe egy nap alapján jeleníti meg. Az adatok hatókör egy másik időköz módosításához válassza a lap tetején a hatókör vezérlő:
    > 
    > ![Adatok hatókörének módosítása](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
    >
 
-2. Az üzenet állapota irányítópult megjelenése után további részleteket az adott üzenettípus, megjelenítheti az adatokat egy nap alapján. Válassza ki a csempéjére a hozzá tartozó **AS2**, **X12**, vagy **EDIFACT**.
+2. Az üzenet állapota irányítópult megjelenése után egy meghatározott üzenet típusát, amely egy nap alapján adatokat jelenít meg további részleteket is megtekintheti. Válassza ki a csempét **AS2**, **X12**, vagy **EDIFACT**.
 
    ![Üzenet állapotának megtekintése](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
-   A kiválasztott csempe jelenik meg az üzenetek listáját. 
-   Az egyes üzenet tulajdonságaival kapcsolatos további tudnivalókért tekintse meg az üzenet tulajdonság leírások:
+   Az üzenetek listáját a kiválasztott csempe jelenik meg. 
+   Minden egyes üzenettípus tulajdonságaival kapcsolatos további tudnivalókért tekintse meg a message tulajdonság leírások:
 
    * [AS2-üzenet tulajdonságai](#as2-message-properties)
    * [X12 üzenet tulajdonságai](#x12-message-properties)
-   * [EDIFACT üzenet tulajdonságai](#EDIFACT-message-properties)
+   * [EDIFACT-üzenet tulajdonságai](#EDIFACT-message-properties)
 
-   Például ez hogyan nézhet ki egy AS2 állapotüzenet-listában:
+   Ha például a következő egy AS2-üzenet lista néz:
 
    ![AS2-üzenet megtekintése](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
 
-3. Megtekintéséhez, vagy exportálja a be- és kimenetekkel adott üzenetek, válassza ki azokat az üzeneteket, és válassza a **letöltése**. Amikor a rendszer kéri, mentse a .zip-fájlt a helyi számítógépen, és bontsa ki a fájlt. 
+3. Megtekintéséhez, vagy exportálja a bemeneteit és kimeneteit adott üzenetek, válassza ki azokat az üzeneteket, és válassza **letöltése**. Amikor a rendszer kéri, mentse a .zip-fájlt a helyi számítógépen, és bontsa ki a fájlt. 
 
-   A kibontott mappát egy mappát az összes kijelölt üzenet tartalmazza. 
-   A nyugtázás állít be, ha az üzenet mappa is fájlok nyugtázási adatokkal. 
+   A kibontott mappát tartalmaz egy mappát az egyes kiválasztott üzenetekhez. 
+   Ha beállította a nyugtázás, az üzenetek mappa tartalmazza nyugtázási adatokkal fájlokat is. 
    Minden üzenet mappa van legalább ezeket a fájlokat: 
    
-   * A bemeneti forgalma és a kimeneti hasznos részletek emberek számára olvasható fájlokat
-   * A be- és kimenetekkel kódolt fájlok
+   * A bemeneti forgalma és a kimeneti tartalom részleteit az emberek számára olvasható fájlok
+   * A bemenetek és kimenetek kódolt fájlok
 
-   Az egyes üzenet a mappa és fájl formátumok itt található:
+   Az egyes üzenet a mappa és fájl formátumok itt találja:
 
-   * [AS2 mappához és fájlhoz formátumok](#as2-folder-file-names)
+   * [AS2-mappa és fájl nevét formátumok](#as2-folder-file-names)
    * [X12 mappa és fájl neve formátumok](#x12-folder-file-names)
-   * [EDIFACT mappához és fájlhoz formátumok](#edifact-folder-file-names)
+   * [EDIFACT-mappa és fájl nevét formátumok](#edifact-folder-file-names)
 
-   ![Fájlok letöltése](media/logic-apps-track-b2b-messages-omsportal/download-messages.png)
+   ![Üzenetek fájljainak letöltése](media/logic-apps-track-b2b-messages-omsportal/download-messages.png)
 
-4. Megtekintéséhez, amely az összes műveletet futtatásához Azonosítóját, a a **naplófájl-keresési** lapon, az üzenet listájából válasszon ki egy üzenetet.
+4. Megtekintése összes műveletet, amelyek azonos futtatási Azonosítóját, a a **naplóbeli keresés** lapon, válasszon egy üzenetet az állapotüzenet-listában.
 
-   Ezek a Műveletek oszlop, vagy keresse meg az adott eredmények rendezheti.
+   Ezek a műveletek oszlopban, vagy konkrét találatok keresését szerint rendezheti.
 
-   ![Azonos műveletek futtatás azonosítója](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
+   ![Ugyanazzal a tevékenységek futtatási Azonosítóját](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
 
-   * A keresési eredményekben előre elkészített lekérdezésekkel, válassza a **Kedvencek**.
+   * Keresse meg az előre létrehozott lekérdezések eredményeit, válassza a **Kedvencek**.
 
-   * Ismerje meg, [lekérdezések létrehozása szűrők hozzáadásával](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
-   További információ vagy [hogyan napló keresések rendelkező adatok kereséséhez a Naplóelemzési](../log-analytics/log-analytics-log-searches.md).
+   * Ismerje meg, [hogyan hozhatók létre olyan lekérdezések, szűrők hozzáadásával](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
+   Tudjon meg többet vagy [tartalmazó naplókeresések adatok megkeresése a Log Analytics](../log-analytics/log-analytics-log-searches.md).
 
-   * Módosíthatja a lekérdezés a keresési mezőbe, frissítse a lekérdezést az oszlopok és szűrők használni kívánt értékeket.
+   * Módosítsa a lekérdezést a keresőmezőbe, hogy frissítse a lekérdezést az oszlopok és szűrők használni kívánt értékeket.
 
 <a name="message-list-property-descriptions"></a>
 
-## <a name="property-descriptions-and-name-formats-for-as2-x12-and-edifact-messages"></a>Tulajdonság-leírások és formátumok az AS2, X 12 és EDIFACT-üzenetek
+## <a name="property-descriptions-and-name-formats-for-as2-x12-and-edifact-messages"></a>Vlastnost leírásokat és névformátumok használatát AS2, X 12 és EDIFACT-üzenetek
 
-Az egyes üzenet az alábbiakban a tulajdonságleírások és a letöltött fájlok formátumok.
+Minden egyes üzenettípus Íme tulajdonság leírások és névformátumok használatát a letöltött üzenetfájlok.
 
 <a name="as2-message-properties"></a>
 
 ### <a name="as2-message-property-descriptions"></a>AS2-üzenet tulajdonságleírások
 
-Az alábbiakban a tulajdonságleírások minden egyes AS2-üzenet esetében.
+Az alábbiakban az egyes AS2-üzenet tulajdonság leírása.
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Feladó | A megadott Vendég partner **fogadási beállítások**, vagy a fogadó partner megadott **küldési beállítások** AS2 megállapodás |
-| Címzett | A megadott fogadó partner **fogadási beállítások**, vagy a Vendég partner megadott **küldési beállítások** AS2 megállapodás |
-| Logikai alkalmazás | A logikai alkalmazást, ahol az AS2 műveletek beállítása |
-| status | Az AS2 üzenet állapota <br>Sikeres = fogadott, vagy egy érvényes AS2 üzenetet küldött. Nincs MDN be van állítva. <br>Sikeres = fogadott, vagy egy érvényes AS2 üzenetet küldött. MDN beállítása és kapott, vagy MDN zajlik. <br>Nem sikerült = érvénytelen AS2 üzenetet kapott. Nincs MDN be van állítva. <br>Függőben lévő = fogadott, vagy egy érvényes AS2 üzenetet küldött. MDN be van állítva, és MDN várt. |
-| Nyugtázási | A MDN Messaging-állapot <br>Elfogadható = fogadott vagy elküldött egy pozitív MDN. <br>Függőben lévő egy MDN küld és fogad váró =. <br>Elutasított = fogadott vagy elküldött egy negatív MDN. <br>Nem szükséges = MDN nincs beállítva a szerződésben. |
-| Irány | Az AS2-üzenet irányát |
-| Korrelációs azonosító | A hibához az eseményindítók és műveletek a logikai alkalmazás azonosítója |
-| Üzenet azonosítója | Az AS2 üzenetfejlécek a AS2 üzenet azonosítója |
-| Időbélyeg | Az AS2 művelet feldolgozásának az üzenet időpontja |
+| Küldő | A megadott vendégpartner **fogadási beállítások**, vagy a fogadó partner megadott **küldési beállítások** az AS2-egyezményt |
+| Fogadó | A megadott fogadó partner **fogadási beállítások**, vagy a vendégpartner megadott **küldési beállítások** az AS2-egyezményt |
+| Logikai alkalmazás | A logikai alkalmazást, amennyiben vannak beállítva az AS2-műveletek |
+| status | Az AS2-üzenet állapota <br>Sikeres = fogadott vagy küldött egy érvényes AS2-üzenet. Nincs MDN be van állítva. <br>Sikeres = fogadott vagy küldött egy érvényes AS2-üzenet. MDN beállítása és kapott, vagy az MDN zajlik. <br>Nem sikerült = érvénytelen AS2-üzenet érkezett. Nincs MDN be van állítva. <br>Függőben lévő = fogadott vagy küldött egy érvényes AS2-üzenet. MDN be van állítva, és MDN várt. |
+| Nyomon követés | Az MDN-üzenet állapota <br>Elfogadott = fogadott vagy küldött pozitív MDN. <br>Függőben lévő Várakozás fogadni, vagy az MDN küldésének cél =. <br>Elutasított = fogadott vagy küldött negatív MDN. <br>Nem szükséges = MDN nincs beállítva a szerződés. |
+| Irány | Az AS2-üzenet iránya |
+| Korrelációs azonosító | Az azonosítója, amely az összes eseményindítók és műveletek, a logikai alkalmazás |
+| Üzenet azonosítója | Az AS2-üzenetek fejlécének az AS2-Üzenetazonosító |
+| Időbélyeg | Az idő, az üzenet az AS2-művelet feldolgozásakor |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
 
-### <a name="as2-name-formats-for-downloaded-message-files"></a>A letöltött fájlok AS2 formátumok
+### <a name="as2-name-formats-for-downloaded-message-files"></a>A letöltött üzenetfájlok AS2 formátumok
 
-Az alábbiakban a formátumok minden letöltött AS2 üzenet mappában és fájlokat.
+Az alábbiakban az egyes letöltött AS2-üzenet mappa és fájlok formátumok.
 
-| Fájl vagy mappa | Nevének formátuma |
+| Fájl vagy mappa | Névformátum |
 | :------------- | :---------- |
-| Üzenet mappa | [küldő] \_[fogadó]\_AS2\_[korrelációs azonosító]\_[üzenet-azonosítója]\_[időbélyeg] |
-| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_outputs.txt |
+| Üzenet mappa | [küldő] \_[fogadó]\_AS2\_[korrelációs azonosító]\_[message-ID]\_[időbélyeg] |
+| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_input_payload.txt </p>**Kimenő hasznos**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_outputs.txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
 
 ### <a name="x12-message-property-descriptions"></a>X12 tulajdonságleírások üzenet
 
-Az alábbiakban a tulajdonság leírásainak minden X12 üzenet.
+Az egyes X12 tulajdonság leírása az alábbiakban üzenet.
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Feladó | A megadott Vendég partner **fogadási beállítások**, vagy a fogadó partner megadott **küldési beállítások** egy X12 a megállapodás |
-| Címzett | A megadott fogadó partner **fogadási beállítások**, vagy a Vendég partner megadott **küldési beállítások** egy X12 a megállapodás |
-| Logikai alkalmazás | A logikai alkalmazás ahol a X12 műveletek be vannak állítva. |
-| status | A X12 üzenet állapot <br>Sikeres = fogadott, vagy egy érvényes X12 küldött üzenetet. Egyetlen működési nyugtázási be van állítva. <br>Sikeres = fogadott, vagy egy érvényes X12 küldött üzenetet. Működési nyugtázási beállítása és kapott, illetve funkcionális nyugtázási elküldésekor történik. <br>Nem sikerült = fogadott vagy elküldött egy érvénytelen X12 üzenet. <br>Függőben lévő = fogadott, vagy egy érvényes X12 küldött üzenetet. Funkcionális nyugtázási be van állítva, és működési nyugtázási várt. |
-| Nyugtázási | Funkcionális nyugtázási (997) állapota <br>Elfogadható = fogadott, vagy egy pozitív működési nyugtát küldött <br>Elutasított = fogadott, vagy egy negatív működési nyugtát küldött <br>Függőben lévő = működési nyugtázási várt, de nem érkezett meg. <br>Függőben lévő = előállított működési nyugtázási, de nem lehet elküldeni a partnernek. <br>Nem szükséges funkcionális = nyugtázási nincs beállítva. |
-| Irány | A X12 üzenet irányát |
-| Korrelációs azonosító | A hibához az eseményindítók és műveletek a logikai alkalmazás azonosítója |
-| Üzenet típusa | EDI X 12 üzenettípus |
-| ICN | Az a X12 Interchange ellenőrző szám üzenet |
-| TSCN | A tranzakció beállítása vezérlő számot a X12 üzenet |
+| Küldő | A megadott vendégpartner **fogadási beállítások**, vagy a fogadó partner megadott **küldési beállítások** X12 a szerződés |
+| Fogadó | A megadott fogadó partner **fogadási beállítások**, vagy a vendégpartner megadott **küldési beállítások** X12 a szerződés |
+| Logikai alkalmazás | A logikai alkalmazást, a X12 műveletek beállítása |
+| status | A X12 üzenet állapota <br>Sikeres = fogadott vagy küldött egy érvényes X12 üzenet. Nem funkcionális ack be van állítva. <br>Sikeres = fogadott vagy küldött egy érvényes X12 üzenet. Funkcionális ack beállítása és kapott, vagy egy funkcionális ack zajlik. <br>Nem sikerült = fogadott vagy küldött érvénytelen X12 üzenet. <br>Függőben lévő = fogadott vagy küldött egy érvényes X12 üzenet. Funkcionális ack be van állítva, és a egy funkcionális ack várt. |
+| Nyomon követés | Funkcionális (997) nyugtázási állapot <br>Elfogadott = fogadott vagy küldött egy pozitív működési ACK-ra. <br>Elutasított = fogadott vagy küldött egy negatív működési ACK-ra. <br>Függőben lévő = a egy működési ack várt, de nem érkezett meg. <br>Függőben lévő = jön létre a egy működési ack, de nem tud küldeni a partner. <br>Nem szükséges funkcionális = ack nincs beállítva. |
+| Irány | A X12 üzenet iránya |
+| Korrelációs azonosító | Az azonosítója, amely az összes eseményindítók és műveletek, a logikai alkalmazás |
+| Üzenettípus | Az EDI, X 12-üzenet típusa |
+| ICN | Az adatcsere Ellenőrzőszámának a X12 az üzenet |
+| TSCN | A tranzakció beállítása ellenőrzőszám a X12 az üzenet |
 | Időbélyeg | Az idő során a X12 műveletet az üzenet feldolgozása |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
 
-### <a name="x12-name-formats-for-downloaded-message-files"></a>X12 formátumok nevet letöltött Üzenetfájl
+### <a name="x12-name-formats-for-downloaded-message-files"></a>X12 letöltött üzenetfájlok formátumok nevét
 
-Minden egyes X12 letölteni az alábbiakban a formátumok üzenetek mappa és a fájlokat.
+Az egyes letöltött X12 az alábbiakban a formátumok üzenetek mappa és fájlok.
 
-| Fájl vagy mappa | Nevének formátuma |
+| Fájl vagy mappa | Névformátum |
 | :------------- | :---------- |
 | Üzenet mappa | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
-| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_outputs.txt |
+| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_input_payload.txt </p>**Kimenő hasznos**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_outputs.txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
 
-### <a name="edifact-message-property-descriptions"></a>EDIFACT üzenet tulajdonságleírások
+### <a name="edifact-message-property-descriptions"></a>EDIFACT-üzenet tulajdonságleírások
 
-Az alábbiakban a tulajdonságleírások minden egyes EDIFACT-üzenet esetében.
+Az alábbiakban az egyes EDIFACT-üzenet tulajdonság leírása.
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Feladó | A megadott Vendég partner **fogadási beállítások**, vagy a fogadó partner megadott **küldési beállítások** EDIFACT megállapodás |
-| Címzett | A megadott fogadó partner **fogadási beállítások**, vagy a Vendég partner megadott **küldési beállítások** EDIFACT megállapodás |
-| Logikai alkalmazás | A logikai alkalmazást, ahol a EDIFACT műveletek beállítása |
-| status | A EDIFACT Messaging-állapot <br>Sikeres = fogadott, vagy egy érvényes EDIFACT üzenetet küldött. Egyetlen működési nyugtázási be van állítva. <br>Sikeres = fogadott, vagy egy érvényes EDIFACT üzenetet küldött. Működési nyugtázási beállítása és kapott, illetve funkcionális nyugtázási elküldésekor történik. <br>Nem sikerült fogadott = vagy EDIFACT érvénytelen üzenetet küldött <br>Függőben lévő = fogadott, vagy egy érvényes EDIFACT üzenetet küldött. Funkcionális nyugtázási be van állítva, és működési nyugtázási várt. |
-| Nyugtázási | Funkcionális nyugtázási (997) állapota <br>Elfogadható = fogadott, vagy egy pozitív működési nyugtát küldött <br>Elutasított = fogadott, vagy egy negatív működési nyugtát küldött <br>Függőben lévő = működési nyugtázási várt, de nem érkezett meg. <br>Függőben lévő = előállított működési nyugtázási, de nem lehet elküldeni a partnernek. <br>Nem szükséges = működési nyugtázási nincs beállítva. |
-| Irány | A EDIFACT-üzenet irányát |
-| Korrelációs azonosító | A hibához az eseményindítók és műveletek a logikai alkalmazás azonosítója |
-| Üzenet típusa | A EDIFACT-üzenet típusa |
-| ICN | Az EDIFACT üzenet Interchange ellenőrző szám |
-| TSCN | A tranzakció beállítása ellenőrző szám az EDIFACT-üzenet |
-| Időbélyeg | A EDIFACT művelet feldolgozásának az üzenet időpontja |
+| Küldő | A megadott vendégpartner **fogadási beállítások**, vagy a fogadó partner megadott **küldési beállítások** az EDIFACT-egyezmény |
+| Fogadó | A megadott fogadó partner **fogadási beállítások**, vagy a vendégpartner megadott **küldési beállítások** az EDIFACT-egyezmény |
+| Logikai alkalmazás | A logikai alkalmazás, ahol az EDIFACT-műveletek beállítása |
+| status | Az EDIFACT-üzenet állapota <br>Sikeres = fogadott vagy küldött egy érvényes EDIFACT-üzenet. Nem funkcionális ack be van állítva. <br>Sikeres = fogadott vagy küldött egy érvényes EDIFACT-üzenet. Funkcionális ack beállítása és kapott, vagy egy funkcionális ack zajlik. <br>Nem sikerült = fogadott vagy egy érvénytelen EDIFACT-üzenet elküldve <br>Függőben lévő = fogadott vagy küldött egy érvényes EDIFACT-üzenet. Funkcionális ack be van állítva, és a egy funkcionális ack várt. |
+| Nyomon követés | Funkcionális (997) nyugtázási állapot <br>Elfogadott = fogadott vagy küldött egy pozitív működési ACK-ra. <br>Elutasított = fogadott vagy küldött egy negatív működési ACK-ra. <br>Függőben lévő = a egy működési ack várt, de nem érkezett meg. <br>Függőben lévő = jön létre a egy működési ack, de nem tud küldeni a partner. <br>Nem szükséges = működési Ack nincs beállítva. |
+| Irány | Az EDIFACT-üzenet iránya |
+| Korrelációs azonosító | Az azonosítója, amely az összes eseményindítók és műveletek, a logikai alkalmazás |
+| Üzenettípus | Az EDIFACT-üzenet típusa |
+| ICN | Az adatcsere Ellenőrzőszámának az EDIFACT-üzenet |
+| TSCN | A tranzakció beállítása ellenőrzőszám az EDIFACT-üzenet |
+| Időbélyeg | Az idő, az üzenet az EDIFACT-művelet feldolgozásakor |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>
 
-### <a name="edifact-name-formats-for-downloaded-message-files"></a>A letöltött fájlok EDIFACT formátumok
+### <a name="edifact-name-formats-for-downloaded-message-files"></a>A letöltött üzenetfájlok EDIFACT formátumok
 
-Az alábbiakban a formátumok minden letöltött EDIFACT üzenet mappában és fájlokat.
+Az alábbiakban az egyes letöltött EDIFACT-üzenet mappa és fájlok formátumok.
 
-| Fájl vagy mappa | Nevének formátuma |
+| Fájl vagy mappa | Névformátum |
 | :------------- | :---------- |
 | Üzenet mappa | [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
-| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_outputs.txt |
+| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_input_payload.txt </p>**Kimenő hasznos**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_outputs.txt |
 |          |             |
 
 ## <a name="next-steps"></a>További lépések
 
-* [Log Analytics B2B üzenetek lekérdezés](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [B2B-üzenetek a Log Analytics-lekérdezést](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12-követési sémák](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
-* [Egyéni követési sémák](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)
+* [Egyéni követési séma](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

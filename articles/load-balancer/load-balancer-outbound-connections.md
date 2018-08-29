@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: e9249f3a5787da9ad54945195b47cf9af0f45fb1
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 1f7e605cbf5aa3d519e04c4fdfd737a4c0926a3e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059153"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122576"
 ---
 # <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
 
@@ -122,13 +122,23 @@ Használata esetén [rendelkezésre állási zónák a Standard Load Balancer](l
 
 Ha egy nyilvános terheléselosztó-erőforráshoz társítva a Virtuálisgép-példányok, minden kimenő kapcsolat forrása van átírása. A forrás az előtér a terheléselosztó nyilvános IP-címet a virtuális hálózati magánhálózati IP-címtér van újraírja. A nyilvános IP-címtér 5 rekordos (forrás IP-cím, forrásoldali portszám, IP protokoll, cél IP-címe, Célport) a folyamat egyedinek kell lennie.  Álcázásos SNAT port a TCP vagy UDP IP protokollokkal használható.
 
-A rövid élettartamú portok (SNAT port) segítségével ennek elérése után újraírását a magánhálózati IP-forráscím, mert több folyamatok egyetlen nyilvános IP-cím származik. 
+A rövid élettartamú portok (SNAT port) segítségével ennek elérése után újraírását a magánhálózati IP-forráscím, mert több folyamatok egyetlen nyilvános IP-cím származik. A port álcázásos SNAT algoritmust SNAT portok eltérően lefoglalja TCP és UDP-hez.
 
-Egy SNAT-port száma a flow számára egy egy cél IP-cím, port és protokoll használja fel. Több folyamatok, az azonos cél IP-cím, port és protokoll az egyes folyamatok SNAT egyetlen portot használ fel. Ez biztosítja, hogy a flow egyediek, amikor azok, azonos nyilvános IP-cím származnak, és nyissa meg az azonos cél IP-cím, port és protokoll. 
+#### <a name="tcp"></a>SNAT TCP-portok
+
+Egy SNAT port van felhasznált folyamat egyetlen cél IP-cím, port száma. Több TCP forgalom az azonos cél IP-cím, port és protokoll, az egyes TCP folyamatok SNAT egyetlen portot használ fel. Ez biztosítja, hogy a flow egyediek, amikor azok, azonos nyilvános IP-cím származnak, és nyissa meg az azonos cél IP-cím, port és protokoll. 
 
 Több egy másik cél IP-cím, port és protokoll, a folyamatok egyetlen SNAT port megosztása. A cél IP-cím, port és protokoll egyedivé folyamatok nincs szükség további forrás különbséget tenni a nyilvános IP-címtér folyamatok portokat.
 
+#### <a name="udp"></a> SNAT használt UDP-portok
+
+Egy teljesen más algoritmust, mint az TCP SNAT-portok által kezelt UDP SNAT-portok.  Load Balancer UDP-hez "port korlátozott amerikai NAT" néven ismert algoritmust használ.  Az egyes folyamatok, attól függetlenül, cél IP-cím, port egy SNAT port használja fel.
+
+#### <a name="exhaustion"></a>Erőforrásfogyás
+
 SNAT port erőforrások elfogy, ha a kimenő forgalom sikertelen, amíg a meglévő folyamatok kiadási SNAT portokat. Load Balancer SNAT portok szabadít fel, amikor a folyamat bezárul, és használja a [4 perces üresjárati időkorlátot](#idletimeout) VISSZAIGÉNYLÉSE SNAT portok az inaktív folyamatok esetében.
+
+UDP SNAT portok általában sokkal gyorsabb, mint a használt algoritmus miatt TCP SNAT portok felhasználta rendelkezésére. Meg kell tervezési és a méretezési csoport teszteléséhez az ezt a különbséget szem előtt.
 
 Minták csökkentése érdekében a feltételeket, amelyek gyakran vezetnek SNAT portfogyás, tekintse át a [kezelése SNAT](#snatexhaust) szakaszban.
 
@@ -136,7 +146,7 @@ Minták csökkentése érdekében a feltételeket, amelyek gyakran vezetnek SNAT
 
 Portot álcázásos SNAT használata esetén a háttérkészlet mérete alapján egy algoritmus meghatározására száma előzetesen lefoglalt SNAT elérhető portok Azure használja ([PAT](#pat)). SNAT portjait elmúló port egy adott nyilvános IP-forráscím érhető el.
 
-SNAT portok azonos számú előzetesen lefoglalt UDP és TCP rendre és egymástól függetlenül IP protokoll / felhasznált. 
+SNAT portok azonos számú előzetesen lefoglalt UDP és TCP rendre és egymástól függetlenül IP protokoll / felhasznált.  Azonban az SNAT porthasználatáról eltér attól függően, hogy a folyamat UDP vagy TCP.
 
 >[!IMPORTANT]
 >Standard Termékváltozat SNAT programozási / IP-átviteli protokoll és a terheléselosztási szabály származik.  Ha csak a TCP terheléselosztási szabály létezik, SNAT lehetőség csak a TCP. Ha csak a TCP terheléselosztási szabály rendelkezik, és kimenő SNAT UDP-hez, hozzon létre UDP terheléselosztási szabály ugyanazt a frontend alhálózatból ugyanazt a háttérkészlethez.  Ezzel megkezdődik az SNAT programozási UDP-hez.  Szabály vagy egészségügyi mintavétel működő, nem szükséges.  Alapszintű Termékváltozat SNAT SNAT mindig programok, attól függetlenül, az átviteli protokoll a terheléselosztási szabály megadott mindkét IP protokoll esetében.

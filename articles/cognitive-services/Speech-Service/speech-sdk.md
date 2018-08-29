@@ -9,20 +9,20 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6b5796bf4d049579dbdede2251f2ca67cc9c4bfd
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c26aeb1d29c3b2c8b5b43d1a1face818295e9d2f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41987497"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122082"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>A Cognitive Services beszédszolgáltatások SDK
 
 A Cognitive Services beszédfelismerő szoftver Development Kit (SDK) az alkalmazások natív hozzáférést biztosít a függvények a beszédfelismerési szolgáltatás, így könnyebben fejleszthet szoftvereket. Az SDK jelenleg hozzáférést biztosít **Speech to Text**, **beszédalapú fordítási**, és **szándékot felismerés**.
 
-[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
+[!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="get-the-sdk"></a>Az SDK beszerzése
 
@@ -64,7 +64,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
   |Útvonal|Leírás|
   |-|-|
   |`license.md`|Licenc|
-  |`ThirdPartyNotices.md`|Harmadik felekkel kapcsolatos közlemények|
+  |`ThirdPartyNotices.md`|Harmadik fél közleményei|
   |`include`|C és C++ fejlécfájlok|
   |`lib/x64`|Natív x64 az alkalmazással kapcsolásának könyvtár|
   |`lib/x86`|Natív x86 az alkalmazással kapcsolásának könyvtár|
@@ -91,7 +91,7 @@ Felhasználásához az Android Studio-projektek-csomagot a következő módosít
 
 A Java SDK egyben része a [Speech Devices SDK-val](speech-devices-sdk.md).
 
-[!include[Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>További lépések
 

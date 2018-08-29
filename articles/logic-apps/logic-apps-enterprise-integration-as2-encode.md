@@ -1,27 +1,23 @@
 ---
 title: Kódolás AS2-üzenetek – Azure Logic Apps |} A Microsoft Docs
-description: Az AS2-kódoló az Enterprise Integration Pack for Azure Logic Apps használata
+description: Az Azure Logic Apps és az Enterprise Integration Pack ÜZENETEKKÉNT kódolása
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: 332fb9e3-576c-4683-bd10-d177a0ebe9a3
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 332fb9e3-576c-4683-bd10-d177a0ebe9a3
 ms.date: 08/08/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: b3b57b2505c4185f3a81530cbc9eeb464dcfa518
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 6bb19199929a004ee5668a3a6e057a69c24dd752
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055494"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122713"
 ---
-# <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Az Azure Logic Apps és az Enterprise Integration Pack AS2-üzenetek kódolása
+# <a name="encode-as2-messages-with-azure-logic-apps-and-enterprise-integration-pack"></a>Az Azure Logic Apps és az Enterprise Integration Pack AS2-üzenetek kódolása
 
 Biztonságának és megbízhatóságának közben továbbítására üzenetek létrehozásához használja a kódolás AS2-üzenet connector. Ez az összekötő a digitális aláírás, titkosítás és a nyugtázás a keresztül üzenet törlése értesítések (MDN), ami szintén támogatja a letagadhatatlanság biztosít.
 

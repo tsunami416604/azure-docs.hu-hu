@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 4ac0f27480bbddf28b83af05e4b7b89ca6766871
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8dfc2448861ca9b376246ac42f7563e44422d6de
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093778"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122433"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -324,7 +324,7 @@ Példák és további információ az átfedésmentes ablakos triggerekről: [Á
 
 ## <a name="event-based-trigger"></a>Eseményalapú trigger
 
-Az eseményalapú trigger folyamatokat futtat válaszként egy eseményre, ilyen például egy fájl érkezése vagy törlése az Azure Blob Storage-ban.
+Egy esemény alapú eseményindító egy esemény, például egy fájl beérkezés vagy egy fájlt, az Azure Blob Storage törlésének válaszul futtatja a folyamatokat.
 
 További információkat az eseményalapú triggerekkel kapcsolatban az [eseményre válaszul folyamatot futtató trigger létrehozásával](how-to-create-event-trigger.md) kapcsolatos témakörben olvashat.
 

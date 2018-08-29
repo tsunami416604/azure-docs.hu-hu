@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 9991e0a1fc54e6aa4a99b8bfbd93abdfe974b01b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 64dce26303c0e700da54d371af5cb275b1613d70
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283069"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122103"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédszolgáltatás REST API-k
 
@@ -23,7 +23,7 @@ A REST API-k, az egyesített beszédszolgáltatás hasonlóak az API-k által bi
 
 A Speech to Text API, a használt végpontokat különböznek az előző beszédszolgáltatás Speech Recognition API. Az új végpontok az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 A Speech to Text API hasonlít ellenkező esetben a [REST API-val](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) az előző Speech API-hoz.
 
@@ -54,7 +54,7 @@ hu-HU  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech 
 
 Az alábbiakban az egyesített Speech service Text to Speech API a REST-végpontokat. A végpont, amely megfelel az előfizetés régiót használni.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 Tartsa szem előtt a különbségeket, mivel, tekintse meg a [REST API-dokumentáció](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) az előző Speech API-hoz.
 
@@ -62,7 +62,7 @@ Tartsa szem előtt a különbségeket, mivel, tekintse meg a [REST API-dokument�
 
 Hozzáférési jogkivonat egy kérést küld a beszédfelismerési szolgáltatás REST API-t igényel. Azáltal, hogy az előfizetési kulcs egy regionális Speech Service jogkivonat beszerzése, `issueToken` végponton, az alábbi táblázatban látható. A végpont, amely megfelel az előfizetés régiót használni.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
 Minden hozzáférési jogkivonatot a 10 percig érvényes. Egy új jogkivonatot bármikor szerezheti be – Ha kívánja, többek között a következők csak előtt minden Speech REST API-kérelem. A hálózati forgalom és a késés minimalizálása érdekében azonban javasoljuk hogy ugyanezt a tokent kilenc perc.
 

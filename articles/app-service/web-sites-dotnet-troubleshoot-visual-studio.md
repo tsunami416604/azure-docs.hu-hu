@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058106"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125244"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Az Azure App Service szolgáltatásban a Visual Studio használatával webalkalmazások hibáinak elhárítása
 ## <a name="overview"></a>Áttekintés
@@ -623,7 +623,7 @@ Megtudhatta, hogyan Visual Studio megkönnyíti az Azure-alapú webes alkalmazá
 ### <a name="azure-web-app-troubleshooting"></a>Azure-alapú webes alkalmazás hibaelhárítása
 Az Azure App Service web Apps-alkalmazások hibaelhárításával kapcsolatos további információkért lásd a következőket:
 
-* [Web Apps alkalmazások figyelése](/manage/services/web-sites/how-to-monitor-websites/)
+* [Web Apps alkalmazások figyelése](web-sites-monitor.md)
 * [Az Azure Web Apps szolgáltatásban a Visual Studio 2013 memóriavesztés kivizsgálása](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). A Microsoft ALM blogbejegyzés felügyelt memória problémák elemzése a Visual Studio funkcióit.
 * [Az Azure web apps online eszközök kell tudni](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). A blogbejegyzés, Amit az Apple által.
 
@@ -674,7 +674,7 @@ catch (Exception ex)
 
 * [Streamelési diagnosztikai nyomkövetési naplózása az Azure parancssori felületével (plusz ízelítőt kaphatnak abból!)](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   Milyen Ez az oktatóanyag elvégzéséhez a parancssor használatával a Visual Studióban végrehajtását ismerteti. [Ízelítőt kaphatnak abból](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) olyan eszköz, az ASP.NET-alkalmazások a hibakereséshez.
-* [Web Apps-naplózás és diagnosztika – használata David Ebbo](/documentation/videos/azure-web-site-logging-and-diagnostics/) és [folyamatos átviteli naplók, a Web Apps – David Ebbo](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
+* [Web Apps-naplózás és diagnosztika – használata David Ebbo](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/) és [folyamatos átviteli naplók, a Web Apps – David Ebbo](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   Scott Hanselman és David Ebbo videókat.
 
 Hiba történt a naplózást, a saját nyomkövetési kód írása helyett egy nyílt forráskódú naplózási keretrendszer használandó [ELMAH](http://nuget.org/packages/elmah/). További információkért lásd: [házigazdája, Scott Hanselman kapcsolatos blogbejegyzéseket ELMAH](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).

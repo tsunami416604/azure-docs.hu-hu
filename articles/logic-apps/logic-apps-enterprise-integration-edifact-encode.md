@@ -1,102 +1,98 @@
 ---
-title: EDIFACT üzenetek - Azure Logic Apps kódolása |} Microsoft Docs
-description: EDI érvényesítése és EDIFACT üzenetkódoló a vállalati integrációs csomagban az XML létrehozása az Azure Logic Apps
+title: Kódolás EDIFACT-üzenetek – Azure Logic Apps |} A Microsoft Docs
+description: EDI ellenőrzése és XML létrehozása az Azure Logic Apps Enterprise Integration Pack-EDIFACT-üzenet Encoder
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: eaad2561254d858af99f06e576d67c05838e1220
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e1c990030a9fa9ad25950ccb24b36b82a8c69f5c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299892"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122353"
 ---
-# <a name="encode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Az Azure Logic Apps a vállalati integrációs csomaggal EDIFACT üzenetek kódolása
+# <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Az Azure Logic Apps Enterprise Integration Pack az EDIFACT-üzenetek kódolása
 
-EDIFACT kódolása üzenet összekötő EDI és a partner jellemző tulajdonságok ellenőrzése, az XML-dokumentum az egyes tranzakciót létrehozni és műszaki nyugtázási vagy működési visszaigazolás kérése.
-Ez az összekötő használatához fel kell vennie az összekötő egy meglévő elindítani a Logic Apps alkalmazást.
+A kódolás EDIFACT-üzenet connector az EDI és partneri jellemző tulajdonságok ellenőrzése, hozzon létre egy XML-dokumentumot, az egyes tranzakciók, és technikai nyugtázási vagy működési nyugtázása kérése.
+Az összekötő használatához hozzá kell adnia az összekötő egy meglévő eseményindítót a logikai alkalmazásban.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A szükséges elemeket itt található:
+A következő szükséges elemek:
 
-* Az Azure-fiók; létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free)
-* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéshez társítva. A kódolás EDIFACT üzenet összekötő használatához integrációs fiókkal kell rendelkeznie. 
-* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva vannak az integráció-fiókban
-* Egy [EDIFACT megállapodás](logic-apps-enterprise-integration-edifact.md) , amely már definiálva van az integráció-fiókban
+* Az Azure-fiók; létrehozhat egy [ingyenes fiókkal](https://azure.microsoft.com/free)
+* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéséhez társított. A kódolás EDIFACT-üzenet connector használatához egy integrációs fiókhoz kell rendelkeznie. 
+* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva vannak az integrációs fiók
+* Egy [EDIFACT-egyezmény](logic-apps-enterprise-integration-edifact.md) , amely már definiálva van az integrációs fiók
 
-## <a name="encode-edifact-messages"></a>EDIFACT üzenetek kódolása
+## <a name="encode-edifact-messages"></a>EDIFACT-üzenetek kódolása
 
-1. [Logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md).
+1. [Hozzon létre egy logikai alkalmazást](quickstart-create-first-logic-app-workflow.md).
 
-2. A kódolás EDIFACT üzenet összekötő nincs eseményindítók, hozzá kell adni egy eseményindító indítása el a logikai alkalmazás, például a kérelem eseményindítót. A Logic App-tervezőben, vegye fel egy eseményindítót, majd egy műveletet a logikai alkalmazáshoz.
+2. A kódolás EDIFACT-üzenet connector eseményindítók, nem rendelkezik, ezért hozzá kell adnia egy eseményindítót a logikai alkalmazást, például a kérelem-eseményindítóval indítása. A Logic App Designerben az eseményindító hozzáadása, és adja hozzá a művelet a logikai alkalmazáshoz.
 
-3.  A keresési mezőbe írja be a "EDIFACT" szűrőként. Válassza **EDIFACT üzenetből kódolása szerződésnév** vagy **Encode EDIFACT üzenet által identitások**.
+3.  A Keresés mezőbe írja be szűrőként "EDIFACT". Ezek közül bármelyikre **kódolás EDIFACT-üzenetbe egyezménynév szerint** vagy **EDIFACT-üzenetbe identitások szerint Encode**.
    
     ![EDIFACT keresése](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
-3. Integráció fiókjába korábban a kapcsolatokat nem hozott létre, ha a program kéri, most, hogy a kapcsolat létrehozásához. A kapcsolat neve, és válassza ki a integrációs fiókot, amely csatlakozni szeretne.
+3. Korábban létrehozott kapcsolatokat az integrációs fiókba, most, hogy a kapcsolat létrehozására kéri. Nevezze el a kapcsolatot, és válassza ki az integrációs fiók, amely kapcsolódni szeretne.
 
-    ![integráció fiók kapcsolat létrehozása](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage1.png)  
+    ![integrációs fiók kapcsolat létrehozása](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage1.png)  
 
     Tulajdonságok csillaggal szükség.
 
     | Tulajdonság | Részletek |
     | --- | --- |
-    | Kapcsolat neve * |Adjon meg egy tetszőleges nevet a kapcsolat. |
-    | Integráció fiók * |Adja meg a integrációs fiók nevét. Ellenőrizze, hogy az integrációs fiók és a logikai alkalmazást az Azure ugyanazon a helyen. |
+    | Kapcsolat neve * |Adja meg a kapcsolat bármilyen nevet. |
+    | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon Azure-helyen. |
 
-5.  Amikor elkészült, a kapcsolódási adatait. Ez a példa hasonlóan kell kinéznie. Válassza ki a kapcsolat létrehozásának befejezéséhez **létrehozása**.
+5.  Ha elkészült, a kapcsolat adatait példához hasonlóan kell kinéznie. A kapcsolat létrehozásának befejezéséhez válasszon **létrehozás**.
 
-    ![integráció fiók kapcsolódási adatait.](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
+    ![integrációs fiók kapcsolat részletei](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
-    A kapcsolat létrejön.
+    Ekkor létrejön a kapcsolat.
 
-    ![integráció fiók kapcsolat létrehozása](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
+    ![integrációs fiók kapcsolat létrehozása](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
 
-#### <a name="encode-edifact-message-by-agreement-name"></a>EDIFACT üzenetek kódolása szerződés neve
+#### <a name="encode-edifact-message-by-agreement-name"></a>Kódolás EDIFACT-üzenetbe egyezménynév szerint
 
-Ha úgy döntött, hogy EDIFACT üzenetek kódolása szerződés neve, nyissa meg a **nevét a EDIFACT megállapodás** listában, adja meg vagy válassza ki a EDIFACT a szerződés nevét. Adja meg az XML-üzenet kódolására.
+Ha úgy döntött, hogy egyezménynév szerint EDIFACT-üzenetek kódolása, nyissa meg a **nevét az EDIFACT-egyezmény** listában adja meg vagy válassza ki a EDIFACT-egyezmény neve. Adja meg az XML-üzenet kódolása.
 
-![Adja meg a EDIFACT szerződés neve és kódolni XML-üzenet](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
+![Adja meg az EDIFACT-egyezmény neve és az XML-üzenet kódolása](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 
-#### <a name="encode-edifact-message-by-identities"></a>EDIFACT üzenetek által identitások kódolása
+#### <a name="encode-edifact-message-by-identities"></a>Kódolás EDIFACT-üzenetbe identitások szerint
 
-Ha EDIFACT üzenetek kódolása által identitások választja, adja meg a küldő azonosítója, a küldő minősítő, a fogadó azonosítója és a fogadó minősítő a EDIFACT megállapodás be. Válassza ki a kódolni XML üzenetet.
+Ha EDIFACT-üzenetek kódolása identitások szerint választja, adja meg a feladó azonosítója, a feladó minősítője, a címzett azonosítója és a címzett minősítője az EDIFACT-egyezmény konfigurált. Válassza ki a kódolni kívánt XML-üzenet.
 
-![Adja meg a küldő és fogadó identitásainak, válassza ki a kódolni XML-üzenet](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
+![Adja meg a küldő és fogadó identitásainak, válassza ki a kódolni kívánt XML-üzenet](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
-## <a name="edifact-encode-details"></a>EDIFACT kódolása részletei
+## <a name="edifact-encode-details"></a>EDIFACT-kódolást részletei
 
-A kódolási EDIFACT-összekötő az alábbi feladatokat hajtja végre: 
+A kódolás EDIFACT-összekötő az alábbi feladatokat hajtja végre: 
 
-* A szerződés feloldani a küldő minősítő & azonosítója és a fogadó minősítő és az azonosítója
-* XML-kódolású üzenetekkel konvertálásakor EDI tranzakció halmazok adatcsere EDI adatcsere rendezi sorba.
-* Tranzakció set fejléc és pótkocsi szegmensek vonatkozik
-* Az adatcsere ellenőrző szám, a vezérlő csoportszámmal és a tranzakció beállítása vezérlő száma minden kimenő adatcserét hoz létre
-* A felváltja elválasztók a hasznos adatban
-* Érvényesíti EDI- és erőforráspartner jellemző tulajdonságok
-  * A sémaérvényesítés a tranzakció-set adatelemek az üzenet sémának.
-  * EDI érvényesítési tranzakció-set adatelemek végre.
-  * Tranzakció-set adatelemek végre kiterjesztett érvényesítése
-* Az XML-dokumentum az egyes tranzakció állít elő.
-* A műszaki és/vagy funkcionális visszaigazolás-kérelmek (Ha be van állítva).
-  * A műszaki visszaigazolás, mint a CONTRL üzenet azt jelzi, az cseréje fogadását.
-  * A működési visszaigazolás, mint a CONTRL az üzenet azt jelzi, elfogadása vagy elutasítása a fogadott interchange, csoport vagy üzenet, hibák vagy nem támogatott funkciók listáját
+* A megállapodás feloldása összekapcsolja a feladó minősítője & azonosítója és a címzett minősítője és azonosítója
+* Szerializálja a EDI adatcsere, EDI tranzakciókészletek az adatcsere XML-ként kódolt üzenetek történő konvertálásakor.
+* Tranzakció set fejléc és bemutató szegmensek vonatkozik
+* Létrehoz egy adatcsere-ellenőrzőszám, a csoport-ellenőrzőszám és a tranzakciókészlet ellenőrzőszáma minden kimenő adatcserét
+* A hasznos adatok elválasztóként váltja fel
+* EDI- és partner jellemző tulajdonságok ellenőrzése
+  * Séma érvényesítése a üzenet sémának tranzakciókészlet adatelemet.
+  * EDI-ellenőrzés végrehajtani a tranzakciókészlet adatelemeket.
+  * A tranzakciókészlet adatelem végrehajtott bővített ellenőrzés
+* Létrehoz egy XML-dokumentumot, az egyes tranzakció.
+* A műszaki és/vagy funkcionális visszaigazolás-lekérdezések (Ha be van állítva).
+  * A technikai visszaigazolás, mint a CONTRL üzenet azt jelzi, az adatcsere kézhezvételét.
+  * A működési visszaigazolás, mint a CONTRL az üzenet azt jelzi, elfogadási vagy elutasítási a fogadott adatcsere, csoport vagy üzenet, a hibák vagy nem támogatott funkciók listáját
 
 ## <a name="view-swagger-file"></a>A Swagger-fájl megtekintése
-A Swagger adatai a EDIFACT-összekötő megtekintése: [EDIFACT](/connectors/edifact/).
+Az EDIFACT-összekötő Swagger részleteinek megtekintéséhez: [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>További lépések
-[További tudnivalók a vállalati integrációs csomag](logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag") 
+[További információ az Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag") 
 

@@ -7,8 +7,8 @@
 # Oktatóanyagok
 ## [Az SQL Server migrálása az Azure SQL DB-be offline módban](tutorial-sql-server-to-azure-sql.md)
 ## [Az SQL Server migrálása az Azure SQL DB-be online módban](tutorial-sql-server-azure-sql-online.md)
-## [SQL Server migrálása az Azure SQL DB felügyelt példányába](tutorial-sql-server-to-managed-instance.md)
-## [MySQL migrálása a MySQL-hez készült Azure DB-be](tutorial-mysql-azure-mysql-online.md)
+## [SQL Server offline migrálása az Azure SQL DB felügyelt példányába](tutorial-sql-server-to-managed-instance.md)
+## [MySQL online migrálása a MySQL-hez készült Azure DB-be](tutorial-mysql-azure-mysql-online.md)
 
 # Útmutatók
 ## [A PowerShell használata SQL Server migrálásához az Azure SQL DB-be](howto-sql-server-to-azure-sql-powershell.md)
