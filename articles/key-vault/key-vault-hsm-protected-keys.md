@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 774fd4ca6bbae0d02f5733269f091d325f4c776d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 9466f4178047a4927684a1fcfd80f661ea4aa7a5
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054475"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127702"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
-## <a name="introduction"></a>Bevezetés
+
 A hozzáadott frissítési garanciát biztosító Azure Key Vault használata esetén meg is kulcsok importálását vagy létrehozását hardveres biztonsági modulokban (HSM) a HSM határait betartó. Ebben a forgatókönyvben gyakran nevezik *saját kulcs használata*, azaz BYOK. A hardveres biztonsági modulok a 2. szintű FIPS 140-2 szerint vannak érvényesítve. Az Azure Key Vault Ön kulcsainak védelmét Thales nShield hardveres biztonsági modulok-család használ.
 
 Ebben a témakörben található információk használatával tervezése, létrehozása, és utána a saját HSM által védett kulcsok az Azure Key Vault használata.
@@ -31,10 +31,7 @@ Ez a funkció nem érhető el az Azure China.
 
 > [!NOTE]
 > Azure Key Vaulttal kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](key-vault-whatis.md)  
->
 > Egy első lépéseket megkönnyítő oktatóanyagunkat, amely tartalmazza a key vault HSM által védett kulcsok létrehozása, lásd: [első lépései az Azure Key Vault](key-vault-get-started.md).
->
->
 
 További információ és a egy HSM által védett kulcs átvitele az interneten keresztül:
 
@@ -46,14 +43,17 @@ További információ és a egy HSM által védett kulcs átvitele az interneten
 * A Microsoft külön kek használja, és biztonsági világot minden egyes földrajzi régióban. Ez a fajta elkülönítés biztosítja, hogy használható-e a kulcsot csak az adatközpontokban a régióban, ahol titkosítva. Például egy Európai ügyfél kulcs nem használható Észak-amerikai vagy ázsiai adatközpontokban.
 
 ## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>További információt a Thales HSM-ekről és a Microsoft-szolgáltatások
+
 A Thales e-Security vezető globális szolgáltató, amely adattitkosítási és internetes biztonsági megoldásokat a pénzügyi szolgáltatások, a csúcstechnológiai, a gyártási, a kormányzati és a technológiai szektorok részére. Egy 40 éves követése rekord, védi a vállalati és kormányzati információk a Thales megoldásait négy az öt legnagyobb energetikai és a légi közlekedésben cég által használt. Megoldásaikat is használja a 22 NATO országok, és biztonságos globális fizetési tranzakciók több mint 80 %-át.
 
 A Microsoft rendelkezik Thales vállalattal együttműködve folyamatosan javíthatja a legkorszerűbb HSM-eket. Ezeknek a fejlesztéseknek köszönhetően, hogy feláldoznia a kulcsai nélkül üzemeltetett szolgáltatások szokásos előnyeit. Pontosabban a fejlesztéseknek köszönhetően a Microsoft felügyelje a HSM-eket, hogy az nem rendelkezik. Felhőalapú szolgáltatásként az Azure Key Vault felskálázással, a szervezet használati csúcsok növekedésekhez. Egy időben, a kulcs védelmét a Microsoft HSM-EK: meg kell őriznie a kulcs életciklusa fölötti ellenőrzés, mert a kulcs létrehozásához, és vigye át a Microsoft HSM-EK.
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>A saját kulcs (használatának BYOK) megvalósítása használata az Azure Key Vault
+
 A következő információkat és eljárásokat használhatja a saját HSM-védelemmel ellátott kulcs generálása és átvitele az Azure Key Vault – a saját eszközök használata a saját kulcs (használatának BYOK) forgatókönyv.
 
 ## <a name="prerequisites-for-byok"></a>A BYOK előfeltételei
+
 Tekintse meg az alábbi táblázat a saját kulcs használata (BYOK) for Azure Key Vault szükséges előfeltételek listáját.
 
 | Követelmény | További információ |
@@ -61,9 +61,10 @@ Tekintse meg az alábbi táblázat a saját kulcs használata (BYOK) for Azure K
 | Azure-előfizetéssel |Az Azure Key Vault létrehozása, az Azure-előfizetés szükséges: [regisztráljon az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/) |
 | Az Azure Key Vault Premium szolgáltatási szinten a HSM-védelemmel ellátott kulcsok támogatására |Az Azure Key Vault a szolgáltatási szintek és a képességekkel kapcsolatos további információkért lásd: a [Azure Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/) webhelyén. |
 | A Thales HSM, intelligens kártyák és támogatószoftver |A Thales hardveres biztonsági modul és a Thales HSM-EK alapvető ismeretekre hozzáféréssel kell rendelkeznie. Lásd: [Thales hardveres biztonsági modul](https://www.thales-esecurity.com/msrms/buy) kompatibilis modellek vagy HSM vásárlásához, ha nem rendelkezik egy listája. |
-| A következő hardverre és szoftverekre:<ol><li>Egy kapcsolat nélküli x64 munkaállomáson, egy minimális Windows operációs rendszer, legalább Windows 7 és a Thales nShield szoftver verziója 11.50.<br/><br/>Ha ez a munkaállomás Windows 7 fut, meg kell [Microsoft .NET-keretrendszer 4.5-ös verziójának telepítése](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Egy munkaállomás, amely csatlakozik az internethez, és legalább Windows operációs rendszert Windows 7 és [Azure PowerShell-lel](/powershell/azure/overview) **minimális 1.1.0-s** telepítve.</li><li>USB-meghajtóra vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad tárhely.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás nincs csatlakoztatva a hálózathoz. Azonban ez a javaslat nem szoftveres követelmény.<br/><br/>Vegye figyelembe, hogy az alábbi utasításokat, az ezen a munkaállomáson a neve a kapcsolat nélküli munkaállomáson.</p></blockquote><br/>Ezenkívül ha a bérlői kulcsot egy üzemi hálózat, azt javasoljuk, hogy az eszközkészlet letöltésére és a bérlőkulcs feltöltésére egy második, különálló munkaállomást használja. De tesztelési célokra használhatja munkaállomást az elsőt.<br/><br/>Vegye figyelembe, hogy az az alábbi utasításokat, ez a második munkaállomásra nevezzük az internetre kapcsolódó munkaállomáson.</p></blockquote><br/> |
+| A következő hardverre és szoftverekre:<ol><li>Egy kapcsolat nélküli x64 munkaállomáson, egy minimális Windows operációs rendszer, legalább Windows 7 és a Thales nShield szoftver verziója 11.50.<br/><br/>Ha ez a munkaállomás Windows 7 fut, meg kell [Microsoft .NET-keretrendszer 4.5-ös verziójának telepítése](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Egy munkaállomás, amely csatlakozik az internethez, és legalább Windows operációs rendszert Windows 7 és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimális 1.1.0-s** telepítve.</li><li>USB-meghajtóra vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad tárhely.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás nincs csatlakoztatva a hálózathoz. Azonban ez a javaslat nem szoftveres követelmény.<br/><br/>Vegye figyelembe, hogy az alábbi utasításokat, az ezen a munkaállomáson a neve a kapcsolat nélküli munkaállomáson.</p></blockquote><br/>Ezenkívül ha a bérlői kulcsot egy üzemi hálózat, azt javasoljuk, hogy az eszközkészlet letöltésére és a bérlőkulcs feltöltésére egy második, különálló munkaállomást használja. De tesztelési célokra használhatja munkaállomást az elsőt.<br/><br/>Vegye figyelembe, hogy az az alábbi utasításokat, ez a második munkaállomásra nevezzük az internetre kapcsolódó munkaállomáson.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Hozzon létre, és a kulcs átvitele az Azure Key Vault HSM-be
+
 Az alábbi öt lépést használatával fog létrehozni, és a kulcs átvitele az Azure Key Vault HSM:
 
 * [1. lépés: Az internetre kapcsolódó munkaállomás előkészítése](#step-1-prepare-your-internet-connected-workstation)
@@ -73,29 +74,33 @@ Az alábbi öt lépést használatával fog létrehozni, és a kulcs átvitele a
 * [5. lépés: A kulcs átvitele az Azure Key Vaultba](#step-5-transfer-your-key-to-azure-key-vault)
 
 ## <a name="step-1-prepare-your-internet-connected-workstation"></a>1. lépés: Az internetre kapcsolódó munkaállomás előkészítése
+
 Első lépésként hajtsa végre az alábbi eljárásokat az internethez csatlakoztatott munkaállomáson.
 
 ### <a name="step-11-install-azure-powershell"></a>1.1. lépés: Az Azure PowerShell telepítése
+
 Az internetkapcsolattal rendelkező munkaállomáson, a töltse le és telepítse az Azure PowerShell-modult, amely tartalmazza a parancsmagok az Azure Key Vault kezeléséhez. Ehhez 0.8.13 verziójával.
 
 A telepítési utasításokért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>1.2. lépés: Az Azure előfizetés-azonosító beszerzése
+
 Indítsa el az Azure PowerShell-munkamenetet, és jelentkezzen be Azure-fiókjába a következő parancs használatával:
 
 ```Powershell
-   Add-AzureAccount
+   Add-AzureRMAccount
 ```
 Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Ezután használja a [Get-AzureSubscription](/powershell/module/servicemanagement/azure/get-azuresubscription?view=azuresmps-3.7.0) parancsot:
 
 ```powershell
-   Get-AzureSubscription
+   Get-AzureRMSubscription
 ```
 A kimenetben keresse meg azt az előfizetést, használhatja az Azure Key Vault azonosítója. Később szüksége lesz az előfizetés-azonosító.
 
 Ne zárja be az Azure PowerShell-ablakot.
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>1.3. lépés: A BYOK eszközkészlet letöltése az Azure Key Vault
+
 Nyissa meg a Microsoft Download Center és [az Azure Key Vault BYOK eszközkészlet letöltésére](http://www.microsoft.com/download/details.aspx?id=45345) a földrajzi régió vagy Azure példányát. Az alábbi információk segítségével azonosíthatja a csomag nevét, letöltése és a megfelelő SHA-256-csomag kivonata:
 
 - - -
@@ -215,9 +220,11 @@ Az eszközkészlet a következőket tartalmazza:
 Másolja a csomagot egy USB-meghajtó vagy más hordozható tárolóeszközre.
 
 ## <a name="step-2-prepare-your-disconnected-workstation"></a>2. lépés: A kapcsolat nélküli munkaállomás előkészítése
+
 A második lépés hajtsa végre a következő eljárások a munkaállomáson, amely nem csatlakozik a hálózathoz (az interneten vagy belső hálózaton).
 
 ### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>2.1. lépés: Készítse elő a kapcsolat nélküli munkaállomáson, a Thales HSM-mel
+
 Telepítse az nCipher (Thales) egy Windows-számítógépen, majd csatolja a számítógéphez egy Thales HSM.
 
 Győződjön meg arról, hogy a Thales-eszközök az elérési úthoz (**%nfast_home%\bin**). Írja be például a következőket:
@@ -229,6 +236,7 @@ Győződjön meg arról, hogy a Thales-eszközök az elérési úthoz (**%nfast_
 További információkért tekintse meg a Thales HSM-mel mellékelt felhasználói útmutatót.
 
 ### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>2.2. lépés: A BYOK eszközkészlet telepítése a kapcsolat nélküli munkaállomáson
+
 Másolja a BYOK eszközkészletcsomagot az USB-meghajtóra vagy egyéb hordozható tárolóeszköz, és tegye a következőket:
 
 1. Csomagolja ki a fájlokat a letöltött csomag egy tetszőleges mappába.
@@ -236,13 +244,16 @@ Másolja a BYOK eszközkészletcsomagot az USB-meghajtóra vagy egyéb hordozhat
 3. Kövesse az utasításokat a telepítés a Visual C++ futtatókörnyezeti összetevők Visual Studio 2013-hoz készült.
 
 ## <a name="step-3-generate-your-key"></a>3. lépés: A kulcs létrehozásához
+
 A harmadik lépést hajtsa végre a következő eljárások a kapcsolat nélküli munkaállomáson. E lépés elvégzése után a HSM inicializálási módban kell lennie. 
 
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>3.1. lépés: A HSM mód megváltoztatása "I"
+
 Ha használja a Thales nShield Edge, módosíthatja a módot: 1. Jelölje ki a szükséges módot az üzemmód gomb használatával. 2. Néhány másodpercen belül tartsa lenyomva a Törlés gomb egy pár másodpercet. Ha módosítja a módot, az új mód LED villogó leállítja, és megvilágítottnak marad. Az állapot LED szabálytalan flash előfordulhat, hogy néhány másodpercet, és rendszeresen, amikor az eszköz készen áll majd tokenkódot. Ellenkező esetben az eszköz továbbra is az aktuális módban, a megfelelő módot LED bekapcsolásával.
 
 ### <a name="step-32-create-a-security-world"></a>3.2. lépés: Biztonsági világ létrehozása
+
 Indítson el egy parancssort, és futtassa a Thales új világot létrehozó programját.
 
    ```cmd
@@ -256,10 +267,11 @@ Ezután tegye a következőket:
 * Készítsen biztonsági másolatot a világfájlról. Biztonságos és védi a világfájlról, a rendszergazdai kártyák és a PIN-kódok, és győződjön meg arról, hogy egyetlen személy nem rendelkezik-e egynél több kártyához való hozzáférést.
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>3.3. lépés: A HSM mód megváltoztatása "O'
+
 Ha használja a Thales nShield Edge, módosíthatja a módot: 1. Jelölje ki a szükséges módot az üzemmód gomb használatával. 2. Néhány másodpercen belül tartsa lenyomva a Törlés gomb egy pár másodpercet. Ha módosítja a módot, az új mód LED villogó leállítja, és megvilágítottnak marad. Az állapot LED szabálytalan flash előfordulhat, hogy néhány másodpercet, és rendszeresen, amikor az eszköz készen áll majd tokenkódot. Ellenkező esetben az eszköz továbbra is az aktuális módban, a megfelelő módot LED bekapcsolásával.
 
-
 ### <a name="step-34-validate-the-downloaded-package"></a>3.4. lépés: A letöltött csomag ellenőrzése
+
 Ez a lépés nem kötelező, azonban ajánlott, így ellenőrizheti, hogy a következő:
 
 * Az eszközkészletben található kulcscserekulcs egy eredeti Thales HSM-en lett létrehozva.
@@ -268,8 +280,6 @@ Ez a lépés nem kötelező, azonban ajánlott, így ellenőrizheti, hogy a köv
 
 > [!NOTE]
 > A letöltött csomag ellenőrzéséhez a HSM csatlakoztatva kell lennie, bekapcsolt, és rendelkeznie kell egy biztonsági világgal (például az imént létrehozott,).
->
->
 
 A letöltött csomag ellenőrzése:
 
@@ -329,6 +339,7 @@ A parancsfájl ellenőrzi az aláírói láncot egészen a Thales-gyökérkulcsi
 Most már készen áll egy új kulcsot létrehozni.
 
 ### <a name="step-35-create-a-new-key"></a>3.5. lépés: Hozzon létre egy új kulcsot
+
 Hozzon létre egy kulcsot a Thales használatával **Kulcslétrehozási** program.
 
 Futtassa a következő parancsot a kulcs létrehozásához:
@@ -348,11 +359,12 @@ Készítsen biztonsági másolatot a tokenekre bontott Kulcsfájlról egy bizton
 > [!IMPORTANT]
 > Amikor később átviszi a kulcsot az Azure Key Vaultba, a Microsoft nem tudja exportálni ezt a kulcsot vissza, ezért rendkívül fontos, hogy, biztonsági másolatot készítsen a kulcsáról és a biztonsági világáról. Lépjen kapcsolatba a Thales útmutatás és ajánlott eljárások a kulcs biztonsági mentéséről.
 >
->
+
 
 Most már készen áll a kulcs átvitele az Azure Key Vaultban.
 
 ## <a name="step-4-prepare-your-key-for-transfer"></a>4. lépés: A kulcs előkészítése az átvitelre
+
 A negyedik lépést hajtsa végre a következő eljárások a kapcsolat nélküli munkaállomáson.
 
 ### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>4.1. lépés: Hozzon létre egy másolatot a kulcsról korlátozott engedélyekkel
@@ -419,6 +431,7 @@ Előfordulhat, hogy megvizsgálja a következő parancsokat a Thales segédprogr
   Ezek a parancsok futtatásakor cserélje le contosokey ugyanazt az értéket a megadott **3.5. lépés: hozzon létre egy új kulcsot** származó a [hozhatja létre a kulcsot](#step-3-generate-your-key) . lépés.
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>4.2. lépés: A kulcs titkosítása a Microsoft kulcscserekulcs használatával
+
 Futtassa a következő parancsokat, földrajzi régió vagy az Azure példány egyikét:
 
 * Észak-Amerikában:
@@ -473,9 +486,11 @@ Ez a parancs futtatásakor használja a következő utasításokat:
 Amikor ez befejeződik, megjelenik **eredmény: sikeres** már van egy új fájlt a jelenlegi mappában a következő névvel: KeyTransferPackage -*ContosoFirstHSMkey*.byok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>4.3. lépés: A kulcsátviteli csomag másolása az internetre kapcsolódó munkaállomásra
+
 USB-meghajtóra vagy egyéb hordozható tárolóeszköz használatával másolja a kimeneti fájlt az előző lépésben (KeyTransferPackage-ContosoFirstHSMkey.byok) az internetre kapcsolódó munkaállomáson.
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>5. lépés: A kulcs átvitele az Azure Key Vaultba
+
 Ez az utolsó lépés az internethez csatlakozó munkaállomáson használja a [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) parancsmag, amely az Azure Key Vault HSM-be a kapcsolat nélküli munkaállomásról másolt kulcsátviteli csomag feltöltéséhez:
 
    ```powershell
@@ -485,4 +500,5 @@ Ez az utolsó lépés az internethez csatlakozó munkaállomáson használja a [
 Sikeres feltöltés esetén, tekintse meg a tulajdonságait, a kulcs, amelyet az imént hozzáadott jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
+
 Mostantól használhatja ezt a HSM által védett kulcsot tárol a kulcstárolóban. További információkért lásd: a **Ha hardveres biztonsági modul (HSM) használni kívánt** című rész a [Ismerkedés az Azure Key Vault](key-vault-get-started.md) oktatóanyag.

@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 08/17/2018
 ms.author: kgremban
-ms.openlocfilehash: 4bb33eae53d31701b66d13cb4e810b1a0b8a4b0b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a86b22b3327b2353dd37a9f9863337d12a009434
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058412"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143573"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Az Azure IoT hub Event Grid-eseménysémája
 
@@ -31,8 +31,33 @@ Az Azure IoT Hub a következő esemény típusú bocsát ki:
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Amikor regisztrál egy eszközt egy IoT hubra közzé. |
 | Microsoft.Devices.DeviceDeleted | Ha egy eszköz IoT hubról törlik közzé. | 
+| Microsoft.Devices.DeviceConnected | Ha egy eszköz csatlakozik az IoT hub közzé. |
+| Microsoft.Devices.DeviceDisconnected | Ha egy eszköz nem kapcsolódik az IoT hub közzé. | 
 
 ## <a name="example-event"></a>Példa esemény
+
+A séma DeviceConnected és DeviceDisconnected események ugyanazzal a struktúrával rendelkeznek. Ezt az eseményt a minta egy esemény jelenik meg, ha egy eszköz csatlakozik az IoT hub sémája mutatja be:
+
+```json
+[{
+  "id": "f6bbf8f4-d365-520d-a878-17bf7238abd8", 
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>", 
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceConnected", 
+  "eventTime": "2018-06-02T19:17:44.4383997Z", 
+  "data": {
+    "deviceConnectionStateEventInfo": {
+      "sequenceNumber":
+        "000000000000000001D4132452F67CE200000002000000000000000000000001"
+    },
+    "hubName": "egtesthub1",
+    "deviceId": "LogicAppTestDevice",
+    "moduleId" : "DeviceModuleID"
+  }, 
+  "dataVersion": "1", 
+  "metadataVersion": "1" 
+}]
+```
 
 A séma DeviceCreated és DeviceDeleted események ugyanazzal a struktúrával rendelkeznek. Ezt az eseményt a minta egy esemény jelenik meg, ha regisztrál egy eszközt egy IoT hubra sémája mutatja be:
 
@@ -47,6 +72,7 @@ A séma DeviceCreated és DeviceDeleted események ugyanazzal a struktúrával r
     "twin": {
       "deviceId": "LogicAppTestDevice",
       "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "null",
       "status": "enabled",
       "statusUpdateTime": "0001-01-01T00:00:00",
       "connectionState": "Disconnected",
@@ -74,11 +100,9 @@ A séma DeviceCreated és DeviceDeleted események ugyanazzal a struktúrával r
       }
     },
     "hubName": "egtesthub1",
-    "deviceId": "LogicAppTestDevice",
-    "operationTimestamp": "2018-01-02T19:17:44.4383997Z",
-    "opType": "DeviceCreated"
+    "deviceId": "LogicAppTestDevice"
   },
-  "dataVersion": "",
+  "dataVersion": "1",
   "metadataVersion": "1"
 }]
 ```
@@ -98,17 +122,29 @@ Az összes esemény legfelső szintű ugyanazokat az adatokat tartalmazza:
 | dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
-Az objektum tartalmát minden egyes esemény-közzétevő eltérőek. Az IoT Hub-események az objektum a következő tulajdonságokat tartalmazza:
+Minden IoT Hub-események az objektum a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | HubName | sztring | Ahol az eszköz létrehozása vagy törlése az IoT Hub nevét. |
 | deviceId | sztring | Az eszköz egyedi azonosítója. Ez a karakterlánc kis-és nagybetűket legfeljebb 128 karakter hosszú, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket tartalmazhatja: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| operationTimestamp | sztring | A művelet ISO8601 időbélyegét. |
-| opType | sztring | Ez a művelet az IoT Hub által megadott esemény típusa: vagy `DeviceCreated` vagy `DeviceDeleted`.
+
+Az objektum tartalmát minden egyes esemény-közzétevő eltérőek. A **csatlakoztatott eszköz** és **eszköz leválasztott** IoT Hub-események, az objektum a következő tulajdonságokat tartalmazza:
+
+| Tulajdonság | Típus | Leírás |
+| -------- | ---- | ----------- |
+| moduleId | sztring | A modul egyedi azonosítója. Ez a mező egy modul eszközök csak a kimenet. Ez a karakterlánc kis-és nagybetűket legfeljebb 128 karakter hosszú, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket tartalmazhatja: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| deviceConnectionStateEventInfo | objektum | Kapcsolat Eszközállapot-esemény adatokat
+| sequenceNumber | sztring | Egy szám, amely segít jelezheti, hogy az eszköz csatlakoztatva van, vagy az eszköz sorrendben események leválasztása. Legutóbbi esemény egy megfelelő sorszám lesz ez nagyobb, mint az előző esemény. Ez a szám több mint 1 változhat, de szigorúan növekszik. Lásd: [sorszáma használata](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
+
+Az objektum tartalmát minden egyes esemény-közzétevő eltérőek. A **létre az eszköz** és **eszköz törlése** IoT Hub-események, az objektum a következő tulajdonságokat tartalmazza:
+
+| Tulajdonság | Típus | Leírás |
+| -------- | ---- | ----------- |
 | ikereszköz | objektum | Az ikereszközök, amely a felhőalapú represenation alkalmazás eszköz metaadatainak kapcsolatos információk. | 
 | deviceID | sztring | Az ikereszközök egyedi azonosítója. | 
-| Az ETag | sztring | Az ikereszközök tartalmát leíró adatokkal részét. Minden egyes etag garantáltan ikereszköz minden egyedi. | 
+| Az ETag | sztring | Egy érvényesítő egy ikereszköz-frissítések konzisztencia biztosításához. Minden egyes etag garantáltan ikereszköz minden egyedi. |  
+| deviceEtag| sztring | Egy érvényesítő frissítések egy eszközjegyzékébe konzisztencia biztosításához. Minden egyes deviceEtag garantáltan eszközjegyzék minden egyedi. |
 | status | sztring | Az ikereszközök e engedélyezése vagy letiltása. | 
 | statusUpdateTime | sztring | Az utolsó ikereszköz Eszközállapot ISO8601 időbélyegzője frissítése. |
 | connectionState | sztring | Hogy az eszköz van csatlakoztatva, vagy csatlakoztatva. | 

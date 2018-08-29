@@ -1,27 +1,23 @@
 ---
 title: AS2-üzenetek – Azure Logic Apps-dekódolást |} A Microsoft Docs
-description: Az AS2-dekódoló az Enterprise Integration Pack for Azure Logic Apps használata
+description: Az Azure Logic Apps és az Enterprise Integration Pack ÜZENETEKKÉNT-dekódolást.
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 08/08/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: a1b2d68a4a9433dc5c68d65552bf6bd509463958
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 06ffa6bddc1340ad548f9baf30eba65ba503bf73
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42059125"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128281"
 ---
-# <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Az Azure Logic Apps és az Enterprise Integration Pack AS2-üzenetek dekódolása 
+# <a name="decode-as2-messages-with-azure-logic-apps-and-enterprise-integration-pack"></a>Az Azure Logic Apps és az Enterprise Integration Pack AS2-üzenetek dekódolása 
 
 Biztonságának és megbízhatóságának közben továbbítására üzenetek létrehozásához használja az AS2-dekódolást üzenet connector. Ez az összekötő biztosít a digitális aláírás, visszafejtési és nyugtázás üzenet törlése értesítések (MDN) keresztül.
 

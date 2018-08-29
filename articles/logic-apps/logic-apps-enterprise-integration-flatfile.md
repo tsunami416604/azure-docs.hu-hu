@@ -1,27 +1,23 @@
 ---
-title: Kódolás vagy dekódolandó egybesimított fájlokba, az Azure logic appsben |} A Microsoft Docs
-description: A fájl kódoló és dekóder használata a logic Apps, az Enterprise Integration Pack
+title: Kódolás, vagy a dekódolandó egybesimított fájlok – Azure Logic Apps |} A Microsoft Docs
+description: Kódolás, vagy enterprise integration és Azure Logic Apps és az Enterprise Integration Pack egybesimított fájl dekódolása
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.date: 07/08/2016
-ms.author: LADocs; divswa
-ms.openlocfilehash: b13e8da04c984456027f152f5af63cfa6604ddc4
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058389"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123928"
 ---
-# <a name="overview-of-enterprise-integration-with-flat-files"></a>Vállalati integrációs egybesimított fájlok áttekintése
+# <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Kódolás, vagy az Azure Logic Apps és az Enterprise Integration Pack egybesimított fájl dekódolása
 
 Kódolandó XML-tartalom egy üzleti partnertől-vállalatközi (B2B) forgatókönyvekben való elküldés előtt érdemes. Ehhez a logikai alkalmazás, használhatja az egybesimított fájl kódolása összekötő. A logikai alkalmazás által létrehozott tudnak tartalmat beolvasni a hozzá tartozó XML számos különféle forrásból, például egy HTTP-kérés eseményindító, más alkalmazásból származó, vagy akár egy a többhöz [összekötők](../connectors/apis-list.md). Logic apps szolgáltatással kapcsolatos további információkért lásd: a [logic apps-dokumentáció](logic-apps-overview.md "további tudnivalók a Logic apps").  
 

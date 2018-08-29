@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/28/2018
 ms.author: raynew
-ms.openlocfilehash: 99733fd80ab722f38a27bd99e5dd61bc32f7ab36
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: dc2e116e9e6bb60da4ba9fecb308ad0f9d7c127b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105053"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126794"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso áttelepítési: egy a helyszíni Linux alkalmazás Újratárolása az Azure virtuális gépek
 
@@ -71,7 +71,7 @@ Után rögzíthet célokat és követelményeket állapította meg, a Contoso te
 - A VMware-környezet kezeli a vCenter Server 6.5-ös (**vcenter.contoso.com**), egy virtuális gépen futó.
 - Contoso rendelkezik egy helyszíni adatközpont (**contoso-datacenter**), egy helyszíni tartományvezérlővel (**contosodc1**)
 
-## <a name="proposed-architecture"></a>Javasolt architektúra
+### <a name="proposed-architecture"></a>Javasolt architektúra
 
 - Mivel az alkalmazás egy éles környezetbeli számítási feladatokra, a virtuális gépek az Azure-ban helyezkednek el az éles erőforráscsoportban **ContosoRG**.
 - A virtuális gépek lesz áttelepítve az elsődleges régió (USA keleti RÉGIÓJA 2), és elhelyezni a termelési hálózat (VNET-ÉLES-EUS2):
@@ -87,7 +87,7 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 
 **Szempontok** | **Részletek**
 --- | ---
-**Szakemberek számára** | Az alkalmazás virtuális gépek mindkét átkerül az Azure-bA sem kell módosítani, így egyszerű a migrálás.<br/><br/> Mivel a Contoso lift-and-shift mindkét alkalmazás virtuális gép nem használja, speciális konfigurációs vagy az áttelepítési eszközök nélkül az alkalmazás-adatbázis szükséges.<br/><br/> Contoso teljes hozzáférés az alkalmazás az Azure-beli virtuális gépek megtartja. <br/><br/> SQL-adatbázis, amely a Contoso nem kell beállítania beépített hibatűrő képességgel rendelkezik. Ez biztosítja, hogy az adatréteg már nem feladatátvételi hibaérzékeny pont.</br>/br > az alkalmazás virtuális gépek futnak, Ubuntu 16.04-TLS, amely egy támogatott Linux-disztribúció. [További információk](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+**Szakemberek számára** | Az alkalmazás virtuális gépek mindkét átkerül az Azure-bA sem kell módosítani, így egyszerű a migrálás.<br/><br/> Mivel a Contoso lift-and-shift mindkét alkalmazás virtuális gép nem használja, speciális konfigurációs vagy az áttelepítési eszközök nélkül az alkalmazás-adatbázis szükséges.<br/><br/> Contoso teljes hozzáférés az alkalmazás az Azure-beli virtuális gépek megtartja. </br>/br > az alkalmazás virtuális gépek futnak, Ubuntu 16.04-TLS, amely egy támogatott Linux-disztribúció. [További információk](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 **Hátrányai** | A webes és az adatszintű az alkalmazás feladatátvételt egyetlen pont marad. <br/><br/> Contoso kell továbbra is az alkalmazást az Azure virtuális gépeket támogató, nem pedig áthelyezése egy felügyelt szolgáltatás, például az Azure App Service, Azure Database for MySQL-hez.<br/><br/> Contoso tudatában, hogy azáltal dolgot egy lift-and-shift virtuális gépek migrálása az egyszerű, azok még nem teljes mértékben kihasználják által kínált szolgáltatásokkal [, Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) (beépített magas rendelkezésre állás, kiszámítható teljesítmény, egyszerű méretezés, automatikus biztonsági mentést és a beépített biztonság).
 
 ### <a name="migration-process"></a>Áttelepítési folyamat

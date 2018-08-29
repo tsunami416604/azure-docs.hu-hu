@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 4b25c82de4d2d3f4300fbb688c75be74ce63fe40
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 6a5f8fc126f9c94ce139b99c94936e01da8b4099
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054490"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126421"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>A virtuális gépek Felügyeltszolgáltatás-identitás konfigurálása egy sablon használatával
 
@@ -357,7 +357,7 @@ Ha egy virtuális Gépet, amely már nincs szüksége a felügyeltszolgáltatás
 
 1. Jelentkezzen be az Azure-bA helyileg vagy az Azure Portalon az Azure-előfizetéshez társított olyan fiókot használjon, amely tartalmazza a virtuális Gépet.
 
-2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális Gépet, amelyhez csak a felhasználóhoz hozzárendelt identitás, letilthatja, módosítsa úgy az identitás típus `None`.
+2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális Gépet, amelyhez csak a felhasználóhoz hozzárendelt identitás, letilthatja az identitás típusúra `None`.
  
    Az alábbi példa bemutatja, hogyan távolítsa el az összes felhasználói identitások hozzárendelt virtuális gép nem hozzárendelt identitások rendszert:
    
@@ -380,7 +380,7 @@ Ha egy virtuális Gépet, amely már nincs szüksége a felügyeltszolgáltatás
  
    **Microsoft.Compute/virtualMachines API 2017-12-01-es verzió**
 
-   Eltávolítja a hozzárendelt egyetlen felhasználói identitást egy virtuális gépről, távolítsa el a `identityIds` tömb.
+   Egy virtuális Géphez hozzárendelt egyetlen felhasználói identitást eltávolításához távolítsa el a `identityIds` tömb.
 
    Ha egy rendszer által hozzárendelt identitással, tárolja a a a `type` értékét a `identity` értéket.
    

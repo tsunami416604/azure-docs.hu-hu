@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5508b5943e116545297d91e85621d2a11a635299
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b8caeab7f08ffeee81492b01750cbb255e172872
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059766"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144522"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Virtuálisgép-ajánlat közzétételi útmutató
 
@@ -42,7 +42,7 @@ Beállíthatja, hogy a felhasználók számára, hogy tesztelje az ajánlat korl
 
 Egy vagy több virtuális gép infrastructure-as-a-service(IaaS) vagy SaaS-alkalmazások központi telepítése. Egyik előnye a test drive közzétételi lehetőség az automatikus üzembe helyezése egy virtuális gép vagy a teljes megoldás egy partner által szolgáltatott által vezetett, interaktív bemutatót. Próbálja ki az az ügyfél-értékelési további költségek nélkül biztosít. Az ügyfél nem kell lennie, ahol kapcsolatba léphet az próbaverziója meglévő Azure-ügyfeleket. 
 
-E-mailek amp-testdrive@microsoft.com a kezdéshez. 
+Írjon nekünk az [amp – testdrive](mailto:amp-testdrive@microsoft.com) a kezdéshez. 
 
 |Követelmények  |Részletek |
 |---------|---------|

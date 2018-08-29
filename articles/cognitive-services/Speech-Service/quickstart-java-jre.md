@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: fmegen
-ms.openlocfilehash: 11aba1ae6f49d6c00fabd928ae3aefedcbea8ed8
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 923ab3378d5e2d833e11c5111d4dd9964fea6dc4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234335"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126613"
 ---
 # <a name="quickstart-recognize-speech-in-java-windows-or-linux"></a>Gyors útmutató: Recognize speech Java-környezetben (Windows vagy Linux)
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ez a dokumentum ismerteti, hogyan hozhat létre egy Java-alapú konzolalkalmazást az a Java futtatási környezet (JRE), amelyek a beszéd SDK-t használja.
 Az alkalmazás a Microsoft Cognitive Services SDK Maven csomag alapján történik.
@@ -107,7 +107,7 @@ A következő 15 másodperc, a mikrofon a bemeneti fog elfogadtatni és a konzol
 
 ![A sikeres felismerés után a konzol kimenete](media/sdk/qs-java-jre-07-console-output.png)
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Keresse meg az ehhez a mintához a `quickstart/java-jre` mappát.
 
 ## <a name="next-steps"></a>További lépések

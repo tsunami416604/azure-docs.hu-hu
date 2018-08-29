@@ -4,18 +4,18 @@ description: Beállítását Hadoop, a Kafka, a Spark, a HBase, a Machine Learni
 keywords: hadoop-fürt beállítása, a kafka-fürt beállítása, a spark-fürt beállítása, mi a hadoop-fürt
 services: hdinsight
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: f325e49695cab44d5c3d9fe94cd207755d136f7b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 08/27/2018
+ms.openlocfilehash: 0df38e1bd9c4db1cf988beab31b1c3189da4f0c2
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107129"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127907"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>A Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása
 
@@ -86,7 +86,7 @@ Válassza ki a HDInsight fürt verzióját. További információkért lásd: [H
 
 ### <a name="enterprise-security-package"></a>Vállalati biztonsági csomag
 
-Hadoop, Spark- és interaktív lekérdezési fürt esetében lehet váltani, engedélyezze a **vállalati biztonsági csomag**. Ez a csomag egy biztonságosabb fürt beállítása az Apache Ranger segítségével, illetve integrálása az Azure Active Directory lehetőséget biztosít. További információkért lásd: [az Azure HDInsight vállalati biztonsági csomag](./domain-joined/apache-domain-joined-introduction.md).
+Hadoop, Spark- és interaktív lekérdezési fürt esetében lehet váltani, engedélyezze a **vállalati biztonsági csomag**. Ez a csomag biztosít a biztonságosabb a fürttelepítés Apache Ranger segítségével, illetve integrálása az Azure Active Directoryval opciót. További információkért lásd: [az Azure HDInsight vállalati biztonsági csomag](./domain-joined/apache-domain-joined-introduction.md).
 
 ![hdinsight létrehozása a beállítások vállalati biztonsági csomag kiválasztása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
 
@@ -99,7 +99,7 @@ A HDInsight-fürtökkel a fürt létrehozásakor két felhasználói fiókot kon
 * A HTTP-felhasználó: az alapértelmezett felhasználónév *rendszergazdai*. Az alapkonfiguráció használ az Azure Portalon. Más néven "Fürt a felhasználó."
 * SSH-felhasználó (Linux-fürtök): a fürt ssh-n keresztül csatlakozik. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-A vállalati biztonsági csomag lehetővé teszi, hogy a HDInsight integrálható az Active Directory és az Apache Ranger. Több felhasználó is létrehozható, a felülíráshoz biztonsági csomag használatával.
+A vállalati biztonsági csomag lehetővé teszi, hogy a HDInsight integrálható az Active Directory és az Apache Ranger. Több felhasználó is létrehozható, a vállalati biztonsági csomag használatával.
 
 ## <a name="location"></a>Fürtök és tárolási hely (régió)
 
@@ -140,10 +140,23 @@ Az Oozie használata a teljesítmény növelése érdekében használja az egyé
 > [!IMPORTANT]
 > Egyéni Oozie-metaadattár nem használhat újra. Egyéni Oozie-metaadattár használatához meg kell adnia egy üres Azure SQL Database, a HDInsight-fürt létrehozásakor.
 
+
+## <a name="custom-cluster-setup"></a>Egyéni fürt beállítása
+Egyéni fürterőforrás telepítő buildelési a gyors üzembe beállítások létrehozása, és hozzáadja a következő beállításokat:
+- [HDInsight-alkalmazások](#install-hdinsight-applications-on-clusters)
+- [Fürt mérete](#configure-cluster-size)
+- [A Parancsfájlműveletek](#advanced-settings-script-actions)
+- [Virtuális hálózat](#advanced-settings-extend-clusters-with-a-virtual-network)
+
+## <a name="install-hdinsight-applications-on-clusters"></a>HDInsight-alkalmazások telepítése fürtökön
+
+A HDInsight-alkalmazások olyan alkalmazások, amelyeket a felhasználók egy Linux-alapú HDInsight-fürtre telepíthetnek. A Microsoft, külső felek vagy, amelyek, fejlesztése, saját magának a megadott alkalmazások használhatja. További információkért lásd: [külső gyártótól származó Hadoop-alkalmazások telepítése Azure HDInsight](hdinsight-apps-install-applications.md).
+
+A HDInsight-alkalmazások többsége üres élcsomópontot van telepítve.  Üres élcsomópontot ügyfél eszközök telepítését és konfigurálását a fő csomópontot mint Linuxos virtuális gép. A peremhálózati csomópont a fürthöz hozzáférő, az ügyfél alkalmazásokat kíván tesztelni, és az ügyfélalkalmazásokat üzemeltető is használhatja. További információkért lásd: [üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md).
+
 ## <a name="configure-cluster-size"></a>Fürt méretének konfigurálása
 
 Mindaddig, amíg a fürt létezik számlázása a csomópont használatra. A számlázás akkor kezdődik, amikor egy fürt jön létre, és leállítja a fürt törlésekor. Fürtök nem fel lesznek szabadítva, és nem helyezhető tartásba.
-
 
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Mindegyik fürttípus csomópontok száma
 Mindegyik fürttípus rendelkezik a saját csomópontok, a csomópontok és a virtuális gépek alapértelmezett mérete terminológiája száma. Az alábbi táblázatban az egyes csomóponttípusok csomópontok számát zárójelek között van.
@@ -191,20 +204,6 @@ Ismerje meg, mi az értékre kell használatával adja meg a virtuális gép mé
 >
 
 További információkért lásd: [virtuális gépek méretei](../virtual-machines/windows/sizes.md). A különböző fürtméretekkel járó díjszabással kapcsolatos információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight).   
-
-## <a name="custom-cluster-setup"></a>Egyéni fürt beállítása
-Egyéni fürterőforrás telepítő buildelési a gyors üzembe beállítások létrehozása, és hozzáadja a következő beállításokat:
-- [HDInsight-alkalmazások](#hdinsight-applications)
-- [Fürt mérete](#cluster-size)
-- Speciális beállítások
-  - [A Parancsfájlműveletek](#customize-clusters-using-script-action)
-  - [Virtuális hálózat](#use-virtual-network)
-
-## <a name="install-hdinsight-applications-on-clusters"></a>HDInsight-alkalmazások telepítése fürtökön
-
-A HDInsight-alkalmazások olyan alkalmazások, amelyeket a felhasználók egy Linux-alapú HDInsight-fürtre telepíthetnek. A Microsoft, külső felek vagy, amelyek, fejlesztése, saját magának a megadott alkalmazások használhatja. További információkért lásd: [külső gyártótól származó Hadoop-alkalmazások telepítése Azure HDInsight](hdinsight-apps-install-applications.md).
-
-A HDInsight-alkalmazások többsége üres élcsomópontot van telepítve.  Üres élcsomópontot ügyfél eszközök telepítését és konfigurálását a fő csomópontot mint Linuxos virtuális gép. A peremhálózati csomópont a fürthöz hozzáférő, az ügyfél alkalmazásokat kíván tesztelni, és az ügyfélalkalmazásokat üzemeltető is használhatja. További információkért lásd: [üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md).
 
 ## <a name="advanced-settings-script-actions"></a>Speciális beállítások: Szkriptműveletek
 

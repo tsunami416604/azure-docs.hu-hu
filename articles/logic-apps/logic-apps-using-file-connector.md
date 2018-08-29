@@ -1,108 +1,107 @@
 ---
-title: A helyszíni - Azure Logic Apps fájlrendszerek csatlakozni |} Microsoft Docs
-description: A helyszíni fájlrendszer csatlakozni erről a logic app munkafolyamatainak a helyszíni az átjáró és a fájlrendszer-összekötő
-keywords: fájl telephelyükön található rendszerekhez
+title: Csatlakozhat a helyszíni – Azure Logic Apps fájlrendszerek |} A Microsoft Docs
+description: Feladatok és a helyi fájlrendszer területhasználatát a fájlrendszer-összekötő az Azure Logic Appsben a helyszíni adatátjárón keresztül csatlakozó munkafolyamatok automatizálása
 services: logic-apps
-author: derek1ee
-manager: jeconnoc
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/18/2017
-ms.author: LADocs; deli
-ms.openlocfilehash: 019b5fcd218ddd471c5f02d0332b8f5b5bf0edb3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/25/2018
+ms.openlocfilehash: 41dd8ad721329c4c4d2761c9e4a37c640251dac3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300820"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125278"
 ---
-# <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>Csatlakozás helyszíni fájlrendszer a logic Apps alkalmazásokból, a fájlrendszer-összekötőn keresztül
+# <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozhat a helyszíni fájlrendszereket az Azure Logic Apps
 
-Adatok kezelése és biztonságos hozzáférés a helyszíni erőforrásokhoz, a logic apps segítségével helyszíni data gateway. Ez a cikk bemutatja, hogyan csatlakoztathatja a helyszíni keresztül alapvető ebben a példaforgatókönyvben a fájlrendszer: másolja át a fájlt, amely fájlmegosztásba a dropbox alkalmazásba feltöltött, majd küldje el e-mailt.
+A fájlrendszer-összekötő és az Azure Logic Apps automatizált feladatokat hozhat létre, és a munkafolyamatok, amelyek hozzon létre és kezelhet fájlokat egy helyi fájlt oszt meg, például:  
+
+- Hozzon létre, beolvasása, Hozzáfűzés, frissítése és fájlok törlése
+- Fájlok a mappákat vagy a gyökérmappák listája.
+- Fájl tartalom és metaadatok beolvasása.
+
+Ez a cikk bemutatja, hogyan csatlakoztathatja egy helyszíni fájlrendszerhez leírtak szerint ebben a példaforgatókönyvben: azt a fájlmegosztást a dropbox alkalmazásba feltöltött fájl másolása, és küldje el e-mailt. Biztonságos kapcsolódást és a helyszíni rendszerek, a logic apps használata eléréséhez a [a helyszíni adatátjáró](../logic-apps/logic-apps-gateway-connection.md). Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Töltse le a legújabb [helyszíni adatátjáró](https://www.microsoft.com/download/details.aspx?id=53127).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
 
-* Telepítse és állítsa be a legújabb helyszíni data gateway, 1.15.6150.1 verzió vagy újabb. Az útmutató: [kapcsolódás a helyi kiszolgálón tárolt olyan adatforrások](http://aka.ms/logicapps-gateway). Telepítenie kell az átjárót a helyszíni gépen ezeket a lépéseket a folytatás előtt.
+* A logic apps csatlakozhat a helyszíni rendszerek, például a fájlkiszolgáló-rendszer, mielőtt kell [telepítése és beállítása egy helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md). Ezzel a módszerrel megadhatja, hogy az átjáró telepítése használja, a logikai alkalmazás a file system-kapcsolat létrehozásakor.
 
-* Alapszintű ismerete [logic Apps alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* A [Drobox fiók](https://www.dropbox.com/) és a felhasználói hitelesítő adatait
 
-## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>Adja hozzá eseményindító és műveleteket a fájlrendszer való kapcsolódáshoz
+  A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot, és a Drobox fiókjába. 
 
-1. Üres logikai alkalmazás létrehozása. Első lépésként adja hozzá a az eseményindító: **Dropbox - fájl létrehozásakor** 
+* Alapvető ismeretek szerezhetők [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ebben a példában szüksége lesz egy üres logikai alkalmazás.
 
-2. Válassza ki az eseményindító **+ a következő lépés** > **művelet hozzáadása**. 
+## <a name="add-trigger"></a>Trigger hozzáadása
 
-3. A keresési mezőbe írja be a "file system" szűrőként. Amikor megjelenik a műveleteket a fájlrendszer-összekötőhöz, válassza ki a **fájlrendszer - fájl létrehozása** művelet. 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-   ![Keresse meg a fájl összekötő](media/logic-apps-using-file-connector/search-file-connector.png)
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
 
-4. Ha még nem rendelkezik a kapcsolat a fájlrendszerhez, a program kéri, VPN-kapcsolat létrehozásához. 
+1. A keresőmezőbe írja be szűrőként "dropbox". A eseményindítók listáról válassza ki a következő eseményindítót: **egy fájl létrehozásakor** 
 
-5. Válassza ki **keresztül, a helyszíni adatátjáró**. Amikor a kapcsolat tulajdonságai megjelennek, állítsa be a kapcsolatot a táblázatban megadottak.
+   ![Dropbox-trigger kiválasztása](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
-   ![Kapcsolat beállítása](media/logic-apps-using-file-connector/create-file.png)
+1. Jelentkezzen be a Dropbox-fiókja hitelesítő adatait, és a Dropbox-adatokhoz való hozzáférés engedélyezése az Azure Logic Apps. 
 
-   | Beállítás | Leírás |
-   | ------- | ----------- |
-   | **Gyökérmappa** | Adja meg a legfelső szintű mappát a fájlrendszerhez. Megadhat egy helyi mappába a számítógépen, ahol telepítve van a helyszíni data gateway, vagy a mappa lehet a számítógép által elérhető hálózati megosztáson. <p>**Tipp:** a gyökérmappája a fő szülőmappa, relatív útvonalakat minden fájl kapcsolatos műveletekhez használt. | 
-   | **Hitelesítés típusa** | A fájlrendszer által használt hitelesítés típusa | 
-   | **Felhasználónév** | Adja meg a felhasználónév {*tartomány*\\*felhasználónév*} a korábban telepített átjáró. | 
-   | **Jelszó** | Adja meg a jelszót a korábban telepített átjárót. | 
-   | **Átjáró** | Válassza ki a korábban telepített átjárót. | 
+1. Adja meg a szükséges információkat az eseményindító.
+
+   ![Dropbox-eseményindító](media/logic-apps-using-file-connector/dropbox-trigger.png)
+
+## <a name="add-actions"></a>Műveletek hozzáadása
+
+1. Az eseményindító területén válassza a **következő lépés**. A Keresés mezőbe írja be a "file system" szűrőként. Válassza ezt a műveletet a műveletek listájának: **fájl - fájlrendszer létrehozása**
+
+   ![Keresse meg a fájlrendszer-összekötő](media/logic-apps-using-file-connector/find-file-system-action.png)
+
+1. Ha még nem rendelkezik egy kapcsolattal a fájlrendszerhez, kapcsolatot kér.
+
+   ![Kapcsolat létrehozása](media/logic-apps-using-file-connector/file-system-connection.png)
+
+   | Tulajdonság | Szükséges | Érték | Leírás | 
+   | -------- | -------- | ----- | ----------- | 
+   | **Kapcsolat neve** | Igen | <*kapcsolat neve*> | A kapcsolat nevét | 
+   | **Gyökérmappa** | Igen | <*legfelső szintű mappanév*> | Az a fájlrendszerben, például helyi mappába a számítógépen, ahol a helyszíni átjáró telepítve van, vagy egy hálózati megosztásra, amely a számítógép hozzáférhessen a mappa gyökérmappájába. <p>Például:`\\PublicShare\\DropboxFiles` <p>A legfelső szintű mappa nem a fő szülőmappa, amely relatív elérési utakat az összes fájl kapcsolatos műveletekhez használható. | 
+   | **Hitelesítés típusa** | Nem | <*a hitelesítési-típus*> | A fájl rendszer által használt, például hitelesítési típust **Windows** | 
+   | **Felhasználónév** | Igen | <*tartomány*>\\<*felhasználónév*> | A korábban telepített data gateway tartozó felhasználónév | 
+   | **Jelszó** | Igen | <*a jelszó*> | A korábban telepített data gateway jelszava | 
+   | **Átjáró** | Igen | <*telepített átjáró-neve*> | A korábban telepített átjáró neve | 
    ||| 
 
-6. Miután megadta a kapcsolat adatai, válassza ki a **létrehozása**. 
+1. Ha elkészült, kattintson a **Létrehozás** gombra. 
 
-   A Logic Apps konfigurálja, és teszteli a hálózati kapcsolatot, annak biztosítása, hogy a kapcsolat megfelelően működik-e. 
+   A Logic Apps konfigurálja, és teszteli a kapcsolatot, és gondoskodik róla, hogy, hogy a kapcsolat megfelelően működik-e. 
    Ha a kapcsolat megfelelően van beállítva, a művelet, amely a korábban kiválasztott beállítások jelennek meg. 
-   A fájl system-összekötő mostantól készen áll a használatra.
 
-7. Állítsa be a **létrehozás fájl** a fájlok másolását Dropbox a gyökérmappában található, a helyszíni fájlmegosztásba a műveletet.
+1. Az a **fájl létrehozása** művelet, adja meg a részleteket a fájlok másolása a Dropboxból a helyszíni-fájlmegosztás gyökérmappájában. Az előző lépésekből kimenetek hozzáadásához kattintson a mezők, és válassza ki az elérhető mezők, amikor a dinamikus tartalmak listája jelenik meg.
 
    ![Fájl művelet létrehozása](media/logic-apps-using-file-connector/create-file-filled.png)
 
-8. Ez a művelet számára a fájlok másolása után egy e-mailt küld, így az új fájl megfelelő felhasználók funkcióját, az Outlook művelet hozzáadása. Adja meg a címzetteket, cím és az e-mail. 
+1. Most, hogy egy e-mailt küld, hogy a megfelelő felhasználók tudják, az új fájl kapcsolatos Outlook művelet hozzáadása lehetőséget. Adja meg a címzetteket, cím és az e-mail törzse. A vizsgálat, használhatja a saját e-mail-címét.
 
-   Az a **dinamikus tartalom** listában adatok kimenetek közül választhat a fájl összekötő, hozzáadhat további részleteket az e-mailt.
+   ![E-mail küldése műveletet](media/logic-apps-using-file-connector/send-email.png)
 
-   ![Küldjön e-mailek művelet](media/logic-apps-using-file-connector/send-email.png)
+1. Mentse a logikai alkalmazást. Tesztelje az alkalmazás egy fájl feltöltése a Dropboxba. 
 
-9. Mentse a logikai alkalmazást. Tesztelje az alkalmazás feltölteni a fájlt a dropbox alkalmazásba. A helyszíni fájlmegosztáshoz beolvasása átmásolhatja a fájlt, és a műveletekre vonatkozó e-mailt kell kapnia.
+   A logikai alkalmazás kell a helyszíni fájlmegosztási másolja a fájlt, és a másolt fájl e-mail küldése a címzetteknek.
 
-Gratulálunk, most már rendelkezik egy működő logikai alkalmazás, amely képes csatlakozni a helyszíni fájlrendszer. 
+## <a name="connector-reference"></a>Összekötő-referencia
 
-Próbálja meg az összekötő kínál, például más elavuló felfedezése:
-
-- Fájl létrehozása
-- Mappában lévő fájlok listázása
-- Fájl hozzáfűzése
-- Fájl törlése
-- Fájl tartalmának beolvasása
-- Fájl tartalmának beolvasása elérési út segítségével
-- Fájl metaadatainak beolvasása
-- Fájlmetaadatok beolvasása elérési út segítségével
-- Gyökérmappában lévő fájlok listázása
-- Fájl frissítése
-
-## <a name="view-the-swagger"></a>A swagger megtekintése
-
-Tekintse meg a [részletek swagger](/connectors/fileconnector/). 
+További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/fileconnector/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* Azure Logic Apps alkalmazások és összekötők tökéletesítése céljából szavazhatnak, vagy küldje el a következő ötleteket a [Azure Logic Apps User Voice hely](http://aka.ms/logicapps-wish).
+* Szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, szavazzon vagy küldje el javaslatait a [Azure Logic Apps felhasználói visszajelzési webhelyen](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Csatlakozás helyszíni adatokhoz](../logic-apps/logic-apps-gateway-connection.md) 
-* [Logikai alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Vállalati integrációs B2B forgatókönyvek esetén](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* Ismerje meg, hogyan [csatlakozás helyszíni adatokhoz](../logic-apps/logic-apps-gateway-connection.md) 
+* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)

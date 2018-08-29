@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/10/2018
+ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 7138fa70c8b5615ad84196703f3bd76009ba5811
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 2fdd574adf3587f11984bee2a2549d9bcd0c4c0d
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008845"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126005"
 ---
 # <a name="azure-data-box-disk-system-requirements-preview"></a>Az Azure Data Box-lemezek rendszerkövetelmények (előzetes verzió)
 
@@ -40,7 +40,8 @@ A támogatott operációs rendszerek listáját itt van a lemez zárolásának f
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2-BEN <br> 2016 |
 | Windows |7, 8, 10 |
 | Windows PowerShell |4.0 |
-| .NET-keretrendszer |4.5 |
+| .NET-keretrendszer |4.5.1 |
+| Windows Management Framework |4.0|
 
 > [!NOTE] 
 > A lemez futtató ügyfeleken engedélyezni kell a BitLocker eszköz feloldásához, és segítségével az adatok másolása.

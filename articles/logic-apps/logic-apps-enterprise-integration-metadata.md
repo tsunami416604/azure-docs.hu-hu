@@ -1,71 +1,66 @@
 ---
-title: Integráció fiók összetevő metaadat - Azure Logic Apps alkalmazásokat kezeléséhez |} Microsoft Docs
-description: Adja hozzá vagy integrációs fiókok az Azure Logic Apps összetevő metaadatok lekérése
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: Integrációs fiók összetevő metaadatai – Azure Logic Apps-alkalmazások kezelése |} A Microsoft Docs
+description: Adjon hozzá vagy összetevő metaadatai lekérése az Azure Logic Apps Enterprise Integration Pack-integrációs fiókok
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 02/23/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 3e7ef6aef9bc1062ae0f76adfbaf086961fcaa94
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 537014c2780fe94cfb35806759f8bcbd974c4c95
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298365"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128803"
 ---
-# <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>Integrációs fiókok logic Apps alkalmazásokat a hitelesítendő metaadatok kezelése
+# <a name="manage-artifact-metadata-from-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>Összetevő metaadatai kezelése az Azure Logic Apps Enterprise Integration Pack-integrációs fiókok
 
-Integrációs fiókok egyéni metaadatait az összetevők ad meg, és a metaadatok lekérése futtatás során a logikai alkalmazásnak. Például megadhatja összetevők, például a partnerek, egyezmények, sémák és a maps - metaadatait az összes tároló metaadatainak kulcs-érték párokat használ. 
+Egyéni összetevők metaadatainak megadása az integrációs fiókok, és a metaadatok lekérése során a logikai alkalmazás. Például megadhatja metaadat-összetevők, például a partnerek, szerződések, sémákat és a maps - kulcs-érték párok metaadatait az összes áruház. 
 
-## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>Integrációs fiókok lévő metaadatok hozzáadása
+## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>Adja hozzá a metaadatokat az összetevőket az integrációs fiókok
 
-1. Az Azure-portálon hozzon létre egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md).
+1. Az Azure Portalon hozzon létre egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md).
 
-2. Adja hozzá az összetevő integrációs fiókjába, egy [partner](logic-apps-enterprise-integration-partners.md), [megállapodás](logic-apps-enterprise-integration-agreements.md), vagy [séma](logic-apps-enterprise-integration-schemas.md).
+2. Adja hozzá például egy összetevő az integrációs fiók, amely egy [partner](logic-apps-enterprise-integration-partners.md), [szerződés](logic-apps-enterprise-integration-agreements.md), vagy [séma](logic-apps-enterprise-integration-schemas.md).
 
-3. Válassza ki a összetevő, válassza a **szerkesztése**, és írja be a metaadatok adatait.
+3. Válassza ki a lehívandó összetevő, válassza a **szerkesztése**, és adja meg a metaadatok részleteit.
 
    ![Adja meg a metaadatok](media/logic-apps-enterprise-integration-metadata/image1.png)
 
-## <a name="retrieve-metadata-from-artifacts-for-logic-apps"></a>A logic apps összetevőkhöz metaadatok lekérése
+## <a name="retrieve-metadata-from-artifacts-for-logic-apps"></a>Metaadatok beolvasása a logic apps összetevők
 
-1. Az Azure-portálon hozzon létre egy [logikai alkalmazás](quickstart-create-first-logic-app-workflow.md).
+1. Az Azure Portalon hozzon létre egy [logikai alkalmazás](quickstart-create-first-logic-app-workflow.md).
 
-2. Hozzon létre egy [integrációs fiókjába a Logic Apps alkalmazást kapcsolatot](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
+2. Hozzon létre egy [hivatkozásra a logikai alkalmazás az integrációs fiókba](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
 
-3. Logic App Designer, adja hozzá egy eseményindító például **kérelem** vagy **HTTP** a logikai alkalmazáshoz.
+3. A Logikaialkalmazás-tervezőben, mint trigger hozzáadása **kérelem** vagy **HTTP** a logikai alkalmazáshoz.
 
-4. Válassza ki az eseményindító **új lépés** > **művelet hozzáadása**. Keresse meg a "integrációs fiók", így található, és válassza ki ezt a műveletet: **integrációs fiók - integráció összetevő Fiókkeresés**
+4. Az eseményindító területén válassza a **új lépés** > **művelet hozzáadása**. Keressen a "integrációs fiók" úgy keresheti meg és válassza ki a következő műveletet: **integrációs fiók – integrációs fiók Összetevőkeresése**
 
-   ![Válassza ki az integráció összetevő Fiókkeresés](media/logic-apps-enterprise-integration-metadata/image2.png)
+   ![Válassza ki az integrációs fiók Összetevőkeresése](media/logic-apps-enterprise-integration-metadata/image2.png)
 
-5. Válassza ki a **összetevő típus** , és adja meg a **Adatösszetevőt nevét**. Példa:
+5. Válassza ki a **Összetevőtípussal** , és adja meg a **összetevőnév**. Példa:
 
-   ![Összetevő típusa, és adja meg az összetevő neve](media/logic-apps-enterprise-integration-metadata/image3.png)
+   ![Válassza ki az összetevő típusa, és adja meg az összetevő neve](media/logic-apps-enterprise-integration-metadata/image3.png)
 
-## <a name="example-retrieve-partner-metadata"></a>Példa: Beolvasni az erőforráspartner adatokat
+## <a name="example-retrieve-partner-metadata"></a>Példa: Lekérése partner metaadatok
 
-Tegyük fel, hogy az adott partnert rendelkezik, a metaadatok `routingUrl` részletek:
+Tegyük fel, hogy a partnerek számára a metaadat- `routingUrl` részletei:
 
 ![Partner "routingURL" metaadatok keresése](media/logic-apps-enterprise-integration-metadata/image6.png)
 
-1. A Logic Apps alkalmazást, adja hozzá az eseményindító egy **integrációs fiók - integráció összetevő Fiókkeresés** művelet esetén a partner és egy **HTTP** művelet, például:
+1. A logikai alkalmazást, adja hozzá az eseményindító- **integrációs fiók – integrációs fiók Összetevőkeresése** művelet esetén a partner, és a egy **HTTP** művelet, például:
 
-   ![A Logic Apps alkalmazást eseményindító, a keresési összetevő és a HTTP-művelet hozzáadása](media/logic-apps-enterprise-integration-metadata/image4.png)
+   ![Az eseményindító összetevőkeresése és HTTP-művelet hozzáadása a logikai alkalmazás](media/logic-apps-enterprise-integration-metadata/image4.png)
 
-2. Beolvasása az URI a Logic App Designer eszköztáron kattintson a **kódnézetben** a logikai alkalmazásnak. A logic app-definíciót a példához hasonlóan kell kinéznie:
+2. Az URI-t, a Logikaialkalmazás-Tervező eszköztáron lekéréséhez válassza **Kódnézet** a logikai alkalmazás. A logikai alkalmazás definíciójának példához hasonlóan kell kinéznie:
 
-   ![Keresési keresési](media/logic-apps-enterprise-integration-metadata/image5.png)
+   ![Search keresési](media/logic-apps-enterprise-integration-metadata/image5.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a megállapodások](logic-apps-enterprise-integration-agreements.md)
+* [További tudnivalók a szerződések](logic-apps-enterprise-integration-agreements.md)

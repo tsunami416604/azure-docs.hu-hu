@@ -8,24 +8,30 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: 46cb9eaee1d56a96801065ae0a349aa0b1be85e0
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 671e18346651a40d7f286e984117ce0c9ae62364
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/28/2018
-ms.locfileid: "43115246"
+ms.locfileid: "43125969"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Az Azure Databricks-fürtök esetén a regionális vészhelyreállítás
 
 Ez a cikk ismerteti a vész helyreállítási-architektúra az Azure Databricks-fürtök esetén hasznos, és a lépések elvégzéséhez a tervező.
 
-## <a name="control-plan-architecture"></a>Vezérlési tervet architektúra
+## <a name="azure-databricks-overview"></a>Az Azure Databricks áttekintése
 
-Magas szintű, az Azure Portalról az Azure Databricks-munkaterület létrehozásakor egy [kezelt készülék](../managed-applications/overview.md) van üzembe helyezve egy Azure-erőforrást az előfizetésében található a kiválasztott Azure-régiót (például USA nyugati RÉGIÓJA). A készülék üzemel egy [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) együtt egy [hálózati biztonsági csoport](../virtual-network/manage-network-security-group.md) és a egy Azure Storage-fiókot, az előfizetésben elérhető. A virtuális hálózat szegélyhálózat-alapú biztonság a Databricks-munkaterülethez biztosít, és a hálózati biztonsági csoport használatával védett. A munkaterületen belül a Databricks-fürt azáltal, hogy a feldolgozói és VM-típus illesztőprogram és Databricks futtatókörnyezet-verziója hozhat létre. A megőrzött adatok a storage-fiók, amely lehet az Azure Blob Storage vagy az Azure Data Lake Store érhető el. A fürt létrehozása után futtathat feladatokat notebookokat, a REST API-k, ODBC/JDBC végpontok keresztül az adott fürt csatolásával.
+Az Azure Databricks egy gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatása. A big data-adatcsatornák, a data (raw vagy strukturált) az Azure-bA az Azure Data Factory használatával a kötegekben betöltött, vagy streamelt adatok közel valós Kafka, Event Hub vagy az IoT Hub. Ezen adatok földek terület a hosszú távú egy data lake storage, az Azure Blob Storage vagy az Azure Data Lake Storage állandó. Az elemzési munkafolyamat részeként használhatja az Azure Databricks több adatforrás adatainak olvasására például [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [Azure Cosmos DB](../cosmos-db/index.yml) , vagy [Azure SQL Data Warehouse](../sql-data-warehouse/index.md) és a Spark használatával áttörést jelentő insightsba kapcsolja.
 
-A Databricks vezérlősík kezeli, és figyeli a Databricks-munkaterület környezet. Minden felügyeleti művelet, például a fürt létrehozása kezdődik, a Vezérlősík. Minden metaadatait, ütemezett feladatok, például az Azure-adatbázis, a georeplikáció hibatűrése tárolódik.
+![Databricks-folyamat](media/howto-regional-disaster-recovery/databricks-pipeline.png)
 
-![Databricks vezérlési sík architektúra](media/howto-regional-disaster-recovery/databricks-control-plane.png)
+## <a name="azure-databricks-architecture"></a>Az Azure Databricks-architektúra
+
+Magas szintű, az Azure Portalról az Azure Databricks-munkaterület létrehozásakor egy [kezelt készülék](../managed-applications/overview.md) van üzembe helyezve egy Azure-erőforrást az előfizetésében, a kiválasztott Azure-régióban (például USA nyugati RÉGIÓJA). A készülék üzemel egy [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) együtt egy [hálózati biztonsági csoport](../virtual-network/manage-network-security-group.md) és a egy Azure Storage-fiókot, az előfizetésben elérhető. A virtuális hálózat szegélyhálózat-alapú biztonság a Databricks-munkaterülethez biztosít, és a hálózati biztonsági csoport használatával védett. A munkaterületen belül a Databricks-fürtök azáltal, hogy a feldolgozói és VM-típus illesztőprogram és Databricks futtatókörnyezet-verziója hozhat létre. A megőrzött adatok a storage-fiók, amely lehet az Azure Blob Storage vagy az Azure Data Lake Store érhető el. A fürt létrehozása után futtathat feladatokat notebookokat, a REST API-k, ODBC/JDBC végpontok keresztül az adott fürt csatolásával.
+
+A Databricks vezérlősík kezeli, és figyeli a Databricks-munkaterület környezet. Minden felügyeleti művelet, például a fürt létrehozása kezdődik, a vezérlősík. Minden metaadatait, ütemezett feladatok, például az Azure-adatbázis, a georeplikáció hibatűrése tárolódik.
+
+![Databricks-architektúra](media/howto-regional-disaster-recovery/databricks-architecture.png)
 
 Ez az architektúra előnye egyik célja, hogy felhasználók csatlakozhatnak az Azure Databricks bármely tárolási erőforrás-fiókjukban. Egy fő előnye, hogy mindkettő (az Azure Databricks) számítási és a tárolás egymástól függetlenül skálázhatók.
 
@@ -243,7 +249,7 @@ A saját regionális katasztrófa utáni helyreállítás topológia létrehozá
 
 7. **Szalagtárak áttelepítése**
 
-   Jelenleg nincs egyszerű mód kódtárak áttelepíteni egy munkaterületről egy másikra. Telepítse újra ezeket a kódtárakat, az új munkaterületet. Ezért ez a lépés csak a manuális. Ez akkor lehetséges, együttes használatával automatizálható [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) egyéni kódtárak feltöltéséhez a munkaterületre, és [kódtárak CLI](https://github.com/databricks/databricks-cli#libraries-cli).
+   Jelenleg nincs egyszerű mód kódtárak áttelepíteni egy munkaterületről egy másikra. Ehelyett telepítse újra ezeket a kódtárakat az új munkaterületre manuálisan. Lehetséges együttes használatával automatizálható [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) egyéni kódtárak feltöltéséhez a munkaterületre, és [kódtárak CLI](https://github.com/databricks/databricks-cli#libraries-cli).
 
 8. **Az Azure blob storage-bA migrálhatja, és csatlakoztatja az Azure Data Lake Store**
 
@@ -251,7 +257,7 @@ A saját regionális katasztrófa utáni helyreállítás topológia létrehozá
 
 9. **Fürt init parancsfájlok áttelepítése**
 
-   Minden olyan fürt inicializációs szkriptjeinek telepíthető át régi új munkaterület használatával a [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Először másolja a szükséges szkriptek a "dbfs: / dat abricks/init /...", a helyi számítógépére vagy virtuális gépén. Ezután másolja ezeket a szkripteket, ugyanazt az utat az új munkaterülethez.
+   Minden olyan fürt inicializációs szkriptjeinek telepíthető át régi új munkaterület használatával a [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Először másolja a szükséges szkriptek a `dbfs:/dat abricks/init/..` a helyi számítógépére vagy virtuális gép. Ezután másolja ezeket a szkripteket, ugyanazt az utat az új munkaterülethez.
 
    ```bash
    // Primary to local

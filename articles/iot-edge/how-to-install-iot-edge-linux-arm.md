@@ -1,26 +1,28 @@
 ---
-title: Az Azure IoT Edge telepítése Linux rendszeren |} A Microsoft Docs
-description: Az Azure IoT Edge telepítési utasításokat a ARM32 Linux rendszeren
+title: Telepítse az Azure IoT Edge a Linux ARM32 |} A Microsoft Docs
+description: Az Azure IoT Edge telepítési utasításokat a linuxon futó ARM32 eszközökön, például a Raspberry PI
 author: kgremban
 manager: timlt
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 7720e0471c6d8f2ba20f28753773829a28f93c7a
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3f4e914f12feab3c36fca604c1bb37ab1a61b66f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055524"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127225"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (ARM32v7/armhf) Linux rendszeren
 
-Az Azure IoT Edge-futtatókörnyezet minden IoT Edge-eszközön van telepítve. Három összetevőből áll. A **IoT Edge biztonsági démon** biztosít, és fenntartja az Edge-eszközön a biztonsági követelményeknek. A démon a naplózásra kerül minden rendszerindításkor elindul, és csatlakoztatja az eszközt az IoT Edge-ügynök elindításával. A **IoT Edge-ügynök** elősegíti a központi telepítési és figyelési modulja a peremhálózati eszközön, beleértve az IoT Edge hubot. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli.
+Az Azure IoT Edge-futtatókörnyezet az eszköz milyen bekapcsolja az IoT Edge-eszköz. A futtatókörnyezet kis Raspberry Pi-t vagy akkora, mint egy ipari kiszolgáló eszközökön is telepíthető. Miután egy eszközt az IoT Edge-futtatókörnyezet van beállítva, a üzembe helyezése a üzleti logika, hogy a felhőben is elindítható. 
 
-Ez a cikk a Linux ARM32v7/armhf Edge-eszközön (például a Raspberry Pi) az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel.
+Az IoT Edge-futtatókörnyezet működését, és milyen összetevők járnak kapcsolatos további információkért lásd: [megismerheti az Azure IoT Edge-futtatókörnyezet és az architektúrára](iot-edge-runtime.md).
+
+Ez a cikk a Linux ARM32v7/armhf Edge-eszközön az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel. Például ezeket a lépéseket a Raspberry Pi-eszközök esetében akkor működik. Tekintse meg [Azure IoT Edge-támogatás](support.md#operating-systems) által jelenleg támogatott ARM32 operációs rendszerek listáját. 
 
 >[!NOTE]
 >A Linux-szoftver tárházakban csomagok feltételei vonatkoznak rá a licenc minden csomagban található (/ usr/megosztása/docs/*csomagnév –*). Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
@@ -31,7 +33,7 @@ Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis] [ lnk-oci] tároló-futtat
 
 Az alábbi parancsokat a Moby-alapú motor és a parancssori felület (CLI) telepítése. A parancssori felület az éles környezetekben üzemelő példányok esetén nem kötelező, de hasznos, ha fejlesztési.
 
-```cmd/sh
+```bash
 
 # You can copy the entire text from this code block and 
 # paste in terminal. The comment lines will be ignored.
@@ -49,7 +51,10 @@ sudo apt-get install -f
 
 ## <a name="install-the-iot-edge-security-daemon"></a>Az IoT Edge biztonsági démon telepítése
 
-```cmd/sh
+A **IoT Edge biztonsági démon** biztosít, és fenntartja az Edge-eszközön a biztonsági követelményeknek. A démon a naplózásra kerül minden rendszerindításkor elindul, és csatlakoztatja az eszközt az IoT Edge-futtatókörnyezet a többi elindításával. 
+
+
+```bash
 # You can copy the entire text from this code block and 
 # paste in terminal. The comment lines will be ignored.
 
@@ -63,18 +68,26 @@ curl -L https://aka.ms/iotedged-linux-armhf-latest -o iotedge.deb && sudo dpkg -
 sudo apt-get install -f
 ```
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Az Azure IoT Edge biztonsági démon konfigurálása
+## <a name="connect-your-device-to-an-iot-hub"></a>Az eszköz csatlakoztatása az IoT hub 
 
+Állítsa be az IoT Edge-futtatókörnyezet, a fizikai eszköz, amely az Azure IoT hub eszközidentitás-mutató hivatkozást. 
 
 A démon a konfigurációs fájlban a következő konfigurálható `/etc/iotedge/config.yaml`. A fájl írásvédett alapértelmezés szerint, szükség lehet emelt szintű engedélyekkel a szerkesztéshez.
+
+Egy adott IoT Edge-eszköz kiépítése az IoT Hub által biztosított eszközök kapcsolatok karakterlánc segítségével manuálisan. Másik lehetőségként használhatja a Device Provisioning Service-eszközök automatikus kiépítésére, amely akkor hasznos, ha sok eszköz kiépítéséhez van. Üzembe helyezési válaszaitól függően válassza ki a megfelelő telepítési parancsfájlt. 
+
+### <a name="option-1-manual-provisioning"></a>1. lehetőség: Manuális kiépítése
+
+A manuális üzembe helyezi az eszközt, meg kell adnia azt egy [eszköz kapcsolati karakterláncának] [ lnk-dcs] , hogy egy új eszköz regisztrációja az IoT hub létrehozásához.
+
+
+Nyissa meg a konfigurációs fájlban. 
 
 ```bash
 sudo nano /etc/iotedge/config.yaml
 ```
 
-A peremhálózati eszköz segítségével manuálisan konfigurálható a [eszköz kapcsolati karakterláncának] [ lnk-dcs] vagy [automatikusan a Device Provisioning Service használatával] [ lnk-dps].
-
-* A kézi konfigurálás, állítsa vissza a **manuális** üzembe helyezési mód. Frissítse az értéket a **device_connection_string** a kapcsolati karakterlánccal az IoT Edge-eszközről.
+Keresse meg az üzembe helyezési fájl, és vonja vissza a **manuális** üzembe helyezési mód. Frissítse az értéket a **device_connection_string** a kapcsolati karakterlánccal az IoT Edge-eszközről.
 
    ```yaml
    provisioning:
@@ -88,7 +101,27 @@ A peremhálózati eszköz segítségével manuálisan konfigurálható a [eszkö
    #   registration_id: "{registration_id}"
    ```
 
-* Az automatikus konfiguráláshoz, állítsa vissza a **dps** üzembe helyezési mód. Frissítse a **scope_id** és **registration_id** az IoT Hub-DPS példány és az IoT Edge-eszköz TPM Modullal rendelkező értékeivel. 
+Mentse és zárja be a fájlt. 
+
+   `CTRL + X`, `Y`, `Enter`
+
+Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon újraindításához:
+
+```bash
+sudo systemctl restart iotedge
+```
+
+### <a name="option-2-automatic-provisioning"></a>2. lehetőség: Az Automatikus kiépítés
+
+Automatikus kiépítésére egy eszközt, [Device Provisioning Service beállítása és lekérése a regisztrációs Eszközazonosító][lnk-dps]. Csak olyan eszközökre, amelyeken egy platformmegbízhatósági modul (TPM) lapka automatikus üzembe helyezés működik. Például Raspberry Pi-eszközök nem biztosítja a TPM-hez alapértelmezés szerint. 
+
+Nyissa meg a konfigurációs fájlban. 
+
+```bash
+sudo nano /etc/iotedge/config.yaml
+```
+
+Keresse meg az üzembe helyezési fájl, és vonja vissza a **dps** üzembe helyezési mód. Frissítse a **scope_id** és **registration_id** az IoT Hub Device Provisioning service és az IoT Edge-eszköz TPM Modullal rendelkező értékeivel. 
 
    ```yaml
    # provisioning:
@@ -106,14 +139,12 @@ Mentse és zárja be a fájlt.
 
    `CTRL + X`, `Y`, `Enter`
 
-Miután megadta a kiépítési adatokat a konfigurációban, a démon újraindításához:
+Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon újraindításához:
 
-```cmd/sh
+```bash
 sudo systemctl restart iotedge
 ```
 
->[!TIP]
->Futtassa emelt szintű jogosultságok szükségesek `iotedge` parancsokat. Jelentkezzen ki a gépet, és jelentkezzen be az IoT Edge-modul telepítése után először, az engedélyek automatikusan frissülnek. Addig használja **sudo** elé a parancsokat. 
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 
@@ -121,28 +152,31 @@ Ha használta a **manuális konfigurációs** az előző szakasz lépéseit, az 
 
 Az IoT Edge-démon használatával állapotát ellenőrizheti:
 
-```cmd/sh
+```bash
 systemctl status iotedge
 ```
 
 Vizsgálja meg a démon naplóit használatával:
 
-```cmd/sh
+```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
 És futó rendelkező modulok listája:
 
-```cmd/sh
+```bash
 sudo iotedge list
 ```
->[!NOTE]
->Az erőforrás által korlátozott eszközök, például RaspberryPi, azt javasoljuk, hogy *OptimizeForPerformance* környezeti változó értéke *hamis* az utasításoknak a [ hibaelhárítási útmutató.][lnk-trouble]
 
+## <a name="tips-and-suggestions"></a>Tippek és javaslatok
+
+Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. A modul telepítése után jelentkezzen ki a gépet, és jelentkezzen be újra az engedélyek automatikusan frissíti a. Addig használja **sudo** elé bármely `iotedge` a parancsokat.
+
+A korlátozott erőforráshoz eszközökön, azt javasoljuk, hogy beállította a *OptimizeForPerformance* környezeti változót, *hamis* az utasításoknak a [hibaelhárítási útmutató ][lnk-trouble].
 
 ## <a name="next-steps"></a>További lépések
 
-Ha az Edge-futtatókörnyezet telepítése megfelelően, a kivétel a problémák merülnek fel a [hibaelhárítási] [ lnk-trouble] lap.
+Ha az Edge-futtatókörnyezet megfelelően telepíti a problémák merülnek fel, tekintse meg a [hibaelhárítási] [ lnk-trouble] lapot.
 
 <!-- Links -->
 [lnk-dcs]: how-to-register-device-portal.md

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 8/27/2018
 ms.author: sashan
-ms.openlocfilehash: 2fe27f93bb48e0581902fd380813c878a4883a5c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c0fa4a9868aa19032888aa50a0d300dd2e88fcca
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056897"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124817"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
@@ -47,7 +47,7 @@ Always ON előnyeit egyike, hogy a replika mindig a tranzakciós szempontból ko
 
 ## <a name="connecting-to-a-read-only-replica"></a>Csatlakozás egy csak olvasható replika
 
-Olvasási horizontális Felskálázás egy adatbázis engedélyezésekor a `ApplicationIntent` az ügyfél által megadott kapcsolati karakterlánc található a beállítás szabja meg,-e a kapcsolat az írható replikával, vagy egy csak olvasási replikára irányítja-e. Pontosabban Ha a `ApplicationIntent` érték `ReadWrite` (az alapértelmezett érték), a rendszer átirányítja a kapcsolatot az adatbázis írható-olvasható replika. Ez megegyezik a létező esetén. Ha a `ApplicationIntent` érték `ReadOnly`, a kapcsolat olvasható replika lesz irányítva.
+Olvasási horizontális Felskálázás egy adatbázis engedélyezésekor a `ApplicationIntent` az ügyfél által megadott kapcsolati karakterlánc található a beállítás szabja meg,-e a kapcsolat az írható replikával, vagy egy csak olvasási replikára irányítja-e. Pontosabban Ha a `ApplicationIntent` érték `ReadWrite` (az alapértelmezett érték), a rendszer átirányítja a kapcsolatot az adatbázis írható-olvasható replika. Ez megegyezik a létező esetén. Ha a `ApplicationIntent` érték `ReadOnly`, a kapcsolat csak olvasható replika lesz irányítva.
 
 A következő kapcsolati karakterlánc például az ügyfél csatlakozik egy csak olvasható replika (cserélje le a csúcsos zárójeleket található elemek a környezetének megfelelő értékekkel és a csúcsos zárójeleket elvetése):
 

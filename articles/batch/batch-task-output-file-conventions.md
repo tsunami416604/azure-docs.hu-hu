@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d86a8fcd1dc85ccacea91afe36cb39dabe10464
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 0b4ff1799f77581452859d1dbc0e6e9cc47062e4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117594"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128049"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>A Batch File Conventions-könyvtárral az Azure Storage-feladatok és tevékenységek adatok megőrzése a .NET-hez 
 
@@ -49,7 +49,7 @@ Ha a forgatókönyv eltér a fent felsoroltak, szükség lehet érdemes lehet el
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Mi a standard szintű Batch File Conventions?
 
-A [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) egy elnevezési sémát kínál a cél-tárolók és a blob elérési útjának, amelyhez írja a kimeneti fájlt. Az Azure Storage, amelyek igazodnak a File Conventions standard megőrzött fájlok megtekintése az Azure Portalon automatikusan elérhető. A portál felismeri az elnevezési konvenciót, és így tudja megjeleníteni, amelyek igazodnak, fájlok.
+A [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) egy elnevezési sémát kínál a cél-tárolók és a blob elérési útjának, amelyhez írja a kimeneti fájlt. Az Azure Storage, amelyek igazodnak a File Conventions standard megőrzött fájlok megtekintése az Azure Portalon automatikusan elérhető. A portál felismeri az elnevezési konvenciót, és így tudja megjeleníteni, amelyek igazodnak, fájlok.
 
 A .NET-keretrendszerhez készült File Conventions-könyvtárral automatikusan nevet, a storage-tárolók és a feladat kimeneti fájlokat a File Conventions szabvány szerint. A File Conventions-könyvtárral is biztosít metódusokat lekérdezni a kimeneti fájlok megfelelően Feladatazonosító, tevékenység azonosítója vagy célú Azure Storage-ban.   
 
@@ -201,7 +201,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>Kimeneti fájlok megtekintése az Azure Portalon
 
-Az Azure portal megjeleníti a feladat kimeneti fájljait, és naplóival, amelyeket a rendszer megőrzi a egy társított Azure Storage-fiók használatával a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Meg lehet valósítani a konvenciók saját maga a nyelv az Ön által választott, vagy használhatja a File Conventions-könyvtárral, a .NET-alkalmazásokban.
+Az Azure portal megjeleníti a feladat kimeneti fájljait, és naplóival, amelyeket a rendszer megőrzi a egy társított Azure Storage-fiók használatával a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Meg lehet valósítani a konvenciók saját maga a nyelv az Ön által választott, vagy használhatja a File Conventions-könyvtárral, a .NET-alkalmazásokban.
 
 Ahhoz, hogy a megjelenített, a kimeneti fájlok a portálon, akkor a következő követelményeknek kell megfelelnie:
 

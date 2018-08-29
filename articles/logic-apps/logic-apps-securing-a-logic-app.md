@@ -1,94 +1,90 @@
 ---
-title: Biztonságos hozzáférés a Azure Logic Apps |} Microsoft Docs
-description: Adja hozzá a biztonsági védelmének eseményindítók, bemeneti és kimeneti, művelet paramétereinek és a munkafolyamatok az Azure Logic Apps szolgáltatás elérésére.
+title: Biztonságos hozzáférés az Azure Logic Apps |} A Microsoft Docs
+description: Azure Logic Apps eseményindítók, bemenetek és kimenetek, műveleti paraméterek és a munkafolyamatokban szolgáltatások elérésének védelme
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
+ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
 ms.date: 11/22/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 2052e58dab7241836409fb013778f9702004021c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fc4fdff5080e6ebe13850157e8d560a1d31e7719
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299909"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127479"
 ---
-# <a name="secure-access-to-your-logic-apps"></a>Biztonságos hozzáférés a logic Apps alkalmazásait
+# <a name="secure-access-in-azure-logic-apps"></a>Biztonságos hozzáférés az Azure Logic Appsben
 
-Nincsenek elérhető segítségével biztosíthatja a Logic Apps alkalmazást sok eszköz.
+Itt módon, hogy különböző összetevőihez hozzáféréssel biztosíthatja a logikai alkalmazásban:
 
-* Logikai alkalmazás (HTTP kérelem eseményindító) való hozzáférés biztosítása
-* Kezelése, szerkesztése vagy olvassa el a logikai alkalmazás hozzáférésének biztonságossá tétele
-* A Futtatás bemenetekhez és kimenetekhez tartalmát való hozzáférés biztosítása
-* Paraméterek vagy a műveletek a munkafolyamat belül biztonságossá tétele
-* Kéréseket fogadni a munkafolyamat-szolgáltatásokhoz való hozzáférés biztonságossá tétele
+* Biztonságos hozzáférés a logikai alkalmazás munkafolyamatának indítására, a HTTP-kérés eseményindító.
+* Biztonságos hozzáférés a kezelése, szerkesztési és olvasó egy logikai alkalmazást.
+* Tegye biztonságossá a logikai alkalmazás futtatását a tartalmának bemeneteit és kimeneteit belül való hozzáférést.
+* Biztonságos paraméterek vagy a logikai alkalmazás munkafolyamatának a műveletek bemenetei között.
+* Biztonságos hozzáférés a szolgáltatások, amelyek a logikai alkalmazás munkafolyamatának kéréseket fogadni.
 
-## <a name="secure-access-to-trigger"></a>Biztonságos hozzáférés a indítás
+## <a name="secure-access-to-trigger"></a>Biztonságos hozzáférés a-trigger
 
-Használata esetén a logikai alkalmazás, amely akkor következik be, a HTTP-kérelem ([kérelem](../connectors/connectors-native-reqres.md) vagy [Webhook](../connectors/connectors-native-webhook.md)), korlátozhatja a hozzáférést, hogy csak az arra jogosult ügyfelek is érvényesítést a logikai alkalmazást. Logikai alkalmazás az összes kérelem titkosítja és védi SSL.
+Használata esetén egy logikai alkalmazást, amely akkor aktiválódik a HTTP-kérés ([kérelem](../connectors/connectors-native-reqres.md) vagy [Webhook](../connectors/connectors-native-webhook.md)), korlátozhatja a hozzáférést, hogy csak az arra jogosult ügyfelek is aktiválódik a logikai alkalmazást. Egy logikai alkalmazást az összes kérelem vannak titkosítva, és SSL-en keresztül biztosított.
 
-### <a name="shared-access-signature"></a>Közös hozzáférésű Jogosultságkódot
+### <a name="shared-access-signature"></a>Közös hozzáférésű Jogosultságkód
 
-Minden logikai alkalmazás kérés végpontja tartalmaz egy [közös hozzáférésű Jogosultságkód (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) az URL-cím részeként. Minden egyes URL-cím tartalmaz egy `sp`, `sv`, és `sig` lekérdezési paraméter. Engedélyek vannak megadva `sp`, és engedélyezett, HTTP-metódus meg `sv` létrehozandó használt verzió és `sig` való hozzáférés hitelesítéséhez használt. Az aláírás generálta az SHA256 algoritmust az URL-cím elérési út és a tulajdonságok a titkos kulccsal. A titkos kulcs soha nem közzétett és közzé, és a titkosított és a logikai alkalmazás tárolt. A Logic Apps alkalmazást csak engedélyezi a titkos kulccsal létrehozott érvényes aláírást tartalmazó eseményindítók.
+Minden logikai alkalmazás kérelem-végpont tartalmaz egy [közös hozzáférésű Jogosultságkód (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) az URL-cím részeként. Minden egyes URL-cím tartalmaz egy `sp`, `sv`, és `sig` lekérdezési paraméter. Engedélyek vannak megadva `sp`, és engedélyezve van, HTTP-metódusok meg `sv` előállításához, használt verzió és `sig` való hozzáférés hitelesítésére szolgál. Az aláírás jön létre az SHA256 algoritmust használ a szereplő URL-cím és a tulajdonságok a titkos kulccsal. A titkos kulcs soha nem közzétett és közzé, és megőrzi a titkosított és a logikai alkalmazás tárolt. A logikai alkalmazás csak engedélyezi eseményindítókat, amelyek tartalmazzák a titkos kulccsal létrehozott érvényes aláírással.
 
-#### <a name="regenerate-access-keys"></a>Tárelérési kulcsok újragenerálása
+#### <a name="regenerate-access-keys"></a>Elérési kulcsok újragenerálása
 
-Új biztonsági kulcsot következő a REST API-t vagy az Azure portálon keresztül bármikor újragenerálás. Az aktuális URL-címet a régi kulccsal korábban létrehozott érvénytelenítve, és nem jogosult az érvényesítést a logikai alkalmazást.
+Új biztonságos kulcs, a REST API-t vagy az Azure portálon keresztül bármikor újból létrehozhatja. Összes aktuális URL-címet a régi kulccsal korábban létrehozott érvénytelenítve, és már nem jogosult a logikai alkalmazás aktiválódik.
 
-1. Nyissa meg a logikai alkalmazást újragenerálja a kulcsot az Azure-portálon
-1. Kattintson a **hívóbetűk** menüpont alatt **beállítások**
-1. Válassza ki a kulcs újbóli létrehozása és a folyamat befejezéséhez
+1. Az Azure Portalon nyissa meg a logikai alkalmazás újragenerálja a kulcsot
+1. Kattintson a **Tárelérési kulcsok** menüpont alatt **beállításai**
+1. Válassza ki a kulcs újragenerálása és a folyamat befejezéséhez
 
-URL-címek lekérése után az új hozzáférési kulcs újragenerálása aláírt esetén.
+URL-címek kérheti le az újbóli létrehozása után az új hozzáférési kulccsal van bejelentkezve.
 
-#### <a name="creating-callback-urls-with-an-expiration-date"></a>A lejárati dátum visszahívási URL-címek létrehozása
+#### <a name="creating-callback-urls-with-an-expiration-date"></a>Visszahívási URL-címek lejárati dátummal létrehozása
 
-Ha az URL-címet oszt meg más felek, a URL-címeket adott kulcsokkal és a lejárati dátumok igény szerint is létrehozhat. Ezután zökkenőmentesen kulcsok visszaállítani, vagy győződjön meg arról, bizonyos timespan hozzáférés az alkalmazás érvényesítést korlátozódik. Adott URL esetén keresztül is megadhat a lejárati dátumot a [REST API-t a logic apps](https://docs.microsoft.com/rest/api/logic/workflowtriggers):
-
-``` http
-POST 
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
-```
-
-A törzsben szereplő tartalmazza a tulajdonságot `NotAfter` karakterláncként JSON dátum, amely adja vissza egy visszahívási URL-címet, amely csak akkor érvényes, amíg a `NotAfter` dátuma és időpontja.
-
-#### <a name="creating-urls-with-primary-or-secondary-secret-key"></a>Elsődleges vagy másodlagos titkos kulccsal URL-címek létrehozása
-
-Létrehozni, vagy a visszahívási kérelem-alapú eseményindítók URL-listában, mely kulcs használatával írják alá az URL-cím is megadható.  Létrehozhat egy URL-cím, egy adott kulcs használatával írja alá a [REST API-t a logic apps](https://docs.microsoft.com/rest/api/logic/workflowtriggers) az alábbiak szerint:
+Ha az URL-címet oszt meg más feleknek, URL-címek az egyedi kulcsok és a lejárati dátumok igény szerint hozhatja létre. Ezután zökkenőmentesen kulcsokat állítja, vagy győződjön meg arról, aktiválódik egy alkalmazást a hozzáférést bizonyos TimeSpan korlátozódik. Lejárati dátum megadása egy URL-cím között a [logic apps – REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers):
 
 ``` http
 POST 
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
 ```
 
-A törzsben szereplő tartalmazza a tulajdonságot `KeyType` , vagyis `Primary` vagy `Secondary`.  Ez visszaadja a megadott biztonságos kulcs által aláírt URL-címet.
+A szövegtörzsben, például a tulajdonság `NotAfter` JSON dátum karakterlánc, amely adja vissza egy visszahívási URL-címet, amely csak akkor érvényes, amíg a `NotAfter` dátuma és időpontja.
+
+#### <a name="creating-urls-with-primary-or-secondary-secret-key"></a>URL-címek elsődleges vagy másodlagos titkos kulcs létrehozása
+
+Amikor készítése, vagy a kérelem-alapú eseményindítók visszahívási URL-címek listája, melyik kulcsot kell bejelentkezhet az URL-cím is megadhatja.  Létrehozhat egy URL-címet, egy adott kulcs használatával írja alá a [logic apps – REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) módon:
+
+``` http
+POST 
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
+```
+
+A szövegtörzsben, például a tulajdonság `KeyType` mert `Primary` vagy `Secondary`.  Ez visszaad egy URL-címet a biztonságos kulcs megadott írja alá.
 
 ### <a name="restrict-incoming-ip-addresses"></a>Bejövő IP-címek korlátozása
 
-A közös hozzáférésű Jogosultságkód mellett Kezdésként korlátozhatja a logikai alkalmazás hívása csak az adott ügyfelektől.  Például ha Ön kezeli a végpont Azure API Management keresztül, korlátozhatja a logikai alkalmazás csak a kérés elfogadása, ha a kérelem érkezik, az API Management példány IP-címről.
+Mellett a közös hozzáférésű Jogosultságkód előfordulhat, hogy korlátozni szeretné csak bizonyos ügyfelek megismernie egy logikai alkalmazást.  Például ha Ön kezeli az Azure API Management szolgáltatáson keresztül a végponthoz, korlátozhatja a logikai alkalmazás csak a kérés elfogadásához, amikor a kérelem érkezik, az API Management példány IP-címről.
 
-Ez a beállítás konfigurálható a logic app beállításokat:
+Ez a beállítás a logikai alkalmazás beállítások konfigurálhatók:
 
-1. Az Azure-portálon nyissa meg a logikai alkalmazást szeretne hozzáadni az IP-címkorlátozások
-1. Kattintson a **munkafolyamat-beállításokat** menüpont alatt **beállítások**
-1. Adja meg az eseményindító fogadja el az IP-címtartományok listáját
+1. Az Azure Portalon nyissa meg a logikai alkalmazást szeretne hozzáadni az IP-címkorlátozások
+1. Kattintson a **munkafolyamat-beállítások** menüpont alatt **beállításai**
+1. Adja meg az IP-címtartományok, fogadja el az eseményindító listája
 
-Egy érvényes IP-címtartomány veszi a formátum `192.168.1.1/255`. Ha azt szeretné, hogy a logikai alkalmazás csak indul el egy beágyazott logikai alkalmazást, válassza a **csak más logic apps** lehetőséget. Ez a beállítás ír üres tömb az erőforrás értelmében csak a saját magát (szülő logic apps) szolgáltatás hívásait sikeresen érvényesítést.
+Érvényes IP-címtartománynak formátuma `192.168.1.1/255`. Ha azt szeretné, hogy a logikai alkalmazás csak akkor aktiválódjanak, mint egy beágyazott logikai alkalmazást, válassza ki a **csak más logikai alkalmazások** lehetőséget. Ez a beállítás ír egy üres tömb az erőforrás jelentése csak hívásait (szülő a logic apps) maga a szolgáltatás sikeresen aktiválódik.
 
 > [!NOTE]
-> Továbbra is futtatható a logikai alkalmazást az kérelem eseményindító a REST API-n keresztül / felügyeleti `/triggers/{triggerName}/run` IP függetlenül. Ebben a forgatókönyvben szükséges hitelesítés engedélyezésébe az Azure REST API, és az összes esemény jelenik meg az Azure-naplózást. Ennek megfelelően beállított hozzáférés-vezérlési házirendek.
+> Továbbra is futtathatja a logikai alkalmazás kérelem-eseményindítóval rendelkező a REST API-n keresztül / felügyeleti `/triggers/{triggerName}/run` IP függetlenül. Ebben a forgatókönyvben az Azure REST API-n hitelesítést igényel, és az összes esemény jelenik meg az Azure-Auditnapló. Ennek megfelelően beállított hozzáférés-vezérlési házirendek.
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Az erőforrás-definíció IP-címtartományok beállítása
+#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Az erőforrás-definíció beállítás IP-címtartományok
 
-Ha használ egy [központi telepítési sablont](logic-apps-create-deploy-template.md) a központi telepítések automatizálásához, az IP-címtartomány beállításait konfigurálhatja az erőforrás-sablont.  
+Ha használ egy [központi telepítési sablont](logic-apps-create-deploy-template.md) az üzembe helyezések automatizálását, az erőforrás-sablon konfigurálható az IP-tartomány beállításait.  
 
 ``` json
 {
@@ -114,34 +110,34 @@ Ha használ egy [központi telepítési sablont](logic-apps-create-deploy-templa
 
 ```
 
-### <a name="adding-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory, az OAuth és az egyéb biztonsági
+### <a name="adding-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory, OAuth vagy más biztonsági hozzáadása
 
-További hitelesítési protokollok fölött egy logikai alkalmazás hozzáadása [Azure API Management](https://azure.microsoft.com/services/api-management/) hatékony monitoring, a biztonsági, a házirend és a tetszőleges végpontot, és ezt teszi közzé az API-k, logikai alkalmazás dokumentációja nyújt. Az Azure API Management is elérhetővé teheti a logikai alkalmazást, hogy az Azure Active Directory, a tanúsítványt, az OAuth vagy a más biztonsági szabványok használ a saját vagy nyilvános végpontja. Amikor egy kérelem érkezik, a Azure API Management továbbítja a kérést a logikai alkalmazás (hajt végre semmilyen szükséges átalakítások vagy üzenetsoroktól korlátozások). Az a logikai alkalmazást a bejövő IP-címtartomány beállítások segítségével engedélyezése csak a logikai alkalmazást az API Management aktiválására.
+Egy logikai alkalmazást, felül további engedélyezési protokollok hozzáadása [Azure API Management](https://azure.microsoft.com/services/api-management/) gazdag monitorozási, biztonsági, a házirend és bármely végpont képessége lehetővé teszi közzé az API-ként logikai alkalmazás dokumentációját. Az Azure API Management tehetők közzé egy nyilvános vagy privát végpontot a logikai alkalmazást, amely az Azure Active Directory, tanúsítvány, OAuth vagy más biztonsági szabványok használatával. Amikor egy kérelem érkezik, a az Azure API Management továbbítja a kérést a logikai alkalmazás (végrehajtása bármilyen szükséges átalakítás vagy korlátozás átvitel alatt). A bejövő IP-címtartomány beállításokat használhatja a a logikai alkalmazás engedélyezése csak a logikai alkalmazás aktiválódik az API Management.
 
 ## <a name="secure-access-to-manage-or-edit-logic-apps"></a>Biztonságos hozzáférés kezeléséhez vagy a logic apps szerkesztése
 
-Hozzáférés a logikai alkalmazás felügyeleti műveleteihez korlátozhatja, hogy csak bizonyos felhasználók vagy csoportok képesek az erőforrás-műveletek végrehajtásához. A Logic apps használata az Azure [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) a beállítást, és testre szabható eszközök.  Az előfizetés tagjai, valamint rendelje hozzá néhány beépített szerepkörök állnak rendelkezésre:
+Hozzáférési műveletek a logikai alkalmazás korlátozhatja, hogy csak adott felhasználók vagy csoportok képesek arra, hogy műveleteket az erőforráson. A Logic apps használata az Azure [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md) funkciót, és ugyanazokat az eszközöket a testre szabható.  Az előfizetés tagjai is hozzárendelhet néhány beépített szerepkörök állnak rendelkezésre:
 
-* **Logic App közreműködői** -megtekintése, szerkesztése és frissítse a logikai alkalmazás hozzáférést biztosít.  Nem lehet eltávolítani az erőforrás, vagy felügyeleti műveleteket.
-* **Logic App operátor** – megtekintheti a logikai alkalmazást és futtatási előzményei, és engedélyezését vagy letiltását.  Nem szerkeszthetők, vagy a definíció frissítése.
+* **A logikai alkalmazás Közreműködője** -megtekintése, szerkesztése és frissíteni a logikai alkalmazás hozzáférést biztosít.  Nem lehet eltávolítani az erőforrást, vagy rendszergazdai műveletek végrehajtására.
+* **Logikai alkalmazás operátora** – megtekintheti a logikai alkalmazás és a futtatási előzmények és engedélyezését vagy letiltását.  Nem szerkeszthetők, vagy a definíció frissítése.
 
-Is [Azure erőforrás-zárolás](../azure-resource-manager/resource-group-lock-resources.md) módosítása vagy törlése a logic apps megelőzése érdekében. Ez a lehetőség akkor hasznos, ha a termelési erőforrások a módosítások és a törlések megakadályozása.
+Is [Azure erőforrás-zárolás](../azure-resource-manager/resource-group-lock-resources.md) módosítása vagy törlése a logic apps elkerülése érdekében. Ez a funkció akkor értékes éles erőforrásait a módosítások és törlések megelőzése érdekében.
 
-## <a name="secure-access-to-contents-of-the-run-history"></a>Biztonságos hozzáférés a tartalmát a futtatási előzményei
+## <a name="secure-access-to-contents-of-the-run-history"></a>Biztonságos hozzáférés a tartalmát, a futtatási előzmények
 
-Hozzáférés az előző fut az adott IP-címtartományokhoz korlátozhatja bemeneti vagy kimeneti tartalmát.  
+Hozzáférés meghatározott IP-címtartományokhoz a korábbi közvetítésekből származó bemeneti vagy kimeneti tartalmát korlátozhatja.  
 
-Egy munkafolyamat sorozaton belül összes adata titkosításra kerül, az átvitel során, és inaktív. Előzmények futtatásához a rendszer telefonhívást indít, amikor a szolgáltatás hitelesíti a kérelmet, és a kérelem-válasz bemenetekhez és kimenetekhez mutató hivatkozásokat tartalmaz. Ez a hivatkozás csak kérések megtekintése a kijelölt IP-címtartomány tartalmat ad vissza a tartalom védelme. Ez a funkció további hozzáférés-vezérléshez is használhatja. Akkor kell megadni egy IP-címet, például `0.0.0.0` , nem sikerült elérni a bemenetek/kimenetek. Csak a személy rendszergazdai jogosultságokkal tudta eltávolítani ezt a korlátozást, lehetőséget biztosít munkafolyamat tartalma "just-in-time" elérésére.
+Egy munkafolyamat-Futtatás belül minden adatot titkosít az átvitel során, míg az inaktív. A futtatási előzmények kezdeményezték, ha a szolgáltatás hitelesíti a kérelmet, és a kérések és válaszok bemeneteit és kimeneteit mutató hivatkozásokat tartalmaz. Ezt a hivatkozást védhetők, így csak a kijelölt IP-címtartományból tartalom megtekintése nagybetűkkel adja vissza a tartalmát. Ez a funkció további hozzáférés-vezérlés is használhat. Akkor is megadhatja az IP-címet, például `0.0.0.0` így senki nem tudott hozzáférni bemenetekben/kimenetekben. Csak valaki rendszergazdai jogosultságokkal rendelkezik sikerült eltávolítani a korlátozás "just-in-time" hozzáférést, a munkafolyamat tartalmát lehetőségét biztosító.
 
-Ezt a beállítást az erőforrás-beállítások, az Azure portál belül kell megadni:
+Ez a beállítás konfigurálható az erőforrás-beállítások az Azure Portal:
 
-1. Az Azure-portálon nyissa meg a logikai alkalmazást szeretne hozzáadni az IP-címkorlátozások
-2. Kattintson a **hozzáférés-vezérlési konfiguráció** menüpont alatt **beállítások**
-3. A tartalmakhoz való hozzáférést az IP-címtartományok listájának megadása
+1. Az Azure Portalon nyissa meg a logikai alkalmazást szeretne hozzáadni az IP-címkorlátozások
+2. Kattintson a **hozzáférés-vezérlési konfiguráció** menüpont alatt **beállításai**
+3. Adja meg a tartalmakhoz való hozzáférést az IP-címtartományok listája
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Az erőforrás-definíció IP-címtartományok beállítása
+#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Az erőforrás-definíció beállítás IP-címtartományok
 
-Ha használ egy [központi telepítési sablont](logic-apps-create-deploy-template.md) a központi telepítések automatizálásához, az IP-címtartomány beállításait konfigurálhatja az erőforrás-sablont.  
+Ha használ egy [központi telepítési sablont](logic-apps-create-deploy-template.md) az üzembe helyezések automatizálását, az erőforrás-sablon konfigurálható az IP-tartomány beállításait.  
 
 ``` json
 {
@@ -166,21 +162,21 @@ Ha használ egy [központi telepítési sablont](logic-apps-create-deploy-templa
 }
 ```
 
-## <a name="secure-parameters-and-inputs-within-a-workflow"></a>Biztonságos paraméterek és a bemenetek egy munkafolyamaton belül
+## <a name="secure-parameters-and-inputs-within-a-workflow"></a>Biztonságos paraméterek és a egy munkafolyamaton belül bemenetek
 
-Előfordulhat, hogy szeretné a telepítési munkafolyamat definícióját egyes funkcióit parametrizálja környezetek között. Egyes paraméterek előfordulhat, hogy is biztonságos paraméterek, akkor nem jelenik meg a munkafolyamat, például egy ügyfél-azonosító és a titkos ügyfélkulcs szerkesztésekor [Azure Active Directory hitelesítési](../connectors/connectors-native-http.md#authentication) egy HTTP-művelet.
+Érdemes egy munkafolyamat-definíció üzembe helyezéshez bizonyos aspektusainak paraméterezni a környezetek között. Emellett néhány paraméter lehet biztonságos paraméterek nem kívánja jelennek meg, ha egy munkafolyamatot, például egy ügyfél-Azonosítót és a titkos Ügyfélkód szerkesztési [Azure Active Directory-hitelesítés](../connectors/connectors-native-http.md#authentication) egy HTTP-művelet.
 
 ### <a name="using-parameters-and-secure-parameters"></a>Paraméterek és biztonságos paraméterek
 
-Alkalmazása futásidőben egy erőforrás paraméter értékének eléréséhez a [munkafolyamatdefiníciós nyelve](http://aka.ms/logicappsdocs) biztosít egy `@parameters()` műveletet. Akkor is, [adja meg a paraméterek az erőforrás központi telepítési sablont a](../azure-resource-manager/resource-group-authoring-templates.md#parameters). De ha a paraméter típusa, adja meg `securestring`, a paraméter és a többi az erőforrás-definíció nem adható vissza, és nem sikerült az erőforrás-telepítést követően elérhető lesz.
+Egy erőforrás paraméter futásidőben, eléréséhez a [munkafolyamat-definíciós nyelv](http://aka.ms/logicappsdocs) biztosít egy `@parameters()` műveletet. Azt is megtehetjük, [paramétereket adja meg az erőforrás üzembe helyezési sablon](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Ha a paraméter típusa, adja meg, de `securestring`, a paraméter nem adható vissza a többi erőforrás-definícióban, és nem lesznek elérhetők üzembe helyezést követően az erőforrás megtekintésével.
 
 > [!NOTE]
-> Ha a paraméter a fejléc vagy a kérelem törzse paraméter is láthatják őket a futtatási előzményei, majd kimenő HTTP-kérelem. Ügyeljen arra, hogy a tartalom-hozzáférési szabályzatok beállítását ennek megfelelően.
-> Engedélyezési fejléceket keresztül bemeneti vagy kimeneti soha nem láthatók el. Ezért ha a titkos kulcs van használatban van, a titkos kulcs nincs lekérhető.
+> Ha a paraméter a fejléc vagy a kérelem törzsében a paraméter lehet látható a futási előzményeket és kimenő HTTP-kérelem elérésével. Ellenőrizze, hogy ennek megfelelően a tartalom-hozzáférési házirendeket állíthat be.
+> Engedélyezési fejléceket keresztül bemeneti vagy kimeneti soha nem láthatók el. Tehát ha van a titkos kulcsot használja, a titkos kulcsot, nem lekérdezhető.
 
 #### <a name="resource-deployment-template-with-secrets"></a>Erőforrás központi telepítési sablont a titkos kulcsok
 
-A következő példa bemutatja a központi telepítés egy biztonságos paramétere hivatkozó `secret` futásidőben. Egy külön paraméterek fájlban kell megadni a környezet értéke a `secret`, vagy használjon [Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) beolvasni a titkos kulcsok telepítése idő.
+Az alábbi példa bemutatja egy biztonságos paraméterében hivatkozó központi telepítés `secret` futásidőben. Egy külön paramétereket tartalmazó fájlt, a környezet értékét megadhatja a `secret`, vagy használjon [Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) beolvasni a titkos kódok üzembe helyezése.
 
 ``` json
 {
@@ -243,32 +239,32 @@ A következő példa bemutatja a központi telepítés egy biztonságos paramét
 }
 ```
 
-## <a name="secure-access-to-services-receiving-requests-from-a-workflow"></a>Biztonságos hozzáférés a munkafolyamat érkező kérelmek fogadására szolgáltatások
+## <a name="secure-access-to-services-receiving-requests-from-a-workflow"></a>Kérések fogadása a munkafolyamat-szolgáltatásokhoz való hozzáférés biztonságossá tétele
 
-Számos módon biztonságossá a logic app hozzáférésre van szüksége a tetszőleges végpontot.
+Többféleképpen védelme érdekében bármely végpont a logikai alkalmazás való hozzáférésre van szüksége.
 
-### <a name="using-authentication-on-outbound-requests"></a>A kimenő kérelmek-hitelesítéssel
+### <a name="using-authentication-on-outbound-requests"></a>A kimenő kérelmeket hitelesítéssel
 
-Az egy HTTP-, HTTP + Swagger (nyílt API-t), vagy a Webhook művelet használatakor a küldési kérelem hitelesítési is hozzáadhat. Alapszintű hitelesítés, tanúsítvány vagy Azure Active Directory-hitelesítés tartalmazhatnak. Ez a hitelesítés konfigurálásával kapcsolatos részletek megtalálhatók [ebben a cikkben](../connectors/connectors-native-http.md#authentication).
+Ha egy HTTP, a HTTP + Swagger (Open API) vagy Webhook művelettel dolgozik, a kérelmet küld a rendszer hitelesítési is hozzáadhat. Alapszintű hitelesítés, tanúsítvány alapú hitelesítést vagy az Azure Active Directory-hitelesítést lehetett közé tartozik. A hitelesítés konfigurálása a részletek megtalálhatók [ebben a cikkben](../connectors/connectors-native-http.md#authentication).
 
-### <a name="restricting-access-to-logic-app-ip-addresses"></a>Logic app IP-címek való hozzáférés korlátozása
+### <a name="restricting-access-to-logic-app-ip-addresses"></a>Logikai alkalmazás IP-címek való hozzáférés korlátozása
 
-A logic Apps alkalmazásokból összes hívások régiónként eltérő IP-címek meghatározott készletének határozza meg. Hozzáadhat további szűrés csak az adott kijelölt IP-címekről érkező kérelmek fogadására. Egy adott IP-címek listáját lásd: [logic app korlátozásai és konfigurációja](logic-apps-limits-and-config.md#configuration).
+A logic apps összes hívásait régiónként IP-címek meghatározott készletének származnak. Hozzáadhat további szűrés csak az ezen kijelölt IP-címekről érkező kérelmek fogadására. Egy adott IP-címek listáját lásd: [logikai alkalmazások korlátai és beállítása](logic-apps-limits-and-config.md#configuration).
 
 ### <a name="on-premises-connectivity"></a>Helyszíni kapcsolatok
 
-A Logic apps a biztonságos és megbízható több szolgáltatásokkal való integrációt a helyszíni kommunikációt biztosítanak.
+A Logic apps biztosít a biztonságos és megbízható több szolgáltatásokkal való integrációt a helyszíni kommunikációt biztosítanak.
 
 #### <a name="on-premises-data-gateway"></a>Helyi adatátjáró
 
-Sok felügyelt összekötők logic apps a helyszíni rendszerekre, például File System, a SQL, a SharePoint, a DB2 és egyéb biztonságos kapcsolatot biztosít. Az átjáró továbbítja a titkosított csatornákon keresztül az Azure Service Bus helyszíni forrásból származó adatokat. Az összes forgalom származik, az átjáró ügynök biztonságos kimenő forgalmát. További információ [az átjáró működése](logic-apps-gateway-install.md#gateway-cloud-service).
+Számos, a felügyelt összekötők a logic apps adja meg a helyszíni rendszereket, beleértve a fájlrendszer, SQL, SharePoint, DB2 és további biztonságos kapcsolatot. Az átjáró a helyszíni forrásokból, titkosított csatornákon keresztül az Azure Service Bus továbbítókat. Az összes forgalom származik, az átjáró ügynök biztonságos kimenő forgalmát. Tudjon meg többet [az átjáró működése](logic-apps-gateway-install.md#gateway-cloud-service).
 
 #### <a name="azure-api-management"></a>Azure API Management
 
-[Az Azure API Management](https://azure.microsoft.com/services/api-management/) rendelkezik a helyszíni kapcsolati lehetőségek, többek között pont-pont VPN- és ExpressRoute integráció biztonságos proxy és a helyszíni rendszerekre történő kommunikációhoz. A Logic App Designer az API-k felfedni a Azure API Management egy munkafolyamaton belül a helyszíni rendszerekben gyors elérését biztosító gyorsan kiválaszthatja.
+[Az Azure API Management](https://azure.microsoft.com/services/api-management/) rendelkezik a helyszíni kapcsolódási lehetőségeket, ideértve a site-to-site VPN és ExpressRoute integráció biztonságos proxy és a helyszíni rendszerekkel való kommunikációt. A Logic App Designerben a helyszíni rendszerekkel való gyors hozzáférés biztosítása az Azure API Management egy munkafolyamaton belül elérhetővé tett API gyorsan kiválasztása.
 
 ## <a name="next-steps"></a>További lépések
-[Központi telepítési sablon létrehozása](logic-apps-create-deploy-template.md)  
+[Üzembehelyezési sablon létrehozása](logic-apps-create-deploy-template.md)  
 [Kivételkezelés](logic-apps-exception-handling.md)  
 [Logikai alkalmazások figyelése](logic-apps-monitor-your-logic-apps.md)  
-[Logic app hibák és problémák diagnosztizálása](logic-apps-diagnosing-failures.md)  
+[Logikai alkalmazások hibáinak és a problémák diagnosztizálása](logic-apps-diagnosing-failures.md)  

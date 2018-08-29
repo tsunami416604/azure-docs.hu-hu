@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 674e91a7c1de026a26cf9a3bf1eaead7f5e86144
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c8ead3dc34faefce0f113dee2074960fddfa11a1
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060550"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144591"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Az Azure-alkalmazások: A felügyelt alkalmazásra vonatkozó ajánlat közzétételi útmutató
 
-Megoldássablonok a fő módon lehet a megoldás a piactéren közzétett tartoznak. Ez az útmutató segítségével áttekinteni a követelményeket, ezt az ajánlatot. 
+Felügyelt alkalmazás a fő módon lehet a megoldás a piactéren közzétett egyike. Ez az útmutató segítségével áttekinteni a követelményeket, ezt az ajánlatot. 
 
 Ezek a tranzakció ajánlatok, amelyek üzembe helyezve, és a Marketplace-en keresztül számlázott. Művelet, amely a felhasználó kap, a hívást a "Letöltés most."
 

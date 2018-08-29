@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: a625ee4d8d672ddfd42128a9dd871dcfcc013060
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 20d0f4736d3aa5f23d9061b4482da7a623862344
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41988141"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128221"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>Gyors útmutató: Recognize speech mellett a Windows, a beszéd SDK-val .NET-keretrendszer C#-ban
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ebből a cikkből elsajátíthatja, hogyan hozzon létre egy C# konzolalkalmazást a beszédfelismerés lefényképezze a Cognitive Services beszédfelismerő SDK segítségével Windows .NET-keretrendszer.
 Az alkalmazás össze lett a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
@@ -100,7 +100,7 @@ Ebben a szakaszban egy új platformra a konfigurációt, amely megfelel a proces
 
     ![Sikeres felismerés után konzolkimenetet](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Konzolkimenetet követően sikeres felismerése")
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Keresse meg az ehhez a mintához a `quickstart/csharp-dotnet-windows` mappát.
 
 ## <a name="next-steps"></a>További lépések

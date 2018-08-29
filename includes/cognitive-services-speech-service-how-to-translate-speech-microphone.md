@@ -4,15 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: 92e4efcd4482d224d9fcb868775dab8a072b8c42
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 7d987fdf86a7cf196ae943723c3ba8307d28ad28
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330857"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143929"
 ---
-## <a name="translation-using-the-microphone"></a>A mikrofon használatával fordítása
+## <a name="translation-from-the-microphone"></a>A mikrofon a fordítás
 
-Az alábbi kódrészlet bemutatja, hogyan, amelyek a bemeneti angol, német, és is beszerezheti a lefordított szöveg hangalapú kimenetét.
-A mikrofon használ.
+A következő kódrészletet bemutatja, hogyan lefordítani a bemeneti angol, német, és a lefordított szöveg hangalapú kimenetének beolvasása. A kód a mikrofon használja.
 

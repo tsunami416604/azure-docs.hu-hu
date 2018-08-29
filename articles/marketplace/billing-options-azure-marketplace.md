@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: d0dbf603c600639679e121723556a7f3ceb17e37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 67806563dcd67876d4d922c7f2c76379f7ad7222
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158981"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125513"
 ---
 # <a name="billing-options-in-the-azure-marketplace"></a>Az Azure piactéren elérhető számlázási módok
 
@@ -70,7 +70,7 @@ Egy fontos a közzététel lehetőséget a Marketplace-en Transact használatáv
 Ebben a forgatókönyvben a Microsoft keresztül számláz az adott, és összegyűjti az Ön nevében. Microsoft számlázási nincs szükség, hogy hozzon létre saját beszerzési kapcsolat az ügyféllel. Egyszerű a számlázás takaríthat meg időt és erőforrásokat. Akkor is előfordulhat, hogy segítséget üzenetsorokra értékesítése helyett a gyűjtése a számla összpontosíthat. 
 
 ## <a name="enterprise-agreement"></a>Nagyvállalati szerződés  
-Ha Ön egy Microsoft nagyvállalati szerződéssel, a nagyvállalati szerződés használhatja a Microsoft-termékek díjat fizetni. Termékek, köztük az Azure használati díjat kell fizetni. Kell fizetnem a nagyvállalati szerződésen keresztül, amely a szoftver licenc, és a felhőszolgáltatás legalább három évig szervezetek számára lett kialakítva. Ön már nem kell egy fizetési ki terjednek. előzetes fizetés. Egy használatalapú fizetéses közzétételi beállítást használja, a számlázás a szoftver-licencelési költségeket a következő a negyedéves nagyvállalati szerződés kerettúllépési elszámolási időszakra.  
+Ha Ön egy Microsoft nagyvállalati szerződéssel, a nagyvállalati szerződés használhatja a Microsoft-termékek díjat fizetni. Termékek, köztük az Azure használati díjat kell fizetni. Kell fizetnem a nagyvállalati szerződésen keresztül, amely a szoftver licenc, és a felhőszolgáltatás legalább három évig szervezetek számára lett kialakítva. Ön már nem kell egy előzetes fizetési kifizetések ki terjednek. Egy használatalapú fizetéses közzétételi beállítást használja, a számlázás a szoftver-licencelési költségeket a következő a negyedéves nagyvállalati szerződés kerettúllépési elszámolási időszakra.  
 
 ### <a name="monetary-commitment"></a>Pénzügyi kötelezettségvállalás
 Ha Ön rendelkezik nagyvállalati szerződéssel, a szerződés az Azure is hozzáadhat. A szerződés Azure hozzá azáltal, hogy egy Azure-ra vonatkozó előzetes pénzügyi kötelezettségvállalást. A kötelezettségvállalás az év folyamán felhasznált. A kötelezettségvállalás használat az Azure-szolgáltatások bármely kombinációját tartalmazza.

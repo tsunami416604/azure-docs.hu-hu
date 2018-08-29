@@ -1,55 +1,46 @@
 ---
-title: Logic Apps-alkalmazások áttelepítése a 2015. 08. 01. dátumú előzetes sémaverzióra | Microsoft Docs
-description: Logic Apps alkalmazásait egyszerűen áttelepítheti a legújabb sémaverzióra. Csak kövesse az alábbi lépéseket.
+title: Legújabb séma – Azure Logic Apps alkalmazások migrálása |} A Microsoft Docs
+description: A logic Apps alkalmazások áttelepítése a legújabb sémaverzióra
 services: logic-apps
-documentationcenter: ''
-author: MSFTMAN
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/23/2016
-ms.author: deonhe
-ms.openlocfilehash: a5a73a9f124e5339b61dbc49021444a208a471f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
+ms.topic: article
+ms.date: 08/25/2018
+ms.openlocfilehash: 8a6925d79b225a34d980472d4fb3241ab9eb1017
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22707124"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127411"
 ---
-# <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a>Logic Apps alkalmazások áttelepítése a 2015. 08. 01. dátumú előzetes sémaverzióra
-A meglévő Logic Apps alkalmazásoknak az új sémára való áttelepítéséhez tegye az alábbiakat:  
+# <a name="migrate-logic-apps-to-latest-schema-version"></a>Logic Apps alkalmazások áttelepítése a legújabb sémaverzióra
 
-1. Nyissa meg a Logic Apps alkalmazást az Azure Portalon  
-2. Kattintson az Update Schema (Séma frissítése) elemre:
-   
-   ![API-ikon][step1]   
-   Megjelenik az Update Schema (Séma frissítése) lap az új sémában található fejlesztések részleteit tartalmazó dokumentumra mutató hivatkozással: ![API-ikon][step2]
+A legújabb sémát a meglévő logic apps át, kövesse az alábbi lépéseket: 
 
-> [!NOTE]
-> Az **Update Schema** (Séma frissítése) választásakor automatikusan futtatjuk az áttelepítési lépéseket, és átadjuk Önnek a kódkimenetet. Ennek használatával frissítheti a definíciót, azonban mindenképpen kövesse a kódolás ajánlott eljárásit, például az alábbi **Ajánlott eljárások** című szakaszban foglaltakat.
-> 
-> 
+1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a logikai alkalmazás a Logic App Designerben.
 
-## <a name="best-practices-when-migrating-your-logic-apps-to-the-latest-schema-version"></a>Ajánlott eljárások a Logic Apps alkalmazások áttelepítéséhez a legújabb sémaverzióra:
-* Az áttelepített parancsfájlt új Logic Apps alkalmazásba másolja – ne írja felül a régit, amíg el nem végezte a tesztelést, és meg nem győződött róla, hogy az áttelepített alkalmazás a vártnak megfelelően működik.
-* Tesztelje a Logic Apps alkalmazást, **mielőtt** éles környezetben használná.
-* Az áttelepítés befejezését követően kezdje el frissíteni a Logic Apps alkalmazásokat a [felügyelt API-k](apis-list.md) használatára, ha lehetséges. Megkezdheti például a Dropbox 2-es verziójának használatát azon alkalmazások esetén, amelyek a DropBox 1-es verzióját használják.
+2. A logikai alkalmazás menüjében válassza **áttekintése**. Az eszköztáron válassza **Update Schema**.
 
-## <a name="whats-next"></a>A következő lépések
-* [Információk a Logic Apps alkalmazások manuális áttelepítésével kapcsolatban](../logic-apps/logic-apps-schema-2015-08-01.md)
+   > [!NOTE]
+   > Ha Ön következő **Update Schema**, Azure Logic Apps automatikusan futtatja az áttelepítési lépéseket, és Önnek a kódkimenetet biztosít. Ez a kimenet a logikai alkalmazás definíciójának frissítéséhez használható. Ellenőrizze, hogy az alábbiakban leírt ajánlott eljárást követi **ajánlott eljárások** szakaszban.
 
-<!--Icon references-->
-[step1]: ./media/connectors-schema-migration/migrateschema1.png
-[step2]: ./media/connectors-schema-migration/migrateschema2.png
+   ![Séma frissítése](./media/connectors-schema-migration/update-schema.png)
 
+   Az Update Schema oldal jelenik meg, és megjelenít egy hivatkozást, amely leírja a az új sémában található fejlesztések dokumentumhoz.
 
+## <a name="best-practices"></a>Ajánlott eljárások
 
+Az alábbiakban néhány gyakorlati tanácsot a logic Apps alkalmazások áttelepítése a legújabb sémaverzióra:
 
+* Másolja az áttelepített parancsfájlt új logikai alkalmazás. Ne írja felül a régi verziót, amíg a tesztelés befejezését, és győződjön meg arról, hogy az áttelepített alkalmazás a várt módon működik-e.
 
+* A logikai alkalmazás teszteléséhez **előtt** éles környezetben használná.
 
+* Ha befejezte az áttelepítést, a logic apps használatára frissítésének megkezdése a [felügyelt API-k](../connectors/apis-list.md) ahol csak lehetséges. Ha például Dropbox 2 mindenhol DropBox 1-es használt használatának megkezdéséhez.
+
+## <a name="next-steps"></a>További lépések
+
+* Ismerje meg, hogyan [a Logic Apps alkalmazások manuális áttelepítésével](../logic-apps/logic-apps-schema-2015-08-01.md)

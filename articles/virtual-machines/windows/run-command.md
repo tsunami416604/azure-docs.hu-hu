@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f42d3fb709807d77fb0f390b6da76efc4a60dced
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 60cdcbeba0c4149d8f049bbab553bd658c965338
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090570"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128595"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-szkriptek futtatása a Windows virtuális gép futtatása paranccsal
 
@@ -63,7 +63,6 @@ Ez a táblázat Windows virtuális gépek esetében elérhető parancsok listáj
 |**EnableAdminAccount**|Ha a helyi rendszergazdai fiók le van tiltva, és ha igen lehetővé teszi, hogy ellenőrzi.|
 |**IP-konfiguráció**| Részletes információk megjelenítése az IP-cím, alhálózati maszk és az alapértelmezett átjáró mindegyik adapterhez kötve a TCP/IP.|
 |**RDPSettings**|Beállításjegyzék-beállítások és házirend beállításainak ellenőrzi. Házirend műveleteket javasol, ha a gép része egy tartománynak, vagy módosítja a beállításokat az alapértelmezett értékekre.|
-|**ResetAccountPassword**| Alaphelyzetbe állítja a beépített rendszergazdai fiók jelszava.|
 |**ResetRDPCert**|Eltávolítja az RDP-figyelő kötött SSL-tanúsítványt, és az RDP-listerner biztonsági visszaállítja az alapértelmezett. Akkor használja ezt a parancsfájlt, ha bármilyen problémát észlel, a tanúsítvány.|
 |**SetRDPPort**|Beállítja az alapértelmezett vagy felhasználó megadott portszám távoli asztali kapcsolatok. Lehetővé teszi, hogy a port hozzáférése bejövő tűzfalszabályt.|
 

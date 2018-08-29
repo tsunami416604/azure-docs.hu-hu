@@ -1,90 +1,87 @@
 ---
-title: Egyéni követési sémák B2B figyelés - Azure Logic Apps |} Microsoft Docs
-description: Hozzon létre egyéni követési sémák figyelése az Azure-integráció fiókban tranzakciók B2B üzeneteit.
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: Egyéni követési sémák a B2B-üzenetek – Azure Logic Apps |} A Microsoft Docs
+description: Egyéni követési sémákat az integrációs fiókok B2B-üzenetek monitorozása az Azure Logic Apps Enterprise Integration Pack-létrehozása
 services: logic-apps
-documentationcenter: ''
-ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 431235370c52be4c6e1ad6cd1af6a412e9eac230
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 68c5d6e68562d4027c102e1bde42c775648e58c4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299834"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124843"
 ---
-# <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>A teljes, végpontok közötti munkafolyamat figyelése nyomon követése
-Nincs beépített nyomon követése, hogy engedélyezheti a vállalatok munkafolyamat, például követési AS2 vagy X12 egyes részeinek üzeneteket. Logikai alkalmazás, a BizTalk Serveren, SQL Server vagy más réteg munkafolyamatok létrehozásakor tartalmazza, majd engedélyezheti egyéni, amely eseményeket naplózza az elejéről, a munkafolyamat végén. 
+# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Hozzon létre egyéni követési sémák, a végpontok közötti munkafolyamatokat az Azure Logic Apps figyelése
 
-Ez a témakör a rétegek kívül a logikai alkalmazás használhat egyéni kódot. 
+Nincs beépített követési is engedélyezheti a vállalatok munkafolyamatot, például követési AS2 vagy X12 különböző részei az üzeneteket. Egy logikai alkalmazást, a BizTalk Server, SQL Server vagy bármely más réteget, munkafolyamatok létrehozásakor tartalmazza, majd engedélyezheti az egyéni követési, amely rögzíti az eseményeket az elejéről, a munkafolyamat végén. 
+
+Ez a cikk az egyéni kódot is használhatja a rétegek kívül a logikai alkalmazás. 
 
 ## <a name="custom-tracking-schema"></a>Egyéni követési séma
-````java
 
-        {
-            "sourceType": "",
-            "source": {
-
-            "workflow": {
-                "systemId": ""
-            },
-            "runInstance": {
-                "runId": ""
-            },
-            "operation": {
-                "operationName": "",
-                "repeatItemScopeName": "",
-                "repeatItemIndex": "",
-                "trackingId": "",
-                "correlationId": "",
-                "clientRequestId": ""
-                }
-            },
-            "events": [
-            {
-                "eventLevel": "",
-                "eventTime": "",
-                "recordType": "",
-                "record": {                
-                }
-            }
-         ]
+```json
+{
+   "sourceType": "",
+   "source": {
+      "workflow": {
+         "systemId": ""
+      },
+      "runInstance": {
+         "runId": ""
+      },
+      "operation": {
+         "operationName": "",
+         "repeatItemScopeName": "",
+         "repeatItemIndex": "",
+         "trackingId": "",
+         "correlationId": "",
+         "clientRequestId": ""
       }
-
-````
+   },
+   "events": [
+      {
+         "eventLevel": "",
+         "eventTime": "",
+         "recordType": "",
+         "record": {                
+         }
+      }
+   ]
+}
+```
 
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
-| sourceType |   | A futtatási forrás típusa. Két érték engedélyezett **Microsoft.Logic/workflows** és **egyéni**. (Kötelező) |
-| Forrás |   | Ha a forrás típusa **Microsoft.Logic/workflows**, kövesse az ebben a sémában kell az adatforrásra vonatkozó információ. Ha a forrás típusa **egyéni**, a séma egy JToken. (Kötelező) |
-| Rendszerazonosító | Sztring | Logic app rendszer azonosítóját. (Kötelező) |
-| runId | Sztring | Logikai alkalmazás futtatásához azonosítóját. (Kötelező) |
-| operationName | Sztring | A művelet (például a művelet vagy az eseményindító) neve. (Kötelező) |
-| repeatItemScopeName | Sztring | Ismételje meg az elem neve, ha a művelet belül egy `foreach` / `until` hurok. (Kötelező) |
-| repeatItemIndex | Egész szám | Hogy a művelet belül van-e egy `foreach` / `until` hurok. Azt jelzi, hogy az ismétlődő elemek index. (Kötelező) |
-| trackingId | Sztring | Nyomkövetési azonosító, az üzenetek összefüggéseket. (Választható lehetőség) |
-| correlationId | Sztring | Korrelációs azonosító, az üzenetek összefüggéseket. (Választható lehetőség) |
-| clientRequestId | Sztring | Ügyfél töltheti fel az üzenetek összefüggéseket. (Választható lehetőség) |
-| EventLevel |   | Az esemény szintje. (Kötelező) |
+| sourceType |   | A futtatási forrás típusa. Engedélyezett értékek a következők **Microsoft.Logic/workflows** és **egyéni**. (Kötelező) |
+| Forrás |   | Ha a forrás típusa **Microsoft.Logic/workflows**, kövesse az ebben a sémában kell az adatforrások információit. Ha a forrás típusa **egyéni**, egy JToken sémája. (Kötelező) |
+| Rendszerazonosító | Sztring | Logikai alkalmazás rendszer azonosítóját. (Kötelező) |
+| runId | Sztring | A logikai alkalmazás futtatásának azonosítóját. (Kötelező) |
+| operationName | Sztring | A művelet (például művelet vagy trigger) neve. (Kötelező) |
+| repeatItemScopeName | Sztring | Ismételje meg a konfigurációelem neve, ha a művelet belül egy `foreach` / `until` ciklus. (Kötelező) |
+| repeatItemIndex | Egész szám | E művelet belül van-e egy `foreach` / `until` ciklus. Azt jelzi, hogy az ismétlődő elem index. (Kötelező) |
+| trackingId | Sztring | Követési azonosító, az üzenetek korrelációját. (Választható lehetőség) |
+| correlationId | Sztring | Korrelációs azonosító, az üzenetek korrelációját. (Választható lehetőség) |
+| clientRequestId | Sztring | Ügyfél töltheti fel, hogy üzeneteket összekapcsolását. (Választható lehetőség) |
+| eventLevel |   | Az esemény szintjét. (Kötelező) |
 | eventTime |   | ÉÉÉÉ-hh-DDTHH:MM:SS.00000Z UTC formátumban, az esemény időpontja. (Kötelező) |
-| recordType |   | A track rekord típusa. Az engedélyezett értéket **egyéni**. (Kötelező) |
-| rekord |   | Egyéni rekordtípus. Engedélyezett JToken érvénytelen. (Kötelező) |
+| RecordType |   | A track rekord típusát. Az érték engedélyezett **egyéni**. (Kötelező) |
+| rekord |   | Egyéni rekord típusa. Engedélyezett formátuma JToken. (Kötelező) |
+||||
 
-## <a name="b2b-protocol-tracking-schemas"></a>B2B protokoll követési sémák
-Követés sémák B2B protokoll kapcsolatos információkért lásd:
+## <a name="b2b-protocol-tracking-schemas"></a>B2B-protokoll követési sémák
+
+B2B-protokoll követési sémák kapcsolatos információkért lásd:
+
 * [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
 * [X12-követési sémák](logic-apps-track-integration-account-x12-tracking-schema.md)
 
 ## <a name="next-steps"></a>További lépések
-* További információ [B2B üzenetek figyelése](logic-apps-monitor-b2b-message.md).   
-* További tudnivalók [Naplóelemzési a B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
-* További információ a [vállalati integrációs csomag](../logic-apps/logic-apps-enterprise-integration-overview.md).
+
+* Tudjon meg többet [B2B-üzenetek figyelése](logic-apps-monitor-b2b-message.md)
+* Ismerje meg [a Log Analytics B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)

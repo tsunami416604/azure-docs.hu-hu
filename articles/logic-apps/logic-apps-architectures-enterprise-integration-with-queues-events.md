@@ -1,61 +1,71 @@
 ---
-title: Az Azure integrációs szolgáltatások vállalati integráció referenciaarchitektúra
-description: A referenciaarchitektúra bemutatja, hogyan egy vállalati integrációs minta megvalósítása a Logic Apps, az API Management, Service Bus és Event Grid használatával ismerteti.
-author: mattfarm
-manager: jonfan
-editor: ''
-services: logic-apps api-management
-documentationcenter: ''
-ms.assetid: ''
+title: Vállalati integráció az architekturális mintáról – Azure integrációs szolgáltatások
+description: Ez az architektúra útmutató bemutatja, hogyan valósítható meg az Azure Logic Apps, az Azure API Management, az Azure Service Bus és az Azure Event Grid, egy vállalati integrációs minta
+services: logic-apps
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.suite: integration
+author: mattfarm
+ms.author: mattfarm
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: ffa61ebfaa58425cd2bf70d9bf78a2e71b672369
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 2ffb1f7edef0cf92cbbf7adc4314967858bcfeb1
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918483"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128643"
 ---
-# <a name="reference-architecture-enterprise-integration-with-queues-and-events"></a>Referenciaarchitektúra: üzenetsorokat és események vállalati integráció
+# <a name="enterprise-integration-architecture-with-queues-and-events"></a>Vállalati integrációs architektúra az üzenetsorok és események
 
-A következő referencia-architektúra, amely egy adatintegrációs alkalmazás által használt Azure integrációs szolgáltatások alkalmazhat bevált eljárásokat mutat be. Az architektúra számos különböző alkalmazásminták HTTP API-k, a munkafolyamat és a koordinálást igénylő alapjául szolgálhatnak.
+Ez a cikk ismerteti az Azure integrációs szolgáltatások használata esetén egy adatintegrációs alkalmazás alkalmazhat bevált eljárásokat használó vállalati integrációs architektúra. Ez az architektúra HTTP API-k, a munkafolyamat és a koordinálást igénylő számos különböző alkalmazás-mintákat alapjaként használható.
 
 ![Architektúradiagram - üzenetsorok és események vállalati integráció](media/logic-apps-architectures-enterprise-integration-with-queues-events/integr_queues_events_arch_diagram.png)
 
-*Az integrációs technológiával számos lehetséges alkalmazások is vannak. Ezek között egy egyszerű, pont-pont típusú alkalmazást a teljes nagyvállalati Azure Service Bus-alkalmazás. Az architektúra sorozat azt írja le, az újrafelhasználható összetevőit, előfordulhat, hogy egy általános integrációs alkalmazások összeállítására vonatkoznak. Architects figyelembe kell venni, hogy melyik azok alkalmazása és az infrastruktúra megvalósításához szükséges összetevőket.*
-<!-- Should previous line be in Italic or asterisks must be escaped? -->
+Ez a sorozat azt írja le, az újrafelhasználható összetevőit, előfordulhat, hogy egy általános integrációs alkalmazások összeállítására vonatkoznak. Mert integrációs technológiával számos lehetséges alkalmazás és egyszerű pont-pont típusú alkalmazások a teljes nagyvállalati Azure Service Bus-alkalmazások, érdemes lehet meg kell valósítania az alkalmazások és infrastruktúra összetevőit.
 
-## <a name="architecture"></a>Architektúra
+## <a name="architecture-components"></a>Architektúra-összetevők
 
-Az architektúra *épül* a [egyszerű vállalati integráció](logic-apps-architectures-simple-enterprise-integration.md) architektúra. [Az egyszerű enterprise architecture vonatkozó javaslatokat](logic-apps-architectures-simple-enterprise-integration.md#recommendations) Itt a alkalmazni. Ezek kihagy a [javaslatok](#recommendations) kivonatosan ebben a cikkben. 
+Ez az architektúra számos tekintetben az a cikkben leírt architektúra [architektúra-Útmutató: egyszerű vállalati integráció](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md). Az architektúra [javaslatok](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md#recommendations) itt is érvényesek, de kihagytuk, ez a cikk az áttekinthetőség kedvéért kihagyja a javasolt lépéseket a [javaslatok](#recommendations) szakaszban. A vállalati integrációs architektúra az alábbi összetevőket tartalmazza:
 
-Az architektúra a következő összetevőkből áll:
+- **Erőforráscsoport**: A [erőforráscsoport](../azure-resource-manager/resource-group-overview.md) Azure-erőforrások logikai tárolója.
 
-- **Erőforráscsoport**. Az [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) az Azure-erőforrások logikai tárolója.
-- **Az Azure API Management**. [Az API Management](https://docs.microsoft.com/azure/api-management/) egy teljes körűen felügyelt platform, amellyel közzététele, biztosítása és a HTTP API-jai átalakíthatók.
-- **Az Azure API Management fejlesztői portálon**. Az Azure API Management minden példányának együttműködik a hozzáférést a [fejlesztői portál](https://docs.microsoft.com/azure/api-management/api-management-customize-styles). Az API Management fejlesztői portálon hozzáférést biztosít a dokumentációhoz és kódmintákhoz mintákhoz. Tesztelheti az API-k a fejlesztői portálon.
-- **Az Azure Logic Apps**. [A Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) egy kiszolgáló nélküli platform, amellyel vállalati munkafolyamat és integrációs hozhat létre.
-- **Összekötők**. Használja a Logic Apps [összekötők](https://docs.microsoft.com/azure/connectors/apis-list) szeretne csatlakozni a gyakran használt szolgáltatásokat. A Logic Apps már rendelkezik a különböző összekötők több száz, de létrehozhat egy egyéni összekötőt is.
-- **Az Azure Service Bus**. [A Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) biztonságos és megbízható üzenetküldést biztosít. Üzenetküldési használható alkalmazások szétválaszthatók és más üzenetalapú rendszerekkel való integrációt segítik.
-- **Az Azure Event Grid**. [Event Grid](https://docs.microsoft.com/azure/event-grid/overview) egy kiszolgáló nélküli platform, amely tehet közzé és alkalmazásesemények továbbítására szolgál.
-- **IP-cím**. Az Azure API Management szolgáltatás rendelkezik egy nyilvános [IP-cím](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) és a egy tartomány nevét. Az alapértelmezett tartománynevet altartománya API.NET-webhelyen, azure, például a contoso.azure-API.NET webhelyen, de [egyéni tartományok](https://docs.microsoft.com/azure/api-management/configure-custom-domain) is konfigurálható. A Logic Apps és a Service Bus is nyilvános IP-címet. Azonban ebben az architektúrában azt korlátozza a hozzáférést a Logic Apps-végpontok csak IP-címet az API Management hívása (a biztonság). A Service Bus-hívások közös hozzáférésű jogosultságkód (SAS) védik.
-- **Azure DNS**. [Az Azure DNS](https://docs.microsoft.com/azure/dns/) DNS-tartományok egy üzemeltetési szolgáltatás. Az Azure DNS névfeloldás biztosít a Microsoft Azure-infrastruktúra használatával. A tartományok Azure-ban üzemelteti, azonos hitelesítő adatokkal, API-kkal, eszközökkel és számlázási használata más Azure-szolgáltatások DNS-rekordok is kezelheti. Egy egyéni tartománynevet (például contoso.com) használatához hozzon létre az egyéni tartománynév leképezése az IP-cím DNS-rekordjait. További információkért lásd: [egyéni tartománynév beállítása az API Management](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain).
-- **Azure Active Directory (Azure AD)**. Használat [Azure ad-ben](https://docs.microsoft.com/azure/active-directory/) vagy egy másik identitásszolgáltatót a hitelesítéshez. Az Azure AD hitelesítési API-végpontjainak eléréséhez átadásával biztosít egy [JSON Web Token az API Management](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims) ellenőrzése. Az Azure AD biztosíthat hozzáférést az API Management fejlesztői portálon (Standard és prémium szinten csak).
+- **Az Azure API Management**: A [az API Management](https://docs.microsoft.com/azure/api-management/) service az közzététele, biztosítása és HTTP API-k átalakítása egy teljes körűen felügyelt platform.
 
-Az architektúra rendelkezik néhány alapvető működéséhez a mintákat:
+- **Az Azure API Management fejlesztői portálon**: az Azure API Management minden példányának hozzáférést biztosít a [fejlesztői portál](../api-management/api-management-customize-styles.md). Ezen a portálon hozzáférést biztosít a dokumentációhoz és kódmintákhoz mintákhoz. API-k a fejlesztői portálon is tesztelheti.
 
-* Meglévő háttér-HTTP API-k tesszük közzé az API Management fejlesztői portálon keresztül. A portálon, a fejlesztők (vagy a szervezet vagy külső, belső) is beépíthetik a ezekkel az API-hívásokat.
-* Összetett API-k van építve a logic apps használatával, és a egy szoftverszolgáltatás (SaaS) rendszerek, Azure-szolgáltatások és minden API-k és az API Management közzétett szoftver hívásainak replikálásával. [A Logic apps is közzétett](https://docs.microsoft.com/azure/api-management/import-logic-app-as-api) az API Management fejlesztői portálon keresztül.
-- Alkalmazások használata az Azure ad-vel [az OAuth 2.0 biztonsági jogkivonat beszerzése](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) , amely szükséges API-k eléréséhez.
-- Az API Management [érvényesíti a biztonsági jogkivonatot](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) , és ezután továbbítja a háttérrendszeri API-t vagy a logikai alkalmazás.
-- Service Bus-üzenetsorok is használható [szétválaszthatók](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview) alkalmazás tevékenységet, és [terhelés kiugrások smooth](https://docs.microsoft.com/azure/architecture/patterns/queue-based-load-leveling). Üzenetek hozzáadta a logic apps, a harmadik féltől származó alkalmazások, várólisták és (nem szerepel) tegye közzé az üzenetsorba API Management szolgáltatáson keresztül HTTP API-ként.
-- Üzeneteket egy Service Bus-üzenetsorba van hozzáadva, amikor az esemény akkor következik be. Az esemény váltja ki, egy logikai alkalmazást. A logikai alkalmazás ezután feldolgozza az üzenetet.
-- Más Azure-szolgáltatások (például az Azure Blob storage és az Azure Event Hubs) is közzé az eseményeket az Event Gridbe. Ezek a szolgáltatások indítása a logic apps az eseményt, és hajtsa végre az ezt követő műveleteket.
+- **Az Azure Logic Apps**: [Logic Apps](../logic-apps/logic-apps-overview.md) egy kiszolgáló nélküli platform a nagyvállalati munkafolyamatok és integrációk készítéséhez.
+
+- **Összekötők**: használja a Logic Apps [összekötők](../connectors/apis-list.md) csatlakozik a gyakran használt szolgáltatások esetében. A Logic Apps-összekötők több száz kínál, de létrehozhat egy egyéni összekötőt is.
+
+- **Az Azure Service Bus**: [a Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) biztonságos és megbízható üzenetküldést biztosít. Elválasztás alkalmazások és a többi üzenet-alapú rendszerek integrálása üzenetkezelést is használhatja.
+
+- **Az Azure Event Grid**: [Event Grid](../event-grid/overview.md) közzétételéhez és alkalmazásesemények továbbítása egy kiszolgáló nélküli platform.
+
+- **IP-cím**: az Azure API Management szolgáltatás rendelkezik egy nyilvános [IP-cím](../virtual-network/virtual-network-ip-addresses-overview-arm.md) és a egy tartomány nevét. Az alapértelmezett tartomány nevét részterületét képezi az azure-API.NET webhelyen, például contoso.azure-API.NET webhelyen, de beállíthatja úgy is [egyéni tartományok](../api-management/configure-custom-domain.md). A Logic Apps és a Service Bus is nyilvános IP-címet. Azonban a biztonság érdekében ez az architektúra korlátozza a hozzáférést az API Management csak az IP-címét, a Logic Apps-végpontok hívása. A Service Bus-hívások közös hozzáférésű jogosultságkód (SAS) védik.
+
+- **Az Azure DNS**: [Azure DNS](https://docs.microsoft.com/azure/dns/) DNS-tartományok egy üzemeltetési szolgáltatás. Az Azure DNS névfeloldás biztosít a Microsoft Azure-infrastruktúra használatával. A tartományok Azure-ban üzemelteti, azonos hitelesítő adatokkal, API-kkal, eszközökkel és számlázási használata más Azure-szolgáltatások DNS-rekordok is kezelheti. Egyéni tartománynév, amilyen a contoso.com használatához hozzon létre az egyéni tartománynév leképezése az IP-cím DNS-rekordjait. További információkért lásd: [egyéni tartománynév beállítása az API Management](../api-management/configure-custom-domain.md).
+
+- **Az Azure Active Directory (Azure AD)**: használhatja [Azure ad-ben](https://docs.microsoft.com/azure/active-directory/) vagy egy másik identitásszolgáltatót a hitelesítéshez. Az Azure AD hitelesítési API-végpontjainak eléréséhez átadásával biztosít egy [JSON Web Token az API Management](../api-management/policies/authorize-request-based-on-jwt-claims.md) ellenőrzése. A Standard és Premium szintű Azure ad-ben biztosíthat hozzáférést az API Management fejlesztői portálon.
+
+## <a name="patterns"></a>Minták 
+
+Ez az architektúra, amely az alapvető fontosságú a művelet néhány minták használja:
+
+* Meglévő háttér-HTTP API-k tesszük közzé az API Management fejlesztői portálon keresztül. A portálon, fejlesztőknek vagy a szervezet, vagy külső, belső  
+Ezekkel az API-hívások is integrálható alkalmazásokat.
+
+* Összetett API-k van építve a logic apps, amely szoftver hívásainak koordinálhatja a szoftverszolgáltatások (SaaS) rendszerek, Azure-szolgáltatások és minden API Management közzétett API-k használatával. Logikai alkalmazások is vannak [az API Management fejlesztői portálon keresztül közzétett](../api-management/import-logic-app-as-api.md).
+
+* Az Azure AD használata az alkalmazások [az OAuth 2.0 biztonsági token beszerzése a](../api-management/api-management-howto-protect-backend-with-aad.md) , amely az API eléréséhez szükséges.
+
+* Az Azure API Management [érvényesíti a biztonsági jogkivonatot](../api-management/api-management-howto-protect-backend-with-aad.md) , és ezután továbbítja a háttérrendszeri API-t vagy a logikai alkalmazás.
+
+* Az Azure Service Bus-üzenetsorok használhatók [elválasztás](../service-bus-messaging/service-bus-messaging-overview.md) alkalmazás tevékenység és a [terhelés kiugrások simítás](https://docs.microsoft.com/azure/architecture/patterns/queue-based-load-leveling). Üzenetek hozzáadta a logic apps, a harmadik féltől származó alkalmazások, várólisták és (nem látható) tegye közzé az üzenetsorba API Management szolgáltatáson keresztül HTTP API-ként.
+
+* Üzeneteket egy Service Bus-üzenetsorba van hozzáadva, amikor az esemény akkor következik be. Az esemény elindít egy logikai alkalmazást, amely ezután feldolgozza az üzenetet.
+
+* Más Azure-szolgáltatásokkal, például az Azure Blob Storage és az Azure Event Hubs is közzé az eseményeket az Event Gridbe. Ezek a szolgáltatások indítása a logic apps az eseményt, és hajtsa végre az ezt követő műveleteket.
 
 ## <a name="recommendations"></a>Javaslatok
 
@@ -63,71 +73,74 @@ A konkrét követelmények eltérhetnek az ebben a cikkben leírt általános ar
 
 ### <a name="service-bus-tier"></a>A Service Bus-szint
 
-A Service Bus prémium szintű csomagot használja. A Premier szintű támogatja az Event Grid értesítéseket. További információkért lásd: [Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/).
+A Service Bus prémium szint, amely támogatja az Event Grid értesítések használata. További információkért lásd: [Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ### <a name="event-grid-pricing"></a>Event Grid-díjszabás
 
-Event Grid egy kiszolgáló nélküli modellt használ. A számlázás a műveletek (esemény végrehajtása) száma alapján lesz kiszámítva. További információkért lásd: [Event Grid díjszabási](https://azure.microsoft.com/pricing/details/event-grid/). Jelenleg nincsenek szint szempontok az Event Gridhez.
+Event Grid egy kiszolgáló nélküli modellt használ. A számlázás a műveletek (esemény végrehajtások) száma alapján lesz kiszámítva. További információkért lásd: [Event Grid díjszabási](https://azure.microsoft.com/pricing/details/event-grid/). Jelenleg nincsenek szint szempontok az Event Gridhez.
 
 ### <a name="use-peeklock-to-consume-service-bus-messages"></a>PeekLock használata a Service Bus-üzenetek
 
-A Service Bus-üzenetek lefoglalhatja a Logic Apps-alkalmazás létrehozásakor [PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) egy csoportot az üzenetek el a logikai alkalmazásban. PeekLock használatakor a logikai alkalmazás lépésekkel végrehajtása vagy a megszakítása előtt minden üzenetet érvényesítéséhez. Ez a megközelítés véletlen üzenet adatvesztés elleni védelmet biztosít.
+Amikor létrehoz egy logikai alkalmazást a Service Bus-üzenetek lefoglalhatja, rendelkezik a logikai alkalmazás használja [PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) üzenetek csoportja eléréséhez. PeekLock használatakor a logikai alkalmazás lépésekkel végrehajtása vagy a megszakítása előtt minden üzenetet érvényesítéséhez. Ez a megközelítés véletlen üzenet adatvesztés elleni védelmet biztosít.
 
 ### <a name="check-for-multiple-objects-when-an-event-grid-trigger-fires"></a>Az Event Grid-trigger akkor aktiválódik, ha több objektum keresése
 
-Az Event Grid-trigger akkor aktiválódik, amikor azt jelenti, hogy egyszerűen, hogy "ezekről legalább egy történt." Event Grid egy logikai alkalmazást, amely akkor jelenik meg a Service Bus-üzenetsorba egy üzenet aktivál, ha a logikai alkalmazás kell mindig tegyük fel, hogy van egy vagy több üzenetet rendelkezésre állnak.
+Az Event Grid-trigger akkor aktiválódik, amikor ez a művelet egyszerűen azt jelenti, hogy "ezekről legalább egy történt." Event Grid egy logikai alkalmazást, amely akkor jelenik meg a Service Bus-üzenetsorba egy üzenet aktivál, ha a logikai alkalmazás kell mindig tegyük fel, hogy van egy vagy több üzenetet rendelkezésre állnak.
 
 ### <a name="region"></a>Régió
 
-Az API Management, Logic Apps, és a hálózati késés minimalizálása érdekében a Service Bus ugyanabban a régióban üzembe. Általánosságban elmondható válassza ki a felhasználókhoz legközelebb eső régióban.
+Hálózati késés minimalizálása érdekében válassza ki az API Management, a Logic Apps és a Service Bus ugyanabban a régióban. Általánosságban elmondható válassza ki a felhasználókhoz legközelebb eső régióban.
 
-Az erőforráscsoport szintén van régiója. A régió központi telepítési metaadatok tárolódnak, és ahol hajt végre a központi telepítési sablont a adja meg. Helyezze el az erőforráscsoportot és az erőforrások üzembe helyezése során a rendelkezésre állás növelése érdekében ugyanabban a régióban.
+Az erőforráscsoport szintén van régiója. Ebben a régióban megadja a központi telepítési metaadatok tárolására és hol hajtsa végre a központi telepítési sablont. Üzembe helyezés során javítható a rendelkezésre állás, helyezze az erőforráscsoport és erőforrások ugyanabban a régióban.
 
 ## <a name="scalability"></a>Méretezhetőség
 
-A Service Bus prémium szintű horizontálisan magasabb, a skálázhatóság érdekében üzenetkezelési egységek száma. Prémium szintű konfigurációk egy, kettő vagy négy üzenetkezelési egységre is rendelkezhet. A Service Bus méretezésével kapcsolatos további információkért lásd: [ajánlott eljárások a teljesítmény Service Bus-üzenetkezelés használatával](../service-bus-messaging/service-bus-performance-improvements.md).
+Magasabb szintű skálázhatóság érdekében a Service Bus prémium szintű horizontálisan üzenetkezelési egységek száma. Prémium szintű konfigurációk egy, kettő vagy négy üzenetkezelési egységre is rendelkezhet. A Service Bus méretezésével kapcsolatos további információkért lásd: [ajánlott eljárások a teljesítmény Service Bus-üzenetkezelés használatával](../service-bus-messaging/service-bus-performance-improvements.md).
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-A szolgáltatásiszint-szerződés (SLA) az Azure API Management jelenleg az alapszintű, Standard és prémium szint esetében 99,9 %-os. Prémium szintű konfigurációk legalább egy egység két vagy több régióban üzembe helyezéssel rendelkezik 99,95 %-os SLA-t.
+* Alapszintű, Standard és prémium szinten a szolgáltatásiszint-szerződés (SLA) az Azure API Management jelenleg 99,9 %-os. Prémium szintű konfigurációk telepítés, amelynek legalább egy egységet két vagy több régióban az SLA nem 99,95 %-os.
 
-Az SLA-t az Azure Logic Apps jelenleg 99,9 %-os.
+* Az SLA-t az Azure Logic Apps jelenleg 99,9 %-os.
 
 ### <a name="disaster-recovery"></a>Vészhelyreállítás
 
-Vegye fontolóra geo-vészhelyreállítás a Service Bus prémium szintű súlyos kimaradás során, a feladatátvétel helyévé. További információkért lásd: [Azure Service Bus geo-disaster recovery](../service-bus-messaging/service-bus-geo-dr.md).
+Ahhoz, hogy feladatátvétel súlyos kimaradás során, vegye fontolóra geo-vészhelyreállítás a Service Bus prémium szintű. További információkért lásd: [Azure Service Bus geo-disaster recovery](../service-bus-messaging/service-bus-geo-dr.md).
 
 ## <a name="manageability"></a>Kezelhetőségi
 
-Hozzon létre külön erőforráscsoportok éles környezetben, fejlesztési, és tesztelési környezetek. Külön erőforráscsoportok megkönnyíti a központi telepítések felügyeletéhez szükséges, a tesztkörnyezetek törlését és a hozzáférési jogosultságok hozzárendelése.
+Hozzon létre külön erőforráscsoportok éles környezetben, fejlesztési, és tesztelési környezetek. Külön erőforráscsoportok megkönnyítik a központi telepítések felügyeletéhez szükséges, a tesztkörnyezetek törlését és a hozzáférési jogosultságok hozzárendelése.
 
-Amikor erőforrásokat rendel erőforráscsoportok, a következő tényezőket kell figyelembe venni:
+Amikor erőforrásokat rendel erőforráscsoportok, vegye figyelembe a következőket:
 
-- **Életciklus**. Általánosságban elmondható helyezze ugyanabba az erőforráscsoportba az azonos életciklussal rendelkező erőforrások.
-- **Hozzáférés**. Használhat [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) a csoportokban található erőforrások hozzáférési szabályzatok alkalmazásához.
-- **Számlázási**. Megtekintheti az erőforráscsoport költségeinek összesítése.
-- **Az API Management tarifacsomag**. Azt javasoljuk, hogy a fejlesztői csomag fejlesztési és tesztelési környezetek. Az üzem előtti környezet azt javasoljuk egy replikát, az éles környezet üzembe helyezése tesztek futtatása, és minimalizálja a költségeket a leállítása.
+* **Életciklus**: általában az ugyanabban az erőforráscsoportban az azonos életciklussal rendelkező erőforrásokat helyezze.
+
+* **Hozzáférés**: csoportokban található erőforrások hozzáférési házirendeket alkalmazza, használhatja [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md).
+
+* **Számlázási**: megtekintheti az erőforráscsoport összesítő költséget.
+
+* **Az API Management tarifacsomag**: a fejlesztői tarifacsomag használatát a fejlesztési és tesztelési környezetek esetében. A költségek csökkentésére üzem előtti tesztelés során, egy replikát, az éles környezet üzembe helyezése, a tesztek futtatásához, és majd állítsa le.
 
 További információk: [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése).
 
-### <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Környezet
 
-Javasoljuk, hogy használjon [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md) az API Management, a Logic Apps, az Event Grid és a Service Bus üzembe helyezéséhez. Sablonok megkönnyítik a PowerShell vagy az Azure CLI-vel üzembe helyezések automatizálását.
+* Az API Management, a Logic Apps, az Event Grid és a Service Bus üzembe helyezéséhez használja a [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md). Sablonok egyszerűbbé automatizálhatja központi telepítések PowerShell vagy az Azure CLI használatával.
 
-Azt javasoljuk, hogy az API Management, minden egyes logic apps, az Event Grid-témakörök és a Service Bus-névterek és a saját, elkülönített Resource Manager-sablonok. Amikor külön tanúsítványsablonokat, verziókövetési rendszerekben tárolhatja az erőforrásokat. Ezután telepítheti ezeket a sablonokat együtt vagy külön-külön a folyamatos integráció/folyamatos készregyártás (CI/CD) folyamat részeként.
+* Helyezze el az API Management, minden egyes logic apps, az Event Grid-témakörök és a Service Bus-névterek saját külön Resource Manager-sablonok. Külön sablonok használatával tárolhatja verziókövetési rendszerekben az erőforrásokat. Ezután telepítheti ezeket a sablonokat együtt vagy külön-külön a folyamatos integráció/folyamatos készregyártás (CI/CD) folyamat részeként.
 
-### <a name="diagnostics-and-monitoring"></a>Diagnosztika és figyelés
+## <a name="diagnostics-and-monitoring"></a>Diagnosztika és figyelés
 
-Az API Management és a Logic Apps, mint a Service Bus segítségével figyelheti az Azure Monitor használatával. Az Azure Monitor információk alapján, hogy az egyes szolgáltatások vannak konfigurálva. Az Azure Monitor alapértelmezés szerint engedélyezve van.
+Az API Management és a Logic Apps, mint a Service Bus figyelheti az Azure Monitor, amely alapértelmezés szerint engedélyezve van. Az Azure Monitor információk alapján, hogy az egyes szolgáltatások vannak konfigurálva. 
 
 ## <a name="security"></a>Biztonság
 
-A Service Bus biztonságos SAS használatával. Használhat [SAS hitelesítési](../service-bus-messaging/service-bus-sas.md) egy felhasználó hozzáférést adott jogosultsággal rendelkező Service Bus-erőforrások. További információkért lásd: [Service Bus-hitelesítés és engedélyezés](../service-bus-messaging/service-bus-authentication-and-authorization.md).
+A Service Bus biztonságos, használja a közös hozzáférésű jogosultságkód (SAS). Például is hozzáférést biztosít egy felhasználó a megadott jogokat a Service Bus-erőforrások használatával [SAS hitelesítési](../service-bus-messaging/service-bus-sas.md). További információkért lásd: [Service Bus-hitelesítés és engedélyezés](../service-bus-messaging/service-bus-authentication-and-authorization.md).
 
-Ha egy Service Bus-üzenetsorba ki vannak téve a HTTP-végpontként (az új üzenetek közzététele) van szüksége, az API Management biztonságossá a végpontot fronting kell használnia. A végpont majd védve legyenek a tanúsítványok vagy OAuth szükség szerint. A végpont biztonságos legegyszerűbben használatával egy logikai alkalmazást egy kérés/válasz HTTP-eseményindítóval fogadásukig.
+Ha szeretne közzétenni egy HTTP-végpontot, Service Bus-üzenetsorba, például az új üzeneteket tehet közzé az API Management védheti a várólista fronting a végpont által. A végpont tanúsítványokat vagy OAuth-hitelesítés megfelelő majd gondoskodhat. A legegyszerűbb védelmének módja lehet a végpont köztes egy logikai alkalmazást használ egy HTTP-kérés/válasz eseményindító.
 
-Event Grid egy érvényesítési kód eseménykézbesítés védi. Logic Apps használatával felhasználása az eseményt, ha az érvényesítés automatikusan történik. További információkért lásd: [Event Grid biztonsági és hitelesítési](../event-grid/security-authentication.md).
+Az Event Grid szolgáltatás egy érvényesítési kód eseménykézbesítés védi. Ha a Logic Apps használatával az események felhasználásához, érvényesítés automatikusan történik. További információkért lásd: [Event Grid biztonsági és hitelesítési](../event-grid/security-authentication.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [egyszerű vállalati integráció](logic-apps-architectures-simple-enterprise-integration.md).
+* Ismerje meg [egyszerű vállalati integráció](logic-apps-architectures-simple-enterprise-integration.md)

@@ -14,26 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5e0002437b4fc22d9dfdcdca9a587bf420a7d8fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cb4f738fd63b8b013f674557a0c5f5639c26391e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207682"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126884"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>A Service Fabric Linux és Windows rendszerhez készült verziója közötti különbségek
 
-Néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, és minden újabb kiadással egyre csökkennek a szolgáltatásbeli különbségek. A legújabb elérhető kiadások (Windows rendszeren 6.0, Linuxon 6.0) között az alábbi eltérések állnak fenn: 
+Néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, és minden újabb kiadással egyre csökkennek a szolgáltatásbeli különbségek. Az alábbi eltérések állnak a legújabb elérhető kiadások között.
 
-* Minden programozási modell előzetes verzióként érhető el (Java/C# Reliable Actors, Reliable Stateless Services és Reliable Stateful Services)
-* Az Envoy (ReverseProxy) előzetes verzióként érhető el Linuxon
+* Az envoy (fordított Proxy) előzetes verzióként érhető el Linux rendszeren
 * Önálló Linuxos telepítő még nem érhető el Linux rendszeren.
 * Konzolátirányítás (nem támogatott az éles fürtökben sem Linux, sem Windows rendszeren)
 * A Fault Analysis Service (FAS) Linuxon
 * DNS szolgáltatás a Service Fabric-szolgáltatásokhoz (a DNS szolgáltatás a tárolók esetében támogatott a Linuxon)
 * Egyes PowerShell-parancsok parancssori felületi megfelelője (lásd az alábbi listát; a parancsok nagy része csak önálló fürtökre vonatkozik)
-
-A fejlesztői eszközök eltérnek Windows és Linux rendszeren. Windows rendszeren a Visual Studio, a PowerShell, a VSTS és az ETW, míg Linuxon a Yeoman, az Eclipse, a Jenkins és az LTTng érhető el.
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>PowerShell-parancsmagok, amelyek nem működnek Linux rendszerű Service Fabric-fürtökön
 

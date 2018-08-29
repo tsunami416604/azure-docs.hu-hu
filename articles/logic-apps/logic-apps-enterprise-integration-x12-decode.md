@@ -1,113 +1,109 @@
 ---
-title: Dekódolás X12 üzenetek - Azure Logic Apps |} Microsoft Docs
-description: EDI érvényesítése és a X12 rendelkező nyugtázását üzenet dekóder Azure Logic Apps alkalmazásokat a vállalati integrációs csomagban
+title: Dekódolandó X12 üzeneteket – Azure Logic Apps |} A Microsoft Docs
+description: EDI ellenőrzése és nyugtázását X12 az Azure Logic Apps Enterprise Integration Pack-üzenet dekódoló
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 14e9f0eefb705eea59a00390494871f5668b0a01
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e3d2a458c2cece5e3f01fdb9e3d403b3fb78dd2b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298661"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121645"
 ---
-# <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódolás X12 üzenetek az Azure Logic Apps a vállalati integrációs csomaggal
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Dekódolandó X12 üzeneteket az Azure Logic Appsben és Enterprise Integration Pack
 
-Dekódolási X12 üzenet-összekötőn keresztül akkor is érvényesíteni a boríték elleni kereskedelmipartner-egyezmény, EDI és a partner jellemző tulajdonságok ellenőrzése, vágási kereszteződéseket tranzakciók be vagy teljes kereszteződéseket megőrzése és feldolgozott tranzakciók visszaigazoló üzenetet létrehozni. Ez az összekötő használatához fel kell vennie az összekötő egy meglévő elindítani a Logic Apps alkalmazást.
+A dekódolási X12 üzenet connector is elleni kereskedelmipartner-egyezmény boríték érvényesítése, EDI és partneri jellemző tulajdonságok ellenőrzése, tranzakciók csoportokba adatcsere felosztása vagy a teljes adatcsere megőrzése, és nyugták készítése feldolgozott tranzakciók. Az összekötő használatához hozzá kell adnia az összekötő egy meglévő eseményindítót a logikai alkalmazásban.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A szükséges elemeket itt található:
+A következő szükséges elemek:
 
-* Az Azure-fiók; létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free)
-* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéshez társítva. A dekódolási X12 üzenet összekötő használatához integrációs fiókkal kell rendelkeznie.
-* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva vannak az integráció-fiókban
-* Egy [X12 megállapodás](logic-apps-enterprise-integration-x12.md) , amely már definiálva van az integráció-fiókban
+* Az Azure-fiók; létrehozhat egy [ingyenes fiókkal](https://azure.microsoft.com/free)
+* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéséhez társított. A dekódolási X12 üzenet connector használatához egy integrációs fiókhoz kell rendelkeznie.
+* Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva vannak az integrációs fiók
+* Egy [X12 szerződés](logic-apps-enterprise-integration-x12.md) , amely már definiálva van az integrációs fiók
 
-## <a name="decode-x12-messages"></a>Dekódolás X12 üzenetek
+## <a name="decode-x12-messages"></a>Dekódolandó X12 üzenetek
 
-1. [Logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md).
+1. [Hozzon létre egy logikai alkalmazást](quickstart-create-first-logic-app-workflow.md).
 
-2. A dekódolási X12 üzenet összekötő eseményindítókat, nem rendelkezik, hozzá kell adni egy eseményindító indítása el a logikai alkalmazás, például egy kérelem eseményindító. A Logic App-tervezőben, vegye fel egy eseményindítót, majd egy műveletet a logikai alkalmazáshoz.
+2. A dekódolási X12 üzenet connector nincs eseményindítók, ezért hozzá kell adnia egy eseményindítót a logikai alkalmazást, például a kérelem-eseményindítóval indítása. A Logic App Designerben az eseményindító hozzáadása, és adja hozzá a művelet a logikai alkalmazáshoz.
 
-3.  A keresési mezőbe írja be a "x12" a szűrőhöz. Válassza ki **X12-dekódolási X12 üzenet**.
+3.  A keresőmezőbe adja meg a szűrőnek "x12". Válassza ki **X12-dekódolási X12 üzenet**.
    
     ![Keressen a "x12"](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
-3. Integráció fiókjába korábban a kapcsolatokat nem hozott létre, ha a program kéri, most, hogy a kapcsolat létrehozásához. A kapcsolat neve, és válassza ki a integrációs fiókot, amely csatlakozni szeretne. 
+3. Korábban létrehozott kapcsolatokat az integrációs fiókba, most, hogy a kapcsolat létrehozására kéri. Nevezze el a kapcsolatot, és válassza ki az integrációs fiók, amely kapcsolódni szeretne. 
 
-    ![Adja meg az integrációs fiók kapcsolódási adatait.](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
+    ![Adja meg az integrációs fiók kapcsolat részletei](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
 
     Tulajdonságok csillaggal szükség.
 
     | Tulajdonság | Részletek |
     | --- | --- |
-    | Kapcsolat neve * |Adjon meg egy tetszőleges nevet a kapcsolat. |
-    | Integráció fiók * |Adja meg a integrációs fiók nevét. Ellenőrizze, hogy az integrációs fiók és a logikai alkalmazást az Azure ugyanazon a helyen. |
+    | Kapcsolat neve * |Adja meg a kapcsolat bármilyen nevet. |
+    | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon Azure-helyen. |
 
-5.  Amikor elkészült, a kapcsolódási adatait. Ez a példa hasonlóan kell kinéznie. Válassza ki a kapcsolat létrehozásának befejezéséhez **létrehozása**.
+5.  Ha elkészült, a kapcsolat adatait példához hasonlóan kell kinéznie. A kapcsolat létrehozásának befejezéséhez válasszon **létrehozás**.
    
-    ![integráció fiók kapcsolódási adatait.](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
+    ![integrációs fiók kapcsolat részletei](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
-6. A csatlakozás után jön létre, ahogy az ebben a példában válassza ki a X12 egybesimított fájl üzenet dekódolására.
+6. A csatlakozás után jön létre, ahogyan az ebben a példában válassza ki a X12 való dekódolandó egybesimított fájlos-üzenet.
 
-    ![integráció fiók kapcsolat létrehozása](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
+    ![integrációs fiók kapcsolat létrehozása](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
     Példa:
 
-    ![Jelölje be X12 lapos fájl üzenet dekódolását](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+    ![Válassza X12 egybesimított fájl dekódolása üzenet](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
    > [!NOTE]
-   > A tényleges üzenet tartalma vagy az üzenet tömb, jó vagy rossz, hasznos base64-kódolású. Igen meg kell adnia egy kifejezés, amely feldolgozza a tartalmat.
-   > Íme egy példa, amely feldolgozza a tartalom XML-kód nézetben vagy Kifejezésszerkesztő-tervezővel használatával adhatók meg.
+   > A tényleges üzenet tartalma vagy a üzenet tömbből, jó, vagy hibás, hasznos adat a base64-kódolású. Tehát meg kell adnia egy kifejezés, amely feldolgozza a tartalmat.
+   > Íme egy példa, amely feldolgozza a tartalmat, amely a kód nézetben vagy a tervezőben Kifejezésszerkesztő használatával adhat meg XML-fájlként.
    > ``` json
    > "content": "@xml(base64ToBinary(item()?['Payload']))"
    > ```
-   > ![Tartalom – példa](media/logic-apps-enterprise-integration-x12-decode/content-example.png)
+   > ![Tartalom példa](media/logic-apps-enterprise-integration-x12-decode/content-example.png)
    >
 
 
-## <a name="x12-decode-details"></a>X12 dekódolása részletei
+## <a name="x12-decode-details"></a>X12 részletek-dekódolást.
 
 A X12 dekódolási összekötő az alábbi feladatokat hajtja végre:
 
-* Ellenőrzi a boríték kereskedelmipartner-egyezmény ellen
-* Érvényesíti EDI- és erőforráspartner jellemző tulajdonságok
-  * EDI strukturális érvényesítése és a bővített sémaérvényesítése
-  * Az adatcsere boríték szerkezete érvényesítése.
-  * A sémaérvényesítés a boríték a vezérlő sémának.
-  * A sémaérvényesítés a tranzakció-set adatelemek az üzenet sémának.
-  * Tranzakció-set adatelemek végre EDI érvényesítése 
-* Ellenőrzi, hogy a csomópont, a csoport és a tranzakció set vezérlő számok nem ismétlődő
-  * Ellenőrzi a interchange vezérlő korábban fogadott kereszteződéseket ellen.
-  * A vezérlő csoportszám más cseréje a csoport vezérlő számoknak ellenőrzi.
-  * Ellenőrzi, hogy a tranzakció beállítása vezérlő számoknak más tranzakció set vezérlő csoport.
-* Felosztja a cseréje a tranzakció be, vagy a teljes adatcsere megőrzi:
-  * Vegyes Interchange, tranzakció készletek - tranzakció készletek felfüggeszteni hiba: elágazást interchange tranzakcióban állítja be, és minden tranzakció set elemzi. 
-  A X12 dekódolási művelet kimenetében csak azokat a tranzakciót, amely beállítja a érvényesítése sikertelen `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
-  * Vegyes Interchange, tranzakció készletek - interchange felfüggeszteni hiba: elágazást interchange tranzakcióban állítja be, és minden tranzakció set elemzi. 
-  Ha egy vagy több tranzakció állítja, az adatcsere ellenőrzésen, a X12 dekódolási művelet kimenetében, a tranzakció beállítja, hogy a csomópont nem `badMessages`.
-  * Megőrizheti a adatcsere - tranzakció készletek felfüggeszteni hiba: az adatcsere megőrzése, és a teljes kötegelt interchange feldolgozni. 
-  A X12 dekódolási művelet kimenetében csak azokat a tranzakciót, amely beállítja a érvényesítése sikertelen `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
-  * Megőrizheti a adatcsere - interchange felfüggeszteni hiba: az adatcsere megőrzése, és a teljes kötegelt interchange feldolgozni. 
-  Ha egy vagy több tranzakció állítja, az adatcsere ellenőrzésen, a X12 dekódolási művelet kimenetében, a tranzakció beállítja, hogy a csomópont nem `badMessages`. 
-* Létrehozza a műszaki és/vagy funkcionális visszaigazolás (Ha be van állítva).
-  * A műszaki visszaigazolás miatt érvényesítési fejléc állít elő. A műszaki nyugtázást jelentések tartozó az adatcsere fejléc és a cím címzett feldolgozási állapotát.
-  * A működési visszaigazolás miatt törzs érvényesítési állít elő. A működési nyugtázást jelentést minden egyes hiba történt a kapott dokumentumot
+* Ellenőrzi a elleni kereskedelmipartner-egyezmény boríték
+* EDI- és partner jellemző tulajdonságok ellenőrzése
+  * EDI-ellenőrzés szerkezeti és a kiterjesztett séma érvényesítése
+  * Az adatcsere-boríték szerkezete érvényesítése.
+  * Séma érvényesítése a boríték a vezérlő sémának.
+  * Séma érvényesítése a üzenet sémának tranzakciókészlet adatelemet.
+  * A tranzakciókészlet adatelem végrehajtott EDI-ellenőrzés 
+* Ellenőrzi, hogy az adatcsere, a csoport és a tranzakciós set ellenőrzőszámok nem azonosak
+  * Ellenőrzi, az adatcsere-ellenőrzőszám korábban fogadott adatcsere ellen.
+  * A csoport-ellenőrzőszám szemben a többi csoport ellenőrzőszámok az adatcsere ellenőrzi.
+  * Ellenőrzi, hogy a tranzakciókészlet ellenőrzőszáma egyéb tranzakció beállítása, hogy a csoportban ellenőrzőszámok ellen.
+* A tranzakció csoportokba adatcsere felosztása, vagy megőrzi a teljes adatcsere:
+  * Adatcsere felosztása tranzakciókészletekre – tranzakciókészletek felfüggesztése hiba esetén: tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
+  A X12 dekódolási műveleti kimenetek csak azokat a tranzakció állítja be, amelyek sikertelen érvényesítést `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
+  * Adatcsere felosztása tranzakciókészletekre – adatcsere felfüggesztése hiba esetén: tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
+  Ha egy vagy több tranzakció beállítja az adatcsere sikertelen ellenőrzést követően az dekódolási műveleti kimenetek összes tranzakció beállítja, hogy az adatcsere X12 `badMessages`.
+  * Adatcsere megőrzése – tranzakciókészletek felfüggesztése hiba esetén: az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
+  A X12 dekódolási műveleti kimenetek csak azokat a tranzakció állítja be, amelyek sikertelen érvényesítést `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
+  * Adatcsere megőrzése – adatcsere felfüggesztése hiba esetén: az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
+  Ha egy vagy több tranzakció beállítja az adatcsere sikertelen ellenőrzést követően az dekódolási műveleti kimenetek összes tranzakció beállítja, hogy az adatcsere X12 `badMessages`. 
+* A műszaki és/vagy funkcionális visszaigazolás állít elő, (Ha be van állítva).
+  * A technikai visszaigazolás fejléc érvényesítési eredményeként létrehozott. A technikai nyugtázást jelentések egy adatcsere fejlécet és a cím fogadó bemutató feldolgozásának állapotát.
+  * A működési visszaigazolás törzs érvényesítési eredményeként létrehozott. A működési nyugtázást jelentések minden egyes hibához a kapott dokumentumot feldolgozásakor
 
 ## <a name="view-the-swagger"></a>A swagger megtekintése
 Tekintse meg a [részletek swagger](/connectors/x12/). 
 
 ## <a name="next-steps"></a>További lépések
-[További tudnivalók a vállalati integrációs csomag](../logic-apps/logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag") 
+[További információ az Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag") 
 

@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 6dcd9ac725b76463259b60df6312e5cafebd9e88
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 446bb23e15d908c8afe189a33e4d8a70faad284a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044956"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126637"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi az Apache Hive és az Azure HDInsight HiveQL?
 
@@ -222,7 +222,7 @@ Nincsenek számos szolgáltatás használható a Hive-lekérdezések futtatásá
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Az Azure Data Factory lehetővé teszi, hogy HDInsight a Data Factory-folyamatok részeként. További információ a Hive használatával egy folyamatból, tekintse meg a [adatok átalakítása a Hive-tevékenység használatával az Azure Data Factoryban](/data-factory/transform-data-using-hadoop-hive.md) dokumentumot.
+Az Azure Data Factory lehetővé teszi, hogy HDInsight a Data Factory-folyamatok részeként. További információ a Hive használatával egy folyamatból, tekintse meg a [adatok átalakítása a Hive-tevékenység használatával az Azure Data Factoryban](../../data-factory/transform-data-using-hadoop-hive.md) dokumentumot.
 
 ### <a name="hive-jobs-and-sql-server-integration-services"></a>Hive-feladatok és az SQL Server Integration Services
 

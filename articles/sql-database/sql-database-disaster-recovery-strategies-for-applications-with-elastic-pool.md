@@ -7,18 +7,18 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/27/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 6952e26898e4ff27dd7c2f6780dcb9b8b224460b
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 8f365d123a234f367a1415232a714d2c18663b63
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092545"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124070"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Vészhelyreállítási stratégiák SQL Database rugalmas készleteket használó alkalmazások
-Az évek, hogy megismerte, a cloud services rendszer nem üzembiztos, és a katasztrofális események történik. Az SQL Database ezek az incidensek előfordulásakor az alkalmazás az üzletmenet folytonosságának biztosításához a különböző képességeket biztosít. [Rugalmas készletek](sql-database-elastic-pool.md) és önálló adatbázisokat támogatja a vész-helyreállítási lehetőségei azonos típusú. Ez a cikk bemutatja több Vészhelyreállítási stratégiák rugalmas adatbáziskészletekhez, amelyek esetében használhatja ezeket az SQL Database üzletmenet-folytonossági funkciókat.
+Az évek, hogy megismerte, a cloud services rendszer nem üzembiztos, és a katasztrofális események történik. Az SQL Database ezek az incidensek előfordulásakor az alkalmazás az üzletmenet folytonosságának biztosításához a különböző képességeket biztosít. [Rugalmas készletek](sql-database-elastic-pool.md) és önálló adatbázisokat támogatja a vész-helyreállítási lehetőségei a azonos típusú. Ez a cikk bemutatja több Vészhelyreállítási stratégiák rugalmas adatbáziskészletekhez, amelyek esetében használhatja ezeket az SQL Database üzletmenet-folytonossági funkciókat.
 
 Ez a cikk a következő kanonikus SaaS ISV alkalmazásmintát használ:
 

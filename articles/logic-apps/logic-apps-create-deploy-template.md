@@ -1,98 +1,93 @@
 ---
-title: A központi telepítési sablonok létrehozása az Azure Logic Apps |} Microsoft Docs
-description: A logic Apps alkalmazások telepítése Azure Resource Manager-sablonok létrehozása
+title: Üzembehelyezési sablonok létrehozása az Azure Logic Apps |} A Microsoft Docs
+description: Logic Apps-alkalmazások üzembe helyezéséhez Azure Resource Manager-sablonok létrehozása
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.custom: H1Hack27Feb2017
+ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.author: LADocs; estfan
-ms.openlocfilehash: 647ffeb05542e12d19cefa3fa0dbf55e5585109a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 68e655490470db6aade53c6f3523d0c9d87c3fbd
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297913"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123465"
 ---
-# <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>A logic Apps alkalmazások telepítése Azure Resource Manager-sablonok létrehozása
+# <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Logic Apps-alkalmazások üzembe helyezéséhez Azure Resource Manager-sablonok létrehozása
 
-A logikai alkalmazás létrehozása után érdemes az Azure Resource Manager sablon létrehozásához.
-Így könnyen telepíthet a logikai alkalmazást a környezetben vagy az erőforráscsoport lehet szükség.
-A Resource Manager-sablonok kapcsolatban bővebben lásd: [Azure Resource Manager sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) és [erőforrások telepítése Azure Resource Manager-sablonok segítségével](../azure-resource-manager/resource-group-template-deploy.md).
+Logic Apps-alkalmazás létrehozása után érdemes az Azure Resource Manager-sablonnal hozza létre.
+Így egyszerűen telepítheti a logikai alkalmazás bármilyen környezetben vagy az erőforráscsoport lehet szükség.
+Resource Manager-sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) és [üzembe erőforrásokat az Azure Resource Manager-sablonok használatával](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="logic-app-deployment-template"></a>Logikai alkalmazás központi telepítési sablont
 
-A logikai alkalmazás három alapvető részből áll:
+Logic Apps-alkalmazás három alapvető részből áll:
 
-* **Logic app erőforrás**: többek között a terv, helyét és a munkafolyamat-definíció díjszabási információkat tartalmaz.
-* **Munkafolyamat-definíciót**: a Logic Apps alkalmazást munkafolyamat lépéseket, és hogyan hajtható végre a Logic Apps motor kell a munkafolyamatot ismerteti.
-Ez a definíció meg tudja tekinteni a logikai alkalmazás **kódnézetben** ablak.
-A logic app erőforrás, ez a definíció megtalálhatja a `definition` tulajdonság.
-* **Kapcsolatok**: biztonságosan tárolni a összekötő-kapcsolatokat, például egy kapcsolati karakterláncot és a hozzáférési token metaadatainak erőforrásokat külön hivatkozik.
-A logic app erőforrás, a logikai alkalmazás erőforrásainak hivatkozik a `parameters` szakasz.
+* **Logikai alkalmazás erőforrásához**: többek között a tervet, helyét és a munkafolyamat-definíció díjszabási információkat tartalmaz.
+* **Munkafolyamat-definíció**: a logikai alkalmazás munkafolyamat-lépéseit, és hogyan hajtsa végre a Logic Apps-motor kell a munkafolyamatot ismerteti.
+Ez a definíció tekintheti meg a logikai alkalmazás **Kódnézet** ablak.
+Ez a definíció az annak az a logikai alkalmazás erőforrásához a `definition` tulajdonság.
+* **Kapcsolatok**: a különálló erőforrásokat, amelyek biztonságos tárolása a metaadatokat, például egy kapcsolati karakterláncot és egy hozzáférési tokent minden olyan összekötő kapcsolatok hivatkozik.
+A logikai alkalmazás erőforrásához, az a logikai alkalmazás erőforrásainak hivatkozik a `parameters` szakaszban.
 
-Egy eszköz, például a meglévő logic Apps alkalmazások az összes adatot megtekintheti [Azure erőforrás-kezelő](http://resources.azure.com).
+Egy hasonló eszköz használatával megtekintheti a meglévő logic apps összes megtalálhatja [Azure erőforrás-kezelő](http://resources.azure.com).
 
-Ahhoz, hogy az erőforrás-csoport központi telepítésével használandó logikai alkalmazás sablonját, adja meg az erőforrások és parametrizálja igény szerint kell.
-Például ha egy fejlesztési, tesztelési és éles környezetben telepít, valószínűleg használni kívánt SQL-adatbázis különböző kapcsolati karakterláncai minden környezetben.
-Vagy előfordulhat, hogy szeretné belül különböző előfizetésekhez vagy erőforráscsoportok telepítéséhez.  
+Ahhoz, hogy egy logikai alkalmazást az erőforráscsoportok üzemelő példányainak használandó sablont, kell erőforrásokat határozzák meg, és szükség szerint paraméterezni.
+Például ha telepít egy fejlesztési, tesztelési és éles környezetben való, valószínűleg használni kívánt SQL-adatbázis különböző kapcsolati karakterláncokkal minden környezetben.
+Vagy előfordulhat, hogy szeretne belül különböző előfizetések vagy erőforráscsoportok üzembe helyezése.  
 
-## <a name="create-a-logic-app-deployment-template"></a>Hozzon létre egy logic app központi telepítési sablont
+## <a name="create-a-logic-app-deployment-template"></a>Hozzon létre egy logikai alkalmazás központi telepítési sablont
 
-A legegyszerűbb módja annak, hogy egy érvényes logikai alkalmazás központi telepítési sablont, hogy használja a [Visual Studio eszközök a Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites).
-A Visual Studio eszközök, amelyek segítségével bármely előfizetés vagy a hely érvényes központi telepítési sablont hoz létre.
+Rendelkezik egy érvényes logikai alkalmazás központi telepítési sablont a legegyszerűbb módja az, hogy használja a [a Logic Apps Visual Studio-eszközök](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites).
+A Visual Studio-eszközök, bármely előfizetéssel vagy hellyel is használható érvényes központi telepítési sablont létrehozni.
 
-Néhány más eszközök is segítséget nyújt logic app központi telepítési sablont hoz létre.
-Hozhat létre kézzel, ez azt jelenti, hogy a paraméterek létrehozásához, igény szerint már Microsofttól erőforrások használatával.
-Egy másik lehetőség egy [logic app sablon létrehozó](https://github.com/jeffhollan/LogicAppTemplateCreator) PowerShell-modult. A nyílt forráskódú modul először kiértékeli a logikai alkalmazást és a kapcsolatokat, hogy azt használja, és akkor hoz létre a telepítéshez szükséges paraméterekkel rendelkező sablon erőforrásokat.
-Például ha egy logikai alkalmazás, amely egy üzenetet kapott egy Azure Service Bus-üzenetsorba, és adatokat ad hozzá Azure SQL-adatbázis, az eszköz megőrzi az orchestration logikai és az SQL és a Service Bus kapcsolati karakterláncok parameterizes, így azok állíthat be központi telepítési.
+Néhány egyéb eszközökkel is segítséget nyújt hoz létre egy logikai alkalmazás központi telepítési sablont.
+Hozhat létre kézzel, azaz már tárgyalt Itt hozhat létre a paramétereket szükség szerint források segítségével.
+Egy másik lehetőség egy [logic app sablon készítője](https://github.com/jeffhollan/LogicAppTemplateCreator) PowerShell-modult. A nyílt forráskódú modul először kiértékeli a logikai alkalmazás és a kapcsolatokat, hogy azt használja, és akkor hoz létre a sablon erőforrásainak üzembe helyezéshez szükséges paraméterekkel.
+Például ha egy logikai alkalmazást, amely egy üzenetet fogad egy Azure Service Bus-üzenetsorba, és adatokat ad hozzá egy Azure SQL database, az eszköz megőrzi a vezénylési-logika és felparaméterezi az SQL és a Service Bus kapcsolati karakterláncokat, hogy azok beállíthatja üzembe helyezése köz.
 
 > [!NOTE]
-> Kapcsolatok ugyanabban az erőforráscsoportban, a logikai alkalmazás tartományba kell esnie.
+> Kapcsolatok ugyanazt az erőforráscsoportot, a logikai alkalmazás belül kell lennie.
 >
 >
 
-### <a name="install-the-logic-app-template-powershell-module"></a>A logic app sablon PowerShell moduljának telepítése
-A modul telepítése a legegyszerűbb módja keresztül a [PowerShell-galériában](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1), a parancs segítségével `Install-Module -Name LogicAppTemplate`.  
+### <a name="install-the-logic-app-template-powershell-module"></a>A logikai alkalmazás sablon PowerShell modul telepítése
+A modul telepítése a legegyszerűbb módja, keresztül a [PowerShell-galériából](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1), a parancs segítségével `Install-Module -Name LogicAppTemplate`.  
 
-Is telepítheti a PowerShell modul manuálisan:
+Is telepítheti a PowerShell-modult manuálisan:
 
-1. Töltse le a legújabb kiadása a [logic app sablon létrehozó](https://github.com/jeffhollan/LogicAppTemplateCreator/releases).  
-2. Bontsa ki a mappát a PowerShell modul mappába (általában `%UserProfile%\Documents\WindowsPowerShell\Modules`).
+1. Töltse le a legújabb kiadását a [logic app sablon készítője](https://github.com/jeffhollan/LogicAppTemplateCreator/releases).  
+2. Csomagolja ki a mappát a PowerShell modul mappába (általában `%UserProfile%\Documents\WindowsPowerShell\Modules`).
 
-A modul a bérlők és az előfizetés elérését együttműködve token, azt javasoljuk, hogy együtt használja a [ARMClient](https://github.com/projectkudu/ARMClient) parancssori eszközt.  Ez [blogbejegyzés](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ARMClient ismerteti részletesen.
+A modul működéséhez minden bérlői és az előfizetés hozzáférés-token, azt javasoljuk, hogy együtt használja, a [ARMClient](https://github.com/projectkudu/ARMClient) parancssori eszköz.  Ez [blogbejegyzés](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ARMClient ismerteti részletesebben.
 
-### <a name="generate-a-logic-app-template-by-using-powershell"></a>A logic app-sablon létrehozása a PowerShell használatával
-PowerShell telepítése után létrehozhat egy sablont a következő paranccsal:
+### <a name="generate-a-logic-app-template-by-using-powershell"></a>A logikaialkalmazás-sablon létrehozása PowerShell használatával
+PowerShell telepítése után a sablon a következő parancs használatával is létrehozhat:
 
 `armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp MyApp -ResourceGroup MyRG -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json`
 
-`$SubscriptionId` az Azure-előfizetés-azonosító. Először lekérdezi egy hozzáférési jogkivonat segítségével ARMClient, majd kiszolgálókészletéhez keresztül, a PowerShell-parancsfájlba, és létrehozza a sablon egy JSON-fájlban.
+`$SubscriptionId` az Azure-előfizetés azonosítója. Ezt a sort először lekérése hozzáférési token via ARMClient, majd átadja azt a a PowerShell-parancsfájlt, és majd a sablont hoz létre egy JSON-fájlban.
 
-## <a name="add-parameters-to-a-logic-app-template"></a>Paraméterek hozzáadása a logic app-sablon
-A logic app-sablon létrehozása után továbbra is fel vagy módosít a paramétereket, amelyek hasznosak lehetnek. Például ha a definíciója tartalmaz egy erőforrás-azonosító egy Azure függvényt vagy beágyazott munkafolyamatot, amely egy központi telepítésben telepítését tervezi, hozzáadhat további erőforrások a sablonhoz és parametrizálja azonosítók, igény szerint. Ugyanez érvényes egyéni API-k és Swagger mutató hivatkozásokat az egyes erőforráscsoportokban telepítendő várt végpontok.
+## <a name="add-parameters-to-a-logic-app-template"></a>Paraméterek hozzáadása a logikaialkalmazás-sablon
+A logic app-sablon létrehozása után folytathatja felvenni vagy módosítani a paraméterek, amelyeket érdemes lehet. Például ha a definíciója tartalmaz egy erőforrás-azonosító egy Azure-függvényt vagy beágyazott munkafolyamatot, amely tervez üzembe helyezni egy központi telepítésben, rendeljen több erőforrást a sablonhoz, szabadon paraméterezni azonosítók, igény szerint. Ugyanez vonatkozik az egyéni API-k és a Swagger mutató hivatkozásokat végpontok tervez telepíteni az egyes erőforráscsoportokban.
 
-### <a name="add-references-for-dependent-resources-to-visual-studio-deployment-templates"></a>Hivatkozások a tőle függő erőforrások hozzáadása a Visual Studio központi telepítési sablonok
+### <a name="add-references-for-dependent-resources-to-visual-studio-deployment-templates"></a>Függő erőforrások mutató hivatkozások hozzáadása a Visual Studio a központi telepítési sablonok
 
-Ha azt szeretné, hogy a logikai alkalmazás függő erőforrásokra kell hivatkoznia, [Azure Resource Manager sablonfüggvényei](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) logic app központi telepítési sablonba. Például érdemes hivatkozhasson rá az Azure-funkció vagy integrációs fiókkal, amely mellett a Logic Apps alkalmazást telepíteni szeretné a Logic Apps alkalmazást. Kövesse az alábbi irányelveket a központi telepítési sablont a paraméterek használatáról, úgy, hogy a Logic App Designer Renderelés megfelelően. 
+Ha azt szeretné, hogy a logikai alkalmazás függő erőforrásokra kell hivatkoznia, [Azure Resource Manager-sablonfüggvények](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) az a logikai alkalmazás központi telepítési sablont. Például érdemes lehet a logikai alkalmazás egy Azure-funkció vagy integrációs fiók mellett a logikai alkalmazás üzembe helyezése kívánt hivatkozni. Kövesse ezeket az irányelveket kapcsolatos paraméterek használata a központi telepítési sablont úgy, hogy a Logic App Designerben az megfelelően jelenik meg. 
 
-Eseményindítók és műveletek az ilyen típusú logic app paramétereket használhatja:
+Az ilyen típusú eseményindítók és műveletek logic app paraméterek használhatók:
 
-*   Alárendelt munkafolyamat
+*   Gyermek munkafolyamat
 *   Függvényalkalmazás
-*   APIM hívás
-*   API kapcsolat futásidejű URL-címe
-*   API-kapcsolati útvonal
+*   APIM-hívás
+*   API-kapcsolat futásidejű URL-címe
+*   API-kapcsolat elérési útja
 
-És használhatja a sablont funkciókat, például a paraméterek, változókat, resourceId, concat, stb. Például ez hogyan lecserélheti az Azure-függvény erőforrás-azonosító:
+És használhatja a sablonokban használható függvények például a paraméterek, változókat, erőforrás-azonosító, concat, stb. Ha például a következő hogyan lecserélheti az Azure-függvény erőforrás-azonosító:
 
 ```
 "parameters":{
@@ -104,7 +99,7 @@ Eseményindítók és műveletek az ilyen típusú logic app paramétereket hasz
 },
 ```
 
-És ahol paraméterek szeretné használni:
+És ahol paramétereket használja:
 
 ```
 "MyFunction": {
@@ -118,7 +113,7 @@ Eseményindítók és műveletek az ilyen típusú logic app paramétereket hasz
     "runAfter":{}
 }
 ```
-Másik példaként a Service Bus küldési üzenet művelet is parametrizálja:
+Másik példaként, a Service Bus küldési üzenet művelet lehet paraméterezni:
 
 ```
 "Send_message": {
@@ -147,7 +142,7 @@ Másik példaként a Service Bus küldési üzenet művelet is parametrizálja:
 
 
 > [!NOTE] 
-> A Logic App Designer működéséhez paraméterek használatakor meg kell adni alapértelmezett értéket, például:
+> A Logic App Designerben működéséhez paraméterek használatakor például az alapértelmezett értékeket, kell adnia:
 > 
 > ```
 > "parameters": {
@@ -161,47 +156,47 @@ Másik példaként a Service Bus küldési üzenet művelet is parametrizálja:
 
 ## <a name="add-your-logic-app-to-an-existing-resource-group-project"></a>A logikai alkalmazás hozzáadása egy meglévő erőforráscsoport-projekt
 
-Ha egy meglévő erőforráscsoport-projekt, adhat hozzá a logikai alkalmazás erre a projektre a JSON-vázlat ablak. Egy másik logikai alkalmazást a korábban létrehozott alkalmazás mellett azt is megteheti.
+Ha rendelkezik egy meglévő erőforráscsoport-projektet, a logikai alkalmazás erre a projektre a JSON-vázlat ablak is hozzáadhat. Azt is megteheti a korábban létrehozott app együtt egy másik logikai alkalmazást.
 
 1. Nyissa meg az `<template>.json` fájlt.
 
-2. A JSON-vázlat ablak megnyitásához lépjen **nézet** > **más Windows** > **JSON-vázlat**.
+2. A JSON-vázlat ablak megnyitásához nyissa meg **nézet** > **Other Windows** > **JSON-vázlat**.
 
-3. A sablonfájl egy erőforrás hozzáadásához kattintson **erőforrás hozzáadása** a JSON-vázlat ablak tetején. A JSON-vázlat ablak, kattintson a jobb gombbal vagy **erőforrások**, és válassza ki **új erőforrás hozzáadása**.
+3. Adjon hozzá egy erőforrást a sablonfájlt, kattintson a **erőforrás hozzáadása** a JSON-vázlat ablak tetején. A JSON-vázlat ablak, kattintson a jobb gombbal, vagy **erőforrások**, és válassza ki **új erőforrás hozzáadása**.
 
     ![JSON-vázlat ablak](./media/logic-apps-create-deploy-template/jsonoutline.png)
     
-4. Az a **erőforrás hozzáadása** párbeszédpanel, keresése és kijelölése **logikai alkalmazás**. A logikai alkalmazás neve, és válassza a **Hozzáadás**.
+4. Az a **erőforrás hozzáadása** párbeszédpanelen keresse meg és válassza ki **logikai alkalmazás**. Nevezze el a logikai alkalmazást, és válassza a **Hozzáadás**.
 
     ![Erőforrás felvétele](./media/logic-apps-create-deploy-template/addresource.png)
 
 
-## <a name="deploy-a-logic-app-template"></a>A logic app sablon üzembe helyezése
+## <a name="deploy-a-logic-app-template"></a>Logic app-sablon üzembe helyezése
 
-A sablon olyan eszközöket, például a PowerShell, a REST API segítségével telepíthet [Visual Studio Team Services Kiadáskezelés](#team-services), és a sablon-üzembehelyezés az Azure portálon keresztül.
-Is, a paraméterek értékeit tárolására, azt javasoljuk, hogy hozzon létre egy [paraméterfájl](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
-Megtudhatja, hogyan [erőforrások az Azure Resource Manager-sablonok és a PowerShell telepítése](../azure-resource-manager/resource-group-template-deploy.md) vagy [erőforrások az Azure Resource Manager-sablonok és az Azure-portál telepítése](../azure-resource-manager/resource-group-template-deploy-portal.md).
+A sablon olyan eszközöket, mint például a PowerShell, REST API segítségével telepíthet [Visual Studio Team Services Kiadáskezelési](#team-services), és a sablon telepítése az Azure Portalon keresztül.
+Emellett szeretné tárolni a paraméterek értékeit, javasoljuk, hogy hozzon létre egy [paraméterfájl](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
+Ismerje meg, hogyan [erőforrások üzembe helyezése Azure Resource Manager-sablonok és PowerShell](../azure-resource-manager/resource-group-template-deploy.md) vagy [erőforrások üzembe helyezése Azure Resource Manager-sablonokkal és az Azure Portalon](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 ### <a name="authorize-oauth-connections"></a>OAuth-kapcsolatok engedélyezése
 
-A központi telepítést követően a logic app-végpontok közötti érvényes paraméterekkel működik.
-Azonban továbbra is engedélyeznie kell egy érvényes jogkivonat létrehozásához OAuth-kapcsolatokat.
-OAuth-kapcsolatok engedélyezésére, nyissa meg a logikai alkalmazást a Logic Apps-tervezőben, és ezek a kapcsolatok engedélyezéséhez. Vagy az automatikus üzembe helyezés esetén az parancsfájl segítségével járul hozzá az egyes OAuth-kapcsolatok.
-Nincs a githubon példa parancsfájl a [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) projekt.
+Az üzembe helyezést követően az a logikai alkalmazás – teljes körű érvényes paraméterekkel működik.
+Azonban továbbra is engedélyeznie kell egy érvényes hozzáférési jogkivonatot az OAuth-kapcsolatok.
+OAuth-kapcsolatok hitelesítéséhez, nyissa meg a logikai alkalmazás a Logic Apps Designerben, és ezek a kapcsolatok hitelesítéséhez. Vagy az automatikus telepítési parancsfájl hogy engedélyt adjanak az egyes OAuth-kapcsolat.
+Példa parancsfájl van a githubon a [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) projekt.
 
 <a name="team-services"></a>
 ## <a name="visual-studio-team-services-release-management"></a>A Visual Studio Team Services Kiadáskezelés
 
-Egy általános forgatókönyv központi telepítésére és felügyeletére egy olyan környezetben, hogy egy eszköz, például a Kiadáskezelés logic app a központi telepítési sablont a Visual Studio Team Services használata. A Visual Studio Team Services tartalmaz egy [telepítése Azure erőforráscsoport](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) , hogy minden build hozzáadhatja vagy csővezeték kiadási tevékenység. Telepíteni kell egy [egyszerű](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) az engedélyezési központi telepítéséhez, és ezt a kiadási definition hozhat létre.
+Egy általános forgatókönyv üzembe helyezéséhez és felügyeletéhez egy környezetet, hogy egy eszköz, például a Kiadáskezelés a Visual Studio Team Services, a logikai alkalmazás központi telepítési sablont. A Visual Studio Team Services-ben egy [üzembe helyezése Azure-erőforráscsoport](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) feladat, amelyet minden build ad hozzá vagy kibocsátásában. Rendelkeznie kell egy [szolgáltatásnév](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) az engedélyezési üzembe helyezéséhez, és engedélyezi a kiadási definíció hozhat létre.
 
-1. A Kiadáskezelés, válassza ki **üres** , hogy egy üres definíció létrehozása.
+1. A Kiadáskezelés, válassza ki **üres** úgy, hogy létrehozott egy üres definíciót.
 
     ![Üres definíció létrehozása][1]
 
-2. Válassza ki a van szüksége, nagy valószínűséggel többek között a logic app-sablon manuálisan, vagy az összeállítási folyamat részeként létrehozott erőforrásokat.
-3. Adja hozzá egy **Azure erőforrás-csoport központi telepítésének** feladat.
-4. Állítson be egy [egyszerű](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/), és a sablon és a sablon paramétereinek fájlok hivatkozik.
-5. Maradnak meg a környezetben, automatikus teszt vagy igény szerint jóváhagyó kiadás folyamat lépéseit.
+2. Válassza ki bármelyik van szüksége ennek, nagy valószínűséggel többek között a logikaialkalmazás-sablon manuálisan, vagy a létrehozási folyamat részeként létrehozott erőforrásokat.
+3. Adjon hozzá egy **Azure erőforráscsoport-telepítés** feladat.
+4. Állítson be egy [egyszerű szolgáltatás](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/), és a sablon és paraméterek sablon fájlok hivatkoznak.
+5. Továbbra is hozhatja létre a környezet, automatizált tesztelési vagy igény szerint a jóváhagyók a kibocsátási folyamat lépéseit.
 
 <!-- Image References -->
 [1]: ./media/logic-apps-create-deploy-template/emptyreleasedefinition.png

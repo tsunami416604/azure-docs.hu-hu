@@ -1,42 +1,37 @@
 ---
-title: A munkafolyamatok - Azure Logic Apps XML-üzenetek használata |} Microsoft Docs
-description: Feldolgozni, ellenőrizze, átalakítás és funkciógazdagabbá teheti a logic Apps alkalmazásokat és üzleti XML-üzenetek-forgatókönyvekre, a vállalati integrációs csomag segítségével
+title: XML-üzenetek B2B vállalati integráció – Azure Logic Apps |} A Microsoft Docs
+description: Feldolgozásához, ellenőrzése, átalakítás és bővítés az Azure Logic Appsben az Enterprise Integration Pack csomag B2B-megoldásoktól az XML-üzenetek
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 85bdaff5cb88bbadaed778458b66c0cce7bce9de
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5f804bf656b423d6dbe8f5c2ed73ba54d8361000
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298974"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124535"
 ---
-# <a name="validate-and-transform-xml-encode-and-decode-flat-files-and-enrich-messages-features-in-logic-apps"></a>Ellenőrizze és átalakítható XML, kódolása és egybesimított fájlok és funkciógazdagabbá teheti a logic apps üzenetek szolgáltatásai
+# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-üzenetek, és az Azure Logic Appsben és Enterprise Integration Pack egybesimított fájlok
 
-A logic apps segítségével, lehetősége nyílik XML üzenetek küldésére és fogadására. Ez a szolgáltatás része a vállalati integrációs csomagot. Azoknak a felhasználóknak a BizTalk Serveren háttérrel a vállalati integrációs csomag lehetővé teszi az átalakítási és üzenetek ellenőrzése, egyszerű fájlok, és még használatához XPath kiegészítése, illetve konkrét tulajdonságok üzenetből hasonló képességek. 
+Logic apps használata esetén, hogy a számítógép XML üzenetek küldése és fogadása. Ez a funkció az Enterprise Integration Pack részét képezi. Azoknak a felhasználóknak a BizTalk Server háttérrel az Enterprise Integration Pack biztosít hasonló funkciókat vehetnek igénybe, átalakítása és üzenetek érvényesíti, egybesimított fájlok használata, és akár az XPath bővítését, vagy konkrét tulajdonságok kinyerése egy üzenetet. 
 
-Azoknak a felhasználóknak, akik még nem használta a hely a ezek a funkciók bontsa ki, hogyan üzenetek feldolgozásához a munkafolyamaton belül. Például ha a vállalatok forgatókönyvek, és együttműködik a megadott XML-sémák, használhatja a vállalati integrációs csomag javítása érdekében hogyan vállalata dolgozza fel ezeket az üzeneteket. 
+Azoknak a felhasználóknak nem ismerő felhasználók érdekében ez a terület ezeket a funkciókat bontsa ki, hogyan-üzenetek feldolgozása a munkafolyamaton belül. Például ha vannak olyan vállalatok forgatókönyvben, és dolgozhat adott az XML-sémák, majd az Enterprise Integration Pack használatával javíthatja a miként a vállalat dolgozza fel ezeket az üzeneteket. 
 
-A vállalati integrációs csomag tartalmazza: 
+Az Enterprise Integration Pack tartalmazza: 
 
-* [XML-érvényesítés](logic-apps-enterprise-integration-xml-validation.md "további információ a XML-üzenet érvényesítés") -ellenőrzése egy bejövő vagy kimenő XML üzenet egy adott sémának.
-* [XML-átalakító](../logic-apps/logic-apps-enterprise-integration-transform.md "XML üzenet átalakítások és a maps ismertetése") - alakítható, vagy testre szabhatja a követelmények, vagy egy partner követelményei alapján XML-üzenetben.
-* [Fájl kódolási és dekódolási egybesimított fájl lapos](logic-apps-enterprise-integration-flatfile.md "további információ a egybesimított fájl kódolás/dekódolás") - kódolni vagy egybesimított fájl dekódolására. Például SAP fogad el, és egybesimított fájl formátumban megadva IDOC-fájlok küld. Integráció számos platformon XML-üzenetek, beleértve a Logic Apps létrehozása. Igen a egybesimított fájl kódoló "átalakítani" XML-fájlok egybesimított fájlokba használó logikai alkalmazás is létrehozhat. 
-* [XPath](https://msdn.microsoft.com/library/mt643789.aspx) - funkciógazdagabbá teheti az üzenetet, és konkrét tulajdonságok kinyerése az üzenetet. A kibontott tulajdonságok segítségével majd átirányíthatja az üzenet egy cél, vagy köztes végpont.
+* [XML-érvényesítés](logic-apps-enterprise-integration-xml-validation.md "további információ üzenet XML-érvényesítés") – egy bejövő vagy kimenő XML-üzenet egy adott séma érvényesítése.
+* [XML-átalakításhoz](../logic-apps/logic-apps-enterprise-integration-transform.md "megismerheti a XML-üzenet átalakítások vagy a térképek") – konvertálni, vagy testre szabhatja egy XML-üzenet, a követelmények, vagy egy partneri követelményei alapján.
+* [Egybesimított fájl kódolása és egybesimított fájl dekódolása](logic-apps-enterprise-integration-flatfile.md "megismerheti a egybesimított fájl kódolása és dekódolása") – kódolása, vagy egy egybesimított fájl dekódolása. Például az SAP fogad el, és egybesimított fájl formátumú IDOC-fájlok küldése. Számos integrációs platform XML-üzenetek, beleértve a logikai alkalmazások létrehozása. Így hozhat létre egy logikai alkalmazást, amely a flat file encoder "átalakítása" XML-fájlok egybesimított fájlok. 
+* [XPath](https://msdn.microsoft.com/library/mt643789.aspx) - üzenet bővítését, és konkrét tulajdonságok kinyerni az üzenetet. Ezután használhatja a kinyert tulajdonságait az üzenet célba, vagy egy köztes végpontot irányíthatja.
 
 ## <a name="try-it-out"></a>Próbálja ki!
-[Egy teljesen működőképes logikai alkalmazás telepítése ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (GitHub minta) az XML-szolgáltatások az Azure Logic Apps segítségével.
+[Egy teljesen működőképes logikai alkalmazás üzembe helyezése ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (GitHub-minta) az Azure Logic Appsben az XML-funkciók használatával.
 
 ## <a name="learn-more"></a>Részletek
-[További tudnivalók a vállalati integrációs csomag](../logic-apps/logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag")
+[További információ az Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag")

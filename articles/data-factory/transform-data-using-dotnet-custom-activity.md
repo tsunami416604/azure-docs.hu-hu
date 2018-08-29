@@ -1,6 +1,6 @@
 ---
 title: Egyéni tevékenységek használata Azure Data Factory-folyamatban
-description: Megtudhatja, hogyan hozzon létre egyéni tevékenységeket, és használja őket az Azure Data Factory-folyamathoz.
+description: Ismerje meg, hogyan hozhat létre egyéni tevékenységeket, és használja őket az Azure Data Factory-folyamatot.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,35 +10,35 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 08/29/2018
 ms.author: douglasl
-ms.openlocfilehash: 2dab0adb0728a1fb5e8ac9bebe01f861ed8c7c3a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f4a88c5495fc3297699110d8a12a22ff7d6c2bbb
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058915"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144354"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](v1/data-factory-use-custom-activities.md)
+> * [1-es verzió](v1/data-factory-use-custom-activities.md)
 > * [Aktuális verzió](transform-data-using-dotnet-custom-activity.md)
 
-Egy Azure Data Factory-folyamathoz használható tevékenységeknek két típusa van.
+Két típusa a tevékenységeket, az Azure Data Factory-folyamatban van.
 
-- [Adatok mozgása tevékenységek](copy-activity-overview.md) közötti áthelyezése [támogatott forrás és a fogadó adattárolókhoz](copy-activity-overview.md#supported-data-stores-and-formats).
-- [Adatok átalakítása tevékenységek](transform-data.md) adatok átalakítására a számítási szolgáltatásokat, például Azure HDInsight, az Azure Batch és az Azure Machine Learning segítségével. 
+- [Adattovábbítási tevékenységek](copy-activity-overview.md) közötti áthelyezése [támogatott forrás- és fogadó adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+- [Adat-átalakítási tevékenységeket](transform-data.md) adatok átalakításához a számítási szolgáltatások, például Azure HDInsight, az Azure Batch és az Azure Machine Learning használatával. 
 
-Áthelyezése egy adatok az adattárolási, hogy a Data Factory nem támogatja, vagy átalakítási/folyamat adatokat úgy, hogy a Data Factory nem támogatja, létrehozhat egy **egyéni tevékenység** saját adatmozgás vagy átalakítási logika és használata a tevékenység egy folyamaton belül. Az egyéni tevékenység fut a testreszabott kód logika egy **Azure Batch** virtuális gépek készletét.
+Áthelyezése egy adatok tárolására, hogy nem támogatja a Data Factory, vagy úgy, hogy a Data Factory által nem támogatott az adatok átalakíthatók/feldolgozhatók, létrehozhat egy **egyéni tevékenység** saját adatáthelyezési vagy Adatátalakítási logikát és használata a tevékenységet a folyamat. Az egyéni tevékenység fut az egyéni kód logikára egy **Azure Batch** virtuálisgép-készletek.
 
 Lásd az alábbi cikkeket, ha most ismerkedik az Azure Batch szolgáltatás:
 
-* [Azure Batch alapjai](../batch/batch-technical-overview.md) az Azure Batch szolgáltatás áttekintését.
-* [Új AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1) parancsmaggal hozhat létre Azure Batch-fiók (vagy) [Azure-portálon](../batch/batch-account-create-portal.md) az Azure portál használata az Azure Batch-fiók létrehozásához. Lásd: [PowerShell használatával kezelheti az Azure Batch-fiók](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) részletes információkra van szüksége a parancsmaggal a cikkben találhat.
-* [Új AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) parancsmaggal hozhat létre Azure Batch-készlet.
+* [Az Azure Batch alapjai](../batch/batch-technical-overview.md) az Azure Batch szolgáltatás áttekintése.
+* [Új AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1) parancsmaggal hozzon létre egy Azure Batch-fiók (vagy) [az Azure portal](../batch/batch-account-create-portal.md) létrehozása az Azure Batch-fiókot az Azure portal használatával. Lásd: [PowerShell használata kezelheti az Azure Batch-fiók](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) cikk nyújt részletes tájékoztatást a parancsmag használatával.
+* [Új-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) parancsmaggal hozzon létre egy Azure Batch-készletben.
 
-## <a name="azure-batch-linked-service"></a>Azure Batch társított szolgáltatás 
-A következő JSON társított Azure Batch szolgáltatás minta határozza meg. További információkért lásd: [számítási környezetek Azure Data Factory által támogatott](compute-linked-services.md)
+## <a name="azure-batch-linked-service"></a>Az Azure Batch-beli társított szolgáltatás 
+A következő JSON egy minta Azure Batch társított szolgáltatás határozza meg. További információkért lásd: [számítási környezetek Azure Data Factory által támogatott](compute-linked-services.md)
 
 ```json
 {
@@ -62,11 +62,11 @@ A következő JSON társított Azure Batch szolgáltatás minta határozza meg. 
 }
 ```
 
- Csatolt Azure Batch szolgáltatás kapcsolatos további információkért lásd: [összekapcsolt szolgáltatások számítási](compute-linked-services.md) cikk. 
+ Társított Azure Batch szolgáltatással kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. 
 
 ## <a name="custom-activity"></a>Egyéni tevékenység
 
-A következő JSON-részlet egy folyamatot egy egyszerű egyéni tevékenységeket definiálja. A tevékenység definíciójának a kapcsolódó Azure Batch szolgáltatás hivatkozás van. 
+A következő JSON-kódrészlet definiál egy egyszerű egyéni tevékenységgel rendelkező folyamatot. A tevékenység meghatározásában a társított Azure Batch szolgáltatás vonatkozó hivatkozás van. 
 
 ```json
 {
@@ -93,25 +93,29 @@ A következő JSON-részlet egy folyamatot egy egyszerű egyéni tevékenységek
   }
 ```
 
-Ez a példa a helloworld.exe egy egyéni a customactv2/helloworld mappában található a resourceLinkedService használt Azure Storage-fiók alkalmazást. Az egyéni tevékenység az egyéni alkalmazás hajtható végre az Azure Batch küldi el. Módosíthatja bármely elsődleges alkalmazás, amely a cél operációs rendszer az Azure Batch-készlet csomópontok hajtható végre a parancsot. 
+Ebben a példában a helloworld.exe egy egyéni alkalmazást a resourceLinkedService használt Azure Storage-fiók customactv2/helloworld mappában lesz tárolva. Az egyéni tevékenység küldi el az egyéni alkalmazást az Azure Batch hajtható végre. Lecserélheti a parancsot minden olyan előnyben részesített alkalmazás, amely a cél operációs rendszer, az Azure Batch Pool-csomópontokon is végrehajthatók. 
 
 A következő táblázat ismerteti a neveket és leírásokat erre a tevékenységre jellemző tulajdonságok. 
 
 | Tulajdonság              | Leírás                              | Szükséges |
 | :-------------------- | :--------------------------------------- | :------- |
-| név                  | A tevékenység a folyamat neve.     | Igen      |
-| leírás           | A tevékenység mit leíró szöveg.  | Nem       |
-| type                  | Egyéni tevékenység, a tevékenység típusa nem **egyéni**. | Igen      |
-| linkedServiceName     | Az Azure Batch társított szolgáltatást. A csatolt szolgáltatással kapcsolatos további tudnivalókért lásd: [összekapcsolt szolgáltatások számítási](compute-linked-services.md) cikk.  | Igen      |
-| command               | Az egyéni alkalmazás végrehajtandó parancs. Ha az alkalmazás már az Azure Batch alkalmazáskészlet-csomóponton elérhető, a resourceLinkedService és folderPath figyelmen kívül hagyja. Például megadhatja a parancs futtatásával kell `cmd /c dir`, amely natív módon támogatott a Windows Batch-készlet csomópont. | Igen      |
-| resourceLinkedService | Az Azure Storage társított szolgáltatás a tárfiókhoz, az egyéni alkalmazás tárolására | Nem       |
-| folderPath            | Az egyéni alkalmazás és annak függőségeit a mappa elérési útja | Nem       |
-| referenceObjects      | Meglévő társított szolgáltatások és adatkészletek tömbjét. A hivatkozott társított szolgáltatások és adatkészletek átadott az egyéni alkalmazás JSON formátumban, egyéni kód is hivatkozni lehessen a Data Factory erőforrásai | Nem       |
-| extendedProperties    | Egyéni kód is hivatkozhat olyan további, az egyéni alkalmazás JSON formátumban kell átadni, felhasználó által definiált tulajdonságok | Nem       |
+| név                  | A folyamat a tevékenység neve     | Igen      |
+| leírás           | A tevékenység leírása leíró szöveg.  | Nem       |
+| type                  | Egyéni tevékenység, a tevékenység típusa van **egyéni**. | Igen      |
+| linkedServiceName     | Társított szolgáltatás az Azure Batch szolgáltatásban. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.  | Igen      |
+| command               | Az egyéni alkalmazás futtatandó parancsot. Ha az alkalmazás már az Azure Batch-készlet csomópont elérhető, a resourceLinkedService és a folderPath lehet hagyni. Például megadhatja a parancsot kell `cmd /c dir`, amelyeket a Batch-készlet Windows csomópont natív módon támogat. | Igen      |
+| resourceLinkedService | Az Azure Storage társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | Nem       |
+| folderPath            | Az egyéni alkalmazást és annak összes függőségét a mappa elérési útja | Nem       |
+| referenceObjects      | Meglévő társított szolgáltatásokat és adatkészleteket tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket lesznek átadva a egyéni alkalmazás JSON formátumban, az egyéni kódot is lehet hivatkozni az adat-előállító erőforrások | Nem       |
+| extendedProperties    | Ezért az egyéni kódot is lehet hivatkozni a további tulajdonságok az egyéni alkalmazás JSON formátumban kell átadni, felhasználó által definiált tulajdonságai | Nem       |
+
+## <a name="custom-activity-permissions"></a>Egyéni tevékenység engedélyek
+
+Az egyéni tevékenység állítja be az Azure Batch automatikusan-felhasználói fiók *a tevékenység hatóköre nem rendszergazda hozzáférési* (az alapértelmezett felhasználói automatikus specifikáció). Az automatikus felhasználói fiók jogosultsági szintje nem módosítható. További információ: [a felhasználói fiókok feladatok futtatása a Batchben |} Automatikus felhasználói fiókok](../batch/batch-user-accounts.md#auto-user-accounts).
 
 ## <a name="executing-commands"></a>Parancsok végrehajtása
 
-A parancs az egyéni tevékenység közvetlenül hajthat végre. Az alábbi példában a "echo hello world" parancsot futtatja, a cél Azure Batch-készlet csomópontokon, és kiírja a stdout kimenet. 
+Az egyéni tevékenység parancsot közvetlenül hajthat végre. Az alábbi példa a "echo hello world" parancsot futtatja, a cél Azure Batch Pool-csomópontokon, és kimeneten nyomtatja a kimenetet a stdout. 
 
   ```json
   {
@@ -133,9 +137,9 @@ A parancs az egyéni tevékenység közvetlenül hajthat végre. Az alábbi pél
   } 
   ```
 
-## <a name="passing-objects-and-properties"></a>Objektumok és tulajdonságok
+## <a name="passing-objects-and-properties"></a>Objektumok és tulajdonságok átadása
 
-Ez a példa bemutatja, hogyan segítségével a referenceObjects és extendedProperties adat-előállító objektumok és a felhasználó által definiált tulajdonságok adhatók át az alkalmazást. 
+Ez a példa mutatja be, hogyan használhatók a referenceObjects és extendedProperties átadni az adat-előállító objektumok és a felhasználó által definiált tulajdonságok az egyéni alkalmazás. 
 
 
 ```json
@@ -178,21 +182,21 @@ Ez a példa bemutatja, hogyan segítségével a referenceObjects és extendedPro
 }
 ```
 
-Ha a tevékenység végrehajtása, referenceObjects és extendedProperties következő fájlok tárolják, amely a SampleApp.exe végrehajtási mappában vannak telepítve: 
+Amikor a tevékenység végrehajtása, referenceObjects és extendedProperties következő fájlok tárolják a SampleApp.exe végrehajtási mappájában telepített: 
 
 - Activity.JSON
 
-  Az extendedProperties és az egyéni tevékenység tulajdonságok tárolja. 
+  ExtendedProperties és az egyéni tevékenység tulajdonságainak tárolja. 
 
 - linkedServices.json
 
-  Tárolja a referenceObjects tulajdonságban definiált összekapcsolt szolgáltatások tömbjét. 
+  Tárolók társított szolgáltatásokat egy tömbjét referenceObjects tulajdonság definiálva. 
 
 - datasets.json
 
-  Tárolja a referenceObjects tulajdonságban definiált adatkészletek tömbjét. 
+  Tárolók egy tömb, az adatkészletek a referenceObjects tulajdonság definiálva. 
 
-A következő példakód azt mutatják be, hogyan a SampleApp.exe érje el a szükséges adatokat JSON-fájlokból: 
+Az alábbi mintakód bemutatják, hogyan a SampleApp.exe el a szükséges adatokat a JSON-fájlokat: 
 
 ```csharp
 using Newtonsoft.Json;
@@ -217,14 +221,14 @@ namespace SampleApp
 }
 ```
 
-## <a name="retrieve-execution-outputs"></a>Végrehajtás kimenetének beolvasása
+## <a name="retrieve-execution-outputs"></a>Futtatási kimenetek beolvasása
 
-  A következő PowerShell-paranccsal folyamatot futtató megkezdése: 
+  A következő PowerShell-paranccsal folyamatfuttatás megkezdése: 
 
   ```.powershell
   $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
   ```
-  Amikor a folyamat fut, a végrehajtás kimenetének az alábbi parancsokkal ellenőrizheti: 
+  Ha a folyamat fut, a végrehajtás kimenetének a következő parancsokkal ellenőrizheti: 
 
   ```.powershell
   while ($True) {
@@ -252,7 +256,7 @@ namespace SampleApp
   $result.Error -join "`r`n"
   ```
 
-  A **stdout** és **stderr** az alkalmazást a rendszer menti a **adfjobs** az Azure Storage társított szolgáltatás Azure Batch csatolt létrehozásakor megadott tárolóhoz A feladat egy GUID-szolgáltatás. Ahogy az az alábbi kódrészletet, a részletes útvonal lekérheti kimeneti tevékenység fut: 
+  A **stdout** és **stderr** az egyéni alkalmazás menti, és a **adfjobs** tárolót az Azure Storage társított szolgáltatás létrehozása Azure Batch társított során meghatározott A feladat egy GUID-szolgáltatás. Megtekintheti a részletes elérési Tevékenységfuttatás kimenetében, az alábbi kódrészletben látható módon: 
 
   ```shell
   Pipeline ' MyCustomActivity' run finished. Result:
@@ -284,53 +288,53 @@ namespace SampleApp
   "failureType": ""
   "target": "MyCustomActivity"
   ```
-Ha szeretné, hogy az alsóbb rétegbeli tevékenységet stdout.txt tartalmakat, a fájl elérési útját a stdout.txt kifejezésben kaphat "\@activity('MyCustomActivity').output.outputs [0]". 
+Ha szeretné az alsóbb rétegbeli tevékenység stdout.txt tartalmának felhasználására, beszerezheti a fájl elérési útját a stdout.txt kifejezésben "\@activity('MyCustomActivity').output.outputs [0]". 
 
   > [!IMPORTANT]
-  > - A activity.json linkedServices.json és datasets.json a kötegelt tevékenység futásidejű mappában tárolják. Az ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" elérési út. Ha szükséges, eltávolítással külön-külön szeretné. 
-  > - Társított szolgáltatások felhasználásra Self-Hosted integrációs futásidejű, a bizalmas adatok, például a kulcsokat vagy jelszavakat a Self-Hosted integrációs futásidejű annak biztosítása érdekében a hitelesítő adatok titkosított marad az ügyfelek definiált titkos hálózati környezetben. Néhány időérzékeny mezőinek hiányzó lehet, amikor ezzel a módszerrel egyéni alkalmazáskódjában hivatkozik. Szükség esetén a társított szolgáltatás hivatkozása helyett extendedProperties SecureString használja. 
+  > - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" elérési út. Szükség esetén meg kell törölnie őket külön. 
+  > - A társított szolgáltatást használja, helyi Integration Runtime, a bizalmas információkat, például kulcsokat vagy jelszavakat titkosítja a helyi Integration Runtime hitelesítő adatok biztosítására marad az ügyfél határozza meg magánhálózati környezetben. Néhány időérzékeny mezőinek hiányzó lehet, amikor ezzel a módszerrel az egyéni alkalmazás kódjában hivatkozik. Használja a SecureString a extendedProperties helyett társított szolgáltatásra mutató hivatkozást, ha szükséges. 
 
-## <a name="compare-v2-v1"></a> Hasonlítsa össze v2 egyéni tevékenység és (egyéni) 1-es verziójú DotNet tevékenység
+## <a name="compare-v2-v1"></a> Hasonlítsa össze a v2 egyéni tevékenységei és verzió 1 (egyéni) DotNet tevékenységi
 
-  Az Azure Data Factoryben az 1-es, hozzon létre egy .net alkalmazhat egy (egyéni) DotNet tevékenység Class Library a projekt egy osztály, amely megvalósítja a `Execute` metódusában a `IDotNetActivity` felületet. A társított szolgáltatások adatkészletek és a JSON-adattartalmat (egyéni) DotNet tevékenység az Extended Properties kerülnek átadásra a végrehajtási metódus szigorú típusmegadású objektumként. Az 1-es verziójú viselkedés kapcsolatos részletekért lásd: [az 1-es verziójú (egyéni) DotNet](v1/data-factory-use-custom-activities.md). Miatt ez a megvalósítás a 1-es verziójú DotNet tevékenység kódot tartalmaz, amelyekre a .net keretrendszer 4.5.2-es verzióját. 1-es verziójával DotNet tevékenység is rendelkezik Windows-alapú Azure Batch-készlet csomópontján hajthatnak végre. 
+  Az Azure Data Factory 1. verziójának meg, hogy egy (egyéni) DotNet tevékenységi létrehoz egy .net osztálytár projektek egy olyan osztállyal, amely megvalósítja a `Execute` módszere a `IDotNetActivity` felületet. A társított szolgáltatások, adatkészletek és a egy (egyéni) DotNet tevékenységi JSON hasznos az Extended Properties továbbítódnak a végrehajtási módszer szigorú típusmegadású objektumként. Az 1. verziójának működéssel kapcsolatos részletekért lásd: [az 1. verzió (egyéni) DotNet](v1/data-factory-use-custom-activities.md). Ez a megvalósítás miatt az 1. verziójának DotNet tevékenységi kódokat rendelkezik, amelyekre a .net keretrendszer 4.5.2-es verzióját. Az 1. verziójának DotNet tevékenységi is rendelkezik Windows-alapú Azure Batch Pool-csomópontokon kell végrehajtani. 
 
-  Az Azure Data Factory V2 egyéni tevékenység, a meg nem kell egy .net felületet valósítja meg. Most már közvetlenül futtathatja parancsok, parancsprogramok és a saját egyéni kód a végrehajtható fájlként összeállított. Ez a megvalósítás konfigurálásához meg kell adnia a `Command` és a tulajdonság a `folderPath` tulajdonság. Az egyéni tevékenység feltölti a végrehajtható parancs és annak függőségeit a `folderpath` és végrehajtja a parancsot meg. 
+  Az Azure Data Factory V2 egyéni tevékenységei a meg nem kell .net felületet megvalósítani. Most közvetlenül futtathat parancsokat, parancsprogramok és végrehajtható fájlként összeállított, saját egyéni kódot. Ez a megvalósítás konfigurálásához adja meg a `Command` tulajdonsággal együtt a `folderPath` tulajdonság. Az egyéni tevékenység feltölti a végrehajtható fájlt, és annak függőségeit, `folderpath` és végrehajtja a parancsot az Ön számára. 
 
-  Az összekapcsolt szolgáltatások, adatkészleteket (referenceObjects meghatározott), és a Data Factory v2 egyéni tevékenység hozzáfér a végrehajtható fájl JSON-fájlok formájában JSON hasznos a meghatározott kiterjesztett tulajdonság. A szükséges tulajdonságait egy JSON-szerializáló az előző SampleApp.exe kód mintában látható módon használatával érheti el. 
+  A társított szolgáltatások, a (referenceObjects meghatározott) adatkészletek és a egy Data Factory v2 egyéni tevékenységei JSON-fájlként is hozzáférhet a végrehajtható fájlt a JSON hasznos kiterjesztett tulajdonságok. A szükséges tulajdonságait egy JSON-szerializáló, ahogyan az előző SampleApp.exe munkafüzetkód-példát használatával is elérheti. 
 
-  A Data Factory V2 egyéni tevékenység bevezetett változások az egyéni kód logika írását a választott nyelven, és végrehajtja a Windows és Linux művelet Azure Batch által támogatott. 
+  A Data Factory V2 egyéni tevékenység-ben bevezetett változások az egyéni kód logikára írja be a választott nyelven, és hajtsa végre, a Windows és az Azure Batch által támogatott Linux operációs rendszereken. 
 
-  A következő táblázat ismerteti a (egyéni) a Data Factory V2 egyéni tevékenység és a Data Factory 1-es verziójú közötti különbséget DotNet tevékenység: 
+  A következő táblázat ismerteti a Data Factory V2 egyéni tevékenységei és eltérései a Data Factory 1. verzió (egyéni) DotNet tevékenységi: 
 
 
-|Különbségek      | Egyéni tevékenység      | (egyéni) 1-es verziójú DotNet tevékenység      |
+|Különbségek      | Egyéni tevékenység      | verzió 1 (egyéni) DotNet tevékenységi      |
 | ---- | ---- | ---- |
-|Hogyan egyéni logika van definiálva.      |Ha egy végrehajtható fájl      |A .net DLL-fájl végrehajtása      |
-|Az egyéni logikai a végrehajtási környezet      |A Windows vagy Linux      |Windows (.Net-keretrendszer 4.5.2)      |
-|Parancsprogram végrehajtása      |Támogatja a közvetlen parancsfájlok (például "cmd /c echo hello world" a Windows virtuális gép) végrehajtása      |Szükséges a .net DLL-fájl végrehajtása      |
-|A DataSet szükséges      |Optional      |Tanúsítványlánc-tevékenységek információkezelési és -átadási szükséges      |
-|A tevékenységből át adatokat egyéni logika      |ReferenceObjects (LinkedServices és adatkészletek) és a ExtendedProperties (egyéni tulajdonságok)      |Az ExtendedProperties (egyéni tulajdonságok), bemeneti és kimeneti adatkészletek      |
-|Az egyéni logika adatbeolvasás      |Activity.json linkedServices.json és a végrehajtható fájl ugyanabban a mappában tárolt datasets.json elemez      |A .net SDK (.Net keret 4.5.2.)      |
-|Naplózás      |Közvetlenül STDOUT ír      |A .net DLL végrehajtási naplózó      |
+|Hogyan egyéni logikát van definiálva.      |Azáltal, hogy egy végrehajtható fájl      |Egy .net DLL-fájl végrehajtása      |
+|Az egyéni logikát végrehajtási környezetbe      |Windows vagy Linux rendszeren      |Windows (.Net-keretrendszer 4.5.2-es verziója)      |
+|Szkriptek végrehajtása      |Parancsfájlok közvetlenül (például "cmd /c echo hello world" Windows virtuális gépeken) végrehajtása támogatja      |Szükséges a .NET-keretrendszerben dll-fájl végrehajtása      |
+|Adatkészlet szükséges      |Optional      |Összekapcsolja a tevékenységek információkezelési és -átadási szükséges      |
+|A tevékenység át adatokat egyéni logikát      |ReferenceObjects (LinkedServices és adatkészletek) és ExtendedProperties (egyéni tulajdonságok)      |ExtendedProperties (egyéni tulajdonságokat), bemeneti és kimeneti adatkészletek      |
+|Az egyéni logikát információk lekéréséhez      |Elemzi a activity.json linkedServices.json és a végrehajtható fájl ugyanabban a mappában tárolt datasets.json      |.Net SDK-t (a .net 4.5.2-es. képkocka) keresztül      |
+|Naplózás      |Az STDOUT közvetlenül ír      |Végrehajtási naplózó .net DLL-ben      |
 
 
-  Ha meglévő .net kódok verziójához 1 (egyéni) DotNet tevékenység, módosítania az egyéni tevékenység az aktuális verzióval működéshez a kódot. Frissítse a kódot a következő általános iránymutatás:  
+  Ha rendelkezik meglévő .net-kódot írni a verziók 1 (egyéni) DotNet tevékenységi, módosítania a kódot, hogy az egyéni tevékenység az aktuális verzióval működjön. A kód frissítése a következő általános irányelveket:  
 
-   - Módosítsa a projekt egy .net Class Library konzol alkalmazásokhoz. 
-   - Indítsa el az alkalmazást a `Main` metódust. A `Execute` metódusában a `IDotNetActivity` felület már nincs szükség. 
-   - Olvassa el, és elemezni a társított szolgáltatások, az adatkészletek és a tevékenység JSON-szerializáló, valamint nem szigorú típusmegadású objektumok. A szükséges tulajdonság értékét átadása a fő egyéni kód logika. Lásd az előző SampleApp.exe példaként. 
-   - A tranzakciónaplókat tartalmazó objektum már nem támogatott. A konzol kimenetét a végrehajtható fájl nyomtatható és stdout.txt vannak mentve. 
-   - A Microsoft.Azure.Management.DataFactories NuGet-csomag már nincs szükség. 
-   - A kód fordítása, a végrehajtható parancs és annak függőségeit feltöltése az Azure Storage és az elérési utat határozza meg a `folderPath` tulajdonság. 
+   - A projekt módosítása a .net osztálytár, egy Konzolalkalmazást. 
+   - Indítsa el az alkalmazás a `Main` metódust. A `Execute` módszere a `IDotNetActivity` felület már nem szükséges. 
+   - Olvassa el, és elemezni a társított szolgáltatások, adatkészletek és a tevékenység a JSON szerializálót, valamint nem szigorú típusmegadású objektumok. Adja meg a szükséges tulajdonság értékét az fő egyéni kód logikára. Tekintse meg példaként a fenti SampleApp.exe kód. 
+   - A naplózó objektum már nem támogatott. A konzol kimenete a végrehajtható fájl nyomtatható és stdout.txt menti. 
+   - A Microsoft.Azure.Management.DataFactories NuGet-csomag már nem szükséges. 
+   - A kód fordítása, a végrehajtható fájlt, és annak függőségeit feltöltése az Azure Storage és az elérési utat adja meg a `folderPath` tulajdonság. 
 
-Egy teljes mintát, hogyan a végpont dll-fájl és a kimenetátirányítási minta ismertetett a Data Factory verzió 1 cikk [egyéni tevékenységeket használni egy Azure Data Factory-folyamathoz](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) is kell írni a Data Factory egyéni tevékenységként, Lásd:[ Data Factory egyéni tevékenység minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
+Teljes minta, hogyan a teljes körű DLL-t és a folyamat minta ismertetett az adat-előállító verziója 1. cikk [egyéni tevékenységek használata Azure Data Factory-folyamatot](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) is kell írni a Data Factory egyéni tevékenységként, Lásd:[ Data Factory egyéni tevékenység minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
 
-## <a name="auto-scaling-of-azure-batch"></a>Az Azure Batch automatikus skálázás
-Az Azure Batch-készlet is létrehozhat **automatikus skálázás** szolgáltatás. Például létrehozhatja az azure batch-készlet 0 dedikált virtuális gépek és az automatikus skálázás képlet függőben lévő feladatok száma alapján. 
+## <a name="auto-scaling-of-azure-batch"></a>Automatikus skálázás az Azure Batch
+Az Azure Batch-készlet is létrehozhat **automatikus skálázási** funkció. Létrehozhat például egy azure batch-készletet 0 dedikált virtuális gépek és az automatikus skálázás képletét a függőben lévő feladatok száma alapján. 
 
-A minta képlet itt éri el a következő viselkedés: a készlet létrehozásakor 1 virtuális gép kezdődik. $PendingTasks metrika feladatok száma definiálja a futó + (aszinkron) aktív állapotban.  A képlet átlagos száma függőben lévő feladatok megkeresi az elmúlt 180 másodperc alatt, és ennek megfelelően állítja be TargetDedicated. Biztosítja, hogy TargetDedicated soha nem túllép 25 virtuális gépeket. Igen új feladatok nyújtják, készlet automatikusan növekszik és feladatok befejezését, mint a virtuális gépek válik a szabad egyenként és az automatikus skálázás zsugorítja a virtuális gépek. startingNumberOfVMs és maxNumberofVMs az igényeinek megfelelően kell beállítani.
+A mintául szolgáló képlet itt éri el a következő viselkedés: a készlet létrehozásakor először, 1 virtuális gép kezdődik. $PendingTasks metrika határozza meg, hogy a feladatok száma futó + (sorban áll) aktív állapotban.  A képlet átlagos száma függőben lévő feladatokat megkeresi az elmúlt 180 másodperc alatt, és ennek megfelelően beállítja a TargetDedicated. Biztosítja, hogy TargetDedicated soha nem túllép 25 virtuális gépeket. Tehát új feladatokat az elküldésüket készlet automatikusan nő befejeződött feladatokat, mint a virtuális gépek ingyenes egyenként válnak és az automatikus skálázás zsugorítja ezeken a virtuális gépeken. igény szerinti startingNumberOfVMs és maxNumberofVMs kell beállítani.
 
-Automatikus skálázás képlet:
+Automatikus skálázási képletet:
 
 ``` 
 startingNumberOfVMs = 1;
@@ -340,19 +344,19 @@ pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($
 $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 ```
 
-Lásd: [automatikus méretezési számítási csomópontok az Azure Batch-készlet](../batch/batch-automatic-scaling.md) részleteiről.
+Lásd: [automatikusan méretezni a számítási csomópontok az Azure Batch-készletben](../batch/batch-automatic-scaling.md) részleteiről.
 
-Ha az alkalmazáskészlet által használt alapértelmezett [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), a Batch szolgáltatás a virtuális gép előkészítése az egyéni tevékenység futtatása előtt 15 – 30 percet vehet igénybe.  Ha a készlet egy másik autoScaleEvaluationInterval használ, a Batch szolgáltatás autoScaleEvaluationInterval + 10 percet is beletelhet.
+Ha a készletet használja az alapértelmezett [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), a Batch szolgáltatás a virtuális gép előkészítése az egyéni tevékenység futtatása előtt 15 – 30 percet is igénybe vehet.  Ha a készlet egy másik autoScaleEvaluationInterval használ, a Batch szolgáltatás autoScaleEvaluationInterval + 10 percig is eltarthat.
 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikkekben talál, amely ismerteti az adatok más módon: 
+Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
 * [Hive-tevékenység](transform-data-using-hadoop-hive.md)
-* [A Pig-tevékenység](transform-data-using-hadoop-pig.md)
-* [MapReduce művelethez](transform-data-using-hadoop-map-reduce.md)
+* [Pig-tevékenység](transform-data-using-hadoop-pig.md)
+* [MapReduce-tevékenység](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop Streamelési tevékenységben](transform-data-using-hadoop-streaming.md)
-* [A Spark-tevékenység](transform-data-using-spark.md)
+* [Spark-tevékenység](transform-data-using-spark.md)
 * [Machine Learning kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
-* [A tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)
+* [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

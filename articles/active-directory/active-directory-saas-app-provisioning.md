@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 9a0b89528adc173fa3aa26415942cbef81dcb291
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 0d6f345a35275328212d6a245242083b809943b7
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364206"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144084"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazások?
@@ -235,7 +235,7 @@ Forgatókönyv-alapú hogyan háríthatók el a felhasználók automatikus átad
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-Egy példa részletes üzembe helyezés tervezése kimenő felhasználókiépítés egy alkalmazásba, lásd: a [identitás üzembe helyezési útmutató az felhasználók átadása](https://aka.ms/userprovisioningdeploymentplan)/
+Egy példa részletes üzembe helyezés tervezése kimenő felhasználókiépítés egy alkalmazásba, lásd: a [identitás üzembe helyezési útmutató a felhasználók átadásának](https://aka.ms/userprovisioningdeploymentplan).
 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek

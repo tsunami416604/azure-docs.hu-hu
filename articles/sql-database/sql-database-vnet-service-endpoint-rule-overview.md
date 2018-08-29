@@ -8,15 +8,15 @@ author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 08/28/2018
 ms.reviewer: carlrab
 ms.author: dmalik
-ms.openlocfilehash: cdf067839c73f9da40d03628ff1c9920764e2219
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 223a8da0c3c940c57dfc58d9cc87a19ae45a64eb
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127597"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143810"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata Azure SQL Database és SQL Data warehouse-bA
 
@@ -181,11 +181,10 @@ Az Azure Storage valósította meg, amely lehetővé teszi, hogy korlátozza a t
 Ha ez a funkció használata a Storage-fiók egy Azure SQL Server által használt, problémákat futtathatja. Ezután van egy listát és vitafórum Azure SQLDB-funkciók is hatással van hatással.
 
 #### <a name="azure-sqldw-polybase"></a>Az Azure SQLDW PolyBase
-PolyBase az adatok betöltése az Azure SQLDW tárfiókokban gyakran szolgál. Ha a tárfiókot, amely adatokat tölt be csak a VNet-alhálózatok halmaza hozzáférést korlátozza, kapcsolat és a fiók a PolyBase megszakadnak. Ez a megoldás, és kapcsolatba léphet *dmalik@microsoft.com* további információt.
+PolyBase az adatok betöltése az Azure SQLDW tárfiókokban gyakran szolgál. Ha a tárfiókot, amely adatokat tölt be csak a VNet-alhálózatok halmaza hozzáférést korlátozza, kapcsolat és a fiók a PolyBase megszakadnak. Ez a megoldás, és előfordulhat, hogy forduljon a Microsoft ügyfélszolgálatához további információt.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB Blob Auditing
 Auditnaplók blobnaplózás leküldi a saját tárfiókját. Ha ezt a tárfiókot használ a MŰVELE szolgáltatásvégponti funkciója Azure SQLDB storage-fiókhoz kapcsolat megszakad.
-
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>A VNET tűzfalszabály nélkül szolgáltatják a virtuális hálózati Szolgáltatásvégpontok hozzáadása a kiszolgálóhoz
 

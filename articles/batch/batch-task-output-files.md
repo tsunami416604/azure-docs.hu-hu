@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
-ms.openlocfilehash: 69990ab7852999dca2b586fd28ef74c44cc283fd
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f562a6647cadbde6c46eba87b180dfb4cbb3fb90
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117433"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126312"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>A feladat adatmegőrzésre, az Azure Storage a Batch szolgáltatás API-val
 
@@ -34,7 +34,7 @@ Az Azure Batch segítségével több feladat kimenetének megőrzése. A Batch s
 - Szeretné megőrizni az ügyfél alkalmazáson belül a tevékenység kimenetének, hogy a feladat fut az alkalmazás módosítása nélkül kód írása.
 - Szeretné megőrizni a kimenet a Batch-feladatok és a virtuálisgép-konfigurációval létrehozott készletek a Feladatkezelő tevékenységekről.
 - Szeretné megőrizni a kimenet egy Azure Storage-tárolóhoz, az egy tetszőleges nevet.
-- Egy Azure Storage-tárolóba, a következők szerint nevű kimenet megőrzése szeretné a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
+- Egy Azure Storage-tárolóba, a következők szerint nevű kimenet megőrzése szeretné a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 Ha a forgatókönyv eltér a fent felsoroltak, szükség lehet érdemes lehet eltérő megközelítést. Például a Batch szolgáltatás API-ja jelenleg nem támogatja az Azure Storage-streamelési kimeneti a feladat futása közben. A kimeneti stream, érdemes lehet a Batch File Conventions-könyvtárral, a .NET-hez elérhető. Más nyelven kell a saját megoldást valósíthat meg. További megőrzése tevékenység kimenetének lehetőségekről további információkért lásd: [az Azure Storage-feladatok és tevékenységek kimenetének megőrzése](batch-task-output.md). 
 
@@ -164,7 +164,7 @@ A `fileuploadout.txt` fájlba naplózza a feltöltési folyamat. Ehhez a fájlho
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>A Batch szolgáltatás API használata a Batch File Conventions standard
 
-Feladat kimenete a Batch szolgáltatás API-val szűnik meg, ha a cél tároló nevet adhat, és azonban, például blobok. Azt is beállíthatja a adja nekik a következők szerint a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). A File Conventions szabvány meghatározza, hogy a cél tároló és a feladatok és tevékenységek nevei alapján adott kimeneti fájl az Azure Storage-blob neve. Ha a File Conventions standard kimeneti fájlok elnevezési használja, akkor a kimeneti fájlok megtekintését a a [az Azure portal](https://portal.azure.com).
+Feladat kimenete a Batch szolgáltatás API-val szűnik meg, ha a cél tároló nevet adhat, és azonban, például blobok. Azt is beállíthatja a adja nekik a következők szerint a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). A File Conventions szabvány meghatározza, hogy a cél tároló és a feladatok és tevékenységek nevei alapján adott kimeneti fájl az Azure Storage-blob neve. Ha a File Conventions standard kimeneti fájlok elnevezési használja, akkor a kimeneti fájlok megtekintését a a [az Azure portal](https://portal.azure.com).
 
 C# nyelven fejleszt, használhatja a beépített módszereket a [Batch File Conventions .NET-kódtára](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Ebben a könyvtárban az Ön hozza létre a megfelelően elnevezett tárolót és a blob elérési útjának. Például meghívhatja az API-t a tároló, a feladat neve alapján a helyes nevét:
 

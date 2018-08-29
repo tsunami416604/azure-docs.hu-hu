@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: diberry;
-ms.openlocfilehash: 286efcd97c0c9ab95a8241215bc36799c486a8b6
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.author: diberry
+ms.openlocfilehash: aadca428fa076d697cc0f893673672850ddc27d4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247715"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124396"
 ---
 # <a name="integrate-speech-service"></a>Beszédszolgáltatás integrálása
 A [beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) lehetővé teszi, hogy egyetlen kérés fogadásához hang, és a LUIS-előrejelzési JSON objektumokat adjanak vissza.
@@ -72,7 +72,7 @@ A beszédfelismerés SDK már elérhető az egy rá mutató hivatkozást.
 ## <a name="modify-the-c-code"></a>A C#-kód módosítása
 Nyissa meg a **LUIS_samples.cs** fájlt, és módosítsa az alábbi változókat:
 
-|Változó neve|Rendeltetés|
+|Változó neve|Cél|
 |--|--|
 |luisSubscriptionKey|A közzétételi oldalon végpont URL-ekhez előfizetés-kulcs-érték felel meg|
 |luisRegion|Végpont URL-cím első altartomány felel meg|
@@ -120,7 +120,7 @@ A megfelelő leképezés **GetEmployeeOrgChart**, a munkavállalók 61 %-os tal�
 A beszédfelismerés SDK-t a teljes LUIS választ adja vissza. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS emberi alkalmazást. Ehhez válassza a három pontot (***...*** ) az alkalmazások listájában, jelölje be az alkalmazás nevétől jobbra látható gombra **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS emberi alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 Ne felejtse el törölni a LUIS-Samples-könyvtár, amikor elkészült a mintakóddal.
 

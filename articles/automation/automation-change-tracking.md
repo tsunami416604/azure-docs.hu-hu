@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 08/27/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b8f76bd221be9f30a5b9336af858359ae0af8f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238879"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128126"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -94,8 +94,18 @@ A következő lépéseket követve konfigurálja a fájlok nyomon követése a W
 |Engedélyezve     | Azt határozza meg, ha a beállítás vonatkozik.        |
 |Elem neve     | A követendő fájl felhasználóbarát neve.        |
 |Csoport     | Fájlok logikai csoportosítására szolgáló csoportnév.        |
-|Elérési út megadása     | A fájl elérési útja, például: „c:\temp\myfile.txt”       |
+|Elérési út megadása     | Például ellenőrizze a fájl elérési útja: "c:\temp\\\*.txt"<br>Például a környezeti változókat is használható "%winDir%\System32\\\*. *"       |
+|Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **Hamis**.|
+
+## <a name="wildcard-recursion-and-environment-settings"></a>Helyettesítő karakteres, rekurzió és környezeti beállítások
+
+A rekurzió lehetővé teszi, hogy adja meg a helyettesítő karakterek egyszerűsítése érdekében a könyvtárak és a környezeti változókat, hogy nyomon követheti a fájlok között környezetekben, ahol több nyomkövetési vagy dinamikus meghajtó nevét. A következő az általános információkat, tudnia kell a rekurzió konfigurálásakor listája:
+
+* A helyettesítő karakterek szükség több fájlok nyomon követése
+* Ha helyettesítő karaktereket használ, akkor egy elérési út utolsó szegmense csak használható. (például C:\folder\\**fájl** vagy /etc/*.conf)
+* Ha egy környezeti változó egy érvénytelen elérési út, érvényesítés sikeres lesz, de az elérési út sikertelen lesz, ha szoftverleltár fut le.
+* Például elkerülése érdekében az általános elérési utak `c:\*.*` történő beállításakor az elérési út, ez túl sok mappák áthaladhat eredményezne.
 
 ## <a name="configure-file-content-tracking"></a>Fájl tartalma követési konfigurálása
 
@@ -122,13 +132,8 @@ A következő lépések segítségével Windows-számítógépeket a beállítá
 
 A Change Tracking megoldás jelenleg nem támogatja a következő elemek:
 
-* Windows változáskövetés Folders (könyvtárak)
-* Windows változáskövetés rekurzió
-* A helyettesítő karakterek használata a Windows változáskövetés
 * A rekurzió Windows beállításjegyzék-követés
-* Elérésiút-változókat
 * Hálózati fájlrendszer
-* Fájl tartalma
 
 Egyéb korlátozások is érvényesek:
 

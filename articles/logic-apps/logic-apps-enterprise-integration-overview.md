@@ -1,27 +1,23 @@
 ---
-title: A B2B - Azure Logic Apps vállalati integrációja |} A Microsoft Docs
-description: B2B-munkafolyamatok és a vállalati integrációs forgatókönyvek támogatása a logic apps és az Enterprise Integration Pack
+title: B2B vállalati integráció áttekintése – Azure Logic Apps |} A Microsoft Docs
+description: Vállalati integrációs megoldásokat az Azure Logic Apps és az Enterprise Integration Pack csomag B2B automatizált munkafolyamatokat hozhat létre
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b2e2c81914e8c0440b358d59c7f0248db46b6c50
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057241"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124292"
 ---
-# <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>Áttekintés: B2B-forgatókönyvekhez és kommunikációs és az Enterprise Integration Pack
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Áttekintés: B2B vállalati integrációs forgatókönyvek az Azure Logic Appsben és Enterprise Integration Pack
 
 Vállalatközi (B2B) munkafolyamatok és az Azure Logic Apps zökkenőmentes kommunikációt engedélyezheti a vállalati integrációs kérdéseket a Microsoft felhőalapú megoldása, az Enterprise Integration Pack. Szervezetek is alkalmazásközi elektronikus úton, még akkor is, ha eltérő protokollok és formátumok használata. A csomag különböző formátumokat alakítja át az olyan formátumra, amely a szervezet rendszerek és feldolgozható formátumokba. Szervezetek üzenetváltás is beleértve iparági szabványnak megfelelő protokollokon keresztül [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), és [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). A titkosítás és digitális aláírások üzeneteket is gondoskodhat.
 

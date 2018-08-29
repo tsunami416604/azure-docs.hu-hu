@@ -1,136 +1,132 @@
 ---
-title: Az XML-érvényesítés - Azure Logic Apps sémák |} Microsoft Docs
-description: XML-sémák dokumentumok ellenőrzése az Azure Logic Apps és vállalati integrációs csomag
+title: Sémák XML-érvényesítés – Azure Logic Apps-alkalmazások hozzáadása |} A Microsoft Docs
+description: Hozzon létre az Azure Logic Apps Enterprise Integration Pack az XML-dokumentumok, amely sémák
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 07/29/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: e23500ec3c16e66b8dc74fcba29e9b58f0b41790
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e03346da1c2b77f885c39d5329f990684979c56e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299062"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123073"
 ---
-# <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>Ellenőrizze az XML a sémák Azure Logic Apps és a vállalati integrációs csomag
+# <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML érvényességének ellenőrzése az Azure Logic Apps Enterprise Integration Pack-sémákkal
 
-Sémák győződjön meg arról, hogy az XML-dokumentumok kap érvényes és a várt adatokat egy előre meghatározott formátumban. Sémák is hozzájárulhat a B2B forgatókönyvek cserélt üzeneteket ellenőrzése.
+Sémák erősítse meg, hogy az XML-dokumentumok kap érvényes, és a várt adatokat tartalmaz egy előre definiált formátum. Sémák is segít érvényesíteni a B2B-forgatókönyvek esetében cserélt üzeneteket.
 
 ## <a name="add-a-schema"></a>A séma hozzáadása
 
-1. Válassza ki az Azure-portálon **minden szolgáltatás**.
+1. Az Azure Portalon válassza ki a **minden szolgáltatás**.
 
-    ![Azure-portálon "Az összes szolgáltatás"](media/logic-apps-enterprise-integration-schemas/overview-11.png)
+    ![Az Azure portal, a "Minden szolgáltatás"](media/logic-apps-enterprise-integration-schemas/overview-11.png)
 
-2. A szűrő a keresőmezőbe írja be **integrációs**, és válassza ki **integrációs fiókok** eredmények listájáról.
+2. A szűrő be a keresőmezőbe írja be **integrációs**, és válassza ki **integrációs fiókok** az eredmények listájában.
 
-    ![Szűrő keresőmezőbe](media/logic-apps-enterprise-integration-schemas/overview-21.png)
+    ![Keresőmező szűrése](media/logic-apps-enterprise-integration-schemas/overview-21.png)
 
-3. Válassza ki a **integrációs fiók** hol szeretné hozzáadni a sémát.
+3. Válassza ki a **integrációs fiók** hol szeretne hozzáadni a sémát.
 
     ![Integrációs fiókok listája](media/logic-apps-enterprise-integration-schemas/overview-31.png)
 
 4. Válassza ki a **sémák** csempére.
 
-    ![Példa integrációs fiók "Sémák"](media/logic-apps-enterprise-integration-schemas/schema-11.png)
+    ![Példa-integrációs fiók "Sémák"](media/logic-apps-enterprise-integration-schemas/schema-11.png)
 
-### <a name="add-a-schema-file-smaller-than-2-mb"></a>Egy 2 MB-nál kisebb sémafájl hozzáadása
+### <a name="add-a-schema-file-smaller-than-2-mb"></a>Adjon hozzá egy 2 MB-nál kisebb séma fájlt.
 
-1. Az a **sémák** panelen (a a fent leírt lépésekkel), megnyílik a választható **Hozzáadás**.
+1. Az a **sémák** megnyílik (az előző lépésekben) válassza a panel **Hozzáadás**.
 
-    !["Add" sémák panelen](media/logic-apps-enterprise-integration-schemas/schema-21.png)
+    ![Sémák panelen, a "Hozzáadás"](media/logic-apps-enterprise-integration-schemas/schema-21.png)
 
-2. Adjon meg egy nevet a sémát. A fájl feltöltése a ikonja melletti kiválasztásával a **séma** mezőbe. A feltöltési folyamat befejezése után válassza ki a **OK**.
+2. Adjon meg egy nevet a sémát. A fájl feltöltése a mappa ikont a kiválasztásával a **séma** mezőbe. A feltöltési folyamat befejezése után jelölje ki a **OK**.
 
-    ![Képernyőkép a "Séma hozzáadása", "Kis fájl" kiemelve](media/logic-apps-enterprise-integration-schemas/schema-31.png)
+    ![Képernyőkép a "Séma hozzáadása", a "kis"fájl kiemelésével](media/logic-apps-enterprise-integration-schemas/schema-31.png)
 
-### <a name="add-a-schema-file-larger-than-2-mb-up-to-8-mb-maximum"></a>Adjon hozzá egy séma fájlt nagyobb, mint 2 MB (legfeljebb 8 MB)
+### <a name="add-a-schema-file-larger-than-2-mb-up-to-8-mb-maximum"></a>Adjon hozzá egy séma (legfeljebb 8 MB maximális) 2 MB-nál nagyobb méretű fájlt
 
-Ezeket a lépéseket attól függően változnak, blob tároló hozzáférési szint: **nyilvános** vagy **nincs névtelen hozzáférés**.
+Ezeket a lépéseket szerint különbözik a blob-tároló hozzáférési szint: **nyilvános** vagy **nincs névtelen hozzáférés**.
 
 **Ez a hozzáférési szint meghatározásához**
 
-1.  Nyissa meg **Azure Tártallózó**. 
+1.  Nyissa meg **az Azure Storage Explorer**. 
 
-2.  A **Blobtárolók**, válassza ki a kívánt blob-tároló. 
+2.  A **Blobtárolók**, válassza ki a kívánt blob-tárolóba. 
 
 3.  Válassza ki **biztonsági**, **hozzáférési szint**.
 
 Ha a blob hozzáférési szint **nyilvános**, kövesse az alábbi lépéseket.
 
-![Az Azure Tártallózó "Blobtárolók", "Biztonság" és "Nyilvános" kiemelve](media/logic-apps-enterprise-integration-schemas/blob-public.png)
+![Az Azure Storage Explorer, a "Blob-tárolók", "Security" és "Nyilvános" kiemelésével](media/logic-apps-enterprise-integration-schemas/blob-public.png)
 
-1. A séma feltöltése a tárfiókba, és másolja az URI azonosító.
+1. A séma feltöltése a storage-fiókba, és másolja az URI-t.
 
-    ![Storage-fiókkal, és a kijelölt URI](media/logic-apps-enterprise-integration-schemas/schema-blob.png)
+    ![Storage-fiók, a kiemelt URI](media/logic-apps-enterprise-integration-schemas/schema-blob.png)
 
-2. A **séma hozzáadása**, jelölje be **nagy méretű fájlok**, és adja meg az URI-azonosító található a **tartalom URI** szövegmezőben.
+2. A **séma hozzáadása**, jelölje be **nagy méretű fájlok**, és adja meg az URI-t a **tartalom URI-JÁT** szövegmező.
 
-    ![A "Hozzáadás" gombra, és a "Nagy file" kiemelt a sémák](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
+    ![Sémák, a "Hozzáadás" gombra, és "Nagy méretű fájl" kiemelésével](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
 
 Ha a blob hozzáférési szint **nincs névtelen hozzáférés**, kövesse az alábbi lépéseket.
 
-![Az Azure Tártallózó "Blobtárolók", "Biztonság" és "Nincs névtelen hozzáférés" kiemelve](media/logic-apps-enterprise-integration-schemas/blob-1.png)
+![Az Azure Storage Explorer, a "Blob-tárolók", "Security" és "Nincs névtelen hozzáférés" kiemelésével](media/logic-apps-enterprise-integration-schemas/blob-1.png)
 
-1. Töltse fel a séma a tárfiókhoz.
+1. A séma feltöltése a tárfiókba.
 
     ![Tárfiók](media/logic-apps-enterprise-integration-schemas/blob-3.png)
 
-2. A séma egy közös hozzáférésű jogosultságkódot létrehozni.
+2. A séma közös hozzáférési aláírásokat létrehozni.
 
-    ![A tárfiók, megosztott elérési aláírást lap kiemelve](media/logic-apps-enterprise-integration-schemas/blob-2.png)
+    ![Storage-fiókot, a közös hozzáférési aláírások lapfülre kiemelésével](media/logic-apps-enterprise-integration-schemas/blob-2.png)
 
-3. A **séma hozzáadása**, jelölje be **nagy méretű fájlok**, és adja meg a közös hozzáférésű jogosultságkódot URI a a **tartalom URI** szövegmezőben.
+3. A **séma hozzáadása**, jelölje be **nagy méretű fájlok**, és adja meg a közös hozzáférésű jogosultságkód URI az az **tartalom URI-JÁT** szövegmező.
 
-    ![A "Hozzáadás" gombra, és a "Nagy file" kiemelt a sémák](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
+    ![Sémák, a "Hozzáadás" gombra, és "Nagy méretű fájl" kiemelésével](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
 
-4. Az a **sémák** integrációs fiókja panelen az újonnan hozzáadott sémát kell megjelennie.
+4. Az a **sémák** az integrációs fiók panelen, az újonnan hozzáadott séma meg kell jelennie.
 
-    ![Integráció fiókját, "Sémák" és az új sémával kiemelve](media/logic-apps-enterprise-integration-schemas/schema-41.png)
+    ![Az integrációs fiók "Sémák" és az új sémában kiemelésével](media/logic-apps-enterprise-integration-schemas/schema-41.png)
 
 ## <a name="edit-schemas"></a>Sémák szerkesztése
 
 1. Válassza ki a **sémák** csempére.
 
-2. Miután a **sémák** panel nyílik, válassza ki a sémát, hogy módosítani szeretné.
+2. Miután a **sémák** panel megnyílik, válassza ki a szerkeszteni kívánt séma.
 
-3. Az a **sémák** paneljén válassza **szerkesztése**.
+3. Az a **sémák** panelen válassza a **szerkesztése**.
 
     ![Sémák panel](media/logic-apps-enterprise-integration-schemas/edit-12.png)
 
-4. Válassza ki a fájl szerkesztése, majd válassza a kívánt **nyitott**.
+4. Válassza ki a fájl szerkesztése, majd válassza a kívánt **nyílt**.
 
-    ![Nyissa meg sémafájl szerkesztése](media/logic-apps-enterprise-integration-schemas/edit-31.png)
+    ![Nyissa meg a sémafájl szerkesztése](media/logic-apps-enterprise-integration-schemas/edit-31.png)
 
-Az Azure mutat be egy üzenet, hogy a séma sikeresen feltöltve.
+Az Azure jelenít meg az üzenetet, hogy a séma feltöltése sikeresen befejeződött.
 
 ## <a name="delete-schemas"></a>Sémák törlése
 
 1. Válassza ki a **sémák** csempére.
 
-2. Miután a **sémák** panel nyílik, válassza ki a törölni kívánt séma.
+2. Miután a **sémák** panel megnyílik, válassza ki a törölni kívánt séma.
 
-3. Az a **sémák** paneljén válassza **törlése**.
+3. Az a **sémák** panelen válassza a **törlése**.
 
     ![Sémák panel](media/logic-apps-enterprise-integration-schemas/delete-12.png)
 
-4. Győződjön meg arról, hogy valóban törli a kijelölt séma, válassza a **Igen**.
+4. Győződjön meg arról, hogy szeretné-e törli a kijelölt sémát, válassza a **Igen**.
 
-    ![Jóváhagyást kérő üzenet "Delete séma"](media/logic-apps-enterprise-integration-schemas/delete-21.png)
+    ![Megerősítő üzenet "Séma törlése"](media/logic-apps-enterprise-integration-schemas/delete-21.png)
 
-    Az a **sémák** panelen, a séma lista frissül, és már nem tartalmazza a séma, amelyet törölt.
+    Az a **sémák** panelen a séma lista frissül, és már nem tartalmazza a sémát, amelyet törölt.
 
-    ![A fiókhoz, amely a kijelölt "sémák" integráció](media/logic-apps-enterprise-integration-schemas/delete-31.png)
+    ![Az integrációs fiók, a "Sémák" kiemelésével](media/logic-apps-enterprise-integration-schemas/delete-31.png)
 
 ## <a name="next-steps"></a>További lépések
-* [További tudnivalók a vállalati integrációs csomag](logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag").  
+* [További információ az Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "további tudnivalók az enterprise integration pack").  
 

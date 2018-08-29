@@ -12,46 +12,54 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: 47a78b71f51e4fe975341b8e9425f47fd8c4d31c
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7d2b38a27644eed088f4a204cf989f44346e1654
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503536"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126911"
 ---
 # <a name="manage-key-vault-using-cli-20"></a>CLI 2.0 használatával a Key Vault felügyelete
 
 Ez a cikk ismerteti, hogyan kezdheti el az Azure Key Vault az Azure CLI 2.0 használatával működik. Az információkat tekintheti meg:
+
+- Előfeltételek
 - Hogyan hozhat létre, amellyel megerősített tárolókat (kulcstartókat) az Azure-ban
-- Hogyan tárolhatja és kezelheti a kriptográfiai kulcsokat és titkos kulcsok az Azure-ban. 
-- Az Azure CLI használatával hozzon létre egy tárolót.
-- Kulcs vagy jelszó, amely ezután használhatja az Azure-alkalmazások létrehozása. 
-- Egy alkalmazás hogyan használhatja a létrehozott kulcs vagy jelszó.
+- Egy kulcs, a titkos kulcsot vagy a tanúsítvány hozzáadása a key vaulthoz
+- Egy alkalmazás regisztrálása az Azure Active Directoryval
+- Az alkalmazás egy kulcs vagy titkos kód használatának engedélyezése
+- A beállítás a key vault speciális hozzáférési szabályzatok
+- Hardveres biztonsági modulokban (HSM) használata
+- A kulcstartó és a hozzá tartozó kulcsok és titkos kódok törlése
+- Vegyes az Azure platformfüggetlen parancssori felületi parancsokkal
+
 
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
-
 
 > [!NOTE]
 > Ez a cikk nem tartalmaz útmutatást, hogy a lépések egyikét tartalmazza, amely bemutatja, hogyan az alkalmazások számára a kulcsok vagy titkos kulcsok a key vault használata az Azure-alkalmazás írása.
 >
 
 Az Azure Key Vault áttekintését lásd: [Mi az Azure Key Vault?](key-vault-whatis.md)
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Ez a cikk az Azure CLI-parancsok használatához a következő elemeket kell rendelkeznie:
 
 * Egy Microsoft Azure-előfizetésre. Ha még nincs fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial).
 * Parancssori felület 2.0-s vagy újabb verziója. Telepítse a legújabb verzióját, lásd: [telepítése és konfigurálása az Azure többplatformos parancssori felület 2.0](/cli/azure/install-azure-cli).
 * A kulcs vagy jelszó ebben a cikkben létrehozott használandó konfigurálni kívánt alkalmazás. Egy mintaalkalmazás elérhető a [Microsoft letöltőközpontból](http://www.microsoft.com/download/details.aspx?id=45343). Útmutatásért lásd: a csomagban foglalt fontos fájlt.
 
-## <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Segítség kérése az Azure többplatformos parancssori felület
+### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Segítség kérése az Azure többplatformos parancssori felület
+
 Ez a cikk azt feltételezi, hogy ismeri a parancssori felületen (Bash, terminál, parancssor használatával).
 
 A--help vagy a -h paramétert a konkrét parancsok súgójának megtekintéséhez használható. Azt is megteheti az Azure súgó [parancs] [kapcsolók] formátumot túl is használható. Ha kétségei vannak parancs szükséges paraméterek kapcsolatban, tekintse meg érdekében. Az alábbi parancsokat az összes például ugyanazokat az információkat adja vissza:
 
-```azurecli-interactive
+```azurecli
 az account set --help
 az account set -h
 ```
@@ -61,7 +69,11 @@ A következő cikkekben megismerkedhet az Azure Resource Manager az Azure platfo
 * [Az Azure parancssori felület telepítése](/cli/azure/install-azure-cli)
 * [Azure CLI 2.0 használatának első lépései](/cli/azure/get-started-with-azure-cli)
 
-## <a name="connect-to-your-subscriptions"></a>Csatlakozás az előfizetésekhez
+## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Hogyan hozhat létre, amellyel megerősített tárolókat (kulcstartókat) az Azure-ban
+
+Tárolók tárolókat hardveres biztonsági modulok által támogatott biztonságosak. A tárolók a titkos alkalmazáskulcsok tárolásának központosításával csökkentik a biztonsági információk véletlen elvesztésének kockázatát. A kulcstartók a bennük tárolt tartalomhoz való hozzáférést vezérlik és naplózzák is. Az Azure Key Vault kezelni tudja a Transport Layer Security- (TLS-) tanúsítványok kérelmezését és megújítását, biztosítva a tanúsítvány életciklusának megbízható kezelési szolgáltatásához szükséges funkciókat. Az alábbi lépésekkel létrehozhat egy tárolót.
+
+### <a name="connect-to-your-subscriptions"></a>Csatlakozás az előfizetésekhez
 
 Jelentkezzen be interaktívan, használja a következő parancsot:
 
@@ -88,7 +100,8 @@ az account set --subscription <subscription name or ID>
 
 Az Azure többplatformos parancssori felület konfigurálásával kapcsolatos további információkért lásd: [Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-## <a name="create-a-new-resource-group"></a>Új erőforráscsoport létrehozása
+### <a name="create-a-new-resource-group"></a>Új erőforráscsoport létrehozása
+
 Azure Resource Manager használatakor az összes kapcsolódó erőforrás egy erőforráscsoportba tartozó hozhatók létre. Egy meglévő erőforráscsoportot is létrehozhat kulcstartót. Ha egy új erőforráscsoportot használni szeretne, létrehozhat egy újat.
 
 ```azurecli
@@ -101,15 +114,15 @@ Az első paraméter az erőforráscsoport nevét, és a második paraméter az a
 az account list-locations
 ``` 
 
-## <a name="register-the-key-vault-resource-provider"></a>A Key Vault erőforrás-szolgáltató regisztrálása
+### <a name="register-the-key-vault-resource-provider"></a>A Key Vault erőforrás-szolgáltató regisztrálása
+
  Ön hibaüzenet jelenhet meg: "az előfizetés nincs regisztrálva"Microsoft.KeyVault"névtér" Amikor megpróbál létrehozni egy új kulcstartóba. Üzenet jelenik meg, hogy a Key Vault erőforrás-szolgáltató regisztrálva van az előfizetésben. Ez a műveletet minden egyes előfizetés esetén csak egyszer kell elvégezni.
 
 ```azurecli
 az provider register -n Microsoft.KeyVault
 ```
 
-
-## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
+### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
 Használja a `az keyvault create` parancs használatával hozzon létre egy kulcstartót. Ez a szkript három kötelező paraméterrel rendelkezik: egy erőforráscsoport-nevet, egy kulcstároló nevét és a földrajzi helyet.
 
@@ -126,7 +139,7 @@ Ez a parancs kimenetét mutatja a létrehozott kulcstartó tulajdonságait. A k�
 
 Azure-fiókja most már engedéllyel rendelkezik arra, hogy bármilyen műveletet végezzen ezen a kulcstartón. Kezdődően még senki más nem engedélyezett.
 
-## <a name="add-a-key-secret-or-certificate-to-the-key-vault"></a>Adjon hozzá egy kulcsot, a titkos kulcsot vagy a tanúsítványt a key vaulthoz
+## <a name="adding-a-key-secret-or-certificate-to-the-key-vault"></a>Egy kulcs, a titkos kulcsot vagy a tanúsítvány hozzáadása a key vaulthoz
 
 Ha azt szeretné, hogy az Azure Key Vault létrehozása egy szoftveres védelemmel ellátott kulcs az Ön számára, használja a `az key create` parancsot.
 
@@ -176,7 +189,8 @@ az keyvault secret list --vault-name 'ContosoKeyVault'
 az keyvault certificate list --vault-name 'ContosoKeyVault'
 ```
 
-## <a name="register-an-application-with-azure-active-directory"></a>Alkalmazás regisztrálása az Azure Active Directory szolgáltatásban
+## <a name="registering-an-application-with-azure-active-directory"></a>Egy alkalmazás regisztrálása az Azure Active Directoryval
+
 Ezt a lépést általában egy fejlesztő végzi egy másik számítógépről. Azt nem egyedi az Azure Key Vaultba, de meg adva, figyelése. Végezze el az alkalmazás regisztrációját, a fiók, a tároló és az alkalmazás kell lennie az Azure könyvtárába.
 
 A kulcstartót használó alkalmazásoknak az Azure Active Directoryból származó jogkivonat használatával kell hitelesítést végezniük.  Az alkalmazás tulajdonosának regisztrálnia kell azt az Azure Active Directory először. A regisztrációt követően az alkalmazás tulajdonosa az alábbi értékeket kapja:
@@ -195,7 +209,7 @@ az ad sp create-for-rbac -n "MyApp" --password 'Pa$$w0rd' --skip-assignment
 # If you don't specify a password, one will be created for you.
 ```
 
-## <a name="authorize-the-application-to-use-the-key-or-secret"></a>A kulcs vagy titkos kód használatának engedélyezése az alkalmazás számára
+## <a name="authorizing-an-application-to-use-a-key-or-secret"></a>Az alkalmazás egy kulcs vagy titkos kód használatának engedélyezése
 
 Engedélyezze az alkalmazás számára a kulcs vagy titkos kód, a tároló eléréséhez, használja a `az keyvault set-policy` parancsot.
 
@@ -211,7 +225,8 @@ Engedélyezze az ugyanazon alkalmazás a tároló titkos kulcsainak olvasásáho
 az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
-## <a name="bkmk_KVperCLI"></a> Speciális hozzáférési szabályzatok beállítása a key vault 
+## <a name="bkmk_KVperCLI"></a> A beállítás a key vault speciális hozzáférési szabályzatok
+
 Használat [az keyvault update](/cli/azure/keyvault#az-keyvault-update) a kulcstartó speciális szabályzatok engedélyezéséhez. 
 
  Központi telepítés engedélyezése a Key Vault: lehetővé teszi, hogy a virtuális gépek a tárolóból titkos kódként tárolt tanúsítványok lekérése.
@@ -230,7 +245,7 @@ A Key Vault engedélyezése a sablon üzembe helyezéshez: Resource Manager lehe
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
  ```
 
-## <a name="if-you-want-to-use-a-hardware-security-module-hsm"></a>Hardveres biztonsági modul (HSM) használata
+## <a name="working-with-hardware-security-modules-hsms"></a>Hardveres biztonsági modulokban (HSM) használata
 
 Hozzáadott garantálja hogy is kulcsok importálását vagy létrehozását a hardveres biztonsági modulokban (HSM) a HSM határait betartó. A hardveres biztonsági modulok a 2. szintű FIPS 140-2 szerint vannak érvényesítve. Ha ez a követelmény nem vonatkozik Önre, ugorja át ezt a szakaszt, és folytassa a [Kulcsartó és a hozzá tartozó kulcsok és titkos kódok törlése](#delete-the-key-vault-and-associated-keys-and-secrets) szakasszal.
 
@@ -262,7 +277,7 @@ az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSM
 
 Részletes útmutatást a BYOK-csomag létrehozásához, lásd: [HSM-Protected kulcsok használata az Azure Key Vault](key-vault-hsm-protected-keys.md).
 
-## <a name="delete-the-key-vault-and-associated-keys-and-secrets"></a>Kulcstartó és a hozzá tartozó kulcsok és titkos kódok törlése
+## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>A kulcstartó és a hozzá tartozó kulcsok és titkos kódok törlése
 
 Ha már nincs szüksége a key vault és a kulcsok vagy titkos adatokat, a key vault használatával törölheti az `az keyvault delete` parancsot:
 
@@ -276,7 +291,7 @@ Lehetősége van a teljes Azure-erőforráscsoport törlésére is, amely magáb
 az group delete --name 'ContosoResourceGroup'
 ```
 
-## <a name="other-azure-cross-platform-command-line-interface-commands"></a>Más az Azure platformfüggetlen parancssori felületi parancsokkal
+## <a name="miscellaneous-azure-cross-platform-command-line-interface-commands"></a>Vegyes az Azure platformfüggetlen parancssori felületi parancsokkal
 
 Egyéb parancsok, amelyek hasznosak lehetnek az Azure Key Vault kezeléséhez.
 
@@ -314,6 +329,6 @@ az keyvault secret delete --vault-name 'ContosoKeyVault' --name 'SQLPassword'
 
 - Befejeződött az Azure CLI-referenciáját a key vault parancsok, lásd: [Key Vault parancssori felület referenciája](/cli/azure/keyvault).
 
-- Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-vault-developers-guide.md).
+- Programozási hivatkozások lásd [az Azure Key Vault fejlesztői útmutató](key-vault-developers-guide.md)
 
 - Az Azure Key Vaultban, és HSM-EK további információkért lásd: [HSM-Protected kulcsok használata az Azure Key Vault](key-vault-hsm-protected-keys.md).

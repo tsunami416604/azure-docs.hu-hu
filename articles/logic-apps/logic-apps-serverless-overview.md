@@ -1,55 +1,50 @@
 ---
-title: Azure-kiszolgáló nélküli áttekintése |} Microsoft Docs
-description: Hatékony megoldások létrehozása a felhőben anélkül, hogy az infrastruktúra gondolniuk.
-keywords: ''
+title: Az Azure kiszolgáló nélküli áttekintése |} A Microsoft Docs
+description: Hatékony megoldások létrehozása a felhőben infrastruktúrával bajlódnia
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: jeffhollan
+ms.author: jehollan
+ms.reviewer: klam, estfan, LADocs
+ms.custom: vs-azure
 ms.topic: article
 ms.date: 03/30/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 84ff855676215e6b69ec97a1527d14366e763b07
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 97c928c34a18a5d4f3549c348a273df268ee1db0
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299926"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123308"
 ---
-# <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Azure-kiszolgáló nélküli funkciók és a Logic Apps áttekintése
+# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Áttekintés: Azure, az Azure Logic Apps és az Azure Functions kiszolgáló nélküli
 
-Kiszolgáló nélküli alkalmazások fejlesztését sebesség növekedése, szükséges kódot, és amely egyszerűség csökkentése előnyei kínálnak.  Ez a cikk a különböző attribútumokat kiszolgáló nélküli megoldások, és az Azure kiszolgáló nélküli ajánlatok állapotba kerül.
+Kiszolgáló nélküli alkalmazások fejlesztési sebességének növekedése, a szükséges kódot, és egyszerűen méretezhető csökkenése előnyt kínál.  Ez a cikk a különböző attribútumokat, kiszolgáló nélküli megoldások és az Azure kiszolgáló nélküli ajánlatai hiányzóra változik.
 
-## <a name="what-is-serverless"></a>Mi az a kiszolgáló nélküli?
+## <a name="what-is-serverless"></a>Mi a kiszolgáló nélküli?
 
-Kiszolgáló nélküli nem jelenti azt, nincsenek kiszolgálók – utal, a fejlesztőknek nem kell aggódnia a kiszolgálók.  A hagyományos alkalmazásfejlesztés nagy része válaszol kérdések méretezés, a tároló és a figyelési megoldásoknak az alkalmazás követelményeinek.  A kiszolgáló nélküli ezeket a kérdéseket vannak végrehajtott kezeli a megoldás részeként.  Emellett kiszolgáló nélküli alkalmazások számlázása a fogyasztás alapján terv.  Ha az alkalmazás soha nem használ, egy ingyenesen elérhető soha nem van szükség.  Ezeket a szolgáltatásokat a fejlesztők olyan üzleti logikát a megoldás kizárólag összpontosítanak.
+Kiszolgáló nélküli nem jelenti azt, nem találhatók kiszolgálók – csupán annyit, a fejlesztő nem kell aggódnia a kiszolgálók.  A hagyományos alkalmazásfejlesztés nagy része skálázási, üzemeltetési és figyelési megoldások, hogy a videólejátszást az alkalmazás körül kérdéseket válaszol.  A kiszolgáló nélküli ezeket a kérdéseket is elvégzi, a megoldás részeként.  Ezenkívül kiszolgáló nélküli alkalmazások fogyasztásalapú csomag számítjuk fel.  Soha ne használja az alkalmazást, ha soha nem merül fel díjat.  Ezek a funkciók lehetővé teszik a fejlesztők számára, hogy az üzleti logika, a megoldás kizárólag a.
 
-Az alapvető szolgáltatások az Azure-kiszolgáló nélküli körül [Azure Functions](https://azure.microsoft.com/services/functions/) és [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).  Ezek a megoldások kövesse a fenti elveket, mind a fejlesztők számára a hatékony felhő alkalmazások minimális kóddal.
+Az alapvető szolgáltatások az Azure-beli kiszolgáló nélküli körül [Azure Functions](https://azure.microsoft.com/services/functions/) és [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).  Mindkét ezeket a megoldásokat, kövesse a fenti elvek, és lehetővé teszi a fejlesztők számára csak minimális kódírásra robusztus felhőalkalmazások létrehozását.
 
 ## <a name="what-are-azure-functions"></a>Mik az Azure Functions?
 
-Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. Funkciók is legyen még hatékonyabbá, és a fejlesztési nyelvi szerkesztőprogramban, például a C#, F #, Node.js, Python vagy a PHP is használhatja. Csak a futtatásakor a kódot kell fizetnie, és Azure méretezi igény szerint.
+Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. Függvények legyen még hatékonyabb, és a választott, például a C#, F #, Node.js, Python vagy PHP nyelven használható. Csak a kód futtatásának idejéért kell fizetnie, és az Azure méretezhető, igény szerint.
 
 Ha szeretne rögtön az Azure Functions használatának első lépéseihez ugrani, kezdje [Az első Azure-függvény létrehozása](../azure-functions/functions-create-first-azure-function.md) résszel. Ha a Functions szolgáltatással kapcsolatos további műszaki információkat keres, lépjen a [fejlesztői segédanyagok](../azure-functions/functions-reference.md) részhez.
 
 ## <a name="what-are-azure-logic-apps"></a>Mik az Azure Logic Apps?
 
-Az Azure Logic Apps segítségével egy egyszerűsítése és méretezhető integrációja és a munkafolyamatok megvalósításához a felhőben. A vizuális tervező használatára, a modell, és a folyamat automatizálására munkafolyamat nevű lépések sorozataként biztosít.  Nincsenek [sok összekötők](../connectors/apis-list.md) keresztül csatlakozni gyorsan egy kiszolgáló nélküli alkalmazást más API-k felhőalapú és helyszíni szolgáltatásokat.  Egy logikai alkalmazás egy eseményindítóval kezdődik (például „amikor egy fiókot hozzáadnak a Dynamics CRM-hez”), és az indítás után kezdődhet számos műveleti, konverziós és feltétellogikai kombináció.  A Logic Apps akkor kiváló választás, ha különböző Azure Functions - folyamatban futó, különösen akkor, ha a folyamat igényel egy külső rendszer vagy az API-val való interakció.
+Az Azure Logic Apps lehetővé teszi egyszerűsíthetők és valósíthatók meg skálázható munkafolyamatok és integrációk a felhőben. Biztosít egy vizuális tervezővel és automatizálhatók a folyamat egy munkafolyamat nevű lépések sorozataként.  Nincsenek [számos összekötő](../connectors/apis-list.md) felhőbeli és helyszíni szolgáltatásokat a kiszolgáló nélküli alkalmazás egyszerűen csatlakozhat más API-k között.  Egy logikai alkalmazás egy eseményindítóval kezdődik (például „amikor egy fiókot hozzáadnak a Dynamics CRM-hez”), és az indítás után kezdődhet számos műveleti, konverziós és feltétellogikai kombináció.  A Logic Apps remek választás a következőkhöz esetén replikálásával segít a vállalatnak különböző Azure Functions egy folyamatban – különösen akkor, ha a folyamat igényel egy külső rendszer vagy az API használata.
 
-Első lépések a Logic Apps, indítsa el a [az első logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md).  Ha a Logic Apps kapcsolatos további műszaki információkat keres, tekintse meg a [fejlesztői leírás](logic-apps-workflow-actions-triggers.md).
+A Logic Apps használatának első lépései, kezdje [az első logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md).  Ha a Logic Apps szolgáltatással kapcsolatos további műszaki információkat keres, tekintse meg a [– fejlesztői referencia](logic-apps-workflow-actions-triggers.md).
 
-## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Hogyan felépítéséhez és az Azure-ban kiszolgáló nélküli alkalmazások telepítéséhez?
+## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Hogyan hozhat létre és üzembe helyezése az Azure-beli kiszolgáló nélküli alkalmazásokat?
 
-Azure fejlesztési, telepítési és felügyeleti kiszolgáló nélküli alkalmazások lehetővé teszi az eszközök széles skáláját.  Alkalmazások közvetlenül az Azure-portálon, vagy a építhetők [tooling eszköz, a Visual Studio eszközből](logic-apps-serverless-get-started-vs.md).  Ha egy alkalmazás lehet [azonnal telepített](logic-apps-create-deploy-template.md).  Azure is biztosít a kiszolgáló nélküli alkalmazások figyelését.  A figyelés érhetők el az Azure-portálon keresztül az API-t vagy az SDK-k, vagy integrált tooling Naplóelemzés és az Application insights szolgáltatással.
+Az Azure egy eszközök széles skáláját biztosítja a fejlesztési, üzembe helyezési és felügyeleti kiszolgáló nélküli alkalmazások között.  Alkalmazások építhetők fel, közvetlenül az Azure Portalon, vagy a [hibakeresését a Visual Studióból](logic-apps-serverless-get-started-vs.md).  Ha egy alkalmazás fejlesztettek ki lehet [azonnal üzembe helyezett](logic-apps-create-deploy-template.md).  Az Azure is kiszolgáló nélküli alkalmazások figyelését teszi lehetővé.  A monitorozás elérhető lesz az Azure portal, az API vagy SDK-k, vagy az integrált eszközök, a Log Analytics és az Application Insights.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Első lépések a Visual Studio egy kiszolgáló nélküli alkalmazást felépítése](logic-apps-serverless-get-started-vs.md)
-* [Hozzon létre egy felhasználói irányítópult kiszolgáló nélküli](logic-apps-scenario-social-serverless.md)
+* [A Visual Studióban egy kiszolgáló nélküli alkalmazás létrehozásának első lépései](logic-apps-serverless-get-started-vs.md)
+* [Kiszolgáló nélküli a customer insights irányítópult létrehozása](logic-apps-scenario-social-serverless.md)
 * [A központi telepítési sablont a logikai alkalmazás létrehozása](logic-apps-create-deploy-template.md)

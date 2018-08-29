@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a266055c7685dca87d985775584a9ea7a4bda883
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390194"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128520"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – gyakori kérdések
 
@@ -151,7 +151,7 @@ Ha a napló előrejelzési elemzésre használ, ne rögzítsen rajta teszt utter
 
 Nem. A LUIS-alkalmazásokon adatmodell nem javíthatja a LUIS-platformként a LUIS segítségével vagy a Microsoft semmilyen módon használja. Minden alkalmazás adatait külön, és csak a felhasználó és a közreműködők által saját tulajdonú. 
 
-Tudjon meg többet [felhasználói adatvédelem](luis-reference-gdpr.md), [további biztonsági megfelelőségi](luis-concept-security.md#security-compliance), és [adattárolás](luis-concept-data-storage.md).
+Tudjon meg többet [felhasználói adatvédelem](luis-user-privacy.md), [további biztonsági megfelelőségi](luis-concept-security.md#security-compliance), és [adattárolás](luis-concept-data-storage.md).
 
 ## <a name="language-and-translation-support"></a>Nyelvi és fordítási támogatás 
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 08/22/2018
 ms.author: rolyon
-ms.openlocfilehash: 6162ee59689df12e2dace9a0419490979a13d4c5
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 69313adea1719324e2b22b45c6a45535ea65097f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616863"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125042"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk az Azure AD Használati feltételek funkcióval kapcsolatos kezdeti lépéseket ismerteti.
@@ -164,7 +164,7 @@ Az alábbi eljárás ismerteti, hogyan lehet a használati feltételek használa
 
 1. Válassza ki a szerkeszteni kívánt használati feltételeket.
 
-1. Az a részleteket tartalmazó ablaktáblájában kattintson a **nyelvek** fülre.
+1. A részleteket tartalmazó ablaktáblán kattintson a **nyelvek** fülre.
 
     ![Használati feltételek hozzáadása](media/active-directory-tou/languages-tou.png)
 

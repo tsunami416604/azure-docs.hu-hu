@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: e833cb0e7f98933fd106a92a9aac6c4c2677d50d
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443582"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124997"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Virtuális mag szolgáltatásszint kiválasztása, számítási, memória, tárolási és i/o-erőforrások
 
@@ -35,8 +35,8 @@ Az alábbi táblázat segít a két szintek közötti különbségeket:
 |A következőkre alkalmas|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|
 |Compute|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|
 |Memory (Memória)|Gen4: 7 GB / mag<br>Gen5: 5.5-ös GB / mag | Gen4: 7 GB / mag<br>Gen5: 5.5-ös GB / mag |
-|Storage|[Prémium szintű távtároló](../virtual-machines/windows/premium-storage.md),<br/>Egyszeres adatbázis: 5 GB – 4 TB-ig<br/>Felügyelt példány: 32 GB – 8 TB |Helyi SSD-tárolóval<br/>Önálló adatbázis: 5 GB – 4 TB-ig<br/>Felügyelt példány: 32 GB – 4 TB-ig |
-|IO-átviteli sebesség (becsült)|Egyszeres adatbázis: 500 IOPS-/ virtuális mag és 7000-es maximális IOPS</br>Felügyelt példány: Függ [fájl méretét](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS magonként 200000 maximális iops|
+|Storage|[Prémium szintű távtároló](../virtual-machines/windows/premium-storage.md),<br/>Önálló adatbázis: 5 GB – 4 TB-ig<br/>Felügyelt példány: 32 GB – 8 TB |Helyi SSD-tárolóval<br/>Önálló adatbázis: 5 GB – 1 TB<br/>Felügyelt példány: 32 GB – 4 TB-ig |
+|IO-átviteli sebesség (becsült)|Önálló adatbázis: 500 IOPS-/ virtuális mag és 7000-es maximális IOPS</br>Felügyelt példány: Függ [fájl méretét](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS magonként 200000 maximális iops|
 |Rendelkezésre állás|1 replika, nincs olvasási szintű|3 replika, 1 [olvasási szintű replika](sql-database-read-scale-out.md),<br/>zóna redundáns magas rendelkezésre ÁLLÁS|
 |Biztonsági másolatok|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|
 |A memóriában|–|Támogatott|
@@ -53,8 +53,8 @@ Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyako
 
 A következőket ajánljuk figyelmébe:
 - A lefoglalt tárolót adatfájlok (MDF) és a naplófájlok fájlok (LDF) használja.
-- Minden egypéldányos adatbázishoz tartozó teljesítményszintre támogatja az adatbázis maximális méretét, egy alapértelmezett 32 GB maximális mérettel.
-- Amikor konfigurálja a szükséges egyszeres adatbázis mérete (MDF mérete), 30 %-a további tárhely automatikusan hozzáadott LDF támogatása
+- Minden egyes egyetlen adatbázishoz tartozó teljesítményszintre támogatja az adatbázis maximális méretét, egy alapértelmezett 32 GB maximális mérettel.
+- Amikor konfigurálja a szükséges egyetlen adatbázis mérete (MDF mérete), 30 %-a további tárhely automatikusan hozzáadott LDF támogatása
 - A felügyelt példány tároló mérete 32 GB többszörösének kell adni.
 - Kiválaszthatja, hogy bármely egyedülálló adatbázis mérete 10 GB-os és a támogatott maximális érték között
  - Standard szintű tárolóra vonatkozó növelése, vagy 10 GB-os lépésekben méretének csökkentése
