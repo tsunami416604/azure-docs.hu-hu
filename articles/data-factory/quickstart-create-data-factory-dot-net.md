@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3d1d77e585ae8d608a8f9a4e3de0943315d897af
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a7916a434552cbcb999f1e69c7a5bc2419f517fb
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918349"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094342"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Adat-előállító és folyamat létrehozása a .NET SDK használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,67 +32,7 @@ Ez a rövid útmutató bemutatja, hogyan használható a .NET SDK egy Azure-beli
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-### <a name="azure-subscription"></a>Azure-előfizetés
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
-
-### <a name="azure-roles"></a>Azure-szerepkörök
-Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie. Az Azure Portalon kattintson a **felhasználónévre** a jobb felső sarokban, majd válassza az **Engedélyek** elemet az előfizetésben található engedélyek megtekintéséhez. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Szerepkörök hozzáadása](../billing/billing-add-change-azure-subscription-administrator.md) című cikket.
-
-### <a name="azure-storage-account"></a>Azure Storage-tárfiók neve
-Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk **forrás-** és **céladattárként**. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, tekintse meg a [Tárfiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikket. 
-
-#### <a name="get-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
-Ebben a rövid útmutatóban az Azure Storage-fiók nevét és kulcsát használjuk. Az alábbi eljárás bemutatja a tárfióknév és -kulcs beszerzéséhez szükséges lépéseket. 
-
-1. Nyisson meg egy webböngészőt, és keresse fel az [Azure Portalt](https://portal.azure.com). Jelentkezzen be az Azure-beli felhasználónevével és jelszavával. 
-2. Kattintson a **További szolgáltatások >** elemre a bal oldali menüben, állítson be egy szűrőt a **Tárfiók** kulcsszóval, majd válassza a **Tárfiókok** lehetőséget.
-
-    ![Tárfiók keresése](media/quickstart-create-data-factory-dot-net/search-storage-account.png)
-3. A tárfiókok listájában állítson be szűrőt a tárfiók nevéhez (ha szükséges), majd válassza ki a **tárfiókját**. 
-4. A **Tárfiók** oldalon a menüben válassza a **Hozzáférési kulcsok** elemet.
-
-    ![Tárfióknév és -kulcs beszerzése](media/quickstart-create-data-factory-dot-net/storage-account-name-key.png)
-5. Másolja a **Tárfiók neve** és az **1. kulcs** mezők értékét a vágólapra. Illessze be őket a Jegyzettömbbe, vagy bármely más szerkesztőbe, majd mentse a fájlt.  
-
-#### <a name="create-input-folder-and-files"></a>Bemeneti mappa és fájlok létrehozása
-Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban. Ezután létrehoz egy **input** nevű mappát a tárolóban, majd feltölt egy mintafájlt az input mappába. 
-
-1. A **Storage-fiók** lapon váltson át az **Áttekintés** panelre, majd kattintson a **Blobok** elemre. 
-
-    ![A Blobok elem választása](media/quickstart-create-data-factory-dot-net/select-blobs.png)
-2. A **Blob service** lapon kattintson az eszköztár **+ Tároló** elemére. 
-
-    ![Tároló hozzáadása gomb](media/quickstart-create-data-factory-dot-net/add-container-button.png)    
-3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra. 
-
-    ![Tárolónév megadása](media/quickstart-create-data-factory-dot-net/new-container-dialog.png)
-4. A tárolók listájában kattintson az **adftutorial** elemre. 
-
-    ![A tároló kiválasztása](media/quickstart-create-data-factory-dot-net/select-adftutorial-container.png)
-1. A **Tároló** lapon kattintson az eszköztár **Feltöltés** elemére.  
-
-    ![Feltöltés gomb](media/quickstart-create-data-factory-dot-net/upload-toolbar-button.png)
-6. A **Blob feltöltése** lapon kattintson a **Speciális** elemre.
-
-    ![Kattintás a Speciális hivatkozásra](media/quickstart-create-data-factory-dot-net/upload-blob-advanced.png)
-7. Indítsa el a **Jegyzettömböt**, és hozzon létre egy **emp.txt** nevű fájlt a következő tartalommal. Mentse a fájlt a **c:\ADFv2QuickStartPSH** mappába. Ha még nem létezik, hozza létre az **ADFv2QuickStartPSH** mappát.
-    
-    ```
-    John, Doe
-    Jane, Doe
-    ```    
-8. Az Azure Portal **Blob feltöltése** lapjának **Fájlok** mezőben keresse meg, és válassza ki az **emp.txt** fájlt. 
-9. Adja meg az **input** értéket a **Feltöltés mappába** mezőben. 
-
-    ![Blobbeállítások feltöltése](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
-10. Ellenőrizze, hogy a mappa az **input** mappa-e, a fájl pedig az **emp.txt** fájl-e, majd kattintson a **Feltöltés** elemre.
-11. A listában meg kell jelennie az **emp.txt** fájlnak és a feltöltés állapotának. 
-12. A sarokban található **X** gombra kattintva zárja be a **Blob feltöltése** lapot. 
-
-    ![A Blob feltöltése lap bezárása](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
-1. Ne zárja be a **Tároló** lapot. A segítségével ellenőrizheti ennek a rövid útmutatónak az eredményét.
+[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="visual-studio"></a>Visual Studio
 A jelen cikkben található útmutató a Visual Studio 2017-et használja. A Visual Studio 2013-at vagy 2015-öt is használhatja.
@@ -100,7 +40,7 @@ A jelen cikkben található útmutató a Visual Studio 2017-et használja. A Vis
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
 Töltse le és telepítse az [Azure .NET SDK](http://azure.microsoft.com/downloads/)-t a gépen.
 
-### <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
+## <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
 [A cikk](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) szakaszainak utasításaival a következő feladatokat végezheti el: 
 
 1. **Egy Azure Active Directory-alkalmazás létrehozása**. Olyan alkalmazást hozhat létre az Azure Active Directoryban, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).

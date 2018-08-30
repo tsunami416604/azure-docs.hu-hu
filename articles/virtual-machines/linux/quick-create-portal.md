@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 03d4ad081a788299bab563ca6b956edc347732da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f659c424f7d5e705343c113d2ba0971164ca622a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447958"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108806"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -53,7 +53,7 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 3. Adja meg a virtuális gép nevét (például *myVM*), a lemez típusát hagyja az *SSD* értéken, majd adjon meg egy felhasználónevet (például *azureuser*).
 
-4. . A **Hitelesítés típusa** résznél válassza az **Nyilvános SSH-kulcs** lehetőséget, majd illessze be a nyilvános kulcsot a szövegmezőbe. Ügyeljen rá, hogy eltávolítsa a kezdő vagy záró térközöket a nyilvános kulcsból.
+4. A **Hitelesítés típusa** résznél válassza az **Nyilvános SSH-kulcs** lehetőséget, majd illessze be a nyilvános kulcsot a szövegmezőbe. Ügyeljen rá, hogy eltávolítsa a kezdő vagy záró térközöket a nyilvános kulcsból.
 
     ![Írja be a virtuális gép alapvető adatait a portálpanelen](./media/quick-create-portal/create-vm-portal-basic-blade.png)
 

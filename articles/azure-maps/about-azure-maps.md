@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 803e82a294b64452ffd788880097b9d86ac1065b
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144193"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745290"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosítása érdekében friss térképadatokat használó térinformatikai szolgáltatások gyűjteménye. A benne foglalt REST API-kkal térképek jeleníthetők meg, valamint hasznos helyek, az ezekhez vezető útvonalak, forgalmi viszonyok, időzónák és IP-alapú helymeghatározási szolgáltatások kereshetők. Az API-kat az ismerős eszközökkel együtt használva gyorsan fejleszthet és skálázhat olyan megoldásokat, amelyek helyadatokat biztosítanak az Azure-megoldásokban. A REST API-kkal együtt a szolgáltatás egy olyan webalapú JavaScript-vezérlőt biztosít, amelynek segítségével a fejlesztés egyszerűen, rugalmasan és különböző felületeken kivitelezhető. 
@@ -98,7 +98,7 @@ Az IP-alapú helymeghatározási szolgáltatás REST API-kkal kapcsolatos inform
 
 Az Azure Maps a mobilitás jegyében készült, és különböző platformokon futó alkalmazásokat is képes kiszolgálni. Egy nyelvfüggetlen és a JSON-kimeneteket a [REST API-k](https://docs.microsoft.com/rest/api/maps/) használatával támogató programozási modellt használ. 
 
-Az Azure Maps továbbá tartalmaz egy kényelmes [JavaScript-térképvezérlőt](https://docs.microsoft.com/javascript/api/azure-maps-javascript/?view=azure-iot-typescript-latest), amelynek egyszerű programozási modellje lehetővé teszi a webes és mobilalkalmazások gyors és egyszerű fejlesztését. 
+Az Azure Maps továbbá tartalmaz egy kényelmes [JavaScript-térképvezérlőt](https://docs.microsoft.com/javascript/api/azure-maps-control/models?view=azure-iot-typescript-latest), amelynek egyszerű programozási modellje lehetővé teszi a webes és mobilalkalmazások gyors és egyszerű fejlesztését. 
 
 
 ## <a name="usage"></a>Használat

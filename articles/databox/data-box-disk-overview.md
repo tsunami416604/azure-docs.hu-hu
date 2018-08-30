@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Disk – áttekintés | Microsoft Docs in data
+title: A Microsoft Azure Data Box Disk áttekintése | Microsoft Docs
 description: Az Azure Data Box Disk felhő alapú megoldást mutatja be, amellyel nagy mennyiségű adat helyezhető át az Azure-ba
 services: databox
 documentationcenter: NA
@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: overview
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/17/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 22211f52f6b9a16f785cacb9364ebe5b74617453
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: f2e1a59584507b52d0a834af1869e3e9f2db5f07
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126626"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127364"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Mi az az Azure Data Box Disk? (Előzetes verzió)
 
@@ -106,11 +106,13 @@ Az előzetes verzió ideje alatt a Data Box Disk használatával az alábbi Azur
 
 |Azure-régió  |Azure-régió  |
 |---------|---------|
-|USA nyugati középső régiója     |USA északi középső régiója         |        
-|USA 2. nyugati régiója     | USA keleti régiója          |     
-|USA nyugati régiója     | USA 2. keleti régiója           |      
-|USA déli középső régiója   | Nyugat-Európa       |         
-|USA középső régiója     | Észak-Európa |
+|USA nyugati középső régiója     |USA keleti régiója        |        
+|USA 2. nyugati régiója     |USA 2. keleti régiója          |     
+|USA nyugati régiója     | Nyugat-Európa        |      
+|USA déli középső régiója   |Észak-Európa     |         
+|USA középső régiója     |Kelet-Kanada|
+|USA északi középső régiója  |Közép-Kanada    |
+
 
 
 
@@ -120,6 +122,6 @@ Az előzetes verzió ideje alatt a Data Box Disk díjmentesen használható. Vá
 
 ## <a name="next-steps"></a>További lépések
 
-- A [Data Box Disk rendszerkövetelményeinek](data-box-disk-system-requirements.md) áttekintése.
-- A [Data Box Disk korlátjainak](data-box-disk-limits.md) megismerése.
+- A [Data Box Disk követelményeinek](data-box-disk-system-requirements.md) áttekintése.
+- A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.
 - Az [Azure Data Box Disk](data-box-disk-quickstart-portal.md) gyors üzembe helyezése az Azure Portalon.

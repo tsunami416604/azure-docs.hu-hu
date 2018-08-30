@@ -4,18 +4,18 @@ description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöket az Azure Por
 keywords: hadoop első lépések, hadoop linux, hadoop rövid útmutató, hive első lépések, hive rövid útmutató
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: 67fa5debac4039bf3ae9c3ef62418f033e2fa9c2
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 802c35f94457cc60ec27b3dd061d763d1acab4f5
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598969"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042236"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-the-azure-portal"></a>Rövid útmutató: A Hadoop és a Hive Azure HDInsightban való használatának első lépései az Azure Portalon
 

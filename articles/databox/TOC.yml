@@ -1,50 +1,59 @@
+items:
 - name: Azure Data Box-dokumentáció
   href: /azure/databox/
 - name: Áttekintés
   items:
-    - name: Mi a Data Box Disk?
-      href: data-box-disk-overview.md
+  - name: Mi a Data Box Disk?
+    href: data-box-disk-overview.md
 - name: Gyors útmutatók
   items:
-    - name: Beállítás - Azure Portal
-      href: data-box-disk-quickstart-portal.md
+  - name: Beállítás - Azure Portal
+    href: data-box-disk-quickstart-portal.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Rendelés
-      href: data-box-disk-deploy-ordered.md
-    - name: 2 – Beállítás
-      href: data-box-disk-deploy-set-up.md
-    - name: 3 – Adatmásolás
-      href: data-box-disk-deploy-copy-data.md
-    - name: '4 – Visszaküldés, feltöltés, ellenőrzés'
-      href: data-box-disk-deploy-picked-up.md
+  - name: 1 – Rendelés
+    href: data-box-disk-deploy-ordered.md
+  - name: 2 – Beállítás
+    href: data-box-disk-deploy-set-up.md
+  - name: 3 – Adatmásolás
+    href: data-box-disk-deploy-copy-data.md
+  - name: 4 – Visszaküldés, feltöltés, ellenőrzés
+    href: data-box-disk-deploy-picked-up.md
 - name: Alapelvek
   items:
-    - name: Követelmények áttekintése
-      href: data-box-disk-system-requirements.md
-    - name: A korlátozások ismertetése
-      href: data-box-disk-limits.md
-    - name: Biztonság áttekintése
-      href: data-box-disk-security.md
-    - name: GYIK
-      href: data-box-disk-faq.md
+  - name: Követelmények áttekintése
+    href: data-box-disk-system-requirements.md
+  - name: A korlátozások ismertetése
+    href: data-box-disk-limits.md
+  - name: Biztonság áttekintése
+    href: data-box-disk-security.md
+  - name: GYIK
+    href: data-box-disk-faq.md
 - name: Útmutató
   items:
-    - name: Kezelés az Azure Portalon
-      href: data-box-portal-ui-admin.md
-    - name: A lemezzel kapcsolatos problémák elhárítása
-      href: data-box-disk-troubleshoot.md
+  - name: Kezelés az Azure Portalon
+    href: data-box-portal-ui-admin.md
+  - name: A lemezzel kapcsolatos problémák elhárítása
+    href: data-box-disk-troubleshoot.md
+  - name: Kapcsolatfelvétel a támogatási szolgáltatással
+    href: data-box-disk-contact-microsoft-support.md
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=storage'
-    - name: Azure Data Box-marketing
-      href: 'https://azure.microsoft.com/services/storage/databox/'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=databox'
-    - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=databox'
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=storage
+  - name: Azure Data Box-marketing
+    href: https://azure.microsoft.com/services/storage/databox/
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=databox
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=databox
+ms.openlocfilehash: 9194e92e03d53c4045818f2bea629a733c92ac79
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190198"
