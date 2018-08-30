@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 66ff1e2e02728e05cb0aeedce90de1882a8804ce
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 08/24/2018
 ms.locfileid: "30921308"
 ---
 A Virtuális hálózatok közötti kapcsolat – gyakori kérdések szakasz a VPN Gateway-kapcsolatokra vonatkozik. Ha társviszonyt szeretne létesíteni virtuális hálózatok között, lásd: [Társviszony létesítése virtuális hálózatok között](../articles/virtual-network/virtual-network-peering-overview.md)
@@ -25,9 +25,9 @@ Az azonos régión belüli virtuális hálózatok közötti adatforgalom ingyene
 
 Nem. A virtuális hálózatok közötti adatforgalom a Microsoft Azure gerinchálózatán halad át, nem az interneten.
 
-### <a name="can-i-establish-a-vnet-to-vnet-connection-across-aad-tenants"></a>Is egy VNet – VNet-kapcsolatot is létrehozni AAD bérlők között?
+### <a name="can-i-establish-a-vnet-to-vnet-connection-across-aad-tenants"></a>Létrehozhatok virtuális hálózatok közötti kapcsolatot AAD-bérlőkön keresztül?
 
-Igen, használja az Azure VPN gatewayek VNet – VNet kapcsolatokhoz működik AAD bérlők között.
+Igen, az Azure VPN-átjárókat használó virtuális hálózatok közötti kapcsolatok működnek az AAD-bérlőkön keresztül.
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>Biztonságos-e a virtuális hálózatok közötti adatforgalom?
 
@@ -69,7 +69,7 @@ Nem. A felhőszolgáltatás és a terheléselosztási végpont nem ívelhet át 
 
 Nem. A virtuális hálózatok közötti és többhelyes kapcsolatokhoz útvonalalapú (korábbi nevén dinamikus útválasztású) VPN-típussal rendelkező Azure VPN Gateway átjárók szükségesek.
 
-### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>Összekapcsolhatok egy RouteBased (útvonalapú) VPN-típussal rendelkező virtuális hálózatot egy házirendalapú VPN-típussal rendelkezővel?
+### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>Összekapcsolhatok egy RouteBased (útvonalalapú) VPN-típussal rendelkező virtuális hálózatot egy házirendalapú VPN-típussal rendelkezővel?
 
 Nem, mindkét virtuális hálózatnak útvonalalapú (korábban dinamikus útválasztású) VPN-t KELL használnia.
 

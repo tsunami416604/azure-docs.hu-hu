@@ -3,30 +3,30 @@ title: Hasznos tanácsok az Azure SQL Data Warehouse-hoz | Microsoft Docs
 description: Itt hivatkozásokat és ajánlott eljárásokat találhat az Azure SQL Data Warehouse-megoldások gyors összeállításához.
 services: sql-data-warehouse
 author: acomet
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.component: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: a22aadff2d58ace60a980a138035e30a638b08fa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4ef64b9d4e4e5c7f5a628359a8512dcb61b9c941
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190410"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43245893"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Hasznos tanácsok az Azure SQL Data Warehouse-hoz
 Ez a témakör az Azure SQL Data Warehouse-megoldások összeállításával kapcsolatos hasznos tippeket és ajánlott eljárásokat tartalmaz. Mielőtt belekezdene, részletesen ismerje meg az egyes lépéseket az [Azure SQL Data Warehouse-munkaterhelési mintákat és kizárási mintákat](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns) ismertető témakör elolvasásával, amely leírja, mi az az SQL Data Warehouse.
 
-A következő ábra adattárház tervezésének folyamatát mutatja be:
+A következő ábra egy adattárház tervezésének folyamatát mutatja be:
 
 ![Vázlat]
 
 ## <a name="queries-and-operations-across-tables"></a>Táblák közötti lekérdezések és műveletek
 
-Ha előre tudja, milyen elsődleges műveleteket és lekérdezéseket futtathat az adattárházban, ezekhez a műveletekhez priorizálhatja az adattárházat. Ilyen lekérdezések és műveletek lehetnek többek között a következők:
+Ha előre tudja, milyen elsődleges műveleteket és lekérdezéseket futtat majd az adattárházban, figyelembe veheti ezeket az adattárház architektúrájának kialakításakor. Ilyen lekérdezések és műveletek lehetnek többek között a következők:
 * Egy vagy két ténytábla egyesítése dimenziótáblákkal, a kombinált tábla szűrése, majd az eredmények összefűzése egy data martba.
 * Nagyobb vagy kisebb frissítések elvégzése a tényértékesítésekben.
 * Csak adatok hozzáfűzése a táblákhoz.
@@ -54,7 +54,7 @@ A tábla tulajdonságaitól függően a következő stratégiákat használja:
 |:--- |:--- |:--- |
 | Replikált | • Kis dimenziótáblák csillag sémában, tömörítés után kevesebb mint 2 GB tárhellyel (~5-szörös tömörítés) |• Számos írási tranzakció található a táblában (például beszúrás, upsert, törlés, frissítés)<br></br>• Gyakran módosítja az adattárházegységek (DWU-k) kiépítését<br></br>• Csak 2-3 oszlopot használ, de a táblában számos oszlop található<br></br>• Replikált táblát indexel |
 | Ciklikus időszeletelés (alapértelmezett) | • Ideiglenes/előkészítési tábla<br></br> • Nincs egyértelmű csatlakozási kulcs vagy alkalmas oszlop |• A teljesítmény az adatmozgás miatt lassú |
-| Kivonat | • Ténytáblák<br></br>• Nagyméretű dimenziótáblák |• Az elosztási kulcs nem frissíthető |
+| Kivonat | • Ténytáblák<br></br>• Nagy méretű dimenziótáblák |• Az elosztási kulcs nem frissíthető |
 
 **Tippek:**
 * Kezdje ciklikus időszeleteléssel, de haladjon a kivonatoló terjesztési stratégia felé, hogy kihasználhassa a nagymértékben párhuzamos architektúrát.

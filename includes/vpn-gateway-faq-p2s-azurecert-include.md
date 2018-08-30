@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 97d33bfcc8251b10ba121b7fb013800904450563
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/24/2018
 ms.locfileid: "30197129"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -21,23 +21,23 @@ ms.locfileid: "30197129"
 
 Igen. Korábban csak önaláírt főtanúsítványt lehetett használni. Továbbra is 20 főtanúsítvány tölthető fel.
 
-### <a name="what-tools-can-i-use-to-create-certificates"></a>Milyen eszközök használhatók olyan tanúsítványokat hoznak létre?
+### <a name="what-tools-can-i-use-to-create-certificates"></a>Milyen eszközökkel hozhatok létre tanúsítványokat?
 
-A vállalati nyilvános kulcsú infrastruktúra megoldás (a belső használatú PKI), az Azure PowerShell, a MakeCert és a OpenSSL is használhatja.
+Használhatja a Vállalati nyilvános kulcsú infrastruktúra megoldást (belső nyilvános kulcsú infrastruktúrát), az Azure PowerShellt, a MakeCertet vagy az OpenSSL-t.
 
-### <a name="certsettings"></a>Vannak-e tanúsítvány beállításai és a paraméterek?
+### <a name="certsettings"></a>Elérhető útmutató a tanúsítvány beállításaihoz és paramétereihez?
 
-* **Belső PKI/vállalati nyilvános kulcsú infrastruktúra megoldás:** lépései [tanúsítványokat létrehozni](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
+* **Belső/vállalati nyilvános kulcsú infrastruktúra:** a lépéseket a [Tanúsítványok előállítása](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert) pontban találja.
 
-* **Az Azure PowerShell:** tekintse meg a [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) cikk lépéseit.
+* **Azure PowerShell:** a lépéseket az [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) cikkében találja.
 
-* **A MakeCert:** tekintse meg a [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) cikk lépéseit.
+* **MakeCert:** a lépéseket a [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) cikkében találja.
 
 * **OpenSSL:** 
 
-    * Amikor a tanúsítványok exportálása, ügyeljen arra, hogy a legfelső szintű tanúsítvány átalakítása Base64.
+    * A tanúsítványok exportálása során ügyeljen arra, hogy a főtanúsítványt Base64 formátumba konvertálja.
 
-    * Az ügyféltanúsítványt:
+    * Ügyféltanúsítvány esetén:
 
-      * A titkos kulcs létrehozásakor adja meg a hosszának 4096.
-      * Ha a tanúsítvány létrehozása a *-bővítmények* paraméter, adja meg *usr_cert*.
+      * Amikor létrehozza a titkos kulcsot, 4096 bites hosszt adjon meg.
+      * Amikor létrehozza a tanúsítványt, az *-extensions* paraméter értéke *usr_cert* legyen.

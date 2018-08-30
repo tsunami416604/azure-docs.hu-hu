@@ -1,0 +1,76 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: b741e9fd30119aaeb5248ae3fae906a70cb163e4
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144808"
+documentType: LandingData
+title: Az Azure Service Bus Relay dokumentációja
+metadata:
+  title: Az Azure Service Bus Relay dokumentációja
+  meta.description: Learn how the Azure Relay service work in a hybrid cloud and on-premises environment, complete with how to, Tutorials, videos, API references, and more.
+  services: service-bus-relay
+  author: sethmanheim
+  manager: timlt
+  ms.service: service-bus-relay
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/21/2018
+  ms.author: sethm
+abstract:
+  description: Az Azure Relay szolgáltatás elősegíti a helyszíni környezet és a felhő közötti hibrid alkalmazások működtetését egy vállalati hálózaton belül és a nyilvános felhőben anélkül, hogy meg kellene nyitni egy tűzfalkapcsolatot, vagy zavaró módosításokat kellene végrehajtani a vállalati hálózati infrastruktúrán.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Megtudhatja, hogyan küldhet és fogadhat üzeneteket az Azure Relay használatával:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/media/index/logo_net.svg
+      text: .NET webes szoftvercsatornák
+      href: /azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started
+    - image:
+        src: /azure/media/index/logo_net.svg
+      text: .NET HTTP
+      href: /azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started
+    - image:
+        src: /azure/media/index/logo_nodejs.svg
+      text: Node.js webes szoftvercsatornák
+      href: /azure/service-bus-relay/relay-hybrid-connections-node-get-started
+    - image:
+        src: /azure/media/index/logo_nodejs.svg
+      text: Node.js HTTP
+      href: /azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan hozhat létre, kezelhet, illetve küldhet vagy fogadhat üzeneteket az Azure Relay használatával
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay">Helyszíni WCF-szolgáltatás közzététele egy felhőben futó webalkalmazáson</a>
+    - html: <a href="/azure/service-bus-relay/service-bus-relay-tutorial">Helyszíni WCF-szolgáltatás közzététele egy hálózaton kívüli WCF-ügyfélen</a>
+    - html: <a href="/azure/service-bus-relay/service-bus-relay-rest-tutorial">Helyszíni WCF-szolgáltatás közzététele egy hálózaton kívüli alkalmazáson</a>
+- title: Példák
+  items:
+  - type: paragraph
+    text: Szkriptek keresése a gyakori feladatok kezeléséhez.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples">Azure Relay-minták</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Nyelvek
+      html: <p><a href="/dotnet/api/microsoft.azure.relay?view=azure-dotnet">.NET-keretrendszer</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/servicebus/">REST API-referencia</a></p>
