@@ -214,12 +214,8 @@ items:
     items:
     - name: A számítási feladatok monitorozása
       href: sql-data-warehouse-manage-monitor.md
-    - name: Visszaállítás – portál
-      href: sql-data-warehouse-restore-database-portal.md
-    - name: Visszaállítás – PowerShell
-      href: sql-data-warehouse-restore-database-powershell.md
-    - name: Visszaállítás – REST API
-      href: sql-data-warehouse-restore-database-rest-api.md
+    - name: Az adattárház visszaállítsa
+      href: sql-data-warehouse-restore.md
     - name: Frissítés 2. generációs verzióra
       href: upgrade-to-latest-generation.md
     - name: Teljesítményszintek automatizálása
@@ -278,9 +274,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Adatkezelés
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 478c4aec7e4ca4233b93067ccb48a49dd250318c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ee3b0510fc8232606395845b1c12e3109a435f60
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125733"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186005"

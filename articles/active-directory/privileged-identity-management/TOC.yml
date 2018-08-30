@@ -1,0 +1,99 @@
+items:
+- name: A Privileged Identity Management dokumentációja
+- name: Áttekintés
+  items:
+  - name: Mi az Azure AD PIM?
+    href: pim-configure.md
+- name: Alapelvek
+  items:
+  - name: Előfizetési követelmények
+    href: subscription-requirements.md
+  - name: Kezelhető címtárbeli szerepkörök
+    href: pim-roles.md
+  - name: Biztonságos emelt szintű hozzáférés
+    href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+  - name: Áttekintő irányítópultok
+    href: pim-resource-roles-overview-dashboards.md
+  - name: E-mail-értesítések
+    href: pim-email-notifications.md
+  - name: Hozzárendelés-típusok
+    href: pim-resource-roles-eligible-visibility.md
+  - name: Adatvédelmi varázsló
+    href: pim-security-wizard.md
+- name: Útmutatók
+  items:
+  - name: Ismerkedés a PIM-mel
+    href: pim-getting-started.md
+  - name: Szerepkörök aktiválása
+    items:
+    - name: Címtárbeli szerepkörök aktiválása
+      href: pim-how-to-activate-role.md
+    - name: Erőforrás-szerepkörök aktiválása
+      href: pim-resource-roles-activate-your-roles.md
+  - name: A PIM konfigurálása
+    items:
+    - name: Az Azure-erőforrások felfedezése
+      href: pim-resource-roles-discover-resources.md
+    - name: Hozzáférés biztosítása mások számára a PIM kezeléséhez
+      href: pim-how-to-give-access-to-pim.md
+    - name: Előfizetés-kezelés engedélyezése
+      href: pim-resource-roles-enable-subscription-management.md
+  - name: Címtárbeli szerepkörök kezelése
+    items:
+    - name: Szerepkörök hozzárendelése
+      href: pim-how-to-add-role-to-user.md
+    - name: Szerepkör-beállítások konfigurálása
+      href: pim-how-to-change-default-settings.md
+    - name: MFA megkövetelése
+      href: pim-how-to-require-mfa.md
+    - name: Riasztások konfigurálása
+      href: pim-how-to-configure-security-alerts.md
+    - name: Kérések jóváhagyása
+      href: azure-ad-pim-approval-workflow.md
+    - name: Naplózási előzmények megtekintése
+      href: pim-how-to-use-audit-log.md
+  - name: Erőforrás-szerepkörök kezelése
+    items:
+    - name: A hozzáféréssel rendelkező felhasználók megtekintése
+      href: azure-pim-resource-rbac.md
+    - name: Szerepkörök hozzárendelése
+      href: pim-resource-roles-assign-roles.md
+    - name: Szerepkör-beállítások konfigurálása
+      href: pim-resource-roles-configure-role-settings.md
+    - name: MFA megkövetelése
+      href: pim-resource-roles-require-mfa.md
+    - name: Riasztások konfigurálása
+      href: pim-resource-roles-configure-alerts.md
+    - name: Kérések jóváhagyása
+      href: pim-resource-roles-approval-workflow.md
+    - name: Szerepkörök meghosszabbítása vagy megújítása
+      href: pim-resource-roles-renew-extend.md
+    - name: Naplózási előzmények megtekintése
+      href: pim-resource-roles-use-the-audit-log.md
+    - name: Egyéni szerepkörök használata
+      href: pim-resource-roles-custom-role-policy.md
+  - name: Hozzáférés áttekintése
+    items:
+    - name: Címtárbeli szerepkörök
+      items:
+      - name: Címtárbeli szerepkörök áttekintése
+        href: pim-how-to-perform-security-review.md
+      - name: Hozzáférési felülvizsgálat indítása
+        href: pim-how-to-start-security-review.md
+      - name: Hozzáférési felülvizsgálat befejezése
+        href: pim-how-to-complete-review.md
+    - name: Erőforrás-szerepkörök
+      items:
+      - name: Erőforrás-szerepkörök áttekintése
+        href: pim-resource-roles-perform-access-review.md
+      - name: Hozzáférési felülvizsgálat indítása
+        href: pim-resource-roles-start-access-review.md
+      - name: Hozzáférési felülvizsgálat befejezése
+        href: pim-resource-roles-complete-access-review.md
+  expanded: true
+ms.openlocfilehash: 7a8fafb4782a02da5b1fbe189cba8cadf7c22bfe
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43191238"

@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 338de80ef721bb8232a969c02522fb7baa8ee0ca
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43184773"
 documentType: LandingData
 title: Az Azure SignalR Service dokumentációja
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/17/2018
   ms.author: wesmc
-  ms.openlocfilehash: 44cebd136be84f5c9d591a850040968137cf1c3c
-  ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/08/2018
-  ms.locfileid: "33867283"
 abstract:
   description: Az Azure SignalR Service egy olyan, Azure által felügyelt szolgáltatás, amelynek segítségével a fejlesztők egyszerűen hozhatnak létre valós idejű funkciókkal ellátott webalkalmazásokat. Ez a szolgáltatás az ASP.NET Core-on alapul. Az ASP.NET Core egy olyan nyílt forráskódú kódtár, amelynek segítségével leegyszerűsíthető a valós idejű webes funkciók alkalmazásokhoz való hozzáadása.
 sections:
@@ -53,11 +53,11 @@ sections:
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - title: Felhőminták és architektúra Microsoft Azure-fejlesztők számára
-      href: https://www.pluralsight.com/courses/microsoft-azure-cloud-patterns-architecture?twoid=ed7474c5-bafe-4c41-91da-1eee9704d4dd&aid=7010a000001xDURAA2
+    - title: Azure-beli megoldástervező
+      href: https://go.microsoft.com/fwlink/?linkid=2012824
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/microsoft-azure-cloud-patterns-architecture?twoid=ed7474c5-bafe-4c41-91da-1eee9704d4dd&aid=7010a000001xDURAA2
+        href: https://go.microsoft.com/fwlink/?linkid=2012824
 - title: Példák
   items:
   - type: paragraph
